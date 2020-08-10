@@ -23,7 +23,7 @@ public class DataFlowEditorAction_DeleteMayBeUnreachable {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.emitStatement$GagT));
+        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.emitStatement$Ak4T));
       }
 
     };
@@ -71,6 +71,6 @@ public class DataFlowEditorAction_DeleteMayBeUnreachable {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink emitStatement$GagT = MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118eb0b6674L, 0x118eb0b872cL, "emitStatement");
+    /*package*/ static final SContainmentLink emitStatement$Ak4T = MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118eb0b6674L, 0x118eb0b872cL, "emitStatement");
   }
 }

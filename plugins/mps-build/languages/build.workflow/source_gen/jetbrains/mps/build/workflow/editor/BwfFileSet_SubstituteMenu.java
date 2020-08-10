@@ -44,7 +44,7 @@ public class BwfFileSet_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_bkb34x_a(), CONCEPTS.BwfFileSet$Db));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_bkb34x_a(), CONCEPTS.BwfFileSet$8N));
     return result;
   }
 
@@ -84,14 +84,14 @@ public class BwfFileSet_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.BwfFileSet$Db;
+          return CONCEPTS.BwfFileSet$8N;
         }
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode nodeToWrap = super.createNode(pattern);
-          SNode cp = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.BwfFileSet$Db);
-          ListSequence.fromList(SLinkOperations.getChildren(cp, LINKS.elements$lO_w)).addElement(nodeToWrap);
+          SNode cp = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.BwfFileSet$8N);
+          ListSequence.fromList(SLinkOperations.getChildren(cp, LINKS.elements$5C58)).addElement(nodeToWrap);
           return cp;
         }
 
@@ -118,16 +118,16 @@ public class BwfFileSet_SubstituteMenu extends SubstituteMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.XmlBaseElement$oX;
+      return CONCEPTS.XmlBaseElement$Ns;
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BwfFileSet$Db = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6e014d63c07ebd1bL, "jetbrains.mps.build.workflow.structure.BwfFileSet");
-    /*package*/ static final SConcept XmlBaseElement$oX = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c549486dL, "jetbrains.mps.core.xml.structure.XmlBaseElement");
+    /*package*/ static final SConcept BwfFileSet$8N = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6e014d63c07ebd1bL, "jetbrains.mps.build.workflow.structure.BwfFileSet");
+    /*package*/ static final SConcept XmlBaseElement$Ns = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c549486dL, "jetbrains.mps.core.xml.structure.XmlBaseElement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elements$lO_w = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6e014d63c07ebd1bL, 0x6e014d63c07ebd1cL, "elements");
+    /*package*/ static final SContainmentLink elements$5C58 = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6e014d63c07ebd1bL, 0x6e014d63c07ebd1cL, "elements");
   }
 }

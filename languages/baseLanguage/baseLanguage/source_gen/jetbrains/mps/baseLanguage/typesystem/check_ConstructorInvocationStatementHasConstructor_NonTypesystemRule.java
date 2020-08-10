@@ -22,16 +22,16 @@ public class check_ConstructorInvocationStatementHasConstructor_NonTypesystemRul
   public check_ConstructorInvocationStatementHasConstructor_NonTypesystemRule() {
   }
   public void applyRule(final SNode constructorInvocation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(constructorInvocation, LINKS.baseMethodDeclaration$ItxI) == null)) {
+    if ((SLinkOperations.getTarget(constructorInvocation, LINKS.baseMethodDeclaration$pyYw) == null)) {
       SNode referent = constructorInvocation.getReferenceTarget("constructorDeclaration");
-      if (SNodeOperations.isInstanceOf(referent, CONCEPTS.ConstructorDeclaration$5U)) {
+      if (SNodeOperations.isInstanceOf(referent, CONCEPTS.ConstructorDeclaration$yG)) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(constructorInvocation, "no reference to constructor", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1241543946857", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.SetConstructorDeclaration_QuickFix", "1241544148188", true);
             intentionProvider.putArgument("constructorInvocation", constructorInvocation);
-            intentionProvider.putArgument("constructorDeclaration", SNodeOperations.cast(referent, CONCEPTS.ConstructorDeclaration$5U));
+            intentionProvider.putArgument("constructorDeclaration", SNodeOperations.cast(referent, CONCEPTS.ConstructorDeclaration$yG));
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }
@@ -44,7 +44,7 @@ public class check_ConstructorInvocationStatementHasConstructor_NonTypesystemRul
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConstructorInvocationStatement$6c;
+    return CONCEPTS.ConstructorInvocationStatement$yY;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -54,11 +54,11 @@ public class check_ConstructorInvocationStatementHasConstructor_NonTypesystemRul
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConstructorDeclaration$5U = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
-    /*package*/ static final SConcept ConstructorInvocationStatement$6c = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x121119ae5ffL, "jetbrains.mps.baseLanguage.structure.ConstructorInvocationStatement");
+    /*package*/ static final SConcept ConstructorDeclaration$yG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
+    /*package*/ static final SConcept ConstructorInvocationStatement$yY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x121119ae5ffL, "jetbrains.mps.baseLanguage.structure.ConstructorInvocationStatement");
   }
 }

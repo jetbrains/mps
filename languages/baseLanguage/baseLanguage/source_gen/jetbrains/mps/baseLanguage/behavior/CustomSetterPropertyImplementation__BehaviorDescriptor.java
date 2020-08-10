@@ -31,7 +31,7 @@ public final class CustomSetterPropertyImplementation__BehaviorDescriptor extend
   }
 
   /*package*/ static boolean hasSetter_idhEwIUA2(@NotNull SNode __thisNode__) {
-    return (SLinkOperations.getTarget(__thisNode__, LINKS.setAccessor$1uFz) != null);
+    return (SLinkOperations.getTarget(__thisNode__, LINKS.setAccessor$G$8l) != null);
   }
 
   /*package*/ CustomSetterPropertyImplementation__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class CustomSetterPropertyImplementation__BehaviorDescriptor extend
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink setAccessor$1uFz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, 0x3b7a2005a14d0185L, "setAccessor");
+    /*package*/ static final SContainmentLink setAccessor$G$8l = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, 0x3b7a2005a14d0185L, "setAccessor");
   }
 }

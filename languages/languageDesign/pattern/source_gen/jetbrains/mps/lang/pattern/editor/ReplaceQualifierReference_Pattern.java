@@ -88,7 +88,7 @@ public class ReplaceQualifierReference_Pattern extends TransformationMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(TransformationMenuContext _context) {
-      return SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(QualifiedReference__BehaviorDescriptor.getClassifier_id7S22xyoLQG7.invoke(_context.getNode()))), CONCEPTS.PatternBuilderClassifierMember$75);
+      return SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(QualifiedReference__BehaviorDescriptor.getClassifier_id7S22xyoLQG7.invoke(_context.getNode()))), CONCEPTS.PatternBuilderClassifierMember$kC);
     }
     @NotNull
     @Override
@@ -139,7 +139,7 @@ public class ReplaceQualifierReference_Pattern extends TransformationMenuBase {
         @Nullable
         @Override
         public String getLabelText(String pattern) {
-          return SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v);
+          return SPropertyOperations.getString(myParameterObject, PROPS.name$MnvL);
         }
 
         @Override
@@ -171,23 +171,23 @@ public class ReplaceQualifierReference_Pattern extends TransformationMenuBase {
     }
   }
   private static SNode createQualifiedPatternReference_7swimr_a0a0a0a0a(SNode p0, SNode p1) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.QualifiedPatternReference$kN);
-    n0.setReferenceTarget(LINKS.classifier$aEW8, p0);
-    n0.setReferenceTarget(LINKS.pattern$aSk1, p1);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.QualifiedPatternReference$ym);
+    n0.setReferenceTarget(LINKS.classifier$f39F, p0);
+    n0.setReferenceTarget(LINKS.pattern$fgx$, p1);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PatternBuilderClassifierMember$75 = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x50f8d1ebd50bbeb0L, "jetbrains.mps.lang.pattern.structure.PatternBuilderClassifierMember");
-    /*package*/ static final SConcept QualifiedPatternReference$kN = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51396d8L, "jetbrains.mps.lang.pattern.structure.QualifiedPatternReference");
+    /*package*/ static final SConcept PatternBuilderClassifierMember$kC = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x50f8d1ebd50bbeb0L, "jetbrains.mps.lang.pattern.structure.PatternBuilderClassifierMember");
+    /*package*/ static final SConcept QualifiedPatternReference$ym = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51396d8L, "jetbrains.mps.lang.pattern.structure.QualifiedPatternReference");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$aEW8 = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51396d8L, 0x6e2e4373b51398c5L, "classifier");
-    /*package*/ static final SReferenceLink pattern$aSk1 = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51396d8L, 0x6e2e4373b51398d4L, "pattern");
+    /*package*/ static final SReferenceLink classifier$f39F = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51396d8L, 0x6e2e4373b51398c5L, "classifier");
+    /*package*/ static final SReferenceLink pattern$fgx$ = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51396d8L, 0x6e2e4373b51398d4L, "pattern");
   }
 }

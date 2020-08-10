@@ -43,10 +43,10 @@ public final class UnwrapBlockStatement_Intention extends AbstractIntentionDescr
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(SLinkOperations.getTarget(node, LINKS.statements$J0D0), LINKS.statement$pYcS)).isNotEmpty();
+    return Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(SLinkOperations.getTarget(node, LINKS.statements$q65M), LINKS.statement$53DE)).isNotEmpty();
   }
   private boolean isVisibleInChild(final SNode node, final SNode childNode, final EditorContext editorContext) {
-    return !(SNodeOperations.hasRole(node, LINKS.ifFalseStatement$InyY)) && Objects.equals(SNodeOperations.getNodeAncestor(childNode, CONCEPTS.StatementList$TN, true, false), SLinkOperations.getTarget(node, LINKS.statements$J0D0));
+    return !(SNodeOperations.hasRole(node, LINKS.ifFalseStatement$psZK)) && Objects.equals(SNodeOperations.getNodeAncestor(childNode, CONCEPTS.StatementList$m_, true, false), SLinkOperations.getTarget(node, LINKS.statements$q65M));
   }
   @Override
   public boolean isSurroundWith() {
@@ -63,13 +63,13 @@ public final class UnwrapBlockStatement_Intention extends AbstractIntentionDescr
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return (SNodeOperations.hasRole(node, LINKS.ifFalseStatement$InyY) ? "Unwrap the Else Body" : "Unwrap the Body of a BlockStatement");
+      return (SNodeOperations.hasRole(node, LINKS.ifFalseStatement$psZK) ? "Unwrap the Else Body" : "Unwrap the Body of a BlockStatement");
 
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if (SNodeOperations.hasRole(node, LINKS.ifFalseStatement$InyY)) {
-        UnwrapStatementsUtil.unwrapElse(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.IfStatement$pi));
+      if (SNodeOperations.hasRole(node, LINKS.ifFalseStatement$psZK)) {
+        UnwrapStatementsUtil.unwrapElse(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.IfStatement$Q4));
       } else {
         UnwrapStatementsUtil.unwrapBlockStatement(node);
       }
@@ -81,13 +81,13 @@ public final class UnwrapBlockStatement_Intention extends AbstractIntentionDescr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statements$J0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink ifFalseStatement$InyY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement");
+    /*package*/ static final SContainmentLink statements$q65M = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink ifFalseStatement$psZK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
-    /*package*/ static final SConcept IfStatement$pi = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
+    /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
+    /*package*/ static final SConcept IfStatement$Q4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
   }
 }

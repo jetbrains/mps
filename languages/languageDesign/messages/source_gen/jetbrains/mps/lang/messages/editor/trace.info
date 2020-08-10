@@ -65,8 +65,8 @@
       <node id="4356326056162107836" at="154,159,155,48" concept="7" />
       <node id="4356326056162107836" at="155,48,156,305" concept="7" />
       <node id="4356326056162107836" at="157,116,158,58" concept="2" />
-      <node id="2716118816016769335" at="167,0,168,0" concept="11" trace="TypedDef$hM" />
-      <node id="2716118816016769335" at="171,0,172,0" concept="11" trace="name$lA7v" />
+      <node id="2716118816016769335" at="167,0,168,0" concept="11" trace="TypedDef$H3" />
+      <node id="2716118816016769335" at="171,0,172,0" concept="11" trace="name$MnvL" />
       <node id="4356326056161557752" at="64,156,67,5" concept="5" />
       <node id="4356326056162107836" at="98,0,101,0" concept="1" trace="TMP_Action_bp93v8_a0a#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4356326056162107836" at="124,0,127,0" concept="1" trace="Item#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)V" />
@@ -344,13 +344,13 @@
       <node id="8804574841117389381" at="84,107,85,85" concept="7" />
       <node id="8804574841117389381" at="85,85,86,81" concept="2" />
       <node id="8804574841117389381" at="86,81,87,26" concept="8" />
-      <node id="4356326056162678278" at="91,0,92,0" concept="11" trace="defRef$6TXJ" />
-      <node id="4356326056162678278" at="92,0,93,0" concept="11" trace="declaration$VTET" />
-      <node id="4356326056162678278" at="93,0,94,0" concept="11" trace="part$2Bxx" />
-      <node id="4356326056162678278" at="97,0,98,0" concept="11" trace="message$cm50" />
-      <node id="4356326056162678278" at="101,0,102,0" concept="11" trace="CombinedMessageExpression$e_" />
-      <node id="4356326056162678278" at="102,0,103,0" concept="11" trace="LiteralMessageExpression$Ga" />
-      <node id="4356326056162678278" at="103,0,104,0" concept="11" trace="MessageExpression$FF" />
+      <node id="4356326056162678278" at="91,0,92,0" concept="11" trace="defRef$oUPH" />
+      <node id="4356326056162678278" at="92,0,93,0" concept="11" trace="declaration$xU6a" />
+      <node id="4356326056162678278" at="93,0,94,0" concept="11" trace="part$kCpv" />
+      <node id="4356326056162678278" at="97,0,98,0" concept="11" trace="message$umWY" />
+      <node id="4356326056162678278" at="101,0,102,0" concept="11" trace="CombinedMessageExpression$6z" />
+      <node id="4356326056162678278" at="102,0,103,0" concept="11" trace="LiteralMessageExpression$$8" />
+      <node id="4356326056162678278" at="103,0,104,0" concept="11" trace="MessageExpression$zD" />
       <node id="8804574841117389375" at="65,14,67,9" concept="0" />
       <node id="8804574841117389295" at="52,77,55,9" concept="5" />
       <node id="8804574841117573273" at="55,9,58,9" concept="5" />
@@ -485,9 +485,9 @@
       <node id="6878448148912247287" at="114,49,115,40" concept="2" />
       <node id="6878448148912247287" at="115,40,116,34" concept="2" />
       <node id="6878448148912247287" at="116,34,117,22" concept="8" />
-      <node id="5258059200641510894" at="121,0,122,0" concept="11" trace="message$cm50" />
-      <node id="5258059200641510894" at="125,0,126,0" concept="11" trace="LiteralMessageExpression$Ga" />
-      <node id="5258059200641510894" at="126,0,127,0" concept="11" trace="PropertyAttribute$jT" />
+      <node id="5258059200641510894" at="121,0,122,0" concept="11" trace="message$umWY" />
+      <node id="5258059200641510894" at="125,0,126,0" concept="11" trace="LiteralMessageExpression$$8" />
+      <node id="5258059200641510894" at="126,0,127,0" concept="11" trace="PropertyAttribute$Gb" />
       <node id="5258059200641510894" at="37,0,39,0" concept="3" trace="myNode" />
       <node id="5258059200641510894" at="51,0,54,0" concept="6" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="5258059200641510896" at="95,0,98,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -613,8 +613,8 @@
       <node id="686743897209816340" at="66,7,67,120" concept="8" />
       <node id="8804574841117436291" at="69,121,70,75" concept="2" />
       <node id="5258059200642075693" at="72,34,73,18" concept="8" />
-      <node id="5258059200642075692" at="78,0,79,0" concept="11" trace="LiteralMessageExpression$Ga" />
-      <node id="5258059200642075692" at="82,0,83,0" concept="11" trace="message$cm50" />
+      <node id="5258059200642075692" at="78,0,79,0" concept="11" trace="LiteralMessageExpression$$8" />
+      <node id="5258059200642075692" at="82,0,83,0" concept="11" trace="message$umWY" />
       <node id="5258059200642075693" at="30,0,33,0" concept="1" trace="LiteralMessageExpression_KeyMap_Action0#()V" />
       <node id="5258059200642075693" at="33,0,36,0" concept="6" trace="isMenuAlwaysShown#()Z" />
       <node id="5258059200642075693" at="37,62,40,7" concept="5" />
@@ -735,8 +735,8 @@
       <node id="5258059200644034669" at="127,40,128,89" concept="7" />
       <node id="5258059200644034669" at="128,89,129,47" concept="2" />
       <node id="5258059200644034669" at="129,47,130,24" concept="8" />
-      <node id="5258059200642172284" at="135,0,136,0" concept="11" trace="part$2Bxx" />
-      <node id="5258059200642172284" at="139,0,140,0" concept="11" trace="MessageExpression$FF" />
+      <node id="5258059200642172284" at="135,0,136,0" concept="11" trace="part$kCpv" />
+      <node id="5258059200642172284" at="139,0,140,0" concept="11" trace="MessageExpression$zD" />
       <node id="5258059200642172284" at="27,0,29,0" concept="3" trace="myNode" />
       <node id="5258059200642172284" at="62,0,64,0" concept="3" trace="myNode" />
       <node id="5258059200642172284" at="41,0,44,0" concept="6" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -914,8 +914,8 @@
       <node id="6878448148912511792" at="160,49,161,40" concept="2" />
       <node id="6878448148912511792" at="161,40,162,34" concept="2" />
       <node id="6878448148912511792" at="162,34,163,22" concept="8" />
-      <node id="5258059200642278589" at="167,0,168,0" concept="11" trace="defRef$6TXJ" />
-      <node id="5258059200642278589" at="171,0,172,0" concept="11" trace="MacroMessageExpression$LH" />
+      <node id="5258059200642278589" at="167,0,168,0" concept="11" trace="defRef$oUPH" />
+      <node id="5258059200642278589" at="171,0,172,0" concept="11" trace="MacroMessageExpression$DF" />
       <node id="5258059200642278589" at="31,0,33,0" concept="3" trace="myNode" />
       <node id="5258059200642278589" at="90,0,92,0" concept="3" trace="myNode" />
       <node id="5258059200642278589" at="45,0,48,0" concept="6" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -1064,10 +1064,10 @@
       <node id="6878448148912697137" at="139,72,140,84" concept="7" />
       <node id="6878448148912697137" at="140,84,141,43" concept="2" />
       <node id="6878448148912697137" at="141,43,142,26" concept="8" />
-      <node id="5258059200643078679" at="146,0,147,0" concept="11" trace="LiteralMessageExpression$Ga" />
-      <node id="5258059200643078679" at="147,0,148,0" concept="11" trace="CombinedMessageExpression$e_" />
-      <node id="5258059200643078679" at="151,0,152,0" concept="11" trace="message$cm50" />
-      <node id="5258059200643078679" at="155,0,156,0" concept="11" trace="part$2Bxx" />
+      <node id="5258059200643078679" at="146,0,147,0" concept="11" trace="LiteralMessageExpression$$8" />
+      <node id="5258059200643078679" at="147,0,148,0" concept="11" trace="CombinedMessageExpression$6z" />
+      <node id="5258059200643078679" at="151,0,152,0" concept="11" trace="message$umWY" />
+      <node id="5258059200643078679" at="155,0,156,0" concept="11" trace="part$kCpv" />
       <node id="5258059200643078680" at="30,0,33,0" concept="6" trace="execute#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="5258059200643504097" at="33,77,36,9" concept="5" />
       <node id="2716118816016416846" at="47,59,50,11" concept="5" />
@@ -1294,10 +1294,10 @@
       <node id="5419908871934265669" at="134,79,135,85" concept="7" />
       <node id="5419908871934265669" at="136,5,137,104" concept="7" />
       <node id="5419908871934265669" at="138,5,139,26" concept="8" />
-      <node id="5258059200643875754" at="143,0,144,0" concept="11" trace="LiteralMessageExpression$Ga" />
-      <node id="5258059200643875754" at="144,0,145,0" concept="11" trace="CombinedMessageExpression$e_" />
-      <node id="5258059200643875754" at="145,0,146,0" concept="11" trace="MessageExpression$FF" />
-      <node id="5258059200643875754" at="149,0,150,0" concept="11" trace="part$2Bxx" />
+      <node id="5258059200643875754" at="143,0,144,0" concept="11" trace="LiteralMessageExpression$$8" />
+      <node id="5258059200643875754" at="144,0,145,0" concept="11" trace="CombinedMessageExpression$6z" />
+      <node id="5258059200643875754" at="145,0,146,0" concept="11" trace="MessageExpression$zD" />
+      <node id="5258059200643875754" at="149,0,150,0" concept="11" trace="part$kCpv" />
       <node id="5419908871934263197" at="116,312,119,11" concept="4" />
       <node id="5419908871934263197" at="130,0,133,0" concept="6" trace="getConceptToFindMenuFor#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="5419908871934265669" at="135,85,138,5" concept="0" />
@@ -1471,11 +1471,11 @@
       <node id="2505469129653654834" at="197,63,198,69" concept="2" />
       <node id="2505469129654598623" at="201,52,202,40" concept="8" />
       <node id="2505469129654636850" at="204,55,205,43" concept="8" />
-      <node id="5419908871934418627" at="209,0,210,0" concept="11" trace="message$cm50" />
-      <node id="5419908871934418627" at="213,0,214,0" concept="11" trace="LiteralMessageExpression$Ga" />
-      <node id="5419908871934418627" at="214,0,215,0" concept="11" trace="CombinedMessageExpression$e_" />
-      <node id="5419908871934418627" at="215,0,216,0" concept="11" trace="MacroMessageExpression$LH" />
-      <node id="5419908871934418627" at="219,0,220,0" concept="11" trace="part$2Bxx" />
+      <node id="5419908871934418627" at="209,0,210,0" concept="11" trace="message$umWY" />
+      <node id="5419908871934418627" at="213,0,214,0" concept="11" trace="LiteralMessageExpression$$8" />
+      <node id="5419908871934418627" at="214,0,215,0" concept="11" trace="CombinedMessageExpression$6z" />
+      <node id="5419908871934418627" at="215,0,216,0" concept="11" trace="MacroMessageExpression$DF" />
+      <node id="5419908871934418627" at="219,0,220,0" concept="11" trace="part$kCpv" />
       <node id="8018723092206760713" at="30,0,33,0" concept="6" trace="execute#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="2505469129653563121" at="46,0,49,0" concept="6" trace="execute#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="5419908871934418628" at="62,0,65,0" concept="6" trace="execute#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
@@ -1706,7 +1706,7 @@
       <node id="6878448148911830669" at="121,81,122,58" concept="2" />
       <node id="6878448148911830669" at="123,11,124,0" concept="10" />
       <node id="6878448148911830669" at="132,160,133,54" concept="8" />
-      <node id="6878448148911830664" at="138,0,139,0" concept="11" trace="MessageExpression$FF" />
+      <node id="6878448148911830664" at="138,0,139,0" concept="11" trace="MessageExpression$zD" />
       <node id="6878448148911830687" at="63,156,66,5" concept="5" />
       <node id="6878448148911830669" at="90,0,93,0" concept="6" trace="getConceptToFindMenuFor#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="6878448148911830669" at="120,201,123,11" concept="4" />
@@ -1843,9 +1843,9 @@
       <node id="5258059200643673756" at="116,14,117,101" concept="2" />
       <node id="5258059200643547104" at="120,34,121,21" concept="8" />
       <node id="5258059200643708165" at="123,69,124,49" concept="8" />
-      <node id="6878448148911996846" at="129,0,130,0" concept="11" trace="MacroMessageExpression$LH" />
-      <node id="6878448148911996846" at="130,0,131,0" concept="11" trace="LiteralMessageExpression$Ga" />
-      <node id="6878448148911996846" at="134,0,135,0" concept="11" trace="message$cm50" />
+      <node id="6878448148911996846" at="129,0,130,0" concept="11" trace="MacroMessageExpression$DF" />
+      <node id="6878448148911996846" at="130,0,131,0" concept="11" trace="LiteralMessageExpression$$8" />
+      <node id="6878448148911996846" at="134,0,135,0" concept="11" trace="message$umWY" />
       <node id="6878448148912874382" at="62,12,64,7" concept="0" />
       <node id="5258059200643673626" at="116,12,118,7" concept="0" />
       <node id="6878448148911925563" at="33,0,36,0" concept="1" trace="MacroMessageExpression_completeTextToLiteralAndPercentToMacro_Action0#()V" />

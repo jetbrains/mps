@@ -42,26 +42,26 @@ public final class XmlContent__BehaviorDescriptor extends BaseBHDescriptor {
     return (boolean) XmlContent__BehaviorDescriptor.oneLineBlock_id1653mnvAgno.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__)));
   }
   /*package*/ static boolean isFirstPositionAllowed_id1Qs9WekVZ7m(@NotNull SNode __thisNode__) {
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(__thisNode__), CONCEPTS.XmlPart$yB)) {
-      SNode left = SNodeOperations.cast(SNodeOperations.getPrevSibling(__thisNode__), CONCEPTS.XmlPart$yB);
-      if (SNodeOperations.isInstanceOf(left, CONCEPTS.XmlText$ZE)) {
-        return (boolean) XmlPart__BehaviorDescriptor.hasNewLineAfter_id1Qs9WekVZ9E.invoke(SNodeOperations.cast(left, CONCEPTS.XmlText$ZE));
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(__thisNode__), CONCEPTS.XmlPart$X6)) {
+      SNode left = SNodeOperations.cast(SNodeOperations.getPrevSibling(__thisNode__), CONCEPTS.XmlPart$X6);
+      if (SNodeOperations.isInstanceOf(left, CONCEPTS.XmlText$q9)) {
+        return (boolean) XmlPart__BehaviorDescriptor.hasNewLineAfter_id1Qs9WekVZ9E.invoke(SNodeOperations.cast(left, CONCEPTS.XmlText$q9));
       }
-      if (SNodeOperations.isInstanceOf(left, CONCEPTS.XmlWhitespace$Jc)) {
-        return (boolean) XmlPart__BehaviorDescriptor.hasNewLineAfter_id1Qs9WekVZ9E.invoke(SNodeOperations.cast(left, CONCEPTS.XmlWhitespace$Jc));
+      if (SNodeOperations.isInstanceOf(left, CONCEPTS.XmlWhitespace$9F)) {
+        return (boolean) XmlPart__BehaviorDescriptor.hasNewLineAfter_id1Qs9WekVZ9E.invoke(SNodeOperations.cast(left, CONCEPTS.XmlWhitespace$9F));
       }
       return !(((boolean) XmlPart__BehaviorDescriptor.isTextLike_id1Qs9WekVZ9O.invoke(left) || (boolean) XmlPart__BehaviorDescriptor.isOneLineBlock_id1Qs9WekVZ7e.invoke(left)));
     }
     return true;
   }
   /*package*/ static boolean isLastPositionAllowed_id1Qs9WekVZ8v(@NotNull SNode __thisNode__) {
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(__thisNode__), CONCEPTS.XmlPart$yB)) {
-      SNode right = SNodeOperations.cast(SNodeOperations.getNextSibling(__thisNode__), CONCEPTS.XmlPart$yB);
-      if (SNodeOperations.isInstanceOf(right, CONCEPTS.XmlText$ZE)) {
-        return (boolean) XmlPart__BehaviorDescriptor.onNewLine_id1Qs9WekVZ9$.invoke(SNodeOperations.cast(right, CONCEPTS.XmlText$ZE));
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(__thisNode__), CONCEPTS.XmlPart$X6)) {
+      SNode right = SNodeOperations.cast(SNodeOperations.getNextSibling(__thisNode__), CONCEPTS.XmlPart$X6);
+      if (SNodeOperations.isInstanceOf(right, CONCEPTS.XmlText$q9)) {
+        return (boolean) XmlPart__BehaviorDescriptor.onNewLine_id1Qs9WekVZ9$.invoke(SNodeOperations.cast(right, CONCEPTS.XmlText$q9));
       }
-      if (SNodeOperations.isInstanceOf(right, CONCEPTS.XmlWhitespace$Jc)) {
-        return (boolean) XmlPart__BehaviorDescriptor.onNewLine_id1Qs9WekVZ9$.invoke(SNodeOperations.cast(right, CONCEPTS.XmlWhitespace$Jc));
+      if (SNodeOperations.isInstanceOf(right, CONCEPTS.XmlWhitespace$9F)) {
+        return (boolean) XmlPart__BehaviorDescriptor.onNewLine_id1Qs9WekVZ9$.invoke(SNodeOperations.cast(right, CONCEPTS.XmlWhitespace$9F));
       }
       return !((boolean) XmlPart__BehaviorDescriptor.isTextLike_id1Qs9WekVZ9O.invoke(right));
     }
@@ -144,8 +144,8 @@ public final class XmlContent__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept XmlPart$yB = MetaAdapterFactory.getInterfaceConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394eff13eL, "jetbrains.mps.core.xml.structure.XmlPart");
-    /*package*/ static final SConcept XmlText$ZE = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9aa513L, "jetbrains.mps.core.xml.structure.XmlText");
-    /*package*/ static final SConcept XmlWhitespace$Jc = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x6988ccb84e3cfaa8L, "jetbrains.mps.core.xml.structure.XmlWhitespace");
+    /*package*/ static final SInterfaceConcept XmlPart$X6 = MetaAdapterFactory.getInterfaceConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394eff13eL, "jetbrains.mps.core.xml.structure.XmlPart");
+    /*package*/ static final SConcept XmlText$q9 = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9aa513L, "jetbrains.mps.core.xml.structure.XmlText");
+    /*package*/ static final SConcept XmlWhitespace$9F = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x6988ccb84e3cfaa8L, "jetbrains.mps.core.xml.structure.XmlWhitespace");
   }
 }

@@ -99,14 +99,14 @@ import org.jetbrains.mps.openapi.language.SProperty;
     return editorCell;
   }
   private EditorCell createRefCell_0() {
-    final SReferenceLink referenceLink = LINKS.quickfix$xucl;
+    final SReferenceLink referenceLink = LINKS.quickfix$q6rO;
     SReferenceCellProvider provider = new SReferenceCellProvider(getNode(), referenceLink, getEditorContext()) {
       protected EditorCell createReferenceCell(final SNode targetNode) {
         EditorCell cell = getUpdateSession().updateReferencedNodeCell(new Computable<EditorCell>() {
           public EditorCell compute() {
             return new Inline_Builder0(getEditorContext(), getNode(), targetNode).createCell();
           }
-        }, targetNode, LINKS.quickfix$xucl);
+        }, targetNode, LINKS.quickfix$q6rO);
         CellUtil.setupIDeprecatableStyles(targetNode, cell);
         setSemanticNodeToCells(cell, getNode());
         installDeleteActions_nullable_reference(cell);
@@ -119,10 +119,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
     if (editorCell.getSRole() == null) {
       editorCell.setReferenceCell(true);
-      editorCell.setSRole(LINKS.quickfix$xucl);
+      editorCell.setSRole(LINKS.quickfix$q6rO);
     }
     editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new ReferenceCellContext(getNode(), getNode(), referenceLink), new SubstituteInfoPartExt[]{new ApplyQuickFix_generic_cellMenu_jhinkb_a0b0(), new SChildSubstituteInfoPartEx(editorCell)}));
-    Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.LinkAttribute$7j);
+    Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.LinkAttribute$v_);
     Iterable<SNode> currentReferenceAttributes = Sequence.fromIterable(referenceAttributes).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(it), referenceLink);
@@ -180,36 +180,36 @@ import org.jetbrains.mps.openapi.language.SProperty;
     public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
       AbstractModule module = (AbstractModule) SNodeOperations.getModel(node).getModule();
 
-      SAbstractConcept reportConcept = CONCEPTS.AbstractReportStatement$Qn;
+      SAbstractConcept reportConcept = CONCEPTS.AbstractReportStatement$8d;
       Set<SNode> reportInstances = FindUsagesManager.getInstance().findInstances(module.getScope(), Collections.singleton(reportConcept), false, new EmptyProgressMonitor());
       List<SNode> reports = SetSequence.fromSet(reportInstances).toListSequence().select(new ISelector<SNode, SNode>() {
         public SNode select(SNode it) {
-          return SNodeOperations.cast(it, CONCEPTS.AbstractReportStatement$Qn);
+          return SNodeOperations.cast(it, CONCEPTS.AbstractReportStatement$8d);
         }
       }).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.helginsIntention$zrno)).isNotEmpty();
+          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.helginsIntention$WhDe)).isNotEmpty();
         }
       }).toListSequence();
 
-      SAbstractConcept equationConcept = CONCEPTS.AbstractEquationStatement$sp;
+      SAbstractConcept equationConcept = CONCEPTS.AbstractEquationStatement$If;
       Set<SNode> equationInstances = FindUsagesManager.getInstance().findInstances(module.getScope(), Collections.singleton(equationConcept), false, new EmptyProgressMonitor());
       List<SNode> equations = SetSequence.fromSet(equationInstances).toListSequence().select(new ISelector<SNode, SNode>() {
         public SNode select(SNode it) {
-          return SNodeOperations.cast(it, CONCEPTS.AbstractEquationStatement$sp);
+          return SNodeOperations.cast(it, CONCEPTS.AbstractEquationStatement$If);
         }
       }).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.helginsIntention$TFCJ)).isNotEmpty();
+          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.helginsIntention$ixU_)).isNotEmpty();
         }
       }).toListSequence();
 
       List<SNode> intentions = ListSequence.fromList(new ArrayList<SNode>());
       for (SNode report : ListSequence.fromList(reports)) {
-        intentions.addAll(ListSequence.fromList(SLinkOperations.getChildren(report, LINKS.helginsIntention$zrno)).toListSequence());
+        intentions.addAll(ListSequence.fromList(SLinkOperations.getChildren(report, LINKS.helginsIntention$WhDe)).toListSequence());
       }
       for (SNode report : ListSequence.fromList(equations)) {
-        intentions.addAll(ListSequence.fromList(SLinkOperations.getChildren(report, LINKS.helginsIntention$TFCJ)).toListSequence());
+        intentions.addAll(ListSequence.fromList(SLinkOperations.getChildren(report, LINKS.helginsIntention$ixU_)).toListSequence());
       }
       return intentions;
     }
@@ -217,7 +217,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
       this.handleAction_impl((SNode) parameterObject, node, model, operationContext, editorContext);
     }
     public void handleAction_impl(SNode parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SLinkOperations.setTarget(node, LINKS.quickfix$xucl, parameterObject);
+      SLinkOperations.setTarget(node, LINKS.quickfix$q6rO, parameterObject);
     }
     public boolean isReferentPresentation() {
       return false;
@@ -226,7 +226,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
       return this.getMatchingText_internal((SNode) parameterObject);
     }
     public String getMatchingText_internal(SNode parameterObject) {
-      return SPropertyOperations.getString(SLinkOperations.getTarget(parameterObject, LINKS.quickFix$fvFg), PROPS.name$lA7v) + " from " + MessageStatement__BehaviorDescriptor.getName_id1oFBbRehoLP.invoke(SNodeOperations.cast(SNodeOperations.getParent(parameterObject), CONCEPTS.MessageStatement$Ql));
+      return SPropertyOperations.getString(SLinkOperations.getTarget(parameterObject, LINKS.quickFix$ClX6), PROPS.name$MnvL) + " from " + MessageStatement__BehaviorDescriptor.getName_id1oFBbRehoLP.invoke(SNodeOperations.cast(SNodeOperations.getParent(parameterObject), CONCEPTS.MessageStatement$8b));
     }
 
     @Override
@@ -242,20 +242,20 @@ import org.jetbrains.mps.openapi.language.SProperty;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink quickfix$xucl = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4915dd563bf07730L, 0x6a6d08c403e6ad97L, "quickfix");
-    /*package*/ static final SContainmentLink helginsIntention$zrno = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5c15L, "helginsIntention");
-    /*package*/ static final SContainmentLink helginsIntention$TFCJ = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x11b2b6fabb9L, "helginsIntention");
-    /*package*/ static final SReferenceLink quickFix$fvFg = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL, 0x11b3667ec7bL, "quickFix");
+    /*package*/ static final SReferenceLink quickfix$q6rO = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4915dd563bf07730L, 0x6a6d08c403e6ad97L, "quickfix");
+    /*package*/ static final SContainmentLink helginsIntention$WhDe = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5c15L, "helginsIntention");
+    /*package*/ static final SContainmentLink helginsIntention$ixU_ = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x11b2b6fabb9L, "helginsIntention");
+    /*package*/ static final SReferenceLink quickFix$ClX6 = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL, 0x11b3667ec7bL, "quickFix");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LinkAttribute$7j = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute");
-    /*package*/ static final SConcept AbstractReportStatement$Qn = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, "jetbrains.mps.lang.typesystem.structure.AbstractReportStatement");
-    /*package*/ static final SConcept AbstractEquationStatement$sp = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, "jetbrains.mps.lang.typesystem.structure.AbstractEquationStatement");
-    /*package*/ static final SInterfaceConcept MessageStatement$Ql = MetaAdapterFactory.getInterfaceConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, "jetbrains.mps.lang.typesystem.structure.MessageStatement");
+    /*package*/ static final SConcept LinkAttribute$v_ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute");
+    /*package*/ static final SConcept AbstractReportStatement$8d = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, "jetbrains.mps.lang.typesystem.structure.AbstractReportStatement");
+    /*package*/ static final SConcept AbstractEquationStatement$If = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, "jetbrains.mps.lang.typesystem.structure.AbstractEquationStatement");
+    /*package*/ static final SInterfaceConcept MessageStatement$8b = MetaAdapterFactory.getInterfaceConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11db4aad802L, "jetbrains.mps.lang.typesystem.structure.MessageStatement");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

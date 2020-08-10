@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ContextVariable_Constraints extends BaseConstraintsDescriptor {
   public ContextVariable_Constraints() {
-    super(CONCEPTS.ContextVariable$R);
+    super(CONCEPTS.ContextVariable$cu);
   }
 
   @Override
@@ -51,6 +51,6 @@ public class ContextVariable_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590298(jetbrains.mps.lang.editor.constraints)", "1227128029536561204");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ContextVariable$R = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x794cf8ea9e119f99L, "jetbrains.mps.lang.editor.structure.ContextVariable");
+    /*package*/ static final SConcept ContextVariable$cu = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x794cf8ea9e119f99L, "jetbrains.mps.lang.editor.structure.ContextVariable");
   }
 }

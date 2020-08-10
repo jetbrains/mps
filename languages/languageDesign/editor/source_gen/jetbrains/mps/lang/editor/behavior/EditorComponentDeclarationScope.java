@@ -24,7 +24,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 /*package*/ class EditorComponentDeclarationScope extends FilteringScope {
   private SNode myConceptDeclaration;
   private EditorComponentDeclarationScope(final SModel model, SNode concept) {
-    super(new ModelsScope(getModels(model), false, CONCEPTS.EditorComponentDeclaration$Lb));
+    super(new ModelsScope(getModels(model), false, CONCEPTS.EditorComponentDeclaration$WM));
     myConceptDeclaration = concept;
   }
   /*package*/ EditorComponentDeclarationScope(SNode editorComponent) {
@@ -45,15 +45,15 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   }
   @Override
   public boolean isExcluded(SNode node) {
-    SNode editorComponent = SNodeOperations.as(node, CONCEPTS.EditorComponentDeclaration$Lb);
-    return editorComponent == null || SLinkOperations.getTarget(editorComponent, LINKS.overridenEditorComponent$H8ro) != null || !((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(myConceptDeclaration, AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(editorComponent)));
+    SNode editorComponent = SNodeOperations.as(node, CONCEPTS.EditorComponentDeclaration$WM);
+    return editorComponent == null || SLinkOperations.getTarget(editorComponent, LINKS.overridenEditorComponent$LqAZ) != null || !((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(myConceptDeclaration, AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(editorComponent)));
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EditorComponentDeclaration$Lb = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, "jetbrains.mps.lang.editor.structure.EditorComponentDeclaration");
+    /*package*/ static final SConcept EditorComponentDeclaration$WM = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, "jetbrains.mps.lang.editor.structure.EditorComponentDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink overridenEditorComponent$H8ro = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, 0x619d955714550434L, "overridenEditorComponent");
+    /*package*/ static final SContainmentLink overridenEditorComponent$LqAZ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, 0x619d955714550434L, "overridenEditorComponent");
   }
 }

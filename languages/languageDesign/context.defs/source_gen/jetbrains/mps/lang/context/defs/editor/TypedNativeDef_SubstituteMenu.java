@@ -47,8 +47,8 @@ public class TypedNativeDef_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_m53iyy_a(), CONCEPTS.TypedNativeDef$BM));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_m53iyy_b(), CONCEPTS.TypedNativeDef$BM));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_m53iyy_a(), CONCEPTS.TypedNativeDef$33));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_m53iyy_b(), CONCEPTS.TypedNativeDef$33));
     return result;
   }
 
@@ -93,7 +93,7 @@ public class TypedNativeDef_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.TypedNativeDef$BM, context);
+        super(CONCEPTS.TypedNativeDef$33, context);
         _context = context;
       }
 
@@ -146,7 +146,7 @@ public class TypedNativeDef_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.TypedNativeDef$BM;
+          return CONCEPTS.TypedNativeDef$33;
         }
         @Nullable
         @Override
@@ -179,31 +179,31 @@ public class TypedNativeDef_SubstituteMenu extends SubstituteMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.Type$IG;
+      return CONCEPTS.Type$bu;
     }
   }
   private static SNode createTypedNativeDef_m53iyy_a0a0a(String p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TypedNativeDef$BM);
-    n0.setProperty(PROPS.name$lA7v, p0);
-    n0.forChild(LINKS.type$DjT0).initNull();
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TypedNativeDef$33);
+    n0.setProperty(PROPS.name$MnvL, p0);
+    n0.forChild(LINKS.type$fkkh).initNull();
     return n0.getResult();
   }
   private static SNode createTypedNativeDef_m53iyy_a0a0b(SNode p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TypedNativeDef$BM);
-    n0.forChild(LINKS.type$DjT0).initNode(p0, CONCEPTS.Type$IG, true);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TypedNativeDef$33);
+    n0.forChild(LINKS.type$fkkh).initNode(p0, CONCEPTS.Type$bu, true);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TypedNativeDef$BM = MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x4bf59690bc00f6b1L, "jetbrains.mps.lang.context.defs.structure.TypedNativeDef");
-    /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept TypedNativeDef$33 = MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x4bf59690bc00f6b1L, "jetbrains.mps.lang.context.defs.structure.TypedNativeDef");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$DjT0 = MetaAdapterFactory.getContainmentLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x4bf59690bc00f6b1L, 0x4bf59690bc00f6b2L, "type");
+    /*package*/ static final SContainmentLink type$fkkh = MetaAdapterFactory.getContainmentLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x4bf59690bc00f6b1L, 0x4bf59690bc00f6b2L, "type");
   }
 }

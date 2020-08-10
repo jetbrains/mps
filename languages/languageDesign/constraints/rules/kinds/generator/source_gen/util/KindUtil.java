@@ -17,7 +17,7 @@ public final class KindUtil {
 
   public static SNodeReference matchContextForRuleKind(SNode kind, TemplateQueryContext genContext) {
     // original copied for the case when we are in the same model where the kind is located 
-    kind = SNodeOperations.cast(genContext.getOriginalCopiedInputNode(kind), CONCEPTS.RuleKind$RI);
+    kind = SNodeOperations.cast(genContext.getOriginalCopiedInputNode(kind), CONCEPTS.RuleKind$7C);
     SNodeReference pointer = SNodeOperations.getPointer(kind);
     if (Objects.equals(pointer, new SNodePointer("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)", "8018723092206382583"))) {
       return new SNodePointer("8e98f4e2-decf-4e97-bf80-9109e8b759ee/java:jetbrains.mps.core.aspects.constraints.rules.kinds(jetbrains.mps.lang.constraints.rules.runtime/)", "~ContainmentContext");
@@ -34,7 +34,7 @@ public final class KindUtil {
 
   public static String matchKindForRuleKind(SNode kind, TemplateQueryContext genContext) {
     // original copied for the case when we are in the same model where the kind is located 
-    kind = SNodeOperations.cast(genContext.getOriginalCopiedInputNode(kind), CONCEPTS.RuleKind$RI);
+    kind = SNodeOperations.cast(genContext.getOriginalCopiedInputNode(kind), CONCEPTS.RuleKind$7C);
     SNodeReference pointer = SNodeOperations.getPointer(kind);
     if (Objects.equals(pointer, new SNodePointer("r:52ea8481-08b2-4cbd-ad9d-1b42825f7d09(jetbrains.mps.lang.constraints.rules.kinds.constraints)", "8018723092206382583"))) {
       return "CAN_BE_CHILD";
@@ -50,6 +50,6 @@ public final class KindUtil {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RuleKind$RI = MetaAdapterFactory.getConcept(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x6530303593554248L, "jetbrains.mps.lang.constraints.rules.kinds.structure.RuleKind");
+    /*package*/ static final SConcept RuleKind$7C = MetaAdapterFactory.getConcept(0x5dae8159ab9946bbL, 0xa40d0cee30ee7018L, 0x6530303593554248L, "jetbrains.mps.lang.constraints.rules.kinds.structure.RuleKind");
   }
 }

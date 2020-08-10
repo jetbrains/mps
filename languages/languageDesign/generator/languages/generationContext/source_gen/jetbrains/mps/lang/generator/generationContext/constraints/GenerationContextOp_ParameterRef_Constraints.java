@@ -29,12 +29,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class GenerationContextOp_ParameterRef_Constraints extends BaseConstraintsDescriptor {
   public GenerationContextOp_ParameterRef_Constraints() {
-    super(CONCEPTS.GenerationContextOp_ParameterRef$_i);
+    super(CONCEPTS.GenerationContextOp_ParameterRef$YS);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.parameter$jCnp, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.parameter$zzKZ, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -50,9 +50,9 @@ public class GenerationContextOp_ParameterRef_Constraints extends BaseConstraint
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> result = new ArrayList<SNode>();
-            SNode templDeclaration = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.IParameterizedTemplate$qA, false, false);
-            if ((templDeclaration != null) && ListSequence.fromList(SLinkOperations.getChildren(templDeclaration, LINKS.parameter$GT0v)).isNotEmpty()) {
-              ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(templDeclaration, LINKS.parameter$GT0v)));
+            SNode templDeclaration = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.IParameterizedTemplate$6i, false, false);
+            if ((templDeclaration != null) && ListSequence.fromList(SLinkOperations.getChildren(templDeclaration, LINKS.parameter$5PGb)).isNotEmpty()) {
+              ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(templDeclaration, LINKS.parameter$5PGb)));
             }
             return ListScope.forResolvableElements(result);
           }
@@ -66,12 +66,12 @@ public class GenerationContextOp_ParameterRef_Constraints extends BaseConstraint
   private static final SNodePointer breakingNode_6l8zlg_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c895902ee(jetbrains.mps.lang.generator.generationContext.constraints)", "6836281137582786936");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GenerationContextOp_ParameterRef$_i = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x4806ea5d84d8a2caL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_ParameterRef");
-    /*package*/ static final SInterfaceConcept IParameterizedTemplate$qA = MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, "jetbrains.mps.lang.generator.structure.IParameterizedTemplate");
+    /*package*/ static final SConcept GenerationContextOp_ParameterRef$YS = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x4806ea5d84d8a2caL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_ParameterRef");
+    /*package*/ static final SInterfaceConcept IParameterizedTemplate$6i = MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, "jetbrains.mps.lang.generator.structure.IParameterizedTemplate");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink parameter$jCnp = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x4806ea5d84d8a2caL, 0x4806ea5d84d8d50aL, "parameter");
-    /*package*/ static final SContainmentLink parameter$GT0v = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, 0xda3dc6e5137ea56L, "parameter");
+    /*package*/ static final SReferenceLink parameter$zzKZ = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x4806ea5d84d8a2caL, 0x4806ea5d84d8d50aL, "parameter");
+    /*package*/ static final SContainmentLink parameter$5PGb = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, 0xda3dc6e5137ea56L, "parameter");
   }
 }

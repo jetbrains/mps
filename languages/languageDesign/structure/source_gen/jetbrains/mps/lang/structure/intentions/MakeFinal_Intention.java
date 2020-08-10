@@ -45,13 +45,13 @@ public final class MakeFinal_Intention extends AbstractIntentionDescriptor imple
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return (SPropertyOperations.getBoolean(node, PROPS.final$Q4Jb) ? "Make Not Final" : "Make Final");
+      return (SPropertyOperations.getBoolean(node, PROPS.final$ic$Y) ? "Make Not Final" : "Make Final");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.set(node, PROPS.final$Q4Jb, !(SPropertyOperations.getBoolean(node, PROPS.final$Q4Jb)));
-      if (SPropertyOperations.getBoolean(node, PROPS.final$Q4Jb)) {
-        SPropertyOperations.set(node, PROPS.abstract$Q3$6, false);
+      SPropertyOperations.set(node, PROPS.final$ic$Y, !(SPropertyOperations.getBoolean(node, PROPS.final$ic$Y)));
+      if (SPropertyOperations.getBoolean(node, PROPS.final$ic$Y)) {
+        SPropertyOperations.set(node, PROPS.abstract$ibpT, false);
       }
     }
     @Override
@@ -61,7 +61,7 @@ public final class MakeFinal_Intention extends AbstractIntentionDescriptor imple
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty final$Q4Jb = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec7L, "final");
-    /*package*/ static final SProperty abstract$Q3$6 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
+    /*package*/ static final SProperty final$ic$Y = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec7L, "final");
+    /*package*/ static final SProperty abstract$ibpT = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
   }
 }

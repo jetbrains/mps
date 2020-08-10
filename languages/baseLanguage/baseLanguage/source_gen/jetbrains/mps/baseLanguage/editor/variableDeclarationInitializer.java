@@ -74,7 +74,7 @@ public class variableDeclarationInitializer extends TransformationMenuBase {
   public class TMP_Group_9r06s2_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SLinkOperations.getTarget(_context.getNode(), LINKS.initializer$no3R) == null && (boolean) VariableDeclaration__BehaviorDescriptor.isInitializable_idhEwJfMK.invoke(_context.getNode());
+      return SLinkOperations.getTarget(_context.getNode(), LINKS.initializer$2twD) == null && (boolean) VariableDeclaration__BehaviorDescriptor.isInitializable_idhEwJfMK.invoke(_context.getNode());
     }
 
     @NotNull
@@ -130,8 +130,8 @@ public class variableDeclarationInitializer extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.Expression$TP, null);
-          SLinkOperations.setTarget(_context.getNode(), LINKS.initializer$no3R, result);
+          SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.Expression$mB, null);
+          SLinkOperations.setTarget(_context.getNode(), LINKS.initializer$2twD, result);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -161,10 +161,10 @@ public class variableDeclarationInitializer extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink initializer$2twD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 }

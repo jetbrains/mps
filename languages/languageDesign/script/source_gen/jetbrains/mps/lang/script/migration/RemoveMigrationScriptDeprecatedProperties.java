@@ -39,10 +39,10 @@ public class RemoveMigrationScriptDeprecatedProperties extends MigrationScriptBa
           return scope_z5cx65_a0e_0;
         }
       };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MigrationScript$c5, false)).visitAll(new IVisitor<SNode>() {
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.MigrationScript$KR, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          SPropertyOperations.remove(it, PROPS.migrationFromBuild$r$lF);
-          SPropertyOperations.remove(it, PROPS.category$2hSM);
+          SPropertyOperations.remove(it, PROPS.migrationFromBuild$nIUt);
+          SPropertyOperations.remove(it, PROPS.category$Yst$);
         }
       });
     }
@@ -52,11 +52,11 @@ public class RemoveMigrationScriptDeprecatedProperties extends MigrationScriptBa
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MigrationScript$c5 = MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, "jetbrains.mps.lang.script.structure.MigrationScript");
+    /*package*/ static final SConcept MigrationScript$KR = MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, "jetbrains.mps.lang.script.structure.MigrationScript");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty migrationFromBuild$r$lF = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x118d28c5944L, "migrationFromBuild");
-    /*package*/ static final SProperty category$2hSM = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x118d28cf5b3L, "category");
+    /*package*/ static final SProperty migrationFromBuild$nIUt = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x118d28c5944L, "migrationFromBuild");
+    /*package*/ static final SProperty category$Yst$ = MetaAdapterFactory.getProperty(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x11225e9072dL, 0x118d28cf5b3L, "category");
   }
 }

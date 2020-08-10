@@ -26,12 +26,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class DefaultGenerationParameterId_Constraints extends BaseConstraintsDescriptor {
   public DefaultGenerationParameterId_Constraints() {
-    super(CONCEPTS.DefaultGenerationParameterId$Lf);
+    super(CONCEPTS.DefaultGenerationParameterId$tJ);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.parameter$q$h4, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.parameter$WXX$, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -47,7 +47,7 @@ public class DefaultGenerationParameterId_Constraints extends BaseConstraintsDes
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             if ((_context.getReferenceNode() != null)) {
-              return ListScope.forResolvableElements(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.container$q$23), LINKS.parameters$$Y30));
+              return ListScope.forResolvableElements(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.container$WXIz), LINKS.parameters$7nJw));
             }
             return ListScope.forResolvableElements(Sequence.fromIterable(Collections.<SNode>emptyList()));
           }
@@ -61,12 +61,12 @@ public class DefaultGenerationParameterId_Constraints extends BaseConstraintsDes
   private static final SNodePointer breakingNode_e4b5n5_a0a0a0a0a1a0a0a0c = new SNodePointer("r:6ac9dcee-e5c4-42f1-9aa2-41caa61ece8e(jetbrains.mps.lang.generator.generationParameters.constraints)", "6836281137582787921");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DefaultGenerationParameterId$Lf = MetaAdapterFactory.getConcept(0x289fcc83654341e8L, 0xa5ca768235715ce4L, 0x2a86294b8491c07cL, "jetbrains.mps.lang.generator.generationParameters.structure.DefaultGenerationParameterId");
+    /*package*/ static final SConcept DefaultGenerationParameterId$tJ = MetaAdapterFactory.getConcept(0x289fcc83654341e8L, 0xa5ca768235715ce4L, 0x2a86294b8491c07cL, "jetbrains.mps.lang.generator.generationParameters.structure.DefaultGenerationParameterId");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink parameter$q$h4 = MetaAdapterFactory.getReferenceLink(0x289fcc83654341e8L, 0xa5ca768235715ce4L, 0x2a86294b8491c07cL, 0x2a86294b8491c0c3L, "parameter");
-    /*package*/ static final SReferenceLink container$q$23 = MetaAdapterFactory.getReferenceLink(0x289fcc83654341e8L, 0xa5ca768235715ce4L, 0x2a86294b8491c07cL, 0x2a86294b8491c0c2L, "container");
-    /*package*/ static final SContainmentLink parameters$$Y30 = MetaAdapterFactory.getContainmentLink(0x289fcc83654341e8L, 0xa5ca768235715ce4L, 0x75bebc44281efab8L, 0x75bebc44281efab9L, "parameters");
+    /*package*/ static final SReferenceLink parameter$WXX$ = MetaAdapterFactory.getReferenceLink(0x289fcc83654341e8L, 0xa5ca768235715ce4L, 0x2a86294b8491c07cL, 0x2a86294b8491c0c3L, "parameter");
+    /*package*/ static final SReferenceLink container$WXIz = MetaAdapterFactory.getReferenceLink(0x289fcc83654341e8L, 0xa5ca768235715ce4L, 0x2a86294b8491c07cL, 0x2a86294b8491c0c2L, "container");
+    /*package*/ static final SContainmentLink parameters$7nJw = MetaAdapterFactory.getContainmentLink(0x289fcc83654341e8L, 0xa5ca768235715ce4L, 0x75bebc44281efab8L, 0x75bebc44281efab9L, "parameters");
   }
 }

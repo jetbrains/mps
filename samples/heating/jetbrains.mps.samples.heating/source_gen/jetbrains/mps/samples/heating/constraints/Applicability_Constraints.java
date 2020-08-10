@@ -8,10 +8,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Applicability_Constraints extends BaseConstraintsDescriptor {
   public Applicability_Constraints() {
-    super(CONCEPTS.Applicability$_M);
+    super(CONCEPTS.Applicability$Qd);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Applicability$_M = MetaAdapterFactory.getConcept(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x40bcae6c0e68643cL, "jetbrains.mps.samples.heating.structure.Applicability");
+    /*package*/ static final SConcept Applicability$Qd = MetaAdapterFactory.getConcept(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x40bcae6c0e68643cL, "jetbrains.mps.samples.heating.structure.Applicability");
   }
 }

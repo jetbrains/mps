@@ -19,16 +19,16 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public class ExternalViewClassifierScope extends FilteringScope {
   private SModel myModel;
   public ExternalViewClassifierScope(SModel model) {
-    super(new ModelPlusImportedScope(model, false, CONCEPTS.ClassConcept$IY));
+    super(new ModelPlusImportedScope(model, false, CONCEPTS.ClassConcept$bK));
     myModel = model;
   }
   @Override
   public boolean isExcluded(SNode node) {
-    SNode classConcept = SNodeOperations.cast(node, CONCEPTS.ClassConcept$IY);
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classConcept, LINKS.visibility$jt1o), CONCEPTS.PrivateVisibility$Se)) {
+    SNode classConcept = SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK);
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classConcept, LINKS.visibility$Yyua), CONCEPTS.PrivateVisibility$l0)) {
       return true;
     }
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classConcept, LINKS.visibility$jt1o), CONCEPTS.PublicVisibility$qe)) && SNodeOperations.getModel(classConcept) != myModel) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(classConcept, LINKS.visibility$Yyua), CONCEPTS.PublicVisibility$R0)) && SNodeOperations.getModel(classConcept) != myModel) {
       return true;
     }
     if ((boolean) Classifier__BehaviorDescriptor.isInner_idsWroEc0xXl.invoke(classConcept) && !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(classConcept))) {
@@ -38,12 +38,12 @@ public class ExternalViewClassifierScope extends FilteringScope {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept PrivateVisibility$Se = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
-    /*package*/ static final SConcept PublicVisibility$qe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept PrivateVisibility$l0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
+    /*package*/ static final SConcept PublicVisibility$R0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 }

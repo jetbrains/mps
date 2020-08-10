@@ -18,7 +18,7 @@ public class ApplicableRefactoring_Target implements IRefactoringTarget {
     return false;
   }
   public boolean isApplicableToEntityType(final Object entity) {
-    return SNodeOperations.isInstanceOf(((SNode) entity), CONCEPTS.TransformationMenuTestConcept$Xv);
+    return SNodeOperations.isInstanceOf(((SNode) entity), CONCEPTS.TransformationMenuTestConcept$JM);
   }
   public boolean isApplicable(final Object entity) {
     if (!(this.isApplicableToEntityType(entity))) {
@@ -28,6 +28,6 @@ public class ApplicableRefactoring_Target implements IRefactoringTarget {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TransformationMenuTestConcept$Xv = MetaAdapterFactory.getConcept(0x4eb772b04df3414aL, 0xb89463abeb912f56L, 0x208970783ba43296L, "jetbrains.mps.lang.editor.menus.testLanguage.structure.TransformationMenuTestConcept");
+    /*package*/ static final SConcept TransformationMenuTestConcept$JM = MetaAdapterFactory.getConcept(0x4eb772b04df3414aL, 0xb89463abeb912f56L, 0x208970783ba43296L, "jetbrains.mps.lang.editor.menus.testLanguage.structure.TransformationMenuTestConcept");
   }
 }

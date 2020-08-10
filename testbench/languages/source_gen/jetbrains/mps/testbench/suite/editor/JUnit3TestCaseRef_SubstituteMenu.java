@@ -40,7 +40,7 @@ public class JUnit3TestCaseRef_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_gl3mcm_a(), CONCEPTS.JUnit3TestCaseRef$PG));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_gl3mcm_a(), CONCEPTS.JUnit3TestCaseRef$yY));
     return result;
   }
 
@@ -77,7 +77,7 @@ public class JUnit3TestCaseRef_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-      return (Iterable<SNode>) JUnit3TestCaseRef__BehaviorDescriptor.getTestClassesForModule_id1k5vvhzzWoK.invoke(SNodeOperations.asSConcept(CONCEPTS.JUnit3TestCaseRef$PG), SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ModuleSuite$D_, true, false));
+      return (Iterable<SNode>) JUnit3TestCaseRef__BehaviorDescriptor.getTestClassesForModule_id1k5vvhzzWoK.invoke(SNodeOperations.asSConcept(CONCEPTS.JUnit3TestCaseRef$yY), SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.ModuleSuite$mR, true, false));
     }
     private class SMP_Action_gl3mcm_a0 extends SingleItemSubstituteMenuPart {
       private final SNode myParameterObject;
@@ -112,7 +112,7 @@ public class JUnit3TestCaseRef_SubstituteMenu extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.JUnit3TestCaseRef$PG, context);
+          super(CONCEPTS.JUnit3TestCaseRef$yY, context);
           _context = context;
         }
 
@@ -124,7 +124,7 @@ public class JUnit3TestCaseRef_SubstituteMenu extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode tref = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb9L, "jetbrains.mps.testbench.suite.structure.JUnit3TestCaseRef"));
-          SLinkOperations.setTarget(tref, LINKS.klass$dECA, myParameterObject);
+          SLinkOperations.setTarget(tref, LINKS.klass$vilS, myParameterObject);
           ((AbstractModule) _context.getModel().getModule()).addDependency(SNodeOperations.getModel(myParameterObject).getModule().getModuleReference(), false);
           ((SModelInternal) _context.getModel()).addModelImport(SModelOperations.getPointer(SNodeOperations.getModel(myParameterObject)));
           return tref;
@@ -136,7 +136,7 @@ public class JUnit3TestCaseRef_SubstituteMenu extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, CONCEPTS.JUnit3TestCaseRef$PG, getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.JUnit3TestCaseRef$yY, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -165,11 +165,11 @@ public class JUnit3TestCaseRef_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept JUnit3TestCaseRef$PG = MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb9L, "jetbrains.mps.testbench.suite.structure.JUnit3TestCaseRef");
-    /*package*/ static final SConcept ModuleSuite$D_ = MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, "jetbrains.mps.testbench.suite.structure.ModuleSuite");
+    /*package*/ static final SConcept JUnit3TestCaseRef$yY = MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb9L, "jetbrains.mps.testbench.suite.structure.JUnit3TestCaseRef");
+    /*package*/ static final SConcept ModuleSuite$mR = MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, "jetbrains.mps.testbench.suite.structure.ModuleSuite");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink klass$dECA = MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb9L, 0x11c3fc56a6d10bbfL, "klass");
+    /*package*/ static final SReferenceLink klass$vilS = MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb9L, 0x11c3fc56a6d10bbfL, "klass");
   }
 }

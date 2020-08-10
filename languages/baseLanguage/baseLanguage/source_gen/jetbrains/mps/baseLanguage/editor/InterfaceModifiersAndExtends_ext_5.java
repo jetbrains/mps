@@ -127,7 +127,7 @@ public class InterfaceModifiersAndExtends_ext_5 extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.set(_context.getNode(), PROPS.nonStatic$vRvm, false);
+          SPropertyOperations.set(_context.getNode(), PROPS.nonStatic$aWW8, false);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), "interfaceKeyword", 0);
         }
 
@@ -153,6 +153,6 @@ public class InterfaceModifiersAndExtends_ext_5 extends TransformationMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty nonStatic$vRvm = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x73c6d8a8c021f99L, "nonStatic");
+    /*package*/ static final SProperty nonStatic$aWW8 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x73c6d8a8c021f99L, "nonStatic");
   }
 }

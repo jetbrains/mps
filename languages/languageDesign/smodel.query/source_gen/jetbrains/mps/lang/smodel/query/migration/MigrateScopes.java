@@ -58,59 +58,59 @@ public class MigrateScopes extends MigrationScriptBase {
     });
     List<SNode> qes = Sequence.fromIterable(editableModels).translate(new ITranslator2<SModel, SNode>() {
       public Iterable<SNode> translate(SModel it) {
-        return SModelOperations.nodes(it, CONCEPTS.QueryExpression$ML);
+        return SModelOperations.nodes(it, CONCEPTS.QueryExpression$lN);
       }
     }).toListSequence();
     for (SNode qe : ListSequence.fromList(qes)) {
-      if (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$1xt0), LINKS.parameter$U4Jp), CONCEPTS.QueryParameterScope_old$sE)).isEmpty() && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$1xt0), LINKS.parameter$U4Jp), CONCEPTS.QueryParameterIncludeReadOnly_old$Lp)).isEmpty()) {
+      if (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$jM02), LINKS.parameter$clir), CONCEPTS.QueryParameterScope_old$ZG)).isEmpty() && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$jM02), LINKS.parameter$clir), CONCEPTS.QueryParameterIncludeReadOnly_old$kr)).isEmpty()) {
         continue;
       }
 
-      if (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$1xt0), LINKS.parameter$U4Jp), CONCEPTS.QueryParameterScope_old$sE)).count() > 1) {
-        Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$1xt0), LINKS.parameter$U4Jp), CONCEPTS.QueryParameterScope_old$sE)).visitAll(new IVisitor<SNode>() {
+      if (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$jM02), LINKS.parameter$clir), CONCEPTS.QueryParameterScope_old$ZG)).count() > 1) {
+        Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$jM02), LINKS.parameter$clir), CONCEPTS.QueryParameterScope_old$ZG)).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
             addReviewAnnotation(it, "not valid code");
           }
         });
         continue;
       }
-      if (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$1xt0), LINKS.parameter$U4Jp), CONCEPTS.QueryParameterIncludeReadOnly_old$Lp)).count() > 1) {
-        Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$1xt0), LINKS.parameter$U4Jp), CONCEPTS.QueryParameterIncludeReadOnly_old$Lp)).visitAll(new IVisitor<SNode>() {
+      if (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$jM02), LINKS.parameter$clir), CONCEPTS.QueryParameterIncludeReadOnly_old$kr)).count() > 1) {
+        Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$jM02), LINKS.parameter$clir), CONCEPTS.QueryParameterIncludeReadOnly_old$kr)).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
             addReviewAnnotation(it, "duplicated parameters");
           }
         });
         continue;
       }
-      if (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$1xt0), LINKS.parameter$U4Jp), CONCEPTS.QueryParameterScope$rU)).isNotEmpty()) {
-        Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$1xt0), LINKS.parameter$U4Jp), CONCEPTS.QueryParameterScope_old$sE)).concat(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$1xt0), LINKS.parameter$U4Jp), CONCEPTS.QueryParameterIncludeReadOnly_old$Lp))).visitAll(new IVisitor<SNode>() {
+      if (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$jM02), LINKS.parameter$clir), CONCEPTS.QueryParameterScope$YW)).isNotEmpty()) {
+        Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$jM02), LINKS.parameter$clir), CONCEPTS.QueryParameterScope_old$ZG)).concat(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$jM02), LINKS.parameter$clir), CONCEPTS.QueryParameterIncludeReadOnly_old$kr))).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
             addReviewAnnotation(it, "duplicated parameters");
           }
         });
         continue;
       }
-      SNode oldScope = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$1xt0), LINKS.parameter$U4Jp), CONCEPTS.QueryParameterScope_old$sE)).first();
-      SNode includeReadOnly = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$1xt0), LINKS.parameter$U4Jp), CONCEPTS.QueryParameterIncludeReadOnly_old$Lp)).first();
+      SNode oldScope = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$jM02), LINKS.parameter$clir), CONCEPTS.QueryParameterScope_old$ZG)).first();
+      SNode includeReadOnly = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$jM02), LINKS.parameter$clir), CONCEPTS.QueryParameterIncludeReadOnly_old$kr)).first();
 
       SNode newScope = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a3L, "jetbrains.mps.lang.smodel.query.structure.QueryParameterScope"));
 
-      if (SLinkOperations.getTarget(oldScope, LINKS.value_old$FV82) == null) {
+      if (SLinkOperations.getTarget(oldScope, LINKS.value_old$YbF4) == null) {
         addReviewAnnotation(includeReadOnly, "scope should be specified explicitly if you want to include read-only models");
         continue;
       }
-      if (!(ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<SAbstractConcept>(), CONCEPTS.CustomScope_old$gF, CONCEPTS.ModelsScope_old$TH, CONCEPTS.ModulesScope_old$IF)).contains(SNodeOperations.getConcept(SLinkOperations.getTarget(oldScope, LINKS.value_old$FV82))))) {
+      if (!(ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<SAbstractConcept>(), CONCEPTS.CustomScope_old$NH, CONCEPTS.ModelsScope_old$sJ, CONCEPTS.ModulesScope_old$hH)).contains(SNodeOperations.getConcept(SLinkOperations.getTarget(oldScope, LINKS.value_old$YbF4))))) {
         addReviewAnnotation(oldScope, "not supported extension language");
         continue;
       }
-      SAbstractConcept cncpt = SNodeOperations.getConcept(SLinkOperations.getTarget(oldScope, LINKS.value_old$FV82));
+      SAbstractConcept cncpt = SNodeOperations.getConcept(SLinkOperations.getTarget(oldScope, LINKS.value_old$YbF4));
       switch (conceptIndex.index(cncpt)) {
         case 0:
           if (true) {
             if ((includeReadOnly != null)) {
-              SLinkOperations.setTarget(newScope, LINKS.value$fMSl, createCustomScope_9zyy9x_a0a0a0a0m0d0d(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(oldScope, LINKS.value_old$FV82), CONCEPTS.CustomScope_old$gF), LINKS.scope_old$ShTB)));
+              SLinkOperations.setTarget(newScope, LINKS.value$y3rn, createCustomScope_9zyy9x_a0a0a0a0m0d0d(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(oldScope, LINKS.value_old$YbF4), CONCEPTS.CustomScope_old$NH), LINKS.scope_old$aysD)));
             } else {
-              SLinkOperations.setTarget(newScope, LINKS.value$fMSl, createCustomScope_9zyy9x_a0a0a0a0a21a3a3(SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(oldScope, LINKS.value_old$FV82), CONCEPTS.CustomScope_old$gF), LINKS.scope_old$ShTB))));
+              SLinkOperations.setTarget(newScope, LINKS.value$y3rn, createCustomScope_9zyy9x_a0a0a0a0a21a3a3(SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(oldScope, LINKS.value_old$YbF4), CONCEPTS.CustomScope_old$NH), LINKS.scope_old$aysD))));
             }
 
           }
@@ -118,18 +118,18 @@ public class MigrateScopes extends MigrationScriptBase {
         case 1:
           if (true) {
             if ((includeReadOnly != null)) {
-              SLinkOperations.setTarget(newScope, LINKS.value$fMSl, createCustomScope_9zyy9x_a0a0a0a1m0d0d(SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(oldScope, LINKS.value_old$FV82), CONCEPTS.ModelsScope_old$TH), LINKS.models_old$tWQw))));
+              SLinkOperations.setTarget(newScope, LINKS.value$y3rn, createCustomScope_9zyy9x_a0a0a0a1m0d0d(SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(oldScope, LINKS.value_old$YbF4), CONCEPTS.ModelsScope_old$sJ), LINKS.models_old$Kdpy))));
             } else {
-              SLinkOperations.setTarget(newScope, LINKS.value$fMSl, createCustomScope_9zyy9x_a0a0a0a0b21a3a3(SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(oldScope, LINKS.value_old$FV82), CONCEPTS.ModelsScope_old$TH), LINKS.models_old$tWQw))));
+              SLinkOperations.setTarget(newScope, LINKS.value$y3rn, createCustomScope_9zyy9x_a0a0a0a0b21a3a3(SNodeOperations.deleteNode(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(oldScope, LINKS.value_old$YbF4), CONCEPTS.ModelsScope_old$sJ), LINKS.models_old$Kdpy))));
             }
           }
           break;
         case 2:
           if (true) {
             if ((includeReadOnly != null)) {
-              SLinkOperations.setTarget(newScope, LINKS.value$fMSl, createCustomScope_9zyy9x_a0a0a0a2m0d0d(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(oldScope, LINKS.value_old$FV82), CONCEPTS.ModulesScope_old$IF), LINKS.modules_old$dXTS)));
+              SLinkOperations.setTarget(newScope, LINKS.value$y3rn, createCustomScope_9zyy9x_a0a0a0a2m0d0d(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(oldScope, LINKS.value_old$YbF4), CONCEPTS.ModulesScope_old$hH), LINKS.modules_old$wesU)));
             } else {
-              SLinkOperations.setTarget(newScope, LINKS.value$fMSl, createCustomScope_9zyy9x_a0a0a0a0c21a3a3(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(oldScope, LINKS.value_old$FV82), CONCEPTS.ModulesScope_old$IF), LINKS.modules_old$dXTS)));
+              SLinkOperations.setTarget(newScope, LINKS.value$y3rn, createCustomScope_9zyy9x_a0a0a0a0c21a3a3(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(oldScope, LINKS.value_old$YbF4), CONCEPTS.ModulesScope_old$hH), LINKS.modules_old$wesU)));
             }
           }
           break;
@@ -138,7 +138,7 @@ public class MigrateScopes extends MigrationScriptBase {
       }
       SNodeOperations.deleteNode(oldScope);
       SNodeOperations.deleteNode(includeReadOnly);
-      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$1xt0), LINKS.parameter$U4Jp)).addElement(newScope);
+      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$jM02), LINKS.parameter$clir)).addElement(newScope);
     }
   }
   @Override
@@ -151,14 +151,14 @@ public class MigrateScopes extends MigrationScriptBase {
     });
     Iterable<SNode> qes = Sequence.fromIterable(editableModels).translate(new ITranslator2<SModel, SNode>() {
       public Iterable<SNode> translate(SModel it) {
-        return SModelOperations.nodes(it, CONCEPTS.QueryExpression$ML);
+        return SModelOperations.nodes(it, CONCEPTS.QueryExpression$lN);
       }
     });
     List<Problem> result = ListSequence.fromList(new ArrayList<Problem>());
     for (SNode qe : Sequence.fromIterable(qes)) {
-      if (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$1xt0), LINKS.parameter$U4Jp), CONCEPTS.QueryParameterScope_old$sE)).concat(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$1xt0), LINKS.parameter$U4Jp), CONCEPTS.QueryParameterIncludeReadOnly_old$Lp))).where(new IWhereFilter<SNode>() {
+      if (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$jM02), LINKS.parameter$clir), CONCEPTS.QueryParameterScope_old$ZG)).concat(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$jM02), LINKS.parameter$clir), CONCEPTS.QueryParameterIncludeReadOnly_old$kr))).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration_old$E1)) == null;
+          return AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration_old$2j)) == null;
         }
       }).isEmpty()) {
         continue;
@@ -177,27 +177,27 @@ public class MigrateScopes extends MigrationScriptBase {
 
   private void addReviewAnnotation(SNode oldParameter, String text) {
     SNode ann = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61e234c9L, "jetbrains.mps.lang.core.structure.ReviewMigration_old"));
-    SPropertyOperations.assign(ann, PROPS.reasonShort$DWK1, text);
-    SPropertyOperations.assign(ann, PROPS.todo$DV$W, "This node should have been migrated, but could not be migrated automatically since this code seems to be not valid. Please review this code and migrate manually if necessary.");
-    SPropertyOperations.assign(ann, PROPS.readableId$scJA, "Migrate Query Scopes");
-    AttributeOperations.setAttribute(oldParameter, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration_old$E1), ann);
+    SPropertyOperations.assign(ann, PROPS.reasonShort$6I8j, text);
+    SPropertyOperations.assign(ann, PROPS.todo$6GXe, "This node should have been migrated, but could not be migrated automatically since this code seems to be not valid. Please review this code and migrate manually if necessary.");
+    SPropertyOperations.assign(ann, PROPS.readableId$SY7S, "Migrate Query Scopes");
+    AttributeOperations.setAttribute(oldParameter, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration_old$2j), ann);
   }
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x307931d0f98575c9L), MetaIdFactory.conceptId(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x307931d0f952484eL), MetaIdFactory.conceptId(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x263c7e661fa6d53dL)).seal();
   private static SNode createCustomScope_9zyy9x_a0a0a0a0m0d0d(SNode p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CustomScope$CZ);
-    n0.forChild(LINKS.scope$fOvw).initNode(p0, CONCEPTS.Expression$TP, true);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CustomScope$c1);
+    n0.forChild(LINKS.scope$y52y).initNode(p0, CONCEPTS.Expression$mB, true);
     return n0.getResult();
   }
   private static SNode createCustomScope_9zyy9x_a0a0a0a0a21a3a3(SNode p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CustomScope$CZ);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CustomScope$c1);
     {
-      SNodeBuilder n1 = n0.forChild(LINKS.scope$fOvw).init(CONCEPTS.GenericNewExpression$ev);
+      SNodeBuilder n1 = n0.forChild(LINKS.scope$y52y).init(CONCEPTS.GenericNewExpression$Fh);
       {
-        SNodeBuilder n2 = n1.forChild(LINKS.creator$Wnha).init(CONCEPTS.ClassCreator$yU);
-        n2.setReference(LINKS.baseMethodDeclaration$ItxI, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)"), facade.createNodeId("~EditableFilteringScope.<init>(org.jetbrains.mps.openapi.module.SearchScope)")));
+        SNodeBuilder n2 = n1.forChild(LINKS.creator$BsHW).init(CONCEPTS.ClassCreator$ZG);
+        n2.setReference(LINKS.baseMethodDeclaration$pyYw, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)"), facade.createNodeId("~EditableFilteringScope.<init>(org.jetbrains.mps.openapi.module.SearchScope)")));
         {
-          SNodeBuilder n3 = n2.forChild(LINKS.actualArgument$ItKJ).initNode(p0, CONCEPTS.Expression$TP, false);
+          SNodeBuilder n3 = n2.forChild(LINKS.actualArgument$pzdx).initNode(p0, CONCEPTS.Expression$mB, false);
         }
       }
     }
@@ -205,14 +205,14 @@ public class MigrateScopes extends MigrationScriptBase {
   }
   private static SNode createCustomScope_9zyy9x_a0a0a0a1m0d0d(SNode p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CustomScope$CZ);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CustomScope$c1);
     {
-      SNodeBuilder n1 = n0.forChild(LINKS.scope$fOvw).init(CONCEPTS.GenericNewExpression$ev);
+      SNodeBuilder n1 = n0.forChild(LINKS.scope$y52y).init(CONCEPTS.GenericNewExpression$Fh);
       {
-        SNodeBuilder n2 = n1.forChild(LINKS.creator$Wnha).init(CONCEPTS.ClassCreator$yU);
-        n2.setReference(LINKS.baseMethodDeclaration$ItxI, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.scopes(MPS.Core/)"), facade.createNodeId("~ModelsScope.<init>(java.lang.Iterable)")));
+        SNodeBuilder n2 = n1.forChild(LINKS.creator$BsHW).init(CONCEPTS.ClassCreator$ZG);
+        n2.setReference(LINKS.baseMethodDeclaration$pyYw, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.scopes(MPS.Core/)"), facade.createNodeId("~ModelsScope.<init>(java.lang.Iterable)")));
         {
-          SNodeBuilder n3 = n2.forChild(LINKS.actualArgument$ItKJ).initNode(p0, CONCEPTS.Expression$TP, false);
+          SNodeBuilder n3 = n2.forChild(LINKS.actualArgument$pzdx).initNode(p0, CONCEPTS.Expression$mB, false);
         }
       }
     }
@@ -220,19 +220,19 @@ public class MigrateScopes extends MigrationScriptBase {
   }
   private static SNode createCustomScope_9zyy9x_a0a0a0a0b21a3a3(SNode p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CustomScope$CZ);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CustomScope$c1);
     {
-      SNodeBuilder n1 = n0.forChild(LINKS.scope$fOvw).init(CONCEPTS.GenericNewExpression$ev);
+      SNodeBuilder n1 = n0.forChild(LINKS.scope$y52y).init(CONCEPTS.GenericNewExpression$Fh);
       {
-        SNodeBuilder n2 = n1.forChild(LINKS.creator$Wnha).init(CONCEPTS.ClassCreator$yU);
-        n2.setReference(LINKS.baseMethodDeclaration$ItxI, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)"), facade.createNodeId("~EditableFilteringScope.<init>(org.jetbrains.mps.openapi.module.SearchScope)")));
+        SNodeBuilder n2 = n1.forChild(LINKS.creator$BsHW).init(CONCEPTS.ClassCreator$ZG);
+        n2.setReference(LINKS.baseMethodDeclaration$pyYw, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)"), facade.createNodeId("~EditableFilteringScope.<init>(org.jetbrains.mps.openapi.module.SearchScope)")));
         {
-          SNodeBuilder n3 = n2.forChild(LINKS.actualArgument$ItKJ).init(CONCEPTS.GenericNewExpression$ev);
+          SNodeBuilder n3 = n2.forChild(LINKS.actualArgument$pzdx).init(CONCEPTS.GenericNewExpression$Fh);
           {
-            SNodeBuilder n4 = n3.forChild(LINKS.creator$Wnha).init(CONCEPTS.ClassCreator$yU);
-            n4.setReference(LINKS.baseMethodDeclaration$ItxI, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.scopes(MPS.Core/)"), facade.createNodeId("~ModelsScope.<init>(java.lang.Iterable)")));
+            SNodeBuilder n4 = n3.forChild(LINKS.creator$BsHW).init(CONCEPTS.ClassCreator$ZG);
+            n4.setReference(LINKS.baseMethodDeclaration$pyYw, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.scopes(MPS.Core/)"), facade.createNodeId("~ModelsScope.<init>(java.lang.Iterable)")));
             {
-              SNodeBuilder n5 = n4.forChild(LINKS.actualArgument$ItKJ).initNode(p0, CONCEPTS.Expression$TP, false);
+              SNodeBuilder n5 = n4.forChild(LINKS.actualArgument$pzdx).initNode(p0, CONCEPTS.Expression$mB, false);
             }
           }
         }
@@ -242,14 +242,14 @@ public class MigrateScopes extends MigrationScriptBase {
   }
   private static SNode createCustomScope_9zyy9x_a0a0a0a2m0d0d(SNode p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CustomScope$CZ);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CustomScope$c1);
     {
-      SNodeBuilder n1 = n0.forChild(LINKS.scope$fOvw).init(CONCEPTS.GenericNewExpression$ev);
+      SNodeBuilder n1 = n0.forChild(LINKS.scope$y52y).init(CONCEPTS.GenericNewExpression$Fh);
       {
-        SNodeBuilder n2 = n1.forChild(LINKS.creator$Wnha).init(CONCEPTS.ClassCreator$yU);
-        n2.setReference(LINKS.baseMethodDeclaration$ItxI, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.scopes(MPS.Core/)"), facade.createNodeId("~ModulesScope.<init>(java.lang.Iterable)")));
+        SNodeBuilder n2 = n1.forChild(LINKS.creator$BsHW).init(CONCEPTS.ClassCreator$ZG);
+        n2.setReference(LINKS.baseMethodDeclaration$pyYw, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.scopes(MPS.Core/)"), facade.createNodeId("~ModulesScope.<init>(java.lang.Iterable)")));
         {
-          SNodeBuilder n3 = n2.forChild(LINKS.actualArgument$ItKJ).initNode(p0, CONCEPTS.Expression$TP, false);
+          SNodeBuilder n3 = n2.forChild(LINKS.actualArgument$pzdx).initNode(p0, CONCEPTS.Expression$mB, false);
         }
       }
     }
@@ -257,19 +257,19 @@ public class MigrateScopes extends MigrationScriptBase {
   }
   private static SNode createCustomScope_9zyy9x_a0a0a0a0c21a3a3(SNode p0) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CustomScope$CZ);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CustomScope$c1);
     {
-      SNodeBuilder n1 = n0.forChild(LINKS.scope$fOvw).init(CONCEPTS.GenericNewExpression$ev);
+      SNodeBuilder n1 = n0.forChild(LINKS.scope$y52y).init(CONCEPTS.GenericNewExpression$Fh);
       {
-        SNodeBuilder n2 = n1.forChild(LINKS.creator$Wnha).init(CONCEPTS.ClassCreator$yU);
-        n2.setReference(LINKS.baseMethodDeclaration$ItxI, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)"), facade.createNodeId("~EditableFilteringScope.<init>(org.jetbrains.mps.openapi.module.SearchScope)")));
+        SNodeBuilder n2 = n1.forChild(LINKS.creator$BsHW).init(CONCEPTS.ClassCreator$ZG);
+        n2.setReference(LINKS.baseMethodDeclaration$pyYw, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)"), facade.createNodeId("~EditableFilteringScope.<init>(org.jetbrains.mps.openapi.module.SearchScope)")));
         {
-          SNodeBuilder n3 = n2.forChild(LINKS.actualArgument$ItKJ).init(CONCEPTS.GenericNewExpression$ev);
+          SNodeBuilder n3 = n2.forChild(LINKS.actualArgument$pzdx).init(CONCEPTS.GenericNewExpression$Fh);
           {
-            SNodeBuilder n4 = n3.forChild(LINKS.creator$Wnha).init(CONCEPTS.ClassCreator$yU);
-            n4.setReference(LINKS.baseMethodDeclaration$ItxI, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.scopes(MPS.Core/)"), facade.createNodeId("~ModulesScope.<init>(java.lang.Iterable)")));
+            SNodeBuilder n4 = n3.forChild(LINKS.creator$BsHW).init(CONCEPTS.ClassCreator$ZG);
+            n4.setReference(LINKS.baseMethodDeclaration$pyYw, new SNodePointer(facade.createModelReference("6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.scopes(MPS.Core/)"), facade.createNodeId("~ModulesScope.<init>(java.lang.Iterable)")));
             {
-              SNodeBuilder n5 = n4.forChild(LINKS.actualArgument$ItKJ).initNode(p0, CONCEPTS.Expression$TP, false);
+              SNodeBuilder n5 = n4.forChild(LINKS.actualArgument$pzdx).initNode(p0, CONCEPTS.Expression$mB, false);
             }
           }
         }
@@ -279,37 +279,37 @@ public class MigrateScopes extends MigrationScriptBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept QueryExpression$ML = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760bacfdL, "jetbrains.mps.lang.smodel.query.structure.QueryExpression");
-    /*package*/ static final SConcept QueryParameterScope_old$sE = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc644217618ed2fL, "jetbrains.mps.lang.smodel.query.structure.QueryParameterScope_old");
-    /*package*/ static final SConcept QueryParameterIncludeReadOnly_old$Lp = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc644217618ec86L, "jetbrains.mps.lang.smodel.query.structure.QueryParameterIncludeReadOnly_old");
-    /*package*/ static final SConcept QueryParameterScope$rU = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a3L, "jetbrains.mps.lang.smodel.query.structure.QueryParameterScope");
-    /*package*/ static final SConcept CustomScope_old$gF = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x307931d0f98575c9L, "jetbrains.mps.lang.smodel.query.structure.CustomScope_old");
-    /*package*/ static final SConcept ModelsScope_old$TH = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x307931d0f952484eL, "jetbrains.mps.lang.smodel.query.structure.ModelsScope_old");
-    /*package*/ static final SConcept ModulesScope_old$IF = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x263c7e661fa6d53dL, "jetbrains.mps.lang.smodel.query.structure.ModulesScope_old");
-    /*package*/ static final SConcept ReviewMigration_old$E1 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61e234c9L, "jetbrains.mps.lang.core.structure.ReviewMigration_old");
-    /*package*/ static final SConcept CustomScope$CZ = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a9L, "jetbrains.mps.lang.smodel.query.structure.CustomScope");
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
-    /*package*/ static final SConcept GenericNewExpression$ev = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, "jetbrains.mps.baseLanguage.structure.GenericNewExpression");
-    /*package*/ static final SConcept ClassCreator$yU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, "jetbrains.mps.baseLanguage.structure.ClassCreator");
+    /*package*/ static final SConcept QueryExpression$lN = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760bacfdL, "jetbrains.mps.lang.smodel.query.structure.QueryExpression");
+    /*package*/ static final SConcept QueryParameterScope_old$ZG = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc644217618ed2fL, "jetbrains.mps.lang.smodel.query.structure.QueryParameterScope_old");
+    /*package*/ static final SConcept QueryParameterIncludeReadOnly_old$kr = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc644217618ec86L, "jetbrains.mps.lang.smodel.query.structure.QueryParameterIncludeReadOnly_old");
+    /*package*/ static final SConcept QueryParameterScope$YW = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a3L, "jetbrains.mps.lang.smodel.query.structure.QueryParameterScope");
+    /*package*/ static final SConcept CustomScope_old$NH = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x307931d0f98575c9L, "jetbrains.mps.lang.smodel.query.structure.CustomScope_old");
+    /*package*/ static final SConcept ModelsScope_old$sJ = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x307931d0f952484eL, "jetbrains.mps.lang.smodel.query.structure.ModelsScope_old");
+    /*package*/ static final SConcept ModulesScope_old$hH = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x263c7e661fa6d53dL, "jetbrains.mps.lang.smodel.query.structure.ModulesScope_old");
+    /*package*/ static final SConcept ReviewMigration_old$2j = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61e234c9L, "jetbrains.mps.lang.core.structure.ReviewMigration_old");
+    /*package*/ static final SConcept CustomScope$c1 = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a9L, "jetbrains.mps.lang.smodel.query.structure.CustomScope");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept GenericNewExpression$Fh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, "jetbrains.mps.baseLanguage.structure.GenericNewExpression");
+    /*package*/ static final SConcept ClassCreator$ZG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, "jetbrains.mps.baseLanguage.structure.ClassCreator");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$1xt0 = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760bacfdL, 0x3bc644217616e548L, "parameter");
-    /*package*/ static final SContainmentLink parameter$U4Jp = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc644217616ddf9L, 0x3bc6442176a262a6L, "parameter");
-    /*package*/ static final SContainmentLink value_old$FV82 = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc644217618ed2fL, 0x3bc64421763bef89L, "value_old");
-    /*package*/ static final SContainmentLink value$fMSl = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a3L, 0x20c897bb39bb07a4L, "value");
-    /*package*/ static final SContainmentLink scope_old$ShTB = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x307931d0f98575c9L, 0x307931d0f985950eL, "scope_old");
-    /*package*/ static final SContainmentLink models_old$tWQw = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x307931d0f952484eL, 0x307931d0f952484fL, "models_old");
-    /*package*/ static final SContainmentLink modules_old$dXTS = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x263c7e661fa6d53dL, 0x307931d0f94af768L, "modules_old");
-    /*package*/ static final SContainmentLink scope$fOvw = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a9L, 0x20c897bb39bb07aaL, "scope");
-    /*package*/ static final SContainmentLink creator$Wnha = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink parameter$jM02 = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760bacfdL, 0x3bc644217616e548L, "parameter");
+    /*package*/ static final SContainmentLink parameter$clir = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc644217616ddf9L, 0x3bc6442176a262a6L, "parameter");
+    /*package*/ static final SContainmentLink value_old$YbF4 = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc644217618ed2fL, 0x3bc64421763bef89L, "value_old");
+    /*package*/ static final SContainmentLink value$y3rn = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a3L, 0x20c897bb39bb07a4L, "value");
+    /*package*/ static final SContainmentLink scope_old$aysD = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x307931d0f98575c9L, 0x307931d0f985950eL, "scope_old");
+    /*package*/ static final SContainmentLink models_old$Kdpy = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x307931d0f952484eL, 0x307931d0f952484fL, "models_old");
+    /*package*/ static final SContainmentLink modules_old$wesU = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x263c7e661fa6d53dL, 0x307931d0f94af768L, "modules_old");
+    /*package*/ static final SContainmentLink scope$y52y = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a9L, 0x20c897bb39bb07aaL, "scope");
+    /*package*/ static final SContainmentLink creator$BsHW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty reasonShort$DWK1 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61e234c9L, 0x2274019e61e234d6L, "reasonShort");
-    /*package*/ static final SProperty todo$DV$W = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61e234c9L, 0x2274019e61e234d1L, "todo");
-    /*package*/ static final SProperty readableId$scJA = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61e234c9L, 0x2274019e61e9f6eaL, "readableId");
+    /*package*/ static final SProperty reasonShort$6I8j = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61e234c9L, 0x2274019e61e234d6L, "reasonShort");
+    /*package*/ static final SProperty todo$6GXe = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61e234c9L, 0x2274019e61e234d1L, "todo");
+    /*package*/ static final SProperty readableId$SY7S = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2274019e61e234c9L, 0x2274019e61e9f6eaL, "readableId");
   }
 }

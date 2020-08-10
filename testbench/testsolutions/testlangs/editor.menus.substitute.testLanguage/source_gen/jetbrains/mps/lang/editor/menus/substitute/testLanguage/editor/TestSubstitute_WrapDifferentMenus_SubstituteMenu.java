@@ -38,8 +38,8 @@ public class TestSubstitute_WrapDifferentMenus_SubstituteMenu extends Substitute
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_54kvao_a(), CONCEPTS.TestSubstitute_WrapDifferentMenus$wn));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_54kvao_b(), CONCEPTS.TestSubstitute_WrapDifferentMenus$wn));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_54kvao_a(), CONCEPTS.TestSubstitute_WrapDifferentMenus$KS));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_54kvao_b(), CONCEPTS.TestSubstitute_WrapDifferentMenus$KS));
     return result;
   }
 
@@ -79,7 +79,7 @@ public class TestSubstitute_WrapDifferentMenus_SubstituteMenu extends Substitute
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.TestSubstitute_WrapDifferentMenus$wn;
+          return CONCEPTS.TestSubstitute_WrapDifferentMenus$KS;
         }
         @Nullable
         @Override
@@ -117,7 +117,7 @@ public class TestSubstitute_WrapDifferentMenus_SubstituteMenu extends Substitute
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstitute_Menu_ToWrap1");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.TestSubstitute_WrapDifferentMenus$wn;
+      return CONCEPTS.TestSubstitute_WrapDifferentMenus$KS;
     }
   }
   private class SMP_Wrap_54kvao_b extends WrapperSubstituteMenuPart {
@@ -143,7 +143,7 @@ public class TestSubstitute_WrapDifferentMenus_SubstituteMenu extends Substitute
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.TestSubstitute_WrapDifferentMenus$wn;
+          return CONCEPTS.TestSubstitute_WrapDifferentMenus$KS;
         }
         @Nullable
         @Override
@@ -181,11 +181,11 @@ public class TestSubstitute_WrapDifferentMenus_SubstituteMenu extends Substitute
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.TestSubstitute_Menu_ToWrap2");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.TestSubstitute_WrapDifferentMenus$wn;
+      return CONCEPTS.TestSubstitute_WrapDifferentMenus$KS;
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestSubstitute_WrapDifferentMenus$wn = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x1a41c6fb2810192dL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstitute_WrapDifferentMenus");
+    /*package*/ static final SConcept TestSubstitute_WrapDifferentMenus$KS = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x1a41c6fb2810192dL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstitute_WrapDifferentMenus");
   }
 }

@@ -33,7 +33,7 @@ public class typeof_GetEnumeratorOperation_InferenceRule extends AbstractInferen
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.GetEnumeratorOperation$93;
+    return CONCEPTS.GetEnumeratorOperation$nm;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -65,6 +65,6 @@ public class typeof_GetEnumeratorOperation_InferenceRule extends AbstractInferen
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GetEnumeratorOperation$93 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x12023af43bdL, "jetbrains.mps.baseLanguage.collections.structure.GetEnumeratorOperation");
+    /*package*/ static final SConcept GetEnumeratorOperation$nm = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x12023af43bdL, "jetbrains.mps.baseLanguage.collections.structure.GetEnumeratorOperation");
   }
 }

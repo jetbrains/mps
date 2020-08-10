@@ -78,7 +78,7 @@ public class addParameterToMethodCallWithComma extends TransformationMenuBase {
   public class TMP_Group_ewvzzq_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.hasRole(_context.getNode(), LINKS.actualArgument$ItKJ);
+      return SNodeOperations.hasRole(_context.getNode(), LINKS.actualArgument$pzdx);
     }
 
     @NotNull
@@ -94,7 +94,7 @@ public class addParameterToMethodCallWithComma extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_ewvzzq_a0a(), CONCEPTS.Expression$TP));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_ewvzzq_a0a(), CONCEPTS.Expression$mB));
     }
     private class TMP_Action_ewvzzq_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -142,7 +142,7 @@ public class addParameterToMethodCallWithComma extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.Expression$TP;
+          return CONCEPTS.Expression$mB;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
@@ -157,7 +157,7 @@ public class addParameterToMethodCallWithComma extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.Expression$TP;
+          SAbstractConcept outputConcept = CONCEPTS.Expression$mB;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -170,7 +170,7 @@ public class addParameterToMethodCallWithComma extends TransformationMenuBase {
   public class TMP_Group_ewvzzq_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.hasRole(_context.getNode(), LINKS.actualArgument$ItKJ);
+      return SNodeOperations.hasRole(_context.getNode(), LINKS.actualArgument$pzdx);
     }
 
     @NotNull
@@ -186,7 +186,7 @@ public class addParameterToMethodCallWithComma extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_ewvzzq_a0b(), CONCEPTS.Expression$TP));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_ewvzzq_a0b(), CONCEPTS.Expression$mB));
     }
     private class TMP_Action_ewvzzq_a0b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -234,7 +234,7 @@ public class addParameterToMethodCallWithComma extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.Expression$TP;
+          return CONCEPTS.Expression$mB;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
@@ -249,7 +249,7 @@ public class addParameterToMethodCallWithComma extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.Expression$TP;
+          SAbstractConcept outputConcept = CONCEPTS.Expression$mB;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -261,10 +261,10 @@ public class addParameterToMethodCallWithComma extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 }

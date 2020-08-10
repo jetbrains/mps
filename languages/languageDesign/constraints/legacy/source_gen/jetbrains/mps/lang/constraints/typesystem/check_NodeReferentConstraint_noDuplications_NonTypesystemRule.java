@@ -27,19 +27,19 @@ public class check_NodeReferentConstraint_noDuplications_NonTypesystemRule exten
   public check_NodeReferentConstraint_noDuplications_NonTypesystemRule() {
   }
   public void applyRule(final SNode nodeReferentConstraint, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    Iterable<SNode> siblings = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getParent(nodeReferentConstraint), CONCEPTS.ConceptConstraints$St), LINKS.referent$9bTK)).subtract(Sequence.fromIterable(Sequence.<SNode>singleton(nodeReferentConstraint)));
+    Iterable<SNode> siblings = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getParent(nodeReferentConstraint), CONCEPTS.ConceptConstraints$Yt), LINKS.referent$k0ZK)).subtract(Sequence.fromIterable(Sequence.<SNode>singleton(nodeReferentConstraint)));
 
     for (SNode siblingConstraint : Sequence.fromIterable(siblings)) {
-      if (Objects.equals(SLinkOperations.getTarget(siblingConstraint, LINKS.applicableLink$WTlX), SLinkOperations.getTarget(nodeReferentConstraint, LINKS.applicableLink$WTlX))) {
+      if (Objects.equals(SLinkOperations.getTarget(siblingConstraint, LINKS.applicableLink$7IrX), SLinkOperations.getTarget(nodeReferentConstraint, LINKS.applicableLink$7IrX))) {
         {
-          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.applicableLink$WTlX);
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(nodeReferentConstraint, "Duplicate referent constraint for '" + SPropertyOperations.getString(SLinkOperations.getTarget(nodeReferentConstraint, LINKS.applicableLink$WTlX), PROPS.name$lA7v) + "' link", "r:00000000-0000-4000-0000-011c89590309(jetbrains.mps.lang.constraints.typesystem)", "876880569411387473", null, errorTarget);
+          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.applicableLink$7IrX);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(nodeReferentConstraint, "Duplicate referent constraint for '" + SPropertyOperations.getString(SLinkOperations.getTarget(nodeReferentConstraint, LINKS.applicableLink$7IrX), PROPS.name$MnvL) + "' link", "r:00000000-0000-4000-0000-011c89590309(jetbrains.mps.lang.constraints.typesystem)", "876880569411387473", null, errorTarget);
         }
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.NodeReferentConstraint$JH;
+    return CONCEPTS.NodeReferentConstraint$PH;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -49,16 +49,16 @@ public class check_NodeReferentConstraint_noDuplications_NonTypesystemRule exten
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptConstraints$St = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, "jetbrains.mps.lang.constraints.structure.ConceptConstraints");
-    /*package*/ static final SConcept NodeReferentConstraint$JH = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, "jetbrains.mps.lang.constraints.structure.NodeReferentConstraint");
+    /*package*/ static final SConcept ConceptConstraints$Yt = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, "jetbrains.mps.lang.constraints.structure.ConceptConstraints");
+    /*package*/ static final SConcept NodeReferentConstraint$PH = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, "jetbrains.mps.lang.constraints.structure.NodeReferentConstraint");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink referent$9bTK = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a726c901bL, "referent");
-    /*package*/ static final SReferenceLink applicableLink$WTlX = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, 0x10b7317b98aL, "applicableLink");
+    /*package*/ static final SContainmentLink referent$k0ZK = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a726c901bL, "referent");
+    /*package*/ static final SReferenceLink applicableLink$7IrX = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, 0x10b7317b98aL, "applicableLink");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

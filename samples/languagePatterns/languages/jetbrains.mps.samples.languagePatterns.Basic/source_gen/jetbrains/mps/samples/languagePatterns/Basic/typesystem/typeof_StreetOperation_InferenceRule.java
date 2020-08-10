@@ -25,7 +25,7 @@ public class typeof_StreetOperation_InferenceRule extends AbstractInferenceRule_
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.StreetOperation$ru;
+    return CONCEPTS.StreetOperation$B2;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_StreetOperation_InferenceRule extends AbstractInferenceRule_
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StreetOperation$ru = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x48a6ab8c26b9b2e7L, "jetbrains.mps.samples.languagePatterns.Basic.structure.StreetOperation");
+    /*package*/ static final SConcept StreetOperation$B2 = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x48a6ab8c26b9b2e7L, "jetbrains.mps.samples.languagePatterns.Basic.structure.StreetOperation");
   }
 }

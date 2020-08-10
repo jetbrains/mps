@@ -36,13 +36,13 @@ public final class AnalyzerFunFunction__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Analyzer$Q4, false, false), LINKS.latticeElementType$bYxl);
+    return SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Analyzer$GL, false, false), LINKS.latticeElementType$o4o2);
   }
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
-    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, CONCEPTS.ConceptFunction$Tt);
-    ListSequence.fromList(result).addElement(CONCEPTS.AnalyzerFunParameterProgramState$EQ);
-    ListSequence.fromList(result).addElement(CONCEPTS.AnalyzerFunParameterInput$FO);
-    ListSequence.fromList(result).addElement(CONCEPTS.AnalyzerFunParameterStateValues$h1);
+    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, CONCEPTS.ConceptFunction$mf);
+    ListSequence.fromList(result).addElement(CONCEPTS.AnalyzerFunParameterProgramState$xz);
+    ListSequence.fromList(result).addElement(CONCEPTS.AnalyzerFunParameterInput$yx);
+    ListSequence.fromList(result).addElement(CONCEPTS.AnalyzerFunParameterStateValues$7I);
     return result;
   }
 
@@ -95,14 +95,14 @@ public final class AnalyzerFunFunction__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Analyzer$Q4 = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, "jetbrains.mps.lang.dataFlow.analyzers.structure.Analyzer");
-    /*package*/ static final SConcept ConceptFunction$Tt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
-    /*package*/ static final SConcept AnalyzerFunParameterProgramState$EQ = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x41dd50940e1dd4d2L, "jetbrains.mps.lang.dataFlow.analyzers.structure.AnalyzerFunParameterProgramState");
-    /*package*/ static final SConcept AnalyzerFunParameterInput$FO = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x41dd50940e1dd4d4L, "jetbrains.mps.lang.dataFlow.analyzers.structure.AnalyzerFunParameterInput");
-    /*package*/ static final SConcept AnalyzerFunParameterStateValues$h1 = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x7e9442f75769ab4eL, "jetbrains.mps.lang.dataFlow.analyzers.structure.AnalyzerFunParameterStateValues");
+    /*package*/ static final SConcept Analyzer$GL = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, "jetbrains.mps.lang.dataFlow.analyzers.structure.Analyzer");
+    /*package*/ static final SConcept ConceptFunction$mf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
+    /*package*/ static final SConcept AnalyzerFunParameterProgramState$xz = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x41dd50940e1dd4d2L, "jetbrains.mps.lang.dataFlow.analyzers.structure.AnalyzerFunParameterProgramState");
+    /*package*/ static final SConcept AnalyzerFunParameterInput$yx = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x41dd50940e1dd4d4L, "jetbrains.mps.lang.dataFlow.analyzers.structure.AnalyzerFunParameterInput");
+    /*package*/ static final SConcept AnalyzerFunParameterStateValues$7I = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x7e9442f75769ab4eL, "jetbrains.mps.lang.dataFlow.analyzers.structure.AnalyzerFunParameterStateValues");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink latticeElementType$bYxl = MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, 0x7f5b799a00c51bbbL, "latticeElementType");
+    /*package*/ static final SContainmentLink latticeElementType$o4o2 = MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5bd9e43c93f46789L, 0x7f5b799a00c51bbbL, "latticeElementType");
   }
 }

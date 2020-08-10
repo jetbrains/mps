@@ -109,11 +109,11 @@
       <node id="2535923850361050964" at="145,40,146,34" concept="4" />
       <node id="2535923850361050964" at="146,34,147,22" concept="10" />
       <node id="6328114375520620990" at="149,55,150,43" concept="10" />
-      <node id="155656958578482951" at="154,0,155,0" concept="13" trace="value$bjp0" />
-      <node id="155656958578482951" at="155,0,156,0" concept="13" trace="url$wboS" />
-      <node id="155656958578482951" at="156,0,157,0" concept="13" trace="underlined$wjPs" />
-      <node id="155656958578482951" at="160,0,161,0" concept="13" trace="PropertyAttribute$jT" />
-      <node id="155656958578482951" at="161,0,162,0" concept="13" trace="TextElement$Ue" />
+      <node id="155656958578482951" at="154,0,155,0" concept="13" trace="value$zQr_" />
+      <node id="155656958578482951" at="155,0,156,0" concept="13" trace="url$SIrt" />
+      <node id="155656958578482951" at="156,0,157,0" concept="13" trace="underlined$SQS1" />
+      <node id="155656958578482951" at="160,0,161,0" concept="13" trace="PropertyAttribute$Gb" />
+      <node id="155656958578482951" at="161,0,162,0" concept="13" trace="TextElement$WN" />
       <node id="155656958578482951" at="45,0,47,0" concept="5" trace="myNode" />
       <node id="6681408443909922879" at="129,0,131,0" concept="3" trace="ReplaceWith_TextElement_cellMenu_8g1p9d_a0b0#()V" />
       <node id="155656958578482951" at="59,0,62,0" concept="8" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -239,8 +239,8 @@
       <node id="1723061230865746695" at="110,46,111,34" concept="4" />
       <node id="1723061230865746695" at="111,34,112,22" concept="10" />
       <node id="6328114375520728846" at="114,55,115,43" concept="10" />
-      <node id="155656958578482951" at="119,0,120,0" concept="13" trace="url$wboS" />
-      <node id="155656958578482951" at="123,0,124,0" concept="13" trace="PropertyAttribute$jT" />
+      <node id="155656958578482951" at="119,0,120,0" concept="13" trace="url$SIrt" />
+      <node id="155656958578482951" at="123,0,124,0" concept="13" trace="PropertyAttribute$Gb" />
       <node id="155656958578482951" at="33,0,35,0" concept="5" trace="myNode" />
       <node id="155656958578482951" at="57,10,59,5" concept="1" />
       <node id="155656958578482951" at="47,0,50,0" concept="8" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -352,8 +352,8 @@
       <node id="155656958578722183" at="108,58,109,51" concept="10" />
       <node id="155656958578722183" at="112,66,113,50" concept="10" />
       <node id="155656958578738047" at="115,85,116,20" concept="10" />
-      <node id="155656958578722180" at="122,0,123,0" concept="13" trace="Word$AM" />
-      <node id="155656958578722180" at="126,0,127,0" concept="13" trace="value$bjp0" />
+      <node id="155656958578722180" at="122,0,123,0" concept="13" trace="Word$Dn" />
+      <node id="155656958578722180" at="126,0,127,0" concept="13" trace="value$zQr_" />
       <node id="155656958578722183" at="81,0,84,0" concept="8" trace="setTraceInfo#(Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;)V" />
       <node id="155656958578722183" at="115,0,118,0" concept="8" trace="canExecute_internal#(Ljava/lang/String;Z)Z" />
       <node id="155656958578722183" at="76,0,80,0" concept="3" trace="Item#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)V" />
@@ -545,10 +545,10 @@
       <node id="6961970966447455613" at="258,62,259,105" concept="4" />
       <node id="6681408443912299629" at="261,121,262,95" concept="4" />
       <node id="6961970966447455613" at="264,34,265,18" concept="10" />
-      <node id="155656958579974559" at="270,0,271,0" concept="13" trace="Word$AM" />
-      <node id="155656958579974559" at="274,0,275,0" concept="13" trace="bold$w4Os" />
-      <node id="155656958579974559" at="275,0,276,0" concept="13" trace="italic$w5xv" />
-      <node id="155656958579974559" at="276,0,277,0" concept="13" trace="underlined$wjPs" />
+      <node id="155656958579974559" at="270,0,271,0" concept="13" trace="Word$Dn" />
+      <node id="155656958579974559" at="274,0,275,0" concept="13" trace="bold$SBR1" />
+      <node id="155656958579974559" at="275,0,276,0" concept="13" trace="italic$SC$4" />
+      <node id="155656958579974559" at="276,0,277,0" concept="13" trace="underlined$SQS1" />
       <node id="6170529613799164867" at="39,0,42,0" concept="3" trace="Word_KeyMap_Action0#()V" />
       <node id="6170529613799164867" at="42,0,45,0" concept="8" trace="isMenuAlwaysShown#()Z" />
       <node id="6170529613799164867" at="46,62,49,7" concept="7" />
@@ -901,8 +901,8 @@
       <node id="6356707875554136151" at="150,93,151,47" concept="4" />
       <node id="6356707875554136151" at="151,47,152,34" concept="4" />
       <node id="6356707875554136151" at="152,34,153,22" concept="10" />
-      <node id="2535923850359210926" at="157,0,158,0" concept="13" trace="lines$y1jy" />
-      <node id="2535923850359210926" at="161,0,162,0" concept="13" trace="Line$w3" />
+      <node id="2535923850359210926" at="157,0,158,0" concept="13" trace="lines$U$m7" />
+      <node id="2535923850359210926" at="161,0,162,0" concept="13" trace="Line$yC" />
       <node id="2535923850359210926" at="31,0,33,0" concept="5" trace="myNode" />
       <node id="2535923850359210926" at="77,0,79,0" concept="5" trace="myNode" />
       <node id="2535923850359210926" at="45,0,48,0" concept="8" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -1084,12 +1084,12 @@
       <node id="474718489010593456" at="204,81,205,63" concept="4" />
       <node id="474718489010593467" at="206,7,207,18" concept="10" />
       <node id="474718489010593466" at="210,54,211,42" concept="10" />
-      <node id="2535923850359250088" at="216,0,217,0" concept="13" trace="Word$AM" />
-      <node id="2535923850359250088" at="217,0,218,0" concept="13" trace="Line$w3" />
-      <node id="2535923850359250088" at="218,0,219,0" concept="13" trace="TextElement$Ue" />
-      <node id="2535923850359250088" at="222,0,223,0" concept="13" trace="elements$cK1w" />
-      <node id="2535923850359250088" at="226,0,227,0" concept="13" trace="value$bjp0" />
-      <node id="2535923850359250088" at="227,0,228,0" concept="13" trace="url$wboS" />
+      <node id="2535923850359250088" at="216,0,217,0" concept="13" trace="Word$Dn" />
+      <node id="2535923850359250088" at="217,0,218,0" concept="13" trace="Line$yC" />
+      <node id="2535923850359250088" at="218,0,219,0" concept="13" trace="TextElement$WN" />
+      <node id="2535923850359250088" at="222,0,223,0" concept="13" trace="elements$_j45" />
+      <node id="2535923850359250088" at="226,0,227,0" concept="13" trace="value$zQr_" />
+      <node id="2535923850359250088" at="227,0,228,0" concept="13" trace="url$SIrt" />
       <node id="6681408443910770854" at="25,0,27,0" concept="3" trace="NewElementStrategyFactory#()V" />
       <node id="6681408443911011898" at="31,10,33,5" concept="1" />
       <node id="6681408443912274333" at="38,10,40,5" concept="1" />
@@ -1348,8 +1348,8 @@
       <node id="2535923850359906428" at="168,55,169,40" concept="4" />
       <node id="2535923850359906428" at="169,40,170,34" concept="4" />
       <node id="2535923850359906428" at="170,34,171,22" concept="10" />
-      <node id="2535923850359271793" at="175,0,176,0" concept="13" trace="elements$cK1w" />
-      <node id="2535923850359271793" at="179,0,180,0" concept="13" trace="TextElement$Ue" />
+      <node id="2535923850359271793" at="175,0,176,0" concept="13" trace="elements$_j45" />
+      <node id="2535923850359271793" at="179,0,180,0" concept="13" trace="TextElement$WN" />
       <node id="2535923850359271793" at="31,0,33,0" concept="5" trace="myNode" />
       <node id="2535923850359271793" at="83,0,85,0" concept="5" trace="myNode" />
       <node id="2535923850359271793" at="45,0,48,0" concept="8" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -1545,13 +1545,13 @@
       <node id="8748869355212452961" at="239,55,240,43" concept="10" />
       <node id="8639610876406101515" at="242,63,243,45" concept="10" />
       <node id="5189510542072859308" at="245,52,246,40" concept="10" />
-      <node id="2535923850360087692" at="250,0,251,0" concept="13" trace="Word$AM" />
-      <node id="2535923850360087692" at="251,0,252,0" concept="13" trace="Line$w3" />
-      <node id="2535923850360087692" at="252,0,253,0" concept="13" trace="TextElement$Ue" />
-      <node id="2535923850360087692" at="253,0,254,0" concept="13" trace="IHoldLines$hX" />
-      <node id="2535923850360087692" at="257,0,258,0" concept="13" trace="value$bjp0" />
-      <node id="2535923850360087692" at="261,0,262,0" concept="13" trace="elements$cK1w" />
-      <node id="2535923850360087692" at="262,0,263,0" concept="13" trace="node$o9GP" />
+      <node id="2535923850360087692" at="250,0,251,0" concept="13" trace="Word$Dn" />
+      <node id="2535923850360087692" at="251,0,252,0" concept="13" trace="Line$yC" />
+      <node id="2535923850360087692" at="252,0,253,0" concept="13" trace="TextElement$WN" />
+      <node id="2535923850360087692" at="253,0,254,0" concept="13" trace="IHoldLines$ky" />
+      <node id="2535923850360087692" at="257,0,258,0" concept="13" trace="value$zQr_" />
+      <node id="2535923850360087692" at="261,0,262,0" concept="13" trace="elements$_j45" />
+      <node id="2535923850360087692" at="262,0,263,0" concept="13" trace="node$KGJq" />
       <node id="5604063718248311719" at="71,22,73,17" concept="1" />
       <node id="2276521200489534257" at="101,28,103,23" concept="1" />
       <node id="7005103847466706528" at="39,0,42,0" concept="8" trace="execute#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
@@ -1886,11 +1886,11 @@
       <node id="1211637016817821436" at="212,7,213,82" concept="4" />
       <node id="2535923850361658127" at="214,137,215,110" concept="4" />
       <node id="6681408443910393302" at="219,52,220,40" concept="10" />
-      <node id="2535923850360120154" at="224,0,225,0" concept="13" trace="TextElement$Ue" />
-      <node id="2535923850360120154" at="225,0,226,0" concept="13" trace="Word$AM" />
-      <node id="2535923850360120154" at="226,0,227,0" concept="13" trace="Line$w3" />
-      <node id="2535923850360120154" at="230,0,231,0" concept="13" trace="value$bjp0" />
-      <node id="2535923850360120154" at="234,0,235,0" concept="13" trace="elements$cK1w" />
+      <node id="2535923850360120154" at="224,0,225,0" concept="13" trace="TextElement$WN" />
+      <node id="2535923850360120154" at="225,0,226,0" concept="13" trace="Word$Dn" />
+      <node id="2535923850360120154" at="226,0,227,0" concept="13" trace="Line$yC" />
+      <node id="2535923850360120154" at="230,0,231,0" concept="13" trace="value$zQr_" />
+      <node id="2535923850360120154" at="234,0,235,0" concept="13" trace="elements$_j45" />
       <node id="6681408443910569135" at="23,0,25,0" concept="3" trace="TextDeleteStrategyFactory#()V" />
       <node id="474718489010815781" at="47,12,49,7" concept="1" />
       <node id="2535923850360726492" at="58,12,60,7" concept="1" />
@@ -2161,7 +2161,7 @@
       <node id="474718489011210764" at="155,55,156,40" concept="4" />
       <node id="474718489011210764" at="156,40,157,34" concept="4" />
       <node id="474718489011210764" at="157,34,158,22" concept="10" />
-      <node id="3133179214568824820" at="162,0,163,0" concept="13" trace="node$o9GP" />
+      <node id="3133179214568824820" at="162,0,163,0" concept="13" trace="node$KGJq" />
       <node id="3133179214568824820" at="29,0,31,0" concept="5" trace="myNode" />
       <node id="3133179214568824820" at="87,0,89,0" concept="5" trace="myNode" />
       <node id="3133179214568824820" at="43,0,46,0" concept="8" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -2350,9 +2350,9 @@
       <node id="38524911866654537" at="183,72,184,47" concept="10" />
       <node id="7670048657915498892" at="186,72,187,47" concept="10" />
       <node id="38524911866890015" at="189,72,190,47" concept="10" />
-      <node id="38524911866561636" at="194,0,195,0" concept="13" trace="TextElement$Ue" />
-      <node id="38524911866561636" at="195,0,196,0" concept="13" trace="Line$w3" />
-      <node id="38524911866561636" at="199,0,200,0" concept="13" trace="elements$cK1w" />
+      <node id="38524911866561636" at="194,0,195,0" concept="13" trace="TextElement$WN" />
+      <node id="38524911866561636" at="195,0,196,0" concept="13" trace="Line$yC" />
+      <node id="38524911866561636" at="199,0,200,0" concept="13" trace="elements$_j45" />
       <node id="7670048657915404338" at="28,0,31,0" concept="8" trace="execute#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="38524911866561991" at="53,0,56,0" concept="8" trace="execute#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="4676474846002241533" at="64,114,67,9" concept="7" />
@@ -2574,8 +2574,8 @@
       <node id="4058177569375321755" at="97,49,98,27" concept="10" />
       <node id="6356707875554130212" at="102,62,103,19" concept="10" />
       <node id="6356707875554134013" at="107,65,108,29" concept="10" />
-      <node id="4058177569375321748" at="114,0,115,0" concept="13" trace="IPlaceholderContent$md" />
-      <node id="4058177569375321748" at="118,0,119,0" concept="13" trace="lines$y1jy" />
+      <node id="4058177569375321748" at="114,0,115,0" concept="13" trace="IPlaceholderContent$Iv" />
+      <node id="4058177569375321748" at="118,0,119,0" concept="13" trace="lines$U$m7" />
       <node id="4058177569375321748" at="28,0,31,0" concept="3" trace="Text_SubstituteMenuContribution#()V" />
       <node id="4058177569375321755" at="84,0,87,0" concept="8" trace="setTraceInfo#(Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;)V" />
       <node id="4058177569375321755" at="79,0,83,0" concept="3" trace="Item#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)V" />
@@ -2689,7 +2689,7 @@
       <node id="4058177569375654587" at="99,0,100,77" concept="11" />
       <node id="4058177569375659808" at="101,72,102,78" concept="4" />
       <node id="474718489011044379" at="104,79,105,85" concept="4" />
-      <node id="4058177569375654587" at="110,0,111,0" concept="13" trace="BasePlaceholder$1w" />
+      <node id="4058177569375654587" at="110,0,111,0" concept="13" trace="BasePlaceholder$pM" />
       <node id="4058177569375659808" at="23,0,26,0" concept="8" trace="execute#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="4058177569375659808" at="36,0,39,0" concept="8" trace="canExecute_internal#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="474718489011044379" at="44,0,47,0" concept="8" trace="execute#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
@@ -2974,10 +2974,10 @@
       <node id="5138591726944176777" at="447,47,448,55" concept="15" />
       <node id="5138591726944119502" at="448,55,449,20" concept="4" />
       <node id="5138591726944119513" at="451,28,452,20" concept="10" />
-      <node id="5138591726944115567" at="457,0,458,0" concept="13" trace="TextElement$Ue" />
-      <node id="5138591726944115567" at="458,0,459,0" concept="13" trace="Line$w3" />
-      <node id="5138591726944115567" at="462,0,463,0" concept="13" trace="elements$cK1w" />
-      <node id="5138591726944115567" at="463,0,464,0" concept="13" trace="lines$y1jy" />
+      <node id="5138591726944115567" at="457,0,458,0" concept="13" trace="TextElement$WN" />
+      <node id="5138591726944115567" at="458,0,459,0" concept="13" trace="Line$yC" />
+      <node id="5138591726944115567" at="462,0,463,0" concept="13" trace="elements$_j45" />
+      <node id="5138591726944115567" at="463,0,464,0" concept="13" trace="lines$U$m7" />
       <node id="4506653733641842486" at="206,10,208,5" concept="1" />
       <node id="7541472253677256691" at="385,12,387,7" concept="1" />
       <node id="5138591726944118376" at="63,42,66,5" concept="7" />
@@ -3411,10 +3411,10 @@
       <node id="5287311640335482794" at="56,75,57,31" concept="10" />
       <node id="5287311640335482796" at="58,7,59,28" concept="10" />
       <node id="5287311640335482762" at="61,57,62,45" concept="10" />
-      <node id="5287311640335482029" at="67,0,68,0" concept="13" trace="Word$AM" />
-      <node id="5287311640335482029" at="71,0,72,0" concept="13" trace="url$wboS" />
-      <node id="5287311640335482029" at="72,0,73,0" concept="13" trace="italic$w5xv" />
-      <node id="5287311640335482029" at="73,0,74,0" concept="13" trace="bold$w4Os" />
+      <node id="5287311640335482029" at="67,0,68,0" concept="13" trace="Word$Dn" />
+      <node id="5287311640335482029" at="71,0,72,0" concept="13" trace="url$SIrt" />
+      <node id="5287311640335482029" at="72,0,73,0" concept="13" trace="italic$SC$4" />
+      <node id="5287311640335482029" at="73,0,74,0" concept="13" trace="bold$SBR1" />
       <node id="5287311640335482221" at="34,0,37,0" concept="3" trace="WordTextStyleStyleClass#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="5287311640335482757" at="44,62,47,7" concept="7" />
       <node id="5287311640335482762" at="61,0,64,0" concept="14" trace="isNotEmptyString#(Ljava/lang/String;)Z" />
@@ -3477,7 +3477,7 @@
       <node id="6379379516775311449" at="51,100,52,146" concept="9" />
       <node id="6379379516775311460" at="53,117,54,70" concept="4" />
       <node id="6379379516775311473" at="55,5,56,83" concept="4" />
-      <node id="5287311640348708847" at="60,0,61,0" concept="13" trace="TextElement$Ue" />
+      <node id="5287311640348708847" at="60,0,61,0" concept="13" trace="TextElement$WN" />
       <node id="5646944109420336622" at="21,82,24,7" concept="7" />
       <node id="5646944109420336637" at="26,5,29,5" concept="7" />
       <node id="6379379516775311458" at="52,146,55,5" concept="7" />
@@ -3763,7 +3763,7 @@
       <node id="6681408443910121735" at="45,62,46,105" concept="4" />
       <node id="6681408443911462549" at="48,121,49,94" concept="4" />
       <node id="6681408443910121735" at="51,34,52,18" concept="10" />
-      <node id="6681408443910095054" at="57,0,58,0" concept="13" trace="NodeWrapperElement$9z" />
+      <node id="6681408443910095054" at="57,0,58,0" concept="13" trace="NodeWrapperElement$c8" />
       <node id="6681408443910121735" at="24,0,27,0" concept="3" trace="NodeWrapperElement_LeftBrace_KeyMap_Action0#()V" />
       <node id="6681408443910121735" at="27,0,30,0" concept="8" trace="isMenuAlwaysShown#()Z" />
       <node id="6681408443910121735" at="31,62,34,7" concept="7" />
@@ -3829,7 +3829,7 @@
       <node id="6681408443910241052" at="45,62,46,105" concept="4" />
       <node id="6681408443911463677" at="48,121,49,95" concept="4" />
       <node id="6681408443910241052" at="51,34,52,18" concept="10" />
-      <node id="6681408443910241051" at="57,0,58,0" concept="13" trace="NodeWrapperElement$9z" />
+      <node id="6681408443910241051" at="57,0,58,0" concept="13" trace="NodeWrapperElement$c8" />
       <node id="6681408443910241052" at="24,0,27,0" concept="3" trace="NodeWrapperElement_RightBrace_KeyMap_Action0#()V" />
       <node id="6681408443910241052" at="27,0,30,0" concept="8" trace="isMenuAlwaysShown#()Z" />
       <node id="6681408443910241052" at="31,62,34,7" concept="7" />
@@ -4053,7 +4053,7 @@
       <node id="8356039341261983517" at="69,58,70,65" concept="4" />
       <node id="8356039341262029439" at="70,65,71,53" concept="9" />
       <node id="8356039341261970946" at="71,53,72,63" concept="4" />
-      <node id="6681408443910511317" at="77,0,78,0" concept="13" trace="Line$w3" />
+      <node id="6681408443910511317" at="77,0,78,0" concept="13" trace="Line$yC" />
       <node id="6681408443910511443" at="18,0,21,0" concept="3" trace="TextStrategy#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="8356039341261826365" at="31,38,34,5" concept="20" />
       <node id="8356039341261842773" at="34,5,37,5" concept="7" />

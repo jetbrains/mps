@@ -21,7 +21,7 @@ public class check_NotesConfiguration_NonTypesystemRule extends AbstractNonTypes
   public check_NotesConfiguration_NonTypesystemRule() {
   }
   public void applyRule(final SNode notesConfiguration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(notesConfiguration), CONCEPTS.NotesConfiguration$OI)).count() > 1) {
+    if (ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(notesConfiguration), CONCEPTS.NotesConfiguration$ao)).count() > 1) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(notesConfiguration, "Only one notes configuration is allowed in a model", "r:06486389-aaa0-4ecf-844a-5856289c120b(jetbrains.mps.samples.notesOrganizer.typesystem)", "8908453262579960025", null, errorTarget);
@@ -29,7 +29,7 @@ public class check_NotesConfiguration_NonTypesystemRule extends AbstractNonTypes
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.NotesConfiguration$OI;
+    return CONCEPTS.NotesConfiguration$ao;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -39,6 +39,6 @@ public class check_NotesConfiguration_NonTypesystemRule extends AbstractNonTypes
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NotesConfiguration$OI = MetaAdapterFactory.getConcept(0x4b0f115a88684d72L, 0x8d6197071eaaa5f1L, 0x7ba12f0b163d1745L, "jetbrains.mps.samples.notesOrganizer.structure.NotesConfiguration");
+    /*package*/ static final SConcept NotesConfiguration$ao = MetaAdapterFactory.getConcept(0x4b0f115a88684d72L, 0x8d6197071eaaa5f1L, 0x7ba12f0b163d1745L, "jetbrains.mps.samples.notesOrganizer.structure.NotesConfiguration");
   }
 }

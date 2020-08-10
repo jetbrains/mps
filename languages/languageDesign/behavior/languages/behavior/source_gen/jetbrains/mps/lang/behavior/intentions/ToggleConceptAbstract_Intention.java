@@ -53,12 +53,12 @@ public final class ToggleConceptAbstract_Intention extends AbstractIntentionDesc
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      String conceptName = SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.concept$45m$), PROPS.name$lA7v);
-      return (SPropertyOperations.getBoolean(SLinkOperations.getTarget(node, LINKS.concept$45m$), PROPS.abstract$Q3$6) ? "Make '" + conceptName + "' not abstract" : "Make '" + conceptName + "' abstract");
+      String conceptName = SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.concept$u6dL), PROPS.name$MnvL);
+      return (SPropertyOperations.getBoolean(SLinkOperations.getTarget(node, LINKS.concept$u6dL), PROPS.abstract$ibpT) ? "Make '" + conceptName + "' not abstract" : "Make '" + conceptName + "' abstract");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.set(SLinkOperations.getTarget(node, LINKS.concept$45m$), PROPS.abstract$Q3$6, !(SPropertyOperations.getBoolean(SLinkOperations.getTarget(node, LINKS.concept$45m$), PROPS.abstract$Q3$6)));
+      SPropertyOperations.set(SLinkOperations.getTarget(node, LINKS.concept$u6dL), PROPS.abstract$ibpT, !(SPropertyOperations.getBoolean(SLinkOperations.getTarget(node, LINKS.concept$u6dL), PROPS.abstract$ibpT)));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -67,11 +67,11 @@ public final class ToggleConceptAbstract_Intention extends AbstractIntentionDesc
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$45m$ = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
+    /*package*/ static final SReferenceLink concept$u6dL = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty abstract$Q3$6 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty abstract$ibpT = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
   }
 }

@@ -25,10 +25,10 @@
       <node id="3232030656011514889" at="36,0,37,22" concept="5" />
       <node id="3232030656011515360" at="41,128,42,333" concept="5" />
       <node id="3232030656011514889" at="44,0,45,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="3232030656011514889" at="47,0,48,0" concept="7" trace="PropertyPointerValueOperation$sT" />
-      <node id="3232030656011514889" at="48,0,49,0" concept="7" trace="DotExpression$6a" />
-      <node id="3232030656011514889" at="49,0,50,0" concept="7" trace="PropertyPointerType$EW" />
-      <node id="3232030656011514889" at="53,0,54,0" concept="7" trace="operand$P1i5" />
+      <node id="3232030656011514889" at="47,0,48,0" concept="7" trace="PropertyPointerValueOperation$xq" />
+      <node id="3232030656011514889" at="48,0,49,0" concept="7" trace="DotExpression$yW" />
+      <node id="3232030656011514889" at="49,0,50,0" concept="7" trace="PropertyPointerType$Jt" />
+      <node id="3232030656011514889" at="53,0,54,0" concept="7" trace="operand$w6IR" />
       <node id="3232030656011514889" at="22,0,25,0" concept="0" trace="PropertyPointerValueOperation_Constraints#()V" />
       <node id="3232030656011514889" at="32,0,35,9" concept="2" />
       <node id="3232030656011514889" at="41,0,44,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -71,11 +71,11 @@
       <node id="4844813484172611611" at="59,131,60,42" concept="1" />
       <node id="4844813484172611610" at="60,42,61,22" concept="5" />
       <node id="4844813484172611610" at="63,0,64,0" concept="7" trace="breakingNode_e11h12_a0a0a0a0a1a0a0a0c" />
-      <node id="4844813484172611610" at="66,0,67,0" concept="7" trace="PropertyRefExpression$3P" />
-      <node id="4844813484172611610" at="67,0,68,0" concept="7" trace="SNodeType$gn" />
-      <node id="4844813484172611610" at="71,0,72,0" concept="7" trace="propertyDeclaration$ky9x" />
-      <node id="4844813484172611610" at="72,0,73,0" concept="7" trace="nodeExpr$kxUw" />
-      <node id="4844813484172611610" at="73,0,74,0" concept="7" trace="concept$gpfa" />
+      <node id="4844813484172611610" at="66,0,67,0" concept="7" trace="PropertyRefExpression$8m" />
+      <node id="4844813484172611610" at="67,0,68,0" concept="7" trace="SNodeType$hR" />
+      <node id="4844813484172611610" at="71,0,72,0" concept="7" trace="propertyDeclaration$KMe2" />
+      <node id="4844813484172611610" at="72,0,73,0" concept="7" trace="nodeExpr$KLZ1" />
+      <node id="4844813484172611610" at="73,0,74,0" concept="7" trace="concept$OMgE" />
       <node id="4844813484172611610" at="30,0,33,0" concept="0" trace="PropertyRefExpression_Constraints#()V" />
       <node id="6836281137582781246" at="50,80,53,13" concept="2" />
       <node id="4844813484172611611" at="37,0,41,0" concept="3" trace="hasOwnScopeProvider#()Z" />

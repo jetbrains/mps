@@ -26,7 +26,7 @@ public class _ConceptDeclaration_DeleteFinal_Action {
         if (DeletionApproverUtil.approve(editorContext, node, "finalKeyword")) {
           return;
         }
-        SPropertyOperations.assign(node, PROPS.final$Q4Jb, false);
+        SPropertyOperations.assign(node, PROPS.final$ic$Y, false);
       }
 
     };
@@ -74,6 +74,6 @@ public class _ConceptDeclaration_DeleteFinal_Action {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty final$Q4Jb = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec7L, "final");
+    /*package*/ static final SProperty final$ic$Y = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec7L, "final");
   }
 }

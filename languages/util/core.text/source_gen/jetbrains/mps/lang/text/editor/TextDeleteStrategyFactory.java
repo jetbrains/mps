@@ -33,22 +33,22 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   }
 
   /*package*/ static TextStrategy createDeleteStrategy(SNode currentNode, EditorContext editorContext, boolean isForward) {
-    SNode neighbour = SNodeOperations.as(((isForward ? SNodeOperations.getNextSibling(currentNode) : SNodeOperations.getPrevSibling(currentNode))), CONCEPTS.TextElement$Ue);
-    if (SNodeOperations.isInstanceOf(currentNode, CONCEPTS.Word$AM) && (neighbour != null)) {
-      if (SNodeOperations.isInstanceOf(neighbour, CONCEPTS.Word$AM)) {
-        return new GlueNeighbourWordStrategy(SNodeOperations.cast(currentNode, CONCEPTS.Word$AM), SNodeOperations.cast(neighbour, CONCEPTS.Word$AM), editorContext, isForward);
-      } else if (isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(currentNode, CONCEPTS.Word$AM), PROPS.value$bjp0))) {
-        return new DeleteEmptyWordStrategy(SNodeOperations.cast(currentNode, CONCEPTS.Word$AM), neighbour, editorContext, isForward);
+    SNode neighbour = SNodeOperations.as(((isForward ? SNodeOperations.getNextSibling(currentNode) : SNodeOperations.getPrevSibling(currentNode))), CONCEPTS.TextElement$WN);
+    if (SNodeOperations.isInstanceOf(currentNode, CONCEPTS.Word$Dn) && (neighbour != null)) {
+      if (SNodeOperations.isInstanceOf(neighbour, CONCEPTS.Word$Dn)) {
+        return new GlueNeighbourWordStrategy(SNodeOperations.cast(currentNode, CONCEPTS.Word$Dn), SNodeOperations.cast(neighbour, CONCEPTS.Word$Dn), editorContext, isForward);
+      } else if (isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(currentNode, CONCEPTS.Word$Dn), PROPS.value$zQr_))) {
+        return new DeleteEmptyWordStrategy(SNodeOperations.cast(currentNode, CONCEPTS.Word$Dn), neighbour, editorContext, isForward);
       }
     }
     if ((neighbour != null)) {
-      if (SNodeOperations.isInstanceOf(neighbour, CONCEPTS.Word$AM)) {
-        return new SelectNeighbourWordStrategy(SNodeOperations.cast(neighbour, CONCEPTS.Word$AM), editorContext, isForward);
+      if (SNodeOperations.isInstanceOf(neighbour, CONCEPTS.Word$Dn)) {
+        return new SelectNeighbourWordStrategy(SNodeOperations.cast(neighbour, CONCEPTS.Word$Dn), editorContext, isForward);
       } else {
         return new RemoveNeighbourStrategy(neighbour, editorContext, isForward);
       }
     } else {
-      SNode currentLine = SNodeOperations.as(SNodeOperations.getParent(currentNode), CONCEPTS.Line$w3);
+      SNode currentLine = SNodeOperations.as(SNodeOperations.getParent(currentNode), CONCEPTS.Line$yC);
       SNode lineContainer = TextStrategy.findLineContainer(currentLine);
 
       SNode neighbourContainer = (isForward ? SNodeOperations.getNextSibling(lineContainer) : SNodeOperations.getPrevSibling(lineContainer));
@@ -72,8 +72,8 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       super(editorContext, isForward);
       myCurrentWord = currentWord;
       myNeighbour = neighbourWord;
-      myCurrentWordValue = getValueOrEmpty(SPropertyOperations.getString(myCurrentWord, PROPS.value$bjp0));
-      myNeighbourValue = getValueOrEmpty(SPropertyOperations.getString(myNeighbour, PROPS.value$bjp0));
+      myCurrentWordValue = getValueOrEmpty(SPropertyOperations.getString(myCurrentWord, PROPS.value$zQr_));
+      myNeighbourValue = getValueOrEmpty(SPropertyOperations.getString(myNeighbour, PROPS.value$zQr_));
     }
 
     @Override
@@ -85,7 +85,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       } else {
         newWord = SNodeOperations.copyNode(myCurrentWord);
       }
-      SPropertyOperations.assign(newWord, PROPS.value$bjp0, getNewValue());
+      SPropertyOperations.assign(newWord, PROPS.value$zQr_, getNewValue());
       SNodeOperations.deleteNode(myNeighbour);
       SNodeOperations.replaceWithAnother(myCurrentWord, newWord);
       SelectionUtil.selectLabelCellAnSetCaret(myEditorContext, newWord, "*" + CellIdManager.createPropertyId("value"), selectionIndex);
@@ -196,22 +196,22 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     /*package*/ void execute() {
       SNode edgeElement;
       if (myIsForward) {
-        edgeElement = ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$cK1w)).first();
-        ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$cK1w)).visitAll(new IVisitor<SNode>() {
+        edgeElement = ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$_j45)).first();
+        ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$_j45)).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
-            ListSequence.fromList(SLinkOperations.getChildren(myCurrentLine, LINKS.elements$cK1w)).addElement(it);
+            ListSequence.fromList(SLinkOperations.getChildren(myCurrentLine, LINKS.elements$_j45)).addElement(it);
           }
         });
       } else {
-        edgeElement = ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$cK1w)).last();
-        ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$cK1w)).reversedList().visitAll(new IVisitor<SNode>() {
+        edgeElement = ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$_j45)).last();
+        ListSequence.fromList(SLinkOperations.getChildren(myNeighbourLine, LINKS.elements$_j45)).reversedList().visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
-            ListSequence.fromList(SLinkOperations.getChildren(myCurrentLine, LINKS.elements$cK1w)).insertElement(0, it);
+            ListSequence.fromList(SLinkOperations.getChildren(myCurrentLine, LINKS.elements$_j45)).insertElement(0, it);
           }
         });
       }
       SNodeOperations.deleteNode(TextStrategy.findLineContainer(myNeighbourLine));
-      if (SNodeOperations.isInstanceOf(edgeElement, CONCEPTS.Word$AM) && SNodeOperations.isInstanceOf(myCurrentNode, CONCEPTS.Word$AM)) {
+      if (SNodeOperations.isInstanceOf(edgeElement, CONCEPTS.Word$Dn) && SNodeOperations.isInstanceOf(myCurrentNode, CONCEPTS.Word$Dn)) {
         TextDeleteStrategyFactory.createDeleteStrategy(myCurrentNode, myEditorContext, myIsForward).execute();
       }
     }
@@ -221,16 +221,16 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TextElement$Ue = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L, "jetbrains.mps.lang.text.structure.TextElement");
-    /*package*/ static final SConcept Word$AM = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
-    /*package*/ static final SConcept Line$w3 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
+    /*package*/ static final SConcept TextElement$WN = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L, "jetbrains.mps.lang.text.structure.TextElement");
+    /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
+    /*package*/ static final SConcept Line$yC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$bjp0 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
+    /*package*/ static final SProperty value$zQr_ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elements$cK1w = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink elements$_j45 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
   }
 }

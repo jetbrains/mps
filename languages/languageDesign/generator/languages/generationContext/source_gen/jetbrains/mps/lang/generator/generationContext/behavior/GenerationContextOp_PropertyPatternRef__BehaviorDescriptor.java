@@ -32,10 +32,10 @@ public final class GenerationContextOp_PropertyPatternRef__BehaviorDescriptor ex
   }
 
   /*package*/ static SNode getTarget_id1xCtdgeTQHC(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.propertyPatternVar$9Zh3);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.propertyPatternVar$pUED);
   }
   /*package*/ static void setTarget_id1xCtdgeUoP5(@NotNull SNode __thisNode__, SNode target) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.propertyPatternVar$9Zh3, null);
+    SLinkOperations.setTarget(__thisNode__, LINKS.propertyPatternVar$pUED, null);
   }
 
   /*package*/ GenerationContextOp_PropertyPatternRef__BehaviorDescriptor() {
@@ -88,6 +88,6 @@ public final class GenerationContextOp_PropertyPatternRef__BehaviorDescriptor ex
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink propertyPatternVar$9Zh3 = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x186874d40ed9c758L, 0x186874d40ed9c75cL, "propertyPatternVar");
+    /*package*/ static final SReferenceLink propertyPatternVar$pUED = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x186874d40ed9c758L, 0x186874d40ed9c75cL, "propertyPatternVar");
   }
 }

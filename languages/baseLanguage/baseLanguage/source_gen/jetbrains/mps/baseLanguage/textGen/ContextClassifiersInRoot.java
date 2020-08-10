@@ -43,10 +43,10 @@ public class ContextClassifiersInRoot {
   public Map<String, String> getContextClassifiers(SNode contextNode) {
     // only AnonymousClass has Classifier as reference 
     // todo: make it clearer 
-    if (SNodeOperations.isInstanceOf(contextNode, CONCEPTS.IAnonymousClass$hQ)) {
+    if (SNodeOperations.isInstanceOf(contextNode, CONCEPTS.IAnonymousClass$IC)) {
       contextNode = SNodeOperations.getParent(contextNode);
     }
-    if (SNodeOperations.isInstanceOf(contextNode, CONCEPTS.Classifier$hJ)) {
+    if (SNodeOperations.isInstanceOf(contextNode, CONCEPTS.Classifier$Ix)) {
       if (LOG.isEnabledFor(Level.WARN)) {
         LOG.warn("contextNode is classifier in getContextClassifiers: " + contextNode);
       }
@@ -55,7 +55,7 @@ public class ContextClassifiersInRoot {
 
     // find first classifier in path 
     SContainmentLink sourceChildRole = null;
-    while ((contextNode != null) && !(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.Classifier$hJ))) {
+    while ((contextNode != null) && !(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.Classifier$Ix))) {
       sourceChildRole = contextNode.getContainmentLink();
       contextNode = SNodeOperations.getParent(contextNode);
     }
@@ -65,7 +65,7 @@ public class ContextClassifiersInRoot {
       return Collections.emptyMap();
     }
 
-    return myContextClassifiersCache.get(MultiTuple.<SNode,SContainmentLink>from(SNodeOperations.cast(contextNode, CONCEPTS.Classifier$hJ), sourceChildRole));
+    return myContextClassifiersCache.get(MultiTuple.<SNode,SContainmentLink>from(SNodeOperations.cast(contextNode, CONCEPTS.Classifier$Ix), sourceChildRole));
   }
 
   private Map<String, String> getContextClassifiers(SNode contextNode, SContainmentLink sourceChildRole) {
@@ -73,14 +73,14 @@ public class ContextClassifiersInRoot {
 
     SNode current = contextNode;
     while ((current != null)) {
-      if (SNodeOperations.isInstanceOf(current, CONCEPTS.Classifier$hJ)) {
+      if (SNodeOperations.isInstanceOf(current, CONCEPTS.Classifier$Ix)) {
         boolean processNestedClassifiers = false;
-        if (SNodeOperations.isInstanceOf(current, CONCEPTS.AnonymousClass$aF) || SNodeOperations.isInstanceOf(current, CONCEPTS.EnumClass$uy)) {
+        if (SNodeOperations.isInstanceOf(current, CONCEPTS.AnonymousClass$Bt) || SNodeOperations.isInstanceOf(current, CONCEPTS.EnumClass$Vk)) {
           processNestedClassifiers = true;
-        } else if (SNodeOperations.isInstanceOf(current, CONCEPTS.Interface$Kp)) {
-          processNestedClassifiers = !(LINKS.extendedInterface$a$v2.equals(sourceChildRole));
-        } else if (SNodeOperations.isInstanceOf(current, CONCEPTS.ClassConcept$IY)) {
-          processNestedClassifiers = !((LINKS.superclass$7jGM.equals(sourceChildRole) || LINKS.implementedInterface$KoQU.equals(sourceChildRole)));
+        } else if (SNodeOperations.isInstanceOf(current, CONCEPTS.Interface$db)) {
+          processNestedClassifiers = !(LINKS.extendedInterface$PDVO.equals(sourceChildRole));
+        } else if (SNodeOperations.isInstanceOf(current, CONCEPTS.ClassConcept$bK)) {
+          processNestedClassifiers = !((LINKS.superclass$Mp9$.equals(sourceChildRole) || LINKS.implementedInterface$rujG.equals(sourceChildRole)));
         } else {
           if (LOG.isEnabledFor(Level.WARN)) {
             LOG.warn("Illegal classifier node in bl textgen: " + current);
@@ -88,9 +88,9 @@ public class ContextClassifiersInRoot {
         }
 
         // todo: is it true? had a bug with it. Look like nested classifier has more priority then class with same name 
-        addClassifierToBindingMap(bindings, SNodeOperations.cast(current, CONCEPTS.Classifier$hJ));
+        addClassifierToBindingMap(bindings, SNodeOperations.cast(current, CONCEPTS.Classifier$Ix));
         if (processNestedClassifiers) {
-          for (Map.Entry<String, String> simpleToFqName : myNestedClassifiersCache.get(SNodeOperations.cast(current, CONCEPTS.Classifier$hJ)).entrySet()) {
+          for (Map.Entry<String, String> simpleToFqName : myNestedClassifiersCache.get(SNodeOperations.cast(current, CONCEPTS.Classifier$Ix)).entrySet()) {
             if (!(bindings.containsKey(simpleToFqName.getKey()))) {
               bindings.put(simpleToFqName.getKey(), simpleToFqName.getValue());
             }
@@ -112,7 +112,7 @@ public class ContextClassifiersInRoot {
     Map<String, String> nestedClassifiers = new HashMap<String, String>();
 
     // todo: classifiers with same names in different supertypes? 
-    for (SNode superClassifier : Classifier__BehaviorDescriptor.getAllExtendedClassifiers_id2xreLMO8jma.invoke(SNodeOperations.cast(classifier, CONCEPTS.Classifier$hJ))) {
+    for (SNode superClassifier : Classifier__BehaviorDescriptor.getAllExtendedClassifiers_id2xreLMO8jma.invoke(SNodeOperations.cast(classifier, CONCEPTS.Classifier$Ix))) {
       for (SNode nestedClassifier : Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(superClassifier)) {
         addClassifierToBindingMap(nestedClassifiers, nestedClassifier);
       }
@@ -122,7 +122,7 @@ public class ContextClassifiersInRoot {
   }
 
   private static void addClassifierToBindingMap(Map<String, String> bindings, SNode classifier) {
-    String simpleName = SPropertyOperations.getString(classifier, PROPS.name$lA7v);
+    String simpleName = SPropertyOperations.getString(classifier, PROPS.name$MnvL);
     String fqName = INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(classifier);
 
     if (!(bindings.containsKey(simpleName))) {
@@ -131,21 +131,21 @@ public class ContextClassifiersInRoot {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IAnonymousClass$hQ = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2f89e470eed6258eL, "jetbrains.mps.baseLanguage.structure.IAnonymousClass");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept EnumClass$uy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
-    /*package*/ static final SConcept AnonymousClass$aF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SInterfaceConcept IAnonymousClass$IC = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2f89e470eed6258eL, "jetbrains.mps.baseLanguage.structure.IAnonymousClass");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept EnumClass$Vk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
+    /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink extendedInterface$a$v2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
-    /*package*/ static final SContainmentLink implementedInterface$KoQU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
-    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SContainmentLink extendedInterface$PDVO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
+    /*package*/ static final SContainmentLink implementedInterface$rujG = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
+    /*package*/ static final SContainmentLink superclass$Mp9$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

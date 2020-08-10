@@ -45,13 +45,13 @@ public final class ConceptId__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SAbstractConcept getConcept_id5ZE7FBYYOpv(@NotNull SNode __thisNode__) {
-    SLanguage lang = LanguageIdentity__BehaviorDescriptor.getLanguage_id34EJa6aIcyj.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.languageIdentity$u332));
-    String cn = SPropertyOperations.getString(__thisNode__, PROPS.conceptName$bhKA);
+    SLanguage lang = LanguageIdentity__BehaviorDescriptor.getLanguage_id34EJa6aIcyj.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.languageIdentity$2s4y));
+    String cn = SPropertyOperations.getString(__thisNode__, PROPS.conceptName$JEM6);
     if (lang == null || cn == null) {
       return null;
     }
     long cid = ((long) ConceptId__BehaviorDescriptor.getIdValue_id5ZE7FBZ0whU.invoke(__thisNode__));
-    if (SPropertyOperations.getBoolean(__thisNode__, PROPS.isInterface$WuX_)) {
+    if (SPropertyOperations.getBoolean(__thisNode__, PROPS.isInterface$wRZ5)) {
       return MetaAdapterFactory.getInterfaceConcept(lang, cid, cn);
     } else {
       return MetaAdapterFactory.getConcept(lang, cid, cn);
@@ -59,24 +59,24 @@ public final class ConceptId__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static void setConcept_id5e7X3XCIPOJ(@NotNull SNode __thisNode__, @NotNull SNode concept) {
     SConceptId cid = MetaIdByDeclaration.getConceptId(concept);
-    SNode lang = SModelOperations.createNewNode(SNodeOperations.getModel(__thisNode__), null, CONCEPTS.LanguageId$Tn);
+    SNode lang = SModelOperations.createNewNode(SNodeOperations.getModel(__thisNode__), null, CONCEPTS.LanguageId$UR);
     LanguageIdentity__BehaviorDescriptor.setLanguage_id5e7X3XCKW4J.invoke(lang, (Language) SNodeOperations.getModel(concept).getModule());
-    SLinkOperations.setTarget(__thisNode__, LINKS.languageIdentity$u332, lang);
-    SPropertyOperations.assign(__thisNode__, PROPS.conceptName$bhKA, SPropertyOperations.getString(concept, PROPS.name$lA7v));
-    SPropertyOperations.assign(__thisNode__, PROPS.isInterface$WuX_, SNodeOperations.isInstanceOf(concept, CONCEPTS.InterfaceConceptDeclaration$MT));
-    SPropertyOperations.assign(__thisNode__, PROPS.conceptId$u3x4, Long.toString(cid.getIdValue(), Character.MAX_RADIX));
+    SLinkOperations.setTarget(__thisNode__, LINKS.languageIdentity$2s4y, lang);
+    SPropertyOperations.assign(__thisNode__, PROPS.conceptName$JEM6, SPropertyOperations.getString(concept, PROPS.name$MnvL));
+    SPropertyOperations.assign(__thisNode__, PROPS.isInterface$wRZ5, SNodeOperations.isInstanceOf(concept, CONCEPTS.InterfaceConceptDeclaration$CG));
+    SPropertyOperations.assign(__thisNode__, PROPS.conceptId$2sy$, Long.toString(cid.getIdValue(), Character.MAX_RADIX));
   }
   /*package*/ static void setConcept_id5ZE7FBYYR6j(@NotNull SNode __thisNode__, @NotNull SAbstractConcept concept) {
     SConceptId cid = MetaIdHelper.getConcept(concept);
-    SNode lang = SModelOperations.createNewNode(SNodeOperations.getModel(__thisNode__), null, CONCEPTS.LanguageId$Tn);
+    SNode lang = SModelOperations.createNewNode(SNodeOperations.getModel(__thisNode__), null, CONCEPTS.LanguageId$UR);
     LanguageIdentity__BehaviorDescriptor.setLanguage_id34EJa6aIcyw.invoke(lang, concept.getLanguage());
-    SLinkOperations.setTarget(__thisNode__, LINKS.languageIdentity$u332, lang);
-    SPropertyOperations.assign(__thisNode__, PROPS.conceptName$bhKA, concept.getName());
-    SPropertyOperations.assign(__thisNode__, PROPS.isInterface$WuX_, concept instanceof SInterfaceConcept);
-    SPropertyOperations.assign(__thisNode__, PROPS.conceptId$u3x4, Long.toString(cid.getIdValue(), Character.MAX_RADIX));
+    SLinkOperations.setTarget(__thisNode__, LINKS.languageIdentity$2s4y, lang);
+    SPropertyOperations.assign(__thisNode__, PROPS.conceptName$JEM6, concept.getName());
+    SPropertyOperations.assign(__thisNode__, PROPS.isInterface$wRZ5, concept instanceof SInterfaceConcept);
+    SPropertyOperations.assign(__thisNode__, PROPS.conceptId$2sy$, Long.toString(cid.getIdValue(), Character.MAX_RADIX));
   }
   /*package*/ static long getIdValue_id5ZE7FBZ0whU(@NotNull SNode __thisNode__) {
-    return Long.parseLong(SPropertyOperations.getString(__thisNode__, PROPS.conceptId$u3x4), Character.MAX_RADIX);
+    return Long.parseLong(SPropertyOperations.getString(__thisNode__, PROPS.conceptId$2sy$), Character.MAX_RADIX);
   }
 
   /*package*/ ConceptId__BehaviorDescriptor() {
@@ -134,18 +134,18 @@ public final class ConceptId__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink languageIdentity$u332 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, 0x5fea1eb9fefb6feaL, "languageIdentity");
+    /*package*/ static final SContainmentLink languageIdentity$2s4y = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, 0x5fea1eb9fefb6feaL, "languageIdentity");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty conceptName$bhKA = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, 0x5fea1eb9fefb73d7L, "conceptName");
-    /*package*/ static final SProperty isInterface$WuX_ = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, 0x5fea1eb9fefb9fecL, "isInterface");
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty conceptId$u3x4 = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, 0x5fea1eb9fefb6fecL, "conceptId");
+    /*package*/ static final SProperty conceptName$JEM6 = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, 0x5fea1eb9fefb73d7L, "conceptName");
+    /*package*/ static final SProperty isInterface$wRZ5 = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, 0x5fea1eb9fefb9fecL, "isInterface");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty conceptId$2sy$ = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, 0x5fea1eb9fefb6fecL, "conceptId");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LanguageId$Tn = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, "jetbrains.mps.lang.smodel.structure.LanguageId");
-    /*package*/ static final SConcept InterfaceConceptDeclaration$MT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
+    /*package*/ static final SConcept LanguageId$UR = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, "jetbrains.mps.lang.smodel.structure.LanguageId");
+    /*package*/ static final SConcept InterfaceConceptDeclaration$CG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
   }
 }

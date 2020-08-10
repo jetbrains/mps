@@ -28,7 +28,7 @@ public class check_ConstraintsRuleId_NonTypesystemRule extends AbstractNonTypesy
   public check_ConstraintsRuleId_NonTypesystemRule() {
   }
   public void applyRule(final SNode rule, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (isEmptyString(SPropertyOperations.getString(rule, PROPS.ruleId$rAly))) {
+    if (isEmptyString(SPropertyOperations.getString(rule, PROPS.ruleId$WGdw))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(rule, "Rule id is not defined", "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "1587916991969781666", null, errorTarget);
@@ -39,9 +39,9 @@ public class check_ConstraintsRuleId_NonTypesystemRule extends AbstractNonTypesy
         }
       }
     } else {
-      if (ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(rule), CONCEPTS.Rule$LR)).any(new IWhereFilter<SNode>() {
+      if (ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(rule), CONCEPTS.Rule$DP)).any(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return it != rule && Objects.equals(SPropertyOperations.getString(it, PROPS.ruleId$rAly), SPropertyOperations.getString(rule, PROPS.ruleId$rAly));
+          return it != rule && Objects.equals(SPropertyOperations.getString(it, PROPS.ruleId$WGdw), SPropertyOperations.getString(rule, PROPS.ruleId$WGdw));
         }
       })) {
         {
@@ -53,7 +53,7 @@ public class check_ConstraintsRuleId_NonTypesystemRule extends AbstractNonTypesy
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }
-      } else if (!(Objects.equals(SPropertyOperations.getString(rule, PROPS.ruleId$rAly), ConceptIdHelper.getNodeIdString(rule)))) {
+      } else if (!(Objects.equals(SPropertyOperations.getString(rule, PROPS.ruleId$WGdw), ConceptIdHelper.getNodeIdString(rule)))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(rule, "Node id and rule id differ", "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "2819660830273583910", null, errorTarget);
@@ -67,7 +67,7 @@ public class check_ConstraintsRuleId_NonTypesystemRule extends AbstractNonTypesy
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.RuleIdHolder$pU;
+    return CONCEPTS.RuleIdHolder$hS;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -80,11 +80,11 @@ public class check_ConstraintsRuleId_NonTypesystemRule extends AbstractNonTypesy
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty ruleId$rAly = MetaAdapterFactory.getProperty(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL, 0x5d2e6079771f8cc0L, "ruleId");
+    /*package*/ static final SProperty ruleId$WGdw = MetaAdapterFactory.getProperty(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL, 0x5d2e6079771f8cc0L, "ruleId");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Rule$LR = MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.Rule");
-    /*package*/ static final SInterfaceConcept RuleIdHolder$pU = MetaAdapterFactory.getInterfaceConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL, "jetbrains.mps.lang.constraints.rules.structure.RuleIdHolder");
+    /*package*/ static final SConcept Rule$DP = MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x6530303593586de2L, "jetbrains.mps.lang.constraints.rules.structure.Rule");
+    /*package*/ static final SInterfaceConcept RuleIdHolder$hS = MetaAdapterFactory.getInterfaceConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x46263286dbf54aaL, "jetbrains.mps.lang.constraints.rules.structure.RuleIdHolder");
   }
 }

@@ -43,8 +43,8 @@ public final class Regexp__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getTopLevelRegexp_idhNm6Oh5(@NotNull SNode __thisNode__) {
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.Regexp$xM)) {
-      return Regexp__BehaviorDescriptor.getTopLevelRegexp_idhNm6Oh5.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.Regexp$xM));
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.Regexp$aA)) {
+      return Regexp__BehaviorDescriptor.getTopLevelRegexp_idhNm6Oh5.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.Regexp$aA));
     }
     return __thisNode__;
   }
@@ -82,7 +82,7 @@ public final class Regexp__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static boolean isValid_id48bMILtL4il(@NotNull SNode __thisNode__) {
     for (SNode n : ListSequence.fromList(SNodeOperations.getChildren(__thisNode__))) {
-      if (SNodeOperations.isInstanceOf(n, CONCEPTS.Regexp$xM) && !((boolean) Regexp__BehaviorDescriptor.isValid_id48bMILtL4il.invoke(SNodeOperations.cast(n, CONCEPTS.Regexp$xM)))) {
+      if (SNodeOperations.isInstanceOf(n, CONCEPTS.Regexp$aA) && !((boolean) Regexp__BehaviorDescriptor.isValid_id48bMILtL4il.invoke(SNodeOperations.cast(n, CONCEPTS.Regexp$aA)))) {
         return false;
       }
     }
@@ -152,6 +152,6 @@ public final class Regexp__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Regexp$xM = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a06efdL, "jetbrains.mps.baseLanguage.regexp.structure.Regexp");
+    /*package*/ static final SConcept Regexp$aA = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a06efdL, "jetbrains.mps.baseLanguage.regexp.structure.Regexp");
   }
 }

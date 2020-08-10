@@ -28,7 +28,7 @@ public class OfAspectOperation_SubstituteMenu extends SubstituteMenuBase {
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
     result.add(new SMP_Subconcepts_xdr5c_a());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.OfAspectOperation$9s) {
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.OfAspectOperation$cT) {
 
       @NotNull
       @Override
@@ -41,7 +41,7 @@ public class OfAspectOperation_SubstituteMenu extends SubstituteMenuBase {
           context.getEditorMenuTrace().popTraceInfo();
         }
       }
-    }, CONCEPTS.OfAspectOperation$9s));
+    }, CONCEPTS.OfAspectOperation$cT));
     return result;
   }
 
@@ -60,7 +60,7 @@ public class OfAspectOperation_SubstituteMenu extends SubstituteMenuBase {
 
   public class SMP_Subconcepts_xdr5c_a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.OfAspectOperation$9s);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.OfAspectOperation$cT);
     }
     @NotNull
     @Override
@@ -81,6 +81,6 @@ public class OfAspectOperation_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept OfAspectOperation$9s = MetaAdapterFactory.getConcept(0x69b8a9939b874d96L, 0xbf0c3559f4bb0c63L, 0x5252d9021b8b45a8L, "jetbrains.mps.lang.slanguage.structure.OfAspectOperation");
+    /*package*/ static final SConcept OfAspectOperation$cT = MetaAdapterFactory.getConcept(0x69b8a9939b874d96L, 0xbf0c3559f4bb0c63L, 0x5252d9021b8b45a8L, "jetbrains.mps.lang.slanguage.structure.OfAspectOperation");
   }
 }

@@ -36,7 +36,7 @@ public final class ClickableNode__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Runnable execute_id7oNS25df64x(@NotNull SNode __thisNode__, final MPSProject project) {
-    final SNodeReference tn = NodeIdentity__BehaviorDescriptor.toNodeReference_id4nxIQVLmsc4.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.target$cvz4));
+    final SNodeReference tn = NodeIdentity__BehaviorDescriptor.toNodeReference_id4nxIQVLmsc4.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.target$IMmQ));
     return new Runnable() {
       public void run() {
         new EditorNavigator(project).shallFocus(true).shallSelect(false).open(tn);
@@ -44,7 +44,7 @@ public final class ClickableNode__BehaviorDescriptor extends BaseBHDescriptor {
     };
   }
   /*package*/ static boolean canExecute_id2QdC0h7dh1h(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.target$cvz4) != null;
+    return SLinkOperations.getTarget(__thisNode__, LINKS.target$IMmQ) != null;
   }
 
   /*package*/ ClickableNode__BehaviorDescriptor() {
@@ -96,6 +96,6 @@ public final class ClickableNode__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink target$cvz4 = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x72ed699ef9552c28L, 0x72ed699ef9552c2dL, "target");
+    /*package*/ static final SContainmentLink target$IMmQ = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x72ed699ef9552c28L, 0x72ed699ef9552c2dL, "target");
   }
 }

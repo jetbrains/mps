@@ -18,10 +18,10 @@ public class check_SubtypingRule_ExpectedReturns_NonTypesystemRule extends Abstr
   public check_SubtypingRule_ExpectedReturns_NonTypesystemRule() {
   }
   public void applyRule(final SNode subtypingRule, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    DataFlowUtil.checkReturns(typeCheckingContext, SLinkOperations.getTarget(subtypingRule, LINKS.body$fCC5));
+    DataFlowUtil.checkReturns(typeCheckingContext, SLinkOperations.getTarget(subtypingRule, LINKS.body$CuTV));
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SubtypingRule$86;
+    return CONCEPTS.SubtypingRule$pW;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -31,10 +31,10 @@ public class check_SubtypingRule_ExpectedReturns_NonTypesystemRule extends Abstr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$fCC5 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1119c40dfb0L, 0x1119c41b754L, "body");
+    /*package*/ static final SContainmentLink body$CuTV = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1119c40dfb0L, 0x1119c41b754L, "body");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SubtypingRule$86 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1119c426ccaL, "jetbrains.mps.lang.typesystem.structure.SubtypingRule");
+    /*package*/ static final SConcept SubtypingRule$pW = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1119c426ccaL, "jetbrains.mps.lang.typesystem.structure.SubtypingRule");
   }
 }

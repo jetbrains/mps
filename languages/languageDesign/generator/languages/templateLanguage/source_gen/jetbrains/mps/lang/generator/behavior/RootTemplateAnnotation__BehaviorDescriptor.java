@@ -36,7 +36,7 @@ public final class RootTemplateAnnotation__BehaviorDescriptor extends BaseBHDesc
   }
 
   /*package*/ static boolean suppress_id3612de_vrfV(@NotNull SNode __thisNode__, final NodeReportItem reportItem) {
-    return ListSequence.fromList(AttributeOperations.getAttributeList(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$gJ))).any(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(AttributeOperations.getAttributeList(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1))).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return (boolean) ISuppressErrors__BehaviorDescriptor.suppress_id3612de_vrfV.invoke(it, reportItem);
       }
@@ -90,6 +90,6 @@ public final class RootTemplateAnnotation__BehaviorDescriptor extends BaseBHDesc
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SuppressErrorsAnnotation$gJ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, "jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation");
+    /*package*/ static final SConcept SuppressErrorsAnnotation$D1 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, "jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation");
   }
 }

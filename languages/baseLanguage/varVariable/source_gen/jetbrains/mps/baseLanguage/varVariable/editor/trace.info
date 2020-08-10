@@ -57,10 +57,10 @@
       <node id="4792977609793407674" at="132,81,133,58" concept="2" />
       <node id="4792977609793407674" at="134,11,135,0" concept="10" />
       <node id="4792977609793407674" at="143,160,144,54" concept="8" />
-      <node id="4792977609793407658" at="149,0,150,0" concept="11" trace="VarType$lr" />
-      <node id="4792977609793407658" at="150,0,151,0" concept="11" trace="VarVariableDeclaration$Of" />
-      <node id="4792977609793407658" at="151,0,152,0" concept="11" trace="LocalVariableDeclaration$Bf" />
-      <node id="4792977609793407658" at="155,0,156,0" concept="11" trace="type$uWuc" />
+      <node id="4792977609793407658" at="149,0,150,0" concept="11" trace="VarType$Um" />
+      <node id="4792977609793407658" at="150,0,151,0" concept="11" trace="VarVariableDeclaration$pa" />
+      <node id="4792977609793407658" at="151,0,152,0" concept="11" trace="LocalVariableDeclaration$41" />
+      <node id="4792977609793407658" at="155,0,156,0" concept="11" trace="type$a1UY" />
       <node id="4792977609794497565" at="120,14,122,9" concept="0" />
       <node id="4792977609793407658" at="46,0,49,0" concept="1" trace="varType#()V" />
       <node id="4792977609793407671" at="70,156,73,5" concept="5" />
@@ -192,11 +192,11 @@
       <node id="4852852411435221769" at="101,66,102,50" concept="8" />
       <node id="4852852411436606702" at="105,515,106,80" concept="8" />
       <node id="4852852411436606841" at="107,9,108,21" concept="8" />
-      <node id="4792977609794484734" at="114,0,115,0" concept="11" trace="VarType$lr" />
-      <node id="4792977609794484734" at="115,0,116,0" concept="11" trace="LocalVariableDeclaration$Bf" />
-      <node id="4792977609794484734" at="116,0,117,0" concept="11" trace="VarVariableDeclaration$Of" />
-      <node id="4792977609794484734" at="117,0,118,0" concept="11" trace="Type$IG" />
-      <node id="4792977609794484734" at="121,0,122,0" concept="11" trace="type$uWuc" />
+      <node id="4792977609794484734" at="114,0,115,0" concept="11" trace="VarType$Um" />
+      <node id="4792977609794484734" at="115,0,116,0" concept="11" trace="LocalVariableDeclaration$41" />
+      <node id="4792977609794484734" at="116,0,117,0" concept="11" trace="VarVariableDeclaration$pa" />
+      <node id="4792977609794484734" at="117,0,118,0" concept="11" trace="Type$bu" />
+      <node id="4792977609794484734" at="121,0,122,0" concept="11" trace="type$a1UY" />
       <node id="4852852411435221769" at="82,0,85,0" concept="6" trace="setTraceInfo#(Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;)V" />
       <node id="4852852411436605126" at="104,85,107,9" concept="5" />
       <node id="4852852411435221769" at="77,0,81,0" concept="1" trace="Item#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)V" />
@@ -308,10 +308,10 @@
       <node id="4852852411435283404" at="129,81,130,58" concept="2" />
       <node id="4852852411435283404" at="131,11,132,0" concept="10" />
       <node id="4852852411435283404" at="140,160,141,54" concept="8" />
-      <node id="4852852411435283396" at="146,0,147,0" concept="11" trace="Type$IG" />
-      <node id="4852852411435283396" at="147,0,148,0" concept="11" trace="LocalVariableDeclaration$Bf" />
-      <node id="4852852411435283396" at="148,0,149,0" concept="11" trace="VarVariableDeclaration$Of" />
-      <node id="4852852411435283396" at="152,0,153,0" concept="11" trace="type$uWuc" />
+      <node id="4852852411435283396" at="146,0,147,0" concept="11" trace="Type$bu" />
+      <node id="4852852411435283396" at="147,0,148,0" concept="11" trace="LocalVariableDeclaration$41" />
+      <node id="4852852411435283396" at="148,0,149,0" concept="11" trace="VarVariableDeclaration$pa" />
+      <node id="4852852411435283396" at="152,0,153,0" concept="11" trace="type$a1UY" />
       <node id="4852852411435283448" at="117,14,119,9" concept="0" />
       <node id="4852852411435283401" at="67,156,70,5" concept="5" />
       <node id="4852852411435283404" at="94,0,97,0" concept="6" trace="getConceptToFindMenuFor#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -431,10 +431,10 @@
       <node id="4852852411435605366" at="66,70,67,0" concept="10" />
       <node id="4852852411435605366" at="67,0,68,77" concept="9" />
       <node id="4852852411435605367" at="69,60,70,66" concept="2" />
-      <node id="4852852411435605366" at="75,0,76,0" concept="11" trace="VarVariableDeclaration$Of" />
-      <node id="4852852411435605366" at="76,0,77,0" concept="11" trace="LocalVariableDeclaration$Bf" />
-      <node id="4852852411435605366" at="77,0,78,0" concept="11" trace="Type$IG" />
-      <node id="4852852411435605366" at="81,0,82,0" concept="11" trace="type$uWuc" />
+      <node id="4852852411435605366" at="75,0,76,0" concept="11" trace="VarVariableDeclaration$pa" />
+      <node id="4852852411435605366" at="76,0,77,0" concept="11" trace="LocalVariableDeclaration$41" />
+      <node id="4852852411435605366" at="77,0,78,0" concept="11" trace="Type$bu" />
+      <node id="4852852411435605366" at="81,0,82,0" concept="11" trace="type$a1UY" />
       <node id="4852852411435605367" at="23,0,26,0" concept="6" trace="execute#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="4852852411435605367" at="26,0,29,0" concept="6" trace="execute_internal#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4852852411435605366" at="43,74,46,5" concept="5" />
@@ -539,7 +539,7 @@
       <node id="4852852411435630628" at="93,35,94,26" concept="8" />
       <node id="4852852411435630628" at="95,17,96,42" concept="2" />
       <node id="4852852411435630628" at="99,40,100,25" concept="8" />
-      <node id="4852852411435630628" at="105,0,106,0" concept="11" trace="type$uWuc" />
+      <node id="4852852411435630628" at="105,0,106,0" concept="11" trace="type$a1UY" />
       <node id="4852852411435630628" at="23,0,25,0" concept="3" trace="myNode" />
       <node id="4852852411435630628" at="52,0,54,0" concept="3" trace="myNode" />
       <node id="4852852411435630628" at="37,0,40,0" concept="6" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -647,10 +647,10 @@
       <node id="6844224760256246357" at="115,9,116,21" concept="8" />
       <node id="6844224760256242425" at="116,21,117,0" concept="10" />
       <node id="9099547223153461837" at="121,62,122,21" concept="8" />
-      <node id="9099547223152234738" at="128,0,129,0" concept="11" trace="UndefinedType$1H" />
-      <node id="9099547223152234738" at="129,0,130,0" concept="11" trace="VarVariableDeclaration$Of" />
-      <node id="9099547223152234738" at="130,0,131,0" concept="11" trace="LocalVariableDeclaration$Bf" />
-      <node id="9099547223152234738" at="134,0,135,0" concept="11" trace="type$uWuc" />
+      <node id="9099547223152234738" at="128,0,129,0" concept="11" trace="UndefinedType$uv" />
+      <node id="9099547223152234738" at="129,0,130,0" concept="11" trace="VarVariableDeclaration$pa" />
+      <node id="9099547223152234738" at="130,0,131,0" concept="11" trace="LocalVariableDeclaration$41" />
+      <node id="9099547223152234738" at="134,0,135,0" concept="11" trace="type$a1UY" />
       <node id="9099547223152234738" at="30,0,33,0" concept="1" trace="varTypeSubstitutionForNullType#()V" />
       <node id="9099547223153459637" at="86,0,89,0" concept="6" trace="setTraceInfo#(Ljetbrains/mps/openapi/editor/menus/EditorMenuTraceInfo;)V" />
       <node id="6844224760256246316" at="112,85,115,9" concept="5" />

@@ -26,7 +26,7 @@ public class typeof_ConceptFunctionParameter_progressMonitor_InferenceRule exten
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConceptFunctionParameter_progressMonitor$UB;
+    return CONCEPTS.ConceptFunctionParameter_progressMonitor$W3;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,6 +43,6 @@ public class typeof_ConceptFunctionParameter_progressMonitor_InferenceRule exten
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptFunctionParameter_progressMonitor$UB = MetaAdapterFactory.getConcept(0x13744753c81f424aL, 0x9c1bcf8943bf4e86L, 0x7be6ee9831c8594L, "jetbrains.mps.lang.sharedConcepts.structure.ConceptFunctionParameter_progressMonitor");
+    /*package*/ static final SConcept ConceptFunctionParameter_progressMonitor$W3 = MetaAdapterFactory.getConcept(0x13744753c81f424aL, 0x9c1bcf8943bf4e86L, 0x7be6ee9831c8594L, "jetbrains.mps.lang.sharedConcepts.structure.ConceptFunctionParameter_progressMonitor");
   }
 }

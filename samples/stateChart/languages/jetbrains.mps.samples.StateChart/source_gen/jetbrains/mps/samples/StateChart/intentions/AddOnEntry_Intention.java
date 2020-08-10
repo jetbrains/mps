@@ -42,10 +42,10 @@ public final class AddOnEntry_Intention extends AbstractIntentionDescriptor impl
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.onEntry$Btz4), LINKS.operations$stz0)).isEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.onEntry$z19d), LINKS.operations$o199)).isEmpty();
   }
   private boolean isVisibleInChild(final SNode node, final SNode childNode, final EditorContext editorContext) {
-    return Objects.equals(SNodeOperations.getNodeAncestor(childNode, CONCEPTS.State$J2, false, false), node);
+    return Objects.equals(SNodeOperations.getNodeAncestor(childNode, CONCEPTS.State$lb, false, false), node);
   }
   @Override
   public boolean isSurroundWith() {
@@ -66,7 +66,7 @@ public final class AddOnEntry_Intention extends AbstractIntentionDescriptor impl
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNodeFactoryOperations.addNewChild(SLinkOperations.getTarget(node, LINKS.onEntry$Btz4), LINKS.operations$stz0, null);
+      SNodeFactoryOperations.addNewChild(SLinkOperations.getTarget(node, LINKS.onEntry$z19d), LINKS.operations$o199, null);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -75,11 +75,11 @@ public final class AddOnEntry_Intention extends AbstractIntentionDescriptor impl
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink onEntry$Btz4 = MetaAdapterFactory.getContainmentLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a6L, 0x5e8f0d038ab691b5L, "onEntry");
-    /*package*/ static final SContainmentLink operations$stz0 = MetaAdapterFactory.getContainmentLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x5e8f0d038ab26ac1L, 0x5e8f0d038ab26ac2L, "operations");
+    /*package*/ static final SContainmentLink onEntry$z19d = MetaAdapterFactory.getContainmentLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a6L, 0x5e8f0d038ab691b5L, "onEntry");
+    /*package*/ static final SContainmentLink operations$o199 = MetaAdapterFactory.getContainmentLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x5e8f0d038ab26ac1L, 0x5e8f0d038ab26ac2L, "operations");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept State$J2 = MetaAdapterFactory.getConcept(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a6L, "jetbrains.mps.samples.StateChart.structure.State");
+    /*package*/ static final SConcept State$lb = MetaAdapterFactory.getConcept(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a6L, "jetbrains.mps.samples.StateChart.structure.State");
   }
 }

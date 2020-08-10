@@ -40,7 +40,7 @@ public class NodeUncommenter {
     if (!(isValid())) {
       throw new IllegalStateException("Node uncommenter has invalid state. Comment attribute has no parent. Attribute " + myComment.getPresentation() + " Attribute id: " + myComment.getNodeId());
     }
-    SNode commentedNode = SLinkOperations.getTarget(myComment, LINKS.commentedNode$md7q);
+    SNode commentedNode = SLinkOperations.getTarget(myComment, LINKS.commentedNode$MYvG);
     if (getContainmentLink() != null && commentedNode != null) {
       removeOrCommentChildInSingleRole();
       myComment.removeChild(commentedNode);
@@ -77,16 +77,16 @@ public class NodeUncommenter {
   }
   private SContainmentLink getContainmentLink() {
     if (myContainmentLink == null) {
-      myContainmentLink = ((SContainmentLink) BHReflection.invoke0(myComment, CONCEPTS.ChildAttribute$XQ, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$XQ, "BpxLfMirzf")));
+      myContainmentLink = ((SContainmentLink) BHReflection.invoke0(myComment, CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzf")));
     }
     return myContainmentLink;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink commentedNode$md7q = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, 0x2ab99f0d2248e89dL, "commentedNode");
+    /*package*/ static final SContainmentLink commentedNode$MYvG = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, 0x2ab99f0d2248e89dL, "commentedNode");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ChildAttribute$XQ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
+    /*package*/ static final SConcept ChildAttribute$m8 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
   }
 }

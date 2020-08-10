@@ -32,8 +32,8 @@ public final class ActionStatement__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static SNode getActionPattern_id6cKyl1HJ1T(@NotNull SNode __thisNode__) {
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.ActionAsPattern$TP)) {
-      return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.ActionAsPattern$TP);
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.ActionAsPattern$7o)) {
+      return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.ActionAsPattern$7o);
     }
     return null;
   }
@@ -94,6 +94,6 @@ public final class ActionStatement__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ActionAsPattern$TP = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x3d3ef1fc1814cb54L, "jetbrains.mps.lang.pattern.structure.ActionAsPattern");
+    /*package*/ static final SConcept ActionAsPattern$7o = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x3d3ef1fc1814cb54L, "jetbrains.mps.lang.pattern.structure.ActionAsPattern");
   }
 }

@@ -48,8 +48,8 @@ public class CreateDefaultEditor_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    SNode conceptDeclaration = SNodeOperations.as(((SNode) MapSequence.fromMap(_params).get("selectedNode")), CONCEPTS.ConceptDeclaration$qU);
-    if (conceptDeclaration == null || SPropertyOperations.getBoolean(conceptDeclaration, PROPS.abstract$Q3$6) || SPropertyOperations.getString(conceptDeclaration, PROPS.name$lA7v) == null) {
+    SNode conceptDeclaration = SNodeOperations.as(((SNode) MapSequence.fromMap(_params).get("selectedNode")), CONCEPTS.ConceptDeclaration$gH);
+    if (conceptDeclaration == null || SPropertyOperations.getBoolean(conceptDeclaration, PROPS.abstract$ibpT) || SPropertyOperations.getString(conceptDeclaration, PROPS.name$MnvL) == null) {
       return false;
     }
 
@@ -57,15 +57,15 @@ public class CreateDefaultEditor_Action extends BaseAction {
     QueueSequence.fromQueue(toCheck).addLastElement(conceptDeclaration);
     while (QueueSequence.fromQueue(toCheck).isNotEmpty()) {
       SNode acd = QueueSequence.fromQueue(toCheck).removeFirstElement();
-      List<SNode> aspects = ((List<SNode>) BHReflection.invoke0(acd, CONCEPTS.AbstractConceptDeclaration$UN, SMethodTrimmedId.create("findConceptAspectCollection", CONCEPTS.AbstractConceptDeclaration$UN, "1n18fON7w20"), LanguageAspect.EDITOR));
-      if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(acd), CONCEPTS.BaseConcept$Sz)) && ListSequence.fromList(aspects).any(new IWhereFilter<SNode>() {
+      List<SNode> aspects = ((List<SNode>) BHReflection.invoke0(acd, CONCEPTS.AbstractConceptDeclaration$KA, SMethodTrimmedId.create("findConceptAspectCollection", CONCEPTS.AbstractConceptDeclaration$KA, "1n18fON7w20"), LanguageAspect.EDITOR));
+      if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(acd), CONCEPTS.BaseConcept$gP)) && ListSequence.fromList(aspects).any(new IWhereFilter<SNode>() {
         public boolean accept(SNode a) {
-          return SNodeOperations.isInstanceOf(a, CONCEPTS.ConceptEditorDeclaration$s6);
+          return SNodeOperations.isInstanceOf(a, CONCEPTS.ConceptEditorDeclaration$BH);
         }
       })) {
         return false;
       }
-      QueueSequence.fromQueue(toCheck).addSequence(ListSequence.fromList(((List<SNode>) BHReflection.invoke0(acd, CONCEPTS.AbstractConceptDeclaration$UN, SMethodTrimmedId.create("getImmediateSuperconcepts", null, "hMuxyK2")))));
+      QueueSequence.fromQueue(toCheck).addSequence(ListSequence.fromList(((List<SNode>) BHReflection.invoke0(acd, CONCEPTS.AbstractConceptDeclaration$KA, SMethodTrimmedId.create("getImmediateSuperconcepts", null, "hMuxyK2")))));
     }
     return true;
   }
@@ -96,11 +96,11 @@ public class CreateDefaultEditor_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    SNode conceptDeclaration = SNodeOperations.as(((SNode) MapSequence.fromMap(_params).get("selectedNode")), CONCEPTS.ConceptDeclaration$qU);
-    SNode editorDeclaration = ConceptAspectsHelper.attachNewConceptAspect(LanguageAspect.EDITOR, conceptDeclaration, SNodeFactoryOperations.createNewNode(CONCEPTS.ConceptEditorDeclaration$s6, null));
-    assert ((SNode) BHReflection.invoke0(editorDeclaration, CONCEPTS.AbstractComponent$Ng, SMethodTrimmedId.create("getConceptDeclaration", null, "67EYkym$wx3"))) != null;
-    assert Objects.equals(((SNode) BHReflection.invoke0(editorDeclaration, CONCEPTS.AbstractComponent$Ng, SMethodTrimmedId.create("getConceptDeclaration", null, "67EYkym$wx3"))), conceptDeclaration);
-    BHReflection.invoke0(editorDeclaration, CONCEPTS.ConceptEditorDeclaration$s6, SMethodTrimmedId.create("createDefaultEditor", CONCEPTS.ConceptEditorDeclaration$s6, "2$SWsiCt8Y$"), ((boolean) false));
+    SNode conceptDeclaration = SNodeOperations.as(((SNode) MapSequence.fromMap(_params).get("selectedNode")), CONCEPTS.ConceptDeclaration$gH);
+    SNode editorDeclaration = ConceptAspectsHelper.attachNewConceptAspect(LanguageAspect.EDITOR, conceptDeclaration, SNodeFactoryOperations.createNewNode(CONCEPTS.ConceptEditorDeclaration$BH, null));
+    assert ((SNode) BHReflection.invoke0(editorDeclaration, CONCEPTS.AbstractComponent$YR, SMethodTrimmedId.create("getConceptDeclaration", null, "67EYkym$wx3"))) != null;
+    assert Objects.equals(((SNode) BHReflection.invoke0(editorDeclaration, CONCEPTS.AbstractComponent$YR, SMethodTrimmedId.create("getConceptDeclaration", null, "67EYkym$wx3"))), conceptDeclaration);
+    BHReflection.invoke0(editorDeclaration, CONCEPTS.ConceptEditorDeclaration$BH, SMethodTrimmedId.create("createDefaultEditor", CONCEPTS.ConceptEditorDeclaration$BH, "2$SWsiCt8Y$"), ((boolean) false));
     if (((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getEditorPanelManager() != null) {
       ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getEditorPanelManager().openEditor(editorDeclaration);
     } else {
@@ -109,15 +109,15 @@ public class CreateDefaultEditor_Action extends BaseAction {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
-    /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
-    /*package*/ static final SConcept ConceptEditorDeclaration$s6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration");
-    /*package*/ static final SConcept AbstractComponent$Ng = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, "jetbrains.mps.lang.editor.structure.AbstractComponent");
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept ConceptEditorDeclaration$BH = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration");
+    /*package*/ static final SConcept AbstractComponent$YR = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, "jetbrains.mps.lang.editor.structure.AbstractComponent");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty abstract$Q3$6 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty abstract$ibpT = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

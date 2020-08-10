@@ -23,7 +23,7 @@ public class checkThrowsOfResourceIsCaught_NonTypesystemRule extends AbstractNon
     RulesFunctions_BaseLanguage.check(typeCheckingContext, throwables, resourceVariable, "Unhandled exception from auto-closeable resource:");
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ResourceVariable$QC;
+    return CONCEPTS.ResourceVariable$jq;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -33,6 +33,6 @@ public class checkThrowsOfResourceIsCaught_NonTypesystemRule extends AbstractNon
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ResourceVariable$QC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a546561eL, "jetbrains.mps.baseLanguage.structure.ResourceVariable");
+    /*package*/ static final SConcept ResourceVariable$jq = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a546561eL, "jetbrains.mps.baseLanguage.structure.ResourceVariable");
   }
 }

@@ -34,10 +34,10 @@ public final class TransformationLocation_WithFeatures__BehaviorDescriptor exten
   }
 
   /*package*/ static Collection<SConcept> getAvailableFeatures_id1A4kJjlZ$rL(@NotNull SNode __thisNode__) {
-    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.TransformationFeature_Optional$6$, CONCEPTS.TransformationFeature_Required$jD);
+    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.TransformationFeature_Optional$c7, CONCEPTS.TransformationFeature_Required$pc);
   }
   /*package*/ static Collection<SConcept> getRequiredFeatures_id7L5lpRJHK_w(@NotNull SNode __thisNode__) {
-    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.TransformationFeature_Required$jD);
+    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.TransformationFeature_Required$pc);
   }
 
   /*package*/ TransformationLocation_WithFeatures__BehaviorDescriptor() {
@@ -89,7 +89,7 @@ public final class TransformationLocation_WithFeatures__BehaviorDescriptor exten
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TransformationFeature_Optional$6$ = MetaAdapterFactory.getConcept(0x69068b7cba1f47fbL, 0xa4864981f42606e9L, 0x41c8eff4cc3dfc1dL, "jetbrains.mps.lang.editor.menus.testMetaLanguage.structure.TransformationFeature_Optional");
-    /*package*/ static final SConcept TransformationFeature_Required$jD = MetaAdapterFactory.getConcept(0x69068b7cba1f47fbL, 0xa4864981f42606e9L, 0x41c8eff4cc3e09d8L, "jetbrains.mps.lang.editor.menus.testMetaLanguage.structure.TransformationFeature_Required");
+    /*package*/ static final SConcept TransformationFeature_Optional$c7 = MetaAdapterFactory.getConcept(0x69068b7cba1f47fbL, 0xa4864981f42606e9L, 0x41c8eff4cc3dfc1dL, "jetbrains.mps.lang.editor.menus.testMetaLanguage.structure.TransformationFeature_Optional");
+    /*package*/ static final SConcept TransformationFeature_Required$pc = MetaAdapterFactory.getConcept(0x69068b7cba1f47fbL, 0xa4864981f42606e9L, 0x41c8eff4cc3e09d8L, "jetbrains.mps.lang.editor.menus.testMetaLanguage.structure.TransformationFeature_Required");
   }
 }

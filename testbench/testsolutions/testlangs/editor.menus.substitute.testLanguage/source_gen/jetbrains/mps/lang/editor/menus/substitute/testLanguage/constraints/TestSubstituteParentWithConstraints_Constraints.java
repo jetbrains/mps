@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TestSubstituteParentWithConstraints_Constraints extends BaseConstraintsDescriptor {
   public TestSubstituteParentWithConstraints_Constraints() {
-    super(CONCEPTS.TestSubstituteParentWithConstraints$PL);
+    super(CONCEPTS.TestSubstituteParentWithConstraints$6i);
   }
 
   @Override
@@ -53,31 +53,31 @@ public class TestSubstituteParentWithConstraints_Constraints extends BaseConstra
     };
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
-    if (Objects.equals(link, LINKS.childCanBeParent$w2Q)) {
-      return Objects.equals(childConcept, CONCEPTS.TestSubstituteChildWithConstraints1$gI);
+    if (Objects.equals(link, LINKS.childCanBeParent$Z7jn)) {
+      return Objects.equals(childConcept, CONCEPTS.TestSubstituteChildWithConstraints1$xf);
     }
-    if (Objects.equals(link, LINKS.childWrapperCanBeParent$jVUz)) {
-      return Objects.equals(childConcept, CONCEPTS.TestSubstituteChildWithConstraintsWrapper1$Ef);
+    if (Objects.equals(link, LINKS.childWrapperCanBeParent$izb4)) {
+      return Objects.equals(childConcept, CONCEPTS.TestSubstituteChildWithConstraintsWrapper1$UK);
     }
     return true;
   }
   private static boolean staticCanBeAnAncestor(SNode node, SNode childNode, SAbstractConcept childConcept, SNode parentNode, SContainmentLink link) {
-    return !(Objects.equals(childConcept, CONCEPTS.TestSubstituteChildWithConstraints3$$g)) && !(Objects.equals(childConcept, CONCEPTS.TestSubstituteChildWithConstraintsWrapper3$XV)) && !(Objects.equals(childConcept, CONCEPTS.TestSubstituteGrandChildWithConstraintsProhibited$fM));
+    return !(Objects.equals(childConcept, CONCEPTS.TestSubstituteChildWithConstraints3$OL)) && !(Objects.equals(childConcept, CONCEPTS.TestSubstituteChildWithConstraintsWrapper3$es)) && !(Objects.equals(childConcept, CONCEPTS.TestSubstituteGrandChildWithConstraintsProhibited$wj));
   }
   private static final SNodePointer canBeParentBreakingPoint = new SNodePointer("r:0cba60fc-aa17-42ba-b3ca-69b0d1a86fe9(jetbrains.mps.lang.editor.menus.substitute.testLanguage.constraints)", "1227128029536583138");
   private static final SNodePointer canBeRootBreakingPoint = new SNodePointer("r:0cba60fc-aa17-42ba-b3ca-69b0d1a86fe9(jetbrains.mps.lang.editor.menus.substitute.testLanguage.constraints)", "1227128029536583118");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestSubstituteParentWithConstraints$PL = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2cc6e9aL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteParentWithConstraints");
-    /*package*/ static final SConcept TestSubstituteChildWithConstraints1$gI = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2ccf9b4L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithConstraints1");
-    /*package*/ static final SConcept TestSubstituteChildWithConstraintsWrapper1$Ef = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2d21687L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithConstraintsWrapper1");
-    /*package*/ static final SConcept TestSubstituteGrandChildWithConstraintsProhibited$fM = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x73096e13d1e2b4e1L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteGrandChildWithConstraintsProhibited");
-    /*package*/ static final SConcept TestSubstituteChildWithConstraints3$$g = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2ceddc8L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithConstraints3");
-    /*package*/ static final SConcept TestSubstituteChildWithConstraintsWrapper3$XV = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2d41c8eL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithConstraintsWrapper3");
+    /*package*/ static final SConcept TestSubstituteParentWithConstraints$6i = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2cc6e9aL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteParentWithConstraints");
+    /*package*/ static final SConcept TestSubstituteChildWithConstraints1$xf = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2ccf9b4L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithConstraints1");
+    /*package*/ static final SConcept TestSubstituteChildWithConstraintsWrapper1$UK = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2d21687L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithConstraintsWrapper1");
+    /*package*/ static final SConcept TestSubstituteGrandChildWithConstraintsProhibited$wj = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x73096e13d1e2b4e1L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteGrandChildWithConstraintsProhibited");
+    /*package*/ static final SConcept TestSubstituteChildWithConstraints3$OL = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2ceddc8L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithConstraints3");
+    /*package*/ static final SConcept TestSubstituteChildWithConstraintsWrapper3$es = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2d41c8eL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithConstraintsWrapper3");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink childCanBeParent$w2Q = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2cc6e9aL, 0x9c8de75f2cc6e9cL, "childCanBeParent");
-    /*package*/ static final SContainmentLink childWrapperCanBeParent$jVUz = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2cc6e9aL, 0x9c8de75f2d23240L, "childWrapperCanBeParent");
+    /*package*/ static final SContainmentLink childCanBeParent$Z7jn = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2cc6e9aL, 0x9c8de75f2cc6e9cL, "childCanBeParent");
+    /*package*/ static final SContainmentLink childWrapperCanBeParent$izb4 = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2cc6e9aL, 0x9c8de75f2d23240L, "childWrapperCanBeParent");
   }
 }

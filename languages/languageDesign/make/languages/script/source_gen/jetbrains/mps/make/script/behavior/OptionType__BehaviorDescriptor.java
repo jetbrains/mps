@@ -32,7 +32,7 @@ public final class OptionType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String classifierName_id3ZSHU3pg$b_(@NotNull SNode __thisNode__) {
-    return (String) IWillBeClassifier__BehaviorDescriptor.classifierName_id3ZSHU3pg$b_.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.expectedOption$UUXr));
+    return (String) IWillBeClassifier__BehaviorDescriptor.classifierName_id3ZSHU3pg$b_.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.expectedOption$Q7Vk));
   }
 
   /*package*/ OptionType__BehaviorDescriptor() {
@@ -82,6 +82,6 @@ public final class OptionType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink expectedOption$UUXr = MetaAdapterFactory.getReferenceLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc4d7b5L, 0x70276038dc4d7bcL, "expectedOption");
+    /*package*/ static final SReferenceLink expectedOption$Q7Vk = MetaAdapterFactory.getReferenceLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x70276038dc4d7b5L, 0x70276038dc4d7bcL, "expectedOption");
   }
 }

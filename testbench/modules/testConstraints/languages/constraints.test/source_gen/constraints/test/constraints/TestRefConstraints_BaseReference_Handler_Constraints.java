@@ -16,12 +16,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class TestRefConstraints_BaseReference_Handler_Constraints extends BaseConstraintsDescriptor {
   public TestRefConstraints_BaseReference_Handler_Constraints() {
-    super(CONCEPTS.TestRefConstraints_BaseReference_Handler$Qt);
+    super(CONCEPTS.TestRefConstraints_BaseReference_Handler$Sr);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.target$ndby, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.target$Ukdw, this) {
       @Override
       public boolean hasOwnOnReferenceSetHandler() {
         return true;
@@ -32,7 +32,7 @@ public class TestRefConstraints_BaseReference_Handler_Constraints extends BaseCo
       }
       @Override
       public void onReferenceSet(final SNode referenceNode, final SNode oldReferentNode, final SNode newReferentNode) {
-        SPropertyOperations.assign(newReferentNode, PROPS.debug$iO1r, TestRefConstraints_Constants.BASE_REF_HANDLER);
+        SPropertyOperations.assign(newReferentNode, PROPS.debug$PV3p, TestRefConstraints_Constants.BASE_REF_HANDLER);
       }
     };
     Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
@@ -41,14 +41,14 @@ public class TestRefConstraints_BaseReference_Handler_Constraints extends BaseCo
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestRefConstraints_BaseReference_Handler$Qt = MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a30660588e212L, "constraints.test.structure.TestRefConstraints_BaseReference_Handler");
+    /*package*/ static final SConcept TestRefConstraints_BaseReference_Handler$Sr = MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a30660588e212L, "constraints.test.structure.TestRefConstraints_BaseReference_Handler");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$ndby = MetaAdapterFactory.getReferenceLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a30660588e212L, 0x244a30660588e2f1L, "target");
+    /*package*/ static final SReferenceLink target$Ukdw = MetaAdapterFactory.getReferenceLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a30660588e212L, 0x244a30660588e2f1L, "target");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty debug$iO1r = MetaAdapterFactory.getProperty(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641c74L, 0x244a306605641c7bL, "debug");
+    /*package*/ static final SProperty debug$PV3p = MetaAdapterFactory.getProperty(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641c74L, 0x244a306605641c7bL, "debug");
   }
 }

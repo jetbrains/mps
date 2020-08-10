@@ -24,15 +24,15 @@ public class typeof_BeforeTaskCall_InferenceRule extends AbstractInferenceRule_R
   public typeof_BeforeTaskCall_InferenceRule() {
   }
   public void applyRule(final SNode beforeTaskCall, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    List<SNode> declaredParameters = SLinkOperations.getChildren(SLinkOperations.getTarget(beforeTaskCall, LINKS.beforeTask$viVw), LINKS.parameter$8WLV);
-    if (ListSequence.fromList(SLinkOperations.getChildren(beforeTaskCall, LINKS.parameter$WYTV)).count() != ListSequence.fromList(declaredParameters).count()) {
+    List<SNode> declaredParameters = SLinkOperations.getChildren(SLinkOperations.getTarget(beforeTaskCall, LINKS.beforeTask$2WC7), LINKS.parameter$GAuy);
+    if (ListSequence.fromList(SLinkOperations.getChildren(beforeTaskCall, LINKS.parameter$wCAy)).count() != ListSequence.fromList(declaredParameters).count()) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(beforeTaskCall, "Incompatible number of parameters", "r:8b43a830-217d-43d8-a0f8-6460c443f22d(jetbrains.mps.execution.configurations.typesystem)", "5475888311765613831", null, errorTarget);
       }
     }
-    for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(beforeTaskCall, LINKS.parameter$WYTV)).count(); i++) {
-      SNode param = ListSequence.fromList(SLinkOperations.getChildren(beforeTaskCall, LINKS.parameter$WYTV)).getElement(i);
+    for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(beforeTaskCall, LINKS.parameter$wCAy)).count(); i++) {
+      SNode param = ListSequence.fromList(SLinkOperations.getChildren(beforeTaskCall, LINKS.parameter$wCAy)).getElement(i);
       if (param != null) {
         {
           SNode _nodeToCheck_1029348928467 = param;
@@ -43,7 +43,7 @@ public class typeof_BeforeTaskCall_InferenceRule extends AbstractInferenceRule_R
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BeforeTaskCall$_R;
+    return CONCEPTS.BeforeTaskCall$iu;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -53,12 +53,12 @@ public class typeof_BeforeTaskCall_InferenceRule extends AbstractInferenceRule_R
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink beforeTask$viVw = MetaAdapterFactory.getReferenceLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5ae6ebde781f1fd8L, 0x5ae6ebde781f1fd9L, "beforeTask");
-    /*package*/ static final SContainmentLink parameter$8WLV = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x61a8be33d403b7bfL, 0x5ae6ebde781f96aaL, "parameter");
-    /*package*/ static final SContainmentLink parameter$WYTV = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5ae6ebde781f1fd8L, 0x4bfe4368347f5400L, "parameter");
+    /*package*/ static final SReferenceLink beforeTask$2WC7 = MetaAdapterFactory.getReferenceLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5ae6ebde781f1fd8L, 0x5ae6ebde781f1fd9L, "beforeTask");
+    /*package*/ static final SContainmentLink parameter$GAuy = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x61a8be33d403b7bfL, 0x5ae6ebde781f96aaL, "parameter");
+    /*package*/ static final SContainmentLink parameter$wCAy = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5ae6ebde781f1fd8L, 0x4bfe4368347f5400L, "parameter");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BeforeTaskCall$_R = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5ae6ebde781f1fd8L, "jetbrains.mps.execution.configurations.structure.BeforeTaskCall");
+    /*package*/ static final SConcept BeforeTaskCall$iu = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5ae6ebde781f1fd8L, "jetbrains.mps.execution.configurations.structure.BeforeTaskCall");
   }
 }

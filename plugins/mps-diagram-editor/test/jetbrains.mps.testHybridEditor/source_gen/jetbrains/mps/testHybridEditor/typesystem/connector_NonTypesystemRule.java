@@ -24,7 +24,7 @@ public class connector_NonTypesystemRule extends AbstractNonTypesystemRule_Runti
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConnectorInstance$$$;
+    return CONCEPTS.ConnectorInstance$x8;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -34,6 +34,6 @@ public class connector_NonTypesystemRule extends AbstractNonTypesystemRule_Runti
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConnectorInstance$$$ = MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, "jetbrains.mps.testHybridEditor.structure.ConnectorInstance");
+    /*package*/ static final SConcept ConnectorInstance$x8 = MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec441516L, "jetbrains.mps.testHybridEditor.structure.ConnectorInstance");
   }
 }

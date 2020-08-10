@@ -20,19 +20,19 @@ public class check_ActionDeclaration_mnemonics_NonTypesystemRule extends Abstrac
   public check_ActionDeclaration_mnemonics_NonTypesystemRule() {
   }
   public void applyRule(final SNode a, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (isEmptyString(SPropertyOperations.getString(a, PROPS.mnemonic$$zY7))) {
+    if (isEmptyString(SPropertyOperations.getString(a, PROPS.mnemonic$M8Va))) {
       return;
     }
-    String err = MnemonicChecker.check(SPropertyOperations.getString(a, PROPS.caption$6w$m), SPropertyOperations.getString(a, PROPS.mnemonic$$zY7));
+    String err = MnemonicChecker.check(SPropertyOperations.getString(a, PROPS.caption$k5xp), SPropertyOperations.getString(a, PROPS.mnemonic$M8Va));
     if (err != null) {
       {
-        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.mnemonic$$zY7);
+        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.mnemonic$M8Va);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(a, err, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "5908642177599283073", null, errorTarget);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ActionDeclaration$VX;
+    return CONCEPTS.ActionDeclaration$T0;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -45,11 +45,11 @@ public class check_ActionDeclaration_mnemonics_NonTypesystemRule extends Abstrac
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty mnemonic$$zY7 = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11b1742d216L, "mnemonic");
-    /*package*/ static final SProperty caption$6w$m = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x1189e8d9a59L, "caption");
+    /*package*/ static final SProperty mnemonic$M8Va = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11b1742d216L, "mnemonic");
+    /*package*/ static final SProperty caption$k5xp = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x1189e8d9a59L, "caption");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ActionDeclaration$VX = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, "jetbrains.mps.lang.plugin.structure.ActionDeclaration");
+    /*package*/ static final SConcept ActionDeclaration$T0 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, "jetbrains.mps.lang.plugin.structure.ActionDeclaration");
   }
 }

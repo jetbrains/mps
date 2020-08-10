@@ -23,10 +23,10 @@
   </root>
   <root nodeRef="r:50e6e59b-26e4-4ba1-9996-7aefbabd31cf(constraints.rules.test.constraints)/1702082180406152227">
     <file name="ChildConcept_Constraints.java">
-      <node id="1702082180406152227" at="10,37,11,36" concept="9" />
-      <node id="1702082180406152227" at="15,0,16,0" concept="7" trace="ChildConcept$We" />
+      <node id="1702082180406152227" at="10,37,11,35" concept="9" />
+      <node id="1702082180406152227" at="15,0,16,0" concept="7" trace="ChildConcept$v" />
       <node id="1702082180406152227" at="10,0,13,0" concept="0" trace="ChildConcept_Constraints#()V" />
-      <scope id="1702082180406152227" at="10,37,11,36" />
+      <scope id="1702082180406152227" at="10,37,11,35" />
       <scope id="1702082180406152227" at="10,0,13,0" />
       <unit id="1702082180406152227" at="14,0,17,0" name="constraints.rules.test.constraints.ChildConcept_Constraints$CONCEPTS" />
       <unit id="1702082180406152227" at="9,0,18,0" name="constraints.rules.test.constraints.ChildConcept_Constraints" />
@@ -42,15 +42,15 @@
       <node id="8878450512092605113" at="37,0,38,0" concept="7" trace="SOURCE_NODE_REF" />
       <node id="8878450512092605113" at="38,0,39,0" concept="7" trace="ID_toleranceNotTooHigh" />
       <node id="8878450512092605113" at="40,39,41,96" concept="9" />
-      <node id="8878450512092605113" at="45,63,46,96" concept="5" />
+      <node id="8878450512092605113" at="45,63,46,95" concept="5" />
       <node id="8878450512092605113" at="50,67,51,18" concept="5" />
       <node id="8878450512092611869" at="56,0,57,0" concept="7" trace="SOURCE_NODE_REF" />
       <node id="8878450512092611869" at="57,0,58,0" concept="7" trace="ID_toleranceNotTooLow" />
       <node id="8878450512092611869" at="59,38,60,95" concept="9" />
-      <node id="8878450512092611869" at="64,63,65,94" concept="5" />
+      <node id="8878450512092611869" at="64,63,65,93" concept="5" />
       <node id="8878450512092611869" at="69,67,70,18" concept="5" />
       <node id="2184230058468666857" at="74,46,75,19" concept="9" />
-      <node id="2184230058468666857" at="79,0,80,0" concept="7" trace="tolerance$cD$H" />
+      <node id="2184230058468666857" at="79,0,80,0" concept="7" trace="tolerance$vCY" />
       <node id="8878450512092605113" at="40,0,43,0" concept="0" trace="Rule_toleranceNotTooHigh#()V" />
       <node id="8878450512092611869" at="59,0,62,0" concept="0" trace="Rule_toleranceNotTooLow#()V" />
       <node id="2184230058468666857" at="74,0,77,0" concept="0" trace="ChildConcept_ConstraintRules#()V" />
@@ -61,10 +61,10 @@
       <node id="2184230058468666857" at="30,0,35,0" concept="3" trace="getDeclaredRules#()Ljava/util/List;" />
       <scope id="2184230058468666857" at="32,43,33,17" />
       <scope id="8878450512092605113" at="40,39,41,96" />
-      <scope id="8878450512092605113" at="45,63,46,96" />
+      <scope id="8878450512092605113" at="45,63,46,95" />
       <scope id="8878450512092605113" at="50,67,51,18" />
       <scope id="8878450512092611869" at="59,38,60,95" />
-      <scope id="8878450512092611869" at="64,63,65,94" />
+      <scope id="8878450512092611869" at="64,63,65,93" />
       <scope id="8878450512092611869" at="69,67,70,18" />
       <scope id="2184230058468666857" at="74,46,75,19" />
       <scope id="8878450512092605113" at="40,0,43,0" />
@@ -184,7 +184,7 @@
       <node id="8878450512092601214" at="40,0,41,0" concept="7" trace="SOURCE_NODE_REF" />
       <node id="8878450512092601214" at="41,0,42,0" concept="7" trace="ID_childConcept" />
       <node id="8878450512092601214" at="43,32,44,90" concept="9" />
-      <node id="8878450512092601214" at="48,63,49,123" concept="5" />
+      <node id="8878450512092601214" at="48,63,49,122" concept="5" />
       <node id="8878450512092601214" at="53,67,54,18" concept="5" />
       <node id="8878450512092603199" at="59,0,60,0" concept="7" trace="SOURCE_NODE_REF" />
       <node id="8878450512092603199" at="60,0,61,0" concept="7" trace="ID_propIsTrue" />
@@ -192,8 +192,8 @@
       <node id="8878450512092603199" at="67,63,68,97" concept="5" />
       <node id="8878450512092603199" at="72,67,73,18" concept="5" />
       <node id="7247338141359841462" at="77,47,78,19" concept="9" />
-      <node id="7247338141359841462" at="82,0,83,0" concept="7" trace="ChildConcept$We" />
-      <node id="7247338141359841462" at="86,0,87,0" concept="7" trace="canHaveChildren$e$ch" />
+      <node id="7247338141359841462" at="82,0,83,0" concept="7" trace="ChildConcept$v" />
+      <node id="7247338141359841462" at="86,0,87,0" concept="7" trace="canHaveChildren$2qgy" />
       <node id="8878450512092601214" at="43,0,46,0" concept="0" trace="Rule_childConcept#()V" />
       <node id="8878450512092603199" at="62,0,65,0" concept="0" trace="Rule_propIsTrue#()V" />
       <node id="7247338141359841462" at="77,0,80,0" concept="0" trace="ParentConcept_ConstraintRules#()V" />
@@ -204,7 +204,7 @@
       <node id="7247338141359841462" at="33,0,38,0" concept="3" trace="getDeclaredRules#()Ljava/util/List;" />
       <scope id="7247338141359841462" at="35,43,36,17" />
       <scope id="8878450512092601214" at="43,32,44,90" />
-      <scope id="8878450512092601214" at="48,63,49,123" />
+      <scope id="8878450512092601214" at="48,63,49,122" />
       <scope id="8878450512092601214" at="53,67,54,18" />
       <scope id="8878450512092603199" at="62,30,63,88" />
       <scope id="8878450512092603199" at="67,63,68,97" />
@@ -241,10 +241,10 @@
       <node id="8409512132773796220" at="32,55,33,71" concept="1" />
       <node id="8409512132773796220" at="34,9,35,0" concept="6" />
       <node id="8409512132773796220" at="35,0,36,22" concept="5" />
-      <node id="1702082180406152476" at="40,128,41,76" concept="5" />
+      <node id="1702082180406152476" at="40,128,41,75" concept="5" />
       <node id="8409512132773796220" at="43,0,44,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="8409512132773796220" at="46,0,47,0" concept="7" trace="ChildConceptBase$RQ" />
-      <node id="8409512132773796220" at="50,0,51,0" concept="7" trace="tolerance$cD$H" />
+      <node id="8409512132773796220" at="46,0,47,0" concept="7" trace="ChildConceptBase$W7" />
+      <node id="8409512132773796220" at="50,0,51,0" concept="7" trace="tolerance$vCY" />
       <node id="8409512132773796220" at="21,0,24,0" concept="0" trace="ChildConceptBase_Constraints#()V" />
       <node id="8409512132773796220" at="31,0,34,9" concept="2" />
       <node id="8409512132773796220" at="40,0,43,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -253,7 +253,7 @@
       <node id="8409512132773796220" at="25,0,40,0" concept="3" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
       <scope id="8409512132773796220" at="21,41,22,40" />
       <scope id="8409512132773796220" at="32,55,33,71" />
-      <scope id="8409512132773797060" at="40,128,41,76" />
+      <scope id="8409512132773797060" at="40,128,41,75" />
       <scope id="8409512132773796220" at="21,0,24,0" />
       <scope id="8409512132773796220" at="40,0,43,0">
         <var name="childConcept" id="8409512132773796220" />

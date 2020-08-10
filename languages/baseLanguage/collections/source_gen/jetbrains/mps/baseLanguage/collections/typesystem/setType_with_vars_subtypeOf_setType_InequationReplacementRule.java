@@ -22,11 +22,11 @@ public class setType_with_vars_subtypeOf_setType_InequationReplacementRule exten
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
     return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(subtype)), SNodeOperations.asSConcept(SNodeOperations.getConcept(supertype))) && !(ListSequence.fromList(SNodeOperations.getChildren(supertype)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode ch) {
-        return SNodeOperations.isInstanceOf(ch, CONCEPTS.TypeVariableReference$vZ);
+        return SNodeOperations.isInstanceOf(ch, CONCEPTS.TypeVariableReference$WL);
       }
     })) && ListSequence.fromList(SNodeOperations.getChildren(subtype)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode ch) {
-        return SNodeOperations.isInstanceOf(ch, CONCEPTS.TypeVariableReference$vZ);
+        return SNodeOperations.isInstanceOf(ch, CONCEPTS.TypeVariableReference$WL);
       }
     });
   }
@@ -49,14 +49,14 @@ public class setType_with_vars_subtypeOf_setType_InequationReplacementRule exten
   }
 
   public SAbstractConcept getApplicableSubtypeConcept() {
-    return CONCEPTS.SetType$1N;
+    return CONCEPTS.SetType$g6;
   }
   public SAbstractConcept getApplicableSupertypeConcept() {
-    return CONCEPTS.SetType$1N;
+    return CONCEPTS.SetType$g6;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TypeVariableReference$vZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
-    /*package*/ static final SConcept SetType$1N = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, "jetbrains.mps.baseLanguage.collections.structure.SetType");
+    /*package*/ static final SConcept TypeVariableReference$WL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
+    /*package*/ static final SConcept SetType$g6 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, "jetbrains.mps.baseLanguage.collections.structure.SetType");
   }
 }

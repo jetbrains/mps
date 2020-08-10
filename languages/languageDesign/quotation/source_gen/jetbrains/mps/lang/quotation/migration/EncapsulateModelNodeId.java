@@ -43,17 +43,17 @@ public class EncapsulateModelNodeId extends MigrationScriptBase {
           return scope_kbnq7e_a0e_0;
         }
       };
-      for (SNode quotation : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.Quotation$UL, false))) {
-        if ((SLinkOperations.getTarget(quotation, LINKS.modelToCreate_old$2tBx) != null) && (SLinkOperations.getTarget(quotation, LINKS.modelToCreate$AWC3) == null)) {
-          SLinkOperations.setNewChild(quotation, LINKS.modelToCreate$AWC3, null);
-          SLinkOperations.setTarget(SLinkOperations.getTarget(quotation, LINKS.modelToCreate$AWC3), LINKS.modelToCreate$K8bw, SLinkOperations.getTarget(quotation, LINKS.modelToCreate_old$2tBx));
-          SLinkOperations.setTarget(SLinkOperations.getTarget(quotation, LINKS.modelToCreate$AWC3), LINKS.nodeId$K8qx, SLinkOperations.getTarget(quotation, LINKS.nodeId_old$uKsq));
+      for (SNode quotation : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.Quotation$Vl, false))) {
+        if ((SLinkOperations.getTarget(quotation, LINKS.modelToCreate_old$iC5) != null) && (SLinkOperations.getTarget(quotation, LINKS.modelToCreate$$LCB) == null)) {
+          SLinkOperations.setNewChild(quotation, LINKS.modelToCreate$$LCB, null);
+          SLinkOperations.setTarget(SLinkOperations.getTarget(quotation, LINKS.modelToCreate$$LCB), LINKS.modelToCreate$HXc4, SLinkOperations.getTarget(quotation, LINKS.modelToCreate_old$iC5));
+          SLinkOperations.setTarget(SLinkOperations.getTarget(quotation, LINKS.modelToCreate$$LCB), LINKS.nodeId$HXr5, SLinkOperations.getTarget(quotation, LINKS.nodeId_old$s_sY));
         }
       }
-      for (SNode lightQuotation : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeBuilder$Gb, false))) {
-        if ((SLinkOperations.getTarget(lightQuotation, LINKS.modelToCreate_old$eQkx) != null) && (SLinkOperations.getTarget(lightQuotation, LINKS.modelToCreate$CHVl) == null)) {
-          SLinkOperations.setNewChild(lightQuotation, LINKS.modelToCreate$CHVl, null);
-          SLinkOperations.setTarget(SLinkOperations.getTarget(lightQuotation, LINKS.modelToCreate$CHVl), LINKS.modelToCreate$K8bw, SLinkOperations.getTarget(lightQuotation, LINKS.modelToCreate_old$eQkx));
+      for (SNode lightQuotation : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeBuilder$GJ, false))) {
+        if ((SLinkOperations.getTarget(lightQuotation, LINKS.modelToCreate_old$cFl5) != null) && (SLinkOperations.getTarget(lightQuotation, LINKS.modelToCreate$AyVT) == null)) {
+          SLinkOperations.setNewChild(lightQuotation, LINKS.modelToCreate$AyVT, null);
+          SLinkOperations.setTarget(SLinkOperations.getTarget(lightQuotation, LINKS.modelToCreate$AyVT), LINKS.modelToCreate$HXc4, SLinkOperations.getTarget(lightQuotation, LINKS.modelToCreate_old$cFl5));
         }
       }
     }
@@ -69,17 +69,17 @@ public class EncapsulateModelNodeId extends MigrationScriptBase {
         }
       };
       List<Problem> result = ListSequence.fromList(new ArrayList<Problem>());
-      for (SNode quotation : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.Quotation$UL, false))) {
-        if ((SLinkOperations.getTarget(quotation, LINKS.modelToCreate_old$2tBx) != null)) {
-          ListSequence.fromList(result).addElement(new DeprecatedConceptMemberNotMigratedProblem.DeprecatedContainmentLinkNotMigratedProblem(quotation, LINKS.modelToCreate_old$2tBx));
+      for (SNode quotation : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.Quotation$Vl, false))) {
+        if ((SLinkOperations.getTarget(quotation, LINKS.modelToCreate_old$iC5) != null)) {
+          ListSequence.fromList(result).addElement(new DeprecatedConceptMemberNotMigratedProblem.DeprecatedContainmentLinkNotMigratedProblem(quotation, LINKS.modelToCreate_old$iC5));
         }
-        if ((SLinkOperations.getTarget(quotation, LINKS.nodeId_old$uKsq) != null)) {
-          ListSequence.fromList(result).addElement(new DeprecatedConceptMemberNotMigratedProblem.DeprecatedContainmentLinkNotMigratedProblem(quotation, LINKS.nodeId_old$uKsq));
+        if ((SLinkOperations.getTarget(quotation, LINKS.nodeId_old$s_sY) != null)) {
+          ListSequence.fromList(result).addElement(new DeprecatedConceptMemberNotMigratedProblem.DeprecatedContainmentLinkNotMigratedProblem(quotation, LINKS.nodeId_old$s_sY));
         }
       }
-      for (SNode lightQuotation : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeBuilder$Gb, false))) {
-        if ((SLinkOperations.getTarget(lightQuotation, LINKS.modelToCreate_old$eQkx) != null)) {
-          ListSequence.fromList(result).addElement(new DeprecatedConceptMemberNotMigratedProblem.DeprecatedContainmentLinkNotMigratedProblem(lightQuotation, LINKS.modelToCreate_old$eQkx));
+      for (SNode lightQuotation : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeBuilder$GJ, false))) {
+        if ((SLinkOperations.getTarget(lightQuotation, LINKS.modelToCreate_old$cFl5) != null)) {
+          ListSequence.fromList(result).addElement(new DeprecatedConceptMemberNotMigratedProblem.DeprecatedContainmentLinkNotMigratedProblem(lightQuotation, LINKS.modelToCreate_old$cFl5));
         }
       }
       return result;
@@ -90,17 +90,17 @@ public class EncapsulateModelNodeId extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modelToCreate$AWC3 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x2e06ff6184da16a8L, "modelToCreate");
-    /*package*/ static final SContainmentLink modelToCreate$K8bw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x2e06ff6184da106eL, 0x2e06ff6184da106fL, "modelToCreate");
-    /*package*/ static final SContainmentLink modelToCreate_old$2tBx = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x1168c10465bL, "modelToCreate_old");
-    /*package*/ static final SContainmentLink nodeId$K8qx = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x2e06ff6184da106eL, 0x2e06ff6184da1070L, "nodeId");
-    /*package*/ static final SContainmentLink nodeId_old$uKsq = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x2c22b7a3db809c05L, "nodeId_old");
-    /*package*/ static final SContainmentLink modelToCreate$CHVl = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4a9dL, 0x2e06ff6184e8ee39L, "modelToCreate");
-    /*package*/ static final SContainmentLink modelToCreate_old$eQkx = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4a9dL, 0x4bb51009d20a4a9fL, "modelToCreate_old");
+    /*package*/ static final SContainmentLink modelToCreate$$LCB = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x2e06ff6184da16a8L, "modelToCreate");
+    /*package*/ static final SContainmentLink modelToCreate$HXc4 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x2e06ff6184da106eL, 0x2e06ff6184da106fL, "modelToCreate");
+    /*package*/ static final SContainmentLink modelToCreate_old$iC5 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x1168c10465bL, "modelToCreate_old");
+    /*package*/ static final SContainmentLink nodeId$HXr5 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x2e06ff6184da106eL, 0x2e06ff6184da1070L, "nodeId");
+    /*package*/ static final SContainmentLink nodeId_old$s_sY = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, 0x2c22b7a3db809c05L, "nodeId_old");
+    /*package*/ static final SContainmentLink modelToCreate$AyVT = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4a9dL, 0x2e06ff6184e8ee39L, "modelToCreate");
+    /*package*/ static final SContainmentLink modelToCreate_old$cFl5 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4a9dL, 0x4bb51009d20a4a9fL, "modelToCreate_old");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Quotation$UL = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, "jetbrains.mps.lang.quotation.structure.Quotation");
-    /*package*/ static final SConcept NodeBuilder$Gb = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4a9dL, "jetbrains.mps.lang.quotation.structure.NodeBuilder");
+    /*package*/ static final SConcept Quotation$Vl = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, "jetbrains.mps.lang.quotation.structure.Quotation");
+    /*package*/ static final SConcept NodeBuilder$GJ = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4a9dL, "jetbrains.mps.lang.quotation.structure.NodeBuilder");
   }
 }

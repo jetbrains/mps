@@ -18,12 +18,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class XmlCharRef_Constraints extends BaseConstraintsDescriptor {
   public XmlCharRef_Constraints() {
-    super(CONCEPTS.XmlCharRef$xa);
+    super(CONCEPTS.XmlCharRef$VD);
   }
 
   public static class CharCode_Property extends BasePropertyConstraintsDescriptor {
     public CharCode_Property(ConstraintsDescriptor container) {
-      super(PROPS.charCode$Ig_0, container);
+      super(PROPS.charCode$BCZv, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -45,15 +45,15 @@ public class XmlCharRef_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.charCode$Ig_0, new CharCode_Property(this));
+    properties.put(PROPS.charCode$BCZv, new CharCode_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XmlCharRef$xa = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x2abf08504ffe9886L, "jetbrains.mps.core.xml.structure.XmlCharRef");
+    /*package*/ static final SConcept XmlCharRef$VD = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x2abf08504ffe9886L, "jetbrains.mps.core.xml.structure.XmlCharRef");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty charCode$Ig_0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x2abf08504ffe9886L, 0x2abf08504ffe9887L, "charCode");
+    /*package*/ static final SProperty charCode$BCZv = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x2abf08504ffe9886L, 0x2abf08504ffe9887L, "charCode");
   }
 }

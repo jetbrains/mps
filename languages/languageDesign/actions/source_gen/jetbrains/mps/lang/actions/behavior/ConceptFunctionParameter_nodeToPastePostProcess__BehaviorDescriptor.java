@@ -32,7 +32,7 @@ public final class ConceptFunctionParameter_nodeToPastePostProcess__BehaviorDesc
   }
 
   /*package*/ static SNode getPostProcessor_id5eziI4W3iyy(@NotNull SNode __thisNode__) {
-    return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.PastePostProcessor$ej, false, false);
+    return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.PastePostProcessor$WA, false, false);
   }
   /*package*/ static boolean dontUseParameterObject_id1653mnvAgv$(@NotNull SAbstractConcept __thisConcept__) {
     return true;
@@ -87,6 +87,6 @@ public final class ConceptFunctionParameter_nodeToPastePostProcess__BehaviorDesc
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PastePostProcessor$ej = MetaAdapterFactory.getConcept(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x7d4ebb4f893516cL, "jetbrains.mps.lang.actions.structure.PastePostProcessor");
+    /*package*/ static final SConcept PastePostProcessor$WA = MetaAdapterFactory.getConcept(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x7d4ebb4f893516cL, "jetbrains.mps.lang.actions.structure.PastePostProcessor");
   }
 }

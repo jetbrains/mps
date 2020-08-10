@@ -60,8 +60,8 @@ public class SuppressErrorsMessage extends AbstractLeftEditorHighlighterMessage 
   @Override
   public jetbrains.mps.openapi.editor.cells.EditorCell getCell(EditorComponent editor) {
     SNode node = getNode();
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.SuppressErrorsAnnotation$gJ)) {
-      EditorCell result = getOwnCell(editor, SNodeOperations.cast(node, CONCEPTS.SuppressErrorsAnnotation$gJ));
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.SuppressErrorsAnnotation$D1)) {
+      EditorCell result = getOwnCell(editor, SNodeOperations.cast(node, CONCEPTS.SuppressErrorsAnnotation$D1));
       if (result != null) {
         return result;
       }
@@ -70,6 +70,6 @@ public class SuppressErrorsMessage extends AbstractLeftEditorHighlighterMessage 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SuppressErrorsAnnotation$gJ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, "jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation");
+    /*package*/ static final SConcept SuppressErrorsAnnotation$D1 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, "jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation");
   }
 }

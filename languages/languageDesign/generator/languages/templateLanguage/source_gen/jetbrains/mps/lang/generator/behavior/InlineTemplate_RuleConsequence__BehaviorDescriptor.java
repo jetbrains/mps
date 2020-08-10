@@ -32,7 +32,7 @@ public final class InlineTemplate_RuleConsequence__BehaviorDescriptor extends Ba
   }
 
   /*package*/ static SAbstractConcept getTemplateType_id6SoPMa83EEL(@NotNull SNode __thisNode__) {
-    return SNodeOperations.getConcept(SLinkOperations.getTarget(__thisNode__, LINKS.templateNode$CUKK));
+    return SNodeOperations.getConcept(SLinkOperations.getTarget(__thisNode__, LINKS.templateNode$1Rss));
   }
 
   /*package*/ InlineTemplate_RuleConsequence__BehaviorDescriptor() {
@@ -82,6 +82,6 @@ public final class InlineTemplate_RuleConsequence__BehaviorDescriptor extends Ba
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink templateNode$CUKK = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, 0x112103ebf76L, "templateNode");
+    /*package*/ static final SContainmentLink templateNode$1Rss = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, 0x112103ebf76L, "templateNode");
   }
 }

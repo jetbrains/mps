@@ -33,7 +33,7 @@ public class check_AbstractConceptDeclaration_Ids_NonTypesystemRule extends Abst
       return;
     }
 
-    if (isEmptyString(SPropertyOperations.getString(acd, PROPS.conceptId$ZjQr))) {
+    if (isEmptyString(SPropertyOperations.getString(acd, PROPS.conceptId$rrGe))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(acd, "Concept id is not defined.\n" + "Please run MainMenu->Migration->Migrations->Language Migrations->j.m.lang.structure->Set Ids\n" + "If this concept was created manually, invoke the \"Generate IDs\" intention on it", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1587916991969781666", null, errorTarget);
@@ -44,9 +44,9 @@ public class check_AbstractConceptDeclaration_Ids_NonTypesystemRule extends Abst
         }
       }
     } else {
-      if (ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(acd), CONCEPTS.AbstractConceptDeclaration$UN)).any(new IWhereFilter<SNode>() {
+      if (ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(acd), CONCEPTS.AbstractConceptDeclaration$KA)).any(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return it != acd && Objects.equals(SPropertyOperations.getString(it, PROPS.conceptId$ZjQr), SPropertyOperations.getString(acd, PROPS.conceptId$ZjQr));
+          return it != acd && Objects.equals(SPropertyOperations.getString(it, PROPS.conceptId$rrGe), SPropertyOperations.getString(acd, PROPS.conceptId$rrGe));
         }
       })) {
         {
@@ -61,8 +61,8 @@ public class check_AbstractConceptDeclaration_Ids_NonTypesystemRule extends Abst
       }
     }
 
-    for (final SNode p : ListSequence.fromList(SLinkOperations.getChildren(acd, LINKS.propertyDeclaration$yMqt))) {
-      if (isEmptyString(SPropertyOperations.getString(p, PROPS.propertyId$TXS7))) {
+    for (final SNode p : ListSequence.fromList(SLinkOperations.getChildren(acd, LINKS.propertyDeclaration$YUgg))) {
+      if (isEmptyString(SPropertyOperations.getString(p, PROPS.propertyId$m5HU))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(p, "Property id is not defined.\n" + "Please run MainMenu->Migration->Migrations->Language Migrations->j.m.lang.structure->Set Ids\n" + "If this property was created manually, invoke the \"Generate IDs\" intention on it", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "241647608299548534", null, errorTarget);
@@ -73,9 +73,9 @@ public class check_AbstractConceptDeclaration_Ids_NonTypesystemRule extends Abst
           }
         }
       } else {
-        if (ListSequence.fromList(SLinkOperations.getChildren(acd, LINKS.propertyDeclaration$yMqt)).any(new IWhereFilter<SNode>() {
+        if (ListSequence.fromList(SLinkOperations.getChildren(acd, LINKS.propertyDeclaration$YUgg)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return it != p && Objects.equals(SPropertyOperations.getString(it, PROPS.propertyId$TXS7), SPropertyOperations.getString(p, PROPS.propertyId$TXS7));
+            return it != p && Objects.equals(SPropertyOperations.getString(it, PROPS.propertyId$m5HU), SPropertyOperations.getString(p, PROPS.propertyId$m5HU));
           }
         })) {
           {
@@ -91,8 +91,8 @@ public class check_AbstractConceptDeclaration_Ids_NonTypesystemRule extends Abst
       }
     }
 
-    for (final SNode l : ListSequence.fromList(SLinkOperations.getChildren(acd, LINKS.linkDeclaration$yMbs))) {
-      if (isEmptyString(SPropertyOperations.getString(l, PROPS.linkId$Uajt))) {
+    for (final SNode l : ListSequence.fromList(SLinkOperations.getChildren(acd, LINKS.linkDeclaration$YU1f))) {
+      if (isEmptyString(SPropertyOperations.getString(l, PROPS.linkId$mi9g))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(l, "Link id is not defined.\n" + "Please run MainMenu->Migration->Migrations->Language Migrations->j.m.lang.structure->Set Ids\n" + "If this link was created manually, invoke the \"Generate IDs\" intention on it", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "241647608299555835", null, errorTarget);
@@ -103,9 +103,9 @@ public class check_AbstractConceptDeclaration_Ids_NonTypesystemRule extends Abst
           }
         }
       } else {
-        if (ListSequence.fromList(SLinkOperations.getChildren(acd, LINKS.linkDeclaration$yMbs)).any(new IWhereFilter<SNode>() {
+        if (ListSequence.fromList(SLinkOperations.getChildren(acd, LINKS.linkDeclaration$YU1f)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return it != l && Objects.equals(SPropertyOperations.getString(it, PROPS.linkId$Uajt), SPropertyOperations.getString(l, PROPS.linkId$Uajt));
+            return it != l && Objects.equals(SPropertyOperations.getString(it, PROPS.linkId$mi9g), SPropertyOperations.getString(l, PROPS.linkId$mi9g));
           }
         })) {
           {
@@ -122,7 +122,7 @@ public class check_AbstractConceptDeclaration_Ids_NonTypesystemRule extends Abst
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AbstractConceptDeclaration$UN;
+    return CONCEPTS.AbstractConceptDeclaration$KA;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -135,17 +135,17 @@ public class check_AbstractConceptDeclaration_Ids_NonTypesystemRule extends Abst
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty conceptId$ZjQr = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId");
-    /*package*/ static final SProperty propertyId$TXS7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0x35a81382d82a4d9L, "propertyId");
-    /*package*/ static final SProperty linkId$Uajt = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x35a81382d82a4e4L, "linkId");
+    /*package*/ static final SProperty conceptId$rrGe = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId");
+    /*package*/ static final SProperty propertyId$m5HU = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0x35a81382d82a4d9L, "propertyId");
+    /*package*/ static final SProperty linkId$mi9g = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x35a81382d82a4e4L, "linkId");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink propertyDeclaration$yMqt = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
-    /*package*/ static final SContainmentLink linkDeclaration$yMbs = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
+    /*package*/ static final SContainmentLink propertyDeclaration$YUgg = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
+    /*package*/ static final SContainmentLink linkDeclaration$YU1f = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
   }
 }

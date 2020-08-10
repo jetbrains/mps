@@ -28,7 +28,7 @@ public class PredefinedSymbolClassRegexp_SubstituteMenu extends SubstituteMenuBa
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_lmi5ai_a(), CONCEPTS.PredefinedSymbolClassRegexp$P6));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_lmi5ai_a(), CONCEPTS.PredefinedSymbolClassRegexp$tU));
     result.add(new SMP_Subconcepts_lmi5ai_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class PredefinedSymbolClassRegexp_SubstituteMenu extends SubstituteMenuBa
 
     public SMP_ReferenceScope_lmi5ai_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.PredefinedSymbolClassRegexp$P6, LINKS.symbolClass$3yu5);
+      super((SAbstractConcept) CONCEPTS.PredefinedSymbolClassRegexp$tU, LINKS.symbolClass$R06T);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class PredefinedSymbolClassRegexp_SubstituteMenu extends SubstituteMenuBa
   }
   public class SMP_Subconcepts_lmi5ai_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.PredefinedSymbolClassRegexp$P6);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.PredefinedSymbolClassRegexp$tU);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class PredefinedSymbolClassRegexp_SubstituteMenu extends SubstituteMenuBa
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PredefinedSymbolClassRegexp$P6 = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178fa2a18L, "jetbrains.mps.baseLanguage.regexp.structure.PredefinedSymbolClassRegexp");
+    /*package*/ static final SConcept PredefinedSymbolClassRegexp$tU = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178fa2a18L, "jetbrains.mps.baseLanguage.regexp.structure.PredefinedSymbolClassRegexp");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink symbolClass$3yu5 = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178fa2a18L, 0x11178fbdc7dL, "symbolClass");
+    /*package*/ static final SReferenceLink symbolClass$R06T = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178fa2a18L, 0x11178fbdc7dL, "symbolClass");
   }
 }

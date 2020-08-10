@@ -48,35 +48,35 @@ public final class StaticMethodCall__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static Iterable<SNode> getAvailableMethodDeclarations_id50EF2fWdwEN(@NotNull SNode __thisNode__, final String methodName) {
-    return Sequence.fromIterable(Members.visibleStaticMethods(SLinkOperations.getTarget(__thisNode__, LINKS.classConcept$70aQ), __thisNode__)).where(new IWhereFilter<SNode>() {
+    return Sequence.fromIterable(Members.visibleStaticMethods(SLinkOperations.getTarget(__thisNode__, LINKS.classConcept$M5BC), __thisNode__)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), methodName);
+        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), methodName);
       }
     }).toListSequence();
   }
   /*package*/ static boolean canBeConvertedToLocal_id2RbFUmZleRt(@NotNull SNode __thisNode__) {
-    SNode classConcept1 = SLinkOperations.getTarget(__thisNode__, LINKS.classConcept$70aQ);
-    SNode classConcept2 = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$hJ, false, false);
+    SNode classConcept1 = SLinkOperations.getTarget(__thisNode__, LINKS.classConcept$M5BC);
+    SNode classConcept2 = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$Ix, false, false);
     return classConcept1 == classConcept2;
   }
   /*package*/ static void convertToLocal_id2RbFUmZlhob(@NotNull SNode __thisNode__) {
-    SNode localStaticMethodCall = SNodeFactoryOperations.replaceWithNewChild(__thisNode__, CONCEPTS.LocalMethodCall$77);
-    SLinkOperations.setTarget(localStaticMethodCall, LINKS.baseMethodDeclaration$ItxI, SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$ItxI));
-    for (SNode actualArgument : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.actualArgument$ItKJ))) {
-      ListSequence.fromList(SLinkOperations.getChildren(localStaticMethodCall, LINKS.actualArgument$ItKJ)).addElement(actualArgument);
+    SNode localStaticMethodCall = SNodeFactoryOperations.replaceWithNewChild(__thisNode__, CONCEPTS.LocalMethodCall$zT);
+    SLinkOperations.setTarget(localStaticMethodCall, LINKS.baseMethodDeclaration$pyYw, SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$pyYw));
+    for (SNode actualArgument : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.actualArgument$pzdx))) {
+      ListSequence.fromList(SLinkOperations.getChildren(localStaticMethodCall, LINKS.actualArgument$pzdx)).addElement(actualArgument);
     }
-    for (SNode actualTypeArgument : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.typeArgument$C5i1))) {
-      ListSequence.fromList(SLinkOperations.getChildren(localStaticMethodCall, LINKS.typeArgument$C5i1)).addElement(actualTypeArgument);
+    for (SNode actualTypeArgument : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.typeArgument$jaIN))) {
+      ListSequence.fromList(SLinkOperations.getChildren(localStaticMethodCall, LINKS.typeArgument$jaIN)).addElement(actualTypeArgument);
     }
   }
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.classConcept$70aQ)) + "." + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$ItxI));
+    return BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.classConcept$M5BC)) + "." + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$pyYw));
   }
   /*package*/ static SNode getClassifier_id7S22xyoLQG7(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.classConcept$70aQ);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.classConcept$M5BC);
   }
   /*package*/ static void setClassifier_id7S22xyoLQH8(@NotNull SNode __thisNode__, SNode classifier) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.classConcept$70aQ, classifier);
+    SLinkOperations.setTarget(__thisNode__, LINKS.classConcept$M5BC, classifier);
   }
 
   /*package*/ StaticMethodCall__BehaviorDescriptor() {
@@ -138,18 +138,18 @@ public final class StaticMethodCall__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classConcept$70aQ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink typeArgument$C5i1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument");
+    /*package*/ static final SReferenceLink classConcept$M5BC = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink typeArgument$jaIN = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept LocalMethodCall$77 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept LocalMethodCall$zT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall");
   }
 }

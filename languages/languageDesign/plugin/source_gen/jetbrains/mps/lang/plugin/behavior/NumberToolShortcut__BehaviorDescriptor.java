@@ -32,8 +32,8 @@ public final class NumberToolShortcut__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static int getNumber_idqbzkx46jl9(@NotNull SNode __thisNode__) {
-    if (REGEXP_k3b4z8_a0a0a8.matcher(SPropertyOperations.getString(__thisNode__, PROPS.number$J71U)).matches()) {
-      return Integer.parseInt(SPropertyOperations.getString(__thisNode__, PROPS.number$J71U));
+    if (REGEXP_k3b4z8_a0a0a8.matcher(SPropertyOperations.getString(__thisNode__, PROPS.number$WFYX)).matches()) {
+      return Integer.parseInt(SPropertyOperations.getString(__thisNode__, PROPS.number$WFYX));
     } else {
       return -1;
     }
@@ -87,6 +87,6 @@ public final class NumberToolShortcut__BehaviorDescriptor extends BaseBHDescript
   private static final Pattern REGEXP_k3b4z8_a0a0a8 = Pattern.compile("\\d", 0);
 
   private static final class PROPS {
-    /*package*/ static final SProperty number$J71U = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76107L, 0x68b8d4843b76123L, "number");
+    /*package*/ static final SProperty number$WFYX = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76107L, 0x68b8d4843b76123L, "number");
   }
 }

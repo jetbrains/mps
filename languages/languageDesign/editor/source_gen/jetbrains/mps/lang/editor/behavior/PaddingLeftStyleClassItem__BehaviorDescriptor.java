@@ -30,7 +30,7 @@ public final class PaddingLeftStyleClassItem__BehaviorDescriptor extends BaseBHD
   }
 
   /*package*/ static boolean isApplicableToCellConcept_id2u3gVK1lsco(@NotNull SAbstractConcept __thisConcept__, SConcept cellConcept) {
-    return cellConcept.isSubConceptOf(CONCEPTS.CellModel_AbstractLabel$ji);
+    return cellConcept.isSubConceptOf(CONCEPTS.CellModel_AbstractLabel$uT);
   }
 
   /*package*/ PaddingLeftStyleClassItem__BehaviorDescriptor() {
@@ -80,6 +80,6 @@ public final class PaddingLeftStyleClassItem__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellModel_AbstractLabel$ji = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb4e7c3a4cL, "jetbrains.mps.lang.editor.structure.CellModel_AbstractLabel");
+    /*package*/ static final SConcept CellModel_AbstractLabel$uT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb4e7c3a4cL, "jetbrains.mps.lang.editor.structure.CellModel_AbstractLabel");
   }
 }

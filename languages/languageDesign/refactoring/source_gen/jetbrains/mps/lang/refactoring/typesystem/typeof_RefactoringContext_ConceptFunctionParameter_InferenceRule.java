@@ -25,7 +25,7 @@ public class typeof_RefactoringContext_ConceptFunctionParameter_InferenceRule ex
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.RefactoringContext_ConceptFunctionParameter$Le;
+    return CONCEPTS.RefactoringContext_ConceptFunctionParameter$dR;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_RefactoringContext_ConceptFunctionParameter_InferenceRule ex
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RefactoringContext_ConceptFunctionParameter$Le = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x6e6245e06b61724aL, "jetbrains.mps.lang.refactoring.structure.RefactoringContext_ConceptFunctionParameter");
+    /*package*/ static final SConcept RefactoringContext_ConceptFunctionParameter$dR = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x6e6245e06b61724aL, "jetbrains.mps.lang.refactoring.structure.RefactoringContext_ConceptFunctionParameter");
   }
 }

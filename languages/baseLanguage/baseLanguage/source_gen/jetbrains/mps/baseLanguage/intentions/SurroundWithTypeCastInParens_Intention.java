@@ -43,7 +43,7 @@ public final class SurroundWithTypeCastInParens_Intention extends AbstractIntent
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return editorContext.getSelectedNodes().size() == 1 && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.ParenthesizedExpression$vE));
+    return editorContext.getSelectedNodes().size() == 1 && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.ParenthesizedExpression$Ws));
   }
   @Override
   public boolean isSurroundWith() {
@@ -68,14 +68,14 @@ public final class SurroundWithTypeCastInParens_Intention extends AbstractIntent
       SNode castExpression = _quotation_createNode_fkvgh1_a0b0a(SNodeOperations.copyNode(node), expectedType);
 
       SNode paren = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression"));
-      SLinkOperations.setTarget(paren, LINKS.expression$efP0, castExpression);
+      SLinkOperations.setTarget(paren, LINKS.expression$TlhM, castExpression);
       SNodeOperations.replaceWithAnother(node, paren);
 
       if (PrecedenceUtil.needsParensInsideCastExpression(castExpression)) {
-        SNode expression = SLinkOperations.getTarget(castExpression, LINKS.expression$izU1);
-        SNode p = SNodeFactoryOperations.createNewNode(CONCEPTS.ParenthesizedExpression$vE, null);
+        SNode expression = SLinkOperations.getTarget(castExpression, LINKS.expression$XDmN);
+        SNode p = SNodeFactoryOperations.createNewNode(CONCEPTS.ParenthesizedExpression$Ws, null);
         SNode result = SNodeOperations.replaceWithAnother(expression, p);
-        SLinkOperations.setTarget(p, LINKS.expression$efP0, expression);
+        SLinkOperations.setTarget(p, LINKS.expression$TlhM, expression);
       }
 
       if (expectedType != null) {
@@ -107,11 +107,11 @@ public final class SurroundWithTypeCastInParens_Intention extends AbstractIntent
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ParenthesizedExpression$vE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
+    /*package*/ static final SConcept ParenthesizedExpression$Ws = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
-    /*package*/ static final SContainmentLink expression$izU1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
+    /*package*/ static final SContainmentLink expression$TlhM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink expression$XDmN = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
   }
 }

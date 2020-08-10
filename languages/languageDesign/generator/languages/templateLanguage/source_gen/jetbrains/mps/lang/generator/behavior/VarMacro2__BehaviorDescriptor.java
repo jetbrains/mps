@@ -35,7 +35,7 @@ public final class VarMacro2__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    return new CompositeScope(ScopeUtils.parentScope(__thisNode__, kind), new NamedElementsScope(SLinkOperations.getChildren(__thisNode__, LINKS.variables$htEz)));
+    return new CompositeScope(ScopeUtils.parentScope(__thisNode__, kind), new NamedElementsScope(SLinkOperations.getChildren(__thisNode__, LINKS.variables$Eqmf)));
   }
 
   /*package*/ VarMacro2__BehaviorDescriptor() {
@@ -85,6 +85,6 @@ public final class VarMacro2__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink variables$htEz = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b7eL, 0xe8e73f957fc2b8dL, "variables");
+    /*package*/ static final SContainmentLink variables$Eqmf = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b7eL, 0xe8e73f957fc2b8dL, "variables");
   }
 }

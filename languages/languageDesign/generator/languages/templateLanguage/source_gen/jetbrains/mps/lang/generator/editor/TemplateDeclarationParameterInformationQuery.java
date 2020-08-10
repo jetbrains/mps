@@ -24,7 +24,7 @@ public class TemplateDeclarationParameterInformationQuery implements ParametersI
   public TemplateDeclarationParameterInformationQuery() {
   }
   public Iterable<SNode> getMethods(SNode node, EditorContext editorContext) {
-    return Sequence.<SNode>singleton(SLinkOperations.getTarget(node, LINKS.template$B9Tq));
+    return Sequence.<SNode>singleton(SLinkOperations.getTarget(node, LINKS.template$6_6));
   }
   public void getStyledMethodPresentation(SNode node, EditorContext editorContext, SNode parameterObject, StyledTextPrinter styledText) {
     this.fillPresentation(parameterObject, this.getSelectedActualArgument(editorContext, node), styledText);
@@ -37,35 +37,35 @@ public class TemplateDeclarationParameterInformationQuery implements ParametersI
     if (selectedNode == null) {
       return null;
     }
-    return ListSequence.fromList(SNodeOperations.getNodeAncestors(selectedNode, CONCEPTS.Expression$TP, true)).findFirst(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SNodeOperations.getNodeAncestors(selectedNode, CONCEPTS.Expression$mB, true)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.getParent(it) == templateCall && Objects.equals(SNodeOperations.getContainingLink(it), LINKS.actualArgument$Agb$);
+        return SNodeOperations.getParent(it) == templateCall && Objects.equals(SNodeOperations.getContainingLink(it), LINKS.actualArgument$ZcRg);
       }
     });
   }
   /*package*/ void fillPresentation(SNode templateDeclaration, SNode selectedActualArgument, StyledTextPrinter styledText) {
-    if (SPropertyOperations.getString(templateDeclaration, PROPS.name$lA7v) != null) {
-      styledText.append(SPropertyOperations.getString(templateDeclaration, PROPS.name$lA7v));
+    if (SPropertyOperations.getString(templateDeclaration, PROPS.name$MnvL) != null) {
+      styledText.append(SPropertyOperations.getString(templateDeclaration, PROPS.name$MnvL));
     } else {
       styledText.append("<no name>");
     }
 
     int argumentIndex = (selectedActualArgument != null ? SNodeOperations.getIndexInParent(selectedActualArgument) : -1);
     styledText.append("(");
-    for (SNode param : SLinkOperations.getChildren(templateDeclaration, LINKS.parameter$GT0v)) {
+    for (SNode param : SLinkOperations.getChildren(templateDeclaration, LINKS.parameter$5PGb)) {
       if (SNodeOperations.getIndexInParent(param) > 0) {
         styledText.append(", ");
       }
       if (SNodeOperations.getIndexInParent(param) == argumentIndex) {
         styledText.setBold(true);
       }
-      if (SLinkOperations.getTarget(param, LINKS.type$tay0) != null) {
-        styledText.append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(param, LINKS.type$tay0)));
+      if (SLinkOperations.getTarget(param, LINKS.type$Q7dG) != null) {
+        styledText.append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(param, LINKS.type$Q7dG)));
       } else {
         styledText.append("???");
       }
-      if (SPropertyOperations.getString(param, PROPS.name$lA7v) != null) {
-        styledText.append(" " + SPropertyOperations.getString(param, PROPS.name$lA7v));
+      if (SPropertyOperations.getString(param, PROPS.name$MnvL) != null) {
+        styledText.append(" " + SPropertyOperations.getString(param, PROPS.name$MnvL));
       }
       styledText.setBold(false);
     }
@@ -73,17 +73,17 @@ public class TemplateDeclarationParameterInformationQuery implements ParametersI
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink template$B9Tq = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
-    /*package*/ static final SContainmentLink actualArgument$Agb$ = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3125L, "actualArgument");
-    /*package*/ static final SContainmentLink parameter$GT0v = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, 0xda3dc6e5137ea56L, "parameter");
-    /*package*/ static final SContainmentLink type$tay0 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a0962e6L, 0x190d31fe6a096acfL, "type");
+    /*package*/ static final SReferenceLink template$6_6 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
+    /*package*/ static final SContainmentLink actualArgument$ZcRg = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3125L, "actualArgument");
+    /*package*/ static final SContainmentLink parameter$5PGb = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, 0xda3dc6e5137ea56L, "parameter");
+    /*package*/ static final SContainmentLink type$Q7dG = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a0962e6L, 0x190d31fe6a096acfL, "type");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

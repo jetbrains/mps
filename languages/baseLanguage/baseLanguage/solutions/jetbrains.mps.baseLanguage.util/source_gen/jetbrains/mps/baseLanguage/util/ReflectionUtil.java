@@ -30,12 +30,12 @@ public final class ReflectionUtil {
       throw new IllegalStateException("It is impossible to load class from " + module + "; class node: " + classNode + "; " + status.getMessage());
     }
     final String className;
-    if (SNodeOperations.isInstanceOf(classNode, CONCEPTS.UnitConcept$lf)) {
-      className = ((String) BHReflection.invoke0(SNodeOperations.cast(classNode, CONCEPTS.UnitConcept$lf), CONCEPTS.UnitConcept$lf, SMethodTrimmedId.create("getUnitName", null, "4pl5GY7LKmR")));
+    if (SNodeOperations.isInstanceOf(classNode, CONCEPTS.UnitConcept$1g)) {
+      className = ((String) BHReflection.invoke0(SNodeOperations.cast(classNode, CONCEPTS.UnitConcept$1g), CONCEPTS.UnitConcept$1g, SMethodTrimmedId.create("getUnitName", null, "4pl5GY7LKmR")));
     } else {
       // XXX in fact, shall account for nested classes, take classNode.getNestedName() and replace '.' with '$' there, if any, and to use relevant part of getFqName() then 
       //     to respect possible packageName override. However, I expect all regular cases to get into UnitConcept alternative, and leave this placeholder as a reminder. 
-      className = ((String) BHReflection.invoke0(classNode, CONCEPTS.INamedConcept$nV, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+      className = ((String) BHReflection.invoke0(classNode, CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
     }
     try {
       return ((ReloadableModule) module).getClass(className);
@@ -58,7 +58,7 @@ public final class ReflectionUtil {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept UnitConcept$lf = MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a4L, "jetbrains.mps.lang.traceable.structure.UnitConcept");
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SInterfaceConcept UnitConcept$1g = MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a4L, "jetbrains.mps.lang.traceable.structure.UnitConcept");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

@@ -23,9 +23,9 @@ public class check_ConstructorInvocationStatementIsFirstStatement_NonTypesystemR
   public check_ConstructorInvocationStatementIsFirstStatement_NonTypesystemRule() {
   }
   public void applyRule(final SNode constructorInvocation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode constructor = SNodeOperations.getNodeAncestor(constructorInvocation, CONCEPTS.ConstructorDeclaration$5U, false, false);
+    SNode constructor = SNodeOperations.getNodeAncestor(constructorInvocation, CONCEPTS.ConstructorDeclaration$yG, false, false);
     if (constructor != null) {
-      SNode statementList = SLinkOperations.getTarget(constructor, LINKS.body$qspy);
+      SNode statementList = SLinkOperations.getTarget(constructor, LINKS.body$5xQk);
       SNode firstStatement = StatementList__BehaviorDescriptor.getFirstStatement_id4GU1DgEHJ2u.invoke(statementList);
       if (firstStatement != constructorInvocation) {
         {
@@ -36,7 +36,7 @@ public class check_ConstructorInvocationStatementIsFirstStatement_NonTypesystemR
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConstructorInvocationStatement$6c;
+    return CONCEPTS.ConstructorInvocationStatement$yY;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -46,11 +46,11 @@ public class check_ConstructorInvocationStatementIsFirstStatement_NonTypesystemR
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConstructorDeclaration$5U = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
-    /*package*/ static final SConcept ConstructorInvocationStatement$6c = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x121119ae5ffL, "jetbrains.mps.baseLanguage.structure.ConstructorInvocationStatement");
+    /*package*/ static final SConcept ConstructorDeclaration$yG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
+    /*package*/ static final SConcept ConstructorInvocationStatement$yY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x121119ae5ffL, "jetbrains.mps.baseLanguage.structure.ConstructorInvocationStatement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
   }
 }

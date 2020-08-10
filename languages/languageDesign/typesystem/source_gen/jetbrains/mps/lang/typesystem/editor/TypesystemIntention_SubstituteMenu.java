@@ -28,7 +28,7 @@ public class TypesystemIntention_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_8drpfu_a(), CONCEPTS.TypesystemIntention$aE));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_8drpfu_a(), CONCEPTS.TypesystemIntention$sw));
     result.add(new SMP_Subconcepts_8drpfu_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class TypesystemIntention_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_8drpfu_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.TypesystemIntention$aE, LINKS.quickFix$fvFg);
+      super((SAbstractConcept) CONCEPTS.TypesystemIntention$sw, LINKS.quickFix$ClX6);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class TypesystemIntention_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_8drpfu_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.TypesystemIntention$aE);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.TypesystemIntention$sw);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class TypesystemIntention_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TypesystemIntention$aE = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL, "jetbrains.mps.lang.typesystem.structure.TypesystemIntention");
+    /*package*/ static final SConcept TypesystemIntention$sw = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL, "jetbrains.mps.lang.typesystem.structure.TypesystemIntention");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink quickFix$fvFg = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL, 0x11b3667ec7bL, "quickFix");
+    /*package*/ static final SReferenceLink quickFix$ClX6 = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL, 0x11b3667ec7bL, "quickFix");
   }
 }

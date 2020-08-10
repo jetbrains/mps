@@ -15,18 +15,18 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class DSLDescriptorUtil {
   public static SNode getDescriptor(SNode n) {
-    if (SNodeOperations.isInstanceOf(n, CONCEPTS.AutoInitDSLClass$sF)) {
-      return AutoInitDSLClass__BehaviorDescriptor.getDescriptor_idUBgfI9eMAt.invoke(SNodeOperations.cast(n, CONCEPTS.AutoInitDSLClass$sF));
+    if (SNodeOperations.isInstanceOf(n, CONCEPTS.AutoInitDSLClass$Ms)) {
+      return AutoInitDSLClass__BehaviorDescriptor.getDescriptor_idUBgfI9eMAt.invoke(SNodeOperations.cast(n, CONCEPTS.AutoInitDSLClass$Ms));
     }
-    return SLinkOperations.getTarget(AttributeOperations.getAttribute(n, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$dI)), LINKS.descriptor$GNQ3);
+    return SLinkOperations.getTarget(AttributeOperations.getAttribute(n, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv)), LINKS.descriptor$aNbO);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept AutoInitDSLClass$sF = MetaAdapterFactory.getInterfaceConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0xea740fb893a13edL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.AutoInitDSLClass");
-    /*package*/ static final SConcept DSLAnnotation$dI = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLAnnotation");
+    /*package*/ static final SInterfaceConcept AutoInitDSLClass$Ms = MetaAdapterFactory.getInterfaceConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0xea740fb893a13edL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.AutoInitDSLClass");
+    /*package*/ static final SConcept DSLAnnotation$zv = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLAnnotation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink descriptor$GNQ3 = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, 0x3190d3f9f1cac277L, "descriptor");
+    /*package*/ static final SReferenceLink descriptor$aNbO = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, 0x3190d3f9f1cac277L, "descriptor");
   }
 }

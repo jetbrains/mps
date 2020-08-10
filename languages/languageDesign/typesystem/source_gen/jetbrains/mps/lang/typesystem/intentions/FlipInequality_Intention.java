@@ -56,30 +56,30 @@ public final class FlipInequality_Intention extends AbstractIntentionDescriptor 
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode newNode;
-      if (SNodeOperations.isInstanceOf(node, CONCEPTS.CreateGreaterThanInequationStatement$4l)) {
-        newNode = SNodeFactoryOperations.createNewNode(CONCEPTS.CreateLessThanInequationStatement$$A, null);
-      } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.CreateLessThanInequationStatement$$A)) {
-        newNode = SNodeFactoryOperations.createNewNode(CONCEPTS.CreateGreaterThanInequationStatement$4l, null);
-      } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.CreateStrongGreaterThanInequationStatement$pA)) {
-        newNode = SNodeFactoryOperations.createNewNode(CONCEPTS.CreateStrongLessThanInequationStatement$z, null);
-      } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.CreateStrongLessThanInequationStatement$z)) {
-        newNode = SNodeFactoryOperations.createNewNode(CONCEPTS.CreateStrongGreaterThanInequationStatement$pA, null);
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.CreateGreaterThanInequationStatement$mb)) {
+        newNode = SNodeFactoryOperations.createNewNode(CONCEPTS.CreateLessThanInequationStatement$Qs, null);
+      } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.CreateLessThanInequationStatement$Qs)) {
+        newNode = SNodeFactoryOperations.createNewNode(CONCEPTS.CreateGreaterThanInequationStatement$mb, null);
+      } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.CreateStrongGreaterThanInequationStatement$Fs)) {
+        newNode = SNodeFactoryOperations.createNewNode(CONCEPTS.CreateStrongLessThanInequationStatement$ip, null);
+      } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.CreateStrongLessThanInequationStatement$ip)) {
+        newNode = SNodeFactoryOperations.createNewNode(CONCEPTS.CreateStrongGreaterThanInequationStatement$Fs, null);
       } else {
         return;
       }
-      SLinkOperations.setTarget(newNode, LINKS.rightExpression$xJlJ, SLinkOperations.getTarget(node, LINKS.leftExpression$xJ6I));
-      SLinkOperations.setTarget(newNode, LINKS.leftExpression$xJ6I, SLinkOperations.getTarget(node, LINKS.rightExpression$xJlJ));
-      ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.afterEquations$Dz0V)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.afterEquations$Dz0V)));
-      ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.afterGroups$Zprn)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.afterGroups$Zprn)));
-      ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.beforeEquations$DCbh)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.beforeEquations$DCbh)));
-      ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.beforeGroups$ZpEo)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.beforeGroups$ZpEo)));
-      SPropertyOperations.assign(newNode, PROPS.checkOnly$DWc_, SPropertyOperations.getBoolean(node, PROPS.checkOnly$DWc_));
-      SLinkOperations.setTarget(newNode, LINKS.errorString$VyQO, SLinkOperations.getTarget(node, LINKS.errorString$VyQO));
-      ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.helginsIntention$TFCJ)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.helginsIntention$TFCJ)));
-      SLinkOperations.setTarget(newNode, LINKS.inequationGroup$Nfrq, SLinkOperations.getTarget(node, LINKS.inequationGroup$Nfrq));
-      SPropertyOperations.assignEnum(newNode, PROPS.inequationPriority$a_cp, SPropertyOperations.getEnum(node, PROPS.inequationPriority$a_cp));
-      SPropertyOperations.assign(newNode, PROPS.label$fDVE, SPropertyOperations.getString(node, PROPS.label$fDVE));
-      SLinkOperations.setTarget(newNode, LINKS.nodeToCheck$MXlb, SLinkOperations.getTarget(node, LINKS.nodeToCheck$MXlb));
+      SLinkOperations.setTarget(newNode, LINKS.rightExpression$U_B_, SLinkOperations.getTarget(node, LINKS.leftExpression$U_o$));
+      SLinkOperations.setTarget(newNode, LINKS.leftExpression$U_o$, SLinkOperations.getTarget(node, LINKS.rightExpression$U_B_));
+      ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.afterEquations$2piL)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.afterEquations$2piL)));
+      ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.afterGroups$ofHd)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.afterGroups$ofHd)));
+      ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.beforeEquations$2ut7)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.beforeEquations$2ut7)));
+      ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.beforeGroups$ofWe)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.beforeGroups$ofWe)));
+      SPropertyOperations.assign(newNode, PROPS.checkOnly$2Mur, SPropertyOperations.getBoolean(node, PROPS.checkOnly$2Mur));
+      SLinkOperations.setTarget(newNode, LINKS.errorString$kp8E, SLinkOperations.getTarget(node, LINKS.errorString$kp8E));
+      ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.helginsIntention$ixU_)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.helginsIntention$ixU_)));
+      SLinkOperations.setTarget(newNode, LINKS.inequationGroup$c5Hg, SLinkOperations.getTarget(node, LINKS.inequationGroup$c5Hg));
+      SPropertyOperations.assignEnum(newNode, PROPS.inequationPriority$zruf, SPropertyOperations.getEnum(node, PROPS.inequationPriority$zruf));
+      SPropertyOperations.assign(newNode, PROPS.label$Cwdw, SPropertyOperations.getString(node, PROPS.label$Cwdw));
+      SLinkOperations.setTarget(newNode, LINKS.nodeToCheck$bNB1, SLinkOperations.getTarget(node, LINKS.nodeToCheck$bNB1));
       SNodeOperations.replaceWithAnother(node, newNode);
     }
     @Override
@@ -89,28 +89,28 @@ public final class FlipInequality_Intention extends AbstractIntentionDescriptor 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CreateLessThanInequationStatement$$A = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f60bfd5L, "jetbrains.mps.lang.typesystem.structure.CreateLessThanInequationStatement");
-    /*package*/ static final SConcept CreateGreaterThanInequationStatement$4l = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f62956cL, "jetbrains.mps.lang.typesystem.structure.CreateGreaterThanInequationStatement");
-    /*package*/ static final SConcept CreateStrongLessThanInequationStatement$z = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x112b37f1b6eL, "jetbrains.mps.lang.typesystem.structure.CreateStrongLessThanInequationStatement");
-    /*package*/ static final SConcept CreateStrongGreaterThanInequationStatement$pA = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x31c3185c17a0f767L, "jetbrains.mps.lang.typesystem.structure.CreateStrongGreaterThanInequationStatement");
+    /*package*/ static final SConcept CreateLessThanInequationStatement$Qs = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f60bfd5L, "jetbrains.mps.lang.typesystem.structure.CreateLessThanInequationStatement");
+    /*package*/ static final SConcept CreateGreaterThanInequationStatement$mb = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f62956cL, "jetbrains.mps.lang.typesystem.structure.CreateGreaterThanInequationStatement");
+    /*package*/ static final SConcept CreateStrongLessThanInequationStatement$ip = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x112b37f1b6eL, "jetbrains.mps.lang.typesystem.structure.CreateStrongLessThanInequationStatement");
+    /*package*/ static final SConcept CreateStrongGreaterThanInequationStatement$Fs = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x31c3185c17a0f767L, "jetbrains.mps.lang.typesystem.structure.CreateStrongGreaterThanInequationStatement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink rightExpression$xJlJ = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x1117f3d1d36L, "rightExpression");
-    /*package*/ static final SContainmentLink leftExpression$xJ6I = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x1117f3d1d35L, "leftExpression");
-    /*package*/ static final SContainmentLink afterEquations$Dz0V = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11a342c1412L, 0x42501924d0bd890dL, "afterEquations");
-    /*package*/ static final SContainmentLink afterGroups$Zprn = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11a342c1412L, 0x12541e5f229a75beL, "afterGroups");
-    /*package*/ static final SContainmentLink beforeEquations$DCbh = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11a342c1412L, 0x42501924d0bd890eL, "beforeEquations");
-    /*package*/ static final SContainmentLink beforeGroups$ZpEo = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11a342c1412L, 0x12541e5f229a75bfL, "beforeGroups");
-    /*package*/ static final SContainmentLink errorString$VyQO = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x112d82366d0L, "errorString");
-    /*package*/ static final SContainmentLink helginsIntention$TFCJ = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x11b2b6fabb9L, "helginsIntention");
-    /*package*/ static final SContainmentLink inequationGroup$Nfrq = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11a342c1412L, 0x12541e5f229acedfL, "inequationGroup");
-    /*package*/ static final SContainmentLink nodeToCheck$MXlb = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x1117f58cf99L, "nodeToCheck");
+    /*package*/ static final SContainmentLink rightExpression$U_B_ = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x1117f3d1d36L, "rightExpression");
+    /*package*/ static final SContainmentLink leftExpression$U_o$ = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x1117f3d1d35L, "leftExpression");
+    /*package*/ static final SContainmentLink afterEquations$2piL = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11a342c1412L, 0x42501924d0bd890dL, "afterEquations");
+    /*package*/ static final SContainmentLink afterGroups$ofHd = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11a342c1412L, 0x12541e5f229a75beL, "afterGroups");
+    /*package*/ static final SContainmentLink beforeEquations$2ut7 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11a342c1412L, 0x42501924d0bd890eL, "beforeEquations");
+    /*package*/ static final SContainmentLink beforeGroups$ofWe = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11a342c1412L, 0x12541e5f229a75bfL, "beforeGroups");
+    /*package*/ static final SContainmentLink errorString$kp8E = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x112d82366d0L, "errorString");
+    /*package*/ static final SContainmentLink helginsIntention$ixU_ = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x11b2b6fabb9L, "helginsIntention");
+    /*package*/ static final SContainmentLink inequationGroup$c5Hg = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11a342c1412L, 0x12541e5f229acedfL, "inequationGroup");
+    /*package*/ static final SContainmentLink nodeToCheck$bNB1 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x1117f58cf99L, "nodeToCheck");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty checkOnly$DWc_ = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x118e0a511a0L, "checkOnly");
-    /*package*/ static final SProperty inequationPriority$a_cp = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11a342c1412L, 0x11a342c735aL, "inequationPriority");
-    /*package*/ static final SProperty label$fDVE = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11a342c1412L, 0x42501924d0bd6481L, "label");
+    /*package*/ static final SProperty checkOnly$2Mur = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x118e0a511a0L, "checkOnly");
+    /*package*/ static final SProperty inequationPriority$zruf = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11a342c1412L, 0x11a342c735aL, "inequationPriority");
+    /*package*/ static final SProperty label$Cwdw = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11a342c1412L, 0x42501924d0bd6481L, "label");
   }
 }

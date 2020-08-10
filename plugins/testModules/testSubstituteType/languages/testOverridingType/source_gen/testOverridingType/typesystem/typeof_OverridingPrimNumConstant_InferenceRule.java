@@ -21,17 +21,17 @@ public class typeof_OverridingPrimNumConstant_InferenceRule extends AbstractInfe
   public typeof_OverridingPrimNumConstant_InferenceRule() {
   }
   public boolean overrides(final SNode overridingPrimNumConstant, IsApplicableStatus status) {
-    return SPropertyOperations.getBoolean(overridingPrimNumConstant, PROPS.isOverriding$rN8y);
+    return SPropertyOperations.getBoolean(overridingPrimNumConstant, PROPS.isOverriding$p41p);
   }
   public void applyRule(final SNode overridingPrimNumConstant, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
       SNode _nodeToCheck_1029348928467 = overridingPrimNumConstant;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:d8c6e16f-e698-4fc4-9c7f-4a279bcfaaf0(testOverridingType.typesystem)", "6572489169071355994", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:d8c6e16f-e698-4fc4-9c7f-4a279bcfaaf0(testOverridingType.typesystem)", "6572489169071324671", true), (SNode) _quotation_createNode_kl4nnl_a1a0c0a0c(SPropertyOperations.getString(overridingPrimNumConstant, PROPS.isFloat$cRg0)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:d8c6e16f-e698-4fc4-9c7f-4a279bcfaaf0(testOverridingType.typesystem)", "6572489169071324671", true), (SNode) _quotation_createNode_kl4nnl_a1a0c0a0c(SPropertyOperations.getString(overridingPrimNumConstant, PROPS.isFloat$3JH3)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.OverridingPrimNumConstant$xd;
+    return CONCEPTS.OverridingPrimNumConstant$q4;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -54,11 +54,11 @@ public class typeof_OverridingPrimNumConstant_InferenceRule extends AbstractInfe
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isOverriding$rN8y = MetaAdapterFactory.getProperty(0x394e385732564e8bL, 0x96015abe7ad354d9L, 0x5b362c13a4988795L, 0x5b362c13a498895bL, "isOverriding");
-    /*package*/ static final SProperty isFloat$cRg0 = MetaAdapterFactory.getProperty(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x1469c391a09a5eefL, 0x1469c391a09a5ef0L, "isFloat");
+    /*package*/ static final SProperty isOverriding$p41p = MetaAdapterFactory.getProperty(0x394e385732564e8bL, 0x96015abe7ad354d9L, 0x5b362c13a4988795L, 0x5b362c13a498895bL, "isOverriding");
+    /*package*/ static final SProperty isFloat$3JH3 = MetaAdapterFactory.getProperty(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x1469c391a09a5eefL, 0x1469c391a09a5ef0L, "isFloat");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept OverridingPrimNumConstant$xd = MetaAdapterFactory.getConcept(0x394e385732564e8bL, 0x96015abe7ad354d9L, 0x5b362c13a4988795L, "testOverridingType.structure.OverridingPrimNumConstant");
+    /*package*/ static final SConcept OverridingPrimNumConstant$q4 = MetaAdapterFactory.getConcept(0x394e385732564e8bL, 0x96015abe7ad354d9L, 0x5b362c13a4988795L, "testOverridingType.structure.OverridingPrimNumConstant");
   }
 }

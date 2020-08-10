@@ -25,7 +25,7 @@ public class IntroduceConstantRefactoring extends IntroduceVariableRefactoring {
   @Override
   public SNode doRefactoring() {
     SNode newDeclaration = _quotation_createNode_2jj2z2_a0a0e(myVisibilityLevel.getNode(), SNodeOperations.copyNode(getExpressionType()), SNodeOperations.copyNode(getExpression()), getName());
-    MemberInsertingUtils.insertClassifierMemberInBestPlace(SNodeOperations.cast(this.myContainer, CONCEPTS.ClassConcept$IY), newDeclaration);
+    MemberInsertingUtils.insertClassifierMemberInBestPlace(SNodeOperations.cast(this.myContainer, CONCEPTS.ClassConcept$bK), newDeclaration);
     replaceNode(getExpression(), newDeclaration);
     if (this.myIsReplacingAll) {
       for (SNode duplicate : ListSequence.fromList(this.myDuplicates)) {
@@ -40,22 +40,22 @@ public class IntroduceConstantRefactoring extends IntroduceVariableRefactoring {
       return targetClass;
     }
 
-    SNode container = SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$IY, false, false);
-    while ((SNodeOperations.getNodeAncestor(container, CONCEPTS.ClassConcept$IY, false, false) != null)) {
-      container = SNodeOperations.getNodeAncestor(container, CONCEPTS.ClassConcept$IY, false, false);
+    SNode container = SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false);
+    while ((SNodeOperations.getNodeAncestor(container, CONCEPTS.ClassConcept$bK, false, false) != null)) {
+      container = SNodeOperations.getNodeAncestor(container, CONCEPTS.ClassConcept$bK, false, false);
     }
     return container;
   }
   @Override
   public void replaceNode(SNode node, SNode declaration) {
-    if (Scope.getScope(Scope.parent(node), node, CONCEPTS.VariableDeclaration$xe).contains(declaration)) {
+    if (Scope.getScope(Scope.parent(node), node, CONCEPTS.VariableDeclaration$Y0).contains(declaration)) {
       SNodeOperations.replaceWithAnother(node, _quotation_createNode_2jj2z2_a0a0a0a6(declaration));
     } else {
       SNodeOperations.replaceWithAnother(node, _quotation_createNode_2jj2z2_a0a0a0a0g(this.myContainer, declaration));
     }
   }
   public static boolean isApplicable(SNode node) {
-    return SNodeOperations.isInstanceOf(node, CONCEPTS.Expression$TP) && (SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$IY, false, false) != null);
+    return SNodeOperations.isInstanceOf(node, CONCEPTS.Expression$mB) && (SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false) != null);
   }
   private static SNode _quotation_createNode_2jj2z2_a0a0e(Object parameter_1, Object parameter_2, Object parameter_3, Object parameter_4) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -97,8 +97,8 @@ public class IntroduceConstantRefactoring extends IntroduceVariableRefactoring {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept VariableDeclaration$xe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept VariableDeclaration$Y0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 }

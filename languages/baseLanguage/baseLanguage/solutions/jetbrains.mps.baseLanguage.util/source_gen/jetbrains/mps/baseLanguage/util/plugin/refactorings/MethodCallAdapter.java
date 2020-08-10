@@ -20,43 +20,43 @@ public class MethodCallAdapter {
   @NotNull
   private SNode myMethodCall;
   public MethodCallAdapter(@NotNull SNode methodCall) {
-    if (!((SNodeOperations.isInstanceOf(methodCall, CONCEPTS.IMethodCall$ln) || SNodeOperations.isInstanceOf(methodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9K)))) {
+    if (!((SNodeOperations.isInstanceOf(methodCall, CONCEPTS.IMethodCall$M9) || SNodeOperations.isInstanceOf(methodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9$)))) {
       throw new IllegalArgumentException();
     }
     this.myMethodCall = methodCall;
   }
   public SNode getMethodDeclaration() {
-    if (SNodeOperations.isInstanceOf(this.myMethodCall, CONCEPTS.IMethodCall$ln)) {
-      return SLinkOperations.getTarget(SNodeOperations.cast(this.myMethodCall, CONCEPTS.IMethodCall$ln), LINKS.baseMethodDeclaration$ItxI);
+    if (SNodeOperations.isInstanceOf(this.myMethodCall, CONCEPTS.IMethodCall$M9)) {
+      return SLinkOperations.getTarget(SNodeOperations.cast(this.myMethodCall, CONCEPTS.IMethodCall$M9), LINKS.baseMethodDeclaration$pyYw);
     }
-    if (SNodeOperations.isInstanceOf(this.myMethodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9K)) {
-      return SLinkOperations.getTarget(SNodeOperations.cast(this.myMethodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9K), LINKS.member$shti);
+    if (SNodeOperations.isInstanceOf(this.myMethodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9$)) {
+      return SLinkOperations.getTarget(SNodeOperations.cast(this.myMethodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9$), LINKS.member$oLt6);
     }
     return null;
   }
   public List<SNode> getMethodArguments() {
-    if (SNodeOperations.isInstanceOf(this.myMethodCall, CONCEPTS.IMethodCall$ln)) {
-      return SLinkOperations.getChildren(SNodeOperations.cast(this.myMethodCall, CONCEPTS.IMethodCall$ln), LINKS.actualArgument$ItKJ);
+    if (SNodeOperations.isInstanceOf(this.myMethodCall, CONCEPTS.IMethodCall$M9)) {
+      return SLinkOperations.getChildren(SNodeOperations.cast(this.myMethodCall, CONCEPTS.IMethodCall$M9), LINKS.actualArgument$pzdx);
     }
-    if (SNodeOperations.isInstanceOf(this.myMethodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9K)) {
-      return SLinkOperations.getChildren(SNodeOperations.cast(this.myMethodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9K), LINKS.actualArgument$S0lI);
+    if (SNodeOperations.isInstanceOf(this.myMethodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9$)) {
+      return SLinkOperations.getChildren(SNodeOperations.cast(this.myMethodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9$), LINKS.actualArgument$Owly);
     }
     return null;
   }
   public void removeArguments() {
-    if (SNodeOperations.isInstanceOf(this.myMethodCall, CONCEPTS.IMethodCall$ln)) {
-      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(this.myMethodCall, CONCEPTS.IMethodCall$ln), LINKS.actualArgument$ItKJ)).clear();
+    if (SNodeOperations.isInstanceOf(this.myMethodCall, CONCEPTS.IMethodCall$M9)) {
+      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(this.myMethodCall, CONCEPTS.IMethodCall$M9), LINKS.actualArgument$pzdx)).clear();
     }
-    if (SNodeOperations.isInstanceOf(this.myMethodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9K)) {
-      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(this.myMethodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9K), LINKS.actualArgument$S0lI)).clear();
+    if (SNodeOperations.isInstanceOf(this.myMethodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9$)) {
+      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(this.myMethodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9$), LINKS.actualArgument$Owly)).clear();
     }
   }
   public void addArgument(SNode arguemnt) {
-    if (SNodeOperations.isInstanceOf(this.myMethodCall, CONCEPTS.IMethodCall$ln)) {
-      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(this.myMethodCall, CONCEPTS.IMethodCall$ln), LINKS.actualArgument$ItKJ)).addElement(arguemnt);
+    if (SNodeOperations.isInstanceOf(this.myMethodCall, CONCEPTS.IMethodCall$M9)) {
+      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(this.myMethodCall, CONCEPTS.IMethodCall$M9), LINKS.actualArgument$pzdx)).addElement(arguemnt);
     }
-    if (SNodeOperations.isInstanceOf(this.myMethodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9K)) {
-      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(this.myMethodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9K), LINKS.actualArgument$S0lI)).addElement(arguemnt);
+    if (SNodeOperations.isInstanceOf(this.myMethodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9$)) {
+      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(this.myMethodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9$), LINKS.actualArgument$Owly)).addElement(arguemnt);
     }
   }
   @NotNull
@@ -64,18 +64,18 @@ public class MethodCallAdapter {
     return this.myMethodCall;
   }
   public static boolean isMethodCall(SNode node) {
-    return SNodeOperations.isInstanceOf(node, CONCEPTS.IMethodCall$ln) || SNodeOperations.isInstanceOf(node, CONCEPTS.DefaultClassifierMethodCallOperation$9K);
+    return SNodeOperations.isInstanceOf(node, CONCEPTS.IMethodCall$M9) || SNodeOperations.isInstanceOf(node, CONCEPTS.DefaultClassifierMethodCallOperation$9$);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IMethodCall$ln = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
-    /*package*/ static final SConcept DefaultClassifierMethodCallOperation$9K = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd711e29L, "jetbrains.mps.baseLanguage.classifiers.structure.DefaultClassifierMethodCallOperation");
+    /*package*/ static final SInterfaceConcept IMethodCall$M9 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
+    /*package*/ static final SConcept DefaultClassifierMethodCallOperation$9$ = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd711e29L, "jetbrains.mps.baseLanguage.classifiers.structure.DefaultClassifierMethodCallOperation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SReferenceLink member$shti = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member");
-    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink actualArgument$S0lI = MetaAdapterFactory.getContainmentLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd711e29L, 0x118bd877799L, "actualArgument");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink member$oLt6 = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member");
+    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink actualArgument$Owly = MetaAdapterFactory.getContainmentLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bd711e29L, 0x118bd877799L, "actualArgument");
   }
 }

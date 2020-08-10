@@ -44,11 +44,11 @@ public class MigrateReferences extends MigrationScriptBase {
 
     Sequence.fromIterable(models).translate(new ITranslator2<SModel, SNode>() {
       public Iterable<SNode> translate(SModel m) {
-        return SModelOperations.nodes(m, CONCEPTS.OldComponentRef$GK);
+        return SModelOperations.nodes(m, CONCEPTS.OldComponentRef$TN);
       }
     }).visitAll(new IVisitor<SNode>() {
       public void visit(SNode oldNode) {
-        SNode newNode = _quotation_createNode_w5820p_a0a0a0a2a5(SLinkOperations.getTarget(oldNode, LINKS.target$j8yo));
+        SNode newNode = _quotation_createNode_w5820p_a0a0a0a2a5(SLinkOperations.getTarget(oldNode, LINKS.target$H6Jr));
         ((jetbrains.mps.smodel.SNode) newNode).setId(((jetbrains.mps.smodel.SNode) oldNode).getNodeId());
         SNodeOperations.replaceWithAnother(oldNode, newNode);
       }
@@ -67,10 +67,10 @@ public class MigrateReferences extends MigrationScriptBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept OldComponentRef$GK = MetaAdapterFactory.getConcept(0x1610048531ac4899L, 0x91122289e22843ddL, 0x6aff2c104931574dL, "references.structure.OldComponentRef");
+    /*package*/ static final SConcept OldComponentRef$TN = MetaAdapterFactory.getConcept(0x1610048531ac4899L, 0x91122289e22843ddL, 0x6aff2c104931574dL, "references.structure.OldComponentRef");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$j8yo = MetaAdapterFactory.getReferenceLink(0x1610048531ac4899L, 0x91122289e22843ddL, 0x6aff2c104931574dL, 0x6aff2c104932a69aL, "target");
+    /*package*/ static final SReferenceLink target$H6Jr = MetaAdapterFactory.getReferenceLink(0x1610048531ac4899L, 0x91122289e22843ddL, 0x6aff2c104931574dL, 0x6aff2c104932a69aL, "target");
   }
 }

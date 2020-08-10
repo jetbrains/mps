@@ -22,14 +22,14 @@ public class supertypesOf_ClosureLiteralType_SubtypingRule extends SubtypingRule
   public supertypesOf_ClosureLiteralType_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode closureLiteralType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(closureLiteralType, LINKS.runtimeIface$AWER) == null)) {
+    if ((SLinkOperations.getTarget(closureLiteralType, LINKS.runtimeIface$jayx) == null)) {
       return FunctionType__BehaviorDescriptor.getDeclarationRuntimeType_idhTOKQzf.invoke(closureLiteralType);
     } else {
-      return ClosureLiteralUtil.fillParams(_quotation_createNode_dhclly_a0a0a0a1(SLinkOperations.getTarget(closureLiteralType, LINKS.runtimeIface$AWER)), closureLiteralType);
+      return ClosureLiteralUtil.fillParams(_quotation_createNode_dhclly_a0a0a0a1(SLinkOperations.getTarget(closureLiteralType, LINKS.runtimeIface$jayx)), closureLiteralType);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ClosureLiteralType$J1;
+    return CONCEPTS.ClosureLiteralType$AF;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -46,10 +46,10 @@ public class supertypesOf_ClosureLiteralType_SubtypingRule extends SubtypingRule
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink runtimeIface$AWER = MetaAdapterFactory.getReferenceLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x16630bea72d45e9L, "runtimeIface");
+    /*package*/ static final SReferenceLink runtimeIface$jayx = MetaAdapterFactory.getReferenceLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x16630bea72d45e9L, "runtimeIface");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClosureLiteralType$J1 = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0xe8770ba07b68051L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteralType");
+    /*package*/ static final SConcept ClosureLiteralType$AF = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0xe8770ba07b68051L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteralType");
   }
 }

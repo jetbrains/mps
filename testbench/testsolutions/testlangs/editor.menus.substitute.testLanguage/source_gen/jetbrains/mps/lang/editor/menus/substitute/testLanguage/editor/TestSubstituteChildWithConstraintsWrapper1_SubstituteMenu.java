@@ -41,7 +41,7 @@ public class TestSubstituteChildWithConstraintsWrapper1_SubstituteMenu extends S
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_lwwy5_a(), CONCEPTS.TestSubstituteChildWithConstraintsWrapper1$Ef));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_lwwy5_a(), CONCEPTS.TestSubstituteChildWithConstraintsWrapper1$UK));
     return result;
   }
 
@@ -81,15 +81,15 @@ public class TestSubstituteChildWithConstraintsWrapper1_SubstituteMenu extends S
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.TestSubstituteChildWithConstraintsWrapper1$Ef;
+          return CONCEPTS.TestSubstituteChildWithConstraintsWrapper1$UK;
         }
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode nodeToWrap = super.createNode(pattern);
           myCreatedNode = nodeToWrap;
-          SNode newNode = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.TestSubstituteChildWithConstraintsWrapper1$Ef);
-          SLinkOperations.setTarget(newNode, LINKS.childToWrap$aUJS, nodeToWrap);
+          SNode newNode = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.TestSubstituteChildWithConstraintsWrapper1$UK);
+          SLinkOperations.setTarget(newNode, LINKS.childToWrap$9y0p, nodeToWrap);
           return newNode;
         }
         @Override
@@ -116,16 +116,16 @@ public class TestSubstituteChildWithConstraintsWrapper1_SubstituteMenu extends S
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.TestSubstituteChildWithConstraintsToWrap$EI;
+      return CONCEPTS.TestSubstituteChildWithConstraintsToWrap$Vf;
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestSubstituteChildWithConstraintsWrapper1$Ef = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2d21687L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithConstraintsWrapper1");
-    /*package*/ static final SConcept TestSubstituteChildWithConstraintsToWrap$EI = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2d21688L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithConstraintsToWrap");
+    /*package*/ static final SConcept TestSubstituteChildWithConstraintsWrapper1$UK = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2d21687L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithConstraintsWrapper1");
+    /*package*/ static final SConcept TestSubstituteChildWithConstraintsToWrap$Vf = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2d21688L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChildWithConstraintsToWrap");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink childToWrap$aUJS = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2d21687L, 0x9c8de75f2d2168bL, "childToWrap");
+    /*package*/ static final SContainmentLink childToWrap$9y0p = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x9c8de75f2d21687L, 0x9c8de75f2d2168bL, "childToWrap");
   }
 }

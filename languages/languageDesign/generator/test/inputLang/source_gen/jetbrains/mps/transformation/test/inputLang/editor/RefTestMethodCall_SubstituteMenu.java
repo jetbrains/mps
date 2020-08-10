@@ -28,7 +28,7 @@ public class RefTestMethodCall_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_5bwta2_a(), CONCEPTS.RefTestMethodCall$U_));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_5bwta2_a(), CONCEPTS.RefTestMethodCall$3G));
     result.add(new SMP_Subconcepts_5bwta2_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class RefTestMethodCall_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_5bwta2_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.RefTestMethodCall$U_, LINKS.method$tXiw);
+      super((SAbstractConcept) CONCEPTS.RefTestMethodCall$3G, LINKS.method$YwrB);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class RefTestMethodCall_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_5bwta2_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.RefTestMethodCall$U_);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.RefTestMethodCall$3G);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class RefTestMethodCall_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RefTestMethodCall$U_ = MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x2e0420fbd0995e09L, "jetbrains.mps.transformation.test.inputLang.structure.RefTestMethodCall");
+    /*package*/ static final SConcept RefTestMethodCall$3G = MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x2e0420fbd0995e09L, "jetbrains.mps.transformation.test.inputLang.structure.RefTestMethodCall");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink method$tXiw = MetaAdapterFactory.getReferenceLink(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x2e0420fbd0995e09L, 0x2e0420fbd0995e0aL, "method");
+    /*package*/ static final SReferenceLink method$YwrB = MetaAdapterFactory.getReferenceLink(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x2e0420fbd0995e09L, 0x2e0420fbd0995e0aL, "method");
   }
 }

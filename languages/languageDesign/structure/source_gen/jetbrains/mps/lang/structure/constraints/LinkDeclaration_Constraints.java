@@ -36,12 +36,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class LinkDeclaration_Constraints extends BaseConstraintsDescriptor {
   public LinkDeclaration_Constraints() {
-    super(CONCEPTS.LinkDeclaration$bA);
+    super(CONCEPTS.LinkDeclaration$1p);
   }
 
   public static class SourceCardinality_Property extends BasePropertyConstraintsDescriptor {
     public SourceCardinality_Property(ConstraintsDescriptor container) {
-      super(PROPS.sourceCardinality$Kq8X, container);
+      super(PROPS.sourceCardinality$cxYK, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -57,12 +57,12 @@ public class LinkDeclaration_Constraints extends BaseConstraintsDescriptor {
       return result;
     }
     private static boolean staticValidateProperty(SNode node, SEnumerationLiteral propertyValue) {
-      return SEnumOperations.isMember(SPropertyOperations.getEnum(node, PROPS.metaClass$p6Up), 0xfc6f4e95b9L) || SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f3944c2L, "jetbrains.mps.lang.structure.structure.Cardinality"), 0xfc6f3944c4L, "_1") == propertyValue || SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f3944c2L, "jetbrains.mps.lang.structure.structure.Cardinality"), 0xfc6f3944c3L, "_0__1") == propertyValue;
+      return SEnumOperations.isMember(SPropertyOperations.getEnum(node, PROPS.metaClass$PeKc), 0xfc6f4e95b9L) || SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f3944c2L, "jetbrains.mps.lang.structure.structure.Cardinality"), 0xfc6f3944c4L, "_1") == propertyValue || SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f3944c2L, "jetbrains.mps.lang.structure.structure.Cardinality"), 0xfc6f3944c3L, "_0__1") == propertyValue;
     }
   }
   public static class LinkId_Property extends BasePropertyConstraintsDescriptor {
     public LinkId_Property(ConstraintsDescriptor container) {
-      super(PROPS.linkId$Uajt, container);
+      super(PROPS.linkId$mi9g, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -91,7 +91,7 @@ public class LinkDeclaration_Constraints extends BaseConstraintsDescriptor {
   }
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$lA7v, container);
+      super(PROPS.name$MnvL, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -99,7 +99,7 @@ public class LinkDeclaration_Constraints extends BaseConstraintsDescriptor {
     }
     @Override
     public Object getValue(SNode node) {
-      return SPropertyOperations.getString(node, PROPS.role$nkts);
+      return SPropertyOperations.getString(node, PROPS.role$Nsjf);
     }
     @Override
     public boolean hasOwnSetter() {
@@ -110,20 +110,20 @@ public class LinkDeclaration_Constraints extends BaseConstraintsDescriptor {
       staticSetPropertyValue(node, SPropertyOperations.castString(propertyValue));
     }
     private static void staticSetPropertyValue(SNode node, String propertyValue) {
-      SPropertyOperations.assign(node, PROPS.role$nkts, propertyValue);
+      SPropertyOperations.assign(node, PROPS.role$Nsjf, propertyValue);
     }
   }
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.sourceCardinality$Kq8X, new SourceCardinality_Property(this));
-    properties.put(PROPS.linkId$Uajt, new LinkId_Property(this));
-    properties.put(PROPS.name$lA7v, new Name_Property(this));
+    properties.put(PROPS.sourceCardinality$cxYK, new SourceCardinality_Property(this));
+    properties.put(PROPS.linkId$mi9g, new LinkId_Property(this));
+    properties.put(PROPS.name$MnvL, new Name_Property(this));
     return properties;
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.specializedLink$FRN0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.specializedLink$7ZCN, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -142,18 +142,18 @@ public class LinkDeclaration_Constraints extends BaseConstraintsDescriptor {
             if (_context.getReferenceNode() == null) {
               return null;
             }
-            final boolean aggregation = SEnumOperations.isMember(SPropertyOperations.getEnum(_context.getReferenceNode(), PROPS.metaClass$p6Up), 0xfc6f4e95b9L);
+            final boolean aggregation = SEnumOperations.isMember(SPropertyOperations.getEnum(_context.getReferenceNode(), PROPS.metaClass$PeKc), 0xfc6f4e95b9L);
             List<SNode> result = new ArrayList<SNode>();
-            SNode enclosingConcept = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.AbstractConceptDeclaration$UN, true, false);
+            SNode enclosingConcept = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.AbstractConceptDeclaration$KA, true, false);
             List<SNode> directSupers = AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(enclosingConcept);
             for (SNode concept : ListSequence.fromList(directSupers)) {
               List<SNode> links = AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(concept);
               ListSequence.fromList(result).addSequence(ListSequence.fromList(links).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
                   if (aggregation) {
-                    return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$p6Up), 0xfc6f4e95b9L);
+                    return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b9L);
                   }
-                  return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$p6Up), 0xfc6f4e95b8L);
+                  return SEnumOperations.isMember(SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc), 0xfc6f4e95b8L);
                 }
               }));
             }
@@ -169,19 +169,19 @@ public class LinkDeclaration_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_nfyhm3_a0a0a0a0a1a0a0a0g = new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "6836281137582805253");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LinkDeclaration$bA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration");
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept LinkDeclaration$1p = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty sourceCardinality$Kq8X = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98054bb04L, "sourceCardinality");
-    /*package*/ static final SProperty metaClass$p6Up = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
-    /*package*/ static final SProperty linkId$Uajt = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x35a81382d82a4e4L, "linkId");
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty role$nkts = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
+    /*package*/ static final SProperty sourceCardinality$cxYK = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98054bb04L, "sourceCardinality");
+    /*package*/ static final SProperty metaClass$PeKc = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
+    /*package*/ static final SProperty linkId$mi9g = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x35a81382d82a4e4L, "linkId");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty role$Nsjf = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink specializedLink$FRN0 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98051c244L, "specializedLink");
+    /*package*/ static final SReferenceLink specializedLink$7ZCN = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98051c244L, "specializedLink");
   }
 }

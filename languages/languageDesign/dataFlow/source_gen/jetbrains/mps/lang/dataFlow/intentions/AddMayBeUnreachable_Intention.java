@@ -38,7 +38,7 @@ public final class AddMayBeUnreachable_Intention extends AbstractIntentionDescri
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.EmitMayBeUnreachable$ph));
+    return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.EmitMayBeUnreachable$dh));
   }
   @Override
   public boolean isSurroundWith() {
@@ -59,9 +59,9 @@ public final class AddMayBeUnreachable_Intention extends AbstractIntentionDescri
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.EmitMayBeUnreachable$ph, null);
+      SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.EmitMayBeUnreachable$dh, null);
       SNodeOperations.replaceWithAnother(node, result);
-      SLinkOperations.setTarget(result, LINKS.emitStatement$GagT, node);
+      SLinkOperations.setTarget(result, LINKS.emitStatement$Ak4T, node);
       SelectionUtil.selectNode(editorContext, node);
     }
     @Override
@@ -71,10 +71,10 @@ public final class AddMayBeUnreachable_Intention extends AbstractIntentionDescri
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EmitMayBeUnreachable$ph = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118eb0b6674L, "jetbrains.mps.lang.dataFlow.structure.EmitMayBeUnreachable");
+    /*package*/ static final SConcept EmitMayBeUnreachable$dh = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118eb0b6674L, "jetbrains.mps.lang.dataFlow.structure.EmitMayBeUnreachable");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink emitStatement$GagT = MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118eb0b6674L, 0x118eb0b872cL, "emitStatement");
+    /*package*/ static final SContainmentLink emitStatement$Ak4T = MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118eb0b6674L, 0x118eb0b872cL, "emitStatement");
   }
 }

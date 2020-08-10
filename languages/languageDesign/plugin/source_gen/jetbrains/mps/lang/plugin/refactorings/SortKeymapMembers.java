@@ -30,29 +30,29 @@ public class SortKeymapMembers extends BaseRefactoring {
   }
   public void refactor(final RefactoringContext refactoringContext) {
     SNode node = refactoringContext.getSelectedNode();
-    List<SNode> copy = ListSequence.fromListWithValues(new ArrayList<SNode>(), SLinkOperations.getChildren(node, LINKS.shortcutChange$zt21));
-    ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.shortcutChange$zt21)).clear();
-    ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.shortcutChange$zt21)).addSequence(ListSequence.fromList(copy).sort(new ISelector<SNode, Boolean>() {
+    List<SNode> copy = ListSequence.fromListWithValues(new ArrayList<SNode>(), SLinkOperations.getChildren(node, LINKS.shortcutChange$L1Z4));
+    ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.shortcutChange$L1Z4)).clear();
+    ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.shortcutChange$L1Z4)).addSequence(ListSequence.fromList(copy).sort(new ISelector<SNode, Boolean>() {
       public Boolean select(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.ParameterizedShortcutChange$V3);
+        return SNodeOperations.isInstanceOf(it, CONCEPTS.ParameterizedShortcutChange$S6);
       }
     }, true).alsoSort(new ISelector<SNode, String>() {
       public String select(SNode it) {
-        return SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.action$jfMa), PROPS.name$lA7v);
+        return SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.action$wOJd), PROPS.name$MnvL);
       }
     }, true));
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink shortcutChange$zt21 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, 0x15afe07f2a9bb077L, "shortcutChange");
-    /*package*/ static final SReferenceLink action$jfMa = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x55f30a5d1e092278L, 0x55f30a5d1e096c76L, "action");
+    /*package*/ static final SContainmentLink shortcutChange$L1Z4 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, 0x15afe07f2a9bb077L, "shortcutChange");
+    /*package*/ static final SReferenceLink action$wOJd = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x55f30a5d1e092278L, 0x55f30a5d1e096c76L, "action");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ParameterizedShortcutChange$V3 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x55f30a5d1e096c3aL, "jetbrains.mps.lang.plugin.structure.ParameterizedShortcutChange");
+    /*package*/ static final SConcept ParameterizedShortcutChange$S6 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x55f30a5d1e096c3aL, "jetbrains.mps.lang.plugin.structure.ParameterizedShortcutChange");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

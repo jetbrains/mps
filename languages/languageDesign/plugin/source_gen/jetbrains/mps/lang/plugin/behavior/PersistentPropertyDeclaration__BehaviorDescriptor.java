@@ -37,7 +37,7 @@ public final class PersistentPropertyDeclaration__BehaviorDescriptor extends Bas
     return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility"));
   }
   /*package*/ static List<SAbstractConcept> getOperationSConcept_id6ALWH9g2mqE(@NotNull SAbstractConcept __thisConcept__) {
-    return ListSequence.fromListAndArray(new ArrayList<SAbstractConcept>(), CONCEPTS.PersistentPropertyReference$vV);
+    return ListSequence.fromListAndArray(new ArrayList<SAbstractConcept>(), CONCEPTS.PersistentPropertyReference$sY);
   }
 
   /*package*/ PersistentPropertyDeclaration__BehaviorDescriptor() {
@@ -89,6 +89,6 @@ public final class PersistentPropertyDeclaration__BehaviorDescriptor extends Bas
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PersistentPropertyReference$vV = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119c466b22aL, "jetbrains.mps.lang.plugin.structure.PersistentPropertyReference");
+    /*package*/ static final SConcept PersistentPropertyReference$sY = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x119c466b22aL, "jetbrains.mps.lang.plugin.structure.PersistentPropertyReference");
   }
 }

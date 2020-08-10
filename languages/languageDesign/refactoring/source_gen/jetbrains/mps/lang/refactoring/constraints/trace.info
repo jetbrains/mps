@@ -25,8 +25,8 @@
       <node id="3242588059496701744" at="35,0,36,22" concept="5" />
       <node id="1227128029536563251" at="40,128,41,108" concept="5" />
       <node id="3242588059496701744" at="43,0,44,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="3242588059496701744" at="46,0,47,0" concept="7" trace="RefactoringAction$YI" />
-      <node id="3242588059496701744" at="47,0,48,0" concept="7" trace="DoRefactorClause$lc" />
+      <node id="3242588059496701744" at="46,0,47,0" concept="7" trace="RefactoringAction$rn" />
+      <node id="3242588059496701744" at="47,0,48,0" concept="7" trace="DoRefactorClause$LP" />
       <node id="3242588059496701744" at="21,0,24,0" concept="0" trace="RefactoringAction_Constraints#()V" />
       <node id="3242588059496701744" at="31,0,34,9" concept="2" />
       <node id="3242588059496701744" at="40,0,43,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -67,8 +67,8 @@
       <node id="4347648036456711204" at="34,0,35,22" concept="5" />
       <node id="1227128029536563280" at="39,128,40,114" concept="5" />
       <node id="4347648036456711204" at="42,0,43,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="4347648036456711204" at="45,0,46,0" concept="7" trace="ModelsToGenerateByDefault$lf" />
-      <node id="4347648036456711204" at="46,0,47,0" concept="7" trace="ModelsToGenerateClause$tC" />
+      <node id="4347648036456711204" at="45,0,46,0" concept="7" trace="ModelsToGenerateByDefault$LS" />
+      <node id="4347648036456711204" at="46,0,47,0" concept="7" trace="ModelsToGenerateClause$Uh" />
       <node id="4347648036456711204" at="20,0,23,0" concept="0" trace="ModelsToGenerateByDefault_Constraints#()V" />
       <node id="4347648036456711204" at="30,0,33,9" concept="2" />
       <node id="4347648036456711204" at="39,0,42,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -109,10 +109,10 @@
       <node id="5497648299878491778" at="52,131,53,42" concept="1" />
       <node id="5497648299878491777" at="53,42,54,22" concept="5" />
       <node id="5497648299878491777" at="56,0,57,0" concept="7" trace="breakingNode_9vozis_a0a0a0a0a1a0a0a0c" />
-      <node id="5497648299878491777" at="59,0,60,0" concept="7" trace="RefactoringFieldReference$kS" />
-      <node id="5497648299878491777" at="60,0,61,0" concept="7" trace="Refactoring$J9" />
-      <node id="5497648299878491777" at="64,0,65,0" concept="7" trace="baseVariableDeclaration$NW$0" />
-      <node id="5497648299878491777" at="65,0,66,0" concept="7" trace="field$HsGT" />
+      <node id="5497648299878491777" at="59,0,60,0" concept="7" trace="RefactoringFieldReference$Lx" />
+      <node id="5497648299878491777" at="60,0,61,0" concept="7" trace="Refactoring$bM" />
+      <node id="5497648299878491777" at="64,0,65,0" concept="7" trace="baseVariableDeclaration$v20M" />
+      <node id="5497648299878491777" at="65,0,66,0" concept="7" trace="field$fp9y" />
       <node id="5497648299878491777" at="26,0,29,0" concept="0" trace="RefactoringFieldReference_Constraints#()V" />
       <node id="5497648299878491778" at="33,0,37,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="5497648299878491778" at="41,0,45,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -155,10 +155,10 @@
       <node id="5497648299878491896" at="52,131,53,42" concept="1" />
       <node id="5497648299878491895" at="53,42,54,22" concept="5" />
       <node id="5497648299878491895" at="56,0,57,0" concept="7" trace="breakingNode_vznh2k_a0a0a0a0a1a0a0a0c" />
-      <node id="5497648299878491895" at="59,0,60,0" concept="7" trace="RefactoringParameterReference$gK" />
-      <node id="5497648299878491895" at="60,0,61,0" concept="7" trace="Refactoring$J9" />
-      <node id="5497648299878491895" at="64,0,65,0" concept="7" trace="refactoringParameter$Q8o0" />
-      <node id="5497648299878491895" at="65,0,66,0" concept="7" trace="parameter$HstS" />
+      <node id="5497648299878491895" at="59,0,60,0" concept="7" trace="RefactoringParameterReference$Hp" />
+      <node id="5497648299878491895" at="60,0,61,0" concept="7" trace="Refactoring$bM" />
+      <node id="5497648299878491895" at="64,0,65,0" concept="7" trace="refactoringParameter$o4OD" />
+      <node id="5497648299878491895" at="65,0,66,0" concept="7" trace="parameter$foUx" />
       <node id="5497648299878491895" at="26,0,29,0" concept="0" trace="RefactoringParameterReference_Constraints#()V" />
       <node id="5497648299878491896" at="33,0,37,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="5497648299878491896" at="41,0,45,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -201,10 +201,10 @@
       <node id="7953996722066256429" at="36,0,37,22" concept="5" />
       <node id="1227128029536563262" at="41,128,42,291" concept="5" />
       <node id="7953996722066256429" at="44,0,45,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="7953996722066256429" at="47,0,48,0" concept="7" trace="ContextMemberOperation$5Z" />
-      <node id="7953996722066256429" at="48,0,49,0" concept="7" trace="DotExpression$6a" />
-      <node id="7953996722066256429" at="49,0,50,0" concept="7" trace="ContextType$kP" />
-      <node id="7953996722066256429" at="53,0,54,0" concept="7" trace="operand$P1i5" />
+      <node id="7953996722066256429" at="47,0,48,0" concept="7" trace="ContextMemberOperation$yC" />
+      <node id="7953996722066256429" at="48,0,49,0" concept="7" trace="DotExpression$yW" />
+      <node id="7953996722066256429" at="49,0,50,0" concept="7" trace="ContextType$Lu" />
+      <node id="7953996722066256429" at="53,0,54,0" concept="7" trace="operand$w6IR" />
       <node id="7953996722066256429" at="22,0,25,0" concept="0" trace="ContextMemberOperation_Constraints#()V" />
       <node id="7953996722066256429" at="32,0,35,9" concept="2" />
       <node id="7953996722066256429" at="41,0,44,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />

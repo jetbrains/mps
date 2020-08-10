@@ -17,7 +17,7 @@
   <root nodeRef="r:85427802-2815-4ede-beac-6d6b51b72018(jetbrains.mps.samples.heating.constraints)/2161719505004861768">
     <file name="Applicability_Constraints.java">
       <node id="2161719505004861768" at="10,38,11,37" concept="8" />
-      <node id="2161719505004861768" at="15,0,16,0" concept="6" trace="Applicability$_M" />
+      <node id="2161719505004861768" at="15,0,16,0" concept="6" trace="Applicability$Qd" />
       <node id="2161719505004861768" at="10,0,13,0" concept="0" trace="Applicability_Constraints#()V" />
       <scope id="2161719505004861768" at="10,38,11,37" />
       <scope id="2161719505004861768" at="10,0,13,0" />
@@ -34,9 +34,9 @@
       <node id="2161719505004867255" at="38,84,39,119" concept="4" />
       <node id="2161719505004867256" at="39,119,40,75" concept="1" />
       <node id="2161719505004867255" at="40,75,41,22" concept="5" />
-      <node id="2161719505004867255" at="45,0,46,0" concept="6" trace="DailyPlan$jq" />
-      <node id="2161719505004867255" at="49,0,50,0" concept="6" trace="displayName$J0kO" />
-      <node id="2161719505004867255" at="53,0,54,0" concept="6" trace="applicability$lDgz" />
+      <node id="2161719505004867255" at="45,0,46,0" concept="6" trace="DailyPlan$zP" />
+      <node id="2161719505004867255" at="49,0,50,0" concept="6" trace="displayName$el_f" />
+      <node id="2161719505004867255" at="53,0,54,0" concept="6" trace="applicability$OYwY" />
       <node id="2161719505004867255" at="20,0,23,0" concept="0" trace="DailyPlan_Constraints#()V" />
       <node id="2161719505004867256" at="25,0,28,0" concept="0" trace="DisplayName_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="2161719505004867256" at="28,0,32,0" concept="3" trace="hasOwnGetter#()Z" />
@@ -78,8 +78,8 @@
       <node id="5063359128232717451" at="46,84,47,119" concept="4" />
       <node id="5063359128232932337" at="47,119,48,75" concept="1" />
       <node id="5063359128232717451" at="48,75,49,22" concept="5" />
-      <node id="5063359128232717451" at="53,0,54,0" concept="6" trace="ChangeEvent$Gi" />
-      <node id="5063359128232717451" at="57,0,58,0" concept="6" trace="temperature$BY7y" />
+      <node id="5063359128232717451" at="53,0,54,0" concept="6" trace="ChangeEvent$WH" />
+      <node id="5063359128232717451" at="57,0,58,0" concept="6" trace="temperature$7jnX" />
       <node id="5063359128232717451" at="20,0,23,0" concept="0" trace="ChangeEvent_Constraints#()V" />
       <node id="5063359128232932337" at="25,0,28,0" concept="0" trace="Temperature_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="5063359128232932337" at="35,100,38,7" concept="2" />
@@ -132,10 +132,10 @@
       <node id="5726447348463760016" at="56,84,57,119" concept="4" />
       <node id="5726447348463760063" at="57,119,58,63" concept="1" />
       <node id="5726447348463760016" at="58,63,59,22" concept="5" />
-      <node id="5726447348463760016" at="63,0,64,0" concept="6" trace="Slot$bv" />
-      <node id="5726447348463760016" at="64,0,65,0" concept="6" trace="DailyPlan$jq" />
-      <node id="5726447348463760016" at="68,0,69,0" concept="6" trace="start$JHiC" />
-      <node id="5726447348463760016" at="72,0,73,0" concept="6" trace="items$_bm7" />
+      <node id="5726447348463760016" at="63,0,64,0" concept="6" trace="Slot$rU" />
+      <node id="5726447348463760016" at="64,0,65,0" concept="6" trace="DailyPlan$zP" />
+      <node id="5726447348463760016" at="68,0,69,0" concept="6" trace="start$f2z3" />
+      <node id="5726447348463760016" at="72,0,73,0" concept="6" trace="items$4wAy" />
       <node id="5726447348463760016" at="26,0,29,0" concept="0" trace="Slot_Constraints#()V" />
       <node id="5726447348463760063" at="31,0,34,0" concept="0" trace="Start_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="5726447348463760063" at="41,100,44,7" concept="2" />
@@ -194,12 +194,12 @@
       <node id="935069066463107219" at="66,131,67,42" concept="1" />
       <node id="935069066463107114" at="67,42,68,22" concept="5" />
       <node id="935069066463107114" at="70,0,71,0" concept="6" trace="breakingNode_y2k5og_a0a0a0a0a1a0a0a0c" />
-      <node id="935069066463107114" at="73,0,74,0" concept="6" trace="DailyPlanReference$dO" />
-      <node id="935069066463107114" at="74,0,75,0" concept="6" trace="DailyPlan$jq" />
-      <node id="935069066463107114" at="75,0,76,0" concept="6" trace="HeatingPlan$55" />
-      <node id="935069066463107114" at="79,0,80,0" concept="6" trace="target$M6U0" />
-      <node id="935069066463107114" at="80,0,81,0" concept="6" trace="dailyPlans$phQj" />
-      <node id="935069066463107114" at="84,0,85,0" concept="6" trace="displayName$J0kO" />
+      <node id="935069066463107114" at="73,0,74,0" concept="6" trace="DailyPlanReference$uf" />
+      <node id="935069066463107114" at="74,0,75,0" concept="6" trace="DailyPlan$zP" />
+      <node id="935069066463107114" at="75,0,76,0" concept="6" trace="HeatingPlan$lw" />
+      <node id="935069066463107114" at="79,0,80,0" concept="6" trace="target$hsar" />
+      <node id="935069066463107114" at="80,0,81,0" concept="6" trace="dailyPlans$SB6I" />
+      <node id="935069066463107114" at="84,0,85,0" concept="6" trace="displayName$el_f" />
       <node id="935069066463107114" at="32,0,35,0" concept="0" trace="DailyPlanReference_Constraints#()V" />
       <node id="6836281137582847309" at="54,0,57,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="6836281137582847286" at="58,0,61,0" concept="3" trace="getName#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />

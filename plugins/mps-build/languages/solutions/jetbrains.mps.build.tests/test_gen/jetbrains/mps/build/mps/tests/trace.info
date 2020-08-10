@@ -269,45 +269,45 @@
       <node id="5930701959883632593" at="379,164,380,160" concept="1" />
       <node id="5930701959884196032" at="380,160,381,0" concept="7" />
       <node id="5930701959882971515" at="381,0,382,163" concept="1" />
-      <node id="5930701959882971526" at="382,163,383,153" concept="1" />
-      <node id="5930701959884827192" at="383,153,384,0" concept="7" />
-      <node id="5930701959882971537" at="384,0,385,153" concept="1" />
-      <node id="5930701959884845748" at="385,153,386,167" concept="1" />
-      <node id="5930701959885041042" at="386,167,387,158" concept="1" />
+      <node id="5930701959882971526" at="382,163,383,152" concept="1" />
+      <node id="5930701959884827192" at="383,152,384,0" concept="7" />
+      <node id="5930701959882971537" at="384,0,385,152" concept="1" />
+      <node id="5930701959884845748" at="385,152,386,166" concept="1" />
+      <node id="5930701959885041042" at="386,166,387,158" concept="1" />
       <node id="5930701959885029965" at="387,158,388,160" concept="1" />
       <node id="5930701959885089739" at="388,160,389,0" concept="7" />
-      <node id="5930701959884049462" at="389,0,390,153" concept="1" />
-      <node id="5930701959884799409" at="390,153,391,0" concept="7" />
+      <node id="5930701959884049462" at="389,0,390,152" concept="1" />
+      <node id="5930701959884799409" at="390,152,391,0" concept="7" />
       <node id="5930701959885180457" at="391,0,392,130" concept="4" />
       <node id="5930701959885140778" at="392,130,393,68" concept="1" />
       <node id="5930701959885197001" at="393,68,394,71" concept="1" />
       <node id="5930701959885154395" at="394,71,395,0" concept="7" />
-      <node id="5930701959883830724" at="395,0,396,155" concept="1" />
-      <node id="1866961314790186933" at="396,155,397,162" concept="1" />
+      <node id="5930701959883830724" at="395,0,396,154" concept="1" />
+      <node id="1866961314790186933" at="396,154,397,162" concept="1" />
       <node id="5930701959883236447" at="397,162,398,152" concept="1" />
-      <node id="5930701959883843150" at="398,152,399,153" concept="1" />
-      <node id="5930701959882970867" at="405,0,406,0" concept="8" trace="BuildProject$BF" />
-      <node id="5930701959882970867" at="406,0,407,0" concept="8" trace="BuildMps_Solution$qJ" />
-      <node id="5930701959882970867" at="407,0,408,0" concept="8" trace="BuildProjectDependency$Ug" />
-      <node id="5930701959882970867" at="408,0,409,0" concept="8" trace="BuildMps_ModuleDependencyUseLanguage$2l" />
-      <node id="5930701959882970867" at="409,0,410,0" concept="8" trace="BuildMps_ModuleDependencyOnDevKit$C4" />
-      <node id="5930701959882970867" at="410,0,411,0" concept="8" trace="BuildMps_ModuleSolutionRuntime$IH" />
-      <node id="5930701959882970867" at="411,0,412,0" concept="8" trace="BuildMps_ModuleDependencyExtendLanguage$$$" />
-      <node id="5930701959882970867" at="412,0,413,0" concept="8" trace="BuildMps_ModuleDependencyOnModule$_g" />
-      <node id="5930701959882970867" at="413,0,414,0" concept="8" trace="BuildMps_DevKitExportLanguage$ez" />
-      <node id="5930701959882970867" at="417,0,418,0" concept="8" trace="parts$b06K" />
-      <node id="5930701959882970867" at="418,0,419,0" concept="8" trace="dependencies$fxFr" />
-      <node id="5930701959882970867" at="419,0,420,0" concept="8" trace="script$UXIZ" />
-      <node id="5930701959882970867" at="420,0,421,0" concept="8" trace="dependencies$NWkV" />
-      <node id="5930701959882970867" at="421,0,422,0" concept="8" trace="language$Z1aw" />
-      <node id="5930701959882970867" at="422,0,423,0" concept="8" trace="devkit$noXl" />
-      <node id="5930701959882970867" at="423,0,424,0" concept="8" trace="runtime$QljP" />
-      <node id="5930701959882970867" at="424,0,425,0" concept="8" trace="solution$wRmw" />
-      <node id="5930701959882970867" at="425,0,426,0" concept="8" trace="language$kMx1" />
-      <node id="5930701959882970867" at="426,0,427,0" concept="8" trace="module$PvPC" />
-      <node id="5930701959882970867" at="427,0,428,0" concept="8" trace="exports$nj57" />
-      <node id="5930701959882970867" at="428,0,429,0" concept="8" trace="language$Ve4X" />
-      <node id="5930701959882970867" at="432,0,433,0" concept="8" trace="reexport$PAD5" />
+      <node id="5930701959883843150" at="398,152,399,152" concept="1" />
+      <node id="5930701959882970867" at="405,0,406,0" concept="8" trace="BuildProject$ae" />
+      <node id="5930701959882970867" at="406,0,407,0" concept="8" trace="BuildMps_Solution$R7" />
+      <node id="5930701959882970867" at="407,0,408,0" concept="8" trace="BuildProjectDependency$sN" />
+      <node id="5930701959882970867" at="408,0,409,0" concept="8" trace="BuildMps_ModuleDependencyUseLanguage$uH" />
+      <node id="5930701959882970867" at="409,0,410,0" concept="8" trace="BuildMps_ModuleDependencyOnDevKit$4s" />
+      <node id="5930701959882970867" at="410,0,411,0" concept="8" trace="BuildMps_ModuleSolutionRuntime$b5" />
+      <node id="5930701959882970867" at="411,0,412,0" concept="8" trace="BuildMps_ModuleDependencyExtendLanguage$W" />
+      <node id="5930701959882970867" at="412,0,413,0" concept="8" trace="BuildMps_ModuleDependencyOnModule$1C" />
+      <node id="5930701959882970867" at="413,0,414,0" concept="8" trace="BuildMps_DevKitExportLanguage$EV" />
+      <node id="5930701959882970867" at="417,0,418,0" concept="8" trace="parts$mGDj" />
+      <node id="5930701959882970867" at="418,0,419,0" concept="8" trace="dependencies$redY" />
+      <node id="5930701959882970867" at="419,0,420,0" concept="8" trace="script$6Ehy" />
+      <node id="5930701959882970867" at="420,0,421,0" concept="8" trace="dependencies$j8Lj" />
+      <node id="5930701959882970867" at="421,0,422,0" concept="8" trace="language$udAS" />
+      <node id="5930701959882970867" at="422,0,423,0" concept="8" trace="devkit$Q_pH" />
+      <node id="5930701959882970867" at="423,0,424,0" concept="8" trace="runtime$lxKd" />
+      <node id="5930701959882970867" at="424,0,425,0" concept="8" trace="solution$3MS" />
+      <node id="5930701959882970867" at="425,0,426,0" concept="8" trace="language$NYXp" />
+      <node id="5930701959882970867" at="426,0,427,0" concept="8" trace="module$kGi0" />
+      <node id="5930701959882970867" at="427,0,428,0" concept="8" trace="exports$Qvxv" />
+      <node id="5930701959882970867" at="428,0,429,0" concept="8" trace="language$qqxl" />
+      <node id="5930701959882970867" at="432,0,433,0" concept="8" trace="reexport$kN5t" />
       <node id="5930701959882970867" at="401,0,403,0" concept="3" trace="tearDown#()V" />
       <node id="1866961314790477335" at="47,0,52,0" concept="3" trace="test_l2DesignClosureContainsSuperLangOfDirectDepLang#()V" />
       <node id="1866961314789844919" at="52,0,57,0" concept="3" trace="test_l2DesignClosureContainsRexportDepOfDirectDeps#()V" />
@@ -612,7 +612,7 @@
       <scope id="1866961314800277246" at="186,0,194,0" />
       <scope id="1866961314800742648" at="64,0,73,0" />
       <scope id="1866961314799045255" at="130,0,140,0" />
-      <scope id="5930701959882971672" at="348,23,399,153">
+      <scope id="5930701959882971672" at="348,23,399,152">
         <var name="auxModel" id="5930701959882971429" />
         <var name="helper" id="5930701959884539553" />
         <var name="reexportDep" id="5930701959885180458" />
@@ -640,8 +640,8 @@
       <node id="5930701959884486300" at="36,197,37,62" concept="1" />
       <node id="5930701959884486306" at="37,62,38,103" concept="1" />
       <node id="5930701959884486313" at="38,103,39,18" concept="5" />
-      <node id="5930701959884402994" at="43,0,44,0" concept="8" trace="name$lA7v" />
-      <node id="5930701959884402994" at="47,0,48,0" concept="8" trace="parts$b06K" />
+      <node id="5930701959884402994" at="43,0,44,0" concept="8" trace="name$MnvL" />
+      <node id="5930701959884402994" at="47,0,48,0" concept="8" trace="parts$mGDj" />
       <node id="5930701959884405132" at="17,0,20,0" concept="0" trace="BuildProjectBTestCaseHelper#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="5930701959884406797" at="21,0,27,0" concept="3" trace="createLang#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="5930701959884466327" at="28,0,34,0" concept="3" trace="createSolution#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -684,8 +684,8 @@
       <node id="3119033435855664650" at="31,86,32,87" concept="4" />
       <node id="3119033435855664990" at="32,87,33,86" concept="4" />
       <node id="3119033435855665248" at="33,86,34,87" concept="4" />
-      <node id="3119033435855665465" at="34,87,35,266" concept="1" />
-      <node id="3119033435855704628" at="35,266,36,60" concept="1" />
+      <node id="3119033435855665465" at="34,87,35,265" concept="1" />
+      <node id="3119033435855704628" at="35,265,36,60" concept="1" />
       <node id="3119033435855711151" at="36,60,37,60" concept="1" />
       <node id="3119033435855687320" at="37,60,38,98" concept="1" />
       <node id="3119033435855703893" at="38,98,39,98" concept="1" />
@@ -713,8 +713,8 @@
       <node id="7825076013412071289" at="62,98,63,97" concept="1" />
       <node id="7825076013412057468" at="63,97,64,218" concept="4" />
       <node id="7825076013412055685" at="64,218,65,55" concept="1" />
-      <node id="7825076013412093391" at="65,55,66,151" concept="1" />
-      <node id="7825076013412041650" at="66,151,67,0" concept="7" />
+      <node id="7825076013412093391" at="65,55,66,150" concept="1" />
+      <node id="7825076013412041650" at="66,150,67,0" concept="7" />
       <node id="7825076013412074498" at="67,0,68,87" concept="4" />
       <node id="7825076013412193480" at="68,87,69,86" concept="4" />
       <node id="7825076013412196201" at="69,86,70,98" concept="1" />
@@ -729,27 +729,27 @@
       <node id="7825076013412271466" at="78,85,79,64" concept="1" />
       <node id="7825076013412281041" at="79,64,80,65" concept="1" />
       <node id="7825076013412283680" at="80,65,81,64" concept="1" />
-      <node id="7825076013411982600" at="89,0,90,0" concept="8" trace="BuildProject$BF" />
-      <node id="7825076013411982600" at="90,0,91,0" concept="8" trace="BuildMps_Language$re" />
-      <node id="7825076013411982600" at="91,0,92,0" concept="8" trace="BuildMps_Generator$ru" />
-      <node id="7825076013411982600" at="92,0,93,0" concept="8" trace="BuildMps_ExtractedModuleDependency$LK" />
-      <node id="7825076013411982600" at="93,0,94,0" concept="8" trace="BuildMps_ModuleDependencyExtendLanguage$$$" />
-      <node id="7825076013411982600" at="94,0,95,0" concept="8" trace="BuildMps_Solution$qJ" />
-      <node id="7825076013411982600" at="95,0,96,0" concept="8" trace="BuildProjectDependency$Ug" />
-      <node id="7825076013411982600" at="96,0,97,0" concept="8" trace="BuildMps_ModuleDependencyUseLanguage$2l" />
-      <node id="7825076013411982600" at="97,0,98,0" concept="8" trace="BuildMps_ModuleDependencyOnModule$_g" />
-      <node id="7825076013411982600" at="98,0,99,0" concept="8" trace="BuildMps_ModuleSolutionRuntime$IH" />
-      <node id="7825076013411982600" at="102,0,103,0" concept="8" trace="dependencies$NWkV" />
-      <node id="7825076013411982600" at="103,0,104,0" concept="8" trace="dependency$ZoS0" />
-      <node id="7825076013411982600" at="104,0,105,0" concept="8" trace="language$kMx1" />
-      <node id="7825076013411982600" at="105,0,106,0" concept="8" trace="generator$lsok" />
-      <node id="7825076013411982600" at="106,0,107,0" concept="8" trace="parts$b06K" />
-      <node id="7825076013411982600" at="107,0,108,0" concept="8" trace="dependencies$fxFr" />
-      <node id="7825076013411982600" at="108,0,109,0" concept="8" trace="script$UXIZ" />
-      <node id="7825076013411982600" at="109,0,110,0" concept="8" trace="language$Z1aw" />
-      <node id="7825076013411982600" at="110,0,111,0" concept="8" trace="module$PvPC" />
-      <node id="7825076013411982600" at="111,0,112,0" concept="8" trace="runtime$QljP" />
-      <node id="7825076013411982600" at="112,0,113,0" concept="8" trace="solution$wRmw" />
+      <node id="7825076013411982600" at="89,0,90,0" concept="8" trace="BuildProject$ae" />
+      <node id="7825076013411982600" at="90,0,91,0" concept="8" trace="BuildMps_Language$RA" />
+      <node id="7825076013411982600" at="91,0,92,0" concept="8" trace="BuildMps_Generator$RQ" />
+      <node id="7825076013411982600" at="92,0,93,0" concept="8" trace="BuildMps_ExtractedModuleDependency$e8" />
+      <node id="7825076013411982600" at="93,0,94,0" concept="8" trace="BuildMps_ModuleDependencyExtendLanguage$W" />
+      <node id="7825076013411982600" at="94,0,95,0" concept="8" trace="BuildMps_Solution$R7" />
+      <node id="7825076013411982600" at="95,0,96,0" concept="8" trace="BuildProjectDependency$sN" />
+      <node id="7825076013411982600" at="96,0,97,0" concept="8" trace="BuildMps_ModuleDependencyUseLanguage$uH" />
+      <node id="7825076013411982600" at="97,0,98,0" concept="8" trace="BuildMps_ModuleDependencyOnModule$1C" />
+      <node id="7825076013411982600" at="98,0,99,0" concept="8" trace="BuildMps_ModuleSolutionRuntime$b5" />
+      <node id="7825076013411982600" at="102,0,103,0" concept="8" trace="dependencies$j8Lj" />
+      <node id="7825076013411982600" at="103,0,104,0" concept="8" trace="dependency$u_ko" />
+      <node id="7825076013411982600" at="104,0,105,0" concept="8" trace="language$NYXp" />
+      <node id="7825076013411982600" at="105,0,106,0" concept="8" trace="generator$OCOG" />
+      <node id="7825076013411982600" at="106,0,107,0" concept="8" trace="parts$mGDj" />
+      <node id="7825076013411982600" at="107,0,108,0" concept="8" trace="dependencies$redY" />
+      <node id="7825076013411982600" at="108,0,109,0" concept="8" trace="script$6Ehy" />
+      <node id="7825076013411982600" at="109,0,110,0" concept="8" trace="language$udAS" />
+      <node id="7825076013411982600" at="110,0,111,0" concept="8" trace="module$kGi0" />
+      <node id="7825076013411982600" at="111,0,112,0" concept="8" trace="runtime$lxKd" />
+      <node id="7825076013411982600" at="112,0,113,0" concept="8" trace="solution$3MS" />
       <node id="7825076013411982600" at="83,0,85,0" concept="3" trace="setUp#()V" />
       <node id="7825076013411982600" at="85,0,87,0" concept="3" trace="tearDown#()V" />
       <node id="7825076013412029691" at="55,0,83,0" concept="3" trace="test_mps21770#()V" />

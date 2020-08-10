@@ -31,7 +31,7 @@ public final class IdeaPluginDependency__BehaviorDescriptor extends BaseBHDescri
   }
 
   /*package*/ static String getPluginId_id55z4ZnCkRVV(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.pluginId$lkP2);
+    return SPropertyOperations.getString(__thisNode__, PROPS.pluginId$yTM5);
   }
 
   /*package*/ IdeaPluginDependency__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class IdeaPluginDependency__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty pluginId$lkP2 = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x516313f5e8537eecL, 0x516313f5e8537eefL, "pluginId");
+    /*package*/ static final SProperty pluginId$yTM5 = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x516313f5e8537eecL, 0x516313f5e8537eefL, "pluginId");
   }
 }

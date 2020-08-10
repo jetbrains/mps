@@ -101,7 +101,7 @@ public class transform_CompositePath_BuildSourcePath extends TransformationMenuB
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_qnu3dg_a0a(), CONCEPTS.BuildSourceArchiveRelativePath$7e));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_qnu3dg_a0a(), CONCEPTS.BuildSourceArchiveRelativePath$DL));
     }
     private class TMP_Action_qnu3dg_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -141,10 +141,10 @@ public class transform_CompositePath_BuildSourcePath extends TransformationMenuB
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode archiveRelativePath = SNodeFactoryOperations.createNewNode(CONCEPTS.BuildSourceArchiveRelativePath$7e, null);
+          SNode archiveRelativePath = SNodeFactoryOperations.createNewNode(CONCEPTS.BuildSourceArchiveRelativePath$DL, null);
           SNodeOperations.replaceWithAnother(_context.getNode(), archiveRelativePath);
-          SLinkOperations.setTarget(archiveRelativePath, LINKS.archivePath$6w1Q, _context.getNode());
-          SNodeFactoryOperations.setNewChild(archiveRelativePath, LINKS.compositePart$ZDgp, null);
+          SLinkOperations.setTarget(archiveRelativePath, LINKS.archivePath$ic$p, _context.getNode());
+          SNodeFactoryOperations.setNewChild(archiveRelativePath, LINKS.compositePart$blMW, null);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), archiveRelativePath, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -152,7 +152,7 @@ public class transform_CompositePath_BuildSourcePath extends TransformationMenuB
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.BuildSourceArchiveRelativePath$7e;
+          return CONCEPTS.BuildSourceArchiveRelativePath$DL;
         }
 
 
@@ -163,7 +163,7 @@ public class transform_CompositePath_BuildSourcePath extends TransformationMenuB
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.BuildSourceArchiveRelativePath$7e;
+          SAbstractConcept outputConcept = CONCEPTS.BuildSourceArchiveRelativePath$DL;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -175,11 +175,11 @@ public class transform_CompositePath_BuildSourcePath extends TransformationMenuB
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildSourceArchiveRelativePath$7e = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x233d92f9e348d768L, "jetbrains.mps.build.structure.BuildSourceArchiveRelativePath");
+    /*package*/ static final SConcept BuildSourceArchiveRelativePath$DL = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x233d92f9e348d768L, "jetbrains.mps.build.structure.BuildSourceArchiveRelativePath");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink archivePath$6w1Q = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x233d92f9e348d768L, 0x233d92f9e34a784cL, "archivePath");
-    /*package*/ static final SContainmentLink compositePart$ZDgp = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart");
+    /*package*/ static final SContainmentLink archivePath$ic$p = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x233d92f9e348d768L, 0x233d92f9e34a784cL, "archivePath");
+    /*package*/ static final SContainmentLink compositePart$blMW = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart");
   }
 }

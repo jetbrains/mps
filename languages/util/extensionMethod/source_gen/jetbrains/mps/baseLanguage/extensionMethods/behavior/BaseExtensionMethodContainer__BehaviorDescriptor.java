@@ -31,7 +31,7 @@ public final class BaseExtensionMethodContainer__BehaviorDescriptor extends Base
   }
 
   /*package*/ static List<SNode> getMembers_idhEwJjl2(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getChildren(__thisNode__, LINKS.methods$Q_J1);
+    return SLinkOperations.getChildren(__thisNode__, LINKS.methods$7wWM);
   }
 
   /*package*/ BaseExtensionMethodContainer__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class BaseExtensionMethodContainer__BehaviorDescriptor extends Base
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink methods$Q_J1 = MetaAdapterFactory.getContainmentLink(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x6f5433076549f519L, 0x6f5433076549f51bL, "methods");
+    /*package*/ static final SContainmentLink methods$7wWM = MetaAdapterFactory.getContainmentLink(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x6f5433076549f519L, 0x6f5433076549f51bL, "methods");
   }
 }

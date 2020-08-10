@@ -58,7 +58,7 @@
       <node id="554964029759241542" at="110,5,111,16" concept="11" />
       <node id="554964029759241543" at="114,36,115,42" concept="11" />
       <node id="554964029759241543" at="116,5,117,16" concept="11" />
-      <node id="1197632773078" at="121,0,122,0" concept="14" trace="AbstractConceptDeclaration$UN" />
+      <node id="1197632773078" at="121,0,122,0" concept="14" trace="AbstractConceptDeclaration$KA" />
       <node id="1197632773078" at="34,0,36,0" concept="2" trace="ConceptInstances_Finder#()V" />
       <node id="554964029759276401" at="66,100,69,11" concept="8" />
       <node id="3818729150937318921" at="70,9,73,9" concept="8" />
@@ -168,8 +168,8 @@
       <node id="1197636141662" at="51,15,52,21" concept="5" />
       <node id="1206463395212" at="57,45,58,25" concept="11" />
       <node id="1197636141662" at="63,46,64,83" concept="11" />
-      <node id="1197636141662" at="68,0,69,0" concept="14" trace="AbstractConceptDeclaration$UN" />
-      <node id="1197636141662" at="69,0,70,0" concept="14" trace="BaseConcept$Sz" />
+      <node id="1197636141662" at="68,0,69,0" concept="14" trace="AbstractConceptDeclaration$KA" />
+      <node id="1197636141662" at="69,0,70,0" concept="14" trace="BaseConcept$gP" />
       <node id="1197636141662" at="23,0,25,0" concept="2" trace="NodeUsages_Finder#()V" />
       <node id="1197636141662" at="25,0,29,0" concept="9" trace="isUsedByDefault#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="1197636141662" at="29,0,33,0" concept="9" trace="getDescription#()Ljava/lang/String;" />
@@ -238,9 +238,9 @@
       <node id="1200310248824" at="78,15,79,21" concept="5" />
       <node id="1206463249611" at="84,45,85,35" concept="11" />
       <node id="1200310248824" at="90,46,91,83" concept="11" />
-      <node id="1200310248824" at="95,0,96,0" concept="14" trace="InterfaceConceptDeclaration$MT" />
-      <node id="1200310248824" at="96,0,97,0" concept="14" trace="ConceptDeclaration$qU" />
-      <node id="1200310248824" at="100,0,101,0" concept="14" trace="implements$2tZf" />
+      <node id="1200310248824" at="95,0,96,0" concept="14" trace="InterfaceConceptDeclaration$CG" />
+      <node id="1200310248824" at="96,0,97,0" concept="14" trace="ConceptDeclaration$gH" />
+      <node id="1200310248824" at="100,0,101,0" concept="14" trace="implements$u_P2" />
       <node id="1200310248824" at="24,0,26,0" concept="2" trace="ImplementingConcepts_Finder#()V" />
       <node id="1589598445336137291" at="62,0,65,0" concept="9" trace="invoke#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1200310248824" at="26,0,30,0" concept="9" trace="getDescription#()Ljava/lang/String;" />
@@ -347,8 +347,8 @@
       <node id="1200310287391" at="65,15,66,21" concept="5" />
       <node id="1206463224053" at="71,45,72,32" concept="11" />
       <node id="1200310287391" at="77,46,78,83" concept="11" />
-      <node id="1200310287391" at="82,0,83,0" concept="14" trace="InterfaceConceptDeclaration$MT" />
-      <node id="1200310287391" at="86,0,87,0" concept="14" trace="extends$V2F7" />
+      <node id="1200310287391" at="82,0,83,0" concept="14" trace="InterfaceConceptDeclaration$CG" />
+      <node id="1200310287391" at="86,0,87,0" concept="14" trace="extends$nawU" />
       <node id="1200310287391" at="27,0,29,0" concept="2" trace="DerivedInterfaceConcepts_Finder#()V" />
       <node id="1200310287391" at="29,0,33,0" concept="9" trace="getDescription#()Ljava/lang/String;" />
       <node id="1200310287391" at="33,0,37,0" concept="9" trace="getLongDescription#()Ljava/lang/String;" />
@@ -441,11 +441,11 @@
       <node id="1201275992898" at="78,15,79,21" concept="5" />
       <node id="1206463366004" at="84,45,85,28" concept="11" />
       <node id="1201275992898" at="90,46,91,83" concept="11" />
-      <node id="1201275992898" at="95,0,96,0" concept="14" trace="LinkDeclaration$bA" />
-      <node id="1201275992898" at="96,0,97,0" concept="14" trace="AbstractConceptDeclaration$UN" />
-      <node id="1201275992898" at="100,0,101,0" concept="14" trace="role$nkts" />
-      <node id="1201275992898" at="101,0,102,0" concept="14" trace="metaClass$p6Up" />
-      <node id="1201275992898" at="105,0,106,0" concept="14" trace="specializedLink$FRN0" />
+      <node id="1201275992898" at="95,0,96,0" concept="14" trace="LinkDeclaration$1p" />
+      <node id="1201275992898" at="96,0,97,0" concept="14" trace="AbstractConceptDeclaration$KA" />
+      <node id="1201275992898" at="100,0,101,0" concept="14" trace="role$Nsjf" />
+      <node id="1201275992898" at="101,0,102,0" concept="14" trace="metaClass$PeKc" />
+      <node id="1201275992898" at="105,0,106,0" concept="14" trace="specializedLink$7ZCN" />
       <node id="1201275992898" at="31,0,33,0" concept="2" trace="LinkInstances_Finder#()V" />
       <node id="1201278330832" at="57,125,60,7" concept="8" />
       <node id="8738988869008099437" at="65,77,68,13" concept="8" />
@@ -526,7 +526,7 @@
       <node id="1211301915928" at="45,15,46,21" concept="5" />
       <node id="1211301915969" at="51,45,52,31" concept="11" />
       <node id="1211301915928" at="57,46,58,83" concept="11" />
-      <node id="1211301915928" at="62,0,63,0" concept="14" trace="ConceptDeclaration$qU" />
+      <node id="1211301915928" at="62,0,63,0" concept="14" trace="ConceptDeclaration$gH" />
       <node id="1211301915928" at="22,0,24,0" concept="2" trace="ExactConceptInstances_Finder#()V" />
       <node id="1211301915956" at="41,124,44,7" concept="7" />
       <node id="1211301915928" at="24,0,28,0" concept="9" trace="getDescription#()Ljava/lang/String;" />
@@ -592,9 +592,9 @@
       <node id="1225128146050" at="51,15,52,21" concept="5" />
       <node id="1225128283919" at="57,45,58,32" concept="11" />
       <node id="1225128146050" at="63,46,64,83" concept="11" />
-      <node id="1225128146050" at="68,0,69,0" concept="14" trace="PropertyDeclaration$c5" />
-      <node id="1225128146050" at="69,0,70,0" concept="14" trace="AbstractConceptDeclaration$UN" />
-      <node id="1225128146050" at="73,0,74,0" concept="14" trace="name$lA7v" />
+      <node id="1225128146050" at="68,0,69,0" concept="14" trace="PropertyDeclaration$1S" />
+      <node id="1225128146050" at="69,0,70,0" concept="14" trace="AbstractConceptDeclaration$KA" />
+      <node id="1225128146050" at="73,0,74,0" concept="14" trace="name$MnvL" />
       <node id="1225128146050" at="23,0,25,0" concept="2" trace="PropertyInstances_Finder#()V" />
       <node id="1225128392487" at="45,72,48,11" concept="8" />
       <node id="1225128146050" at="25,0,29,0" concept="9" trace="getDescription#()Ljava/lang/String;" />
@@ -654,8 +654,8 @@
       <node id="1279830762534992875" at="27,118,28,90" concept="10" />
       <node id="1279830762534998701" at="30,85,31,109" concept="5" />
       <node id="1279830762534986479" at="33,5,34,18" concept="11" />
-      <node id="1279830762534979608" at="38,0,39,0" concept="14" trace="extends$V2F7" />
-      <node id="1279830762534979608" at="39,0,40,0" concept="14" trace="intfc$7Eer" />
+      <node id="1279830762534979608" at="38,0,39,0" concept="14" trace="extends$nawU" />
+      <node id="1279830762534979608" at="39,0,40,0" concept="14" trace="intfc$zM4e" />
       <node id="7517397268749712324" at="29,76,32,7" concept="8" />
       <node id="1279830762534979613" at="19,0,23,0" concept="2" trace="InterfaceConceptWrap#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1279830762534998015" at="28,90,33,5" concept="7" />
@@ -695,8 +695,8 @@
       <node id="2707675432437284458" at="73,17,74,67" concept="5" />
       <node id="2707675432437255202" at="80,15,81,21" concept="5" />
       <node id="2707675432437255202" at="88,46,89,89" concept="11" />
-      <node id="2707675432437255202" at="93,0,94,0" concept="14" trace="AbstractConceptDeclaration$UN" />
-      <node id="2707675432437255202" at="94,0,95,0" concept="14" trace="InterfaceConceptDeclaration$MT" />
+      <node id="2707675432437255202" at="93,0,94,0" concept="14" trace="AbstractConceptDeclaration$KA" />
+      <node id="2707675432437255202" at="94,0,95,0" concept="14" trace="InterfaceConceptDeclaration$CG" />
       <node id="2707675432437255202" at="24,0,26,0" concept="2" trace="ConceptDescendants_Finder#()V" />
       <node id="2707675432437255202" at="26,0,29,0" concept="9" trace="isVisible#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/module/SearchScope;)Z" />
       <node id="2707675432437273374" at="56,49,59,17" concept="8" />
@@ -806,7 +806,7 @@
       <node id="6148399791138458971" at="60,15,61,21" concept="5" />
       <node id="6148399791138459005" at="66,45,67,31" concept="11" />
       <node id="6148399791138458971" at="72,46,73,89" concept="11" />
-      <node id="6148399791138458971" at="77,0,78,0" concept="14" trace="AbstractConceptDeclaration$UN" />
+      <node id="6148399791138458971" at="77,0,78,0" concept="14" trace="AbstractConceptDeclaration$KA" />
       <node id="6148399791138458971" at="20,0,22,0" concept="2" trace="ConceptAncestors_Finder#()V" />
       <node id="7515092869553835691" at="47,32,50,11" concept="8" />
       <node id="1279830762538540481" at="51,49,54,11" concept="8" />
@@ -882,7 +882,7 @@
       <node id="6869265041613386780" at="62,15,63,21" concept="5" />
       <node id="6869265041613386890" at="68,45,69,30" concept="11" />
       <node id="6869265041613386780" at="74,46,75,89" concept="11" />
-      <node id="6869265041613386780" at="79,0,80,0" concept="14" trace="ConceptDeclaration$qU" />
+      <node id="6869265041613386780" at="79,0,80,0" concept="14" trace="ConceptDeclaration$gH" />
       <node id="6869265041613386780" at="26,0,28,0" concept="2" trace="DerivedConcepts_Finder#()V" />
       <node id="6869265041613386780" at="28,0,32,0" concept="9" trace="getDescription#()Ljava/lang/String;" />
       <node id="6869265041613386780" at="32,0,36,0" concept="9" trace="getLongDescription#()Ljava/lang/String;" />
@@ -984,9 +984,9 @@
       <node id="1279830762535674345" at="48,95,49,109" concept="11" />
       <node id="7252137123778578175" at="50,5,51,75" concept="17" />
       <node id="5611832130673621212" at="55,28,56,61" concept="11" />
-      <node id="7252137123778553237" at="60,0,61,0" concept="14" trace="name$lA7v" />
-      <node id="7252137123778553237" at="64,0,65,0" concept="14" trace="ConceptDeclaration$qU" />
-      <node id="7252137123778553237" at="65,0,66,0" concept="14" trace="InterfaceConceptDeclaration$MT" />
+      <node id="7252137123778553237" at="60,0,61,0" concept="14" trace="name$MnvL" />
+      <node id="7252137123778553237" at="64,0,65,0" concept="14" trace="ConceptDeclaration$gH" />
+      <node id="7252137123778553237" at="65,0,66,0" concept="14" trace="InterfaceConceptDeclaration$CG" />
       <node id="7252137123778553647" at="17,0,20,0" concept="2" trace="AbstractConceptWrap#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="7252137123778555475" at="21,0,24,0" concept="9" trace="getPeer#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="7889865066412785590" at="37,40,40,5" concept="8" />
@@ -1037,10 +1037,10 @@
       <node id="1279830762535024098" at="45,118,46,93" concept="10" />
       <node id="1279830762535024108" at="48,85,49,109" concept="5" />
       <node id="1279830762535024117" at="51,5,52,18" concept="11" />
-      <node id="7252137123778583443" at="56,0,57,0" concept="14" trace="abstract$Q3$6" />
-      <node id="7252137123778583443" at="60,0,61,0" concept="14" trace="extends$9AAt" />
-      <node id="7252137123778583443" at="61,0,62,0" concept="14" trace="implements$2tZf" />
-      <node id="7252137123778583443" at="62,0,63,0" concept="14" trace="intfc$7Eer" />
+      <node id="7252137123778583443" at="56,0,57,0" concept="14" trace="abstract$ibpT" />
+      <node id="7252137123778583443" at="60,0,61,0" concept="14" trace="extends$_Isg" />
+      <node id="7252137123778583443" at="61,0,62,0" concept="14" trace="implements$u_P2" />
+      <node id="7252137123778583443" at="62,0,63,0" concept="14" trace="intfc$zM4e" />
       <node id="1279830762534964105" at="35,79,38,5" concept="8" />
       <node id="7517397268749701475" at="47,76,50,7" concept="8" />
       <node id="1279830762534814997" at="22,0,26,0" concept="2" trace="ConceptWrap#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -1092,9 +1092,9 @@
       <node id="8626018673655021407" at="61,141,62,71" concept="5" />
       <node id="8626018673654906907" at="69,15,70,21" concept="5" />
       <node id="8626018673654906907" at="77,46,78,89" concept="11" />
-      <node id="8626018673654906907" at="82,0,83,0" concept="14" trace="AbstractConceptDeclaration$UN" />
-      <node id="8626018673654906907" at="83,0,84,0" concept="14" trace="ConceptDeclaration$qU" />
-      <node id="8626018673654906907" at="87,0,88,0" concept="14" trace="extends$9AAt" />
+      <node id="8626018673654906907" at="82,0,83,0" concept="14" trace="AbstractConceptDeclaration$KA" />
+      <node id="8626018673654906907" at="83,0,84,0" concept="14" trace="ConceptDeclaration$gH" />
+      <node id="8626018673654906907" at="87,0,88,0" concept="14" trace="extends$_Isg" />
       <node id="8626018673654906907" at="26,0,28,0" concept="2" trace="StraightDescendants_Finder#()V" />
       <node id="8626018673654906907" at="28,0,31,0" concept="9" trace="isVisible#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/module/SearchScope;)Z" />
       <node id="1589598445336272881" at="56,49,59,15" concept="8" />

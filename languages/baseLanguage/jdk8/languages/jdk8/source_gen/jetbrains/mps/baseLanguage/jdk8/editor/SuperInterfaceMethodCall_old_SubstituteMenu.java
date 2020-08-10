@@ -44,7 +44,7 @@ public class SuperInterfaceMethodCall_old_SubstituteMenu extends SubstituteMenuB
 
   public class SMP_Subconcepts_uxr7kp_a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.SuperInterfaceMethodCall_old$VW);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.SuperInterfaceMethodCall_old$MH);
     }
     @NotNull
     @Override
@@ -65,6 +65,6 @@ public class SuperInterfaceMethodCall_old_SubstituteMenu extends SubstituteMenuB
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SuperInterfaceMethodCall_old$VW = MetaAdapterFactory.getConcept(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, 0x17dbb10eeb72e5d9L, "jetbrains.mps.baseLanguage.jdk8.structure.SuperInterfaceMethodCall_old");
+    /*package*/ static final SConcept SuperInterfaceMethodCall_old$MH = MetaAdapterFactory.getConcept(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, 0x17dbb10eeb72e5d9L, "jetbrains.mps.baseLanguage.jdk8.structure.SuperInterfaceMethodCall_old");
   }
 }

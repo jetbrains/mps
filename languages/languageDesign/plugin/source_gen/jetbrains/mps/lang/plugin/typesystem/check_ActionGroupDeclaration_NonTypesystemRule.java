@@ -29,7 +29,7 @@ public class check_ActionGroupDeclaration_NonTypesystemRule extends AbstractNonT
       return;
     }
     Solution solution = (Solution) module;
-    if (check_77ohot_a0d0b(solution.getFacet(JavaModuleFacet.class)) && SPropertyOperations.getBoolean(group, PROPS.isPluginXmlGroup$zcmd)) {
+    if (check_77ohot_a0d0b(solution.getFacet(JavaModuleFacet.class)) && SPropertyOperations.getBoolean(group, PROPS.isPluginXmlGroup$KLjg)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(group, "Action group is declared to be registered via plugin.xml, so will not be loaded instantly.", "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "1252437031490683496", null, errorTarget);
@@ -37,7 +37,7 @@ public class check_ActionGroupDeclaration_NonTypesystemRule extends AbstractNonT
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ActionGroupDeclaration$YL;
+    return CONCEPTS.ActionGroupDeclaration$VO;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -53,10 +53,10 @@ public class check_ActionGroupDeclaration_NonTypesystemRule extends AbstractNonT
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isPluginXmlGroup$zcmd = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, 0x5861c0ccac3f6fc8L, "isPluginXmlGroup");
+    /*package*/ static final SProperty isPluginXmlGroup$KLjg = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, 0x5861c0ccac3f6fc8L, "isPluginXmlGroup");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ActionGroupDeclaration$YL = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, "jetbrains.mps.lang.plugin.structure.ActionGroupDeclaration");
+    /*package*/ static final SConcept ActionGroupDeclaration$VO = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da058d2L, "jetbrains.mps.lang.plugin.structure.ActionGroupDeclaration");
   }
 }

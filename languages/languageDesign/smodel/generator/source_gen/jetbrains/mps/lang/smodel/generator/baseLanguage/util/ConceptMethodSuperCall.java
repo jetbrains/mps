@@ -51,32 +51,32 @@ public final class ConceptMethodSuperCall {
 
   public InvokationTarget getMethodCallTarget() {
     SNode leftExpression = SNodeOperation__BehaviorDescriptor.getLeftExpression_idhEwJdGu.invoke(myCall);
-    assert SNodeOperations.isInstanceOf(leftExpression, CONCEPTS.SuperExpression$y6);
-    SNode methodDecl = SLinkOperations.getTarget(myCall, LINKS.baseMethodDeclaration$ItxI);
+    assert SNodeOperations.isInstanceOf(leftExpression, CONCEPTS.SuperExpression$pj);
+    SNode methodDecl = SLinkOperations.getTarget(myCall, LINKS.baseMethodDeclaration$pyYw);
     if (!((boolean) Node_ConceptMethodCall__BehaviorDescriptor.isVirtualMethodCall_idhEwIWlZ.invoke(myCall))) {
       return new InvokationTarget(null, methodDecl, InvokationType.INVOKE_SPECIAL);
     } else {
       SNode specifiedSuperConcept;
-      specifiedSuperConcept = SuperExpression__BehaviorDescriptor.getSpecifiedSuperConcept_id2k7p7sTvKkb.invoke((SNodeOperations.cast(leftExpression, CONCEPTS.SuperExpression$y6)));
+      specifiedSuperConcept = SuperExpression__BehaviorDescriptor.getSpecifiedSuperConcept_id2k7p7sTvKkb.invoke((SNodeOperations.cast(leftExpression, CONCEPTS.SuperExpression$pj)));
       if (specifiedSuperConcept != null) {
         // if there is no implementation in the provided concept we will fail on runtime 
         // fixme quickfix for this case 
         return new InvokationTarget(specifiedSuperConcept, methodDecl, InvokationType.INVOKE);
       } else {
-        SNode behavior = SNodeOperations.getNodeAncestor(myCall, CONCEPTS.ConceptBehavior$8P, false, true);
+        SNode behavior = SNodeOperations.getNodeAncestor(myCall, CONCEPTS.ConceptBehavior$2, false, true);
         assert behavior != null;
-        return new InvokationTarget(SLinkOperations.getTarget(behavior, LINKS.concept$45m$), methodDecl, InvokationType.INVOKE_SUPER);
+        return new InvokationTarget(SLinkOperations.getTarget(behavior, LINKS.concept$u6dL), methodDecl, InvokationType.INVOKE_SUPER);
       }
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept SuperExpression$y6 = MetaAdapterFactory.getInterfaceConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x25076477397f04e3L, "jetbrains.mps.lang.behavior.structure.SuperExpression");
-    /*package*/ static final SConcept ConceptBehavior$8P = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
+    /*package*/ static final SInterfaceConcept SuperExpression$pj = MetaAdapterFactory.getInterfaceConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x25076477397f04e3L, "jetbrains.mps.lang.behavior.structure.SuperExpression");
+    /*package*/ static final SConcept ConceptBehavior$2 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SReferenceLink concept$45m$ = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink concept$u6dL = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
   }
 }

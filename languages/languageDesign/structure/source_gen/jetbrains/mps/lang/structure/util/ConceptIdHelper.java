@@ -25,9 +25,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public class ConceptIdHelper {
   public static long generateConceptId(@Nullable SModel m, @Nullable final SNode c) {
     final Wrappers._long result = new Wrappers._long(ConceptIdHelper.getDefaultIdFromNode(c));
-    while (ListSequence.fromList(SModelOperations.roots(m, CONCEPTS.AbstractConceptDeclaration$UN)).any(new IWhereFilter<SNode>() {
+    while (ListSequence.fromList(SModelOperations.roots(m, CONCEPTS.AbstractConceptDeclaration$KA)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return it != c && Objects.equals(SPropertyOperations.getString(it, PROPS.conceptId$ZjQr), result.value + "");
+        return it != c && Objects.equals(SPropertyOperations.getString(it, PROPS.conceptId$rrGe), result.value + "");
       }
     })) {
       result.value = randomLong();
@@ -37,9 +37,9 @@ public class ConceptIdHelper {
 
   public static long generateDatatypeId(@Nullable SModel m, @Nullable final SNode c) {
     final Wrappers._long result = new Wrappers._long(ConceptIdHelper.getDefaultIdFromNode(c));
-    while (ListSequence.fromList(SModelOperations.roots(m, CONCEPTS.DataTypeDeclaration$KQ)).any(new IWhereFilter<SNode>() {
+    while (ListSequence.fromList(SModelOperations.roots(m, CONCEPTS.DataTypeDeclaration$AD)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return it != c && Objects.equals(SPropertyOperations.getString(it, PROPS.datatypeId$88Lt), result.value + "");
+        return it != c && Objects.equals(SPropertyOperations.getString(it, PROPS.datatypeId$$gBg), result.value + "");
       }
     })) {
       result.value = randomLong();
@@ -49,9 +49,9 @@ public class ConceptIdHelper {
 
   public static long generatePropertyId(@Nullable SNode c, final SNode p) {
     final Wrappers._long result = new Wrappers._long(ConceptIdHelper.getDefaultIdFromNode(p));
-    while (ListSequence.fromList(SLinkOperations.getChildren(c, LINKS.propertyDeclaration$yMqt)).any(new IWhereFilter<SNode>() {
+    while (ListSequence.fromList(SLinkOperations.getChildren(c, LINKS.propertyDeclaration$YUgg)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return it != p && Objects.equals(SPropertyOperations.getString(it, PROPS.propertyId$TXS7), result.value + "");
+        return it != p && Objects.equals(SPropertyOperations.getString(it, PROPS.propertyId$m5HU), result.value + "");
       }
     })) {
       result.value = randomLong();
@@ -61,9 +61,9 @@ public class ConceptIdHelper {
 
   public static long generateLinkId(@Nullable SNode c, final SNode l) {
     final Wrappers._long result = new Wrappers._long(ConceptIdHelper.getDefaultIdFromNode(l));
-    while (ListSequence.fromList(SLinkOperations.getChildren(c, LINKS.linkDeclaration$yMbs)).any(new IWhereFilter<SNode>() {
+    while (ListSequence.fromList(SLinkOperations.getChildren(c, LINKS.linkDeclaration$YU1f)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return it != l && Objects.equals(SPropertyOperations.getString(it, PROPS.linkId$Uajt), result.value + "");
+        return it != l && Objects.equals(SPropertyOperations.getString(it, PROPS.linkId$mi9g), result.value + "");
       }
     })) {
       result.value = randomLong();
@@ -73,9 +73,9 @@ public class ConceptIdHelper {
 
   public static long generateEnumMemberId(@Nullable SNode e, final SNode m) {
     final Wrappers._long result = new Wrappers._long(ConceptIdHelper.getDefaultIdFromNode(m));
-    while (ListSequence.fromList(SLinkOperations.getChildren(e, LINKS.members$4eAY)).any(new IWhereFilter<SNode>() {
+    while (ListSequence.fromList(SLinkOperations.getChildren(e, LINKS.members$wmsL)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return it != m && Objects.equals(SPropertyOperations.getString(it, PROPS.memberId$lO88), result.value + "");
+        return it != m && Objects.equals(SPropertyOperations.getString(it, PROPS.memberId$LVXV), result.value + "");
       }
     })) {
       result.value = randomLong();
@@ -120,21 +120,21 @@ public class ConceptIdHelper {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
-    /*package*/ static final SConcept DataTypeDeclaration$KQ = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, "jetbrains.mps.lang.structure.structure.DataTypeDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept DataTypeDeclaration$AD = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, "jetbrains.mps.lang.structure.structure.DataTypeDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty conceptId$ZjQr = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId");
-    /*package*/ static final SProperty datatypeId$88Lt = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, 0x6c1f946a87044403L, "datatypeId");
-    /*package*/ static final SProperty propertyId$TXS7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0x35a81382d82a4d9L, "propertyId");
-    /*package*/ static final SProperty linkId$Uajt = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x35a81382d82a4e4L, "linkId");
-    /*package*/ static final SProperty memberId$lO88 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0x13b8f6fdce540e38L, "memberId");
+    /*package*/ static final SProperty conceptId$rrGe = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x5d2e6079771f8cc0L, "conceptId");
+    /*package*/ static final SProperty datatypeId$$gBg = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, 0x6c1f946a87044403L, "datatypeId");
+    /*package*/ static final SProperty propertyId$m5HU = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0x35a81382d82a4d9L, "propertyId");
+    /*package*/ static final SProperty linkId$mi9g = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0x35a81382d82a4e4L, "linkId");
+    /*package*/ static final SProperty memberId$LVXV = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0x13b8f6fdce540e38L, "memberId");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink propertyDeclaration$yMqt = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
-    /*package*/ static final SContainmentLink linkDeclaration$yMbs = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
-    /*package*/ static final SContainmentLink members$4eAY = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
+    /*package*/ static final SContainmentLink propertyDeclaration$YUgg = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
+    /*package*/ static final SContainmentLink linkDeclaration$YU1f = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
+    /*package*/ static final SContainmentLink members$wmsL = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
   }
 }

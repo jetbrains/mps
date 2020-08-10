@@ -40,13 +40,13 @@ public final class PatternBuilder__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.ConceptDeclaration$qU)) {
-      return Scopes.forConcepts(__thisNode__, CONCEPTS.ConceptDeclaration$qU);
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.ConceptDeclaration$gH)) {
+      return Scopes.forConcepts(__thisNode__, CONCEPTS.ConceptDeclaration$gH);
     }
-    return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$M8, kind, child);
+    return ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.ScopeProvider$aq, kind, child);
   }
   /*package*/ static List<SNode> getVariables_idPFUECvO1RN(@NotNull SNode __thisNode__) {
-    return SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.PatternBuilderVariable$In, false, new SAbstractConcept[]{});
+    return SNodeOperations.getNodeDescendants(__thisNode__, CONCEPTS.PatternBuilderVariable$VU, false, new SAbstractConcept[]{});
   }
   /*package*/ static InitializerPolicy getCheckPolicy_id4XAkAubwHns(@NotNull SNode __thisNode__) {
     return new InitializerPolicy() {
@@ -133,8 +133,8 @@ public final class PatternBuilder__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
-    /*package*/ static final SInterfaceConcept ScopeProvider$M8 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L, "jetbrains.mps.lang.core.structure.ScopeProvider");
-    /*package*/ static final SInterfaceConcept PatternBuilderVariable$In = MetaAdapterFactory.getInterfaceConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x26c46d140aa6106eL, "jetbrains.mps.lang.pattern.structure.PatternBuilderVariable");
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SInterfaceConcept ScopeProvider$aq = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L, "jetbrains.mps.lang.core.structure.ScopeProvider");
+    /*package*/ static final SInterfaceConcept PatternBuilderVariable$VU = MetaAdapterFactory.getInterfaceConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x26c46d140aa6106eL, "jetbrains.mps.lang.pattern.structure.PatternBuilderVariable");
   }
 }

@@ -35,12 +35,12 @@ public class LinkCustomAction_Customization implements EditorMenuItemCustomizer 
 
   private static class LinkCustomAction_CustomizationSpecific implements EditorMenuItemCustomizer {
     public boolean matches(EditorMenuItemCustomizationContext context) {
-      return new EditorMenuItemModifyingConceptContextMatcher(CONCEPTS.TestCompletionCustomization_ParentTestContextMatcher$5W) {
+      return new EditorMenuItemModifyingConceptContextMatcher(CONCEPTS.TestCompletionCustomization_ParentTestContextMatcher$Un) {
         protected boolean doMatchesContext(EditorMenuItemCustomizationContext context_) {
           return doMatchesContext_(getContextNode(context_), getContainmentLink(context_), getReference(context_), getProperty(context_)) && getCompletionItemInformation(context_) != null;
         }
         protected boolean doMatchesContext_(SNode contextNode, SContainmentLink containmentLink, SReferenceLink referenceLink, SProperty property) {
-          return Objects.equals(containmentLink, LINKS.customActionChildInMatchingLink$uCcS);
+          return Objects.equals(containmentLink, LINKS.customActionChildInMatchingLink$ss1j);
         }
       }.matchesContext(context);
     }
@@ -68,7 +68,7 @@ public class LinkCustomAction_Customization implements EditorMenuItemCustomizer 
     }
     private void customize_(SNode contextNode, EditorMenuItemStyle style, CompletionItemInformation itemInformation) {
       SAbstractConcept outputConcept = itemInformation.getOutputConcept();
-      if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(outputConcept), CONCEPTS.TestCompletionCustomization_ChildInLinkWithPriority$fO)) {
+      if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(outputConcept), CONCEPTS.TestCompletionCustomization_ChildInLinkWithPriority$4f)) {
         style.setPriority(1.0);
         style.setBold();
       }
@@ -78,11 +78,11 @@ public class LinkCustomAction_Customization implements EditorMenuItemCustomizer 
 
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink customActionChildInMatchingLink$uCcS = MetaAdapterFactory.getContainmentLink(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x34d3e9eb931272b0L, "customActionChildInMatchingLink");
+    /*package*/ static final SContainmentLink customActionChildInMatchingLink$ss1j = MetaAdapterFactory.getContainmentLink(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x34d3e9eb931272b0L, "customActionChildInMatchingLink");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestCompletionCustomization_ParentTestContextMatcher$5W = MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ParentTestContextMatcher");
-    /*package*/ static final SConcept TestCompletionCustomization_ChildInLinkWithPriority$fO = MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eedf554L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ChildInLinkWithPriority");
+    /*package*/ static final SConcept TestCompletionCustomization_ParentTestContextMatcher$Un = MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ParentTestContextMatcher");
+    /*package*/ static final SConcept TestCompletionCustomization_ChildInLinkWithPriority$4f = MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eedf554L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ChildInLinkWithPriority");
   }
 }

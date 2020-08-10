@@ -35,9 +35,9 @@ public class DependenciesHelper {
     this.requiresFetch = GenerationUtil.getSessionSet(project, genContext, "requiresFetch");
     myGenContext = genContext;
     myProject = project;
-    myLocationKey = "location:" + SModelOperations.getModelName(SNodeOperations.getModel(project)) + '/' + SPropertyOperations.getString(project, PROPS.name$lA7v);
-    myContentLocationKey = "contentLocation:" + SModelOperations.getModelName(SNodeOperations.getModel(project)) + '/' + SPropertyOperations.getString(project, PROPS.name$lA7v);
-    myLayoutRelativeKey = "layout-relative:" + SModelOperations.getModelName(SNodeOperations.getModel(project)) + '/' + SPropertyOperations.getString(project, PROPS.name$lA7v);
+    myLocationKey = "location:" + SModelOperations.getModelName(SNodeOperations.getModel(project)) + '/' + SPropertyOperations.getString(project, PROPS.name$MnvL);
+    myContentLocationKey = "contentLocation:" + SModelOperations.getModelName(SNodeOperations.getModel(project)) + '/' + SPropertyOperations.getString(project, PROPS.name$MnvL);
+    myLayoutRelativeKey = "layout-relative:" + SModelOperations.getModelName(SNodeOperations.getModel(project)) + '/' + SPropertyOperations.getString(project, PROPS.name$MnvL);
   }
 
   public TemplateQueryContext getGenContext() {
@@ -113,15 +113,15 @@ public class DependenciesHelper {
   }
 
   public SNode getArtifact(String id) {
-    return SNodeOperations.as(idToArtifactMap.get(id), CONCEPTS.BuildLayout_Node$kC);
+    return SNodeOperations.as(idToArtifactMap.get(id), CONCEPTS.BuildLayout_Node$Rb);
   }
 
   public SNode getArtifact(SNode id) {
-    return SNodeOperations.as(idToArtifactMap.get(getOriginalNode(id)), CONCEPTS.BuildLayout_Node$kC);
+    return SNodeOperations.as(idToArtifactMap.get(getOriginalNode(id)), CONCEPTS.BuildLayout_Node$Rb);
   }
 
   public SNode getArtifact(LocalSourcePathArtifact id) {
-    return SNodeOperations.as(idToArtifactMap.get(id), CONCEPTS.BuildLayout_Node$kC);
+    return SNodeOperations.as(idToArtifactMap.get(id), CONCEPTS.BuildLayout_Node$Rb);
   }
 
   public void putArtifact(String id, SNode artifact) {
@@ -161,7 +161,7 @@ public class DependenciesHelper {
    * keep distinct locations for project B and C).
    */
   private boolean isFromTransformedModel(SNode n) {
-    SNode ancestorProject = SNodeOperations.getNodeAncestor(n, CONCEPTS.BuildProject$BF, false, false);
+    SNode ancestorProject = SNodeOperations.getNodeAncestor(n, CONCEPTS.BuildProject$ae, false, false);
     // ancestorProject could be null for a layout node from external layout root 
     return ancestorProject == myProject || (SNodeOperations.getModel(n) == SNodeOperations.getModel(myProject) && SNodeOperations.getModel(n) instanceof TransientSModel);
   }
@@ -193,11 +193,11 @@ public class DependenciesHelper {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildLayout_Node$kC = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node");
-    /*package*/ static final SConcept BuildProject$BF = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+    /*package*/ static final SConcept BuildLayout_Node$Rb = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node");
+    /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
   }
 }

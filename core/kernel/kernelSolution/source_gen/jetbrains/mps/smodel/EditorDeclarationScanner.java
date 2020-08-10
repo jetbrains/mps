@@ -36,15 +36,15 @@ public class EditorDeclarationScanner {
 
   public EditorDeclarationScanner scan(SModel m) {
     SModule owner = m.getModule();
-    for (SNode ac : SModelOperations.roots(m, CONCEPTS.AbstractComponent$Ng)) {
-      SNode cd = SLinkOperations.getTarget(ac, LINKS.conceptDeclaration$Dtb8);
+    for (SNode ac : SModelOperations.roots(m, CONCEPTS.AbstractComponent$YR)) {
+      SNode cd = SLinkOperations.getTarget(ac, LINKS.conceptDeclaration$HJmJ);
       if (cd != null && SNodeOperations.getModel(cd).getModule() != owner) {
         myExternalConcepts.add(cd);
         myExtendedModels.add(SNodeOperations.getModel(cd));
       }
     }
-    for (SNode menuRef : SModelOperations.nodes(m, CONCEPTS.IMenuReference$x7)) {
-      SNode cd = ((SNode) BHReflection.invoke0(menuRef, CONCEPTS.IMenuReference$x7, SMethodTrimmedId.create("getApplicableConcept", null, "1quYWAD4TFX")));
+    for (SNode menuRef : SModelOperations.nodes(m, CONCEPTS.IMenuReference$GI)) {
+      SNode cd = ((SNode) BHReflection.invoke0(menuRef, CONCEPTS.IMenuReference$GI, SMethodTrimmedId.create("getApplicableConcept", null, "1quYWAD4TFX")));
       if (cd != null && SNodeOperations.getModel(cd).getModule() != owner) {
         myExternalConcepts.add(cd);
         myExtendedModels.add(SNodeOperations.getModel(cd));
@@ -69,11 +69,11 @@ public class EditorDeclarationScanner {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$Dtb8 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
+    /*package*/ static final SReferenceLink conceptDeclaration$HJmJ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractComponent$Ng = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, "jetbrains.mps.lang.editor.structure.AbstractComponent");
-    /*package*/ static final SInterfaceConcept IMenuReference$x7 = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a90a41b3L, "jetbrains.mps.lang.editor.structure.IMenuReference");
+    /*package*/ static final SConcept AbstractComponent$YR = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, "jetbrains.mps.lang.editor.structure.AbstractComponent");
+    /*package*/ static final SInterfaceConcept IMenuReference$GI = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a90a41b3L, "jetbrains.mps.lang.editor.structure.IMenuReference");
   }
 }

@@ -37,11 +37,11 @@ public final class MathSymbol__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static void getVisibleIndices_idhZx_LLY(@NotNull SNode __thisNode__, SNode sender, List<SNode> indices) {
-    SNode sI = SNodeOperations.getNodeAncestor(sender, CONCEPTS.AbstractIndex$zB, true, false);
-    if (sI != SLinkOperations.getTarget(__thisNode__, LINKS.var$9DN)) {
-      ListSequence.fromList(indices).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.var$9DN));
+    SNode sI = SNodeOperations.getNodeAncestor(sender, CONCEPTS.AbstractIndex$lZ, true, false);
+    if (sI != SLinkOperations.getTarget(__thisNode__, LINKS.var$HIsb)) {
+      ListSequence.fromList(indices).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.var$HIsb));
     }
-    SNode ms = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.MathSymbol$FB, false, false);
+    SNode ms = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.MathSymbol$tZ, false, false);
     if (ms != null) {
       MathSymbol__BehaviorDescriptor.getVisibleIndices_idhZx_LLY.invoke(ms, __thisNode__, indices);
     }
@@ -105,11 +105,11 @@ public final class MathSymbol__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractIndex$zB = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fea76c7e0L, "jetbrains.mps.baseLanguage.math.structure.AbstractIndex");
-    /*package*/ static final SConcept MathSymbol$FB = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, "jetbrains.mps.baseLanguage.math.structure.MathSymbol");
+    /*package*/ static final SConcept AbstractIndex$lZ = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fea76c7e0L, "jetbrains.mps.baseLanguage.math.structure.AbstractIndex");
+    /*package*/ static final SConcept MathSymbol$tZ = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, "jetbrains.mps.baseLanguage.math.structure.MathSymbol");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink var$9DN = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, 0x11fe0cae7f6L, "var");
+    /*package*/ static final SContainmentLink var$HIsb = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, 0x11fe0cae7f6L, "var");
   }
 }

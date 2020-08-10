@@ -15,42 +15,42 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class TypeCast {
   public void cast_node_to_SNode(SNode ifStatement) {
     SNode nodeObject1 = ifStatement;
-    SNode nodeObject2 = (SNode) SLinkOperations.getTarget(ifStatement, LINKS.condition$qL$l);
-    SNode nodeObject3 = SLinkOperations.getTarget(ifStatement, LINKS.condition$qL$l);
-    SNode expression = SNodeOperations.cast(nodeObject3, CONCEPTS.Expression$TP);
+    SNode nodeObject2 = (SNode) SLinkOperations.getTarget(ifStatement, LINKS.condition$5R17);
+    SNode nodeObject3 = SLinkOperations.getTarget(ifStatement, LINKS.condition$5R17);
+    SNode expression = SNodeOperations.cast(nodeObject3, CONCEPTS.Expression$mB);
   }
   public void cast_SNode_to_node(SNode node) {
     SNode node1 = node;
-    SNode node2 = SNodeOperations.cast(node, CONCEPTS.IfStatement$pi);
+    SNode node2 = SNodeOperations.cast(node, CONCEPTS.IfStatement$Q4);
   }
   public void upcast_snode(SNode snode) {
-    SNode ifStatement = SNodeOperations.cast(snode, CONCEPTS.IfStatement$pi);
-    SNode ifStatement1 = SNodeOperations.cast(snode, CONCEPTS.IfStatement$pi);
+    SNode ifStatement = SNodeOperations.cast(snode, CONCEPTS.IfStatement$Q4);
+    SNode ifStatement1 = SNodeOperations.cast(snode, CONCEPTS.IfStatement$Q4);
   }
   public void cast_children_to_nlist(SNode statementList) {
-    List<SNode> statements = SLinkOperations.getChildren(statementList, LINKS.statement$pYcS);
+    List<SNode> statements = SLinkOperations.getChildren(statementList, LINKS.statement$53DE);
   }
   public void cast_nlist_to_List(List<SNode> statements) {
     List list1 = statements;
     List<SNode> list2 = statements;
   }
   public void cast_children_to_List(SNode statements) {
-    List list1 = SLinkOperations.getChildren(statements, LINKS.statement$pYcS);
-    List<SNode> list2 = ListSequence.fromList(SLinkOperations.getChildren(statements, LINKS.statement$pYcS)).select(new ISelector<SNode, SNode>() {
+    List list1 = SLinkOperations.getChildren(statements, LINKS.statement$53DE);
+    List<SNode> list2 = ListSequence.fromList(SLinkOperations.getChildren(statements, LINKS.statement$53DE)).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
         return it;
       }
     }).toListSequence();
-    List<SNode> list3 = (List<SNode>) SLinkOperations.getChildren(statements, LINKS.statement$pYcS);
+    List<SNode> list3 = (List<SNode>) SLinkOperations.getChildren(statements, LINKS.statement$53DE);
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$qL$l = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink condition$5R17 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
-    /*package*/ static final SConcept IfStatement$pi = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept IfStatement$Q4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
   }
 }

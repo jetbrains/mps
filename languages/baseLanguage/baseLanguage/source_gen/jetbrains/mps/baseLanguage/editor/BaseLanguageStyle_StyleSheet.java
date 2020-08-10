@@ -598,7 +598,7 @@ public class BaseLanguageStyle_StyleSheet {
     }
 
     private boolean _StyleParameter_QueryFunction_the604_a0e() {
-      return (SNodeOperations.isInstanceOf(getNode(), CONCEPTS.TextCommentPart$lb) && (boolean) CommentPart__BehaviorDescriptor.isToDo_id6hHyb3YSGHZ.invoke(SNodeOperations.as(getNode(), CONCEPTS.TextCommentPart$lb))) || (SNodeOperations.isInstanceOf(getNode(), CONCEPTS.IComment$kc) && (boolean) IComment__BehaviorDescriptor.isTODOComment_idfB3l7ZufMD.invoke(SNodeOperations.cast(getNode(), CONCEPTS.IComment$kc)));
+      return (SNodeOperations.isInstanceOf(getNode(), CONCEPTS.TextCommentPart$LX) && (boolean) CommentPart__BehaviorDescriptor.isToDo_id6hHyb3YSGHZ.invoke(SNodeOperations.as(getNode(), CONCEPTS.TextCommentPart$LX))) || (SNodeOperations.isInstanceOf(getNode(), CONCEPTS.IComment$KY) && (boolean) IComment__BehaviorDescriptor.isTODOComment_idfB3l7ZufMD.invoke(SNodeOperations.cast(getNode(), CONCEPTS.IComment$KY)));
     }
   }
   public static class BlockCommentStyleClass extends AbstractStyleClass {
@@ -949,7 +949,7 @@ public class BaseLanguageStyle_StyleSheet {
     }
 
     private boolean _StyleParameter_QueryFunction_the604_a1ib() {
-      return SNodeOperations.isInstanceOf(getNode(), CONCEPTS.StaticMethodDeclaration$eX);
+      return SNodeOperations.isInstanceOf(getNode(), CONCEPTS.StaticMethodDeclaration$FJ);
     }
   }
   public static class VariableNameStyleClass extends AbstractStyleClass {
@@ -974,9 +974,9 @@ public class BaseLanguageStyle_StyleSheet {
     }
 
     private boolean _StyleParameter_QueryFunction_the604_a0jb() {
-      if (SNodeOperations.isInstanceOf(getNode(), CONCEPTS.ClassifierMember$9F)) {
-        if ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(SNodeOperations.cast(getNode(), CONCEPTS.ClassifierMember$9F))) {
-          if (SNodeOperations.isInstanceOf(getNode(), CONCEPTS.VariableDeclaration$xe) && SPropertyOperations.getBoolean(SNodeOperations.cast(getNode(), CONCEPTS.VariableDeclaration$xe), PROPS.isFinal$_qt3)) {
+      if (SNodeOperations.isInstanceOf(getNode(), CONCEPTS.ClassifierMember$At)) {
+        if ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(SNodeOperations.cast(getNode(), CONCEPTS.ClassifierMember$At))) {
+          if (SNodeOperations.isInstanceOf(getNode(), CONCEPTS.VariableDeclaration$Y0) && SPropertyOperations.getBoolean(SNodeOperations.cast(getNode(), CONCEPTS.VariableDeclaration$Y0), PROPS.isFinal$gvTP)) {
             return true;
           }
         }
@@ -984,9 +984,9 @@ public class BaseLanguageStyle_StyleSheet {
       return false;
     }
     private boolean _StyleParameter_QueryFunction_the604_a1jb() {
-      if (SNodeOperations.isInstanceOf(getNode(), CONCEPTS.ClassifierMember$9F)) {
-        if ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(SNodeOperations.cast(getNode(), CONCEPTS.ClassifierMember$9F))) {
-          if (!((SNodeOperations.isInstanceOf(getNode(), CONCEPTS.VariableDeclaration$xe) && SPropertyOperations.getBoolean(SNodeOperations.cast(getNode(), CONCEPTS.VariableDeclaration$xe), PROPS.isFinal$_qt3)))) {
+      if (SNodeOperations.isInstanceOf(getNode(), CONCEPTS.ClassifierMember$At)) {
+        if ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(SNodeOperations.cast(getNode(), CONCEPTS.ClassifierMember$At))) {
+          if (!((SNodeOperations.isInstanceOf(getNode(), CONCEPTS.VariableDeclaration$Y0) && SPropertyOperations.getBoolean(SNodeOperations.cast(getNode(), CONCEPTS.VariableDeclaration$Y0), PROPS.isFinal$gvTP)))) {
             return true;
           }
         }
@@ -994,15 +994,15 @@ public class BaseLanguageStyle_StyleSheet {
       return false;
     }
     private boolean _StyleParameter_QueryFunction_the604_a2jb() {
-      if (SNodeOperations.isInstanceOf(getNode(), CONCEPTS.ClassifierMember$9F)) {
-        if (!((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(SNodeOperations.cast(getNode(), CONCEPTS.ClassifierMember$9F)))) {
+      if (SNodeOperations.isInstanceOf(getNode(), CONCEPTS.ClassifierMember$At)) {
+        if (!((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(SNodeOperations.cast(getNode(), CONCEPTS.ClassifierMember$At)))) {
           return true;
         }
       }
       return false;
     }
     private boolean _StyleParameter_QueryFunction_the604_a3jb() {
-      if (!(SNodeOperations.isInstanceOf(getNode(), CONCEPTS.ClassifierMember$9F))) {
+      if (!(SNodeOperations.isInstanceOf(getNode(), CONCEPTS.ClassifierMember$At))) {
         return true;
       }
       return false;
@@ -1162,14 +1162,14 @@ public class BaseLanguageStyle_StyleSheet {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IComment$kc = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3e70d51ff33226dL, "jetbrains.mps.baseLanguage.structure.IComment");
-    /*package*/ static final SConcept TextCommentPart$lb = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart");
-    /*package*/ static final SConcept StaticMethodDeclaration$eX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
-    /*package*/ static final SInterfaceConcept ClassifierMember$9F = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember");
-    /*package*/ static final SConcept VariableDeclaration$xe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
+    /*package*/ static final SInterfaceConcept IComment$KY = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3e70d51ff33226dL, "jetbrains.mps.baseLanguage.structure.IComment");
+    /*package*/ static final SConcept TextCommentPart$LX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart");
+    /*package*/ static final SConcept StaticMethodDeclaration$FJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
+    /*package*/ static final SInterfaceConcept ClassifierMember$At = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember");
+    /*package*/ static final SConcept VariableDeclaration$Y0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isFinal$gvTP = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 }

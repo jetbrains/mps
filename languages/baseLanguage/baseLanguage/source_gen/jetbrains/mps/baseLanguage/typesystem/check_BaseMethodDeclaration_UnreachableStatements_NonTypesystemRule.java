@@ -25,7 +25,7 @@ public class check_BaseMethodDeclaration_UnreachableStatements_NonTypesystemRule
     if (!((boolean) BaseMethodDeclaration__BehaviorDescriptor.isDataFlowChecked_idhRptrfk.invoke(nodeToCheck))) {
       return;
     }
-    if ((SLinkOperations.getTarget(nodeToCheck, LINKS.body$qspy) == null)) {
+    if ((SLinkOperations.getTarget(nodeToCheck, LINKS.body$5xQk) == null)) {
       return;
     }
 
@@ -34,18 +34,18 @@ public class check_BaseMethodDeclaration_UnreachableStatements_NonTypesystemRule
       checkReturns = false;
     } else if ((IMethodLike__BehaviorDescriptor.getExpectedRetType_idi2fhBNC.invoke(nodeToCheck) == null)) {
       checkReturns = false;
-    } else if (SNodeOperations.isInstanceOf(IMethodLike__BehaviorDescriptor.getExpectedRetType_idi2fhBNC.invoke(nodeToCheck), CONCEPTS.VoidType$aT)) {
+    } else if (SNodeOperations.isInstanceOf(IMethodLike__BehaviorDescriptor.getExpectedRetType_idi2fhBNC.invoke(nodeToCheck), CONCEPTS.VoidType$BF)) {
       checkReturns = false;
     } else if ((boolean) BaseMethodDeclaration__BehaviorDescriptor.isReturnsVoid_idhX_$1pM.invoke(nodeToCheck)) {
       checkReturns = false;
-    } else if (ListSequence.fromList(SNodeOperations.getNodeDescendants(nodeToCheck, CONCEPTS.ISkipsReturn$uu, false, new SAbstractConcept[]{})).isNotEmpty()) {
+    } else if (ListSequence.fromList(SNodeOperations.getNodeDescendants(nodeToCheck, CONCEPTS.ISkipsReturn$Vg, false, new SAbstractConcept[]{})).isNotEmpty()) {
       checkReturns = false;
     }
 
-    DataFlowUtil.checkDataFlow(typeCheckingContext, SLinkOperations.getTarget(nodeToCheck, LINKS.body$qspy), checkReturns);
+    DataFlowUtil.checkDataFlow(typeCheckingContext, SLinkOperations.getTarget(nodeToCheck, LINKS.body$5xQk), checkReturns);
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BaseMethodDeclaration$RR;
+    return CONCEPTS.BaseMethodDeclaration$kD;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -55,12 +55,12 @@ public class check_BaseMethodDeclaration_UnreachableStatements_NonTypesystemRule
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VoidType$aT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
-    /*package*/ static final SInterfaceConcept ISkipsReturn$uu = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x74bdb321e1ee0043L, "jetbrains.mps.baseLanguage.structure.ISkipsReturn");
-    /*package*/ static final SConcept BaseMethodDeclaration$RR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept VoidType$BF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
+    /*package*/ static final SInterfaceConcept ISkipsReturn$Vg = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x74bdb321e1ee0043L, "jetbrains.mps.baseLanguage.structure.ISkipsReturn");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
   }
 }

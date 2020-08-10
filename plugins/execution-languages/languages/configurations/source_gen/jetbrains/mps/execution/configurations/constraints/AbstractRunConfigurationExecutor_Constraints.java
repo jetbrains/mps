@@ -18,12 +18,12 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class AbstractRunConfigurationExecutor_Constraints extends BaseConstraintsDescriptor {
   public AbstractRunConfigurationExecutor_Constraints() {
-    super(CONCEPTS.AbstractRunConfigurationExecutor$YM);
+    super(CONCEPTS.AbstractRunConfigurationExecutor$Fp);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$lA7v, container);
+      super(PROPS.name$MnvL, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -31,8 +31,8 @@ public class AbstractRunConfigurationExecutor_Constraints extends BaseConstraint
     }
     @Override
     public Object getValue(SNode node) {
-      if (SLinkOperations.getTarget(node, LINKS.configuration$O7z0) != null) {
-        return SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.configuration$O7z0), PROPS.name$lA7v) + " Executor";
+      if (SLinkOperations.getTarget(node, LINKS.configuration$CM7P) != null) {
+        return SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.configuration$CM7P), PROPS.name$MnvL) + " Executor";
       }
       return null;
     }
@@ -40,19 +40,19 @@ public class AbstractRunConfigurationExecutor_Constraints extends BaseConstraint
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.name$lA7v, new Name_Property(this));
+    properties.put(PROPS.name$MnvL, new Name_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractRunConfigurationExecutor$YM = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, "jetbrains.mps.execution.configurations.structure.AbstractRunConfigurationExecutor");
+    /*package*/ static final SConcept AbstractRunConfigurationExecutor$Fp = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, "jetbrains.mps.execution.configurations.structure.AbstractRunConfigurationExecutor");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink configuration$O7z0 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f9dce91L, 0xd244b712f9dce92L, "configuration");
+    /*package*/ static final SReferenceLink configuration$CM7P = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f9dce91L, 0xd244b712f9dce92L, "configuration");
   }
 }

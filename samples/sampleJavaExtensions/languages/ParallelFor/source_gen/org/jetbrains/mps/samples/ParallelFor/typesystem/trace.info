@@ -37,7 +37,7 @@
       <node id="3294321158385517975" at="39,30,40,234" concept="2" />
       <node id="3294321158385517975" at="40,234,41,455" concept="2" />
       <node id="3294321158385517975" at="41,455,42,24" concept="6" />
-      <node id="3294321158385517948" at="46,0,47,0" concept="8" trace="ThreadPool$Ub" />
+      <node id="3294321158385517948" at="46,0,47,0" concept="8" trace="ThreadPool$fN" />
       <node id="3294321158385517948" at="19,0,21,0" concept="1" trace="typeof_ThreadPool_InferenceRule#()V" />
       <node id="3294321158385517948" at="28,0,31,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="3294321158385517948" at="31,0,34,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -109,20 +109,20 @@
       <node id="3540747636396547801" at="109,30,110,17" concept="6" />
       <node id="3540747636396547839" at="113,36,114,81" concept="6" />
       <node id="3540747636396547839" at="115,5,116,16" concept="6" />
-      <node id="3540747636396547801" at="120,0,121,0" concept="8" trace="ParallelFor$GE" />
-      <node id="3540747636396547801" at="121,0,122,0" concept="8" trace="ThreadSafe$T7" />
-      <node id="3540747636396547801" at="122,0,123,0" concept="8" trace="ThisExpression$7A" />
-      <node id="3540747636396547801" at="123,0,124,0" concept="8" trace="ClassifierType$IZ" />
-      <node id="3540747636396547801" at="124,0,125,0" concept="8" trace="ClassConcept$IY" />
-      <node id="3540747636396547801" at="125,0,126,0" concept="8" trace="NonThreadSafeClass$M1" />
-      <node id="3540747636396547801" at="126,0,127,0" concept="8" trace="VariableReference$sQ" />
-      <node id="3540747636396547801" at="127,0,128,0" concept="8" trace="LocalVariableDeclaration$Bf" />
-      <node id="3540747636396547801" at="128,0,129,0" concept="8" trace="DotExpression$6a" />
-      <node id="3540747636396547801" at="132,0,133,0" concept="8" trace="operand$P1i5" />
-      <node id="3540747636396547801" at="133,0,134,0" concept="8" trace="classifier$xslD" />
-      <node id="3540747636396547801" at="134,0,135,0" concept="8" trace="operation$_mGS" />
-      <node id="3540747636396547801" at="135,0,136,0" concept="8" trace="variableDeclaration$7WwU" />
-      <node id="3540747636396547801" at="139,0,140,0" concept="8" trace="isFinal$$2bN" />
+      <node id="3540747636396547801" at="120,0,121,0" concept="8" trace="ParallelFor$2i" />
+      <node id="3540747636396547801" at="121,0,122,0" concept="8" trace="ThreadSafe$eJ" />
+      <node id="3540747636396547801" at="122,0,123,0" concept="8" trace="ThisExpression$$o" />
+      <node id="3540747636396547801" at="123,0,124,0" concept="8" trace="ClassifierType$bL" />
+      <node id="3540747636396547801" at="124,0,125,0" concept="8" trace="ClassConcept$bK" />
+      <node id="3540747636396547801" at="125,0,126,0" concept="8" trace="NonThreadSafeClass$7D" />
+      <node id="3540747636396547801" at="126,0,127,0" concept="8" trace="VariableReference$TC" />
+      <node id="3540747636396547801" at="127,0,128,0" concept="8" trace="LocalVariableDeclaration$41" />
+      <node id="3540747636396547801" at="128,0,129,0" concept="8" trace="DotExpression$yW" />
+      <node id="3540747636396547801" at="132,0,133,0" concept="8" trace="operand$w6IR" />
+      <node id="3540747636396547801" at="133,0,134,0" concept="8" trace="classifier$cxMr" />
+      <node id="3540747636396547801" at="134,0,135,0" concept="8" trace="operation$gs9E" />
+      <node id="3540747636396547801" at="135,0,136,0" concept="8" trace="variableDeclaration$N1XG" />
+      <node id="3540747636396547801" at="139,0,140,0" concept="8" trace="isFinal$f7C_" />
       <node id="3540747636396547801" at="29,0,31,0" concept="1" trace="DotExpressionForInstanceMethodCallOperation_threadSafe_NonTypesystemRule#()V" />
       <node id="3540747636396547815" at="34,33,37,7" concept="3" />
       <node id="3540747636396645522" at="41,183,44,11" concept="3" />
@@ -395,9 +395,9 @@
       <node id="4697196167065854783" at="44,50,45,35" concept="6" />
       <node id="4697196167065854783" at="47,68,48,102" concept="6" />
       <node id="4697196167065854783" at="50,30,51,17" concept="6" />
-      <node id="4697196167065854783" at="55,0,56,0" concept="8" trace="ReturnStatement$SF" />
-      <node id="4697196167065854783" at="56,0,57,0" concept="8" trace="IStatementListContainer$4L" />
-      <node id="4697196167065854783" at="57,0,58,0" concept="8" trace="ParallelFor$GE" />
+      <node id="4697196167065854783" at="55,0,56,0" concept="8" trace="ReturnStatement$lt" />
+      <node id="4697196167065854783" at="56,0,57,0" concept="8" trace="IStatementListContainer$xz" />
+      <node id="4697196167065854783" at="57,0,58,0" concept="8" trace="ParallelFor$2i" />
       <node id="4697196167065854783" at="24,0,26,0" concept="1" trace="NoReturnInsideParallelFor_NonTypesystemRule#()V" />
       <node id="4697196167065941940" at="28,0,31,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="4697196167065854783" at="44,0,47,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -461,8 +461,8 @@
       <node id="4697196167065890753" at="39,50,40,35" concept="6" />
       <node id="4697196167065890753" at="42,68,43,102" concept="6" />
       <node id="4697196167065890753" at="45,30,46,17" concept="6" />
-      <node id="4697196167065890753" at="50,0,51,0" concept="8" trace="BreakStatement$w0" />
-      <node id="4697196167065890753" at="51,0,52,0" concept="8" trace="ParallelFor$GE" />
+      <node id="4697196167065890753" at="50,0,51,0" concept="8" trace="BreakStatement$WM" />
+      <node id="4697196167065890753" at="51,0,52,0" concept="8" trace="ParallelFor$2i" />
       <node id="4697196167065890753" at="23,0,25,0" concept="1" trace="NoBreakInsideParallelFor_NonTypesystemRule#()V" />
       <node id="4697196167065941780" at="27,0,30,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="4697196167065890753" at="39,0,42,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -519,7 +519,7 @@
       <node id="4697196167066002108" at="13,42,14,143" concept="10" />
       <node id="4697196167066002113" at="16,44,17,39" concept="6" />
       <node id="4697196167066002115" at="19,35,20,77" concept="2" />
-      <node id="4697196167066002108" at="24,0,25,0" concept="8" trace="ContinueStatement$jc" />
+      <node id="4697196167066002108" at="24,0,25,0" concept="8" trace="ContinueStatement$JY" />
       <node id="4697196167066002108" at="13,0,16,0" concept="1" trace="TurnReturnToContinue_QuickFix#()V" />
       <node id="4697196167066002108" at="16,0,19,0" concept="4" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="4697196167066002108" at="19,0,22,0" concept="4" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -571,19 +571,19 @@
       <node id="5384012304952354752" at="104,50,105,38" concept="6" />
       <node id="5384012304952354752" at="107,68,108,102" concept="6" />
       <node id="5384012304952354752" at="110,30,111,17" concept="6" />
-      <node id="5384012304952354752" at="115,0,116,0" concept="8" trace="ParallelFor$GE" />
-      <node id="5384012304952354752" at="116,0,117,0" concept="8" trace="StaticMethodCall$eu" />
-      <node id="5384012304952354752" at="117,0,118,0" concept="8" trace="ThreadSafe$T7" />
-      <node id="5384012304952354752" at="118,0,119,0" concept="8" trace="ClassConcept$IY" />
-      <node id="5384012304952354752" at="119,0,120,0" concept="8" trace="NonThreadSafeClass$M1" />
-      <node id="5384012304952354752" at="120,0,121,0" concept="8" trace="LocalMethodCall$77" />
-      <node id="5384012304952354752" at="121,0,122,0" concept="8" trace="InstanceMethodDeclaration$An" />
-      <node id="5384012304952354752" at="122,0,123,0" concept="8" trace="StaticMethodDeclaration$eX" />
-      <node id="5384012304952354752" at="123,0,124,0" concept="8" trace="BaseMethodCall$S9" />
-      <node id="5384012304952354752" at="127,0,128,0" concept="8" trace="classConcept$70aQ" />
-      <node id="5384012304952354752" at="128,0,129,0" concept="8" trace="classifier$xslD" />
-      <node id="5384012304952354752" at="129,0,130,0" concept="8" trace="baseMethodDeclaration$ItxI" />
-      <node id="5384012304952354752" at="133,0,134,0" concept="8" trace="isFinal$$2bN" />
+      <node id="5384012304952354752" at="115,0,116,0" concept="8" trace="ParallelFor$2i" />
+      <node id="5384012304952354752" at="116,0,117,0" concept="8" trace="StaticMethodCall$Fg" />
+      <node id="5384012304952354752" at="117,0,118,0" concept="8" trace="ThreadSafe$eJ" />
+      <node id="5384012304952354752" at="118,0,119,0" concept="8" trace="ClassConcept$bK" />
+      <node id="5384012304952354752" at="119,0,120,0" concept="8" trace="NonThreadSafeClass$7D" />
+      <node id="5384012304952354752" at="120,0,121,0" concept="8" trace="LocalMethodCall$zT" />
+      <node id="5384012304952354752" at="121,0,122,0" concept="8" trace="InstanceMethodDeclaration$39" />
+      <node id="5384012304952354752" at="122,0,123,0" concept="8" trace="StaticMethodDeclaration$FJ" />
+      <node id="5384012304952354752" at="123,0,124,0" concept="8" trace="BaseMethodCall$kV" />
+      <node id="5384012304952354752" at="127,0,128,0" concept="8" trace="classConcept$M5BC" />
+      <node id="5384012304952354752" at="128,0,129,0" concept="8" trace="classifier$cxMr" />
+      <node id="5384012304952354752" at="129,0,130,0" concept="8" trace="baseMethodDeclaration$pyYw" />
+      <node id="5384012304952354752" at="133,0,134,0" concept="8" trace="isFinal$f7C_" />
       <node id="5384012304952354752" at="27,0,29,0" concept="1" trace="CallsToNonThreadSafeMethod_NonTypesystemRule#()V" />
       <node id="5384012304952500184" at="32,87,35,9" concept="3" />
       <node id="7942833282341875916" at="36,152,39,9" concept="3" />
@@ -709,11 +709,11 @@
       <node id="7793246093816012185" at="47,50,48,41" concept="6" />
       <node id="7793246093816012185" at="50,68,51,102" concept="6" />
       <node id="7793246093816012185" at="53,30,54,17" concept="6" />
-      <node id="7793246093816012185" at="58,0,59,0" concept="8" trace="ParallelFor$GE" />
-      <node id="7793246093816012185" at="59,0,60,0" concept="8" trace="VariableReference$sQ" />
-      <node id="7793246093816012185" at="63,0,64,0" concept="8" trace="threadPool$CcyW" />
-      <node id="7793246093816012185" at="64,0,65,0" concept="8" trace="variableDeclaration$7WwU" />
-      <node id="7793246093816012185" at="68,0,69,0" concept="8" trace="isFinal$_qt3" />
+      <node id="7793246093816012185" at="58,0,59,0" concept="8" trace="ParallelFor$2i" />
+      <node id="7793246093816012185" at="59,0,60,0" concept="8" trace="VariableReference$TC" />
+      <node id="7793246093816012185" at="63,0,64,0" concept="8" trace="threadPool$PSS$" />
+      <node id="7793246093816012185" at="64,0,65,0" concept="8" trace="variableDeclaration$N1XG" />
+      <node id="7793246093816012185" at="68,0,69,0" concept="8" trace="isFinal$gvTP" />
       <node id="7793246093816012185" at="25,0,27,0" concept="1" trace="NoAssignmentsToNonFinalVariablesOutsideTheScope_NonTypesystemRule#()V" />
       <node id="7793246093816012185" at="47,0,50,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="7793246093816012185" at="50,0,53,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -774,9 +774,9 @@
       <node id="7793246093816040820" at="17,42,18,143" concept="10" />
       <node id="7793246093816040825" at="20,44,21,36" concept="6" />
       <node id="7793246093816040828" at="23,35,24,175" concept="2" />
-      <node id="7793246093816040820" at="28,0,29,0" concept="8" trace="VariableReference$sQ" />
-      <node id="7793246093816040820" at="32,0,33,0" concept="8" trace="variableDeclaration$7WwU" />
-      <node id="7793246093816040820" at="36,0,37,0" concept="8" trace="isFinal$_qt3" />
+      <node id="7793246093816040820" at="28,0,29,0" concept="8" trace="VariableReference$TC" />
+      <node id="7793246093816040820" at="32,0,33,0" concept="8" trace="variableDeclaration$N1XG" />
+      <node id="7793246093816040820" at="36,0,37,0" concept="8" trace="isFinal$gvTP" />
       <node id="7793246093816040820" at="17,0,20,0" concept="1" trace="MakeDeclarationFinal_QuickFix#()V" />
       <node id="7793246093816040820" at="20,0,23,0" concept="4" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="7793246093816040820" at="23,0,26,0" concept="4" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -842,10 +842,10 @@
       <node id="3261041752321174553" at="78,31,79,203" concept="2" />
       <node id="3261041752321174553" at="80,5,81,165" concept="2" />
       <node id="3261041752321174553" at="81,165,82,24" concept="6" />
-      <node id="8923957828369554117" at="86,0,87,0" concept="8" trace="threadPool$CcyW" />
-      <node id="8923957828369554117" at="87,0,88,0" concept="8" trace="loopVariable$cpRM" />
-      <node id="8923957828369554117" at="88,0,89,0" concept="8" trace="inputSequence$Y8uT" />
-      <node id="8923957828369554117" at="92,0,93,0" concept="8" trace="ParallelFor$GE" />
+      <node id="8923957828369554117" at="86,0,87,0" concept="8" trace="threadPool$PSS$" />
+      <node id="8923957828369554117" at="87,0,88,0" concept="8" trace="loopVariable$q6dq" />
+      <node id="8923957828369554117" at="88,0,89,0" concept="8" trace="inputSequence$bOOx" />
+      <node id="8923957828369554117" at="92,0,93,0" concept="8" trace="ParallelFor$2i" />
       <node id="8923957828369554117" at="22,0,24,0" concept="1" trace="typeof_ParallelFor_InferenceRule#()V" />
       <node id="8923957828369554117" at="46,0,49,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="8923957828369554117" at="49,0,52,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />

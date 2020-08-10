@@ -48,7 +48,7 @@ public final class ConvertTransformationMenu_Intention extends AbstractIntention
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
     // disable for legacy concepts 
-    return Objects.equals(SNodeOperations.getConcept(node), CONCEPTS.TransformationMenu$ZK) || Objects.equals(SNodeOperations.getConcept(node), CONCEPTS.TransformationMenuContribution$82);
+    return Objects.equals(SNodeOperations.getConcept(node), CONCEPTS.TransformationMenu$bn) || Objects.equals(SNodeOperations.getConcept(node), CONCEPTS.TransformationMenuContribution$jD);
   }
   @Override
   public boolean isSurroundWith() {
@@ -66,10 +66,10 @@ public final class ConvertTransformationMenu_Intention extends AbstractIntention
   }
   private List<SAbstractConcept> parameter(final SNode node, final EditorContext editorContext) {
     List<SAbstractConcept> param = ListSequence.fromList(new ArrayList<SAbstractConcept>());
-    if (Objects.equals(SNodeOperations.getConcept(node), CONCEPTS.TransformationMenuContribution$82)) {
-      ListSequence.fromList(param).addElement(CONCEPTS.TransformationMenu$ZK);
+    if (Objects.equals(SNodeOperations.getConcept(node), CONCEPTS.TransformationMenuContribution$jD)) {
+      ListSequence.fromList(param).addElement(CONCEPTS.TransformationMenu$bn);
     } else {
-      ListSequence.fromList(param).addElement(CONCEPTS.TransformationMenuContribution$82);
+      ListSequence.fromList(param).addElement(CONCEPTS.TransformationMenuContribution$jD);
     }
     return param;
   }
@@ -89,12 +89,12 @@ public final class ConvertTransformationMenu_Intention extends AbstractIntention
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode newNode = SNodeFactoryOperations.createNewNode(myParameter, null);
-      if (SNodeOperations.isInstanceOf(newNode, CONCEPTS.TransformationMenu$ZK)) {
-        SLinkOperations.setTarget(SNodeOperations.cast(newNode, CONCEPTS.TransformationMenu$ZK), LINKS.conceptDeclaration$VYS3, IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(node));
+      if (SNodeOperations.isInstanceOf(newNode, CONCEPTS.TransformationMenu$bn)) {
+        SLinkOperations.setTarget(SNodeOperations.cast(newNode, CONCEPTS.TransformationMenu$bn), LINKS.conceptDeclaration$h3E, IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(node));
       }
-      ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$jXFL)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$jXFL)));
-      SPropertyOperations.assign(newNode, PROPS.virtualPackage$dz_3, SPropertyOperations.getString(node, PROPS.virtualPackage$dz_3));
-      ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.sections$CEZb)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.sections$CEZb)));
+      ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$KJ43)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43)));
+      SPropertyOperations.assign(newNode, PROPS.virtualPackage$EkXl, SPropertyOperations.getString(node, PROPS.virtualPackage$EkXl));
+      ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.sections$GXaM)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.sections$GXaM)));
       SNodeOperations.replaceWithAnother(node, newNode);
 
       if ((SNodeOperations.getParent(newNode) == null)) {
@@ -115,17 +115,17 @@ public final class ConvertTransformationMenu_Intention extends AbstractIntention
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TransformationMenuContribution$82 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c10ff0L, "jetbrains.mps.lang.editor.structure.TransformationMenuContribution");
-    /*package*/ static final SConcept TransformationMenu$ZK = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0ac3ebaL, "jetbrains.mps.lang.editor.structure.TransformationMenu");
+    /*package*/ static final SConcept TransformationMenuContribution$jD = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c10ff0L, "jetbrains.mps.lang.editor.structure.TransformationMenuContribution");
+    /*package*/ static final SConcept TransformationMenu$bn = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0ac3ebaL, "jetbrains.mps.lang.editor.structure.TransformationMenu");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$VYS3 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
-    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
-    /*package*/ static final SContainmentLink sections$CEZb = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c11832L, 0x16be955f384efffcL, "sections");
+    /*package*/ static final SReferenceLink conceptDeclaration$h3E = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
+    /*package*/ static final SContainmentLink smodelAttribute$KJ43 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink sections$GXaM = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c11832L, 0x16be955f384efffcL, "sections");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty virtualPackage$EkXl = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
   }
 }

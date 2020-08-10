@@ -35,8 +35,8 @@ public final class NamedNodeReferencesScope {
     while (Sequence.fromIterable(queue).isNotEmpty()) {
       List<SNode> newQueue = ListSequence.fromList(new ArrayList<SNode>());
       for (SNode elem : Sequence.fromIterable(queue)) {
-        if (SNodeOperations.isInstanceOf(elem, CONCEPTS.INamedConcept$nV)) {
-          ListSequence.fromList(candidates).addElement(SNodeOperations.cast(elem, CONCEPTS.INamedConcept$nV));
+        if (SNodeOperations.isInstanceOf(elem, CONCEPTS.INamedConcept$Kd)) {
+          ListSequence.fromList(candidates).addElement(SNodeOperations.cast(elem, CONCEPTS.INamedConcept$Kd));
         } else {
           ListSequence.fromList(newQueue).addSequence(ListSequence.fromList(SNodeOperations.getChildren(elem)));
         }
@@ -48,6 +48,6 @@ public final class NamedNodeReferencesScope {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

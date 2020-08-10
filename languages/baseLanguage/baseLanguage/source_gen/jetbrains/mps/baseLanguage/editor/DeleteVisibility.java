@@ -24,7 +24,7 @@ public class DeleteVisibility {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SLinkOperations.setTarget(node, LINKS.visibility$jt1o, null);
+        SLinkOperations.setTarget(node, LINKS.visibility$Yyua, null);
         SelectionUtil.selectCell(editorContext, node, SelectionManager.FIRST_CELL);
       }
       @Override
@@ -32,7 +32,7 @@ public class DeleteVisibility {
         return this.canExecute_internal(editorContext, node);
       }
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
-        return (SLinkOperations.getTarget(node, LINKS.visibility$jt1o) != null);
+        return (SLinkOperations.getTarget(node, LINKS.visibility$Yyua) != null);
       }
 
     };
@@ -80,6 +80,6 @@ public class DeleteVisibility {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 }

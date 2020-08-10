@@ -30,7 +30,7 @@ public class DeleteBooleanConstantWithUnmatchedParen {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         SAbstractConcept targetConcept = SNodeOperations.getContainingLink(node).getTargetConcept();
-        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.replaceWithAnother(node, SNodeFactoryOperations.createNewNode(targetConcept, node)), LINKS.smodelAttribute$jXFL)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$jXFL)));
+        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.replaceWithAnother(node, SNodeFactoryOperations.createNewNode(targetConcept, node)), LINKS.smodelAttribute$KJ43)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43)));
       }
 
     };
@@ -78,6 +78,6 @@ public class DeleteBooleanConstantWithUnmatchedParen {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink smodelAttribute$KJ43 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 }

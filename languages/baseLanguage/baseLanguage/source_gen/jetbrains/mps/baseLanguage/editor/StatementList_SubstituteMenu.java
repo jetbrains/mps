@@ -46,9 +46,9 @@ public class StatementList_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_6z9wnp_a(), CONCEPTS.StatementList$TN));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_6z9wnp_a(), CONCEPTS.StatementList$m_));
     result.add(new SMP_Subconcepts_6z9wnp_b());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.StatementList$TN) {
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.StatementList$m_) {
 
       @NotNull
       @Override
@@ -61,7 +61,7 @@ public class StatementList_SubstituteMenu extends SubstituteMenuBase {
           context.getEditorMenuTrace().popTraceInfo();
         }
       }
-    }, CONCEPTS.StatementList$TN));
+    }, CONCEPTS.StatementList$m_));
     return result;
   }
 
@@ -101,15 +101,15 @@ public class StatementList_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.StatementList$TN;
+          return CONCEPTS.StatementList$m_;
         }
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode nodeToWrap = super.createNode(pattern);
           myCreatedNode = nodeToWrap;
-          SNode statementList = SNodeFactoryOperations.createNewNode(CONCEPTS.StatementList$TN, null);
-          ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$pYcS)).addElement(nodeToWrap);
+          SNode statementList = SNodeFactoryOperations.createNewNode(CONCEPTS.StatementList$m_, null);
+          ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$53DE)).addElement(nodeToWrap);
           return statementList;
         }
         @Override
@@ -136,12 +136,12 @@ public class StatementList_SubstituteMenu extends SubstituteMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.Statement$ok;
+      return CONCEPTS.Statement$P6;
     }
   }
   public class SMP_Subconcepts_6z9wnp_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.StatementList$TN);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.StatementList$m_);
     }
     @NotNull
     @Override
@@ -162,11 +162,11 @@ public class StatementList_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

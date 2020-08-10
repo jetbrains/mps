@@ -36,7 +36,7 @@ public final class AddUnits_Intention extends AbstractIntentionDescriptor implem
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return !(SNodeOperations.isInstanceOf(node, CONCEPTS.TypeWithUnits$S3));
+    return !(SNodeOperations.isInstanceOf(node, CONCEPTS.TypeWithUnits$zr));
   }
   @Override
   public boolean isSurroundWith() {
@@ -57,8 +57,8 @@ public final class AddUnits_Intention extends AbstractIntentionDescriptor implem
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode twi = SNodeOperations.replaceWithNewChild(node, CONCEPTS.TypeWithUnits$S3);
-      SLinkOperations.setTarget(twi, LINKS.wrapped$AFy0, node);
+      SNode twi = SNodeOperations.replaceWithNewChild(node, CONCEPTS.TypeWithUnits$zr);
+      SLinkOperations.setTarget(twi, LINKS.wrapped$8do, node);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -67,10 +67,10 @@ public final class AddUnits_Intention extends AbstractIntentionDescriptor implem
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TypeWithUnits$S3 = MetaAdapterFactory.getConcept(0x9290638e635b4ec6L, 0xbcad945ecb88a928L, 0x116157dc0d8c532bL, "testWrappedType.structure.TypeWithUnits");
+    /*package*/ static final SConcept TypeWithUnits$zr = MetaAdapterFactory.getConcept(0x9290638e635b4ec6L, 0xbcad945ecb88a928L, 0x116157dc0d8c532bL, "testWrappedType.structure.TypeWithUnits");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink wrapped$AFy0 = MetaAdapterFactory.getContainmentLink(0x9290638e635b4ec6L, 0xbcad945ecb88a928L, 0x116157dc0d8c52bcL, 0x116157dc0d8c52bdL, "wrapped");
+    /*package*/ static final SContainmentLink wrapped$8do = MetaAdapterFactory.getContainmentLink(0x9290638e635b4ec6L, 0xbcad945ecb88a928L, 0x116157dc0d8c52bcL, 0x116157dc0d8c52bdL, "wrapped");
   }
 }

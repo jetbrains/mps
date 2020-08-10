@@ -41,8 +41,8 @@ public class SubstTestAbstractChild_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_3cisdk_a(), CONCEPTS.SubstTestEnumPropertyChild$1d));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_3cisdk_b(), CONCEPTS.SubstTestBooleanPropertyChild$3a));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_3cisdk_a(), CONCEPTS.SubstTestEnumPropertyChild$Lq));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_3cisdk_b(), CONCEPTS.SubstTestBooleanPropertyChild$Nn));
     result.add(new SMP_Subconcepts_3cisdk_c());
     return result;
   }
@@ -115,7 +115,7 @@ public class SubstTestAbstractChild_SubstituteMenu extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.SubstTestEnumPropertyChild$1d, context);
+          super(CONCEPTS.SubstTestEnumPropertyChild$Lq, context);
           _context = context;
         }
 
@@ -126,8 +126,8 @@ public class SubstTestAbstractChild_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode child = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.SubstTestEnumPropertyChild$1d, null);
-          SPropertyOperations.assignEnum(child, PROPS.myEnumProperty$8mNv, myParameterObject);
+          SNode child = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.SubstTestEnumPropertyChild$Lq, null);
+          SPropertyOperations.assignEnum(child, PROPS.myEnumProperty$UWzG, myParameterObject);
           return child;
         }
 
@@ -137,7 +137,7 @@ public class SubstTestAbstractChild_SubstituteMenu extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, CONCEPTS.SubstTestEnumPropertyChild$1d, getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.SubstTestEnumPropertyChild$Lq, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -213,7 +213,7 @@ public class SubstTestAbstractChild_SubstituteMenu extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.SubstTestBooleanPropertyChild$3a, context);
+          super(CONCEPTS.SubstTestBooleanPropertyChild$Nn, context);
           _context = context;
         }
 
@@ -224,8 +224,8 @@ public class SubstTestAbstractChild_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode child = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.SubstTestBooleanPropertyChild$3a, null);
-          SPropertyOperations.set(child, PROPS.myProperty$pOQR, myParameterObject.booleanValue());
+          SNode child = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.SubstTestBooleanPropertyChild$Nn, null);
+          SPropertyOperations.set(child, PROPS.myProperty$cqB4, myParameterObject.booleanValue());
           return child;
         }
 
@@ -235,7 +235,7 @@ public class SubstTestAbstractChild_SubstituteMenu extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, CONCEPTS.SubstTestBooleanPropertyChild$3a, getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.SubstTestBooleanPropertyChild$Nn, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -258,7 +258,7 @@ public class SubstTestAbstractChild_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_3cisdk_c extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.SubstTestAbstractChild$65);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.SubstTestAbstractChild$Qi);
     }
     @NotNull
     @Override
@@ -279,13 +279,13 @@ public class SubstTestAbstractChild_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SubstTestEnumPropertyChild$1d = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03c35aeL, "jetbrains.mps.lang.editor.editorTest.structure.SubstTestEnumPropertyChild");
-    /*package*/ static final SConcept SubstTestBooleanPropertyChild$3a = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03c352dL, "jetbrains.mps.lang.editor.editorTest.structure.SubstTestBooleanPropertyChild");
-    /*package*/ static final SConcept SubstTestAbstractChild$65 = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03c34aeL, "jetbrains.mps.lang.editor.editorTest.structure.SubstTestAbstractChild");
+    /*package*/ static final SConcept SubstTestEnumPropertyChild$Lq = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03c35aeL, "jetbrains.mps.lang.editor.editorTest.structure.SubstTestEnumPropertyChild");
+    /*package*/ static final SConcept SubstTestBooleanPropertyChild$Nn = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03c352dL, "jetbrains.mps.lang.editor.editorTest.structure.SubstTestBooleanPropertyChild");
+    /*package*/ static final SConcept SubstTestAbstractChild$Qi = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03c34aeL, "jetbrains.mps.lang.editor.editorTest.structure.SubstTestAbstractChild");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty myEnumProperty$8mNv = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03c35aeL, 0xd4944c0b03fa02eL, "myEnumProperty");
-    /*package*/ static final SProperty myProperty$pOQR = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03c352dL, 0xd4944c0b03c7179L, "myProperty");
+    /*package*/ static final SProperty myEnumProperty$UWzG = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03c35aeL, 0xd4944c0b03fa02eL, "myEnumProperty");
+    /*package*/ static final SProperty myProperty$cqB4 = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0xd4944c0b03c352dL, 0xd4944c0b03c7179L, "myProperty");
   }
 }

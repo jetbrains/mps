@@ -27,7 +27,7 @@ public class TestSubstitute_SameMenu_ToInclude extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_37rfk3_a(), CONCEPTS.TestSubstitute_IncludeSameMenuTwice$u$));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_37rfk3_a(), CONCEPTS.TestSubstitute_IncludeSameMenuTwice$J5));
     return result;
   }
 
@@ -72,7 +72,7 @@ public class TestSubstitute_SameMenu_ToInclude extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.TestSubstitute_IncludeSameMenuTwice$u$, context);
+        super(CONCEPTS.TestSubstitute_IncludeSameMenuTwice$J5, context);
         _context = context;
       }
 
@@ -94,6 +94,6 @@ public class TestSubstitute_SameMenu_ToInclude extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestSubstitute_IncludeSameMenuTwice$u$ = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x3f759544c6a0709aL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstitute_IncludeSameMenuTwice");
+    /*package*/ static final SConcept TestSubstitute_IncludeSameMenuTwice$J5 = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x3f759544c6a0709aL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstitute_IncludeSameMenuTwice");
   }
 }

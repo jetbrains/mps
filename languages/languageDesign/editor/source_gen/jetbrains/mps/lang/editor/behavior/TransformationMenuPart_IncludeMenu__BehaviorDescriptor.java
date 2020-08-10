@@ -43,29 +43,29 @@ public final class TransformationMenuPart_IncludeMenu__BehaviorDescriptor extend
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (child == SLinkOperations.getTarget(__thisNode__, LINKS.menuReference$LxXz)) {
+    if (child == SLinkOperations.getTarget(__thisNode__, LINKS.menuReference$PO9a)) {
       SAbstractConcept cncpt = kind;
       switch (conceptIndex.index(cncpt)) {
         case 0:
           return MenuScopes.getTransformationMenus(__thisNode__);
         default:
           boolean noneMatched = true;
-          if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.AbstractConceptDeclaration$UN)) {
+          if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.AbstractConceptDeclaration$KA)) {
             noneMatched = false;
             // Default scope of AbstractConceptDeclaration 
-            return Scopes.forConcepts(__thisNode__, CONCEPTS.AbstractConceptDeclaration$UN);
+            return Scopes.forConcepts(__thisNode__, CONCEPTS.AbstractConceptDeclaration$KA);
           }
-          if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.TransformationMenu_Named$1E)) {
+          if (noneMatched && SConceptOperations.isSubConceptOf(cncpt, CONCEPTS.TransformationMenu_Named$dh)) {
             noneMatched = false;
             // Default scope of TransformationMenu_Named - more or less 
-            return new ModelPlusImportedScope(SNodeOperations.getModel(__thisNode__), true, CONCEPTS.TransformationMenu_Named$1E);
+            return new ModelPlusImportedScope(SNodeOperations.getModel(__thisNode__), true, CONCEPTS.TransformationMenu_Named$dh);
           }
       }
     }
     return ScopeUtils.lazyParentScope(__thisNode__, kind);
   }
   /*package*/ static SNode getTargetConcept_id5ZcqSl_NIg2(@NotNull SNode __thisNode__) {
-    return check_pjfxcn_a0a1(SLinkOperations.getTarget(__thisNode__, LINKS.menuReference$LxXz));
+    return check_pjfxcn_a0a1(SLinkOperations.getTarget(__thisNode__, LINKS.menuReference$PO9a));
   }
 
   /*package*/ TransformationMenuPart_IncludeMenu__BehaviorDescriptor() {
@@ -124,11 +124,11 @@ public final class TransformationMenuPart_IncludeMenu__BehaviorDescriptor extend
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
-    /*package*/ static final SConcept TransformationMenu_Named$1E = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0ac4ee8L, "jetbrains.mps.lang.editor.structure.TransformationMenu_Named");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept TransformationMenu_Named$dh = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0ac4ee8L, "jetbrains.mps.lang.editor.structure.TransformationMenu_Named");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink menuReference$LxXz = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xae2d2fe1c9d6be2L, 0x5d3b34577b3f7ee5L, "menuReference");
+    /*package*/ static final SContainmentLink menuReference$PO9a = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xae2d2fe1c9d6be2L, 0x5d3b34577b3f7ee5L, "menuReference");
   }
 }

@@ -19,15 +19,15 @@ public class wrapMisplacedTernaryOperatorInParens_QuickFix extends QuickFix_Runt
     return "Wrap Misplaced Ternary Operator with Parens";
   }
   public void execute(SNode node) {
-    SNode parens = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.ParenthesizedExpression$vE);
-    SLinkOperations.setTarget(parens, LINKS.expression$efP0, node);
+    SNode parens = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.ParenthesizedExpression$Ws);
+    SLinkOperations.setTarget(parens, LINKS.expression$TlhM, node);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ParenthesizedExpression$vE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
+    /*package*/ static final SConcept ParenthesizedExpression$Ws = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink expression$TlhM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
   }
 }

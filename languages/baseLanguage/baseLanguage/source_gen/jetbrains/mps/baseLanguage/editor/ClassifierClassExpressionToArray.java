@@ -67,7 +67,7 @@ public class ClassifierClassExpressionToArray extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_ej8v07_a0(), CONCEPTS.ArrayClassExpression$4$));
+      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_ej8v07_a0(), CONCEPTS.ArrayClassExpression$xm));
     }
     return result;
   }
@@ -110,12 +110,12 @@ public class ClassifierClassExpressionToArray extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNode replacing = SNodeFactoryOperations.createNewNode(CONCEPTS.ArrayClassExpression$4$, null);
-        SNode typeNode = SNodeFactoryOperations.createNewNode(CONCEPTS.ArrayType$Yv, null);
-        SNode classifierType = SNodeFactoryOperations.createNewNode(CONCEPTS.ClassifierType$IZ, null);
-        SLinkOperations.setTarget(classifierType, LINKS.classifier$xslD, SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$s_4n));
-        SLinkOperations.setTarget(typeNode, LINKS.componentType$vfw, classifierType);
-        SLinkOperations.setTarget(replacing, LINKS.arrayType$12i0, typeNode);
+        SNode replacing = SNodeFactoryOperations.createNewNode(CONCEPTS.ArrayClassExpression$xm, null);
+        SNode typeNode = SNodeFactoryOperations.createNewNode(CONCEPTS.ArrayType$rh, null);
+        SNode classifierType = SNodeFactoryOperations.createNewNode(CONCEPTS.ClassifierType$bL, null);
+        SLinkOperations.setTarget(classifierType, LINKS.classifier$cxMr, SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$7Ex9));
+        SLinkOperations.setTarget(typeNode, LINKS.componentType$F$Gi, classifierType);
+        SLinkOperations.setTarget(replacing, LINKS.arrayType$G7IM, typeNode);
         SNodeOperations.replaceWithAnother(_context.getNode(), replacing);
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), replacing, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
@@ -124,7 +124,7 @@ public class ClassifierClassExpressionToArray extends TransformationMenuBase {
       @Nullable
       @Override
       public SAbstractConcept getOutputConcept() {
-        return CONCEPTS.ArrayClassExpression$4$;
+        return CONCEPTS.ArrayClassExpression$xm;
       }
 
 
@@ -135,7 +135,7 @@ public class ClassifierClassExpressionToArray extends TransformationMenuBase {
 
       public void customize(String pattern, EditorMenuItemStyle style) {
         EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-        SAbstractConcept outputConcept = CONCEPTS.ArrayClassExpression$4$;
+        SAbstractConcept outputConcept = CONCEPTS.ArrayClassExpression$xm;
         EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
         for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
           customizer.customize(style, compositeContext);
@@ -146,15 +146,15 @@ public class ClassifierClassExpressionToArray extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ArrayClassExpression$4$ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x115f7830a32a65e7L, "jetbrains.mps.baseLanguage.structure.ArrayClassExpression");
-    /*package*/ static final SConcept ArrayType$Yv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept ArrayClassExpression$xm = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x115f7830a32a65e7L, "jetbrains.mps.baseLanguage.structure.ArrayClassExpression");
+    /*package*/ static final SConcept ArrayType$rh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SReferenceLink classifier$s_4n = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x103fb730c14L, 0x103fb73a43eL, "classifier");
-    /*package*/ static final SContainmentLink componentType$vfw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
-    /*package*/ static final SContainmentLink arrayType$12i0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x115f7830a32a65e7L, 0x115f7830a32a65e8L, "arrayType");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink classifier$7Ex9 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x103fb730c14L, 0x103fb73a43eL, "classifier");
+    /*package*/ static final SContainmentLink componentType$F$Gi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
+    /*package*/ static final SContainmentLink arrayType$G7IM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x115f7830a32a65e7L, 0x115f7830a32a65e8L, "arrayType");
   }
 }

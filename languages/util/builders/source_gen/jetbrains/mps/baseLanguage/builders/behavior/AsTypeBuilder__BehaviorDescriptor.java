@@ -35,7 +35,7 @@ public final class AsTypeBuilder__BehaviorDescriptor extends BaseBHDescriptor {
     throw new UnsupportedOperationException();
   }
   /*package*/ static SNode getResultType_id67LR$5LQPoF(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.type$uRQ0);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.type$VoPF);
   }
 
   /*package*/ AsTypeBuilder__BehaviorDescriptor() {
@@ -87,6 +87,6 @@ public final class AsTypeBuilder__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$uRQ0 = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d721d314L, 0x4acc05c8d721d315L, "type");
+    /*package*/ static final SContainmentLink type$VoPF = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d721d314L, 0x4acc05c8d721d315L, "type");
   }
 }

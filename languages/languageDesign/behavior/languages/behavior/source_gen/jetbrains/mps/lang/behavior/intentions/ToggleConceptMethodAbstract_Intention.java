@@ -55,18 +55,18 @@ public final class ToggleConceptMethodAbstract_Intention extends AbstractIntenti
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      String methodName = SPropertyOperations.getString(node, PROPS.name$lA7v);
-      return (SPropertyOperations.getBoolean(node, PROPS.isAbstract$uAz) ? "Make '" + methodName + "' not abstract" : "Make '" + methodName + "' abstract");
+      String methodName = SPropertyOperations.getString(node, PROPS.name$MnvL);
+      return (SPropertyOperations.getBoolean(node, PROPS.isAbstract$qvtK) ? "Make '" + methodName + "' not abstract" : "Make '" + methodName + "' abstract");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if (!(SPropertyOperations.getBoolean(node, PROPS.isAbstract$uAz))) {
-        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.body$qspy), LINKS.statement$pYcS)).clear();
-        SPropertyOperations.assign(node, PROPS.isVirtual$u8x, true);
-        SPropertyOperations.assign(node, PROPS.isFinal$zQoy, false);
-        SLinkOperations.setTarget(node, LINKS.overriddenMethod$tTw, null);
+      if (!(SPropertyOperations.getBoolean(node, PROPS.isAbstract$qvtK))) {
+        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.body$5xQk), LINKS.statement$53DE)).clear();
+        SPropertyOperations.assign(node, PROPS.isVirtual$quZI, true);
+        SPropertyOperations.assign(node, PROPS.isFinal$eVPk, false);
+        SLinkOperations.setTarget(node, LINKS.overriddenMethod$quKH, null);
       }
-      SPropertyOperations.set(node, PROPS.isAbstract$uAz, !(SPropertyOperations.getBoolean(node, PROPS.isAbstract$uAz)));
+      SPropertyOperations.set(node, PROPS.isAbstract$qvtK, !(SPropertyOperations.getBoolean(node, PROPS.isAbstract$qvtK)));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -75,15 +75,15 @@ public final class ToggleConceptMethodAbstract_Intention extends AbstractIntenti
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isAbstract$uAz = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d43480582L, "isAbstract");
-    /*package*/ static final SProperty isVirtual$u8x = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d43480580L, "isVirtual");
-    /*package*/ static final SProperty isFinal$zQoy = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isAbstract$qvtK = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d43480582L, "isAbstract");
+    /*package*/ static final SProperty isVirtual$quZI = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d43480580L, "isVirtual");
+    /*package*/ static final SProperty isFinal$eVPk = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SReferenceLink overriddenMethod$tTw = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod");
+    /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SReferenceLink overriddenMethod$quKH = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod");
   }
 }

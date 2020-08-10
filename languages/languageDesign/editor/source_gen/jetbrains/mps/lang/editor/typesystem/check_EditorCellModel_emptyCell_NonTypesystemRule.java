@@ -24,11 +24,11 @@ public class check_EditorCellModel_emptyCell_NonTypesystemRule extends AbstractN
   public check_EditorCellModel_emptyCell_NonTypesystemRule() {
   }
   public void applyRule(final SNode cellModel_RefNode, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode emptyCellModel = SLinkOperations.getTarget(cellModel_RefNode, LINKS.emptyCellModel$wYU5);
+    SNode emptyCellModel = SLinkOperations.getTarget(cellModel_RefNode, LINKS.emptyCellModel$_h5G);
     if (emptyCellModel == null) {
       return;
     }
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(emptyCellModel, CONCEPTS.EditorCellModel$5c, true, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(emptyCellModel, CONCEPTS.EditorCellModel$gN, true, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         if (!((boolean) EditorCellModel__BehaviorDescriptor.canBeUsedAsEmptyCell_id6RO52Mcgrfa.invoke(it))) {
           {
@@ -40,7 +40,7 @@ public class check_EditorCellModel_emptyCell_NonTypesystemRule extends AbstractN
     });
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.CellModel_RefNode$Ox;
+    return CONCEPTS.CellModel_RefNode$8;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -50,11 +50,11 @@ public class check_EditorCellModel_emptyCell_NonTypesystemRule extends AbstractN
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink emptyCellModel$wYU5 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb05cdc7L, 0x3a4d559b42e5cbL, "emptyCellModel");
+    /*package*/ static final SContainmentLink emptyCellModel$_h5G = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb05cdc7L, 0x3a4d559b42e5cbL, "emptyCellModel");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EditorCellModel$5c = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel");
-    /*package*/ static final SConcept CellModel_RefNode$Ox = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb05cdc7L, "jetbrains.mps.lang.editor.structure.CellModel_RefNode");
+    /*package*/ static final SConcept EditorCellModel$gN = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel");
+    /*package*/ static final SConcept CellModel_RefNode$8 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb05cdc7L, "jetbrains.mps.lang.editor.structure.CellModel_RefNode");
   }
 }

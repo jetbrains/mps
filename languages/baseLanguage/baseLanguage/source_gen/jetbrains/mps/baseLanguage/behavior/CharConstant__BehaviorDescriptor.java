@@ -33,8 +33,8 @@ public final class CharConstant__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Object getCompileTimeConstantValue_idi1LP2xI(@NotNull SNode __thisNode__, SModule module) {
-    if (SPropertyOperations.getString(__thisNode__, PROPS.charConstant$YJsE).length() > 0) {
-      return new Character(SPropertyOperations.getString(__thisNode__, PROPS.charConstant$YJsE).charAt(0));
+    if (SPropertyOperations.getString(__thisNode__, PROPS.charConstant$DOTs).length() > 0) {
+      return new Character(SPropertyOperations.getString(__thisNode__, PROPS.charConstant$DOTs).charAt(0));
     } else {
       return null;
     }
@@ -92,6 +92,6 @@ public final class CharConstant__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty charConstant$YJsE = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1177d44b21bL, 0x1177d44ddefL, "charConstant");
+    /*package*/ static final SProperty charConstant$DOTs = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1177d44b21bL, 0x1177d44ddefL, "charConstant");
   }
 }

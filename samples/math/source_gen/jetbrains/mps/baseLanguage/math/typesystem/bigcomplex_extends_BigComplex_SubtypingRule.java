@@ -21,7 +21,7 @@ public class bigcomplex_extends_BigComplex_SubtypingRule extends SubtypingRule_R
     return _quotation_createNode_ertxks_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BigComplexType$Ke;
+    return CONCEPTS.BigComplexType$yA;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,6 +38,6 @@ public class bigcomplex_extends_BigComplex_SubtypingRule extends SubtypingRule_R
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BigComplexType$Ke = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x120096f8e4cL, "jetbrains.mps.baseLanguage.math.structure.BigComplexType");
+    /*package*/ static final SConcept BigComplexType$yA = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x120096f8e4cL, "jetbrains.mps.baseLanguage.math.structure.BigComplexType");
   }
 }

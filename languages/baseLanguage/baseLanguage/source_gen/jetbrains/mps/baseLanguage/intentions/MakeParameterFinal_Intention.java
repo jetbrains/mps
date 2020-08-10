@@ -39,16 +39,16 @@ public final class MakeParameterFinal_Intention extends AbstractIntentionDescrip
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.variableDeclaration$7WwU), CONCEPTS.ParameterDeclaration$qU))) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.variableDeclaration$N1XG), CONCEPTS.ParameterDeclaration$RG))) {
       return false;
     }
-    SNode declaration = SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.variableDeclaration$7WwU), CONCEPTS.ParameterDeclaration$qU);
-    SNode methodNode = SNodeOperations.getNodeAncestor(declaration, CONCEPTS.BaseMethodDeclaration$RR, false, false);
-    SNode classNode = SNodeOperations.getNodeAncestor(node, CONCEPTS.AnonymousClass$aF, false, false);
+    SNode declaration = SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.variableDeclaration$N1XG), CONCEPTS.ParameterDeclaration$RG);
+    SNode methodNode = SNodeOperations.getNodeAncestor(declaration, CONCEPTS.BaseMethodDeclaration$kD, false, false);
+    SNode classNode = SNodeOperations.getNodeAncestor(node, CONCEPTS.AnonymousClass$Bt, false, false);
     if ((classNode == null)) {
       return false;
     }
-    if (SPropertyOperations.getBoolean(declaration, PROPS.isFinal$_qt3)) {
+    if (SPropertyOperations.getBoolean(declaration, PROPS.isFinal$gvTP)) {
       return false;
     }
     return ListSequence.fromList(SNodeOperations.getNodeAncestors(classNode, null, false)).contains(methodNode);
@@ -72,7 +72,7 @@ public final class MakeParameterFinal_Intention extends AbstractIntentionDescrip
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.set(SLinkOperations.getTarget(node, LINKS.variableDeclaration$7WwU), PROPS.isFinal$_qt3, true);
+      SPropertyOperations.set(SLinkOperations.getTarget(node, LINKS.variableDeclaration$N1XG), PROPS.isFinal$gvTP, true);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -81,16 +81,16 @@ public final class MakeParameterFinal_Intention extends AbstractIntentionDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ParameterDeclaration$qU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
-    /*package*/ static final SConcept BaseMethodDeclaration$RR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
-    /*package*/ static final SConcept AnonymousClass$aF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
+    /*package*/ static final SConcept ParameterDeclaration$RG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isFinal$gvTP = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 }

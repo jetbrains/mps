@@ -59,8 +59,8 @@ public final class ConvertToReturnStatement_Intention extends AbstractIntentionD
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode returnStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.ReturnStatement$SF, null);
-      SLinkOperations.setTarget(returnStatement, LINKS.expression$zDGg, SNodeOperations.copyNode(SLinkOperations.getTarget(node, LINKS.expression$qFF0)));
+      SNode returnStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.ReturnStatement$lt, null);
+      SLinkOperations.setTarget(returnStatement, LINKS.expression$eJ92, SNodeOperations.copyNode(SLinkOperations.getTarget(node, LINKS.expression$5L7M)));
       SNodeOperations.replaceWithAnother(node, returnStatement);
     }
     @Override
@@ -70,11 +70,11 @@ public final class ConvertToReturnStatement_Intention extends AbstractIntentionD
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ReturnStatement$SF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement");
+    /*package*/ static final SConcept ReturnStatement$lt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$zDGg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
-    /*package*/ static final SContainmentLink expression$qFF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SContainmentLink expression$eJ92 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, 0xf8cc6bf96cL, "expression");
+    /*package*/ static final SContainmentLink expression$5L7M = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
   }
 }

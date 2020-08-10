@@ -42,7 +42,7 @@ public final class BuildLayout_File__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static String getApproximateName_id4RsV8qJDnFm(@NotNull SNode __thisNode__) {
-    return (String) BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.path$lDPP));
+    return (String) BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.path$xmoo));
   }
   /*package*/ static boolean isFile_id1bWeed$oPZ2(@NotNull SNode __thisNode__) {
     return true;
@@ -54,15 +54,15 @@ public final class BuildLayout_File__BehaviorDescriptor extends BaseBHDescriptor
       // why a file from an external layout shall not match requested BuildSourcePath. Perhaps, it's due to 'source' part of the name, i.e. 
       // that the path is supposed to reference smth from project source. However, we've got BuildSourceArchiveRelativePath which may 
       // legitimately point to a file from an external layout, and the restriction is not clear here. 
-      if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildSourcePath$ua) && SNodeOperations.getContainingRoot(node) == SNodeOperations.getContainingRoot(__thisNode__)) {
-        SNode required = SNodeOperations.cast(node, CONCEPTS.BuildSourcePath$ua);
-        return Objects.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(required), BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.path$lDPP)));
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildSourcePath$H) && SNodeOperations.getContainingRoot(node) == SNodeOperations.getContainingRoot(__thisNode__)) {
+        SNode required = SNodeOperations.cast(node, CONCEPTS.BuildSourcePath$H);
+        return Objects.equals(BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(required), BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.path$xmoo)));
       }
     }
     if (artifactId instanceof LocalSourcePathArtifact) {
       LocalSourcePathArtifact art = (LocalSourcePathArtifact) artifactId;
       if (!(art.isFolder()) && art.getRoot() == SNodeOperations.getContainingRoot(__thisNode__)) {
-        return Objects.equals(art.getSourcePath(), BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.path$lDPP)));
+        return Objects.equals(art.getSourcePath(), BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.path$xmoo)));
       }
     }
     return false;
@@ -70,7 +70,7 @@ public final class BuildLayout_File__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ static void unpack_id6IqTD4bJTWZ(@NotNull SNode __thisNode__, UnpackHelper helper) {
     SNode parent = helper.parent(__thisNode__);
     String parentLocation = helper.getContentLocation(parent);
-    SNode path = SLinkOperations.getTarget(__thisNode__, LINKS.path$lDPP);
+    SNode path = SLinkOperations.getTarget(__thisNode__, LINKS.path$xmoo);
     if (path != null) {
       String lastSegment = BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(path);
       if (lastSegment != null) {
@@ -80,10 +80,10 @@ public final class BuildLayout_File__BehaviorDescriptor extends BaseBHDescriptor
     }
   }
   /*package*/ static void appendName_id1bWeed$ownT(@NotNull SNode __thisNode__, SNode parent, StringBuilder sb) {
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.path$lDPP) != null)) {
-      String lastSegment = BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.path$lDPP));
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.path$xmoo) != null)) {
+      String lastSegment = BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.path$xmoo));
       if (lastSegment != null) {
-        if (SNodeOperations.isInstanceOf(parent, CONCEPTS.BuildLayout_Node$kC)) {
+        if (SNodeOperations.isInstanceOf(parent, CONCEPTS.BuildLayout_Node$Rb)) {
           sb.append("/");
         }
         sb.append(lastSegment);
@@ -91,7 +91,7 @@ public final class BuildLayout_File__BehaviorDescriptor extends BaseBHDescriptor
     }
   }
   /*package*/ static boolean canHaveFilemode_id7UAfeVQUccL(@NotNull SNode __thisNode__) {
-    SNode filesetLayoutContainer = FileSetUtil.getFilesetLayoutContainer(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildLayout_Node$kC));
+    SNode filesetLayoutContainer = FileSetUtil.getFilesetLayoutContainer(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildLayout_Node$Rb));
     return (filesetLayoutContainer != null) && (boolean) BuildLayout_ContainerAcceptingFileSet__BehaviorDescriptor.hasFileModeAttribute_id5zIo$W4pFU5.invoke(filesetLayoutContainer);
   }
 
@@ -154,11 +154,11 @@ public final class BuildLayout_File__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink path$lDPP = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7ea63ceef6e8c0edL, 0x7ea63ceef6e8c11aL, "path");
+    /*package*/ static final SContainmentLink path$xmoo = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7ea63ceef6e8c0edL, 0x7ea63ceef6e8c11aL, "path");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildSourcePath$ua = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc3eL, "jetbrains.mps.build.structure.BuildSourcePath");
-    /*package*/ static final SConcept BuildLayout_Node$kC = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node");
+    /*package*/ static final SConcept BuildSourcePath$H = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc3eL, "jetbrains.mps.build.structure.BuildSourcePath");
+    /*package*/ static final SConcept BuildLayout_Node$Rb = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node");
   }
 }

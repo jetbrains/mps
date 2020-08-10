@@ -15,10 +15,10 @@ public class RemoveSpacesFromWord_QuickFix extends QuickFix_Runtime {
     super(new SNodePointer("r:d1be8bd3-dfc7-4e90-8b90-965089cd0937(jetbrains.mps.lang.text.typesystem)", "1732176556415502638"));
   }
   public void execute(SNode node) {
-    Word__BehaviorDescriptor.normalize_id3yV2h2COV$s.invoke(SNodeOperations.as(node, CONCEPTS.Word$AM));
+    Word__BehaviorDescriptor.normalize_id3yV2h2COV$s.invoke(SNodeOperations.as(node, CONCEPTS.Word$Dn));
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Word$AM = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
+    /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
   }
 }

@@ -36,7 +36,7 @@
       <node id="1205753100058" at="38,50,39,48" concept="7" />
       <node id="1205753100058" at="41,68,42,102" concept="7" />
       <node id="1205753100058" at="44,30,45,17" concept="7" />
-      <node id="1205753100058" at="49,0,50,0" concept="9" trace="ThisClassifierExpression$xN" />
+      <node id="1205753100058" at="49,0,50,0" concept="9" trace="ThisClassifierExpression$xB" />
       <node id="1205753100058" at="21,0,23,0" concept="2" trace="typeof_ThisClassifierExpresson_InferenceRule#()V" />
       <node id="1205753100058" at="38,0,41,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1205753100058" at="41,0,44,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -118,14 +118,14 @@
       <node id="1205769672845" at="83,50,84,60" concept="7" />
       <node id="1205769672845" at="86,68,87,102" concept="7" />
       <node id="1205769672845" at="89,30,90,17" concept="7" />
-      <node id="1205769672845" at="94,0,95,0" concept="9" trace="member$shti" />
-      <node id="1205769672845" at="95,0,96,0" concept="9" trace="returnType$qrVw" />
-      <node id="1205769672845" at="96,0,97,0" concept="9" trace="parameter$qsax" />
-      <node id="1205769672845" at="97,0,98,0" concept="9" trace="actualArgument$S0lI" />
-      <node id="1205769672845" at="98,0,99,0" concept="9" trace="type$uWuc" />
-      <node id="1205769672845" at="99,0,100,0" concept="9" trace="componentType$RjTw" />
-      <node id="1205769672845" at="103,0,104,0" concept="9" trace="VariableArityType$jT" />
-      <node id="1205769672845" at="104,0,105,0" concept="9" trace="DefaultClassifierMethodCallOperation$9K" />
+      <node id="1205769672845" at="94,0,95,0" concept="9" trace="member$oLt6" />
+      <node id="1205769672845" at="95,0,96,0" concept="9" trace="returnType$5xoi" />
+      <node id="1205769672845" at="96,0,97,0" concept="9" trace="parameter$5xBj" />
+      <node id="1205769672845" at="97,0,98,0" concept="9" trace="actualArgument$Owly" />
+      <node id="1205769672845" at="98,0,99,0" concept="9" trace="type$a1UY" />
+      <node id="1205769672845" at="99,0,100,0" concept="9" trace="componentType$ypmi" />
+      <node id="1205769672845" at="103,0,104,0" concept="9" trace="VariableArityType$KF" />
+      <node id="1205769672845" at="104,0,105,0" concept="9" trace="DefaultClassifierMethodCallOperation$9$" />
       <node id="1205769672845" at="28,0,30,0" concept="2" trace="typeof_DefaultMethodCallOperation_InferenceRule#()V" />
       <node id="1219948268826" at="70,10,72,5" concept="0" />
       <node id="1205769672845" at="83,0,86,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -220,9 +220,9 @@
       <node id="1205853960046" at="42,50,43,40" concept="7" />
       <node id="1205853960046" at="45,68,46,102" concept="7" />
       <node id="1205853960046" at="48,30,49,17" concept="7" />
-      <node id="1205853960046" at="53,0,54,0" concept="9" trace="BaseClassifierType$Sj" />
-      <node id="1205853960046" at="54,0,55,0" concept="9" trace="IMemberOperation$jb" />
-      <node id="1205853960046" at="58,0,59,0" concept="9" trace="member$shti" />
+      <node id="1205853960046" at="53,0,54,0" concept="9" trace="BaseClassifierType$S7" />
+      <node id="1205853960046" at="54,0,55,0" concept="9" trace="IMemberOperation$iZ" />
+      <node id="1205853960046" at="58,0,59,0" concept="9" trace="member$oLt6" />
       <node id="1205853960046" at="25,0,27,0" concept="2" trace="check_IMemberOperation_NonTypesystemRule#()V" />
       <node id="1205853960046" at="42,0,45,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1205853960046" at="45,0,48,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -280,9 +280,9 @@
       <node id="1214001475035" at="28,50,29,61" concept="7" />
       <node id="1214001475035" at="31,68,32,102" concept="7" />
       <node id="1214001475035" at="34,30,35,17" concept="7" />
-      <node id="1214001475035" at="39,0,40,0" concept="9" trace="member$shti" />
-      <node id="1214001475035" at="40,0,41,0" concept="9" trace="type$uWuc" />
-      <node id="1214001475035" at="44,0,45,0" concept="9" trace="DefaultClassifierFieldAccessOperation$tO" />
+      <node id="1214001475035" at="39,0,40,0" concept="9" trace="member$oLt6" />
+      <node id="1214001475035" at="40,0,41,0" concept="9" trace="type$a1UY" />
+      <node id="1214001475035" at="44,0,45,0" concept="9" trace="DefaultClassifierFieldAccessOperation$tC" />
       <node id="1214001475035" at="19,0,21,0" concept="2" trace="typeof_DefaultClassifierFieldAccessOperation_InferenceRule#()V" />
       <node id="1214001475035" at="28,0,31,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1214001475035" at="31,0,34,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -333,7 +333,7 @@
       <node id="1217433986271" at="38,50,39,48" concept="7" />
       <node id="1217433986271" at="41,68,42,102" concept="7" />
       <node id="1217433986271" at="44,30,45,17" concept="7" />
-      <node id="1217433986271" at="49,0,50,0" concept="9" trace="SuperClassifierExpresson$RS" />
+      <node id="1217433986271" at="49,0,50,0" concept="9" trace="SuperClassifierExpresson$RG" />
       <node id="1217433986271" at="21,0,23,0" concept="2" trace="typeof_SuperClassifierExpresson_InferenceRule#()V" />
       <node id="1217433986271" at="38,0,41,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1217433986271" at="41,0,44,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -387,7 +387,7 @@
       <node id="7697840286086411908" at="37,30,38,234" concept="3" />
       <node id="7697840286086411908" at="38,234,39,435" concept="3" />
       <node id="7697840286086411908" at="39,435,40,24" concept="7" />
-      <node id="7697840286086411669" at="44,0,45,0" concept="9" trace="BaseClassifierType$Sj" />
+      <node id="7697840286086411669" at="44,0,45,0" concept="9" trace="BaseClassifierType$S7" />
       <node id="7697840286086411669" at="18,0,20,0" concept="2" trace="BaseClassifierType_subtypeOf_Object_SubtypingRule#()V" />
       <node id="7697840286086411669" at="20,0,23,0" concept="5" trace="getSubOrSuperType#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="7697840286086411669" at="23,0,26,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />

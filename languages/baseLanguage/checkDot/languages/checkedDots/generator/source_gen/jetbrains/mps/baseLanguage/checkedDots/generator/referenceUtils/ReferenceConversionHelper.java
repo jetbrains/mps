@@ -19,10 +19,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public class ReferenceConversionHelper {
 
   public static String getRefOrConceptFunctionParamName(SNode node) {
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.IVariableReference$zQ)) {
-      return SPropertyOperations.getString(IVariableReference__BehaviorDescriptor.getVariable_idSORzhOpB6t.invoke(SNodeOperations.cast(node, CONCEPTS.IVariableReference$zQ)), PROPS.name$lA7v);
-    } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptFunctionParameter$sy)) {
-      return IParameter__BehaviorDescriptor.getParameterName_idhP8qAbK.invoke(SNodeOperations.cast(node, CONCEPTS.ConceptFunctionParameter$sy));
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.IVariableReference$C)) {
+      return SPropertyOperations.getString(IVariableReference__BehaviorDescriptor.getVariable_idSORzhOpB6t.invoke(SNodeOperations.cast(node, CONCEPTS.IVariableReference$C)), PROPS.name$MnvL);
+    } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptFunctionParameter$Tk)) {
+      return IParameter__BehaviorDescriptor.getParameterName_idhP8qAbK.invoke(SNodeOperations.cast(node, CONCEPTS.ConceptFunctionParameter$Tk));
     } else {
       throw new IllegalArgumentException("Unexpected concept " + SNodeOperations.getConcept(node).getName());
     }
@@ -30,9 +30,9 @@ public class ReferenceConversionHelper {
   public static Iterable<SNode> retrieveDescendentRefsAndConceptFunctionParams(SNode node) {
     final List<SNode> flowInterruptors = ReferenceConversionHelper.retrieveFlowInterruptors(node);
 
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.IVariableReference$zQ, false, new SAbstractConcept[]{})).union(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.ConceptFunctionParameter$sy, false, new SAbstractConcept[]{}))).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.IVariableReference$C, false, new SAbstractConcept[]{})).union(ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.ConceptFunctionParameter$Tk, false, new SAbstractConcept[]{}))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode ref) {
-        return !(ListSequence.fromList(flowInterruptors).contains(SNodeOperations.getNodeAncestorWhereConceptInList(ref, new SAbstractConcept[]{CONCEPTS.IControlFlowInterrupter$qo, CONCEPTS.IStatementListContainer$4L, CONCEPTS.IContainsStatementList$2n}, false, false)));
+        return !(ListSequence.fromList(flowInterruptors).contains(SNodeOperations.getNodeAncestorWhereConceptInList(ref, new SAbstractConcept[]{CONCEPTS.IControlFlowInterrupter$Ra, CONCEPTS.IStatementListContainer$xz, CONCEPTS.IContainsStatementList$v9}, false, false)));
       }
     });
   }
@@ -40,9 +40,9 @@ public class ReferenceConversionHelper {
   public static Iterable<SNode> retrieveDescendentRefs(SNode node) {
     final List<SNode> flowInterruptors = ReferenceConversionHelper.retrieveFlowInterruptors(node);
 
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.IVariableReference$zQ, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.IVariableReference$C, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode ref) {
-        return !(ListSequence.fromList(flowInterruptors).contains(SNodeOperations.getNodeAncestorWhereConceptInList(ref, new SAbstractConcept[]{CONCEPTS.IControlFlowInterrupter$qo, CONCEPTS.IStatementListContainer$4L, CONCEPTS.IContainsStatementList$2n}, false, false)));
+        return !(ListSequence.fromList(flowInterruptors).contains(SNodeOperations.getNodeAncestorWhereConceptInList(ref, new SAbstractConcept[]{CONCEPTS.IControlFlowInterrupter$Ra, CONCEPTS.IStatementListContainer$xz, CONCEPTS.IContainsStatementList$v9}, false, false)));
       }
     });
   }
@@ -50,27 +50,27 @@ public class ReferenceConversionHelper {
   public static Iterable<SNode> retrieveDescendentMethodCalls(SNode node) {
     final List<SNode> flowInterruptors = ReferenceConversionHelper.retrieveFlowInterruptors(node);
 
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.IMethodCall$ln, true, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.IMethodCall$M9, true, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode call) {
-        return !(ListSequence.fromList(flowInterruptors).contains(SNodeOperations.getNodeAncestorWhereConceptInList(call, new SAbstractConcept[]{CONCEPTS.IControlFlowInterrupter$qo, CONCEPTS.IStatementListContainer$4L, CONCEPTS.IContainsStatementList$2n}, false, false)));
+        return !(ListSequence.fromList(flowInterruptors).contains(SNodeOperations.getNodeAncestorWhereConceptInList(call, new SAbstractConcept[]{CONCEPTS.IControlFlowInterrupter$Ra, CONCEPTS.IStatementListContainer$xz, CONCEPTS.IContainsStatementList$v9}, false, false)));
       }
     });
   }
 
   private static List<SNode> retrieveFlowInterruptors(SNode node) {
-    return SNodeOperations.getNodeDescendantsWhereConceptInList(node, new SAbstractConcept[]{CONCEPTS.IControlFlowInterrupter$qo, CONCEPTS.IStatementListContainer$4L, CONCEPTS.IContainsStatementList$2n}, true, new SAbstractConcept[]{});
+    return SNodeOperations.getNodeDescendantsWhereConceptInList(node, new SAbstractConcept[]{CONCEPTS.IControlFlowInterrupter$Ra, CONCEPTS.IStatementListContainer$xz, CONCEPTS.IContainsStatementList$v9}, true, new SAbstractConcept[]{});
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IVariableReference$zQ = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xe34de34746464f2L, "jetbrains.mps.baseLanguage.structure.IVariableReference");
-    /*package*/ static final SConcept ConceptFunctionParameter$sy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101c66e2c0bL, "jetbrains.mps.baseLanguage.structure.ConceptFunctionParameter");
-    /*package*/ static final SInterfaceConcept IControlFlowInterrupter$qo = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x7c8556154508e980L, "jetbrains.mps.baseLanguage.structure.IControlFlowInterrupter");
-    /*package*/ static final SInterfaceConcept IStatementListContainer$4L = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11750ef8265L, "jetbrains.mps.baseLanguage.structure.IStatementListContainer");
-    /*package*/ static final SInterfaceConcept IContainsStatementList$2n = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120237c2cebL, "jetbrains.mps.baseLanguage.structure.IContainsStatementList");
-    /*package*/ static final SInterfaceConcept IMethodCall$ln = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
+    /*package*/ static final SInterfaceConcept IVariableReference$C = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xe34de34746464f2L, "jetbrains.mps.baseLanguage.structure.IVariableReference");
+    /*package*/ static final SConcept ConceptFunctionParameter$Tk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101c66e2c0bL, "jetbrains.mps.baseLanguage.structure.ConceptFunctionParameter");
+    /*package*/ static final SInterfaceConcept IControlFlowInterrupter$Ra = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x7c8556154508e980L, "jetbrains.mps.baseLanguage.structure.IControlFlowInterrupter");
+    /*package*/ static final SInterfaceConcept IStatementListContainer$xz = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11750ef8265L, "jetbrains.mps.baseLanguage.structure.IStatementListContainer");
+    /*package*/ static final SInterfaceConcept IContainsStatementList$v9 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120237c2cebL, "jetbrains.mps.baseLanguage.structure.IContainsStatementList");
+    /*package*/ static final SInterfaceConcept IMethodCall$M9 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

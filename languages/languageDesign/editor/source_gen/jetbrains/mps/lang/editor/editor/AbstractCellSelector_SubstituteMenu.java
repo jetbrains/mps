@@ -44,10 +44,10 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
     result.add(new SMP_Include_1rdeze_a());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_1rdeze_b(), CONCEPTS.IdSelector$hW));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_1rdeze_b(), CONCEPTS.IdSelector$tz));
     result.add(new SMP_Group_1rdeze_c());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_1rdeze_d(), CONCEPTS.PropertyDeclarationCellSelector$M4));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_1rdeze_e(), CONCEPTS.PropertyExpressionCellSelector$Px));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_1rdeze_d(), CONCEPTS.PropertyDeclarationCellSelector$XF));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_1rdeze_e(), CONCEPTS.PropertyExpressionCellSelector$18));
     return result;
   }
 
@@ -85,7 +85,7 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.editor.editor.CellIdReferenceSelector_SmartReference");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.CellIdReferenceSelector$kl;
+      return CONCEPTS.CellIdReferenceSelector$vW;
     }
   }
   private class SMP_Action_1rdeze_b extends SingleItemSubstituteMenuPart {
@@ -116,7 +116,7 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.IdSelector$hW, context);
+        super(CONCEPTS.IdSelector$tz, context);
         _context = context;
       }
 
@@ -163,7 +163,7 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_Group_1rdeze_c extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.SelectInEditorOperation$fZ);
+      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.SelectInEditorOperation$rA);
     }
     @NotNull
     @Override
@@ -179,7 +179,7 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_1rdeze_a2(), CONCEPTS.PredefinedSelector$vL));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_1rdeze_a2(), CONCEPTS.PredefinedSelector$Fo));
     }
     private class SMP_Param_1rdeze_a2 extends ParameterizedMenuPart<SEnumerationLiteral, SubstituteMenuItem, SubstituteMenuContext> {
       @NotNull
@@ -236,7 +236,7 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
           private final SubstituteMenuContext _context;
           private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
-            super(CONCEPTS.PredefinedSelector$vL, context);
+            super(CONCEPTS.PredefinedSelector$Fo, context);
             _context = context;
           }
 
@@ -248,7 +248,7 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
           @Override
           public SNode createNode(@NotNull String pattern) {
             SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x313a48d996236c93L, "jetbrains.mps.lang.editor.structure.PredefinedSelector"));
-            SPropertyOperations.assignEnum(result, PROPS.cellId$nIcL, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1e02662c4b880a97L, "jetbrains.mps.lang.editor.structure.PredefinedCellID"), SEnumOperations.getMemberName0(myParameterObject)));
+            SPropertyOperations.assignEnum(result, PROPS.cellId$s0oo, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1e02662c4b880a97L, "jetbrains.mps.lang.editor.structure.PredefinedCellID"), SEnumOperations.getMemberName0(myParameterObject)));
             return result;
           }
 
@@ -258,7 +258,7 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
           }
           @NotNull
           protected CompletionItemInformation createInformation(String pattern) {
-            return new CompletionItemInformation(myParameterObject, CONCEPTS.PredefinedSelector$vL, getMatchingText(pattern), getDescriptionText(pattern));
+            return new CompletionItemInformation(myParameterObject, CONCEPTS.PredefinedSelector$Fo, getMatchingText(pattern), getDescriptionText(pattern));
           }
           @Nullable
           @Override
@@ -308,7 +308,7 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.PropertyDeclarationCellSelector$M4, context);
+        super(CONCEPTS.PropertyDeclarationCellSelector$XF, context);
         _context = context;
       }
 
@@ -380,7 +380,7 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.PropertyExpressionCellSelector$Px, context);
+        super(CONCEPTS.PropertyExpressionCellSelector$18, context);
         _context = context;
       }
 
@@ -426,15 +426,15 @@ public class AbstractCellSelector_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IdSelector$hW = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1e02662c4b880750L, "jetbrains.mps.lang.editor.structure.IdSelector");
-    /*package*/ static final SConcept PropertyDeclarationCellSelector$M4 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e970bbc3009e3a3L, "jetbrains.mps.lang.editor.structure.PropertyDeclarationCellSelector");
-    /*package*/ static final SConcept PropertyExpressionCellSelector$Px = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e970bbc30443a0aL, "jetbrains.mps.lang.editor.structure.PropertyExpressionCellSelector");
-    /*package*/ static final SConcept CellIdReferenceSelector$kl = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3c0028bb8556f621L, "jetbrains.mps.lang.editor.structure.CellIdReferenceSelector");
-    /*package*/ static final SConcept SelectInEditorOperation$fZ = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, "jetbrains.mps.lang.editor.structure.SelectInEditorOperation");
-    /*package*/ static final SConcept PredefinedSelector$vL = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x313a48d996236c93L, "jetbrains.mps.lang.editor.structure.PredefinedSelector");
+    /*package*/ static final SConcept IdSelector$tz = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1e02662c4b880750L, "jetbrains.mps.lang.editor.structure.IdSelector");
+    /*package*/ static final SConcept PropertyDeclarationCellSelector$XF = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e970bbc3009e3a3L, "jetbrains.mps.lang.editor.structure.PropertyDeclarationCellSelector");
+    /*package*/ static final SConcept PropertyExpressionCellSelector$18 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e970bbc30443a0aL, "jetbrains.mps.lang.editor.structure.PropertyExpressionCellSelector");
+    /*package*/ static final SConcept CellIdReferenceSelector$vW = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3c0028bb8556f621L, "jetbrains.mps.lang.editor.structure.CellIdReferenceSelector");
+    /*package*/ static final SConcept SelectInEditorOperation$rA = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, "jetbrains.mps.lang.editor.structure.SelectInEditorOperation");
+    /*package*/ static final SConcept PredefinedSelector$Fo = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x313a48d996236c93L, "jetbrains.mps.lang.editor.structure.PredefinedSelector");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty cellId$nIcL = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x313a48d996236c93L, 0x1e02662c4b881e34L, "cellId");
+    /*package*/ static final SProperty cellId$s0oo = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x313a48d996236c93L, 0x1e02662c4b881e34L, "cellId");
   }
 }

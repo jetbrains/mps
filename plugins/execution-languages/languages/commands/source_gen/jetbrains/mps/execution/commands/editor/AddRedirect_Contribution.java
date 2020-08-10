@@ -97,7 +97,7 @@ public class AddRedirect_Contribution extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_rmyimx_a0a(), CONCEPTS.RedirectOutputExpression$u_));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_rmyimx_a0a(), CONCEPTS.RedirectOutputExpression$5h));
     }
     private class TMP_Action_rmyimx_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -137,9 +137,9 @@ public class AddRedirect_Contribution extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode redirect = SNodeFactoryOperations.createNewNode(CONCEPTS.RedirectOutputExpression$u_, null);
+          SNode redirect = SNodeFactoryOperations.createNewNode(CONCEPTS.RedirectOutputExpression$5h, null);
           SNodeOperations.replaceWithAnother(_context.getNode(), redirect);
-          SLinkOperations.setTarget(redirect, LINKS.processHandler$ofiw, _context.getNode());
+          SLinkOperations.setTarget(redirect, LINKS.processHandler$2kTc, _context.getNode());
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), redirect, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -147,7 +147,7 @@ public class AddRedirect_Contribution extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.RedirectOutputExpression$u_;
+          return CONCEPTS.RedirectOutputExpression$5h;
         }
 
 
@@ -158,7 +158,7 @@ public class AddRedirect_Contribution extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.RedirectOutputExpression$u_;
+          SAbstractConcept outputConcept = CONCEPTS.RedirectOutputExpression$5h;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -169,16 +169,16 @@ public class AddRedirect_Contribution extends TransformationMenuBase {
     }
   }
   private static SNode createProcessType_rmyimx_b0a0a0a0() {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ProcessType$tB);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ProcessType$4j);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RedirectOutputExpression$u_ = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2c14L, "jetbrains.mps.execution.commands.structure.RedirectOutputExpression");
-    /*package*/ static final SConcept ProcessType$tB = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2c12L, "jetbrains.mps.execution.commands.structure.ProcessType");
+    /*package*/ static final SConcept RedirectOutputExpression$5h = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2c14L, "jetbrains.mps.execution.commands.structure.RedirectOutputExpression");
+    /*package*/ static final SConcept ProcessType$4j = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2c12L, "jetbrains.mps.execution.commands.structure.ProcessType");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink processHandler$ofiw = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2c14L, 0xbe3a0d5ba1a2c15L, "processHandler");
+    /*package*/ static final SContainmentLink processHandler$2kTc = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2c14L, 0xbe3a0d5ba1a2c15L, "processHandler");
   }
 }

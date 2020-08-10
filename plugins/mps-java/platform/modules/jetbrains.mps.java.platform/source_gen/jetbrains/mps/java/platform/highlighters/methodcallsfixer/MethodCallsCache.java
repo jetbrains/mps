@@ -66,7 +66,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
       public SNode select(SNodeReference it) {
         return it.resolve(myRepository);
       }
-    }), CONCEPTS.IMethodCall$ln);
+    }), CONCEPTS.IMethodCall$M9);
   }
 
   /*package*/ void putCheckedMethodCall(SNode methodCallNode, SNode methodNode, String methodName) {
@@ -91,14 +91,14 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
   /*package*/ boolean isMethodCallUpToDate(SNode methodCall) {
     SNodeReference methodCallPointer = SNodeOperations.getPointer(methodCall);
-    return myCheckedMethodCalls.contains(methodCallPointer) && SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$ItxI) == myMethodCallsToSetDecls.get(methodCallPointer).resolve(myRepository);
+    return myCheckedMethodCalls.contains(methodCallPointer) && SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$pyYw) == myMethodCallsToSetDecls.get(methodCallPointer).resolve(myRepository);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IMethodCall$ln = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
+    /*package*/ static final SInterfaceConcept IMethodCall$M9 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 }

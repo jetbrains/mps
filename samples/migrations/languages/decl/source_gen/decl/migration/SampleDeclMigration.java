@@ -67,17 +67,17 @@ public class SampleDeclMigration extends MigrationScriptBase {
       };
 
       // get all old instances in all models of the module 
-      List<SNode> components = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.OldComponent$sl, true)).toListSequence();
+      List<SNode> components = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.OldComponent$2b, true)).toListSequence();
 
       // for each old instance create a new one 
       ListSequence.fromList(components).visitAll(new IVisitor<SNode>() {
         public void visit(SNode oldNode) {
-          SNode newNode = _quotation_createNode_i4ro0d_a0a0a0a5a3a5(SLinkOperations.getChildren(oldNode, LINKS.member$nGlH), SPropertyOperations.getString(oldNode, PROPS.name$lA7v));
+          SNode newNode = _quotation_createNode_i4ro0d_a0a0a0a5a3a5(SLinkOperations.getChildren(oldNode, LINKS.member$dqVz), SPropertyOperations.getString(oldNode, PROPS.name$MnvL));
           // add it to the model 
           SModelOperations.addRootNode(SNodeOperations.getModel(oldNode), newNode);
 
           // create the data annotation to hold mapping between old and new ids of the instances 
-          SPropertyOperations.set(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.setTarget(AttributeOperations.createAndAddAttribute(newNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MigrationDataAnnotation$gb), CONCEPTS.MigrationDataAnnotation$gb), LINKS.dataNode$T4nK, createDeclMigrationData_i4ro0d_a0f0a0a5a3a5(oldNode.getNodeId().toString(), newNode.getNodeId().toString()))), CONCEPTS.MigrationDataAnnotation$gb), PROPS.createdByScript$L5qw, SampleDeclMigration.this.getReference().serialize());
+          SPropertyOperations.set(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.setTarget(AttributeOperations.createAndAddAttribute(newNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MigrationDataAnnotation$Ct), CONCEPTS.MigrationDataAnnotation$Ct), LINKS.dataNode$lPK2, createDeclMigrationData_i4ro0d_a0f0a0a5a3a5(oldNode.getNodeId().toString(), newNode.getNodeId().toString()))), CONCEPTS.MigrationDataAnnotation$Ct), PROPS.createdByScript$dQMM, SampleDeclMigration.this.getReference().serialize());
 
         }
       });
@@ -100,7 +100,7 @@ public class SampleDeclMigration extends MigrationScriptBase {
           return scope_i4ro0d_a0f_0;
         }
       };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.OldComponent$sl, false)).select(new ISelector<SNode, NotMigratedNode>() {
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.OldComponent$2b, false)).select(new ISelector<SNode, NotMigratedNode>() {
         public NotMigratedNode select(SNode it) {
           return new NotMigratedNode(it) {
             public String getMessage() {
@@ -131,27 +131,27 @@ public class SampleDeclMigration extends MigrationScriptBase {
     return quotedNode_3;
   }
   private static SNode createDeclMigrationData_i4ro0d_a0f0a0a5a3a5(String p0, String p1) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DeclMigrationData$E1);
-    n0.setProperty(PROPS.oldId$lFYx, p0);
-    n0.setProperty(PROPS.newId$lGdy, p1);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.DeclMigrationData$fR);
+    n0.setProperty(PROPS.oldId$bq$n, p0);
+    n0.setProperty(PROPS.newId$bqNo, p1);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept OldComponent$sl = MetaAdapterFactory.getConcept(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x6aff2c1049316cdaL, "decl.structure.OldComponent");
-    /*package*/ static final SConcept MigrationDataAnnotation$gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625990591L, "jetbrains.mps.lang.core.structure.MigrationDataAnnotation");
-    /*package*/ static final SConcept DeclMigrationData$E1 = MetaAdapterFactory.getConcept(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x2274019e61e234c9L, "decl.structure.DeclMigrationData");
+    /*package*/ static final SConcept OldComponent$2b = MetaAdapterFactory.getConcept(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x6aff2c1049316cdaL, "decl.structure.OldComponent");
+    /*package*/ static final SConcept MigrationDataAnnotation$Ct = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625990591L, "jetbrains.mps.lang.core.structure.MigrationDataAnnotation");
+    /*package*/ static final SConcept DeclMigrationData$fR = MetaAdapterFactory.getConcept(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x2274019e61e234c9L, "decl.structure.DeclMigrationData");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink member$nGlH = MetaAdapterFactory.getContainmentLink(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x6aff2c1049316cdaL, 0x6aff2c104931bb27L, "member");
-    /*package*/ static final SContainmentLink dataNode$T4nK = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625990591L, 0x5e7aa366c292fcceL, "dataNode");
+    /*package*/ static final SContainmentLink member$dqVz = MetaAdapterFactory.getContainmentLink(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x6aff2c1049316cdaL, 0x6aff2c104931bb27L, "member");
+    /*package*/ static final SContainmentLink dataNode$lPK2 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625990591L, 0x5e7aa366c292fcceL, "dataNode");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty createdByScript$L5qw = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e13L, 0x78c7e79625a38e14L, "createdByScript");
-    /*package*/ static final SProperty oldId$lFYx = MetaAdapterFactory.getProperty(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x2274019e61e234c9L, 0x3abe707a89857bdeL, "oldId");
-    /*package*/ static final SProperty newId$lGdy = MetaAdapterFactory.getProperty(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x2274019e61e234c9L, 0x3abe707a89857bdfL, "newId");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty createdByScript$dQMM = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e13L, 0x78c7e79625a38e14L, "createdByScript");
+    /*package*/ static final SProperty oldId$bq$n = MetaAdapterFactory.getProperty(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x2274019e61e234c9L, 0x3abe707a89857bdeL, "oldId");
+    /*package*/ static final SProperty newId$bqNo = MetaAdapterFactory.getProperty(0x9de7c5ceea6f4fb4L, 0xa7ba45e62b53cbadL, 0x2274019e61e234c9L, 0x3abe707a89857bdfL, "newId");
   }
 }

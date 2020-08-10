@@ -37,7 +37,7 @@ public class list_type_comparableWith_List_ComparisonRule extends ComparisonRule
   }
 
   public SAbstractConcept getApplicableConcept1() {
-    return CONCEPTS.ListType$z$;
+    return CONCEPTS.ListType$LR;
   }
   public SAbstractConcept getApplicableConcept2() {
     return MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType");
@@ -54,6 +54,6 @@ public class list_type_comparableWith_List_ComparisonRule extends ComparisonRule
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ListType$z$ = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, "jetbrains.mps.baseLanguage.collections.structure.ListType");
+    /*package*/ static final SConcept ListType$LR = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, "jetbrains.mps.baseLanguage.collections.structure.ListType");
   }
 }

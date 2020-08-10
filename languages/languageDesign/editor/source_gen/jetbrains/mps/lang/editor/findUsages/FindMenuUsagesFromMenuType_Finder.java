@@ -23,7 +23,7 @@ public class FindMenuUsagesFromMenuType_Finder extends GeneratedFinder {
   }
   @Override
   public boolean isUsedByDefault(SNode node) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.IMenu_Concept$UY);
+    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.IMenu_Concept$6_);
   }
   @Override
   public String getDescription() {
@@ -35,11 +35,11 @@ public class FindMenuUsagesFromMenuType_Finder extends GeneratedFinder {
   }
   @Override
   public SAbstractConcept getSConcept() {
-    return CONCEPTS.MenuType$RG;
+    return CONCEPTS.MenuType$3j;
   }
   @Override
   public boolean isApplicable(SNode node) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.IMenu_Concept$UY);
+    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.IMenu_Concept$6_);
   }
 
   @Override
@@ -62,7 +62,7 @@ public class FindMenuUsagesFromMenuType_Finder extends GeneratedFinder {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IMenu_Concept$UY = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, "jetbrains.mps.lang.editor.structure.IMenu_Concept");
-    /*package*/ static final SConcept MenuType$RG = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5326ef9ad1607088L, "jetbrains.mps.lang.editor.structure.MenuType");
+    /*package*/ static final SInterfaceConcept IMenu_Concept$6_ = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, "jetbrains.mps.lang.editor.structure.IMenu_Concept");
+    /*package*/ static final SConcept MenuType$3j = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5326ef9ad1607088L, "jetbrains.mps.lang.editor.structure.MenuType");
   }
 }

@@ -46,7 +46,7 @@ public final class IterateOverIterable_Intention extends AbstractIntentionDescri
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(node, LINKS.expression$qFF0)), new Pattern_6isygg_b0a0a0a(_quotation_createNode_6isygg_a0b0a0a0a())) != null);
+    return (TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(node, LINKS.expression$5L7M)), new Pattern_6isygg_b0a0a0a(_quotation_createNode_6isygg_a0b0a0a0a())) != null);
   }
   @Override
   public boolean isSurroundWith() {
@@ -69,13 +69,13 @@ public final class IterateOverIterable_Intention extends AbstractIntentionDescri
     public void execute(final SNode node, final EditorContext editorContext) {
       {
         GeneratedMatchingPattern pattern_6isygg_a0a = new Pattern_6isygg_a0a0a0a(_quotation_createNode_6isygg_a0a0a0a0a());
-        SNode coercedNode_6isygg_a0a = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(node, LINKS.expression$qFF0)), pattern_6isygg_a0a);
+        SNode coercedNode_6isygg_a0a = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(node, LINKS.expression$5L7M)), pattern_6isygg_a0a);
         if (coercedNode_6isygg_a0a != null) {
-          SNode foreachStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.ForeachStatement$oA, null);
-          SNode variableDeclaration = SNodeFactoryOperations.setNewChild(foreachStatement, LINKS.variable$4Igk, null);
-          SLinkOperations.setTarget(variableDeclaration, LINKS.type$uWuc, SNodeOperations.copyNode(pattern_6isygg_a0a.getMatchedNode("elem")));
-          SPropertyOperations.set(variableDeclaration, PROPS.name$lA7v, NameUtil.toValidIdentifier(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(pattern_6isygg_a0a.getMatchedNode("elem"))));
-          SLinkOperations.setTarget(foreachStatement, LINKS.iterable$FCTY, SNodeOperations.copyNode(SLinkOperations.getTarget(node, LINKS.expression$qFF0)));
+          SNode foreachStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.ForeachStatement$Po, null);
+          SNode variableDeclaration = SNodeFactoryOperations.setNewChild(foreachStatement, LINKS.variable$JNH6, null);
+          SLinkOperations.setTarget(variableDeclaration, LINKS.type$a1UY, SNodeOperations.copyNode(pattern_6isygg_a0a.getMatchedNode("elem")));
+          SPropertyOperations.set(variableDeclaration, PROPS.name$MnvL, NameUtil.toValidIdentifier(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(pattern_6isygg_a0a.getMatchedNode("elem"))));
+          SLinkOperations.setTarget(foreachStatement, LINKS.iterable$mImK, SNodeOperations.copyNode(SLinkOperations.getTarget(node, LINKS.expression$5L7M)));
           SNodeOperations.insertNextSiblingChild(node, foreachStatement);
           SNodeOperations.deleteNode(node);
         } else {
@@ -109,17 +109,17 @@ public final class IterateOverIterable_Intention extends AbstractIntentionDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$qFF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
-    /*package*/ static final SContainmentLink variable$4Igk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
-    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink iterable$FCTY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, 0x10a6934ab66L, "iterable");
+    /*package*/ static final SContainmentLink expression$5L7M = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SContainmentLink variable$JNH6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink iterable$mImK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, 0x10a6934ab66L, "iterable");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ForeachStatement$oA = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, "jetbrains.mps.baseLanguage.structure.ForeachStatement");
+    /*package*/ static final SConcept ForeachStatement$Po = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L, "jetbrains.mps.baseLanguage.structure.ForeachStatement");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -36,13 +36,13 @@ public final class StringLiteralRegexp__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static String getString_idhMuDF1A(@NotNull SNode __thisNode__, List<SNode> vars) {
-    return StringLiteralRegexp__BehaviorDescriptor.toRegexp_id7eq8FHGGy0G.invoke(__thisNode__, SPropertyOperations.getString(__thisNode__, PROPS.text$8qD5));
+    return StringLiteralRegexp__BehaviorDescriptor.toRegexp_id7eq8FHGGy0G.invoke(__thisNode__, SPropertyOperations.getString(__thisNode__, PROPS.text$VShT));
   }
   /*package*/ static boolean isValid_id48bMILtL4il(@NotNull SNode __thisNode__) {
-    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.text$8qD5))) {
+    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.text$VShT))) {
       return false;
     }
-    return StringLiteralRegexp__BehaviorDescriptor.toRegexp_id7eq8FHGGy0G.invoke(__thisNode__, SPropertyOperations.getString(__thisNode__, PROPS.text$8qD5)) != null;
+    return StringLiteralRegexp__BehaviorDescriptor.toRegexp_id7eq8FHGGy0G.invoke(__thisNode__, SPropertyOperations.getString(__thisNode__, PROPS.text$VShT)) != null;
   }
   /*package*/ static String toRegexp_id7eq8FHGGy0G(@NotNull SNode __thisNode__, String s) {
     StringBuilder sb = new StringBuilder();
@@ -61,7 +61,7 @@ public final class StringLiteralRegexp__BehaviorDescriptor extends BaseBHDescrip
               return null;
             }
             c = s.charAt(i);
-            if (!((boolean) StringLiteralRegexp__BehaviorDescriptor.isHexChar_id7KMCQ$NHaYO.invoke(SNodeOperations.asSConcept(CONCEPTS.StringLiteralRegexp$g9), ((char) c)))) {
+            if (!((boolean) StringLiteralRegexp__BehaviorDescriptor.isHexChar_id7KMCQ$NHaYO.invoke(SNodeOperations.asSConcept(CONCEPTS.StringLiteralRegexp$SX), ((char) c)))) {
               return null;
             }
             sb.append(c);
@@ -158,10 +158,10 @@ public final class StringLiteralRegexp__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$8qD5 = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a0992dL, 0x11174a0b84fL, "text");
+    /*package*/ static final SProperty text$VShT = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a0992dL, 0x11174a0b84fL, "text");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StringLiteralRegexp$g9 = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a0992dL, "jetbrains.mps.baseLanguage.regexp.structure.StringLiteralRegexp");
+    /*package*/ static final SConcept StringLiteralRegexp$SX = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a0992dL, "jetbrains.mps.baseLanguage.regexp.structure.StringLiteralRegexp");
   }
 }

@@ -32,7 +32,7 @@ public class WordRemoveLink_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return isNotEmptyString(SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.url$wboS));
+    return isNotEmptyString(SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.url$SIrt));
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -45,7 +45,7 @@ public class WordRemoveLink_Action extends BaseAction {
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      if (node != null && !(SNodeOperations.isInstanceOf(node, CONCEPTS.Word$AM))) {
+      if (node != null && !(SNodeOperations.isInstanceOf(node, CONCEPTS.Word$Dn))) {
         node = null;
       }
       if (node == null) {
@@ -56,17 +56,17 @@ public class WordRemoveLink_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    SPropertyOperations.assign(event.getData(MPSCommonDataKeys.NODE), PROPS.url$wboS, null);
+    SPropertyOperations.assign(event.getData(MPSCommonDataKeys.NODE), PROPS.url$SIrt, null);
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty url$wboS = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
+    /*package*/ static final SProperty url$SIrt = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Word$AM = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
+    /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
   }
 }

@@ -24,10 +24,10 @@ public class AsExpression_Delete {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.classifierType$zzT1))) {
+        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.classifierType$eDlN))) {
           return;
         }
-        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.expression$zzE0));
+        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.expression$eD6M));
       }
 
     };
@@ -75,7 +75,7 @@ public class AsExpression_Delete {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink classifierType$zzT1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d00538bdfL, 0x11d00538be1L, "classifierType");
-    /*package*/ static final SContainmentLink expression$zzE0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d00538bdfL, 0x11d00538be0L, "expression");
+    /*package*/ static final SContainmentLink classifierType$eDlN = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d00538bdfL, 0x11d00538be1L, "classifierType");
+    /*package*/ static final SContainmentLink expression$eD6M = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d00538bdfL, 0x11d00538be0L, "expression");
   }
 }

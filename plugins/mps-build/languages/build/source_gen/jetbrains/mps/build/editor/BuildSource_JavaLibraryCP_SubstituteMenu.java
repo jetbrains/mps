@@ -43,7 +43,7 @@ public class BuildSource_JavaLibraryCP_SubstituteMenu extends SubstituteMenuBase
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_2ut3s4_a(), CONCEPTS.BuildSource_JavaLibraryCP$VQ));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_2ut3s4_a(), CONCEPTS.BuildSource_JavaLibraryCP$up));
     return result;
   }
 
@@ -83,14 +83,14 @@ public class BuildSource_JavaLibraryCP_SubstituteMenu extends SubstituteMenuBase
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.BuildSource_JavaLibraryCP$VQ;
+          return CONCEPTS.BuildSource_JavaLibraryCP$up;
         }
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode nodeToWrap = super.createNode(pattern);
-          SNode n = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.BuildSource_JavaLibraryCP$VQ);
-          SLinkOperations.setTarget(n, LINKS.classpath$KYa1, nodeToWrap);
+          SNode n = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.BuildSource_JavaLibraryCP$up);
+          SLinkOperations.setTarget(n, LINKS.classpath$WEG$, nodeToWrap);
           return n;
         }
 
@@ -117,16 +117,16 @@ public class BuildSource_JavaLibraryCP_SubstituteMenu extends SubstituteMenuBase
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.BuildSource_JavaCP$3J;
+      return CONCEPTS.BuildSource_JavaCP$Ai;
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildSource_JavaLibraryCP$VQ = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b61d4cbbL, "jetbrains.mps.build.structure.BuildSource_JavaLibraryCP");
-    /*package*/ static final SConcept BuildSource_JavaCP$3J = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b61c2404L, "jetbrains.mps.build.structure.BuildSource_JavaCP");
+    /*package*/ static final SConcept BuildSource_JavaLibraryCP$up = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b61d4cbbL, "jetbrains.mps.build.structure.BuildSource_JavaLibraryCP");
+    /*package*/ static final SConcept BuildSource_JavaCP$Ai = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b61c2404L, "jetbrains.mps.build.structure.BuildSource_JavaCP");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink classpath$KYa1 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b61d4cbbL, 0x3395e884b61d4cbdL, "classpath");
+    /*package*/ static final SContainmentLink classpath$WEG$ = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b61d4cbbL, 0x3395e884b61d4cbdL, "classpath");
   }
 }

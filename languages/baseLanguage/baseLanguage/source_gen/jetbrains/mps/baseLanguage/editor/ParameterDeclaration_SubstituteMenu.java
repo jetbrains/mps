@@ -53,9 +53,9 @@ public class ParameterDeclaration_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_s1gnlv_a(), CONCEPTS.ParameterDeclaration$qU));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_s1gnlv_a(), CONCEPTS.ParameterDeclaration$RG));
     result.add(new SMP_Subconcepts_s1gnlv_b());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.ParameterDeclaration$qU) {
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.ParameterDeclaration$RG) {
 
       @NotNull
       @Override
@@ -68,8 +68,8 @@ public class ParameterDeclaration_SubstituteMenu extends SubstituteMenuBase {
           context.getEditorMenuTrace().popTraceInfo();
         }
       }
-    }, CONCEPTS.ParameterDeclaration$qU));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_s1gnlv_d(), CONCEPTS.ParameterDeclaration$qU));
+    }, CONCEPTS.ParameterDeclaration$RG));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_s1gnlv_d(), CONCEPTS.ParameterDeclaration$RG));
     return result;
   }
 
@@ -109,14 +109,14 @@ public class ParameterDeclaration_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.ParameterDeclaration$qU;
+          return CONCEPTS.ParameterDeclaration$RG;
         }
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode nodeToWrap = super.createNode(pattern);
-          SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.ParameterDeclaration$qU, null);
-          SLinkOperations.setTarget(result, LINKS.type$uWuc, nodeToWrap);
+          SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.ParameterDeclaration$RG, null);
+          SLinkOperations.setTarget(result, LINKS.type$a1UY, nodeToWrap);
           return result;
         }
 
@@ -143,12 +143,12 @@ public class ParameterDeclaration_SubstituteMenu extends SubstituteMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.Type$IG;
+      return CONCEPTS.Type$bu;
     }
   }
   public class SMP_Subconcepts_s1gnlv_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ParameterDeclaration$qU);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ParameterDeclaration$RG);
     }
     @NotNull
     @Override
@@ -195,7 +195,7 @@ public class ParameterDeclaration_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.ParameterDeclaration$qU, context);
+        super(CONCEPTS.ParameterDeclaration$RG, context);
         _context = context;
       }
 
@@ -206,8 +206,8 @@ public class ParameterDeclaration_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.ParameterDeclaration$qU, null);
-        SPropertyOperations.assign(result, PROPS.isFinal$_qt3, true);
+        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.ParameterDeclaration$RG, null);
+        SPropertyOperations.assign(result, PROPS.isFinal$gvTP, true);
         return result;
       }
 
@@ -228,15 +228,15 @@ public class ParameterDeclaration_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ParameterDeclaration$qU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
-    /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept ParameterDeclaration$RG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isFinal$gvTP = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 }

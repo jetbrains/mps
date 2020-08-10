@@ -23,8 +23,8 @@ public class Statement_Comment_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.BaseCommentAttribute$Zd)) {
-          CommentUtil.uncomment(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.BaseCommentAttribute$Zd));
+        if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.BaseCommentAttribute$nv)) {
+          CommentUtil.uncomment(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.BaseCommentAttribute$nv));
         }
       }
 
@@ -73,6 +73,6 @@ public class Statement_Comment_Actions {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseCommentAttribute$Zd = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
+    /*package*/ static final SConcept BaseCommentAttribute$nv = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
   }
 }

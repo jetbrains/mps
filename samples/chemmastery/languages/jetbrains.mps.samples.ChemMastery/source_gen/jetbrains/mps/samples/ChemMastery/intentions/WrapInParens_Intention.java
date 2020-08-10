@@ -59,8 +59,8 @@ public final class WrapInParens_Intention extends AbstractIntentionDescriptor im
       List<SNode> selectedNodes = editorContext.getSelectedNodes();
       SNode parens = SNodeOperations.insertPrevSiblingChild(node, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af8L, "jetbrains.mps.samples.ChemMastery.structure.Parens")));
       for (SNode n : selectedNodes) {
-        if (SNodeOperations.isInstanceOf(n, CONCEPTS.CompoundComponent$KM)) {
-          ListSequence.fromList(SLinkOperations.getChildren(parens, LINKS.elements$tvb0)).addElement(SNodeOperations.as(n, CONCEPTS.CompoundComponent$KM));
+        if (SNodeOperations.isInstanceOf(n, CONCEPTS.CompoundComponent$9d)) {
+          ListSequence.fromList(SLinkOperations.getChildren(parens, LINKS.elements$p7zr)).addElement(SNodeOperations.as(n, CONCEPTS.CompoundComponent$9d));
         }
       }
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, parens, SelectionManager.LAST_CELL, -1);
@@ -72,10 +72,10 @@ public final class WrapInParens_Intention extends AbstractIntentionDescriptor im
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elements$tvb0 = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af8L, 0x2b5828a8c1af4af9L, "elements");
+    /*package*/ static final SContainmentLink elements$p7zr = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af8L, 0x2b5828a8c1af4af9L, "elements");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CompoundComponent$KM = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af1L, "jetbrains.mps.samples.ChemMastery.structure.CompoundComponent");
+    /*package*/ static final SConcept CompoundComponent$9d = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af1L, "jetbrains.mps.samples.ChemMastery.structure.CompoundComponent");
   }
 }

@@ -35,10 +35,10 @@ public class ConceptEditorHelper {
       if (!(((SConcept) c).isRootable())) {
         continue;
       }
-      if (!(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(c), CONCEPTS.IConceptAspect$9g))) {
+      if (!(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(c), CONCEPTS.IConceptAspect$Z3))) {
         continue;
       }
-      if (((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.castConcept(c, CONCEPTS.IConceptAspect$9g)), CONCEPTS.IConceptAspect$9g, SMethodTrimmedId.create("canBeAppliedToNode", null, "7IH442d05tK"), node))) {
+      if (((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.castConcept(c, CONCEPTS.IConceptAspect$Z3)), CONCEPTS.IConceptAspect$Z3, SMethodTrimmedId.create("canBeAppliedToNode", null, "7IH442d05tK"), node))) {
         ListSequence.fromList(result).addElement(((SConcept) c));
       }
     }
@@ -62,6 +62,6 @@ public class ConceptEditorHelper {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IConceptAspect$9g = MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x24614259e94f0c84L, "jetbrains.mps.lang.structure.structure.IConceptAspect");
+    /*package*/ static final SInterfaceConcept IConceptAspect$Z3 = MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x24614259e94f0c84L, "jetbrains.mps.lang.structure.structure.IConceptAspect");
   }
 }

@@ -22,9 +22,9 @@ public class RemoveDefaultModifier_QuickFix extends QuickFix_Runtime {
     return "Remove the 'default' modifier";
   }
   public void execute(SNode node) {
-    ListSequence.fromList(SLinkOperations.getChildren(((SNode) RemoveDefaultModifier_QuickFix.this.getField("member")[0]), LINKS.modifiers$m0)).where(new IWhereFilter<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(((SNode) RemoveDefaultModifier_QuickFix.this.getField("member")[0]), LINKS.modifiers$F5MM)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.DefaultModifier$Z2);
+        return SNodeOperations.isInstanceOf(it, CONCEPTS.DefaultModifier$rO);
       }
     }).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
@@ -34,10 +34,10 @@ public class RemoveDefaultModifier_QuickFix extends QuickFix_Runtime {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modifiers$m0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
+    /*package*/ static final SContainmentLink modifiers$F5MM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DefaultModifier$Z2 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x40ed0df0ef40a332L, "jetbrains.mps.baseLanguage.structure.DefaultModifier");
+    /*package*/ static final SConcept DefaultModifier$rO = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x40ed0df0ef40a332L, "jetbrains.mps.baseLanguage.structure.DefaultModifier");
   }
 }

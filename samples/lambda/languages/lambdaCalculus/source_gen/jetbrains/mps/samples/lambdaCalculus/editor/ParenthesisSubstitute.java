@@ -27,7 +27,7 @@ public class ParenthesisSubstitute extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_smqx88_a(), CONCEPTS.ParenthesisExpression$d));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_smqx88_a(), CONCEPTS.ParenthesisExpression$8h));
     return result;
   }
 
@@ -72,7 +72,7 @@ public class ParenthesisSubstitute extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.ParenthesisExpression$d, context);
+        super(CONCEPTS.ParenthesisExpression$8h, context);
         _context = context;
       }
 
@@ -83,7 +83,7 @@ public class ParenthesisSubstitute extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.ParenthesisExpression$d, null);
+        SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.ParenthesisExpression$8h, null);
         return result;
       }
 
@@ -100,6 +100,6 @@ public class ParenthesisSubstitute extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ParenthesisExpression$d = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x3735fdad52687b59L, "jetbrains.mps.samples.lambdaCalculus.structure.ParenthesisExpression");
+    /*package*/ static final SConcept ParenthesisExpression$8h = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x3735fdad52687b59L, "jetbrains.mps.samples.lambdaCalculus.structure.ParenthesisExpression");
   }
 }

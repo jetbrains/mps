@@ -22,7 +22,7 @@ public class typeof_ConceptFunctionParameter_method_InferenceRule extends Abstra
   public typeof_ConceptFunctionParameter_method_InferenceRule() {
   }
   public void applyRule(final SNode parameterObject, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode expectedType = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(parameterObject, CONCEPTS.ParametersInformationQuery$_B, false, false), LINKS.type$BCNs);
+    SNode expectedType = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(parameterObject, CONCEPTS.ParametersInformationQuery$Le, false, false), LINKS.type$FUZ3);
     if (expectedType == null) {
       {
         SNode _nodeToCheck_1029348928467 = parameterObject;
@@ -38,7 +38,7 @@ public class typeof_ConceptFunctionParameter_method_InferenceRule extends Abstra
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConceptFunctionParameter_parameterObject$yI;
+    return CONCEPTS.ConceptFunctionParameter_parameterObject$Il;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -55,11 +55,11 @@ public class typeof_ConceptFunctionParameter_method_InferenceRule extends Abstra
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ParametersInformationQuery$_B = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6a67a319ce06acceL, "jetbrains.mps.lang.editor.structure.ParametersInformationQuery");
-    /*package*/ static final SConcept ConceptFunctionParameter_parameterObject$yI = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x950e7629b27d763L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_parameterObject");
+    /*package*/ static final SConcept ParametersInformationQuery$Le = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6a67a319ce06acceL, "jetbrains.mps.lang.editor.structure.ParametersInformationQuery");
+    /*package*/ static final SConcept ConceptFunctionParameter_parameterObject$Il = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x950e7629b27d763L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_parameterObject");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$BCNs = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6a67a319ce06acceL, 0x717f1070bf01cfc9L, "type");
+    /*package*/ static final SContainmentLink type$FUZ3 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6a67a319ce06acceL, 0x717f1070bf01cfc9L, "type");
   }
 }

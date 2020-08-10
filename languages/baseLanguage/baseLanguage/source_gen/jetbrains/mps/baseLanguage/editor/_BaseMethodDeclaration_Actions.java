@@ -22,7 +22,7 @@ public class _BaseMethodDeclaration_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeFactoryOperations.addNewChild(node, LINKS.throwsItem$X8vM, null);
+        SNodeFactoryOperations.addNewChild(node, LINKS.throwsItem$CdW$, null);
       }
 
     };
@@ -70,6 +70,6 @@ public class _BaseMethodDeclaration_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink throwsItem$X8vM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
+    /*package*/ static final SContainmentLink throwsItem$CdW$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
   }
 }

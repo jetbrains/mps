@@ -24,31 +24,31 @@ public class check_ChemEquation_NonTypesystemRule extends AbstractNonTypesystemR
   public check_ChemEquation_NonTypesystemRule() {
   }
   public void applyRule(final SNode chemEquation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(chemEquation, LINKS.left$nE_S)).isEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(chemEquation, LINKS.left$jiYj)).isEmpty()) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(chemEquation, "The list of chemicals entering the equation is empty", "r:b14d3745-fcf7-4a51-93f8-ba2328d28877(jetbrains.mps.samples.ChemMastery.typesystem)", "7995886393880688056", null, errorTarget);
       }
     }
-    if (ListSequence.fromList(SLinkOperations.getChildren(chemEquation, LINKS.right$nF3U)).isEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(chemEquation, LINKS.right$jjsl)).isEmpty()) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(chemEquation, "The list of chemicals produced by the equation is empty", "r:b14d3745-fcf7-4a51-93f8-ba2328d28877(jetbrains.mps.samples.ChemMastery.typesystem)", "7995886393880688207", null, errorTarget);
       }
     }
-    if (ListSequence.fromList(SLinkOperations.getChildren(chemEquation, LINKS.left$nE_S)).isNotEmpty() && ListSequence.fromList(SLinkOperations.getChildren(chemEquation, LINKS.right$nF3U)).isNotEmpty()) {
-      ElementSummary sumL = new ElementSummary(SNodeOperations.ofConcept(SLinkOperations.getChildren(chemEquation, LINKS.left$nE_S), CONCEPTS.Compound$6W));
-      ElementSummary sumR = new ElementSummary(SNodeOperations.ofConcept(SLinkOperations.getChildren(chemEquation, LINKS.right$nF3U), CONCEPTS.Compound$6W));
+    if (ListSequence.fromList(SLinkOperations.getChildren(chemEquation, LINKS.left$jiYj)).isNotEmpty() && ListSequence.fromList(SLinkOperations.getChildren(chemEquation, LINKS.right$jjsl)).isNotEmpty()) {
+      ElementSummary sumL = new ElementSummary(SNodeOperations.ofConcept(SLinkOperations.getChildren(chemEquation, LINKS.left$jiYj), CONCEPTS.Compound$vn));
+      ElementSummary sumR = new ElementSummary(SNodeOperations.ofConcept(SLinkOperations.getChildren(chemEquation, LINKS.right$jjsl), CONCEPTS.Compound$vn));
       if (!(sumL.isSameAs(sumR))) {
         {
-          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.condition$oigW);
+          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.condition$jUDn);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(chemEquation, sumL.comparisonReport(sumR), "r:b14d3745-fcf7-4a51-93f8-ba2328d28877(jetbrains.mps.samples.ChemMastery.typesystem)", "3709490473851308833", null, errorTarget);
         }
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ChemEquation$$Y;
+    return CONCEPTS.ChemEquation$Xp;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -58,16 +58,16 @@ public class check_ChemEquation_NonTypesystemRule extends AbstractNonTypesystemR
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink left$nE_S = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184fab9faa28L, "left");
-    /*package*/ static final SContainmentLink right$nF3U = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184fab9faa2aL, "right");
+    /*package*/ static final SContainmentLink left$jiYj = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184fab9faa28L, "left");
+    /*package*/ static final SContainmentLink right$jjsl = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184fab9faa2aL, "right");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Compound$6W = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, "jetbrains.mps.samples.ChemMastery.structure.Compound");
-    /*package*/ static final SConcept ChemEquation$$Y = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, "jetbrains.mps.samples.ChemMastery.structure.ChemEquation");
+    /*package*/ static final SConcept Compound$vn = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, "jetbrains.mps.samples.ChemMastery.structure.Compound");
+    /*package*/ static final SConcept ChemEquation$Xp = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, "jetbrains.mps.samples.ChemMastery.structure.ChemEquation");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty condition$oigW = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184faba451a7L, "condition");
+    /*package*/ static final SProperty condition$jUDn = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184faba451a7L, "condition");
   }
 }

@@ -36,7 +36,7 @@ public class FacetReferenceExpression_SubstituteMenu extends SubstituteMenuBase 
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_micvva_a(), CONCEPTS.FacetReferenceExpression$JM));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_micvva_a(), CONCEPTS.FacetReferenceExpression$oE));
     return result;
   }
 
@@ -73,7 +73,7 @@ public class FacetReferenceExpression_SubstituteMenu extends SubstituteMenuBase 
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-      return SModelOperations.nodesIncludingImported(_context.getModel(), CONCEPTS.FacetDeclaration$al);
+      return SModelOperations.nodesIncludingImported(_context.getModel(), CONCEPTS.FacetDeclaration$Nd);
     }
     private class SMP_Action_micvva_a0 extends SingleItemSubstituteMenuPart {
       private final SNode myParameterObject;
@@ -108,7 +108,7 @@ public class FacetReferenceExpression_SubstituteMenu extends SubstituteMenuBase 
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.FacetReferenceExpression$JM, context);
+          super(CONCEPTS.FacetReferenceExpression$oE, context);
           _context = context;
         }
 
@@ -128,7 +128,7 @@ public class FacetReferenceExpression_SubstituteMenu extends SubstituteMenuBase 
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, CONCEPTS.FacetReferenceExpression$JM, getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.FacetReferenceExpression$oE, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -141,12 +141,12 @@ public class FacetReferenceExpression_SubstituteMenu extends SubstituteMenuBase 
         @Nullable
         @Override
         public String getMatchingText(@NotNull String pattern) {
-          return "&" + SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v);
+          return "&" + SPropertyOperations.getString(myParameterObject, PROPS.name$MnvL);
         }
         @Nullable
         @Override
         public String getDescriptionText(@NotNull String pattern) {
-          return "reference to facet " + SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v);
+          return "reference to facet " + SPropertyOperations.getString(myParameterObject, PROPS.name$MnvL);
         }
       }
     }
@@ -164,11 +164,11 @@ public class FacetReferenceExpression_SubstituteMenu extends SubstituteMenuBase 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept FacetReferenceExpression$JM = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x639ef64ff4850bb0L, "jetbrains.mps.make.facet.structure.FacetReferenceExpression");
-    /*package*/ static final SConcept FacetDeclaration$al = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, "jetbrains.mps.make.facet.structure.FacetDeclaration");
+    /*package*/ static final SConcept FacetReferenceExpression$oE = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x639ef64ff4850bb0L, "jetbrains.mps.make.facet.structure.FacetReferenceExpression");
+    /*package*/ static final SConcept FacetDeclaration$Nd = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, "jetbrains.mps.make.facet.structure.FacetDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

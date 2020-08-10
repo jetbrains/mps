@@ -114,7 +114,7 @@ public class NonTypesystemRule_backToAll extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SPropertyOperations.assign(_context.getNode(), PROPS.overrides$sqyj, true);
+        SPropertyOperations.assign(_context.getNode(), PROPS.overrides$PgO9, true);
       }
 
 
@@ -157,7 +157,7 @@ public class NonTypesystemRule_backToAll extends TransformationMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return CONCEPTS.CheckingRuleReference$lK;
+      return CONCEPTS.CheckingRuleReference$BA;
     }
 
 
@@ -177,7 +177,7 @@ public class NonTypesystemRule_backToAll extends TransformationMenuBase {
       @Override
       public void execute(@NotNull String pattern) {
         SNode createdNode = getSubstituteItem().createNode(pattern);
-        ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.overridenRules$Ext1)).addElement(createdNode);
+        ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.overridenRules$3nIR)).addElement(createdNode);
       }
 
       @Override
@@ -204,14 +204,14 @@ public class NonTypesystemRule_backToAll extends TransformationMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty overrides$sqyj = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x116484991d1L, "overrides");
+    /*package*/ static final SProperty overrides$PgO9 = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x116484991d1L, "overrides");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CheckingRuleReference$lK = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x2054bec22d01782eL, "jetbrains.mps.lang.typesystem.structure.CheckingRuleReference");
+    /*package*/ static final SConcept CheckingRuleReference$BA = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x2054bec22d01782eL, "jetbrains.mps.lang.typesystem.structure.CheckingRuleReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink overridenRules$Ext1 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164853e0faL, 0x2054bec22d32e328L, "overridenRules");
+    /*package*/ static final SContainmentLink overridenRules$3nIR = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164853e0faL, 0x2054bec22d32e328L, "overridenRules");
   }
 }

@@ -65,11 +65,11 @@ public class ClassLikeMenuAdjustment_AppPluginPart extends ApplicationPluginPart
               }
             }).where(new NotNullWhereFilter<SModel>()).translate(new ITranslator2<SModel, SNode>() {
               public Iterable<SNode> translate(SModel it) {
-                return SModelOperations.roots(((SModel) it), CONCEPTS.DSLDescriptor$dS);
+                return SModelOperations.roots(((SModel) it), CONCEPTS.DSLDescriptor$zD);
               }
             }).select(new ISelector<SNode, SNode>() {
               public SNode select(SNode it) {
-                return SLinkOperations.getTarget(it, LINKS.preferredConcept$zqJa);
+                return SLinkOperations.getTarget(it, LINKS.preferredConcept$1q4V);
               }
             }).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
@@ -114,10 +114,10 @@ public class ClassLikeMenuAdjustment_AppPluginPart extends ApplicationPluginPart
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DSLDescriptor$dS = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLDescriptor");
+    /*package*/ static final SConcept DSLDescriptor$zD = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLDescriptor");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink preferredConcept$zqJa = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, 0x1955e1ca83e5ed92L, "preferredConcept");
+    /*package*/ static final SReferenceLink preferredConcept$1q4V = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, 0x1955e1ca83e5ed92L, "preferredConcept");
   }
 }

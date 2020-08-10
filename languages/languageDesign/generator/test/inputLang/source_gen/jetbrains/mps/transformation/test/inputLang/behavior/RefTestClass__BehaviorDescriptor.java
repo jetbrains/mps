@@ -39,8 +39,8 @@ public final class RefTestClass__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.RefTestMethod$F5)) {
-      return CompositeScope.createComposite(SimpleRoleScope.forNamedElements(__thisNode__, LINKS.methods$uinY), (SLinkOperations.getTarget(__thisNode__, LINKS.extends$tP31) != null ? ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.extends$tP31), kind, __thisNode__) : null));
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.RefTestMethod$Oc)) {
+      return CompositeScope.createComposite(SimpleRoleScope.forNamedElements(__thisNode__, LINKS.methods$YPx5), (SLinkOperations.getTarget(__thisNode__, LINKS.extends$Yoc8) != null ? ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.extends$Yoc8), kind, __thisNode__) : null));
     }
     return null;
   }
@@ -92,11 +92,11 @@ public final class RefTestClass__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RefTestMethod$F5 = MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x2e0420fbd0995dfeL, "jetbrains.mps.transformation.test.inputLang.structure.RefTestMethod");
+    /*package*/ static final SConcept RefTestMethod$Oc = MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x2e0420fbd0995dfeL, "jetbrains.mps.transformation.test.inputLang.structure.RefTestMethod");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink methods$uinY = MetaAdapterFactory.getContainmentLink(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x2e0420fbd0995dfbL, 0x2e0420fbd0995e26L, "methods");
-    /*package*/ static final SReferenceLink extends$tP31 = MetaAdapterFactory.getReferenceLink(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x2e0420fbd0995dfbL, 0x2e0420fbd0995dfdL, "extends");
+    /*package*/ static final SContainmentLink methods$YPx5 = MetaAdapterFactory.getContainmentLink(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x2e0420fbd0995dfbL, 0x2e0420fbd0995e26L, "methods");
+    /*package*/ static final SReferenceLink extends$Yoc8 = MetaAdapterFactory.getReferenceLink(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x2e0420fbd0995dfbL, 0x2e0420fbd0995dfdL, "extends");
   }
 }

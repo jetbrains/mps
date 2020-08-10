@@ -36,7 +36,7 @@ public final class CreateInternalLabel_Intention extends AbstractIntentionDescri
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (SNodeOperations.isInstanceOf(node, CONCEPTS.BreakStatement$w0) && isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.BreakStatement$w0), PROPS.label$IMss))) || (SNodeOperations.isInstanceOf(node, CONCEPTS.ContinueStatement$jc) && isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.ContinueStatement$jc), PROPS.label$NAt4))) || (SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractLoopStatement$wH) && isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.AbstractLoopStatement$wH), PROPS.label$Gzgx))) || (SNodeOperations.isInstanceOf(node, CONCEPTS.SwitchStatement$S1) && isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.SwitchStatement$S1), PROPS.label$OGwd)));
+    return (SNodeOperations.isInstanceOf(node, CONCEPTS.BreakStatement$WM) && isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.BreakStatement$WM), PROPS.label$pRTe))) || (SNodeOperations.isInstanceOf(node, CONCEPTS.ContinueStatement$JY) && isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.ContinueStatement$JY), PROPS.label$uFTQ))) || (SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractLoopStatement$Xv) && isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.AbstractLoopStatement$Xv), PROPS.label$nCHj))) || (SNodeOperations.isInstanceOf(node, CONCEPTS.SwitchStatement$kN) && isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.SwitchStatement$kN), PROPS.label$vLWZ)));
   }
   @Override
   public boolean isSurroundWith() {
@@ -58,14 +58,14 @@ public final class CreateInternalLabel_Intention extends AbstractIntentionDescri
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       String value = "label";
-      if (SNodeOperations.isInstanceOf(node, CONCEPTS.BreakStatement$w0)) {
-        SPropertyOperations.set(SNodeOperations.cast(node, CONCEPTS.BreakStatement$w0), PROPS.label$IMss, value);
-      } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.ContinueStatement$jc)) {
-        SPropertyOperations.set(SNodeOperations.cast(node, CONCEPTS.ContinueStatement$jc), PROPS.label$NAt4, value);
-      } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractLoopStatement$wH)) {
-        SPropertyOperations.set(SNodeOperations.cast(node, CONCEPTS.AbstractLoopStatement$wH), PROPS.label$Gzgx, value);
-      } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.SwitchStatement$S1)) {
-        SPropertyOperations.set(SNodeOperations.cast(node, CONCEPTS.SwitchStatement$S1), PROPS.label$OGwd, value);
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.BreakStatement$WM)) {
+        SPropertyOperations.set(SNodeOperations.cast(node, CONCEPTS.BreakStatement$WM), PROPS.label$pRTe, value);
+      } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.ContinueStatement$JY)) {
+        SPropertyOperations.set(SNodeOperations.cast(node, CONCEPTS.ContinueStatement$JY), PROPS.label$uFTQ, value);
+      } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractLoopStatement$Xv)) {
+        SPropertyOperations.set(SNodeOperations.cast(node, CONCEPTS.AbstractLoopStatement$Xv), PROPS.label$nCHj, value);
+      } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.SwitchStatement$kN)) {
+        SPropertyOperations.set(SNodeOperations.cast(node, CONCEPTS.SwitchStatement$kN), PROPS.label$vLWZ, value);
       }
     }
     @Override
@@ -78,16 +78,16 @@ public final class CreateInternalLabel_Intention extends AbstractIntentionDescri
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BreakStatement$w0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, "jetbrains.mps.baseLanguage.structure.BreakStatement");
-    /*package*/ static final SConcept ContinueStatement$jc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbf3043726L, "jetbrains.mps.baseLanguage.structure.ContinueStatement");
-    /*package*/ static final SConcept AbstractLoopStatement$wH = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, "jetbrains.mps.baseLanguage.structure.AbstractLoopStatement");
-    /*package*/ static final SConcept SwitchStatement$S1 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, "jetbrains.mps.baseLanguage.structure.SwitchStatement");
+    /*package*/ static final SConcept BreakStatement$WM = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, "jetbrains.mps.baseLanguage.structure.BreakStatement");
+    /*package*/ static final SConcept ContinueStatement$JY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbf3043726L, "jetbrains.mps.baseLanguage.structure.ContinueStatement");
+    /*package*/ static final SConcept AbstractLoopStatement$Xv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, "jetbrains.mps.baseLanguage.structure.AbstractLoopStatement");
+    /*package*/ static final SConcept SwitchStatement$kN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, "jetbrains.mps.baseLanguage.structure.SwitchStatement");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty label$IMss = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, 0x11745bfb2d8L, "label");
-    /*package*/ static final SProperty label$NAt4 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbf3043726L, 0x11745fca58eL, "label");
-    /*package*/ static final SProperty label$Gzgx = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x11745b5371dL, "label");
-    /*package*/ static final SProperty label$OGwd = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x117b7e94b9bL, "label");
+    /*package*/ static final SProperty label$pRTe = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, 0x11745bfb2d8L, "label");
+    /*package*/ static final SProperty label$uFTQ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbf3043726L, 0x11745fca58eL, "label");
+    /*package*/ static final SProperty label$nCHj = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x11745b5371dL, "label");
+    /*package*/ static final SProperty label$vLWZ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x117b7e94b9bL, "label");
   }
 }

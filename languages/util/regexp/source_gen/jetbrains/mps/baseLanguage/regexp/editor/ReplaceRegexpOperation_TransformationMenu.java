@@ -67,7 +67,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.ReplaceRegexpOperation$ia)) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.ReplaceRegexpOperation$UY)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -94,7 +94,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
   public class TMP_Group_z6skvi_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.globalReplace$cNh));
+      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.globalReplace$NEs5));
     }
 
     @NotNull
@@ -110,7 +110,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_z6skvi_a0b(), CONCEPTS.InlineRegexpExpression$Xy));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_z6skvi_a0b(), CONCEPTS.InlineRegexpExpression$Am));
     }
     private class TMP_Action_z6skvi_a0b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -150,7 +150,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.globalReplace$cNh, true);
+          SPropertyOperations.assign(_context.getNode(), PROPS.globalReplace$NEs5, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -158,7 +158,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.InlineRegexpExpression$Xy;
+          return CONCEPTS.InlineRegexpExpression$Am;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
@@ -173,7 +173,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.InlineRegexpExpression$Xy;
+          SAbstractConcept outputConcept = CONCEPTS.InlineRegexpExpression$Am;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -186,7 +186,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
   public class TMP_Group_z6skvi_b1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.multiLine$clf));
+      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.multiLine$NDY3));
     }
 
     @NotNull
@@ -202,7 +202,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_z6skvi_a1b(), CONCEPTS.InlineRegexpExpression$Xy));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_z6skvi_a1b(), CONCEPTS.InlineRegexpExpression$Am));
     }
     private class TMP_Action_z6skvi_a1b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -242,7 +242,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.multiLine$clf, true);
+          SPropertyOperations.assign(_context.getNode(), PROPS.multiLine$NDY3, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -250,7 +250,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.InlineRegexpExpression$Xy;
+          return CONCEPTS.InlineRegexpExpression$Am;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
@@ -265,7 +265,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.InlineRegexpExpression$Xy;
+          SAbstractConcept outputConcept = CONCEPTS.InlineRegexpExpression$Am;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -278,7 +278,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
   public class TMP_Group_z6skvi_c1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.dotAll$c6e));
+      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.dotAll$NDJ2));
     }
 
     @NotNull
@@ -294,7 +294,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_z6skvi_a2b(), CONCEPTS.InlineRegexpExpression$Xy));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_z6skvi_a2b(), CONCEPTS.InlineRegexpExpression$Am));
     }
     private class TMP_Action_z6skvi_a2b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -334,7 +334,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.dotAll$c6e, true);
+          SPropertyOperations.assign(_context.getNode(), PROPS.dotAll$NDJ2, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -342,7 +342,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.InlineRegexpExpression$Xy;
+          return CONCEPTS.InlineRegexpExpression$Am;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
@@ -357,7 +357,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.InlineRegexpExpression$Xy;
+          SAbstractConcept outputConcept = CONCEPTS.InlineRegexpExpression$Am;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -370,7 +370,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
   public class TMP_Group_z6skvi_d1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.caseInsensitive$c$g));
+      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.caseInsensitive$NEd4));
     }
 
     @NotNull
@@ -386,7 +386,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_z6skvi_a3b(), CONCEPTS.InlineRegexpExpression$Xy));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_z6skvi_a3b(), CONCEPTS.InlineRegexpExpression$Am));
     }
     private class TMP_Action_z6skvi_a3b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -426,7 +426,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.caseInsensitive$c$g, true);
+          SPropertyOperations.assign(_context.getNode(), PROPS.caseInsensitive$NEd4, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -434,7 +434,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.InlineRegexpExpression$Xy;
+          return CONCEPTS.InlineRegexpExpression$Am;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
@@ -449,7 +449,7 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.InlineRegexpExpression$Xy;
+          SAbstractConcept outputConcept = CONCEPTS.InlineRegexpExpression$Am;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -461,14 +461,14 @@ public class ReplaceRegexpOperation_TransformationMenu extends TransformationMen
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ReplaceRegexpOperation$ia = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, "jetbrains.mps.baseLanguage.regexp.structure.ReplaceRegexpOperation");
-    /*package*/ static final SConcept InlineRegexpExpression$Xy = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117648961dL, "jetbrains.mps.baseLanguage.regexp.structure.InlineRegexpExpression");
+    /*package*/ static final SConcept ReplaceRegexpOperation$UY = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, "jetbrains.mps.baseLanguage.regexp.structure.ReplaceRegexpOperation");
+    /*package*/ static final SConcept InlineRegexpExpression$Am = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117648961dL, "jetbrains.mps.baseLanguage.regexp.structure.InlineRegexpExpression");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty globalReplace$cNh = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, 0x34ae970c1924ee69L, "globalReplace");
-    /*package*/ static final SProperty multiLine$clf = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, 0x34ae970c1924ee67L, "multiLine");
-    /*package*/ static final SProperty dotAll$c6e = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, 0x34ae970c1924ee66L, "dotAll");
-    /*package*/ static final SProperty caseInsensitive$c$g = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, 0x34ae970c1924ee68L, "caseInsensitive");
+    /*package*/ static final SProperty globalReplace$NEs5 = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, 0x34ae970c1924ee69L, "globalReplace");
+    /*package*/ static final SProperty multiLine$NDY3 = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, 0x34ae970c1924ee67L, "multiLine");
+    /*package*/ static final SProperty dotAll$NDJ2 = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, 0x34ae970c1924ee66L, "dotAll");
+    /*package*/ static final SProperty caseInsensitive$NEd4 = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, 0x34ae970c1924ee68L, "caseInsensitive");
   }
 }

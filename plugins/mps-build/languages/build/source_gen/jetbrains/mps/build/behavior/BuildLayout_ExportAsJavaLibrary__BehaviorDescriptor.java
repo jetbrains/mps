@@ -35,8 +35,8 @@ public final class BuildLayout_ExportAsJavaLibrary__BehaviorDescriptor extends B
   /*package*/ static boolean exports_id5FtnUVJQES1(@NotNull SNode __thisNode__, Object object) {
     if (object instanceof SNode) {
       SNode node = (SNode) object;
-      if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildSource_JavaLibrary$zR)) {
-        return node == SLinkOperations.getTarget(__thisNode__, LINKS.library$CBAy);
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildSource_JavaLibrary$6q)) {
+        return node == SLinkOperations.getTarget(__thisNode__, LINKS.library$Ok95);
       }
     }
     return false;
@@ -89,10 +89,10 @@ public final class BuildLayout_ExportAsJavaLibrary__BehaviorDescriptor extends B
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink library$CBAy = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x286d67dde534f69bL, 0x286d67dde534f69eL, "library");
+    /*package*/ static final SReferenceLink library$Ok95 = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x286d67dde534f69bL, 0x286d67dde534f69eL, "library");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildSource_JavaLibrary$zR = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x540febaa6144b873L, "jetbrains.mps.build.structure.BuildSource_JavaLibrary");
+    /*package*/ static final SConcept BuildSource_JavaLibrary$6q = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x540febaa6144b873L, "jetbrains.mps.build.structure.BuildSource_JavaLibrary");
   }
 }

@@ -21,7 +21,7 @@ public class Typeof_ToolType_Instanceof_BaseTool_SubtypingRule extends Subtyping
     return _quotation_createNode_dttelk_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ToolType$FM;
+    return CONCEPTS.ToolType$CP;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,6 +38,6 @@ public class Typeof_ToolType_Instanceof_BaseTool_SubtypingRule extends Subtyping
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ToolType$FM = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11961ebbf24L, "jetbrains.mps.lang.plugin.structure.ToolType");
+    /*package*/ static final SConcept ToolType$CP = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11961ebbf24L, "jetbrains.mps.lang.plugin.structure.ToolType");
   }
 }

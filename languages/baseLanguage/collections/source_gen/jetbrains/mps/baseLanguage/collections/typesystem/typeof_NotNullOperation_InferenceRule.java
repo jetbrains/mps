@@ -33,7 +33,7 @@ public class typeof_NotNullOperation_InferenceRule extends AbstractInferenceRule
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SelectNotNullOperation$lJ;
+    return CONCEPTS.SelectNotNullOperation$$2;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -65,6 +65,6 @@ public class typeof_NotNullOperation_InferenceRule extends AbstractInferenceRule
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SelectNotNullOperation$lJ = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x6f7b007030d23aL, "jetbrains.mps.baseLanguage.collections.structure.SelectNotNullOperation");
+    /*package*/ static final SConcept SelectNotNullOperation$$2 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x6f7b007030d23aL, "jetbrains.mps.baseLanguage.collections.structure.SelectNotNullOperation");
   }
 }

@@ -24,7 +24,7 @@ public class typeof_Reference_IsDynamic_InferenceRule extends AbstractInferenceR
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Reference_IsDynamic$mj;
+    return CONCEPTS.Reference_IsDynamic$nN;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -33,12 +33,12 @@ public class typeof_Reference_IsDynamic_InferenceRule extends AbstractInferenceR
     return false;
   }
   private static SNode createBooleanType_2timms_a1a0c0a0b() {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BooleanType$8G);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BooleanType$_u);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Reference_IsDynamic$mj = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x545f839f2167c7dbL, "jetbrains.mps.lang.smodel.structure.Reference_IsDynamic");
-    /*package*/ static final SConcept BooleanType$8G = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d6513eL, "jetbrains.mps.baseLanguage.structure.BooleanType");
+    /*package*/ static final SConcept Reference_IsDynamic$nN = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x545f839f2167c7dbL, "jetbrains.mps.lang.smodel.structure.Reference_IsDynamic");
+    /*package*/ static final SConcept BooleanType$_u = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d6513eL, "jetbrains.mps.baseLanguage.structure.BooleanType");
   }
 }

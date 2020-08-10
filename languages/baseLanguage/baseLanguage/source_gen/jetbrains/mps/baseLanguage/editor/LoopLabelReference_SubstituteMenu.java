@@ -28,7 +28,7 @@ public class LoopLabelReference_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_6lvr1q_a(), CONCEPTS.LoopLabelReference$20));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_6lvr1q_a(), CONCEPTS.LoopLabelReference$uM));
     result.add(new SMP_Subconcepts_6lvr1q_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class LoopLabelReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_6lvr1q_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.LoopLabelReference$20, LINKS.loopLabel$Mx00);
+      super((SAbstractConcept) CONCEPTS.LoopLabelReference$uM, LINKS.loopLabel$tAsM);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class LoopLabelReference_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_6lvr1q_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.LoopLabelReference$20);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.LoopLabelReference$uM);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class LoopLabelReference_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LoopLabelReference$20 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9555129L, "jetbrains.mps.baseLanguage.structure.LoopLabelReference");
+    /*package*/ static final SConcept LoopLabelReference$uM = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9555129L, "jetbrains.mps.baseLanguage.structure.LoopLabelReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink loopLabel$Mx00 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9555129L, 0x50c493bf955512aL, "loopLabel");
+    /*package*/ static final SReferenceLink loopLabel$tAsM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9555129L, 0x50c493bf955512aL, "loopLabel");
   }
 }

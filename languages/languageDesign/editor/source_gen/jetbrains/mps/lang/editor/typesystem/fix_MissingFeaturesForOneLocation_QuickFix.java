@@ -24,18 +24,18 @@ public class fix_MissingFeaturesForOneLocation_QuickFix extends QuickFix_Runtime
     return "Add missing features";
   }
   public void execute(SNode node) {
-    SNode part = SNodeOperations.cast(node, CONCEPTS.IExtensibleTransformationMenuPart$sZ);
+    SNode part = SNodeOperations.cast(node, CONCEPTS.IExtensibleTransformationMenuPart$CA);
 
     for (SConcept c : Sequence.fromIterable(IExtensibleTransformationMenuPart__BehaviorDescriptor.getMissingFeatures_id6kJcyCQjeiA.invoke(part))) {
-      ListSequence.fromList(SLinkOperations.getChildren(part, LINKS.features$VYBA)).addElement(SNodeFactoryOperations.createNewNode(c, null));
+      ListSequence.fromList(SLinkOperations.getChildren(part, LINKS.features$gNd)).addElement(SNodeFactoryOperations.createNewNode(c, null));
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IExtensibleTransformationMenuPart$sZ = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a364c9a28L, "jetbrains.mps.lang.editor.structure.IExtensibleTransformationMenuPart");
+    /*package*/ static final SInterfaceConcept IExtensibleTransformationMenuPart$CA = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a364c9a28L, "jetbrains.mps.lang.editor.structure.IExtensibleTransformationMenuPart");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink features$VYBA = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a364c9a28L, 0x7c45559defbb3517L, "features");
+    /*package*/ static final SContainmentLink features$gNd = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a364c9a28L, 0x7c45559defbb3517L, "features");
   }
 }

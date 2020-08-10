@@ -56,10 +56,10 @@
       <node id="2276521200488660024" at="132,40,133,19" concept="6" />
       <node id="2276521200488994703" at="135,52,136,40" concept="6" />
       <node id="2276521200488994702" at="138,56,139,45" concept="6" />
-      <node id="2276521200488660024" at="143,0,144,0" concept="9" trace="elements$cK1w" />
-      <node id="2276521200488660024" at="147,0,148,0" concept="9" trace="Word$AM" />
-      <node id="2276521200488660024" at="148,0,149,0" concept="9" trace="TextElement$Ue" />
-      <node id="2276521200488660024" at="152,0,153,0" concept="9" trace="value$bjp0" />
+      <node id="2276521200488660024" at="143,0,144,0" concept="9" trace="elements$_j45" />
+      <node id="2276521200488660024" at="147,0,148,0" concept="9" trace="Word$Dn" />
+      <node id="2276521200488660024" at="148,0,149,0" concept="9" trace="TextElement$WN" />
+      <node id="2276521200488660024" at="152,0,153,0" concept="9" trace="value$zQr_" />
       <node id="2276521200488660024" at="43,0,45,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="2276521200488660024" at="82,0,84,0" concept="0" trace="Line__BehaviorDescriptor#()V" />
       <node id="2276521200488660024" at="46,0,49,0" concept="10" trace="merge_id1YnOZxALrLu#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -256,7 +256,7 @@
       <node id="281208147596183387" at="68,14,69,58" concept="12" />
       <node id="281208147596183387" at="75,48,76,22" concept="6" />
       <node id="281208147596183387" at="81,40,82,19" concept="6" />
-      <node id="281208147596183387" at="86,0,87,0" concept="9" trace="node$o9GP" />
+      <node id="281208147596183387" at="86,0,87,0" concept="9" trace="node$KGJq" />
       <node id="281208147596183387" at="31,0,33,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="281208147596183387" at="39,0,41,0" concept="0" trace="NodeWrapperElement__BehaviorDescriptor#()V" />
       <node id="281208147596183387" at="49,49,52,5" concept="3" />
@@ -343,7 +343,7 @@
       <node id="3684551967319809401" at="96,48,97,22" concept="6" />
       <node id="3684551967319809401" at="102,40,103,19" concept="6" />
       <node id="6250351953466683040" at="105,55,106,43" concept="6" />
-      <node id="3684551967319809401" at="110,0,111,0" concept="9" trace="value$bjp0" />
+      <node id="3684551967319809401" at="110,0,111,0" concept="9" trace="value$zQr_" />
       <node id="3684551967319809401" at="58,0,60,0" concept="0" trace="Word__BehaviorDescriptor#()V" />
       <node id="3684551967319809401" at="33,0,36,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1732176556415545400" at="39,97,42,7" concept="3" />
@@ -506,7 +506,7 @@
       <node id="7723470226555665535" at="66,14,67,58" concept="12" />
       <node id="7723470226555665535" at="73,48,74,22" concept="6" />
       <node id="7723470226555665535" at="79,40,80,19" concept="6" />
-      <node id="7723470226555665535" at="84,0,85,0" concept="9" trace="lines$y1jy" />
+      <node id="7723470226555665535" at="84,0,85,0" concept="9" trace="lines$U$m7" />
       <node id="7723470226555665535" at="30,0,32,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="7723470226555665535" at="37,0,39,0" concept="0" trace="Text__BehaviorDescriptor#()V" />
       <node id="7723470226555665535" at="33,0,36,0" concept="10" trace="getLines_id6GJhO0n1Xys#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/util/List;" />

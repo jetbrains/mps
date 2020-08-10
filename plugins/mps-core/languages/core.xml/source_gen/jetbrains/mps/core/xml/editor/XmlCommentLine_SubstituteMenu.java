@@ -37,9 +37,9 @@ public class XmlCommentLine_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_cdpt4e_a(), CONCEPTS.XmlCommentLine$tE));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_cdpt4e_a(), CONCEPTS.XmlCommentLine$S9));
     result.add(new SMP_Subconcepts_cdpt4e_b());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.XmlCommentLine$tE) {
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.XmlCommentLine$S9) {
 
       @NotNull
       @Override
@@ -52,7 +52,7 @@ public class XmlCommentLine_SubstituteMenu extends SubstituteMenuBase {
           context.getEditorMenuTrace().popTraceInfo();
         }
       }
-    }, CONCEPTS.XmlCommentLine$tE));
+    }, CONCEPTS.XmlCommentLine$S9));
     return result;
   }
 
@@ -97,7 +97,7 @@ public class XmlCommentLine_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.XmlCommentLine$tE, context);
+        super(CONCEPTS.XmlCommentLine$S9, context);
         _context = context;
       }
 
@@ -108,8 +108,8 @@ public class XmlCommentLine_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode val = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.XmlCommentLine$tE, null);
-        SPropertyOperations.assign(val, PROPS.text$9eP0, pattern);
+        SNode val = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.XmlCommentLine$S9, null);
+        SPropertyOperations.assign(val, PROPS.text$2Bfv, pattern);
         return val;
       }
 
@@ -132,7 +132,7 @@ public class XmlCommentLine_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_cdpt4e_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.XmlCommentLine$tE);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.XmlCommentLine$S9);
     }
     @NotNull
     @Override
@@ -153,10 +153,10 @@ public class XmlCommentLine_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XmlCommentLine$tE = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9bec5eL, "jetbrains.mps.core.xml.structure.XmlCommentLine");
+    /*package*/ static final SConcept XmlCommentLine$S9 = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9bec5eL, "jetbrains.mps.core.xml.structure.XmlCommentLine");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$9eP0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9bec5eL, 0x16838b3fce9bec5fL, "text");
+    /*package*/ static final SProperty text$2Bfv = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9bec5eL, 0x16838b3fce9bec5fL, "text");
   }
 }

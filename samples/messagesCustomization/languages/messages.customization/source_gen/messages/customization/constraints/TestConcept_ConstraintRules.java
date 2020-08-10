@@ -55,7 +55,7 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
 
     @Override
     public boolean check(@NotNull CanBeRootContext context) {
-      return ListSequence.fromList(SModelOperations.roots(context.getModel(), CONCEPTS.AuxConcept$gq)).isEmpty();
+      return ListSequence.fromList(SModelOperations.roots(context.getModel(), CONCEPTS.AuxConcept$kR)).isEmpty();
     }
 
     @Override
@@ -88,7 +88,7 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
     }
 
     public static boolean isDefined(@NotNull CanBeAncestorContext context) {
-      return SNodeOperations.isInstanceOf(context.getDescendantNode(), CONCEPTS.TestConcept$83);
+      return SNodeOperations.isInstanceOf(context.getDescendantNode(), CONCEPTS.TestConcept$cw);
     }
   }
 
@@ -124,11 +124,11 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
       if (!(isDefined(context))) {
         return null;
       }
-      return (String) SPropertyOperations.getString(SNodeOperations.cast(context.getChildNode(), CONCEPTS.INamedConcept$nV), PROPS.name$lA7v);
+      return (String) SPropertyOperations.getString(SNodeOperations.cast(context.getChildNode(), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL);
     }
 
     public static boolean isDefined(@NotNull ContainmentContext context) {
-      return SNodeOperations.isInstanceOf(context.getChildNode(), CONCEPTS.INamedConcept$nV);
+      return SNodeOperations.isInstanceOf(context.getChildNode(), CONCEPTS.INamedConcept$Kd);
     }
   }
 
@@ -164,7 +164,7 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
       if (!(isDefined(context))) {
         return null;
       }
-      return (SNode) SNodeOperations.cast(SNodeOperations.getContainingRoot(context.getParentNode()), CONCEPTS.INamedConcept$nV);
+      return (SNode) SNodeOperations.cast(SNodeOperations.getContainingRoot(context.getParentNode()), CONCEPTS.INamedConcept$Kd);
     }
 
     public static boolean isDefined(@NotNull ContainmentContext context) {
@@ -182,7 +182,7 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
 
     @Override
     public boolean check(@NotNull ContainmentContext context) {
-      return Def_Root3071492597344669935.getValue(context) != null && (SPropertyOperations.getString(Def_Root3071492597344669935.getValue(context), PROPS.name$lA7v).startsWith("Rules") || SPropertyOperations.getString(Def_Root3071492597344669935.getValue(context), PROPS.name$lA7v).startsWith("Feedback"));
+      return Def_Root3071492597344669935.getValue(context) != null && (SPropertyOperations.getString(Def_Root3071492597344669935.getValue(context), PROPS.name$MnvL).startsWith("Rules") || SPropertyOperations.getString(Def_Root3071492597344669935.getValue(context), PROPS.name$MnvL).startsWith("Feedback"));
     }
 
     @Override
@@ -196,12 +196,12 @@ public final class TestConcept_ConstraintRules extends BaseRulesConstraintsDescr
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AuxConcept$gq = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x2807c18666f87283L, "messages.customization.structure.AuxConcept");
-    /*package*/ static final SConcept TestConcept$83 = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "messages.customization.structure.TestConcept");
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept AuxConcept$kR = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x2807c18666f87283L, "messages.customization.structure.AuxConcept");
+    /*package*/ static final SConcept TestConcept$cw = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x530a123e5fc34d34L, "messages.customization.structure.TestConcept");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

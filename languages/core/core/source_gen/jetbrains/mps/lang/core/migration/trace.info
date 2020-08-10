@@ -107,10 +107,10 @@
       <node id="5462094956390582411" at="108,10,109,20" concept="7" />
       <node id="8744537335501940341" at="112,51,113,144" concept="7" />
       <node id="5462094956390605111" at="116,52,117,40" concept="7" />
-      <node id="8744537335501940341" at="121,0,122,0" concept="9" trace="PropertyAttribute$jT" />
-      <node id="8744537335501940341" at="122,0,123,0" concept="9" trace="LinkAttribute$7j" />
-      <node id="8744537335501940341" at="126,0,127,0" concept="9" trace="propertyId$Hwkv" />
-      <node id="8744537335501940341" at="127,0,128,0" concept="9" trace="linkId$ooiU" />
+      <node id="8744537335501940341" at="121,0,122,0" concept="9" trace="PropertyAttribute$Gb" />
+      <node id="8744537335501940341" at="122,0,123,0" concept="9" trace="LinkAttribute$v_" />
+      <node id="8744537335501940341" at="126,0,127,0" concept="9" trace="propertyId$ahGL" />
+      <node id="8744537335501940341" at="127,0,128,0" concept="9" trace="linkId$P9Fc" />
       <node id="8744537335501940341" at="36,0,39,0" concept="5" trace="getCaption#()Ljava/lang/String;" />
       <node id="8744537335501995440" at="50,0,53,0" concept="5" trace="translate#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljava/lang/Iterable;" />
       <node id="8744537335502256805" at="55,0,58,0" concept="5" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />

@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TransformationMenu_Named_Constraints extends BaseConstraintsDescriptor {
   public TransformationMenu_Named_Constraints() {
-    super(CONCEPTS.TransformationMenu_Named$1E);
+    super(CONCEPTS.TransformationMenu_Named$dh);
   }
 
   @Override
@@ -43,6 +43,6 @@ public class TransformationMenu_Named_Constraints extends BaseConstraintsDescrip
   private static final SNodePointer breakingNode_6r45os_a0a0a0a0a0a0a0a2 = new SNodePointer("r:00000000-0000-4000-0000-011c89590298(jetbrains.mps.lang.editor.constraints)", "6836281137582782548");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TransformationMenu_Named$1E = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0ac4ee8L, "jetbrains.mps.lang.editor.structure.TransformationMenu_Named");
+    /*package*/ static final SConcept TransformationMenu_Named$dh = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0ac4ee8L, "jetbrains.mps.lang.editor.structure.TransformationMenu_Named");
   }
 }

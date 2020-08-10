@@ -29,10 +29,10 @@
       <node id="1370556966538806711" at="36,50,37,42" concept="6" />
       <node id="1370556966538806711" at="39,68,40,102" concept="6" />
       <node id="1370556966538806711" at="42,30,43,17" concept="6" />
-      <node id="1370556966538806711" at="47,0,48,0" concept="7" trace="methodDeclaration$dd8w" />
-      <node id="1370556966538806711" at="51,0,52,0" concept="7" trace="name$lA7v" />
-      <node id="1370556966538806711" at="55,0,56,0" concept="7" trace="IVisible$6G" />
-      <node id="1370556966538806711" at="56,0,57,0" concept="7" trace="MethodDocReference$qh" />
+      <node id="1370556966538806711" at="47,0,48,0" concept="7" trace="methodDeclaration$z_UH" />
+      <node id="1370556966538806711" at="51,0,52,0" concept="7" trace="name$MnvL" />
+      <node id="1370556966538806711" at="55,0,56,0" concept="7" trace="IVisible$zu" />
+      <node id="1370556966538806711" at="56,0,57,0" concept="7" trace="MethodDocReference$cu" />
       <node id="1370556966538806711" at="25,0,27,0" concept="1" trace="check_MethodDocReference_NonTypesystemRule#()V" />
       <node id="1370556966538806711" at="36,0,39,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1370556966538806711" at="39,0,42,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -85,10 +85,10 @@
       <node id="1370556966538852139" at="36,50,37,47" concept="6" />
       <node id="1370556966538852139" at="39,68,40,102" concept="6" />
       <node id="1370556966538852139" at="42,30,43,17" concept="6" />
-      <node id="1370556966538852139" at="47,0,48,0" concept="7" trace="declaration$v4BQ" />
-      <node id="1370556966538852139" at="51,0,52,0" concept="7" trace="name$lA7v" />
-      <node id="1370556966538852139" at="55,0,56,0" concept="7" trace="IVisible$6G" />
-      <node id="1370556966538852139" at="56,0,57,0" concept="7" trace="StaticFieldDocReference$Ew" />
+      <node id="1370556966538852139" at="47,0,48,0" concept="7" trace="declaration$Ptq3" />
+      <node id="1370556966538852139" at="51,0,52,0" concept="7" trace="name$MnvL" />
+      <node id="1370556966538852139" at="55,0,56,0" concept="7" trace="IVisible$zu" />
+      <node id="1370556966538852139" at="56,0,57,0" concept="7" trace="StaticFieldDocReference$sH" />
       <node id="1370556966538852139" at="25,0,27,0" concept="1" trace="check_StaticFieldDocReference_NonTypesystemRule#()V" />
       <node id="1370556966538852139" at="36,0,39,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1370556966538852139" at="39,0,42,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -141,10 +141,10 @@
       <node id="1370556966538859587" at="36,50,37,41" concept="6" />
       <node id="1370556966538859587" at="39,68,40,102" concept="6" />
       <node id="1370556966538859587" at="42,30,43,17" concept="6" />
-      <node id="1370556966538859587" at="47,0,48,0" concept="7" trace="declaration$v4BQ" />
-      <node id="1370556966538859587" at="51,0,52,0" concept="7" trace="name$lA7v" />
-      <node id="1370556966538859587" at="55,0,56,0" concept="7" trace="IVisible$6G" />
-      <node id="1370556966538859587" at="56,0,57,0" concept="7" trace="FieldDocReference$F_" />
+      <node id="1370556966538859587" at="47,0,48,0" concept="7" trace="declaration$Ptq3" />
+      <node id="1370556966538859587" at="51,0,52,0" concept="7" trace="name$MnvL" />
+      <node id="1370556966538859587" at="55,0,56,0" concept="7" trace="IVisible$zu" />
+      <node id="1370556966538859587" at="56,0,57,0" concept="7" trace="FieldDocReference$tM" />
       <node id="1370556966538859587" at="25,0,27,0" concept="1" trace="check_FieldDocReference_NonTypesystemRule#()V" />
       <node id="1370556966538859587" at="36,0,39,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1370556966538859587" at="39,0,42,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -198,10 +198,10 @@
       <node id="1370556966538863778" at="39,50,40,46" concept="6" />
       <node id="1370556966538863778" at="42,68,43,102" concept="6" />
       <node id="1370556966538863778" at="45,30,46,17" concept="6" />
-      <node id="1370556966538863778" at="50,0,51,0" concept="7" trace="classifier$fT5w" />
-      <node id="1370556966538863778" at="54,0,55,0" concept="7" trace="name$lA7v" />
-      <node id="1370556966538863778" at="58,0,59,0" concept="7" trace="IVisible$6G" />
-      <node id="1370556966538863778" at="59,0,60,0" concept="7" trace="ClassifierDocReference$Mb" />
+      <node id="1370556966538863778" at="50,0,51,0" concept="7" trace="classifier$AhRH" />
+      <node id="1370556966538863778" at="54,0,55,0" concept="7" trace="name$MnvL" />
+      <node id="1370556966538863778" at="58,0,59,0" concept="7" trace="IVisible$zu" />
+      <node id="1370556966538863778" at="59,0,60,0" concept="7" trace="ClassifierDocReference$$o" />
       <node id="1370556966538863778" at="25,0,27,0" concept="1" trace="check_ClassifierDocReference_NonTypesystemRule#()V" />
       <node id="8568892084424717527" at="28,91,31,5" concept="3" />
       <node id="1370556966538863778" at="39,0,42,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -256,7 +256,7 @@
       <node id="174203568773653589" at="36,50,37,38" concept="6" />
       <node id="174203568773653589" at="39,68,40,102" concept="6" />
       <node id="174203568773653589" at="42,30,43,17" concept="6" />
-      <node id="174203568773653589" at="47,0,48,0" concept="7" trace="BaseDocComment$pH" />
+      <node id="174203568773653589" at="47,0,48,0" concept="7" trace="BaseDocComment$bU" />
       <node id="174203568773653589" at="22,0,24,0" concept="1" trace="check_BaseDocCommentDuplication_NonTypesystemRule#()V" />
       <node id="174203568773664074" at="26,0,29,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="174203568773653589" at="36,0,39,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />

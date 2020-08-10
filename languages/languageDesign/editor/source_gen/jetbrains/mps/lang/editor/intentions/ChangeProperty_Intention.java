@@ -59,9 +59,9 @@ public final class ChangeProperty_Intention extends AbstractIntentionDescriptor 
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode transactional = SNodeFactoryOperations.createNewNode(CONCEPTS.CellModel_TransactionalProperty$oo, node);
-      SLinkOperations.setTarget(transactional, LINKS.property$88sV, SLinkOperations.getTarget(node, LINKS.relationDeclaration$_K5_));
-      SLinkOperations.setTarget(node, LINKS.relationDeclaration$_K5_, null);
+      SNode transactional = SNodeFactoryOperations.createNewNode(CONCEPTS.CellModel_TransactionalProperty$zZ, node);
+      SLinkOperations.setTarget(transactional, LINKS.property$cqCy, SLinkOperations.getTarget(node, LINKS.relationDeclaration$E2hc));
+      SLinkOperations.setTarget(node, LINKS.relationDeclaration$E2hc, null);
       List<SNode> copy = ListSequence.fromListWithValues(new ArrayList<SNode>(), SNodeOperations.getChildren(node));
       for (SNode child : ListSequence.fromList(copy)) {
         SContainmentLink role = SNodeOperations.getContainingLink(child);
@@ -83,11 +83,11 @@ public final class ChangeProperty_Intention extends AbstractIntentionDescriptor 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellModel_TransactionalProperty$oo = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, "jetbrains.mps.lang.editor.structure.CellModel_TransactionalProperty");
+    /*package*/ static final SConcept CellModel_TransactionalProperty$zZ = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, "jetbrains.mps.lang.editor.structure.CellModel_TransactionalProperty");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink property$88sV = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, 0x11b35f87187L, "property");
-    /*package*/ static final SReferenceLink relationDeclaration$_K5_ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
+    /*package*/ static final SReferenceLink property$cqCy = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, 0x11b35f87187L, "property");
+    /*package*/ static final SReferenceLink relationDeclaration$E2hc = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
   }
 }

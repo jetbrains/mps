@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class EditableModel_Constraints extends BaseConstraintsDescriptor {
   public EditableModel_Constraints() {
-    super(CONCEPTS.EditableModel$cw);
+    super(CONCEPTS.EditableModel$9z);
   }
 
   @Override
@@ -41,7 +41,7 @@ public class EditableModel_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.ActionDataParameterDeclaration$Wd, true, false)), _quotation_createNode_z543ji_b0a0a3());
+    return TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.ActionDataParameterDeclaration$Tg, true, false)), _quotation_createNode_z543ji_b0a0a3());
   }
   private static SNode _quotation_createNode_z543ji_b0a0a3() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -53,7 +53,7 @@ public class EditableModel_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590361(jetbrains.mps.lang.plugin.constraints)", "1227128029536562272");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EditableModel$cw = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x4ecd9810833251a2L, "jetbrains.mps.lang.plugin.structure.EditableModel");
-    /*package*/ static final SConcept ActionDataParameterDeclaration$Wd = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e025e0L, "jetbrains.mps.lang.plugin.structure.ActionDataParameterDeclaration");
+    /*package*/ static final SConcept EditableModel$9z = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x4ecd9810833251a2L, "jetbrains.mps.lang.plugin.structure.EditableModel");
+    /*package*/ static final SConcept ActionDataParameterDeclaration$Tg = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e025e0L, "jetbrains.mps.lang.plugin.structure.ActionDataParameterDeclaration");
   }
 }

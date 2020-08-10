@@ -21,7 +21,7 @@ public class ChildIntraModeRule implements DataFlowConstructor {
     return concept.equals(applicableConcept) || concept.isSubConceptOf(applicableConcept);
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Child$w5;
+    return CONCEPTS.Child$8m;
   }
   public void performActions(Program o, SNode node) {
 
@@ -32,6 +32,6 @@ public class ChildIntraModeRule implements DataFlowConstructor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Child$w5 = MetaAdapterFactory.getConcept(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, 0x73a316f7f5468ed5L, "testCustomAnalyzer.structure.Child");
+    /*package*/ static final SConcept Child$8m = MetaAdapterFactory.getConcept(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, 0x73a316f7f5468ed5L, "testCustomAnalyzer.structure.Child");
   }
 }

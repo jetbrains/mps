@@ -27,12 +27,12 @@ public class subtyping_arrayType_SubtypingRule extends SubtypingRule_Runtime imp
   }
   public List<SNode> getSubOrSuperTypes(SNode arrayType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> result = new ArrayList<SNode>();
-    SNode componentType = SLinkOperations.getTarget(arrayType, LINKS.componentType$vfw);
-    if (SNodeOperations.isInstanceOf(componentType, CONCEPTS.Type$IG) && !(SNodeOperations.isInstanceOf(componentType, CONCEPTS.PrimitiveType$5))) {
+    SNode componentType = SLinkOperations.getTarget(arrayType, LINKS.componentType$F$Gi);
+    if (SNodeOperations.isInstanceOf(componentType, CONCEPTS.Type$bu) && !(SNodeOperations.isInstanceOf(componentType, CONCEPTS.PrimitiveType$sR))) {
       for (SNode componentTypeSupertype : Type__BehaviorDescriptor.getSupertypes_id4w2h6RLlygH.invoke(componentType)) {
         ListSequence.fromList(result).addElement(_quotation_createNode_ny91lb_a0a0a0a2a1(componentTypeSupertype));
       }
-      if (SNodeOperations.isInstanceOf(componentType, CONCEPTS.ArrayType$Yv)) {
+      if (SNodeOperations.isInstanceOf(componentType, CONCEPTS.ArrayType$rh)) {
         ListSequence.fromList(result).addElement(_quotation_createNode_ny91lb_a0a0a1a2a1());
       }
       SNode javaType = Type__BehaviorDescriptor.getJavaType_idhEwIzO1.invoke(componentType);
@@ -43,7 +43,7 @@ public class subtyping_arrayType_SubtypingRule extends SubtypingRule_Runtime imp
     return result;
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ArrayType$Yv;
+    return CONCEPTS.ArrayType$rh;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -74,12 +74,12 @@ public class subtyping_arrayType_SubtypingRule extends SubtypingRule_Runtime imp
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink componentType$vfw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
+    /*package*/ static final SContainmentLink componentType$F$Gi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ArrayType$Yv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
-    /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
-    /*package*/ static final SConcept PrimitiveType$5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
+    /*package*/ static final SConcept ArrayType$rh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept PrimitiveType$sR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
   }
 }

@@ -87,7 +87,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.Regexp$xM)) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.Regexp$aA)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -105,11 +105,11 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
       result.add(new TMP_Group_luzgqn_a1());
       result.add(new TMP_WrapSM_luzgqn_b1());
-      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_luzgqn_c1(), CONCEPTS.ParensRegexp$7O));
+      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_luzgqn_c1(), CONCEPTS.ParensRegexp$KC));
       result.add(new TMP_Param_luzgqn_d1());
       result.add(new TMP_WrapSM_luzgqn_e1());
-      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Param_luzgqn_f1(), CONCEPTS.PredefinedSymbolClassRegexp$P6));
-      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Param_luzgqn_g1(), CONCEPTS.RegexpDeclarationReferenceRegexp$8P));
+      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Param_luzgqn_f1(), CONCEPTS.PredefinedSymbolClassRegexp$tU));
+      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Param_luzgqn_g1(), CONCEPTS.RegexpDeclarationReferenceRegexp$LD));
     }
     return result;
   }
@@ -117,7 +117,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
   public class TMP_Group_luzgqn_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.UnaryRegexp$aG));
+      return !(SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.UnaryRegexp$Nw));
     }
 
     @NotNull
@@ -133,7 +133,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_luzgqn_a0b(), CONCEPTS.NTimesRegexp$8p), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_luzgqn_b0b(), CONCEPTS.AtLeastNTimesRegexp$a3), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_luzgqn_c0b(), CONCEPTS.FromNToMTimesRegexp$yu), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Param_luzgqn_d0b(), CONCEPTS.UnaryRegexp$aG));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_luzgqn_a0b(), CONCEPTS.NTimesRegexp$Ld), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_luzgqn_b0b(), CONCEPTS.AtLeastNTimesRegexp$MR), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_luzgqn_c0b(), CONCEPTS.FromNToMTimesRegexp$bi), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Param_luzgqn_d0b(), CONCEPTS.UnaryRegexp$Nw));
     }
     private class TMP_Action_luzgqn_a0b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -180,14 +180,14 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode node = SNodeFactoryOperations.createNewNode(CONCEPTS.NTimesRegexp$8p, null);
+          SNode node = SNodeFactoryOperations.createNewNode(CONCEPTS.NTimesRegexp$Ld, null);
           SNodeOperations.replaceWithAnother(_context.getNode(), node);
-          SLinkOperations.setTarget(node, LINKS.regexp$LlDC, _context.getNode());
+          SLinkOperations.setTarget(node, LINKS.regexp$$Nis, _context.getNode());
           {
             Pattern _pattern_0 = REGEXP_luzgqn_a0a0d0g2e7;
             Matcher _matcher_0 = _pattern_0.matcher(pattern);
             if (_matcher_0.find()) {
-              SPropertyOperations.assign(node, PROPS.n$1vNy, Integer.parseInt(_matcher_0.group(1)));
+              SPropertyOperations.assign(node, PROPS.n$OXsm, Integer.parseInt(_matcher_0.group(1)));
             }
           }
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), node, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
@@ -197,7 +197,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.NTimesRegexp$8p;
+          return CONCEPTS.NTimesRegexp$Ld;
         }
 
 
@@ -208,7 +208,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.NTimesRegexp$8p;
+          SAbstractConcept outputConcept = CONCEPTS.NTimesRegexp$Ld;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -262,14 +262,14 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode node = SNodeFactoryOperations.createNewNode(CONCEPTS.AtLeastNTimesRegexp$a3, null);
+          SNode node = SNodeFactoryOperations.createNewNode(CONCEPTS.AtLeastNTimesRegexp$MR, null);
           SNodeOperations.replaceWithAnother(_context.getNode(), node);
-          SLinkOperations.setTarget(node, LINKS.regexp$LlDC, _context.getNode());
+          SLinkOperations.setTarget(node, LINKS.regexp$$Nis, _context.getNode());
           {
             Pattern _pattern_0 = REGEXP_luzgqn_a0a0d0g2f7;
             Matcher _matcher_0 = _pattern_0.matcher(pattern);
             if (_matcher_0.find()) {
-              SPropertyOperations.assign(node, PROPS.n$SjlD, Integer.parseInt(_matcher_0.group(1)));
+              SPropertyOperations.assign(node, PROPS.n$FKYt, Integer.parseInt(_matcher_0.group(1)));
             }
           }
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), node, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
@@ -279,7 +279,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.AtLeastNTimesRegexp$a3;
+          return CONCEPTS.AtLeastNTimesRegexp$MR;
         }
 
 
@@ -290,7 +290,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.AtLeastNTimesRegexp$a3;
+          SAbstractConcept outputConcept = CONCEPTS.AtLeastNTimesRegexp$MR;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -356,21 +356,21 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode node = SNodeFactoryOperations.createNewNode(CONCEPTS.FromNToMTimesRegexp$yu, null);
+          SNode node = SNodeFactoryOperations.createNewNode(CONCEPTS.FromNToMTimesRegexp$bi, null);
           SNodeOperations.replaceWithAnother(_context.getNode(), node);
-          SLinkOperations.setTarget(node, LINKS.regexp$LlDC, _context.getNode());
+          SLinkOperations.setTarget(node, LINKS.regexp$$Nis, _context.getNode());
           {
             Pattern _pattern_0 = REGEXP_luzgqn_a0a0d0g2g7;
             Matcher _matcher_0 = _pattern_0.matcher(pattern);
             if (_matcher_0.find()) {
-              SPropertyOperations.assign(node, PROPS.m$ZSMS, Integer.parseInt(_matcher_0.group(1)));
+              SPropertyOperations.assign(node, PROPS.m$NmrG, Integer.parseInt(_matcher_0.group(1)));
             }
           }
           {
             Pattern _pattern_0 = REGEXP_luzgqn_a0a0e0g2g7;
             Matcher _matcher_0 = _pattern_0.matcher(pattern);
             if (_matcher_0.find()) {
-              SPropertyOperations.assign(node, PROPS.n$9DEq, Integer.parseInt(_matcher_0.group(1)));
+              SPropertyOperations.assign(node, PROPS.n$X7je, Integer.parseInt(_matcher_0.group(1)));
             }
           }
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), node, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
@@ -380,7 +380,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.FromNToMTimesRegexp$yu;
+          return CONCEPTS.FromNToMTimesRegexp$bi;
         }
 
 
@@ -391,7 +391,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.FromNToMTimesRegexp$yu;
+          SAbstractConcept outputConcept = CONCEPTS.FromNToMTimesRegexp$bi;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -411,7 +411,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
       @Nullable
       @Override
       protected Iterable<? extends SConcept> getParameters(TransformationMenuContext _context) {
-        return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.StarRegexp$nk, CONCEPTS.PlusRegexp$lq, CONCEPTS.QuestionRegexp$Ns, CONCEPTS.LazyPlusRegexp$E, CONCEPTS.LazyQuestionRegexp$Cn, CONCEPTS.LazyStarRegexp$O_);
+        return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.StarRegexp$8, CONCEPTS.PlusRegexp$Ye, CONCEPTS.QuestionRegexp$sg, CONCEPTS.LazyPlusRegexp$Du, CONCEPTS.LazyQuestionRegexp$hb, CONCEPTS.LazyStarRegexp$tp);
       }
       @NotNull
       @Override
@@ -469,7 +469,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
           public void execute(@NotNull String pattern) {
             SNode newRegexp = SNodeFactoryOperations.createNewNode(myParameterObject, null);
             SNodeOperations.replaceWithAnother(_context.getNode(), newRegexp);
-            SLinkOperations.setTarget(newRegexp, LINKS.regexp$LlDC, _context.getNode());
+            SLinkOperations.setTarget(newRegexp, LINKS.regexp$$Nis, _context.getNode());
             SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), newRegexp, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
           }
 
@@ -477,7 +477,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
           @Nullable
           @Override
           public SAbstractConcept getOutputConcept() {
-            return CONCEPTS.UnaryRegexp$aG;
+            return CONCEPTS.UnaryRegexp$Nw;
           }
 
 
@@ -488,7 +488,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
 
           public void customize(String pattern, EditorMenuItemStyle style) {
             EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-            SAbstractConcept outputConcept = CONCEPTS.UnaryRegexp$aG;
+            SAbstractConcept outputConcept = CONCEPTS.UnaryRegexp$Nw;
             EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(myParameterObject, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
             for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
               customizer.customize(style, compositeContext);
@@ -520,7 +520,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return CONCEPTS.BinaryRegexp$5h;
+      return CONCEPTS.BinaryRegexp$I5;
     }
 
 
@@ -541,7 +541,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
       public void execute(@NotNull String pattern) {
         SNode createdNode = getSubstituteItem().createNode(pattern);
         SNodeOperations.replaceWithAnother(_context.getNode(), createdNode);
-        SLinkOperations.setTarget(createdNode, LINKS.left$g$k9, _context.getNode());
+        SLinkOperations.setTarget(createdNode, LINKS.left$41WX, _context.getNode());
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
@@ -605,8 +605,8 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNode pr = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.ParensRegexp$7O);
-        SLinkOperations.setTarget(pr, LINKS.expr$Rw3c, _context.getNode());
+        SNode pr = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.ParensRegexp$KC);
+        SLinkOperations.setTarget(pr, LINKS.expr$EXG0, _context.getNode());
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), pr, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
@@ -614,7 +614,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
       @Nullable
       @Override
       public SAbstractConcept getOutputConcept() {
-        return CONCEPTS.ParensRegexp$7O;
+        return CONCEPTS.ParensRegexp$KC;
       }
 
 
@@ -625,7 +625,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
 
       public void customize(String pattern, EditorMenuItemStyle style) {
         EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-        SAbstractConcept outputConcept = CONCEPTS.ParensRegexp$7O;
+        SAbstractConcept outputConcept = CONCEPTS.ParensRegexp$KC;
         EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
         for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
           customizer.customize(style, compositeContext);
@@ -645,8 +645,8 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SConcept> getParameters(TransformationMenuContext _context) {
-      final List<SAbstractConcept> excludeList = ListSequence.fromListAndArray(new ArrayList<SAbstractConcept>(), CONCEPTS.BinaryRegexp$5h, CONCEPTS.UnaryRegexp$aG, CONCEPTS.PredefinedSymbolClassRegexp$P6, CONCEPTS.RegexpDeclarationReferenceRegexp$8P, CONCEPTS.MatchVariableReferenceRegexp$Y2);
-      List<SConcept> regexps = SConceptOperations.getAllSubConcepts2(CONCEPTS.Regexp$xM, _context.getModel());
+      final List<SAbstractConcept> excludeList = ListSequence.fromListAndArray(new ArrayList<SAbstractConcept>(), CONCEPTS.BinaryRegexp$I5, CONCEPTS.UnaryRegexp$Nw, CONCEPTS.PredefinedSymbolClassRegexp$tU, CONCEPTS.RegexpDeclarationReferenceRegexp$LD, CONCEPTS.MatchVariableReferenceRegexp$AQ);
+      List<SConcept> regexps = SConceptOperations.getAllSubConcepts2(CONCEPTS.Regexp$aA, _context.getModel());
       return ListSequence.fromList(regexps).where(new IWhereFilter<SConcept>() {
         public boolean accept(SConcept it) {
           for (SAbstractConcept exclude : ListSequence.fromList(excludeList)) {
@@ -713,10 +713,10 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
         @Override
         public void execute(@NotNull String pattern) {
           SNode newRegexp = SNodeFactoryOperations.createNewNode(myParameterObject, null);
-          SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.SeqRegexp$2i, null);
+          SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.SeqRegexp$F6, null);
           SNodeOperations.replaceWithAnother(_context.getNode(), result);
-          SLinkOperations.setTarget(result, LINKS.left$g$k9, _context.getNode());
-          SLinkOperations.setTarget(result, LINKS.right$bdpJ, newRegexp);
+          SLinkOperations.setTarget(result, LINKS.left$41WX, _context.getNode());
+          SLinkOperations.setTarget(result, LINKS.right$YF2z, newRegexp);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), newRegexp, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -761,7 +761,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return CONCEPTS.MatchVariableReferenceRegexp$Y2;
+      return CONCEPTS.MatchVariableReferenceRegexp$AQ;
     }
 
 
@@ -781,10 +781,10 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
       @Override
       public void execute(@NotNull String pattern) {
         SNode createdNode = getSubstituteItem().createNode(pattern);
-        SNode seq = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.SeqRegexp$2i, null);
+        SNode seq = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.SeqRegexp$F6, null);
         SNodeOperations.replaceWithAnother(_context.getNode(), seq);
-        SLinkOperations.setTarget(seq, LINKS.left$g$k9, _context.getNode());
-        SLinkOperations.setTarget(seq, LINKS.right$bdpJ, createdNode);
+        SLinkOperations.setTarget(seq, LINKS.left$41WX, _context.getNode());
+        SLinkOperations.setTarget(seq, LINKS.right$YF2z, createdNode);
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
@@ -825,7 +825,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(TransformationMenuContext _context) {
-      return SModelOperations.nodesIncludingImported(SNodeOperations.getModel(_context.getNode()), CONCEPTS.PredefinedSymbolClassDeclaration$7c);
+      return SModelOperations.nodesIncludingImported(SNodeOperations.getModel(_context.getNode()), CONCEPTS.PredefinedSymbolClassDeclaration$K0);
     }
     @NotNull
     @Override
@@ -876,17 +876,17 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
         @Nullable
         @Override
         public String getLabelText(String pattern) {
-          return SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v);
+          return SPropertyOperations.getString(myParameterObject, PROPS.name$MnvL);
         }
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode res = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.SeqRegexp$2i, null);
+          SNode res = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.SeqRegexp$F6, null);
           SNodeOperations.replaceWithAnother(_context.getNode(), res);
-          SLinkOperations.setTarget(res, LINKS.left$g$k9, _context.getNode());
-          SNode ref = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.PredefinedSymbolClassRegexp$P6, null);
-          SLinkOperations.setTarget(ref, LINKS.symbolClass$3yu5, myParameterObject);
-          SLinkOperations.setTarget(res, LINKS.right$bdpJ, ref);
+          SLinkOperations.setTarget(res, LINKS.left$41WX, _context.getNode());
+          SNode ref = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.PredefinedSymbolClassRegexp$tU, null);
+          SLinkOperations.setTarget(ref, LINKS.symbolClass$R06T, myParameterObject);
+          SLinkOperations.setTarget(res, LINKS.right$YF2z, ref);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ref, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -894,11 +894,11 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.PredefinedSymbolClassRegexp$P6;
+          return CONCEPTS.PredefinedSymbolClassRegexp$tU;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
-          return SPropertyOperations.getString(myParameterObject, PROPS.description$g2Cc);
+          return SPropertyOperations.getString(myParameterObject, PROPS.description$3wh0);
         }
 
 
@@ -909,7 +909,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.PredefinedSymbolClassRegexp$P6;
+          SAbstractConcept outputConcept = CONCEPTS.PredefinedSymbolClassRegexp$tU;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(myParameterObject, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -930,7 +930,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(TransformationMenuContext _context) {
-      return SModelOperations.nodesIncludingImported(SNodeOperations.getModel(_context.getNode()), CONCEPTS.RegexpDeclaration$tP);
+      return SModelOperations.nodesIncludingImported(SNodeOperations.getModel(_context.getNode()), CONCEPTS.RegexpDeclaration$6D);
     }
     @NotNull
     @Override
@@ -981,29 +981,29 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
         @Nullable
         @Override
         public String getLabelText(String pattern) {
-          return SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v);
+          return SPropertyOperations.getString(myParameterObject, PROPS.name$MnvL);
         }
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode seq = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.SeqRegexp$2i, null);
+          SNode seq = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.SeqRegexp$F6, null);
           SNodeOperations.replaceWithAnother(_context.getNode(), seq);
-          SLinkOperations.setTarget(seq, LINKS.left$g$k9, _context.getNode());
-          SNode ref = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.RegexpDeclarationReferenceRegexp$8P, null);
-          SLinkOperations.setTarget(ref, LINKS.regexp$_0Rc, myParameterObject);
-          SLinkOperations.setTarget(seq, LINKS.right$bdpJ, ref);
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(seq, LINKS.right$bdpJ), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SLinkOperations.setTarget(seq, LINKS.left$41WX, _context.getNode());
+          SNode ref = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.RegexpDeclarationReferenceRegexp$LD, null);
+          SLinkOperations.setTarget(ref, LINKS.regexp$ouw0, myParameterObject);
+          SLinkOperations.setTarget(seq, LINKS.right$YF2z, ref);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(seq, LINKS.right$YF2z), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
 
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.RegexpDeclarationReferenceRegexp$8P;
+          return CONCEPTS.RegexpDeclarationReferenceRegexp$LD;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
-          return SPropertyOperations.getString(myParameterObject, PROPS.description$2fKX);
+          return SPropertyOperations.getString(myParameterObject, PROPS.description$PHpL);
         }
 
 
@@ -1014,7 +1014,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.RegexpDeclarationReferenceRegexp$8P;
+          SAbstractConcept outputConcept = CONCEPTS.RegexpDeclarationReferenceRegexp$LD;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(myParameterObject, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -1038,43 +1038,43 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
   private static final Pattern REGEXP_luzgqn_a0a0e0g2g7 = Pattern.compile("\\{(\\d+)", 0);
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Regexp$xM = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a06efdL, "jetbrains.mps.baseLanguage.regexp.structure.Regexp");
-    /*package*/ static final SConcept ParensRegexp$7O = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111752101b0L, "jetbrains.mps.baseLanguage.regexp.structure.ParensRegexp");
-    /*package*/ static final SConcept PredefinedSymbolClassRegexp$P6 = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178fa2a18L, "jetbrains.mps.baseLanguage.regexp.structure.PredefinedSymbolClassRegexp");
-    /*package*/ static final SConcept RegexpDeclarationReferenceRegexp$8P = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117f58ea2aL, "jetbrains.mps.baseLanguage.regexp.structure.RegexpDeclarationReferenceRegexp");
-    /*package*/ static final SConcept UnaryRegexp$aG = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c678adL, "jetbrains.mps.baseLanguage.regexp.structure.UnaryRegexp");
-    /*package*/ static final SConcept NTimesRegexp$8p = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118dbeda57L, "jetbrains.mps.baseLanguage.regexp.structure.NTimesRegexp");
-    /*package*/ static final SConcept AtLeastNTimesRegexp$a3 = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118dc30ee2L, "jetbrains.mps.baseLanguage.regexp.structure.AtLeastNTimesRegexp");
-    /*package*/ static final SConcept FromNToMTimesRegexp$yu = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118dc58c6eL, "jetbrains.mps.baseLanguage.regexp.structure.FromNToMTimesRegexp");
-    /*package*/ static final SConcept StarRegexp$nk = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a16ffaL, "jetbrains.mps.baseLanguage.regexp.structure.StarRegexp");
-    /*package*/ static final SConcept PlusRegexp$lq = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a15de8L, "jetbrains.mps.baseLanguage.regexp.structure.PlusRegexp");
-    /*package*/ static final SConcept QuestionRegexp$Ns = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178c4e1e0L, "jetbrains.mps.baseLanguage.regexp.structure.QuestionRegexp");
-    /*package*/ static final SConcept LazyPlusRegexp$E = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117f38e076L, "jetbrains.mps.baseLanguage.regexp.structure.LazyPlusRegexp");
-    /*package*/ static final SConcept LazyQuestionRegexp$Cn = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117f394b67L, "jetbrains.mps.baseLanguage.regexp.structure.LazyQuestionRegexp");
-    /*package*/ static final SConcept LazyStarRegexp$O_ = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117f383367L, "jetbrains.mps.baseLanguage.regexp.structure.LazyStarRegexp");
-    /*package*/ static final SConcept BinaryRegexp$5h = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c56bf9L, "jetbrains.mps.baseLanguage.regexp.structure.BinaryRegexp");
-    /*package*/ static final SConcept MatchVariableReferenceRegexp$Y2 = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118e0a1c55L, "jetbrains.mps.baseLanguage.regexp.structure.MatchVariableReferenceRegexp");
-    /*package*/ static final SConcept SeqRegexp$2i = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174bc30e7L, "jetbrains.mps.baseLanguage.regexp.structure.SeqRegexp");
-    /*package*/ static final SConcept PredefinedSymbolClassDeclaration$7c = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178e59fd0L, "jetbrains.mps.baseLanguage.regexp.structure.PredefinedSymbolClassDeclaration");
-    /*package*/ static final SConcept RegexpDeclaration$tP = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a6454dL, "jetbrains.mps.baseLanguage.regexp.structure.RegexpDeclaration");
+    /*package*/ static final SConcept Regexp$aA = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a06efdL, "jetbrains.mps.baseLanguage.regexp.structure.Regexp");
+    /*package*/ static final SConcept ParensRegexp$KC = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111752101b0L, "jetbrains.mps.baseLanguage.regexp.structure.ParensRegexp");
+    /*package*/ static final SConcept PredefinedSymbolClassRegexp$tU = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178fa2a18L, "jetbrains.mps.baseLanguage.regexp.structure.PredefinedSymbolClassRegexp");
+    /*package*/ static final SConcept RegexpDeclarationReferenceRegexp$LD = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117f58ea2aL, "jetbrains.mps.baseLanguage.regexp.structure.RegexpDeclarationReferenceRegexp");
+    /*package*/ static final SConcept UnaryRegexp$Nw = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c678adL, "jetbrains.mps.baseLanguage.regexp.structure.UnaryRegexp");
+    /*package*/ static final SConcept NTimesRegexp$Ld = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118dbeda57L, "jetbrains.mps.baseLanguage.regexp.structure.NTimesRegexp");
+    /*package*/ static final SConcept AtLeastNTimesRegexp$MR = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118dc30ee2L, "jetbrains.mps.baseLanguage.regexp.structure.AtLeastNTimesRegexp");
+    /*package*/ static final SConcept FromNToMTimesRegexp$bi = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118dc58c6eL, "jetbrains.mps.baseLanguage.regexp.structure.FromNToMTimesRegexp");
+    /*package*/ static final SConcept StarRegexp$8 = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a16ffaL, "jetbrains.mps.baseLanguage.regexp.structure.StarRegexp");
+    /*package*/ static final SConcept PlusRegexp$Ye = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a15de8L, "jetbrains.mps.baseLanguage.regexp.structure.PlusRegexp");
+    /*package*/ static final SConcept QuestionRegexp$sg = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178c4e1e0L, "jetbrains.mps.baseLanguage.regexp.structure.QuestionRegexp");
+    /*package*/ static final SConcept LazyPlusRegexp$Du = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117f38e076L, "jetbrains.mps.baseLanguage.regexp.structure.LazyPlusRegexp");
+    /*package*/ static final SConcept LazyQuestionRegexp$hb = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117f394b67L, "jetbrains.mps.baseLanguage.regexp.structure.LazyQuestionRegexp");
+    /*package*/ static final SConcept LazyStarRegexp$tp = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117f383367L, "jetbrains.mps.baseLanguage.regexp.structure.LazyStarRegexp");
+    /*package*/ static final SConcept BinaryRegexp$I5 = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c56bf9L, "jetbrains.mps.baseLanguage.regexp.structure.BinaryRegexp");
+    /*package*/ static final SConcept MatchVariableReferenceRegexp$AQ = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118e0a1c55L, "jetbrains.mps.baseLanguage.regexp.structure.MatchVariableReferenceRegexp");
+    /*package*/ static final SConcept SeqRegexp$F6 = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174bc30e7L, "jetbrains.mps.baseLanguage.regexp.structure.SeqRegexp");
+    /*package*/ static final SConcept PredefinedSymbolClassDeclaration$K0 = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178e59fd0L, "jetbrains.mps.baseLanguage.regexp.structure.PredefinedSymbolClassDeclaration");
+    /*package*/ static final SConcept RegexpDeclaration$6D = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a6454dL, "jetbrains.mps.baseLanguage.regexp.structure.RegexpDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink regexp$LlDC = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c678adL, 0x11174c6961aL, "regexp");
-    /*package*/ static final SContainmentLink left$g$k9 = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c56bf9L, 0x11174c59241L, "left");
-    /*package*/ static final SContainmentLink expr$Rw3c = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111752101b0L, 0x1117521177bL, "expr");
-    /*package*/ static final SContainmentLink right$bdpJ = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c56bf9L, 0x11174c5a26fL, "right");
-    /*package*/ static final SReferenceLink symbolClass$3yu5 = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178fa2a18L, 0x11178fbdc7dL, "symbolClass");
-    /*package*/ static final SReferenceLink regexp$_0Rc = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117f58ea2aL, 0x1117f594636L, "regexp");
+    /*package*/ static final SContainmentLink regexp$$Nis = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c678adL, 0x11174c6961aL, "regexp");
+    /*package*/ static final SContainmentLink left$41WX = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c56bf9L, 0x11174c59241L, "left");
+    /*package*/ static final SContainmentLink expr$EXG0 = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111752101b0L, 0x1117521177bL, "expr");
+    /*package*/ static final SContainmentLink right$YF2z = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174c56bf9L, 0x11174c5a26fL, "right");
+    /*package*/ static final SReferenceLink symbolClass$R06T = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178fa2a18L, 0x11178fbdc7dL, "symbolClass");
+    /*package*/ static final SReferenceLink regexp$ouw0 = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117f58ea2aL, 0x1117f594636L, "regexp");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty n$1vNy = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118dbeda57L, 0x1118dbf202dL, "n");
-    /*package*/ static final SProperty n$SjlD = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118dc30ee2L, 0x1118dc39835L, "n");
-    /*package*/ static final SProperty m$ZSMS = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118dc58c6eL, 0x1118dc5ca73L, "m");
-    /*package*/ static final SProperty n$9DEq = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118dc58c6eL, 0x1118dc5bf75L, "n");
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty description$g2Cc = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178e59fd0L, 0x11178e7fa54L, "description");
-    /*package*/ static final SProperty description$2fKX = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a6454dL, 0x1117f5e9a48L, "description");
+    /*package*/ static final SProperty n$OXsm = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118dbeda57L, 0x1118dbf202dL, "n");
+    /*package*/ static final SProperty n$FKYt = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118dc30ee2L, 0x1118dc39835L, "n");
+    /*package*/ static final SProperty m$NmrG = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118dc58c6eL, 0x1118dc5ca73L, "m");
+    /*package*/ static final SProperty n$X7je = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118dc58c6eL, 0x1118dc5bf75L, "n");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty description$3wh0 = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178e59fd0L, 0x11178e7fa54L, "description");
+    /*package*/ static final SProperty description$PHpL = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a6454dL, 0x1117f5e9a48L, "description");
   }
 }

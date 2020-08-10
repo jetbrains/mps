@@ -22,64 +22,64 @@ public class AnnotationInstanceParameterInformationQuery implements ParametersIn
   public AnnotationInstanceParameterInformationQuery() {
   }
   public Iterable<SNode> getMethods(SNode node, EditorContext editorContext) {
-    if (SLinkOperations.getTarget(node, LINKS.annotation$lXdy) != null) {
-      return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(node, LINKS.annotation$lXdy));
+    if (SLinkOperations.getTarget(node, LINKS.annotation$12Ek) != null) {
+      return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(node, LINKS.annotation$12Ek));
     } else {
       return ListSequence.fromList(new ArrayList<SNode>());
     }
   }
   public void getStyledMethodPresentation(SNode node, EditorContext editorContext, SNode parameterObject, StyledTextPrinter styledText) {
     SNode selectedAnnotationMethod = this.getSelectedAnnotationMethod(editorContext, node);
-    if (SPropertyOperations.getString(parameterObject, PROPS.name$lA7v) != null) {
-      styledText.append(SPropertyOperations.getString(parameterObject, PROPS.name$lA7v));
+    if (SPropertyOperations.getString(parameterObject, PROPS.name$MnvL) != null) {
+      styledText.append(SPropertyOperations.getString(parameterObject, PROPS.name$MnvL));
     } else {
       styledText.append("<no name>");
     }
     styledText.append("(");
-    for (SNode annotationMethod : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.annotation$lXdy), LINKS.method$U$bY))) {
+    for (SNode annotationMethod : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.annotation$12Ek), LINKS.method$_DCK))) {
       if (SNodeOperations.getIndexInParent(annotationMethod) > 0) {
         styledText.append(", ");
       }
       if (selectedAnnotationMethod == annotationMethod) {
         styledText.setBold(true);
       }
-      if (SLinkOperations.getTarget(annotationMethod, LINKS.returnType$qrVw) != null) {
-        styledText.append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(annotationMethod, LINKS.returnType$qrVw)));
+      if (SLinkOperations.getTarget(annotationMethod, LINKS.returnType$5xoi) != null) {
+        styledText.append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(annotationMethod, LINKS.returnType$5xoi)));
       } else {
         styledText.append("???");
       }
-      if (SPropertyOperations.getString(annotationMethod, PROPS.name$lA7v) != null) {
+      if (SPropertyOperations.getString(annotationMethod, PROPS.name$MnvL) != null) {
         styledText.append(" ");
-        styledText.append(SPropertyOperations.getString(annotationMethod, PROPS.name$lA7v));
+        styledText.append(SPropertyOperations.getString(annotationMethod, PROPS.name$MnvL));
       }
       styledText.setBold(false);
     }
     styledText.append(")");
   }
   public boolean isMethodCurrent(SNode node, EditorContext editorContext, SNode parameterObject) {
-    return SLinkOperations.getTarget(node, LINKS.annotation$lXdy) == parameterObject;
+    return SLinkOperations.getTarget(node, LINKS.annotation$12Ek) == parameterObject;
   }
   private SNode getSelectedAnnotationMethod(EditorContext editorContext, SNode annotationInstance) {
     for (SNode argument = editorContext.getSelectedNode(); argument != null; argument = SNodeOperations.getParent(argument)) {
-      if (SNodeOperations.isInstanceOf(argument, CONCEPTS.AnnotationInstanceValue$sl) && SNodeOperations.getParent(argument) == annotationInstance) {
-        return SLinkOperations.getTarget(SNodeOperations.cast(argument, CONCEPTS.AnnotationInstanceValue$sl), LINKS.key$wMU9);
+      if (SNodeOperations.isInstanceOf(argument, CONCEPTS.AnnotationInstanceValue$T7) && SNodeOperations.getParent(argument) == annotationInstance) {
+        return SLinkOperations.getTarget(SNodeOperations.cast(argument, CONCEPTS.AnnotationInstanceValue$T7), LINKS.key$bSmV);
       }
     }
     return null;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
-    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SContainmentLink method$U$bY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x101f2cc410bL, "method");
-    /*package*/ static final SReferenceLink key$wMU9 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71b44e3L, "key");
+    /*package*/ static final SReferenceLink annotation$12Ek = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink returnType$5xoi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink method$_DCK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x101f2cc410bL, "method");
+    /*package*/ static final SReferenceLink key$bSmV = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71b44e3L, "key");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AnnotationInstanceValue$sl = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, "jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue");
+    /*package*/ static final SConcept AnnotationInstanceValue$T7 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, "jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue");
   }
 }

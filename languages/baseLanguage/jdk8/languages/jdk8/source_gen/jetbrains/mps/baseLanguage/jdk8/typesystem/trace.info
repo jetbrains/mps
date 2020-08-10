@@ -40,9 +40,9 @@
       <node id="1557757632988404966" at="47,50,48,43" concept="7" />
       <node id="1557757632988404966" at="50,68,51,102" concept="7" />
       <node id="1557757632988404966" at="53,30,54,17" concept="7" />
-      <node id="1557757632988404966" at="58,0,59,0" concept="8" trace="InstanceMethodDeclaration$An" />
-      <node id="1557757632988404966" at="59,0,60,0" concept="8" trace="DefaultModifier_old$Z2" />
-      <node id="1557757632988404966" at="63,0,64,0" concept="8" trace="isAbstract$gogN" />
+      <node id="1557757632988404966" at="58,0,59,0" concept="8" trace="InstanceMethodDeclaration$39" />
+      <node id="1557757632988404966" at="59,0,60,0" concept="8" trace="DefaultModifier_old$PN" />
+      <node id="1557757632988404966" at="63,0,64,0" concept="8" trace="isAbstract$VtH_" />
       <node id="1557757632988404966" at="22,0,24,0" concept="2" trace="check_DefaultMethodIsNotAbstract_NonTypesystemRule#()V" />
       <node id="4452056467060858559" at="25,55,28,5" concept="4" />
       <node id="1557757632988404966" at="47,0,50,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -95,8 +95,8 @@
       <node id="8014340958386797380" at="21,44,22,43" concept="7" />
       <node id="2577576048763268551" at="26,39,27,77" concept="7" />
       <node id="2577576048763467511" at="30,35,31,39" concept="3" />
-      <node id="1557757632988467212" at="37,0,38,0" concept="8" trace="modifiers$m0" />
-      <node id="1557757632988467212" at="41,0,42,0" concept="8" trace="DefaultModifier$Z2" />
+      <node id="1557757632988467212" at="37,0,38,0" concept="8" trace="modifiers$F5MM" />
+      <node id="1557757632988467212" at="41,0,42,0" concept="8" trace="DefaultModifier$rO" />
       <node id="1557757632988467212" at="18,0,21,0" concept="2" trace="RemoveDefaultModifier_QuickFix#()V" />
       <node id="1557757632988467212" at="21,0,24,0" concept="5" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="2577576048763267984" at="26,0,29,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -123,7 +123,7 @@
       </scope>
       <unit id="1557757632988467212" at="36,0,39,0" name="jetbrains.mps.baseLanguage.jdk8.typesystem.RemoveDefaultModifier_QuickFix$LINKS" />
       <unit id="1557757632988467212" at="40,0,43,0" name="jetbrains.mps.baseLanguage.jdk8.typesystem.RemoveDefaultModifier_QuickFix$CONCEPTS" />
-      <unit id="2577576048763267984" at="25,154,29,5" name="jetbrains.mps.baseLanguage.jdk8.typesystem.RemoveDefaultModifier_QuickFix$1" />
+      <unit id="2577576048763267984" at="25,156,29,5" name="jetbrains.mps.baseLanguage.jdk8.typesystem.RemoveDefaultModifier_QuickFix$1" />
       <unit id="2577576048763467296" at="29,20,33,5" name="jetbrains.mps.baseLanguage.jdk8.typesystem.RemoveDefaultModifier_QuickFix$2" />
       <unit id="1557757632988467212" at="17,0,44,0" name="jetbrains.mps.baseLanguage.jdk8.typesystem.RemoveDefaultModifier_QuickFix" />
     </file>
@@ -134,7 +134,7 @@
       <node id="2577576048763133385" at="16,44,17,44" concept="7" />
       <node id="2577576048763133374" at="19,35,20,135" concept="0" />
       <node id="2577576048763235102" at="20,135,21,131" concept="3" />
-      <node id="2577576048763133371" at="25,0,26,0" concept="8" trace="isAbstract$gogN" />
+      <node id="2577576048763133371" at="25,0,26,0" concept="8" trace="isAbstract$VtH_" />
       <node id="2577576048763133371" at="13,0,16,0" concept="2" trace="RemoveAbstractModifier_QuickFix#()V" />
       <node id="2577576048763133371" at="16,0,19,0" concept="5" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="2577576048763133371" at="19,0,23,0" concept="5" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -171,9 +171,9 @@
       <node id="7197377355156785711" at="38,50,39,43" concept="7" />
       <node id="7197377355156785711" at="41,68,42,102" concept="7" />
       <node id="7197377355156785711" at="44,30,45,17" concept="7" />
-      <node id="7197377355156785711" at="49,0,50,0" concept="8" trace="IHasModifiers$LF" />
-      <node id="7197377355156785711" at="50,0,51,0" concept="8" trace="ClassifierMember$9F" />
-      <node id="7197377355156785711" at="51,0,52,0" concept="8" trace="DefaultModifier_old$Z2" />
+      <node id="7197377355156785711" at="49,0,50,0" concept="8" trace="IHasModifiers$et" />
+      <node id="7197377355156785711" at="50,0,51,0" concept="8" trace="ClassifierMember$At" />
+      <node id="7197377355156785711" at="51,0,52,0" concept="8" trace="DefaultModifier_old$PN" />
       <node id="7197377355156785711" at="22,0,24,0" concept="2" trace="check_DefaultMethodIsNotStatic_NonTypesystemRule#()V" />
       <node id="7197377355156785711" at="38,0,41,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="7197377355156785711" at="41,0,44,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -234,7 +234,7 @@
       <node id="7197377355157103211" at="47,30,48,17" concept="7" />
       <node id="7197377355157103228" at="51,36,52,43" concept="7" />
       <node id="7197377355157103228" at="53,5,54,16" concept="7" />
-      <node id="7197377355157103211" at="58,0,59,0" concept="8" trace="DefaultModifier_old$Z2" />
+      <node id="7197377355157103211" at="58,0,59,0" concept="8" trace="DefaultModifier_old$PN" />
       <node id="7197377355157103211" at="24,0,26,0" concept="2" trace="check_DefaultMethodDeclarationV8_NonTypesystemRule#()V" />
       <node id="7197377355157103239" at="29,60,32,5" concept="4" />
       <node id="7197377355157103211" at="41,0,44,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -302,7 +302,7 @@
       <node id="7510080655530093255" at="47,30,48,17" concept="7" />
       <node id="7510080655530159035" at="51,36,52,43" concept="7" />
       <node id="7510080655530159035" at="53,5,54,16" concept="7" />
-      <node id="7510080655530093255" at="58,0,59,0" concept="8" trace="SuperInterfaceMethodCall_old$VW" />
+      <node id="7510080655530093255" at="58,0,59,0" concept="8" trace="SuperInterfaceMethodCall_old$MH" />
       <node id="7510080655530093255" at="24,0,26,0" concept="2" trace="check_SuperInterfaceMethodCall_NonTypesystemRule#()V" />
       <node id="7510080655530179476" at="29,60,32,5" concept="4" />
       <node id="7510080655530093255" at="41,0,44,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />

@@ -28,7 +28,7 @@ public class RefactoringParameterReference_SubstituteMenu extends SubstituteMenu
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_f634ej_a(), CONCEPTS.RefactoringParameterReference$gK));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_f634ej_a(), CONCEPTS.RefactoringParameterReference$Hp));
     result.add(new SMP_Subconcepts_f634ej_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class RefactoringParameterReference_SubstituteMenu extends SubstituteMenu
 
     public SMP_ReferenceScope_f634ej_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.RefactoringParameterReference$gK, LINKS.refactoringParameter$Q8o0);
+      super((SAbstractConcept) CONCEPTS.RefactoringParameterReference$Hp, LINKS.refactoringParameter$o4OD);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class RefactoringParameterReference_SubstituteMenu extends SubstituteMenu
   }
   public class SMP_Subconcepts_f634ej_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.RefactoringParameterReference$gK);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.RefactoringParameterReference$Hp);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class RefactoringParameterReference_SubstituteMenu extends SubstituteMenu
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RefactoringParameterReference$gK = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77cda06L, "jetbrains.mps.lang.refactoring.structure.RefactoringParameterReference");
+    /*package*/ static final SConcept RefactoringParameterReference$Hp = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77cda06L, "jetbrains.mps.lang.refactoring.structure.RefactoringParameterReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink refactoringParameter$Q8o0 = MetaAdapterFactory.getReferenceLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77cda06L, 0x5fb04b74a77cda07L, "refactoringParameter");
+    /*package*/ static final SReferenceLink refactoringParameter$o4OD = MetaAdapterFactory.getReferenceLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77cda06L, 0x5fb04b74a77cda07L, "refactoringParameter");
   }
 }

@@ -30,8 +30,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @GeneratedClass(node = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)/4498927700296444643", model = "r:ba41e9c6-15ca-4a47-95f2-6a81c2318547(jetbrains.mps.checkers)")
 public class UsedLanguagesChecker extends AbstractNodeCheckerInEditor implements IChecker<SNode, NodeReportItem> {
-  private final SConcept C = CONCEPTS.SideTransformInfo$l0;
-  private final SContainmentLink L = LINKS.smodelAttribute$jXFL;
+  private final SConcept C = CONCEPTS.SideTransformInfo$Hi;
+  private final SContainmentLink L = LINKS.smodelAttribute$KJ43;
 
   @Override
   public IssueKindReportItem.CheckerCategory getCategory() {
@@ -112,10 +112,10 @@ public class UsedLanguagesChecker extends AbstractNodeCheckerInEditor implements
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SideTransformInfo$l0 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7ae9194dL, "jetbrains.mps.lang.core.structure.SideTransformInfo");
+    /*package*/ static final SConcept SideTransformInfo$Hi = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7ae9194dL, "jetbrains.mps.lang.core.structure.SideTransformInfo");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink smodelAttribute$KJ43 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 }

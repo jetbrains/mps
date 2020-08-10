@@ -37,7 +37,7 @@ public final class ChangeStaticInInner_Intention extends AbstractIntentionDescri
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (boolean) Classifier__BehaviorDescriptor.isInner_idsWroEc0xXl.invoke(node) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Interface$Kp)) && (SNodeOperations.isInstanceOf(node, CONCEPTS.Interface$Kp) || SNodeOperations.isInstanceOf(node, CONCEPTS.ClassConcept$IY));
+    return (boolean) Classifier__BehaviorDescriptor.isInner_idsWroEc0xXl.invoke(node) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Interface$db)) && (SNodeOperations.isInstanceOf(node, CONCEPTS.Interface$db) || SNodeOperations.isInstanceOf(node, CONCEPTS.ClassConcept$bK));
   }
   @Override
   public boolean isSurroundWith() {
@@ -54,11 +54,11 @@ public final class ChangeStaticInInner_Intention extends AbstractIntentionDescri
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return "Make " + ((!(SPropertyOperations.getBoolean(node, PROPS.nonStatic$vRvm)) ? "Non" : "")) + " Static";
+      return "Make " + ((!(SPropertyOperations.getBoolean(node, PROPS.nonStatic$aWW8)) ? "Non" : "")) + " Static";
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.assign(node, PROPS.nonStatic$vRvm, !(SPropertyOperations.getBoolean(node, PROPS.nonStatic$vRvm)));
+      SPropertyOperations.assign(node, PROPS.nonStatic$aWW8, !(SPropertyOperations.getBoolean(node, PROPS.nonStatic$aWW8)));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -67,11 +67,11 @@ public final class ChangeStaticInInner_Intention extends AbstractIntentionDescri
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty nonStatic$vRvm = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x73c6d8a8c021f99L, "nonStatic");
+    /*package*/ static final SProperty nonStatic$aWW8 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x73c6d8a8c021f99L, "nonStatic");
   }
 }

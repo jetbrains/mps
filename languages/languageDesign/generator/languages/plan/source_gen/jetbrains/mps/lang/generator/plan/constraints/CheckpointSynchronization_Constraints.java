@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CheckpointSynchronization_Constraints extends BaseConstraintsDescriptor {
   public CheckpointSynchronization_Constraints() {
-    super(CONCEPTS.CheckpointSynchronization$Eg);
+    super(CONCEPTS.CheckpointSynchronization$DV);
   }
 
   @Override
@@ -39,20 +39,20 @@ public class CheckpointSynchronization_Constraints extends BaseConstraintsDescri
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
     // do not allow synchronize with a checkpoint that references another one, always use original CP declaration 
-    if (link.equals(LINKS.checkpoint$7IuJ)) {
-      return SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.DeclaredCheckpointSpec$HY) || SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.InPlaceCheckpointRefSpec$Hr);
+    if (link.equals(LINKS.checkpoint$18uq)) {
+      return SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.DeclaredCheckpointSpec$HD) || SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.InPlaceCheckpointRefSpec$H6);
     }
     return true;
   }
   private static final SNodePointer canBeParentBreakingPoint = new SNodePointer("r:e831e054-7bbb-4c7b-aebf-31582c0dfa61(jetbrains.mps.lang.generator.plan.constraints)", "3750601816087336758");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CheckpointSynchronization$Eg = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0xc11e5088a794d07L, "jetbrains.mps.lang.generator.plan.structure.CheckpointSynchronization");
-    /*package*/ static final SConcept InPlaceCheckpointRefSpec$Hr = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb32cL, "jetbrains.mps.lang.generator.plan.structure.InPlaceCheckpointRefSpec");
-    /*package*/ static final SConcept DeclaredCheckpointSpec$HY = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb2fdL, "jetbrains.mps.lang.generator.plan.structure.DeclaredCheckpointSpec");
+    /*package*/ static final SConcept CheckpointSynchronization$DV = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0xc11e5088a794d07L, "jetbrains.mps.lang.generator.plan.structure.CheckpointSynchronization");
+    /*package*/ static final SConcept InPlaceCheckpointRefSpec$H6 = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb32cL, "jetbrains.mps.lang.generator.plan.structure.InPlaceCheckpointRefSpec");
+    /*package*/ static final SConcept DeclaredCheckpointSpec$HD = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb2fdL, "jetbrains.mps.lang.generator.plan.structure.DeclaredCheckpointSpec");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink checkpoint$7IuJ = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0xc11e5088a794d07L, 0x340cd07aedd21238L, "checkpoint");
+    /*package*/ static final SContainmentLink checkpoint$18uq = MetaAdapterFactory.getContainmentLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0xc11e5088a794d07L, 0x340cd07aedd21238L, "checkpoint");
   }
 }

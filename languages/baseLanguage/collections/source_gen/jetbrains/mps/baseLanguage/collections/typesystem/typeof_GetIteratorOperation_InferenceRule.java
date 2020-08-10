@@ -37,7 +37,7 @@ public class typeof_GetIteratorOperation_InferenceRule extends AbstractInference
               {
                 SNode matchingNode_aqh9x4_a0a2a = typeCheckingContext.getExpandedNode(OPERAND);
                 if (matchingNode_aqh9x4_a0a2a != null) {
-                  matches_aqh9x4_a0a2a = matchingNode_aqh9x4_a0a2a.getConcept().isSubConceptOf(CONCEPTS.ListType$z$);
+                  matches_aqh9x4_a0a2a = matchingNode_aqh9x4_a0a2a.getConcept().isSubConceptOf(CONCEPTS.ListType$LR);
                 }
               }
               if (matches_aqh9x4_a0a2a) {
@@ -51,7 +51,7 @@ public class typeof_GetIteratorOperation_InferenceRule extends AbstractInference
                 {
                   SNode matchingNode_aqh9x4_b0a2a = typeCheckingContext.getExpandedNode(OPERAND);
                   if (matchingNode_aqh9x4_b0a2a != null) {
-                    matches_aqh9x4_b0a2a = matchingNode_aqh9x4_b0a2a.getConcept().isSubConceptOf(CONCEPTS.SetType$1N);
+                    matches_aqh9x4_b0a2a = matchingNode_aqh9x4_b0a2a.getConcept().isSubConceptOf(CONCEPTS.SetType$g6);
                   }
                 }
                 if (matches_aqh9x4_b0a2a) {
@@ -73,7 +73,7 @@ public class typeof_GetIteratorOperation_InferenceRule extends AbstractInference
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.GetIteratorOperation$yI;
+    return CONCEPTS.GetIteratorOperation$L1;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -127,8 +127,8 @@ public class typeof_GetIteratorOperation_InferenceRule extends AbstractInference
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ListType$z$ = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, "jetbrains.mps.baseLanguage.collections.structure.ListType");
-    /*package*/ static final SConcept SetType$1N = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, "jetbrains.mps.baseLanguage.collections.structure.SetType");
-    /*package*/ static final SConcept GetIteratorOperation$yI = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1201ecef58aL, "jetbrains.mps.baseLanguage.collections.structure.GetIteratorOperation");
+    /*package*/ static final SConcept ListType$LR = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, "jetbrains.mps.baseLanguage.collections.structure.ListType");
+    /*package*/ static final SConcept SetType$g6 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, "jetbrains.mps.baseLanguage.collections.structure.SetType");
+    /*package*/ static final SConcept GetIteratorOperation$L1 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1201ecef58aL, "jetbrains.mps.baseLanguage.collections.structure.GetIteratorOperation");
   }
 }

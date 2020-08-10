@@ -196,7 +196,7 @@
       <node id="7060824959893176543" at="172,103,173,80" concept="8" />
       <node id="7060824959893176543" at="173,80,174,245" concept="8" />
       <node id="7060824959893176543" at="174,245,175,20" concept="9" />
-      <node id="3308300503039683776" at="179,30,180,182" concept="14" />
+      <node id="3308300503039683776" at="179,30,180,183" concept="14" />
       <node id="3308300503039683776" at="183,103,184,80" concept="8" />
       <node id="3308300503039683776" at="184,80,185,243" concept="8" />
       <node id="3308300503039683776" at="185,243,186,20" concept="9" />
@@ -245,30 +245,30 @@
       <node id="3308300503039570164" at="305,80,306,241" concept="8" />
       <node id="3308300503039570164" at="306,241,307,20" concept="9" />
       <node id="4394627182934963716" at="311,28,312,178" concept="14" />
-      <node id="3308300503039570163" at="323,0,324,0" concept="12" trace="Step$zR" />
-      <node id="3308300503039570163" at="324,0,325,0" concept="12" trace="LeftTurn$xm" />
-      <node id="3308300503039570163" at="325,0,326,0" concept="12" trace="IsWall$dq" />
-      <node id="3308300503039570163" at="326,0,327,0" concept="12" trace="Not$Vv" />
-      <node id="3308300503039570163" at="327,0,328,0" concept="12" trace="IsMark$H2" />
-      <node id="3308300503039570163" at="328,0,329,0" concept="12" trace="IsFull$9y" />
-      <node id="3308300503039570163" at="329,0,330,0" concept="12" trace="IfStatement$GU" />
-      <node id="3308300503039570163" at="330,0,331,0" concept="12" trace="Repeat$qn" />
-      <node id="3308300503039570163" at="331,0,332,0" concept="12" trace="While$1T" />
-      <node id="3308300503039570163" at="332,0,333,0" concept="12" trace="Heading$ie" />
-      <node id="3308300503039570163" at="333,0,334,0" concept="12" trace="Looking$Tc" />
-      <node id="3308300503039570163" at="334,0,335,0" concept="12" trace="North$e" />
-      <node id="3308300503039570163" at="335,0,336,0" concept="12" trace="East$dj" />
-      <node id="3308300503039570163" at="336,0,337,0" concept="12" trace="South$sk" />
-      <node id="3308300503039570163" at="337,0,338,0" concept="12" trace="West$fN" />
-      <node id="3308300503039570163" at="338,0,339,0" concept="12" trace="RoutineDefinition$2l" />
-      <node id="3308300503039570163" at="339,0,340,0" concept="12" trace="RoutineCall$GX" />
-      <node id="3308300503039570163" at="340,0,341,0" concept="12" trace="CommandList$Mn" />
-      <node id="3308300503039570163" at="341,0,342,0" concept="12" trace="Drop$X4" />
-      <node id="3308300503039570163" at="342,0,343,0" concept="12" trace="Pick$4v" />
-      <node id="3308300503039570163" at="343,0,344,0" concept="12" trace="CommentLine$L0" />
-      <node id="3308300503039570163" at="344,0,345,0" concept="12" trace="TraceMessage$uj" />
-      <node id="3308300503039570163" at="345,0,346,0" concept="12" trace="Script$1X" />
-      <node id="3308300503039570163" at="346,0,347,0" concept="12" trace="Library$IO" />
+      <node id="3308300503039570163" at="323,0,324,0" concept="12" trace="Step$dM" />
+      <node id="3308300503039570163" at="324,0,325,0" concept="12" trace="LeftTurn$bh" />
+      <node id="3308300503039570163" at="325,0,326,0" concept="12" trace="IsWall$Rl" />
+      <node id="3308300503039570163" at="326,0,327,0" concept="12" trace="Not$_q" />
+      <node id="3308300503039570163" at="327,0,328,0" concept="12" trace="IsMark$mX" />
+      <node id="3308300503039570163" at="328,0,329,0" concept="12" trace="IsFull$Nt" />
+      <node id="3308300503039570163" at="329,0,330,0" concept="12" trace="IfStatement$mP" />
+      <node id="3308300503039570163" at="330,0,331,0" concept="12" trace="Repeat$4i" />
+      <node id="3308300503039570163" at="331,0,332,0" concept="12" trace="While$FO" />
+      <node id="3308300503039570163" at="332,0,333,0" concept="12" trace="Heading$W9" />
+      <node id="3308300503039570163" at="333,0,334,0" concept="12" trace="Looking$z7" />
+      <node id="3308300503039570163" at="334,0,335,0" concept="12" trace="North$E9" />
+      <node id="3308300503039570163" at="335,0,336,0" concept="12" trace="East$Re" />
+      <node id="3308300503039570163" at="336,0,337,0" concept="12" trace="South$6f" />
+      <node id="3308300503039570163" at="337,0,338,0" concept="12" trace="West$TI" />
+      <node id="3308300503039570163" at="338,0,339,0" concept="12" trace="RoutineDefinition$Gg" />
+      <node id="3308300503039570163" at="339,0,340,0" concept="12" trace="RoutineCall$mS" />
+      <node id="3308300503039570163" at="340,0,341,0" concept="12" trace="CommandList$si" />
+      <node id="3308300503039570163" at="341,0,342,0" concept="12" trace="Drop$AZ" />
+      <node id="3308300503039570163" at="342,0,343,0" concept="12" trace="Pick$Iq" />
+      <node id="3308300503039570163" at="343,0,344,0" concept="12" trace="CommentLine$qV" />
+      <node id="3308300503039570163" at="344,0,345,0" concept="12" trace="TraceMessage$8e" />
+      <node id="3308300503039570163" at="345,0,346,0" concept="12" trace="Script$FS" />
+      <node id="3308300503039570163" at="346,0,347,0" concept="12" trace="Library$oJ" />
       <node id="3308300503039580714" at="58,0,61,0" concept="1" trace="ReductionRule0#()V" />
       <node id="3308300503039647643" at="69,0,72,0" concept="1" trace="ReductionRule1#()V" />
       <node id="3308300503039647796" at="80,0,83,0" concept="1" trace="ReductionRule2#()V" />
@@ -336,7 +336,7 @@
       <scope id="3308300503039667448" at="146,29,147,183" />
       <scope id="3308300503039683662" at="157,29,158,185" />
       <scope id="7060824959893176543" at="168,30,169,185" />
-      <scope id="3308300503039683776" at="179,30,180,182" />
+      <scope id="3308300503039683776" at="179,30,180,183" />
       <scope id="3308300503039683792" at="190,30,191,182" />
       <scope id="3308300503039683806" at="201,30,202,183" />
       <scope id="3308300503039683821" at="212,30,213,182" />
@@ -3924,7 +3924,7 @@
       <node id="7060824959896164452" at="122,50,123,149" concept="3" />
       <node id="7060824959896164452" at="123,149,124,136" concept="3" />
       <node id="7060824959896164452" at="124,136,125,16" concept="9" />
-      <node id="7060824959896164452" at="131,0,132,0" concept="12" trace="Looking$Tc" />
+      <node id="7060824959896164452" at="131,0,132,0" concept="12" trace="Looking$z7" />
       <node id="7060824959896164452" at="33,0,36,0" concept="7" trace="getSwitchNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="7060824959896164452" at="36,0,39,0" concept="7" trace="getModifiesSwitch#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="7060824959896164452" at="39,0,42,0" concept="7" trace="getReductionRules#()Ljava/lang/Iterable;" />

@@ -52,51 +52,51 @@ public class RemoveUsagesOfDeprecatedProperty extends MigrationScriptBase {
           return scope_pu917e_a0e_0;
         }
       };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IBLDeprecatable$Hv, false)).where(new IWhereFilter<SNode>() {
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IBLDeprecatable$ah, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SPropertyOperations.getBoolean(it, PROPS.isDeprecated$ymfh) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(it, CONCEPTS.HasAnnotation$cu, true, false), LINKS.annotation$4YGW)).all(new IWhereFilter<SNode>() {
+          return SPropertyOperations.getBoolean(it, PROPS.isDeprecated$drG3) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(it, CONCEPTS.HasAnnotation$Dg, true, false), LINKS.annotation$K49I)).all(new IWhereFilter<SNode>() {
             public boolean accept(SNode annotation) {
-              SNode annotationLink = SLinkOperations.getTarget(annotation, LINKS.annotation$lXdy);
-              if ((annotation == null) || (annotationLink == null) || SPropertyOperations.getString(annotationLink, PROPS.name$lA7v) == null) {
+              SNode annotationLink = SLinkOperations.getTarget(annotation, LINKS.annotation$12Ek);
+              if ((annotation == null) || (annotationLink == null) || SPropertyOperations.getString(annotationLink, PROPS.name$MnvL) == null) {
                 return true;
               }
-              return !(SPropertyOperations.getString(annotationLink, PROPS.name$lA7v).equals("Deprecated"));
+              return !(SPropertyOperations.getString(annotationLink, PROPS.name$MnvL).equals("Deprecated"));
             }
           });
         }
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           IBLDeprecatable__BehaviorDescriptor.markDeprecated_id6Va_BJexupi.invoke(it);
-          SPropertyOperations.set(it, PROPS.isDeprecated$ymfh, false);
+          SPropertyOperations.set(it, PROPS.isDeprecated$drG3, false);
         }
       });
 
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IBLDeprecatable$Hv, false)).where(new IWhereFilter<SNode>() {
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IBLDeprecatable$ah, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SPropertyOperations.getBoolean(it, PROPS.isDeprecated$ymfh) && ListSequence.fromList(SNodeOperations.getChildren(it)).where(new IWhereFilter<SNode>() {
+          return SPropertyOperations.getBoolean(it, PROPS.isDeprecated$drG3) && ListSequence.fromList(SNodeOperations.getChildren(it)).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return SNodeOperations.isInstanceOf(it, CONCEPTS.BaseDocComment$pH);
+              return SNodeOperations.isInstanceOf(it, CONCEPTS.BaseDocComment$bU);
             }
           }).translate(new ITranslator2<SNode, SNode>() {
             public Iterable<SNode> translate(SNode it) {
-              return SNodeOperations.getNodeDescendants(it, CONCEPTS.DeprecatedBlockDocTag$ma, false, new SAbstractConcept[]{});
+              return SNodeOperations.getNodeDescendants(it, CONCEPTS.DeprecatedBlockDocTag$8n, false, new SAbstractConcept[]{});
             }
           }).isEmpty();
         }
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           IBLDeprecatable__BehaviorDescriptor.markDeprecated_id6Va_BJexupi.invoke(it);
-          SPropertyOperations.set(it, PROPS.isDeprecated$ymfh, false);
+          SPropertyOperations.set(it, PROPS.isDeprecated$drG3, false);
         }
       });
 
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IBLDeprecatable$Hv, false)).where(new IWhereFilter<SNode>() {
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IBLDeprecatable$ah, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SPropertyOperations.getBoolean(it, PROPS.isDeprecated$ymfh);
+          return SPropertyOperations.getBoolean(it, PROPS.isDeprecated$drG3);
         }
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          SPropertyOperations.set(it, PROPS.isDeprecated$ymfh, false);
+          SPropertyOperations.set(it, PROPS.isDeprecated$drG3, false);
         }
       });
     }
@@ -111,13 +111,13 @@ public class RemoveUsagesOfDeprecatedProperty extends MigrationScriptBase {
           return scope_pu917e_a0f_0;
         }
       };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IBLDeprecatable$Hv, false)).where(new IWhereFilter<SNode>() {
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IBLDeprecatable$ah, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SPropertyOperations.getBoolean(it, PROPS.isDeprecated$ymfh);
+          return SPropertyOperations.getBoolean(it, PROPS.isDeprecated$drG3);
         }
       }).select(new ISelector<SNode, Problem>() {
         public Problem select(SNode it) {
-          return DeprecatedConceptMemberNotMigratedProblem.deprecatedProperty(it, PROPS.isDeprecated$ymfh);
+          return DeprecatedConceptMemberNotMigratedProblem.deprecatedProperty(it, PROPS.isDeprecated$drG3);
         }
       });
     }
@@ -127,19 +127,19 @@ public class RemoveUsagesOfDeprecatedProperty extends MigrationScriptBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IBLDeprecatable$Hv = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d2ea8a339L, "jetbrains.mps.baseLanguage.structure.IBLDeprecatable");
-    /*package*/ static final SInterfaceConcept HasAnnotation$cu = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, "jetbrains.mps.baseLanguage.structure.HasAnnotation");
-    /*package*/ static final SConcept BaseDocComment$pH = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment");
-    /*package*/ static final SConcept DeprecatedBlockDocTag$ma = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L, "jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag");
+    /*package*/ static final SInterfaceConcept IBLDeprecatable$ah = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d2ea8a339L, "jetbrains.mps.baseLanguage.structure.IBLDeprecatable");
+    /*package*/ static final SInterfaceConcept HasAnnotation$Dg = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, "jetbrains.mps.baseLanguage.structure.HasAnnotation");
+    /*package*/ static final SConcept BaseDocComment$bU = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment");
+    /*package*/ static final SConcept DeprecatedBlockDocTag$8n = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L, "jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isDeprecated$ymfh = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d2ea8a339L, 0x11d2ea948a4L, "isDeprecated");
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isDeprecated$drG3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d2ea8a339L, 0x11d2ea948a4L, "isDeprecated");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
-    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink annotation$K49I = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SReferenceLink annotation$12Ek = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
   }
 }

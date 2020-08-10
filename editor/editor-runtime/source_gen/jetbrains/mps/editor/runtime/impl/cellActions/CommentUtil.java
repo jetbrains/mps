@@ -33,14 +33,14 @@ public class CommentUtil {
   public static SNode commentOut(@NotNull SNode node) {
     SNode parent = SNodeOperations.getParent(node);
     if (parent == null) {
-      throw new IllegalArgumentException("Node to comment has no parent. Node: " + ((String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$Sz, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw"))) + " Node id: " + node.getNodeId());
+      throw new IllegalArgumentException("Node to comment has no parent. Node: " + ((String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw"))) + " Node id: " + node.getNodeId());
     }
     SContainmentLink containmentLink = node.getContainmentLink();
     assert containmentLink != null;
     return new NodeCommenter(node).commentOut();
   }
   public static boolean isCommentedOut(@NotNull SNode node) {
-    return (SNodeOperations.getNodeAncestor(node, CONCEPTS.BaseCommentAttribute$Zd, false, false) != null);
+    return (SNodeOperations.getNodeAncestor(node, CONCEPTS.BaseCommentAttribute$nv, false, false) != null);
   }
 
   /**
@@ -52,7 +52,7 @@ public class CommentUtil {
   public static SNode uncomment(@NotNull SNode attribute) {
     SNode parent = SNodeOperations.getParent(attribute);
     if (parent == null) {
-      throw new IllegalArgumentException("Node to uncomment has no parent. Node: " + ((String) BHReflection.invoke0(attribute, CONCEPTS.BaseConcept$Sz, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw"))) + " Node id: " + attribute.getNodeId());
+      throw new IllegalArgumentException("Node to uncomment has no parent. Node: " + ((String) BHReflection.invoke0(attribute, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw"))) + " Node id: " + attribute.getNodeId());
     }
     return new NodeUncommenter(attribute).uncomment();
   }
@@ -61,9 +61,9 @@ public class CommentUtil {
     List<SNode> uncommented = ListSequence.fromList(new ArrayList<SNode>());
     ListSequence.fromList(uncommented).addSequence(Sequence.fromIterable(SNodeOperations.ofConcept(ListSequence.fromList(SNodeOperations.getChildren(container)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BaseCommentAttribute$Zd);
+        return SNodeOperations.isInstanceOf(it, CONCEPTS.BaseCommentAttribute$nv);
       }
-    }), CONCEPTS.BaseCommentAttribute$Zd)).select(new ISelector<SNode, SNode>() {
+    }), CONCEPTS.BaseCommentAttribute$nv)).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
         return uncomment(it);
       }
@@ -80,18 +80,18 @@ public class CommentUtil {
   }
 
   public static boolean isComment(SNode node) {
-    return SNodeOperations.isInstanceOf(node, CONCEPTS.BaseCommentAttribute$Zd);
+    return SNodeOperations.isInstanceOf(node, CONCEPTS.BaseCommentAttribute$nv);
   }
   public static SNode getCommentedNode(SNode comment) {
-    return SLinkOperations.getTarget(comment, LINKS.commentedNode$md7q);
+    return SLinkOperations.getTarget(comment, LINKS.commentedNode$MYvG);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
-    /*package*/ static final SConcept BaseCommentAttribute$Zd = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept BaseCommentAttribute$nv = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink commentedNode$md7q = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, 0x2ab99f0d2248e89dL, "commentedNode");
+    /*package*/ static final SContainmentLink commentedNode$MYvG = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, 0x2ab99f0d2248e89dL, "commentedNode");
   }
 }

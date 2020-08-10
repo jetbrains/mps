@@ -31,7 +31,7 @@ public final class ConceptFunctionParameter_nodeToPasteWrap__BehaviorDescriptor 
   }
 
   /*package*/ static SNode getWrapper_idhLhtllw(@NotNull SNode __thisNode__) {
-    return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.PasteWrapper$7H, false, false);
+    return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.PasteWrapper$Q0, false, false);
   }
 
   /*package*/ ConceptFunctionParameter_nodeToPasteWrap__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class ConceptFunctionParameter_nodeToPasteWrap__BehaviorDescriptor 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PasteWrapper$7H = MetaAdapterFactory.getConcept(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x11c51563250L, "jetbrains.mps.lang.actions.structure.PasteWrapper");
+    /*package*/ static final SConcept PasteWrapper$Q0 = MetaAdapterFactory.getConcept(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x11c51563250L, "jetbrains.mps.lang.actions.structure.PasteWrapper");
   }
 }

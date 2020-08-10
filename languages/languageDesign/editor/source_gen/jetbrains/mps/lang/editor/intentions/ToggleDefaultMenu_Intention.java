@@ -37,7 +37,7 @@ public final class ToggleDefaultMenu_Intention extends AbstractIntentionDescript
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
     // disable for legacy concepts 
-    return Objects.equals(SNodeOperations.getConcept(node), CONCEPTS.SubstituteMenu$v4) || Objects.equals(SNodeOperations.getConcept(node), CONCEPTS.TransformationMenu$ZK);
+    return Objects.equals(SNodeOperations.getConcept(node), CONCEPTS.SubstituteMenu$EF) || Objects.equals(SNodeOperations.getConcept(node), CONCEPTS.TransformationMenu$bn);
   }
   @Override
   public boolean isSurroundWith() {
@@ -71,7 +71,7 @@ public final class ToggleDefaultMenu_Intention extends AbstractIntentionDescript
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TransformationMenu$ZK = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0ac3ebaL, "jetbrains.mps.lang.editor.structure.TransformationMenu");
-    /*package*/ static final SConcept SubstituteMenu$v4 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a0078L, "jetbrains.mps.lang.editor.structure.SubstituteMenu");
+    /*package*/ static final SConcept TransformationMenu$bn = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0ac3ebaL, "jetbrains.mps.lang.editor.structure.TransformationMenu");
+    /*package*/ static final SConcept SubstituteMenu$EF = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a0078L, "jetbrains.mps.lang.editor.structure.SubstituteMenu");
   }
 }

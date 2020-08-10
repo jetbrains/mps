@@ -26,7 +26,7 @@ public class typeof_ToIdFunctionParameter_InferenceRule extends AbstractInferenc
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ToIdFunctionParameter$12;
+    return CONCEPTS.ToIdFunctionParameter$SP;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,6 +43,6 @@ public class typeof_ToIdFunctionParameter_InferenceRule extends AbstractInferenc
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ToIdFunctionParameter$12 = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xd0b2f9de3724d68L, "jetbrains.mps.lang.editor.diagram.structure.ToIdFunctionParameter");
+    /*package*/ static final SConcept ToIdFunctionParameter$SP = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xd0b2f9de3724d68L, "jetbrains.mps.lang.editor.diagram.structure.ToIdFunctionParameter");
   }
 }

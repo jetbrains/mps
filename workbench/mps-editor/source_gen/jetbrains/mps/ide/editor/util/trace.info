@@ -782,7 +782,7 @@
       <node id="6984321651747553145" at="38,17,39,52" concept="10" />
       <node id="6984321651747553149" at="40,15,41,24" concept="10" />
       <node id="6984321651747553161" at="43,44,44,22" concept="10" />
-      <node id="6984321651747607765" at="51,0,52,0" concept="12" trace="INamedConcept$nV" />
+      <node id="6984321651747607765" at="51,0,52,0" concept="12" trace="INamedConcept$Kd" />
       <node id="6984321651747609356" at="22,0,24,0" concept="8" trace="create#(Lorg/jetbrains/mps/openapi/module/SRepository;)Lcom/intellij/util/Function;" />
       <node id="123992983530907549" at="35,37,38,17" concept="7" />
       <node id="6984321651747553140" at="34,73,40,15" concept="7" />

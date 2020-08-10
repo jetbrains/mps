@@ -25,7 +25,7 @@ public class Try_DeleteResources {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         if (!(DeletionApproverUtil.approve(editorContext, node, "tryResources"))) {
-          ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.resource$Abww)).clear();
+          ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.resource$hgXi)).clear();
         }
       }
 
@@ -74,6 +74,6 @@ public class Try_DeleteResources {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink resource$Abww = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x4a434b86a54515feL, "resource");
+    /*package*/ static final SContainmentLink resource$hgXi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x4a434b86a54515feL, "resource");
   }
 }

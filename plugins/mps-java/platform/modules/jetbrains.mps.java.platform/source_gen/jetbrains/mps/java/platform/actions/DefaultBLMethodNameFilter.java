@@ -33,12 +33,12 @@ public class DefaultBLMethodNameFilter implements Function<SNodeReference, Strin
       @Override
       public String compute() {
         SNode node = SPointerOperations.resolveNode(ptr, myRepo);
-        if (SNodeOperations.isInstanceOf(node, CONCEPTS.MethodDeclaration$93)) {
-          SNode containingClassifier = SNodeOperations.getNodeAncestor(node, CONCEPTS.Classifier$hJ, false, false);
+        if (SNodeOperations.isInstanceOf(node, CONCEPTS.MethodDeclaration$_P)) {
+          SNode containingClassifier = SNodeOperations.getNodeAncestor(node, CONCEPTS.Classifier$Ix, false, false);
           if (containingClassifier != null) {
-            return NameUtil.shortNameFromLongName(((String) BHReflection.invoke0(containingClassifier, CONCEPTS.INamedConcept$nV, SMethodTrimmedId.create("getFqName", null, "hEwIO9y"))));
+            return NameUtil.shortNameFromLongName(((String) BHReflection.invoke0(containingClassifier, CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y"))));
           }
-          return ((String) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.MethodDeclaration$93), CONCEPTS.INamedConcept$nV, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+          return ((String) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.MethodDeclaration$_P), CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
         } else if (node != null) {
           return ((SNode) node).getName();
         }
@@ -49,8 +49,8 @@ public class DefaultBLMethodNameFilter implements Function<SNodeReference, Strin
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
-    /*package*/ static final SConcept MethodDeclaration$93 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, "jetbrains.mps.baseLanguage.structure.MethodDeclaration");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept MethodDeclaration$_P = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, "jetbrains.mps.baseLanguage.structure.MethodDeclaration");
   }
 }

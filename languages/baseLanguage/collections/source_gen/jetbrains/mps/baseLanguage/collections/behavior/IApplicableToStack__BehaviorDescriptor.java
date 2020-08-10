@@ -33,7 +33,7 @@ public final class IApplicableToStack__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static List<SNode> getApplicableTypes_id5cL0w3DYzxf(@NotNull SAbstractConcept __thisConcept__) {
-    List<SNode> result = IApplicableToNothing__BehaviorDescriptor.getApplicableTypes_id5cL0w3DYzxf.invokeSuper(__thisConcept__, CONCEPTS.IApplicableToStack$gn);
+    List<SNode> result = IApplicableToNothing__BehaviorDescriptor.getApplicableTypes_id5cL0w3DYzxf.invokeSuper(__thisConcept__, CONCEPTS.IApplicableToStack$uE);
     ListSequence.fromList(result).addElement(_quotation_createNode_r7s30m_a0a1a0());
     return result;
   }
@@ -94,6 +94,6 @@ public final class IApplicableToStack__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IApplicableToStack$gn = MetaAdapterFactory.getInterfaceConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x53310200e8d9eefdL, "jetbrains.mps.baseLanguage.collections.structure.IApplicableToStack");
+    /*package*/ static final SInterfaceConcept IApplicableToStack$uE = MetaAdapterFactory.getInterfaceConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x53310200e8d9eefdL, "jetbrains.mps.baseLanguage.collections.structure.IApplicableToStack");
   }
 }

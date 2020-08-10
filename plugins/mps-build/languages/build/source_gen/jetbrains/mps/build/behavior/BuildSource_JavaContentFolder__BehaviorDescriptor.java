@@ -36,7 +36,7 @@ public final class BuildSource_JavaContentFolder__BehaviorDescriptor extends Bas
   }
 
   /*package*/ static String getAntPath_id24CrdeMZy0h(@NotNull SNode __thisNode__, Context context) {
-    return BuildSourcePath__BehaviorDescriptor.getAntPath_id7ro1ZztyOh5.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildSource_JavaContentRoot$Rx), LINKS.basePath$XrKw), context) + "/" + SPropertyOperations.getString(__thisNode__, PROPS.relativePath$45sw);
+    return BuildSourcePath__BehaviorDescriptor.getAntPath_id7ro1ZztyOh5.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildSource_JavaContentRoot$q4), LINKS.basePath$98j3), context) + "/" + SPropertyOperations.getString(__thisNode__, PROPS.relativePath$fLZ3);
   }
 
   /*package*/ BuildSource_JavaContentFolder__BehaviorDescriptor() {
@@ -86,14 +86,14 @@ public final class BuildSource_JavaContentFolder__BehaviorDescriptor extends Bas
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildSource_JavaContentRoot$Rx = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc52L, "jetbrains.mps.build.structure.BuildSource_JavaContentRoot");
+    /*package*/ static final SConcept BuildSource_JavaContentRoot$q4 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc52L, "jetbrains.mps.build.structure.BuildSource_JavaContentRoot");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink basePath$XrKw = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc52L, 0x668c6cfbafacdc53L, "basePath");
+    /*package*/ static final SContainmentLink basePath$98j3 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc52L, 0x668c6cfbafacdc53L, "basePath");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty relativePath$45sw = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263ae7d4319546c6L, 0x263ae7d4319546c7L, "relativePath");
+    /*package*/ static final SProperty relativePath$fLZ3 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263ae7d4319546c6L, 0x263ae7d4319546c7L, "relativePath");
   }
 }

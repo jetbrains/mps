@@ -22,11 +22,11 @@ public class typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule extend
     {
       SNode _nodeToCheck_1029348928467 = highLevelValue_ConceptFunctionParameter;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:3883084c-f018-4330-aab0-6829350c4b17(jetbrains.mps.debugger.java.customViewers.typesystem)", "43370322128303945", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:3883084c-f018-4330-aab0-6829350c4b17(jetbrains.mps.debugger.java.customViewers.typesystem)", "43370322128303942", true), (SNode) check_vmwfy8_a1a0c0a0b(SNodeOperations.getNodeAncestor(highLevelValue_ConceptFunctionParameter, CONCEPTS.HighLevelCustomViewer$cJ, false, false)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:3883084c-f018-4330-aab0-6829350c4b17(jetbrains.mps.debugger.java.customViewers.typesystem)", "43370322128303942", true), (SNode) check_vmwfy8_a1a0c0a0b(SNodeOperations.getNodeAncestor(highLevelValue_ConceptFunctionParameter, CONCEPTS.HighLevelCustomViewer$Bb, false, false)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.HighLevelValue_ConceptFunctionParameter$pD;
+    return CONCEPTS.HighLevelValue_ConceptFunctionParameter$O5;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -36,17 +36,17 @@ public class typeof_HighLevelValue_ConceptFunctionParameter_InferenceRule extend
   }
   private static SNode check_vmwfy8_a1a0c0a0b(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
-      return SLinkOperations.getTarget(checkedDotOperand, LINKS.valueType$D$sv);
+      return SLinkOperations.getTarget(checkedDotOperand, LINKS.valueType$ShQV);
     }
     return null;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept HighLevelCustomViewer$cJ = MetaAdapterFactory.getConcept(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x97038071a3bfa40L, "jetbrains.mps.debugger.java.customViewers.structure.HighLevelCustomViewer");
-    /*package*/ static final SConcept HighLevelValue_ConceptFunctionParameter$pD = MetaAdapterFactory.getConcept(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x9a1514043ffbadL, "jetbrains.mps.debugger.java.customViewers.structure.HighLevelValue_ConceptFunctionParameter");
+    /*package*/ static final SConcept HighLevelCustomViewer$Bb = MetaAdapterFactory.getConcept(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x97038071a3bfa40L, "jetbrains.mps.debugger.java.customViewers.structure.HighLevelCustomViewer");
+    /*package*/ static final SConcept HighLevelValue_ConceptFunctionParameter$O5 = MetaAdapterFactory.getConcept(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x9a1514043ffbadL, "jetbrains.mps.debugger.java.customViewers.structure.HighLevelValue_ConceptFunctionParameter");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink valueType$D$sv = MetaAdapterFactory.getContainmentLink(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x97038071a3bfa40L, 0x9a1514043fbc1aL, "valueType");
+    /*package*/ static final SContainmentLink valueType$ShQV = MetaAdapterFactory.getContainmentLink(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x97038071a3bfa40L, 0x9a1514043fbc1aL, "valueType");
   }
 }

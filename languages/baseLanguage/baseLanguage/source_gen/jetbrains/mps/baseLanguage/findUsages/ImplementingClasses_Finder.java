@@ -33,7 +33,7 @@ public class ImplementingClasses_Finder extends GeneratedFinder {
   }
   @Override
   public SAbstractConcept getSConcept() {
-    return CONCEPTS.Interface$Kp;
+    return CONCEPTS.Interface$db;
   }
 
   @Override
@@ -50,9 +50,9 @@ public class ImplementingClasses_Finder extends GeneratedFinder {
                   SNode nodeParam = (SNode) searchResult.getObject();
                   new _FunctionTypes._void_P1_E0<SNode>() {
                     public void invoke(SNode interfaceNode) {
-                      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(interfaceNode), CONCEPTS.ClassConcept$IY)) {
+                      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(interfaceNode), CONCEPTS.ClassConcept$bK)) {
                         // class implements interface case 
-                        if (SNodeOperations.hasRole(interfaceNode, LINKS.implementedInterface$KoQU)) {
+                        if (SNodeOperations.hasRole(interfaceNode, LINKS.implementedInterface$rujG)) {
                           callback.onUsageFound(createSingleResult(SNodeOperations.getParent(interfaceNode)));
                           FindUtils.searchForResults(monitor.subTask(1), new IFinder.FindCallback() {
                             public void onUsageFound(@NotNull SearchResult<?> searchResult) {
@@ -68,7 +68,7 @@ public class ImplementingClasses_Finder extends GeneratedFinder {
                             }
                           }, new SearchQuery(SNodeOperations.getParent(interfaceNode), scope), FindUtils.getFinder("jetbrains.mps.baseLanguage.findUsages.DerivedClasses_Finder"));
                         }
-                      } else if (SNodeOperations.isInstanceOf(interfaceNode, CONCEPTS.AnonymousClass$aF)) {
+                      } else if (SNodeOperations.isInstanceOf(interfaceNode, CONCEPTS.AnonymousClass$Bt)) {
                         // anonymous class case 
                         callback.onUsageFound(createSingleResult(interfaceNode));
                       }
@@ -97,12 +97,12 @@ public class ImplementingClasses_Finder extends GeneratedFinder {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept AnonymousClass$aF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink implementedInterface$KoQU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
+    /*package*/ static final SContainmentLink implementedInterface$rujG = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
   }
 }

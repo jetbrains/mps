@@ -31,7 +31,7 @@ public final class BaseURLLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getGeneratedClassName_id46nPloe$m0J(@NotNull SNode __thisNode__) {
-    return "URLLiteral_" + SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v);
+    return "URLLiteral_" + SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL);
   }
 
   /*package*/ BaseURLLiteral__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class BaseURLLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

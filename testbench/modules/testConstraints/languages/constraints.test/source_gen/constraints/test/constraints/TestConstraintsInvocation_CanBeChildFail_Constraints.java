@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TestConstraintsInvocation_CanBeChildFail_Constraints extends BaseConstraintsDescriptor {
   public TestConstraintsInvocation_CanBeChildFail_Constraints() {
-    super(CONCEPTS.TestConstraintsInvocation_CanBeChildFail$RL);
+    super(CONCEPTS.TestConstraintsInvocation_CanBeChildFail$TJ);
   }
 
   @Override
@@ -41,6 +41,6 @@ public class TestConstraintsInvocation_CanBeChildFail_Constraints extends BaseCo
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:6789573d-c842-4805-bb3b-05fd4fbf786e(constraints.test.constraints)", "730305212589427430");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestConstraintsInvocation_CanBeChildFail$RL = MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x7438d976714223eaL, "constraints.test.structure.TestConstraintsInvocation_CanBeChildFail");
+    /*package*/ static final SConcept TestConstraintsInvocation_CanBeChildFail$TJ = MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x7438d976714223eaL, "constraints.test.structure.TestConstraintsInvocation_CanBeChildFail");
   }
 }

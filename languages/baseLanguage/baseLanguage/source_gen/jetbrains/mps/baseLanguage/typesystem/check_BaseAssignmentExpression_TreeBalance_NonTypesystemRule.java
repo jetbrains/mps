@@ -20,21 +20,21 @@ public class check_BaseAssignmentExpression_TreeBalance_NonTypesystemRule extend
   public check_BaseAssignmentExpression_TreeBalance_NonTypesystemRule() {
   }
   public void applyRule(final SNode baseAssignmentExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(baseAssignmentExpression), CONCEPTS.BinaryOperation$vf)) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(baseAssignmentExpression), CONCEPTS.BinaryOperation$W1)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(baseAssignmentExpression, "Unbalanced assignment expression", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8526811989163701544", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.RebalanceBaseAssignmentExpression_QuickFix", "8526811989163705231", true);
           intentionProvider.putArgument("child", baseAssignmentExpression);
-          intentionProvider.putArgument("parent", SNodeOperations.cast(SNodeOperations.getParent(baseAssignmentExpression), CONCEPTS.BinaryOperation$vf));
+          intentionProvider.putArgument("parent", SNodeOperations.cast(SNodeOperations.getParent(baseAssignmentExpression), CONCEPTS.BinaryOperation$W1));
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BaseAssignmentExpression$oO;
+    return CONCEPTS.BaseAssignmentExpression$PA;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -44,7 +44,7 @@ public class check_BaseAssignmentExpression_TreeBalance_NonTypesystemRule extend
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BinaryOperation$vf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
-    /*package*/ static final SConcept BaseAssignmentExpression$oO = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, "jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression");
+    /*package*/ static final SConcept BinaryOperation$W1 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
+    /*package*/ static final SConcept BaseAssignmentExpression$PA = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, "jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression");
   }
 }

@@ -80,7 +80,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     public ReplaceWith_SymbolClassRegexp_cellMenu_4p4aum_a0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return CONCEPTS.SymbolClassRegexp$5M;
+      return CONCEPTS.SymbolClassRegexp$IA;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -108,10 +108,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.part$K$JA;
+      return LINKS.part$$2oq;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.SymbolClassPart$qA;
+      return CONCEPTS.SymbolClassPart$3q;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -121,7 +121,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(partListHandler_4p4aum_b0.this.getNode(), LINKS.part$K$JA));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(partListHandler_4p4aum_b0.this.getNode(), LINKS.part$$2oq));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -173,11 +173,11 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SymbolClassRegexp$5M = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178e2916aL, "jetbrains.mps.baseLanguage.regexp.structure.SymbolClassRegexp");
-    /*package*/ static final SConcept SymbolClassPart$qA = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111791aa602L, "jetbrains.mps.baseLanguage.regexp.structure.SymbolClassPart");
+    /*package*/ static final SConcept SymbolClassRegexp$IA = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178e2916aL, "jetbrains.mps.baseLanguage.regexp.structure.SymbolClassRegexp");
+    /*package*/ static final SConcept SymbolClassPart$3q = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111791aa602L, "jetbrains.mps.baseLanguage.regexp.structure.SymbolClassPart");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink part$K$JA = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178e2916aL, 0x11179171739L, "part");
+    /*package*/ static final SContainmentLink part$$2oq = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178e2916aL, 0x11179171739L, "part");
   }
 }

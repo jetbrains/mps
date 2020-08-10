@@ -36,7 +36,7 @@ public final class CreateReferenceOnClassifier_Intention extends AbstractIntenti
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (SNodeOperations.getNodeAncestor(SNodeOperations.getNodeAncestor(node, CONCEPTS.IClassifier$Cb, false, false), CONCEPTS.IClassifier$Cb, false, false) != null);
+    return (SNodeOperations.getNodeAncestor(SNodeOperations.getNodeAncestor(node, CONCEPTS.IClassifier$BZ, false, false), CONCEPTS.IClassifier$BZ, false, false) != null);
   }
   @Override
   public boolean isSurroundWith() {
@@ -57,8 +57,8 @@ public final class CreateReferenceOnClassifier_Intention extends AbstractIntenti
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode outerConcept = SNodeOperations.getNodeAncestor(SNodeOperations.getNodeAncestor(node, CONCEPTS.IClassifier$Cb, false, false), CONCEPTS.IClassifier$Cb, false, false);
-      SLinkOperations.setTarget(node, LINKS.classifier$Jeu5, outerConcept);
+      SNode outerConcept = SNodeOperations.getNodeAncestor(SNodeOperations.getNodeAncestor(node, CONCEPTS.IClassifier$BZ, false, false), CONCEPTS.IClassifier$BZ, false, false);
+      SLinkOperations.setTarget(node, LINKS.classifier$FItT, outerConcept);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -67,10 +67,10 @@ public final class CreateReferenceOnClassifier_Intention extends AbstractIntenti
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IClassifier$Cb = MetaAdapterFactory.getInterfaceConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc6b2af5L, "jetbrains.mps.baseLanguage.classifiers.structure.IClassifier");
+    /*package*/ static final SInterfaceConcept IClassifier$BZ = MetaAdapterFactory.getInterfaceConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc6b2af5L, "jetbrains.mps.baseLanguage.classifiers.structure.IClassifier");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$Jeu5 = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc751a81L, 0x11bc25d4bc3L, "classifier");
+    /*package*/ static final SReferenceLink classifier$FItT = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc751a81L, 0x11bc25d4bc3L, "classifier");
   }
 }

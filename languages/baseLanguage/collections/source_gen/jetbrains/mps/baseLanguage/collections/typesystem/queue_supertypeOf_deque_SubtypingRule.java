@@ -20,10 +20,10 @@ public class queue_supertypeOf_deque_SubtypingRule extends SubtypingRule_Runtime
   public queue_supertypeOf_deque_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode dequeType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    return _quotation_createNode_if93vt_a0a1(SLinkOperations.getTarget(dequeType, LINKS.elementType$V7ow));
+    return _quotation_createNode_if93vt_a0a1(SLinkOperations.getTarget(dequeType, LINKS.elementType$_rAN));
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.DequeType$X6;
+    return CONCEPTS.DequeType$bp;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -44,10 +44,10 @@ public class queue_supertypeOf_deque_SubtypingRule extends SubtypingRule_Runtime
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$V7ow = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4eec26fcbaf8c39bL, 0x4eec26fcbaf8c39cL, "elementType");
+    /*package*/ static final SContainmentLink elementType$_rAN = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4eec26fcbaf8c39bL, 0x4eec26fcbaf8c39cL, "elementType");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DequeType$X6 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x2e99e9ab97de7711L, "jetbrains.mps.baseLanguage.collections.structure.DequeType");
+    /*package*/ static final SConcept DequeType$bp = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x2e99e9ab97de7711L, "jetbrains.mps.baseLanguage.collections.structure.DequeType");
   }
 }

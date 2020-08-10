@@ -21,13 +21,13 @@ public class any_type_supertypeof_nulltype_InequationReplacementRule extends Abs
   public any_type_supertypeof_nulltype_InequationReplacementRule() {
   }
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
-    return !(SNodeOperations.isInstanceOf(supertype, CONCEPTS.RuntimeTypeVariable$Mk));
+    return !(SNodeOperations.isInstanceOf(supertype, CONCEPTS.RuntimeTypeVariable$4a));
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
-    if (SNodeOperations.isInstanceOf(supertype, CONCEPTS.NullType$do)) {
+    if (SNodeOperations.isInstanceOf(supertype, CONCEPTS.NullType$Ea)) {
       return;
     }
-    if (SNodeOperations.isInstanceOf(supertype, CONCEPTS.PrimitiveType$5) || SNodeOperations.isInstanceOf(supertype, CONCEPTS.PrimitiveTypeDescriptor$od)) {
+    if (SNodeOperations.isInstanceOf(supertype, CONCEPTS.PrimitiveType$sR) || SNodeOperations.isInstanceOf(supertype, CONCEPTS.PrimitiveTypeDescriptor$At)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(equationInfo.getNodeWithError(), "null type is not a subtype of primitive type", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1215774901982", null, errorTarget);
@@ -37,10 +37,10 @@ public class any_type_supertypeof_nulltype_InequationReplacementRule extends Abs
   }
   public boolean checkInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     boolean result_14532009 = true;
-    if (SNodeOperations.isInstanceOf(supertype, CONCEPTS.NullType$do)) {
+    if (SNodeOperations.isInstanceOf(supertype, CONCEPTS.NullType$Ea)) {
       return result_14532009;
     }
-    if (SNodeOperations.isInstanceOf(supertype, CONCEPTS.PrimitiveType$5) || SNodeOperations.isInstanceOf(supertype, CONCEPTS.PrimitiveTypeDescriptor$od)) {
+    if (SNodeOperations.isInstanceOf(supertype, CONCEPTS.PrimitiveType$sR) || SNodeOperations.isInstanceOf(supertype, CONCEPTS.PrimitiveTypeDescriptor$At)) {
       result_14532009 = false;
     }
     return result_14532009;
@@ -56,17 +56,17 @@ public class any_type_supertypeof_nulltype_InequationReplacementRule extends Abs
   }
 
   public SAbstractConcept getApplicableSubtypeConcept() {
-    return CONCEPTS.NullType$do;
+    return CONCEPTS.NullType$Ea;
   }
   public SAbstractConcept getApplicableSupertypeConcept() {
-    return CONCEPTS.BaseConcept$Sz;
+    return CONCEPTS.BaseConcept$gP;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RuntimeTypeVariable$Mk = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x113f84956fbL, "jetbrains.mps.lang.typesystem.structure.RuntimeTypeVariable");
-    /*package*/ static final SConcept NullType$do = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1185ff468caL, "jetbrains.mps.baseLanguage.structure.NullType");
-    /*package*/ static final SConcept PrimitiveTypeDescriptor$od = MetaAdapterFactory.getConcept(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cae1d1L, "jetbrains.mps.baseLanguage.blTypes.structure.PrimitiveTypeDescriptor");
-    /*package*/ static final SConcept PrimitiveType$5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
-    /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept RuntimeTypeVariable$4a = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x113f84956fbL, "jetbrains.mps.lang.typesystem.structure.RuntimeTypeVariable");
+    /*package*/ static final SConcept NullType$Ea = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1185ff468caL, "jetbrains.mps.baseLanguage.structure.NullType");
+    /*package*/ static final SConcept PrimitiveTypeDescriptor$At = MetaAdapterFactory.getConcept(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cae1d1L, "jetbrains.mps.baseLanguage.blTypes.structure.PrimitiveTypeDescriptor");
+    /*package*/ static final SConcept PrimitiveType$sR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }

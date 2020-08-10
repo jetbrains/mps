@@ -16,36 +16,36 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class copyPasteExtendingWithDefaultModifier_PastePostProcessor_0 implements PastePostProcessor {
   @Override
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.InstanceMethodDeclaration$An;
+    return CONCEPTS.InstanceMethodDeclaration$39;
   }
   @Override
   public void postProcessNode(SNode pastedNode) {
     // transforming the default modifier existence into the isAbstract flag 
     // copy never has modifiers 
     SNode methodParent = SNodeOperations.getParent(pastedNode);
-    if (SNodeOperations.isInstanceOf(methodParent, CONCEPTS.Classifier$hJ)) {
-      if (SNodeOperations.isInstanceOf(methodParent, CONCEPTS.Interface$Kp)) {
-        if (!(SPropertyOperations.getBoolean(pastedNode, PROPS.isAbstract$gogN))) {
-          SNodeFactoryOperations.addNewChild(pastedNode, LINKS.modifiers$m0, CONCEPTS.DefaultModifier$Z2);
+    if (SNodeOperations.isInstanceOf(methodParent, CONCEPTS.Classifier$Ix)) {
+      if (SNodeOperations.isInstanceOf(methodParent, CONCEPTS.Interface$db)) {
+        if (!(SPropertyOperations.getBoolean(pastedNode, PROPS.isAbstract$VtH_))) {
+          SNodeFactoryOperations.addNewChild(pastedNode, LINKS.modifiers$F5MM, CONCEPTS.DefaultModifier$rO);
         }
-        SPropertyOperations.assign(pastedNode, PROPS.isAbstract$gogN, false);
+        SPropertyOperations.assign(pastedNode, PROPS.isAbstract$VtH_, false);
         // i have always non-abstract methods in interfaces 
       }
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InstanceMethodDeclaration$An = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
-    /*package*/ static final SConcept DefaultModifier$Z2 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x40ed0df0ef40a332L, "jetbrains.mps.baseLanguage.structure.DefaultModifier");
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept DefaultModifier$rO = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x40ed0df0ef40a332L, "jetbrains.mps.baseLanguage.structure.DefaultModifier");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modifiers$m0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
+    /*package*/ static final SContainmentLink modifiers$F5MM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isAbstract$gogN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
+    /*package*/ static final SProperty isAbstract$VtH_ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
   }
 }

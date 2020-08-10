@@ -31,7 +31,7 @@ public final class CharacterSymbolClassPart__BehaviorDescriptor extends BaseBHDe
   }
 
   /*package*/ static String getRepresentation_id75Jea4IEZbM(@NotNull SNode __thisNode__) {
-    return ((String) SymbolClassPart__BehaviorDescriptor.escapeChar_id75Jea4IEVWQ.invoke(__thisNode__, SPropertyOperations.getString(__thisNode__, PROPS.character$APSn)));
+    return ((String) SymbolClassPart__BehaviorDescriptor.escapeChar_id75Jea4IEVWQ.invoke(__thisNode__, SPropertyOperations.getString(__thisNode__, PROPS.character$qjxb)));
   }
 
   /*package*/ CharacterSymbolClassPart__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class CharacterSymbolClassPart__BehaviorDescriptor extends BaseBHDe
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty character$APSn = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111791ae82fL, 0x111791b0b58L, "character");
+    /*package*/ static final SProperty character$qjxb = MetaAdapterFactory.getProperty(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111791ae82fL, 0x111791b0b58L, "character");
   }
 }

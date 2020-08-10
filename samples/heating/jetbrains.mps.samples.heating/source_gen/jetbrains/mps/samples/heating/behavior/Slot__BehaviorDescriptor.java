@@ -40,22 +40,22 @@ public final class Slot__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getCustomizedSlot_idNU25Mr18Am(@NotNull final SNode __thisNode__) {
-    SNode dailyPlan = SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.DailyPlan$jq);
+    SNode dailyPlan = SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.DailyPlan$zP);
     if (dailyPlan == null) {
       return null;
     }
 
     SNode found = null;
     List<SNode> visitedPlans = new ArrayList<SNode>();
-    while (found == null && (SLinkOperations.getTarget(dailyPlan, LINKS.customizes$TgmQ) != null)) {
+    while (found == null && (SLinkOperations.getTarget(dailyPlan, LINKS.customizes$o_Bh) != null)) {
       ListSequence.fromList(visitedPlans).addElement(dailyPlan);
-      dailyPlan = SLinkOperations.getTarget(SLinkOperations.getTarget(dailyPlan, LINKS.customizes$TgmQ), LINKS.target$M6U0);
+      dailyPlan = SLinkOperations.getTarget(SLinkOperations.getTarget(dailyPlan, LINKS.customizes$o_Bh), LINKS.target$hsar);
       if (ListSequence.fromList(visitedPlans).contains(dailyPlan)) {
         return null;
       }
-      found = ListSequence.fromList(SLinkOperations.getChildren(dailyPlan, LINKS.items$_bm7)).findFirst(new IWhereFilter<SNode>() {
+      found = ListSequence.fromList(SLinkOperations.getChildren(dailyPlan, LINKS.items$4wAy)).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SPropertyOperations.getInteger(it, PROPS.start$JHiC) == SPropertyOperations.getInteger(__thisNode__, PROPS.start$JHiC);
+          return SPropertyOperations.getInteger(it, PROPS.start$f2z3) == SPropertyOperations.getInteger(__thisNode__, PROPS.start$f2z3);
         }
       });
     }
@@ -114,16 +114,16 @@ public final class Slot__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DailyPlan$jq = MetaAdapterFactory.getConcept(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, "jetbrains.mps.samples.heating.structure.DailyPlan");
+    /*package*/ static final SConcept DailyPlan$zP = MetaAdapterFactory.getConcept(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, "jetbrains.mps.samples.heating.structure.DailyPlan");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink customizes$TgmQ = MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0xcfa085c9af881f8L, "customizes");
-    /*package*/ static final SReferenceLink target$M6U0 = MetaAdapterFactory.getReferenceLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0xcfa085c9af5e830L, 0xcfa085c9af5e831L, "target");
-    /*package*/ static final SContainmentLink items$_bm7 = MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0x4644aa4ce08aec57L, "items");
+    /*package*/ static final SContainmentLink customizes$o_Bh = MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0xcfa085c9af881f8L, "customizes");
+    /*package*/ static final SReferenceLink target$hsar = MetaAdapterFactory.getReferenceLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0xcfa085c9af5e830L, 0xcfa085c9af5e831L, "target");
+    /*package*/ static final SContainmentLink items$4wAy = MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0x4644aa4ce08aec57L, "items");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty start$JHiC = MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4f786d85fe288176L, 0x4f786d85fe28827cL, "start");
+    /*package*/ static final SProperty start$f2z3 = MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4f786d85fe288176L, 0x4f786d85fe28827cL, "start");
   }
 }

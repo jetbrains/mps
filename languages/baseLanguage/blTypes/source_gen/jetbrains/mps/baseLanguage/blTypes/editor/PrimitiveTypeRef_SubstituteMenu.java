@@ -28,7 +28,7 @@ public class PrimitiveTypeRef_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_i3rfjn_a(), CONCEPTS.PrimitiveTypeRef$bm));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_i3rfjn_a(), CONCEPTS.PrimitiveTypeRef$pA));
     result.add(new SMP_Subconcepts_i3rfjn_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class PrimitiveTypeRef_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_i3rfjn_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.PrimitiveTypeRef$bm, LINKS.descriptor$F0hD);
+      super((SAbstractConcept) CONCEPTS.PrimitiveTypeRef$pA, LINKS.descriptor$M2vT);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class PrimitiveTypeRef_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_i3rfjn_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.PrimitiveTypeRef$bm);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.PrimitiveTypeRef$pA);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class PrimitiveTypeRef_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PrimitiveTypeRef$bm = MetaAdapterFactory.getConcept(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, "jetbrains.mps.baseLanguage.blTypes.structure.PrimitiveTypeRef");
+    /*package*/ static final SConcept PrimitiveTypeRef$pA = MetaAdapterFactory.getConcept(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, "jetbrains.mps.baseLanguage.blTypes.structure.PrimitiveTypeRef");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink descriptor$F0hD = MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor");
+    /*package*/ static final SReferenceLink descriptor$M2vT = MetaAdapterFactory.getReferenceLink(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cbf8e8L, 0x10de9cbf8e7L, "descriptor");
   }
 }

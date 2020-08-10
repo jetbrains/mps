@@ -57,7 +57,7 @@ public class ReportFeedbackStatement_subs extends SubstituteMenuBase {
   public class SMP_Group_hskkdq_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return (SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.JobDefinition$Uq, false, false) != null);
+      return (SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.JobDefinition$Sj, false, false) != null);
     }
     @NotNull
     @Override
@@ -73,7 +73,7 @@ public class ReportFeedbackStatement_subs extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_hskkdq_a0(), CONCEPTS.ReportFeedbackStatement$uF));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_hskkdq_a0(), CONCEPTS.ReportFeedbackStatement$s$));
     }
     private class SMP_Param_hskkdq_a0 extends ParameterizedMenuPart<SEnumerationLiteral, SubstituteMenuItem, SubstituteMenuContext> {
       @NotNull
@@ -130,7 +130,7 @@ public class ReportFeedbackStatement_subs extends SubstituteMenuBase {
           private final SubstituteMenuContext _context;
           private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
-            super(CONCEPTS.ReportFeedbackStatement$uF, context);
+            super(CONCEPTS.ReportFeedbackStatement$s$, context);
             _context = context;
           }
 
@@ -150,7 +150,7 @@ public class ReportFeedbackStatement_subs extends SubstituteMenuBase {
           }
           @NotNull
           protected CompletionItemInformation createInformation(String pattern) {
-            return new CompletionItemInformation(myParameterObject, CONCEPTS.ReportFeedbackStatement$uF, getMatchingText(pattern), getDescriptionText(pattern));
+            return new CompletionItemInformation(myParameterObject, CONCEPTS.ReportFeedbackStatement$s$, getMatchingText(pattern), getDescriptionText(pattern));
           }
           @Nullable
           @Override
@@ -184,7 +184,7 @@ public class ReportFeedbackStatement_subs extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept JobDefinition$Uq = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a972dabL, "jetbrains.mps.make.script.structure.JobDefinition");
-    /*package*/ static final SConcept ReportFeedbackStatement$uF = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x32eac1b57fc1b828L, "jetbrains.mps.make.script.structure.ReportFeedbackStatement");
+    /*package*/ static final SConcept JobDefinition$Sj = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a972dabL, "jetbrains.mps.make.script.structure.JobDefinition");
+    /*package*/ static final SConcept ReportFeedbackStatement$s$ = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x32eac1b57fc1b828L, "jetbrains.mps.make.script.structure.ReportFeedbackStatement");
   }
 }

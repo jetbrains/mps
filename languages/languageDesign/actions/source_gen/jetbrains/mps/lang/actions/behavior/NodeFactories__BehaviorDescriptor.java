@@ -37,15 +37,15 @@ public final class NodeFactories__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static List<SNode> getBaseConceptCollection_id4$$3zrO3UBG(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
-    for (SNode nodeFactory : SLinkOperations.getChildren(__thisNode__, LINKS.nodeFactory$QJOs)) {
-      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(nodeFactory, LINKS.applicableConcept$R1jC));
+    for (SNode nodeFactory : SLinkOperations.getChildren(__thisNode__, LINKS.nodeFactory$8pyJ)) {
+      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(nodeFactory, LINKS.applicableConcept$8F1V));
     }
     return result;
   }
   /*package*/ static void setBaseConcept_id5r_35Ihc58c(@NotNull SNode __thisNode__, SNode baseConcept) {
     SNode nodeFactory = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x10dc7f1f421L, "jetbrains.mps.lang.actions.structure.NodeFactory"));
-    SLinkOperations.setTarget(nodeFactory, LINKS.applicableConcept$R1jC, baseConcept);
-    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.nodeFactory$QJOs)).addElement(nodeFactory);
+    SLinkOperations.setTarget(nodeFactory, LINKS.applicableConcept$8F1V, baseConcept);
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.nodeFactory$8pyJ)).addElement(nodeFactory);
   }
 
   /*package*/ NodeFactories__BehaviorDescriptor() {
@@ -98,7 +98,7 @@ public final class NodeFactories__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableConcept$R1jC = MetaAdapterFactory.getReferenceLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x10dc7f1f421L, 0x10dc7f54734L, "applicableConcept");
-    /*package*/ static final SContainmentLink nodeFactory$QJOs = MetaAdapterFactory.getContainmentLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x10dc7f106b2L, 0x10dc7f2c629L, "nodeFactory");
+    /*package*/ static final SReferenceLink applicableConcept$8F1V = MetaAdapterFactory.getReferenceLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x10dc7f1f421L, 0x10dc7f54734L, "applicableConcept");
+    /*package*/ static final SContainmentLink nodeFactory$8pyJ = MetaAdapterFactory.getContainmentLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x10dc7f106b2L, 0x10dc7f2c629L, "nodeFactory");
   }
 }

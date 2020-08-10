@@ -26,14 +26,14 @@ public class check_ConceptEqualsExpression_NonTypesystemRule extends AbstractNon
   public check_ConceptEqualsExpression_NonTypesystemRule() {
   }
   public void applyRule(final SNode equalsExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!(SNodeOperations.isInstanceOf(equalsExpression, CONCEPTS.EqualsExpression$lT)) && !(SNodeOperations.isInstanceOf(equalsExpression, CONCEPTS.NotEqualsExpression$Ib))) {
+    if (!(SNodeOperations.isInstanceOf(equalsExpression, CONCEPTS.EqualsExpression$MF)) && !(SNodeOperations.isInstanceOf(equalsExpression, CONCEPTS.NotEqualsExpression$aX))) {
       return;
     }
 
-    SNode left = SLinkOperations.getTarget(equalsExpression, LINKS.leftExpression$lndx);
-    SNode right = SLinkOperations.getTarget(equalsExpression, LINKS.rightExpression$li3b);
+    SNode left = SLinkOperations.getTarget(equalsExpression, LINKS.leftExpression$sEj);
+    SNode right = SLinkOperations.getTarget(equalsExpression, LINKS.rightExpression$nvX);
 
-    if (!(SNodeOperations.isInstanceOf(right, CONCEPTS.NullLiteral$q4)) && !(SNodeOperations.isInstanceOf(left, CONCEPTS.NullLiteral$q4)) && (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(left), _quotation_createNode_7d5ybh_b0a0a0f0b()) || TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(right), _quotation_createNode_7d5ybh_b0a0a0f0b_0()))) {
+    if (!(SNodeOperations.isInstanceOf(right, CONCEPTS.NullLiteral$QQ)) && !(SNodeOperations.isInstanceOf(left, CONCEPTS.NullLiteral$QQ)) && (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(left), _quotation_createNode_7d5ybh_b0a0a0f0b()) || TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(right), _quotation_createNode_7d5ybh_b0a0a0f0b_0()))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(equalsExpression, "Concepts are compared by reference", "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "7783579884694212461", null, errorTarget);
@@ -44,7 +44,7 @@ public class check_ConceptEqualsExpression_NonTypesystemRule extends AbstractNon
       }
       return;
     }
-    if (!(SNodeOperations.isInstanceOf(right, CONCEPTS.NullLiteral$q4)) && !(SNodeOperations.isInstanceOf(left, CONCEPTS.NullLiteral$q4)) && (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(left), _quotation_createNode_7d5ybh_b0a0a0g0b()) || TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(right), _quotation_createNode_7d5ybh_b0a0a0g0b_0()))) {
+    if (!(SNodeOperations.isInstanceOf(right, CONCEPTS.NullLiteral$QQ)) && !(SNodeOperations.isInstanceOf(left, CONCEPTS.NullLiteral$QQ)) && (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(left), _quotation_createNode_7d5ybh_b0a0a0g0b()) || TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(right), _quotation_createNode_7d5ybh_b0a0a0g0b_0()))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(equalsExpression, "Concept members are compared by reference", "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "7783579884694212075", null, errorTarget);
@@ -55,7 +55,7 @@ public class check_ConceptEqualsExpression_NonTypesystemRule extends AbstractNon
       }
       return;
     }
-    if (!(SNodeOperations.isInstanceOf(right, CONCEPTS.NullLiteral$q4)) && !(SNodeOperations.isInstanceOf(left, CONCEPTS.NullLiteral$q4)) && (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(left), _quotation_createNode_7d5ybh_b0a0a0h0b()) || TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(right), _quotation_createNode_7d5ybh_b0a0a0h0b_0()))) {
+    if (!(SNodeOperations.isInstanceOf(right, CONCEPTS.NullLiteral$QQ)) && !(SNodeOperations.isInstanceOf(left, CONCEPTS.NullLiteral$QQ)) && (TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(left), _quotation_createNode_7d5ybh_b0a0a0h0b()) || TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(right), _quotation_createNode_7d5ybh_b0a0a0h0b_0()))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(equalsExpression, "Node pointers are compared by reference", "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "2462552059668447969", null, errorTarget);
@@ -68,7 +68,7 @@ public class check_ConceptEqualsExpression_NonTypesystemRule extends AbstractNon
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BinaryOperation$vf;
+    return CONCEPTS.BinaryOperation$W1;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -116,14 +116,14 @@ public class check_ConceptEqualsExpression_NonTypesystemRule extends AbstractNon
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EqualsExpression$lT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b210L, "jetbrains.mps.baseLanguage.structure.EqualsExpression");
-    /*package*/ static final SConcept NotEqualsExpression$Ib = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf9e20e303fL, "jetbrains.mps.baseLanguage.structure.NotEqualsExpression");
-    /*package*/ static final SConcept NullLiteral$q4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cd6167L, "jetbrains.mps.baseLanguage.structure.NullLiteral");
-    /*package*/ static final SConcept BinaryOperation$vf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
+    /*package*/ static final SConcept EqualsExpression$MF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b210L, "jetbrains.mps.baseLanguage.structure.EqualsExpression");
+    /*package*/ static final SConcept NotEqualsExpression$aX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf9e20e303fL, "jetbrains.mps.baseLanguage.structure.NotEqualsExpression");
+    /*package*/ static final SConcept NullLiteral$QQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cd6167L, "jetbrains.mps.baseLanguage.structure.NullLiteral");
+    /*package*/ static final SConcept BinaryOperation$W1 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink leftExpression$sEj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$nvX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
   }
 }

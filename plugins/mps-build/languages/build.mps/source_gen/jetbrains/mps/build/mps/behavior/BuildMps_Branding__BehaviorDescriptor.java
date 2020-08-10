@@ -39,19 +39,19 @@ public final class BuildMps_Branding__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static String getVersionMajor_id3AMbuf0qvyc(@NotNull SNode __thisNode__, MacroHelper helper) {
-    return (((boolean) BuildMps_Branding__BehaviorDescriptor.isNewVersionFormat_id3AMbuf0qvWw.invoke(__thisNode__)) ? BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.version$yE6m), LINKS.versionMajor$ZrIT), helper) : SPropertyOperations.getInteger(__thisNode__, PROPS.major$SSKf) + "");
+    return (((boolean) BuildMps_Branding__BehaviorDescriptor.isNewVersionFormat_id3AMbuf0qvWw.invoke(__thisNode__)) ? BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.version$1QyI), LINKS.versionMajor$uCbh), helper) : SPropertyOperations.getInteger(__thisNode__, PROPS.major$o5cB) + "");
   }
   /*package*/ static String getVersionMinor_id3AMbuf0qHKA(@NotNull SNode __thisNode__, MacroHelper helper) {
-    return (((boolean) BuildMps_Branding__BehaviorDescriptor.isNewVersionFormat_id3AMbuf0qvWw.invoke(__thisNode__)) ? BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.version$yE6m), LINKS.versionMinor$ZrXU), helper) : SPropertyOperations.getInteger(__thisNode__, PROPS.minor$SSZg) + "");
+    return (((boolean) BuildMps_Branding__BehaviorDescriptor.isNewVersionFormat_id3AMbuf0qvWw.invoke(__thisNode__)) ? BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.version$1QyI), LINKS.versionMinor$uCqi), helper) : SPropertyOperations.getInteger(__thisNode__, PROPS.minor$o5rC) + "");
   }
   /*package*/ static String getVersionBugfixNr_id3AMbuf3$r6x(@NotNull SNode __thisNode__, MacroHelper helper) {
-    return (((boolean) BuildMps_Branding__BehaviorDescriptor.isNewVersionFormat_id3AMbuf0qvWw.invoke(__thisNode__)) ? BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.version$yE6m), LINKS.versionBugfixNr$ZscV), helper) : ((isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.bugfixNr$$9ss)) ? "." + SPropertyOperations.getString(__thisNode__, PROPS.bugfixNr$$9ss) : "")));
+    return (((boolean) BuildMps_Branding__BehaviorDescriptor.isNewVersionFormat_id3AMbuf0qvWw.invoke(__thisNode__)) ? BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.version$1QyI), LINKS.versionBugfixNr$uCDj), helper) : ((isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.bugfixNr$3lSO)) ? "." + SPropertyOperations.getString(__thisNode__, PROPS.bugfixNr$3lSO) : "")));
   }
   /*package*/ static String getVersionEap_id3AMbuf0qQ5F(@NotNull SNode __thisNode__, MacroHelper helper) {
-    return (((boolean) BuildMps_Branding__BehaviorDescriptor.isNewVersionFormat_id3AMbuf0qvWw.invoke(__thisNode__)) ? BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.version$yE6m), LINKS.versionEap$ZsrW), helper) : ((SPropertyOperations.getBoolean(__thisNode__, PROPS.eap$STeh) ? " EAP" : "")));
+    return (((boolean) BuildMps_Branding__BehaviorDescriptor.isNewVersionFormat_id3AMbuf0qvWw.invoke(__thisNode__)) ? BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.version$1QyI), LINKS.versionEap$uCSk), helper) : ((SPropertyOperations.getBoolean(__thisNode__, PROPS.eap$o5ED) ? " EAP" : "")));
   }
   /*package*/ static boolean isNewVersionFormat_id3AMbuf0qvWw(@NotNull SNode __thisNode__) {
-    return (SLinkOperations.getTarget(__thisNode__, LINKS.version$yE6m) != null);
+    return (SLinkOperations.getTarget(__thisNode__, LINKS.version$1QyI) != null);
   }
 
   /*package*/ BuildMps_Branding__BehaviorDescriptor() {
@@ -112,17 +112,17 @@ public final class BuildMps_Branding__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink version$yE6m = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x39b22de3c628a4d9L, "version");
-    /*package*/ static final SContainmentLink versionMajor$ZrIT = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x39b22de3c6289d84L, 0x39b22de3c6289d9fL, "versionMajor");
-    /*package*/ static final SContainmentLink versionMinor$ZrXU = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x39b22de3c6289d84L, 0x39b22de3c6289da0L, "versionMinor");
-    /*package*/ static final SContainmentLink versionBugfixNr$ZscV = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x39b22de3c6289d84L, 0x39b22de3c6289da1L, "versionBugfixNr");
-    /*package*/ static final SContainmentLink versionEap$ZsrW = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x39b22de3c6289d84L, 0x39b22de3c6289da2L, "versionEap");
+    /*package*/ static final SContainmentLink version$1QyI = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x39b22de3c628a4d9L, "version");
+    /*package*/ static final SContainmentLink versionMajor$uCbh = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x39b22de3c6289d84L, 0x39b22de3c6289d9fL, "versionMajor");
+    /*package*/ static final SContainmentLink versionMinor$uCqi = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x39b22de3c6289d84L, 0x39b22de3c6289da0L, "versionMinor");
+    /*package*/ static final SContainmentLink versionBugfixNr$uCDj = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x39b22de3c6289d84L, 0x39b22de3c6289da1L, "versionBugfixNr");
+    /*package*/ static final SContainmentLink versionEap$uCSk = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x39b22de3c6289d84L, 0x39b22de3c6289da2L, "versionEap");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty major$SSKf = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x308857b584c74e44L, "major");
-    /*package*/ static final SProperty minor$SSZg = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x308857b584c74e45L, "minor");
-    /*package*/ static final SProperty bugfixNr$$9ss = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x3acf8ab06f017071L, "bugfixNr");
-    /*package*/ static final SProperty eap$STeh = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x308857b584c74e46L, "eap");
+    /*package*/ static final SProperty major$o5cB = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x308857b584c74e44L, "major");
+    /*package*/ static final SProperty minor$o5rC = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x308857b584c74e45L, "minor");
+    /*package*/ static final SProperty bugfixNr$3lSO = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x3acf8ab06f017071L, "bugfixNr");
+    /*package*/ static final SProperty eap$o5ED = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x6b9a2011083b778dL, 0x308857b584c74e46L, "eap");
   }
 }

@@ -31,8 +31,8 @@
       <node id="2510235753679571568" at="51,50,52,37" concept="6" />
       <node id="2510235753679571568" at="54,68,55,102" concept="6" />
       <node id="2510235753679571568" at="57,30,58,17" concept="6" />
-      <node id="2510235753679571568" at="62,0,63,0" concept="8" trace="moduleName$XstC" />
-      <node id="2510235753679571568" at="66,0,67,0" concept="8" trace="ModulePointer$rJ" />
+      <node id="2510235753679571568" at="62,0,63,0" concept="8" trace="moduleName$RP9b" />
+      <node id="2510235753679571568" at="66,0,67,0" concept="8" trace="ModulePointer$7i" />
       <node id="2510235753679571568" at="26,0,28,0" concept="1" trace="NameIsActualInModulePointer_NonTypesystemRule#()V" />
       <node id="2510235753679575283" at="29,69,32,5" concept="3" />
       <node id="2510235753679582327" at="33,116,36,5" concept="3" />
@@ -91,8 +91,8 @@
       <node id="2510235753679597034" at="15,45,16,133" concept="9" />
       <node id="2510235753679601009" at="18,44,19,56" concept="6" />
       <node id="2510235753679598222" at="21,35,22,183" concept="2" />
-      <node id="2510235753679597034" at="26,0,27,0" concept="8" trace="ModulePointer$rJ" />
-      <node id="2510235753679597034" at="30,0,31,0" concept="8" trace="moduleName$XstC" />
+      <node id="2510235753679597034" at="26,0,27,0" concept="8" trace="ModulePointer$7i" />
+      <node id="2510235753679597034" at="30,0,31,0" concept="8" trace="moduleName$RP9b" />
       <node id="2510235753679597034" at="15,0,18,0" concept="1" trace="UpdateModulePointerName_QuickFix#()V" />
       <node id="2510235753679597034" at="18,0,21,0" concept="4" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="2510235753679597034" at="21,0,24,0" concept="4" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -126,8 +126,8 @@
       <node id="2510235753679604815" at="52,50,53,36" concept="6" />
       <node id="2510235753679604815" at="55,68,56,102" concept="6" />
       <node id="2510235753679604815" at="58,30,59,17" concept="6" />
-      <node id="2510235753679604815" at="63,0,64,0" concept="8" trace="name$fJX8" />
-      <node id="2510235753679604815" at="67,0,68,0" concept="8" trace="ModelPointer$rg" />
+      <node id="2510235753679604815" at="63,0,64,0" concept="8" trace="name$a8CF" />
+      <node id="2510235753679604815" at="67,0,68,0" concept="8" trace="ModelPointer$6N" />
       <node id="2510235753679604815" at="28,0,30,0" concept="1" trace="NameIsActualInModelPointer_NonTypesystemRule#()V" />
       <node id="2510235753679604928" at="31,69,34,5" concept="3" />
       <node id="2510235753679604943" at="35,113,38,5" concept="3" />
@@ -186,8 +186,8 @@
       <node id="2510235753679627864" at="17,44,18,133" concept="9" />
       <node id="2510235753679629931" at="20,44,21,55" concept="6" />
       <node id="2510235753679630888" at="23,35,24,242" concept="2" />
-      <node id="2510235753679627864" at="28,0,29,0" concept="8" trace="ModelPointer$rg" />
-      <node id="2510235753679627864" at="32,0,33,0" concept="8" trace="name$fJX8" />
+      <node id="2510235753679627864" at="28,0,29,0" concept="8" trace="ModelPointer$6N" />
+      <node id="2510235753679627864" at="32,0,33,0" concept="8" trace="name$a8CF" />
       <node id="2510235753679627864" at="17,0,20,0" concept="1" trace="UpdateModelPointerName_QuickFix#()V" />
       <node id="2510235753679627864" at="20,0,23,0" concept="4" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="2510235753679627864" at="23,0,26,0" concept="4" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -226,7 +226,7 @@
       <node id="855366892729582606" at="38,50,39,35" concept="6" />
       <node id="855366892729582606" at="41,68,42,102" concept="6" />
       <node id="855366892729582606" at="44,30,45,17" concept="6" />
-      <node id="855366892729582606" at="49,0,50,0" concept="8" trace="NodePointer$qL" />
+      <node id="855366892729582606" at="49,0,50,0" concept="8" trace="NodePointer$6k" />
       <node id="855366892729582606" at="21,0,23,0" concept="1" trace="check_NodePointer_NonTypesystemRule#()V" />
       <node id="855366892729597282" at="24,77,27,5" concept="3" />
       <node id="855366892729582606" at="38,0,41,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />

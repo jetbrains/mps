@@ -20,7 +20,7 @@ public class float_extends_double_SubtypingRule extends SubtypingRule_Runtime im
     return _quotation_createNode_lsip07_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.FloatType$1B;
+    return CONCEPTS.FloatType$up;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -36,6 +36,6 @@ public class float_extends_double_SubtypingRule extends SubtypingRule_Runtime im
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept FloatType$1B = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d327fdL, "jetbrains.mps.baseLanguage.structure.FloatType");
+    /*package*/ static final SConcept FloatType$up = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d327fdL, "jetbrains.mps.baseLanguage.structure.FloatType");
   }
 }

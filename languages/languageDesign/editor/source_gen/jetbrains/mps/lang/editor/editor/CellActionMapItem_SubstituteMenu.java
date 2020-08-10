@@ -34,7 +34,7 @@ public class CellActionMapItem_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_8k8pf4_a(), CONCEPTS.CellActionMapItem$fu));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_8k8pf4_a(), CONCEPTS.CellActionMapItem$r5));
     return result;
   }
 
@@ -106,7 +106,7 @@ public class CellActionMapItem_SubstituteMenu extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.CellActionMapItem$fu, context);
+          super(CONCEPTS.CellActionMapItem$r5, context);
           _context = context;
         }
 
@@ -117,8 +117,8 @@ public class CellActionMapItem_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode newNode = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.CellActionMapItem$fu, _context.getCurrentTargetNode());
-          SPropertyOperations.assignEnum(newNode, PROPS.actionId$K4QO, myParameterObject);
+          SNode newNode = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.CellActionMapItem$r5, _context.getCurrentTargetNode());
+          SPropertyOperations.assignEnum(newNode, PROPS.actionId$On2r, myParameterObject);
           return newNode;
         }
 
@@ -128,7 +128,7 @@ public class CellActionMapItem_SubstituteMenu extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, CONCEPTS.CellActionMapItem$fu, getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.CellActionMapItem$r5, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -151,10 +151,10 @@ public class CellActionMapItem_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellActionMapItem$fu = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109519879e9L, "jetbrains.mps.lang.editor.structure.CellActionMapItem");
+    /*package*/ static final SConcept CellActionMapItem$r5 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109519879e9L, "jetbrains.mps.lang.editor.structure.CellActionMapItem");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty actionId$K4QO = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109519879e9L, 0x1095198c0daL, "actionId");
+    /*package*/ static final SProperty actionId$On2r = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109519879e9L, 0x1095198c0daL, "actionId");
   }
 }

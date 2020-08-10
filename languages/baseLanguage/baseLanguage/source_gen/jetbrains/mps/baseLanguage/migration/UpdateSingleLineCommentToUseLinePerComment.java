@@ -53,25 +53,25 @@ public class UpdateSingleLineCommentToUseLinePerComment extends MigrationScriptB
       Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).visitAll(new IVisitor<SModel>() {
         public void visit(SModel currentModel) {
 
-          CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(new ModelsScope(Sequence.<SModel>singleton(currentModel)), context), CONCEPTS.SingleLineComment$jI, false)).where(new IWhereFilter<SNode>() {
+          CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(new ModelsScope(Sequence.<SModel>singleton(currentModel)), context), CONCEPTS.SingleLineComment$Kw, false)).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.text$ikxT)).isNotEmpty();
+              return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.text$XpYF)).isNotEmpty();
             }
           }).visitAll(new IVisitor<SNode>() {
             public void visit(final SNode slc) {
 
-              final SNode firstLine = ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.text$ikxT)).first();
-              if (SLinkOperations.getTarget(slc, LINKS.line$u8Q7) == null) {
-                SLinkOperations.setTarget(slc, LINKS.line$u8Q7, firstLine);
+              final SNode firstLine = ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.text$XpYF)).first();
+              if (SLinkOperations.getTarget(slc, LINKS.line$9eiT) == null) {
+                SLinkOperations.setTarget(slc, LINKS.line$9eiT, firstLine);
               } else {
-                ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(slc, LINKS.line$u8Q7), LINKS.elements$cK1w)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(firstLine, LINKS.elements$cK1w)).where(new IWhereFilter<SNode>() {
+                ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(slc, LINKS.line$9eiT), LINKS.elements$_j45)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(firstLine, LINKS.elements$_j45)).where(new IWhereFilter<SNode>() {
                   public boolean accept(SNode it) {
-                    return (SNodeOperations.isInstanceOf(it, CONCEPTS.Word$AM) ? isNotEmptyString(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Word$AM), PROPS.value$bjp0)) : true);
+                    return (SNodeOperations.isInstanceOf(it, CONCEPTS.Word$Dn) ? isNotEmptyString(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Word$Dn), PROPS.value$zQr_)) : true);
                   }
                 }));
               }
 
-              ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.text$ikxT)).reversedList().where(new IWhereFilter<SNode>() {
+              ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.text$XpYF)).reversedList().where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
                   return !(Objects.equals(it, firstLine));
                 }
@@ -79,10 +79,10 @@ public class UpdateSingleLineCommentToUseLinePerComment extends MigrationScriptB
                 public void visit(SNode line) {
                   SNode comment = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment"));
                   SNodeOperations.insertNextSiblingChild(slc, comment);
-                  SLinkOperations.setTarget(comment, LINKS.line$u8Q7, line);
+                  SLinkOperations.setTarget(comment, LINKS.line$9eiT, line);
                 }
               });
-              ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.text$ikxT)).clear();
+              ListSequence.fromList(SLinkOperations.getChildren(slc, LINKS.text$XpYF)).clear();
             }
           });
         }
@@ -98,17 +98,17 @@ public class UpdateSingleLineCommentToUseLinePerComment extends MigrationScriptB
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SingleLineComment$jI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment");
-    /*package*/ static final SConcept Word$AM = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
+    /*package*/ static final SConcept SingleLineComment$Kw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment");
+    /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink text$ikxT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x12bc996bc5882f24L, "text");
-    /*package*/ static final SContainmentLink line$u8Q7 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x73f69d82391da738L, "line");
-    /*package*/ static final SContainmentLink elements$cK1w = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink text$XpYF = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x12bc996bc5882f24L, "text");
+    /*package*/ static final SContainmentLink line$9eiT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x73f69d82391da738L, "line");
+    /*package*/ static final SContainmentLink elements$_j45 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$bjp0 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
+    /*package*/ static final SProperty value$zQr_ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
   }
 }

@@ -70,7 +70,7 @@ public class InstanceMethodDeclaration_static_abstract extends TransformationMen
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
       result.add(new TMP_Group_5ejokc_a0());
-      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_5ejokc_b0(), CONCEPTS.StaticMethodDeclaration$eX));
+      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_5ejokc_b0(), CONCEPTS.StaticMethodDeclaration$FJ));
     }
     return result;
   }
@@ -78,7 +78,7 @@ public class InstanceMethodDeclaration_static_abstract extends TransformationMen
   public class TMP_Group_5ejokc_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.Interface$Kp));
+      return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.Interface$db));
     }
 
     @NotNull
@@ -134,14 +134,14 @@ public class InstanceMethodDeclaration_static_abstract extends TransformationMen
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.set(_context.getNode(), PROPS.isAbstract$gogN, true);
-          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.body$qspy), LINKS.statement$pYcS)).clear();
+          SPropertyOperations.set(_context.getNode(), PROPS.isAbstract$VtH_, true);
+          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.body$5xQk), LINKS.statement$53DE)).clear();
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), "abstractModifier", -1);
         }
 
         @Override
         public boolean canExecute(@NotNull String pattern) {
-          return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.isAbstract$gogN));
+          return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.isAbstract$VtH_));
         }
 
 
@@ -201,7 +201,7 @@ public class InstanceMethodDeclaration_static_abstract extends TransformationMen
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNode staticMethod = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.StaticMethodDeclaration$eX);
+        SNode staticMethod = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.StaticMethodDeclaration$FJ);
         MemberDeclarationRefactoringUtil.rewireMethodReferences(_context.getNode(), staticMethod);
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), staticMethod, "staticModifier", -1);
       }
@@ -210,7 +210,7 @@ public class InstanceMethodDeclaration_static_abstract extends TransformationMen
       @Nullable
       @Override
       public SAbstractConcept getOutputConcept() {
-        return CONCEPTS.StaticMethodDeclaration$eX;
+        return CONCEPTS.StaticMethodDeclaration$FJ;
       }
 
 
@@ -221,7 +221,7 @@ public class InstanceMethodDeclaration_static_abstract extends TransformationMen
 
       public void customize(String pattern, EditorMenuItemStyle style) {
         EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-        SAbstractConcept outputConcept = CONCEPTS.StaticMethodDeclaration$eX;
+        SAbstractConcept outputConcept = CONCEPTS.StaticMethodDeclaration$FJ;
         EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
         for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
           customizer.customize(style, compositeContext);
@@ -232,16 +232,16 @@ public class InstanceMethodDeclaration_static_abstract extends TransformationMen
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StaticMethodDeclaration$eX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept StaticMethodDeclaration$FJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isAbstract$gogN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
+    /*package*/ static final SProperty isAbstract$VtH_ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

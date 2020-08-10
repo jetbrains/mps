@@ -39,7 +39,7 @@ public final class SurroundWithNegation_Intention extends AbstractIntentionDescr
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return !(SNodeOperations.isInstanceOf(node, CONCEPTS.NotExpression$oq));
+    return !(SNodeOperations.isInstanceOf(node, CONCEPTS.NotExpression$Pc));
   }
   @Override
   public boolean isSurroundWith() {
@@ -60,20 +60,20 @@ public final class SurroundWithNegation_Intention extends AbstractIntentionDescr
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode replacement = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.NotExpression$oq);
-      if (SNodeOperations.isInstanceOf(node, CONCEPTS.ParenthesizedExpression$vE)) {
-        SLinkOperations.setTarget(replacement, LINKS.expression$Lq8V, node);
+      SNode replacement = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.NotExpression$Pc);
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.ParenthesizedExpression$Ws)) {
+        SLinkOperations.setTarget(replacement, LINKS.expression$sv_H, node);
       } else {
-        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(replacement, LINKS.expression$Lq8V), CONCEPTS.ParenthesizedExpression$vE)) {
-          SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(replacement, LINKS.expression$Lq8V), CONCEPTS.ParenthesizedExpression$vE), LINKS.expression$efP0, node);
+        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(replacement, LINKS.expression$sv_H), CONCEPTS.ParenthesizedExpression$Ws)) {
+          SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(replacement, LINKS.expression$sv_H), CONCEPTS.ParenthesizedExpression$Ws), LINKS.expression$TlhM, node);
         } else {
-          if (!(SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(node), CONCEPTS.BooleanType$8G))) {
+          if (!(SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(node), CONCEPTS.BooleanType$_u))) {
             // It seems to be convenient to wrap non-boolean expressions in parens since the user is likely to edit the negated expression further 
             SNode parens = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression"));
-            SLinkOperations.setTarget(parens, LINKS.expression$efP0, node);
-            SLinkOperations.setTarget(replacement, LINKS.expression$Lq8V, parens);
+            SLinkOperations.setTarget(parens, LINKS.expression$TlhM, node);
+            SLinkOperations.setTarget(replacement, LINKS.expression$sv_H, parens);
           } else {
-            SLinkOperations.setTarget(replacement, LINKS.expression$Lq8V, node);
+            SLinkOperations.setTarget(replacement, LINKS.expression$sv_H, node);
           }
         }
       }
@@ -85,13 +85,13 @@ public final class SurroundWithNegation_Intention extends AbstractIntentionDescr
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NotExpression$oq = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, "jetbrains.mps.baseLanguage.structure.NotExpression");
-    /*package*/ static final SConcept ParenthesizedExpression$vE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
-    /*package*/ static final SConcept BooleanType$8G = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d6513eL, "jetbrains.mps.baseLanguage.structure.BooleanType");
+    /*package*/ static final SConcept NotExpression$Pc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, "jetbrains.mps.baseLanguage.structure.NotExpression");
+    /*package*/ static final SConcept ParenthesizedExpression$Ws = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
+    /*package*/ static final SConcept BooleanType$_u = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d6513eL, "jetbrains.mps.baseLanguage.structure.BooleanType");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$Lq8V = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
-    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink expression$sv_H = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
+    /*package*/ static final SContainmentLink expression$TlhM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
   }
 }

@@ -21,13 +21,13 @@ public class check_BuildMps_TipsSolution_NonTypesystemRule extends AbstractNonTy
   public check_BuildMps_TipsSolution_NonTypesystemRule() {
   }
   public void applyRule(final SNode buildMps_TipsSolution, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(buildMps_TipsSolution, LINKS.solution$a5kA) == null)) {
+    if ((SLinkOperations.getTarget(buildMps_TipsSolution, LINKS.solution$DhKY) == null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(buildMps_TipsSolution, "Empty link", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "8046287930334378974", null, errorTarget);
       }
     }
-    if ((SLinkOperations.getTarget(buildMps_TipsSolution, LINKS.path$RPeP) == null)) {
+    if ((SLinkOperations.getTarget(buildMps_TipsSolution, LINKS.path$n1Fd) == null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(buildMps_TipsSolution, "No path", "r:473be7a1-ec10-4475-89b9-397d2558ecb0(jetbrains.mps.build.mps.typesystem)", "8046287930334379370", null, errorTarget);
@@ -35,7 +35,7 @@ public class check_BuildMps_TipsSolution_NonTypesystemRule extends AbstractNonTy
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BuildMps_TipsSolution$Do;
+    return CONCEPTS.BuildMps_TipsSolution$5K;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -45,11 +45,11 @@ public class check_BuildMps_TipsSolution_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink solution$a5kA = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x71731b16a233b3c4L, 0x5bc8182317c9f320L, "solution");
-    /*package*/ static final SContainmentLink path$RPeP = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x71731b16a233b3c4L, 0x77af9abd5accf0caL, "path");
+    /*package*/ static final SReferenceLink solution$DhKY = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x71731b16a233b3c4L, 0x5bc8182317c9f320L, "solution");
+    /*package*/ static final SContainmentLink path$n1Fd = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x71731b16a233b3c4L, 0x77af9abd5accf0caL, "path");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildMps_TipsSolution$Do = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x71731b16a233b3c4L, "jetbrains.mps.build.mps.structure.BuildMps_TipsSolution");
+    /*package*/ static final SConcept BuildMps_TipsSolution$5K = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x71731b16a233b3c4L, "jetbrains.mps.build.mps.structure.BuildMps_TipsSolution");
   }
 }

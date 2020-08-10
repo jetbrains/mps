@@ -29,7 +29,7 @@ public class PatternVariableProperty_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_kdsknv_a(), CONCEPTS.PatternVariableProperty$JI));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_kdsknv_a(), CONCEPTS.PatternVariableProperty$Xh));
     return result;
   }
 
@@ -74,7 +74,7 @@ public class PatternVariableProperty_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.PatternVariableProperty$JI, context);
+        super(CONCEPTS.PatternVariableProperty$Xh, context);
         _context = context;
       }
 
@@ -104,16 +104,16 @@ public class PatternVariableProperty_SubstituteMenu extends SubstituteMenuBase {
     }
   }
   private static SNode createPatternVariableProperty_kdsknv_a0a0a(String p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PatternVariableProperty$JI);
-    n0.setProperty(PROPS.name$lA7v, p0);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PatternVariableProperty$Xh);
+    n0.setProperty(PROPS.name$MnvL, p0);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PatternVariableProperty$JI = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x60f18f425c769962L, "jetbrains.mps.lang.pattern.structure.PatternVariableProperty");
+    /*package*/ static final SConcept PatternVariableProperty$Xh = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x60f18f425c769962L, "jetbrains.mps.lang.pattern.structure.PatternVariableProperty");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

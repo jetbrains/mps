@@ -31,7 +31,7 @@ public class XmlElement_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_xunnx5_a(), CONCEPTS.XmlElement$Pm));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_xunnx5_a(), CONCEPTS.XmlElement$fP));
     return result;
   }
 
@@ -76,7 +76,7 @@ public class XmlElement_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.XmlElement$Pm, context);
+        super(CONCEPTS.XmlElement$fP, context);
         _context = context;
       }
 
@@ -88,9 +88,9 @@ public class XmlElement_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         Matcher _matcher_xunnx5_a1a6c5;
-        SNode element = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.XmlElement$Pm, null);
+        SNode element = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.XmlElement$fP, null);
         if ((_matcher_xunnx5_a1a6c5 = REGEXP_xunnx5_a0a0a2a6c5.matcher(pattern)).find()) {
-          SPropertyOperations.assign(element, PROPS.tagName$60jo, _matcher_xunnx5_a1a6c5.group(1));
+          SPropertyOperations.assign(element, PROPS.tagName$ZoHR, _matcher_xunnx5_a1a6c5.group(1));
         }
         return element;
       }
@@ -114,10 +114,10 @@ public class XmlElement_SubstituteMenu extends SubstituteMenuBase {
   private static final Pattern REGEXP_xunnx5_a0a0a1a9c5 = Pattern.compile("^<([\\w0-9]+)>?$", 0);
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XmlElement$Pm = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement");
+    /*package*/ static final SConcept XmlElement$fP = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty tagName$60jo = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b6L, "tagName");
+    /*package*/ static final SProperty tagName$ZoHR = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b6L, "tagName");
   }
 }

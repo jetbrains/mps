@@ -18,24 +18,24 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 @Generated
 public class QueriesGenerated {
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
-    return SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.InputRootWithStatementList$lm), PROPS.useInTest$56N3), 0x11986c2f8ccL);
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.InputRootWithStatementList$ut), PROPS.useInTest$_DWa), 0x11986c2f8ccL);
   }
   public static boolean rule_Condition_0_1(final BaseMappingRuleContext _context) {
-    return SEnumOperations.isMember(SPropertyOperations.getEnum(_context.getNode(), PROPS.useInTest$56N3), 0x11986c2f8ccL);
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(_context.getNode(), PROPS.useInTest$_DWa), 0x11986c2f8ccL);
   }
   public static SNode sourceNodeQuery_1_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.statementList$8Ssg);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.statementList$Dr_n);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InputRootWithStatementList$lm = MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11986ebf992L, "jetbrains.mps.transformation.test.inputLang.structure.InputRootWithStatementList");
+    /*package*/ static final SConcept InputRootWithStatementList$ut = MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11986ebf992L, "jetbrains.mps.transformation.test.inputLang.structure.InputRootWithStatementList");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty useInTest$56N3 = MetaAdapterFactory.getProperty(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11986ebf992L, 0x11986ed1901L, "useInTest");
+    /*package*/ static final SProperty useInTest$_DWa = MetaAdapterFactory.getProperty(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11986ebf992L, 0x11986ed1901L, "useInTest");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statementList$8Ssg = MetaAdapterFactory.getContainmentLink(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11986ebf992L, 0x11986ec6379L, "statementList");
+    /*package*/ static final SContainmentLink statementList$Dr_n = MetaAdapterFactory.getContainmentLink(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11986ebf992L, 0x11986ec6379L, "statementList");
   }
 }

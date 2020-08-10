@@ -17,7 +17,7 @@ public class Interface_is_comparable_to_ClassifierType_ComparisonRule extends Co
   public Interface_is_comparable_to_ClassifierType_ComparisonRule() {
   }
   public boolean areComparable(SNode node1, SNode node2, IsApplicable2Status status) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node1, LINKS.classifier$xslD), CONCEPTS.Interface$Kp) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node2, LINKS.classifier$xslD), CONCEPTS.Interface$Kp)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node1, LINKS.classifier$cxMr), CONCEPTS.Interface$db) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node2, LINKS.classifier$cxMr), CONCEPTS.Interface$db)) {
       return true;
     }
     return false;
@@ -33,18 +33,18 @@ public class Interface_is_comparable_to_ClassifierType_ComparisonRule extends Co
   }
 
   public SAbstractConcept getApplicableConcept1() {
-    return CONCEPTS.ClassifierType$IZ;
+    return CONCEPTS.ClassifierType$bL;
   }
   public SAbstractConcept getApplicableConcept2() {
-    return CONCEPTS.ClassifierType$IZ;
+    return CONCEPTS.ClassifierType$bL;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
   }
 }

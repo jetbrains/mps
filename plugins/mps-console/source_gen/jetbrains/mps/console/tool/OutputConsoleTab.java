@@ -34,14 +34,14 @@ public class OutputConsoleTab extends BaseConsoleTab {
       public void run() {
         SModel loadedModel = loadHistoryModel(state);
         myRoot = SModelOperations.createNewRootNode(getConsoleModel(), MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x131ec6f2097ff75fL, "jetbrains.mps.console.base.structure.OutputConsoleRoot"));
-        if (loadedModel == null || ListSequence.fromList(SModelOperations.roots(loadedModel, CONCEPTS.OutputConsoleRoot$Ek)).isEmpty()) {
-          SLinkOperations.setTarget(myRoot, LINKS.history$p07x, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0xa835f28c1aa02beL, "jetbrains.mps.console.base.structure.History")));
+        if (loadedModel == null || ListSequence.fromList(SModelOperations.roots(loadedModel, CONCEPTS.OutputConsoleRoot$kd)).isEmpty()) {
+          SLinkOperations.setTarget(myRoot, LINKS.history$LSLq, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0xa835f28c1aa02beL, "jetbrains.mps.console.base.structure.History")));
         } else {
-          SLinkOperations.setTarget(myRoot, LINKS.history$p07x, SLinkOperations.getTarget(ListSequence.fromList(SModelOperations.roots(loadedModel, CONCEPTS.OutputConsoleRoot$Ek)).first(), LINKS.history$p07x));
+          SLinkOperations.setTarget(myRoot, LINKS.history$LSLq, SLinkOperations.getTarget(ListSequence.fromList(SModelOperations.roots(loadedModel, CONCEPTS.OutputConsoleRoot$kd)).first(), LINKS.history$LSLq));
         }
-        SLinkOperations.setTarget(myRoot, LINKS.commandHolder$p0_z, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e27160acb4484bL, "jetbrains.mps.console.base.structure.CommandHolder")));
-        SLinkOperations.setTarget(myRoot, LINKS.cursor$SYjB, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4fe9275cea077231L, "jetbrains.mps.console.base.structure.CommandHolderRef")));
-        SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.cursor$SYjB), LINKS.target$VJDw, SLinkOperations.getTarget(myRoot, LINKS.commandHolder$p0_z));
+        SLinkOperations.setTarget(myRoot, LINKS.commandHolder$LTfs, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e27160acb4484bL, "jetbrains.mps.console.base.structure.CommandHolder")));
+        SLinkOperations.setTarget(myRoot, LINKS.cursor$hQXw, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4fe9275cea077231L, "jetbrains.mps.console.base.structure.CommandHolderRef")));
+        SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.cursor$hQXw), LINKS.target$kCjp, SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs));
         TemporaryModels.getInstance().addMissingImports(getConsoleModel());
       }
     });
@@ -60,13 +60,13 @@ public class OutputConsoleTab extends BaseConsoleTab {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink history$p07x = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x15fb34051f725bafL, "history");
-    /*package*/ static final SContainmentLink commandHolder$p0_z = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x15fb34051f725bb1L, "commandHolder");
-    /*package*/ static final SContainmentLink cursor$SYjB = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x7d401fa40806ebe7L, "cursor");
-    /*package*/ static final SReferenceLink target$VJDw = MetaAdapterFactory.getReferenceLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4fe9275cea077231L, 0x4fe9275cea077232L, "target");
+    /*package*/ static final SContainmentLink history$LSLq = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x15fb34051f725bafL, "history");
+    /*package*/ static final SContainmentLink commandHolder$LTfs = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x15fb34051f725bb1L, "commandHolder");
+    /*package*/ static final SContainmentLink cursor$hQXw = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x15fb34051f725a2cL, 0x7d401fa40806ebe7L, "cursor");
+    /*package*/ static final SReferenceLink target$kCjp = MetaAdapterFactory.getReferenceLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4fe9275cea077231L, 0x4fe9275cea077232L, "target");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept OutputConsoleRoot$Ek = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x131ec6f2097ff75fL, "jetbrains.mps.console.base.structure.OutputConsoleRoot");
+    /*package*/ static final SConcept OutputConsoleRoot$kd = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x131ec6f2097ff75fL, "jetbrains.mps.console.base.structure.OutputConsoleRoot");
   }
 }

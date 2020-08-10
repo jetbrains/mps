@@ -41,18 +41,18 @@ public final class SimpleBuilderPropertyBuilder__BehaviorDescriptor extends Base
     return true;
   }
   /*package*/ static SNode getResultType_id67LR$5LQPoF(@NotNull SNode __thisNode__) {
-    return (SNode) Type__BehaviorDescriptor.getJavaType_idhEwIzO1.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$Dqjx), LINKS.type$E5IN));
+    return (SNode) Type__BehaviorDescriptor.getJavaType_idhEwIzO1.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$5Vjc), LINKS.type$6AIu));
   }
   /*package*/ static SNode getCreatorExpression_id67LR$5LQRIR(@NotNull SNode __thisNode__, SNode parentRef) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.value$Dq4w);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.value$5V4b);
   }
   /*package*/ static SNode getAttachStatementChild_id4ak9ytIaIgr(@NotNull SNode __thisNode__, SNode parentBuilder, SNode parentRef, SNode childRef) {
 
-    SNode result = SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$Dqjx), LINKS.set$PQYU));
-    for (SNode p : SNodeOperations.getNodeDescendants(result, CONCEPTS.SimpleBuilderPropertyParent$7B, false, new SAbstractConcept[]{})) {
+    SNode result = SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$5Vjc), LINKS.set$inY_));
+    for (SNode p : SNodeOperations.getNodeDescendants(result, CONCEPTS.SimpleBuilderPropertyParent$7i, false, new SAbstractConcept[]{})) {
       SNodeOperations.replaceWithAnother(p, SNodeOperations.copyNode(parentRef));
     }
-    for (SNode v : SNodeOperations.getNodeDescendants(result, CONCEPTS.SimpleBuilderPropertyValue$MI, false, new SAbstractConcept[]{})) {
+    for (SNode v : SNodeOperations.getNodeDescendants(result, CONCEPTS.SimpleBuilderPropertyValue$Mp, false, new SAbstractConcept[]{})) {
       SNodeOperations.replaceWithAnother(v, SNodeOperations.copyNode(childRef));
     }
     return result;
@@ -111,14 +111,14 @@ public final class SimpleBuilderPropertyBuilder__BehaviorDescriptor extends Base
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$Dqjx = MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d72ec05fL, 0x4acc05c8d72ec061L, "declaration");
-    /*package*/ static final SContainmentLink type$E5IN = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d72870eaL, 0x4acc05c8d7288a17L, "type");
-    /*package*/ static final SContainmentLink value$Dq4w = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d72ec05fL, 0x4acc05c8d72ec060L, "value");
-    /*package*/ static final SContainmentLink set$PQYU = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d72870eaL, 0x4acc05c8d72b428eL, "set");
+    /*package*/ static final SReferenceLink declaration$5Vjc = MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d72ec05fL, 0x4acc05c8d72ec061L, "declaration");
+    /*package*/ static final SContainmentLink type$6AIu = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d72870eaL, 0x4acc05c8d7288a17L, "type");
+    /*package*/ static final SContainmentLink value$5V4b = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d72ec05fL, 0x4acc05c8d72ec060L, "value");
+    /*package*/ static final SContainmentLink set$inY_ = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d72870eaL, 0x4acc05c8d72b428eL, "set");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SimpleBuilderPropertyParent$7B = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d72c5e70L, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilderPropertyParent");
-    /*package*/ static final SConcept SimpleBuilderPropertyValue$MI = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d72c5e8aL, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilderPropertyValue");
+    /*package*/ static final SConcept SimpleBuilderPropertyParent$7i = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d72c5e70L, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilderPropertyParent");
+    /*package*/ static final SConcept SimpleBuilderPropertyValue$Mp = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d72c5e8aL, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilderPropertyValue");
   }
 }

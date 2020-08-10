@@ -24,7 +24,7 @@ public class typeof_PropertyRefType_isSubtype_PropertyRef_SubtypingRule extends 
     return ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_d1kmw7_a0a0a1(), _quotation_createNode_d1kmw7_b0a0a1());
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.PropertyRefType$gr;
+    return CONCEPTS.PropertyRefType$kW;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -48,6 +48,6 @@ public class typeof_PropertyRefType_isSubtype_PropertyRef_SubtypingRule extends 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyRefType$gr = MetaAdapterFactory.getConcept(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x433c3c31e7218f3eL, "jetbrains.mps.lang.checkedName.structure.PropertyRefType");
+    /*package*/ static final SConcept PropertyRefType$kW = MetaAdapterFactory.getConcept(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x433c3c31e7218f3eL, "jetbrains.mps.lang.checkedName.structure.PropertyRefType");
   }
 }

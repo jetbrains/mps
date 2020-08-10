@@ -23,25 +23,25 @@ public class PrecedenceUtil {
   @NotNull
   public static SNode getTargetForRightTransform(@NotNull SNode contextNode) {
     SNode targetNode = contextNode;
-    for (SNode parentNode = SNodeOperations.getParent(targetNode); parentNode != null && SNodeOperations.isInstanceOf(parentNode, CONCEPTS.Expression$TP); parentNode = SNodeOperations.getParent(targetNode)) {
-      if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.IMethodCall$ln) || SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ParenthesizedExpression$vE)) {
+    for (SNode parentNode = SNodeOperations.getParent(targetNode); parentNode != null && SNodeOperations.isInstanceOf(parentNode, CONCEPTS.Expression$mB); parentNode = SNodeOperations.getParent(targetNode)) {
+      if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.IMethodCall$M9) || SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ParenthesizedExpression$Ws)) {
         // if parent expression is IMethodCall then targetNode is either actualArgument 
         // or typeArgument (parameters of method call), so we should not go upper 
         // same with ParenthesizedExpression 
         break;
       }
       SContainmentLink targetContainingLink = SNodeOperations.getContainingLink(targetNode);
-      if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.BinaryOperation$vf) && Objects.equals(targetContainingLink, LINKS.leftExpression$lndx)) {
+      if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.BinaryOperation$W1) && Objects.equals(targetContainingLink, LINKS.leftExpression$sEj)) {
         // if parent expression is BinaryOperation and target is left child of it 
         // then we should rather transform current target 
         break;
       }
-      if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.DotExpression$6a) && Objects.equals(targetContainingLink, LINKS.operand$P1i5)) {
+      if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.DotExpression$yW) && Objects.equals(targetContainingLink, LINKS.operand$w6IR)) {
         // if parent expression is DotExpression and target is operand ("left" part of the expression) 
         // then we should rather transform current target 
         break;
       }
-      targetNode = SNodeOperations.cast(parentNode, CONCEPTS.Expression$TP);
+      targetNode = SNodeOperations.cast(parentNode, CONCEPTS.Expression$mB);
     }
     return targetNode;
   }
@@ -49,19 +49,19 @@ public class PrecedenceUtil {
   public static SNode getTargetForLeftTransform(@NotNull SNode contextNode, @NotNull SNode resultNode) {
     int resultingExpressionPriority = getPriority(SNodeOperations.getConcept(resultNode)).ordinal();
     SNode targetNode = contextNode;
-    for (SNode parentNode = SNodeOperations.getParent(targetNode); parentNode != null && SNodeOperations.isInstanceOf(parentNode, CONCEPTS.Expression$TP) && getPriority(SNodeOperations.castConcept(SNodeOperations.getConcept(parentNode), CONCEPTS.Expression$TP)).ordinal() < resultingExpressionPriority; parentNode = SNodeOperations.getParent(targetNode)) {
-      if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.IMethodCall$ln) || SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ParenthesizedExpression$vE)) {
+    for (SNode parentNode = SNodeOperations.getParent(targetNode); parentNode != null && SNodeOperations.isInstanceOf(parentNode, CONCEPTS.Expression$mB) && getPriority(SNodeOperations.castConcept(SNodeOperations.getConcept(parentNode), CONCEPTS.Expression$mB)).ordinal() < resultingExpressionPriority; parentNode = SNodeOperations.getParent(targetNode)) {
+      if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.IMethodCall$M9) || SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ParenthesizedExpression$Ws)) {
         // if parent expression is IMethodCall then targetNode is either actualArgument 
         // or typeArgument (parameters of method call), so we should not go upper 
         // same with ParenthesizedExpression 
         break;
       }
-      if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.BinaryOperation$vf) && Objects.equals(SNodeOperations.getContainingLink(targetNode), LINKS.rightExpression$li3b)) {
+      if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.BinaryOperation$W1) && Objects.equals(SNodeOperations.getContainingLink(targetNode), LINKS.rightExpression$nvX)) {
         // if parent expression is BinaryOperation having higher priority and target is right child of it 
         // then we should rather transform current target and add additional parenthesis around resulting expression 
         break;
       }
-      targetNode = SNodeOperations.cast(parentNode, CONCEPTS.Expression$TP);
+      targetNode = SNodeOperations.cast(parentNode, CONCEPTS.Expression$mB);
     }
     return targetNode;
   }
@@ -69,18 +69,18 @@ public class PrecedenceUtil {
     return getPriority(SNodeOperations.getConcept(firstExpression)) == getPriority(SNodeOperations.getConcept(secondExpression));
   }
   public static SNode parenthesiseIfNecessary(@NotNull SNode contextNode) {
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(contextNode), CONCEPTS.BinaryOperation$vf)) {
-      SNode parentBinaryOperation = SNodeOperations.cast(SNodeOperations.getParent(contextNode), CONCEPTS.BinaryOperation$vf);
-      if (Objects.equals(SNodeOperations.getContainingLink(contextNode), LINKS.rightExpression$li3b) && isHigherPriority(parentBinaryOperation, contextNode)) {
-        SNode result = SNodeFactoryOperations.replaceWithNewChild(contextNode, CONCEPTS.ParenthesizedExpression$vE);
-        SLinkOperations.setTarget(result, LINKS.expression$efP0, contextNode);
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(contextNode), CONCEPTS.BinaryOperation$W1)) {
+      SNode parentBinaryOperation = SNodeOperations.cast(SNodeOperations.getParent(contextNode), CONCEPTS.BinaryOperation$W1);
+      if (Objects.equals(SNodeOperations.getContainingLink(contextNode), LINKS.rightExpression$nvX) && isHigherPriority(parentBinaryOperation, contextNode)) {
+        SNode result = SNodeFactoryOperations.replaceWithNewChild(contextNode, CONCEPTS.ParenthesizedExpression$Ws);
+        SLinkOperations.setTarget(result, LINKS.expression$TlhM, contextNode);
         return result;
       }
-    } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(contextNode), CONCEPTS.CastExpression$7m)) {
-      SNode parentCastExpression = SNodeOperations.cast(SNodeOperations.getParent(contextNode), CONCEPTS.CastExpression$7m);
+    } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(contextNode), CONCEPTS.CastExpression$$8)) {
+      SNode parentCastExpression = SNodeOperations.cast(SNodeOperations.getParent(contextNode), CONCEPTS.CastExpression$$8);
       if (PrecedenceUtil.needsParensInsideCastExpression(parentCastExpression)) {
-        SNode result = SNodeFactoryOperations.replaceWithNewChild(contextNode, CONCEPTS.ParenthesizedExpression$vE);
-        SLinkOperations.setTarget(result, LINKS.expression$efP0, contextNode);
+        SNode result = SNodeFactoryOperations.replaceWithNewChild(contextNode, CONCEPTS.ParenthesizedExpression$Ws);
+        SLinkOperations.setTarget(result, LINKS.expression$TlhM, contextNode);
         return result;
       }
     }
@@ -88,25 +88,25 @@ public class PrecedenceUtil {
   }
 
   public static boolean needsParensInsideCastExpression(SNode castExpression) {
-    SNode targetExpr = SLinkOperations.getTarget(castExpression, LINKS.expression$izU1);
-    return !(((targetExpr == null) || (boolean) Expression__BehaviorDescriptor.constant_id1653mnvAgr2.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(targetExpr))) || SNodeOperations.isInstanceOf(targetExpr, CONCEPTS.GenericNewExpression$ev) || (!(SNodeOperations.isInstanceOf(targetExpr, CONCEPTS.TernaryOperatorExpression$HC)) && !(SNodeOperations.isInstanceOf(targetExpr, CONCEPTS.BinaryOperation$vf))) || PrecedenceUtil.isHigherPriority(targetExpr, castExpression)));
+    SNode targetExpr = SLinkOperations.getTarget(castExpression, LINKS.expression$XDmN);
+    return !(((targetExpr == null) || (boolean) Expression__BehaviorDescriptor.constant_id1653mnvAgr2.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(targetExpr))) || SNodeOperations.isInstanceOf(targetExpr, CONCEPTS.GenericNewExpression$Fh) || (!(SNodeOperations.isInstanceOf(targetExpr, CONCEPTS.TernaryOperatorExpression$aq)) && !(SNodeOperations.isInstanceOf(targetExpr, CONCEPTS.BinaryOperation$W1))) || PrecedenceUtil.isHigherPriority(targetExpr, castExpression)));
 
   }
 
   public static boolean needsParensAroundNotExpression(SNode notExpression) {
-    return !(((SLinkOperations.getTarget(notExpression, LINKS.expression$Lq8V) == null) || (boolean) Expression__BehaviorDescriptor.constant_id1653mnvAgr2.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(notExpression, LINKS.expression$Lq8V)))) || (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(notExpression, LINKS.expression$Lq8V), CONCEPTS.TernaryOperatorExpression$HC)) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(notExpression, LINKS.expression$Lq8V), CONCEPTS.BinaryOperation$vf))) || PrecedenceUtil.isHigherPriority(SLinkOperations.getTarget(notExpression, LINKS.expression$Lq8V), notExpression)));
+    return !(((SLinkOperations.getTarget(notExpression, LINKS.expression$sv_H) == null) || (boolean) Expression__BehaviorDescriptor.constant_id1653mnvAgr2.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(notExpression, LINKS.expression$sv_H)))) || (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(notExpression, LINKS.expression$sv_H), CONCEPTS.TernaryOperatorExpression$aq)) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(notExpression, LINKS.expression$sv_H), CONCEPTS.BinaryOperation$W1))) || PrecedenceUtil.isHigherPriority(SLinkOperations.getTarget(notExpression, LINKS.expression$sv_H), notExpression)));
 
   }
 
   public static SNode findDesiredInstanceOfExpressionRoot(SNode instanceOfExpression) {
 
-    if ((SLinkOperations.getTarget(instanceOfExpression, LINKS.leftExpression$dnS9) == null) || (SNodeOperations.getParent(instanceOfExpression) == null) || !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(instanceOfExpression), CONCEPTS.BinaryOperation$vf)) || !(SNodeOperations.hasRole(instanceOfExpression, LINKS.rightExpression$li3b)) || !(PrecedenceUtil.isHigherPriority(SNodeOperations.cast(SNodeOperations.getParent(instanceOfExpression), CONCEPTS.Expression$TP), instanceOfExpression))) {
+    if ((SLinkOperations.getTarget(instanceOfExpression, LINKS.leftExpression$StkV) == null) || (SNodeOperations.getParent(instanceOfExpression) == null) || !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(instanceOfExpression), CONCEPTS.BinaryOperation$W1)) || !(SNodeOperations.hasRole(instanceOfExpression, LINKS.rightExpression$nvX)) || !(PrecedenceUtil.isHigherPriority(SNodeOperations.cast(SNodeOperations.getParent(instanceOfExpression), CONCEPTS.Expression$mB), instanceOfExpression))) {
       return null;
     }
-    SNode currentParent = SNodeOperations.cast(SNodeOperations.getParent(instanceOfExpression), CONCEPTS.Expression$TP);
+    SNode currentParent = SNodeOperations.cast(SNodeOperations.getParent(instanceOfExpression), CONCEPTS.Expression$mB);
 
-    while ((SNodeOperations.getParent(currentParent) != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(currentParent), CONCEPTS.BinaryOperation$vf) && SNodeOperations.hasRole(currentParent, LINKS.rightExpression$li3b) && PrecedenceUtil.isHigherPriority(SNodeOperations.cast(SNodeOperations.getParent(currentParent), CONCEPTS.Expression$TP), instanceOfExpression)) {
-      currentParent = SNodeOperations.cast(SNodeOperations.getParent(currentParent), CONCEPTS.Expression$TP);
+    while ((SNodeOperations.getParent(currentParent) != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(currentParent), CONCEPTS.BinaryOperation$W1) && SNodeOperations.hasRole(currentParent, LINKS.rightExpression$nvX) && PrecedenceUtil.isHigherPriority(SNodeOperations.cast(SNodeOperations.getParent(currentParent), CONCEPTS.Expression$mB), instanceOfExpression)) {
+      currentParent = SNodeOperations.cast(SNodeOperations.getParent(currentParent), CONCEPTS.Expression$mB);
     }
     return currentParent;
   }
@@ -115,8 +115,8 @@ public class PrecedenceUtil {
     return getPriority(SNodeOperations.getConcept(firstExpression)).ordinal() < getPriority(SNodeOperations.getConcept(secondExpression)).ordinal();
   }
   private static Precedence getPriority(SConcept expression) {
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.BinaryOperation$vf)) {
-      switch ((int) BinaryOperation__BehaviorDescriptor.getPriority_id1653mnvAgo2.invoke(SNodeOperations.asSConcept(SNodeOperations.castConcept(expression, CONCEPTS.BinaryOperation$vf)))) {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.BinaryOperation$W1)) {
+      switch ((int) BinaryOperation__BehaviorDescriptor.getPriority_id1653mnvAgo2.invoke(SNodeOperations.asSConcept(SNodeOperations.castConcept(expression, CONCEPTS.BinaryOperation$W1)))) {
         case 2:
           // || 
           return Precedence.J_13;
@@ -152,36 +152,36 @@ public class PrecedenceUtil {
     }
 
     // TODO: not sure concerning ParenthesizedExpression priorities.. 
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.ParenthesizedExpression$vE)) {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.ParenthesizedExpression$Ws)) {
       return Precedence.PARENTHESES;
     }
     // TODO: m.b. we should make "Default" precenence higher then all the user extensions 
     // TODO: will be recognized as high-priority expressions 
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.ArrayAccessExpression$dG) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.IMethodCall$ln) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.VariableReference$sQ) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.LocalPropertyReference$4g) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.MapElement$_s) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.ListElementAccessExpression$d_) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.SNodeTypeCastExpression$Sg)) {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.ArrayAccessExpression$Eu) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.IMethodCall$M9) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.VariableReference$TC) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.LocalPropertyReference$x2) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.MapElement$NJ) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.ListElementAccessExpression$rS) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.SNodeTypeCastExpression$TK)) {
       return Precedence.ARRAY_OPARATIONS_AND_METHOD_CALLS;
     }
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.DotExpression$6a)) {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.DotExpression$yW)) {
       return Precedence.DOT_EXPRESSION;
     }
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.SemanticDowncastExpression$us)) {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.SemanticDowncastExpression$vW)) {
       return Precedence.DOT_EXPRESSION;
     }
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.PostfixIncrementExpression$3_) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.PostfixDecrementExpression$gc)) {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.PostfixIncrementExpression$wn) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.PostfixDecrementExpression$GY)) {
       return Precedence.POSTFIX_EXPRESSIONS;
     }
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.PrefixIncrementExpression$4W) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.PrefixDecrementExpression$d_) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.UnaryMinus$Uo) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.NotExpression$oq) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.BitwiseNotExpression$_O)) {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.PrefixIncrementExpression$xI) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.PrefixDecrementExpression$En) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.UnaryMinus$na) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.NotExpression$Pc) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.BitwiseNotExpression$2A)) {
       return Precedence.J_2;
     }
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.CastExpression$7m) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.GenericNewExpression$ev)) {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.CastExpression$$8) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.GenericNewExpression$Fh)) {
       return Precedence.J_3;
     }
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.InstanceOfExpression$JG)) {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.InstanceOfExpression$cu)) {
       return Precedence.J_7;
     }
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.TernaryOperatorExpression$HC)) {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.TernaryOperatorExpression$aq)) {
       return Precedence.J_14;
     }
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.BaseAssignmentExpression$oO)) {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(expression), CONCEPTS.BaseAssignmentExpression$PA)) {
       return Precedence.J_15;
     }
     return Precedence.DEFAULT;
@@ -190,23 +190,23 @@ public class PrecedenceUtil {
     SNode nodeToProcess = PrecedenceUtil.getTargetForLeftTransform(sourceNode, result);
     // since BinaryOperations are left-associative we should perform complex LT then 
     // BinaryOperations is "rightExpression" child of another BinaryOperations with same priority 
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(nodeToProcess), CONCEPTS.BinaryOperation$vf) && Objects.equals(SNodeOperations.getContainingLink(nodeToProcess), LINKS.rightExpression$li3b)) {
-      SNode parentBinaryOperation = SNodeOperations.cast(SNodeOperations.getParent(nodeToProcess), CONCEPTS.BinaryOperation$vf);
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(nodeToProcess), CONCEPTS.BinaryOperation$W1) && Objects.equals(SNodeOperations.getContainingLink(nodeToProcess), LINKS.rightExpression$nvX)) {
+      SNode parentBinaryOperation = SNodeOperations.cast(SNodeOperations.getParent(nodeToProcess), CONCEPTS.BinaryOperation$W1);
       if (PrecedenceUtil.isSamePriority(parentBinaryOperation, result)) {
         SNodeOperations.replaceWithAnother(parentBinaryOperation, result);
-        SLinkOperations.setTarget(result, LINKS.rightExpression$li3b, nodeToProcess);
-        SLinkOperations.setTarget(result, LINKS.leftExpression$lndx, parentBinaryOperation);
+        SLinkOperations.setTarget(result, LINKS.rightExpression$nvX, nodeToProcess);
+        SLinkOperations.setTarget(result, LINKS.leftExpression$sEj, parentBinaryOperation);
         return result;
       }
     }
     SNodeOperations.replaceWithAnother(nodeToProcess, result);
-    SLinkOperations.setTarget(result, LINKS.rightExpression$li3b, nodeToProcess);
+    SLinkOperations.setTarget(result, LINKS.rightExpression$nvX, nodeToProcess);
     PrecedenceUtil.parenthesiseIfNecessary(result);
     return result;
   }
   public static SNode processRightTransform(SNode sourceNode, SNode result) {
     SNodeOperations.replaceWithAnother(sourceNode, result);
-    SLinkOperations.setTarget(result, LINKS.leftExpression$lndx, sourceNode);
+    SLinkOperations.setTarget(result, LINKS.leftExpression$sEj, sourceNode);
     ParenthesisUtil.checkOperationWRTPriority(result);
     return result;
   }
@@ -243,39 +243,39 @@ public class PrecedenceUtil {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ParenthesizedExpression$vE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
-    /*package*/ static final SInterfaceConcept IMethodCall$ln = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
-    /*package*/ static final SConcept BinaryOperation$vf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
-    /*package*/ static final SConcept CastExpression$7m = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, "jetbrains.mps.baseLanguage.structure.CastExpression");
-    /*package*/ static final SConcept TernaryOperatorExpression$HC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression");
-    /*package*/ static final SConcept GenericNewExpression$ev = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, "jetbrains.mps.baseLanguage.structure.GenericNewExpression");
-    /*package*/ static final SConcept SNodeTypeCastExpression$Sg = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10975850da7L, "jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression");
-    /*package*/ static final SConcept ListElementAccessExpression$d_ = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d6213c318L, "jetbrains.mps.baseLanguage.collections.structure.ListElementAccessExpression");
-    /*package*/ static final SConcept ArrayAccessExpression$dG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11126b40c25L, "jetbrains.mps.baseLanguage.structure.ArrayAccessExpression");
-    /*package*/ static final SConcept VariableReference$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
-    /*package*/ static final SConcept LocalPropertyReference$4g = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x515d7a8d927e9fb3L, "jetbrains.mps.baseLanguage.structure.LocalPropertyReference");
-    /*package*/ static final SConcept MapElement$_s = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116ea555a25L, "jetbrains.mps.baseLanguage.collections.structure.MapElement");
-    /*package*/ static final SConcept SemanticDowncastExpression$us = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10aaf6d7435L, "jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression");
-    /*package*/ static final SConcept PostfixIncrementExpression$3_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11adecdb4f0L, "jetbrains.mps.baseLanguage.structure.PostfixIncrementExpression");
-    /*package*/ static final SConcept PostfixDecrementExpression$gc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11aded05fe6L, "jetbrains.mps.baseLanguage.structure.PostfixDecrementExpression");
-    /*package*/ static final SConcept BitwiseNotExpression$_O = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d6d026f5fL, "jetbrains.mps.baseLanguage.structure.BitwiseNotExpression");
-    /*package*/ static final SConcept UnaryMinus$Uo = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6fea7de6103549b1L, "jetbrains.mps.baseLanguage.structure.UnaryMinus");
-    /*package*/ static final SConcept PrefixDecrementExpression$d_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a472f0e8L, "jetbrains.mps.baseLanguage.structure.PrefixDecrementExpression");
-    /*package*/ static final SConcept PrefixIncrementExpression$4W = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a46df580L, "jetbrains.mps.baseLanguage.structure.PrefixIncrementExpression");
-    /*package*/ static final SConcept NotExpression$oq = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, "jetbrains.mps.baseLanguage.structure.NotExpression");
-    /*package*/ static final SConcept InstanceOfExpression$JG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, "jetbrains.mps.baseLanguage.structure.InstanceOfExpression");
-    /*package*/ static final SConcept BaseAssignmentExpression$oO = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, "jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression");
+    /*package*/ static final SConcept ParenthesizedExpression$Ws = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
+    /*package*/ static final SInterfaceConcept IMethodCall$M9 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
+    /*package*/ static final SConcept BinaryOperation$W1 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept CastExpression$$8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, "jetbrains.mps.baseLanguage.structure.CastExpression");
+    /*package*/ static final SConcept TernaryOperatorExpression$aq = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L, "jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression");
+    /*package*/ static final SConcept GenericNewExpression$Fh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, "jetbrains.mps.baseLanguage.structure.GenericNewExpression");
+    /*package*/ static final SConcept SNodeTypeCastExpression$TK = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10975850da7L, "jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression");
+    /*package*/ static final SConcept ListElementAccessExpression$rS = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d6213c318L, "jetbrains.mps.baseLanguage.collections.structure.ListElementAccessExpression");
+    /*package*/ static final SConcept ArrayAccessExpression$Eu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11126b40c25L, "jetbrains.mps.baseLanguage.structure.ArrayAccessExpression");
+    /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept LocalPropertyReference$x2 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x515d7a8d927e9fb3L, "jetbrains.mps.baseLanguage.structure.LocalPropertyReference");
+    /*package*/ static final SConcept MapElement$NJ = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116ea555a25L, "jetbrains.mps.baseLanguage.collections.structure.MapElement");
+    /*package*/ static final SConcept SemanticDowncastExpression$vW = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10aaf6d7435L, "jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression");
+    /*package*/ static final SConcept PostfixIncrementExpression$wn = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11adecdb4f0L, "jetbrains.mps.baseLanguage.structure.PostfixIncrementExpression");
+    /*package*/ static final SConcept PostfixDecrementExpression$GY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11aded05fe6L, "jetbrains.mps.baseLanguage.structure.PostfixDecrementExpression");
+    /*package*/ static final SConcept BitwiseNotExpression$2A = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d6d026f5fL, "jetbrains.mps.baseLanguage.structure.BitwiseNotExpression");
+    /*package*/ static final SConcept UnaryMinus$na = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6fea7de6103549b1L, "jetbrains.mps.baseLanguage.structure.UnaryMinus");
+    /*package*/ static final SConcept PrefixDecrementExpression$En = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a472f0e8L, "jetbrains.mps.baseLanguage.structure.PrefixDecrementExpression");
+    /*package*/ static final SConcept PrefixIncrementExpression$xI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a46df580L, "jetbrains.mps.baseLanguage.structure.PrefixIncrementExpression");
+    /*package*/ static final SConcept NotExpression$Pc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, "jetbrains.mps.baseLanguage.structure.NotExpression");
+    /*package*/ static final SConcept InstanceOfExpression$cu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, "jetbrains.mps.baseLanguage.structure.InstanceOfExpression");
+    /*package*/ static final SConcept BaseAssignmentExpression$PA = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, "jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
-    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
-    /*package*/ static final SContainmentLink expression$izU1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
-    /*package*/ static final SContainmentLink expression$Lq8V = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
-    /*package*/ static final SContainmentLink leftExpression$dnS9 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06218L, "leftExpression");
+    /*package*/ static final SContainmentLink leftExpression$sEj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink rightExpression$nvX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink expression$TlhM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink expression$XDmN = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
+    /*package*/ static final SContainmentLink expression$sv_H = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
+    /*package*/ static final SContainmentLink leftExpression$StkV = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06218L, "leftExpression");
   }
 }

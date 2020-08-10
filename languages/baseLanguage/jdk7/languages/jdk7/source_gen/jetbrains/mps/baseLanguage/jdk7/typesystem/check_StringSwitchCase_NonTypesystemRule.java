@@ -28,18 +28,18 @@ public class check_StringSwitchCase_NonTypesystemRule extends AbstractNonTypesys
   public void applyRule(final SNode switchStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // checking case elements 
     Set<String> caseElements = SetSequence.fromSet(new HashSet<String>());
-    for (SNode caseElement : SLinkOperations.getChildren(switchStatement, LINKS.case$tKvS)) {
-      if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(caseElement, LINKS.expression$bKRk), CONCEPTS.StringLiteral$4G))) {
+    for (SNode caseElement : SLinkOperations.getChildren(switchStatement, LINKS.case$8PWE)) {
+      if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(caseElement, LINKS.expression$QQk6), CONCEPTS.StringLiteral$xu))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(caseElement, LINKS.expression$bKRk), "Case expression should be string literal", "r:ed059f83-fdac-4e67-8269-91684666291c(jetbrains.mps.baseLanguage.jdk7.typesystem)", "400642802550421757", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(caseElement, LINKS.expression$QQk6), "Case expression should be string literal", "r:ed059f83-fdac-4e67-8269-91684666291c(jetbrains.mps.baseLanguage.jdk7.typesystem)", "400642802550421757", null, errorTarget);
         }
       } else {
-        String current = SPropertyOperations.getString(SNodeOperations.cast(SLinkOperations.getTarget(caseElement, LINKS.expression$bKRk), CONCEPTS.StringLiteral$4G), PROPS.value$P2m0);
+        String current = SPropertyOperations.getString(SNodeOperations.cast(SLinkOperations.getTarget(caseElement, LINKS.expression$QQk6), CONCEPTS.StringLiteral$xu), PROPS.value$w7MM);
         if (SetSequence.fromSet(caseElements).contains(current)) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(caseElement, LINKS.expression$bKRk), "Case expressions should be unique", "r:ed059f83-fdac-4e67-8269-91684666291c(jetbrains.mps.baseLanguage.jdk7.typesystem)", "3446170115498222133", null, errorTarget);
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(caseElement, LINKS.expression$QQk6), "Case expressions should be unique", "r:ed059f83-fdac-4e67-8269-91684666291c(jetbrains.mps.baseLanguage.jdk7.typesystem)", "3446170115498222133", null, errorTarget);
           }
         }
         SetSequence.fromSet(caseElements).addElement(current);
@@ -47,7 +47,7 @@ public class check_StringSwitchCase_NonTypesystemRule extends AbstractNonTypesys
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.StringSwitchStatement$x7;
+    return CONCEPTS.StringSwitchStatement$Fm;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -57,16 +57,16 @@ public class check_StringSwitchCase_NonTypesystemRule extends AbstractNonTypesys
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$bKRk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression");
-    /*package*/ static final SContainmentLink case$tKvS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02edcafL, "case");
+    /*package*/ static final SContainmentLink expression$QQk6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression");
+    /*package*/ static final SContainmentLink case$8PWE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02edcafL, "case");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StringLiteral$4G = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral");
-    /*package*/ static final SConcept StringSwitchStatement$x7 = MetaAdapterFactory.getConcept(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x58f5e8197ce2129L, "jetbrains.mps.baseLanguage.jdk7.structure.StringSwitchStatement");
+    /*package*/ static final SConcept StringLiteral$xu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral");
+    /*package*/ static final SConcept StringSwitchStatement$Fm = MetaAdapterFactory.getConcept(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x58f5e8197ce2129L, "jetbrains.mps.baseLanguage.jdk7.structure.StringSwitchStatement");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$P2m0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+    /*package*/ static final SProperty value$w7MM = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
   }
 }

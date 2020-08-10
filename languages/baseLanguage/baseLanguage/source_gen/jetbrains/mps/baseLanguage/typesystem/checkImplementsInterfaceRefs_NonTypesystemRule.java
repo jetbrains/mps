@@ -32,14 +32,14 @@ public class checkImplementsInterfaceRefs_NonTypesystemRule extends AbstractNonT
   }
   public void applyRule(final SNode classifier, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> extendedInterfaces;
-    if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.Interface$Kp)) {
-      extendedInterfaces = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(classifier, CONCEPTS.Interface$Kp), LINKS.extendedInterface$a$v2)).toListSequence();
-    } else if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$IY)) {
-      extendedInterfaces = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$IY), LINKS.implementedInterface$KoQU)).toListSequence();
+    if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.Interface$db)) {
+      extendedInterfaces = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(classifier, CONCEPTS.Interface$db), LINKS.extendedInterface$PDVO)).toListSequence();
+    } else if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$bK)) {
+      extendedInterfaces = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$bK), LINKS.implementedInterface$rujG)).toListSequence();
     } else {
       return;
     }
-    Iterable<SNode> distinct = Sequence.fromIterable(SLinkOperations.collect(extendedInterfaces, LINKS.classifier$xslD)).distinct();
+    Iterable<SNode> distinct = Sequence.fromIterable(SLinkOperations.collect(extendedInterfaces, LINKS.classifier$cxMr)).distinct();
     if (Sequence.fromIterable(distinct).count() < ListSequence.fromList(extendedInterfaces).count()) {
       Set<SNode> seen = SetSequence.fromSet(new HashSet<SNode>());
       for (final SNode singleIntfc : Sequence.fromIterable(distinct)) {
@@ -49,14 +49,14 @@ public class checkImplementsInterfaceRefs_NonTypesystemRule extends AbstractNonT
         SetSequence.fromSet(seen).addElement(singleIntfc);
         Iterable<SNode> duplicates = ListSequence.fromList(extendedInterfaces).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SLinkOperations.getTarget(it, LINKS.classifier$xslD) == singleIntfc;
+            return SLinkOperations.getTarget(it, LINKS.classifier$cxMr) == singleIntfc;
           }
         });
         if (Sequence.fromIterable(duplicates).count() > 1) {
           for (SNode dup : Sequence.fromIterable(duplicates)) {
             {
               final MessageTarget errorTarget = new NodeMessageTarget();
-              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(dup, "Duplicate entry '" + SPropertyOperations.getString(singleIntfc, PROPS.name$lA7v) + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3031388763760861714", null, errorTarget);
+              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(dup, "Duplicate entry '" + SPropertyOperations.getString(singleIntfc, PROPS.name$MnvL) + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3031388763760861714", null, errorTarget);
             }
           }
         }
@@ -64,7 +64,7 @@ public class checkImplementsInterfaceRefs_NonTypesystemRule extends AbstractNonT
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Classifier$hJ;
+    return CONCEPTS.Classifier$Ix;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -74,18 +74,18 @@ public class checkImplementsInterfaceRefs_NonTypesystemRule extends AbstractNonT
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink extendedInterface$a$v2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
-    /*package*/ static final SContainmentLink implementedInterface$KoQU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink extendedInterface$PDVO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
+    /*package*/ static final SContainmentLink implementedInterface$rujG = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

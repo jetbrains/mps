@@ -22,7 +22,7 @@ public class typeof_QueryFunction_TransformationMenu_node_InferenceRule extends 
   public typeof_QueryFunction_TransformationMenu_node_InferenceRule() {
   }
   public void applyRule(final SNode paramNode, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode parent = SNodeOperations.getNodeAncestor(paramNode, CONCEPTS.IMenu$ym, true, false);
+    SNode parent = SNodeOperations.getNodeAncestor(paramNode, CONCEPTS.IMenu$HX, true, false);
     if ((parent != null)) {
       SNode concept = IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(parent);
       {
@@ -33,7 +33,7 @@ public class typeof_QueryFunction_TransformationMenu_node_InferenceRule extends 
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.QueryFunctionParameter_TransformationMenu_node$H$;
+    return CONCEPTS.QueryFunctionParameter_TransformationMenu_node$Tb;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -50,7 +50,7 @@ public class typeof_QueryFunction_TransformationMenu_node_InferenceRule extends 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IMenu$ym = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048846L, "jetbrains.mps.lang.editor.structure.IMenu");
-    /*package*/ static final SConcept QueryFunctionParameter_TransformationMenu_node$H$ = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x162bf82611fb4032L, "jetbrains.mps.lang.editor.structure.QueryFunctionParameter_TransformationMenu_node");
+    /*package*/ static final SInterfaceConcept IMenu$HX = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048846L, "jetbrains.mps.lang.editor.structure.IMenu");
+    /*package*/ static final SConcept QueryFunctionParameter_TransformationMenu_node$Tb = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x162bf82611fb4032L, "jetbrains.mps.lang.editor.structure.QueryFunctionParameter_TransformationMenu_node");
   }
 }

@@ -27,15 +27,15 @@ public class AttributeUtil {
 
     List<SNode> valuesToDelete = new ArrayList<SNode>();
     SNode lastValue = null;
-    for (SNode part : SLinkOperations.getChildren(attr, LINKS.value$7SEa)) {
-      if (SNodeOperations.isInstanceOf(part, CONCEPTS.XmlTextValue$BE)) {
-        if (isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(part, CONCEPTS.XmlTextValue$BE), PROPS.text$GoKl))) {
+    for (SNode part : SLinkOperations.getChildren(attr, LINKS.value$1h4D)) {
+      if (SNodeOperations.isInstanceOf(part, CONCEPTS.XmlTextValue$29)) {
+        if (isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(part, CONCEPTS.XmlTextValue$29), PROPS.text$_LaO))) {
           ListSequence.fromList(valuesToDelete).addElement(part);
         } else if (lastValue != null) {
-          SPropertyOperations.plusAssignStringProp(lastValue, PROPS.text$GoKl, SPropertyOperations.getString(SNodeOperations.cast(part, CONCEPTS.XmlTextValue$BE), PROPS.text$GoKl));
+          SPropertyOperations.plusAssignStringProp(lastValue, PROPS.text$_LaO, SPropertyOperations.getString(SNodeOperations.cast(part, CONCEPTS.XmlTextValue$29), PROPS.text$_LaO));
           ListSequence.fromList(valuesToDelete).addElement(part);
         } else {
-          lastValue = SNodeOperations.cast(part, CONCEPTS.XmlTextValue$BE);
+          lastValue = SNodeOperations.cast(part, CONCEPTS.XmlTextValue$29);
         }
       } else {
         lastValue = null;
@@ -50,14 +50,14 @@ public class AttributeUtil {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XmlTextValue$BE = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, "jetbrains.mps.core.xml.structure.XmlTextValue");
+    /*package*/ static final SConcept XmlTextValue$29 = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, "jetbrains.mps.core.xml.structure.XmlTextValue");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$GoKl = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text");
+    /*package*/ static final SProperty text$_LaO = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink value$7SEa = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, 0x5c842a42c54cfd1eL, "value");
+    /*package*/ static final SContainmentLink value$1h4D = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, 0x5c842a42c54cfd1eL, "value");
   }
 }

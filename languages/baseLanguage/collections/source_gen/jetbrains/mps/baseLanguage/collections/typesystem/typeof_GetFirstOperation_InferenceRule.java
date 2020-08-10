@@ -18,7 +18,7 @@ public class typeof_GetFirstOperation_InferenceRule extends AbstractInferenceRul
     RulesFunctions_Collections.setInputElementType(typeCheckingContext, op, op);
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.GetFirstOperation$Bp;
+    return CONCEPTS.GetFirstOperation$PG;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -28,6 +28,6 @@ public class typeof_GetFirstOperation_InferenceRule extends AbstractInferenceRul
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GetFirstOperation$Bp = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10f5eb70c62L, "jetbrains.mps.baseLanguage.collections.structure.GetFirstOperation");
+    /*package*/ static final SConcept GetFirstOperation$PG = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10f5eb70c62L, "jetbrains.mps.baseLanguage.collections.structure.GetFirstOperation");
   }
 }

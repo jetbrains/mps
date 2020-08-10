@@ -23,20 +23,20 @@ public class check_ReferenceToNonexistentDefaultSubstituteMenu_NonTypesystemRule
   public check_ReferenceToNonexistentDefaultSubstituteMenu_NonTypesystemRule() {
   }
   public void applyRule(final SNode ref, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode concept = SLinkOperations.getTarget(ref, LINKS.concept$g1C5);
+    SNode concept = SLinkOperations.getTarget(ref, LINKS.concept$kjNG);
     if ((concept == null)) {
       return;
     }
 
     if ((DefaultTransformationMenuUtil.findDefaultSubstituteMenuForConcept(concept) == null)) {
       {
-        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.concept$g1C5);
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(ref, "Default substitute menu for " + SPropertyOperations.getString(concept, PROPS.name$lA7v) + " is not defined. Implicit default menu will be used.", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "4001367738979305344", null, errorTarget);
+        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.concept$kjNG);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(ref, "Default substitute menu for " + SPropertyOperations.getString(concept, PROPS.name$MnvL) + " is not defined. Implicit default menu will be used.", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "4001367738979305344", null, errorTarget);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SubstituteMenuReference_Default$TI;
+    return CONCEPTS.SubstituteMenuReference_Default$5l;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -46,14 +46,14 @@ public class check_ReferenceToNonexistentDefaultSubstituteMenu_NonTypesystemRule
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$g1C5 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a90a41c1L, 0x169efbc9a91440deL, "concept");
+    /*package*/ static final SReferenceLink concept$kjNG = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a90a41c1L, 0x169efbc9a91440deL, "concept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SubstituteMenuReference_Default$TI = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1eL, "jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Default");
+    /*package*/ static final SConcept SubstituteMenuReference_Default$5l = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1eL, "jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Default");
   }
 }

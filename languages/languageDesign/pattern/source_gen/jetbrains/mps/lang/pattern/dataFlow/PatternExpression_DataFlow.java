@@ -13,17 +13,17 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class PatternExpression_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    for (SNode antiquotation : SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.AbstractAntiquotation$Tk, false, new SAbstractConcept[]{})) {
+    for (SNode antiquotation : SNodeOperations.getNodeDescendants(_context.getNode(), CONCEPTS.AbstractAntiquotation$TS, false, new SAbstractConcept[]{})) {
       _context.getBuilder().build((SNode) antiquotation);
     }
-    for (SNode patternVar : SNodeOperations.getNodeDescendantsWhereConceptInList(_context.getNode(), new SAbstractConcept[]{CONCEPTS.PatternVariableDeclaration$Ma, CONCEPTS.PropertyPatternVariableDeclaration$Xj}, false, new SAbstractConcept[]{})) {
+    for (SNode patternVar : SNodeOperations.getNodeDescendantsWhereConceptInList(_context.getNode(), new SAbstractConcept[]{CONCEPTS.PatternVariableDeclaration$ZH, CONCEPTS.PropertyPatternVariableDeclaration$aQ}, false, new SAbstractConcept[]{})) {
       _context.getBuilder().build((SNode) patternVar);
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept AbstractAntiquotation$Tk = MetaAdapterFactory.getInterfaceConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104656L, "jetbrains.mps.lang.quotation.structure.AbstractAntiquotation");
-    /*package*/ static final SConcept PatternVariableDeclaration$Ma = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4793L, "jetbrains.mps.lang.pattern.structure.PatternVariableDeclaration");
-    /*package*/ static final SConcept PropertyPatternVariableDeclaration$Xj = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4795L, "jetbrains.mps.lang.pattern.structure.PropertyPatternVariableDeclaration");
+    /*package*/ static final SInterfaceConcept AbstractAntiquotation$TS = MetaAdapterFactory.getInterfaceConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104656L, "jetbrains.mps.lang.quotation.structure.AbstractAntiquotation");
+    /*package*/ static final SConcept PatternVariableDeclaration$ZH = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4793L, "jetbrains.mps.lang.pattern.structure.PatternVariableDeclaration");
+    /*package*/ static final SConcept PropertyPatternVariableDeclaration$aQ = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4795L, "jetbrains.mps.lang.pattern.structure.PropertyPatternVariableDeclaration");
   }
 }

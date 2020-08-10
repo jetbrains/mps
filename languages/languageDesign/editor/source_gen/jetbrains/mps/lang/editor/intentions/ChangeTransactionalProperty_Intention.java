@@ -59,10 +59,10 @@ public final class ChangeTransactionalProperty_Intention extends AbstractIntenti
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode transactional = SNodeFactoryOperations.createNewNode(CONCEPTS.CellModel_Property$iE, null);
-      SLinkOperations.setTarget(transactional, LINKS.relationDeclaration$_K5_, SLinkOperations.getTarget(node, LINKS.property$88sV));
-      SLinkOperations.setTarget(node, LINKS.property$88sV, null);
-      SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.handlerBlock$Nzk2));
+      SNode transactional = SNodeFactoryOperations.createNewNode(CONCEPTS.CellModel_Property$uh, null);
+      SLinkOperations.setTarget(transactional, LINKS.relationDeclaration$E2hc, SLinkOperations.getTarget(node, LINKS.property$cqCy));
+      SLinkOperations.setTarget(node, LINKS.property$cqCy, null);
+      SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.handlerBlock$RPvD));
       List<SNode> copy = ListSequence.fromListWithValues(new ArrayList<SNode>(), SNodeOperations.getChildren(node));
       for (SNode child : ListSequence.fromList(copy)) {
         SContainmentLink role = SNodeOperations.getContainingLink(child);
@@ -84,12 +84,12 @@ public final class ChangeTransactionalProperty_Intention extends AbstractIntenti
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellModel_Property$iE = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb02612eL, "jetbrains.mps.lang.editor.structure.CellModel_Property");
+    /*package*/ static final SConcept CellModel_Property$uh = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb02612eL, "jetbrains.mps.lang.editor.structure.CellModel_Property");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink relationDeclaration$_K5_ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
-    /*package*/ static final SReferenceLink property$88sV = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, 0x11b35f87187L, "property");
-    /*package*/ static final SContainmentLink handlerBlock$Nzk2 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, 0x11b35f85498L, "handlerBlock");
+    /*package*/ static final SReferenceLink relationDeclaration$E2hc = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
+    /*package*/ static final SReferenceLink property$cqCy = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, 0x11b35f87187L, "property");
+    /*package*/ static final SContainmentLink handlerBlock$RPvD = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b35f4f515L, 0x11b35f85498L, "handlerBlock");
   }
 }

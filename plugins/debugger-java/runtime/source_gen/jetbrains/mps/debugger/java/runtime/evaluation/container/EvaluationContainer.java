@@ -90,7 +90,7 @@ public abstract class EvaluationContainer implements IEvaluationContainer {
     return new ModelAccessHelper(myDebuggerRepository).runReadAction(new Computable<String>() {
       @Override
       public String compute() {
-        return PresentationUtil.getPresentation(((SNode) BHReflection.invoke0(SNodeOperations.cast(getNode(), CONCEPTS.IEvaluatorConcept$wG), CONCEPTS.IEvaluatorConcept$wG, SMethodTrimmedId.create("getCode", null, "hASWOEj0jB"))));
+        return PresentationUtil.getPresentation(((SNode) BHReflection.invoke0(SNodeOperations.cast(getNode(), CONCEPTS.IEvaluatorConcept$E8), CONCEPTS.IEvaluatorConcept$E8, SMethodTrimmedId.create("getCode", null, "hASWOEj0jB"))));
       }
     });
   }
@@ -109,6 +109,6 @@ public abstract class EvaluationContainer implements IEvaluationContainer {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IEvaluatorConcept$wG = MetaAdapterFactory.getInterfaceConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x7f4a99699cea367bL, "jetbrains.mps.debugger.java.evaluation.structure.IEvaluatorConcept");
+    /*package*/ static final SInterfaceConcept IEvaluatorConcept$E8 = MetaAdapterFactory.getInterfaceConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x7f4a99699cea367bL, "jetbrains.mps.debugger.java.evaluation.structure.IEvaluatorConcept");
   }
 }

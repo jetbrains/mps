@@ -8,10 +8,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CellMenuPart_ReplaceNode_CustomNodeConcept_Constraints extends BaseConstraintsDescriptor {
   public CellMenuPart_ReplaceNode_CustomNodeConcept_Constraints() {
-    super(CONCEPTS.CellMenuPart_ReplaceNode_CustomNodeConcept$7e);
+    super(CONCEPTS.CellMenuPart_ReplaceNode_CustomNodeConcept$iP);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellMenuPart_ReplaceNode_CustomNodeConcept$7e = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3a50ec74L, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReplaceNode_CustomNodeConcept");
+    /*package*/ static final SConcept CellMenuPart_ReplaceNode_CustomNodeConcept$iP = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f3a50ec74L, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReplaceNode_CustomNodeConcept");
   }
 }

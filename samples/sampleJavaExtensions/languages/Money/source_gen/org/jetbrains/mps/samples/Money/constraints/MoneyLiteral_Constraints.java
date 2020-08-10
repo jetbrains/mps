@@ -8,10 +8,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MoneyLiteral_Constraints extends BaseConstraintsDescriptor {
   public MoneyLiteral_Constraints() {
-    super(CONCEPTS.MoneyLiteral$ml);
+    super(CONCEPTS.MoneyLiteral$zI);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MoneyLiteral$ml = MetaAdapterFactory.getConcept(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x4b9a2fe559135132L, "org.jetbrains.mps.samples.Money.structure.MoneyLiteral");
+    /*package*/ static final SConcept MoneyLiteral$zI = MetaAdapterFactory.getConcept(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x4b9a2fe559135132L, "org.jetbrains.mps.samples.Money.structure.MoneyLiteral");
   }
 }

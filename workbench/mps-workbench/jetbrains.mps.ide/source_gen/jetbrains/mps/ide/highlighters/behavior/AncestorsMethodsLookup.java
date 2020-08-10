@@ -51,8 +51,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
   @NotNull
   /*package*/ List<EditorMessage> calcMessages() {
     List<EditorMessage> result = ListSequence.fromList(new ArrayList<EditorMessage>());
-    for (SNode method : ListSequence.fromList(SLinkOperations.getChildren(myBehavior, LINKS.method$6$ra))) {
-      if (((boolean) (Boolean) BHReflection.invoke0(method, CONCEPTS.ConceptMethodDeclaration$VN, SMethodTrimmedId.create("isVirtual", CONCEPTS.ConceptMethodDeclaration$VN, "6WSEafdhbZX"))) && SLinkOperations.getTarget(method, LINKS.overriddenMethod$tTw) != null) {
+    for (SNode method : ListSequence.fromList(SLinkOperations.getChildren(myBehavior, LINKS.method$w_in))) {
+      if (((boolean) (Boolean) BHReflection.invoke0(method, CONCEPTS.ConceptMethodDeclaration$N0, SMethodTrimmedId.create("isVirtual", CONCEPTS.ConceptMethodDeclaration$N0, "6WSEafdhbZX"))) && SLinkOperations.getTarget(method, LINKS.overriddenMethod$quKH) != null) {
         EditorMessage msgForMethod = calcMessage(method);
         if (msgForMethod != null) {
           ListSequence.fromList(result).addElement(msgForMethod);
@@ -91,8 +91,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
         SNode nodeParam = (SNode) searchResult.getObject();
         new _FunctionTypes._void_P1_E0<SNode>() {
           public void invoke(SNode foundNode) {
-            if (SNodeOperations.isInstanceOf(foundNode, CONCEPTS.ConceptMethodDeclaration$VN)) {
-              SetSequence.fromSet(result).addElement(SNodeOperations.cast(foundNode, CONCEPTS.ConceptMethodDeclaration$VN));
+            if (SNodeOperations.isInstanceOf(foundNode, CONCEPTS.ConceptMethodDeclaration$N0)) {
+              SetSequence.fromSet(result).addElement(SNodeOperations.cast(foundNode, CONCEPTS.ConceptMethodDeclaration$N0));
               if (SetSequence.fromSet(result).count() > myMaxResultsToCollect) {
                 monitor.cancel();
               }
@@ -104,11 +104,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink overriddenMethod$tTw = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod");
-    /*package*/ static final SContainmentLink method$6$ra = MetaAdapterFactory.getContainmentLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b25L, "method");
+    /*package*/ static final SReferenceLink overriddenMethod$quKH = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod");
+    /*package*/ static final SContainmentLink method$w_in = MetaAdapterFactory.getContainmentLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b25L, "method");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptMethodDeclaration$VN = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
+    /*package*/ static final SConcept ConceptMethodDeclaration$N0 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
   }
 }

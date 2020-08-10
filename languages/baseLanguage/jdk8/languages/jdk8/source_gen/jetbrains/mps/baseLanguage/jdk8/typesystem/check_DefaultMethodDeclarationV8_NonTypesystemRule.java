@@ -39,7 +39,7 @@ public class check_DefaultMethodDeclarationV8_NonTypesystemRule extends Abstract
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.DefaultModifier_old$Z2;
+    return CONCEPTS.DefaultModifier_old$PN;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -55,6 +55,6 @@ public class check_DefaultMethodDeclarationV8_NonTypesystemRule extends Abstract
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DefaultModifier_old$Z2 = MetaAdapterFactory.getConcept(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, 0x40ed0df0ef40a332L, "jetbrains.mps.baseLanguage.jdk8.structure.DefaultModifier_old");
+    /*package*/ static final SConcept DefaultModifier_old$PN = MetaAdapterFactory.getConcept(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, 0x40ed0df0ef40a332L, "jetbrains.mps.baseLanguage.jdk8.structure.DefaultModifier_old");
   }
 }

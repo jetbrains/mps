@@ -69,12 +69,12 @@ public class ChildAttributeQualifier_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.smodel.editor.ChildAttributeQualifier_SmartReference");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.ChildAttributeQualifier$N;
+      return CONCEPTS.ChildAttributeQualifier$2j;
     }
   }
   public class SMP_Subconcepts_vupgsn_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ChildAttributeQualifier$N);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ChildAttributeQualifier$2j);
     }
     @NotNull
     @Override
@@ -95,6 +95,6 @@ public class ChildAttributeQualifier_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ChildAttributeQualifier$N = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x9d98713f24a0e5bL, "jetbrains.mps.lang.smodel.structure.ChildAttributeQualifier");
+    /*package*/ static final SConcept ChildAttributeQualifier$2j = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x9d98713f24a0e5bL, "jetbrains.mps.lang.smodel.structure.ChildAttributeQualifier");
   }
 }

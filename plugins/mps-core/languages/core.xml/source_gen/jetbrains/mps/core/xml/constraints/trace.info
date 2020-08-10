@@ -31,8 +31,8 @@
       <node id="1122581627194121462" at="46,84,47,119" concept="6" />
       <node id="1122581627194121463" at="47,119,48,63" concept="2" />
       <node id="1122581627194121462" at="48,63,49,22" concept="7" />
-      <node id="1122581627194121462" at="53,0,54,0" concept="10" trace="XmlText$ZE" />
-      <node id="1122581627194121462" at="57,0,58,0" concept="10" trace="value$ds10" />
+      <node id="1122581627194121462" at="53,0,54,0" concept="10" trace="XmlText$q9" />
+      <node id="1122581627194121462" at="57,0,58,0" concept="10" trace="value$6Orv" />
       <node id="1122581627194121462" at="20,0,23,0" concept="1" trace="XmlText_Constraints#()V" />
       <node id="1122581627194121463" at="25,0,28,0" concept="1" trace="Value_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="1122581627194121463" at="35,99,38,7" concept="4" />
@@ -75,7 +75,7 @@
   <root nodeRef="r:edc2e1a3-c4ab-4f36-a908-e29e4c77f1bb(jetbrains.mps.core.xml.constraints)/1622293396948983511">
     <file name="XmlContent_Constraints.java">
       <node id="1622293396948983511" at="10,35,11,34" concept="12" />
-      <node id="1622293396948983511" at="15,0,16,0" concept="10" trace="XmlContent$nZ" />
+      <node id="1622293396948983511" at="15,0,16,0" concept="10" trace="XmlContent$Mu" />
       <node id="1622293396948983511" at="10,0,13,0" concept="1" trace="XmlContent_Constraints#()V" />
       <scope id="1622293396948983511" at="10,35,11,34" />
       <scope id="1622293396948983511" at="10,0,13,0" />
@@ -96,8 +96,8 @@
       <node id="1622293396948985398" at="46,84,47,119" concept="6" />
       <node id="1622293396948985399" at="47,119,48,67" concept="2" />
       <node id="1622293396948985398" at="48,67,49,22" concept="7" />
-      <node id="1622293396948985398" at="53,0,54,0" concept="10" trace="XmlCDATA$Dr" />
-      <node id="1622293396948985398" at="57,0,58,0" concept="10" trace="content$IPF6" />
+      <node id="1622293396948985398" at="53,0,54,0" concept="10" trace="XmlCDATA$3U" />
+      <node id="1622293396948985398" at="57,0,58,0" concept="10" trace="content$Ce5_" />
       <node id="1622293396948985398" at="20,0,23,0" concept="1" trace="XmlCDATA_Constraints#()V" />
       <node id="1622293396948985399" at="25,0,28,0" concept="1" trace="Content_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="1622293396948985399" at="35,99,38,7" concept="4" />
@@ -150,8 +150,8 @@
       <node id="1622293396949036131" at="46,84,47,119" concept="6" />
       <node id="1622293396949036132" at="47,119,48,61" concept="2" />
       <node id="1622293396949036131" at="48,61,49,22" concept="7" />
-      <node id="1622293396949036131" at="53,0,54,0" concept="10" trace="XmlCommentLine$tE" />
-      <node id="1622293396949036131" at="57,0,58,0" concept="10" trace="text$9eP0" />
+      <node id="1622293396949036131" at="53,0,54,0" concept="10" trace="XmlCommentLine$S9" />
+      <node id="1622293396949036131" at="57,0,58,0" concept="10" trace="text$2Bfv" />
       <node id="1622293396949036131" at="20,0,23,0" concept="1" trace="XmlCommentLine_Constraints#()V" />
       <node id="1622293396949036132" at="25,0,28,0" concept="1" trace="Text_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="1622293396949036132" at="35,99,38,7" concept="4" />
@@ -204,8 +204,8 @@
       <node id="1622293396949069715" at="46,84,47,119" concept="6" />
       <node id="1622293396949069716" at="47,119,48,73" concept="2" />
       <node id="1622293396949069715" at="48,73,49,22" concept="7" />
-      <node id="1622293396949069715" at="53,0,54,0" concept="10" trace="XmlEntityRef$k8" />
-      <node id="1622293396949069715" at="57,0,58,0" concept="10" trace="entityName$_kyv" />
+      <node id="1622293396949069715" at="53,0,54,0" concept="10" trace="XmlEntityRef$IB" />
+      <node id="1622293396949069715" at="57,0,58,0" concept="10" trace="entityName$uGWY" />
       <node id="1622293396949069715" at="20,0,23,0" concept="1" trace="XmlEntityRef_Constraints#()V" />
       <node id="1622293396949069716" at="25,0,28,0" concept="1" trace="EntityName_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="1622293396949069716" at="35,99,38,7" concept="4" />
@@ -265,8 +265,8 @@
       <node id="2133624044437898956" at="72,75,73,22" concept="7" />
       <node id="1227128029536582496" at="77,39,78,83" concept="7" />
       <node id="2133624044437898956" at="82,0,83,0" concept="10" trace="canBeChildBreakingPoint" />
-      <node id="2133624044437898956" at="85,0,86,0" concept="10" trace="XmlDoctypeDeclaration$in" />
-      <node id="2133624044437898956" at="89,0,90,0" concept="10" trace="doctypeName$LI$R" />
+      <node id="2133624044437898956" at="85,0,86,0" concept="10" trace="XmlDoctypeDeclaration$GQ" />
+      <node id="2133624044437898956" at="89,0,90,0" concept="10" trace="doctypeName$F6Zm" />
       <node id="2133624044437898956" at="29,0,32,0" concept="1" trace="XmlDoctypeDeclaration_Constraints#()V" />
       <node id="2133624044437898956" at="39,0,42,9" concept="4" />
       <node id="2133624044437898957" at="49,0,52,0" concept="1" trace="DoctypeName_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
@@ -357,9 +357,9 @@
       <node id="2133624044437927499" at="68,119,69,69" concept="2" />
       <node id="2133624044437932856" at="69,69,70,69" concept="2" />
       <node id="2133624044438029135" at="70,69,71,22" concept="7" />
-      <node id="2133624044438029135" at="75,0,76,0" concept="10" trace="XmlExternalId$et" />
-      <node id="2133624044438029135" at="79,0,80,0" concept="10" trace="publicId$KGQS" />
-      <node id="2133624044438029135" at="80,0,81,0" concept="10" trace="systemId$KH5T" />
+      <node id="2133624044438029135" at="75,0,76,0" concept="10" trace="XmlExternalId$CW" />
+      <node id="2133624044438029135" at="79,0,80,0" concept="10" trace="publicId$E5hn" />
+      <node id="2133624044438029135" at="80,0,81,0" concept="10" trace="systemId$E5wo" />
       <node id="2133624044438029135" at="20,0,23,0" concept="1" trace="XmlExternalId_Constraints#()V" />
       <node id="2133624044437927499" at="25,0,28,0" concept="1" trace="PublicId_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="2133624044437927499" at="35,99,38,7" concept="4" />
@@ -438,8 +438,8 @@
       <node id="3080189811177199799" at="46,84,47,119" concept="6" />
       <node id="3080189811177199800" at="47,119,48,69" concept="2" />
       <node id="3080189811177199799" at="48,69,49,22" concept="7" />
-      <node id="3080189811177199799" at="53,0,54,0" concept="10" trace="XmlCharRef$xa" />
-      <node id="3080189811177199799" at="57,0,58,0" concept="10" trace="charCode$Ig_0" />
+      <node id="3080189811177199799" at="53,0,54,0" concept="10" trace="XmlCharRef$VD" />
+      <node id="3080189811177199799" at="57,0,58,0" concept="10" trace="charCode$BCZv" />
       <node id="3080189811177199799" at="20,0,23,0" concept="1" trace="XmlCharRef_Constraints#()V" />
       <node id="3080189811177199800" at="25,0,28,0" concept="1" trace="CharCode_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="3080189811177199800" at="35,99,38,7" concept="4" />
@@ -492,8 +492,8 @@
       <node id="3080189811177216002" at="46,84,47,119" concept="6" />
       <node id="3080189811177216066" at="47,119,48,69" concept="2" />
       <node id="3080189811177216002" at="48,69,49,22" concept="7" />
-      <node id="3080189811177216002" at="53,0,54,0" concept="10" trace="XmlCharRefValue$_9" />
-      <node id="3080189811177216002" at="57,0,58,0" concept="10" trace="charCode$VgIs" />
+      <node id="3080189811177216002" at="53,0,54,0" concept="10" trace="XmlCharRefValue$ZC" />
+      <node id="3080189811177216002" at="57,0,58,0" concept="10" trace="charCode$OD8V" />
       <node id="3080189811177216002" at="20,0,23,0" concept="1" trace="XmlCharRefValue_Constraints#()V" />
       <node id="3080189811177216066" at="25,0,28,0" concept="1" trace="CharCode_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="3080189811177216066" at="35,99,38,7" concept="4" />
@@ -535,10 +535,10 @@
   </root>
   <root nodeRef="r:edc2e1a3-c4ab-4f36-a908-e29e4c77f1bb(jetbrains.mps.core.xml.constraints)/3080189811177243096">
     <file name="XmlValuePart_Constraints.java">
-      <node id="3080189811177243096" at="10,37,11,36" concept="12" />
-      <node id="3080189811177243096" at="15,0,16,0" concept="10" trace="XmlValuePart$Ad" />
+      <node id="3080189811177243096" at="10,37,11,35" concept="12" />
+      <node id="3080189811177243096" at="15,0,16,0" concept="10" trace="XmlValuePart$G" />
       <node id="3080189811177243096" at="10,0,13,0" concept="1" trace="XmlValuePart_Constraints#()V" />
-      <scope id="3080189811177243096" at="10,37,11,36" />
+      <scope id="3080189811177243096" at="10,37,11,35" />
       <scope id="3080189811177243096" at="10,0,13,0" />
       <unit id="3080189811177243096" at="14,0,17,0" name="jetbrains.mps.core.xml.constraints.XmlValuePart_Constraints$CONCEPTS" />
       <unit id="3080189811177243096" at="9,0,18,0" name="jetbrains.mps.core.xml.constraints.XmlValuePart_Constraints" />
@@ -554,7 +554,7 @@
       <node id="3374336260036066420" at="34,0,35,22" concept="7" />
       <node id="1227128029536582506" at="39,128,40,55" concept="7" />
       <node id="3374336260036066420" at="42,0,43,0" concept="10" trace="canBeChildBreakingPoint" />
-      <node id="3374336260036066420" at="45,0,46,0" concept="10" trace="XmlDeclaration$A$" />
+      <node id="3374336260036066420" at="45,0,46,0" concept="10" trace="XmlDeclaration$13" />
       <node id="3374336260036066420" at="20,0,23,0" concept="1" trace="XmlDeclaration_Constraints#()V" />
       <node id="3374336260036066420" at="30,0,33,9" concept="4" />
       <node id="3374336260036066420" at="39,0,42,0" concept="11" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -906,8 +906,8 @@
       <node id="6666499814681415546" at="46,84,47,119" concept="6" />
       <node id="6666499814681415547" at="47,119,48,65" concept="2" />
       <node id="6666499814681415546" at="48,65,49,22" concept="7" />
-      <node id="6666499814681415546" at="53,0,54,0" concept="10" trace="XmlProcessingInstruction$B0" />
-      <node id="6666499814681415546" at="57,0,58,0" concept="10" trace="target$Yjw0" />
+      <node id="6666499814681415546" at="53,0,54,0" concept="10" trace="XmlProcessingInstruction$1v" />
+      <node id="6666499814681415546" at="57,0,58,0" concept="10" trace="target$RFUv" />
       <node id="6666499814681415546" at="20,0,23,0" concept="1" trace="XmlProcessingInstruction_Constraints#()V" />
       <node id="6666499814681415547" at="25,0,28,0" concept="1" trace="Target_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="6666499814681415547" at="35,99,38,7" concept="4" />
@@ -960,8 +960,8 @@
       <node id="6666499814681447914" at="46,84,47,119" concept="6" />
       <node id="6666499814681447915" at="47,119,48,67" concept="2" />
       <node id="6666499814681447914" at="48,67,49,22" concept="7" />
-      <node id="6666499814681447914" at="53,0,54,0" concept="10" trace="XmlElement$Pm" />
-      <node id="6666499814681447914" at="57,0,58,0" concept="10" trace="tagName$60jo" />
+      <node id="6666499814681447914" at="53,0,54,0" concept="10" trace="XmlElement$fP" />
+      <node id="6666499814681447914" at="57,0,58,0" concept="10" trace="tagName$ZoHR" />
       <node id="6666499814681447914" at="20,0,23,0" concept="1" trace="XmlElement_Constraints#()V" />
       <node id="6666499814681447915" at="25,0,28,0" concept="1" trace="TagName_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="6666499814681447915" at="35,99,38,7" concept="4" />
@@ -1014,8 +1014,8 @@
       <node id="6666499814681547968" at="46,84,47,119" concept="6" />
       <node id="6666499814681547969" at="47,119,48,73" concept="2" />
       <node id="6666499814681547968" at="48,73,49,22" concept="7" />
-      <node id="6666499814681547968" at="53,0,54,0" concept="10" trace="XmlEntityRefValue$MN" />
-      <node id="6666499814681547968" at="57,0,58,0" concept="10" trace="entityName$IwWS" />
+      <node id="6666499814681547968" at="53,0,54,0" concept="10" trace="XmlEntityRefValue$di" />
+      <node id="6666499814681547968" at="57,0,58,0" concept="10" trace="entityName$BTnn" />
       <node id="6666499814681547968" at="20,0,23,0" concept="1" trace="XmlEntityRefValue_Constraints#()V" />
       <node id="6666499814681547969" at="25,0,28,0" concept="1" trace="EntityName_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="6666499814681547969" at="35,99,38,7" concept="4" />
@@ -1068,8 +1068,8 @@
       <node id="6666499814681587454" at="46,84,47,119" concept="6" />
       <node id="6666499814681587455" at="47,119,48,61" concept="2" />
       <node id="6666499814681587454" at="48,61,49,22" concept="7" />
-      <node id="6666499814681587454" at="53,0,54,0" concept="10" trace="XmlTextValue$BE" />
-      <node id="6666499814681587454" at="57,0,58,0" concept="10" trace="text$GoKl" />
+      <node id="6666499814681587454" at="53,0,54,0" concept="10" trace="XmlTextValue$29" />
+      <node id="6666499814681587454" at="57,0,58,0" concept="10" trace="text$_LaO" />
       <node id="6666499814681587454" at="20,0,23,0" concept="1" trace="XmlTextValue_Constraints#()V" />
       <node id="6666499814681587455" at="25,0,28,0" concept="1" trace="Text_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="6666499814681587455" at="35,99,38,7" concept="4" />
@@ -1122,8 +1122,8 @@
       <node id="6666499814681620721" at="46,84,47,119" concept="6" />
       <node id="6666499814681620722" at="47,119,48,69" concept="2" />
       <node id="6666499814681620721" at="48,69,49,22" concept="7" />
-      <node id="6666499814681620721" at="53,0,54,0" concept="10" trace="XmlAttribute$UQ" />
-      <node id="6666499814681620721" at="57,0,58,0" concept="10" trace="attrName$uXT2" />
+      <node id="6666499814681620721" at="53,0,54,0" concept="10" trace="XmlAttribute$ll" />
+      <node id="6666499814681620721" at="57,0,58,0" concept="10" trace="attrName$omjx" />
       <node id="6666499814681620721" at="20,0,23,0" concept="1" trace="XmlAttribute_Constraints#()V" />
       <node id="6666499814681620722" at="25,0,28,0" concept="1" trace="AttrName_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="6666499814681620722" at="35,99,38,7" concept="4" />
@@ -1176,8 +1176,8 @@
       <node id="7604553062773750443" at="46,84,47,119" concept="6" />
       <node id="7604553062773750477" at="47,119,48,63" concept="2" />
       <node id="7604553062773750443" at="48,63,49,22" concept="7" />
-      <node id="7604553062773750443" at="53,0,54,0" concept="10" trace="XmlWhitespace$Jc" />
-      <node id="7604553062773750443" at="57,0,58,0" concept="10" trace="value$iwgW" />
+      <node id="7604553062773750443" at="53,0,54,0" concept="10" trace="XmlWhitespace$9F" />
+      <node id="7604553062773750443" at="57,0,58,0" concept="10" trace="value$bSFr" />
       <node id="7604553062773750443" at="20,0,23,0" concept="1" trace="XmlWhitespace_Constraints#()V" />
       <node id="7604553062773750477" at="25,0,28,0" concept="1" trace="Value_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="7604553062773750477" at="35,99,38,7" concept="4" />

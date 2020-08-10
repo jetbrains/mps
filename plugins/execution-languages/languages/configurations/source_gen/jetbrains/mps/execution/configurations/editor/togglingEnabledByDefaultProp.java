@@ -107,7 +107,7 @@ public class togglingEnabledByDefaultProp extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SPropertyOperations.assign(_context.getNode(), PROPS.disabledByDefault$DlUF, false);
+        SPropertyOperations.assign(_context.getNode(), PROPS.disabledByDefault$cZBi, false);
       }
 
 
@@ -167,7 +167,7 @@ public class togglingEnabledByDefaultProp extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SPropertyOperations.assign(_context.getNode(), PROPS.disabledByDefault$DlUF, true);
+        SPropertyOperations.assign(_context.getNode(), PROPS.disabledByDefault$cZBi, true);
       }
 
 
@@ -191,6 +191,6 @@ public class togglingEnabledByDefaultProp extends TransformationMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty disabledByDefault$DlUF = MetaAdapterFactory.getProperty(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5ae6ebde781f1fd8L, 0x799bdb1024549bf4L, "disabledByDefault");
+    /*package*/ static final SProperty disabledByDefault$cZBi = MetaAdapterFactory.getProperty(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x5ae6ebde781f1fd8L, 0x799bdb1024549bf4L, "disabledByDefault");
   }
 }

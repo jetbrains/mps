@@ -32,7 +32,7 @@ public final class ValueInlineDocTag__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static String buildCommentText_id7Qt73fl50wX(@NotNull SNode __thisNode__) {
-    return (String) BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.variableReference$gvXR));
+    return (String) BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.variableReference$ASK4));
   }
 
   /*package*/ ValueInlineDocTag__BehaviorDescriptor() {
@@ -82,6 +82,6 @@ public final class ValueInlineDocTag__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink variableReference$gvXR = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x60a0f9237ac5e83bL, 0x2398cefbc25f6d46L, "variableReference");
+    /*package*/ static final SContainmentLink variableReference$ASK4 = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x60a0f9237ac5e83bL, 0x2398cefbc25f6d46L, "variableReference");
   }
 }

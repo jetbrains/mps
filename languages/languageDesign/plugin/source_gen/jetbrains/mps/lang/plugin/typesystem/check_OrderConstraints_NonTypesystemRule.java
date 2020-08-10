@@ -24,7 +24,7 @@ public class check_OrderConstraints_NonTypesystemRule extends AbstractNonTypesys
     if ((SNodeOperations.getParent(c) == null)) {
       return;
     }
-    if ((boolean) OrderConstraints__BehaviorDescriptor.presents_id1jgMklchcXk.invoke(c, SNodeOperations.getNodeAncestor(c, CONCEPTS.EditorTab$AL, false, false))) {
+    if ((boolean) OrderConstraints__BehaviorDescriptor.presents_id1jgMklchcXk.invoke(c, SNodeOperations.getNodeAncestor(c, CONCEPTS.EditorTab$zO, false, false))) {
       return;
     }
     {
@@ -33,7 +33,7 @@ public class check_OrderConstraints_NonTypesystemRule extends AbstractNonTypesys
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.OrderConstraints$Oy;
+    return CONCEPTS.OrderConstraints$L_;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,7 +43,7 @@ public class check_OrderConstraints_NonTypesystemRule extends AbstractNonTypesys
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EditorTab$AL = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x33f4c34299ff0d2fL, "jetbrains.mps.lang.plugin.structure.EditorTab");
-    /*package*/ static final SInterfaceConcept OrderConstraints$Oy = MetaAdapterFactory.getInterfaceConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x22035699bdd78145L, "jetbrains.mps.lang.plugin.structure.OrderConstraints");
+    /*package*/ static final SConcept EditorTab$zO = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x33f4c34299ff0d2fL, "jetbrains.mps.lang.plugin.structure.EditorTab");
+    /*package*/ static final SInterfaceConcept OrderConstraints$L_ = MetaAdapterFactory.getInterfaceConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x22035699bdd78145L, "jetbrains.mps.lang.plugin.structure.OrderConstraints");
   }
 }

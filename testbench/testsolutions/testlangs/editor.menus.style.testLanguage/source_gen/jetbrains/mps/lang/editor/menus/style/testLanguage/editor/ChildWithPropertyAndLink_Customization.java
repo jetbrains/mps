@@ -32,12 +32,12 @@ public class ChildWithPropertyAndLink_Customization implements EditorMenuItemCus
 
   private static class ChildWithPropertyAndLink_CustomizationSpecific implements EditorMenuItemCustomizer {
     public boolean matches(EditorMenuItemCustomizationContext context) {
-      return new EditorMenuItemModifyingConceptContextMatcher(CONCEPTS.TestCompletionCustomization_ParentTestContextMatcher$5W) {
+      return new EditorMenuItemModifyingConceptContextMatcher(CONCEPTS.TestCompletionCustomization_ParentTestContextMatcher$Un) {
         protected boolean doMatchesContext(EditorMenuItemCustomizationContext context_) {
           return doMatchesContext_(getContextNode(context_), getContainmentLink(context_), getReference(context_), getProperty(context_)) && getCompletionItemInformation(context_) != null;
         }
         protected boolean doMatchesContext_(SNode contextNode, SContainmentLink containmentLink, SReferenceLink referenceLink, SProperty property) {
-          return Objects.equals(containmentLink, LINKS.childWithPropertyAndLink$$KZJ);
+          return Objects.equals(containmentLink, LINKS.childWithPropertyAndLink$y$Oa);
         }
       }.matchesContext(context);
     }
@@ -71,10 +71,10 @@ public class ChildWithPropertyAndLink_Customization implements EditorMenuItemCus
 
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink childWithPropertyAndLink$$KZJ = MetaAdapterFactory.getContainmentLink(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x6967c03129fdcc83L, "childWithPropertyAndLink");
+    /*package*/ static final SContainmentLink childWithPropertyAndLink$y$Oa = MetaAdapterFactory.getContainmentLink(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, 0x6967c03129fdcc83L, "childWithPropertyAndLink");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestCompletionCustomization_ParentTestContextMatcher$5W = MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ParentTestContextMatcher");
+    /*package*/ static final SConcept TestCompletionCustomization_ParentTestContextMatcher$Un = MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ParentTestContextMatcher");
   }
 }

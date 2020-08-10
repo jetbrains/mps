@@ -30,9 +30,9 @@
       <node id="5462094956390350510" at="70,41,71,131" concept="5" />
       <node id="7680625225105816845" at="76,40,77,73" concept="5" />
       <node id="2516477739733857545" at="84,51,85,162" concept="5" />
-      <node id="2516477739733857545" at="89,0,90,0" concept="6" trace="AutoInitDSLClass$sF" />
-      <node id="2516477739733857545" at="90,0,91,0" concept="6" trace="ClassConcept$IY" />
-      <node id="2516477739733857545" at="91,0,92,0" concept="6" trace="DSLAnnotation$dI" />
+      <node id="2516477739733857545" at="89,0,90,0" concept="6" trace="AutoInitDSLClass$Ms" />
+      <node id="2516477739733857545" at="90,0,91,0" concept="6" trace="ClassConcept$bK" />
+      <node id="2516477739733857545" at="91,0,92,0" concept="6" trace="DSLAnnotation$zv" />
       <node id="2516477739733857545" at="28,0,31,0" concept="3" trace="getCaption#()Ljava/lang/String;" />
       <node id="2516477739733858583" at="44,0,47,0" concept="3" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
       <node id="2516477739733868615" at="49,0,52,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />

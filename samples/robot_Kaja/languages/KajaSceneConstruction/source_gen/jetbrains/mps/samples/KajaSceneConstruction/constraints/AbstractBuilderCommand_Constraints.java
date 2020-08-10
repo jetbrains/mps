@@ -19,12 +19,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AbstractBuilderCommand_Constraints extends BaseConstraintsDescriptor {
   public AbstractBuilderCommand_Constraints() {
-    super(CONCEPTS.AbstractBuilderCommand$rU);
+    super(CONCEPTS.AbstractBuilderCommand$VJ);
   }
 
   public static class Col_Property extends BasePropertyConstraintsDescriptor {
     public Col_Property(ConstraintsDescriptor container) {
-      super(PROPS.col$yec1, container);
+      super(PROPS.col$N9FQ, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -45,7 +45,7 @@ public class AbstractBuilderCommand_Constraints extends BaseConstraintsDescripto
   }
   public static class Row_Property extends BasePropertyConstraintsDescriptor {
     public Row_Property(ConstraintsDescriptor container) {
-      super(PROPS.row$ydX0, container);
+      super(PROPS.row$N9sP, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -67,17 +67,17 @@ public class AbstractBuilderCommand_Constraints extends BaseConstraintsDescripto
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.col$yec1, new Col_Property(this));
-    properties.put(PROPS.row$ydX0, new Row_Property(this));
+    properties.put(PROPS.col$N9FQ, new Col_Property(this));
+    properties.put(PROPS.row$N9sP, new Row_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractBuilderCommand$rU = MetaAdapterFactory.getConcept(0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a834fe3fL, "jetbrains.mps.samples.KajaSceneConstruction.structure.AbstractBuilderCommand");
+    /*package*/ static final SConcept AbstractBuilderCommand$VJ = MetaAdapterFactory.getConcept(0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a834fe3fL, "jetbrains.mps.samples.KajaSceneConstruction.structure.AbstractBuilderCommand");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty col$yec1 = MetaAdapterFactory.getProperty(0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a834fe3fL, 0x2c8eb033a834fe41L, "col");
-    /*package*/ static final SProperty row$ydX0 = MetaAdapterFactory.getProperty(0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a834fe3fL, 0x2c8eb033a834fe40L, "row");
+    /*package*/ static final SProperty col$N9FQ = MetaAdapterFactory.getProperty(0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a834fe3fL, 0x2c8eb033a834fe41L, "col");
+    /*package*/ static final SProperty row$N9sP = MetaAdapterFactory.getProperty(0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a834fe3fL, 0x2c8eb033a834fe40L, "row");
   }
 }

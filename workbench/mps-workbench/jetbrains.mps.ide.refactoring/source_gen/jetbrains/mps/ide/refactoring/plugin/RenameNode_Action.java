@@ -62,7 +62,7 @@ public class RenameNode_Action extends BaseAction {
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      if (node != null && !(SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$nV))) {
+      if (node != null && !(SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$Kd))) {
         node = null;
       }
       MapSequence.fromMap(_params).put("target", node);
@@ -95,7 +95,7 @@ public class RenameNode_Action extends BaseAction {
     ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
         canBeRenamed.value = RenameNode_Action.this.canBeRenamed(_params);
-        oldName.value = SPropertyOperations.getString(((SNode) MapSequence.fromMap(_params).get("target")), PROPS.name$lA7v);
+        oldName.value = SPropertyOperations.getString(((SNode) MapSequence.fromMap(_params).get("target")), PROPS.name$MnvL);
       }
     });
     if (!(canBeRenamed.value)) {
@@ -125,7 +125,7 @@ public class RenameNode_Action extends BaseAction {
     // we won't rename nodes, for which there is getter without setter 
     SAbstractConcept concept = SNodeOperations.getConcept(((SNode) MapSequence.fromMap(_params).get("target")));
     ConstraintsDescriptor cd = ConceptRegistry.getInstance().getConstraintsDescriptor(concept);
-    PropertyConstraintsDescriptor propertyConstraint = cd.getProperty(PROPS.name$lA7v);
+    PropertyConstraintsDescriptor propertyConstraint = cd.getProperty(PROPS.name$MnvL);
     if (propertyConstraint == null) {
       if (LOG.isEnabledFor(Level.ERROR)) {
         LOG.error("Missing constraints descriptor for property INamedConcept.name for concept:" + concept);
@@ -137,15 +137,15 @@ public class RenameNode_Action extends BaseAction {
   private boolean validateValue(String newValue, final Map<String, Object> _params) {
     SAbstractConcept concept = SNodeOperations.getConcept(((SNode) MapSequence.fromMap(_params).get("target")));
     ConstraintsDescriptor cd = ConceptRegistry.getInstance().getConstraintsDescriptor(concept);
-    PropertyConstraintsDescriptor propertyConstraints = cd.getProperty(PROPS.name$lA7v);
+    PropertyConstraintsDescriptor propertyConstraints = cd.getProperty(PROPS.name$MnvL);
     return propertyConstraints.validateValue(((SNode) MapSequence.fromMap(_params).get("target")), newValue, null);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

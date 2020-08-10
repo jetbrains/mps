@@ -40,7 +40,7 @@ public class RenameMethod_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("target")), CONCEPTS.IMethodCall$ln) && !(SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("target")), CONCEPTS.EnumConstantDeclaration$ma)) || SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("target")), CONCEPTS.BaseMethodDeclaration$RR) && !(SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("target")), CONCEPTS.ConstructorDeclaration$5U));
+    return SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("target")), CONCEPTS.IMethodCall$M9) && !(SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("target")), CONCEPTS.EnumConstantDeclaration$MW)) || SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("target")), CONCEPTS.BaseMethodDeclaration$kD) && !(SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("target")), CONCEPTS.ConstructorDeclaration$yG));
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -77,7 +77,7 @@ public class RenameMethod_Action extends BaseAction {
     modelAccess.runReadAction(new Runnable() {
       public void run() {
         methodDeclaration.value = MethodRefactoringUtil.getMethodDeclaration(((SNode) MapSequence.fromMap(_params).get("target")));
-        oldName.value = SPropertyOperations.getString(methodDeclaration.value, PROPS.name$lA7v);
+        oldName.value = SPropertyOperations.getString(methodDeclaration.value, PROPS.name$MnvL);
       }
     });
     final RenameMethodDialog d = new RenameMethodDialog(((MPSProject) MapSequence.fromMap(_params).get("project")).getProject(), oldName.value);
@@ -93,13 +93,13 @@ public class RenameMethod_Action extends BaseAction {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConstructorDeclaration$5U = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
-    /*package*/ static final SConcept BaseMethodDeclaration$RR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
-    /*package*/ static final SConcept EnumConstantDeclaration$ma = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration");
-    /*package*/ static final SInterfaceConcept IMethodCall$ln = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
+    /*package*/ static final SConcept ConstructorDeclaration$yG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept EnumConstantDeclaration$MW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration");
+    /*package*/ static final SInterfaceConcept IMethodCall$M9 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

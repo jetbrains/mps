@@ -55,11 +55,11 @@ public class GenerateEqualsAndHashCode_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     SNode classConcept = GenerateEqualsAndHashCode_Action.this.getClassConcept(_params);
-    return !(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept, CONCEPTS.Classifier$hJ, SMethodTrimmedId.create("methods", CONCEPTS.Classifier$hJ, "4_LVZ3pBKCn")))).any(new IWhereFilter<SNode>() {
+    return !(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("methods", CONCEPTS.Classifier$Ix, "4_LVZ3pBKCn")))).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode method) {
-        return "equals".equals(SPropertyOperations.getString(method, PROPS.name$lA7v)) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$qrVw), CONCEPTS.BooleanType$8G);
+        return "equals".equals(SPropertyOperations.getString(method, PROPS.name$MnvL)) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), CONCEPTS.BooleanType$_u);
       }
-    })) && Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept, CONCEPTS.ClassConcept$IY, SMethodTrimmedId.create("fields", CONCEPTS.ClassConcept$IY, "4_LVZ3pC27C")))).isNotEmpty();
+    })) && Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("fields", CONCEPTS.ClassConcept$bK, "4_LVZ3pC27C")))).isNotEmpty();
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -102,7 +102,7 @@ public class GenerateEqualsAndHashCode_Action extends BaseAction {
     repo.getModelAccess().runReadAction(new Runnable() {
       public void run() {
         classConcept.value = GenerateEqualsAndHashCode_Action.this.getClassConcept(_params);
-        fields.value = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept.value, CONCEPTS.ClassConcept$IY, SMethodTrimmedId.create("fields", CONCEPTS.ClassConcept$IY, "4_LVZ3pC27C")))).select(new ISelector<SNode, SNodeReference>() {
+        fields.value = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept.value, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("fields", CONCEPTS.ClassConcept$bK, "4_LVZ3pC27C")))).select(new ISelector<SNode, SNodeReference>() {
           public SNodeReference select(SNode it) {
             return SNodeOperations.getPointer(it);
           }
@@ -124,91 +124,91 @@ public class GenerateEqualsAndHashCode_Action extends BaseAction {
         if (selectedFields == null) {
           selectedFields = Collections.emptyList();
         }
-        final SNode thisExp = SNodeFactoryOperations.createNewNode(CONCEPTS.ThisExpression$7A, null);
+        final SNode thisExp = SNodeFactoryOperations.createNewNode(CONCEPTS.ThisExpression$$o, null);
         SNode equalsDeclaration = _quotation_createNode_x9xljz_a0d0a21a0(thisExp, thisExp, classConcept.value, classConcept.value);
-        SNode thatDeclaration = SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(equalsDeclaration, LINKS.body$qspy), LINKS.statement$pYcS)).last(), CONCEPTS.LocalVariableDeclarationStatement$BI), LINKS.localVariableDeclaration$cjR0);
+        SNode thatDeclaration = SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(equalsDeclaration, LINKS.body$5xQk), LINKS.statement$53DE)).last(), CONCEPTS.LocalVariableDeclarationStatement$4w), LINKS.localVariableDeclaration$RpjM);
 
-        SNode thatRef = SNodeFactoryOperations.createNewNode(CONCEPTS.VariableReference$sQ, null);
-        SLinkOperations.setTarget(thatRef, LINKS.variableDeclaration$7WwU, thatDeclaration);
-        SNode fieldRefLocal = SNodeFactoryOperations.createNewNode(CONCEPTS.VariableReference$sQ, null);
-        SNode fieldRefOperation = SNodeFactoryOperations.createNewNode(CONCEPTS.FieldReferenceOperation$N8, null);
+        SNode thatRef = SNodeFactoryOperations.createNewNode(CONCEPTS.VariableReference$TC, null);
+        SLinkOperations.setTarget(thatRef, LINKS.variableDeclaration$N1XG, thatDeclaration);
+        SNode fieldRefLocal = SNodeFactoryOperations.createNewNode(CONCEPTS.VariableReference$TC, null);
+        SNode fieldRefOperation = SNodeFactoryOperations.createNewNode(CONCEPTS.FieldReferenceOperation$fU, null);
 
         for (SNodeReference fieldPtr : selectedFields) {
-          SNode field = SNodeOperations.cast(fieldPtr.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()), CONCEPTS.FieldDeclaration$Ps);
+          SNode field = SNodeOperations.cast(fieldPtr.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()), CONCEPTS.FieldDeclaration$ie);
 
-          SLinkOperations.setTarget(fieldRefLocal, LINKS.variableDeclaration$7WwU, field);
-          SLinkOperations.setTarget(fieldRefOperation, LINKS.fieldDeclaration$229u, field);
+          SLinkOperations.setTarget(fieldRefLocal, LINKS.variableDeclaration$N1XG, field);
+          SLinkOperations.setTarget(fieldRefOperation, LINKS.fieldDeclaration$H7Ag, field);
           SNode checkStmt;
-          if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$uWuc), CONCEPTS.PrimitiveType$5)) {
-            if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$uWuc), CONCEPTS.FloatType$1B)) {
+          if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$a1UY), CONCEPTS.PrimitiveType$sR)) {
+            if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$a1UY), CONCEPTS.FloatType$up)) {
               checkStmt = _quotation_createNode_x9xljz_a0a0a0f0l0a21a0(thatRef, SNodeOperations.copyNode(fieldRefOperation), SNodeOperations.copyNode(fieldRefLocal));
-            } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$uWuc), CONCEPTS.DoubleType$4e)) {
+            } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$a1UY), CONCEPTS.DoubleType$x0)) {
               checkStmt = _quotation_createNode_x9xljz_a0a0a0a5a11a0m0a(thatRef, SNodeOperations.copyNode(fieldRefOperation), SNodeOperations.copyNode(fieldRefLocal));
             } else {
               checkStmt = _quotation_createNode_x9xljz_a0a0a0a5a11a0m0a_0(thatRef, SNodeOperations.copyNode(fieldRefOperation), SNodeOperations.copyNode(fieldRefLocal));
             }
-          } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$uWuc), CONCEPTS.ArrayType$Yv)) {
+          } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$a1UY), CONCEPTS.ArrayType$rh)) {
             checkStmt = _quotation_createNode_x9xljz_a0a0a5a11a0m0a(SNodeOperations.copyNode(fieldRefLocal), thatRef, SNodeOperations.copyNode(fieldRefOperation));
-          } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$uWuc), CONCEPTS.ClassifierType$IZ)) {
+          } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$a1UY), CONCEPTS.ClassifierType$bL)) {
             checkStmt = _quotation_createNode_x9xljz_a0a0b5a11a0m0a(thatRef, SNodeOperations.copyNode(fieldRefOperation), SNodeOperations.copyNode(fieldRefLocal), SNodeOperations.copyNode(fieldRefLocal), thatRef, SNodeOperations.copyNode(fieldRefOperation));
           } else {
             checkStmt = _quotation_createNode_x9xljz_a0a0a5a11a0m0a_0(thatRef, SNodeOperations.copyNode(fieldRefOperation), SNodeOperations.copyNode(fieldRefLocal), SNodeOperations.copyNode(fieldRefLocal), thatRef, SNodeOperations.copyNode(fieldRefOperation));
           }
-          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(equalsDeclaration, LINKS.body$qspy), LINKS.statement$pYcS)).addElement(checkStmt);
+          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(equalsDeclaration, LINKS.body$5xQk), LINKS.statement$53DE)).addElement(checkStmt);
         }
-        SNodeFactoryOperations.addNewChild(SLinkOperations.getTarget(equalsDeclaration, LINKS.body$qspy), LINKS.statement$pYcS, null);
-        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(equalsDeclaration, LINKS.body$qspy), LINKS.statement$pYcS)).addElement(_quotation_createNode_x9xljz_a0a31a0m0a());
-        ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$6v_r)).addElement(equalsDeclaration);
+        SNodeFactoryOperations.addNewChild(SLinkOperations.getTarget(equalsDeclaration, LINKS.body$5xQk), LINKS.statement$53DE, null);
+        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(equalsDeclaration, LINKS.body$5xQk), LINKS.statement$53DE)).addElement(_quotation_createNode_x9xljz_a0a31a0m0a());
+        ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$L_2d)).addElement(equalsDeclaration);
         // Method equals() is generated, now hashCode method body generation begins 
-        SNode hashCodeDeclaration = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$6v_r)).addElement(_quotation_createNode_x9xljz_a0a0a61a0m0a()), CONCEPTS.InstanceMethodDeclaration$An);
+        SNode hashCodeDeclaration = SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$L_2d)).addElement(_quotation_createNode_x9xljz_a0a0a61a0m0a()), CONCEPTS.InstanceMethodDeclaration$39);
         SNode resultDeclaration = _quotation_createNode_x9xljz_a0r0a21a0();
-        SNode resultReference = SNodeFactoryOperations.createNewNode(CONCEPTS.VariableReference$sQ, null);
-        SLinkOperations.setTarget(resultReference, LINKS.variableDeclaration$7WwU, SLinkOperations.getTarget(resultDeclaration, LINKS.localVariableDeclaration$cjR0));
+        SNode resultReference = SNodeFactoryOperations.createNewNode(CONCEPTS.VariableReference$TC, null);
+        SLinkOperations.setTarget(resultReference, LINKS.variableDeclaration$N1XG, SLinkOperations.getTarget(resultDeclaration, LINKS.localVariableDeclaration$RpjM));
         SNode tempDeclaration = _quotation_createNode_x9xljz_a0u0a21a0();
-        SNode tempReference = SNodeFactoryOperations.createNewNode(CONCEPTS.VariableReference$sQ, null);
-        SLinkOperations.setTarget(tempReference, LINKS.variableDeclaration$7WwU, SLinkOperations.getTarget(tempDeclaration, LINKS.localVariableDeclaration$cjR0));
-        if (Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept.value, CONCEPTS.ClassConcept$IY, SMethodTrimmedId.create("fields", CONCEPTS.ClassConcept$IY, "4_LVZ3pC27C")))).any(new IWhereFilter<SNode>() {
+        SNode tempReference = SNodeFactoryOperations.createNewNode(CONCEPTS.VariableReference$TC, null);
+        SLinkOperations.setTarget(tempReference, LINKS.variableDeclaration$N1XG, SLinkOperations.getTarget(tempDeclaration, LINKS.localVariableDeclaration$RpjM));
+        if (Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept.value, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("fields", CONCEPTS.ClassConcept$bK, "4_LVZ3pC27C")))).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.type$uWuc), CONCEPTS.DoubleType$4e);
+            return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.type$a1UY), CONCEPTS.DoubleType$x0);
           }
         })) {
-          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(hashCodeDeclaration, LINKS.body$qspy), LINKS.statement$pYcS)).addElement(tempDeclaration);
+          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(hashCodeDeclaration, LINKS.body$5xQk), LINKS.statement$53DE)).addElement(tempDeclaration);
         }
-        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(hashCodeDeclaration, LINKS.body$qspy), LINKS.statement$pYcS)).addElement(resultDeclaration);
+        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(hashCodeDeclaration, LINKS.body$5xQk), LINKS.statement$53DE)).addElement(resultDeclaration);
         for (SNodeReference fieldPtr : selectedFields) {
-          final SNode field = SNodeOperations.cast(fieldPtr.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()), CONCEPTS.FieldDeclaration$Ps);
-          SLinkOperations.setTarget(fieldRefLocal, LINKS.variableDeclaration$7WwU, field);
+          final SNode field = SNodeOperations.cast(fieldPtr.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()), CONCEPTS.FieldDeclaration$ie);
+          SLinkOperations.setTarget(fieldRefLocal, LINKS.variableDeclaration$N1XG, field);
           SNode calcStatement;
           SNode mulExpression = _quotation_createNode_x9xljz_a0d0z0a21a0(resultReference);
-          if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$uWuc), CONCEPTS.IntegerType$Eo)) {
+          if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$a1UY), CONCEPTS.IntegerType$7a)) {
             calcStatement = _quotation_createNode_x9xljz_a0a0e0z0a21a0(resultReference, SNodeOperations.copyNode(fieldRefLocal), mulExpression);
-          } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$uWuc), CONCEPTS.LongType$Db)) {
+          } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$a1UY), CONCEPTS.LongType$5X)) {
             calcStatement = _quotation_createNode_x9xljz_a0a0a4a52a0m0a(mulExpression, SNodeOperations.copyNode(fieldRefLocal), SNodeOperations.copyNode(fieldRefLocal), resultReference);
-          } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$uWuc), CONCEPTS.ByteType$lE) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$uWuc), CONCEPTS.CharType$j4) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$uWuc), CONCEPTS.ShortType$YA)) {
+          } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$a1UY), CONCEPTS.ByteType$Ms) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$a1UY), CONCEPTS.CharType$JQ) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$a1UY), CONCEPTS.ShortType$ro)) {
             calcStatement = _quotation_createNode_x9xljz_a0a0b4a52a0m0a(SNodeOperations.copyNode(fieldRefLocal), mulExpression, resultReference);
-          } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$uWuc), CONCEPTS.DoubleType$4e)) {
-            ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(hashCodeDeclaration, LINKS.body$qspy), LINKS.statement$pYcS)).addElement(_quotation_createNode_x9xljz_a0a0a2e0z0a21a0(tempReference, SNodeOperations.copyNode(fieldRefLocal), SNodeOperations.copyNode(fieldRefLocal)));
+          } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$a1UY), CONCEPTS.DoubleType$x0)) {
+            ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(hashCodeDeclaration, LINKS.body$5xQk), LINKS.statement$53DE)).addElement(_quotation_createNode_x9xljz_a0a0a2e0z0a21a0(tempReference, SNodeOperations.copyNode(fieldRefLocal), SNodeOperations.copyNode(fieldRefLocal)));
             calcStatement = _quotation_createNode_x9xljz_a0b0c4a52a0m0a(resultReference, mulExpression, tempReference, tempReference);
-          } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$uWuc), CONCEPTS.FloatType$1B)) {
+          } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$a1UY), CONCEPTS.FloatType$up)) {
             calcStatement = _quotation_createNode_x9xljz_a0a0d4a52a0m0a(resultReference, mulExpression, SNodeOperations.copyNode(fieldRefLocal), SNodeOperations.copyNode(fieldRefLocal));
-          } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$uWuc), CONCEPTS.StringType$2b)) {
+          } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$a1UY), CONCEPTS.StringType$uX)) {
             calcStatement = _quotation_createNode_x9xljz_a0a0e4a52a0m0a(resultReference, mulExpression, SNodeOperations.copyNode(fieldRefLocal), SNodeOperations.copyNode(fieldRefLocal));
-          } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$uWuc), CONCEPTS.ArrayType$Yv)) {
+          } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$a1UY), CONCEPTS.ArrayType$rh)) {
             calcStatement = _quotation_createNode_x9xljz_a0a0f4a52a0m0a(mulExpression, SNodeOperations.copyNode(fieldRefLocal), SNodeOperations.copyNode(fieldRefLocal), resultReference);
-          } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$uWuc), CONCEPTS.ClassifierType$IZ)) {
+          } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$a1UY), CONCEPTS.ClassifierType$bL)) {
             calcStatement = _quotation_createNode_x9xljz_a0a0g4a52a0m0a(SNodeOperations.copyNode(fieldRefLocal), SNodeOperations.copyNode(fieldRefLocal), mulExpression, resultReference);
           } else {
             calcStatement = _quotation_createNode_x9xljz_a0a0a4a52a0m0a_0(SNodeOperations.copyNode(fieldRefLocal), SNodeOperations.copyNode(fieldRefLocal), mulExpression, resultReference);
           }
-          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(hashCodeDeclaration, LINKS.body$qspy), LINKS.statement$pYcS)).addElement(calcStatement);
+          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(hashCodeDeclaration, LINKS.body$5xQk), LINKS.statement$53DE)).addElement(calcStatement);
         }
-        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(hashCodeDeclaration, LINKS.body$qspy), LINKS.statement$pYcS)).addElement(_quotation_createNode_x9xljz_a0a62a0m0a(resultReference));
+        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(hashCodeDeclaration, LINKS.body$5xQk), LINKS.statement$53DE)).addElement(_quotation_createNode_x9xljz_a0a62a0m0a(resultReference));
         ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).select(equalsDeclaration);
       }
     });
   }
   private SNode getClassConcept(final Map<String, Object> _params) {
-    return SNodeOperations.getNodeAncestor(((SNode) ((SNode) MapSequence.fromMap(_params).get("node"))), CONCEPTS.ClassConcept$IY, true, false);
+    return SNodeOperations.getNodeAncestor(((SNode) ((SNode) MapSequence.fromMap(_params).get("node"))), CONCEPTS.ClassConcept$bK, true, false);
   }
   private static SNode _quotation_createNode_x9xljz_a0d0a21a0(Object parameter_1, Object parameter_2, Object parameter_3, Object parameter_4) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -1274,40 +1274,40 @@ public class GenerateEqualsAndHashCode_Action extends BaseAction {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept BooleanType$8G = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d6513eL, "jetbrains.mps.baseLanguage.structure.BooleanType");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept ThisExpression$7A = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression");
-    /*package*/ static final SConcept LocalVariableDeclarationStatement$BI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement");
-    /*package*/ static final SConcept VariableReference$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
-    /*package*/ static final SConcept FieldReferenceOperation$N8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation");
-    /*package*/ static final SConcept FieldDeclaration$Ps = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
-    /*package*/ static final SConcept FloatType$1B = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d327fdL, "jetbrains.mps.baseLanguage.structure.FloatType");
-    /*package*/ static final SConcept DoubleType$4e = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d451a6L, "jetbrains.mps.baseLanguage.structure.DoubleType");
-    /*package*/ static final SConcept PrimitiveType$5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
-    /*package*/ static final SConcept ArrayType$Yv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
-    /*package*/ static final SConcept InstanceMethodDeclaration$An = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
-    /*package*/ static final SConcept LongType$Db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f3L, "jetbrains.mps.baseLanguage.structure.LongType");
-    /*package*/ static final SConcept ShortType$YA = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cc380dL, "jetbrains.mps.baseLanguage.structure.ShortType");
-    /*package*/ static final SConcept ByteType$lE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d5b617L, "jetbrains.mps.baseLanguage.structure.ByteType");
-    /*package*/ static final SConcept CharType$j4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d4f826L, "jetbrains.mps.baseLanguage.structure.CharType");
-    /*package*/ static final SConcept IntegerType$Eo = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d22479L, "jetbrains.mps.baseLanguage.structure.IntegerType");
-    /*package*/ static final SConcept StringType$2b = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47da71ecL, "jetbrains.mps.baseLanguage.structure.StringType");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept BooleanType$_u = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d6513eL, "jetbrains.mps.baseLanguage.structure.BooleanType");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept ThisExpression$$o = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression");
+    /*package*/ static final SConcept LocalVariableDeclarationStatement$4w = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement");
+    /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept FieldReferenceOperation$fU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation");
+    /*package*/ static final SConcept FieldDeclaration$ie = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
+    /*package*/ static final SConcept FloatType$up = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d327fdL, "jetbrains.mps.baseLanguage.structure.FloatType");
+    /*package*/ static final SConcept DoubleType$x0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d451a6L, "jetbrains.mps.baseLanguage.structure.DoubleType");
+    /*package*/ static final SConcept PrimitiveType$sR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
+    /*package*/ static final SConcept ArrayType$rh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept LongType$5X = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f3L, "jetbrains.mps.baseLanguage.structure.LongType");
+    /*package*/ static final SConcept ShortType$ro = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cc380dL, "jetbrains.mps.baseLanguage.structure.ShortType");
+    /*package*/ static final SConcept ByteType$Ms = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d5b617L, "jetbrains.mps.baseLanguage.structure.ByteType");
+    /*package*/ static final SConcept CharType$JQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d4f826L, "jetbrains.mps.baseLanguage.structure.CharType");
+    /*package*/ static final SConcept IntegerType$7a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d22479L, "jetbrains.mps.baseLanguage.structure.IntegerType");
+    /*package*/ static final SConcept StringType$uX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47da71ecL, "jetbrains.mps.baseLanguage.structure.StringType");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink localVariableDeclaration$cjR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SReferenceLink fieldDeclaration$229u = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
-    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink returnType$5xoi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink localVariableDeclaration$RpjM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink fieldDeclaration$H7Ag = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink member$L_2d = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

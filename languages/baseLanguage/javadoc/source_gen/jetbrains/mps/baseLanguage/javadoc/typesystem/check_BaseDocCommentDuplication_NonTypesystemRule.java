@@ -24,7 +24,7 @@ public class check_BaseDocCommentDuplication_NonTypesystemRule extends AbstractN
   public void applyRule(final SNode baseDocComment, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (ListSequence.fromList(SNodeOperations.getAllSiblings(baseDocComment, false)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !(Objects.equals(it, baseDocComment)) && SNodeOperations.isInstanceOf(it, CONCEPTS.BaseDocComment$pH);
+        return !(Objects.equals(it, baseDocComment)) && SNodeOperations.isInstanceOf(it, CONCEPTS.BaseDocComment$bU);
       }
     })) {
       {
@@ -34,7 +34,7 @@ public class check_BaseDocCommentDuplication_NonTypesystemRule extends AbstractN
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BaseDocComment$pH;
+    return CONCEPTS.BaseDocComment$bU;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -44,6 +44,6 @@ public class check_BaseDocCommentDuplication_NonTypesystemRule extends AbstractN
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseDocComment$pH = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment");
+    /*package*/ static final SConcept BaseDocComment$bU = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment");
   }
 }

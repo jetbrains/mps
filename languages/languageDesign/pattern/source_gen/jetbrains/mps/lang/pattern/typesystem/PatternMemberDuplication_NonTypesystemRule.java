@@ -25,22 +25,22 @@ public class PatternMemberDuplication_NonTypesystemRule extends AbstractNonTypes
   public PatternMemberDuplication_NonTypesystemRule() {
   }
   public void applyRule(final SNode patternMember, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (isEmptyString(SPropertyOperations.getString(patternMember, PROPS.name$lA7v))) {
+    if (isEmptyString(SPropertyOperations.getString(patternMember, PROPS.name$MnvL))) {
       return;
     }
-    if (Sequence.fromIterable(SNodeOperations.ofConcept(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(SNodeOperations.getNodeAncestor(patternMember, CONCEPTS.Classifier$hJ, false, false)), CONCEPTS.PatternBuilderClassifierMember$75)).any(new IWhereFilter<SNode>() {
+    if (Sequence.fromIterable(SNodeOperations.ofConcept(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(SNodeOperations.getNodeAncestor(patternMember, CONCEPTS.Classifier$Ix, false, false)), CONCEPTS.PatternBuilderClassifierMember$kC)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return it != patternMember && Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), SPropertyOperations.getString(patternMember, PROPS.name$lA7v));
+        return it != patternMember && Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(patternMember, PROPS.name$MnvL));
       }
     })) {
       {
-        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$lA7v);
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(patternMember, "Pattern " + SPropertyOperations.getString(patternMember, PROPS.name$lA7v) + " is already declared", "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "576141512673851244", null, errorTarget);
+        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$MnvL);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(patternMember, "Pattern " + SPropertyOperations.getString(patternMember, PROPS.name$MnvL) + " is already declared", "r:00000000-0000-4000-0000-011c89590343(jetbrains.mps.lang.pattern.typesystem)", "576141512673851244", null, errorTarget);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.PatternBuilderClassifierMember$75;
+    return CONCEPTS.PatternBuilderClassifierMember$kC;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -53,11 +53,11 @@ public class PatternMemberDuplication_NonTypesystemRule extends AbstractNonTypes
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept PatternBuilderClassifierMember$75 = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x50f8d1ebd50bbeb0L, "jetbrains.mps.lang.pattern.structure.PatternBuilderClassifierMember");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept PatternBuilderClassifierMember$kC = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x50f8d1ebd50bbeb0L, "jetbrains.mps.lang.pattern.structure.PatternBuilderClassifierMember");
   }
 }

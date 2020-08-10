@@ -29,7 +29,7 @@ public class XMLSAXAttributeReference_SmartReference extends SubstituteMenuBase 
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_k75wpb_a(), CONCEPTS.XMLSAXAttributeReference$J3));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_k75wpb_a(), CONCEPTS.XMLSAXAttributeReference$40));
     return result;
   }
 
@@ -50,7 +50,7 @@ public class XMLSAXAttributeReference_SmartReference extends SubstituteMenuBase 
 
     public SMP_ReferenceScope_k75wpb_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.XMLSAXAttributeReference$J3, LINKS.attribute$hnxw);
+      super((SAbstractConcept) CONCEPTS.XMLSAXAttributeReference$40, LINKS.attribute$zzQt);
     }
     @NotNull
     @Override
@@ -82,11 +82,11 @@ public class XMLSAXAttributeReference_SmartReference extends SubstituteMenuBase 
       }
       @Override
       public String getMatchingText(String pattern) {
-        if (SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.XMLSAXNodeRule$AV, true, false) != SNodeOperations.getParent(referencedNode)) {
-          SNode nodeRule = SNodeOperations.as(SNodeOperations.getParent(referencedNode), CONCEPTS.XMLSAXNodeRule$AV);
-          return ((nodeRule == null ? "<unknown>" : SPropertyOperations.getString(nodeRule, PROPS.name$lA7v))) + "." + SPropertyOperations.getString(referencedNode, PROPS.name$lA7v);
+        if (SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.XMLSAXNodeRule$VS, true, false) != SNodeOperations.getParent(referencedNode)) {
+          SNode nodeRule = SNodeOperations.as(SNodeOperations.getParent(referencedNode), CONCEPTS.XMLSAXNodeRule$VS);
+          return ((nodeRule == null ? "<unknown>" : SPropertyOperations.getString(nodeRule, PROPS.name$MnvL))) + "." + SPropertyOperations.getString(referencedNode, PROPS.name$MnvL);
         }
-        return SPropertyOperations.getString(referencedNode, PROPS.name$lA7v);
+        return SPropertyOperations.getString(referencedNode, PROPS.name$MnvL);
       }
       @Override
       public String getVisibleMatchingText(String pattern) {
@@ -101,15 +101,15 @@ public class XMLSAXAttributeReference_SmartReference extends SubstituteMenuBase 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XMLSAXAttributeReference$J3 = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2c9L, "jetbrains.mps.core.xml.sax.structure.XMLSAXAttributeReference");
-    /*package*/ static final SConcept XMLSAXNodeRule$AV = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2f2L, "jetbrains.mps.core.xml.sax.structure.XMLSAXNodeRule");
+    /*package*/ static final SConcept XMLSAXAttributeReference$40 = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2c9L, "jetbrains.mps.core.xml.sax.structure.XMLSAXAttributeReference");
+    /*package*/ static final SConcept XMLSAXNodeRule$VS = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2f2L, "jetbrains.mps.core.xml.sax.structure.XMLSAXNodeRule");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink attribute$hnxw = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2c9L, 0x1f6c736337b5e2caL, "attribute");
+    /*package*/ static final SReferenceLink attribute$zzQt = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2c9L, 0x1f6c736337b5e2caL, "attribute");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

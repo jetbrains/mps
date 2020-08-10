@@ -22,7 +22,7 @@ public class typeof_SkipOperation_InferenceRule extends AbstractInferenceRule_Ru
   public void applyRule(final SNode op, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, LINKS.elementsToSkip$mPRt);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, LINKS.elementsToSkip$1a5K);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1184847107857", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1184847100456", true), (SNode) _quotation_createNode_kphkc8_a1a0c0a0a0b(), true, true, _info_12389875345);
       }
@@ -30,7 +30,7 @@ public class typeof_SkipOperation_InferenceRule extends AbstractInferenceRule_Ru
     RulesFunctions_Collections.setInputSequenceType(typeCheckingContext, op, op);
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SkipOperation$P3;
+    return CONCEPTS.SkipOperation$3m;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -46,10 +46,10 @@ public class typeof_SkipOperation_InferenceRule extends AbstractInferenceRule_Ru
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementsToSkip$mPRt = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x111076c0538L, 0x11107e408a4L, "elementsToSkip");
+    /*package*/ static final SContainmentLink elementsToSkip$1a5K = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x111076c0538L, 0x11107e408a4L, "elementsToSkip");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SkipOperation$P3 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x111076c0538L, "jetbrains.mps.baseLanguage.collections.structure.SkipOperation");
+    /*package*/ static final SConcept SkipOperation$3m = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x111076c0538L, "jetbrains.mps.baseLanguage.collections.structure.SkipOperation");
   }
 }

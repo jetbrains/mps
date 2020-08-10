@@ -29,18 +29,18 @@ public class Classifier_StaticKeyWord {
         if (DeletionApproverUtil.approve(editorContext, node, "staticKeyword")) {
           return;
         }
-        SPropertyOperations.set(node, PROPS.nonStatic$vRvm, true);
-        if (SNodeOperations.isInstanceOf(node, CONCEPTS.ClassConcept$IY)) {
-          SNode classConcept = SNodeOperations.cast(node, CONCEPTS.ClassConcept$IY);
-          if (SPropertyOperations.getBoolean(classConcept, PROPS.abstractClass$e4_b)) {
+        SPropertyOperations.set(node, PROPS.nonStatic$aWW8, true);
+        if (SNodeOperations.isInstanceOf(node, CONCEPTS.ClassConcept$bK)) {
+          SNode classConcept = SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK);
+          if (SPropertyOperations.getBoolean(classConcept, PROPS.abstractClass$Ta1X)) {
             SelectionUtil.selectLabelCellAnSetCaret(editorContext, classConcept, "abstractKeyword", 0);
-          } else if (SPropertyOperations.getBoolean(classConcept, PROPS.isFinal$$2bN)) {
+          } else if (SPropertyOperations.getBoolean(classConcept, PROPS.isFinal$f7C_)) {
             SelectionUtil.selectLabelCellAnSetCaret(editorContext, classConcept, "finalKeyword", 0);
           } else {
             SelectionUtil.selectLabelCellAnSetCaret(editorContext, classConcept, "classKeyword", 0);
           }
-        } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.Interface$Kp)) {
-          SelectionUtil.selectLabelCellAnSetCaret(editorContext, SNodeOperations.cast(node, CONCEPTS.Interface$Kp), "interfaceKeyword", 0);
+        } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.Interface$db)) {
+          SelectionUtil.selectLabelCellAnSetCaret(editorContext, SNodeOperations.cast(node, CONCEPTS.Interface$db), "interfaceKeyword", 0);
         }
       }
 
@@ -89,13 +89,13 @@ public class Classifier_StaticKeyWord {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty nonStatic$vRvm = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x73c6d8a8c021f99L, "nonStatic");
-    /*package*/ static final SProperty abstractClass$e4_b = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
-    /*package*/ static final SProperty isFinal$$2bN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x11c6af4b284L, "isFinal");
+    /*package*/ static final SProperty nonStatic$aWW8 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x73c6d8a8c021f99L, "nonStatic");
+    /*package*/ static final SProperty abstractClass$Ta1X = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
+    /*package*/ static final SProperty isFinal$f7C_ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x11c6af4b284L, "isFinal");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
   }
 }

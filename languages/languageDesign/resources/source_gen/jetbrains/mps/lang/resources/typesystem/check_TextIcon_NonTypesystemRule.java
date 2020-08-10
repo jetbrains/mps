@@ -27,20 +27,20 @@ public class check_TextIcon_NonTypesystemRule extends AbstractNonTypesystemRule_
   }
   public void applyRule(final SNode textIcon, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     Set<String> usedIds = SetSequence.fromSet(new HashSet<String>());
-    for (SNode ti : ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(textIcon), CONCEPTS.TextIcon$le))) {
-      if (SetSequence.fromSet(usedIds).contains(SPropertyOperations.getString(ti, PROPS.iconId$WEru))) {
+    for (SNode ti : ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(textIcon), CONCEPTS.TextIcon$X0))) {
+      if (SetSequence.fromSet(usedIds).contains(SPropertyOperations.getString(ti, PROPS.iconId$SZ3g))) {
         {
-          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.iconId$WEru);
+          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.iconId$SZ3g);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(ti, "duplicate ID", "r:cafe8450-2876-42f2-9c43-75da10155c47(jetbrains.mps.lang.resources.typesystem)", "1860120738943515427", null, errorTarget);
         }
         break;
       }
 
-      SetSequence.fromSet(usedIds).addElement(SPropertyOperations.getString(ti, PROPS.iconId$WEru));
+      SetSequence.fromSet(usedIds).addElement(SPropertyOperations.getString(ti, PROPS.iconId$SZ3g));
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.TextIcon$le;
+    return CONCEPTS.TextIcon$X0;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -50,10 +50,10 @@ public class check_TextIcon_NonTypesystemRule extends AbstractNonTypesystemRule_
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty iconId$WEru = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x12dbb53bb6b60039L, "iconId");
+    /*package*/ static final SProperty iconId$SZ3g = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x12dbb53bb6b60039L, "iconId");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TextIcon$le = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, "jetbrains.mps.lang.resources.structure.TextIcon");
+    /*package*/ static final SConcept TextIcon$X0 = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, "jetbrains.mps.lang.resources.structure.TextIcon");
   }
 }

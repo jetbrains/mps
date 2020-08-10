@@ -32,36 +32,36 @@ public class check_ActionDeclaration_access_NonTypesystemRule extends AbstractNo
   public check_ActionDeclaration_access_NonTypesystemRule() {
   }
   public void applyRule(final SNode actionDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    List<SNode> editorContextParameters = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(actionDeclaration, LINKS.parameter$qze), CONCEPTS.ActionDataParameterDeclaration$Wd)).where(new IWhereFilter<SNode>() {
+    List<SNode> editorContextParameters = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(actionDeclaration, LINKS.parameter$dZwh), CONCEPTS.ActionDataParameterDeclaration$Tg)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<SNodeReference>(), new SNodePointer("1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.ide.editor(MPS.Editor/)", "~MPSEditorDataKeys.EDITOR_COMPONENT"), new SNodePointer("1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.ide.editor(MPS.Editor/)", "~MPSEditorDataKeys.EDITOR_CONTEXT"), new SNodePointer("1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.ide.editor(MPS.Editor/)", "~MPSEditorDataKeys.EDITOR_CELL"))).contains(SLinkOperations.getPointer(it, LINKS.key$ywJf));
+        return ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<SNodeReference>(), new SNodePointer("1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.ide.editor(MPS.Editor/)", "~MPSEditorDataKeys.EDITOR_COMPONENT"), new SNodePointer("1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.ide.editor(MPS.Editor/)", "~MPSEditorDataKeys.EDITOR_CONTEXT"), new SNodePointer("1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.ide.editor(MPS.Editor/)", "~MPSEditorDataKeys.EDITOR_CELL"))).contains(SLinkOperations.getPointer(it, LINKS.key$K5Gi));
       }
     }).toListSequence();
-    if (SEnumOperations.isMember(SPropertyOperations.getEnum(actionDeclaration, PROPS.requiredAccess$G27E), 0x6782cab5d9442894L)) {
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(actionDeclaration, PROPS.requiredAccess$TB4H), 0x6782cab5d9442894L)) {
       if (ListSequence.fromList(editorContextParameters).isEmpty()) {
         {
-          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.requiredAccess$G27E);
+          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.requiredAccess$TB4H);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(actionDeclaration, "Action should have EDITOR_COMPONENT parameter", "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "3567673624826823539", null, errorTarget);
         }
       } else if (ListSequence.fromList(editorContextParameters).all(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(it, LINKS.condition$iTOE), CONCEPTS.RequiredCondition$Qe)).isEmpty();
+          return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(it, LINKS.condition$wuLH), CONCEPTS.RequiredCondition$Nh)).isEmpty();
         }
       })) {
         {
-          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.requiredAccess$G27E);
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(actionDeclaration, "Action should have " + SPropertyOperations.getString(SLinkOperations.getTarget(ListSequence.fromList(editorContextParameters).first(), LINKS.key$ywJf), PROPS.name$lA7v) + " parameter with required condition.", "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "3567673624826893794", null, errorTarget);
+          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.requiredAccess$TB4H);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(actionDeclaration, "Action should have " + SPropertyOperations.getString(SLinkOperations.getTarget(ListSequence.fromList(editorContextParameters).first(), LINKS.key$K5Gi), PROPS.name$MnvL) + " parameter with required condition.", "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "3567673624826893794", null, errorTarget);
         }
       }
-    } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(actionDeclaration, PROPS.requiredAccess$G27E), 0x6782cab5d9442837L) && !(SPropertyOperations.getBoolean(actionDeclaration, PROPS.outsideCommandExecution$E2Bu)) && ListSequence.fromList(editorContextParameters).isNotEmpty()) {
+    } else if (SEnumOperations.isMember(SPropertyOperations.getEnum(actionDeclaration, PROPS.requiredAccess$TB4H), 0x6782cab5d9442837L) && !(SPropertyOperations.getBoolean(actionDeclaration, PROPS.outsideCommandExecution$RB$x)) && ListSequence.fromList(editorContextParameters).isNotEmpty()) {
       {
-        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.requiredAccess$G27E);
+        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.requiredAccess$TB4H);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(actionDeclaration, "Action can get command from editor", "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "3567673624826940359", null, errorTarget);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ActionDeclaration$VX;
+    return CONCEPTS.ActionDeclaration$T0;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -71,20 +71,20 @@ public class check_ActionDeclaration_access_NonTypesystemRule extends AbstractNo
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$qze = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11b737b91a4L, "parameter");
-    /*package*/ static final SReferenceLink key$ywJf = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e025e0L, 0x11b69e95df5L, "key");
-    /*package*/ static final SContainmentLink condition$iTOE = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b737a6b7cL, 0x4cdc1c9014f46cb2L, "condition");
+    /*package*/ static final SContainmentLink parameter$dZwh = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11b737b91a4L, "parameter");
+    /*package*/ static final SReferenceLink key$K5Gi = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e025e0L, 0x11b69e95df5L, "key");
+    /*package*/ static final SContainmentLink condition$wuLH = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b737a6b7cL, 0x4cdc1c9014f46cb2L, "condition");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ActionDataParameterDeclaration$Wd = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e025e0L, "jetbrains.mps.lang.plugin.structure.ActionDataParameterDeclaration");
-    /*package*/ static final SConcept RequiredCondition$Qe = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x4cdc1c9014f52faeL, "jetbrains.mps.lang.plugin.structure.RequiredCondition");
-    /*package*/ static final SConcept ActionDeclaration$VX = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, "jetbrains.mps.lang.plugin.structure.ActionDeclaration");
+    /*package*/ static final SConcept ActionDataParameterDeclaration$Tg = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e025e0L, "jetbrains.mps.lang.plugin.structure.ActionDataParameterDeclaration");
+    /*package*/ static final SConcept RequiredCondition$Nh = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x4cdc1c9014f52faeL, "jetbrains.mps.lang.plugin.structure.RequiredCondition");
+    /*package*/ static final SConcept ActionDeclaration$T0 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, "jetbrains.mps.lang.plugin.structure.ActionDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty requiredAccess$G27E = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x6782cab5d94428a3L, "requiredAccess");
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty outsideCommandExecution$E2Bu = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11a070b6efeL, "outsideCommandExecution");
+    /*package*/ static final SProperty requiredAccess$TB4H = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x6782cab5d94428a3L, "requiredAccess");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty outsideCommandExecution$RB$x = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11a070b6efeL, "outsideCommandExecution");
   }
 }

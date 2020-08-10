@@ -16,18 +16,18 @@ public class MethodRefactoringUtil {
   public MethodRefactoringUtil() {
   }
   public static SNode getMethodDeclaration(SNode methodOrMethodCall) {
-    if (SNodeOperations.isInstanceOf(methodOrMethodCall, CONCEPTS.BaseMethodDeclaration$RR)) {
-      return SNodeOperations.cast(methodOrMethodCall, CONCEPTS.BaseMethodDeclaration$RR);
+    if (SNodeOperations.isInstanceOf(methodOrMethodCall, CONCEPTS.BaseMethodDeclaration$kD)) {
+      return SNodeOperations.cast(methodOrMethodCall, CONCEPTS.BaseMethodDeclaration$kD);
     }
-    return SLinkOperations.getTarget(SNodeOperations.cast(methodOrMethodCall, CONCEPTS.IMethodCall$ln), LINKS.baseMethodDeclaration$ItxI);
+    return SLinkOperations.getTarget(SNodeOperations.cast(methodOrMethodCall, CONCEPTS.IMethodCall$M9), LINKS.baseMethodDeclaration$pyYw);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseMethodDeclaration$RR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
-    /*package*/ static final SInterfaceConcept IMethodCall$ln = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SInterfaceConcept IMethodCall$M9 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 }

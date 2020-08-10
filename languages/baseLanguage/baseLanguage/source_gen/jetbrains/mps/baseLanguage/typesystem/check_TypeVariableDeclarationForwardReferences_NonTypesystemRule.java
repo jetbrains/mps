@@ -28,9 +28,9 @@ public class check_TypeVariableDeclarationForwardReferences_NonTypesystemRule ex
   public check_TypeVariableDeclarationForwardReferences_NonTypesystemRule() {
   }
   public void applyRule(final SNode typeVariableDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    Iterable<SNode> fwdRefs = ListSequence.fromList(SNodeOperations.getNodeDescendants(typeVariableDeclaration, CONCEPTS.TypeVariableReference$vZ, false, new SAbstractConcept[]{})).select(new ISelector<SNode, SNode>() {
+    Iterable<SNode> fwdRefs = ListSequence.fromList(SNodeOperations.getNodeDescendants(typeVariableDeclaration, CONCEPTS.TypeVariableReference$WL, false, new SAbstractConcept[]{})).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
-        return SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.TypeVariableReference$vZ), LINKS.typeVariableDeclaration$6t$W);
+        return SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I);
       }
     }).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
@@ -42,7 +42,7 @@ public class check_TypeVariableDeclarationForwardReferences_NonTypesystemRule ex
       }
     });
     if (Sequence.fromIterable(fwdRefs).isNotEmpty()) {
-      String msg = "Illegal forward reference to type parameter " + SPropertyOperations.getString(Sequence.fromIterable(fwdRefs).first(), PROPS.name$lA7v);
+      String msg = "Illegal forward reference to type parameter " + SPropertyOperations.getString(Sequence.fromIterable(fwdRefs).first(), PROPS.name$MnvL);
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(typeVariableDeclaration, msg, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8302934035192815238", null, errorTarget);
@@ -50,7 +50,7 @@ public class check_TypeVariableDeclarationForwardReferences_NonTypesystemRule ex
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.TypeVariableDeclaration$Cc;
+    return CONCEPTS.TypeVariableDeclaration$4Y;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -60,15 +60,15 @@ public class check_TypeVariableDeclarationForwardReferences_NonTypesystemRule ex
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TypeVariableReference$vZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
-    /*package*/ static final SConcept TypeVariableDeclaration$Cc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, "jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration");
+    /*package*/ static final SConcept TypeVariableReference$WL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
+    /*package*/ static final SConcept TypeVariableDeclaration$4Y = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, "jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink typeVariableDeclaration$6t$W = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
+    /*package*/ static final SReferenceLink typeVariableDeclaration$Lz1I = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

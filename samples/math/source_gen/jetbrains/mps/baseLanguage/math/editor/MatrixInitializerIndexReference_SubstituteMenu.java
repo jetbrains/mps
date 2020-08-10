@@ -28,7 +28,7 @@ public class MatrixInitializerIndexReference_SubstituteMenu extends SubstituteMe
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_2x2usv_a(), CONCEPTS.MatrixInitializerIndexReference$Oz));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_2x2usv_a(), CONCEPTS.MatrixInitializerIndexReference$AV));
     result.add(new SMP_Subconcepts_2x2usv_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class MatrixInitializerIndexReference_SubstituteMenu extends SubstituteMe
 
     public SMP_ReferenceScope_2x2usv_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.MatrixInitializerIndexReference$Oz, LINKS.index$yDLc);
+      super((SAbstractConcept) CONCEPTS.MatrixInitializerIndexReference$AV, LINKS.index$gez$);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class MatrixInitializerIndexReference_SubstituteMenu extends SubstituteMe
   }
   public class SMP_Subconcepts_2x2usv_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.MatrixInitializerIndexReference$Oz);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.MatrixInitializerIndexReference$AV);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class MatrixInitializerIndexReference_SubstituteMenu extends SubstituteMe
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MatrixInitializerIndexReference$Oz = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240f252L, "jetbrains.mps.baseLanguage.math.structure.MatrixInitializerIndexReference");
+    /*package*/ static final SConcept MatrixInitializerIndexReference$AV = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240f252L, "jetbrains.mps.baseLanguage.math.structure.MatrixInitializerIndexReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink index$yDLc = MetaAdapterFactory.getReferenceLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240f252L, 0x5650ac0d4240f275L, "index");
+    /*package*/ static final SReferenceLink index$gez$ = MetaAdapterFactory.getReferenceLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x5650ac0d4240f252L, 0x5650ac0d4240f275L, "index");
   }
 }

@@ -99,8 +99,8 @@
       <node id="899069222102498148" at="147,96,148,210" concept="2" />
       <node id="2613361977583720833" at="148,210,149,132" concept="2" />
       <node id="899069222102498160" at="149,132,150,0" concept="10" />
-      <node id="899069222102498170" at="150,0,151,76" concept="2" />
-      <node id="899069222102498176" at="151,76,152,0" concept="10" />
+      <node id="899069222102498170" at="150,0,151,75" concept="2" />
+      <node id="899069222102498176" at="151,75,152,0" concept="10" />
       <node id="899069222102498177" at="152,0,153,108" concept="2" />
       <node id="899069222102498184" at="154,5,155,0" concept="10" />
       <node id="899069222102498185" at="155,0,156,127" concept="7" />
@@ -115,8 +115,8 @@
       <node id="899069222102542848" at="171,210,172,148" concept="2" />
       <node id="899069222102542858" at="172,148,173,0" concept="10" />
       <node id="899069222102542861" at="174,128,175,0" concept="10" />
-      <node id="899069222102542874" at="177,39,178,155" concept="7" />
-      <node id="899069222102542885" at="178,155,179,152" concept="8" />
+      <node id="899069222102542874" at="177,39,178,154" concept="7" />
+      <node id="899069222102542885" at="178,154,179,152" concept="8" />
       <node id="899069222102542899" at="181,26,182,0" concept="10" />
       <node id="899069222102542900" at="182,0,183,443" concept="2" />
       <node id="899069222102542915" at="183,443,184,453" concept="2" />
@@ -127,13 +127,13 @@
       <node id="899069222102542950" at="190,38,191,0" concept="10" />
       <node id="899069222102542953" at="192,240,193,0" concept="10" />
       <node id="899069222102542954" at="193,0,194,61" concept="2" />
-      <node id="899069222102542970" at="196,41,197,136" concept="7" />
-      <node id="899069222102542981" at="197,136,198,161" concept="8" />
+      <node id="899069222102542970" at="196,41,197,135" concept="7" />
+      <node id="899069222102542981" at="197,135,198,161" concept="8" />
       <node id="2309416876616354918" at="200,28,201,0" concept="10" />
       <node id="899069222102542995" at="201,0,202,0" concept="10" />
       <node id="899069222102543014" at="203,247,204,0" concept="10" />
       <node id="899069222102543015" at="204,0,205,63" concept="2" />
-      <node id="899069222102543040" at="207,41,208,162" concept="8" />
+      <node id="899069222102543040" at="207,41,208,161" concept="8" />
       <node id="2309416876616366975" at="210,28,211,0" concept="10" />
       <node id="899069222102543050" at="212,7,213,415" concept="2" />
       <node id="899069222102543064" at="213,415,214,426" concept="2" />
@@ -431,32 +431,32 @@
       <node id="3355805929434814231" at="676,66,677,47" concept="8" />
       <node id="6983466604977755791" at="679,52,680,40" concept="8" />
       <node id="899069222102690693" at="682,0,683,0" concept="11" trace="REGEXP_3t318f_a0a0a0a92" />
-      <node id="1588368162881583355" at="685,0,686,0" concept="11" trace="datatypeId$88Lt" />
-      <node id="1588368162881583355" at="686,0,687,0" concept="11" trace="name$lA7v" />
-      <node id="1588368162881583355" at="687,0,688,0" concept="11" trace="virtualPackage$dz_3" />
-      <node id="1588368162881583355" at="688,0,689,0" concept="11" trace="presentation$bbH8" />
-      <node id="1588368162881583355" at="689,0,690,0" concept="11" trace="externalValue$_gPF" />
-      <node id="1588368162881583355" at="690,0,691,0" concept="11" trace="memberId$lO88" />
-      <node id="1588368162881583355" at="691,0,692,0" concept="11" trace="nameOpMigration$kTP1" />
-      <node id="1588368162881583355" at="692,0,693,0" concept="11" trace="valueOpMigration$ukEZ" />
-      <node id="1588368162881583355" at="693,0,694,0" concept="11" trace="internalValue$_gAE" />
-      <node id="1588368162881583355" at="694,0,695,0" concept="11" trace="value$P2m0" />
-      <node id="1588368162881583355" at="695,0,696,0" concept="11" trace="value$Cbc0" />
-      <node id="1588368162881583355" at="699,0,700,0" concept="11" trace="DataTypeDeclaration$KQ" />
-      <node id="1588368162881583355" at="700,0,701,0" concept="11" trace="EnumerationDataTypeDeclaration_Old$Ll" />
-      <node id="1588368162881583355" at="701,0,702,0" concept="11" trace="EnumMigrationInfo$2L" />
-      <node id="1588368162881583355" at="702,0,703,0" concept="11" trace="NullLiteral$q4" />
-      <node id="1588368162881583355" at="703,0,704,0" concept="11" trace="StringLiteral$4G" />
-      <node id="1588368162881583355" at="704,0,705,0" concept="11" trace="IntegerConstant$mo" />
-      <node id="1588368162881583355" at="708,0,709,0" concept="11" trace="oldEnum$U8fB" />
-      <node id="1588368162881583355" at="709,0,710,0" concept="11" trace="oldMember$$lAu" />
-      <node id="1588368162881583355" at="710,0,711,0" concept="11" trace="members$4eAY" />
-      <node id="1588368162881583355" at="711,0,712,0" concept="11" trace="member$1eS1" />
-      <node id="1588368162881583355" at="712,0,713,0" concept="11" trace="defaultMember$3dwT" />
-      <node id="1588368162881583355" at="713,0,714,0" concept="11" trace="member$6v_r" />
-      <node id="1588368162881583355" at="714,0,715,0" concept="11" trace="memberDataType$I9FT" />
-      <node id="1588368162881583355" at="715,0,716,0" concept="11" trace="parameter$qsax" />
-      <node id="1588368162881583355" at="716,0,717,0" concept="11" trace="body$qspy" />
+      <node id="1588368162881583355" at="685,0,686,0" concept="11" trace="datatypeId$$gBg" />
+      <node id="1588368162881583355" at="686,0,687,0" concept="11" trace="name$MnvL" />
+      <node id="1588368162881583355" at="687,0,688,0" concept="11" trace="virtualPackage$EkXl" />
+      <node id="1588368162881583355" at="688,0,689,0" concept="11" trace="presentation$BjyV" />
+      <node id="1588368162881583355" at="689,0,690,0" concept="11" trace="externalValue$1oFu" />
+      <node id="1588368162881583355" at="690,0,691,0" concept="11" trace="memberId$LVXV" />
+      <node id="1588368162881583355" at="691,0,692,0" concept="11" trace="nameOpMigration$L1EO" />
+      <node id="1588368162881583355" at="692,0,693,0" concept="11" trace="valueOpMigration$UswM" />
+      <node id="1588368162881583355" at="693,0,694,0" concept="11" trace="internalValue$1ost" />
+      <node id="1588368162881583355" at="694,0,695,0" concept="11" trace="value$w7MM" />
+      <node id="1588368162881583355" at="695,0,696,0" concept="11" trace="value$jgCM" />
+      <node id="1588368162881583355" at="699,0,700,0" concept="11" trace="DataTypeDeclaration$AD" />
+      <node id="1588368162881583355" at="700,0,701,0" concept="11" trace="EnumerationDataTypeDeclaration_Old$B8" />
+      <node id="1588368162881583355" at="701,0,702,0" concept="11" trace="EnumMigrationInfo$S$" />
+      <node id="1588368162881583355" at="702,0,703,0" concept="11" trace="NullLiteral$QQ" />
+      <node id="1588368162881583355" at="703,0,704,0" concept="11" trace="StringLiteral$xu" />
+      <node id="1588368162881583355" at="704,0,705,0" concept="11" trace="IntegerConstant$Na" />
+      <node id="1588368162881583355" at="708,0,709,0" concept="11" trace="oldEnum$mg5q" />
+      <node id="1588368162881583355" at="709,0,710,0" concept="11" trace="oldMember$tsh" />
+      <node id="1588368162881583355" at="710,0,711,0" concept="11" trace="members$wmsL" />
+      <node id="1588368162881583355" at="711,0,712,0" concept="11" trace="member$tmHO" />
+      <node id="1588368162881583355" at="712,0,713,0" concept="11" trace="defaultMember$vlmG" />
+      <node id="1588368162881583355" at="713,0,714,0" concept="11" trace="member$L_2d" />
+      <node id="1588368162881583355" at="714,0,715,0" concept="11" trace="memberDataType$ahxG" />
+      <node id="1588368162881583355" at="715,0,716,0" concept="11" trace="parameter$5xBj" />
+      <node id="1588368162881583355" at="716,0,717,0" concept="11" trace="body$5xQk" />
       <node id="899069222102702063" at="398,14,400,9" concept="0" />
       <node id="1588368162881583355" at="57,0,60,0" concept="6" trace="getCaption#()Ljava/lang/String;" />
       <node id="3355805929434814234" at="69,60,72,5" concept="5" />
@@ -577,7 +577,7 @@
       <scope id="1588368162881583355" at="127,51,128,149" />
       <scope id="899069222102498192" at="157,35,158,176" />
       <scope id="899069222102542824" at="167,256,168,18" />
-      <scope id="899069222102543030" at="207,41,208,162" />
+      <scope id="899069222102543030" at="207,41,208,161" />
       <scope id="899069222102717424" at="222,51,223,18" />
       <scope id="899069222102527295" at="251,35,252,111" />
       <scope id="899069222102527308" at="253,50,254,119" />
@@ -1053,9 +1053,9 @@
       <node id="4726480899534892930" at="91,234,92,196" concept="2" />
       <node id="4726480899534892930" at="92,196,93,24" concept="8" />
       <node id="1780177113170778340" at="95,55,96,43" concept="8" />
-      <node id="1780177113170754287" at="100,0,101,0" concept="11" trace="AbstractConceptDeclaration$UN" />
-      <node id="1780177113170754287" at="104,0,105,0" concept="11" trace="oldHelpURL$6Bay" />
-      <node id="1780177113170754287" at="108,0,109,0" concept="11" trace="helpURL$KfIQ" />
+      <node id="1780177113170754287" at="100,0,101,0" concept="11" trace="AbstractConceptDeclaration$KA" />
+      <node id="1780177113170754287" at="104,0,105,0" concept="11" trace="oldHelpURL$yJ0l" />
+      <node id="1780177113170754287" at="108,0,109,0" concept="11" trace="helpURL$cn$D" />
       <node id="1780177113170754287" at="31,0,34,0" concept="6" trace="getCaption#()Ljava/lang/String;" />
       <node id="4726480899534874488" at="47,0,50,0" concept="6" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
       <node id="1780177113170778333" at="52,0,55,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -1163,13 +1163,13 @@
       <node id="2025969025285282964" at="40,74,41,88" concept="2" />
       <node id="2025969025285282970" at="41,88,42,114" concept="8" />
       <node id="2025969025285282977" at="43,5,44,16" concept="8" />
-      <node id="2309416876628396524" at="48,0,49,0" concept="11" trace="PropertyDeclaration$c5" />
-      <node id="2309416876628396524" at="49,0,50,0" concept="11" trace="EnumPropertyMigrationInfo$Yg" />
-      <node id="2309416876628396524" at="50,0,51,0" concept="11" trace="IEnumeration$Se" />
-      <node id="2309416876628396524" at="51,0,52,0" concept="11" trace="EnumerationDeclaration$rG" />
-      <node id="2309416876628396524" at="52,0,53,0" concept="11" trace="EnumMigrationInfo$2L" />
-      <node id="2309416876628396524" at="56,0,57,0" concept="11" trace="enumUsageMigrated$DjAE" />
-      <node id="2309416876628396524" at="60,0,61,0" concept="11" trace="oldProperty$v6pv" />
+      <node id="2309416876628396524" at="48,0,49,0" concept="11" trace="PropertyDeclaration$1S" />
+      <node id="2309416876628396524" at="49,0,50,0" concept="11" trace="EnumPropertyMigrationInfo$O3" />
+      <node id="2309416876628396524" at="50,0,51,0" concept="11" trace="IEnumeration$I1" />
+      <node id="2309416876628396524" at="51,0,52,0" concept="11" trace="EnumerationDeclaration$hv" />
+      <node id="2309416876628396524" at="52,0,53,0" concept="11" trace="EnumMigrationInfo$S$" />
+      <node id="2309416876628396524" at="56,0,57,0" concept="11" trace="enumUsageMigrated$64YW" />
+      <node id="2309416876628396524" at="60,0,61,0" concept="11" trace="oldProperty$Vefi" />
       <node id="2025969025285282962" at="39,128,43,5" concept="5" />
       <node id="2025969025285282027" at="19,119,24,5" concept="5" />
       <node id="2025969025285282493" at="29,115,34,5" concept="5" />
@@ -1224,11 +1224,11 @@
       <node id="2367072595509525281" at="65,45,66,188" concept="8" />
       <node id="2367072595509525297" at="70,41,71,45" concept="2" />
       <node id="2367072595509371506" at="78,51,79,149" concept="8" />
-      <node id="2367072595509371506" at="83,0,84,0" concept="11" trace="ConceptDeclaration$qU" />
-      <node id="2367072595509371506" at="84,0,85,0" concept="11" trace="InterfaceConceptDeclaration$MT" />
-      <node id="2367072595509371506" at="88,0,89,0" concept="11" trace="implements$2tZf" />
-      <node id="2367072595509371506" at="89,0,90,0" concept="11" trace="intfc$7Eer" />
-      <node id="2367072595509371506" at="90,0,91,0" concept="11" trace="extends$V2F7" />
+      <node id="2367072595509371506" at="83,0,84,0" concept="11" trace="ConceptDeclaration$gH" />
+      <node id="2367072595509371506" at="84,0,85,0" concept="11" trace="InterfaceConceptDeclaration$CG" />
+      <node id="2367072595509371506" at="88,0,89,0" concept="11" trace="implements$u_P2" />
+      <node id="2367072595509371506" at="89,0,90,0" concept="11" trace="intfc$zM4e" />
+      <node id="2367072595509371506" at="90,0,91,0" concept="11" trace="extends$nawU" />
       <node id="2367072595509371506" at="28,0,31,0" concept="6" trace="getCaption#()Ljava/lang/String;" />
       <node id="2367072595509383877" at="44,0,47,0" concept="6" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
       <node id="2367072595509494327" at="51,0,54,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -1353,17 +1353,17 @@
       <node id="3160346131750714710" at="120,42,121,42" concept="2" />
       <node id="3160346131750714710" at="121,42,122,26" concept="8" />
       <node id="2823822248428027511" at="124,52,125,40" concept="8" />
-      <node id="3160346131749731897" at="129,0,130,0" concept="11" trace="ConceptDeclaration$qU" />
-      <node id="3160346131749731897" at="130,0,131,0" concept="11" trace="SmartReferenceAttribute$Lg" />
-      <node id="3160346131749731897" at="131,0,132,0" concept="11" trace="RefPresentationTemplate$57" />
-      <node id="3160346131749731897" at="135,0,136,0" concept="11" trace="abstract$Q3$6" />
-      <node id="3160346131749731897" at="136,0,137,0" concept="11" trace="conceptAlias$oDJY" />
-      <node id="3160346131749731897" at="137,0,138,0" concept="11" trace="role$nkts" />
-      <node id="3160346131749731897" at="138,0,139,0" concept="11" trace="prefix$KzTj" />
-      <node id="3160346131749731897" at="139,0,140,0" concept="11" trace="suffix$KDxF" />
-      <node id="3160346131749731897" at="143,0,144,0" concept="11" trace="refPresentationTemplate$LafO" />
-      <node id="3160346131749731897" at="144,0,145,0" concept="11" trace="specializedLink$FRN0" />
-      <node id="3160346131749731897" at="145,0,146,0" concept="11" trace="charactersticReference$BT$4" />
+      <node id="3160346131749731897" at="129,0,130,0" concept="11" trace="ConceptDeclaration$gH" />
+      <node id="3160346131749731897" at="130,0,131,0" concept="11" trace="SmartReferenceAttribute$B3" />
+      <node id="3160346131749731897" at="131,0,132,0" concept="11" trace="RefPresentationTemplate$UU" />
+      <node id="3160346131749731897" at="135,0,136,0" concept="11" trace="abstract$ibpT" />
+      <node id="3160346131749731897" at="136,0,137,0" concept="11" trace="conceptAlias$OL_L" />
+      <node id="3160346131749731897" at="137,0,138,0" concept="11" trace="role$Nsjf" />
+      <node id="3160346131749731897" at="138,0,139,0" concept="11" trace="prefix$cFJ6" />
+      <node id="3160346131749731897" at="139,0,140,0" concept="11" trace="suffix$cLnu" />
+      <node id="3160346131749731897" at="143,0,144,0" concept="11" trace="refPresentationTemplate$di5B" />
+      <node id="3160346131749731897" at="144,0,145,0" concept="11" trace="specializedLink$7ZCN" />
+      <node id="3160346131749731897" at="145,0,146,0" concept="11" trace="charactersticReference$41pR" />
       <node id="3160346131749731897" at="34,0,37,0" concept="6" trace="getCaption#()Ljava/lang/String;" />
       <node id="3160346131749742365" at="50,0,53,0" concept="6" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
       <node id="7090642254708498830" at="57,0,60,9" concept="5" />
@@ -1493,11 +1493,11 @@
       <node id="5091239957908825242" at="89,5,90,18" concept="8" />
       <node id="5091239957908801103" at="92,51,93,149" concept="8" />
       <node id="5091239957908849310" at="96,55,97,43" concept="8" />
-      <node id="5091239957908801103" at="101,0,102,0" concept="11" trace="ConceptDeclaration$qU" />
-      <node id="5091239957908801103" at="102,0,103,0" concept="11" trace="FileIcon$ne" />
-      <node id="5091239957908801103" at="106,0,107,0" concept="11" trace="iconPath$wu_v" />
-      <node id="5091239957908801103" at="107,0,108,0" concept="11" trace="file$9NuV" />
-      <node id="5091239957908801103" at="111,0,112,0" concept="11" trace="icon$hCs4" />
+      <node id="5091239957908801103" at="101,0,102,0" concept="11" trace="ConceptDeclaration$gH" />
+      <node id="5091239957908801103" at="102,0,103,0" concept="11" trace="FileIcon$Z0" />
+      <node id="5091239957908801103" at="106,0,107,0" concept="11" trace="iconPath$WAri" />
+      <node id="5091239957908801103" at="107,0,108,0" concept="11" trace="file$686H" />
+      <node id="5091239957908801103" at="111,0,112,0" concept="11" trace="icon$HKhR" />
       <node id="5091239957908801103" at="30,0,33,0" concept="6" trace="getCaption#()Ljava/lang/String;" />
       <node id="5091239957908849294" at="46,0,49,0" concept="6" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
       <node id="5091239957908849303" at="51,0,54,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -1618,15 +1618,15 @@
       <node id="899069222109278297" at="94,155,95,181" concept="2" />
       <node id="899069222109278311" at="95,181,96,86" concept="2" />
       <node id="899069222109278316" at="96,86,97,262" concept="2" />
-      <node id="6491077959637080464" at="102,0,103,0" concept="11" trace="PropertyDeclaration$c5" />
-      <node id="6491077959637080464" at="103,0,104,0" concept="11" trace="EnumerationDataTypeDeclaration_Old$Ll" />
-      <node id="6491077959637080464" at="104,0,105,0" concept="11" trace="EnumPropertyMigrationInfo$Yg" />
-      <node id="6491077959637080464" at="105,0,106,0" concept="11" trace="EnumMigrationInfo$2L" />
-      <node id="6491077959637080464" at="106,0,107,0" concept="11" trace="EnumerationDeclaration$rG" />
-      <node id="6491077959637080464" at="110,0,111,0" concept="11" trace="dataType$Dbgb" />
-      <node id="6491077959637080464" at="111,0,112,0" concept="11" trace="oldProperty$v6pv" />
-      <node id="6491077959637080464" at="115,0,116,0" concept="11" trace="name$lA7v" />
-      <node id="6491077959637080464" at="116,0,117,0" concept="11" trace="propertyId$TXS7" />
+      <node id="6491077959637080464" at="102,0,103,0" concept="11" trace="PropertyDeclaration$1S" />
+      <node id="6491077959637080464" at="103,0,104,0" concept="11" trace="EnumerationDataTypeDeclaration_Old$B8" />
+      <node id="6491077959637080464" at="104,0,105,0" concept="11" trace="EnumPropertyMigrationInfo$O3" />
+      <node id="6491077959637080464" at="105,0,106,0" concept="11" trace="EnumMigrationInfo$S$" />
+      <node id="6491077959637080464" at="106,0,107,0" concept="11" trace="EnumerationDeclaration$hv" />
+      <node id="6491077959637080464" at="110,0,111,0" concept="11" trace="dataType$5j5Y" />
+      <node id="6491077959637080464" at="111,0,112,0" concept="11" trace="oldProperty$Vefi" />
+      <node id="6491077959637080464" at="115,0,116,0" concept="11" trace="name$MnvL" />
+      <node id="6491077959637080464" at="116,0,117,0" concept="11" trace="propertyId$m5HU" />
       <node id="6491077959637080464" at="32,0,35,0" concept="6" trace="getCaption#()Ljava/lang/String;" />
       <node id="6491077959637091499" at="48,0,51,0" concept="6" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
       <node id="6491077959637092060" at="51,8,54,7" concept="4" />
@@ -1801,15 +1801,15 @@
       <node id="6714410169262120427" at="134,9,135,165" concept="8" />
       <node id="6714410169262118807" at="138,51,139,149" concept="8" />
       <node id="241647608300365430" at="142,52,143,40" concept="8" />
-      <node id="6714410169262118807" at="147,0,148,0" concept="11" trace="AbstractConceptDeclaration$UN" />
-      <node id="6714410169262118807" at="148,0,149,0" concept="11" trace="PropertyDeclaration$c5" />
-      <node id="6714410169262118807" at="149,0,150,0" concept="11" trace="LinkDeclaration$bA" />
-      <node id="6714410169262118807" at="153,0,154,0" concept="11" trace="conceptId$ZjQr" />
-      <node id="6714410169262118807" at="154,0,155,0" concept="11" trace="intConceptId$oPFq" />
-      <node id="6714410169262118807" at="155,0,156,0" concept="11" trace="propertyId$TXS7" />
-      <node id="6714410169262118807" at="156,0,157,0" concept="11" trace="linkId$Uajt" />
-      <node id="6714410169262118807" at="160,0,161,0" concept="11" trace="propertyDeclaration$yMqt" />
-      <node id="6714410169262118807" at="161,0,162,0" concept="11" trace="linkDeclaration$yMbs" />
+      <node id="6714410169262118807" at="147,0,148,0" concept="11" trace="AbstractConceptDeclaration$KA" />
+      <node id="6714410169262118807" at="148,0,149,0" concept="11" trace="PropertyDeclaration$1S" />
+      <node id="6714410169262118807" at="149,0,150,0" concept="11" trace="LinkDeclaration$1p" />
+      <node id="6714410169262118807" at="153,0,154,0" concept="11" trace="conceptId$rrGe" />
+      <node id="6714410169262118807" at="154,0,155,0" concept="11" trace="intConceptId$OXxd" />
+      <node id="6714410169262118807" at="155,0,156,0" concept="11" trace="propertyId$m5HU" />
+      <node id="6714410169262118807" at="156,0,157,0" concept="11" trace="linkId$mi9g" />
+      <node id="6714410169262118807" at="160,0,161,0" concept="11" trace="propertyDeclaration$YUgg" />
+      <node id="6714410169262118807" at="161,0,162,0" concept="11" trace="linkDeclaration$YU1f" />
       <node id="6714410169262118807" at="31,0,34,0" concept="6" trace="getCaption#()Ljava/lang/String;" />
       <node id="6714410169262120380" at="47,0,50,0" concept="6" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
       <node id="241647608300349838" at="52,37,55,11" concept="5" />

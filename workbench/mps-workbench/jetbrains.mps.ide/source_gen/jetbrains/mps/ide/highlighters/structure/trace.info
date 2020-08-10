@@ -28,7 +28,7 @@
       <node id="1401464578588074792" at="46,63,47,50" concept="8" />
       <node id="7515092869552930139" at="51,95,52,135" concept="7" />
       <node id="1401464578587067808" at="52,135,53,99" concept="8" />
-      <node id="1401464578585832882" at="57,0,58,0" concept="11" trace="AbstractConceptDeclaration$UN" />
+      <node id="1401464578585832882" at="57,0,58,0" concept="11" trace="AbstractConceptDeclaration$KA" />
       <node id="22393163173382077" at="27,0,30,0" concept="1" trace="OverrideConceptsChecker#(Ljetbrains/mps/project/MPSProject;)V" />
       <node id="1401464578586834914" at="34,47,37,5" concept="5" />
       <node id="1401464578587048094" at="39,142,42,5" concept="5" />
@@ -87,8 +87,8 @@
       <node id="7515092869554019408" at="74,92,75,120" concept="2" />
       <node id="2707675432437168874" at="76,80,77,33" concept="2" />
       <node id="2707675432437204104" at="83,134,84,18" concept="8" />
-      <node id="7515092869553021871" at="88,0,89,0" concept="11" trace="final$Q4Jb" />
-      <node id="7515092869553021871" at="92,0,93,0" concept="11" trace="AbstractConceptDeclaration$UN" />
+      <node id="7515092869553021871" at="88,0,89,0" concept="11" trace="final$ic$Y" />
+      <node id="7515092869553021871" at="92,0,93,0" concept="11" trace="AbstractConceptDeclaration$KA" />
       <node id="2707675432436739984" at="46,43,49,5" concept="5" />
       <node id="9117911255445607625" at="53,12,56,7" concept="5" />
       <node id="2707675432437148546" at="75,120,78,15" concept="5" />
@@ -174,8 +174,8 @@
       <node id="6226950206220272496" at="86,55,87,133" concept="7" />
       <node id="8432634623182580089" at="87,133,88,64" concept="8" />
       <node id="8432634623182580100" at="92,36,93,123" concept="8" />
-      <node id="8432634623182579978" at="97,0,98,0" concept="11" trace="ConceptDeclaration$qU" />
-      <node id="8432634623182579978" at="98,0,99,0" concept="11" trace="INamedConcept$nV" />
+      <node id="8432634623182579978" at="97,0,98,0" concept="11" trace="ConceptDeclaration$gH" />
+      <node id="8432634623182579978" at="98,0,99,0" concept="11" trace="INamedConcept$Kd" />
       <node id="7515092869554152531" at="38,0,41,0" concept="12" trace="isOverridden#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="7515092869553799146" at="53,43,56,5" concept="5" />
       <node id="7515092869553799193" at="62,12,65,7" concept="4" />

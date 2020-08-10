@@ -53,7 +53,7 @@ public final class LoopMacro__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static SNode getInputNodeTypeInsideOfMacro_idhEwIosJ(@NotNull SNode __thisNode__) {
     {
       GeneratedMatchingPattern pattern_cdqxf8_a0a = new Pattern_cdqxf8_a0a0a0a(_quotation_createNode_cdqxf8_a0a0a0a0a());
-      SNode coercedNode_cdqxf8_a0a = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.sourceNodesQuery$$mF2)), pattern_cdqxf8_a0a);
+      SNode coercedNode_cdqxf8_a0a = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(__thisNode__, LINKS.sourceNodesQuery$XjmI)), pattern_cdqxf8_a0a);
       if (coercedNode_cdqxf8_a0a != null) {
         return pattern_cdqxf8_a0a.getMatchedNode("concept");
       } else {
@@ -63,24 +63,24 @@ public final class LoopMacro__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static String getCounterVarName_id5KmckUrI7Lz(@NotNull SNode __thisNode__) {
     // name of counter as available in TemplateContext, similar to VarMacro.getName() 
-    return "cv:" + SPropertyOperations.getString(__thisNode__, PROPS.counterVarName$_ShF);
+    return "cv:" + SPropertyOperations.getString(__thisNode__, PROPS.counterVarName$YOXn);
   }
   /*package*/ static List<SNode> contextVariables_id6suuiWX_oN7(@NotNull SNode __thisNode__) {
     List<SNode> rv = new ArrayList<SNode>();
-    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.counterVarName$_ShF))) {
+    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.counterVarName$YOXn))) {
       return rv;
     }
     SNode counterVar = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x671e792f3d94989fL, "jetbrains.mps.lang.generator.structure.ContextVariableDeclaration"));
-    SPropertyOperations.assign(counterVar, PROPS.name$lA7v, SPropertyOperations.getString(__thisNode__, PROPS.counterVarName$_ShF));
-    SLinkOperations.setTarget(counterVar, LINKS.type$anfE, createIntegerType_cdqxf8_a0e0c());
+    SPropertyOperations.assign(counterVar, PROPS.name$MnvL, SPropertyOperations.getString(__thisNode__, PROPS.counterVarName$YOXn));
+    SLinkOperations.setTarget(counterVar, LINKS.type$zjVm, createIntegerType_cdqxf8_a0e0c());
     ListSequence.fromList(rv).addElement(counterVar);
     return rv;
   }
   /*package*/ static boolean suppress_id2WmWrdnSpX7(@NotNull SNode __thisNode__, SNode child) {
     // child is not under any other macro except this one 
-    return ((boolean) ISuppressErrors__BehaviorDescriptor.suppress_id2WmWrdnSpX7.invokeSuper(__thisNode__, CONCEPTS.LoopMacro$md, child)) && ListSequence.fromList(SNodeOperations.getNodeAncestors(child, null, true)).findFirst(new IWhereFilter<SNode>() {
+    return ((boolean) ISuppressErrors__BehaviorDescriptor.suppress_id2WmWrdnSpX7.invokeSuper(__thisNode__, CONCEPTS.LoopMacro$1T, child)) && ListSequence.fromList(SNodeOperations.getNodeAncestors(child, null, true)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Sequence.fromIterable(SNodeOperations.ofConcept(AttributeOperations.getAttributeList(it, new IAttributeDescriptor.AllAttributes()), CONCEPTS.AbstractMacro$vG)).isNotEmpty();
+        return Sequence.fromIterable(SNodeOperations.ofConcept(AttributeOperations.getAttributeList(it, new IAttributeDescriptor.AllAttributes()), CONCEPTS.AbstractMacro$bo)).isNotEmpty();
       }
     }) == SNodeOperations.getParent(__thisNode__);
   }
@@ -146,7 +146,7 @@ public final class LoopMacro__BehaviorDescriptor extends BaseBHDescriptor {
     return quotedNode_1;
   }
   private static SNode createIntegerType_cdqxf8_a0e0c() {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.IntegerType$Eo);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.IntegerType$7a);
     return n0.getResult();
   }
   private static boolean isEmptyString(String str) {
@@ -154,18 +154,18 @@ public final class LoopMacro__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink sourceNodesQuery$$mF2 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047ce009c3L, 0x10fef5e42d7L, "sourceNodesQuery");
-    /*package*/ static final SContainmentLink type$anfE = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x671e792f3d94989fL, 0x671e792f3d9580f4L, "type");
+    /*package*/ static final SContainmentLink sourceNodesQuery$XjmI = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047ce009c3L, 0x10fef5e42d7L, "sourceNodesQuery");
+    /*package*/ static final SContainmentLink type$zjVm = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x671e792f3d94989fL, 0x671e792f3d9580f4L, "type");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty counterVarName$_ShF = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047ce009c3L, 0x671e792f3d97a344L, "counterVarName");
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty counterVarName$YOXn = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047ce009c3L, 0x671e792f3d97a344L, "counterVarName");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LoopMacro$md = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047ce009c3L, "jetbrains.mps.lang.generator.structure.LoopMacro");
-    /*package*/ static final SInterfaceConcept AbstractMacro$vG = MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11dc0f7933bL, "jetbrains.mps.lang.generator.structure.AbstractMacro");
-    /*package*/ static final SConcept IntegerType$Eo = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d22479L, "jetbrains.mps.baseLanguage.structure.IntegerType");
+    /*package*/ static final SConcept LoopMacro$1T = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047ce009c3L, "jetbrains.mps.lang.generator.structure.LoopMacro");
+    /*package*/ static final SInterfaceConcept AbstractMacro$bo = MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11dc0f7933bL, "jetbrains.mps.lang.generator.structure.AbstractMacro");
+    /*package*/ static final SConcept IntegerType$7a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d22479L, "jetbrains.mps.baseLanguage.structure.IntegerType");
   }
 }

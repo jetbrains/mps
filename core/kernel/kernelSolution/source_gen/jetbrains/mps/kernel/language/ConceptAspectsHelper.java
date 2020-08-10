@@ -26,9 +26,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 @GeneratedClass(node = "r:cb40950c-9102-4caf-8d31-b0388f359313(jetbrains.mps.kernel.language)/616772488614529103", model = "r:cb40950c-9102-4caf-8d31-b0388f359313(jetbrains.mps.kernel.language)")
 public class ConceptAspectsHelper {
   public static SNode attachNewConceptAspect(SNode conceptNode, SNode aspectNode, SModel aspectModel) {
-    BHReflection.invoke0(aspectNode, CONCEPTS.IConceptAspect$9g, SMethodTrimmedId.create("setBaseConcept", null, "5r_35Ihc58c"), conceptNode);
-    if (SPropertyOperations.getString(conceptNode, PROPS.virtualPackage$dz_3) != null) {
-      SPropertyOperations.assign(aspectNode, PROPS.virtualPackage$dz_3, SPropertyOperations.getString(conceptNode, PROPS.virtualPackage$dz_3));
+    BHReflection.invoke0(aspectNode, CONCEPTS.IConceptAspect$Z3, SMethodTrimmedId.create("setBaseConcept", null, "5r_35Ihc58c"), conceptNode);
+    if (SPropertyOperations.getString(conceptNode, PROPS.virtualPackage$EkXl) != null) {
+      SPropertyOperations.assign(aspectNode, PROPS.virtualPackage$EkXl, SPropertyOperations.getString(conceptNode, PROPS.virtualPackage$EkXl));
     }
     SModelOperations.addRootNode(aspectModel, aspectNode);
     return aspectNode;
@@ -82,10 +82,10 @@ public class ConceptAspectsHelper {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IConceptAspect$9g = MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x24614259e94f0c84L, "jetbrains.mps.lang.structure.structure.IConceptAspect");
+    /*package*/ static final SInterfaceConcept IConceptAspect$Z3 = MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x24614259e94f0c84L, "jetbrains.mps.lang.structure.structure.IConceptAspect");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty virtualPackage$EkXl = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
   }
 }

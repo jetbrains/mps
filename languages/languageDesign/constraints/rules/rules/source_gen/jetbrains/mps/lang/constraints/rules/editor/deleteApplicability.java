@@ -24,10 +24,10 @@ public class deleteApplicability {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.condition$KuIg))) {
+        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.condition$h$Ae))) {
           return;
         }
-        SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.condition$KuIg));
+        SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.condition$h$Ae));
       }
 
     };
@@ -38,10 +38,10 @@ public class deleteApplicability {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.condition$KuIg))) {
+        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.condition$h$Ae))) {
           return;
         }
-        SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.condition$KuIg));
+        SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.condition$h$Ae));
       }
 
     };
@@ -93,6 +93,6 @@ public class deleteApplicability {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$KuIg = MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x3bd18bf4b10c3c4aL, 0x6e175e60d98b9c4cL, "condition");
+    /*package*/ static final SContainmentLink condition$h$Ae = MetaAdapterFactory.getContainmentLink(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x3bd18bf4b10c3c4aL, 0x6e175e60d98b9c4cL, "condition");
   }
 }

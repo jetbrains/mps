@@ -36,7 +36,7 @@ public class ConceptHasSubconceptsEditorMessage extends AbstractLeftEditorHighli
   private Condition<EditorCell> myNameCellCondition;
 
   private static boolean isOverridden(SNode concept) {
-    return SNodeOperations.isInstanceOf(concept, CONCEPTS.ConceptDeclaration$qU);
+    return SNodeOperations.isInstanceOf(concept, CONCEPTS.ConceptDeclaration$gH);
   }
 
   public ConceptHasSubconceptsEditorMessage(final SNode node, List<SNode> overrides, EditorMessageOwner owner) {
@@ -67,7 +67,7 @@ public class ConceptHasSubconceptsEditorMessage extends AbstractLeftEditorHighli
     return tooltip;
   }
   private static String getTextFromOverride(SNode override) {
-    return ((String) BHReflection.invoke0(override, CONCEPTS.INamedConcept$nV, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+    return ((String) BHReflection.invoke0(override, CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
   }
 
   @Override
@@ -94,7 +94,7 @@ public class ConceptHasSubconceptsEditorMessage extends AbstractLeftEditorHighli
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

@@ -37,25 +37,25 @@ public class generic_ClassfierType_subtypeOf_generic_ClassifierType_InequationRe
   public generic_ClassfierType_subtypeOf_generic_ClassifierType_InequationReplacementRule() {
   }
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.parameter$HlfM)).isEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.parameter$oqG$)).isEmpty()) {
       return false;
     }
 
     {
-      SNode coercedNode_e5spwb_c0a = TypecheckingFacade.getFromContext().coerceType(subtype, CONCEPTS.ClassifierType$IZ);
+      SNode coercedNode_e5spwb_c0a = TypecheckingFacade.getFromContext().coerceType(subtype, CONCEPTS.ClassifierType$bL);
       if (coercedNode_e5spwb_c0a != null) {
-        if (!(((boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SLinkOperations.getTarget(coercedNode_e5spwb_c0a, LINKS.classifier$xslD), SLinkOperations.getTarget(supertype, LINKS.classifier$xslD))))) {
+        if (!(((boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SLinkOperations.getTarget(coercedNode_e5spwb_c0a, LINKS.classifier$cxMr), SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr))))) {
           return false;
         }
-        if (SLinkOperations.getTarget(coercedNode_e5spwb_c0a, LINKS.classifier$xslD) == SLinkOperations.getTarget(supertype, LINKS.classifier$xslD)) {
-          return ListSequence.fromList(SLinkOperations.getChildren(coercedNode_e5spwb_c0a, LINKS.parameter$HlfM)).isNotEmpty();
+        if (SLinkOperations.getTarget(coercedNode_e5spwb_c0a, LINKS.classifier$cxMr) == SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr)) {
+          return ListSequence.fromList(SLinkOperations.getChildren(coercedNode_e5spwb_c0a, LINKS.parameter$oqG$)).isNotEmpty();
         }
 
         {
-          GeneratedMatchingPattern pattern_e5spwb_d0c0a = new Pattern_nn7be_a0a0d0b0c0b(_quotation_createNode_nn7be_a0a0a0d0b0c0b(SLinkOperations.getTarget(supertype, LINKS.classifier$xslD)));
+          GeneratedMatchingPattern pattern_e5spwb_d0c0a = new Pattern_nn7be_a0a0d0b0c0b(_quotation_createNode_nn7be_a0a0a0d0b0c0b(SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr)));
           SNode coercedNode_e5spwb_d0c0a = TypecheckingFacade.getFromContext().coerceType(subtype, pattern_e5spwb_d0c0a);
           if (coercedNode_e5spwb_d0c0a != null) {
-            return ListSequence.fromList(SLinkOperations.getChildren(coercedNode_e5spwb_d0c0a, LINKS.parameter$HlfM)).isNotEmpty();
+            return ListSequence.fromList(SLinkOperations.getChildren(coercedNode_e5spwb_d0c0a, LINKS.parameter$oqG$)).isNotEmpty();
 
           } else {
           }
@@ -67,7 +67,7 @@ public class generic_ClassfierType_subtypeOf_generic_ClassifierType_InequationRe
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     {
-      GeneratedMatchingPattern pattern_e5spwb_a0 = new Pattern_nn7be_a0a0a0c(_quotation_createNode_nn7be_a0a0a0a0c(SLinkOperations.getTarget(supertype, LINKS.classifier$xslD)));
+      GeneratedMatchingPattern pattern_e5spwb_a0 = new Pattern_nn7be_a0a0a0c(_quotation_createNode_nn7be_a0a0a0a0c(SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr)));
       SNode coercedNode_e5spwb_a0 = TypecheckingFacade.getFromContext().coerceType(subtype, pattern_e5spwb_a0);
       if (coercedNode_e5spwb_a0 != null) {
         Map<SNode, SNode> subsLeft = MapSequence.fromMap(new HashMap<SNode, SNode>());
@@ -75,63 +75,63 @@ public class generic_ClassfierType_subtypeOf_generic_ClassifierType_InequationRe
         IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(coercedNode_e5spwb_a0, subsLeft);
         IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(supertype, subsRight);
         MapSequence.fromMap(subsLeft).putAll(subsRight);
-        SNode ctLeftExp = SNodeOperations.cast(IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(coercedNode_e5spwb_a0, subsLeft), CONCEPTS.ClassifierType$IZ);
-        SNode ctRightExp = SNodeOperations.cast(IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(supertype, subsRight), CONCEPTS.ClassifierType$IZ);
+        SNode ctLeftExp = SNodeOperations.cast(IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(coercedNode_e5spwb_a0, subsLeft), CONCEPTS.ClassifierType$bL);
+        SNode ctRightExp = SNodeOperations.cast(IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(supertype, subsRight), CONCEPTS.ClassifierType$bL);
 
-        Iterator<SNode> leftParamIt = ListSequence.fromList(SLinkOperations.getChildren(ctLeftExp, LINKS.parameter$HlfM)).iterator();
-        Iterator<SNode> rightParamIt = ListSequence.fromList(SLinkOperations.getChildren(ctRightExp, LINKS.parameter$HlfM)).iterator();
+        Iterator<SNode> leftParamIt = ListSequence.fromList(SLinkOperations.getChildren(ctLeftExp, LINKS.parameter$oqG$)).iterator();
+        Iterator<SNode> rightParamIt = ListSequence.fromList(SLinkOperations.getChildren(ctRightExp, LINKS.parameter$oqG$)).iterator();
         while (leftParamIt.hasNext() && rightParamIt.hasNext()) {
           final SNode leftParam = leftParamIt.next();
           final SNode rightParam = rightParamIt.next();
-          if (SNodeOperations.isInstanceOf(rightParam, CONCEPTS.UpperBoundType$r6)) {
-            if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.UpperBoundType$r6)) {
+          if (SNodeOperations.isInstanceOf(rightParam, CONCEPTS.UpperBoundType$RS)) {
+            if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.UpperBoundType$RS)) {
               {
                 SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
                 EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5840665131588018276", 0, null);
                 _info_12389875345.getOuterRulesIdFromInfo(equationInfo);
-                typeCheckingContext.createLessThanInequality((SNode) SLinkOperations.getTarget(SNodeOperations.cast(leftParam, CONCEPTS.UpperBoundType$r6), LINKS.bound$xdz0), (SNode) SLinkOperations.getTarget(SNodeOperations.cast(rightParam, CONCEPTS.UpperBoundType$r6), LINKS.bound$xdz0), false, true, _info_12389875345);
+                typeCheckingContext.createLessThanInequality((SNode) SLinkOperations.getTarget(SNodeOperations.cast(leftParam, CONCEPTS.UpperBoundType$RS), LINKS.bound$ciZM), (SNode) SLinkOperations.getTarget(SNodeOperations.cast(rightParam, CONCEPTS.UpperBoundType$RS), LINKS.bound$ciZM), false, true, _info_12389875345);
               }
             } else {
               {
                 SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
                 EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2731213890635159241", 0, null);
                 _info_12389875345.getOuterRulesIdFromInfo(equationInfo);
-                typeCheckingContext.createLessThanInequality((SNode) leftParam, (SNode) SLinkOperations.getTarget(SNodeOperations.cast(rightParam, CONCEPTS.UpperBoundType$r6), LINKS.bound$xdz0), false, true, _info_12389875345);
+                typeCheckingContext.createLessThanInequality((SNode) leftParam, (SNode) SLinkOperations.getTarget(SNodeOperations.cast(rightParam, CONCEPTS.UpperBoundType$RS), LINKS.bound$ciZM), false, true, _info_12389875345);
               }
             }
-          } else if (SNodeOperations.isInstanceOf(rightParam, CONCEPTS.LowerBoundType$Uz)) {
-            if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.LowerBoundType$Uz)) {
+          } else if (SNodeOperations.isInstanceOf(rightParam, CONCEPTS.LowerBoundType$nl)) {
+            if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.LowerBoundType$nl)) {
               {
                 SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
                 EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5840665131588026918", 0, null);
                 _info_12389875345.getOuterRulesIdFromInfo(equationInfo);
-                typeCheckingContext.createGreaterThanInequality((SNode) SLinkOperations.getTarget(SNodeOperations.cast(leftParam, CONCEPTS.LowerBoundType$Uz), LINKS.bound$T4DV), (SNode) SLinkOperations.getTarget(SNodeOperations.cast(rightParam, CONCEPTS.LowerBoundType$Uz), LINKS.bound$T4DV), false, true, _info_12389875345);
+                typeCheckingContext.createGreaterThanInequality((SNode) SLinkOperations.getTarget(SNodeOperations.cast(leftParam, CONCEPTS.LowerBoundType$nl), LINKS.bound$$a6H), (SNode) SLinkOperations.getTarget(SNodeOperations.cast(rightParam, CONCEPTS.LowerBoundType$nl), LINKS.bound$$a6H), false, true, _info_12389875345);
               }
             } else {
               {
                 SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
                 EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2731213890635159351", 0, null);
                 _info_12389875345.getOuterRulesIdFromInfo(equationInfo);
-                typeCheckingContext.createGreaterThanInequality((SNode) leftParam, (SNode) SLinkOperations.getTarget(SNodeOperations.cast(rightParam, CONCEPTS.LowerBoundType$Uz), LINKS.bound$T4DV), false, true, _info_12389875345);
+                typeCheckingContext.createGreaterThanInequality((SNode) leftParam, (SNode) SLinkOperations.getTarget(SNodeOperations.cast(rightParam, CONCEPTS.LowerBoundType$nl), LINKS.bound$$a6H), false, true, _info_12389875345);
               }
             }
-          } else if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.LowerBoundType$Uz)) {
+          } else if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.LowerBoundType$nl)) {
             {
               SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
               EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5450156852668094224", 0, null);
               _info_12389875345.getOuterRulesIdFromInfo(equationInfo);
               typeCheckingContext.createEquation((SNode) rightParam, (SNode) leftParam, _info_12389875345);
             }
-          } else if (SNodeOperations.isInstanceOf(rightParam, CONCEPTS.WildCardType$29)) {
+          } else if (SNodeOperations.isInstanceOf(rightParam, CONCEPTS.WildCardType$uV)) {
             // nothing to do 
-          } else if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.ClassifierType$IZ) && SNodeOperations.isInstanceOf(rightParam, CONCEPTS.ClassifierType$IZ)) {
+          } else if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.ClassifierType$bL) && SNodeOperations.isInstanceOf(rightParam, CONCEPTS.ClassifierType$bL)) {
             {
               SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
               EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7192154694570987550", 0, null);
               _info_12389875345.getOuterRulesIdFromInfo(equationInfo);
               typeCheckingContext.createEquation((SNode) leftParam, (SNode) rightParam, _info_12389875345);
             }
-          } else if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.ClassifierType$IZ) && SNodeOperations.isInstanceOf(rightParam, CONCEPTS.ClassifierType$IZ)) {
+          } else if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.ClassifierType$bL) && SNodeOperations.isInstanceOf(rightParam, CONCEPTS.ClassifierType$bL)) {
             {
               SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
               EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5450156852673290347", 0, null);
@@ -168,7 +168,7 @@ public class generic_ClassfierType_subtypeOf_generic_ClassifierType_InequationRe
   public boolean checkInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     boolean result_14532009 = true;
     {
-      GeneratedMatchingPattern pattern_e5spwb_a0 = new Pattern_nn7be_a0a0a0b0d(_quotation_createNode_nn7be_a0a0a0a0b0d(SLinkOperations.getTarget(supertype, LINKS.classifier$xslD)));
+      GeneratedMatchingPattern pattern_e5spwb_a0 = new Pattern_nn7be_a0a0a0b0d(_quotation_createNode_nn7be_a0a0a0a0b0d(SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr)));
       SNode coercedNode_e5spwb_a0 = TypecheckingFacade.getFromContext().coerceType(subtype, pattern_e5spwb_a0);
       if (coercedNode_e5spwb_a0 != null) {
         Map<SNode, SNode> subsLeft = MapSequence.fromMap(new HashMap<SNode, SNode>());
@@ -176,33 +176,33 @@ public class generic_ClassfierType_subtypeOf_generic_ClassifierType_InequationRe
         IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(coercedNode_e5spwb_a0, subsLeft);
         IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(supertype, subsRight);
         MapSequence.fromMap(subsLeft).putAll(subsRight);
-        SNode ctLeftExp = SNodeOperations.cast(IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(coercedNode_e5spwb_a0, subsLeft), CONCEPTS.ClassifierType$IZ);
-        SNode ctRightExp = SNodeOperations.cast(IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(supertype, subsRight), CONCEPTS.ClassifierType$IZ);
+        SNode ctLeftExp = SNodeOperations.cast(IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(coercedNode_e5spwb_a0, subsLeft), CONCEPTS.ClassifierType$bL);
+        SNode ctRightExp = SNodeOperations.cast(IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(supertype, subsRight), CONCEPTS.ClassifierType$bL);
 
-        Iterator<SNode> leftParamIt = ListSequence.fromList(SLinkOperations.getChildren(ctLeftExp, LINKS.parameter$HlfM)).iterator();
-        Iterator<SNode> rightParamIt = ListSequence.fromList(SLinkOperations.getChildren(ctRightExp, LINKS.parameter$HlfM)).iterator();
+        Iterator<SNode> leftParamIt = ListSequence.fromList(SLinkOperations.getChildren(ctLeftExp, LINKS.parameter$oqG$)).iterator();
+        Iterator<SNode> rightParamIt = ListSequence.fromList(SLinkOperations.getChildren(ctRightExp, LINKS.parameter$oqG$)).iterator();
         while (leftParamIt.hasNext() && rightParamIt.hasNext()) {
           final SNode leftParam = leftParamIt.next();
           final SNode rightParam = rightParamIt.next();
-          if (SNodeOperations.isInstanceOf(rightParam, CONCEPTS.UpperBoundType$r6)) {
-            if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.UpperBoundType$r6)) {
-              result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) SLinkOperations.getTarget(SNodeOperations.cast(leftParam, CONCEPTS.UpperBoundType$r6), LINKS.bound$xdz0), (SNode) SLinkOperations.getTarget(SNodeOperations.cast(rightParam, CONCEPTS.UpperBoundType$r6), LINKS.bound$xdz0));
+          if (SNodeOperations.isInstanceOf(rightParam, CONCEPTS.UpperBoundType$RS)) {
+            if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.UpperBoundType$RS)) {
+              result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) SLinkOperations.getTarget(SNodeOperations.cast(leftParam, CONCEPTS.UpperBoundType$RS), LINKS.bound$ciZM), (SNode) SLinkOperations.getTarget(SNodeOperations.cast(rightParam, CONCEPTS.UpperBoundType$RS), LINKS.bound$ciZM));
             } else {
-              result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) leftParam, (SNode) SLinkOperations.getTarget(SNodeOperations.cast(rightParam, CONCEPTS.UpperBoundType$r6), LINKS.bound$xdz0));
+              result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) leftParam, (SNode) SLinkOperations.getTarget(SNodeOperations.cast(rightParam, CONCEPTS.UpperBoundType$RS), LINKS.bound$ciZM));
             }
-          } else if (SNodeOperations.isInstanceOf(rightParam, CONCEPTS.LowerBoundType$Uz)) {
-            if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.LowerBoundType$Uz)) {
-              result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isStrongSubtype((SNode) SLinkOperations.getTarget(SNodeOperations.cast(rightParam, CONCEPTS.LowerBoundType$Uz), LINKS.bound$T4DV), (SNode) SLinkOperations.getTarget(SNodeOperations.cast(leftParam, CONCEPTS.LowerBoundType$Uz), LINKS.bound$T4DV));
+          } else if (SNodeOperations.isInstanceOf(rightParam, CONCEPTS.LowerBoundType$nl)) {
+            if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.LowerBoundType$nl)) {
+              result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isStrongSubtype((SNode) SLinkOperations.getTarget(SNodeOperations.cast(rightParam, CONCEPTS.LowerBoundType$nl), LINKS.bound$$a6H), (SNode) SLinkOperations.getTarget(SNodeOperations.cast(leftParam, CONCEPTS.LowerBoundType$nl), LINKS.bound$$a6H));
             } else {
-              result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isStrongSubtype((SNode) SLinkOperations.getTarget(SNodeOperations.cast(rightParam, CONCEPTS.LowerBoundType$Uz), LINKS.bound$T4DV), (SNode) leftParam);
+              result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isStrongSubtype((SNode) SLinkOperations.getTarget(SNodeOperations.cast(rightParam, CONCEPTS.LowerBoundType$nl), LINKS.bound$$a6H), (SNode) leftParam);
             }
-          } else if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.LowerBoundType$Uz)) {
+          } else if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.LowerBoundType$nl)) {
             result_14532009 = result_14532009 && MatchingUtil.matchNodes((SNode) rightParam, (SNode) leftParam);
-          } else if (SNodeOperations.isInstanceOf(rightParam, CONCEPTS.WildCardType$29)) {
+          } else if (SNodeOperations.isInstanceOf(rightParam, CONCEPTS.WildCardType$uV)) {
             // nothing to do 
-          } else if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.ClassifierType$IZ) && SNodeOperations.isInstanceOf(rightParam, CONCEPTS.ClassifierType$IZ)) {
+          } else if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.ClassifierType$bL) && SNodeOperations.isInstanceOf(rightParam, CONCEPTS.ClassifierType$bL)) {
             result_14532009 = result_14532009 && MatchingUtil.matchNodes((SNode) leftParam, (SNode) rightParam);
-          } else if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.ClassifierType$IZ) && SNodeOperations.isInstanceOf(rightParam, CONCEPTS.ClassifierType$IZ)) {
+          } else if (SNodeOperations.isInstanceOf(leftParam, CONCEPTS.ClassifierType$bL) && SNodeOperations.isInstanceOf(rightParam, CONCEPTS.ClassifierType$bL)) {
             result_14532009 = result_14532009 && MatchingUtil.matchNodes((SNode) leftParam, (SNode) rightParam);
           } else {
             // TODO this is actually an equivalence relation 
@@ -229,10 +229,10 @@ public class generic_ClassfierType_subtypeOf_generic_ClassifierType_InequationRe
   }
 
   public SAbstractConcept getApplicableSubtypeConcept() {
-    return CONCEPTS.Type$IG;
+    return CONCEPTS.Type$bu;
   }
   public SAbstractConcept getApplicableSupertypeConcept() {
-    return CONCEPTS.ClassifierType$IZ;
+    return CONCEPTS.ClassifierType$bL;
   }
   private static SNode _quotation_createNode_nn7be_a0a0a0d0b0c0b(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -257,17 +257,17 @@ public class generic_ClassfierType_subtypeOf_generic_ClassifierType_InequationRe
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink bound$xdz0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, 0x110daeaa84bL, "bound");
-    /*package*/ static final SContainmentLink bound$T4DV = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, 0x110dae9f25bL, "bound");
+    /*package*/ static final SContainmentLink parameter$oqG$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink bound$ciZM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, 0x110daeaa84bL, "bound");
+    /*package*/ static final SContainmentLink bound$$a6H = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, 0x110dae9f25bL, "bound");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
-    /*package*/ static final SConcept UpperBoundType$r6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, "jetbrains.mps.baseLanguage.structure.UpperBoundType");
-    /*package*/ static final SConcept LowerBoundType$Uz = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, "jetbrains.mps.baseLanguage.structure.LowerBoundType");
-    /*package*/ static final SConcept WildCardType$29 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae5f4a3L, "jetbrains.mps.baseLanguage.structure.WildCardType");
-    /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept UpperBoundType$RS = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, "jetbrains.mps.baseLanguage.structure.UpperBoundType");
+    /*package*/ static final SConcept LowerBoundType$nl = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, "jetbrains.mps.baseLanguage.structure.LowerBoundType");
+    /*package*/ static final SConcept WildCardType$uV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae5f4a3L, "jetbrains.mps.baseLanguage.structure.WildCardType");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 }

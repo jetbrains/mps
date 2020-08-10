@@ -81,11 +81,11 @@
       <node id="1741258697587208460" at="162,11,163,22" concept="6" />
       <node id="1741258697587208551" at="167,64,168,89" concept="6" />
       <node id="1741258697587208587" at="172,67,173,93" concept="6" />
-      <node id="1741258697587208457" at="181,0,182,0" concept="8" trace="PrivateStaticFieldReference$6t" />
-      <node id="1741258697587208457" at="182,0,183,0" concept="8" trace="Classifier$hJ" />
-      <node id="1741258697587208457" at="183,0,184,0" concept="8" trace="IVisible$6G" />
-      <node id="1741258697587208457" at="187,0,188,0" concept="8" trace="classifier$WKxm" />
-      <node id="1741258697587208457" at="191,0,192,0" concept="8" trace="name$lA7v" />
+      <node id="1741258697587208457" at="181,0,182,0" concept="8" trace="PrivateStaticFieldReference$oq" />
+      <node id="1741258697587208457" at="182,0,183,0" concept="8" trace="Classifier$Ix" />
+      <node id="1741258697587208457" at="183,0,184,0" concept="8" trace="IVisible$zu" />
+      <node id="1741258697587208457" at="187,0,188,0" concept="8" trace="classifier$BPY8" />
+      <node id="1741258697587208457" at="191,0,192,0" concept="8" trace="name$MnvL" />
       <node id="1741258697587208457" at="42,0,45,0" concept="0" trace="privateStaticAccess_Contribution#()V" />
       <node id="1741258697587208509" at="94,0,97,0" concept="4" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1741258697587208460" at="102,0,105,0" concept="0" trace="SMP_Action_53df4d_a0#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -369,19 +369,19 @@
       <node id="5619723216767159101" at="366,7,367,134" concept="6" />
       <node id="5619723216767159089" at="369,45,370,18" concept="6" />
       <node id="5619723216767159089" at="373,84,374,303" concept="6" />
-      <node id="5619723216767159054" at="380,0,381,0" concept="8" trace="classifier$WKxm" />
-      <node id="5619723216767159054" at="381,0,382,0" concept="8" trace="variableDeclaration$7WwU" />
-      <node id="5619723216767159054" at="382,0,383,0" concept="8" trace="staticFieldDeclaration$2pdY" />
-      <node id="5619723216767159054" at="383,0,384,0" concept="8" trace="classifier$s_4n" />
-      <node id="5619723216767159054" at="387,0,388,0" concept="8" trace="LinkAttribute$7j" />
-      <node id="5619723216767159054" at="388,0,389,0" concept="8" trace="PropertyAttribute$jT" />
-      <node id="5619723216767159054" at="389,0,390,0" concept="8" trace="PrivateStaticFieldReference$6t" />
-      <node id="5619723216767159054" at="390,0,391,0" concept="8" trace="ClassifierClassExpression$T1" />
-      <node id="5619723216767159054" at="391,0,392,0" concept="8" trace="EnumConstantDeclaration$ma" />
-      <node id="5619723216767159054" at="392,0,393,0" concept="8" trace="StaticFieldDeclaration$R5" />
-      <node id="5619723216767159054" at="393,0,394,0" concept="8" trace="StaticMethodDeclaration$eX" />
-      <node id="5619723216767159054" at="394,0,395,0" concept="8" trace="PrivateStaticMethodCall$m1" />
-      <node id="5619723216767159054" at="398,0,399,0" concept="8" trace="name$lA7v" />
+      <node id="5619723216767159054" at="380,0,381,0" concept="8" trace="classifier$BPY8" />
+      <node id="5619723216767159054" at="381,0,382,0" concept="8" trace="variableDeclaration$N1XG" />
+      <node id="5619723216767159054" at="382,0,383,0" concept="8" trace="staticFieldDeclaration$HuEK" />
+      <node id="5619723216767159054" at="383,0,384,0" concept="8" trace="classifier$7Ex9" />
+      <node id="5619723216767159054" at="387,0,388,0" concept="8" trace="LinkAttribute$v_" />
+      <node id="5619723216767159054" at="388,0,389,0" concept="8" trace="PropertyAttribute$Gb" />
+      <node id="5619723216767159054" at="389,0,390,0" concept="8" trace="PrivateStaticFieldReference$oq" />
+      <node id="5619723216767159054" at="390,0,391,0" concept="8" trace="ClassifierClassExpression$lN" />
+      <node id="5619723216767159054" at="391,0,392,0" concept="8" trace="EnumConstantDeclaration$MW" />
+      <node id="5619723216767159054" at="392,0,393,0" concept="8" trace="StaticFieldDeclaration$jR" />
+      <node id="5619723216767159054" at="393,0,394,0" concept="8" trace="StaticMethodDeclaration$FJ" />
+      <node id="5619723216767159054" at="394,0,395,0" concept="8" trace="PrivateStaticMethodCall$BY" />
+      <node id="5619723216767159054" at="398,0,399,0" concept="8" trace="name$MnvL" />
       <node id="5619723216767159054" at="73,0,75,0" concept="2" trace="myNode" />
       <node id="5619723216767159059" at="145,0,147,0" concept="2" trace="myNode" />
       <node id="4747359941571314101" at="192,0,194,0" concept="0" trace="PrivateStaticFieldReference_classifier_cellMenu_62ivzp_a0a0a#()V" />

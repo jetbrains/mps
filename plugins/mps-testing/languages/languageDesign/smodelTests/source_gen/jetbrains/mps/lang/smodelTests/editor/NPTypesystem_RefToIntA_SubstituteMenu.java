@@ -28,7 +28,7 @@ public class NPTypesystem_RefToIntA_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_mqf312_a(), CONCEPTS.NPTypesystem_RefToIntA$7x));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_mqf312_a(), CONCEPTS.NPTypesystem_RefToIntA$Tu));
     result.add(new SMP_Subconcepts_mqf312_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class NPTypesystem_RefToIntA_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_mqf312_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.NPTypesystem_RefToIntA$7x, LINKS.ref$vzKw);
+      super((SAbstractConcept) CONCEPTS.NPTypesystem_RefToIntA$Tu, LINKS.ref$$Qyt);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class NPTypesystem_RefToIntA_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_mqf312_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.NPTypesystem_RefToIntA$7x);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.NPTypesystem_RefToIntA$Tu);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class NPTypesystem_RefToIntA_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NPTypesystem_RefToIntA$7x = MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x76fa9e459e19e64L, "jetbrains.mps.lang.smodelTests.structure.NPTypesystem_RefToIntA");
+    /*package*/ static final SConcept NPTypesystem_RefToIntA$Tu = MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x76fa9e459e19e64L, "jetbrains.mps.lang.smodelTests.structure.NPTypesystem_RefToIntA");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink ref$vzKw = MetaAdapterFactory.getReferenceLink(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x76fa9e459e19e64L, 0x76fa9e459e19e65L, "ref");
+    /*package*/ static final SReferenceLink ref$$Qyt = MetaAdapterFactory.getReferenceLink(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x76fa9e459e19e64L, 0x76fa9e459e19e65L, "ref");
   }
 }

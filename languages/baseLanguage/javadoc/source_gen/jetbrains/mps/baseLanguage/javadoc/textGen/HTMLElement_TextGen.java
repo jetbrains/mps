@@ -17,28 +17,28 @@ public class HTMLElement_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.line$v3t1)).isEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.line$Psfe)).isEmpty()) {
       tgs.append("<");
-      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$v3e0));
+      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$Ps0d));
       tgs.append(" />");
     } else {
       tgs.append("<");
-      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$v3e0));
+      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$Ps0d));
       tgs.append(">");
-      for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.line$v3t1)) {
+      for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.line$Psfe)) {
         tgs.appendNode(item);
       }
       tgs.append("</");
-      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$v3e0));
+      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$Ps0d));
       tgs.append(">");
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink line$v3t1 = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5bc4aa08e154b399L, 0x5bc4aa08e154b39bL, "line");
+    /*package*/ static final SContainmentLink line$Psfe = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5bc4aa08e154b399L, 0x5bc4aa08e154b39bL, "line");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$v3e0 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5bc4aa08e154b399L, 0x5bc4aa08e154b39aL, "name");
+    /*package*/ static final SProperty name$Ps0d = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5bc4aa08e154b399L, 0x5bc4aa08e154b39aL, "name");
   }
 }

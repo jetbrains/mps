@@ -30,22 +30,22 @@ public class typeof_AttributedNodeExpression_InferenceRule extends AbstractInfer
   public typeof_AttributedNodeExpression_InferenceRule() {
   }
   public void applyRule(final SNode ane, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode absRule = SNodeOperations.getNodeAncestor(ane, CONCEPTS.AbstractRule$6j, false, false);
-    SNode applicableConcept = ApplicableNodeCondition__BehaviorDescriptor.getApplicableConcept_idhEwIszL.invoke(SLinkOperations.getTarget(absRule, LINKS.applicableNode$uxMM));
+    SNode absRule = SNodeOperations.getNodeAncestor(ane, CONCEPTS.AbstractRule$o9, false, false);
+    SNode applicableConcept = ApplicableNodeCondition__BehaviorDescriptor.getApplicableConcept_idhEwIszL.invoke(SLinkOperations.getTarget(absRule, LINKS.applicableNode$Ro4C));
 
     if ((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(applicableConcept, SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "3364660638048049748"))) {
-      List<SNode> attributedConcepts = SLinkOperations.getChildren(AttributeOperations.getAttribute(SNodeOperations.cast(applicableConcept, CONCEPTS.ConceptDeclaration$qU), new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$rt)), LINKS.attributed$_6i);
+      List<SNode> attributedConcepts = SLinkOperations.getChildren(AttributeOperations.getAttribute(SNodeOperations.cast(applicableConcept, CONCEPTS.ConceptDeclaration$gH), new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$hg)), LINKS.attributed$sGW5);
 
       if (ListSequence.fromList(attributedConcepts).count() == 1) {
         {
           SNode _nodeToCheck_1029348928467 = ane;
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "2401040147804309721", 0, null);
-          typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "2401040147804309502", true), (SNode) _quotation_createNode_8z9zqb_a1a0c0a0c0d0b(SLinkOperations.getTarget(ListSequence.fromList(attributedConcepts).first(), LINKS.concept$K8f)), _info_12389875345);
+          typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "2401040147804309502", true), (SNode) _quotation_createNode_8z9zqb_a1a0c0a0c0d0b(SLinkOperations.getTarget(ListSequence.fromList(attributedConcepts).first(), LINKS.concept$sRY2)), _info_12389875345);
         }
       } else {
         List<SNode> types = new ArrayList<SNode>();
         for (SNode at : attributedConcepts) {
-          ListSequence.fromList(types).addElement(_quotation_createNode_8z9zqb_a0a0a1a0c0d0b(SLinkOperations.getTarget(at, LINKS.concept$K8f)));
+          ListSequence.fromList(types).addElement(_quotation_createNode_8z9zqb_a0a0a1a0c0d0b(SLinkOperations.getTarget(at, LINKS.concept$sRY2)));
         }
 
         {
@@ -58,7 +58,7 @@ public class typeof_AttributedNodeExpression_InferenceRule extends AbstractInfer
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AttributedNodeExpression$Y6;
+    return CONCEPTS.AttributedNodeExpression$fW;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -95,15 +95,15 @@ public class typeof_AttributedNodeExpression_InferenceRule extends AbstractInfer
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractRule$6j = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, "jetbrains.mps.lang.typesystem.structure.AbstractRule");
-    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
-    /*package*/ static final SConcept AttributeInfo$rt = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x29889a701b928195L, "jetbrains.mps.lang.structure.structure.AttributeInfo");
-    /*package*/ static final SConcept AttributedNodeExpression$Y6 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x2152354b0d500086L, "jetbrains.mps.lang.typesystem.structure.AttributedNodeExpression");
+    /*package*/ static final SConcept AbstractRule$o9 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, "jetbrains.mps.lang.typesystem.structure.AbstractRule");
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept AttributeInfo$hg = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x29889a701b928195L, "jetbrains.mps.lang.structure.structure.AttributeInfo");
+    /*package*/ static final SConcept AttributedNodeExpression$fW = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x2152354b0d500086L, "jetbrains.mps.lang.typesystem.structure.AttributedNodeExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink applicableNode$uxMM = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode");
-    /*package*/ static final SContainmentLink attributed$_6i = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x29889a701b928195L, 0x694f83d143972c0eL, "attributed");
-    /*package*/ static final SReferenceLink concept$K8f = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5405fd03496acb49L, 0x5405fd03496acc99L, "concept");
+    /*package*/ static final SContainmentLink applicableNode$Ro4C = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode");
+    /*package*/ static final SContainmentLink attributed$sGW5 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x29889a701b928195L, 0x694f83d143972c0eL, "attributed");
+    /*package*/ static final SReferenceLink concept$sRY2 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5405fd03496acb49L, 0x5405fd03496acc99L, "concept");
   }
 }

@@ -60,7 +60,7 @@
       <node id="7437836795857834747" at="121,121,122,13" concept="8" />
       <node id="8127774551176766659" at="127,51,128,19" concept="2" />
       <node id="8127774551176770570" at="129,5,130,31" concept="2" />
-      <node id="4153091185618203835" at="134,0,135,0" concept="11" trace="Plan$Xm" />
+      <node id="4153091185618203835" at="134,0,135,0" concept="11" trace="Plan$X1" />
       <node id="716743818716874910" at="52,0,55,0" concept="6" trace="getEnvironment#()Ljetbrains/mps/tool/environment/Environment;" />
       <node id="716743818717058960" at="56,0,59,0" concept="6" trace="setProject#(Lorg/jetbrains/mps/openapi/project/Project;)V" />
       <node id="125809422875828318" at="78,0,81,0" concept="6" trace="compute#()Ljava/util/List;" />

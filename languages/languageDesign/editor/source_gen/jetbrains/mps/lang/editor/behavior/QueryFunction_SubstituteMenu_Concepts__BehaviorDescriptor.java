@@ -34,7 +34,7 @@ public final class QueryFunction_SubstituteMenu_Concepts__BehaviorDescriptor ext
   }
 
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
-    SNode outputConcept = IMenuPartWithOutputConcept__BehaviorDescriptor.getOutputConcept_id3mnwiBI8ZE2.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.SubstituteMenuPart_Concepts$3a));
+    SNode outputConcept = IMenuPartWithOutputConcept__BehaviorDescriptor.getOutputConcept_id3mnwiBI8ZE2.invoke(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.SubstituteMenuPart_Concepts$eL));
     if (outputConcept != null) {
       return _quotation_createNode_y9z6ov_a0a1a0(outputConcept);
     }
@@ -107,6 +107,6 @@ public final class QueryFunction_SubstituteMenu_Concepts__BehaviorDescriptor ext
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SubstituteMenuPart_Concepts$3a = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x49f6d25f12102816L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_Concepts");
+    /*package*/ static final SConcept SubstituteMenuPart_Concepts$eL = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x49f6d25f12102816L, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_Concepts");
   }
 }

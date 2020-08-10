@@ -64,19 +64,19 @@
       <node id="415512747182081170" at="130,239,131,198" concept="2" />
       <node id="415512747182081170" at="131,198,132,206" concept="2" />
       <node id="415512747182081170" at="132,206,133,24" concept="7" />
-      <node id="3566113306137715317" at="137,0,138,0" concept="8" trace="name$lA7v" />
-      <node id="3566113306137715317" at="138,0,139,0" concept="8" trace="baseContainerName$kJ53" />
-      <node id="3566113306137715317" at="139,0,140,0" concept="8" trace="uniqueFieldName$GlXN" />
-      <node id="3566113306137715317" at="140,0,141,0" concept="8" trace="isFinal$_qt3" />
-      <node id="3566113306137715317" at="141,0,142,0" concept="8" trace="isStatic$oR9L" />
-      <node id="3566113306137715317" at="142,0,143,0" concept="8" trace="isFinal$$2bN" />
-      <node id="3566113306137715317" at="146,0,147,0" concept="8" trace="member$6v_r" />
-      <node id="3566113306137715317" at="147,0,148,0" concept="8" trace="expression$Qdrl" />
-      <node id="3566113306137715317" at="148,0,149,0" concept="8" trace="initializer$no3R" />
-      <node id="3566113306137715317" at="149,0,150,0" concept="8" trace="type$uWuc" />
-      <node id="3566113306137715317" at="150,0,151,0" concept="8" trace="visibility$jt1o" />
-      <node id="3566113306137715317" at="154,0,155,0" concept="8" trace="Type$IG" />
-      <node id="3566113306137715317" at="155,0,156,0" concept="8" trace="PlaceholderMember$Zm" />
+      <node id="3566113306137715317" at="137,0,138,0" concept="8" trace="name$MnvL" />
+      <node id="3566113306137715317" at="138,0,139,0" concept="8" trace="baseContainerName$AtlP" />
+      <node id="3566113306137715317" at="139,0,140,0" concept="8" trace="uniqueFieldName$Y4e_" />
+      <node id="3566113306137715317" at="140,0,141,0" concept="8" trace="isFinal$gvTP" />
+      <node id="3566113306137715317" at="141,0,142,0" concept="8" trace="isStatic$3WAz" />
+      <node id="3566113306137715317" at="142,0,143,0" concept="8" trace="isFinal$f7C_" />
+      <node id="3566113306137715317" at="146,0,147,0" concept="8" trace="member$L_2d" />
+      <node id="3566113306137715317" at="147,0,148,0" concept="8" trace="expression$7VG7" />
+      <node id="3566113306137715317" at="148,0,149,0" concept="8" trace="initializer$2twD" />
+      <node id="3566113306137715317" at="149,0,150,0" concept="8" trace="type$a1UY" />
+      <node id="3566113306137715317" at="150,0,151,0" concept="8" trace="visibility$Yyua" />
+      <node id="3566113306137715317" at="154,0,155,0" concept="8" trace="Type$bu" />
+      <node id="3566113306137715317" at="155,0,156,0" concept="8" trace="PlaceholderMember$s8" />
       <node id="3566113306137973586" at="46,0,49,0" concept="5" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="3566113306139946633" at="55,53,58,5" concept="4" />
       <node id="3566113306138132978" at="64,88,67,5" concept="4" />
@@ -238,10 +238,10 @@
       <node id="5822086619725755979" at="79,12,80,145" concept="6" />
       <node id="5822086619725755992" at="81,31,82,120" concept="7" />
       <node id="5822086619725756004" at="84,5,85,16" concept="7" />
-      <node id="8835849473318892499" at="89,0,90,0" concept="8" trace="ClassConcept$IY" />
-      <node id="8835849473318892499" at="93,0,94,0" concept="8" trace="inner$gEd0" />
-      <node id="8835849473318892499" at="94,0,95,0" concept="8" trace="inner$I0GV" />
-      <node id="8835849473318892499" at="98,0,99,0" concept="8" trace="nonStatic$3Tj4" />
+      <node id="8835849473318892499" at="89,0,90,0" concept="8" trace="ClassConcept$bK" />
+      <node id="8835849473318892499" at="93,0,94,0" concept="8" trace="inner$yotM" />
+      <node id="8835849473318892499" at="94,0,95,0" concept="8" trace="inner$ZIXH" />
+      <node id="8835849473318892499" at="98,0,99,0" concept="8" trace="nonStatic$lBzQ" />
       <node id="8835849473318892501" at="19,0,21,0" concept="1" trace="ContextUtil#()V" />
       <node id="8835849473318892611" at="29,0,32,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="8835849473318892764" at="35,145,38,7" concept="4" />

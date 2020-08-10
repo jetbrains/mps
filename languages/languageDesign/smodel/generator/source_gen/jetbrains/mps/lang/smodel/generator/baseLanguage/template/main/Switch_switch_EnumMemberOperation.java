@@ -51,7 +51,7 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
   }
   /*package*/ final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919552954695"), CONCEPTS.EnumMember_NameOperation_Old$Pc, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919552954695"), CONCEPTS.EnumMember_NameOperation_Old$QG, true);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -76,7 +76,7 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
   }
   /*package*/ final class ReductionRule1 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule1() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919552955746"), CONCEPTS.EnumMember_ValueOperation_Old$qj, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919552955746"), CONCEPTS.EnumMember_ValueOperation_Old$rN, true);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -105,7 +105,7 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
   }
   /*package*/ final class ReductionRule2 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule2() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919552955752"), CONCEPTS.EnumMember_ValueOperation_Old$qj, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919552955752"), CONCEPTS.EnumMember_ValueOperation_Old$rN, true);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -144,7 +144,7 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
   }
   /*package*/ final class ReductionRule3 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule3() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919552961455"), CONCEPTS.EnumMember_ValueOperation_Old$qj, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919552961455"), CONCEPTS.EnumMember_ValueOperation_Old$rN, true);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -183,7 +183,7 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
   }
   /*package*/ final class ReductionRule4 extends ReductionRuleBase {
     public ReductionRule4() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3689841190252912365"), CONCEPTS.EnumMember_NameOperation$i, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3689841190252912365"), CONCEPTS.EnumMember_NameOperation$1M, true);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -208,7 +208,7 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
   }
   /*package*/ final class ReductionRule5 extends ReductionRuleBase {
     public ReductionRule5() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3689841190252939573"), CONCEPTS.EnumMember_PresentationOperation$ai, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3689841190252939573"), CONCEPTS.EnumMember_PresentationOperation$bM, true);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -233,7 +233,7 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
   }
   /*package*/ final class ReductionRule6 extends ReductionRuleBase {
     public ReductionRule6() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6202631021711033226"), CONCEPTS.EnumMember_IsOperation$fO, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6202631021711033226"), CONCEPTS.EnumMember_IsOperation$hk, true);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -304,10 +304,10 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
   private static final SNodePointer callMacro_8rqa92_b0a0a1a4a2a1m = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1144794804654544672");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumMember_NameOperation_Old$Pc = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120c01735d3L, "jetbrains.mps.lang.smodel.structure.EnumMember_NameOperation_Old");
-    /*package*/ static final SConcept EnumMember_ValueOperation_Old$qj = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120bff92dbeL, "jetbrains.mps.lang.smodel.structure.EnumMember_ValueOperation_Old");
-    /*package*/ static final SConcept EnumMember_NameOperation$i = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1b4bba1b9faef9d2L, "jetbrains.mps.lang.smodel.structure.EnumMember_NameOperation");
-    /*package*/ static final SConcept EnumMember_PresentationOperation$ai = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x50352c802d97cfd1L, "jetbrains.mps.lang.smodel.structure.EnumMember_PresentationOperation");
-    /*package*/ static final SConcept EnumMember_IsOperation$fO = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x414edd67c0135694L, "jetbrains.mps.lang.smodel.structure.EnumMember_IsOperation");
+    /*package*/ static final SConcept EnumMember_NameOperation_Old$QG = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120c01735d3L, "jetbrains.mps.lang.smodel.structure.EnumMember_NameOperation_Old");
+    /*package*/ static final SConcept EnumMember_ValueOperation_Old$rN = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120bff92dbeL, "jetbrains.mps.lang.smodel.structure.EnumMember_ValueOperation_Old");
+    /*package*/ static final SConcept EnumMember_NameOperation$1M = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1b4bba1b9faef9d2L, "jetbrains.mps.lang.smodel.structure.EnumMember_NameOperation");
+    /*package*/ static final SConcept EnumMember_PresentationOperation$bM = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x50352c802d97cfd1L, "jetbrains.mps.lang.smodel.structure.EnumMember_PresentationOperation");
+    /*package*/ static final SConcept EnumMember_IsOperation$hk = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x414edd67c0135694L, "jetbrains.mps.lang.smodel.structure.EnumMember_IsOperation");
   }
 }

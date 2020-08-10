@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TypesystemQuickFix_Constraints extends BaseConstraintsDescriptor {
   public TypesystemQuickFix_Constraints() {
-    super(CONCEPTS.TypesystemQuickFix$ii);
+    super(CONCEPTS.TypesystemQuickFix$$8);
   }
 
   @Override
@@ -41,6 +41,6 @@ public class TypesystemQuickFix_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer canBeRootBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)", "1227088570446");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TypesystemQuickFix$ii = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b36163865L, "jetbrains.mps.lang.typesystem.structure.TypesystemQuickFix");
+    /*package*/ static final SConcept TypesystemQuickFix$$8 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x11b36163865L, "jetbrains.mps.lang.typesystem.structure.TypesystemQuickFix");
   }
 }

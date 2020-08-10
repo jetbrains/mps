@@ -38,11 +38,11 @@ public final class LocalBehaviorMethodCall__BehaviorDescriptor extends BaseBHDes
     return (LocalBehaviorMethodCall__BehaviorDescriptor.getVirtualMethodDeclaration_id6cNV$KGvDlW.invoke(__thisNode__) != null);
   }
   /*package*/ static SNode getVirtualMethodDeclaration_id6cNV$KGvDlW(@NotNull SNode __thisNode__) {
-    SNode methodDeclaration = SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$ItxI);
-    if ((SLinkOperations.getTarget(methodDeclaration, LINKS.overriddenMethod$tTw) != null)) {
-      return SLinkOperations.getTarget(methodDeclaration, LINKS.overriddenMethod$tTw);
+    SNode methodDeclaration = SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$pyYw);
+    if ((SLinkOperations.getTarget(methodDeclaration, LINKS.overriddenMethod$quKH) != null)) {
+      return SLinkOperations.getTarget(methodDeclaration, LINKS.overriddenMethod$quKH);
     } else
-    if (SPropertyOperations.getBoolean(methodDeclaration, PROPS.isVirtual$u8x)) {
+    if (SPropertyOperations.getBoolean(methodDeclaration, PROPS.isVirtual$quZI)) {
       return methodDeclaration;
     } else {
       return null;
@@ -103,11 +103,11 @@ public final class LocalBehaviorMethodCall__BehaviorDescriptor extends BaseBHDes
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SReferenceLink overriddenMethod$tTw = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink overriddenMethod$quKH = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isVirtual$u8x = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d43480580L, "isVirtual");
+    /*package*/ static final SProperty isVirtual$quZI = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d43480580L, "isVirtual");
   }
 }

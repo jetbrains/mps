@@ -29,18 +29,18 @@ public class DeleteFirstForLoopVarComma {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.additionalVar$QrML)).isEmpty()) {
-          if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.variable$4Igk))) {
+        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.additionalVar$xxfz)).isEmpty()) {
+          if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.variable$JNH6))) {
             return;
           }
-          SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.variable$4Igk));
+          SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.variable$JNH6));
           SelectionUtil.selectCell(editorContext, node, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL);
         } else {
-          if (DeletionApproverUtil.approve(editorContext, ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.additionalVar$QrML)).first())) {
+          if (DeletionApproverUtil.approve(editorContext, ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.additionalVar$xxfz)).first())) {
             return;
           }
-          SNode var = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.additionalVar$QrML)).removeElementAt(0);
-          SelectionUtil.selectLabelCellAnSetCaret(editorContext, SLinkOperations.getTarget(node, LINKS.variable$4Igk), SelectionManager.LAST_CELL, -1);
+          SNode var = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.additionalVar$xxfz)).removeElementAt(0);
+          SelectionUtil.selectLabelCellAnSetCaret(editorContext, SLinkOperations.getTarget(node, LINKS.variable$JNH6), SelectionManager.LAST_CELL, -1);
         }
       }
 
@@ -52,17 +52,17 @@ public class DeleteFirstForLoopVarComma {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.variable$4Igk))) {
+        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.variable$JNH6))) {
           return;
         }
-        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.additionalVar$QrML)).isEmpty()) {
-          SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.variable$4Igk));
+        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.additionalVar$xxfz)).isEmpty()) {
+          SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.variable$JNH6));
           SelectionUtil.selectCell(editorContext, node, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL);
         } else {
-          SNode var = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.additionalVar$QrML)).removeElementAt(0);
-          SNode n = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalVariableDeclaration$Bf, var);
-          SNodeOperations.replaceWithAnother(SLinkOperations.getTarget(node, LINKS.variable$4Igk), n);
-          SelectionUtil.selectLabelCellAnSetCaret(editorContext, SLinkOperations.getTarget(node, LINKS.variable$4Igk), SelectionManager.LAST_CELL, -1);
+          SNode var = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.additionalVar$xxfz)).removeElementAt(0);
+          SNode n = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalVariableDeclaration$41, var);
+          SNodeOperations.replaceWithAnother(SLinkOperations.getTarget(node, LINKS.variable$JNH6), n);
+          SelectionUtil.selectLabelCellAnSetCaret(editorContext, SLinkOperations.getTarget(node, LINKS.variable$JNH6), SelectionManager.LAST_CELL, -1);
         }
       }
 
@@ -115,11 +115,11 @@ public class DeleteFirstForLoopVarComma {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink variable$4Igk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
-    /*package*/ static final SContainmentLink additionalVar$QrML = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0xe5318742b9d1411L, "additionalVar");
+    /*package*/ static final SContainmentLink variable$JNH6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
+    /*package*/ static final SContainmentLink additionalVar$xxfz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0xe5318742b9d1411L, "additionalVar");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LocalVariableDeclaration$Bf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
+    /*package*/ static final SConcept LocalVariableDeclaration$41 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
   }
 }

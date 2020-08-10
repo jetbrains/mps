@@ -37,15 +37,15 @@ public final class TemplateSwitch__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static List<SNode> getBaseConceptCollection_id4$$3zrO3UBG(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
-    for (SNode mappingRule : SLinkOperations.getChildren(__thisNode__, LINKS.reductionMappingRule$ScHE)) {
-      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(mappingRule, LINKS.applicableConcept$ksFC));
+    for (SNode mappingRule : SLinkOperations.getChildren(__thisNode__, LINKS.reductionMappingRule$h9pm)) {
+      ListSequence.fromList(result).addElement(SLinkOperations.getTarget(mappingRule, LINKS.applicableConcept$Hpnk));
     }
     return result;
   }
   /*package*/ static void setBaseConcept_id5r_35Ihc58c(@NotNull SNode __thisNode__, SNode baseConcept) {
     SNode rule = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fca296532L, "jetbrains.mps.lang.generator.structure.Reduction_MappingRule"));
-    SLinkOperations.setTarget(rule, LINKS.applicableConcept$ksFC, baseConcept);
-    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.reductionMappingRule$ScHE)).addElement(rule);
+    SLinkOperations.setTarget(rule, LINKS.applicableConcept$Hpnk, baseConcept);
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.reductionMappingRule$h9pm)).addElement(rule);
   }
 
   /*package*/ TemplateSwitch__BehaviorDescriptor() {
@@ -98,7 +98,7 @@ public final class TemplateSwitch__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableConcept$ksFC = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept");
-    /*package*/ static final SContainmentLink reductionMappingRule$ScHE = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L, 0x10fcae9bec0L, "reductionMappingRule");
+    /*package*/ static final SReferenceLink applicableConcept$Hpnk = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept");
+    /*package*/ static final SContainmentLink reductionMappingRule$h9pm = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L, 0x10fcae9bec0L, "reductionMappingRule");
   }
 }

@@ -21,8 +21,8 @@ public class checkIncludeCycles_NonTypesystemRule extends AbstractNonTypesystemR
   public checkIncludeCycles_NonTypesystemRule() {
   }
   public void applyRule(final SNode includeMigrationPart, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.hasRole(includeMigrationPart, LINKS.part$2ba5)) {
-      if (MigrationsCheckUtil.hasIncludeCycles(SNodeOperations.cast(SNodeOperations.getParent(includeMigrationPart), CONCEPTS.PureMigrationScript$YW))) {
+    if (SNodeOperations.hasRole(includeMigrationPart, LINKS.part$ITsP)) {
+      if (MigrationsCheckUtil.hasIncludeCycles(SNodeOperations.cast(SNodeOperations.getParent(includeMigrationPart), CONCEPTS.PureMigrationScript$hG))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(includeMigrationPart, "Cycle between migration scripts", "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "2905662307328488101", null, errorTarget);
@@ -31,7 +31,7 @@ public class checkIncludeCycles_NonTypesystemRule extends AbstractNonTypesystemR
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.IncludeMigrationPart$zz;
+    return CONCEPTS.IncludeMigrationPart$Qj;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,11 +41,11 @@ public class checkIncludeCycles_NonTypesystemRule extends AbstractNonTypesystemR
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PureMigrationScript$YW = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, "jetbrains.mps.lang.migration.structure.PureMigrationScript");
-    /*package*/ static final SConcept IncludeMigrationPart$zz = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x267418e6b5c2b903L, "jetbrains.mps.lang.migration.structure.IncludeMigrationPart");
+    /*package*/ static final SConcept PureMigrationScript$hG = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, "jetbrains.mps.lang.migration.structure.PureMigrationScript");
+    /*package*/ static final SConcept IncludeMigrationPart$Qj = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x267418e6b5c2b903L, "jetbrains.mps.lang.migration.structure.IncludeMigrationPart");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink part$2ba5 = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, 0x67236d4a5836d7f3L, "part");
+    /*package*/ static final SContainmentLink part$ITsP = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5836cabbL, 0x67236d4a5836d7f3L, "part");
   }
 }

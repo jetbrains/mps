@@ -22,7 +22,7 @@ public class BLQueryArgumentSharpActions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode abstractParameter = SNodeOperations.replaceWithNewChild(node, CONCEPTS.AbstractArgument$xG);
+        SNode abstractParameter = SNodeOperations.replaceWithNewChild(node, CONCEPTS.AbstractArgument$pv);
       }
 
     };
@@ -70,6 +70,6 @@ public class BLQueryArgumentSharpActions {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractArgument$xG = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x3f6e840fd86f8aeL, "jetbrains.mps.lang.editor.diagram.structure.AbstractArgument");
+    /*package*/ static final SConcept AbstractArgument$pv = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x3f6e840fd86f8aeL, "jetbrains.mps.lang.editor.diagram.structure.AbstractArgument");
   }
 }

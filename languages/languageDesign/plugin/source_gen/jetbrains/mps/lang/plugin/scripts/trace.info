@@ -28,7 +28,7 @@
       <node id="930311433812929753" at="58,97,59,60" concept="2" />
       <node id="930311433812696990" at="63,42,64,21" concept="7" />
       <node id="930311433812684751" at="71,41,72,159" concept="7" />
-      <node id="930311433812684751" at="76,0,77,0" concept="8" trace="BaseConcept$Sz" />
+      <node id="930311433812684751" at="76,0,77,0" concept="8" trace="BaseConcept$gP" />
       <node id="930311433812780346" at="44,0,47,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SReference;)Z" />
       <node id="930311433812857460" at="52,68,55,11" concept="4" />
       <node id="930311433812909827" at="57,9,60,9" concept="3" />

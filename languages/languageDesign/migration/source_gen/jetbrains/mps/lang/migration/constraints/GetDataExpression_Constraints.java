@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class GetDataExpression_Constraints extends BaseConstraintsDescriptor {
   public GetDataExpression_Constraints() {
-    super(CONCEPTS.GetDataExpression$wq);
+    super(CONCEPTS.GetDataExpression$Na);
   }
 
   @Override
@@ -37,12 +37,12 @@ public class GetDataExpression_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return (SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.MigrationScript$u3, false, false) != null);
+    return (SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.MigrationScript$KN, false, false) != null);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:973d936b-3327-48c9-8c54-368bfb7ea31c(jetbrains.mps.lang.migration.constraints)", "6807933448472903572");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GetDataExpression$wq = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x5e7aa366c2ba2c81L, "jetbrains.mps.lang.migration.structure.GetDataExpression");
-    /*package*/ static final SConcept MigrationScript$u3 = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x73e8a2c68b62c6a3L, "jetbrains.mps.lang.migration.structure.MigrationScript");
+    /*package*/ static final SConcept GetDataExpression$Na = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x5e7aa366c2ba2c81L, "jetbrains.mps.lang.migration.structure.GetDataExpression");
+    /*package*/ static final SConcept MigrationScript$KN = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x73e8a2c68b62c6a3L, "jetbrains.mps.lang.migration.structure.MigrationScript");
   }
 }

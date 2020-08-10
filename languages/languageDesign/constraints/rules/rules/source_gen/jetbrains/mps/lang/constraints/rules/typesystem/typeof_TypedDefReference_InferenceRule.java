@@ -23,12 +23,12 @@ public class typeof_TypedDefReference_InferenceRule extends AbstractInferenceRul
   public typeof_TypedDefReference_InferenceRule() {
   }
   public void applyRule(final SNode defRef, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(defRef, LINKS.declaration$VTET), CONCEPTS.NativeTypedNodeDef$qx)) {
-      SNode root = SNodeOperations.getNodeAncestor(defRef, CONCEPTS.RulesConstraintsRoot$xz, false, false);
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(defRef, LINKS.declaration$xU6a), CONCEPTS.NativeTypedNodeDef$PM)) {
+      SNode root = SNodeOperations.getNodeAncestor(defRef, CONCEPTS.RulesConstraintsRoot$vG, false, false);
       if (root == null) {
         return;
       }
-      SNode applicableConcept = SLinkOperations.getTarget(root, LINKS.concept$khuz);
+      SNode applicableConcept = SLinkOperations.getTarget(root, LINKS.concept$ztsG);
       if (applicableConcept != null) {
         SNode type = _quotation_createNode_otd0uk_a0a0d0a0b(applicableConcept);
         {
@@ -37,12 +37,12 @@ public class typeof_TypedDefReference_InferenceRule extends AbstractInferenceRul
           typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "4622342125580425642", true), (SNode) type, false, true, _info_12389875345);
         }
       }
-    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(defRef, LINKS.declaration$VTET), CONCEPTS.NativeTypedConceptDef$4n)) {
-      SNode root = SNodeOperations.getNodeAncestor(defRef, CONCEPTS.RulesConstraintsRoot$xz, false, false);
+    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(defRef, LINKS.declaration$xU6a), CONCEPTS.NativeTypedConceptDef$vC)) {
+      SNode root = SNodeOperations.getNodeAncestor(defRef, CONCEPTS.RulesConstraintsRoot$vG, false, false);
       if (root == null) {
         return;
       }
-      SNode applicableConcept = SLinkOperations.getTarget(root, LINKS.concept$khuz);
+      SNode applicableConcept = SLinkOperations.getTarget(root, LINKS.concept$ztsG);
       if (applicableConcept != null) {
         SNode type = _quotation_createNode_otd0uk_a0a0d0a0a1(applicableConcept);
         {
@@ -55,13 +55,13 @@ public class typeof_TypedDefReference_InferenceRule extends AbstractInferenceRul
 
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.TypedDefReference$7f;
+    return CONCEPTS.TypedDefReference$yw;
   }
   public IsApplicableStatus isApplicableAndPattern(final SNode argument) {
     if (argument.getConcept().isSubConceptOf(getApplicableConcept())) {
       return new IsApplicableStatus(new IsApplicableStatus.Probe() {
         public boolean eval() {
-          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(argument, LINKS.declaration$VTET), CONCEPTS.NativeDef$p3);
+          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(argument, LINKS.declaration$xU6a), CONCEPTS.NativeDef$Ok);
         }
       }, null);
     } else {
@@ -87,15 +87,15 @@ public class typeof_TypedDefReference_InferenceRule extends AbstractInferenceRul
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RulesConstraintsRoot$xz = MetaAdapterFactory.getConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL, "jetbrains.mps.lang.constraints.rules.skeleton.structure.RulesConstraintsRoot");
-    /*package*/ static final SConcept NativeTypedNodeDef$qx = MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x46263286da99051L, "jetbrains.mps.lang.context.defs.structure.NativeTypedNodeDef");
-    /*package*/ static final SConcept NativeTypedConceptDef$4n = MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x26084ede749bc5f2L, "jetbrains.mps.lang.context.defs.structure.NativeTypedConceptDef");
-    /*package*/ static final SConcept TypedDefReference$7f = MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, "jetbrains.mps.lang.context.defs.structure.TypedDefReference");
-    /*package*/ static final SInterfaceConcept NativeDef$p3 = MetaAdapterFactory.getInterfaceConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x126f1320a26d42bdL, "jetbrains.mps.lang.context.defs.structure.NativeDef");
+    /*package*/ static final SConcept RulesConstraintsRoot$vG = MetaAdapterFactory.getConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL, "jetbrains.mps.lang.constraints.rules.skeleton.structure.RulesConstraintsRoot");
+    /*package*/ static final SConcept NativeTypedNodeDef$PM = MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x46263286da99051L, "jetbrains.mps.lang.context.defs.structure.NativeTypedNodeDef");
+    /*package*/ static final SConcept NativeTypedConceptDef$vC = MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x26084ede749bc5f2L, "jetbrains.mps.lang.context.defs.structure.NativeTypedConceptDef");
+    /*package*/ static final SConcept TypedDefReference$yw = MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, "jetbrains.mps.lang.context.defs.structure.TypedDefReference");
+    /*package*/ static final SInterfaceConcept NativeDef$Ok = MetaAdapterFactory.getInterfaceConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x126f1320a26d42bdL, "jetbrains.mps.lang.context.defs.structure.NativeDef");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$khuz = MetaAdapterFactory.getReferenceLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL, 0x19eb8590edaff8deL, "concept");
-    /*package*/ static final SReferenceLink declaration$VTET = MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration");
+    /*package*/ static final SReferenceLink concept$ztsG = MetaAdapterFactory.getReferenceLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edaff8daL, 0x19eb8590edaff8deL, "concept");
+    /*package*/ static final SReferenceLink declaration$xU6a = MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration");
   }
 }

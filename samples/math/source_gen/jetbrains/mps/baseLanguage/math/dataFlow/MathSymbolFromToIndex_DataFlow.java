@@ -14,16 +14,16 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class MathSymbolFromToIndex_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
     _context.getBuilder().emitWrite(_context.getNode(), "r:48b4a246-e052-4ee3-ba92-1505c2e94044(jetbrains.mps.baseLanguage.math.dataFlow)/1236595061381");
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.from$xV2M));
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MathSymbol$FB), LINKS.upperBound$KHdA));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.from$fvPa));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MathSymbol$tZ), LINKS.upperBound$uhZY));
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink from$xV2M = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fea765cf0L, 0x11fea7bf632L, "from");
-    /*package*/ static final SContainmentLink upperBound$KHdA = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, 0x11feacc8f16L, "upperBound");
+    /*package*/ static final SContainmentLink from$fvPa = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fea765cf0L, 0x11fea7bf632L, "from");
+    /*package*/ static final SContainmentLink upperBound$uhZY = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, 0x11feacc8f16L, "upperBound");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MathSymbol$FB = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, "jetbrains.mps.baseLanguage.math.structure.MathSymbol");
+    /*package*/ static final SConcept MathSymbol$tZ = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x11fe0ca1899L, "jetbrains.mps.baseLanguage.math.structure.MathSymbol");
   }
 }

@@ -36,7 +36,7 @@ public class IgnoreRightSquareBrackedInIncompleteMember extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.IncompleteMemberDeclaration$QW))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.IncompleteMemberDeclaration$jI))) {
         return false;
       }
       return true;
@@ -53,6 +53,6 @@ public class IgnoreRightSquareBrackedInIncompleteMember extends KeyMapImpl {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IncompleteMemberDeclaration$QW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, "jetbrains.mps.baseLanguage.structure.IncompleteMemberDeclaration");
+    /*package*/ static final SConcept IncompleteMemberDeclaration$jI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, "jetbrains.mps.baseLanguage.structure.IncompleteMemberDeclaration");
   }
 }

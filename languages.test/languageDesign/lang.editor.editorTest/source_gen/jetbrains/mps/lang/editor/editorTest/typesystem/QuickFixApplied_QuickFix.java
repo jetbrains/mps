@@ -24,24 +24,24 @@ public class QuickFixApplied_QuickFix extends QuickFix_Runtime {
   }
   public void execute(SNode node) {
     SNode res = createQuickFixResolution_b6tyvt_a0a0c(((String) QuickFixApplied_QuickFix.this.getField("message")[0]));
-    ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.QuickFixStatement$1q), LINKS.resolution$jj16)).addElement(res);
+    ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.QuickFixStatement$LB), LINKS.resolution$5SLj)).addElement(res);
   }
   private static SNode createQuickFixResolution_b6tyvt_a0a0c(String p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.QuickFixResolution$IY);
-    n0.setProperty(PROPS.message$QRv0, p0);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.QuickFixResolution$vb);
+    n0.setProperty(PROPS.message$Dtfd, p0);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept QuickFixStatement$1q = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6f8750efb3b35c46L, "jetbrains.mps.lang.editor.editorTest.structure.QuickFixStatement");
-    /*package*/ static final SConcept QuickFixResolution$IY = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6f8750efb3c02480L, "jetbrains.mps.lang.editor.editorTest.structure.QuickFixResolution");
+    /*package*/ static final SConcept QuickFixStatement$LB = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6f8750efb3b35c46L, "jetbrains.mps.lang.editor.editorTest.structure.QuickFixStatement");
+    /*package*/ static final SConcept QuickFixResolution$vb = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6f8750efb3c02480L, "jetbrains.mps.lang.editor.editorTest.structure.QuickFixResolution");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink resolution$jj16 = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6f8750efb3b35c46L, 0x6f8750efb3c03c17L, "resolution");
+    /*package*/ static final SContainmentLink resolution$5SLj = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6f8750efb3b35c46L, 0x6f8750efb3c03c17L, "resolution");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty message$QRv0 = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6f8750efb3c02480L, 0x6f8750efb3c02481L, "message");
+    /*package*/ static final SProperty message$Dtfd = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6f8750efb3c02480L, 0x6f8750efb3c02481L, "message");
   }
 }

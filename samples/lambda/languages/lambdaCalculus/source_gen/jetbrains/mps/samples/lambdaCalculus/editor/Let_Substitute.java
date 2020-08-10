@@ -27,7 +27,7 @@ public class Let_Substitute extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_6lhmf3_a(), CONCEPTS.LetExpression$c1));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_6lhmf3_a(), CONCEPTS.LetExpression$k5));
     return result;
   }
 
@@ -72,7 +72,7 @@ public class Let_Substitute extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.LetExpression$c1, context);
+        super(CONCEPTS.LetExpression$k5, context);
         _context = context;
       }
 
@@ -83,7 +83,7 @@ public class Let_Substitute extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode node = SNodeFactoryOperations.createNewNode(CONCEPTS.LetExpression$c1, null);
+        SNode node = SNodeFactoryOperations.createNewNode(CONCEPTS.LetExpression$k5, null);
         return node;
       }
 
@@ -100,6 +100,6 @@ public class Let_Substitute extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LetExpression$c1 = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x448ba254edbfc79fL, "jetbrains.mps.samples.lambdaCalculus.structure.LetExpression");
+    /*package*/ static final SConcept LetExpression$k5 = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x448ba254edbfc79fL, "jetbrains.mps.samples.lambdaCalculus.structure.LetExpression");
   }
 }

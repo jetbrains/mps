@@ -35,7 +35,7 @@ public final class ExtensionPointExpression__BehaviorDescriptor extends BaseBHDe
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return SConceptOperations.conceptAlias(SNodeOperations.getConcept(__thisNode__)) + "/" + SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.extensionPoint$gcMT), PROPS.name$lA7v) + "/";
+    return SConceptOperations.conceptAlias(SNodeOperations.getConcept(__thisNode__)) + "/" + SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.extensionPoint$6X4F), PROPS.name$MnvL) + "/";
   }
 
   /*package*/ ExtensionPointExpression__BehaviorDescriptor() {
@@ -85,10 +85,10 @@ public final class ExtensionPointExpression__BehaviorDescriptor extends BaseBHDe
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extensionPoint$gcMT = MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x5bf74eafefe0e940L, 0x5bf74eafefe0eb55L, "extensionPoint");
+    /*package*/ static final SReferenceLink extensionPoint$6X4F = MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x5bf74eafefe0e940L, 0x5bf74eafefe0eb55L, "extensionPoint");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

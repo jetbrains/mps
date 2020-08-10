@@ -48,9 +48,9 @@ public class UncommentSingleLineComment {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(node), CONCEPTS.SingleLineComment$jI)) {
-          SNode firstMoved = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.line$u8Q7), LINKS.elements$cK1w)).first();
-          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getPrevSibling(node), CONCEPTS.SingleLineComment$jI), LINKS.line$u8Q7), LINKS.elements$cK1w)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.line$u8Q7), LINKS.elements$cK1w)));
+        if (SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(node), CONCEPTS.SingleLineComment$Kw)) {
+          SNode firstMoved = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.line$9eiT), LINKS.elements$_j45)).first();
+          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getPrevSibling(node), CONCEPTS.SingleLineComment$Kw), LINKS.line$9eiT), LINKS.elements$_j45)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.line$9eiT), LINKS.elements$_j45)));
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, firstMoved, SelectionManager.FIRST_CELL, 0);
         } else {
           if (DeletionApproverUtil.approve(editorContext, node)) {
@@ -109,11 +109,11 @@ public class UncommentSingleLineComment {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink line$u8Q7 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x73f69d82391da738L, "line");
-    /*package*/ static final SContainmentLink elements$cK1w = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink line$9eiT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x73f69d82391da738L, "line");
+    /*package*/ static final SContainmentLink elements$_j45 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SingleLineComment$jI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment");
+    /*package*/ static final SConcept SingleLineComment$Kw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment");
   }
 }

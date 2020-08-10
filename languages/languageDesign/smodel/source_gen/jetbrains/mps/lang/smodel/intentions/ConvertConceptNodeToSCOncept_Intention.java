@@ -49,7 +49,7 @@ public final class ConvertConceptNodeToSCOncept_Intention extends AbstractIntent
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNodeOperations.replaceWithNewChild(node, CONCEPTS.Node_GetSConceptOperation$EU);
+      SNodeOperations.replaceWithNewChild(node, CONCEPTS.Node_GetSConceptOperation$Gq);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -58,6 +58,6 @@ public final class ConvertConceptNodeToSCOncept_Intention extends AbstractIntent
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Node_GetSConceptOperation$EU = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x6771eac6c5cbe7d2L, "jetbrains.mps.lang.smodel.structure.Node_GetSConceptOperation");
+    /*package*/ static final SConcept Node_GetSConceptOperation$Gq = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x6771eac6c5cbe7d2L, "jetbrains.mps.lang.smodel.structure.Node_GetSConceptOperation");
   }
 }

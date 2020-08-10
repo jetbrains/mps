@@ -32,15 +32,15 @@
       <node id="7997068947889524883" at="88,131,89,42" concept="1" />
       <node id="1550313277221324861" at="89,42,90,22" concept="6" />
       <node id="1550313277221324861" at="92,0,93,0" concept="8" trace="breakingNode_1t8qmy_a0a0a0a0a1a0a0a0c" />
-      <node id="1550313277221324861" at="95,0,96,0" concept="8" trace="ExtensionMethodCall$j_" />
-      <node id="1550313277221324861" at="96,0,97,0" concept="8" trace="DotExpression$6a" />
-      <node id="1550313277221324861" at="97,0,98,0" concept="8" trace="TypeExtension$sE" />
-      <node id="1550313277221324861" at="98,0,99,0" concept="8" trace="SimpleExtensionMethodsContainer$5i" />
-      <node id="1550313277221324861" at="102,0,103,0" concept="8" trace="baseMethodDeclaration$ItxI" />
-      <node id="1550313277221324861" at="103,0,104,0" concept="8" trace="operand$P1i5" />
-      <node id="1550313277221324861" at="104,0,105,0" concept="8" trace="methods$Q_J1" />
-      <node id="1550313277221324861" at="105,0,106,0" concept="8" trace="type$sy7t" />
-      <node id="1550313277221324861" at="106,0,107,0" concept="8" trace="extendedType$r8nJ" />
+      <node id="1550313277221324861" at="95,0,96,0" concept="8" trace="ExtensionMethodCall$xm" />
+      <node id="1550313277221324861" at="96,0,97,0" concept="8" trace="DotExpression$yW" />
+      <node id="1550313277221324861" at="97,0,98,0" concept="8" trace="TypeExtension$Er" />
+      <node id="1550313277221324861" at="98,0,99,0" concept="8" trace="SimpleExtensionMethodsContainer$j3" />
+      <node id="1550313277221324861" at="102,0,103,0" concept="8" trace="baseMethodDeclaration$pyYw" />
+      <node id="1550313277221324861" at="103,0,104,0" concept="8" trace="operand$w6IR" />
+      <node id="1550313277221324861" at="104,0,105,0" concept="8" trace="methods$7wWM" />
+      <node id="1550313277221324861" at="105,0,106,0" concept="8" trace="type$Htle" />
+      <node id="1550313277221324861" at="106,0,107,0" concept="8" trace="extendedType$G3_w" />
       <node id="1550313277221324861" at="37,0,40,0" concept="0" trace="ExtensionMethodCall_Constraints#()V" />
       <node id="445563756713842514" at="63,120,66,19" concept="3" />
       <node id="445563756713842554" at="72,287,75,19" concept="3" />
@@ -130,11 +130,11 @@
       <node id="1227128029536564022" at="63,5,64,16" concept="6" />
       <node id="2763618064981525308" at="66,0,67,0" concept="8" trace="canBeChildBreakingPoint" />
       <node id="2763618064981525308" at="67,0,68,0" concept="8" trace="canBeParentBreakingPoint" />
-      <node id="2763618064981525308" at="70,0,71,0" concept="8" trace="ExtensionMethodDeclaration$9b" />
-      <node id="2763618064981525308" at="71,0,72,0" concept="8" trace="PrivateVisibility$Se" />
-      <node id="2763618064981525308" at="72,0,73,0" concept="8" trace="PublicVisibility$qe" />
-      <node id="2763618064981525308" at="76,0,77,0" concept="8" trace="methods$Q_J1" />
-      <node id="2763618064981525308" at="77,0,78,0" concept="8" trace="visibility$jt1o" />
+      <node id="2763618064981525308" at="70,0,71,0" concept="8" trace="ExtensionMethodDeclaration$mW" />
+      <node id="2763618064981525308" at="71,0,72,0" concept="8" trace="PrivateVisibility$l0" />
+      <node id="2763618064981525308" at="72,0,73,0" concept="8" trace="PublicVisibility$R0" />
+      <node id="2763618064981525308" at="76,0,77,0" concept="8" trace="methods$7wWM" />
+      <node id="2763618064981525308" at="77,0,78,0" concept="8" trace="visibility$Yyua" />
       <node id="2763618064981525308" at="23,0,26,0" concept="0" trace="ExtensionMethodDeclaration_Constraints#()V" />
       <node id="2763618064981525308" at="33,0,36,9" concept="3" />
       <node id="2763618064981525308" at="48,0,51,9" concept="3" />
@@ -201,8 +201,8 @@
       <node id="3316739663067166481" at="34,0,35,22" concept="6" />
       <node id="1227128029536564030" at="39,128,40,116" concept="6" />
       <node id="3316739663067166481" at="42,0,43,0" concept="8" trace="canBeChildBreakingPoint" />
-      <node id="3316739663067166481" at="45,0,46,0" concept="8" trace="ThisExtensionExpression$UG" />
-      <node id="3316739663067166481" at="46,0,47,0" concept="8" trace="ExtensionMethodDeclaration$9b" />
+      <node id="3316739663067166481" at="45,0,46,0" concept="8" trace="ThisExtensionExpression$8t" />
+      <node id="3316739663067166481" at="46,0,47,0" concept="8" trace="ExtensionMethodDeclaration$mW" />
       <node id="3316739663067166481" at="20,0,23,0" concept="0" trace="ThisExtensionExpression_Constraints#()V" />
       <node id="3316739663067166481" at="30,0,33,9" concept="3" />
       <node id="3316739663067166481" at="39,0,42,0" concept="9" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -251,10 +251,10 @@
       <node id="1227128029536564065" at="62,5,63,16" concept="6" />
       <node id="52119067404165172" at="65,0,66,0" concept="8" trace="canBeChildBreakingPoint" />
       <node id="52119067404165172" at="66,0,67,0" concept="8" trace="canBeParentBreakingPoint" />
-      <node id="52119067404165172" at="69,0,70,0" concept="8" trace="TypeExtension$sE" />
-      <node id="52119067404165172" at="70,0,71,0" concept="8" trace="Expression$TP" />
-      <node id="52119067404165172" at="71,0,72,0" concept="8" trace="PublicVisibility$qe" />
-      <node id="52119067404165172" at="75,0,76,0" concept="8" trace="visibility$jt1o" />
+      <node id="52119067404165172" at="69,0,70,0" concept="8" trace="TypeExtension$Er" />
+      <node id="52119067404165172" at="70,0,71,0" concept="8" trace="Expression$mB" />
+      <node id="52119067404165172" at="71,0,72,0" concept="8" trace="PublicVisibility$R0" />
+      <node id="52119067404165172" at="75,0,76,0" concept="8" trace="visibility$Yyua" />
       <node id="52119067404165172" at="22,0,25,0" concept="0" trace="TypeExtension_Constraints#()V" />
       <node id="52119067404165172" at="32,0,35,9" concept="3" />
       <node id="52119067404165172" at="47,0,50,9" concept="3" />
@@ -322,10 +322,10 @@
       <node id="3097384118511835567" at="54,131,55,42" concept="1" />
       <node id="5431167396203858786" at="55,42,56,22" concept="6" />
       <node id="5431167396203858786" at="58,0,59,0" concept="8" trace="breakingNode_xefsui_a0a0a0a0a1a0a0a0c" />
-      <node id="5431167396203858786" at="61,0,62,0" concept="8" trace="ExtensionStaticFieldReference$3s" />
-      <node id="5431167396203858786" at="62,0,63,0" concept="8" trace="BaseExtensionMethodContainer$b0" />
-      <node id="5431167396203858786" at="66,0,67,0" concept="8" trace="variableDeclaration$7WwU" />
-      <node id="5431167396203858786" at="67,0,68,0" concept="8" trace="staticFields$u7F4" />
+      <node id="5431167396203858786" at="61,0,62,0" concept="8" trace="ExtensionStaticFieldReference$hd" />
+      <node id="5431167396203858786" at="62,0,63,0" concept="8" trace="BaseExtensionMethodContainer$oL" />
+      <node id="5431167396203858786" at="66,0,67,0" concept="8" trace="variableDeclaration$N1XG" />
+      <node id="5431167396203858786" at="67,0,68,0" concept="8" trace="staticFields$J2SP" />
       <node id="5431167396203858786" at="27,0,30,0" concept="0" trace="ExtensionStaticFieldReference_Constraints#()V" />
       <node id="3097384118511835567" at="34,0,38,0" concept="4" trace="hasOwnScopeProvider#()Z" />
       <node id="3097384118511835567" at="42,0,46,0" concept="4" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -389,12 +389,12 @@
       <node id="1227128029536564041" at="111,128,112,116" concept="6" />
       <node id="7685333756920187171" at="114,0,115,0" concept="8" trace="canBeChildBreakingPoint" />
       <node id="7685333756920187171" at="115,0,116,0" concept="8" trace="breakingNode_rxyf25_a0a0a0a0a1a0a0a0d" />
-      <node id="7685333756920187171" at="118,0,119,0" concept="8" trace="LocalExtendedMethodCall$nt" />
-      <node id="7685333756920187171" at="119,0,120,0" concept="8" trace="StaticMethodDeclaration$eX" />
-      <node id="7685333756920187171" at="120,0,121,0" concept="8" trace="ExtensionMethodDeclaration$9b" />
-      <node id="7685333756920187171" at="121,0,122,0" concept="8" trace="Classifier$hJ" />
-      <node id="7685333756920187171" at="125,0,126,0" concept="8" trace="baseMethodDeclaration$ItxI" />
-      <node id="7685333756920187171" at="129,0,130,0" concept="8" trace="name$lA7v" />
+      <node id="7685333756920187171" at="118,0,119,0" concept="8" trace="LocalExtendedMethodCall$_e" />
+      <node id="7685333756920187171" at="119,0,120,0" concept="8" trace="StaticMethodDeclaration$FJ" />
+      <node id="7685333756920187171" at="120,0,121,0" concept="8" trace="ExtensionMethodDeclaration$mW" />
+      <node id="7685333756920187171" at="121,0,122,0" concept="8" trace="Classifier$Ix" />
+      <node id="7685333756920187171" at="125,0,126,0" concept="8" trace="baseMethodDeclaration$pyYw" />
+      <node id="7685333756920187171" at="129,0,130,0" concept="8" trace="name$MnvL" />
       <node id="7685333756920187171" at="42,0,45,0" concept="0" trace="LocalExtendedMethodCall_Constraints#()V" />
       <node id="7685333756920187171" at="52,0,55,9" concept="3" />
       <node id="6836281137582818954" at="78,56,81,13" concept="3" />

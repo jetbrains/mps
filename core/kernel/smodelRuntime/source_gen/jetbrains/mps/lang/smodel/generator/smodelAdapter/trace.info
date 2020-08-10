@@ -62,13 +62,13 @@
       <node id="1007227851265422993" at="167,71,168,62" concept="12" />
       <node id="8813871103013445701" at="170,78,171,70" concept="12" />
       <node id="4705942098323997733" at="173,75,174,99" concept="12" />
-      <node id="1101499704720825413" at="178,0,179,0" concept="15" trace="member$1eS1" />
-      <node id="1101499704720825413" at="179,0,180,0" concept="15" trace="defaultMember$szLC" />
-      <node id="1101499704720825413" at="183,0,184,0" concept="15" trace="EnumerationMemberDeclaration_Old$vn" />
-      <node id="1101499704720825413" at="184,0,185,0" concept="15" trace="EnumerationDataTypeDeclaration_Old$Ll" />
-      <node id="1101499704720825413" at="188,0,189,0" concept="15" trace="internalValue$_gAE" />
-      <node id="1101499704720825413" at="189,0,190,0" concept="15" trace="externalValue$_gPF" />
-      <node id="1101499704720825413" at="190,0,191,0" concept="15" trace="hasNoDefaultMember$M06k" />
+      <node id="1101499704720825413" at="178,0,179,0" concept="15" trace="member$tmHO" />
+      <node id="1101499704720825413" at="179,0,180,0" concept="15" trace="defaultMember$SFBr" />
+      <node id="1101499704720825413" at="183,0,184,0" concept="15" trace="EnumerationMemberDeclaration_Old$la" />
+      <node id="1101499704720825413" at="184,0,185,0" concept="15" trace="EnumerationDataTypeDeclaration_Old$B8" />
+      <node id="1101499704720825413" at="188,0,189,0" concept="15" trace="internalValue$1ost" />
+      <node id="1101499704720825413" at="189,0,190,0" concept="15" trace="externalValue$1oFu" />
+      <node id="1101499704720825413" at="190,0,191,0" concept="15" trace="hasNoDefaultMember$e7W7" />
       <node id="1408723013993783348" at="54,60,57,5" concept="9" />
       <node id="382176667807278827" at="57,5,60,5" concept="9" />
       <node id="1101499704720825523" at="67,0,70,0" concept="10" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -702,12 +702,12 @@
       <node id="6135675736572042820" at="215,7,216,0" concept="14" />
       <node id="6407023681583065717" at="216,0,217,75" concept="5" />
       <node id="6135675736571767730" at="217,75,218,18" concept="12" />
-      <node id="6407023681582958584" at="223,0,224,0" concept="15" trace="ChildAttribute$XQ" />
-      <node id="6407023681582958584" at="224,0,225,0" concept="15" trace="NodeAttribute$8K" />
-      <node id="6407023681582958584" at="225,0,226,0" concept="15" trace="PropertyAttribute$jT" />
-      <node id="6407023681582958584" at="226,0,227,0" concept="15" trace="LinkAttribute$7j" />
-      <node id="6407023681582958584" at="227,0,228,0" concept="15" trace="Attribute$RJ" />
-      <node id="6407023681582958584" at="231,0,232,0" concept="15" trace="smodelAttribute$jXFL" />
+      <node id="6407023681582958584" at="223,0,224,0" concept="15" trace="ChildAttribute$m8" />
+      <node id="6407023681582958584" at="224,0,225,0" concept="15" trace="NodeAttribute$x2" />
+      <node id="6407023681582958584" at="225,0,226,0" concept="15" trace="PropertyAttribute$Gb" />
+      <node id="6407023681582958584" at="226,0,227,0" concept="15" trace="LinkAttribute$v_" />
+      <node id="6407023681582958584" at="227,0,228,0" concept="15" trace="Attribute$g1" />
+      <node id="6407023681582958584" at="231,0,232,0" concept="15" trace="smodelAttribute$KJ43" />
       <node id="6407023681582958586" at="28,0,30,0" concept="3" trace="AttributeOperations#()V" />
       <node id="8295158440540103512" at="81,14,83,9" concept="1" />
       <node id="1287809918884497321" at="31,59,34,5" concept="9" />
@@ -991,9 +991,9 @@
       <node id="1341860900488252078" at="78,34,79,28" concept="5" />
       <node id="6063712545516012507" at="82,52,83,298" concept="12" />
       <node id="6063712545516034823" at="86,50,87,220" concept="5" />
-      <node id="6407023681583030432" at="92,0,93,0" concept="15" trace="LinkAttribute$7j" />
-      <node id="6407023681583030432" at="93,0,94,0" concept="15" trace="ChildAttribute$XQ" />
-      <node id="6407023681583030432" at="94,0,95,0" concept="15" trace="PropertyAttribute$jT" />
+      <node id="6407023681583030432" at="92,0,93,0" concept="15" trace="LinkAttribute$v_" />
+      <node id="6407023681583030432" at="93,0,94,0" concept="15" trace="ChildAttribute$m8" />
+      <node id="6407023681583030432" at="94,0,95,0" concept="15" trace="PropertyAttribute$Gb" />
       <node id="471374531499853058" at="24,0,27,0" concept="3" trace="AttributeDescriptor#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)V" />
       <node id="6407023681583030540" at="31,0,34,0" concept="10" trace="update#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="6407023681583030573" at="36,0,39,0" concept="3" trace="AllAttributes#()V" />
@@ -2131,10 +2131,10 @@
       <node id="4097555883694681852" at="692,80,693,82" concept="13" />
       <node id="4097555883694681839" at="693,82,694,39" concept="12" />
       <node id="4097555883694681847" at="695,12,696,18" concept="12" />
-      <node id="6599163591527286941" at="701,0,702,0" concept="15" trace="PropertyAttribute$jT" />
-      <node id="6599163591527286941" at="702,0,703,0" concept="15" trace="LinkAttribute$7j" />
-      <node id="6599163591527286941" at="703,0,704,0" concept="15" trace="ChildAttribute$XQ" />
-      <node id="6599163591527286941" at="707,0,708,0" concept="15" trace="smodelAttribute$jXFL" />
+      <node id="6599163591527286941" at="701,0,702,0" concept="15" trace="PropertyAttribute$Gb" />
+      <node id="6599163591527286941" at="702,0,703,0" concept="15" trace="LinkAttribute$v_" />
+      <node id="6599163591527286941" at="703,0,704,0" concept="15" trace="ChildAttribute$m8" />
+      <node id="6599163591527286941" at="707,0,708,0" concept="15" trace="smodelAttribute$KJ43" />
       <node id="6599163591527293152" at="50,0,52,0" concept="3" trace="SNodeOperations#()V" />
       <node id="6599163591527293325" at="94,10,96,5" concept="1" />
       <node id="6599163591527293499" at="139,10,141,5" concept="1" />

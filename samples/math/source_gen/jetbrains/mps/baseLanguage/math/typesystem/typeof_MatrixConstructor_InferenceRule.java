@@ -20,10 +20,10 @@ public class typeof_MatrixConstructor_InferenceRule extends AbstractInferenceRul
   public typeof_MatrixConstructor_InferenceRule() {
   }
   public void applyRule(final SNode mc, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    DimensionUtil.checkDim(typeCheckingContext, SLinkOperations.getChildren(mc, LINKS.components$tEWW), 0, new ArrayList<SNode>(), !(SPropertyOperations.getBoolean(mc, PROPS.column$OZuf)), mc);
+    DimensionUtil.checkDim(typeCheckingContext, SLinkOperations.getChildren(mc, LINKS.components$bfJk), 0, new ArrayList<SNode>(), !(SPropertyOperations.getBoolean(mc, PROPS.column$y$gB)), mc);
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.MatrixConstructor$8L;
+    return CONCEPTS.MatrixConstructor$V9;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -33,14 +33,14 @@ public class typeof_MatrixConstructor_InferenceRule extends AbstractInferenceRul
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink components$tEWW = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a626b0a85L, 0x42d5783a626b0a8dL, "components");
+    /*package*/ static final SContainmentLink components$bfJk = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a626b0a85L, 0x42d5783a626b0a8dL, "components");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty column$OZuf = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a626b0a85L, 0x308cb55abc73bd40L, "column");
+    /*package*/ static final SProperty column$y$gB = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a626b0a85L, 0x308cb55abc73bd40L, "column");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MatrixConstructor$8L = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a626b0a85L, "jetbrains.mps.baseLanguage.math.structure.MatrixConstructor");
+    /*package*/ static final SConcept MatrixConstructor$V9 = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a626b0a85L, "jetbrains.mps.baseLanguage.math.structure.MatrixConstructor");
   }
 }

@@ -793,7 +793,7 @@
       <node id="5026218632386564183" at="82,56,83,23" concept="6" />
       <node id="4621654600889697579" at="83,23,84,34" concept="6" />
       <node id="4621654600889589802" at="88,41,89,22" concept="13" />
-      <node id="6062668769034852749" at="93,0,94,0" concept="16" trace="ITestCase$uo" />
+      <node id="6062668769034852749" at="93,0,94,0" concept="16" trace="ITestCase$Fp" />
       <node id="6062668769034852794" at="41,149,44,11" concept="10" />
       <node id="7901631964423955921" at="55,49,58,5" concept="10" />
       <node id="5527695573014109848" at="72,44,75,11" concept="10" />
@@ -878,7 +878,7 @@
       <node id="4621654600888890166" at="71,59,72,25" concept="6" />
       <node id="4621654600889692853" at="72,25,73,36" concept="6" />
       <node id="4621654600889571000" at="77,42,78,23" concept="13" />
-      <node id="6062668769034852880" at="82,0,83,0" concept="16" trace="ITestCase$uo" />
+      <node id="6062668769034852880" at="82,0,83,0" concept="16" trace="ITestCase$Fp" />
       <node id="6062668769034852926" at="38,145,41,11" concept="10" />
       <node id="5248278678441798948" at="53,51,56,5" concept="10" />
       <node id="2034046503361621966" at="61,164,65,9" concept="9" />
@@ -1461,7 +1461,7 @@
       <node id="4023783813281920010" at="229,0,230,0" concept="11" trace="doCollect#(Ljetbrains/mps/execution/api/settings/IPersistentConfiguration;Ljetbrains/mps/project/MPSProject;Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)Ljava/util/List;" />
       <node id="4023783813281515288" at="231,0,232,0" concept="11" trace="hasTests#(Ljetbrains/mps/execution/api/settings/IPersistentConfiguration;Ljetbrains/mps/project/MPSProject;)Z" />
       <node id="6062668769034855745" at="233,0,234,0" concept="11" trace="check#(Ljetbrains/mps/execution/api/settings/IPersistentConfiguration;Ljetbrains/mps/project/MPSProject;)Ljava/lang/String;" />
-      <node id="6062668769034855735" at="236,0,237,0" concept="16" trace="compileInMPS$58m_" />
+      <node id="6062668769034855735" at="236,0,237,0" concept="16" trace="compileInMPS$2Q_X" />
       <node id="6062668769034855753" at="194,0,196,0" concept="3" trace="JUnitRunTypes#()V" />
       <node id="6062668769034856121" at="43,22,46,7" concept="10" />
       <node id="4023783813282010852" at="49,0,52,0" concept="11" trace="hasTests#(Ljetbrains/mps/execution/api/settings/IPersistentConfiguration;Ljetbrains/mps/project/MPSProject;)Z" />

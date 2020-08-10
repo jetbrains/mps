@@ -44,12 +44,12 @@ public class SimpleUnreachable_Test extends BaseTransformationTest {
     public void test_NodeUnreachableCheck3715262949174660907() throws Exception {
       SNode nodeToCheck = getRealNodeById("2702384151998850297");
       SNode operation = getRealNodeById("3715262949174660907");
-      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(SNodeOperations.cast(operation, CONCEPTS.INodesTestMethod$ck), nodeToCheck, ((ProjectBase) myProject).getPlatform());
+      INodesTestMethod__BehaviorDescriptor.perform_id1kgh5YabdhC.invoke(SNodeOperations.cast(operation, CONCEPTS.INodesTestMethod$rN), nodeToCheck, ((ProjectBase) myProject).getPlatform());
     }
 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept INodesTestMethod$ck = MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod");
+    /*package*/ static final SInterfaceConcept INodesTestMethod$rN = MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1510445f8a2c272dL, "jetbrains.mps.lang.test.structure.INodesTestMethod");
   }
 }

@@ -195,7 +195,7 @@ public class Java_Command {
     if (model == null) {
       return null;
     }
-    if (!(SPropertyOperations.getBoolean(module, PROPS.compileInMPS$58m_))) {
+    if (!(SPropertyOperations.getBoolean(module, PROPS.compileInMPS$2Q_X))) {
       if (LOG.isEnabledFor(Level.ERROR)) {
         LOG.error("The hosting module's " + module + " classes are not managed by MPS");
       }
@@ -217,7 +217,7 @@ public class Java_Command {
         return unitsForNode.get(0).getUnitName();
       } else {
         // if there's more than 1 unit, find one holding position that matches main method 
-        final SConcept staticMethodConcept = CONCEPTS.StaticMethodDeclaration$eX;
+        final SConcept staticMethodConcept = CONCEPTS.StaticMethodDeclaration$FJ;
         final String mainMethodTraceableProperty = TraceableConcept__BehaviorDescriptor.getTraceableProperty_id4pl5GY7LKmH.invoke(_quotation_createNode_yvpt_a0a2a0b0a5a1());
         for (TraceablePositionInfo position : debugInfo.getRootInfo(SNodeOperations.getContainingRoot(node)).getPositions()) {
           if (Objects.equals(position.getConcept(), staticMethodConcept) && (Objects.equals(position.getPropertyString(), mainMethodTraceableProperty))) {
@@ -390,10 +390,10 @@ public class Java_Command {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty compileInMPS$58m_ = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe24L, "compileInMPS");
+    /*package*/ static final SProperty compileInMPS$2Q_X = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe24L, "compileInMPS");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StaticMethodDeclaration$eX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
+    /*package*/ static final SConcept StaticMethodDeclaration$FJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
   }
 }

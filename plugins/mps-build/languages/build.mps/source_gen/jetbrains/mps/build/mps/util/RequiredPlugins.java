@@ -25,7 +25,7 @@ public class RequiredPlugins {
   private final List<SNode> myPlugins = ListSequence.fromList(new ArrayList<SNode>());
 
   public RequiredPlugins(SNode project) {
-    ListSequence.fromList(myPlugins).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(project, CONCEPTS.BuildMps_IdeaPlugin$X0, false, new SAbstractConcept[]{})));
+    ListSequence.fromList(myPlugins).addSequence(ListSequence.fromList(SNodeOperations.getNodeDescendants(project, CONCEPTS.BuildMps_IdeaPlugin$po, false, new SAbstractConcept[]{})));
   }
 
   public RequiredPlugins(Iterable<SNode> initialPlugins) {
@@ -62,8 +62,8 @@ public class RequiredPlugins {
 
   private void collectDependencies(SNode plugin, Set<SNode> visited) {
     SetSequence.fromSet(visited).addElement(plugin);
-    for (SNode dependency : ListSequence.fromList(SLinkOperations.getChildren(plugin, LINKS.dependencies$EoHW))) {
-      SNode dependencyPlugin = SLinkOperations.getTarget(dependency, LINKS.target$Hl9U);
+    for (SNode dependency : ListSequence.fromList(SLinkOperations.getChildren(plugin, LINKS.dependencies$9_ak))) {
+      SNode dependencyPlugin = SLinkOperations.getTarget(dependency, LINKS.target$cxAi);
       if (dependencyPlugin != null && !(SetSequence.fromSet(visited).contains(dependencyPlugin))) {
         collectDependencies(dependencyPlugin, visited);
       }
@@ -80,11 +80,11 @@ public class RequiredPlugins {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildMps_IdeaPlugin$X0 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPlugin");
+    /*package*/ static final SConcept BuildMps_IdeaPlugin$po = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPlugin");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$Hl9U = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbd3L, 0x5b7be37b4de9bbfaL, "target");
-    /*package*/ static final SContainmentLink dependencies$EoHW = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bbd4L, "dependencies");
+    /*package*/ static final SReferenceLink target$cxAi = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbd3L, 0x5b7be37b4de9bbfaL, "target");
+    /*package*/ static final SContainmentLink dependencies$9_ak = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bbd4L, "dependencies");
   }
 }

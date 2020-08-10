@@ -33,8 +33,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
             public String compute() {
               SNode resolved = SPointerOperations.resolveNode(ptr, repo);
               if (resolved != null) {
-                if (SNodeOperations.isInstanceOf(resolved, CONCEPTS.INamedConcept$nV)) {
-                  return ((String) BHReflection.invoke0(SNodeOperations.cast(resolved, CONCEPTS.INamedConcept$nV), CONCEPTS.INamedConcept$nV, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+                if (SNodeOperations.isInstanceOf(resolved, CONCEPTS.INamedConcept$Kd)) {
+                  return ((String) BHReflection.invoke0(SNodeOperations.cast(resolved, CONCEPTS.INamedConcept$Kd), CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
                 }
                 return ((SNode) resolved).getName();
               }
@@ -48,6 +48,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   };
 
   final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

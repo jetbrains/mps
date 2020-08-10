@@ -66,7 +66,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private boolean nodeCondition_w2956w_a0a() {
-    return isEmptyString(SPropertyOperations.getString(myNode, PROPS.file$KTuA));
+    return isEmptyString(SPropertyOperations.getString(myNode, PROPS.file$He6o));
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "<no icon>");
@@ -109,7 +109,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   private EditorCell_Image fromImageCellProvider0() {
     String imagePath = (new _FunctionTypes._return_P0_E0<String>() {
       public String invoke() {
-        return SPropertyOperations.getString(myNode, PROPS.file$KTuA);
+        return SPropertyOperations.getString(myNode, PROPS.file$He6o);
       }
     }).invoke();
     return EditorCell_Image.createImageCell(getEditorContext(), myNode, imagePath);
@@ -129,13 +129,13 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private JComponent _QueryFunction_JComponent_w2956w_a1a() {
-    return EditorUtil.createSelectImageButton(myNode, PROPS.file$KTuA, getEditorContext());
+    return EditorUtil.createSelectImageButton(myNode, PROPS.file$He6o, getEditorContext());
   }
   private static boolean isEmptyString(String str) {
     return str == null || str.isEmpty();
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty file$KTuA = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0xb8b96b5078f3367L, 0xb8b96b5078f33bbL, "file");
+    /*package*/ static final SProperty file$He6o = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0xb8b96b5078f3367L, 0xb8b96b5078f33bbL, "file");
   }
 }

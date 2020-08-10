@@ -41,7 +41,7 @@ public final class Analyzer__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getAnalyzerRunnerName_id9V7Nft_oXD(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v) + "AnalyzerRunner";
+    return SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL) + "AnalyzerRunner";
   }
   /*package*/ static String getAnalyzerRunnerFqName_id9V7Nft_vlj(@NotNull SNode __thisNode__) {
     String longName = SModelOperations.getModelName(SNodeOperations.getModel(__thisNode__));
@@ -51,12 +51,12 @@ public final class Analyzer__BehaviorDescriptor extends BaseBHDescriptor {
     return longName + '.' + Analyzer__BehaviorDescriptor.getAnalyzerRunnerName_id9V7Nft_oXD.invoke(__thisNode__);
   }
   /*package*/ static String getAnalyzerName_id9V7Nft_oXY(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v) + "Analyzer";
+    return SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL) + "Analyzer";
   }
   /*package*/ static List<SNode> getRules_id3_iNRJnrAhj(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
-    for (SNode rule : SModelOperations.rootsIncludingImported(SNodeOperations.getModel(__thisNode__), CONCEPTS.Rule$Wr)) {
-      if (SLinkOperations.getTarget(rule, LINKS.analyzer$$DVn) == __thisNode__) {
+    for (SNode rule : SModelOperations.rootsIncludingImported(SNodeOperations.getModel(__thisNode__), CONCEPTS.Rule$N8)) {
+      if (SLinkOperations.getTarget(rule, LINKS.analyzer$KJM4) == __thisNode__) {
         ListSequence.fromList(result).addElement(rule);
       }
     }
@@ -116,14 +116,14 @@ public final class Analyzer__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink analyzer$$DVn = MetaAdapterFactory.getReferenceLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5faaa6bbd57b6c8L, 0x3952cf7bd76e6440L, "analyzer");
+    /*package*/ static final SReferenceLink analyzer$KJM4 = MetaAdapterFactory.getReferenceLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5faaa6bbd57b6c8L, 0x3952cf7bd76e6440L, "analyzer");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Rule$Wr = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5faaa6bbd57b6c8L, "jetbrains.mps.lang.dataFlow.analyzers.structure.Rule");
+    /*package*/ static final SConcept Rule$N8 = MetaAdapterFactory.getConcept(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x5faaa6bbd57b6c8L, "jetbrains.mps.lang.dataFlow.analyzers.structure.Rule");
   }
 }

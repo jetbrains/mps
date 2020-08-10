@@ -64,10 +64,10 @@
   </root>
   <root nodeRef="r:4aa0c7da-6277-43fd-90b0-e616e98e56e0(jetbrains.mps.lang.resources.generator.template.main@generator)/4726480899534696386">
     <file name="QueriesGenerated.java">
-      <node id="4726480899536931778" at="121,89,122,273" concept="2" />
-      <node id="4726480899536378238" at="124,89,125,77" concept="2" />
-      <node id="4726480899536397447" at="127,89,128,77" concept="2" />
-      <node id="4726480899536385720" at="163,79,164,87" concept="2" />
+      <node id="4726480899536931778" at="121,89,122,271" concept="2" />
+      <node id="4726480899536378238" at="124,89,125,76" concept="2" />
+      <node id="4726480899536397447" at="127,89,128,76" concept="2" />
+      <node id="4726480899536385720" at="163,79,164,86" concept="2" />
       <node id="4726480899536928299" at="329,189,330,186" concept="0" />
       <node id="4726480899536378235" at="330,186,331,181" concept="0" />
       <node id="4726480899536397444" at="331,181,332,181" concept="0" />
@@ -80,10 +80,10 @@
       <node id="4726480899536378236" at="124,0,127,0" concept="3" trace="propertyMacro_GetValue_11_1#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="4726480899536397445" at="127,0,130,0" concept="3" trace="propertyMacro_GetValue_11_2#(Ljetbrains/mps/generator/template/PropertyMacroContext;)Ljava/lang/Object;" />
       <node id="4726480899536381410" at="163,0,166,0" concept="3" trace="ifMacro_Condition_11_0#(Ljetbrains/mps/generator/template/IfMacroContext;)Z" />
-      <scope id="4726480899536928301" at="121,89,122,273" />
-      <scope id="4726480899536378237" at="124,89,125,77" />
-      <scope id="4726480899536397446" at="127,89,128,77" />
-      <scope id="4726480899536381412" at="163,79,164,87" />
+      <scope id="4726480899536928301" at="121,89,122,271" />
+      <scope id="4726480899536378237" at="124,89,125,76" />
+      <scope id="4726480899536397446" at="127,89,128,76" />
+      <scope id="4726480899536381412" at="163,79,164,86" />
       <scope id="4726480899536928299" at="392,16,393,67" />
       <scope id="4726480899536378235" at="394,16,395,67" />
       <scope id="4726480899536397444" at="396,16,397,67" />

@@ -35,7 +35,7 @@ public final class FilePathQuery__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
     List<SConcept> rv = ListSequence.fromList(new ArrayList<SConcept>());
-    ListSequence.fromList(rv).addElement(CONCEPTS.NodeParameter$eU);
+    ListSequence.fromList(rv).addElement(CONCEPTS.NodeParameter$ts);
     return rv;
   }
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
@@ -90,12 +90,12 @@ public final class FilePathQuery__BehaviorDescriptor extends BaseBHDescriptor {
     return CONCEPT;
   }
   private static SNode createStringType_6ior39_a0a1() {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.StringType$2b);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.StringType$uX);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodeParameter$eU = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f411d576bL, "jetbrains.mps.lang.textGen.structure.NodeParameter");
-    /*package*/ static final SConcept StringType$2b = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47da71ecL, "jetbrains.mps.baseLanguage.structure.StringType");
+    /*package*/ static final SConcept NodeParameter$ts = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f411d576bL, "jetbrains.mps.lang.textGen.structure.NodeParameter");
+    /*package*/ static final SConcept StringType$uX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47da71ecL, "jetbrains.mps.baseLanguage.structure.StringType");
   }
 }

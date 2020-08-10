@@ -34,7 +34,7 @@ public final class AddModeToAnalyzerRunnerCreator_Intention extends AbstractInte
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (SLinkOperations.getTarget(node, LINKS.mode$_enH) == null);
+    return (SLinkOperations.getTarget(node, LINKS.mode$Lkeq) == null);
   }
   @Override
   public boolean isSurroundWith() {
@@ -55,7 +55,7 @@ public final class AddModeToAnalyzerRunnerCreator_Intention extends AbstractInte
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SLinkOperations.setNewChild(node, LINKS.mode$_enH, null);
+      SLinkOperations.setNewChild(node, LINKS.mode$Lkeq, null);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -64,6 +64,6 @@ public final class AddModeToAnalyzerRunnerCreator_Intention extends AbstractInte
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink mode$_enH = MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x151c4f99e489a16L, 0x2eb1cddc01267d7aL, "mode");
+    /*package*/ static final SContainmentLink mode$Lkeq = MetaAdapterFactory.getContainmentLink(0x97a52717898f4598L, 0x8150573d9fd03868L, 0x151c4f99e489a16L, 0x2eb1cddc01267d7aL, "mode");
   }
 }

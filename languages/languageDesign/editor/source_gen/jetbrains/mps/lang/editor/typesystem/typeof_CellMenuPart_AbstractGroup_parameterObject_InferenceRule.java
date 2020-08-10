@@ -19,8 +19,8 @@ public class typeof_CellMenuPart_AbstractGroup_parameterObject_InferenceRule ext
   public typeof_CellMenuPart_AbstractGroup_parameterObject_InferenceRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode ancestor = SNodeOperations.getNodeAncestor(node, CONCEPTS.CellMenuPart_AbstractGroup$lQ, false, false);
-    SNode parameterObjectType = SLinkOperations.getTarget(ancestor, LINKS.parameterObjectType$vdDH);
+    SNode ancestor = SNodeOperations.getNodeAncestor(node, CONCEPTS.CellMenuPart_AbstractGroup$xt, false, false);
+    SNode parameterObjectType = SLinkOperations.getTarget(ancestor, LINKS.parameterObjectType$zvPk);
     {
       SNode _nodeToCheck_1029348928467 = node;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1223982086138", 0, null);
@@ -28,7 +28,7 @@ public class typeof_CellMenuPart_AbstractGroup_parameterObject_InferenceRule ext
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.CellMenuPart_AbstractGroup_parameterObject$RF;
+    return CONCEPTS.CellMenuPart_AbstractGroup_parameterObject$3i;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,11 +38,11 @@ public class typeof_CellMenuPart_AbstractGroup_parameterObject_InferenceRule ext
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellMenuPart_AbstractGroup$lQ = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f4e874cf6L, "jetbrains.mps.lang.editor.structure.CellMenuPart_AbstractGroup");
-    /*package*/ static final SConcept CellMenuPart_AbstractGroup_parameterObject$RF = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10eecc5b3feL, "jetbrains.mps.lang.editor.structure.CellMenuPart_AbstractGroup_parameterObject");
+    /*package*/ static final SConcept CellMenuPart_AbstractGroup$xt = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f4e874cf6L, "jetbrains.mps.lang.editor.structure.CellMenuPart_AbstractGroup");
+    /*package*/ static final SConcept CellMenuPart_AbstractGroup_parameterObject$3i = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10eecc5b3feL, "jetbrains.mps.lang.editor.structure.CellMenuPart_AbstractGroup_parameterObject");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameterObjectType$vdDH = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f4e874cf6L, 0x10f4e8b51a5L, "parameterObjectType");
+    /*package*/ static final SContainmentLink parameterObjectType$zvPk = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f4e874cf6L, 0x10f4e8b51a5L, "parameterObjectType");
   }
 }

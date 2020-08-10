@@ -17,7 +17,7 @@ public class RemoveUnusedLocalVariable_QuickFix extends QuickFix_Runtime {
     return "Remove Unused Local Variable";
   }
   public void execute(SNode node) {
-    SNode p = SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.LocalVariableDeclarationStatement$BI);
+    SNode p = SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.LocalVariableDeclarationStatement$4w);
     if ((p != null)) {
       SNodeOperations.deleteNode(p);
     } else {
@@ -26,6 +26,6 @@ public class RemoveUnusedLocalVariable_QuickFix extends QuickFix_Runtime {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LocalVariableDeclarationStatement$BI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement");
+    /*package*/ static final SConcept LocalVariableDeclarationStatement$4w = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement");
   }
 }

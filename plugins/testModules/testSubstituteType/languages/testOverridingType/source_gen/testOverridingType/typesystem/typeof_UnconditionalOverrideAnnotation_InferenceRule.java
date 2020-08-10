@@ -25,11 +25,11 @@ public class typeof_UnconditionalOverrideAnnotation_InferenceRule extends Abstra
     return true;
   }
   public void applyRule(final SNode overrideAnnotation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((boolean) PresenceCondition__BehaviorDescriptor.isSatisfied_id5zzawu2JLe0.invoke(SLinkOperations.getTarget(overrideAnnotation, LINKS.condition$UWZS))) {
+    if ((boolean) PresenceCondition__BehaviorDescriptor.isSatisfied_id5zzawu2JLe0.invoke(SLinkOperations.getTarget(overrideAnnotation, LINKS.condition$SdSJ))) {
       {
         SNode _nodeToCheck_1029348928467 = SNodeOperations.getParent(overrideAnnotation);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:d8c6e16f-e698-4fc4-9c7f-4a279bcfaaf0(testOverridingType.typesystem)", "1870027727456321080", 0, null);
-        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:d8c6e16f-e698-4fc4-9c7f-4a279bcfaaf0(testOverridingType.typesystem)", "1870027727456321086", true), (SNode) SLinkOperations.getTarget(overrideAnnotation, LINKS.substitute$UPIp), _info_12389875345);
+        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:d8c6e16f-e698-4fc4-9c7f-4a279bcfaaf0(testOverridingType.typesystem)", "1870027727456321086", true), (SNode) SLinkOperations.getTarget(overrideAnnotation, LINKS.substitute$S6Bg), _info_12389875345);
       }
 
     } else {
@@ -41,7 +41,7 @@ public class typeof_UnconditionalOverrideAnnotation_InferenceRule extends Abstra
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.UnconditionalOverrideAnnotation$9U;
+    return CONCEPTS.UnconditionalOverrideAnnotation$2L;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -57,11 +57,11 @@ public class typeof_UnconditionalOverrideAnnotation_InferenceRule extends Abstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink substitute$UPIp = MetaAdapterFactory.getContainmentLink(0x394e385732564e8bL, 0x96015abe7ad354d9L, 0x391548fac32006d4L, 0x58e32a0782beb1baL, "substitute");
-    /*package*/ static final SContainmentLink condition$UWZS = MetaAdapterFactory.getContainmentLink(0x394e385732564e8bL, 0x96015abe7ad354d9L, 0x391548fac32006d4L, 0x58e32a0782beb1c4L, "condition");
+    /*package*/ static final SContainmentLink substitute$S6Bg = MetaAdapterFactory.getContainmentLink(0x394e385732564e8bL, 0x96015abe7ad354d9L, 0x391548fac32006d4L, 0x58e32a0782beb1baL, "substitute");
+    /*package*/ static final SContainmentLink condition$SdSJ = MetaAdapterFactory.getContainmentLink(0x394e385732564e8bL, 0x96015abe7ad354d9L, 0x391548fac32006d4L, 0x58e32a0782beb1c4L, "condition");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept UnconditionalOverrideAnnotation$9U = MetaAdapterFactory.getConcept(0x394e385732564e8bL, 0x96015abe7ad354d9L, 0x19f3ac4f6f2a050aL, "testOverridingType.structure.UnconditionalOverrideAnnotation");
+    /*package*/ static final SConcept UnconditionalOverrideAnnotation$2L = MetaAdapterFactory.getConcept(0x394e385732564e8bL, 0x96015abe7ad354d9L, 0x19f3ac4f6f2a050aL, "testOverridingType.structure.UnconditionalOverrideAnnotation");
   }
 }

@@ -34,7 +34,7 @@ public final class LanguageReferenceExpression__BehaviorDescriptor extends BaseB
 
   @NotNull
   /*package*/ static List<SModule> getVisibleModules_id3wj3sjzSgF$(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(ModuleReferenceExpression__BehaviorDescriptor.getVisibleModules_id3wj3sjzSgF$.invokeSuper(__thisNode__, CONCEPTS.LanguageReferenceExpression$xv)).ofType(Language.class).ofType(SModule.class).toListSequence();
+    return ListSequence.fromList(ModuleReferenceExpression__BehaviorDescriptor.getVisibleModules_id3wj3sjzSgF$.invokeSuper(__thisNode__, CONCEPTS.LanguageReferenceExpression$yZ)).ofType(Language.class).ofType(SModule.class).toListSequence();
   }
 
   /*package*/ LanguageReferenceExpression__BehaviorDescriptor() {
@@ -84,6 +84,6 @@ public final class LanguageReferenceExpression__BehaviorDescriptor extends BaseB
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LanguageReferenceExpression$xv = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3dc174aL, "jetbrains.mps.lang.smodel.structure.LanguageReferenceExpression");
+    /*package*/ static final SConcept LanguageReferenceExpression$yZ = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3dc174aL, "jetbrains.mps.lang.smodel.structure.LanguageReferenceExpression");
   }
 }

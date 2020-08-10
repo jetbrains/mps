@@ -24,11 +24,11 @@ public class supertypesOf_SNodePointerType_SNodePointerType_SubtypingRule extend
   }
   public List<SNode> getSubOrSuperTypes(SNode type, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> list = new ArrayList<SNode>();
-    SNode concept = SLinkOperations.getTarget(type, LINKS.concept$C9s3);
+    SNode concept = SLinkOperations.getTarget(type, LINKS.concept$cytz);
     // COPIED FROM supertypesOf_SNodeType_SNodeType 
     // DO NOT TOUCH THIS. CONCEPT MIGHT BE A TYPE VARIABLE 
-    if (concept != null && SNodeOperations.isInstanceOf(concept, CONCEPTS.AbstractConceptDeclaration$UN)) {
-      List<SNode> superConcepts = AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(SNodeOperations.cast(concept, CONCEPTS.AbstractConceptDeclaration$UN));
+    if (concept != null && SNodeOperations.isInstanceOf(concept, CONCEPTS.AbstractConceptDeclaration$KA)) {
+      List<SNode> superConcepts = AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(SNodeOperations.cast(concept, CONCEPTS.AbstractConceptDeclaration$KA));
       for (SNode superConcept : ListSequence.fromList(superConcepts)) {
         ListSequence.fromList(list).addElement(createSNodePointerType_to4p90_a0a0a1a4a1(superConcept));
       }
@@ -37,7 +37,7 @@ public class supertypesOf_SNodePointerType_SNodePointerType_SubtypingRule extend
     return list;
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SNodePointerType$2t;
+    return CONCEPTS.SNodePointerType$3X;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -46,21 +46,21 @@ public class supertypesOf_SNodePointerType_SNodePointerType_SubtypingRule extend
     return false;
   }
   private static SNode createSNodePointerType_to4p90_a0a0a1a4a1(SNode p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SNodePointerType$2t);
-    n0.setReferenceTarget(LINKS.concept$C9s3, p0);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SNodePointerType$3X);
+    n0.setReferenceTarget(LINKS.concept$cytz, p0);
     return n0.getResult();
   }
   private static SNode createSNodePointerType_to4p90_a0a2a4a1() {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SNodePointerType$2t);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SNodePointerType$3X);
     return n0.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$C9s3 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, 0x66b228a4fad6b2adL, "concept");
+    /*package*/ static final SReferenceLink concept$cytz = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, 0x66b228a4fad6b2adL, "concept");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
-    /*package*/ static final SConcept SNodePointerType$2t = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, "jetbrains.mps.lang.smodel.structure.SNodePointerType");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept SNodePointerType$3X = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, "jetbrains.mps.lang.smodel.structure.SNodePointerType");
   }
 }

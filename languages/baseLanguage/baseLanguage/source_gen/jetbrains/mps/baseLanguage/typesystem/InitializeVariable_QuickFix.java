@@ -19,15 +19,15 @@ public class InitializeVariable_QuickFix extends QuickFix_Runtime {
     return "Initialize the field";
   }
   public void execute(SNode node) {
-    SNode field = SNodeOperations.as(node, CONCEPTS.VariableDeclaration$xe);
-    SLinkOperations.setTarget(field, LINKS.initializer$no3R, VariableInitializationUtil.createDefaultInitializer(field));
+    SNode field = SNodeOperations.as(node, CONCEPTS.VariableDeclaration$Y0);
+    SLinkOperations.setTarget(field, LINKS.initializer$2twD, VariableInitializationUtil.createDefaultInitializer(field));
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VariableDeclaration$xe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
+    /*package*/ static final SConcept VariableDeclaration$Y0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink initializer$2twD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 }

@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ToolInstanceExpression_Constraints extends BaseConstraintsDescriptor {
   public ToolInstanceExpression_Constraints() {
-    super(CONCEPTS.ToolInstanceExpression$Sv);
+    super(CONCEPTS.ToolInstanceExpression$Py);
   }
 
   @Override
@@ -37,12 +37,12 @@ public class ToolInstanceExpression_Constraints extends BaseConstraintsDescripto
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.BaseToolDeclaration$fH, false, false) != null;
+    return SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.BaseToolDeclaration$cK, false, false) != null;
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590361(jetbrains.mps.lang.plugin.constraints)", "1227128029536562262");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ToolInstanceExpression$Sv = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11870178843L, "jetbrains.mps.lang.plugin.structure.ToolInstanceExpression");
-    /*package*/ static final SConcept BaseToolDeclaration$fH = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, "jetbrains.mps.lang.plugin.structure.BaseToolDeclaration");
+    /*package*/ static final SConcept ToolInstanceExpression$Py = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11870178843L, "jetbrains.mps.lang.plugin.structure.ToolInstanceExpression");
+    /*package*/ static final SConcept BaseToolDeclaration$cK = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, "jetbrains.mps.lang.plugin.structure.BaseToolDeclaration");
   }
 }

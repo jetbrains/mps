@@ -57,17 +57,17 @@ public class TypeVarScope extends Scope {
     List<SNode> vars = new ArrayList<SNode>();
 
     SNode statementList;
-    if (jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.isInstanceOf(myEnclosingNode, CONCEPTS.StatementList$TN)) {
-      statementList = jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.cast(myEnclosingNode, CONCEPTS.StatementList$TN);
+    if (jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.isInstanceOf(myEnclosingNode, CONCEPTS.StatementList$m_)) {
+      statementList = jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.cast(myEnclosingNode, CONCEPTS.StatementList$m_);
     } else {
-      statementList = jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.getNodeAncestor(myEnclosingNode, CONCEPTS.StatementList$TN, false, false);
+      statementList = jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.getNodeAncestor(myEnclosingNode, CONCEPTS.StatementList$m_, false, false);
     }
     if ((statementList != null)) {
       SNode currentStatement;
-      if (jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.isInstanceOf(myEnclosingNode, CONCEPTS.Statement$ok)) {
-        currentStatement = jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.cast(myEnclosingNode, CONCEPTS.Statement$ok);
+      if (jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.isInstanceOf(myEnclosingNode, CONCEPTS.Statement$P6)) {
+        currentStatement = jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.cast(myEnclosingNode, CONCEPTS.Statement$P6);
       } else {
-        currentStatement = jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.getNodeAncestor(myEnclosingNode, CONCEPTS.Statement$ok, false, false);
+        currentStatement = jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.getNodeAncestor(myEnclosingNode, CONCEPTS.Statement$P6, false, false);
       }
       populateLocalVariables(statementList, currentStatement, vars);
     }
@@ -84,17 +84,17 @@ public class TypeVarScope extends Scope {
   }
 
   private void populateLocalVariables(@NotNull SNode statementList, SNode beforeStatement, List<SNode> result) {
-    for (SNode statement : SLinkOperations.getChildren(statementList, LINKS.statement$pYcS)) {
+    for (SNode statement : SLinkOperations.getChildren(statementList, LINKS.statement$53DE)) {
       if (statement == beforeStatement) {
         break;
       }
-      if (jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.isInstanceOf(statement, CONCEPTS.TypeVarDeclaration$kX)) {
+      if (jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.isInstanceOf(statement, CONCEPTS.TypeVarDeclaration$AN)) {
         result.add(statement);
       }
     }
-    SNode containingStatement = jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.getNodeAncestor(statementList, CONCEPTS.Statement$ok, false, false);
+    SNode containingStatement = jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.getNodeAncestor(statementList, CONCEPTS.Statement$P6, false, false);
     if ((containingStatement != null)) {
-      statementList = jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.getNodeAncestor(containingStatement, CONCEPTS.StatementList$TN, false, false);
+      statementList = jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.getNodeAncestor(containingStatement, CONCEPTS.StatementList$m_, false, false);
       if (statementList != null) {
         populateLocalVariables(statementList, containingStatement, result);
       }
@@ -102,12 +102,12 @@ public class TypeVarScope extends Scope {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
-    /*package*/ static final SConcept TypeVarDeclaration$kX = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f85df7bL, "jetbrains.mps.lang.typesystem.structure.TypeVarDeclaration");
+    /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept TypeVarDeclaration$AN = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f85df7bL, "jetbrains.mps.lang.typesystem.structure.TypeVarDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

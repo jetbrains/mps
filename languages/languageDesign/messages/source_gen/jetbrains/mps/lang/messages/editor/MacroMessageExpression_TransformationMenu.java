@@ -88,7 +88,7 @@ public class MacroMessageExpression_TransformationMenu extends TransformationMen
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return CONCEPTS.MessageExpression$FF;
+      return CONCEPTS.MessageExpression$zD;
     }
 
 
@@ -135,6 +135,6 @@ public class MacroMessageExpression_TransformationMenu extends TransformationMen
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MessageExpression$FF = MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc4L, "jetbrains.mps.lang.messages.structure.MessageExpression");
+    /*package*/ static final SConcept MessageExpression$zD = MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc4L, "jetbrains.mps.lang.messages.structure.MessageExpression");
   }
 }

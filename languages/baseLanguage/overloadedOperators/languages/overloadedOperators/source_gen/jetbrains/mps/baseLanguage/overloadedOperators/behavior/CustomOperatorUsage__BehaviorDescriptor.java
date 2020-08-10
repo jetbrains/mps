@@ -37,9 +37,9 @@ public final class CustomOperatorUsage__BehaviorDescriptor extends BaseBHDescrip
 
   /*package*/ static List<SNode> getVisibleCustomOperators_idZogSShiOAT(@NotNull SAbstractConcept __thisConcept__, SModel model) {
     List<SNode> result = new ArrayList<SNode>();
-    List<SNode> containers = SModelOperations.rootsIncludingImported(model, CONCEPTS.OverloadedOperatorContainer$s0);
+    List<SNode> containers = SModelOperations.rootsIncludingImported(model, CONCEPTS.OverloadedOperatorContainer$6f);
     for (SNode container : containers) {
-      ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.customOperators$qX$u)));
+      ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.customOperators$YreH)));
     }
     return result;
   }
@@ -91,10 +91,10 @@ public final class CustomOperatorUsage__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept OverloadedOperatorContainer$s0 = MetaAdapterFactory.getConcept(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x6b6f5c413011207L, "jetbrains.mps.baseLanguage.overloadedOperators.structure.OverloadedOperatorContainer");
+    /*package*/ static final SConcept OverloadedOperatorContainer$6f = MetaAdapterFactory.getConcept(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x6b6f5c413011207L, "jetbrains.mps.baseLanguage.overloadedOperators.structure.OverloadedOperatorContainer");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink customOperators$qX$u = MetaAdapterFactory.getContainmentLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x6b6f5c413011207L, 0x2764eda929cc329cL, "customOperators");
+    /*package*/ static final SContainmentLink customOperators$YreH = MetaAdapterFactory.getContainmentLink(0xfc8d557e5de64dd8L, 0xb749aab2fb23aefcL, 0x6b6f5c413011207L, 0x2764eda929cc329cL, "customOperators");
   }
 }

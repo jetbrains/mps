@@ -40,7 +40,7 @@ public final class ContextVariable__BehaviorDescriptor extends BaseBHDescriptor 
   }
   /*package*/ static SNode findProvider_idhEwJh7Q(@NotNull SNode __thisNode__) {
     final SAbstractConcept providerConcept = ContextVariable__BehaviorDescriptor.getProviderConcept_idaxxf7pcCKs.invoke(__thisNode__.getConcept());
-    return ListSequence.fromList(SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.IContextVariableProvider$p6, true)).findFirst(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.IContextVariableProvider$$H, true)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.getConcept(it).isSubConceptOf(providerConcept);
       }
@@ -96,6 +96,6 @@ public final class ContextVariable__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IContextVariableProvider$p6 = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2a184f1d9310d4eL, "jetbrains.mps.lang.editor.structure.IContextVariableProvider");
+    /*package*/ static final SInterfaceConcept IContextVariableProvider$$H = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2a184f1d9310d4eL, "jetbrains.mps.lang.editor.structure.IContextVariableProvider");
   }
 }

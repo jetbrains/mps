@@ -35,7 +35,7 @@ public class LabeledNode_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_xgule9_a(), CONCEPTS.LabeledNode$iM));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_xgule9_a(), CONCEPTS.LabeledNode$wl));
     return result;
   }
 
@@ -80,7 +80,7 @@ public class LabeledNode_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.LabeledNode$iM, context);
+        super(CONCEPTS.LabeledNode$wl, context);
         _context = context;
       }
 
@@ -91,8 +91,8 @@ public class LabeledNode_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.LabeledNode$iM, _context.getCurrentTargetNode());
-        if (!(Objects.equals(pattern, "%" + SPropertyOperations.getString(SLinkOperations.getTarget(_context.getCurrentTargetNode(), LINKS.concept$zz_s), PROPS.name$lA7v)))) {
+        SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.LabeledNode$wl, _context.getCurrentTargetNode());
+        if (!(Objects.equals(pattern, "%" + SPropertyOperations.getString(SLinkOperations.getTarget(_context.getCurrentTargetNode(), LINKS.concept$xoA0), PROPS.name$MnvL)))) {
           String wrapped = pattern;
           if (!(wrapped.startsWith("%"))) {
             wrapped = "%" + wrapped;
@@ -100,7 +100,7 @@ public class LabeledNode_SubstituteMenu extends SubstituteMenuBase {
           if (!(wrapped.substring(1).endsWith("%"))) {
             wrapped = wrapped + "%";
           }
-          SPropertyOperations.assign(result, PROPS.name$lA7v, wrapped.substring(1, wrapped.length() - 1));
+          SPropertyOperations.assign(result, PROPS.name$MnvL, wrapped.substring(1, wrapped.length() - 1));
         }
         return result;
       }
@@ -135,7 +135,7 @@ public class LabeledNode_SubstituteMenu extends SubstituteMenuBase {
         return canExecute_internal(pattern, true);
       }
       public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
-        if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(_context.getCurrentTargetNode())), CONCEPTS.NodeBuilderNode$RN))) {
+        if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(_context.getCurrentTargetNode())), CONCEPTS.NodeBuilderNode$Sn))) {
           return false;
         }
         if (strictly) {
@@ -154,15 +154,15 @@ public class LabeledNode_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LabeledNode$iM = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0xd6beaaa1fc92ce7L, "jetbrains.mps.lang.pattern.structure.LabeledNode");
-    /*package*/ static final SConcept NodeBuilderNode$RN = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, "jetbrains.mps.lang.quotation.structure.NodeBuilderNode");
+    /*package*/ static final SConcept LabeledNode$wl = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0xd6beaaa1fc92ce7L, "jetbrains.mps.lang.pattern.structure.LabeledNode");
+    /*package*/ static final SConcept NodeBuilderNode$Sn = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, "jetbrains.mps.lang.quotation.structure.NodeBuilderNode");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$zz_s = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b02b1L, "concept");
+    /*package*/ static final SReferenceLink concept$xoA0 = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b02b1L, "concept");
   }
 }

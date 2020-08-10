@@ -64,7 +64,7 @@ public class ProgressStatement_subs extends SubstituteMenuBase {
   public class SMP_Group_kz2qu0_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return (SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.JobDefinition$Uq, false, false) != null);
+      return (SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.JobDefinition$Sj, false, false) != null);
     }
     @NotNull
     @Override
@@ -80,7 +80,7 @@ public class ProgressStatement_subs extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_kz2qu0_a0(), CONCEPTS.BeginWorkStatement$C0), new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.AdvanceWorkStatement$CY) {
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_kz2qu0_a0(), CONCEPTS.BeginWorkStatement$_T), new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.AdvanceWorkStatement$AR) {
 
         @NotNull
         @Override
@@ -93,7 +93,7 @@ public class ProgressStatement_subs extends SubstituteMenuBase {
             context.getEditorMenuTrace().popTraceInfo();
           }
         }
-      }, CONCEPTS.AdvanceWorkStatement$CY), new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.FinishWorkStatement$Er) {
+      }, CONCEPTS.AdvanceWorkStatement$AR), new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.FinishWorkStatement$Ck) {
 
         @NotNull
         @Override
@@ -106,7 +106,7 @@ public class ProgressStatement_subs extends SubstituteMenuBase {
             context.getEditorMenuTrace().popTraceInfo();
           }
         }
-      }, CONCEPTS.FinishWorkStatement$Er), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_kz2qu0_d0(), CONCEPTS.AdvanceWorkStatement$CY), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_kz2qu0_e0(), CONCEPTS.FinishWorkStatement$Er));
+      }, CONCEPTS.FinishWorkStatement$Ck), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_kz2qu0_d0(), CONCEPTS.AdvanceWorkStatement$AR), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_kz2qu0_e0(), CONCEPTS.FinishWorkStatement$Ck));
     }
     private class SMP_Action_kz2qu0_a0 extends SingleItemSubstituteMenuPart {
 
@@ -136,7 +136,7 @@ public class ProgressStatement_subs extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.BeginWorkStatement$C0, context);
+          super(CONCEPTS.BeginWorkStatement$_T, context);
           _context = context;
         }
 
@@ -157,7 +157,7 @@ public class ProgressStatement_subs extends SubstituteMenuBase {
         @Nullable
         @Override
         public String getMatchingText(@NotNull String pattern) {
-          return SConceptOperations.conceptAlias(CONCEPTS.BeginWorkStatement$C0);
+          return SConceptOperations.conceptAlias(CONCEPTS.BeginWorkStatement$_T);
         }
       }
     }
@@ -181,7 +181,7 @@ public class ProgressStatement_subs extends SubstituteMenuBase {
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-        return SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.JobDefinition$Uq, false, false), LINKS.body$z0FY), CONCEPTS.BeginWorkStatement$C0, false, new SAbstractConcept[]{});
+        return SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.JobDefinition$Sj, false, false), LINKS.body$e68K), CONCEPTS.BeginWorkStatement$_T, false, new SAbstractConcept[]{});
       }
       private class SMP_Action_kz2qu0_a3a extends SingleItemSubstituteMenuPart {
         private final SNode myParameterObject;
@@ -216,7 +216,7 @@ public class ProgressStatement_subs extends SubstituteMenuBase {
           private final SubstituteMenuContext _context;
           private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
-            super(CONCEPTS.AdvanceWorkStatement$CY, context);
+            super(CONCEPTS.AdvanceWorkStatement$AR, context);
             _context = context;
           }
 
@@ -236,7 +236,7 @@ public class ProgressStatement_subs extends SubstituteMenuBase {
           }
           @NotNull
           protected CompletionItemInformation createInformation(String pattern) {
-            return new CompletionItemInformation(myParameterObject, CONCEPTS.AdvanceWorkStatement$CY, getMatchingText(pattern), getDescriptionText(pattern));
+            return new CompletionItemInformation(myParameterObject, CONCEPTS.AdvanceWorkStatement$AR, getMatchingText(pattern), getDescriptionText(pattern));
           }
           @Nullable
           @Override
@@ -257,7 +257,7 @@ public class ProgressStatement_subs extends SubstituteMenuBase {
           @Nullable
           @Override
           public String getMatchingText(@NotNull String pattern) {
-            return SConceptOperations.conceptAlias(CONCEPTS.AdvanceWorkStatement$CY) + " <amount> of " + SPropertyOperations.getString(myParameterObject, PROPS.workName$DTR5);
+            return SConceptOperations.conceptAlias(CONCEPTS.AdvanceWorkStatement$AR) + " <amount> of " + SPropertyOperations.getString(myParameterObject, PROPS.workName$_6OY);
           }
         }
       }
@@ -283,7 +283,7 @@ public class ProgressStatement_subs extends SubstituteMenuBase {
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-        return SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.JobDefinition$Uq, false, false), LINKS.body$z0FY), CONCEPTS.BeginWorkStatement$C0, false, new SAbstractConcept[]{});
+        return SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.JobDefinition$Sj, false, false), LINKS.body$e68K), CONCEPTS.BeginWorkStatement$_T, false, new SAbstractConcept[]{});
       }
       private class SMP_Action_kz2qu0_a4a extends SingleItemSubstituteMenuPart {
         private final SNode myParameterObject;
@@ -318,7 +318,7 @@ public class ProgressStatement_subs extends SubstituteMenuBase {
           private final SubstituteMenuContext _context;
           private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
-            super(CONCEPTS.FinishWorkStatement$Er, context);
+            super(CONCEPTS.FinishWorkStatement$Ck, context);
             _context = context;
           }
 
@@ -338,7 +338,7 @@ public class ProgressStatement_subs extends SubstituteMenuBase {
           }
           @NotNull
           protected CompletionItemInformation createInformation(String pattern) {
-            return new CompletionItemInformation(myParameterObject, CONCEPTS.FinishWorkStatement$Er, getMatchingText(pattern), getDescriptionText(pattern));
+            return new CompletionItemInformation(myParameterObject, CONCEPTS.FinishWorkStatement$Ck, getMatchingText(pattern), getDescriptionText(pattern));
           }
           @Nullable
           @Override
@@ -359,7 +359,7 @@ public class ProgressStatement_subs extends SubstituteMenuBase {
           @Nullable
           @Override
           public String getMatchingText(@NotNull String pattern) {
-            return SConceptOperations.conceptAlias(CONCEPTS.FinishWorkStatement$Er) + " " + SPropertyOperations.getString(myParameterObject, PROPS.workName$DTR5);
+            return SConceptOperations.conceptAlias(CONCEPTS.FinishWorkStatement$Ck) + " " + SPropertyOperations.getString(myParameterObject, PROPS.workName$_6OY);
           }
         }
       }
@@ -397,17 +397,17 @@ public class ProgressStatement_subs extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept JobDefinition$Uq = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a972dabL, "jetbrains.mps.make.script.structure.JobDefinition");
-    /*package*/ static final SConcept BeginWorkStatement$C0 = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x29929a95c9e6982L, "jetbrains.mps.make.script.structure.BeginWorkStatement");
-    /*package*/ static final SConcept AdvanceWorkStatement$CY = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x29929a95c9e6984L, "jetbrains.mps.make.script.structure.AdvanceWorkStatement");
-    /*package*/ static final SConcept FinishWorkStatement$Er = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x29929a95c9e6987L, "jetbrains.mps.make.script.structure.FinishWorkStatement");
+    /*package*/ static final SConcept JobDefinition$Sj = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a972dabL, "jetbrains.mps.make.script.structure.JobDefinition");
+    /*package*/ static final SConcept BeginWorkStatement$_T = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x29929a95c9e6982L, "jetbrains.mps.make.script.structure.BeginWorkStatement");
+    /*package*/ static final SConcept AdvanceWorkStatement$AR = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x29929a95c9e6984L, "jetbrains.mps.make.script.structure.AdvanceWorkStatement");
+    /*package*/ static final SConcept FinishWorkStatement$Ck = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x29929a95c9e6987L, "jetbrains.mps.make.script.structure.FinishWorkStatement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$z0FY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
+    /*package*/ static final SContainmentLink body$e68K = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty workName$DTR5 = MetaAdapterFactory.getProperty(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x29929a95c9e6982L, 0x97a1ce11865e911L, "workName");
+    /*package*/ static final SProperty workName$_6OY = MetaAdapterFactory.getProperty(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x29929a95c9e6982L, 0x97a1ce11865e911L, "workName");
   }
 }

@@ -42,7 +42,7 @@ public class NodePointerArg_Identity_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_qdaxsb_a(), CONCEPTS.NodePointerArg_Identity$5_));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_qdaxsb_a(), CONCEPTS.NodePointerArg_Identity$75));
     return result;
   }
 
@@ -82,15 +82,15 @@ public class NodePointerArg_Identity_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.NodePointerArg_Identity$5_;
+          return CONCEPTS.NodePointerArg_Identity$75;
         }
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode nodeToWrap = super.createNode(pattern);
           myCreatedNode = nodeToWrap;
-          SNode nodePointerArg = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.NodePointerArg_Identity$5_);
-          SLinkOperations.setTarget(nodePointerArg, LINKS.ref$lIU6, nodeToWrap);
+          SNode nodePointerArg = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.NodePointerArg_Identity$75);
+          SLinkOperations.setTarget(nodePointerArg, LINKS.ref$U7VA, nodeToWrap);
           return nodePointerArg;
         }
         @Override
@@ -117,16 +117,16 @@ public class NodePointerArg_Identity_SubstituteMenu extends SubstituteMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.NodeIdentity$tk;
+      return CONCEPTS.NodeIdentity$8R;
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodePointerArg_Identity$5_ = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2e154e2e58d91ebdL, "jetbrains.mps.lang.smodel.structure.NodePointerArg_Identity");
-    /*package*/ static final SInterfaceConcept NodeIdentity$tk = MetaAdapterFactory.getInterfaceConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a208f7L, "jetbrains.mps.lang.modelapi.structure.NodeIdentity");
+    /*package*/ static final SConcept NodePointerArg_Identity$75 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2e154e2e58d91ebdL, "jetbrains.mps.lang.smodel.structure.NodePointerArg_Identity");
+    /*package*/ static final SInterfaceConcept NodeIdentity$8R = MetaAdapterFactory.getInterfaceConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a208f7L, "jetbrains.mps.lang.modelapi.structure.NodeIdentity");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink ref$lIU6 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2e154e2e58d91ebdL, 0x2e154e2e58d91f06L, "ref");
+    /*package*/ static final SContainmentLink ref$U7VA = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2e154e2e58d91ebdL, 0x2e154e2e58d91f06L, "ref");
   }
 }

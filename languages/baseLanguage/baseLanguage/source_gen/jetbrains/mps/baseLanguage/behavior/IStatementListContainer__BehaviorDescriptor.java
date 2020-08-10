@@ -44,7 +44,7 @@ public final class IStatementListContainer__BehaviorDescriptor extends BaseBHDes
     return false;
   }
   /*package*/ static SNode getStatementList_id28aPEVv_31A(@NotNull SNode __thisNode__) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(__thisNode__), CONCEPTS.StatementList$TN)).first();
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(__thisNode__), CONCEPTS.StatementList$m_)).first();
   }
 
   /*package*/ IStatementListContainer__BehaviorDescriptor() {
@@ -100,6 +100,6 @@ public final class IStatementListContainer__BehaviorDescriptor extends BaseBHDes
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
+    /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
   }
 }

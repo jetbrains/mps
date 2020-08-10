@@ -32,12 +32,12 @@
       <node id="1217867419051" at="30,5,31,49" concept="4" />
       <node id="1217863442978" at="32,99,33,50" concept="4" />
       <node id="1206454676454" at="35,95,36,118" concept="4" />
-      <node id="1206454554507" at="41,0,42,0" concept="13" trace="condition$qL$l" />
-      <node id="1206454554507" at="42,0,43,0" concept="13" trace="ifTrue$qLNm" />
-      <node id="1206454554507" at="43,0,44,0" concept="13" trace="ifFalseStatement$InyY" />
-      <node id="1206454554507" at="44,0,45,0" concept="13" trace="elsifClauses$ZQja" />
-      <node id="1206454554507" at="48,0,49,0" concept="13" trace="BooleanConstant$Ui" />
-      <node id="1206454554507" at="52,0,53,0" concept="13" trace="value$qt90" />
+      <node id="1206454554507" at="41,0,42,0" concept="13" trace="condition$5R17" />
+      <node id="1206454554507" at="42,0,43,0" concept="13" trace="ifTrue$5Rg8" />
+      <node id="1206454554507" at="43,0,44,0" concept="13" trace="ifFalseStatement$psZK" />
+      <node id="1206454554507" at="44,0,45,0" concept="13" trace="elsifClauses$EVJW" />
+      <node id="1206454554507" at="48,0,49,0" concept="13" trace="BooleanConstant$n4" />
+      <node id="1206454554507" at="52,0,53,0" concept="13" trace="value$5y_M" />
       <node id="1220014062834" at="19,109,22,5" concept="7" />
       <node id="1217868916800" at="26,0,29,0" concept="8" trace="run#()V" />
       <node id="1217863442976" at="31,49,34,5" concept="6" />
@@ -73,10 +73,10 @@
       <node id="1206455229720" at="24,12,25,181" concept="4" />
       <node id="1206455224916" at="26,5,27,104" concept="4" />
       <node id="1206539361128" at="29,25,30,182" concept="4" />
-      <node id="1206455216234" at="36,0,37,0" concept="13" trace="condition$5$S0" />
-      <node id="1206455216234" at="37,0,38,0" concept="13" trace="body$wVZ$" />
-      <node id="1206455216234" at="41,0,42,0" concept="13" trace="BooleanConstant$Ui" />
-      <node id="1206455216234" at="45,0,46,0" concept="13" trace="value$qt90" />
+      <node id="1206455216234" at="36,0,37,0" concept="13" trace="condition$KEkM" />
+      <node id="1206455216234" at="37,0,38,0" concept="13" trace="body$c1sm" />
+      <node id="1206455216234" at="41,0,42,0" concept="13" trace="BooleanConstant$n4" />
+      <node id="1206455216234" at="45,0,46,0" concept="13" trace="value$5y_M" />
       <node id="1206969618254" at="24,10,26,5" concept="1" />
       <node id="1206969653503" at="20,142,23,7" concept="7" />
       <node id="1206969769500" at="29,0,32,0" concept="8" trace="run#()V" />
@@ -115,7 +115,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1206459413245">
     <file name="ExpressionStatement_DataFlow.java">
       <node id="1206459415607" at="13,60,14,110" concept="4" />
-      <node id="1206459413245" at="18,0,19,0" concept="13" trace="expression$qFF0" />
+      <node id="1206459413245" at="18,0,19,0" concept="13" trace="expression$5L7M" />
       <node id="1206459413245" at="13,0,16,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1206459413247" at="13,60,14,110" />
       <scope id="1206459413245" at="13,0,16,0">
@@ -128,7 +128,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1206460142537">
     <file name="BlockStatement_DataFlow.java">
       <node id="1206460145524" at="13,60,14,110" concept="4" />
-      <node id="1206460142537" at="18,0,19,0" concept="13" trace="statements$J0D0" />
+      <node id="1206460142537" at="18,0,19,0" concept="13" trace="statements$q65M" />
       <node id="1206460142537" at="13,0,16,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1206460142539" at="13,60,14,110" />
       <scope id="1206460142537" at="13,0,16,0">
@@ -148,11 +148,11 @@
       <node id="4447433352191878502" at="30,33,31,102" concept="4" />
       <node id="1206460282100" at="34,91,35,45" concept="4" />
       <node id="4447433352191878575" at="36,244,37,137" concept="4" />
-      <node id="1206460267925" at="43,0,44,0" concept="13" trace="BaseMethodDeclaration$RR" />
-      <node id="1206460267925" at="44,0,45,0" concept="13" trace="IMethodLike$kl" />
-      <node id="1206460267925" at="45,0,46,0" concept="13" trace="ExpressionStatement$nm" />
-      <node id="1206460267925" at="49,0,50,0" concept="13" trace="parameter$qsax" />
-      <node id="1206460267925" at="50,0,51,0" concept="13" trace="statement$pYcS" />
+      <node id="1206460267925" at="43,0,44,0" concept="13" trace="BaseMethodDeclaration$kD" />
+      <node id="1206460267925" at="44,0,45,0" concept="13" trace="IMethodLike$L7" />
+      <node id="1206460267925" at="45,0,46,0" concept="13" trace="ExpressionStatement$O8" />
+      <node id="1206460267925" at="49,0,50,0" concept="13" trace="parameter$5xBj" />
+      <node id="1206460267925" at="50,0,51,0" concept="13" trace="statement$53DE" />
       <node id="1207304745749" at="21,121,24,7" concept="6" />
       <node id="4447433352191878441" at="29,116,32,7" concept="7" />
       <node id="4447433352191878531" at="35,45,38,7" concept="7" />
@@ -194,15 +194,15 @@
       <node id="1225456606795" at="21,440,22,377" concept="4" />
       <node id="2359846675286592328" at="25,255,26,428" concept="4" />
       <node id="1207060739945" at="27,14,28,110" concept="4" />
-      <node id="1206460339989" at="34,0,35,0" concept="13" trace="rValue$LkmY" />
-      <node id="1206460339989" at="35,0,36,0" concept="13" trace="lValue$LjSW" />
-      <node id="1206460339989" at="36,0,37,0" concept="13" trace="variableDeclaration$7WwU" />
-      <node id="1206460339989" at="37,0,38,0" concept="13" trace="operation$_mGS" />
-      <node id="1206460339989" at="38,0,39,0" concept="13" trace="fieldDeclaration$229u" />
-      <node id="1206460339989" at="42,0,43,0" concept="13" trace="VariableReference$sQ" />
-      <node id="1206460339989" at="43,0,44,0" concept="13" trace="LocalVariableDeclaration$Bf" />
-      <node id="1206460339989" at="44,0,45,0" concept="13" trace="DotExpression$6a" />
-      <node id="1206460339989" at="45,0,46,0" concept="13" trace="FieldReferenceOperation$N8" />
+      <node id="1206460339989" at="34,0,35,0" concept="13" trace="rValue$spNK" />
+      <node id="1206460339989" at="35,0,36,0" concept="13" trace="lValue$splI" />
+      <node id="1206460339989" at="36,0,37,0" concept="13" trace="variableDeclaration$N1XG" />
+      <node id="1206460339989" at="37,0,38,0" concept="13" trace="operation$gs9E" />
+      <node id="1206460339989" at="38,0,39,0" concept="13" trace="fieldDeclaration$H7Ag" />
+      <node id="1206460339989" at="42,0,43,0" concept="13" trace="VariableReference$TC" />
+      <node id="1206460339989" at="43,0,44,0" concept="13" trace="LocalVariableDeclaration$41" />
+      <node id="1206460339989" at="44,0,45,0" concept="13" trace="DotExpression$yW" />
+      <node id="1206460339989" at="45,0,46,0" concept="13" trace="FieldReferenceOperation$fU" />
       <node id="2359846675286600921" at="27,12,29,7" concept="1" />
       <node id="1225456443749" at="20,80,23,7" concept="7" />
       <node id="2359846675286583934" at="24,12,29,7" concept="7" />
@@ -229,7 +229,7 @@
     <file name="CastExpression_DataFlow.java">
       <node id="1206460474026" at="13,60,14,110" concept="4" />
       <node id="286431870954917591" at="14,110,15,224" concept="4" />
-      <node id="1206460471601" at="19,0,20,0" concept="13" trace="expression$izU1" />
+      <node id="1206460471601" at="19,0,20,0" concept="13" trace="expression$XDmN" />
       <node id="1206460471601" at="13,0,17,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1206460471603" at="13,60,15,224" />
       <scope id="1206460471601" at="13,0,17,0">
@@ -241,12 +241,12 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1206460508525">
     <file name="BinaryOperation_DataFlow.java">
-      <node id="1206460510810" at="13,60,14,114" concept="4" />
-      <node id="1206460516489" at="14,114,15,115" concept="4" />
-      <node id="1206460508525" at="19,0,20,0" concept="13" trace="leftExpression$lndx" />
-      <node id="1206460508525" at="20,0,21,0" concept="13" trace="rightExpression$li3b" />
+      <node id="1206460510810" at="13,60,14,113" concept="4" />
+      <node id="1206460516489" at="14,113,15,114" concept="4" />
+      <node id="1206460508525" at="19,0,20,0" concept="13" trace="leftExpression$sEj" />
+      <node id="1206460508525" at="20,0,21,0" concept="13" trace="rightExpression$nvX" />
       <node id="1206460508525" at="13,0,17,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
-      <scope id="1206460508527" at="13,60,15,115" />
+      <scope id="1206460508527" at="13,60,15,114" />
       <scope id="1206460508525" at="13,0,17,0">
         <var name="_context" id="1206460508525" />
       </scope>
@@ -259,7 +259,7 @@
       <node id="1206464701776" at="14,60,15,110" concept="4" />
       <node id="1229352005756" at="16,111,17,253" concept="4" />
       <node id="1229351994644" at="18,12,19,129" concept="4" />
-      <node id="1206463017323" at="24,0,25,0" concept="13" trace="expression$zDGg" />
+      <node id="1206463017323" at="24,0,25,0" concept="13" trace="expression$eJ92" />
       <node id="1229351991438" at="18,10,20,5" concept="1" />
       <node id="1229351971769" at="15,110,20,5" concept="7" />
       <node id="1206463017323" at="14,0,22,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
@@ -286,13 +286,13 @@
       <node id="1206463711757" at="32,5,33,104" concept="4" />
       <node id="1206463706563" at="36,27,37,57" concept="4" />
       <node id="9092976468699818459" at="42,25,43,196" concept="4" />
-      <node id="1206463694662" at="49,0,50,0" concept="13" trace="variable$4Igk" />
-      <node id="1206463694662" at="50,0,51,0" concept="13" trace="additionalVar$QrML" />
-      <node id="1206463694662" at="51,0,52,0" concept="13" trace="condition$PxqS" />
-      <node id="1206463694662" at="52,0,53,0" concept="13" trace="body$wVZ$" />
-      <node id="1206463694662" at="53,0,54,0" concept="13" trace="iteration$Gpoh" />
-      <node id="1206463694662" at="57,0,58,0" concept="13" trace="BooleanConstant$Ui" />
-      <node id="1206463694662" at="61,0,62,0" concept="13" trace="value$qt90" />
+      <node id="1206463694662" at="49,0,50,0" concept="13" trace="variable$JNH6" />
+      <node id="1206463694662" at="50,0,51,0" concept="13" trace="additionalVar$xxfz" />
+      <node id="1206463694662" at="51,0,52,0" concept="13" trace="condition$wARE" />
+      <node id="1206463694662" at="52,0,53,0" concept="13" trace="body$c1sm" />
+      <node id="1206463694662" at="53,0,54,0" concept="13" trace="iteration$nuP3" />
+      <node id="1206463694662" at="57,0,58,0" concept="13" trace="BooleanConstant$n4" />
+      <node id="1206463694662" at="61,0,62,0" concept="13" trace="value$5y_M" />
       <node id="1032195626824969319" at="19,108,22,5" concept="6" />
       <node id="3337377470784677511" at="25,142,28,7" concept="7" />
       <node id="1206536501766" at="36,0,39,0" concept="8" trace="run#()V" />
@@ -339,9 +339,9 @@
       <node id="1206989539741" at="16,179,17,197" concept="4" />
       <node id="1206463774571" at="17,197,18,104" concept="4" />
       <node id="1207221465420" at="20,25,21,194" concept="4" />
-      <node id="1206463758605" at="27,0,28,0" concept="13" trace="iterable$FCTY" />
-      <node id="1206463758605" at="28,0,29,0" concept="13" trace="variable$4Igk" />
-      <node id="1206463758605" at="29,0,30,0" concept="13" trace="body$wVZ$" />
+      <node id="1206463758605" at="27,0,28,0" concept="13" trace="iterable$mImK" />
+      <node id="1206463758605" at="28,0,29,0" concept="13" trace="variable$JNH6" />
+      <node id="1206463758605" at="29,0,30,0" concept="13" trace="body$c1sm" />
       <node id="1206536188858" at="20,0,23,0" concept="8" trace="run#()V" />
       <node id="1206536188858" at="18,104,23,7" concept="4" />
       <node id="1206463758605" at="13,0,25,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
@@ -361,8 +361,8 @@
       <node id="1206463821248" at="13,60,14,104" concept="4" />
       <node id="1206463825458" at="16,25,17,113" concept="4" />
       <node id="1206463830028" at="21,25,22,184" concept="4" />
-      <node id="1206463818823" at="28,0,29,0" concept="13" trace="body$wVZ$" />
-      <node id="1206463818823" at="29,0,30,0" concept="13" trace="condition$fJMm" />
+      <node id="1206463818823" at="28,0,29,0" concept="13" trace="body$c1sm" />
+      <node id="1206463818823" at="29,0,30,0" concept="13" trace="condition$UPf8" />
       <node id="1206536360279" at="16,0,19,0" concept="8" trace="run#()V" />
       <node id="1206536361593" at="21,0,24,0" concept="8" trace="run#()V" />
       <node id="1206536360279" at="14,104,19,7" concept="4" />
@@ -387,8 +387,8 @@
       <node id="1206463898365" at="13,60,14,109" concept="4" />
       <node id="1207557409231" at="14,109,15,179" concept="4" />
       <node id="1207557427659" at="15,179,16,107" concept="4" />
-      <node id="1206463895940" at="20,0,21,0" concept="13" trace="condition$x6QC" />
-      <node id="1206463895940" at="21,0,22,0" concept="13" trace="message$cNOs" />
+      <node id="1206463895940" at="20,0,21,0" concept="13" trace="condition$ccjq" />
+      <node id="1206463895940" at="21,0,22,0" concept="13" trace="message$RThe" />
       <node id="1206463895940" at="13,0,18,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1206463895942" at="13,60,16,107" />
       <scope id="1206463895940" at="13,0,18,0">
@@ -406,9 +406,9 @@
       <node id="8754905177066818389" at="26,190,27,185" concept="4" />
       <node id="8754905177066818395" at="27,185,28,19" concept="10" />
       <node id="1206464652781" at="32,5,33,127" concept="4" />
-      <node id="1206464650340" at="37,0,38,0" concept="13" trace="throwable$DFju" />
-      <node id="1206464650340" at="41,0,42,0" concept="13" trace="IControlFlowInterrupter$qo" />
-      <node id="1206464650340" at="42,0,43,0" concept="13" trace="ITryCatchStatement$WV" />
+      <node id="1206464650340" at="37,0,38,0" concept="13" trace="throwable$kKKg" />
+      <node id="1206464650340" at="41,0,42,0" concept="13" trace="IControlFlowInterrupter$Ra" />
+      <node id="1206464650340" at="42,0,43,0" concept="13" trace="ITryCatchStatement$pH" />
       <node id="8754905177066818370" at="25,123,29,11" concept="7" />
       <node id="4952749571005246925" at="24,119,30,9" concept="6" />
       <node id="8754905177066817006" at="23,152,31,7" concept="6" />
@@ -441,7 +441,7 @@
       <node id="4652593672361679355" at="14,60,15,110" concept="9" />
       <node id="1206465263853" at="16,233,17,170" concept="4" />
       <node id="5090797586239216724" at="18,12,19,135" concept="4" />
-      <node id="1206465225322" at="24,0,25,0" concept="13" trace="IStatementListContainer$4L" />
+      <node id="1206465225322" at="24,0,25,0" concept="13" trace="IStatementListContainer$xz" />
       <node id="5090797586239216719" at="18,10,20,5" concept="1" />
       <node id="1206465235169" at="15,110,20,5" concept="7" />
       <node id="1206465225322" at="14,0,22,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
@@ -479,8 +479,8 @@
       <node id="1206536669330" at="15,109,16,179" concept="4" />
       <node id="1206536674289" at="16,179,17,113" concept="4" />
       <node id="1217865542485" at="19,25,20,246" concept="4" />
-      <node id="1206536652080" at="26,0,27,0" concept="13" trace="condition$CVsn" />
-      <node id="1206536652080" at="27,0,28,0" concept="13" trace="statementList$G9pt" />
+      <node id="1206536652080" at="26,0,27,0" concept="13" trace="condition$k0T9" />
+      <node id="1206536652080" at="27,0,28,0" concept="13" trace="statementList$neQf" />
       <node id="1217865537592" at="19,0,22,0" concept="8" trace="run#()V" />
       <node id="1217865537592" at="17,113,22,7" concept="4" />
       <node id="1206536652080" at="14,0,24,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
@@ -499,7 +499,7 @@
     <file name="VariableDeclaration_DataFlow.java">
       <node id="1206536954552" at="13,60,14,149" concept="4" />
       <node id="1206536962025" at="14,149,15,111" concept="4" />
-      <node id="1206536952487" at="19,0,20,0" concept="13" trace="initializer$no3R" />
+      <node id="1206536952487" at="19,0,20,0" concept="13" trace="initializer$2twD" />
       <node id="1206536952487" at="13,0,17,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1206536952489" at="13,60,15,111" />
       <scope id="1206536952487" at="13,0,17,0">
@@ -519,9 +519,9 @@
       <node id="1206537052299" at="18,177,19,107" concept="4" />
       <node id="286431870954921276" at="19,107,20,221" concept="4" />
       <node id="8493229414304959335" at="20,221,21,133" concept="4" />
-      <node id="1206537015271" at="25,0,26,0" concept="13" trace="condition$GrmW" />
-      <node id="1206537015271" at="26,0,27,0" concept="13" trace="ifFalse$h5To" />
-      <node id="1206537015271" at="27,0,28,0" concept="13" trace="ifTrue$ea$5" />
+      <node id="1206537015271" at="25,0,26,0" concept="13" trace="condition$nwNI" />
+      <node id="1206537015271" at="26,0,27,0" concept="13" trace="ifFalse$Wbma" />
+      <node id="1206537015271" at="27,0,28,0" concept="13" trace="ifTrue$Tg0R" />
       <node id="1206537015271" at="13,0,23,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1206537015273" at="13,60,21,133" />
       <scope id="1206537015271" at="13,0,23,0">
@@ -535,8 +535,8 @@
     <file name="SynchronizedStatement_DataFlow.java">
       <node id="1206537064620" at="13,60,14,110" concept="4" />
       <node id="1206537069939" at="14,110,15,105" concept="4" />
-      <node id="1206537062960" at="19,0,20,0" concept="13" trace="expression$gSPb" />
-      <node id="1206537062960" at="20,0,21,0" concept="13" trace="block$Uf$M" />
+      <node id="1206537062960" at="19,0,20,0" concept="13" trace="expression$VYhX" />
+      <node id="1206537062960" at="20,0,21,0" concept="13" trace="block$_l1$" />
       <node id="1206537062960" at="13,0,17,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1206537062962" at="13,60,15,105" />
       <scope id="1206537062960" at="13,0,17,0">
@@ -560,9 +560,9 @@
       <node id="1206542922862" at="46,52,47,131" concept="4" />
       <node id="1206957595628" at="47,131,48,111" concept="4" />
       <node id="1206542922862" at="48,111,49,130" concept="4" />
-      <node id="1206542922860" at="53,0,54,0" concept="13" trace="catchClause$EvoR" />
-      <node id="1206542922860" at="54,0,55,0" concept="13" trace="body$1aAh" />
-      <node id="1206542922860" at="55,0,56,0" concept="13" trace="finallyBody$8W3M" />
+      <node id="1206542922860" at="53,0,54,0" concept="13" trace="catchClause$l$PD" />
+      <node id="1206542922860" at="54,0,55,0" concept="13" trace="body$Gg33" />
+      <node id="1206542922860" at="55,0,56,0" concept="13" trace="finallyBody$O1w$" />
       <node id="1207140987790" at="16,127,19,5" concept="6" />
       <node id="7597254041024568842" at="21,148,24,7" concept="7" />
       <node id="2138084782783320218" at="27,0,30,0" concept="8" trace="run#()V" />
@@ -618,8 +618,8 @@
       <node id="1207218496728" at="33,25,34,181" concept="4" />
       <node id="1207140776970" at="37,93,38,45" concept="4" />
       <node id="8768955936812442517" at="40,27,41,189" concept="4" />
-      <node id="1206542990054" at="48,0,49,0" concept="13" trace="catchClause$yGV3" />
-      <node id="1206542990054" at="49,0,50,0" concept="13" trace="body$I$eg" />
+      <node id="1206542990054" at="48,0,49,0" concept="13" trace="catchClause$dMnP" />
+      <node id="1206542990054" at="49,0,50,0" concept="13" trace="body$pDF2" />
       <node id="7970753809667931443" at="15,60,18,5" concept="6" />
       <node id="7180022869589272950" at="20,148,23,7" concept="7" />
       <node id="2138084782783305002" at="26,0,29,0" concept="8" trace="run#()V" />
@@ -670,7 +670,7 @@
     <file name="ParenthesizedExpression_DataFlow.java">
       <node id="1206543147046" at="13,60,14,110" concept="4" />
       <node id="286431870954915776" at="14,110,15,224" concept="4" />
-      <node id="1206543144792" at="19,0,20,0" concept="13" trace="expression$efP0" />
+      <node id="1206543144792" at="19,0,20,0" concept="13" trace="expression$TlhM" />
       <node id="1206543144792" at="13,0,17,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1206543144794" at="13,60,15,224" />
       <scope id="1206543144792" at="13,0,17,0">
@@ -684,8 +684,8 @@
     <file name="DotExpression_DataFlow.java">
       <node id="1206543202625" at="13,60,14,107" concept="4" />
       <node id="1206543222067" at="14,107,15,109" concept="4" />
-      <node id="1206543200622" at="19,0,20,0" concept="13" trace="operand$P1i5" />
-      <node id="1206543200622" at="20,0,21,0" concept="13" trace="operation$_mGS" />
+      <node id="1206543200622" at="19,0,20,0" concept="13" trace="operand$w6IR" />
+      <node id="1206543200622" at="20,0,21,0" concept="13" trace="operation$gs9E" />
       <node id="1206543200622" at="13,0,17,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1206543200624" at="13,60,15,109" />
       <scope id="1206543200622" at="13,0,17,0">
@@ -698,7 +698,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1206543641005">
     <file name="IMethodCall_DataFlow.java">
       <node id="1206543659213" at="14,98,15,47" concept="4" />
-      <node id="1206543641005" at="20,0,21,0" concept="13" trace="actualArgument$ItKJ" />
+      <node id="1206543641005" at="20,0,21,0" concept="13" trace="actualArgument$pzdx" />
       <node id="1206543643055" at="13,60,16,5" concept="6" />
       <node id="1206543641005" at="13,0,18,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1206543643059" at="14,98,15,47" />
@@ -717,8 +717,8 @@
     <file name="ArrayAccessExpression_DataFlow.java">
       <node id="1206544621945" at="13,60,14,105" concept="4" />
       <node id="1206544629749" at="14,105,15,105" concept="4" />
-      <node id="1206544616802" at="19,0,20,0" concept="13" trace="index$66b3" />
-      <node id="1206544616802" at="20,0,21,0" concept="13" trace="array$MOps" />
+      <node id="1206544616802" at="19,0,20,0" concept="13" trace="index$LbBP" />
+      <node id="1206544616802" at="20,0,21,0" concept="13" trace="array$tTQe" />
       <node id="1206544616802" at="13,0,17,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1206544616804" at="13,60,15,105" />
       <scope id="1206544616802" at="13,0,17,0">
@@ -731,7 +731,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1206544649897">
     <file name="ArrayLiteral_DataFlow.java">
       <node id="1206544659289" at="14,89,15,48" concept="4" />
-      <node id="1206544649897" at="20,0,21,0" concept="13" trace="item$6C2c" />
+      <node id="1206544649897" at="20,0,21,0" concept="13" trace="item$LHuY" />
       <node id="1206544652759" at="13,60,16,5" concept="6" />
       <node id="1206544649897" at="13,0,18,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1206544652763" at="14,89,15,48" />
@@ -749,7 +749,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1206544689883">
     <file name="DimensionExpression_DataFlow.java">
       <node id="1206544722702" at="14,87,15,112" concept="4" />
-      <node id="1206544689883" at="20,0,21,0" concept="13" trace="expression$pDbL" />
+      <node id="1206544689883" at="20,0,21,0" concept="13" trace="expression$4ICz" />
       <node id="1100850602755845260" at="13,60,16,5" concept="7" />
       <node id="1206544689883" at="13,0,18,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1100850602755845261" at="14,87,15,112" />
@@ -764,7 +764,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1206544778849">
     <file name="InstanceOfExpression_DataFlow.java">
       <node id="1206544781508" at="13,60,14,114" concept="4" />
-      <node id="1206544778849" at="18,0,19,0" concept="13" trace="leftExpression$dnS9" />
+      <node id="1206544778849" at="18,0,19,0" concept="13" trace="leftExpression$StkV" />
       <node id="1206544778849" at="13,0,16,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1206544778851" at="13,60,14,114" />
       <scope id="1206544778849" at="13,0,16,0">
@@ -777,7 +777,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1206987106933">
     <file name="LocalVariableDeclarationStatement_DataFlow.java">
       <node id="1206987122881" at="13,60,14,124" concept="4" />
-      <node id="1206987106933" at="18,0,19,0" concept="13" trace="localVariableDeclaration$cjR0" />
+      <node id="1206987106933" at="18,0,19,0" concept="13" trace="localVariableDeclaration$RpjM" />
       <node id="1206987106933" at="13,0,16,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1206987106935" at="13,60,14,124" />
       <scope id="1206987106933" at="13,0,16,0">
@@ -792,7 +792,7 @@
       <node id="1206990208534" at="13,60,14,127" concept="4" />
       <node id="1206987174847" at="15,90,16,113" concept="4" />
       <node id="1206987180651" at="16,113,17,222" concept="4" />
-      <node id="1206987156907" at="22,0,23,0" concept="13" trace="initializer$no3R" />
+      <node id="1206987156907" at="22,0,23,0" concept="13" trace="initializer$2twD" />
       <node id="1206987165525" at="14,127,18,5" concept="7" />
       <node id="1206987156907" at="13,0,20,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1206987165527" at="15,90,17,222" />
@@ -807,7 +807,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1206987602762">
     <file name="BaseMethodDeclaration_DataFlow.java">
       <node id="1206987605109" at="13,60,14,104" concept="4" />
-      <node id="1206987602762" at="18,0,19,0" concept="13" trace="body$qspy" />
+      <node id="1206987602762" at="18,0,19,0" concept="13" trace="body$5xQk" />
       <node id="1206987602762" at="13,0,16,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1206987602764" at="13,60,14,104" />
       <scope id="1206987602762" at="13,0,16,0">
@@ -820,7 +820,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1207060493473">
     <file name="StaticMethodCall_DataFlow.java">
       <node id="1207060514928" at="14,98,15,47" concept="4" />
-      <node id="1207060493473" at="20,0,21,0" concept="13" trace="actualArgument$ItKJ" />
+      <node id="1207060493473" at="20,0,21,0" concept="13" trace="actualArgument$pzdx" />
       <node id="1207060495936" at="13,60,16,5" concept="6" />
       <node id="1207060493473" at="13,0,18,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1207060495940" at="14,98,15,47" />
@@ -838,7 +838,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1207075974495">
     <file name="NotExpression_DataFlow.java">
       <node id="1207075977498" at="13,60,14,110" concept="4" />
-      <node id="1207075974495" at="18,0,19,0" concept="13" trace="expression$Lq8V" />
+      <node id="1207075974495" at="18,0,19,0" concept="13" trace="expression$sv_H" />
       <node id="1207075974495" at="13,0,16,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1207075974497" at="13,60,14,110" />
       <scope id="1207075974495" at="13,0,16,0">
@@ -852,8 +852,8 @@
     <file name="CatchClause_DataFlow.java">
       <node id="1207140823404" at="13,60,14,198" concept="4" />
       <node id="1207140829927" at="14,198,15,109" concept="4" />
-      <node id="1207140821807" at="19,0,20,0" concept="13" trace="throwable$T0lV" />
-      <node id="1207140821807" at="20,0,21,0" concept="13" trace="catchBody$T0$W" />
+      <node id="1207140821807" at="19,0,20,0" concept="13" trace="throwable$$5MH" />
+      <node id="1207140821807" at="20,0,21,0" concept="13" trace="catchBody$$61I" />
       <node id="1207140821807" at="13,0,17,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1207140821809" at="13,60,15,109" />
       <scope id="1207140821807" at="13,0,17,0">
@@ -866,7 +866,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1207556563737">
     <file name="InstanceMethodCallOperation_DataFlow.java">
       <node id="1207556578657" at="14,98,15,47" concept="4" />
-      <node id="1207556563737" at="20,0,21,0" concept="13" trace="actualArgument$ItKJ" />
+      <node id="1207556563737" at="20,0,21,0" concept="13" trace="actualArgument$pzdx" />
       <node id="1207556566318" at="13,60,16,5" concept="6" />
       <node id="1207556563737" at="13,0,18,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1207556566322" at="14,98,15,47" />
@@ -884,7 +884,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1207556861986">
     <file name="ArrayCreator_DataFlow.java">
       <node id="1207556869336" at="15,133,16,54" concept="4" />
-      <node id="1207556861986" at="21,0,22,0" concept="13" trace="dimensionExpression$YBE1" />
+      <node id="1207556861986" at="21,0,22,0" concept="13" trace="dimensionExpression$DH6N" />
       <node id="1209401534129" at="14,60,17,5" concept="6" />
       <node id="1207556861986" at="14,0,19,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1209401534132" at="15,133,16,54" />
@@ -902,7 +902,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1207557107230">
     <file name="ArrayCreatorWithInitializer_DataFlow.java">
       <node id="1207557118621" at="14,99,15,53" concept="4" />
-      <node id="1207557107230" at="20,0,21,0" concept="13" trace="initValue$pEGf" />
+      <node id="1207557107230" at="20,0,21,0" concept="13" trace="initValue$4K91" />
       <node id="1207557109799" at="13,60,16,5" concept="6" />
       <node id="1207557107230" at="13,0,18,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1207557109803" at="14,99,15,53" />
@@ -920,7 +920,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1207558448518">
     <file name="InstanceInitializer_DataFlow.java">
       <node id="1207558451899" at="13,60,14,113" concept="4" />
-      <node id="1207558448518" at="18,0,19,0" concept="13" trace="statementList$$xmE" />
+      <node id="1207558448518" at="18,0,19,0" concept="13" trace="statementList$fANs" />
       <node id="1207558448518" at="13,0,16,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1207558448520" at="13,60,14,113" />
       <scope id="1207558448518" at="13,0,16,0">
@@ -937,9 +937,9 @@
       <node id="1207558718604" at="17,5,18,232" concept="4" />
       <node id="1207558740566" at="19,95,20,54" concept="4" />
       <node id="1207558749370" at="21,5,22,112" concept="4" />
-      <node id="1207558671026" at="26,0,27,0" concept="13" trace="expression$XdXc" />
-      <node id="1207558671026" at="27,0,28,0" concept="13" trace="case$tKvS" />
-      <node id="1207558671026" at="28,0,29,0" concept="13" trace="defaultBlock$bJ1m" />
+      <node id="1207558671026" at="26,0,27,0" concept="13" trace="expression$CjpY" />
+      <node id="1207558671026" at="27,0,28,0" concept="13" trace="case$8PWE" />
+      <node id="1207558671026" at="28,0,29,0" concept="13" trace="defaultBlock$QOu8" />
       <node id="1207558684696" at="14,110,17,5" concept="6" />
       <node id="1207558728441" at="18,232,21,5" concept="6" />
       <node id="1207558671026" at="13,0,24,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
@@ -962,7 +962,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1207559189249">
     <file name="SwitchCase_DataFlow.java">
       <node id="1207559196527" at="13,60,14,104" concept="4" />
-      <node id="1207559189249" at="18,0,19,0" concept="13" trace="body$qFOU" />
+      <node id="1207559189249" at="18,0,19,0" concept="13" trace="body$5LhG" />
       <node id="1207559189249" at="13,0,16,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1207559189251" at="13,60,14,104" />
       <scope id="1207559189249" at="13,0,16,0">
@@ -975,7 +975,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1210936137812">
     <file name="GenericNewExpression_DataFlow.java">
       <node id="1210936143671" at="13,60,14,107" concept="4" />
-      <node id="1210936137812" at="18,0,19,0" concept="13" trace="creator$Wnha" />
+      <node id="1210936137812" at="18,0,19,0" concept="13" trace="creator$BsHW" />
       <node id="1210936137812" at="13,0,16,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1210936137814" at="13,60,14,107" />
       <scope id="1210936137812" at="13,0,16,0">
@@ -1005,11 +1005,11 @@
       <node id="1220273846014" at="34,137,35,48" concept="4" />
       <node id="36748822578041384" at="37,142,38,48" concept="4" />
       <node id="9026942911488182287" at="40,160,41,60" concept="4" />
-      <node id="1214499184018" at="46,0,47,0" concept="13" trace="cls$d4Mk" />
-      <node id="1214499184018" at="47,0,48,0" concept="13" trace="body$qspy" />
-      <node id="1214499184018" at="48,0,49,0" concept="13" trace="parameter$RxPz" />
-      <node id="1214499184018" at="49,0,50,0" concept="13" trace="actualArgument$ItKJ" />
-      <node id="1214499184018" at="53,0,54,0" concept="13" trace="BaseMethodDeclaration$RR" />
+      <node id="1214499184018" at="46,0,47,0" concept="13" trace="cls$Saf6" />
+      <node id="1214499184018" at="47,0,48,0" concept="13" trace="body$5xQk" />
+      <node id="1214499184018" at="48,0,49,0" concept="13" trace="parameter$yBil" />
+      <node id="1214499184018" at="49,0,50,0" concept="13" trace="actualArgument$pzdx" />
+      <node id="1214499184018" at="53,0,54,0" concept="13" trace="BaseMethodDeclaration$kD" />
       <node id="5365068808390637624" at="22,60,25,5" concept="7" />
       <node id="1214502101968" at="27,64,30,5" concept="6" />
       <node id="1214502325565" at="30,5,33,5" concept="6" />
@@ -1057,10 +1057,10 @@
       <node id="1215696303826" at="22,108,23,309" concept="4" />
       <node id="9026942911488367252" at="24,12,25,108" concept="4" />
       <node id="1215696303841" at="25,108,26,108" concept="4" />
-      <node id="1215696302779" at="31,0,32,0" concept="13" trace="lValue$LjSW" />
-      <node id="1215696302779" at="32,0,33,0" concept="13" trace="variableDeclaration$7WwU" />
-      <node id="1215696302779" at="33,0,34,0" concept="13" trace="rValue$LkmY" />
-      <node id="1215696302779" at="37,0,38,0" concept="13" trace="VariableReference$sQ" />
+      <node id="1215696302779" at="31,0,32,0" concept="13" trace="lValue$splI" />
+      <node id="1215696302779" at="32,0,33,0" concept="13" trace="variableDeclaration$N1XG" />
+      <node id="1215696302779" at="33,0,34,0" concept="13" trace="rValue$spNK" />
+      <node id="1215696302779" at="37,0,38,0" concept="13" trace="VariableReference$TC" />
       <node id="1215696315065" at="18,136,21,7" concept="7" />
       <node id="1215696303839" at="24,10,27,5" concept="1" />
       <node id="1215696303813" at="17,60,27,5" concept="7" />
@@ -1080,7 +1080,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1217516459747">
     <file name="BaseMethodCall_DataFlow.java">
       <node id="1217516462662" at="14,98,15,47" concept="4" />
-      <node id="1217516459747" at="20,0,21,0" concept="13" trace="actualArgument$ItKJ" />
+      <node id="1217516459747" at="20,0,21,0" concept="13" trace="actualArgument$pzdx" />
       <node id="1217516462655" at="13,60,16,5" concept="6" />
       <node id="1217516459747" at="13,0,18,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1217516462661" at="14,98,15,47" />
@@ -1109,7 +1109,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1221737454577">
     <file name="StaticInitializer_DataFlow.java">
       <node id="1221737459121" at="13,60,14,113" concept="4" />
-      <node id="1221737454577" at="18,0,19,0" concept="13" trace="statementList$UAQw" />
+      <node id="1221737454577" at="18,0,19,0" concept="13" trace="statementList$_Gji" />
       <node id="1221737454577" at="13,0,16,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1221737454579" at="13,60,14,113" />
       <scope id="1221737454577" at="13,0,16,0">
@@ -1122,7 +1122,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1221825780289">
     <file name="ConceptFunction_DataFlow.java">
       <node id="1222445046282" at="13,60,14,104" concept="4" />
-      <node id="1221825780289" at="18,0,19,0" concept="13" trace="body$z0FY" />
+      <node id="1221825780289" at="18,0,19,0" concept="13" trace="body$e68K" />
       <node id="1221825780289" at="13,0,16,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1221825780291" at="13,60,14,104" />
       <scope id="1221825780289" at="13,0,16,0">
@@ -1153,9 +1153,9 @@
       <node id="1225271597114" at="13,60,14,107" concept="4" />
       <node id="1225271597125" at="15,87,16,112" concept="4" />
       <node id="1225271597136" at="18,85,19,110" concept="4" />
-      <node id="1225271597111" at="24,0,25,0" concept="13" trace="operand$Ox60" />
-      <node id="1225271597111" at="25,0,26,0" concept="13" trace="startIndex$Oxl1" />
-      <node id="1225271597111" at="26,0,27,0" concept="13" trace="endIndex$Ox$2" />
+      <node id="1225271597111" at="24,0,25,0" concept="13" trace="operand$vAyM" />
+      <node id="1225271597111" at="25,0,26,0" concept="13" trace="startIndex$vALN" />
+      <node id="1225271597111" at="26,0,27,0" concept="13" trace="endIndex$vB0O" />
       <node id="1225271597118" at="14,107,17,5" concept="7" />
       <node id="1225271597129" at="17,5,20,5" concept="7" />
       <node id="1225271597111" at="13,0,22,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
@@ -1172,7 +1172,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1226075737918">
     <file name="BitwiseNotExpression_DataFlow.java">
       <node id="1226075741369" at="13,60,14,110" concept="4" />
-      <node id="1226075737918" at="18,0,19,0" concept="13" trace="expression$TSjn" />
+      <node id="1226075737918" at="18,0,19,0" concept="13" trace="expression$$XK9" />
       <node id="1226075737918" at="13,0,16,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1226075737920" at="13,60,14,110" />
       <scope id="1226075737918" at="13,0,16,0">
@@ -1186,7 +1186,7 @@
     <file name="AbstractUnaryNumberOperation_DataFlow.java">
       <node id="1239714975448" at="13,60,14,110" concept="4" />
       <node id="1239714982018" at="14,110,15,127" concept="4" />
-      <node id="1239714962884" at="19,0,20,0" concept="13" trace="expression$NMtu" />
+      <node id="1239714962884" at="19,0,20,0" concept="13" trace="expression$uRUg" />
       <node id="1239714962884" at="13,0,17,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="1239714962886" at="13,60,15,127" />
       <scope id="1239714962884" at="13,0,17,0">
@@ -1198,8 +1198,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1265678854311165373">
     <file name="NullableUtil.java">
-      <node id="1265678854311176061" at="37,126,38,75" concept="10" />
-      <node id="1265678854311176079" at="40,127,41,74" concept="10" />
+      <node id="1265678854311176061" at="37,125,38,74" concept="10" />
+      <node id="1265678854311176079" at="40,126,41,73" concept="10" />
       <node id="1265678854311176086" at="42,5,43,16" concept="10" />
       <node id="7564982745305751627" at="46,43,47,18" concept="10" />
       <node id="3906759656538347729" at="49,44,50,18" concept="10" />
@@ -1239,31 +1239,31 @@
       <node id="3906759656537232916" at="138,77,139,186" concept="10" />
       <node id="4235809288654148160" at="141,5,142,16" concept="10" />
       <node id="3906759656537229091" at="142,16,143,0" concept="12" />
-      <node id="1265678854311165373" at="147,0,148,0" concept="13" trace="leftExpression$lndx" />
-      <node id="1265678854311165373" at="148,0,149,0" concept="13" trace="rightExpression$li3b" />
-      <node id="1265678854311165373" at="149,0,150,0" concept="13" trace="operation$_mGS" />
-      <node id="1265678854311165373" at="150,0,151,0" concept="13" trace="operand$P1i5" />
-      <node id="1265678854311165373" at="151,0,152,0" concept="13" trace="baseMethodDeclaration$ItxI" />
-      <node id="1265678854311165373" at="152,0,153,0" concept="13" trace="actualArgument$ItKJ" />
-      <node id="1265678854311165373" at="153,0,154,0" concept="13" trace="parameter$qsax" />
-      <node id="1265678854311165373" at="154,0,155,0" concept="13" trace="annotation$4YGW" />
-      <node id="1265678854311165373" at="155,0,156,0" concept="13" trace="annotation$lXdy" />
-      <node id="1265678854311165373" at="156,0,157,0" concept="13" trace="condition$qL$l" />
-      <node id="1265678854311165373" at="157,0,158,0" concept="13" trace="condition$5$S0" />
-      <node id="1265678854311165373" at="158,0,159,0" concept="13" trace="variableDeclaration$7WwU" />
-      <node id="1265678854311165373" at="162,0,163,0" concept="13" trace="NullLiteral$q4" />
-      <node id="1265678854311165373" at="163,0,164,0" concept="13" trace="DotExpression$6a" />
-      <node id="1265678854311165373" at="164,0,165,0" concept="13" trace="GetSizeOperation$oi" />
-      <node id="1265678854311165373" at="165,0,166,0" concept="13" trace="IMethodCall$ln" />
-      <node id="1265678854311165373" at="166,0,167,0" concept="13" trace="INamedConcept$nV" />
-      <node id="1265678854311165373" at="167,0,168,0" concept="13" trace="Expression$TP" />
-      <node id="1265678854311165373" at="168,0,169,0" concept="13" trace="EqualsExpression$lT" />
-      <node id="1265678854311165373" at="169,0,170,0" concept="13" trace="IfStatement$pi" />
-      <node id="1265678854311165373" at="170,0,171,0" concept="13" trace="WhileStatement$9K" />
-      <node id="1265678854311165373" at="171,0,172,0" concept="13" trace="BinaryOperation$vf" />
-      <node id="1265678854311165373" at="172,0,173,0" concept="13" trace="NotEqualsExpression$Ib" />
-      <node id="1265678854311165373" at="173,0,174,0" concept="13" trace="VariableReference$sQ" />
-      <node id="1265678854311165373" at="177,0,178,0" concept="13" trace="name$lA7v" />
+      <node id="1265678854311165373" at="147,0,148,0" concept="13" trace="leftExpression$sEj" />
+      <node id="1265678854311165373" at="148,0,149,0" concept="13" trace="rightExpression$nvX" />
+      <node id="1265678854311165373" at="149,0,150,0" concept="13" trace="operation$gs9E" />
+      <node id="1265678854311165373" at="150,0,151,0" concept="13" trace="operand$w6IR" />
+      <node id="1265678854311165373" at="151,0,152,0" concept="13" trace="baseMethodDeclaration$pyYw" />
+      <node id="1265678854311165373" at="152,0,153,0" concept="13" trace="actualArgument$pzdx" />
+      <node id="1265678854311165373" at="153,0,154,0" concept="13" trace="parameter$5xBj" />
+      <node id="1265678854311165373" at="154,0,155,0" concept="13" trace="annotation$K49I" />
+      <node id="1265678854311165373" at="155,0,156,0" concept="13" trace="annotation$12Ek" />
+      <node id="1265678854311165373" at="156,0,157,0" concept="13" trace="condition$5R17" />
+      <node id="1265678854311165373" at="157,0,158,0" concept="13" trace="condition$KEkM" />
+      <node id="1265678854311165373" at="158,0,159,0" concept="13" trace="variableDeclaration$N1XG" />
+      <node id="1265678854311165373" at="162,0,163,0" concept="13" trace="NullLiteral$QQ" />
+      <node id="1265678854311165373" at="163,0,164,0" concept="13" trace="DotExpression$yW" />
+      <node id="1265678854311165373" at="164,0,165,0" concept="13" trace="GetSizeOperation$A_" />
+      <node id="1265678854311165373" at="165,0,166,0" concept="13" trace="IMethodCall$M9" />
+      <node id="1265678854311165373" at="166,0,167,0" concept="13" trace="INamedConcept$Kd" />
+      <node id="1265678854311165373" at="167,0,168,0" concept="13" trace="Expression$mB" />
+      <node id="1265678854311165373" at="168,0,169,0" concept="13" trace="EqualsExpression$MF" />
+      <node id="1265678854311165373" at="169,0,170,0" concept="13" trace="IfStatement$Q4" />
+      <node id="1265678854311165373" at="170,0,171,0" concept="13" trace="WhileStatement$Ay" />
+      <node id="1265678854311165373" at="171,0,172,0" concept="13" trace="BinaryOperation$W1" />
+      <node id="1265678854311165373" at="172,0,173,0" concept="13" trace="NotEqualsExpression$aX" />
+      <node id="1265678854311165373" at="173,0,174,0" concept="13" trace="VariableReference$TC" />
+      <node id="1265678854311165373" at="177,0,178,0" concept="13" trace="name$MnvL" />
       <node id="1265678854311165375" at="33,0,35,0" concept="2" trace="NullableUtil#()V" />
       <node id="741163781874558573" at="85,22,87,17" concept="1" />
       <node id="1265678854311176045" at="36,54,39,5" concept="7" />
@@ -1299,8 +1299,8 @@
       <node id="741163781871923074" at="63,5,94,5" concept="7" />
       <node id="3906759656536916321" at="60,0,97,0" concept="14" trace="isNullableMethodCall#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/baseLanguage/dataFlow/NullableState;)Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_2;" />
       <scope id="1265678854311165378" at="33,25,33,25" />
-      <scope id="1265678854311176047" at="37,126,38,75" />
-      <scope id="1265678854311176078" at="40,127,41,74" />
+      <scope id="1265678854311176047" at="37,125,38,74" />
+      <scope id="1265678854311176078" at="40,126,41,73" />
       <scope id="7564982745305751626" at="46,43,47,18" />
       <scope id="3791846458263577276" at="49,44,50,18" />
       <scope id="3791846458263577274" at="54,330,55,113" />
@@ -1434,8 +1434,8 @@
       <node id="4235809288651577807" at="86,40,87,72" concept="4" />
       <node id="4235809288651576914" at="91,5,92,0" concept="12" />
       <node id="1383888600188764400" at="92,0,93,0" concept="12" />
-      <node id="1383888600185289441" at="97,0,98,0" concept="13" trace="EqualsExpression$lT" />
-      <node id="1383888600185289441" at="98,0,99,0" concept="13" trace="IConditional$bU" />
+      <node id="1383888600185289441" at="97,0,98,0" concept="13" trace="EqualsExpression$MF" />
+      <node id="1383888600185289441" at="98,0,99,0" concept="13" trace="IConditional$CG" />
       <node id="1383888600185289441" at="23,0,26,0" concept="8" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1383888600185302945" at="27,62,30,5" concept="7" />
       <node id="4235809288651526468" at="30,5,33,5" concept="7" />
@@ -1519,7 +1519,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/2166452585249271024">
     <file name="FinallyClause_DataFlow.java">
       <node id="2166452585249273148" at="13,60,14,111" concept="4" />
-      <node id="2166452585249271024" at="18,0,19,0" concept="13" trace="finallyBody$XM3W" />
+      <node id="2166452585249271024" at="18,0,19,0" concept="13" trace="finallyBody$CRwI" />
       <node id="2166452585249271024" at="13,0,16,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="2166452585249271026" at="13,60,14,111" />
       <scope id="2166452585249271024" at="13,0,16,0">
@@ -1532,7 +1532,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/2359846675287639236">
     <file name="FieldReferenceOperation_DataFlow.java">
       <node id="2359846675287640624" at="12,60,13,210" concept="4" />
-      <node id="2359846675287639236" at="17,0,18,0" concept="13" trace="fieldDeclaration$229u" />
+      <node id="2359846675287639236" at="17,0,18,0" concept="13" trace="fieldDeclaration$H7Ag" />
       <node id="2359846675287639236" at="12,0,15,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="2359846675287639238" at="12,60,13,210" />
       <scope id="2359846675287639236" at="12,0,15,0">
@@ -1587,13 +1587,13 @@
       <node id="3383816410303360139" at="84,140,85,40" concept="4" />
       <node id="3383816410303360139" at="85,40,86,72" concept="4" />
       <node id="3383816410303271532" at="90,5,91,0" concept="12" />
-      <node id="3383816410303205607" at="95,0,96,0" concept="13" trace="TernaryOperatorExpression$HC" />
-      <node id="3383816410303205607" at="96,0,97,0" concept="13" trace="EqualsExpression$lT" />
-      <node id="3383816410303205607" at="97,0,98,0" concept="13" trace="NotEqualsExpression$Ib" />
-      <node id="3383816410303205607" at="98,0,99,0" concept="13" trace="BinaryOperation$vf" />
-      <node id="3383816410303205607" at="102,0,103,0" concept="13" trace="condition$GrmW" />
-      <node id="3383816410303205607" at="103,0,104,0" concept="13" trace="ifFalse$h5To" />
-      <node id="3383816410303205607" at="104,0,105,0" concept="13" trace="ifTrue$ea$5" />
+      <node id="3383816410303205607" at="95,0,96,0" concept="13" trace="TernaryOperatorExpression$aq" />
+      <node id="3383816410303205607" at="96,0,97,0" concept="13" trace="EqualsExpression$MF" />
+      <node id="3383816410303205607" at="97,0,98,0" concept="13" trace="NotEqualsExpression$aX" />
+      <node id="3383816410303205607" at="98,0,99,0" concept="13" trace="BinaryOperation$W1" />
+      <node id="3383816410303205607" at="102,0,103,0" concept="13" trace="condition$nwNI" />
+      <node id="3383816410303205607" at="103,0,104,0" concept="13" trace="ifFalse$Wbma" />
+      <node id="3383816410303205607" at="104,0,105,0" concept="13" trace="ifTrue$Tg0R" />
       <node id="3383816410303205607" at="22,0,25,0" concept="8" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="3383816410303360085" at="28,112,31,7" concept="7" />
       <node id="3383816410303205607" at="17,0,22,0" concept="8" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -1719,8 +1719,8 @@
       <node id="4235809288651583383" at="84,73,85,140" concept="4" />
       <node id="4235809288651583383" at="85,140,86,40" concept="4" />
       <node id="4235809288651583383" at="86,40,87,72" concept="4" />
-      <node id="3906759656538966364" at="95,0,96,0" concept="13" trace="NotEqualsExpression$Ib" />
-      <node id="3906759656538966364" at="96,0,97,0" concept="13" trace="IConditional$bU" />
+      <node id="3906759656538966364" at="95,0,96,0" concept="13" trace="NotEqualsExpression$aX" />
+      <node id="3906759656538966364" at="96,0,97,0" concept="13" trace="IConditional$CG" />
       <node id="3906759656538966364" at="23,0,26,0" concept="8" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="4235809288651583284" at="27,62,30,5" concept="7" />
       <node id="4235809288651583290" at="30,5,33,5" concept="7" />
@@ -1803,19 +1803,19 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/3906759656539634515">
     <file name="AndExpression_DataFlow.java">
-      <node id="1383888600191194074" at="17,60,18,114" concept="4" />
+      <node id="1383888600191194074" at="17,60,18,113" concept="4" />
       <node id="4235809288649341409" at="19,112,20,239" concept="9" />
       <node id="4235809288649358006" at="21,26,22,53" concept="9" />
       <node id="4235809288649360025" at="23,30,24,183" concept="4" />
       <node id="4235809288649359569" at="25,16,26,184" concept="4" />
-      <node id="4235809288649362338" at="29,5,30,115" concept="4" />
-      <node id="3906759656539634515" at="34,0,35,0" concept="13" trace="leftExpression$lndx" />
-      <node id="3906759656539634515" at="35,0,36,0" concept="13" trace="rightExpression$li3b" />
-      <node id="3906759656539634515" at="39,0,40,0" concept="13" trace="IConditional$bU" />
+      <node id="4235809288649362338" at="29,5,30,114" concept="4" />
+      <node id="3906759656539634515" at="34,0,35,0" concept="13" trace="leftExpression$sEj" />
+      <node id="3906759656539634515" at="35,0,36,0" concept="13" trace="rightExpression$nvX" />
+      <node id="3906759656539634515" at="39,0,40,0" concept="13" trace="IConditional$CG" />
       <node id="4235809288649359767" at="25,14,27,9" concept="1" />
       <node id="4235809288649358760" at="22,53,27,9" concept="7" />
       <node id="4235809288649341989" at="20,239,28,7" concept="7" />
-      <node id="4235809288649328163" at="18,114,29,5" concept="7" />
+      <node id="4235809288649328163" at="18,113,29,5" concept="7" />
       <node id="3906759656539634515" at="17,0,32,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="4235809288649358762" at="23,30,24,183" />
       <scope id="4235809288649359768" at="25,16,26,184" />
@@ -1825,7 +1825,7 @@
       <scope id="4235809288649328165" at="19,112,28,7">
         <var name="point" id="4235809288649341410" />
       </scope>
-      <scope id="3906759656539634517" at="17,60,30,115" />
+      <scope id="3906759656539634517" at="17,60,30,114" />
       <scope id="3906759656539634515" at="17,0,32,0">
         <var name="_context" id="3906759656539634515" />
       </scope>
@@ -1836,19 +1836,19 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/4686003610477990038">
     <file name="OrExpression_DataFlow.java">
-      <node id="4235809288651524133" at="17,60,18,114" concept="4" />
+      <node id="4235809288651524133" at="17,60,18,113" concept="4" />
       <node id="4235809288651524139" at="19,112,20,238" concept="9" />
       <node id="4235809288651524152" at="21,26,22,53" concept="9" />
       <node id="4235809288651524167" at="23,30,24,183" concept="4" />
       <node id="4235809288651524162" at="25,16,26,184" concept="4" />
-      <node id="4235809288651524185" at="29,5,30,115" concept="4" />
-      <node id="4686003610477990038" at="34,0,35,0" concept="13" trace="leftExpression$lndx" />
-      <node id="4686003610477990038" at="35,0,36,0" concept="13" trace="rightExpression$li3b" />
-      <node id="4686003610477990038" at="39,0,40,0" concept="13" trace="IConditional$bU" />
+      <node id="4235809288651524185" at="29,5,30,114" concept="4" />
+      <node id="4686003610477990038" at="34,0,35,0" concept="13" trace="leftExpression$sEj" />
+      <node id="4686003610477990038" at="35,0,36,0" concept="13" trace="rightExpression$nvX" />
+      <node id="4686003610477990038" at="39,0,40,0" concept="13" trace="IConditional$CG" />
       <node id="4235809288651524165" at="25,14,27,9" concept="1" />
       <node id="4235809288651524160" at="22,53,27,9" concept="7" />
       <node id="4235809288651524150" at="20,238,28,7" concept="7" />
-      <node id="4235809288651524137" at="18,114,29,5" concept="7" />
+      <node id="4235809288651524137" at="18,113,29,5" concept="7" />
       <node id="4686003610477990038" at="17,0,32,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="4235809288651524161" at="23,30,24,183" />
       <scope id="4235809288651524166" at="25,16,26,184" />
@@ -1858,7 +1858,7 @@
       <scope id="4235809288651524138" at="19,112,28,7">
         <var name="point" id="4235809288651524140" />
       </scope>
-      <scope id="4686003610477990040" at="17,60,30,115" />
+      <scope id="4686003610477990040" at="17,60,30,114" />
       <scope id="4686003610477990038" at="17,0,32,0">
         <var name="_context" id="4686003610477990038" />
       </scope>
@@ -1870,43 +1870,43 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/5351203823917419908">
     <file name="TryUniversalStatement_DataFlow.java">
       <node id="348420060653816440" at="20,124,21,56" concept="4" />
-      <node id="5252852921988984471" at="23,97,24,175" concept="4" />
-      <node id="5252852921988984479" at="25,9,26,108" concept="4" />
+      <node id="5252852921988984471" at="23,96,24,175" concept="4" />
+      <node id="5252852921988984479" at="25,9,26,107" concept="4" />
       <node id="5252852921988984487" at="28,128,29,21" concept="3" />
       <node id="5252852921988984504" at="33,33,34,239" concept="4" />
       <node id="5252852921988984523" at="40,29,41,207" concept="4" />
-      <node id="5252852921988984527" at="44,97,45,49" concept="4" />
+      <node id="5252852921988984527" at="44,96,45,49" concept="4" />
       <node id="5252852921988984530" at="47,31,48,209" concept="4" />
       <node id="5252852921988984537" at="51,9,52,56" concept="4" />
-      <node id="9156151264222373596" at="55,92,56,135" concept="4" />
+      <node id="9156151264222373596" at="55,91,56,135" concept="4" />
       <node id="9156151264222414865" at="56,135,57,23" concept="4" />
       <node id="9156151264222373596" at="57,23,58,139" concept="4" />
-      <node id="5252852921988984539" at="58,139,59,115" concept="4" />
-      <node id="9156151264222373596" at="59,115,60,138" concept="4" />
+      <node id="5252852921988984539" at="58,139,59,114" concept="4" />
+      <node id="9156151264222373596" at="59,114,60,138" concept="4" />
       <node id="9156151264222415069" at="61,12,62,23" concept="4" />
-      <node id="5351203823917419908" at="67,0,68,0" concept="13" trace="resource$Abww" />
-      <node id="5351203823917419908" at="68,0,69,0" concept="13" trace="catchClause$lKBT" />
-      <node id="5351203823917419908" at="69,0,70,0" concept="13" trace="body$lFey" />
-      <node id="5351203823917419908" at="70,0,71,0" concept="13" trace="finallyClause$lFtz" />
+      <node id="5351203823917419908" at="67,0,68,0" concept="13" trace="resource$hgXi" />
+      <node id="5351203823917419908" at="68,0,69,0" concept="13" trace="catchClause$Q4F" />
+      <node id="5351203823917419908" at="69,0,70,0" concept="13" trace="body$KFk" />
+      <node id="5351203823917419908" at="70,0,71,0" concept="13" trace="finallyClause$KUl" />
       <node id="9156151264222414399" at="61,10,63,5" concept="1" />
       <node id="348420060653816434" at="19,28,22,9" concept="6" />
       <node id="5252852921988984469" at="22,9,25,9" concept="6" />
-      <node id="5252852921988984485" at="27,152,30,11" concept="7" />
+      <node id="5252852921988984485" at="27,151,30,11" concept="7" />
       <node id="5252852921988984503" at="33,0,36,0" concept="8" trace="run#()V" />
       <node id="5252852921988984522" at="40,0,43,0" concept="8" trace="run#()V" />
       <node id="5252852921988984529" at="47,0,50,0" concept="8" trace="run#()V" />
-      <node id="5252852921988984503" at="31,204,36,15" concept="4" />
+      <node id="5252852921988984503" at="31,203,36,15" concept="4" />
       <node id="5252852921988984522" at="38,9,43,11" concept="4" />
       <node id="5252852921988984529" at="45,49,50,13" concept="4" />
       <node id="5252852921988984499" at="30,11,37,11" concept="6" />
       <node id="5252852921988984525" at="43,11,51,9" concept="6" />
       <node id="9156151264222373594" at="54,6,63,5" concept="7" />
-      <node id="5252852921988984483" at="26,108,38,9" concept="6" />
+      <node id="5252852921988984483" at="26,107,38,9" concept="6" />
       <node id="9156151264222242797" at="19,0,54,0" concept="8" trace="invoke#()V" />
       <node id="9156151264222225076" at="17,60,54,6" concept="9" />
       <node id="5351203823917419908" at="17,0,65,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="348420060653816439" at="20,124,21,56" />
-      <scope id="5252852921988984470" at="23,97,24,175" />
+      <scope id="5252852921988984470" at="23,96,24,175" />
       <scope id="5252852921988984486" at="28,128,29,21" />
       <scope id="5252852921988984503" at="33,33,34,239" />
       <scope id="5252852921988984522" at="40,29,41,207" />
@@ -1921,17 +1921,17 @@
       <scope id="5252852921988984503" at="33,0,36,0" />
       <scope id="5252852921988984522" at="40,0,43,0" />
       <scope id="5252852921988984529" at="47,0,50,0" />
-      <scope id="5252852921988984502" at="31,204,36,15" />
-      <scope id="9156151264222373596" at="55,92,60,138" />
-      <scope id="5252852921988984526" at="44,97,50,13" />
+      <scope id="5252852921988984502" at="31,203,36,15" />
+      <scope id="9156151264222373596" at="55,91,60,138" />
+      <scope id="5252852921988984526" at="44,96,50,13" />
       <scope id="5252852921988984499" at="30,11,37,11">
         <var name="catchClause" id="5252852921988984500" />
       </scope>
       <scope id="5252852921988984525" at="43,11,51,9">
         <var name="c" id="5252852921988984535" />
       </scope>
-      <scope id="5252852921988984484" at="27,152,37,11" />
-      <scope id="5252852921988984483" at="26,108,38,9">
+      <scope id="5252852921988984484" at="27,151,37,11" />
+      <scope id="5252852921988984483" at="26,107,38,9">
         <var name="instruction" id="5252852921988984516" />
       </scope>
       <scope id="9156151264222242799" at="19,28,52,56" />
@@ -2076,7 +2076,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/6023428257643051553">
     <file name="AsExpression_DataFlow.java">
       <node id="6023428257643052113" at="13,60,14,110" concept="4" />
-      <node id="6023428257643051553" at="18,0,19,0" concept="13" trace="expression$zzE0" />
+      <node id="6023428257643051553" at="18,0,19,0" concept="13" trace="expression$eD6M" />
       <node id="6023428257643051553" at="13,0,16,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="6023428257643051555" at="13,60,14,110" />
       <scope id="6023428257643051553" at="13,0,16,0">
@@ -2126,8 +2126,8 @@
       <node id="6868777471677432276" at="97,7,98,20" concept="10" />
       <node id="6868777471677432036" at="100,45,101,39" concept="10" />
       <node id="6868777471677432036" at="109,34,110,60" concept="10" />
-      <node id="6868777471677432036" at="115,0,116,0" concept="13" trace="VariableReference$sQ" />
-      <node id="6868777471677432036" at="119,0,120,0" concept="13" trace="variableDeclaration$7WwU" />
+      <node id="6868777471677432036" at="115,0,116,0" concept="13" trace="VariableReference$TC" />
+      <node id="6868777471677432036" at="119,0,120,0" concept="13" trace="variableDeclaration$N1XG" />
       <node id="6868777471677432036" at="43,0,45,0" concept="2" trace="NullableAnalyzer#()V" />
       <node id="6868777471677432036" at="31,0,34,0" concept="2" trace="NullableAnalyzerRunner#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4212311917866530343" at="55,52,58,11" concept="7" />
@@ -2359,9 +2359,9 @@
       <node id="9161080218840690644" at="47,66,48,138" concept="4" />
       <node id="9161080218840690644" at="48,138,49,38" concept="4" />
       <node id="9161080218840690644" at="49,38,50,70" concept="4" />
-      <node id="6868777471677432374" at="57,0,58,0" concept="13" trace="DotExpression$6a" />
-      <node id="6868777471677432374" at="61,0,62,0" concept="13" trace="operation$_mGS" />
-      <node id="6868777471677432374" at="62,0,63,0" concept="13" trace="operand$P1i5" />
+      <node id="6868777471677432374" at="57,0,58,0" concept="13" trace="DotExpression$yW" />
+      <node id="6868777471677432374" at="61,0,62,0" concept="13" trace="operation$gs9E" />
+      <node id="6868777471677432374" at="62,0,63,0" concept="13" trace="operand$w6IR" />
       <node id="6868777471677432374" at="24,0,27,0" concept="8" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="6868777471677432374" at="19,0,24,0" concept="8" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="6868777471677432385" at="30,76,38,9" concept="7" />
@@ -2421,7 +2421,7 @@
       <node id="6868777471677432397" at="29,63,30,136" concept="4" />
       <node id="6868777471677432397" at="30,136,31,36" concept="4" />
       <node id="6868777471677432397" at="31,36,32,68" concept="4" />
-      <node id="6868777471677432394" at="38,0,39,0" concept="13" trace="AbstractCreator$CY" />
+      <node id="6868777471677432394" at="38,0,39,0" concept="13" trace="AbstractCreator$5K" />
       <node id="6868777471677432394" at="20,0,23,0" concept="8" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="6868777471677432394" at="15,0,20,0" concept="8" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="6868777471677432397" at="25,27,33,7" concept="7" />
@@ -2468,12 +2468,12 @@
       <node id="6868777471677432475" at="41,72,42,144" concept="4" />
       <node id="6868777471677432475" at="42,144,43,44" concept="4" />
       <node id="6868777471677432475" at="43,44,44,76" concept="4" />
-      <node id="6868777471677432435" at="54,0,55,0" concept="13" trace="VariableReference$sQ" />
-      <node id="6868777471677432435" at="55,0,56,0" concept="13" trace="FieldDeclaration$Ps" />
-      <node id="6868777471677432435" at="59,0,60,0" concept="13" trace="variableDeclaration$7WwU" />
-      <node id="6868777471677432435" at="60,0,61,0" concept="13" trace="annotation$4YGW" />
-      <node id="6868777471677432435" at="61,0,62,0" concept="13" trace="annotation$lXdy" />
-      <node id="6868777471677432435" at="65,0,66,0" concept="13" trace="name$lA7v" />
+      <node id="6868777471677432435" at="54,0,55,0" concept="13" trace="VariableReference$TC" />
+      <node id="6868777471677432435" at="55,0,56,0" concept="13" trace="FieldDeclaration$ie" />
+      <node id="6868777471677432435" at="59,0,60,0" concept="13" trace="variableDeclaration$N1XG" />
+      <node id="6868777471677432435" at="60,0,61,0" concept="13" trace="annotation$K49I" />
+      <node id="6868777471677432435" at="61,0,62,0" concept="13" trace="annotation$12Ek" />
+      <node id="6868777471677432435" at="65,0,66,0" concept="13" trace="name$MnvL" />
       <node id="6868777471677432435" at="26,0,29,0" concept="8" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="6868777471677432435" at="21,0,26,0" concept="8" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="6868777471677432475" at="37,35,45,15" concept="7" />
@@ -2545,12 +2545,12 @@
       <node id="6868777471677432540" at="55,75,56,142" concept="4" />
       <node id="6868777471677432540" at="56,142,57,42" concept="4" />
       <node id="6868777471677432540" at="57,42,58,74" concept="4" />
-      <node id="6868777471677432514" at="67,0,68,0" concept="13" trace="IMethodCall$ln" />
-      <node id="6868777471677432514" at="68,0,69,0" concept="13" trace="DotExpression$6a" />
-      <node id="6868777471677432514" at="72,0,73,0" concept="13" trace="operation$_mGS" />
-      <node id="6868777471677432514" at="73,0,74,0" concept="13" trace="annotation$lXdy" />
-      <node id="6868777471677432514" at="74,0,75,0" concept="13" trace="baseMethodDeclaration$ItxI" />
-      <node id="6868777471677432514" at="75,0,76,0" concept="13" trace="annotation$4YGW" />
+      <node id="6868777471677432514" at="67,0,68,0" concept="13" trace="IMethodCall$M9" />
+      <node id="6868777471677432514" at="68,0,69,0" concept="13" trace="DotExpression$yW" />
+      <node id="6868777471677432514" at="72,0,73,0" concept="13" trace="operation$gs9E" />
+      <node id="6868777471677432514" at="73,0,74,0" concept="13" trace="annotation$12Ek" />
+      <node id="6868777471677432514" at="74,0,75,0" concept="13" trace="baseMethodDeclaration$pyYw" />
+      <node id="6868777471677432514" at="75,0,76,0" concept="13" trace="annotation$K49I" />
       <node id="6868777471677432514" at="25,0,28,0" concept="8" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="671730757939421402" at="30,28,33,5" concept="17" />
       <node id="6868777471677432514" at="20,0,25,0" concept="8" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -2622,7 +2622,7 @@
       <node id="6868777471677432619" at="29,60,30,136" concept="4" />
       <node id="6868777471677432619" at="30,136,31,36" concept="4" />
       <node id="6868777471677432619" at="31,36,32,68" concept="4" />
-      <node id="6868777471677432616" at="38,0,39,0" concept="13" trace="NullLiteral$q4" />
+      <node id="6868777471677432616" at="38,0,39,0" concept="13" trace="NullLiteral$QQ" />
       <node id="6868777471677432616" at="20,0,23,0" concept="8" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="6868777471677432616" at="15,0,20,0" concept="8" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="6868777471677432619" at="25,27,33,7" concept="7" />
@@ -2674,9 +2674,9 @@
       <node id="6868777471677432655" at="49,69,50,142" concept="4" />
       <node id="6868777471677432655" at="50,142,51,42" concept="4" />
       <node id="6868777471677432655" at="51,42,52,74" concept="4" />
-      <node id="6868777471677432624" at="61,0,62,0" concept="13" trace="VariableDeclaration$xe" />
-      <node id="6868777471677432624" at="65,0,66,0" concept="13" trace="annotation$lXdy" />
-      <node id="6868777471677432624" at="66,0,67,0" concept="13" trace="annotation$4YGW" />
+      <node id="6868777471677432624" at="61,0,62,0" concept="13" trace="VariableDeclaration$Y0" />
+      <node id="6868777471677432624" at="65,0,66,0" concept="13" trace="annotation$12Ek" />
+      <node id="6868777471677432624" at="66,0,67,0" concept="13" trace="annotation$K49I" />
       <node id="6868777471677432624" at="24,0,27,0" concept="8" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="6868777471677432624" at="19,0,24,0" concept="8" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="6868777471677432643" at="32,33,40,13" concept="7" />
@@ -2733,7 +2733,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/7074068829090025540">
     <file name="VariableReference_DataFlow.java">
       <node id="7074068829090025543" at="12,60,13,213" concept="4" />
-      <node id="7074068829090025540" at="17,0,18,0" concept="13" trace="variableDeclaration$7WwU" />
+      <node id="7074068829090025540" at="17,0,18,0" concept="13" trace="variableDeclaration$N1XG" />
       <node id="7074068829090025540" at="12,0,15,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="7074068829090025542" at="12,60,13,213" />
       <scope id="7074068829090025540" at="12,0,15,0">
@@ -2746,7 +2746,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/7282214966977874821">
     <file name="NestedNewExpression_DataFlow.java">
       <node id="7282214966977876524" at="13,60,14,107" concept="4" />
-      <node id="7282214966977874821" at="18,0,19,0" concept="13" trace="creator$Wnha" />
+      <node id="7282214966977874821" at="18,0,19,0" concept="13" trace="creator$BsHW" />
       <node id="7282214966977874821" at="13,0,16,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="7282214966977874823" at="13,60,14,107" />
       <scope id="7282214966977874821" at="13,0,16,0">
@@ -2784,7 +2784,7 @@
       <node id="7597254041024527685" at="66,30,67,234" concept="4" />
       <node id="7597254041024527685" at="67,234,68,199" concept="4" />
       <node id="7597254041024527685" at="68,199,69,24" concept="10" />
-      <node id="7597254041024463759" at="73,0,74,0" concept="13" trace="Statement$ok" />
+      <node id="7597254041024463759" at="73,0,74,0" concept="13" trace="Statement$P6" />
       <node id="7597254041024463761" at="22,0,24,0" concept="2" trace="DataFlowTryCatchUtil#()V" />
       <node id="7597254041024527677" at="33,52,36,13" concept="7" />
       <node id="7597254041024527675" at="32,16,37,11" concept="6" />
@@ -2876,9 +2876,9 @@
       <node id="7701013275659713511" at="57,140,58,40" concept="4" />
       <node id="7701013275659713511" at="58,40,59,72" concept="4" />
       <node id="7701013275659698025" at="63,5,64,86" concept="11" />
-      <node id="7701013275659650163" at="68,0,69,0" concept="13" trace="InstanceOfExpression$JG" />
-      <node id="7701013275659650163" at="69,0,70,0" concept="13" trace="IConditional$bU" />
-      <node id="7701013275659650163" at="73,0,74,0" concept="13" trace="leftExpression$dnS9" />
+      <node id="7701013275659650163" at="68,0,69,0" concept="13" trace="InstanceOfExpression$cu" />
+      <node id="7701013275659650163" at="69,0,70,0" concept="13" trace="IConditional$CG" />
+      <node id="7701013275659650163" at="73,0,74,0" concept="13" trace="leftExpression$StkV" />
       <node id="7701013275659650163" at="25,0,28,0" concept="8" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="7701013275659672240" at="28,53,31,5" concept="7" />
       <node id="7701013275659650163" at="20,0,25,0" concept="8" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -2938,9 +2938,9 @@
       <node id="1503494305073290572" at="18,112,19,319" concept="4" />
       <node id="5706606249112081123" at="19,319,20,318" concept="4" />
       <node id="1503494305073290587" at="21,12,22,112" concept="4" />
-      <node id="7953345580635952572" at="27,0,28,0" concept="13" trace="expression$NMtu" />
-      <node id="7953345580635952572" at="28,0,29,0" concept="13" trace="variableDeclaration$7WwU" />
-      <node id="7953345580635952572" at="32,0,33,0" concept="13" trace="VariableReference$sQ" />
+      <node id="7953345580635952572" at="27,0,28,0" concept="13" trace="expression$uRUg" />
+      <node id="7953345580635952572" at="28,0,29,0" concept="13" trace="variableDeclaration$N1XG" />
+      <node id="7953345580635952572" at="32,0,33,0" concept="13" trace="VariableReference$TC" />
       <node id="1503494305073290585" at="21,10,23,5" concept="1" />
       <node id="1503494305073290566" at="16,60,23,5" concept="7" />
       <node id="7953345580635952572" at="16,0,25,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
@@ -2961,9 +2961,9 @@
       <node id="5706606249112068604" at="18,112,19,318" concept="4" />
       <node id="1503494305073257623" at="19,318,20,319" concept="4" />
       <node id="1503494305073257642" at="21,12,22,112" concept="4" />
-      <node id="7953345580635962927" at="27,0,28,0" concept="13" trace="expression$NMtu" />
-      <node id="7953345580635962927" at="28,0,29,0" concept="13" trace="variableDeclaration$7WwU" />
-      <node id="7953345580635962927" at="32,0,33,0" concept="13" trace="VariableReference$sQ" />
+      <node id="7953345580635962927" at="27,0,28,0" concept="13" trace="expression$uRUg" />
+      <node id="7953345580635962927" at="28,0,29,0" concept="13" trace="variableDeclaration$N1XG" />
+      <node id="7953345580635962927" at="32,0,33,0" concept="13" trace="VariableReference$TC" />
       <node id="1503494305073257636" at="21,10,23,5" concept="1" />
       <node id="1503494305073257605" at="16,60,23,5" concept="7" />
       <node id="7953345580635962927" at="16,0,25,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
@@ -2984,9 +2984,9 @@
       <node id="5706606249112077353" at="18,112,19,318" concept="4" />
       <node id="1503494305073298173" at="19,318,20,319" concept="4" />
       <node id="1503494305073298188" at="21,12,22,112" concept="4" />
-      <node id="7953345580635998630" at="27,0,28,0" concept="13" trace="expression$NMtu" />
-      <node id="7953345580635998630" at="28,0,29,0" concept="13" trace="variableDeclaration$7WwU" />
-      <node id="7953345580635998630" at="32,0,33,0" concept="13" trace="VariableReference$sQ" />
+      <node id="7953345580635998630" at="27,0,28,0" concept="13" trace="expression$uRUg" />
+      <node id="7953345580635998630" at="28,0,29,0" concept="13" trace="variableDeclaration$N1XG" />
+      <node id="7953345580635998630" at="32,0,33,0" concept="13" trace="VariableReference$TC" />
       <node id="1503494305073298186" at="21,10,23,5" concept="1" />
       <node id="1503494305073298167" at="16,60,23,5" concept="7" />
       <node id="7953345580635998630" at="16,0,25,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
@@ -3007,9 +3007,9 @@
       <node id="5706606249112079286" at="18,112,19,318" concept="4" />
       <node id="1503494305073292440" at="19,318,20,319" concept="4" />
       <node id="1503494305073292455" at="21,12,22,112" concept="4" />
-      <node id="7953345580636000125" at="27,0,28,0" concept="13" trace="expression$NMtu" />
-      <node id="7953345580636000125" at="28,0,29,0" concept="13" trace="variableDeclaration$7WwU" />
-      <node id="7953345580636000125" at="32,0,33,0" concept="13" trace="VariableReference$sQ" />
+      <node id="7953345580636000125" at="27,0,28,0" concept="13" trace="expression$uRUg" />
+      <node id="7953345580636000125" at="28,0,29,0" concept="13" trace="variableDeclaration$N1XG" />
+      <node id="7953345580636000125" at="32,0,33,0" concept="13" trace="VariableReference$TC" />
       <node id="1503494305073292453" at="21,10,23,5" concept="1" />
       <node id="1503494305073292434" at="16,60,23,5" concept="7" />
       <node id="7953345580636000125" at="16,0,25,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
@@ -3030,9 +3030,9 @@
       <node id="8142618655170146238" at="20,105,21,51" concept="4" />
       <node id="8142618655170146246" at="23,5,24,133" concept="4" />
       <node id="8142618655170146283" at="25,111,26,135" concept="4" />
-      <node id="8142618655170135552" at="31,0,32,0" concept="13" trace="BaseMethodDeclaration$RR" />
-      <node id="8142618655170135552" at="32,0,33,0" concept="13" trace="IMethodLike$kl" />
-      <node id="8142618655170135552" at="36,0,37,0" concept="13" trace="parameter$qsax" />
+      <node id="8142618655170135552" at="31,0,32,0" concept="13" trace="BaseMethodDeclaration$kD" />
+      <node id="8142618655170135552" at="32,0,33,0" concept="13" trace="IMethodLike$L7" />
+      <node id="8142618655170135552" at="36,0,37,0" concept="13" trace="parameter$5xBj" />
       <node id="8142618655170146232" at="19,121,22,7" concept="6" />
       <node id="8142618655170146281" at="24,133,27,5" concept="7" />
       <node id="8142618655170146223" at="17,60,23,5" concept="7" />
@@ -3058,8 +3058,8 @@
     <file name="MultipleCatchClause_DataFlow.java">
       <node id="8276990574895944485" at="13,60,14,204" concept="4" />
       <node id="8276990574895944489" at="14,204,15,109" concept="4" />
-      <node id="8276990574895944461" at="19,0,20,0" concept="13" trace="throwable$fRlf" />
-      <node id="8276990574895944461" at="20,0,21,0" concept="13" trace="catchBody$fR$g" />
+      <node id="8276990574895944461" at="19,0,20,0" concept="13" trace="throwable$UWM1" />
+      <node id="8276990574895944461" at="20,0,21,0" concept="13" trace="catchBody$UX12" />
       <node id="8276990574895944461" at="13,0,17,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
       <scope id="8276990574895944463" at="13,60,15,109" />
       <scope id="8276990574895944461" at="13,0,17,0">

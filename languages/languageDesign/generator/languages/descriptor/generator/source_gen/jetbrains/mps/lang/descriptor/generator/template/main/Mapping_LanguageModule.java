@@ -47,7 +47,7 @@ public class Mapping_LanguageModule extends MapConfigBase implements TemplateMap
   }
   /*package*/ final class RootMappingRule0 extends MapRootRuleBase implements TemplateRootMappingRule {
     public RootMappingRule0() {
-      super(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "8780540425167303786"), CONCEPTS.LanguageDescriptor$hv, false, false);
+      super(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "8780540425167303786"), CONCEPTS.LanguageDescriptor$uh, false, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -74,6 +74,6 @@ public class Mapping_LanguageModule extends MapConfigBase implements TemplateMap
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LanguageDescriptor$hv = MetaAdapterFactory.getConcept(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x7d2f7947ef1533a5L, "jetbrains.mps.lang.descriptor.structure.LanguageDescriptor");
+    /*package*/ static final SConcept LanguageDescriptor$uh = MetaAdapterFactory.getConcept(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x7d2f7947ef1533a5L, "jetbrains.mps.lang.descriptor.structure.LanguageDescriptor");
   }
 }

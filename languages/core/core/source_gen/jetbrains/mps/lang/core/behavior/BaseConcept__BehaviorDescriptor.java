@@ -66,7 +66,7 @@ public final class BaseConcept__BehaviorDescriptor extends BaseBHDescriptor {
       return 0;
     }
     int metalevel = 0;
-    for (SNode metaLevelChanger : SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.IMetaLevelChanger$8i, false)) {
+    for (SNode metaLevelChanger : SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.IMetaLevelChanger$w$, false)) {
       metalevel += (int) IMetaLevelChanger__BehaviorDescriptor.getMetaLevelChange_idbc0iGlxcsE.invoke(metaLevelChanger);
     }
     return metalevel;
@@ -134,6 +134,6 @@ public final class BaseConcept__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IMetaLevelChanger$8i = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2cc012b1584bd3aL, "jetbrains.mps.lang.core.structure.IMetaLevelChanger");
+    /*package*/ static final SInterfaceConcept IMetaLevelChanger$w$ = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2cc012b1584bd3aL, "jetbrains.mps.lang.core.structure.IMetaLevelChanger");
   }
 }

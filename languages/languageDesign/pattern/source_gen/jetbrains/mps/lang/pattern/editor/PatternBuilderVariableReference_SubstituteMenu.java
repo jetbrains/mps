@@ -28,7 +28,7 @@ public class PatternBuilderVariableReference_SubstituteMenu extends SubstituteMe
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_ya5k1m_a(), CONCEPTS.PatternBuilderVariableReference$Sm));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_ya5k1m_a(), CONCEPTS.PatternBuilderVariableReference$5T));
     return result;
   }
 
@@ -49,7 +49,7 @@ public class PatternBuilderVariableReference_SubstituteMenu extends SubstituteMe
 
     public SMP_ReferenceScope_ya5k1m_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.PatternBuilderVariableReference$Sm, LINKS.declaration$qWD2);
+      super((SAbstractConcept) CONCEPTS.PatternBuilderVariableReference$5T, LINKS.declaration$vkQ_);
     }
     @NotNull
     @Override
@@ -82,14 +82,14 @@ public class PatternBuilderVariableReference_SubstituteMenu extends SubstituteMe
       @Override
       public String getMatchingText(String pattern) {
         if (pattern.startsWith("%")) {
-          return "%" + SPropertyOperations.getString(referencedNode, PROPS.name$lA7v);
+          return "%" + SPropertyOperations.getString(referencedNode, PROPS.name$MnvL);
         } else {
-          return SPropertyOperations.getString(referencedNode, PROPS.name$lA7v);
+          return SPropertyOperations.getString(referencedNode, PROPS.name$MnvL);
         }
       }
       @Override
       public String getVisibleMatchingText(String pattern) {
-        return SPropertyOperations.getString(referencedNode, PROPS.name$lA7v);
+        return SPropertyOperations.getString(referencedNode, PROPS.name$MnvL);
       }
 
       @Override
@@ -100,14 +100,14 @@ public class PatternBuilderVariableReference_SubstituteMenu extends SubstituteMe
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PatternBuilderVariableReference$Sm = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x26c46d140aa61085L, "jetbrains.mps.lang.pattern.structure.PatternBuilderVariableReference");
+    /*package*/ static final SConcept PatternBuilderVariableReference$5T = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x26c46d140aa61085L, "jetbrains.mps.lang.pattern.structure.PatternBuilderVariableReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$qWD2 = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x26c46d140aa61085L, 0x26c46d140aa61088L, "declaration");
+    /*package*/ static final SReferenceLink declaration$vkQ_ = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x26c46d140aa61085L, 0x26c46d140aa61088L, "declaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

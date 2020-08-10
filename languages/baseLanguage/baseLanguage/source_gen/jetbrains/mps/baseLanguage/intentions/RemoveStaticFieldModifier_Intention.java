@@ -43,7 +43,7 @@ public final class RemoveStaticFieldModifier_Intention extends AbstractIntention
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    if (SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$IY, false, false) == null) {
+    if (SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false) == null) {
       return false;
     }
     return true;
@@ -68,14 +68,14 @@ public final class RemoveStaticFieldModifier_Intention extends AbstractIntention
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      final SNode field = SNodeFactoryOperations.insertNewNextSiblingChild(node, CONCEPTS.FieldDeclaration$Ps);
-      SLinkOperations.setTarget(field, LINKS.type$uWuc, SLinkOperations.getTarget(node, LINKS.type$uWuc));
-      SLinkOperations.setTarget(field, LINKS.visibility$jt1o, SLinkOperations.getTarget(node, LINKS.visibility$jt1o));
-      SLinkOperations.setTarget(field, LINKS.initializer$no3R, SLinkOperations.getTarget(node, LINKS.initializer$no3R));
-      SPropertyOperations.set(field, PROPS.name$lA7v, SPropertyOperations.getString(node, PROPS.name$lA7v));
-      SPropertyOperations.set(field, PROPS.isFinal$_qt3, SPropertyOperations.getBoolean(node, PROPS.isFinal$_qt3));
-      ListSequence.fromList(SLinkOperations.getChildren(field, LINKS.annotation$4YGW)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.annotation$4YGW)));
-      AttributeOperations.setAttribute(field, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$I8), AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$I8)));
+      final SNode field = SNodeFactoryOperations.insertNewNextSiblingChild(node, CONCEPTS.FieldDeclaration$ie);
+      SLinkOperations.setTarget(field, LINKS.type$a1UY, SLinkOperations.getTarget(node, LINKS.type$a1UY));
+      SLinkOperations.setTarget(field, LINKS.visibility$Yyua, SLinkOperations.getTarget(node, LINKS.visibility$Yyua));
+      SLinkOperations.setTarget(field, LINKS.initializer$2twD, SLinkOperations.getTarget(node, LINKS.initializer$2twD));
+      SPropertyOperations.set(field, PROPS.name$MnvL, SPropertyOperations.getString(node, PROPS.name$MnvL));
+      SPropertyOperations.set(field, PROPS.isFinal$gvTP, SPropertyOperations.getBoolean(node, PROPS.isFinal$gvTP));
+      ListSequence.fromList(SLinkOperations.getChildren(field, LINKS.annotation$K49I)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.annotation$K49I)));
+      AttributeOperations.setAttribute(field, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl), AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl)));
       MemberDeclarationRefactoringUtil.rewireFieldReferences(node, field);
       SNodeOperations.deleteNode(node);
       editorContext.selectWRTFocusPolicy(field);
@@ -87,20 +87,20 @@ public final class RemoveStaticFieldModifier_Intention extends AbstractIntention
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept FieldDeclaration$Ps = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
-    /*package*/ static final SConcept FieldDocComment$I8 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dc44bf2L, "jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept FieldDeclaration$ie = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
+    /*package*/ static final SConcept FieldDocComment$wl = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dc44bf2L, "jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink initializer$2twD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink annotation$K49I = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$gvTP = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 }

@@ -58,7 +58,7 @@ public class ClassifierMember_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_Group_iuuuam_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return !(SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.IncompleteMemberDeclaration$QW));
+      return !(SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.IncompleteMemberDeclaration$jI));
     }
     @NotNull
     @Override
@@ -97,12 +97,12 @@ public class ClassifierMember_SubstituteMenu extends SubstituteMenuBase {
         return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguage.editor.StaticFieldInClassifier");
       }
       private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-        return CONCEPTS.ClassifierMember$9F;
+        return CONCEPTS.ClassifierMember$At;
       }
     }
     public class SMP_Subconcepts_iuuuam_b0 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
       protected Collection getConcepts(final SubstituteMenuContext _context) {
-        return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ClassifierMember$9F);
+        return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ClassifierMember$At);
       }
       @NotNull
       @Override
@@ -143,7 +143,7 @@ public class ClassifierMember_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguage.editor.ctor_IncompleteMember");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.ClassifierMember$9F;
+      return CONCEPTS.ClassifierMember$At;
     }
   }
   public class SMP_Include_iuuuam_c extends IncludeSubstituteMenuSubstituteMenuPart {
@@ -167,7 +167,7 @@ public class ClassifierMember_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguage.editor.ctor_MemberBasedOnIncomplete");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.ClassifierMember$9F;
+      return CONCEPTS.ClassifierMember$At;
     }
   }
   public class SMP_Include_iuuuam_d extends IncludeSubstituteMenuSubstituteMenuPart {
@@ -191,7 +191,7 @@ public class ClassifierMember_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguage.editor.ctor_InterfaceMemberBasedOnIncomplete");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.ClassifierMember$9F;
+      return CONCEPTS.ClassifierMember$At;
     }
   }
   public class SMP_Include_iuuuam_e extends IncludeSubstituteMenuSubstituteMenuPart {
@@ -215,12 +215,12 @@ public class ClassifierMember_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguage.editor.ctor_IncompleteMemberInInterface");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.ClassifierMember$9F;
+      return CONCEPTS.ClassifierMember$At;
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IncompleteMemberDeclaration$QW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, "jetbrains.mps.baseLanguage.structure.IncompleteMemberDeclaration");
-    /*package*/ static final SInterfaceConcept ClassifierMember$9F = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember");
+    /*package*/ static final SConcept IncompleteMemberDeclaration$jI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, "jetbrains.mps.baseLanguage.structure.IncompleteMemberDeclaration");
+    /*package*/ static final SInterfaceConcept ClassifierMember$At = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember");
   }
 }

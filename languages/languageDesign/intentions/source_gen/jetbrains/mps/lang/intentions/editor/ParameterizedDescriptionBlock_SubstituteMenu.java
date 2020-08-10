@@ -44,7 +44,7 @@ public class ParameterizedDescriptionBlock_SubstituteMenu extends SubstituteMenu
 
   public class SMP_Subconcepts_npgxx3_a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ParameterizedDescriptionBlock$L2);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ParameterizedDescriptionBlock$xv);
     }
     @NotNull
     @Override
@@ -65,6 +65,6 @@ public class ParameterizedDescriptionBlock_SubstituteMenu extends SubstituteMenu
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ParameterizedDescriptionBlock$L2 = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x1925e8184af03861L, "jetbrains.mps.lang.intentions.structure.ParameterizedDescriptionBlock");
+    /*package*/ static final SConcept ParameterizedDescriptionBlock$xv = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x1925e8184af03861L, "jetbrains.mps.lang.intentions.structure.ParameterizedDescriptionBlock");
   }
 }

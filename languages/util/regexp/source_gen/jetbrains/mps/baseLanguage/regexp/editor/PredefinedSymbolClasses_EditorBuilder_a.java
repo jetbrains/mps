@@ -102,10 +102,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.symbolClass$JDt7;
+      return LINKS.symbolClass$z75V;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.PredefinedSymbolClassDeclaration$7c;
+      return CONCEPTS.PredefinedSymbolClassDeclaration$K0;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -115,7 +115,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(symbolClassListHandler_ry768y_c0.this.getNode(), LINKS.symbolClass$JDt7));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(symbolClassListHandler_ry768y_c0.this.getNode(), LINKS.symbolClass$z75V));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -167,10 +167,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink symbolClass$JDt7 = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178e5efc7L, 0x11178e61ee7L, "symbolClass");
+    /*package*/ static final SContainmentLink symbolClass$z75V = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178e5efc7L, 0x11178e61ee7L, "symbolClass");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PredefinedSymbolClassDeclaration$7c = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178e59fd0L, "jetbrains.mps.baseLanguage.regexp.structure.PredefinedSymbolClassDeclaration");
+    /*package*/ static final SConcept PredefinedSymbolClassDeclaration$K0 = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178e59fd0L, "jetbrains.mps.baseLanguage.regexp.structure.PredefinedSymbolClassDeclaration");
   }
 }

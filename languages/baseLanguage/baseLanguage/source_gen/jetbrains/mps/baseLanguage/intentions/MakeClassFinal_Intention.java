@@ -40,10 +40,10 @@ public final class MakeClassFinal_Intention extends AbstractIntentionDescriptor 
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return !(SNodeOperations.isInstanceOf(node, CONCEPTS.AnonymousClass$aF)) && !(SNodeOperations.isInstanceOf(node, CONCEPTS.EnumClass$uy));
+    return !(SNodeOperations.isInstanceOf(node, CONCEPTS.AnonymousClass$Bt)) && !(SNodeOperations.isInstanceOf(node, CONCEPTS.EnumClass$Vk));
   }
   private boolean isVisibleInChild(final SNode node, final SNode childNode, final EditorContext editorContext) {
-    return SNodeOperations.hasRole(childNode, LINKS.visibility$jt1o);
+    return SNodeOperations.hasRole(childNode, LINKS.visibility$Yyua);
   }
   @Override
   public boolean isSurroundWith() {
@@ -60,11 +60,11 @@ public final class MakeClassFinal_Intention extends AbstractIntentionDescriptor 
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return "Make " + ((SPropertyOperations.getBoolean(node, PROPS.isFinal$$2bN) ? "Non" : "")) + " Final";
+      return "Make " + ((SPropertyOperations.getBoolean(node, PROPS.isFinal$f7C_) ? "Non" : "")) + " Final";
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.set(node, PROPS.isFinal$$2bN, !(SPropertyOperations.getBoolean(node, PROPS.isFinal$$2bN)));
+      SPropertyOperations.set(node, PROPS.isFinal$f7C_, !(SPropertyOperations.getBoolean(node, PROPS.isFinal$f7C_)));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -73,15 +73,15 @@ public final class MakeClassFinal_Intention extends AbstractIntentionDescriptor 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumClass$uy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
-    /*package*/ static final SConcept AnonymousClass$aF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
+    /*package*/ static final SConcept EnumClass$Vk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
+    /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$$2bN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x11c6af4b284L, "isFinal");
+    /*package*/ static final SProperty isFinal$f7C_ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x11c6af4b284L, "isFinal");
   }
 }

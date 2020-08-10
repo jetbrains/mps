@@ -28,12 +28,12 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class TransformationMenuPart_Intention_Constraints extends BaseConstraintsDescriptor {
   public TransformationMenuPart_Intention_Constraints() {
-    super(CONCEPTS.TransformationMenuPart_Intention$dI);
+    super(CONCEPTS.TransformationMenuPart_Intention$jb);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.intention$H6R0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.intention$vWWt, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -48,15 +48,15 @@ public class TransformationMenuPart_Intention_Constraints extends BaseConstraint
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return new FilteringScope(new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), true, CONCEPTS.BaseIntentionDeclaration$c4)) {
+            return new FilteringScope(new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), true, CONCEPTS.BaseIntentionDeclaration$Wx)) {
               @Override
               public boolean isExcluded(SNode node) {
-                SNode intentionConcept = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.BaseIntentionDeclaration$c4), LINKS.forConcept$nsWk);
+                SNode intentionConcept = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.BaseIntentionDeclaration$Wx), LINKS.forConcept$zyGL);
                 if ((intentionConcept == null)) {
                   return true;
                 }
 
-                SNode menu = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ITransformationMenu$lF, false, false);
+                SNode menu = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ITransformationMenu$xi, false, false);
                 return !(check_qffvkf_a0e0a0a0a0b0a0a0b0a0a0a2(check_qffvkf_a0a4a0a0a0a1a0a0a1a0a0a0c(menu), intentionConcept));
               }
             };
@@ -83,13 +83,13 @@ public class TransformationMenuPart_Intention_Constraints extends BaseConstraint
   private static final SNodePointer breakingNode_qffvkf_a0a0a0a0a1a0a0a0c = new SNodePointer("r:bb97162f-2dcb-4ef8-802a-23987a8537bd(jetbrains.mps.lang.editor.menus.extras.constraints)", "6836281137582782316");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TransformationMenuPart_Intention$dI = MetaAdapterFactory.getConcept(0xcffe907ed3de433fL, 0x89d657d9c449c0e2L, 0x289dadfa24b57a51L, "jetbrains.mps.lang.editor.menus.extras.structure.TransformationMenuPart_Intention");
-    /*package*/ static final SConcept BaseIntentionDeclaration$c4 = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x2303633a9c3cc675L, "jetbrains.mps.lang.intentions.structure.BaseIntentionDeclaration");
-    /*package*/ static final SInterfaceConcept ITransformationMenu$lF = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c11832L, "jetbrains.mps.lang.editor.structure.ITransformationMenu");
+    /*package*/ static final SConcept TransformationMenuPart_Intention$jb = MetaAdapterFactory.getConcept(0xcffe907ed3de433fL, 0x89d657d9c449c0e2L, 0x289dadfa24b57a51L, "jetbrains.mps.lang.editor.menus.extras.structure.TransformationMenuPart_Intention");
+    /*package*/ static final SConcept BaseIntentionDeclaration$Wx = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x2303633a9c3cc675L, "jetbrains.mps.lang.intentions.structure.BaseIntentionDeclaration");
+    /*package*/ static final SInterfaceConcept ITransformationMenu$xi = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c11832L, "jetbrains.mps.lang.editor.structure.ITransformationMenu");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink intention$H6R0 = MetaAdapterFactory.getReferenceLink(0xcffe907ed3de433fL, 0x89d657d9c449c0e2L, 0x289dadfa24b57a51L, 0x289dadfa24b57a52L, "intention");
-    /*package*/ static final SReferenceLink forConcept$nsWk = MetaAdapterFactory.getReferenceLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x2303633a9c3cc675L, 0x2303633a9c3e6812L, "forConcept");
+    /*package*/ static final SReferenceLink intention$vWWt = MetaAdapterFactory.getReferenceLink(0xcffe907ed3de433fL, 0x89d657d9c449c0e2L, 0x289dadfa24b57a51L, 0x289dadfa24b57a52L, "intention");
+    /*package*/ static final SReferenceLink forConcept$zyGL = MetaAdapterFactory.getReferenceLink(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x2303633a9c3cc675L, 0x2303633a9c3e6812L, "forConcept");
   }
 }

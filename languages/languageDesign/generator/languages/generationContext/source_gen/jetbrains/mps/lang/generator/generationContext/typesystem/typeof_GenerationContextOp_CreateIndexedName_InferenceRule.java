@@ -25,7 +25,7 @@ public class typeof_GenerationContextOp_CreateIndexedName_InferenceRule extends 
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.GenerationContextOp_CreateIndexedName$RK;
+    return CONCEPTS.GenerationContextOp_CreateIndexedName$hm;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_GenerationContextOp_CreateIndexedName_InferenceRule extends 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GenerationContextOp_CreateIndexedName$RK = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x107ac9fcd24369dbL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_CreateIndexedName");
+    /*package*/ static final SConcept GenerationContextOp_CreateIndexedName$hm = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x107ac9fcd24369dbL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_CreateIndexedName");
   }
 }

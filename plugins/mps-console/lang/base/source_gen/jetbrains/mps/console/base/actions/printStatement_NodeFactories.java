@@ -14,17 +14,17 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class printStatement_NodeFactories {
   public static class NodeFactory_7284872370241013667 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.AbstractPrintExpression$cC)) {
-        SLinkOperations.setTarget(newNode, LINKS.object$UNYq, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractPrintExpression$cC), LINKS.object$UNYq));
+      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.AbstractPrintExpression$Qx)) {
+        SLinkOperations.setTarget(newNode, LINKS.object$jGCj, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.AbstractPrintExpression$Qx), LINKS.object$jGCj));
       }
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink object$UNYq = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6c8954f469a7c420L, 0x7417cca3eb1ff761L, "object");
+    /*package*/ static final SContainmentLink object$jGCj = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6c8954f469a7c420L, 0x7417cca3eb1ff761L, "object");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractPrintExpression$cC = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6c8954f469a7c420L, "jetbrains.mps.console.base.structure.AbstractPrintExpression");
+    /*package*/ static final SConcept AbstractPrintExpression$Qx = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6c8954f469a7c420L, "jetbrains.mps.console.base.structure.AbstractPrintExpression");
   }
 }

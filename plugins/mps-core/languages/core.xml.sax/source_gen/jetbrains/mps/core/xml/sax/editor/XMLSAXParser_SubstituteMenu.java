@@ -28,7 +28,7 @@ public class XMLSAXParser_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_42km6r_a(), CONCEPTS.XMLSAXParser$Sn));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_42km6r_a(), CONCEPTS.XMLSAXParser$dk));
     result.add(new SMP_Subconcepts_42km6r_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class XMLSAXParser_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_42km6r_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.XMLSAXParser$Sn, LINKS.root$ksqx);
+      super((SAbstractConcept) CONCEPTS.XMLSAXParser$dk, LINKS.root$ACJu);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class XMLSAXParser_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_42km6r_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.XMLSAXParser$Sn);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.XMLSAXParser$dk);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class XMLSAXParser_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XMLSAXParser$Sn = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e301L, "jetbrains.mps.core.xml.sax.structure.XMLSAXParser");
+    /*package*/ static final SConcept XMLSAXParser$dk = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e301L, "jetbrains.mps.core.xml.sax.structure.XMLSAXParser");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink root$ksqx = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e301L, 0x1f6c736337b5e303L, "root");
+    /*package*/ static final SReferenceLink root$ACJu = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e301L, 0x1f6c736337b5e303L, "root");
   }
 }

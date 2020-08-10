@@ -18,7 +18,7 @@ public class check_Link_SetNewChildOperation_NonTypesystemRule extends AbstractN
     RulesUtil.checkAppliedTo_LinkAccess_aggregation(typeCheckingContext, op);
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Link_SetNewChildOperation$I5;
+    return CONCEPTS.Link_SetNewChildOperation$J_;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -28,6 +28,6 @@ public class check_Link_SetNewChildOperation_NonTypesystemRule extends AbstractN
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Link_SetNewChildOperation$I5 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x109233dbca1L, "jetbrains.mps.lang.smodel.structure.Link_SetNewChildOperation");
+    /*package*/ static final SConcept Link_SetNewChildOperation$J_ = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x109233dbca1L, "jetbrains.mps.lang.smodel.structure.Link_SetNewChildOperation");
   }
 }

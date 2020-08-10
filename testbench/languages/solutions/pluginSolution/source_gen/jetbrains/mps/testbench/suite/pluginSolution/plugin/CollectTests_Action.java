@@ -165,19 +165,19 @@ public class CollectTests_Action extends BaseAction {
               public void run() {
                 projectRepo.getModelAccess().executeCommand(new Runnable() {
                   public void run() {
-                    SNode suite = ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.ModuleSuite$D_)).findFirst(new IWhereFilter<SNode>() {
+                    SNode suite = ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.ModuleSuite$mR)).findFirst(new IWhereFilter<SNode>() {
                       public boolean accept(SNode it) {
-                        return IModuleRef__BehaviorDescriptor.moduleReference_id173Z5qAOun8.invoke(SLinkOperations.getTarget(it, LINKS.moduleRef$eas_)).equals(module.value.getModuleReference());
+                        return IModuleRef__BehaviorDescriptor.moduleReference_id173Z5qAOun8.invoke(SLinkOperations.getTarget(it, LINKS.moduleRef$vM9R)).equals(module.value.getModuleReference());
                       }
                     });
                     if (suite != null) {
                       for (final SNode tref : tests) {
-                        if (!(ListSequence.fromList(SLinkOperations.getChildren(suite, LINKS.testRef$_r_X)).any(new IWhereFilter<SNode>() {
+                        if (!(ListSequence.fromList(SLinkOperations.getChildren(suite, LINKS.testRef$R3jf)).any(new IWhereFilter<SNode>() {
                           public boolean accept(SNode it) {
                             return (boolean) ITestRef__BehaviorDescriptor.isSame_id1ouvi_ymQH.invoke(it, tref);
                           }
                         }))) {
-                          ListSequence.fromList(SLinkOperations.getChildren(suite, LINKS.testRef$_r_X)).addElement(SNodeOperations.cast(tref, CONCEPTS.ITestRef$Qb));
+                          ListSequence.fromList(SLinkOperations.getChildren(suite, LINKS.testRef$R3jf)).addElement(SNodeOperations.cast(tref, CONCEPTS.ITestRef$zt));
                           ((SModelInternal) model).addModelImport(smodel.getReference());
                           ((AbstractModule) ((SModel) MapSequence.fromMap(_params).get("modelDesc")).getModule()).addDependency(module.value.getModuleReference(), false);
                         }
@@ -211,12 +211,12 @@ public class CollectTests_Action extends BaseAction {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ModuleSuite$D_ = MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, "jetbrains.mps.testbench.suite.structure.ModuleSuite");
-    /*package*/ static final SInterfaceConcept ITestRef$Qb = MetaAdapterFactory.getInterfaceConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cbaL, "jetbrains.mps.testbench.suite.structure.ITestRef");
+    /*package*/ static final SConcept ModuleSuite$mR = MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, "jetbrains.mps.testbench.suite.structure.ModuleSuite");
+    /*package*/ static final SInterfaceConcept ITestRef$zt = MetaAdapterFactory.getInterfaceConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cbaL, "jetbrains.mps.testbench.suite.structure.ITestRef");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink moduleRef$eas_ = MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x11c3fc56a6d1cc88L, "moduleRef");
-    /*package*/ static final SContainmentLink testRef$_r_X = MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x3e81ed1e2be77cbeL, "testRef");
+    /*package*/ static final SContainmentLink moduleRef$vM9R = MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x11c3fc56a6d1cc88L, "moduleRef");
+    /*package*/ static final SContainmentLink testRef$R3jf = MetaAdapterFactory.getContainmentLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, 0x3e81ed1e2be77cbeL, "testRef");
   }
 }

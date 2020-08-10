@@ -33,8 +33,8 @@
       <node id="2078093584693330100" at="37,73,38,107" concept="5" />
       <node id="2078093584693330100" at="41,57,42,34" concept="5" />
       <node id="2078093584693330100" at="44,59,45,34" concept="5" />
-      <node id="2078093584693330100" at="49,0,50,0" concept="7" trace="name$lA7v" />
-      <node id="2078093584693330100" at="53,0,54,0" concept="7" trace="CustomType$9k" />
+      <node id="2078093584693330100" at="49,0,50,0" concept="7" trace="name$MnvL" />
+      <node id="2078093584693330100" at="53,0,54,0" concept="7" trace="CustomType$nw" />
       <node id="2078093584693330100" at="18,0,20,0" concept="1" trace="customType_InequationReplacementRule#()V" />
       <node id="2078093584693330100" at="20,0,23,0" concept="3" trace="isApplicableCustom#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/lang/typesystem/runtime/IsApplicable2Status;)Z" />
       <node id="2078093584693330100" at="23,0,26,0" concept="3" trace="processInequation#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/EquationInfo;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicable2Status;ZZ)V" />
@@ -115,9 +115,9 @@
       <node id="2078093584693360010" at="44,73,45,107" concept="5" />
       <node id="2078093584693360010" at="48,57,49,35" concept="5" />
       <node id="2078093584693360010" at="51,59,52,35" concept="5" />
-      <node id="2078093584693360010" at="56,0,57,0" concept="7" trace="wrapped$Q0tZ" />
-      <node id="2078093584693360010" at="60,0,61,0" concept="7" trace="CustomType$9k" />
-      <node id="2078093584693360010" at="61,0,62,0" concept="7" trace="WrapperType$Vj" />
+      <node id="2078093584693360010" at="56,0,57,0" concept="7" trace="wrapped$fJCj" />
+      <node id="2078093584693360010" at="60,0,61,0" concept="7" trace="CustomType$nw" />
+      <node id="2078093584693360010" at="61,0,62,0" concept="7" trace="WrapperType$5B" />
       <node id="2078093584693360010" at="20,0,22,0" concept="1" trace="wrapped_customType_InequationReplacementRule#()V" />
       <node id="2078093584693360010" at="22,0,25,0" concept="3" trace="isApplicableCustom#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/lang/typesystem/runtime/IsApplicable2Status;)Z" />
       <node id="2078093584693360010" at="38,0,41,0" concept="3" trace="isWeak#()Z" />

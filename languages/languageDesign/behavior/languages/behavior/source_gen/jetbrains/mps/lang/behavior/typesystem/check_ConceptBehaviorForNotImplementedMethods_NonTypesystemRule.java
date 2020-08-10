@@ -29,22 +29,22 @@ public class check_ConceptBehaviorForNotImplementedMethods_NonTypesystemRule ext
   public check_ConceptBehaviorForNotImplementedMethods_NonTypesystemRule() {
   }
   public void applyRule(final SNode nodeToCheck, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(nodeToCheck, LINKS.concept$45m$), PROPS.abstract$Q3$6)) {
+    if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(nodeToCheck, LINKS.concept$u6dL), PROPS.abstract$ibpT)) {
       return;
     }
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(nodeToCheck, LINKS.concept$45m$), CONCEPTS.InterfaceConceptDeclaration$MT)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(nodeToCheck, LINKS.concept$u6dL), CONCEPTS.InterfaceConceptDeclaration$CG)) {
       return;
     }
-    List<SNode> methodDeclarations = AbstractConceptDeclaration__BehaviorDescriptor.getNotImplementedConceptMethods_idhEwILIz.invoke(SLinkOperations.getTarget(nodeToCheck, LINKS.concept$45m$));
+    List<SNode> methodDeclarations = AbstractConceptDeclaration__BehaviorDescriptor.getNotImplementedConceptMethods_idhEwILIz.invoke(SLinkOperations.getTarget(nodeToCheck, LINKS.concept$u6dL));
     if (!(ListSequence.fromList(methodDeclarations).isEmpty())) {
       boolean notImplementedMethods = false;
       for (SNode cm : methodDeclarations) {
-        if (!(ListSequence.fromList(SLinkOperations.getChildren(nodeToCheck, LINKS.method$6$ra)).contains(cm))) {
+        if (!(ListSequence.fromList(SLinkOperations.getChildren(nodeToCheck, LINKS.method$w_in)).contains(cm))) {
           notImplementedMethods = true;
         }
       }
       if (notImplementedMethods) {
-        String msg = "Concept " + SPropertyOperations.getString(SLinkOperations.getTarget(nodeToCheck, LINKS.concept$45m$), PROPS.name$lA7v) + " does not implement some abstract methods";
+        String msg = "Concept " + SPropertyOperations.getString(SLinkOperations.getTarget(nodeToCheck, LINKS.concept$u6dL), PROPS.name$MnvL) + " does not implement some abstract methods";
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(nodeToCheck, msg, "r:f7f8a091-d98d-402d-85c4-5f05cb2b8c61(jetbrains.mps.lang.behavior.typesystem)", "1198950378289", null, errorTarget);
@@ -52,7 +52,7 @@ public class check_ConceptBehaviorForNotImplementedMethods_NonTypesystemRule ext
       }
     }
 
-    for (SNode cmd : SLinkOperations.getChildren(nodeToCheck, LINKS.method$6$ra)) {
+    for (SNode cmd : SLinkOperations.getChildren(nodeToCheck, LINKS.method$w_in)) {
       if ((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(cmd)) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
@@ -72,7 +72,7 @@ public class check_ConceptBehaviorForNotImplementedMethods_NonTypesystemRule ext
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConceptBehavior$8P;
+    return CONCEPTS.ConceptBehavior$2;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -82,17 +82,17 @@ public class check_ConceptBehaviorForNotImplementedMethods_NonTypesystemRule ext
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$45m$ = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
-    /*package*/ static final SContainmentLink method$6$ra = MetaAdapterFactory.getContainmentLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b25L, "method");
+    /*package*/ static final SReferenceLink concept$u6dL = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
+    /*package*/ static final SContainmentLink method$w_in = MetaAdapterFactory.getContainmentLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b25L, "method");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty abstract$Q3$6 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty abstract$ibpT = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InterfaceConceptDeclaration$MT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
-    /*package*/ static final SConcept ConceptBehavior$8P = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
+    /*package*/ static final SConcept InterfaceConceptDeclaration$CG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
+    /*package*/ static final SConcept ConceptBehavior$2 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
   }
 }

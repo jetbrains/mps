@@ -28,12 +28,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class MatchVariableReferenceReplacement_Constraints extends BaseConstraintsDescriptor {
   public MatchVariableReferenceReplacement_Constraints() {
-    super(CONCEPTS.MatchVariableReferenceReplacement$$o);
+    super(CONCEPTS.MatchVariableReferenceReplacement$dc);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.match$XCq3, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.match$L62R, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -49,9 +49,9 @@ public class MatchVariableReferenceReplacement_Constraints extends BaseConstrain
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> matches = new ArrayList<SNode>();
-            SNode top = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ReplaceRegexpOperation$ia, true, false);
+            SNode top = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ReplaceRegexpOperation$UY, true, false);
             if ((top != null)) {
-              Regexp__BehaviorDescriptor.getString_idhMuDF1A.invoke(SLinkOperations.getTarget(top, LINKS.search$ZDnU), matches);
+              Regexp__BehaviorDescriptor.getString_idhMuDF1A.invoke(SLinkOperations.getTarget(top, LINKS.search$N70I), matches);
             }
             return ListScope.forResolvableElements(matches);
           }
@@ -65,12 +65,12 @@ public class MatchVariableReferenceReplacement_Constraints extends BaseConstrain
   private static final SNodePointer breakingNode_v9mr27_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c89590515(jetbrains.mps.baseLanguage.regexp.constraints)", "6836281137582820457");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MatchVariableReferenceReplacement$$o = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c192ab94eL, "jetbrains.mps.baseLanguage.regexp.structure.MatchVariableReferenceReplacement");
-    /*package*/ static final SConcept ReplaceRegexpOperation$ia = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, "jetbrains.mps.baseLanguage.regexp.structure.ReplaceRegexpOperation");
+    /*package*/ static final SConcept MatchVariableReferenceReplacement$dc = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c192ab94eL, "jetbrains.mps.baseLanguage.regexp.structure.MatchVariableReferenceReplacement");
+    /*package*/ static final SConcept ReplaceRegexpOperation$UY = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, "jetbrains.mps.baseLanguage.regexp.structure.ReplaceRegexpOperation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink match$XCq3 = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c192ab94eL, 0x34ae970c192abbc5L, "match");
-    /*package*/ static final SContainmentLink search$ZDnU = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, 0x34ae970c1924ee3bL, "search");
+    /*package*/ static final SReferenceLink match$L62R = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c192ab94eL, 0x34ae970c192abbc5L, "match");
+    /*package*/ static final SContainmentLink search$N70I = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, 0x34ae970c1924ee3bL, "search");
   }
 }

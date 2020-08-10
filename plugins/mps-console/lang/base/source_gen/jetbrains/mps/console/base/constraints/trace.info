@@ -19,7 +19,7 @@
   <root nodeRef="r:a35e9456-af18-4589-b3c4-ed9896a657c9(jetbrains.mps.console.base.constraints)/4144226654069499358">
     <file name="Command_Constraints.java">
       <node id="4144226654069499358" at="10,32,11,31" concept="10" />
-      <node id="4144226654069499358" at="15,0,16,0" concept="8" trace="Command$sT" />
+      <node id="4144226654069499358" at="15,0,16,0" concept="8" trace="Command$6M" />
       <node id="4144226654069499358" at="10,0,13,0" concept="1" trace="Command_Constraints#()V" />
       <scope id="4144226654069499358" at="10,32,11,31" />
       <scope id="4144226654069499358" at="10,0,13,0" />
@@ -39,10 +39,10 @@
       <node id="1227128029536564521" at="42,110,43,80" concept="6" />
       <node id="1227128029536564536" at="44,12,45,18" concept="6" />
       <node id="5286186381820932750" at="48,0,49,0" concept="8" trace="canBeChildBreakingPoint" />
-      <node id="5286186381820932750" at="51,0,52,0" concept="8" trace="AbstractPrintExpression$cC" />
-      <node id="5286186381820932750" at="52,0,53,0" concept="8" trace="Statement$ok" />
-      <node id="5286186381820932750" at="53,0,54,0" concept="8" trace="ExpressionStatement$nm" />
-      <node id="5286186381820932750" at="54,0,55,0" concept="8" trace="BLExpression$iZ" />
+      <node id="5286186381820932750" at="51,0,52,0" concept="8" trace="AbstractPrintExpression$Qx" />
+      <node id="5286186381820932750" at="52,0,53,0" concept="8" trace="Statement$P6" />
+      <node id="5286186381820932750" at="53,0,54,0" concept="8" trace="ExpressionStatement$O8" />
+      <node id="5286186381820932750" at="54,0,55,0" concept="8" trace="BLExpression$WS" />
       <node id="1227128029536564534" at="44,10,46,5" concept="0" />
       <node id="5286186381820932750" at="20,0,23,0" concept="1" trace="AbstractPrintExpression_Constraints#()V" />
       <node id="5286186381820932750" at="30,0,33,9" concept="3" />
@@ -90,11 +90,11 @@
       <node id="6928665434433926724" at="68,131,69,42" concept="2" />
       <node id="6928665434433926636" at="69,42,70,22" concept="6" />
       <node id="6928665434433926636" at="72,0,73,0" concept="8" trace="breakingNode_asp0i5_a0a0a0a0a1a0a0a0c" />
-      <node id="6928665434433926636" at="75,0,76,0" concept="8" trace="HelpConceptReference$kf" />
-      <node id="6928665434433926636" at="76,0,77,0" concept="8" trace="ConceptDeclaration$qU" />
-      <node id="6928665434433926636" at="77,0,78,0" concept="8" trace="DeprecatedNodeAnnotation$I8" />
-      <node id="6928665434433926636" at="81,0,82,0" concept="8" trace="command$Mb5s" />
-      <node id="6928665434433926636" at="85,0,86,0" concept="8" trace="abstract$Q3$6" />
+      <node id="6928665434433926636" at="75,0,76,0" concept="8" trace="HelpConceptReference$Y8" />
+      <node id="6928665434433926636" at="76,0,77,0" concept="8" trace="ConceptDeclaration$gH" />
+      <node id="6928665434433926636" at="77,0,78,0" concept="8" trace="DeprecatedNodeAnnotation$zV" />
+      <node id="6928665434433926636" at="81,0,82,0" concept="8" trace="command$b3Jl" />
+      <node id="6928665434433926636" at="85,0,86,0" concept="8" trace="abstract$ibpT" />
       <node id="6928665434433926636" at="32,0,35,0" concept="1" trace="HelpConceptReference_Constraints#()V" />
       <node id="6836281137582820655" at="54,0,57,0" concept="4" trace="getName#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <node id="6928665434433926724" at="39,0,43,0" concept="4" trace="hasOwnScopeProvider#()Z" />
@@ -157,8 +157,8 @@
       <node id="7820875636624865058" at="61,61,62,22" concept="6" />
       <node id="1227128029536564540" at="64,149,65,160" concept="6" />
       <node id="7820875636624865058" at="67,0,68,0" concept="8" trace="canBeRootBreakingPoint" />
-      <node id="7820875636624865058" at="70,0,71,0" concept="8" trace="CommandHolder$6b" />
-      <node id="7820875636624865058" at="74,0,75,0" concept="8" trace="name$lA7v" />
+      <node id="7820875636624865058" at="70,0,71,0" concept="8" trace="CommandHolder$K4" />
+      <node id="7820875636624865058" at="74,0,75,0" concept="8" trace="name$MnvL" />
       <node id="7820875636624865058" at="26,0,29,0" concept="1" trace="CommandHolder_Constraints#()V" />
       <node id="7820875636624865058" at="36,0,39,9" concept="3" />
       <node id="8088264230303568255" at="46,0,49,0" concept="1" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />

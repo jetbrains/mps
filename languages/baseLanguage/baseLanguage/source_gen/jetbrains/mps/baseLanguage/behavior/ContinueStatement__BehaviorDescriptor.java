@@ -37,19 +37,19 @@ public final class ContinueStatement__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static SNode getLoop_idhEwIA0E(@NotNull SNode __thisNode__) {
-    for (SNode loop : SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.AbstractLoopStatement$wH, false)) {
-      if ((SLinkOperations.getTarget(__thisNode__, LINKS.loopLabelReference$HMwP) != null)) {
-        SNode loopLabel = SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.loopLabelReference$HMwP), LINKS.loopLabel$Mx00);
+    for (SNode loop : SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.AbstractLoopStatement$Xv, false)) {
+      if ((SLinkOperations.getTarget(__thisNode__, LINKS.loopLabelReference$oRXB) != null)) {
+        SNode loopLabel = SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.loopLabelReference$oRXB), LINKS.loopLabel$tAsM);
         if ((loopLabel != null)) {
-          if (loopLabel == SLinkOperations.getTarget(loop, LINKS.loopLabel$Lb39)) {
+          if (loopLabel == SLinkOperations.getTarget(loop, LINKS.loopLabel$sgvV)) {
             return loop;
           }
         }
       } else {
-        if (SPropertyOperations.getString(__thisNode__, PROPS.label$NAt4) == null) {
+        if (SPropertyOperations.getString(__thisNode__, PROPS.label$uFTQ) == null) {
           return loop;
         }
-        if (SPropertyOperations.getString(__thisNode__, PROPS.label$NAt4).equals(SPropertyOperations.getString(loop, PROPS.label$Gzgx))) {
+        if (SPropertyOperations.getString(__thisNode__, PROPS.label$uFTQ).equals(SPropertyOperations.getString(loop, PROPS.label$nCHj))) {
           return loop;
         }
       }
@@ -109,17 +109,17 @@ public final class ContinueStatement__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractLoopStatement$wH = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, "jetbrains.mps.baseLanguage.structure.AbstractLoopStatement");
+    /*package*/ static final SConcept AbstractLoopStatement$Xv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, "jetbrains.mps.baseLanguage.structure.AbstractLoopStatement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink loopLabelReference$HMwP = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbf3043726L, 0x7dae85d6eb43bbbdL, "loopLabelReference");
-    /*package*/ static final SReferenceLink loopLabel$Mx00 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9555129L, 0x50c493bf955512aL, "loopLabel");
-    /*package*/ static final SContainmentLink loopLabel$Lb39 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x50c493bf9555131L, "loopLabel");
+    /*package*/ static final SContainmentLink loopLabelReference$oRXB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbf3043726L, 0x7dae85d6eb43bbbdL, "loopLabelReference");
+    /*package*/ static final SReferenceLink loopLabel$tAsM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9555129L, 0x50c493bf955512aL, "loopLabel");
+    /*package*/ static final SContainmentLink loopLabel$sgvV = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x50c493bf9555131L, "loopLabel");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty label$NAt4 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbf3043726L, 0x11745fca58eL, "label");
-    /*package*/ static final SProperty label$Gzgx = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x11745b5371dL, "label");
+    /*package*/ static final SProperty label$uFTQ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbf3043726L, 0x11745fca58eL, "label");
+    /*package*/ static final SProperty label$nCHj = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x11745b5371dL, "label");
   }
 }

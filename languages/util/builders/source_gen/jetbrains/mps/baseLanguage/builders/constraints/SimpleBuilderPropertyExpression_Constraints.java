@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SimpleBuilderPropertyExpression_Constraints extends BaseConstraintsDescriptor {
   public SimpleBuilderPropertyExpression_Constraints() {
-    super(CONCEPTS.SimpleBuilderPropertyExpression$o3);
+    super(CONCEPTS.SimpleBuilderPropertyExpression$nI);
   }
 
   @Override
@@ -37,12 +37,12 @@ public class SimpleBuilderPropertyExpression_Constraints extends BaseConstraints
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return (SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.SimpleBuilderProperty$zv, true, false) != null);
+    return (SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.SimpleBuilderProperty$za, true, false) != null);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:971d5c35-6139-4f76-9019-ac96d9713d41(jetbrains.mps.baseLanguage.builders.constraints)", "1227128029536563931");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SimpleBuilderPropertyExpression$o3 = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d72c48e2L, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilderPropertyExpression");
-    /*package*/ static final SConcept SimpleBuilderProperty$zv = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d72870eaL, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilderProperty");
+    /*package*/ static final SConcept SimpleBuilderPropertyExpression$nI = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d72c48e2L, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilderPropertyExpression");
+    /*package*/ static final SConcept SimpleBuilderProperty$za = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d72870eaL, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilderProperty");
   }
 }

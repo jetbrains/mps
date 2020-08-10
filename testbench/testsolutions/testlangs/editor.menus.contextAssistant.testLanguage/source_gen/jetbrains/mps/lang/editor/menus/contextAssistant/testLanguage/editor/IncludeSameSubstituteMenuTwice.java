@@ -82,7 +82,7 @@ public class IncludeSameSubstituteMenuTwice extends TransformationMenuBase {
     }
     @Override
     protected SContainmentLink getContainmentLink(TransformationMenuContext context) {
-      return LINKS.childIncludeSameSubstituteMenuTwice$5vCx;
+      return LINKS.childIncludeSameSubstituteMenuTwice$kPEZ;
     }
     @Override
     protected SubstituteMenuLookup getSubstituteMenuLookup(TransformationMenuContext context) {
@@ -91,7 +91,7 @@ public class IncludeSameSubstituteMenuTwice extends TransformationMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return CONCEPTS.ToIncludeSubstituteMenu$D2;
+      return CONCEPTS.ToIncludeSubstituteMenu$Fw;
     }
   }
   public class TMP_IncludeSM_k4700g_b0 extends IncludeSubstituteMenuTransformationMenuPart {
@@ -119,7 +119,7 @@ public class IncludeSameSubstituteMenuTwice extends TransformationMenuBase {
     }
     @Override
     protected SContainmentLink getContainmentLink(TransformationMenuContext context) {
-      return LINKS.childIncludeSameSubstituteMenuTwice$5vCx;
+      return LINKS.childIncludeSameSubstituteMenuTwice$kPEZ;
     }
     @Override
     protected SubstituteMenuLookup getSubstituteMenuLookup(TransformationMenuContext context) {
@@ -128,15 +128,15 @@ public class IncludeSameSubstituteMenuTwice extends TransformationMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return CONCEPTS.ToIncludeSubstituteMenu$D2;
+      return CONCEPTS.ToIncludeSubstituteMenu$Fw;
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink childIncludeSameSubstituteMenuTwice$5vCx = MetaAdapterFactory.getContainmentLink(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, 0x3f759544c6a82caeL, "childIncludeSameSubstituteMenuTwice");
+    /*package*/ static final SContainmentLink childIncludeSameSubstituteMenuTwice$kPEZ = MetaAdapterFactory.getContainmentLink(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a0703eL, 0x3f759544c6a82caeL, "childIncludeSameSubstituteMenuTwice");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ToIncludeSubstituteMenu$D2 = MetaAdapterFactory.getConcept(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a82ca7L, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.structure.ToIncludeSubstituteMenu");
+    /*package*/ static final SConcept ToIncludeSubstituteMenu$Fw = MetaAdapterFactory.getConcept(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a82ca7L, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.structure.ToIncludeSubstituteMenu");
   }
 }

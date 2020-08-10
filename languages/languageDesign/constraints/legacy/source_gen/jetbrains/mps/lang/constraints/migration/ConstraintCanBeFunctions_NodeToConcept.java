@@ -48,11 +48,11 @@ public class ConstraintCanBeFunctions_NodeToConcept extends MigrationScriptBase 
           return scope_lwl7bs_b0f_0;
         }
       };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptConstraints$St, false)).visitAll(new IVisitor<SNode>() {
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptConstraints$Yt, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode node) {
-          ConstraintsMigrationUtil.findProblems(SLinkOperations.getTarget(node, LINKS.canBeChild$9_fq), problems);
-          ConstraintsMigrationUtil.findProblems(SLinkOperations.getTarget(node, LINKS.canBeParent$589w), problems);
-          ConstraintsMigrationUtil.findProblems(SLinkOperations.getTarget(node, LINKS.canBeAncestor$5mes), problems);
+          ConstraintsMigrationUtil.findProblems(SLinkOperations.getTarget(node, LINKS.canBeChild$kqlq), problems);
+          ConstraintsMigrationUtil.findProblems(SLinkOperations.getTarget(node, LINKS.canBeParent$fXfw), problems);
+          ConstraintsMigrationUtil.findProblems(SLinkOperations.getTarget(node, LINKS.canBeAncestor$gbks), problems);
         }
       });
     }
@@ -63,12 +63,12 @@ public class ConstraintCanBeFunctions_NodeToConcept extends MigrationScriptBase 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptConstraints$St = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, "jetbrains.mps.lang.constraints.structure.ConceptConstraints");
+    /*package*/ static final SConcept ConceptConstraints$Yt = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, "jetbrains.mps.lang.constraints.structure.ConceptConstraints");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink canBeChild$9_fq = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x5d05239254eb05daL, "canBeChild");
-    /*package*/ static final SContainmentLink canBeParent$589w = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x5d05239254e7e6a8L, "canBeParent");
-    /*package*/ static final SContainmentLink canBeAncestor$5mes = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x5d05239254e7e6baL, "canBeAncestor");
+    /*package*/ static final SContainmentLink canBeChild$kqlq = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x5d05239254eb05daL, "canBeChild");
+    /*package*/ static final SContainmentLink canBeParent$fXfw = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x5d05239254e7e6a8L, "canBeParent");
+    /*package*/ static final SContainmentLink canBeAncestor$gbks = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x5d05239254e7e6baL, "canBeAncestor");
   }
 }

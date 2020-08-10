@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SubstituteMenu_Contribution_Constraints extends BaseConstraintsDescriptor {
   public SubstituteMenu_Contribution_Constraints() {
-    super(CONCEPTS.SubstituteMenu_Contribution$gs);
+    super(CONCEPTS.SubstituteMenu_Contribution$s3);
   }
 
   @Override
@@ -41,6 +41,6 @@ public class SubstituteMenu_Contribution_Constraints extends BaseConstraintsDesc
   private static final SNodePointer canBeRootBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590298(jetbrains.mps.lang.editor.constraints)", "1630016958698473082");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SubstituteMenu_Contribution$gs = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2de9c932f4e5cb53L, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Contribution");
+    /*package*/ static final SConcept SubstituteMenu_Contribution$s3 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2de9c932f4e5cb53L, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Contribution");
   }
 }

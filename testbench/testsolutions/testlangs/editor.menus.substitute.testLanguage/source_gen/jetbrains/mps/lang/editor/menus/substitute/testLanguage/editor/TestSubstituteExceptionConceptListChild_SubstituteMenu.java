@@ -31,8 +31,8 @@ public class TestSubstituteExceptionConceptListChild_SubstituteMenu extends Subs
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_v3z36n_a(), CONCEPTS.TestSubstituteExceptionConceptListChild$XS));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_v3z36n_b(), CONCEPTS.TestSubstituteExceptionConceptListChild$XS));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_v3z36n_a(), CONCEPTS.TestSubstituteExceptionConceptListChild$ep));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_v3z36n_b(), CONCEPTS.TestSubstituteExceptionConceptListChild$ep));
     return result;
   }
 
@@ -110,7 +110,7 @@ public class TestSubstituteExceptionConceptListChild_SubstituteMenu extends Subs
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.TestSubstituteExceptionConceptListChild$XS, context);
+        super(CONCEPTS.TestSubstituteExceptionConceptListChild$ep, context);
         _context = context;
       }
 
@@ -137,6 +137,6 @@ public class TestSubstituteExceptionConceptListChild_SubstituteMenu extends Subs
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestSubstituteExceptionConceptListChild$XS = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb5822235L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteExceptionConceptListChild");
+    /*package*/ static final SConcept TestSubstituteExceptionConceptListChild$ep = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x63457d5cb5822235L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteExceptionConceptListChild");
   }
 }

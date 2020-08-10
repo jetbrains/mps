@@ -56,10 +56,10 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   }
   @Override
   protected String getText(SNode node) {
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptBehavior$8P)) {
-      SNode concept = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.ConceptBehavior$8P), LINKS.concept$45m$);
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptBehavior$2)) {
+      SNode concept = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.ConceptBehavior$2), LINKS.concept$u6dL);
       if ((concept != null)) {
-        return ((String) BHReflection.invoke0(concept, CONCEPTS.INamedConcept$nV, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+        return ((String) BHReflection.invoke0(concept, CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
       }
     }
     return super.getText(node);
@@ -86,7 +86,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   public static Iterable<SNode> sortMethods(SNode baseClass, Iterable<SNode> methods) {
     final Map<SNode, Integer> containerIndex = MapSequence.fromMap(new HashMap<SNode, Integer>());
     int i = 1;
-    for (SNode c : ((List<SNode>) BHReflection.invoke0(baseClass, CONCEPTS.ConceptBehavior$8P, SMethodTrimmedId.create("getAllSuperBehaviors", CONCEPTS.ConceptBehavior$8P, "1$X$vL9L8i8")))) {
+    for (SNode c : ((List<SNode>) BHReflection.invoke0(baseClass, CONCEPTS.ConceptBehavior$2, SMethodTrimmedId.create("getAllSuperBehaviors", CONCEPTS.ConceptBehavior$2, "1$X$vL9L8i8")))) {
       MapSequence.fromMap(containerIndex).put(c, i++);
     }
     return Sequence.fromIterable(methods).sort(new Comparator<SNode>() {
@@ -118,11 +118,11 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptBehavior$8P = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept ConceptBehavior$2 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$45m$ = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
+    /*package*/ static final SReferenceLink concept$u6dL = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
   }
 }

@@ -24,28 +24,28 @@ public class MenuRoots {
     final Wrappers._T<SAbstractConcept> referenceConcept = new Wrappers._T<SAbstractConcept>();
     Iterable<SNode> menus;
     if (isTransformation) {
-      legacyConcept.value = (takeDefault ? CONCEPTS.TransformationMenu_Default$In : CONCEPTS.TransformationMenu_Named$1E);
-      referenceConcept.value = (takeDefault ? CONCEPTS.TransformationMenuReference_Default$h5 : CONCEPTS.TransformationMenuReference_Named$fC);
-      menus = ListSequence.fromList(SModelOperations.roots(inputModel, CONCEPTS.TransformationMenu$ZK)).where(new IWhereFilter<SNode>() {
+      legacyConcept.value = (takeDefault ? CONCEPTS.TransformationMenu_Default$TY : CONCEPTS.TransformationMenu_Named$dh);
+      referenceConcept.value = (takeDefault ? CONCEPTS.TransformationMenuReference_Default$sG : CONCEPTS.TransformationMenuReference_Named$rf);
+      menus = ListSequence.fromList(SModelOperations.roots(inputModel, CONCEPTS.TransformationMenu$bn)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.TransformationMenu_Default$In)) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.TransformationMenu_Named$1E)) && (boolean) IMenu_Concept__BehaviorDescriptor.isDefault_id5N_GIFFh1P5.invoke(it) == takeDefault;
+          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.TransformationMenu_Default$TY)) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.TransformationMenu_Named$dh)) && (boolean) IMenu_Concept__BehaviorDescriptor.isDefault_id5N_GIFFh1P5.invoke(it) == takeDefault;
         }
       });
     } else {
-      legacyConcept.value = (takeDefault ? CONCEPTS.SubstituteMenu_Default$hk : CONCEPTS.SubstituteMenu_Named$J);
-      referenceConcept.value = (takeDefault ? CONCEPTS.SubstituteMenuReference_Default$TI : CONCEPTS.SubstituteMenuReference_Named$Ud);
-      menus = ListSequence.fromList(SModelOperations.roots(inputModel, CONCEPTS.SubstituteMenu$v4)).where(new IWhereFilter<SNode>() {
+      legacyConcept.value = (takeDefault ? CONCEPTS.SubstituteMenu_Default$sV : CONCEPTS.SubstituteMenu_Named$cm);
+      referenceConcept.value = (takeDefault ? CONCEPTS.SubstituteMenuReference_Default$5l : CONCEPTS.SubstituteMenuReference_Named$5O);
+      menus = ListSequence.fromList(SModelOperations.roots(inputModel, CONCEPTS.SubstituteMenu$EF)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.SubstituteMenu_Default$hk)) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.SubstituteMenu_Named$J)) && (boolean) IMenu_Concept__BehaviorDescriptor.isDefault_id5N_GIFFh1P5.invoke(it) == takeDefault;
+          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.SubstituteMenu_Default$sV)) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.SubstituteMenu_Named$cm)) && (boolean) IMenu_Concept__BehaviorDescriptor.isDefault_id5N_GIFFh1P5.invoke(it) == takeDefault;
         }
       });
     }
-    Iterable<SNode> legacyMenus = ListSequence.fromList(SModelOperations.roots(inputModel, CONCEPTS.IMenu$ym)).where(new IWhereFilter<SNode>() {
+    Iterable<SNode> legacyMenus = ListSequence.fromList(SModelOperations.roots(inputModel, CONCEPTS.IMenu$HX)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(legacyConcept.value));
       }
     });
-    Iterable<SNode> contributions = ListSequence.fromList(SModelOperations.roots(inputModel, CONCEPTS.IMenu_Contribution$E$)).where(new IWhereFilter<SNode>() {
+    Iterable<SNode> contributions = ListSequence.fromList(SModelOperations.roots(inputModel, CONCEPTS.IMenu_Contribution$Qb)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(IMenu_Contribution__BehaviorDescriptor.getMenuReference_id1quYWAD2_PI.invoke(it), SNodeOperations.asSConcept(referenceConcept.value));
       }
@@ -70,17 +70,17 @@ public class MenuRoots {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TransformationMenu_Default$In = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x16be955f384efce1L, "jetbrains.mps.lang.editor.structure.TransformationMenu_Default");
-    /*package*/ static final SConcept TransformationMenu_Named$1E = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0ac4ee8L, "jetbrains.mps.lang.editor.structure.TransformationMenu_Named");
-    /*package*/ static final SConcept TransformationMenuReference_Default$h5 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5d3b34577b3cff0cL, "jetbrains.mps.lang.editor.structure.TransformationMenuReference_Default");
-    /*package*/ static final SConcept TransformationMenuReference_Named$fC = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5d3b34577b3cff09L, "jetbrains.mps.lang.editor.structure.TransformationMenuReference_Named");
-    /*package*/ static final SConcept TransformationMenu$ZK = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0ac3ebaL, "jetbrains.mps.lang.editor.structure.TransformationMenu");
-    /*package*/ static final SConcept SubstituteMenu_Default$hk = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2de9c932f4e5ab84L, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Default");
-    /*package*/ static final SConcept SubstituteMenu_Named$J = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x33e0267905fba6fdL, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Named");
-    /*package*/ static final SConcept SubstituteMenuReference_Default$TI = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1eL, "jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Default");
-    /*package*/ static final SConcept SubstituteMenuReference_Named$Ud = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1fL, "jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Named");
-    /*package*/ static final SConcept SubstituteMenu$v4 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a0078L, "jetbrains.mps.lang.editor.structure.SubstituteMenu");
-    /*package*/ static final SInterfaceConcept IMenu$ym = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048846L, "jetbrains.mps.lang.editor.structure.IMenu");
-    /*package*/ static final SInterfaceConcept IMenu_Contribution$E$ = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a90a5d62L, "jetbrains.mps.lang.editor.structure.IMenu_Contribution");
+    /*package*/ static final SConcept TransformationMenu_Default$TY = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x16be955f384efce1L, "jetbrains.mps.lang.editor.structure.TransformationMenu_Default");
+    /*package*/ static final SConcept TransformationMenu_Named$dh = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0ac4ee8L, "jetbrains.mps.lang.editor.structure.TransformationMenu_Named");
+    /*package*/ static final SConcept TransformationMenuReference_Default$sG = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5d3b34577b3cff0cL, "jetbrains.mps.lang.editor.structure.TransformationMenuReference_Default");
+    /*package*/ static final SConcept TransformationMenuReference_Named$rf = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5d3b34577b3cff09L, "jetbrains.mps.lang.editor.structure.TransformationMenuReference_Named");
+    /*package*/ static final SConcept TransformationMenu$bn = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0ac3ebaL, "jetbrains.mps.lang.editor.structure.TransformationMenu");
+    /*package*/ static final SConcept SubstituteMenu_Default$sV = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2de9c932f4e5ab84L, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Default");
+    /*package*/ static final SConcept SubstituteMenu_Named$cm = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x33e0267905fba6fdL, "jetbrains.mps.lang.editor.structure.SubstituteMenu_Named");
+    /*package*/ static final SConcept SubstituteMenuReference_Default$5l = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1eL, "jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Default");
+    /*package*/ static final SConcept SubstituteMenuReference_Named$5O = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1fL, "jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Named");
+    /*package*/ static final SConcept SubstituteMenu$EF = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a0078L, "jetbrains.mps.lang.editor.structure.SubstituteMenu");
+    /*package*/ static final SInterfaceConcept IMenu$HX = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048846L, "jetbrains.mps.lang.editor.structure.IMenu");
+    /*package*/ static final SInterfaceConcept IMenu_Contribution$Qb = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a90a5d62L, "jetbrains.mps.lang.editor.structure.IMenu_Contribution");
   }
 }

@@ -35,8 +35,8 @@ public final class QueryFunction_SubstituteMenu_RefPresentation__BehaviorDescrip
   }
 
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
-    List<SConcept> parameterConcepts = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invokeSuper(__thisNode__, CONCEPTS.QueryFunction_SubstituteMenu_RefPresentation$zV);
-    ListSequence.fromList(parameterConcepts).addElement(CONCEPTS.QueryFunctionParameter_SubstituteMenu_ReferencedNode$fE);
+    List<SConcept> parameterConcepts = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invokeSuper(__thisNode__, CONCEPTS.QueryFunction_SubstituteMenu_RefPresentation$Jy);
+    ListSequence.fromList(parameterConcepts).addElement(CONCEPTS.QueryFunctionParameter_SubstituteMenu_ReferencedNode$rh);
     return parameterConcepts;
   }
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
@@ -98,7 +98,7 @@ public final class QueryFunction_SubstituteMenu_RefPresentation__BehaviorDescrip
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept QueryFunction_SubstituteMenu_RefPresentation$zV = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3bc83bac47535b7dL, "jetbrains.mps.lang.editor.structure.QueryFunction_SubstituteMenu_RefPresentation");
-    /*package*/ static final SConcept QueryFunctionParameter_SubstituteMenu_ReferencedNode$fE = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3bc83bac4753947dL, "jetbrains.mps.lang.editor.structure.QueryFunctionParameter_SubstituteMenu_ReferencedNode");
+    /*package*/ static final SConcept QueryFunction_SubstituteMenu_RefPresentation$Jy = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3bc83bac47535b7dL, "jetbrains.mps.lang.editor.structure.QueryFunction_SubstituteMenu_RefPresentation");
+    /*package*/ static final SConcept QueryFunctionParameter_SubstituteMenu_ReferencedNode$rh = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3bc83bac4753947dL, "jetbrains.mps.lang.editor.structure.QueryFunctionParameter_SubstituteMenu_ReferencedNode");
   }
 }

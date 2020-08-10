@@ -52,8 +52,8 @@ public final class AddAuthorBlockDocTag_Intention extends AbstractIntentionDescr
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode authorTag = SNodeFactoryOperations.createNewNode(CONCEPTS.AuthorBlockDocTag$xE, null);
-      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tags$658s)).addElement(authorTag);
+      SNode authorTag = SNodeFactoryOperations.createNewNode(CONCEPTS.AuthorBlockDocTag$jR, null);
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.tags$stUD)).addElement(authorTag);
       BlockDocTagHelper.setFocus(editorContext, authorTag);
     }
     @Override
@@ -63,10 +63,10 @@ public final class AddAuthorBlockDocTag_Intention extends AbstractIntentionDescr
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AuthorBlockDocTag$xE = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13eL, "jetbrains.mps.baseLanguage.javadoc.structure.AuthorBlockDocTag");
+    /*package*/ static final SConcept AuthorBlockDocTag$jR = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faee13eL, "jetbrains.mps.baseLanguage.javadoc.structure.AuthorBlockDocTag");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink tags$658s = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
+    /*package*/ static final SContainmentLink tags$stUD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
   }
 }

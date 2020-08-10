@@ -27,7 +27,7 @@ public final class SmartRefAttributeUtil {
     if (concept == null) {
       return null;
     }
-    SNode attr = AttributeOperations.getAttribute(concept, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$Lg));
+    SNode attr = AttributeOperations.getAttribute(concept, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3));
     if (attr != null) {
       return attr;
     }
@@ -45,7 +45,7 @@ public final class SmartRefAttributeUtil {
   }
 
   public static boolean isAttributedImplicitly(SNode concept) {
-    return (AttributeOperations.getAttribute(concept, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$Lg)) == null) && canBeAttributedImplicitly(concept);
+    return (AttributeOperations.getAttribute(concept, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3)) == null) && canBeAttributedImplicitly(concept);
   }
 
   public static boolean canBeAttributedImplicitly(SNode concept) {
@@ -56,8 +56,8 @@ public final class SmartRefAttributeUtil {
     if (concept == null) {
       return null;
     }
-    if ((AttributeOperations.getAttribute(concept, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$Lg)) != null)) {
-      return SLinkOperations.getTarget(AttributeOperations.getAttribute(concept, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$Lg)), LINKS.charactersticReference$BT$4);
+    if ((AttributeOperations.getAttribute(concept, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3)) != null)) {
+      return SLinkOperations.getTarget(AttributeOperations.getAttribute(concept, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3)), LINKS.charactersticReference$41pR);
     } else {
       return getImplicitCharacteristicLinkDeclaration(concept);
     }
@@ -67,7 +67,7 @@ public final class SmartRefAttributeUtil {
     if (concept == null) {
       return null;
     }
-    if (!(SPropertyOperations.getBoolean(concept, PROPS.abstract$Q3$6)) && isEmptyString(SPropertyOperations.getString(concept, PROPS.conceptAlias$oDJY))) {
+    if (!(SPropertyOperations.getBoolean(concept, PROPS.abstract$ibpT)) && isEmptyString(SPropertyOperations.getString(concept, PROPS.conceptAlias$OL_L))) {
       List<SNode> referenceLinks = AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(concept);
       if (ListSequence.fromList(referenceLinks).count() == 1 && (boolean) LinkDeclaration__BehaviorDescriptor.isAtLeastOneCardinality_id2VYdUfnkjmB.invoke(ListSequence.fromList(referenceLinks).first())) {
         return ListSequence.fromList(referenceLinks).first();
@@ -76,8 +76,8 @@ public final class SmartRefAttributeUtil {
     return null;
   }
   private static SNode createSmartReferenceAttribute_9k4hui_a0a5a4(SNode p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SmartReferenceAttribute$Lg);
-    n0.setReferenceTarget(LINKS.charactersticReference$BT$4, p0);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SmartReferenceAttribute$B3);
+    n0.setReferenceTarget(LINKS.charactersticReference$41pR, p0);
     return n0.getResult();
   }
   private static boolean isEmptyString(String str) {
@@ -85,15 +85,15 @@ public final class SmartRefAttributeUtil {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SmartReferenceAttribute$Lg = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, "jetbrains.mps.lang.structure.structure.SmartReferenceAttribute");
+    /*package*/ static final SConcept SmartReferenceAttribute$B3 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, "jetbrains.mps.lang.structure.structure.SmartReferenceAttribute");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink charactersticReference$BT$4 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, 0x7ab7b29c4d6297edL, "charactersticReference");
+    /*package*/ static final SReferenceLink charactersticReference$41pR = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d6297e8L, 0x7ab7b29c4d6297edL, "charactersticReference");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty conceptAlias$oDJY = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x46ab0ad5826c74caL, "conceptAlias");
-    /*package*/ static final SProperty abstract$Q3$6 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
+    /*package*/ static final SProperty conceptAlias$OL_L = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x46ab0ad5826c74caL, "conceptAlias");
+    /*package*/ static final SProperty abstract$ibpT = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
   }
 }

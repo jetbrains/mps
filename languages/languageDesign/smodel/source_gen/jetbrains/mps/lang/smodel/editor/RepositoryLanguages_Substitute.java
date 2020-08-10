@@ -35,7 +35,7 @@ public class RepositoryLanguages_Substitute extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_pm0kc4_a(), CONCEPTS.ModulePointer$_2));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_pm0kc4_a(), CONCEPTS.ModulePointer$Ay));
     return result;
   }
 
@@ -113,7 +113,7 @@ public class RepositoryLanguages_Substitute extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.ModulePointer$_2, context);
+          super(CONCEPTS.ModulePointer$Ay, context);
           _context = context;
         }
 
@@ -124,7 +124,7 @@ public class RepositoryLanguages_Substitute extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode v = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.ModulePointer$_2);
+          SNode v = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.ModulePointer$Ay);
           ModuleIdentity__BehaviorDescriptor.setModuleReference_idnJmxU5cSTj.invoke(v, myParameterObject);
           return v;
         }
@@ -135,7 +135,7 @@ public class RepositoryLanguages_Substitute extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, CONCEPTS.ModulePointer$_2, getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.ModulePointer$Ay, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -179,6 +179,6 @@ public class RepositoryLanguages_Substitute extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ModulePointer$_2 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, "jetbrains.mps.lang.smodel.structure.ModulePointer");
+    /*package*/ static final SConcept ModulePointer$Ay = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, "jetbrains.mps.lang.smodel.structure.ModulePointer");
   }
 }

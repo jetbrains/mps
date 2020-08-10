@@ -29,12 +29,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class TransformationMenuPart_Refactoring_Constraints extends BaseConstraintsDescriptor {
   public TransformationMenuPart_Refactoring_Constraints() {
-    super(CONCEPTS.TransformationMenuPart_Refactoring$3j);
+    super(CONCEPTS.TransformationMenuPart_Refactoring$8K);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.refactoring$c72R, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.refactoring$YX8k, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -49,15 +49,15 @@ public class TransformationMenuPart_Refactoring_Constraints extends BaseConstrai
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return new FilteringScope(new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), true, CONCEPTS.Refactoring$J9)) {
+            return new FilteringScope(new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), true, CONCEPTS.Refactoring$bM)) {
               @Override
               public boolean isExcluded(SNode node) {
-                SNode refactoringConcept = check_w30ll_a0a0a0a0a0b0a0a0b0a0a0a2(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.Refactoring$J9), LINKS.target$SItx), CONCEPTS.NodeTarget$Oa));
+                SNode refactoringConcept = check_w30ll_a0a0a0a0a0b0a0a0b0a0a0a2(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.Refactoring$bM), LINKS.target$qEUa), CONCEPTS.NodeTarget$gN));
                 if ((refactoringConcept == null)) {
                   return true;
                 }
 
-                SNode menu = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ITransformationMenu$lF, false, false);
+                SNode menu = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ITransformationMenu$xi, false, false);
                 return !(check_w30ll_a0e0a0a0a0b0a0a0b0a0a0a2(check_w30ll_a0a4a0a0a0a1a0a0a1a0a0a0c(menu), refactoringConcept));
               }
             };
@@ -71,7 +71,7 @@ public class TransformationMenuPart_Refactoring_Constraints extends BaseConstrai
   }
   private static SNode check_w30ll_a0a0a0a0a0b0a0a0b0a0a0a2(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
-      return SLinkOperations.getTarget(checkedDotOperand, LINKS.concept$YK98);
+      return SLinkOperations.getTarget(checkedDotOperand, LINKS.concept$wG_L);
     }
     return null;
   }
@@ -90,15 +90,15 @@ public class TransformationMenuPart_Refactoring_Constraints extends BaseConstrai
   private static final SNodePointer breakingNode_w30ll_a0a0a0a0a1a0a0a0c = new SNodePointer("r:bb97162f-2dcb-4ef8-802a-23987a8537bd(jetbrains.mps.lang.editor.menus.extras.constraints)", "6836281137582782370");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TransformationMenuPart_Refactoring$3j = MetaAdapterFactory.getConcept(0xcffe907ed3de433fL, 0x89d657d9c449c0e2L, 0x41bc200f660dc377L, "jetbrains.mps.lang.editor.menus.extras.structure.TransformationMenuPart_Refactoring");
-    /*package*/ static final SConcept Refactoring$J9 = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, "jetbrains.mps.lang.refactoring.structure.Refactoring");
-    /*package*/ static final SConcept NodeTarget$Oa = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a056cL, "jetbrains.mps.lang.refactoring.structure.NodeTarget");
-    /*package*/ static final SInterfaceConcept ITransformationMenu$lF = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c11832L, "jetbrains.mps.lang.editor.structure.ITransformationMenu");
+    /*package*/ static final SConcept TransformationMenuPart_Refactoring$8K = MetaAdapterFactory.getConcept(0xcffe907ed3de433fL, 0x89d657d9c449c0e2L, 0x41bc200f660dc377L, "jetbrains.mps.lang.editor.menus.extras.structure.TransformationMenuPart_Refactoring");
+    /*package*/ static final SConcept Refactoring$bM = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, "jetbrains.mps.lang.refactoring.structure.Refactoring");
+    /*package*/ static final SConcept NodeTarget$gN = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a056cL, "jetbrains.mps.lang.refactoring.structure.NodeTarget");
+    /*package*/ static final SInterfaceConcept ITransformationMenu$xi = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c11832L, "jetbrains.mps.lang.editor.structure.ITransformationMenu");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink refactoring$c72R = MetaAdapterFactory.getReferenceLink(0xcffe907ed3de433fL, 0x89d657d9c449c0e2L, 0x41bc200f660dc377L, 0x41bc200f660dc37aL, "refactoring");
-    /*package*/ static final SContainmentLink target$SItx = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, 0x5fb04b74a77a0656L, "target");
-    /*package*/ static final SReferenceLink concept$YK98 = MetaAdapterFactory.getReferenceLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a056cL, 0x5fb04b74a77a0596L, "concept");
+    /*package*/ static final SReferenceLink refactoring$YX8k = MetaAdapterFactory.getReferenceLink(0xcffe907ed3de433fL, 0x89d657d9c449c0e2L, 0x41bc200f660dc377L, 0x41bc200f660dc37aL, "refactoring");
+    /*package*/ static final SContainmentLink target$qEUa = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, 0x5fb04b74a77a0656L, "target");
+    /*package*/ static final SReferenceLink concept$wG_L = MetaAdapterFactory.getReferenceLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a056cL, 0x5fb04b74a77a0596L, "concept");
   }
 }

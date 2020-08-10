@@ -28,15 +28,15 @@ public final class AddNativeFlagToAllMethods_MigrationScript extends BaseMigrati
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.MethodDeclaration$93;
+        return CONCEPTS.MethodDeclaration$_P;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return node.getProperty(PROPS.isNative$1I9T) == null;
+        return node.getProperty(PROPS.isNative$GNAF) == null;
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SPropertyOperations.assign(node, PROPS.isNative$1I9T, false);
+        SPropertyOperations.assign(node, PROPS.isNative$GNAF, false);
       }
       @Override
       public boolean isShowAsIntention() {
@@ -52,10 +52,10 @@ public final class AddNativeFlagToAllMethods_MigrationScript extends BaseMigrati
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MethodDeclaration$93 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, "jetbrains.mps.baseLanguage.structure.MethodDeclaration");
+    /*package*/ static final SConcept MethodDeclaration$_P = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, "jetbrains.mps.baseLanguage.structure.MethodDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isNative$1I9T = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, 0x73f30e3df95c0b73L, "isNative");
+    /*package*/ static final SProperty isNative$GNAF = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, 0x73f30e3df95c0b73L, "isNative");
   }
 }

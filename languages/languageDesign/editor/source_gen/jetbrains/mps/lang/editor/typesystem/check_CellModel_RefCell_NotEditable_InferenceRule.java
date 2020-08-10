@@ -25,19 +25,19 @@ public class check_CellModel_RefCell_NotEditable_InferenceRule extends AbstractI
   public check_CellModel_RefCell_NotEditable_InferenceRule() {
   }
   public void applyRule(final SNode refCell, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode innerCell = SLinkOperations.getTarget(SLinkOperations.getTarget(refCell, LINKS.editorComponent$w13s), LINKS.cellModel$GQI_);
-    if (!(SNodeOperations.isInstanceOf(innerCell, CONCEPTS.CellModel_Property$iE))) {
+    SNode innerCell = SLinkOperations.getTarget(SLinkOperations.getTarget(refCell, LINKS.editorComponent$$jf3), LINKS.cellModel$L8Uc);
+    if (!(SNodeOperations.isInstanceOf(innerCell, CONCEPTS.CellModel_Property$uh))) {
       return;
     }
 
-    SNode propCell = SNodeOperations.cast(innerCell, CONCEPTS.CellModel_Property$iE);
-    if (SPropertyOperations.getBoolean(propCell, PROPS.readOnly$qX3w)) {
+    SNode propCell = SNodeOperations.cast(innerCell, CONCEPTS.CellModel_Property$uh);
+    if (SPropertyOperations.getBoolean(propCell, PROPS.readOnly$vff7)) {
       return;
     }
 
     {
       final MessageTarget errorTarget = new NodeMessageTarget();
-      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(refCell, "It will be possible to change property " + SPropertyOperations.getString(SLinkOperations.getTarget(propCell, LINKS.relationDeclaration$_K5_), PROPS.name$lA7v) + " of the referenced node using this cell. In most cases it's not the desired behavior.", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "9161584445026704378", null, errorTarget);
+      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(refCell, "It will be possible to change property " + SPropertyOperations.getString(SLinkOperations.getTarget(propCell, LINKS.relationDeclaration$E2hc), PROPS.name$MnvL) + " of the referenced node using this cell. In most cases it's not the desired behavior.", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "9161584445026704378", null, errorTarget);
       {
         BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.editor.typesystem.FixRefCellReadOnly_QuickFix", "9161584445026747754", false);
         intentionProvider.putArgument("propCell", propCell);
@@ -46,7 +46,7 @@ public class check_CellModel_RefCell_NotEditable_InferenceRule extends AbstractI
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.CellModel_RefCell$VD;
+    return CONCEPTS.CellModel_RefCell$7g;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -56,18 +56,18 @@ public class check_CellModel_RefCell_NotEditable_InferenceRule extends AbstractI
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink editorComponent$w13s = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, 0xfd5cf2df2aL, "editorComponent");
-    /*package*/ static final SContainmentLink cellModel$GQI_ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, 0xfba0ec5415L, "cellModel");
-    /*package*/ static final SReferenceLink relationDeclaration$_K5_ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
+    /*package*/ static final SContainmentLink editorComponent$$jf3 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, 0xfd5cf2df2aL, "editorComponent");
+    /*package*/ static final SContainmentLink cellModel$L8Uc = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, 0xfba0ec5415L, "cellModel");
+    /*package*/ static final SReferenceLink relationDeclaration$E2hc = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellModel_Property$iE = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb02612eL, "jetbrains.mps.lang.editor.structure.CellModel_Property");
-    /*package*/ static final SConcept CellModel_RefCell$VD = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, "jetbrains.mps.lang.editor.structure.CellModel_RefCell");
+    /*package*/ static final SConcept CellModel_Property$uh = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb02612eL, "jetbrains.mps.lang.editor.structure.CellModel_Property");
+    /*package*/ static final SConcept CellModel_RefCell$7g = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, "jetbrains.mps.lang.editor.structure.CellModel_RefCell");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty readOnly$qX3w = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x1096e5dd9abL, "readOnly");
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty readOnly$vff7 = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x1096e5dd9abL, "readOnly");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

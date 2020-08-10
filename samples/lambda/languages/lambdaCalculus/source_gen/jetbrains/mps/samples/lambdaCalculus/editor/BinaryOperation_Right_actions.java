@@ -24,10 +24,10 @@ public class BinaryOperation_Right_actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.right$Znix))) {
+        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.right$IMq_))) {
           return;
         }
-        SNode left = SLinkOperations.getTarget(node, LINKS.left$Zn3w);
+        SNode left = SLinkOperations.getTarget(node, LINKS.left$IMb$);
         SNodeOperations.replaceWithAnother(node, left);
       }
 
@@ -76,7 +76,7 @@ public class BinaryOperation_Right_actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink right$Znix = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x1ad829a6925a095bL, 0x1ad829a6925a095dL, "right");
-    /*package*/ static final SContainmentLink left$Zn3w = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x1ad829a6925a095bL, 0x1ad829a6925a095cL, "left");
+    /*package*/ static final SContainmentLink right$IMq_ = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x1ad829a6925a095bL, 0x1ad829a6925a095dL, "right");
+    /*package*/ static final SContainmentLink left$IMb$ = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x1ad829a6925a095bL, 0x1ad829a6925a095cL, "left");
   }
 }

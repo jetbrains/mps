@@ -34,7 +34,7 @@ public class NodeBySeveralConceptChooser extends NodeChooser {
   public NodeBySeveralConceptChooser(List<NodesDescriptor> targets) {
     ListSequence.fromList(myTargetConcepts).addSequence(ListSequence.fromList(targets).select(new ISelector<NodesDescriptor, NodesDescriptor>() {
       public NodesDescriptor select(NodesDescriptor it) {
-        return new NodesDescriptor((it.concept() == null ? CONCEPTS.BaseConcept$Sz : it.concept()), it.filter());
+        return new NodesDescriptor((it.concept() == null ? CONCEPTS.BaseConcept$gP : it.concept()), it.filter());
       }
     }));
   }
@@ -60,6 +60,6 @@ public class NodeBySeveralConceptChooser extends NodeChooser {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }

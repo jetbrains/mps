@@ -25,15 +25,15 @@ public class check_ClassDoesNotExtendFinalClass_NonTypesystemRule extends Abstra
   public check_ClassDoesNotExtendFinalClass_NonTypesystemRule() {
   }
   public void applyRule(final SNode classConcept, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode superclass = SLinkOperations.getTarget(classConcept, LINKS.superclass$7jGM);
+    SNode superclass = SLinkOperations.getTarget(classConcept, LINKS.superclass$Mp9$);
     if ((superclass != null)) {
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(superclass, LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY) && SPropertyOperations.getBoolean(SNodeOperations.cast(SLinkOperations.getTarget(superclass, LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY), PROPS.isFinal$$2bN)) {
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(superclass, LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK) && SPropertyOperations.getBoolean(SNodeOperations.cast(SLinkOperations.getTarget(superclass, LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK), PROPS.isFinal$f7C_)) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(superclass, "Cannot inherit from final '" + SPropertyOperations.getString(SLinkOperations.getTarget(superclass, LINKS.classifier$xslD), PROPS.name$lA7v) + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3293010995237528278", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(superclass, "Cannot inherit from final '" + SPropertyOperations.getString(SLinkOperations.getTarget(superclass, LINKS.classifier$cxMr), PROPS.name$MnvL) + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3293010995237528278", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MakeClassNotFinal_QuickFix", "3950519302595622145", false);
-            intentionProvider.putArgument("finalClass", SNodeOperations.cast(SLinkOperations.getTarget(superclass, LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY));
+            intentionProvider.putArgument("finalClass", SNodeOperations.cast(SLinkOperations.getTarget(superclass, LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK));
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }
         }
@@ -41,7 +41,7 @@ public class check_ClassDoesNotExtendFinalClass_NonTypesystemRule extends Abstra
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ClassConcept$IY;
+    return CONCEPTS.ClassConcept$bK;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -51,16 +51,16 @@ public class check_ClassDoesNotExtendFinalClass_NonTypesystemRule extends Abstra
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink superclass$Mp9$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isFinal$$2bN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x11c6af4b284L, "isFinal");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$f7C_ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x11c6af4b284L, "isFinal");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 }

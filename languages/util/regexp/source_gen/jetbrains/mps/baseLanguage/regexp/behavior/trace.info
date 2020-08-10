@@ -65,7 +65,7 @@
       <node id="1213877429450" at="137,14,138,58" concept="12" />
       <node id="1213877429450" at="144,48,145,22" concept="8" />
       <node id="1213877429450" at="150,40,151,19" concept="8" />
-      <node id="1213877429450" at="155,0,156,0" concept="9" trace="Regexp$xM" />
+      <node id="1213877429450" at="155,0,156,0" concept="9" trace="Regexp$aA" />
       <node id="1213877429450" at="42,0,44,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1213877429450" at="92,0,94,0" concept="1" trace="Regexp__BehaviorDescriptor#()V" />
       <node id="1223362833710" at="45,85,48,5" concept="5" />
@@ -224,7 +224,7 @@
       <node id="1213877475221" at="84,14,85,58" concept="12" />
       <node id="1213877475221" at="91,48,92,22" concept="8" />
       <node id="1213877475221" at="97,40,98,19" concept="8" />
-      <node id="1213877475221" at="102,0,103,0" concept="9" trace="regexp$SDAS" />
+      <node id="1213877475221" at="102,0,103,0" concept="9" trace="regexp$G7fG" />
       <node id="1213877475221" at="34,0,36,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1213877475221" at="51,0,53,0" concept="1" trace="MatchParensRegexp__BehaviorDescriptor#()V" />
       <node id="1213877475221" at="47,0,50,0" concept="10" trace="getValue_idhOJcizo#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -314,7 +314,7 @@
       <node id="1213877492182" at="67,14,68,58" concept="12" />
       <node id="1213877492182" at="74,48,75,22" concept="8" />
       <node id="1213877492182" at="80,40,81,19" concept="8" />
-      <node id="1213877492182" at="85,0,86,0" concept="9" trace="match$IZn0" />
+      <node id="1213877492182" at="85,0,86,0" concept="9" trace="match$ysZO" />
       <node id="1213877492182" at="31,0,33,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1213877492182" at="38,0,40,0" concept="1" trace="MatchVariableReferenceRegexp__BehaviorDescriptor#()V" />
       <node id="1213877492182" at="34,0,37,0" concept="10" trace="getString_idhMuDF1A#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/util/List;)Ljava/lang/String;" />
@@ -423,8 +423,8 @@
       <node id="1222431791866" at="147,48,148,22" concept="8" />
       <node id="1222431791866" at="153,40,154,19" concept="8" />
       <node id="4759120547781297334" at="156,52,157,40" concept="8" />
-      <node id="1222431791866" at="161,0,162,0" concept="9" trace="text$8qD5" />
-      <node id="1222431791866" at="165,0,166,0" concept="9" trace="StringLiteralRegexp$g9" />
+      <node id="1222431791866" at="161,0,162,0" concept="9" trace="text$VShT" />
+      <node id="1222431791866" at="165,0,166,0" concept="9" trace="StringLiteralRegexp$SX" />
       <node id="1222431791866" at="35,0,37,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="8330008649152995558" at="83,14,85,9" concept="0" />
       <node id="1222431791866" at="105,0,107,0" concept="1" trace="StringLiteralRegexp__BehaviorDescriptor#()V" />
@@ -572,7 +572,7 @@
       <node id="1222433039738" at="66,14,67,58" concept="12" />
       <node id="1222433039738" at="73,48,74,22" concept="8" />
       <node id="1222433039738" at="79,40,80,19" concept="8" />
-      <node id="1222433039738" at="84,0,85,0" concept="9" trace="code$wug6" />
+      <node id="1222433039738" at="84,0,85,0" concept="9" trace="code$jVSU" />
       <node id="1222433039738" at="30,0,32,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1222433039738" at="37,0,39,0" concept="1" trace="UnicodeCharacterRegexp__BehaviorDescriptor#()V" />
       <node id="1222433039738" at="33,0,36,0" concept="10" trace="getString_idhMuDF1A#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/util/List;)Ljava/lang/String;" />
@@ -647,8 +647,8 @@
       <node id="1222433139931" at="68,14,69,58" concept="12" />
       <node id="1222433139931" at="75,48,76,22" concept="8" />
       <node id="1222433139931" at="81,40,82,19" concept="8" />
-      <node id="1222433139931" at="86,0,87,0" concept="9" trace="symbolClass$3yu5" />
-      <node id="1222433139931" at="90,0,91,0" concept="9" trace="name$lA7v" />
+      <node id="1222433139931" at="86,0,87,0" concept="9" trace="symbolClass$R06T" />
+      <node id="1222433139931" at="90,0,91,0" concept="9" trace="name$MnvL" />
       <node id="1222433139931" at="32,0,34,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1222433139931" at="39,0,41,0" concept="1" trace="PredefinedSymbolClassRegexp__BehaviorDescriptor#()V" />
       <node id="1222433139931" at="35,0,38,0" concept="10" trace="getString_idhMuDF1A#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/util/List;)Ljava/lang/String;" />
@@ -731,9 +731,9 @@
       <node id="1222433930821" at="81,14,82,58" concept="12" />
       <node id="1222433930821" at="88,48,89,22" concept="8" />
       <node id="1222433930821" at="94,40,95,19" concept="8" />
-      <node id="1222433930821" at="99,0,100,0" concept="9" trace="left$g$k9" />
-      <node id="1222433930821" at="100,0,101,0" concept="9" trace="right$bdpJ" />
-      <node id="1222433930821" at="104,0,105,0" concept="9" trace="SeqRegexp$2i" />
+      <node id="1222433930821" at="99,0,100,0" concept="9" trace="left$41WX" />
+      <node id="1222433930821" at="100,0,101,0" concept="9" trace="right$YF2z" />
+      <node id="1222433930821" at="104,0,105,0" concept="9" trace="SeqRegexp$F6" />
       <node id="1222433930821" at="34,0,36,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1222433930821" at="48,0,50,0" concept="1" trace="OrRegexp__BehaviorDescriptor#()V" />
       <node id="1222433930821" at="41,0,44,0" concept="10" trace="needParentheses_id1b8uQvZynii#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -823,7 +823,7 @@
       <node id="1222434887346" at="66,14,67,58" concept="12" />
       <node id="1222434887346" at="73,48,74,22" concept="8" />
       <node id="1222434887346" at="79,40,80,19" concept="8" />
-      <node id="1222434887346" at="84,0,85,0" concept="9" trace="expr$Rw3c" />
+      <node id="1222434887346" at="84,0,85,0" concept="9" trace="expr$EXG0" />
       <node id="1222434887346" at="30,0,32,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1222434887346" at="37,0,39,0" concept="1" trace="ParensRegexp__BehaviorDescriptor#()V" />
       <node id="1222434887346" at="33,0,36,0" concept="10" trace="getString_idhMuDF1A#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/util/List;)Ljava/lang/String;" />
@@ -901,8 +901,8 @@
       <node id="1222436753891" at="72,14,73,58" concept="12" />
       <node id="1222436753891" at="79,48,80,22" concept="8" />
       <node id="1222436753891" at="85,40,86,19" concept="8" />
-      <node id="1222436753891" at="90,0,91,0" concept="9" trace="left$g$k9" />
-      <node id="1222436753891" at="91,0,92,0" concept="9" trace="right$bdpJ" />
+      <node id="1222436753891" at="90,0,91,0" concept="9" trace="left$41WX" />
+      <node id="1222436753891" at="91,0,92,0" concept="9" trace="right$YF2z" />
       <node id="1222436753891" at="31,0,33,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1222436753891" at="41,0,43,0" concept="1" trace="SeqRegexp__BehaviorDescriptor#()V" />
       <node id="1222436753891" at="34,0,37,0" concept="10" trace="getString_idhMuDF1A#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/util/List;)Ljava/lang/String;" />
@@ -983,8 +983,8 @@
       <node id="1222437176020" at="67,14,68,58" concept="12" />
       <node id="1222437176020" at="74,48,75,22" concept="8" />
       <node id="1222437176020" at="80,40,81,19" concept="8" />
-      <node id="1222437176020" at="85,0,86,0" concept="9" trace="regexp$_0Rc" />
-      <node id="1222437176020" at="86,0,87,0" concept="9" trace="regexp$k0vL" />
+      <node id="1222437176020" at="85,0,86,0" concept="9" trace="regexp$ouw0" />
+      <node id="1222437176020" at="86,0,87,0" concept="9" trace="regexp$7u8_" />
       <node id="1222437176020" at="31,0,33,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1222437176020" at="38,0,40,0" concept="1" trace="RegexpDeclarationReferenceRegexp__BehaviorDescriptor#()V" />
       <node id="1222437176020" at="34,0,37,0" concept="10" trace="getString_idhMuDF1A#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/util/List;)Ljava/lang/String;" />
@@ -1060,8 +1060,8 @@
       <node id="1222437727387" at="69,14,70,58" concept="12" />
       <node id="1222437727387" at="76,48,77,22" concept="8" />
       <node id="1222437727387" at="82,40,83,19" concept="8" />
-      <node id="1222437727387" at="87,0,88,0" concept="9" trace="regexp$LlDC" />
-      <node id="1222437727387" at="91,0,92,0" concept="9" trace="n$1vNy" />
+      <node id="1222437727387" at="87,0,88,0" concept="9" trace="regexp$$Nis" />
+      <node id="1222437727387" at="91,0,92,0" concept="9" trace="n$OXsm" />
       <node id="1222437727387" at="32,0,34,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1222437727387" at="40,0,42,0" concept="1" trace="NTimesRegexp__BehaviorDescriptor#()V" />
       <node id="1222437727387" at="50,49,53,5" concept="5" />
@@ -1140,8 +1140,8 @@
       <node id="1222609599871" at="69,14,70,58" concept="12" />
       <node id="1222609599871" at="76,48,77,22" concept="8" />
       <node id="1222609599871" at="82,40,83,19" concept="8" />
-      <node id="1222609599871" at="87,0,88,0" concept="9" trace="regexp$LlDC" />
-      <node id="1222609599871" at="91,0,92,0" concept="9" trace="n$SjlD" />
+      <node id="1222609599871" at="87,0,88,0" concept="9" trace="regexp$$Nis" />
+      <node id="1222609599871" at="91,0,92,0" concept="9" trace="n$FKYt" />
       <node id="1222609599871" at="32,0,34,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1222609599871" at="40,0,42,0" concept="1" trace="AtLeastNTimesRegexp__BehaviorDescriptor#()V" />
       <node id="1222609599871" at="50,49,53,5" concept="5" />
@@ -1220,9 +1220,9 @@
       <node id="1222609846769" at="69,14,70,58" concept="12" />
       <node id="1222609846769" at="76,48,77,22" concept="8" />
       <node id="1222609846769" at="82,40,83,19" concept="8" />
-      <node id="1222609846769" at="87,0,88,0" concept="9" trace="regexp$LlDC" />
-      <node id="1222609846769" at="91,0,92,0" concept="9" trace="n$9DEq" />
-      <node id="1222609846769" at="92,0,93,0" concept="9" trace="m$ZSMS" />
+      <node id="1222609846769" at="87,0,88,0" concept="9" trace="regexp$$Nis" />
+      <node id="1222609846769" at="91,0,92,0" concept="9" trace="n$X7je" />
+      <node id="1222609846769" at="92,0,93,0" concept="9" trace="m$NmrG" />
       <node id="1222609846769" at="32,0,34,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1222609846769" at="40,0,42,0" concept="1" trace="FromNToMTimesRegexp__BehaviorDescriptor#()V" />
       <node id="1222609846769" at="50,49,53,5" concept="5" />
@@ -1308,7 +1308,7 @@
       <node id="1222857576752" at="84,14,85,58" concept="12" />
       <node id="1222857576752" at="91,48,92,22" concept="8" />
       <node id="1222857576752" at="97,40,98,19" concept="8" />
-      <node id="1222857576752" at="102,0,103,0" concept="9" trace="part$K$JA" />
+      <node id="1222857576752" at="102,0,103,0" concept="9" trace="part$$2oq" />
       <node id="1222857576752" at="34,0,36,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1222857576752" at="51,0,53,0" concept="1" trace="SymbolClassRegexp__BehaviorDescriptor#()V" />
       <node id="1222857576752" at="37,0,40,0" concept="10" trace="getString_idhMuDF1A#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/util/List;)Ljava/lang/String;" />
@@ -1403,7 +1403,7 @@
       <node id="1222861534672" at="68,14,69,58" concept="12" />
       <node id="1222861534672" at="75,48,76,22" concept="8" />
       <node id="1222861534672" at="81,40,82,19" concept="8" />
-      <node id="1222861534672" at="86,0,87,0" concept="9" trace="regexp$mA9P" />
+      <node id="1222861534672" at="86,0,87,0" concept="9" trace="regexp$a3MD" />
       <node id="1222861534672" at="32,0,34,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1222861534672" at="39,0,41,0" concept="1" trace="LookRegexp__BehaviorDescriptor#()V" />
       <node id="1222861534672" at="35,0,38,0" concept="10" trace="getString_idhMuDF1A#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/util/List;)Ljava/lang/String;" />
@@ -1482,7 +1482,7 @@
       <node id="1222867682828" at="75,14,76,58" concept="12" />
       <node id="1222867682828" at="82,48,83,22" concept="8" />
       <node id="1222867682828" at="88,40,89,19" concept="8" />
-      <node id="1222867682828" at="93,0,94,0" concept="9" trace="regexp$LlDC" />
+      <node id="1222867682828" at="93,0,94,0" concept="9" trace="regexp$$Nis" />
       <node id="1222867682828" at="33,0,35,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1222867682828" at="44,0,46,0" concept="1" trace="UnaryRegexp__BehaviorDescriptor#()V" />
       <node id="1222867682828" at="40,0,43,0" concept="10" trace="inParentheses_id1b8uQvZyDW8#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -1567,8 +1567,8 @@
       <node id="3796137614137207004" at="72,14,73,58" concept="12" />
       <node id="3796137614137207004" at="79,48,80,22" concept="8" />
       <node id="3796137614137207004" at="85,40,86,19" concept="8" />
-      <node id="3796137614137207004" at="90,0,91,0" concept="9" trace="search$ZDnU" />
-      <node id="3796137614137207004" at="91,0,92,0" concept="9" trace="replacement$K950" />
+      <node id="3796137614137207004" at="90,0,91,0" concept="9" trace="search$N70I" />
+      <node id="3796137614137207004" at="91,0,92,0" concept="9" trace="replacement$zAHO" />
       <node id="3796137614137207004" at="30,0,32,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="3796137614137207004" at="43,0,45,0" concept="1" trace="ReplaceRegexpOperation__BehaviorDescriptor#()V" />
       <node id="4161170987575526829" at="35,89,38,7" concept="5" />
@@ -1758,8 +1758,8 @@
       <node id="3796137614137538913" at="146,48,147,22" concept="8" />
       <node id="3796137614137538913" at="152,40,153,19" concept="8" />
       <node id="3796137614137567970" at="155,52,156,40" concept="8" />
-      <node id="3796137614137538913" at="160,0,161,0" concept="9" trace="text$F715" />
-      <node id="3796137614137538913" at="164,0,165,0" concept="9" trace="StringLiteralRegexp$g9" />
+      <node id="3796137614137538913" at="160,0,161,0" concept="9" trace="text$u$DT" />
+      <node id="3796137614137538913" at="164,0,165,0" concept="9" trace="StringLiteralRegexp$SX" />
       <node id="3796137614137538913" at="34,0,36,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="3796137614137565772" at="84,14,86,9" concept="0" />
       <node id="3796137614137538913" at="106,0,108,0" concept="1" trace="LiteralReplacement__BehaviorDescriptor#()V" />
@@ -1904,7 +1904,7 @@
       <node id="3796137614137539492" at="70,14,71,58" concept="12" />
       <node id="3796137614137539492" at="77,48,78,22" concept="8" />
       <node id="3796137614137539492" at="83,40,84,19" concept="8" />
-      <node id="3796137614137539492" at="88,0,89,0" concept="9" trace="match$XCq3" />
+      <node id="3796137614137539492" at="88,0,89,0" concept="9" trace="match$L62R" />
       <node id="3796137614137539492" at="32,0,34,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="3796137614137539492" at="41,0,43,0" concept="1" trace="MatchVariableReferenceReplacement__BehaviorDescriptor#()V" />
       <node id="3796137614137539492" at="51,49,54,5" concept="5" />
@@ -2095,7 +2095,7 @@
       <node id="8173814113624637182" at="133,14,134,58" concept="12" />
       <node id="8173814113624637182" at="140,48,141,22" concept="8" />
       <node id="8173814113624637182" at="146,40,147,19" concept="8" />
-      <node id="8173814113624637182" at="151,0,152,0" concept="9" trace="StringLiteralRegexp$g9" />
+      <node id="8173814113624637182" at="151,0,152,0" concept="9" trace="StringLiteralRegexp$SX" />
       <node id="8173814113624637182" at="31,0,33,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="8173814113624732807" at="70,12,72,7" concept="0" />
       <node id="8173814113624637182" at="102,0,104,0" concept="1" trace="SymbolClassPart__BehaviorDescriptor#()V" />
@@ -2225,8 +2225,8 @@
       <node id="8173814113624637190" at="68,14,69,58" concept="12" />
       <node id="8173814113624637190" at="75,48,76,22" concept="8" />
       <node id="8173814113624637190" at="81,40,82,19" concept="8" />
-      <node id="8173814113624637190" at="86,0,87,0" concept="9" trace="declaration$SIgd" />
-      <node id="8173814113624637190" at="90,0,91,0" concept="9" trace="name$lA7v" />
+      <node id="8173814113624637190" at="86,0,87,0" concept="9" trace="declaration$GbT1" />
+      <node id="8173814113624637190" at="90,0,91,0" concept="9" trace="name$MnvL" />
       <node id="8173814113624637190" at="32,0,34,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="8173814113624637190" at="39,0,41,0" concept="1" trace="PredefinedSymbolClassSymbolClassPart__BehaviorDescriptor#()V" />
       <node id="8173814113624637190" at="35,0,38,0" concept="10" trace="getRepresentation_id75Jea4IEZbM#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
@@ -2301,8 +2301,8 @@
       <node id="8173814113624637220" at="66,14,67,58" concept="12" />
       <node id="8173814113624637220" at="73,48,74,22" concept="8" />
       <node id="8173814113624637220" at="79,40,80,19" concept="8" />
-      <node id="8173814113624637220" at="84,0,85,0" concept="9" trace="start$MnhF" />
-      <node id="8173814113624637220" at="85,0,86,0" concept="9" trace="end$x8Io" />
+      <node id="8173814113624637220" at="84,0,85,0" concept="9" trace="start$_OUv" />
+      <node id="8173814113624637220" at="85,0,86,0" concept="9" trace="end$kAnc" />
       <node id="8173814113624637220" at="30,0,32,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="8173814113624637220" at="37,0,39,0" concept="1" trace="IntervalSymbolClassPart__BehaviorDescriptor#()V" />
       <node id="8173814113624637220" at="33,0,36,0" concept="10" trace="getRepresentation_id75Jea4IEZbM#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
@@ -2376,8 +2376,8 @@
       <node id="8173814113624637890" at="66,14,67,58" concept="12" />
       <node id="8173814113624637890" at="73,48,74,22" concept="8" />
       <node id="8173814113624637890" at="79,40,80,19" concept="8" />
-      <node id="8173814113624637890" at="84,0,85,0" concept="9" trace="left$$IBe" />
-      <node id="8173814113624637890" at="85,0,86,0" concept="9" trace="right$kGVY" />
+      <node id="8173814113624637890" at="84,0,85,0" concept="9" trace="left$ocg2" />
+      <node id="8173814113624637890" at="85,0,86,0" concept="9" trace="right$8a$M" />
       <node id="8173814113624637890" at="30,0,32,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="8173814113624637890" at="37,0,39,0" concept="1" trace="IntersectionSymbolClassPart__BehaviorDescriptor#()V" />
       <node id="8173814113624637890" at="33,0,36,0" concept="10" trace="getRepresentation_id75Jea4IEZbM#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
@@ -2451,7 +2451,7 @@
       <node id="8173814113624637901" at="66,14,67,58" concept="12" />
       <node id="8173814113624637901" at="73,48,74,22" concept="8" />
       <node id="8173814113624637901" at="79,40,80,19" concept="8" />
-      <node id="8173814113624637901" at="84,0,85,0" concept="9" trace="character$APSn" />
+      <node id="8173814113624637901" at="84,0,85,0" concept="9" trace="character$qjxb" />
       <node id="8173814113624637901" at="30,0,32,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="8173814113624637901" at="37,0,39,0" concept="1" trace="CharacterSymbolClassPart__BehaviorDescriptor#()V" />
       <node id="8173814113624637901" at="33,0,36,0" concept="10" trace="getRepresentation_id75Jea4IEZbM#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />

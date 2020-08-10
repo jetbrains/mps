@@ -19,66 +19,66 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public class Children {
   public void accessToChildren_1(SNode statementList) {
     BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(statementList);
-    int count1 = ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$pYcS)).count();
-    List<SNode> statements = SLinkOperations.getChildren(statementList, LINKS.statement$pYcS);
+    int count1 = ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$53DE)).count();
+    List<SNode> statements = SLinkOperations.getChildren(statementList, LINKS.statement$53DE);
     int count2 = ListSequence.fromList(statements).count();
     int count3 = ((List<SNode>) statements).size();
-    ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$pYcS)).clear();
+    ListSequence.fromList(SLinkOperations.getChildren(statementList, LINKS.statement$53DE)).clear();
   }
   public void accessToChildren_2(SNode statementList1, SNode statementList2) {
-    SLinkOperations.addNewChild(statementList1, LINKS.statement$pYcS, CONCEPTS.LocalVariableDeclarationStatement$BI);
-    SLinkOperations.addNewChild(statementList1, LINKS.statement$pYcS, CONCEPTS.IfStatement$pi);
-    SLinkOperations.addNewChild(statementList1, LINKS.statement$pYcS, CONCEPTS.ReturnStatement$SF);
-    for (SNode statement : SLinkOperations.getChildren(statementList1, LINKS.statement$pYcS)) {
-      ListSequence.fromList(SLinkOperations.getChildren(statementList2, LINKS.statement$pYcS)).addElement(SNodeOperations.copyNode(statement));
+    SLinkOperations.addNewChild(statementList1, LINKS.statement$53DE, CONCEPTS.LocalVariableDeclarationStatement$4w);
+    SLinkOperations.addNewChild(statementList1, LINKS.statement$53DE, CONCEPTS.IfStatement$Q4);
+    SLinkOperations.addNewChild(statementList1, LINKS.statement$53DE, CONCEPTS.ReturnStatement$lt);
+    for (SNode statement : SLinkOperations.getChildren(statementList1, LINKS.statement$53DE)) {
+      ListSequence.fromList(SLinkOperations.getChildren(statementList2, LINKS.statement$53DE)).addElement(SNodeOperations.copyNode(statement));
     }
-    for (SNode statement : SLinkOperations.getChildren(statementList1, LINKS.statement$pYcS)) {
-      ListSequence.fromList(SLinkOperations.getChildren(statementList2, LINKS.statement$pYcS)).addElement(SNodeOperations.copyNode(statement));
+    for (SNode statement : SLinkOperations.getChildren(statementList1, LINKS.statement$53DE)) {
+      ListSequence.fromList(SLinkOperations.getChildren(statementList2, LINKS.statement$53DE)).addElement(SNodeOperations.copyNode(statement));
     }
-    for (SNode statement : SLinkOperations.getChildren(statementList1, LINKS.statement$pYcS)) {
-      ListSequence.fromList(SLinkOperations.getChildren(statementList2, LINKS.statement$pYcS)).addElement(SNodeOperations.copyNode(statement));
+    for (SNode statement : SLinkOperations.getChildren(statementList1, LINKS.statement$53DE)) {
+      ListSequence.fromList(SLinkOperations.getChildren(statementList2, LINKS.statement$53DE)).addElement(SNodeOperations.copyNode(statement));
     }
-    for (SNode statement : ListSequence.fromList(SLinkOperations.getChildren(statementList2, LINKS.statement$pYcS))) {
-      ListSequence.fromList(SLinkOperations.getChildren(statementList2, LINKS.statement$pYcS)).addElement(ListSequence.fromList(SLinkOperations.getChildren(statementList2, LINKS.statement$pYcS)).first());
+    for (SNode statement : ListSequence.fromList(SLinkOperations.getChildren(statementList2, LINKS.statement$53DE))) {
+      ListSequence.fromList(SLinkOperations.getChildren(statementList2, LINKS.statement$53DE)).addElement(ListSequence.fromList(SLinkOperations.getChildren(statementList2, LINKS.statement$53DE)).first());
     }
   }
   public void accessToChildren_3(SNode statement) {
-    List<SNode> children1 = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(statement, LINKS.expression$qFF0), null, false, new SAbstractConcept[]{});
-    List<SNode> children2 = SNodeOperations.getNodeDescendants(statement, CONCEPTS.BooleanConstant$Ui, false, new SAbstractConcept[]{});
-    List<SNode> children3 = SNodeOperations.getNodeDescendants(statement, CONCEPTS.BooleanConstant$Ui, true, new SAbstractConcept[]{});
-    Iterable<SNode> children4 = ListSequence.fromList(SNodeOperations.getNodeDescendants(statement, CONCEPTS.BooleanConstant$Ui, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+    List<SNode> children1 = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(statement, LINKS.expression$5L7M), null, false, new SAbstractConcept[]{});
+    List<SNode> children2 = SNodeOperations.getNodeDescendants(statement, CONCEPTS.BooleanConstant$n4, false, new SAbstractConcept[]{});
+    List<SNode> children3 = SNodeOperations.getNodeDescendants(statement, CONCEPTS.BooleanConstant$n4, true, new SAbstractConcept[]{});
+    Iterable<SNode> children4 = ListSequence.fromList(SNodeOperations.getNodeDescendants(statement, CONCEPTS.BooleanConstant$n4, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SPropertyOperations.getBoolean(it, PROPS.value$qt90) == true;
+        return SPropertyOperations.getBoolean(it, PROPS.value$5y_M) == true;
       }
     });
     SNode abcdef;
     SNodeOperations.getNodeDescendants(statement, SNodeOperations.asSConcept(SNodeOperations.getConcept(statement)), false, new SAbstractConcept[]{});
     SNodeOperations.getNodeDescendants(statement, null, false, new SAbstractConcept[]{});
     SNodeOperations.getNodeDescendants(statement, SNodeOperations.asSConcept(SNodeOperations.getConcept(statement)), false, new SAbstractConcept[]{});
-    SNodeOperations.getNodeDescendants(statement, CONCEPTS.BooleanConstant$Ui, false, new SAbstractConcept[]{});
-    SNodeOperations.getNodeDescendants(statement, SNodeOperations.asSConcept(CONCEPTS.BooleanConstant$Ui), false, new SAbstractConcept[]{});
+    SNodeOperations.getNodeDescendants(statement, CONCEPTS.BooleanConstant$n4, false, new SAbstractConcept[]{});
+    SNodeOperations.getNodeDescendants(statement, SNodeOperations.asSConcept(CONCEPTS.BooleanConstant$n4), false, new SAbstractConcept[]{});
     SConcept aConcept = null;
     SNodeOperations.getNodeDescendants(statement, SNodeOperations.asSConcept(aConcept), false, new SAbstractConcept[]{});
   }
   public void accessToChildren_4(SNode statement) {
-    List<SNode> children1 = SNodeOperations.getNodeDescendantsWhereConceptInList(SLinkOperations.getTarget(statement, LINKS.expression$qFF0), new SAbstractConcept[]{CONCEPTS.BooleanConstant$Ui, CONCEPTS.IntegerConstant$mo}, false, new SAbstractConcept[]{});
-    List<SNode> children2 = SNodeOperations.getNodeDescendantsWhereConceptInList(SLinkOperations.getTarget(statement, LINKS.expression$qFF0), new SAbstractConcept[]{CONCEPTS.BooleanConstant$Ui, CONCEPTS.IntegerConstant$mo}, true, new SAbstractConcept[]{});
+    List<SNode> children1 = SNodeOperations.getNodeDescendantsWhereConceptInList(SLinkOperations.getTarget(statement, LINKS.expression$5L7M), new SAbstractConcept[]{CONCEPTS.BooleanConstant$n4, CONCEPTS.IntegerConstant$Na}, false, new SAbstractConcept[]{});
+    List<SNode> children2 = SNodeOperations.getNodeDescendantsWhereConceptInList(SLinkOperations.getTarget(statement, LINKS.expression$5L7M), new SAbstractConcept[]{CONCEPTS.BooleanConstant$n4, CONCEPTS.IntegerConstant$Na}, true, new SAbstractConcept[]{});
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink expression$qFF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink expression$5L7M = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LocalVariableDeclarationStatement$BI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement");
-    /*package*/ static final SConcept IfStatement$pi = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
-    /*package*/ static final SConcept ReturnStatement$SF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement");
-    /*package*/ static final SConcept BooleanConstant$Ui = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant");
-    /*package*/ static final SConcept IntegerConstant$mo = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, "jetbrains.mps.baseLanguage.structure.IntegerConstant");
+    /*package*/ static final SConcept LocalVariableDeclarationStatement$4w = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement");
+    /*package*/ static final SConcept IfStatement$Q4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
+    /*package*/ static final SConcept ReturnStatement$lt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement");
+    /*package*/ static final SConcept BooleanConstant$n4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant");
+    /*package*/ static final SConcept IntegerConstant$Na = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, "jetbrains.mps.baseLanguage.structure.IntegerConstant");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$qt90 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
+    /*package*/ static final SProperty value$5y_M = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
   }
 }

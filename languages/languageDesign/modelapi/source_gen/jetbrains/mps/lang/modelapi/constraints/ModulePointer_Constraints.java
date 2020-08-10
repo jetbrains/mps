@@ -19,12 +19,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ModulePointer_Constraints extends BaseConstraintsDescriptor {
   public ModulePointer_Constraints() {
-    super(CONCEPTS.ModulePointer$rJ);
+    super(CONCEPTS.ModulePointer$7i);
   }
 
   public static class ModuleId_Property extends BasePropertyConstraintsDescriptor {
     public ModuleId_Property(ConstraintsDescriptor container) {
-      super(PROPS.moduleId$7VKI, container);
+      super(PROPS.moduleId$2ksh, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -53,15 +53,15 @@ public class ModulePointer_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.moduleId$7VKI, new ModuleId_Property(this));
+    properties.put(PROPS.moduleId$2ksh, new ModuleId_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ModulePointer$rJ = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, "jetbrains.mps.lang.modelapi.structure.ModulePointer");
+    /*package*/ static final SConcept ModulePointer$7i = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, "jetbrains.mps.lang.modelapi.structure.ModulePointer");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty moduleId$7VKI = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, 0x19dc9460645c7f5cL, "moduleId");
+    /*package*/ static final SProperty moduleId$2ksh = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, 0x19dc9460645c7f5cL, "moduleId");
   }
 }

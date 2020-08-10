@@ -29,7 +29,7 @@ public class typeof_AbsractMake_InferenceRule extends AbstractInferenceRule_Runt
     }
     final SNode v_typevar_1190968896992143296 = typeCheckingContext.createNewRuntimeTypesVariable();
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(absractMake, LINKS.argument$rIBX);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(absractMake, LINKS.argument$Y1rJ);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "2840424593984891858", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:71e81c80-d7fe-47f3-91de-9281cfae8376(jetbrains.mps.console.ideCommands.typesystem)", "2840424593984891860", true), (SNode) _quotation_createNode_m0ryz8_a1a0c0c0b(typeCheckingContext.getRepresentative(v_typevar_1190968896992143296), typeCheckingContext.getRepresentative(v_typevar_1190968896992143296)), false, true, _info_12389875345);
     }
@@ -40,7 +40,7 @@ public class typeof_AbsractMake_InferenceRule extends AbstractInferenceRule_Runt
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AbsractMake$Fd;
+    return CONCEPTS.AbsractMake$uZ;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -88,10 +88,10 @@ public class typeof_AbsractMake_InferenceRule extends AbstractInferenceRule_Runt
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink argument$rIBX = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x276b371e77c0a29aL, 0x276b371e77c0a2f0L, "argument");
+    /*package*/ static final SContainmentLink argument$Y1rJ = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x276b371e77c0a29aL, 0x276b371e77c0a2f0L, "argument");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbsractMake$Fd = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x276b371e77c0a29aL, "jetbrains.mps.console.ideCommands.structure.AbsractMake");
+    /*package*/ static final SConcept AbsractMake$uZ = MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x276b371e77c0a29aL, "jetbrains.mps.console.ideCommands.structure.AbsractMake");
   }
 }

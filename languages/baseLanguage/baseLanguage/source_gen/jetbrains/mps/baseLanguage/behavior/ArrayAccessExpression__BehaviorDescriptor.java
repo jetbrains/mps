@@ -35,7 +35,7 @@ public final class ArrayAccessExpression__BehaviorDescriptor extends BaseBHDescr
     return true;
   }
   /*package*/ static SNode getSyntacticallyLeftSideExpression_id1wHCnsn590c(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.array$MOps);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.array$tTQe);
   }
 
   /*package*/ ArrayAccessExpression__BehaviorDescriptor() {
@@ -87,6 +87,6 @@ public final class ArrayAccessExpression__BehaviorDescriptor extends BaseBHDescr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink array$MOps = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11126b40c25L, 0x11126b6de5aL, "array");
+    /*package*/ static final SContainmentLink array$tTQe = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11126b40c25L, 0x11126b6de5aL, "array");
   }
 }

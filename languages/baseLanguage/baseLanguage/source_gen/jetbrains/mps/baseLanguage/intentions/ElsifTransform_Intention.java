@@ -37,8 +37,8 @@ public final class ElsifTransform_Intention extends AbstractIntentionDescriptor 
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    SNode ifFalseStatement = SLinkOperations.getTarget(node, LINKS.ifFalseStatement$InyY);
-    return (ifFalseStatement != null) && SNodeOperations.isInstanceOf(ifFalseStatement, CONCEPTS.IfStatement$pi);
+    SNode ifFalseStatement = SLinkOperations.getTarget(node, LINKS.ifFalseStatement$psZK);
+    return (ifFalseStatement != null) && SNodeOperations.isInstanceOf(ifFalseStatement, CONCEPTS.IfStatement$Q4);
   }
   @Override
   public boolean isSurroundWith() {
@@ -59,18 +59,18 @@ public final class ElsifTransform_Intention extends AbstractIntentionDescriptor 
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode ifFalseStatement = SLinkOperations.getTarget(node, LINKS.ifFalseStatement$InyY);
+      SNode ifFalseStatement = SLinkOperations.getTarget(node, LINKS.ifFalseStatement$psZK);
       while (true) {
-        SNode ifStatement = SNodeOperations.cast(ifFalseStatement, CONCEPTS.IfStatement$pi);
-        SNode elsifClause = SNodeFactoryOperations.addNewChild(node, LINKS.elsifClauses$ZQja, null);
-        SLinkOperations.setTarget(elsifClause, LINKS.condition$CVsn, SLinkOperations.getTarget(ifStatement, LINKS.condition$qL$l));
-        SLinkOperations.setTarget(elsifClause, LINKS.statementList$G9pt, SLinkOperations.getTarget(ifStatement, LINKS.ifTrue$qLNm));
-        ifFalseStatement = SLinkOperations.getTarget(ifStatement, LINKS.ifFalseStatement$InyY);
+        SNode ifStatement = SNodeOperations.cast(ifFalseStatement, CONCEPTS.IfStatement$Q4);
+        SNode elsifClause = SNodeFactoryOperations.addNewChild(node, LINKS.elsifClauses$EVJW, null);
+        SLinkOperations.setTarget(elsifClause, LINKS.condition$k0T9, SLinkOperations.getTarget(ifStatement, LINKS.condition$5R17));
+        SLinkOperations.setTarget(elsifClause, LINKS.statementList$neQf, SLinkOperations.getTarget(ifStatement, LINKS.ifTrue$5Rg8));
+        ifFalseStatement = SLinkOperations.getTarget(ifStatement, LINKS.ifFalseStatement$psZK);
         if ((ifFalseStatement == null)) {
           break;
         }
-        if (!(SNodeOperations.isInstanceOf(ifFalseStatement, CONCEPTS.IfStatement$pi))) {
-          SLinkOperations.setTarget(node, LINKS.ifFalseStatement$InyY, ifFalseStatement);
+        if (!(SNodeOperations.isInstanceOf(ifFalseStatement, CONCEPTS.IfStatement$Q4))) {
+          SLinkOperations.setTarget(node, LINKS.ifFalseStatement$psZK, ifFalseStatement);
           break;
         }
       }
@@ -82,15 +82,15 @@ public final class ElsifTransform_Intention extends AbstractIntentionDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink ifFalseStatement$InyY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement");
-    /*package*/ static final SContainmentLink elsifClauses$ZQja = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0x118cecf1287L, "elsifClauses");
-    /*package*/ static final SContainmentLink condition$CVsn = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0983eL, "condition");
-    /*package*/ static final SContainmentLink condition$qL$l = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
-    /*package*/ static final SContainmentLink statementList$G9pt = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0f8fdL, "statementList");
-    /*package*/ static final SContainmentLink ifTrue$qLNm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
+    /*package*/ static final SContainmentLink ifFalseStatement$psZK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement");
+    /*package*/ static final SContainmentLink elsifClauses$EVJW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0x118cecf1287L, "elsifClauses");
+    /*package*/ static final SContainmentLink condition$k0T9 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0983eL, "condition");
+    /*package*/ static final SContainmentLink condition$5R17 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b218L, "condition");
+    /*package*/ static final SContainmentLink statementList$neQf = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0f8fdL, "statementList");
+    /*package*/ static final SContainmentLink ifTrue$5Rg8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IfStatement$pi = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
+    /*package*/ static final SConcept IfStatement$Q4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
   }
 }

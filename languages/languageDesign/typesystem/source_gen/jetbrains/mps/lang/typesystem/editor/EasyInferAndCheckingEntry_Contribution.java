@@ -60,11 +60,11 @@ public class EasyInferAndCheckingEntry_Contribution extends SubstituteMenuBase {
   public class SMP_Group_myynyp_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      if ((SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.InferenceRule$Ad, false, false) != null)) {
+      if ((SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.InferenceRule$S3, false, false) != null)) {
         return true;
       }
 
-      SNode method = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.BaseMethodDeclaration$RR, false, false);
+      SNode method = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.BaseMethodDeclaration$kD, false, false);
       if ((method != null) && (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasAnnotation_id3WDGf12DPy8.invoke(method, new SNodePointer("r:00000000-0000-4000-0000-011c895902b5(jetbrains.mps.lang.typesystem.dependencies)", "1196177069451"))) {
         return true;
       }
@@ -84,7 +84,7 @@ public class EasyInferAndCheckingEntry_Contribution extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_myynyp_a0(), CONCEPTS.CreateLessThanInequationStatement$$A));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_myynyp_a0(), CONCEPTS.CreateLessThanInequationStatement$Qs));
     }
     private class SMP_Param_myynyp_a0 extends ParameterizedMenuPart<String, SubstituteMenuItem, SubstituteMenuContext> {
       @NotNull
@@ -141,7 +141,7 @@ public class EasyInferAndCheckingEntry_Contribution extends SubstituteMenuBase {
           private final SubstituteMenuContext _context;
           private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
-            super(CONCEPTS.CreateLessThanInequationStatement$$A, context);
+            super(CONCEPTS.CreateLessThanInequationStatement$Qs, context);
             _context = context;
           }
 
@@ -152,9 +152,9 @@ public class EasyInferAndCheckingEntry_Contribution extends SubstituteMenuBase {
           @Nullable
           @Override
           public SNode createNode(@NotNull String pattern) {
-            SNode rule = SNodeFactoryOperations.createNewNode(CONCEPTS.CreateLessThanInequationStatement$$A, null);
+            SNode rule = SNodeFactoryOperations.createNewNode(CONCEPTS.CreateLessThanInequationStatement$Qs, null);
             if (myParameterObject.equals("check typeof")) {
-              SPropertyOperations.assign(rule, PROPS.checkOnly$DWc_, true);
+              SPropertyOperations.assign(rule, PROPS.checkOnly$2Mur, true);
             }
             return rule;
           }
@@ -165,7 +165,7 @@ public class EasyInferAndCheckingEntry_Contribution extends SubstituteMenuBase {
           }
           @NotNull
           protected CompletionItemInformation createInformation(String pattern) {
-            return new CompletionItemInformation(myParameterObject, CONCEPTS.CreateLessThanInequationStatement$$A, getMatchingText(pattern), getDescriptionText(pattern));
+            return new CompletionItemInformation(myParameterObject, CONCEPTS.CreateLessThanInequationStatement$Qs, getMatchingText(pattern), getDescriptionText(pattern));
           }
           @Nullable
           @Override
@@ -189,12 +189,12 @@ public class EasyInferAndCheckingEntry_Contribution extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InferenceRule$Ad = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, "jetbrains.mps.lang.typesystem.structure.InferenceRule");
-    /*package*/ static final SConcept BaseMethodDeclaration$RR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
-    /*package*/ static final SConcept CreateLessThanInequationStatement$$A = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f60bfd5L, "jetbrains.mps.lang.typesystem.structure.CreateLessThanInequationStatement");
+    /*package*/ static final SConcept InferenceRule$S3 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, "jetbrains.mps.lang.typesystem.structure.InferenceRule");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept CreateLessThanInequationStatement$Qs = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f60bfd5L, "jetbrains.mps.lang.typesystem.structure.CreateLessThanInequationStatement");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty checkOnly$DWc_ = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x118e0a511a0L, "checkOnly");
+    /*package*/ static final SProperty checkOnly$2Mur = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x118e0a511a0L, "checkOnly");
   }
 }

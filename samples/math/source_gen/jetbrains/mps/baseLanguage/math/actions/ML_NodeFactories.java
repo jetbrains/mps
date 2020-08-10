@@ -14,17 +14,17 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class ML_NodeFactories {
   public static class NodeFactory_4334427517307386392 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Expression$TP)) {
-        SLinkOperations.setTarget(newNode, LINKS.expr$Pqux, SNodeOperations.cast(sampleNode, CONCEPTS.Expression$TP));
+      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.Expression$mB)) {
+        SLinkOperations.setTarget(newNode, LINKS.expr$yZgT, SNodeOperations.cast(sampleNode, CONCEPTS.Expression$mB));
       }
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expr$Pqux = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x64b1e972e6443a20L, 0x64b1e972e6443a22L, "expr");
+    /*package*/ static final SContainmentLink expr$yZgT = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x64b1e972e6443a20L, 0x64b1e972e6443a22L, "expr");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 }

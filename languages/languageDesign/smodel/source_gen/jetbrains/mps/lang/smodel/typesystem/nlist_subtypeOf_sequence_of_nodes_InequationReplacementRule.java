@@ -25,7 +25,7 @@ public class nlist_subtypeOf_sequence_of_nodes_InequationReplacementRule extends
   public nlist_subtypeOf_sequence_of_nodes_InequationReplacementRule() {
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
-    if (!(SNodeOperations.isInstanceOf(status.getPattern2().getMatchedNode("ELEMENT"), CONCEPTS.WildCardType$29))) {
+    if (!(SNodeOperations.isInstanceOf(status.getPattern2().getMatchedNode("ELEMENT"), CONCEPTS.WildCardType$uV))) {
       {
         SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "8725877324454768529", 0, null);
@@ -36,7 +36,7 @@ public class nlist_subtypeOf_sequence_of_nodes_InequationReplacementRule extends
   }
   public boolean checkInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     boolean result_14532009 = true;
-    if (!(SNodeOperations.isInstanceOf(status.getPattern2().getMatchedNode("ELEMENT"), CONCEPTS.WildCardType$29))) {
+    if (!(SNodeOperations.isInstanceOf(status.getPattern2().getMatchedNode("ELEMENT"), CONCEPTS.WildCardType$uV))) {
       result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) _quotation_createNode_j2zomq_a0a0a0a0a0a0b0e(status.getPattern1().getMatchedNode("CONCEPT")), (SNode) status.getPattern2().getMatchedNode("ELEMENT"));
     }
     return result_14532009;
@@ -99,6 +99,6 @@ public class nlist_subtypeOf_sequence_of_nodes_InequationReplacementRule extends
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept WildCardType$29 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae5f4a3L, "jetbrains.mps.baseLanguage.structure.WildCardType");
+    /*package*/ static final SConcept WildCardType$uV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae5f4a3L, "jetbrains.mps.baseLanguage.structure.WildCardType");
   }
 }

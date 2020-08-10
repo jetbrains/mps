@@ -29,10 +29,10 @@ public class RedirectOutputExpression {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.listener$ofxx))) {
+        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.listener$2l8d))) {
           return;
         }
-        SNode expression = SLinkOperations.getTarget(node, LINKS.processHandler$ofiw);
+        SNode expression = SLinkOperations.getTarget(node, LINKS.processHandler$2kTc);
         SNodeOperations.replaceWithAnother(node, expression);
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, expression, SelectionManager.LAST_CELL, -1);
       }
@@ -82,7 +82,7 @@ public class RedirectOutputExpression {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink listener$ofxx = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2c14L, 0xbe3a0d5ba1a2c16L, "listener");
-    /*package*/ static final SContainmentLink processHandler$ofiw = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2c14L, 0xbe3a0d5ba1a2c15L, "processHandler");
+    /*package*/ static final SContainmentLink listener$2l8d = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2c14L, 0xbe3a0d5ba1a2c16L, "listener");
+    /*package*/ static final SContainmentLink processHandler$2kTc = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2c14L, 0xbe3a0d5ba1a2c15L, "processHandler");
   }
 }

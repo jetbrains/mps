@@ -28,7 +28,7 @@ public class InPlaceCheckpointRefSpec_SubstituteMenu extends SubstituteMenuBase 
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_nb3zbu_a(), CONCEPTS.InPlaceCheckpointRefSpec$Hr));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_nb3zbu_a(), CONCEPTS.InPlaceCheckpointRefSpec$H6));
     result.add(new SMP_Subconcepts_nb3zbu_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class InPlaceCheckpointRefSpec_SubstituteMenu extends SubstituteMenuBase 
 
     public SMP_ReferenceScope_nb3zbu_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.InPlaceCheckpointRefSpec$Hr, LINKS.checkpoint$bs6R);
+      super((SAbstractConcept) CONCEPTS.InPlaceCheckpointRefSpec$H6, LINKS.checkpoint$4Q6y);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class InPlaceCheckpointRefSpec_SubstituteMenu extends SubstituteMenuBase 
   }
   public class SMP_Subconcepts_nb3zbu_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.InPlaceCheckpointRefSpec$Hr);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.InPlaceCheckpointRefSpec$H6);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class InPlaceCheckpointRefSpec_SubstituteMenu extends SubstituteMenuBase 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InPlaceCheckpointRefSpec$Hr = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb32cL, "jetbrains.mps.lang.generator.plan.structure.InPlaceCheckpointRefSpec");
+    /*package*/ static final SConcept InPlaceCheckpointRefSpec$H6 = MetaAdapterFactory.getConcept(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb32cL, "jetbrains.mps.lang.generator.plan.structure.InPlaceCheckpointRefSpec");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink checkpoint$bs6R = MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb32cL, 0x340cd07aed7cb32fL, "checkpoint");
+    /*package*/ static final SReferenceLink checkpoint$4Q6y = MetaAdapterFactory.getReferenceLink(0x7ab1a6fa0a114b95L, 0x9e4875f363d6cb00L, 0x340cd07aed7cb32cL, 0x340cd07aed7cb32fL, "checkpoint");
   }
 }

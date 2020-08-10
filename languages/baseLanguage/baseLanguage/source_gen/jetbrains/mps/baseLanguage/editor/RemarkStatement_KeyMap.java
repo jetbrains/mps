@@ -41,7 +41,7 @@ public class RemarkStatement_KeyMap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.RemarkStatement$SN))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.RemarkStatement$l_))) {
         return false;
       }
       return true;
@@ -53,10 +53,10 @@ public class RemarkStatement_KeyMap extends KeyMapImpl {
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       EditorCell_Label label = (EditorCell_Label) editorContext.getContextCell();
       int caretPostion = label.getCaretPosition();
-      String text = SPropertyOperations.getString(node, PROPS.value$Q1xJ);
-      SPropertyOperations.assign(node, PROPS.value$Q1xJ, text.substring(0, caretPostion));
-      SNode newRemark = SNodeFactoryOperations.createNewNode(CONCEPTS.RemarkStatement$SN, null);
-      SPropertyOperations.assign(newRemark, PROPS.value$Q1xJ, text.substring(caretPostion));
+      String text = SPropertyOperations.getString(node, PROPS.value$x6Yx);
+      SPropertyOperations.assign(node, PROPS.value$x6Yx, text.substring(0, caretPostion));
+      SNode newRemark = SNodeFactoryOperations.createNewNode(CONCEPTS.RemarkStatement$l_, null);
+      SPropertyOperations.assign(newRemark, PROPS.value$x6Yx, text.substring(caretPostion));
       SNodeOperations.insertNextSiblingChild(node, newRemark);
     }
     public String getKeyStroke() {
@@ -65,10 +65,10 @@ public class RemarkStatement_KeyMap extends KeyMapImpl {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RemarkStatement$SN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1101757c8faL, "jetbrains.mps.baseLanguage.structure.RemarkStatement");
+    /*package*/ static final SConcept RemarkStatement$l_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1101757c8faL, "jetbrains.mps.baseLanguage.structure.RemarkStatement");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$Q1xJ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1101757c8faL, 0x110175cdb2bL, "value");
+    /*package*/ static final SProperty value$x6Yx = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1101757c8faL, 0x110175cdb2bL, "value");
   }
 }

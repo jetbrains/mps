@@ -782,9 +782,9 @@
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/testModules/testSubtyping/solutions/testSubtypingTest/classes_gen" />
     </content>
     <content url="file://$MODULE_DIR$/../../samples">
-      <sourceFolder url="file://$MODULE_DIR$/../../samples/CustomTestCases/languages/jetbrains.mps.samples.CustomTestCases/generator/source_gen" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../samples/CustomTestCases/languages/jetbrains.mps.samples.CustomTestCases/sandbox/test_gen" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../samples/CustomTestCases/languages/jetbrains.mps.samples.CustomTestCases/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../samples/customTestCases0/languages/jetbrains.mps.samples.CustomTestCases/generator/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../samples/customTestCases0/languages/jetbrains.mps.samples.CustomTestCases/sandbox/test_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../samples/customTestCases0/languages/jetbrains.mps.samples.CustomTestCases/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../samples/_theSimplestLanguage/languages/theSimplestLanguage/generator/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../samples/_theSimplestLanguage/languages/theSimplestLanguage/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../samples/_theSimplestLanguage/solutions/jetbrains.mps.samples.theSimplestLanguage.sandbox/source_gen" isTestSource="false" />

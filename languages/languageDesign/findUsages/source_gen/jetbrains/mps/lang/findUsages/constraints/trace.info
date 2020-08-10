@@ -25,8 +25,8 @@
       <node id="1213107435774" at="34,0,35,22" concept="5" />
       <node id="1227128029536561769" at="39,128,40,100" concept="5" />
       <node id="1213107435774" at="42,0,43,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="1213107435774" at="45,0,46,0" concept="7" trace="ResultStatement$rK" />
-      <node id="1213107435774" at="46,0,47,0" concept="7" trace="FindBlock$3f" />
+      <node id="1213107435774" at="45,0,46,0" concept="7" trace="ResultStatement$de" />
+      <node id="1213107435774" at="46,0,47,0" concept="7" trace="FindBlock$OH" />
       <node id="1213107435774" at="20,0,23,0" concept="0" trace="ResultStatement_Constraints#()V" />
       <node id="1213107435774" at="30,0,33,9" concept="2" />
       <node id="1213107435774" at="39,0,42,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -67,8 +67,8 @@
       <node id="1213107437616" at="34,0,35,22" concept="5" />
       <node id="1227128029536561759" at="39,128,40,109" concept="5" />
       <node id="1213107437616" at="42,0,43,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="1213107437616" at="45,0,46,0" concept="7" trace="NodeStatement$vd" />
-      <node id="1213107437616" at="46,0,47,0" concept="7" trace="SearchedNodesBlock$$o" />
+      <node id="1213107437616" at="45,0,46,0" concept="7" trace="NodeStatement$gF" />
+      <node id="1213107437616" at="46,0,47,0" concept="7" trace="SearchedNodesBlock$lQ" />
       <node id="1213107437616" at="20,0,23,0" concept="0" trace="NodeStatement_Constraints#()V" />
       <node id="1213107437616" at="30,0,33,9" concept="2" />
       <node id="1213107437616" at="39,0,42,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -109,8 +109,8 @@
       <node id="1213107437756" at="34,0,35,22" concept="5" />
       <node id="1227128029536561738" at="39,128,40,100" concept="5" />
       <node id="1213107437756" at="42,0,43,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="1213107437756" at="45,0,46,0" concept="7" trace="CheckCancelledStatusStatement$uy" />
-      <node id="1213107437756" at="46,0,47,0" concept="7" trace="FindBlock$3f" />
+      <node id="1213107437756" at="45,0,46,0" concept="7" trace="CheckCancelledStatusStatement$g0" />
+      <node id="1213107437756" at="46,0,47,0" concept="7" trace="FindBlock$OH" />
       <node id="1213107437756" at="20,0,23,0" concept="0" trace="CheckCancelledStatusStatement_Constraints#()V" />
       <node id="1213107437756" at="30,0,33,9" concept="2" />
       <node id="1213107437756" at="39,0,42,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -151,7 +151,7 @@
       <node id="1227089325743" at="33,0,34,22" concept="5" />
       <node id="1227089330683" at="38,57,39,103" concept="5" />
       <node id="1227089325743" at="41,0,42,0" concept="7" trace="canBeRootBreakingPoint" />
-      <node id="1227089325743" at="44,0,45,0" concept="7" trace="FinderDeclaration$5E" />
+      <node id="1227089325743" at="44,0,45,0" concept="7" trace="FinderDeclaration$R8" />
       <node id="1227089325743" at="19,0,22,0" concept="0" trace="FinderDeclaration_Constraints#()V" />
       <node id="1227089325743" at="29,0,32,9" concept="2" />
       <node id="1227089325743" at="38,0,41,0" concept="8" trace="staticCanBeARoot#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
@@ -189,8 +189,8 @@
       <node id="1237139122105329691" at="34,0,35,22" concept="5" />
       <node id="1237139122105330160" at="39,128,40,89" concept="5" />
       <node id="1237139122105329691" at="42,0,43,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="1237139122105329691" at="45,0,46,0" concept="7" trace="ForEachNodeFoundClosureParameterDeclaration$4h" />
-      <node id="1237139122105329691" at="46,0,47,0" concept="7" trace="OnEachFoundNodeCallback$GA" />
+      <node id="1237139122105329691" at="45,0,46,0" concept="7" trace="ForEachNodeFoundClosureParameterDeclaration$PJ" />
+      <node id="1237139122105329691" at="46,0,47,0" concept="7" trace="OnEachFoundNodeCallback$u4" />
       <node id="1237139122105329691" at="20,0,23,0" concept="0" trace="ForEachNodeFoundClosureParameterDeclaration_Constraints#()V" />
       <node id="1237139122105329691" at="30,0,33,9" concept="2" />
       <node id="1237139122105329691" at="39,0,42,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -229,10 +229,10 @@
       <node id="1237139122105677275" at="31,55,32,71" concept="1" />
       <node id="1237139122105677275" at="33,9,34,0" concept="6" />
       <node id="1237139122105677275" at="34,0,35,22" concept="5" />
-      <node id="1237139122105681086" at="39,128,40,92" concept="5" />
+      <node id="1237139122105681086" at="39,128,40,93" concept="5" />
       <node id="1237139122105677275" at="42,0,43,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="1237139122105677275" at="45,0,46,0" concept="7" trace="OnEachFoundNodeCallback$GA" />
-      <node id="1237139122105677275" at="46,0,47,0" concept="7" trace="OnEachNodeFoundByExpression$R" />
+      <node id="1237139122105677275" at="45,0,46,0" concept="7" trace="OnEachFoundNodeCallback$u4" />
+      <node id="1237139122105677275" at="46,0,47,0" concept="7" trace="OnEachNodeFoundByExpression$Ml" />
       <node id="1237139122105677275" at="20,0,23,0" concept="0" trace="OnEachFoundNodeCallback_Constraints#()V" />
       <node id="1237139122105677275" at="30,0,33,9" concept="2" />
       <node id="1237139122105677275" at="39,0,42,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -241,7 +241,7 @@
       <node id="1237139122105677275" at="24,0,39,0" concept="3" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
       <scope id="1237139122105677275" at="20,48,21,47" />
       <scope id="1237139122105677275" at="31,55,32,71" />
-      <scope id="1237139122105677277" at="39,128,40,92" />
+      <scope id="1237139122105677277" at="39,128,40,93" />
       <scope id="1237139122105677275" at="20,0,23,0" />
       <scope id="1237139122105677275" at="39,0,42,0">
         <var name="childConcept" id="1237139122105677275" />
@@ -273,9 +273,9 @@
       <node id="6869265041613951918" at="34,0,35,22" concept="5" />
       <node id="6869265041613951921" at="39,128,40,174" concept="5" />
       <node id="6869265041613951918" at="42,0,43,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="6869265041613951918" at="45,0,46,0" concept="7" trace="ExecuteFinderExpression$OP" />
-      <node id="6869265041613951918" at="46,0,47,0" concept="7" trace="FindBlock$3f" />
-      <node id="6869265041613951918" at="47,0,48,0" concept="7" trace="SearchedNodesBlock$$o" />
+      <node id="6869265041613951918" at="45,0,46,0" concept="7" trace="ExecuteFinderExpression$Aj" />
+      <node id="6869265041613951918" at="46,0,47,0" concept="7" trace="FindBlock$OH" />
+      <node id="6869265041613951918" at="47,0,48,0" concept="7" trace="SearchedNodesBlock$lQ" />
       <node id="6869265041613951918" at="20,0,23,0" concept="0" trace="ExecuteFinderExpression_Constraints#()V" />
       <node id="6869265041613951918" at="30,0,33,9" concept="2" />
       <node id="6869265041613951918" at="39,0,42,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -316,8 +316,8 @@
       <node id="8961083547754843350" at="34,0,35,22" concept="5" />
       <node id="8961083547754843379" at="39,128,40,102" concept="5" />
       <node id="8961083547754843350" at="42,0,43,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="8961083547754843350" at="45,0,46,0" concept="7" trace="ResultStatement2$rQ" />
-      <node id="8961083547754843350" at="46,0,47,0" concept="7" trace="FindBlock$3f" />
+      <node id="8961083547754843350" at="45,0,46,0" concept="7" trace="ResultStatement2$dk" />
+      <node id="8961083547754843350" at="46,0,47,0" concept="7" trace="FindBlock$OH" />
       <node id="8961083547754843350" at="20,0,23,0" concept="0" trace="ResultStatement2_Constraints#()V" />
       <node id="8961083547754843350" at="30,0,33,9" concept="2" />
       <node id="8961083547754843350" at="39,0,42,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />

@@ -43,13 +43,13 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.ClassConcept$IY;
+        return CONCEPTS.ClassConcept$bK;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
         return "jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes".equals(NameUtil.nodeFQName(node)) && !(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SPropertyOperations.getString(it, PROPS.name$lA7v).startsWith("_void");
+            return SPropertyOperations.getString(it, PROPS.name$MnvL).startsWith("_void");
           }
         }));
       }
@@ -70,7 +70,7 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
             ListSequence.fromList(pdecls).addSequence(ListSequence.fromList(tvds).select(new ISelector<SNode, SNode>() {
               public SNode select(SNode it) {
                 SNode tr = _quotation_createNode_awiph7_a0a0a0a0a4a1a1a0a(it);
-                return _quotation_createNode_awiph7_a1a0a0a0e0b0b0a0(tr, SPropertyOperations.getString(it, PROPS.name$lA7v).toLowerCase());
+                return _quotation_createNode_awiph7_a1a0a0a0e0b0b0a0(tr, SPropertyOperations.getString(it, PROPS.name$MnvL).toLowerCase());
               }
             }));
 
@@ -87,7 +87,7 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
             }));
 
             String name = "_void" + "_P" + params + "_E" + exceps;
-            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$6v_r)).addElement(_quotation_createNode_awiph7_a0a11a1a1a0a(tvds, name, pdecls, exdecls));
+            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addElement(_quotation_createNode_awiph7_a0a11a1a1a0a(tvds, name, pdecls, exdecls));
 
             ListSequence.fromList(excepTypeVars).addElement(_quotation_createNode_awiph7_a0a31a1a1a0a("E" + (exceps + 1)));
           }
@@ -110,13 +110,13 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.ClassConcept$IY;
+        return CONCEPTS.ClassConcept$bK;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
         return "jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes".equals(NameUtil.nodeFQName(node)) && !(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SPropertyOperations.getString(it, PROPS.name$lA7v).startsWith("_return");
+            return SPropertyOperations.getString(it, PROPS.name$MnvL).startsWith("_return");
           }
         }));
       }
@@ -140,7 +140,7 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
             ListSequence.fromList(pdecls).addSequence(ListSequence.fromList(tvds).skip(1).select(new ISelector<SNode, SNode>() {
               public SNode select(SNode it) {
                 SNode tr = _quotation_createNode_awiph7_a0a0a0a0a7a1a1a0b(it);
-                return _quotation_createNode_awiph7_a1a0a0a0h0b0b0a1(tr, SPropertyOperations.getString(it, PROPS.name$lA7v).toLowerCase());
+                return _quotation_createNode_awiph7_a1a0a0a0h0b0b0a1(tr, SPropertyOperations.getString(it, PROPS.name$MnvL).toLowerCase());
               }
             }));
 
@@ -157,7 +157,7 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
             }));
 
             String name = "_return" + "_P" + params + "_E" + exceps;
-            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$6v_r)).addElement(_quotation_createNode_awiph7_a0a41a1a1a0b(tvds, name, pdecls, retVal, exdecls));
+            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addElement(_quotation_createNode_awiph7_a0a41a1a1a0b(tvds, name, pdecls, retVal, exdecls));
 
             ListSequence.fromList(excepTypeVars).addElement(_quotation_createNode_awiph7_a0a61a1a1a0b("E" + (exceps + 1)));
           }
@@ -180,13 +180,13 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.ClassConcept$IY;
+        return CONCEPTS.ClassConcept$bK;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
         return "jetbrains.mps.baseLanguage.closures.runtime._UnrestrictedFunctionTypes".equals(NameUtil.nodeFQName(node)) && !(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SPropertyOperations.getString(it, PROPS.name$lA7v).startsWith("_return_terminate");
+            return SPropertyOperations.getString(it, PROPS.name$MnvL).startsWith("_return_terminate");
           }
         }));
       }
@@ -212,7 +212,7 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
             ListSequence.fromList(pdecls).addSequence(ListSequence.fromList(tvds).skip(2).select(new ISelector<SNode, SNode>() {
               public SNode select(SNode it) {
                 SNode tr = _quotation_createNode_awiph7_a0a0a0a0a9a1a1a0c(it);
-                return _quotation_createNode_awiph7_a1a0a0a0j0b0b0a2(tr, SPropertyOperations.getString(it, PROPS.name$lA7v).toLowerCase());
+                return _quotation_createNode_awiph7_a1a0a0a0j0b0b0a2(tr, SPropertyOperations.getString(it, PROPS.name$MnvL).toLowerCase());
               }
             }));
 
@@ -229,7 +229,7 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
             }));
 
             String name = "_return_terminate" + "_P" + params + "_E" + exceps;
-            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$6v_r)).addElement(_quotation_createNode_awiph7_a0a61a1a1a0c(tvds, name, pdecls, retVal, exdecls));
+            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addElement(_quotation_createNode_awiph7_a0a61a1a1a0c(tvds, name, pdecls, retVal, exdecls));
 
             ListSequence.fromList(excepTypeVars).addElement(_quotation_createNode_awiph7_a0a81a1a1a0c("E" + (exceps + 1)));
           }
@@ -252,13 +252,13 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.ClassConcept$IY;
+        return CONCEPTS.ClassConcept$bK;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
         return "jetbrains.mps.baseLanguage.closures.runtime._UnrestrictedFunctionTypes".equals(NameUtil.nodeFQName(node)) && !(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SPropertyOperations.getString(it, PROPS.name$lA7v).startsWith("_void_terminate");
+            return SPropertyOperations.getString(it, PROPS.name$MnvL).startsWith("_void_terminate");
           }
         }));
       }
@@ -282,7 +282,7 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
             ListSequence.fromList(pdecls).addSequence(ListSequence.fromList(tvds).skip(1).select(new ISelector<SNode, SNode>() {
               public SNode select(SNode it) {
                 SNode tr = _quotation_createNode_awiph7_a0a0a0a0a7a1a1a0d(it);
-                return _quotation_createNode_awiph7_a1a0a0a0h0b0b0a3(tr, SPropertyOperations.getString(it, PROPS.name$lA7v).toLowerCase());
+                return _quotation_createNode_awiph7_a1a0a0a0h0b0b0a3(tr, SPropertyOperations.getString(it, PROPS.name$MnvL).toLowerCase());
               }
             }));
 
@@ -301,9 +301,9 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
             final String ename = "_return_terminate" + "_P" + params + "_E" + exceps;
             SNode eifc = SNodeOperations.cast(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).findFirst(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return ename.equals(SPropertyOperations.getString(it, PROPS.name$lA7v));
+                return ename.equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
               }
-            }), CONCEPTS.Interface$Kp);
+            }), CONCEPTS.Interface$db);
             List<SNode> eifcParams = new ArrayList<SNode>();
             ListSequence.fromList(eifcParams).addSequence(ListSequence.fromList(tvds).skip(1).select(new ISelector<SNode, SNode>() {
               public SNode select(SNode it) {
@@ -312,7 +312,7 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
             }));
 
             String name = "_void_terminate" + "_P" + params + "_E" + exceps;
-            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$6v_r)).addElement(_quotation_createNode_awiph7_a0a91a1a1a0d(t, eifcParams, eifc, tvds, name, pdecls, retVal, exdecls));
+            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addElement(_quotation_createNode_awiph7_a0a91a1a1a0d(t, eifcParams, eifc, tvds, name, pdecls, retVal, exdecls));
 
             ListSequence.fromList(excepTypeVars).addElement(_quotation_createNode_awiph7_a0a12a1a1a0d("E" + (exceps + 1)));
           }
@@ -335,13 +335,13 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.ClassConcept$IY;
+        return CONCEPTS.ClassConcept$bK;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
         return "jetbrains.mps.baseLanguage.closures.runtime._UnrestrictedFunctionTypes".equals(NameUtil.nodeFQName(node)) && !(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SPropertyOperations.getString(it, PROPS.name$lA7v).startsWith("_return_void");
+            return SPropertyOperations.getString(it, PROPS.name$MnvL).startsWith("_return_void");
           }
         }));
       }
@@ -365,7 +365,7 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
             ListSequence.fromList(pdecls).addSequence(ListSequence.fromList(tvds).skip(1).select(new ISelector<SNode, SNode>() {
               public SNode select(SNode it) {
                 SNode tr = _quotation_createNode_awiph7_a0a0a0a0a7a1a1a0e(it);
-                return _quotation_createNode_awiph7_a1a0a0a0h0b0b0a4(tr, SPropertyOperations.getString(it, PROPS.name$lA7v).toLowerCase());
+                return _quotation_createNode_awiph7_a1a0a0a0h0b0b0a4(tr, SPropertyOperations.getString(it, PROPS.name$MnvL).toLowerCase());
               }
             }));
 
@@ -384,9 +384,9 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
             final String ename = "_return_terminate" + "_P" + params + "_E" + exceps;
             SNode eifc = SNodeOperations.cast(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).findFirst(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return ename.equals(SPropertyOperations.getString(it, PROPS.name$lA7v));
+                return ename.equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
               }
-            }), CONCEPTS.Interface$Kp);
+            }), CONCEPTS.Interface$db);
             List<SNode> eifcParams = new ArrayList<SNode>();
             ListSequence.fromList(eifcParams).addSequence(ListSequence.fromList(tvds).skip(1).select(new ISelector<SNode, SNode>() {
               public SNode select(SNode it) {
@@ -395,7 +395,7 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
             }));
 
             String name = "_return_void" + "_P" + params + "_E" + exceps;
-            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$6v_r)).addElement(_quotation_createNode_awiph7_a0a91a1a1a0e(r, eifcParams, eifc, tvds, name, pdecls, retVal, exdecls));
+            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addElement(_quotation_createNode_awiph7_a0a91a1a1a0e(r, eifcParams, eifc, tvds, name, pdecls, retVal, exdecls));
 
             ListSequence.fromList(excepTypeVars).addElement(_quotation_createNode_awiph7_a0a12a1a1a0e("E" + (exceps + 1)));
           }
@@ -418,13 +418,13 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.ClassConcept$IY;
+        return CONCEPTS.ClassConcept$bK;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
         return "jetbrains.mps.baseLanguage.closures.runtime._UnrestrictedFunctionTypes".equals(NameUtil.nodeFQName(node)) && !(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SPropertyOperations.getString(it, PROPS.name$lA7v).startsWith("_void_void");
+            return SPropertyOperations.getString(it, PROPS.name$MnvL).startsWith("_void_void");
           }
         }));
       }
@@ -446,7 +446,7 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
             ListSequence.fromList(pdecls).addSequence(ListSequence.fromList(tvds).select(new ISelector<SNode, SNode>() {
               public SNode select(SNode it) {
                 SNode tr = _quotation_createNode_awiph7_a0a0a0a0a5a1a1a0f(it);
-                return _quotation_createNode_awiph7_a1a0a0a0f0b0b0a5(tr, SPropertyOperations.getString(it, PROPS.name$lA7v).toLowerCase());
+                return _quotation_createNode_awiph7_a1a0a0a0f0b0b0a5(tr, SPropertyOperations.getString(it, PROPS.name$MnvL).toLowerCase());
               }
             }));
 
@@ -465,9 +465,9 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
             final String ename = "_return_terminate" + "_P" + params + "_E" + exceps;
             SNode eifc = SNodeOperations.cast(Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(node)).findFirst(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return ename.equals(SPropertyOperations.getString(it, PROPS.name$lA7v));
+                return ename.equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
               }
-            }), CONCEPTS.Interface$Kp);
+            }), CONCEPTS.Interface$db);
             List<SNode> eifcParams = new ArrayList<SNode>();
             ListSequence.fromList(eifcParams).addSequence(ListSequence.fromList(tvds).select(new ISelector<SNode, SNode>() {
               public SNode select(SNode it) {
@@ -476,7 +476,7 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
             }));
 
             String name = "_void_void" + "_P" + params + "_E" + exceps;
-            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$6v_r)).addElement(_quotation_createNode_awiph7_a0a71a1a1a0f(eifcParams, eifc, tvds, name, pdecls, retVal, exdecls));
+            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addElement(_quotation_createNode_awiph7_a0a71a1a1a0f(eifcParams, eifc, tvds, name, pdecls, retVal, exdecls));
 
             ListSequence.fromList(excepTypeVars).addElement(_quotation_createNode_awiph7_a0a91a1a1a0f("E" + (exceps + 1)));
           }
@@ -1261,15 +1261,15 @@ public final class UpdateClosuresRuntime_MigrationScript extends BaseMigrationSc
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink member$L_2d = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
   }
 }

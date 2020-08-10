@@ -44,7 +44,7 @@ public class DiagramspecificEditorCells_Contribution extends SubstituteMenuBase 
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_ljrot4_a(), CONCEPTS.CellModel_DiagramNode$Ry));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_ljrot4_a(), CONCEPTS.CellModel_DiagramNode$Jl));
     return result;
   }
 
@@ -84,7 +84,7 @@ public class DiagramspecificEditorCells_Contribution extends SubstituteMenuBase 
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.CellModel_DiagramNode$Ry;
+          return CONCEPTS.CellModel_DiagramNode$Jl;
         }
         @Nullable
         @Override
@@ -92,7 +92,7 @@ public class DiagramspecificEditorCells_Contribution extends SubstituteMenuBase 
           SNode nodeToWrap = super.createNode(pattern);
           myCreatedNode = nodeToWrap;
           SNode diagramNodeCell = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a326e1L, "jetbrains.mps.lang.editor.diagram.structure.CellModel_DiagramNode"));
-          SLinkOperations.setTarget(diagramNodeCell, LINKS.figure$AKjl, nodeToWrap);
+          SLinkOperations.setTarget(diagramNodeCell, LINKS.figure$dTb8, nodeToWrap);
           return diagramNodeCell;
         }
         @Override
@@ -119,16 +119,16 @@ public class DiagramspecificEditorCells_Contribution extends SubstituteMenuBase 
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.AbstractFigureReference$TJ;
+      return CONCEPTS.AbstractFigureReference$Ly;
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellModel_DiagramNode$Ry = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a326e1L, "jetbrains.mps.lang.editor.diagram.structure.CellModel_DiagramNode");
-    /*package*/ static final SConcept AbstractFigureReference$TJ = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a329d6L, "jetbrains.mps.lang.editor.diagram.structure.AbstractFigureReference");
+    /*package*/ static final SConcept CellModel_DiagramNode$Jl = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a326e1L, "jetbrains.mps.lang.editor.diagram.structure.CellModel_DiagramNode");
+    /*package*/ static final SConcept AbstractFigureReference$Ly = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a329d6L, "jetbrains.mps.lang.editor.diagram.structure.AbstractFigureReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink figure$AKjl = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a326e1L, 0xf301bf106a329d9L, "figure");
+    /*package*/ static final SContainmentLink figure$dTb8 = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0xf301bf106a326e1L, 0xf301bf106a329d9L, "figure");
   }
 }

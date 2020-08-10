@@ -13,22 +13,22 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class InequationReference_Constraints extends BaseConstraintsDescriptor {
   public InequationReference_Constraints() {
-    super(CONCEPTS.InequationReference$XM);
+    super(CONCEPTS.InequationReference$fC);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.inequation$8uT0, this) {};
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.inequation$xlaQ, this) {};
     Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
     references.put(d0.getReference(), d0);
     return references;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InequationReference$XM = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x42501924d0bd1913L, "jetbrains.mps.lang.typesystem.structure.InequationReference");
+    /*package*/ static final SConcept InequationReference$fC = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x42501924d0bd1913L, "jetbrains.mps.lang.typesystem.structure.InequationReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink inequation$8uT0 = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x42501924d0bd1913L, 0x42501924d0bd1914L, "inequation");
+    /*package*/ static final SReferenceLink inequation$xlaQ = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x42501924d0bd1913L, 0x42501924d0bd1914L, "inequation");
   }
 }

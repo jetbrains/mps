@@ -32,7 +32,7 @@ public class TestRefConstraints_SubReference_ScopingSuperHandler_SubstituteMenu 
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_k4yk1d_a(), CONCEPTS.TestRefConstraints_SubReference_ScopingSuperHandler$PW));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_k4yk1d_a(), CONCEPTS.TestRefConstraints_SubReference_ScopingSuperHandler$RU));
     result.add(new SMP_Subconcepts_k4yk1d_b());
     return result;
   }
@@ -54,7 +54,7 @@ public class TestRefConstraints_SubReference_ScopingSuperHandler_SubstituteMenu 
 
     public SMP_ReferenceScope_k4yk1d_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.TestRefConstraints_SubReference_ScopingSuperHandler$PW, LINKS.target$ndby);
+      super((SAbstractConcept) CONCEPTS.TestRefConstraints_SubReference_ScopingSuperHandler$RU, LINKS.target$Ukdw);
     }
     @NotNull
     @Override
@@ -101,7 +101,7 @@ public class TestRefConstraints_SubReference_ScopingSuperHandler_SubstituteMenu 
   }
   public class SMP_Subconcepts_k4yk1d_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.TestRefConstraints_SubReference_ScopingSuperHandler$PW);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.TestRefConstraints_SubReference_ScopingSuperHandler$RU);
     }
     @NotNull
     @Override
@@ -122,10 +122,10 @@ public class TestRefConstraints_SubReference_ScopingSuperHandler_SubstituteMenu 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestRefConstraints_SubReference_ScopingSuperHandler$PW = MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a3066058dc08eL, "constraints.test.structure.TestRefConstraints_SubReference_ScopingSuperHandler");
+    /*package*/ static final SConcept TestRefConstraints_SubReference_ScopingSuperHandler$RU = MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a3066058dc08eL, "constraints.test.structure.TestRefConstraints_SubReference_ScopingSuperHandler");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$ndby = MetaAdapterFactory.getReferenceLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a30660588e212L, 0x244a30660588e2f1L, "target");
+    /*package*/ static final SReferenceLink target$Ukdw = MetaAdapterFactory.getReferenceLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a30660588e212L, 0x244a30660588e2f1L, "target");
   }
 }

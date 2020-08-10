@@ -21,14 +21,14 @@ public class supertypesOf_SConceptType_SubtypingRule extends SubtypingRule_Runti
   public supertypesOf_SConceptType_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode conceptType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (AbstractConceptUtil.hasSurelyNoInterfacesBeneath(SLinkOperations.getTarget(conceptType, LINKS.conceptDeclaraton$bFPw))) {
+    if (AbstractConceptUtil.hasSurelyNoInterfacesBeneath(SLinkOperations.getTarget(conceptType, LINKS.conceptDeclaraton$K4R0))) {
       return _quotation_createNode_a135mu_a0a0a1();
     } else {
       return _quotation_createNode_a135mu_a0a0a0b();
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SConceptType$nF;
+    return CONCEPTS.SConceptType$pb;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -52,10 +52,10 @@ public class supertypesOf_SConceptType_SubtypingRule extends SubtypingRule_Runti
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaraton$bFPw = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, 0x5cab42cd97571cefL, "conceptDeclaraton");
+    /*package*/ static final SReferenceLink conceptDeclaraton$K4R0 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, 0x5cab42cd97571cefL, "conceptDeclaraton");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SConceptType$nF = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, "jetbrains.mps.lang.smodel.structure.SConceptType");
+    /*package*/ static final SConcept SConceptType$pb = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5cab42cd97571ceeL, "jetbrains.mps.lang.smodel.structure.SConceptType");
   }
 }

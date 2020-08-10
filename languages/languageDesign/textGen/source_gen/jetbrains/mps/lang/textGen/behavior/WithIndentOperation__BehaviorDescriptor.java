@@ -31,7 +31,7 @@ public final class WithIndentOperation__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static boolean inLangConcept_idhZi_Zwx(@NotNull SNode __thisNode__) {
-    return SNodeOperations.isInstanceOf((SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.AbstractTextGenDeclaration$6M, false, false)), CONCEPTS.LanguageTextGenDeclaration$8b);
+    return SNodeOperations.isInstanceOf((SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.AbstractTextGenDeclaration$lk, false, false)), CONCEPTS.LanguageTextGenDeclaration$mH);
   }
 
   /*package*/ WithIndentOperation__BehaviorDescriptor() {
@@ -81,7 +81,7 @@ public final class WithIndentOperation__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractTextGenDeclaration$6M = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f60f06a49L, "jetbrains.mps.lang.textGen.structure.AbstractTextGenDeclaration");
-    /*package*/ static final SConcept LanguageTextGenDeclaration$8b = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, "jetbrains.mps.lang.textGen.structure.LanguageTextGenDeclaration");
+    /*package*/ static final SConcept AbstractTextGenDeclaration$lk = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f60f06a49L, "jetbrains.mps.lang.textGen.structure.AbstractTextGenDeclaration");
+    /*package*/ static final SConcept LanguageTextGenDeclaration$mH = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, "jetbrains.mps.lang.textGen.structure.LanguageTextGenDeclaration");
   }
 }

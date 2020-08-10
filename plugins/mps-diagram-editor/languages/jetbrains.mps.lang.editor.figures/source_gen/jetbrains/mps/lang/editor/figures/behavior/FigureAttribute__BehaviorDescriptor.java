@@ -38,17 +38,17 @@ public final class FigureAttribute__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static SNode getFigureClass_id4H19mAwT6pg(@NotNull SNode __thisNode__) {
-    return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.ClassConcept$IY);
+    return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.ClassConcept$bK);
   }
   /*package*/ static Iterable<SNode> getPrameterAttributes_id4H19mAwT3wD(@NotNull SNode __thisNode__) {
     return ListSequence.fromList(ClassConcept__BehaviorDescriptor.getAllSuperClassifiers_id4fAeKISQjDi.invoke(FigureAttribute__BehaviorDescriptor.getFigureClass_id4H19mAwT6pg.invoke(__thisNode__))).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
-        return SNodeOperations.getNodeDescendants(it, CONCEPTS.FigureParameterAttribute$MU, false, new SAbstractConcept[]{});
+        return SNodeOperations.getNodeDescendants(it, CONCEPTS.FigureParameterAttribute$tq, false, new SAbstractConcept[]{});
       }
     });
   }
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(FigureAttribute__BehaviorDescriptor.getFigureClass_id4H19mAwT6pg.invoke(__thisNode__), PROPS.name$lA7v);
+    return SPropertyOperations.getString(FigureAttribute__BehaviorDescriptor.getFigureClass_id4H19mAwT6pg.invoke(__thisNode__), PROPS.name$MnvL);
   }
 
   /*package*/ FigureAttribute__BehaviorDescriptor() {
@@ -102,11 +102,11 @@ public final class FigureAttribute__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept FigureParameterAttribute$MU = MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x4b412569a0c593e1L, "jetbrains.mps.lang.editor.figures.structure.FigureParameterAttribute");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept FigureParameterAttribute$tq = MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x4b412569a0c593e1L, "jetbrains.mps.lang.editor.figures.structure.FigureParameterAttribute");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

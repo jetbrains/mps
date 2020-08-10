@@ -16,8 +16,8 @@ public class ElementFactories {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       {
         final SNode original = sampleNode;
-        if (SNodeOperations.isInstanceOf(original, CONCEPTS.ElementRef$i$)) {
-          SPropertyOperations.assign(newNode, PROPS.ionization$yEe4, SPropertyOperations.getInteger(original, PROPS.ionization$yEe4));
+        if (SNodeOperations.isInstanceOf(original, CONCEPTS.ElementRef$EZ)) {
+          SPropertyOperations.assign(newNode, PROPS.ionization$uiAv, SPropertyOperations.getInteger(original, PROPS.ionization$uiAv));
         }
       }
     }
@@ -26,9 +26,9 @@ public class ElementFactories {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       {
         final SNode original = sampleNode;
-        if (SNodeOperations.isInstanceOf(original, CONCEPTS.CompoundComponentWithCardinality$dw)) {
-          SPropertyOperations.assign(newNode, PROPS.cardinality$ZAK0, SPropertyOperations.getInteger(original, PROPS.cardinality$ZAK0));
-          SPropertyOperations.assign(newNode, PROPS.cardinalityVisible$ZAZ1, SPropertyOperations.getBoolean(original, PROPS.cardinalityVisible$ZAZ1));
+        if (SNodeOperations.isInstanceOf(original, CONCEPTS.CompoundComponentWithCardinality$_V)) {
+          SPropertyOperations.assign(newNode, PROPS.cardinality$Vf8r, SPropertyOperations.getInteger(original, PROPS.cardinality$Vf8r));
+          SPropertyOperations.assign(newNode, PROPS.cardinalityVisible$Vfns, SPropertyOperations.getBoolean(original, PROPS.cardinalityVisible$Vfns));
         }
       }
     }
@@ -37,25 +37,25 @@ public class ElementFactories {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       {
         final SNode original = sampleNode;
-        if (SNodeOperations.isInstanceOf(original, CONCEPTS.Compound$6W)) {
-          SPropertyOperations.assign(newNode, PROPS.cardinality$yzu0, SPropertyOperations.getInteger(original, PROPS.cardinality$yzu0));
-          SPropertyOperations.assign(newNode, PROPS.cardinalityVisible$c5Xl, SPropertyOperations.getBoolean(original, PROPS.cardinalityVisible$c5Xl));
+        if (SNodeOperations.isInstanceOf(original, CONCEPTS.Compound$vn)) {
+          SPropertyOperations.assign(newNode, PROPS.cardinality$ubQr, SPropertyOperations.getInteger(original, PROPS.cardinality$ubQr));
+          SPropertyOperations.assign(newNode, PROPS.cardinalityVisible$7IlK, SPropertyOperations.getBoolean(original, PROPS.cardinalityVisible$7IlK));
         }
       }
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ElementRef$i$ = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, "jetbrains.mps.samples.ChemMastery.structure.ElementRef");
-    /*package*/ static final SConcept CompoundComponentWithCardinality$dw = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, "jetbrains.mps.samples.ChemMastery.structure.CompoundComponentWithCardinality");
-    /*package*/ static final SConcept Compound$6W = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, "jetbrains.mps.samples.ChemMastery.structure.Compound");
+    /*package*/ static final SConcept ElementRef$EZ = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, "jetbrains.mps.samples.ChemMastery.structure.ElementRef");
+    /*package*/ static final SConcept CompoundComponentWithCardinality$_V = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, "jetbrains.mps.samples.ChemMastery.structure.CompoundComponentWithCardinality");
+    /*package*/ static final SConcept Compound$vn = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, "jetbrains.mps.samples.ChemMastery.structure.Compound");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty ionization$yEe4 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, 0x6ef7184faba62980L, "ionization");
-    /*package*/ static final SProperty cardinality$ZAK0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd51L, "cardinality");
-    /*package*/ static final SProperty cardinalityVisible$ZAZ1 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd52L, "cardinalityVisible");
-    /*package*/ static final SProperty cardinality$yzu0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184faba62979L, "cardinality");
-    /*package*/ static final SProperty cardinalityVisible$c5Xl = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184fabe70dd6L, "cardinalityVisible");
+    /*package*/ static final SProperty ionization$uiAv = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL, 0x6ef7184faba62980L, "ionization");
+    /*package*/ static final SProperty cardinality$Vf8r = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd51L, "cardinality");
+    /*package*/ static final SProperty cardinalityVisible$Vfns = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd52L, "cardinalityVisible");
+    /*package*/ static final SProperty cardinality$ubQr = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184faba62979L, "cardinality");
+    /*package*/ static final SProperty cardinalityVisible$7IlK = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L, 0x6ef7184fabe70dd6L, "cardinalityVisible");
   }
 }

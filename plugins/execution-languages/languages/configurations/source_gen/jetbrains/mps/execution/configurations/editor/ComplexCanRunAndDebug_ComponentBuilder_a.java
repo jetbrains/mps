@@ -108,10 +108,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_2konf7_a1b0() {
-    return SPropertyOperations.getBoolean(myNode, PROPS.canRun$Hekc);
+    return SPropertyOperations.getBoolean(myNode, PROPS.canRun$gS0N);
   }
   private boolean nodeCondition_2konf7_a2b0() {
-    return !(SPropertyOperations.getBoolean(myNode, PROPS.canRun$Hekc));
+    return !(SPropertyOperations.getBoolean(myNode, PROPS.canRun$gS0N));
   }
   private EditorCell createIndentCell_0() {
     EditorCell_Indent editorCell = new EditorCell_Indent(getEditorContext(), myNode);
@@ -149,7 +149,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
 
     public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SPropertyOperations.set(node, PROPS.canRun$Hekc, false);
+      SPropertyOperations.set(node, PROPS.canRun$gS0N, false);
     }
     public String getMatchingText() {
       return "can't run";
@@ -187,7 +187,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
 
     public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SPropertyOperations.set(node, PROPS.canRun$Hekc, true);
+      SPropertyOperations.set(node, PROPS.canRun$gS0N, true);
     }
     public String getMatchingText() {
       return "run";
@@ -209,10 +209,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_2konf7_a1c0() {
-    return Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(myNode, LINKS.debuggerConfiguration$WfOR)).isNotEmpty();
+    return Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(myNode, LINKS.debuggerConfiguration$vTxu)).isNotEmpty();
   }
   private boolean nodeCondition_2konf7_a2c0() {
-    return (SLinkOperations.getTarget(myNode, LINKS.debuggerConfiguration$WfOR) == null);
+    return (SLinkOperations.getTarget(myNode, LINKS.debuggerConfiguration$vTxu) == null);
   }
   private EditorCell createIndentCell_1() {
     EditorCell_Indent editorCell = new EditorCell_Indent(getEditorContext(), myNode);
@@ -260,14 +260,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
 
     public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.debuggerConfiguration$WfOR));
+      SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.debuggerConfiguration$vTxu));
     }
     public String getMatchingText() {
       return "can't debug";
     }
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new debuggerConfigurationSingleRoleHandler_2konf7_b1c0(myNode, LINKS.debuggerConfiguration$WfOR, getEditorContext());
+    SingleRoleCellProvider provider = new debuggerConfigurationSingleRoleHandler_2konf7_b1c0(myNode, LINKS.debuggerConfiguration$vTxu, getEditorContext());
     return provider.createCell();
   }
   private static class debuggerConfigurationSingleRoleHandler_2konf7_b1c0 extends SingleRoleCellProvider {
@@ -287,8 +287,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.debuggerConfiguration$WfOR, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.debuggerConfiguration$WfOR, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.debuggerConfiguration$vTxu, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.debuggerConfiguration$vTxu, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -300,13 +300,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.debuggerConfiguration$WfOR);
+        editorCell.setSRole(LINKS.debuggerConfiguration$vTxu);
       }
     }
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.debuggerConfiguration$WfOR));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.debuggerConfiguration$vTxu));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_debuggerConfiguration");
@@ -353,7 +353,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
 
     public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SNodeFactoryOperations.setNewChild(node, LINKS.debuggerConfiguration$WfOR, CONCEPTS.DebuggerConfiguration$g5);
+      SNodeFactoryOperations.setNewChild(node, LINKS.debuggerConfiguration$vTxu, CONCEPTS.DebuggerConfiguration$$_);
     }
     public String getMatchingText() {
       return "debug";
@@ -361,14 +361,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty canRun$Hekc = MetaAdapterFactory.getProperty(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, 0x523a1a6c9706408bL, "canRun");
+    /*package*/ static final SProperty canRun$gS0N = MetaAdapterFactory.getProperty(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, 0x523a1a6c9706408bL, "canRun");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink debuggerConfiguration$WfOR = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bc8e1ecL, 0x5d457621242d8208L, "debuggerConfiguration");
+    /*package*/ static final SContainmentLink debuggerConfiguration$vTxu = MetaAdapterFactory.getContainmentLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bc8e1ecL, 0x5d457621242d8208L, "debuggerConfiguration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DebuggerConfiguration$g5 = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x5d457621242d16f5L, "jetbrains.mps.debugger.api.lang.structure.DebuggerConfiguration");
+    /*package*/ static final SConcept DebuggerConfiguration$$_ = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x5d457621242d16f5L, "jetbrains.mps.debugger.api.lang.structure.DebuggerConfiguration");
   }
 }

@@ -46,7 +46,7 @@ public final class ConvertTemplateDeclRefToInlineTemplate_Intention extends Abst
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    List<SNode> TFs = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(node, LINKS.template$B9Tq), CONCEPTS.TemplateDeclaration$q0), LINKS.contentNode$fTrL), CONCEPTS.TemplateFragment$yI, false, new SAbstractConcept[]{});
+    List<SNode> TFs = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(node, LINKS.template$6_6), CONCEPTS.TemplateDeclaration$5G), LINKS.contentNode$CQ7t), CONCEPTS.TemplateFragment$eq, false, new SAbstractConcept[]{});
     return ListSequence.fromList(TFs).count() == 1;
   }
   @Override
@@ -68,15 +68,15 @@ public final class ConvertTemplateDeclRefToInlineTemplate_Intention extends Abst
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode oldTemplate = SNodeOperations.as(SLinkOperations.getTarget(node, LINKS.template$B9Tq), CONCEPTS.TemplateDeclaration$q0);
-      List<SNode> TFs = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(oldTemplate, LINKS.contentNode$fTrL), CONCEPTS.TemplateFragment$yI, false, new SAbstractConcept[]{});
+      SNode oldTemplate = SNodeOperations.as(SLinkOperations.getTarget(node, LINKS.template$6_6), CONCEPTS.TemplateDeclaration$5G);
+      List<SNode> TFs = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(oldTemplate, LINKS.contentNode$CQ7t), CONCEPTS.TemplateFragment$eq, false, new SAbstractConcept[]{});
       SNode fragmentToSet = SNodeOperations.copyNode(SNodeOperations.getParent(ListSequence.fromList(TFs).first()));
-      SNode TFtoDelete = AttributeOperations.getAttribute(fragmentToSet, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$yI));
+      SNode TFtoDelete = AttributeOperations.getAttribute(fragmentToSet, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq));
       SNodeOperations.deleteNode(TFtoDelete);
-      SNode inlineTemplate = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.InlineTemplate_RuleConsequence$Mt);
-      SLinkOperations.setTarget(inlineTemplate, LINKS.templateNode$CUKK, fragmentToSet);
+      SNode inlineTemplate = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.InlineTemplate_RuleConsequence$u9);
+      SLinkOperations.setTarget(inlineTemplate, LINKS.templateNode$1Rss, fragmentToSet);
       // ------ 
-      if (!(Sequence.fromIterable(SLinkOperations.collect(SModelOperations.nodes(SNodeOperations.getModel(node), CONCEPTS.ITemplateCall$uv), LINKS.template$B9Tq)).contains(oldTemplate))) {
+      if (!(Sequence.fromIterable(SLinkOperations.collect(SModelOperations.nodes(SNodeOperations.getModel(node), CONCEPTS.ITemplateCall$ab), LINKS.template$6_6)).contains(oldTemplate))) {
         // nobody in the same model uses this template, drop it (if you care about external references, why would you use intention then?) 
         SNodeOperations.deleteNode(oldTemplate);
       }
@@ -88,15 +88,15 @@ public final class ConvertTemplateDeclRefToInlineTemplate_Intention extends Abst
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink template$B9Tq = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
-    /*package*/ static final SContainmentLink contentNode$fTrL = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");
-    /*package*/ static final SContainmentLink templateNode$CUKK = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, 0x112103ebf76L, "templateNode");
+    /*package*/ static final SReferenceLink template$6_6 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
+    /*package*/ static final SContainmentLink contentNode$CQ7t = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");
+    /*package*/ static final SContainmentLink templateNode$1Rss = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, 0x112103ebf76L, "templateNode");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TemplateDeclaration$q0 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, "jetbrains.mps.lang.generator.structure.TemplateDeclaration");
-    /*package*/ static final SConcept TemplateFragment$yI = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment");
-    /*package*/ static final SConcept InlineTemplate_RuleConsequence$Mt = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, "jetbrains.mps.lang.generator.structure.InlineTemplate_RuleConsequence");
-    /*package*/ static final SInterfaceConcept ITemplateCall$uv = MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, "jetbrains.mps.lang.generator.structure.ITemplateCall");
+    /*package*/ static final SConcept TemplateDeclaration$5G = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, "jetbrains.mps.lang.generator.structure.TemplateDeclaration");
+    /*package*/ static final SConcept TemplateFragment$eq = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment");
+    /*package*/ static final SConcept InlineTemplate_RuleConsequence$u9 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, "jetbrains.mps.lang.generator.structure.InlineTemplate_RuleConsequence");
+    /*package*/ static final SInterfaceConcept ITemplateCall$ab = MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, "jetbrains.mps.lang.generator.structure.ITemplateCall");
   }
 }

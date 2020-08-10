@@ -46,10 +46,10 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
       public TableModel createTableModel() {
         return new TableModel() {
           public int getColumnCount() {
-            return SLinkOperations.getChildren(myNode, LINKS.component$vCwX).size() + 1;
+            return SLinkOperations.getChildren(myNode, LINKS.component$l$9M).size() + 1;
           }
           public int getRowCount() {
-            return SLinkOperations.getChildren(myNode, LINKS.component$vCwX).size() + 1;
+            return SLinkOperations.getChildren(myNode, LINKS.component$l$9M).size() + 1;
           }
           public void deleteRow(int rowNumber) {
           }
@@ -58,18 +58,18 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
               return null;
             }
             if (row == 0) {
-              return ListSequence.fromList(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.component$vCwX)).getElement(column - 1), LINKS.in$9FzG)).first();
+              return ListSequence.fromList(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.component$l$9M)).getElement(column - 1), LINKS.in$ZBcx)).first();
             }
             if (column == 0) {
-              SNode component = ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.component$vCwX)).getElement(row - 1);
-              if (ListSequence.fromList(SLinkOperations.getChildren(component, LINKS.out$9GvK)).isEmpty()) {
+              SNode component = ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.component$l$9M)).getElement(row - 1);
+              if (ListSequence.fromList(SLinkOperations.getChildren(component, LINKS.out$ZC8_)).isEmpty()) {
                 return component;
               }
-              return ListSequence.fromList(SLinkOperations.getChildren(component, LINKS.out$9GvK)).first();
+              return ListSequence.fromList(SLinkOperations.getChildren(component, LINKS.out$ZC8_)).first();
             }
-            return ListSequence.fromList(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.component$vCwX)).getElement(row - 1), LINKS.dep$6lcR)).findFirst(new IWhereFilter<SNode>() {
+            return ListSequence.fromList(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.component$l$9M)).getElement(row - 1), LINKS.dep$WgPG)).findFirst(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return SLinkOperations.getTarget(it, LINKS.to$QFu4) == ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.component$vCwX)).getElement(column - 1);
+                return SLinkOperations.getTarget(it, LINKS.to$GB6T) == ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.component$l$9M)).getElement(column - 1);
               }
             });
           }
@@ -115,10 +115,10 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink component$vCwX = MetaAdapterFactory.getContainmentLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814242bL, 0x565e197638146fa8L, "component");
-    /*package*/ static final SContainmentLink in$9FzG = MetaAdapterFactory.getContainmentLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e1976381be142L, "in");
-    /*package*/ static final SContainmentLink out$9GvK = MetaAdapterFactory.getContainmentLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e1976381be146L, "out");
-    /*package*/ static final SContainmentLink dep$6lcR = MetaAdapterFactory.getContainmentLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e19763814f147L, "dep");
-    /*package*/ static final SReferenceLink to$QFu4 = MetaAdapterFactory.getReferenceLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e1976381b71a0L, 0x565e1976381b7654L, "to");
+    /*package*/ static final SContainmentLink component$l$9M = MetaAdapterFactory.getContainmentLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814242bL, 0x565e197638146fa8L, "component");
+    /*package*/ static final SContainmentLink in$ZBcx = MetaAdapterFactory.getContainmentLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e1976381be142L, "in");
+    /*package*/ static final SContainmentLink out$ZC8_ = MetaAdapterFactory.getContainmentLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e1976381be146L, "out");
+    /*package*/ static final SContainmentLink dep$WgPG = MetaAdapterFactory.getContainmentLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814f144L, 0x565e19763814f147L, "dep");
+    /*package*/ static final SReferenceLink to$GB6T = MetaAdapterFactory.getReferenceLink(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e1976381b71a0L, 0x565e1976381b7654L, "to");
   }
 }

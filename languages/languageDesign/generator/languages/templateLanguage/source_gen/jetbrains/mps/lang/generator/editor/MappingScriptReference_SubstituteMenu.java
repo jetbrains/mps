@@ -28,7 +28,7 @@ public class MappingScriptReference_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_co4dbn_a(), CONCEPTS.MappingScriptReference$4z));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_co4dbn_a(), CONCEPTS.MappingScriptReference$Kf));
     result.add(new SMP_Subconcepts_co4dbn_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class MappingScriptReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_co4dbn_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.MappingScriptReference$4z, LINKS.mappingScript$dXkv);
+      super((SAbstractConcept) CONCEPTS.MappingScriptReference$Kf, LINKS.mappingScript$AU0b);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class MappingScriptReference_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_co4dbn_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.MappingScriptReference$4z);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.MappingScriptReference$Kf);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class MappingScriptReference_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MappingScriptReference$4z = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x116597b27aaL, "jetbrains.mps.lang.generator.structure.MappingScriptReference");
+    /*package*/ static final SConcept MappingScriptReference$Kf = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x116597b27aaL, "jetbrains.mps.lang.generator.structure.MappingScriptReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink mappingScript$dXkv = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x116597b27aaL, 0x116597b663aL, "mappingScript");
+    /*package*/ static final SReferenceLink mappingScript$AU0b = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x116597b27aaL, 0x116597b663aL, "mappingScript");
   }
 }

@@ -25,7 +25,7 @@ public class PassByRefExpression_Delete {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode expr = SLinkOperations.getTarget(node, LINKS.expr$5PXZ);
+        SNode expr = SLinkOperations.getTarget(node, LINKS.expr$KVqL);
         SNodeOperations.replaceWithAnother(node, expr);
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, expr, SelectionManager.FIRST_CELL, -1);
       }
@@ -75,6 +75,6 @@ public class PassByRefExpression_Delete {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expr$5PXZ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5fc1cc47cb4622eaL, 0x5fc1cc47cb462337L, "expr");
+    /*package*/ static final SContainmentLink expr$KVqL = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5fc1cc47cb4622eaL, 0x5fc1cc47cb462337L, "expr");
   }
 }

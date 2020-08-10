@@ -42,12 +42,12 @@ public final class ElementaryNodeId__BehaviorDescriptor extends BaseBHDescriptor
     return ElementaryNodeId__BehaviorDescriptor.create_id6UZRahyzeh3.invoke(__thisConcept__, where, n.getNodeId());
   }
   /*package*/ static SNode create_id6UZRahyzeh3(@NotNull SAbstractConcept __thisConcept__, SModel where, SNodeId nid) {
-    SNode rv = SModelOperations.createNewNode(where, null, CONCEPTS.ElementaryNodeId$ix);
-    SPropertyOperations.assign(rv, PROPS.nodeId$DEc$, nid.toString());
+    SNode rv = SModelOperations.createNewNode(where, null, CONCEPTS.ElementaryNodeId$Yd);
+    SPropertyOperations.assign(rv, PROPS.nodeId$2ASg, nid.toString());
     return rv;
   }
   /*package*/ static SNodeId getNodeId_id39TODbGsIdf(@NotNull SNode __thisNode__) {
-    return PersistenceFacade.getInstance().createNodeId(SPropertyOperations.getString(__thisNode__, PROPS.nodeId$DEc$));
+    return PersistenceFacade.getInstance().createNodeId(SPropertyOperations.getString(__thisNode__, PROPS.nodeId$2ASg));
   }
   /*package*/ static boolean match_id1si_nSrb46O(@NotNull SNode __thisNode__, SNode n) {
     return n.getNodeId().equals(NodeIdentity__BehaviorDescriptor.getNodeId_id39TODbGsIdf.invoke(__thisNode__));
@@ -106,10 +106,10 @@ public final class ElementaryNodeId__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ElementaryNodeId$ix = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3279d292ec74a708L, "jetbrains.mps.lang.generator.structure.ElementaryNodeId");
+    /*package*/ static final SConcept ElementaryNodeId$Yd = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3279d292ec74a708L, "jetbrains.mps.lang.generator.structure.ElementaryNodeId");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty nodeId$DEc$ = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3279d292ec74a708L, 0x3279d292ec74a70dL, "nodeId");
+    /*package*/ static final SProperty nodeId$2ASg = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3279d292ec74a708L, 0x3279d292ec74a70dL, "nodeId");
   }
 }

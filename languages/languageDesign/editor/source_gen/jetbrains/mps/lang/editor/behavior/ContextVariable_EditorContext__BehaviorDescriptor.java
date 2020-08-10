@@ -34,7 +34,7 @@ public final class ContextVariable_EditorContext__BehaviorDescriptor extends Bas
   }
 
   /*package*/ static SAbstractConcept getProviderConcept_idaxxf7pcCKs(@NotNull SAbstractConcept __thisConcept__) {
-    return CONCEPTS.IEditorContextProvider$g0;
+    return CONCEPTS.IEditorContextProvider$rB;
   }
   /*package*/ static SNode getType_id27DJnJtIQ9C(@NotNull SNode __thisNode__) {
     return _quotation_createNode_ijkzkx_a0a1();
@@ -96,6 +96,6 @@ public final class ContextVariable_EditorContext__BehaviorDescriptor extends Bas
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IEditorContextProvider$g0 = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x794cf8ea9e1160d4L, "jetbrains.mps.lang.editor.structure.IEditorContextProvider");
+    /*package*/ static final SInterfaceConcept IEditorContextProvider$rB = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x794cf8ea9e1160d4L, "jetbrains.mps.lang.editor.structure.IEditorContextProvider");
   }
 }

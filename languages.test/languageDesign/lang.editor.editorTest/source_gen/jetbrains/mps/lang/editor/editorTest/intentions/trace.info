@@ -34,7 +34,7 @@
       <node id="2420730201804955867" at="54,87,55,29" concept="7" />
       <node id="2420730201804964517" at="58,78,59,166" concept="2" />
       <node id="2420730201804955281" at="62,48,63,67" concept="7" />
-      <node id="2420730201804955281" at="68,0,69,0" concept="9" trace="TwoStepDeleteAttribute$mZ" />
+      <node id="2420730201804955281" at="68,0,69,0" concept="9" trace="TwoStepDeleteAttribute$7c" />
       <node id="2420730201804955281" at="51,0,53,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="2420730201804955281" at="23,0,26,0" concept="1" trace="TwoStepDeleteDefaultChild_AddAttribute_Intention#()V" />
       <node id="2420730201804955281" at="31,84,34,5" concept="4" />
@@ -103,7 +103,7 @@
       <node id="3766420342434528742" at="58,140,59,174" concept="2" />
       <node id="3766420342434532680" at="60,14,61,154" concept="2" />
       <node id="3766420342434505259" at="65,48,66,57" concept="7" />
-      <node id="3766420342434505259" at="71,0,72,0" concept="9" trace="PlaceholderChildAttribute$Dh" />
+      <node id="3766420342434505259" at="71,0,72,0" concept="9" trace="PlaceholderChildAttribute$pu" />
       <node id="3766420342434505259" at="46,0,48,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="3766420342434521960" at="52,12,54,7" concept="0" />
       <node id="3766420342434528435" at="60,12,62,7" concept="0" />
@@ -174,8 +174,8 @@
       <node id="5527270534710951821" at="50,87,51,45" concept="7" />
       <node id="5527270534710955970" at="54,78,55,349" concept="2" />
       <node id="5527270534710867991" at="58,48,59,55" concept="7" />
-      <node id="5527270534710867991" at="64,0,65,0" concept="9" trace="SimplePropertyAttribute$$p" />
-      <node id="5527270534710867991" at="68,0,69,0" concept="9" trace="property$Ysn3" />
+      <node id="5527270534710867991" at="64,0,65,0" concept="9" trace="SimplePropertyAttribute$kA" />
+      <node id="5527270534710867991" at="68,0,69,0" concept="9" trace="property$L27g" />
       <node id="5527270534710867991" at="47,0,49,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="5527270534710867991" at="25,0,28,0" concept="1" trace="AddSimplePropertyAttribute_Intention#()V" />
       <node id="5527270534710867991" at="40,99,43,5" concept="4" />
@@ -253,8 +253,8 @@
       <node id="2189048181904951386" at="81,71,82,59" concept="6" />
       <node id="7658393498703024682" at="82,59,83,187" concept="6" />
       <node id="7658393498702987309" at="86,48,87,55" concept="7" />
-      <node id="7658393498702987309" at="92,0,93,0" concept="9" trace="ReferenceAnnotataion$fM" />
-      <node id="7658393498702987309" at="93,0,94,0" concept="9" trace="NodesTestCase$7I" />
+      <node id="7658393498702987309" at="92,0,93,0" concept="9" trace="ReferenceAnnotataion$ZZ" />
+      <node id="7658393498702987309" at="93,0,94,0" concept="9" trace="NodesTestCase$nd" />
       <node id="7658393498702987309" at="72,0,74,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="7658393498702987309" at="29,0,32,0" concept="1" trace="AddTestReferenceAnnotation_Intention#()V" />
       <node id="7658393498702987309" at="37,84,40,5" concept="4" />

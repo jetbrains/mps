@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Annotation_Constraints extends BaseConstraintsDescriptor {
   public Annotation_Constraints() {
-    super(CONCEPTS.Annotation$Os);
+    super(CONCEPTS.Annotation$he);
   }
 
   @Override
@@ -44,6 +44,6 @@ public class Annotation_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_9e1z83_a0a0a0a0a0a0a0a2 = new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "6836281137582643663");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Annotation$Os = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation");
+    /*package*/ static final SConcept Annotation$he = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation");
   }
 }

@@ -71,7 +71,7 @@ public class AbstractCellSelector_TransformationMenu extends TransformationMenuB
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.AbstractCellSelector$$5)) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.AbstractCellSelector$JG)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -99,7 +99,7 @@ public class AbstractCellSelector_TransformationMenu extends TransformationMenuB
   public class TMP_Group_by8jv6_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.OrCellSelector$lT)) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.SelectInEditorOperation$fZ);
+      return !(SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.OrCellSelector$xw)) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.SelectInEditorOperation$rA);
     }
 
     @NotNull
@@ -115,7 +115,7 @@ public class AbstractCellSelector_TransformationMenu extends TransformationMenuB
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_by8jv6_a0b(), CONCEPTS.OrCellSelector$lT));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_by8jv6_a0b(), CONCEPTS.OrCellSelector$xw));
     }
     private class TMP_Action_by8jv6_a0b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -157,25 +157,25 @@ public class AbstractCellSelector_TransformationMenu extends TransformationMenuB
         public void execute(@NotNull String pattern) {
           SNode orSelector = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x235af965a76b03fL, "jetbrains.mps.lang.editor.structure.OrCellSelector"));
           SNode parent = SNodeOperations.getParent(_context.getNode());
-          if (SNodeOperations.isInstanceOf(parent, CONCEPTS.OrCellSelector$lT)) {
-            if (Objects.equals(_context.getNode().getContainmentLink(), LINKS.rightSelector$gKlR)) {
-              SLinkOperations.setTarget(SNodeOperations.cast(parent, CONCEPTS.OrCellSelector$lT), LINKS.rightSelector$gKlR, orSelector);
+          if (SNodeOperations.isInstanceOf(parent, CONCEPTS.OrCellSelector$xw)) {
+            if (Objects.equals(_context.getNode().getContainmentLink(), LINKS.rightSelector$l2xu)) {
+              SLinkOperations.setTarget(SNodeOperations.cast(parent, CONCEPTS.OrCellSelector$xw), LINKS.rightSelector$l2xu, orSelector);
             } else {
-              SLinkOperations.setTarget(SNodeOperations.cast(parent, CONCEPTS.OrCellSelector$lT), LINKS.leftSelector$gEWw, orSelector);
+              SLinkOperations.setTarget(SNodeOperations.cast(parent, CONCEPTS.OrCellSelector$xw), LINKS.leftSelector$kX87, orSelector);
             }
           } else {
             SNodeOperations.replaceWithAnother(_context.getNode(), orSelector);
           }
-          SLinkOperations.setTarget(orSelector, LINKS.rightSelector$gKlR, _context.getNode());
-          SLinkOperations.setTarget(orSelector, LINKS.leftSelector$gEWw, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector")));
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(orSelector, LINKS.leftSelector$gEWw), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SLinkOperations.setTarget(orSelector, LINKS.rightSelector$l2xu, _context.getNode());
+          SLinkOperations.setTarget(orSelector, LINKS.leftSelector$kX87, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector")));
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(orSelector, LINKS.leftSelector$kX87), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
 
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.OrCellSelector$lT;
+          return CONCEPTS.OrCellSelector$xw;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
@@ -190,7 +190,7 @@ public class AbstractCellSelector_TransformationMenu extends TransformationMenuB
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.OrCellSelector$lT;
+          SAbstractConcept outputConcept = CONCEPTS.OrCellSelector$xw;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -203,7 +203,7 @@ public class AbstractCellSelector_TransformationMenu extends TransformationMenuB
   public class TMP_Group_by8jv6_a2 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.OrCellSelector$lT));
+      return !(SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.OrCellSelector$xw));
     }
 
     @NotNull
@@ -219,7 +219,7 @@ public class AbstractCellSelector_TransformationMenu extends TransformationMenuB
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_by8jv6_a0c(), CONCEPTS.OrCellSelector$lT));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_by8jv6_a0c(), CONCEPTS.OrCellSelector$xw));
     }
     private class TMP_Action_by8jv6_a0c extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -261,25 +261,25 @@ public class AbstractCellSelector_TransformationMenu extends TransformationMenuB
         public void execute(@NotNull String pattern) {
           SNode orSelector = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x235af965a76b03fL, "jetbrains.mps.lang.editor.structure.OrCellSelector"));
           SNode parent = SNodeOperations.getParent(_context.getNode());
-          if (SNodeOperations.isInstanceOf(parent, CONCEPTS.OrCellSelector$lT)) {
-            if (Objects.equals(_context.getNode().getContainmentLink(), LINKS.rightSelector$gKlR)) {
-              SLinkOperations.setTarget(SNodeOperations.cast(parent, CONCEPTS.OrCellSelector$lT), LINKS.rightSelector$gKlR, orSelector);
+          if (SNodeOperations.isInstanceOf(parent, CONCEPTS.OrCellSelector$xw)) {
+            if (Objects.equals(_context.getNode().getContainmentLink(), LINKS.rightSelector$l2xu)) {
+              SLinkOperations.setTarget(SNodeOperations.cast(parent, CONCEPTS.OrCellSelector$xw), LINKS.rightSelector$l2xu, orSelector);
             } else {
-              SLinkOperations.setTarget(SNodeOperations.cast(parent, CONCEPTS.OrCellSelector$lT), LINKS.leftSelector$gEWw, orSelector);
+              SLinkOperations.setTarget(SNodeOperations.cast(parent, CONCEPTS.OrCellSelector$xw), LINKS.leftSelector$kX87, orSelector);
             }
           } else {
             SNodeOperations.replaceWithAnother(_context.getNode(), orSelector);
           }
-          SLinkOperations.setTarget(orSelector, LINKS.leftSelector$gEWw, _context.getNode());
-          SLinkOperations.setTarget(orSelector, LINKS.rightSelector$gKlR, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector")));
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(orSelector, LINKS.rightSelector$gKlR), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SLinkOperations.setTarget(orSelector, LINKS.leftSelector$kX87, _context.getNode());
+          SLinkOperations.setTarget(orSelector, LINKS.rightSelector$l2xu, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector")));
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(orSelector, LINKS.rightSelector$l2xu), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
 
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.OrCellSelector$lT;
+          return CONCEPTS.OrCellSelector$xw;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
@@ -294,7 +294,7 @@ public class AbstractCellSelector_TransformationMenu extends TransformationMenuB
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.OrCellSelector$lT;
+          SAbstractConcept outputConcept = CONCEPTS.OrCellSelector$xw;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -307,7 +307,7 @@ public class AbstractCellSelector_TransformationMenu extends TransformationMenuB
   public class TMP_Group_by8jv6_b2 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.SelectInEditorOperation$fZ);
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.SelectInEditorOperation$rA);
     }
 
     @NotNull
@@ -323,7 +323,7 @@ public class AbstractCellSelector_TransformationMenu extends TransformationMenuB
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_by8jv6_a1c(), CONCEPTS.Expression$TP), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_by8jv6_b1c(), CONCEPTS.Expression$TP));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_by8jv6_a1c(), CONCEPTS.Expression$mB), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_by8jv6_b1c(), CONCEPTS.Expression$mB));
     }
     private class TMP_Action_by8jv6_a1c extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -363,16 +363,16 @@ public class AbstractCellSelector_TransformationMenu extends TransformationMenuB
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode selectInEditorOperation = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.SelectInEditorOperation$fZ);
-          SLinkOperations.setTarget(selectInEditorOperation, LINKS.selectionStart$Quz8, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(selectInEditorOperation, LINKS.selectionStart$Quz8), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SNode selectInEditorOperation = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.SelectInEditorOperation$rA);
+          SLinkOperations.setTarget(selectInEditorOperation, LINKS.selectionStart$UKIJ, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(selectInEditorOperation, LINKS.selectionStart$UKIJ), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
 
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.Expression$TP;
+          return CONCEPTS.Expression$mB;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
@@ -387,7 +387,7 @@ public class AbstractCellSelector_TransformationMenu extends TransformationMenuB
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.Expression$TP;
+          SAbstractConcept outputConcept = CONCEPTS.Expression$mB;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -434,16 +434,16 @@ public class AbstractCellSelector_TransformationMenu extends TransformationMenuB
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode selectInEditorOperation = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.SelectInEditorOperation$fZ);
-          SLinkOperations.setTarget(selectInEditorOperation, LINKS.selectionStart$Quz8, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(selectInEditorOperation, LINKS.selectionStart$Quz8), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SNode selectInEditorOperation = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.SelectInEditorOperation$rA);
+          SLinkOperations.setTarget(selectInEditorOperation, LINKS.selectionStart$UKIJ, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(selectInEditorOperation, LINKS.selectionStart$UKIJ), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
 
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.Expression$TP;
+          return CONCEPTS.Expression$mB;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
@@ -458,7 +458,7 @@ public class AbstractCellSelector_TransformationMenu extends TransformationMenuB
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.Expression$TP;
+          SAbstractConcept outputConcept = CONCEPTS.Expression$mB;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -470,15 +470,15 @@ public class AbstractCellSelector_TransformationMenu extends TransformationMenuB
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractCellSelector$$5 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector");
-    /*package*/ static final SConcept SelectInEditorOperation$fZ = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, "jetbrains.mps.lang.editor.structure.SelectInEditorOperation");
-    /*package*/ static final SConcept OrCellSelector$lT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x235af965a76b03fL, "jetbrains.mps.lang.editor.structure.OrCellSelector");
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept AbstractCellSelector$JG = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b0a9b8c0eb8e726L, "jetbrains.mps.lang.editor.structure.AbstractCellSelector");
+    /*package*/ static final SConcept SelectInEditorOperation$rA = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, "jetbrains.mps.lang.editor.structure.SelectInEditorOperation");
+    /*package*/ static final SConcept OrCellSelector$xw = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x235af965a76b03fL, "jetbrains.mps.lang.editor.structure.OrCellSelector");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink rightSelector$gKlR = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x235af965a76b03fL, 0x235af965a76b042L, "rightSelector");
-    /*package*/ static final SContainmentLink leftSelector$gEWw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x235af965a76b03fL, 0x235af965a76b040L, "leftSelector");
-    /*package*/ static final SContainmentLink selectionStart$Quz8 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x320558d6ffc96d72L, "selectionStart");
+    /*package*/ static final SContainmentLink rightSelector$l2xu = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x235af965a76b03fL, 0x235af965a76b042L, "rightSelector");
+    /*package*/ static final SContainmentLink leftSelector$kX87 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x235af965a76b03fL, 0x235af965a76b040L, "leftSelector");
+    /*package*/ static final SContainmentLink selectionStart$UKIJ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x320558d6ffc96d72L, "selectionStart");
   }
 }

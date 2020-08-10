@@ -16,10 +16,10 @@ public class VersionBlockDocTag_TextGen extends TextGenDescriptorBase {
     tgs.newLine();
     DocCommentTextGen.javadocIndent(ctx);
     tgs.append("@version ");
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$dR60));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$$fSd));
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$dR60 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87dda0L, 0x757ba20a4c87dda1L, "text");
+    /*package*/ static final SProperty text$$fSd = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87dda0L, 0x757ba20a4c87dda1L, "text");
   }
 }

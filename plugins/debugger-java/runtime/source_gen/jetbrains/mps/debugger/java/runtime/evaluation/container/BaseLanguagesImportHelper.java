@@ -43,13 +43,13 @@ public abstract class BaseLanguagesImportHelper {
       if (node == null) {
         continue;
       }
-      if (SNodeOperations.isInstanceOf(node, CONCEPTS.Expression$TP)) {
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.Expression$mB)) {
         SNode clone = _quotation_createNode_5vd2f2_a0a0b0c0d(node);
         transformNode(clone, SNodeOperations.getModel(container));
-        ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.statement$pYcS)).addElement(clone);
-      } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.Statement$ok)) {
+        ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.statement$53DE)).addElement(clone);
+      } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.Statement$P6)) {
         transformNode(node, SNodeOperations.getModel(container));
-        ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.statement$pYcS)).addElement(SNodeOperations.cast(node, CONCEPTS.Statement$ok));
+        ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.statement$53DE)).addElement(SNodeOperations.cast(node, CONCEPTS.Statement$P6));
       }
     }
   }
@@ -74,7 +74,7 @@ public abstract class BaseLanguagesImportHelper {
   private void transformNodeToProperVariableReference(SNode node, SModel containerModel) {
     if (ListSequence.fromList(SNodeOperations.getReferences(node)).count() == 1) {
       SReference reference = ListSequence.fromList(SNodeOperations.getReferences(node)).first();
-      if (!(Objects.equals(SNodeOperations.getModel(SLinkOperations.getTargetNode(reference)), containerModel)) && SNodeOperations.isInstanceOf(SLinkOperations.getTargetNode(reference), CONCEPTS.INamedConcept$nV)) {
+      if (!(Objects.equals(SNodeOperations.getModel(SLinkOperations.getTargetNode(reference)), containerModel)) && SNodeOperations.isInstanceOf(SLinkOperations.getTargetNode(reference), CONCEPTS.INamedConcept$Kd)) {
         SNode matchingVar = findVariable(reference);
         if (matchingVar != null) {
           SNodeOperations.replaceWithAnother(node, createVariableReference(matchingVar));
@@ -111,12 +111,12 @@ public abstract class BaseLanguagesImportHelper {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

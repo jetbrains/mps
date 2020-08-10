@@ -59,7 +59,7 @@ public class thisExpression extends SubstituteMenuBase {
   public class SMP_Group_bo5td7_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return SNodeOperations.getNodeAncestorWhereConceptInList(_context.getParentNode(), new SAbstractConcept[]{CONCEPTS.ConstructorDeclaration$5U, CONCEPTS.InstanceMethodDeclaration$An}, false, false) != null;
+      return SNodeOperations.getNodeAncestorWhereConceptInList(_context.getParentNode(), new SAbstractConcept[]{CONCEPTS.ConstructorDeclaration$yG, CONCEPTS.InstanceMethodDeclaration$39}, false, false) != null;
     }
     @NotNull
     @Override
@@ -75,7 +75,7 @@ public class thisExpression extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_bo5td7_a0(), CONCEPTS.ThisExpression$7A));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_bo5td7_a0(), CONCEPTS.ThisExpression$$o));
     }
     private class SMP_Param_bo5td7_a0 extends ParameterizedMenuPart<SNode, SubstituteMenuItem, SubstituteMenuContext> {
       @NotNull
@@ -99,10 +99,10 @@ public class thisExpression extends SubstituteMenuBase {
       protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
         //  'qualified this' - only in inner classes 
         List<SNode> result = new ArrayList<SNode>();
-        SNode classifier = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.Classifier$hJ, false, false);
+        SNode classifier = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.Classifier$Ix, false, false);
         if (!((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(classifier))) {
-          for (SNode parentClassifier : SNodeOperations.getNodeAncestors(classifier, CONCEPTS.Classifier$hJ, false)) {
-            if (!(SNodeOperations.isInstanceOf(parentClassifier, CONCEPTS.AnonymousClass$aF))) {
+          for (SNode parentClassifier : SNodeOperations.getNodeAncestors(classifier, CONCEPTS.Classifier$Ix, false)) {
+            if (!(SNodeOperations.isInstanceOf(parentClassifier, CONCEPTS.AnonymousClass$Bt))) {
               ListSequence.fromList(result).addElement(parentClassifier);
               if ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(parentClassifier)) {
                 break;
@@ -145,7 +145,7 @@ public class thisExpression extends SubstituteMenuBase {
           private final SubstituteMenuContext _context;
           private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
-            super(CONCEPTS.ThisExpression$7A, context);
+            super(CONCEPTS.ThisExpression$$o, context);
             _context = context;
           }
 
@@ -156,8 +156,8 @@ public class thisExpression extends SubstituteMenuBase {
           @Nullable
           @Override
           public SNode createNode(@NotNull String pattern) {
-            SNode thisEx = SNodeFactoryOperations.createNewNode(CONCEPTS.ThisExpression$7A, null);
-            SLinkOperations.setTarget(thisEx, LINKS.classConcept$StRd, myParameterObject);
+            SNode thisEx = SNodeFactoryOperations.createNewNode(CONCEPTS.ThisExpression$$o, null);
+            SLinkOperations.setTarget(thisEx, LINKS.classConcept$zzjZ, myParameterObject);
             return thisEx;
           }
 
@@ -167,7 +167,7 @@ public class thisExpression extends SubstituteMenuBase {
           }
           @NotNull
           protected CompletionItemInformation createInformation(String pattern) {
-            return new CompletionItemInformation(myParameterObject, CONCEPTS.ThisExpression$7A, getMatchingText(pattern), getDescriptionText(pattern));
+            return new CompletionItemInformation(myParameterObject, CONCEPTS.ThisExpression$$o, getMatchingText(pattern), getDescriptionText(pattern));
           }
           @Nullable
           @Override
@@ -194,14 +194,14 @@ public class thisExpression extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConstructorDeclaration$5U = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
-    /*package*/ static final SConcept InstanceMethodDeclaration$An = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
-    /*package*/ static final SConcept ThisExpression$7A = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept AnonymousClass$aF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
+    /*package*/ static final SConcept ConstructorDeclaration$yG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
+    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept ThisExpression$$o = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classConcept$StRd = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
+    /*package*/ static final SReferenceLink classConcept$zzjZ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
   }
 }

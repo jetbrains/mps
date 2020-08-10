@@ -25,7 +25,7 @@ public class typeof_Test_LValueExpression_InferenceRule extends AbstractInferenc
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Test_LValueExpression$vw;
+    return CONCEPTS.Test_LValueExpression$Ys;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_Test_LValueExpression_InferenceRule extends AbstractInferenc
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Test_LValueExpression$vw = MetaAdapterFactory.getConcept(0xb654d0ef89814c92L, 0x8304246f1dfe4618L, 0x1885e519eacbfceeL, "jetbrains.mps.baseLanguage.testRefs.testLang.structure.Test_LValueExpression");
+    /*package*/ static final SConcept Test_LValueExpression$Ys = MetaAdapterFactory.getConcept(0xb654d0ef89814c92L, 0x8304246f1dfe4618L, 0x1885e519eacbfceeL, "jetbrains.mps.baseLanguage.testRefs.testLang.structure.Test_LValueExpression");
   }
 }

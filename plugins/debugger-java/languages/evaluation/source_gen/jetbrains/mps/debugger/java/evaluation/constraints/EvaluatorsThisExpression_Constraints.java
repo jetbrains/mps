@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class EvaluatorsThisExpression_Constraints extends BaseConstraintsDescriptor {
   public EvaluatorsThisExpression_Constraints() {
-    super(CONCEPTS.EvaluatorsThisExpression$DC);
+    super(CONCEPTS.EvaluatorsThisExpression$N4);
   }
 
   @Override
@@ -38,16 +38,16 @@ public class EvaluatorsThisExpression_Constraints extends BaseConstraintsDescrip
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return (SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.EvaluatorConcept$g2, true, false), LINKS.thisNode$udFu) != null);
+    return (SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.EvaluatorConcept$pu, true, false), LINKS.thisNode$GzOU) != null);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:edfcb13b-e239-462c-8aae-e4b4a03e7c8b(jetbrains.mps.debugger.java.evaluation.constraints)", "1227128029536564908");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EvaluatorsThisExpression$DC = MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b1ae1c6L, "jetbrains.mps.debugger.java.evaluation.structure.EvaluatorsThisExpression");
-    /*package*/ static final SConcept EvaluatorConcept$g2 = MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, "jetbrains.mps.debugger.java.evaluation.structure.EvaluatorConcept");
+    /*package*/ static final SConcept EvaluatorsThisExpression$N4 = MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b1ae1c6L, "jetbrains.mps.debugger.java.evaluation.structure.EvaluatorsThisExpression");
+    /*package*/ static final SConcept EvaluatorConcept$pu = MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, "jetbrains.mps.debugger.java.evaluation.structure.EvaluatorConcept");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink thisNode$udFu = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x3f11b1341fa23613L, "thisNode");
+    /*package*/ static final SContainmentLink thisNode$GzOU = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x3f11b1341fa23613L, "thisNode");
   }
 }

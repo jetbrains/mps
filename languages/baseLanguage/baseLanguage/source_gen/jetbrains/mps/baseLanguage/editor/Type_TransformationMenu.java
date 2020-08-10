@@ -52,7 +52,7 @@ public class Type_TransformationMenu extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.Type$IG)) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.Type$bu)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -98,7 +98,7 @@ public class Type_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.Type$IG, "jetbrains.mps.baseLanguage.editor.addGenericTypeDeclaration_Type_default");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.Type$bu, "jetbrains.mps.baseLanguage.editor.addGenericTypeDeclaration_Type_default");
     }
 
   }
@@ -121,7 +121,7 @@ public class Type_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.Type$IG, "jetbrains.mps.baseLanguage.editor.arrayBrackets");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.Type$bu, "jetbrains.mps.baseLanguage.editor.arrayBrackets");
     }
 
   }
@@ -144,7 +144,7 @@ public class Type_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.Type$IG, "jetbrains.mps.baseLanguage.editor.finalOnTypesInVariables");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.Type$bu, "jetbrains.mps.baseLanguage.editor.finalOnTypesInVariables");
     }
 
   }
@@ -167,7 +167,7 @@ public class Type_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.Type$IG, "jetbrains.mps.baseLanguage.editor.AddStaticFieldModifiersOnTypes");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.Type$bu, "jetbrains.mps.baseLanguage.editor.AddStaticFieldModifiersOnTypes");
     }
 
   }
@@ -190,7 +190,7 @@ public class Type_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.Type$IG, "jetbrains.mps.baseLanguage.editor.AddMethodModifiersOnTypes");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.Type$bu, "jetbrains.mps.baseLanguage.editor.AddMethodModifiersOnTypes");
     }
 
   }
@@ -213,7 +213,7 @@ public class Type_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.Type$IG, "jetbrains.mps.baseLanguage.editor.instanceOfIntoTernary");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.Type$bu, "jetbrains.mps.baseLanguage.editor.instanceOfIntoTernary");
     }
 
   }
@@ -236,7 +236,7 @@ public class Type_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.Type$IG, "jetbrains.mps.baseLanguage.editor.AddFieldModifiersOnTypes");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.Type$bu, "jetbrains.mps.baseLanguage.editor.AddFieldModifiersOnTypes");
     }
 
   }
@@ -259,7 +259,7 @@ public class Type_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.Type$IG, "jetbrains.mps.baseLanguage.editor.variableArityType");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.Type$bu, "jetbrains.mps.baseLanguage.editor.variableArityType");
     }
 
   }
@@ -282,12 +282,12 @@ public class Type_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.Type$IG, "jetbrains.mps.baseLanguage.editor.addComment_Type");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.Type$bu, "jetbrains.mps.baseLanguage.editor.addComment_Type");
     }
 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 }

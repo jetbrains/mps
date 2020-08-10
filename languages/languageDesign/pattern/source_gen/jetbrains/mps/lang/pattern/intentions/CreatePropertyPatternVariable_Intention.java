@@ -68,7 +68,7 @@ public final class CreatePropertyPatternVariable_Intention extends AbstractInten
       EditorCell cell = editorContext.getSelectedCell();
       SNode cellNode = cell.getSNode();
       SProperty property = cell.getCellContext().getPropertyInfo().getProperty();
-      SNode variableDeclaration = SNodeFactoryOperations.setNewAttribute(cellNode, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyPatternVariableDeclaration$Xj, property), CONCEPTS.PropertyPatternVariableDeclaration$Xj);
+      SNode variableDeclaration = SNodeFactoryOperations.setNewAttribute(cellNode, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyPatternVariableDeclaration$aQ, property), CONCEPTS.PropertyPatternVariableDeclaration$aQ);
       SelectionUtil.selectCell(editorContext, variableDeclaration, "*" + CellIdManager.createPropertyId("varName"));
     }
     @Override
@@ -96,6 +96,6 @@ public final class CreatePropertyPatternVariable_Intention extends AbstractInten
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyPatternVariableDeclaration$Xj = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4795L, "jetbrains.mps.lang.pattern.structure.PropertyPatternVariableDeclaration");
+    /*package*/ static final SConcept PropertyPatternVariableDeclaration$aQ = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x108a9cb4795L, "jetbrains.mps.lang.pattern.structure.PropertyPatternVariableDeclaration");
   }
 }

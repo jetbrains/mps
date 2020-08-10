@@ -30,7 +30,7 @@ public class OverridingMethods_Finder extends GeneratedFinder {
   }
   public boolean isVisible(SNode node, SearchScope scope) {
     if ((boolean) ConceptMethodDeclaration__BehaviorDescriptor.isVirtual_id6WSEafdhbZX.invoke(node) || (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(node)) {
-      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.ConceptBehavior$8P);
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.ConceptBehavior$2);
     }
     return false;
   }
@@ -48,12 +48,12 @@ public class OverridingMethods_Finder extends GeneratedFinder {
   }
   @Override
   public SAbstractConcept getSConcept() {
-    return CONCEPTS.ConceptMethodDeclaration$VN;
+    return CONCEPTS.ConceptMethodDeclaration$N0;
   }
   @Override
   public boolean isApplicable(SNode node) {
     if ((boolean) ConceptMethodDeclaration__BehaviorDescriptor.isVirtual_id6WSEafdhbZX.invoke(node) || (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(node)) {
-      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.ConceptBehavior$8P);
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.ConceptBehavior$2);
     }
     return false;
   }
@@ -67,7 +67,7 @@ public class OverridingMethods_Finder extends GeneratedFinder {
           SNode nodeParam = (SNode) searchResult.getObject();
           new _FunctionTypes._void_P1_E0<SNode>() {
             public void invoke(SNode candidate) {
-              if (SNodeOperations.isInstanceOf(candidate, CONCEPTS.ConceptMethodDeclaration$VN) && SLinkOperations.getTarget(SNodeOperations.cast(candidate, CONCEPTS.ConceptMethodDeclaration$VN), LINKS.overriddenMethod$tTw) == ConceptMethodDeclaration__BehaviorDescriptor.getOverridenMethod_idhP3pnNO.invoke(node)) {
+              if (SNodeOperations.isInstanceOf(candidate, CONCEPTS.ConceptMethodDeclaration$N0) && SLinkOperations.getTarget(SNodeOperations.cast(candidate, CONCEPTS.ConceptMethodDeclaration$N0), LINKS.overriddenMethod$quKH) == ConceptMethodDeclaration__BehaviorDescriptor.getOverridenMethod_idhP3pnNO.invoke(node)) {
 
                 callback.onUsageFound(createSingleResult(candidate));
                 FindUtils.searchForResults(new EmptyProgressMonitor(), new IFinder.FindCallback() {
@@ -101,11 +101,11 @@ public class OverridingMethods_Finder extends GeneratedFinder {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptBehavior$8P = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
-    /*package*/ static final SConcept ConceptMethodDeclaration$VN = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
+    /*package*/ static final SConcept ConceptBehavior$2 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
+    /*package*/ static final SConcept ConceptMethodDeclaration$N0 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink overriddenMethod$tTw = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod");
+    /*package*/ static final SReferenceLink overriddenMethod$quKH = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod");
   }
 }

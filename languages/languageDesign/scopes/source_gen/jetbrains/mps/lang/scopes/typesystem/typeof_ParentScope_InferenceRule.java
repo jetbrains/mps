@@ -26,7 +26,7 @@ public class typeof_ParentScope_InferenceRule extends AbstractInferenceRule_Runt
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ParentScope$Tw;
+    return CONCEPTS.ParentScope$Uw;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,6 +43,6 @@ public class typeof_ParentScope_InferenceRule extends AbstractInferenceRule_Runt
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ParentScope$Tw = MetaAdapterFactory.getConcept(0xd8f591ec4d864af2L, 0x9f92a9e93c803ffaL, 0x701a981462920832L, "jetbrains.mps.lang.scopes.structure.ParentScope");
+    /*package*/ static final SConcept ParentScope$Uw = MetaAdapterFactory.getConcept(0xd8f591ec4d864af2L, 0x9f92a9e93c803ffaL, 0x701a981462920832L, "jetbrains.mps.lang.scopes.structure.ParentScope");
   }
 }

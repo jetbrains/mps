@@ -31,7 +31,7 @@ public final class GeneratorDebug_LabelEntry__BehaviorDescriptor extends BaseBHD
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return "Mapping label: " + SPropertyOperations.getString(__thisNode__, PROPS.label$60C0);
+    return "Mapping label: " + SPropertyOperations.getString(__thisNode__, PROPS.label$uXjG);
   }
 
   /*package*/ GeneratorDebug_LabelEntry__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class GeneratorDebug_LabelEntry__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty label$60C0 = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c4L, 0x35a02f6bfc9810e9L, "label");
+    /*package*/ static final SProperty label$uXjG = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c4L, 0x35a02f6bfc9810e9L, "label");
   }
 }

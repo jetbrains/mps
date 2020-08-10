@@ -31,16 +31,16 @@ public final class PathBuilder {
    */
   @NotNull
   public SNode buildRelative(String path) {
-    SNode relPath = SModelOperations.createNewNode(myNodeFactory, null, CONCEPTS.BuildSourceProjectRelativePath$VD);
-    SLinkOperations.setTarget(relPath, LINKS.compositePart$ZDgp, buildComposite(path));
+    SNode relPath = SModelOperations.createNewNode(myNodeFactory, null, CONCEPTS.BuildSourceProjectRelativePath$uc);
+    SLinkOperations.setTarget(relPath, LINKS.compositePart$blMW, buildComposite(path));
     return relPath;
   }
 
   @NotNull
   public SNode buildRelative(SNode macro, String path) {
-    SNode relPath = SModelOperations.createNewNode(myNodeFactory, null, CONCEPTS.BuildSourceMacroRelativePath$C$);
-    SLinkOperations.setTarget(relPath, LINKS.macro$8wWQ, macro);
-    SLinkOperations.setTarget(relPath, LINKS.compositePart$ZDgp, buildComposite(path));
+    SNode relPath = SModelOperations.createNewNode(myNodeFactory, null, CONCEPTS.BuildSourceMacroRelativePath$b7);
+    SLinkOperations.setTarget(relPath, LINKS.macro$kdvp, macro);
+    SLinkOperations.setTarget(relPath, LINKS.compositePart$blMW, buildComposite(path));
     return relPath;
   }
 
@@ -52,12 +52,12 @@ public final class PathBuilder {
       if ((fname == null || fname.length() == 0)) {
         continue;
       }
-      SNode npath = SModelOperations.createNewNode(myNodeFactory, null, CONCEPTS.BuildCompositePath$7I);
-      SPropertyOperations.assign(npath, PROPS.head$o$61, fname);
+      SNode npath = SModelOperations.createNewNode(myNodeFactory, null, CONCEPTS.BuildCompositePath$Eh);
+      SPropertyOperations.assign(npath, PROPS.head$$gC$, fname);
       if (head == null) {
         head = tail = npath;
       } else {
-        SLinkOperations.setTarget(tail, LINKS.tail$ozR0, npath);
+        SLinkOperations.setTarget(tail, LINKS.tail$$gpz, npath);
         tail = npath;
       }
     }
@@ -65,18 +65,18 @@ public final class PathBuilder {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildSourceProjectRelativePath$VD = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4c12642949048fb2L, "jetbrains.mps.build.structure.BuildSourceProjectRelativePath");
-    /*package*/ static final SConcept BuildSourceMacroRelativePath$C$ = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafae121dL, "jetbrains.mps.build.structure.BuildSourceMacroRelativePath");
-    /*package*/ static final SConcept BuildCompositePath$7I = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, "jetbrains.mps.build.structure.BuildCompositePath");
+    /*package*/ static final SConcept BuildSourceProjectRelativePath$uc = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4c12642949048fb2L, "jetbrains.mps.build.structure.BuildSourceProjectRelativePath");
+    /*package*/ static final SConcept BuildSourceMacroRelativePath$b7 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafae121dL, "jetbrains.mps.build.structure.BuildSourceMacroRelativePath");
+    /*package*/ static final SConcept BuildCompositePath$Eh = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, "jetbrains.mps.build.structure.BuildCompositePath");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink compositePart$ZDgp = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart");
-    /*package*/ static final SReferenceLink macro$8wWQ = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafae121dL, 0x668c6cfbafae122aL, "macro");
-    /*package*/ static final SContainmentLink tail$ozR0 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f2L, "tail");
+    /*package*/ static final SContainmentLink compositePart$blMW = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, 0x65997a65772aebcbL, "compositePart");
+    /*package*/ static final SReferenceLink macro$kdvp = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafae121dL, 0x668c6cfbafae122aL, "macro");
+    /*package*/ static final SContainmentLink tail$$gpz = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f2L, "tail");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty head$o$61 = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f3L, "head");
+    /*package*/ static final SProperty head$$gC$ = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f3L, "head");
   }
 }

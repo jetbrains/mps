@@ -25,7 +25,7 @@ public class deleteExpressionFromRuleOrDef {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         // I do not know how to do without this hack 
-        SNode highestRuleMember = RuleBlockMember__BehaviorDescriptor.getHighestMember_id2mL_UKGkn8G.invoke(SNodeOperations.getNodeAncestor(node, CONCEPTS.RuleBlockMember$5H, false, false));
+        SNode highestRuleMember = RuleBlockMember__BehaviorDescriptor.getHighestMember_id2mL_UKGkn8G.invoke(SNodeOperations.getNodeAncestor(node, CONCEPTS.RuleBlockMember$3Q, false, false));
         if (!(DeletionApproverUtil.approve(editorContext, highestRuleMember))) {
           SNodeOperations.deleteNode(highestRuleMember);
         }
@@ -76,6 +76,6 @@ public class deleteExpressionFromRuleOrDef {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept RuleBlockMember$5H = MetaAdapterFactory.getInterfaceConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb51750L, "jetbrains.mps.lang.constraints.rules.skeleton.structure.RuleBlockMember");
+    /*package*/ static final SInterfaceConcept RuleBlockMember$3Q = MetaAdapterFactory.getInterfaceConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb51750L, "jetbrains.mps.lang.constraints.rules.skeleton.structure.RuleBlockMember");
   }
 }

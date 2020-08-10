@@ -31,7 +31,7 @@ public final class ConfigurationFromExecutorReference__BehaviorDescriptor extend
   }
 
   /*package*/ static SNode getExecutor_id6LlKjXrML19(@NotNull SNode __thisNode__) {
-    return SNodeOperations.cast(SNodeOperations.getContainingRoot(__thisNode__), CONCEPTS.AbstractRunConfigurationExecutor$YM);
+    return SNodeOperations.cast(SNodeOperations.getContainingRoot(__thisNode__), CONCEPTS.AbstractRunConfigurationExecutor$Fp);
   }
 
   /*package*/ ConfigurationFromExecutorReference__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class ConfigurationFromExecutorReference__BehaviorDescriptor extend
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractRunConfigurationExecutor$YM = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, "jetbrains.mps.execution.configurations.structure.AbstractRunConfigurationExecutor");
+    /*package*/ static final SConcept AbstractRunConfigurationExecutor$Fp = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, "jetbrains.mps.execution.configurations.structure.AbstractRunConfigurationExecutor");
   }
 }

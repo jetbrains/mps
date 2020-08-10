@@ -33,7 +33,7 @@ public final class SEnumOperation_Old__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static SNode getEnum_idi3HhkyV(@NotNull SNode __thisNode__) {
-    return (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.SEnumOperationInvocation$$b) ? SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.SEnumOperationInvocation$$b), LINKS.enumDeclaration$9M5w) : null);
+    return (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.SEnumOperationInvocation$_F) ? SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.SEnumOperationInvocation$_F), LINKS.enumDeclaration$Ib70) : null);
   }
 
   /*package*/ SEnumOperation_Old__BehaviorDescriptor() {
@@ -83,10 +83,10 @@ public final class SEnumOperation_Old__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SEnumOperationInvocation$$b = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed32e98bL, "jetbrains.mps.lang.smodel.structure.SEnumOperationInvocation");
+    /*package*/ static final SConcept SEnumOperationInvocation$_F = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed32e98bL, "jetbrains.mps.lang.smodel.structure.SEnumOperationInvocation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink enumDeclaration$9M5w = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed32e98bL, 0x120ed32e98cL, "enumDeclaration");
+    /*package*/ static final SReferenceLink enumDeclaration$Ib70 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed32e98bL, 0x120ed32e98cL, "enumDeclaration");
   }
 }

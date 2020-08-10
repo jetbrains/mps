@@ -25,7 +25,7 @@ public class EnergyActions {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         if (ListSequence.fromList(SNodeOperations.getAllSiblings(node, false)).isEmpty()) {
-          SNodeOperations.replaceWithNewChild(node, CONCEPTS.EquationComponent$C$);
+          SNodeOperations.replaceWithNewChild(node, CONCEPTS.EquationComponent$Z);
         } else {
           SNodeOperations.deleteNode(node);
         }
@@ -46,7 +46,7 @@ public class EnergyActions {
         return this.canExecute_internal(editorContext, node);
       }
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
-        return (SNodeOperations.getNextSibling(node) == null) && SNodeOperations.hasRole(node, LINKS.right$nF3U);
+        return (SNodeOperations.getNextSibling(node) == null) && SNodeOperations.hasRole(node, LINKS.right$jjsl);
       }
 
     };
@@ -98,10 +98,10 @@ public class EnergyActions {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EquationComponent$C$ = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x5b2638e8bdcb49dcL, "jetbrains.mps.samples.ChemMastery.structure.EquationComponent");
+    /*package*/ static final SConcept EquationComponent$Z = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x5b2638e8bdcb49dcL, "jetbrains.mps.samples.ChemMastery.structure.EquationComponent");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink right$nF3U = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184fab9faa2aL, "right");
+    /*package*/ static final SContainmentLink right$jjsl = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, 0x6ef7184fab9faa2aL, "right");
   }
 }

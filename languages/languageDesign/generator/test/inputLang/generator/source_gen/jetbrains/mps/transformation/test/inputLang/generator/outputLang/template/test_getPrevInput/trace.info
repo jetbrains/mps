@@ -43,7 +43,7 @@
       <node id="1202338801828" at="61,80,62,278" concept="8" />
       <node id="1202338801828" at="62,278,63,74" concept="3" />
       <node id="1202338801828" at="63,74,64,20" concept="9" />
-      <node id="1202255161944" at="75,0,76,0" concept="11" trace="InputRoot$eR" />
+      <node id="1202255161944" at="75,0,76,0" concept="11" trace="InputRoot$nY" />
       <node id="1202255161953" at="36,0,39,0" concept="1" trace="RootMappingRule0#()V" />
       <node id="1202338801828" at="52,0,55,0" concept="1" trace="RootMappingRule1#()V" />
       <node id="1202255161944" at="27,0,31,0" concept="1" trace="Mapping_main#(Ljetbrains/mps/generator/runtime/TemplateModel;)V" />

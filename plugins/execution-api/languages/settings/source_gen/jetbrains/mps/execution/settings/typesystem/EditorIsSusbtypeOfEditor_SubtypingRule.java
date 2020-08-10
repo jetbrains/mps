@@ -19,7 +19,7 @@ public class EditorIsSusbtypeOfEditor_SubtypingRule extends SubtypingRule_Runtim
     return createSettingsEditorType_naixql_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SettingsEditorType$Bn;
+    return CONCEPTS.SettingsEditorType$cc;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -31,11 +31,11 @@ public class EditorIsSusbtypeOfEditor_SubtypingRule extends SubtypingRule_Runtim
     return true;
   }
   private static SNode createSettingsEditorType_naixql_a0a1() {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SettingsEditorType$Bn);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SettingsEditorType$cc);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SettingsEditorType$Bn = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91013aL, "jetbrains.mps.execution.settings.structure.SettingsEditorType");
+    /*package*/ static final SConcept SettingsEditorType$cc = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91013aL, "jetbrains.mps.execution.settings.structure.SettingsEditorType");
   }
 }

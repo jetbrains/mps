@@ -79,22 +79,22 @@ public class ProjectStructureBuilder {
 
   public SNode convertLanguage() {
     LanguageDescriptor source = (LanguageDescriptor) mySource;
-    SNode result = SModelOperations.createNewNode(myModel, new SNodeId.Foreign("~root"), CONCEPTS.Language$jx);
+    SNode result = SModelOperations.createNewNode(myModel, new SNodeId.Foreign("~root"), CONCEPTS.Language$yT);
     fillModule(result);
-    SPropertyOperations.assign(result, PROPS.compileInMPS$58m_, true);
-    SPropertyOperations.assign(result, PROPS.genPath$J5JI, source.getGenPath());
+    SPropertyOperations.assign(result, PROPS.compileInMPS$2Q_X, true);
+    SPropertyOperations.assign(result, PROPS.genPath$GNZ6, source.getGenPath());
     if (myFile != null) {
-      SPropertyOperations.assign(result, PROPS.languagePath$7ajY, myFile.getPath());
+      SPropertyOperations.assign(result, PROPS.languagePath$4Szm, myFile.getPath());
     }
-    SPropertyOperations.assign(result, PROPS.version$F$0n, source.getLanguageVersion());
+    SPropertyOperations.assign(result, PROPS.version$DifJ, source.getLanguageVersion());
     for (SModelReference ref : source.getAccessoryModels()) {
-      SLinkOperations.getChildren(result, LINKS.accessoryModels$E5l3).add(convert(ref));
+      SLinkOperations.getChildren(result, LINKS.accessoryModels$BN$r).add(convert(ref));
     }
     for (SModuleReference ref : source.getExtendedLanguages()) {
-      SLinkOperations.getChildren(result, LINKS.extendedLanguages$E5$4).add(convert(ref));
+      SLinkOperations.getChildren(result, LINKS.extendedLanguages$BNNs).add(convert(ref));
     }
     for (SModuleReference dep : source.getRuntimeModules()) {
-      SLinkOperations.getChildren(result, LINKS.runtimeModules$EaIq).add(convert(dep));
+      SLinkOperations.getChildren(result, LINKS.runtimeModules$BSXM).add(convert(dep));
     }
     collectModels(result);
     return result;
@@ -102,12 +102,12 @@ public class ProjectStructureBuilder {
 
   private SNode convertSolution() {
     SolutionDescriptor source = (SolutionDescriptor) mySource;
-    SNode result = SModelOperations.createNewNode(myModel, new SNodeId.Foreign("~root"), CONCEPTS.Solution$k0);
+    SNode result = SModelOperations.createNewNode(myModel, new SNodeId.Foreign("~root"), CONCEPTS.Solution$zo);
     fillModule(result);
-    SPropertyOperations.assign(result, PROPS.compileInMPS$58m_, source.getCompileInMPS());
-    SPropertyOperations.assign(result, PROPS.outputPath$n_2U, source.getOutputPath());
+    SPropertyOperations.assign(result, PROPS.compileInMPS$2Q_X, source.getCompileInMPS());
+    SPropertyOperations.assign(result, PROPS.outputPath$ljii, source.getOutputPath());
     if (myFile != null) {
-      SPropertyOperations.assign(result, PROPS.solutionPath$bjWo, myFile.getPath());
+      SPropertyOperations.assign(result, PROPS.solutionPath$92bK, myFile.getPath());
     }
     collectModels(result);
     return result;
@@ -116,34 +116,34 @@ public class ProjectStructureBuilder {
   private SNode convertDevkit() {
     DevkitDescriptor source = (DevkitDescriptor) mySource;
 
-    SNode result = SModelOperations.createNewNode(myModel, new SNodeId.Foreign("~root"), CONCEPTS.DevKit$EW);
+    SNode result = SModelOperations.createNewNode(myModel, new SNodeId.Foreign("~root"), CONCEPTS.DevKit$Uk);
     fillModule(result);
-    SPropertyOperations.assign(result, PROPS.compileInMPS$58m_, false);
-    SPropertyOperations.assign(result, PROPS.devkitPath$oAIH, myFile.getPath());
+    SPropertyOperations.assign(result, PROPS.compileInMPS$2Q_X, false);
+    SPropertyOperations.assign(result, PROPS.devkitPath$mkY5, myFile.getPath());
     for (SModuleReference ref : source.getExtendedDevkits()) {
-      SLinkOperations.getChildren(result, LINKS.extendedDevkits$oAvG).add(convert(ref));
+      SLinkOperations.getChildren(result, LINKS.extendedDevkits$mkJ4).add(convert(ref));
     }
     for (SModuleReference ref : source.getExportedLanguages()) {
-      SLinkOperations.getChildren(result, LINKS.exportedLanguages$oA1E).add(convert(ref));
+      SLinkOperations.getChildren(result, LINKS.exportedLanguages$mkh2).add(convert(ref));
     }
     for (SModuleReference ref : source.getExportedSolutions()) {
-      SLinkOperations.getChildren(result, LINKS.exportedSolutions$oAgF).add(convert(ref));
+      SLinkOperations.getChildren(result, LINKS.exportedSolutions$mkw3).add(convert(ref));
     }
     return result;
   }
 
   private SNode convert(SModelReference source) {
-    SNode result = SModelOperations.createNewNode(myModel, null, CONCEPTS.ModelReference$sT);
-    BHReflection.invoke0(result, CONCEPTS.ModelReference$sT, SMethodTrimmedId.create("populateFrom", CONCEPTS.ModelReference$sT, "2BHFktfniCd"), source);
+    SNode result = SModelOperations.createNewNode(myModel, null, CONCEPTS.ModelReference$Gh);
+    BHReflection.invoke0(result, CONCEPTS.ModelReference$Gh, SMethodTrimmedId.create("populateFrom", CONCEPTS.ModelReference$Gh, "2BHFktfniCd"), source);
     return result;
   }
 
   private void fillModule(SNode module) {
-    SPropertyOperations.assign(module, PROPS.uuid$2Ee3, (mySource.getId() == null ? null : mySource.getId().toString()));
-    SPropertyOperations.assign(module, PROPS.namespace$2Et4, mySource.getNamespace());
+    SPropertyOperations.assign(module, PROPS.uuid$otr, (mySource.getId() == null ? null : mySource.getId().toString()));
+    SPropertyOperations.assign(module, PROPS.namespace$oGs, mySource.getNamespace());
 
     for (ModelRootDescriptor root : mySource.getModelRootDescriptors()) {
-      SLinkOperations.getChildren(module, LINKS.modelRoots$9mwe).add(convert(root));
+      SLinkOperations.getChildren(module, LINKS.modelRoots$74JA).add(convert(root));
     }
     for (SDependency mdep : mySourceModule.getDeclaredDependencies()) {
       if (mdep.getScope() == SDependencyScope.DESIGN) {
@@ -155,77 +155,77 @@ public class ProjectStructureBuilder {
         // too much trouble in filtering them out here. It's unlikely anyone expects node<Module> to give 100% honest representaion of an SModule instance, anyway. 
         continue;
       }
-      SLinkOperations.getChildren(module, LINKS.dependencies$5aeH).add(convert(mdep));
+      SLinkOperations.getChildren(module, LINKS.dependencies$2Su5).add(convert(mdep));
     }
     for (SLanguage ref : mySourceModule.getUsedLanguages()) {
-      SLinkOperations.getChildren(module, LINKS.usedLanguages$9m2c).add(convert(ref.getSourceModuleReference()));
+      SLinkOperations.getChildren(module, LINKS.usedLanguages$74h$).add(convert(ref.getSourceModuleReference()));
     }
     for (String path : mySource.getJavaLibs()) {
-      SNode node = SModelOperations.createNewNode(myModel, null, CONCEPTS.StubEntry$dM);
-      SPropertyOperations.assign(node, PROPS.path$EAT0, path);
-      SLinkOperations.getChildren(module, LINKS.stubModels$umCJ).add(node);
+      SNode node = SModelOperations.createNewNode(myModel, null, CONCEPTS.StubEntry$ta);
+      SPropertyOperations.assign(node, PROPS.path$Cl8o, path);
+      SLinkOperations.getChildren(module, LINKS.stubModels$s4S7).add(node);
     }
     for (String s : mySource.getSourcePaths()) {
-      SLinkOperations.getChildren(module, LINKS.sourcePaths$Hfl1).add(convertSourcePath(s));
+      SLinkOperations.getChildren(module, LINKS.sourcePaths$EX$p).add(convertSourcePath(s));
     }
   }
   private SNode convert(ModelRootDescriptor source) {
-    SNode result = SModelOperations.createNewNode(myModel, null, CONCEPTS.ModelRoot$pT);
-    SPropertyOperations.assign(result, PROPS.type$ELvv, source.getType());
+    SNode result = SModelOperations.createNewNode(myModel, null, CONCEPTS.ModelRoot$Dh);
+    SPropertyOperations.assign(result, PROPS.type$CvIR, source.getType());
     String path = source.getMemento().get("path");
     if ((path != null && path.length() > 0)) {
-      SPropertyOperations.assign(result, PROPS.path$WleD, path);
+      SPropertyOperations.assign(result, PROPS.path$U3u1, path);
     }
     return result;
   }
   private SNode convertSourcePath(String s) {
-    SNode result = SModelOperations.createNewNode(myModel, null, CONCEPTS.SourcePath$X);
-    SPropertyOperations.assign(result, PROPS.value$Iwuw, s);
+    SNode result = SModelOperations.createNewNode(myModel, null, CONCEPTS.SourcePath$gl);
+    SPropertyOperations.assign(result, PROPS.value$GeHS, s);
     return result;
   }
   private SNode convert(SDependency source) {
-    SNode dep = SModelOperations.createNewNode(myModel, null, CONCEPTS.ModuleDependency$to);
-    SPropertyOperations.assign(dep, PROPS.reexport$5eG0, source.isReexport());
-    SLinkOperations.setTarget(dep, LINKS.moduleRef$9qXx, convert(source.getTargetModule()));
+    SNode dep = SModelOperations.createNewNode(myModel, null, CONCEPTS.ModuleDependency$GK);
+    SPropertyOperations.assign(dep, PROPS.reexport$2WVo, source.isReexport());
+    SLinkOperations.setTarget(dep, LINKS.moduleRef$79cT, convert(source.getTargetModule()));
     return dep;
   }
 
   public SNode convertGenerator() {
     GeneratorDescriptor source = (GeneratorDescriptor) mySource;
-    SNode generator = SModelOperations.createNewNode(myModel, null, CONCEPTS.Generator$kv);
+    SNode generator = SModelOperations.createNewNode(myModel, null, CONCEPTS.Generator$zR);
     fillModule(generator);
-    SPropertyOperations.assign(generator, PROPS.generateTemplates$HSE$, source.isGenerateTemplates());
-    SPropertyOperations.assign(generator, PROPS.generatorAlias$qxvm, (isNotEmptyString(source.getAlias()) ? source.getAlias() : null));
+    SPropertyOperations.assign(generator, PROPS.generateTemplates$FATW, source.isGenerateTemplates());
+    SPropertyOperations.assign(generator, PROPS.generatorAlias$ofII, (isNotEmptyString(source.getAlias()) ? source.getAlias() : null));
     for (MappingPriorityRule rule : source.getPriorityRules()) {
-      SLinkOperations.getChildren(generator, LINKS.priorityRules$zjcH).add(convert(rule));
+      SLinkOperations.getChildren(generator, LINKS.priorityRules$x1s5).add(convert(rule));
     }
     for (SModuleReference ref : source.getDepGenerators()) {
-      SLinkOperations.getChildren(generator, LINKS.depGenerators$zp46).add(convert(ref));
+      SLinkOperations.getChildren(generator, LINKS.depGenerators$x7ju).add(convert(ref));
     }
     collectModels(generator);
     return generator;
   }
 
   private SNode convert(MappingPriorityRule source) {
-    SNode rule = SModelOperations.createNewNode(myModel, null, CONCEPTS.MappingPriorityRule$Tu);
+    SNode rule = SModelOperations.createNewNode(myModel, null, CONCEPTS.MappingPriorityRule$8Q);
     switch (source.getType()) {
       case BEFORE_OR_TOGETHER:
-        SPropertyOperations.setEnum(rule, PROPS.type$5tF4, 0x5869770da61dfe3cL, "before_or_together");
+        SPropertyOperations.setEnum(rule, PROPS.type$3bUs, 0x5869770da61dfe3cL, "before_or_together");
         break;
       case STRICTLY_BEFORE:
-        SPropertyOperations.setEnum(rule, PROPS.type$5tF4, 0x5869770da61dfe3aL, "strictly_before");
+        SPropertyOperations.setEnum(rule, PROPS.type$3bUs, 0x5869770da61dfe3aL, "strictly_before");
         break;
       case STRICTLY_AFTER:
-        SPropertyOperations.setEnum(rule, PROPS.type$5tF4, 0x24ae9488ebb07a1fL, "strictly_after");
+        SPropertyOperations.setEnum(rule, PROPS.type$3bUs, 0x24ae9488ebb07a1fL, "strictly_after");
         break;
       case AFTER_OR_TOGETHER:
-        SPropertyOperations.setEnum(rule, PROPS.type$5tF4, 0x24ae9488ebb07a1eL, "after_or_together");
+        SPropertyOperations.setEnum(rule, PROPS.type$3bUs, 0x24ae9488ebb07a1eL, "after_or_together");
         break;
       default:
-        SPropertyOperations.setEnum(rule, PROPS.type$5tF4, 0x5869770da61dfe3bL, "strictly_together");
+        SPropertyOperations.setEnum(rule, PROPS.type$3bUs, 0x5869770da61dfe3bL, "strictly_together");
     }
-    SLinkOperations.setTarget(rule, LINKS.left$pO5e, convert(source.getLeft()));
-    SLinkOperations.setTarget(rule, LINKS.right$pOkf, convert(source.getRight()));
+    SLinkOperations.setTarget(rule, LINKS.left$nykA, convert(source.getLeft()));
+    SLinkOperations.setTarget(rule, LINKS.right$nyzB, convert(source.getRight()));
     return rule;
   }
 
@@ -233,38 +233,38 @@ public class ProjectStructureBuilder {
     if (ref == null) {
       return null;
     }
-    SNode result = SModelOperations.createNewNode(myModel, null, CONCEPTS.ModuleReference$xK);
-    BHReflection.invoke0(result, CONCEPTS.ModuleReference$xK, SMethodTrimmedId.create("populateFrom", CONCEPTS.ModuleReference$xK, "2BHFktfnlSL"), ref);
+    SNode result = SModelOperations.createNewNode(myModel, null, CONCEPTS.ModuleReference$L8);
+    BHReflection.invoke0(result, CONCEPTS.ModuleReference$L8, SMethodTrimmedId.create("populateFrom", CONCEPTS.ModuleReference$L8, "2BHFktfnlSL"), ref);
     return result;
   }
 
   private SNode convert(MappingConfig_AbstractRef source) {
     if (source instanceof MappingConfig_RefAllGlobal) {
-      return SModelOperations.createNewNode(myModel, null, CONCEPTS.MappingConfigRefAllGlobal$Ed);
+      return SModelOperations.createNewNode(myModel, null, CONCEPTS.MappingConfigRefAllGlobal$T_);
     } else if (source instanceof MappingConfig_RefAllLocal) {
-      return SModelOperations.createNewNode(myModel, null, CONCEPTS.MappingConfigRefAllLocal$BB);
+      return SModelOperations.createNewNode(myModel, null, CONCEPTS.MappingConfigRefAllLocal$QZ);
     } else if (source instanceof MappingConfig_RefSet) {
-      SNode result = SModelOperations.createNewNode(myModel, null, CONCEPTS.MappingConfigRefSet$DM);
+      SNode result = SModelOperations.createNewNode(myModel, null, CONCEPTS.MappingConfigRefSet$Ta);
       for (MappingConfig_AbstractRef ref : ((MappingConfig_RefSet) source).getMappingConfigs()) {
-        SLinkOperations.getChildren(result, LINKS.refs$qOT0).add(convert(ref));
+        SLinkOperations.getChildren(result, LINKS.refs$oz8o).add(convert(ref));
       }
       return result;
     } else if (source instanceof MappingConfig_ExternalRef) {
-      SNode result = SModelOperations.createNewNode(myModel, null, CONCEPTS.MappingConfigExternalRef$Pq);
-      SLinkOperations.setTarget(result, LINKS.generator$dUW1, convert(((MappingConfig_ExternalRef) source).getGenerator()));
-      SLinkOperations.setTarget(result, LINKS.innerRef$dUH0, convert(((MappingConfig_ExternalRef) source).getMappingConfig()));
+      SNode result = SModelOperations.createNewNode(myModel, null, CONCEPTS.MappingConfigExternalRef$4M);
+      SLinkOperations.setTarget(result, LINKS.generator$bDbp, convert(((MappingConfig_ExternalRef) source).getGenerator()));
+      SLinkOperations.setTarget(result, LINKS.innerRef$bCWo, convert(((MappingConfig_ExternalRef) source).getMappingConfig()));
       return result;
     } else if (source instanceof MappingConfig_SimpleRef) {
-      SNode result = SModelOperations.createNewNode(myModel, null, CONCEPTS.MappingConfigNormalRef$mQ);
+      SNode result = SModelOperations.createNewNode(myModel, null, CONCEPTS.MappingConfigNormalRef$Ae);
       MappingConfig_SimpleRef simpleRef = (MappingConfig_SimpleRef) source;
-      SPropertyOperations.assign(result, PROPS.modelUID$abr0, simpleRef.getModelUID());
-      SPropertyOperations.assign(result, PROPS.nodeID$abE1, simpleRef.getNodeID());
-      SPropertyOperations.assign(result, PROPS.mcName$BDIy, simpleRef.getNodeID());
+      SPropertyOperations.assign(result, PROPS.modelUID$7TEo, simpleRef.getModelUID());
+      SPropertyOperations.assign(result, PROPS.nodeID$7TTp, simpleRef.getNodeID());
+      SPropertyOperations.assign(result, PROPS.mcName$_nXU, simpleRef.getNodeID());
       if (!(simpleRef.includesAll())) {
         {
           final SNode mc = new SNodePointer(simpleRef.getModelUID(), simpleRef.getNodeID()).resolve(mySourceModule.getRepository());
-          if (SNodeOperations.isInstanceOf(mc, CONCEPTS.MappingConfiguration$rB)) {
-            SPropertyOperations.assign(result, PROPS.mcName$BDIy, SPropertyOperations.getString(mc, PROPS.name$lA7v));
+          if (SNodeOperations.isInstanceOf(mc, CONCEPTS.MappingConfiguration$7j)) {
+            SPropertyOperations.assign(result, PROPS.mcName$_nXU, SPropertyOperations.getString(mc, PROPS.name$MnvL));
           }
         }
       }
@@ -280,7 +280,7 @@ public class ProjectStructureBuilder {
       }
     }, true)) {
       if (!(SModelStereotype.isStubModel(m))) {
-        ListSequence.fromList(SLinkOperations.getChildren(module, LINKS.model$59ZG)).addElement(convert(m.getReference()));
+        ListSequence.fromList(SLinkOperations.getChildren(module, LINKS.model$2Sf4)).addElement(convert(m.getReference()));
       }
     }
   }
@@ -289,69 +289,69 @@ public class ProjectStructureBuilder {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Language$jx = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, "jetbrains.mps.lang.project.structure.Language");
-    /*package*/ static final SConcept Solution$k0 = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe20L, "jetbrains.mps.lang.project.structure.Solution");
-    /*package*/ static final SConcept DevKit$EW = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe2fL, "jetbrains.mps.lang.project.structure.DevKit");
-    /*package*/ static final SConcept ModelReference$sT = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe27L, "jetbrains.mps.lang.project.structure.ModelReference");
-    /*package*/ static final SConcept StubEntry$dM = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb52422L, "jetbrains.mps.lang.project.structure.StubEntry");
-    /*package*/ static final SConcept ModelRoot$pT = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb52426L, "jetbrains.mps.lang.project.structure.ModelRoot");
-    /*package*/ static final SConcept SourcePath$X = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x3be012d639dffb7L, "jetbrains.mps.lang.project.structure.SourcePath");
-    /*package*/ static final SConcept ModuleDependency$to = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe28L, "jetbrains.mps.lang.project.structure.ModuleDependency");
-    /*package*/ static final SConcept Generator$kv = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, "jetbrains.mps.lang.project.structure.Generator");
-    /*package*/ static final SConcept MappingPriorityRule$Tu = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe38L, "jetbrains.mps.lang.project.structure.MappingPriorityRule");
-    /*package*/ static final SConcept ModuleReference$xK = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb5210cL, "jetbrains.mps.lang.project.structure.ModuleReference");
-    /*package*/ static final SConcept MappingConfigRefAllGlobal$Ed = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f2845954f70fL, "jetbrains.mps.lang.project.structure.MappingConfigRefAllGlobal");
-    /*package*/ static final SConcept MappingConfigRefAllLocal$BB = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f284595702d4L, "jetbrains.mps.lang.project.structure.MappingConfigRefAllLocal");
-    /*package*/ static final SConcept MappingConfigRefSet$DM = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f2845957030bL, "jetbrains.mps.lang.project.structure.MappingConfigRefSet");
-    /*package*/ static final SConcept MappingConfigExternalRef$Pq = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f284595727e1L, "jetbrains.mps.lang.project.structure.MappingConfigExternalRef");
-    /*package*/ static final SConcept MappingConfigNormalRef$mQ = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f28459572777L, "jetbrains.mps.lang.project.structure.MappingConfigNormalRef");
-    /*package*/ static final SConcept MappingConfiguration$rB = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration");
+    /*package*/ static final SConcept Language$yT = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, "jetbrains.mps.lang.project.structure.Language");
+    /*package*/ static final SConcept Solution$zo = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe20L, "jetbrains.mps.lang.project.structure.Solution");
+    /*package*/ static final SConcept DevKit$Uk = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe2fL, "jetbrains.mps.lang.project.structure.DevKit");
+    /*package*/ static final SConcept ModelReference$Gh = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe27L, "jetbrains.mps.lang.project.structure.ModelReference");
+    /*package*/ static final SConcept StubEntry$ta = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb52422L, "jetbrains.mps.lang.project.structure.StubEntry");
+    /*package*/ static final SConcept ModelRoot$Dh = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb52426L, "jetbrains.mps.lang.project.structure.ModelRoot");
+    /*package*/ static final SConcept SourcePath$gl = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x3be012d639dffb7L, "jetbrains.mps.lang.project.structure.SourcePath");
+    /*package*/ static final SConcept ModuleDependency$GK = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe28L, "jetbrains.mps.lang.project.structure.ModuleDependency");
+    /*package*/ static final SConcept Generator$zR = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, "jetbrains.mps.lang.project.structure.Generator");
+    /*package*/ static final SConcept MappingPriorityRule$8Q = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe38L, "jetbrains.mps.lang.project.structure.MappingPriorityRule");
+    /*package*/ static final SConcept ModuleReference$L8 = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb5210cL, "jetbrains.mps.lang.project.structure.ModuleReference");
+    /*package*/ static final SConcept MappingConfigRefAllGlobal$T_ = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f2845954f70fL, "jetbrains.mps.lang.project.structure.MappingConfigRefAllGlobal");
+    /*package*/ static final SConcept MappingConfigRefAllLocal$QZ = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f284595702d4L, "jetbrains.mps.lang.project.structure.MappingConfigRefAllLocal");
+    /*package*/ static final SConcept MappingConfigRefSet$Ta = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f2845957030bL, "jetbrains.mps.lang.project.structure.MappingConfigRefSet");
+    /*package*/ static final SConcept MappingConfigExternalRef$4M = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f284595727e1L, "jetbrains.mps.lang.project.structure.MappingConfigExternalRef");
+    /*package*/ static final SConcept MappingConfigNormalRef$Ae = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f28459572777L, "jetbrains.mps.lang.project.structure.MappingConfigNormalRef");
+    /*package*/ static final SConcept MappingConfiguration$7j = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty compileInMPS$58m_ = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe24L, "compileInMPS");
-    /*package*/ static final SProperty genPath$J5JI = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, 0x3be012d639e820aL, "genPath");
-    /*package*/ static final SProperty languagePath$7ajY = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, 0x5edd58f612649635L, "languagePath");
-    /*package*/ static final SProperty version$F$0n = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, 0x50317e9064ec725dL, "version");
-    /*package*/ static final SProperty outputPath$n_2U = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe20L, 0x3be012d639e8a6eL, "outputPath");
-    /*package*/ static final SProperty solutionPath$bjWo = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe20L, 0x5edd58f612641a9cL, "solutionPath");
-    /*package*/ static final SProperty devkitPath$oAIH = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe2fL, 0x60ae235487d41768L, "devkitPath");
-    /*package*/ static final SProperty uuid$2Ee3 = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe22L, "uuid");
-    /*package*/ static final SProperty namespace$2Et4 = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe23L, "namespace");
-    /*package*/ static final SProperty path$EAT0 = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb52422L, 0x19bfb4173fb52423L, "path");
-    /*package*/ static final SProperty type$ELvv = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb52426L, 0x17221e2849561f98L, "type");
-    /*package*/ static final SProperty path$WleD = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb52426L, 0x19bfb4173fb5261fL, "path");
-    /*package*/ static final SProperty value$Iwuw = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x3be012d639dffb7L, 0x3be012d639dffb8L, "value");
-    /*package*/ static final SProperty reexport$5eG0 = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe28L, 0x5869770da61dfe29L, "reexport");
-    /*package*/ static final SProperty generateTemplates$HSE$ = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x29a5716c5dfed280L, "generateTemplates");
-    /*package*/ static final SProperty generatorAlias$qxvm = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x2cf7cb696461a282L, "generatorAlias");
-    /*package*/ static final SProperty type$5tF4 = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe38L, 0x5869770da61dfe3dL, "type");
-    /*package*/ static final SProperty modelUID$abr0 = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f28459572777L, 0x25c3f28459572778L, "modelUID");
-    /*package*/ static final SProperty nodeID$abE1 = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f28459572777L, 0x25c3f28459572779L, "nodeID");
-    /*package*/ static final SProperty mcName$BDIy = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f28459572777L, 0x600daa40a8a549d9L, "mcName");
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty compileInMPS$2Q_X = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe24L, "compileInMPS");
+    /*package*/ static final SProperty genPath$GNZ6 = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, 0x3be012d639e820aL, "genPath");
+    /*package*/ static final SProperty languagePath$4Szm = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, 0x5edd58f612649635L, "languagePath");
+    /*package*/ static final SProperty version$DifJ = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, 0x50317e9064ec725dL, "version");
+    /*package*/ static final SProperty outputPath$ljii = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe20L, 0x3be012d639e8a6eL, "outputPath");
+    /*package*/ static final SProperty solutionPath$92bK = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe20L, 0x5edd58f612641a9cL, "solutionPath");
+    /*package*/ static final SProperty devkitPath$mkY5 = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe2fL, 0x60ae235487d41768L, "devkitPath");
+    /*package*/ static final SProperty uuid$otr = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe22L, "uuid");
+    /*package*/ static final SProperty namespace$oGs = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe23L, "namespace");
+    /*package*/ static final SProperty path$Cl8o = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb52422L, 0x19bfb4173fb52423L, "path");
+    /*package*/ static final SProperty type$CvIR = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb52426L, 0x17221e2849561f98L, "type");
+    /*package*/ static final SProperty path$U3u1 = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb52426L, 0x19bfb4173fb5261fL, "path");
+    /*package*/ static final SProperty value$GeHS = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x3be012d639dffb7L, 0x3be012d639dffb8L, "value");
+    /*package*/ static final SProperty reexport$2WVo = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe28L, 0x5869770da61dfe29L, "reexport");
+    /*package*/ static final SProperty generateTemplates$FATW = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x29a5716c5dfed280L, "generateTemplates");
+    /*package*/ static final SProperty generatorAlias$ofII = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x2cf7cb696461a282L, "generatorAlias");
+    /*package*/ static final SProperty type$3bUs = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe38L, 0x5869770da61dfe3dL, "type");
+    /*package*/ static final SProperty modelUID$7TEo = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f28459572777L, 0x25c3f28459572778L, "modelUID");
+    /*package*/ static final SProperty nodeID$7TTp = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f28459572777L, 0x25c3f28459572779L, "nodeID");
+    /*package*/ static final SProperty mcName$_nXU = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f28459572777L, 0x600daa40a8a549d9L, "mcName");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink accessoryModels$E5l3 = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, 0x3be012d639dff80L, "accessoryModels");
-    /*package*/ static final SContainmentLink extendedLanguages$E5$4 = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, 0x3be012d639dff81L, "extendedLanguages");
-    /*package*/ static final SContainmentLink runtimeModules$EaIq = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, 0x3be012d639dff82L, "runtimeModules");
-    /*package*/ static final SContainmentLink extendedDevkits$oAvG = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe2fL, 0x60ae235487d41767L, "extendedDevkits");
-    /*package*/ static final SContainmentLink exportedLanguages$oA1E = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe2fL, 0x60ae235487d41765L, "exportedLanguages");
-    /*package*/ static final SContainmentLink exportedSolutions$oAgF = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe2fL, 0x60ae235487d41766L, "exportedSolutions");
-    /*package*/ static final SContainmentLink modelRoots$9mwe = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x19bfb4173fb52421L, "modelRoots");
-    /*package*/ static final SContainmentLink dependencies$5aeH = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe2cL, "dependencies");
-    /*package*/ static final SContainmentLink usedLanguages$9m2c = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x19bfb4173fb5241fL, "usedLanguages");
-    /*package*/ static final SContainmentLink stubModels$umCJ = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x19bfb4173fb52669L, "stubModels");
-    /*package*/ static final SContainmentLink sourcePaths$Hfl1 = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x3be012d639dffbfL, "sourcePaths");
-    /*package*/ static final SContainmentLink moduleRef$9qXx = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe28L, 0x19bfb4173fb5241eL, "moduleRef");
-    /*package*/ static final SContainmentLink priorityRules$zjcH = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x19bfb4173fb5210bL, "priorityRules");
-    /*package*/ static final SContainmentLink depGenerators$zp46 = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x19bfb4173fb5210fL, "depGenerators");
-    /*package*/ static final SContainmentLink left$pO5e = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe38L, 0x25c3f284595702edL, "left");
-    /*package*/ static final SContainmentLink right$pOkf = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe38L, 0x25c3f284595702eeL, "right");
-    /*package*/ static final SContainmentLink refs$qOT0 = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f2845957030bL, 0x25c3f2845957030cL, "refs");
-    /*package*/ static final SContainmentLink generator$dUW1 = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f284595727e1L, 0x25c3f284595727e3L, "generator");
-    /*package*/ static final SContainmentLink innerRef$dUH0 = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f284595727e1L, 0x25c3f284595727e2L, "innerRef");
-    /*package*/ static final SContainmentLink model$59ZG = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe2bL, "model");
+    /*package*/ static final SContainmentLink accessoryModels$BN$r = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, 0x3be012d639dff80L, "accessoryModels");
+    /*package*/ static final SContainmentLink extendedLanguages$BNNs = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, 0x3be012d639dff81L, "extendedLanguages");
+    /*package*/ static final SContainmentLink runtimeModules$BSXM = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, 0x3be012d639dff82L, "runtimeModules");
+    /*package*/ static final SContainmentLink extendedDevkits$mkJ4 = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe2fL, 0x60ae235487d41767L, "extendedDevkits");
+    /*package*/ static final SContainmentLink exportedLanguages$mkh2 = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe2fL, 0x60ae235487d41765L, "exportedLanguages");
+    /*package*/ static final SContainmentLink exportedSolutions$mkw3 = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe2fL, 0x60ae235487d41766L, "exportedSolutions");
+    /*package*/ static final SContainmentLink modelRoots$74JA = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x19bfb4173fb52421L, "modelRoots");
+    /*package*/ static final SContainmentLink dependencies$2Su5 = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe2cL, "dependencies");
+    /*package*/ static final SContainmentLink usedLanguages$74h$ = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x19bfb4173fb5241fL, "usedLanguages");
+    /*package*/ static final SContainmentLink stubModels$s4S7 = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x19bfb4173fb52669L, "stubModels");
+    /*package*/ static final SContainmentLink sourcePaths$EX$p = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x3be012d639dffbfL, "sourcePaths");
+    /*package*/ static final SContainmentLink moduleRef$79cT = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe28L, 0x19bfb4173fb5241eL, "moduleRef");
+    /*package*/ static final SContainmentLink priorityRules$x1s5 = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x19bfb4173fb5210bL, "priorityRules");
+    /*package*/ static final SContainmentLink depGenerators$x7ju = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x19bfb4173fb5210fL, "depGenerators");
+    /*package*/ static final SContainmentLink left$nykA = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe38L, 0x25c3f284595702edL, "left");
+    /*package*/ static final SContainmentLink right$nyzB = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe38L, 0x25c3f284595702eeL, "right");
+    /*package*/ static final SContainmentLink refs$oz8o = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f2845957030bL, 0x25c3f2845957030cL, "refs");
+    /*package*/ static final SContainmentLink generator$bDbp = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f284595727e1L, 0x25c3f284595727e3L, "generator");
+    /*package*/ static final SContainmentLink innerRef$bCWo = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f284595727e1L, 0x25c3f284595727e2L, "innerRef");
+    /*package*/ static final SContainmentLink model$2Sf4 = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe2bL, "model");
   }
 }

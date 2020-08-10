@@ -93,18 +93,18 @@ public class ShowConceptInHierarchy_Action extends BaseAction {
 
     if (event.getData(MPSEditorDataKeys.EDITOR_CELL) != null) {
       SNode refNode = APICellAdapter.getSNodeWRTReference(event.getData(MPSEditorDataKeys.EDITOR_CELL));
-      if (SNodeOperations.isInstanceOf(refNode, CONCEPTS.AbstractConceptDeclaration$UN)) {
-        return SNodeOperations.cast(refNode, CONCEPTS.AbstractConceptDeclaration$UN);
+      if (SNodeOperations.isInstanceOf(refNode, CONCEPTS.AbstractConceptDeclaration$KA)) {
+        return SNodeOperations.cast(refNode, CONCEPTS.AbstractConceptDeclaration$KA);
       }
-      if (SNodeOperations.isInstanceOf(refNode, CONCEPTS.ConceptConstructorDeclaration$wi)) {
-        SNode concept = SNodeOperations.getNodeAncestor(refNode, CONCEPTS.AbstractConceptDeclaration$UN, false, false);
+      if (SNodeOperations.isInstanceOf(refNode, CONCEPTS.ConceptConstructorDeclaration$nv)) {
+        SNode concept = SNodeOperations.getNodeAncestor(refNode, CONCEPTS.AbstractConceptDeclaration$KA, false, false);
         if (concept != null) {
           return concept;
         }
       }
     }
 
-    SNode outerConcept = SNodeOperations.getNodeAncestor(event.getData(MPSCommonDataKeys.NODE), CONCEPTS.AbstractConceptDeclaration$UN, true, false);
+    SNode outerConcept = SNodeOperations.getNodeAncestor(event.getData(MPSCommonDataKeys.NODE), CONCEPTS.AbstractConceptDeclaration$KA, true, false);
     if (outerConcept != null) {
       return outerConcept;
     }
@@ -112,17 +112,17 @@ public class ShowConceptInHierarchy_Action extends BaseAction {
     if (event.getData(MPSEditorDataKeys.MPS_EDITOR) instanceof TabbedEditor) {
       TabbedEditor tabbedEditor = (TabbedEditor) event.getData(MPSEditorDataKeys.MPS_EDITOR);
       SNode editedNode = tabbedEditor.getCurrentlyEditedNode().resolve(event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository());
-      if (!(SNodeOperations.isInstanceOf(editedNode, CONCEPTS.AbstractConceptDeclaration$UN))) {
+      if (!(SNodeOperations.isInstanceOf(editedNode, CONCEPTS.AbstractConceptDeclaration$KA))) {
         return null;
       }
-      return SNodeOperations.cast(editedNode, CONCEPTS.AbstractConceptDeclaration$UN);
+      return SNodeOperations.cast(editedNode, CONCEPTS.AbstractConceptDeclaration$KA);
     }
 
     return null;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
-    /*package*/ static final SConcept ConceptConstructorDeclaration$wi = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43471eedL, "jetbrains.mps.lang.behavior.structure.ConceptConstructorDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept ConceptConstructorDeclaration$nv = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43471eedL, "jetbrains.mps.lang.behavior.structure.ConceptConstructorDeclaration");
   }
 }

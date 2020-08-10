@@ -28,24 +28,24 @@ public class check_LinkDeclaration_Specialized_NonTypesystemRule extends Abstrac
   public check_LinkDeclaration_Specialized_NonTypesystemRule() {
   }
   public void applyRule(final SNode link, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode specializedLink = SLinkOperations.getTarget(link, LINKS.specializedLink$FRN0);
+    SNode specializedLink = SLinkOperations.getTarget(link, LINKS.specializedLink$7ZCN);
     if ((specializedLink == null)) {
       return;
     }
 
     // metaclass 
-    if (!(Objects.equals(SPropertyOperations.getEnum(specializedLink, PROPS.metaClass$p6Up), SPropertyOperations.getEnum(link, PROPS.metaClass$p6Up)))) {
+    if (!(Objects.equals(SPropertyOperations.getEnum(specializedLink, PROPS.metaClass$PeKc), SPropertyOperations.getEnum(link, PROPS.metaClass$PeKc)))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(link, "link '" + SPropertyOperations.getString(link, PROPS.role$nkts) + "' hase incorrect metaclass - specialized link '" + SPropertyOperations.getString(specializedLink, PROPS.role$nkts) + "' is of '" + SEnumOperations.getMemberName0(SPropertyOperations.getEnum(specializedLink, PROPS.metaClass$p6Up)) + "' metaclass", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "2854075155749508006", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(link, "link '" + SPropertyOperations.getString(link, PROPS.role$Nsjf) + "' hase incorrect metaclass - specialized link '" + SPropertyOperations.getString(specializedLink, PROPS.role$Nsjf) + "' is of '" + SEnumOperations.getMemberName0(SPropertyOperations.getEnum(specializedLink, PROPS.metaClass$PeKc)) + "' metaclass", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "2854075155749508006", null, errorTarget);
       }
     }
 
     // specialized must be a super-concept of specializing 
-    if ((SLinkOperations.getTarget(link, LINKS.target$TWaS) != null) && (SLinkOperations.getTarget(specializedLink, LINKS.target$TWaS) != null)) {
-      if (!((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(link, LINKS.target$TWaS), SLinkOperations.getTarget(specializedLink, LINKS.target$TWaS)))) {
+    if ((SLinkOperations.getTarget(link, LINKS.target$m40F) != null) && (SLinkOperations.getTarget(specializedLink, LINKS.target$m40F) != null)) {
+      if (!((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SLinkOperations.getTarget(link, LINKS.target$m40F), SLinkOperations.getTarget(specializedLink, LINKS.target$m40F)))) {
         {
-          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.target$TWaS);
+          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.target$m40F);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(link, "link target must be a subconcept of specialized link's target", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "7602347209950276650", null, errorTarget);
         }
       }
@@ -54,19 +54,19 @@ public class check_LinkDeclaration_Specialized_NonTypesystemRule extends Abstrac
     // cardinality 
     if ((boolean) LinkDeclaration__BehaviorDescriptor.isAtLeastOneCardinality_id2VYdUfnkjmB.invoke(specializedLink) && !((boolean) LinkDeclaration__BehaviorDescriptor.isAtLeastOneCardinality_id2VYdUfnkjmB.invoke(link))) {
       {
-        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.sourceCardinality$Kq8X);
+        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.sourceCardinality$cxYK);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(link, "specialized link has [1..] cardinality, specializing link must be [1..] cardinality", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "7602347209950307055", null, errorTarget);
       }
     }
     if ((boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(specializedLink) && !((boolean) LinkDeclaration__BehaviorDescriptor.isSingular_idhEwIfAt.invoke(link))) {
       {
-        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.sourceCardinality$Kq8X);
+        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.sourceCardinality$cxYK);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(link, "specialized link has [..1] cardinality, specializing link must be [..1] cardinality", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "7602347209950314170", null, errorTarget);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.LinkDeclaration$bA;
+    return CONCEPTS.LinkDeclaration$1p;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -76,17 +76,17 @@ public class check_LinkDeclaration_Specialized_NonTypesystemRule extends Abstrac
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink specializedLink$FRN0 = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98051c244L, "specializedLink");
-    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SReferenceLink specializedLink$7ZCN = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98051c244L, "specializedLink");
+    /*package*/ static final SReferenceLink target$m40F = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty metaClass$p6Up = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
-    /*package*/ static final SProperty role$nkts = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
-    /*package*/ static final SProperty sourceCardinality$Kq8X = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98054bb04L, "sourceCardinality");
+    /*package*/ static final SProperty metaClass$PeKc = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
+    /*package*/ static final SProperty role$Nsjf = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
+    /*package*/ static final SProperty sourceCardinality$cxYK = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98054bb04L, "sourceCardinality");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LinkDeclaration$bA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration");
+    /*package*/ static final SConcept LinkDeclaration$1p = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration");
   }
 }

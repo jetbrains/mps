@@ -70,7 +70,7 @@ public class TargetDeclaration_makeOptional extends TransformationMenuBase {
   public class TMP_Group_2cml4i_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.optional$9j6K));
+      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.optional$xCJC));
     }
 
     @NotNull
@@ -126,7 +126,7 @@ public class TargetDeclaration_makeOptional extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.optional$9j6K, true);
+          SPropertyOperations.assign(_context.getNode(), PROPS.optional$xCJC, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -152,6 +152,6 @@ public class TargetDeclaration_makeOptional extends TransformationMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty optional$9j6K = MetaAdapterFactory.getProperty(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, 0x642ffc6d854ec1c5L, "optional");
+    /*package*/ static final SProperty optional$xCJC = MetaAdapterFactory.getProperty(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, 0x642ffc6d854ec1c5L, "optional");
   }
 }

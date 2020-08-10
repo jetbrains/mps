@@ -8,9 +8,9 @@
     <file name="DSLDescriptorUtil.java">
       <node id="5060738976066068062" at="18,72,19,139" concept="1" />
       <node id="5060738976066056831" at="20,5,21,164" concept="1" />
-      <node id="5060738976066052339" at="25,0,26,0" concept="2" trace="AutoInitDSLClass$sF" />
-      <node id="5060738976066052339" at="26,0,27,0" concept="2" trace="DSLAnnotation$dI" />
-      <node id="5060738976066052339" at="30,0,31,0" concept="2" trace="descriptor$GNQ3" />
+      <node id="5060738976066052339" at="25,0,26,0" concept="2" trace="AutoInitDSLClass$Ms" />
+      <node id="5060738976066052339" at="26,0,27,0" concept="2" trace="DSLAnnotation$zv" />
+      <node id="5060738976066052339" at="30,0,31,0" concept="2" trace="descriptor$aNbO" />
       <node id="5060738976066062590" at="17,46,20,5" concept="0" />
       <node id="5060738976066052370" at="17,0,23,0" concept="3" trace="getDescriptor#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="5060738976066062592" at="18,72,19,139" />

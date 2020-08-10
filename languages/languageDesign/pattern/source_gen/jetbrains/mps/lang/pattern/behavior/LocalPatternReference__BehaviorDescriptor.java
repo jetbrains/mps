@@ -32,7 +32,7 @@ public final class LocalPatternReference__BehaviorDescriptor extends BaseBHDescr
   }
 
   /*package*/ static List<SNode> getVariables_id2r4rhgaEVoa(@NotNull SNode __thisNode__) {
-    return PatternBuilder__BehaviorDescriptor.getVariables_idPFUECvO1RN.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$2pb0), LINKS.pattern$F$0y));
+    return PatternBuilder__BehaviorDescriptor.getVariables_idPFUECvO1RN.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$6Loz), LINKS.pattern$JWe5));
   }
 
   /*package*/ LocalPatternReference__BehaviorDescriptor() {
@@ -82,7 +82,7 @@ public final class LocalPatternReference__BehaviorDescriptor extends BaseBHDescr
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$2pb0 = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18b16ecfcL, 0x174c7ed18b16ecfdL, "declaration");
-    /*package*/ static final SContainmentLink pattern$F$0y = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x50f8d1ebd50bbeb0L, 0x50f8d1ebd50bbeb3L, "pattern");
+    /*package*/ static final SReferenceLink declaration$6Loz = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18b16ecfcL, 0x174c7ed18b16ecfdL, "declaration");
+    /*package*/ static final SContainmentLink pattern$JWe5 = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x50f8d1ebd50bbeb0L, 0x50f8d1ebd50bbeb3L, "pattern");
   }
 }

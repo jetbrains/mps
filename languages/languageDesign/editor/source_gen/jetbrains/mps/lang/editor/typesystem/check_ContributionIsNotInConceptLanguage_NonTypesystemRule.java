@@ -36,7 +36,7 @@ public class check_ContributionIsNotInConceptLanguage_NonTypesystemRule extends 
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.IMenu_Contribution$E$;
+    return CONCEPTS.IMenu_Contribution$Qb;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -58,6 +58,6 @@ public class check_ContributionIsNotInConceptLanguage_NonTypesystemRule extends 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IMenu_Contribution$E$ = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a90a5d62L, "jetbrains.mps.lang.editor.structure.IMenu_Contribution");
+    /*package*/ static final SInterfaceConcept IMenu_Contribution$Qb = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a90a5d62L, "jetbrains.mps.lang.editor.structure.IMenu_Contribution");
   }
 }

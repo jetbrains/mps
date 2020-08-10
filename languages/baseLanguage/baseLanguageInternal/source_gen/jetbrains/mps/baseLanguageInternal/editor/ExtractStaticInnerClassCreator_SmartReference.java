@@ -29,7 +29,7 @@ public class ExtractStaticInnerClassCreator_SmartReference extends SubstituteMen
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_369k9v_a(), CONCEPTS.ExtractStaticInnerClassCreator$cT));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_369k9v_a(), CONCEPTS.ExtractStaticInnerClassCreator$tF));
     return result;
   }
 
@@ -50,7 +50,7 @@ public class ExtractStaticInnerClassCreator_SmartReference extends SubstituteMen
 
     public SMP_ReferenceScope_369k9v_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.ExtractStaticInnerClassCreator$cT, LINKS.baseMethodDeclaration$ItxI);
+      super((SAbstractConcept) CONCEPTS.ExtractStaticInnerClassCreator$tF, LINKS.baseMethodDeclaration$pyYw);
     }
     @NotNull
     @Override
@@ -82,7 +82,7 @@ public class ExtractStaticInnerClassCreator_SmartReference extends SubstituteMen
       }
       @Override
       public String getMatchingText(String pattern) {
-        return SPropertyOperations.getString(referencedNode, PROPS.name$lA7v);
+        return SPropertyOperations.getString(referencedNode, PROPS.name$MnvL);
       }
       @Override
       public String getVisibleMatchingText(String pattern) {
@@ -97,14 +97,14 @@ public class ExtractStaticInnerClassCreator_SmartReference extends SubstituteMen
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ExtractStaticInnerClassCreator$cT = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x50cc34ef144c9181L, "jetbrains.mps.baseLanguageInternal.structure.ExtractStaticInnerClassCreator");
+    /*package*/ static final SConcept ExtractStaticInnerClassCreator$tF = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x50cc34ef144c9181L, "jetbrains.mps.baseLanguageInternal.structure.ExtractStaticInnerClassCreator");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

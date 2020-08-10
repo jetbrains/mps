@@ -28,7 +28,7 @@ public class InstanceMethodCallOperation_SubstituteMenu extends SubstituteMenuBa
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_wjgxg2_a(), CONCEPTS.InstanceMethodCallOperation$1G));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_wjgxg2_a(), CONCEPTS.InstanceMethodCallOperation$uu));
     result.add(new SMP_Subconcepts_wjgxg2_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class InstanceMethodCallOperation_SubstituteMenu extends SubstituteMenuBa
 
     public SMP_ReferenceScope_wjgxg2_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.InstanceMethodCallOperation$1G, LINKS.baseMethodDeclaration$ItxI);
+      super((SAbstractConcept) CONCEPTS.InstanceMethodCallOperation$uu, LINKS.baseMethodDeclaration$pyYw);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class InstanceMethodCallOperation_SubstituteMenu extends SubstituteMenuBa
   }
   public class SMP_Subconcepts_wjgxg2_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.InstanceMethodCallOperation$1G);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.InstanceMethodCallOperation$uu);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class InstanceMethodCallOperation_SubstituteMenu extends SubstituteMenuBa
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InstanceMethodCallOperation$1G = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
+    /*package*/ static final SConcept InstanceMethodCallOperation$uu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 }

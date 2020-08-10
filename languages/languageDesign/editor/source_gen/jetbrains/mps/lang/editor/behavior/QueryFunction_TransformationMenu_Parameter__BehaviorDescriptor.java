@@ -36,7 +36,7 @@ public final class QueryFunction_TransformationMenu_Parameter__BehaviorDescripto
   }
 
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
-    return _quotation_createNode_w4ui80_a0a0(check_w4ui80_a0a0a0(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.TransformationMenuPart_Parameterized$hf, false, false)));
+    return _quotation_createNode_w4ui80_a0a0(check_w4ui80_a0a0a0(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.TransformationMenuPart_Parameterized$sQ, false, false)));
   }
   /*package*/ static boolean isParameterized_id1quYWAD0TOG(@NotNull SNode __thisNode__) {
     return false;
@@ -102,16 +102,16 @@ public final class QueryFunction_TransformationMenu_Parameter__BehaviorDescripto
   }
   private static SNode check_w4ui80_a0a0a0(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
-      return SLinkOperations.getTarget(checkedDotOperand, LINKS.parameterType$XGVw);
+      return SLinkOperations.getTarget(checkedDotOperand, LINKS.parameterType$1Z77);
     }
     return null;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TransformationMenuPart_Parameterized$hf = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3abfebf456f8ad25L, "jetbrains.mps.lang.editor.structure.TransformationMenuPart_Parameterized");
+    /*package*/ static final SConcept TransformationMenuPart_Parameterized$sQ = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3abfebf456f8ad25L, "jetbrains.mps.lang.editor.structure.TransformationMenuPart_Parameterized");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameterType$XGVw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9002d0fL, 0x169efbc9a9002d10L, "parameterType");
+    /*package*/ static final SContainmentLink parameterType$1Z77 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9002d0fL, 0x169efbc9a9002d10L, "parameterType");
   }
 }

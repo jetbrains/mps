@@ -23,16 +23,16 @@ public class ClassExtractMethodRefactoringProcessor extends AbstractExtractMetho
   }
   @Override
   public SNode createMethodCall(SNode declaration, List<SNode> parameters) {
-    if (SNodeOperations.isInstanceOf(declaration, CONCEPTS.InstanceMethodDeclaration$An)) {
+    if (SNodeOperations.isInstanceOf(declaration, CONCEPTS.InstanceMethodDeclaration$39)) {
       SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall"));
-      SLinkOperations.setTarget(result, LINKS.baseMethodDeclaration$ItxI, SNodeOperations.cast(declaration, CONCEPTS.InstanceMethodDeclaration$An));
-      ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.actualArgument$ItKJ)).addSequence(ListSequence.fromList(parameters));
+      SLinkOperations.setTarget(result, LINKS.baseMethodDeclaration$pyYw, SNodeOperations.cast(declaration, CONCEPTS.InstanceMethodDeclaration$39));
+      ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.actualArgument$pzdx)).addSequence(ListSequence.fromList(parameters));
       return result;
     } else {
       SNode call = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, "jetbrains.mps.baseLanguage.structure.StaticMethodCall"));
-      SLinkOperations.setTarget(call, LINKS.classConcept$70aQ, SNodeOperations.cast(SNodeOperations.getParent(declaration), CONCEPTS.Classifier$hJ));
-      SLinkOperations.setTarget(call, LINKS.baseMethodDeclaration$ItxI, SNodeOperations.cast(declaration, CONCEPTS.StaticMethodDeclaration$eX));
-      ListSequence.fromList(SLinkOperations.getChildren(call, LINKS.actualArgument$ItKJ)).addSequence(ListSequence.fromList(parameters));
+      SLinkOperations.setTarget(call, LINKS.classConcept$M5BC, SNodeOperations.cast(SNodeOperations.getParent(declaration), CONCEPTS.Classifier$Ix));
+      SLinkOperations.setTarget(call, LINKS.baseMethodDeclaration$pyYw, SNodeOperations.cast(declaration, CONCEPTS.StaticMethodDeclaration$FJ));
+      ListSequence.fromList(SLinkOperations.getChildren(call, LINKS.actualArgument$pzdx)).addSequence(ListSequence.fromList(parameters));
       return call;
     }
   }
@@ -55,14 +55,14 @@ public class ClassExtractMethodRefactoringProcessor extends AbstractExtractMetho
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InstanceMethodDeclaration$An = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept StaticMethodDeclaration$eX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
+    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept StaticMethodDeclaration$FJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SReferenceLink classConcept$70aQ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SReferenceLink classConcept$M5BC = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
   }
 }

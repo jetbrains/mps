@@ -91,7 +91,7 @@ public class ReplaceNodeMacro extends TransformationMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return CONCEPTS.NodeMacro$Je;
+      return CONCEPTS.NodeMacro$qU;
     }
 
     @Override
@@ -118,7 +118,7 @@ public class ReplaceNodeMacro extends TransformationMenuBase {
         SNodeOperations.replaceWithAnother(_context.getNode(), createdNode);
         // this condition is to prevent inspector from opening for VarMacro2 nodes, with nothing valueable in 
         // inspector (I believe original motivation behind selection code was to get cursor in a macro's query) 
-        if (Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(createdNode), CONCEPTS.ConceptFunction$Tt)).isNotEmpty()) {
+        if (Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(createdNode), CONCEPTS.ConceptFunction$mf)).isNotEmpty()) {
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.FIRST_CELL, 1);
           _context.getEditorContext().openInspector();
         }
@@ -148,7 +148,7 @@ public class ReplaceNodeMacro extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodeMacro$Je = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro");
-    /*package*/ static final SConcept ConceptFunction$Tt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
+    /*package*/ static final SConcept NodeMacro$qU = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro");
+    /*package*/ static final SConcept ConceptFunction$mf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
   }
 }

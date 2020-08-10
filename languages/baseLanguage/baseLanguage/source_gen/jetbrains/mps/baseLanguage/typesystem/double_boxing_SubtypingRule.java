@@ -21,7 +21,7 @@ public class double_boxing_SubtypingRule extends SubtypingRule_Runtime implement
     return _quotation_createNode_lpig6k_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.DoubleType$4e;
+    return CONCEPTS.DoubleType$x0;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,6 +38,6 @@ public class double_boxing_SubtypingRule extends SubtypingRule_Runtime implement
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DoubleType$4e = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d451a6L, "jetbrains.mps.baseLanguage.structure.DoubleType");
+    /*package*/ static final SConcept DoubleType$x0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d451a6L, "jetbrains.mps.baseLanguage.structure.DoubleType");
   }
 }

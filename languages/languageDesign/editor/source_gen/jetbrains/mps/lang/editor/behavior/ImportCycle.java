@@ -26,16 +26,16 @@ public final class ImportCycle {
     StringBuilder sb = new StringBuilder();
     for (SNode node : this.myImports) {
       sb.append(" -> ");
-      sb.append(SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.cellActionMap$w6kw), PROPS.name$lA7v));
+      sb.append(SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.cellActionMap$$ow7), PROPS.name$MnvL));
     }
     return sb.toString();
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink cellActionMap$w6kw = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x765abcb2949869d7L, 0x765abcb2949869d8L, "cellActionMap");
+    /*package*/ static final SReferenceLink cellActionMap$$ow7 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x765abcb2949869d7L, 0x765abcb2949869d8L, "cellActionMap");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

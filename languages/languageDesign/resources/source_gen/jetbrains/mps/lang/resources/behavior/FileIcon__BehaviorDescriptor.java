@@ -53,14 +53,14 @@ public final class FileIcon__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static List<Tuples._2<IFile, byte[]>> generate_id7Mb2akaesv8(@NotNull SNode __thisNode__, IFile outputDir) {
-    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.file$9NuV))) {
+    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.file$686H))) {
       // todo compatibility code to be removed after 3.4 
       return null;
     }
 
     SModel model = SNodeOperations.getModel(__thisNode__);
 
-    String source = MacrosFactory.forModule(model.getModule()).expandPath(SPropertyOperations.getString(__thisNode__, PROPS.file$9NuV));
+    String source = MacrosFactory.forModule(model.getModule()).expandPath(SPropertyOperations.getString(__thisNode__, PROPS.file$686H));
     final String name = FileUtil.getNameWithoutExtension(source);
     final String ext = FileUtil.getExtension(source);
 
@@ -113,7 +113,7 @@ public final class FileIcon__BehaviorDescriptor extends BaseBHDescriptor {
     if (macroHelper == null) {
       return false;
     }
-    String path = macroHelper.expandPath(SPropertyOperations.getString(__thisNode__, PROPS.file$9NuV));
+    String path = macroHelper.expandPath(SPropertyOperations.getString(__thisNode__, PROPS.file$686H));
     if (path == null) {
       return false;
     }
@@ -137,10 +137,10 @@ public final class FileIcon__BehaviorDescriptor extends BaseBHDescriptor {
     return ((String) Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(__thisNode__));
   }
   /*package*/ static String getResourceId_id2p1v3tOadt0(@NotNull SNode __thisNode__) {
-    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.file$9NuV))) {
+    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.file$686H))) {
       return null;
     }
-    return SPropertyOperations.getString(__thisNode__, PROPS.file$9NuV).substring(SPropertyOperations.getString(__thisNode__, PROPS.file$9NuV).lastIndexOf('/') + 1);
+    return SPropertyOperations.getString(__thisNode__, PROPS.file$686H).substring(SPropertyOperations.getString(__thisNode__, PROPS.file$686H).lastIndexOf('/') + 1);
   }
 
   /*package*/ FileIcon__BehaviorDescriptor() {
@@ -201,6 +201,6 @@ public final class FileIcon__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty file$9NuV = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, 0x26417c377428f6b3L, "file");
+    /*package*/ static final SProperty file$686H = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7c8b08a50a39c6bbL, 0x26417c377428f6b3L, "file");
   }
 }

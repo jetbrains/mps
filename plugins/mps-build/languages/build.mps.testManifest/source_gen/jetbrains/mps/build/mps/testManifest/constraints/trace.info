@@ -11,7 +11,7 @@
   <root nodeRef="r:31b9ca31-eb5d-471f-91ea-30fbf9c39fae(jetbrains.mps.build.mps.testManifest.constraints)/3298469228705255568">
     <file name="TestModuleManifest_Constraints.java">
       <node id="3298469228705255568" at="10,43,11,42" concept="2" />
-      <node id="3298469228705255568" at="15,0,16,0" concept="1" trace="TestModuleManifest$Zv" />
+      <node id="3298469228705255568" at="15,0,16,0" concept="1" trace="TestModuleManifest$1I" />
       <node id="3298469228705255568" at="10,0,13,0" concept="0" trace="TestModuleManifest_Constraints#()V" />
       <scope id="3298469228705255568" at="10,43,11,42" />
       <scope id="3298469228705255568" at="10,0,13,0" />

@@ -18,7 +18,7 @@ public class typeOf_EnumConstantDeclaration_InferenceRule extends AbstractInfere
   public typeOf_EnumConstantDeclaration_InferenceRule() {
   }
   public void applyRule(final SNode enumConstantDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode enumClass = SNodeOperations.getNodeAncestor(enumConstantDeclaration, CONCEPTS.EnumClass$uy, false, false);
+    SNode enumClass = SNodeOperations.getNodeAncestor(enumConstantDeclaration, CONCEPTS.EnumClass$Vk, false, false);
     if (enumClass == null) {
       return;
     }
@@ -31,7 +31,7 @@ public class typeOf_EnumConstantDeclaration_InferenceRule extends AbstractInfere
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.EnumConstantDeclaration$ma;
+    return CONCEPTS.EnumConstantDeclaration$MW;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,7 +41,7 @@ public class typeOf_EnumConstantDeclaration_InferenceRule extends AbstractInfere
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumClass$uy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
-    /*package*/ static final SConcept EnumConstantDeclaration$ma = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration");
+    /*package*/ static final SConcept EnumClass$Vk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
+    /*package*/ static final SConcept EnumConstantDeclaration$MW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration");
   }
 }

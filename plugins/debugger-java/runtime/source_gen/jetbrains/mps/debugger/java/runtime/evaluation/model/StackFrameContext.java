@@ -202,14 +202,14 @@ import org.jetbrains.mps.openapi.language.SProperty;
     SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3c2f40ee0bb3cbf5L, "jetbrains.mps.debugger.java.evaluation.structure.UnitNode"));
     SNode lowLevelType = createClassifierType.invoke(unitType);
     SNode highLevelNode = getStaticContextNode();
-    if (SNodeOperations.isInstanceOf(highLevelNode, CONCEPTS.Classifier$hJ)) {
-      SLinkOperations.setTarget(result, LINKS.debuggedType$X2tt, VariableDescription.createDebuggedType(lowLevelType, ((SNode) BHReflection.invoke0(SNodeOperations.cast(highLevelNode, CONCEPTS.Classifier$hJ), CONCEPTS.Classifier$hJ, SMethodTrimmedId.create("getThisType", null, "2RtWPFZ12w7")))));
-    } else if (SNodeOperations.isInstanceOf(highLevelNode, CONCEPTS.IClassifier$Cb)) {
-      SLinkOperations.setTarget(result, LINKS.debuggedType$X2tt, VariableDescription.createDebuggedType(lowLevelType, ((SNode) BHReflection.invoke0(SNodeOperations.cast(highLevelNode, CONCEPTS.IClassifier$Cb), CONCEPTS.IClassifier$Cb, SMethodTrimmedId.create("createType", null, "hEwJimy")))));
+    if (SNodeOperations.isInstanceOf(highLevelNode, CONCEPTS.Classifier$Ix)) {
+      SLinkOperations.setTarget(result, LINKS.debuggedType$boAT, VariableDescription.createDebuggedType(lowLevelType, ((SNode) BHReflection.invoke0(SNodeOperations.cast(highLevelNode, CONCEPTS.Classifier$Ix), CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("getThisType", null, "2RtWPFZ12w7")))));
+    } else if (SNodeOperations.isInstanceOf(highLevelNode, CONCEPTS.IClassifier$BZ)) {
+      SLinkOperations.setTarget(result, LINKS.debuggedType$boAT, VariableDescription.createDebuggedType(lowLevelType, ((SNode) BHReflection.invoke0(SNodeOperations.cast(highLevelNode, CONCEPTS.IClassifier$BZ), CONCEPTS.IClassifier$BZ, SMethodTrimmedId.create("createType", null, "hEwJimy")))));
     } else {
-      SLinkOperations.setTarget(result, LINKS.debuggedType$X2tt, VariableDescription.createDebuggedType(lowLevelType, null));
+      SLinkOperations.setTarget(result, LINKS.debuggedType$boAT, VariableDescription.createDebuggedType(lowLevelType, null));
     }
-    SPropertyOperations.set(result, PROPS.highLevelNodeId$QjZR, check_4zsmpx_a0a6a6(check_4zsmpx_a0a0g0g(highLevelNode)));
+    SPropertyOperations.set(result, PROPS.highLevelNodeId$4E9j, check_4zsmpx_a0a6a6(check_4zsmpx_a0a0g0g(highLevelNode)));
     return result;
   }
   private String getStaticContextTypeName() {
@@ -323,14 +323,14 @@ import org.jetbrains.mps.openapi.language.SProperty;
   }
   @Override
   public boolean isStaticContextTypeValid(SNode staticContextType) {
-    if (!(SNodeOperations.isInstanceOf(staticContextType, CONCEPTS.ClassifierType$IZ))) {
+    if (!(SNodeOperations.isInstanceOf(staticContextType, CONCEPTS.ClassifierType$bL))) {
       return false;
     }
     String staticContextTypeName = getStaticContextTypeName();
     if ((staticContextTypeName == null || staticContextTypeName.length() == 0)) {
       return false;
     }
-    return staticContextTypeName.equals(((String) BHReflection.invoke0(SLinkOperations.getTarget(SNodeOperations.cast(staticContextType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD), CONCEPTS.INamedConcept$nV, SMethodTrimmedId.create("getFqName", null, "hEwIO9y"))));
+    return staticContextTypeName.equals(((String) BHReflection.invoke0(SLinkOperations.getTarget(SNodeOperations.cast(staticContextType, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr), CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y"))));
   }
   private static String check_4zsmpx_a0a6a6(SNodeId checkedDotOperand) {
     if (null != checkedDotOperand) {
@@ -405,18 +405,18 @@ import org.jetbrains.mps.openapi.language.SProperty;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink debuggedType$X2tt = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3c2f40ee0bb3cbf5L, 0x3f11b1341fa2c39cL, "debuggedType");
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink debuggedType$boAT = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3c2f40ee0bb3cbf5L, 0x3f11b1341fa2c39cL, "debuggedType");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SInterfaceConcept IClassifier$Cb = MetaAdapterFactory.getInterfaceConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc6b2af5L, "jetbrains.mps.baseLanguage.classifiers.structure.IClassifier");
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SInterfaceConcept IClassifier$BZ = MetaAdapterFactory.getInterfaceConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc6b2af5L, "jetbrains.mps.baseLanguage.classifiers.structure.IClassifier");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty highLevelNodeId$QjZR = MetaAdapterFactory.getProperty(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3c2f40ee0bb3cbf5L, 0x3c2f40ee0bb3cbf8L, "highLevelNodeId");
+    /*package*/ static final SProperty highLevelNodeId$4E9j = MetaAdapterFactory.getProperty(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3c2f40ee0bb3cbf5L, 0x3c2f40ee0bb3cbf8L, "highLevelNodeId");
   }
 }

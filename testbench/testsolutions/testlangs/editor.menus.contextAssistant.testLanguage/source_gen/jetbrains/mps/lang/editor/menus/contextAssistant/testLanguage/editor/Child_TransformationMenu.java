@@ -96,7 +96,7 @@ public class Child_TransformationMenu extends TransformationMenuBase {
   public class TMP_Group_qk1e79_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      if ("error".equals(SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v))) {
+      if ("error".equals(SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL))) {
         throw new RuntimeException("Intentional exception - ignore this");
       }
       return true;
@@ -340,7 +340,7 @@ public class Child_TransformationMenu extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode newNode = SNodeFactoryOperations.createNewNode(CONCEPTS.Child$IS, null);
+          SNode newNode = SNodeFactoryOperations.createNewNode(CONCEPTS.Child$Lm, null);
           SNodeOperations.insertPrevSiblingChild(_context.getNode(), newNode);
           _context.getEditorContext().selectWRTFocusPolicy(newNode);
         }
@@ -360,7 +360,7 @@ public class Child_TransformationMenu extends TransformationMenuBase {
   public class TMP_Group_qk1e79_d1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return check_qk1e79_a0a0d1(SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v));
+      return check_qk1e79_a0a0d1(SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL));
     }
 
     @NotNull
@@ -416,7 +416,7 @@ public class Child_TransformationMenu extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.name$lA7v, SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v).replaceAll("a", ""));
+          SPropertyOperations.assign(_context.getNode(), PROPS.name$MnvL, SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL).replaceAll("a", ""));
         }
 
 
@@ -485,7 +485,7 @@ public class Child_TransformationMenu extends TransformationMenuBase {
   public class TMP_Group_qk1e79_e1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(check_qk1e79_a0a0a4b(SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v)));
+      return !(check_qk1e79_a0a0a4b(SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL)));
     }
 
     @NotNull
@@ -536,12 +536,12 @@ public class Child_TransformationMenu extends TransformationMenuBase {
         @Nullable
         @Override
         public String getLabelText(String pattern) {
-          return "ensure name ends with 'a' (" + SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v) + "a)";
+          return "ensure name ends with 'a' (" + SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL) + "a)";
         }
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.name$lA7v, SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v) + "a");
+          SPropertyOperations.assign(_context.getNode(), PROPS.name$MnvL, SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL) + "a");
         }
 
 
@@ -575,7 +575,7 @@ public class Child_TransformationMenu extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.Child$IS, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.editor.NamedMenu");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.Child$Lm, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.editor.NamedMenu");
     }
 
   }
@@ -644,10 +644,10 @@ public class Child_TransformationMenu extends TransformationMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Child$IS = MetaAdapterFactory.getConcept(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x4d6a8b533e60aa32L, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.structure.Child");
+    /*package*/ static final SConcept Child$Lm = MetaAdapterFactory.getConcept(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x4d6a8b533e60aa32L, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.structure.Child");
   }
 }

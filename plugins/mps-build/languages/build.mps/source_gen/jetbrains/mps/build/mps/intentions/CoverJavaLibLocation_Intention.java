@@ -37,7 +37,7 @@ public final class CoverJavaLibLocation_Intention extends AbstractIntentionDescr
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (SLinkOperations.getTarget(node, LINKS.javaLibLocation$Ha0N) == null);
+    return (SLinkOperations.getTarget(node, LINKS.javaLibLocation$cmtb) == null);
   }
   @Override
   public boolean isSurroundWith() {
@@ -58,8 +58,8 @@ public final class CoverJavaLibLocation_Intention extends AbstractIntentionDescr
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SLinkOperations.setNewChild(node, LINKS.javaLibLocation$Ha0N, CONCEPTS.BuildSourceProjectRelativePath$VD);
-      SPropertyOperations.set(node, PROPS.reexport$obc0, true);
+      SLinkOperations.setNewChild(node, LINKS.javaLibLocation$cmtb, CONCEPTS.BuildSourceProjectRelativePath$uc);
+      SPropertyOperations.set(node, PROPS.reexport$RnCo, true);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -68,14 +68,14 @@ public final class CoverJavaLibLocation_Intention extends AbstractIntentionDescr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink javaLibLocation$Ha0N = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643e8fbL, 0x65b9b06022080842L, "javaLibLocation");
+    /*package*/ static final SContainmentLink javaLibLocation$cmtb = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643e8fbL, 0x65b9b06022080842L, "javaLibLocation");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildSourceProjectRelativePath$VD = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4c12642949048fb2L, "jetbrains.mps.build.structure.BuildSourceProjectRelativePath");
+    /*package*/ static final SConcept BuildSourceProjectRelativePath$uc = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4c12642949048fb2L, "jetbrains.mps.build.structure.BuildSourceProjectRelativePath");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty reexport$obc0 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643e8fbL, 0x2c4467914643e8fcL, "reexport");
+    /*package*/ static final SProperty reexport$RnCo = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643e8fbL, 0x2c4467914643e8fcL, "reexport");
   }
 }

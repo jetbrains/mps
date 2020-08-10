@@ -29,18 +29,18 @@ public class CreateMissingStub_QuickFix extends QuickFix_Runtime {
     return "Create Missing Stub";
   }
   public void execute(SNode node) {
-    SNode declaration = SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$qU);
-    String name = SPropertyOperations.getString(declaration, PROPS.name$lA7v);
-    String virtualPackage = SPropertyOperations.getString(declaration, PROPS.virtualPackage$dz_3);
+    SNode declaration = SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$gH);
+    String name = SPropertyOperations.getString(declaration, PROPS.name$MnvL);
+    String virtualPackage = SPropertyOperations.getString(declaration, PROPS.virtualPackage$EkXl);
     SNode stub = SModelOperations.createNewRootNode(SNodeOperations.getModel(declaration), MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration"));
-    SPropertyOperations.assign(stub, PROPS.name$lA7v, "Stub" + name);
-    SPropertyOperations.assign(stub, PROPS.virtualPackage$dz_3, virtualPackage);
-    SLinkOperations.setTarget(stub, LINKS.extends$9AAt, declaration);
+    SPropertyOperations.assign(stub, PROPS.name$MnvL, "Stub" + name);
+    SPropertyOperations.assign(stub, PROPS.virtualPackage$EkXl, virtualPackage);
+    SLinkOperations.setTarget(stub, LINKS.extends$_Isg, declaration);
     SNode ref1 = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, "jetbrains.mps.lang.structure.structure.InterfaceConceptReference"));
-    ListSequence.fromList(SLinkOperations.getChildren(stub, LINKS.implements$2tZf)).addElement(ref1);
+    ListSequence.fromList(SLinkOperations.getChildren(stub, LINKS.implements$u_P2)).addElement(ref1);
     SNode ref2 = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, "jetbrains.mps.lang.structure.structure.InterfaceConceptReference"));
-    SLinkOperations.setPointer(ref2, LINKS.intfc$7Eer, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "155087542027447621"));
-    ListSequence.fromList(SLinkOperations.getChildren(stub, LINKS.implements$2tZf)).addElement(ref2);
+    SLinkOperations.setPointer(ref2, LINKS.intfc$zM4e, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "155087542027447621"));
+    ListSequence.fromList(SLinkOperations.getChildren(stub, LINKS.implements$u_P2)).addElement(ref2);
 
     SModel model = declaration.getModel();
     if (model == null) {
@@ -53,42 +53,42 @@ public class CreateMissingStub_QuickFix extends QuickFix_Runtime {
     }
 
     SNode editor = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration"));
-    SLinkOperations.setTarget(editor, LINKS.conceptDeclaration$Dtb8, stub);
-    SPropertyOperations.assign(editor, PROPS.virtualPackage$dz_3, virtualPackage);
+    SLinkOperations.setTarget(editor, LINKS.conceptDeclaration$HJmJ, stub);
+    SPropertyOperations.assign(editor, PROPS.virtualPackage$EkXl, virtualPackage);
     SNode component = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c96896L, "jetbrains.mps.lang.editor.structure.CellModel_Component"));
-    SLinkOperations.setPointer(component, LINKS.editorComponent$_wYw, new SNodePointer("r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)", "3596842757766811989"));
-    SLinkOperations.setTarget(editor, LINKS.cellModel$GQI_, component);
+    SLinkOperations.setPointer(component, LINKS.editorComponent$DNa7, new SNodePointer("r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)", "3596842757766811989"));
+    SLinkOperations.setTarget(editor, LINKS.cellModel$L8Uc, component);
     editorModel.addRootNode(editor);
 
     SNode menu = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a0078L, "jetbrains.mps.lang.editor.structure.SubstituteMenu"));
-    SLinkOperations.setTarget(menu, LINKS.conceptDeclaration$VYS3, stub);
-    SLinkOperations.setTarget(menu, LINKS.type$Y1Qo, createMenuTypeDefault_jj3urb_a0db0c());
-    SPropertyOperations.set(menu, PROPS.virtualPackage$dz_3, virtualPackage);
+    SLinkOperations.setTarget(menu, LINKS.conceptDeclaration$h3E, stub);
+    SLinkOperations.setTarget(menu, LINKS.type$2k1Z, createMenuTypeDefault_jj3urb_a0db0c());
+    SPropertyOperations.set(menu, PROPS.virtualPackage$EkXl, virtualPackage);
     editorModel.addRootNode(menu);
   }
   private static SNode createMenuTypeDefault_jj3urb_a0db0c() {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MenuTypeDefault$Sb);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MenuTypeDefault$3M);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
-    /*package*/ static final SConcept MenuTypeDefault$Sb = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5326ef9ad1607089L, "jetbrains.mps.lang.editor.structure.MenuTypeDefault");
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept MenuTypeDefault$3M = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5326ef9ad1607089L, "jetbrains.mps.lang.editor.structure.MenuTypeDefault");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty virtualPackage$EkXl = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extends$9AAt = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
-    /*package*/ static final SContainmentLink implements$2tZf = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
-    /*package*/ static final SReferenceLink intfc$7Eer = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
-    /*package*/ static final SReferenceLink conceptDeclaration$Dtb8 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
-    /*package*/ static final SReferenceLink editorComponent$_wYw = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c96896L, 0xfb35c96897L, "editorComponent");
-    /*package*/ static final SContainmentLink cellModel$GQI_ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, 0xfba0ec5415L, "cellModel");
-    /*package*/ static final SReferenceLink conceptDeclaration$VYS3 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
-    /*package*/ static final SContainmentLink type$Y1Qo = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5326ef9ad16080e3L, "type");
+    /*package*/ static final SReferenceLink extends$_Isg = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SContainmentLink implements$u_P2 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
+    /*package*/ static final SReferenceLink intfc$zM4e = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
+    /*package*/ static final SReferenceLink conceptDeclaration$HJmJ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
+    /*package*/ static final SReferenceLink editorComponent$DNa7 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c96896L, 0xfb35c96897L, "editorComponent");
+    /*package*/ static final SContainmentLink cellModel$L8Uc = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, 0xfba0ec5415L, "cellModel");
+    /*package*/ static final SReferenceLink conceptDeclaration$h3E = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
+    /*package*/ static final SContainmentLink type$2k1Z = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5326ef9ad16080e3L, "type");
   }
 }

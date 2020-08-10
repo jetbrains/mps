@@ -143,8 +143,8 @@ public class MpsTestsSuite extends BaseMpsSuite {
             continue;
           }
           for (SModel model : Sequence.fromIterable(module.getModels())) {
-            for (SNode testCase : ListSequence.fromList(SModelOperations.roots(((SModel) model), CONCEPTS.ITestCase$uo))) {
-              String testClassName = ((String) BHReflection.invoke0(testCase, CONCEPTS.ITestCase$uo, SMethodTrimmedId.create("getClassName", null, "hGBnqtL")));
+            for (SNode testCase : ListSequence.fromList(SModelOperations.roots(((SModel) model), CONCEPTS.ITestCase$Fp))) {
+              String testClassName = ((String) BHReflection.invoke0(testCase, CONCEPTS.ITestCase$Fp, SMethodTrimmedId.create("getClassName", null, "hGBnqtL")));
               try {
                 Class<?> testClass = moduleCL.loadClass(testClassName);
                 result.add(builder.safeRunnerForClass(testClass));
@@ -155,8 +155,8 @@ public class MpsTestsSuite extends BaseMpsSuite {
               }
             }
             final String packageStmt = JavaNameUtil.packageName(model);
-            for (SNode gt : ListSequence.fromList(SModelOperations.roots(((SModel) model), CONCEPTS.GeneratorTest$vD))) {
-              String testClassName = NameUtil.longNameFromNamespaceAndShortName(packageStmt, SPropertyOperations.getString(gt, PROPS.name$lA7v));
+            for (SNode gt : ListSequence.fromList(SModelOperations.roots(((SModel) model), CONCEPTS.GeneratorTest$C3))) {
+              String testClassName = NameUtil.longNameFromNamespaceAndShortName(packageStmt, SPropertyOperations.getString(gt, PROPS.name$MnvL));
               try {
                 result.add(builder.safeRunnerForClass(moduleCL.loadClass(testClassName)));
               } catch (ClassNotFoundException ex) {
@@ -173,11 +173,11 @@ public class MpsTestsSuite extends BaseMpsSuite {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept ITestCase$uo = MetaAdapterFactory.getInterfaceConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L, "jetbrains.mps.baseLanguage.unitTest.structure.ITestCase");
-    /*package*/ static final SConcept GeneratorTest$vD = MetaAdapterFactory.getConcept(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf092beL, "jetbrains.mps.lang.test.generator.structure.GeneratorTest");
+    /*package*/ static final SInterfaceConcept ITestCase$Fp = MetaAdapterFactory.getInterfaceConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L, "jetbrains.mps.baseLanguage.unitTest.structure.ITestCase");
+    /*package*/ static final SConcept GeneratorTest$C3 = MetaAdapterFactory.getConcept(0x68015e26cc4d49dbL, 0x8715b643faea1769L, 0x7b1db36ecf092beL, "jetbrains.mps.lang.test.generator.structure.GeneratorTest");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

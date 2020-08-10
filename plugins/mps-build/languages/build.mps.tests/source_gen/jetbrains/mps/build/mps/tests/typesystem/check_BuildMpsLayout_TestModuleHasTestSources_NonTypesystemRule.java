@@ -22,7 +22,7 @@ public class check_BuildMpsLayout_TestModuleHasTestSources_NonTypesystemRule ext
   public check_BuildMpsLayout_TestModuleHasTestSources_NonTypesystemRule() {
   }
   public void applyRule(final SNode testmodule, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode solution = SLinkOperations.getTarget(testmodule, LINKS.module$324w);
+    SNode solution = SLinkOperations.getTarget(testmodule, LINKS.module$V8pj);
     if (!((boolean) BuildMps_Solution__BehaviorDescriptor.hasTestsSources_id6ogfLD6evrW.invoke(solution))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
@@ -36,7 +36,7 @@ public class check_BuildMpsLayout_TestModuleHasTestSources_NonTypesystemRule ext
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BuildMpsLayout_TestModule$49;
+    return CONCEPTS.BuildMpsLayout_TestModule$oW;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -46,10 +46,10 @@ public class check_BuildMpsLayout_TestModuleHasTestSources_NonTypesystemRule ext
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink module$324w = MetaAdapterFactory.getReferenceLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef372L, 0x3f496e80bd8ef373L, "module");
+    /*package*/ static final SReferenceLink module$V8pj = MetaAdapterFactory.getReferenceLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef372L, 0x3f496e80bd8ef373L, "module");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildMpsLayout_TestModule$49 = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef372L, "jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModule");
+    /*package*/ static final SConcept BuildMpsLayout_TestModule$oW = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef372L, "jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModule");
   }
 }

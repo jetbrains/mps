@@ -19,19 +19,19 @@ public class sequence_subtypeOf_sequence_InequationReplacementRule extends Abstr
   public sequence_subtypeOf_sequence_InequationReplacementRule() {
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
-    if ((SLinkOperations.getTarget(supertype, LINKS.elementType$655u) != null)) {
+    if ((SLinkOperations.getTarget(supertype, LINKS.elementType$KpjL) != null)) {
       {
         SNode _nodeToCheck_1029348928467 = equationInfo.getNodeWithError();
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "5108199730660924415", 0, null);
         _info_12389875345.getOuterRulesIdFromInfo(equationInfo);
-        typeCheckingContext.createLessThanInequality((SNode) SLinkOperations.getTarget(subtype, LINKS.elementType$655u), (SNode) SLinkOperations.getTarget(supertype, LINKS.elementType$655u), false, true, inequalityIsLessThan, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) SLinkOperations.getTarget(subtype, LINKS.elementType$KpjL), (SNode) SLinkOperations.getTarget(supertype, LINKS.elementType$KpjL), false, true, inequalityIsLessThan, _info_12389875345);
       }
     }
   }
   public boolean checkInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     boolean result_14532009 = true;
-    if ((SLinkOperations.getTarget(supertype, LINKS.elementType$655u) != null)) {
-      result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) SLinkOperations.getTarget(subtype, LINKS.elementType$655u), (SNode) SLinkOperations.getTarget(supertype, LINKS.elementType$655u));
+    if ((SLinkOperations.getTarget(supertype, LINKS.elementType$KpjL) != null)) {
+      result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) SLinkOperations.getTarget(subtype, LINKS.elementType$KpjL), (SNode) SLinkOperations.getTarget(supertype, LINKS.elementType$KpjL));
     }
     return result_14532009;
   }
@@ -46,17 +46,17 @@ public class sequence_subtypeOf_sequence_InequationReplacementRule extends Abstr
   }
 
   public SAbstractConcept getApplicableSubtypeConcept() {
-    return CONCEPTS.SequenceType$n9;
+    return CONCEPTS.SequenceType$_s;
   }
   public SAbstractConcept getApplicableSupertypeConcept() {
-    return CONCEPTS.SequenceType$n9;
+    return CONCEPTS.SequenceType$_s;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$655u = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType");
+    /*package*/ static final SContainmentLink elementType$KpjL = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SequenceType$n9 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, "jetbrains.mps.baseLanguage.collections.structure.SequenceType");
+    /*package*/ static final SConcept SequenceType$_s = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, "jetbrains.mps.baseLanguage.collections.structure.SequenceType");
   }
 }

@@ -33,7 +33,7 @@ public class typeof_ToArrayOperation_InferenceRule extends AbstractInferenceRule
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ToArrayOperation$GI;
+    return CONCEPTS.ToArrayOperation$V1;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -65,6 +65,6 @@ public class typeof_ToArrayOperation_InferenceRule extends AbstractInferenceRule
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ToArrayOperation$GI = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x113e55393bdL, "jetbrains.mps.baseLanguage.collections.structure.ToArrayOperation");
+    /*package*/ static final SConcept ToArrayOperation$V1 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x113e55393bdL, "jetbrains.mps.baseLanguage.collections.structure.ToArrayOperation");
   }
 }

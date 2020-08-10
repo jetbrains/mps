@@ -21,7 +21,7 @@ public class typeof_NodeTarget_InferenceRule extends AbstractInferenceRule_Runti
   public typeof_NodeTarget_InferenceRule() {
   }
   public void applyRule(final SNode nodeTarget, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode nodeConcept = SLinkOperations.getTarget(nodeTarget, LINKS.concept$YK98);
+    SNode nodeConcept = SLinkOperations.getTarget(nodeTarget, LINKS.concept$wG_L);
     if ((nodeConcept != null)) {
       {
         SNode _nodeToCheck_1029348928467 = nodeTarget;
@@ -37,7 +37,7 @@ public class typeof_NodeTarget_InferenceRule extends AbstractInferenceRule_Runti
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.NodeTarget$Oa;
+    return CONCEPTS.NodeTarget$gN;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -60,10 +60,10 @@ public class typeof_NodeTarget_InferenceRule extends AbstractInferenceRule_Runti
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$YK98 = MetaAdapterFactory.getReferenceLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a056cL, 0x5fb04b74a77a0596L, "concept");
+    /*package*/ static final SReferenceLink concept$wG_L = MetaAdapterFactory.getReferenceLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a056cL, 0x5fb04b74a77a0596L, "concept");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodeTarget$Oa = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a056cL, "jetbrains.mps.lang.refactoring.structure.NodeTarget");
+    /*package*/ static final SConcept NodeTarget$gN = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77a056cL, "jetbrains.mps.lang.refactoring.structure.NodeTarget");
   }
 }

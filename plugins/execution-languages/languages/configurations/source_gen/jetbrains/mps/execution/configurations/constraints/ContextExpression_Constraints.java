@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ContextExpression_Constraints extends BaseConstraintsDescriptor {
   public ContextExpression_Constraints() {
-    super(CONCEPTS.ContextExpression$13);
+    super(CONCEPTS.ContextExpression$HE);
   }
 
   @Override
@@ -37,12 +37,12 @@ public class ContextExpression_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return (SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.Create_ConceptFunction$mT, true, false) != null);
+    return (SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.Create_ConceptFunction$3w, true, false) != null);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:d6e5159c-3299-41f5-8a8a-81b5b79d5073(jetbrains.mps.execution.configurations.constraints)", "1227128029536566068");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ContextExpression$13 = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6a69999da766290fL, "jetbrains.mps.execution.configurations.structure.ContextExpression");
-    /*package*/ static final SConcept Create_ConceptFunction$mT = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c84cdc3L, "jetbrains.mps.execution.configurations.structure.Create_ConceptFunction");
+    /*package*/ static final SConcept ContextExpression$HE = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6a69999da766290fL, "jetbrains.mps.execution.configurations.structure.ContextExpression");
+    /*package*/ static final SConcept Create_ConceptFunction$3w = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c84cdc3L, "jetbrains.mps.execution.configurations.structure.Create_ConceptFunction");
   }
 }

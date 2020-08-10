@@ -23,7 +23,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class TestRefConstraints_Target_Constraints extends BaseConstraintsDescriptor {
   public TestRefConstraints_Target_Constraints() {
-    super(CONCEPTS.TestRefConstraints_Target$ro);
+    super(CONCEPTS.TestRefConstraints_Target$tm);
   }
 
   @Override
@@ -38,7 +38,7 @@ public class TestRefConstraints_Target_Constraints extends BaseConstraintsDescri
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forNamedElements(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.TestRefConstraints_Container$Ur, true, false), LINKS.targets$mtUz));
+            return ListScope.forNamedElements(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.TestRefConstraints_Container$Wp, true, false), LINKS.targets$T$Wx));
           }
         };
       }
@@ -47,11 +47,11 @@ public class TestRefConstraints_Target_Constraints extends BaseConstraintsDescri
   private static final SNodePointer breakingNode_4c311l_a0a0a0a0a0a0a0a2 = new SNodePointer("r:6789573d-c842-4805-bb3b-05fd4fbf786e(constraints.test.constraints)", "2614955748380194141");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestRefConstraints_Target$ro = MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641c74L, "constraints.test.structure.TestRefConstraints_Target");
-    /*package*/ static final SConcept TestRefConstraints_Container$Ur = MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641cdfL, "constraints.test.structure.TestRefConstraints_Container");
+    /*package*/ static final SConcept TestRefConstraints_Target$tm = MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641c74L, "constraints.test.structure.TestRefConstraints_Target");
+    /*package*/ static final SConcept TestRefConstraints_Container$Wp = MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641cdfL, "constraints.test.structure.TestRefConstraints_Container");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink targets$mtUz = MetaAdapterFactory.getContainmentLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641cdfL, 0x244a306605641ce3L, "targets");
+    /*package*/ static final SContainmentLink targets$T$Wx = MetaAdapterFactory.getContainmentLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641cdfL, 0x244a306605641ce3L, "targets");
   }
 }

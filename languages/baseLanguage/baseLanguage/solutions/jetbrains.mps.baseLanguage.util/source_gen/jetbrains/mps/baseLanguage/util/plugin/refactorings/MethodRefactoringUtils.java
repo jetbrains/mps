@@ -26,25 +26,25 @@ public class MethodRefactoringUtils {
   }
   public static List<SNode> findOverridingMethods(SearchScope scope, SNode method, ProgressMonitor progressMonitor) {
     List<SNode> results = new ArrayList<SNode>();
-    if (SNodeOperations.isInstanceOf(method, CONCEPTS.InstanceMethodDeclaration$An)) {
-      if (SPropertyOperations.getBoolean(method, PROPS.isFinal$zQoy) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(method, CONCEPTS.InstanceMethodDeclaration$An), LINKS.visibility$jt1o), CONCEPTS.PrivateVisibility$Se)) {
+    if (SNodeOperations.isInstanceOf(method, CONCEPTS.InstanceMethodDeclaration$39)) {
+      if (SPropertyOperations.getBoolean(method, PROPS.isFinal$eVPk) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(method, CONCEPTS.InstanceMethodDeclaration$39), LINKS.visibility$Yyua), CONCEPTS.PrivateVisibility$l0)) {
         return results;
       }
       SearchResults<SNode> searchResults;
-      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(method), CONCEPTS.Interface$Kp)) {
+      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(method), CONCEPTS.Interface$db)) {
         searchResults = FindUtils.getSearchResults(progressMonitor, method, scope, "jetbrains.mps.baseLanguage.findUsages.InterfaceMethodImplementations_Finder");
       } else {
         searchResults = FindUtils.getSearchResults(progressMonitor, method, scope, "jetbrains.mps.baseLanguage.findUsages.OverridingMethods_Finder");
       }
 
       for (SearchResult<SNode> result : ListSequence.fromList(searchResults.getSearchResults())) {
-        ListSequence.fromList(results).addElement(SNodeOperations.cast(result.getObject(), CONCEPTS.BaseMethodDeclaration$RR));
+        ListSequence.fromList(results).addElement(SNodeOperations.cast(result.getObject(), CONCEPTS.BaseMethodDeclaration$kD));
       }
     }
-    if (SNodeOperations.isInstanceOf(method, CONCEPTS.ConceptMethodDeclaration$VN)) {
+    if (SNodeOperations.isInstanceOf(method, CONCEPTS.ConceptMethodDeclaration$N0)) {
       SearchResults<SNode> searchResults = FindUtils.getSearchResults(progressMonitor, method, scope, "jetbrains.mps.lang.behavior.findUsages.OverridingMethods_Finder");
       for (SearchResult<SNode> result : ListSequence.fromList(searchResults.getSearchResults())) {
-        ListSequence.fromList(results).addElement(SNodeOperations.cast(result.getObject(), CONCEPTS.BaseMethodDeclaration$RR));
+        ListSequence.fromList(results).addElement(SNodeOperations.cast(result.getObject(), CONCEPTS.BaseMethodDeclaration$kD));
       }
     }
     return results;
@@ -54,18 +54,18 @@ public class MethodRefactoringUtils {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InstanceMethodDeclaration$An = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
-    /*package*/ static final SConcept PrivateVisibility$Se = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
-    /*package*/ static final SConcept BaseMethodDeclaration$RR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
-    /*package*/ static final SConcept ConceptMethodDeclaration$VN = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
+    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept PrivateVisibility$l0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept ConceptMethodDeclaration$N0 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$zQoy = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
+    /*package*/ static final SProperty isFinal$eVPk = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
   }
 }

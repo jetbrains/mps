@@ -25,14 +25,14 @@ public class check_EnumConstantMustUseExplicitConstructor_NonTypesystemRule exte
   public check_EnumConstantMustUseExplicitConstructor_NonTypesystemRule() {
   }
   public void applyRule(final SNode enumConstant, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode enumClass = SNodeOperations.getNodeAncestor(enumConstant, CONCEPTS.EnumClass$uy, false, false);
+    SNode enumClass = SNodeOperations.getNodeAncestor(enumConstant, CONCEPTS.EnumClass$Vk, false, false);
     if ((enumClass == null)) {
       return;
     }
-    SNode constructorDeclaration = SLinkOperations.getTarget(enumConstant, LINKS.baseMethodDeclaration$ItxI);
+    SNode constructorDeclaration = SLinkOperations.getTarget(enumConstant, LINKS.baseMethodDeclaration$pyYw);
 
     if ((constructorDeclaration != null)) {
-      if (Objects.equals(SNodeOperations.getParent(SLinkOperations.getTarget(enumConstant, LINKS.baseMethodDeclaration$ItxI)), enumClass)) {
+      if (Objects.equals(SNodeOperations.getParent(SLinkOperations.getTarget(enumConstant, LINKS.baseMethodDeclaration$pyYw)), enumClass)) {
         return;
       }
       if (Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(enumClass)).isNotEmpty()) {
@@ -60,7 +60,7 @@ public class check_EnumConstantMustUseExplicitConstructor_NonTypesystemRule exte
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.EnumConstantDeclaration$ma;
+    return CONCEPTS.EnumConstantDeclaration$MW;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -70,11 +70,11 @@ public class check_EnumConstantMustUseExplicitConstructor_NonTypesystemRule exte
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumClass$uy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
-    /*package*/ static final SConcept EnumConstantDeclaration$ma = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration");
+    /*package*/ static final SConcept EnumClass$Vk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
+    /*package*/ static final SConcept EnumConstantDeclaration$MW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 }

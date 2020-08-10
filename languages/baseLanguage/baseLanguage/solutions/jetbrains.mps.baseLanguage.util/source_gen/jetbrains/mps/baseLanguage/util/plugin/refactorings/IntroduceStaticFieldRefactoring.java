@@ -48,28 +48,28 @@ public class IntroduceStaticFieldRefactoring extends AbstractIntroduceFieldRefac
       newDeclaration = _quotation_createNode_282g55_a0a0a6a5(myVisibilityLevel.getNode(), expressionType, name);
     }
     if (myIsFinal) {
-      SPropertyOperations.assign(newDeclaration, PROPS.isFinal$_qt3, true);
+      SPropertyOperations.assign(newDeclaration, PROPS.isFinal$gvTP, true);
     }
-    SNode classConcept = SNodeOperations.as(myContainer, CONCEPTS.ClassConcept$IY);
+    SNode classConcept = SNodeOperations.as(myContainer, CONCEPTS.ClassConcept$bK);
     MemberInsertingUtils.insertClassifierMemberInBestPlace(classConcept, newDeclaration);
     SNode assignExp = _quotation_createNode_282g55_a0k0f(expression, newDeclaration);
     SNode assignmentStatement = _quotation_createNode_282g55_a0l0f(assignExp);
 
     if (this.myFieldInitialization == FieldInitializationPlace.METHOD) {
-      SNodeOperations.insertPrevSiblingChild(SNodeOperations.getNodeAncestor(this.getExpression(), CONCEPTS.Statement$ok, false, false), SNodeOperations.copyNode(assignmentStatement));
+      SNodeOperations.insertPrevSiblingChild(SNodeOperations.getNodeAncestor(this.getExpression(), CONCEPTS.Statement$P6, false, false), SNodeOperations.copyNode(assignmentStatement));
     }
     if (this.myFieldInitialization == FieldInitializationPlace.STATICINIT) {
-      SNode declaration = SNodeOperations.getNodeAncestor(this.getExpression(), CONCEPTS.ClassConcept$IY, false, false);
-      Iterable<SNode> staticInitializers = ((Iterable<SNode>) BHReflection.invoke0(declaration, CONCEPTS.ClassConcept$IY, SMethodTrimmedId.create("staticInitializers", CONCEPTS.ClassConcept$IY, "2I6sE$IuBP7")));
+      SNode declaration = SNodeOperations.getNodeAncestor(this.getExpression(), CONCEPTS.ClassConcept$bK, false, false);
+      Iterable<SNode> staticInitializers = ((Iterable<SNode>) BHReflection.invoke0(declaration, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("staticInitializers", CONCEPTS.ClassConcept$bK, "2I6sE$IuBP7")));
       SNode initializer;
       if (Sequence.fromIterable(staticInitializers).isNotEmpty()) {
         initializer = Sequence.fromIterable(staticInitializers).first();
       } else {
         initializer = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, "jetbrains.mps.baseLanguage.structure.StaticInitializer"));
-        SLinkOperations.setTarget(initializer, LINKS.statementList$UAQw, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        ListSequence.fromList(SLinkOperations.getChildren(declaration, LINKS.member$6v_r)).addElement(initializer);
+        SLinkOperations.setTarget(initializer, LINKS.statementList$_Gji, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
+        ListSequence.fromList(SLinkOperations.getChildren(declaration, LINKS.member$L_2d)).addElement(initializer);
       }
-      List<SNode> statement = SLinkOperations.getChildren(SLinkOperations.getTarget(initializer, LINKS.statementList$UAQw), LINKS.statement$pYcS);
+      List<SNode> statement = SLinkOperations.getChildren(SLinkOperations.getTarget(initializer, LINKS.statementList$_Gji), LINKS.statement$53DE);
       if (ListSequence.fromList(statement).isNotEmpty()) {
         SNodeOperations.insertPrevSiblingChild(ListSequence.fromList(statement).first(), SNodeOperations.copyNode(assignmentStatement));
       } else {
@@ -164,17 +164,17 @@ public class IntroduceStaticFieldRefactoring extends AbstractIntroduceFieldRefac
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isFinal$gvTP = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statementList$UAQw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, 0x11c7538039eL, "statementList");
-    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink statementList$_Gji = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, 0x11c7538039eL, "statementList");
+    /*package*/ static final SContainmentLink member$L_2d = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

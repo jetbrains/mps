@@ -32,7 +32,7 @@ public class NotEditableVarableReference_SubstituteMenu extends SubstituteMenuBa
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_2zcnuz_a(), CONCEPTS.NotEditableVarableReference$fC));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_2zcnuz_a(), CONCEPTS.NotEditableVarableReference$ZP));
     result.add(new SMP_Subconcepts_2zcnuz_b());
     return result;
   }
@@ -54,7 +54,7 @@ public class NotEditableVarableReference_SubstituteMenu extends SubstituteMenuBa
 
     public SMP_ReferenceScope_2zcnuz_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.NotEditableVarableReference$fC, LINKS.variableDeclaration$47O0);
+      super((SAbstractConcept) CONCEPTS.NotEditableVarableReference$ZP, LINKS.variableDeclaration$QH$d);
     }
     @NotNull
     @Override
@@ -101,7 +101,7 @@ public class NotEditableVarableReference_SubstituteMenu extends SubstituteMenuBa
   }
   public class SMP_Subconcepts_2zcnuz_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.NotEditableVarableReference$fC);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.NotEditableVarableReference$ZP);
     }
     @NotNull
     @Override
@@ -122,10 +122,10 @@ public class NotEditableVarableReference_SubstituteMenu extends SubstituteMenuBa
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NotEditableVarableReference$fC = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x44e7cb3605ec4004L, "jetbrains.mps.lang.editor.editorTest.structure.NotEditableVarableReference");
+    /*package*/ static final SConcept NotEditableVarableReference$ZP = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x44e7cb3605ec4004L, "jetbrains.mps.lang.editor.editorTest.structure.NotEditableVarableReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$47O0 = MetaAdapterFactory.getReferenceLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x44e7cb3605ec4004L, 0x44e7cb3605ec4005L, "variableDeclaration");
+    /*package*/ static final SReferenceLink variableDeclaration$QH$d = MetaAdapterFactory.getReferenceLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x44e7cb3605ec4004L, 0x44e7cb3605ec4005L, "variableDeclaration");
   }
 }

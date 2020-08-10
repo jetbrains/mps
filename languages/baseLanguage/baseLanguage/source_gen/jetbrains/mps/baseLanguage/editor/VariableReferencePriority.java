@@ -32,7 +32,7 @@ public class VariableReferencePriority implements EditorMenuItemCustomizer {
   private static class VariableReferencePrioritySpecific implements EditorMenuItemCustomizer {
 
     public boolean matches(EditorMenuItemCustomizationContext context) {
-      return new EditorMenuItemCreatingConceptContextMatcher(CONCEPTS.VariableReference$sQ).matchesContext(context) && getCompletionItemInformation(context) != null;
+      return new EditorMenuItemCreatingConceptContextMatcher(CONCEPTS.VariableReference$TC).matchesContext(context) && getCompletionItemInformation(context) != null;
     }
 
 
@@ -55,7 +55,7 @@ public class VariableReferencePriority implements EditorMenuItemCustomizer {
     }
     private void customize_(SNode parentNode, SNode currentChild, SContainmentLink containmentLink, EditorMenuItemStyle style, CompletionItemInformation itemInformation) {
       Object parameterObject = itemInformation.getParameterObject();
-      if (parameterObject instanceof SNode && SNodeOperations.isInstanceOf(((SNode) parameterObject), CONCEPTS.BaseVariableDeclaration$dO) && (Objects.equals(SNodeOperations.getContainingRoot(((SNode) parameterObject)), SNodeOperations.getContainingRoot(parentNode)))) {
+      if (parameterObject instanceof SNode && SNodeOperations.isInstanceOf(((SNode) parameterObject), CONCEPTS.BaseVariableDeclaration$EA) && (Objects.equals(SNodeOperations.getContainingRoot(((SNode) parameterObject)), SNodeOperations.getContainingRoot(parentNode)))) {
         style.setPriority(1.0);
         style.setBold();
       }
@@ -64,7 +64,7 @@ public class VariableReferencePriority implements EditorMenuItemCustomizer {
 
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VariableReference$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
-    /*package*/ static final SConcept BaseVariableDeclaration$dO = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, "jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration");
+    /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept BaseVariableDeclaration$EA = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, "jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration");
   }
 }

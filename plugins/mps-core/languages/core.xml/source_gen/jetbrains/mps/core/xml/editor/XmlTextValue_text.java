@@ -49,7 +49,7 @@ public class XmlTextValue_text extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.XmlTextValue$BE))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.XmlTextValue$29))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
@@ -62,26 +62,26 @@ public class XmlTextValue_text extends KeyMapImpl {
       if (!(editorContext.getSelectedCell() instanceof EditorCell_Label)) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.XmlValuePart$Ad)) || !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.XmlAttribute$UQ))) {
+      if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.XmlValuePart$G)) || !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.XmlAttribute$ll))) {
         return false;
       }
-      return isNotEmptyString(SPropertyOperations.getString(node, PROPS.text$GoKl));
+      return isNotEmptyString(SPropertyOperations.getString(node, PROPS.text$_LaO));
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       int index = ((EditorCell_Label) editorContext.getSelectedCell()).getCaretPosition();
-      SNode attr = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.XmlAttribute$UQ);
-      int currIndex = ListSequence.fromList(SLinkOperations.getChildren(attr, LINKS.value$7SEa)).indexOf(node);
+      SNode attr = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.XmlAttribute$ll);
+      int currIndex = ListSequence.fromList(SLinkOperations.getChildren(attr, LINKS.value$1h4D)).indexOf(node);
 
-      String currText = SPropertyOperations.getString(node, PROPS.text$GoKl);
+      String currText = SPropertyOperations.getString(node, PROPS.text$_LaO);
       if (index < currText.length()) {
-        SNode newText = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.XmlTextValue$BE);
-        SPropertyOperations.assign(newText, PROPS.text$GoKl, currText.substring(index));
-        SPropertyOperations.assign(node, PROPS.text$GoKl, currText.substring(0, index));
-        ListSequence.fromList(SLinkOperations.getChildren(attr, LINKS.value$7SEa)).insertElement(currIndex + 1, newText);
+        SNode newText = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.XmlTextValue$29);
+        SPropertyOperations.assign(newText, PROPS.text$_LaO, currText.substring(index));
+        SPropertyOperations.assign(node, PROPS.text$_LaO, currText.substring(0, index));
+        ListSequence.fromList(SLinkOperations.getChildren(attr, LINKS.value$1h4D)).insertElement(currIndex + 1, newText);
       }
-      SNode newRef = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.XmlEntityRefValue$MN);
-      SPropertyOperations.assign(newRef, PROPS.entityName$IwWS, "quot");
-      ListSequence.fromList(SLinkOperations.getChildren(attr, LINKS.value$7SEa)).insertElement(currIndex + 1, newRef);
+      SNode newRef = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.XmlEntityRefValue$di);
+      SPropertyOperations.assign(newRef, PROPS.entityName$BTnn, "quot");
+      ListSequence.fromList(SLinkOperations.getChildren(attr, LINKS.value$1h4D)).insertElement(currIndex + 1, newRef);
       editorContext.selectWRTFocusPolicy(newRef);
     }
     public String getKeyStroke() {
@@ -111,7 +111,7 @@ public class XmlTextValue_text extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.XmlTextValue$BE))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.XmlTextValue$29))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
@@ -124,25 +124,25 @@ public class XmlTextValue_text extends KeyMapImpl {
       if (!(editorContext.getSelectedCell() instanceof EditorCell_Label)) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.XmlValuePart$Ad)) || !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.XmlAttribute$UQ))) {
+      if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.XmlValuePart$G)) || !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.XmlAttribute$ll))) {
         return false;
       }
-      return isNotEmptyString(SPropertyOperations.getString(node, PROPS.text$GoKl));
+      return isNotEmptyString(SPropertyOperations.getString(node, PROPS.text$_LaO));
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       int index = ((EditorCell_Label) editorContext.getSelectedCell()).getCaretPosition();
-      SNode attr = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.XmlAttribute$UQ);
-      int currIndex = ListSequence.fromList(SLinkOperations.getChildren(attr, LINKS.value$7SEa)).indexOf(node);
+      SNode attr = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.XmlAttribute$ll);
+      int currIndex = ListSequence.fromList(SLinkOperations.getChildren(attr, LINKS.value$1h4D)).indexOf(node);
 
-      String currText = SPropertyOperations.getString(node, PROPS.text$GoKl);
+      String currText = SPropertyOperations.getString(node, PROPS.text$_LaO);
       if (index < currText.length()) {
-        SNode newText = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.XmlTextValue$BE);
-        SPropertyOperations.assign(newText, PROPS.text$GoKl, currText.substring(index));
-        SPropertyOperations.assign(node, PROPS.text$GoKl, currText.substring(0, index));
-        ListSequence.fromList(SLinkOperations.getChildren(attr, LINKS.value$7SEa)).insertElement(currIndex + 1, newText);
+        SNode newText = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.XmlTextValue$29);
+        SPropertyOperations.assign(newText, PROPS.text$_LaO, currText.substring(index));
+        SPropertyOperations.assign(node, PROPS.text$_LaO, currText.substring(0, index));
+        ListSequence.fromList(SLinkOperations.getChildren(attr, LINKS.value$1h4D)).insertElement(currIndex + 1, newText);
       }
-      SNode newRef = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.XmlEntityRefValue$MN);
-      ListSequence.fromList(SLinkOperations.getChildren(attr, LINKS.value$7SEa)).insertElement(currIndex + 1, newRef);
+      SNode newRef = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.XmlEntityRefValue$di);
+      ListSequence.fromList(SLinkOperations.getChildren(attr, LINKS.value$1h4D)).insertElement(currIndex + 1, newRef);
       editorContext.selectWRTFocusPolicy(newRef);
     }
     public String getKeyStroke() {
@@ -154,18 +154,18 @@ public class XmlTextValue_text extends KeyMapImpl {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XmlTextValue$BE = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, "jetbrains.mps.core.xml.structure.XmlTextValue");
-    /*package*/ static final SConcept XmlAttribute$UQ = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, "jetbrains.mps.core.xml.structure.XmlAttribute");
-    /*package*/ static final SConcept XmlValuePart$Ad = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1cL, "jetbrains.mps.core.xml.structure.XmlValuePart");
-    /*package*/ static final SConcept XmlEntityRefValue$MN = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd21L, "jetbrains.mps.core.xml.structure.XmlEntityRefValue");
+    /*package*/ static final SConcept XmlTextValue$29 = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, "jetbrains.mps.core.xml.structure.XmlTextValue");
+    /*package*/ static final SConcept XmlAttribute$ll = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, "jetbrains.mps.core.xml.structure.XmlAttribute");
+    /*package*/ static final SConcept XmlValuePart$G = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1cL, "jetbrains.mps.core.xml.structure.XmlValuePart");
+    /*package*/ static final SConcept XmlEntityRefValue$di = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd21L, "jetbrains.mps.core.xml.structure.XmlEntityRefValue");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$GoKl = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text");
-    /*package*/ static final SProperty entityName$IwWS = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd21L, 0x5c842a42c54d0258L, "entityName");
+    /*package*/ static final SProperty text$_LaO = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text");
+    /*package*/ static final SProperty entityName$BTnn = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd21L, 0x5c842a42c54d0258L, "entityName");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink value$7SEa = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, 0x5c842a42c54cfd1eL, "value");
+    /*package*/ static final SContainmentLink value$1h4D = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, 0x5c842a42c54cfd1eL, "value");
   }
 }

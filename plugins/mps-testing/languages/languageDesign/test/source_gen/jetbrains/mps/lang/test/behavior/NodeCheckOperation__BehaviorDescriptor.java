@@ -44,23 +44,23 @@ public final class NodeCheckOperation__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static String getName_idhHOMYE$(@NotNull SNode __thisNode__) {
-    if (SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v) == null || SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v).length() == 0) {
+    if (SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL) == null || SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL).length() == 0) {
       return NodeCheckOperation__BehaviorDescriptor.getDefaultName_id7scb9XJdmH2.invoke(__thisNode__);
     } else {
-      return SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v);
+      return SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL);
     }
   }
   /*package*/ static boolean isMpsStartRequired_id2RMg39tmiFh(@NotNull SNode __thisNode__) {
     return true;
   }
   /*package*/ static SNode getTestCase_idhGBgWVd(@NotNull SNode __thisNode__) {
-    return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.NodesTestCase$7I, false, false);
+    return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.NodesTestCase$nd, false, false);
   }
   /*package*/ static String getTestName_idhGBohAB(@NotNull SNode __thisNode__) {
     return "test_" + NodeCheckOperation__BehaviorDescriptor.getName_idhHOMYE$.invoke(__thisNode__) + __thisNode__.getNodeId().toString();
   }
   /*package*/ static SNode getAnnotatedNode_id38gbJV0XvZR(@NotNull SNode __thisNode__) {
-    SNode container = SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.NodeOperationsContainer$UO);
+    SNode container = SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.NodeOperationsContainer$aj);
     return SNodeOperations.getParent(container);
   }
   @Deprecated
@@ -131,11 +131,11 @@ public final class NodeCheckOperation__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodesTestCase$7I = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, "jetbrains.mps.lang.test.structure.NodesTestCase");
-    /*package*/ static final SConcept NodeOperationsContainer$UO = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, "jetbrains.mps.lang.test.structure.NodeOperationsContainer");
+    /*package*/ static final SConcept NodesTestCase$nd = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, "jetbrains.mps.lang.test.structure.NodesTestCase");
+    /*package*/ static final SConcept NodeOperationsContainer$aj = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, "jetbrains.mps.lang.test.structure.NodeOperationsContainer");
   }
 }

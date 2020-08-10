@@ -49,7 +49,7 @@ public final class FontStyleQuery_Intention extends AbstractIntentionDescriptor 
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if ((SLinkOperations.getTarget(node, LINKS.query$Rgyv) == null)) {
+      if ((SLinkOperations.getTarget(node, LINKS.query$VyI6) == null)) {
         return "Add Query";
       } else {
         return "Remove Query";
@@ -57,12 +57,12 @@ public final class FontStyleQuery_Intention extends AbstractIntentionDescriptor 
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((SLinkOperations.getTarget(node, LINKS.query$Rgyv) == null)) {
-        SPropertyOperations.setEnum(node, PROPS.style$MVZZ, 0x11c47b3e786L, "QUERY");
-        SNodeFactoryOperations.setNewChild(node, LINKS.query$Rgyv, null);
+      if ((SLinkOperations.getTarget(node, LINKS.query$VyI6) == null)) {
+        SPropertyOperations.setEnum(node, PROPS.style$RebA, 0x11c47b3e786L, "QUERY");
+        SNodeFactoryOperations.setNewChild(node, LINKS.query$VyI6, null);
       } else {
-        SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.query$Rgyv));
-        SPropertyOperations.setEnum(node, PROPS.style$MVZZ, 0x1082a1c2aa1L, "PLAIN");
+        SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.query$VyI6));
+        SPropertyOperations.setEnum(node, PROPS.style$RebA, 0x1082a1c2aa1L, "PLAIN");
       }
     }
     @Override
@@ -72,10 +72,10 @@ public final class FontStyleQuery_Intention extends AbstractIntentionDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink query$Rgyv = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2c9756L, 0x11c47cb352dL, "query");
+    /*package*/ static final SContainmentLink query$VyI6 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2c9756L, 0x11c47cb352dL, "query");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty style$MVZZ = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2c9756L, 0x1143b2ce41fL, "style");
+    /*package*/ static final SProperty style$RebA = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b2c9756L, 0x1143b2ce41fL, "style");
   }
 }

@@ -22,12 +22,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class TextUnitLayout_Constraints extends BaseConstraintsDescriptor {
   public TextUnitLayout_Constraints() {
-    super(CONCEPTS.TextUnitLayout$JX);
+    super(CONCEPTS.TextUnitLayout$Yv);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.active$OoFz, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.active$KKU5, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -42,7 +42,7 @@ public class TextUnitLayout_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return SimpleRoleScope.forNamedElements(_context.getContextNode(), LINKS.parts$Oodx);
+            return SimpleRoleScope.forNamedElements(_context.getContextNode(), LINKS.parts$KKs3);
           }
         };
       }
@@ -54,11 +54,11 @@ public class TextUnitLayout_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_g51ca1_a0a0a0a0a1a0a0a0c = new SNodePointer("r:472e3702-e789-4c3f-b300-132c65ad44f1(jetbrains.mps.lang.textGen.constraints)", "6836281137582805784");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TextUnitLayout$JX = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x2bad879ac8f27dc9L, "jetbrains.mps.lang.textGen.structure.TextUnitLayout");
+    /*package*/ static final SConcept TextUnitLayout$Yv = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x2bad879ac8f27dc9L, "jetbrains.mps.lang.textGen.structure.TextUnitLayout");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink active$OoFz = MetaAdapterFactory.getReferenceLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x2bad879ac8f27dc9L, 0x2bad879ac8f27dcdL, "active");
-    /*package*/ static final SContainmentLink parts$Oodx = MetaAdapterFactory.getContainmentLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x2bad879ac8f27dc9L, 0x2bad879ac8f27dcbL, "parts");
+    /*package*/ static final SReferenceLink active$KKU5 = MetaAdapterFactory.getReferenceLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x2bad879ac8f27dc9L, 0x2bad879ac8f27dcdL, "active");
+    /*package*/ static final SContainmentLink parts$KKs3 = MetaAdapterFactory.getContainmentLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x2bad879ac8f27dc9L, 0x2bad879ac8f27dcbL, "parts");
   }
 }

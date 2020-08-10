@@ -45,8 +45,8 @@
       <node id="1250389701475344621" at="86,14,87,58" concept="12" />
       <node id="1250389701475344621" at="93,48,94,22" concept="7" />
       <node id="1250389701475344621" at="99,40,100,19" concept="7" />
-      <node id="1250389701475344621" at="104,0,105,0" concept="9" trace="uuid$1gS0" />
-      <node id="1250389701475344621" at="105,0,106,0" concept="9" trace="qualifiedName$1m2m" />
+      <node id="1250389701475344621" at="104,0,105,0" concept="9" trace="uuid$YZ7o" />
+      <node id="1250389701475344621" at="105,0,106,0" concept="9" trace="qualifiedName$Z4hI" />
       <node id="1250389701475344621" at="34,0,36,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1250389701475344621" at="52,0,54,0" concept="1" trace="ModuleReference__BehaviorDescriptor#()V" />
       <node id="1250389701475344621" at="62,49,65,5" concept="4" />
@@ -208,7 +208,7 @@
       <node id="2721285250110391053" at="72,14,73,58" concept="12" />
       <node id="2721285250110391053" at="79,48,80,22" concept="7" />
       <node id="2721285250110391053" at="85,40,86,19" concept="7" />
-      <node id="2721285250110391053" at="90,0,91,0" concept="9" trace="refs$qOT0" />
+      <node id="2721285250110391053" at="90,0,91,0" concept="9" trace="refs$oz8o" />
       <node id="2721285250110391053" at="31,0,33,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="2721285250110391053" at="43,0,45,0" concept="1" trace="MappingConfigRefSet__BehaviorDescriptor#()V" />
       <node id="2721285250110400332" at="35,103,38,7" concept="4" />
@@ -292,8 +292,8 @@
       <node id="2721285250110400380" at="79,48,80,22" concept="7" />
       <node id="2721285250110400380" at="85,40,86,19" concept="7" />
       <node id="2721285250110400406" at="88,52,89,40" concept="7" />
-      <node id="2721285250110400380" at="93,0,94,0" concept="9" trace="modelUID$abr0" />
-      <node id="2721285250110400380" at="94,0,95,0" concept="9" trace="nodeID$abE1" />
+      <node id="2721285250110400380" at="93,0,94,0" concept="9" trace="modelUID$7TEo" />
+      <node id="2721285250110400380" at="94,0,95,0" concept="9" trace="nodeID$7TTp" />
       <node id="2721285250110400380" at="30,0,32,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="2721285250110400380" at="43,0,45,0" concept="1" trace="MappingConfigNormalRef__BehaviorDescriptor#()V" />
       <node id="2721285250110400392" at="33,84,36,5" concept="4" />
@@ -376,8 +376,8 @@
       <node id="2721285250110400486" at="66,14,67,58" concept="12" />
       <node id="2721285250110400486" at="73,48,74,22" concept="7" />
       <node id="2721285250110400486" at="79,40,80,19" concept="7" />
-      <node id="2721285250110400486" at="84,0,85,0" concept="9" trace="innerRef$dUH0" />
-      <node id="2721285250110400486" at="85,0,86,0" concept="9" trace="generator$dUW1" />
+      <node id="2721285250110400486" at="84,0,85,0" concept="9" trace="innerRef$bCWo" />
+      <node id="2721285250110400486" at="85,0,86,0" concept="9" trace="generator$bDbp" />
       <node id="2721285250110400486" at="30,0,32,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="2721285250110400486" at="37,0,39,0" concept="1" trace="MappingConfigExternalRef__BehaviorDescriptor#()V" />
       <node id="2721285250110400486" at="33,0,36,0" concept="10" trace="isComplete_id2n3WChplftH#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -469,11 +469,11 @@
       <node id="6236774123822284796" at="108,14,109,58" concept="12" />
       <node id="6236774123822284796" at="115,48,116,22" concept="7" />
       <node id="6236774123822284796" at="121,40,122,19" concept="7" />
-      <node id="6236774123822284796" at="126,0,127,0" concept="9" trace="module$cAPU" />
-      <node id="6236774123822284796" at="130,0,131,0" concept="9" trace="uuid$5fB_" />
-      <node id="6236774123822284796" at="131,0,132,0" concept="9" trace="qualifiedName$5kLV" />
-      <node id="6236774123822284796" at="132,0,133,0" concept="9" trace="stereotype$jknN" />
-      <node id="6236774123822284796" at="136,0,137,0" concept="9" trace="ModuleReference$xK" />
+      <node id="6236774123822284796" at="126,0,127,0" concept="9" trace="module$al5i" />
+      <node id="6236774123822284796" at="130,0,131,0" concept="9" trace="uuid$2XQX" />
+      <node id="6236774123822284796" at="131,0,132,0" concept="9" trace="qualifiedName$331j" />
+      <node id="6236774123822284796" at="132,0,133,0" concept="9" trace="stereotype$h2Bb" />
+      <node id="6236774123822284796" at="136,0,137,0" concept="9" trace="ModuleReference$L8" />
       <node id="6236774123822284796" at="41,0,43,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="3021261446821282786" at="69,10,71,5" concept="0" />
       <node id="6236774123822284796" at="74,0,76,0" concept="1" trace="ModelReference__BehaviorDescriptor#()V" />
@@ -570,9 +570,9 @@
       <node id="6370754048397723597" at="27,0,28,0" concept="9" trace="getPresentation_idhEwIMiw" />
       <node id="6370754048397723597" at="28,0,29,0" concept="9" trace="getModuleReference_id7OJukvJ5PmG" />
       <node id="6370754048397723597" at="30,0,31,0" concept="9" trace="BH_METHODS" />
-      <node id="6370754048397730440" at="35,78,36,77" concept="7" />
-      <node id="6370754048397730461" at="38,84,39,77" concept="7" />
-      <node id="9020561928507315633" at="41,91,42,152" concept="7" />
+      <node id="6370754048397730440" at="35,78,36,76" concept="7" />
+      <node id="6370754048397730461" at="38,84,39,76" concept="7" />
+      <node id="9020561928507315633" at="41,91,42,150" concept="7" />
       <node id="6370754048397723597" at="49,114,50,21" concept="2" />
       <node id="6370754048397723597" at="54,114,55,49" concept="6" />
       <node id="6370754048397723597" at="56,26,57,56" concept="12" />
@@ -585,8 +585,8 @@
       <node id="6370754048397723597" at="78,14,79,58" concept="12" />
       <node id="6370754048397723597" at="85,48,86,22" concept="7" />
       <node id="6370754048397723597" at="91,40,92,19" concept="7" />
-      <node id="6370754048397723597" at="96,0,97,0" concept="9" trace="namespace$2Et4" />
-      <node id="6370754048397723597" at="97,0,98,0" concept="9" trace="uuid$2Ee3" />
+      <node id="6370754048397723597" at="96,0,97,0" concept="9" trace="namespace$oGs" />
+      <node id="6370754048397723597" at="97,0,98,0" concept="9" trace="uuid$otr" />
       <node id="6370754048397723597" at="32,0,34,0" concept="10" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="6370754048397723597" at="45,0,47,0" concept="1" trace="Module__BehaviorDescriptor#()V" />
       <node id="6370754048397723597" at="35,0,38,0" concept="10" trace="getFqName_idhEwIO9y#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
@@ -603,9 +603,9 @@
       <node id="6370754048397723597" at="53,0,70,0" concept="5" trace="invokeSpecial0#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/core/aspects/behaviour/api/SMethod;[Ljava/lang/Object;)null" />
       <scope id="6370754048397723597" at="32,63,32,63" />
       <scope id="6370754048397723597" at="45,44,45,44" />
-      <scope id="6370754048397730434" at="35,78,36,77" />
-      <scope id="6370754048397730454" at="38,84,39,77" />
-      <scope id="9020561928507315631" at="41,91,42,152" />
+      <scope id="6370754048397730434" at="35,78,36,76" />
+      <scope id="6370754048397730454" at="38,84,39,76" />
+      <scope id="9020561928507315631" at="41,91,42,150" />
       <scope id="6370754048397723597" at="49,114,50,21" />
       <scope id="6370754048397723597" at="56,26,57,56" />
       <scope id="6370754048397723597" at="60,13,61,56" />

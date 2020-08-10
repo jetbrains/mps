@@ -33,22 +33,22 @@ public class Tuple_classifier_supertypeOf_indexedTupleType_SubtypingRule extends
   }
   public List<SNode> getSubOrSuperTypes(SNode itt, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> result = new ArrayList<SNode>();
-    final String ifcname = "_" + ListSequence.fromList(SLinkOperations.getChildren(itt, LINKS.componentType$V6Rd)).count();
-    SNode ifc = Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(SLinkOperations.getTarget(_quotation_createNode_tm6bn3_a0a0a2a1(), LINKS.classifier$xslD))).findFirst(new IWhereFilter<SNode>() {
+    final String ifcname = "_" + ListSequence.fromList(SLinkOperations.getChildren(itt, LINKS.componentType$crWY)).count();
+    SNode ifc = Sequence.fromIterable(Classifier__BehaviorDescriptor.nestedClassifiers_id4_LVZ3pBjGQ.invoke(SLinkOperations.getTarget(_quotation_createNode_tm6bn3_a0a0a2a1(), LINKS.classifier$cxMr))).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode ifc) {
-        return ifcname.equals(SPropertyOperations.getString(ifc, PROPS.name$lA7v));
+        return ifcname.equals(SPropertyOperations.getString(ifc, PROPS.name$MnvL));
       }
     });
     SNode supertype = _quotation_createNode_tm6bn3_a0d0b(ifc);
     ListSequence.fromList(result).addElement(supertype);
-    for (SNode comptype : SLinkOperations.getChildren(itt, LINKS.componentType$V6Rd)) {
+    for (SNode comptype : SLinkOperations.getChildren(itt, LINKS.componentType$crWY)) {
       SNode javatype = ClassifierTypeUtil.getTypeCoercedToClassifierType(comptype);
-      ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.parameter$HlfM)).addElement(SNodeOperations.copyNode(javatype));
+      ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.parameter$oqG$)).addElement(SNodeOperations.copyNode(javatype));
     }
     return result;
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.IndexedTupleType$15;
+    return CONCEPTS.IndexedTupleType$6Q;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -72,16 +72,16 @@ public class Tuple_classifier_supertypeOf_indexedTupleType_SubtypingRule extends
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink componentType$V6Rd = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, 0x1207158795cL, "componentType");
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SContainmentLink componentType$crWY = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, 0x1207158795cL, "componentType");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink parameter$oqG$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IndexedTupleType$15 = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, "jetbrains.mps.baseLanguage.tuples.structure.IndexedTupleType");
+    /*package*/ static final SConcept IndexedTupleType$6Q = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1207157a8dcL, "jetbrains.mps.baseLanguage.tuples.structure.IndexedTupleType");
   }
 }

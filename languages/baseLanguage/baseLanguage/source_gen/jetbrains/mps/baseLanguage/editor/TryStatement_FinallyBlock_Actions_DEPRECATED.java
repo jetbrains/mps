@@ -35,10 +35,10 @@ public class TryStatement_FinallyBlock_Actions_DEPRECATED {
         if (DeletionApproverUtil.approve(editorContext, node, "finally")) {
           return;
         }
-        SNode tryCatchStatement = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.TryCatchStatement$x5);
-        SLinkOperations.setTarget(tryCatchStatement, LINKS.body$I$eg, SLinkOperations.getTarget(node, LINKS.body$1aAh));
-        ListSequence.fromList(SLinkOperations.getChildren(tryCatchStatement, LINKS.catchClause$yGV3)).clear();
-        ListSequence.fromList(SLinkOperations.getChildren(tryCatchStatement, LINKS.catchClause$yGV3)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.catchClause$EvoR)));
+        SNode tryCatchStatement = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.TryCatchStatement$XR);
+        SLinkOperations.setTarget(tryCatchStatement, LINKS.body$pDF2, SLinkOperations.getTarget(node, LINKS.body$Gg33));
+        ListSequence.fromList(SLinkOperations.getChildren(tryCatchStatement, LINKS.catchClause$dMnP)).clear();
+        ListSequence.fromList(SLinkOperations.getChildren(tryCatchStatement, LINKS.catchClause$dMnP)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.catchClause$l$PD)));
         SNodeOperations.deleteNode(node);
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, tryCatchStatement, SelectionManager.LAST_CELL, -1);
       }
@@ -88,13 +88,13 @@ public class TryStatement_FinallyBlock_Actions_DEPRECATED {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TryCatchStatement$x5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, "jetbrains.mps.baseLanguage.structure.TryCatchStatement");
+    /*package*/ static final SConcept TryCatchStatement$XR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, "jetbrains.mps.baseLanguage.structure.TryCatchStatement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$I$eg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f383e83d4L, "body");
-    /*package*/ static final SContainmentLink body$1aAh = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacec83aeL, "body");
-    /*package*/ static final SContainmentLink catchClause$yGV3 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f39a8ba1fL, "catchClause");
-    /*package*/ static final SContainmentLink catchClause$EvoR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10f39abd97cL, "catchClause");
+    /*package*/ static final SContainmentLink body$pDF2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f383e83d4L, "body");
+    /*package*/ static final SContainmentLink body$Gg33 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacec83aeL, "body");
+    /*package*/ static final SContainmentLink catchClause$dMnP = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f39a8ba1fL, "catchClause");
+    /*package*/ static final SContainmentLink catchClause$l$PD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10f39abd97cL, "catchClause");
   }
 }

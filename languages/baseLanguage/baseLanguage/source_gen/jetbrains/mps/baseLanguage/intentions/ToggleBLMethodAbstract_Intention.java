@@ -46,14 +46,14 @@ public final class ToggleBLMethodAbstract_Intention extends AbstractIntentionDes
     if (contextNode == null) {
       return true;
     }
-    SNode containingClassifier = SNodeOperations.getNodeAncestor(contextNode, CONCEPTS.Classifier$hJ, false, false);
-    if (!(SNodeOperations.isInstanceOf(containingClassifier, CONCEPTS.ClassConcept$IY))) {
+    SNode containingClassifier = SNodeOperations.getNodeAncestor(contextNode, CONCEPTS.Classifier$Ix, false, false);
+    if (!(SNodeOperations.isInstanceOf(containingClassifier, CONCEPTS.ClassConcept$bK))) {
       return false;
     }
-    List<SNode> includingStatementLists = SNodeOperations.getNodeAncestors(contextNode, CONCEPTS.StatementList$TN, true);
+    List<SNode> includingStatementLists = SNodeOperations.getNodeAncestors(contextNode, CONCEPTS.StatementList$m_, true);
     Iterable<SNode> includingBodies = ListSequence.fromList(includingStatementLists).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.hasRole(it, LINKS.body$qspy);
+        return SNodeOperations.hasRole(it, LINKS.body$5xQk);
       }
     });
     return Sequence.fromIterable(includingBodies).isEmpty();
@@ -73,14 +73,14 @@ public final class ToggleBLMethodAbstract_Intention extends AbstractIntentionDes
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      String methodName = SPropertyOperations.getString(node, PROPS.name$lA7v);
-      return (SPropertyOperations.getBoolean(node, PROPS.isAbstract$gogN) ? "Make '" + methodName + "' Not Abstract" : "Make '" + methodName + "' Abstract");
+      String methodName = SPropertyOperations.getString(node, PROPS.name$MnvL);
+      return (SPropertyOperations.getBoolean(node, PROPS.isAbstract$VtH_) ? "Make '" + methodName + "' Not Abstract" : "Make '" + methodName + "' Abstract");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.assign(node, PROPS.isAbstract$gogN, !(SPropertyOperations.getBoolean(node, PROPS.isAbstract$gogN)));
-      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.body$qspy), LINKS.statement$pYcS)).clear();
-      SPropertyOperations.assign(node, PROPS.isFinal$zQoy, false);
+      SPropertyOperations.assign(node, PROPS.isAbstract$VtH_, !(SPropertyOperations.getBoolean(node, PROPS.isAbstract$VtH_)));
+      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.body$5xQk), LINKS.statement$53DE)).clear();
+      SPropertyOperations.assign(node, PROPS.isFinal$eVPk, false);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -89,19 +89,19 @@ public final class ToggleBLMethodAbstract_Intention extends AbstractIntentionDes
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isAbstract$gogN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
-    /*package*/ static final SProperty isFinal$zQoy = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isAbstract$VtH_ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
+    /*package*/ static final SProperty isFinal$eVPk = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x113294bffd2L, "isFinal");
   }
 }

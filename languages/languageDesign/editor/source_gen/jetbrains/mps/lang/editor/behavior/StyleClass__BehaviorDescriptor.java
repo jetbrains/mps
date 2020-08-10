@@ -65,13 +65,13 @@ public final class StyleClass__BehaviorDescriptor extends BaseBHDescriptor {
       if (ListSequence.fromList(extendsTree).tail(ListSequence.fromList(extendsTree).count() - 1).contains(ListSequence.fromList(extendsTree).first())) {
         return -1;
       } else if (down) {
-        if ((SLinkOperations.getTarget(ListSequence.fromList(extendsTree).first(), LINKS.dominates$tN$Y) != null)) {
-          if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ListSequence.fromList(extendsTree).first(), LINKS.dominates$tN$Y), LINKS.dominatesStyleClassList$92DD), LINKS.element$X9Hn)).isEmpty()) {
+        if ((SLinkOperations.getTarget(ListSequence.fromList(extendsTree).first(), LINKS.dominates$y5K_) != null)) {
+          if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ListSequence.fromList(extendsTree).first(), LINKS.dominates$y5K_), LINKS.dominatesStyleClassList$dkPg), LINKS.element$1rSY)).isEmpty()) {
             MapSequence.fromMap(priorities).put(ListSequence.fromList(extendsTree).first(), 1);
             down = false;
           } else {
             MapSequence.fromMap(priorities).put(ListSequence.fromList(extendsTree).first(), -1);
-            ListSequence.fromList(extendsTree).insertElement(0, SLinkOperations.getTarget(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ListSequence.fromList(extendsTree).first(), LINKS.dominates$tN$Y), LINKS.dominatesStyleClassList$92DD), LINKS.element$X9Hn), CONCEPTS.StyleClassReference$zy)).first(), LINKS.styleClass$bmGl));
+            ListSequence.fromList(extendsTree).insertElement(0, SLinkOperations.getTarget(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ListSequence.fromList(extendsTree).first(), LINKS.dominates$y5K_), LINKS.dominatesStyleClassList$dkPg), LINKS.element$1rSY), CONCEPTS.StyleClassReference$J9)).first(), LINKS.styleClass$fCRW));
             ListSequence.fromList(childNums).insertElement(0, 0);
           }
         } else {
@@ -83,12 +83,12 @@ public final class StyleClass__BehaviorDescriptor extends BaseBHDescriptor {
           break;
         }
         int newIndex = ListSequence.fromList(childNums).first() + 1;
-        assert newIndex <= ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ListSequence.fromList(extendsTree).getElement(1), LINKS.dominates$tN$Y), LINKS.dominatesStyleClassList$92DD), LINKS.element$X9Hn)).count();
+        assert newIndex <= ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ListSequence.fromList(extendsTree).getElement(1), LINKS.dominates$y5K_), LINKS.dominatesStyleClassList$dkPg), LINKS.element$1rSY)).count();
         MapSequence.fromMap(priorities).put(ListSequence.fromList(extendsTree).getElement(1), Math.max(MapSequence.fromMap(priorities).get(ListSequence.fromList(extendsTree).first()) + 1, MapSequence.fromMap(priorities).get(ListSequence.fromList(extendsTree).getElement(1))));
         ListSequence.fromList(extendsTree).removeElementAt(0);
         ListSequence.fromList(childNums).removeElementAt(0);
-        if (newIndex < ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ListSequence.fromList(extendsTree).first(), LINKS.dominates$tN$Y), LINKS.dominatesStyleClassList$92DD), LINKS.element$X9Hn)).count()) {
-          ListSequence.fromList(extendsTree).insertElement(0, SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ListSequence.fromList(extendsTree).first(), LINKS.dominates$tN$Y), LINKS.dominatesStyleClassList$92DD), LINKS.element$X9Hn)).getElement(newIndex), CONCEPTS.StyleClassReference$zy), LINKS.styleClass$bmGl));
+        if (newIndex < ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ListSequence.fromList(extendsTree).first(), LINKS.dominates$y5K_), LINKS.dominatesStyleClassList$dkPg), LINKS.element$1rSY)).count()) {
+          ListSequence.fromList(extendsTree).insertElement(0, SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(ListSequence.fromList(extendsTree).first(), LINKS.dominates$y5K_), LINKS.dominatesStyleClassList$dkPg), LINKS.element$1rSY)).getElement(newIndex), CONCEPTS.StyleClassReference$J9), LINKS.styleClass$fCRW));
           ListSequence.fromList(childNums).insertElement(0, newIndex);
           down = true;
         }
@@ -104,25 +104,25 @@ public final class StyleClass__BehaviorDescriptor extends BaseBHDescriptor {
         return true;
       }
       ListSequence.fromList(dependencies).addSequence(ListSequence.fromList(adding));
-      adding = ListSequence.fromListWithValues(new ArrayList<SNode>(), SNodeOperations.ofConcept(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collectMany(adding, LINKS.styleItem$AYO2), CONCEPTS.ApplyStyleClass$CE)).select(new ISelector<SNode, SNode>() {
+      adding = ListSequence.fromListWithValues(new ArrayList<SNode>(), SNodeOperations.ofConcept(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collectMany(adding, LINKS.styleItem$FgZD), CONCEPTS.ApplyStyleClass$Oh)).select(new ISelector<SNode, SNode>() {
         public SNode select(SNode it) {
-          return SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.target$r3PB), LINKS.style$vKsp);
+          return SLinkOperations.getTarget(SLinkOperations.getTarget(it, LINKS.target$vm1e), LINKS.style$$2C0);
         }
-      }), CONCEPTS.StyleClass$qa));
+      }), CONCEPTS.StyleClass$_L));
     }
     return false;
   }
   /*package*/ static String getApplyMethodName_idVHPC7elo9t(@NotNull SNode __thisNode__) {
-    return "apply_" + SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v);
+    return "apply_" + SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL);
   }
   /*package*/ static String getStyleClassName_idVHPC7elo9B(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v) + "StyleClass";
+    return SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL) + "StyleClass";
   }
   /*package*/ static String getStyleClassFQName_id1OmL7qeocft(@NotNull SNode __thisNode__) {
     return StyleSheet__BehaviorDescriptor.getClassFqName_idhEwJfl1.invoke(StyleClass__BehaviorDescriptor.getStyleSheet_idVHPC7elo9L.invoke(__thisNode__)) + "." + StyleClass__BehaviorDescriptor.getStyleClassName_idVHPC7elo9B.invoke(__thisNode__);
   }
   /*package*/ static SNode getStyleSheet_idVHPC7elo9L(@NotNull SNode __thisNode__) {
-    return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.StyleSheet$GD);
+    return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.StyleSheet$Sg);
   }
 
   /*package*/ StyleClass__BehaviorDescriptor() {
@@ -184,23 +184,23 @@ public final class StyleClass__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink dominates$tN$Y = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a126f24L, 0x2ef3b3796a130bd8L, "dominates");
-    /*package*/ static final SContainmentLink dominatesStyleClassList$92DD = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x22926e62b7d495a0L, 0x22926e62b7d4c30aL, "dominatesStyleClassList");
-    /*package*/ static final SContainmentLink element$X9Hn = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab1cb5b6d8L, 0x7e9b10ab1cb5b959L, "element");
-    /*package*/ static final SReferenceLink styleClass$bmGl = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a130c0dL, 0x2ef3b3796a130c0eL, "styleClass");
-    /*package*/ static final SContainmentLink styleItem$AYO2 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem");
-    /*package*/ static final SContainmentLink target$r3PB = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b1161f6e648b4b2L, 0x1b1161f6e66c1a3cL, "target");
-    /*package*/ static final SReferenceLink style$vKsp = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab1edbd2fbL, 0x7e9b10ab1edbd57eL, "style");
+    /*package*/ static final SContainmentLink dominates$y5K_ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a126f24L, 0x2ef3b3796a130bd8L, "dominates");
+    /*package*/ static final SContainmentLink dominatesStyleClassList$dkPg = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x22926e62b7d495a0L, 0x22926e62b7d4c30aL, "dominatesStyleClassList");
+    /*package*/ static final SContainmentLink element$1rSY = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab1cb5b6d8L, 0x7e9b10ab1cb5b959L, "element");
+    /*package*/ static final SReferenceLink styleClass$fCRW = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a130c0dL, 0x2ef3b3796a130c0eL, "styleClass");
+    /*package*/ static final SContainmentLink styleItem$FgZD = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem");
+    /*package*/ static final SContainmentLink target$vm1e = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b1161f6e648b4b2L, 0x1b1161f6e66c1a3cL, "target");
+    /*package*/ static final SReferenceLink style$$2C0 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab1edbd2fbL, 0x7e9b10ab1edbd57eL, "style");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StyleClassReference$zy = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a130c0dL, "jetbrains.mps.lang.editor.structure.StyleClassReference");
-    /*package*/ static final SConcept ApplyStyleClass$CE = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b1161f6e648b4b2L, "jetbrains.mps.lang.editor.structure.ApplyStyleClass");
-    /*package*/ static final SConcept StyleClass$qa = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a126f24L, "jetbrains.mps.lang.editor.structure.StyleClass");
-    /*package*/ static final SConcept StyleSheet$GD = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b151743L, "jetbrains.mps.lang.editor.structure.StyleSheet");
+    /*package*/ static final SConcept StyleClassReference$J9 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a130c0dL, "jetbrains.mps.lang.editor.structure.StyleClassReference");
+    /*package*/ static final SConcept ApplyStyleClass$Oh = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1b1161f6e648b4b2L, "jetbrains.mps.lang.editor.structure.ApplyStyleClass");
+    /*package*/ static final SConcept StyleClass$_L = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a126f24L, "jetbrains.mps.lang.editor.structure.StyleClass");
+    /*package*/ static final SConcept StyleSheet$Sg = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b151743L, "jetbrains.mps.lang.editor.structure.StyleSheet");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -28,7 +28,7 @@ public class BlockExt_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_u1n2gi_a(), CONCEPTS.BlockExt$gR));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_u1n2gi_a(), CONCEPTS.BlockExt$dr));
     result.add(new SMP_Subconcepts_u1n2gi_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class BlockExt_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_u1n2gi_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.BlockExt$gR, LINKS.mb$5THn);
+      super((SAbstractConcept) CONCEPTS.BlockExt$dr, LINKS.mb$IDV);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class BlockExt_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_u1n2gi_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BlockExt$gR);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BlockExt$dr);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class BlockExt_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BlockExt$gR = MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x471a0145ea2e78cL, "jetbrains.mps.testHybridEditor.structure.BlockExt");
+    /*package*/ static final SConcept BlockExt$dr = MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x471a0145ea2e78cL, "jetbrains.mps.testHybridEditor.structure.BlockExt");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink mb$5THn = MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x471a0145ea2e78cL, 0x471a0145ea2f5ffL, "mb");
+    /*package*/ static final SReferenceLink mb$IDV = MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x471a0145ea2e78cL, 0x471a0145ea2f5ffL, "mb");
   }
 }

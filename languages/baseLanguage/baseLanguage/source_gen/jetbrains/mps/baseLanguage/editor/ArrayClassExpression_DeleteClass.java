@@ -25,7 +25,7 @@ public class ArrayClassExpression_DeleteClass {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode arrayType = SLinkOperations.getTarget(node, LINKS.arrayType$12i0);
+        SNode arrayType = SLinkOperations.getTarget(node, LINKS.arrayType$G7IM);
         SNodeOperations.replaceWithAnother(node, arrayType);
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, arrayType, SelectionManager.LAST_CELL, -1);
       }
@@ -75,6 +75,6 @@ public class ArrayClassExpression_DeleteClass {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink arrayType$12i0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x115f7830a32a65e7L, 0x115f7830a32a65e8L, "arrayType");
+    /*package*/ static final SContainmentLink arrayType$G7IM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x115f7830a32a65e7L, 0x115f7830a32a65e8L, "arrayType");
   }
 }

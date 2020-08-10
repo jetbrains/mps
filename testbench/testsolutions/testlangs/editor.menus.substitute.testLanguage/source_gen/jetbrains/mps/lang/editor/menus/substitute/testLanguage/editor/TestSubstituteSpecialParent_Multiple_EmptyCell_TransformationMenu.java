@@ -77,19 +77,19 @@ public class TestSubstituteSpecialParent_Multiple_EmptyCell_TransformationMenu e
     }
     @Override
     protected SContainmentLink getContainmentLink(TransformationMenuContext context) {
-      return LINKS.multipleChildToSpecializeInCustomEmptyCellWithCustomMenu$iRDC;
+      return LINKS.multipleChildToSpecializeInCustomEmptyCellWithCustomMenu$huU9;
     }
     @Override
     protected SAbstractConcept getTargetConcept(TransformationMenuContext context) {
-      return CONCEPTS.TestSubstituteSpecialChild$A8;
+      return CONCEPTS.TestSubstituteSpecialChild$QD;
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink multipleChildToSpecializeInCustomEmptyCellWithCustomMenu$iRDC = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6fb0bdL, 0x360a10c84d96af00L, "multipleChildToSpecializeInCustomEmptyCellWithCustomMenu");
+    /*package*/ static final SContainmentLink multipleChildToSpecializeInCustomEmptyCellWithCustomMenu$huU9 = MetaAdapterFactory.getContainmentLink(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6fb0bdL, 0x360a10c84d96af00L, "multipleChildToSpecializeInCustomEmptyCellWithCustomMenu");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestSubstituteSpecialChild$A8 = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x38b257ae54d85a98L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteSpecialChild");
+    /*package*/ static final SConcept TestSubstituteSpecialChild$QD = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x38b257ae54d85a98L, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteSpecialChild");
   }
 }

@@ -67,7 +67,7 @@ public class ActionTestAbstractChild_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.actions.testLanguage.editor.AddMenuPart_ParameterizedSubstitute");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.ActionTestAbstractChild$QA;
+      return CONCEPTS.ActionTestAbstractChild$7r;
     }
   }
   public class SMP_Include_hawx03_b extends IncludeSubstituteMenuSubstituteMenuPart {
@@ -91,7 +91,7 @@ public class ActionTestAbstractChild_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.actions.testLanguage.editor.AddMenuPart_ConceptSubstitute");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.ActionTestAbstractChild$QA;
+      return CONCEPTS.ActionTestAbstractChild$7r;
     }
   }
   public class SMP_Include_hawx03_c extends IncludeSubstituteMenuSubstituteMenuPart {
@@ -115,7 +115,7 @@ public class ActionTestAbstractChild_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.actions.testLanguage.editor.AddMenuPart_SimpleItemSubstitute");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.ActionTestAbstractChild$QA;
+      return CONCEPTS.ActionTestAbstractChild$7r;
     }
   }
   public class SMP_Include_hawx03_d extends IncludeSubstituteMenuSubstituteMenuPart {
@@ -139,11 +139,11 @@ public class ActionTestAbstractChild_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.actions.testLanguage.editor.ConceptSubstitutePartTest");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.ActionTestAbstractChild$QA;
+      return CONCEPTS.ActionTestAbstractChild$7r;
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ActionTestAbstractChild$QA = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671a9caL, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestAbstractChild");
+    /*package*/ static final SConcept ActionTestAbstractChild$7r = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671a9caL, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestAbstractChild");
   }
 }

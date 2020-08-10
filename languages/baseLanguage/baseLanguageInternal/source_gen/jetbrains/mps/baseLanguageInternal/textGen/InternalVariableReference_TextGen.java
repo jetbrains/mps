@@ -13,10 +13,10 @@ public class InternalVariableReference_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$rn1R));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$H5iD));
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$rn1R = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x111fb5bb1f2L, 0x111fb5dbc49L, "name");
+    /*package*/ static final SProperty name$H5iD = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x111fb5bb1f2L, 0x111fb5dbc49L, "name");
   }
 }

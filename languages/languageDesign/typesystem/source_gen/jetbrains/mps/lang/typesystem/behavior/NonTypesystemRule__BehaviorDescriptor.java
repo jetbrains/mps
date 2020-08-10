@@ -48,18 +48,18 @@ public final class NonTypesystemRule__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static void setBaseConcept_id5r_35Ihc58c(@NotNull SNode __thisNode__, SNode baseConcept) {
-    IConceptAspect__BehaviorDescriptor.setBaseConcept_id5r_35Ihc58c.invokeSuper(__thisNode__, CONCEPTS.NonTypesystemRule$cw, baseConcept);
-    SPropertyOperations.set(__thisNode__, PROPS.name$lA7v, "check_" + SPropertyOperations.getString(baseConcept, PROPS.name$lA7v));
+    IConceptAspect__BehaviorDescriptor.setBaseConcept_id5r_35Ihc58c.invokeSuper(__thisNode__, CONCEPTS.NonTypesystemRule$um, baseConcept);
+    SPropertyOperations.set(__thisNode__, PROPS.name$MnvL, "check_" + SPropertyOperations.getString(baseConcept, PROPS.name$MnvL));
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.NonTypesystemRule$cw)) {
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.NonTypesystemRule$um)) {
       return new NamedElementsScope(NonTypesystemRule__BehaviorDescriptor.findSuperRules_id21kJG8Hh$W9.invoke(__thisNode__));
     } else {
       return null;
     }
   }
   /*package*/ static Iterable<SNode> findSuperRules_id21kJG8Hh$W9(@NotNull SNode __thisNode__) {
-    SNode applicableConcept = ApplicableNodeCondition__BehaviorDescriptor.getApplicableConcept_idhEwIszL.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.applicableNode$uxMM));
+    SNode applicableConcept = ApplicableNodeCondition__BehaviorDescriptor.getApplicableConcept_idhEwIszL.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.applicableNode$Ro4C));
     List<SNode> allSuperConcepts = Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(applicableConcept, ((boolean) false))).toListSequence();
     return ListSequence.fromList(allSuperConcepts).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode superConcept) {
@@ -68,7 +68,7 @@ public final class NonTypesystemRule__BehaviorDescriptor extends BaseBHDescripto
           public boolean accept(SModel it) {
             return SModuleOperations.isAspect(it, "typesystem");
           }
-        }).first()), CONCEPTS.NonTypesystemRule$cw);
+        }).first()), CONCEPTS.NonTypesystemRule$um);
       }
     });
   }
@@ -125,14 +125,14 @@ public final class NonTypesystemRule__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NonTypesystemRule$cw = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164853e0faL, "jetbrains.mps.lang.typesystem.structure.NonTypesystemRule");
+    /*package*/ static final SConcept NonTypesystemRule$um = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164853e0faL, "jetbrains.mps.lang.typesystem.structure.NonTypesystemRule");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink applicableNode$uxMM = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode");
+    /*package*/ static final SContainmentLink applicableNode$Ro4C = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode");
   }
 }

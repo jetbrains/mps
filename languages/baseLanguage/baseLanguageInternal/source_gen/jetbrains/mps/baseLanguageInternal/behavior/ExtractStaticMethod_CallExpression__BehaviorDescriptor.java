@@ -42,17 +42,17 @@ public final class ExtractStaticMethod_CallExpression__BehaviorDescriptor extend
 
   /*package*/ static Iterable<SNode> getAvailableMethodDeclarations_id50EF2fWdwEN(@NotNull SNode __thisNode__, String methodName) {
     List<SNode> result = new ArrayList<SNode>();
-    for (SNode bmd : ExtractStaticMethod_CallExpression__BehaviorDescriptor.getMethods_id55buE1DVoKQ.invoke(SNodeOperations.asSConcept(CONCEPTS.ExtractStaticMethod_CallExpression$Wu), __thisNode__)) {
-      String name = SPropertyOperations.getString(SNodeOperations.cast(bmd, CONCEPTS.StaticMethodDeclaration$eX), PROPS.name$lA7v);
+    for (SNode bmd : ExtractStaticMethod_CallExpression__BehaviorDescriptor.getMethods_id55buE1DVoKQ.invoke(SNodeOperations.asSConcept(CONCEPTS.ExtractStaticMethod_CallExpression$dg), __thisNode__)) {
+      String name = SPropertyOperations.getString(SNodeOperations.cast(bmd, CONCEPTS.StaticMethodDeclaration$FJ), PROPS.name$MnvL);
       if (name != null && name.equals(methodName)) {
-        ListSequence.fromList(result).addElement(SNodeOperations.cast(bmd, CONCEPTS.StaticMethodDeclaration$eX));
+        ListSequence.fromList(result).addElement(SNodeOperations.cast(bmd, CONCEPTS.StaticMethodDeclaration$FJ));
       }
     }
     return result;
   }
   /*package*/ static SNode getContainingExtractExpr_id7H3c2f3rrjt(@NotNull SNode __thisNode__) {
-    for (SNode es : SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.ExtractStaticMethodExpression$kq, false)) {
-      if (SLinkOperations.getTarget(es, LINKS.method$gEs1) == SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$ItxI)) {
+    for (SNode es : SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.ExtractStaticMethodExpression$_c, false)) {
+      if (SLinkOperations.getTarget(es, LINKS.method$yoGN) == SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$pyYw)) {
         return es;
       }
     }
@@ -63,8 +63,8 @@ public final class ExtractStaticMethod_CallExpression__BehaviorDescriptor extend
   }
   /*package*/ static List<SNode> getMethods_id55buE1DVoKQ(@NotNull SAbstractConcept __thisConcept__, SNode context) {
     List<SNode> smd = new ArrayList<SNode>();
-    for (SNode es : SNodeOperations.getNodeAncestors(context, CONCEPTS.ExtractStaticMethodExpression$kq, true)) {
-      ListSequence.fromList(smd).addElement(SLinkOperations.getTarget(es, LINKS.method$gEs1));
+    for (SNode es : SNodeOperations.getNodeAncestors(context, CONCEPTS.ExtractStaticMethodExpression$_c, true)) {
+      ListSequence.fromList(smd).addElement(SLinkOperations.getTarget(es, LINKS.method$yoGN));
     }
     return smd;
   }
@@ -122,17 +122,17 @@ public final class ExtractStaticMethod_CallExpression__BehaviorDescriptor extend
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StaticMethodDeclaration$eX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
-    /*package*/ static final SConcept ExtractStaticMethod_CallExpression$Wu = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x31c3f88088ed999aL, "jetbrains.mps.baseLanguageInternal.structure.ExtractStaticMethod_CallExpression");
-    /*package*/ static final SConcept ExtractStaticMethodExpression$kq = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x31c3f88088ea0ac4L, "jetbrains.mps.baseLanguageInternal.structure.ExtractStaticMethodExpression");
+    /*package*/ static final SConcept StaticMethodDeclaration$FJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
+    /*package*/ static final SConcept ExtractStaticMethod_CallExpression$dg = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x31c3f88088ed999aL, "jetbrains.mps.baseLanguageInternal.structure.ExtractStaticMethod_CallExpression");
+    /*package*/ static final SConcept ExtractStaticMethodExpression$_c = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x31c3f88088ea0ac4L, "jetbrains.mps.baseLanguageInternal.structure.ExtractStaticMethodExpression");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink method$gEs1 = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x31c3f88088ea0ac4L, 0x31c3f88088ea0ac6L, "method");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink method$yoGN = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x31c3f88088ea0ac4L, 0x31c3f88088ea0ac6L, "method");
   }
 }

@@ -39,7 +39,7 @@ public final class SerializeFunction__BehaviorDescriptor extends BaseBHDescripto
     return _quotation_createNode_i7sowc_a0a0();
   }
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
-    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.ValueToSerializeParameter$QE);
+    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.ValueToSerializeParameter$wi);
   }
   /*package*/ static boolean showName_id1653mnvAgry(@NotNull SAbstractConcept __thisConcept__) {
     return true;
@@ -102,6 +102,6 @@ public final class SerializeFunction__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ValueToSerializeParameter$QE = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d1bb14fe8393f24L, "jetbrains.mps.ide.httpsupport.structure.ValueToSerializeParameter");
+    /*package*/ static final SConcept ValueToSerializeParameter$wi = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x3d1bb14fe8393f24L, "jetbrains.mps.ide.httpsupport.structure.ValueToSerializeParameter");
   }
 }

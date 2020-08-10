@@ -21,11 +21,11 @@ public class listType_with_vars_subtypeOf_listType_InequationReplacementRule ext
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
     return !(ListSequence.fromList(SNodeOperations.getChildren(supertype)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode ch) {
-        return SNodeOperations.isInstanceOf(ch, CONCEPTS.TypeVariableReference$vZ);
+        return SNodeOperations.isInstanceOf(ch, CONCEPTS.TypeVariableReference$WL);
       }
     })) && ListSequence.fromList(SNodeOperations.getChildren(subtype)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode ch) {
-        return SNodeOperations.isInstanceOf(ch, CONCEPTS.TypeVariableReference$vZ);
+        return SNodeOperations.isInstanceOf(ch, CONCEPTS.TypeVariableReference$WL);
       }
     });
   }
@@ -48,14 +48,14 @@ public class listType_with_vars_subtypeOf_listType_InequationReplacementRule ext
   }
 
   public SAbstractConcept getApplicableSubtypeConcept() {
-    return CONCEPTS.ListType$z$;
+    return CONCEPTS.ListType$LR;
   }
   public SAbstractConcept getApplicableSupertypeConcept() {
-    return CONCEPTS.ListType$z$;
+    return CONCEPTS.ListType$LR;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TypeVariableReference$vZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
-    /*package*/ static final SConcept ListType$z$ = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, "jetbrains.mps.baseLanguage.collections.structure.ListType");
+    /*package*/ static final SConcept TypeVariableReference$WL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
+    /*package*/ static final SConcept ListType$LR = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, "jetbrains.mps.baseLanguage.collections.structure.ListType");
   }
 }

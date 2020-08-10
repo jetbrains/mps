@@ -81,11 +81,11 @@ public class expressionToNotExpression extends TransformationMenuBase {
       SNode node = _context.getNode();
       do {
         SNode type = TypecheckingFacade.getFromContext().getTypeOf(node);
-        if (SNodeOperations.isInstanceOf(type, CONCEPTS.BooleanType$8G) || SNodeOperations.isInstanceOf(type, CONCEPTS.ClassifierType$IZ) && SLinkOperations.hasPointer(SNodeOperations.cast(type, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Boolean"))) {
+        if (SNodeOperations.isInstanceOf(type, CONCEPTS.BooleanType$_u) || SNodeOperations.isInstanceOf(type, CONCEPTS.ClassifierType$bL) && SLinkOperations.hasPointer(SNodeOperations.cast(type, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Boolean"))) {
           return true;
         }
         node = SNodeOperations.getParent(node);
-      } while (SNodeOperations.isInstanceOf(node, CONCEPTS.Expression$TP));
+      } while (SNodeOperations.isInstanceOf(node, CONCEPTS.Expression$mB));
       return false;
     }
 
@@ -102,7 +102,7 @@ public class expressionToNotExpression extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_ihw7u4_a0a(), CONCEPTS.NotExpression$oq));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_ihw7u4_a0a(), CONCEPTS.NotExpression$Pc));
     }
     private class TMP_Action_ihw7u4_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -145,15 +145,15 @@ public class expressionToNotExpression extends TransformationMenuBase {
           SNode node = _context.getNode();
           do {
             SNode type = TypecheckingFacade.getFromContext().getTypeOf(node);
-            if (SNodeOperations.isInstanceOf(type, CONCEPTS.BooleanType$8G) || SNodeOperations.isInstanceOf(type, CONCEPTS.ClassifierType$IZ) && SLinkOperations.hasPointer(SNodeOperations.cast(type, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Boolean"))) {
-              SNode not = SNodeFactoryOperations.createNewNode(CONCEPTS.NotExpression$oq, null);
-              SLinkOperations.setTarget(not, LINKS.expression$Lq8V, SNodeOperations.cast(SNodeOperations.copyNode(node), CONCEPTS.Expression$TP));
+            if (SNodeOperations.isInstanceOf(type, CONCEPTS.BooleanType$_u) || SNodeOperations.isInstanceOf(type, CONCEPTS.ClassifierType$bL) && SLinkOperations.hasPointer(SNodeOperations.cast(type, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Boolean"))) {
+              SNode not = SNodeFactoryOperations.createNewNode(CONCEPTS.NotExpression$Pc, null);
+              SLinkOperations.setTarget(not, LINKS.expression$sv_H, SNodeOperations.cast(SNodeOperations.copyNode(node), CONCEPTS.Expression$mB));
               SNodeOperations.replaceWithAnother(node, not);
               SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), not, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
               return;
             }
             node = SNodeOperations.getParent(node);
-          } while (SNodeOperations.isInstanceOf(node, CONCEPTS.Expression$TP));
+          } while (SNodeOperations.isInstanceOf(node, CONCEPTS.Expression$mB));
           return;
         }
 
@@ -161,7 +161,7 @@ public class expressionToNotExpression extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.NotExpression$oq;
+          return CONCEPTS.NotExpression$Pc;
         }
 
 
@@ -172,7 +172,7 @@ public class expressionToNotExpression extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.NotExpression$oq;
+          SAbstractConcept outputConcept = CONCEPTS.NotExpression$Pc;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -184,14 +184,14 @@ public class expressionToNotExpression extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
-    /*package*/ static final SConcept BooleanType$8G = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d6513eL, "jetbrains.mps.baseLanguage.structure.BooleanType");
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
-    /*package*/ static final SConcept NotExpression$oq = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, "jetbrains.mps.baseLanguage.structure.NotExpression");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept BooleanType$_u = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d6513eL, "jetbrains.mps.baseLanguage.structure.BooleanType");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept NotExpression$Pc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, "jetbrains.mps.baseLanguage.structure.NotExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink expression$Lq8V = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink expression$sv_H = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, 0xfbcf6c30a4L, "expression");
   }
 }

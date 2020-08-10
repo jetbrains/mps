@@ -20,7 +20,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class ConfigDefinition_Constraints extends BaseConstraintsDescriptor {
   public ConfigDefinition_Constraints() {
-    super(CONCEPTS.ConfigDefinition$N);
+    super(CONCEPTS.ConfigDefinition$YG);
   }
 
   @Override
@@ -39,17 +39,17 @@ public class ConfigDefinition_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAnAncestor(SNode node, SNode childNode, SAbstractConcept childConcept, SNode parentNode, SContainmentLink link) {
-    SNode ancestor = SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.IStatementListContainer$4L, true, false);
+    SNode ancestor = SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.IStatementListContainer$xz, true, false);
     if (ancestor == node) {
-      return !(SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.ReturnStatement$SF));
+      return !(SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.ReturnStatement$lt));
     }
     return true;
   }
   private static final SNodePointer canBeRootBreakingPoint = new SNodePointer("r:56325792-0540-48ec-8d52-897a8821cc64(jetbrains.mps.make.script.constraints)", "5579506316679949085");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConfigDefinition$N = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x1b731b4510dcbee4L, "jetbrains.mps.make.script.structure.ConfigDefinition");
-    /*package*/ static final SInterfaceConcept IStatementListContainer$4L = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11750ef8265L, "jetbrains.mps.baseLanguage.structure.IStatementListContainer");
-    /*package*/ static final SConcept ReturnStatement$SF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement");
+    /*package*/ static final SConcept ConfigDefinition$YG = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x1b731b4510dcbee4L, "jetbrains.mps.make.script.structure.ConfigDefinition");
+    /*package*/ static final SInterfaceConcept IStatementListContainer$xz = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11750ef8265L, "jetbrains.mps.baseLanguage.structure.IStatementListContainer");
+    /*package*/ static final SConcept ReturnStatement$lt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement");
   }
 }

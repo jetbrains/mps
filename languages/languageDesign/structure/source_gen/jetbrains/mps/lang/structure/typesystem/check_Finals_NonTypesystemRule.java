@@ -22,18 +22,18 @@ public class check_Finals_NonTypesystemRule extends AbstractNonTypesystemRule_Ru
   public check_Finals_NonTypesystemRule() {
   }
   public void applyRule(final SNode c, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(c, LINKS.extends$9AAt) == null)) {
+    if ((SLinkOperations.getTarget(c, LINKS.extends$_Isg) == null)) {
       return;
     }
-    if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(c, LINKS.extends$9AAt), PROPS.final$Q4Jb)) {
+    if (SPropertyOperations.getBoolean(SLinkOperations.getTarget(c, LINKS.extends$_Isg), PROPS.final$ic$Y)) {
       {
-        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.extends$9AAt);
+        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.extends$_Isg);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(c, "Can't extend a final concept", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1090488322149297633", null, errorTarget);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConceptDeclaration$qU;
+    return CONCEPTS.ConceptDeclaration$gH;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,14 +43,14 @@ public class check_Finals_NonTypesystemRule extends AbstractNonTypesystemRule_Ru
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extends$9AAt = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SReferenceLink extends$_Isg = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty final$Q4Jb = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec7L, "final");
+    /*package*/ static final SProperty final$ic$Y = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec7L, "final");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
   }
 }

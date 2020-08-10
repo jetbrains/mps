@@ -45,8 +45,8 @@ public final class LowerBoundType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    if (SLinkOperations.getTarget(__thisNode__, LINKS.bound$T4DV) != null) {
-      return "? super " + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.bound$T4DV));
+    if (SLinkOperations.getTarget(__thisNode__, LINKS.bound$$a6H) != null) {
+      return "? super " + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.bound$$a6H));
     } else {
       return "? super ???";
     }
@@ -58,28 +58,28 @@ public final class LowerBoundType__BehaviorDescriptor extends BaseBHDescriptor {
     return false;
   }
   /*package*/ static SNode expandGenerics_id3$PgO9fYTB5(@NotNull SNode __thisNode__, Map<SNode, SNode> substitutions, List<SNode> expTrace) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.bound$T4DV), CONCEPTS.IGenericType$$h)) {
-      SNode expBound = IGenericType__BehaviorDescriptor.expandGenerics_id3$PgO9fYTB5.invoke(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.bound$T4DV), CONCEPTS.IGenericType$$h), substitutions, expTrace);
-      if (expBound == SLinkOperations.getTarget(__thisNode__, LINKS.bound$T4DV)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.bound$$a6H), CONCEPTS.IGenericType$13)) {
+      SNode expBound = IGenericType__BehaviorDescriptor.expandGenerics_id3$PgO9fYTB5.invoke(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.bound$$a6H), CONCEPTS.IGenericType$13), substitutions, expTrace);
+      if (expBound == SLinkOperations.getTarget(__thisNode__, LINKS.bound$$a6H)) {
         return __thisNode__;
       }
       return _quotation_createNode_kcjgm5_a2a0a3(expBound);
     }
-    return IGenericType__BehaviorDescriptor.expandGenerics_id3$PgO9fYTB5.invoke0(__thisNode__, CONCEPTS.IGenericType$$h, substitutions, expTrace);
+    return IGenericType__BehaviorDescriptor.expandGenerics_id3$PgO9fYTB5.invoke0(__thisNode__, CONCEPTS.IGenericType$13, substitutions, expTrace);
   }
   /*package*/ static void collectGenericSubstitutions_id3zZky3wF74h(@NotNull SNode __thisNode__, Map<SNode, SNode> substitutions) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.bound$T4DV), CONCEPTS.IGenericType$$h)) {
-      IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.bound$T4DV), CONCEPTS.IGenericType$$h), substitutions);
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.bound$$a6H), CONCEPTS.IGenericType$13)) {
+      IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.bound$$a6H), CONCEPTS.IGenericType$13), substitutions);
     }
   }
   /*package*/ static boolean isSupersetOf_id7PgshREdQKp(@NotNull SNode __thisNode__, SNode t, Map<SNode, SNode> substitutions) {
-    if (SNodeOperations.isInstanceOf(t, CONCEPTS.LowerBoundType$Uz)) {
+    if (SNodeOperations.isInstanceOf(t, CONCEPTS.LowerBoundType$nl)) {
 
-      return (boolean) Type__BehaviorDescriptor.isSupersetOf_id7PgshREdQKp.invoke(SLinkOperations.getTarget(SNodeOperations.cast(t, CONCEPTS.LowerBoundType$Uz), LINKS.bound$T4DV), SLinkOperations.getTarget(__thisNode__, LINKS.bound$T4DV), substitutions);
-    } else if (SNodeOperations.isInstanceOf(t, CONCEPTS.UpperBoundType$r6)) {
+      return (boolean) Type__BehaviorDescriptor.isSupersetOf_id7PgshREdQKp.invoke(SLinkOperations.getTarget(SNodeOperations.cast(t, CONCEPTS.LowerBoundType$nl), LINKS.bound$$a6H), SLinkOperations.getTarget(__thisNode__, LINKS.bound$$a6H), substitutions);
+    } else if (SNodeOperations.isInstanceOf(t, CONCEPTS.UpperBoundType$RS)) {
       return false;
     }
-    return (boolean) Type__BehaviorDescriptor.isSupersetOf_id7PgshREdQKp.invoke(t, SLinkOperations.getTarget(__thisNode__, LINKS.bound$T4DV), substitutions);
+    return (boolean) Type__BehaviorDescriptor.isSupersetOf_id7PgshREdQKp.invoke(t, SLinkOperations.getTarget(__thisNode__, LINKS.bound$$a6H), substitutions);
   }
   /*package*/ static boolean isValueType_id4bFkYVCcmm2(@NotNull SAbstractConcept __thisConcept__) {
     return false;
@@ -163,12 +163,12 @@ public final class LowerBoundType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink bound$T4DV = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, 0x110dae9f25bL, "bound");
+    /*package*/ static final SContainmentLink bound$$a6H = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, 0x110dae9f25bL, "bound");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IGenericType$$h = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x38ff5220e0ac710dL, "jetbrains.mps.baseLanguage.structure.IGenericType");
-    /*package*/ static final SConcept LowerBoundType$Uz = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, "jetbrains.mps.baseLanguage.structure.LowerBoundType");
-    /*package*/ static final SConcept UpperBoundType$r6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, "jetbrains.mps.baseLanguage.structure.UpperBoundType");
+    /*package*/ static final SInterfaceConcept IGenericType$13 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x38ff5220e0ac710dL, "jetbrains.mps.baseLanguage.structure.IGenericType");
+    /*package*/ static final SConcept LowerBoundType$nl = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, "jetbrains.mps.baseLanguage.structure.LowerBoundType");
+    /*package*/ static final SConcept UpperBoundType$RS = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, "jetbrains.mps.baseLanguage.structure.UpperBoundType");
   }
 }

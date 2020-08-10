@@ -79,7 +79,7 @@ public class LiteralMessageAllowsMacros extends TransformationMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(TransformationMenuContext _context) {
-      return SNodeOperations.ofConcept(Scope.getScope(_context.getNode(), _context.getNode(), CONCEPTS.TypedDef$hM).getAvailableElements(null), CONCEPTS.TypedDef$hM);
+      return SNodeOperations.ofConcept(Scope.getScope(_context.getNode(), _context.getNode(), CONCEPTS.TypedDef$H3).getAvailableElements(null), CONCEPTS.TypedDef$H3);
     }
     @NotNull
     @Override
@@ -130,7 +130,7 @@ public class LiteralMessageAllowsMacros extends TransformationMenuBase {
         @Nullable
         @Override
         public String getLabelText(String pattern) {
-          return pattern + " %" + SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v) + "%";
+          return pattern + " %" + SPropertyOperations.getString(myParameterObject, PROPS.name$MnvL) + "%";
         }
 
         @Override
@@ -164,10 +164,10 @@ public class LiteralMessageAllowsMacros extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept TypedDef$hM = MetaAdapterFactory.getInterfaceConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x653030359368062cL, "jetbrains.mps.lang.context.defs.structure.TypedDef");
+    /*package*/ static final SInterfaceConcept TypedDef$H3 = MetaAdapterFactory.getInterfaceConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x653030359368062cL, "jetbrains.mps.lang.context.defs.structure.TypedDef");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

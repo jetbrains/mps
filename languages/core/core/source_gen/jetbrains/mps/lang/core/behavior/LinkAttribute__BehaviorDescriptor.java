@@ -36,24 +36,24 @@ public final class LinkAttribute__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SReferenceLink getLink_id1avfQ4BEFo6(@NotNull SNode __thisNode__) {
-    String nonEmptyLinkRole = (SPropertyOperations.getString(__thisNode__, PROPS.role_DebugInfo$cCrV) == null ? "" : SPropertyOperations.getString(__thisNode__, PROPS.role_DebugInfo$cCrV));
+    String nonEmptyLinkRole = (SPropertyOperations.getString(__thisNode__, PROPS.role_DebugInfo$DpOd) == null ? "" : SPropertyOperations.getString(__thisNode__, PROPS.role_DebugInfo$DpOd));
     try {
-      SReferenceLinkId id = SReferenceLinkId.deserialize(SPropertyOperations.getString(__thisNode__, PROPS.linkId$ooiU));
+      SReferenceLinkId id = SReferenceLinkId.deserialize(SPropertyOperations.getString(__thisNode__, PROPS.linkId$P9Fc));
       return MetaAdapterFactory.getReferenceLink(id, nonEmptyLinkRole);
     } catch (RuntimeException e) {
       return null;
     }
   }
   /*package*/ static void setLink_id6Gg5KlvuxxF(@NotNull SNode __thisNode__, SReferenceLink metaLink) {
-    SPropertyOperations.assign(__thisNode__, PROPS.role_DebugInfo$cCrV, metaLink.getName());
-    SPropertyOperations.assign(__thisNode__, PROPS.linkId$ooiU, MetaIdHelper.getAssociation(metaLink).serialize());
+    SPropertyOperations.assign(__thisNode__, PROPS.role_DebugInfo$DpOd, metaLink.getName());
+    SPropertyOperations.assign(__thisNode__, PROPS.linkId$P9Fc, MetaIdHelper.getAssociation(metaLink).serialize());
   }
   /*package*/ static String getNameForReporting_id5gACAVBuLQd(@NotNull SNode __thisNode__) {
     SReferenceLink l = LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(__thisNode__);
     if (l.isValid()) {
       return l.getName();
     }
-    return (SPropertyOperations.getString(__thisNode__, PROPS.role_DebugInfo$cCrV) == null ? "" : SPropertyOperations.getString(__thisNode__, PROPS.role_DebugInfo$cCrV));
+    return (SPropertyOperations.getString(__thisNode__, PROPS.role_DebugInfo$DpOd) == null ? "" : SPropertyOperations.getString(__thisNode__, PROPS.role_DebugInfo$DpOd));
   }
 
   /*package*/ LinkAttribute__BehaviorDescriptor() {
@@ -108,7 +108,7 @@ public final class LinkAttribute__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty role_DebugInfo$cCrV = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, 0x18649a5c82123514L, "role_DebugInfo");
-    /*package*/ static final SProperty linkId$ooiU = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, 0x129f3f612792fc5cL, "linkId");
+    /*package*/ static final SProperty role_DebugInfo$DpOd = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, 0x18649a5c82123514L, "role_DebugInfo");
+    /*package*/ static final SProperty linkId$P9Fc = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, 0x129f3f612792fc5cL, "linkId");
   }
 }

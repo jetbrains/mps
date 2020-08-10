@@ -21,7 +21,7 @@ public class check_Parens_NonTypesystemRule extends AbstractNonTypesystemRule_Ru
   public check_Parens_NonTypesystemRule() {
   }
   public void applyRule(final SNode parens, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(parens, LINKS.elements$tvb0)).isEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(parens, LINKS.elements$p7zr)).isEmpty()) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(parens, "Cannot be empty", "r:b14d3745-fcf7-4a51-93f8-ba2328d28877(jetbrains.mps.samples.ChemMastery.typesystem)", "3123291046850634895", null, errorTarget);
@@ -29,7 +29,7 @@ public class check_Parens_NonTypesystemRule extends AbstractNonTypesystemRule_Ru
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Parens$Ym;
+    return CONCEPTS.Parens$mL;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -39,10 +39,10 @@ public class check_Parens_NonTypesystemRule extends AbstractNonTypesystemRule_Ru
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elements$tvb0 = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af8L, 0x2b5828a8c1af4af9L, "elements");
+    /*package*/ static final SContainmentLink elements$p7zr = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af8L, 0x2b5828a8c1af4af9L, "elements");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Parens$Ym = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af8L, "jetbrains.mps.samples.ChemMastery.structure.Parens");
+    /*package*/ static final SConcept Parens$mL = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af8L, "jetbrains.mps.samples.ChemMastery.structure.Parens");
   }
 }

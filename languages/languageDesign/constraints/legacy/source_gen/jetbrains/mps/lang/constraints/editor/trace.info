@@ -281,13 +281,13 @@
       <node id="1149010998075" at="510,60,511,40" concept="2" />
       <node id="1149010998075" at="511,40,512,34" concept="2" />
       <node id="1149010998075" at="512,34,513,22" concept="7" />
-      <node id="1147468872959" at="517,0,518,0" concept="10" trace="applicableProperty$uAze" />
-      <node id="1147468872959" at="518,0,519,0" concept="10" trace="propertyGetter$rGHa" />
-      <node id="1147468872959" at="519,0,520,0" concept="10" trace="propertySetter$y70Y" />
-      <node id="1147468872959" at="520,0,521,0" concept="10" trace="propertyValidator$LltF" />
-      <node id="1147468872959" at="524,0,525,0" concept="10" trace="LinkAttribute$7j" />
-      <node id="1147468872959" at="525,0,526,0" concept="10" trace="PropertyAttribute$jT" />
-      <node id="1147468872959" at="529,0,530,0" concept="10" trace="name$lA7v" />
+      <node id="1147468872959" at="517,0,518,0" concept="10" trace="applicableProperty$DrDe" />
+      <node id="1147468872959" at="518,0,519,0" concept="10" trace="propertyGetter$AxNa" />
+      <node id="1147468872959" at="519,0,520,0" concept="10" trace="propertySetter$GW6Y" />
+      <node id="1147468872959" at="520,0,521,0" concept="10" trace="propertyValidator$WazF" />
+      <node id="1147468872959" at="524,0,525,0" concept="10" trace="LinkAttribute$v_" />
+      <node id="1147468872959" at="525,0,526,0" concept="10" trace="PropertyAttribute$Gb" />
+      <node id="1147468872959" at="529,0,530,0" concept="10" trace="name$MnvL" />
       <node id="1147468872959" at="58,0,60,0" concept="3" trace="myNode" />
       <node id="1149010775553" at="151,0,153,0" concept="3" trace="myNode" />
       <node id="1147468872959" at="245,0,247,0" concept="3" trace="myNode" />
@@ -911,14 +911,14 @@
       <node id="1592325900391717158" at="540,60,541,40" concept="2" />
       <node id="1592325900391717158" at="541,40,542,34" concept="2" />
       <node id="1592325900391717158" at="542,34,543,22" concept="7" />
-      <node id="1148687645603" at="547,0,548,0" concept="10" trace="applicableLink$WTlX" />
-      <node id="1148687645603" at="548,0,549,0" concept="10" trace="referentSetHandler$$eM2" />
-      <node id="1148687645603" at="549,0,550,0" concept="10" trace="presentation$KWhP" />
-      <node id="1148687645603" at="550,0,551,0" concept="10" trace="keepsReference$erLN" />
-      <node id="1148687645603" at="551,0,552,0" concept="10" trace="searchScopeFactory$v5g1" />
-      <node id="1148687645603" at="555,0,556,0" concept="10" trace="LinkAttribute$7j" />
-      <node id="1148687645603" at="556,0,557,0" concept="10" trace="PropertyAttribute$jT" />
-      <node id="1148687645603" at="560,0,561,0" concept="10" trace="role$nkts" />
+      <node id="1148687645603" at="547,0,548,0" concept="10" trace="applicableLink$7IrX" />
+      <node id="1148687645603" at="548,0,549,0" concept="10" trace="referentSetHandler$J3S2" />
+      <node id="1148687645603" at="549,0,550,0" concept="10" trace="presentation$VLnP" />
+      <node id="1148687645603" at="550,0,551,0" concept="10" trace="keepsReference$pgRN" />
+      <node id="1148687645603" at="551,0,552,0" concept="10" trace="searchScopeFactory$DUm1" />
+      <node id="1148687645603" at="555,0,556,0" concept="10" trace="LinkAttribute$v_" />
+      <node id="1148687645603" at="556,0,557,0" concept="10" trace="PropertyAttribute$Gb" />
+      <node id="1148687645603" at="560,0,561,0" concept="10" trace="role$Nsjf" />
       <node id="1148687645603" at="60,0,62,0" concept="3" trace="myNode" />
       <node id="1148929692478" at="153,0,155,0" concept="3" trace="myNode" />
       <node id="1148687645603" at="258,0,260,0" concept="3" trace="myNode" />
@@ -1396,8 +1396,8 @@
       <node id="1159289810183" at="206,35,207,26" concept="7" />
       <node id="1159289810183" at="208,17,209,42" concept="2" />
       <node id="1159289810183" at="212,40,213,33" concept="7" />
-      <node id="1159289810183" at="218,0,219,0" concept="10" trace="searchScopeFactory$KcA0" />
-      <node id="1159289810183" at="219,0,220,0" concept="10" trace="presentation$K$rl" />
+      <node id="1159289810183" at="218,0,219,0" concept="10" trace="searchScopeFactory$V1G0" />
+      <node id="1159289810183" at="219,0,220,0" concept="10" trace="presentation$Vpxl" />
       <node id="1159289810183" at="28,0,30,0" concept="3" trace="myNode" />
       <node id="1159289810183" at="93,0,95,0" concept="3" trace="myNode" />
       <node id="1159289810183" at="162,0,164,0" concept="3" trace="myNode" />
@@ -1659,9 +1659,9 @@
       <node id="2118147876589610073" at="244,117,245,49" concept="2" />
       <node id="2118147876589610073" at="245,49,246,34" concept="2" />
       <node id="2118147876589610073" at="246,34,247,22" concept="7" />
-      <node id="1213094054781" at="249,40,250,75" concept="6" />
+      <node id="1213094054781" at="249,40,250,74" concept="6" />
       <node id="1213094054781" at="254,39,255,95" concept="7" />
-      <node id="1213094054781" at="257,58,258,60" concept="2" />
+      <node id="1213094054781" at="257,57,258,60" concept="2" />
       <node id="1213094054781" at="258,60,259,48" concept="2" />
       <node id="1213094054781" at="259,48,260,54" concept="2" />
       <node id="1213094054781" at="260,54,261,20" concept="7" />
@@ -1670,7 +1670,7 @@
       <node id="1213094054781" at="265,60,266,50" concept="6" />
       <node id="1213094054781" at="266,50,267,0" concept="9" />
       <node id="1213094054781" at="268,40,269,40" concept="2" />
-      <node id="1213094054781" at="269,40,270,61" concept="2" />
+      <node id="1213094054781" at="269,40,270,60" concept="2" />
       <node id="1213094054781" at="271,5,272,34" concept="6" />
       <node id="2118147876589610078" at="272,34,273,60" concept="2" />
       <node id="1213094054781" at="273,60,274,40" concept="2" />
@@ -2098,25 +2098,25 @@
       <node id="2118147876589610216" at="1102,60,1103,40" concept="2" />
       <node id="2118147876589610216" at="1103,40,1104,34" concept="2" />
       <node id="2118147876589610216" at="1104,34,1105,22" concept="7" />
-      <node id="1213094054781" at="1109,0,1110,0" concept="10" trace="concept$w6jZ" />
-      <node id="1213094054781" at="1110,0,1111,0" concept="10" trace="defaultConcreteConcept$PUCy" />
-      <node id="1213094054781" at="1111,0,1112,0" concept="10" trace="canBeChild$9_fq" />
-      <node id="1213094054781" at="1112,0,1113,0" concept="10" trace="canBeRoot$jV1h" />
-      <node id="1213094054781" at="1113,0,1114,0" concept="10" trace="canBeParent$589w" />
-      <node id="1213094054781" at="1114,0,1115,0" concept="10" trace="canBeAncestor$5mes" />
-      <node id="1213094054781" at="1115,0,1116,0" concept="10" trace="alternativeIcon$Ngiu" />
-      <node id="1213094054781" at="1116,0,1117,0" concept="10" trace="instanceIcon$puzB" />
-      <node id="1213094054781" at="1117,0,1118,0" concept="10" trace="property$w_EH" />
-      <node id="1213094054781" at="1118,0,1119,0" concept="10" trace="referent$9bTK" />
-      <node id="1213094054781" at="1119,0,1120,0" concept="10" trace="defaultScope$F6OG" />
-      <node id="1213094054781" at="1123,0,1124,0" concept="10" trace="LinkAttribute$7j" />
-      <node id="1213094054781" at="1124,0,1125,0" concept="10" trace="PropertyAttribute$jT" />
-      <node id="1213094054781" at="1125,0,1126,0" concept="10" trace="ConceptDeclaration$qU" />
-      <node id="1213094054781" at="1126,0,1127,0" concept="10" trace="NodePropertyConstraint$pW" />
-      <node id="1213094054781" at="1127,0,1128,0" concept="10" trace="NodeReferentConstraint$JH" />
-      <node id="1213094054781" at="1131,0,1132,0" concept="10" trace="name$lA7v" />
-      <node id="1213094054781" at="1132,0,1133,0" concept="10" trace="abstract$Q3$6" />
-      <node id="1213094054781" at="1133,0,1134,0" concept="10" trace="rootable$91zK" />
+      <node id="1213094054781" at="1109,0,1110,0" concept="10" trace="concept$EVpZ" />
+      <node id="1213094054781" at="1110,0,1111,0" concept="10" trace="defaultConcreteConcept$JIy" />
+      <node id="1213094054781" at="1111,0,1112,0" concept="10" trace="canBeChild$kqlq" />
+      <node id="1213094054781" at="1112,0,1113,0" concept="10" trace="canBeRoot$uK7h" />
+      <node id="1213094054781" at="1113,0,1114,0" concept="10" trace="canBeParent$fXfw" />
+      <node id="1213094054781" at="1114,0,1115,0" concept="10" trace="canBeAncestor$gbks" />
+      <node id="1213094054781" at="1115,0,1116,0" concept="10" trace="alternativeIcon$Y5ou" />
+      <node id="1213094054781" at="1116,0,1117,0" concept="10" trace="instanceIcon$$jDB" />
+      <node id="1213094054781" at="1117,0,1118,0" concept="10" trace="property$FqKH" />
+      <node id="1213094054781" at="1118,0,1119,0" concept="10" trace="referent$k0ZK" />
+      <node id="1213094054781" at="1119,0,1120,0" concept="10" trace="defaultScope$PVUG" />
+      <node id="1213094054781" at="1123,0,1124,0" concept="10" trace="LinkAttribute$v_" />
+      <node id="1213094054781" at="1124,0,1125,0" concept="10" trace="PropertyAttribute$Gb" />
+      <node id="1213094054781" at="1125,0,1126,0" concept="10" trace="ConceptDeclaration$gH" />
+      <node id="1213094054781" at="1126,0,1127,0" concept="10" trace="NodePropertyConstraint$vW" />
+      <node id="1213094054781" at="1127,0,1128,0" concept="10" trace="NodeReferentConstraint$PH" />
+      <node id="1213094054781" at="1131,0,1132,0" concept="10" trace="name$MnvL" />
+      <node id="1213094054781" at="1132,0,1133,0" concept="10" trace="abstract$ibpT" />
+      <node id="1213094054781" at="1133,0,1134,0" concept="10" trace="rootable$_9pz" />
       <node id="1213094054781" at="59,0,61,0" concept="3" trace="myNode" />
       <node id="1213094094191" at="132,0,134,0" concept="3" trace="myNode" />
       <node id="2118147876589610076" at="289,0,291,0" concept="3" trace="myNode" />
@@ -2208,7 +2208,7 @@
       <node id="1213094094191" at="146,0,151,0" concept="5" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1213094095099" at="162,190,167,11" concept="6" />
       <node id="1213094095099" at="167,11,172,26" concept="4" />
-      <node id="1213094054781" at="252,72,257,58" concept="6" />
+      <node id="1213094054781" at="252,72,257,57" concept="6" />
       <node id="1213094054781" at="276,183,281,7" concept="6" />
       <node id="1213094054781" at="281,7,286,22" concept="4" />
       <node id="2118147876589610076" at="293,0,298,0" concept="1" trace="Inline_Builder1#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -2285,7 +2285,7 @@
       <node id="1213094054781" at="724,0,736,0" concept="5" trace="installCellInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Z)V" />
       <node id="1213094054781" at="802,0,814,0" concept="5" trace="installCellInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/cells/EditorCell;Z)V" />
       <node id="1213094054781" at="96,60,109,6" concept="6" />
-      <node id="1213094054781" at="250,75,263,6" concept="6" />
+      <node id="1213094054781" at="250,74,263,6" concept="6" />
       <node id="1213094054781" at="878,0,891,0" concept="5" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="1213094054781" at="975,0,988,0" concept="5" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="1213094054781" at="395,0,409,0" concept="5" trace="createEmptyCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -2380,7 +2380,7 @@
         <var name="manager" id="1213094095099" />
       </scope>
       <scope id="3754598629525415324" at="228,48,230,127" />
-      <scope id="1213094054781" at="268,40,270,61" />
+      <scope id="1213094054781" at="268,40,270,60" />
       <scope id="1213094054781" at="282,73,284,145">
         <var name="manager" id="1213094054781" />
       </scope>
@@ -3864,7 +3864,7 @@
       <node id="2487047136346128159" at="496,58,497,40" concept="2" />
       <node id="2487047136346128159" at="497,40,498,34" concept="2" />
       <node id="2487047136346128159" at="498,34,499,22" concept="7" />
-      <node id="2487047136346128092" at="503,0,504,0" concept="10" trace="ConstraintFunction_ReferentSearchScope_Presentation$oU" />
+      <node id="2487047136346128092" at="503,0,504,0" concept="10" trace="ConstraintFunction_ReferentSearchScope_Presentation$uU" />
       <node id="2487047136346128092" at="26,0,28,0" concept="3" trace="myNode" />
       <node id="2487047136346128092" at="40,0,43,0" concept="5" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="252989475023172007" at="133,51,136,5" concept="4" />
@@ -4190,8 +4190,8 @@
       <node id="3096203427927295673" at="58,49,59,252" concept="2" />
       <node id="3096203427927295673" at="60,9,61,44" concept="7" />
       <node id="3096203427927295673" at="62,15,63,50" concept="2" />
-      <node id="3096203427927295673" at="69,0,70,0" concept="10" trace="InheritedNodeScopeFactory$l2" />
-      <node id="3096203427927295673" at="70,0,71,0" concept="10" trace="ConstraintFunction_ReferentSearchScope_Scope$OU" />
+      <node id="3096203427927295673" at="69,0,70,0" concept="10" trace="InheritedNodeScopeFactory$r2" />
+      <node id="3096203427927295673" at="70,0,71,0" concept="10" trace="ConstraintFunction_ReferentSearchScope_Scope$UU" />
       <node id="9144763834562426003" at="30,278,35,9" concept="13" />
       <node id="3096203427927326463" at="44,297,49,9" concept="13" />
       <node id="3096203427927295673" at="59,252,64,5" concept="13" />
@@ -5170,8 +5170,8 @@
       <node id="2115302367868116957" at="315,51,316,85" concept="6" />
       <node id="2115302367868116957" at="316,85,317,93" concept="6" />
       <node id="2115302367868116957" at="317,93,318,22" concept="7" />
-      <node id="5753863164744594487" at="322,0,323,0" concept="10" trace="problems$TNoI" />
-      <node id="5753863164744594487" at="326,0,327,0" concept="10" trace="RefPresentationMigratedProblem$Pu" />
+      <node id="5753863164744594487" at="322,0,323,0" concept="10" trace="problems$4CuI" />
+      <node id="5753863164744594487" at="326,0,327,0" concept="10" trace="RefPresentationMigratedProblem$Vu" />
       <node id="5753863164744594487" at="40,0,42,0" concept="3" trace="myNode" />
       <node id="5753863164744594487" at="243,0,245,0" concept="3" trace="myNode" />
       <node id="5753863164744594487" at="54,0,57,0" concept="5" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -5428,8 +5428,8 @@
       <node id="5753863164744783906" at="122,36,123,54" concept="2" />
       <node id="5753863164744783906" at="123,54,124,42" concept="2" />
       <node id="5753863164744783906" at="124,42,125,24" concept="7" />
-      <node id="5753863164744783895" at="130,0,131,0" concept="10" trace="editor$YUJ0" />
-      <node id="5753863164744783895" at="134,0,135,0" concept="10" trace="LinkAttribute$7j" />
+      <node id="5753863164744783895" at="130,0,131,0" concept="10" trace="editor$9JP0" />
+      <node id="5753863164744783895" at="134,0,135,0" concept="10" trace="LinkAttribute$v_" />
       <node id="5753863164744783895" at="36,0,38,0" concept="3" trace="myNode" />
       <node id="5753863164744783899" at="99,0,101,0" concept="3" trace="myNode" />
       <node id="5753863164744783895" at="50,0,53,0" concept="5" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -5583,10 +5583,10 @@
       <node id="8401916545537438654" at="157,91,158,147" concept="7" />
       <node id="8401916545537438654" at="159,14,160,26" concept="7" />
       <node id="8401916545537438654" at="161,17,162,42" concept="2" />
-      <node id="8401916545537438644" at="168,0,169,0" concept="10" trace="kind$lEx0" />
-      <node id="8401916545537438644" at="172,0,173,0" concept="10" trace="LinkAttribute$7j" />
-      <node id="8401916545537438644" at="173,0,174,0" concept="10" trace="PropertyAttribute$jT" />
-      <node id="8401916545537438644" at="177,0,178,0" concept="10" trace="name$lA7v" />
+      <node id="8401916545537438644" at="168,0,169,0" concept="10" trace="kind$wvB0" />
+      <node id="8401916545537438644" at="172,0,173,0" concept="10" trace="LinkAttribute$v_" />
+      <node id="8401916545537438644" at="173,0,174,0" concept="10" trace="PropertyAttribute$Gb" />
+      <node id="8401916545537438644" at="177,0,178,0" concept="10" trace="name$MnvL" />
       <node id="8401916545537438644" at="40,0,42,0" concept="3" trace="myNode" />
       <node id="8401916545537438652" at="120,0,122,0" concept="3" trace="myNode" />
       <node id="8401916545537438644" at="54,0,57,0" concept="5" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />

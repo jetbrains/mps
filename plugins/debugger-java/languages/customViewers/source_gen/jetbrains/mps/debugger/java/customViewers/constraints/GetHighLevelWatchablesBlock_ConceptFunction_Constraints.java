@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class GetHighLevelWatchablesBlock_ConceptFunction_Constraints extends BaseConstraintsDescriptor {
   public GetHighLevelWatchablesBlock_ConceptFunction_Constraints() {
-    super(CONCEPTS.GetHighLevelWatchablesBlock_ConceptFunction$z0);
+    super(CONCEPTS.GetHighLevelWatchablesBlock_ConceptFunction$Xs);
   }
 
   @Override
@@ -37,12 +37,12 @@ public class GetHighLevelWatchablesBlock_ConceptFunction_Constraints extends Bas
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.HighLevelCustomViewer$cJ);
+    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.HighLevelCustomViewer$Bb);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:90c5d87d-81cd-4991-8860-6ac3ba3269c4(jetbrains.mps.debugger.java.customViewers.constraints)", "1227128029536564826");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GetHighLevelWatchablesBlock_ConceptFunction$z0 = MetaAdapterFactory.getConcept(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x9a1514043ecbd6L, "jetbrains.mps.debugger.java.customViewers.structure.GetHighLevelWatchablesBlock_ConceptFunction");
-    /*package*/ static final SConcept HighLevelCustomViewer$cJ = MetaAdapterFactory.getConcept(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x97038071a3bfa40L, "jetbrains.mps.debugger.java.customViewers.structure.HighLevelCustomViewer");
+    /*package*/ static final SConcept GetHighLevelWatchablesBlock_ConceptFunction$Xs = MetaAdapterFactory.getConcept(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x9a1514043ecbd6L, "jetbrains.mps.debugger.java.customViewers.structure.GetHighLevelWatchablesBlock_ConceptFunction");
+    /*package*/ static final SConcept HighLevelCustomViewer$Bb = MetaAdapterFactory.getConcept(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x97038071a3bfa40L, "jetbrains.mps.debugger.java.customViewers.structure.HighLevelCustomViewer");
   }
 }

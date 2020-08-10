@@ -23,14 +23,14 @@ public class check_DebuggerReferenceThrowableIsCaught_NonTypesystemRule extends 
   public check_DebuggerReferenceThrowableIsCaught_NonTypesystemRule() {
   }
   public void applyRule(final SNode debuggerReference, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(debuggerReference), CONCEPTS.BreakpointCreator$RQ)) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(debuggerReference), CONCEPTS.BreakpointCreator$cm)) {
       Set<SNode> throwables = SetSequence.fromSet(new HashSet<SNode>());
       SetSequence.fromSet(throwables).addElement(_quotation_createNode_fpej4j_a0a1a0a1());
       RulesFunctions_BaseLanguage.check(typeCheckingContext, throwables, debuggerReference);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.DebuggerReference$bf;
+    return CONCEPTS.DebuggerReference$vJ;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -47,7 +47,7 @@ public class check_DebuggerReferenceThrowableIsCaught_NonTypesystemRule extends 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BreakpointCreator$RQ = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x2bd07aa080dfb3a4L, "jetbrains.mps.debugger.api.lang.structure.BreakpointCreator");
-    /*package*/ static final SConcept DebuggerReference$bf = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912d151L, "jetbrains.mps.debugger.api.lang.structure.DebuggerReference");
+    /*package*/ static final SConcept BreakpointCreator$cm = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x2bd07aa080dfb3a4L, "jetbrains.mps.debugger.api.lang.structure.BreakpointCreator");
+    /*package*/ static final SConcept DebuggerReference$vJ = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0xf528808f912d151L, "jetbrains.mps.debugger.api.lang.structure.DebuggerReference");
   }
 }

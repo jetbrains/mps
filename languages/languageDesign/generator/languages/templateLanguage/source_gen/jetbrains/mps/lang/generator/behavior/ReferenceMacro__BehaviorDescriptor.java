@@ -44,7 +44,7 @@ public final class ReferenceMacro__BehaviorDescriptor extends BaseBHDescriptor {
     if (Objects.equals(reportItem.getIssueKind().getChecker(), IssueKindReportItem.REFERENCE_SCOPES) || Objects.equals(reportItem.getIssueKind().getChecker(), IssueKindReportItem.UNRESOLVED_REFERENCE)) {
       return Objects.equals(reportItem.getNode(), SNodeOperations.getPointer(SNodeOperations.getParent(__thisNode__))) && LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(__thisNode__) != null && Objects.equals(NodeFeatureReportItem.FLAVOUR_NODE_FEATURE.tryToGet(reportItem), LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(__thisNode__));
     }
-    return ((boolean) ISuppressErrors__BehaviorDescriptor.suppress_id3612de_vrfV.invoke0(__thisNode__, CONCEPTS.ISuppressErrors$2l, reportItem));
+    return ((boolean) ISuppressErrors__BehaviorDescriptor.suppress_id3612de_vrfV.invoke0(__thisNode__, CONCEPTS.ISuppressErrors$qB, reportItem));
   }
 
   /*package*/ ReferenceMacro__BehaviorDescriptor() {
@@ -96,6 +96,6 @@ public final class ReferenceMacro__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept ISuppressErrors$2l = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2f16f1b357e19f43L, "jetbrains.mps.lang.core.structure.ISuppressErrors");
+    /*package*/ static final SInterfaceConcept ISuppressErrors$qB = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2f16f1b357e19f43L, "jetbrains.mps.lang.core.structure.ISuppressErrors");
   }
 }

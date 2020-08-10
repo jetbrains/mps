@@ -33,7 +33,7 @@ public final class PasteWrapper__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static String getClassName_id5CTPYn2wJN2(@NotNull SNode __thisNode__) {
     SNode parent = (SNode) SNodeOperations.getParent(__thisNode__);
-    return SPropertyOperations.getString(parent, PROPS.name$lA7v) + "_PasteWrapper_" + SNodeOperations.getIndexInParent(__thisNode__);
+    return SPropertyOperations.getString(parent, PROPS.name$MnvL) + "_PasteWrapper_" + SNodeOperations.getIndexInParent(__thisNode__);
   }
 
   /*package*/ PasteWrapper__BehaviorDescriptor() {
@@ -83,6 +83,6 @@ public final class PasteWrapper__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

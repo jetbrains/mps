@@ -6,9 +6,9 @@
   <root nodeRef="r:e79e8e68-ae7e-4662-ac9f-fd969fd55a7f(jetbrains.mps.lang.extension.util)/3041221749501959010">
     <file name="Extension_Queries.java">
       <node id="3041221749501959010" at="14,44,15,191" concept="0" />
-      <node id="3041221749501959010" at="19,0,20,0" concept="1" trace="Extension$74" />
-      <node id="3041221749501959010" at="23,0,24,0" concept="1" trace="extensionPoint$w0a_" />
-      <node id="3041221749501959010" at="24,0,25,0" concept="1" trace="objectType$41_h" />
+      <node id="3041221749501959010" at="19,0,20,0" concept="1" trace="Extension$oQ" />
+      <node id="3041221749501959010" at="23,0,24,0" concept="1" trace="extensionPoint$mKsn" />
+      <node id="3041221749501959010" at="24,0,25,0" concept="1" trace="objectType$ULR3" />
       <node id="3041221749501959010" at="14,0,17,0" concept="2" trace="get_ret#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="3041221749501959010" at="14,44,15,191" />
       <scope id="3041221749501959010" at="14,0,17,0">

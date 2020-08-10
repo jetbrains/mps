@@ -109,12 +109,12 @@ public class PatternVariableNode_TransformationMenu extends TransformationMenuBa
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNodeOperations.replaceWithAnother(_context.getNode(), createLabeledNode_scvrho_a0a0a0a0(SNodeOperations.getModel(_context.getNode()), _context.getNode().getNodeId(), SPropertyOperations.getString(_context.getNode(), PROPS.name$lA7v)));
+        SNodeOperations.replaceWithAnother(_context.getNode(), createLabeledNode_scvrho_a0a0a0a0(SNodeOperations.getModel(_context.getNode()), _context.getNode().getNodeId(), SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL)));
       }
 
       @Override
       public boolean canExecute(@NotNull String pattern) {
-        return SNodeOperations.hasRole(_context.getNode(), LINKS.initValue$sSpf) || SNodeOperations.hasRole(_context.getNode(), LINKS.nodes$OEOw) && SNodeOperations.hasRole(SNodeOperations.getParent(_context.getNode()), LINKS.initValue$sSpf);
+        return SNodeOperations.hasRole(_context.getNode(), LINKS.initValue$qHpN) || SNodeOperations.hasRole(_context.getNode(), LINKS.nodes$MvP4) && SNodeOperations.hasRole(SNodeOperations.getParent(_context.getNode()), LINKS.initValue$qHpN);
       }
 
 
@@ -136,23 +136,23 @@ public class PatternVariableNode_TransformationMenu extends TransformationMenuBa
 
   }
   private static SNode createLabeledNode_scvrho_a0a0a0a0(SModel modelToCreate, SNodeId nodeId, String p0) {
-    SNodeBuilder n0 = new SNodeBuilder(modelToCreate, nodeId).init(CONCEPTS.LabeledNode$iM);
-    n0.setProperty(PROPS.name$lA7v, p0);
-    n0.setReferenceTarget(LINKS.concept$zz_s, null);
+    SNodeBuilder n0 = new SNodeBuilder(modelToCreate, nodeId).init(CONCEPTS.LabeledNode$wl);
+    n0.setProperty(PROPS.name$MnvL, p0);
+    n0.setReferenceTarget(LINKS.concept$xoA0, null);
     return n0.getResult();
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initValue$sSpf = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x16240b8e9e79db03L, "initValue");
-    /*package*/ static final SContainmentLink nodes$OEOw = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a2df32L, 0x718e3f4cb7a2df33L, "nodes");
-    /*package*/ static final SReferenceLink concept$zz_s = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b02b1L, "concept");
+    /*package*/ static final SContainmentLink initValue$qHpN = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x16240b8e9e79db03L, "initValue");
+    /*package*/ static final SContainmentLink nodes$MvP4 = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a2df32L, 0x718e3f4cb7a2df33L, "nodes");
+    /*package*/ static final SReferenceLink concept$xoA0 = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b02b1L, "concept");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LabeledNode$iM = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0xd6beaaa1fc92ce7L, "jetbrains.mps.lang.pattern.structure.LabeledNode");
+    /*package*/ static final SConcept LabeledNode$wl = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0xd6beaaa1fc92ce7L, "jetbrains.mps.lang.pattern.structure.LabeledNode");
   }
 }

@@ -42,7 +42,7 @@ public class StraightDescendants_Finder extends GeneratedFinder {
   }
   @Override
   public SAbstractConcept getSConcept() {
-    return CONCEPTS.AbstractConceptDeclaration$UN;
+    return CONCEPTS.AbstractConceptDeclaration$KA;
   }
 
   @Override
@@ -57,8 +57,8 @@ public class StraightDescendants_Finder extends GeneratedFinder {
               if (monitor.isCanceled()) {
                 return;
               }
-              if (SNodeOperations.isInstanceOf(nodeUsage, CONCEPTS.ConceptDeclaration$qU)) {
-                if (SLinkOperations.getTarget(SNodeOperations.cast(nodeUsage, CONCEPTS.ConceptDeclaration$qU), LINKS.extends$9AAt) == node) {
+              if (SNodeOperations.isInstanceOf(nodeUsage, CONCEPTS.ConceptDeclaration$gH)) {
+                if (SLinkOperations.getTarget(SNodeOperations.cast(nodeUsage, CONCEPTS.ConceptDeclaration$gH), LINKS.extends$_Isg) == node) {
                   callback.onUsageFound(createSingleResult(nodeUsage));
                 }
               }
@@ -79,11 +79,11 @@ public class StraightDescendants_Finder extends GeneratedFinder {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
-    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extends$9AAt = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SReferenceLink extends$_Isg = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
   }
 }

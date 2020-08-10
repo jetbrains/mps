@@ -29,67 +29,67 @@ public class check_DuplicateClassifierNames_NonTypesystemRule extends AbstractNo
   public check_DuplicateClassifierNames_NonTypesystemRule() {
   }
   public void applyRule(final SNode classifier, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    final String name = SPropertyOperations.getString(classifier, PROPS.name$lA7v);
-    if ((name == null || name.length() == 0) || SNodeOperations.isInstanceOf(classifier, CONCEPTS.AnonymousClass$aF)) {
+    final String name = SPropertyOperations.getString(classifier, PROPS.name$MnvL);
+    if ((name == null || name.length() == 0) || SNodeOperations.isInstanceOf(classifier, CONCEPTS.AnonymousClass$Bt)) {
       return;
     }
     Iterable<SNode> siblingClassifiers;
-    SNode parentClassifier = SNodeOperations.getNodeAncestor(classifier, CONCEPTS.Classifier$hJ, false, false);
+    SNode parentClassifier = SNodeOperations.getNodeAncestor(classifier, CONCEPTS.Classifier$Ix, false, false);
     if ((parentClassifier == null)) {
-      siblingClassifiers = SModelOperations.roots(SNodeOperations.getModel(classifier), CONCEPTS.Classifier$hJ);
+      siblingClassifiers = SModelOperations.roots(SNodeOperations.getModel(classifier), CONCEPTS.Classifier$Ix);
     } else {
-      if (Objects.equals(SPropertyOperations.getString(parentClassifier, PROPS.name$lA7v), SPropertyOperations.getString(classifier, PROPS.name$lA7v))) {
+      if (Objects.equals(SPropertyOperations.getString(parentClassifier, PROPS.name$MnvL), SPropertyOperations.getString(classifier, PROPS.name$MnvL))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classifier, "The nested type '" + SPropertyOperations.getString(classifier, PROPS.name$lA7v) + "' cannot hide an enclosing type", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2654404125184154445", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classifier, "The nested type '" + SPropertyOperations.getString(classifier, PROPS.name$MnvL) + "' cannot hide an enclosing type", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2654404125184154445", null, errorTarget);
         }
       }
       siblingClassifiers = ListSequence.fromList(IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invoke(parentClassifier)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$hJ);
+          return SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$Ix);
         }
       }).select(new ISelector<SNode, SNode>() {
         public SNode select(SNode it) {
-          return SNodeOperations.cast(it, CONCEPTS.Classifier$hJ);
+          return SNodeOperations.cast(it, CONCEPTS.Classifier$Ix);
         }
       });
     }
     if (Sequence.fromIterable(siblingClassifiers).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return it != classifier && SPropertyOperations.hasValue(it, PROPS.name$lA7v, name);
+        return it != classifier && SPropertyOperations.hasValue(it, PROPS.name$MnvL, name);
       }
     })) {
       if ((parentClassifier == null)) {
         {
-          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$lA7v);
+          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$MnvL);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classifier, "Duplicated name of classifier '" + name + "' in model", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7469468981580406086", null, errorTarget);
         }
       } else {
         {
-          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$lA7v);
+          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$MnvL);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classifier, "Duplicated name of nested classifier '" + name, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2654404125185755179", null, errorTarget);
         }
       }
     } else if (Sequence.fromIterable(siblingClassifiers).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return it != classifier && name.equalsIgnoreCase(SPropertyOperations.getString(it, PROPS.name$lA7v));
+        return it != classifier && name.equalsIgnoreCase(SPropertyOperations.getString(it, PROPS.name$MnvL));
       }
     })) {
       if ((parentClassifier == null)) {
         {
-          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$lA7v);
+          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$MnvL);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(classifier, "Duplicated case-insensitive name of classifier '" + name + "' in model", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1005490780644144570", null, errorTarget);
         }
       } else {
         {
-          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$lA7v);
+          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$MnvL);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(classifier, "Duplicated case-insensitive name of nested classifier '" + name, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1005490780655218249", null, errorTarget);
         }
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Classifier$hJ;
+    return CONCEPTS.Classifier$Ix;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -99,11 +99,11 @@ public class check_DuplicateClassifierNames_NonTypesystemRule extends AbstractNo
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AnonymousClass$aF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 }

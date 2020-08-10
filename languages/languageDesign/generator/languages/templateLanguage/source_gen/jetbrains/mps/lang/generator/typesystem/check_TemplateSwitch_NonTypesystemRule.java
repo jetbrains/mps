@@ -36,15 +36,15 @@ public class check_TemplateSwitch_NonTypesystemRule extends AbstractNonTypesyste
   public check_TemplateSwitch_NonTypesystemRule() {
   }
   public void applyRule(final SNode templateSwitch, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SLinkOperations.getTarget(templateSwitch, LINKS.modifiedSwitch$S71p) == null) {
+    if (SLinkOperations.getTarget(templateSwitch, LINKS.modifiedSwitch$h3H5) == null) {
       return;
     }
     // allow to modify/extend switches that accept exactly same parameters only, not superset thereof. 
     // the reason is sub-switch may be invoked directly, while the rules of its parent would expect more parameters than there're actually 
-    SNode modified = SLinkOperations.getTarget(templateSwitch, LINKS.modifiedSwitch$S71p);
-    if (ListSequence.fromList(SLinkOperations.getChildren(modified, LINKS.parameter$GT0v)).count() != ListSequence.fromList(SLinkOperations.getChildren(templateSwitch, LINKS.parameter$GT0v)).count()) {
+    SNode modified = SLinkOperations.getTarget(templateSwitch, LINKS.modifiedSwitch$h3H5);
+    if (ListSequence.fromList(SLinkOperations.getChildren(modified, LINKS.parameter$5PGb)).count() != ListSequence.fromList(SLinkOperations.getChildren(templateSwitch, LINKS.parameter$5PGb)).count()) {
       {
-        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.parameter$GT0v);
+        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.parameter$5PGb);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(templateSwitch, "Parameters count doesn't match that of modified switch", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "490483628479870596", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.generator.typesystem.fix_MatchParametersOfModifiedSwitch_QuickFix", "490483628479984885", false);
@@ -53,14 +53,14 @@ public class check_TemplateSwitch_NonTypesystemRule extends AbstractNonTypesyste
       }
       return;
     }
-    for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(templateSwitch, LINKS.parameter$GT0v)).count(); i++) {
-      SNode p1 = ListSequence.fromList(SLinkOperations.getChildren(templateSwitch, LINKS.parameter$GT0v)).getElement(i);
-      SNode p2 = ListSequence.fromList(SLinkOperations.getChildren(modified, LINKS.parameter$GT0v)).getElement(i);
-      if (!(Objects.equals(SPropertyOperations.getString(p1, PROPS.name$lA7v), SPropertyOperations.getString(p2, PROPS.name$lA7v)))) {
+    for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(templateSwitch, LINKS.parameter$5PGb)).count(); i++) {
+      SNode p1 = ListSequence.fromList(SLinkOperations.getChildren(templateSwitch, LINKS.parameter$5PGb)).getElement(i);
+      SNode p2 = ListSequence.fromList(SLinkOperations.getChildren(modified, LINKS.parameter$5PGb)).getElement(i);
+      if (!(Objects.equals(SPropertyOperations.getString(p1, PROPS.name$MnvL), SPropertyOperations.getString(p2, PROPS.name$MnvL)))) {
         // names shall be identical as we identify them with strings in TemplateContext 
         {
-          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$lA7v);
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(p1, String.format("Name of parameter #%d, %s, doesn't match name of the original parameter (%s)", i + 1, SPropertyOperations.getString(p1, PROPS.name$lA7v), SPropertyOperations.getString(p2, PROPS.name$lA7v)), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "490483628479871387", null, errorTarget);
+          final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$MnvL);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(p1, String.format("Name of parameter #%d, %s, doesn't match name of the original parameter (%s)", i + 1, SPropertyOperations.getString(p1, PROPS.name$MnvL), SPropertyOperations.getString(p2, PROPS.name$MnvL)), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "490483628479871387", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.generator.typesystem.fix_MatchParametersOfModifiedSwitch_QuickFix", "490483628479988736", false);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
@@ -69,9 +69,9 @@ public class check_TemplateSwitch_NonTypesystemRule extends AbstractNonTypesyste
       }
       // extending switch may declare more generic parameter types (basically, it tells it supports wider set of parameters than the switch it modifies) 
       // It's perfectly ok when invoked directly, and when invoked as extension of modified switch, it's guaranteed to receive only subtype of expected parameter type. 
-      if (!(TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(p2, LINKS.type$tay0), SLinkOperations.getTarget(p1, LINKS.type$tay0)))) {
+      if (!(TypecheckingFacade.getFromContext().isSubtype(SLinkOperations.getTarget(p2, LINKS.type$Q7dG), SLinkOperations.getTarget(p1, LINKS.type$Q7dG)))) {
         {
-          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.type$tay0);
+          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.type$Q7dG);
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(p1, String.format("Type of parameter #%d doesn't match type of the original parameter", i + 1), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "490483628479944799", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.generator.typesystem.fix_MatchParametersOfModifiedSwitch_QuickFix", "490483628479989443", false);
@@ -92,8 +92,8 @@ public class check_TemplateSwitch_NonTypesystemRule extends AbstractNonTypesyste
         }))) {
           String m = "Missing extends dependency to generator %s for extended switch %s";
           {
-            final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.modifiedSwitch$S71p);
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(templateSwitch, String.format(m, generatorDependency.getModuleName(), SPropertyOperations.getString(modified, PROPS.name$lA7v)), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "6216030778770432994", null, errorTarget);
+            final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.modifiedSwitch$h3H5);
+            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(templateSwitch, String.format(m, generatorDependency.getModuleName(), SPropertyOperations.getString(modified, PROPS.name$MnvL)), "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "6216030778770432994", null, errorTarget);
             {
               BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.generator.typesystem.FixExtendsGenerator_QuickFix", "6216030778770471366", false);
               intentionProvider.putArgument("extendingGenerator", (Generator) module);
@@ -106,7 +106,7 @@ public class check_TemplateSwitch_NonTypesystemRule extends AbstractNonTypesyste
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.TemplateSwitch$BT;
+    return CONCEPTS.TemplateSwitch$j_;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -116,16 +116,16 @@ public class check_TemplateSwitch_NonTypesystemRule extends AbstractNonTypesyste
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink modifiedSwitch$S71p = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L, 0x1031947e414L, "modifiedSwitch");
-    /*package*/ static final SContainmentLink parameter$GT0v = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, 0xda3dc6e5137ea56L, "parameter");
-    /*package*/ static final SContainmentLink type$tay0 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a0962e6L, 0x190d31fe6a096acfL, "type");
+    /*package*/ static final SReferenceLink modifiedSwitch$h3H5 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L, 0x1031947e414L, "modifiedSwitch");
+    /*package*/ static final SContainmentLink parameter$5PGb = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e5137e9b1L, 0xda3dc6e5137ea56L, "parameter");
+    /*package*/ static final SContainmentLink type$Q7dG = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a0962e6L, 0x190d31fe6a096acfL, "type");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TemplateSwitch$BT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L, "jetbrains.mps.lang.generator.structure.TemplateSwitch");
+    /*package*/ static final SConcept TemplateSwitch$j_ = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L, "jetbrains.mps.lang.generator.structure.TemplateSwitch");
   }
 }

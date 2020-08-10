@@ -19,8 +19,8 @@
     <file name="MessageExpression_Constraints.java">
       <node id="5258059200641720568" at="10,42,11,41" concept="9" />
       <node id="5258059200641720568" at="15,47,16,48" concept="5" />
-      <node id="5258059200641720568" at="20,0,21,0" concept="7" trace="MessageExpression$FF" />
-      <node id="5258059200641720568" at="21,0,22,0" concept="7" trace="LiteralMessageExpression$Ga" />
+      <node id="5258059200641720568" at="20,0,21,0" concept="7" trace="MessageExpression$zD" />
+      <node id="5258059200641720568" at="21,0,22,0" concept="7" trace="LiteralMessageExpression$$8" />
       <node id="5258059200641720568" at="10,0,13,0" concept="0" trace="MessageExpression_Constraints#()V" />
       <node id="5258059200641720568" at="14,0,18,0" concept="3" trace="getDefaultConcreteConcept#()Lorg/jetbrains/mps/openapi/language/SConcept;" />
       <scope id="5258059200641720568" at="10,42,11,41" />
@@ -44,8 +44,8 @@
       <node id="5258059200641965860" at="46,84,47,119" concept="4" />
       <node id="5258059200641965861" at="47,119,48,67" concept="1" />
       <node id="5258059200641965860" at="48,67,49,22" concept="5" />
-      <node id="5258059200641965860" at="53,0,54,0" concept="7" trace="LiteralMessageExpression$Ga" />
-      <node id="5258059200641965860" at="57,0,58,0" concept="7" trace="message$cm50" />
+      <node id="5258059200641965860" at="53,0,54,0" concept="7" trace="LiteralMessageExpression$$8" />
+      <node id="5258059200641965860" at="57,0,58,0" concept="7" trace="message$umWY" />
       <node id="5258059200641965860" at="20,0,23,0" concept="0" trace="LiteralMessageExpression_Constraints#()V" />
       <node id="5258059200641965861" at="25,0,28,0" concept="0" trace="Message_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="5258059200641965861" at="35,99,38,7" concept="2" />
@@ -95,7 +95,7 @@
       <node id="5258059200642172323" at="34,0,35,22" concept="5" />
       <node id="5258059200642172572" at="39,128,40,93" concept="5" />
       <node id="5258059200642172323" at="42,0,43,0" concept="7" trace="canBeParentBreakingPoint" />
-      <node id="5258059200642172323" at="45,0,46,0" concept="7" trace="CombinedMessageExpression$e_" />
+      <node id="5258059200642172323" at="45,0,46,0" concept="7" trace="CombinedMessageExpression$6z" />
       <node id="5258059200642172323" at="20,0,23,0" concept="0" trace="CombinedMessageExpression_Constraints#()V" />
       <node id="5258059200642172323" at="30,0,33,9" concept="2" />
       <node id="5258059200642172323" at="39,0,42,0" concept="8" trace="staticCanBeAParent#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -129,7 +129,7 @@
   <root nodeRef="r:a692cc04-06b7-49e7-9956-49ba1dc83c45(jetbrains.mps.lang.messages.constraints)/5258059200644194848">
     <file name="MacroMessageExpression_Constraints.java">
       <node id="5258059200644194848" at="10,47,11,46" concept="9" />
-      <node id="5258059200644194848" at="15,0,16,0" concept="7" trace="MacroMessageExpression$LH" />
+      <node id="5258059200644194848" at="15,0,16,0" concept="7" trace="MacroMessageExpression$DF" />
       <node id="5258059200644194848" at="10,0,13,0" concept="0" trace="MacroMessageExpression_Constraints#()V" />
       <scope id="5258059200644194848" at="10,47,11,46" />
       <scope id="5258059200644194848" at="10,0,13,0" />

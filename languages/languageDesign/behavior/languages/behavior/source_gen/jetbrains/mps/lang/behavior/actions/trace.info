@@ -12,20 +12,20 @@
   </root>
   <root nodeRef="r:88d422f8-169d-45a0-bc07-791cf8753838(jetbrains.mps.lang.behavior.actions)/1238617792577">
     <file name="ConceptMethod.java">
-      <node id="1238617792581" at="21,91,22,124" concept="3" />
-      <node id="1238617792588" at="22,124,23,103" concept="0" />
-      <node id="1238617792603" at="24,196,25,69" concept="0" />
-      <node id="1238617792610" at="25,69,26,68" concept="0" />
-      <node id="1238617792577" at="32,0,33,0" concept="4" trace="ConceptBehavior$8P" />
-      <node id="1238617792577" at="33,0,34,0" concept="4" trace="PublicVisibility$qe" />
-      <node id="1238617792577" at="34,0,35,0" concept="4" trace="InterfaceConceptDeclaration$MT" />
-      <node id="1238617792577" at="38,0,39,0" concept="4" trace="visibility$jt1o" />
-      <node id="1238617792577" at="39,0,40,0" concept="4" trace="concept$45m$" />
-      <node id="1238617792577" at="43,0,44,0" concept="4" trace="isAbstract$uAz" />
-      <node id="1238617792577" at="44,0,45,0" concept="4" trace="isVirtual$u8x" />
+      <node id="1238617792581" at="21,91,22,123" concept="3" />
+      <node id="1238617792588" at="22,123,23,103" concept="0" />
+      <node id="1238617792603" at="24,196,25,70" concept="0" />
+      <node id="1238617792610" at="25,70,26,69" concept="0" />
+      <node id="1238617792577" at="32,0,33,0" concept="4" trace="ConceptBehavior$2" />
+      <node id="1238617792577" at="33,0,34,0" concept="4" trace="PublicVisibility$R0" />
+      <node id="1238617792577" at="34,0,35,0" concept="4" trace="InterfaceConceptDeclaration$CG" />
+      <node id="1238617792577" at="38,0,39,0" concept="4" trace="visibility$Yyua" />
+      <node id="1238617792577" at="39,0,40,0" concept="4" trace="concept$u6dL" />
+      <node id="1238617792577" at="43,0,44,0" concept="4" trace="isAbstract$qvtK" />
+      <node id="1238617792577" at="44,0,45,0" concept="4" trace="isVirtual$quZI" />
       <node id="1238617792594" at="23,103,27,7" concept="1" />
       <node id="1238617792578" at="21,0,29,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
-      <scope id="1238617792602" at="24,196,26,68" />
+      <scope id="1238617792602" at="24,196,26,69" />
       <scope id="1238617792578" at="21,91,27,7">
         <var name="behaviour" id="1238617792582" />
       </scope>

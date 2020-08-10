@@ -25,12 +25,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class ExtensionStaticFieldReference_Constraints extends BaseConstraintsDescriptor {
   public ExtensionStaticFieldReference_Constraints() {
-    super(CONCEPTS.ExtensionStaticFieldReference$3s);
+    super(CONCEPTS.ExtensionStaticFieldReference$hd);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.variableDeclaration$7WwU, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.variableDeclaration$N1XG, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -45,8 +45,8 @@ public class ExtensionStaticFieldReference_Constraints extends BaseConstraintsDe
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode container = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.BaseExtensionMethodContainer$b0, false, false);
-            return ListScope.forResolvableElements(SLinkOperations.getChildren(container, LINKS.staticFields$u7F4));
+            SNode container = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.BaseExtensionMethodContainer$oL, false, false);
+            return ListScope.forResolvableElements(SLinkOperations.getChildren(container, LINKS.staticFields$J2SP));
           }
         };
       }
@@ -58,12 +58,12 @@ public class ExtensionStaticFieldReference_Constraints extends BaseConstraintsDe
   private static final SNodePointer breakingNode_xefsui_a0a0a0a0a1a0a0a0c = new SNodePointer("r:8a519067-4481-4fce-a84b-d7a47e974dd7(jetbrains.mps.baseLanguage.extensionMethods.constraints)", "6836281137582819125");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ExtensionStaticFieldReference$3s = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x1b622d944bbdfbc7L, "jetbrains.mps.baseLanguage.extensionMethods.structure.ExtensionStaticFieldReference");
-    /*package*/ static final SConcept BaseExtensionMethodContainer$b0 = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x6f5433076549f519L, "jetbrains.mps.baseLanguage.extensionMethods.structure.BaseExtensionMethodContainer");
+    /*package*/ static final SConcept ExtensionStaticFieldReference$hd = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x1b622d944bbdfbc7L, "jetbrains.mps.baseLanguage.extensionMethods.structure.ExtensionStaticFieldReference");
+    /*package*/ static final SConcept BaseExtensionMethodContainer$oL = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x6f5433076549f519L, "jetbrains.mps.baseLanguage.extensionMethods.structure.BaseExtensionMethodContainer");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink staticFields$u7F4 = MetaAdapterFactory.getContainmentLink(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x6f5433076549f519L, 0x1b622d944bbb1c5fL, "staticFields");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink staticFields$J2SP = MetaAdapterFactory.getContainmentLink(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x6f5433076549f519L, 0x1b622d944bbb1c5fL, "staticFields");
   }
 }

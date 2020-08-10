@@ -22,13 +22,13 @@ public class typeof_PropertyExpressionCellSelector_InferenceRule extends Abstrac
   }
   public void applyRule(final SNode expressionCellSelector, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(expressionCellSelector, LINKS.propertyDeclaration$g8b9);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(expressionCellSelector, LINKS.propertyDeclaration$kqmK);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "4510086454773591219", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "4510086454773591221", true), (SNode) _quotation_createNode_q17ws9_a1a0c0a0b(), false, false, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.PropertyExpressionCellSelector$Px;
+    return CONCEPTS.PropertyExpressionCellSelector$18;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -45,10 +45,10 @@ public class typeof_PropertyExpressionCellSelector_InferenceRule extends Abstrac
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink propertyDeclaration$g8b9 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e970bbc30443a0aL, 0x3e970bbc32dc88e0L, "propertyDeclaration");
+    /*package*/ static final SContainmentLink propertyDeclaration$kqmK = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e970bbc30443a0aL, 0x3e970bbc32dc88e0L, "propertyDeclaration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyExpressionCellSelector$Px = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e970bbc30443a0aL, "jetbrains.mps.lang.editor.structure.PropertyExpressionCellSelector");
+    /*package*/ static final SConcept PropertyExpressionCellSelector$18 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e970bbc30443a0aL, "jetbrains.mps.lang.editor.structure.PropertyExpressionCellSelector");
   }
 }

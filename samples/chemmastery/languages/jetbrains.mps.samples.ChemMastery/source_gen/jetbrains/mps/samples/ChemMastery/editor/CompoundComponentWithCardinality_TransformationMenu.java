@@ -92,7 +92,7 @@ public class CompoundComponentWithCardinality_TransformationMenu extends Transfo
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.CompoundComponent$KM);
+      return new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.CompoundComponent$9d);
     }
 
   }
@@ -129,7 +129,7 @@ public class CompoundComponentWithCardinality_TransformationMenu extends Transfo
       @Nullable
       @Override
       public String getLabelText(String pattern) {
-        if (PatternDetectionUtil.isNumeric(pattern) && !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.cardinalityVisible$ZAZ1))) {
+        if (PatternDetectionUtil.isNumeric(pattern) && !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.cardinalityVisible$Vfns))) {
           return pattern;
         } else {
           return "";
@@ -138,8 +138,8 @@ public class CompoundComponentWithCardinality_TransformationMenu extends Transfo
 
       @Override
       public void execute(@NotNull String pattern) {
-        SPropertyOperations.assign(_context.getNode(), PROPS.cardinality$ZAK0, Integer.parseInt(pattern));
-        SPropertyOperations.assign(_context.getNode(), PROPS.cardinalityVisible$ZAZ1, true);
+        SPropertyOperations.assign(_context.getNode(), PROPS.cardinality$Vf8r, Integer.parseInt(pattern));
+        SPropertyOperations.assign(_context.getNode(), PROPS.cardinalityVisible$Vfns, true);
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.LAST_CELL, -1);
       }
 
@@ -164,11 +164,11 @@ public class CompoundComponentWithCardinality_TransformationMenu extends Transfo
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CompoundComponent$KM = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af1L, "jetbrains.mps.samples.ChemMastery.structure.CompoundComponent");
+    /*package*/ static final SConcept CompoundComponent$9d = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af1L, "jetbrains.mps.samples.ChemMastery.structure.CompoundComponent");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty cardinalityVisible$ZAZ1 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd52L, "cardinalityVisible");
-    /*package*/ static final SProperty cardinality$ZAK0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd51L, "cardinality");
+    /*package*/ static final SProperty cardinalityVisible$Vfns = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd52L, "cardinalityVisible");
+    /*package*/ static final SProperty cardinality$Vf8r = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd51L, "cardinality");
   }
 }

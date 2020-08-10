@@ -13,14 +13,14 @@ public class FloatingPointFloatConstant_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    if (SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$DcYx) == null) {
+    if (SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$kirj) == null) {
       tgs.append("?.?");
     } else {
-      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$DcYx));
+      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$kirj));
     }
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$DcYx = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x494547eeedc219b9L, 0x494547eeedc219bbL, "value");
+    /*package*/ static final SProperty value$kirj = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x494547eeedc219b9L, 0x494547eeedc219bbL, "value");
   }
 }

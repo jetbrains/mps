@@ -20,7 +20,7 @@ public class supertypesOf_QueueType_QueueType_withWildcard_SubtypingRule extends
     return _quotation_createNode_y0z7r7_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.QueueType$4E;
+    return CONCEPTS.QueueType$iX;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -42,6 +42,6 @@ public class supertypesOf_QueueType_QueueType_withWildcard_SubtypingRule extends
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept QueueType$4E = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4eec26fcbaf74491L, "jetbrains.mps.baseLanguage.collections.structure.QueueType");
+    /*package*/ static final SConcept QueueType$iX = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4eec26fcbaf74491L, "jetbrains.mps.baseLanguage.collections.structure.QueueType");
   }
 }

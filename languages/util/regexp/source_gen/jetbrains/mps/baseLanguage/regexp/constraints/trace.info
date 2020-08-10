@@ -29,8 +29,8 @@
       <node id="1213104858750" at="50,131,51,42" concept="3" />
       <node id="1213104858749" at="51,42,52,22" concept="8" />
       <node id="1213104858749" at="54,0,55,0" concept="10" trace="breakingNode_8gk9io_a0a0a0a0a1a0a0a0c" />
-      <node id="1213104858749" at="57,0,58,0" concept="10" trace="MatchVariableReference$A8" />
-      <node id="1213104858749" at="61,0,62,0" concept="10" trace="match$urIF" />
+      <node id="1213104858749" at="57,0,58,0" concept="10" trace="MatchVariableReference$eW" />
+      <node id="1213104858749" at="61,0,62,0" concept="10" trace="match$hTnv" />
       <node id="1213104858749" at="24,0,27,0" concept="2" trace="MatchVariableReference_Constraints#()V" />
       <node id="1213104858750" at="31,0,35,0" concept="6" trace="hasOwnScopeProvider#()Z" />
       <node id="1213104858750" at="39,0,43,0" concept="6" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -78,10 +78,10 @@
       <node id="1213104860359" at="64,131,65,42" concept="3" />
       <node id="1213104860358" at="65,42,66,22" concept="8" />
       <node id="1213104860358" at="68,0,69,0" concept="10" trace="breakingNode_15u81x_a0a0a0a0a1a0a0a0c" />
-      <node id="1213104860358" at="71,0,72,0" concept="10" trace="MatchVariableReferenceRegexp$Y2" />
-      <node id="1213104860358" at="72,0,73,0" concept="10" trace="Regexp$xM" />
-      <node id="1213104860358" at="73,0,74,0" concept="10" trace="MatchParensRegexp$1m" />
-      <node id="1213104860358" at="77,0,78,0" concept="10" trace="match$IZn0" />
+      <node id="1213104860358" at="71,0,72,0" concept="10" trace="MatchVariableReferenceRegexp$AQ" />
+      <node id="1213104860358" at="72,0,73,0" concept="10" trace="Regexp$aA" />
+      <node id="1213104860358" at="73,0,74,0" concept="10" trace="MatchParensRegexp$Ea" />
+      <node id="1213104860358" at="77,0,78,0" concept="10" trace="match$ysZO" />
       <node id="1213104860358" at="29,0,32,0" concept="2" trace="MatchVariableReferenceRegexp_Constraints#()V" />
       <node id="6836281137582820388" at="51,151,54,13" concept="13" />
       <node id="6836281137582820418" at="55,182,58,13" concept="5" />
@@ -134,10 +134,10 @@
       <node id="1227128029536564235" at="44,173,45,97" concept="3" />
       <node id="1227128029536564247" at="46,5,47,15" concept="8" />
       <node id="1231768529435" at="49,0,50,0" concept="10" trace="canBeChildBreakingPoint" />
-      <node id="1231768529435" at="52,0,53,0" concept="10" trace="ReplaceWithRegexpOperation$kT" />
-      <node id="1231768529435" at="53,0,54,0" concept="10" trace="DotExpression$6a" />
-      <node id="1231768529435" at="54,0,55,0" concept="10" trace="StringType$2b" />
-      <node id="1231768529435" at="58,0,59,0" concept="10" trace="operand$P1i5" />
+      <node id="1231768529435" at="52,0,53,0" concept="10" trace="ReplaceWithRegexpOperation$XH" />
+      <node id="1231768529435" at="53,0,54,0" concept="10" trace="DotExpression$yW" />
+      <node id="1231768529435" at="54,0,55,0" concept="10" trace="StringType$uX" />
+      <node id="1231768529435" at="58,0,59,0" concept="10" trace="operand$w6IR" />
       <node id="1231768529435" at="22,0,25,0" concept="2" trace="ReplaceWithRegexpOperation_Constraints#()V" />
       <node id="1231768529435" at="32,0,35,9" concept="5" />
       <node id="1227128029536564223" at="42,24,46,5" concept="5" />
@@ -188,10 +188,10 @@
       <node id="1227128029536564267" at="44,173,45,97" concept="3" />
       <node id="1227128029536564279" at="46,5,47,15" concept="8" />
       <node id="1231768928736" at="49,0,50,0" concept="10" trace="canBeChildBreakingPoint" />
-      <node id="1231768928736" at="52,0,53,0" concept="10" trace="MatchRegexpOperation$iW" />
-      <node id="1231768928736" at="53,0,54,0" concept="10" trace="DotExpression$6a" />
-      <node id="1231768928736" at="54,0,55,0" concept="10" trace="StringType$2b" />
-      <node id="1231768928736" at="58,0,59,0" concept="10" trace="operand$P1i5" />
+      <node id="1231768928736" at="52,0,53,0" concept="10" trace="MatchRegexpOperation$VK" />
+      <node id="1231768928736" at="53,0,54,0" concept="10" trace="DotExpression$yW" />
+      <node id="1231768928736" at="54,0,55,0" concept="10" trace="StringType$uX" />
+      <node id="1231768928736" at="58,0,59,0" concept="10" trace="operand$w6IR" />
       <node id="1231768928736" at="22,0,25,0" concept="2" trace="MatchRegexpOperation_Constraints#()V" />
       <node id="1231768928736" at="32,0,35,9" concept="5" />
       <node id="1227128029536564255" at="42,24,46,5" concept="5" />
@@ -242,10 +242,10 @@
       <node id="1227128029536564299" at="44,173,45,97" concept="3" />
       <node id="1227128029536564311" at="46,5,47,15" concept="8" />
       <node id="3796137614137203372" at="49,0,50,0" concept="10" trace="canBeChildBreakingPoint" />
-      <node id="3796137614137203372" at="52,0,53,0" concept="10" trace="ReplaceRegexpOperation$ia" />
-      <node id="3796137614137203372" at="53,0,54,0" concept="10" trace="DotExpression$6a" />
-      <node id="3796137614137203372" at="54,0,55,0" concept="10" trace="StringType$2b" />
-      <node id="3796137614137203372" at="58,0,59,0" concept="10" trace="operand$P1i5" />
+      <node id="3796137614137203372" at="52,0,53,0" concept="10" trace="ReplaceRegexpOperation$UY" />
+      <node id="3796137614137203372" at="53,0,54,0" concept="10" trace="DotExpression$yW" />
+      <node id="3796137614137203372" at="54,0,55,0" concept="10" trace="StringType$uX" />
+      <node id="3796137614137203372" at="58,0,59,0" concept="10" trace="operand$w6IR" />
       <node id="3796137614137203372" at="22,0,25,0" concept="2" trace="ReplaceRegexpOperation_Constraints#()V" />
       <node id="3796137614137203372" at="32,0,35,9" concept="5" />
       <node id="1227128029536564287" at="42,24,46,5" concept="5" />
@@ -296,10 +296,10 @@
       <node id="3796137614137558193" at="61,131,62,42" concept="3" />
       <node id="3796137614137558190" at="62,42,63,22" concept="8" />
       <node id="3796137614137558190" at="65,0,66,0" concept="10" trace="breakingNode_v9mr27_a0a0a0a0a1a0a0a0c" />
-      <node id="3796137614137558190" at="68,0,69,0" concept="10" trace="MatchVariableReferenceReplacement$$o" />
-      <node id="3796137614137558190" at="69,0,70,0" concept="10" trace="ReplaceRegexpOperation$ia" />
-      <node id="3796137614137558190" at="73,0,74,0" concept="10" trace="match$XCq3" />
-      <node id="3796137614137558190" at="74,0,75,0" concept="10" trace="search$ZDnU" />
+      <node id="3796137614137558190" at="68,0,69,0" concept="10" trace="MatchVariableReferenceReplacement$dc" />
+      <node id="3796137614137558190" at="69,0,70,0" concept="10" trace="ReplaceRegexpOperation$UY" />
+      <node id="3796137614137558190" at="73,0,74,0" concept="10" trace="match$L62R" />
+      <node id="3796137614137558190" at="74,0,75,0" concept="10" trace="search$N70I" />
       <node id="3796137614137558190" at="30,0,33,0" concept="2" trace="MatchVariableReferenceReplacement_Constraints#()V" />
       <node id="6836281137582820474" at="52,132,55,13" concept="5" />
       <node id="3796137614137558193" at="37,0,41,0" concept="6" trace="hasOwnScopeProvider#()Z" />
@@ -350,8 +350,8 @@
       <node id="3796137614137565252" at="46,84,47,119" concept="7" />
       <node id="3796137614137565253" at="47,119,48,61" concept="3" />
       <node id="3796137614137565252" at="48,61,49,22" concept="8" />
-      <node id="3796137614137565252" at="53,0,54,0" concept="10" trace="LiteralReplacement$zq" />
-      <node id="3796137614137565252" at="57,0,58,0" concept="10" trace="text$F715" />
+      <node id="3796137614137565252" at="53,0,54,0" concept="10" trace="LiteralReplacement$ce" />
+      <node id="3796137614137565252" at="57,0,58,0" concept="10" trace="text$u$DT" />
       <node id="3796137614137565252" at="20,0,23,0" concept="2" trace="LiteralReplacement_Constraints#()V" />
       <node id="3796137614137565253" at="25,0,28,0" concept="2" trace="Text_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="3796137614137565253" at="35,99,38,7" concept="5" />
@@ -400,9 +400,9 @@
       <node id="5533535376639427526" at="36,84,37,119" concept="7" />
       <node id="5533535376639427527" at="37,119,38,85" concept="3" />
       <node id="5533535376639427526" at="38,85,39,22" concept="8" />
-      <node id="5533535376639427526" at="43,0,44,0" concept="10" trace="PredefinedSymbolClassDeclaration$7c" />
-      <node id="5533535376639427526" at="47,0,48,0" concept="10" trace="shortDescription$xrGd" />
-      <node id="5533535376639427526" at="48,0,49,0" concept="10" trace="description$g2Cc" />
+      <node id="5533535376639427526" at="43,0,44,0" concept="10" trace="PredefinedSymbolClassDeclaration$K0" />
+      <node id="5533535376639427526" at="47,0,48,0" concept="10" trace="shortDescription$Yd4v" />
+      <node id="5533535376639427526" at="48,0,49,0" concept="10" trace="description$3wh0" />
       <node id="5533535376639427526" at="18,0,21,0" concept="2" trace="PredefinedSymbolClassDeclaration_Constraints#()V" />
       <node id="5533535376639427527" at="23,0,26,0" concept="2" trace="ShortDescription_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="5533535376639427527" at="26,0,30,0" concept="6" trace="hasOwnGetter#()Z" />
@@ -440,9 +440,9 @@
       <node id="5533535376639522935" at="39,84,40,119" concept="7" />
       <node id="5533535376639522936" at="40,119,41,85" concept="3" />
       <node id="5533535376639522935" at="41,85,42,22" concept="8" />
-      <node id="5533535376639522935" at="46,0,47,0" concept="10" trace="RegexpDeclaration$tP" />
-      <node id="5533535376639522935" at="50,0,51,0" concept="10" trace="shortDescription$xrGd" />
-      <node id="5533535376639522935" at="51,0,52,0" concept="10" trace="description$2fKX" />
+      <node id="5533535376639522935" at="46,0,47,0" concept="10" trace="RegexpDeclaration$6D" />
+      <node id="5533535376639522935" at="50,0,51,0" concept="10" trace="shortDescription$Yd4v" />
+      <node id="5533535376639522935" at="51,0,52,0" concept="10" trace="description$PHpL" />
       <node id="5533535376639522935" at="18,0,21,0" concept="2" trace="RegexpDeclaration_Constraints#()V" />
       <node id="5533535376639522936" at="23,0,26,0" concept="2" trace="ShortDescription_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="5533535376639522951" at="34,0,37,0" concept="11" trace="isNotEmptyString#(Ljava/lang/String;)Z" />
@@ -488,8 +488,8 @@
       <node id="698920857052391451" at="46,84,47,119" concept="7" />
       <node id="698920857052391452" at="47,119,48,61" concept="3" />
       <node id="698920857052391451" at="48,61,49,22" concept="8" />
-      <node id="698920857052391451" at="53,0,54,0" concept="10" trace="StringLiteralRegexp$g9" />
-      <node id="698920857052391451" at="57,0,58,0" concept="10" trace="text$8qD5" />
+      <node id="698920857052391451" at="53,0,54,0" concept="10" trace="StringLiteralRegexp$SX" />
+      <node id="698920857052391451" at="57,0,58,0" concept="10" trace="text$VShT" />
       <node id="698920857052391451" at="20,0,23,0" concept="2" trace="StringLiteralRegexp_Constraints#()V" />
       <node id="698920857052391452" at="25,0,28,0" concept="2" trace="Text_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="698920857052391452" at="35,99,38,7" concept="5" />
@@ -559,21 +559,21 @@
       <node id="8030573611853795851" at="93,53,94,94" concept="7" />
       <node id="8030573611853795861" at="95,245,96,70" concept="8" />
       <node id="8030573611853795885" at="97,5,98,16" concept="8" />
-      <node id="8030573611853647771" at="102,0,103,0" concept="10" trace="RegexpUsingConstruction$q_" />
-      <node id="8030573611853647771" at="103,0,104,0" concept="10" trace="FindMatchExpression$3_" />
-      <node id="8030573611853647771" at="104,0,105,0" concept="10" trace="IfStatement$pi" />
-      <node id="8030573611853647771" at="105,0,106,0" concept="10" trace="RegexpDeclaration$tP" />
-      <node id="8030573611853647771" at="106,0,107,0" concept="10" trace="RegexpDeclarationReferenceRegexp$8P" />
-      <node id="8030573611853647771" at="107,0,108,0" concept="10" trace="MatchParensRegexp$1m" />
-      <node id="8030573611853647771" at="108,0,109,0" concept="10" trace="Statement$ok" />
-      <node id="8030573611853647771" at="109,0,110,0" concept="10" trace="StatementList$TN" />
-      <node id="8030573611853647771" at="113,0,114,0" concept="10" trace="condition$qL$l" />
-      <node id="8030573611853647771" at="114,0,115,0" concept="10" trace="ifTrue$qLNm" />
-      <node id="8030573611853647771" at="115,0,116,0" concept="10" trace="elsifClauses$ZQja" />
-      <node id="8030573611853647771" at="116,0,117,0" concept="10" trace="condition$CVsn" />
-      <node id="8030573611853647771" at="117,0,118,0" concept="10" trace="statementList$G9pt" />
-      <node id="8030573611853647771" at="118,0,119,0" concept="10" trace="match$urIF" />
-      <node id="8030573611853647771" at="119,0,120,0" concept="10" trace="regexp$_0Rc" />
+      <node id="8030573611853647771" at="102,0,103,0" concept="10" trace="RegexpUsingConstruction$3p" />
+      <node id="8030573611853647771" at="103,0,104,0" concept="10" trace="FindMatchExpression$Gp" />
+      <node id="8030573611853647771" at="104,0,105,0" concept="10" trace="IfStatement$Q4" />
+      <node id="8030573611853647771" at="105,0,106,0" concept="10" trace="RegexpDeclaration$6D" />
+      <node id="8030573611853647771" at="106,0,107,0" concept="10" trace="RegexpDeclarationReferenceRegexp$LD" />
+      <node id="8030573611853647771" at="107,0,108,0" concept="10" trace="MatchParensRegexp$Ea" />
+      <node id="8030573611853647771" at="108,0,109,0" concept="10" trace="Statement$P6" />
+      <node id="8030573611853647771" at="109,0,110,0" concept="10" trace="StatementList$m_" />
+      <node id="8030573611853647771" at="113,0,114,0" concept="10" trace="condition$5R17" />
+      <node id="8030573611853647771" at="114,0,115,0" concept="10" trace="ifTrue$5Rg8" />
+      <node id="8030573611853647771" at="115,0,116,0" concept="10" trace="elsifClauses$EVJW" />
+      <node id="8030573611853647771" at="116,0,117,0" concept="10" trace="condition$k0T9" />
+      <node id="8030573611853647771" at="117,0,118,0" concept="10" trace="statementList$neQf" />
+      <node id="8030573611853647771" at="118,0,119,0" concept="10" trace="match$hTnv" />
+      <node id="8030573611853647771" at="119,0,120,0" concept="10" trace="regexp$ouw0" />
       <node id="8030573611853647773" at="19,0,21,0" concept="2" trace="RegexUtil#()V" />
       <node id="8030573611853647788" at="22,49,25,5" concept="4" />
       <node id="8030573611853647856" at="38,30,41,9" concept="4" />

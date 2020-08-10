@@ -29,16 +29,16 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public class TryMigrationUtil {
   private static Map<SContainmentLink, SContainmentLink> linkMap = MapSequence.fromMap(new HashMap<SContainmentLink, SContainmentLink>());
   static {
-    MapSequence.fromMap(linkMap).put(LINKS.body$I$eg, LINKS.body$lFey);
-    MapSequence.fromMap(linkMap).put(LINKS.catchClause$yGV3, LINKS.catchClause$lKBT);
-    MapSequence.fromMap(linkMap).put(LINKS.body$1aAh, LINKS.body$lFey);
-    MapSequence.fromMap(linkMap).put(LINKS.catchClause$EvoR, LINKS.catchClause$lKBT);
-    MapSequence.fromMap(linkMap).put(LINKS.finallyBody$8W3M, LINKS.finallyBody$XM3W);
+    MapSequence.fromMap(linkMap).put(LINKS.body$pDF2, LINKS.body$KFk);
+    MapSequence.fromMap(linkMap).put(LINKS.catchClause$dMnP, LINKS.catchClause$Q4F);
+    MapSequence.fromMap(linkMap).put(LINKS.body$Gg33, LINKS.body$KFk);
+    MapSequence.fromMap(linkMap).put(LINKS.catchClause$l$PD, LINKS.catchClause$Q4F);
+    MapSequence.fromMap(linkMap).put(LINKS.finallyBody$O1w$, LINKS.finallyBody$CRwI);
 
-    MapSequence.fromMap(linkMap).put(LINKS.catchBody$T0$W, LINKS.catchBody$fR$g);
-    MapSequence.fromMap(linkMap).put(LINKS.throwable$T0lV, LINKS.throwable$fRlf);
+    MapSequence.fromMap(linkMap).put(LINKS.catchBody$$61I, LINKS.catchBody$UX12);
+    MapSequence.fromMap(linkMap).put(LINKS.throwable$$5MH, LINKS.throwable$UWM1);
 
-    MapSequence.fromMap(linkMap).put(LINKS.type$uWuc, LINKS.alternative$3_p0);
+    MapSequence.fromMap(linkMap).put(LINKS.type$a1UY, LINKS.alternative$IEPM);
   }
   private static SContainmentLink findCorrespondingLink(SContainmentLink oldLink) {
     return (MapSequence.fromMap(linkMap).get(oldLink) == null ? oldLink : MapSequence.fromMap(linkMap).get(oldLink));
@@ -46,74 +46,74 @@ public class TryMigrationUtil {
   public static void migrateTryStatement(SNode node, SNode body, List<SNode> catchClauses, SNode finallyBody) {
     SNode migrated = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, "jetbrains.mps.baseLanguage.structure.TryUniversalStatement"));
     ((jetbrains.mps.smodel.SNode) migrated).setId(node.getNodeId());
-    Iterable<? extends SNode> incorrectlyMergedBody = node.getChildren(LINKS.body$lFey);
+    Iterable<? extends SNode> incorrectlyMergedBody = node.getChildren(LINKS.body$KFk);
     if (Sequence.fromIterable(incorrectlyMergedBody).isNotEmpty()) {
-      SLinkOperations.setTarget(migrated, LINKS.body$lFey, (SNode) (SNode) Sequence.fromIterable(incorrectlyMergedBody).first());
+      SLinkOperations.setTarget(migrated, LINKS.body$KFk, (SNode) (SNode) Sequence.fromIterable(incorrectlyMergedBody).first());
     } else {
-      SLinkOperations.setTarget(migrated, LINKS.body$lFey, body);
+      SLinkOperations.setTarget(migrated, LINKS.body$KFk, body);
     }
-    Iterable<? extends SNode> incorrectlyMergedFinally = node.getChildren(LINKS.finallyClause$lFtz);
+    Iterable<? extends SNode> incorrectlyMergedFinally = node.getChildren(LINKS.finallyClause$KUl);
     if (Sequence.fromIterable(incorrectlyMergedFinally).isNotEmpty()) {
-      SLinkOperations.setTarget(migrated, LINKS.finallyClause$lFtz, (SNode) (SNode) Sequence.fromIterable(incorrectlyMergedFinally).first());
-    } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.TryFinallyStatement$Vw)) {
+      SLinkOperations.setTarget(migrated, LINKS.finallyClause$KUl, (SNode) (SNode) Sequence.fromIterable(incorrectlyMergedFinally).first());
+    } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.TryFinallyStatement$oi)) {
       SNode migratedFinallyClause = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x72ddc71312b892acL, "jetbrains.mps.baseLanguage.structure.FinallyClause"));
       ((jetbrains.mps.smodel.SNode) migratedFinallyClause).setId(MigrateTryStatement.generateNodeId((SNodeId.Regular) node.getNodeId(), MigrateTryStatement.FINALLY_CLAUSE_ID_GEN));
-      SLinkOperations.setTarget(migrated, LINKS.finallyClause$lFtz, migratedFinallyClause);
-      SLinkOperations.setTarget(SLinkOperations.getTarget(migrated, LINKS.finallyClause$lFtz), LINKS.finallyBody$XM3W, finallyBody);
+      SLinkOperations.setTarget(migrated, LINKS.finallyClause$KUl, migratedFinallyClause);
+      SLinkOperations.setTarget(SLinkOperations.getTarget(migrated, LINKS.finallyClause$KUl), LINKS.finallyBody$CRwI, finallyBody);
     }
 
-    Iterable<? extends SNode> incorrectlyMergedCatches = node.getChildren(LINKS.catchClause$lKBT);
+    Iterable<? extends SNode> incorrectlyMergedCatches = node.getChildren(LINKS.catchClause$Q4F);
     for (SNode migratedCatch : Sequence.fromIterable(incorrectlyMergedCatches)) {
-      ListSequence.fromList(SLinkOperations.getChildren(migrated, LINKS.catchClause$lKBT)).addElement((SNode) (SNode) migratedCatch);
+      ListSequence.fromList(SLinkOperations.getChildren(migrated, LINKS.catchClause$Q4F)).addElement((SNode) (SNode) migratedCatch);
     }
     for (final SNode catchClause : ListSequence.fromList(catchClauses)) {
       final SNode migratedCatchClause = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L, "jetbrains.mps.baseLanguage.structure.MultipleCatchClause"));
       ((jetbrains.mps.smodel.SNode) migratedCatchClause).setId(catchClause.getNodeId());
-      ListSequence.fromList(SLinkOperations.getChildren(migrated, LINKS.catchClause$lKBT)).addElement(migratedCatchClause);
-      if ((SLinkOperations.getTarget(catchClause, LINKS.throwable$T0lV) != null)) {
+      ListSequence.fromList(SLinkOperations.getChildren(migrated, LINKS.catchClause$Q4F)).addElement(migratedCatchClause);
+      if ((SLinkOperations.getTarget(catchClause, LINKS.throwable$$5MH) != null)) {
         SNode migratedCatchVariable = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x44bbb37e796ac72eL, "jetbrains.mps.baseLanguage.structure.CatchVariable"));
-        ((jetbrains.mps.smodel.SNode) migratedCatchVariable).setId(SLinkOperations.getTarget(catchClause, LINKS.throwable$T0lV).getNodeId());
-        SLinkOperations.setTarget(migratedCatchClause, LINKS.throwable$fRlf, migratedCatchVariable);
-        SPropertyOperations.set(SLinkOperations.getTarget(migratedCatchClause, LINKS.throwable$fRlf), PROPS.name$lA7v, SPropertyOperations.getString(SLinkOperations.getTarget(catchClause, LINKS.throwable$T0lV), PROPS.name$lA7v));
-        SLinkOperations.setTarget(SLinkOperations.getTarget(migratedCatchClause, LINKS.throwable$fRlf), LINKS.initializer$no3R, SLinkOperations.getTarget(SLinkOperations.getTarget(catchClause, LINKS.throwable$T0lV), LINKS.initializer$no3R));
-        SPropertyOperations.set(SLinkOperations.getTarget(migratedCatchClause, LINKS.throwable$fRlf), PROPS.isFinal$_qt3, SPropertyOperations.getBoolean(SLinkOperations.getTarget(catchClause, LINKS.throwable$T0lV), PROPS.isFinal$_qt3));
-        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(migratedCatchClause, LINKS.throwable$fRlf), LINKS.annotation$4YGW)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(catchClause, LINKS.throwable$T0lV), LINKS.annotation$4YGW)));
+        ((jetbrains.mps.smodel.SNode) migratedCatchVariable).setId(SLinkOperations.getTarget(catchClause, LINKS.throwable$$5MH).getNodeId());
+        SLinkOperations.setTarget(migratedCatchClause, LINKS.throwable$UWM1, migratedCatchVariable);
+        SPropertyOperations.set(SLinkOperations.getTarget(migratedCatchClause, LINKS.throwable$UWM1), PROPS.name$MnvL, SPropertyOperations.getString(SLinkOperations.getTarget(catchClause, LINKS.throwable$$5MH), PROPS.name$MnvL));
+        SLinkOperations.setTarget(SLinkOperations.getTarget(migratedCatchClause, LINKS.throwable$UWM1), LINKS.initializer$2twD, SLinkOperations.getTarget(SLinkOperations.getTarget(catchClause, LINKS.throwable$$5MH), LINKS.initializer$2twD));
+        SPropertyOperations.set(SLinkOperations.getTarget(migratedCatchClause, LINKS.throwable$UWM1), PROPS.isFinal$gvTP, SPropertyOperations.getBoolean(SLinkOperations.getTarget(catchClause, LINKS.throwable$$5MH), PROPS.isFinal$gvTP));
+        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(migratedCatchClause, LINKS.throwable$UWM1), LINKS.annotation$K49I)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(catchClause, LINKS.throwable$$5MH), LINKS.annotation$K49I)));
         SNode migratedAlternativeType = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x70a99a0b674a3895L, "jetbrains.mps.baseLanguage.structure.AlternativeType"));
-        ((jetbrains.mps.smodel.SNode) migratedAlternativeType).setId(MigrateTryStatement.generateNodeId((SNodeId.Regular) SLinkOperations.getTarget(catchClause, LINKS.throwable$T0lV).getNodeId(), MigrateTryStatement.ALTERNATIVE_TYPE_ID_GEN));
-        SNode alternativeType = SLinkOperations.setTarget(SLinkOperations.getTarget(migratedCatchClause, LINKS.throwable$fRlf), LINKS.type$uWuc, migratedAlternativeType);
-        ListSequence.fromList(SLinkOperations.getChildren(alternativeType, LINKS.alternative$3_p0)).addElement(SLinkOperations.getTarget(SLinkOperations.getTarget(catchClause, LINKS.throwable$T0lV), LINKS.type$uWuc));
-        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(migratedCatchClause, LINKS.throwable$fRlf), LINKS.smodelAttribute$jXFL)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(catchClause, LINKS.throwable$T0lV), LINKS.smodelAttribute$jXFL)));
-        for (SNode attribute : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(migratedCatchClause, LINKS.throwable$fRlf), LINKS.smodelAttribute$jXFL))) {
-          if (SNodeOperations.isInstanceOf(attribute, CONCEPTS.ChildAttribute$XQ) && Objects.equals(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$XQ)), LINKS.type$uWuc)) {
-            ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(migratedCatchClause, LINKS.throwable$fRlf), LINKS.type$uWuc), LINKS.smodelAttribute$jXFL)).addElement(attribute);
-            ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$XQ), TryMigrationUtil.findCorrespondingLink(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$XQ))));
+        ((jetbrains.mps.smodel.SNode) migratedAlternativeType).setId(MigrateTryStatement.generateNodeId((SNodeId.Regular) SLinkOperations.getTarget(catchClause, LINKS.throwable$$5MH).getNodeId(), MigrateTryStatement.ALTERNATIVE_TYPE_ID_GEN));
+        SNode alternativeType = SLinkOperations.setTarget(SLinkOperations.getTarget(migratedCatchClause, LINKS.throwable$UWM1), LINKS.type$a1UY, migratedAlternativeType);
+        ListSequence.fromList(SLinkOperations.getChildren(alternativeType, LINKS.alternative$IEPM)).addElement(SLinkOperations.getTarget(SLinkOperations.getTarget(catchClause, LINKS.throwable$$5MH), LINKS.type$a1UY));
+        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(migratedCatchClause, LINKS.throwable$UWM1), LINKS.smodelAttribute$KJ43)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(catchClause, LINKS.throwable$$5MH), LINKS.smodelAttribute$KJ43)));
+        for (SNode attribute : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(migratedCatchClause, LINKS.throwable$UWM1), LINKS.smodelAttribute$KJ43))) {
+          if (SNodeOperations.isInstanceOf(attribute, CONCEPTS.ChildAttribute$m8) && Objects.equals(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$m8)), LINKS.type$a1UY)) {
+            ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(migratedCatchClause, LINKS.throwable$UWM1), LINKS.type$a1UY), LINKS.smodelAttribute$KJ43)).addElement(attribute);
+            ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$m8), TryMigrationUtil.findCorrespondingLink(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$m8))));
           }
         }
       }
-      SLinkOperations.setTarget(migratedCatchClause, LINKS.catchBody$fR$g, SLinkOperations.getTarget(catchClause, LINKS.catchBody$T0$W));
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(migratedCatchClause, LINKS.catchBody$fR$g), CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+      SLinkOperations.setTarget(migratedCatchClause, LINKS.catchBody$UX12, SLinkOperations.getTarget(catchClause, LINKS.catchBody$$61I));
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(migratedCatchClause, LINKS.catchBody$UX12), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.variableDeclaration$7WwU) == SLinkOperations.getTarget(catchClause, LINKS.throwable$T0lV);
+          return SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG) == SLinkOperations.getTarget(catchClause, LINKS.throwable$$5MH);
         }
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          SLinkOperations.setTarget(it, LINKS.variableDeclaration$7WwU, SLinkOperations.getTarget(migratedCatchClause, LINKS.throwable$fRlf));
+          SLinkOperations.setTarget(it, LINKS.variableDeclaration$N1XG, SLinkOperations.getTarget(migratedCatchClause, LINKS.throwable$UWM1));
         }
       });
-      ListSequence.fromList(SLinkOperations.getChildren(migratedCatchClause, LINKS.smodelAttribute$jXFL)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(catchClause, LINKS.smodelAttribute$jXFL)));
-      for (SNode attribute : ListSequence.fromList(SLinkOperations.getChildren(migratedCatchClause, LINKS.smodelAttribute$jXFL))) {
-        if (SNodeOperations.isInstanceOf(attribute, CONCEPTS.ChildAttribute$XQ) && !(SNodeOperations.getConcept(SNodeOperations.getParent(attribute)).getContainmentLinks().contains(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$XQ))))) {
-          ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$XQ), TryMigrationUtil.findCorrespondingLink(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$XQ))));
+      ListSequence.fromList(SLinkOperations.getChildren(migratedCatchClause, LINKS.smodelAttribute$KJ43)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(catchClause, LINKS.smodelAttribute$KJ43)));
+      for (SNode attribute : ListSequence.fromList(SLinkOperations.getChildren(migratedCatchClause, LINKS.smodelAttribute$KJ43))) {
+        if (SNodeOperations.isInstanceOf(attribute, CONCEPTS.ChildAttribute$m8) && !(SNodeOperations.getConcept(SNodeOperations.getParent(attribute)).getContainmentLinks().contains(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$m8))))) {
+          ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$m8), TryMigrationUtil.findCorrespondingLink(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$m8))));
         }
       }
     }
-    ListSequence.fromList(SLinkOperations.getChildren(migrated, LINKS.smodelAttribute$jXFL)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$jXFL)));
-    for (SNode attribute : ListSequence.fromList(SLinkOperations.getChildren(migrated, LINKS.smodelAttribute$jXFL))) {
-      if (SNodeOperations.isInstanceOf(attribute, CONCEPTS.ChildAttribute$XQ) && Objects.equals(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$XQ)), LINKS.finallyBody$8W3M)) {
-        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(migrated, LINKS.finallyClause$lFtz), LINKS.smodelAttribute$jXFL)).addElement(attribute);
+    ListSequence.fromList(SLinkOperations.getChildren(migrated, LINKS.smodelAttribute$KJ43)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43)));
+    for (SNode attribute : ListSequence.fromList(SLinkOperations.getChildren(migrated, LINKS.smodelAttribute$KJ43))) {
+      if (SNodeOperations.isInstanceOf(attribute, CONCEPTS.ChildAttribute$m8) && Objects.equals(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$m8)), LINKS.finallyBody$O1w$)) {
+        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(migrated, LINKS.finallyClause$KUl), LINKS.smodelAttribute$KJ43)).addElement(attribute);
       }
-      if (SNodeOperations.isInstanceOf(attribute, CONCEPTS.ChildAttribute$XQ) && !(SNodeOperations.getConcept(SNodeOperations.getParent(attribute)).getContainmentLinks().contains(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$XQ))))) {
-        ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$XQ), TryMigrationUtil.findCorrespondingLink(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$XQ))));
+      if (SNodeOperations.isInstanceOf(attribute, CONCEPTS.ChildAttribute$m8) && !(SNodeOperations.getConcept(SNodeOperations.getParent(attribute)).getContainmentLinks().contains(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$m8))))) {
+        ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$m8), TryMigrationUtil.findCorrespondingLink(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$m8))));
       }
     }
 
@@ -121,35 +121,35 @@ public class TryMigrationUtil {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$I$eg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f383e83d4L, "body");
-    /*package*/ static final SContainmentLink body$lFey = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb114L, "body");
-    /*package*/ static final SContainmentLink catchClause$yGV3 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f39a8ba1fL, "catchClause");
-    /*package*/ static final SContainmentLink catchClause$lKBT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb116L, "catchClause");
-    /*package*/ static final SContainmentLink body$1aAh = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacec83aeL, "body");
-    /*package*/ static final SContainmentLink catchClause$EvoR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10f39abd97cL, "catchClause");
-    /*package*/ static final SContainmentLink finallyBody$8W3M = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacecb713L, "finallyBody");
-    /*package*/ static final SContainmentLink finallyBody$XM3W = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x72ddc71312b892acL, 0x72ddc71312b89bbaL, "finallyBody");
-    /*package*/ static final SContainmentLink catchBody$T0$W = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f2L, "catchBody");
-    /*package*/ static final SContainmentLink catchBody$fR$g = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L, 0x72ddc71311eda6f5L, "catchBody");
-    /*package*/ static final SContainmentLink throwable$T0lV = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f1L, "throwable");
-    /*package*/ static final SContainmentLink throwable$fRlf = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L, 0x72ddc71311eda6f4L, "throwable");
-    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink alternative$3_p0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x70a99a0b674a3895L, 0x70a99a0b674a3896L, "alternative");
-    /*package*/ static final SContainmentLink finallyClause$lFtz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb115L, "finallyClause");
-    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
-    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink body$pDF2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f383e83d4L, "body");
+    /*package*/ static final SContainmentLink body$KFk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb114L, "body");
+    /*package*/ static final SContainmentLink catchClause$dMnP = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f39a8ba1fL, "catchClause");
+    /*package*/ static final SContainmentLink catchClause$Q4F = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb116L, "catchClause");
+    /*package*/ static final SContainmentLink body$Gg33 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacec83aeL, "body");
+    /*package*/ static final SContainmentLink catchClause$l$PD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10f39abd97cL, "catchClause");
+    /*package*/ static final SContainmentLink finallyBody$O1w$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacecb713L, "finallyBody");
+    /*package*/ static final SContainmentLink finallyBody$CRwI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x72ddc71312b892acL, 0x72ddc71312b89bbaL, "finallyBody");
+    /*package*/ static final SContainmentLink catchBody$$61I = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f2L, "catchBody");
+    /*package*/ static final SContainmentLink catchBody$UX12 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L, 0x72ddc71311eda6f5L, "catchBody");
+    /*package*/ static final SContainmentLink throwable$$5MH = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f1L, "throwable");
+    /*package*/ static final SContainmentLink throwable$UWM1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L, 0x72ddc71311eda6f4L, "throwable");
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink alternative$IEPM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x70a99a0b674a3895L, 0x70a99a0b674a3896L, "alternative");
+    /*package*/ static final SContainmentLink finallyClause$KUl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb115L, "finallyClause");
+    /*package*/ static final SContainmentLink initializer$2twD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink annotation$K49I = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SContainmentLink smodelAttribute$KJ43 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TryFinallyStatement$Vw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryFinallyStatement");
-    /*package*/ static final SConcept ChildAttribute$XQ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
-    /*package*/ static final SConcept VariableReference$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept TryFinallyStatement$oi = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryFinallyStatement");
+    /*package*/ static final SConcept ChildAttribute$m8 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
+    /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$gvTP = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 }

@@ -56,15 +56,15 @@
       <node id="1219331742419" at="74,30,75,234" concept="3" />
       <node id="1219331742419" at="75,234,76,435" concept="3" />
       <node id="1219331742419" at="76,435,77,24" concept="9" />
-      <node id="1170730182541" at="81,0,82,0" concept="11" trace="ClassConcept$IY" />
-      <node id="1170730182541" at="82,0,83,0" concept="11" trace="BaseMethodDeclaration$RR" />
-      <node id="1170730182541" at="83,0,84,0" concept="11" trace="Closure$5Q" />
-      <node id="1170730182541" at="84,0,85,0" concept="11" trace="InstanceMethodDeclaration$An" />
-      <node id="1170730182541" at="85,0,86,0" concept="11" trace="ConstructorDeclaration$5U" />
-      <node id="1170730182541" at="89,0,90,0" concept="11" trace="typeVariableDeclaration$6cWB" />
-      <node id="1170730182541" at="90,0,91,0" concept="11" trace="classifier$xslD" />
-      <node id="1170730182541" at="91,0,92,0" concept="11" trace="fieldType$VZGs" />
-      <node id="1170730182541" at="92,0,93,0" concept="11" trace="classConcept$StRd" />
+      <node id="1170730182541" at="81,0,82,0" concept="11" trace="ClassConcept$bK" />
+      <node id="1170730182541" at="82,0,83,0" concept="11" trace="BaseMethodDeclaration$kD" />
+      <node id="1170730182541" at="83,0,84,0" concept="11" trace="Closure$yC" />
+      <node id="1170730182541" at="84,0,85,0" concept="11" trace="InstanceMethodDeclaration$39" />
+      <node id="1170730182541" at="85,0,86,0" concept="11" trace="ConstructorDeclaration$yG" />
+      <node id="1170730182541" at="89,0,90,0" concept="11" trace="typeVariableDeclaration$Lipp" />
+      <node id="1170730182541" at="90,0,91,0" concept="11" trace="classifier$cxMr" />
+      <node id="1170730182541" at="91,0,92,0" concept="11" trace="fieldType$dHXe" />
+      <node id="1170730182541" at="92,0,93,0" concept="11" trace="classConcept$zzjZ" />
       <node id="4723230619342922312" at="20,0,22,0" concept="1" trace="QueriesUtil#()V" />
       <node id="1196275120554" at="34,118,37,5" concept="6" />
       <node id="1219331728661" at="56,0,59,0" concept="12" trace="getJavaLangObject#()Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -188,18 +188,18 @@
       <node id="1238944364596" at="195,32,196,76" concept="3" />
       <node id="1238944377795" at="196,76,197,76" concept="3" />
       <node id="1238944594526" at="197,76,198,45" concept="3" />
-      <node id="1238940012773" at="204,0,205,0" concept="11" trace="BaseMethodDeclaration$RR" />
-      <node id="1238940012773" at="205,0,206,0" concept="11" trace="Closure$5Q" />
-      <node id="1238940012773" at="206,0,207,0" concept="11" trace="ConceptFunction$Tt" />
-      <node id="1238940012773" at="207,0,208,0" concept="11" trace="VariableDeclaration$xe" />
-      <node id="1238940012773" at="208,0,209,0" concept="11" trace="VariableReference$sQ" />
-      <node id="1238940012773" at="209,0,210,0" concept="11" trace="ParameterDeclaration$qU" />
-      <node id="1238940012773" at="210,0,211,0" concept="11" trace="LocalVariableDeclaration$Bf" />
-      <node id="1238940012773" at="214,0,215,0" concept="11" trace="body$qspy" />
-      <node id="1238940012773" at="215,0,216,0" concept="11" trace="parameter$qsax" />
-      <node id="1238940012773" at="216,0,217,0" concept="11" trace="body$z0FY" />
-      <node id="1238940012773" at="217,0,218,0" concept="11" trace="variableDeclaration$7WwU" />
-      <node id="1238940012773" at="221,0,222,0" concept="11" trace="name$lA7v" />
+      <node id="1238940012773" at="204,0,205,0" concept="11" trace="BaseMethodDeclaration$kD" />
+      <node id="1238940012773" at="205,0,206,0" concept="11" trace="Closure$yC" />
+      <node id="1238940012773" at="206,0,207,0" concept="11" trace="ConceptFunction$mf" />
+      <node id="1238940012773" at="207,0,208,0" concept="11" trace="VariableDeclaration$Y0" />
+      <node id="1238940012773" at="208,0,209,0" concept="11" trace="VariableReference$TC" />
+      <node id="1238940012773" at="209,0,210,0" concept="11" trace="ParameterDeclaration$RG" />
+      <node id="1238940012773" at="210,0,211,0" concept="11" trace="LocalVariableDeclaration$41" />
+      <node id="1238940012773" at="214,0,215,0" concept="11" trace="body$5xQk" />
+      <node id="1238940012773" at="215,0,216,0" concept="11" trace="parameter$5xBj" />
+      <node id="1238940012773" at="216,0,217,0" concept="11" trace="body$e68K" />
+      <node id="1238940012773" at="217,0,218,0" concept="11" trace="variableDeclaration$N1XG" />
+      <node id="1238940012773" at="221,0,222,0" concept="11" trace="name$MnvL" />
       <node id="4723230619342922316" at="30,0,32,0" concept="1" trace="ClosuresUtil#()V" />
       <node id="9209581912525119097" at="71,12,73,7" concept="0" />
       <node id="1238944138205" at="160,0,162,0" concept="1" trace="ClosureContextData#()V" />
@@ -418,8 +418,8 @@
       <node id="8428317315592447803" at="18,90,19,67" concept="9" />
       <node id="8428317315592447805" at="20,5,21,103" concept="8" />
       <node id="9209581912524882662" at="21,103,22,95" concept="9" />
-      <node id="8428317315592447591" at="26,0,27,0" concept="11" trace="BaseMethodDeclaration$RR" />
-      <node id="8428317315592447591" at="27,0,28,0" concept="11" trace="ParameterDeclaration$qU" />
+      <node id="8428317315592447591" at="26,0,27,0" concept="11" trace="BaseMethodDeclaration$kD" />
+      <node id="8428317315592447591" at="27,0,28,0" concept="11" trace="ParameterDeclaration$RG" />
       <node id="8428317315592447593" at="15,0,17,0" concept="1" trace="_QueriesUtil#()V" />
       <node id="8428317315592447796" at="17,132,20,5" concept="6" />
       <node id="8428317315592447781" at="17,0,24,0" concept="12" trace="getList_ContextOwner_ifMethod_ParmsUsedInClosure#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/generator/template/TemplateQueryContext;)Ljava/lang/Iterable;" />

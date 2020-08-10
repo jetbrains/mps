@@ -43,7 +43,7 @@ public class loggingLowLevel_nodeSubstitute_Contribution extends SubstituteMenuB
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_35gsnl_a(), CONCEPTS.LogLowLevelStatement$g1));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_35gsnl_a(), CONCEPTS.LogLowLevelStatement$3g));
     return result;
   }
 
@@ -115,7 +115,7 @@ public class loggingLowLevel_nodeSubstitute_Contribution extends SubstituteMenuB
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.LogLowLevelStatement$g1, context);
+          super(CONCEPTS.LogLowLevelStatement$3g, context);
           _context = context;
         }
 
@@ -126,13 +126,13 @@ public class loggingLowLevel_nodeSubstitute_Contribution extends SubstituteMenuB
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode logStatement = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.LogLowLevelStatement$g1, null);
-          SPropertyOperations.setEnum(logStatement, PROPS.severity$AHFw, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x10fc53ae113L, "jetbrains.mps.baseLanguage.logging.structure.Severity"), SEnumOperations.getMemberName0(myParameterObject)));
-          SNodeFactoryOperations.setNewChild(logStatement, LINKS.message$AI9y, CONCEPTS.StringLiteral$4G);
-          SNode catchClause = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.CatchClause$hu, true, false);
-          if ((catchClause != null) && (SLinkOperations.getTarget(catchClause, LINKS.throwable$T0lV) != null)) {
-            SNode lvr = SLinkOperations.setNewChild(logStatement, LINKS.throwable$AIB$, CONCEPTS.VariableReference$sQ);
-            SLinkOperations.setTarget(lvr, LINKS.variableDeclaration$7WwU, SLinkOperations.getTarget(catchClause, LINKS.throwable$T0lV));
+          SNode logStatement = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.LogLowLevelStatement$3g, null);
+          SPropertyOperations.setEnum(logStatement, PROPS.severity$TfuJ, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x10fc53ae113L, "jetbrains.mps.baseLanguage.logging.structure.Severity"), SEnumOperations.getMemberName0(myParameterObject)));
+          SNodeFactoryOperations.setNewChild(logStatement, LINKS.message$TfWL, CONCEPTS.StringLiteral$xu);
+          SNode catchClause = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.CatchClause$Ig, true, false);
+          if ((catchClause != null) && (SLinkOperations.getTarget(catchClause, LINKS.throwable$$5MH) != null)) {
+            SNode lvr = SLinkOperations.setNewChild(logStatement, LINKS.throwable$TgqN, CONCEPTS.VariableReference$TC);
+            SLinkOperations.setTarget(lvr, LINKS.variableDeclaration$N1XG, SLinkOperations.getTarget(catchClause, LINKS.throwable$$5MH));
           }
           return logStatement;
         }
@@ -143,7 +143,7 @@ public class loggingLowLevel_nodeSubstitute_Contribution extends SubstituteMenuB
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, CONCEPTS.LogLowLevelStatement$g1, getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.LogLowLevelStatement$3g, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -162,7 +162,7 @@ public class loggingLowLevel_nodeSubstitute_Contribution extends SubstituteMenuB
         }
         @Override
         public void select(@NotNull SNode createdNode, @NotNull String pattern) {
-          SelectionUtil.selectCell(_context.getEditorContext(), SLinkOperations.getTarget(createdNode, LINKS.message$AI9y), SelectionManager.FIRST_EDITABLE_CELL);
+          SelectionUtil.selectCell(_context.getEditorContext(), SLinkOperations.getTarget(createdNode, LINKS.message$TfWL), SelectionManager.FIRST_EDITABLE_CELL);
         }
       }
     }
@@ -170,20 +170,20 @@ public class loggingLowLevel_nodeSubstitute_Contribution extends SubstituteMenuB
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LogLowLevelStatement$g1 = MetaAdapterFactory.getConcept(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, "jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement");
-    /*package*/ static final SConcept StringLiteral$4G = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral");
-    /*package*/ static final SConcept CatchClause$hu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, "jetbrains.mps.baseLanguage.structure.CatchClause");
-    /*package*/ static final SConcept VariableReference$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept LogLowLevelStatement$3g = MetaAdapterFactory.getConcept(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, "jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement");
+    /*package*/ static final SConcept StringLiteral$xu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral");
+    /*package*/ static final SConcept CatchClause$Ig = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, "jetbrains.mps.baseLanguage.structure.CatchClause");
+    /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty severity$AHFw = MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b7L, "severity");
+    /*package*/ static final SProperty severity$TfuJ = MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b7L, "severity");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink message$AI9y = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b9L, "message");
-    /*package*/ static final SContainmentLink throwable$T0lV = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f1L, "throwable");
-    /*package*/ static final SContainmentLink throwable$AIB$ = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1bbL, "throwable");
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink message$TfWL = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b9L, "message");
+    /*package*/ static final SContainmentLink throwable$$5MH = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, 0x10f39a6a2f1L, "throwable");
+    /*package*/ static final SContainmentLink throwable$TgqN = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1bbL, "throwable");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 }

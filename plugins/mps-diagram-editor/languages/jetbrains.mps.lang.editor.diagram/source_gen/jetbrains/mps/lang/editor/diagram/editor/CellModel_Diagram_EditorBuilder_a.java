@@ -124,10 +124,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.diagramElements$j9Iu;
+      return LINKS.diagramElements$UiAh;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.DiagramElement$I6;
+      return CONCEPTS.DiagramElement$_T;
     }
 
     private String getSeparatorText(SNode prevNode, SNode nextNode) {
@@ -140,7 +140,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(diagramElementsListHandler_7br2q0_e0.this.getNode(), LINKS.diagramElements$j9Iu));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(diagramElementsListHandler_7br2q0_e0.this.getNode(), LINKS.diagramElements$UiAh));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -203,7 +203,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new paletteDeclarationSingleRoleHandler_7br2q0_g0(myNode, LINKS.paletteDeclaration$CkN_, getEditorContext());
+    SingleRoleCellProvider provider = new paletteDeclarationSingleRoleHandler_7br2q0_g0(myNode, LINKS.paletteDeclaration$ftFo, getEditorContext());
     return provider.createCell();
   }
   private static class paletteDeclarationSingleRoleHandler_7br2q0_g0 extends SingleRoleCellProvider {
@@ -223,8 +223,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.paletteDeclaration$CkN_, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.paletteDeclaration$CkN_, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.paletteDeclaration$ftFo, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.paletteDeclaration$ftFo, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -236,7 +236,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.paletteDeclaration$CkN_);
+        editorCell.setSRole(LINKS.paletteDeclaration$ftFo);
       }
       Style style = new StyleImpl();
       style.set(StyleAttributes.INDENT_LAYOUT_NEW_LINE, true);
@@ -246,7 +246,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.paletteDeclaration$CkN_));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.paletteDeclaration$ftFo));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_paletteDeclaration");
@@ -271,11 +271,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink diagramElements$j9Iu = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x57869048dc89fbf7L, 0x4a53d4fb31a6b00cL, "diagramElements");
-    /*package*/ static final SContainmentLink paletteDeclaration$CkN_ = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x57869048dc89fbf7L, 0x5bdb7aaec1476e7cL, "paletteDeclaration");
+    /*package*/ static final SContainmentLink diagramElements$UiAh = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x57869048dc89fbf7L, 0x4a53d4fb31a6b00cL, "diagramElements");
+    /*package*/ static final SContainmentLink paletteDeclaration$ftFo = MetaAdapterFactory.getContainmentLink(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x57869048dc89fbf7L, 0x5bdb7aaec1476e7cL, "paletteDeclaration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DiagramElement$I6 = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x4a53d4fb31a6add1L, "jetbrains.mps.lang.editor.diagram.structure.DiagramElement");
+    /*package*/ static final SConcept DiagramElement$_T = MetaAdapterFactory.getConcept(0x6106f6117a7442d1L, 0x80deedc5c602bfd1L, 0x4a53d4fb31a6add1L, "jetbrains.mps.lang.editor.diagram.structure.DiagramElement");
   }
 }

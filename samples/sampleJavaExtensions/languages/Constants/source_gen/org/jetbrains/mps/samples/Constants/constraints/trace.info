@@ -15,7 +15,7 @@
   <root nodeRef="r:af985d7a-c914-498c-96e5-c3fe0f4471b1(org.jetbrains.mps.samples.Constants.constraints)/2001769927721048297">
     <file name="Constant_Constraints.java">
       <node id="2001769927721048297" at="10,33,11,32" concept="6" />
-      <node id="2001769927721048297" at="15,0,16,0" concept="5" trace="Constant$9C" />
+      <node id="2001769927721048297" at="15,0,16,0" concept="5" trace="Constant$Ym" />
       <node id="2001769927721048297" at="10,0,13,0" concept="0" trace="Constant_Constraints#()V" />
       <scope id="2001769927721048297" at="10,33,11,32" />
       <scope id="2001769927721048297" at="10,0,13,0" />
@@ -34,9 +34,9 @@
       <node id="3990190717072399939" at="50,131,51,42" concept="1" />
       <node id="3990190717072399938" at="51,42,52,22" concept="4" />
       <node id="3990190717072399938" at="54,0,55,0" concept="5" trace="breakingNode_nqxbkv_a0a0a0a0a1a0a0a0c" />
-      <node id="3990190717072399938" at="57,0,58,0" concept="5" trace="ConstantReference$Cm" />
-      <node id="3990190717072399938" at="58,0,59,0" concept="5" trace="Constant$9C" />
-      <node id="3990190717072399938" at="62,0,63,0" concept="5" trace="original$OT6l" />
+      <node id="3990190717072399938" at="57,0,58,0" concept="5" trace="ConstantReference$t4" />
+      <node id="3990190717072399938" at="58,0,59,0" concept="5" trace="Constant$Ym" />
+      <node id="3990190717072399938" at="62,0,63,0" concept="5" trace="original$FCV3" />
       <node id="3990190717072399938" at="23,0,26,0" concept="0" trace="ConstantReference_Constraints#()V" />
       <node id="3990190717072399939" at="30,0,34,0" concept="2" trace="hasOwnScopeProvider#()Z" />
       <node id="3990190717072399939" at="38,0,42,0" concept="2" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />

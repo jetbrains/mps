@@ -152,7 +152,7 @@ public class DeleteNodesHelper {
                   return;
                 }
 
-                if (SNodeOperations.isInstanceOf(it, CONCEPTS.AbstractConceptDeclaration$UN)) {
+                if (SNodeOperations.isInstanceOf(it, CONCEPTS.AbstractConceptDeclaration$KA)) {
                   SearchResults<SNode> instances = FindUtils.getSearchResults(new EmptyProgressMonitor(), it, scope, "jetbrains.mps.lang.structure.findUsages.ConceptInstances_Finder");
                   SetSequence.fromSet(results).addSequence(ListSequence.fromList(instances.getSearchResults2()));
                 }
@@ -212,6 +212,6 @@ public class DeleteNodesHelper {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }

@@ -18,18 +18,18 @@ public class LogStatementConversions {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       {
         final SNode msg = sampleNode;
-        if (SNodeOperations.isInstanceOf(msg, CONCEPTS.MsgStatement$2f)) {
-          SLinkOperations.setTarget(newNode, LINKS.message$AI9y, SLinkOperations.getTarget(msg, LINKS.message$rxNW));
-          SPropertyOperations.assignEnum(newNode, PROPS.severity$AHFw, SPropertyOperations.getEnum(msg, PROPS.severity$2ErU));
-          SLinkOperations.setTarget(newNode, LINKS.throwable$AIB$, SLinkOperations.getTarget(msg, LINKS.throwable$ry2X));
+        if (SNodeOperations.isInstanceOf(msg, CONCEPTS.MsgStatement$Pu)) {
+          SLinkOperations.setTarget(newNode, LINKS.message$TfWL, SLinkOperations.getTarget(msg, LINKS.message$I3Bb));
+          SPropertyOperations.assignEnum(newNode, PROPS.severity$TfuJ, SPropertyOperations.getEnum(msg, PROPS.severity$lcf9));
+          SLinkOperations.setTarget(newNode, LINKS.throwable$TgqN, SLinkOperations.getTarget(msg, LINKS.throwable$I3Qc));
         }
       }
       {
         final SNode msg = sampleNode;
-        if (SNodeOperations.isInstanceOf(msg, CONCEPTS.LogLowLevelStatement$g1)) {
-          SLinkOperations.setTarget(newNode, LINKS.message$AI9y, SLinkOperations.getTarget(msg, LINKS.message$AI9y));
-          SPropertyOperations.assignEnum(newNode, PROPS.severity$AHFw, SPropertyOperations.getEnum(msg, PROPS.severity$AHFw));
-          SLinkOperations.setTarget(newNode, LINKS.throwable$AIB$, SLinkOperations.getTarget(msg, LINKS.throwable$AIB$));
+        if (SNodeOperations.isInstanceOf(msg, CONCEPTS.LogLowLevelStatement$3g)) {
+          SLinkOperations.setTarget(newNode, LINKS.message$TfWL, SLinkOperations.getTarget(msg, LINKS.message$TfWL));
+          SPropertyOperations.assignEnum(newNode, PROPS.severity$TfuJ, SPropertyOperations.getEnum(msg, PROPS.severity$TfuJ));
+          SLinkOperations.setTarget(newNode, LINKS.throwable$TgqN, SLinkOperations.getTarget(msg, LINKS.throwable$TgqN));
         }
       }
     }
@@ -38,37 +38,37 @@ public class LogStatementConversions {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       {
         final SNode msg = sampleNode;
-        if (SNodeOperations.isInstanceOf(msg, CONCEPTS.MsgStatement$2f)) {
-          SLinkOperations.setTarget(newNode, LINKS.message$rxNW, SLinkOperations.getTarget(msg, LINKS.message$rxNW));
-          SPropertyOperations.assignEnum(newNode, PROPS.severity$2ErU, SPropertyOperations.getEnum(msg, PROPS.severity$2ErU));
-          SLinkOperations.setTarget(newNode, LINKS.throwable$ry2X, SLinkOperations.getTarget(msg, LINKS.throwable$ry2X));
+        if (SNodeOperations.isInstanceOf(msg, CONCEPTS.MsgStatement$Pu)) {
+          SLinkOperations.setTarget(newNode, LINKS.message$I3Bb, SLinkOperations.getTarget(msg, LINKS.message$I3Bb));
+          SPropertyOperations.assignEnum(newNode, PROPS.severity$lcf9, SPropertyOperations.getEnum(msg, PROPS.severity$lcf9));
+          SLinkOperations.setTarget(newNode, LINKS.throwable$I3Qc, SLinkOperations.getTarget(msg, LINKS.throwable$I3Qc));
         }
       }
       {
         final SNode msg = sampleNode;
-        if (SNodeOperations.isInstanceOf(msg, CONCEPTS.LogLowLevelStatement$g1)) {
-          SLinkOperations.setTarget(newNode, LINKS.message$rxNW, SLinkOperations.getTarget(msg, LINKS.message$AI9y));
-          SPropertyOperations.assignEnum(newNode, PROPS.severity$2ErU, SPropertyOperations.getEnum(msg, PROPS.severity$AHFw));
-          SLinkOperations.setTarget(newNode, LINKS.throwable$ry2X, SLinkOperations.getTarget(msg, LINKS.throwable$AIB$));
+        if (SNodeOperations.isInstanceOf(msg, CONCEPTS.LogLowLevelStatement$3g)) {
+          SLinkOperations.setTarget(newNode, LINKS.message$I3Bb, SLinkOperations.getTarget(msg, LINKS.message$TfWL));
+          SPropertyOperations.assignEnum(newNode, PROPS.severity$lcf9, SPropertyOperations.getEnum(msg, PROPS.severity$TfuJ));
+          SLinkOperations.setTarget(newNode, LINKS.throwable$I3Qc, SLinkOperations.getTarget(msg, LINKS.throwable$TgqN));
         }
       }
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MsgStatement$2f = MetaAdapterFactory.getConcept(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, "jetbrains.mps.baseLanguage.logging.structure.MsgStatement");
-    /*package*/ static final SConcept LogLowLevelStatement$g1 = MetaAdapterFactory.getConcept(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, "jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement");
+    /*package*/ static final SConcept MsgStatement$Pu = MetaAdapterFactory.getConcept(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, "jetbrains.mps.baseLanguage.logging.structure.MsgStatement");
+    /*package*/ static final SConcept LogLowLevelStatement$3g = MetaAdapterFactory.getConcept(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, "jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink message$AI9y = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b9L, "message");
-    /*package*/ static final SContainmentLink message$rxNW = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25eL, "message");
-    /*package*/ static final SContainmentLink throwable$AIB$ = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1bbL, "throwable");
-    /*package*/ static final SContainmentLink throwable$ry2X = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25fL, "throwable");
+    /*package*/ static final SContainmentLink message$TfWL = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b9L, "message");
+    /*package*/ static final SContainmentLink message$I3Bb = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25eL, "message");
+    /*package*/ static final SContainmentLink throwable$TgqN = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1bbL, "throwable");
+    /*package*/ static final SContainmentLink throwable$I3Qc = MetaAdapterFactory.getContainmentLink(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x4f67298c4630c25fL, "throwable");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty severity$AHFw = MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b7L, "severity");
-    /*package*/ static final SProperty severity$2ErU = MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x57e2cf14f6d5d81fL, "severity");
+    /*package*/ static final SProperty severity$TfuJ = MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x1c3d779b2be2f0b9L, 0x1c3d779b2be2f1b7L, "severity");
+    /*package*/ static final SProperty severity$lcf9 = MetaAdapterFactory.getProperty(0x760a0a8ceabb4521L, 0x8bfd65db761a9ba3L, 0x57e2cf14f6d5a71dL, 0x57e2cf14f6d5d81fL, "severity");
   }
 }

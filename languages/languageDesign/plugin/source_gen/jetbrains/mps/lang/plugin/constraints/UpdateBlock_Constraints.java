@@ -8,16 +8,16 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class UpdateBlock_Constraints extends BaseConstraintsDescriptor {
   public UpdateBlock_Constraints() {
-    super(CONCEPTS.UpdateBlock$rV);
+    super(CONCEPTS.UpdateBlock$oY);
   }
 
   @Override
   public SConcept getDefaultConcreteConcept() {
-    return CONCEPTS.IsApplicableBlock$gJ;
+    return CONCEPTS.IsApplicableBlock$dM;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept UpdateBlock$rV = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x118b8325461L, "jetbrains.mps.lang.plugin.structure.UpdateBlock");
-    /*package*/ static final SConcept IsApplicableBlock$gJ = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x118b833c6a5L, "jetbrains.mps.lang.plugin.structure.IsApplicableBlock");
+    /*package*/ static final SConcept UpdateBlock$oY = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x118b8325461L, "jetbrains.mps.lang.plugin.structure.UpdateBlock");
+    /*package*/ static final SConcept IsApplicableBlock$dM = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x118b833c6a5L, "jetbrains.mps.lang.plugin.structure.IsApplicableBlock");
   }
 }

@@ -34,15 +34,15 @@ public class Line_Actions {
 
         List<SNode> selectedNodes = selection.getSelectedNodes();
         EditorCell cell = selection.getEditorCell();
-        SNode currentWord = SNodeOperations.as(selectedNodes.get(0), CONCEPTS.TextElement$Ue);
-        SNode currentLine = SNodeOperations.as(SNodeOperations.getParent(currentWord), CONCEPTS.Line$w3);
-        SNode previousLine = SNodeOperations.as(SNodeOperations.getPrevSibling(currentLine), CONCEPTS.Line$w3);
+        SNode currentWord = SNodeOperations.as(selectedNodes.get(0), CONCEPTS.TextElement$WN);
+        SNode currentLine = SNodeOperations.as(SNodeOperations.getParent(currentWord), CONCEPTS.Line$yC);
+        SNode previousLine = SNodeOperations.as(SNodeOperations.getPrevSibling(currentLine), CONCEPTS.Line$yC);
         boolean includeCurrentLineInSelection = selection.getSelectionEnd() != selection.getSelectionStart() || !(cell instanceof EditorCell_Property) || selection.getSelectionStart() != 0 || (SNodeOperations.getPrevSibling(currentWord) != null) || (previousLine == null);
 
         SNode lineToSelect = (includeCurrentLineInSelection ? currentLine : previousLine);
-        SNode first = ListSequence.fromList(SLinkOperations.getChildren(lineToSelect, LINKS.elements$cK1w)).first();
-        SNode last = ListSequence.fromList(SLinkOperations.getChildren(lineToSelect, LINKS.elements$cK1w)).last();
-        WordRangeSelection ws = new WordRangeSelection(editorContext.getEditorComponent(), SNodeOperations.as(first, CONCEPTS.TextElement$Ue), SNodeOperations.as(last, CONCEPTS.TextElement$Ue), false);
+        SNode first = ListSequence.fromList(SLinkOperations.getChildren(lineToSelect, LINKS.elements$_j45)).first();
+        SNode last = ListSequence.fromList(SLinkOperations.getChildren(lineToSelect, LINKS.elements$_j45)).last();
+        WordRangeSelection ws = new WordRangeSelection(editorContext.getEditorComponent(), SNodeOperations.as(first, CONCEPTS.TextElement$WN), SNodeOperations.as(last, CONCEPTS.TextElement$WN), false);
         selectionManager.pushSelection(ws);
       }
 
@@ -58,10 +58,10 @@ public class Line_Actions {
         EditorCellLabelSelection selection = as_h5gcex_a0a1a1a0a0a2(selectionManager.getSelection(), EditorCellLabelSelection.class);
 
         List<SNode> selectedNodes = selection.getSelectedNodes();
-        SNode currentWord = SNodeOperations.as(selectedNodes.get(0), CONCEPTS.TextElement$Ue);
+        SNode currentWord = SNodeOperations.as(selectedNodes.get(0), CONCEPTS.TextElement$WN);
         boolean includeCurrentNodeInSelection = selection.getSelectionEnd() != selection.getSelectionStart();
 
-        SNode prevNode = SNodeOperations.as(SNodeOperations.getPrevSibling(currentWord), CONCEPTS.TextElement$Ue);
+        SNode prevNode = SNodeOperations.as(SNodeOperations.getPrevSibling(currentWord), CONCEPTS.TextElement$WN);
         if (prevNode == null) {
           prevNode = currentWord;
         }
@@ -83,17 +83,17 @@ public class Line_Actions {
 
         List<SNode> selectedNodes = selection.getSelectedNodes();
         EditorCell cell = selection.getEditorCell();
-        SNode currentWord = SNodeOperations.as(selectedNodes.get(0), CONCEPTS.TextElement$Ue);
-        SNode currentLine = SNodeOperations.as(SNodeOperations.getParent(currentWord), CONCEPTS.Line$w3);
-        SNode nextLine = SNodeOperations.as(SNodeOperations.getNextSibling(currentLine), CONCEPTS.Line$w3);
+        SNode currentWord = SNodeOperations.as(selectedNodes.get(0), CONCEPTS.TextElement$WN);
+        SNode currentLine = SNodeOperations.as(SNodeOperations.getParent(currentWord), CONCEPTS.Line$yC);
+        SNode nextLine = SNodeOperations.as(SNodeOperations.getNextSibling(currentLine), CONCEPTS.Line$yC);
 
         boolean includeCurrentLineInSelection = selection.getSelectionEnd() != selection.getSelectionStart() || !(cell instanceof EditorCell_Property) || !(((EditorCell_Property) cell).isLastCaretPosition()) || (SNodeOperations.getNextSibling(currentWord) != null) || (nextLine == null);
 
         SNode lineToSelect = (includeCurrentLineInSelection ? currentLine : nextLine);
-        SNode first = ListSequence.fromList(SLinkOperations.getChildren(lineToSelect, LINKS.elements$cK1w)).first();
-        SNode last = ListSequence.fromList(SLinkOperations.getChildren(lineToSelect, LINKS.elements$cK1w)).last();
+        SNode first = ListSequence.fromList(SLinkOperations.getChildren(lineToSelect, LINKS.elements$_j45)).first();
+        SNode last = ListSequence.fromList(SLinkOperations.getChildren(lineToSelect, LINKS.elements$_j45)).last();
 
-        WordRangeSelection ws = new WordRangeSelection(editorContext.getEditorComponent(), SNodeOperations.as(first, CONCEPTS.TextElement$Ue), SNodeOperations.as(last, CONCEPTS.TextElement$Ue), true);
+        WordRangeSelection ws = new WordRangeSelection(editorContext.getEditorComponent(), SNodeOperations.as(first, CONCEPTS.TextElement$WN), SNodeOperations.as(last, CONCEPTS.TextElement$WN), true);
         selectionManager.pushSelection(ws);
       }
 
@@ -109,10 +109,10 @@ public class Line_Actions {
         EditorCellLabelSelection selection = as_h5gcex_a0a1a1a0a0a4(selectionManager.getSelection(), EditorCellLabelSelection.class);
 
         List<SNode> selectedNodes = selection.getSelectedNodes();
-        SNode currentWord = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextElement$Ue);
+        SNode currentWord = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextElement$WN);
         boolean includeCurrentNodeInSelection = selection.getSelectionEnd() != selection.getSelectionStart();
 
-        SNode nextNode = SNodeOperations.as(SNodeOperations.getNextSibling(currentWord), CONCEPTS.TextElement$Ue);
+        SNode nextNode = SNodeOperations.as(SNodeOperations.getNextSibling(currentWord), CONCEPTS.TextElement$WN);
         if (nextNode == null) {
           nextNode = currentWord;
         }
@@ -191,11 +191,11 @@ public class Line_Actions {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TextElement$Ue = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L, "jetbrains.mps.lang.text.structure.TextElement");
-    /*package*/ static final SConcept Line$w3 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
+    /*package*/ static final SConcept TextElement$WN = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L, "jetbrains.mps.lang.text.structure.TextElement");
+    /*package*/ static final SConcept Line$yC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elements$cK1w = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink elements$_j45 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
   }
 }

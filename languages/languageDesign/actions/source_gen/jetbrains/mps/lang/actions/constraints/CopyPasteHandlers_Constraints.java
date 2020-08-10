@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CopyPasteHandlers_Constraints extends BaseConstraintsDescriptor {
   public CopyPasteHandlers_Constraints() {
-    super(CONCEPTS.CopyPasteHandlers$Sa);
+    super(CONCEPTS.CopyPasteHandlers$At);
   }
 
   @Override
@@ -41,6 +41,6 @@ public class CopyPasteHandlers_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer canBeRootBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c895902a4(jetbrains.mps.lang.actions.constraints)", "5948027493682790755");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CopyPasteHandlers$Sa = MetaAdapterFactory.getConcept(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x528ba37dd3383e1eL, "jetbrains.mps.lang.actions.structure.CopyPasteHandlers");
+    /*package*/ static final SConcept CopyPasteHandlers$At = MetaAdapterFactory.getConcept(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x528ba37dd3383e1eL, "jetbrains.mps.lang.actions.structure.CopyPasteHandlers");
   }
 }

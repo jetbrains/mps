@@ -28,20 +28,20 @@ public class check_IMenu_Concept_SingleDefault_NonTypesystemRule extends Abstrac
     if (!((boolean) IMenu_Concept__BehaviorDescriptor.isDefault_id5N_GIFFh1P5.invoke(menu))) {
       return;
     }
-    for (SNode other : ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(menu), CONCEPTS.IMenu_Concept$UY))) {
+    for (SNode other : ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(menu), CONCEPTS.IMenu_Concept$6_))) {
       if (other == menu) {
         continue;
       }
-      if ((boolean) IMenu_Concept__BehaviorDescriptor.isDefault_id5N_GIFFh1P5.invoke(other) && Objects.equals(SNodeOperations.getConcept(other), SNodeOperations.getConcept(menu)) && SLinkOperations.getTarget(other, LINKS.conceptDeclaration$VYS3) == SLinkOperations.getTarget(menu, LINKS.conceptDeclaration$VYS3)) {
+      if ((boolean) IMenu_Concept__BehaviorDescriptor.isDefault_id5N_GIFFh1P5.invoke(other) && Objects.equals(SNodeOperations.getConcept(other), SNodeOperations.getConcept(menu)) && SLinkOperations.getTarget(other, LINKS.conceptDeclaration$h3E) == SLinkOperations.getTarget(menu, LINKS.conceptDeclaration$h3E)) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(menu, "Default " + SNodeOperations.getConcept(menu).getName() + " already exists for " + SLinkOperations.getTarget(menu, LINKS.conceptDeclaration$VYS3), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "5219382839344260898", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(menu, "Default " + SNodeOperations.getConcept(menu).getName() + " already exists for " + SLinkOperations.getTarget(menu, LINKS.conceptDeclaration$h3E), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "5219382839344260898", null, errorTarget);
         }
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.IMenu_Concept$UY;
+    return CONCEPTS.IMenu_Concept$6_;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -51,10 +51,10 @@ public class check_IMenu_Concept_SingleDefault_NonTypesystemRule extends Abstrac
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$VYS3 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
+    /*package*/ static final SReferenceLink conceptDeclaration$h3E = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IMenu_Concept$UY = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, "jetbrains.mps.lang.editor.structure.IMenu_Concept");
+    /*package*/ static final SInterfaceConcept IMenu_Concept$6_ = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, "jetbrains.mps.lang.editor.structure.IMenu_Concept");
   }
 }

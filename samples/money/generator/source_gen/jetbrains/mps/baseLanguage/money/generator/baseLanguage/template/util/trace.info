@@ -9,12 +9,12 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <root nodeRef="r:00000000-0000-4000-0000-011c895903f9(jetbrains.mps.baseLanguage.money.generator.baseLanguage.template.util)/1187345071733">
     <file name="Util.java">
-      <node id="1187347794779" at="16,74,17,125" concept="3" />
-      <node id="1187347814744" at="17,125,18,124" concept="3" />
+      <node id="1187347794779" at="16,74,17,124" concept="3" />
+      <node id="1187347814744" at="17,124,18,123" concept="3" />
       <node id="1187348073013" at="19,197,20,18" concept="4" />
       <node id="1187348099643" at="21,5,22,17" concept="4" />
-      <node id="1187352032269" at="24,71,25,125" concept="3" />
-      <node id="1187352032277" at="25,125,26,124" concept="3" />
+      <node id="1187352032269" at="24,71,25,124" concept="3" />
+      <node id="1187352032277" at="25,124,26,123" concept="3" />
       <node id="1187348834663" at="27,197,28,18" concept="4" />
       <node id="1187348834674" at="29,5,30,17" concept="4" />
       <node id="1197379725523" at="32,61,33,63" concept="3" />
@@ -33,11 +33,11 @@
       <node id="1197379725544" at="51,63,52,30" concept="3" />
       <node id="1197379725544" at="52,30,53,235" concept="1" />
       <node id="1197379725544" at="53,235,54,24" concept="4" />
-      <node id="1187345071733" at="58,0,59,0" concept="5" trace="rightExpression$li3b" />
-      <node id="1187345071733" at="59,0,60,0" concept="5" trace="leftExpression$lndx" />
+      <node id="1187345071733" at="58,0,59,0" concept="5" trace="rightExpression$nvX" />
+      <node id="1187345071733" at="59,0,60,0" concept="5" trace="leftExpression$sEj" />
       <node id="7383406024685217858" at="14,0,16,0" concept="0" trace="Util#()V" />
-      <node id="1187347960654" at="18,124,21,5" concept="2" />
-      <node id="1187348834661" at="26,124,29,5" concept="2" />
+      <node id="1187347960654" at="18,123,21,5" concept="2" />
+      <node id="1187348834661" at="26,123,29,5" concept="2" />
       <node id="1197379725523" at="32,0,38,0" concept="6" trace="_quotation_createNode_sd8x_b0a0c0b#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1197379725540" at="38,0,44,0" concept="6" trace="_quotation_createNode_sd8x_b0a0c0b_0#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1197379725542" at="44,0,50,0" concept="6" trace="_quotation_createNode_sd8x_b0a0c0c#()Lorg/jetbrains/mps/openapi/model/SNode;" />

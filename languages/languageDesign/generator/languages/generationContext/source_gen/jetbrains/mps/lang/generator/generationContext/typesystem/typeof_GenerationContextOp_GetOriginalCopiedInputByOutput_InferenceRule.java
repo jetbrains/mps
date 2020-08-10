@@ -25,7 +25,7 @@ public class typeof_GenerationContextOp_GetOriginalCopiedInputByOutput_Inference
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.GenerationContextOp_GetOriginalCopiedInputByOutput$Vj;
+    return CONCEPTS.GenerationContextOp_GetOriginalCopiedInputByOutput$kT;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_GenerationContextOp_GetOriginalCopiedInputByOutput_Inference
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GenerationContextOp_GetOriginalCopiedInputByOutput$Vj = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11e42912257L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetOriginalCopiedInputByOutput");
+    /*package*/ static final SConcept GenerationContextOp_GetOriginalCopiedInputByOutput$kT = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11e42912257L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetOriginalCopiedInputByOutput");
   }
 }

@@ -45,11 +45,11 @@ public final class Switch_HasAttributes_Intention extends AbstractIntentionDescr
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return (SPropertyOperations.getBoolean(node, PROPS.isCompact$kq1W) ? "Full view" : "Compact view");
+      return (SPropertyOperations.getBoolean(node, PROPS.isCompact$AAmT) ? "Full view" : "Compact view");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.assign(node, PROPS.isCompact$kq1W, !(SPropertyOperations.getBoolean(node, PROPS.isCompact$kq1W)));
+      SPropertyOperations.assign(node, PROPS.isCompact$AAmT, !(SPropertyOperations.getBoolean(node, PROPS.isCompact$AAmT)));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -58,6 +58,6 @@ public final class Switch_HasAttributes_Intention extends AbstractIntentionDescr
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isCompact$kq1W = MetaAdapterFactory.getProperty(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2f2L, 0x1f6c736337b5e2faL, "isCompact");
+    /*package*/ static final SProperty isCompact$AAmT = MetaAdapterFactory.getProperty(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2f2L, 0x1f6c736337b5e2faL, "isCompact");
   }
 }

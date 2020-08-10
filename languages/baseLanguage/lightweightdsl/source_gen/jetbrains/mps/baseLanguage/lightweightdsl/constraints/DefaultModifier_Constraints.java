@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class DefaultModifier_Constraints extends BaseConstraintsDescriptor {
   public DefaultModifier_Constraints() {
-    super(CONCEPTS.DefaultModifier$O5);
+    super(CONCEPTS.DefaultModifier$9Q);
   }
 
   @Override
@@ -37,12 +37,12 @@ public class DefaultModifier_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.PropertyDescriptor$hh);
+    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.PropertyDescriptor$B2);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:686da497-9d31-49eb-a30e-63814e3d3c62(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.constraints)", "8823436878019302254");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DefaultModifier$O5 = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x7a7325178c68eba9L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DefaultModifier");
-    /*package*/ static final SConcept PropertyDescriptor$hh = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a0447fbb31L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.PropertyDescriptor");
+    /*package*/ static final SConcept DefaultModifier$9Q = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x7a7325178c68eba9L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DefaultModifier");
+    /*package*/ static final SConcept PropertyDescriptor$B2 = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a0447fbb31L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.PropertyDescriptor");
   }
 }

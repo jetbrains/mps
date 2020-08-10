@@ -23,24 +23,24 @@ public class RemoveRepetition_QuickFix extends QuickFix_Runtime {
     return "Replace with the repeat command";
   }
   public void execute(SNode node) {
-    SNode repeat = SNodeOperations.replaceWithNewChild(node, CONCEPTS.Repeat$qn);
-    SLinkOperations.setTarget(repeat, LINKS.body$RHDy, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL, "jetbrains.mps.samples.Kaja.structure.CommandList")));
-    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(repeat, LINKS.body$RHDy), LINKS.commands$Gpbw)).addElement(SNodeOperations.as(node, CONCEPTS.AbstractCommand$3T));
-    SPropertyOperations.assign(repeat, PROPS.count$RHqx, 2);
+    SNode repeat = SNodeOperations.replaceWithNewChild(node, CONCEPTS.Repeat$4i);
+    SLinkOperations.setTarget(repeat, LINKS.body$Irjt, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL, "jetbrains.mps.samples.Kaja.structure.CommandList")));
+    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(repeat, LINKS.body$Irjt), LINKS.commands$z6Pr)).addElement(SNodeOperations.as(node, CONCEPTS.AbstractCommand$HO));
+    SPropertyOperations.assign(repeat, PROPS.count$Ir4s, 2);
     SNodeOperations.deleteNode(SNodeOperations.getPrevSibling(repeat));
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Repeat$qn = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecd14cL, "jetbrains.mps.samples.Kaja.structure.Repeat");
-    /*package*/ static final SConcept AbstractCommand$3T = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL, "jetbrains.mps.samples.Kaja.structure.AbstractCommand");
+    /*package*/ static final SConcept Repeat$4i = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecd14cL, "jetbrains.mps.samples.Kaja.structure.Repeat");
+    /*package*/ static final SConcept AbstractCommand$HO = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL, "jetbrains.mps.samples.Kaja.structure.AbstractCommand");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$RHDy = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecd14cL, 0x2de971c785ecd14fL, "body");
-    /*package*/ static final SContainmentLink commands$Gpbw = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL, 0x2de971c785f06a40L, "commands");
+    /*package*/ static final SContainmentLink body$Irjt = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecd14cL, 0x2de971c785ecd14fL, "body");
+    /*package*/ static final SContainmentLink commands$z6Pr = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL, 0x2de971c785f06a40L, "commands");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty count$RHqx = MetaAdapterFactory.getProperty(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecd14cL, 0x2de971c785ecd14eL, "count");
+    /*package*/ static final SProperty count$Ir4s = MetaAdapterFactory.getProperty(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ecd14cL, 0x2de971c785ecd14eL, "count");
   }
 }

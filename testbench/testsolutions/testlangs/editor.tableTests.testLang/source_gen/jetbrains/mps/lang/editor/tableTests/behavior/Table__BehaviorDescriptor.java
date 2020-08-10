@@ -38,10 +38,10 @@ public final class Table__BehaviorDescriptor extends BaseBHDescriptor {
       SNode row = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x28004d411fa3bea6L, "jetbrains.mps.lang.editor.tableTests.structure.Row"));
       for (int j = 0; j < (int) Table__BehaviorDescriptor.getInitialColumnCount_id1653mnvAgqE.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__))); j++) {
         SNode dataCell = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x28004d411fa3bea4L, "jetbrains.mps.lang.editor.tableTests.structure.DataCell"));
-        SPropertyOperations.assign(dataCell, PROPS.value$pzlw, "$" + i + " " + j + "$");
-        ListSequence.fromList(SLinkOperations.getChildren(row, LINKS.cells$pzOw)).addElement(dataCell);
+        SPropertyOperations.assign(dataCell, PROPS.value$h5Km, "$" + i + " " + j + "$");
+        ListSequence.fromList(SLinkOperations.getChildren(row, LINKS.cells$h6fm)).addElement(dataCell);
       }
-      ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.rows$mZQx)).addElement(row);
+      ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.rows$eyhn)).addElement(row);
     }
   }
 
@@ -101,11 +101,11 @@ public final class Table__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$pzlw = MetaAdapterFactory.getProperty(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x28004d411fa3bea4L, 0x28004d411fa3bea5L, "value");
+    /*package*/ static final SProperty value$h5Km = MetaAdapterFactory.getProperty(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x28004d411fa3bea4L, 0x28004d411fa3bea5L, "value");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cells$pzOw = MetaAdapterFactory.getContainmentLink(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x28004d411fa3bea6L, 0x28004d411fa3bea7L, "cells");
-    /*package*/ static final SContainmentLink rows$mZQx = MetaAdapterFactory.getContainmentLink(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x28004d411fa3bea0L, 0x28004d411fa3bea2L, "rows");
+    /*package*/ static final SContainmentLink cells$h6fm = MetaAdapterFactory.getContainmentLink(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x28004d411fa3bea6L, 0x28004d411fa3bea7L, "cells");
+    /*package*/ static final SContainmentLink rows$eyhn = MetaAdapterFactory.getContainmentLink(0xdf8799e7254a406fL, 0xbd67f4cc27337152L, 0x28004d411fa3bea0L, 0x28004d411fa3bea2L, "rows");
   }
 }

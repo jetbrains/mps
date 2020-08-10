@@ -21,12 +21,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NativeTypedNodeDef_Constraints extends BaseConstraintsDescriptor {
   public NativeTypedNodeDef_Constraints() {
-    super(CONCEPTS.NativeTypedNodeDef$qx);
+    super(CONCEPTS.NativeTypedNodeDef$PM);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.conceptParameter$ET9S, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.conceptParameter$gT_9, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -41,7 +41,7 @@ public class NativeTypedNodeDef_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return Scope.getScope(SNodeOperations.getContainingRoot(_context.getContextNode()), null, CONCEPTS.ContextConceptParameter$gx);
+            return Scope.getScope(SNodeOperations.getContainingRoot(_context.getContextNode()), null, CONCEPTS.ContextConceptParameter$FM);
           }
         };
       }
@@ -53,11 +53,11 @@ public class NativeTypedNodeDef_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_tngewz_a0a0a0a0a1a0a0a0c = new SNodePointer("r:fc8253d3-1514-4b9f-addf-88563d82b200(jetbrains.mps.lang.context.defs.constraints)", "693143365153356917");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NativeTypedNodeDef$qx = MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x46263286da99051L, "jetbrains.mps.lang.context.defs.structure.NativeTypedNodeDef");
-    /*package*/ static final SConcept ContextConceptParameter$gx = MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x4bf59690bc05b735L, "jetbrains.mps.lang.context.defs.structure.ContextConceptParameter");
+    /*package*/ static final SConcept NativeTypedNodeDef$PM = MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x46263286da99051L, "jetbrains.mps.lang.context.defs.structure.NativeTypedNodeDef");
+    /*package*/ static final SConcept ContextConceptParameter$FM = MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x4bf59690bc05b735L, "jetbrains.mps.lang.context.defs.structure.ContextConceptParameter");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptParameter$ET9S = MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x46263286da99051L, 0x46263286da99433L, "conceptParameter");
+    /*package*/ static final SReferenceLink conceptParameter$gT_9 = MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x46263286da99051L, 0x46263286da99433L, "conceptParameter");
   }
 }

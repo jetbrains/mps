@@ -45,11 +45,11 @@ public final class ChangeOrientationAlternation_Intention extends AbstractIntent
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return (SPropertyOperations.getBoolean(node, PROPS.vertical$SF3Q) ? "Make Horizontal" : "Make Vertical");
+      return (SPropertyOperations.getBoolean(node, PROPS.vertical$WXft) ? "Make Horizontal" : "Make Vertical");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.assign(node, PROPS.vertical$SF3Q, !(SPropertyOperations.getBoolean(node, PROPS.vertical$SF3Q)));
+      SPropertyOperations.assign(node, PROPS.vertical$WXft, !(SPropertyOperations.getBoolean(node, PROPS.vertical$WXft)));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -58,6 +58,6 @@ public final class ChangeOrientationAlternation_Intention extends AbstractIntent
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty vertical$SF3Q = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd766383e4L, 0xfd76656383L, "vertical");
+    /*package*/ static final SProperty vertical$WXft = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd766383e4L, 0xfd76656383L, "vertical");
   }
 }

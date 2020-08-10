@@ -39,18 +39,18 @@
       <node id="5252852921989011853" at="97,82,98,84" concept="1" />
       <node id="5252852921989011853" at="98,84,99,82" concept="1" />
       <node id="5252852921989011853" at="99,82,100,26" concept="5" />
-      <node id="5252852921988987580" at="104,0,105,0" concept="6" trace="StringSwitchStatement$x7" />
-      <node id="5252852921988987580" at="105,0,106,0" concept="6" trace="SwitchStatement$S1" />
-      <node id="5252852921988987580" at="106,0,107,0" concept="6" trace="SwitchCase$EA" />
-      <node id="5252852921988987580" at="107,0,108,0" concept="6" trace="StatementList$TN" />
-      <node id="5252852921988987580" at="108,0,109,0" concept="6" trace="Expression$TP" />
-      <node id="5252852921988987580" at="109,0,110,0" concept="6" trace="Attribute$RJ" />
-      <node id="5252852921988987580" at="110,0,111,0" concept="6" trace="LoopLabel$R4" />
-      <node id="5252852921988987580" at="114,0,115,0" concept="6" trace="case$tKvS" />
-      <node id="5252852921988987580" at="115,0,116,0" concept="6" trace="defaultBlock$bJ1m" />
-      <node id="5252852921988987580" at="116,0,117,0" concept="6" trace="expression$XdXc" />
-      <node id="5252852921988987580" at="117,0,118,0" concept="6" trace="smodelAttribute$jXFL" />
-      <node id="5252852921988987580" at="118,0,119,0" concept="6" trace="switchLabel$GHQ7" />
+      <node id="5252852921988987580" at="104,0,105,0" concept="6" trace="StringSwitchStatement$Fm" />
+      <node id="5252852921988987580" at="105,0,106,0" concept="6" trace="SwitchStatement$kN" />
+      <node id="5252852921988987580" at="106,0,107,0" concept="6" trace="SwitchCase$7o" />
+      <node id="5252852921988987580" at="107,0,108,0" concept="6" trace="StatementList$m_" />
+      <node id="5252852921988987580" at="108,0,109,0" concept="6" trace="Expression$mB" />
+      <node id="5252852921988987580" at="109,0,110,0" concept="6" trace="Attribute$g1" />
+      <node id="5252852921988987580" at="110,0,111,0" concept="6" trace="LoopLabel$jQ" />
+      <node id="5252852921988987580" at="114,0,115,0" concept="6" trace="case$8PWE" />
+      <node id="5252852921988987580" at="115,0,116,0" concept="6" trace="defaultBlock$QOu8" />
+      <node id="5252852921988987580" at="116,0,117,0" concept="6" trace="expression$CjpY" />
+      <node id="5252852921988987580" at="117,0,118,0" concept="6" trace="smodelAttribute$KJ43" />
+      <node id="5252852921988987580" at="118,0,119,0" concept="6" trace="switchLabel$nNiT" />
       <node id="5252852921988987580" at="32,0,35,0" concept="3" trace="getCaption#()Ljava/lang/String;" />
       <node id="5252852921988988336" at="48,0,51,0" concept="3" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
       <node id="5252852921989005144" at="53,0,56,0" concept="3" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
