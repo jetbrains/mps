@@ -30,7 +30,7 @@ public class check_ConstructorRecursiveInvocation_NonTypesystemRule extends Abst
   public void applyRule(final SNode classConcept, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> constructors = new ArrayList<SNode>();
     for (SNode constructor : ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(classConcept)) {
-      if (SNodeOperations.isInstanceOf(StatementList__BehaviorDescriptor.getFirstStatement_id4GU1DgEHJ2u.invoke(SLinkOperations.getTarget(constructor, LINKS.body$qspy)), CONCEPTS.ConstructorInvocationStatement$6c)) {
+      if (SNodeOperations.isInstanceOf(StatementList__BehaviorDescriptor.getFirstStatement_id4GU1DgEHJ2u.invoke(SLinkOperations.getTarget(constructor, LINKS.body$5xQk)), CONCEPTS.ConstructorInvocationStatement$yY)) {
         constructors.add(constructor);
       }
     }
@@ -63,13 +63,13 @@ public class check_ConstructorRecursiveInvocation_NonTypesystemRule extends Abst
     }
     for (SNode constructor : nodesWithErrors) {
       {
-        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$lA7v);
+        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$MnvL);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(constructor, "Recursive constructor invocation", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "698255809162976968", null, errorTarget);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ClassConcept$IY;
+    return CONCEPTS.ClassConcept$bK;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -79,15 +79,15 @@ public class check_ConstructorRecursiveInvocation_NonTypesystemRule extends Abst
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConstructorInvocationStatement$6c = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x121119ae5ffL, "jetbrains.mps.baseLanguage.structure.ConstructorInvocationStatement");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept ConstructorInvocationStatement$yY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x121119ae5ffL, "jetbrains.mps.baseLanguage.structure.ConstructorInvocationStatement");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -37,7 +37,7 @@ public final class SwitchToDefaultPropertyImplementation_Intention extends Abstr
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.propertyImplementation$Cx6e), CONCEPTS.DefaultPropertyImplementation$NN));
+    return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.propertyImplementation$jAz0), CONCEPTS.DefaultPropertyImplementation$g_));
   }
   @Override
   public boolean isSurroundWith() {
@@ -58,7 +58,7 @@ public final class SwitchToDefaultPropertyImplementation_Intention extends Abstr
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNodeFactoryOperations.replaceWithNewChild(SLinkOperations.getTarget(node, LINKS.propertyImplementation$Cx6e), CONCEPTS.DefaultPropertyImplementation$NN);
+      SNodeFactoryOperations.replaceWithNewChild(SLinkOperations.getTarget(node, LINKS.propertyImplementation$jAz0), CONCEPTS.DefaultPropertyImplementation$g_);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -67,10 +67,10 @@ public final class SwitchToDefaultPropertyImplementation_Intention extends Abstr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink propertyImplementation$Cx6e = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, 0x117b75fb65aL, "propertyImplementation");
+    /*package*/ static final SContainmentLink propertyImplementation$jAz0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, 0x117b75fb65aL, "propertyImplementation");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DefaultPropertyImplementation$NN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b7633177L, "jetbrains.mps.baseLanguage.structure.DefaultPropertyImplementation");
+    /*package*/ static final SConcept DefaultPropertyImplementation$g_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b7633177L, "jetbrains.mps.baseLanguage.structure.DefaultPropertyImplementation");
   }
 }

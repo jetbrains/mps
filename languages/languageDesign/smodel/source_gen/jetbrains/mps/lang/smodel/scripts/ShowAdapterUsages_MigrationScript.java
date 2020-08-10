@@ -30,7 +30,7 @@ public final class ShowAdapterUsages_MigrationScript extends BaseMigrationScript
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.BaseConcept$Sz;
+        return CONCEPTS.BaseConcept$gP;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
@@ -61,14 +61,14 @@ public final class ShowAdapterUsages_MigrationScript extends BaseMigrationScript
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.ClassifierType$IZ;
+        return CONCEPTS.ClassifierType$bL;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        if ((SLinkOperations.getTarget(node, LINKS.classifier$xslD) == null)) {
+        if ((SLinkOperations.getTarget(node, LINKS.classifier$cxMr) == null)) {
           return false;
         }
-        String className = NameUtil.nodeFQName(SLinkOperations.getTarget(node, LINKS.classifier$xslD));
+        String className = NameUtil.nodeFQName(SLinkOperations.getTarget(node, LINKS.classifier$cxMr));
         String namespace = NameUtil.namespaceFromLongName(className);
         return namespace.endsWith(".structure");
       }
@@ -89,11 +89,11 @@ public final class ShowAdapterUsages_MigrationScript extends BaseMigrationScript
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

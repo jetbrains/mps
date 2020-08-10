@@ -22,19 +22,19 @@ public class fix_SignatureMismatch_QuickFix extends QuickFix_Runtime {
     return "Copy signature from descriptor";
   }
   public void execute(SNode node) {
-    SNode nodeToReplace = SNodeOperations.cast(DSLClassMember__BehaviorDescriptor.create_id7ay_HjIOVVe.invoke(MemberInstance__BehaviorDescriptor.getDeclaration_id7T23sO8vZuR.invoke(SNodeOperations.cast(node, CONCEPTS.MemberInstance$D8)), SNodeOperations.getModel(node)), CONCEPTS.MemberInstance$D8);
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.MethodInstance$XT) && SNodeOperations.isInstanceOf(nodeToReplace, CONCEPTS.MethodInstance$XT)) {
-      SLinkOperations.setTarget(SNodeOperations.cast(nodeToReplace, CONCEPTS.MethodInstance$XT), LINKS.body$qspy, SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.MethodInstance$XT), LINKS.body$qspy));
+    SNode nodeToReplace = SNodeOperations.cast(DSLClassMember__BehaviorDescriptor.create_id7ay_HjIOVVe.invoke(MemberInstance__BehaviorDescriptor.getDeclaration_id7T23sO8vZuR.invoke(SNodeOperations.cast(node, CONCEPTS.MemberInstance$YT)), SNodeOperations.getModel(node)), CONCEPTS.MemberInstance$YT);
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.MethodInstance$jE) && SNodeOperations.isInstanceOf(nodeToReplace, CONCEPTS.MethodInstance$jE)) {
+      SLinkOperations.setTarget(SNodeOperations.cast(nodeToReplace, CONCEPTS.MethodInstance$jE), LINKS.body$5xQk, SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.MethodInstance$jE), LINKS.body$5xQk));
     }
     SNodeOperations.replaceWithAnother(node, nodeToReplace);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept MemberInstance$D8 = MetaAdapterFactory.getInterfaceConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d9179L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MemberInstance");
-    /*package*/ static final SConcept MethodInstance$XT = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d154L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodInstance");
+    /*package*/ static final SInterfaceConcept MemberInstance$YT = MetaAdapterFactory.getInterfaceConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d9179L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MemberInstance");
+    /*package*/ static final SConcept MethodInstance$jE = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d154L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodInstance");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
   }
 }

@@ -31,18 +31,18 @@ public class check_EnumerationDeclaration_NonTypesystemRule extends AbstractNonT
     MultiMap<String, SNode> names = new MultiMap<String, SNode>();
     MultiMap<String, SNode> prensetations = new MultiMap<String, SNode>();
 
-    for (SNode member : ListSequence.fromList(SLinkOperations.getChildren(enumerationDeclaration, LINKS.members$4eAY))) {
-      if (isEmptyString(SPropertyOperations.getString(member, PROPS.name$lA7v))) {
+    for (SNode member : ListSequence.fromList(SLinkOperations.getChildren(enumerationDeclaration, LINKS.members$wmsL))) {
+      if (isEmptyString(SPropertyOperations.getString(member, PROPS.name$MnvL))) {
         // already red due to name constraint 
       } else {
-        names.putValue(SPropertyOperations.getString(member, PROPS.name$lA7v), member);
+        names.putValue(SPropertyOperations.getString(member, PROPS.name$MnvL), member);
       }
-      if (isEmptyString(SPropertyOperations.getString(member, PROPS.presentation$bbH8))) {
-        if (isNotEmptyString(SPropertyOperations.getString(member, PROPS.name$lA7v))) {
-          prensetations.putValue(SPropertyOperations.getString(member, PROPS.name$lA7v), member);
+      if (isEmptyString(SPropertyOperations.getString(member, PROPS.presentation$BjyV))) {
+        if (isNotEmptyString(SPropertyOperations.getString(member, PROPS.name$MnvL))) {
+          prensetations.putValue(SPropertyOperations.getString(member, PROPS.name$MnvL), member);
         }
       } else {
-        prensetations.putValue(SPropertyOperations.getString(member, PROPS.presentation$bbH8), member);
+        prensetations.putValue(SPropertyOperations.getString(member, PROPS.presentation$BjyV), member);
       }
     }
 
@@ -51,7 +51,7 @@ public class check_EnumerationDeclaration_NonTypesystemRule extends AbstractNonT
       if (CollectionSequence.fromCollection(members).count() > 1) {
         for (SNode member : CollectionSequence.fromCollection(members)) {
           {
-            final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$lA7v);
+            final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$MnvL);
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(member, "Duplicate member name", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1075010451651607869", null, errorTarget);
           }
         }
@@ -62,7 +62,7 @@ public class check_EnumerationDeclaration_NonTypesystemRule extends AbstractNonT
       if (CollectionSequence.fromCollection(members).count() > 1) {
         for (SNode member : CollectionSequence.fromCollection(members)) {
           {
-            final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.presentation$bbH8);
+            final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.presentation$BjyV);
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(member, "Duplicate member presentation", "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1075010451651608067", null, errorTarget);
           }
         }
@@ -70,7 +70,7 @@ public class check_EnumerationDeclaration_NonTypesystemRule extends AbstractNonT
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.EnumerationDeclaration$rG;
+    return CONCEPTS.EnumerationDeclaration$hv;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -86,15 +86,15 @@ public class check_EnumerationDeclaration_NonTypesystemRule extends AbstractNonT
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty presentation$bbH8 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0x9538e3a78561888L, "presentation");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty presentation$BjyV = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0x9538e3a78561888L, "presentation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink members$4eAY = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
+    /*package*/ static final SContainmentLink members$wmsL = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumerationDeclaration$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
+    /*package*/ static final SConcept EnumerationDeclaration$hv = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
   }
 }

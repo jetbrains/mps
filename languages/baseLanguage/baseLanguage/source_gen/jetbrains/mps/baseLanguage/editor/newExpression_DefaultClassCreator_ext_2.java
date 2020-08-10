@@ -74,7 +74,7 @@ public class newExpression_DefaultClassCreator_ext_2 extends TransformationMenuB
   public class TMP_Group_fd8jk1_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeParameter$5Koh)).isEmpty();
+      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeParameter$KPP3)).isEmpty();
     }
 
     @NotNull
@@ -90,7 +90,7 @@ public class newExpression_DefaultClassCreator_ext_2 extends TransformationMenuB
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_fd8jk1_a0a(), CONCEPTS.ClassCreator$yU));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_fd8jk1_a0a(), CONCEPTS.ClassCreator$ZG));
     }
     private class TMP_Action_fd8jk1_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -130,7 +130,7 @@ public class newExpression_DefaultClassCreator_ext_2 extends TransformationMenuB
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.typeParameter$5Koh, null);
+          SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.typeParameter$KPP3, null);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -138,7 +138,7 @@ public class newExpression_DefaultClassCreator_ext_2 extends TransformationMenuB
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.ClassCreator$yU;
+          return CONCEPTS.ClassCreator$ZG;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
@@ -153,7 +153,7 @@ public class newExpression_DefaultClassCreator_ext_2 extends TransformationMenuB
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.ClassCreator$yU;
+          SAbstractConcept outputConcept = CONCEPTS.ClassCreator$ZG;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -165,10 +165,10 @@ public class newExpression_DefaultClassCreator_ext_2 extends TransformationMenuB
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink typeParameter$5Koh = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0accfdb3L, "typeParameter");
+    /*package*/ static final SContainmentLink typeParameter$KPP3 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L, 0x2724644c0accfdb3L, "typeParameter");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassCreator$yU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, "jetbrains.mps.baseLanguage.structure.ClassCreator");
+    /*package*/ static final SConcept ClassCreator$ZG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, "jetbrains.mps.baseLanguage.structure.ClassCreator");
   }
 }

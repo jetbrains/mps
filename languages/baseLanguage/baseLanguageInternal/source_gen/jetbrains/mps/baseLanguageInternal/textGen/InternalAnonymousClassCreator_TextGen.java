@@ -13,10 +13,10 @@ public class InternalAnonymousClassCreator_TextGen extends TextGenDescriptorBase
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.cls$N8Vz));
+    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.cls$4Rcl));
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cls$N8Vz = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x2f7b79225e746808L, 0x2f7b79225e74691fL, "cls");
+    /*package*/ static final SContainmentLink cls$4Rcl = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x2f7b79225e746808L, 0x2f7b79225e74691fL, "cls");
   }
 }

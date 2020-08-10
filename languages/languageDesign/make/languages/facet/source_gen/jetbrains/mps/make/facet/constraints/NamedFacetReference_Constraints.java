@@ -23,12 +23,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NamedFacetReference_Constraints extends BaseConstraintsDescriptor {
   public NamedFacetReference_Constraints() {
-    super(CONCEPTS.NamedFacetReference$qF);
+    super(CONCEPTS.NamedFacetReference$3z);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.facet$e6yw, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.facet$Asbo, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -43,7 +43,7 @@ public class NamedFacetReference_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forResolvableElements(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.FacetDeclaration$al));
+            return ListScope.forResolvableElements(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.FacetDeclaration$Nd));
           }
         };
       }
@@ -55,11 +55,11 @@ public class NamedFacetReference_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_n4zw7m_a0a0a0a0a1a0a0a0c = new SNodePointer("r:6df86908-c97f-4644-97f0-5eff375e8e15(jetbrains.mps.make.facet.constraints)", "6836281137582791152");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NamedFacetReference$qF = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1aa1f6c694329f95L, "jetbrains.mps.make.facet.structure.NamedFacetReference");
-    /*package*/ static final SConcept FacetDeclaration$al = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, "jetbrains.mps.make.facet.structure.FacetDeclaration");
+    /*package*/ static final SConcept NamedFacetReference$3z = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1aa1f6c694329f95L, "jetbrains.mps.make.facet.structure.NamedFacetReference");
+    /*package*/ static final SConcept FacetDeclaration$Nd = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, "jetbrains.mps.make.facet.structure.FacetDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink facet$e6yw = MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5979ed6d2b21b2f2L, 0x5979ed6d2b21b2f3L, "facet");
+    /*package*/ static final SReferenceLink facet$Asbo = MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5979ed6d2b21b2f2L, 0x5979ed6d2b21b2f3L, "facet");
   }
 }

@@ -45,7 +45,7 @@ public class ConfigurationFromExecutorReference_SubstituteMenu extends Substitut
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
     result.add(new SMP_Group_nhkpww_a());
     result.add(new SMP_Subconcepts_nhkpww_b());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.ConfigurationFromExecutorReference$mM) {
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.ConfigurationFromExecutorReference$3p) {
 
       @NotNull
       @Override
@@ -58,7 +58,7 @@ public class ConfigurationFromExecutorReference_SubstituteMenu extends Substitut
           context.getEditorMenuTrace().popTraceInfo();
         }
       }
-    }, CONCEPTS.ConfigurationFromExecutorReference$mM));
+    }, CONCEPTS.ConfigurationFromExecutorReference$3p));
     return result;
   }
 
@@ -78,7 +78,7 @@ public class ConfigurationFromExecutorReference_SubstituteMenu extends Substitut
   public class SMP_Group_nhkpww_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(_context.getParentNode()), CONCEPTS.AbstractRunConfigurationExecutor$YM);
+      return SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(_context.getParentNode()), CONCEPTS.AbstractRunConfigurationExecutor$Fp);
     }
     @NotNull
     @Override
@@ -94,7 +94,7 @@ public class ConfigurationFromExecutorReference_SubstituteMenu extends Substitut
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_nhkpww_a0(), CONCEPTS.ConfigurationFromExecutorReference$mM));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_nhkpww_a0(), CONCEPTS.ConfigurationFromExecutorReference$3p));
     }
     private class SMP_Param_nhkpww_a0 extends ParameterizedMenuPart<String, SubstituteMenuItem, SubstituteMenuContext> {
       @NotNull
@@ -116,7 +116,7 @@ public class ConfigurationFromExecutorReference_SubstituteMenu extends Substitut
       @Nullable
       @Override
       protected Iterable<? extends String> getParameters(SubstituteMenuContext _context) {
-        return ListSequence.fromListAndArray(new ArrayList<String>(), SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getParentNode()), CONCEPTS.AbstractRunConfigurationExecutor$YM), PROPS.configurationName$t6JX));
+        return ListSequence.fromListAndArray(new ArrayList<String>(), SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getParentNode()), CONCEPTS.AbstractRunConfigurationExecutor$Fp), PROPS.configurationName$Ks$));
       }
       private class SMP_Action_nhkpww_a0a extends SingleItemSubstituteMenuPart {
         private final String myParameterObject;
@@ -151,7 +151,7 @@ public class ConfigurationFromExecutorReference_SubstituteMenu extends Substitut
           private final SubstituteMenuContext _context;
           private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
-            super(CONCEPTS.ConfigurationFromExecutorReference$mM, context);
+            super(CONCEPTS.ConfigurationFromExecutorReference$3p, context);
             _context = context;
           }
 
@@ -162,7 +162,7 @@ public class ConfigurationFromExecutorReference_SubstituteMenu extends Substitut
           @Nullable
           @Override
           public SNode createNode(@NotNull String pattern) {
-            return SNodeFactoryOperations.createNewNode(CONCEPTS.ConfigurationFromExecutorReference$mM, null);
+            return SNodeFactoryOperations.createNewNode(CONCEPTS.ConfigurationFromExecutorReference$3p, null);
           }
 
           @Override
@@ -171,7 +171,7 @@ public class ConfigurationFromExecutorReference_SubstituteMenu extends Substitut
           }
           @NotNull
           protected CompletionItemInformation createInformation(String pattern) {
-            return new CompletionItemInformation(myParameterObject, CONCEPTS.ConfigurationFromExecutorReference$mM, getMatchingText(pattern), getDescriptionText(pattern));
+            return new CompletionItemInformation(myParameterObject, CONCEPTS.ConfigurationFromExecutorReference$3p, getMatchingText(pattern), getDescriptionText(pattern));
           }
           @Nullable
           @Override
@@ -195,7 +195,7 @@ public class ConfigurationFromExecutorReference_SubstituteMenu extends Substitut
   }
   public class SMP_Subconcepts_nhkpww_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ConfigurationFromExecutorReference$mM);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ConfigurationFromExecutorReference$3p);
     }
     @NotNull
     @Override
@@ -216,11 +216,11 @@ public class ConfigurationFromExecutorReference_SubstituteMenu extends Substitut
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConfigurationFromExecutorReference$mM = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bcac62fL, "jetbrains.mps.execution.configurations.structure.ConfigurationFromExecutorReference");
-    /*package*/ static final SConcept AbstractRunConfigurationExecutor$YM = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, "jetbrains.mps.execution.configurations.structure.AbstractRunConfigurationExecutor");
+    /*package*/ static final SConcept ConfigurationFromExecutorReference$3p = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bcac62fL, "jetbrains.mps.execution.configurations.structure.ConfigurationFromExecutorReference");
+    /*package*/ static final SConcept AbstractRunConfigurationExecutor$Fp = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, "jetbrains.mps.execution.configurations.structure.AbstractRunConfigurationExecutor");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty configurationName$t6JX = MetaAdapterFactory.getProperty(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, 0x1acdeec3ca0ad49cL, "configurationName");
+    /*package*/ static final SProperty configurationName$Ks$ = MetaAdapterFactory.getProperty(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, 0x1acdeec3ca0ad49cL, "configurationName");
   }
 }

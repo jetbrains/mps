@@ -34,8 +34,8 @@ public class quantity_Contribution extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_82pfaq_a(), CONCEPTS.Quantity$5I));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_82pfaq_b(), CONCEPTS.Quantity$5I));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_82pfaq_a(), CONCEPTS.Quantity$$_));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_82pfaq_b(), CONCEPTS.Quantity$$_));
     return result;
   }
 
@@ -80,7 +80,7 @@ public class quantity_Contribution extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.Quantity$5I, context);
+        super(CONCEPTS.Quantity$$_, context);
         _context = context;
       }
 
@@ -92,17 +92,17 @@ public class quantity_Contribution extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode fpConstant = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8bab3cL, "jetbrains.mps.samples.formulaLanguage.structure.FloatingPointConstant"));
-        SPropertyOperations.set(fpConstant, PROPS.value$iWLO, "0.0");
+        SPropertyOperations.set(fpConstant, PROPS.value$6JDC, "0.0");
         if (pattern.length() > 1) {
           if (pattern.endsWith(".")) {
-            SPropertyOperations.set(fpConstant, PROPS.value$iWLO, pattern.substring(1) + "0");
+            SPropertyOperations.set(fpConstant, PROPS.value$6JDC, pattern.substring(1) + "0");
           } else {
-            SPropertyOperations.set(fpConstant, PROPS.value$iWLO, pattern.substring(1));
+            SPropertyOperations.set(fpConstant, PROPS.value$6JDC, pattern.substring(1));
           }
         }
         SNode quantity = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, "jetbrains.mps.samples.agreementLanguage.structure.Quantity"));
-        SPropertyOperations.setEnum(quantity, PROPS.unit$AFTM, 0x102dc0b6d03L, "USD");
-        SLinkOperations.setTarget(quantity, LINKS.amount$moCx, fpConstant);
+        SPropertyOperations.setEnum(quantity, PROPS.unit$fWoD, 0x102dc0b6d03L, "USD");
+        SLinkOperations.setTarget(quantity, LINKS.amount$ZD7o, fpConstant);
         return quantity;
       }
 
@@ -161,7 +161,7 @@ public class quantity_Contribution extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.Quantity$5I, context);
+        super(CONCEPTS.Quantity$$_, context);
         _context = context;
       }
 
@@ -174,13 +174,13 @@ public class quantity_Contribution extends SubstituteMenuBase {
       public SNode createNode(@NotNull String pattern) {
         SNode fpConstant = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8bab3cL, "jetbrains.mps.samples.formulaLanguage.structure.FloatingPointConstant"));
         if (pattern.endsWith(".")) {
-          SPropertyOperations.set(fpConstant, PROPS.value$iWLO, pattern + 1);
+          SPropertyOperations.set(fpConstant, PROPS.value$6JDC, pattern + 1);
         } else {
-          SPropertyOperations.set(fpConstant, PROPS.value$iWLO, pattern);
+          SPropertyOperations.set(fpConstant, PROPS.value$6JDC, pattern);
         }
         SNode quantity = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, "jetbrains.mps.samples.agreementLanguage.structure.Quantity"));
-        SPropertyOperations.setEnum(quantity, PROPS.unit$AFTM, 0x102dc0a9c92L, "USD_KWH");
-        SLinkOperations.setTarget(quantity, LINKS.amount$moCx, fpConstant);
+        SPropertyOperations.setEnum(quantity, PROPS.unit$fWoD, 0x102dc0a9c92L, "USD_KWH");
+        SLinkOperations.setTarget(quantity, LINKS.amount$ZD7o, fpConstant);
         return quantity;
       }
 
@@ -213,15 +213,15 @@ public class quantity_Contribution extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Quantity$5I = MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, "jetbrains.mps.samples.agreementLanguage.structure.Quantity");
+    /*package*/ static final SConcept Quantity$$_ = MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, "jetbrains.mps.samples.agreementLanguage.structure.Quantity");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$iWLO = MetaAdapterFactory.getProperty(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8bab3cL, 0x1033349beb2L, "value");
-    /*package*/ static final SProperty unit$AFTM = MetaAdapterFactory.getProperty(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, 0x102dc0c5503L, "unit");
+    /*package*/ static final SProperty value$6JDC = MetaAdapterFactory.getProperty(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8bab3cL, 0x1033349beb2L, "value");
+    /*package*/ static final SProperty unit$fWoD = MetaAdapterFactory.getProperty(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, 0x102dc0c5503L, "unit");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink amount$moCx = MetaAdapterFactory.getContainmentLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, 0x102dc0c6b1dL, "amount");
+    /*package*/ static final SContainmentLink amount$ZD7o = MetaAdapterFactory.getContainmentLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, 0x102dc0c6b1dL, "amount");
   }
 }

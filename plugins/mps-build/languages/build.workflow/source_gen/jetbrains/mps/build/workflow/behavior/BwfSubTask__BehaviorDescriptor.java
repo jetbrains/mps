@@ -33,7 +33,7 @@ public final class BwfSubTask__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (kind == CONCEPTS.BwfSubTask$xl) {
+    if (kind == CONCEPTS.BwfSubTask$X) {
       Scope scope = Scope.getScope(SNodeOperations.getParent(__thisNode__), __thisNode__, kind);
       if (scope != null) {
         final SNode filterOut = __thisNode__;
@@ -95,6 +95,6 @@ public final class BwfSubTask__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BwfSubTask$xl = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, "jetbrains.mps.build.workflow.structure.BwfSubTask");
+    /*package*/ static final SConcept BwfSubTask$X = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, "jetbrains.mps.build.workflow.structure.BwfSubTask");
   }
 }

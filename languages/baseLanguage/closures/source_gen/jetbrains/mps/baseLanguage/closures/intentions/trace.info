@@ -35,8 +35,8 @@
       <node id="1229717905641" at="56,87,57,33" concept="8" />
       <node id="1229717934360" at="60,78,61,98" concept="2" />
       <node id="1229717881949" at="64,48,65,55" concept="8" />
-      <node id="1229717881949" at="70,0,71,0" concept="9" trace="throwsType$TUQv" />
-      <node id="1229717881949" at="74,0,75,0" concept="9" trace="ClassifierType$IZ" />
+      <node id="1229717881949" at="70,0,71,0" concept="9" trace="throwsType$A8I9" />
+      <node id="1229717881949" at="74,0,75,0" concept="9" trace="ClassifierType$bL" />
       <node id="1229717881949" at="53,0,55,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="1229717881949" at="25,0,28,0" concept="1" trace="add_throws_to_FunctionType_Intention#()V" />
       <node id="1229717881949" at="33,84,36,5" concept="5" />
@@ -121,11 +121,11 @@
       <node id="1235748173357" at="82,5,83,39" concept="2" />
       <node id="1235748173357" at="84,31,85,200" concept="2" />
       <node id="1235748173357" at="86,5,87,24" concept="8" />
-      <node id="1235748072133" at="91,0,92,0" concept="9" trace="DotExpression$6a" />
-      <node id="1235748072133" at="92,0,93,0" concept="9" trace="InvokeFunctionOperation$kP" />
-      <node id="1235748072133" at="96,0,97,0" concept="9" trace="operation$_mGS" />
-      <node id="1235748072133" at="97,0,98,0" concept="9" trace="parameter$w3PH" />
-      <node id="1235748072133" at="98,0,99,0" concept="9" trace="operand$P1i5" />
+      <node id="1235748072133" at="91,0,92,0" concept="9" trace="DotExpression$yW" />
+      <node id="1235748072133" at="92,0,93,0" concept="9" trace="InvokeFunctionOperation$cv" />
+      <node id="1235748072133" at="96,0,97,0" concept="9" trace="operation$gs9E" />
+      <node id="1235748072133" at="97,0,98,0" concept="9" trace="parameter$chHn" />
+      <node id="1235748072133" at="98,0,99,0" concept="9" trace="operand$w6IR" />
       <node id="1235748072133" at="55,0,57,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="1235748072133" at="27,0,30,0" concept="1" trace="replace_invokeOperation_with_compactInvoke_Intention#()V" />
       <node id="1235748072133" at="35,84,38,5" concept="5" />
@@ -223,7 +223,7 @@
       <node id="890797661671440708" at="55,78,56,134" concept="2" />
       <node id="5563800296130153608" at="56,134,57,64" concept="2" />
       <node id="890797661671409032" at="60,48,61,44" concept="8" />
-      <node id="890797661671409032" at="66,0,67,0" concept="9" trace="forceMultiLine$U3QH" />
+      <node id="890797661671409032" at="66,0,67,0" concept="9" trace="forceMultiLine$AhIn" />
       <node id="890797661671409032" at="44,0,46,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="890797661671440703" at="50,12,52,7" concept="0" />
       <node id="890797661671409032" at="22,0,25,0" concept="1" trace="ToggleMultiLine_Intention#()V" />

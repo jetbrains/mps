@@ -28,7 +28,7 @@ public class CardinalityTestConcept_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_oqokgo_a(), CONCEPTS.CardinalityTestConcept$Xp));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_oqokgo_a(), CONCEPTS.CardinalityTestConcept$1Q));
     result.add(new SMP_Subconcepts_oqokgo_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class CardinalityTestConcept_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_oqokgo_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.CardinalityTestConcept$Xp, LINKS.obligatoryref$4Ufa);
+      super((SAbstractConcept) CONCEPTS.CardinalityTestConcept$1Q, LINKS.obligatoryref$K1jB);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class CardinalityTestConcept_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_oqokgo_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.CardinalityTestConcept$Xp);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.CardinalityTestConcept$1Q);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class CardinalityTestConcept_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CardinalityTestConcept$Xp = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x61692e8b97e96c6cL, "messages.customization.structure.CardinalityTestConcept");
+    /*package*/ static final SConcept CardinalityTestConcept$1Q = MetaAdapterFactory.getConcept(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x61692e8b97e96c6cL, "messages.customization.structure.CardinalityTestConcept");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink obligatoryref$4Ufa = MetaAdapterFactory.getReferenceLink(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x61692e8b97e96c6cL, 0x61692e8b97e8bfb0L, "obligatoryref");
+    /*package*/ static final SReferenceLink obligatoryref$K1jB = MetaAdapterFactory.getReferenceLink(0x7cf7c95bc81e4da9L, 0xa05645e480a7abd3L, 0x61692e8b97e96c6cL, 0x61692e8b97e8bfb0L, "obligatoryref");
   }
 }

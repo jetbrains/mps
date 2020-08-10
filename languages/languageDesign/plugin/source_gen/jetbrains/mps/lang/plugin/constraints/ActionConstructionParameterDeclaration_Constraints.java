@@ -26,7 +26,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ActionConstructionParameterDeclaration_Constraints extends BaseConstraintsDescriptor {
   public ActionConstructionParameterDeclaration_Constraints() {
-    super(CONCEPTS.ActionConstructionParameterDeclaration$AK);
+    super(CONCEPTS.ActionConstructionParameterDeclaration$zN);
   }
 
   @Override
@@ -41,11 +41,11 @@ public class ActionConstructionParameterDeclaration_Constraints extends BaseCons
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode action = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ActionDeclaration$VX, true, false);
+            SNode action = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ActionDeclaration$T0, true, false);
             if (action == null) {
               return null;
             }
-            return ListScope.forResolvableElements(SLinkOperations.getChildren(action, LINKS.constructionParameter$RNtA));
+            return ListScope.forResolvableElements(SLinkOperations.getChildren(action, LINKS.constructionParameter$5oqD));
           }
         };
       }
@@ -67,17 +67,17 @@ public class ActionConstructionParameterDeclaration_Constraints extends BaseCons
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ActionDeclaration$VX);
+    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ActionDeclaration$T0);
   }
   private static final SNodePointer breakingNode_846svb_a0a0a0a0a0a0a0a2 = new SNodePointer("r:00000000-0000-4000-0000-011c89590361(jetbrains.mps.lang.plugin.constraints)", "6836281137582796430");
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590361(jetbrains.mps.lang.plugin.constraints)", "1227128029536562144");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ActionConstructionParameterDeclaration$AK = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11daf6d2bdcL, "jetbrains.mps.lang.plugin.structure.ActionConstructionParameterDeclaration");
-    /*package*/ static final SConcept ActionDeclaration$VX = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, "jetbrains.mps.lang.plugin.structure.ActionDeclaration");
+    /*package*/ static final SConcept ActionConstructionParameterDeclaration$zN = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11daf6d2bdcL, "jetbrains.mps.lang.plugin.structure.ActionConstructionParameterDeclaration");
+    /*package*/ static final SConcept ActionDeclaration$T0 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, "jetbrains.mps.lang.plugin.structure.ActionDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink constructionParameter$RNtA = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11daf6ca9baL, "constructionParameter");
+    /*package*/ static final SContainmentLink constructionParameter$5oqD = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, 0x11daf6ca9baL, "constructionParameter");
   }
 }

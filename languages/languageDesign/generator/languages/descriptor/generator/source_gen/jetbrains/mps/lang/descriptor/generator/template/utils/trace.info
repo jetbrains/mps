@@ -17,11 +17,11 @@
       <node id="725186580885050982" at="43,39,44,103" concept="4" />
       <node id="7046202590379972492" at="49,74,50,95" concept="3" />
       <node id="7046202590379988521" at="54,43,55,91" concept="4" />
-      <node id="4586246778193290019" at="63,0,64,0" concept="5" trace="ClassConcept$IY" />
-      <node id="4586246778193290019" at="64,0,65,0" concept="5" trace="StyleSheet$GD" />
-      <node id="4586246778193290019" at="65,0,66,0" concept="5" trace="StyleAttributeDeclaration$8S" />
-      <node id="4586246778193290019" at="69,0,70,0" concept="5" trace="name$lA7v" />
-      <node id="4586246778193290019" at="73,0,74,0" concept="5" trace="styles$dmJW" />
+      <node id="4586246778193290019" at="63,0,64,0" concept="5" trace="ClassConcept$bK" />
+      <node id="4586246778193290019" at="64,0,65,0" concept="5" trace="StyleSheet$Sg" />
+      <node id="4586246778193290019" at="65,0,66,0" concept="5" trace="StyleAttributeDeclaration$kv" />
+      <node id="4586246778193290019" at="69,0,70,0" concept="5" trace="name$MnvL" />
+      <node id="4586246778193290019" at="73,0,74,0" concept="5" trace="styles$hCVz" />
       <node id="2269164187047083153" at="23,137,26,5" concept="1" />
       <node id="2269164187047083185" at="30,59,33,11" concept="1" />
       <node id="725186580885039686" at="43,0,46,0" concept="2" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />

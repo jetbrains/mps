@@ -23,7 +23,7 @@ public class DowncastExpression_DELETE {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.expression$wQur));
+        SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.expression$baGI));
       }
 
     };
@@ -71,6 +71,6 @@ public class DowncastExpression_DELETE {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$wQur = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11df825e596L, 0x11df8269ecfL, "expression");
+    /*package*/ static final SContainmentLink expression$baGI = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11df825e596L, 0x11df8269ecfL, "expression");
   }
 }

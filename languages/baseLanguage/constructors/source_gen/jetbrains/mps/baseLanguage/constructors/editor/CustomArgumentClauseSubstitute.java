@@ -66,8 +66,8 @@ public class CustomArgumentClauseSubstitute extends SubstituteMenuBase {
   public class SMP_Group_79baz_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      if (SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.CustomConstructor$$1)) {
-        return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.CustomConstructor$$1), LINKS.arguments$k0CZ), CONCEPTS.CustomArgumentClause$2w));
+      if (SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.CustomConstructor$j9)) {
+        return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.CustomConstructor$j9), LINKS.arguments$xto7), CONCEPTS.CustomArgumentClause$LC));
       }
       return false;
     }
@@ -85,7 +85,7 @@ public class CustomArgumentClauseSubstitute extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_79baz_a0(), CONCEPTS.CustomArgumentClause$2w));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_79baz_a0(), CONCEPTS.CustomArgumentClause$LC));
     }
     private class SMP_Wrap_79baz_a0 extends WrapperSubstituteMenuPart {
       @NotNull
@@ -110,15 +110,15 @@ public class CustomArgumentClauseSubstitute extends SubstituteMenuBase {
           @Nullable
           @Override
           public SAbstractConcept getOutputConcept() {
-            return CONCEPTS.CustomArgumentClause$2w;
+            return CONCEPTS.CustomArgumentClause$LC;
           }
           @Nullable
           @Override
           public SNode createNode(@NotNull String pattern) {
             SNode nodeToWrap = super.createNode(pattern);
-            SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.CustomArgumentClause$2w, null);
-            SNode parameter = SNodeFactoryOperations.addNewChild(result, LINKS.parameter$qDoX, null);
-            SLinkOperations.setTarget(parameter, LINKS.type$psBj, nodeToWrap);
+            SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.CustomArgumentClause$LC, null);
+            SNode parameter = SNodeFactoryOperations.addNewChild(result, LINKS.parameter$C685, null);
+            SLinkOperations.setTarget(parameter, LINKS.type$ATmr, nodeToWrap);
             return result;
           }
 
@@ -145,20 +145,20 @@ public class CustomArgumentClauseSubstitute extends SubstituteMenuBase {
         return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
       }
       private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-        return CONCEPTS.Type$IG;
+        return CONCEPTS.Type$bu;
       }
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CustomConstructor$$1 = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, "jetbrains.mps.baseLanguage.constructors.structure.CustomConstructor");
-    /*package*/ static final SConcept CustomArgumentClause$2w = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, "jetbrains.mps.baseLanguage.constructors.structure.CustomArgumentClause");
-    /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept CustomConstructor$j9 = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, "jetbrains.mps.baseLanguage.constructors.structure.CustomConstructor");
+    /*package*/ static final SConcept CustomArgumentClause$LC = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, "jetbrains.mps.baseLanguage.constructors.structure.CustomArgumentClause");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink arguments$k0CZ = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x4aa85872b7431817L, "arguments");
-    /*package*/ static final SContainmentLink parameter$qDoX = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, 0x4aa85872b7431821L, "parameter");
-    /*package*/ static final SContainmentLink type$psBj = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b7431819L, 0x4aa85872b7433028L, "type");
+    /*package*/ static final SContainmentLink arguments$xto7 = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x4aa85872b7431817L, "arguments");
+    /*package*/ static final SContainmentLink parameter$C685 = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, 0x4aa85872b7431821L, "parameter");
+    /*package*/ static final SContainmentLink type$ATmr = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b7431819L, 0x4aa85872b7433028L, "type");
   }
 }

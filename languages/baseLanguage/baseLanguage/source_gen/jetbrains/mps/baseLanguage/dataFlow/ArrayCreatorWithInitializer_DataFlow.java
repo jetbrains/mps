@@ -11,12 +11,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ArrayCreatorWithInitializer_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    for (SNode initValue : SLinkOperations.getChildren(_context.getNode(), LINKS.initValue$pEGf)) {
+    for (SNode initValue : SLinkOperations.getChildren(_context.getNode(), LINKS.initValue$4K91)) {
       _context.getBuilder().build((SNode) initValue);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initValue$pEGf = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, 0x10cd01d19acL, "initValue");
+    /*package*/ static final SContainmentLink initValue$4K91 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cd01b77ddL, 0x10cd01d19acL, "initValue");
   }
 }

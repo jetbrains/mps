@@ -59,8 +59,8 @@ public class ResultStatement_subs extends SubstituteMenuBase {
   public class SMP_Group_358bbk_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      SNode anc = SNodeOperations.getNodeAncestorWhereConceptInList(_context.getParentNode(), new SAbstractConcept[]{CONCEPTS.JobDefinition$Uq, CONCEPTS.ConfigDefinition$N, CONCEPTS.IStatementListContainer$4L}, false, false);
-      return SNodeOperations.isInstanceOf(anc, CONCEPTS.JobDefinition$Uq) || SNodeOperations.isInstanceOf(anc, CONCEPTS.ConfigDefinition$N);
+      SNode anc = SNodeOperations.getNodeAncestorWhereConceptInList(_context.getParentNode(), new SAbstractConcept[]{CONCEPTS.JobDefinition$Sj, CONCEPTS.ConfigDefinition$YG, CONCEPTS.IStatementListContainer$xz}, false, false);
+      return SNodeOperations.isInstanceOf(anc, CONCEPTS.JobDefinition$Sj) || SNodeOperations.isInstanceOf(anc, CONCEPTS.ConfigDefinition$YG);
     }
     @NotNull
     @Override
@@ -76,7 +76,7 @@ public class ResultStatement_subs extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_358bbk_a0(), CONCEPTS.ResultStatement$hP));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_358bbk_a0(), CONCEPTS.ResultStatement$fI));
     }
     private class SMP_Param_358bbk_a0 extends ParameterizedMenuPart<SEnumerationLiteral, SubstituteMenuItem, SubstituteMenuContext> {
       @NotNull
@@ -133,7 +133,7 @@ public class ResultStatement_subs extends SubstituteMenuBase {
           private final SubstituteMenuContext _context;
           private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
-            super(CONCEPTS.ResultStatement$hP, context);
+            super(CONCEPTS.ResultStatement$fI, context);
             _context = context;
           }
 
@@ -144,8 +144,8 @@ public class ResultStatement_subs extends SubstituteMenuBase {
           @Nullable
           @Override
           public SNode createNode(@NotNull String pattern) {
-            SNode rs = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.ResultStatement$hP, null);
-            SPropertyOperations.assignEnum(rs, PROPS.result$_CUw, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a9472daL, "jetbrains.mps.make.script.structure.Result"), SEnumOperations.getMemberName0(myParameterObject)));
+            SNode rs = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.ResultStatement$fI, null);
+            SPropertyOperations.assignEnum(rs, PROPS.result$wPSp, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a9472daL, "jetbrains.mps.make.script.structure.Result"), SEnumOperations.getMemberName0(myParameterObject)));
             return rs;
           }
 
@@ -155,7 +155,7 @@ public class ResultStatement_subs extends SubstituteMenuBase {
           }
           @NotNull
           protected CompletionItemInformation createInformation(String pattern) {
-            return new CompletionItemInformation(myParameterObject, CONCEPTS.ResultStatement$hP, getMatchingText(pattern), getDescriptionText(pattern));
+            return new CompletionItemInformation(myParameterObject, CONCEPTS.ResultStatement$fI, getMatchingText(pattern), getDescriptionText(pattern));
           }
           @Nullable
           @Override
@@ -179,13 +179,13 @@ public class ResultStatement_subs extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept JobDefinition$Uq = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a972dabL, "jetbrains.mps.make.script.structure.JobDefinition");
-    /*package*/ static final SConcept ConfigDefinition$N = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x1b731b4510dcbee4L, "jetbrains.mps.make.script.structure.ConfigDefinition");
-    /*package*/ static final SInterfaceConcept IStatementListContainer$4L = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11750ef8265L, "jetbrains.mps.baseLanguage.structure.IStatementListContainer");
-    /*package*/ static final SConcept ResultStatement$hP = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x6237d5bb8b2a942dL, "jetbrains.mps.make.script.structure.ResultStatement");
+    /*package*/ static final SConcept JobDefinition$Sj = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a972dabL, "jetbrains.mps.make.script.structure.JobDefinition");
+    /*package*/ static final SConcept ConfigDefinition$YG = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x1b731b4510dcbee4L, "jetbrains.mps.make.script.structure.ConfigDefinition");
+    /*package*/ static final SInterfaceConcept IStatementListContainer$xz = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11750ef8265L, "jetbrains.mps.baseLanguage.structure.IStatementListContainer");
+    /*package*/ static final SConcept ResultStatement$fI = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x6237d5bb8b2a942dL, "jetbrains.mps.make.script.structure.ResultStatement");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty result$_CUw = MetaAdapterFactory.getProperty(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x6237d5bb8b2a942dL, 0x6237d5bb8b2a942eL, "result");
+    /*package*/ static final SProperty result$wPSp = MetaAdapterFactory.getProperty(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x6237d5bb8b2a942dL, 0x6237d5bb8b2a942eL, "result");
   }
 }

@@ -35,7 +35,7 @@ public final class MatchVariableReferenceReplacement__BehaviorDescriptor extends
   /*package*/ static String toString_id3iI_KKpaF_p(@NotNull SNode __thisNode__, SNode search) {
     List<SNode> vars = new ArrayList<SNode>();
     Regexp__BehaviorDescriptor.getString_idhMuDF1A.invoke(search, vars);
-    return "$" + (ListSequence.fromList(vars).indexOf(SLinkOperations.getTarget(__thisNode__, LINKS.match$XCq3)) + 1);
+    return "$" + (ListSequence.fromList(vars).indexOf(SLinkOperations.getTarget(__thisNode__, LINKS.match$L62R)) + 1);
   }
 
   /*package*/ MatchVariableReferenceReplacement__BehaviorDescriptor() {
@@ -85,6 +85,6 @@ public final class MatchVariableReferenceReplacement__BehaviorDescriptor extends
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink match$XCq3 = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c192ab94eL, 0x34ae970c192abbc5L, "match");
+    /*package*/ static final SReferenceLink match$L62R = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c192ab94eL, 0x34ae970c192abbc5L, "match");
   }
 }

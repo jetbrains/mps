@@ -37,11 +37,11 @@ public final class LetRef__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static List<SNode> getAllReferences_idNsR6RVdgjq(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
     SNode node = __thisNode__;
-    while (SNodeOperations.getParent(node) != null && !(SNodeOperations.isInstanceOf(node, CONCEPTS.MultipleExpression$p8))) {
+    while (SNodeOperations.getParent(node) != null && !(SNodeOperations.isInstanceOf(node, CONCEPTS.MultipleExpression$xc))) {
       node = SNodeOperations.getParent(node);
     }
-    for (SNode letRef : SNodeOperations.getNodeDescendants(node, CONCEPTS.LetRef$vJ, false, new SAbstractConcept[]{})) {
-      if (SLinkOperations.getTarget(letRef, LINKS.variable$hOPq) == SLinkOperations.getTarget(__thisNode__, LINKS.variable$hOPq)) {
+    for (SNode letRef : SNodeOperations.getNodeDescendants(node, CONCEPTS.LetRef$BN, false, new SAbstractConcept[]{})) {
+      if (SLinkOperations.getTarget(letRef, LINKS.variable$1fXu) == SLinkOperations.getTarget(__thisNode__, LINKS.variable$1fXu)) {
         ListSequence.fromList(result).addElement(letRef);
       }
     }
@@ -95,11 +95,11 @@ public final class LetRef__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MultipleExpression$p8 = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x15b75b54f176d1a3L, "jetbrains.mps.samples.lambdaCalculus.structure.MultipleExpression");
-    /*package*/ static final SConcept LetRef$vJ = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x448ba254edc7216cL, "jetbrains.mps.samples.lambdaCalculus.structure.LetRef");
+    /*package*/ static final SConcept MultipleExpression$xc = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x15b75b54f176d1a3L, "jetbrains.mps.samples.lambdaCalculus.structure.MultipleExpression");
+    /*package*/ static final SConcept LetRef$BN = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x448ba254edc7216cL, "jetbrains.mps.samples.lambdaCalculus.structure.LetRef");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variable$hOPq = MetaAdapterFactory.getReferenceLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x48db75d5dc496b08L, 0x48db75d5dc497af4L, "variable");
+    /*package*/ static final SReferenceLink variable$1fXu = MetaAdapterFactory.getReferenceLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x48db75d5dc496b08L, 0x48db75d5dc497af4L, "variable");
   }
 }

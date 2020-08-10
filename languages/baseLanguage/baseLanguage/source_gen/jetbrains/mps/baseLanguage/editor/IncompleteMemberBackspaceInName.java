@@ -25,9 +25,9 @@ public class IncompleteMemberBackspaceInName {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.type$yO11), CONCEPTS.ArrayType$Yv)) {
-          SNode componentType = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.type$yO11), CONCEPTS.ArrayType$Yv), LINKS.componentType$vfw);
-          SLinkOperations.setTarget(node, LINKS.type$yO11, componentType);
+        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.type$dTtN), CONCEPTS.ArrayType$rh)) {
+          SNode componentType = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.type$dTtN), CONCEPTS.ArrayType$rh), LINKS.componentType$F$Gi);
+          SLinkOperations.setTarget(node, LINKS.type$dTtN, componentType);
         } else {
           if (DeletionApproverUtil.approve(editorContext, node)) {
             return;
@@ -81,11 +81,11 @@ public class IncompleteMemberBackspaceInName {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$yO11 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e8b632a8L, "type");
-    /*package*/ static final SContainmentLink componentType$vfw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
+    /*package*/ static final SContainmentLink type$dTtN = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e8b632a8L, "type");
+    /*package*/ static final SContainmentLink componentType$F$Gi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ArrayType$Yv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
+    /*package*/ static final SConcept ArrayType$rh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
   }
 }

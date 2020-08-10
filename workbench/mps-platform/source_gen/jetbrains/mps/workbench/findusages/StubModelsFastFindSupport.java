@@ -110,7 +110,7 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
     });
     for (SNode node : SetSequence.fromSet(nodes)) {
       SNode snode = ((SNode) node);
-      if (!(SNodeOperations.isInstanceOf(snode, CONCEPTS.TypeVariableDeclaration$Cc))) {
+      if (!(SNodeOperations.isInstanceOf(snode, CONCEPTS.TypeVariableDeclaration$4Y))) {
         continue;
       }
       candidates.putValue(SNodeOperations.getModel(snode), node);
@@ -248,6 +248,6 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TypeVariableDeclaration$Cc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, "jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration");
+    /*package*/ static final SConcept TypeVariableDeclaration$4Y = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, "jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration");
   }
 }

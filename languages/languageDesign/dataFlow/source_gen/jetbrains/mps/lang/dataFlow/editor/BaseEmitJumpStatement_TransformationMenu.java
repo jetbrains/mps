@@ -64,7 +64,7 @@ public class BaseEmitJumpStatement_TransformationMenu extends TransformationMenu
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.BaseEmitJumpStatement$le)) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.BaseEmitJumpStatement$9e)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -80,8 +80,8 @@ public class BaseEmitJumpStatement_TransformationMenu extends TransformationMenu
       });
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_dkv885_a1(), CONCEPTS.EmitIfJumpStatement$yE));
-      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_dkv885_b1(), CONCEPTS.EmitJumpStatement$SD));
+      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_dkv885_a1(), CONCEPTS.EmitIfJumpStatement$mE));
+      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_dkv885_b1(), CONCEPTS.EmitJumpStatement$GD));
     }
     return result;
   }
@@ -124,14 +124,14 @@ public class BaseEmitJumpStatement_TransformationMenu extends TransformationMenu
 
       @Override
       public void execute(@NotNull String pattern) {
-        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.EmitIfJumpStatement$yE), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.EmitIfJumpStatement$mE), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
 
       @Nullable
       @Override
       public SAbstractConcept getOutputConcept() {
-        return CONCEPTS.EmitIfJumpStatement$yE;
+        return CONCEPTS.EmitIfJumpStatement$mE;
       }
 
 
@@ -142,7 +142,7 @@ public class BaseEmitJumpStatement_TransformationMenu extends TransformationMenu
 
       public void customize(String pattern, EditorMenuItemStyle style) {
         EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-        SAbstractConcept outputConcept = CONCEPTS.EmitIfJumpStatement$yE;
+        SAbstractConcept outputConcept = CONCEPTS.EmitIfJumpStatement$mE;
         EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
         for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
           customizer.customize(style, compositeContext);
@@ -189,14 +189,14 @@ public class BaseEmitJumpStatement_TransformationMenu extends TransformationMenu
 
       @Override
       public void execute(@NotNull String pattern) {
-        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.EmitJumpStatement$SD), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.EmitJumpStatement$GD), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
 
       @Nullable
       @Override
       public SAbstractConcept getOutputConcept() {
-        return CONCEPTS.EmitJumpStatement$SD;
+        return CONCEPTS.EmitJumpStatement$GD;
       }
 
 
@@ -207,7 +207,7 @@ public class BaseEmitJumpStatement_TransformationMenu extends TransformationMenu
 
       public void customize(String pattern, EditorMenuItemStyle style) {
         EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-        SAbstractConcept outputConcept = CONCEPTS.EmitJumpStatement$SD;
+        SAbstractConcept outputConcept = CONCEPTS.EmitJumpStatement$GD;
         EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
         for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
           customizer.customize(style, compositeContext);
@@ -218,8 +218,8 @@ public class BaseEmitJumpStatement_TransformationMenu extends TransformationMenu
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseEmitJumpStatement$le = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5bc8a99L, "jetbrains.mps.lang.dataFlow.structure.BaseEmitJumpStatement");
-    /*package*/ static final SConcept EmitIfJumpStatement$yE = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5be47c5L, "jetbrains.mps.lang.dataFlow.structure.EmitIfJumpStatement");
-    /*package*/ static final SConcept EmitJumpStatement$SD = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5be8165L, "jetbrains.mps.lang.dataFlow.structure.EmitJumpStatement");
+    /*package*/ static final SConcept BaseEmitJumpStatement$9e = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5bc8a99L, "jetbrains.mps.lang.dataFlow.structure.BaseEmitJumpStatement");
+    /*package*/ static final SConcept EmitIfJumpStatement$mE = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5be47c5L, "jetbrains.mps.lang.dataFlow.structure.EmitIfJumpStatement");
+    /*package*/ static final SConcept EmitJumpStatement$GD = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5be8165L, "jetbrains.mps.lang.dataFlow.structure.EmitJumpStatement");
   }
 }

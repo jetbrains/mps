@@ -18,12 +18,12 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class ImplementationCode_Constraints extends BaseConstraintsDescriptor {
   public ImplementationCode_Constraints() {
-    super(CONCEPTS.ImplementationCode$jA);
+    super(CONCEPTS.ImplementationCode$Dn);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$lA7v, container);
+      super(PROPS.name$MnvL, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -31,7 +31,7 @@ public class ImplementationCode_Constraints extends BaseConstraintsDescriptor {
     }
     @Override
     public Object getValue(SNode node) {
-      return "Implementation of " + SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.descriptor$ah2), PROPS.name$lA7v);
+      return "Implementation of " + SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.descriptor$u9AN), PROPS.name$MnvL);
     }
     @Override
     public boolean hasOwnSetter() {
@@ -47,19 +47,19 @@ public class ImplementationCode_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.name$lA7v, new Name_Property(this));
+    properties.put(PROPS.name$MnvL, new Name_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ImplementationCode$jA = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3e8df42f5fb8641cL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.ImplementationCode");
+    /*package*/ static final SConcept ImplementationCode$Dn = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3e8df42f5fb8641cL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.ImplementationCode");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink descriptor$ah2 = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3e8df42f5fb8641cL, 0x3e8df42f5fb8641fL, "descriptor");
+    /*package*/ static final SReferenceLink descriptor$u9AN = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3e8df42f5fb8641cL, 0x3e8df42f5fb8641fL, "descriptor");
   }
 }

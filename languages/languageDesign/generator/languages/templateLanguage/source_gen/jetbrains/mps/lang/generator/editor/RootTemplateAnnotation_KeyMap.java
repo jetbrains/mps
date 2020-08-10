@@ -58,10 +58,10 @@ public class RootTemplateAnnotation_KeyMap extends KeyMapImpl {
         return false;
       }
       SNode applyToNode = SNodeOperations.getContainingRoot(node);
-      return AttributeOperations.getAttribute(applyToNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$u8)) == null;
+      return AttributeOperations.getAttribute(applyToNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O)) == null;
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SNodeFactoryOperations.setNewAttribute(SNodeOperations.getContainingRoot(node), new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$u8), CONCEPTS.RootTemplateAnnotation$u8);
+      SNodeFactoryOperations.setNewAttribute(SNodeOperations.getContainingRoot(node), new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O), CONCEPTS.RootTemplateAnnotation$9O);
     }
     public String getKeyStroke() {
       return "ctrl shift H";
@@ -69,6 +69,6 @@ public class RootTemplateAnnotation_KeyMap extends KeyMapImpl {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RootTemplateAnnotation$u8 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation");
+    /*package*/ static final SConcept RootTemplateAnnotation$9O = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation");
   }
 }

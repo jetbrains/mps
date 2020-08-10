@@ -25,7 +25,7 @@ public class typeof_ModelSource_InferenceRule extends AbstractInferenceRule_Runt
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ModelSource$Il;
+    return CONCEPTS.ModelSource$qW;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_ModelSource_InferenceRule extends AbstractInferenceRule_Runt
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ModelSource$Il = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6552f0adf299246dL, "jetbrains.mps.execution.configurations.structure.ModelSource");
+    /*package*/ static final SConcept ModelSource$qW = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6552f0adf299246dL, "jetbrains.mps.execution.configurations.structure.ModelSource");
   }
 }

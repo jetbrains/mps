@@ -28,8 +28,8 @@ public class TryUniversalStatement_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_493d70_a(), CONCEPTS.TryUniversalStatement$80));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_493d70_b(), CONCEPTS.TryUniversalStatement$80));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_493d70_a(), CONCEPTS.TryUniversalStatement$$M));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_493d70_b(), CONCEPTS.TryUniversalStatement$$M));
     return result;
   }
 
@@ -74,7 +74,7 @@ public class TryUniversalStatement_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.TryUniversalStatement$80, context);
+        super(CONCEPTS.TryUniversalStatement$$M, context);
         _context = context;
       }
 
@@ -85,7 +85,7 @@ public class TryUniversalStatement_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        return SNodeFactoryOperations.createNewNode(CONCEPTS.TryUniversalStatement$80, _context.getCurrentTargetNode());
+        return SNodeFactoryOperations.createNewNode(CONCEPTS.TryUniversalStatement$$M, _context.getCurrentTargetNode());
       }
 
       @Override
@@ -147,7 +147,7 @@ public class TryUniversalStatement_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.TryUniversalStatement$80, context);
+        super(CONCEPTS.TryUniversalStatement$$M, context);
         _context = context;
       }
 
@@ -158,8 +158,8 @@ public class TryUniversalStatement_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.TryUniversalStatement$80, _context.getCurrentTargetNode());
-        SNodeFactoryOperations.addNewChild(result, LINKS.resource$Abww, null);
+        SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.TryUniversalStatement$$M, _context.getCurrentTargetNode());
+        SNodeFactoryOperations.addNewChild(result, LINKS.resource$hgXi, null);
         return result;
       }
 
@@ -196,10 +196,10 @@ public class TryUniversalStatement_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TryUniversalStatement$80 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, "jetbrains.mps.baseLanguage.structure.TryUniversalStatement");
+    /*package*/ static final SConcept TryUniversalStatement$$M = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, "jetbrains.mps.baseLanguage.structure.TryUniversalStatement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink resource$Abww = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x4a434b86a54515feL, "resource");
+    /*package*/ static final SContainmentLink resource$hgXi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x4a434b86a54515feL, "resource");
   }
 }

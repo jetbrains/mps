@@ -26,12 +26,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ConceptReference_Constraints extends BaseConstraintsDescriptor {
   public ConceptReference_Constraints() {
-    super(CONCEPTS.ConceptReference$Je);
+    super(CONCEPTS.ConceptReference$14);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.concept$aRU5, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.concept$zIbV, this) {
       @Override
       public boolean hasOwnOnReferenceSetHandler() {
         return true;
@@ -43,9 +43,9 @@ public class ConceptReference_Constraints extends BaseConstraintsDescriptor {
       @Override
       public void onReferenceSet(final SNode referenceNode, final SNode oldReferentNode, final SNode newReferentNode) {
         if ((newReferentNode != null) && newReferentNode != oldReferentNode) {
-          SPropertyOperations.set(referenceNode, PROPS.name$lA7v, NameUtil.decapitalize(SPropertyOperations.getString(newReferentNode, PROPS.name$lA7v)));
-          if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(referenceNode), CONCEPTS.InferenceRule$Ad)) {
-            SPropertyOperations.set(SNodeOperations.cast(SNodeOperations.getParent(referenceNode), CONCEPTS.InferenceRule$Ad), PROPS.name$lA7v, "typeof_" + SPropertyOperations.getString(newReferentNode, PROPS.name$lA7v));
+          SPropertyOperations.set(referenceNode, PROPS.name$MnvL, NameUtil.decapitalize(SPropertyOperations.getString(newReferentNode, PROPS.name$MnvL)));
+          if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(referenceNode), CONCEPTS.InferenceRule$S3)) {
+            SPropertyOperations.set(SNodeOperations.cast(SNodeOperations.getParent(referenceNode), CONCEPTS.InferenceRule$S3), PROPS.name$MnvL, "typeof_" + SPropertyOperations.getString(newReferentNode, PROPS.name$MnvL));
           }
         }
       }
@@ -63,7 +63,7 @@ public class ConceptReference_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return Scopes.forConcepts(_context.getContextNode(), CONCEPTS.AbstractConceptDeclaration$UN);
+            return Scopes.forConcepts(_context.getContextNode(), CONCEPTS.AbstractConceptDeclaration$KA);
           }
         };
       }
@@ -75,16 +75,16 @@ public class ConceptReference_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_dyivod_a0a0a0a0a4a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)", "6836281137582806988");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptReference$Je = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, "jetbrains.mps.lang.typesystem.structure.ConceptReference");
-    /*package*/ static final SConcept InferenceRule$Ad = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, "jetbrains.mps.lang.typesystem.structure.InferenceRule");
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept ConceptReference$14 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, "jetbrains.mps.lang.typesystem.structure.ConceptReference");
+    /*package*/ static final SConcept InferenceRule$S3 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, "jetbrains.mps.lang.typesystem.structure.InferenceRule");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$aRU5 = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, 0x1117e2ab6c9L, "concept");
+    /*package*/ static final SReferenceLink concept$zIbV = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, 0x1117e2ab6c9L, "concept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

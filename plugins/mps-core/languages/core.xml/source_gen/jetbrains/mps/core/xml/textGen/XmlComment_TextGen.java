@@ -18,22 +18,22 @@ public class XmlComment_TextGen extends TextGenDescriptorBase {
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     SNode left = SNodeOperations.getPrevSibling(ctx.getPrimaryInput());
-    if (SNodeOperations.isInstanceOf(left, CONCEPTS.XmlPart$yB) && (boolean) XmlPart__BehaviorDescriptor.hasNewLineAfter_id1Qs9WekVZ9E.invoke(SNodeOperations.cast(left, CONCEPTS.XmlPart$yB))) {
+    if (SNodeOperations.isInstanceOf(left, CONCEPTS.XmlPart$X6) && (boolean) XmlPart__BehaviorDescriptor.hasNewLineAfter_id1Qs9WekVZ9E.invoke(SNodeOperations.cast(left, CONCEPTS.XmlPart$X6))) {
       tgs.newLine();
       tgs.indent();
     }
     tgs.append("<!--");
-    for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.lines$bdqa)) {
+    for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.lines$4_OD)) {
       tgs.appendNode(item);
     }
     tgs.append("-->");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept XmlPart$yB = MetaAdapterFactory.getInterfaceConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394eff13eL, "jetbrains.mps.core.xml.structure.XmlPart");
+    /*package*/ static final SInterfaceConcept XmlPart$X6 = MetaAdapterFactory.getInterfaceConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x1d9c27c394eff13eL, "jetbrains.mps.core.xml.structure.XmlPart");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink lines$bdqa = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494878L, 0x16838b3fce9bec77L, "lines");
+    /*package*/ static final SContainmentLink lines$4_OD = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c5494878L, 0x16838b3fce9bec77L, "lines");
   }
 }

@@ -21,7 +21,7 @@ public class wildCard_is_Object_SubtypingRule extends SubtypingRule_Runtime impl
     return _quotation_createNode_9oqlj5_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.WildCardType$29;
+    return CONCEPTS.WildCardType$uV;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,6 +38,6 @@ public class wildCard_is_Object_SubtypingRule extends SubtypingRule_Runtime impl
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept WildCardType$29 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae5f4a3L, "jetbrains.mps.baseLanguage.structure.WildCardType");
+    /*package*/ static final SConcept WildCardType$uV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae5f4a3L, "jetbrains.mps.baseLanguage.structure.WildCardType");
   }
 }

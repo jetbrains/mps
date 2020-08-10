@@ -26,7 +26,7 @@ public class check_PropertyAttribute_NonTypesystemRule extends AbstractNonTypesy
   public check_PropertyAttribute_NonTypesystemRule() {
   }
   public void applyRule(final SNode propertyAttribute, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SPropertyOperations.getString(propertyAttribute, PROPS.propertyId$Hwkv) == null) {
+    if (SPropertyOperations.getString(propertyAttribute, PROPS.propertyId$ahGL) == null) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(propertyAttribute, "Property attribute should have property id", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "6063712545516056435", null, errorTarget);
@@ -46,7 +46,7 @@ public class check_PropertyAttribute_NonTypesystemRule extends AbstractNonTypesy
       if (existingProperty == null) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(propertyAttribute, "Property Attribute is attached to not existing property: " + SPropertyOperations.getString(propertyAttribute, PROPS.propertyId$Hwkv) + "(" + reportName + ")", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "6063712545516045327", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(propertyAttribute, "Property Attribute is attached to not existing property: " + SPropertyOperations.getString(propertyAttribute, PROPS.propertyId$ahGL) + "(" + reportName + ")", "r:cec599e3-51d2-48a7-af31-989e3cbd593c(jetbrains.mps.lang.core.typesystem)", "6063712545516045327", null, errorTarget);
           {
             BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.core.typesystem.RemoveUndeclaredPropertyAttribute_QuickFix", "6063712545516045352", false);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
@@ -65,7 +65,7 @@ public class check_PropertyAttribute_NonTypesystemRule extends AbstractNonTypesy
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.PropertyAttribute$jT;
+    return CONCEPTS.PropertyAttribute$Gb;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -75,10 +75,10 @@ public class check_PropertyAttribute_NonTypesystemRule extends AbstractNonTypesy
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty propertyId$Hwkv = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x129f3f61278d556dL, "propertyId");
+    /*package*/ static final SProperty propertyId$ahGL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, 0x129f3f61278d556dL, "propertyId");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyAttribute$jT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
   }
 }

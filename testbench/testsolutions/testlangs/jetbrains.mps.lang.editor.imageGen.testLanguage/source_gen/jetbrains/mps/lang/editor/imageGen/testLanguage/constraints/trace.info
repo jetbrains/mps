@@ -25,7 +25,7 @@
       <node id="2442780630506687109" at="34,0,35,22" concept="5" />
       <node id="1227128029536583728" at="39,128,40,57" concept="5" />
       <node id="2442780630506687109" at="42,0,43,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="2442780630506687109" at="45,0,46,0" concept="7" trace="ExportAsImage$Ua" />
+      <node id="2442780630506687109" at="45,0,46,0" concept="7" trace="ExportAsImage$xS" />
       <node id="2442780630506687109" at="20,0,23,0" concept="0" trace="ExportAsImage_Constraints#()V" />
       <node id="2442780630506687109" at="30,0,33,9" concept="2" />
       <node id="2442780630506687109" at="39,0,42,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />

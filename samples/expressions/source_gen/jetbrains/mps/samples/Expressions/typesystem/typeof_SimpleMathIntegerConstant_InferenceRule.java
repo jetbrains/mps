@@ -24,7 +24,7 @@ public class typeof_SimpleMathIntegerConstant_InferenceRule extends AbstractInfe
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SimpleMathIntegerConstant$2z;
+    return CONCEPTS.SimpleMathIntegerConstant$N0;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -33,12 +33,12 @@ public class typeof_SimpleMathIntegerConstant_InferenceRule extends AbstractInfe
     return false;
   }
   private static SNode createSimpleMathIntegerType_611g7c_a1a0c0a0b() {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathIntegerType$TX);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathIntegerType$Eq);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SimpleMathIntegerConstant$2z = MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b826940aL, "jetbrains.mps.samples.Expressions.structure.SimpleMathIntegerConstant");
-    /*package*/ static final SConcept SimpleMathIntegerType$TX = MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b82698e0L, "jetbrains.mps.samples.Expressions.structure.SimpleMathIntegerType");
+    /*package*/ static final SConcept SimpleMathIntegerConstant$N0 = MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b826940aL, "jetbrains.mps.samples.Expressions.structure.SimpleMathIntegerConstant");
+    /*package*/ static final SConcept SimpleMathIntegerType$Eq = MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b82698e0L, "jetbrains.mps.samples.Expressions.structure.SimpleMathIntegerType");
   }
 }

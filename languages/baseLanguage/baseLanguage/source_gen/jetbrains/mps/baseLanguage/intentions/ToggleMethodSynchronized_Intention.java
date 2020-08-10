@@ -37,7 +37,7 @@ public final class ToggleMethodSynchronized_Intention extends AbstractIntentionD
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    if ((SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$IY, false, false) == null)) {
+    if ((SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false) == null)) {
       return false;
     }
     if ((boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(node)) {
@@ -60,12 +60,12 @@ public final class ToggleMethodSynchronized_Intention extends AbstractIntentionD
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      String methodName = SPropertyOperations.getString(node, PROPS.name$lA7v);
-      return (SPropertyOperations.getBoolean(node, PROPS.isSynchronized$q3tZ) ? "Make '" + methodName + "' Not Synchronized" : "Make '" + methodName + "' Synchronized");
+      String methodName = SPropertyOperations.getString(node, PROPS.name$MnvL);
+      return (SPropertyOperations.getBoolean(node, PROPS.isSynchronized$58UL) ? "Make '" + methodName + "' Not Synchronized" : "Make '" + methodName + "' Synchronized");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.assign(node, PROPS.isSynchronized$q3tZ, !(SPropertyOperations.getBoolean(node, PROPS.isSynchronized$q3tZ)));
+      SPropertyOperations.assign(node, PROPS.isSynchronized$58UL, !(SPropertyOperations.getBoolean(node, PROPS.isSynchronized$58UL)));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -74,11 +74,11 @@ public final class ToggleMethodSynchronized_Intention extends AbstractIntentionD
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isSynchronized$q3tZ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x3b576cda23612c7aL, "isSynchronized");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isSynchronized$58UL = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x3b576cda23612c7aL, "isSynchronized");
   }
 }

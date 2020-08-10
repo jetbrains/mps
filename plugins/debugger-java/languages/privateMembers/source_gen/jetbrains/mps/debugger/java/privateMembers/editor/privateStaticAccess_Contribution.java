@@ -46,7 +46,7 @@ public class privateStaticAccess_Contribution extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_53df4d_a(), CONCEPTS.PrivateStaticFieldReference$6t));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_53df4d_a(), CONCEPTS.PrivateStaticFieldReference$oq));
     return result;
   }
 
@@ -83,16 +83,16 @@ public class privateStaticAccess_Contribution extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-      FilteringScope visibleClassifiers = new FilteringScope(new ClassifiersScope(_context.getModel(), SNodeOperations.as(_context.getParentNode(), CONCEPTS.Classifier$hJ), CONCEPTS.Classifier$hJ, true)) {
+      FilteringScope visibleClassifiers = new FilteringScope(new ClassifiersScope(_context.getModel(), SNodeOperations.as(_context.getParentNode(), CONCEPTS.Classifier$Ix), CONCEPTS.Classifier$Ix, true)) {
         @Override
         public boolean isExcluded(SNode node) {
-          return super.isExcluded(node) || !(VisibilityUtil.isVisible(_context.getParentNode(), SNodeOperations.as(node, CONCEPTS.IVisible$6G)));
+          return super.isExcluded(node) || !(VisibilityUtil.isVisible(_context.getParentNode(), SNodeOperations.as(node, CONCEPTS.IVisible$zu)));
         }
       };
       Iterable<SNode> availableElements = visibleClassifiers.getAvailableElements("");
       Iterable<SNode> seq = Sequence.fromIterable(availableElements).select(new ISelector<SNode, SNode>() {
         public SNode select(SNode it) {
-          return SNodeOperations.cast(it, CONCEPTS.Classifier$hJ);
+          return SNodeOperations.cast(it, CONCEPTS.Classifier$Ix);
         }
       });
       return seq;
@@ -130,7 +130,7 @@ public class privateStaticAccess_Contribution extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.PrivateStaticFieldReference$6t, context);
+          super(CONCEPTS.PrivateStaticFieldReference$oq, context);
           _context = context;
         }
 
@@ -141,8 +141,8 @@ public class privateStaticAccess_Contribution extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.PrivateStaticFieldReference$6t, null);
-          SLinkOperations.setTarget(result, LINKS.classifier$WKxm, myParameterObject);
+          SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.PrivateStaticFieldReference$oq, null);
+          SLinkOperations.setTarget(result, LINKS.classifier$BPY8, myParameterObject);
           return result;
         }
 
@@ -152,7 +152,7 @@ public class privateStaticAccess_Contribution extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, CONCEPTS.PrivateStaticFieldReference$6t, getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.PrivateStaticFieldReference$oq, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -165,7 +165,7 @@ public class privateStaticAccess_Contribution extends SubstituteMenuBase {
         @Nullable
         @Override
         public String getMatchingText(@NotNull String pattern) {
-          return SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v) + ".";
+          return SPropertyOperations.getString(myParameterObject, PROPS.name$MnvL) + ".";
         }
         @Nullable
         @Override
@@ -178,16 +178,16 @@ public class privateStaticAccess_Contribution extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PrivateStaticFieldReference$6t = MetaAdapterFactory.getConcept(0x802088974572437dL, 0xb50e8f050cba9566L, 0x3900f3d0fb5b36c9L, "jetbrains.mps.debugger.java.privateMembers.structure.PrivateStaticFieldReference");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SInterfaceConcept IVisible$6G = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible");
+    /*package*/ static final SConcept PrivateStaticFieldReference$oq = MetaAdapterFactory.getConcept(0x802088974572437dL, 0xb50e8f050cba9566L, 0x3900f3d0fb5b36c9L, "jetbrains.mps.debugger.java.privateMembers.structure.PrivateStaticFieldReference");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SInterfaceConcept IVisible$zu = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$WKxm = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
+    /*package*/ static final SReferenceLink classifier$BPY8 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

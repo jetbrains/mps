@@ -30,7 +30,7 @@ public final class DefaultBaseLine__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static boolean isApplicableForLayout_iditlittOTie(@NotNull SAbstractConcept __thisConcept__, SConcept layoutConcept) {
-    return CONCEPTS.CellLayout_Vertical$vP.equals(layoutConcept) || CONCEPTS.CellLayout_Table$Yb.equals(layoutConcept) || CONCEPTS.CellLayout_Indent$tI.equals(layoutConcept);
+    return CONCEPTS.CellLayout_Vertical$Fs.equals(layoutConcept) || CONCEPTS.CellLayout_Table$9M.equals(layoutConcept) || CONCEPTS.CellLayout_Indent$Dl.equals(layoutConcept);
   }
 
   /*package*/ DefaultBaseLine__BehaviorDescriptor() {
@@ -80,8 +80,8 @@ public final class DefaultBaseLine__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellLayout_Vertical$vP = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10192dd4cbeL, "jetbrains.mps.lang.editor.structure.CellLayout_Vertical");
-    /*package*/ static final SConcept CellLayout_Table$Yb = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x52915e535decd581L, "jetbrains.mps.lang.editor.structure.CellLayout_Table");
-    /*package*/ static final SConcept CellLayout_Indent$tI = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x120150bb441L, "jetbrains.mps.lang.editor.structure.CellLayout_Indent");
+    /*package*/ static final SConcept CellLayout_Vertical$Fs = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10192dd4cbeL, "jetbrains.mps.lang.editor.structure.CellLayout_Vertical");
+    /*package*/ static final SConcept CellLayout_Table$9M = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x52915e535decd581L, "jetbrains.mps.lang.editor.structure.CellLayout_Table");
+    /*package*/ static final SConcept CellLayout_Indent$Dl = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x120150bb441L, "jetbrains.mps.lang.editor.structure.CellLayout_Indent");
   }
 }

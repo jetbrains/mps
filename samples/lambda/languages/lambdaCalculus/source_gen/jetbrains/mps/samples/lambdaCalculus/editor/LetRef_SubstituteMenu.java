@@ -28,7 +28,7 @@ public class LetRef_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_xib3ds_a(), CONCEPTS.LetRef$vJ));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_xib3ds_a(), CONCEPTS.LetRef$BN));
     result.add(new SMP_Subconcepts_xib3ds_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class LetRef_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_xib3ds_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.LetRef$vJ, LINKS.variable$hOPq);
+      super((SAbstractConcept) CONCEPTS.LetRef$BN, LINKS.variable$1fXu);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class LetRef_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_xib3ds_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.LetRef$vJ);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.LetRef$BN);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class LetRef_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LetRef$vJ = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x448ba254edc7216cL, "jetbrains.mps.samples.lambdaCalculus.structure.LetRef");
+    /*package*/ static final SConcept LetRef$BN = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x448ba254edc7216cL, "jetbrains.mps.samples.lambdaCalculus.structure.LetRef");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variable$hOPq = MetaAdapterFactory.getReferenceLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x48db75d5dc496b08L, 0x48db75d5dc497af4L, "variable");
+    /*package*/ static final SReferenceLink variable$1fXu = MetaAdapterFactory.getReferenceLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x48db75d5dc496b08L, 0x48db75d5dc497af4L, "variable");
   }
 }

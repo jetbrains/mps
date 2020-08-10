@@ -28,11 +28,11 @@ public final class EnumerationMigrationScipts_MigrationScript extends BaseMigrat
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.EnumerationDeclaration$rG;
+        return CONCEPTS.EnumerationDeclaration$hv;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$2L)) != null);
+        return (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$)) != null);
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
@@ -54,11 +54,11 @@ public final class EnumerationMigrationScipts_MigrationScript extends BaseMigrat
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.PropertyDeclaration$c5;
+        return CONCEPTS.PropertyDeclaration$1S;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumPropertyMigrationInfo$Yg)) != null);
+        return (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumPropertyMigrationInfo$O3)) != null);
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
@@ -78,9 +78,9 @@ public final class EnumerationMigrationScipts_MigrationScript extends BaseMigrat
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumerationDeclaration$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
-    /*package*/ static final SConcept EnumMigrationInfo$2L = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, "jetbrains.mps.lang.structure.structure.EnumMigrationInfo");
-    /*package*/ static final SConcept PropertyDeclaration$c5 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
-    /*package*/ static final SConcept EnumPropertyMigrationInfo$Yg = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo");
+    /*package*/ static final SConcept EnumerationDeclaration$hv = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
+    /*package*/ static final SConcept EnumMigrationInfo$S$ = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db949c266L, "jetbrains.mps.lang.structure.structure.EnumMigrationInfo");
+    /*package*/ static final SConcept PropertyDeclaration$1S = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
+    /*package*/ static final SConcept EnumPropertyMigrationInfo$O3 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f1035942a5abL, "jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo");
   }
 }

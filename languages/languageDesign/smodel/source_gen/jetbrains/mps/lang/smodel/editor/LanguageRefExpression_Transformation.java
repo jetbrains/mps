@@ -89,7 +89,7 @@ public class LanguageRefExpression_Transformation extends TransformationMenuBase
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.smodel.editor.LoadedLanguages_Substitute");
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return CONCEPTS.LanguageId$Tn;
+      return CONCEPTS.LanguageId$UR;
     }
 
 
@@ -110,7 +110,7 @@ public class LanguageRefExpression_Transformation extends TransformationMenuBase
       public void execute(@NotNull String pattern) {
         SNode createdNode = getSubstituteItem().createNode(pattern);
         // XXX no idea when this menu is in use, if I select whole language// and ask for completion, I don't see anything from this menu, imo. 
-        SLinkOperations.setTarget(_context.getNode(), LINKS.languageId$XvFx, createdNode);
+        SLinkOperations.setTarget(_context.getNode(), LINKS.languageId$xSH1, createdNode);
       }
 
       @Override
@@ -137,10 +137,10 @@ public class LanguageRefExpression_Transformation extends TransformationMenuBase
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LanguageId$Tn = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, "jetbrains.mps.lang.smodel.structure.LanguageId");
+    /*package*/ static final SConcept LanguageId$UR = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, "jetbrains.mps.lang.smodel.structure.LanguageId");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink languageId$XvFx = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x3e6a40ba27dd70f3L, 0x312abca18ab995e2L, "languageId");
+    /*package*/ static final SContainmentLink languageId$xSH1 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x3e6a40ba27dd70f3L, 0x312abca18ab995e2L, "languageId");
   }
 }

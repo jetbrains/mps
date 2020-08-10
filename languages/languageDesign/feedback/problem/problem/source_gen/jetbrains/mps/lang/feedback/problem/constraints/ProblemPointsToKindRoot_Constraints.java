@@ -21,12 +21,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ProblemPointsToKindRoot_Constraints extends BaseConstraintsDescriptor {
   public ProblemPointsToKindRoot_Constraints() {
-    super(CONCEPTS.ProblemPointsToKindRoot$nW);
+    super(CONCEPTS.ProblemPointsToKindRoot$AQ);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.kind$ebY0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.kind$EscU, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -41,7 +41,7 @@ public class ProblemPointsToKindRoot_Constraints extends BaseConstraintsDescript
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.ProblemKind$14);
+            Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.ProblemKind$fY);
             return (scope == null ? new EmptyScope() : scope);
           }
         };
@@ -54,11 +54,11 @@ public class ProblemPointsToKindRoot_Constraints extends BaseConstraintsDescript
   private static final SNodePointer breakingNode_sla41h_a0a0a0a0a1a0a0a0c = new SNodePointer("r:7a404819-62e4-484e-8389-7ac268c0886e(jetbrains.mps.lang.feedback.problem.constraints)", "2559059706675052983");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ProblemPointsToKindRoot$nW = MetaAdapterFactory.getConcept(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL, "jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot");
-    /*package*/ static final SConcept ProblemKind$14 = MetaAdapterFactory.getConcept(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x56aefe6c1afdffL, "jetbrains.mps.lang.feedback.problem.structure.ProblemKind");
+    /*package*/ static final SConcept ProblemPointsToKindRoot$AQ = MetaAdapterFactory.getConcept(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL, "jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot");
+    /*package*/ static final SConcept ProblemKind$fY = MetaAdapterFactory.getConcept(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x56aefe6c1afdffL, "jetbrains.mps.lang.feedback.problem.structure.ProblemKind");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink kind$ebY0 = MetaAdapterFactory.getReferenceLink(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL, 0x6b178cfa773dc73bL, "kind");
+    /*package*/ static final SReferenceLink kind$EscU = MetaAdapterFactory.getReferenceLink(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL, 0x6b178cfa773dc73bL, "kind");
   }
 }

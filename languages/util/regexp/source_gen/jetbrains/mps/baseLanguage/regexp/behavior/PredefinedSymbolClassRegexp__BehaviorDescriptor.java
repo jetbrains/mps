@@ -33,7 +33,7 @@ public final class PredefinedSymbolClassRegexp__BehaviorDescriptor extends BaseB
   }
 
   /*package*/ static String getString_idhMuDF1A(@NotNull SNode __thisNode__, List<SNode> vars) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.symbolClass$3yu5), PROPS.name$lA7v);
+    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.symbolClass$R06T), PROPS.name$MnvL);
   }
 
   /*package*/ PredefinedSymbolClassRegexp__BehaviorDescriptor() {
@@ -83,10 +83,10 @@ public final class PredefinedSymbolClassRegexp__BehaviorDescriptor extends BaseB
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink symbolClass$3yu5 = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178fa2a18L, 0x11178fbdc7dL, "symbolClass");
+    /*package*/ static final SReferenceLink symbolClass$R06T = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11178fa2a18L, 0x11178fbdc7dL, "symbolClass");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

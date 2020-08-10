@@ -28,7 +28,7 @@ public class PoundExpression_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_jo9v8a_a(), CONCEPTS.PoundExpression$zj));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_jo9v8a_a(), CONCEPTS.PoundExpression$$N));
     return result;
   }
 
@@ -73,7 +73,7 @@ public class PoundExpression_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.PoundExpression$zj, context);
+        super(CONCEPTS.PoundExpression$$N, context);
         _context = context;
       }
 
@@ -84,7 +84,7 @@ public class PoundExpression_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        return SNodeFactoryOperations.createNewNode(CONCEPTS.PoundExpression$zj, null);
+        return SNodeFactoryOperations.createNewNode(CONCEPTS.PoundExpression$$N, null);
       }
 
       @Override
@@ -110,6 +110,6 @@ public class PoundExpression_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PoundExpression$zj = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11885c0d945L, "jetbrains.mps.lang.smodel.structure.PoundExpression");
+    /*package*/ static final SConcept PoundExpression$$N = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11885c0d945L, "jetbrains.mps.lang.smodel.structure.PoundExpression");
   }
 }

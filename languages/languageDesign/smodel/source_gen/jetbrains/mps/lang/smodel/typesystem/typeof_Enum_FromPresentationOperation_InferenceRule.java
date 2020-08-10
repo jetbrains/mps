@@ -29,14 +29,14 @@ public class typeof_Enum_FromPresentationOperation_InferenceRule extends Abstrac
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.presentationExpression$fZE7);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.presentationExpression$OoFB);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "7029133697938595411", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "7029133697938595413", true), (SNode) _quotation_createNode_8nrbec_a1a0c0a0b0b(), true, true, _info_12389875345);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Enum_FromPresentationOperation$x$;
+    return CONCEPTS.Enum_FromPresentationOperation$z4;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -59,10 +59,10 @@ public class typeof_Enum_FromPresentationOperation_InferenceRule extends Abstrac
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink presentationExpression$fZE7 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x50352c802da23a6eL, 0x6563631ab590888cL, "presentationExpression");
+    /*package*/ static final SContainmentLink presentationExpression$OoFB = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x50352c802da23a6eL, 0x6563631ab590888cL, "presentationExpression");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Enum_FromPresentationOperation$x$ = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x50352c802da23a6eL, "jetbrains.mps.lang.smodel.structure.Enum_FromPresentationOperation");
+    /*package*/ static final SConcept Enum_FromPresentationOperation$z4 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x50352c802da23a6eL, "jetbrains.mps.lang.smodel.structure.Enum_FromPresentationOperation");
   }
 }

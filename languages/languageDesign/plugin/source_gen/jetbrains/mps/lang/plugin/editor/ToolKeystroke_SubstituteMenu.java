@@ -36,7 +36,7 @@ public class ToolKeystroke_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_846jr0_a(), CONCEPTS.ToolKeystroke$gA));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_846jr0_a(), CONCEPTS.ToolKeystroke$dD));
     return result;
   }
 
@@ -108,7 +108,7 @@ public class ToolKeystroke_SubstituteMenu extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.ToolKeystroke$gA, context);
+          super(CONCEPTS.ToolKeystroke$dD, context);
           _context = context;
         }
 
@@ -129,7 +129,7 @@ public class ToolKeystroke_SubstituteMenu extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, CONCEPTS.ToolKeystroke$gA, getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.ToolKeystroke$dD, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -151,26 +151,26 @@ public class ToolKeystroke_SubstituteMenu extends SubstituteMenuBase {
 
   }
   private static SNode createToolKeystroke_846jr0_a1a0a0(SEnumerationLiteral p0, String p1) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ToolKeystroke$gA);
-    n0.setProperty(PROPS.keymap$N9u5, SPropertyOperations.serializeEnummember(p0));
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ToolKeystroke$dD);
+    n0.setProperty(PROPS.keymap$Ir8, SPropertyOperations.serializeEnummember(p0));
     {
-      SNodeBuilder n1 = n0.forChild(LINKS.keystroke$PgrI).init(CONCEPTS.KeyMapKeystroke$7H);
-      n1.setProperty(PROPS.modifiers$R3Qw, p1);
+      SNodeBuilder n1 = n0.forChild(LINKS.keystroke$2PoL).init(CONCEPTS.KeyMapKeystroke$4K);
+      n1.setProperty(PROPS.modifiers$4CNz, p1);
     }
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ToolKeystroke$gA = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b765b0L, "jetbrains.mps.lang.plugin.structure.ToolKeystroke");
-    /*package*/ static final SConcept KeyMapKeystroke$7H = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, "jetbrains.mps.lang.plugin.structure.KeyMapKeystroke");
+    /*package*/ static final SConcept ToolKeystroke$dD = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b765b0L, "jetbrains.mps.lang.plugin.structure.ToolKeystroke");
+    /*package*/ static final SConcept KeyMapKeystroke$4K = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, "jetbrains.mps.lang.plugin.structure.KeyMapKeystroke");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty keymap$N9u5 = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b765b0L, 0x68b8d4843b765b6L, "keymap");
-    /*package*/ static final SProperty modifiers$R3Qw = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, 0x11919c665d5L, "modifiers");
+    /*package*/ static final SProperty keymap$Ir8 = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b765b0L, 0x68b8d4843b765b6L, "keymap");
+    /*package*/ static final SProperty modifiers$4CNz = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, 0x11919c665d5L, "modifiers");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink keystroke$PgrI = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b765b0L, 0x68b8d4843b76126L, "keystroke");
+    /*package*/ static final SContainmentLink keystroke$2PoL = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b765b0L, 0x68b8d4843b76126L, "keystroke");
   }
 }

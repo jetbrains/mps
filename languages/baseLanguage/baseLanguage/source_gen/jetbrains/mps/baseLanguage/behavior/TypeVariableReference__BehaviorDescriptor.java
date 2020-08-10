@@ -57,9 +57,9 @@ public final class TypeVariableReference__BehaviorDescriptor extends BaseBHDescr
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    SNode decl = SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$6t$W);
+    SNode decl = SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$Lz1I);
     if (ListSequence.fromList(SNodeOperations.getNodeAncestors(__thisNode__, null, false)).contains(decl)) {
-      return SPropertyOperations.getString(decl, PROPS.name$lA7v);
+      return SPropertyOperations.getString(decl, PROPS.name$MnvL);
     }
     if (decl != null) {
       return "@" + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(decl);
@@ -67,17 +67,17 @@ public final class TypeVariableReference__BehaviorDescriptor extends BaseBHDescr
     return "?typevar_ref?";
   }
   /*package*/ static SNode getErasure_idB1mAlA38Mq(@NotNull SNode __thisNode__) {
-    if ((SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$6t$W), LINKS.bound$vUbP) != null)) {
-      return Type__BehaviorDescriptor.getErasure_idB1mAlA38Mq.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$6t$W), LINKS.bound$vUbP));
+    if ((SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$Lz1I), LINKS.bound$aZCB) != null)) {
+      return Type__BehaviorDescriptor.getErasure_idB1mAlA38Mq.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$Lz1I), LINKS.bound$aZCB));
     }
     return _quotation_createNode_6i211a_a1a1();
   }
   /*package*/ static List<SNode> getSupertypes_id4w2h6RLlygH(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
-    if ((SLinkOperations.getTarget((SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$6t$W)), LINKS.bound$vUbP) != null)) {
-      ListSequence.fromList(result).addElement(SLinkOperations.getTarget((SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$6t$W)), LINKS.bound$vUbP));
+    if ((SLinkOperations.getTarget((SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$Lz1I)), LINKS.bound$aZCB) != null)) {
+      ListSequence.fromList(result).addElement(SLinkOperations.getTarget((SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$Lz1I)), LINKS.bound$aZCB));
     }
-    for (SNode bound : SLinkOperations.getChildren((SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$6t$W)), LINKS.auxBounds$CbkD)) {
+    for (SNode bound : SLinkOperations.getChildren((SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$Lz1I)), LINKS.auxBounds$jgLr)) {
       ListSequence.fromList(result).addElement(bound);
     }
     if (ListSequence.fromList(result).isEmpty()) {
@@ -86,11 +86,11 @@ public final class TypeVariableReference__BehaviorDescriptor extends BaseBHDescr
     return result;
   }
   /*package*/ static SNode getLooseType_id4YTQtEKnnzf(@NotNull SNode __thisNode__, @NotNull Set<SNode> visitedTypeVariableReferences) {
-    SNode bound = SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$6t$W), LINKS.bound$vUbP);
+    SNode bound = SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$Lz1I), LINKS.bound$aZCB);
     if ((bound != null) && !(SetSequence.fromSet(visitedTypeVariableReferences).contains(__thisNode__))) {
       SetSequence.fromSet(visitedTypeVariableReferences).addElement(__thisNode__);
       SNode upperBoundType = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, "jetbrains.mps.baseLanguage.structure.UpperBoundType"));
-      SLinkOperations.setTarget(upperBoundType, LINKS.bound$xdz0, Type__BehaviorDescriptor.getLooseType_id4YTQtEKnnzf.invoke(bound, visitedTypeVariableReferences));
+      SLinkOperations.setTarget(upperBoundType, LINKS.bound$ciZM, Type__BehaviorDescriptor.getLooseType_id4YTQtEKnnzf.invoke(bound, visitedTypeVariableReferences));
       SetSequence.fromSet(visitedTypeVariableReferences).removeElement(__thisNode__);
       return upperBoundType;
     } else {
@@ -99,17 +99,17 @@ public final class TypeVariableReference__BehaviorDescriptor extends BaseBHDescr
 
   }
   /*package*/ static void collectGenericSubstitutions_id3zZky3wF74h(@NotNull SNode __thisNode__, Map<SNode, SNode> substitutions) {
-    if (MapSequence.fromMap(substitutions).containsKey(SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$6t$W))) {
+    if (MapSequence.fromMap(substitutions).containsKey(SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$Lz1I))) {
       return;
     }
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$6t$W)), CONCEPTS.InstanceMethodDeclaration$An)) {
-      MapSequence.fromMap(substitutions).put(SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$6t$W), __thisNode__);
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$Lz1I)), CONCEPTS.InstanceMethodDeclaration$39)) {
+      MapSequence.fromMap(substitutions).put(SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$Lz1I), __thisNode__);
     } else {
-      IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke0(__thisNode__, CONCEPTS.IGenericType$$h, substitutions);
+      IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke0(__thisNode__, CONCEPTS.IGenericType$13, substitutions);
     }
   }
   /*package*/ static SNode expandGenerics_id3$PgO9fYTB5(@NotNull final SNode __thisNode__, Map<SNode, SNode> substitutions, List<SNode> expTrace) {
-    if (MapSequence.fromMap(substitutions).containsKey(SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$6t$W))) {
+    if (MapSequence.fromMap(substitutions).containsKey(SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$Lz1I))) {
       if (ListSequence.fromList(expTrace).any(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return MatchingUtil.matchNodes(__thisNode__, it);
@@ -117,10 +117,10 @@ public final class TypeVariableReference__BehaviorDescriptor extends BaseBHDescr
       })) {
         return __thisNode__;
       }
-      SNode exp = MapSequence.fromMap(substitutions).get(SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$6t$W));
-      if (SNodeOperations.isInstanceOf(exp, CONCEPTS.IGenericType$$h)) {
+      SNode exp = MapSequence.fromMap(substitutions).get(SLinkOperations.getTarget(__thisNode__, LINKS.typeVariableDeclaration$Lz1I));
+      if (SNodeOperations.isInstanceOf(exp, CONCEPTS.IGenericType$13)) {
         ListSequence.fromList(expTrace).addElement(__thisNode__);
-        exp = IGenericType__BehaviorDescriptor.expandGenerics_id3$PgO9fYTB5.invoke(SNodeOperations.cast(exp, CONCEPTS.IGenericType$$h), substitutions, expTrace);
+        exp = IGenericType__BehaviorDescriptor.expandGenerics_id3$PgO9fYTB5.invoke(SNodeOperations.cast(exp, CONCEPTS.IGenericType$13), substitutions, expTrace);
       }
       return exp;
     }
@@ -140,8 +140,8 @@ public final class TypeVariableReference__BehaviorDescriptor extends BaseBHDescr
   }
   /*package*/ static SNode doResolve_id3QovYE_nFjT(@NotNull SNode __thisNode__, SNode startType, Map<SNode, SNode> substitutions) {
     List<SNode> visited = ListSequence.fromList(new ArrayList<SNode>());
-    while (SNodeOperations.isInstanceOf(startType, CONCEPTS.TypeVariableReference$vZ)) {
-      SNode temp = SNodeOperations.cast(MapSequence.fromMap(substitutions).get(SLinkOperations.getTarget(SNodeOperations.cast(startType, CONCEPTS.TypeVariableReference$vZ), LINKS.typeVariableDeclaration$6t$W)), CONCEPTS.Type$IG);
+    while (SNodeOperations.isInstanceOf(startType, CONCEPTS.TypeVariableReference$WL)) {
+      SNode temp = SNodeOperations.cast(MapSequence.fromMap(substitutions).get(SLinkOperations.getTarget(SNodeOperations.cast(startType, CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I)), CONCEPTS.Type$bu);
       if (ListSequence.fromList(visited).contains(temp)) {
         break;
       }
@@ -231,20 +231,20 @@ public final class TypeVariableReference__BehaviorDescriptor extends BaseBHDescr
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink typeVariableDeclaration$6t$W = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
-    /*package*/ static final SContainmentLink bound$vUbP = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae375bda0L, "bound");
-    /*package*/ static final SContainmentLink auxBounds$CbkD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae913a476L, "auxBounds");
-    /*package*/ static final SContainmentLink bound$xdz0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, 0x110daeaa84bL, "bound");
+    /*package*/ static final SReferenceLink typeVariableDeclaration$Lz1I = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink bound$aZCB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae375bda0L, "bound");
+    /*package*/ static final SContainmentLink auxBounds$jgLr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae913a476L, "auxBounds");
+    /*package*/ static final SContainmentLink bound$ciZM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, 0x110daeaa84bL, "bound");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InstanceMethodDeclaration$An = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
-    /*package*/ static final SInterfaceConcept IGenericType$$h = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x38ff5220e0ac710dL, "jetbrains.mps.baseLanguage.structure.IGenericType");
-    /*package*/ static final SConcept TypeVariableReference$vZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
-    /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SInterfaceConcept IGenericType$13 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x38ff5220e0ac710dL, "jetbrains.mps.baseLanguage.structure.IGenericType");
+    /*package*/ static final SConcept TypeVariableReference$WL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 }

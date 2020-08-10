@@ -180,7 +180,7 @@ public final class CopyPasteUtil {
         newReference = jetbrains.mps.smodel.SReference.create(sourceReference.getLink(), newSourceNode, newTargetNode);
       } else {
         // XXX special hack for BL, oh, really? 
-        if ((SNodeOperations.isInstanceOf(newSourceNode, CONCEPTS.IMethodCall$ln) || SNodeOperations.isInstanceOf(newSourceNode, CONCEPTS.ClassifierType$IZ)) && oldTargetNode != null) {
+        if ((SNodeOperations.isInstanceOf(newSourceNode, CONCEPTS.IMethodCall$M9) || SNodeOperations.isInstanceOf(newSourceNode, CONCEPTS.ClassifierType$bL)) && oldTargetNode != null) {
           newReference = jetbrains.mps.smodel.SReference.create(sourceReference.getLink(), newSourceNode, oldTargetNode);
         } else {
           // XXX the code below is quite suspicious and deserves a refactoring. It seems the point here is to keep resolveInfo of original link, otherwise 
@@ -420,7 +420,7 @@ public final class CopyPasteUtil {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
-    /*package*/ static final SInterfaceConcept IMethodCall$ln = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SInterfaceConcept IMethodCall$M9 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
   }
 }

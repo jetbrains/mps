@@ -22,9 +22,9 @@ public class typeof_ConstraintFunctionParameter_linkTargetNode_InferenceRule ext
   public typeof_ConstraintFunctionParameter_linkTargetNode_InferenceRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode target = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(node, CONCEPTS.NodeReferentConstraint$JH, false, false), LINKS.applicableLink$WTlX), LINKS.target$TWaS);
+    SNode target = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(node, CONCEPTS.NodeReferentConstraint$PH, false, false), LINKS.applicableLink$7IrX), LINKS.target$m40F);
     if ((target == null)) {
-      target = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(node, CONCEPTS.ConceptConstraints$St, false, false), LINKS.concept$w6jZ);
+      target = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(node, CONCEPTS.ConceptConstraints$Yt, false, false), LINKS.concept$EVpZ);
     }
     {
       SNode _nodeToCheck_1029348928467 = node;
@@ -33,7 +33,7 @@ public class typeof_ConstraintFunctionParameter_linkTargetNode_InferenceRule ext
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConstraintFunctionParameter_linkTargetNode$_O;
+    return CONCEPTS.ConstraintFunctionParameter_linkTargetNode$FO;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -50,14 +50,14 @@ public class typeof_ConstraintFunctionParameter_linkTargetNode_InferenceRule ext
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodeReferentConstraint$JH = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, "jetbrains.mps.lang.constraints.structure.NodeReferentConstraint");
-    /*package*/ static final SConcept ConceptConstraints$St = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, "jetbrains.mps.lang.constraints.structure.ConceptConstraints");
-    /*package*/ static final SConcept ConstraintFunctionParameter_linkTargetNode$_O = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x118bd28275fL, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_linkTargetNode");
+    /*package*/ static final SConcept NodeReferentConstraint$PH = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, "jetbrains.mps.lang.constraints.structure.NodeReferentConstraint");
+    /*package*/ static final SConcept ConceptConstraints$Yt = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, "jetbrains.mps.lang.constraints.structure.ConceptConstraints");
+    /*package*/ static final SConcept ConstraintFunctionParameter_linkTargetNode$FO = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x118bd28275fL, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_linkTargetNode");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableLink$WTlX = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, 0x10b7317b98aL, "applicableLink");
-    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
-    /*package*/ static final SReferenceLink concept$w6jZ = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a720969b6L, "concept");
+    /*package*/ static final SReferenceLink applicableLink$7IrX = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, 0x10b7317b98aL, "applicableLink");
+    /*package*/ static final SReferenceLink target$m40F = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SReferenceLink concept$EVpZ = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a720969b6L, "concept");
   }
 }

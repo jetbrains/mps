@@ -41,7 +41,7 @@ public class CastExpression_KeyMap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.CastExpression$7m))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.CastExpression$$8))) {
         return false;
       }
       return true;
@@ -51,7 +51,7 @@ public class CastExpression_KeyMap extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.expression$izU1));
+      SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.expression$XDmN));
     }
     public String getKeyStroke() {
       return " DELETE";
@@ -76,7 +76,7 @@ public class CastExpression_KeyMap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.CastExpression$7m))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.CastExpression$$8))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
@@ -90,7 +90,7 @@ public class CastExpression_KeyMap extends KeyMapImpl {
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       SNode type = ExpectedType_FactoryUtil.createExpectedType(node);
-      SLinkOperations.setTarget(node, LINKS.type$izF0, type);
+      SLinkOperations.setTarget(node, LINKS.type$XD7M, type);
     }
     public String getKeyStroke() {
       return "ctrl shift SPACE";
@@ -98,11 +98,11 @@ public class CastExpression_KeyMap extends KeyMapImpl {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CastExpression$7m = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, "jetbrains.mps.baseLanguage.structure.CastExpression");
+    /*package*/ static final SConcept CastExpression$$8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, "jetbrains.mps.baseLanguage.structure.CastExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$izU1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
-    /*package*/ static final SContainmentLink type$izF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4bL, "type");
+    /*package*/ static final SContainmentLink expression$XDmN = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
+    /*package*/ static final SContainmentLink type$XD7M = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4bL, "type");
   }
 }

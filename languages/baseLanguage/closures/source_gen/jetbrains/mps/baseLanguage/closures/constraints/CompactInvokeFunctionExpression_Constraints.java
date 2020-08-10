@@ -8,10 +8,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CompactInvokeFunctionExpression_Constraints extends BaseConstraintsDescriptor {
   public CompactInvokeFunctionExpression_Constraints() {
-    super(CONCEPTS.CompactInvokeFunctionExpression$Ij);
+    super(CONCEPTS.CompactInvokeFunctionExpression$_X);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CompactInvokeFunctionExpression$Ij = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x11fb8425aa8L, "jetbrains.mps.baseLanguage.closures.structure.CompactInvokeFunctionExpression");
+    /*package*/ static final SConcept CompactInvokeFunctionExpression$_X = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x11fb8425aa8L, "jetbrains.mps.baseLanguage.closures.structure.CompactInvokeFunctionExpression");
   }
 }

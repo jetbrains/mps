@@ -20,7 +20,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NodeBuilderPropertyExpression_Constraints extends BaseConstraintsDescriptor {
   public NodeBuilderPropertyExpression_Constraints() {
-    super(CONCEPTS.NodeBuilderPropertyExpression$_e);
+    super(CONCEPTS.NodeBuilderPropertyExpression$_M);
   }
 
   @Override
@@ -54,20 +54,20 @@ public class NodeBuilderPropertyExpression_Constraints extends BaseConstraintsDe
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return Objects.equals(link, LINKS.initValue$h_bH);
+    return Objects.equals(link, LINKS.initValue$fqch);
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return !(SNodeOperations.isInstanceOf(childNode, CONCEPTS.NodeBuilderInitPropertyValue$tJ));
+    return !(SNodeOperations.isInstanceOf(childNode, CONCEPTS.NodeBuilderInitPropertyValue$uj));
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:abd7937b-2ad1-4cfc-8256-a7fa45a55f0f(jetbrains.mps.lang.quotation.constraints)", "6985522012214855428");
   private static final SNodePointer canBeParentBreakingPoint = new SNodePointer("r:abd7937b-2ad1-4cfc-8256-a7fa45a55f0f(jetbrains.mps.lang.quotation.constraints)", "910505259536038777");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodeBuilderPropertyExpression$_e = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x60f18f425c76d21aL, "jetbrains.mps.lang.quotation.structure.NodeBuilderPropertyExpression");
-    /*package*/ static final SConcept NodeBuilderInitPropertyValue$tJ = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x60f18f425c769982L, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitPropertyValue");
+    /*package*/ static final SConcept NodeBuilderPropertyExpression$_M = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x60f18f425c76d21aL, "jetbrains.mps.lang.quotation.structure.NodeBuilderPropertyExpression");
+    /*package*/ static final SConcept NodeBuilderInitPropertyValue$uj = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x60f18f425c769982L, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitPropertyValue");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initValue$h_bH = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x16240b8e9e79d891L, "initValue");
+    /*package*/ static final SContainmentLink initValue$fqch = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x16240b8e9e79d891L, "initValue");
   }
 }

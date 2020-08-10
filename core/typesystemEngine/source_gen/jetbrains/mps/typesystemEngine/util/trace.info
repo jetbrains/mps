@@ -72,12 +72,12 @@
       <node id="8183958085762408353" at="156,51,157,260" concept="6" />
       <node id="1883223317720980579" at="159,58,160,108" concept="6" />
       <node id="4545016991847816071" at="162,58,163,108" concept="6" />
-      <node id="1883223317720973623" at="167,0,168,0" concept="7" trace="JoinType$9o" />
-      <node id="1883223317720973623" at="168,0,169,0" concept="7" trace="MeetType$HQ" />
-      <node id="1883223317720973623" at="169,0,170,0" concept="7" trace="LowerBoundType$Uz" />
-      <node id="1883223317720973623" at="170,0,171,0" concept="7" trace="UpperBoundType$r6" />
-      <node id="1883223317720973623" at="174,0,175,0" concept="7" trace="argument$lCgz" />
-      <node id="1883223317720973623" at="175,0,176,0" concept="7" trace="argument$2bV3" />
+      <node id="1883223317720973623" at="167,0,168,0" concept="7" trace="JoinType$re" />
+      <node id="1883223317720973623" at="168,0,169,0" concept="7" trace="MeetType$ZG" />
+      <node id="1883223317720973623" at="169,0,170,0" concept="7" trace="LowerBoundType$nl" />
+      <node id="1883223317720973623" at="170,0,171,0" concept="7" trace="UpperBoundType$RS" />
+      <node id="1883223317720973623" at="174,0,175,0" concept="7" trace="argument$Iuyp" />
+      <node id="1883223317720973623" at="175,0,176,0" concept="7" trace="argument$r2cT" />
       <node id="1883223317720979776" at="22,0,24,0" concept="1" trace="LatticeUtil#()V" />
       <node id="1883223317720980034" at="74,12,76,7" concept="0" />
       <node id="4545016991847814959" at="102,12,104,7" concept="0" />
@@ -269,7 +269,7 @@
   <root nodeRef="r:36914d45-fd5c-434f-84d0-429a0b615f32(jetbrains.mps.typesystemEngine.util)/2216760464199540788">
     <file name="TypeSystemUtil.java">
       <node id="5611594083653771322" at="13,64,14,88" concept="6" />
-      <node id="2216760464199540788" at="18,0,19,0" concept="7" trace="IDontApplyTypesystemRules$pp" />
+      <node id="2216760464199540788" at="18,0,19,0" concept="7" trace="IDontApplyTypesystemRules$LF" />
       <node id="2216760464199564580" at="13,0,16,0" concept="8" trace="shouldApplyTypeSystemRules#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <scope id="2216760464199564582" at="13,64,14,88" />
       <scope id="2216760464199564580" at="13,0,16,0">
@@ -287,7 +287,7 @@
       <node id="2067922812369265404" at="20,0,21,0" concept="7" trace="link_JoinType_argument" />
       <node id="5573155513674538091" at="26,26,27,18" concept="6" />
       <node id="5573155513674538185" at="28,5,29,253" concept="6" />
-      <node id="6321644624958548836" at="33,0,34,0" concept="7" trace="Type$IG" />
+      <node id="6321644624958548836" at="33,0,34,0" concept="7" trace="Type$bu" />
       <node id="6321644624958548838" at="22,0,24,0" concept="1" trace="CoerceUtil#()V" />
       <node id="5573155513674537310" at="25,76,28,5" concept="4" />
       <node id="5573155513674537132" at="25,0,31,0" concept="8" trace="canBeCoerced#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Z" />

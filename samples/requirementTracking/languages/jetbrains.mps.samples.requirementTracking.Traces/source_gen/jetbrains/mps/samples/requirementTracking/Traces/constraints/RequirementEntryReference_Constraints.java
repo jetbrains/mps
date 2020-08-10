@@ -30,12 +30,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class RequirementEntryReference_Constraints extends BaseConstraintsDescriptor {
   public RequirementEntryReference_Constraints() {
-    super(CONCEPTS.RequirementEntryReference$dL);
+    super(CONCEPTS.RequirementEntryReference$aD);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.targetEntry$LGYU, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.targetEntry$oWVM, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -50,15 +50,15 @@ public class RequirementEntryReference_Constraints extends BaseConstraintsDescri
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            final SNode currentTrace = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.RequirementTrace$Xe, true, false);
+            final SNode currentTrace = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.RequirementTrace$U6, true, false);
 
-            List<SNode> allEntries = SModelOperations.nodesIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.Entry$Rv);
+            List<SNode> allEntries = SModelOperations.nodesIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.Entry$Jp);
 
             Iterable<SNode> possibleTargets = ListSequence.fromList(allEntries).where(new IWhereFilter<SNode>() {
               public boolean accept(final SNode entry) {
-                return ListSequence.fromList(SLinkOperations.getChildren(currentTrace, LINKS.mentions$k7cJ)).all(new IWhereFilter<SNode>() {
+                return ListSequence.fromList(SLinkOperations.getChildren(currentTrace, LINKS.mentions$Vn9B)).all(new IWhereFilter<SNode>() {
                   public boolean accept(SNode it) {
-                    return Objects.equals(it, _context.getReferenceNode()) || (SLinkOperations.getTarget(it, LINKS.targetEntry$LGYU) == null) || !(Objects.equals(SLinkOperations.getTarget(it, LINKS.targetEntry$LGYU), entry));
+                    return Objects.equals(it, _context.getReferenceNode()) || (SLinkOperations.getTarget(it, LINKS.targetEntry$oWVM) == null) || !(Objects.equals(SLinkOperations.getTarget(it, LINKS.targetEntry$oWVM), entry));
                   }
                 });
               }
@@ -76,13 +76,13 @@ public class RequirementEntryReference_Constraints extends BaseConstraintsDescri
   private static final SNodePointer breakingNode_w8rfop_a0a0a0a0a1a0a0a0c = new SNodePointer("r:2d13f11c-07d9-408e-b577-4d3dc210ccba(jetbrains.mps.samples.requirementTracking.Traces.constraints)", "4174052498196667463");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RequirementEntryReference$dL = MetaAdapterFactory.getConcept(0x81a3307bd10f4e90L, 0x8043ff6aa5380c33L, 0x39ed36a1ccd6180aL, "jetbrains.mps.samples.requirementTracking.Traces.structure.RequirementEntryReference");
-    /*package*/ static final SConcept RequirementTrace$Xe = MetaAdapterFactory.getConcept(0x81a3307bd10f4e90L, 0x8043ff6aa5380c33L, 0x39ed36a1ccd3a494L, "jetbrains.mps.samples.requirementTracking.Traces.structure.RequirementTrace");
-    /*package*/ static final SConcept Entry$Rv = MetaAdapterFactory.getConcept(0x6144ad334164d7eL, 0xbbaf076e158e80cfL, 0x39ed36a1ccc9c4ebL, "jetbrains.mps.samples.requirementTracking.RequirementDefinition.structure.Entry");
+    /*package*/ static final SConcept RequirementEntryReference$aD = MetaAdapterFactory.getConcept(0x81a3307bd10f4e90L, 0x8043ff6aa5380c33L, 0x39ed36a1ccd6180aL, "jetbrains.mps.samples.requirementTracking.Traces.structure.RequirementEntryReference");
+    /*package*/ static final SConcept RequirementTrace$U6 = MetaAdapterFactory.getConcept(0x81a3307bd10f4e90L, 0x8043ff6aa5380c33L, 0x39ed36a1ccd3a494L, "jetbrains.mps.samples.requirementTracking.Traces.structure.RequirementTrace");
+    /*package*/ static final SConcept Entry$Jp = MetaAdapterFactory.getConcept(0x6144ad334164d7eL, 0xbbaf076e158e80cfL, 0x39ed36a1ccc9c4ebL, "jetbrains.mps.samples.requirementTracking.RequirementDefinition.structure.Entry");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink targetEntry$LGYU = MetaAdapterFactory.getReferenceLink(0x81a3307bd10f4e90L, 0x8043ff6aa5380c33L, 0x39ed36a1ccd6180aL, 0x39ed36a1ccd61810L, "targetEntry");
-    /*package*/ static final SContainmentLink mentions$k7cJ = MetaAdapterFactory.getContainmentLink(0x81a3307bd10f4e90L, 0x8043ff6aa5380c33L, 0x39ed36a1ccd3a494L, 0x39ed36a1ccd45001L, "mentions");
+    /*package*/ static final SReferenceLink targetEntry$oWVM = MetaAdapterFactory.getReferenceLink(0x81a3307bd10f4e90L, 0x8043ff6aa5380c33L, 0x39ed36a1ccd6180aL, 0x39ed36a1ccd61810L, "targetEntry");
+    /*package*/ static final SContainmentLink mentions$Vn9B = MetaAdapterFactory.getContainmentLink(0x81a3307bd10f4e90L, 0x8043ff6aa5380c33L, 0x39ed36a1ccd3a494L, 0x39ed36a1ccd45001L, "mentions");
   }
 }

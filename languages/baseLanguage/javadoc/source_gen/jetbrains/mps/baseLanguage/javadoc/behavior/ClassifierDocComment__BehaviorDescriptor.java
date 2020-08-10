@@ -33,7 +33,7 @@ public final class ClassifierDocComment__BehaviorDescriptor extends BaseBHDescri
   }
 
   /*package*/ static boolean isTagSectionEmpty_id7lVCwDcz6WN(@NotNull SNode __thisNode__) {
-    return ((boolean) BaseDocComment__BehaviorDescriptor.isTagSectionEmpty_id7lVCwDcz6WN.invokeSuper(__thisNode__, CONCEPTS.ClassifierDocComment$$4)) && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.param$_Mh1)).isEmpty();
+    return ((boolean) BaseDocComment__BehaviorDescriptor.isTagSectionEmpty_id7lVCwDcz6WN.invokeSuper(__thisNode__, CONCEPTS.ClassifierDocComment$mh)) && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.param$Wb3e)).isEmpty();
   }
 
   /*package*/ ClassifierDocComment__BehaviorDescriptor() {
@@ -83,10 +83,10 @@ public final class ClassifierDocComment__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassifierDocComment$$4 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment");
+    /*package*/ static final SConcept ClassifierDocComment$mh = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink param$_Mh1 = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, 0x1cb65d9fe66a764eL, "param");
+    /*package*/ static final SContainmentLink param$Wb3e = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, 0x1cb65d9fe66a764eL, "param");
   }
 }

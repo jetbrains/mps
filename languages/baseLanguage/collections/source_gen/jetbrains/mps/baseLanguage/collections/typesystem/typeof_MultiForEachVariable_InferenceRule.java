@@ -21,10 +21,10 @@ public class typeof_MultiForEachVariable_InferenceRule extends AbstractInference
   public typeof_MultiForEachVariable_InferenceRule() {
   }
   public void applyRule(final SNode mfv, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(mfv), CONCEPTS.MultiForEachPair$AX)) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(mfv), CONCEPTS.MultiForEachPair$Pg)) {
       final SNode INPUT_typevar_8293956702610254515 = typeCheckingContext.createNewRuntimeTypesVariable();
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(mfv), CONCEPTS.MultiForEachPair$AX), LINKS.input$kNHx);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(mfv), CONCEPTS.MultiForEachPair$Pg), LINKS.input$Z7VO);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "7668447476859120466", 0, null);
         typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_gk7o1k_a0a0c0b0a0b(typeCheckingContext.getRepresentative(INPUT_typevar_8293956702610254515)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "8293956702610249719", true), false, true, _info_12389875345);
       }
@@ -36,7 +36,7 @@ public class typeof_MultiForEachVariable_InferenceRule extends AbstractInference
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.MultiForEachVariable$Cq;
+    return CONCEPTS.MultiForEachVariable$QH;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -57,11 +57,11 @@ public class typeof_MultiForEachVariable_InferenceRule extends AbstractInference
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MultiForEachPair$AX = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fea15L, "jetbrains.mps.baseLanguage.collections.structure.MultiForEachPair");
-    /*package*/ static final SConcept MultiForEachVariable$Cq = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fea18L, "jetbrains.mps.baseLanguage.collections.structure.MultiForEachVariable");
+    /*package*/ static final SConcept MultiForEachPair$Pg = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fea15L, "jetbrains.mps.baseLanguage.collections.structure.MultiForEachPair");
+    /*package*/ static final SConcept MultiForEachVariable$QH = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fea18L, "jetbrains.mps.baseLanguage.collections.structure.MultiForEachVariable");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink input$kNHx = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fea15L, 0x7d7db8f4181fea17L, "input");
+    /*package*/ static final SContainmentLink input$Z7VO = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x7d7db8f4181fea15L, 0x7d7db8f4181fea17L, "input");
   }
 }

@@ -31,7 +31,7 @@ public final class PullUpMethod__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getMigration_id4uOLjaPRkIU(@NotNull SNode __thisNode__) {
-    return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.ExtractInterfaceMigration$at);
+    return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.ExtractInterfaceMigration$Jf);
   }
 
   /*package*/ PullUpMethod__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class PullUpMethod__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ExtractInterfaceMigration$at = MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x5c5c941438573499L, "jetbrains.mps.lang.script.structure.ExtractInterfaceMigration");
+    /*package*/ static final SConcept ExtractInterfaceMigration$Jf = MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x5c5c941438573499L, "jetbrains.mps.lang.script.structure.ExtractInterfaceMigration");
   }
 }

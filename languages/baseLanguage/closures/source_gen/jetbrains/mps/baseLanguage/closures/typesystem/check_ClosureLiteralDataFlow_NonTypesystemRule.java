@@ -20,11 +20,11 @@ public class check_ClosureLiteralDataFlow_NonTypesystemRule extends AbstractNonT
   }
   public void applyRule(final SNode closureLiteral, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!((boolean) IStatementListContainer__BehaviorDescriptor.isExecuteSynchronous_idhTIpcC8.invoke(closureLiteral))) {
-      DataFlowUtil.checkDataFlow(typeCheckingContext, SLinkOperations.getTarget(closureLiteral, LINKS.body$e5Do));
+      DataFlowUtil.checkDataFlow(typeCheckingContext, SLinkOperations.getTarget(closureLiteral, LINKS.body$Ujx2));
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ClosureLiteral$zJ;
+    return CONCEPTS.ClosureLiteral$rp;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -34,10 +34,10 @@ public class check_ClosureLiteralDataFlow_NonTypesystemRule extends AbstractNonT
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$e5Do = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
+    /*package*/ static final SContainmentLink body$Ujx2 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClosureLiteral$zJ = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral");
+    /*package*/ static final SConcept ClosureLiteral$rp = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral");
   }
 }

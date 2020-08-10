@@ -46,7 +46,7 @@ public final class ParentConcept_ConstraintRules extends BaseRulesConstraintsDes
 
     @Override
     public boolean check(@NotNull ContainmentContext context) {
-      return SConceptOperations.isExactly(SNodeOperations.asSConcept(context.getChildConcept()), CONCEPTS.ChildConcept$We);
+      return SConceptOperations.isExactly(SNodeOperations.asSConcept(context.getChildConcept()), CONCEPTS.ChildConcept$v);
     }
 
     @Override
@@ -65,7 +65,7 @@ public final class ParentConcept_ConstraintRules extends BaseRulesConstraintsDes
 
     @Override
     public boolean check(@NotNull ContainmentContext context) {
-      return SPropertyOperations.getBoolean(context.getParentNode(), PROPS.canHaveChildren$e$ch);
+      return SPropertyOperations.getBoolean(context.getParentNode(), PROPS.canHaveChildren$2qgy);
     }
 
     @Override
@@ -79,10 +79,10 @@ public final class ParentConcept_ConstraintRules extends BaseRulesConstraintsDes
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ChildConcept$We = MetaAdapterFactory.getConcept(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7825711952b6d480L, "constraints.rules.test.structure.ChildConcept");
+    /*package*/ static final SConcept ChildConcept$v = MetaAdapterFactory.getConcept(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7825711952b6d480L, "constraints.rules.test.structure.ChildConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty canHaveChildren$e$ch = MetaAdapterFactory.getProperty(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7af41afae28e1a15L, 0x6493b7a43ae22fbaL, "canHaveChildren");
+    /*package*/ static final SProperty canHaveChildren$2qgy = MetaAdapterFactory.getProperty(0xfc39d7264089464aL, 0x8fc15f71edfdf03bL, 0x7af41afae28e1a15L, 0x6493b7a43ae22fbaL, "canHaveChildren");
   }
 }

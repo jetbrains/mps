@@ -41,7 +41,7 @@ public class CustomConstructorUsage_Substitute_Contribution extends SubstituteMe
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_33kcmf_a(), CONCEPTS.CustomConstructorUsage$21));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_33kcmf_a(), CONCEPTS.CustomConstructorUsage$L9));
     return result;
   }
 
@@ -78,10 +78,10 @@ public class CustomConstructorUsage_Substitute_Contribution extends SubstituteMe
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-      List<SNode> containers = SModelOperations.rootsIncludingImported(_context.getModel(), CONCEPTS.CustomConstructorContainer$zy);
+      List<SNode> containers = SModelOperations.rootsIncludingImported(_context.getModel(), CONCEPTS.CustomConstructorContainer$iE);
       List<SNode> customConstructors = new ArrayList<SNode>();
       for (SNode container : ListSequence.fromList(containers)) {
-        ListSequence.fromList(customConstructors).addSequence(ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.constructors$1mwd)));
+        ListSequence.fromList(customConstructors).addSequence(ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.constructors$eNfl)));
       }
       return customConstructors;
     }
@@ -118,7 +118,7 @@ public class CustomConstructorUsage_Substitute_Contribution extends SubstituteMe
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.CustomConstructorUsage$21, context);
+          super(CONCEPTS.CustomConstructorUsage$L9, context);
           _context = context;
         }
 
@@ -129,8 +129,8 @@ public class CustomConstructorUsage_Substitute_Contribution extends SubstituteMe
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode usage = SNodeFactoryOperations.createNewNode(CONCEPTS.CustomConstructorUsage$21, null);
-          SLinkOperations.setTarget(usage, LINKS.customConstructor$T7GZ, myParameterObject);
+          SNode usage = SNodeFactoryOperations.createNewNode(CONCEPTS.CustomConstructorUsage$L9, null);
+          SLinkOperations.setTarget(usage, LINKS.customConstructor$6$s7, myParameterObject);
           return usage;
         }
 
@@ -140,7 +140,7 @@ public class CustomConstructorUsage_Substitute_Contribution extends SubstituteMe
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, CONCEPTS.CustomConstructorUsage$21, getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.CustomConstructorUsage$L9, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -153,12 +153,12 @@ public class CustomConstructorUsage_Substitute_Contribution extends SubstituteMe
         @Nullable
         @Override
         public String getMatchingText(@NotNull String pattern) {
-          return SPropertyOperations.getString(myParameterObject, PROPS.leftParenthesis$bNTo) + "..." + SPropertyOperations.getString(myParameterObject, PROPS.rightParenthesis$bO8p);
+          return SPropertyOperations.getString(myParameterObject, PROPS.leftParenthesis$pgCw) + "..." + SPropertyOperations.getString(myParameterObject, PROPS.rightParenthesis$pgRx);
         }
         @Nullable
         @Override
         public String getDescriptionText(@NotNull String pattern) {
-          return SPropertyOperations.getString(myParameterObject, PROPS.shortDescription$xrGd);
+          return SPropertyOperations.getString(myParameterObject, PROPS.shortDescription$Yd4v);
         }
       }
     }
@@ -166,18 +166,18 @@ public class CustomConstructorUsage_Substitute_Contribution extends SubstituteMe
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CustomConstructorUsage$21 = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, "jetbrains.mps.baseLanguage.constructors.structure.CustomConstructorUsage");
-    /*package*/ static final SConcept CustomConstructorContainer$zy = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c1L, "jetbrains.mps.baseLanguage.constructors.structure.CustomConstructorContainer");
+    /*package*/ static final SConcept CustomConstructorUsage$L9 = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, "jetbrains.mps.baseLanguage.constructors.structure.CustomConstructorUsage");
+    /*package*/ static final SConcept CustomConstructorContainer$iE = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c1L, "jetbrains.mps.baseLanguage.constructors.structure.CustomConstructorContainer");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink constructors$1mwd = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c1L, 0x2a36c1b072f3e746L, "constructors");
-    /*package*/ static final SReferenceLink customConstructor$T7GZ = MetaAdapterFactory.getReferenceLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, 0x5ea800dcf8cc71b3L, "customConstructor");
+    /*package*/ static final SContainmentLink constructors$eNfl = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c1L, 0x2a36c1b072f3e746L, "constructors");
+    /*package*/ static final SReferenceLink customConstructor$6$s7 = MetaAdapterFactory.getReferenceLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, 0x5ea800dcf8cc71b3L, "customConstructor");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty rightParenthesis$bO8p = MetaAdapterFactory.getProperty(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x2e373c3e4b60e011L, "rightParenthesis");
-    /*package*/ static final SProperty leftParenthesis$bNTo = MetaAdapterFactory.getProperty(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x2e373c3e4b60e010L, "leftParenthesis");
-    /*package*/ static final SProperty shortDescription$xrGd = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34f97574L, "shortDescription");
+    /*package*/ static final SProperty rightParenthesis$pgRx = MetaAdapterFactory.getProperty(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x2e373c3e4b60e011L, "rightParenthesis");
+    /*package*/ static final SProperty leftParenthesis$pgCw = MetaAdapterFactory.getProperty(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x2e373c3e4b60e010L, "leftParenthesis");
+    /*package*/ static final SProperty shortDescription$Yd4v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34f97574L, "shortDescription");
   }
 }

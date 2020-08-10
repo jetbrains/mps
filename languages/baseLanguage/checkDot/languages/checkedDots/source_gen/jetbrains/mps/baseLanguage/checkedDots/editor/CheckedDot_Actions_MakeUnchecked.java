@@ -28,9 +28,9 @@ public class CheckedDot_Actions_MakeUnchecked {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode dotExpression = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.DotExpression$6a);
-        SLinkOperations.setTarget(dotExpression, LINKS.operand$P1i5, SLinkOperations.getTarget(node, LINKS.operand$P1i5));
-        SLinkOperations.setTarget(dotExpression, LINKS.operation$_mGS, SLinkOperations.getTarget(node, LINKS.operation$_mGS));
+        SNode dotExpression = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.DotExpression$yW);
+        SLinkOperations.setTarget(dotExpression, LINKS.operand$w6IR, SLinkOperations.getTarget(node, LINKS.operand$w6IR));
+        SLinkOperations.setTarget(dotExpression, LINKS.operation$gs9E, SLinkOperations.getTarget(node, LINKS.operation$gs9E));
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, dotExpression, "dot", -1);
       }
 
@@ -79,11 +79,11 @@ public class CheckedDot_Actions_MakeUnchecked {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operation$gs9E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
   }
 }

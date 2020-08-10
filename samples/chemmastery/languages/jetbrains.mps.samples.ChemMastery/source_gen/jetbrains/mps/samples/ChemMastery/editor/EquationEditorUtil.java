@@ -13,7 +13,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class EquationEditorUtil {
   public static void insertNewEquationLine(SNode currentNode) {
-    SNode containingEquation = SNodeOperations.getNodeAncestor(currentNode, CONCEPTS.ChemEquation$$Y, false, false);
+    SNode containingEquation = SNodeOperations.getNodeAncestor(currentNode, CONCEPTS.ChemEquation$Xp, false, false);
     if (containingEquation != null) {
       while (!(SNodeOperations.getContainingLink(containingEquation).isMultiple())) {
         containingEquation = SNodeOperations.getParent(containingEquation);
@@ -33,6 +33,6 @@ public class EquationEditorUtil {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ChemEquation$$Y = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, "jetbrains.mps.samples.ChemMastery.structure.ChemEquation");
+    /*package*/ static final SConcept ChemEquation$Xp = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, "jetbrains.mps.samples.ChemMastery.structure.ChemEquation");
   }
 }

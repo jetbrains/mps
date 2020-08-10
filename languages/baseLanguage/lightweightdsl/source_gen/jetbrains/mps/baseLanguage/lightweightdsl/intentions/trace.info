@@ -34,12 +34,12 @@
       <node id="1291729193368426384" at="58,9,59,0" concept="9" />
       <node id="1291729193368426387" at="60,30,61,108" concept="2" />
       <node id="1291729193368426399" at="62,16,63,67" concept="2" />
-      <node id="1291729193367781439" at="70,0,71,0" concept="10" trace="DSLAnnotation$dI" />
-      <node id="1291729193367781439" at="71,0,72,0" concept="10" trace="AutoInitDSLClass$sF" />
-      <node id="1291729193367781439" at="72,0,73,0" concept="10" trace="MemberPlaceholder$Wb" />
-      <node id="1291729193367781439" at="73,0,74,0" concept="10" trace="EmptyMemberDescriptor$HD" />
-      <node id="1291729193367781439" at="77,0,78,0" concept="10" trace="descriptor$GNQ3" />
-      <node id="1291729193367781439" at="78,0,79,0" concept="10" trace="member$6v_r" />
+      <node id="1291729193367781439" at="70,0,71,0" concept="10" trace="DSLAnnotation$zv" />
+      <node id="1291729193367781439" at="71,0,72,0" concept="10" trace="AutoInitDSLClass$Ms" />
+      <node id="1291729193367781439" at="72,0,73,0" concept="10" trace="MemberPlaceholder$hW" />
+      <node id="1291729193367781439" at="73,0,74,0" concept="10" trace="EmptyMemberDescriptor$3q" />
+      <node id="1291729193367781439" at="77,0,78,0" concept="10" trace="descriptor$aNbO" />
+      <node id="1291729193367781439" at="78,0,79,0" concept="10" trace="member$L_2d" />
       <node id="1291729193368426397" at="62,14,64,9" concept="0" />
       <node id="1291729193368332097" at="32,120,35,9" concept="5" />
       <node id="1291729193368426330" at="44,0,47,0" concept="6" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -114,11 +114,11 @@
       <node id="2049012130657192359" at="38,35,39,17" concept="8" />
       <node id="2049012130657192359" at="42,37,43,105" concept="2" />
       <node id="2049012130657192359" at="44,5,45,30" concept="8" />
-      <node id="2049012130657194341" at="51,87,52,126" concept="8" />
-      <node id="2049012130657229714" at="56,75,57,89" concept="2" />
-      <node id="2049012130657235436" at="57,89,58,15" concept="8" />
+      <node id="2049012130657194341" at="51,87,52,127" concept="8" />
+      <node id="2049012130657229714" at="56,76,57,90" concept="2" />
+      <node id="2049012130657235436" at="57,90,58,15" concept="8" />
       <node id="2049012130657235508" at="59,7,60,0" concept="9" />
-      <node id="2049012130657235705" at="60,0,61,97" concept="2" />
+      <node id="2049012130657235705" at="60,0,61,98" concept="2" />
       <node id="2049012130657192359" at="64,48,65,46" concept="8" />
       <node id="2049012130657238204" at="68,61,69,63" concept="7" />
       <node id="2049012130657238204" at="69,63,70,30" concept="7" />
@@ -135,7 +135,7 @@
       <node id="2049012130657238204" at="80,541,81,171" concept="2" />
       <node id="2049012130657238204" at="81,171,82,166" concept="2" />
       <node id="2049012130657238204" at="82,166,83,24" concept="8" />
-      <node id="2049012130657192359" at="87,0,88,0" concept="10" trace="condition$$nd" />
+      <node id="2049012130657192359" at="87,0,88,0" concept="10" trace="condition$uzGY" />
       <node id="2049012130657192359" at="48,0,50,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="2049012130657192359" at="26,0,29,0" concept="1" trace="SwitchConditional_Intention#()V" />
       <node id="2049012130657192359" at="41,99,44,5" concept="5" />
@@ -154,10 +154,10 @@
       <scope id="2049012130657192359" at="34,84,35,16" />
       <scope id="2049012130657192359" at="38,35,39,17" />
       <scope id="2049012130657192359" at="42,37,43,105" />
-      <scope id="2049012130657192363" at="51,87,52,126" />
+      <scope id="2049012130657192363" at="51,87,52,127" />
       <scope id="2049012130657192359" at="64,48,65,46" />
       <scope id="2049012130657192359" at="48,0,50,0" />
-      <scope id="2049012130657224950" at="56,75,58,15" />
+      <scope id="2049012130657224950" at="56,76,58,15" />
       <scope id="2049012130657192359" at="26,0,29,0" />
       <scope id="2049012130657192359" at="29,0,33,0" />
       <scope id="2049012130657192359" at="33,0,37,0">
@@ -175,7 +175,7 @@
         <var name="context" id="2049012130657192359" />
         <var name="node" id="2049012130657192359" />
       </scope>
-      <scope id="2049012130657192361" at="55,78,61,97" />
+      <scope id="2049012130657192361" at="55,78,61,98" />
       <scope id="2049012130657192359" at="54,0,63,0">
         <var name="editorContext" id="2049012130657192359" />
         <var name="node" id="2049012130657192359" />
@@ -216,11 +216,11 @@
       <node id="6305381134221737587" at="94,67,95,73" concept="7" />
       <node id="6305381134221737587" at="95,73,96,53" concept="2" />
       <node id="6305381134221737587" at="96,53,97,26" concept="8" />
-      <node id="6305381134221689014" at="101,0,102,0" concept="10" trace="AutoInitDSLClass$sF" />
-      <node id="6305381134221689014" at="102,0,103,0" concept="10" trace="DSLAnnotation$dI" />
-      <node id="6305381134221689014" at="103,0,104,0" concept="10" trace="DSLDescriptor$dS" />
-      <node id="6305381134221689014" at="107,0,108,0" concept="10" trace="name$lA7v" />
-      <node id="6305381134221689014" at="111,0,112,0" concept="10" trace="descriptor$GNQ3" />
+      <node id="6305381134221689014" at="101,0,102,0" concept="10" trace="AutoInitDSLClass$Ms" />
+      <node id="6305381134221689014" at="102,0,103,0" concept="10" trace="DSLAnnotation$zv" />
+      <node id="6305381134221689014" at="103,0,104,0" concept="10" trace="DSLDescriptor$zD" />
+      <node id="6305381134221689014" at="107,0,108,0" concept="10" trace="name$MnvL" />
+      <node id="6305381134221689014" at="111,0,112,0" concept="10" trace="descriptor$aNbO" />
       <node id="6305381134221689014" at="34,0,37,0" concept="1" trace="AddClasslikeAnnotation_Intention#()V" />
       <node id="6305381134221689014" at="42,84,45,5" concept="5" />
       <node id="6305381134221689014" at="48,0,51,0" concept="6" trace="isApplicableToNode#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Z" />

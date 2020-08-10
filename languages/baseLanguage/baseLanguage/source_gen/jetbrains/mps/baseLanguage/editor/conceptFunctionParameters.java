@@ -39,7 +39,7 @@ public class conceptFunctionParameters extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_4x8do5_a(), CONCEPTS.Expression$TP));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_4x8do5_a(), CONCEPTS.Expression$mB));
     return result;
   }
 
@@ -76,11 +76,11 @@ public class conceptFunctionParameters extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SConcept> getParameters(SubstituteMenuContext _context) {
-      List<SNode> functions = SNodeOperations.getNodeAncestors(_context.getParentNode(), CONCEPTS.ConceptFunction$Tt, false);
+      List<SNode> functions = SNodeOperations.getNodeAncestors(_context.getParentNode(), CONCEPTS.ConceptFunction$mf, false);
       // skip Closure 
       SNode parentFunction = ListSequence.fromList(functions).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.Closure$5Q));
+          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.Closure$yC));
         }
       }).first();
       if (parentFunction == null) {
@@ -121,7 +121,7 @@ public class conceptFunctionParameters extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.Expression$TP, context);
+          super(CONCEPTS.Expression$mB, context);
           _context = context;
         }
 
@@ -145,7 +145,7 @@ public class conceptFunctionParameters extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, CONCEPTS.Expression$TP, getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.Expression$mB, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -180,8 +180,8 @@ public class conceptFunctionParameters extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
-    /*package*/ static final SConcept ConceptFunction$Tt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
-    /*package*/ static final SConcept Closure$5Q = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c63f4f3f3L, "jetbrains.mps.baseLanguage.structure.Closure");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept ConceptFunction$mf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
+    /*package*/ static final SConcept Closure$yC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c63f4f3f3L, "jetbrains.mps.baseLanguage.structure.Closure");
   }
 }

@@ -26,11 +26,11 @@ public class typeof_InputResourcesParameter_InferenceRule extends AbstractInfere
   public typeof_InputResourcesParameter_InferenceRule() {
   }
   public void applyRule(final SNode inres, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode tdecl = SNodeOperations.getNodeAncestor(inres, CONCEPTS.TargetDeclaration$7n, false, false);
+    SNode tdecl = SNodeOperations.getNodeAncestor(inres, CONCEPTS.TargetDeclaration$Kf, false, false);
     if ((tdecl != null)) {
-      List<SNode> resourceType = SLinkOperations.getChildren(SLinkOperations.getTarget(tdecl, LINKS.input$oNmC), LINKS.resourceType$VkPy);
-      SNode cls = Sequence.fromIterable(SLinkOperations.collect(resourceType, LINKS.classifier$xslD)).first();
-      if (SNodeOperations.isInstanceOf(cls, CONCEPTS.NamedTupleDeclaration$51)) {
+      List<SNode> resourceType = SLinkOperations.getChildren(SLinkOperations.getTarget(tdecl, LINKS.input$L8Zw), LINKS.resourceType$jEuq);
+      SNode cls = Sequence.fromIterable(SLinkOperations.collect(resourceType, LINKS.classifier$cxMr)).first();
+      if (SNodeOperations.isInstanceOf(cls, CONCEPTS.NamedTupleDeclaration$aM)) {
         SNode ntt = _quotation_createNode_3tga6z_a0a0c0b0b(cls);
         {
           SNode _nodeToCheck_1029348928467 = inres;
@@ -53,7 +53,7 @@ public class typeof_InputResourcesParameter_InferenceRule extends AbstractInfere
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.InputResourcesParameter$54;
+    return CONCEPTS.InputResourcesParameter$2X;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -110,14 +110,14 @@ public class typeof_InputResourcesParameter_InferenceRule extends AbstractInfere
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TargetDeclaration$7n = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, "jetbrains.mps.make.facet.structure.TargetDeclaration");
-    /*package*/ static final SConcept NamedTupleDeclaration$51 = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleDeclaration");
-    /*package*/ static final SConcept InputResourcesParameter$54 = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a972dacL, "jetbrains.mps.make.script.structure.InputResourcesParameter");
+    /*package*/ static final SConcept TargetDeclaration$Kf = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, "jetbrains.mps.make.facet.structure.TargetDeclaration");
+    /*package*/ static final SConcept NamedTupleDeclaration$aM = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleDeclaration");
+    /*package*/ static final SConcept InputResourcesParameter$2X = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a972dacL, "jetbrains.mps.make.script.structure.InputResourcesParameter");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink input$oNmC = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, 0x1a6da65e8aab1e0L, "input");
-    /*package*/ static final SContainmentLink resourceType$VkPy = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1a6da65e8aab1d4L, 0x1a6da65e8aab1d7L, "resourceType");
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink input$L8Zw = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, 0x1a6da65e8aab1e0L, "input");
+    /*package*/ static final SContainmentLink resourceType$jEuq = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1a6da65e8aab1d4L, 0x1a6da65e8aab1d7L, "resourceType");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

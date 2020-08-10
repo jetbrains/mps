@@ -30,18 +30,18 @@ public class _ClassConcept_Implements_Delete_Last {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         if (ListSequence.fromList(SNodeOperations.getAllSiblings(node, false)).isEmpty()) {
-          SNode clazz = SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$IY, false, false);
+          SNode clazz = SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false);
           if (clazz == null) {
             return;
           }
-          ListSequence.fromList(SLinkOperations.getChildren(clazz, LINKS.implementedInterface$KoQU)).clear();
-          ListSequence.fromList(AttributeOperations.getAttributeList(clazz, new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$Zd, LINKS.implementedInterface$KoQU))).visitAll(new IVisitor<SNode>() {
+          ListSequence.fromList(SLinkOperations.getChildren(clazz, LINKS.implementedInterface$rujG)).clear();
+          ListSequence.fromList(AttributeOperations.getAttributeList(clazz, new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.implementedInterface$rujG))).visitAll(new IVisitor<SNode>() {
             public void visit(SNode it) {
               SNodeOperations.deleteNode(it);
             }
           });
-          if (SNodeOperations.isInstanceOf(clazz, CONCEPTS.EnumClass$uy)) {
-            SelectionUtil.selectLabelCellAnSetCaret(editorContext, SNodeOperations.cast(clazz, CONCEPTS.EnumClass$uy), "OpenBraceEnumCell", 0);
+          if (SNodeOperations.isInstanceOf(clazz, CONCEPTS.EnumClass$Vk)) {
+            SelectionUtil.selectLabelCellAnSetCaret(editorContext, SNodeOperations.cast(clazz, CONCEPTS.EnumClass$Vk), "OpenBraceEnumCell", 0);
           } else {
             SelectionUtil.selectLabelCellAnSetCaret(editorContext, clazz, "OpenBraceClassCell", 0);
           }
@@ -95,12 +95,12 @@ public class _ClassConcept_Implements_Delete_Last {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept BaseCommentAttribute$Zd = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
-    /*package*/ static final SConcept EnumClass$uy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept BaseCommentAttribute$nv = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
+    /*package*/ static final SConcept EnumClass$Vk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink implementedInterface$KoQU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
+    /*package*/ static final SContainmentLink implementedInterface$rujG = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
   }
 }

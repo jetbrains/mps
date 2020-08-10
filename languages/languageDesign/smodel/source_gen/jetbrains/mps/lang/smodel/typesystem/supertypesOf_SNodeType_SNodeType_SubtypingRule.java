@@ -26,10 +26,10 @@ public class supertypesOf_SNodeType_SNodeType_SubtypingRule extends SubtypingRul
   }
   public List<SNode> getSubOrSuperTypes(SNode type, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> list = new ArrayList<SNode>();
-    SNode concept = SLinkOperations.getTarget(type, LINKS.concept$gpfa);
+    SNode concept = SLinkOperations.getTarget(type, LINKS.concept$OMgE);
     // DO NOT TOUCH THIS. CONCEPT MIGHT BE A TYPE VARIABLE 
-    if (concept != null && SNodeOperations.isInstanceOf(concept, CONCEPTS.AbstractConceptDeclaration$UN)) {
-      List<SNode> superConcepts = AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(SNodeOperations.cast(concept, CONCEPTS.AbstractConceptDeclaration$UN));
+    if (concept != null && SNodeOperations.isInstanceOf(concept, CONCEPTS.AbstractConceptDeclaration$KA)) {
+      List<SNode> superConcepts = AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(SNodeOperations.cast(concept, CONCEPTS.AbstractConceptDeclaration$KA));
       for (SNode superConcept : ListSequence.fromList(superConcepts)) {
         ListSequence.fromList(list).addElement(_quotation_createNode_c3i5bo_a0a0a1a3a1(superConcept));
       }
@@ -38,7 +38,7 @@ public class supertypesOf_SNodeType_SNodeType_SubtypingRule extends SubtypingRul
     return list;
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SNodeType$gn;
+    return CONCEPTS.SNodeType$hR;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -61,11 +61,11 @@ public class supertypesOf_SNodeType_SNodeType_SubtypingRule extends SubtypingRul
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$gpfa = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
+    /*package*/ static final SReferenceLink concept$OMgE = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, 0x1090e46ca51L, "concept");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
-    /*package*/ static final SConcept SNodeType$gn = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept SNodeType$hR = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f968b3caL, "jetbrains.mps.lang.smodel.structure.SNodeType");
   }
 }

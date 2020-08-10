@@ -76,7 +76,7 @@ public class AbstractContainerCreator_ext_1_RTransform_Menu extends Transformati
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.AbstractContainerCreator$Yg, "jetbrains.mps.baseLanguage.collections.editor.add_initSize_to_container_creator");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.AbstractContainerCreator$cz, "jetbrains.mps.baseLanguage.collections.editor.add_initSize_to_container_creator");
     }
 
   }
@@ -99,7 +99,7 @@ public class AbstractContainerCreator_ext_1_RTransform_Menu extends Transformati
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.AbstractContainerCreator$Yg, "jetbrains.mps.baseLanguage.collections.editor.add_parameters_to_container_creator");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.AbstractContainerCreator$cz, "jetbrains.mps.baseLanguage.collections.editor.add_parameters_to_container_creator");
     }
 
   }
@@ -122,12 +122,12 @@ public class AbstractContainerCreator_ext_1_RTransform_Menu extends Transformati
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.AbstractContainerCreator$Yg, "jetbrains.mps.baseLanguage.collections.editor.AbstractContainerCreator_add_elementType");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.AbstractContainerCreator$cz, "jetbrains.mps.baseLanguage.collections.editor.AbstractContainerCreator_add_elementType");
     }
 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractContainerCreator$Yg = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, "jetbrains.mps.baseLanguage.collections.structure.AbstractContainerCreator");
+    /*package*/ static final SConcept AbstractContainerCreator$cz = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, "jetbrains.mps.baseLanguage.collections.structure.AbstractContainerCreator");
   }
 }

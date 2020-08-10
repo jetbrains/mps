@@ -13,17 +13,17 @@
   <root nodeRef="r:838e2cf6-ab53-4d74-b51a-1c68353cb80b(jetbrains.mps.baseLanguage.tuples.actions)/1239567468054">
     <file name="tupleLiteral_init.java">
       <node id="2912004279740771390" at="22,53,23,72" concept="3" />
-      <node id="1239567537226" at="25,11,26,253" concept="0" />
-      <node id="1239567468054" at="32,0,33,0" concept="4" trace="tupleDeclaration$zR5m" />
-      <node id="1239567468054" at="33,0,34,0" concept="4" trace="component$fjBK" />
-      <node id="1239567468054" at="34,0,35,0" concept="4" trace="componentRef$$Ar" />
-      <node id="1239567468054" at="35,0,36,0" concept="4" trace="componentDeclaration$5Zu0" />
-      <node id="1239567468054" at="39,0,40,0" concept="4" trace="NamedTupleComponentReference$8m" />
+      <node id="1239567537226" at="25,11,26,254" concept="0" />
+      <node id="1239567468054" at="32,0,33,0" concept="4" trace="tupleDeclaration$Pcb7" />
+      <node id="1239567468054" at="33,0,34,0" concept="4" trace="component$wCHx" />
+      <node id="1239567468054" at="34,0,35,0" concept="4" trace="componentRef$hTGc" />
+      <node id="1239567468054" at="35,0,36,0" concept="4" trace="componentDeclaration$nkzL" />
+      <node id="1239567468054" at="39,0,40,0" concept="4" trace="NamedTupleComponentReference$e7" />
       <node id="2912004279740771246" at="22,0,25,0" concept="2" trace="translate#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
       <node id="1239567501524" at="20,91,27,7" concept="1" />
       <node id="1239567483800" at="20,0,29,0" concept="2" trace="setup#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)V" />
       <scope id="2912004279740771247" at="22,53,23,72" />
-      <scope id="1239567501528" at="25,11,26,253" />
+      <scope id="1239567501528" at="25,11,26,254" />
       <scope id="2912004279740771246" at="22,0,25,0">
         <var name="ntd" id="2912004279740771246" />
       </scope>

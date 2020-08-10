@@ -68,7 +68,7 @@ public class NoWaitTransforms_ParallelFor extends TransformationMenuBase {
   public class TMP_Group_rnbvuo_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.nowait$302I));
+      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.nowait$gGom));
     }
 
     @NotNull
@@ -124,7 +124,7 @@ public class NoWaitTransforms_ParallelFor extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.nowait$302I, true);
+          SPropertyOperations.assign(_context.getNode(), PROPS.nowait$gGom, true);
         }
 
 
@@ -149,6 +149,6 @@ public class NoWaitTransforms_ParallelFor extends TransformationMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty nowait$302I = MetaAdapterFactory.getProperty(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x74391c966b0f1304L, "nowait");
+    /*package*/ static final SProperty nowait$gGom = MetaAdapterFactory.getProperty(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, 0x74391c966b0f1304L, "nowait");
   }
 }

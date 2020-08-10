@@ -24,7 +24,7 @@ public class check_NodeInferTypeOperation_NonTypesystemRule extends AbstractNonT
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Node_InferTypeOperation$IF;
+    return CONCEPTS.Node_InferTypeOperation$x;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -34,6 +34,6 @@ public class check_NodeInferTypeOperation_NonTypesystemRule extends AbstractNonT
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Node_InferTypeOperation$IF = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x584039bf75272c67L, "jetbrains.mps.lang.typesystem.structure.Node_InferTypeOperation");
+    /*package*/ static final SConcept Node_InferTypeOperation$x = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x584039bf75272c67L, "jetbrains.mps.lang.typesystem.structure.Node_InferTypeOperation");
   }
 }

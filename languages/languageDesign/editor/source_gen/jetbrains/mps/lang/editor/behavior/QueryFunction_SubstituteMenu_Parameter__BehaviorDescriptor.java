@@ -35,7 +35,7 @@ public final class QueryFunction_SubstituteMenu_Parameter__BehaviorDescriptor ex
   }
 
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
-    return _quotation_createNode_4hcplz_a0a0(check_4hcplz_a0a0a0(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.SubstituteMenuPart_Parameterized$Ua, false, false)));
+    return _quotation_createNode_4hcplz_a0a0(check_4hcplz_a0a0a0(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.SubstituteMenuPart_Parameterized$5L, false, false)));
   }
 
   /*package*/ QueryFunction_SubstituteMenu_Parameter__BehaviorDescriptor() {
@@ -96,16 +96,16 @@ public final class QueryFunction_SubstituteMenu_Parameter__BehaviorDescriptor ex
   }
   private static SNode check_4hcplz_a0a0a0(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
-      return SLinkOperations.getTarget(checkedDotOperand, LINKS.parameterType$XGVw);
+      return SLinkOperations.getTarget(checkedDotOperand, LINKS.parameterType$1Z77);
     }
     return null;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SubstituteMenuPart_Parameterized$Ua = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4467282afd5201dL, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_Parameterized");
+    /*package*/ static final SConcept SubstituteMenuPart_Parameterized$5L = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4467282afd5201dL, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_Parameterized");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameterType$XGVw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9002d0fL, 0x169efbc9a9002d10L, "parameterType");
+    /*package*/ static final SContainmentLink parameterType$1Z77 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9002d0fL, 0x169efbc9a9002d10L, "parameterType");
   }
 }

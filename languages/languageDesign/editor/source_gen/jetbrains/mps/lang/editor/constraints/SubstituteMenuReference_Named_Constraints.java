@@ -20,12 +20,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SubstituteMenuReference_Named_Constraints extends BaseConstraintsDescriptor {
   public SubstituteMenuReference_Named_Constraints() {
-    super(CONCEPTS.SubstituteMenuReference_Named$Ud);
+    super(CONCEPTS.SubstituteMenuReference_Named$5O);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.menu$5ExM, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.menu$9WHp, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -56,10 +56,10 @@ public class SubstituteMenuReference_Named_Constraints extends BaseConstraintsDe
   private static final SNodePointer breakingNode_56onsx_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c89590298(jetbrains.mps.lang.editor.constraints)", "6836281137582784991");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SubstituteMenuReference_Named$Ud = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1fL, "jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Named");
+    /*package*/ static final SConcept SubstituteMenuReference_Named$5O = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1fL, "jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Named");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink menu$5ExM = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1fL, 0x5480a271c0d2a27eL, "menu");
+    /*package*/ static final SReferenceLink menu$9WHp = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5480a271c0d1df1fL, 0x5480a271c0d2a27eL, "menu");
   }
 }

@@ -256,7 +256,7 @@ public final class PopupWithNodeEditorUI implements Disposable {
 
     public ImplementationNode(@NotNull SNode node) {
       myNode = node;
-      myNodePresentation = (SNodeOperations.isInstanceOf(((SNode) node), CONCEPTS.InstanceMethodDeclaration$An) && node.getParent() != null ? node.getParent() + "." + node.getPresentation() : node.getPresentation());
+      myNodePresentation = (SNodeOperations.isInstanceOf(((SNode) node), CONCEPTS.InstanceMethodDeclaration$39) && node.getParent() != null ? node.getParent() + "." + node.getPresentation() : node.getPresentation());
       // getIconFor requires read access 
       myNodeIcon = GlobalIconManager.getInstance().getIconFor(node);
       SModel model = node.getModel();
@@ -337,6 +337,6 @@ public final class PopupWithNodeEditorUI implements Disposable {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InstanceMethodDeclaration$An = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
   }
 }

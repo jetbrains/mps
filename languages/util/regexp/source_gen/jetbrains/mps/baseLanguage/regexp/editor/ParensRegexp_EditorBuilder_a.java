@@ -87,7 +87,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     public ReplaceWith_ParensRegexp_cellMenu_igyl5p_a0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return CONCEPTS.ParensRegexp$7O;
+      return CONCEPTS.ParensRegexp$KC;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -99,11 +99,11 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
     public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
       List<SAbstractConcept> res = ListSequence.fromList(new LinkedList<SAbstractConcept>());
-      ListSequence.fromList(res).addElement(CONCEPTS.NegativeLookAheadRegexp$d4);
-      ListSequence.fromList(res).addElement(CONCEPTS.NegativeLookBehindRegexp$Ai);
-      ListSequence.fromList(res).addElement(CONCEPTS.PositiveLookAheadRegexp$Y);
-      ListSequence.fromList(res).addElement(CONCEPTS.PositiveLookBehindRegexp$V1);
-      ListSequence.fromList(res).addElement(CONCEPTS.MatchParensRegexp$1m);
+      ListSequence.fromList(res).addElement(CONCEPTS.NegativeLookAheadRegexp$PS);
+      ListSequence.fromList(res).addElement(CONCEPTS.NegativeLookBehindRegexp$f6);
+      ListSequence.fromList(res).addElement(CONCEPTS.PositiveLookAheadRegexp$DM);
+      ListSequence.fromList(res).addElement(CONCEPTS.PositiveLookBehindRegexp$zP);
+      ListSequence.fromList(res).addElement(CONCEPTS.MatchParensRegexp$Ea);
       return res;
     }
     public SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
@@ -122,7 +122,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new exprSingleRoleHandler_igyl5p_b0(myNode, LINKS.expr$Rw3c, getEditorContext());
+    SingleRoleCellProvider provider = new exprSingleRoleHandler_igyl5p_b0(myNode, LINKS.expr$EXG0, getEditorContext());
     return provider.createCell();
   }
   private static class exprSingleRoleHandler_igyl5p_b0 extends SingleRoleCellProvider {
@@ -142,8 +142,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.expr$Rw3c, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.expr$Rw3c, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.expr$EXG0, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.expr$EXG0, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -155,13 +155,13 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.expr$Rw3c);
+        editorCell.setSRole(LINKS.expr$EXG0);
       }
     }
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.expr$Rw3c));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.expr$EXG0));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_expr");
@@ -188,15 +188,15 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ParensRegexp$7O = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111752101b0L, "jetbrains.mps.baseLanguage.regexp.structure.ParensRegexp");
-    /*package*/ static final SConcept NegativeLookAheadRegexp$d4 = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118de1f935L, "jetbrains.mps.baseLanguage.regexp.structure.NegativeLookAheadRegexp");
-    /*package*/ static final SConcept NegativeLookBehindRegexp$Ai = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118de6e3f6L, "jetbrains.mps.baseLanguage.regexp.structure.NegativeLookBehindRegexp");
-    /*package*/ static final SConcept PositiveLookAheadRegexp$Y = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118ddfb973L, "jetbrains.mps.baseLanguage.regexp.structure.PositiveLookAheadRegexp");
-    /*package*/ static final SConcept PositiveLookBehindRegexp$V1 = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118de6742fL, "jetbrains.mps.baseLanguage.regexp.structure.PositiveLookBehindRegexp");
-    /*package*/ static final SConcept MatchParensRegexp$1m = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111797946c7L, "jetbrains.mps.baseLanguage.regexp.structure.MatchParensRegexp");
+    /*package*/ static final SConcept ParensRegexp$KC = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111752101b0L, "jetbrains.mps.baseLanguage.regexp.structure.ParensRegexp");
+    /*package*/ static final SConcept NegativeLookAheadRegexp$PS = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118de1f935L, "jetbrains.mps.baseLanguage.regexp.structure.NegativeLookAheadRegexp");
+    /*package*/ static final SConcept NegativeLookBehindRegexp$f6 = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118de6e3f6L, "jetbrains.mps.baseLanguage.regexp.structure.NegativeLookBehindRegexp");
+    /*package*/ static final SConcept PositiveLookAheadRegexp$DM = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118ddfb973L, "jetbrains.mps.baseLanguage.regexp.structure.PositiveLookAheadRegexp");
+    /*package*/ static final SConcept PositiveLookBehindRegexp$zP = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1118de6742fL, "jetbrains.mps.baseLanguage.regexp.structure.PositiveLookBehindRegexp");
+    /*package*/ static final SConcept MatchParensRegexp$Ea = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111797946c7L, "jetbrains.mps.baseLanguage.regexp.structure.MatchParensRegexp");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expr$Rw3c = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111752101b0L, 0x1117521177bL, "expr");
+    /*package*/ static final SContainmentLink expr$EXG0 = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111752101b0L, 0x1117521177bL, "expr");
   }
 }

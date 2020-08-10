@@ -15,7 +15,7 @@ public class IsRefactoringApplicableHint implements ParametersInformation<SNode>
   public IsRefactoringApplicableHint() {
   }
   public Iterable<SNode> getMethods(SNode node, EditorContext editorContext) {
-    return Sequence.<SNode>singleton(SLinkOperations.getTarget(node, LINKS.refactoring$OpSl));
+    return Sequence.<SNode>singleton(SLinkOperations.getTarget(node, LINKS.refactoring$mmkY));
   }
   public void getStyledMethodPresentation(SNode node, EditorContext editorContext, SNode parameterObject, StyledTextPrinter styledText) {
     RefExpressionParamUtil.xxx(node, parameterObject, styledText, false);
@@ -25,6 +25,6 @@ public class IsRefactoringApplicableHint implements ParametersInformation<SNode>
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink refactoring$OpSl = MetaAdapterFactory.getReferenceLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5b9318cd86fd917dL, 0x5b9318cd86fd917eL, "refactoring");
+    /*package*/ static final SReferenceLink refactoring$mmkY = MetaAdapterFactory.getReferenceLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5b9318cd86fd917dL, 0x5b9318cd86fd917eL, "refactoring");
   }
 }

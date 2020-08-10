@@ -26,7 +26,7 @@ public class typeof_EditorComponentExpression_InferenceRule extends AbstractInfe
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.EditorComponentExpression$mD;
+    return CONCEPTS.EditorComponentExpression$A8;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,6 +43,6 @@ public class typeof_EditorComponentExpression_InferenceRule extends AbstractInfe
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EditorComponentExpression$mD = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x501fdfb2963ab0ffL, "jetbrains.mps.lang.test.structure.EditorComponentExpression");
+    /*package*/ static final SConcept EditorComponentExpression$A8 = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x501fdfb2963ab0ffL, "jetbrains.mps.lang.test.structure.EditorComponentExpression");
   }
 }

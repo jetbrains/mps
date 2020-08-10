@@ -19,17 +19,17 @@ public class check_HelpURL_NonTypesystemRule extends AbstractNonTypesystemRule_R
   public check_HelpURL_NonTypesystemRule() {
   }
   public void applyRule(final SNode url, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(url, LINKS.baseURL$4EL6) != null)) {
+    if ((SLinkOperations.getTarget(url, LINKS.baseURL$ZoS) != null)) {
       return;
     }
-    if (isEmptyString(SPropertyOperations.getString(url, PROPS.url$4_M0))) {
+    if (isEmptyString(SPropertyOperations.getString(url, PROPS.url$UpM))) {
       return;
     }
 
-    URLCheckUtil.check(typeCheckingContext, url, SPropertyOperations.getString(url, PROPS.url$4_M0));
+    URLCheckUtil.check(typeCheckingContext, url, SPropertyOperations.getString(url, PROPS.url$UpM));
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.HelpURL$gf;
+    return CONCEPTS.HelpURL$S1;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -42,14 +42,14 @@ public class check_HelpURL_NonTypesystemRule extends AbstractNonTypesystemRule_R
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseURL$4EL6 = MetaAdapterFactory.getReferenceLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x47d8f9811b73d397L, 0x4197d5560e6966c4L, "baseURL");
+    /*package*/ static final SReferenceLink baseURL$ZoS = MetaAdapterFactory.getReferenceLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x47d8f9811b73d397L, 0x4197d5560e6966c4L, "baseURL");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty url$4_M0 = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x47d8f9811b73d397L, 0x47d8f9811b73d398L, "url");
+    /*package*/ static final SProperty url$UpM = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x47d8f9811b73d397L, 0x47d8f9811b73d398L, "url");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept HelpURL$gf = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x47d8f9811b73d397L, "jetbrains.mps.lang.resources.structure.HelpURL");
+    /*package*/ static final SConcept HelpURL$S1 = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x47d8f9811b73d397L, "jetbrains.mps.lang.resources.structure.HelpURL");
   }
 }

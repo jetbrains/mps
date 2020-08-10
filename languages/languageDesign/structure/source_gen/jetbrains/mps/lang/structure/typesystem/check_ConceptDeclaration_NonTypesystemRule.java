@@ -67,10 +67,10 @@ public class check_ConceptDeclaration_NonTypesystemRule extends AbstractNonTypes
         return SNodeOperations.is(it, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "6999738288738427190"));
       }
     })) {
-      final String stubName = "Stub" + SPropertyOperations.getString(conceptDeclaration, PROPS.name$lA7v);
-      boolean stubExists = ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(conceptDeclaration), CONCEPTS.ConceptDeclaration$qU)).where(new IWhereFilter<SNode>() {
+      final String stubName = "Stub" + SPropertyOperations.getString(conceptDeclaration, PROPS.name$MnvL);
+      boolean stubExists = ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(conceptDeclaration), CONCEPTS.ConceptDeclaration$gH)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), stubName) && Objects.equals(SPropertyOperations.getString(it, PROPS.virtualPackage$dz_3), SPropertyOperations.getString(conceptDeclaration, PROPS.virtualPackage$dz_3));
+          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), stubName) && Objects.equals(SPropertyOperations.getString(it, PROPS.virtualPackage$EkXl), SPropertyOperations.getString(conceptDeclaration, PROPS.virtualPackage$EkXl));
         }
       }).isNotEmpty();
       if (!(stubExists)) {
@@ -86,7 +86,7 @@ public class check_ConceptDeclaration_NonTypesystemRule extends AbstractNonTypes
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConceptDeclaration$qU;
+    return CONCEPTS.ConceptDeclaration$gH;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -96,11 +96,11 @@ public class check_ConceptDeclaration_NonTypesystemRule extends AbstractNonTypes
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty virtualPackage$EkXl = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
   }
 }

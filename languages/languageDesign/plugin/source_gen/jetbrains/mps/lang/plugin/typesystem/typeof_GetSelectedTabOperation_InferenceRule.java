@@ -26,7 +26,7 @@ public class typeof_GetSelectedTabOperation_InferenceRule extends AbstractInfere
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.GetSelectedTabOperation$sS;
+    return CONCEPTS.GetSelectedTabOperation$pV;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,6 +43,6 @@ public class typeof_GetSelectedTabOperation_InferenceRule extends AbstractInfere
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GetSelectedTabOperation$sS = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x19da07a14b82ef06L, "jetbrains.mps.lang.plugin.structure.GetSelectedTabOperation");
+    /*package*/ static final SConcept GetSelectedTabOperation$pV = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x19da07a14b82ef06L, "jetbrains.mps.lang.plugin.structure.GetSelectedTabOperation");
   }
 }

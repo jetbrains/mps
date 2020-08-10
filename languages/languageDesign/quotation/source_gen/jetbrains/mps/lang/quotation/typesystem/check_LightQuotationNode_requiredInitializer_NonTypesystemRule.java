@@ -31,18 +31,18 @@ public class check_LightQuotationNode_requiredInitializer_NonTypesystemRule exte
   public check_LightQuotationNode_requiredInitializer_NonTypesystemRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    InitializerPolicy checkPolicy = INodeBuilderContainer__BehaviorDescriptor.getCheckPolicy_id4XAkAubwHns.invoke(SNodeOperations.getNodeAncestor(node, CONCEPTS.INodeBuilderContainer$cS, false, false));
+    InitializerPolicy checkPolicy = INodeBuilderContainer__BehaviorDescriptor.getCheckPolicy_id4XAkAubwHns.invoke(SNodeOperations.getNodeAncestor(node, CONCEPTS.INodeBuilderContainer$ds, false, false));
     if (checkPolicy == null) {
       return;
     }
 
-    for (final SNode link : ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getAggregationLinkDeclarations_idhEwILLp.invoke(SLinkOperations.getTarget(node, LINKS.concept$zz_s)))) {
-      if (!(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.values$LrAn)).any(new IWhereFilter<SNode>() {
+    for (final SNode link : ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getAggregationLinkDeclarations_idhEwILLp.invoke(SLinkOperations.getTarget(node, LINKS.concept$xoA0)))) {
+      if (!(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.values$JgAV)).any(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.NodeBuilderInitLink$Xj) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.NodeBuilderInitLink$Xj), LINKS.link$XYSx) == link;
+          return SNodeOperations.isInstanceOf(it, CONCEPTS.NodeBuilderInitLink$XR) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.NodeBuilderInitLink$XR), LINKS.link$VNT5) == link;
         }
       }))) {
-        String message = "required link is not initialized `" + SPropertyOperations.getString(link, PROPS.role$nkts) + "'";
+        String message = "required link is not initialized `" + SPropertyOperations.getString(link, PROPS.role$Nsjf) + "'";
         switch (checkPolicy.reportRequiredContainmentLink(node, link)) {
           case ERROR:
             {
@@ -69,13 +69,13 @@ public class check_LightQuotationNode_requiredInitializer_NonTypesystemRule exte
         }
       }
     }
-    for (final SNode referenceLink : ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(SLinkOperations.getTarget(node, LINKS.concept$zz_s)))) {
-      if (!(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.values$LrAn)).any(new IWhereFilter<SNode>() {
+    for (final SNode referenceLink : ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(SLinkOperations.getTarget(node, LINKS.concept$xoA0)))) {
+      if (!(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.values$JgAV)).any(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.NodeBuilderInitLink$Xj) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.NodeBuilderInitLink$Xj), LINKS.link$XYSx) == referenceLink;
+          return SNodeOperations.isInstanceOf(it, CONCEPTS.NodeBuilderInitLink$XR) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.NodeBuilderInitLink$XR), LINKS.link$VNT5) == referenceLink;
         }
       }))) {
-        String message = "required reference is not initialized `" + SPropertyOperations.getString(referenceLink, PROPS.role$nkts) + "'";
+        String message = "required reference is not initialized `" + SPropertyOperations.getString(referenceLink, PROPS.role$Nsjf) + "'";
         switch (checkPolicy.reportRequiredReferenceLink(node, referenceLink)) {
           case ERROR:
             {
@@ -102,13 +102,13 @@ public class check_LightQuotationNode_requiredInitializer_NonTypesystemRule exte
         }
       }
     }
-    for (final SNode property : ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(SLinkOperations.getTarget(node, LINKS.concept$zz_s)))) {
-      if (!(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.values$LrAn)).any(new IWhereFilter<SNode>() {
+    for (final SNode property : ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(SLinkOperations.getTarget(node, LINKS.concept$xoA0)))) {
+      if (!(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.values$JgAV)).any(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(it, CONCEPTS.NodeBuilderInitProperty$wV) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.NodeBuilderInitProperty$wV), LINKS.property$Ktw) == property;
+          return SNodeOperations.isInstanceOf(it, CONCEPTS.NodeBuilderInitProperty$xv) && SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.NodeBuilderInitProperty$xv), LINKS.property$Y_u4) == property;
         }
       }))) {
-        String message = "required property is not initialized `" + SPropertyOperations.getString(property, PROPS.name$lA7v) + "'";
+        String message = "required property is not initialized `" + SPropertyOperations.getString(property, PROPS.name$MnvL) + "'";
         switch (checkPolicy.reportRequiredProperty(node, property)) {
           case ERROR:
             {
@@ -137,7 +137,7 @@ public class check_LightQuotationNode_requiredInitializer_NonTypesystemRule exte
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.NodeBuilderNode$RN;
+    return CONCEPTS.NodeBuilderNode$Sn;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -147,21 +147,21 @@ public class check_LightQuotationNode_requiredInitializer_NonTypesystemRule exte
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept INodeBuilderContainer$cS = MetaAdapterFactory.getInterfaceConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0xe04f17ec2c78d3eL, "jetbrains.mps.lang.quotation.structure.INodeBuilderContainer");
-    /*package*/ static final SConcept NodeBuilderInitLink$Xj = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink");
-    /*package*/ static final SConcept NodeBuilderInitProperty$wV = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitProperty");
-    /*package*/ static final SConcept NodeBuilderNode$RN = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, "jetbrains.mps.lang.quotation.structure.NodeBuilderNode");
+    /*package*/ static final SInterfaceConcept INodeBuilderContainer$ds = MetaAdapterFactory.getInterfaceConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0xe04f17ec2c78d3eL, "jetbrains.mps.lang.quotation.structure.INodeBuilderContainer");
+    /*package*/ static final SConcept NodeBuilderInitLink$XR = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink");
+    /*package*/ static final SConcept NodeBuilderInitProperty$xv = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitProperty");
+    /*package*/ static final SConcept NodeBuilderNode$Sn = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, "jetbrains.mps.lang.quotation.structure.NodeBuilderNode");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink values$LrAn = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b033bL, "values");
-    /*package*/ static final SReferenceLink link$XYSx = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x4bb51009d20c8e1cL, "link");
-    /*package*/ static final SReferenceLink concept$zz_s = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b02b1L, "concept");
-    /*package*/ static final SReferenceLink property$Ktw = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x4bb51009d20b0326L, "property");
+    /*package*/ static final SContainmentLink values$JgAV = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b033bL, "values");
+    /*package*/ static final SReferenceLink link$VNT5 = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x4bb51009d20c8e1cL, "link");
+    /*package*/ static final SReferenceLink concept$xoA0 = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, 0x4bb51009d20b02b1L, "concept");
+    /*package*/ static final SReferenceLink property$Y_u4 = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x4bb51009d20b0326L, "property");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty role$nkts = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty role$Nsjf = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

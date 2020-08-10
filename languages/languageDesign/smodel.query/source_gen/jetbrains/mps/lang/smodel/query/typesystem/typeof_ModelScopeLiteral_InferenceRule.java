@@ -22,14 +22,14 @@ public class typeof_ModelScopeLiteral_InferenceRule extends AbstractInferenceRul
   public void applyRule(final SNode modelScopeLiteral, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(modelScopeLiteral, LINKS.models$fO0w);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(modelScopeLiteral, LINKS.models$y4zy);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:7e8cfa8a-da13-467d-9878-63b90b943128(jetbrains.mps.lang.smodel.query.typesystem)", "2362304834939062434", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:7e8cfa8a-da13-467d-9878-63b90b943128(jetbrains.mps.lang.smodel.query.typesystem)", "2362304834939062436", true), (SNode) _quotation_createNode_hadfae_a1a0c0a0a0b(), true, true, _info_12389875345);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ModelsScope$C1;
+    return CONCEPTS.ModelsScope$b3;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -54,10 +54,10 @@ public class typeof_ModelScopeLiteral_InferenceRule extends AbstractInferenceRul
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink models$fO0w = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a7L, 0x20c897bb39bb07a8L, "models");
+    /*package*/ static final SContainmentLink models$y4zy = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a7L, 0x20c897bb39bb07a8L, "models");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ModelsScope$C1 = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a7L, "jetbrains.mps.lang.smodel.query.structure.ModelsScope");
+    /*package*/ static final SConcept ModelsScope$b3 = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x20c897bb39bb07a7L, "jetbrains.mps.lang.smodel.query.structure.ModelsScope");
   }
 }

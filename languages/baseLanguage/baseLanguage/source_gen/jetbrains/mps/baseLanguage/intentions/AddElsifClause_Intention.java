@@ -36,7 +36,7 @@ public final class AddElsifClause_Intention extends AbstractIntentionDescriptor 
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elsifClauses$ZQja)).isEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.elsifClauses$EVJW)).isEmpty();
   }
   @Override
   public boolean isSurroundWith() {
@@ -57,10 +57,10 @@ public final class AddElsifClause_Intention extends AbstractIntentionDescriptor 
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode ifFalse = SLinkOperations.getTarget(node, LINKS.ifFalseStatement$InyY);
-      SLinkOperations.setTarget(node, LINKS.ifFalseStatement$InyY, null);
-      SNodeFactoryOperations.addNewChild(node, LINKS.elsifClauses$ZQja, null);
-      SLinkOperations.setTarget(node, LINKS.ifFalseStatement$InyY, ifFalse);
+      SNode ifFalse = SLinkOperations.getTarget(node, LINKS.ifFalseStatement$psZK);
+      SLinkOperations.setTarget(node, LINKS.ifFalseStatement$psZK, null);
+      SNodeFactoryOperations.addNewChild(node, LINKS.elsifClauses$EVJW, null);
+      SLinkOperations.setTarget(node, LINKS.ifFalseStatement$psZK, ifFalse);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -69,7 +69,7 @@ public final class AddElsifClause_Intention extends AbstractIntentionDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elsifClauses$ZQja = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0x118cecf1287L, "elsifClauses");
-    /*package*/ static final SContainmentLink ifFalseStatement$InyY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement");
+    /*package*/ static final SContainmentLink elsifClauses$EVJW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0x118cecf1287L, "elsifClauses");
+    /*package*/ static final SContainmentLink ifFalseStatement$psZK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement");
   }
 }

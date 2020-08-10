@@ -21,11 +21,11 @@ public class typeof_InternalAnonymousClassCreator_InferenceRule extends Abstract
     {
       SNode _nodeToCheck_1029348928467 = iacc;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895903ab(jetbrains.mps.baseLanguageInternal.typesystem)", "3421461530438560042", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895903ab(jetbrains.mps.baseLanguageInternal.typesystem)", "3421461530438560039", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(iacc, LINKS.cls$N8Vz), "r:00000000-0000-4000-0000-011c895903ab(jetbrains.mps.baseLanguageInternal.typesystem)", "3421461530438560047", true), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895903ab(jetbrains.mps.baseLanguageInternal.typesystem)", "3421461530438560039", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(iacc, LINKS.cls$4Rcl), "r:00000000-0000-4000-0000-011c895903ab(jetbrains.mps.baseLanguageInternal.typesystem)", "3421461530438560047", true), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.InternalAnonymousClassCreator$KK;
+    return CONCEPTS.InternalAnonymousClassCreator$1y;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -35,10 +35,10 @@ public class typeof_InternalAnonymousClassCreator_InferenceRule extends Abstract
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink cls$N8Vz = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x2f7b79225e746808L, 0x2f7b79225e74691fL, "cls");
+    /*package*/ static final SContainmentLink cls$4Rcl = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x2f7b79225e746808L, 0x2f7b79225e74691fL, "cls");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InternalAnonymousClassCreator$KK = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x2f7b79225e746808L, "jetbrains.mps.baseLanguageInternal.structure.InternalAnonymousClassCreator");
+    /*package*/ static final SConcept InternalAnonymousClassCreator$1y = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x2f7b79225e746808L, "jetbrains.mps.baseLanguageInternal.structure.InternalAnonymousClassCreator");
   }
 }

@@ -36,7 +36,7 @@ public final class AddDominance_Intention extends AbstractIntentionDescriptor im
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SLinkOperations.getTarget(node, LINKS.dominates$tN$Y) == null;
+    return SLinkOperations.getTarget(node, LINKS.dominates$y5K_) == null;
   }
   @Override
   public boolean isSurroundWith() {
@@ -57,7 +57,7 @@ public final class AddDominance_Intention extends AbstractIntentionDescriptor im
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SLinkOperations.setTarget(node, LINKS.dominates$tN$Y, SNodeFactoryOperations.createNewNode(CONCEPTS.DominatesRecord$Vr, null));
+      SLinkOperations.setTarget(node, LINKS.dominates$y5K_, SNodeFactoryOperations.createNewNode(CONCEPTS.DominatesRecord$72, null));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -66,10 +66,10 @@ public final class AddDominance_Intention extends AbstractIntentionDescriptor im
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink dominates$tN$Y = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a126f24L, 0x2ef3b3796a130bd8L, "dominates");
+    /*package*/ static final SContainmentLink dominates$y5K_ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a126f24L, 0x2ef3b3796a130bd8L, "dominates");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DominatesRecord$Vr = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x22926e62b7d495a0L, "jetbrains.mps.lang.editor.structure.DominatesRecord");
+    /*package*/ static final SConcept DominatesRecord$72 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x22926e62b7d495a0L, "jetbrains.mps.lang.editor.structure.DominatesRecord");
   }
 }

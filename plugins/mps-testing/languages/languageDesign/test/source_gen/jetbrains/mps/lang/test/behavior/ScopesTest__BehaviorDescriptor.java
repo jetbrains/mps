@@ -52,11 +52,11 @@ public final class ScopesTest__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static SReference getCheckingReference_id4IvydoGvimX(@NotNull SNode __thisNode__) {
     SNode nodeToCheck = INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(__thisNode__);
-    if (SLinkOperations.getTarget(__thisNode__, LINKS.checkingReference$S$wE) == null) {
+    if (SLinkOperations.getTarget(__thisNode__, LINKS.checkingReference$LcK9) == null) {
       return nodeToCheck.getReferences().iterator().next();
     }
     for (SReference reference : Sequence.fromIterable(nodeToCheck.getReferences())) {
-      if (reference.getTargetNode() == SLinkOperations.getTarget(__thisNode__, LINKS.checkingReference$S$wE)) {
+      if (reference.getTargetNode() == SLinkOperations.getTarget(__thisNode__, LINKS.checkingReference$LcK9)) {
         return reference;
       }
     }
@@ -66,10 +66,10 @@ public final class ScopesTest__BehaviorDescriptor extends BaseBHDescriptor {
     return SNodeOperations.getConcept(node).getReferenceLinks().size() == 1;
   }
   /*package*/ static boolean isApplicable_id4IvydoGviup(@NotNull SAbstractConcept __thisConcept__, SNode node) {
-    return ListSequence.fromList(SNodeOperations.getReferences(node)).isNotEmpty() && (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ScopesTest$Ea)) == null) && !(SNodeOperations.isInstanceOf(node, CONCEPTS.ScopesTest$Ea));
+    return ListSequence.fromList(SNodeOperations.getReferences(node)).isNotEmpty() && (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ScopesTest$TD)) == null) && !(SNodeOperations.isInstanceOf(node, CONCEPTS.ScopesTest$TD));
   }
   /*package*/ static SNode getTestCase_idhGBgWVd(@NotNull SNode __thisNode__) {
-    return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.NodesTestCase$7I, false, false);
+    return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.NodesTestCase$nd, false, false);
   }
   /*package*/ static boolean isMpsStartRequired_id2RMg39tmiFh(@NotNull SNode __thisNode__) {
     return true;
@@ -87,9 +87,9 @@ public final class ScopesTest__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static void perform_id1kgh5YabdhC(@NotNull SNode __thisNode__, SNode node, @Nullable ComponentHost host) {
     SReference checkingReference = ScopesTest__BehaviorDescriptor.getCheckingReference_id4IvydoGvimX.invoke(__thisNode__);
-    new CheckScopesAction(checkingReference.getSourceNode(), checkingReference.getLink(), ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.nodes$Ty83)).select(new ISelector<SNode, SNodeReference>() {
+    new CheckScopesAction(checkingReference.getSourceNode(), checkingReference.getLink(), ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.nodes$Many)).select(new ISelector<SNode, SNodeReference>() {
       public SNodeReference select(SNode it) {
-        return SLinkOperations.getPointer(it, LINKS.ref$Z5qB);
+        return SLinkOperations.getPointer(it, LINKS.ref$RHE6);
       }
     }).toListSequence()).check();
   }
@@ -156,13 +156,13 @@ public final class ScopesTest__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink checkingReference$S$wE = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, 0x4b9f88d62c795596L, "checkingReference");
-    /*package*/ static final SContainmentLink nodes$Ty83 = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, 0x32ba5b0ec25fea03L, "nodes");
-    /*package*/ static final SReferenceLink ref$Z5qB = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x32ba5b0ec25fe9f3L, 0x383e5e55de89bc1fL, "ref");
+    /*package*/ static final SReferenceLink checkingReference$LcK9 = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, 0x4b9f88d62c795596L, "checkingReference");
+    /*package*/ static final SContainmentLink nodes$Many = MetaAdapterFactory.getContainmentLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, 0x32ba5b0ec25fea03L, "nodes");
+    /*package*/ static final SReferenceLink ref$RHE6 = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x32ba5b0ec25fe9f3L, 0x383e5e55de89bc1fL, "ref");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ScopesTest$Ea = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, "jetbrains.mps.lang.test.structure.ScopesTest");
-    /*package*/ static final SConcept NodesTestCase$7I = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, "jetbrains.mps.lang.test.structure.NodesTestCase");
+    /*package*/ static final SConcept ScopesTest$TD = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, "jetbrains.mps.lang.test.structure.ScopesTest");
+    /*package*/ static final SConcept NodesTestCase$nd = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, "jetbrains.mps.lang.test.structure.NodesTestCase");
   }
 }

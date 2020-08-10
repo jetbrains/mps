@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TestConstraintsInvocation_CanBeParentFail_Constraints extends BaseConstraintsDescriptor {
   public TestConstraintsInvocation_CanBeParentFail_Constraints() {
-    super(CONCEPTS.TestConstraintsInvocation_CanBeParentFail$SJ);
+    super(CONCEPTS.TestConstraintsInvocation_CanBeParentFail$UH);
   }
 
   @Override
@@ -36,12 +36,12 @@ public class TestConstraintsInvocation_CanBeParentFail_Constraints extends BaseC
     };
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return !(childConcept.equals(CONCEPTS.TestConstraintsInvocation_Child$yv));
+    return !(childConcept.equals(CONCEPTS.TestConstraintsInvocation_Child$$t));
   }
   private static final SNodePointer canBeParentBreakingPoint = new SNodePointer("r:6789573d-c842-4805-bb3b-05fd4fbf786e(constraints.test.constraints)", "730305212589401486");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestConstraintsInvocation_CanBeParentFail$SJ = MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x7438d976714223ecL, "constraints.test.structure.TestConstraintsInvocation_CanBeParentFail");
-    /*package*/ static final SConcept TestConstraintsInvocation_Child$yv = MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0xa2290b8b60493a1L, "constraints.test.structure.TestConstraintsInvocation_Child");
+    /*package*/ static final SConcept TestConstraintsInvocation_CanBeParentFail$UH = MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x7438d976714223ecL, "constraints.test.structure.TestConstraintsInvocation_CanBeParentFail");
+    /*package*/ static final SConcept TestConstraintsInvocation_Child$$t = MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0xa2290b8b60493a1L, "constraints.test.structure.TestConstraintsInvocation_Child");
   }
 }

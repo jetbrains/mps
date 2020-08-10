@@ -28,7 +28,7 @@ public class AddDeleteMethodCallArgument {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode methodCall = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.IMethodCall$ln);
+        SNode methodCall = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.IMethodCall$M9);
         SNode prevSibling = SNodeOperations.getPrevSibling(node);
         SNode nextSibling = SNodeOperations.getNextSibling(node);
         SNodeOperations.deleteNode(node);
@@ -46,7 +46,7 @@ public class AddDeleteMethodCallArgument {
         return this.canExecute_internal(editorContext, node);
       }
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
-        return SNodeOperations.hasRole(node, LINKS.actualArgument$ItKJ);
+        return SNodeOperations.hasRole(node, LINKS.actualArgument$pzdx);
       }
 
     };
@@ -57,7 +57,7 @@ public class AddDeleteMethodCallArgument {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode methodCall = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.IMethodCall$ln);
+        SNode methodCall = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.IMethodCall$M9);
         SNode prevSibling = SNodeOperations.getPrevSibling(node);
         SNode nextSibling = SNodeOperations.getNextSibling(node);
         SNodeOperations.deleteNode(node);
@@ -75,7 +75,7 @@ public class AddDeleteMethodCallArgument {
         return this.canExecute_internal(editorContext, node);
       }
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
-        return SNodeOperations.hasRole(node, LINKS.actualArgument$ItKJ);
+        return SNodeOperations.hasRole(node, LINKS.actualArgument$pzdx);
       }
 
     };
@@ -87,8 +87,8 @@ public class AddDeleteMethodCallArgument {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         SNode argument = MethodArgumentsUtil.getMethodArgumentAncestor(node);
-        SNode newArgument = SNodeOperations.insertNextSiblingChild(argument, SNodeFactoryOperations.createNewNode(CONCEPTS.Expression$TP, null));
-        MethodResolveUtil.replaceFromEditor(SNodeOperations.cast(SNodeOperations.getParent(argument), CONCEPTS.IMethodCall$ln));
+        SNode newArgument = SNodeOperations.insertNextSiblingChild(argument, SNodeFactoryOperations.createNewNode(CONCEPTS.Expression$mB, null));
+        MethodResolveUtil.replaceFromEditor(SNodeOperations.cast(SNodeOperations.getParent(argument), CONCEPTS.IMethodCall$M9));
         SelectionUtil.selectNode(editorContext, newArgument);
       }
 
@@ -145,11 +145,11 @@ public class AddDeleteMethodCallArgument {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IMethodCall$ln = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SInterfaceConcept IMethodCall$M9 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 }

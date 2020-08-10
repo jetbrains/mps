@@ -23,12 +23,12 @@ public class CheckBinaryOperationPriority_NonTypesystemRule extends AbstractNonT
   public CheckBinaryOperationPriority_NonTypesystemRule() {
   }
   public void applyRule(final SNode binaryOperation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.getParent(binaryOperation) != null && SNodeOperations.isInstanceOf(SNodeOperations.getParent(binaryOperation), CONCEPTS.BinaryOperation$vf)) {
-      SNode parent = SNodeOperations.cast(SNodeOperations.getParent(binaryOperation), CONCEPTS.BinaryOperation$vf);
+    if (SNodeOperations.getParent(binaryOperation) != null && SNodeOperations.isInstanceOf(SNodeOperations.getParent(binaryOperation), CONCEPTS.BinaryOperation$W1)) {
+      SNode parent = SNodeOperations.cast(SNodeOperations.getParent(binaryOperation), CONCEPTS.BinaryOperation$W1);
       boolean isRigth = false;
-      if (SLinkOperations.getTarget(parent, LINKS.rightExpression$li3b) == binaryOperation) {
+      if (SLinkOperations.getTarget(parent, LINKS.rightExpression$nvX) == binaryOperation) {
         isRigth = true;
-      } else if (SLinkOperations.getTarget(parent, LINKS.leftExpression$lndx) == binaryOperation) {
+      } else if (SLinkOperations.getTarget(parent, LINKS.leftExpression$sEj) == binaryOperation) {
         isRigth = false;
       }
       if (ParenthesisUtil.isBadPriority(binaryOperation, parent, isRigth)) {
@@ -46,7 +46,7 @@ public class CheckBinaryOperationPriority_NonTypesystemRule extends AbstractNonT
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BinaryOperation$vf;
+    return CONCEPTS.BinaryOperation$W1;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -56,11 +56,11 @@ public class CheckBinaryOperationPriority_NonTypesystemRule extends AbstractNonT
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BinaryOperation$vf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
+    /*package*/ static final SConcept BinaryOperation$W1 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
-    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$nvX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink leftExpression$sEj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
   }
 }

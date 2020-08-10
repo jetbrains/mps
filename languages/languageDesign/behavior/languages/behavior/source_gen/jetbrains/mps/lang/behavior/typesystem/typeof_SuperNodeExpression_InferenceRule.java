@@ -37,7 +37,7 @@ public class typeof_SuperNodeExpression_InferenceRule extends AbstractInferenceR
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SuperNodeExpression$A_;
+    return CONCEPTS.SuperNodeExpression$tM;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -61,6 +61,6 @@ public class typeof_SuperNodeExpression_InferenceRule extends AbstractInferenceR
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SuperNodeExpression$A_ = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434a6558L, "jetbrains.mps.lang.behavior.structure.SuperNodeExpression");
+    /*package*/ static final SConcept SuperNodeExpression$tM = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434a6558L, "jetbrains.mps.lang.behavior.structure.SuperNodeExpression");
   }
 }

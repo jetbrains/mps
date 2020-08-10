@@ -78,7 +78,7 @@ public class PersistentConfigurationType_Contribution extends SubstituteMenuBase
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_67nl4b_a0(), CONCEPTS.TemplatePersistentConfigurationType$ht));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_67nl4b_a0(), CONCEPTS.TemplatePersistentConfigurationType$Qi));
     }
     private class SMP_Param_67nl4b_a0 extends ParameterizedMenuPart<SNode, SubstituteMenuItem, SubstituteMenuContext> {
       @NotNull
@@ -100,9 +100,9 @@ public class PersistentConfigurationType_Contribution extends SubstituteMenuBase
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-        return ListSequence.fromList(SModelOperations.rootsIncludingImported(_context.getModel(), CONCEPTS.PersistentConfigurationTemplate$Kt)).where(new IWhereFilter<SNode>() {
+        return ListSequence.fromList(SModelOperations.rootsIncludingImported(_context.getModel(), CONCEPTS.PersistentConfigurationTemplate$li)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedAnnotation$X7)) == null);
+            return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedAnnotation$xW)) == null);
           }
         }).toListSequence();
       }
@@ -139,7 +139,7 @@ public class PersistentConfigurationType_Contribution extends SubstituteMenuBase
           private final SubstituteMenuContext _context;
           private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
-            super(CONCEPTS.TemplatePersistentConfigurationType$ht, context);
+            super(CONCEPTS.TemplatePersistentConfigurationType$Qi, context);
             _context = context;
           }
 
@@ -150,8 +150,8 @@ public class PersistentConfigurationType_Contribution extends SubstituteMenuBase
           @Nullable
           @Override
           public SNode createNode(@NotNull String pattern) {
-            SNode node = SNodeFactoryOperations.createNewNode(CONCEPTS.TemplatePersistentConfigurationType$ht, null);
-            SLinkOperations.setTarget(node, LINKS.persistentConfiguration$2710, myParameterObject);
+            SNode node = SNodeFactoryOperations.createNewNode(CONCEPTS.TemplatePersistentConfigurationType$Qi, null);
+            SLinkOperations.setTarget(node, LINKS.persistentConfiguration$QL_P, myParameterObject);
             return node;
           }
 
@@ -161,7 +161,7 @@ public class PersistentConfigurationType_Contribution extends SubstituteMenuBase
           }
           @NotNull
           protected CompletionItemInformation createInformation(String pattern) {
-            return new CompletionItemInformation(myParameterObject, CONCEPTS.TemplatePersistentConfigurationType$ht, getMatchingText(pattern), getDescriptionText(pattern));
+            return new CompletionItemInformation(myParameterObject, CONCEPTS.TemplatePersistentConfigurationType$Qi, getMatchingText(pattern), getDescriptionText(pattern));
           }
           @Nullable
           @Override
@@ -182,7 +182,7 @@ public class PersistentConfigurationType_Contribution extends SubstituteMenuBase
           @Nullable
           @Override
           public String getDescriptionText(@NotNull String pattern) {
-            return "template<" + SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v) + ">";
+            return "template<" + SPropertyOperations.getString(myParameterObject, PROPS.name$MnvL) + ">";
           }
         }
       }
@@ -191,16 +191,16 @@ public class PersistentConfigurationType_Contribution extends SubstituteMenuBase
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TemplatePersistentConfigurationType$ht = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f9100fdL, "jetbrains.mps.execution.settings.structure.TemplatePersistentConfigurationType");
-    /*package*/ static final SConcept PersistentConfigurationTemplate$Kt = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910113L, "jetbrains.mps.execution.settings.structure.PersistentConfigurationTemplate");
-    /*package*/ static final SConcept DeprecatedAnnotation$X7 = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0x7f8de21e263f5819L, "jetbrains.mps.execution.settings.structure.DeprecatedAnnotation");
+    /*package*/ static final SConcept TemplatePersistentConfigurationType$Qi = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f9100fdL, "jetbrains.mps.execution.settings.structure.TemplatePersistentConfigurationType");
+    /*package*/ static final SConcept PersistentConfigurationTemplate$li = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910113L, "jetbrains.mps.execution.settings.structure.PersistentConfigurationTemplate");
+    /*package*/ static final SConcept DeprecatedAnnotation$xW = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0x7f8de21e263f5819L, "jetbrains.mps.execution.settings.structure.DeprecatedAnnotation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink persistentConfiguration$2710 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
+    /*package*/ static final SReferenceLink persistentConfiguration$QL_P = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

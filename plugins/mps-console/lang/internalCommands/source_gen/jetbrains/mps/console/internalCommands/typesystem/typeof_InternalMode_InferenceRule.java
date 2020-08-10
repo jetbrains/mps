@@ -25,7 +25,7 @@ public class typeof_InternalMode_InferenceRule extends AbstractInferenceRule_Run
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.InternalMode$O1;
+    return CONCEPTS.InternalMode$Bu;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_InternalMode_InferenceRule extends AbstractInferenceRule_Run
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InternalMode$O1 = MetaAdapterFactory.getConcept(0x995a73947f764b8bL, 0xa929c53448708106L, 0x7a89354654722219L, "jetbrains.mps.console.internalCommands.structure.InternalMode");
+    /*package*/ static final SConcept InternalMode$Bu = MetaAdapterFactory.getConcept(0x995a73947f764b8bL, 0xa929c53448708106L, 0x7a89354654722219L, "jetbrains.mps.console.internalCommands.structure.InternalMode");
   }
 }

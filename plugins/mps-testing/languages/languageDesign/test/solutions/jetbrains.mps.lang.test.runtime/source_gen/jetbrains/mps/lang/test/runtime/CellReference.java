@@ -29,7 +29,7 @@ public class CellReference {
   private Map<SNode, SNode> myMap;
   public CellReference(SNode node, SNode annotation, Map<SNode, SNode> map) {
     myNode = node;
-    myAnnotation = SNodeOperations.cast(annotation, CONCEPTS.AnonymousCellAnnotation$28);
+    myAnnotation = SNodeOperations.cast(annotation, CONCEPTS.AnonymousCellAnnotation$hB);
     myMap = map;
   }
 
@@ -39,7 +39,7 @@ public class CellReference {
 
   @Override
   public String toString() {
-    return "(node " + myNode.getNodeId().toString() + ", id " + SPropertyOperations.getString(myAnnotation, PROPS.cellId$3x40) + ")";
+    return "(node " + myNode.getNodeId().toString() + ", id " + SPropertyOperations.getString(myAnnotation, PROPS.cellId$W9jv) + ")";
   }
 
   public EditorComponent setupSelection(NodeEditorComponent editorComponent) {
@@ -47,7 +47,7 @@ public class CellReference {
   }
 
   public void assertSelectionIsTheSame(EditorComponent editorComponent, Map<SNode, SNode> map) {
-    if (SPropertyOperations.getBoolean(myAnnotation, PROPS.isInInspector$3JJj)) {
+    if (SPropertyOperations.getBoolean(myAnnotation, PROPS.isInInspector$WnYM)) {
       assert editorComponent instanceof InspectorEditorComponent;
     }
     Selection selection = editorComponent.getSelectionManager().getSelection();
@@ -55,38 +55,38 @@ public class CellReference {
     if (selection instanceof SingularSelection) {
       EditorCell selectedCell = ((SingularSelection) selection).getEditorCell();
       Assert.assertSame(getNode(), MapSequence.fromMap(map).get(selectedCell.getSNode()));
-      Assert.assertEquals(SPropertyOperations.getString(myAnnotation, PROPS.cellId$3x40), selectedCell.getCellId());
+      Assert.assertEquals(SPropertyOperations.getString(myAnnotation, PROPS.cellId$W9jv), selectedCell.getCellId());
       if (selectedCell instanceof EditorCell_Label) {
         EditorCell_Label label = (EditorCell_Label) selectedCell;
-        Assert.assertEquals(SPropertyOperations.getInteger(myAnnotation, PROPS.selectionStart$hNAV), label.getSelectionStart());
-        Assert.assertEquals(SPropertyOperations.getInteger(myAnnotation, PROPS.selectionEnd$hO4X), label.getSelectionEnd());
+        Assert.assertEquals(SPropertyOperations.getInteger(myAnnotation, PROPS.selectionStart$arQq), label.getSelectionStart());
+        Assert.assertEquals(SPropertyOperations.getInteger(myAnnotation, PROPS.selectionEnd$asks), label.getSelectionEnd());
       }
-      Assert.assertNull(SLinkOperations.getTarget(myAnnotation, LINKS.nodeRangeSelectionStart$XOcA));
-      Assert.assertNull(SLinkOperations.getTarget(myAnnotation, LINKS.nodeRangeSelectionEnd$XOrB));
+      Assert.assertNull(SLinkOperations.getTarget(myAnnotation, LINKS.nodeRangeSelectionStart$Qss5));
+      Assert.assertNull(SLinkOperations.getTarget(myAnnotation, LINKS.nodeRangeSelectionEnd$QsF6));
     } else if (selection instanceof NodeRangeSelection) {
       NodeRangeSelection rangeSelection = (NodeRangeSelection) selection;
-      Assert.assertNotNull(SLinkOperations.getTarget(myAnnotation, LINKS.nodeRangeSelectionStart$XOcA));
-      Assert.assertNotNull(SLinkOperations.getTarget(myAnnotation, LINKS.nodeRangeSelectionEnd$XOrB));
-      Assert.assertEquals(MapSequence.fromMap(myMap).get(SLinkOperations.getTarget(myAnnotation, LINKS.nodeRangeSelectionStart$XOcA)), MapSequence.fromMap(map).get(rangeSelection.getFirstNode()));
-      Assert.assertEquals(MapSequence.fromMap(myMap).get(SLinkOperations.getTarget(myAnnotation, LINKS.nodeRangeSelectionEnd$XOrB)), MapSequence.fromMap(map).get(rangeSelection.getLastNode()));
+      Assert.assertNotNull(SLinkOperations.getTarget(myAnnotation, LINKS.nodeRangeSelectionStart$Qss5));
+      Assert.assertNotNull(SLinkOperations.getTarget(myAnnotation, LINKS.nodeRangeSelectionEnd$QsF6));
+      Assert.assertEquals(MapSequence.fromMap(myMap).get(SLinkOperations.getTarget(myAnnotation, LINKS.nodeRangeSelectionStart$Qss5)), MapSequence.fromMap(map).get(rangeSelection.getFirstNode()));
+      Assert.assertEquals(MapSequence.fromMap(myMap).get(SLinkOperations.getTarget(myAnnotation, LINKS.nodeRangeSelectionEnd$QsF6)), MapSequence.fromMap(map).get(rangeSelection.getLastNode()));
     } else {
       Assert.fail("Selection of unsupported type: " + selection.getClass());
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AnonymousCellAnnotation$28 = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, "jetbrains.mps.lang.test.structure.AnonymousCellAnnotation");
+    /*package*/ static final SConcept AnonymousCellAnnotation$hB = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, "jetbrains.mps.lang.test.structure.AnonymousCellAnnotation");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty cellId$3x40 = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x11e31babe13L, "cellId");
-    /*package*/ static final SProperty isInInspector$3JJj = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x1b73330fb1241e01L, "isInInspector");
-    /*package*/ static final SProperty selectionStart$hNAV = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x56ffc0a94fe5fc33L, "selectionStart");
-    /*package*/ static final SProperty selectionEnd$hO4X = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x56ffc0a94fe5fc35L, "selectionEnd");
+    /*package*/ static final SProperty cellId$W9jv = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x11e31babe13L, "cellId");
+    /*package*/ static final SProperty isInInspector$WnYM = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x1b73330fb1241e01L, "isInInspector");
+    /*package*/ static final SProperty selectionStart$arQq = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x56ffc0a94fe5fc33L, "selectionStart");
+    /*package*/ static final SProperty selectionEnd$asks = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x56ffc0a94fe5fc35L, "selectionEnd");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink nodeRangeSelectionStart$XOcA = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x1ad0cd452e1f9accL, "nodeRangeSelectionStart");
-    /*package*/ static final SReferenceLink nodeRangeSelectionEnd$XOrB = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x1ad0cd452e1f9acdL, "nodeRangeSelectionEnd");
+    /*package*/ static final SReferenceLink nodeRangeSelectionStart$Qss5 = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x1ad0cd452e1f9accL, "nodeRangeSelectionStart");
+    /*package*/ static final SReferenceLink nodeRangeSelectionEnd$QsF6 = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x1ad0cd452e1f9acdL, "nodeRangeSelectionEnd");
   }
 }

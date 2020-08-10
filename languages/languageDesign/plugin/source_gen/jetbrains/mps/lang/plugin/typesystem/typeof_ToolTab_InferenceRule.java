@@ -24,7 +24,7 @@ public class typeof_ToolTab_InferenceRule extends AbstractInferenceRule_Runtime 
   public void applyRule(final SNode tab, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     final SNode componentType_typevar_6938053545825381660 = typeCheckingContext.createNewRuntimeTypesVariable();
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(tab, LINKS.componentExpression$$RoD);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(tab, LINKS.componentExpression$MslG);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "6938053545825381661", 0, null);
       typeCheckingContext.createEquation((SNode) typeCheckingContext.getRepresentative(componentType_typevar_6938053545825381660), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "6938053545825381665", true), _info_12389875345);
     }
@@ -33,30 +33,30 @@ public class typeof_ToolTab_InferenceRule extends AbstractInferenceRule_Runtime 
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "6938053545825381669", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.getRepresentative(componentType_typevar_6938053545825381660), (SNode) _quotation_createNode_6sqcaa_a1a0c0c0b(), false, true, _info_12389875345);
     }
-    if (SLinkOperations.getTarget(tab, LINKS.titleExpression$$RBE) != null) {
+    if (SLinkOperations.getTarget(tab, LINKS.titleExpression$Ms$H) != null) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(tab, LINKS.titleExpression$$RBE);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(tab, LINKS.titleExpression$Ms$H);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "6938053545825381676", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "6938053545825381682", true), (SNode) _quotation_createNode_6sqcaa_a1a0c0a0d0b(), false, true, _info_12389875345);
       }
     }
-    if (SLinkOperations.getTarget(tab, LINKS.iconExpression$$WM0) != null) {
+    if (SLinkOperations.getTarget(tab, LINKS.iconExpression$MxJ3) != null) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(tab, LINKS.iconExpression$$WM0);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(tab, LINKS.iconExpression$MxJ3);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "6938053545825381686", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "6938053545825381692", true), (SNode) _quotation_createNode_6sqcaa_a1a0c0a0e0b(), false, true, _info_12389875345);
       }
     }
-    if (SLinkOperations.getTarget(tab, LINKS.disposeTabClosure$$X11) != null) {
+    if (SLinkOperations.getTarget(tab, LINKS.disposeTabClosure$MxY4) != null) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(tab, LINKS.disposeTabClosure$$X11);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(tab, LINKS.disposeTabClosure$MxY4);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "6938053545825381696", 0, null);
         typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "6938053545825381705", true), (SNode) _quotation_createNode_6sqcaa_a1a0c0a0f0b(typeCheckingContext.getRepresentative(componentType_typevar_6938053545825381660)), _info_12389875345);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ToolTab$ii;
+    return CONCEPTS.ToolTab$fl;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -100,13 +100,13 @@ public class typeof_ToolTab_InferenceRule extends AbstractInferenceRule_Runtime 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink componentExpression$$RoD = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6048eaf0c78f324eL, 0x6048eaf0c78fad10L, "componentExpression");
-    /*package*/ static final SContainmentLink titleExpression$$RBE = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6048eaf0c78f324eL, 0x6048eaf0c78fad11L, "titleExpression");
-    /*package*/ static final SContainmentLink iconExpression$$WM0 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6048eaf0c78f324eL, 0x6048eaf0c78fad12L, "iconExpression");
-    /*package*/ static final SContainmentLink disposeTabClosure$$X11 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6048eaf0c78f324eL, 0x6048eaf0c78fad13L, "disposeTabClosure");
+    /*package*/ static final SContainmentLink componentExpression$MslG = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6048eaf0c78f324eL, 0x6048eaf0c78fad10L, "componentExpression");
+    /*package*/ static final SContainmentLink titleExpression$Ms$H = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6048eaf0c78f324eL, 0x6048eaf0c78fad11L, "titleExpression");
+    /*package*/ static final SContainmentLink iconExpression$MxJ3 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6048eaf0c78f324eL, 0x6048eaf0c78fad12L, "iconExpression");
+    /*package*/ static final SContainmentLink disposeTabClosure$MxY4 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6048eaf0c78f324eL, 0x6048eaf0c78fad13L, "disposeTabClosure");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ToolTab$ii = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6048eaf0c78f324eL, "jetbrains.mps.lang.plugin.structure.ToolTab");
+    /*package*/ static final SConcept ToolTab$fl = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6048eaf0c78f324eL, "jetbrains.mps.lang.plugin.structure.ToolTab");
   }
 }

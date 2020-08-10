@@ -31,10 +31,10 @@ public final class J__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String foo_idyOqIWcnDrn(@NotNull SNode __thisNode__) {
-    return ((String) I__BehaviorDescriptor.foo_idyOqIWcnDrn.invoke0(__thisNode__, CONCEPTS.I2$_F));
+    return ((String) I__BehaviorDescriptor.foo_idyOqIWcnDrn.invoke0(__thisNode__, CONCEPTS.I2$V$));
   }
   /*package*/ static String bar_id43RsG_ymtGN(@NotNull SNode __thisNode__) {
-    return ((String) I__BehaviorDescriptor.bar_id43RsG_ymtGN.invoke0(__thisNode__, CONCEPTS.I1$mb));
+    return ((String) I__BehaviorDescriptor.bar_id43RsG_ymtGN.invoke0(__thisNode__, CONCEPTS.I1$G4));
   }
 
   /*package*/ J__BehaviorDescriptor() {
@@ -86,7 +86,7 @@ public final class J__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept I2$_F = MetaAdapterFactory.getInterfaceConcept(0x424c173aee734dc9L, 0xbc43d0051c9b1e8fL, 0x13b01619ddde1769L, "BHL6.structure.I2");
-    /*package*/ static final SInterfaceConcept I1$mb = MetaAdapterFactory.getInterfaceConcept(0x424c173aee734dc9L, 0xbc43d0051c9b1e8fL, 0x13b01619ddde175eL, "BHL6.structure.I1");
+    /*package*/ static final SInterfaceConcept I2$V$ = MetaAdapterFactory.getInterfaceConcept(0x424c173aee734dc9L, 0xbc43d0051c9b1e8fL, 0x13b01619ddde1769L, "BHL6.structure.I2");
+    /*package*/ static final SInterfaceConcept I1$G4 = MetaAdapterFactory.getInterfaceConcept(0x424c173aee734dc9L, 0xbc43d0051c9b1e8fL, 0x13b01619ddde175eL, "BHL6.structure.I1");
   }
 }

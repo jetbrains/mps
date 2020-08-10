@@ -38,12 +38,12 @@ public final class C__BehaviorDescriptor extends BaseBHDescriptor {
     return "C";
   }
   /*package*/ static void doInvokeAll_id46FlynTbVzB(@NotNull SNode __thisNode__) {
-    B__BehaviorDescriptor.abstractVirtualMethod_id46FlynTbIB0.invokeSuper(__thisNode__, CONCEPTS.C$O9, ((int) 0));
-    A__BehaviorDescriptor.finalVirtualMethod_id46FlynTbB7_.invokeSuper(__thisNode__, CONCEPTS.C$O9, "", ((int) 0));
+    B__BehaviorDescriptor.abstractVirtualMethod_id46FlynTbIB0.invokeSuper(__thisNode__, CONCEPTS.C$7j, ((int) 0));
+    A__BehaviorDescriptor.finalVirtualMethod_id46FlynTbB7_.invokeSuper(__thisNode__, CONCEPTS.C$7j, "", ((int) 0));
     B__BehaviorDescriptor.nonVirtualMethod_id46FlynTbICr.invokeSpecial(__thisNode__, "from B", ((int) 0));
     A__BehaviorDescriptor.nonVirtualMethod_id46FlynTbAz8.invokeSpecial(__thisNode__, "from A", ((int) 0));
-    B__BehaviorDescriptor.virtualMethod_id46FlynTbICa.invokeSuper(__thisNode__, CONCEPTS.C$O9, "from B", ((int) 0));
-    A__BehaviorDescriptor.virtualMethod_id46FlynTbAzL.invokeSuper(__thisNode__, CONCEPTS.C$O9, "from A", ((int) 0));
+    B__BehaviorDescriptor.virtualMethod_id46FlynTbICa.invokeSuper(__thisNode__, CONCEPTS.C$7j, "from B", ((int) 0));
+    A__BehaviorDescriptor.virtualMethod_id46FlynTbAzL.invokeSuper(__thisNode__, CONCEPTS.C$7j, "from A", ((int) 0));
     // 
     B__BehaviorDescriptor.virtualMethod_id46FlynTbICa.invoke(__thisNode__, "from B", ((int) 0));
     B__BehaviorDescriptor.virtualMethod_id46FlynTbICa.invoke(__thisNode__, "from B", ((int) 0));
@@ -118,6 +118,6 @@ public final class C__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept C$O9 = MetaAdapterFactory.getConcept(0xa18fb831fb54541L, 0x97c9a13312451954L, 0x41ab5625f92e6873L, "jetbrains.mps.lang.behavior.test.structure.C");
+    /*package*/ static final SConcept C$7j = MetaAdapterFactory.getConcept(0xa18fb831fb54541L, 0x97c9a13312451954L, 0x41ab5625f92e6873L, "jetbrains.mps.lang.behavior.test.structure.C");
   }
 }

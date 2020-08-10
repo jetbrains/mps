@@ -28,11 +28,11 @@ public class check_InnerClassesCantHaveStaticDeclarations_NonTypesystemRule exte
   public void applyRule(final SNode classConcept, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if ((boolean) Classifier__BehaviorDescriptor.isInner_idsWroEc0xXl.invoke(classConcept) && !((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(classConcept)) && (Sequence.fromIterable(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(classConcept)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it) && (!(SNodeOperations.isInstanceOf(it, CONCEPTS.StaticFieldDeclaration$R5)) || !((boolean) StaticFieldDeclaration__BehaviorDescriptor.isConstantValue_id3dsApLDTYgy.invoke(SNodeOperations.cast(it, CONCEPTS.StaticFieldDeclaration$R5))))) || SNodeOperations.isInstanceOf(it, CONCEPTS.Interface$Kp);
+        return ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(it) && (!(SNodeOperations.isInstanceOf(it, CONCEPTS.StaticFieldDeclaration$jR)) || !((boolean) StaticFieldDeclaration__BehaviorDescriptor.isConstantValue_id3dsApLDTYgy.invoke(SNodeOperations.cast(it, CONCEPTS.StaticFieldDeclaration$jR))))) || SNodeOperations.isInstanceOf(it, CONCEPTS.Interface$db);
       }
     }))) {
       {
-        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$lA7v);
+        final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$MnvL);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classConcept, "Non-static inner classes cannot have static declarations", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "498633765600371255", null, errorTarget);
         {
           BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MakeInnerClassStatic_QuickFix", "498633765600371269", false);
@@ -43,7 +43,7 @@ public class check_InnerClassesCantHaveStaticDeclarations_NonTypesystemRule exte
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ClassConcept$IY;
+    return CONCEPTS.ClassConcept$bK;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -53,12 +53,12 @@ public class check_InnerClassesCantHaveStaticDeclarations_NonTypesystemRule exte
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
-    /*package*/ static final SConcept StaticFieldDeclaration$R5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept StaticFieldDeclaration$jR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

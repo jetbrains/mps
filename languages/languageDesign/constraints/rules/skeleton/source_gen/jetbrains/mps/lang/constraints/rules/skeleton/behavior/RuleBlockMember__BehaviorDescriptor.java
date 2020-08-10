@@ -38,14 +38,14 @@ public final class RuleBlockMember__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static SNode getBlock_id1BFxp3HHhy9(@NotNull SNode __thisNode__) {
-    return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.RulesBlock$2N, false, false);
+    return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.RulesBlock$W, false, false);
   }
   /*package*/ static SNode getRuleKind_id1BFxp3HHhyj(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(RuleBlockMember__BehaviorDescriptor.getBlock_id1BFxp3HHhy9.invoke(__thisNode__), LINKS.kind$UxCx);
+    return SLinkOperations.getTarget(RuleBlockMember__BehaviorDescriptor.getBlock_id1BFxp3HHhy9.invoke(__thisNode__), LINKS.kind$9HAE);
   }
   @Hack
   /*package*/ static SNode getHighestMember_id2mL_UKGkn8G(@NotNull SNode __thisNode__) {
-    return ListSequence.fromList(SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.RuleBlockMember$5H, true)).last();
+    return ListSequence.fromList(SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.RuleBlockMember$3Q, true)).last();
   }
 
   /*package*/ RuleBlockMember__BehaviorDescriptor() {
@@ -99,11 +99,11 @@ public final class RuleBlockMember__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RulesBlock$2N = MetaAdapterFactory.getConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL, "jetbrains.mps.lang.constraints.rules.skeleton.structure.RulesBlock");
-    /*package*/ static final SInterfaceConcept RuleBlockMember$5H = MetaAdapterFactory.getInterfaceConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb51750L, "jetbrains.mps.lang.constraints.rules.skeleton.structure.RuleBlockMember");
+    /*package*/ static final SConcept RulesBlock$W = MetaAdapterFactory.getConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL, "jetbrains.mps.lang.constraints.rules.skeleton.structure.RulesBlock");
+    /*package*/ static final SInterfaceConcept RuleBlockMember$3Q = MetaAdapterFactory.getInterfaceConcept(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb51750L, "jetbrains.mps.lang.constraints.rules.skeleton.structure.RuleBlockMember");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink kind$UxCx = MetaAdapterFactory.getReferenceLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL, 0x19eb8590edb5174cL, "kind");
+    /*package*/ static final SReferenceLink kind$9HAE = MetaAdapterFactory.getReferenceLink(0x134c38d4e3af4d9eL, 0xb0691c7df0a4005dL, 0x19eb8590edb5174aL, 0x19eb8590edb5174cL, "kind");
   }
 }

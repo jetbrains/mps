@@ -29,11 +29,11 @@ public class CompletionChild_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_vwyoh8_a(), CONCEPTS.CompletionChild$PW));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_vwyoh8_b(), CONCEPTS.CompletionChild$PW));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_vwyoh8_c(), CONCEPTS.CompletionChild$PW));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_vwyoh8_d(), CONCEPTS.CompletionChild$PW));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_vwyoh8_e(), CONCEPTS.CompletionChild$PW));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_vwyoh8_a(), CONCEPTS.CompletionChild$A9));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_vwyoh8_b(), CONCEPTS.CompletionChild$A9));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_vwyoh8_c(), CONCEPTS.CompletionChild$A9));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_vwyoh8_d(), CONCEPTS.CompletionChild$A9));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_vwyoh8_e(), CONCEPTS.CompletionChild$A9));
     return result;
   }
 
@@ -78,7 +78,7 @@ public class CompletionChild_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.CompletionChild$PW, context);
+        super(CONCEPTS.CompletionChild$A9, context);
         _context = context;
       }
 
@@ -90,7 +90,7 @@ public class CompletionChild_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x57524858938023adL, "jetbrains.mps.lang.editor.editorTest.structure.CompletionChild"));
-        SPropertyOperations.assign(node, PROPS.name$lA7v, "full");
+        SPropertyOperations.assign(node, PROPS.name$MnvL, "full");
         return node;
       }
 
@@ -133,7 +133,7 @@ public class CompletionChild_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.CompletionChild$PW, context);
+        super(CONCEPTS.CompletionChild$A9, context);
         _context = context;
       }
 
@@ -145,7 +145,7 @@ public class CompletionChild_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x57524858938023adL, "jetbrains.mps.lang.editor.editorTest.structure.CompletionChild"));
-        SPropertyOperations.assign(node, PROPS.name$lA7v, "startEnd");
+        SPropertyOperations.assign(node, PROPS.name$MnvL, "startEnd");
         return node;
       }
 
@@ -188,7 +188,7 @@ public class CompletionChild_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.CompletionChild$PW, context);
+        super(CONCEPTS.CompletionChild$A9, context);
         _context = context;
       }
 
@@ -200,7 +200,7 @@ public class CompletionChild_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x57524858938023adL, "jetbrains.mps.lang.editor.editorTest.structure.CompletionChild"));
-        SPropertyOperations.assign(node, PROPS.name$lA7v, "startMiddleEnd");
+        SPropertyOperations.assign(node, PROPS.name$MnvL, "startMiddleEnd");
         return node;
       }
 
@@ -243,7 +243,7 @@ public class CompletionChild_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.CompletionChild$PW, context);
+        super(CONCEPTS.CompletionChild$A9, context);
         _context = context;
       }
 
@@ -255,7 +255,7 @@ public class CompletionChild_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x57524858938023adL, "jetbrains.mps.lang.editor.editorTest.structure.CompletionChild"));
-        SPropertyOperations.assign(node, PROPS.name$lA7v, "start Space");
+        SPropertyOperations.assign(node, PROPS.name$MnvL, "start Space");
         return node;
       }
 
@@ -298,7 +298,7 @@ public class CompletionChild_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.CompletionChild$PW, context);
+        super(CONCEPTS.CompletionChild$A9, context);
         _context = context;
       }
 
@@ -310,7 +310,7 @@ public class CompletionChild_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x57524858938023adL, "jetbrains.mps.lang.editor.editorTest.structure.CompletionChild"));
-        SPropertyOperations.assign(node, PROPS.name$lA7v, "start.dot");
+        SPropertyOperations.assign(node, PROPS.name$MnvL, "start.dot");
         return node;
       }
 
@@ -327,10 +327,10 @@ public class CompletionChild_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CompletionChild$PW = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x57524858938023adL, "jetbrains.mps.lang.editor.editorTest.structure.CompletionChild");
+    /*package*/ static final SConcept CompletionChild$A9 = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x57524858938023adL, "jetbrains.mps.lang.editor.editorTest.structure.CompletionChild");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

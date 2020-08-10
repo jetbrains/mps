@@ -19,14 +19,14 @@ public class CreateDefaultConstructorInSuperClass_QuickFix extends QuickFix_Runt
     return "Add public no-args constructor to " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(((SNode) CreateDefaultConstructorInSuperClass_QuickFix.this.getField("superClass")[0]));
   }
   public void execute(SNode node) {
-    SNodeFactoryOperations.addNewChild(((SNode) CreateDefaultConstructorInSuperClass_QuickFix.this.getField("superClass")[0]), LINKS.member$6v_r, CONCEPTS.ConstructorDeclaration$5U);
+    SNodeFactoryOperations.addNewChild(((SNode) CreateDefaultConstructorInSuperClass_QuickFix.this.getField("superClass")[0]), LINKS.member$L_2d, CONCEPTS.ConstructorDeclaration$yG);
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink member$L_2d = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConstructorDeclaration$5U = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
+    /*package*/ static final SConcept ConstructorDeclaration$yG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
   }
 }

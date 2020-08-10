@@ -30,7 +30,7 @@ public class NumberToolShortcut_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.NumberToolShortcut$zP) {
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.NumberToolShortcut$wS) {
 
       @NotNull
       @Override
@@ -43,8 +43,8 @@ public class NumberToolShortcut_SubstituteMenu extends SubstituteMenuBase {
           context.getEditorMenuTrace().popTraceInfo();
         }
       }
-    }, CONCEPTS.NumberToolShortcut$zP));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_33swfs_b(), CONCEPTS.NumberToolShortcut$zP));
+    }, CONCEPTS.NumberToolShortcut$wS));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_33swfs_b(), CONCEPTS.NumberToolShortcut$wS));
     return result;
   }
 
@@ -89,7 +89,7 @@ public class NumberToolShortcut_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.NumberToolShortcut$zP, context);
+        super(CONCEPTS.NumberToolShortcut$wS, context);
         _context = context;
       }
 
@@ -126,17 +126,17 @@ public class NumberToolShortcut_SubstituteMenu extends SubstituteMenuBase {
     }
   }
   private static SNode createNumberToolShortcut_33swfs_a0a0b(String p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NumberToolShortcut$zP);
-    n0.setProperty(PROPS.number$J71U, p0);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NumberToolShortcut$wS);
+    n0.setProperty(PROPS.number$WFYX, p0);
     return n0.getResult();
   }
   private static final Pattern REGEXP_33swfs_a0a0a11c5 = Pattern.compile("\\d", 0);
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NumberToolShortcut$zP = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76107L, "jetbrains.mps.lang.plugin.structure.NumberToolShortcut");
+    /*package*/ static final SConcept NumberToolShortcut$wS = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76107L, "jetbrains.mps.lang.plugin.structure.NumberToolShortcut");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty number$J71U = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76107L, 0x68b8d4843b76123L, "number");
+    /*package*/ static final SProperty number$WFYX = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76107L, 0x68b8d4843b76123L, "number");
   }
 }

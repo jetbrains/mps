@@ -35,10 +35,10 @@ public class ButtonFactory {
     JButton button = ButtonFactory.createButton(node, editorContext, "Text", new Runnable() {
       @Override
       public void run() {
-        SNode doc = SNodeFactoryOperations.createNewNode(CONCEPTS.DocumentationEntry$Ox, null);
-        SNode l = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(doc, LINKS.text$PUgw), LINKS.lines$y1jy)).first();
-        ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$cK1w)).clear();
-        SLinkOperations.addNewChild(l, LINKS.elements$cK1w, CONCEPTS.Word$AM);
+        SNode doc = SNodeFactoryOperations.createNewNode(CONCEPTS.DocumentationEntry$cW, null);
+        SNode l = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(doc, LINKS.text$LyCV), LINKS.lines$U$m7)).first();
+        ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$_j45)).clear();
+        SLinkOperations.addNewChild(l, LINKS.elements$_j45, CONCEPTS.Word$Dn);
         SNodeOperations.insertNextSiblingChild(node, doc);
         SelectionUtil.selectCell(editorContext, doc, SelectionManager.FIRST_EDITABLE_CELL);
       }
@@ -51,9 +51,9 @@ public class ButtonFactory {
       public void run() {
         SNode entry = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24e0L, "jetbrains.mps.samples.ChemMastery.structure.EquationEntry"));
         SNode eq = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L, "jetbrains.mps.samples.ChemMastery.structure.ChemEquation"));
-        SLinkOperations.setTarget(entry, LINKS.equation$NqGU, eq);
+        SLinkOperations.setTarget(entry, LINKS.equation$J35l, eq);
         SNodeOperations.insertNextSiblingChild(node, entry);
-        SelectionUtil.selectLabelCellAnSetCaret(editorContext, SLinkOperations.getTarget(entry, LINKS.equation$NqGU), "LEFT_EQ", 0);
+        SelectionUtil.selectLabelCellAnSetCaret(editorContext, SLinkOperations.getTarget(entry, LINKS.equation$J35l), "LEFT_EQ", 0);
       }
     });
     return button;
@@ -62,10 +62,10 @@ public class ButtonFactory {
     JButton button = ButtonFactory.createButton(node, editorContext, "Describe", new Runnable() {
       @Override
       public void run() {
-        SNode doc = SNodeFactoryOperations.createNewNode(CONCEPTS.DocumentationEntry$Ox, null);
-        SNode l = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(doc, LINKS.text$PUgw), LINKS.lines$y1jy)).first();
-        ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$cK1w)).clear();
-        SLinkOperations.addNewChild(l, LINKS.elements$cK1w, CONCEPTS.Word$AM);
+        SNode doc = SNodeFactoryOperations.createNewNode(CONCEPTS.DocumentationEntry$cW, null);
+        SNode l = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(doc, LINKS.text$LyCV), LINKS.lines$U$m7)).first();
+        ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$_j45)).clear();
+        SLinkOperations.addNewChild(l, LINKS.elements$_j45, CONCEPTS.Word$Dn);
         SNodeOperations.insertPrevSiblingChild(node, doc);
         SelectionUtil.selectCell(editorContext, doc, SelectionManager.FIRST_EDITABLE_CELL);
       }
@@ -85,14 +85,14 @@ public class ButtonFactory {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DocumentationEntry$Ox = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24e2L, "jetbrains.mps.samples.ChemMastery.structure.DocumentationEntry");
-    /*package*/ static final SConcept Word$AM = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
+    /*package*/ static final SConcept DocumentationEntry$cW = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24e2L, "jetbrains.mps.samples.ChemMastery.structure.DocumentationEntry");
+    /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink text$PUgw = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24e2L, 0x6ef7184fab9f24e3L, "text");
-    /*package*/ static final SContainmentLink lines$y1jy = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, 0x2331694e561a03b8L, "lines");
-    /*package*/ static final SContainmentLink elements$cK1w = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
-    /*package*/ static final SContainmentLink equation$NqGU = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24e0L, 0x6ef7184fab9f24dbL, "equation");
+    /*package*/ static final SContainmentLink text$LyCV = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24e2L, 0x6ef7184fab9f24e3L, "text");
+    /*package*/ static final SContainmentLink lines$U$m7 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, 0x2331694e561a03b8L, "lines");
+    /*package*/ static final SContainmentLink elements$_j45 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink equation$J35l = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24e0L, 0x6ef7184fab9f24dbL, "equation");
   }
 }

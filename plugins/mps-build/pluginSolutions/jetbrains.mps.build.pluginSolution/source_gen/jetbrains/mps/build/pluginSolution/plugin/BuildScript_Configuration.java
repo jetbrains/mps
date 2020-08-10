@@ -44,7 +44,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildScript_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
   private static final Logger LOG = LogManager.getLogger(BuildScript_Configuration.class);
-  private NodeByConcept_Configuration myNodePointer = new NodeByConcept_Configuration(CONCEPTS.BuildProject$BF, new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
+  private NodeByConcept_Configuration myNodePointer = new NodeByConcept_Configuration(CONCEPTS.BuildProject$ae, new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
     public Boolean invoke(SNode node) {
       return true;
     }
@@ -179,6 +179,6 @@ public class BuildScript_Configuration extends BaseMpsRunConfiguration implement
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildProject$BF = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+    /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
   }
 }

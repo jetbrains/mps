@@ -72,7 +72,7 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
   @Override
   public void breakdownToUnits(@NotNull TextGenModelOutline outline) {
     for (SNode root : outline.getModel().getRootNodes()) {
-      if (root.getConcept().equals(CONCEPTS.XmlFile$Ew)) {
+      if (root.getConcept().equals(CONCEPTS.XmlFile$4Z)) {
         String fname = getFileName_XmlFile(root);
         String ext = getFileExtension_XmlFile(root);
         outline.registerTextUnit((ext == null ? fname : (fname + '.' + ext)), root);
@@ -84,10 +84,10 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
     return node.getName();
   }
   private static String getFileExtension_XmlFile(SNode node) {
-    if (isEmptyString(SPropertyOperations.getString(node, PROPS.fileExtension$l9Ay))) {
+    if (isEmptyString(SPropertyOperations.getString(node, PROPS.fileExtension$ey11))) {
       return "xml";
     } else {
-      return SPropertyOperations.getString(node, PROPS.fileExtension$l9Ay);
+      return SPropertyOperations.getString(node, PROPS.fileExtension$ey11);
     }
   }
   private static boolean isEmptyString(String str) {
@@ -95,10 +95,10 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XmlFile$Ew = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54c94c0L, "jetbrains.mps.core.xml.structure.XmlFile");
+    /*package*/ static final SConcept XmlFile$4Z = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54c94c0L, "jetbrains.mps.core.xml.structure.XmlFile");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty fileExtension$l9Ay = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54c94c0L, 0x6abfad232d929dfbL, "fileExtension");
+    /*package*/ static final SProperty fileExtension$ey11 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54c94c0L, 0x6abfad232d929dfbL, "fileExtension");
   }
 }

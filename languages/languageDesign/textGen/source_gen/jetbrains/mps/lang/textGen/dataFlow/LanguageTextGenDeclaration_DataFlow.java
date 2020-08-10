@@ -13,18 +13,18 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public class LanguageTextGenDeclaration_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
     _context.getBuilder().emitWrite(_context.getNode(), "r:812dd537-4bc6-4b23-8ff0-eed686398e8b(jetbrains.mps.lang.textGen.dataFlow)/1237483551027");
-    _context.getBuilder().emitRead(SLinkOperations.getTarget(_context.getNode(), LINKS.baseTextGen$AWao), "r:812dd537-4bc6-4b23-8ff0-eed686398e8b(jetbrains.mps.lang.textGen.dataFlow)/1237483520232");
-    for (SNode declaration : SLinkOperations.getChildren(_context.getNode(), LINKS.function$CsLu)) {
+    _context.getBuilder().emitRead(SLinkOperations.getTarget(_context.getNode(), LINKS.baseTextGen$zkoU), "r:812dd537-4bc6-4b23-8ff0-eed686398e8b(jetbrains.mps.lang.textGen.dataFlow)/1237483520232");
+    for (SNode declaration : SLinkOperations.getChildren(_context.getNode(), LINKS.function$$P00)) {
       _context.getBuilder().build((SNode) declaration);
     }
-    for (SNode node : SLinkOperations.getChildren(_context.getNode(), LINKS.operation$2yg6)) {
+    for (SNode node : SLinkOperations.getChildren(_context.getNode(), LINKS.operation$YUuC)) {
       _context.getBuilder().build((SNode) node);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseTextGen$AWao = MetaAdapterFactory.getReferenceLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, 0x11f7eb142ecL, "baseTextGen");
-    /*package*/ static final SContainmentLink function$CsLu = MetaAdapterFactory.getContainmentLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, 0x11f6f8860bdL, "function");
-    /*package*/ static final SContainmentLink operation$2yg6 = MetaAdapterFactory.getContainmentLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, 0x11f4b821fc5L, "operation");
+    /*package*/ static final SReferenceLink baseTextGen$zkoU = MetaAdapterFactory.getReferenceLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, 0x11f7eb142ecL, "baseTextGen");
+    /*package*/ static final SContainmentLink function$$P00 = MetaAdapterFactory.getContainmentLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, 0x11f6f8860bdL, "function");
+    /*package*/ static final SContainmentLink operation$YUuC = MetaAdapterFactory.getContainmentLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, 0x11f4b821fc5L, "operation");
   }
 }

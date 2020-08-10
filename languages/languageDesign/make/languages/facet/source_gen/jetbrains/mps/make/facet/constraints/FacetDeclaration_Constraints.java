@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class FacetDeclaration_Constraints extends BaseConstraintsDescriptor {
   public FacetDeclaration_Constraints() {
-    super(CONCEPTS.FacetDeclaration$al);
+    super(CONCEPTS.FacetDeclaration$Nd);
   }
 
   @Override
@@ -43,6 +43,6 @@ public class FacetDeclaration_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_dgpkt9_a0a0a0a0a0a0a0a2 = new SNodePointer("r:6df86908-c97f-4644-97f0-5eff375e8e15(jetbrains.mps.make.facet.constraints)", "6836281137582791146");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept FacetDeclaration$al = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, "jetbrains.mps.make.facet.structure.FacetDeclaration");
+    /*package*/ static final SConcept FacetDeclaration$Nd = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, "jetbrains.mps.make.facet.structure.FacetDeclaration");
   }
 }

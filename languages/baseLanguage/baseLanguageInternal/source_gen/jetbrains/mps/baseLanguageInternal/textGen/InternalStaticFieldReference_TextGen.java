@@ -13,13 +13,13 @@ public class InternalStaticFieldReference_TextGen extends TextGenDescriptorBase 
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    BaseLangInternal.className(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.fqClassName$XMB8), ctx.getPrimaryInput(), ctx);
+    BaseLangInternal.className(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.fqClassName$fwRU), ctx.getPrimaryInput(), ctx);
     tgs.append(".");
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.fieldName$g7S5));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.fieldName$xQ8R));
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty fqClassName$XMB8 = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11157912ec1L, 0x1115794e9f1L, "fqClassName");
-    /*package*/ static final SProperty fieldName$g7S5 = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11157912ec1L, 0x11157952fb6L, "fieldName");
+    /*package*/ static final SProperty fqClassName$fwRU = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11157912ec1L, 0x1115794e9f1L, "fqClassName");
+    /*package*/ static final SProperty fieldName$xQ8R = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11157912ec1L, 0x11157952fb6L, "fieldName");
   }
 }

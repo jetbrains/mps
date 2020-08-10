@@ -41,9 +41,9 @@ public class RemoveInvisibleConstructorsInBTestCases extends MigrationScriptBase
           return scope_zcz6pn_a0e_0;
         }
       };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BTestCase$o9, false)).translate(new ITranslator2<SNode, SNode>() {
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.BTestCase$_a, false)).translate(new ITranslator2<SNode, SNode>() {
         public Iterable<SNode> translate(SNode it) {
-          return SLinkOperations.getChildren(it, LINKS.constructor$elBy);
+          return SLinkOperations.getChildren(it, LINKS.constructor$Tr4k);
         }
       }).toListSequence().visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
@@ -57,10 +57,10 @@ public class RemoveInvisibleConstructorsInBTestCases extends MigrationScriptBase
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BTestCase$o9 = MetaAdapterFactory.getConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110dc94e923L, "jetbrains.mps.baseLanguage.unitTest.structure.BTestCase");
+    /*package*/ static final SConcept BTestCase$_a = MetaAdapterFactory.getConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110dc94e923L, "jetbrains.mps.baseLanguage.unitTest.structure.BTestCase");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink constructor$elBy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xf8c108ca69L, "constructor");
+    /*package*/ static final SContainmentLink constructor$Tr4k = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xf8c108ca69L, "constructor");
   }
 }

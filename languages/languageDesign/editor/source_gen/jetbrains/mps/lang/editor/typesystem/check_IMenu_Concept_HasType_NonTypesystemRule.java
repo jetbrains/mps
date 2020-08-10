@@ -24,7 +24,7 @@ public class check_IMenu_Concept_HasType_NonTypesystemRule extends AbstractNonTy
   }
   public void applyRule(final SNode menu, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SAbstractConcept concept = SNodeOperations.getConcept(menu);
-    if (SLinkOperations.getTarget(menu, LINKS.type$Y1Qo) == null && (SConceptOperations.isExactly(SNodeOperations.asSConcept(concept), CONCEPTS.TransformationMenu$ZK) || SConceptOperations.isExactly(SNodeOperations.asSConcept(concept), CONCEPTS.SubstituteMenu$v4))) {
+    if (SLinkOperations.getTarget(menu, LINKS.type$2k1Z) == null && (SConceptOperations.isExactly(SNodeOperations.asSConcept(concept), CONCEPTS.TransformationMenu$bn) || SConceptOperations.isExactly(SNodeOperations.asSConcept(concept), CONCEPTS.SubstituteMenu$EF))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(menu, "Choose menu type: Default or Named", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "6693953143208229079", null, errorTarget);
@@ -32,7 +32,7 @@ public class check_IMenu_Concept_HasType_NonTypesystemRule extends AbstractNonTy
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.IMenu_Concept$UY;
+    return CONCEPTS.IMenu_Concept$6_;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -42,12 +42,12 @@ public class check_IMenu_Concept_HasType_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SubstituteMenu$v4 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a0078L, "jetbrains.mps.lang.editor.structure.SubstituteMenu");
-    /*package*/ static final SConcept TransformationMenu$ZK = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0ac3ebaL, "jetbrains.mps.lang.editor.structure.TransformationMenu");
-    /*package*/ static final SInterfaceConcept IMenu_Concept$UY = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, "jetbrains.mps.lang.editor.structure.IMenu_Concept");
+    /*package*/ static final SConcept SubstituteMenu$EF = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a0078L, "jetbrains.mps.lang.editor.structure.SubstituteMenu");
+    /*package*/ static final SConcept TransformationMenu$bn = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0ac3ebaL, "jetbrains.mps.lang.editor.structure.TransformationMenu");
+    /*package*/ static final SInterfaceConcept IMenu_Concept$6_ = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, "jetbrains.mps.lang.editor.structure.IMenu_Concept");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$Y1Qo = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5326ef9ad16080e3L, "type");
+    /*package*/ static final SContainmentLink type$2k1Z = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5326ef9ad16080e3L, "type");
   }
 }

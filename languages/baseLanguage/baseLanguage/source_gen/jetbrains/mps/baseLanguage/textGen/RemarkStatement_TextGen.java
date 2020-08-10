@@ -17,26 +17,26 @@ public class RemarkStatement_TextGen extends TextGenDescriptorBase {
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.createPositionInfo();
-    if (SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$Q1xJ) != null) {
+    if (SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$x6Yx) != null) {
       tgs.newLine();
       tgs.indent();
       tgs.append("// ");
-      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$Q1xJ));
+      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$x6Yx));
     } else {
       tgs.newLine();
       tgs.indent();
       tgs.append("// ");
     }
     if (tgs.needPositions()) {
-      tgs.fillPositionInfo(TraceableConcept__BehaviorDescriptor.getTraceableProperty_id4pl5GY7LKmH.invoke(SNodeOperations.cast(ctx.getPrimaryInput(), CONCEPTS.TraceableConcept$kK)));
+      tgs.fillPositionInfo(TraceableConcept__BehaviorDescriptor.getTraceableProperty_id4pl5GY7LKmH.invoke(SNodeOperations.cast(ctx.getPrimaryInput(), CONCEPTS.TraceableConcept$L)));
     }
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$Q1xJ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1101757c8faL, 0x110175cdb2bL, "value");
+    /*package*/ static final SProperty value$x6Yx = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1101757c8faL, 0x110175cdb2bL, "value");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept TraceableConcept$kK = MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a3L, "jetbrains.mps.lang.traceable.structure.TraceableConcept");
+    /*package*/ static final SInterfaceConcept TraceableConcept$L = MetaAdapterFactory.getInterfaceConcept(0x9ded098bad6a4657L, 0xbfd948636cfe8bc3L, 0x465516cf87c705a3L, "jetbrains.mps.lang.traceable.structure.TraceableConcept");
   }
 }

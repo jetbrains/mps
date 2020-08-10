@@ -30,12 +30,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class DirectMethodSpecification_Constraints extends BaseConstraintsDescriptor {
   public DirectMethodSpecification_Constraints() {
-    super(CONCEPTS.DirectMethodSpecification$WC);
+    super(CONCEPTS.DirectMethodSpecification$xq);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.methodDeclaration$hUh0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.methodDeclaration$e4PM, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -50,12 +50,12 @@ public class DirectMethodSpecification_Constraints extends BaseConstraintsDescri
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode ancestor = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ExtractInterfaceMigration$at, true, false);
-            SNode classifierSpecification = SNodeOperations.as(SLinkOperations.getTarget(ancestor, LINKS.oldClassifier$hF_K), CONCEPTS.DirectClassifierSpecification$RM);
+            SNode ancestor = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ExtractInterfaceMigration$Jf, true, false);
+            SNode classifierSpecification = SNodeOperations.as(SLinkOperations.getTarget(ancestor, LINKS.oldClassifier$dQay), CONCEPTS.DirectClassifierSpecification$s$);
             if (classifierSpecification != null) {
-              return new SimpleScope(ListSequence.fromList(IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invoke(SLinkOperations.getTarget(classifierSpecification, LINKS.classifier$CCh_))).where(new IWhereFilter<SNode>() {
+              return new SimpleScope(ListSequence.fromList(IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invoke(SLinkOperations.getTarget(classifierSpecification, LINKS.classifier$$MQn))).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
-                  return SNodeOperations.isInstanceOf(it, CONCEPTS.InstanceMethodDeclaration$An);
+                  return SNodeOperations.isInstanceOf(it, CONCEPTS.InstanceMethodDeclaration$39);
                 }
               })) {
                 @Nullable
@@ -77,15 +77,15 @@ public class DirectMethodSpecification_Constraints extends BaseConstraintsDescri
   private static final SNodePointer breakingNode_xwijc_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c8959031e(jetbrains.mps.lang.script.constraints)", "6836281137582797330");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DirectMethodSpecification$WC = MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x1fcdfeb518c43583L, "jetbrains.mps.lang.script.structure.DirectMethodSpecification");
-    /*package*/ static final SConcept ExtractInterfaceMigration$at = MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x5c5c941438573499L, "jetbrains.mps.lang.script.structure.ExtractInterfaceMigration");
-    /*package*/ static final SConcept DirectClassifierSpecification$RM = MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4b6b6d7b2a638d23L, "jetbrains.mps.lang.script.structure.DirectClassifierSpecification");
-    /*package*/ static final SConcept InstanceMethodDeclaration$An = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept DirectMethodSpecification$xq = MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x1fcdfeb518c43583L, "jetbrains.mps.lang.script.structure.DirectMethodSpecification");
+    /*package*/ static final SConcept ExtractInterfaceMigration$Jf = MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x5c5c941438573499L, "jetbrains.mps.lang.script.structure.ExtractInterfaceMigration");
+    /*package*/ static final SConcept DirectClassifierSpecification$s$ = MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4b6b6d7b2a638d23L, "jetbrains.mps.lang.script.structure.DirectClassifierSpecification");
+    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink methodDeclaration$hUh0 = MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x1fcdfeb518c43583L, 0x1fcdfeb518c43c59L, "methodDeclaration");
-    /*package*/ static final SContainmentLink oldClassifier$hF_K = MetaAdapterFactory.getContainmentLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x5c5c941438573499L, 0x4b6b6d7b2a62097fL, "oldClassifier");
-    /*package*/ static final SReferenceLink classifier$CCh_ = MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4b6b6d7b2a638d23L, 0x4b6b6d7b2a638e5dL, "classifier");
+    /*package*/ static final SReferenceLink methodDeclaration$e4PM = MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x1fcdfeb518c43583L, 0x1fcdfeb518c43c59L, "methodDeclaration");
+    /*package*/ static final SContainmentLink oldClassifier$dQay = MetaAdapterFactory.getContainmentLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x5c5c941438573499L, 0x4b6b6d7b2a62097fL, "oldClassifier");
+    /*package*/ static final SReferenceLink classifier$$MQn = MetaAdapterFactory.getReferenceLink(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4b6b6d7b2a638d23L, 0x4b6b6d7b2a638e5dL, "classifier");
   }
 }

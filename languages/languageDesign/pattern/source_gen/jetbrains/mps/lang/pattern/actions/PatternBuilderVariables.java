@@ -16,18 +16,18 @@ public class PatternBuilderVariables {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       {
         final SNode variable = sampleNode;
-        if (SNodeOperations.isInstanceOf(variable, CONCEPTS.PatternBuilderVariable$In)) {
-          SPropertyOperations.assign(newNode, PROPS.name$lA7v, SPropertyOperations.getString(variable, PROPS.name$lA7v));
+        if (SNodeOperations.isInstanceOf(variable, CONCEPTS.PatternBuilderVariable$VU)) {
+          SPropertyOperations.assign(newNode, PROPS.name$MnvL, SPropertyOperations.getString(variable, PROPS.name$MnvL));
         }
       }
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept PatternBuilderVariable$In = MetaAdapterFactory.getInterfaceConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x26c46d140aa6106eL, "jetbrains.mps.lang.pattern.structure.PatternBuilderVariable");
+    /*package*/ static final SInterfaceConcept PatternBuilderVariable$VU = MetaAdapterFactory.getInterfaceConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x26c46d140aa6106eL, "jetbrains.mps.lang.pattern.structure.PatternBuilderVariable");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

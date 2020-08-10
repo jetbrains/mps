@@ -39,7 +39,7 @@ public final class AddAnnotation_Intention extends AbstractIntentionDescriptor i
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.annotation$4YGW)).isNotEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.annotation$K49I)).isNotEmpty()) {
       return false;
     }
     if (!((boolean) HasAnnotation__BehaviorDescriptor.canBeAnnotated_idhWp4PwP.invoke(node))) {
@@ -70,7 +70,7 @@ public final class AddAnnotation_Intention extends AbstractIntentionDescriptor i
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode annotationInstance = SNodeFactoryOperations.addNewChild(node, LINKS.annotation$4YGW, null);
+      SNode annotationInstance = SNodeFactoryOperations.addNewChild(node, LINKS.annotation$K49I, null);
       SelectionUtil.selectCell(editorContext, annotationInstance, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL);
     }
     @Override
@@ -80,6 +80,6 @@ public final class AddAnnotation_Intention extends AbstractIntentionDescriptor i
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SContainmentLink annotation$K49I = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
   }
 }

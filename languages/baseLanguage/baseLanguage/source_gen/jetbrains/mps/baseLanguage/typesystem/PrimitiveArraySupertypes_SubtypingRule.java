@@ -26,13 +26,13 @@ public class PrimitiveArraySupertypes_SubtypingRule extends SubtypingRule_Runtim
   }
   public List<SNode> getSubOrSuperTypes(SNode arrayType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // see JLS 3.0 
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(arrayType, LINKS.componentType$vfw), CONCEPTS.PrimitiveType$5)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(arrayType, LINKS.componentType$F$Gi), CONCEPTS.PrimitiveType$sR)) {
       return Arrays.asList(_quotation_createNode_l6pagy_a0a0b0b(), _quotation_createNode_l6pagy_b0a0b0b(), _quotation_createNode_l6pagy_c0a0b0b());
     }
     return ListSequence.fromList(new ArrayList<SNode>());
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ArrayType$Yv;
+    return CONCEPTS.ArrayType$rh;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -63,11 +63,11 @@ public class PrimitiveArraySupertypes_SubtypingRule extends SubtypingRule_Runtim
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink componentType$vfw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
+    /*package*/ static final SContainmentLink componentType$F$Gi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PrimitiveType$5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
-    /*package*/ static final SConcept ArrayType$Yv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
+    /*package*/ static final SConcept PrimitiveType$sR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
+    /*package*/ static final SConcept ArrayType$rh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
   }
 }

@@ -31,7 +31,7 @@ public final class Property_HasValue_Enum__BehaviorDescriptor extends BaseBHDesc
   }
 
   /*package*/ static boolean applicableToProperty_id45eRmv019Ae(@NotNull SAbstractConcept __thisConcept__, SNode datatype) {
-    return SNodeOperations.isInstanceOf(datatype, CONCEPTS.EnumerationDataTypeDeclaration_Old$Ll);
+    return SNodeOperations.isInstanceOf(datatype, CONCEPTS.EnumerationDataTypeDeclaration_Old$B8);
   }
 
   /*package*/ Property_HasValue_Enum__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class Property_HasValue_Enum__BehaviorDescriptor extends BaseBHDesc
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumerationDataTypeDeclaration_Old$Ll = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old");
+    /*package*/ static final SConcept EnumerationDataTypeDeclaration_Old$B8 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL, "jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration_Old");
   }
 }

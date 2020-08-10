@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ThisConceptExpression_Constraints extends BaseConstraintsDescriptor {
   public ThisConceptExpression_Constraints() {
-    super(CONCEPTS.ThisConceptExpression$T_);
+    super(CONCEPTS.ThisConceptExpression$KM);
   }
 
   @Override
@@ -41,6 +41,6 @@ public class ThisConceptExpression_Constraints extends BaseConstraintsDescriptor
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:6786d6ee-e5cc-4a77-9efd-65a8dca8b187(jetbrains.mps.lang.behavior.constraints)", "1703835097132643546");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ThisConceptExpression$T_ = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x17a53cfe586da642L, "jetbrains.mps.lang.behavior.structure.ThisConceptExpression");
+    /*package*/ static final SConcept ThisConceptExpression$KM = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x17a53cfe586da642L, "jetbrains.mps.lang.behavior.structure.ThisConceptExpression");
   }
 }

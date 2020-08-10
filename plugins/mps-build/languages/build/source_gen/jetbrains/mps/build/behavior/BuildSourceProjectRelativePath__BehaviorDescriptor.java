@@ -37,7 +37,7 @@ public final class BuildSourceProjectRelativePath__BehaviorDescriptor extends Ba
     return ((tail == null || tail.length() == 0) ? "${basedir}" : "${basedir}/" + tail);
   }
   /*package*/ static String getBasePath_id4jjtc7WZMYz(@NotNull SNode __thisNode__, Context context) {
-    return (String) BuildProject__BehaviorDescriptor.getBasePath_id4jjtc7WZOyG.invoke(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.BuildProject$BF, false, false), context);
+    return (String) BuildProject__BehaviorDescriptor.getBasePath_id4jjtc7WZOyG.invoke(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.BuildProject$ae, false, false), context);
   }
 
   /*package*/ BuildSourceProjectRelativePath__BehaviorDescriptor() {
@@ -89,6 +89,6 @@ public final class BuildSourceProjectRelativePath__BehaviorDescriptor extends Ba
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildProject$BF = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+    /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
   }
 }

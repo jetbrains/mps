@@ -34,7 +34,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CustomConstructorParameterReference_Constraints extends BaseConstraintsDescriptor {
   public CustomConstructorParameterReference_Constraints() {
-    super(CONCEPTS.CustomConstructorParameterReference$zY);
+    super(CONCEPTS.CustomConstructorParameterReference$j6);
   }
 
   @Override
@@ -69,7 +69,7 @@ public class CustomConstructorParameterReference_Constraints extends BaseConstra
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.parameter$QhZ0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.parameter$3II8, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -84,13 +84,13 @@ public class CustomConstructorParameterReference_Constraints extends BaseConstra
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode args = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.CustomConstructor$$1, false, false), LINKS.arguments$k0CZ);
-            if (SNodeOperations.isInstanceOf(args, CONCEPTS.ListArgumentsClause$21)) {
+            SNode args = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.CustomConstructor$j9, false, false), LINKS.arguments$xto7);
+            if (SNodeOperations.isInstanceOf(args, CONCEPTS.ListArgumentsClause$L9)) {
               List<SNode> result = new ArrayList<SNode>();
-              ListSequence.fromList(result).addElement(SLinkOperations.getTarget(SNodeOperations.cast(args, CONCEPTS.ListArgumentsClause$21), LINKS.list$z12Q));
+              ListSequence.fromList(result).addElement(SLinkOperations.getTarget(SNodeOperations.cast(args, CONCEPTS.ListArgumentsClause$L9), LINKS.list$KtLY));
               return ListScope.forResolvableElements(result);
-            } else if (SNodeOperations.isInstanceOf(args, CONCEPTS.CustomArgumentClause$2w)) {
-              return ListScope.forResolvableElements(SLinkOperations.getChildren(SNodeOperations.cast(args, CONCEPTS.CustomArgumentClause$2w), LINKS.parameter$qDoX));
+            } else if (SNodeOperations.isInstanceOf(args, CONCEPTS.CustomArgumentClause$LC)) {
+              return ListScope.forResolvableElements(SLinkOperations.getChildren(SNodeOperations.cast(args, CONCEPTS.CustomArgumentClause$LC), LINKS.parameter$C685));
             } else {
               return null;
             }
@@ -113,16 +113,16 @@ public class CustomConstructorParameterReference_Constraints extends BaseConstra
   private static final SNodePointer breakingNode_3lmvlt_a0a0a0a0a1a0a0a0e = new SNodePointer("r:79d4c714-b426-4aae-a835-35e7add55090(jetbrains.mps.baseLanguage.constructors.constraints)", "6836281137582648266");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CustomConstructorParameterReference$zY = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b745ce64L, "jetbrains.mps.baseLanguage.constructors.structure.CustomConstructorParameterReference");
-    /*package*/ static final SConcept CustomConstructor$$1 = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, "jetbrains.mps.baseLanguage.constructors.structure.CustomConstructor");
-    /*package*/ static final SConcept ListArgumentsClause$21 = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6b9L, "jetbrains.mps.baseLanguage.constructors.structure.ListArgumentsClause");
-    /*package*/ static final SConcept CustomArgumentClause$2w = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, "jetbrains.mps.baseLanguage.constructors.structure.CustomArgumentClause");
+    /*package*/ static final SConcept CustomConstructorParameterReference$j6 = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b745ce64L, "jetbrains.mps.baseLanguage.constructors.structure.CustomConstructorParameterReference");
+    /*package*/ static final SConcept CustomConstructor$j9 = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, "jetbrains.mps.baseLanguage.constructors.structure.CustomConstructor");
+    /*package*/ static final SConcept ListArgumentsClause$L9 = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6b9L, "jetbrains.mps.baseLanguage.constructors.structure.ListArgumentsClause");
+    /*package*/ static final SConcept CustomArgumentClause$LC = MetaAdapterFactory.getConcept(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, "jetbrains.mps.baseLanguage.constructors.structure.CustomArgumentClause");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink parameter$QhZ0 = MetaAdapterFactory.getReferenceLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b745ce64L, 0x4aa85872b745ce65L, "parameter");
-    /*package*/ static final SContainmentLink arguments$k0CZ = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x4aa85872b7431817L, "arguments");
-    /*package*/ static final SContainmentLink list$z12Q = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6b9L, 0x41c47a507380d0bcL, "list");
-    /*package*/ static final SContainmentLink parameter$qDoX = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, 0x4aa85872b7431821L, "parameter");
+    /*package*/ static final SReferenceLink parameter$3II8 = MetaAdapterFactory.getReferenceLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b745ce64L, 0x4aa85872b745ce65L, "parameter");
+    /*package*/ static final SContainmentLink arguments$xto7 = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x4aa85872b7431817L, "arguments");
+    /*package*/ static final SContainmentLink list$KtLY = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6b9L, 0x41c47a507380d0bcL, "list");
+    /*package*/ static final SContainmentLink parameter$C685 = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x4aa85872b742b6baL, 0x4aa85872b7431821L, "parameter");
   }
 }

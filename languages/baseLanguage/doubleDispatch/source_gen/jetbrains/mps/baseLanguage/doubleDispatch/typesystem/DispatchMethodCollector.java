@@ -38,7 +38,7 @@ public class DispatchMethodCollector {
       })) {
         addMethod(m);
       }
-      clas = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(clas, CONCEPTS.ClassConcept$IY), LINKS.superclass$7jGM), LINKS.classifier$xslD);
+      clas = SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(clas, CONCEPTS.ClassConcept$bK), LINKS.superclass$Mp9$), LINKS.classifier$cxMr);
     }
 
     for (DispatchGroup g : Sequence.fromIterable(MapSequence.fromMap(groups).values())) {
@@ -64,7 +64,7 @@ public class DispatchMethodCollector {
     DispatchGroupDescriptor desc = new DispatchGroupDescriptor(method);
     DispatchGroup group = MapSequence.fromMap(groups).get(desc);
     if (group == null) {
-      group = new DispatchGroup(desc, SNodeOperations.getNodeAncestor(method, CONCEPTS.ClassConcept$IY, false, false));
+      group = new DispatchGroup(desc, SNodeOperations.getNodeAncestor(method, CONCEPTS.ClassConcept$bK, false, false));
       MapSequence.fromMap(groups).put(desc, group);
     }
 
@@ -75,11 +75,11 @@ public class DispatchMethodCollector {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink superclass$Mp9$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

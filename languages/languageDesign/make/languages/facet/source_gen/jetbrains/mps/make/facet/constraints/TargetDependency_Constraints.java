@@ -27,12 +27,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class TargetDependency_Constraints extends BaseConstraintsDescriptor {
   public TargetDependency_Constraints() {
-    super(CONCEPTS.TargetDependency$Wl);
+    super(CONCEPTS.TargetDependency$_d);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.dependsOn$DYCy, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.dependsOn$2khq, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -47,10 +47,10 @@ public class TargetDependency_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            Iterable<SNode> relatedFacets = FacetDeclaration__BehaviorDescriptor.allRelated_id7fB872uckWE.invoke(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.FacetDeclaration$al, false, false));
+            Iterable<SNode> relatedFacets = FacetDeclaration__BehaviorDescriptor.allRelated_id7fB872uckWE.invoke(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.FacetDeclaration$Nd, false, false));
             return ListScope.forResolvableElements(Sequence.fromIterable(relatedFacets).translate(new ITranslator2<SNode, SNode>() {
               public Iterable<SNode> translate(SNode it) {
-                return SNodeOperations.getNodeDescendants(it, CONCEPTS.TargetDeclaration$7n, false, new SAbstractConcept[]{});
+                return SNodeOperations.getNodeDescendants(it, CONCEPTS.TargetDeclaration$Kf, false, new SAbstractConcept[]{});
               }
             }));
           }
@@ -64,12 +64,12 @@ public class TargetDependency_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_hpg3kp_a0a0a0a0a1a0a0a0c = new SNodePointer("r:6df86908-c97f-4644-97f0-5eff375e8e15(jetbrains.mps.make.facet.constraints)", "6836281137582789251");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TargetDependency$Wl = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c60L, "jetbrains.mps.make.facet.structure.TargetDependency");
-    /*package*/ static final SConcept FacetDeclaration$al = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, "jetbrains.mps.make.facet.structure.FacetDeclaration");
-    /*package*/ static final SConcept TargetDeclaration$7n = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, "jetbrains.mps.make.facet.structure.TargetDeclaration");
+    /*package*/ static final SConcept TargetDependency$_d = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c60L, "jetbrains.mps.make.facet.structure.TargetDependency");
+    /*package*/ static final SConcept FacetDeclaration$Nd = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, "jetbrains.mps.make.facet.structure.FacetDeclaration");
+    /*package*/ static final SConcept TargetDeclaration$Kf = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, "jetbrains.mps.make.facet.structure.TargetDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink dependsOn$DYCy = MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c60L, 0x5912a2ab1cd24c63L, "dependsOn");
+    /*package*/ static final SReferenceLink dependsOn$2khq = MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c60L, 0x5912a2ab1cd24c63L, "dependsOn");
   }
 }

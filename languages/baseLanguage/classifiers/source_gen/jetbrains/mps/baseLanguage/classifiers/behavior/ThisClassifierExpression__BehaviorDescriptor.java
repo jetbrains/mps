@@ -36,14 +36,14 @@ public final class ThisClassifierExpression__BehaviorDescriptor extends BaseBHDe
   }
 
   /*package*/ static SNode getClassifier_idhEwJeDN(@NotNull SNode __thisNode__) {
-    if (SLinkOperations.getTarget(__thisNode__, LINKS.classifier$Jeu5) != null) {
-      return SLinkOperations.getTarget(__thisNode__, LINKS.classifier$Jeu5);
+    if (SLinkOperations.getTarget(__thisNode__, LINKS.classifier$FItT) != null) {
+      return SLinkOperations.getTarget(__thisNode__, LINKS.classifier$FItT);
     }
-    return IClassifier__BehaviorDescriptor.getContextClassifier_idhEwJim4.invoke(SNodeOperations.asSConcept(CONCEPTS.IClassifier$Cb), __thisNode__);
+    return IClassifier__BehaviorDescriptor.getContextClassifier_idhEwJim4.invoke(SNodeOperations.asSConcept(CONCEPTS.IClassifier$BZ), __thisNode__);
   }
   /*package*/ static List<SNode> getPossibleClassifiers_idhJm8WEN(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
-    for (SNode current : ListSequence.fromList(SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.IClassifier$Cb, false))) {
+    for (SNode current : ListSequence.fromList(SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.IClassifier$BZ, false))) {
       ListSequence.fromList(result).addElement(current);
     }
     return result;
@@ -98,10 +98,10 @@ public final class ThisClassifierExpression__BehaviorDescriptor extends BaseBHDe
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$Jeu5 = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc751a81L, 0x11bc25d4bc3L, "classifier");
+    /*package*/ static final SReferenceLink classifier$FItT = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc751a81L, 0x11bc25d4bc3L, "classifier");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IClassifier$Cb = MetaAdapterFactory.getInterfaceConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc6b2af5L, "jetbrains.mps.baseLanguage.classifiers.structure.IClassifier");
+    /*package*/ static final SInterfaceConcept IClassifier$BZ = MetaAdapterFactory.getInterfaceConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc6b2af5L, "jetbrains.mps.baseLanguage.classifiers.structure.IClassifier");
   }
 }

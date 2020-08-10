@@ -26,8 +26,8 @@
       <node id="1252437031490219343" at="35,0,36,22" concept="6" />
       <node id="1252437031490220109" at="40,128,41,120" concept="6" />
       <node id="1252437031490219343" at="43,0,44,0" concept="8" trace="canBeChildBreakingPoint" />
-      <node id="1252437031490219343" at="46,0,47,0" concept="8" trace="WithStatement$8M" />
-      <node id="1252437031490219343" at="47,0,48,0" concept="8" trace="QueryExpressionScopeProvider$25" />
+      <node id="1252437031490219343" at="46,0,47,0" concept="8" trace="WithStatement$FO" />
+      <node id="1252437031490219343" at="47,0,48,0" concept="8" trace="QueryExpressionScopeProvider$_7" />
       <node id="1252437031490219343" at="21,0,24,0" concept="1" trace="WithStatement_Constraints#()V" />
       <node id="1252437031490219343" at="31,0,34,9" concept="3" />
       <node id="1252437031490219343" at="40,0,43,0" concept="9" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -61,7 +61,7 @@
   <root nodeRef="r:aef526b1-5019-472a-a761-72ac88ef58a4(jetbrains.mps.lang.smodel.query.constraints)/3470161847493603637">
     <file name="InstancesExpression_Constraints.java">
       <node id="3470161847493603637" at="10,44,11,43" concept="10" />
-      <node id="3470161847493603637" at="15,0,16,0" concept="8" trace="InstancesExpression$OR" />
+      <node id="3470161847493603637" at="15,0,16,0" concept="8" trace="InstancesExpression$nT" />
       <node id="3470161847493603637" at="10,0,13,0" concept="1" trace="InstancesExpression_Constraints#()V" />
       <scope id="3470161847493603637" at="10,44,11,43" />
       <scope id="3470161847493603637" at="10,0,13,0" />
@@ -72,7 +72,7 @@
   <root nodeRef="r:aef526b1-5019-472a-a761-72ac88ef58a4(jetbrains.mps.lang.smodel.query.constraints)/3470161847493618355">
     <file name="UsagesExpression_Constraints.java">
       <node id="3470161847493618355" at="10,41,11,40" concept="10" />
-      <node id="3470161847493618355" at="15,0,16,0" concept="8" trace="UsagesExpression$_w" />
+      <node id="3470161847493618355" at="15,0,16,0" concept="8" trace="UsagesExpression$8y" />
       <node id="3470161847493618355" at="10,0,13,0" concept="1" trace="UsagesExpression_Constraints#()V" />
       <scope id="3470161847493618355" at="10,41,11,40" />
       <scope id="3470161847493618355" at="10,0,13,0" />
@@ -91,9 +91,9 @@
       <node id="1227128029536564514" at="41,114,42,122" concept="6" />
       <node id="1227128029536564536" at="43,12,44,18" concept="6" />
       <node id="505947336487667902" at="47,0,48,0" concept="8" trace="canBeChildBreakingPoint" />
-      <node id="505947336487667902" at="50,0,51,0" concept="8" trace="QueryExpression$ML" />
-      <node id="505947336487667902" at="51,0,52,0" concept="8" trace="IStatementListContainer$4L" />
-      <node id="505947336487667902" at="52,0,53,0" concept="8" trace="QueryExpressionScopeProvider$25" />
+      <node id="505947336487667902" at="50,0,51,0" concept="8" trace="QueryExpression$lN" />
+      <node id="505947336487667902" at="51,0,52,0" concept="8" trace="IStatementListContainer$xz" />
+      <node id="505947336487667902" at="52,0,53,0" concept="8" trace="QueryExpressionScopeProvider$_7" />
       <node id="1227128029536564534" at="43,10,45,5" concept="0" />
       <node id="505947336487667902" at="21,0,24,0" concept="1" trace="QueryExpression_Constraints#()V" />
       <node id="505947336487667902" at="31,0,34,9" concept="3" />
@@ -139,9 +139,9 @@
       <node id="1227128029536563390" at="43,97,44,19" concept="6" />
       <node id="1227128029536563397" at="45,5,46,340" concept="6" />
       <node id="6891027939993473117" at="48,0,49,0" concept="8" trace="canBeChildBreakingPoint" />
-      <node id="6891027939993473117" at="51,0,52,0" concept="8" trace="QueryParameter$vQ" />
-      <node id="6891027939993473117" at="52,0,53,0" concept="8" trace="QueryExpression$ML" />
-      <node id="6891027939993473117" at="56,0,57,0" concept="8" trace="parameter$1xt0" />
+      <node id="6891027939993473117" at="51,0,52,0" concept="8" trace="QueryParameter$2S" />
+      <node id="6891027939993473117" at="52,0,53,0" concept="8" trace="QueryExpression$lN" />
+      <node id="6891027939993473117" at="56,0,57,0" concept="8" trace="parameter$jM02" />
       <node id="6891027939993473117" at="23,0,26,0" concept="1" trace="QueryParameter_Constraints#()V" />
       <node id="6891027939993473117" at="33,0,36,9" concept="3" />
       <node id="1227128029536563388" at="42,128,45,5" concept="3" />

@@ -11,13 +11,13 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BaseExecuteCommandStatementSync_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.repo$EFuy));
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.commandClosureLiteral$gXbw), LINKS.body$e5Do));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.repo$aWtf));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.commandClosureLiteral$Lead), LINKS.body$Ujx2));
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink repo$EFuy = MetaAdapterFactory.getContainmentLink(0x63650c5916c8498aL, 0x99c8005c7ee9515dL, 0x7c8b08a50a3ea20aL, 0x13bfe1ec0ded851eL, "repo");
-    /*package*/ static final SContainmentLink commandClosureLiteral$gXbw = MetaAdapterFactory.getContainmentLink(0x63650c5916c8498aL, 0x99c8005c7ee9515dL, 0x7c8b08a50a3ea20aL, 0x7c8b08a50a3ea20bL, "commandClosureLiteral");
-    /*package*/ static final SContainmentLink body$e5Do = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
+    /*package*/ static final SContainmentLink repo$aWtf = MetaAdapterFactory.getContainmentLink(0x63650c5916c8498aL, 0x99c8005c7ee9515dL, 0x7c8b08a50a3ea20aL, 0x13bfe1ec0ded851eL, "repo");
+    /*package*/ static final SContainmentLink commandClosureLiteral$Lead = MetaAdapterFactory.getContainmentLink(0x63650c5916c8498aL, 0x99c8005c7ee9515dL, 0x7c8b08a50a3ea20aL, 0x7c8b08a50a3ea20bL, "commandClosureLiteral");
+    /*package*/ static final SContainmentLink body$Ujx2 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
   }
 }

@@ -59,7 +59,7 @@ public class SConceptOperation_SubstituteMenu extends SubstituteMenuBase {
       super.initialize(_context);
       isParentDot = new Computable<Boolean>() {
         public Boolean compute() {
-          return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.DotExpression$6a);
+          return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.DotExpression$yW);
         }
       }.compute();
     }
@@ -103,7 +103,7 @@ public class SConceptOperation_SubstituteMenu extends SubstituteMenuBase {
       public class SMP_Group_gutaar_a0a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
         @Override
         protected boolean isApplicable(SubstituteMenuContext _context) {
-          SNode leftExpression = SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5);
+          SNode leftExpression = SLinkOperations.getTarget(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR);
           SNode leftType = TypecheckingFacade.getFromContext().getTypeOf(leftExpression);
           return TypecheckingFacade.getFromContext().isStrongSubtype(leftType, _quotation_createNode_gutaar_b0a2a0a0a());
         }
@@ -125,7 +125,7 @@ public class SConceptOperation_SubstituteMenu extends SubstituteMenuBase {
         }
         public class SMP_Subconcepts_gutaar_a0a0 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
           protected Collection getConcepts(final SubstituteMenuContext _context) {
-            return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.SConceptOperation$9b);
+            return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.SConceptOperation$aF);
           }
           @NotNull
           @Override
@@ -169,7 +169,7 @@ public class SConceptOperation_SubstituteMenu extends SubstituteMenuBase {
       }
       public class SMP_Subconcepts_gutaar_a1a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
         protected Collection getConcepts(final SubstituteMenuContext _context) {
-          return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.SConceptOperation$9b);
+          return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.SConceptOperation$aF);
         }
         @NotNull
         @Override
@@ -198,11 +198,11 @@ public class SConceptOperation_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
-    /*package*/ static final SConcept SConceptOperation$9b = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5f5952af8843faf9L, "jetbrains.mps.lang.smodel.structure.SConceptOperation");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept SConceptOperation$aF = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5f5952af8843faf9L, "jetbrains.mps.lang.smodel.structure.SConceptOperation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
   }
 }

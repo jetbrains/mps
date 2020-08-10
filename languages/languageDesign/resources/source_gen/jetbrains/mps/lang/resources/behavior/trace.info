@@ -45,8 +45,8 @@
       <node id="137002124239736680" at="86,14,87,58" concept="14" />
       <node id="137002124239736680" at="93,48,94,22" concept="7" />
       <node id="137002124239736680" at="99,40,100,19" concept="7" />
-      <node id="137002124239736680" at="104,0,105,0" concept="10" trace="color$Zicg" />
-      <node id="137002124239736680" at="108,0,109,0" concept="10" trace="text$t_Dp" />
+      <node id="137002124239736680" at="104,0,105,0" concept="10" trace="color$VAO2" />
+      <node id="137002124239736680" at="108,0,109,0" concept="10" trace="text$pUhb" />
       <node id="137002124239736680" at="38,0,40,0" concept="11" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="137002124239736680" at="57,0,59,0" concept="1" trace="Text__BehaviorDescriptor#()V" />
       <node id="137002124239736680" at="67,49,70,5" concept="4" />
@@ -199,7 +199,7 @@
       <node id="1860120738943681655" at="77,14,78,58" concept="14" />
       <node id="1860120738943681655" at="84,48,85,22" concept="7" />
       <node id="1860120738943681655" at="90,40,91,19" concept="7" />
-      <node id="1860120738943681655" at="95,0,96,0" concept="10" trace="val$CEyS" />
+      <node id="1860120738943681655" at="95,0,96,0" concept="10" trace="val$$ZaE" />
       <node id="1860120738943681655" at="34,0,36,0" concept="11" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1860120738943681655" at="48,0,50,0" concept="1" trace="ColorLiteral__BehaviorDescriptor#()V" />
       <node id="3818729150937318891" at="40,39,43,7" concept="4" />
@@ -359,8 +359,8 @@
       <node id="2756621024541679278" at="105,14,106,58" concept="14" />
       <node id="2756621024541679278" at="112,48,113,22" concept="7" />
       <node id="2756621024541679278" at="118,40,119,19" concept="7" />
-      <node id="2756621024541679278" at="123,0,124,0" concept="10" trace="iconId$WEru" />
-      <node id="2756621024541679278" at="127,0,128,0" concept="10" trace="layers$t67R" />
+      <node id="2756621024541679278" at="123,0,124,0" concept="10" trace="iconId$SZ3g" />
+      <node id="2756621024541679278" at="127,0,128,0" concept="10" trace="layers$pqJD" />
       <node id="2756621024541679278" at="43,0,45,0" concept="11" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="2756621024541679278" at="74,0,76,0" concept="1" trace="TextIcon__BehaviorDescriptor#()V" />
       <node id="2756621024541679278" at="46,0,49,0" concept="11" trace="getResourceId_id2p1v3tOadt0#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
@@ -541,9 +541,9 @@
       <node id="2756621024541681938" at="93,14,94,58" concept="14" />
       <node id="2756621024541681938" at="100,48,101,22" concept="7" />
       <node id="2756621024541681938" at="106,40,107,19" concept="7" />
-      <node id="2756621024541681938" at="111,0,112,0" concept="10" trace="r$XEN9" />
-      <node id="2756621024541681938" at="115,0,116,0" concept="10" trace="fillColor$Zc1Y" />
-      <node id="2756621024541681938" at="116,0,117,0" concept="10" trace="borderColor$Zhrl" />
+      <node id="2756621024541681938" at="111,0,112,0" concept="10" trace="r$TZqV" />
+      <node id="2756621024541681938" at="115,0,116,0" concept="10" trace="fillColor$VwDK" />
+      <node id="2756621024541681938" at="116,0,117,0" concept="10" trace="borderColor$VA37" />
       <node id="2756621024541681938" at="36,0,38,0" concept="11" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="2756621024541681938" at="64,0,66,0" concept="1" trace="Circle__BehaviorDescriptor#()V" />
       <node id="2756621024541681938" at="74,49,77,5" concept="4" />
@@ -649,9 +649,9 @@
       <node id="2756621024541800367" at="92,14,93,58" concept="14" />
       <node id="2756621024541800367" at="99,48,100,22" concept="7" />
       <node id="2756621024541800367" at="105,40,106,19" concept="7" />
-      <node id="2756621024541800367" at="110,0,111,0" concept="10" trace="fillColor$Zc1Y" />
-      <node id="2756621024541800367" at="111,0,112,0" concept="10" trace="borderColor$Zhrl" />
-      <node id="2756621024541800367" at="115,0,116,0" concept="10" trace="r$vIo0" />
+      <node id="2756621024541800367" at="110,0,111,0" concept="10" trace="fillColor$VwDK" />
+      <node id="2756621024541800367" at="111,0,112,0" concept="10" trace="borderColor$VA37" />
+      <node id="2756621024541800367" at="115,0,116,0" concept="10" trace="r$s2ZM" />
       <node id="2756621024541800367" at="36,0,38,0" concept="11" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="2756621024541800367" at="63,0,65,0" concept="1" trace="Rect__BehaviorDescriptor#()V" />
       <node id="2756621024541800367" at="73,49,76,5" concept="4" />
@@ -743,7 +743,7 @@
       <node id="4726480899536897270" at="66,14,67,58" concept="14" />
       <node id="4726480899536897270" at="73,48,74,22" concept="7" />
       <node id="4726480899536897270" at="79,40,80,19" concept="7" />
-      <node id="4726480899536897270" at="84,0,85,0" concept="10" trace="name$lA7v" />
+      <node id="4726480899536897270" at="84,0,85,0" concept="10" trace="name$MnvL" />
       <node id="4726480899536897270" at="30,0,32,0" concept="11" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4726480899536897270" at="37,0,39,0" concept="1" trace="BaseURLFunction__BehaviorDescriptor#()V" />
       <node id="4726480899536897270" at="33,0,36,0" concept="11" trace="getGeneratedClassName_id46nPloe$m0J#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
@@ -817,7 +817,7 @@
       <node id="4726480899536904314" at="66,14,67,58" concept="14" />
       <node id="4726480899536904314" at="73,48,74,22" concept="7" />
       <node id="4726480899536904314" at="79,40,80,19" concept="7" />
-      <node id="4726480899536904314" at="84,0,85,0" concept="10" trace="name$lA7v" />
+      <node id="4726480899536904314" at="84,0,85,0" concept="10" trace="name$MnvL" />
       <node id="4726480899536904314" at="30,0,32,0" concept="11" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4726480899536904314" at="37,0,39,0" concept="1" trace="BaseURLLiteral__BehaviorDescriptor#()V" />
       <node id="4726480899536904314" at="33,0,36,0" concept="11" trace="getGeneratedClassName_id46nPloe$m0J#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
@@ -986,7 +986,7 @@
       <node id="831924260440079402" at="106,14,107,58" concept="14" />
       <node id="831924260440079402" at="113,48,114,22" concept="7" />
       <node id="831924260440079402" at="119,40,120,19" concept="7" />
-      <node id="831924260440079402" at="124,0,125,0" concept="10" trace="file$KTuA" />
+      <node id="831924260440079402" at="124,0,125,0" concept="10" trace="file$He6o" />
       <node id="831924260440079402" at="40,0,42,0" concept="11" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="831924260440079402" at="75,0,77,0" concept="1" trace="Image__BehaviorDescriptor#()V" />
       <node id="831924260440079426" at="44,72,47,5" concept="4" />
@@ -1148,7 +1148,7 @@
       <node id="8974276187400029987" at="190,48,191,22" concept="7" />
       <node id="8974276187400029987" at="196,40,197,19" concept="7" />
       <node id="831924260442205159" at="199,52,200,40" concept="7" />
-      <node id="8974276187400029987" at="204,0,205,0" concept="10" trace="file$9NuV" />
+      <node id="8974276187400029987" at="204,0,205,0" concept="10" trace="file$686H" />
       <node id="8974276187400029987" at="52,0,54,0" concept="11" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="8974276187400029987" at="146,0,148,0" concept="1" trace="FileIcon__BehaviorDescriptor#()V" />
       <node id="201922306410710813" at="80,56,83,7" concept="4" />
@@ -1379,7 +1379,7 @@
       <node id="8974276187400030158" at="67,14,68,58" concept="14" />
       <node id="8974276187400030158" at="74,48,75,22" concept="7" />
       <node id="8974276187400030158" at="80,40,81,19" concept="7" />
-      <node id="8974276187400030158" at="85,0,86,0" concept="10" trace="name$lA7v" />
+      <node id="8974276187400030158" at="85,0,86,0" concept="10" trace="name$MnvL" />
       <node id="8974276187400030158" at="31,0,33,0" concept="11" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="8974276187400030158" at="38,0,40,0" concept="1" trace="OldIconBundle__BehaviorDescriptor#()V" />
       <node id="8974276187400030158" at="34,0,37,0" concept="11" trace="getJavaName_id7Mb2akaesvf#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
@@ -1453,8 +1453,8 @@
       <node id="8974276187400030172" at="70,14,71,58" concept="14" />
       <node id="8974276187400030172" at="77,48,78,22" concept="7" />
       <node id="8974276187400030172" at="83,40,84,19" concept="7" />
-      <node id="8974276187400030172" at="88,0,89,0" concept="10" trace="declaration$SjAw" />
-      <node id="8974276187400030172" at="92,0,93,0" concept="10" trace="name$lA7v" />
+      <node id="8974276187400030172" at="88,0,89,0" concept="10" trace="declaration$OCei" />
+      <node id="8974276187400030172" at="92,0,93,0" concept="10" trace="name$MnvL" />
       <node id="8974276187400030172" at="34,0,36,0" concept="11" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="8974276187400030172" at="41,0,43,0" concept="1" trace="OldIconReference__BehaviorDescriptor#()V" />
       <node id="8974276187400030172" at="37,0,40,0" concept="11" trace="getPresentation_idhEwIMiw#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />

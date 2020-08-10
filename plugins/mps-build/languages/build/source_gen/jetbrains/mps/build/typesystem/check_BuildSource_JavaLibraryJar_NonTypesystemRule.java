@@ -21,7 +21,7 @@ public class check_BuildSource_JavaLibraryJar_NonTypesystemRule extends Abstract
   public check_BuildSource_JavaLibraryJar_NonTypesystemRule() {
   }
   public void applyRule(final SNode jarEntry, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    String relativePath = BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(jarEntry, LINKS.path$AsTJ));
+    String relativePath = BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(jarEntry, LINKS.path$M9si));
     if (!(relativePath.endsWith("}")) && !(relativePath.endsWith(".jar"))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
@@ -30,7 +30,7 @@ public class check_BuildSource_JavaLibraryJar_NonTypesystemRule extends Abstract
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BuildSource_JavaJar$OF;
+    return CONCEPTS.BuildSource_JavaJar$ne;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -40,10 +40,10 @@ public class check_BuildSource_JavaLibraryJar_NonTypesystemRule extends Abstract
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink path$AsTJ = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x11779a1dbcff551aL, 0x3395e884b61c23e2L, "path");
+    /*package*/ static final SContainmentLink path$M9si = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x11779a1dbcff551aL, 0x3395e884b61c23e2L, "path");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildSource_JavaJar$OF = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x11779a1dbcff551aL, "jetbrains.mps.build.structure.BuildSource_JavaJar");
+    /*package*/ static final SConcept BuildSource_JavaJar$ne = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x11779a1dbcff551aL, "jetbrains.mps.build.structure.BuildSource_JavaJar");
   }
 }

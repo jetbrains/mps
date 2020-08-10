@@ -40,11 +40,11 @@ public final class XMLSAXNodeRule__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getType_id1XGsQcRHufH(@NotNull SNode __thisNode__) {
-    return ((SLinkOperations.getTarget(__thisNode__, LINKS.type$kjtw) != null) ? SLinkOperations.getTarget(__thisNode__, LINKS.type$kjtw) : _quotation_createNode_odhxgg_a0a0a());
+    return ((SLinkOperations.getTarget(__thisNode__, LINKS.type$AvMt) != null) ? SLinkOperations.getTarget(__thisNode__, LINKS.type$AvMt) : _quotation_createNode_odhxgg_a0a0a());
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.XMLSAXNodeRuleParam$Ww)) {
-      return SimpleRoleScope.forNamedElements(__thisNode__, LINKS.params$DDMR);
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.XMLSAXNodeRuleParam$ht)) {
+      return SimpleRoleScope.forNamedElements(__thisNode__, LINKS.params$VQ7O);
     }
     return null;
   }
@@ -105,11 +105,11 @@ public final class XMLSAXNodeRule__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$kjtw = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2f2L, 0x1f6c736337b5e2f3L, "type");
-    /*package*/ static final SContainmentLink params$DDMR = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2f2L, 0xd9be961730be2e2L, "params");
+    /*package*/ static final SContainmentLink type$AvMt = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2f2L, 0x1f6c736337b5e2f3L, "type");
+    /*package*/ static final SContainmentLink params$VQ7O = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2f2L, 0xd9be961730be2e2L, "params");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XMLSAXNodeRuleParam$Ww = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0xd9be961730be3edL, "jetbrains.mps.core.xml.sax.structure.XMLSAXNodeRuleParam");
+    /*package*/ static final SConcept XMLSAXNodeRuleParam$ht = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0xd9be961730be3edL, "jetbrains.mps.core.xml.sax.structure.XMLSAXNodeRuleParam");
   }
 }

@@ -28,7 +28,7 @@ public class CheckingRuleReference_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_4hu1dd_a(), CONCEPTS.CheckingRuleReference$lK));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_4hu1dd_a(), CONCEPTS.CheckingRuleReference$BA));
     result.add(new SMP_Subconcepts_4hu1dd_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class CheckingRuleReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_4hu1dd_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.CheckingRuleReference$lK, LINKS.declaration$paS0);
+      super((SAbstractConcept) CONCEPTS.CheckingRuleReference$BA, LINKS.declaration$M19Q);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class CheckingRuleReference_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_4hu1dd_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.CheckingRuleReference$lK);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.CheckingRuleReference$BA);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class CheckingRuleReference_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CheckingRuleReference$lK = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x2054bec22d01782eL, "jetbrains.mps.lang.typesystem.structure.CheckingRuleReference");
+    /*package*/ static final SConcept CheckingRuleReference$BA = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x2054bec22d01782eL, "jetbrains.mps.lang.typesystem.structure.CheckingRuleReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$paS0 = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x2054bec22d01782eL, 0x2054bec22d01782fL, "declaration");
+    /*package*/ static final SReferenceLink declaration$M19Q = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x2054bec22d01782eL, 0x2054bec22d01782fL, "declaration");
   }
 }

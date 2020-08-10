@@ -32,7 +32,7 @@ public class CellModel_RefNode_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_bihiq5_a(), CONCEPTS.CellModel_RefNode$Ox));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_bihiq5_a(), CONCEPTS.CellModel_RefNode$8));
     result.add(new SMP_Subconcepts_bihiq5_b());
     return result;
   }
@@ -54,7 +54,7 @@ public class CellModel_RefNode_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_bihiq5_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.CellModel_RefNode$Ox, LINKS.relationDeclaration$_K5_);
+      super((SAbstractConcept) CONCEPTS.CellModel_RefNode$8, LINKS.relationDeclaration$E2hc);
     }
     @NotNull
     @Override
@@ -101,7 +101,7 @@ public class CellModel_RefNode_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_bihiq5_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.CellModel_RefNode$Ox);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.CellModel_RefNode$8);
     }
     @NotNull
     @Override
@@ -122,10 +122,10 @@ public class CellModel_RefNode_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellModel_RefNode$Ox = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb05cdc7L, "jetbrains.mps.lang.editor.structure.CellModel_RefNode");
+    /*package*/ static final SConcept CellModel_RefNode$8 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb05cdc7L, "jetbrains.mps.lang.editor.structure.CellModel_RefNode");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink relationDeclaration$_K5_ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
+    /*package*/ static final SReferenceLink relationDeclaration$E2hc = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
   }
 }

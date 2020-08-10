@@ -42,11 +42,11 @@ public final class ModuleReference__BehaviorDescriptor extends BaseBHDescriptor 
     //  FIXME consider deprecating ModuleReference in favor of lang.smodel.ModuleIdentity/ModulePointer. 
     // Why does not lang.project use lang.smodel is unclear to me 
     PersistenceFacade pf = PersistenceFacade.getInstance();
-    return pf.createModuleReference(pf.createModuleId(SPropertyOperations.getString(__thisNode__, PROPS.uuid$1gS0)), SPropertyOperations.getString(__thisNode__, PROPS.qualifiedName$1m2m));
+    return pf.createModuleReference(pf.createModuleId(SPropertyOperations.getString(__thisNode__, PROPS.uuid$YZ7o)), SPropertyOperations.getString(__thisNode__, PROPS.qualifiedName$Z4hI));
   }
   /*package*/ static void populateFrom_id2BHFktfnlSL(@NotNull SNode __thisNode__, SModuleReference moduleRef) {
-    SPropertyOperations.assign(__thisNode__, PROPS.uuid$1gS0, PersistenceFacade.getInstance().asString(moduleRef.getModuleId()));
-    SPropertyOperations.assign(__thisNode__, PROPS.qualifiedName$1m2m, moduleRef.getModuleName());
+    SPropertyOperations.assign(__thisNode__, PROPS.uuid$YZ7o, PersistenceFacade.getInstance().asString(moduleRef.getModuleId()));
+    SPropertyOperations.assign(__thisNode__, PROPS.qualifiedName$Z4hI, moduleRef.getModuleName());
   }
 
   /*package*/ ModuleReference__BehaviorDescriptor() {
@@ -101,7 +101,7 @@ public final class ModuleReference__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty uuid$1gS0 = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb5210cL, 0x19bfb4173fb5210dL, "uuid");
-    /*package*/ static final SProperty qualifiedName$1m2m = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb5210cL, 0x19bfb4173fb5210eL, "qualifiedName");
+    /*package*/ static final SProperty uuid$YZ7o = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb5210cL, 0x19bfb4173fb5210dL, "uuid");
+    /*package*/ static final SProperty qualifiedName$Z4hI = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb5210cL, 0x19bfb4173fb5210eL, "qualifiedName");
   }
 }

@@ -20,7 +20,7 @@ public class supertypesOf_CollectionType_CollectionType_withWildcard_SubtypingRu
     return _quotation_createNode_uxm5sv_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.CollectionType$jq;
+    return CONCEPTS.CollectionType$xH;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -42,6 +42,6 @@ public class supertypesOf_CollectionType_CollectionType_withWildcard_SubtypingRu
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CollectionType$jq = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x62e1df06bd2172b2L, "jetbrains.mps.baseLanguage.collections.structure.CollectionType");
+    /*package*/ static final SConcept CollectionType$xH = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x62e1df06bd2172b2L, "jetbrains.mps.baseLanguage.collections.structure.CollectionType");
   }
 }

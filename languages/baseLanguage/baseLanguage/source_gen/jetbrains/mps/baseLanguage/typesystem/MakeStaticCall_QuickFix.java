@@ -19,19 +19,19 @@ public class MakeStaticCall_QuickFix extends QuickFix_Runtime {
   }
   public void execute(SNode node) {
     SNode smc = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, "jetbrains.mps.baseLanguage.structure.StaticMethodCall"));
-    SLinkOperations.setTarget(smc, LINKS.classConcept$70aQ, SNodeOperations.getNodeAncestor(((SNode) MakeStaticCall_QuickFix.this.getField("staticMethod")[0]), CONCEPTS.ClassConcept$IY, false, false));
-    SLinkOperations.setTarget(smc, LINKS.baseMethodDeclaration$ItxI, ((SNode) MakeStaticCall_QuickFix.this.getField("staticMethod")[0]));
+    SLinkOperations.setTarget(smc, LINKS.classConcept$M5BC, SNodeOperations.getNodeAncestor(((SNode) MakeStaticCall_QuickFix.this.getField("staticMethod")[0]), CONCEPTS.ClassConcept$bK, false, false));
+    SLinkOperations.setTarget(smc, LINKS.baseMethodDeclaration$pyYw, ((SNode) MakeStaticCall_QuickFix.this.getField("staticMethod")[0]));
     ResolveUnknownUtil.reattachMethodArguments(((SNode) MakeStaticCall_QuickFix.this.getField("replacee")[0]), smc);
     ResolveUnknownUtil.reattachTypeArguments(((SNode) MakeStaticCall_QuickFix.this.getField("replacee")[0]), smc);
     SNodeOperations.replaceWithAnother(((SNode) MakeStaticCall_QuickFix.this.getField("replacee")[0]), smc);
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classConcept$70aQ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink classConcept$M5BC = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 }

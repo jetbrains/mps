@@ -39,10 +39,10 @@
       <node id="5565015566574589485" at="98,81,99,71" concept="1" />
       <node id="5565015566574595172" at="101,89,102,18" concept="7" />
       <node id="5565015566574471979" at="104,5,105,16" concept="7" />
-      <node id="7813081600365639852" at="109,0,110,0" concept="10" trace="AbstractConceptDeclaration$UN" />
-      <node id="7813081600365639852" at="113,0,114,0" concept="10" trace="specializedLink$FRN0" />
-      <node id="7813081600365639852" at="114,0,115,0" concept="10" trace="target$TWaS" />
-      <node id="7813081600365639852" at="118,0,119,0" concept="10" trace="name$lA7v" />
+      <node id="7813081600365639852" at="109,0,110,0" concept="10" trace="AbstractConceptDeclaration$KA" />
+      <node id="7813081600365639852" at="113,0,114,0" concept="10" trace="specializedLink$7ZCN" />
+      <node id="7813081600365639852" at="114,0,115,0" concept="10" trace="target$m40F" />
+      <node id="7813081600365639852" at="118,0,119,0" concept="10" trace="name$MnvL" />
       <node id="7813081600365639947" at="33,0,36,0" concept="0" trace="LinkDeclarationLookup#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="5565015566574519807" at="47,40,50,5" concept="4" />
       <node id="7813081600365828138" at="54,0,57,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -128,7 +128,7 @@
       <node id="5565015566576078106" at="68,133,69,121" concept="8" />
       <node id="8484262519286281373" at="70,71,71,22" concept="1" />
       <node id="8484262519286281378" at="73,5,74,18" concept="7" />
-      <node id="8484262519286281120" at="78,0,79,0" concept="10" trace="AbstractConceptDeclaration$UN" />
+      <node id="8484262519286281120" at="78,0,79,0" concept="10" trace="AbstractConceptDeclaration$KA" />
       <node id="8484262519286281126" at="25,0,28,0" concept="0" trace="ConceptAndSuperConceptsScope#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1229172087075946408" at="36,78,39,5" concept="4" />
       <node id="1229172087075946432" at="42,36,45,9" concept="4" />

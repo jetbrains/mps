@@ -76,11 +76,11 @@ public class NamedTransformationMenu extends TransformationMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.editor.NamedSubstituteMenu");
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return CONCEPTS.TestSubstituteChild$sN;
+      return CONCEPTS.TestSubstituteChild$Hk;
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestSubstituteChild$sN = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6fb0beL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChild");
+    /*package*/ static final SConcept TestSubstituteChild$Hk = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x7ce1116e3a6fb0beL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstituteChild");
   }
 }

@@ -73,7 +73,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     public ReplaceWith_SolutionRef_cellMenu_ns5ajd_a0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return CONCEPTS.SolutionRef$S_;
+      return CONCEPTS.SolutionRef$_R;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -99,7 +99,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     public ReplaceWith_SolutionRef_cellMenu_ns5ajd_a0b0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return CONCEPTS.SolutionRef$S_;
+      return CONCEPTS.SolutionRef$_R;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -108,6 +108,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SolutionRef$S_ = MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x11c3fc56a6d1cbdcL, "jetbrains.mps.testbench.suite.structure.SolutionRef");
+    /*package*/ static final SConcept SolutionRef$_R = MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x11c3fc56a6d1cbdcL, "jetbrains.mps.testbench.suite.structure.SolutionRef");
   }
 }

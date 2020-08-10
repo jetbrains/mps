@@ -72,7 +72,7 @@ public class PlaceholderMember_TransformationMenu extends TransformationMenuBase
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.PlaceholderMember$Zm)) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.PlaceholderMember$s8)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -97,10 +97,10 @@ public class PlaceholderMember_TransformationMenu extends TransformationMenuBase
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       SNode nextSibling = SNodeOperations.getNextSibling(_context.getNode());
-      while (nextSibling != null && SNodeOperations.isInstanceOf(nextSibling, CONCEPTS.PlaceholderMember$Zm)) {
+      while (nextSibling != null && SNodeOperations.isInstanceOf(nextSibling, CONCEPTS.PlaceholderMember$s8)) {
         nextSibling = SNodeOperations.getNextSibling(nextSibling);
       }
-      return nextSibling != null && ((SNodeOperations.isInstanceOf(nextSibling, CONCEPTS.FieldDeclaration$Ps) && (AttributeOperations.getAttribute(SNodeOperations.cast(nextSibling, CONCEPTS.FieldDeclaration$Ps), new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$I8)) == null)) || (SNodeOperations.isInstanceOf(nextSibling, CONCEPTS.StaticFieldDeclaration$R5) && (AttributeOperations.getAttribute(SNodeOperations.cast(nextSibling, CONCEPTS.StaticFieldDeclaration$R5), new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$I8)) == null)) || (SNodeOperations.isInstanceOf(nextSibling, CONCEPTS.BaseMethodDeclaration$RR) && (AttributeOperations.getAttribute(SNodeOperations.cast(nextSibling, CONCEPTS.BaseMethodDeclaration$RR), new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$Vx)) == null)));
+      return nextSibling != null && ((SNodeOperations.isInstanceOf(nextSibling, CONCEPTS.FieldDeclaration$ie) && (AttributeOperations.getAttribute(SNodeOperations.cast(nextSibling, CONCEPTS.FieldDeclaration$ie), new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl)) == null)) || (SNodeOperations.isInstanceOf(nextSibling, CONCEPTS.StaticFieldDeclaration$jR) && (AttributeOperations.getAttribute(SNodeOperations.cast(nextSibling, CONCEPTS.StaticFieldDeclaration$jR), new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl)) == null)) || (SNodeOperations.isInstanceOf(nextSibling, CONCEPTS.BaseMethodDeclaration$kD) && (AttributeOperations.getAttribute(SNodeOperations.cast(nextSibling, CONCEPTS.BaseMethodDeclaration$kD), new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)) == null)));
     }
 
     @NotNull
@@ -116,7 +116,7 @@ public class PlaceholderMember_TransformationMenu extends TransformationMenuBase
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_29uwod_a0b(), CONCEPTS.BaseDocComment$pH));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_29uwod_a0b(), CONCEPTS.BaseDocComment$bU));
     }
     private class TMP_Action_29uwod_a0b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -159,32 +159,32 @@ public class PlaceholderMember_TransformationMenu extends TransformationMenuBase
           ModuleDependencyUtils.addDependencyOnJavaDocIfMissing(SNodeOperations.getModel(_context.getNode()));
 
           SNode nextSibling = SNodeOperations.getNextSibling(_context.getNode());
-          while (nextSibling != null && SNodeOperations.isInstanceOf(nextSibling, CONCEPTS.PlaceholderMember$Zm)) {
+          while (nextSibling != null && SNodeOperations.isInstanceOf(nextSibling, CONCEPTS.PlaceholderMember$s8)) {
             SNode toBeRemoved = nextSibling;
             nextSibling = SNodeOperations.getNextSibling(nextSibling);
             SNodeOperations.deleteNode(toBeRemoved);
           }
 
-          if (SNodeOperations.isInstanceOf(nextSibling, CONCEPTS.StaticFieldDeclaration$R5)) {
-            SNode fieldDeclaration = SNodeOperations.cast(nextSibling, CONCEPTS.StaticFieldDeclaration$R5);
-            SNodeFactoryOperations.setNewAttribute(fieldDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$I8), CONCEPTS.FieldDocComment$I8);
-            SNode line = SNodeFactoryOperations.addNewChild(AttributeOperations.getAttribute(fieldDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$I8)), LINKS.body$udUc, CONCEPTS.CommentLine$vy);
-            SNodeFactoryOperations.addNewChild(line, LINKS.part$w5LD, CONCEPTS.TextCommentLinePart$RY);
-            SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), AttributeOperations.getAttribute(fieldDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$I8)), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          if (SNodeOperations.isInstanceOf(nextSibling, CONCEPTS.StaticFieldDeclaration$jR)) {
+            SNode fieldDeclaration = SNodeOperations.cast(nextSibling, CONCEPTS.StaticFieldDeclaration$jR);
+            SNodeFactoryOperations.setNewAttribute(fieldDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl), CONCEPTS.FieldDocComment$wl);
+            SNode line = SNodeFactoryOperations.addNewChild(AttributeOperations.getAttribute(fieldDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl)), LINKS.body$OAGp, CONCEPTS.CommentLine$hJ);
+            SNodeFactoryOperations.addNewChild(line, LINKS.part$QuzQ, CONCEPTS.TextCommentLinePart$Eb);
+            SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), AttributeOperations.getAttribute(fieldDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl)), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
             return;
-          } else if (SNodeOperations.isInstanceOf(nextSibling, CONCEPTS.FieldDeclaration$Ps)) {
-            SNode fieldDeclaration = SNodeOperations.cast(nextSibling, CONCEPTS.FieldDeclaration$Ps);
-            SNodeFactoryOperations.setNewAttribute(fieldDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$I8), CONCEPTS.FieldDocComment$I8);
-            SNode line = SNodeFactoryOperations.addNewChild(AttributeOperations.getAttribute(fieldDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$I8)), LINKS.body$udUc, CONCEPTS.CommentLine$vy);
-            SNodeFactoryOperations.addNewChild(line, LINKS.part$w5LD, CONCEPTS.TextCommentLinePart$RY);
-            SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), AttributeOperations.getAttribute(fieldDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$I8)), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          } else if (SNodeOperations.isInstanceOf(nextSibling, CONCEPTS.FieldDeclaration$ie)) {
+            SNode fieldDeclaration = SNodeOperations.cast(nextSibling, CONCEPTS.FieldDeclaration$ie);
+            SNodeFactoryOperations.setNewAttribute(fieldDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl), CONCEPTS.FieldDocComment$wl);
+            SNode line = SNodeFactoryOperations.addNewChild(AttributeOperations.getAttribute(fieldDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl)), LINKS.body$OAGp, CONCEPTS.CommentLine$hJ);
+            SNodeFactoryOperations.addNewChild(line, LINKS.part$QuzQ, CONCEPTS.TextCommentLinePart$Eb);
+            SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), AttributeOperations.getAttribute(fieldDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl)), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
             return;
           } else {
-            SNode methodDeclaration = SNodeOperations.cast(nextSibling, CONCEPTS.BaseMethodDeclaration$RR);
-            SNodeFactoryOperations.setNewAttribute(methodDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$Vx), CONCEPTS.MethodDocComment$Vx);
-            SNode line = SNodeFactoryOperations.addNewChild(AttributeOperations.getAttribute(methodDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$Vx)), LINKS.body$udUc, CONCEPTS.CommentLine$vy);
-            SNodeFactoryOperations.addNewChild(line, LINKS.part$w5LD, CONCEPTS.TextCommentLinePart$RY);
-            SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), AttributeOperations.getAttribute(methodDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$Vx)), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+            SNode methodDeclaration = SNodeOperations.cast(nextSibling, CONCEPTS.BaseMethodDeclaration$kD);
+            SNodeFactoryOperations.setNewAttribute(methodDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI), CONCEPTS.MethodDocComment$HI);
+            SNode line = SNodeFactoryOperations.addNewChild(AttributeOperations.getAttribute(methodDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)), LINKS.body$OAGp, CONCEPTS.CommentLine$hJ);
+            SNodeFactoryOperations.addNewChild(line, LINKS.part$QuzQ, CONCEPTS.TextCommentLinePart$Eb);
+            SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), AttributeOperations.getAttribute(methodDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
             return;
           }
         }
@@ -193,7 +193,7 @@ public class PlaceholderMember_TransformationMenu extends TransformationMenuBase
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.BaseDocComment$pH;
+          return CONCEPTS.BaseDocComment$bU;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
@@ -208,7 +208,7 @@ public class PlaceholderMember_TransformationMenu extends TransformationMenuBase
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.BaseDocComment$pH;
+          SAbstractConcept outputConcept = CONCEPTS.BaseDocComment$bU;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -220,19 +220,19 @@ public class PlaceholderMember_TransformationMenu extends TransformationMenuBase
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PlaceholderMember$Zm = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember");
-    /*package*/ static final SConcept FieldDeclaration$Ps = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
-    /*package*/ static final SConcept FieldDocComment$I8 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dc44bf2L, "jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment");
-    /*package*/ static final SConcept StaticFieldDeclaration$R5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
-    /*package*/ static final SConcept BaseMethodDeclaration$RR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
-    /*package*/ static final SConcept MethodDocComment$Vx = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, "jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment");
-    /*package*/ static final SConcept BaseDocComment$pH = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment");
-    /*package*/ static final SConcept CommentLine$vy = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLine");
-    /*package*/ static final SConcept TextCommentLinePart$RY = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart");
+    /*package*/ static final SConcept PlaceholderMember$s8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember");
+    /*package*/ static final SConcept FieldDeclaration$ie = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
+    /*package*/ static final SConcept FieldDocComment$wl = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dc44bf2L, "jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment");
+    /*package*/ static final SConcept StaticFieldDeclaration$jR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept MethodDocComment$HI = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, "jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment");
+    /*package*/ static final SConcept BaseDocComment$bU = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment");
+    /*package*/ static final SConcept CommentLine$hJ = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLine");
+    /*package*/ static final SConcept TextCommentLinePart$Eb = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$udUc = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96eL, "body");
-    /*package*/ static final SContainmentLink part$w5LD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
+    /*package*/ static final SContainmentLink body$OAGp = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x757ba20a4c87f96eL, "body");
+    /*package*/ static final SContainmentLink part$QuzQ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
   }
 }

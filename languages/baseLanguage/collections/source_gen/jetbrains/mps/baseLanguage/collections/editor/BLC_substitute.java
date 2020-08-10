@@ -52,7 +52,7 @@ public class BLC_substitute extends SubstituteMenuBase {
   public class SMP_Group_4r5ods_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.SortOperation$RT) || SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.ComparatorSortOperation$B7);
+      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.SortOperation$6c) || SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.ComparatorSortOperation$Pq);
     }
     @NotNull
     @Override
@@ -68,7 +68,7 @@ public class BLC_substitute extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_4r5ods_a0(), CONCEPTS.SortDirection$8O), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_4r5ods_b0(), CONCEPTS.SortDirection$8O));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_4r5ods_a0(), CONCEPTS.SortDirection$n7), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_4r5ods_b0(), CONCEPTS.SortDirection$n7));
     }
     private class SMP_Action_4r5ods_a0 extends SingleItemSubstituteMenuPart {
 
@@ -98,7 +98,7 @@ public class BLC_substitute extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.SortDirection$8O, context);
+          super(CONCEPTS.SortDirection$n7, context);
           _context = context;
         }
 
@@ -109,8 +109,8 @@ public class BLC_substitute extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode direction = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.SortDirection$8O, null);
-          SPropertyOperations.set(direction, PROPS.value$qt90, true);
+          SNode direction = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.SortDirection$n7, null);
+          SPropertyOperations.set(direction, PROPS.value$5y_M, true);
           return direction;
         }
 
@@ -158,7 +158,7 @@ public class BLC_substitute extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.SortDirection$8O, context);
+          super(CONCEPTS.SortDirection$n7, context);
           _context = context;
         }
 
@@ -169,8 +169,8 @@ public class BLC_substitute extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          SNode direction = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.SortDirection$8O, null);
-          SPropertyOperations.set(direction, PROPS.value$qt90, false);
+          SNode direction = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.SortDirection$n7, null);
+          SPropertyOperations.set(direction, PROPS.value$5y_M, false);
           return direction;
         }
 
@@ -193,12 +193,12 @@ public class BLC_substitute extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ComparatorSortOperation$B7 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x119a966b94dL, "jetbrains.mps.baseLanguage.collections.structure.ComparatorSortOperation");
-    /*package*/ static final SConcept SortOperation$RT = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x118b81cc8f6L, "jetbrains.mps.baseLanguage.collections.structure.SortOperation");
-    /*package*/ static final SConcept SortDirection$8O = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11257567b07L, "jetbrains.mps.baseLanguage.collections.structure.SortDirection");
+    /*package*/ static final SConcept ComparatorSortOperation$Pq = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x119a966b94dL, "jetbrains.mps.baseLanguage.collections.structure.ComparatorSortOperation");
+    /*package*/ static final SConcept SortOperation$6c = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x118b81cc8f6L, "jetbrains.mps.baseLanguage.collections.structure.SortOperation");
+    /*package*/ static final SConcept SortDirection$n7 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11257567b07L, "jetbrains.mps.baseLanguage.collections.structure.SortDirection");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$qt90 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
+    /*package*/ static final SProperty value$5y_M = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
   }
 }

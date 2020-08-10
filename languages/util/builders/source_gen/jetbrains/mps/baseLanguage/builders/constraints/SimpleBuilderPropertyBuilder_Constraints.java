@@ -30,12 +30,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class SimpleBuilderPropertyBuilder_Constraints extends BaseConstraintsDescriptor {
   public SimpleBuilderPropertyBuilder_Constraints() {
-    super(CONCEPTS.SimpleBuilderPropertyBuilder$O9);
+    super(CONCEPTS.SimpleBuilderPropertyBuilder$NO);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$Dqjx, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$5Vjc, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -51,14 +51,14 @@ public class SimpleBuilderPropertyBuilder_Constraints extends BaseConstraintsDes
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> result = new ArrayList<SNode>();
-            SNode contextBuilder = SNodeOperations.as(Builder__BehaviorDescriptor.getContextBuilder_id67LR$5LPv$c.invoke(SNodeOperations.asSConcept(CONCEPTS.Builder$C$), (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode())))), CONCEPTS.SimpleBuilder$Bb);
-            for (SNode dcl = SLinkOperations.getTarget(contextBuilder, LINKS.declaration$Sj_w); (dcl != null); dcl = SLinkOperations.getTarget(dcl, LINKS.extends$2GT)) {
-              ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(dcl, LINKS.property$lTdR)));
-              for (SNode builders : ListSequence.fromList(SModelOperations.rootsIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.SimpleBuilders$hl))) {
-                for (SNode basedecl : ListSequence.fromList(SLinkOperations.getChildren(builders, LINKS.builder$n8Tx))) {
-                  SNode extdecl = SNodeOperations.as(basedecl, CONCEPTS.SimpleBuilderExtensionDeclaration$aa);
-                  if (dcl == SLinkOperations.getTarget(extdecl, LINKS.extended$Z_z2)) {
-                    ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(extdecl, LINKS.property$Z_k1)));
+            SNode contextBuilder = SNodeOperations.as(Builder__BehaviorDescriptor.getContextBuilder_id67LR$5LPv$c.invoke(SNodeOperations.asSConcept(CONCEPTS.Builder$Cf), (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode())))), CONCEPTS.SimpleBuilder$AQ);
+            for (SNode dcl = SLinkOperations.getTarget(contextBuilder, LINKS.declaration$kO_b); (dcl != null); dcl = SLinkOperations.getTarget(dcl, LINKS.extends$szG$)) {
+              ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(dcl, LINKS.property$Mqdy)));
+              for (SNode builders : ListSequence.fromList(SModelOperations.rootsIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.SimpleBuilders$h0))) {
+                for (SNode basedecl : ListSequence.fromList(SLinkOperations.getChildren(builders, LINKS.builder$NDTc))) {
+                  SNode extdecl = SNodeOperations.as(basedecl, CONCEPTS.SimpleBuilderExtensionDeclaration$9P);
+                  if (dcl == SLinkOperations.getTarget(extdecl, LINKS.extended$s6yH)) {
+                    ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(extdecl, LINKS.property$s6jG)));
                   }
                 }
               }
@@ -75,20 +75,20 @@ public class SimpleBuilderPropertyBuilder_Constraints extends BaseConstraintsDes
   private static final SNodePointer breakingNode_60c3dm_a0a0a0a0a1a0a0a0c = new SNodePointer("r:971d5c35-6139-4f76-9019-ac96d9713d41(jetbrains.mps.baseLanguage.builders.constraints)", "6836281137582809518");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SimpleBuilderPropertyBuilder$O9 = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d72ec05fL, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilderPropertyBuilder");
-    /*package*/ static final SConcept Builder$C$ = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x61f1de4171d2bf0bL, "jetbrains.mps.baseLanguage.builders.structure.Builder");
-    /*package*/ static final SConcept SimpleBuilder$Bb = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e24c0baL, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilder");
-    /*package*/ static final SConcept SimpleBuilderExtensionDeclaration$aa = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x56cd40dfa78dcaf3L, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilderExtensionDeclaration");
-    /*package*/ static final SConcept SimpleBuilders$hl = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e1a1e3bL, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilders");
+    /*package*/ static final SConcept SimpleBuilderPropertyBuilder$NO = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d72ec05fL, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilderPropertyBuilder");
+    /*package*/ static final SConcept Builder$Cf = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x61f1de4171d2bf0bL, "jetbrains.mps.baseLanguage.builders.structure.Builder");
+    /*package*/ static final SConcept SimpleBuilder$AQ = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e24c0baL, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilder");
+    /*package*/ static final SConcept SimpleBuilderExtensionDeclaration$9P = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x56cd40dfa78dcaf3L, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilderExtensionDeclaration");
+    /*package*/ static final SConcept SimpleBuilders$h0 = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e1a1e3bL, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilders");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$Dqjx = MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d72ec05fL, 0x4acc05c8d72ec061L, "declaration");
-    /*package*/ static final SContainmentLink property$lTdR = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e1a1e38L, 0x4acc05c8d729d207L, "property");
-    /*package*/ static final SContainmentLink property$Z_k1 = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x56cd40dfa78dcaf3L, 0x56cd40dfa78dcaf5L, "property");
-    /*package*/ static final SReferenceLink extended$Z_z2 = MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x56cd40dfa78dcaf3L, 0x56cd40dfa78dcaf6L, "extended");
-    /*package*/ static final SContainmentLink builder$n8Tx = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e1a1e3bL, 0x6524536b2e1a1e3dL, "builder");
-    /*package*/ static final SReferenceLink declaration$Sj_w = MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e24c0baL, 0x6524536b2e24c0bbL, "declaration");
-    /*package*/ static final SReferenceLink extends$2GT = MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e1a1e38L, 0x34f5c07463da7435L, "extends");
+    /*package*/ static final SReferenceLink declaration$5Vjc = MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d72ec05fL, 0x4acc05c8d72ec061L, "declaration");
+    /*package*/ static final SContainmentLink property$Mqdy = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e1a1e38L, 0x4acc05c8d729d207L, "property");
+    /*package*/ static final SContainmentLink property$s6jG = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x56cd40dfa78dcaf3L, 0x56cd40dfa78dcaf5L, "property");
+    /*package*/ static final SReferenceLink extended$s6yH = MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x56cd40dfa78dcaf3L, 0x56cd40dfa78dcaf6L, "extended");
+    /*package*/ static final SContainmentLink builder$NDTc = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e1a1e3bL, 0x6524536b2e1a1e3dL, "builder");
+    /*package*/ static final SReferenceLink declaration$kO_b = MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e24c0baL, 0x6524536b2e24c0bbL, "declaration");
+    /*package*/ static final SReferenceLink extends$szG$ = MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e1a1e38L, 0x34f5c07463da7435L, "extends");
   }
 }

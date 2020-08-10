@@ -41,8 +41,8 @@ public class check_CaughtWasThrown_NonTypesystemRule extends AbstractNonTypesyst
   public void applyRule(final SNode catchClause, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     List<SNode> caughtTypes = AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(catchClause);
     for (final SNode caughtType : ListSequence.fromList(caughtTypes)) {
-      if (SNodeOperations.isInstanceOf(caughtType, CONCEPTS.ClassifierType$IZ)) {
-        SNode caughtClassifier = SLinkOperations.getTarget(SNodeOperations.cast(caughtType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD);
+      if (SNodeOperations.isInstanceOf(caughtType, CONCEPTS.ClassifierType$bL)) {
+        SNode caughtClassifier = SLinkOperations.getTarget(SNodeOperations.cast(caughtType, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr);
         if (TypecheckingFacade.getFromContext().isSubtype(caughtType, _quotation_createNode_r5g8rc_b0a0a0b0a0b0b()) || TypecheckingFacade.getFromContext().isSubtype(caughtType, _quotation_createNode_r5g8rc_b0a0a0b0a0b0b_0()) || SNodeOperations.is(caughtClassifier, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Exception")) || SNodeOperations.is(caughtClassifier, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Throwable"))) {
           // ignore 
         } else {
@@ -54,36 +54,36 @@ public class check_CaughtWasThrown_NonTypesystemRule extends AbstractNonTypesyst
               {
                 SNode matchingNode_13ophr_a1a0b0a0b0 = SNodeOperations.getParent(catchClause);
                 if (matchingNode_13ophr_a1a0b0a0b0 != null) {
-                  matches_13ophr_a1a0b0a0b0 = matchingNode_13ophr_a1a0b0a0b0.getConcept().isSubConceptOf(CONCEPTS.TryCatchStatement$x5);
+                  matches_13ophr_a1a0b0a0b0 = matchingNode_13ophr_a1a0b0a0b0.getConcept().isSubConceptOf(CONCEPTS.TryCatchStatement$XR);
                 }
               }
               if (matches_13ophr_a1a0b0a0b0) {
-                thrown = StatementList__BehaviorDescriptor.uncaughtThrowables_id2SVUfbZ9Qq1.invoke(SLinkOperations.getTarget(matchedNode_13ophr_b0a1a0a1a, LINKS.body$I$eg), ((boolean) false));
+                thrown = StatementList__BehaviorDescriptor.uncaughtThrowables_id2SVUfbZ9Qq1.invoke(SLinkOperations.getTarget(matchedNode_13ophr_b0a1a0a1a, LINKS.body$pDF2), ((boolean) false));
               } else {
                 boolean matches_13ophr_b1a0b0a0b0 = false;
                 {
                   SNode matchingNode_13ophr_b1a0b0a0b0 = SNodeOperations.getParent(catchClause);
                   if (matchingNode_13ophr_b1a0b0a0b0 != null) {
-                    matches_13ophr_b1a0b0a0b0 = matchingNode_13ophr_b1a0b0a0b0.getConcept().isSubConceptOf(CONCEPTS.TryUniversalStatement$80);
+                    matches_13ophr_b1a0b0a0b0 = matchingNode_13ophr_b1a0b0a0b0.getConcept().isSubConceptOf(CONCEPTS.TryUniversalStatement$$M);
                   }
                 }
                 if (matches_13ophr_b1a0b0a0b0) {
-                  SetSequence.fromSet(thrown).addSequence(SetSequence.fromSet(StatementList__BehaviorDescriptor.uncaughtThrowables_id2SVUfbZ9Qq1.invoke(SLinkOperations.getTarget(matchedNode_13ophr_b0a1a0a1a, LINKS.body$lFey), ((boolean) false))));
-                  SetSequence.fromSet(thrown).addSequence(Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(ListSequence.fromList(SLinkOperations.getChildren(matchedNode_13ophr_b0a1a0a1a, LINKS.resource$Abww)).translate(new ITranslator2<SNode, SNode>() {
+                  SetSequence.fromSet(thrown).addSequence(SetSequence.fromSet(StatementList__BehaviorDescriptor.uncaughtThrowables_id2SVUfbZ9Qq1.invoke(SLinkOperations.getTarget(matchedNode_13ophr_b0a1a0a1a, LINKS.body$KFk), ((boolean) false))));
+                  SetSequence.fromSet(thrown).addSequence(Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(ListSequence.fromList(SLinkOperations.getChildren(matchedNode_13ophr_b0a1a0a1a, LINKS.resource$hgXi)).translate(new ITranslator2<SNode, SNode>() {
                     public Iterable<SNode> translate(SNode it) {
                       return new ResourceVariableHelper(it).getCloseThrown();
                     }
-                  }), CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD)));
+                  }), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr)));
                 } else {
                   boolean matches_13ophr_c1a0b0a0b0 = false;
                   {
                     SNode matchingNode_13ophr_c1a0b0a0b0 = SNodeOperations.getParent(catchClause);
                     if (matchingNode_13ophr_c1a0b0a0b0 != null) {
-                      matches_13ophr_c1a0b0a0b0 = matchingNode_13ophr_c1a0b0a0b0.getConcept().isSubConceptOf(CONCEPTS.TryFinallyStatement$Vw);
+                      matches_13ophr_c1a0b0a0b0 = matchingNode_13ophr_c1a0b0a0b0.getConcept().isSubConceptOf(CONCEPTS.TryFinallyStatement$oi);
                     }
                   }
                   if (matches_13ophr_c1a0b0a0b0) {
-                    thrown = StatementList__BehaviorDescriptor.uncaughtThrowables_id2SVUfbZ9Qq1.invoke(SLinkOperations.getTarget(matchedNode_13ophr_b0a1a0a1a, LINKS.body$1aAh), ((boolean) false));
+                    thrown = StatementList__BehaviorDescriptor.uncaughtThrowables_id2SVUfbZ9Qq1.invoke(SLinkOperations.getTarget(matchedNode_13ophr_b0a1a0a1a, LINKS.body$Gg33), ((boolean) false));
                   }
                 }
               }
@@ -105,7 +105,7 @@ public class check_CaughtWasThrown_NonTypesystemRule extends AbstractNonTypesyst
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AbstractCatchClause$ZI;
+    return CONCEPTS.AbstractCatchClause$sw;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -143,18 +143,18 @@ public class check_CaughtWasThrown_NonTypesystemRule extends AbstractNonTypesyst
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
-    /*package*/ static final SConcept TryCatchStatement$x5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, "jetbrains.mps.baseLanguage.structure.TryCatchStatement");
-    /*package*/ static final SConcept TryUniversalStatement$80 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, "jetbrains.mps.baseLanguage.structure.TryUniversalStatement");
-    /*package*/ static final SConcept TryFinallyStatement$Vw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryFinallyStatement");
-    /*package*/ static final SConcept AbstractCatchClause$ZI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f43fe1c1L, "jetbrains.mps.baseLanguage.structure.AbstractCatchClause");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept TryCatchStatement$XR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, "jetbrains.mps.baseLanguage.structure.TryCatchStatement");
+    /*package*/ static final SConcept TryUniversalStatement$$M = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, "jetbrains.mps.baseLanguage.structure.TryUniversalStatement");
+    /*package*/ static final SConcept TryFinallyStatement$oi = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, "jetbrains.mps.baseLanguage.structure.TryFinallyStatement");
+    /*package*/ static final SConcept AbstractCatchClause$sw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f43fe1c1L, "jetbrains.mps.baseLanguage.structure.AbstractCatchClause");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink body$I$eg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f383e83d4L, "body");
-    /*package*/ static final SContainmentLink body$lFey = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb114L, "body");
-    /*package*/ static final SContainmentLink resource$Abww = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x4a434b86a54515feL, "resource");
-    /*package*/ static final SContainmentLink body$1aAh = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacec83aeL, "body");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink body$pDF2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f383e6771L, 0x10f383e83d4L, "body");
+    /*package*/ static final SContainmentLink body$KFk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb114L, "body");
+    /*package*/ static final SContainmentLink resource$hgXi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x4a434b86a54515feL, "resource");
+    /*package*/ static final SContainmentLink body$Gg33 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cacebf556L, 0x10cacec83aeL, "body");
   }
 }

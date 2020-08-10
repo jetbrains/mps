@@ -23,12 +23,12 @@ public class check_ImplementationCode_NonTypesystemRule extends AbstractNonTypes
   public check_ImplementationCode_NonTypesystemRule() {
   }
   public void applyRule(final SNode n, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(SLinkOperations.getTarget(n, LINKS.descriptor$ah2), LINKS.implModel$pYw9) == null)) {
+    if ((SLinkOperations.getTarget(SLinkOperations.getTarget(n, LINKS.descriptor$u9AN), LINKS.implModel$RXPU) == null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(n, "Referenced Descriptor shall specify this model as its implementation one", "c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:e04b7053-8c89-4f87-b296-94779c625d9d(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.typesystem)", "4507527286374464191", null, errorTarget);
       }
-    } else if (!(SNodeOperations.getModel(n).getReference().equals(ModelIdentity__BehaviorDescriptor.toModelReference_id1Bs_61$mvvu.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(n, LINKS.descriptor$ah2), LINKS.implModel$pYw9))))) {
+    } else if (!(SNodeOperations.getModel(n).getReference().equals(ModelIdentity__BehaviorDescriptor.toModelReference_id1Bs_61$mvvu.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(n, LINKS.descriptor$u9AN), LINKS.implModel$RXPU))))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(n, "Referenced Descriptor specifies model other this one as its implementation", "c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:e04b7053-8c89-4f87-b296-94779c625d9d(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.typesystem)", "4507527286374473820", null, errorTarget);
@@ -36,7 +36,7 @@ public class check_ImplementationCode_NonTypesystemRule extends AbstractNonTypes
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ImplementationCode$jA;
+    return CONCEPTS.ImplementationCode$Dn;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -46,11 +46,11 @@ public class check_ImplementationCode_NonTypesystemRule extends AbstractNonTypes
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink descriptor$ah2 = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3e8df42f5fb8641cL, 0x3e8df42f5fb8641fL, "descriptor");
-    /*package*/ static final SContainmentLink implModel$pYw9 = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, 0x3e8df42f5fb47812L, "implModel");
+    /*package*/ static final SReferenceLink descriptor$u9AN = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3e8df42f5fb8641cL, 0x3e8df42f5fb8641fL, "descriptor");
+    /*package*/ static final SContainmentLink implModel$RXPU = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, 0x3e8df42f5fb47812L, "implModel");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ImplementationCode$jA = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3e8df42f5fb8641cL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.ImplementationCode");
+    /*package*/ static final SConcept ImplementationCode$Dn = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3e8df42f5fb8641cL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.ImplementationCode");
   }
 }

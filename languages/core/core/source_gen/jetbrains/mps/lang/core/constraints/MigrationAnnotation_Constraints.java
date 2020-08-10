@@ -20,12 +20,12 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class MigrationAnnotation_Constraints extends BaseConstraintsDescriptor {
   public MigrationAnnotation_Constraints() {
-    super(CONCEPTS.MigrationAnnotation$aP);
+    super(CONCEPTS.MigrationAnnotation$z7);
   }
 
   public static class CreatedByScript_Property extends BasePropertyConstraintsDescriptor {
     public CreatedByScript_Property(ConstraintsDescriptor container) {
-      super(PROPS.createdByScript$L5qw, container);
+      super(PROPS.createdByScript$dQMM, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -55,15 +55,15 @@ public class MigrationAnnotation_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.createdByScript$L5qw, new CreatedByScript_Property(this));
+    properties.put(PROPS.createdByScript$dQMM, new CreatedByScript_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept MigrationAnnotation$aP = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e13L, "jetbrains.mps.lang.core.structure.MigrationAnnotation");
+    /*package*/ static final SInterfaceConcept MigrationAnnotation$z7 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e13L, "jetbrains.mps.lang.core.structure.MigrationAnnotation");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty createdByScript$L5qw = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e13L, 0x78c7e79625a38e14L, "createdByScript");
+    /*package*/ static final SProperty createdByScript$dQMM = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e13L, 0x78c7e79625a38e14L, "createdByScript");
   }
 }

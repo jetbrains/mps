@@ -19,14 +19,14 @@ public class UpdateModulePointerName_QuickFix extends QuickFix_Runtime {
     return "Update module name to reflect actual value";
   }
   public void execute(SNode node) {
-    SPropertyOperations.assign(SNodeOperations.as(node, CONCEPTS.ModulePointer$rJ), PROPS.moduleName$XstC, ((String) UpdateModulePointerName_QuickFix.this.getField("actualName")[0]));
+    SPropertyOperations.assign(SNodeOperations.as(node, CONCEPTS.ModulePointer$7i), PROPS.moduleName$RP9b, ((String) UpdateModulePointerName_QuickFix.this.getField("actualName")[0]));
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ModulePointer$rJ = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, "jetbrains.mps.lang.modelapi.structure.ModulePointer");
+    /*package*/ static final SConcept ModulePointer$7i = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, "jetbrains.mps.lang.modelapi.structure.ModulePointer");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty moduleName$XstC = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, 0x19dc9460645ae969L, "moduleName");
+    /*package*/ static final SProperty moduleName$RP9b = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, 0x19dc9460645ae969L, "moduleName");
   }
 }

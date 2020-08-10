@@ -47,7 +47,7 @@ public class check_IExtensibleMenuPart_hasAllRequiredFeatures_NonTypesystemRule 
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.IExtensibleTransformationMenuPart$sZ;
+    return CONCEPTS.IExtensibleTransformationMenuPart$CA;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -57,6 +57,6 @@ public class check_IExtensibleMenuPart_hasAllRequiredFeatures_NonTypesystemRule 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IExtensibleTransformationMenuPart$sZ = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a364c9a28L, "jetbrains.mps.lang.editor.structure.IExtensibleTransformationMenuPart");
+    /*package*/ static final SInterfaceConcept IExtensibleTransformationMenuPart$CA = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x652f322a364c9a28L, "jetbrains.mps.lang.editor.structure.IExtensibleTransformationMenuPart");
   }
 }

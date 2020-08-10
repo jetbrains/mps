@@ -25,16 +25,16 @@ public class typeof_TransformStatement_InferenceRule extends AbstractInferenceRu
   public void applyRule(final SNode ts, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(ts, LINKS.precondition$frcu);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(ts, LINKS.precondition$W9ve);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "4391914101925833968", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "4391914101925833980", true), (SNode) _quotation_createNode_h6azqb_a1a0c0a0a0b(TransformStatement__BehaviorDescriptor.getPatternConcept_id4SSaNAQl5wN.invoke(ts)), true, true, _info_12389875345);
       }
     }
     final SNode consequenceConcept_typevar_4391914101925833474 = typeCheckingContext.createNewRuntimeTypesVariable();
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ts, LINKS.consequence$fll5), CONCEPTS.ConsequenceFunction$_w)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ts, LINKS.consequence$W3BP), CONCEPTS.ConsequenceFunction$Sg)) {
       if (!(typeCheckingContext.isSingleTypeComputation())) {
         {
-          SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(ts, LINKS.consequence$fll5);
+          SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(ts, LINKS.consequence$W3BP);
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "4391914101925848717", 0, null);
           typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "4391914101925848720", true), (SNode) _quotation_createNode_h6azqb_a1a0c0a0a0c0b(TransformStatement__BehaviorDescriptor.getPatternConcept_id4SSaNAQl5wN.invoke(ts), typeCheckingContext.getRepresentative(consequenceConcept_typevar_4391914101925833474)), true, true, _info_12389875345);
         }
@@ -48,14 +48,14 @@ public class typeof_TransformStatement_InferenceRule extends AbstractInferenceRu
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(ts, LINKS.postprocess$fs8y);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(ts, LINKS.postprocess$Wari);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "4391914101925834333", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "4391914101925834348", true), (SNode) _quotation_createNode_h6azqb_a1a0c0a0d0b(TransformStatement__BehaviorDescriptor.getPatternConcept_id4SSaNAQl5wN.invoke(ts), typeCheckingContext.getRepresentative(consequenceConcept_typevar_4391914101925833474)), true, true, _info_12389875345);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.TransformStatement$ZW;
+    return CONCEPTS.TransformStatement$iG;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -109,13 +109,13 @@ public class typeof_TransformStatement_InferenceRule extends AbstractInferenceRu
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink precondition$frcu = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6529ec9L, 0x4e382b39b6529ef4L, "precondition");
-    /*package*/ static final SContainmentLink consequence$fll5 = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6529ec9L, 0x4e382b39b6529ef0L, "consequence");
-    /*package*/ static final SContainmentLink postprocess$fs8y = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6529ec9L, 0x4e382b39b6529ef8L, "postprocess");
+    /*package*/ static final SContainmentLink precondition$W9ve = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6529ec9L, 0x4e382b39b6529ef4L, "precondition");
+    /*package*/ static final SContainmentLink consequence$W3BP = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6529ec9L, 0x4e382b39b6529ef0L, "consequence");
+    /*package*/ static final SContainmentLink postprocess$Wari = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6529ec9L, 0x4e382b39b6529ef8L, "postprocess");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConsequenceFunction$_w = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6532eb7L, "jetbrains.mps.lang.migration.structure.ConsequenceFunction");
-    /*package*/ static final SConcept TransformStatement$ZW = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6529ec9L, "jetbrains.mps.lang.migration.structure.TransformStatement");
+    /*package*/ static final SConcept ConsequenceFunction$Sg = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6532eb7L, "jetbrains.mps.lang.migration.structure.ConsequenceFunction");
+    /*package*/ static final SConcept TransformStatement$iG = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x4e382b39b6529ec9L, "jetbrains.mps.lang.migration.structure.TransformStatement");
   }
 }

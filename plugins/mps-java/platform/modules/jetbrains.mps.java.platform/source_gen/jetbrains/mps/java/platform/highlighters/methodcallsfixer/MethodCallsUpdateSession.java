@@ -38,10 +38,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
   }
 
   /*package*/ void checkMethodCall(@NotNull SNode methodCallNode) {
-    SNode baseMethodDeclaration = SLinkOperations.getTarget(methodCallNode, LINKS.baseMethodDeclaration$ItxI);
+    SNode baseMethodDeclaration = SLinkOperations.getTarget(methodCallNode, LINKS.baseMethodDeclaration$pyYw);
     String methodName = getMethodName(methodCallNode);
 
-    Tuples._2<SNode, Boolean> resolveResult = ((Tuples._2<SNode, Boolean>) BHReflection.invoke0(methodCallNode, CONCEPTS.IMethodCall$ln, SMethodTrimmedId.create("resolveMethod", CONCEPTS.IMethodCall$ln, "28$D10lLyGj")));
+    Tuples._2<SNode, Boolean> resolveResult = ((Tuples._2<SNode, Boolean>) BHReflection.invoke0(methodCallNode, CONCEPTS.IMethodCall$M9, SMethodTrimmedId.create("resolveMethod", CONCEPTS.IMethodCall$M9, "28$D10lLyGj")));
     SNode newTarget = resolveResult._0();
     boolean good = (boolean) resolveResult._1();
 
@@ -65,15 +65,15 @@ import org.jetbrains.mps.openapi.language.SProperty;
     checkMethodCall(methodCall);
   }
   /*package*/ void nodeAdded(SNode child) {
-    for (SNode methodCall : SNodeOperations.getNodeDescendants(child, CONCEPTS.IMethodCall$ln, true, new SAbstractConcept[]{})) {
+    for (SNode methodCall : SNodeOperations.getNodeDescendants(child, CONCEPTS.IMethodCall$M9, true, new SAbstractConcept[]{})) {
       checkMethodCall(methodCall);
     }
     SNode parent = SNodeOperations.getParent(child);
     if (myCache.wasChecked(parent)) {
-      SNode p = SNodeOperations.cast(parent, CONCEPTS.IMethodCall$ln);
+      SNode p = SNodeOperations.cast(parent, CONCEPTS.IMethodCall$M9);
       checkMethodCall(p);
     }
-    SNode formalParam = SNodeOperations.getNodeAncestor(child, CONCEPTS.ParameterDeclaration$qU, true, false);
+    SNode formalParam = SNodeOperations.getNodeAncestor(child, CONCEPTS.ParameterDeclaration$RG, true, false);
     if ((SNodeOperations.getParent(formalParam) != null)) {
       methodDeclarationSignatureChanged(SNodeOperations.getParent(formalParam));
     }
@@ -81,13 +81,13 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
   /*package*/ void nodeRemoved(SNode child, SNode formerParent, SModel m) {
     if (myCache.wasChecked(new SNodePointer(SModelOperations.getPointer(m), formerParent.getNodeId()))) {
-      SNode methodCallNode = SNodeOperations.cast(formerParent, CONCEPTS.IMethodCall$ln);
+      SNode methodCallNode = SNodeOperations.cast(formerParent, CONCEPTS.IMethodCall$M9);
       checkMethodCall(methodCallNode);
     }
-    if (SNodeOperations.isInstanceOf(child, CONCEPTS.ParameterDeclaration$qU)) {
+    if (SNodeOperations.isInstanceOf(child, CONCEPTS.ParameterDeclaration$RG)) {
       methodDeclarationSignatureChanged(formerParent);
     } else {
-      SNode formalParam = SNodeOperations.getNodeAncestor(formerParent, CONCEPTS.ParameterDeclaration$qU, true, false);
+      SNode formalParam = SNodeOperations.getNodeAncestor(formerParent, CONCEPTS.ParameterDeclaration$RG, true, false);
       if ((SNodeOperations.getParent(formalParam) != null)) {
         methodDeclarationSignatureChanged(SNodeOperations.getParent(formalParam));
       }
@@ -101,15 +101,15 @@ import org.jetbrains.mps.openapi.language.SProperty;
     }
   }
   /*package*/ String getMethodName(SNode methodCall) {
-    SNode baseMethodDeclaration = SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$ItxI);
+    SNode baseMethodDeclaration = SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$pyYw);
     if (baseMethodDeclaration == null) {
-      if (SLinkOperations.getTarget(SNodeOperations.as(methodCall, CONCEPTS.AnonymousClass$aF), LINKS.classifier$JwxM) != null) {
-        return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.as(methodCall, CONCEPTS.AnonymousClass$aF), LINKS.classifier$JwxM), PROPS.name$lA7v);
+      if (SLinkOperations.getTarget(SNodeOperations.as(methodCall, CONCEPTS.AnonymousClass$Bt), LINKS.classifier$q_Y$) != null) {
+        return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.as(methodCall, CONCEPTS.AnonymousClass$Bt), LINKS.classifier$q_Y$), PROPS.name$MnvL);
       } else {
-        return SLinkOperations.getResolveInfo(SNodeOperations.getReference(methodCall, LINKS.baseMethodDeclaration$ItxI));
+        return SLinkOperations.getResolveInfo(SNodeOperations.getReference(methodCall, LINKS.baseMethodDeclaration$pyYw));
       }
     } else {
-      return SPropertyOperations.getString(baseMethodDeclaration, PROPS.name$lA7v);
+      return SPropertyOperations.getString(baseMethodDeclaration, PROPS.name$MnvL);
     }
   }
 
@@ -135,17 +135,17 @@ import org.jetbrains.mps.openapi.language.SProperty;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SReferenceLink classifier$JwxM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink classifier$q_Y$ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IMethodCall$ln = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
-    /*package*/ static final SConcept ParameterDeclaration$qU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
-    /*package*/ static final SConcept AnonymousClass$aF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
+    /*package*/ static final SInterfaceConcept IMethodCall$M9 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
+    /*package*/ static final SConcept ParameterDeclaration$RG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
+    /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

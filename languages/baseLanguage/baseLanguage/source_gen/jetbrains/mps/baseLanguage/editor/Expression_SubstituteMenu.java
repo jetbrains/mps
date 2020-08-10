@@ -80,7 +80,7 @@ public class Expression_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguage.editor.liveTemplates_Expression");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.Expression$TP;
+      return CONCEPTS.Expression$mB;
     }
   }
   public class SMP_Include_or55c_b extends IncludeSubstituteMenuSubstituteMenuPart {
@@ -104,7 +104,7 @@ public class Expression_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguage.editor.valueParameter");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.Expression$TP;
+      return CONCEPTS.Expression$mB;
     }
   }
   public class SMP_Include_or55c_c extends IncludeSubstituteMenuSubstituteMenuPart {
@@ -128,7 +128,7 @@ public class Expression_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguage.editor.qualifiedSuperMethodCallExpression");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.Expression$TP;
+      return CONCEPTS.Expression$mB;
     }
   }
   public class SMP_Include_or55c_d extends IncludeSubstituteMenuSubstituteMenuPart {
@@ -152,7 +152,7 @@ public class Expression_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguage.editor.PrimitiveClassExpression");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.Expression$TP;
+      return CONCEPTS.Expression$mB;
     }
   }
   public class SMP_Include_or55c_e extends IncludeSubstituteMenuSubstituteMenuPart {
@@ -176,7 +176,7 @@ public class Expression_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguage.editor.constants");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.Expression$TP;
+      return CONCEPTS.Expression$mB;
     }
   }
   public class SMP_Include_or55c_f extends IncludeSubstituteMenuSubstituteMenuPart {
@@ -200,7 +200,7 @@ public class Expression_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguage.editor.thisExpression");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.Expression$TP;
+      return CONCEPTS.Expression$mB;
     }
   }
   public class SMP_Include_or55c_g extends IncludeSubstituteMenuSubstituteMenuPart {
@@ -224,7 +224,7 @@ public class Expression_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguage.editor.smartCast");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.Expression$TP;
+      return CONCEPTS.Expression$mB;
     }
   }
   public class SMP_Include_or55c_h extends IncludeSubstituteMenuSubstituteMenuPart {
@@ -248,7 +248,7 @@ public class Expression_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguage.editor.new_");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.Expression$TP;
+      return CONCEPTS.Expression$mB;
     }
   }
   public class SMP_Include_or55c_i extends IncludeSubstituteMenuSubstituteMenuPart {
@@ -272,7 +272,7 @@ public class Expression_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguage.editor.staticAccess");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.Expression$TP;
+      return CONCEPTS.Expression$mB;
     }
   }
   public class SMP_Include_or55c_j extends IncludeSubstituteMenuSubstituteMenuPart {
@@ -296,7 +296,7 @@ public class Expression_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguage.editor.CreateEnumConstantReferences");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.Expression$TP;
+      return CONCEPTS.Expression$mB;
     }
   }
   public class SMP_Include_or55c_k extends IncludeSubstituteMenuSubstituteMenuPart {
@@ -320,7 +320,7 @@ public class Expression_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguage.editor.conceptFunctionParameters");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.Expression$TP;
+      return CONCEPTS.Expression$mB;
     }
   }
   public class SMP_Include_or55c_l extends IncludeSubstituteMenuSubstituteMenuPart {
@@ -344,12 +344,12 @@ public class Expression_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguage.editor.ParensAroundEmptyExpression");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.Expression$TP;
+      return CONCEPTS.Expression$mB;
     }
   }
   public class SMP_Subconcepts_or55c_m extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.Expression$TP);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.Expression$mB);
     }
     @NotNull
     @Override
@@ -370,6 +370,6 @@ public class Expression_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 }

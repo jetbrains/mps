@@ -77,10 +77,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.labels$S280;
+      return LINKS.labels$gYNG;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.GeneratorDebug_LabelEntry$Vm;
+      return CONCEPTS.GeneratorDebug_LabelEntry$B2;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -90,7 +90,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(labelsListHandler_9ifdg_a0.this.getNode(), LINKS.labels$S280));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(labelsListHandler_9ifdg_a0.this.getNode(), LINKS.labels$gYNG));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -132,10 +132,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink labels$S280 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc97f1c1L, 0x35a02f6bfc9806c5L, "labels");
+    /*package*/ static final SContainmentLink labels$gYNG = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc97f1c1L, 0x35a02f6bfc9806c5L, "labels");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GeneratorDebug_LabelEntry$Vm = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c4L, "jetbrains.mps.lang.generator.structure.GeneratorDebug_LabelEntry");
+    /*package*/ static final SConcept GeneratorDebug_LabelEntry$B2 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c4L, "jetbrains.mps.lang.generator.structure.GeneratorDebug_LabelEntry");
   }
 }

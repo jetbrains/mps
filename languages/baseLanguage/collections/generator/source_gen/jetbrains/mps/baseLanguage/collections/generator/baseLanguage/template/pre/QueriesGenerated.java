@@ -36,43 +36,43 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
-    SNode lt = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$lndx));
-    SNode rt = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$li3b));
-    return (SNodeOperations.isInstanceOf(lt, CONCEPTS.PrimitiveType$5) || SNodeOperations.isInstanceOf(rt, CONCEPTS.PrimitiveType$5)) && !((SNodeOperations.isInstanceOf(lt, CONCEPTS.NullType$do) || SNodeOperations.isInstanceOf(rt, CONCEPTS.NullType$do)));
+    SNode lt = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$sEj));
+    SNode rt = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$nvX));
+    return (SNodeOperations.isInstanceOf(lt, CONCEPTS.PrimitiveType$sR) || SNodeOperations.isInstanceOf(rt, CONCEPTS.PrimitiveType$sR)) && !((SNodeOperations.isInstanceOf(lt, CONCEPTS.NullType$Ea) || SNodeOperations.isInstanceOf(rt, CONCEPTS.NullType$Ea)));
   }
   public static boolean rule_Condition_0_1(final BaseMappingRuleContext _context) {
-    return Helper.isCollectionElementAccess(SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$lndx));
+    return Helper.isCollectionElementAccess(SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$sEj));
   }
   public static boolean rule_Condition_0_2(final BaseMappingRuleContext _context) {
-    SNode lt = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$lndx));
-    SNode rt = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$li3b));
-    return (SNodeOperations.isInstanceOf(lt, CONCEPTS.PrimitiveType$5) || SNodeOperations.isInstanceOf(rt, CONCEPTS.PrimitiveType$5)) && !((SNodeOperations.isInstanceOf(lt, CONCEPTS.NullType$do) || SNodeOperations.isInstanceOf(rt, CONCEPTS.NullType$do)));
+    SNode lt = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$sEj));
+    SNode rt = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$nvX));
+    return (SNodeOperations.isInstanceOf(lt, CONCEPTS.PrimitiveType$sR) || SNodeOperations.isInstanceOf(rt, CONCEPTS.PrimitiveType$sR)) && !((SNodeOperations.isInstanceOf(lt, CONCEPTS.NullType$Ea) || SNodeOperations.isInstanceOf(rt, CONCEPTS.NullType$Ea)));
   }
   public static boolean rule_Condition_0_3(final BaseMappingRuleContext _context) {
-    return Helper.isCollectionElementAccess(SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$li3b));
+    return Helper.isCollectionElementAccess(SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$nvX));
   }
   public static SNode sourceNodeQuery_0_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$li3b);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$nvX);
   }
   public static SNode sourceNodeQuery_0_1(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$lndx);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$sEj);
   }
   public static SNode sourceNodeQuery_0_2(final SourceSubstituteMacroNodeContext _context) {
-    return TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$lndx));
+    return TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$sEj));
   }
   public static SNode sourceNodeQuery_0_3(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$li3b);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$nvX);
   }
   public static SNode sourceNodeQuery_0_4(final SourceSubstituteMacroNodeContext _context) {
-    return TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$li3b));
+    return TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$nvX));
   }
   public static SNode sourceNodeQuery_0_5(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$lndx);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$sEj);
   }
   public static boolean mc_Condition_0(final TemplateQueryContext _context) {
-    for (SNode node : SModelOperations.nodes(_context.getInputModel(), CONCEPTS.EqualsExpression$lT)) {
-      SNode le = SLinkOperations.getTarget(node, LINKS.leftExpression$lndx);
-      SNode re = SLinkOperations.getTarget(node, LINKS.rightExpression$li3b);
+    for (SNode node : SModelOperations.nodes(_context.getInputModel(), CONCEPTS.EqualsExpression$MF)) {
+      SNode le = SLinkOperations.getTarget(node, LINKS.leftExpression$sEj);
+      SNode re = SLinkOperations.getTarget(node, LINKS.rightExpression$nvX);
       if (Helper.isCollectionElementAccess(le) || Helper.isCollectionElementAccess(re)) {
         return true;
       }
@@ -218,13 +218,13 @@ public class QueriesGenerated extends QueryProviderBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink leftExpression$sEj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$nvX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NullType$do = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1185ff468caL, "jetbrains.mps.baseLanguage.structure.NullType");
-    /*package*/ static final SConcept PrimitiveType$5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
-    /*package*/ static final SConcept EqualsExpression$lT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b210L, "jetbrains.mps.baseLanguage.structure.EqualsExpression");
+    /*package*/ static final SConcept NullType$Ea = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1185ff468caL, "jetbrains.mps.baseLanguage.structure.NullType");
+    /*package*/ static final SConcept PrimitiveType$sR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
+    /*package*/ static final SConcept EqualsExpression$MF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b210L, "jetbrains.mps.baseLanguage.structure.EqualsExpression");
   }
 }

@@ -30,7 +30,7 @@ public class typeof_MappingOperation_InferenceRule extends AbstractInferenceRule
     }
     final SNode elType_typevar_1203507994173 = typeCheckingContext.createNewRuntimeTypesVariable();
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(to, LINKS.closure$cZg5);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(to, LINKS.closure$Rjuo);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "5380162141333161506", 0, null);
       typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_ev5xzi_a0a0c0d0b(typeCheckingContext.getRepresentative(paramType_typevar_1203508136831), typeCheckingContext.getRepresentative(elType_typevar_1203507994173)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "5380162141333161518", true), false, true, _info_12389875345);
     }
@@ -41,7 +41,7 @@ public class typeof_MappingOperation_InferenceRule extends AbstractInferenceRule
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.TranslateOperation$sk;
+    return CONCEPTS.TranslateOperation$EB;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -92,10 +92,10 @@ public class typeof_MappingOperation_InferenceRule extends AbstractInferenceRule
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink closure$cZg5 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1188372895aL, 0x11883748452L, "closure");
+    /*package*/ static final SContainmentLink closure$Rjuo = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1188372895aL, 0x11883748452L, "closure");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TranslateOperation$sk = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x117d06362dcL, "jetbrains.mps.baseLanguage.collections.structure.TranslateOperation");
+    /*package*/ static final SConcept TranslateOperation$EB = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x117d06362dcL, "jetbrains.mps.baseLanguage.collections.structure.TranslateOperation");
   }
 }

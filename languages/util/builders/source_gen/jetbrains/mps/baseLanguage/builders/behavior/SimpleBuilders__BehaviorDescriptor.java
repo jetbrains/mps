@@ -41,14 +41,14 @@ public final class SimpleBuilders__BehaviorDescriptor extends BaseBHDescriptor {
     if (__thisNode__ == b) {
       return true;
     }
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.extendsBuilder$nX$V) == null)) {
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.extendsBuilder$Ou$A) == null)) {
       return false;
     }
-    return (boolean) SimpleBuilders__BehaviorDescriptor.isDescendant_id4wDZIZrG$7u.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.extendsBuilder$nX$V), b);
+    return (boolean) SimpleBuilders__BehaviorDescriptor.isDescendant_id4wDZIZrG$7u.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.extendsBuilder$Ou$A), b);
   }
   /*package*/ static List<SNode> getDescendands_id4wDZIZrG$7X(@NotNull SNode __thisNode__, SModel context) {
     List<SNode> result = new ArrayList<SNode>();
-    for (SNode sb : SModelOperations.rootsIncludingImported(context, CONCEPTS.SimpleBuilders$hl)) {
+    for (SNode sb : SModelOperations.rootsIncludingImported(context, CONCEPTS.SimpleBuilders$h0)) {
       if ((boolean) SimpleBuilders__BehaviorDescriptor.isDescendant_id4wDZIZrG$7u.invoke(sb, __thisNode__)) {
         ListSequence.fromList(result).addElement(sb);
       }
@@ -60,7 +60,7 @@ public final class SimpleBuilders__BehaviorDescriptor extends BaseBHDescriptor {
     SNode current = __thisNode__;
     while (current != null) {
       ListSequence.fromList(result).addElement(current);
-      current = SLinkOperations.getTarget(current, LINKS.extendsBuilder$nX$V);
+      current = SLinkOperations.getTarget(current, LINKS.extendsBuilder$Ou$A);
     }
     return result;
   }
@@ -116,10 +116,10 @@ public final class SimpleBuilders__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extendsBuilder$nX$V = MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e1a1e3bL, 0x4829feefdbb0cd12L, "extendsBuilder");
+    /*package*/ static final SReferenceLink extendsBuilder$Ou$A = MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e1a1e3bL, 0x4829feefdbb0cd12L, "extendsBuilder");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SimpleBuilders$hl = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e1a1e3bL, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilders");
+    /*package*/ static final SConcept SimpleBuilders$h0 = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6524536b2e1a1e3bL, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilders");
   }
 }

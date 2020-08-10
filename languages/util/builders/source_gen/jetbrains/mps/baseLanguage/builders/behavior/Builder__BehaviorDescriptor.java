@@ -43,7 +43,7 @@ public final class Builder__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getContextBuilder_id67LR$5LPgSh(@NotNull SNode __thisNode__) {
-    return (SNode) Builder__BehaviorDescriptor.getContextBuilder_id67LR$5LPv$c.invoke(SNodeOperations.asSConcept(CONCEPTS.Builder$C$), SNodeOperations.getParent(__thisNode__));
+    return (SNode) Builder__BehaviorDescriptor.getContextBuilder_id67LR$5LPv$c.invoke(SNodeOperations.asSConcept(CONCEPTS.Builder$Cf), SNodeOperations.getParent(__thisNode__));
   }
   /*package*/ static boolean isLeaf_id67LR$5LQnln(@NotNull SNode __thisNode__) {
     return (boolean) Builder__BehaviorDescriptor.leaf_id1653mnvAgw2.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(__thisNode__)));
@@ -61,11 +61,11 @@ public final class Builder__BehaviorDescriptor extends BaseBHDescriptor {
     return false;
   }
   /*package*/ static SNode getContextBuilder_id67LR$5LPv$c(@NotNull SAbstractConcept __thisConcept__, SNode context) {
-    return SLinkOperations.getTarget(ListSequence.fromList(SNodeOperations.getNodeAncestors(context, CONCEPTS.BuilderContainer$fK, false)).findFirst(new IWhereFilter<SNode>() {
+    return SLinkOperations.getTarget(ListSequence.fromList(SNodeOperations.getNodeAncestors(context, CONCEPTS.BuilderContainer$fr, false)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return !((boolean) BuilderContainer__BehaviorDescriptor.isLeaf_idNLqHO$EE0f.invoke(it));
       }
-    }), LINKS.builder$hk0B);
+    }), LINKS.builder$HP0i);
   }
 
   /*package*/ Builder__BehaviorDescriptor() {
@@ -127,11 +127,11 @@ public final class Builder__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Builder$C$ = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x61f1de4171d2bf0bL, "jetbrains.mps.baseLanguage.builders.structure.Builder");
-    /*package*/ static final SInterfaceConcept BuilderContainer$fK = MetaAdapterFactory.getInterfaceConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6c473c8a081aa9e4L, "jetbrains.mps.baseLanguage.builders.structure.BuilderContainer");
+    /*package*/ static final SConcept Builder$Cf = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x61f1de4171d2bf0bL, "jetbrains.mps.baseLanguage.builders.structure.Builder");
+    /*package*/ static final SInterfaceConcept BuilderContainer$fr = MetaAdapterFactory.getInterfaceConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6c473c8a081aa9e4L, "jetbrains.mps.baseLanguage.builders.structure.BuilderContainer");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink builder$hk0B = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6c473c8a081aa9e4L, 0x429426276e2ee2f8L, "builder");
+    /*package*/ static final SContainmentLink builder$HP0i = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6c473c8a081aa9e4L, 0x429426276e2ee2f8L, "builder");
   }
 }

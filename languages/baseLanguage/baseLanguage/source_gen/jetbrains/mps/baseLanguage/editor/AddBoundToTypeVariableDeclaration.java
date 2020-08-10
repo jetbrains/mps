@@ -102,12 +102,12 @@ public class AddBoundToTypeVariableDeclaration extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.bound$vUbP, null);
+        SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.bound$aZCB, null);
       }
 
       @Override
       public boolean canExecute(@NotNull String pattern) {
-        return (SLinkOperations.getTarget(_context.getNode(), LINKS.bound$vUbP) == null);
+        return (SLinkOperations.getTarget(_context.getNode(), LINKS.bound$aZCB) == null);
       }
 
 
@@ -130,6 +130,6 @@ public class AddBoundToTypeVariableDeclaration extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink bound$vUbP = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae375bda0L, "bound");
+    /*package*/ static final SContainmentLink bound$aZCB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae375bda0L, "bound");
   }
 }

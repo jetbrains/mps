@@ -32,7 +32,7 @@ public final class IParameterizableMenuPart__BehaviorDescriptor extends BaseBHDe
   }
 
   /*package*/ static SNode getParameterizer_id1quYWAD0Tfp(@NotNull SNode __thisNode__) {
-    return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IMenuPartParameterized$pR, false, false);
+    return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IMenuPartParameterized$_u, false, false);
   }
   /*package*/ static boolean isParameterized_id1quYWAD0Tfz(@NotNull SNode __thisNode__) {
     return (IParameterizableMenuPart__BehaviorDescriptor.getParameterizer_id1quYWAD0Tfp.invoke(__thisNode__) != null);
@@ -87,6 +87,6 @@ public final class IParameterizableMenuPart__BehaviorDescriptor extends BaseBHDe
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IMenuPartParameterized$pR = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9002d0fL, "jetbrains.mps.lang.editor.structure.IMenuPartParameterized");
+    /*package*/ static final SInterfaceConcept IMenuPartParameterized$_u = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9002d0fL, "jetbrains.mps.lang.editor.structure.IMenuPartParameterized");
   }
 }

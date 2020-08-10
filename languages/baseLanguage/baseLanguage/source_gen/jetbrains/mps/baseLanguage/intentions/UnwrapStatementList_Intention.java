@@ -44,10 +44,10 @@ public final class UnwrapStatementList_Intention extends AbstractIntentionDescri
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(node, CONCEPTS.Statement$ok) && Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(IContainsStatementList__BehaviorDescriptor.getStatementList_idi0zv5tb.invoke(node), LINKS.statement$pYcS)).isNotEmpty();
+    return SNodeOperations.isInstanceOf(node, CONCEPTS.Statement$P6) && Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(IContainsStatementList__BehaviorDescriptor.getStatementList_idi0zv5tb.invoke(node), LINKS.statement$53DE)).isNotEmpty();
   }
   private boolean isVisibleInChild(final SNode node, final SNode childNode, final EditorContext editorContext) {
-    return Objects.equals(SNodeOperations.getNodeAncestor(childNode, CONCEPTS.StatementList$TN, true, false), IContainsStatementList__BehaviorDescriptor.getStatementList_idi0zv5tb.invoke(node));
+    return Objects.equals(SNodeOperations.getNodeAncestor(childNode, CONCEPTS.StatementList$m_, true, false), IContainsStatementList__BehaviorDescriptor.getStatementList_idi0zv5tb.invoke(node));
   }
   @Override
   public boolean isSurroundWith() {
@@ -81,11 +81,11 @@ public final class UnwrapStatementList_Intention extends AbstractIntentionDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
-    /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
   }
 }

@@ -33,7 +33,7 @@ public class MyBlockCreationAction implements PaletteToggleAction {
     myMetaBlock = block;
     myDiagramCell.getContext().getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        myText = SPropertyOperations.getString(block, PROPS.name$lA7v);
+        myText = SPropertyOperations.getString(block, PROPS.name$MnvL);
         myIcon = GlobalIconManager.getInstance().getIconFor(myMetaBlock);
       }
     });
@@ -51,10 +51,10 @@ public class MyBlockCreationAction implements PaletteToggleAction {
           myDiagramCell.getContext().getRepository().getModelAccess().executeCommand(new Runnable() {
             public void run() {
               SNode newBlockInstance = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, "jetbrains.mps.testHybridEditor.structure.BlockInstance"));
-              SLinkOperations.setTarget(newBlockInstance, LINKS.metaBlock$LKRp, myMetaBlock);
-              SPropertyOperations.assign(newBlockInstance, PROPS.x$Lq$U, event.x());
-              SPropertyOperations.assign(newBlockInstance, PROPS.y$LqNV, event.y());
-              ListSequence.fromList(SLinkOperations.getChildren(((SNode) myDiagramCell.getSNode()), LINKS.newBlocks$YvO_)).addElement(newBlockInstance);
+              SLinkOperations.setTarget(newBlockInstance, LINKS.metaBlock$G_NX, myMetaBlock);
+              SPropertyOperations.assign(newBlockInstance, PROPS.x$Gfxu, event.x());
+              SPropertyOperations.assign(newBlockInstance, PROPS.y$GfKv, event.y());
+              ListSequence.fromList(SLinkOperations.getChildren(((SNode) myDiagramCell.getSNode()), LINKS.newBlocks$TkL9)).addElement(newBlockInstance);
             }
           });
           event.consume();
@@ -75,13 +75,13 @@ public class MyBlockCreationAction implements PaletteToggleAction {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty x$Lq$U = MetaAdapterFactory.getProperty(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, 0x20a804e2ec440489L, "x");
-    /*package*/ static final SProperty y$LqNV = MetaAdapterFactory.getProperty(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, 0x20a804e2ec44048aL, "y");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty x$Gfxu = MetaAdapterFactory.getProperty(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, 0x20a804e2ec440489L, "x");
+    /*package*/ static final SProperty y$GfKv = MetaAdapterFactory.getProperty(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, 0x20a804e2ec44048aL, "y");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink metaBlock$LKRp = MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, 0x20a804e2ec4404a9L, "metaBlock");
-    /*package*/ static final SContainmentLink newBlocks$YvO_ = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0xa10615a65702ec1L, 0x20a804e2ec43f4b6L, "newBlocks");
+    /*package*/ static final SReferenceLink metaBlock$G_NX = MetaAdapterFactory.getReferenceLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, 0x20a804e2ec4404a9L, "metaBlock");
+    /*package*/ static final SContainmentLink newBlocks$TkL9 = MetaAdapterFactory.getContainmentLink(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0xa10615a65702ec1L, 0x20a804e2ec43f4b6L, "newBlocks");
   }
 }

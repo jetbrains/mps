@@ -25,10 +25,10 @@ public class MigrationScopes {
   private MigrationScopes() {
   }
   public static Scope forVariables(SConcept declarationConcept, SNode contextNode, SContainmentLink link, int position) {
-    return filterByConceptScope(Scope.getScope(contextNode, link, position, CONCEPTS.VariableDeclaration$xe), declarationConcept);
+    return filterByConceptScope(Scope.getScope(contextNode, link, position, CONCEPTS.VariableDeclaration$Y0), declarationConcept);
   }
   public static Scope forMethods(SConcept declarationConcept, SNode contextNode, SContainmentLink link, int position) {
-    return filterByConceptScope(Scope.getScope(contextNode, link, position, CONCEPTS.MethodDeclaration$93), declarationConcept);
+    return filterByConceptScope(Scope.getScope(contextNode, link, position, CONCEPTS.MethodDeclaration$_P), declarationConcept);
   }
   private static Scope filterByConceptScope(@Nullable Scope innerScope, @NotNull SAbstractConcept concept) {
     if (innerScope != null) {
@@ -51,7 +51,7 @@ public class MigrationScopes {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VariableDeclaration$xe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
-    /*package*/ static final SConcept MethodDeclaration$93 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, "jetbrains.mps.baseLanguage.structure.MethodDeclaration");
+    /*package*/ static final SConcept VariableDeclaration$Y0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
+    /*package*/ static final SConcept MethodDeclaration$_P = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, "jetbrains.mps.baseLanguage.structure.MethodDeclaration");
   }
 }

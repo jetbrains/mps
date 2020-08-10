@@ -30,60 +30,60 @@ public class QueriesUtil {
   public static List<SNode> replaceNodeMenu_parameterObjects(Iterable<SNode> members, SNode classifier) {
     List<SNode> result = Sequence.fromIterable(members).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.StaticMethodDeclaration$eX) || SNodeOperations.isInstanceOf(it, CONCEPTS.StaticFieldDeclaration$R5) || SNodeOperations.isInstanceOf(it, CONCEPTS.EnumConstantDeclaration$ma) || SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$hJ);
+        return SNodeOperations.isInstanceOf(it, CONCEPTS.StaticMethodDeclaration$FJ) || SNodeOperations.isInstanceOf(it, CONCEPTS.StaticFieldDeclaration$jR) || SNodeOperations.isInstanceOf(it, CONCEPTS.EnumConstantDeclaration$MW) || SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$Ix);
       }
     }).toListSequence();
-    if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.EnumClass$uy)) {
-      ListSequence.fromList(result).addElement(SNodeFactoryOperations.createNewNode(CONCEPTS.EnumValueOfExpression$Bn, null));
-      ListSequence.fromList(result).addElement(SNodeFactoryOperations.createNewNode(CONCEPTS.EnumValuesExpression$xP, null));
+    if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.EnumClass$Vk)) {
+      ListSequence.fromList(result).addElement(SNodeFactoryOperations.createNewNode(CONCEPTS.EnumValueOfExpression$49, null));
+      ListSequence.fromList(result).addElement(SNodeFactoryOperations.createNewNode(CONCEPTS.EnumValuesExpression$YB, null));
     }
     return result;
   }
   public static SNode replaceNodeMenu_createNewNode(SNode classifier, SNode parameterObject, SNode oldNode) {
     SModel model = SNodeOperations.getModel(classifier);
-    if (SNodeOperations.isInstanceOf(parameterObject, CONCEPTS.StaticMethodDeclaration$eX)) {
-      SNode newNode = SNodeFactoryOperations.createNewNode(model, CONCEPTS.StaticMethodCall$eu, null);
+    if (SNodeOperations.isInstanceOf(parameterObject, CONCEPTS.StaticMethodDeclaration$FJ)) {
+      SNode newNode = SNodeFactoryOperations.createNewNode(model, CONCEPTS.StaticMethodCall$Fg, null);
       return QueriesUtil.fillStaticMethodCall(newNode, parameterObject, classifier, oldNode);
     }
-    if (SNodeOperations.isInstanceOf(parameterObject, CONCEPTS.StaticFieldDeclaration$R5)) {
-      SNode newNode = SNodeFactoryOperations.createNewNode(model, CONCEPTS.StaticFieldReference$K8, null);
-      SLinkOperations.setTarget(newNode, LINKS.variableDeclaration$7WwU, SNodeOperations.cast(parameterObject, CONCEPTS.StaticFieldDeclaration$R5));
-      SLinkOperations.setTarget(newNode, LINKS.classifier$WKxm, classifier);
+    if (SNodeOperations.isInstanceOf(parameterObject, CONCEPTS.StaticFieldDeclaration$jR)) {
+      SNode newNode = SNodeFactoryOperations.createNewNode(model, CONCEPTS.StaticFieldReference$cU, null);
+      SLinkOperations.setTarget(newNode, LINKS.variableDeclaration$N1XG, SNodeOperations.cast(parameterObject, CONCEPTS.StaticFieldDeclaration$jR));
+      SLinkOperations.setTarget(newNode, LINKS.classifier$BPY8, classifier);
       return newNode;
     }
-    if (SNodeOperations.isInstanceOf(parameterObject, CONCEPTS.Classifier$hJ)) {
-      SNode newNode = SNodeFactoryOperations.createNewNode(model, CONCEPTS.AbstractClassifierReference$vv, null);
-      SLinkOperations.setTarget(newNode, LINKS.classifier$G8c4, SNodeOperations.cast(parameterObject, CONCEPTS.Classifier$hJ));
+    if (SNodeOperations.isInstanceOf(parameterObject, CONCEPTS.Classifier$Ix)) {
+      SNode newNode = SNodeFactoryOperations.createNewNode(model, CONCEPTS.AbstractClassifierReference$Wh, null);
+      SLinkOperations.setTarget(newNode, LINKS.classifier$ndCQ, SNodeOperations.cast(parameterObject, CONCEPTS.Classifier$Ix));
       return newNode;
     }
-    if (SNodeOperations.isInstanceOf(parameterObject, CONCEPTS.EnumConstantDeclaration$ma)) {
-      SNode newNode = SNodeFactoryOperations.createNewNode(model, CONCEPTS.EnumConstantReference$RO, null);
-      SLinkOperations.setTarget(newNode, LINKS.enumConstantDeclaration$zW91, SNodeOperations.cast(parameterObject, CONCEPTS.EnumConstantDeclaration$ma));
-      SLinkOperations.setTarget(newNode, LINKS.enumClass$wB9x, SNodeOperations.cast(classifier, CONCEPTS.EnumClass$uy));
+    if (SNodeOperations.isInstanceOf(parameterObject, CONCEPTS.EnumConstantDeclaration$MW)) {
+      SNode newNode = SNodeFactoryOperations.createNewNode(model, CONCEPTS.EnumConstantReference$kA, null);
+      SLinkOperations.setTarget(newNode, LINKS.enumConstantDeclaration$f1_N, SNodeOperations.cast(parameterObject, CONCEPTS.EnumConstantDeclaration$MW));
+      SLinkOperations.setTarget(newNode, LINKS.enumClass$bGAj, SNodeOperations.cast(classifier, CONCEPTS.EnumClass$Vk));
       return newNode;
     }
-    if (SNodeOperations.isInstanceOf(parameterObject, CONCEPTS.EnumValueOfExpression$Bn)) {
-      SNode newNode = SNodeFactoryOperations.createNewNode(model, CONCEPTS.EnumValueOfExpression$Bn, null);
-      SLinkOperations.setTarget(newNode, LINKS.enumClass$fVAA, SNodeOperations.cast(classifier, CONCEPTS.EnumClass$uy));
+    if (SNodeOperations.isInstanceOf(parameterObject, CONCEPTS.EnumValueOfExpression$49)) {
+      SNode newNode = SNodeFactoryOperations.createNewNode(model, CONCEPTS.EnumValueOfExpression$49, null);
+      SLinkOperations.setTarget(newNode, LINKS.enumClass$V13o, SNodeOperations.cast(classifier, CONCEPTS.EnumClass$Vk));
       return newNode;
     }
-    if (SNodeOperations.isInstanceOf(parameterObject, CONCEPTS.EnumValuesExpression$xP)) {
-      SNode newNode = SNodeFactoryOperations.createNewNode(model, CONCEPTS.EnumValuesExpression$xP, null);
-      SLinkOperations.setTarget(newNode, LINKS.enumClass$aHek, SNodeOperations.cast(classifier, CONCEPTS.EnumClass$uy));
+    if (SNodeOperations.isInstanceOf(parameterObject, CONCEPTS.EnumValuesExpression$YB)) {
+      SNode newNode = SNodeFactoryOperations.createNewNode(model, CONCEPTS.EnumValuesExpression$YB, null);
+      SLinkOperations.setTarget(newNode, LINKS.enumClass$PMF6, SNodeOperations.cast(classifier, CONCEPTS.EnumClass$Vk));
       return newNode;
     }
     throw new RuntimeException("Bad parameter object " + parameterObject);
   }
   public static SNode fillStaticMethodCall(SNode newNode, SNode parameterObject, SNode classifier, SNode oldNode) {
-    SLinkOperations.setTarget(newNode, LINKS.baseMethodDeclaration$ItxI, SNodeOperations.cast(parameterObject, CONCEPTS.StaticMethodDeclaration$eX));
-    SLinkOperations.setTarget(newNode, LINKS.classConcept$70aQ, classifier);
-    if (SNodeOperations.isInstanceOf(oldNode, CONCEPTS.StaticMethodCall$eu)) {
-      SNode call = SNodeOperations.cast(oldNode, CONCEPTS.StaticMethodCall$eu);
-      for (SNode arg : ListSequence.fromList(SLinkOperations.getChildren(call, LINKS.actualArgument$ItKJ))) {
-        ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.actualArgument$ItKJ)).addElement(SNodeOperations.copyNode(arg));
+    SLinkOperations.setTarget(newNode, LINKS.baseMethodDeclaration$pyYw, SNodeOperations.cast(parameterObject, CONCEPTS.StaticMethodDeclaration$FJ));
+    SLinkOperations.setTarget(newNode, LINKS.classConcept$M5BC, classifier);
+    if (SNodeOperations.isInstanceOf(oldNode, CONCEPTS.StaticMethodCall$Fg)) {
+      SNode call = SNodeOperations.cast(oldNode, CONCEPTS.StaticMethodCall$Fg);
+      for (SNode arg : ListSequence.fromList(SLinkOperations.getChildren(call, LINKS.actualArgument$pzdx))) {
+        ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.actualArgument$pzdx)).addElement(SNodeOperations.copyNode(arg));
       }
-      for (SNode arg : ListSequence.fromList(SLinkOperations.getChildren(call, LINKS.typeArgument$C5i1))) {
-        ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.typeArgument$C5i1)).addElement(SNodeOperations.copyNode(arg));
+      for (SNode arg : ListSequence.fromList(SLinkOperations.getChildren(call, LINKS.typeArgument$jaIN))) {
+        ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.typeArgument$jaIN)).addElement(SNodeOperations.copyNode(arg));
       }
     }
     for (SNode attribute : ListSequence.fromList(AttributeOperations.getAttributeList(oldNode, new IAttributeDescriptor.AllAttributes()))) {
@@ -94,30 +94,30 @@ public class QueriesUtil {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StaticMethodDeclaration$eX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
-    /*package*/ static final SConcept StaticFieldDeclaration$R5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
-    /*package*/ static final SConcept EnumConstantDeclaration$ma = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept EnumValueOfExpression$Bn = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d1e5db156L, "jetbrains.mps.baseLanguage.structure.EnumValueOfExpression");
-    /*package*/ static final SConcept EnumValuesExpression$xP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d1e4bce56L, "jetbrains.mps.baseLanguage.structure.EnumValuesExpression");
-    /*package*/ static final SConcept EnumClass$uy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
-    /*package*/ static final SConcept StaticMethodCall$eu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, "jetbrains.mps.baseLanguage.structure.StaticMethodCall");
-    /*package*/ static final SConcept StaticFieldReference$K8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, "jetbrains.mps.baseLanguage.structure.StaticFieldReference");
-    /*package*/ static final SConcept AbstractClassifierReference$vv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6c91efa5ec8cd7L, "jetbrains.mps.baseLanguage.structure.AbstractClassifierReference");
-    /*package*/ static final SConcept EnumConstantReference$RO = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference");
+    /*package*/ static final SConcept StaticMethodDeclaration$FJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
+    /*package*/ static final SConcept StaticFieldDeclaration$jR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
+    /*package*/ static final SConcept EnumConstantDeclaration$MW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept EnumValueOfExpression$49 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d1e5db156L, "jetbrains.mps.baseLanguage.structure.EnumValueOfExpression");
+    /*package*/ static final SConcept EnumValuesExpression$YB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d1e4bce56L, "jetbrains.mps.baseLanguage.structure.EnumValuesExpression");
+    /*package*/ static final SConcept EnumClass$Vk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
+    /*package*/ static final SConcept StaticMethodCall$Fg = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, "jetbrains.mps.baseLanguage.structure.StaticMethodCall");
+    /*package*/ static final SConcept StaticFieldReference$cU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, "jetbrains.mps.baseLanguage.structure.StaticFieldReference");
+    /*package*/ static final SConcept AbstractClassifierReference$Wh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6c91efa5ec8cd7L, "jetbrains.mps.baseLanguage.structure.AbstractClassifierReference");
+    /*package*/ static final SConcept EnumConstantReference$kA = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SReferenceLink classifier$WKxm = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
-    /*package*/ static final SReferenceLink classifier$G8c4 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6c91efa5ec8cd7L, 0x6c6c91efa5ecbbb2L, "classifier");
-    /*package*/ static final SReferenceLink enumConstantDeclaration$zW91 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration");
-    /*package*/ static final SReferenceLink enumClass$wB9x = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0x10a758428feL, "enumClass");
-    /*package*/ static final SReferenceLink enumClass$fVAA = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d1e5db156L, 0x11d1e5e45e8L, "enumClass");
-    /*package*/ static final SReferenceLink enumClass$aHek = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d1e4bce56L, 0x11d1e4bf6afL, "enumClass");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SReferenceLink classConcept$70aQ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
-    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink typeArgument$C5i1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink classifier$BPY8 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
+    /*package*/ static final SReferenceLink classifier$ndCQ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6c91efa5ec8cd7L, 0x6c6c91efa5ecbbb2L, "classifier");
+    /*package*/ static final SReferenceLink enumConstantDeclaration$f1_N = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration");
+    /*package*/ static final SReferenceLink enumClass$bGAj = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0x10a758428feL, "enumClass");
+    /*package*/ static final SReferenceLink enumClass$V13o = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d1e5db156L, 0x11d1e5e45e8L, "enumClass");
+    /*package*/ static final SReferenceLink enumClass$PMF6 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d1e4bce56L, 0x11d1e4bf6afL, "enumClass");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink classConcept$M5BC = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept");
+    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink typeArgument$jaIN = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument");
   }
 }

@@ -28,7 +28,7 @@ public class ActionInstance_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_2cluuu_a(), CONCEPTS.ActionInstance$2f));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_2cluuu_a(), CONCEPTS.ActionInstance$Zi));
     result.add(new SMP_Subconcepts_2cluuu_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class ActionInstance_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_2cluuu_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.ActionInstance$2f, LINKS.action$dGiY);
+      super((SAbstractConcept) CONCEPTS.ActionInstance$Zi, LINKS.action$rhg1);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class ActionInstance_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_2cluuu_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ActionInstance$2f);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ActionInstance$Zi);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class ActionInstance_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ActionInstance$2f = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da2ba57L, "jetbrains.mps.lang.plugin.structure.ActionInstance");
+    /*package*/ static final SConcept ActionInstance$Zi = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da2ba57L, "jetbrains.mps.lang.plugin.structure.ActionInstance");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink action$dGiY = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da2ba57L, 0x1181da2f27fL, "action");
+    /*package*/ static final SReferenceLink action$rhg1 = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181da2ba57L, 0x1181da2f27fL, "action");
   }
 }

@@ -57,95 +57,95 @@ public final class RefPresentationFunctionUtil {
     }
 
     private void adjustParameter_smartReference(SNode body) {
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_smartReference$im, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_smartReference$om, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, _quotation_createNode_5b8pgj_a0a0a0a0a0h4());
         }
       });
     }
     private void adjustParameter_inEditor(SNode body) {
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_inEditor$yY, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_inEditor$CY, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, _quotation_createNode_5b8pgj_a0a0a0a0a0i4());
         }
       });
     }
     private void adjustParameter_visible(SNode body) {
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_visible$3O, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_visible$9O, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, createBooleanConstant_5b8pgj_a0a0a0a0a0j4(visible));
         }
       });
     }
     private void adjustParameter_exists(SNode body) {
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_exists$dQ, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_exists$jQ, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, _quotation_createNode_5b8pgj_a0a0a0a0a0k4());
         }
       });
     }
     private void adjustParameter_parameterNode(SNode body) {
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_parameterNode$xu, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_parameterNode$Bu, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, _quotation_createNode_5b8pgj_a0a0a0a0a0l4());
         }
       });
     }
     private void adjustParameter_referenceNode(SNode body) {
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_referenceNode$uf, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_referenceNode$$f, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, _quotation_createNode_5b8pgj_a0a0a0a0a0m4());
         }
       });
     }
     private void adjustParameter_contextNode(SNode body) {
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_contextNode$zg, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_contextNode$Dg, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, _quotation_createNode_5b8pgj_a0a0a0a0a0n4());
         }
       });
     }
     private void adjustParameter_enclosingNode(SNode body) {
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConceptParameter_ReferentSearchScope_enclosingNode$rj, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConceptParameter_ReferentSearchScope_enclosingNode$xj, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, _quotation_createNode_5b8pgj_a0a0a0a0a0o4());
         }
       });
     }
     private void adjustParameter_operationContext(SNode body) {
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConceptFunctionParameter_operationContext$Gv, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConceptFunctionParameter_operationContext$HV, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, _quotation_createNode_5b8pgj_a0a0a0a0a0p4());
         }
       });
     }
     private void adjustParameter_position(SNode body) {
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_position$mJ, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_position$sJ, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, _quotation_createNode_5b8pgj_a0a0a0a0a0q4());
         }
       });
     }
     private void adjustParameter_containingLink(SNode body) {
-      ConstraintsMigrationUtil.replaceNodeWithLink(body, CONCEPTS.ConstraintFunctionParameter_containingLink$G$, CONCEPTS.QueryFunctionParameter_SubstituteMenu_Link$uG);
+      ConstraintsMigrationUtil.replaceNodeWithLink(body, CONCEPTS.ConstraintFunctionParameter_containingLink$M$, CONCEPTS.QueryFunctionParameter_SubstituteMenu_Link$Ej);
     }
     private void adjustParameter_linkTarget(SNode body) {
-      ConstraintsMigrationUtil.replaceNodeWithConcept(body, CONCEPTS.ConstraintFunctionParameter_linkTargetNode$_O, CONCEPTS.ConstraintFunctionParameter_linkTarget$nq);
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_linkTarget$nq, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+      ConstraintsMigrationUtil.replaceNodeWithConcept(body, CONCEPTS.ConstraintFunctionParameter_linkTargetNode$FO, CONCEPTS.ConstraintFunctionParameter_linkTarget$tq);
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_linkTarget$tq, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, _quotation_createNode_5b8pgj_a0a0a0a0b0s4());
         }
       });
     }
     private void adjustParameter_model(SNode body) {
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConceptFunctionParameter_model$i4, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConceptFunctionParameter_model$jw, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, _quotation_createNode_5b8pgj_a0a0a0a0a0t4());
         }
       });
     }
     private void adjustParameter_contextRole(SNode body) {
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_contextRole$i, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_contextRole$6i, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, _quotation_createNode_5b8pgj_a0a0a0a0a0u4());
         }
@@ -165,8 +165,8 @@ public final class RefPresentationFunctionUtil {
       return quotedNode_1;
     }
     private static SNode createBooleanConstant_5b8pgj_a0a0a0a0a0j4(boolean p0) {
-      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BooleanConstant$Ui);
-      n0.setProperty(PROPS.value$qt90, "" + (p0));
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BooleanConstant$n4);
+      n0.setProperty(PROPS.value$5y_M, "" + (p0));
       return n0.getResult();
     }
     private static SNode _quotation_createNode_5b8pgj_a0a0a0a0a0k4() {
@@ -304,100 +304,100 @@ public final class RefPresentationFunctionUtil {
     }
 
     private void adjustParameter_smartReference(SNode body) {
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_smartReference$im, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_smartReference$om, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, _quotation_createNode_5b8pgj_a0a0a0a0a0i6());
         }
       });
     }
     private void adjustParameter_inEditor(SNode body) {
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_inEditor$yY, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_inEditor$CY, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, createBooleanConstant_5b8pgj_a0a0a0a0a0j6(inEditor));
         }
       });
     }
     private void adjustParameter_visible(SNode body) {
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_visible$3O, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_visible$9O, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, createBooleanConstant_5b8pgj_a0a0a0a0a0k6(visible));
         }
       });
     }
     private void adjustParameter_exists(SNode body) {
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_exists$dQ, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_exists$jQ, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, _quotation_createNode_5b8pgj_a0a0a0a0a0l6());
         }
       });
     }
     private void adjustParameter_parameterNode(SNode body) {
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_parameterNode$xu, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_parameterNode$Bu, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, _quotation_createNode_5b8pgj_a0a0a0a0a0m6());
         }
       });
     }
     private void adjustParameter_referenceNode(SNode body) {
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_referenceNode$uf, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_referenceNode$$f, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, _quotation_createNode_5b8pgj_a0a0a0a0a0n6());
         }
       });
     }
     private void adjustParameter_contextNode(SNode body) {
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_contextNode$zg, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_contextNode$Dg, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, _quotation_createNode_5b8pgj_a0a0a0a0a0o6());
         }
       });
     }
     private void adjustParameter_enclosingNode(SNode body) {
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConceptParameter_ReferentSearchScope_enclosingNode$rj, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConceptParameter_ReferentSearchScope_enclosingNode$xj, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, _quotation_createNode_5b8pgj_a0a0a0a0a0p6());
         }
       });
     }
     private void adjustParameter_operationContext(SNode body) {
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConceptFunctionParameter_operationContext$Gv, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConceptFunctionParameter_operationContext$HV, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, _quotation_createNode_5b8pgj_a0a0a0a0a0q6());
         }
       });
     }
     private void adjustParameter_position(SNode body) {
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_position$mJ, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_position$sJ, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, _quotation_createNode_5b8pgj_a0a0a0a0a0r6());
         }
       });
     }
     private void adjustParameter_containingLink(SNode body) {
-      ConstraintsMigrationUtil.replaceNodeWithLink(body, CONCEPTS.ConstraintFunctionParameter_containingLink$G$, CONCEPTS.ConstraintFunctionParameter_containmentLink$5A);
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_containmentLink$5A, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+      ConstraintsMigrationUtil.replaceNodeWithLink(body, CONCEPTS.ConstraintFunctionParameter_containingLink$M$, CONCEPTS.ConstraintFunctionParameter_containmentLink$bA);
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_containmentLink$bA, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, _quotation_createNode_5b8pgj_a0a0a0a0b0s6());
         }
       });
     }
     private void adjustParameter_linkTarget(SNode body) {
-      ConstraintsMigrationUtil.replaceNodeWithConcept(body, CONCEPTS.ConstraintFunctionParameter_linkTargetNode$_O, CONCEPTS.ConstraintFunctionParameter_linkTarget$nq);
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_linkTarget$nq, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+      ConstraintsMigrationUtil.replaceNodeWithConcept(body, CONCEPTS.ConstraintFunctionParameter_linkTargetNode$FO, CONCEPTS.ConstraintFunctionParameter_linkTarget$tq);
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_linkTarget$tq, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, _quotation_createNode_5b8pgj_a0a0a0a0b0t6());
         }
       });
     }
     private void adjustParameter_model(SNode body) {
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConceptFunctionParameter_model$i4, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConceptFunctionParameter_model$jw, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, _quotation_createNode_5b8pgj_a0a0a0a0a0u6());
         }
       });
     }
     private void adjustParameter_contextRole(SNode body) {
-      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_contextRole$i, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
+      ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_contextRole$6i, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNodeOperations.replaceWithAnother(it, _quotation_createNode_5b8pgj_a0a0a0a0a0v6());
         }
@@ -410,13 +410,13 @@ public final class RefPresentationFunctionUtil {
       return quotedNode_1;
     }
     private static SNode createBooleanConstant_5b8pgj_a0a0a0a0a0j6(boolean p0) {
-      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BooleanConstant$Ui);
-      n0.setProperty(PROPS.value$qt90, "" + (p0));
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BooleanConstant$n4);
+      n0.setProperty(PROPS.value$5y_M, "" + (p0));
       return n0.getResult();
     }
     private static SNode createBooleanConstant_5b8pgj_a0a0a0a0a0k6(boolean p0) {
-      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BooleanConstant$Ui);
-      n0.setProperty(PROPS.value$qt90, "" + (p0));
+      SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BooleanConstant$n4);
+      n0.setProperty(PROPS.value$5y_M, "" + (p0));
       return n0.getResult();
     }
     private static SNode _quotation_createNode_5b8pgj_a0a0a0a0a0l6() {
@@ -533,11 +533,11 @@ public final class RefPresentationFunctionUtil {
 
 
   public static boolean hasParameter_visible(SNode body) {
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_visible$3O, false, new SAbstractConcept[]{})).isNotEmpty();
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_visible$9O, false, new SAbstractConcept[]{})).isNotEmpty();
   }
 
   public static boolean hasParameter_inEditor(SNode body) {
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_inEditor$yY, false, new SAbstractConcept[]{})).isNotEmpty();
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.ConstraintFunctionParameter_inEditor$CY, false, new SAbstractConcept[]{})).isNotEmpty();
   }
 
 
@@ -545,19 +545,19 @@ public final class RefPresentationFunctionUtil {
     final Wrappers._T<SNode> _conceptNode = new Wrappers._T<SNode>(conceptNode);
     while (_conceptNode.value != null) {
       SModel constraintsAspect = SModuleOperations.getAspect(SNodeOperations.getModel(_conceptNode.value).getModule(), "constraints");
-      SNode constraintsNode = ListSequence.fromList(SModelOperations.roots(constraintsAspect, CONCEPTS.ConceptConstraints$St)).findFirst(new IWhereFilter<SNode>() {
+      SNode constraintsNode = ListSequence.fromList(SModelOperations.roots(constraintsAspect, CONCEPTS.ConceptConstraints$Yt)).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return Objects.equals(SLinkOperations.getTarget(it, LINKS.concept$w6jZ), _conceptNode.value);
+          return Objects.equals(SLinkOperations.getTarget(it, LINKS.concept$EVpZ), _conceptNode.value);
         }
       });
-      SNode refConstraintNode = ListSequence.fromList(SLinkOperations.getChildren(constraintsNode, LINKS.referent$9bTK)).findFirst(new IWhereFilter<SNode>() {
+      SNode refConstraintNode = ListSequence.fromList(SLinkOperations.getChildren(constraintsNode, LINKS.referent$k0ZK)).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return Objects.equals(SLinkOperations.getTarget(it, LINKS.applicableLink$WTlX), referenceNode);
+          return Objects.equals(SLinkOperations.getTarget(it, LINKS.applicableLink$7IrX), referenceNode);
         }
       });
 
       if (refConstraintNode != null) {
-        return SLinkOperations.getTarget(SLinkOperations.getTarget(refConstraintNode, LINKS.presentation$KWhP), LINKS.body$z0FY);
+        return SLinkOperations.getTarget(SLinkOperations.getTarget(refConstraintNode, LINKS.presentation$VLnP), LINKS.body$e68K);
       }
 
       _conceptNode.value = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getImmediateSuperconcepts_idhMuxyK2.invoke(_conceptNode.value)).where(new IWhereFilter<SNode>() {
@@ -570,36 +570,36 @@ public final class RefPresentationFunctionUtil {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConstraintFunctionParameter_smartReference$im = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x5df04ce71509adfdL, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_smartReference");
-    /*package*/ static final SConcept ConstraintFunctionParameter_inEditor$yY = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x3fb59c48ff4b8cfdL, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_inEditor");
-    /*package*/ static final SConcept ConstraintFunctionParameter_visible$3O = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x5df04ce71509adf4L, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_visible");
-    /*package*/ static final SConcept ConstraintFunctionParameter_exists$dQ = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x40a0f55764728181L, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_exists");
-    /*package*/ static final SConcept ConstraintFunctionParameter_parameterNode$xu = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x36367902116a29ccL, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_parameterNode");
-    /*package*/ static final SConcept ConstraintFunctionParameter_referenceNode$uf = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10ed4294f69L, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_referenceNode");
-    /*package*/ static final SConcept ConstraintFunctionParameter_contextNode$zg = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x7c6f6cc2e7bb76f0L, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_contextNode");
-    /*package*/ static final SConcept ConceptParameter_ReferentSearchScope_enclosingNode$rj = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b81d7448bL, "jetbrains.mps.lang.constraints.structure.ConceptParameter_ReferentSearchScope_enclosingNode");
-    /*package*/ static final SConcept ConceptFunctionParameter_operationContext$Gv = MetaAdapterFactory.getConcept(0x13744753c81f424aL, 0x9c1bcf8943bf4e86L, 0x10e761c927aL, "jetbrains.mps.lang.sharedConcepts.structure.ConceptFunctionParameter_operationContext");
-    /*package*/ static final SConcept ConstraintFunctionParameter_position$mJ = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x40a0f55764728188L, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_position");
-    /*package*/ static final SConcept ConstraintFunctionParameter_containingLink$G$ = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x295782e439c9459bL, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_containingLink");
-    /*package*/ static final SConcept QueryFunctionParameter_SubstituteMenu_Link$uG = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11c6f1d424dL, "jetbrains.mps.lang.editor.structure.QueryFunctionParameter_SubstituteMenu_Link");
-    /*package*/ static final SConcept ConstraintFunctionParameter_linkTargetNode$_O = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x118bd28275fL, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_linkTargetNode");
-    /*package*/ static final SConcept ConstraintFunctionParameter_linkTarget$nq = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x4d3a0509807d09a1L, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_linkTarget");
-    /*package*/ static final SConcept ConceptFunctionParameter_model$i4 = MetaAdapterFactory.getConcept(0x13744753c81f424aL, 0x9c1bcf8943bf4e86L, 0x10e761b3745L, "jetbrains.mps.lang.sharedConcepts.structure.ConceptFunctionParameter_model");
-    /*package*/ static final SConcept ConstraintFunctionParameter_contextRole$i = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x40a0f5576472817aL, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_contextRole");
-    /*package*/ static final SConcept BooleanConstant$Ui = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant");
-    /*package*/ static final SConcept ConstraintFunctionParameter_containmentLink$5A = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x4d3a0509807bc470L, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_containmentLink");
-    /*package*/ static final SConcept ConceptConstraints$St = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, "jetbrains.mps.lang.constraints.structure.ConceptConstraints");
+    /*package*/ static final SConcept ConstraintFunctionParameter_smartReference$om = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x5df04ce71509adfdL, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_smartReference");
+    /*package*/ static final SConcept ConstraintFunctionParameter_inEditor$CY = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x3fb59c48ff4b8cfdL, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_inEditor");
+    /*package*/ static final SConcept ConstraintFunctionParameter_visible$9O = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x5df04ce71509adf4L, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_visible");
+    /*package*/ static final SConcept ConstraintFunctionParameter_exists$jQ = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x40a0f55764728181L, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_exists");
+    /*package*/ static final SConcept ConstraintFunctionParameter_parameterNode$Bu = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x36367902116a29ccL, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_parameterNode");
+    /*package*/ static final SConcept ConstraintFunctionParameter_referenceNode$$f = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10ed4294f69L, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_referenceNode");
+    /*package*/ static final SConcept ConstraintFunctionParameter_contextNode$Dg = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x7c6f6cc2e7bb76f0L, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_contextNode");
+    /*package*/ static final SConcept ConceptParameter_ReferentSearchScope_enclosingNode$xj = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b81d7448bL, "jetbrains.mps.lang.constraints.structure.ConceptParameter_ReferentSearchScope_enclosingNode");
+    /*package*/ static final SConcept ConceptFunctionParameter_operationContext$HV = MetaAdapterFactory.getConcept(0x13744753c81f424aL, 0x9c1bcf8943bf4e86L, 0x10e761c927aL, "jetbrains.mps.lang.sharedConcepts.structure.ConceptFunctionParameter_operationContext");
+    /*package*/ static final SConcept ConstraintFunctionParameter_position$sJ = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x40a0f55764728188L, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_position");
+    /*package*/ static final SConcept ConstraintFunctionParameter_containingLink$M$ = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x295782e439c9459bL, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_containingLink");
+    /*package*/ static final SConcept QueryFunctionParameter_SubstituteMenu_Link$Ej = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11c6f1d424dL, "jetbrains.mps.lang.editor.structure.QueryFunctionParameter_SubstituteMenu_Link");
+    /*package*/ static final SConcept ConstraintFunctionParameter_linkTargetNode$FO = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x118bd28275fL, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_linkTargetNode");
+    /*package*/ static final SConcept ConstraintFunctionParameter_linkTarget$tq = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x4d3a0509807d09a1L, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_linkTarget");
+    /*package*/ static final SConcept ConceptFunctionParameter_model$jw = MetaAdapterFactory.getConcept(0x13744753c81f424aL, 0x9c1bcf8943bf4e86L, 0x10e761b3745L, "jetbrains.mps.lang.sharedConcepts.structure.ConceptFunctionParameter_model");
+    /*package*/ static final SConcept ConstraintFunctionParameter_contextRole$6i = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x40a0f5576472817aL, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_contextRole");
+    /*package*/ static final SConcept BooleanConstant$n4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant");
+    /*package*/ static final SConcept ConstraintFunctionParameter_containmentLink$bA = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x4d3a0509807bc470L, "jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_containmentLink");
+    /*package*/ static final SConcept ConceptConstraints$Yt = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, "jetbrains.mps.lang.constraints.structure.ConceptConstraints");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$qt90 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
+    /*package*/ static final SProperty value$5y_M = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$w6jZ = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a720969b6L, "concept");
-    /*package*/ static final SContainmentLink referent$9bTK = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a726c901bL, "referent");
-    /*package*/ static final SReferenceLink applicableLink$WTlX = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, 0x10b7317b98aL, "applicableLink");
-    /*package*/ static final SContainmentLink presentation$KWhP = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, 0x36367902116a44c4L, "presentation");
-    /*package*/ static final SContainmentLink body$z0FY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
+    /*package*/ static final SReferenceLink concept$EVpZ = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a720969b6L, "concept");
+    /*package*/ static final SContainmentLink referent$k0ZK = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a726c901bL, "referent");
+    /*package*/ static final SReferenceLink applicableLink$7IrX = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, 0x10b7317b98aL, "applicableLink");
+    /*package*/ static final SContainmentLink presentation$VLnP = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b731752daL, 0x36367902116a44c4L, "presentation");
+    /*package*/ static final SContainmentLink body$e68K = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
   }
 }

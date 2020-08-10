@@ -80,11 +80,11 @@ public class WordRangeSelection extends AbstractMultipleSelection {
     if (sModelDescriptor == null) {
       throw new SelectionRestoreException();
     }
-    myFirstNode = SNodeOperations.as(findNode(sModelDescriptor, properties, FIRST_NODE_ID_PROPERTY_NAME), CONCEPTS.TextElement$Ue);
-    myLastNode = SNodeOperations.as(findNode(sModelDescriptor, properties, LAST_NODE_ID_PROPERTY_NAME), CONCEPTS.TextElement$Ue);
-    myFirstParentNode = SNodeOperations.as(findNode(sModelDescriptor, properties, FIRST_PARENT_NODE_ID_PROPERTY_NAME), CONCEPTS.Line$w3);
-    myLastParentNode = SNodeOperations.as(findNode(sModelDescriptor, properties, LAST_PARENT_NODE_ID_PROPERTY_NAME), CONCEPTS.Line$w3);
-    if (myFirstParentNode != SNodeOperations.as(SNodeOperations.getParent(myFirstNode), CONCEPTS.Line$w3) || myLastParentNode != SNodeOperations.as(SNodeOperations.getParent(myLastNode), CONCEPTS.Line$w3)) {
+    myFirstNode = SNodeOperations.as(findNode(sModelDescriptor, properties, FIRST_NODE_ID_PROPERTY_NAME), CONCEPTS.TextElement$WN);
+    myLastNode = SNodeOperations.as(findNode(sModelDescriptor, properties, LAST_NODE_ID_PROPERTY_NAME), CONCEPTS.TextElement$WN);
+    myFirstParentNode = SNodeOperations.as(findNode(sModelDescriptor, properties, FIRST_PARENT_NODE_ID_PROPERTY_NAME), CONCEPTS.Line$yC);
+    myLastParentNode = SNodeOperations.as(findNode(sModelDescriptor, properties, LAST_PARENT_NODE_ID_PROPERTY_NAME), CONCEPTS.Line$yC);
+    if (myFirstParentNode != SNodeOperations.as(SNodeOperations.getParent(myFirstNode), CONCEPTS.Line$yC) || myLastParentNode != SNodeOperations.as(SNodeOperations.getParent(myLastNode), CONCEPTS.Line$yC)) {
       throw new SelectionRestoreException();
     }
     myGrowingForward = SelectionInfoImpl.Util.getBooleanProperty(properties, GROWING_FORWARD_PROPERTY_NAME);
@@ -101,8 +101,8 @@ public class WordRangeSelection extends AbstractMultipleSelection {
     super(editorComponent);
     myFirstNode = firstNode;
     myLastNode = lastNode;
-    myFirstParentNode = SNodeOperations.as(SNodeOperations.getParent(myFirstNode), CONCEPTS.Line$w3);
-    myLastParentNode = SNodeOperations.as(SNodeOperations.getParent(myLastNode), CONCEPTS.Line$w3);
+    myFirstParentNode = SNodeOperations.as(SNodeOperations.getParent(myFirstNode), CONCEPTS.Line$yC);
+    myLastParentNode = SNodeOperations.as(SNodeOperations.getParent(myLastNode), CONCEPTS.Line$yC);
     myModelReference = myFirstNode.getModel().getReference().toString();
     myGrowingForward = growingForward;
     assert myFirstParentNode != null;
@@ -214,7 +214,7 @@ public class WordRangeSelection extends AbstractMultipleSelection {
     final List<SNode> selectedNodes = getSelectedNodes();
     List<SNode> lines = new ArrayList<SNode>();
     for (SNode n : selectedNodes) {
-      SNode p = SNodeOperations.as(SNodeOperations.getParent(n), CONCEPTS.Line$w3);
+      SNode p = SNodeOperations.as(SNodeOperations.getParent(n), CONCEPTS.Line$yC);
       if (p != null && !(ListSequence.fromList(lines).contains(p))) {
         ListSequence.fromList(lines).addElement(p);
       }
@@ -222,7 +222,7 @@ public class WordRangeSelection extends AbstractMultipleSelection {
     List<SNode> copiesOfLines = new ArrayList<SNode>();
     for (SNode l : lines) {
       SNode lc = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
-      ListSequence.fromList(SLinkOperations.getChildren(lc, LINKS.elements$cK1w)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$cK1w)).where(new IWhereFilter<SNode>() {
+      ListSequence.fromList(SLinkOperations.getChildren(lc, LINKS.elements$_j45)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$_j45)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return selectedNodes.contains(it);
         }
@@ -232,7 +232,7 @@ public class WordRangeSelection extends AbstractMultipleSelection {
         }
       }));
       ListSequence.fromList(copiesOfLines).addElement(lc);
-      ListSequence.fromList(SLinkOperations.getChildren(artificialParent, LINKS.lines$y1jy)).addElement(lc);
+      ListSequence.fromList(SLinkOperations.getChildren(artificialParent, LINKS.lines$U$m7)).addElement(lc);
     }
     return copiesOfLines;
   }
@@ -251,14 +251,14 @@ public class WordRangeSelection extends AbstractMultipleSelection {
       @Override
       public void doExecute() {
         if (!(myGrowingForward) && getFirstNode() != getLastNode()) {
-          SNode nextSelectableChild = getNextSelectableNode(SNodeOperations.as(getFirstNode(), CONCEPTS.TextElement$Ue), true);
+          SNode nextSelectableChild = getNextSelectableNode(SNodeOperations.as(getFirstNode(), CONCEPTS.TextElement$WN), true);
           if (nextSelectableChild != null) {
-            selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), nextSelectableChild, SNodeOperations.as(getLastNode(), CONCEPTS.TextElement$Ue), myGrowingForward));
+            selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), nextSelectableChild, SNodeOperations.as(getLastNode(), CONCEPTS.TextElement$WN), myGrowingForward));
           }
         } else {
-          SNode nextSelectableChild = getNextSelectableNode(SNodeOperations.as(getLastNode(), CONCEPTS.TextElement$Ue), true);
+          SNode nextSelectableChild = getNextSelectableNode(SNodeOperations.as(getLastNode(), CONCEPTS.TextElement$WN), true);
           if (nextSelectableChild != null) {
-            selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), SNodeOperations.as(getFirstNode(), CONCEPTS.TextElement$Ue), nextSelectableChild, true));
+            selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), SNodeOperations.as(getFirstNode(), CONCEPTS.TextElement$WN), nextSelectableChild, true));
           }
         }
       }
@@ -270,14 +270,14 @@ public class WordRangeSelection extends AbstractMultipleSelection {
       @Override
       public void doExecute() {
         if (myGrowingForward && getFirstNode() != getLastNode()) {
-          SNode nextSelectableChild = getNextSelectableNode(SNodeOperations.as(getLastNode(), CONCEPTS.TextElement$Ue), false);
+          SNode nextSelectableChild = getNextSelectableNode(SNodeOperations.as(getLastNode(), CONCEPTS.TextElement$WN), false);
           if (nextSelectableChild != null) {
-            selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), SNodeOperations.as(getFirstNode(), CONCEPTS.TextElement$Ue), nextSelectableChild, myGrowingForward));
+            selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), SNodeOperations.as(getFirstNode(), CONCEPTS.TextElement$WN), nextSelectableChild, myGrowingForward));
           }
         } else {
-          SNode nextSelectableChild = getNextSelectableNode(SNodeOperations.as(getFirstNode(), CONCEPTS.TextElement$Ue), false);
+          SNode nextSelectableChild = getNextSelectableNode(SNodeOperations.as(getFirstNode(), CONCEPTS.TextElement$WN), false);
           if (nextSelectableChild != null) {
-            selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), nextSelectableChild, SNodeOperations.as(getLastNode(), CONCEPTS.TextElement$Ue), false));
+            selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), nextSelectableChild, SNodeOperations.as(getLastNode(), CONCEPTS.TextElement$WN), false));
           }
         }
       }
@@ -289,14 +289,14 @@ public class WordRangeSelection extends AbstractMultipleSelection {
       @Override
       public void doExecute() {
         if (!(myGrowingForward) && !(Objects.equals(myFirstParentNode, myLastParentNode))) {
-          SNode nextLine = SNodeOperations.as(SNodeOperations.getNextSibling(myFirstParentNode), CONCEPTS.Line$w3);
+          SNode nextLine = SNodeOperations.as(SNodeOperations.getNextSibling(myFirstParentNode), CONCEPTS.Line$yC);
           if (nextLine != null) {
-            selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), ListSequence.fromList(SLinkOperations.getChildren(nextLine, LINKS.elements$cK1w)).first(), myLastNode, false));
+            selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), ListSequence.fromList(SLinkOperations.getChildren(nextLine, LINKS.elements$_j45)).first(), myLastNode, false));
           }
         } else {
-          SNode nextLine = SNodeOperations.as(SNodeOperations.getNextSibling(myLastParentNode), CONCEPTS.Line$w3);
+          SNode nextLine = SNodeOperations.as(SNodeOperations.getNextSibling(myLastParentNode), CONCEPTS.Line$yC);
           if (nextLine != null) {
-            selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), myFirstNode, ListSequence.fromList(SLinkOperations.getChildren(nextLine, LINKS.elements$cK1w)).last(), true));
+            selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), myFirstNode, ListSequence.fromList(SLinkOperations.getChildren(nextLine, LINKS.elements$_j45)).last(), true));
           }
         }
       }
@@ -308,14 +308,14 @@ public class WordRangeSelection extends AbstractMultipleSelection {
       @Override
       public void doExecute() {
         if (myGrowingForward && !(Objects.equals(myFirstParentNode, myLastParentNode))) {
-          SNode previousLine = SNodeOperations.as(SNodeOperations.getPrevSibling(myLastParentNode), CONCEPTS.Line$w3);
+          SNode previousLine = SNodeOperations.as(SNodeOperations.getPrevSibling(myLastParentNode), CONCEPTS.Line$yC);
           if (previousLine != null) {
-            selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), myFirstNode, ListSequence.fromList(SLinkOperations.getChildren(previousLine, LINKS.elements$cK1w)).last(), true));
+            selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), myFirstNode, ListSequence.fromList(SLinkOperations.getChildren(previousLine, LINKS.elements$_j45)).last(), true));
           }
         } else {
-          SNode previousLine = SNodeOperations.as(SNodeOperations.getPrevSibling(myFirstParentNode), CONCEPTS.Line$w3);
+          SNode previousLine = SNodeOperations.as(SNodeOperations.getPrevSibling(myFirstParentNode), CONCEPTS.Line$yC);
           if (previousLine != null) {
-            selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), ListSequence.fromList(SLinkOperations.getChildren(previousLine, LINKS.elements$cK1w)).first(), myLastNode, false));
+            selectionManager.pushSelection(new WordRangeSelection(getEditorComponent(), ListSequence.fromList(SLinkOperations.getChildren(previousLine, LINKS.elements$_j45)).first(), myLastNode, false));
           }
         }
       }
@@ -345,8 +345,8 @@ public class WordRangeSelection extends AbstractMultipleSelection {
         public void doExecute() {
           List<SNode> selectedNodes = getSelectedNodes();
           assert selectedNodes.size() > 0;
-          SNode firstSelected = SNodeOperations.as(selectedNodes.get(0), CONCEPTS.TextElement$Ue);
-          SNode lastSelected = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextElement$Ue);
+          SNode firstSelected = SNodeOperations.as(selectedNodes.get(0), CONCEPTS.TextElement$WN);
+          SNode lastSelected = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextElement$WN);
           SNode prevSelectableNode = getNextSelectableNode(firstSelected, false);
           SNode nextSelectableNode = getNextSelectableNode(lastSelected, true);
           for (SNode node : selectedNodes) {
@@ -379,8 +379,8 @@ public class WordRangeSelection extends AbstractMultipleSelection {
 
     SNode currentLine = myFirstParentNode;
     while (true) {
-      SNode next = SNodeOperations.as(SNodeOperations.getNextSibling(currentLine), CONCEPTS.Line$w3);
-      if (ListSequence.fromList(SLinkOperations.getChildren(currentLine, LINKS.elements$cK1w)).isEmpty()) {
+      SNode next = SNodeOperations.as(SNodeOperations.getNextSibling(currentLine), CONCEPTS.Line$yC);
+      if (ListSequence.fromList(SLinkOperations.getChildren(currentLine, LINKS.elements$_j45)).isEmpty()) {
         SNodeOperations.deleteNode(currentLine);
       } else {
         someLinesStay = true;
@@ -392,7 +392,7 @@ public class WordRangeSelection extends AbstractMultipleSelection {
     }
     if (!(someLinesStay)) {
       SNode l = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line"));
-      ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$cK1w)).addElement(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")));
+      ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.elements$_j45)).addElement(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word")));
       parent.addChild(containingLink, l);
     } else {
       if (!(Objects.equals(myFirstParentNode, myLastParentNode)) && (SNodeOperations.getParent(myFirstParentNode) != null) && (SNodeOperations.getParent(myLastParentNode) != null)) {
@@ -430,9 +430,9 @@ public class WordRangeSelection extends AbstractMultipleSelection {
     return null;
   }
   private Iterable<? extends SNode> getChildIterable() {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(myFirstParentNode, true), CONCEPTS.Line$w3)).translate(new ITranslator2<SNode, SNode>() {
+    return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(myFirstParentNode, true), CONCEPTS.Line$yC)).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode line) {
-        return SLinkOperations.getChildren(line, LINKS.elements$cK1w);
+        return SLinkOperations.getChildren(line, LINKS.elements$_j45);
       }
     });
   }
@@ -454,12 +454,12 @@ public class WordRangeSelection extends AbstractMultipleSelection {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TextElement$Ue = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L, "jetbrains.mps.lang.text.structure.TextElement");
-    /*package*/ static final SConcept Line$w3 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
+    /*package*/ static final SConcept TextElement$WN = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L, "jetbrains.mps.lang.text.structure.TextElement");
+    /*package*/ static final SConcept Line$yC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elements$cK1w = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
-    /*package*/ static final SContainmentLink lines$y1jy = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, 0x2331694e561a03b8L, "lines");
+    /*package*/ static final SContainmentLink elements$_j45 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink lines$U$m7 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, 0x2331694e561a03b8L, "lines");
   }
 }

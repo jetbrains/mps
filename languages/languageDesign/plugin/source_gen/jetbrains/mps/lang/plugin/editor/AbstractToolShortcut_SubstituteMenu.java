@@ -48,7 +48,7 @@ public class AbstractToolShortcut_SubstituteMenu extends SubstituteMenuBase {
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
     result.add(new SMP_Subconcepts_7ty2v0_a());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_7ty2v0_b(), CONCEPTS.CustomToolShortcut$gS));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_7ty2v0_b(), CONCEPTS.CustomToolShortcut$dV));
     return result;
   }
 
@@ -67,14 +67,14 @@ public class AbstractToolShortcut_SubstituteMenu extends SubstituteMenuBase {
 
   public class SMP_Subconcepts_7ty2v0_a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.AbstractToolShortcut$Kx).stream().filter(new Predicate<SAbstractConcept>() {
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.AbstractToolShortcut$H$).stream().filter(new Predicate<SAbstractConcept>() {
         public boolean test(SAbstractConcept concept) {
           return filterConcept(_context, concept);
         }
       }).collect(Collectors.toList());
     }
     private boolean filterConcept(SubstituteMenuContext _context, SAbstractConcept concept) {
-      return !(SConceptOperations.isExactly(SNodeOperations.asSConcept(concept), CONCEPTS.CustomToolShortcut$gS));
+      return !(SConceptOperations.isExactly(SNodeOperations.asSConcept(concept), CONCEPTS.CustomToolShortcut$dV));
     }
     @NotNull
     @Override
@@ -116,7 +116,7 @@ public class AbstractToolShortcut_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.CustomToolShortcut$gS;
+          return CONCEPTS.CustomToolShortcut$dV;
         }
         @Nullable
         @Override
@@ -149,24 +149,24 @@ public class AbstractToolShortcut_SubstituteMenu extends SubstituteMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.AbstractToolKeystroke$VM;
+      return CONCEPTS.AbstractToolKeystroke$SP;
     }
   }
   private static SNode createCustomToolShortcut_7ty2v0_a0a0b(SNode p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CustomToolShortcut$gS);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CustomToolShortcut$dV);
     {
-      SNodeBuilder n1 = n0.forChild(LINKS.changes$H1Wp).initNode(p0, CONCEPTS.AbstractToolKeystroke$VM, false);
+      SNodeBuilder n1 = n0.forChild(LINKS.changes$UATs).initNode(p0, CONCEPTS.AbstractToolKeystroke$SP, false);
     }
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CustomToolShortcut$gS = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76125L, "jetbrains.mps.lang.plugin.structure.CustomToolShortcut");
-    /*package*/ static final SConcept AbstractToolShortcut$Kx = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b5f981L, "jetbrains.mps.lang.plugin.structure.AbstractToolShortcut");
-    /*package*/ static final SConcept AbstractToolKeystroke$VM = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843e384caL, "jetbrains.mps.lang.plugin.structure.AbstractToolKeystroke");
+    /*package*/ static final SConcept CustomToolShortcut$dV = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76125L, "jetbrains.mps.lang.plugin.structure.CustomToolShortcut");
+    /*package*/ static final SConcept AbstractToolShortcut$H$ = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b5f981L, "jetbrains.mps.lang.plugin.structure.AbstractToolShortcut");
+    /*package*/ static final SConcept AbstractToolKeystroke$SP = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843e384caL, "jetbrains.mps.lang.plugin.structure.AbstractToolKeystroke");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink changes$H1Wp = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76125L, 0x68b8d4843b765b8L, "changes");
+    /*package*/ static final SContainmentLink changes$UATs = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76125L, 0x68b8d4843b765b8L, "changes");
   }
 }

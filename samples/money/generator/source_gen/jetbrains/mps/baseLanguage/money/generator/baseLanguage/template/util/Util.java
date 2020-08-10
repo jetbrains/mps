@@ -14,16 +14,16 @@ public class Util {
   public Util() {
   }
   public static boolean isPlusMinusExpressionMoneyExpression(SNode expr) {
-    SNode rtype = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(expr, LINKS.rightExpression$li3b));
-    SNode ltype = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(expr, LINKS.leftExpression$lndx));
+    SNode rtype = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(expr, LINKS.rightExpression$nvX));
+    SNode ltype = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(expr, LINKS.leftExpression$sEj));
     if (TypecheckingFacade.getFromContext().isSubtype(ltype, _quotation_createNode_sd8x_b0a0c0b_0()) && TypecheckingFacade.getFromContext().isSubtype(rtype, _quotation_createNode_sd8x_b0a0c0b())) {
       return true;
     }
     return false;
   }
   public static boolean isMulDivExpressionMoneyExpression(SNode expr) {
-    SNode rtype = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(expr, LINKS.rightExpression$li3b));
-    SNode ltype = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(expr, LINKS.leftExpression$lndx));
+    SNode rtype = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(expr, LINKS.rightExpression$nvX));
+    SNode ltype = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(expr, LINKS.leftExpression$sEj));
     if (TypecheckingFacade.getFromContext().isSubtype(ltype, _quotation_createNode_sd8x_b0a0c0c_0()) && TypecheckingFacade.getFromContext().isSubtype(rtype, _quotation_createNode_sd8x_b0a0c0c())) {
       return true;
     }
@@ -55,7 +55,7 @@ public class Util {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
-    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$nvX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink leftExpression$sEj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
   }
 }

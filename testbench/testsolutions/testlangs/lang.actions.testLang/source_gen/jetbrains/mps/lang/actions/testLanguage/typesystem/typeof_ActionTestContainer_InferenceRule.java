@@ -22,14 +22,14 @@ public class typeof_ActionTestContainer_InferenceRule extends AbstractInferenceR
   public typeof_ActionTestContainer_InferenceRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    for (SNode parameterizedSubstNode : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.addMenu_parameterizedSubstitute$TiF0))) {
+    for (SNode parameterizedSubstNode : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.addMenu_parameterizedSubstitute$xQVP))) {
       {
         SNode _nodeToCheck_1029348928467 = parameterizedSubstNode;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:13c5fcf5-111d-4ae9-b9c9-6a7deeb8dce9(jetbrains.mps.lang.actions.testLanguage.typesystem)", "5750432610478685704", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:13c5fcf5-111d-4ae9-b9c9-6a7deeb8dce9(jetbrains.mps.lang.actions.testLanguage.typesystem)", "5750432610478685707", true), (SNode) _quotation_createNode_ca4xs0_a1a0c0a0a0b(), false, false, _info_12389875345);
       }
     }
-    for (SNode simpleSubstNode : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.addMenu_simpleItemSubstitute$96pV))) {
+    for (SNode simpleSubstNode : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.addMenu_simpleItemSubstitute$LEEK))) {
       {
         SNode _nodeToCheck_1029348928467 = simpleSubstNode;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:13c5fcf5-111d-4ae9-b9c9-6a7deeb8dce9(jetbrains.mps.lang.actions.testLanguage.typesystem)", "5164819300891447935", 0, null);
@@ -39,7 +39,7 @@ public class typeof_ActionTestContainer_InferenceRule extends AbstractInferenceR
 
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ActionTestContainer$CI;
+    return CONCEPTS.ActionTestContainer$Tz;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -63,11 +63,11 @@ public class typeof_ActionTestContainer_InferenceRule extends AbstractInferenceR
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink addMenu_parameterizedSubstitute$TiF0 = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x2d9c6017d86af8c9L, "addMenu_parameterizedSubstitute");
-    /*package*/ static final SContainmentLink addMenu_simpleItemSubstitute$96pV = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x232dec78ad89892aL, "addMenu_simpleItemSubstitute");
+    /*package*/ static final SContainmentLink addMenu_parameterizedSubstitute$xQVP = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x2d9c6017d86af8c9L, "addMenu_parameterizedSubstitute");
+    /*package*/ static final SContainmentLink addMenu_simpleItemSubstitute$LEEK = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x232dec78ad89892aL, "addMenu_simpleItemSubstitute");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ActionTestContainer$CI = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestContainer");
+    /*package*/ static final SConcept ActionTestContainer$Tz = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestContainer");
   }
 }

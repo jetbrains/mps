@@ -35,10 +35,10 @@
       <node id="252830181482536613" at="57,73,58,157" concept="4" />
       <node id="252830181482548449" at="60,7,61,20" concept="10" />
       <node id="252830181482396894" at="64,51,65,150" concept="10" />
-      <node id="252830181482396894" at="69,0,70,0" concept="12" trace="applicableNode$uxMM" />
-      <node id="252830181482396894" at="73,0,74,0" concept="12" trace="PatternCondition$hM" />
-      <node id="252830181482396894" at="74,0,75,0" concept="12" trace="NonTypesystemRule$cw" />
-      <node id="252830181482396894" at="78,0,79,0" concept="12" trace="overrides$sqyj" />
+      <node id="252830181482396894" at="69,0,70,0" concept="12" trace="applicableNode$Ro4C" />
+      <node id="252830181482396894" at="73,0,74,0" concept="12" trace="PatternCondition$zC" />
+      <node id="252830181482396894" at="74,0,75,0" concept="12" trace="NonTypesystemRule$um" />
+      <node id="252830181482396894" at="78,0,79,0" concept="12" trace="overrides$PgO9" />
       <node id="252830181482396894" at="40,0,42,0" concept="8" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
       <node id="252830181482396894" at="29,0,32,0" concept="8" trace="getCaption#()Ljava/lang/String;" />
       <node id="252830181482437831" at="48,0,51,0" concept="8" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
@@ -543,11 +543,11 @@
       <node id="3899612785644111903" at="94,10,95,22" concept="10" />
       <node id="8460355373820354015" at="98,60,99,223" concept="10" />
       <node id="8460355373820354015" at="101,51,102,150" concept="10" />
-      <node id="8460355373820354015" at="106,0,107,0" concept="12" trace="propertyDeclaration$DeB$" />
-      <node id="8460355373820354015" at="107,0,108,0" concept="12" trace="patternVarDecl$KBll" />
-      <node id="8460355373820354015" at="111,0,112,0" concept="12" trace="PropertyMessageTarget$LX" />
-      <node id="8460355373820354015" at="112,0,113,0" concept="12" trace="PropertyPatternVariableReference$D1" />
-      <node id="8460355373820354015" at="113,0,114,0" concept="12" trace="EnumPropertyMigrationInfo$Yg" />
+      <node id="8460355373820354015" at="106,0,107,0" concept="12" trace="propertyDeclaration$24Tq" />
+      <node id="8460355373820354015" at="107,0,108,0" concept="12" trace="patternVarDecl$9tBb" />
+      <node id="8460355373820354015" at="111,0,112,0" concept="12" trace="PropertyMessageTarget$3N" />
+      <node id="8460355373820354015" at="112,0,113,0" concept="12" trace="PropertyPatternVariableReference$UR" />
+      <node id="8460355373820354015" at="113,0,114,0" concept="12" trace="EnumPropertyMigrationInfo$O3" />
       <node id="8460355373820354015" at="31,0,34,0" concept="8" trace="getCaption#()Ljava/lang/String;" />
       <node id="8460355373818951649" at="47,0,50,0" concept="8" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
       <node id="8460355373818953854" at="51,64,54,7" concept="6" />

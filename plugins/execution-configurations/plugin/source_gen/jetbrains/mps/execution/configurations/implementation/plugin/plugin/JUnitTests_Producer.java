@@ -197,7 +197,7 @@ public final class JUnitTests_Producer {
 
     @Override
     protected boolean isApplicable(Object source) {
-      return source instanceof SNode && SNodeOperations.isInstanceOf(((SNode) source), CONCEPTS.BaseConcept$Sz);
+      return source instanceof SNode && SNodeOperations.isInstanceOf(((SNode) source), CONCEPTS.BaseConcept$gP);
     }
 
     @Override
@@ -284,7 +284,7 @@ public final class JUnitTests_Producer {
 
     @Override
     protected boolean isApplicable(Object source) {
-      return source instanceof SNode && SNodeOperations.isInstanceOf(((SNode) source), CONCEPTS.BaseConcept$Sz);
+      return source instanceof SNode && SNodeOperations.isInstanceOf(((SNode) source), CONCEPTS.BaseConcept$gP);
     }
 
     @Override
@@ -359,7 +359,7 @@ public final class JUnitTests_Producer {
         return false;
       }
       for (Object obj : (List) source) {
-        if (!((obj instanceof SNode && SNodeOperations.isInstanceOf(((SNode) obj), CONCEPTS.ITestCase$uo)))) {
+        if (!((obj instanceof SNode && SNodeOperations.isInstanceOf(((SNode) obj), CONCEPTS.ITestCase$Fp)))) {
           return false;
         }
       }
@@ -383,7 +383,7 @@ public final class JUnitTests_Producer {
         return null;
       }
 
-      JUnitTests_Configuration configuration = ((JUnitTests_Configuration) getConfigurationFactory().createConfiguration("" + SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(source).first(), CONCEPTS.ITestCase$uo), PROPS.name$lA7v) + ",...", getContext().getRunManager().getConfigurationTemplate(getConfigurationFactory()).getConfiguration()));
+      JUnitTests_Configuration configuration = ((JUnitTests_Configuration) getConfigurationFactory().createConfiguration("" + SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(source).first(), CONCEPTS.ITestCase$Fp), PROPS.name$MnvL) + ",...", getContext().getRunManager().getConfigurationTemplate(getConfigurationFactory()).getConfiguration()));
       configuration.getJUnitSettings().setJUnitRunType(JUnitRunTypes.NODE);
       configuration.getJUnitSettings().setTestCases(PointerUtils.nodesToCloneableList(source));
       configuration.getJUnitSettings().setInProcess(canRunInProcess);
@@ -407,7 +407,7 @@ public final class JUnitTests_Producer {
         return false;
       }
       for (Object obj : (List) source) {
-        if (!((obj instanceof SNode && SNodeOperations.isInstanceOf(((SNode) obj), CONCEPTS.ITestMethod$1l)))) {
+        if (!((obj instanceof SNode && SNodeOperations.isInstanceOf(((SNode) obj), CONCEPTS.ITestMethod$em)))) {
           return false;
         }
       }
@@ -439,12 +439,12 @@ public final class JUnitTests_Producer {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
-    /*package*/ static final SInterfaceConcept ITestCase$uo = MetaAdapterFactory.getInterfaceConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L, "jetbrains.mps.baseLanguage.unitTest.structure.ITestCase");
-    /*package*/ static final SInterfaceConcept ITestMethod$1l = MetaAdapterFactory.getInterfaceConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b27438a3dL, "jetbrains.mps.baseLanguage.unitTest.structure.ITestMethod");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SInterfaceConcept ITestCase$Fp = MetaAdapterFactory.getInterfaceConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b2709bd56L, "jetbrains.mps.baseLanguage.unitTest.structure.ITestCase");
+    /*package*/ static final SInterfaceConcept ITestMethod$em = MetaAdapterFactory.getInterfaceConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x11b27438a3dL, "jetbrains.mps.baseLanguage.unitTest.structure.ITestMethod");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

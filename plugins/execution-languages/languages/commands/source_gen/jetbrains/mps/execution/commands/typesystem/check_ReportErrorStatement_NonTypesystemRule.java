@@ -20,12 +20,12 @@ public class check_ReportErrorStatement_NonTypesystemRule extends AbstractNonTyp
   public check_ReportErrorStatement_NonTypesystemRule() {
   }
   public void applyRule(final SNode reportStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SNodeOperations.getNodeAncestor(reportStatement, CONCEPTS.CommandMethod$qA, false, false) != null)) {
+    if ((SNodeOperations.getNodeAncestor(reportStatement, CONCEPTS.CommandMethod$1i, false, false) != null)) {
       RulesFunctions_BaseLanguage.check(typeCheckingContext, SetSequence.fromSetAndArray(new HashSet<SNode>(), ReportErrorStatement__BehaviorDescriptor.getException_idJzCdmU6yQ5.invoke(reportStatement)), reportStatement);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ReportErrorStatement$5e;
+    return CONCEPTS.ReportErrorStatement$FU;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -35,7 +35,7 @@ public class check_ReportErrorStatement_NonTypesystemRule extends AbstractNonTyp
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CommandMethod$qA = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be7L, "jetbrains.mps.execution.commands.structure.CommandMethod");
-    /*package*/ static final SConcept ReportErrorStatement$5e = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2c00L, "jetbrains.mps.execution.commands.structure.ReportErrorStatement");
+    /*package*/ static final SConcept CommandMethod$1i = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2be7L, "jetbrains.mps.execution.commands.structure.CommandMethod");
+    /*package*/ static final SConcept ReportErrorStatement$FU = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2c00L, "jetbrains.mps.execution.commands.structure.ReportErrorStatement");
   }
 }

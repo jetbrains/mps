@@ -28,14 +28,14 @@ public class typeof_ConceptIconResourceExpression_InferenceRule extends Abstract
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(n, LINKS.concept$P074);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(n, LINKS.concept$LkIQ);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:cafe8450-2876-42f2-9c43-75da10155c47(jetbrains.mps.lang.resources.typesystem)", "4786190798786384204", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:cafe8450-2876-42f2-9c43-75da10155c47(jetbrains.mps.lang.resources.typesystem)", "4786190798786384209", true), (SNode) _quotation_createNode_fawjx3_a1a0c0a0b0b(), true, false, _info_12389875345);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConceptIconResourceExpression$3v;
+    return CONCEPTS.ConceptIconResourceExpression$Fh;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -58,10 +58,10 @@ public class typeof_ConceptIconResourceExpression_InferenceRule extends Abstract
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink concept$P074 = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7ce01982590bd1eL, 0x426bf72c54e74e64L, "concept");
+    /*package*/ static final SContainmentLink concept$LkIQ = MetaAdapterFactory.getContainmentLink(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7ce01982590bd1eL, 0x426bf72c54e74e64L, "concept");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptIconResourceExpression$3v = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7ce01982590bd1eL, "jetbrains.mps.lang.resources.structure.ConceptIconResourceExpression");
+    /*package*/ static final SConcept ConceptIconResourceExpression$Fh = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x7ce01982590bd1eL, "jetbrains.mps.lang.resources.structure.ConceptIconResourceExpression");
   }
 }

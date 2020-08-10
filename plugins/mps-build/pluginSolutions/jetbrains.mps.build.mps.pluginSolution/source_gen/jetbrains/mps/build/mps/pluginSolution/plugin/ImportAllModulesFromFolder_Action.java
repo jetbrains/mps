@@ -54,7 +54,7 @@ public class ImportAllModulesFromFolder_Action extends BaseAction {
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      if (node != null && !(SNodeOperations.isInstanceOf(node, CONCEPTS.BuildProject$BF))) {
+      if (node != null && !(SNodeOperations.isInstanceOf(node, CONCEPTS.BuildProject$ae))) {
         node = null;
       }
       MapSequence.fromMap(_params).put("node", node);
@@ -116,6 +116,6 @@ public class ImportAllModulesFromFolder_Action extends BaseAction {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildProject$BF = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+    /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
   }
 }

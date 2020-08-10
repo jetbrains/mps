@@ -27,7 +27,7 @@ public class TestSubstitute_Menu_ToInclude1 extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_1daimw_a(), CONCEPTS.TestSubstitute_IncludeDifferentMenus$JP));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_1daimw_a(), CONCEPTS.TestSubstitute_IncludeDifferentMenus$m));
     return result;
   }
 
@@ -72,7 +72,7 @@ public class TestSubstitute_Menu_ToInclude1 extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.TestSubstitute_IncludeDifferentMenus$JP, context);
+        super(CONCEPTS.TestSubstitute_IncludeDifferentMenus$m, context);
         _context = context;
       }
 
@@ -94,6 +94,6 @@ public class TestSubstitute_Menu_ToInclude1 extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestSubstitute_IncludeDifferentMenus$JP = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x1a41c6fb28100fdcL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstitute_IncludeDifferentMenus");
+    /*package*/ static final SConcept TestSubstitute_IncludeDifferentMenus$m = MetaAdapterFactory.getConcept(0xcb6d57037c8e46a9L, 0xb993c1373dc0942fL, 0x1a41c6fb28100fdcL, "jetbrains.mps.lang.editor.menus.substitute.testLanguage.structure.TestSubstitute_IncludeDifferentMenus");
   }
 }

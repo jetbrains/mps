@@ -46,15 +46,15 @@ public final class ReferenceMacro_GetReferent__BehaviorDescriptor extends BaseBH
 
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
     SNode link = null;
-    SNode referenceMacro = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ReferenceMacro$nk, false, false);
+    SNode referenceMacro = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ReferenceMacro$30, false, false);
     if ((referenceMacro != null)) {
       link = ReferenceMacro_GetReferent__BehaviorDescriptor.fromMacro_id2I_OWQO_cV$.invoke(__thisNode__, referenceMacro);
-    } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.ReferenceReductionRule$Lk)) {
-      link = ReferenceMacro_GetReferent__BehaviorDescriptor.fromRefReductionRule_id2I_OWQO_d$v.invoke(__thisNode__, SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.ReferenceReductionRule$Lk));
+    } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.ReferenceReductionRule$t0)) {
+      link = ReferenceMacro_GetReferent__BehaviorDescriptor.fromRefReductionRule_id2I_OWQO_d$v.invoke(__thisNode__, SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.ReferenceReductionRule$t0));
     }
-    SNode targetConcept = SLinkOperations.getTarget(link, LINKS.target$TWaS);
+    SNode targetConcept = SLinkOperations.getTarget(link, LINKS.target$m40F);
     // reference may be resolved dynamically? 
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(targetConcept), CONCEPTS.IResolveInfo$c2)) {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(targetConcept), CONCEPTS.IResolveInfo$$k)) {
       return _quotation_createNode_mxwyp3_a0a5a0(targetConcept, targetConcept);
     } else {
       return _quotation_createNode_mxwyp3_a0a0f0a(targetConcept, targetConcept);
@@ -67,13 +67,13 @@ public final class ReferenceMacro_GetReferent__BehaviorDescriptor extends BaseBH
     return new LinkDeclarationLookup(SNodeOperations.getConcept(attributedNode)).getMostSpecificLinkDeclarationFor(link);
   }
   /*package*/ static SNode fromRefReductionRule_id2I_OWQO_d$v(@NotNull SNode __thisNode__, SNode reductionRule) {
-    return SLinkOperations.getTarget(reductionRule, LINKS.link$iY3n);
+    return SLinkOperations.getTarget(reductionRule, LINKS.link$FUJ3);
   }
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
-    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, CONCEPTS.TemplateQueryBase$Si);
-    ListSequence.fromList(result).addElement(CONCEPTS.TemplateFunctionParameter_outputNode$5F);
-    ListSequence.fromList(result).addElement(CONCEPTS.TemplateFunctionParameter_generationContext$$M);
-    ListSequence.fromList(result).addElement(CONCEPTS.TemplateFunctionParameter_sourceNode$A8);
+    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, CONCEPTS.TemplateQueryBase$zY);
+    ListSequence.fromList(result).addElement(CONCEPTS.TemplateFunctionParameter_outputNode$Ln);
+    ListSequence.fromList(result).addElement(CONCEPTS.TemplateFunctionParameter_generationContext$Yo);
+    ListSequence.fromList(result).addElement(CONCEPTS.TemplateFunctionParameter_sourceNode$hO);
     return result;
   }
 
@@ -161,17 +161,17 @@ public final class ReferenceMacro_GetReferent__BehaviorDescriptor extends BaseBH
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ReferenceMacro$nk = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd7f44d616L, "jetbrains.mps.lang.generator.structure.ReferenceMacro");
-    /*package*/ static final SConcept ReferenceReductionRule$Lk = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7786936d61b8dafaL, "jetbrains.mps.lang.generator.structure.ReferenceReductionRule");
-    /*package*/ static final SInterfaceConcept IResolveInfo$c2 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, "jetbrains.mps.lang.core.structure.IResolveInfo");
-    /*package*/ static final SConcept TemplateQueryBase$Si = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11b4d0ca830L, "jetbrains.mps.lang.generator.structure.TemplateQueryBase");
-    /*package*/ static final SConcept TemplateFunctionParameter_outputNode$5F = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x113d50d6be6L, "jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_outputNode");
-    /*package*/ static final SConcept TemplateFunctionParameter_generationContext$$M = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5282d0e3L, "jetbrains.mps.lang.generator.generationContext.structure.TemplateFunctionParameter_generationContext");
-    /*package*/ static final SConcept TemplateFunctionParameter_sourceNode$A8 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b471fcL, "jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_sourceNode");
+    /*package*/ static final SConcept ReferenceMacro$30 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd7f44d616L, "jetbrains.mps.lang.generator.structure.ReferenceMacro");
+    /*package*/ static final SConcept ReferenceReductionRule$t0 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7786936d61b8dafaL, "jetbrains.mps.lang.generator.structure.ReferenceReductionRule");
+    /*package*/ static final SInterfaceConcept IResolveInfo$$k = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, "jetbrains.mps.lang.core.structure.IResolveInfo");
+    /*package*/ static final SConcept TemplateQueryBase$zY = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11b4d0ca830L, "jetbrains.mps.lang.generator.structure.TemplateQueryBase");
+    /*package*/ static final SConcept TemplateFunctionParameter_outputNode$Ln = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x113d50d6be6L, "jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_outputNode");
+    /*package*/ static final SConcept TemplateFunctionParameter_generationContext$Yo = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5282d0e3L, "jetbrains.mps.lang.generator.generationContext.structure.TemplateFunctionParameter_generationContext");
+    /*package*/ static final SConcept TemplateFunctionParameter_sourceNode$hO = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b471fcL, "jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_sourceNode");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
-    /*package*/ static final SReferenceLink link$iY3n = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7786936d61b8dafaL, 0x7786936d61b8dafdL, "link");
+    /*package*/ static final SReferenceLink target$m40F = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SReferenceLink link$FUJ3 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7786936d61b8dafaL, 0x7786936d61b8dafdL, "link");
   }
 }

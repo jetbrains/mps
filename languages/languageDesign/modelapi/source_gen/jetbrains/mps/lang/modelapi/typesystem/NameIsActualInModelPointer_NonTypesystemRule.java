@@ -37,11 +37,11 @@ public class NameIsActualInModelPointer_NonTypesystemRule extends AbstractNonTyp
       return;
     }
     final SModelName actualName = resolved.getName();
-    if (Objects.equals(ModelName__BehaviorDescriptor.getNameObject_id2bm9xT0zK3P.invoke(SLinkOperations.getTarget(ptr, LINKS.name$fJX8)), actualName)) {
+    if (Objects.equals(ModelName__BehaviorDescriptor.getNameObject_id2bm9xT0zK3P.invoke(SLinkOperations.getTarget(ptr, LINKS.name$a8CF)), actualName)) {
       return;
     }
     {
-      final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.name$fJX8);
+      final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.name$a8CF);
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(ptr, String.format("Model name doesn't reflect actual value %s", actualName), "r:66a90408-763b-417f-b164-4efaf06432ea(jetbrains.mps.lang.modelapi.typesystem)", "2510235753679604963", null, errorTarget);
       {
         BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.modelapi.typesystem.UpdateModelPointerName_QuickFix", "2510235753679627867", false);
@@ -50,7 +50,7 @@ public class NameIsActualInModelPointer_NonTypesystemRule extends AbstractNonTyp
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ModelPointer$rg;
+    return CONCEPTS.ModelPointer$6N;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -60,10 +60,10 @@ public class NameIsActualInModelPointer_NonTypesystemRule extends AbstractNonTyp
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink name$fJX8 = MetaAdapterFactory.getContainmentLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, 0x96ca5405afc2bccL, "name");
+    /*package*/ static final SContainmentLink name$a8CF = MetaAdapterFactory.getContainmentLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, 0x96ca5405afc2bccL, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ModelPointer$rg = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, "jetbrains.mps.lang.modelapi.structure.ModelPointer");
+    /*package*/ static final SConcept ModelPointer$6N = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e360L, "jetbrains.mps.lang.modelapi.structure.ModelPointer");
   }
 }

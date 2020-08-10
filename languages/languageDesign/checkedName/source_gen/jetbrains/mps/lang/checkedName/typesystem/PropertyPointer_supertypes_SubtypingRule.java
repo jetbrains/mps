@@ -20,7 +20,7 @@ public class PropertyPointer_supertypes_SubtypingRule extends SubtypingRule_Runt
     return _quotation_createNode_spf8l0_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.PropertyPointerType$EW;
+    return CONCEPTS.PropertyPointerType$Jt;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -39,6 +39,6 @@ public class PropertyPointer_supertypes_SubtypingRule extends SubtypingRule_Runt
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyPointerType$EW = MetaAdapterFactory.getConcept(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x78b4a5a6b846de35L, "jetbrains.mps.lang.checkedName.structure.PropertyPointerType");
+    /*package*/ static final SConcept PropertyPointerType$Jt = MetaAdapterFactory.getConcept(0xfe9d76d7580945c9L, 0xae28a40915b4d6ffL, 0x78b4a5a6b846de35L, "jetbrains.mps.lang.checkedName.structure.PropertyPointerType");
   }
 }

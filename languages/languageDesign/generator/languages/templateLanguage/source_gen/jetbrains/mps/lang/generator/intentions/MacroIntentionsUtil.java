@@ -30,8 +30,8 @@ public final class MacroIntentionsUtil {
     if ((enclosingMacro == null)) {
       return QueriesUtil.getApplicableConcept_fromEnvironment(contextNode);
     }
-    if (SNodeOperations.isInstanceOf(enclosingMacro, CONCEPTS.SourceSubstituteMacro$eN)) {
-      return getConceptFrom(SNodeOperations.cast(enclosingMacro, CONCEPTS.SourceSubstituteMacro$eN));
+    if (SNodeOperations.isInstanceOf(enclosingMacro, CONCEPTS.SourceSubstituteMacro$Uv)) {
+      return getConceptFrom(SNodeOperations.cast(enclosingMacro, CONCEPTS.SourceSubstituteMacro$Uv));
     }
     return null;
   }
@@ -39,7 +39,7 @@ public final class MacroIntentionsUtil {
     SNode query = QueriesUtil.getQueryFunction_fromSourceSubstituteMacro(macro);
     SNode returnType = TypecheckingFacade.getFromContext().getTypeOf(query);
     // ====== 
-    if (SNodeOperations.isInstanceOf(query, CONCEPTS.SourceSubstituteMacro_SourceNodeQuery$An)) {
+    if (SNodeOperations.isInstanceOf(query, CONCEPTS.SourceSubstituteMacro_SourceNodeQuery$i3)) {
       {
         GeneratedMatchingPattern pattern_iiuth6_a0d0b = new Pattern_iiuth6_a0a0a0d0b(_quotation_createNode_iiuth6_a0a0a0a0d0b());
         SNode coercedNode_iiuth6_a0d0b = TypecheckingFacade.getFromContext().coerceType(returnType, pattern_iiuth6_a0d0b);
@@ -49,7 +49,7 @@ public final class MacroIntentionsUtil {
           return null;
         }
       }
-    } else if (SNodeOperations.isInstanceOf(query, CONCEPTS.SourceSubstituteMacro_SourceNodesQuery$bI)) {
+    } else if (SNodeOperations.isInstanceOf(query, CONCEPTS.SourceSubstituteMacro_SourceNodesQuery$Rq)) {
       {
         GeneratedMatchingPattern pattern_iiuth6_a0a3a1 = new Pattern_iiuth6_a0a0a0a3a1(_quotation_createNode_iiuth6_a0a0a0a0a3a1());
         SNode coercedNode_iiuth6_a0a3a1 = TypecheckingFacade.getFromContext().coerceType(returnType, pattern_iiuth6_a0a3a1);
@@ -68,8 +68,8 @@ public final class MacroIntentionsUtil {
     if (contextNode == null) {
       return null;
     }
-    if (ListSequence.fromList(AttributeOperations.getAttributeList(contextNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$Je))).isNotEmpty()) {
-      return ListSequence.fromList(AttributeOperations.getAttributeList(contextNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$Je))).last();
+    if (ListSequence.fromList(AttributeOperations.getAttributeList(contextNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU))).isNotEmpty()) {
+      return ListSequence.fromList(AttributeOperations.getAttributeList(contextNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU))).last();
     }
     return findOuterMacro(SNodeOperations.getParent(contextNode));
   }
@@ -101,7 +101,7 @@ public final class MacroIntentionsUtil {
     return BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(intentionParam).replaceAll("_{1}", "__");
   }
   public static void copyVirtualPackage(SNode to, SNode from) {
-    SPropertyOperations.set(to, PROPS.virtualPackage$dz_3, SPropertyOperations.getString(SNodeOperations.getContainingRoot(from), PROPS.virtualPackage$dz_3));
+    SPropertyOperations.set(to, PROPS.virtualPackage$EkXl, SPropertyOperations.getString(SNodeOperations.getContainingRoot(from), PROPS.virtualPackage$EkXl));
   }
   public static boolean isInGeneratorModel(SNode node) {
     SModel model = SNodeOperations.getModel(node);
@@ -124,13 +124,13 @@ public final class MacroIntentionsUtil {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SourceSubstituteMacro$eN = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fef52f5efL, "jetbrains.mps.lang.generator.structure.SourceSubstituteMacro");
-    /*package*/ static final SConcept SourceSubstituteMacro_SourceNodeQuery$An = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10ff3acfa74L, "jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodeQuery");
-    /*package*/ static final SConcept SourceSubstituteMacro_SourceNodesQuery$bI = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fef5bd603L, "jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodesQuery");
-    /*package*/ static final SConcept NodeMacro$Je = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro");
+    /*package*/ static final SConcept SourceSubstituteMacro$Uv = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fef52f5efL, "jetbrains.mps.lang.generator.structure.SourceSubstituteMacro");
+    /*package*/ static final SConcept SourceSubstituteMacro_SourceNodeQuery$i3 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10ff3acfa74L, "jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodeQuery");
+    /*package*/ static final SConcept SourceSubstituteMacro_SourceNodesQuery$Rq = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fef5bd603L, "jetbrains.mps.lang.generator.structure.SourceSubstituteMacro_SourceNodesQuery");
+    /*package*/ static final SConcept NodeMacro$qU = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty virtualPackage$EkXl = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
   }
 }

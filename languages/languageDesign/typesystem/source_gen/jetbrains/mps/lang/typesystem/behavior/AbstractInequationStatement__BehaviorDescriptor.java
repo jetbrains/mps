@@ -31,7 +31,7 @@ public final class AbstractInequationStatement__BehaviorDescriptor extends BaseB
   }
 
   /*package*/ static boolean isLessThanInequality_id4AS9NA730aB(@NotNull SNode __thisNode__) {
-    return SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.CreateLessThanInequationStatement$$A) || SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.CreateStrongLessThanInequationStatement$z);
+    return SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.CreateLessThanInequationStatement$Qs) || SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.CreateStrongLessThanInequationStatement$ip);
   }
 
   /*package*/ AbstractInequationStatement__BehaviorDescriptor() {
@@ -81,7 +81,7 @@ public final class AbstractInequationStatement__BehaviorDescriptor extends BaseB
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CreateStrongLessThanInequationStatement$z = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x112b37f1b6eL, "jetbrains.mps.lang.typesystem.structure.CreateStrongLessThanInequationStatement");
-    /*package*/ static final SConcept CreateLessThanInequationStatement$$A = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f60bfd5L, "jetbrains.mps.lang.typesystem.structure.CreateLessThanInequationStatement");
+    /*package*/ static final SConcept CreateStrongLessThanInequationStatement$ip = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x112b37f1b6eL, "jetbrains.mps.lang.typesystem.structure.CreateStrongLessThanInequationStatement");
+    /*package*/ static final SConcept CreateLessThanInequationStatement$Qs = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f60bfd5L, "jetbrains.mps.lang.typesystem.structure.CreateLessThanInequationStatement");
   }
 }

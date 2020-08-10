@@ -65,7 +65,7 @@ public class BuildSource_JavaDependencyLibrary_TransformationMenu extends Transf
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.BuildSource_JavaDependencyLibrary$nh)) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.BuildSource_JavaDependencyLibrary$TO)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -89,7 +89,7 @@ public class BuildSource_JavaDependencyLibrary_TransformationMenu extends Transf
   public class TMP_Group_d1076f_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.reexport$PHEM));
+      return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.reexport$1qdl));
     }
 
     @NotNull
@@ -145,7 +145,7 @@ public class BuildSource_JavaDependencyLibrary_TransformationMenu extends Transf
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(_context.getNode(), PROPS.reexport$PHEM, true);
+          SPropertyOperations.assign(_context.getNode(), PROPS.reexport$1qdl, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -171,10 +171,10 @@ public class BuildSource_JavaDependencyLibrary_TransformationMenu extends Transf
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildSource_JavaDependencyLibrary$nh = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd9079dceL, "jetbrains.mps.build.structure.BuildSource_JavaDependencyLibrary");
+    /*package*/ static final SConcept BuildSource_JavaDependencyLibrary$TO = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd9079dceL, "jetbrains.mps.build.structure.BuildSource_JavaDependencyLibrary");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty reexport$PHEM = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd9079dceL, 0x52fab202d8f26228L, "reexport");
+    /*package*/ static final SProperty reexport$1qdl = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd9079dceL, 0x52fab202d8f26228L, "reexport");
   }
 }

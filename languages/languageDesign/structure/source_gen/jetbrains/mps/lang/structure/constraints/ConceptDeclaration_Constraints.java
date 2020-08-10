@@ -32,10 +32,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ConceptDeclaration_Constraints extends BaseConstraintsDescriptor {
   public ConceptDeclaration_Constraints() {
-    super(CONCEPTS.ConceptDeclaration$qU);
+    super(CONCEPTS.ConceptDeclaration$gH);
   }
   public IconResource getInstanceIcon(SNode node) {
-    return (SPropertyOperations.getBoolean(node, PROPS.rootable$91zK) ? IconContainer.RESOURCE_a0a0a : IconContainer.RESOURCE_a0a0a_0);
+    return (SPropertyOperations.getBoolean(node, PROPS.rootable$_9pz) ? IconContainer.RESOURCE_a0a0a : IconContainer.RESOURCE_a0a0a_0);
   }
 
   @Override
@@ -50,7 +50,7 @@ public class ConceptDeclaration_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return Scopes.forConcepts(_context.getContextNode(), CONCEPTS.ConceptDeclaration$qU);
+            return Scopes.forConcepts(_context.getContextNode(), CONCEPTS.ConceptDeclaration$gH);
           }
         };
       }
@@ -73,7 +73,7 @@ public class ConceptDeclaration_Constraints extends BaseConstraintsDescriptor {
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.extends$9AAt, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.extends$_Isg, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -106,14 +106,14 @@ public class ConceptDeclaration_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_8geshg_a0a0a0a0a1a0a0a0f = new SNodePointer("r:00000000-0000-4000-0000-011c8959028c(jetbrains.mps.lang.structure.constraints)", "6836281137582805245");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty rootable$91zK = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable");
+    /*package*/ static final SProperty rootable$_9pz = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extends$9AAt = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SReferenceLink extends$_Isg = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
   }
 }

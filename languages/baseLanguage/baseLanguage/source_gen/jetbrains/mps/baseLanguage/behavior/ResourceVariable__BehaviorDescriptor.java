@@ -28,7 +28,7 @@ public final class ResourceVariable__BehaviorDescriptor extends BaseBHDescriptor
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isInitializable_idhEwJfMK);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.assign(__thisNode__, PROPS.isFinal$_qt3, true);
+    SPropertyOperations.assign(__thisNode__, PROPS.isFinal$gvTP, true);
   }
 
   /*package*/ static boolean isInitializable_idhEwJfMK(@NotNull SNode __thisNode__) {
@@ -82,6 +82,6 @@ public final class ResourceVariable__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isFinal$gvTP = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 }

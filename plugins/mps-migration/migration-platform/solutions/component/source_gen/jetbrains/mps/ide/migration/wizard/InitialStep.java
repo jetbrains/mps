@@ -127,7 +127,7 @@ public class InitialStep extends BaseStep {
     project.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
         MigrationRegistry manager = mySession.getMigrationRegistry();
-        final Icon migrationIcon = GlobalIconManager.getInstance().getIconFor(CONCEPTS.MigrationScript$u3);
+        final Icon migrationIcon = GlobalIconManager.getInstance().getIconFor(CONCEPTS.MigrationScript$KN);
 
         // project migrations 
         final DefaultMutableTreeNode croot = new DefaultMutableTreeNode("Cleanups");
@@ -309,6 +309,6 @@ public class InitialStep extends BaseStep {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MigrationScript$u3 = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x73e8a2c68b62c6a3L, "jetbrains.mps.lang.migration.structure.MigrationScript");
+    /*package*/ static final SConcept MigrationScript$KN = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x73e8a2c68b62c6a3L, "jetbrains.mps.lang.migration.structure.MigrationScript");
   }
 }

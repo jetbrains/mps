@@ -120,7 +120,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.name$lA7v;
+      final SProperty property = PROPS.name$MnvL;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
@@ -130,7 +130,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
       editorCell.getStyle().putAll(style);
       editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new PropertyCellContext(myNode, property), new SubstituteInfoPartExt[]{new InferenceRule_name_cellMenu_robprv_a0b0a(), new SChildSubstituteInfoPartEx(editorCell)}));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$jT);
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -168,11 +168,11 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
     public List<String> getPropertyValues(SNode node, IOperationContext operationContext, EditorContext editorContext) {
       List<String> result = ListSequence.fromList(new ArrayList<String>());
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.applicableNode$uxMM), CONCEPTS.ConceptReference$Je)) {
-        SNode concept = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.applicableNode$uxMM), CONCEPTS.ConceptReference$Je), LINKS.concept$aRU5);
-        if ((concept != null) && SPropertyOperations.getString(concept, PROPS.name$lA7v) != null) {
-          ListSequence.fromList(result).addElement("typeof_" + SPropertyOperations.getString(concept, PROPS.name$lA7v));
-          ListSequence.fromList(result).addElement("check_" + SPropertyOperations.getString(concept, PROPS.name$lA7v));
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.applicableNode$Ro4C), CONCEPTS.ConceptReference$14)) {
+        SNode concept = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.applicableNode$Ro4C), CONCEPTS.ConceptReference$14), LINKS.concept$zIbV);
+        if ((concept != null) && SPropertyOperations.getString(concept, PROPS.name$MnvL) != null) {
+          ListSequence.fromList(result).addElement("typeof_" + SPropertyOperations.getString(concept, PROPS.name$MnvL));
+          ListSequence.fromList(result).addElement("check_" + SPropertyOperations.getString(concept, PROPS.name$MnvL));
         }
       }
       return result;
@@ -221,7 +221,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     return editorCell;
   }
   private boolean nodeCondition_robprv_a3b1a() {
-    return (boolean) AbstractRule__BehaviorDescriptor.isAttributeRule_id6lCixFI9vx1.invoke(myNode) || Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(myNode, LINKS.supersedesFun$D4EO)).isNotEmpty();
+    return (boolean) AbstractRule__BehaviorDescriptor.isAttributeRule_id6lCixFI9vx1.invoke(myNode) || Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(myNode, LINKS.supersedesFun$1UWE)).isNotEmpty();
   }
   private EditorCell createCollection_4() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
@@ -247,7 +247,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new applicableNodeSingleRoleHandler_robprv_c0b1a(myNode, LINKS.applicableNode$uxMM, getEditorContext());
+    SingleRoleCellProvider provider = new applicableNodeSingleRoleHandler_robprv_c0b1a(myNode, LINKS.applicableNode$Ro4C, getEditorContext());
     return provider.createCell();
   }
   private static class applicableNodeSingleRoleHandler_robprv_c0b1a extends SingleRoleCellProvider {
@@ -267,8 +267,8 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.applicableNode$uxMM, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.applicableNode$uxMM, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.applicableNode$Ro4C, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.applicableNode$Ro4C, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -280,7 +280,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.applicableNode$uxMM);
+        editorCell.setSRole(LINKS.applicableNode$Ro4C);
       }
       if (true) {
         editorCell.getStyle().set(StyleAttributes.FOCUS_POLICY, FocusPolicy.FIRST_EDITABLE_CELL);
@@ -289,7 +289,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.applicableNode$uxMM));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.applicableNode$Ro4C));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_applicableNode");
@@ -318,7 +318,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     return editorCell;
   }
   private boolean nodeCondition_robprv_a1b1b0() {
-    return (SLinkOperations.getTarget(myNode, LINKS.applicableFun$6Pho) != null);
+    return (SLinkOperations.getTarget(myNode, LINKS.applicableFun$vFze) != null);
   }
   private EditorCell createConstant_4() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "applicable");
@@ -333,7 +333,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     return editorCell;
   }
   private EditorCell createRefNode_1() {
-    SingleRoleCellProvider provider = new applicableFunSingleRoleHandler_robprv_c1b1a(myNode, LINKS.applicableFun$6Pho, getEditorContext());
+    SingleRoleCellProvider provider = new applicableFunSingleRoleHandler_robprv_c1b1a(myNode, LINKS.applicableFun$vFze, getEditorContext());
     return provider.createCell();
   }
   private static class applicableFunSingleRoleHandler_robprv_c1b1a extends SingleRoleCellProvider {
@@ -353,8 +353,8 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.applicableFun$6Pho, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.applicableFun$6Pho, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.applicableFun$vFze, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.applicableFun$vFze, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -366,13 +366,13 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.applicableFun$6Pho);
+        editorCell.setSRole(LINKS.applicableFun$vFze);
       }
     }
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.applicableFun$6Pho));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.applicableFun$vFze));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_applicableFun");
@@ -401,7 +401,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     return editorCell;
   }
   private boolean nodeCondition_robprv_a2c1b0() {
-    return (SLinkOperations.getTarget(myNode, LINKS.overridesFun_old$yn9p) != null);
+    return (SLinkOperations.getTarget(myNode, LINKS.overridesFun_old$Vdrf) != null);
   }
   private EditorCell createConstant_6() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "overrides");
@@ -421,10 +421,10 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     return editorCell;
   }
   private boolean nodeCondition_robprv_a1c1b0() {
-    return !(SPropertyOperations.getBoolean(myNode, PROPS.overrides$sqyj));
+    return !(SPropertyOperations.getBoolean(myNode, PROPS.overrides$PgO9));
   }
   private EditorCell createRefNode_2() {
-    SingleRoleCellProvider provider = new overridesFunSingleRoleHandler_robprv_a1c1b0(myNode, LINKS.overridesFun$_ogP, getEditorContext());
+    SingleRoleCellProvider provider = new overridesFunSingleRoleHandler_robprv_a1c1b0(myNode, LINKS.overridesFun$YeyF, getEditorContext());
     return provider.createCell();
   }
   private static class overridesFunSingleRoleHandler_robprv_a1c1b0 extends SingleRoleCellProvider {
@@ -444,8 +444,8 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.overridesFun$_ogP, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.overridesFun$_ogP, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.overridesFun$YeyF, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.overridesFun$YeyF, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -457,13 +457,13 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.overridesFun$_ogP);
+        editorCell.setSRole(LINKS.overridesFun$YeyF);
       }
     }
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.overridesFun$_ogP));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.overridesFun$YeyF));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_overridesFun");
@@ -481,15 +481,15 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   private EditorCell createProperty_1() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.overrides$sqyj;
+      final SProperty property = PROPS.overrides$PgO9;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no overrides>");
       editorCell.setCellId("property_overrides");
-      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.InferenceRule$Ad, "jetbrains.mps.lang.typesystem.editor.InferenceRule_ApplySideTransforms"));
+      editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.InferenceRule$S3, "jetbrains.mps.lang.typesystem.editor.InferenceRule_ApplySideTransforms"));
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$jT);
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -505,7 +505,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     }
   }
   private EditorCell createRefNode_3() {
-    SingleRoleCellProvider provider = new overridesFun_oldSingleRoleHandler_robprv_c2b1a(myNode, LINKS.overridesFun_old$yn9p, getEditorContext());
+    SingleRoleCellProvider provider = new overridesFun_oldSingleRoleHandler_robprv_c2b1a(myNode, LINKS.overridesFun_old$Vdrf, getEditorContext());
     return provider.createCell();
   }
   private static class overridesFun_oldSingleRoleHandler_robprv_c2b1a extends SingleRoleCellProvider {
@@ -525,8 +525,8 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.overridesFun_old$yn9p, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.overridesFun_old$yn9p, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.overridesFun_old$Vdrf, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.overridesFun_old$Vdrf, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -538,7 +538,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.overridesFun_old$yn9p);
+        editorCell.setSRole(LINKS.overridesFun_old$Vdrf);
       }
       Style style = new StyleImpl();
       style.set(StyleAttributes.STRIKE_OUT, true);
@@ -547,7 +547,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.overridesFun_old$yn9p));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.overridesFun_old$Vdrf));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_overridesFun_old");
@@ -579,7 +579,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     return editorCell;
   }
   private EditorCell createRefNode_4() {
-    SingleRoleCellProvider provider = new supersedesFunSingleRoleHandler_robprv_b3b1a(myNode, LINKS.supersedesFun$D4EO, getEditorContext());
+    SingleRoleCellProvider provider = new supersedesFunSingleRoleHandler_robprv_b3b1a(myNode, LINKS.supersedesFun$1UWE, getEditorContext());
     return provider.createCell();
   }
   private static class supersedesFunSingleRoleHandler_robprv_b3b1a extends SingleRoleCellProvider {
@@ -599,8 +599,8 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.supersedesFun$D4EO, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.supersedesFun$D4EO, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.supersedesFun$1UWE, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.supersedesFun$1UWE, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -612,13 +612,13 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.supersedesFun$D4EO);
+        editorCell.setSRole(LINKS.supersedesFun$1UWE);
       }
     }
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.supersedesFun$D4EO));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.supersedesFun$1UWE));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_supersedesFun");
@@ -686,7 +686,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     return editorCell;
   }
   private EditorCell createRefNode_5() {
-    SingleRoleCellProvider provider = new bodySingleRoleHandler_robprv_b6b1a(myNode, LINKS.body$ntG, getEditorContext());
+    SingleRoleCellProvider provider = new bodySingleRoleHandler_robprv_b6b1a(myNode, LINKS.body$pdJy, getEditorContext());
     return provider.createCell();
   }
   private static class bodySingleRoleHandler_robprv_b6b1a extends SingleRoleCellProvider {
@@ -706,8 +706,8 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.body$ntG, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.body$ntG, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.body$pdJy, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.body$pdJy, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -719,13 +719,13 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.body$ntG);
+        editorCell.setSRole(LINKS.body$pdJy);
       }
     }
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.body$ntG));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.body$pdJy));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_body");
@@ -763,23 +763,23 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty overrides$sqyj = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x116484991d1L, "overrides");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty overrides$PgO9 = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x116484991d1L, "overrides");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyAttribute$jT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
-    /*package*/ static final SConcept ConceptReference$Je = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, "jetbrains.mps.lang.typesystem.structure.ConceptReference");
-    /*package*/ static final SConcept InferenceRule$Ad = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, "jetbrains.mps.lang.typesystem.structure.InferenceRule");
+    /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept ConceptReference$14 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, "jetbrains.mps.lang.typesystem.structure.ConceptReference");
+    /*package*/ static final SConcept InferenceRule$S3 = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, "jetbrains.mps.lang.typesystem.structure.InferenceRule");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink applicableNode$uxMM = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode");
-    /*package*/ static final SReferenceLink concept$aRU5 = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, 0x1117e2ab6c9L, "concept");
-    /*package*/ static final SContainmentLink supersedesFun$D4EO = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, 0x65684a1aee271b08L, "supersedesFun");
-    /*package*/ static final SContainmentLink applicableFun$6Pho = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, 0x669222c8f194bfa3L, "applicableFun");
-    /*package*/ static final SContainmentLink overridesFun_old$yn9p = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x1885777d137135fcL, "overridesFun_old");
-    /*package*/ static final SContainmentLink overridesFun$_ogP = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, 0x5dbc5aa1b944adaL, "overridesFun");
-    /*package*/ static final SContainmentLink body$ntG = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x1164848bdf4L, "body");
+    /*package*/ static final SContainmentLink applicableNode$Ro4C = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e7b5c73L, 0x1117e7b9c40L, "applicableNode");
+    /*package*/ static final SReferenceLink concept$zIbV = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2a88b3L, 0x1117e2ab6c9L, "concept");
+    /*package*/ static final SContainmentLink supersedesFun$1UWE = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, 0x65684a1aee271b08L, "supersedesFun");
+    /*package*/ static final SContainmentLink applicableFun$vFze = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, 0x669222c8f194bfa3L, "applicableFun");
+    /*package*/ static final SContainmentLink overridesFun_old$Vdrf = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x1885777d137135fcL, "overridesFun_old");
+    /*package*/ static final SContainmentLink overridesFun$YeyF = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2f5efaL, 0x5dbc5aa1b944adaL, "overridesFun");
+    /*package*/ static final SContainmentLink body$pdJy = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1164847e929L, 0x1164848bdf4L, "body");
   }
 }

@@ -26,10 +26,10 @@ public class genericArrayCreatorsAreIllegal_NonTypesystemRule extends AbstractNo
   public genericArrayCreatorsAreIllegal_NonTypesystemRule() {
   }
   public void applyRule(final SNode arrayCreator, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode componentType = SLinkOperations.getTarget(arrayCreator, LINKS.componentType$dDQC);
-    if ((SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(componentType)), CONCEPTS.ClassifierType$IZ) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(componentType)), CONCEPTS.NamedTupleType$$b)) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(componentType, CONCEPTS.ClassifierType$IZ), LINKS.parameter$HlfM)).isNotEmpty()) {
-      for (SNode p : SLinkOperations.getChildren(SNodeOperations.cast(componentType, CONCEPTS.ClassifierType$IZ), LINKS.parameter$HlfM)) {
-        if (!(SNodeOperations.isInstanceOf(p, CONCEPTS.WildCardType$29))) {
+    SNode componentType = SLinkOperations.getTarget(arrayCreator, LINKS.componentType$SJjq);
+    if ((SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(componentType)), CONCEPTS.ClassifierType$bL) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(componentType)), CONCEPTS.NamedTupleType$DW)) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(componentType, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$)).isNotEmpty()) {
+      for (SNode p : SLinkOperations.getChildren(SNodeOperations.cast(componentType, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$)) {
+        if (!(SNodeOperations.isInstanceOf(p, CONCEPTS.WildCardType$uV))) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(componentType, "generic array creation is illegal", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8918460683225653230", null, errorTarget);
@@ -37,25 +37,25 @@ public class genericArrayCreatorsAreIllegal_NonTypesystemRule extends AbstractNo
           return;
         }
       }
-    } else if (SNodeOperations.isInstanceOf(componentType, CONCEPTS.TypeVariableReference$vZ) || SNodeOperations.isInstanceOf(componentType, CONCEPTS.AbstractContainerType$eL)) {
+    } else if (SNodeOperations.isInstanceOf(componentType, CONCEPTS.TypeVariableReference$WL) || SNodeOperations.isInstanceOf(componentType, CONCEPTS.AbstractContainerType$t4)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(componentType, "generic array creation is illegal", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8918460683225653209", null, errorTarget);
       }
-    } else if (SNodeOperations.isInstanceOf(componentType, CONCEPTS.SequenceType$n9) && (SLinkOperations.getTarget(SNodeOperations.cast(componentType, CONCEPTS.SequenceType$n9), LINKS.elementType$655u) != null)) {
+    } else if (SNodeOperations.isInstanceOf(componentType, CONCEPTS.SequenceType$_s) && (SLinkOperations.getTarget(SNodeOperations.cast(componentType, CONCEPTS.SequenceType$_s), LINKS.elementType$KpjL) != null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(componentType, "generic array creation is illegal", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6709363801298065263", null, errorTarget);
       }
     } else {
       Set<SConcept> bannedArrayTypes = SetSequence.fromSet(new HashSet<SConcept>());
-      SetSequence.fromSet(bannedArrayTypes).addElement(CONCEPTS.ListType$z$);
-      SetSequence.fromSet(bannedArrayTypes).addElement(CONCEPTS.MapType$2H);
-      SetSequence.fromSet(bannedArrayTypes).addElement(CONCEPTS.LinkedListType$bW);
-      SetSequence.fromSet(bannedArrayTypes).addElement(CONCEPTS.SortedMapType$oG);
-      SetSequence.fromSet(bannedArrayTypes).addElement(CONCEPTS.MappingType$8Z);
-      SetSequence.fromSet(bannedArrayTypes).addElement(CONCEPTS.SetType$1N);
-      SetSequence.fromSet(bannedArrayTypes).addElement(CONCEPTS.SortedSetType$Tt);
+      SetSequence.fromSet(bannedArrayTypes).addElement(CONCEPTS.ListType$LR);
+      SetSequence.fromSet(bannedArrayTypes).addElement(CONCEPTS.MapType$h0);
+      SetSequence.fromSet(bannedArrayTypes).addElement(CONCEPTS.LinkedListType$qf);
+      SetSequence.fromSet(bannedArrayTypes).addElement(CONCEPTS.SortedMapType$AZ);
+      SetSequence.fromSet(bannedArrayTypes).addElement(CONCEPTS.MappingType$ni);
+      SetSequence.fromSet(bannedArrayTypes).addElement(CONCEPTS.SetType$g6);
+      SetSequence.fromSet(bannedArrayTypes).addElement(CONCEPTS.SortedSetType$7K);
       if (SetSequence.fromSet(bannedArrayTypes).contains(SNodeOperations.getConcept(componentType))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
@@ -65,7 +65,7 @@ public class genericArrayCreatorsAreIllegal_NonTypesystemRule extends AbstractNo
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ArrayCreator$IL;
+    return CONCEPTS.ArrayCreator$bz;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -75,25 +75,25 @@ public class genericArrayCreatorsAreIllegal_NonTypesystemRule extends AbstractNo
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink componentType$dDQC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, 0x113e49578edL, "componentType");
-    /*package*/ static final SContainmentLink elementType$655u = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType");
-    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SContainmentLink componentType$SJjq = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, 0x113e49578edL, "componentType");
+    /*package*/ static final SContainmentLink elementType$KpjL = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, 0x10c260ee40eL, "elementType");
+    /*package*/ static final SContainmentLink parameter$oqG$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TypeVariableReference$vZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
-    /*package*/ static final SConcept AbstractContainerType$eL = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4eec26fcbaf8c39bL, "jetbrains.mps.baseLanguage.collections.structure.AbstractContainerType");
-    /*package*/ static final SConcept SequenceType$n9 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, "jetbrains.mps.baseLanguage.collections.structure.SequenceType");
-    /*package*/ static final SConcept ListType$z$ = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, "jetbrains.mps.baseLanguage.collections.structure.ListType");
-    /*package*/ static final SConcept MapType$2H = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, "jetbrains.mps.baseLanguage.collections.structure.MapType");
-    /*package*/ static final SConcept LinkedListType$bW = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x2e9a0b9a890137e9L, "jetbrains.mps.baseLanguage.collections.structure.LinkedListType");
-    /*package*/ static final SConcept SortedMapType$oG = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4067207L, "jetbrains.mps.baseLanguage.collections.structure.SortedMapType");
-    /*package*/ static final SConcept MappingType$8Z = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120cf0ddd15L, "jetbrains.mps.baseLanguage.collections.structure.MappingType");
-    /*package*/ static final SConcept SetType$1N = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, "jetbrains.mps.baseLanguage.collections.structure.SetType");
-    /*package*/ static final SConcept SortedSetType$Tt = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c482dd1aL, "jetbrains.mps.baseLanguage.collections.structure.SortedSetType");
-    /*package*/ static final SConcept WildCardType$29 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae5f4a3L, "jetbrains.mps.baseLanguage.structure.WildCardType");
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
-    /*package*/ static final SConcept NamedTupleType$$b = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12099dc1365L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleType");
-    /*package*/ static final SConcept ArrayCreator$IL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, "jetbrains.mps.baseLanguage.structure.ArrayCreator");
+    /*package*/ static final SConcept TypeVariableReference$WL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
+    /*package*/ static final SConcept AbstractContainerType$t4 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x4eec26fcbaf8c39bL, "jetbrains.mps.baseLanguage.collections.structure.AbstractContainerType");
+    /*package*/ static final SConcept SequenceType$_s = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c260e9444L, "jetbrains.mps.baseLanguage.collections.structure.SequenceType");
+    /*package*/ static final SConcept ListType$LR = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, "jetbrains.mps.baseLanguage.collections.structure.ListType");
+    /*package*/ static final SConcept MapType$h0 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x116db7e6bcbL, "jetbrains.mps.baseLanguage.collections.structure.MapType");
+    /*package*/ static final SConcept LinkedListType$qf = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x2e9a0b9a890137e9L, "jetbrains.mps.baseLanguage.collections.structure.LinkedListType");
+    /*package*/ static final SConcept SortedMapType$AZ = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4067207L, "jetbrains.mps.baseLanguage.collections.structure.SortedMapType");
+    /*package*/ static final SConcept MappingType$ni = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120cf0ddd15L, "jetbrains.mps.baseLanguage.collections.structure.MappingType");
+    /*package*/ static final SConcept SetType$g6 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11d91cbbcd0L, "jetbrains.mps.baseLanguage.collections.structure.SetType");
+    /*package*/ static final SConcept SortedSetType$7K = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c482dd1aL, "jetbrains.mps.baseLanguage.collections.structure.SortedSetType");
+    /*package*/ static final SConcept WildCardType$uV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae5f4a3L, "jetbrains.mps.baseLanguage.structure.WildCardType");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept NamedTupleType$DW = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12099dc1365L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleType");
+    /*package*/ static final SConcept ArrayCreator$bz = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x113e4952f12L, "jetbrains.mps.baseLanguage.structure.ArrayCreator");
   }
 }

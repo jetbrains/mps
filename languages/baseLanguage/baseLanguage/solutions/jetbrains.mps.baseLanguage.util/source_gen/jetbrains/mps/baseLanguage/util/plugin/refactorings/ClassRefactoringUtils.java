@@ -27,31 +27,31 @@ public class ClassRefactoringUtils {
         SetSequence.fromSet(nodesToCheck).addElement(new MethodCallAdapter(call).getMethodDeclaration());
       }
     }
-    for (SNode call : ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.FieldReferenceOperation$N8, false, new SAbstractConcept[]{}))) {
-      SetSequence.fromSet(nodesToCheck).addElement(SLinkOperations.getTarget(call, LINKS.fieldDeclaration$229u));
+    for (SNode call : ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.FieldReferenceOperation$fU, false, new SAbstractConcept[]{}))) {
+      SetSequence.fromSet(nodesToCheck).addElement(SLinkOperations.getTarget(call, LINKS.fieldDeclaration$H7Ag));
     }
-    for (SNode call : ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.StaticFieldReference$K8, false, new SAbstractConcept[]{}))) {
-      SetSequence.fromSet(nodesToCheck).addElement(SLinkOperations.getTarget(call, LINKS.variableDeclaration$7WwU));
+    for (SNode call : ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.StaticFieldReference$cU, false, new SAbstractConcept[]{}))) {
+      SetSequence.fromSet(nodesToCheck).addElement(SLinkOperations.getTarget(call, LINKS.variableDeclaration$N1XG));
     }
-    for (SNode call : ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+    for (SNode call : ListSequence.fromList(SNodeOperations.getNodeDescendants(body, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), CONCEPTS.StaticFieldDeclaration$R5);
+        return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.StaticFieldDeclaration$jR);
       }
     })) {
-      SetSequence.fromSet(nodesToCheck).addElement(SLinkOperations.getTarget(call, LINKS.variableDeclaration$7WwU));
+      SetSequence.fromSet(nodesToCheck).addElement(SLinkOperations.getTarget(call, LINKS.variableDeclaration$N1XG));
     }
     return nodesToCheck;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink fieldDeclaration$229u = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink fieldDeclaration$H7Ag = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept FieldReferenceOperation$N8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation");
-    /*package*/ static final SConcept StaticFieldReference$K8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, "jetbrains.mps.baseLanguage.structure.StaticFieldReference");
-    /*package*/ static final SConcept VariableReference$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
-    /*package*/ static final SConcept StaticFieldDeclaration$R5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
+    /*package*/ static final SConcept FieldReferenceOperation$fU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation");
+    /*package*/ static final SConcept StaticFieldReference$cU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, "jetbrains.mps.baseLanguage.structure.StaticFieldReference");
+    /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept StaticFieldDeclaration$jR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
   }
 }

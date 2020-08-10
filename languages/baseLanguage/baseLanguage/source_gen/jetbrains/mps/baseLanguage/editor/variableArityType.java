@@ -76,7 +76,7 @@ public class variableArityType extends TransformationMenuBase {
   public class TMP_Group_7snq6l_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.VariableArityType$jT)) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ParameterDeclaration$qU);
+      return !(SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.VariableArityType$KF)) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ParameterDeclaration$RG);
     }
 
     @NotNull
@@ -92,7 +92,7 @@ public class variableArityType extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_7snq6l_a0a(), CONCEPTS.VariableArityType$jT));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_7snq6l_a0a(), CONCEPTS.VariableArityType$KF));
     }
     private class TMP_Action_7snq6l_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -132,8 +132,8 @@ public class variableArityType extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode variableArityType = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.VariableArityType$jT);
-          SLinkOperations.setTarget(variableArityType, LINKS.componentType$RjTw, _context.getNode());
+          SNode variableArityType = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.VariableArityType$KF);
+          SLinkOperations.setTarget(variableArityType, LINKS.componentType$ypmi, _context.getNode());
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), variableArityType, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -141,7 +141,7 @@ public class variableArityType extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.VariableArityType$jT;
+          return CONCEPTS.VariableArityType$KF;
         }
 
 
@@ -152,7 +152,7 @@ public class variableArityType extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.VariableArityType$jT;
+          SAbstractConcept outputConcept = CONCEPTS.VariableArityType$KF;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -164,11 +164,11 @@ public class variableArityType extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ParameterDeclaration$qU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
-    /*package*/ static final SConcept VariableArityType$jT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, "jetbrains.mps.baseLanguage.structure.VariableArityType");
+    /*package*/ static final SConcept ParameterDeclaration$RG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
+    /*package*/ static final SConcept VariableArityType$KF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, "jetbrains.mps.baseLanguage.structure.VariableArityType");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink componentType$RjTw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, 0x11c08f5f38cL, "componentType");
+    /*package*/ static final SContainmentLink componentType$ypmi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, 0x11c08f5f38cL, "componentType");
   }
 }

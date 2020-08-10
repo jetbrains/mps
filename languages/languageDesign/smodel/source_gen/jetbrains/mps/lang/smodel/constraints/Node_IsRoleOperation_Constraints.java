@@ -24,12 +24,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Node_IsRoleOperation_Constraints extends BaseConstraintsDescriptor {
   public Node_IsRoleOperation_Constraints() {
-    super(CONCEPTS.Node_IsRoleOperation$Vy);
+    super(CONCEPTS.Node_IsRoleOperation$X2);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.linkInParent$3OvO, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.linkInParent$Cdxk, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -44,7 +44,7 @@ public class Node_IsRoleOperation_Constraints extends BaseConstraintsDescriptor 
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode conceptOfParent = SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.conceptOfParent$mUhi);
+            SNode conceptOfParent = SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.conceptOfParent$VjiM);
             return ListScope.forResolvableElements(AbstractConceptDeclaration__BehaviorDescriptor.getAggregationLinkDeclarations_idhEwILLp.invoke(conceptOfParent));
           }
         };
@@ -57,11 +57,11 @@ public class Node_IsRoleOperation_Constraints extends BaseConstraintsDescriptor 
   private static final SNodePointer breakingNode_gpgb0w_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c895902fb(jetbrains.mps.lang.smodel.constraints)", "6836281137582797546");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Node_IsRoleOperation$Vy = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a67578ddeL, "jetbrains.mps.lang.smodel.structure.Node_IsRoleOperation");
+    /*package*/ static final SConcept Node_IsRoleOperation$X2 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a67578ddeL, "jetbrains.mps.lang.smodel.structure.Node_IsRoleOperation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink linkInParent$3OvO = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a67578ddeL, 0x10a675c34a9L, "linkInParent");
-    /*package*/ static final SReferenceLink conceptOfParent$mUhi = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a67578ddeL, 0x10a675bae60L, "conceptOfParent");
+    /*package*/ static final SReferenceLink linkInParent$Cdxk = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a67578ddeL, 0x10a675c34a9L, "linkInParent");
+    /*package*/ static final SReferenceLink conceptOfParent$VjiM = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a67578ddeL, 0x10a675bae60L, "conceptOfParent");
   }
 }

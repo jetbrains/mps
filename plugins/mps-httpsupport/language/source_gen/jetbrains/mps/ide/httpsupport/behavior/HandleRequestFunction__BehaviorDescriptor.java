@@ -38,7 +38,7 @@ public final class HandleRequestFunction__BehaviorDescriptor extends BaseBHDescr
 
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
     List<SConcept> result = ListSequence.fromList(new ArrayList<SConcept>());
-    ListSequence.fromList(result).addElement(CONCEPTS.HttpRequestParameter$Ef);
+    ListSequence.fromList(result).addElement(CONCEPTS.HttpRequestParameter$jR);
     return result;
   }
   /*package*/ static boolean showName_id1653mnvAgry(@NotNull SAbstractConcept __thisConcept__) {
@@ -108,6 +108,6 @@ public final class HandleRequestFunction__BehaviorDescriptor extends BaseBHDescr
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept HttpRequestParameter$Ef = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4d5ac72154f781d2L, "jetbrains.mps.ide.httpsupport.structure.HttpRequestParameter");
+    /*package*/ static final SConcept HttpRequestParameter$jR = MetaAdapterFactory.getConcept(0x817e4e70961e4a95L, 0x98a115e9f32231f1L, 0x4d5ac72154f781d2L, "jetbrains.mps.ide.httpsupport.structure.HttpRequestParameter");
   }
 }

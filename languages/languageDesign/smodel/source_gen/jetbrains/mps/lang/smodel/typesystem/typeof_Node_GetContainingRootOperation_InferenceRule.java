@@ -25,7 +25,7 @@ public class typeof_Node_GetContainingRootOperation_InferenceRule extends Abstra
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Node_GetContainingRootOperation$b8;
+    return CONCEPTS.Node_GetContainingRootOperation$cC;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_Node_GetContainingRootOperation_InferenceRule extends Abstra
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Node_GetContainingRootOperation$b8 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110b78550e8L, "jetbrains.mps.lang.smodel.structure.Node_GetContainingRootOperation");
+    /*package*/ static final SConcept Node_GetContainingRootOperation$cC = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110b78550e8L, "jetbrains.mps.lang.smodel.structure.Node_GetContainingRootOperation");
   }
 }

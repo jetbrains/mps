@@ -50,7 +50,7 @@ public final class SuppressAllTypesystemError_Intention extends AbstractIntentio
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    if (ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$gJ))).isNotEmpty()) {
+    if (ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1))).isNotEmpty()) {
       return false;
     }
     EditorComponent editorComponent = (EditorComponent) editorContext.getEditorComponent();
@@ -87,13 +87,13 @@ public final class SuppressAllTypesystemError_Intention extends AbstractIntentio
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if (ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$gJ))).isEmpty()) {
-        SNode annotation = SNodeFactoryOperations.addNewAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$gJ), CONCEPTS.SuppressErrorsAnnotation$gJ);
+      if (ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1))).isEmpty()) {
+        SNode annotation = SNodeFactoryOperations.addNewAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1), CONCEPTS.SuppressErrorsAnnotation$D1);
         Map<String, String> flavours = MapSequence.<String, String>fromMapAndKeysArray(new HashMap<String, String>(), IssueKindReportItem.FLAVOUR_ISSUE_KIND.getId()).withValues(IssueKindReportItem.TYPESYSTEM.deriveItemKind().toString());
-        SPropertyOperations.assign(annotation, PROPS.filter$kXgf, new FlavouredItem.ReportItemPredicate(flavours).serialize());
-        SPropertyOperations.assign(annotation, PROPS.message$8_1l, "all typesystem messages");
+        SPropertyOperations.assign(annotation, PROPS.filter$LICx, new FlavouredItem.ReportItemPredicate(flavours).serialize());
+        SPropertyOperations.assign(annotation, PROPS.message$_mpB, "all typesystem messages");
       } else {
-        ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$gJ))).clear();
+        ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1))).clear();
       }
     }
     @Override
@@ -103,11 +103,11 @@ public final class SuppressAllTypesystemError_Intention extends AbstractIntentio
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SuppressErrorsAnnotation$gJ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, "jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation");
+    /*package*/ static final SConcept SuppressErrorsAnnotation$D1 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, "jetbrains.mps.lang.core.structure.SuppressErrorsAnnotation");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty filter$kXgf = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, 0x21a1b53c6f2a72edL, "filter");
-    /*package*/ static final SProperty message$8_1l = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, 0x7701afb3667b38f5L, "message");
+    /*package*/ static final SProperty filter$LICx = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, 0x21a1b53c6f2a72edL, "filter");
+    /*package*/ static final SProperty message$_mpB = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3a98b0957fe8e5d2L, 0x7701afb3667b38f5L, "message");
   }
 }

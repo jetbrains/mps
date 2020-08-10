@@ -30,7 +30,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NodeBuilderInitProperty_Constraints extends BaseConstraintsDescriptor {
   public NodeBuilderInitProperty_Constraints() {
-    super(CONCEPTS.NodeBuilderInitProperty$wV);
+    super(CONCEPTS.NodeBuilderInitProperty$xv);
   }
 
   @Override
@@ -50,7 +50,7 @@ public class NodeBuilderInitProperty_Constraints extends BaseConstraintsDescript
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.property$Ktw, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.property$Y_u4, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -65,7 +65,7 @@ public class NodeBuilderInitProperty_Constraints extends BaseConstraintsDescript
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.PropertyDeclaration$c5);
+            Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.PropertyDeclaration$1S);
             return (scope == null ? new EmptyScope() : scope);
           }
         };
@@ -77,7 +77,7 @@ public class NodeBuilderInitProperty_Constraints extends BaseConstraintsDescript
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
     if (childNode == null) {
-      return childConcept.isAbstract() || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.NodeBuilderInitPropertyValue$tJ);
+      return childConcept.isAbstract() || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.NodeBuilderInitPropertyValue$uj);
     } else {
       // todo: remove clause after 2020.1  
       return true;
@@ -87,12 +87,12 @@ public class NodeBuilderInitProperty_Constraints extends BaseConstraintsDescript
   private static final SNodePointer breakingNode_ui7ey_a0a0a0a0a1a0a0a0d = new SNodePointer("r:abd7937b-2ad1-4cfc-8256-a7fa45a55f0f(jetbrains.mps.lang.quotation.constraints)", "5455284157993911081");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodeBuilderInitProperty$wV = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitProperty");
-    /*package*/ static final SConcept PropertyDeclaration$c5 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
-    /*package*/ static final SConcept NodeBuilderInitPropertyValue$tJ = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x60f18f425c769982L, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitPropertyValue");
+    /*package*/ static final SConcept NodeBuilderInitProperty$xv = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitProperty");
+    /*package*/ static final SConcept PropertyDeclaration$1S = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
+    /*package*/ static final SConcept NodeBuilderInitPropertyValue$uj = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x60f18f425c769982L, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitPropertyValue");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink property$Ktw = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x4bb51009d20b0326L, "property");
+    /*package*/ static final SReferenceLink property$Y_u4 = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L, 0x4bb51009d20b0326L, "property");
   }
 }

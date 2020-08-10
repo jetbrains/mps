@@ -77,7 +77,7 @@ public class StaticMethodCall_TransformationMenu extends TransformationMenuBase 
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.QualifiedReference$lF, "jetbrains.mps.baseLanguage.editor.ReplaceQualifiedReference");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.QualifiedReference$Mt, "jetbrains.mps.baseLanguage.editor.ReplaceQualifiedReference");
     }
 
   }
@@ -100,13 +100,13 @@ public class StaticMethodCall_TransformationMenu extends TransformationMenuBase 
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.IMethodCall$ln, "jetbrains.mps.baseLanguage.editor.AddMethodCallTypeArgument");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.IMethodCall$M9, "jetbrains.mps.baseLanguage.editor.AddMethodCallTypeArgument");
     }
 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept QualifiedReference$lF = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x7e020a1898c76ae1L, "jetbrains.mps.baseLanguage.structure.QualifiedReference");
-    /*package*/ static final SInterfaceConcept IMethodCall$ln = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
+    /*package*/ static final SInterfaceConcept QualifiedReference$Mt = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x7e020a1898c76ae1L, "jetbrains.mps.baseLanguage.structure.QualifiedReference");
+    /*package*/ static final SInterfaceConcept IMethodCall$M9 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
   }
 }

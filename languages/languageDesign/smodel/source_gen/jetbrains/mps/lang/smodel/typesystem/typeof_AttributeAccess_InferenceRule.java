@@ -24,8 +24,8 @@ public class typeof_AttributeAccess_InferenceRule extends AbstractInferenceRule_
   public typeof_AttributeAccess_InferenceRule() {
   }
   public void applyRule(final SNode operation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode attr = AttributeQualifier__BehaviorDescriptor.getTargetConcept_id5zEkxuKhyRq.invoke(SLinkOperations.getTarget(operation, LINKS.qualifier$Eo1Q));
-    if (AttributeDesignTimeOperations.isMultipleAttribute(attr) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(operation, LINKS.qualifier$Eo1Q), CONCEPTS.AllAttributeQualifier$jE)) {
+    SNode attr = AttributeQualifier__BehaviorDescriptor.getTargetConcept_id5zEkxuKhyRq.invoke(SLinkOperations.getTarget(operation, LINKS.qualifier$eL3m));
+    if (AttributeDesignTimeOperations.isMultipleAttribute(attr) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(operation, LINKS.qualifier$eL3m), CONCEPTS.AllAttributeQualifier$la)) {
       {
         SNode _nodeToCheck_1029348928467 = operation;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "2788452359612125336", 0, null);
@@ -40,7 +40,7 @@ public class typeof_AttributeAccess_InferenceRule extends AbstractInferenceRule_
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AttributeAccess$w9;
+    return CONCEPTS.AttributeAccess$xD;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -64,11 +64,11 @@ public class typeof_AttributeAccess_InferenceRule extends AbstractInferenceRule_
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink qualifier$Eo1Q = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045a3b2L, 0x58ea5217b045b9b4L, "qualifier");
+    /*package*/ static final SContainmentLink qualifier$eL3m = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045a3b2L, 0x58ea5217b045b9b4L, "qualifier");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AllAttributeQualifier$jE = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045c8b0L, "jetbrains.mps.lang.smodel.structure.AllAttributeQualifier");
-    /*package*/ static final SConcept AttributeAccess$w9 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045a3b2L, "jetbrains.mps.lang.smodel.structure.AttributeAccess");
+    /*package*/ static final SConcept AllAttributeQualifier$la = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045c8b0L, "jetbrains.mps.lang.smodel.structure.AllAttributeQualifier");
+    /*package*/ static final SConcept AttributeAccess$xD = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045a3b2L, "jetbrains.mps.lang.smodel.structure.AttributeAccess");
   }
 }

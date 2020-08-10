@@ -18,7 +18,7 @@ public class SafeDeleteConceptMethod_Target implements IRefactoringTarget {
     return false;
   }
   public boolean isApplicableToEntityType(final Object entity) {
-    return SNodeOperations.isInstanceOf(((SNode) entity), CONCEPTS.ConceptMethodDeclaration$VN);
+    return SNodeOperations.isInstanceOf(((SNode) entity), CONCEPTS.ConceptMethodDeclaration$N0);
   }
   public boolean isApplicable(final Object entity) {
     if (!(this.isApplicableToEntityType(entity))) {
@@ -28,6 +28,6 @@ public class SafeDeleteConceptMethod_Target implements IRefactoringTarget {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptMethodDeclaration$VN = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
+    /*package*/ static final SConcept ConceptMethodDeclaration$N0 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
   }
 }

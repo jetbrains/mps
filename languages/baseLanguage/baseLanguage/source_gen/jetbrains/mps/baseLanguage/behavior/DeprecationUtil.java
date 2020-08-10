@@ -20,17 +20,17 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
    */
   /*package*/ static SNode createDocComment(SConcept commentConcept) {
     SNode comment = SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(commentConcept));
-    SNode tag = SLinkOperations.addNewChild(comment, LINKS.tags$658s, CONCEPTS.DeprecatedBlockDocTag$ma);
-    SLinkOperations.setNewChild(tag, LINKS.text$PDPJ, null);
+    SNode tag = SLinkOperations.addNewChild(comment, LINKS.tags$stUD, CONCEPTS.DeprecatedBlockDocTag$8n);
+    SLinkOperations.setNewChild(tag, LINKS.text$c2BW, null);
     return comment;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink tags$658s = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
-    /*package*/ static final SContainmentLink text$PDPJ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L, 0x250631c6c859e113L, "text");
+    /*package*/ static final SContainmentLink tags$stUD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, 0x4ab5c2019ddc99f3L, "tags");
+    /*package*/ static final SContainmentLink text$c2BW = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L, 0x250631c6c859e113L, "text");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DeprecatedBlockDocTag$ma = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L, "jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag");
+    /*package*/ static final SConcept DeprecatedBlockDocTag$8n = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L, "jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag");
   }
 }

@@ -26,7 +26,7 @@ public class typeof_CompositeWithParentScopeExpression_InferenceRule extends Abs
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.CompositeWithParentScopeExpression$JK;
+    return CONCEPTS.CompositeWithParentScopeExpression$KK;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,6 +43,6 @@ public class typeof_CompositeWithParentScopeExpression_InferenceRule extends Abs
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CompositeWithParentScopeExpression$JK = MetaAdapterFactory.getConcept(0xd8f591ec4d864af2L, 0x9f92a9e93c803ffaL, 0x701a9814629119bdL, "jetbrains.mps.lang.scopes.structure.CompositeWithParentScopeExpression");
+    /*package*/ static final SConcept CompositeWithParentScopeExpression$KK = MetaAdapterFactory.getConcept(0xd8f591ec4d864af2L, 0x9f92a9e93c803ffaL, 0x701a9814629119bdL, "jetbrains.mps.lang.scopes.structure.CompositeWithParentScopeExpression");
   }
 }

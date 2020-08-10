@@ -35,7 +35,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class OperationDeclaration_Constraints extends BaseConstraintsDescriptor {
   public OperationDeclaration_Constraints() {
-    super(CONCEPTS.OperationDeclaration$3s);
+    super(CONCEPTS.OperationDeclaration$hY);
   }
 
   @Override
@@ -51,9 +51,9 @@ public class OperationDeclaration_Constraints extends BaseConstraintsDescriptor 
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SNode> result = new ArrayList<SNode>();
-            List<SNode> tgList = SModelOperations.rootsIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.LanguageTextGenDeclaration$8b);
+            List<SNode> tgList = SModelOperations.rootsIncludingImported(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.LanguageTextGenDeclaration$mH);
             for (SNode tg : tgList) {
-              ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(tg, LINKS.operation$2yg6)));
+              ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(tg, LINKS.operation$YUuC)));
             }
             return ListScope.forResolvableElements(result);
           }
@@ -63,7 +63,7 @@ public class OperationDeclaration_Constraints extends BaseConstraintsDescriptor 
   }
   public static class OperationName_Property extends BasePropertyConstraintsDescriptor {
     public OperationName_Property(ConstraintsDescriptor container) {
-      super(PROPS.operationName$kBy6, container);
+      super(PROPS.operationName$gZKC, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -71,7 +71,7 @@ public class OperationDeclaration_Constraints extends BaseConstraintsDescriptor 
     }
     @Override
     public Object getValue(SNode node) {
-      String name = SPropertyOperations.getString(node, PROPS.name$lA7v);
+      String name = SPropertyOperations.getString(node, PROPS.name$MnvL);
       if (name == null) {
         return null;
       }
@@ -90,22 +90,22 @@ public class OperationDeclaration_Constraints extends BaseConstraintsDescriptor 
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.operationName$kBy6, new OperationName_Property(this));
+    properties.put(PROPS.operationName$gZKC, new OperationName_Property(this));
     return properties;
   }
   private static final SNodePointer breakingNode_617hs5_a0a0a0a0a0a0a0a2 = new SNodePointer("r:472e3702-e789-4c3f-b300-132c65ad44f1(jetbrains.mps.lang.textGen.constraints)", "6836281137582805508");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept OperationDeclaration$3s = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b80e9d3L, "jetbrains.mps.lang.textGen.structure.OperationDeclaration");
-    /*package*/ static final SConcept LanguageTextGenDeclaration$8b = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, "jetbrains.mps.lang.textGen.structure.LanguageTextGenDeclaration");
+    /*package*/ static final SConcept OperationDeclaration$hY = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b80e9d3L, "jetbrains.mps.lang.textGen.structure.OperationDeclaration");
+    /*package*/ static final SConcept LanguageTextGenDeclaration$mH = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, "jetbrains.mps.lang.textGen.structure.LanguageTextGenDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operation$2yg6 = MetaAdapterFactory.getContainmentLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, 0x11f4b821fc5L, "operation");
+    /*package*/ static final SContainmentLink operation$YUuC = MetaAdapterFactory.getContainmentLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, 0x11f4b821fc5L, "operation");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty operationName$kBy6 = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b80e9d3L, 0x11f5fdf3bedL, "operationName");
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty operationName$gZKC = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b80e9d3L, 0x11f5fdf3bedL, "operationName");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

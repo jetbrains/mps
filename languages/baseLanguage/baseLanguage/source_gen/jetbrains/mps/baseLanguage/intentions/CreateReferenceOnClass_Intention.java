@@ -36,10 +36,10 @@ public final class CreateReferenceOnClass_Intention extends AbstractIntentionDes
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    SNode outerConcept = SNodeOperations.getNodeAncestor(SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$IY, false, false), CONCEPTS.ClassConcept$IY, false, false);
+    SNode outerConcept = SNodeOperations.getNodeAncestor(SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false), CONCEPTS.ClassConcept$bK, false, false);
     while ((outerConcept != null)) {
-      if (SNodeOperations.isInstanceOf(outerConcept, CONCEPTS.AnonymousClass$aF)) {
-        outerConcept = SNodeOperations.getNodeAncestor(outerConcept, CONCEPTS.ClassConcept$IY, false, false);
+      if (SNodeOperations.isInstanceOf(outerConcept, CONCEPTS.AnonymousClass$Bt)) {
+        outerConcept = SNodeOperations.getNodeAncestor(outerConcept, CONCEPTS.ClassConcept$bK, false, false);
       } else {
         break;
       }
@@ -65,15 +65,15 @@ public final class CreateReferenceOnClass_Intention extends AbstractIntentionDes
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode outerConcept = SNodeOperations.getNodeAncestor(SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$IY, false, false), CONCEPTS.ClassConcept$IY, false, false);
+      SNode outerConcept = SNodeOperations.getNodeAncestor(SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false), CONCEPTS.ClassConcept$bK, false, false);
       while ((outerConcept != null)) {
-        if (SNodeOperations.isInstanceOf(outerConcept, CONCEPTS.AnonymousClass$aF)) {
-          outerConcept = SNodeOperations.getNodeAncestor(outerConcept, CONCEPTS.ClassConcept$IY, false, false);
+        if (SNodeOperations.isInstanceOf(outerConcept, CONCEPTS.AnonymousClass$Bt)) {
+          outerConcept = SNodeOperations.getNodeAncestor(outerConcept, CONCEPTS.ClassConcept$bK, false, false);
         } else {
           break;
         }
       }
-      SLinkOperations.setTarget(node, LINKS.classConcept$StRd, outerConcept);
+      SLinkOperations.setTarget(node, LINKS.classConcept$zzjZ, outerConcept);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -82,11 +82,11 @@ public final class CreateReferenceOnClass_Intention extends AbstractIntentionDes
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept AnonymousClass$aF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classConcept$StRd = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
+    /*package*/ static final SReferenceLink classConcept$zzjZ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
   }
 }

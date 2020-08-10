@@ -25,9 +25,9 @@
       <node id="178770917832460638" at="51,131,52,42" concept="1" />
       <node id="178770917832460637" at="52,42,53,22" concept="5" />
       <node id="178770917832460637" at="55,0,56,0" concept="7" trace="breakingNode_3xwrd2_a0a0a0a0a1a0a0a0c" />
-      <node id="178770917832460637" at="58,0,59,0" concept="7" trace="AnalyzerRunnerCreator$kh" />
-      <node id="178770917832460637" at="59,0,60,0" concept="7" trace="Analyzer$Q4" />
-      <node id="178770917832460637" at="63,0,64,0" concept="7" trace="analyzer$uE8w" />
+      <node id="178770917832460637" at="58,0,59,0" concept="7" trace="AnalyzerRunnerCreator$aY" />
+      <node id="178770917832460637" at="59,0,60,0" concept="7" trace="Analyzer$GL" />
+      <node id="178770917832460637" at="63,0,64,0" concept="7" trace="analyzer$EJZd" />
       <node id="178770917832460637" at="25,0,28,0" concept="0" trace="AnalyzerRunnerCreator_Constraints#()V" />
       <node id="178770917832460638" at="32,0,36,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="178770917832460638" at="40,0,44,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -70,10 +70,10 @@
       <node id="3727642986272245365" at="35,0,36,22" concept="5" />
       <node id="1227128029536560830" at="40,128,41,261" concept="5" />
       <node id="3727642986272245365" at="43,0,44,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="3727642986272245365" at="46,0,47,0" concept="7" trace="ProgramParameter$82" />
-      <node id="3727642986272245365" at="47,0,48,0" concept="7" trace="StatementList$TN" />
-      <node id="3727642986272245365" at="48,0,49,0" concept="7" trace="Rule$Wr" />
-      <node id="3727642986272245365" at="52,0,53,0" concept="7" trace="actions$c5Yz" />
+      <node id="3727642986272245365" at="46,0,47,0" concept="7" trace="ProgramParameter$YJ" />
+      <node id="3727642986272245365" at="47,0,48,0" concept="7" trace="StatementList$m_" />
+      <node id="3727642986272245365" at="48,0,49,0" concept="7" trace="Rule$N8" />
+      <node id="3727642986272245365" at="52,0,53,0" concept="7" trace="actions$obPg" />
       <node id="3727642986272245365" at="21,0,24,0" concept="0" trace="ProgramParameter_Constraints#()V" />
       <node id="3727642986272245365" at="31,0,34,9" concept="2" />
       <node id="3727642986272245365" at="40,0,43,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -115,10 +115,10 @@
       <node id="3993089038373650762" at="52,131,53,42" concept="1" />
       <node id="3993089038373650761" at="53,42,54,22" concept="5" />
       <node id="3993089038373650761" at="56,0,57,0" concept="7" trace="breakingNode_fsdjue_a0a0a0a0a1a0a0a0c" />
-      <node id="3993089038373650761" at="59,0,60,0" concept="7" trace="AnalyzerConstructorParameterReference$r3" />
-      <node id="3993089038373650761" at="60,0,61,0" concept="7" trace="Analyzer$Q4" />
-      <node id="3993089038373650761" at="64,0,65,0" concept="7" trace="baseVariableDeclaration$NW$0" />
-      <node id="3993089038373650761" at="65,0,66,0" concept="7" trace="constructorParameters$Qa7m" />
+      <node id="3993089038373650761" at="59,0,60,0" concept="7" trace="AnalyzerConstructorParameterReference$hK" />
+      <node id="3993089038373650761" at="60,0,61,0" concept="7" trace="Analyzer$GL" />
+      <node id="3993089038373650761" at="64,0,65,0" concept="7" trace="baseVariableDeclaration$v20M" />
+      <node id="3993089038373650761" at="65,0,66,0" concept="7" trace="constructorParameters$2fY3" />
       <node id="3993089038373650761" at="26,0,29,0" concept="0" trace="AnalyzerConstructorParameterReference_Constraints#()V" />
       <node id="3993089038373650762" at="33,0,37,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="3993089038373650762" at="41,0,45,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -164,14 +164,14 @@
       <node id="7383406024685167122" at="60,131,61,42" concept="1" />
       <node id="4217760266503650622" at="61,42,62,22" concept="5" />
       <node id="4217760266503650622" at="64,0,65,0" concept="7" trace="breakingNode_yymroq_a0a0a0a0a1a0a0a0c" />
-      <node id="4217760266503650622" at="67,0,68,0" concept="7" trace="InstructionReference$5e" />
-      <node id="4217760266503650622" at="68,0,69,0" concept="7" trace="Rule$Wr" />
-      <node id="4217760266503650622" at="72,0,73,0" concept="7" trace="instruction$19qt" />
-      <node id="4217760266503650622" at="73,0,74,0" concept="7" trace="analyzer$$DVn" />
-      <node id="4217760266503650622" at="74,0,75,0" concept="7" trace="instruction$PDKG" />
-      <node id="4217760266503650622" at="75,0,76,0" concept="7" trace="usedContainers$iV2V" />
-      <node id="4217760266503650622" at="76,0,77,0" concept="7" trace="containter$nHww" />
-      <node id="4217760266503650622" at="77,0,78,0" concept="7" trace="instruction$yhB6" />
+      <node id="4217760266503650622" at="67,0,68,0" concept="7" trace="InstructionReference$VV" />
+      <node id="4217760266503650622" at="68,0,69,0" concept="7" trace="Rule$N8" />
+      <node id="4217760266503650622" at="72,0,73,0" concept="7" trace="instruction$dfha" />
+      <node id="4217760266503650622" at="73,0,74,0" concept="7" trace="analyzer$KJM4" />
+      <node id="4217760266503650622" at="74,0,75,0" concept="7" trace="instruction$1JBp" />
+      <node id="4217760266503650622" at="75,0,76,0" concept="7" trace="usedContainers$v0TC" />
+      <node id="4217760266503650622" at="76,0,77,0" concept="7" trace="containter$zNnd" />
+      <node id="4217760266503650622" at="77,0,78,0" concept="7" trace="instruction$IntN" />
       <node id="4217760266503650622" at="31,0,34,0" concept="0" trace="InstructionReference_Constraints#()V" />
       <node id="7383406024685167122" at="38,0,42,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="7383406024685167122" at="46,0,50,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -210,7 +210,7 @@
   <root nodeRef="r:73c9a355-2bf0-4466-8a7d-8b8d8a945cd4(jetbrains.mps.lang.dataFlow.analyzers.constraints)/4943044633101742685">
     <file name="ConceptCondition_Constraints.java">
       <node id="4943044633101742685" at="10,41,11,40" concept="9" />
-      <node id="4943044633101742685" at="15,0,16,0" concept="7" trace="ConceptCondition$v1" />
+      <node id="4943044633101742685" at="15,0,16,0" concept="7" trace="ConceptCondition$lI" />
       <node id="4943044633101742685" at="10,0,13,0" concept="0" trace="ConceptCondition_Constraints#()V" />
       <scope id="4943044633101742685" at="10,41,11,40" />
       <scope id="4943044633101742685" at="10,0,13,0" />
@@ -231,11 +231,11 @@
       <node id="4943044633102057776" at="61,131,62,42" concept="1" />
       <node id="4943044633102057755" at="62,42,63,22" concept="5" />
       <node id="4943044633102057755" at="65,0,66,0" concept="7" trace="breakingNode_b5wqlc_a0a0a0a0a1a0a0a0c" />
-      <node id="4943044633102057755" at="68,0,69,0" concept="7" trace="ApplicableNodeReference$bj" />
-      <node id="4943044633102057755" at="69,0,70,0" concept="7" trace="Rule$Wr" />
-      <node id="4943044633102057755" at="70,0,71,0" concept="7" trace="ConceptCondition$v1" />
-      <node id="4943044633102057755" at="74,0,75,0" concept="7" trace="applicableNode$k_Dw" />
-      <node id="4943044633102057755" at="75,0,76,0" concept="7" trace="condition$3eym" />
+      <node id="4943044633102057755" at="68,0,69,0" concept="7" trace="ApplicableNodeReference$20" />
+      <node id="4943044633102057755" at="69,0,70,0" concept="7" trace="Rule$N8" />
+      <node id="4943044633102057755" at="70,0,71,0" concept="7" trace="ConceptCondition$lI" />
+      <node id="4943044633102057755" at="74,0,75,0" concept="7" trace="applicableNode$wFwd" />
+      <node id="4943044633102057755" at="75,0,76,0" concept="7" trace="condition$fkp3" />
       <node id="4943044633102057755" at="30,0,33,0" concept="0" trace="ApplicableNodeReference_Constraints#()V" />
       <node id="6836281137582779560" at="52,115,55,13" concept="2" />
       <node id="4943044633102057776" at="37,0,41,0" concept="3" trace="hasOwnScopeProvider#()Z" />
@@ -291,13 +291,13 @@
       <node id="1227128029536560850" at="80,128,81,99" concept="5" />
       <node id="7985661997283725842" at="83,0,84,0" concept="7" trace="canBeChildBreakingPoint" />
       <node id="7985661997283725842" at="84,0,85,0" concept="7" trace="breakingNode_ejw1sa_a0a0a0a0a1a0a0a0d" />
-      <node id="7985661997283725842" at="87,0,88,0" concept="7" trace="IsOperation$nw" />
-      <node id="7985661997283725842" at="88,0,89,0" concept="7" trace="Analyzer$Q4" />
-      <node id="7985661997283725842" at="92,0,93,0" concept="7" trace="instruction$oFK0" />
-      <node id="7985661997283725842" at="93,0,94,0" concept="7" trace="instruction$PDKG" />
-      <node id="7985661997283725842" at="94,0,95,0" concept="7" trace="usedContainers$iV2V" />
-      <node id="7985661997283725842" at="95,0,96,0" concept="7" trace="containter$nHww" />
-      <node id="7985661997283725842" at="96,0,97,0" concept="7" trace="instruction$yhB6" />
+      <node id="7985661997283725842" at="87,0,88,0" concept="7" trace="IsOperation$ed" />
+      <node id="7985661997283725842" at="88,0,89,0" concept="7" trace="Analyzer$GL" />
+      <node id="7985661997283725842" at="92,0,93,0" concept="7" trace="instruction$$LAH" />
+      <node id="7985661997283725842" at="93,0,94,0" concept="7" trace="instruction$1JBp" />
+      <node id="7985661997283725842" at="94,0,95,0" concept="7" trace="usedContainers$v0TC" />
+      <node id="7985661997283725842" at="95,0,96,0" concept="7" trace="containter$zNnd" />
+      <node id="7985661997283725842" at="96,0,97,0" concept="7" trace="instruction$IntN" />
       <node id="7985661997283725842" at="34,0,37,0" concept="0" trace="IsOperation_Constraints#()V" />
       <node id="7985661997283725842" at="44,0,47,9" concept="2" />
       <node id="7985661997283725842" at="80,0,83,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -365,7 +365,7 @@
       <node id="8337746954995822243" at="33,0,34,22" concept="5" />
       <node id="1227090211300" at="38,57,39,101" concept="5" />
       <node id="8337746954995822243" at="41,0,42,0" concept="7" trace="canBeRootBreakingPoint" />
-      <node id="8337746954995822243" at="44,0,45,0" concept="7" trace="Rule$Wr" />
+      <node id="8337746954995822243" at="44,0,45,0" concept="7" trace="Rule$N8" />
       <node id="8337746954995822243" at="19,0,22,0" concept="0" trace="Rule_Constraints#()V" />
       <node id="8337746954995822243" at="29,0,32,9" concept="2" />
       <node id="8337746954995822243" at="38,0,41,0" concept="8" trace="staticCanBeARoot#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
@@ -403,7 +403,7 @@
       <node id="8337746954995823600" at="33,0,34,22" concept="5" />
       <node id="8337746954995823793" at="38,57,39,101" concept="5" />
       <node id="8337746954995823600" at="41,0,42,0" concept="7" trace="canBeRootBreakingPoint" />
-      <node id="8337746954995823600" at="44,0,45,0" concept="7" trace="Analyzer$Q4" />
+      <node id="8337746954995823600" at="44,0,45,0" concept="7" trace="Analyzer$GL" />
       <node id="8337746954995823600" at="19,0,22,0" concept="0" trace="Analyzer_Constraints#()V" />
       <node id="8337746954995823600" at="29,0,32,9" concept="2" />
       <node id="8337746954995823600" at="38,0,41,0" concept="8" trace="staticCanBeARoot#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
@@ -434,7 +434,7 @@
   <root nodeRef="r:73c9a355-2bf0-4466-8a7d-8b8d8a945cd4(jetbrains.mps.lang.dataFlow.analyzers.constraints)/8350235189170168165">
     <file name="CustomInstructionsContainerReference_Constraints.java">
       <node id="8350235189170168165" at="10,61,11,60" concept="9" />
-      <node id="8350235189170168165" at="15,0,16,0" concept="7" trace="CustomInstructionsContainerReference$r1" />
+      <node id="8350235189170168165" at="15,0,16,0" concept="7" trace="CustomInstructionsContainerReference$hI" />
       <node id="8350235189170168165" at="10,0,13,0" concept="0" trace="CustomInstructionsContainerReference_Constraints#()V" />
       <scope id="8350235189170168165" at="10,61,11,60" />
       <scope id="8350235189170168165" at="10,0,13,0" />
@@ -452,10 +452,10 @@
       <node id="95073643532950051" at="36,0,37,22" concept="5" />
       <node id="1227128029536560811" at="41,128,42,324" concept="5" />
       <node id="95073643532950051" at="44,0,45,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="95073643532950051" at="47,0,48,0" concept="7" trace="AnalyzerRunnerAnalyzeOperation$hQ" />
-      <node id="95073643532950051" at="48,0,49,0" concept="7" trace="DotExpression$6a" />
-      <node id="95073643532950051" at="49,0,50,0" concept="7" trace="AnalyzerRunnerType$$x" />
-      <node id="95073643532950051" at="53,0,54,0" concept="7" trace="operand$P1i5" />
+      <node id="95073643532950051" at="47,0,48,0" concept="7" trace="AnalyzerRunnerAnalyzeOperation$8z" />
+      <node id="95073643532950051" at="48,0,49,0" concept="7" trace="DotExpression$yW" />
+      <node id="95073643532950051" at="49,0,50,0" concept="7" trace="AnalyzerRunnerType$re" />
+      <node id="95073643532950051" at="53,0,54,0" concept="7" trace="operand$w6IR" />
       <node id="95073643532950051" at="22,0,25,0" concept="0" trace="AnalyzerRunnerAnalyzeOperation_Constraints#()V" />
       <node id="95073643532950051" at="32,0,35,9" concept="2" />
       <node id="95073643532950051" at="41,0,44,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />

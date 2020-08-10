@@ -32,7 +32,7 @@ public final class TemplateArgumentPropertyPatternRefExpression__BehaviorDescrip
   }
 
   /*package*/ static String getVariableName_id2x5YKzmc1bX(@NotNull SNode __thisNode__) {
-    return PatternVarsUtil.getFieldName(SLinkOperations.getTarget(__thisNode__, LINKS.propertyPattern$foN1));
+    return PatternVarsUtil.getFieldName(SLinkOperations.getTarget(__thisNode__, LINKS.propertyPattern$CluH));
   }
 
   /*package*/ TemplateArgumentPropertyPatternRefExpression__BehaviorDescriptor() {
@@ -82,6 +82,6 @@ public final class TemplateArgumentPropertyPatternRefExpression__BehaviorDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink propertyPattern$foN1 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x42d71bfbeb1a5de7L, 0x42d71bfbeb1a5de9L, "propertyPattern");
+    /*package*/ static final SReferenceLink propertyPattern$CluH = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x42d71bfbeb1a5de7L, 0x42d71bfbeb1a5de9L, "propertyPattern");
   }
 }

@@ -28,7 +28,7 @@ public class LocalExtendedMethodCall_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_mncb6y_a(), CONCEPTS.LocalExtendedMethodCall$nt));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_mncb6y_a(), CONCEPTS.LocalExtendedMethodCall$_e));
     result.add(new SMP_Subconcepts_mncb6y_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class LocalExtendedMethodCall_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_mncb6y_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.LocalExtendedMethodCall$nt, LINKS.baseMethodDeclaration$ItxI);
+      super((SAbstractConcept) CONCEPTS.LocalExtendedMethodCall$_e, LINKS.baseMethodDeclaration$pyYw);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class LocalExtendedMethodCall_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_mncb6y_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.LocalExtendedMethodCall$nt);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.LocalExtendedMethodCall$_e);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class LocalExtendedMethodCall_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LocalExtendedMethodCall$nt = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x6aa7ca55518b9170L, "jetbrains.mps.baseLanguage.extensionMethods.structure.LocalExtendedMethodCall");
+    /*package*/ static final SConcept LocalExtendedMethodCall$_e = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x6aa7ca55518b9170L, "jetbrains.mps.baseLanguage.extensionMethods.structure.LocalExtendedMethodCall");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 }

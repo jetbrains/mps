@@ -57,8 +57,8 @@ public final class IGenericType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static SNode expandGenericDescendants_id3zZky3wIhhm(@NotNull SNode __thisNode__, SNode expanded, final Map<SNode, SNode> substitutions, final List<SNode> expTrace) {
     IGenericType__BehaviorDescriptor.walkDescendants_id77p1ap9WcZw.invoke(__thisNode__, expanded, new _FunctionTypes._return_P2_E0<Boolean, SNode, Queue<SNode>>() {
       public Boolean invoke(SNode desc, Queue<SNode> queue) {
-        if (SNodeOperations.isInstanceOf(desc, CONCEPTS.IGenericType$$h)) {
-          SNode next = IGenericType__BehaviorDescriptor.expandGenerics_id3$PgO9fYTB5.invoke(SNodeOperations.cast(desc, CONCEPTS.IGenericType$$h), substitutions, ListSequence.fromListWithValues(new ArrayList<SNode>(), expTrace));
+        if (SNodeOperations.isInstanceOf(desc, CONCEPTS.IGenericType$13)) {
+          SNode next = IGenericType__BehaviorDescriptor.expandGenerics_id3$PgO9fYTB5.invoke(SNodeOperations.cast(desc, CONCEPTS.IGenericType$13), substitutions, ListSequence.fromListWithValues(new ArrayList<SNode>(), expTrace));
           if (next != desc) {
             SNodeOperations.replaceWithAnother(desc, SNodeOperations.copyNode(next));
             QueueSequence.fromQueue(queue).addSequence(ListSequence.fromList(SNodeOperations.getChildren(desc)));
@@ -139,6 +139,6 @@ public final class IGenericType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IGenericType$$h = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x38ff5220e0ac710dL, "jetbrains.mps.baseLanguage.structure.IGenericType");
+    /*package*/ static final SInterfaceConcept IGenericType$13 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x38ff5220e0ac710dL, "jetbrains.mps.baseLanguage.structure.IGenericType");
   }
 }

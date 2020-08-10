@@ -27,19 +27,19 @@ public class check_CellActionMapDeclarationImportCompatibility_NonTypesystemRule
   public void applyRule(final SNode cellActionMapDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode applicableConcept = CellActionMapDeclaration__BehaviorDescriptor.getApplicableConcept_id1hkJY7harvo.invoke(cellActionMapDeclaration);
 
-    for (SNode imp : SLinkOperations.getChildren(cellActionMapDeclaration, LINKS.imports$MySS)) {
-      SNode importedApplicableConcept = CellActionMapDeclaration__BehaviorDescriptor.getApplicableConcept_id1hkJY7harvo.invoke(SLinkOperations.getTarget(imp, LINKS.cellActionMap$w6kw));
+    for (SNode imp : SLinkOperations.getChildren(cellActionMapDeclaration, LINKS.imports$QP4v)) {
+      SNode importedApplicableConcept = CellActionMapDeclaration__BehaviorDescriptor.getApplicableConcept_id1hkJY7harvo.invoke(SLinkOperations.getTarget(imp, LINKS.cellActionMap$$ow7));
 
       if (!((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(applicableConcept, importedApplicableConcept))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(imp, "Imported action map " + SPropertyOperations.getString(SLinkOperations.getTarget(imp, LINKS.cellActionMap$w6kw), PROPS.name$lA7v) + " is not applicable to concept " + SPropertyOperations.getString(applicableConcept, PROPS.name$lA7v), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "2687536747039599561", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(imp, "Imported action map " + SPropertyOperations.getString(SLinkOperations.getTarget(imp, LINKS.cellActionMap$$ow7), PROPS.name$MnvL) + " is not applicable to concept " + SPropertyOperations.getString(applicableConcept, PROPS.name$MnvL), "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "2687536747039599561", null, errorTarget);
         }
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.CellActionMapDeclaration$Fh;
+    return CONCEPTS.CellActionMapDeclaration$QS;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -49,15 +49,15 @@ public class check_CellActionMapDeclarationImportCompatibility_NonTypesystemRule
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink cellActionMap$w6kw = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x765abcb2949869d7L, 0x765abcb2949869d8L, "cellActionMap");
-    /*package*/ static final SContainmentLink imports$MySS = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951978cfeL, 0x765abcb2949869d3L, "imports");
+    /*package*/ static final SReferenceLink cellActionMap$$ow7 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x765abcb2949869d7L, 0x765abcb2949869d8L, "cellActionMap");
+    /*package*/ static final SContainmentLink imports$QP4v = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951978cfeL, 0x765abcb2949869d3L, "imports");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellActionMapDeclaration$Fh = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951978cfeL, "jetbrains.mps.lang.editor.structure.CellActionMapDeclaration");
+    /*package*/ static final SConcept CellActionMapDeclaration$QS = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10951978cfeL, "jetbrains.mps.lang.editor.structure.CellActionMapDeclaration");
   }
 }

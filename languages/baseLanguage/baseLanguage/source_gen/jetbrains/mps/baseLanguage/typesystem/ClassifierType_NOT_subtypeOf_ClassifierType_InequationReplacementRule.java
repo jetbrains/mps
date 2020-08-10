@@ -32,25 +32,25 @@ public class ClassifierType_NOT_subtypeOf_ClassifierType_InequationReplacementRu
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
     // this rule exists to help reduce exhaustive search, so it should apply when no other rules do 
 
-    if (Objects.equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(subtype, LINKS.classifier$xslD)), INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(supertype, LINKS.classifier$xslD))) && SLinkOperations.getTarget(subtype, LINKS.classifier$xslD) != SLinkOperations.getTarget(supertype, LINKS.classifier$xslD)) {
+    if (Objects.equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(subtype, LINKS.classifier$cxMr)), INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr))) && SLinkOperations.getTarget(subtype, LINKS.classifier$cxMr) != SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr)) {
       // not applicable if it is the same classifier 
       // (see classifierTypeWithSameClassifier rule) 
       return false;
     }
 
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(subtype, LINKS.classifier$xslD), CONCEPTS.Interface$Kp) && SLinkOperations.hasPointer(supertype, LINKS.classifier$xslD, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object"))) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(subtype, LINKS.classifier$cxMr), CONCEPTS.Interface$db) && SLinkOperations.hasPointer(supertype, LINKS.classifier$cxMr, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object"))) {
       // not applicable to interface subtype-of Object (always true) 
       return false;
     }
 
-    boolean subRaw = ListSequence.fromList(SLinkOperations.getChildren(subtype, LINKS.parameter$HlfM)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(subtype, LINKS.classifier$xslD), LINKS.typeVariableDeclaration$6cWB)).isNotEmpty();
-    boolean superRaw = ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.parameter$HlfM)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(supertype, LINKS.classifier$xslD), LINKS.typeVariableDeclaration$6cWB)).isNotEmpty();
+    boolean subRaw = ListSequence.fromList(SLinkOperations.getChildren(subtype, LINKS.parameter$oqG$)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(subtype, LINKS.classifier$cxMr), LINKS.typeVariableDeclaration$Lipp)).isNotEmpty();
+    boolean superRaw = ListSequence.fromList(SLinkOperations.getChildren(supertype, LINKS.parameter$oqG$)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr), LINKS.typeVariableDeclaration$Lipp)).isNotEmpty();
     if (subRaw || superRaw) {
       // not applicable to raw types 
       return false;
     }
 
-    return !((boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SLinkOperations.getTarget(subtype, LINKS.classifier$xslD), SLinkOperations.getTarget(supertype, LINKS.classifier$xslD)));
+    return !((boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SLinkOperations.getTarget(subtype, LINKS.classifier$cxMr), SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr)));
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
     {
@@ -75,20 +75,20 @@ public class ClassifierType_NOT_subtypeOf_ClassifierType_InequationReplacementRu
   }
 
   public SAbstractConcept getApplicableSubtypeConcept() {
-    return CONCEPTS.ClassifierType$IZ;
+    return CONCEPTS.ClassifierType$bL;
   }
   public SAbstractConcept getApplicableSupertypeConcept() {
-    return CONCEPTS.ClassifierType$IZ;
+    return CONCEPTS.ClassifierType$bL;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$Lipp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink parameter$oqG$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
   }
 }

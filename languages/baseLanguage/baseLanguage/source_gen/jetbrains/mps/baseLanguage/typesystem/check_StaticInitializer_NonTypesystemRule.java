@@ -17,10 +17,10 @@ public class check_StaticInitializer_NonTypesystemRule extends AbstractNonTypesy
   public check_StaticInitializer_NonTypesystemRule() {
   }
   public void applyRule(final SNode staticInitializer, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    DataFlowUtil.checkDataFlow(typeCheckingContext, SLinkOperations.getTarget(staticInitializer, LINKS.statementList$UAQw));
+    DataFlowUtil.checkDataFlow(typeCheckingContext, SLinkOperations.getTarget(staticInitializer, LINKS.statementList$_Gji));
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.StaticInitializer$dH;
+    return CONCEPTS.StaticInitializer$Ev;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -30,10 +30,10 @@ public class check_StaticInitializer_NonTypesystemRule extends AbstractNonTypesy
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statementList$UAQw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, 0x11c7538039eL, "statementList");
+    /*package*/ static final SContainmentLink statementList$_Gji = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, 0x11c7538039eL, "statementList");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StaticInitializer$dH = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, "jetbrains.mps.baseLanguage.structure.StaticInitializer");
+    /*package*/ static final SConcept StaticInitializer$Ev = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, "jetbrains.mps.baseLanguage.structure.StaticInitializer");
   }
 }

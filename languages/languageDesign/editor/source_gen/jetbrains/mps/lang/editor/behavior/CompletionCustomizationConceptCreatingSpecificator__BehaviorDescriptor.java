@@ -36,7 +36,7 @@ public final class CompletionCustomizationConceptCreatingSpecificator__BehaviorD
     return true;
   }
   /*package*/ static List<SConcept> getAdditionalParameters_idETPn3v9Kre(@NotNull SNode __thisNode__) {
-    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.ConceptFunctionParameterCustomize_ParentNode$WN, CONCEPTS.ConceptFunctionParameterCustomize_ContainmentLink$4I, CONCEPTS.ConceptFunctionParameterCustomize_CurrentChild$yD);
+    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.ConceptFunctionParameterCustomize_ParentNode$8q, CONCEPTS.ConceptFunctionParameterCustomize_ContainmentLink$gl, CONCEPTS.ConceptFunctionParameterCustomize_CurrentChild$Ig);
   }
 
   /*package*/ CompletionCustomizationConceptCreatingSpecificator__BehaviorDescriptor() {
@@ -88,8 +88,8 @@ public final class CompletionCustomizationConceptCreatingSpecificator__BehaviorD
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptFunctionParameterCustomize_ParentNode$WN = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570df26e4c5L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameterCustomize_ParentNode");
-    /*package*/ static final SConcept ConceptFunctionParameterCustomize_ContainmentLink$4I = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570df270475L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameterCustomize_ContainmentLink");
-    /*package*/ static final SConcept ConceptFunctionParameterCustomize_CurrentChild$yD = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570df26faf0L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameterCustomize_CurrentChild");
+    /*package*/ static final SConcept ConceptFunctionParameterCustomize_ParentNode$8q = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570df26e4c5L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameterCustomize_ParentNode");
+    /*package*/ static final SConcept ConceptFunctionParameterCustomize_ContainmentLink$gl = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570df270475L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameterCustomize_ContainmentLink");
+    /*package*/ static final SConcept ConceptFunctionParameterCustomize_CurrentChild$Ig = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570df26faf0L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameterCustomize_CurrentChild");
   }
 }

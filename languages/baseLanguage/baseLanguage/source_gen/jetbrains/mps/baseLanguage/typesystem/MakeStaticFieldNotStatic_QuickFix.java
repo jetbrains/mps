@@ -19,31 +19,31 @@ public class MakeStaticFieldNotStatic_QuickFix extends QuickFix_Runtime {
     super(new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "498633765599987429"));
   }
   public String getDescription(SNode node) {
-    return "Make '" + SPropertyOperations.getString(((SNode) MakeStaticFieldNotStatic_QuickFix.this.getField("staticField")[0]), PROPS.name$lA7v) + "' not static";
+    return "Make '" + SPropertyOperations.getString(((SNode) MakeStaticFieldNotStatic_QuickFix.this.getField("staticField")[0]), PROPS.name$MnvL) + "' not static";
   }
   public void execute(SNode node) {
     SNode fieldDeclaration = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration"));
-    SPropertyOperations.assign(fieldDeclaration, PROPS.name$lA7v, SPropertyOperations.getString(((SNode) MakeStaticFieldNotStatic_QuickFix.this.getField("staticField")[0]), PROPS.name$lA7v));
-    SLinkOperations.setTarget(fieldDeclaration, LINKS.type$uWuc, SLinkOperations.getTarget(((SNode) MakeStaticFieldNotStatic_QuickFix.this.getField("staticField")[0]), LINKS.type$uWuc));
-    SPropertyOperations.assign(fieldDeclaration, PROPS.isFinal$_qt3, SPropertyOperations.getBoolean(((SNode) MakeStaticFieldNotStatic_QuickFix.this.getField("staticField")[0]), PROPS.isFinal$_qt3));
-    SLinkOperations.setTarget(fieldDeclaration, LINKS.initializer$no3R, SLinkOperations.getTarget(((SNode) MakeStaticFieldNotStatic_QuickFix.this.getField("staticField")[0]), LINKS.initializer$no3R));
-    ListSequence.fromList(SLinkOperations.getChildren(fieldDeclaration, LINKS.annotation$4YGW)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(((SNode) MakeStaticFieldNotStatic_QuickFix.this.getField("staticField")[0]), LINKS.annotation$4YGW)));
-    SLinkOperations.setTarget(fieldDeclaration, LINKS.visibility$jt1o, SLinkOperations.getTarget(((SNode) MakeStaticFieldNotStatic_QuickFix.this.getField("staticField")[0]), LINKS.visibility$jt1o));
-    ListSequence.fromList(SLinkOperations.getChildren(((SNode) MakeStaticFieldNotStatic_QuickFix.this.getField("containingClass")[0]), LINKS.member$6v_r)).addElement(fieldDeclaration);
+    SPropertyOperations.assign(fieldDeclaration, PROPS.name$MnvL, SPropertyOperations.getString(((SNode) MakeStaticFieldNotStatic_QuickFix.this.getField("staticField")[0]), PROPS.name$MnvL));
+    SLinkOperations.setTarget(fieldDeclaration, LINKS.type$a1UY, SLinkOperations.getTarget(((SNode) MakeStaticFieldNotStatic_QuickFix.this.getField("staticField")[0]), LINKS.type$a1UY));
+    SPropertyOperations.assign(fieldDeclaration, PROPS.isFinal$gvTP, SPropertyOperations.getBoolean(((SNode) MakeStaticFieldNotStatic_QuickFix.this.getField("staticField")[0]), PROPS.isFinal$gvTP));
+    SLinkOperations.setTarget(fieldDeclaration, LINKS.initializer$2twD, SLinkOperations.getTarget(((SNode) MakeStaticFieldNotStatic_QuickFix.this.getField("staticField")[0]), LINKS.initializer$2twD));
+    ListSequence.fromList(SLinkOperations.getChildren(fieldDeclaration, LINKS.annotation$K49I)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(((SNode) MakeStaticFieldNotStatic_QuickFix.this.getField("staticField")[0]), LINKS.annotation$K49I)));
+    SLinkOperations.setTarget(fieldDeclaration, LINKS.visibility$Yyua, SLinkOperations.getTarget(((SNode) MakeStaticFieldNotStatic_QuickFix.this.getField("staticField")[0]), LINKS.visibility$Yyua));
+    ListSequence.fromList(SLinkOperations.getChildren(((SNode) MakeStaticFieldNotStatic_QuickFix.this.getField("containingClass")[0]), LINKS.member$L_2d)).addElement(fieldDeclaration);
     SNodeOperations.deleteNode(((SNode) MakeStaticFieldNotStatic_QuickFix.this.getField("staticField")[0]));
     SNodeOperations.deleteNode(((SNode) MakeStaticFieldNotStatic_QuickFix.this.getField("staticField")[0]));
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$gvTP = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
-    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink initializer$2twD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink annotation$K49I = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink member$L_2d = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
   }
 }

@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class InternalSuperMethodCallOperation_Constraints extends BaseConstraintsDescriptor {
   public InternalSuperMethodCallOperation_Constraints() {
-    super(CONCEPTS.InternalSuperMethodCallOperation$r3);
+    super(CONCEPTS.InternalSuperMethodCallOperation$FP);
   }
 
   @Override
@@ -42,6 +42,6 @@ public class InternalSuperMethodCallOperation_Constraints extends BaseConstraint
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:1ce54900-c35b-4aa5-b24f-b47c871a6d6f(jetbrains.mps.baseLanguageInternal.constraints)", "1227128029536559779");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InternalSuperMethodCallOperation$r3 = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x33c9311d003a97d3L, "jetbrains.mps.baseLanguageInternal.structure.InternalSuperMethodCallOperation");
+    /*package*/ static final SConcept InternalSuperMethodCallOperation$FP = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x33c9311d003a97d3L, "jetbrains.mps.baseLanguageInternal.structure.InternalSuperMethodCallOperation");
   }
 }

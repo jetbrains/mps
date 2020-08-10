@@ -31,7 +31,7 @@ public final class DragMouseStatement__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static SNode getPressMouseStatement_id3CVcUJxN49_(@NotNull SNode __thisNode__) {
-    return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.PressMouseStatement$qh, false, false);
+    return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.PressMouseStatement$DK, false, false);
   }
 
   /*package*/ DragMouseStatement__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class DragMouseStatement__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PressMouseStatement$qh = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x2ec0ea8c5348f79L, "jetbrains.mps.lang.test.structure.PressMouseStatement");
+    /*package*/ static final SConcept PressMouseStatement$DK = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x2ec0ea8c5348f79L, "jetbrains.mps.lang.test.structure.PressMouseStatement");
   }
 }

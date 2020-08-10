@@ -28,10 +28,10 @@ public class check_PropertyDeclaration_NonTypesystemRule extends AbstractNonType
   }
   public void applyRule(final SNode prop, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // property overriding is banned 
-    if (SPropertyOperations.getString(prop, PROPS.name$lA7v) == null) {
+    if (SPropertyOperations.getString(prop, PROPS.name$MnvL) == null) {
       return;
     }
-    SNode concept = SNodeOperations.getNodeAncestor(prop, CONCEPTS.AbstractConceptDeclaration$UN, false, false);
+    SNode concept = SNodeOperations.getNodeAncestor(prop, CONCEPTS.AbstractConceptDeclaration$KA, false, false);
     // XXX this check is invoked for each property visible in ConceptDeclaration editor. If it takes noticeably longer than it was compared 
     // to cached access to property declarations, we'd better introduce a notion of caching context here and calculate concept hierarchy/property declarations 
     // once per checking session (this doesn't seem to be any trouble using TypecheckingContext to keep cached values during checking session.  
@@ -43,32 +43,32 @@ public class check_PropertyDeclaration_NonTypesystemRule extends AbstractNonType
     }).toListSequence();
     SNode propInConcept = ListSequence.fromList(otherProps).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), SPropertyOperations.getString(prop, PROPS.name$lA7v));
+        return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(prop, PROPS.name$MnvL));
       }
     });
     if (propInConcept != null) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(prop, "property '" + SPropertyOperations.getString(prop, PROPS.name$lA7v) + "' is already declared in " + SPropertyOperations.getString(SNodeOperations.getNodeAncestor(propInConcept, CONCEPTS.AbstractConceptDeclaration$UN, false, false), PROPS.name$lA7v), "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1212182341577", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(prop, "property '" + SPropertyOperations.getString(prop, PROPS.name$MnvL) + "' is already declared in " + SPropertyOperations.getString(SNodeOperations.getNodeAncestor(propInConcept, CONCEPTS.AbstractConceptDeclaration$KA, false, false), PROPS.name$MnvL), "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "1212182341577", null, errorTarget);
       }
       return;
     }
     // check constant names generated in adapters 
-    final String name = NameUtil.toConstantName(SPropertyOperations.getString(prop, PROPS.name$lA7v));
+    final String name = NameUtil.toConstantName(SPropertyOperations.getString(prop, PROPS.name$MnvL));
     SNode node = ListSequence.fromList(otherProps).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(name, NameUtil.toConstantName(SPropertyOperations.getString(it, PROPS.name$lA7v)));
+        return Objects.equals(name, NameUtil.toConstantName(SPropertyOperations.getString(it, PROPS.name$MnvL)));
       }
     });
     if ((node != null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(prop, "similar property '" + SPropertyOperations.getString(node, PROPS.name$lA7v) + "' is declared in " + SPropertyOperations.getString(SNodeOperations.getNodeAncestor(node, CONCEPTS.AbstractConceptDeclaration$UN, false, false), PROPS.name$lA7v), "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "576141512674073565", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(prop, "similar property '" + SPropertyOperations.getString(node, PROPS.name$MnvL) + "' is declared in " + SPropertyOperations.getString(SNodeOperations.getNodeAncestor(node, CONCEPTS.AbstractConceptDeclaration$KA, false, false), PROPS.name$MnvL), "r:00000000-0000-4000-0000-011c8959028f(jetbrains.mps.lang.structure.typesystem)", "576141512674073565", null, errorTarget);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.PropertyDeclaration$c5;
+    return CONCEPTS.PropertyDeclaration$1S;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -78,11 +78,11 @@ public class check_PropertyDeclaration_NonTypesystemRule extends AbstractNonType
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
-    /*package*/ static final SConcept PropertyDeclaration$c5 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept PropertyDeclaration$1S = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
   }
 }

@@ -29,19 +29,19 @@
       <node id="6362460243896632414" at="46,72,47,13" concept="4" />
       <node id="6362460243896632416" at="48,5,49,0" concept="6" />
       <node id="812693349008597362" at="49,0,50,172" concept="1" />
-      <node id="681855071694482336" at="54,0,55,0" concept="7" trace="ApplicationPluginDeclaration$hU" />
-      <node id="681855071694482336" at="55,0,56,0" concept="7" trace="StandalonePluginDescriptor$qr" />
-      <node id="681855071694482336" at="56,0,57,0" concept="7" trace="IdeaInitializerDescriptor$XN" />
-      <node id="681855071694482336" at="57,0,58,0" concept="7" trace="ActionGroupDeclaration$YL" />
-      <node id="681855071694482336" at="58,0,59,0" concept="7" trace="ActionDeclaration$VX" />
-      <node id="681855071694482336" at="59,0,60,0" concept="7" trace="InterfaceGroup$_n" />
-      <node id="681855071694482336" at="60,0,61,0" concept="7" trace="KeymapChangesDeclaration$TA" />
-      <node id="681855071694482336" at="61,0,62,0" concept="7" trace="EditorTab$AL" />
-      <node id="681855071694482336" at="62,0,63,0" concept="7" trace="BaseToolDeclaration$fH" />
-      <node id="681855071694482336" at="63,0,64,0" concept="7" trace="PreferencesComponentDeclaration$6j" />
-      <node id="681855071694482336" at="64,0,65,0" concept="7" trace="ProjectPluginDeclaration$4P" />
-      <node id="681855071694482336" at="68,0,69,0" concept="7" trace="needInitConfig$XkYG" />
-      <node id="681855071694482336" at="69,0,70,0" concept="7" trace="compileInMPS$58m_" />
+      <node id="681855071694482336" at="54,0,55,0" concept="7" trace="ApplicationPluginDeclaration$W1" />
+      <node id="681855071694482336" at="55,0,56,0" concept="7" trace="StandalonePluginDescriptor$4y" />
+      <node id="681855071694482336" at="56,0,57,0" concept="7" trace="IdeaInitializerDescriptor$UQ" />
+      <node id="681855071694482336" at="57,0,58,0" concept="7" trace="ActionGroupDeclaration$VO" />
+      <node id="681855071694482336" at="58,0,59,0" concept="7" trace="ActionDeclaration$T0" />
+      <node id="681855071694482336" at="59,0,60,0" concept="7" trace="InterfaceGroup$yq" />
+      <node id="681855071694482336" at="60,0,61,0" concept="7" trace="KeymapChangesDeclaration$QD" />
+      <node id="681855071694482336" at="61,0,62,0" concept="7" trace="EditorTab$zO" />
+      <node id="681855071694482336" at="62,0,63,0" concept="7" trace="BaseToolDeclaration$cK" />
+      <node id="681855071694482336" at="63,0,64,0" concept="7" trace="PreferencesComponentDeclaration$3m" />
+      <node id="681855071694482336" at="64,0,65,0" concept="7" trace="ProjectPluginDeclaration$IW" />
+      <node id="681855071694482336" at="68,0,69,0" concept="7" trace="needInitConfig$W9CN" />
+      <node id="681855071694482336" at="69,0,70,0" concept="7" trace="compileInMPS$2Q_X" />
       <node id="681855071694482338" at="18,0,20,0" concept="0" trace="PluginUtils#()V" />
       <node id="681855071694482342" at="20,0,23,0" concept="8" trace="needAppPlugin#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
       <node id="681855071694482362" at="23,0,26,0" concept="8" trace="needProjectPlugin#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />

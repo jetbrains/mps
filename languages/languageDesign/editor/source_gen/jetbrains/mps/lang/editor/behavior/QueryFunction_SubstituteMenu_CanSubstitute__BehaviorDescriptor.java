@@ -38,8 +38,8 @@ public final class QueryFunction_SubstituteMenu_CanSubstitute__BehaviorDescripto
     return _quotation_createNode_lfd2pz_a0a0();
   }
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
-    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invokeSuper(__thisNode__, CONCEPTS.QueryFunction_SubstituteMenu_CanSubstitute$VT);
-    ListSequence.fromList(result).addElement(CONCEPTS.QueryFunctionParameter_SubstituteMenu_Strictly$Js);
+    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invokeSuper(__thisNode__, CONCEPTS.QueryFunction_SubstituteMenu_CanSubstitute$7w);
+    ListSequence.fromList(result).addElement(CONCEPTS.QueryFunctionParameter_SubstituteMenu_Strictly$V3);
     return result;
   }
 
@@ -98,7 +98,7 @@ public final class QueryFunction_SubstituteMenu_CanSubstitute__BehaviorDescripto
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept QueryFunction_SubstituteMenu_CanSubstitute$VT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7ce1116e3a2db1e1L, "jetbrains.mps.lang.editor.structure.QueryFunction_SubstituteMenu_CanSubstitute");
-    /*package*/ static final SConcept QueryFunctionParameter_SubstituteMenu_Strictly$Js = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x59f39dd19d1526cdL, "jetbrains.mps.lang.editor.structure.QueryFunctionParameter_SubstituteMenu_Strictly");
+    /*package*/ static final SConcept QueryFunction_SubstituteMenu_CanSubstitute$7w = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7ce1116e3a2db1e1L, "jetbrains.mps.lang.editor.structure.QueryFunction_SubstituteMenu_CanSubstitute");
+    /*package*/ static final SConcept QueryFunctionParameter_SubstituteMenu_Strictly$V3 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x59f39dd19d1526cdL, "jetbrains.mps.lang.editor.structure.QueryFunctionParameter_SubstituteMenu_Strictly");
   }
 }

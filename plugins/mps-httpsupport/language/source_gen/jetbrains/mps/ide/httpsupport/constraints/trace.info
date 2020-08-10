@@ -26,9 +26,9 @@
       <node id="2332657309400452832" at="50,131,51,42" concept="1" />
       <node id="2332657309400452831" at="51,42,52,22" concept="5" />
       <node id="2332657309400452831" at="54,0,55,0" concept="7" trace="breakingNode_ja0ulc_a0a0a0a0a1a0a0a0c" />
-      <node id="2332657309400452831" at="57,0,58,0" concept="7" trace="QueryParameterReference$vD" />
-      <node id="2332657309400452831" at="58,0,59,0" concept="7" trace="QueryParameter$k9" />
-      <node id="2332657309400452831" at="62,0,63,0" concept="7" trace="queryParameter$VJOw" />
+      <node id="2332657309400452831" at="57,0,58,0" concept="7" trace="QueryParameterReference$9h" />
+      <node id="2332657309400452831" at="58,0,59,0" concept="7" trace="QueryParameter$XL" />
+      <node id="2332657309400452831" at="62,0,63,0" concept="7" trace="queryParameter$QWu8" />
       <node id="2332657309400452831" at="23,0,26,0" concept="0" trace="QueryParameterReference_Constraints#()V" />
       <node id="2332657309400452832" at="30,0,34,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="2332657309400452832" at="38,0,42,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -73,8 +73,8 @@
       <node id="4403308017441363956" at="34,0,35,22" concept="5" />
       <node id="1227128029536566371" at="39,128,40,95" concept="5" />
       <node id="4403308017441363956" at="42,0,43,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="4403308017441363956" at="45,0,46,0" concept="7" trace="SerializeFunction$HY" />
-      <node id="4403308017441363956" at="46,0,47,0" concept="7" trace="ParameterConverterDeclaration$QQ" />
+      <node id="4403308017441363956" at="45,0,46,0" concept="7" trace="SerializeFunction$nA" />
+      <node id="4403308017441363956" at="46,0,47,0" concept="7" trace="ParameterConverterDeclaration$wu" />
       <node id="4403308017441363956" at="20,0,23,0" concept="0" trace="SerializeFunction_Constraints#()V" />
       <node id="4403308017441363956" at="30,0,33,9" concept="2" />
       <node id="4403308017441363956" at="39,0,42,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -126,12 +126,12 @@
       <node id="6836281137582837002" at="98,5,99,17" concept="5" />
       <node id="4622937352052264811" at="101,0,102,0" concept="7" trace="canBeChildBreakingPoint" />
       <node id="4622937352052264811" at="102,0,103,0" concept="7" trace="breakingNode_9zeh4o_a0a0a0a0a1a0a0a0d" />
-      <node id="4622937352052264811" at="105,0,106,0" concept="7" trace="ParameterInitializer$Et" />
-      <node id="4622937352052264811" at="106,0,107,0" concept="7" trace="RequestURLBuilderExpression$JC" />
-      <node id="4622937352052264811" at="107,0,108,0" concept="7" trace="QueryParameter$k9" />
-      <node id="4622937352052264811" at="111,0,112,0" concept="7" trace="parameter$Ilew" />
-      <node id="4622937352052264811" at="112,0,113,0" concept="7" trace="initializer$5K$w" />
-      <node id="4622937352052264811" at="113,0,114,0" concept="7" trace="requestHandler$EI79" />
+      <node id="4622937352052264811" at="105,0,106,0" concept="7" trace="ParameterInitializer$k5" />
+      <node id="4622937352052264811" at="106,0,107,0" concept="7" trace="RequestURLBuilderExpression$pg" />
+      <node id="4622937352052264811" at="107,0,108,0" concept="7" trace="QueryParameter$XL" />
+      <node id="4622937352052264811" at="111,0,112,0" concept="7" trace="parameter$DxS8" />
+      <node id="4622937352052264811" at="112,0,113,0" concept="7" trace="initializer$Xe8" />
+      <node id="4622937352052264811" at="113,0,114,0" concept="7" trace="requestHandler$_UKL" />
       <node id="4622937352052264811" at="35,0,38,0" concept="0" trace="ParameterInitializer_Constraints#()V" />
       <node id="4622937352052264811" at="45,0,48,9" concept="2" />
       <node id="6836281137582836999" at="78,0,81,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -201,7 +201,7 @@
         <var name="references" id="4622937352052264811" />
       </scope>
       <scope id="4622937352052264811" at="54,0,92,0" />
-      <unit id="6836281137582836999" at="77,120,81,17" name="jetbrains.mps.ide.httpsupport.constraints.ParameterInitializer_Constraints$2$1$1$1" />
+      <unit id="6836281137582836999" at="77,119,81,17" name="jetbrains.mps.ide.httpsupport.constraints.ParameterInitializer_Constraints$2$1$1$1" />
       <unit id="4622937352052264811" at="104,0,109,0" name="jetbrains.mps.ide.httpsupport.constraints.ParameterInitializer_Constraints$CONCEPTS" />
       <unit id="4622937352052264811" at="110,0,115,0" name="jetbrains.mps.ide.httpsupport.constraints.ParameterInitializer_Constraints$LINKS" />
       <unit id="6836281137582836981" at="73,23,83,13" name="jetbrains.mps.ide.httpsupport.constraints.ParameterInitializer_Constraints$2$1$1" />
@@ -214,7 +214,7 @@
   <root nodeRef="r:13dad04a-0370-4fef-a258-0eee3aa2ee6a(jetbrains.mps.ide.httpsupport.constraints)/5846421723674326052">
     <file name="QueryParameter_Constraints.java">
       <node id="5846421723674326052" at="10,39,11,38" concept="9" />
-      <node id="5846421723674326052" at="15,0,16,0" concept="7" trace="QueryParameter$k9" />
+      <node id="5846421723674326052" at="15,0,16,0" concept="7" trace="QueryParameter$XL" />
       <node id="5846421723674326052" at="10,0,13,0" concept="0" trace="QueryParameter_Constraints#()V" />
       <scope id="5846421723674326052" at="10,39,11,38" />
       <scope id="5846421723674326052" at="10,0,13,0" />
@@ -237,9 +237,9 @@
       <node id="1227128029536566387" at="50,234,51,474" concept="1" />
       <node id="1227128029536566387" at="51,474,52,24" concept="5" />
       <node id="6886330673564850976" at="54,0,55,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="6886330673564850976" at="57,0,58,0" concept="7" trace="HttpRequestOperation$wK" />
-      <node id="6886330673564850976" at="58,0,59,0" concept="7" trace="DotExpression$6a" />
-      <node id="6886330673564850976" at="62,0,63,0" concept="7" trace="operand$P1i5" />
+      <node id="6886330673564850976" at="57,0,58,0" concept="7" trace="HttpRequestOperation$ao" />
+      <node id="6886330673564850976" at="58,0,59,0" concept="7" trace="DotExpression$yW" />
+      <node id="6886330673564850976" at="62,0,63,0" concept="7" trace="operand$w6IR" />
       <node id="6886330673564850976" at="25,0,28,0" concept="0" trace="HttpRequestOperation_Constraints#()V" />
       <node id="6886330673564850976" at="35,0,38,9" concept="2" />
       <node id="6886330673564850976" at="44,0,47,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -280,7 +280,7 @@
   <root nodeRef="r:13dad04a-0370-4fef-a258-0eee3aa2ee6a(jetbrains.mps.ide.httpsupport.constraints)/7720980209310028903">
     <file name="RequestHandler_Constraints.java">
       <node id="7720980209310028903" at="10,39,11,38" concept="9" />
-      <node id="7720980209310028903" at="15,0,16,0" concept="7" trace="RequestHandler$Wu" />
+      <node id="7720980209310028903" at="15,0,16,0" concept="7" trace="RequestHandler$A6" />
       <node id="7720980209310028903" at="10,0,13,0" concept="0" trace="RequestHandler_Constraints#()V" />
       <scope id="7720980209310028903" at="10,39,11,38" />
       <scope id="7720980209310028903" at="10,0,13,0" />
@@ -291,7 +291,7 @@
   <root nodeRef="r:13dad04a-0370-4fef-a258-0eee3aa2ee6a(jetbrains.mps.ide.httpsupport.constraints)/8009469105144333869">
     <file name="PortProvider_Constraints.java">
       <node id="8009469105144333869" at="10,37,11,36" concept="9" />
-      <node id="8009469105144333869" at="15,0,16,0" concept="7" trace="PortProvider$8a" />
+      <node id="8009469105144333869" at="15,0,16,0" concept="7" trace="PortProvider$LM" />
       <node id="8009469105144333869" at="10,0,13,0" concept="0" trace="PortProvider_Constraints#()V" />
       <scope id="8009469105144333869" at="10,37,11,36" />
       <scope id="8009469105144333869" at="10,0,13,0" />
@@ -312,8 +312,8 @@
       <node id="8009469105144688911" at="46,84,47,119" concept="4" />
       <node id="8009469105144688912" at="47,119,48,73" concept="1" />
       <node id="8009469105144688911" at="48,73,49,22" concept="5" />
-      <node id="8009469105144688911" at="53,0,54,0" concept="7" trace="Port$bl" />
-      <node id="8009469105144688911" at="57,0,58,0" concept="7" trace="portNumber$4_Ew" />
+      <node id="8009469105144688911" at="53,0,54,0" concept="7" trace="Port$OX" />
+      <node id="8009469105144688911" at="57,0,58,0" concept="7" trace="portNumber$ZMk8" />
       <node id="8009469105144688911" at="20,0,23,0" concept="0" trace="Port_Constraints#()V" />
       <node id="8009469105144688912" at="25,0,28,0" concept="0" trace="PortNumber_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="8009469105144688912" at="35,100,38,7" concept="2" />

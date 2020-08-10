@@ -41,7 +41,7 @@ public class BaseAssignmentExpression_Alias_SubstituteMenu extends SubstituteMen
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_dm6i2g_a(), CONCEPTS.BinaryOperation$vf));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_dm6i2g_a(), CONCEPTS.BinaryOperation$W1));
     return result;
   }
 
@@ -81,14 +81,14 @@ public class BaseAssignmentExpression_Alias_SubstituteMenu extends SubstituteMen
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.BinaryOperation$vf;
+          return CONCEPTS.BinaryOperation$W1;
         }
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode nodeToWrap = super.createNode(pattern);
-          SLinkOperations.setTarget(nodeToWrap, LINKS.leftExpression$lndx, SLinkOperations.getTarget(_context.getCurrentTargetNode(), LINKS.lValue$LjSW));
-          SLinkOperations.setTarget(nodeToWrap, LINKS.rightExpression$li3b, SLinkOperations.getTarget(_context.getCurrentTargetNode(), LINKS.rValue$LkmY));
+          SLinkOperations.setTarget(nodeToWrap, LINKS.leftExpression$sEj, SLinkOperations.getTarget(_context.getCurrentTargetNode(), LINKS.lValue$splI));
+          SLinkOperations.setTarget(nodeToWrap, LINKS.rightExpression$nvX, SLinkOperations.getTarget(_context.getCurrentTargetNode(), LINKS.rValue$spNK));
           return nodeToWrap;
         }
 
@@ -115,18 +115,18 @@ public class BaseAssignmentExpression_Alias_SubstituteMenu extends SubstituteMen
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.BinaryOperation$vf;
+      return CONCEPTS.BinaryOperation$W1;
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BinaryOperation$vf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
+    /*package*/ static final SConcept BinaryOperation$W1 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink lValue$LjSW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
-    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
-    /*package*/ static final SContainmentLink rValue$LkmY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
+    /*package*/ static final SContainmentLink leftExpression$sEj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink lValue$splI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue");
+    /*package*/ static final SContainmentLink rightExpression$nvX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink rValue$spNK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
   }
 }

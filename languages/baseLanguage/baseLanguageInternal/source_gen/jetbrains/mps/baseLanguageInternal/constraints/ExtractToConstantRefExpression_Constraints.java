@@ -23,12 +23,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ExtractToConstantRefExpression_Constraints extends BaseConstraintsDescriptor {
   public ExtractToConstantRefExpression_Constraints() {
-    super(CONCEPTS.ExtractToConstantRefExpression$sl);
+    super(CONCEPTS.ExtractToConstantRefExpression$H7);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.original$Jeaw, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.original$Wri, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -43,7 +43,7 @@ public class ExtractToConstantRefExpression_Constraints extends BaseConstraintsD
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forResolvableElements(SNodeOperations.getNodeDescendants(SNodeOperations.getContainingRoot(_context.getContextNode()), CONCEPTS.ExtractToConstantExpression$kt, false, new SAbstractConcept[]{}));
+            return ListScope.forResolvableElements(SNodeOperations.getNodeDescendants(SNodeOperations.getContainingRoot(_context.getContextNode()), CONCEPTS.ExtractToConstantExpression$_f, false, new SAbstractConcept[]{}));
           }
         };
       }
@@ -55,11 +55,11 @@ public class ExtractToConstantRefExpression_Constraints extends BaseConstraintsD
   private static final SNodePointer breakingNode_o7daap_a0a0a0a0a1a0a0a0c = new SNodePointer("r:1ce54900-c35b-4aa5-b24f-b47c871a6d6f(jetbrains.mps.baseLanguageInternal.constraints)", "6836281137582645545");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ExtractToConstantRefExpression$sl = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x162724dabcdc671L, "jetbrains.mps.baseLanguageInternal.structure.ExtractToConstantRefExpression");
-    /*package*/ static final SConcept ExtractToConstantExpression$kt = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1204d897032L, "jetbrains.mps.baseLanguageInternal.structure.ExtractToConstantExpression");
+    /*package*/ static final SConcept ExtractToConstantRefExpression$H7 = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x162724dabcdc671L, "jetbrains.mps.baseLanguageInternal.structure.ExtractToConstantRefExpression");
+    /*package*/ static final SConcept ExtractToConstantExpression$_f = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1204d897032L, "jetbrains.mps.baseLanguageInternal.structure.ExtractToConstantExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink original$Jeaw = MetaAdapterFactory.getReferenceLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x162724dabcdc671L, 0x162724dabcdc672L, "original");
+    /*package*/ static final SReferenceLink original$Wri = MetaAdapterFactory.getReferenceLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x162724dabcdc671L, 0x162724dabcdc672L, "original");
   }
 }

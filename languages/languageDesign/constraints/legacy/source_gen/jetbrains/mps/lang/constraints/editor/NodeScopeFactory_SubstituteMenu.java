@@ -21,7 +21,7 @@ public class NodeScopeFactory_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.InheritedNodeScopeFactory$l2) {
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.InheritedNodeScopeFactory$r2) {
 
       @NotNull
       @Override
@@ -34,8 +34,8 @@ public class NodeScopeFactory_SubstituteMenu extends SubstituteMenuBase {
           context.getEditorMenuTrace().popTraceInfo();
         }
       }
-    }, CONCEPTS.InheritedNodeScopeFactory$l2));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.ConstraintFunction_ReferentSearchScope_Scope$OU) {
+    }, CONCEPTS.InheritedNodeScopeFactory$r2));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.ConstraintFunction_ReferentSearchScope_Scope$UU) {
 
       @NotNull
       @Override
@@ -48,7 +48,7 @@ public class NodeScopeFactory_SubstituteMenu extends SubstituteMenuBase {
           context.getEditorMenuTrace().popTraceInfo();
         }
       }
-    }, CONCEPTS.ConstraintFunction_ReferentSearchScope_Scope$OU));
+    }, CONCEPTS.ConstraintFunction_ReferentSearchScope_Scope$UU));
     return result;
   }
 
@@ -66,7 +66,7 @@ public class NodeScopeFactory_SubstituteMenu extends SubstituteMenuBase {
 
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InheritedNodeScopeFactory$l2 = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x74999a95393c73b2L, "jetbrains.mps.lang.constraints.structure.InheritedNodeScopeFactory");
-    /*package*/ static final SConcept ConstraintFunction_ReferentSearchScope_Scope$OU = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x4d3a0509807b801fL, "jetbrains.mps.lang.constraints.structure.ConstraintFunction_ReferentSearchScope_Scope");
+    /*package*/ static final SConcept InheritedNodeScopeFactory$r2 = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x74999a95393c73b2L, "jetbrains.mps.lang.constraints.structure.InheritedNodeScopeFactory");
+    /*package*/ static final SConcept ConstraintFunction_ReferentSearchScope_Scope$UU = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x4d3a0509807b801fL, "jetbrains.mps.lang.constraints.structure.ConstraintFunction_ReferentSearchScope_Scope");
   }
 }

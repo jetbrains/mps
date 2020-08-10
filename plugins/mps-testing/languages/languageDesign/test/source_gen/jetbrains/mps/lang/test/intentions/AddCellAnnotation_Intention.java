@@ -49,7 +49,7 @@ public final class AddCellAnnotation_Intention extends AbstractIntentionDescript
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getNodeAncestor(node, CONCEPTS.TestNode$kc, false, false)), CONCEPTS.EditorTestCase$qk);
+    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getNodeAncestor(node, CONCEPTS.TestNode$zF, false, false)), CONCEPTS.EditorTestCase$DN);
   }
   @Override
   public boolean isSurroundWith() {
@@ -71,39 +71,39 @@ public final class AddCellAnnotation_Intention extends AbstractIntentionDescript
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode ancessor = node;
-      while (ancessor != null && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(ancessor), CONCEPTS.EditorTestCase$qk))) {
+      while (ancessor != null && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(ancessor), CONCEPTS.EditorTestCase$DN))) {
         ancessor = SNodeOperations.getParent(ancessor);
       }
-      for (SNode oldAnnotation : SNodeOperations.getNodeDescendants(ancessor, CONCEPTS.AnonymousCellAnnotation$28, false, new SAbstractConcept[]{})) {
+      for (SNode oldAnnotation : SNodeOperations.getNodeDescendants(ancessor, CONCEPTS.AnonymousCellAnnotation$hB, false, new SAbstractConcept[]{})) {
         SNodeOperations.deleteNode(oldAnnotation);
       }
-      SNode newAnnotation = SNodeFactoryOperations.createNewNode(CONCEPTS.AnonymousCellAnnotation$28, null);
+      SNode newAnnotation = SNodeFactoryOperations.createNewNode(CONCEPTS.AnonymousCellAnnotation$hB, null);
       EditorCell contextCell = editorContext.getContextCell();
       if (editorContext.getEditorComponent() instanceof InspectorEditorComponent) {
-        SPropertyOperations.assign(newAnnotation, PROPS.isInInspector$3JJj, true);
+        SPropertyOperations.assign(newAnnotation, PROPS.isInInspector$WnYM, true);
       }
       if (contextCell instanceof EditorCell_Label) {
         EditorCell_Label label = (EditorCell_Label) contextCell;
         int caretPosition = label.getCaretPosition();
         if (caretPosition == label.getText().length()) {
-          SPropertyOperations.assign(newAnnotation, PROPS.isLastPosition$lN1r, true);
+          SPropertyOperations.assign(newAnnotation, PROPS.isLastPosition$ergU, true);
         } else {
-          SPropertyOperations.assign(newAnnotation, PROPS.caretPosition$3xj1, caretPosition);
+          SPropertyOperations.assign(newAnnotation, PROPS.caretPosition$W9yw, caretPosition);
         }
-        SPropertyOperations.assign(newAnnotation, PROPS.useLabelSelection$_J1E, true);
-        SPropertyOperations.assign(newAnnotation, PROPS.selectionStart$hNAV, label.getSelectionStart());
-        SPropertyOperations.assign(newAnnotation, PROPS.selectionEnd$hO4X, label.getSelectionEnd());
+        SPropertyOperations.assign(newAnnotation, PROPS.useLabelSelection$unh9, true);
+        SPropertyOperations.assign(newAnnotation, PROPS.selectionStart$arQq, label.getSelectionStart());
+        SPropertyOperations.assign(newAnnotation, PROPS.selectionEnd$asks, label.getSelectionEnd());
       } else {
-        SPropertyOperations.assign(newAnnotation, PROPS.caretPosition$3xj1, 0);
+        SPropertyOperations.assign(newAnnotation, PROPS.caretPosition$W9yw, 0);
       }
-      SPropertyOperations.assign(newAnnotation, PROPS.cellId$3x40, contextCell.getCellId());
+      SPropertyOperations.assign(newAnnotation, PROPS.cellId$W9jv, contextCell.getCellId());
       Selection selection = ((EditorComponent) editorContext.getEditorComponent()).getSelectionManager().getSelection();
       if (selection instanceof NodeRangeSelection) {
         NodeRangeSelection nodeRangeSelection = (NodeRangeSelection) selection;
-        SLinkOperations.setTarget(newAnnotation, LINKS.nodeRangeSelectionStart$XOcA, nodeRangeSelection.getFirstNode());
-        SLinkOperations.setTarget(newAnnotation, LINKS.nodeRangeSelectionEnd$XOrB, nodeRangeSelection.getLastNode());
+        SLinkOperations.setTarget(newAnnotation, LINKS.nodeRangeSelectionStart$Qss5, nodeRangeSelection.getFirstNode());
+        SLinkOperations.setTarget(newAnnotation, LINKS.nodeRangeSelectionEnd$QsF6, nodeRangeSelection.getLastNode());
       }
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AbstractTestNodeAnnotation$5M), newAnnotation);
+      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AbstractTestNodeAnnotation$lh), newAnnotation);
       SelectionUtil.selectNode(editorContext, newAnnotation);
     }
     @Override
@@ -113,24 +113,24 @@ public final class AddCellAnnotation_Intention extends AbstractIntentionDescript
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestNode$kc = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, "jetbrains.mps.lang.test.structure.TestNode");
-    /*package*/ static final SConcept EditorTestCase$qk = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, "jetbrains.mps.lang.test.structure.EditorTestCase");
-    /*package*/ static final SConcept AnonymousCellAnnotation$28 = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, "jetbrains.mps.lang.test.structure.AnonymousCellAnnotation");
-    /*package*/ static final SConcept AbstractTestNodeAnnotation$5M = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e0d52da47L, "jetbrains.mps.lang.test.structure.AbstractTestNodeAnnotation");
+    /*package*/ static final SConcept TestNode$zF = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, "jetbrains.mps.lang.test.structure.TestNode");
+    /*package*/ static final SConcept EditorTestCase$DN = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, "jetbrains.mps.lang.test.structure.EditorTestCase");
+    /*package*/ static final SConcept AnonymousCellAnnotation$hB = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, "jetbrains.mps.lang.test.structure.AnonymousCellAnnotation");
+    /*package*/ static final SConcept AbstractTestNodeAnnotation$lh = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e0d52da47L, "jetbrains.mps.lang.test.structure.AbstractTestNodeAnnotation");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isInInspector$3JJj = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x1b73330fb1241e01L, "isInInspector");
-    /*package*/ static final SProperty isLastPosition$lN1r = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x11e3fde6f41L, "isLastPosition");
-    /*package*/ static final SProperty caretPosition$3xj1 = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x11e31babe14L, "caretPosition");
-    /*package*/ static final SProperty useLabelSelection$_J1E = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x1ad0cd452e251146L, "useLabelSelection");
-    /*package*/ static final SProperty selectionStart$hNAV = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x56ffc0a94fe5fc33L, "selectionStart");
-    /*package*/ static final SProperty selectionEnd$hO4X = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x56ffc0a94fe5fc35L, "selectionEnd");
-    /*package*/ static final SProperty cellId$3x40 = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x11e31babe13L, "cellId");
+    /*package*/ static final SProperty isInInspector$WnYM = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x1b73330fb1241e01L, "isInInspector");
+    /*package*/ static final SProperty isLastPosition$ergU = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x11e3fde6f41L, "isLastPosition");
+    /*package*/ static final SProperty caretPosition$W9yw = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x11e31babe14L, "caretPosition");
+    /*package*/ static final SProperty useLabelSelection$unh9 = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x1ad0cd452e251146L, "useLabelSelection");
+    /*package*/ static final SProperty selectionStart$arQq = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x56ffc0a94fe5fc33L, "selectionStart");
+    /*package*/ static final SProperty selectionEnd$asks = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x56ffc0a94fe5fc35L, "selectionEnd");
+    /*package*/ static final SProperty cellId$W9jv = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x11e31babe13L, "cellId");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink nodeRangeSelectionStart$XOcA = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x1ad0cd452e1f9accL, "nodeRangeSelectionStart");
-    /*package*/ static final SReferenceLink nodeRangeSelectionEnd$XOrB = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x1ad0cd452e1f9acdL, "nodeRangeSelectionEnd");
+    /*package*/ static final SReferenceLink nodeRangeSelectionStart$Qss5 = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x1ad0cd452e1f9accL, "nodeRangeSelectionStart");
+    /*package*/ static final SReferenceLink nodeRangeSelectionEnd$QsF6 = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, 0x1ad0cd452e1f9acdL, "nodeRangeSelectionEnd");
   }
 }

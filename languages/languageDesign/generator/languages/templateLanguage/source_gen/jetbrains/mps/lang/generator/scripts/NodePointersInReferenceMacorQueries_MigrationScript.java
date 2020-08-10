@@ -31,11 +31,11 @@ public final class NodePointersInReferenceMacorQueries_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.AbstractNodeRefExpression$Kz;
+        return CONCEPTS.AbstractNodeRefExpression$M3;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return SNodeOperations.isInstanceOf(SNodeOperations.getNodeAncestor(node, CONCEPTS.IMethodLike$kl, false, false), CONCEPTS.ReferenceMacro_GetReferent$OO) && NodePointerMigrations.isReturnExpression(node);
+        return SNodeOperations.isInstanceOf(SNodeOperations.getNodeAncestor(node, CONCEPTS.IMethodLike$L7, false, false), CONCEPTS.ReferenceMacro_GetReferent$ww) && NodePointerMigrations.isReturnExpression(node);
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
@@ -57,16 +57,16 @@ public final class NodePointersInReferenceMacorQueries_MigrationScript extends B
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.Quotation$UL;
+        return CONCEPTS.Quotation$Vl;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        SNode parent = SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.Expression$TP);
-        return SNodeOperations.isInstanceOf(SNodeOperations.getNodeAncestor(node, CONCEPTS.IMethodLike$kl, false, false), CONCEPTS.ReferenceMacro_GetReferent$OO) && NodePointerMigrations.isQuotationSuitForNodePointer(parent) && NodePointerMigrations.isReturnExpression(parent);
+        SNode parent = SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.Expression$mB);
+        return SNodeOperations.isInstanceOf(SNodeOperations.getNodeAncestor(node, CONCEPTS.IMethodLike$L7, false, false), CONCEPTS.ReferenceMacro_GetReferent$ww) && NodePointerMigrations.isQuotationSuitForNodePointer(parent) && NodePointerMigrations.isReturnExpression(parent);
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNode parent = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.Expression$TP);
+        SNode parent = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.Expression$mB);
         SNodeOperations.replaceWithAnother(parent, createNodePointerExpression_vfdyfl_a0a1a0b(NodePointerMigrations.quotationToNodeIdentity(parent)));
       }
       @Override
@@ -83,27 +83,27 @@ public final class NodePointersInReferenceMacorQueries_MigrationScript extends B
     return PersistenceFacade.getInstance().createNodeReference("r:f5dc9f67-2195-4fd6-8b9b-a998435bfa08(jetbrains.mps.lang.generator.scripts)/8102310632648167264");
   }
   private static SNode createNodePointerExpression_vfdyfl_a0a0a0a(SNode p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodePointerExpression$DS);
-    n0.forChild(LINKS.ref$GPtX).initNode(p0, CONCEPTS.NodeIdentity$tk, true);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodePointerExpression$Fo);
+    n0.forChild(LINKS.ref$hevt).initNode(p0, CONCEPTS.NodeIdentity$8R, true);
     return n0.getResult();
   }
   private static SNode createNodePointerExpression_vfdyfl_a0a1a0b(SNode p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodePointerExpression$DS);
-    n0.forChild(LINKS.ref$GPtX).initNode(p0, CONCEPTS.NodeIdentity$tk, true);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NodePointerExpression$Fo);
+    n0.forChild(LINKS.ref$hevt).initNode(p0, CONCEPTS.NodeIdentity$8R, true);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractNodeRefExpression$Kz = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x319fd776da5d8e3cL, "jetbrains.mps.lang.smodel.structure.AbstractNodeRefExpression");
-    /*package*/ static final SInterfaceConcept IMethodLike$kl = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1208f458d37L, "jetbrains.mps.baseLanguage.structure.IMethodLike");
-    /*package*/ static final SConcept ReferenceMacro_GetReferent$OO = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fe485cc9bL, "jetbrains.mps.lang.generator.structure.ReferenceMacro_GetReferent");
-    /*package*/ static final SConcept Quotation$UL = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, "jetbrains.mps.lang.quotation.structure.Quotation");
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
-    /*package*/ static final SConcept NodePointerExpression$DS = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fb0c9435L, "jetbrains.mps.lang.smodel.structure.NodePointerExpression");
-    /*package*/ static final SInterfaceConcept NodeIdentity$tk = MetaAdapterFactory.getInterfaceConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a208f7L, "jetbrains.mps.lang.modelapi.structure.NodeIdentity");
+    /*package*/ static final SConcept AbstractNodeRefExpression$M3 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x319fd776da5d8e3cL, "jetbrains.mps.lang.smodel.structure.AbstractNodeRefExpression");
+    /*package*/ static final SInterfaceConcept IMethodLike$L7 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1208f458d37L, "jetbrains.mps.baseLanguage.structure.IMethodLike");
+    /*package*/ static final SConcept ReferenceMacro_GetReferent$ww = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fe485cc9bL, "jetbrains.mps.lang.generator.structure.ReferenceMacro_GetReferent");
+    /*package*/ static final SConcept Quotation$Vl = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, "jetbrains.mps.lang.quotation.structure.Quotation");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept NodePointerExpression$Fo = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fb0c9435L, "jetbrains.mps.lang.smodel.structure.NodePointerExpression");
+    /*package*/ static final SInterfaceConcept NodeIdentity$8R = MetaAdapterFactory.getInterfaceConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a208f7L, "jetbrains.mps.lang.modelapi.structure.NodeIdentity");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink ref$GPtX = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fb0c9435L, 0x66b228a4fb0c9496L, "ref");
+    /*package*/ static final SContainmentLink ref$hevt = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fb0c9435L, 0x66b228a4fb0c9496L, "ref");
   }
 }

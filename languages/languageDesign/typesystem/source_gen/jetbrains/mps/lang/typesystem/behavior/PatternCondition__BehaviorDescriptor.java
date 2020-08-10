@@ -33,7 +33,7 @@ public final class PatternCondition__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static SNode getApplicableConcept_idhEwIszL(@NotNull SNode __thisNode__) {
-    return SNodeOperations.asNode(PatternExpression__BehaviorDescriptor.getQuotedNodeConcept_id4vXWNHn1_L$.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.pattern$XKpc)));
+    return SNodeOperations.asNode(PatternExpression__BehaviorDescriptor.getQuotedNodeConcept_id4vXWNHn1_L$.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.pattern$mAF2)));
   }
 
   /*package*/ PatternCondition__BehaviorDescriptor() {
@@ -83,6 +83,6 @@ public final class PatternCondition__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink pattern$XKpc = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2c3e68L, 0x1117e2ccbe9L, "pattern");
+    /*package*/ static final SContainmentLink pattern$mAF2 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117e2c3e68L, 0x1117e2ccbe9L, "pattern");
   }
 }

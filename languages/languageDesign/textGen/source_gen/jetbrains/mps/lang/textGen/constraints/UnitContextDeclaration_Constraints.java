@@ -17,12 +17,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class UnitContextDeclaration_Constraints extends BaseConstraintsDescriptor {
   public UnitContextDeclaration_Constraints() {
-    super(CONCEPTS.UnitContextDeclaration$g1);
+    super(CONCEPTS.UnitContextDeclaration$uz);
   }
 
   public static class ShortDescription_Property extends BasePropertyConstraintsDescriptor {
     public ShortDescription_Property(ConstraintsDescriptor container) {
-      super(PROPS.shortDescription$xrGd, container);
+      super(PROPS.shortDescription$Yd4v, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -30,24 +30,24 @@ public class UnitContextDeclaration_Constraints extends BaseConstraintsDescripto
     }
     @Override
     public Object getValue(SNode node) {
-      String container = SPropertyOperations.getString(SNodeOperations.getNodeAncestor(node, CONCEPTS.LanguageTextGenDeclaration$8b, false, false), PROPS.name$lA7v);
+      String container = SPropertyOperations.getString(SNodeOperations.getNodeAncestor(node, CONCEPTS.LanguageTextGenDeclaration$mH, false, false), PROPS.name$MnvL);
       return String.format("context object from %s", container);
     }
   }
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.shortDescription$xrGd, new ShortDescription_Property(this));
+    properties.put(PROPS.shortDescription$Yd4v, new ShortDescription_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept UnitContextDeclaration$g1 = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x377692d961aaee79L, "jetbrains.mps.lang.textGen.structure.UnitContextDeclaration");
-    /*package*/ static final SConcept LanguageTextGenDeclaration$8b = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, "jetbrains.mps.lang.textGen.structure.LanguageTextGenDeclaration");
+    /*package*/ static final SConcept UnitContextDeclaration$uz = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x377692d961aaee79L, "jetbrains.mps.lang.textGen.structure.UnitContextDeclaration");
+    /*package*/ static final SConcept LanguageTextGenDeclaration$mH = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f4b71f51fL, "jetbrains.mps.lang.textGen.structure.LanguageTextGenDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty shortDescription$xrGd = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34f97574L, "shortDescription");
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty shortDescription$Yd4v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x10d34f97574L, "shortDescription");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

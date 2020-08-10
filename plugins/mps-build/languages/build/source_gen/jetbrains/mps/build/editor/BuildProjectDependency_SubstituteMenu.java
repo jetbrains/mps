@@ -28,7 +28,7 @@ public class BuildProjectDependency_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_xm6e4h_a(), CONCEPTS.BuildProjectDependency$Ug));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_xm6e4h_a(), CONCEPTS.BuildProjectDependency$sN));
     result.add(new SMP_Subconcepts_xm6e4h_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class BuildProjectDependency_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_xm6e4h_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.BuildProjectDependency$Ug, LINKS.script$UXIZ);
+      super((SAbstractConcept) CONCEPTS.BuildProjectDependency$sN, LINKS.script$6Ehy);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class BuildProjectDependency_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_xm6e4h_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BuildProjectDependency$Ug);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BuildProjectDependency$sN);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class BuildProjectDependency_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildProjectDependency$Ug = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, "jetbrains.mps.build.structure.BuildProjectDependency");
+    /*package*/ static final SConcept BuildProjectDependency$sN = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, "jetbrains.mps.build.structure.BuildProjectDependency");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink script$UXIZ = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x4df58c6f18f84a24L, "script");
+    /*package*/ static final SReferenceLink script$6Ehy = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x4df58c6f18f84a24L, "script");
   }
 }

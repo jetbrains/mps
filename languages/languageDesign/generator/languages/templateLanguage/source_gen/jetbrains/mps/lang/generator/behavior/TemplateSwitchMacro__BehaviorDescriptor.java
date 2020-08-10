@@ -33,7 +33,7 @@ public final class TemplateSwitchMacro__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static SNode getTemplateSwitch_idQzR6Ththuv(@NotNull SNode __thisNode__) {
-    return SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.template$B9Tq), CONCEPTS.TemplateSwitch$BT);
+    return SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.template$6_6), CONCEPTS.TemplateSwitch$j_);
   }
 
   /*package*/ TemplateSwitchMacro__BehaviorDescriptor() {
@@ -83,10 +83,10 @@ public final class TemplateSwitchMacro__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink template$B9Tq = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
+    /*package*/ static final SReferenceLink template$6_6 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TemplateSwitch$BT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L, "jetbrains.mps.lang.generator.structure.TemplateSwitch");
+    /*package*/ static final SConcept TemplateSwitch$j_ = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L, "jetbrains.mps.lang.generator.structure.TemplateSwitch");
   }
 }

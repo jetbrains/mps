@@ -37,8 +37,8 @@ public final class GenericDeclaration__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.TypeVariableDeclaration$Cc)) {
-      return Scopes.forTypeVariables(SLinkOperations.getChildren(__thisNode__, LINKS.typeVariableDeclaration$6cWB), ScopeUtils.lazyParentScope(__thisNode__, kind));
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.TypeVariableDeclaration$4Y)) {
+      return Scopes.forTypeVariables(SLinkOperations.getChildren(__thisNode__, LINKS.typeVariableDeclaration$Lipp), ScopeUtils.lazyParentScope(__thisNode__, kind));
     }
     return null;
   }
@@ -90,10 +90,10 @@ public final class GenericDeclaration__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TypeVariableDeclaration$Cc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, "jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration");
+    /*package*/ static final SConcept TypeVariableDeclaration$4Y = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, "jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$Lipp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
   }
 }

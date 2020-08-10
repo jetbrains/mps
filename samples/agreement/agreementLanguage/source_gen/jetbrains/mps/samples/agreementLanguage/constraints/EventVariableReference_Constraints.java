@@ -25,12 +25,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class EventVariableReference_Constraints extends BaseConstraintsDescriptor {
   public EventVariableReference_Constraints() {
-    super(CONCEPTS.EventVariableReference$yc);
+    super(CONCEPTS.EventVariableReference$13);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.eventVariable$PMtL, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.eventVariable$v2WC, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -45,7 +45,7 @@ public class EventVariableReference_Constraints extends BaseConstraintsDescripto
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode eventType = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Event$mK, true, false), LINKS.type$Rs9R);
+            SNode eventType = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Event$PB, true, false), LINKS.type$wGCI);
             return ListScope.forResolvableElements(SNodeOperations.getNodeDescendants(eventType, null, false, new SAbstractConcept[]{}));
           }
         };
@@ -58,12 +58,12 @@ public class EventVariableReference_Constraints extends BaseConstraintsDescripto
   private static final SNodePointer breakingNode_lcwlw6_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c89590408(jetbrains.mps.samples.agreementLanguage.constraints)", "6836281137582846631");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EventVariableReference$yc = MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102ea8a3c37L, "jetbrains.mps.samples.agreementLanguage.structure.EventVariableReference");
-    /*package*/ static final SConcept Event$mK = MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbe8f094L, "jetbrains.mps.samples.agreementLanguage.structure.Event");
+    /*package*/ static final SConcept EventVariableReference$13 = MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102ea8a3c37L, "jetbrains.mps.samples.agreementLanguage.structure.EventVariableReference");
+    /*package*/ static final SConcept Event$PB = MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbe8f094L, "jetbrains.mps.samples.agreementLanguage.structure.Event");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink eventVariable$PMtL = MetaAdapterFactory.getReferenceLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102ea8a3c37L, 0x102ea8aa283L, "eventVariable");
-    /*package*/ static final SReferenceLink type$Rs9R = MetaAdapterFactory.getReferenceLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbe8f094L, 0x102dc111024L, "type");
+    /*package*/ static final SReferenceLink eventVariable$v2WC = MetaAdapterFactory.getReferenceLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102ea8a3c37L, 0x102ea8aa283L, "eventVariable");
+    /*package*/ static final SReferenceLink type$wGCI = MetaAdapterFactory.getReferenceLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbe8f094L, 0x102dc111024L, "type");
   }
 }

@@ -28,7 +28,7 @@ public class SimpleAspectOrderRef_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_rard3o_a(), CONCEPTS.SimpleAspectOrderRef$d));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_rard3o_a(), CONCEPTS.SimpleAspectOrderRef$Mw));
     result.add(new SMP_Subconcepts_rard3o_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class SimpleAspectOrderRef_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_rard3o_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.SimpleAspectOrderRef$d, LINKS.target$xwDl);
+      super((SAbstractConcept) CONCEPTS.SimpleAspectOrderRef$Mw, LINKS.target$d3me);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class SimpleAspectOrderRef_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_rard3o_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.SimpleAspectOrderRef$d);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.SimpleAspectOrderRef$Mw);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class SimpleAspectOrderRef_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SimpleAspectOrderRef$d = MetaAdapterFactory.getConcept(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x26c6e1a7a20d8efL, "jetbrains.mps.lang.aspect.structure.SimpleAspectOrderRef");
+    /*package*/ static final SConcept SimpleAspectOrderRef$Mw = MetaAdapterFactory.getConcept(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x26c6e1a7a20d8efL, "jetbrains.mps.lang.aspect.structure.SimpleAspectOrderRef");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$xwDl = MetaAdapterFactory.getReferenceLink(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x22035699bdd7814bL, 0x22035699bdd7814cL, "target");
+    /*package*/ static final SReferenceLink target$d3me = MetaAdapterFactory.getReferenceLink(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x22035699bdd7814bL, 0x22035699bdd7814cL, "target");
   }
 }

@@ -23,7 +23,7 @@ public final class LowLevelVariable__BehaviorDescriptor extends BaseBHDescriptor
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.set(__thisNode__, PROPS.isOutOfScope$PNB9, true);
+    SPropertyOperations.set(__thisNode__, PROPS.isOutOfScope$49K_, true);
   }
 
 
@@ -72,6 +72,6 @@ public final class LowLevelVariable__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isOutOfScope$PNB9 = MetaAdapterFactory.getProperty(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d926L, 0x554b4e03d5950431L, "isOutOfScope");
+    /*package*/ static final SProperty isOutOfScope$49K_ = MetaAdapterFactory.getProperty(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d926L, 0x554b4e03d5950431L, "isOutOfScope");
   }
 }

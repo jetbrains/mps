@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ExtractStatementListInnerExpression_Constraints extends BaseConstraintsDescriptor {
   public ExtractStatementListInnerExpression_Constraints() {
-    super(CONCEPTS.ExtractStatementListInnerExpression$MH);
+    super(CONCEPTS.ExtractStatementListInnerExpression$3v);
   }
 
   @Override
@@ -37,12 +37,12 @@ public class ExtractStatementListInnerExpression_Constraints extends BaseConstra
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ExtractStatementListExpression$jD);
+    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.ExtractStatementListExpression$$r);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:1ce54900-c35b-4aa5-b24f-b47c871a6d6f(jetbrains.mps.baseLanguageInternal.constraints)", "1227128029536559772");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ExtractStatementListInnerExpression$MH = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x2c5dbc7b763512c9L, "jetbrains.mps.baseLanguageInternal.structure.ExtractStatementListInnerExpression");
-    /*package*/ static final SConcept ExtractStatementListExpression$jD = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x2c5dbc7b762fd2a7L, "jetbrains.mps.baseLanguageInternal.structure.ExtractStatementListExpression");
+    /*package*/ static final SConcept ExtractStatementListInnerExpression$3v = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x2c5dbc7b763512c9L, "jetbrains.mps.baseLanguageInternal.structure.ExtractStatementListInnerExpression");
+    /*package*/ static final SConcept ExtractStatementListExpression$$r = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x2c5dbc7b762fd2a7L, "jetbrains.mps.baseLanguageInternal.structure.ExtractStatementListExpression");
   }
 }

@@ -37,10 +37,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 @GeneratedClass(node = "r:fa4569a3-1bd4-4159-97bc-db03b3aeff88(jetbrains.mps.java.platform.highlighters)/2102711303277483637", model = "r:fa4569a3-1bd4-4159-97bc-db03b3aeff88(jetbrains.mps.java.platform.highlighters)")
 public class CommentSpellChecker extends BaseEditorChecker {
-  private final SConcept mySingleLineCmment = CONCEPTS.TextCommentPart$lb;
-  private final SConcept myJavadocComment = CONCEPTS.TextCommentLinePart$RY;
-  private final SConcept word = CONCEPTS.Word$AM;
-  private final SConcept myStringLiteral = CONCEPTS.StringLiteral$4G;
+  private final SConcept mySingleLineCmment = CONCEPTS.TextCommentPart$LX;
+  private final SConcept myJavadocComment = CONCEPTS.TextCommentLinePart$Eb;
+  private final SConcept word = CONCEPTS.Word$Dn;
+  private final SConcept myStringLiteral = CONCEPTS.StringLiteral$xu;
 
   private boolean myUpdateNeeded;
   private Boolean myEnabled;
@@ -107,16 +107,16 @@ public class CommentSpellChecker extends BaseEditorChecker {
       }
       if (SNodeOperations.isInstanceOf(n, SNodeOperations.asSConcept(myJavadocComment))) {
         SNode p = SNodeOperations.as(n, SNodeOperations.asSConcept(myJavadocComment));
-        spellCheck(SPropertyOperations.getString(p, PROPS.text$OrZ0), n, messages);
+        spellCheck(SPropertyOperations.getString(p, PROPS.text$aOLd), n, messages);
       } else if (SNodeOperations.isInstanceOf(n, SNodeOperations.asSConcept(mySingleLineCmment))) {
         SNode p = SNodeOperations.as(n, SNodeOperations.asSConcept(mySingleLineCmment));
-        spellCheck(SPropertyOperations.getString(p, PROPS.text$va_w), n, messages);
+        spellCheck(SPropertyOperations.getString(p, PROPS.text$ag2i), n, messages);
       } else if (SNodeOperations.isInstanceOf(n, SNodeOperations.asSConcept(word))) {
         SNode w = SNodeOperations.as(n, SNodeOperations.asSConcept(word));
-        spellCheck(SPropertyOperations.getString(w, PROPS.value$bjp0), n, messages);
+        spellCheck(SPropertyOperations.getString(w, PROPS.value$zQr_), n, messages);
       } else if (SNodeOperations.isInstanceOf(n, SNodeOperations.asSConcept(myStringLiteral))) {
         SNode l = SNodeOperations.as(n, SNodeOperations.asSConcept(myStringLiteral));
-        spellCheck(SPropertyOperations.getString(l, PROPS.value$P2m0), n, messages);
+        spellCheck(SPropertyOperations.getString(l, PROPS.value$w7MM), n, messages);
       }
     }
     return new UpdateResult.Completed(true, messages);
@@ -280,16 +280,16 @@ public class CommentSpellChecker extends BaseEditorChecker {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TextCommentPart$lb = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart");
-    /*package*/ static final SConcept TextCommentLinePart$RY = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart");
-    /*package*/ static final SConcept Word$AM = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
-    /*package*/ static final SConcept StringLiteral$4G = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral");
+    /*package*/ static final SConcept TextCommentPart$LX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart");
+    /*package*/ static final SConcept TextCommentLinePart$Eb = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart");
+    /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
+    /*package*/ static final SConcept StringLiteral$xu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$OrZ0 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
-    /*package*/ static final SProperty text$va_w = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text");
-    /*package*/ static final SProperty value$bjp0 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
-    /*package*/ static final SProperty value$P2m0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+    /*package*/ static final SProperty text$aOLd = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
+    /*package*/ static final SProperty text$ag2i = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text");
+    /*package*/ static final SProperty value$zQr_ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
+    /*package*/ static final SProperty value$w7MM = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
   }
 }

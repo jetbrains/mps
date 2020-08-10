@@ -35,7 +35,7 @@ public class TargetDeclaration_resourcesPolicy extends AbstractCellMenuComponent
       this.handleAction_impl((SEnumerationLiteral) parameterObject, node, model, operationContext, editorContext);
     }
     public void handleAction_impl(SEnumerationLiteral parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      SPropertyOperations.assignEnum(node, PROPS.resourcesPolicy$YBGk, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1740bd43b75c4b23L, "jetbrains.mps.make.facet.structure.ResourcesPolicy"), SEnumOperations.getMemberName0(parameterObject)));
+      SPropertyOperations.assignEnum(node, PROPS.resourcesPolicy$mXlc, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x1740bd43b75c4b23L, "jetbrains.mps.make.facet.structure.ResourcesPolicy"), SEnumOperations.getMemberName0(parameterObject)));
     }
     public boolean isReferentPresentation() {
       return false;
@@ -48,6 +48,6 @@ public class TargetDeclaration_resourcesPolicy extends AbstractCellMenuComponent
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty resourcesPolicy$YBGk = MetaAdapterFactory.getProperty(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, 0x1740bd43b75c4b28L, "resourcesPolicy");
+    /*package*/ static final SProperty resourcesPolicy$mXlc = MetaAdapterFactory.getProperty(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, 0x1740bd43b75c4b28L, "resourcesPolicy");
   }
 }

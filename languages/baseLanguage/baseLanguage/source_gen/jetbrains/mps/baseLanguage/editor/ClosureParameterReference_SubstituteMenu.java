@@ -28,7 +28,7 @@ public class ClosureParameterReference_SubstituteMenu extends SubstituteMenuBase
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_s9pff1_a(), CONCEPTS.ClosureParameterReference$e6));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_s9pff1_a(), CONCEPTS.ClosureParameterReference$ES));
     result.add(new SMP_Subconcepts_s9pff1_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class ClosureParameterReference_SubstituteMenu extends SubstituteMenuBase
 
     public SMP_ReferenceScope_s9pff1_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.ClosureParameterReference$e6, LINKS.closureParameter$9exM);
+      super((SAbstractConcept) CONCEPTS.ClosureParameterReference$ES, LINKS.closureParameter$OjY$);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class ClosureParameterReference_SubstituteMenu extends SubstituteMenuBase
   }
   public class SMP_Subconcepts_s9pff1_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ClosureParameterReference$e6);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ClosureParameterReference$ES);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class ClosureParameterReference_SubstituteMenu extends SubstituteMenuBase
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClosureParameterReference$e6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c7edba8b3L, "jetbrains.mps.baseLanguage.structure.ClosureParameterReference");
+    /*package*/ static final SConcept ClosureParameterReference$ES = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c7edba8b3L, "jetbrains.mps.baseLanguage.structure.ClosureParameterReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink closureParameter$9exM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c7edba8b3L, 0x10c7edc81a4L, "closureParameter");
+    /*package*/ static final SReferenceLink closureParameter$OjY$ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10c7edba8b3L, 0x10c7edc81a4L, "closureParameter");
   }
 }

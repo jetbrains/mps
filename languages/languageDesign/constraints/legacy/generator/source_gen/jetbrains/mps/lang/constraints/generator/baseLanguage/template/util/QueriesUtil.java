@@ -18,25 +18,25 @@ public class QueriesUtil {
   public static SNode get_registerSelf_body(SNode clazz) {
     SNode regiserSelfMethod = Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(clazz)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return "registerSelf".equals(SPropertyOperations.getString(it, PROPS.name$lA7v));
+        return "registerSelf".equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
       }
     }).first();
-    return SLinkOperations.getTarget(regiserSelfMethod, LINKS.body$qspy);
+    return SLinkOperations.getTarget(regiserSelfMethod, LINKS.body$5xQk);
   }
   public static SNode get_unRegisterSelf_body(SNode clazz) {
     SNode unRegiserSelfMethod = Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(clazz)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return "unRegisterSelf".equals(SPropertyOperations.getString(it, PROPS.name$lA7v));
+        return "unRegisterSelf".equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
       }
     }).first();
-    return SLinkOperations.getTarget(unRegiserSelfMethod, LINKS.body$qspy);
+    return SLinkOperations.getTarget(unRegiserSelfMethod, LINKS.body$5xQk);
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
   }
 }

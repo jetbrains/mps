@@ -70,7 +70,7 @@ public class ThisClassifierExpression_TransformationMenu extends TransformationM
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.ThisClassifierExpression$xN)) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.ThisClassifierExpression$xB)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -94,7 +94,7 @@ public class ThisClassifierExpression_TransformationMenu extends TransformationM
   public class TMP_Group_myg648_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$Jeu5) == null);
+      return (SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$FItT) == null);
     }
 
     @NotNull
@@ -179,8 +179,8 @@ public class ThisClassifierExpression_TransformationMenu extends TransformationM
 
           @Override
           public void execute(@NotNull String pattern) {
-            SNode expr = SNodeFactoryOperations.createNewNode(CONCEPTS.ThisClassifierExpression$xN, null);
-            SLinkOperations.setTarget(expr, LINKS.classifier$Jeu5, myParameterObject);
+            SNode expr = SNodeFactoryOperations.createNewNode(CONCEPTS.ThisClassifierExpression$xB, null);
+            SLinkOperations.setTarget(expr, LINKS.classifier$FItT, myParameterObject);
             SNodeOperations.replaceWithAnother(_context.getNode(), expr);
             SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), expr, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
           }
@@ -208,10 +208,10 @@ public class ThisClassifierExpression_TransformationMenu extends TransformationM
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ThisClassifierExpression$xN = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc751a81L, "jetbrains.mps.baseLanguage.classifiers.structure.ThisClassifierExpression");
+    /*package*/ static final SConcept ThisClassifierExpression$xB = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc751a81L, "jetbrains.mps.baseLanguage.classifiers.structure.ThisClassifierExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$Jeu5 = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc751a81L, 0x11bc25d4bc3L, "classifier");
+    /*package*/ static final SReferenceLink classifier$FItT = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc751a81L, 0x11bc25d4bc3L, "classifier");
   }
 }

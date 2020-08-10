@@ -29,12 +29,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class LowLevelVariableReference_Constraints extends BaseConstraintsDescriptor {
   public LowLevelVariableReference_Constraints() {
-    super(CONCEPTS.LowLevelVariableReference$zj);
+    super(CONCEPTS.LowLevelVariableReference$GJ);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.baseVariableDeclaration$NW$0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.baseVariableDeclaration$v20M, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -49,13 +49,13 @@ public class LowLevelVariableReference_Constraints extends BaseConstraintsDescri
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode evaluator = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.EvaluatorConcept$g2, false, false);
-            if (SPropertyOperations.getBoolean(evaluator, PROPS.isShowContext$vKz6)) {
-              return ListScope.forResolvableElements(SLinkOperations.getChildren(evaluator, LINKS.variables$vJB2));
+            SNode evaluator = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.EvaluatorConcept$pu, false, false);
+            if (SPropertyOperations.getBoolean(evaluator, PROPS.isShowContext$I6Gy)) {
+              return ListScope.forResolvableElements(SLinkOperations.getChildren(evaluator, LINKS.variables$I5Ku));
             }
-            return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(evaluator, LINKS.variables$vJB2)).where(new IWhereFilter<SNode>() {
+            return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(evaluator, LINKS.variables$I5Ku)).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return !(SPropertyOperations.getBoolean(it, PROPS.isOutOfScope$PNB9));
+                return !(SPropertyOperations.getBoolean(it, PROPS.isOutOfScope$49K_));
               }
             }));
           }
@@ -69,17 +69,17 @@ public class LowLevelVariableReference_Constraints extends BaseConstraintsDescri
   private static final SNodePointer breakingNode_8w715n_a0a0a0a0a1a0a0a0c = new SNodePointer("r:edfcb13b-e239-462c-8aae-e4b4a03e7c8b(jetbrains.mps.debugger.java.evaluation.constraints)", "6836281137582821249");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LowLevelVariableReference$zj = MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x7d9a547f857a394bL, "jetbrains.mps.debugger.java.evaluation.structure.LowLevelVariableReference");
-    /*package*/ static final SConcept EvaluatorConcept$g2 = MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, "jetbrains.mps.debugger.java.evaluation.structure.EvaluatorConcept");
+    /*package*/ static final SConcept LowLevelVariableReference$GJ = MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x7d9a547f857a394bL, "jetbrains.mps.debugger.java.evaluation.structure.LowLevelVariableReference");
+    /*package*/ static final SConcept EvaluatorConcept$pu = MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, "jetbrains.mps.debugger.java.evaluation.structure.EvaluatorConcept");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseVariableDeclaration$NW$0 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4c4b92003e49a704L, 0x4c4b92003e49a705L, "baseVariableDeclaration");
-    /*package*/ static final SContainmentLink variables$vJB2 = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x53c5060c6b19c797L, "variables");
+    /*package*/ static final SReferenceLink baseVariableDeclaration$v20M = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4c4b92003e49a704L, 0x4c4b92003e49a705L, "baseVariableDeclaration");
+    /*package*/ static final SContainmentLink variables$I5Ku = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x53c5060c6b19c797L, "variables");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isShowContext$vKz6 = MetaAdapterFactory.getProperty(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x53c5060c6b19c79bL, "isShowContext");
-    /*package*/ static final SProperty isOutOfScope$PNB9 = MetaAdapterFactory.getProperty(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d926L, 0x554b4e03d5950431L, "isOutOfScope");
+    /*package*/ static final SProperty isShowContext$I6Gy = MetaAdapterFactory.getProperty(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x53c5060c6b19c79bL, "isShowContext");
+    /*package*/ static final SProperty isOutOfScope$49K_ = MetaAdapterFactory.getProperty(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d926L, 0x554b4e03d5950431L, "isOutOfScope");
   }
 }

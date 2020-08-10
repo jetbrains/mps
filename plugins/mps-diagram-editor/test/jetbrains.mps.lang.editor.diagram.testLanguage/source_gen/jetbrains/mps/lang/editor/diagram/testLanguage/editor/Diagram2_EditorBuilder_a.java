@@ -91,7 +91,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     return editorCell;
   }
   private boolean nodeCondition_dbn5di_a0a() {
-    return SPropertyOperations.getBoolean(myNode, PROPS.initiallyCollapsed$RmHX);
+    return SPropertyOperations.getBoolean(myNode, PROPS.initiallyCollapsed$Mr4Z);
   }
   private EditorCell createDiagram_0() {
     DiagramCell editorCell = new DiagramCellImpl_dbn5di_a0a(getEditorContext(), myNode);
@@ -101,41 +101,41 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   private class DiagramCellImpl_dbn5di_a0a extends DiagramCell {
     private DiagramCellImpl_dbn5di_a0a(EditorContext editorContext, SNode node) {
       super(editorContext, node);
-      setSubstituteInfo(new CompositeSubstituteInfo(editorContext, new BasicCellContext(node), new SubstituteInfoPartExt[]{createNewDiagramNodeActions(getSNode(), CONCEPTS.Node$SU, LINKS.mainNodes$OehA, new _FunctionTypes._void_P3_E0<SNode, Integer, Integer>() {
+      setSubstituteInfo(new CompositeSubstituteInfo(editorContext, new BasicCellContext(node), new SubstituteInfoPartExt[]{createNewDiagramNodeActions(getSNode(), CONCEPTS.Node$fW, LINKS.mainNodes$JiCC, new _FunctionTypes._void_P3_E0<SNode, Integer, Integer>() {
         public void invoke(SNode node, Integer x, Integer y) {
-          SPropertyOperations.assign(node, PROPS.x$SCZU, x);
-          SPropertyOperations.assign(node, PROPS.y$SDtW, y);
+          SPropertyOperations.assign(node, PROPS.x$NHmW, x);
+          SPropertyOperations.assign(node, PROPS.y$NHOY, y);
         }
-      }), createNewDiagramConnectorActions(getSNode(), CONCEPTS.OutputToInputPortConnector$i_, LINKS.nodeConnectors$mCYE, new _FunctionTypes._return_P4_E0<Boolean, SNode, Object, SNode, Object>() {
+      }), createNewDiagramConnectorActions(getSNode(), CONCEPTS.OutputToInputPortConnector$DB, LINKS.nodeConnectors$hHlG, new _FunctionTypes._return_P4_E0<Boolean, SNode, Object, SNode, Object>() {
         public Boolean invoke(SNode from, Object fromId, SNode to, Object toId) {
-          return SNodeOperations.isInstanceOf(from, CONCEPTS.OutputPort$Gz) && SNodeOperations.isInstanceOf(to, CONCEPTS.InputPort$zf);
+          return SNodeOperations.isInstanceOf(from, CONCEPTS.OutputPort$3_) && SNodeOperations.isInstanceOf(to, CONCEPTS.InputPort$Uh);
         }
       }, new _FunctionTypes._void_P5_E0<SNode, SNode, Object, SNode, Object>() {
         public void invoke(SNode node, SNode from, Object fromId, SNode to, Object toId) {
-          SLinkOperations.setTarget(node, LINKS.src$owZS, SNodeOperations.cast(from, CONCEPTS.OutputPort$Gz));
-          SLinkOperations.setTarget(node, LINKS.dst$r2bB, SNodeOperations.cast(to, CONCEPTS.InputPort$zf));
+          SLinkOperations.setTarget(node, LINKS.src$j_mU, SNodeOperations.cast(from, CONCEPTS.OutputPort$3_));
+          SLinkOperations.setTarget(node, LINKS.dst$m6yD, SNodeOperations.cast(to, CONCEPTS.InputPort$Uh));
         }
       })}));
       synchronize();
     }
 
     protected SubstituteInfoPartExt[] createPaletteBlockSubstituteInfoPartExts() {
-      return new SubstituteInfoPartExt[]{createNewDiagramNodeActions(getSNode(), CONCEPTS.Node$SU, LINKS.mainNodes$OehA, new _FunctionTypes._void_P3_E0<SNode, Integer, Integer>() {
+      return new SubstituteInfoPartExt[]{createNewDiagramNodeActions(getSNode(), CONCEPTS.Node$fW, LINKS.mainNodes$JiCC, new _FunctionTypes._void_P3_E0<SNode, Integer, Integer>() {
         public void invoke(SNode node, Integer x, Integer y) {
-          SPropertyOperations.assign(node, PROPS.x$SCZU, x);
-          SPropertyOperations.assign(node, PROPS.y$SDtW, y);
+          SPropertyOperations.assign(node, PROPS.x$NHmW, x);
+          SPropertyOperations.assign(node, PROPS.y$NHOY, y);
         }
       })};
     }
     protected SubstituteInfoPartExt[] createPaletteConnectorSubstituteInfoPartExts() {
-      return new SubstituteInfoPartExt[]{createNewDiagramConnectorActions(getSNode(), CONCEPTS.OutputToInputPortConnector$i_, LINKS.nodeConnectors$mCYE, new _FunctionTypes._return_P4_E0<Boolean, SNode, Object, SNode, Object>() {
+      return new SubstituteInfoPartExt[]{createNewDiagramConnectorActions(getSNode(), CONCEPTS.OutputToInputPortConnector$DB, LINKS.nodeConnectors$hHlG, new _FunctionTypes._return_P4_E0<Boolean, SNode, Object, SNode, Object>() {
         public Boolean invoke(SNode from, Object fromId, SNode to, Object toId) {
-          return SNodeOperations.isInstanceOf(from, CONCEPTS.OutputPort$Gz) && SNodeOperations.isInstanceOf(to, CONCEPTS.InputPort$zf);
+          return SNodeOperations.isInstanceOf(from, CONCEPTS.OutputPort$3_) && SNodeOperations.isInstanceOf(to, CONCEPTS.InputPort$Uh);
         }
       }, new _FunctionTypes._void_P5_E0<SNode, SNode, Object, SNode, Object>() {
         public void invoke(SNode node, SNode from, Object fromId, SNode to, Object toId) {
-          SLinkOperations.setTarget(node, LINKS.src$owZS, SNodeOperations.cast(from, CONCEPTS.OutputPort$Gz));
-          SLinkOperations.setTarget(node, LINKS.dst$r2bB, SNodeOperations.cast(to, CONCEPTS.InputPort$zf));
+          SLinkOperations.setTarget(node, LINKS.src$j_mU, SNodeOperations.cast(from, CONCEPTS.OutputPort$3_));
+          SLinkOperations.setTarget(node, LINKS.dst$m6yD, SNodeOperations.cast(to, CONCEPTS.InputPort$Uh));
         }
       })};
     }
@@ -202,8 +202,8 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
       ListIterator<SNode> blocksIterator = myBlocks.listIterator();
       Set<SNode> existingConnectors = new HashSet<SNode>(myConnectors);
       ListIterator<SNode> connectorsIterator = myConnectors.listIterator();
-      syncDiagramElements(SLinkOperations.getChildren(getSNode(), LINKS.mainNodes$OehA), blocksIterator, existingBlocks, connectorsIterator, existingConnectors);
-      syncDiagramElements(SLinkOperations.getChildren(getSNode(), LINKS.nodeConnectors$mCYE), blocksIterator, existingBlocks, connectorsIterator, existingConnectors);
+      syncDiagramElements(SLinkOperations.getChildren(getSNode(), LINKS.mainNodes$JiCC), blocksIterator, existingBlocks, connectorsIterator, existingConnectors);
+      syncDiagramElements(SLinkOperations.getChildren(getSNode(), LINKS.nodeConnectors$hHlG), blocksIterator, existingBlocks, connectorsIterator, existingConnectors);
       purgeTailNodes(blocksIterator);
       purgeTailNodes(connectorsIterator);
     }
@@ -228,14 +228,14 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   private EditorCell createProperty_0() {
     getCellFactory().pushCellContext();
     try {
-      final SProperty property = PROPS.initiallyCollapsed$RmHX;
+      final SProperty property = PROPS.initiallyCollapsed$Mr4Z;
       getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no initiallyCollapsed>");
       editorCell.setCellId("property_initiallyCollapsed");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$jT);
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -252,23 +252,23 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty initiallyCollapsed$RmHX = MetaAdapterFactory.getProperty(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x7a0afda102e1dce2L, 0x1702f223d36d60c8L, "initiallyCollapsed");
-    /*package*/ static final SProperty x$SCZU = MetaAdapterFactory.getProperty(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x7a0afda102e1de05L, 0x7a0afda102e2029cL, "x");
-    /*package*/ static final SProperty y$SDtW = MetaAdapterFactory.getProperty(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x7a0afda102e1de05L, 0x7a0afda102e2029eL, "y");
+    /*package*/ static final SProperty initiallyCollapsed$Mr4Z = MetaAdapterFactory.getProperty(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x7a0afda102e1dce2L, 0x1702f223d36d60c8L, "initiallyCollapsed");
+    /*package*/ static final SProperty x$NHmW = MetaAdapterFactory.getProperty(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x7a0afda102e1de05L, 0x7a0afda102e2029cL, "x");
+    /*package*/ static final SProperty y$NHOY = MetaAdapterFactory.getProperty(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x7a0afda102e1de05L, 0x7a0afda102e2029eL, "y");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Node$SU = MetaAdapterFactory.getConcept(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x7a0afda102e1de05L, "jetbrains.mps.lang.editor.diagram.testLanguage.structure.Node");
-    /*package*/ static final SConcept OutputToInputPortConnector$i_ = MetaAdapterFactory.getConcept(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x4ce40ecaf4106a9bL, "jetbrains.mps.lang.editor.diagram.testLanguage.structure.OutputToInputPortConnector");
-    /*package*/ static final SConcept InputPort$zf = MetaAdapterFactory.getConcept(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x4ce40ecaf41f71f2L, "jetbrains.mps.lang.editor.diagram.testLanguage.structure.InputPort");
-    /*package*/ static final SConcept OutputPort$Gz = MetaAdapterFactory.getConcept(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x4ce40ecaf41f722aL, "jetbrains.mps.lang.editor.diagram.testLanguage.structure.OutputPort");
-    /*package*/ static final SConcept PropertyAttribute$jT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept Node$fW = MetaAdapterFactory.getConcept(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x7a0afda102e1de05L, "jetbrains.mps.lang.editor.diagram.testLanguage.structure.Node");
+    /*package*/ static final SConcept OutputToInputPortConnector$DB = MetaAdapterFactory.getConcept(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x4ce40ecaf4106a9bL, "jetbrains.mps.lang.editor.diagram.testLanguage.structure.OutputToInputPortConnector");
+    /*package*/ static final SConcept InputPort$Uh = MetaAdapterFactory.getConcept(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x4ce40ecaf41f71f2L, "jetbrains.mps.lang.editor.diagram.testLanguage.structure.InputPort");
+    /*package*/ static final SConcept OutputPort$3_ = MetaAdapterFactory.getConcept(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x4ce40ecaf41f722aL, "jetbrains.mps.lang.editor.diagram.testLanguage.structure.OutputPort");
+    /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink mainNodes$OehA = MetaAdapterFactory.getContainmentLink(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x7a0afda102e1dce2L, 0x7a0afda102e20209L, "mainNodes");
-    /*package*/ static final SContainmentLink nodeConnectors$mCYE = MetaAdapterFactory.getContainmentLink(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x7a0afda102e1dce2L, 0x4ce40ecaf414670eL, "nodeConnectors");
-    /*package*/ static final SReferenceLink src$owZS = MetaAdapterFactory.getReferenceLink(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x4ce40ecaf4106a9bL, 0x4ce40ecaf4106e5cL, "src");
-    /*package*/ static final SReferenceLink dst$r2bB = MetaAdapterFactory.getReferenceLink(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x4ce40ecaf4106a9bL, 0x4ce40ecaf4106e6bL, "dst");
+    /*package*/ static final SContainmentLink mainNodes$JiCC = MetaAdapterFactory.getContainmentLink(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x7a0afda102e1dce2L, 0x7a0afda102e20209L, "mainNodes");
+    /*package*/ static final SContainmentLink nodeConnectors$hHlG = MetaAdapterFactory.getContainmentLink(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x7a0afda102e1dce2L, 0x4ce40ecaf414670eL, "nodeConnectors");
+    /*package*/ static final SReferenceLink src$j_mU = MetaAdapterFactory.getReferenceLink(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x4ce40ecaf4106a9bL, 0x4ce40ecaf4106e5cL, "src");
+    /*package*/ static final SReferenceLink dst$m6yD = MetaAdapterFactory.getReferenceLink(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x4ce40ecaf4106a9bL, 0x4ce40ecaf4106e6bL, "dst");
   }
 }

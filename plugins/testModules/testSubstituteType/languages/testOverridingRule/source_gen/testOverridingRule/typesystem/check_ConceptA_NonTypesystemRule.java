@@ -20,12 +20,12 @@ public class check_ConceptA_NonTypesystemRule extends AbstractNonTypesystemRule_
   }
   public void applyRule(final SNode conceptA, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.conceptAProp$RrMl);
+      final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.conceptAProp$3daD);
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(conceptA, "error from ConceptA", "r:05c5940c-484d-4321-945d-0e467fc18ae8(testOverridingRule.typesystem)", "8837437332634520235", null, errorTarget);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConceptA$jC;
+    return CONCEPTS.ConceptA$FW;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -35,10 +35,10 @@ public class check_ConceptA_NonTypesystemRule extends AbstractNonTypesystemRule_
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty conceptAProp$RrMl = MetaAdapterFactory.getProperty(0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, 0x7aa4e26e6874ca31L, 0x7aa4e26e6874ca74L, "conceptAProp");
+    /*package*/ static final SProperty conceptAProp$3daD = MetaAdapterFactory.getProperty(0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, 0x7aa4e26e6874ca31L, 0x7aa4e26e6874ca74L, "conceptAProp");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptA$jC = MetaAdapterFactory.getConcept(0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, 0x7aa4e26e6874ca31L, "testOverridingRule.structure.ConceptA");
+    /*package*/ static final SConcept ConceptA$FW = MetaAdapterFactory.getConcept(0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, 0x7aa4e26e6874ca31L, "testOverridingRule.structure.ConceptA");
   }
 }

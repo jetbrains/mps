@@ -34,11 +34,11 @@ public final class AbstractFunctionType__BehaviorDescriptor extends BaseBHDescri
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     StringBuffer sb = new StringBuffer("{");
     String sep = "";
-    for (SNode pt : SLinkOperations.getChildren(__thisNode__, LINKS.parameterType$HOdw)) {
+    for (SNode pt : SLinkOperations.getChildren(__thisNode__, LINKS.parameterType$q25a)) {
       sb.append(sep).append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(pt));
       sep = ",";
     }
-    sb.append("~~>").append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.resultType$HOsx)));
+    sb.append("~~>").append(BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.resultType$q2kb)));
     return sb.append("}").toString();
   }
 
@@ -89,7 +89,7 @@ public final class AbstractFunctionType__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameterType$HOdw = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x4de23a15f719357dL, 0x4de23a15f719357eL, "parameterType");
-    /*package*/ static final SContainmentLink resultType$HOsx = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x4de23a15f719357dL, 0x4de23a15f719357fL, "resultType");
+    /*package*/ static final SContainmentLink parameterType$q25a = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x4de23a15f719357dL, 0x4de23a15f719357eL, "parameterType");
+    /*package*/ static final SContainmentLink resultType$q2kb = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x4de23a15f719357dL, 0x4de23a15f719357fL, "resultType");
   }
 }

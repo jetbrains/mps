@@ -51,7 +51,7 @@ public class FacetReference_TransformationMenu extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.FacetReference$d5)) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.FacetReference$PX)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -75,7 +75,7 @@ public class FacetReference_TransformationMenu extends TransformationMenuBase {
   public class TMP_Group_y0lqi1_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.TargetReferenceExpression$Fc, false, false) == null);
+      return (SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.TargetReferenceExpression$k4, false, false) == null);
     }
 
     @NotNull
@@ -109,15 +109,15 @@ public class FacetReference_TransformationMenu extends TransformationMenuBase {
       @Nullable
       @Override
       protected SNode getNode(TransformationMenuContext _context) {
-        return SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.FacetReferenceExpression$JM, false, false);
+        return SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.FacetReferenceExpression$oE, false, false);
       }
 
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept FacetReference$d5 = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5979ed6d2b21b2f2L, "jetbrains.mps.make.facet.structure.FacetReference");
-    /*package*/ static final SConcept TargetReferenceExpression$Fc = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x78c916bd7aecaff7L, "jetbrains.mps.make.facet.structure.TargetReferenceExpression");
-    /*package*/ static final SConcept FacetReferenceExpression$JM = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x639ef64ff4850bb0L, "jetbrains.mps.make.facet.structure.FacetReferenceExpression");
+    /*package*/ static final SConcept FacetReference$PX = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5979ed6d2b21b2f2L, "jetbrains.mps.make.facet.structure.FacetReference");
+    /*package*/ static final SConcept TargetReferenceExpression$k4 = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x78c916bd7aecaff7L, "jetbrains.mps.make.facet.structure.TargetReferenceExpression");
+    /*package*/ static final SConcept FacetReferenceExpression$oE = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x639ef64ff4850bb0L, "jetbrains.mps.make.facet.structure.FacetReferenceExpression");
   }
 }

@@ -36,7 +36,7 @@ public class DerivedInterfaces_Finder extends GeneratedFinder {
   }
   @Override
   public SAbstractConcept getSConcept() {
-    return CONCEPTS.Interface$Kp;
+    return CONCEPTS.Interface$db;
   }
 
   @Override
@@ -52,8 +52,8 @@ public class DerivedInterfaces_Finder extends GeneratedFinder {
             SNode nodeParam = (SNode) searchResult.getObject();
             new _FunctionTypes._void_P1_E0<SNode>() {
               public void invoke(SNode nodeUsage) {
-                if (SNodeOperations.hasRole(nodeUsage, LINKS.extendedInterface$a$v2)) {
-                  SNode foundIntfc = SNodeOperations.cast(SNodeOperations.getParent(nodeUsage), CONCEPTS.Interface$Kp);
+                if (SNodeOperations.hasRole(nodeUsage, LINKS.extendedInterface$PDVO)) {
+                  SNode foundIntfc = SNodeOperations.cast(SNodeOperations.getParent(nodeUsage), CONCEPTS.Interface$db);
                   callback.onUsageFound(createSingleResult(foundIntfc));
                   QueueSequence.fromQueue(queue).addLastElement(foundIntfc);
                 }
@@ -79,10 +79,10 @@ public class DerivedInterfaces_Finder extends GeneratedFinder {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink extendedInterface$a$v2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
+    /*package*/ static final SContainmentLink extendedInterface$PDVO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
   }
 }

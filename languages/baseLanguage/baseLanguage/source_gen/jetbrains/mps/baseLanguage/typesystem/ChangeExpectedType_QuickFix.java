@@ -19,25 +19,25 @@ public class ChangeExpectedType_QuickFix extends QuickFix_Runtime {
     super(new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4017912752406060665"));
   }
   public String getDescription(SNode node) {
-    return "Change type of " + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(((SNode) ChangeExpectedType_QuickFix.this.getField("expression")[0])) + " to " + ((SNodeOperations.isInstanceOf(((SNode) ChangeExpectedType_QuickFix.this.getField("desiredType")[0]), CONCEPTS.Type$IG) ? BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(((SNode) ChangeExpectedType_QuickFix.this.getField("desiredType")[0])) : BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(TypecheckingFacade.getFromContext().getTypeOf(((SNode) ChangeExpectedType_QuickFix.this.getField("desiredType")[0])))));
+    return "Change type of " + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(((SNode) ChangeExpectedType_QuickFix.this.getField("expression")[0])) + " to " + ((SNodeOperations.isInstanceOf(((SNode) ChangeExpectedType_QuickFix.this.getField("desiredType")[0]), CONCEPTS.Type$bu) ? BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(((SNode) ChangeExpectedType_QuickFix.this.getField("desiredType")[0])) : BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(TypecheckingFacade.getFromContext().getTypeOf(((SNode) ChangeExpectedType_QuickFix.this.getField("desiredType")[0])))));
   }
   public void execute(SNode node) {
-    SNode actualType = (SNodeOperations.isInstanceOf(((SNode) ChangeExpectedType_QuickFix.this.getField("desiredType")[0]), CONCEPTS.Type$IG) ? ((SNode) ChangeExpectedType_QuickFix.this.getField("desiredType")[0]) : TypecheckingFacade.getFromContext().getTypeOf(((SNode) ChangeExpectedType_QuickFix.this.getField("desiredType")[0])));
-    if (SNodeOperations.isInstanceOf(((SNode) ChangeExpectedType_QuickFix.this.getField("expression")[0]), CONCEPTS.VariableDeclaration$xe)) {
-      SLinkOperations.setTarget(SNodeOperations.cast(((SNode) ChangeExpectedType_QuickFix.this.getField("expression")[0]), CONCEPTS.VariableDeclaration$xe), LINKS.type$uWuc, actualType);
-    } else if (SNodeOperations.isInstanceOf(((SNode) ChangeExpectedType_QuickFix.this.getField("expression")[0]), CONCEPTS.VariableReference$sQ)) {
-      SLinkOperations.setTarget(SLinkOperations.getTarget(SNodeOperations.cast(((SNode) ChangeExpectedType_QuickFix.this.getField("expression")[0]), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), LINKS.type$uWuc, actualType);
+    SNode actualType = (SNodeOperations.isInstanceOf(((SNode) ChangeExpectedType_QuickFix.this.getField("desiredType")[0]), CONCEPTS.Type$bu) ? ((SNode) ChangeExpectedType_QuickFix.this.getField("desiredType")[0]) : TypecheckingFacade.getFromContext().getTypeOf(((SNode) ChangeExpectedType_QuickFix.this.getField("desiredType")[0])));
+    if (SNodeOperations.isInstanceOf(((SNode) ChangeExpectedType_QuickFix.this.getField("expression")[0]), CONCEPTS.VariableDeclaration$Y0)) {
+      SLinkOperations.setTarget(SNodeOperations.cast(((SNode) ChangeExpectedType_QuickFix.this.getField("expression")[0]), CONCEPTS.VariableDeclaration$Y0), LINKS.type$a1UY, actualType);
+    } else if (SNodeOperations.isInstanceOf(((SNode) ChangeExpectedType_QuickFix.this.getField("expression")[0]), CONCEPTS.VariableReference$TC)) {
+      SLinkOperations.setTarget(SLinkOperations.getTarget(SNodeOperations.cast(((SNode) ChangeExpectedType_QuickFix.this.getField("expression")[0]), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), LINKS.type$a1UY, actualType);
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
-    /*package*/ static final SConcept VariableDeclaration$xe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
-    /*package*/ static final SConcept VariableReference$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept VariableDeclaration$Y0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
+    /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 }

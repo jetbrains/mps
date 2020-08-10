@@ -35,7 +35,7 @@ public class check_StaticInterfaceMethodDeclarationV8_NonTypesystemRule extends 
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Interface$Kp;
+    return CONCEPTS.Interface$db;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -45,6 +45,6 @@ public class check_StaticInterfaceMethodDeclarationV8_NonTypesystemRule extends 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
   }
 }

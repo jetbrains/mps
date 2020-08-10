@@ -17,9 +17,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class IconHelper {
   public static String createId(SModel m) {
-    Set<String> used = SetSequence.fromSetWithValues(new HashSet<String>(), ListSequence.fromList(SModelOperations.nodes(m, CONCEPTS.TextIcon$le)).select(new ISelector<SNode, String>() {
+    Set<String> used = SetSequence.fromSetWithValues(new HashSet<String>(), ListSequence.fromList(SModelOperations.nodes(m, CONCEPTS.TextIcon$X0)).select(new ISelector<SNode, String>() {
       public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.iconId$WEru);
+        return SPropertyOperations.getString(it, PROPS.iconId$SZ3g);
       }
     }));
     int id = 1;
@@ -30,10 +30,10 @@ public class IconHelper {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TextIcon$le = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, "jetbrains.mps.lang.resources.structure.TextIcon");
+    /*package*/ static final SConcept TextIcon$X0 = MetaAdapterFactory.getConcept(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, "jetbrains.mps.lang.resources.structure.TextIcon");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty iconId$WEru = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x12dbb53bb6b60039L, "iconId");
+    /*package*/ static final SProperty iconId$SZ3g = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0x26417c37742e0d45L, 0x12dbb53bb6b60039L, "iconId");
   }
 }

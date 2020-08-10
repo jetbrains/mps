@@ -43,7 +43,7 @@ public class BuildSimpleName_text extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.BuildTextStringPart$xk))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.BuildTextStringPart$3R))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
@@ -56,22 +56,22 @@ public class BuildSimpleName_text extends KeyMapImpl {
       if (!(editorContext.getSelectedCell() instanceof EditorCell_Label)) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.BuildStringPart$vo))) {
+      if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.BuildStringPart$1V))) {
         return false;
       }
-      return isNotEmptyString(SPropertyOperations.getString(node, PROPS.text$aaWn));
+      return isNotEmptyString(SPropertyOperations.getString(node, PROPS.text$lRuU));
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
       int index = ((EditorCell_Label) editorContext.getSelectedCell()).getCaretPosition();
 
-      String currText = SPropertyOperations.getString(node, PROPS.text$aaWn);
+      String currText = SPropertyOperations.getString(node, PROPS.text$lRuU);
       if (index < currText.length() && index > 0) {
-        SNode newText = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.BuildTextStringPart$xk);
-        SPropertyOperations.assign(newText, PROPS.text$aaWn, currText.substring(index));
-        SPropertyOperations.assign(node, PROPS.text$aaWn, currText.substring(0, index));
+        SNode newText = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.BuildTextStringPart$3R);
+        SPropertyOperations.assign(newText, PROPS.text$lRuU, currText.substring(index));
+        SPropertyOperations.assign(node, PROPS.text$lRuU, currText.substring(0, index));
         SNodeOperations.insertNextSiblingChild(node, newText);
       }
-      SNode newRef = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.BuildVarRefStringPart$wm);
+      SNode newRef = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.BuildVarRefStringPart$2T);
       if (index != 0) {
         SNodeOperations.insertNextSiblingChild(node, newRef);
       } else {
@@ -88,12 +88,12 @@ public class BuildSimpleName_text extends KeyMapImpl {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildTextStringPart$xk = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, "jetbrains.mps.build.structure.BuildTextStringPart");
-    /*package*/ static final SConcept BuildStringPart$vo = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7cffL, "jetbrains.mps.build.structure.BuildStringPart");
-    /*package*/ static final SConcept BuildVarRefStringPart$wm = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d01L, "jetbrains.mps.build.structure.BuildVarRefStringPart");
+    /*package*/ static final SConcept BuildTextStringPart$3R = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, "jetbrains.mps.build.structure.BuildTextStringPart");
+    /*package*/ static final SConcept BuildStringPart$1V = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7cffL, "jetbrains.mps.build.structure.BuildStringPart");
+    /*package*/ static final SConcept BuildVarRefStringPart$2T = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d01L, "jetbrains.mps.build.structure.BuildVarRefStringPart");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$aaWn = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text");
+    /*package*/ static final SProperty text$lRuU = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text");
   }
 }

@@ -22,11 +22,11 @@ public class typeof_ExtensionPointExpression_InferenceRule extends AbstractInfer
     {
       SNode _nodeToCheck_1029348928467 = epe;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "6626851894249791047", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "6626851894249791042", true), (SNode) createExtensionPointType_x0hnp2_a1a0c0a0b(SLinkOperations.getTarget(epe, LINKS.extensionPoint$gcMT)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "6626851894249791042", true), (SNode) createExtensionPointType_x0hnp2_a1a0c0a0b(SLinkOperations.getTarget(epe, LINKS.extensionPoint$6X4F)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ExtensionPointExpression$wC;
+    return CONCEPTS.ExtensionPointExpression$Mq;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -35,18 +35,18 @@ public class typeof_ExtensionPointExpression_InferenceRule extends AbstractInfer
     return false;
   }
   private static SNode createExtensionPointType_x0hnp2_a1a0c0a0b(SNode p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ExtensionPointType$TB);
-    n0.setReferenceTarget(LINKS.extensionPoint$ksNw, p0);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ExtensionPointType$bp);
+    n0.setReferenceTarget(LINKS.extensionPoint$bd5i, p0);
     return n0.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extensionPoint$gcMT = MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x5bf74eafefe0e940L, 0x5bf74eafefe0eb55L, "extensionPoint");
-    /*package*/ static final SReferenceLink extensionPoint$ksNw = MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2c10fa62142eb538L, 0x2c10fa62142eb539L, "extensionPoint");
+    /*package*/ static final SReferenceLink extensionPoint$6X4F = MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x5bf74eafefe0e940L, 0x5bf74eafefe0eb55L, "extensionPoint");
+    /*package*/ static final SReferenceLink extensionPoint$bd5i = MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2c10fa62142eb538L, 0x2c10fa62142eb539L, "extensionPoint");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ExtensionPointExpression$wC = MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x5bf74eafefe0e940L, "jetbrains.mps.lang.extension.structure.ExtensionPointExpression");
-    /*package*/ static final SConcept ExtensionPointType$TB = MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2c10fa62142eb538L, "jetbrains.mps.lang.extension.structure.ExtensionPointType");
+    /*package*/ static final SConcept ExtensionPointExpression$Mq = MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x5bf74eafefe0e940L, "jetbrains.mps.lang.extension.structure.ExtensionPointExpression");
+    /*package*/ static final SConcept ExtensionPointType$bp = MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2c10fa62142eb538L, "jetbrains.mps.lang.extension.structure.ExtensionPointType");
   }
 }

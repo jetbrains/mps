@@ -28,7 +28,7 @@ public class ExtensionMethodCall_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_jhp199_a(), CONCEPTS.ExtensionMethodCall$j_));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_jhp199_a(), CONCEPTS.ExtensionMethodCall$xm));
     result.add(new SMP_Subconcepts_jhp199_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class ExtensionMethodCall_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_jhp199_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.ExtensionMethodCall$j_, LINKS.baseMethodDeclaration$ItxI);
+      super((SAbstractConcept) CONCEPTS.ExtensionMethodCall$xm, LINKS.baseMethodDeclaration$pyYw);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class ExtensionMethodCall_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_jhp199_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ExtensionMethodCall$j_);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ExtensionMethodCall$xm);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class ExtensionMethodCall_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ExtensionMethodCall$j_ = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x1583d1b63359483bL, "jetbrains.mps.baseLanguage.extensionMethods.structure.ExtensionMethodCall");
+    /*package*/ static final SConcept ExtensionMethodCall$xm = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x1583d1b63359483bL, "jetbrains.mps.baseLanguage.extensionMethods.structure.ExtensionMethodCall");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 }

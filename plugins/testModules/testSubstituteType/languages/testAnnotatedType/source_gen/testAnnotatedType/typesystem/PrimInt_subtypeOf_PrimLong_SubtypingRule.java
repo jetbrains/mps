@@ -19,7 +19,7 @@ public class PrimInt_subtypeOf_PrimLong_SubtypingRule extends SubtypingRule_Runt
     return createPrimLongType_scx771_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.PrimIntType$to;
+    return CONCEPTS.PrimIntType$Ur;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -31,12 +31,12 @@ public class PrimInt_subtypeOf_PrimLong_SubtypingRule extends SubtypingRule_Runt
     return true;
   }
   private static SNode createPrimLongType_scx771_a0a1() {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PrimLongType$RR);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PrimLongType$kU);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PrimIntType$to = MetaAdapterFactory.getConcept(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be609eL, "testAnnotatedType.structure.PrimIntType");
-    /*package*/ static final SConcept PrimLongType$RR = MetaAdapterFactory.getConcept(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x786549534310b4f5L, "testAnnotatedType.structure.PrimLongType");
+    /*package*/ static final SConcept PrimIntType$Ur = MetaAdapterFactory.getConcept(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be609eL, "testAnnotatedType.structure.PrimIntType");
+    /*package*/ static final SConcept PrimLongType$kU = MetaAdapterFactory.getConcept(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x786549534310b4f5L, "testAnnotatedType.structure.PrimLongType");
   }
 }

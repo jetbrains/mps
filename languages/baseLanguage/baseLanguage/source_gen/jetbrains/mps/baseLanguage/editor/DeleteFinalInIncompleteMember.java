@@ -26,7 +26,7 @@ public class DeleteFinalInIncompleteMember {
         if (DeletionApproverUtil.approve(editorContext, node, "finalKeyword")) {
           return;
         }
-        SPropertyOperations.set(node, PROPS.final$11DX, false);
+        SPropertyOperations.set(node, PROPS.final$G76J, false);
         editorContext.selectWRTFocusPolicy(node);
       }
 
@@ -75,6 +75,6 @@ public class DeleteFinalInIncompleteMember {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty final$11DX = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e6fdaf96L, "final");
+    /*package*/ static final SProperty final$G76J = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e6fdaf96L, "final");
   }
 }

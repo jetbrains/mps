@@ -64,7 +64,7 @@ public class ConceptAndSuperConceptsScope extends Scope {
       return Collections.<SNode>emptyList();
     }
     List<SNode> result = new ArrayList<SNode>();
-    for (SNode node : ((Iterable<SNode>) BHReflection.invoke0(myTopConcept, CONCEPTS.AbstractConceptDeclaration$UN, SMethodTrimmedId.create("getAllSuperConcepts", CONCEPTS.AbstractConceptDeclaration$UN, "2A8AB0rAWpG"), ((boolean) true)))) {
+    for (SNode node : ((Iterable<SNode>) BHReflection.invoke0(myTopConcept, CONCEPTS.AbstractConceptDeclaration$KA, SMethodTrimmedId.create("getAllSuperConcepts", CONCEPTS.AbstractConceptDeclaration$KA, "2A8AB0rAWpG"), ((boolean) true)))) {
       // FIXME why do we collect *all* children, including InterfaceConceptReference of implements/extends, ACD.helpURL and CD.icon? 
       // I suppose all we need here is linkDeclaration + propertyDeclaration, both available in node<ACD> we've got here 
       for (SNode n : SNodeUtil.getDescendants(node, condition, true)) {
@@ -75,6 +75,6 @@ public class ConceptAndSuperConceptsScope extends Scope {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 }

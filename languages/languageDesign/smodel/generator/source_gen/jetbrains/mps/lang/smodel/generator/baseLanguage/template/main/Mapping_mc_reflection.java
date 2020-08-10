@@ -44,7 +44,7 @@ public class Mapping_mc_reflection extends MapConfigBase implements TemplateMapp
   }
   /*package*/ final class ReductionRule0 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6409763769033721790"), CONCEPTS.DotExpression$6a, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6409763769033721790"), CONCEPTS.DotExpression$yW, true);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -61,7 +61,7 @@ public class Mapping_mc_reflection extends MapConfigBase implements TemplateMapp
   }
   /*package*/ final class ReductionRule1 extends ReductionRuleBase {
     public ReductionRule1() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5692182839348392789"), CONCEPTS.Reference_GetTargetOperation$u8, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5692182839348392789"), CONCEPTS.Reference_GetTargetOperation$vC, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -86,7 +86,7 @@ public class Mapping_mc_reflection extends MapConfigBase implements TemplateMapp
   }
   /*package*/ final class ReductionRule2 extends ReductionRuleBase {
     public ReductionRule2() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5692182839348392791"), CONCEPTS.Reference_GetLinkDeclarationOperation$8i, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5692182839348392791"), CONCEPTS.Reference_GetLinkDeclarationOperation$9M, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -111,7 +111,7 @@ public class Mapping_mc_reflection extends MapConfigBase implements TemplateMapp
   }
   /*package*/ final class ReductionRule3 extends ReductionRuleBase {
     public ReductionRule3() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2926695023085820535"), CONCEPTS.Reference_ContainingLinkOperation$xy, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2926695023085820535"), CONCEPTS.Reference_ContainingLinkOperation$z2, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -136,7 +136,7 @@ public class Mapping_mc_reflection extends MapConfigBase implements TemplateMapp
   }
   /*package*/ final class ReductionRule4 extends ReductionRuleBase {
     public ReductionRule4() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5692182839349415250"), CONCEPTS.Reference_GetRoleOperation$II, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5692182839349415250"), CONCEPTS.Reference_GetRoleOperation$Ke, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -161,7 +161,7 @@ public class Mapping_mc_reflection extends MapConfigBase implements TemplateMapp
   }
   /*package*/ final class ReductionRule5 extends ReductionRuleBase {
     public ReductionRule5() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5708036808576088298"), CONCEPTS.Reference_GetResolveInfo$r4, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5708036808576088298"), CONCEPTS.Reference_GetResolveInfo$s$, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -186,7 +186,7 @@ public class Mapping_mc_reflection extends MapConfigBase implements TemplateMapp
   }
   /*package*/ final class ReductionRule6 extends ReductionRuleBase {
     public ReductionRule6() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6079722741456950313"), CONCEPTS.Reference_IsDynamic$mj, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6079722741456950313"), CONCEPTS.Reference_IsDynamic$nN, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -243,12 +243,12 @@ public class Mapping_mc_reflection extends MapConfigBase implements TemplateMapp
   private static final SNodePointer copySrcMacro_yrbd5d_b0a0c0d0c0b01 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6079722741456957844");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
-    /*package*/ static final SConcept Reference_GetTargetOperation$u8 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x393cc52c868a600aL, "jetbrains.mps.lang.smodel.structure.Reference_GetTargetOperation");
-    /*package*/ static final SConcept Reference_GetLinkDeclarationOperation$8i = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x157abf675bd53debL, "jetbrains.mps.lang.smodel.structure.Reference_GetLinkDeclarationOperation");
-    /*package*/ static final SConcept Reference_ContainingLinkOperation$xy = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x289db59e00eee79dL, "jetbrains.mps.lang.smodel.structure.Reference_ContainingLinkOperation");
-    /*package*/ static final SConcept Reference_GetRoleOperation$II = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x4efeb22247ff02a7L, "jetbrains.mps.lang.smodel.structure.Reference_GetRoleOperation");
-    /*package*/ static final SConcept Reference_GetResolveInfo$r4 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x4f37053c240837e1L, "jetbrains.mps.lang.smodel.structure.Reference_GetResolveInfo");
-    /*package*/ static final SConcept Reference_IsDynamic$mj = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x545f839f2167c7dbL, "jetbrains.mps.lang.smodel.structure.Reference_IsDynamic");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept Reference_GetTargetOperation$vC = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x393cc52c868a600aL, "jetbrains.mps.lang.smodel.structure.Reference_GetTargetOperation");
+    /*package*/ static final SConcept Reference_GetLinkDeclarationOperation$9M = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x157abf675bd53debL, "jetbrains.mps.lang.smodel.structure.Reference_GetLinkDeclarationOperation");
+    /*package*/ static final SConcept Reference_ContainingLinkOperation$z2 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x289db59e00eee79dL, "jetbrains.mps.lang.smodel.structure.Reference_ContainingLinkOperation");
+    /*package*/ static final SConcept Reference_GetRoleOperation$Ke = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x4efeb22247ff02a7L, "jetbrains.mps.lang.smodel.structure.Reference_GetRoleOperation");
+    /*package*/ static final SConcept Reference_GetResolveInfo$s$ = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x4f37053c240837e1L, "jetbrains.mps.lang.smodel.structure.Reference_GetResolveInfo");
+    /*package*/ static final SConcept Reference_IsDynamic$nN = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x545f839f2167c7dbL, "jetbrains.mps.lang.smodel.structure.Reference_IsDynamic");
   }
 }

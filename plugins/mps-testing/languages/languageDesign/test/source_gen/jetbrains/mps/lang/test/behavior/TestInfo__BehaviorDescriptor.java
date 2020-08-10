@@ -36,20 +36,20 @@ public final class TestInfo__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static boolean reOpenProject_idThWTaQhG7P(@NotNull SAbstractConcept __thisConcept__, SModel model) {
-    List<SNode> infos = SModelOperations.roots(model, CONCEPTS.TestInfo$TV);
+    List<SNode> infos = SModelOperations.roots(model, CONCEPTS.TestInfo$9q);
     if (ListSequence.fromList(infos).isEmpty()) {
       return false;
     }
     SNode testInfo = ListSequence.fromList(infos).first();
-    return SPropertyOperations.getBoolean(testInfo, PROPS.reOpenProject$akCV);
+    return SPropertyOperations.getBoolean(testInfo, PROPS.reOpenProject$2WSq);
   }
   /*package*/ static String getProjectPath_id4qWC2JVrBcn(@NotNull SAbstractConcept __thisConcept__, SModel model) {
-    List<SNode> infos = SModelOperations.roots(model, CONCEPTS.TestInfo$TV);
+    List<SNode> infos = SModelOperations.roots(model, CONCEPTS.TestInfo$9q);
     if (ListSequence.fromList(infos).isEmpty()) {
       return null;
     }
     SNode testInfo = ListSequence.fromList(infos).first();
-    return SPropertyOperations.getString(testInfo, PROPS.projectPath$WXw);
+    return SPropertyOperations.getString(testInfo, PROPS.projectPath$T_cZ);
   }
 
   /*package*/ TestInfo__BehaviorDescriptor() {
@@ -101,11 +101,11 @@ public final class TestInfo__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestInfo$TV = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x46bca02bfb6e730aL, "jetbrains.mps.lang.test.structure.TestInfo");
+    /*package*/ static final SConcept TestInfo$9q = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x46bca02bfb6e730aL, "jetbrains.mps.lang.test.structure.TestInfo");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty reOpenProject$akCV = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x46bca02bfb6e730aL, 0xe51f392b64685d9L, "reOpenProject");
-    /*package*/ static final SProperty projectPath$WXw = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x46bca02bfb6e730aL, 0x46bca02bfb6e730bL, "projectPath");
+    /*package*/ static final SProperty reOpenProject$2WSq = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x46bca02bfb6e730aL, 0xe51f392b64685d9L, "reOpenProject");
+    /*package*/ static final SProperty projectPath$T_cZ = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x46bca02bfb6e730aL, 0x46bca02bfb6e730bL, "projectPath");
   }
 }

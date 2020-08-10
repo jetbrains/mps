@@ -59,7 +59,7 @@ public class ThisExtensionMethodSubstitute extends SubstituteMenuBase {
   public class SMP_Group_7qarbi_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      if ((SNodeOperations.getNodeAncestorWhereConceptInList(_context.getParentNode(), new SAbstractConcept[]{CONCEPTS.BaseExtensionMethodContainer$b0}, true, false) != null)) {
+      if ((SNodeOperations.getNodeAncestorWhereConceptInList(_context.getParentNode(), new SAbstractConcept[]{CONCEPTS.BaseExtensionMethodContainer$oL}, true, false) != null)) {
         return true;
       }
       return false;
@@ -78,7 +78,7 @@ public class ThisExtensionMethodSubstitute extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_7qarbi_a0(), CONCEPTS.DotExpression$6a));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_7qarbi_a0(), CONCEPTS.DotExpression$yW));
     }
     private class SMP_Param_7qarbi_a0 extends ParameterizedMenuPart<SNode, SubstituteMenuItem, SubstituteMenuContext> {
       @NotNull
@@ -100,7 +100,7 @@ public class ThisExtensionMethodSubstitute extends SubstituteMenuBase {
       @Nullable
       @Override
       protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-        return SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.BaseExtensionMethodContainer$b0, false, false), CONCEPTS.ExtensionMethodDeclaration$9b, false, new SAbstractConcept[]{});
+        return SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.BaseExtensionMethodContainer$oL, false, false), CONCEPTS.ExtensionMethodDeclaration$mW, false, new SAbstractConcept[]{});
       }
       private class SMP_Action_7qarbi_a0a extends SingleItemSubstituteMenuPart {
         private final SNode myParameterObject;
@@ -135,7 +135,7 @@ public class ThisExtensionMethodSubstitute extends SubstituteMenuBase {
           private final SubstituteMenuContext _context;
           private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
-            super(CONCEPTS.DotExpression$6a, context);
+            super(CONCEPTS.DotExpression$yW, context);
             _context = context;
           }
 
@@ -146,9 +146,9 @@ public class ThisExtensionMethodSubstitute extends SubstituteMenuBase {
           @Nullable
           @Override
           public SNode createNode(@NotNull String pattern) {
-            SNode operationExpression = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.DotExpression$6a, null);
-            SLinkOperations.setTarget(SNodeFactoryOperations.setNewChild(operationExpression, LINKS.operation$_mGS, CONCEPTS.ExtensionMethodCall$j_), LINKS.baseMethodDeclaration$ItxI, SNodeOperations.cast(myParameterObject, CONCEPTS.ExtensionMethodDeclaration$9b));
-            SNode thisExpression = SNodeFactoryOperations.setNewChild(operationExpression, LINKS.operand$P1i5, CONCEPTS.ThisExtensionExpression$UG);
+            SNode operationExpression = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.DotExpression$yW, null);
+            SLinkOperations.setTarget(SNodeFactoryOperations.setNewChild(operationExpression, LINKS.operation$gs9E, CONCEPTS.ExtensionMethodCall$xm), LINKS.baseMethodDeclaration$pyYw, SNodeOperations.cast(myParameterObject, CONCEPTS.ExtensionMethodDeclaration$mW));
+            SNode thisExpression = SNodeFactoryOperations.setNewChild(operationExpression, LINKS.operand$w6IR, CONCEPTS.ThisExtensionExpression$8t);
             return operationExpression;
           }
 
@@ -158,7 +158,7 @@ public class ThisExtensionMethodSubstitute extends SubstituteMenuBase {
           }
           @NotNull
           protected CompletionItemInformation createInformation(String pattern) {
-            return new CompletionItemInformation(myParameterObject, CONCEPTS.DotExpression$6a, getMatchingText(pattern), getDescriptionText(pattern));
+            return new CompletionItemInformation(myParameterObject, CONCEPTS.DotExpression$yW, getMatchingText(pattern), getDescriptionText(pattern));
           }
           @Nullable
           @Override
@@ -191,16 +191,16 @@ public class ThisExtensionMethodSubstitute extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseExtensionMethodContainer$b0 = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x6f5433076549f519L, "jetbrains.mps.baseLanguage.extensionMethods.structure.BaseExtensionMethodContainer");
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
-    /*package*/ static final SConcept ExtensionMethodDeclaration$9b = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x1583d1b63365e7f9L, "jetbrains.mps.baseLanguage.extensionMethods.structure.ExtensionMethodDeclaration");
-    /*package*/ static final SConcept ExtensionMethodCall$j_ = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x1583d1b63359483bL, "jetbrains.mps.baseLanguage.extensionMethods.structure.ExtensionMethodCall");
-    /*package*/ static final SConcept ThisExtensionExpression$UG = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x2e076d2695911333L, "jetbrains.mps.baseLanguage.extensionMethods.structure.ThisExtensionExpression");
+    /*package*/ static final SConcept BaseExtensionMethodContainer$oL = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x6f5433076549f519L, "jetbrains.mps.baseLanguage.extensionMethods.structure.BaseExtensionMethodContainer");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept ExtensionMethodDeclaration$mW = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x1583d1b63365e7f9L, "jetbrains.mps.baseLanguage.extensionMethods.structure.ExtensionMethodDeclaration");
+    /*package*/ static final SConcept ExtensionMethodCall$xm = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x1583d1b63359483bL, "jetbrains.mps.baseLanguage.extensionMethods.structure.ExtensionMethodCall");
+    /*package*/ static final SConcept ThisExtensionExpression$8t = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x2e076d2695911333L, "jetbrains.mps.baseLanguage.extensionMethods.structure.ThisExtensionExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operation$gs9E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
   }
 }

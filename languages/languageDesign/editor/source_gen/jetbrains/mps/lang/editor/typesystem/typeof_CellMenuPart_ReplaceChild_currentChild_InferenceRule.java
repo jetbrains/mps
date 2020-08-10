@@ -26,10 +26,10 @@ public class typeof_CellMenuPart_ReplaceChild_currentChild_InferenceRule extends
   public typeof_CellMenuPart_ReplaceChild_currentChild_InferenceRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode hostMenuPart = SNodeOperations.getNodeAncestor(node, CONCEPTS.CellMenuPart_Abstract$vE, false, false);
+    SNode hostMenuPart = SNodeOperations.getNodeAncestor(node, CONCEPTS.CellMenuPart_Abstract$Fh, false, false);
     SNode editedFeature = CellMenuUtil.getEditedFeature(hostMenuPart);
-    if (SNodeOperations.isInstanceOf(editedFeature, CONCEPTS.LinkDeclaration$bA)) {
-      SNode conceptOfChild = SLinkOperations.getTarget(SNodeOperations.cast(editedFeature, CONCEPTS.LinkDeclaration$bA), LINKS.target$TWaS);
+    if (SNodeOperations.isInstanceOf(editedFeature, CONCEPTS.LinkDeclaration$1p)) {
+      SNode conceptOfChild = SLinkOperations.getTarget(SNodeOperations.cast(editedFeature, CONCEPTS.LinkDeclaration$1p), LINKS.target$m40F);
       {
         SNode _nodeToCheck_1029348928467 = node;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "1223982086163", 0, null);
@@ -48,7 +48,7 @@ public class typeof_CellMenuPart_ReplaceChild_currentChild_InferenceRule extends
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.CellMenuPart_ReplaceChild_currentChild$Bk;
+    return CONCEPTS.CellMenuPart_ReplaceChild_currentChild$MV;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -71,12 +71,12 @@ public class typeof_CellMenuPart_ReplaceChild_currentChild_InferenceRule extends
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellMenuPart_Abstract$vE = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f8c0deL, "jetbrains.mps.lang.editor.structure.CellMenuPart_Abstract");
-    /*package*/ static final SConcept LinkDeclaration$bA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration");
-    /*package*/ static final SConcept CellMenuPart_ReplaceChild_currentChild$Bk = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10eaa3a3c68L, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReplaceChild_currentChild");
+    /*package*/ static final SConcept CellMenuPart_Abstract$Fh = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f8c0deL, "jetbrains.mps.lang.editor.structure.CellMenuPart_Abstract");
+    /*package*/ static final SConcept LinkDeclaration$1p = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration");
+    /*package*/ static final SConcept CellMenuPart_ReplaceChild_currentChild$MV = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10eaa3a3c68L, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReplaceChild_currentChild");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SReferenceLink target$m40F = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
   }
 }

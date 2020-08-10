@@ -35,7 +35,7 @@
       <node id="400642802550418980" at="39,103,40,80" concept="8" />
       <node id="400642802550418980" at="40,80,41,257" concept="8" />
       <node id="400642802550418980" at="41,257,42,20" concept="9" />
-      <node id="400642802550418959" at="53,0,54,0" concept="11" trace="StringSwitchStatement$x7" />
+      <node id="400642802550418959" at="53,0,54,0" concept="11" trace="StringSwitchStatement$Fm" />
       <node id="400642802550418980" at="35,0,38,0" concept="1" trace="ReductionRule0#()V" />
       <node id="400642802550418959" at="26,0,30,0" concept="1" trace="Mapping_main#(Ljetbrains/mps/generator/runtime/TemplateModel;)V" />
       <node id="400642802550418959" at="30,0,34,0" concept="7" trace="getReductionRules#()Ljava/util/Collection;" />

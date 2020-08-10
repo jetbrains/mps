@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AddElementStatement_Constraints extends BaseConstraintsDescriptor {
   public AddElementStatement_Constraints() {
-    super(CONCEPTS.AddElementStatement$gR);
+    super(CONCEPTS.AddElementStatement$dU);
   }
 
   @Override
@@ -37,13 +37,13 @@ public class AddElementStatement_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.getNodeAncestorWhereConceptInList(parentNode, new SAbstractConcept[]{CONCEPTS.BuildGroupBlock$Uj, CONCEPTS.UpdateGroupFunction$iQ}, true, false) != null;
+    return SNodeOperations.getNodeAncestorWhereConceptInList(parentNode, new SAbstractConcept[]{CONCEPTS.BuildGroupBlock$Rm, CONCEPTS.UpdateGroupFunction$fT}, true, false) != null;
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590361(jetbrains.mps.lang.plugin.constraints)", "1227128029536562334");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AddElementStatement$gR = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1190f7a2d1aL, "jetbrains.mps.lang.plugin.structure.AddElementStatement");
-    /*package*/ static final SConcept BuildGroupBlock$Uj = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1190f786becL, "jetbrains.mps.lang.plugin.structure.BuildGroupBlock");
-    /*package*/ static final SConcept UpdateGroupFunction$iQ = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x120b44b9ee2L, "jetbrains.mps.lang.plugin.structure.UpdateGroupFunction");
+    /*package*/ static final SConcept AddElementStatement$dU = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1190f7a2d1aL, "jetbrains.mps.lang.plugin.structure.AddElementStatement");
+    /*package*/ static final SConcept BuildGroupBlock$Rm = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1190f786becL, "jetbrains.mps.lang.plugin.structure.BuildGroupBlock");
+    /*package*/ static final SConcept UpdateGroupFunction$fT = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x120b44b9ee2L, "jetbrains.mps.lang.plugin.structure.UpdateGroupFunction");
   }
 }

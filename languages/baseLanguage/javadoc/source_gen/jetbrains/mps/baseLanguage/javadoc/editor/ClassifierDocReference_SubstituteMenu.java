@@ -27,7 +27,7 @@ public class ClassifierDocReference_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_qz15z6_a(), CONCEPTS.ClassifierDocReference$Mb));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_qz15z6_a(), CONCEPTS.ClassifierDocReference$$o));
     return result;
   }
 
@@ -48,7 +48,7 @@ public class ClassifierDocReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_qz15z6_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.ClassifierDocReference$Mb, LINKS.classifier$fT5w);
+      super((SAbstractConcept) CONCEPTS.ClassifierDocReference$$o, LINKS.classifier$AhRH);
     }
     @NotNull
     @Override
@@ -95,10 +95,10 @@ public class ClassifierDocReference_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassifierDocReference$Mb = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2e4L, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocReference");
+    /*package*/ static final SConcept ClassifierDocReference$$o = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2e4L, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$fT5w = MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2e4L, 0x1ec532ec2531d2e5L, "classifier");
+    /*package*/ static final SReferenceLink classifier$AhRH = MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2e4L, 0x1ec532ec2531d2e5L, "classifier");
   }
 }

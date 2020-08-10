@@ -78,9 +78,9 @@ public class check_ModulesImport_NonTypesystemRule extends AbstractNonTypesystem
       }
     });
     ml.checkAllModules(ModuleChecker.CheckType.CHECK);
-    for (SNode dk : ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.parts$b06K)).translate(new ITranslator2<SNode, SNode>() {
+    for (SNode dk : ListSequence.fromList(SLinkOperations.getChildren(buildProject, LINKS.parts$mGDj)).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
-        return SNodeOperations.getNodeDescendants(it, CONCEPTS.BuildMps_DevKit$QO, true, new SAbstractConcept[]{});
+        return SNodeOperations.getNodeDescendants(it, CONCEPTS.BuildMps_DevKit$jc, true, new SAbstractConcept[]{});
       }
     })) {
       // XXX would be great not to create ModuleChecker here 
@@ -123,7 +123,7 @@ public class check_ModulesImport_NonTypesystemRule extends AbstractNonTypesystem
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BuildProject$BF;
+    return CONCEPTS.BuildProject$ae;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -133,11 +133,11 @@ public class check_ModulesImport_NonTypesystemRule extends AbstractNonTypesystem
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parts$b06K = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
+    /*package*/ static final SContainmentLink parts$mGDj = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x668c6cfbafacf6f2L, "parts");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildMps_DevKit$QO = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2060eL, "jetbrains.mps.build.mps.structure.BuildMps_DevKit");
-    /*package*/ static final SConcept BuildProject$BF = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+    /*package*/ static final SConcept BuildMps_DevKit$jc = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d2060eL, "jetbrains.mps.build.mps.structure.BuildMps_DevKit");
+    /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
   }
 }

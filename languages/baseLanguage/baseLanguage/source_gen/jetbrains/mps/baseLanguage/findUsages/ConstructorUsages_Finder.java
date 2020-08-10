@@ -36,11 +36,11 @@ public class ConstructorUsages_Finder extends GeneratedFinder {
   }
   @Override
   public SAbstractConcept getSConcept() {
-    return CONCEPTS.ConstructorDeclaration$5U;
+    return CONCEPTS.ConstructorDeclaration$yG;
   }
   @Override
   public boolean isApplicable(SNode node) {
-    return SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$IY, false, false) != null;
+    return SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false) != null;
   }
 
   @Override
@@ -53,20 +53,20 @@ public class ConstructorUsages_Finder extends GeneratedFinder {
         callback.onUsageFound(createSingleResult(nodeUsage));
       }
       // WORKAROUND - FIND SUPER() CALLS 
-      for (SNode subclassResult : ListSequence.fromList(FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.StraightDerivedClasses_Finder", SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$IY, false, false), scope, monitor.subTask(1)))) {
-        for (SNode constructorNode : Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.cast(subclassResult, CONCEPTS.ClassConcept$IY)))) {
+      for (SNode subclassResult : ListSequence.fromList(FindUtils.executeFinder("jetbrains.mps.baseLanguage.findUsages.StraightDerivedClasses_Finder", SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false), scope, monitor.subTask(1)))) {
+        for (SNode constructorNode : Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.cast(subclassResult, CONCEPTS.ClassConcept$bK)))) {
           for (SNode invocation : ListSequence.fromList(SNodeOperations.getNodeDescendants(constructorNode, null, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return SNodeOperations.isInstanceOf(it, CONCEPTS.SuperConstructorInvocation$48);
+              return SNodeOperations.isInstanceOf(it, CONCEPTS.SuperConstructorInvocation$wU);
             }
           })) {
             boolean thisConstructor = true;
-            SNode invocationNode = SNodeOperations.cast(invocation, CONCEPTS.SuperConstructorInvocation$48);
-            if (ListSequence.fromList(SLinkOperations.getChildren(invocationNode, LINKS.actualArgument$ItKJ)).count() == ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$qsax)).count()) {
-              for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(invocationNode, LINKS.actualArgument$ItKJ)).count(); i++) {
-                SNode actualArgument = ListSequence.fromList(SLinkOperations.getChildren(invocationNode, LINKS.actualArgument$ItKJ)).getElement(i);
-                SNode formalArgument = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$qsax)).getElement(i);
-                if (!(TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(actualArgument), SLinkOperations.getTarget(formalArgument, LINKS.type$uWuc)))) {
+            SNode invocationNode = SNodeOperations.cast(invocation, CONCEPTS.SuperConstructorInvocation$wU);
+            if (ListSequence.fromList(SLinkOperations.getChildren(invocationNode, LINKS.actualArgument$pzdx)).count() == ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$5xBj)).count()) {
+              for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(invocationNode, LINKS.actualArgument$pzdx)).count(); i++) {
+                SNode actualArgument = ListSequence.fromList(SLinkOperations.getChildren(invocationNode, LINKS.actualArgument$pzdx)).getElement(i);
+                SNode formalArgument = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$5xBj)).getElement(i);
+                if (!(TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(actualArgument), SLinkOperations.getTarget(formalArgument, LINKS.type$a1UY)))) {
                   thisConstructor = false;
                 }
               }
@@ -78,15 +78,15 @@ public class ConstructorUsages_Finder extends GeneratedFinder {
         }
       }
       // search for enum constants creation 
-      SNode enumNode = SNodeOperations.cast(SNodeOperations.getNodeAncestor(node, CONCEPTS.EnumClass$uy, false, false), CONCEPTS.EnumClass$uy);
+      SNode enumNode = SNodeOperations.cast(SNodeOperations.getNodeAncestor(node, CONCEPTS.EnumClass$Vk, false, false), CONCEPTS.EnumClass$Vk);
       if (enumNode != null) {
-        for (SNode enumConstant : ListSequence.fromList(SLinkOperations.getChildren(enumNode, LINKS.enumConstant$JnOa))) {
+        for (SNode enumConstant : ListSequence.fromList(SLinkOperations.getChildren(enumNode, LINKS.enumConstant$qtgW))) {
           boolean thisConstructor = true;
-          if (ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.actualArgument$ItKJ)).count() == ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$qsax)).count()) {
-            for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.actualArgument$ItKJ)).count(); i++) {
-              SNode actualArgument = ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.actualArgument$ItKJ)).getElement(i);
-              SNode formalArgument = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$qsax)).getElement(i);
-              if (!(TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(actualArgument), SLinkOperations.getTarget(formalArgument, LINKS.type$uWuc)))) {
+          if (ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.actualArgument$pzdx)).count() == ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$5xBj)).count()) {
+            for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.actualArgument$pzdx)).count(); i++) {
+              SNode actualArgument = ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.actualArgument$pzdx)).getElement(i);
+              SNode formalArgument = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$5xBj)).getElement(i);
+              if (!(TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(actualArgument), SLinkOperations.getTarget(formalArgument, LINKS.type$a1UY)))) {
                 thisConstructor = false;
               }
             }
@@ -113,16 +113,16 @@ public class ConstructorUsages_Finder extends GeneratedFinder {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConstructorDeclaration$5U = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept SuperConstructorInvocation$48 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d512e1eL, "jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation");
-    /*package*/ static final SConcept EnumClass$uy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
+    /*package*/ static final SConcept ConstructorDeclaration$yG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept SuperConstructorInvocation$wU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d512e1eL, "jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation");
+    /*package*/ static final SConcept EnumClass$Vk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink enumConstant$JnOa = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant");
+    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink enumConstant$qtgW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant");
   }
 }

@@ -24,7 +24,7 @@ public class typeof_ForConceptParameterDeclaration_InferenceRule extends Abstrac
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ForConceptMethodParameter$Dz;
+    return CONCEPTS.ForConceptMethodParameter$q0;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -34,6 +34,6 @@ public class typeof_ForConceptParameterDeclaration_InferenceRule extends Abstrac
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ForConceptMethodParameter$Dz = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x44d08b803f255effL, "jetbrains.mps.lang.intentions.structure.ForConceptMethodParameter");
+    /*package*/ static final SConcept ForConceptMethodParameter$q0 = MetaAdapterFactory.getConcept(0xd7a92d38f7db40d0L, 0x8431763b0c3c9f20L, 0x44d08b803f255effL, "jetbrains.mps.lang.intentions.structure.ForConceptMethodParameter");
   }
 }

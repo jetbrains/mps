@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class DispatchModifier_Constraints extends BaseConstraintsDescriptor {
   public DispatchModifier_Constraints() {
-    super(CONCEPTS.DispatchModifier$W7);
+    super(CONCEPTS.DispatchModifier$PK);
   }
 
   @Override
@@ -38,13 +38,13 @@ public class DispatchModifier_Constraints extends BaseConstraintsDescriptor {
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     // applicable only to java methods 
-    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.MethodDeclaration$93) || SNodeOperations.isInstanceOf(parentNode, CONCEPTS.IncompleteMemberDeclaration$QW);
+    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.MethodDeclaration$_P) || SNodeOperations.isInstanceOf(parentNode, CONCEPTS.IncompleteMemberDeclaration$jI);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:3d7b3732-9bef-45a8-98fa-22d696f27853(jetbrains.mps.baseLanguage.doubleDispatch.constraints)", "1227128029536560217");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DispatchModifier$W7 = MetaAdapterFactory.getConcept(0x7db4447f913e4b81L, 0xbd75c9a473319ac6L, 0x21592d9e737fa6f9L, "jetbrains.mps.baseLanguage.doubleDispatch.structure.DispatchModifier");
-    /*package*/ static final SConcept IncompleteMemberDeclaration$QW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, "jetbrains.mps.baseLanguage.structure.IncompleteMemberDeclaration");
-    /*package*/ static final SConcept MethodDeclaration$93 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, "jetbrains.mps.baseLanguage.structure.MethodDeclaration");
+    /*package*/ static final SConcept DispatchModifier$PK = MetaAdapterFactory.getConcept(0x7db4447f913e4b81L, 0xbd75c9a473319ac6L, 0x21592d9e737fa6f9L, "jetbrains.mps.baseLanguage.doubleDispatch.structure.DispatchModifier");
+    /*package*/ static final SConcept IncompleteMemberDeclaration$jI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, "jetbrains.mps.baseLanguage.structure.IncompleteMemberDeclaration");
+    /*package*/ static final SConcept MethodDeclaration$_P = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, "jetbrains.mps.baseLanguage.structure.MethodDeclaration");
   }
 }

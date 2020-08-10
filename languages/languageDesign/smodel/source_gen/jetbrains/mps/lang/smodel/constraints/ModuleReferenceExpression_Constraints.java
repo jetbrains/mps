@@ -17,12 +17,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ModuleReferenceExpression_Constraints extends BaseConstraintsDescriptor {
   public ModuleReferenceExpression_Constraints() {
-    super(CONCEPTS.ModuleReferenceExpression$M3);
+    super(CONCEPTS.ModuleReferenceExpression$Nz);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$Cp1w, container);
+      super(PROPS.name$cM30, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -40,15 +40,15 @@ public class ModuleReferenceExpression_Constraints extends BaseConstraintsDescri
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.name$Cp1w, new Name_Property(this));
+    properties.put(PROPS.name$cM30, new Name_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ModuleReferenceExpression$M3 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3db5af1L, "jetbrains.mps.lang.smodel.structure.ModuleReferenceExpression");
+    /*package*/ static final SConcept ModuleReferenceExpression$Nz = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3db5af1L, "jetbrains.mps.lang.smodel.structure.ModuleReferenceExpression");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$Cp1w = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3db5af1L, 0x38130dc4e3db5af2L, "name");
+    /*package*/ static final SProperty name$cM30 = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x38130dc4e3db5af1L, 0x38130dc4e3db5af2L, "name");
   }
 }

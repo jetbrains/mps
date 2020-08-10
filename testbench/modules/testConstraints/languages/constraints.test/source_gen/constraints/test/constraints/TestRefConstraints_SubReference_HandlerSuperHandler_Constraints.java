@@ -16,12 +16,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class TestRefConstraints_SubReference_HandlerSuperHandler_Constraints extends BaseConstraintsDescriptor {
   public TestRefConstraints_SubReference_HandlerSuperHandler_Constraints() {
-    super(CONCEPTS.TestRefConstraints_SubReference_HandlerSuperHandler$Rp);
+    super(CONCEPTS.TestRefConstraints_SubReference_HandlerSuperHandler$Tn);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.target$ndby, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.target$Ukdw, this) {
       @Override
       public boolean hasOwnOnReferenceSetHandler() {
         return true;
@@ -32,7 +32,7 @@ public class TestRefConstraints_SubReference_HandlerSuperHandler_Constraints ext
       }
       @Override
       public void onReferenceSet(final SNode referenceNode, final SNode oldReferentNode, final SNode newReferentNode) {
-        SPropertyOperations.assign(newReferentNode, PROPS.debug$iO1r, TestRefConstraints_Constants.SUB_REF_HANDLER_SUPER_HANDLER);
+        SPropertyOperations.assign(newReferentNode, PROPS.debug$PV3p, TestRefConstraints_Constants.SUB_REF_HANDLER_SUPER_HANDLER);
       }
     };
     Map<SReferenceLink, ReferenceConstraintsDescriptor> references = new HashMap<SReferenceLink, ReferenceConstraintsDescriptor>();
@@ -41,14 +41,14 @@ public class TestRefConstraints_SubReference_HandlerSuperHandler_Constraints ext
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestRefConstraints_SubReference_HandlerSuperHandler$Rp = MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a3066058dc091L, "constraints.test.structure.TestRefConstraints_SubReference_HandlerSuperHandler");
+    /*package*/ static final SConcept TestRefConstraints_SubReference_HandlerSuperHandler$Tn = MetaAdapterFactory.getConcept(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a3066058dc091L, "constraints.test.structure.TestRefConstraints_SubReference_HandlerSuperHandler");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$ndby = MetaAdapterFactory.getReferenceLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a30660588e212L, 0x244a30660588e2f1L, "target");
+    /*package*/ static final SReferenceLink target$Ukdw = MetaAdapterFactory.getReferenceLink(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a30660588e212L, 0x244a30660588e2f1L, "target");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty debug$iO1r = MetaAdapterFactory.getProperty(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641c74L, 0x244a306605641c7bL, "debug");
+    /*package*/ static final SProperty debug$PV3p = MetaAdapterFactory.getProperty(0x2b80057037584c14L, 0x86fb871266fb9d11L, 0x244a306605641c74L, 0x244a306605641c7bL, "debug");
   }
 }

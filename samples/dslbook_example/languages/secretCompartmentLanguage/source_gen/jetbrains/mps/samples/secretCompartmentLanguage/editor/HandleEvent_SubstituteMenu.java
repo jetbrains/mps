@@ -28,7 +28,7 @@ public class HandleEvent_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_7iv4dv_a(), CONCEPTS.HandleEvent$fh));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_7iv4dv_a(), CONCEPTS.HandleEvent$7i));
     result.add(new SMP_Subconcepts_7iv4dv_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class HandleEvent_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_7iv4dv_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.HandleEvent$fh, LINKS.event$4HL5);
+      super((SAbstractConcept) CONCEPTS.HandleEvent$7i, LINKS.event$7JD6);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class HandleEvent_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_7iv4dv_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.HandleEvent$fh);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.HandleEvent$7i);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class HandleEvent_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept HandleEvent$fh = MetaAdapterFactory.getConcept(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116c2015933L, "jetbrains.mps.samples.secretCompartmentLanguage.structure.HandleEvent");
+    /*package*/ static final SConcept HandleEvent$7i = MetaAdapterFactory.getConcept(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116c2015933L, "jetbrains.mps.samples.secretCompartmentLanguage.structure.HandleEvent");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink event$4HL5 = MetaAdapterFactory.getReferenceLink(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116c2015933L, 0x116c2017288L, "event");
+    /*package*/ static final SReferenceLink event$7JD6 = MetaAdapterFactory.getReferenceLink(0x6986543d82184ebfL, 0xa2e9565e5049c1ceL, 0x116c2015933L, 0x116c2017288L, "event");
   }
 }

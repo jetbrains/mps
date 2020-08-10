@@ -44,21 +44,21 @@ public class NewRootMappingRule_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(final AnActionEvent event, final Map<String, Object> _params) {
-    SNode annotation = AttributeOperations.getAttribute(event.getData(MPSCommonDataKeys.NODE), new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$u8));
+    SNode annotation = AttributeOperations.getAttribute(event.getData(MPSCommonDataKeys.NODE), new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O));
     if (annotation == null) {
       return false;
     }
-    if (SLinkOperations.getTarget(annotation, LINKS.applicableConcept$oE3h) == null) {
+    if (SLinkOperations.getTarget(annotation, LINKS.applicableConcept$LAIX) == null) {
       return false;
     }
-    List<SNode> configs = SModelOperations.roots(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)), CONCEPTS.MappingConfiguration$rB);
+    List<SNode> configs = SModelOperations.roots(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)), CONCEPTS.MappingConfiguration$7j);
     if (ListSequence.fromList(configs).isEmpty()) {
       return false;
     }
     //  not used in rule yet? 
-    return !(Sequence.fromIterable(SLinkOperations.collectMany(configs, LINKS.rootMappingRule$PgVq)).any(new IWhereFilter<SNode>() {
+    return !(Sequence.fromIterable(SLinkOperations.collectMany(configs, LINKS.rootMappingRule$edB6)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.template$YDaQ) == event.getData(MPSCommonDataKeys.NODE);
+        return SLinkOperations.getTarget(it, LINKS.template$n_Qy) == event.getData(MPSCommonDataKeys.NODE);
       }
     }));
   }
@@ -87,12 +87,12 @@ public class NewRootMappingRule_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    List<SNode> configs = SModelOperations.roots(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)), CONCEPTS.MappingConfiguration$rB);
+    List<SNode> configs = SModelOperations.roots(SNodeOperations.getModel(event.getData(MPSCommonDataKeys.NODE)), CONCEPTS.MappingConfiguration$7j);
     if (ListSequence.fromList(configs).count() > 1) {
-      final String virtualPackage = SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.virtualPackage$dz_3);
+      final String virtualPackage = SPropertyOperations.getString(event.getData(MPSCommonDataKeys.NODE), PROPS.virtualPackage$EkXl);
       Iterable<SNode> sameVPackConfigs = ListSequence.fromList(configs).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return Objects.equals(virtualPackage, SPropertyOperations.getString(it, PROPS.virtualPackage$dz_3));
+          return Objects.equals(virtualPackage, SPropertyOperations.getString(it, PROPS.virtualPackage$EkXl));
         }
       });
       if (Sequence.fromIterable(sameVPackConfigs).isNotEmpty()) {
@@ -103,26 +103,26 @@ public class NewRootMappingRule_Action extends BaseAction {
       // TODO: let user to choose mapping config? 
     }
     //  add new rule 
-    SNode rule = SNodeFactoryOperations.addNewChild(ListSequence.fromList(configs).first(), LINKS.rootMappingRule$PgVq, null);
-    SLinkOperations.setTarget(rule, LINKS.applicableConcept$ksFC, SLinkOperations.getTarget(AttributeOperations.getAttribute(event.getData(MPSCommonDataKeys.NODE), new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$u8)), LINKS.applicableConcept$oE3h));
-    SLinkOperations.setTarget(rule, LINKS.template$YDaQ, event.getData(MPSCommonDataKeys.NODE));
+    SNode rule = SNodeFactoryOperations.addNewChild(ListSequence.fromList(configs).first(), LINKS.rootMappingRule$edB6, null);
+    SLinkOperations.setTarget(rule, LINKS.applicableConcept$Hpnk, SLinkOperations.getTarget(AttributeOperations.getAttribute(event.getData(MPSCommonDataKeys.NODE), new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O)), LINKS.applicableConcept$LAIX));
+    SLinkOperations.setTarget(rule, LINKS.template$n_Qy, event.getData(MPSCommonDataKeys.NODE));
     //  open in editor 
     NavigationSupport.getInstance().openNode(event.getData(MPSCommonDataKeys.MPS_PROJECT), rule, true, true);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RootTemplateAnnotation$u8 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation");
-    /*package*/ static final SConcept MappingConfiguration$rB = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration");
+    /*package*/ static final SConcept RootTemplateAnnotation$9O = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, "jetbrains.mps.lang.generator.structure.RootTemplateAnnotation");
+    /*package*/ static final SConcept MappingConfiguration$7j = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink applicableConcept$oE3h = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, 0x11017255ccfL, "applicableConcept");
-    /*package*/ static final SContainmentLink rootMappingRule$PgVq = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x10fd54c33e7L, "rootMappingRule");
-    /*package*/ static final SReferenceLink template$YDaQ = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fd54746dbL, 0x10fd54746ddL, "template");
-    /*package*/ static final SReferenceLink applicableConcept$ksFC = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept");
+    /*package*/ static final SReferenceLink applicableConcept$LAIX = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11017244494L, 0x11017255ccfL, "applicableConcept");
+    /*package*/ static final SContainmentLink rootMappingRule$edB6 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x10fd54c33e7L, "rootMappingRule");
+    /*package*/ static final SReferenceLink template$n_Qy = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fd54746dbL, 0x10fd54746ddL, "template");
+    /*package*/ static final SReferenceLink applicableConcept$Hpnk = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc0b6e730L, "applicableConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty virtualPackage$dz_3 = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
+    /*package*/ static final SProperty virtualPackage$EkXl = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x115eca8579fL, "virtualPackage");
   }
 }

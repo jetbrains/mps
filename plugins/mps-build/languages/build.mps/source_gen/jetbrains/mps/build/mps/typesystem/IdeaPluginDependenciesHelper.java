@@ -35,18 +35,18 @@ import org.jetbrains.mps.openapi.language.SProperty;
       return;
     }
 
-    visible.addAll(Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(plugin, LINKS.content$EGEh), CONCEPTS.BuildMps_IdeaPluginModule$ZA), LINKS.target$GZN0)).toListSequence());
-    visible.addAll(Sequence.fromIterable(SLinkOperations.collectMany(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(plugin, LINKS.content$EGEh), CONCEPTS.BuildMps_IdeaPluginGroup$9v), LINKS.group$V$Jw), LINKS.modules$g9q0)).toListSequence());
-    for (SNode dep : ListSequence.fromList(SLinkOperations.getChildren(plugin, LINKS.dependencies$EoHW))) {
-      collectVisible(SLinkOperations.getTarget(dep, LINKS.target$Hl9U), seen);
+    visible.addAll(Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(plugin, LINKS.content$9T6D), CONCEPTS.BuildMps_IdeaPluginModule$rY), LINKS.target$ccfo)).toListSequence());
+    visible.addAll(Sequence.fromIterable(SLinkOperations.collectMany(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(plugin, LINKS.content$9T6D), CONCEPTS.BuildMps_IdeaPluginGroup$_R), LINKS.group$qLbS), LINKS.modules$JlQo)).toListSequence());
+    for (SNode dep : ListSequence.fromList(SLinkOperations.getChildren(plugin, LINKS.dependencies$9_ak))) {
+      collectVisible(SLinkOperations.getTarget(dep, LINKS.target$cxAi), seen);
     }
   }
   public Iterable<SNode> getUnsatisfiedDependencies(SNode module) {
     if (visible == null) {
       buildVisible();
     }
-    if (SNodeOperations.isInstanceOf(module, CONCEPTS.BuildMps_Module$j$)) {
-      MPSModulesClosure runtimeDependencies = new MPSModulesClosure(SNodeOperations.cast(module, CONCEPTS.BuildMps_Module$j$), new MPSModulesClosure.ModuleDependenciesOptions()).runtimeClosure();
+    if (SNodeOperations.isInstanceOf(module, CONCEPTS.BuildMps_Module$JW)) {
+      MPSModulesClosure runtimeDependencies = new MPSModulesClosure(SNodeOperations.cast(module, CONCEPTS.BuildMps_Module$JW), new MPSModulesClosure.ModuleDependenciesOptions()).runtimeClosure();
       Iterable<SNode> seq = Sequence.fromIterable(runtimeDependencies.getAllModules()).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return !(visible.contains(it));
@@ -59,30 +59,30 @@ import org.jetbrains.mps.openapi.language.SProperty;
   public void printUnsatisfiedDependencies(StringBuilder sb, SNode module, boolean includeModuleName) {
     for (SNode uns : getUnsatisfiedDependencies(module)) {
       if (includeModuleName) {
-        sb.append("unsatisfied dependency: module " + SPropertyOperations.getString(module, PROPS.name$lA7v) + " requires " + SPropertyOperations.getString(uns, PROPS.name$lA7v));
+        sb.append("unsatisfied dependency: module " + SPropertyOperations.getString(module, PROPS.name$MnvL) + " requires " + SPropertyOperations.getString(uns, PROPS.name$MnvL));
       } else {
-        sb.append("unsatisfied dependency on " + SPropertyOperations.getString(uns, PROPS.name$lA7v));
+        sb.append("unsatisfied dependency on " + SPropertyOperations.getString(uns, PROPS.name$MnvL));
       }
       sb.append('\n');
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink content$EGEh = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bbeaL, "content");
-    /*package*/ static final SReferenceLink target$GZN0 = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, 0x5b7be37b4de9bbddL, "target");
-    /*package*/ static final SReferenceLink group$V$Jw = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, 0x5b7be37b4deb1202L, "group");
-    /*package*/ static final SContainmentLink modules$g9q0 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, 0x14d3fb6fb843ebdeL, "modules");
-    /*package*/ static final SReferenceLink target$Hl9U = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbd3L, 0x5b7be37b4de9bbfaL, "target");
-    /*package*/ static final SContainmentLink dependencies$EoHW = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bbd4L, "dependencies");
+    /*package*/ static final SContainmentLink content$9T6D = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bbeaL, "content");
+    /*package*/ static final SReferenceLink target$ccfo = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, 0x5b7be37b4de9bbddL, "target");
+    /*package*/ static final SReferenceLink group$qLbS = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, 0x5b7be37b4deb1202L, "group");
+    /*package*/ static final SContainmentLink modules$JlQo = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, 0x14d3fb6fb843ebdeL, "modules");
+    /*package*/ static final SReferenceLink target$cxAi = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbd3L, 0x5b7be37b4de9bbfaL, "target");
+    /*package*/ static final SContainmentLink dependencies$9_ak = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bbd4L, "dependencies");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildMps_IdeaPluginModule$ZA = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginModule");
-    /*package*/ static final SConcept BuildMps_IdeaPluginGroup$9v = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginGroup");
-    /*package*/ static final SConcept BuildMps_Module$j$ = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, "jetbrains.mps.build.mps.structure.BuildMps_Module");
+    /*package*/ static final SConcept BuildMps_IdeaPluginModule$rY = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginModule");
+    /*package*/ static final SConcept BuildMps_IdeaPluginGroup$_R = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginGroup");
+    /*package*/ static final SConcept BuildMps_Module$JW = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, "jetbrains.mps.build.mps.structure.BuildMps_Module");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

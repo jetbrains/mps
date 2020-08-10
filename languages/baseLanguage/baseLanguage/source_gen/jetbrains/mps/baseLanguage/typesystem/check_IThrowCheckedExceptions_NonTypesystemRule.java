@@ -23,7 +23,7 @@ public class check_IThrowCheckedExceptions_NonTypesystemRule extends AbstractNon
     RulesFunctions_BaseLanguage.check(typeCheckingContext, throwables, iThrowCheckedExceptions);
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.IThrowCheckedExceptions$nJ;
+    return CONCEPTS.IThrowCheckedExceptions$Ox;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -33,6 +33,6 @@ public class check_IThrowCheckedExceptions_NonTypesystemRule extends AbstractNon
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IThrowCheckedExceptions$nJ = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6713892ded29eda4L, "jetbrains.mps.baseLanguage.structure.IThrowCheckedExceptions");
+    /*package*/ static final SInterfaceConcept IThrowCheckedExceptions$Ox = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6713892ded29eda4L, "jetbrains.mps.baseLanguage.structure.IThrowCheckedExceptions");
   }
 }

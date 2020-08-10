@@ -20,10 +20,10 @@
       <node id="2716118816011484399" at="50,44,51,81" concept="6" />
       <node id="2716118816011509914" at="55,24,56,121" concept="1" />
       <node id="2716118816011484413" at="56,121,57,24" concept="6" />
-      <node id="4310380201428821519" at="61,0,62,0" concept="7" trace="TypedDefReference$7f" />
-      <node id="4310380201428821519" at="62,0,63,0" concept="7" trace="DefForRule$Hm" />
-      <node id="4310380201428821519" at="66,0,67,0" concept="7" trace="declaration$VTET" />
-      <node id="4310380201428821519" at="67,0,68,0" concept="7" trace="condition$KuIg" />
+      <node id="4310380201428821519" at="61,0,62,0" concept="7" trace="TypedDefReference$yw" />
+      <node id="4310380201428821519" at="62,0,63,0" concept="7" trace="DefForRule$_k" />
+      <node id="4310380201428821519" at="66,0,67,0" concept="7" trace="declaration$xU6a" />
+      <node id="4310380201428821519" at="67,0,68,0" concept="7" trace="condition$h$Ae" />
       <node id="4310380201428865954" at="27,0,29,0" concept="0" trace="RequiredDefsCalculator#()V" />
       <node id="2716118816011490648" at="35,48,38,5" concept="3" />
       <node id="2716118816011484397" at="50,0,53,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />

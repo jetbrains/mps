@@ -27,7 +27,7 @@
       <node id="5386558680326206553" at="25,5,26,45" concept="5" />
       <node id="5386558680326206553" at="26,45,27,202" concept="5" />
       <node id="5386558680326206553" at="27,202,28,331" concept="2" />
-      <node id="5386558680326206395" at="31,50,32,45" concept="6" />
+      <node id="5386558680326206395" at="31,50,32,46" concept="6" />
       <node id="5386558680326206395" at="34,68,35,102" concept="6" />
       <node id="5386558680326206395" at="37,30,38,17" concept="6" />
       <node id="5386558680326206577" at="40,83,41,63" concept="5" />
@@ -42,8 +42,8 @@
       <node id="5386558680326206577" at="49,228,50,456" concept="2" />
       <node id="5386558680326206577" at="50,456,51,167" concept="2" />
       <node id="5386558680326206577" at="51,167,52,24" concept="6" />
-      <node id="5386558680326206395" at="56,0,57,0" concept="7" trace="cncpt$D7hX" />
-      <node id="5386558680326206395" at="60,0,61,0" concept="7" trace="AspectMethodDescriptor$X" />
+      <node id="5386558680326206395" at="56,0,57,0" concept="7" trace="cncpt$oq4g" />
+      <node id="5386558680326206395" at="60,0,61,0" concept="7" trace="AspectMethodDescriptor$Ng" />
       <node id="5386558680326206395" at="22,0,24,0" concept="1" trace="typeof_AspectMethodDescriptor_InferenceRule#()V" />
       <node id="5386558680326206395" at="31,0,34,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="5386558680326206395" at="34,0,37,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -52,7 +52,7 @@
       <node id="5386558680326206395" at="24,0,31,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <node id="5386558680326206577" at="40,0,54,0" concept="8" trace="_quotation_createNode_q679gm_a1a0c0a0b#(Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="5386558680326206395" at="22,56,22,56" />
-      <scope id="5386558680326206395" at="31,50,32,45" />
+      <scope id="5386558680326206395" at="31,50,32,46" />
       <scope id="5386558680326206395" at="34,68,35,102" />
       <scope id="5386558680326206395" at="37,30,38,17" />
       <scope id="5386558680326206395" at="22,0,24,0" />
@@ -101,10 +101,10 @@
       <node id="6422667311313318807" at="34,50,35,50" concept="6" />
       <node id="6422667311313318807" at="37,68,38,102" concept="6" />
       <node id="6422667311313318807" at="40,30,41,17" concept="6" />
-      <node id="6422667311313318807" at="45,0,46,0" concept="7" trace="implTemplate$gidE" />
-      <node id="6422667311313318807" at="49,0,50,0" concept="7" trace="PropertyMacro$wt" />
-      <node id="6422667311313318807" at="50,0,51,0" concept="7" trace="GenerationDescriptor_Class$73" />
-      <node id="6422667311313318807" at="54,0,55,0" concept="7" trace="name$lA7v" />
+      <node id="6422667311313318807" at="45,0,46,0" concept="7" trace="implTemplate$Z$ZX" />
+      <node id="6422667311313318807" at="49,0,50,0" concept="7" trace="PropertyMacro$c9" />
+      <node id="6422667311313318807" at="50,0,51,0" concept="7" trace="GenerationDescriptor_Class$Tm" />
+      <node id="6422667311313318807" at="54,0,55,0" concept="7" trace="name$MnvL" />
       <node id="6422667311313318807" at="23,0,25,0" concept="1" trace="check_GenerationDescriptor_Class_NonTypesystemRule#()V" />
       <node id="6422667311313324014" at="25,114,28,5" concept="3" />
       <node id="6422667311313318807" at="34,0,37,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />

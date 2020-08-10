@@ -382,11 +382,11 @@
       <node id="779128492854765202" at="38,58,39,213" concept="11" />
       <node id="779128492854780780" at="42,54,43,120" concept="5" />
       <node id="779128492854791669" at="46,63,47,171" concept="11" />
-      <node id="779128492854797653" at="50,66,51,174" concept="11" />
-      <node id="779128492854173535" at="55,0,56,0" concept="14" trace="cellId$BOAx" />
-      <node id="779128492854173535" at="56,0,57,0" concept="14" trace="side$NJMt" />
-      <node id="779128492854173535" at="57,0,58,0" concept="14" trace="anchorTag$z$pX" />
-      <node id="779128492854173535" at="61,0,62,0" concept="14" trace="SideTransformInfo$l0" />
+      <node id="779128492854797653" at="50,66,51,173" concept="11" />
+      <node id="779128492854173535" at="55,0,56,0" concept="14" trace="cellId$4_YN" />
+      <node id="779128492854173535" at="56,0,57,0" concept="14" trace="side$gxaJ" />
+      <node id="779128492854173535" at="57,0,58,0" concept="14" trace="anchorTag$lMf" />
+      <node id="779128492854173535" at="61,0,62,0" concept="14" trace="SideTransformInfo$Hi" />
       <node id="329454058123723309" at="19,0,22,0" concept="15" trace="addRightTransformInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)V" />
       <node id="329454058123722577" at="23,0,26,0" concept="15" trace="addLeftTransformInfo#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)V" />
       <node id="779128492854815775" at="34,0,37,0" concept="15" trace="hasRightTransformInfo#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -401,7 +401,7 @@
       <scope id="779128492854756227" at="38,58,39,213" />
       <scope id="779128492854778748" at="42,54,43,120" />
       <scope id="779128492854784030" at="46,63,47,171" />
-      <scope id="779128492854793988" at="50,66,51,174" />
+      <scope id="779128492854793988" at="50,66,51,173" />
       <scope id="329454058123723309" at="19,0,22,0">
         <var name="cellId" id="329454058123723320" />
         <var name="node" id="329454058123723317" />
@@ -836,8 +836,8 @@
       <node id="2200986774883573299" at="331,7,332,76" concept="11" />
       <node id="8201881142993420812" at="335,73,336,217" concept="11" />
       <node id="8201881142993420821" at="337,5,338,37" concept="11" />
-      <node id="8201881142991326455" at="342,0,343,0" concept="14" trace="smodelAttribute$jXFL" />
-      <node id="8201881142991326455" at="346,0,347,0" concept="14" trace="ChildAttribute$XQ" />
+      <node id="8201881142991326455" at="342,0,343,0" concept="14" trace="smodelAttribute$KJ43" />
+      <node id="8201881142991326455" at="346,0,347,0" concept="14" trace="ChildAttribute$m8" />
       <node id="8201881142991337982" at="40,0,42,0" concept="6" trace="myNodesToMove" />
       <node id="8201881142991337997" at="42,0,44,0" concept="6" trace="myEditorContext" />
       <node id="8201881142993446427" at="194,12,196,7" concept="1" />

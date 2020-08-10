@@ -26,7 +26,7 @@ public class typeof_SplitOperation_InferenceRule extends AbstractInferenceRule_R
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SplitOperation$qj;
+    return CONCEPTS.SplitOperation$37;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -46,6 +46,6 @@ public class typeof_SplitOperation_InferenceRule extends AbstractInferenceRule_R
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SplitOperation$qj = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11c942ab86bL, "jetbrains.mps.baseLanguage.regexp.structure.SplitOperation");
+    /*package*/ static final SConcept SplitOperation$37 = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11c942ab86bL, "jetbrains.mps.baseLanguage.regexp.structure.SplitOperation");
   }
 }

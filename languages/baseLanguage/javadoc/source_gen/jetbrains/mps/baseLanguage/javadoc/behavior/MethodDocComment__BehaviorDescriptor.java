@@ -33,7 +33,7 @@ public final class MethodDocComment__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static boolean isTagSectionEmpty_id7lVCwDcz6WN(@NotNull SNode __thisNode__) {
-    return ((boolean) BaseDocComment__BehaviorDescriptor.isTagSectionEmpty_id7lVCwDcz6WN.invokeSuper(__thisNode__, CONCEPTS.MethodDocComment$Vx)) && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.param$ruNO)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.throwsTag$UuyH)).isEmpty() && (SLinkOperations.getTarget(__thisNode__, LINKS.return$UFdz) == null);
+    return ((boolean) BaseDocComment__BehaviorDescriptor.isTagSectionEmpty_id7lVCwDcz6WN.invokeSuper(__thisNode__, CONCEPTS.MethodDocComment$HI)) && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.param$LRA1)).isEmpty() && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.throwsTag$gRkU)).isEmpty() && (SLinkOperations.getTarget(__thisNode__, LINKS.return$h3ZK) == null);
   }
 
   /*package*/ MethodDocComment__BehaviorDescriptor() {
@@ -83,12 +83,12 @@ public final class MethodDocComment__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink return$UFdz = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x514c0f6870509198L, "return");
-    /*package*/ static final SContainmentLink param$ruNO = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x757ba20a4c90eaf9L, "param");
-    /*package*/ static final SContainmentLink throwsTag$UuyH = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x514c0f687050918cL, "throwsTag");
+    /*package*/ static final SContainmentLink return$h3ZK = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x514c0f6870509198L, "return");
+    /*package*/ static final SContainmentLink param$LRA1 = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x757ba20a4c90eaf9L, "param");
+    /*package*/ static final SContainmentLink throwsTag$gRkU = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, 0x514c0f687050918cL, "throwsTag");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MethodDocComment$Vx = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, "jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment");
+    /*package*/ static final SConcept MethodDocComment$HI = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7faeeb34L, "jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment");
   }
 }

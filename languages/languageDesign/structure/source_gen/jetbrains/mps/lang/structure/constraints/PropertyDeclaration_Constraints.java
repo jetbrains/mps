@@ -18,12 +18,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class PropertyDeclaration_Constraints extends BaseConstraintsDescriptor {
   public PropertyDeclaration_Constraints() {
-    super(CONCEPTS.PropertyDeclaration$c5);
+    super(CONCEPTS.PropertyDeclaration$1S);
   }
 
   public static class PropertyId_Property extends BasePropertyConstraintsDescriptor {
     public PropertyId_Property(ConstraintsDescriptor container) {
-      super(PROPS.propertyId$TXS7, container);
+      super(PROPS.propertyId$m5HU, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -53,15 +53,15 @@ public class PropertyDeclaration_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.propertyId$TXS7, new PropertyId_Property(this));
+    properties.put(PROPS.propertyId$m5HU, new PropertyId_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyDeclaration$c5 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
+    /*package*/ static final SConcept PropertyDeclaration$1S = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty propertyId$TXS7 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0x35a81382d82a4d9L, "propertyId");
+    /*package*/ static final SProperty propertyId$m5HU = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL, 0x35a81382d82a4d9L, "propertyId");
   }
 }

@@ -35,11 +35,11 @@ public class NameIsActualInModulePointer_NonTypesystemRule extends AbstractNonTy
       return;
     }
     final String actualName = resolved.getModuleName();
-    if (Objects.equals(SPropertyOperations.getString(ptr, PROPS.moduleName$XstC), actualName)) {
+    if (Objects.equals(SPropertyOperations.getString(ptr, PROPS.moduleName$RP9b), actualName)) {
       return;
     }
     {
-      final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.moduleName$XstC);
+      final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.moduleName$RP9b);
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(ptr, String.format("Module name doesn't reflect actual value %s", actualName), "r:66a90408-763b-417f-b164-4efaf06432ea(jetbrains.mps.lang.modelapi.typesystem)", "2510235753679592683", null, errorTarget);
       {
         BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.lang.modelapi.typesystem.UpdateModulePointerName_QuickFix", "2510235753679597037", false);
@@ -49,7 +49,7 @@ public class NameIsActualInModulePointer_NonTypesystemRule extends AbstractNonTy
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ModulePointer$rJ;
+    return CONCEPTS.ModulePointer$7i;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -59,10 +59,10 @@ public class NameIsActualInModulePointer_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty moduleName$XstC = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, 0x19dc9460645ae969L, "moduleName");
+    /*package*/ static final SProperty moduleName$RP9b = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, 0x19dc9460645ae969L, "moduleName");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ModulePointer$rJ = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, "jetbrains.mps.lang.modelapi.structure.ModulePointer");
+    /*package*/ static final SConcept ModulePointer$7i = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, "jetbrains.mps.lang.modelapi.structure.ModulePointer");
   }
 }

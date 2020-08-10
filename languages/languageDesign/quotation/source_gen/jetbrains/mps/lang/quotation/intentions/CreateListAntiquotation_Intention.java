@@ -57,17 +57,17 @@ public final class CreateListAntiquotation_Intention extends AbstractIntentionDe
       if (contextNode == null) {
         return;
       }
-      if (SNodeOperations.isInstanceOf(contextNode, CONCEPTS.ListAntiquotation$Xc)) {
+      if (SNodeOperations.isInstanceOf(contextNode, CONCEPTS.ListAntiquotation$XK)) {
         SNode attributedNode = SNodeOperations.getParent(contextNode);
         assert attributedNode != null;
-        AttributeOperations.setAttribute(attributedNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$Xc), null);
+        AttributeOperations.setAttribute(attributedNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK), null);
         return;
       }
       SModel model = SNodeOperations.getModel(contextNode);
-      if ((AttributeOperations.getAttribute(contextNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$Xc)) != null)) {
-        AttributeOperations.setAttribute(contextNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$Xc), null);
+      if ((AttributeOperations.getAttribute(contextNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK)) != null)) {
+        AttributeOperations.setAttribute(contextNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK), null);
       } else {
-        SNode listAntiquotation = SNodeFactoryOperations.setNewAttribute(contextNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$Xc), CONCEPTS.ListAntiquotation$Xc);
+        SNode listAntiquotation = SNodeFactoryOperations.setNewAttribute(contextNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK), CONCEPTS.ListAntiquotation$XK);
         editorContext.selectWRTFocusPolicy(listAntiquotation);
       }
     }
@@ -78,6 +78,6 @@ public final class CreateListAntiquotation_Intention extends AbstractIntentionDe
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ListAntiquotation$Xc = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c10465eL, "jetbrains.mps.lang.quotation.structure.ListAntiquotation");
+    /*package*/ static final SConcept ListAntiquotation$XK = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c10465eL, "jetbrains.mps.lang.quotation.structure.ListAntiquotation");
   }
 }

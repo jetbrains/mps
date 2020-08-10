@@ -40,15 +40,15 @@ public final class SubstituteTypeRule__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static void setBaseConcept_id5r_35Ihc58c(@NotNull SNode __thisNode__, SNode baseConcept) {
-    IConceptAspect__BehaviorDescriptor.setBaseConcept_id5r_35Ihc58c.invokeSuper(__thisNode__, CONCEPTS.SubstituteTypeRule$Ws, baseConcept);
-    SPropertyOperations.set(__thisNode__, PROPS.name$lA7v, "substituteType_" + SPropertyOperations.getString(baseConcept, PROPS.name$lA7v));
+    IConceptAspect__BehaviorDescriptor.setBaseConcept_id5r_35Ihc58c.invokeSuper(__thisNode__, CONCEPTS.SubstituteTypeRule$ei, baseConcept);
+    SPropertyOperations.set(__thisNode__, PROPS.name$MnvL, "substituteType_" + SPropertyOperations.getString(baseConcept, PROPS.name$MnvL));
   }
   @Nullable
   /*package*/ static SNode getExpectedRetType_idi2fhBNC(@NotNull SNode __thisNode__) {
     return _quotation_createNode_cirqvk_a0a1();
   }
   /*package*/ static SNode getBody_idi2fhZ_m(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.body$zEuN);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.body$WwKD);
   }
   /*package*/ static List<SNode> getThrowableTypes_id5op8ooRkkc7(@NotNull SNode __thisNode__) {
     return null;
@@ -114,14 +114,14 @@ public final class SubstituteTypeRule__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SubstituteTypeRule$Ws = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x58e32a0782bca52aL, "jetbrains.mps.lang.typesystem.structure.SubstituteTypeRule");
+    /*package*/ static final SConcept SubstituteTypeRule$ei = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x58e32a0782bca52aL, "jetbrains.mps.lang.typesystem.structure.SubstituteTypeRule");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$zEuN = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x58e32a0782bca52aL, 0x65a1a729b445aec0L, "body");
+    /*package*/ static final SContainmentLink body$WwKD = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x58e32a0782bca52aL, 0x65a1a729b445aec0L, "body");
   }
 }

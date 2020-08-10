@@ -16,7 +16,7 @@ public class InlineFieldReferenceOperationRefactoring extends InlineFieldRefacto
   private SNode myReference;
 
   public InlineFieldReferenceOperationRefactoring(SNode node) {
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.fieldDeclaration$229u), CONCEPTS.VariableDeclaration$xe))) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.fieldDeclaration$H7Ag), CONCEPTS.VariableDeclaration$Y0))) {
       throw new IllegalArgumentException();
     }
 
@@ -25,21 +25,21 @@ public class InlineFieldReferenceOperationRefactoring extends InlineFieldRefacto
 
   @Override
   public SNode doRefactoring() {
-    SNode variable = SLinkOperations.getTarget(this.myReference, LINKS.fieldDeclaration$229u);
-    SNode nodeToSelect = SNodeOperations.copyNode(SLinkOperations.getTarget(variable, LINKS.initializer$no3R));
-    SNodeOperations.replaceWithAnother(SNodeOperations.getNodeAncestor(this.myReference, CONCEPTS.DotExpression$6a, false, false), nodeToSelect);
+    SNode variable = SLinkOperations.getTarget(this.myReference, LINKS.fieldDeclaration$H7Ag);
+    SNode nodeToSelect = SNodeOperations.copyNode(SLinkOperations.getTarget(variable, LINKS.initializer$2twD));
+    SNodeOperations.replaceWithAnother(SNodeOperations.getNodeAncestor(this.myReference, CONCEPTS.DotExpression$yW, false, false), nodeToSelect);
     InlinePrecedenceUtil.parenthesiseIfNecessary(nodeToSelect);
     this.optimizeDeclaration(variable);
     return nodeToSelect;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink fieldDeclaration$229u = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
-    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SReferenceLink fieldDeclaration$H7Ag = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
+    /*package*/ static final SContainmentLink initializer$2twD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VariableDeclaration$xe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept VariableDeclaration$Y0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
   }
 }

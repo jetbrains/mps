@@ -17,7 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CellKeyMapDeclaration_Constraints extends BaseConstraintsDescriptor {
   public CellKeyMapDeclaration_Constraints() {
-    super(CONCEPTS.CellKeyMapDeclaration$T9);
+    super(CONCEPTS.CellKeyMapDeclaration$4K);
   }
 
   @Override
@@ -41,6 +41,6 @@ public class CellKeyMapDeclaration_Constraints extends BaseConstraintsDescriptor
   private static final SNodePointer canBeRootBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590298(jetbrains.mps.lang.editor.constraints)", "1227090234635");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellKeyMapDeclaration$T9 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfbc216b31bL, "jetbrains.mps.lang.editor.structure.CellKeyMapDeclaration");
+    /*package*/ static final SConcept CellKeyMapDeclaration$4K = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfbc216b31bL, "jetbrains.mps.lang.editor.structure.CellKeyMapDeclaration");
   }
 }

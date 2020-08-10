@@ -22,7 +22,7 @@ public class ActionMap_DefinesDeleteImportsBackspace {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SPropertyOperations.assign(node, PROPS.result$bSym, "DELETE");
+        SPropertyOperations.assign(node, PROPS.result$Yuiz, "DELETE");
       }
 
     };
@@ -72,6 +72,6 @@ public class ActionMap_DefinesDeleteImportsBackspace {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty result$bSym = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x5a72f9ab5123191bL, 0x5a72f9ab51231933L, "result");
+    /*package*/ static final SProperty result$Yuiz = MetaAdapterFactory.getProperty(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x5a72f9ab5123191bL, 0x5a72f9ab51231933L, "result");
   }
 }

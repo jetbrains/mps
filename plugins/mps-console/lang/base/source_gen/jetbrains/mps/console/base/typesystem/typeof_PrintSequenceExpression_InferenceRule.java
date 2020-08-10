@@ -22,13 +22,13 @@ public class typeof_PrintSequenceExpression_InferenceRule extends AbstractInfere
   }
   public void applyRule(final SNode printSequenceExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(printSequenceExpression, LINKS.object$UNYq);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(printSequenceExpression, LINKS.object$jGCj);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:ae7d1f20-2cfe-46ef-a88a-193353a8b62b(jetbrains.mps.console.base.typesystem)", "3856122757887347236", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:ae7d1f20-2cfe-46ef-a88a-193353a8b62b(jetbrains.mps.console.base.typesystem)", "3856122757887347250", true), (SNode) _quotation_createNode_u62o5j_a1a0c0a0b(), false, true, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.PrintSequenceExpression$7d;
+    return CONCEPTS.PrintSequenceExpression$L6;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -69,10 +69,10 @@ public class typeof_PrintSequenceExpression_InferenceRule extends AbstractInfere
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink object$UNYq = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6c8954f469a7c420L, 0x7417cca3eb1ff761L, "object");
+    /*package*/ static final SContainmentLink object$jGCj = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6c8954f469a7c420L, 0x7417cca3eb1ff761L, "object");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PrintSequenceExpression$7d = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6979f0787b7db64fL, "jetbrains.mps.console.base.structure.PrintSequenceExpression");
+    /*package*/ static final SConcept PrintSequenceExpression$L6 = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x6979f0787b7db64fL, "jetbrains.mps.console.base.structure.PrintSequenceExpression");
   }
 }

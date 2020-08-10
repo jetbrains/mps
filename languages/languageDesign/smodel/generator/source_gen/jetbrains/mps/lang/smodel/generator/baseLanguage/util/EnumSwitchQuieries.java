@@ -15,43 +15,43 @@ public class EnumSwitchQuieries {
 
   public static boolean isInExpression(SNode body) {
     SNode enclosing = enclosing(body);
-    return SNodeOperations.isInstanceOf(enclosing, CONCEPTS.ExpressionStatement$nm) && !((boolean) ExpressionStatement__BehaviorDescriptor.canServeAsReturn_idi2fkDTg.invoke(SNodeOperations.cast(enclosing, CONCEPTS.ExpressionStatement$nm)));
+    return SNodeOperations.isInstanceOf(enclosing, CONCEPTS.ExpressionStatement$O8) && !((boolean) ExpressionStatement__BehaviorDescriptor.canServeAsReturn_idi2fkDTg.invoke(SNodeOperations.cast(enclosing, CONCEPTS.ExpressionStatement$O8)));
   }
 
   public static boolean isInReturn(SNode body) {
     SNode enclosing = enclosing(body);
-    return SNodeOperations.isInstanceOf(enclosing, CONCEPTS.ReturnStatement$SF) || (boolean) ExpressionStatement__BehaviorDescriptor.canServeAsReturn_idi2fkDTg.invoke(SNodeOperations.as(enclosing, CONCEPTS.ExpressionStatement$nm));
+    return SNodeOperations.isInstanceOf(enclosing, CONCEPTS.ReturnStatement$lt) || (boolean) ExpressionStatement__BehaviorDescriptor.canServeAsReturn_idi2fkDTg.invoke(SNodeOperations.as(enclosing, CONCEPTS.ExpressionStatement$O8));
   }
 
   public static boolean isInAssignment(SNode body) {
     SNode enclosing = enclosing(body);
-    return SNodeOperations.isInstanceOf(enclosing, CONCEPTS.AssignmentExpression$rS);
+    return SNodeOperations.isInstanceOf(enclosing, CONCEPTS.AssignmentExpression$SE);
   }
 
   public static boolean isInVarDeclaration(SNode body) {
     SNode enclosing = enclosing(body);
-    return SNodeOperations.isInstanceOf(enclosing, CONCEPTS.LocalVariableDeclaration$Bf);
+    return SNodeOperations.isInstanceOf(enclosing, CONCEPTS.LocalVariableDeclaration$41);
   }
 
   private static SNode enclosing(SNode body) {
-    return SNodeOperations.getParent(SNodeOperations.getNodeAncestor(body, CONCEPTS.EnumSwitchExpression$R0, false, false));
+    return SNodeOperations.getParent(SNodeOperations.getNodeAncestor(body, CONCEPTS.EnumSwitchExpression$Sw, false, false));
   }
 
   public static boolean controlflowPreserved(SNode body) {
-    SNode lastStatement = StatementList__BehaviorDescriptor.getLastStatement_id28aPEVv8l7T.invoke(SLinkOperations.getTarget(body, LINKS.statementList$nvB0));
-    return !(SNodeOperations.isInstanceOf(lastStatement, CONCEPTS.ThrowStatement$yK)) && !(SNodeOperations.isInstanceOf(lastStatement, CONCEPTS.ReturnStatement$SF));
+    SNode lastStatement = StatementList__BehaviorDescriptor.getLastStatement_id28aPEVv8l7T.invoke(SLinkOperations.getTarget(body, LINKS.statementList$VSCw));
+    return !(SNodeOperations.isInstanceOf(lastStatement, CONCEPTS.ThrowStatement$Zy)) && !(SNodeOperations.isInstanceOf(lastStatement, CONCEPTS.ReturnStatement$lt));
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ExpressionStatement$nm = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
-    /*package*/ static final SConcept ReturnStatement$SF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement");
-    /*package*/ static final SConcept AssignmentExpression$rS = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression");
-    /*package*/ static final SConcept LocalVariableDeclaration$Bf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
-    /*package*/ static final SConcept EnumSwitchExpression$R0 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, "jetbrains.mps.lang.smodel.structure.EnumSwitchExpression");
-    /*package*/ static final SConcept ThrowStatement$yK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, "jetbrains.mps.baseLanguage.structure.ThrowStatement");
+    /*package*/ static final SConcept ExpressionStatement$O8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
+    /*package*/ static final SConcept ReturnStatement$lt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement");
+    /*package*/ static final SConcept AssignmentExpression$SE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression");
+    /*package*/ static final SConcept LocalVariableDeclaration$41 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
+    /*package*/ static final SConcept EnumSwitchExpression$Sw = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1d75dfL, "jetbrains.mps.lang.smodel.structure.EnumSwitchExpression");
+    /*package*/ static final SConcept ThrowStatement$Zy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, "jetbrains.mps.baseLanguage.structure.ThrowStatement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statementList$nvB0 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdcc9L, 0x220ad6aedf1fdccaL, "statementList");
+    /*package*/ static final SContainmentLink statementList$VSCw = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x220ad6aedf1fdcc9L, 0x220ad6aedf1fdccaL, "statementList");
   }
 }

@@ -38,20 +38,20 @@ public final class CellMenuPart_ReplaceChild_Group_Query__BehaviorDescriptor ext
   }
 
   /*package*/ static SNode getExpectedReturnType_idhEwIGRD(@NotNull SNode __thisNode__) {
-    SNode hostMenuPart = SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.CellMenuPart_ReplaceChild_Group$Wm);
-    SNode parameterObjectType = SLinkOperations.getTarget(hostMenuPart, LINKS.parameterObjectType$vdDH);
+    SNode hostMenuPart = SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.CellMenuPart_ReplaceChild_Group$7X);
+    SNode parameterObjectType = SLinkOperations.getTarget(hostMenuPart, LINKS.parameterObjectType$zvPk);
     if (parameterObjectType == null) {
       return _quotation_createNode_ygqhl6_a0a2a0();
     }
     return SNodeOperations.copyNode(_quotation_createNode_ygqhl6_a0d0a(parameterObjectType));
   }
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
-    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, CONCEPTS.ConceptFunction$Tt);
-    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_operationContext$Gv);
-    ListSequence.fromList(result).addElement(CONCEPTS.CellMenuPart_Abstract_editedNode$AC);
-    ListSequence.fromList(result).addElement(CONCEPTS.CellMenuPart_ReplaceChild_currentChild$Bk);
-    ListSequence.fromList(result).addElement(CONCEPTS.CellMenuPart_ReplaceChild_defaultChildConcept$X3);
-    ListSequence.fromList(result).addElement(CONCEPTS.CellMenuPart_ReplaceChild_defaultConceptOfChild$jv);
+    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, CONCEPTS.ConceptFunction$mf);
+    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_operationContext$HV);
+    ListSequence.fromList(result).addElement(CONCEPTS.CellMenuPart_Abstract_editedNode$Mf);
+    ListSequence.fromList(result).addElement(CONCEPTS.CellMenuPart_ReplaceChild_currentChild$MV);
+    ListSequence.fromList(result).addElement(CONCEPTS.CellMenuPart_ReplaceChild_defaultChildConcept$8E);
+    ListSequence.fromList(result).addElement(CONCEPTS.CellMenuPart_ReplaceChild_defaultConceptOfChild$v6);
     return result;
   }
 
@@ -124,16 +124,16 @@ public final class CellMenuPart_ReplaceChild_Group_Query__BehaviorDescriptor ext
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellMenuPart_ReplaceChild_Group$Wm = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f4f87862dL, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReplaceChild_Group");
-    /*package*/ static final SConcept ConceptFunction$Tt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
-    /*package*/ static final SConcept ConceptFunctionParameter_operationContext$Gv = MetaAdapterFactory.getConcept(0x13744753c81f424aL, 0x9c1bcf8943bf4e86L, 0x10e761c927aL, "jetbrains.mps.lang.sharedConcepts.structure.ConceptFunctionParameter_operationContext");
-    /*package*/ static final SConcept CellMenuPart_Abstract_editedNode$AC = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10eecc9de0fL, "jetbrains.mps.lang.editor.structure.CellMenuPart_Abstract_editedNode");
-    /*package*/ static final SConcept CellMenuPart_ReplaceChild_currentChild$Bk = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10eaa3a3c68L, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReplaceChild_currentChild");
-    /*package*/ static final SConcept CellMenuPart_ReplaceChild_defaultChildConcept$X3 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x306b0e1228f7e93aL, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReplaceChild_defaultChildConcept");
-    /*package*/ static final SConcept CellMenuPart_ReplaceChild_defaultConceptOfChild$jv = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10eaa4bf8b2L, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReplaceChild_defaultConceptOfChild");
+    /*package*/ static final SConcept CellMenuPart_ReplaceChild_Group$7X = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f4f87862dL, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReplaceChild_Group");
+    /*package*/ static final SConcept ConceptFunction$mf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, "jetbrains.mps.baseLanguage.structure.ConceptFunction");
+    /*package*/ static final SConcept ConceptFunctionParameter_operationContext$HV = MetaAdapterFactory.getConcept(0x13744753c81f424aL, 0x9c1bcf8943bf4e86L, 0x10e761c927aL, "jetbrains.mps.lang.sharedConcepts.structure.ConceptFunctionParameter_operationContext");
+    /*package*/ static final SConcept CellMenuPart_Abstract_editedNode$Mf = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10eecc9de0fL, "jetbrains.mps.lang.editor.structure.CellMenuPart_Abstract_editedNode");
+    /*package*/ static final SConcept CellMenuPart_ReplaceChild_currentChild$MV = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10eaa3a3c68L, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReplaceChild_currentChild");
+    /*package*/ static final SConcept CellMenuPart_ReplaceChild_defaultChildConcept$8E = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x306b0e1228f7e93aL, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReplaceChild_defaultChildConcept");
+    /*package*/ static final SConcept CellMenuPart_ReplaceChild_defaultConceptOfChild$v6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10eaa4bf8b2L, "jetbrains.mps.lang.editor.structure.CellMenuPart_ReplaceChild_defaultConceptOfChild");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameterObjectType$vdDH = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f4e874cf6L, 0x10f4e8b51a5L, "parameterObjectType");
+    /*package*/ static final SContainmentLink parameterObjectType$zvPk = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f4e874cf6L, 0x10f4e8b51a5L, "parameterObjectType");
   }
 }

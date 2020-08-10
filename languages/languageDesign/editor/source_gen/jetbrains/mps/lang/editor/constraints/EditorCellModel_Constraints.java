@@ -21,7 +21,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class EditorCellModel_Constraints extends BaseConstraintsDescriptor {
   public EditorCellModel_Constraints() {
-    super(CONCEPTS.EditorCellModel$5c);
+    super(CONCEPTS.EditorCellModel$gN);
   }
 
   @Override
@@ -40,21 +40,21 @@ public class EditorCellModel_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
-    if (LINKS.styleItem$AYO2.equals(link)) {
+    if (LINKS.styleItem$FgZD.equals(link)) {
       SConcept styleClassItemConcept = (SConcept) childConcept;
-      SNode layoutContainer = SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.LayoutContainer$PT);
-      return (boolean) StyleClassItem__BehaviorDescriptor.isApplicableToCellConcept_id2u3gVK1lsco.invoke(SNodeOperations.asSConcept(styleClassItemConcept), (SConcept) SNodeOperations.getConcept(node)) && (boolean) StyleClassItem__BehaviorDescriptor.isApplicableForLayout_iditlittOTie.invoke(SNodeOperations.asSConcept(styleClassItemConcept), SNodeOperations.getConcept(LayoutContainer__BehaviorDescriptor.getLayout_iditlittTD4U.invoke(SNodeOperations.as(node, CONCEPTS.LayoutContainer$PT)))) && (boolean) StyleClassItem__BehaviorDescriptor.isApplicableInLayout_iditlittOTkB.invoke(SNodeOperations.asSConcept(styleClassItemConcept), SNodeOperations.getConcept(LayoutContainer__BehaviorDescriptor.getLayout_iditlittTD4U.invoke(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.LayoutContainer$PT))));
+      SNode layoutContainer = SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.LayoutContainer$1w);
+      return (boolean) StyleClassItem__BehaviorDescriptor.isApplicableToCellConcept_id2u3gVK1lsco.invoke(SNodeOperations.asSConcept(styleClassItemConcept), (SConcept) SNodeOperations.getConcept(node)) && (boolean) StyleClassItem__BehaviorDescriptor.isApplicableForLayout_iditlittOTie.invoke(SNodeOperations.asSConcept(styleClassItemConcept), SNodeOperations.getConcept(LayoutContainer__BehaviorDescriptor.getLayout_iditlittTD4U.invoke(SNodeOperations.as(node, CONCEPTS.LayoutContainer$1w)))) && (boolean) StyleClassItem__BehaviorDescriptor.isApplicableInLayout_iditlittOTkB.invoke(SNodeOperations.asSConcept(styleClassItemConcept), SNodeOperations.getConcept(LayoutContainer__BehaviorDescriptor.getLayout_iditlittTD4U.invoke(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.LayoutContainer$1w))));
     }
     return true;
   }
   private static final SNodePointer canBeParentBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590298(jetbrains.mps.lang.editor.constraints)", "332515575062623035");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EditorCellModel$5c = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel");
-    /*package*/ static final SInterfaceConcept LayoutContainer$PT = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x49d55275de690fdL, "jetbrains.mps.lang.editor.structure.LayoutContainer");
+    /*package*/ static final SConcept EditorCellModel$gN = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eafb9a39L, "jetbrains.mps.lang.editor.structure.EditorCellModel");
+    /*package*/ static final SInterfaceConcept LayoutContainer$1w = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x49d55275de690fdL, "jetbrains.mps.lang.editor.structure.LayoutContainer");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink styleItem$AYO2 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem");
+    /*package*/ static final SContainmentLink styleItem$FgZD = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem");
   }
 }

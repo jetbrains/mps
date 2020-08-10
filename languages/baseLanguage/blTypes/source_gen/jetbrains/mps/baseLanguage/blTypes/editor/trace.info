@@ -112,10 +112,10 @@
       <node id="1159268590362" at="196,42,197,134" concept="1" />
       <node id="1159268590362" at="197,134,198,138" concept="1" />
       <node id="1159268590362" at="198,138,199,24" concept="6" />
-      <node id="1159268590362" at="204,0,205,0" concept="8" trace="name$lA7v" />
-      <node id="1159268590362" at="208,0,209,0" concept="8" trace="PropertyAttribute$jT" />
-      <node id="1159268590362" at="209,0,210,0" concept="8" trace="PrimitiveTypeRef$bm" />
-      <node id="1159268590362" at="213,0,214,0" concept="8" trace="extends$HFCu" />
+      <node id="1159268590362" at="204,0,205,0" concept="8" trace="name$MnvL" />
+      <node id="1159268590362" at="208,0,209,0" concept="8" trace="PropertyAttribute$Gb" />
+      <node id="1159268590362" at="209,0,210,0" concept="8" trace="PrimitiveTypeRef$pA" />
+      <node id="1159268590362" at="213,0,214,0" concept="8" trace="extends$OHQI" />
       <node id="1159268590362" at="46,0,48,0" concept="2" trace="myNode" />
       <node id="1159268590362" at="123,0,125,0" concept="2" trace="myNode" />
       <node id="1159268590362" at="60,0,63,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -312,10 +312,10 @@
       <node id="1159268661797" at="158,91,159,147" concept="6" />
       <node id="1159268661797" at="160,14,161,26" concept="6" />
       <node id="1159268661797" at="162,17,163,42" concept="1" />
-      <node id="1159268661793" at="169,0,170,0" concept="8" trace="descriptor$F0hD" />
-      <node id="1159268661793" at="173,0,174,0" concept="8" trace="LinkAttribute$7j" />
-      <node id="1159268661793" at="174,0,175,0" concept="8" trace="PropertyAttribute$jT" />
-      <node id="1159268661793" at="178,0,179,0" concept="8" trace="name$lA7v" />
+      <node id="1159268661793" at="169,0,170,0" concept="8" trace="descriptor$M2vT" />
+      <node id="1159268661793" at="173,0,174,0" concept="8" trace="LinkAttribute$v_" />
+      <node id="1159268661793" at="174,0,175,0" concept="8" trace="PropertyAttribute$Gb" />
+      <node id="1159268661793" at="178,0,179,0" concept="8" trace="name$MnvL" />
       <node id="1159268661793" at="46,0,48,0" concept="2" trace="myNode" />
       <node id="1159268661796" at="116,0,118,0" concept="2" trace="myNode" />
       <node id="1159268661793" at="60,0,63,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />

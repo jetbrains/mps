@@ -28,7 +28,7 @@ public class CompletionCustomization_LinkFeature_SubstituteMenu extends Substitu
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_b6s376_a(), CONCEPTS.CompletionCustomization_LinkFeature$PM));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_b6s376_a(), CONCEPTS.CompletionCustomization_LinkFeature$1p));
     result.add(new SMP_Subconcepts_b6s376_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class CompletionCustomization_LinkFeature_SubstituteMenu extends Substitu
 
     public SMP_ReferenceScope_b6s376_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.CompletionCustomization_LinkFeature$PM, LINKS.link$c0Kp);
+      super((SAbstractConcept) CONCEPTS.CompletionCustomization_LinkFeature$1p, LINKS.link$giW0);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class CompletionCustomization_LinkFeature_SubstituteMenu extends Substitu
   }
   public class SMP_Subconcepts_b6s376_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.CompletionCustomization_LinkFeature$PM);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.CompletionCustomization_LinkFeature$1p);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class CompletionCustomization_LinkFeature_SubstituteMenu extends Substitu
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CompletionCustomization_LinkFeature$PM = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570dedb336aL, "jetbrains.mps.lang.editor.structure.CompletionCustomization_LinkFeature");
+    /*package*/ static final SConcept CompletionCustomization_LinkFeature$1p = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570dedb336aL, "jetbrains.mps.lang.editor.structure.CompletionCustomization_LinkFeature");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink link$c0Kp = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570dedb336aL, 0xab9d570dedb336fL, "link");
+    /*package*/ static final SReferenceLink link$giW0 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570dedb336aL, 0xab9d570dedb336fL, "link");
   }
 }

@@ -69,40 +69,40 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       super(editorContext, node);
       myPropertyCell_3q5o1_a0a = new PropertyMapperCell<Integer>(editorContext, node) {
         protected Integer getModelPropertyValueImpl() {
-          return SPropertyOperations.getInteger(node, PROPS.x$SCZU);
+          return SPropertyOperations.getInteger(node, PROPS.x$NHmW);
         }
         protected void setModelPropertyValueImpl(Integer value) {
-          SPropertyOperations.assign(node, PROPS.x$SCZU, value);
+          SPropertyOperations.assign(node, PROPS.x$NHmW, value);
         }
       };
       addEditorCell(myPropertyCell_3q5o1_a0a);
       myPropertyCell_3q5o1_a0a.getEditorComponent().getUpdater().getCurrentUpdateSession().registerCleanDependency(myPropertyCell_3q5o1_a0a, new Pair<SNodeReference, String>(new SNodePointer(node), "x"));
       myPropertyCell_3q5o1_a1a = new PropertyMapperCell<Integer>(editorContext, node) {
         protected Integer getModelPropertyValueImpl() {
-          return SPropertyOperations.getInteger(node, PROPS.y$SDtW);
+          return SPropertyOperations.getInteger(node, PROPS.y$NHOY);
         }
         protected void setModelPropertyValueImpl(Integer value) {
-          SPropertyOperations.assign(node, PROPS.y$SDtW, value);
+          SPropertyOperations.assign(node, PROPS.y$NHOY, value);
         }
       };
       addEditorCell(myPropertyCell_3q5o1_a1a);
       myPropertyCell_3q5o1_a1a.getEditorComponent().getUpdater().getCurrentUpdateSession().registerCleanDependency(myPropertyCell_3q5o1_a1a, new Pair<SNodeReference, String>(new SNodePointer(node), "y"));
       myPropertyCell_3q5o1_a2a = new PropertyMapperCell<Integer>(editorContext, node) {
         protected Integer getModelPropertyValueImpl() {
-          return SPropertyOperations.getInteger(node, PROPS.width$GJzL);
+          return SPropertyOperations.getInteger(node, PROPS.width$BNUN);
         }
         protected void setModelPropertyValueImpl(Integer value) {
-          SPropertyOperations.assign(node, PROPS.width$GJzL, value);
+          SPropertyOperations.assign(node, PROPS.width$BNUN, value);
         }
       };
       addEditorCell(myPropertyCell_3q5o1_a2a);
       myPropertyCell_3q5o1_a2a.getEditorComponent().getUpdater().getCurrentUpdateSession().registerCleanDependency(myPropertyCell_3q5o1_a2a, new Pair<SNodeReference, String>(new SNodePointer(node), "width"));
       myPropertyCell_3q5o1_a3a = new PropertyMapperCell<Integer>(editorContext, node) {
         protected Integer getModelPropertyValueImpl() {
-          return SPropertyOperations.getInteger(node, PROPS.height$JdGj);
+          return SPropertyOperations.getInteger(node, PROPS.height$Ei3l);
         }
         protected void setModelPropertyValueImpl(Integer value) {
-          SPropertyOperations.assign(node, PROPS.height$JdGj, value);
+          SPropertyOperations.assign(node, PROPS.height$Ei3l, value);
         }
       };
       addEditorCell(myPropertyCell_3q5o1_a3a);
@@ -225,9 +225,9 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty x$SCZU = MetaAdapterFactory.getProperty(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x7a0afda102e1de05L, 0x7a0afda102e2029cL, "x");
-    /*package*/ static final SProperty y$SDtW = MetaAdapterFactory.getProperty(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x7a0afda102e1de05L, 0x7a0afda102e2029eL, "y");
-    /*package*/ static final SProperty width$GJzL = MetaAdapterFactory.getProperty(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x7a0afda102e202aaL, 0x7a0afda10316dc02L, "width");
-    /*package*/ static final SProperty height$JdGj = MetaAdapterFactory.getProperty(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x7a0afda102e202aaL, 0x7a0afda10316dc04L, "height");
+    /*package*/ static final SProperty x$NHmW = MetaAdapterFactory.getProperty(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x7a0afda102e1de05L, 0x7a0afda102e2029cL, "x");
+    /*package*/ static final SProperty y$NHOY = MetaAdapterFactory.getProperty(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x7a0afda102e1de05L, 0x7a0afda102e2029eL, "y");
+    /*package*/ static final SProperty width$BNUN = MetaAdapterFactory.getProperty(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x7a0afda102e202aaL, 0x7a0afda10316dc02L, "width");
+    /*package*/ static final SProperty height$Ei3l = MetaAdapterFactory.getProperty(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x7a0afda102e202aaL, 0x7a0afda10316dc04L, "height");
   }
 }

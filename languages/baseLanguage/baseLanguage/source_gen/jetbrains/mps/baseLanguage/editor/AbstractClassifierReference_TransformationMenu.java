@@ -82,7 +82,7 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
   public class TMP_Group_j08dcv_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ExpressionStatement$nm);
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ExpressionStatement$O8);
     }
 
     @NotNull
@@ -98,7 +98,7 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_j08dcv_a0a(), CONCEPTS.LocalVariableDeclarationStatement$BI), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_j08dcv_b0a(), CONCEPTS.LocalVariableDeclarationStatement$BI));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_j08dcv_a0a(), CONCEPTS.LocalVariableDeclarationStatement$4w), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_j08dcv_b0a(), CONCEPTS.LocalVariableDeclarationStatement$4w));
     }
     private class TMP_Action_j08dcv_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -138,16 +138,16 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode classifierType = _quotation_createNode_j08dcv_a0a0a0a0(SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$G8c4));
+          SNode classifierType = _quotation_createNode_j08dcv_a0a0a0a0(SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$ndCQ));
           SNodeOperations.replaceWithAnother(SNodeOperations.getParent(_context.getNode()), _quotation_createNode_j08dcv_a0a1a0a0a(classifierType));
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(classifierType, LINKS.parameter$HlfM)).first(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(classifierType, LINKS.parameter$oqG$)).first(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
 
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.LocalVariableDeclarationStatement$BI;
+          return CONCEPTS.LocalVariableDeclarationStatement$4w;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
@@ -162,7 +162,7 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.LocalVariableDeclarationStatement$BI;
+          SAbstractConcept outputConcept = CONCEPTS.LocalVariableDeclarationStatement$4w;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -209,15 +209,15 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode statement = SNodeOperations.replaceWithAnother(SNodeOperations.getParent(_context.getNode()), _quotation_createNode_j08dcv_a0a0a0a1a0(SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$G8c4)));
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(statement, LINKS.localVariableDeclaration$cjR0), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SNode statement = SNodeOperations.replaceWithAnother(SNodeOperations.getParent(_context.getNode()), _quotation_createNode_j08dcv_a0a0a0a1a0(SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$ndCQ)));
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(statement, LINKS.localVariableDeclaration$RpjM), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
 
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.LocalVariableDeclarationStatement$BI;
+          return CONCEPTS.LocalVariableDeclarationStatement$4w;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
@@ -232,7 +232,7 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.LocalVariableDeclarationStatement$BI;
+          SAbstractConcept outputConcept = CONCEPTS.LocalVariableDeclarationStatement$4w;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -245,7 +245,7 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
   public class TMP_Group_j08dcv_b0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ExpressionStatement$nm));
+      return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ExpressionStatement$O8));
     }
 
     @NotNull
@@ -261,7 +261,7 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.AbstractClassifierReference$vv)) {
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.AbstractClassifierReference$Wh)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -274,7 +274,7 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
           }
         }
 
-      }, new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_j08dcv_b1a(), CONCEPTS.ArrayType$Yv));
+      }, new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_j08dcv_b1a(), CONCEPTS.ArrayType$rh));
     }
     private class TMP_Action_j08dcv_b1a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -314,7 +314,7 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode arrayType = SNodeOperations.replaceWithAnother(_context.getNode(), _quotation_createNode_j08dcv_a0a0a0a1b0(SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$G8c4)));
+          SNode arrayType = SNodeOperations.replaceWithAnother(_context.getNode(), _quotation_createNode_j08dcv_a0a0a0a1b0(SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$ndCQ)));
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), arrayType, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -322,7 +322,7 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.ArrayType$Yv;
+          return CONCEPTS.ArrayType$rh;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
@@ -337,7 +337,7 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.ArrayType$Yv;
+          SAbstractConcept outputConcept = CONCEPTS.ArrayType$rh;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -399,15 +399,15 @@ public class AbstractClassifierReference_TransformationMenu extends Transformati
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ExpressionStatement$nm = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
-    /*package*/ static final SConcept LocalVariableDeclarationStatement$BI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement");
-    /*package*/ static final SConcept AbstractClassifierReference$vv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6c91efa5ec8cd7L, "jetbrains.mps.baseLanguage.structure.AbstractClassifierReference");
-    /*package*/ static final SConcept ArrayType$Yv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
+    /*package*/ static final SConcept ExpressionStatement$O8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
+    /*package*/ static final SConcept LocalVariableDeclarationStatement$4w = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement");
+    /*package*/ static final SConcept AbstractClassifierReference$Wh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6c91efa5ec8cd7L, "jetbrains.mps.baseLanguage.structure.AbstractClassifierReference");
+    /*package*/ static final SConcept ArrayType$rh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$G8c4 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6c91efa5ec8cd7L, 0x6c6c91efa5ecbbb2L, "classifier");
-    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
-    /*package*/ static final SContainmentLink localVariableDeclaration$cjR0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
+    /*package*/ static final SReferenceLink classifier$ndCQ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6c91efa5ec8cd7L, 0x6c6c91efa5ecbbb2L, "classifier");
+    /*package*/ static final SContainmentLink parameter$oqG$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SContainmentLink localVariableDeclaration$RpjM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
   }
 }

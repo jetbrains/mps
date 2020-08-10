@@ -18,7 +18,7 @@ public class InternalClassifierType_subtypeOf_InternalClassifierType_InequationR
   public InternalClassifierType_subtypeOf_InternalClassifierType_InequationReplacementRule() {
   }
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
-    return SLinkOperations.getTarget(subtype, LINKS.classifier$xslD) == SLinkOperations.getTarget(supertype, LINKS.classifier$xslD);
+    return SLinkOperations.getTarget(subtype, LINKS.classifier$cxMr) == SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr);
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
   }
@@ -37,17 +37,17 @@ public class InternalClassifierType_subtypeOf_InternalClassifierType_InequationR
   }
 
   public SAbstractConcept getApplicableSubtypeConcept() {
-    return CONCEPTS.InternalClassifierType$bm;
+    return CONCEPTS.InternalClassifierType$s8;
   }
   public SAbstractConcept getApplicableSupertypeConcept() {
-    return CONCEPTS.InternalClassifierType$bm;
+    return CONCEPTS.InternalClassifierType$s8;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InternalClassifierType$bm = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1118e558c6dL, "jetbrains.mps.baseLanguageInternal.structure.InternalClassifierType");
+    /*package*/ static final SConcept InternalClassifierType$s8 = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x1118e558c6dL, "jetbrains.mps.baseLanguageInternal.structure.InternalClassifierType");
   }
 }

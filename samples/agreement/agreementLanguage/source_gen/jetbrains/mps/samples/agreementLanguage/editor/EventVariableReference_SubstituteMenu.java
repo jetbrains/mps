@@ -28,7 +28,7 @@ public class EventVariableReference_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_8sx8tt_a(), CONCEPTS.EventVariableReference$yc));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_8sx8tt_a(), CONCEPTS.EventVariableReference$13));
     result.add(new SMP_Subconcepts_8sx8tt_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class EventVariableReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_8sx8tt_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.EventVariableReference$yc, LINKS.eventVariable$PMtL);
+      super((SAbstractConcept) CONCEPTS.EventVariableReference$13, LINKS.eventVariable$v2WC);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class EventVariableReference_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_8sx8tt_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.EventVariableReference$yc);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.EventVariableReference$13);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class EventVariableReference_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EventVariableReference$yc = MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102ea8a3c37L, "jetbrains.mps.samples.agreementLanguage.structure.EventVariableReference");
+    /*package*/ static final SConcept EventVariableReference$13 = MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102ea8a3c37L, "jetbrains.mps.samples.agreementLanguage.structure.EventVariableReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink eventVariable$PMtL = MetaAdapterFactory.getReferenceLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102ea8a3c37L, 0x102ea8aa283L, "eventVariable");
+    /*package*/ static final SReferenceLink eventVariable$v2WC = MetaAdapterFactory.getReferenceLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102ea8a3c37L, 0x102ea8aa283L, "eventVariable");
   }
 }

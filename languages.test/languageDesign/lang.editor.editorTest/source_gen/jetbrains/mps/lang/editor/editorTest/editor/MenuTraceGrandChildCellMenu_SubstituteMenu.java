@@ -21,7 +21,7 @@ public class MenuTraceGrandChildCellMenu_SubstituteMenu extends SubstituteMenuBa
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.MenuTraceGrandChildCellMenu$57) {
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.MenuTraceGrandChildCellMenu$Pk) {
 
       @NotNull
       @Override
@@ -34,7 +34,7 @@ public class MenuTraceGrandChildCellMenu_SubstituteMenu extends SubstituteMenuBa
           context.getEditorMenuTrace().popTraceInfo();
         }
       }
-    }, CONCEPTS.MenuTraceGrandChildCellMenu$57));
+    }, CONCEPTS.MenuTraceGrandChildCellMenu$Pk));
     return result;
   }
 
@@ -52,6 +52,6 @@ public class MenuTraceGrandChildCellMenu_SubstituteMenu extends SubstituteMenuBa
 
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MenuTraceGrandChildCellMenu$57 = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x133763776010fa0dL, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceGrandChildCellMenu");
+    /*package*/ static final SConcept MenuTraceGrandChildCellMenu$Pk = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x133763776010fa0dL, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceGrandChildCellMenu");
   }
 }

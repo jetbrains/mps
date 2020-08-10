@@ -13,15 +13,15 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class AddRequiredParameter {
   public static class NodeFactory_315309404903965693 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SLinkOperations.addNewChild(newNode, LINKS.condition$iTOE, CONCEPTS.RequiredCondition$Qe);
+      SLinkOperations.addNewChild(newNode, LINKS.condition$wuLH, CONCEPTS.RequiredCondition$Nh);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$iTOE = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b737a6b7cL, 0x4cdc1c9014f46cb2L, "condition");
+    /*package*/ static final SContainmentLink condition$wuLH = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b737a6b7cL, 0x4cdc1c9014f46cb2L, "condition");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RequiredCondition$Qe = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x4cdc1c9014f52faeL, "jetbrains.mps.lang.plugin.structure.RequiredCondition");
+    /*package*/ static final SConcept RequiredCondition$Nh = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x4cdc1c9014f52faeL, "jetbrains.mps.lang.plugin.structure.RequiredCondition");
   }
 }

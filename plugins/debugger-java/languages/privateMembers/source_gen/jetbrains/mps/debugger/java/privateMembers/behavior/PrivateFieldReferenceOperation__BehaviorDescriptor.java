@@ -36,10 +36,10 @@ public final class PrivateFieldReferenceOperation__BehaviorDescriptor extends Ba
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.fieldDeclaration$229u) == null)) {
-      return BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invokeSuper(__thisNode__, CONCEPTS.PrivateFieldReferenceOperation$fI);
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.fieldDeclaration$H7Ag) == null)) {
+      return BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invokeSuper(__thisNode__, CONCEPTS.PrivateFieldReferenceOperation$xF);
     }
-    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.fieldDeclaration$229u), PROPS.name$lA7v);
+    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.fieldDeclaration$H7Ag), PROPS.name$MnvL);
   }
   /*package*/ static boolean lvalue_id1653mnvAgvW(@NotNull SAbstractConcept __thisConcept__) {
     return false;
@@ -94,14 +94,14 @@ public final class PrivateFieldReferenceOperation__BehaviorDescriptor extends Ba
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PrivateFieldReferenceOperation$fI = MetaAdapterFactory.getConcept(0x802088974572437dL, 0xb50e8f050cba9566L, 0x5eb820f649bb5379L, "jetbrains.mps.debugger.java.privateMembers.structure.PrivateFieldReferenceOperation");
+    /*package*/ static final SConcept PrivateFieldReferenceOperation$xF = MetaAdapterFactory.getConcept(0x802088974572437dL, 0xb50e8f050cba9566L, 0x5eb820f649bb5379L, "jetbrains.mps.debugger.java.privateMembers.structure.PrivateFieldReferenceOperation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink fieldDeclaration$229u = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
+    /*package*/ static final SReferenceLink fieldDeclaration$H7Ag = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

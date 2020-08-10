@@ -64,7 +64,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
   }
   /*package*/ final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
-      super(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710839815"), CONCEPTS.MappingPriorityRule$Tu, false);
+      super(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710839815"), CONCEPTS.MappingPriorityRule$8Q, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -206,7 +206,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
   }
   /*package*/ final class ReductionRule1 extends ReductionRuleBase {
     public ReductionRule1() {
-      super(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710839990"), CONCEPTS.MappingConfigExternalRef$Pq, false);
+      super(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710839990"), CONCEPTS.MappingConfigExternalRef$4M, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -237,7 +237,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
   }
   /*package*/ final class ReductionRule2 extends ReductionRuleBase {
     public ReductionRule2() {
-      super(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710840028"), CONCEPTS.MappingConfigNormalRef$mQ, false);
+      super(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710840028"), CONCEPTS.MappingConfigNormalRef$Ae, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -271,7 +271,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
   }
   /*package*/ final class ReductionRule3 extends ReductionRuleBase {
     public ReductionRule3() {
-      super(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710840031"), CONCEPTS.MappingConfigRefAllGlobal$Ed, false);
+      super(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710840031"), CONCEPTS.MappingConfigRefAllGlobal$T_, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -284,7 +284,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
   }
   /*package*/ final class ReductionRule4 extends ReductionRuleBase {
     public ReductionRule4() {
-      super(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710840034"), CONCEPTS.MappingConfigRefAllLocal$BB, false);
+      super(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710840034"), CONCEPTS.MappingConfigRefAllLocal$QZ, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -297,7 +297,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
   }
   /*package*/ final class ReductionRule5 extends ReductionRuleBase {
     public ReductionRule5() {
-      super(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710840037"), CONCEPTS.MappingConfigRefSet$DM, false);
+      super(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710840037"), CONCEPTS.MappingConfigRefSet$Ta, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -322,7 +322,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
   }
   /*package*/ final class RootMappingRule0 extends MapRootRuleBase implements TemplateRootMappingRule {
     public RootMappingRule0() {
-      super(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "263208052639681036"), CONCEPTS.GeneratorDescriptor$4T, false, false);
+      super(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "263208052639681036"), CONCEPTS.GeneratorDescriptor$hF, false, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -337,7 +337,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
   }
   /*package*/ final class RootMappingRule1 extends MapRootRuleBase implements TemplateRootMappingRule {
     public RootMappingRule1() {
-      super(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1066600152715707458"), CONCEPTS.GeneratorDescriptor$4T, false, false);
+      super(new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1066600152715707458"), CONCEPTS.GeneratorDescriptor$hF, false, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -411,12 +411,12 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
   private static final SNodePointer copySrcListMacro_ugw0jb_b0a0a1a3a2a1n = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "3342058859868692953");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MappingPriorityRule$Tu = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe38L, "jetbrains.mps.lang.project.structure.MappingPriorityRule");
-    /*package*/ static final SConcept MappingConfigExternalRef$Pq = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f284595727e1L, "jetbrains.mps.lang.project.structure.MappingConfigExternalRef");
-    /*package*/ static final SConcept MappingConfigNormalRef$mQ = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f28459572777L, "jetbrains.mps.lang.project.structure.MappingConfigNormalRef");
-    /*package*/ static final SConcept MappingConfigRefAllGlobal$Ed = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f2845954f70fL, "jetbrains.mps.lang.project.structure.MappingConfigRefAllGlobal");
-    /*package*/ static final SConcept MappingConfigRefAllLocal$BB = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f284595702d4L, "jetbrains.mps.lang.project.structure.MappingConfigRefAllLocal");
-    /*package*/ static final SConcept MappingConfigRefSet$DM = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f2845957030bL, "jetbrains.mps.lang.project.structure.MappingConfigRefSet");
-    /*package*/ static final SConcept GeneratorDescriptor$4T = MetaAdapterFactory.getConcept(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x3663ebbd1bf10683L, "jetbrains.mps.lang.descriptor.structure.GeneratorDescriptor");
+    /*package*/ static final SConcept MappingPriorityRule$8Q = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe38L, "jetbrains.mps.lang.project.structure.MappingPriorityRule");
+    /*package*/ static final SConcept MappingConfigExternalRef$4M = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f284595727e1L, "jetbrains.mps.lang.project.structure.MappingConfigExternalRef");
+    /*package*/ static final SConcept MappingConfigNormalRef$Ae = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f28459572777L, "jetbrains.mps.lang.project.structure.MappingConfigNormalRef");
+    /*package*/ static final SConcept MappingConfigRefAllGlobal$T_ = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f2845954f70fL, "jetbrains.mps.lang.project.structure.MappingConfigRefAllGlobal");
+    /*package*/ static final SConcept MappingConfigRefAllLocal$QZ = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f284595702d4L, "jetbrains.mps.lang.project.structure.MappingConfigRefAllLocal");
+    /*package*/ static final SConcept MappingConfigRefSet$Ta = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f2845957030bL, "jetbrains.mps.lang.project.structure.MappingConfigRefSet");
+    /*package*/ static final SConcept GeneratorDescriptor$hF = MetaAdapterFactory.getConcept(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x3663ebbd1bf10683L, "jetbrains.mps.lang.descriptor.structure.GeneratorDescriptor");
   }
 }

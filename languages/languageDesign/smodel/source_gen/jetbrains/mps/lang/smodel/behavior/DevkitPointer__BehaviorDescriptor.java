@@ -36,20 +36,20 @@ public final class DevkitPointer__BehaviorDescriptor extends BaseBHDescriptor {
 
   @Nullable
   /*package*/ static SModuleReference getModuleReference_id78qQRpbgix2(@NotNull SNode __thisNode__) {
-    if (SPropertyOperations.getString(__thisNode__, PROPS.devkitId$cUHx) == null) {
+    if (SPropertyOperations.getString(__thisNode__, PROPS.devkitId$LjJ1) == null) {
       return null;
     }
     PersistenceFacade pf = PersistenceFacade.getInstance();
-    SModuleId id = pf.createModuleId(SPropertyOperations.getString(__thisNode__, PROPS.devkitId$cUHx));
-    return pf.createModuleReference(id, SPropertyOperations.getString(__thisNode__, PROPS.devkitName$cUuw));
+    SModuleId id = pf.createModuleId(SPropertyOperations.getString(__thisNode__, PROPS.devkitId$LjJ1));
+    return pf.createModuleReference(id, SPropertyOperations.getString(__thisNode__, PROPS.devkitName$Ljw0));
   }
   /*package*/ static void setModuleReference_id78qQRpbgix9(@NotNull SNode __thisNode__, @Nullable SModuleReference moduleRef) {
     if (moduleRef == null) {
-      SPropertyOperations.assign(__thisNode__, PROPS.devkitId$cUHx, null);
-      SPropertyOperations.assign(__thisNode__, PROPS.devkitName$cUuw, null);
+      SPropertyOperations.assign(__thisNode__, PROPS.devkitId$LjJ1, null);
+      SPropertyOperations.assign(__thisNode__, PROPS.devkitName$Ljw0, null);
     } else {
-      SPropertyOperations.assign(__thisNode__, PROPS.devkitId$cUHx, PersistenceFacade.getInstance().asString(moduleRef.getModuleId()));
-      SPropertyOperations.assign(__thisNode__, PROPS.devkitName$cUuw, moduleRef.getModuleName());
+      SPropertyOperations.assign(__thisNode__, PROPS.devkitId$LjJ1, PersistenceFacade.getInstance().asString(moduleRef.getModuleId()));
+      SPropertyOperations.assign(__thisNode__, PROPS.devkitName$Ljw0, moduleRef.getModuleName());
     }
   }
 
@@ -103,7 +103,7 @@ public final class DevkitPointer__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty devkitId$cUHx = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x721adb764b3fbd1bL, 0x721adb764b3fbd1dL, "devkitId");
-    /*package*/ static final SProperty devkitName$cUuw = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x721adb764b3fbd1bL, 0x721adb764b3fbd1cL, "devkitName");
+    /*package*/ static final SProperty devkitId$LjJ1 = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x721adb764b3fbd1bL, 0x721adb764b3fbd1dL, "devkitId");
+    /*package*/ static final SProperty devkitName$Ljw0 = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x721adb764b3fbd1bL, 0x721adb764b3fbd1cL, "devkitName");
   }
 }

@@ -35,10 +35,10 @@ public final class UnknownRuleReference__BehaviorDescriptor extends BaseBHDescri
   }
 
   /*package*/ static String getName_id6EW1JnOFUIS(@NotNull SNode __thisNode__) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$w83C), CONCEPTS.INamedConcept$nV)) {
-      SNode named = SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$w83C), CONCEPTS.INamedConcept$nV);
-      if (isNotEmptyString(SPropertyOperations.getString(named, PROPS.name$lA7v))) {
-        return SPropertyOperations.getString(named, PROPS.name$lA7v);
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$oKj7), CONCEPTS.INamedConcept$Kd)) {
+      SNode named = SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$oKj7), CONCEPTS.INamedConcept$Kd);
+      if (isNotEmptyString(SPropertyOperations.getString(named, PROPS.name$MnvL))) {
+        return SPropertyOperations.getString(named, PROPS.name$MnvL);
       }
     }
     return "UnknownRule";
@@ -94,14 +94,14 @@ public final class UnknownRuleReference__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$w83C = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6abc06f5f4afab9dL, 0x73a7cdcfba51f755L, "declaration");
+    /*package*/ static final SReferenceLink declaration$oKj7 = MetaAdapterFactory.getReferenceLink(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6abc06f5f4afab9dL, 0x73a7cdcfba51f755L, "declaration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

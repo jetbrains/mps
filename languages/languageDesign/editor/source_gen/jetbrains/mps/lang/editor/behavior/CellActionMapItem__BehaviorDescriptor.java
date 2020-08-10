@@ -32,7 +32,7 @@ public final class CellActionMapItem__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static SEnumerationLiteral getActionId_idJCy0JrvU0M(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getEnum(__thisNode__, PROPS.actionId$K4QO);
+    return SPropertyOperations.getEnum(__thisNode__, PROPS.actionId$On2r);
   }
 
   /*package*/ CellActionMapItem__BehaviorDescriptor() {
@@ -82,6 +82,6 @@ public final class CellActionMapItem__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty actionId$K4QO = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109519879e9L, 0x1095198c0daL, "actionId");
+    /*package*/ static final SProperty actionId$On2r = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x109519879e9L, 0x1095198c0daL, "actionId");
   }
 }

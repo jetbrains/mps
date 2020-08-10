@@ -46,7 +46,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   }
   /*package*/ final class ReductionRule0 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c895905f8(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceExpressionToStatement@generator)", "1209150610748"), CONCEPTS.ExpressionToReduceToStatement$Bv, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c895905f8(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceExpressionToStatement@generator)", "1209150610748"), CONCEPTS.ExpressionToReduceToStatement$KA, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -70,7 +70,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   }
   /*package*/ final class RootMappingRule0 extends MapRootRuleBase implements TemplateRootMappingRule {
     public RootMappingRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c895905f8(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceExpressionToStatement@generator)", "1209150078117"), CONCEPTS.InputRootWithStatementList$lm, false, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c895905f8(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceExpressionToStatement@generator)", "1209150078117"), CONCEPTS.InputRootWithStatementList$ut, false, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -110,7 +110,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ExpressionToReduceToStatement$Bv = MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11986c01fc7L, "jetbrains.mps.transformation.test.inputLang.structure.ExpressionToReduceToStatement");
-    /*package*/ static final SConcept InputRootWithStatementList$lm = MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11986ebf992L, "jetbrains.mps.transformation.test.inputLang.structure.InputRootWithStatementList");
+    /*package*/ static final SConcept ExpressionToReduceToStatement$KA = MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11986c01fc7L, "jetbrains.mps.transformation.test.inputLang.structure.ExpressionToReduceToStatement");
+    /*package*/ static final SConcept InputRootWithStatementList$ut = MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11986ebf992L, "jetbrains.mps.transformation.test.inputLang.structure.InputRootWithStatementList");
   }
 }

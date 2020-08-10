@@ -37,7 +37,7 @@ public class deque_type_comparableWith_Deque_ComparisonRule extends ComparisonRu
   }
 
   public SAbstractConcept getApplicableConcept1() {
-    return CONCEPTS.DequeType$X6;
+    return CONCEPTS.DequeType$bp;
   }
   public SAbstractConcept getApplicableConcept2() {
     return MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType");
@@ -54,6 +54,6 @@ public class deque_type_comparableWith_Deque_ComparisonRule extends ComparisonRu
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DequeType$X6 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x2e99e9ab97de7711L, "jetbrains.mps.baseLanguage.collections.structure.DequeType");
+    /*package*/ static final SConcept DequeType$bp = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x2e99e9ab97de7711L, "jetbrains.mps.baseLanguage.collections.structure.DequeType");
   }
 }

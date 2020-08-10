@@ -14,21 +14,21 @@ public class EnumConstantReference_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(ctx.getPrimaryInput()), CONCEPTS.SwitchCase$EA)) {
-      BaseLanguageTextGen.referenceToShortName(SNodeOperations.getReference(ctx.getPrimaryInput(), LINKS.enumConstantDeclaration$zW91), ctx);
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(ctx.getPrimaryInput()), CONCEPTS.SwitchCase$7o)) {
+      BaseLanguageTextGen.referenceToShortName(SNodeOperations.getReference(ctx.getPrimaryInput(), LINKS.enumConstantDeclaration$f1_N), ctx);
     } else {
-      BaseLanguageTextGen.blClassifierRef(SNodeOperations.getReference(ctx.getPrimaryInput(), LINKS.enumClass$wB9x), ctx);
+      BaseLanguageTextGen.blClassifierRef(SNodeOperations.getReference(ctx.getPrimaryInput(), LINKS.enumClass$bGAj), ctx);
       tgs.append(".");
-      BaseLanguageTextGen.referenceToShortName(SNodeOperations.getReference(ctx.getPrimaryInput(), LINKS.enumConstantDeclaration$zW91), ctx);
+      BaseLanguageTextGen.referenceToShortName(SNodeOperations.getReference(ctx.getPrimaryInput(), LINKS.enumConstantDeclaration$f1_N), ctx);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink enumConstantDeclaration$zW91 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration");
-    /*package*/ static final SReferenceLink enumClass$wB9x = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0x10a758428feL, "enumClass");
+    /*package*/ static final SReferenceLink enumConstantDeclaration$f1_N = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration");
+    /*package*/ static final SReferenceLink enumClass$bGAj = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0x10a758428feL, "enumClass");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SwitchCase$EA = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, "jetbrains.mps.baseLanguage.structure.SwitchCase");
+    /*package*/ static final SConcept SwitchCase$7o = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, "jetbrains.mps.baseLanguage.structure.SwitchCase");
   }
 }

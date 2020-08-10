@@ -36,7 +36,7 @@ public final class Node_GetNextSiblingsOperation__BehaviorDescriptor extends Bas
     return true;
   }
   /*package*/ static List<SConcept> getParameterConcepts_id6ALWH9fQysn(@NotNull SAbstractConcept __thisConcept__) {
-    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.OperationParm_Inclusion$d);
+    return ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.OperationParm_Inclusion$1H);
   }
 
   /*package*/ Node_GetNextSiblingsOperation__BehaviorDescriptor() {
@@ -88,6 +88,6 @@ public final class Node_GetNextSiblingsOperation__BehaviorDescriptor extends Bas
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept OperationParm_Inclusion$d = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a61bacc13L, "jetbrains.mps.lang.smodel.structure.OperationParm_Inclusion");
+    /*package*/ static final SConcept OperationParm_Inclusion$1H = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10a61bacc13L, "jetbrains.mps.lang.smodel.structure.OperationParm_Inclusion");
   }
 }

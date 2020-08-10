@@ -27,13 +27,13 @@ public class InlineTagCommentLinePart_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode commentLine = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.CommentLine$vy);
+        SNode commentLine = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.CommentLine$hJ);
         SNodeOperations.deleteNode(node);
-        for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(commentLine, LINKS.part$w5LD)).count() - 1; i++) {
-          SNode part1 = ListSequence.fromList(SLinkOperations.getChildren(commentLine, LINKS.part$w5LD)).getElement(i);
-          SNode part2 = ListSequence.fromList(SLinkOperations.getChildren(commentLine, LINKS.part$w5LD)).getElement(i + 1);
-          if (SNodeOperations.isInstanceOf(part1, CONCEPTS.TextCommentLinePart$RY) && SNodeOperations.isInstanceOf(part2, CONCEPTS.TextCommentLinePart$RY)) {
-            SPropertyOperations.set(SNodeOperations.cast(part1, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0, SPropertyOperations.getString(SNodeOperations.cast(part1, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0) + SPropertyOperations.getString(SNodeOperations.cast(part2, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0));
+        for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(commentLine, LINKS.part$QuzQ)).count() - 1; i++) {
+          SNode part1 = ListSequence.fromList(SLinkOperations.getChildren(commentLine, LINKS.part$QuzQ)).getElement(i);
+          SNode part2 = ListSequence.fromList(SLinkOperations.getChildren(commentLine, LINKS.part$QuzQ)).getElement(i + 1);
+          if (SNodeOperations.isInstanceOf(part1, CONCEPTS.TextCommentLinePart$Eb) && SNodeOperations.isInstanceOf(part2, CONCEPTS.TextCommentLinePart$Eb)) {
+            SPropertyOperations.set(SNodeOperations.cast(part1, CONCEPTS.TextCommentLinePart$Eb), PROPS.text$aOLd, SPropertyOperations.getString(SNodeOperations.cast(part1, CONCEPTS.TextCommentLinePart$Eb), PROPS.text$aOLd) + SPropertyOperations.getString(SNodeOperations.cast(part2, CONCEPTS.TextCommentLinePart$Eb), PROPS.text$aOLd));
             SNodeOperations.deleteNode(part2);
             i--;
           }
@@ -86,15 +86,15 @@ public class InlineTagCommentLinePart_Actions {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CommentLine$vy = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLine");
-    /*package*/ static final SConcept TextCommentLinePart$RY = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart");
+    /*package*/ static final SConcept CommentLine$hJ = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLine");
+    /*package*/ static final SConcept TextCommentLinePart$Eb = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink part$w5LD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
+    /*package*/ static final SContainmentLink part$QuzQ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$OrZ0 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
+    /*package*/ static final SProperty text$aOLd = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
   }
 }

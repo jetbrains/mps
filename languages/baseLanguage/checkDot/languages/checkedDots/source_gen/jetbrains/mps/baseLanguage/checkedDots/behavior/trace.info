@@ -42,10 +42,10 @@
       <node id="3674434577577159919" at="93,14,94,58" concept="10" />
       <node id="3674434577577159919" at="100,48,101,22" concept="5" />
       <node id="3674434577577159919" at="106,40,107,19" concept="5" />
-      <node id="3674434577577159919" at="111,0,112,0" concept="7" trace="ThisExpression$7A" />
-      <node id="3674434577577159919" at="112,0,113,0" concept="7" trace="LocalMethodCall$77" />
-      <node id="3674434577577159919" at="113,0,114,0" concept="7" trace="InstanceMethodDeclaration$An" />
-      <node id="3674434577577159919" at="117,0,118,0" concept="7" trace="baseMethodDeclaration$ItxI" />
+      <node id="3674434577577159919" at="111,0,112,0" concept="7" trace="ThisExpression$$o" />
+      <node id="3674434577577159919" at="112,0,113,0" concept="7" trace="LocalMethodCall$zT" />
+      <node id="3674434577577159919" at="113,0,114,0" concept="7" trace="InstanceMethodDeclaration$39" />
+      <node id="3674434577577159919" at="117,0,118,0" concept="7" trace="baseMethodDeclaration$pyYw" />
       <node id="3674434577577159919" at="36,0,38,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="3674434577577159919" at="60,0,62,0" concept="0" trace="CheckedDotExpression__BehaviorDescriptor#()V" />
       <node id="4697831301626073713" at="39,95,42,5" concept="2" />

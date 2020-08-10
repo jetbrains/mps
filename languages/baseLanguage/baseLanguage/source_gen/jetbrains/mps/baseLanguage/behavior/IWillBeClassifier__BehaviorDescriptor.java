@@ -43,13 +43,13 @@ public final class IWillBeClassifier__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static SNode baseClassifier_id3_1Lj9FFNJ0(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(_quotation_createNode_937vih_a0a0b(), LINKS.classifier$xslD);
+    return SLinkOperations.getTarget(_quotation_createNode_937vih_a0a0b(), LINKS.classifier$cxMr);
   }
   /*package*/ static SNode resolve_id3ZSHU3ph184(@NotNull SNode __thisNode__, SModel targetModel) {
     final String clsName = IWillBeClassifier__BehaviorDescriptor.classifierName_id3ZSHU3pg$b_.invoke(__thisNode__);
-    return ListSequence.fromList(SModelOperations.roots(targetModel, CONCEPTS.Classifier$hJ)).findFirst(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SModelOperations.roots(targetModel, CONCEPTS.Classifier$Ix)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode cls) {
-        return clsName.equals(SPropertyOperations.getString(cls, PROPS.name$lA7v));
+        return clsName.equals(SPropertyOperations.getString(cls, PROPS.name$MnvL));
       }
     });
   }
@@ -110,14 +110,14 @@ public final class IWillBeClassifier__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

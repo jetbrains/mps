@@ -31,7 +31,7 @@ public final class BuilderStatement__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static boolean isLeaf_idNLqHO$EE0f(@NotNull SNode __thisNode__) {
-    return (boolean) Builder__BehaviorDescriptor.isLeaf_id67LR$5LQnln.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.builder$hk0B));
+    return (boolean) Builder__BehaviorDescriptor.isLeaf_id67LR$5LQnln.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.builder$HP0i));
   }
 
   /*package*/ BuilderStatement__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class BuilderStatement__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink builder$hk0B = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6c473c8a081aa9e4L, 0x429426276e2ee2f8L, "builder");
+    /*package*/ static final SContainmentLink builder$HP0i = MetaAdapterFactory.getContainmentLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x6c473c8a081aa9e4L, 0x429426276e2ee2f8L, "builder");
   }
 }

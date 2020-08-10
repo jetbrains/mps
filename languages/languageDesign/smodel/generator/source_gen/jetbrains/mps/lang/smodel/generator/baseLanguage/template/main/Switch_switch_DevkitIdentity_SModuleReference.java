@@ -54,7 +54,7 @@ public class Switch_switch_DevkitIdentity_SModuleReference extends TemplateSwitc
   }
   /*package*/ final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7764131598616983927"), CONCEPTS.DevkitPointer$OX, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7764131598616983927"), CONCEPTS.DevkitPointer$Qt, true);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -127,6 +127,6 @@ public class Switch_switch_DevkitIdentity_SModuleReference extends TemplateSwitc
   private static final SNodePointer propertyMacro_yjqism_c0a2a0a1a2a1a2a2a1h = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7764131598616918128");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DevkitPointer$OX = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x721adb764b3fbd1bL, "jetbrains.mps.lang.smodel.structure.DevkitPointer");
+    /*package*/ static final SConcept DevkitPointer$Qt = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x721adb764b3fbd1bL, "jetbrains.mps.lang.smodel.structure.DevkitPointer");
   }
 }

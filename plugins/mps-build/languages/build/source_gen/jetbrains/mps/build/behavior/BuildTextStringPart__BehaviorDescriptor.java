@@ -36,12 +36,12 @@ public final class BuildTextStringPart__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static String getText_id3NagsOfTq4Y(@NotNull SNode __thisNode__, MacroHelper helper) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.text$aaWn);
+    return SPropertyOperations.getString(__thisNode__, PROPS.text$lRuU);
   }
   @Nullable
   /*package*/ static SNode getContainer_id5hFYqIiYHaE(@NotNull SNode __thisNode__) {
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildString$CM) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(__thisNode__)), CONCEPTS.BuildStringContainer$PA)) {
-      return SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(__thisNode__)), CONCEPTS.BuildStringContainer$PA);
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildString$bl) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(__thisNode__)), CONCEPTS.BuildStringContainer$o9)) {
+      return SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(__thisNode__)), CONCEPTS.BuildStringContainer$o9);
     }
     return null;
   }
@@ -95,11 +95,11 @@ public final class BuildTextStringPart__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$aaWn = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text");
+    /*package*/ static final SProperty text$lRuU = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d03L, 0x440d7ea3b68c4d56L, "text");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept BuildStringContainer$PA = MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a3953bbb4L, "jetbrains.mps.build.structure.BuildStringContainer");
-    /*package*/ static final SConcept BuildString$CM = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, "jetbrains.mps.build.structure.BuildString");
+    /*package*/ static final SInterfaceConcept BuildStringContainer$o9 = MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7f76698a3953bbb4L, "jetbrains.mps.build.structure.BuildStringContainer");
+    /*package*/ static final SConcept BuildString$bl = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, "jetbrains.mps.build.structure.BuildString");
   }
 }

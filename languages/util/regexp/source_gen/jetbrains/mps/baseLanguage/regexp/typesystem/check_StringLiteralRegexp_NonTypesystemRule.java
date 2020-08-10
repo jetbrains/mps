@@ -27,7 +27,7 @@ public class check_StringLiteralRegexp_NonTypesystemRule extends AbstractNonType
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.StringLiteralRegexp$g9;
+    return CONCEPTS.StringLiteralRegexp$SX;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -37,6 +37,6 @@ public class check_StringLiteralRegexp_NonTypesystemRule extends AbstractNonType
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StringLiteralRegexp$g9 = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a0992dL, "jetbrains.mps.baseLanguage.regexp.structure.StringLiteralRegexp");
+    /*package*/ static final SConcept StringLiteralRegexp$SX = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a0992dL, "jetbrains.mps.baseLanguage.regexp.structure.StringLiteralRegexp");
   }
 }

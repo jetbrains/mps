@@ -21,7 +21,7 @@ public class processIsProcessHandler_SubtypingRule extends SubtypingRule_Runtime
     return _quotation_createNode_ad42es_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ProcessType$tB;
+    return CONCEPTS.ProcessType$4j;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,6 +38,6 @@ public class processIsProcessHandler_SubtypingRule extends SubtypingRule_Runtime
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ProcessType$tB = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2c12L, "jetbrains.mps.execution.commands.structure.ProcessType");
+    /*package*/ static final SConcept ProcessType$4j = MetaAdapterFactory.getConcept(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0xbe3a0d5ba1a2c12L, "jetbrains.mps.execution.commands.structure.ProcessType");
   }
 }

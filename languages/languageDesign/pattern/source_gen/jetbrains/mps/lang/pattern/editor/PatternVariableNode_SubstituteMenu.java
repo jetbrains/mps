@@ -30,7 +30,7 @@ public class PatternVariableNode_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_y43w6t_a(), CONCEPTS.PatternVariableNode$dP));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_y43w6t_a(), CONCEPTS.PatternVariableNode$ro));
     return result;
   }
 
@@ -75,7 +75,7 @@ public class PatternVariableNode_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.PatternVariableNode$dP, context);
+        super(CONCEPTS.PatternVariableNode$ro, context);
         _context = context;
       }
 
@@ -112,7 +112,7 @@ public class PatternVariableNode_SubstituteMenu extends SubstituteMenuBase {
       }
       public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
         if (!(strictly)) {
-          return !(SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.NodeBuilderNode$RN));
+          return !(SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.NodeBuilderNode$Sn));
         } else {
           return pattern.startsWith("%");
         }
@@ -120,17 +120,17 @@ public class PatternVariableNode_SubstituteMenu extends SubstituteMenuBase {
     }
   }
   private static SNode createPatternVariableNode_y43w6t_a0a0a(String p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PatternVariableNode$dP);
-    n0.setProperty(PROPS.name$lA7v, p0);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.PatternVariableNode$ro);
+    n0.setProperty(PROPS.name$MnvL, p0);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PatternVariableNode$dP = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x24062557419efb70L, "jetbrains.mps.lang.pattern.structure.PatternVariableNode");
-    /*package*/ static final SConcept NodeBuilderNode$RN = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, "jetbrains.mps.lang.quotation.structure.NodeBuilderNode");
+    /*package*/ static final SConcept PatternVariableNode$ro = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x24062557419efb70L, "jetbrains.mps.lang.pattern.structure.PatternVariableNode");
+    /*package*/ static final SConcept NodeBuilderNode$Sn = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, "jetbrains.mps.lang.quotation.structure.NodeBuilderNode");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -30,20 +30,20 @@
       <node id="1225201879279" at="48,37,49,105" concept="1" />
       <node id="1225201879279" at="50,5,51,30" concept="6" />
       <node id="8014340958387885766" at="57,87,58,79" concept="5" />
-      <node id="8014340958387885772" at="58,79,59,156" concept="6" />
-      <node id="6480817028662815944" at="63,74,64,139" concept="1" />
-      <node id="1225201879301" at="64,139,65,68" concept="1" />
-      <node id="8014340958384435424" at="65,68,66,68" concept="1" />
-      <node id="8014340958382902261" at="66,68,67,74" concept="1" />
-      <node id="1225201879312" at="68,7,69,121" concept="1" />
+      <node id="8014340958387885772" at="58,79,59,157" concept="6" />
+      <node id="6480817028662815944" at="63,75,64,139" concept="1" />
+      <node id="1225201879301" at="64,139,65,69" concept="1" />
+      <node id="8014340958384435424" at="65,69,66,68" concept="1" />
+      <node id="8014340958382902261" at="66,68,67,75" concept="1" />
+      <node id="1225201879312" at="68,7,69,123" concept="1" />
       <node id="1225201879279" at="72,48,73,56" concept="6" />
-      <node id="1225201879279" at="78,0,79,0" concept="7" trace="name$lA7v" />
-      <node id="1225201879279" at="79,0,80,0" concept="7" trace="isAbstract$uAz" />
-      <node id="1225201879279" at="80,0,81,0" concept="7" trace="isVirtual$u8x" />
-      <node id="1225201879279" at="81,0,82,0" concept="7" trace="isFinal$zQoy" />
-      <node id="1225201879279" at="85,0,86,0" concept="7" trace="body$qspy" />
-      <node id="1225201879279" at="86,0,87,0" concept="7" trace="statement$pYcS" />
-      <node id="1225201879279" at="87,0,88,0" concept="7" trace="overriddenMethod$tTw" />
+      <node id="1225201879279" at="78,0,79,0" concept="7" trace="name$MnvL" />
+      <node id="1225201879279" at="79,0,80,0" concept="7" trace="isAbstract$qvtK" />
+      <node id="1225201879279" at="80,0,81,0" concept="7" trace="isVirtual$quZI" />
+      <node id="1225201879279" at="81,0,82,0" concept="7" trace="isFinal$eVPk" />
+      <node id="1225201879279" at="85,0,86,0" concept="7" trace="body$5xQk" />
+      <node id="1225201879279" at="86,0,87,0" concept="7" trace="statement$53DE" />
+      <node id="1225201879279" at="87,0,88,0" concept="7" trace="overriddenMethod$quKH" />
       <node id="1225201879279" at="54,0,56,0" concept="0" trace="IntentionImplementation#()V" />
       <node id="1225201879279" at="26,0,29,0" concept="0" trace="ToggleConceptMethodAbstract_Intention#()V" />
       <node id="1225201879279" at="34,84,37,5" concept="3" />
@@ -66,7 +66,7 @@
       <scope id="1225201879279" at="48,37,49,105" />
       <scope id="1225201879279" at="72,48,73,56" />
       <scope id="1225201879279" at="54,0,56,0" />
-      <scope id="1225201879281" at="57,87,59,156">
+      <scope id="1225201879281" at="57,87,59,157">
         <var name="methodName" id="8014340958387885767" />
       </scope>
       <scope id="1225201879279" at="26,0,29,0" />
@@ -78,7 +78,7 @@
       <scope id="1225201879279" at="34,84,38,16" />
       <scope id="1225201879279" at="43,0,47,0" />
       <scope id="1225201879279" at="47,99,51,30" />
-      <scope id="1225201879300" at="63,74,67,74" />
+      <scope id="1225201879300" at="63,75,67,75" />
       <scope id="1225201879279" at="71,0,75,0" />
       <scope id="1225201879279" at="56,0,61,0">
         <var name="editorContext" id="1225201879279" />
@@ -92,7 +92,7 @@
         <var name="editorContext" id="1225201879279" />
         <var name="node" id="1225201879279" />
       </scope>
-      <scope id="1225201879298" at="62,78,69,121" />
+      <scope id="1225201879298" at="62,78,69,123" />
       <scope id="1225201879279" at="61,0,71,0">
         <var name="editorContext" id="1225201879279" />
         <var name="node" id="1225201879279" />
@@ -119,15 +119,15 @@
       <node id="1225201879322" at="46,37,47,105" concept="1" />
       <node id="1225201879322" at="48,5,49,30" concept="6" />
       <node id="8014340958387903640" at="55,87,56,79" concept="5" />
-      <node id="8014340958387903646" at="56,79,57,153" concept="6" />
-      <node id="1225201879342" at="60,78,61,119" concept="1" />
-      <node id="3566429363059322021" at="62,73,63,70" concept="1" />
-      <node id="8014340958382825557" at="63,70,64,74" concept="1" />
+      <node id="8014340958387903646" at="56,79,57,154" concept="6" />
+      <node id="1225201879342" at="60,78,61,121" concept="1" />
+      <node id="3566429363059322021" at="62,74,63,71" concept="1" />
+      <node id="8014340958382825557" at="63,71,64,75" concept="1" />
       <node id="1225201879322" at="68,48,69,55" concept="6" />
-      <node id="1225201879322" at="74,0,75,0" concept="7" trace="name$lA7v" />
-      <node id="1225201879322" at="75,0,76,0" concept="7" trace="isVirtual$u8x" />
-      <node id="1225201879322" at="76,0,77,0" concept="7" trace="isAbstract$uAz" />
-      <node id="1225201879322" at="80,0,81,0" concept="7" trace="overriddenMethod$tTw" />
+      <node id="1225201879322" at="74,0,75,0" concept="7" trace="name$MnvL" />
+      <node id="1225201879322" at="75,0,76,0" concept="7" trace="isVirtual$quZI" />
+      <node id="1225201879322" at="76,0,77,0" concept="7" trace="isAbstract$qvtK" />
+      <node id="1225201879322" at="80,0,81,0" concept="7" trace="overriddenMethod$quKH" />
       <node id="1225201879322" at="52,0,54,0" concept="0" trace="IntentionImplementation#()V" />
       <node id="1225201879322" at="24,0,27,0" concept="0" trace="ToggleConceptMethodVirtual_Intention#()V" />
       <node id="1225201879322" at="32,84,35,5" concept="3" />
@@ -135,7 +135,7 @@
       <node id="1225201879322" at="45,99,48,5" concept="3" />
       <node id="1225201879322" at="27,0,31,0" concept="4" trace="getPresentation#()Ljava/lang/String;" />
       <node id="1225201879322" at="41,0,45,0" concept="4" trace="isSurroundWith#()Z" />
-      <node id="3566429363059295340" at="61,119,65,7" concept="3" />
+      <node id="3566429363059295340" at="61,121,65,7" concept="3" />
       <node id="1225201879322" at="67,0,71,0" concept="4" trace="getDescriptor#()Ljetbrains/mps/openapi/intentions/IntentionDescriptor;" />
       <node id="1225201879322" at="54,0,59,0" concept="4" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/lang/String;" />
       <node id="1225201879322" at="45,0,51,0" concept="4" trace="instances#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/util/Collection;" />
@@ -150,10 +150,10 @@
       <scope id="1225201879322" at="46,37,47,105" />
       <scope id="1225201879322" at="68,48,69,55" />
       <scope id="1225201879322" at="52,0,54,0" />
-      <scope id="1225201879324" at="55,87,57,153">
+      <scope id="1225201879324" at="55,87,57,154">
         <var name="methodName" id="8014340958387903641" />
       </scope>
-      <scope id="3566429363059295341" at="62,73,64,74" />
+      <scope id="3566429363059295341" at="62,74,64,75" />
       <scope id="1225201879322" at="24,0,27,0" />
       <scope id="1225201879322" at="38,0,41,0">
         <var name="editorContext" id="1225201879322" />
@@ -212,13 +212,13 @@
       <node id="4748945189160287409" at="81,9,82,71" concept="1" />
       <node id="1076865108598603664" at="83,102,84,139" concept="1" />
       <node id="4748945189160275754" at="88,48,89,47" concept="6" />
-      <node id="4748945189160275754" at="94,0,95,0" concept="7" trace="name$lA7v" />
-      <node id="4748945189160275754" at="95,0,96,0" concept="7" trace="isStatic$lgS1" />
-      <node id="4748945189160275754" at="99,0,100,0" concept="7" trace="ThisConceptExpression$T_" />
-      <node id="4748945189160275754" at="100,0,101,0" concept="7" trace="ThisNodeExpression$BO" />
-      <node id="4748945189160275754" at="101,0,102,0" concept="7" trace="SuperConceptExpression$HR" />
-      <node id="4748945189160275754" at="105,0,106,0" concept="7" trace="body$qspy" />
-      <node id="4748945189160275754" at="106,0,107,0" concept="7" trace="statement$pYcS" />
+      <node id="4748945189160275754" at="94,0,95,0" concept="7" trace="name$MnvL" />
+      <node id="4748945189160275754" at="95,0,96,0" concept="7" trace="isStatic$JhJe" />
+      <node id="4748945189160275754" at="99,0,100,0" concept="7" trace="ThisConceptExpression$KM" />
+      <node id="4748945189160275754" at="100,0,101,0" concept="7" trace="ThisNodeExpression$v1" />
+      <node id="4748945189160275754" at="101,0,102,0" concept="7" trace="SuperConceptExpression$_4" />
+      <node id="4748945189160275754" at="105,0,106,0" concept="7" trace="body$5xQk" />
+      <node id="4748945189160275754" at="106,0,107,0" concept="7" trace="statement$53DE" />
       <node id="4748945189160275754" at="60,0,62,0" concept="0" trace="IntentionImplementation#()V" />
       <node id="4748945189160275754" at="32,0,35,0" concept="0" trace="ToggleMethodStatic_Intention#()V" />
       <node id="4748945189160275754" at="40,84,43,5" concept="3" />
@@ -315,7 +315,7 @@
       <node id="6678378332547046125" at="54,87,55,48" concept="6" />
       <node id="6678378332547046141" at="58,78,59,107" concept="1" />
       <node id="6678378332547031548" at="62,48,63,38" concept="6" />
-      <node id="6678378332547031548" at="68,0,69,0" concept="7" trace="typeVariableDeclaration$6cWB" />
+      <node id="6678378332547031548" at="68,0,69,0" concept="7" trace="typeVariableDeclaration$Lipp" />
       <node id="6678378332547031548" at="51,0,53,0" concept="0" trace="IntentionImplementation#()V" />
       <node id="6678378332547031548" at="23,0,26,0" concept="0" trace="RemoveTVD_Intention#()V" />
       <node id="6678378332547031548" at="31,84,34,5" concept="3" />
@@ -389,9 +389,9 @@
       <node id="8014340958387659409" at="56,127,57,204" concept="6" />
       <node id="8014340958386989543" at="60,78,61,213" concept="1" />
       <node id="8014340958386989491" at="64,48,65,50" concept="6" />
-      <node id="8014340958386989491" at="70,0,71,0" concept="7" trace="concept$45m$" />
-      <node id="8014340958386989491" at="74,0,75,0" concept="7" trace="name$lA7v" />
-      <node id="8014340958386989491" at="75,0,76,0" concept="7" trace="abstract$Q3$6" />
+      <node id="8014340958386989491" at="70,0,71,0" concept="7" trace="concept$u6dL" />
+      <node id="8014340958386989491" at="74,0,75,0" concept="7" trace="name$MnvL" />
+      <node id="8014340958386989491" at="75,0,76,0" concept="7" trace="abstract$ibpT" />
       <node id="8014340958386989491" at="52,0,54,0" concept="0" trace="IntentionImplementation#()V" />
       <node id="8014340958386989491" at="24,0,27,0" concept="0" trace="ToggleConceptAbstract_Intention#()V" />
       <node id="8014340958386989491" at="32,84,35,5" concept="3" />

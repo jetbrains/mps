@@ -49,24 +49,24 @@ public final class VariableReference__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static SNode getTypeAnnotation_idhXbqSv6(@NotNull SNode __thisNode__) {
-    return TypeAnnotable__BehaviorDescriptor.getTypeAnnotation_idhXbqSv6.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$7WwU));
+    return TypeAnnotable__BehaviorDescriptor.getTypeAnnotation_idhXbqSv6.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG));
   }
   /*package*/ static SNode getVariable_idSORzhOpB6t(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$7WwU);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG);
   }
   /*package*/ static Object getCompileTimeConstantValue_idi1LP2xI(@NotNull SNode __thisNode__, SModule module) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$7WwU), CONCEPTS.StaticFieldDeclaration$R5)) {
-      SNode declaration = SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$7WwU), CONCEPTS.StaticFieldDeclaration$R5);
-      if (SPropertyOperations.getBoolean(declaration, PROPS.isFinal$_qt3)) {
-        SNode classifier = SNodeOperations.as(SNodeOperations.getParent(declaration), CONCEPTS.Classifier$hJ);
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.StaticFieldDeclaration$jR)) {
+      SNode declaration = SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.StaticFieldDeclaration$jR);
+      if (SPropertyOperations.getBoolean(declaration, PROPS.isFinal$gvTP)) {
+        SNode classifier = SNodeOperations.as(SNodeOperations.getParent(declaration), CONCEPTS.Classifier$Ix);
         if ((classifier == null) || !(SModelStereotype.isStubModel(SNodeOperations.getModel(classifier)))) {
-          return ((boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(declaration, LINKS.initializer$no3R)) ? Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SLinkOperations.getTarget(declaration, LINKS.initializer$no3R), module) : null);
+          return ((boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(declaration, LINKS.initializer$2twD)) ? Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SLinkOperations.getTarget(declaration, LINKS.initializer$2twD), module) : null);
         }
 
         SModule m = check_gidzrl_a0d0b0a0c(SNodeOperations.getModel(declaration));
         if (m != null) {
           try {
-            final Object c = ReflectionUtil.getConstantValue(m, classifier, SPropertyOperations.getString(declaration, PROPS.name$lA7v));
+            final Object c = ReflectionUtil.getConstantValue(m, classifier, SPropertyOperations.getString(declaration, PROPS.name$MnvL));
             if (c != null) {
               return c;
             }
@@ -78,37 +78,37 @@ public final class VariableReference__BehaviorDescriptor extends BaseBHDescripto
           return null;
         }
         try {
-          return ReflectionUtil.getConstantValue(module, classifier, SPropertyOperations.getString(declaration, PROPS.name$lA7v));
+          return ReflectionUtil.getConstantValue(module, classifier, SPropertyOperations.getString(declaration, PROPS.name$MnvL));
         } catch (Throwable t) {
           return null;
         }
       }
-    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf)) {
-      SNode declaration = SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf);
-      if (SPropertyOperations.getBoolean(declaration, PROPS.isFinal$_qt3)) {
-        return ((boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(declaration, LINKS.initializer$no3R)) ? Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SLinkOperations.getTarget(declaration, LINKS.initializer$no3R), module) : null);
+    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41)) {
+      SNode declaration = SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41);
+      if (SPropertyOperations.getBoolean(declaration, PROPS.isFinal$gvTP)) {
+        return ((boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(declaration, LINKS.initializer$2twD)) ? Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SLinkOperations.getTarget(declaration, LINKS.initializer$2twD), module) : null);
       }
     }
 
-    return ((Object) Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invokeSuper(__thisNode__, CONCEPTS.VariableReference$sQ, module));
+    return ((Object) Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invokeSuper(__thisNode__, CONCEPTS.VariableReference$TC, module));
   }
   /*package*/ static boolean isCompileTimeConstant_idi1LOPRp(@NotNull SNode __thisNode__) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$7WwU), CONCEPTS.StaticFieldDeclaration$R5)) {
-      SNode declaration = SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$7WwU), CONCEPTS.StaticFieldDeclaration$R5);
-      return SPropertyOperations.getBoolean(declaration, PROPS.isFinal$_qt3) && (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(declaration, LINKS.initializer$no3R));
-    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf)) {
-      return SPropertyOperations.getBoolean(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf), PROPS.isFinal$_qt3) && (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf), LINKS.initializer$no3R));
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.StaticFieldDeclaration$jR)) {
+      SNode declaration = SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.StaticFieldDeclaration$jR);
+      return SPropertyOperations.getBoolean(declaration, PROPS.isFinal$gvTP) && (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(declaration, LINKS.initializer$2twD));
+    } else if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41)) {
+      return SPropertyOperations.getBoolean(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41), PROPS.isFinal$gvTP) && (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41), LINKS.initializer$2twD));
     }
 
-    return ((boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invokeSuper(__thisNode__, CONCEPTS.VariableReference$sQ));
+    return ((boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invokeSuper(__thisNode__, CONCEPTS.VariableReference$TC));
   }
   /*package*/ static boolean isParameterOfThisMethod_idi3dhek3(@NotNull SNode __thisNode__) {
     // todo: method from ParameterReference. Remove. 
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$7WwU), CONCEPTS.ParameterDeclaration$qU))) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.ParameterDeclaration$RG))) {
       throw new IllegalArgumentException();
     }
-    if (SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.BaseMethodDeclaration$RR, false, false) == SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$7WwU), CONCEPTS.BaseMethodDeclaration$RR, false, false)) {
-      if (SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Closureoid$Rz, false, false) == SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$7WwU), CONCEPTS.Closureoid$Rz, false, false)) {
+    if (SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.BaseMethodDeclaration$kD, false, false) == SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.BaseMethodDeclaration$kD, false, false)) {
+      if (SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Closureoid$kl, false, false) == SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.Closureoid$kl, false, false)) {
         return true;
       }
     }
@@ -116,15 +116,15 @@ public final class VariableReference__BehaviorDescriptor extends BaseBHDescripto
   }
   /*package*/ static boolean isVariableDefinedInThisMethod_idhPiSGi6(@NotNull SNode __thisNode__) {
     // todo: method from LocalVariableReference. Remove 
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf))) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41))) {
       throw new IllegalArgumentException();
     }
     SNode anchor = __thisNode__;
-    if ((SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.AbstractAntiquotation$Tk, false, false) != null)) {
-      anchor = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Quotation$UL, false, false);
+    if ((SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.AbstractAntiquotation$TS, false, false) != null)) {
+      anchor = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Quotation$Vl, false, false);
     }
-    if (SNodeOperations.getNodeAncestor(anchor, CONCEPTS.BaseMethodDeclaration$RR, false, false) == SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$7WwU), CONCEPTS.BaseMethodDeclaration$RR, false, false)) {
-      if (SNodeOperations.getNodeAncestor(anchor, CONCEPTS.Closureoid$Rz, false, false) == SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$7WwU), CONCEPTS.Closureoid$Rz, false, false)) {
+    if (SNodeOperations.getNodeAncestor(anchor, CONCEPTS.BaseMethodDeclaration$kD, false, false) == SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.BaseMethodDeclaration$kD, false, false)) {
+      if (SNodeOperations.getNodeAncestor(anchor, CONCEPTS.Closureoid$kl, false, false) == SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.Closureoid$kl, false, false)) {
         return true;
       }
     }
@@ -132,8 +132,8 @@ public final class VariableReference__BehaviorDescriptor extends BaseBHDescripto
   }
   /*package*/ static SNode getDeclaration_id2P5W1FWMYZ5(@NotNull SNode __thisNode__) {
     // todo: method from LocalVariableReference. Remove 
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf)) {
-      return SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf);
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41)) {
+      return SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41);
     } else {
       return null;
     }
@@ -214,24 +214,24 @@ public final class VariableReference__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink initializer$2twD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StaticFieldDeclaration$R5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept LocalVariableDeclaration$Bf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
-    /*package*/ static final SConcept VariableReference$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
-    /*package*/ static final SConcept ParameterDeclaration$qU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
-    /*package*/ static final SInterfaceConcept Closureoid$Rz = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1192e7dfdd1L, "jetbrains.mps.baseLanguage.structure.Closureoid");
-    /*package*/ static final SConcept BaseMethodDeclaration$RR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
-    /*package*/ static final SConcept Quotation$UL = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, "jetbrains.mps.lang.quotation.structure.Quotation");
-    /*package*/ static final SInterfaceConcept AbstractAntiquotation$Tk = MetaAdapterFactory.getInterfaceConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104656L, "jetbrains.mps.lang.quotation.structure.AbstractAntiquotation");
+    /*package*/ static final SConcept StaticFieldDeclaration$jR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept LocalVariableDeclaration$41 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
+    /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept ParameterDeclaration$RG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
+    /*package*/ static final SInterfaceConcept Closureoid$kl = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1192e7dfdd1L, "jetbrains.mps.baseLanguage.structure.Closureoid");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept Quotation$Vl = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L, "jetbrains.mps.lang.quotation.structure.Quotation");
+    /*package*/ static final SInterfaceConcept AbstractAntiquotation$TS = MetaAdapterFactory.getInterfaceConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104656L, "jetbrains.mps.lang.quotation.structure.AbstractAntiquotation");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$gvTP = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 }

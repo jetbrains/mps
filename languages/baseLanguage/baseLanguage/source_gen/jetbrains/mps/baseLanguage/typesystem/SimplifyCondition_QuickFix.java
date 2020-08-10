@@ -21,20 +21,20 @@ public class SimplifyCondition_QuickFix extends QuickFix_Runtime {
     return "Simplify condition to " + ((String) SimplifyCondition_QuickFix.this.getField("newValue")[0]);
   }
   public void execute(SNode node) {
-    SNode expr = SNodeOperations.cast(node, CONCEPTS.Expression$TP);
+    SNode expr = SNodeOperations.cast(node, CONCEPTS.Expression$mB);
     Object value = Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(expr, SNodeOperations.getModel(expr).getModule());
     if (value instanceof Boolean) {
-      SNode v = SNodeFactoryOperations.replaceWithNewChild(expr, CONCEPTS.BooleanConstant$Ui);
-      SPropertyOperations.assign(v, PROPS.value$qt90, ((Boolean) value).booleanValue());
+      SNode v = SNodeFactoryOperations.replaceWithNewChild(expr, CONCEPTS.BooleanConstant$n4);
+      SPropertyOperations.assign(v, PROPS.value$5y_M, ((Boolean) value).booleanValue());
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
-    /*package*/ static final SConcept BooleanConstant$Ui = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept BooleanConstant$n4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, "jetbrains.mps.baseLanguage.structure.BooleanConstant");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$qt90 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
+    /*package*/ static final SProperty value$5y_M = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b201L, 0xf8cc56b202L, "value");
   }
 }

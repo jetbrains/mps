@@ -16,12 +16,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Element_Constraints extends BaseConstraintsDescriptor {
   public Element_Constraints() {
-    super(CONCEPTS.Element$pj);
+    super(CONCEPTS.Element$LI);
   }
 
   public static class Details_url_Property extends BasePropertyConstraintsDescriptor {
     public Details_url_Property(ConstraintsDescriptor container) {
-      super(PROPS.details_url$3seq, container);
+      super(PROPS.details_url$Z4AP, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -29,7 +29,7 @@ public class Element_Constraints extends BaseConstraintsDescriptor {
     }
     @Override
     public Object getValue(SNode node) {
-      String id = SPropertyOperations.getString(node, PROPS.id$KLP$);
+      String id = SPropertyOperations.getString(node, PROPS.id$GqdZ);
       if (id != null) {
         return "https://www.periodni.com/" + id.toLowerCase() + ".html";
       } else {
@@ -40,16 +40,16 @@ public class Element_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.details_url$3seq, new Details_url_Property(this));
+    properties.put(PROPS.details_url$Z4AP, new Details_url_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Element$pj = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba53971L, "jetbrains.mps.samples.ChemMastery.structure.Element");
+    /*package*/ static final SConcept Element$LI = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba53971L, "jetbrains.mps.samples.ChemMastery.structure.Element");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty details_url$3seq = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba53971L, 0x2b5828a8c1e2ab18L, "details_url");
-    /*package*/ static final SProperty id$KLP$ = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba53971L, 0x5b2638e8bdcd7deaL, "id");
+    /*package*/ static final SProperty details_url$Z4AP = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba53971L, 0x2b5828a8c1e2ab18L, "details_url");
+    /*package*/ static final SProperty id$GqdZ = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba53971L, 0x5b2638e8bdcd7deaL, "id");
   }
 }

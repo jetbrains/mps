@@ -31,7 +31,7 @@ public final class TextCommentPart__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   /*package*/ static boolean isToDo_id6hHyb3YSGHZ(@NotNull SNode __thisNode__) {
-    String text = SPropertyOperations.getString(__thisNode__, PROPS.text$va_w);
+    String text = SPropertyOperations.getString(__thisNode__, PROPS.text$ag2i);
     if (text != null) {
       text = text.trim().toLowerCase();
       return text.startsWith("todo") || text.startsWith("fix");
@@ -87,6 +87,6 @@ public final class TextCommentPart__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$va_w = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text");
+    /*package*/ static final SProperty text$ag2i = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text");
   }
 }

@@ -214,7 +214,7 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
       while (SetSequence.fromSet(myInvalidNodes).isNotEmpty()) {
         SNode node = SetSequence.fromSet(myInvalidNodes).first();
         SetSequence.fromSet(myInvalidNodes).removeElement(node);
-        if ((SNodeOperations.getNodeAncestor(node, CONCEPTS.ISkipConstraintsChecking$K1, true, false) != null)) {
+        if ((SNodeOperations.getNodeAncestor(node, CONCEPTS.ISkipConstraintsChecking$8j, true, false) != null)) {
           continue;
         }
         checkNode(node, checkers, repository);
@@ -232,7 +232,7 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
 
       while (myFullCheckIterator.hasNext()) {
         SNode node = myFullCheckIterator.next();
-        if (SNodeOperations.isInstanceOf(node, CONCEPTS.ISkipConstraintsChecking$K1)) {
+        if (SNodeOperations.isInstanceOf(node, CONCEPTS.ISkipConstraintsChecking$8j)) {
           myFullCheckIterator.skipChildren();
           continue;
         }
@@ -290,7 +290,7 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
     if (SNodeOperations.getModel(node) == null) {
       return;
     }
-    if ((SNodeOperations.getNodeAncestor(node, CONCEPTS.ISkipConstraintsChecking$K1, true, false) != null)) {
+    if ((SNodeOperations.getNodeAncestor(node, CONCEPTS.ISkipConstraintsChecking$8j, true, false) != null)) {
       return;
     }
     try {
@@ -412,6 +412,6 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept ISkipConstraintsChecking$K1 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x50ef06e32fec9043L, "jetbrains.mps.lang.core.structure.ISkipConstraintsChecking");
+    /*package*/ static final SInterfaceConcept ISkipConstraintsChecking$8j = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x50ef06e32fec9043L, "jetbrains.mps.lang.core.structure.ISkipConstraintsChecking");
   }
 }

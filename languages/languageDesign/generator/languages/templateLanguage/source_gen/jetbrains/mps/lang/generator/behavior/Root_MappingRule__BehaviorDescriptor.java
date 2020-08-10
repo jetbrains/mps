@@ -32,7 +32,7 @@ public final class Root_MappingRule__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static SAbstractConcept getTemplateType_idhEwJbaf(@NotNull SNode __thisNode__) {
-    return SNodeOperations.getConcept(SLinkOperations.getTarget(__thisNode__, LINKS.template$YDaQ));
+    return SNodeOperations.getConcept(SLinkOperations.getTarget(__thisNode__, LINKS.template$n_Qy));
   }
 
   /*package*/ Root_MappingRule__BehaviorDescriptor() {
@@ -82,6 +82,6 @@ public final class Root_MappingRule__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink template$YDaQ = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fd54746dbL, 0x10fd54746ddL, "template");
+    /*package*/ static final SReferenceLink template$n_Qy = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fd54746dbL, 0x10fd54746ddL, "template");
   }
 }

@@ -41,7 +41,7 @@ public final class BuildNamedLayout__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static String getChildrenOutputDir_WithMacro_id450ejGzh8bb(@NotNull SNode __thisNode__, Context context) {
-    return "${build.layout." + SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v) + "}";
+    return "${build.layout." + SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL) + "}";
   }
   /*package*/ static String getAssembleSubTaskId_id450ejGzh8bO(@NotNull SNode __thisNode__) {
     return null;
@@ -50,11 +50,11 @@ public final class BuildNamedLayout__BehaviorDescriptor extends BaseBHDescriptor
     return null;
   }
   /*package*/ static void appendName_id1bWeed$ownT(@NotNull SNode __thisNode__, SNode parent, StringBuilder sb) {
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildProject$BF)) {
-      sb.append(SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildProject$BF), PROPS.name$lA7v));
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildProject$ae)) {
+      sb.append(SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildProject$ae), PROPS.name$MnvL));
       sb.append(".");
     }
-    sb.append(SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v));
+    sb.append(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL));
   }
   /*package*/ static void unpack_id6IqTD4bJTWZ(@NotNull SNode __thisNode__, UnpackHelper helper) {
     // nop 
@@ -122,10 +122,10 @@ public final class BuildNamedLayout__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildProject$BF = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+    /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
   }
 }

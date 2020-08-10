@@ -26,14 +26,14 @@ public class StaticFieldReference_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode classifier1 = SLinkOperations.getTarget(node, LINKS.classifier$WKxm);
-        SNode classifier2 = SNodeOperations.getNodeAncestor(node, CONCEPTS.Classifier$hJ, false, false);
+        SNode classifier1 = SLinkOperations.getTarget(node, LINKS.classifier$BPY8);
+        SNode classifier2 = SNodeOperations.getNodeAncestor(node, CONCEPTS.Classifier$Ix, false, false);
         if (classifier1 == classifier2) {
           if (DeletionApproverUtil.approve(editorContext, node, "classifier")) {
             return;
           }
-          SNode localStaticFieldReference = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.VariableReference$sQ);
-          SLinkOperations.setTarget(localStaticFieldReference, LINKS.variableDeclaration$7WwU, SLinkOperations.getTarget(node, LINKS.variableDeclaration$7WwU));
+          SNode localStaticFieldReference = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.VariableReference$TC);
+          SLinkOperations.setTarget(localStaticFieldReference, LINKS.variableDeclaration$N1XG, SLinkOperations.getTarget(node, LINKS.variableDeclaration$N1XG));
         }
       }
 
@@ -82,12 +82,12 @@ public class StaticFieldReference_Actions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$WKxm = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink classifier$BPY8 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept VariableReference$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
   }
 }

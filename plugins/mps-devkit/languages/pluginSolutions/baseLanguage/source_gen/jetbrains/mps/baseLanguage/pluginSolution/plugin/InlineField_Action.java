@@ -53,8 +53,8 @@ public class InlineField_Action extends BaseAction {
     if (ReadOnlyUtil.isCellsReadOnlyInEditor(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")), Sequence.<EditorCell>singleton(((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).findNodeCell(((SNode) MapSequence.fromMap(_params).get("node")))))) {
       return false;
     }
-    boolean isFieldDeclaration = (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.FieldDeclaration$Ps) && SPropertyOperations.getBoolean(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.FieldDeclaration$Ps), PROPS.isFinal$_qt3) && (SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableDeclaration$xe), LINKS.initializer$no3R) != null)) || (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableReference$sQ) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), CONCEPTS.FieldDeclaration$Ps) && SPropertyOperations.getBoolean(SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), PROPS.isFinal$_qt3) && (SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), LINKS.initializer$no3R) != null)) || (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.FieldReferenceOperation$N8) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.FieldReferenceOperation$N8), LINKS.fieldDeclaration$229u), CONCEPTS.FieldDeclaration$Ps) && SPropertyOperations.getBoolean(SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.FieldReferenceOperation$N8), LINKS.fieldDeclaration$229u), PROPS.isFinal$_qt3) && (SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.FieldReferenceOperation$N8), LINKS.fieldDeclaration$229u), LINKS.initializer$no3R) != null));
-    boolean isStaticFieldDeclaration = (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.StaticFieldDeclaration$R5) && SPropertyOperations.getBoolean(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.StaticFieldDeclaration$R5), PROPS.isFinal$_qt3) && (SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableDeclaration$xe), LINKS.initializer$no3R) != null)) || (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableReference$sQ) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), CONCEPTS.StaticFieldDeclaration$R5) && SPropertyOperations.getBoolean(SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), PROPS.isFinal$_qt3) && (SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableReference$sQ), LINKS.variableDeclaration$7WwU), LINKS.initializer$no3R) != null));
+    boolean isFieldDeclaration = (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.FieldDeclaration$ie) && SPropertyOperations.getBoolean(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.FieldDeclaration$ie), PROPS.isFinal$gvTP) && (SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableDeclaration$Y0), LINKS.initializer$2twD) != null)) || (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableReference$TC) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.FieldDeclaration$ie) && SPropertyOperations.getBoolean(SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), PROPS.isFinal$gvTP) && (SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), LINKS.initializer$2twD) != null)) || (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.FieldReferenceOperation$fU) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.FieldReferenceOperation$fU), LINKS.fieldDeclaration$H7Ag), CONCEPTS.FieldDeclaration$ie) && SPropertyOperations.getBoolean(SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.FieldReferenceOperation$fU), LINKS.fieldDeclaration$H7Ag), PROPS.isFinal$gvTP) && (SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.FieldReferenceOperation$fU), LINKS.fieldDeclaration$H7Ag), LINKS.initializer$2twD) != null));
+    boolean isStaticFieldDeclaration = (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.StaticFieldDeclaration$jR) && SPropertyOperations.getBoolean(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.StaticFieldDeclaration$jR), PROPS.isFinal$gvTP) && (SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableDeclaration$Y0), LINKS.initializer$2twD) != null)) || (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableReference$TC) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.StaticFieldDeclaration$jR) && SPropertyOperations.getBoolean(SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), PROPS.isFinal$gvTP) && (SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), LINKS.initializer$2twD) != null));
     return (isFieldDeclaration || isStaticFieldDeclaration);
   }
   @Override
@@ -111,15 +111,15 @@ public class InlineField_Action extends BaseAction {
     final Wrappers._T<String> yesNoMessage = new Wrappers._T<String>(null);
     modelAccess.runReadAction(new Runnable() {
       public void run() {
-        if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.FieldDeclaration$Ps) || SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.StaticFieldDeclaration$R5)) {
-          SNode fieldDeclaration = SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableDeclaration$xe);
+        if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.FieldDeclaration$ie) || SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.StaticFieldDeclaration$jR)) {
+          SNode fieldDeclaration = SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableDeclaration$Y0);
           InlineFieldAssignmentRefactoring inlineVARef = new InlineFieldAssignmentRefactoring(fieldDeclaration);
 
-          if ((SLinkOperations.getTarget(fieldDeclaration, LINKS.initializer$no3R) == null)) {
+          if ((SLinkOperations.getTarget(fieldDeclaration, LINKS.initializer$2twD) == null)) {
             isAvailable.value = false;
           }
 
-          String fieldName = SPropertyOperations.getString(fieldDeclaration, PROPS.name$lA7v);
+          String fieldName = SPropertyOperations.getString(fieldDeclaration, PROPS.name$MnvL);
           int nodesCount = Sequence.fromIterable(inlineVARef.findAllReferences(fieldDeclaration)).count() + Sequence.fromIterable(inlineVARef.findAllReferenceOperations(fieldDeclaration)).count();
           if (nodesCount == 0) {
             infoMessage.value = "Field " + fieldName + " is never used";
@@ -130,10 +130,10 @@ public class InlineField_Action extends BaseAction {
           }
 
           ref.value = inlineVARef;
-        } else if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.FieldReferenceOperation$N8)) {
-          ref.value = new InlineFieldReferenceOperationRefactoring(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.FieldReferenceOperation$N8));
+        } else if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.FieldReferenceOperation$fU)) {
+          ref.value = new InlineFieldReferenceOperationRefactoring(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.FieldReferenceOperation$fU));
         } else {
-          SNode localVariableReference = SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableReference$sQ);
+          SNode localVariableReference = SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableReference$TC);
           ref.value = new InlineFieldReferenceRefactoring(localVariableReference);
         }
       }
@@ -163,21 +163,21 @@ public class InlineField_Action extends BaseAction {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VariableDeclaration$xe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
-    /*package*/ static final SConcept FieldDeclaration$Ps = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
-    /*package*/ static final SConcept VariableReference$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
-    /*package*/ static final SConcept FieldReferenceOperation$N8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation");
-    /*package*/ static final SConcept StaticFieldDeclaration$R5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
+    /*package*/ static final SConcept VariableDeclaration$Y0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
+    /*package*/ static final SConcept FieldDeclaration$ie = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
+    /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept FieldReferenceOperation$fU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation");
+    /*package*/ static final SConcept StaticFieldDeclaration$jR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SReferenceLink fieldDeclaration$229u = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
+    /*package*/ static final SContainmentLink initializer$2twD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SReferenceLink fieldDeclaration$H7Ag = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$gvTP = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

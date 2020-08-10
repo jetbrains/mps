@@ -113,7 +113,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new postfixesFunctionSingleRoleHandler_nmnci2_d1a(myNode, LINKS.postfixesFunction$Gwj0, getEditorContext());
+    SingleRoleCellProvider provider = new postfixesFunctionSingleRoleHandler_nmnci2_d1a(myNode, LINKS.postfixesFunction$KMuB, getEditorContext());
     return provider.createCell();
   }
   private static class postfixesFunctionSingleRoleHandler_nmnci2_d1a extends SingleRoleCellProvider {
@@ -133,8 +133,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
     protected EditorCell createChildCell(SNode child) {
       EditorCell editorCell = getUpdateSession().updateChildNodeCell(child);
-      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.postfixesFunction$Gwj0, child));
-      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.postfixesFunction$Gwj0, child));
+      editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(getNode(), LINKS.postfixesFunction$KMuB, child));
+      editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(getNode(), LINKS.postfixesFunction$KMuB, child));
       installCellInfo(child, editorCell, false);
       return editorCell;
     }
@@ -146,13 +146,13 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
         editorCell.setSubstituteInfo((isEmpty ? new SEmptyContainmentSubstituteInfo(editorCell) : new SChildSubstituteInfo(editorCell)));
       }
       if (editorCell.getSRole() == null) {
-        editorCell.setSRole(LINKS.postfixesFunction$Gwj0);
+        editorCell.setSRole(LINKS.postfixesFunction$KMuB);
       }
     }
     @Override
     protected EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.postfixesFunction$Gwj0));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.postfixesFunction$KMuB));
       try {
         EditorCell editorCell = super.createEmptyCell();
         editorCell.setCellId("empty_postfixesFunction");
@@ -169,6 +169,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink postfixesFunction$Gwj0 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x112e2300bcaL, 0x112e2300bcbL, "postfixesFunction");
+    /*package*/ static final SContainmentLink postfixesFunction$KMuB = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x112e2300bcaL, 0x112e2300bcbL, "postfixesFunction");
   }
 }

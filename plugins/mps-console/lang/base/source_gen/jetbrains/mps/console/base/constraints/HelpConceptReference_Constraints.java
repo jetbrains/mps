@@ -30,12 +30,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class HelpConceptReference_Constraints extends BaseConstraintsDescriptor {
   public HelpConceptReference_Constraints() {
-    super(CONCEPTS.HelpConceptReference$kf);
+    super(CONCEPTS.HelpConceptReference$Y8);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.command$Mb5s, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.command$b3Jl, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -57,7 +57,7 @@ public class HelpConceptReference_Constraints extends BaseConstraintsDescriptor 
             }) {
               @Override
               public boolean isExcluded(SNode node) {
-                return !(SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptDeclaration$qU)) || SPropertyOperations.getBoolean(SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$qU), PROPS.abstract$Q3$6) || AttributeOperations.getAttribute(SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$qU), new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$I8)) != null;
+                return !(SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptDeclaration$gH)) || SPropertyOperations.getBoolean(SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$gH), PROPS.abstract$ibpT) || AttributeOperations.getAttribute(SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$gH), new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV)) != null;
 
               }
             };
@@ -72,16 +72,16 @@ public class HelpConceptReference_Constraints extends BaseConstraintsDescriptor 
   private static final SNodePointer breakingNode_asp0i5_a0a0a0a0a1a0a0a0c = new SNodePointer("r:a35e9456-af18-4589-b3c4-ed9896a657c9(jetbrains.mps.console.base.constraints)", "6836281137582820644");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept HelpConceptReference$kf = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x60279080c2f3b209L, "jetbrains.mps.console.base.structure.HelpConceptReference");
-    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
-    /*package*/ static final SConcept DeprecatedNodeAnnotation$I8 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x11d0a70ae54L, "jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation");
+    /*package*/ static final SConcept HelpConceptReference$Y8 = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x60279080c2f3b209L, "jetbrains.mps.console.base.structure.HelpConceptReference");
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept DeprecatedNodeAnnotation$zV = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x11d0a70ae54L, "jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink command$Mb5s = MetaAdapterFactory.getReferenceLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x60279080c2f3b209L, 0x60279080c2f3f8d6L, "command");
+    /*package*/ static final SReferenceLink command$b3Jl = MetaAdapterFactory.getReferenceLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x60279080c2f3b209L, 0x60279080c2f3f8d6L, "command");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty abstract$Q3$6 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
+    /*package*/ static final SProperty abstract$ibpT = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract");
   }
 }

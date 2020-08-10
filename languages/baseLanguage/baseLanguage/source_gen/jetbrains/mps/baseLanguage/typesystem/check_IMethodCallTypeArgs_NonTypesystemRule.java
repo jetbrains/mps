@@ -22,7 +22,7 @@ public class check_IMethodCallTypeArgs_NonTypesystemRule extends AbstractNonType
   public check_IMethodCallTypeArgs_NonTypesystemRule() {
   }
   public void applyRule(final SNode iMethodCall, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(iMethodCall, LINKS.typeArgument$C5i1)).count() > 0 && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(iMethodCall, LINKS.baseMethodDeclaration$ItxI), LINKS.typeVariableDeclaration$6cWB)).count() != ListSequence.fromList(SLinkOperations.getChildren(iMethodCall, LINKS.typeArgument$C5i1)).count()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(iMethodCall, LINKS.typeArgument$jaIN)).count() > 0 && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(iMethodCall, LINKS.baseMethodDeclaration$pyYw), LINKS.typeVariableDeclaration$Lipp)).count() != ListSequence.fromList(SLinkOperations.getChildren(iMethodCall, LINKS.typeArgument$jaIN)).count()) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(iMethodCall, "Incorrect number of type arguments for a generic method.", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7430872850880720443", null, errorTarget);
@@ -30,7 +30,7 @@ public class check_IMethodCallTypeArgs_NonTypesystemRule extends AbstractNonType
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.IMethodCall$ln;
+    return CONCEPTS.IMethodCall$M9;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -40,12 +40,12 @@ public class check_IMethodCallTypeArgs_NonTypesystemRule extends AbstractNonType
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink typeArgument$C5i1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink typeArgument$jaIN = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0x4500f31eb02a7788L, "typeArgument");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$Lipp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IMethodCall$ln = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
+    /*package*/ static final SInterfaceConcept IMethodCall$M9 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
   }
 }

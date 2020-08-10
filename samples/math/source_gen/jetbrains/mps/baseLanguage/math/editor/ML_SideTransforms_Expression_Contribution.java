@@ -88,8 +88,8 @@ public class ML_SideTransforms_Expression_Contribution extends TransformationMen
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       SNode matrixType = _quotation_createNode_7vmljf_a0a0a0a();
-      SPropertyOperations.set(matrixType, PROPS.columns$bkBE, 0);
-      SPropertyOperations.set(matrixType, PROPS.rows$bkoD, 0);
+      SPropertyOperations.set(matrixType, PROPS.columns$STq2, 0);
+      SPropertyOperations.set(matrixType, PROPS.rows$STb1, 0);
       return TypecheckingFacade.getFromContext().isSubtype(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), matrixType);
     }
 
@@ -146,10 +146,10 @@ public class ML_SideTransforms_Expression_Contribution extends TransformationMen
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.MatrixElementAccessExpression$Dk, null);
+          SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.MatrixElementAccessExpression$rG, null);
           SNodeOperations.replaceWithAnother(_context.getNode(), result);
-          SLinkOperations.setTarget(result, LINKS.expression$DVf6, _context.getNode());
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(result, LINKS.rowIndex$DVu7), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SLinkOperations.setTarget(result, LINKS.expression$nw1u, _context.getNode());
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(result, LINKS.rowIndex$nwgv), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
 
@@ -215,7 +215,7 @@ public class ML_SideTransforms_Expression_Contribution extends TransformationMen
       @Override
       public void execute(@NotNull String pattern) {
         SNode result = SNodeOperations.replaceWithAnother(_context.getNode(), _quotation_createNode_7vmljf_a0a0a0a1a(_context.getNode()));
-        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(result, LINKS.exponent$jCPR), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(result, LINKS.exponent$1dCf), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
 
@@ -244,7 +244,7 @@ public class ML_SideTransforms_Expression_Contribution extends TransformationMen
   public class TMP_Group_7vmljf_c0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), CONCEPTS.MatrixType$qA) || SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), CONCEPTS.VectorType$q7);
+      return SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), CONCEPTS.MatrixType$cY) || SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(_context.getNode()), CONCEPTS.VectorType$cv);
     }
 
     @NotNull
@@ -274,7 +274,7 @@ public class ML_SideTransforms_Expression_Contribution extends TransformationMen
       @Override
       protected Iterable<? extends SConcept> getParameters(TransformationMenuContext _context) {
         List<SConcept> result = ListSequence.fromList(new ArrayList<SConcept>());
-        for (SConcept a : ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.MatrixExponentialOperation$7h, _context.getModel()))) {
+        for (SConcept a : ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.MatrixExponentialOperation$TD, _context.getModel()))) {
           if (!(a.isAbstract())) {
             ListSequence.fromList(result).addElement(a);
           }
@@ -388,20 +388,20 @@ public class ML_SideTransforms_Expression_Contribution extends TransformationMen
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty columns$bkBE = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dadL, "columns");
-    /*package*/ static final SProperty rows$bkoD = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dacL, "rows");
+    /*package*/ static final SProperty columns$STq2 = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dadL, "columns");
+    /*package*/ static final SProperty rows$STb1 = MetaAdapterFactory.getProperty(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, 0x42d5783a62683dacL, "rows");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MatrixElementAccessExpression$Dk = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x58aab8999c8f432aL, "jetbrains.mps.baseLanguage.math.structure.MatrixElementAccessExpression");
-    /*package*/ static final SConcept MatrixType$qA = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, "jetbrains.mps.baseLanguage.math.structure.MatrixType");
-    /*package*/ static final SConcept VectorType$q7 = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f775L, "jetbrains.mps.baseLanguage.math.structure.VectorType");
-    /*package*/ static final SConcept MatrixExponentialOperation$7h = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x64b1e972e647ad7dL, "jetbrains.mps.baseLanguage.math.structure.MatrixExponentialOperation");
+    /*package*/ static final SConcept MatrixElementAccessExpression$rG = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x58aab8999c8f432aL, "jetbrains.mps.baseLanguage.math.structure.MatrixElementAccessExpression");
+    /*package*/ static final SConcept MatrixType$cY = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f776L, "jetbrains.mps.baseLanguage.math.structure.MatrixType");
+    /*package*/ static final SConcept VectorType$cv = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x42d5783a6267f775L, "jetbrains.mps.baseLanguage.math.structure.VectorType");
+    /*package*/ static final SConcept MatrixExponentialOperation$TD = MetaAdapterFactory.getConcept(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x64b1e972e647ad7dL, "jetbrains.mps.baseLanguage.math.structure.MatrixExponentialOperation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$DVf6 = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x58aab8999c8f432aL, 0x58aab8999c8f433cL, "expression");
-    /*package*/ static final SContainmentLink rowIndex$DVu7 = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x58aab8999c8f432aL, 0x58aab8999c8f433dL, "rowIndex");
-    /*package*/ static final SContainmentLink exponent$jCPR = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12052b2cdd3L, 0x12052b722e7L, "exponent");
+    /*package*/ static final SContainmentLink expression$nw1u = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x58aab8999c8f432aL, 0x58aab8999c8f433cL, "expression");
+    /*package*/ static final SContainmentLink rowIndex$nwgv = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x58aab8999c8f432aL, 0x58aab8999c8f433dL, "rowIndex");
+    /*package*/ static final SContainmentLink exponent$1dCf = MetaAdapterFactory.getContainmentLink(0x3304fc6e7c6b401eL, 0xa016b944934bb21fL, 0x12052b2cdd3L, 0x12052b722e7L, "exponent");
   }
 }

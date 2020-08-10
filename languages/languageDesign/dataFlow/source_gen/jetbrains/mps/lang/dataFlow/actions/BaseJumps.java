@@ -16,20 +16,20 @@ public class BaseJumps {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       {
         final SNode jump = sampleNode;
-        if (SNodeOperations.isInstanceOf(jump, CONCEPTS.BaseEmitJumpStatement$le)) {
-          SLinkOperations.setTarget(newNode, LINKS.jumpTo$UR2x, SLinkOperations.getTarget(jump, LINKS.jumpTo$UR2x));
-          SLinkOperations.setTarget(newNode, LINKS.position$nx$B, SLinkOperations.getTarget(jump, LINKS.position$nx$B));
+        if (SNodeOperations.isInstanceOf(jump, CONCEPTS.BaseEmitJumpStatement$9e)) {
+          SLinkOperations.setTarget(newNode, LINKS.jumpTo$P0Qx, SLinkOperations.getTarget(jump, LINKS.jumpTo$P0Qx));
+          SLinkOperations.setTarget(newNode, LINKS.position$hFoB, SLinkOperations.getTarget(jump, LINKS.position$hFoB));
         }
       }
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseEmitJumpStatement$le = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5bc8a99L, "jetbrains.mps.lang.dataFlow.structure.BaseEmitJumpStatement");
+    /*package*/ static final SConcept BaseEmitJumpStatement$9e = MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5bc8a99L, "jetbrains.mps.lang.dataFlow.structure.BaseEmitJumpStatement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink jumpTo$UR2x = MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5bc8a99L, 0x118e5bcba84L, "jumpTo");
-    /*package*/ static final SContainmentLink position$nx$B = MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L, 0x1160a375bea5106L, "position");
+    /*package*/ static final SContainmentLink jumpTo$P0Qx = MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5bc8a99L, 0x118e5bcba84L, "jumpTo");
+    /*package*/ static final SContainmentLink position$hFoB = MetaAdapterFactory.getContainmentLink(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x118e5a42658L, 0x1160a375bea5106L, "position");
   }
 }

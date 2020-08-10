@@ -42,13 +42,13 @@ public final class SwitchStatement__BehaviorDescriptor extends BaseBHDescriptor 
 
   /*package*/ static void collectUncaughtMethodThrowables_id4Gt7ANIVH8f(@NotNull SNode __thisNode__, Set<SNode> throwables, boolean ignoreMayBeThrowables) {
     if (!(ignoreMayBeThrowables)) {
-      Statement__BehaviorDescriptor.collectUncaughtMethodThrowables_id4Gt7ANIVBW7.invoke(SNodeOperations.asSConcept(CONCEPTS.Statement$ok), throwables, SLinkOperations.getTarget(__thisNode__, LINKS.expression$XdXc));
+      Statement__BehaviorDescriptor.collectUncaughtMethodThrowables_id4Gt7ANIVBW7.invoke(SNodeOperations.asSConcept(CONCEPTS.Statement$P6), throwables, SLinkOperations.getTarget(__thisNode__, LINKS.expression$CjpY));
     }
-    for (SNode caseNode : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.case$tKvS))) {
+    for (SNode caseNode : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.case$8PWE))) {
       SwitchCase__BehaviorDescriptor.collectUncaughtThrowables_id3JrbGEZ6KoZ.invoke(caseNode, throwables, ((boolean) ignoreMayBeThrowables));
     }
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.defaultBlock$bJ1m) != null)) {
-      StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.defaultBlock$bJ1m), throwables, ((boolean) ignoreMayBeThrowables));
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.defaultBlock$QOu8) != null)) {
+      StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.defaultBlock$QOu8), throwables, ((boolean) ignoreMayBeThrowables));
     }
   }
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
@@ -57,30 +57,30 @@ public final class SwitchStatement__BehaviorDescriptor extends BaseBHDescriptor 
       childStatement = SNodeOperations.getParent(childStatement);
     }
 
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.VariableDeclaration$xe)) {
-      if (SLinkOperations.getTarget(__thisNode__, LINKS.expression$XdXc) == childStatement) {
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.VariableDeclaration$Y0)) {
+      if (SLinkOperations.getTarget(__thisNode__, LINKS.expression$CjpY) == childStatement) {
         return ScopeUtils.lazyParentScope(__thisNode__, kind);
       }
 
       List<SNode> variables = new ArrayList<SNode>();
-      for (SNode caseNode : SLinkOperations.getChildren(__thisNode__, LINKS.case$tKvS)) {
+      for (SNode caseNode : SLinkOperations.getChildren(__thisNode__, LINKS.case$8PWE)) {
         if (caseNode == childStatement) {
           break;
         }
-        ListSequence.fromList(variables).addSequence(ListSequence.fromList(StatementList__BehaviorDescriptor.getLocalVariableDeclarations_id3tkxRydYUUs.invoke(SLinkOperations.getTarget(caseNode, LINKS.body$qFOU), null)));
+        ListSequence.fromList(variables).addSequence(ListSequence.fromList(StatementList__BehaviorDescriptor.getLocalVariableDeclarations_id3tkxRydYUUs.invoke(SLinkOperations.getTarget(caseNode, LINKS.body$5LhG), null)));
       }
       return Scopes.forVariables(kind, variables, ScopeUtils.lazyParentScope(__thisNode__, kind));
     }
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.LoopLabel$R4)) {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.LoopLabel$jQ)) {
       List<SNode> parameter = new ArrayList<SNode>();
-      if ((SLinkOperations.getTarget(__thisNode__, LINKS.switchLabel$GHQ7) != null)) {
-        ListSequence.fromList(parameter).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.switchLabel$GHQ7));
+      if ((SLinkOperations.getTarget(__thisNode__, LINKS.switchLabel$nNiT) != null)) {
+        ListSequence.fromList(parameter).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.switchLabel$nNiT));
       }
-      SNode[] nodesInScope = new SNode[ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.case$tKvS)).count() + 1];
-      for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.case$tKvS)).count(); i++) {
-        nodesInScope[i] = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.case$tKvS)).getElement(i);
+      SNode[] nodesInScope = new SNode[ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.case$8PWE)).count() + 1];
+      for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.case$8PWE)).count(); i++) {
+        nodesInScope[i] = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.case$8PWE)).getElement(i);
       }
-      nodesInScope[nodesInScope.length - 1] = SLinkOperations.getTarget(__thisNode__, LINKS.defaultBlock$bJ1m);
+      nodesInScope[nodesInScope.length - 1] = SLinkOperations.getTarget(__thisNode__, LINKS.defaultBlock$QOu8);
 
       // todo: how to generialize? 
       if (Arrays.asList(nodesInScope).contains(child)) {
@@ -140,16 +140,16 @@ public final class SwitchStatement__BehaviorDescriptor extends BaseBHDescriptor 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
-    /*package*/ static final SConcept VariableDeclaration$xe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
-    /*package*/ static final SConcept LoopLabel$R4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9552f6aL, "jetbrains.mps.baseLanguage.structure.LoopLabel");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept VariableDeclaration$Y0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
+    /*package*/ static final SConcept LoopLabel$jQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9552f6aL, "jetbrains.mps.baseLanguage.structure.LoopLabel");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$XdXc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02ec241L, "expression");
-    /*package*/ static final SContainmentLink case$tKvS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02edcafL, "case");
-    /*package*/ static final SContainmentLink defaultBlock$bJ1m = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02c1b6eL, "defaultBlock");
-    /*package*/ static final SContainmentLink body$qFOU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d8048L, "body");
-    /*package*/ static final SContainmentLink switchLabel$GHQ7 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x4091554b655a230eL, "switchLabel");
+    /*package*/ static final SContainmentLink expression$CjpY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02ec241L, "expression");
+    /*package*/ static final SContainmentLink case$8PWE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02edcafL, "case");
+    /*package*/ static final SContainmentLink defaultBlock$QOu8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02c1b6eL, "defaultBlock");
+    /*package*/ static final SContainmentLink body$5LhG = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d8048L, "body");
+    /*package*/ static final SContainmentLink switchLabel$nNiT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x4091554b655a230eL, "switchLabel");
   }
 }

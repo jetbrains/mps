@@ -28,7 +28,7 @@ public final class MigrationToUpdateAllConstants_MigrationScript extends BaseMig
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.AllConstant$$f;
+        return CONCEPTS.AllConstant$My;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
@@ -41,7 +41,7 @@ public final class MigrationToUpdateAllConstants_MigrationScript extends BaseMig
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNodeOperations.replaceWithNewChild(node, CONCEPTS.AllConstant$$f);
+        SNodeOperations.replaceWithNewChild(node, CONCEPTS.AllConstant$My);
       }
       @Override
       public boolean isShowAsIntention() {
@@ -57,6 +57,6 @@ public final class MigrationToUpdateAllConstants_MigrationScript extends BaseMig
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AllConstant$$f = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x12031a066ecL, "jetbrains.mps.baseLanguage.collections.structure.AllConstant");
+    /*package*/ static final SConcept AllConstant$My = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x12031a066ecL, "jetbrains.mps.baseLanguage.collections.structure.AllConstant");
   }
 }

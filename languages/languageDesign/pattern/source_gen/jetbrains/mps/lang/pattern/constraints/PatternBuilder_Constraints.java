@@ -24,7 +24,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class PatternBuilder_Constraints extends BaseConstraintsDescriptor {
   public PatternBuilder_Constraints() {
-    super(CONCEPTS.PatternBuilder$Pa);
+    super(CONCEPTS.PatternBuilder$2H);
   }
 
   @Override
@@ -43,8 +43,8 @@ public class PatternBuilder_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAnAncestor(SNode node, SNode childNode, SAbstractConcept childConcept, SNode parentNode, SContainmentLink link) {
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.Expression$TP) && SNodeOperations.isInstanceOf(parentNode, CONCEPTS.NodeBuilderExpression$Ub) && SNodeOperations.hasRole(SNodeOperations.cast(parentNode, CONCEPTS.NodeBuilderExpression$Ub), LINKS.initValue$sSpf) && SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.cast(parentNode, CONCEPTS.NodeBuilderExpression$Ub)), CONCEPTS.NodeBuilderInitLink$Xj), LINKS.link$XYSx), PROPS.metaClass$p6Up), 0xfc6f4e95b9L)) {
-      return SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.NullLiteral$q4);
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.Expression$mB) && SNodeOperations.isInstanceOf(parentNode, CONCEPTS.NodeBuilderExpression$UJ) && SNodeOperations.hasRole(SNodeOperations.cast(parentNode, CONCEPTS.NodeBuilderExpression$UJ), LINKS.initValue$qHpN) && SEnumOperations.isMember(SPropertyOperations.getEnum(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.cast(parentNode, CONCEPTS.NodeBuilderExpression$UJ)), CONCEPTS.NodeBuilderInitLink$XR), LINKS.link$VNT5), PROPS.metaClass$PeKc), 0xfc6f4e95b9L)) {
+      return SConceptOperations.isExactly(SNodeOperations.asSConcept(childConcept), CONCEPTS.NullLiteral$QQ);
     } else {
       return true;
     }
@@ -52,19 +52,19 @@ public class PatternBuilder_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer canBeRootBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590340(jetbrains.mps.lang.pattern.constraints)", "8144732810705663999");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PatternBuilder$Pa = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x240625574192fa19L, "jetbrains.mps.lang.pattern.structure.PatternBuilder");
-    /*package*/ static final SConcept NodeBuilderExpression$Ub = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a3132eL, "jetbrains.mps.lang.quotation.structure.NodeBuilderExpression");
-    /*package*/ static final SConcept NodeBuilderInitLink$Xj = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink");
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
-    /*package*/ static final SConcept NullLiteral$q4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cd6167L, "jetbrains.mps.baseLanguage.structure.NullLiteral");
+    /*package*/ static final SConcept PatternBuilder$2H = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x240625574192fa19L, "jetbrains.mps.lang.pattern.structure.PatternBuilder");
+    /*package*/ static final SConcept NodeBuilderExpression$UJ = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a3132eL, "jetbrains.mps.lang.quotation.structure.NodeBuilderExpression");
+    /*package*/ static final SConcept NodeBuilderInitLink$XR = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept NullLiteral$QQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cd6167L, "jetbrains.mps.baseLanguage.structure.NullLiteral");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink link$XYSx = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x4bb51009d20c8e1cL, "link");
-    /*package*/ static final SContainmentLink initValue$sSpf = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x16240b8e9e79db03L, "initValue");
+    /*package*/ static final SReferenceLink link$VNT5 = MetaAdapterFactory.getReferenceLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x4bb51009d20c8e1cL, "link");
+    /*package*/ static final SContainmentLink initValue$qHpN = MetaAdapterFactory.getContainmentLink(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL, 0x16240b8e9e79db03L, "initValue");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty metaClass$p6Up = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
+    /*package*/ static final SProperty metaClass$PeKc = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
   }
 }

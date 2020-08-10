@@ -43,7 +43,7 @@ public class EmptyLine_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_udt3cr_a(), CONCEPTS.IfStatement$GU));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_udt3cr_a(), CONCEPTS.IfStatement$mP));
     return result;
   }
 
@@ -83,14 +83,14 @@ public class EmptyLine_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.IfStatement$GU;
+          return CONCEPTS.IfStatement$mP;
         }
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode nodeToWrap = super.createNode(pattern);
-          SNode ifCmd = SNodeFactoryOperations.createNewNode(CONCEPTS.IfStatement$GU, null);
-          SLinkOperations.setTarget(ifCmd, LINKS.condition$arBm, nodeToWrap);
+          SNode ifCmd = SNodeFactoryOperations.createNewNode(CONCEPTS.IfStatement$mP, null);
+          SLinkOperations.setTarget(ifCmd, LINKS.condition$19hh, nodeToWrap);
           return ifCmd;
         }
 
@@ -117,16 +117,16 @@ public class EmptyLine_SubstituteMenu extends SubstituteMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.LogicalExpression$Sy;
+      return CONCEPTS.LogicalExpression$yt;
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IfStatement$GU = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fbeL, "jetbrains.mps.samples.Kaja.structure.IfStatement");
-    /*package*/ static final SConcept LogicalExpression$Sy = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fc1L, "jetbrains.mps.samples.Kaja.structure.LogicalExpression");
+    /*package*/ static final SConcept IfStatement$mP = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fbeL, "jetbrains.mps.samples.Kaja.structure.IfStatement");
+    /*package*/ static final SConcept LogicalExpression$yt = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fc1L, "jetbrains.mps.samples.Kaja.structure.LogicalExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$arBm = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fbeL, 0x2de971c785ec9fc0L, "condition");
+    /*package*/ static final SContainmentLink condition$19hh = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fbeL, 0x2de971c785ec9fc0L, "condition");
   }
 }

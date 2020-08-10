@@ -36,9 +36,9 @@ public final class CompletionCustomization_CustomizeFunction__BehaviorDescriptor
 
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
     List<SConcept> result = ListSequence.fromList(new ArrayList<SConcept>());
-    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameterCustomize_CompletionItemInformation$Fy);
-    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameterCustomize_Style$A9);
-    ListSequence.fromList(result).addSequence(ListSequence.fromList(CompletionCustomizationContextSpecificator__BehaviorDescriptor.getAdditionalParameters_idETPn3v9Kre.invoke(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.CompletionStyling$sP, false, false), LINKS.specificator$9hwX))));
+    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameterCustomize_CompletionItemInformation$R9);
+    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameterCustomize_Style$LK);
+    ListSequence.fromList(result).addSequence(ListSequence.fromList(CompletionCustomizationContextSpecificator__BehaviorDescriptor.getAdditionalParameters_idETPn3v9Kre.invoke(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.CompletionStyling$Cs, false, false), LINKS.specificator$dzG$))));
     return result;
   }
 
@@ -89,12 +89,12 @@ public final class CompletionCustomization_CustomizeFunction__BehaviorDescriptor
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptFunctionParameterCustomize_CompletionItemInformation$Fy = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570df26e171L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameterCustomize_CompletionItemInformation");
-    /*package*/ static final SConcept ConceptFunctionParameterCustomize_Style$A9 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570df26e196L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameterCustomize_Style");
-    /*package*/ static final SConcept CompletionStyling$sP = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6c7f2eeda1a0b162L, "jetbrains.mps.lang.editor.structure.CompletionStyling");
+    /*package*/ static final SConcept ConceptFunctionParameterCustomize_CompletionItemInformation$R9 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570df26e171L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameterCustomize_CompletionItemInformation");
+    /*package*/ static final SConcept ConceptFunctionParameterCustomize_Style$LK = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xab9d570df26e196L, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameterCustomize_Style");
+    /*package*/ static final SConcept CompletionStyling$Cs = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6c7f2eeda1a0b162L, "jetbrains.mps.lang.editor.structure.CompletionStyling");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink specificator$9hwX = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6c7f2eeda1a0b162L, 0x64a01fa8546d376bL, "specificator");
+    /*package*/ static final SContainmentLink specificator$dzG$ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6c7f2eeda1a0b162L, 0x64a01fa8546d376bL, "specificator");
   }
 }

@@ -32,10 +32,10 @@ public final class FontFamilyContainer__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static String getFontFamily_idSLohPpeqbF(@NotNull SNode __thisNode__) {
-    if (SPropertyOperations.getString(__thisNode__, PROPS.family$Ugkw) == null || !(FontRegistry.getInstance().getAvailableFontFamilyNames().contains(SPropertyOperations.getString(__thisNode__, PROPS.family$Ugkw)))) {
+    if (SPropertyOperations.getString(__thisNode__, PROPS.family$Yyw7) == null || !(FontRegistry.getInstance().getAvailableFontFamilyNames().contains(SPropertyOperations.getString(__thisNode__, PROPS.family$Yyw7)))) {
       return null;
     }
-    return SPropertyOperations.getString(__thisNode__, PROPS.family$Ugkw);
+    return SPropertyOperations.getString(__thisNode__, PROPS.family$Yyw7);
   }
 
   /*package*/ FontFamilyContainer__BehaviorDescriptor() {
@@ -85,6 +85,6 @@ public final class FontFamilyContainer__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty family$Ugkw = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x64508f613f1cbac1L, 0x64508f613f1cbac2L, "family");
+    /*package*/ static final SProperty family$Yyw7 = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x64508f613f1cbac1L, 0x64508f613f1cbac2L, "family");
   }
 }

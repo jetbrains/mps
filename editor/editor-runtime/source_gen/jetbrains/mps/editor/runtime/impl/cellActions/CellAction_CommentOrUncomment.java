@@ -30,23 +30,23 @@ public abstract class CellAction_CommentOrUncomment extends AbstractCellAction {
     SNode nodeToProcess = getNodeToProcess(editorContext);
     SNode nodeToUncomment = getNodeToUncomment(nodeToProcess);
     if (nodeToUncomment != null) {
-      new CellAction_Uncomment(SNodeOperations.cast(nodeToUncomment, CONCEPTS.BaseCommentAttribute$Zd)).execute(editorContext);
+      new CellAction_Uncomment(SNodeOperations.cast(nodeToUncomment, CONCEPTS.BaseCommentAttribute$nv)).execute(editorContext);
     } else {
       new CellAction_Comment(nodeToProcess).execute(editorContext);
     }
   }
   protected abstract SNode getNodeToProcess(EditorContext editorContext);
   private SNode getNodeToUncomment(SNode nodeToProcess) {
-    if (SNodeOperations.isInstanceOf(nodeToProcess, CONCEPTS.BaseCommentAttribute$Zd)) {
-      return SNodeOperations.cast(nodeToProcess, CONCEPTS.BaseCommentAttribute$Zd);
+    if (SNodeOperations.isInstanceOf(nodeToProcess, CONCEPTS.BaseCommentAttribute$nv)) {
+      return SNodeOperations.cast(nodeToProcess, CONCEPTS.BaseCommentAttribute$nv);
     }
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(nodeToProcess), CONCEPTS.BaseCommentAttribute$Zd)) {
-      return SNodeOperations.cast(SNodeOperations.getParent(nodeToProcess), CONCEPTS.BaseCommentAttribute$Zd);
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(nodeToProcess), CONCEPTS.BaseCommentAttribute$nv)) {
+      return SNodeOperations.cast(SNodeOperations.getParent(nodeToProcess), CONCEPTS.BaseCommentAttribute$nv);
     }
     return null;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseCommentAttribute$Zd = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
+    /*package*/ static final SConcept BaseCommentAttribute$nv = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
   }
 }

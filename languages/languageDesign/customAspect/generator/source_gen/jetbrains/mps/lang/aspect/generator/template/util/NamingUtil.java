@@ -12,18 +12,18 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class NamingUtil {
   public static String getDescriptorName(SNode aspect) {
-    return NameUtil.capitalize(SPropertyOperations.getString(aspect, PROPS.name$lA7v)) + "Descriptor";
+    return NameUtil.capitalize(SPropertyOperations.getString(aspect, PROPS.name$MnvL)) + "Descriptor";
   }
 
   public static SNode getAspectDescriptor(SNode generator) {
-    return SNodeOperations.getNodeAncestor(generator, CONCEPTS.SimpleLanguageAspectDescriptor$nT, false, false);
+    return SNodeOperations.getNodeAncestor(generator, CONCEPTS.SimpleLanguageAspectDescriptor$ac, false, false);
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SimpleLanguageAspectDescriptor$nT = MetaAdapterFactory.getConcept(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x2fa4a8cdf0c9b076L, "jetbrains.mps.lang.aspect.structure.SimpleLanguageAspectDescriptor");
+    /*package*/ static final SConcept SimpleLanguageAspectDescriptor$ac = MetaAdapterFactory.getConcept(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x2fa4a8cdf0c9b076L, "jetbrains.mps.lang.aspect.structure.SimpleLanguageAspectDescriptor");
   }
 }

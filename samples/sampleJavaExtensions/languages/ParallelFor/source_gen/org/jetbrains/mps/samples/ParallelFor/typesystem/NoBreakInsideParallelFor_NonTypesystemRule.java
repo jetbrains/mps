@@ -23,7 +23,7 @@ public class NoBreakInsideParallelFor_NonTypesystemRule extends AbstractNonTypes
   public NoBreakInsideParallelFor_NonTypesystemRule() {
   }
   public void applyRule(final SNode parallelFor, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    ListSequence.fromList(SNodeOperations.getNodeDescendants(parallelFor, CONCEPTS.BreakStatement$w0, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+    ListSequence.fromList(SNodeOperations.getNodeDescendants(parallelFor, CONCEPTS.BreakStatement$WM, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return BreakStatement__BehaviorDescriptor.getLoop_idhEwIHvD.invoke(it) == parallelFor;
       }
@@ -37,7 +37,7 @@ public class NoBreakInsideParallelFor_NonTypesystemRule extends AbstractNonTypes
     });
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ParallelFor$GE;
+    return CONCEPTS.ParallelFor$2i;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -47,7 +47,7 @@ public class NoBreakInsideParallelFor_NonTypesystemRule extends AbstractNonTypes
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BreakStatement$w0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, "jetbrains.mps.baseLanguage.structure.BreakStatement");
-    /*package*/ static final SConcept ParallelFor$GE = MetaAdapterFactory.getConcept(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, "org.jetbrains.mps.samples.ParallelFor.structure.ParallelFor");
+    /*package*/ static final SConcept BreakStatement$WM = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, "jetbrains.mps.baseLanguage.structure.BreakStatement");
+    /*package*/ static final SConcept ParallelFor$2i = MetaAdapterFactory.getConcept(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, "org.jetbrains.mps.samples.ParallelFor.structure.ParallelFor");
   }
 }

@@ -18,24 +18,24 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class ConceptCasts_Test extends TestCase {
   public void test_MPS_31361() throws Exception {
-    List<SAbstractConcept> abstractConcepts = ListSequence.fromListAndArray(new ArrayList<SAbstractConcept>(), CONCEPTS.BaseConcept$Sz, CONCEPTS.ExpressionStatement$nm, CONCEPTS.Statement$ok, CONCEPTS.INamedAspect$HH);
+    List<SAbstractConcept> abstractConcepts = ListSequence.fromListAndArray(new ArrayList<SAbstractConcept>(), CONCEPTS.BaseConcept$gP, CONCEPTS.ExpressionStatement$O8, CONCEPTS.Statement$P6, CONCEPTS.INamedAspect$zw);
     List<SConcept> statementConcepts = ListSequence.fromList(abstractConcepts).where(new IWhereFilter<SAbstractConcept>() {
       public boolean accept(SAbstractConcept it) {
-        return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(it), CONCEPTS.Statement$ok);
+        return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(it), CONCEPTS.Statement$P6);
       }
     }).select(new ISelector<SAbstractConcept, SConcept>() {
       public SConcept select(SAbstractConcept it) {
-        return SNodeOperations.castConcept(it, CONCEPTS.Statement$ok);
+        return SNodeOperations.castConcept(it, CONCEPTS.Statement$P6);
       }
     }).toListSequence();
     Assert.assertEquals(ListSequence.fromList(statementConcepts).count(), 2);
   }
   public void test_MPS_31361_PoundExpression() throws Exception {
-    List<SAbstractConcept> abstractConcepts = ListSequence.fromListAndArray(new ArrayList<SAbstractConcept>(), CONCEPTS.BaseConcept$Sz, CONCEPTS.ExpressionStatement$nm, CONCEPTS.Statement$ok, CONCEPTS.INamedAspect$HH);
-    final SConcept statement = CONCEPTS.Statement$ok;
+    List<SAbstractConcept> abstractConcepts = ListSequence.fromListAndArray(new ArrayList<SAbstractConcept>(), CONCEPTS.BaseConcept$gP, CONCEPTS.ExpressionStatement$O8, CONCEPTS.Statement$P6, CONCEPTS.INamedAspect$zw);
+    final SConcept statement = CONCEPTS.Statement$P6;
     List<SConcept> statementConcepts = ListSequence.fromList(abstractConcepts).where(new IWhereFilter<SAbstractConcept>() {
       public boolean accept(SAbstractConcept it) {
-        return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(it), CONCEPTS.Statement$ok);
+        return SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(it), CONCEPTS.Statement$P6);
       }
     }).select(new ISelector<SAbstractConcept, SConcept>() {
       public SConcept select(SAbstractConcept it) {
@@ -45,17 +45,17 @@ public class ConceptCasts_Test extends TestCase {
     Assert.assertEquals(ListSequence.fromList(statementConcepts).count(), 2);
   }
   public void test_castToBaseConcept() throws Exception {
-    SConcept bc1 = CONCEPTS.BaseConcept$Sz;
-    SAbstractConcept inc = CONCEPTS.INamedConcept$nV;
+    SConcept bc1 = CONCEPTS.BaseConcept$gP;
+    SAbstractConcept inc = CONCEPTS.INamedConcept$Kd;
     SAbstractConcept bc2 = SNodeOperations.castConcept(inc, (SAbstractConcept) SNodeOperations.asSConcept(bc1));
     Assert.assertEquals(bc2, inc);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
-    /*package*/ static final SConcept ExpressionStatement$nm = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
-    /*package*/ static final SInterfaceConcept INamedAspect$HH = MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x6e62cf10d25a65e0L, "jetbrains.mps.lang.structure.structure.INamedAspect");
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept ExpressionStatement$O8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SInterfaceConcept INamedAspect$zw = MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x6e62cf10d25a65e0L, "jetbrains.mps.lang.structure.structure.INamedAspect");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

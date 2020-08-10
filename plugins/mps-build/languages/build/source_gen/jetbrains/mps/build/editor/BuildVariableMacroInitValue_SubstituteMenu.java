@@ -46,7 +46,7 @@ public class BuildVariableMacroInitValue_SubstituteMenu extends SubstituteMenuBa
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_8kfjf0_a(), CONCEPTS.BuildVariableMacroInitValue$1H));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_8kfjf0_a(), CONCEPTS.BuildVariableMacroInitValue$$g));
     result.add(new SMP_Subconcepts_8kfjf0_b());
     return result;
   }
@@ -87,14 +87,14 @@ public class BuildVariableMacroInitValue_SubstituteMenu extends SubstituteMenuBa
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.BuildVariableMacroInitValue$1H;
+          return CONCEPTS.BuildVariableMacroInitValue$$g;
         }
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode nodeToWrap = super.createNode(pattern);
-          SNode init = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.BuildVariableMacroInitWithString$NH);
-          SLinkOperations.setTarget(init, LINKS.value$9r1_, nodeToWrap);
+          SNode init = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.BuildVariableMacroInitWithString$mg);
+          SLinkOperations.setTarget(init, LINKS.value$l7$8, nodeToWrap);
           return init;
         }
 
@@ -121,12 +121,12 @@ public class BuildVariableMacroInitValue_SubstituteMenu extends SubstituteMenuBa
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.BuildString$CM;
+      return CONCEPTS.BuildString$bl;
     }
   }
   public class SMP_Subconcepts_8kfjf0_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BuildVariableMacroInitValue$1H);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BuildVariableMacroInitValue$$g);
     }
     @NotNull
     @Override
@@ -147,12 +147,12 @@ public class BuildVariableMacroInitValue_SubstituteMenu extends SubstituteMenuBa
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildVariableMacroInitValue$1H = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263c91972cd1e1aaL, "jetbrains.mps.build.structure.BuildVariableMacroInitValue");
-    /*package*/ static final SConcept BuildVariableMacroInitWithString$NH = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263c91972cd26287L, "jetbrains.mps.build.structure.BuildVariableMacroInitWithString");
-    /*package*/ static final SConcept BuildString$CM = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, "jetbrains.mps.build.structure.BuildString");
+    /*package*/ static final SConcept BuildVariableMacroInitValue$$g = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263c91972cd1e1aaL, "jetbrains.mps.build.structure.BuildVariableMacroInitValue");
+    /*package*/ static final SConcept BuildVariableMacroInitWithString$mg = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263c91972cd26287L, "jetbrains.mps.build.structure.BuildVariableMacroInitWithString");
+    /*package*/ static final SConcept BuildString$bl = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL, "jetbrains.mps.build.structure.BuildString");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink value$9r1_ = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263c91972cd26287L, 0x263c91972cd2628dL, "value");
+    /*package*/ static final SContainmentLink value$l7$8 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263c91972cd26287L, 0x263c91972cd2628dL, "value");
   }
 }

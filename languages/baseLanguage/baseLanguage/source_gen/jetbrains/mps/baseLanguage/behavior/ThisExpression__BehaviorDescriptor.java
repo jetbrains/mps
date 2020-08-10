@@ -35,19 +35,19 @@ public final class ThisExpression__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static List<SNode> getPossibleClassifiers_idhGcjiYt(@NotNull SNode __thisNode__) {
-    return (List<SNode>) Classifier__BehaviorDescriptor.getNonStaticContextClassifiers_id5S7J9l$QYtM.invoke(SNodeOperations.asSConcept(CONCEPTS.Classifier$hJ), __thisNode__);
+    return (List<SNode>) Classifier__BehaviorDescriptor.getNonStaticContextClassifiers_id5S7J9l$QYtM.invoke(SNodeOperations.asSConcept(CONCEPTS.Classifier$Ix), __thisNode__);
   }
   /*package*/ static SNode getContextClassifierMember_id5DIwcw5fPui(@NotNull SNode __thisNode__) {
-    SNode classConcept = SLinkOperations.getTarget(__thisNode__, LINKS.classConcept$StRd);
+    SNode classConcept = SLinkOperations.getTarget(__thisNode__, LINKS.classConcept$zzjZ);
     if ((classConcept != null)) {
-      for (SNode classifierMember : SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.ClassifierMember$9F, false)) {
+      for (SNode classifierMember : SNodeOperations.getNodeAncestors(__thisNode__, CONCEPTS.ClassifierMember$At, false)) {
         if (SNodeOperations.getParent(classifierMember) == classConcept) {
           return classifierMember;
         }
       }
       return null;
     } else {
-      SNode classifierMember = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ClassifierMember$9F, false, false);
+      SNode classifierMember = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ClassifierMember$At, false, false);
       return classifierMember;
     }
   }
@@ -101,11 +101,11 @@ public final class ThisExpression__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SInterfaceConcept ClassifierMember$9F = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SInterfaceConcept ClassifierMember$At = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classConcept$StRd = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
+    /*package*/ static final SReferenceLink classConcept$zzjZ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
   }
 }

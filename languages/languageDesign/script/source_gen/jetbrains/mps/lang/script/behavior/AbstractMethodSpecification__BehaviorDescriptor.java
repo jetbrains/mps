@@ -32,7 +32,7 @@ public final class AbstractMethodSpecification__BehaviorDescriptor extends BaseB
   }
 
   /*package*/ static SNode getPullUpMethod_id1ZdZFkoOe3$(@NotNull SNode __thisNode__) {
-    return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.PullUpMethod$6P);
+    return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.PullUpMethod$FB);
   }
 
   /*package*/ AbstractMethodSpecification__BehaviorDescriptor() {
@@ -82,6 +82,6 @@ public final class AbstractMethodSpecification__BehaviorDescriptor extends BaseB
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PullUpMethod$6P = MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0xbc887f0950c99c4L, "jetbrains.mps.lang.script.structure.PullUpMethod");
+    /*package*/ static final SConcept PullUpMethod$FB = MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0xbc887f0950c99c4L, "jetbrains.mps.lang.script.structure.PullUpMethod");
   }
 }

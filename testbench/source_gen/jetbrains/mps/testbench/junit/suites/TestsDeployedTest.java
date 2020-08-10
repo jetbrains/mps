@@ -112,7 +112,7 @@ public class TestsDeployedTest {
         List<SNode> includedInSuiteTests = ListSequence.fromList(BuildTestsHelper.findIncludedInSuiteTests(ourProject.getScope(), new ModuleScope(PersistenceFacade.getInstance().createModuleReference("79f9d103-4ff6-4def-9c1a-27070f9ba255(jetbrains.mps.testbench.make)").resolve(ourProject.getRepository())))).distinct().toListSequence();
         List<SNode> allTests = ListSequence.fromList(BuildTestsHelper.collectTests(ourProject.getScope())).select(new ISelector<SNode, SNode>() {
           public SNode select(SNode it) {
-            return ((SNode) (SNode) BHReflection.invoke0(it, CONCEPTS.ITestRef$Qb, SMethodTrimmedId.create("getTargetTest", null, "7BTZ519MNAR")));
+            return ((SNode) (SNode) BHReflection.invoke0(it, CONCEPTS.ITestRef$zt, SMethodTrimmedId.create("getTargetTest", null, "7BTZ519MNAR")));
           }
         }).distinct().toListSequence();
         List<SNode> forgottenTests = ListSequence.fromList(allTests).subtract(ListSequence.fromList(includedInSuiteTests)).subtract(ListSequence.fromList(includedInBuildTests)).where(new IWhereFilter<SNode>() {
@@ -133,6 +133,6 @@ public class TestsDeployedTest {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept ITestRef$Qb = MetaAdapterFactory.getInterfaceConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cbaL, "jetbrains.mps.testbench.suite.structure.ITestRef");
+    /*package*/ static final SInterfaceConcept ITestRef$zt = MetaAdapterFactory.getInterfaceConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cbaL, "jetbrains.mps.testbench.suite.structure.ITestRef");
   }
 }

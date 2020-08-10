@@ -16,9 +16,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public class DependentType_factory {
   public static class NodeFactory_9097849371504700258 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SLinkOperations.setTarget(newNode, LINKS.getter$fwSw, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral")));
-      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(newNode, LINKS.getter$fwSw), LINKS.parameter$uR6p)).addElement(_quotation_createNode_6hmkle_a0a1a0a());
-      SLinkOperations.setTarget(SLinkOperations.getTarget(newNode, LINKS.getter$fwSw), LINKS.body$e5Do, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
+      SLinkOperations.setTarget(newNode, LINKS.getter$Hweh, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral")));
+      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(newNode, LINKS.getter$Hweh), LINKS.parameter$b4Y3)).addElement(_quotation_createNode_6hmkle_a0a1a0a());
+      SLinkOperations.setTarget(SLinkOperations.getTarget(newNode, LINKS.getter$Hweh), LINKS.body$Ujx2, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
     }
     private static SNode _quotation_createNode_6hmkle_a0a1a0a() {
       PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -33,8 +33,8 @@ public class DependentType_factory {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink getter$fwSw = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d15cL, 0x340eb2bd2e03d15dL, "getter");
-    /*package*/ static final SContainmentLink parameter$uR6p = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter");
-    /*package*/ static final SContainmentLink body$e5Do = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
+    /*package*/ static final SContainmentLink getter$Hweh = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d15cL, 0x340eb2bd2e03d15dL, "getter");
+    /*package*/ static final SContainmentLink parameter$b4Y3 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter");
+    /*package*/ static final SContainmentLink body$Ujx2 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
   }
 }

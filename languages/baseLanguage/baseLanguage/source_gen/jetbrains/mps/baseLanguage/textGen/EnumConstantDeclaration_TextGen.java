@@ -19,17 +19,17 @@ public class EnumConstantDeclaration_TextGen extends TextGenDescriptorBase {
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.newLine();
-    if (isEmptyString(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$lA7v))) {
+    if (isEmptyString(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$MnvL))) {
       tgs.reportError("enum constant without name");
       tgs.indent();
       tgs.append("???");
     } else {
       tgs.indent();
-      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$lA7v));
+      tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.name$MnvL));
     }
     tgs.append("(");
     {
-      Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.actualArgument$ItKJ);
+      Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.actualArgument$pzdx);
       final SNode lastItem = Sequence.fromIterable(collection).last();
       for (SNode item : collection) {
         tgs.appendNode(item);
@@ -39,11 +39,11 @@ public class EnumConstantDeclaration_TextGen extends TextGenDescriptorBase {
       }
     }
     tgs.append(")");
-    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.method$IB2H)).isNotEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.method$pGvv)).isNotEmpty()) {
       tgs.append(" {");
       tgs.newLine();
       ctx.getBuffer().area().increaseIndent();
-      for (SNode imd : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.method$IB2H)) {
+      for (SNode imd : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.method$pGvv)) {
         tgs.appendNode(imd);
       }
       ctx.getBuffer().area().decreaseIndent();
@@ -57,11 +57,11 @@ public class EnumConstantDeclaration_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink method$IB2H = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, 0x6d60019ab157734L, "method");
+    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink method$pGvv = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, 0x6d60019ab157734L, "method");
   }
 }

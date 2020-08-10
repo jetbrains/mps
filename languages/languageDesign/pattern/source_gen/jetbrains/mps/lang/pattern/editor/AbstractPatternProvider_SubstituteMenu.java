@@ -42,9 +42,9 @@ public class AbstractPatternProvider_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_mehu0s_a(), CONCEPTS.LocalPatternReference$Mm));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_mehu0s_b(), CONCEPTS.AbstractPatternProvider$LR));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_mehu0s_c(), CONCEPTS.ExpressionPatternProvider$PJ));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_mehu0s_a(), CONCEPTS.LocalPatternReference$ZT));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_mehu0s_b(), CONCEPTS.AbstractPatternProvider$Zq));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_mehu0s_c(), CONCEPTS.ExpressionPatternProvider$3i));
     return result;
   }
 
@@ -65,7 +65,7 @@ public class AbstractPatternProvider_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_mehu0s_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.LocalPatternReference$Mm, LINKS.declaration$2pb0);
+      super((SAbstractConcept) CONCEPTS.LocalPatternReference$ZT, LINKS.declaration$6Loz);
     }
     @NotNull
     @Override
@@ -103,7 +103,7 @@ public class AbstractPatternProvider_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.AbstractPatternProvider$LR;
+          return CONCEPTS.AbstractPatternProvider$Zq;
         }
         @Nullable
         @Override
@@ -136,7 +136,7 @@ public class AbstractPatternProvider_SubstituteMenu extends SubstituteMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.PatternBuilder$Pa;
+      return CONCEPTS.PatternBuilder$2H;
     }
   }
   private class SMP_Wrap_mehu0s_c extends WrapperSubstituteMenuPart {
@@ -162,7 +162,7 @@ public class AbstractPatternProvider_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.ExpressionPatternProvider$PJ;
+          return CONCEPTS.ExpressionPatternProvider$3i;
         }
         @Nullable
         @Override
@@ -195,33 +195,33 @@ public class AbstractPatternProvider_SubstituteMenu extends SubstituteMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.AbstractClassifierReference$vv;
+      return CONCEPTS.AbstractClassifierReference$Wh;
     }
   }
   private static SNode createInlinePatternProvider_mehu0s_a0a0b(SNode p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.InlinePatternProvider$43);
-    n0.forChild(LINKS.pattern$Wygx).initNode(p0, CONCEPTS.PatternBuilder$Pa, true);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.InlinePatternProvider$hA);
+    n0.forChild(LINKS.pattern$Uu4).initNode(p0, CONCEPTS.PatternBuilder$2H, true);
     return n0.getResult();
   }
   private static SNode createExpressionPatternProvider_mehu0s_a0a0c(SNode p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ExpressionPatternProvider$PJ);
-    n0.forChild(LINKS.expression$6qRw).initNode(p0, CONCEPTS.Expression$TP, true);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ExpressionPatternProvider$3i);
+    n0.forChild(LINKS.expression$aN53).initNode(p0, CONCEPTS.Expression$mB, true);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LocalPatternReference$Mm = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18b16ecfcL, "jetbrains.mps.lang.pattern.structure.LocalPatternReference");
-    /*package*/ static final SConcept AbstractPatternProvider$LR = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18b16ecfbL, "jetbrains.mps.lang.pattern.structure.AbstractPatternProvider");
-    /*package*/ static final SConcept ExpressionPatternProvider$PJ = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51373f8L, "jetbrains.mps.lang.pattern.structure.ExpressionPatternProvider");
-    /*package*/ static final SConcept PatternBuilder$Pa = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x240625574192fa19L, "jetbrains.mps.lang.pattern.structure.PatternBuilder");
-    /*package*/ static final SConcept AbstractClassifierReference$vv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6c91efa5ec8cd7L, "jetbrains.mps.baseLanguage.structure.AbstractClassifierReference");
-    /*package*/ static final SConcept InlinePatternProvider$43 = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x7c36ae76ea76f63bL, "jetbrains.mps.lang.pattern.structure.InlinePatternProvider");
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept LocalPatternReference$ZT = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18b16ecfcL, "jetbrains.mps.lang.pattern.structure.LocalPatternReference");
+    /*package*/ static final SConcept AbstractPatternProvider$Zq = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18b16ecfbL, "jetbrains.mps.lang.pattern.structure.AbstractPatternProvider");
+    /*package*/ static final SConcept ExpressionPatternProvider$3i = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51373f8L, "jetbrains.mps.lang.pattern.structure.ExpressionPatternProvider");
+    /*package*/ static final SConcept PatternBuilder$2H = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x240625574192fa19L, "jetbrains.mps.lang.pattern.structure.PatternBuilder");
+    /*package*/ static final SConcept AbstractClassifierReference$Wh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6c91efa5ec8cd7L, "jetbrains.mps.baseLanguage.structure.AbstractClassifierReference");
+    /*package*/ static final SConcept InlinePatternProvider$hA = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x7c36ae76ea76f63bL, "jetbrains.mps.lang.pattern.structure.InlinePatternProvider");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$2pb0 = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18b16ecfcL, 0x174c7ed18b16ecfdL, "declaration");
-    /*package*/ static final SContainmentLink pattern$Wygx = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x7c36ae76ea76f63bL, 0x7c36ae76ea76f63dL, "pattern");
-    /*package*/ static final SContainmentLink expression$6qRw = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51373f8L, 0x6e2e4373b51373f9L, "expression");
+    /*package*/ static final SReferenceLink declaration$6Loz = MetaAdapterFactory.getReferenceLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18b16ecfcL, 0x174c7ed18b16ecfdL, "declaration");
+    /*package*/ static final SContainmentLink pattern$Uu4 = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x7c36ae76ea76f63bL, 0x7c36ae76ea76f63dL, "pattern");
+    /*package*/ static final SContainmentLink expression$aN53 = MetaAdapterFactory.getContainmentLink(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x6e2e4373b51373f8L, 0x6e2e4373b51373f9L, "expression");
   }
 }

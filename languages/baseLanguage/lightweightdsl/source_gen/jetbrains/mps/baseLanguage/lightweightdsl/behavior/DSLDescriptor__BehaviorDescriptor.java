@@ -47,10 +47,10 @@ public final class DSLDescriptor__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getPreferredConcept_id1_lSsE3TA5X(@NotNull SNode __thisNode__) {
-    return (SLinkOperations.getTarget(__thisNode__, LINKS.preferredConcept$zqJa) == null ? SNodeOperations.getNode("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)", "1068390468198") : SLinkOperations.getTarget(__thisNode__, LINKS.preferredConcept$zqJa));
+    return (SLinkOperations.getTarget(__thisNode__, LINKS.preferredConcept$1q4V) == null ? SNodeOperations.getNode("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)", "1068390468198") : SLinkOperations.getTarget(__thisNode__, LINKS.preferredConcept$1q4V));
   }
   /*package*/ static void initializeInstance_id2VRROcY8CaS(@NotNull SNode __thisNode__, SNode classLike, SModel futureModel) {
-    if (SLinkOperations.getTarget(__thisNode__, LINKS.initializer$zpDK) == null) {
+    if (SLinkOperations.getTarget(__thisNode__, LINKS.initializer$1oZx) == null) {
       return;
     }
     try {
@@ -69,12 +69,12 @@ public final class DSLDescriptor__BehaviorDescriptor extends BaseBHDescriptor {
     }
   }
   /*package*/ static String getGeneratedClassName_id2VRROcY7Vt6(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v) + "_Queries";
+    return SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL) + "_Queries";
   }
   /*package*/ static String getGeneratedQueriesQualifiedClassName_id3UdX2XvIeC6(@NotNull SNode __thisNode__) {
     String modelQualifiedName;
-    if (SLinkOperations.getTarget(__thisNode__, LINKS.implModel$pYw9) != null) {
-      modelQualifiedName = ModelIdentity__BehaviorDescriptor.toModelReference_id1Bs_61$mvvu.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.implModel$pYw9)).getName().getLongName();
+    if (SLinkOperations.getTarget(__thisNode__, LINKS.implModel$RXPU) != null) {
+      modelQualifiedName = ModelIdentity__BehaviorDescriptor.toModelReference_id1Bs_61$mvvu.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.implModel$RXPU)).getName().getLongName();
     } else {
       modelQualifiedName = SModelOperations.getModelName(SNodeOperations.getModel(__thisNode__));
     }
@@ -82,7 +82,7 @@ public final class DSLDescriptor__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static Iterable<SNode> getClassLikeMembers_id2iCqkkxuhoj(@NotNull SNode __thisNode__) {
     List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
-    ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.classLikeMember$xE75)));
+    ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.classLikeMember$ZDsQ)));
     return result;
   }
 
@@ -142,13 +142,13 @@ public final class DSLDescriptor__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink preferredConcept$zqJa = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, 0x1955e1ca83e5ed92L, "preferredConcept");
-    /*package*/ static final SContainmentLink initializer$zpDK = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, 0x1955e1ca83eb220eL, "initializer");
-    /*package*/ static final SContainmentLink implModel$pYw9 = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, 0x3e8df42f5fb47812L, "implModel");
-    /*package*/ static final SContainmentLink classLikeMember$xE75 = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, 0x72b255a0447fe4c8L, "classLikeMember");
+    /*package*/ static final SReferenceLink preferredConcept$1q4V = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, 0x1955e1ca83e5ed92L, "preferredConcept");
+    /*package*/ static final SContainmentLink initializer$1oZx = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, 0x1955e1ca83eb220eL, "initializer");
+    /*package*/ static final SContainmentLink implModel$RXPU = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, 0x3e8df42f5fb47812L, "implModel");
+    /*package*/ static final SContainmentLink classLikeMember$ZDsQ = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, 0x72b255a0447fe4c8L, "classLikeMember");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

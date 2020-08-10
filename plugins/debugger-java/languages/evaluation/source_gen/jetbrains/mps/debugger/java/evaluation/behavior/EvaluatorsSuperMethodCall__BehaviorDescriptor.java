@@ -33,7 +33,7 @@ public final class EvaluatorsSuperMethodCall__BehaviorDescriptor extends BaseBHD
   }
 
   /*package*/ static SNode getInstanceType_id6WzWPTX2vuB(@NotNull SNode __thisNode__) {
-    return DebuggedType__BehaviorDescriptor.getHighClassifierType_id3WhGjgvCHCA.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.EvaluatorConcept$g2, false, false), LINKS.thisNode$udFu), LINKS.debuggedType$X2tt));
+    return DebuggedType__BehaviorDescriptor.getHighClassifierType_id3WhGjgvCHCA.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.EvaluatorConcept$pu, false, false), LINKS.thisNode$GzOU), LINKS.debuggedType$boAT));
   }
 
   /*package*/ EvaluatorsSuperMethodCall__BehaviorDescriptor() {
@@ -83,11 +83,11 @@ public final class EvaluatorsSuperMethodCall__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EvaluatorConcept$g2 = MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, "jetbrains.mps.debugger.java.evaluation.structure.EvaluatorConcept");
+    /*package*/ static final SConcept EvaluatorConcept$pu = MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, "jetbrains.mps.debugger.java.evaluation.structure.EvaluatorConcept");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink thisNode$udFu = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x3f11b1341fa23613L, "thisNode");
-    /*package*/ static final SContainmentLink debuggedType$X2tt = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3c2f40ee0bb3cbf5L, 0x3f11b1341fa2c39cL, "debuggedType");
+    /*package*/ static final SContainmentLink thisNode$GzOU = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x53c5060c6b18d925L, 0x3f11b1341fa23613L, "thisNode");
+    /*package*/ static final SContainmentLink debuggedType$boAT = MetaAdapterFactory.getContainmentLink(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3c2f40ee0bb3cbf5L, 0x3f11b1341fa2c39cL, "debuggedType");
   }
 }

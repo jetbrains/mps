@@ -33,7 +33,7 @@ public class ActionTestChild1SubConcept_SubstituteMenu extends SubstituteMenuBas
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
     result.add(new SMP_Group_6g8ikp_a());
     result.add(new SMP_Subconcepts_6g8ikp_b());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.ActionTestChild1SubConcept$5C) {
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.ActionTestChild1SubConcept$mt) {
 
       @NotNull
       @Override
@@ -46,7 +46,7 @@ public class ActionTestChild1SubConcept_SubstituteMenu extends SubstituteMenuBas
           context.getEditorMenuTrace().popTraceInfo();
         }
       }
-    }, CONCEPTS.ActionTestChild1SubConcept$5C));
+    }, CONCEPTS.ActionTestChild1SubConcept$mt));
     return result;
   }
 
@@ -66,7 +66,7 @@ public class ActionTestChild1SubConcept_SubstituteMenu extends SubstituteMenuBas
   public class SMP_Group_6g8ikp_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return Objects.equals(_context.getLink(), LINKS.addMenu_genericQuery$z9SA);
+      return Objects.equals(_context.getLink(), LINKS.addMenu_genericQuery$bI9r);
     }
     @NotNull
     @Override
@@ -87,7 +87,7 @@ public class ActionTestChild1SubConcept_SubstituteMenu extends SubstituteMenuBas
   }
   public class SMP_Subconcepts_6g8ikp_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ActionTestChild1SubConcept$5C);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ActionTestChild1SubConcept$mt);
     }
     @NotNull
     @Override
@@ -108,10 +108,10 @@ public class ActionTestChild1SubConcept_SubstituteMenu extends SubstituteMenuBas
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ActionTestChild1SubConcept$5C = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2c99ba4dd5ff2533L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestChild1SubConcept");
+    /*package*/ static final SConcept ActionTestChild1SubConcept$mt = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2c99ba4dd5ff2533L, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestChild1SubConcept");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink addMenu_genericQuery$z9SA = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x2c99ba4dd7323dbbL, "addMenu_genericQuery");
+    /*package*/ static final SContainmentLink addMenu_genericQuery$bI9r = MetaAdapterFactory.getContainmentLink(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x2365c14e1671696fL, 0x2c99ba4dd7323dbbL, "addMenu_genericQuery");
   }
 }

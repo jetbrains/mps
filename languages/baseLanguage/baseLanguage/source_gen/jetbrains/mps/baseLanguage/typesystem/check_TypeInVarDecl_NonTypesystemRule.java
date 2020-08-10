@@ -22,7 +22,7 @@ public class check_TypeInVarDecl_NonTypesystemRule extends AbstractNonTypesystem
   public check_TypeInVarDecl_NonTypesystemRule() {
   }
   public void applyRule(final SNode nodeToCheck, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(nodeToCheck), CONCEPTS.BaseVariableDeclaration$dO) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(nodeToCheck), CONCEPTS.BaseVariableDeclaration$dO), LINKS.type$uWuc) == nodeToCheck) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(nodeToCheck), CONCEPTS.BaseVariableDeclaration$EA) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(nodeToCheck), CONCEPTS.BaseVariableDeclaration$EA), LINKS.type$a1UY) == nodeToCheck) {
       if (!((boolean) Type__BehaviorDescriptor.isValueType_id4ctkEngAqej.invoke(nodeToCheck))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
@@ -32,7 +32,7 @@ public class check_TypeInVarDecl_NonTypesystemRule extends AbstractNonTypesystem
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Type$IG;
+    return CONCEPTS.Type$bu;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -42,11 +42,11 @@ public class check_TypeInVarDecl_NonTypesystemRule extends AbstractNonTypesystem
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseVariableDeclaration$dO = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, "jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration");
-    /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept BaseVariableDeclaration$EA = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, "jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 }

@@ -42,17 +42,17 @@ public final class OrderDeclaration__BehaviorDescriptor extends BaseBHDescriptor
 
   /*package*/ static String getGeneratedClassName_id2CFL3ni7zCY(@NotNull SNode __thisNode__) {
     String n;
-    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v))) {
-      n = SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.OrderParticipant$EX, false, false), CONCEPTS.INamedConcept$nV), PROPS.name$lA7v);
+    if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL))) {
+      n = SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.OrderParticipant$nQ, false, false), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL);
     } else {
-      n = SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v);
+      n = SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL);
     }
     return NameUtil.toValidCamelIdentifier(n) + "_Order";
   }
   /*package*/ static boolean presents_id1jgMklchcXk(@NotNull SNode __thisNode__, final SNode elem) {
-    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.seq$xqZ1)).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.seq$cXFU)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.target$xwDl) == elem;
+        return SLinkOperations.getTarget(it, LINKS.target$d3me) == elem;
       }
     }).isNotEmpty();
   }
@@ -114,16 +114,16 @@ public final class OrderDeclaration__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept OrderParticipant$EX = MetaAdapterFactory.getInterfaceConcept(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x2085244dcb20c1dcL, "jetbrains.mps.lang.util.order.structure.OrderParticipant");
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SInterfaceConcept OrderParticipant$nQ = MetaAdapterFactory.getInterfaceConcept(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x2085244dcb20c1dcL, "jetbrains.mps.lang.util.order.structure.OrderParticipant");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink seq$xqZ1 = MetaAdapterFactory.getContainmentLink(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x22035699bdd78147L, 0x22035699bdd78149L, "seq");
-    /*package*/ static final SReferenceLink target$xwDl = MetaAdapterFactory.getReferenceLink(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x22035699bdd7814bL, 0x22035699bdd7814cL, "target");
+    /*package*/ static final SContainmentLink seq$cXFU = MetaAdapterFactory.getContainmentLink(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x22035699bdd78147L, 0x22035699bdd78149L, "seq");
+    /*package*/ static final SReferenceLink target$d3me = MetaAdapterFactory.getReferenceLink(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x22035699bdd7814bL, 0x22035699bdd7814cL, "target");
   }
 }

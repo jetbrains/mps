@@ -23,7 +23,7 @@ public class CommandHolder_Insert {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNodeFactoryOperations.setNewChild(node, LINKS.command$uNCs, CONCEPTS.BLCommand$ib);
+        SNodeFactoryOperations.setNewChild(node, LINKS.command$RGil, CONCEPTS.BLCommand$W4);
       }
 
     };
@@ -71,10 +71,10 @@ public class CommandHolder_Insert {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink command$uNCs = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e27160acb4484bL, 0x4e27160acb44924L, "command");
+    /*package*/ static final SContainmentLink command$RGil = MetaAdapterFactory.getContainmentLink(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e27160acb4484bL, 0x4e27160acb44924L, "command");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BLCommand$ib = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4bd43869e610f3e9L, "jetbrains.mps.console.base.structure.BLCommand");
+    /*package*/ static final SConcept BLCommand$W4 = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4bd43869e610f3e9L, "jetbrains.mps.console.base.structure.BLCommand");
   }
 }

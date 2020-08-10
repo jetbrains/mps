@@ -33,7 +33,7 @@ public class DataParameterKeysScope extends Scope {
   }
 
   private Iterable<SNode> getAllStaticFields() {
-    return (Iterable<SNode>) ActionDataParameterDeclaration__BehaviorDescriptor.getDataKeys_id1BC2tkUXZ6F.invoke(SNodeOperations.asSConcept(CONCEPTS.ActionDataParameterDeclaration$Wd), myModel);
+    return (Iterable<SNode>) ActionDataParameterDeclaration__BehaviorDescriptor.getDataKeys_id1BC2tkUXZ6F.invoke(SNodeOperations.asSConcept(CONCEPTS.ActionDataParameterDeclaration$Tg), myModel);
   }
 
   public Iterable<SNode> getAvailableElements(@Nullable final String prefix) {
@@ -68,12 +68,12 @@ public class DataParameterKeysScope extends Scope {
 
   @Nullable
   private String getReferenceText(@NotNull SNode target) {
-    return SPropertyOperations.getString(SNodeOperations.cast(target, CONCEPTS.StaticFieldDeclaration$R5), PROPS.resolveInfo$TaKS);
+    return SPropertyOperations.getString(SNodeOperations.cast(target, CONCEPTS.StaticFieldDeclaration$jR), PROPS.resolveInfo$lW9a);
   }
 
   @Override
   public boolean contains(SNode node) {
-    SNode staticField = SNodeOperations.as(node, CONCEPTS.StaticFieldDeclaration$R5);
+    SNode staticField = SNodeOperations.as(node, CONCEPTS.StaticFieldDeclaration$jR);
     if (staticField == null) {
       return false;
     }
@@ -83,7 +83,7 @@ public class DataParameterKeysScope extends Scope {
     if (!(allIModels.contains(SNodeOperations.getModel(staticField)))) {
       return false;
     }
-    return (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SNodeOperations.as(SNodeOperations.getContainingRoot(staticField), CONCEPTS.ClassConcept$IY), SLinkOperations.getTarget(_quotation_createNode_d9tb28_a0a0g0n(), LINKS.classifier$xslD));
+    return (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SNodeOperations.as(SNodeOperations.getContainingRoot(staticField), CONCEPTS.ClassConcept$bK), SLinkOperations.getTarget(_quotation_createNode_d9tb28_a0a0g0n(), LINKS.classifier$cxMr));
   }
   private static SNode _quotation_createNode_d9tb28_a0a0g0n() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -94,16 +94,16 @@ public class DataParameterKeysScope extends Scope {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ActionDataParameterDeclaration$Wd = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e025e0L, "jetbrains.mps.lang.plugin.structure.ActionDataParameterDeclaration");
-    /*package*/ static final SConcept StaticFieldDeclaration$R5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept ActionDataParameterDeclaration$Tg = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e025e0L, "jetbrains.mps.lang.plugin.structure.ActionDataParameterDeclaration");
+    /*package*/ static final SConcept StaticFieldDeclaration$jR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty resolveInfo$TaKS = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, 0x116b17cd415L, "resolveInfo");
+    /*package*/ static final SProperty resolveInfo$lW9a = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, 0x116b17cd415L, "resolveInfo");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

@@ -30,7 +30,7 @@ public class ConceptToWrapWithPriority_Customization implements EditorMenuItemCu
   private static class ConceptToWrapWithPriority_CustomizationSpecific implements EditorMenuItemCustomizer {
 
     public boolean matches(EditorMenuItemCustomizationContext context) {
-      return new EditorMenuItemCreatingConceptContextMatcher(CONCEPTS.TestCompletionCustomization_ConceptToWrapWithPriority$yP).matchesContext(context) && getCompletionItemInformation(context) != null;
+      return new EditorMenuItemCreatingConceptContextMatcher(CONCEPTS.TestCompletionCustomization_ConceptToWrapWithPriority$ng).matchesContext(context) && getCompletionItemInformation(context) != null;
     }
 
 
@@ -59,6 +59,6 @@ public class ConceptToWrapWithPriority_Customization implements EditorMenuItemCu
 
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestCompletionCustomization_ConceptToWrapWithPriority$yP = MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b5c8ddL, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ConceptToWrapWithPriority");
+    /*package*/ static final SConcept TestCompletionCustomization_ConceptToWrapWithPriority$ng = MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b5c8ddL, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ConceptToWrapWithPriority");
   }
 }

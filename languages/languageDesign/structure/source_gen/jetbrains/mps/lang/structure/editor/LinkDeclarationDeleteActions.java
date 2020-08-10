@@ -37,22 +37,22 @@ public class LinkDeclarationDeleteActions {
         if (DeletionApproverUtil.approve(editorContext, node)) {
           return;
         }
-        SNode containingAbstractConcept = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.AbstractConceptDeclaration$UN);
-        if (!(CustomActionsHandler.deleteElementFromCollectionAndSetSelection(node, ListSequence.fromList(SLinkOperations.getChildren(containingAbstractConcept, LINKS.linkDeclaration$yMbs)).where(new IWhereFilter<SNode>() {
+        SNode containingAbstractConcept = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.AbstractConceptDeclaration$KA);
+        if (!(CustomActionsHandler.deleteElementFromCollectionAndSetSelection(node, ListSequence.fromList(SLinkOperations.getChildren(containingAbstractConcept, LINKS.linkDeclaration$YU1f)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SPropertyOperations.getEnum(it, PROPS.metaClass$p6Up) == SPropertyOperations.getEnum(node, PROPS.metaClass$p6Up);
+            return SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc) == SPropertyOperations.getEnum(node, PROPS.metaClass$PeKc);
           }
         }), editorContext))) {
-          if (SNodeOperations.isInstanceOf(containingAbstractConcept, CONCEPTS.ConceptDeclaration$qU)) {
-            SNode cd = SNodeOperations.cast(containingAbstractConcept, CONCEPTS.ConceptDeclaration$qU);
-            if (SEnumOperations.isMember(SPropertyOperations.getEnum(node, PROPS.metaClass$p6Up), 0xfc6f4e95b9L)) {
+          if (SNodeOperations.isInstanceOf(containingAbstractConcept, CONCEPTS.ConceptDeclaration$gH)) {
+            SNode cd = SNodeOperations.cast(containingAbstractConcept, CONCEPTS.ConceptDeclaration$gH);
+            if (SEnumOperations.isMember(SPropertyOperations.getEnum(node, PROPS.metaClass$PeKc), 0xfc6f4e95b9L)) {
               SelectionUtil.selectLabelCellAnSetCaret(editorContext, cd, "emptyChildrenPlaceHolder", 0);
             } else {
               SelectionUtil.selectLabelCellAnSetCaret(editorContext, cd, "emptyRefPlaceHolder", 0);
             }
-          } else if (SNodeOperations.isInstanceOf(containingAbstractConcept, CONCEPTS.InterfaceConceptDeclaration$MT)) {
-            SNode id = SNodeOperations.cast(containingAbstractConcept, CONCEPTS.InterfaceConceptDeclaration$MT);
-            if (SEnumOperations.isMember(SPropertyOperations.getEnum(node, PROPS.metaClass$p6Up), 0xfc6f4e95b9L)) {
+          } else if (SNodeOperations.isInstanceOf(containingAbstractConcept, CONCEPTS.InterfaceConceptDeclaration$CG)) {
+            SNode id = SNodeOperations.cast(containingAbstractConcept, CONCEPTS.InterfaceConceptDeclaration$CG);
+            if (SEnumOperations.isMember(SPropertyOperations.getEnum(node, PROPS.metaClass$PeKc), 0xfc6f4e95b9L)) {
               SelectionUtil.selectLabelCellAnSetCaret(editorContext, id, "emptyChildrenPlaceHolder", 0);
             } else {
               SelectionUtil.selectLabelCellAnSetCaret(editorContext, id, "emptyRefPlaceHolder", 0);
@@ -75,22 +75,22 @@ public class LinkDeclarationDeleteActions {
         if (DeletionApproverUtil.approve(editorContext, node)) {
           return;
         }
-        SNode containingAbstractConcept = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.AbstractConceptDeclaration$UN);
-        if (!(CustomActionsHandler.backspaceElementFromCollectionAndSetSelection(node, ListSequence.fromList(SLinkOperations.getChildren(containingAbstractConcept, LINKS.linkDeclaration$yMbs)).where(new IWhereFilter<SNode>() {
+        SNode containingAbstractConcept = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.AbstractConceptDeclaration$KA);
+        if (!(CustomActionsHandler.backspaceElementFromCollectionAndSetSelection(node, ListSequence.fromList(SLinkOperations.getChildren(containingAbstractConcept, LINKS.linkDeclaration$YU1f)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SPropertyOperations.getEnum(it, PROPS.metaClass$p6Up) == SPropertyOperations.getEnum(node, PROPS.metaClass$p6Up);
+            return SPropertyOperations.getEnum(it, PROPS.metaClass$PeKc) == SPropertyOperations.getEnum(node, PROPS.metaClass$PeKc);
           }
         }), editorContext))) {
-          if (SNodeOperations.isInstanceOf(containingAbstractConcept, CONCEPTS.ConceptDeclaration$qU)) {
-            SNode cd = SNodeOperations.cast(containingAbstractConcept, CONCEPTS.ConceptDeclaration$qU);
-            if (SEnumOperations.isMember(SPropertyOperations.getEnum(node, PROPS.metaClass$p6Up), 0xfc6f4e95b9L)) {
+          if (SNodeOperations.isInstanceOf(containingAbstractConcept, CONCEPTS.ConceptDeclaration$gH)) {
+            SNode cd = SNodeOperations.cast(containingAbstractConcept, CONCEPTS.ConceptDeclaration$gH);
+            if (SEnumOperations.isMember(SPropertyOperations.getEnum(node, PROPS.metaClass$PeKc), 0xfc6f4e95b9L)) {
               SelectionUtil.selectLabelCellAnSetCaret(editorContext, cd, "emptyChildrenPlaceHolder", 0);
             } else {
               SelectionUtil.selectLabelCellAnSetCaret(editorContext, cd, "emptyRefPlaceHolder", 0);
             }
-          } else if (SNodeOperations.isInstanceOf(containingAbstractConcept, CONCEPTS.InterfaceConceptDeclaration$MT)) {
-            SNode id = SNodeOperations.cast(containingAbstractConcept, CONCEPTS.InterfaceConceptDeclaration$MT);
-            if (SEnumOperations.isMember(SPropertyOperations.getEnum(node, PROPS.metaClass$p6Up), 0xfc6f4e95b9L)) {
+          } else if (SNodeOperations.isInstanceOf(containingAbstractConcept, CONCEPTS.InterfaceConceptDeclaration$CG)) {
+            SNode id = SNodeOperations.cast(containingAbstractConcept, CONCEPTS.InterfaceConceptDeclaration$CG);
+            if (SEnumOperations.isMember(SPropertyOperations.getEnum(node, PROPS.metaClass$PeKc), 0xfc6f4e95b9L)) {
               SelectionUtil.selectLabelCellAnSetCaret(editorContext, id, "emptyChildrenPlaceHolder", 0);
             } else {
               SelectionUtil.selectLabelCellAnSetCaret(editorContext, id, "emptyRefPlaceHolder", 0);
@@ -148,16 +148,16 @@ public class LinkDeclarationDeleteActions {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
-    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
-    /*package*/ static final SConcept InterfaceConceptDeclaration$MT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept InterfaceConceptDeclaration$CG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty metaClass$p6Up = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
+    /*package*/ static final SProperty metaClass$PeKc = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf980556927L, "metaClass");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink linkDeclaration$yMbs = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
+    /*package*/ static final SContainmentLink linkDeclaration$YU1f = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration");
   }
 }

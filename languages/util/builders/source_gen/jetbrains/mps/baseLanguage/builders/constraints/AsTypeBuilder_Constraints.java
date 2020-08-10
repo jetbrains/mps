@@ -8,10 +8,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AsTypeBuilder_Constraints extends BaseConstraintsDescriptor {
   public AsTypeBuilder_Constraints() {
-    super(CONCEPTS.AsTypeBuilder$JG);
+    super(CONCEPTS.AsTypeBuilder$Jn);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AsTypeBuilder$JG = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d721d314L, "jetbrains.mps.baseLanguage.builders.structure.AsTypeBuilder");
+    /*package*/ static final SConcept AsTypeBuilder$Jn = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4acc05c8d721d314L, "jetbrains.mps.baseLanguage.builders.structure.AsTypeBuilder");
   }
 }

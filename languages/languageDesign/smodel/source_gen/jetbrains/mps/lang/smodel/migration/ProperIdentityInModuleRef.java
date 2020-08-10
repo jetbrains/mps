@@ -45,30 +45,30 @@ public class ProperIdentityInModuleRef extends MigrationScriptBase {
           return scope_g2wvru_a0e_0;
         }
       };
-      for (SNode mre : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ModuleRefExpression$Hw, false)).where(new IWhereFilter<SNode>() {
+      for (SNode mre : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ModuleRefExpression$J0, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.moduleId$2s9n), CONCEPTS.ModulePointer$_2);
+          return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(it, LINKS.moduleId$APaR), CONCEPTS.ModulePointer$Ay);
         }
       })) {
-        SNode mpOld = SNodeOperations.cast(SLinkOperations.getTarget(mre, LINKS.moduleId$2s9n), CONCEPTS.ModulePointer$_2);
-        SNode mpNew = SModelOperations.createNewNode(SNodeOperations.getModel(mre), null, CONCEPTS.ModulePointer$rJ);
-        SPropertyOperations.assign(mpNew, PROPS.moduleName$XstC, SPropertyOperations.getString(mpOld, PROPS.moduleName$inBA));
-        SPropertyOperations.assign(mpNew, PROPS.moduleId$7VKI, SPropertyOperations.getString(mpOld, PROPS.moduleId$io5C));
+        SNode mpOld = SNodeOperations.cast(SLinkOperations.getTarget(mre, LINKS.moduleId$APaR), CONCEPTS.ModulePointer$Ay);
+        SNode mpNew = SModelOperations.createNewNode(SNodeOperations.getModel(mre), null, CONCEPTS.ModulePointer$7i);
+        SPropertyOperations.assign(mpNew, PROPS.moduleName$RP9b, SPropertyOperations.getString(mpOld, PROPS.moduleName$QKD6));
+        SPropertyOperations.assign(mpNew, PROPS.moduleId$2ksh, SPropertyOperations.getString(mpOld, PROPS.moduleId$QL78));
         // unlike 'replace with new(concept), replace with(node) doesn't copy attributes; we are going to process and update attributes manually. 
         SNodeOperations.replaceWithAnother(mpOld, mpNew);
-        SProperty oldModuleIdPropAttr = PROPS.moduleId$io5C;
-        SProperty oldModuleNamePropAttr = PROPS.moduleName$inBA;
-        for (SNode attr : SLinkOperations.getChildren(mpOld, LINKS.smodelAttribute$jXFL)) {
-          if (SNodeOperations.isInstanceOf(attr, CONCEPTS.PropertyAttribute$jT)) {
-            SNode pa = SNodeOperations.as(attr, CONCEPTS.PropertyAttribute$jT);
+        SProperty oldModuleIdPropAttr = PROPS.moduleId$QL78;
+        SProperty oldModuleNamePropAttr = PROPS.moduleName$QKD6;
+        for (SNode attr : SLinkOperations.getChildren(mpOld, LINKS.smodelAttribute$KJ43)) {
+          if (SNodeOperations.isInstanceOf(attr, CONCEPTS.PropertyAttribute$Gb)) {
+            SNode pa = SNodeOperations.as(attr, CONCEPTS.PropertyAttribute$Gb);
             if (oldModuleIdPropAttr.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(pa))) {
-              PropertyAttribute__BehaviorDescriptor.setProperty_id6Gg5Klvu8CV.invoke(pa, PROPS.moduleId$7VKI);
+              PropertyAttribute__BehaviorDescriptor.setProperty_id6Gg5Klvu8CV.invoke(pa, PROPS.moduleId$2ksh);
             } else if (oldModuleNamePropAttr.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(pa))) {
-              PropertyAttribute__BehaviorDescriptor.setProperty_id6Gg5Klvu8CV.invoke(pa, PROPS.moduleName$XstC);
+              PropertyAttribute__BehaviorDescriptor.setProperty_id6Gg5Klvu8CV.invoke(pa, PROPS.moduleName$RP9b);
             }
             // fall-through 
           }
-          ListSequence.fromList(SLinkOperations.getChildren(mpNew, LINKS.smodelAttribute$jXFL)).addElement(attr);
+          ListSequence.fromList(SLinkOperations.getChildren(mpNew, LINKS.smodelAttribute$KJ43)).addElement(attr);
         }
       }
     }
@@ -78,21 +78,21 @@ public class ProperIdentityInModuleRef extends MigrationScriptBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink moduleId$2s9n = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1749acf3d038bbe2L, 0x1749acf3d038bbe5L, "moduleId");
-    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink moduleId$APaR = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1749acf3d038bbe2L, 0x1749acf3d038bbe5L, "moduleId");
+    /*package*/ static final SContainmentLink smodelAttribute$KJ43 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ModulePointer$_2 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, "jetbrains.mps.lang.smodel.structure.ModulePointer");
-    /*package*/ static final SConcept ModulePointer$rJ = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, "jetbrains.mps.lang.modelapi.structure.ModulePointer");
-    /*package*/ static final SConcept PropertyAttribute$jT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
-    /*package*/ static final SConcept ModuleRefExpression$Hw = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1749acf3d038bbe2L, "jetbrains.mps.lang.smodel.structure.ModuleRefExpression");
+    /*package*/ static final SConcept ModulePointer$Ay = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, "jetbrains.mps.lang.smodel.structure.ModulePointer");
+    /*package*/ static final SConcept ModulePointer$7i = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, "jetbrains.mps.lang.modelapi.structure.ModulePointer");
+    /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept ModuleRefExpression$J0 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1749acf3d038bbe2L, "jetbrains.mps.lang.smodel.structure.ModuleRefExpression");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty moduleName$XstC = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, 0x19dc9460645ae969L, "moduleName");
-    /*package*/ static final SProperty moduleName$inBA = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, 0x5ef5a1e85338e19L, "moduleName");
-    /*package*/ static final SProperty moduleId$7VKI = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, 0x19dc9460645c7f5cL, "moduleId");
-    /*package*/ static final SProperty moduleId$io5C = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, 0x5ef5a1e85338e1bL, "moduleId");
+    /*package*/ static final SProperty moduleName$RP9b = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, 0x19dc9460645ae969L, "moduleName");
+    /*package*/ static final SProperty moduleName$QKD6 = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, 0x5ef5a1e85338e19L, "moduleName");
+    /*package*/ static final SProperty moduleId$2ksh = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e361L, 0x19dc9460645c7f5cL, "moduleId");
+    /*package*/ static final SProperty moduleId$QL78 = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, 0x5ef5a1e85338e1bL, "moduleId");
   }
 }

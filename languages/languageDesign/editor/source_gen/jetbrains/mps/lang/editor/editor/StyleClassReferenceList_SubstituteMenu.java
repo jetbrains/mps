@@ -43,7 +43,7 @@ public class StyleClassReferenceList_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_cyyevv_a(), CONCEPTS.StyleClassReferenceList$9U));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_cyyevv_a(), CONCEPTS.StyleClassReferenceList$lx));
     return result;
   }
 
@@ -83,7 +83,7 @@ public class StyleClassReferenceList_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.StyleClassReferenceList$9U;
+          return CONCEPTS.StyleClassReferenceList$lx;
         }
         @Nullable
         @Override
@@ -115,21 +115,21 @@ public class StyleClassReferenceList_SubstituteMenu extends SubstituteMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.StyleClassReference$zy;
+      return CONCEPTS.StyleClassReference$J9;
     }
   }
   private static SNode createStyleClassReferenceList_cyyevv_a0a0a(Iterable<? extends SNode> p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.StyleClassReferenceList$9U);
-    n0.forChild(LINKS.element$X9Hn).initNodeList(p0, CONCEPTS.StyleClassReference$zy);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.StyleClassReferenceList$lx);
+    n0.forChild(LINKS.element$1rSY).initNodeList(p0, CONCEPTS.StyleClassReference$J9);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StyleClassReferenceList$9U = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab1cb5b6d8L, "jetbrains.mps.lang.editor.structure.StyleClassReferenceList");
-    /*package*/ static final SConcept StyleClassReference$zy = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a130c0dL, "jetbrains.mps.lang.editor.structure.StyleClassReference");
+    /*package*/ static final SConcept StyleClassReferenceList$lx = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab1cb5b6d8L, "jetbrains.mps.lang.editor.structure.StyleClassReferenceList");
+    /*package*/ static final SConcept StyleClassReference$J9 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x2ef3b3796a130c0dL, "jetbrains.mps.lang.editor.structure.StyleClassReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink element$X9Hn = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab1cb5b6d8L, 0x7e9b10ab1cb5b959L, "element");
+    /*package*/ static final SContainmentLink element$1rSY = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x7e9b10ab1cb5b6d8L, 0x7e9b10ab1cb5b959L, "element");
   }
 }

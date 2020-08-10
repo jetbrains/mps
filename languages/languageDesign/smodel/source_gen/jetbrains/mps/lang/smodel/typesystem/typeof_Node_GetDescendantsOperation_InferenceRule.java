@@ -30,7 +30,7 @@ public class typeof_Node_GetDescendantsOperation_InferenceRule extends AbstractI
     // so typeof(op) was simply nlist<> without concept 
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Node_GetDescendantsOperation$VR;
+    return CONCEPTS.Node_GetDescendantsOperation$Xn;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -47,6 +47,6 @@ public class typeof_Node_GetDescendantsOperation_InferenceRule extends AbstractI
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Node_GetDescendantsOperation$VR = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110b73c3484L, "jetbrains.mps.lang.smodel.structure.Node_GetDescendantsOperation");
+    /*package*/ static final SConcept Node_GetDescendantsOperation$Xn = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x110b73c3484L, "jetbrains.mps.lang.smodel.structure.Node_GetDescendantsOperation");
   }
 }

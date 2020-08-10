@@ -94,10 +94,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.breakpointableConcepts$XwuR;
+      return LINKS.breakpointableConcepts$apNn;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.BreakpointableNodeItem$BI;
+      return CONCEPTS.BreakpointableNodeItem$We;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -107,7 +107,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(breakpointableConceptsListHandler_q67mwo_b1a.this.getNode(), LINKS.breakpointableConcepts$XwuR));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(breakpointableConceptsListHandler_q67mwo_b1a.this.getNode(), LINKS.breakpointableConcepts$apNn));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -149,10 +149,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink breakpointableConcepts$XwuR = MetaAdapterFactory.getContainmentLink(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x2bd07aa080dfb3a4L, 0x11a2c8c0148e6233L, "breakpointableConcepts");
+    /*package*/ static final SContainmentLink breakpointableConcepts$apNn = MetaAdapterFactory.getContainmentLink(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x2bd07aa080dfb3a4L, 0x11a2c8c0148e6233L, "breakpointableConcepts");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BreakpointableNodeItem$BI = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x2bd07aa080dfb937L, "jetbrains.mps.debugger.api.lang.structure.BreakpointableNodeItem");
+    /*package*/ static final SConcept BreakpointableNodeItem$We = MetaAdapterFactory.getConcept(0xfbc142795e2a4c87L, 0xa5d15f7061e6c456L, 0x2bd07aa080dfb937L, "jetbrains.mps.debugger.api.lang.structure.BreakpointableNodeItem");
   }
 }

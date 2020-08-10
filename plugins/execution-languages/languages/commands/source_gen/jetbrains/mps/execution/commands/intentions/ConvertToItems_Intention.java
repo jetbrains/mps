@@ -41,15 +41,15 @@ public final class ConvertToItems_Intention extends AbstractIntentionDescriptor 
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    SNode list = SLinkOperations.getTarget(node, LINKS.list$EVAx);
-    if ((list == null) || !(SNodeOperations.isInstanceOf(list, CONCEPTS.GenericNewExpression$ev))) {
+    SNode list = SLinkOperations.getTarget(node, LINKS.list$l1dd);
+    if ((list == null) || !(SNodeOperations.isInstanceOf(list, CONCEPTS.GenericNewExpression$Fh))) {
       return false;
     }
-    SNode creator = SLinkOperations.getTarget(SNodeOperations.cast(list, CONCEPTS.GenericNewExpression$ev), LINKS.creator$Wnha);
-    return SNodeOperations.isInstanceOf(creator, CONCEPTS.AbstractContainerCreator$Yg) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(creator, CONCEPTS.AbstractContainerCreator$Yg), LINKS.initValue$idnD)).isNotEmpty();
+    SNode creator = SLinkOperations.getTarget(SNodeOperations.cast(list, CONCEPTS.GenericNewExpression$Fh), LINKS.creator$BsHW);
+    return SNodeOperations.isInstanceOf(creator, CONCEPTS.AbstractContainerCreator$cz) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(creator, CONCEPTS.AbstractContainerCreator$cz), LINKS.initValue$Wx_W)).isNotEmpty();
   }
   private boolean isVisibleInChild(final SNode node, final SNode childNode, final EditorContext editorContext) {
-    return Objects.equals(SNodeOperations.getContainingLink(childNode), LINKS.list$EVAx);
+    return Objects.equals(SNodeOperations.getContainingLink(childNode), LINKS.list$l1dd);
   }
   @Override
   public boolean isSurroundWith() {
@@ -70,9 +70,9 @@ public final class ConvertToItems_Intention extends AbstractIntentionDescriptor 
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode list = SLinkOperations.getTarget(node, LINKS.list$EVAx);
+      SNode list = SLinkOperations.getTarget(node, LINKS.list$l1dd);
       SNodeOperations.deleteNode(list);
-      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.items$rIWZ)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(list, CONCEPTS.GenericNewExpression$ev), LINKS.creator$Wnha), CONCEPTS.AbstractContainerCreator$Yg), LINKS.initValue$idnD)));
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.items$5OzF)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(list, CONCEPTS.GenericNewExpression$Fh), LINKS.creator$BsHW), CONCEPTS.AbstractContainerCreator$cz), LINKS.initValue$Wx_W)));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -81,14 +81,14 @@ public final class ConvertToItems_Intention extends AbstractIntentionDescriptor 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink list$EVAx = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x5f50ed14026999c9L, 0x5f50ed14026999cbL, "list");
-    /*package*/ static final SContainmentLink creator$Wnha = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
-    /*package*/ static final SContainmentLink initValue$idnD = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24ea0L, "initValue");
-    /*package*/ static final SContainmentLink items$rIWZ = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x5f50ed14026999c9L, 0x1e16a75f45341377L, "items");
+    /*package*/ static final SContainmentLink list$l1dd = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x5f50ed14026999c9L, 0x5f50ed14026999cbL, "list");
+    /*package*/ static final SContainmentLink creator$BsHW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
+    /*package*/ static final SContainmentLink initValue$Wx_W = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24ea0L, "initValue");
+    /*package*/ static final SContainmentLink items$5OzF = MetaAdapterFactory.getContainmentLink(0xf3347d8a0e794f35L, 0x8ac91574f25c986fL, 0x5f50ed14026999c9L, 0x1e16a75f45341377L, "items");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GenericNewExpression$ev = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, "jetbrains.mps.baseLanguage.structure.GenericNewExpression");
-    /*package*/ static final SConcept AbstractContainerCreator$Yg = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, "jetbrains.mps.baseLanguage.collections.structure.AbstractContainerCreator");
+    /*package*/ static final SConcept GenericNewExpression$Fh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, "jetbrains.mps.baseLanguage.structure.GenericNewExpression");
+    /*package*/ static final SConcept AbstractContainerCreator$cz = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, "jetbrains.mps.baseLanguage.collections.structure.AbstractContainerCreator");
   }
 }

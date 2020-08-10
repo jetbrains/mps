@@ -77,7 +77,7 @@ public class Customizes extends TransformationMenuBase {
   public class TMP_Group_3ero0o_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return (SLinkOperations.getTarget(_context.getNode(), LINKS.customizes$TgmQ) == null);
+      return (SLinkOperations.getTarget(_context.getNode(), LINKS.customizes$o_Bh) == null);
     }
 
     @NotNull
@@ -133,8 +133,8 @@ public class Customizes extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode ref = SNodeFactoryOperations.createNewNode(CONCEPTS.DailyPlanReference$dO, null);
-          SLinkOperations.setTarget(_context.getNode(), LINKS.customizes$TgmQ, ref);
+          SNode ref = SNodeFactoryOperations.createNewNode(CONCEPTS.DailyPlanReference$uf, null);
+          SLinkOperations.setTarget(_context.getNode(), LINKS.customizes$o_Bh, ref);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ref, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -160,10 +160,10 @@ public class Customizes extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink customizes$TgmQ = MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0xcfa085c9af881f8L, "customizes");
+    /*package*/ static final SContainmentLink customizes$o_Bh = MetaAdapterFactory.getContainmentLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0xcfa085c9af881f8L, "customizes");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DailyPlanReference$dO = MetaAdapterFactory.getConcept(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0xcfa085c9af5e830L, "jetbrains.mps.samples.heating.structure.DailyPlanReference");
+    /*package*/ static final SConcept DailyPlanReference$uf = MetaAdapterFactory.getConcept(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0xcfa085c9af5e830L, "jetbrains.mps.samples.heating.structure.DailyPlanReference");
   }
 }

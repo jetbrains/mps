@@ -61,7 +61,7 @@ public class Modifier_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_Group_db4728_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.IHasModifiers$LF);
+      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.IHasModifiers$et);
     }
     @NotNull
     @Override
@@ -81,7 +81,7 @@ public class Modifier_SubstituteMenu extends SubstituteMenuBase {
     }
     public class SMP_Subconcepts_db4728_a0 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
       protected Collection getConcepts(final SubstituteMenuContext _context) {
-        return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.Modifier$Ra).stream().filter(new Predicate<SAbstractConcept>() {
+        return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.Modifier$jW).stream().filter(new Predicate<SAbstractConcept>() {
           public boolean test(SAbstractConcept concept) {
             return filterConcept(_context, concept);
           }
@@ -90,7 +90,7 @@ public class Modifier_SubstituteMenu extends SubstituteMenuBase {
       private boolean filterConcept(SubstituteMenuContext _context, SAbstractConcept concept) {
         // link is null when it is called from the transformation menu so constraints are not checked, 
         // and we check them again 
-        List<SNode> modifiers = SLinkOperations.getChildren(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.IHasModifiers$LF), LINKS.modifiers$m0);
+        List<SNode> modifiers = SLinkOperations.getChildren(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.IHasModifiers$et), LINKS.modifiers$F5MM);
         return ListSequence.fromList(modifiers).all(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return !(Objects.equals(SNodeOperations.getConcept(it), concept));
@@ -118,7 +118,7 @@ public class Modifier_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_Group_db4728_b extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.Modifier$Ra) && SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.IHasModifiers$LF);
+      return SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.Modifier$jW) && SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.IHasModifiers$et);
     }
     @NotNull
     @Override
@@ -134,7 +134,7 @@ public class Modifier_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_db4728_a1(), CONCEPTS.Modifier$Ra));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Concepts_db4728_a1(), CONCEPTS.Modifier$jW));
     }
     public class SMP_Concepts_db4728_a1 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
       protected Collection getConcepts(SubstituteMenuContext _context) {
@@ -172,11 +172,11 @@ public class Modifier_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IHasModifiers$LF = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, "jetbrains.mps.baseLanguage.structure.IHasModifiers");
-    /*package*/ static final SConcept Modifier$Ra = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x21592d9e7375c5a6L, "jetbrains.mps.baseLanguage.structure.Modifier");
+    /*package*/ static final SInterfaceConcept IHasModifiers$et = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, "jetbrains.mps.baseLanguage.structure.IHasModifiers");
+    /*package*/ static final SConcept Modifier$jW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x21592d9e7375c5a6L, "jetbrains.mps.baseLanguage.structure.Modifier");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modifiers$m0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
+    /*package*/ static final SContainmentLink modifiers$F5MM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
   }
 }

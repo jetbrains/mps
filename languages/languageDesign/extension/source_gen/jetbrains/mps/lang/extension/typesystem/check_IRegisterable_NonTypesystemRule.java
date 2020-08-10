@@ -65,7 +65,7 @@ public class check_IRegisterable_NonTypesystemRule extends AbstractNonTypesystem
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.IRegisterable$5O;
+    return CONCEPTS.IRegisterable$nA;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -81,6 +81,6 @@ public class check_IRegisterable_NonTypesystemRule extends AbstractNonTypesystem
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IRegisterable$5O = MetaAdapterFactory.getInterfaceConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x11618cd82d8974c5L, "jetbrains.mps.lang.extension.structure.IRegisterable");
+    /*package*/ static final SInterfaceConcept IRegisterable$nA = MetaAdapterFactory.getInterfaceConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x11618cd82d8974c5L, "jetbrains.mps.lang.extension.structure.IRegisterable");
   }
 }

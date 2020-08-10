@@ -41,7 +41,7 @@ public class AddForStatementVar extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.BaseConcept$Sz))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.BaseConcept$gP))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
@@ -51,19 +51,19 @@ public class AddForStatementVar extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SNode variableDeclaration = SNodeOperations.getNodeAncestor(node, CONCEPTS.LocalVariableDeclaration$Bf, false, false);
-      if ((variableDeclaration != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(variableDeclaration), CONCEPTS.ForStatement$Y9)) {
-        SNode forStatement = SNodeOperations.cast(SNodeOperations.getParent(variableDeclaration), CONCEPTS.ForStatement$Y9);
-        if (SLinkOperations.getTarget(forStatement, LINKS.variable$4Igk) == variableDeclaration) {
+      SNode variableDeclaration = SNodeOperations.getNodeAncestor(node, CONCEPTS.LocalVariableDeclaration$41, false, false);
+      if ((variableDeclaration != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(variableDeclaration), CONCEPTS.ForStatement$qV)) {
+        SNode forStatement = SNodeOperations.cast(SNodeOperations.getParent(variableDeclaration), CONCEPTS.ForStatement$qV);
+        if (SLinkOperations.getTarget(forStatement, LINKS.variable$JNH6) == variableDeclaration) {
           return true;
         }
       }
       return false;
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SNode variableDeclaration = SNodeOperations.getNodeAncestor(node, CONCEPTS.LocalVariableDeclaration$Bf, false, false);
-      SNode forStatement = SNodeOperations.cast(SNodeOperations.getParent(variableDeclaration), CONCEPTS.ForStatement$Y9);
-      ListSequence.fromList(SLinkOperations.getChildren(forStatement, LINKS.additionalVar$QrML)).insertElement(0, SNodeFactoryOperations.createNewNode(CONCEPTS.AdditionalForLoopVariable$KW, null));
+      SNode variableDeclaration = SNodeOperations.getNodeAncestor(node, CONCEPTS.LocalVariableDeclaration$41, false, false);
+      SNode forStatement = SNodeOperations.cast(SNodeOperations.getParent(variableDeclaration), CONCEPTS.ForStatement$qV);
+      ListSequence.fromList(SLinkOperations.getChildren(forStatement, LINKS.additionalVar$xxfz)).insertElement(0, SNodeFactoryOperations.createNewNode(CONCEPTS.AdditionalForLoopVariable$dI, null));
     }
     public String getKeyStroke() {
       return " ,";
@@ -71,14 +71,14 @@ public class AddForStatementVar extends KeyMapImpl {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
-    /*package*/ static final SConcept LocalVariableDeclaration$Bf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
-    /*package*/ static final SConcept ForStatement$Y9 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, "jetbrains.mps.baseLanguage.structure.ForStatement");
-    /*package*/ static final SConcept AdditionalForLoopVariable$KW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x19659b074928781eL, "jetbrains.mps.baseLanguage.structure.AdditionalForLoopVariable");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept LocalVariableDeclaration$41 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
+    /*package*/ static final SConcept ForStatement$qV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, "jetbrains.mps.baseLanguage.structure.ForStatement");
+    /*package*/ static final SConcept AdditionalForLoopVariable$dI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x19659b074928781eL, "jetbrains.mps.baseLanguage.structure.AdditionalForLoopVariable");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink variable$4Igk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
-    /*package*/ static final SContainmentLink additionalVar$QrML = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0xe5318742b9d1411L, "additionalVar");
+    /*package*/ static final SContainmentLink variable$JNH6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
+    /*package*/ static final SContainmentLink additionalVar$xxfz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0xe5318742b9d1411L, "additionalVar");
   }
 }

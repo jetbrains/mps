@@ -36,11 +36,11 @@
       <node id="252830181482192150" at="60,87,61,43" concept="7" />
       <node id="252830181482362989" at="64,78,65,142" concept="6" />
       <node id="252830181482199035" at="65,142,66,86" concept="6" />
-      <node id="252830181482216790" at="66,86,67,67" concept="6" />
-      <node id="252830181482227750" at="67,67,68,286" concept="6" />
+      <node id="252830181482216790" at="66,86,67,68" concept="6" />
+      <node id="252830181482227750" at="67,68,68,286" concept="6" />
       <node id="252830181482332600" at="68,286,69,39" concept="2" />
       <node id="252830181482253885" at="69,39,70,116" concept="2" />
-      <node id="252830181482309240" at="70,116,71,127" concept="2" />
+      <node id="252830181482309240" at="70,116,71,128" concept="2" />
       <node id="252830181482184053" at="74,48,75,47" concept="7" />
       <node id="252830181482243493" at="78,81,79,76" concept="6" />
       <node id="252830181482243493" at="79,76,80,40" concept="2" />
@@ -54,24 +54,24 @@
       <node id="252830181482348527" at="93,92,94,98" concept="2" />
       <node id="252830181482348527" at="94,98,95,85" concept="2" />
       <node id="252830181482348527" at="97,5,98,26" concept="7" />
-      <node id="252830181482184053" at="102,0,103,0" concept="10" trace="applicableNode$uxMM" />
-      <node id="252830181482184053" at="103,0,104,0" concept="10" trace="pattern$XKpc" />
-      <node id="252830181482184053" at="104,0,105,0" concept="10" trace="body$ntG" />
-      <node id="252830181482184053" at="105,0,106,0" concept="10" trace="concept$aRU5" />
-      <node id="252830181482184053" at="106,0,107,0" concept="10" trace="statement$pYcS" />
-      <node id="252830181482184053" at="107,0,108,0" concept="10" trace="expression$9Zn0" />
-      <node id="252830181482184053" at="108,0,109,0" concept="10" trace="applicableNode$eBEr" />
-      <node id="252830181482184053" at="109,0,110,0" concept="10" trace="item$RUbD" />
-      <node id="252830181482184053" at="110,0,111,0" concept="10" trace="condition$fyVx" />
-      <node id="252830181482184053" at="111,0,112,0" concept="10" trace="ifTrue$aS3x" />
-      <node id="252830181482184053" at="115,0,116,0" concept="10" trace="PatternCondition$hM" />
-      <node id="252830181482184053" at="116,0,117,0" concept="10" trace="ConceptReference$Je" />
-      <node id="252830181482184053" at="117,0,118,0" concept="10" trace="StatementList$TN" />
-      <node id="252830181482184053" at="118,0,119,0" concept="10" trace="MatchStatement$1G" />
-      <node id="252830181482184053" at="119,0,120,0" concept="10" trace="ApplicableNodeReference$VP" />
-      <node id="252830181482184053" at="120,0,121,0" concept="10" trace="MatchStatementItem$EH" />
-      <node id="252830181482184053" at="121,0,122,0" concept="10" trace="ApplicableNodeCondition$sh" />
-      <node id="252830181482184053" at="125,0,126,0" concept="10" trace="name$lA7v" />
+      <node id="252830181482184053" at="102,0,103,0" concept="10" trace="applicableNode$Ro4C" />
+      <node id="252830181482184053" at="103,0,104,0" concept="10" trace="pattern$mAF2" />
+      <node id="252830181482184053" at="104,0,105,0" concept="10" trace="body$pdJy" />
+      <node id="252830181482184053" at="105,0,106,0" concept="10" trace="concept$zIbV" />
+      <node id="252830181482184053" at="106,0,107,0" concept="10" trace="statement$53DE" />
+      <node id="252830181482184053" at="107,0,108,0" concept="10" trace="expression$yPCQ" />
+      <node id="252830181482184053" at="108,0,109,0" concept="10" trace="applicableNode$BtWh" />
+      <node id="252830181482184053" at="109,0,110,0" concept="10" trace="item$gKtv" />
+      <node id="252830181482184053" at="110,0,111,0" concept="10" trace="condition$Cpdn" />
+      <node id="252830181482184053" at="111,0,112,0" concept="10" trace="ifTrue$zIln" />
+      <node id="252830181482184053" at="115,0,116,0" concept="10" trace="PatternCondition$zC" />
+      <node id="252830181482184053" at="116,0,117,0" concept="10" trace="ConceptReference$14" />
+      <node id="252830181482184053" at="117,0,118,0" concept="10" trace="StatementList$m_" />
+      <node id="252830181482184053" at="118,0,119,0" concept="10" trace="MatchStatement$jy" />
+      <node id="252830181482184053" at="119,0,120,0" concept="10" trace="ApplicableNodeReference$dF" />
+      <node id="252830181482184053" at="120,0,121,0" concept="10" trace="MatchStatementItem$Wz" />
+      <node id="252830181482184053" at="121,0,122,0" concept="10" trace="ApplicableNodeCondition$I7" />
+      <node id="252830181482184053" at="125,0,126,0" concept="10" trace="name$MnvL" />
       <node id="252830181482184053" at="57,0,59,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="252830181482184053" at="29,0,32,0" concept="1" trace="ConvertPatternRule_Intention#()V" />
       <node id="252830181482184053" at="37,84,40,5" concept="4" />
@@ -134,7 +134,7 @@
         <var name="editorContext" id="252830181482184053" />
         <var name="node" id="252830181482184053" />
       </scope>
-      <scope id="252830181482184057" at="64,78,71,127">
+      <scope id="252830181482184057" at="64,78,71,128">
         <var name="body" id="252830181482216791" />
         <var name="newApplicable" id="252830181482227751" />
         <var name="pattern" id="252830181482199036" />
@@ -193,15 +193,15 @@
       <node id="1376814389956364849" at="86,73,87,79" concept="6" />
       <node id="1376814389956364849" at="87,79,88,51" concept="2" />
       <node id="1376814389956364849" at="88,51,89,26" concept="7" />
-      <node id="3302086321380606109" at="93,0,94,0" concept="10" trace="helginsIntention$zrno" />
-      <node id="3302086321380606109" at="94,0,95,0" concept="10" trace="executeBlock$Z$En" />
-      <node id="3302086321380606109" at="95,0,96,0" concept="10" trace="body$z0FY" />
-      <node id="3302086321380606109" at="96,0,97,0" concept="10" trace="quickFix$fvFg" />
-      <node id="3302086321380606109" at="100,0,101,0" concept="10" trace="TypesystemQuickFix$ii" />
-      <node id="3302086321380606109" at="101,0,102,0" concept="10" trace="QuickFixExecuteBlock$MP" />
-      <node id="3302086321380606109" at="102,0,103,0" concept="10" trace="StatementList$TN" />
-      <node id="3302086321380606109" at="103,0,104,0" concept="10" trace="TypesystemIntention$aE" />
-      <node id="3302086321380606109" at="107,0,108,0" concept="10" trace="name$lA7v" />
+      <node id="3302086321380606109" at="93,0,94,0" concept="10" trace="helginsIntention$WhDe" />
+      <node id="3302086321380606109" at="94,0,95,0" concept="10" trace="executeBlock$oqWd" />
+      <node id="3302086321380606109" at="95,0,96,0" concept="10" trace="body$e68K" />
+      <node id="3302086321380606109" at="96,0,97,0" concept="10" trace="quickFix$ClX6" />
+      <node id="3302086321380606109" at="100,0,101,0" concept="10" trace="TypesystemQuickFix$$8" />
+      <node id="3302086321380606109" at="101,0,102,0" concept="10" trace="QuickFixExecuteBlock$4F" />
+      <node id="3302086321380606109" at="102,0,103,0" concept="10" trace="StatementList$m_" />
+      <node id="3302086321380606109" at="103,0,104,0" concept="10" trace="TypesystemIntention$sw" />
+      <node id="3302086321380606109" at="107,0,108,0" concept="10" trace="name$MnvL" />
       <node id="3302086321380606109" at="57,0,59,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="3302086321380606109" at="29,0,32,0" concept="1" trace="CreateTypesystemIntention_Intention#()V" />
       <node id="3302086321380606109" at="37,84,40,5" concept="4" />
@@ -294,8 +294,8 @@
       <node id="6840209722389709864" at="57,78,58,20" concept="6" />
       <node id="6840209722389709869" at="59,97,60,108" concept="2" />
       <node id="6840209722389709885" at="61,101,62,111" concept="2" />
-      <node id="3585736512129555276" at="63,110,64,113" concept="2" />
-      <node id="3585736512129555282" at="65,106,66,117" concept="2" />
+      <node id="3585736512129555276" at="63,110,64,114" concept="2" />
+      <node id="3585736512129555282" at="65,107,66,117" concept="2" />
       <node id="3585736512129555265" at="67,14,68,15" concept="7" />
       <node id="6840209722389709896" at="69,7,70,129" concept="2" />
       <node id="6840209722389709912" at="70,129,71,129" concept="2" />
@@ -312,23 +312,23 @@
       <node id="6840209722389723775" at="81,115,82,122" concept="2" />
       <node id="6840209722389728976" at="82,122,83,56" concept="2" />
       <node id="6840209722389643031" at="86,48,87,43" concept="7" />
-      <node id="6840209722389643031" at="92,0,93,0" concept="10" trace="CreateLessThanInequationStatement$$A" />
-      <node id="6840209722389643031" at="93,0,94,0" concept="10" trace="CreateGreaterThanInequationStatement$4l" />
-      <node id="6840209722389643031" at="94,0,95,0" concept="10" trace="CreateStrongLessThanInequationStatement$z" />
-      <node id="6840209722389643031" at="95,0,96,0" concept="10" trace="CreateStrongGreaterThanInequationStatement$pA" />
-      <node id="6840209722389643031" at="99,0,100,0" concept="10" trace="rightExpression$xJlJ" />
-      <node id="6840209722389643031" at="100,0,101,0" concept="10" trace="leftExpression$xJ6I" />
-      <node id="6840209722389643031" at="101,0,102,0" concept="10" trace="afterEquations$Dz0V" />
-      <node id="6840209722389643031" at="102,0,103,0" concept="10" trace="afterGroups$Zprn" />
-      <node id="6840209722389643031" at="103,0,104,0" concept="10" trace="beforeEquations$DCbh" />
-      <node id="6840209722389643031" at="104,0,105,0" concept="10" trace="beforeGroups$ZpEo" />
-      <node id="6840209722389643031" at="105,0,106,0" concept="10" trace="errorString$VyQO" />
-      <node id="6840209722389643031" at="106,0,107,0" concept="10" trace="helginsIntention$TFCJ" />
-      <node id="6840209722389643031" at="107,0,108,0" concept="10" trace="inequationGroup$Nfrq" />
-      <node id="6840209722389643031" at="108,0,109,0" concept="10" trace="nodeToCheck$MXlb" />
-      <node id="6840209722389643031" at="112,0,113,0" concept="10" trace="checkOnly$DWc_" />
-      <node id="6840209722389643031" at="113,0,114,0" concept="10" trace="inequationPriority$a_cp" />
-      <node id="6840209722389643031" at="114,0,115,0" concept="10" trace="label$fDVE" />
+      <node id="6840209722389643031" at="92,0,93,0" concept="10" trace="CreateLessThanInequationStatement$Qs" />
+      <node id="6840209722389643031" at="93,0,94,0" concept="10" trace="CreateGreaterThanInequationStatement$mb" />
+      <node id="6840209722389643031" at="94,0,95,0" concept="10" trace="CreateStrongLessThanInequationStatement$ip" />
+      <node id="6840209722389643031" at="95,0,96,0" concept="10" trace="CreateStrongGreaterThanInequationStatement$Fs" />
+      <node id="6840209722389643031" at="99,0,100,0" concept="10" trace="rightExpression$U_B_" />
+      <node id="6840209722389643031" at="100,0,101,0" concept="10" trace="leftExpression$U_o$" />
+      <node id="6840209722389643031" at="101,0,102,0" concept="10" trace="afterEquations$2piL" />
+      <node id="6840209722389643031" at="102,0,103,0" concept="10" trace="afterGroups$ofHd" />
+      <node id="6840209722389643031" at="103,0,104,0" concept="10" trace="beforeEquations$2ut7" />
+      <node id="6840209722389643031" at="104,0,105,0" concept="10" trace="beforeGroups$ofWe" />
+      <node id="6840209722389643031" at="105,0,106,0" concept="10" trace="errorString$kp8E" />
+      <node id="6840209722389643031" at="106,0,107,0" concept="10" trace="helginsIntention$ixU_" />
+      <node id="6840209722389643031" at="107,0,108,0" concept="10" trace="inequationGroup$c5Hg" />
+      <node id="6840209722389643031" at="108,0,109,0" concept="10" trace="nodeToCheck$bNB1" />
+      <node id="6840209722389643031" at="112,0,113,0" concept="10" trace="checkOnly$2Mur" />
+      <node id="6840209722389643031" at="113,0,114,0" concept="10" trace="inequationPriority$zruf" />
+      <node id="6840209722389643031" at="114,0,115,0" concept="10" trace="label$Cwdw" />
       <node id="6840209722389643031" at="50,0,52,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="3585736512129535039" at="67,12,69,7" concept="0" />
       <node id="6840209722389643031" at="28,0,31,0" concept="1" trace="FlipInequality_Intention#()V" />
@@ -350,8 +350,8 @@
       <scope id="6840209722389643033" at="53,87,54,31" />
       <scope id="6840209722389709849" at="59,97,60,108" />
       <scope id="6840209722389709880" at="61,101,62,111" />
-      <scope id="3585736512129535034" at="63,110,64,113" />
-      <scope id="3585736512129535038" at="65,106,66,117" />
+      <scope id="3585736512129535034" at="63,110,64,114" />
+      <scope id="3585736512129535038" at="65,107,66,117" />
       <scope id="3585736512129535040" at="67,14,68,15" />
       <scope id="6840209722389643031" at="86,48,87,43" />
       <scope id="6840209722389643031" at="50,0,52,0" />
@@ -407,7 +407,7 @@
       <node id="6840209722389750255" at="50,14,51,45" concept="7" />
       <node id="6840209722389750257" at="55,78,56,121" concept="2" />
       <node id="6840209722389750234" at="59,48,60,52" concept="7" />
-      <node id="6840209722389750234" at="65,0,66,0" concept="10" trace="checkOnly$DWc_" />
+      <node id="6840209722389750234" at="65,0,66,0" concept="10" trace="checkOnly$2Mur" />
       <node id="6840209722389750234" at="44,0,46,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="6840209722389750253" at="50,12,52,7" concept="0" />
       <node id="6840209722389750234" at="22,0,25,0" concept="1" trace="MakeInequalityCheckOnly_Intention#()V" />
@@ -657,16 +657,16 @@
       <node id="6886053617682514975" at="134,5,135,100" concept="6" />
       <node id="6886053617682514975" at="135,100,136,67" concept="2" />
       <node id="6886053617682514975" at="137,5,138,26" concept="7" />
-      <node id="7590508941684024374" at="142,0,143,0" concept="10" trace="ReportErrorStatement$db" />
-      <node id="7590508941684024374" at="143,0,144,0" concept="10" trace="TypesystemIntention$aE" />
-      <node id="7590508941684024374" at="144,0,145,0" concept="10" trace="TypesystemQuickFix$ii" />
-      <node id="7590508941684024374" at="145,0,146,0" concept="10" trace="QuickFixExecuteBlock$MP" />
-      <node id="7590508941684024374" at="146,0,147,0" concept="10" trace="StatementList$TN" />
-      <node id="7590508941684024374" at="150,0,151,0" concept="10" trace="helginsIntention_old$hPDJ" />
-      <node id="7590508941684024374" at="151,0,152,0" concept="10" trace="quickFix$fvFg" />
-      <node id="7590508941684024374" at="152,0,153,0" concept="10" trace="executeBlock$Z$En" />
-      <node id="7590508941684024374" at="153,0,154,0" concept="10" trace="body$z0FY" />
-      <node id="7590508941684024374" at="157,0,158,0" concept="10" trace="name$lA7v" />
+      <node id="7590508941684024374" at="142,0,143,0" concept="10" trace="ReportErrorStatement$v1" />
+      <node id="7590508941684024374" at="143,0,144,0" concept="10" trace="TypesystemIntention$sw" />
+      <node id="7590508941684024374" at="144,0,145,0" concept="10" trace="TypesystemQuickFix$$8" />
+      <node id="7590508941684024374" at="145,0,146,0" concept="10" trace="QuickFixExecuteBlock$4F" />
+      <node id="7590508941684024374" at="146,0,147,0" concept="10" trace="StatementList$m_" />
+      <node id="7590508941684024374" at="150,0,151,0" concept="10" trace="helginsIntention_old$EFV_" />
+      <node id="7590508941684024374" at="151,0,152,0" concept="10" trace="quickFix$ClX6" />
+      <node id="7590508941684024374" at="152,0,153,0" concept="10" trace="executeBlock$oqWd" />
+      <node id="7590508941684024374" at="153,0,154,0" concept="10" trace="body$e68K" />
+      <node id="7590508941684024374" at="157,0,158,0" concept="10" trace="name$MnvL" />
       <node id="7590508941684025001" at="113,0,115,0" concept="5" trace="exec#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P0_E0;)V" />
       <node id="7590508941684024403" at="36,0,39,0" concept="5" trace="dryRun#()Z" />
       <node id="7590508941684024411" at="40,0,43,0" concept="5" trace="run#()V" />
@@ -786,7 +786,7 @@
       <node id="9057440207251474629" at="61,78,62,97" concept="2" />
       <node id="9057440207251474633" at="62,97,63,204" concept="2" />
       <node id="9057440207251474622" at="66,48,67,49" concept="7" />
-      <node id="9057440207251474622" at="72,0,73,0" concept="10" trace="MessageStatementAnnotation$sq" />
+      <node id="9057440207251474622" at="72,0,73,0" concept="10" trace="MessageStatementAnnotation$Ig" />
       <node id="9057440207251474622" at="54,0,56,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="9057440207251474622" at="26,0,29,0" concept="1" trace="AddMessageAnnotation_Intention#()V" />
       <node id="9057440207251474622" at="34,84,37,5" concept="4" />

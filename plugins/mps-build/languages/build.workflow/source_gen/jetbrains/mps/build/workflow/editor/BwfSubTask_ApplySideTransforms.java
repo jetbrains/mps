@@ -75,7 +75,7 @@ public class BwfSubTask_ApplySideTransforms extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.BwfSubTask$xl, "jetbrains.mps.build.workflow.editor.add_dependencies_BwfSubTask_ext_3");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.BwfSubTask$X, "jetbrains.mps.build.workflow.editor.add_dependencies_BwfSubTask_ext_3");
     }
 
   }
@@ -98,12 +98,12 @@ public class BwfSubTask_ApplySideTransforms extends TransformationMenuBase {
       final SNode node = _context.getNode();
       final EditorContext editorContext = _context.getEditorContext();
 
-      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.BwfSubTask$xl, "jetbrains.mps.build.workflow.editor.add_dependencies");
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.BwfSubTask$X, "jetbrains.mps.build.workflow.editor.add_dependencies");
     }
 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BwfSubTask$xl = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, "jetbrains.mps.build.workflow.structure.BwfSubTask");
+    /*package*/ static final SConcept BwfSubTask$X = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, "jetbrains.mps.build.workflow.structure.BwfSubTask");
   }
 }

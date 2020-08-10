@@ -105,7 +105,7 @@ public class tryCatch_CatchClause_DEPRECATED extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNode catchClause = SNodeFactoryOperations.createNewNode(CONCEPTS.CatchClause$hu, null);
+        SNode catchClause = SNodeFactoryOperations.createNewNode(CONCEPTS.CatchClause$Ig, null);
         SNodeOperations.insertNextSiblingChild(_context.getNode(), catchClause);
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), catchClause, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
@@ -131,6 +131,6 @@ public class tryCatch_CatchClause_DEPRECATED extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CatchClause$hu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, "jetbrains.mps.baseLanguage.structure.CatchClause");
+    /*package*/ static final SConcept CatchClause$Ig = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f39a56e2fL, "jetbrains.mps.baseLanguage.structure.CatchClause");
   }
 }

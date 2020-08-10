@@ -50,7 +50,7 @@ public class Switch_NodeBuilderNode_ClassifierType extends TemplateSwitchBase im
   }
   /*package*/ final class ReductionRule0 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2595803291918772617"), CONCEPTS.NodeBuilderInitValueChild$GW, true);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2595803291918772617"), CONCEPTS.NodeBuilderInitValueChild$Hw, true);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -84,6 +84,6 @@ public class Switch_NodeBuilderNode_ClassifierType extends TemplateSwitchBase im
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept NodeBuilderInitValueChild$GW = MetaAdapterFactory.getInterfaceConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x77f0b79c5e1788feL, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitValueChild");
+    /*package*/ static final SInterfaceConcept NodeBuilderInitValueChild$Hw = MetaAdapterFactory.getInterfaceConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x77f0b79c5e1788feL, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitValueChild");
   }
 }

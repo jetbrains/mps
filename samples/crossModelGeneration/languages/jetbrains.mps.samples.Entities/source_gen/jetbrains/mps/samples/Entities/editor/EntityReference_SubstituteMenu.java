@@ -28,7 +28,7 @@ public class EntityReference_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_c8rze0_a(), CONCEPTS.EntityReference$Zo));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_c8rze0_a(), CONCEPTS.EntityReference$jt));
     result.add(new SMP_Subconcepts_c8rze0_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class EntityReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_c8rze0_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.EntityReference$Zo, LINKS.target$7ZG0);
+      super((SAbstractConcept) CONCEPTS.EntityReference$jt, LINKS.target$4o05);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class EntityReference_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_c8rze0_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.EntityReference$Zo);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.EntityReference$jt);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class EntityReference_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EntityReference$Zo = MetaAdapterFactory.getConcept(0x7917ee54129c42c6L, 0x8b53ba6a5e718e32L, 0x384147f70ea2a91bL, "jetbrains.mps.samples.Entities.structure.EntityReference");
+    /*package*/ static final SConcept EntityReference$jt = MetaAdapterFactory.getConcept(0x7917ee54129c42c6L, 0x8b53ba6a5e718e32L, 0x384147f70ea2a91bL, "jetbrains.mps.samples.Entities.structure.EntityReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$7ZG0 = MetaAdapterFactory.getReferenceLink(0x7917ee54129c42c6L, 0x8b53ba6a5e718e32L, 0x384147f70ea2a91bL, 0x384147f70ea2a91cL, "target");
+    /*package*/ static final SReferenceLink target$4o05 = MetaAdapterFactory.getReferenceLink(0x7917ee54129c42c6L, 0x8b53ba6a5e718e32L, 0x384147f70ea2a91bL, 0x384147f70ea2a91cL, "target");
   }
 }

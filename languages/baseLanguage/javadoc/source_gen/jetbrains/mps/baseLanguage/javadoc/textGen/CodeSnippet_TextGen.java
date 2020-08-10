@@ -19,7 +19,7 @@ public class CodeSnippet_TextGen extends TextGenDescriptorBase {
     tgs.append("{{");
     ctx.getBuffer().area().increaseIndent();
     ctx.getBuffer().area().increaseIndent();
-    for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.statement$iZDr)) {
+    for (SNode item : SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.statement$DorC)) {
       tgs.appendNode(item);
     }
     ctx.getBuffer().area().decreaseIndent();
@@ -30,6 +30,6 @@ public class CodeSnippet_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$iZDr = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x2398cefbc261e3ffL, 0x2398cefbc26369e1L, "statement");
+    /*package*/ static final SContainmentLink statement$DorC = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x2398cefbc261e3ffL, 0x2398cefbc26369e1L, "statement");
   }
 }

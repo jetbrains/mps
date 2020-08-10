@@ -32,13 +32,13 @@ public class MyMainActionGroup implements PaletteActionGroup {
 
   public PaletteElement[] getElements() {
     List<PaletteElement> groups = ListSequence.fromList(new ArrayList<PaletteElement>());
-    ModelPlusImportedScope scope = new ModelPlusImportedScope(myDiagramCell.getSNode().getModel(), false, CONCEPTS.MetaBlock$4z);
+    ModelPlusImportedScope scope = new ModelPlusImportedScope(myDiagramCell.getSNode().getModel(), false, CONCEPTS.MetaBlock$17);
     for (SNode node : Sequence.fromIterable(scope.getAvailableElements(null)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.MetaBlock$4z);
+        return SNodeOperations.isInstanceOf(it, CONCEPTS.MetaBlock$17);
       }
     })) {
-      String key = SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.MetaBlock$4z), PROPS.path$9VNg);
+      String key = SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.MetaBlock$17), PROPS.path$4KJO);
       if (!(MapSequence.fromMap(tagToGroupMap).containsKey(key))) {
         MapSequence.fromMap(tagToGroupMap).put(key, ListSequence.fromList(new ArrayList<SNode>()));
       }
@@ -61,10 +61,10 @@ public class MyMainActionGroup implements PaletteActionGroup {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MetaBlock$4z = MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec40c2c8L, "jetbrains.mps.testHybridEditor.structure.MetaBlock");
+    /*package*/ static final SConcept MetaBlock$17 = MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec40c2c8L, "jetbrains.mps.testHybridEditor.structure.MetaBlock");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty path$9VNg = MetaAdapterFactory.getProperty(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec40c2c8L, 0x206c20835c7e9707L, "path");
+    /*package*/ static final SProperty path$4KJO = MetaAdapterFactory.getProperty(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec40c2c8L, 0x206c20835c7e9707L, "path");
   }
 }

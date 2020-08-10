@@ -23,9 +23,9 @@
       <node id="6243486444683698873" at="37,59,38,150" concept="3" />
       <node id="6243486444683604045" at="44,42,45,21" concept="3" />
       <node id="6243486444683604044" at="52,41,53,165" concept="3" />
-      <node id="6243486444683604044" at="57,0,58,0" concept="4" trace="NodePropertyConstraint$pW" />
-      <node id="6243486444683604044" at="61,0,62,0" concept="4" trace="applicableProperty$uAze" />
-      <node id="6243486444683604044" at="65,0,66,0" concept="4" trace="name$lA7v" />
+      <node id="6243486444683604044" at="57,0,58,0" concept="4" trace="NodePropertyConstraint$vW" />
+      <node id="6243486444683604044" at="61,0,62,0" concept="4" trace="applicableProperty$DrDe" />
+      <node id="6243486444683604044" at="65,0,66,0" concept="4" trace="name$MnvL" />
       <node id="6243486444683604045" at="40,0,43,0" concept="2" trace="doUpdateInstanceNode#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="6243486444683604045" at="24,0,28,0" concept="2" trace="getName#()Ljava/lang/String;" />
       <node id="6243486444683604045" at="28,0,32,0" concept="2" trace="getAdditionalInfo#()Ljava/lang/String;" />

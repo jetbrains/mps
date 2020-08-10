@@ -26,18 +26,18 @@ public class typeof_LetRef_InferenceRule extends AbstractInferenceRule_Runtime i
   }
   public void applyRule(final SNode letRef, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
 
-    SNode type = SNodeOperations.copyNode(typeCheckingContext.typeOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(letRef, LINKS.variable$hOPq)), CONCEPTS.LetExpression$c1), LINKS.value$naVP), "r:8c01d5e0-82c3-43e7-9986-af954df6cb8b(jetbrains.mps.samples.lambdaCalculus.typesystem)", "926857988255646351", true));
+    SNode type = SNodeOperations.copyNode(typeCheckingContext.typeOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(letRef, LINKS.variable$1fXu)), CONCEPTS.LetExpression$k5), LINKS.value$6A3T), "r:8c01d5e0-82c3-43e7-9986-af954df6cb8b(jetbrains.mps.samples.lambdaCalculus.typesystem)", "926857988255646351", true));
     Map<String, SNode> map = MapSequence.fromMap(new HashMap<String, SNode>());
-    for (SNode t : SNodeOperations.getNodeDescendants(type, CONCEPTS.RuntimeTypeVariable$Mk, false, new SAbstractConcept[]{})) {
+    for (SNode t : SNodeOperations.getNodeDescendants(type, CONCEPTS.RuntimeTypeVariable$4a, false, new SAbstractConcept[]{})) {
       final SNode v_typevar_464844656889754475 = typeCheckingContext.createNewRuntimeTypesVariable();
       SNode varNode = typeCheckingContext.getRepresentative(v_typevar_464844656889754475);
-      if (!(MapSequence.fromMap(map).containsKey(SPropertyOperations.getString(t, PROPS.name$lA7v)))) {
-        MapSequence.fromMap(map).put(SPropertyOperations.getString(t, PROPS.name$lA7v), SNodeOperations.cast(typeCheckingContext.getRepresentative(v_typevar_464844656889754475), CONCEPTS.RuntimeTypeVariable$Mk));
+      if (!(MapSequence.fromMap(map).containsKey(SPropertyOperations.getString(t, PROPS.name$MnvL)))) {
+        MapSequence.fromMap(map).put(SPropertyOperations.getString(t, PROPS.name$MnvL), SNodeOperations.cast(typeCheckingContext.getRepresentative(v_typevar_464844656889754475), CONCEPTS.RuntimeTypeVariable$4a));
       } else {
         {
           SNode _nodeToCheck_1029348928467 = letRef;
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:8c01d5e0-82c3-43e7-9986-af954df6cb8b(jetbrains.mps.samples.lambdaCalculus.typesystem)", "464844656889754494", 0, null);
-          typeCheckingContext.createEquation((SNode) typeCheckingContext.getRepresentative(v_typevar_464844656889754475), (SNode) MapSequence.fromMap(map).get(SPropertyOperations.getString(t, PROPS.name$lA7v)), _info_12389875345);
+          typeCheckingContext.createEquation((SNode) typeCheckingContext.getRepresentative(v_typevar_464844656889754475), (SNode) MapSequence.fromMap(map).get(SPropertyOperations.getString(t, PROPS.name$MnvL)), _info_12389875345);
         }
       }
       SNodeOperations.replaceWithAnother(t, varNode);
@@ -49,7 +49,7 @@ public class typeof_LetRef_InferenceRule extends AbstractInferenceRule_Runtime i
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.LetRef$vJ;
+    return CONCEPTS.LetRef$BN;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -59,17 +59,17 @@ public class typeof_LetRef_InferenceRule extends AbstractInferenceRule_Runtime i
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variable$hOPq = MetaAdapterFactory.getReferenceLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x48db75d5dc496b08L, 0x48db75d5dc497af4L, "variable");
-    /*package*/ static final SContainmentLink value$naVP = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x448ba254edbfc79fL, 0x448ba254edbfc7a0L, "value");
+    /*package*/ static final SReferenceLink variable$1fXu = MetaAdapterFactory.getReferenceLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x48db75d5dc496b08L, 0x48db75d5dc497af4L, "variable");
+    /*package*/ static final SContainmentLink value$6A3T = MetaAdapterFactory.getContainmentLink(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x448ba254edbfc79fL, 0x448ba254edbfc7a0L, "value");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LetExpression$c1 = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x448ba254edbfc79fL, "jetbrains.mps.samples.lambdaCalculus.structure.LetExpression");
-    /*package*/ static final SConcept RuntimeTypeVariable$Mk = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x113f84956fbL, "jetbrains.mps.lang.typesystem.structure.RuntimeTypeVariable");
-    /*package*/ static final SConcept LetRef$vJ = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x448ba254edc7216cL, "jetbrains.mps.samples.lambdaCalculus.structure.LetRef");
+    /*package*/ static final SConcept LetExpression$k5 = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x448ba254edbfc79fL, "jetbrains.mps.samples.lambdaCalculus.structure.LetExpression");
+    /*package*/ static final SConcept RuntimeTypeVariable$4a = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x113f84956fbL, "jetbrains.mps.lang.typesystem.structure.RuntimeTypeVariable");
+    /*package*/ static final SConcept LetRef$BN = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x448ba254edc7216cL, "jetbrains.mps.samples.lambdaCalculus.structure.LetRef");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

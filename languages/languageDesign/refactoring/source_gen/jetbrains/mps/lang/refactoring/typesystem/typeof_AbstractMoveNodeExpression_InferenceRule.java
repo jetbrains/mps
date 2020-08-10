@@ -21,7 +21,7 @@ public class typeof_AbstractMoveNodeExpression_InferenceRule extends AbstractInf
   }
   public void applyRule(final SNode nodeToCheck, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(nodeToCheck, LINKS.whatToMove$m5xy);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(nodeToCheck, LINKS.whatToMove$S1Yb);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "1199620247213", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590316(jetbrains.mps.lang.refactoring.typesystem)", "1199620247218", true), (SNode) _quotation_createNode_syqbd4_a1a0c0a0b(), false, true, _info_12389875345);
     }
@@ -32,7 +32,7 @@ public class typeof_AbstractMoveNodeExpression_InferenceRule extends AbstractInf
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AbstractMoveNodeExpression$ee;
+    return CONCEPTS.AbstractMoveNodeExpression$ER;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -54,10 +54,10 @@ public class typeof_AbstractMoveNodeExpression_InferenceRule extends AbstractInf
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink whatToMove$m5xy = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x1174ee3c478L, 0x1174ee44ac2L, "whatToMove");
+    /*package*/ static final SContainmentLink whatToMove$S1Yb = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x1174ee3c478L, 0x1174ee44ac2L, "whatToMove");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractMoveNodeExpression$ee = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x1174eee67c1L, "jetbrains.mps.lang.refactoring.structure.AbstractMoveNodeExpression");
+    /*package*/ static final SConcept AbstractMoveNodeExpression$ER = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x1174eee67c1L, "jetbrains.mps.lang.refactoring.structure.AbstractMoveNodeExpression");
   }
 }

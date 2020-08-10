@@ -92,7 +92,7 @@
       <node id="6648795410103988026" at="209,61,210,34" concept="8" />
       <node id="6648795410103988026" at="210,34,211,15" concept="9" />
       <node id="6648795410103988026" at="213,31,214,17" concept="9" />
-      <node id="6648795410103988025" at="230,0,231,0" concept="12" trace="Resource$CE" />
+      <node id="6648795410103988025" at="230,0,231,0" concept="12" trace="Resource$gs" />
       <node id="6648795410103988026" at="80,0,82,0" concept="1" trace="Target_copyBinaries#()V" />
       <node id="6648795410103988025" at="218,0,220,0" concept="1" trace="TargetProperties#()V" />
       <node id="6648795410103988025" at="220,0,222,0" concept="7" trace="storeValues#(Ljava/util/Map;Ljetbrains/mps/make/script/IPropertiesPool;)V" />

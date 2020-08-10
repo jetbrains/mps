@@ -23,8 +23,8 @@ public class SelectInEditorOperation_selectionStartActions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SLinkOperations.getTarget(node, LINKS.selectionEnd$BYYs) == null) {
-          SLinkOperations.setTarget(node, LINKS.selectionEnd$BYYs, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
+        if (SLinkOperations.getTarget(node, LINKS.selectionEnd$Gha3) == null) {
+          SLinkOperations.setTarget(node, LINKS.selectionEnd$Gha3, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
         }
       }
 
@@ -73,6 +73,6 @@ public class SelectInEditorOperation_selectionStartActions {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink selectionEnd$BYYs = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x257f272033b0db88L, "selectionEnd");
+    /*package*/ static final SContainmentLink selectionEnd$Gha3 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x329d4406465c63a0L, 0x257f272033b0db88L, "selectionEnd");
   }
 }

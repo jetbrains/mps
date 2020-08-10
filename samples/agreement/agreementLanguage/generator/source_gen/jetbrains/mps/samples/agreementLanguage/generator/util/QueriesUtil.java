@@ -17,42 +17,42 @@ public class QueriesUtil {
   public QueriesUtil() {
   }
   public static boolean isMoney(SNode node) {
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.Operation$Lv)) {
-      return isMoney(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.Operation$Lv), LINKS.leftOperand$yXYE));
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.Operation$Dj)) {
+      return isMoney(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.Operation$Dj), LINKS.leftOperand$mKQu));
     }
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.EventVariableReference$yc)) {
-      SNode eventVariable = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.EventVariableReference$yc), LINKS.eventVariable$PMtL);
-      return SEnumOperations.isMember(SPropertyOperations.getEnum(eventVariable, PROPS.type$2PcT), 0x102dc055e26L);
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.EventVariableReference$13)) {
+      SNode eventVariable = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.EventVariableReference$13), LINKS.eventVariable$v2WC);
+      return SEnumOperations.isMember(SPropertyOperations.getEnum(eventVariable, PROPS.type$G5FK), 0x102dc055e26L);
     }
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.Quantity$5I)) {
-      return SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(node, CONCEPTS.Quantity$5I), PROPS.unit$AFTM), 0x102dc0b6d03L);
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.Quantity$$_)) {
+      return SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(node, CONCEPTS.Quantity$$_), PROPS.unit$fWoD), 0x102dc0b6d03L);
     }
     return false;
   }
   public static boolean isQuantity(SNode node) {
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.Operation$Lv)) {
-      return isQuantity(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.Operation$Lv), LINKS.leftOperand$yXYE));
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.Operation$Dj)) {
+      return isQuantity(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.Operation$Dj), LINKS.leftOperand$mKQu));
     }
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.EventVariableReference$yc)) {
-      SNode eventVariable = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.EventVariableReference$yc), LINKS.eventVariable$PMtL);
-      return SEnumOperations.isMember(SPropertyOperations.getEnum(eventVariable, PROPS.type$2PcT), 0x102dc04f5a7L);
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.EventVariableReference$13)) {
+      SNode eventVariable = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.EventVariableReference$13), LINKS.eventVariable$v2WC);
+      return SEnumOperations.isMember(SPropertyOperations.getEnum(eventVariable, PROPS.type$G5FK), 0x102dc04f5a7L);
     }
-    return SNodeOperations.isInstanceOf(node, CONCEPTS.Quantity$5I);
+    return SNodeOperations.isInstanceOf(node, CONCEPTS.Quantity$$_);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Operation$Lv = MetaAdapterFactory.getConcept(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8620dbL, "jetbrains.mps.samples.formulaLanguage.structure.Operation");
-    /*package*/ static final SConcept EventVariableReference$yc = MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102ea8a3c37L, "jetbrains.mps.samples.agreementLanguage.structure.EventVariableReference");
-    /*package*/ static final SConcept Quantity$5I = MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, "jetbrains.mps.samples.agreementLanguage.structure.Quantity");
+    /*package*/ static final SConcept Operation$Dj = MetaAdapterFactory.getConcept(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8620dbL, "jetbrains.mps.samples.formulaLanguage.structure.Operation");
+    /*package*/ static final SConcept EventVariableReference$13 = MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102ea8a3c37L, "jetbrains.mps.samples.agreementLanguage.structure.EventVariableReference");
+    /*package*/ static final SConcept Quantity$$_ = MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, "jetbrains.mps.samples.agreementLanguage.structure.Quantity");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftOperand$yXYE = MetaAdapterFactory.getContainmentLink(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8620dbL, 0x102db86e5b3L, "leftOperand");
-    /*package*/ static final SReferenceLink eventVariable$PMtL = MetaAdapterFactory.getReferenceLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102ea8a3c37L, 0x102ea8aa283L, "eventVariable");
+    /*package*/ static final SContainmentLink leftOperand$mKQu = MetaAdapterFactory.getContainmentLink(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8620dbL, 0x102db86e5b3L, "leftOperand");
+    /*package*/ static final SReferenceLink eventVariable$v2WC = MetaAdapterFactory.getReferenceLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102ea8a3c37L, 0x102ea8aa283L, "eventVariable");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty type$2PcT = MetaAdapterFactory.getProperty(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dc12643eL, 0x102dc1330d6L, "type");
-    /*package*/ static final SProperty unit$AFTM = MetaAdapterFactory.getProperty(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, 0x102dc0c5503L, "unit");
+    /*package*/ static final SProperty type$G5FK = MetaAdapterFactory.getProperty(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dc12643eL, 0x102dc1330d6L, "type");
+    /*package*/ static final SProperty unit$fWoD = MetaAdapterFactory.getProperty(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbf92b68L, 0x102dc0c5503L, "unit");
   }
 }

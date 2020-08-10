@@ -31,7 +31,7 @@ public final class AbstractStateMachineElement__BehaviorDescriptor extends BaseB
   }
 
   /*package*/ static SNode getStateMachine_id6SYFRDkTQVW(@NotNull SNode __thisNode__) {
-    return SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.StateMachine$$0);
+    return SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.StateMachine$Jc);
   }
 
   /*package*/ AbstractStateMachineElement__BehaviorDescriptor() {
@@ -81,6 +81,6 @@ public final class AbstractStateMachineElement__BehaviorDescriptor extends BaseB
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StateMachine$$0 = MetaAdapterFactory.getConcept(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c8456ba1L, "jetbrains.mps.samples.multipleProjections.stateMachine.structure.StateMachine");
+    /*package*/ static final SConcept StateMachine$Jc = MetaAdapterFactory.getConcept(0x530533eef7894c1eL, 0xba56de1bbf3afda7L, 0xa99ffe1c8456ba1L, "jetbrains.mps.samples.multipleProjections.stateMachine.structure.StateMachine");
   }
 }

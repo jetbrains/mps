@@ -26,10 +26,10 @@
       <node id="3750601816081921048" at="42,57,43,47" concept="0" />
       <node id="3750601816081902244" at="43,47,44,148" concept="0" />
       <node id="3750601816081858308" at="48,51,49,154" concept="5" />
-      <node id="3750601816081858308" at="53,0,54,0" concept="7" trace="name$lA7v" />
-      <node id="3750601816081858308" at="57,0,58,0" concept="7" trace="cpSpec$_H$M" />
-      <node id="3750601816081858308" at="61,0,62,0" concept="7" trace="InPlaceCheckpointSpec$q7" />
-      <node id="3750601816081858308" at="62,0,63,0" concept="7" trace="Checkpoint$g" />
+      <node id="3750601816081858308" at="53,0,54,0" concept="7" trace="name$MnvL" />
+      <node id="3750601816081858308" at="57,0,58,0" concept="7" trace="cpSpec$v7$t" />
+      <node id="3750601816081858308" at="61,0,62,0" concept="7" trace="InPlaceCheckpointSpec$pM" />
+      <node id="3750601816081858308" at="62,0,63,0" concept="7" trace="Checkpoint$ZV" />
       <node id="3750601816081858308" at="23,0,26,0" concept="3" trace="getCaption#()Ljava/lang/String;" />
       <node id="3750601816081892520" at="37,0,40,0" concept="3" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="3750601816081858308" at="48,0,51,0" concept="3" trace="getDescriptor#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
@@ -68,7 +68,7 @@
       </scope>
       <unit id="3750601816081858308" at="52,0,55,0" name="jetbrains.mps.lang.generator.plan.migration.InPlaceCheckpointDeclarations$PROPS" />
       <unit id="3750601816081858308" at="56,0,59,0" name="jetbrains.mps.lang.generator.plan.migration.InPlaceCheckpointDeclarations$LINKS" />
-      <unit id="3750601816081892520" at="36,120,40,7" name="jetbrains.mps.lang.generator.plan.migration.InPlaceCheckpointDeclarations$1" />
+      <unit id="3750601816081892520" at="36,121,40,7" name="jetbrains.mps.lang.generator.plan.migration.InPlaceCheckpointDeclarations$1" />
       <unit id="3750601816081858308" at="60,0,64,0" name="jetbrains.mps.lang.generator.plan.migration.InPlaceCheckpointDeclarations$CONCEPTS" />
       <unit id="3750601816081858308" at="21,0,65,0" name="jetbrains.mps.lang.generator.plan.migration.InPlaceCheckpointDeclarations" />
     </file>

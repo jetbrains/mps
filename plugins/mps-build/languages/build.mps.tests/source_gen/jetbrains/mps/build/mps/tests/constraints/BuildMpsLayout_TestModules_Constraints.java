@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildMpsLayout_TestModules_Constraints extends BaseConstraintsDescriptor {
   public BuildMpsLayout_TestModules_Constraints() {
-    super(CONCEPTS.BuildMpsLayout_TestModules$Rz);
+    super(CONCEPTS.BuildMpsLayout_TestModules$cm);
   }
 
   @Override
@@ -44,10 +44,10 @@ public class BuildMpsLayout_TestModules_Constraints extends BaseConstraintsDescr
       // anything in generator 
       return true;
     }
-    SNode buildProject = SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.BuildProject$BF, true, false);
+    SNode buildProject = SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.BuildProject$ae, true, false);
     if ((buildProject != null)) {
       // limit use of this concept in a project with MPS plugin 
-      return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(buildProject, LINKS.plugins$qK6k), CONCEPTS.BuildModuleTestsPlugin$27)).isNotEmpty();
+      return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(buildProject, LINKS.plugins$AsCR), CONCEPTS.BuildModuleTestsPlugin$mU)).isNotEmpty();
     }
     // XXX here used to be a check project.getVisibleProjects(false).findFirst(name == "mps"), but I see no justification to keep that 
     return false;
@@ -55,12 +55,12 @@ public class BuildMpsLayout_TestModules_Constraints extends BaseConstraintsDescr
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:09cf4c23-1b4d-4723-ac0b-a240d2fdcc67(jetbrains.mps.build.mps.tests.constraints)", "1227128029536566784");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildMpsLayout_TestModules$Rz = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, "jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModules");
-    /*package*/ static final SConcept BuildProject$BF = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
-    /*package*/ static final SConcept BuildModuleTestsPlugin$27 = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x37967cbe67d9eca4L, "jetbrains.mps.build.mps.tests.structure.BuildModuleTestsPlugin");
+    /*package*/ static final SConcept BuildMpsLayout_TestModules$cm = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, "jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModules");
+    /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+    /*package*/ static final SConcept BuildModuleTestsPlugin$mU = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x37967cbe67d9eca4L, "jetbrains.mps.build.mps.tests.structure.BuildModuleTestsPlugin");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink plugins$qK6k = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x5c3f3e2c1ce9ac70L, "plugins");
+    /*package*/ static final SContainmentLink plugins$AsCR = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x5c3f3e2c1ce9ac70L, "plugins");
   }
 }

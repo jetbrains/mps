@@ -61,7 +61,7 @@ public class GoToSuperClassMethod_Action extends BaseAction {
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      if (node != null && !(SNodeOperations.isInstanceOf(node, CONCEPTS.BaseMethodDeclaration$RR))) {
+      if (node != null && !(SNodeOperations.isInstanceOf(node, CONCEPTS.BaseMethodDeclaration$kD))) {
         node = null;
       }
       MapSequence.fromMap(_params).put("methodNode", node);
@@ -102,7 +102,7 @@ public class GoToSuperClassMethod_Action extends BaseAction {
       public String caption(final int usagesFound, final boolean finished) {
         return new ModelAccessHelper(mpsProject.getRepository()).runReadAction(new Computable<String>() {
           public String compute() {
-            return MPSCodeInsightBundle.message("goto.super.method.of.chooser.title", SPropertyOperations.getString(node, PROPS.name$lA7v));
+            return MPSCodeInsightBundle.message("goto.super.method.of.chooser.title", SPropertyOperations.getString(node, PROPS.name$MnvL));
           }
         });
       }
@@ -110,10 +110,10 @@ public class GoToSuperClassMethod_Action extends BaseAction {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseMethodDeclaration$RR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

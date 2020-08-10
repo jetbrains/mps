@@ -69,12 +69,12 @@ public class DailyPlanReference_SubstituteMenu extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.samples.heating.editor.DailyPlanReference_SmartReference");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.DailyPlanReference$dO;
+      return CONCEPTS.DailyPlanReference$uf;
     }
   }
   public class SMP_Subconcepts_t1ur47_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.DailyPlanReference$dO);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.DailyPlanReference$uf);
     }
     @NotNull
     @Override
@@ -95,6 +95,6 @@ public class DailyPlanReference_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DailyPlanReference$dO = MetaAdapterFactory.getConcept(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0xcfa085c9af5e830L, "jetbrains.mps.samples.heating.structure.DailyPlanReference");
+    /*package*/ static final SConcept DailyPlanReference$uf = MetaAdapterFactory.getConcept(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0xcfa085c9af5e830L, "jetbrains.mps.samples.heating.structure.DailyPlanReference");
   }
 }

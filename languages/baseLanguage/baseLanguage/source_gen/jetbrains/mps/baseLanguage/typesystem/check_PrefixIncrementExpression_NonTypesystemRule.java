@@ -21,16 +21,16 @@ public class check_PrefixIncrementExpression_NonTypesystemRule extends AbstractN
   public check_PrefixIncrementExpression_NonTypesystemRule() {
   }
   public void applyRule(final SNode prefixIncrementExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(prefixIncrementExpression, LINKS.expression$NMtu) == null)) {
+    if ((SLinkOperations.getTarget(prefixIncrementExpression, LINKS.expression$uRUg) == null)) {
       return;
     }
-    if (!((boolean) Expression__BehaviorDescriptor.isLValue_idhEwJgmE.invoke(SLinkOperations.getTarget(prefixIncrementExpression, LINKS.expression$NMtu)))) {
+    if (!((boolean) Expression__BehaviorDescriptor.isLValue_idhEwJgmE.invoke(SLinkOperations.getTarget(prefixIncrementExpression, LINKS.expression$uRUg)))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
-      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(prefixIncrementExpression, LINKS.expression$NMtu), "variable expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7528226091632213085", null, errorTarget);
+      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(SLinkOperations.getTarget(prefixIncrementExpression, LINKS.expression$uRUg), "variable expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7528226091632213085", null, errorTarget);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.PrefixIncrementExpression$4W;
+    return CONCEPTS.PrefixIncrementExpression$xI;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -40,10 +40,10 @@ public class check_PrefixIncrementExpression_NonTypesystemRule extends AbstractN
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$NMtu = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");
+    /*package*/ static final SContainmentLink expression$uRUg = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a4c1f269L, 0x120a4c433a6L, "expression");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PrefixIncrementExpression$4W = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a46df580L, "jetbrains.mps.baseLanguage.structure.PrefixIncrementExpression");
+    /*package*/ static final SConcept PrefixIncrementExpression$xI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120a46df580L, "jetbrains.mps.baseLanguage.structure.PrefixIncrementExpression");
   }
 }

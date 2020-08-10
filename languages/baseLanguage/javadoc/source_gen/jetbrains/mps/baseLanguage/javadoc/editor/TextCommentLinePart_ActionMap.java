@@ -43,29 +43,29 @@ public class TextCommentLinePart_ActionMap {
         if (isFirstPart) {
           if (isFirstLine) {
             //  This is beginning of comment lines container 
-            if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(currentNode)), CONCEPTS.BaseDocComment$pH)) {
-              SNode docComment = SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.getParent(currentNode)), CONCEPTS.BaseDocComment$pH);
+            if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(currentNode)), CONCEPTS.BaseDocComment$bU)) {
+              SNode docComment = SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.getParent(currentNode)), CONCEPTS.BaseDocComment$bU);
               if (DeletionApproverUtil.approve(editorContext, docComment, "commentCollection")) {
                 return;
               }
               SNode documentedNode = SNodeOperations.getParent(docComment);
               SNodeOperations.deleteNode(docComment);
               SelectionUtil.selectCell(editorContext, documentedNode, SelectionManager.FIRST_CELL);
-            } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(currentNode)), CONCEPTS.CommentLinePart$Rv)) {
-              NodeCaretPair nodeCaret = CommentLinePart__BehaviorDescriptor.smartDelete_id7PYAiugbmRz.invoke(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(currentNode)), CONCEPTS.CommentLinePart$Rv), ((boolean) false));
+            } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(currentNode)), CONCEPTS.CommentLinePart$DG)) {
+              NodeCaretPair nodeCaret = CommentLinePart__BehaviorDescriptor.smartDelete_id7PYAiugbmRz.invoke(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(currentNode)), CONCEPTS.CommentLinePart$DG), ((boolean) false));
               editorContext.selectWRTFocusPolicy(nodeCaret.myNode);
               ((EditorCell_Label) editorContext.getSelectedCell()).setCaretPosition(nodeCaret.myCaret);
             }
             return;
           } else {
             //  This is the beginning of line 
-            SNode curLine = SNodeOperations.cast(SNodeOperations.getParent(currentNode), CONCEPTS.CommentLine$vy);
-            SNode prevLine = SNodeOperations.cast(SNodeOperations.getPrevSibling(curLine), CONCEPTS.CommentLine$vy);
-            nodeToSelect = ListSequence.fromList(SLinkOperations.getChildren(prevLine, LINKS.part$w5LD)).last();
-            int index = ListSequence.fromList(SLinkOperations.getChildren(prevLine, LINKS.part$w5LD)).count() - 1;
-            ListSequence.fromList(SLinkOperations.getChildren(prevLine, LINKS.part$w5LD)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(curLine, LINKS.part$w5LD)));
-            if (SNodeOperations.isInstanceOf(nodeToSelect, CONCEPTS.TextCommentLinePart$RY) && isNotEmptyString(SPropertyOperations.getString(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0))) {
-              caret = SPropertyOperations.getString(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0).length();
+            SNode curLine = SNodeOperations.cast(SNodeOperations.getParent(currentNode), CONCEPTS.CommentLine$hJ);
+            SNode prevLine = SNodeOperations.cast(SNodeOperations.getPrevSibling(curLine), CONCEPTS.CommentLine$hJ);
+            nodeToSelect = ListSequence.fromList(SLinkOperations.getChildren(prevLine, LINKS.part$QuzQ)).last();
+            int index = ListSequence.fromList(SLinkOperations.getChildren(prevLine, LINKS.part$QuzQ)).count() - 1;
+            ListSequence.fromList(SLinkOperations.getChildren(prevLine, LINKS.part$QuzQ)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(curLine, LINKS.part$QuzQ)));
+            if (SNodeOperations.isInstanceOf(nodeToSelect, CONCEPTS.TextCommentLinePart$Eb) && isNotEmptyString(SPropertyOperations.getString(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$Eb), PROPS.text$aOLd))) {
+              caret = SPropertyOperations.getString(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$Eb), PROPS.text$aOLd).length();
             } else {
               caret = 0;
             }
@@ -78,21 +78,21 @@ public class TextCommentLinePart_ActionMap {
           }
         } else {
           //  Caret is at the beginning of text part inside comment line 
-          if (SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(currentNode), CONCEPTS.TextCommentLinePart$RY)) {
+          if (SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(currentNode), CONCEPTS.TextCommentLinePart$Eb)) {
             nodeToSelect = SNodeOperations.getPrevSibling(currentNode);
-            SNode linePart = SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$RY);
-            if (isEmptyString(SPropertyOperations.getString(linePart, PROPS.text$OrZ0))) {
+            SNode linePart = SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$Eb);
+            if (isEmptyString(SPropertyOperations.getString(linePart, PROPS.text$aOLd))) {
               SNodeOperations.deleteNode(nodeToSelect);
               nodeToSelect = currentNode;
             } else {
-              SPropertyOperations.assign(linePart, PROPS.text$OrZ0, SPropertyOperations.getString(linePart, PROPS.text$OrZ0).substring(0, SPropertyOperations.getString(linePart, PROPS.text$OrZ0).length() - 1));
+              SPropertyOperations.assign(linePart, PROPS.text$aOLd, SPropertyOperations.getString(linePart, PROPS.text$aOLd).substring(0, SPropertyOperations.getString(linePart, PROPS.text$aOLd).length() - 1));
             }
             editorContext.selectWRTFocusPolicy(nodeToSelect);
-          } else if (SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(currentNode), CONCEPTS.InlineTagCommentLinePart$SW) || SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(currentNode), CONCEPTS.HTMLElement$6s)) {
+          } else if (SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(currentNode), CONCEPTS.InlineTagCommentLinePart$F9) || SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(currentNode), CONCEPTS.HTMLElement$SD)) {
             if (DeletionApproverUtil.approve(editorContext, SNodeOperations.getPrevSibling(currentNode))) {
               return;
             }
-            NodeCaretPair nodeCaret = CommentLinePart__BehaviorDescriptor.smartDelete_id7PYAiugbmRz.invoke(SNodeOperations.cast(SNodeOperations.getPrevSibling(currentNode), CONCEPTS.CommentLinePart$Rv), ((boolean) false));
+            NodeCaretPair nodeCaret = CommentLinePart__BehaviorDescriptor.smartDelete_id7PYAiugbmRz.invoke(SNodeOperations.cast(SNodeOperations.getPrevSibling(currentNode), CONCEPTS.CommentLinePart$DG), ((boolean) false));
             editorContext.selectWRTFocusPolicy(nodeCaret.myNode);
             ((EditorCell_Label) editorContext.getSelectedCell()).setCaretPosition(nodeCaret.myCaret);
           }
@@ -114,44 +114,44 @@ public class TextCommentLinePart_ActionMap {
           SNode currentNode = editorContext.getSelectedNode();
 
           if ((SNodeOperations.getNextSibling(currentNode) != null)) {
-            if (SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(currentNode), CONCEPTS.TextCommentLinePart$RY)) {
+            if (SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(currentNode), CONCEPTS.TextCommentLinePart$Eb)) {
               nodeToSelect = SNodeOperations.getNextSibling(currentNode);
-              SNode linePart = SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$RY);
-              if (isEmptyString(SPropertyOperations.getString(linePart, PROPS.text$OrZ0))) {
+              SNode linePart = SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$Eb);
+              if (isEmptyString(SPropertyOperations.getString(linePart, PROPS.text$aOLd))) {
                 SNodeOperations.deleteNode(nodeToSelect);
                 nodeToSelect = currentNode;
               } else {
-                SPropertyOperations.assign(linePart, PROPS.text$OrZ0, SPropertyOperations.getString(linePart, PROPS.text$OrZ0).substring(0, SPropertyOperations.getString(linePart, PROPS.text$OrZ0).length()));
+                SPropertyOperations.assign(linePart, PROPS.text$aOLd, SPropertyOperations.getString(linePart, PROPS.text$aOLd).substring(0, SPropertyOperations.getString(linePart, PROPS.text$aOLd).length()));
               }
               editorContext.selectWRTFocusPolicy(nodeToSelect);
               SelectionUtil.selectLabelCellAnSetCaret(editorContext, SNodeOperations.getNextSibling(currentNode), SelectionManager.FIRST_CELL, 0);
               SNodeOperations.deleteNode(currentNode);
-            } else if (SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(currentNode), CONCEPTS.InlineTagCommentLinePart$SW) || SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(currentNode), CONCEPTS.HTMLElement$6s)) {
+            } else if (SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(currentNode), CONCEPTS.InlineTagCommentLinePart$F9) || SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(currentNode), CONCEPTS.HTMLElement$SD)) {
               if (DeletionApproverUtil.approve(editorContext, SNodeOperations.getNextSibling(currentNode))) {
                 return;
               }
-              NodeCaretPair nodeCaret = CommentLinePart__BehaviorDescriptor.smartDelete_id7PYAiugbmRz.invoke(SNodeOperations.cast(SNodeOperations.getNextSibling(currentNode), CONCEPTS.CommentLinePart$Rv), ((boolean) true));
+              NodeCaretPair nodeCaret = CommentLinePart__BehaviorDescriptor.smartDelete_id7PYAiugbmRz.invoke(SNodeOperations.cast(SNodeOperations.getNextSibling(currentNode), CONCEPTS.CommentLinePart$DG), ((boolean) true));
               editorContext.selectWRTFocusPolicy(nodeCaret.myNode);
               ((EditorCell_Label) editorContext.getSelectedCell()).setCaretPosition(nodeCaret.myCaret);
             }
             return;
           } else {
-            SNode curLine = SNodeOperations.cast(SNodeOperations.getParent(currentNode), CONCEPTS.CommentLine$vy);
-            SNode nextLine = SNodeOperations.cast(SNodeOperations.getNextSibling(curLine), CONCEPTS.CommentLine$vy);
+            SNode curLine = SNodeOperations.cast(SNodeOperations.getParent(currentNode), CONCEPTS.CommentLine$hJ);
+            SNode nextLine = SNodeOperations.cast(SNodeOperations.getNextSibling(curLine), CONCEPTS.CommentLine$hJ);
             if ((SNodeOperations.getPrevSibling(node) != null)) {
-              int index = ListSequence.fromList(SLinkOperations.getChildren(curLine, LINKS.part$w5LD)).count() - 1;
+              int index = ListSequence.fromList(SLinkOperations.getChildren(curLine, LINKS.part$QuzQ)).count() - 1;
               SNodeOperations.deleteNode(nextLine);
-              ListSequence.fromList(SLinkOperations.getChildren(curLine, LINKS.part$w5LD)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(nextLine, LINKS.part$w5LD)));
+              ListSequence.fromList(SLinkOperations.getChildren(curLine, LINKS.part$QuzQ)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(nextLine, LINKS.part$QuzQ)));
               CommentLine__BehaviorDescriptor.tryMergeToRight_idooaTF_3fF3.invoke(curLine, ((int) index));
             } else {
               SNodeOperations.deleteNode(curLine);
               if ((nextLine != null)) {
-                nodeToSelect = ListSequence.fromList(SLinkOperations.getChildren(nextLine, LINKS.part$w5LD)).first();
+                nodeToSelect = ListSequence.fromList(SLinkOperations.getChildren(nextLine, LINKS.part$QuzQ)).first();
                 editorContext.selectWRTFocusPolicy(nodeToSelect);
                 ((EditorCell_Label) editorContext.getSelectedCell()).setCaretPosition(0);
               } else {
-                if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(curLine), CONCEPTS.CommentLinePart$Rv)) {
-                  NodeCaretPair nodeCaret = CommentLinePart__BehaviorDescriptor.smartDelete_id7PYAiugbmRz.invoke(SNodeOperations.cast(SNodeOperations.getParent(curLine), CONCEPTS.CommentLinePart$Rv), ((boolean) false));
+                if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(curLine), CONCEPTS.CommentLinePart$DG)) {
+                  NodeCaretPair nodeCaret = CommentLinePart__BehaviorDescriptor.smartDelete_id7PYAiugbmRz.invoke(SNodeOperations.cast(SNodeOperations.getParent(curLine), CONCEPTS.CommentLinePart$DG), ((boolean) false));
                   editorContext.selectWRTFocusPolicy(nodeCaret.myNode);
                   ((EditorCell_Label) editorContext.getSelectedCell()).setCaretPosition(nodeCaret.myCaret);
                 } else {
@@ -169,7 +169,7 @@ public class TextCommentLinePart_ActionMap {
             selectedCell.deleteSelection();
             if (isEmptyString(selectedCell.getText())) {
               if ((SNodeOperations.getNextSibling(node) == null)) {
-                CommentLine__BehaviorDescriptor.tryMergeToRight_idooaTF_3fF3.invoke(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.CommentLine$vy), ((int) SNodeOperations.getIndexInParent(node)));
+                CommentLine__BehaviorDescriptor.tryMergeToRight_idooaTF_3fF3.invoke(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.CommentLine$hJ), ((int) SNodeOperations.getIndexInParent(node)));
               } else {
                 nodeToSelect = SNodeOperations.getNextSibling(node);
                 SNodeOperations.deleteNode(node);
@@ -187,23 +187,23 @@ public class TextCommentLinePart_ActionMap {
             if (isLastPart) {
               if (isLastLine) {
                 //  This is end of comment lines container 
-                if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(currentNode)), CONCEPTS.BaseDocComment$pH)) {
+                if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(currentNode)), CONCEPTS.BaseDocComment$bU)) {
                   //  Shouldn't delete documentation comment 
-                } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(currentNode)), CONCEPTS.CommentLinePart$Rv)) {
-                  NodeCaretPair nodeCaret = CommentLinePart__BehaviorDescriptor.smartDelete_id7PYAiugbmRz.invoke(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(currentNode)), CONCEPTS.CommentLinePart$Rv), ((boolean) false));
+                } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getParent(currentNode)), CONCEPTS.CommentLinePart$DG)) {
+                  NodeCaretPair nodeCaret = CommentLinePart__BehaviorDescriptor.smartDelete_id7PYAiugbmRz.invoke(SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(currentNode)), CONCEPTS.CommentLinePart$DG), ((boolean) false));
                   editorContext.selectWRTFocusPolicy(nodeCaret.myNode);
                   ((EditorCell_Label) editorContext.getSelectedCell()).setCaretPosition(nodeCaret.myCaret);
                 }
                 return;
               } else {
                 //  This is the end of line 
-                SNode curLine = SNodeOperations.cast(SNodeOperations.getParent(currentNode), CONCEPTS.CommentLine$vy);
-                SNode nextLine = SNodeOperations.cast(SNodeOperations.getNextSibling(curLine), CONCEPTS.CommentLine$vy);
-                nodeToSelect = ListSequence.fromList(SLinkOperations.getChildren(curLine, LINKS.part$w5LD)).last();
+                SNode curLine = SNodeOperations.cast(SNodeOperations.getParent(currentNode), CONCEPTS.CommentLine$hJ);
+                SNode nextLine = SNodeOperations.cast(SNodeOperations.getNextSibling(curLine), CONCEPTS.CommentLine$hJ);
+                nodeToSelect = ListSequence.fromList(SLinkOperations.getChildren(curLine, LINKS.part$QuzQ)).last();
                 int index = SNodeOperations.getIndexInParent(currentNode);
-                ListSequence.fromList(SLinkOperations.getChildren(curLine, LINKS.part$w5LD)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(nextLine, LINKS.part$w5LD)));
-                if (SNodeOperations.isInstanceOf(nodeToSelect, CONCEPTS.TextCommentLinePart$RY) && isNotEmptyString(SPropertyOperations.getString(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0))) {
-                  caret = SPropertyOperations.getString(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0).length();
+                ListSequence.fromList(SLinkOperations.getChildren(curLine, LINKS.part$QuzQ)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(nextLine, LINKS.part$QuzQ)));
+                if (SNodeOperations.isInstanceOf(nodeToSelect, CONCEPTS.TextCommentLinePart$Eb) && isNotEmptyString(SPropertyOperations.getString(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$Eb), PROPS.text$aOLd))) {
+                  caret = SPropertyOperations.getString(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$Eb), PROPS.text$aOLd).length();
                 } else {
                   caret = 0;
                 }
@@ -216,25 +216,25 @@ public class TextCommentLinePart_ActionMap {
               }
             } else {
               //  Caret is at the end of text part inside comment line 
-              if (SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(currentNode), CONCEPTS.TextCommentLinePart$RY)) {
+              if (SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(currentNode), CONCEPTS.TextCommentLinePart$Eb)) {
                 nodeToSelect = SNodeOperations.getNextSibling(currentNode);
-                if (isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0))) {
+                if (isEmptyString(SPropertyOperations.getString(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$Eb), PROPS.text$aOLd))) {
                   SNodeOperations.deleteNode(nodeToSelect);
                   nodeToSelect = node;
                 } else {
-                  SPropertyOperations.assign(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0, SPropertyOperations.getString(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0).substring(1));
+                  SPropertyOperations.assign(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$Eb), PROPS.text$aOLd, SPropertyOperations.getString(SNodeOperations.cast(nodeToSelect, CONCEPTS.TextCommentLinePart$Eb), PROPS.text$aOLd).substring(1));
                 }
                 editorContext.selectWRTFocusPolicy(nodeToSelect);
                 ((EditorCell_Label) editorContext.getSelectedCell()).setCaretPosition(caret);
-              } else if (SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(currentNode), CONCEPTS.InlineTagCommentLinePart$SW) || SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(currentNode), CONCEPTS.HTMLElement$6s)) {
-                NodeCaretPair nodeCaret = CommentLinePart__BehaviorDescriptor.smartDelete_id7PYAiugbmRz.invoke(SNodeOperations.cast(SNodeOperations.getNextSibling(currentNode), CONCEPTS.CommentLinePart$Rv), ((boolean) true));
+              } else if (SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(currentNode), CONCEPTS.InlineTagCommentLinePart$F9) || SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(currentNode), CONCEPTS.HTMLElement$SD)) {
+                NodeCaretPair nodeCaret = CommentLinePart__BehaviorDescriptor.smartDelete_id7PYAiugbmRz.invoke(SNodeOperations.cast(SNodeOperations.getNextSibling(currentNode), CONCEPTS.CommentLinePart$DG), ((boolean) true));
                 editorContext.selectWRTFocusPolicy(nodeCaret.myNode);
                 ((EditorCell_Label) editorContext.getSelectedCell()).setCaretPosition(nodeCaret.myCaret);
               }
               return;
             }
           } else {
-            SPropertyOperations.assign(SNodeOperations.cast(node, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0, SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0).substring(0, selectedCell.getCaretPosition()) + SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.TextCommentLinePart$RY), PROPS.text$OrZ0).substring(selectedCell.getCaretPosition() + 1));
+            SPropertyOperations.assign(SNodeOperations.cast(node, CONCEPTS.TextCommentLinePart$Eb), PROPS.text$aOLd, SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.TextCommentLinePart$Eb), PROPS.text$aOLd).substring(0, selectedCell.getCaretPosition()) + SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.TextCommentLinePart$Eb), PROPS.text$aOLd).substring(selectedCell.getCaretPosition() + 1));
             return;
           }
 
@@ -296,19 +296,19 @@ public class TextCommentLinePart_ActionMap {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseDocComment$pH = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment");
-    /*package*/ static final SConcept CommentLinePart$Rv = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990286L, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLinePart");
-    /*package*/ static final SConcept CommentLine$vy = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLine");
-    /*package*/ static final SConcept TextCommentLinePart$RY = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart");
-    /*package*/ static final SConcept InlineTagCommentLinePart$SW = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990289L, "jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentLinePart");
-    /*package*/ static final SConcept HTMLElement$6s = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5bc4aa08e154b399L, "jetbrains.mps.baseLanguage.javadoc.structure.HTMLElement");
+    /*package*/ static final SConcept BaseDocComment$bU = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x4a3c146b7fae70d3L, "jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment");
+    /*package*/ static final SConcept CommentLinePart$DG = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990286L, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLinePart");
+    /*package*/ static final SConcept CommentLine$hJ = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, "jetbrains.mps.baseLanguage.javadoc.structure.CommentLine");
+    /*package*/ static final SConcept TextCommentLinePart$Eb = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, "jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart");
+    /*package*/ static final SConcept InlineTagCommentLinePart$F9 = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990289L, "jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentLinePart");
+    /*package*/ static final SConcept HTMLElement$SD = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5bc4aa08e154b399L, "jetbrains.mps.baseLanguage.javadoc.structure.HTMLElement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink part$w5LD = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
+    /*package*/ static final SContainmentLink part$QuzQ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f96cL, 0x7c7f5b2f3199028dL, "part");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$OrZ0 = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
+    /*package*/ static final SProperty text$aOLd = MetaAdapterFactory.getProperty(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x7c7f5b2f31990287L, 0x7c7f5b2f31990288L, "text");
   }
 }

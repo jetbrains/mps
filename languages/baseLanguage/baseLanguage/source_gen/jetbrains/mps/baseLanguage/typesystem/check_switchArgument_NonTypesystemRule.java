@@ -26,27 +26,27 @@ public class check_switchArgument_NonTypesystemRule extends AbstractNonTypesyste
   public check_switchArgument_NonTypesystemRule() {
   }
   public void applyRule(final SNode switchStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode arg = SLinkOperations.getTarget(switchStatement, LINKS.expression$XdXc);
+    SNode arg = SLinkOperations.getTarget(switchStatement, LINKS.expression$CjpY);
     if (arg == null) {
       return;
     }
     SNode argType = TypecheckingFacade.getFromContext().getTypeOf(arg);
-    if (SNodeOperations.isInstanceOf(argType, CONCEPTS.PrimitiveType$5)) {
-      if (SNodeOperations.isInstanceOf(argType, CONCEPTS.IntegerType$Eo) || SNodeOperations.isInstanceOf(argType, CONCEPTS.CharType$j4) || SNodeOperations.isInstanceOf(argType, CONCEPTS.ByteType$lE) || SNodeOperations.isInstanceOf(argType, CONCEPTS.ShortType$YA)) {
+    if (SNodeOperations.isInstanceOf(argType, CONCEPTS.PrimitiveType$sR)) {
+      if (SNodeOperations.isInstanceOf(argType, CONCEPTS.IntegerType$7a) || SNodeOperations.isInstanceOf(argType, CONCEPTS.CharType$JQ) || SNodeOperations.isInstanceOf(argType, CONCEPTS.ByteType$Ms) || SNodeOperations.isInstanceOf(argType, CONCEPTS.ShortType$ro)) {
         return;
       }
     }
-    if (SNodeOperations.isInstanceOf(argType, CONCEPTS.ClassifierType$IZ)) {
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(argType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD), CONCEPTS.EnumClass$uy) || SLinkOperations.hasPointer(SNodeOperations.cast(argType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~String")) || SLinkOperations.hasPointer(SNodeOperations.cast(argType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Integer")) || SLinkOperations.hasPointer(SNodeOperations.cast(argType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Character")) || SLinkOperations.hasPointer(SNodeOperations.cast(argType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Byte")) || SLinkOperations.hasPointer(SNodeOperations.cast(argType, CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Short"))) {
+    if (SNodeOperations.isInstanceOf(argType, CONCEPTS.ClassifierType$bL)) {
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(argType, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr), CONCEPTS.EnumClass$Vk) || SLinkOperations.hasPointer(SNodeOperations.cast(argType, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~String")) || SLinkOperations.hasPointer(SNodeOperations.cast(argType, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Integer")) || SLinkOperations.hasPointer(SNodeOperations.cast(argType, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Character")) || SLinkOperations.hasPointer(SNodeOperations.cast(argType, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Byte")) || SLinkOperations.hasPointer(SNodeOperations.cast(argType, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Short"))) {
         return;
       }
     }
-    if (SNodeOperations.isInstanceOf(argType, CONCEPTS.IWillBeClassifier$sr)) {
-      if (SNodeOperations.isInstanceOf(IWillBeClassifier__BehaviorDescriptor.baseClassifier_id3_1Lj9FFNJ0.invoke(SNodeOperations.cast(argType, CONCEPTS.IWillBeClassifier$sr)), CONCEPTS.EnumClass$uy)) {
+    if (SNodeOperations.isInstanceOf(argType, CONCEPTS.IWillBeClassifier$Td)) {
+      if (SNodeOperations.isInstanceOf(IWillBeClassifier__BehaviorDescriptor.baseClassifier_id3_1Lj9FFNJ0.invoke(SNodeOperations.cast(argType, CONCEPTS.IWillBeClassifier$Td)), CONCEPTS.EnumClass$Vk)) {
         return;
       }
     }
-    if (SNodeOperations.isInstanceOf(argType, CONCEPTS.StringType$2b)) {
+    if (SNodeOperations.isInstanceOf(argType, CONCEPTS.StringType$uX)) {
       return;
     }
     {
@@ -55,7 +55,7 @@ public class check_switchArgument_NonTypesystemRule extends AbstractNonTypesyste
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SwitchStatement$S1;
+    return CONCEPTS.SwitchStatement$kN;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -65,20 +65,20 @@ public class check_switchArgument_NonTypesystemRule extends AbstractNonTypesyste
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$XdXc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02ec241L, "expression");
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink expression$CjpY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02ec241L, "expression");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IntegerType$Eo = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d22479L, "jetbrains.mps.baseLanguage.structure.IntegerType");
-    /*package*/ static final SConcept CharType$j4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d4f826L, "jetbrains.mps.baseLanguage.structure.CharType");
-    /*package*/ static final SConcept ByteType$lE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d5b617L, "jetbrains.mps.baseLanguage.structure.ByteType");
-    /*package*/ static final SConcept ShortType$YA = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cc380dL, "jetbrains.mps.baseLanguage.structure.ShortType");
-    /*package*/ static final SConcept PrimitiveType$5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
-    /*package*/ static final SConcept EnumClass$uy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
-    /*package*/ static final SInterfaceConcept IWillBeClassifier$sr = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3ff8b7a0d94242e1L, "jetbrains.mps.baseLanguage.structure.IWillBeClassifier");
-    /*package*/ static final SConcept StringType$2b = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47da71ecL, "jetbrains.mps.baseLanguage.structure.StringType");
-    /*package*/ static final SConcept SwitchStatement$S1 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, "jetbrains.mps.baseLanguage.structure.SwitchStatement");
+    /*package*/ static final SConcept IntegerType$7a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d22479L, "jetbrains.mps.baseLanguage.structure.IntegerType");
+    /*package*/ static final SConcept CharType$JQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d4f826L, "jetbrains.mps.baseLanguage.structure.CharType");
+    /*package*/ static final SConcept ByteType$Ms = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d5b617L, "jetbrains.mps.baseLanguage.structure.ByteType");
+    /*package*/ static final SConcept ShortType$ro = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cc380dL, "jetbrains.mps.baseLanguage.structure.ShortType");
+    /*package*/ static final SConcept PrimitiveType$sR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept EnumClass$Vk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
+    /*package*/ static final SInterfaceConcept IWillBeClassifier$Td = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3ff8b7a0d94242e1L, "jetbrains.mps.baseLanguage.structure.IWillBeClassifier");
+    /*package*/ static final SConcept StringType$uX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47da71ecL, "jetbrains.mps.baseLanguage.structure.StringType");
+    /*package*/ static final SConcept SwitchStatement$kN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, "jetbrains.mps.baseLanguage.structure.SwitchStatement");
   }
 }

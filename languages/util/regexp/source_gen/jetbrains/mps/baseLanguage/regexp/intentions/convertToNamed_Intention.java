@@ -49,7 +49,7 @@ public final class convertToNamed_Intention extends AbstractIntentionDescriptor 
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode n = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.MatchParensRegexp$1m);
+      SNode n = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.MatchParensRegexp$Ea);
       editorContext.flushEvents();
       editorContext.selectWRTFocusPolicy(n);
     }
@@ -60,6 +60,6 @@ public final class convertToNamed_Intention extends AbstractIntentionDescriptor 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MatchParensRegexp$1m = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111797946c7L, "jetbrains.mps.baseLanguage.regexp.structure.MatchParensRegexp");
+    /*package*/ static final SConcept MatchParensRegexp$Ea = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111797946c7L, "jetbrains.mps.baseLanguage.regexp.structure.MatchParensRegexp");
   }
 }

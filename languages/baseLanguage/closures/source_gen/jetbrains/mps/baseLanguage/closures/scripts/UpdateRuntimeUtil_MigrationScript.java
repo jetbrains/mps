@@ -45,16 +45,16 @@ public final class UpdateRuntimeUtil_MigrationScript extends BaseMigrationScript
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.StaticMethodDeclaration$eX;
+        return CONCEPTS.StaticMethodDeclaration$FJ;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return "jetbrains.mps.baseLanguage.closures.util.RuntimeUtil".equals(NameUtil.nodeFQName(SNodeOperations.getParent(node))) && "function".equals(SPropertyOperations.getString(node, PROPS.name$lA7v));
+        return "jetbrains.mps.baseLanguage.closures.util.RuntimeUtil".equals(NameUtil.nodeFQName(SNodeOperations.getParent(node))) && "function".equals(SPropertyOperations.getString(node, PROPS.name$MnvL));
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
         SNode smd = node;
-        SNode ssw = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(smd, LINKS.body$qspy), LINKS.statement$pYcS), CONCEPTS.StringSwitchStatement$x7)).first();
+        SNode ssw = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(smd, LINKS.body$5xQk), LINKS.statement$53DE), CONCEPTS.StringSwitchStatement$Fm)).first();
 
         if ((ssw == null)) {
           if (LOG.isEnabledFor(Level.WARN)) {
@@ -64,14 +64,14 @@ public final class UpdateRuntimeUtil_MigrationScript extends BaseMigrationScript
         }
 
         // these will be replaced with new contents 
-        ListSequence.fromList(SLinkOperations.getChildren(ssw, LINKS.case$tKvS)).clear();
+        ListSequence.fromList(SLinkOperations.getChildren(ssw, LINKS.case$8PWE)).clear();
 
         SNode fncls = SPointerOperations.resolveNode(new SNodePointer("r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)", "5571879668402581510"), SNodeOperations.getModel(node).getRepository());
 
-        for (SNode ifc : SNodeOperations.ofConcept(SLinkOperations.getChildren(fncls, LINKS.member$6v_r), CONCEPTS.Interface$Kp)) {
-          SNode nnr = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.NamedNodeReference$uC);
-          SLinkOperations.setTarget(nnr, LINKS.target$kZN2, ifc);
-          ListSequence.fromList(SLinkOperations.getChildren(ssw, LINKS.case$tKvS)).addElement(_quotation_createNode_tdy3l4_a0a2a01a0a(SPropertyOperations.getString(ifc, PROPS.name$lA7v), nnr));
+        for (SNode ifc : SNodeOperations.ofConcept(SLinkOperations.getChildren(fncls, LINKS.member$L_2d), CONCEPTS.Interface$db)) {
+          SNode nnr = SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.NamedNodeReference$ab);
+          SLinkOperations.setTarget(nnr, LINKS.target$fou_, ifc);
+          ListSequence.fromList(SLinkOperations.getChildren(ssw, LINKS.case$8PWE)).addElement(_quotation_createNode_tdy3l4_a0a2a01a0a(SPropertyOperations.getString(ifc, PROPS.name$MnvL), nnr));
         }
       }
       @Override
@@ -116,21 +116,21 @@ public final class UpdateRuntimeUtil_MigrationScript extends BaseMigrationScript
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StaticMethodDeclaration$eX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
-    /*package*/ static final SConcept StringSwitchStatement$x7 = MetaAdapterFactory.getConcept(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x58f5e8197ce2129L, "jetbrains.mps.baseLanguage.jdk7.structure.StringSwitchStatement");
-    /*package*/ static final SConcept NamedNodeReference$uC = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x41af228e7e0d7f3eL, "jetbrains.mps.lang.modelapi.structure.NamedNodeReference");
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept StaticMethodDeclaration$FJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
+    /*package*/ static final SConcept StringSwitchStatement$Fm = MetaAdapterFactory.getConcept(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x58f5e8197ce2129L, "jetbrains.mps.baseLanguage.jdk7.structure.StringSwitchStatement");
+    /*package*/ static final SConcept NamedNodeReference$ab = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x41af228e7e0d7f3eL, "jetbrains.mps.lang.modelapi.structure.NamedNodeReference");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink case$tKvS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02edcafL, "case");
-    /*package*/ static final SReferenceLink target$kZN2 = MetaAdapterFactory.getReferenceLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x41af228e7e0d7f3eL, 0x64b394b6ee402faaL, "target");
-    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink case$8PWE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02edcafL, "case");
+    /*package*/ static final SReferenceLink target$fou_ = MetaAdapterFactory.getReferenceLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x41af228e7e0d7f3eL, 0x64b394b6ee402faaL, "target");
+    /*package*/ static final SContainmentLink member$L_2d = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
   }
 }

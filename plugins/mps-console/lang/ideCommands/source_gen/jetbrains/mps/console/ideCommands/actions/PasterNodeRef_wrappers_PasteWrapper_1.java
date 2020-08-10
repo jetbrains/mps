@@ -15,25 +15,25 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class PasterNodeRef_wrappers_PasteWrapper_1 implements PasteWrapper {
   @Override
   public SAbstractConcept getSourceConcept() {
-    return CONCEPTS.PastedNodeReference$b8;
+    return CONCEPTS.PastedNodeReference$P1;
   }
   @Override
   public SAbstractConcept getTargetConcept() {
-    return CONCEPTS.INodeSetReference$nt;
+    return CONCEPTS.INodeSetReference$bf;
   }
   @Override
   public SNode wrap(SNode sourceNode) {
     SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x1cf75b72b0b3962bL, "jetbrains.mps.console.ideCommands.structure.SubtreeStatisticsTarget"));
-    SLinkOperations.setTarget(result, LINKS.target$Dfz0, sourceNode);
+    SLinkOperations.setTarget(result, LINKS.target$bymM, sourceNode);
     return result;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PastedNodeReference$b8 = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x51132a123c89fa7eL, "jetbrains.mps.console.base.structure.PastedNodeReference");
-    /*package*/ static final SInterfaceConcept INodeSetReference$nt = MetaAdapterFactory.getInterfaceConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4843e803da101441L, "jetbrains.mps.console.ideCommands.structure.INodeSetReference");
+    /*package*/ static final SConcept PastedNodeReference$P1 = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x51132a123c89fa7eL, "jetbrains.mps.console.base.structure.PastedNodeReference");
+    /*package*/ static final SInterfaceConcept INodeSetReference$bf = MetaAdapterFactory.getInterfaceConcept(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x4843e803da101441L, "jetbrains.mps.console.ideCommands.structure.INodeSetReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink target$Dfz0 = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x1cf75b72b0b3962bL, 0x1cf75b72b0b396c6L, "target");
+    /*package*/ static final SContainmentLink target$bymM = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x1cf75b72b0b3962bL, 0x1cf75b72b0b396c6L, "target");
   }
 }

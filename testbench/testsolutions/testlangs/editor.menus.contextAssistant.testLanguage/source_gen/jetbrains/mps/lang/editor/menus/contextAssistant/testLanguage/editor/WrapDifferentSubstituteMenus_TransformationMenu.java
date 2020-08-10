@@ -88,7 +88,7 @@ public class WrapDifferentSubstituteMenus_TransformationMenu extends Transformat
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return CONCEPTS.ToIncludeSubstituteMenu$D2;
+      return CONCEPTS.ToIncludeSubstituteMenu$Fw;
     }
 
 
@@ -153,7 +153,7 @@ public class WrapDifferentSubstituteMenus_TransformationMenu extends Transformat
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.editor.NamedSubstituteMenuToInclude");
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return CONCEPTS.ToIncludeSubstituteMenu$D2;
+      return CONCEPTS.ToIncludeSubstituteMenu$Fw;
     }
 
 
@@ -199,6 +199,6 @@ public class WrapDifferentSubstituteMenus_TransformationMenu extends Transformat
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ToIncludeSubstituteMenu$D2 = MetaAdapterFactory.getConcept(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a82ca7L, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.structure.ToIncludeSubstituteMenu");
+    /*package*/ static final SConcept ToIncludeSubstituteMenu$Fw = MetaAdapterFactory.getConcept(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, 0x3f759544c6a82ca7L, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage.structure.ToIncludeSubstituteMenu");
   }
 }

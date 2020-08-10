@@ -26,32 +26,32 @@ public class check_FunctionType_NonTypesystemRule extends AbstractNonTypesystemR
   public check_FunctionType_NonTypesystemRule() {
   }
   public void applyRule(final SNode ft, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(ft, LINKS.runtimeIface$AWER) != null)) {
-      SNode rt = SLinkOperations.getTarget(ft, LINKS.runtimeIface$AWER);
+    if ((SLinkOperations.getTarget(ft, LINKS.runtimeIface$jayx) != null)) {
+      SNode rt = SLinkOperations.getTarget(ft, LINKS.runtimeIface$jayx);
       if (!(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(rt)).count() == 1)) {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(ft, "runtime interface must have exactly one method", "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "6871507691291049608", null, errorTarget);
       }
       SNode mtd = Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(rt)).first();
       if ((FunctionType__BehaviorDescriptor.getResultType_idhTY4wo3.invoke(ft) != null)) {
-        if (!(!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(mtd, LINKS.returnType$qrVw), CONCEPTS.VoidType$aT)))) {
+        if (!(!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(mtd, LINKS.returnType$5xoi), CONCEPTS.VoidType$BF)))) {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(ft, "return type expected", "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "6871507691291049710", null, errorTarget);
         }
       } else {
-        if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(mtd, LINKS.returnType$qrVw), CONCEPTS.VoidType$aT))) {
+        if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(mtd, LINKS.returnType$5xoi), CONCEPTS.VoidType$BF))) {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(ft, "void expected", "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "6871507691291057444", null, errorTarget);
         }
       }
-      if (!(ListSequence.fromList(SLinkOperations.getChildren(mtd, LINKS.parameter$qsax)).count() == ListSequence.fromList(SLinkOperations.getChildren(ft, LINKS.parameterType$Ix$U)).count())) {
+      if (!(ListSequence.fromList(SLinkOperations.getChildren(mtd, LINKS.parameter$5xBj)).count() == ListSequence.fromList(SLinkOperations.getChildren(ft, LINKS.parameterType$qJs$)).count())) {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(ft, "wrong parameter number", "r:00000000-0000-4000-0000-011c89590337(jetbrains.mps.baseLanguage.closures.typesystem)", "6871507691291057462", null, errorTarget);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.FunctionType$ig;
+    return CONCEPTS.FunctionType$9U;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -61,14 +61,14 @@ public class check_FunctionType_NonTypesystemRule extends AbstractNonTypesystemR
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink runtimeIface$AWER = MetaAdapterFactory.getReferenceLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x16630bea72d45e9L, "runtimeIface");
-    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SContainmentLink parameterType$Ix$U = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4e013cL, "parameterType");
-    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SReferenceLink runtimeIface$jayx = MetaAdapterFactory.getReferenceLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x16630bea72d45e9L, "runtimeIface");
+    /*package*/ static final SContainmentLink returnType$5xoi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink parameterType$qJs$ = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, 0x1174a4e013cL, "parameterType");
+    /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VoidType$aT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
-    /*package*/ static final SConcept FunctionType$ig = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, "jetbrains.mps.baseLanguage.closures.structure.FunctionType");
+    /*package*/ static final SConcept VoidType$BF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
+    /*package*/ static final SConcept FunctionType$9U = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174a4d19ffL, "jetbrains.mps.baseLanguage.closures.structure.FunctionType");
   }
 }

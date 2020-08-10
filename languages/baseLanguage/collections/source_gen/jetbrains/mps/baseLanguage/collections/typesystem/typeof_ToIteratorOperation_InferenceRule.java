@@ -34,7 +34,7 @@ public class typeof_ToIteratorOperation_InferenceRule extends AbstractInferenceR
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ToIteratorOperation$Eb;
+    return CONCEPTS.ToIteratorOperation$Su;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -67,6 +67,6 @@ public class typeof_ToIteratorOperation_InferenceRule extends AbstractInferenceR
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ToIteratorOperation$Eb = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11914e10330L, "jetbrains.mps.baseLanguage.collections.structure.ToIteratorOperation");
+    /*package*/ static final SConcept ToIteratorOperation$Su = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11914e10330L, "jetbrains.mps.baseLanguage.collections.structure.ToIteratorOperation");
   }
 }

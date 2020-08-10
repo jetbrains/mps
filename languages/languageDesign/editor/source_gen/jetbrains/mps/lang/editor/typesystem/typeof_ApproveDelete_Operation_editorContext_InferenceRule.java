@@ -23,7 +23,7 @@ public class typeof_ApproveDelete_Operation_editorContext_InferenceRule extends 
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(node, LINKS.editorContext$mnxf);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(node, LINKS.editorContext$qDGQ);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "334114027062742375", 0, null);
       typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "334114027062739913", true), (SNode) _quotation_createNode_8st3md_a1a0c0a0b(), _info_12389875345);
     }
@@ -34,7 +34,7 @@ public class typeof_ApproveDelete_Operation_editorContext_InferenceRule extends 
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ApproveDelete_Operation$GV;
+    return CONCEPTS.ApproveDelete_Operation$Sy;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -51,10 +51,10 @@ public class typeof_ApproveDelete_Operation_editorContext_InferenceRule extends 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink editorContext$mnxf = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x73977fa5d21f1f37L, 0x73977fa5d2204f7fL, "editorContext");
+    /*package*/ static final SContainmentLink editorContext$qDGQ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x73977fa5d21f1f37L, 0x73977fa5d2204f7fL, "editorContext");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ApproveDelete_Operation$GV = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x73977fa5d21f1f37L, "jetbrains.mps.lang.editor.structure.ApproveDelete_Operation");
+    /*package*/ static final SConcept ApproveDelete_Operation$Sy = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x73977fa5d21f1f37L, "jetbrains.mps.lang.editor.structure.ApproveDelete_Operation");
   }
 }

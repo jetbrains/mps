@@ -90,81 +90,81 @@ __switch__:
     return Sequence.fromIterable(outputClasses).first();
   }
   public static String keyMapActionClassName(SNode keyMapItem) {
-    SNode keyMapDeclaration = SNodeOperations.cast(SNodeOperations.getParent(keyMapItem), CONCEPTS.CellKeyMapDeclaration$T9);
+    SNode keyMapDeclaration = SNodeOperations.cast(SNodeOperations.getParent(keyMapItem), CONCEPTS.CellKeyMapDeclaration$4K);
     int index = 0;
-    for (SNode curItem : ListSequence.fromList(SLinkOperations.getChildren(keyMapDeclaration, LINKS.item$7u3i))) {
+    for (SNode curItem : ListSequence.fromList(SLinkOperations.getChildren(keyMapDeclaration, LINKS.item$bKeT))) {
       if (curItem == keyMapItem) {
         break;
       }
       index++;
     }
-    return SPropertyOperations.getString(keyMapDeclaration, PROPS.name$lA7v) + "_Action" + index;
+    return SPropertyOperations.getString(keyMapDeclaration, PROPS.name$MnvL) + "_Action" + index;
   }
   public static boolean requiresAutoDeletableStyleAddition(SNode inlineEditorComponent) {
-    SNode cellModel_refCell = SNodeOperations.as(SNodeOperations.getParent(inlineEditorComponent), CONCEPTS.CellModel_RefCell$VD);
+    SNode cellModel_refCell = SNodeOperations.as(SNodeOperations.getParent(inlineEditorComponent), CONCEPTS.CellModel_RefCell$7g);
     if (cellModel_refCell == null) {
       return false;
     }
     for (SNode parentCollection = EditorCellModel__BehaviorDescriptor.getParentCollectionCell_id7XYaZQUjT8u.invoke(cellModel_refCell); parentCollection != null; parentCollection = EditorCellModel__BehaviorDescriptor.getParentCollectionCell_id7XYaZQUjT8u.invoke(parentCollection)) {
-      if (ListSequence.fromList(SLinkOperations.getChildren(parentCollection, LINKS.childCellModel$Dkkw)).count() > 1) {
+      if (ListSequence.fromList(SLinkOperations.getChildren(parentCollection, LINKS.childCellModel$HAw7)).count() > 1) {
         return false;
       }
     }
 
-    if (!((boolean) LinkDeclaration__BehaviorDescriptor.isAtLeastOneCardinality_id2VYdUfnkjmB.invoke(SLinkOperations.getTarget(cellModel_refCell, LINKS.relationDeclaration$_K5_)))) {
+    if (!((boolean) LinkDeclaration__BehaviorDescriptor.isAtLeastOneCardinality_id2VYdUfnkjmB.invoke(SLinkOperations.getTarget(cellModel_refCell, LINKS.relationDeclaration$E2hc)))) {
       return false;
     }
 
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(inlineEditorComponent, LINKS.cellModel$GQI_), CONCEPTS.CellModel_ReferencePresentation$Wr)) {
-      SNode refPresentation = SNodeOperations.cast(SLinkOperations.getTarget(inlineEditorComponent, LINKS.cellModel$GQI_), CONCEPTS.CellModel_ReferencePresentation$Wr);
-      return !(hasUserDefinedStyle(refPresentation, CONCEPTS.AutoDeletableStyleClassItem$mK));
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(inlineEditorComponent, LINKS.cellModel$L8Uc), CONCEPTS.CellModel_ReferencePresentation$82)) {
+      SNode refPresentation = SNodeOperations.cast(SLinkOperations.getTarget(inlineEditorComponent, LINKS.cellModel$L8Uc), CONCEPTS.CellModel_ReferencePresentation$82);
+      return !(hasUserDefinedStyle(refPresentation, CONCEPTS.AutoDeletableStyleClassItem$yn));
     }
 
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(inlineEditorComponent, LINKS.cellModel$GQI_), CONCEPTS.CellModel_Property$iE)) {
-      SNode refPresentation = SNodeOperations.cast(SLinkOperations.getTarget(inlineEditorComponent, LINKS.cellModel$GQI_), CONCEPTS.CellModel_Property$iE);
-      return !(hasUserDefinedStyle(refPresentation, CONCEPTS.AutoDeletableStyleClassItem$mK));
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(inlineEditorComponent, LINKS.cellModel$L8Uc), CONCEPTS.CellModel_Property$uh)) {
+      SNode refPresentation = SNodeOperations.cast(SLinkOperations.getTarget(inlineEditorComponent, LINKS.cellModel$L8Uc), CONCEPTS.CellModel_Property$uh);
+      return !(hasUserDefinedStyle(refPresentation, CONCEPTS.AutoDeletableStyleClassItem$yn));
     }
 
     return false;
   }
   private static boolean hasUserDefinedStyle(SNode cellModel, final SConcept styleClassConcept) {
-    return ListSequence.fromList(SLinkOperations.getChildren(cellModel, LINKS.styleItem$AYO2)).any(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SLinkOperations.getChildren(cellModel, LINKS.styleItem$FgZD)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(styleClassConcept));
       }
-    }) || ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(cellModel, LINKS.parentStyleClass$4KPv), LINKS.styleItem$AYO2)).any(new IWhereFilter<SNode>() {
+    }) || ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(cellModel, LINKS.parentStyleClass$9316), LINKS.styleItem$FgZD)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, SNodeOperations.asSConcept(styleClassConcept));
       }
     });
   }
   private static SAbstractConcept[] editorRootConcepts() {
-    return new SAbstractConcept[]{CONCEPTS.ConceptEditorDeclaration$s6, CONCEPTS.EditorComponentDeclaration$Lb, CONCEPTS.ConceptEditorContextHints$aY, CONCEPTS.ITransformationMenu$lF, CONCEPTS.ISubstituteMenu$zI};
+    return new SAbstractConcept[]{CONCEPTS.ConceptEditorDeclaration$BH, CONCEPTS.EditorComponentDeclaration$WM, CONCEPTS.ConceptEditorContextHints$m_, CONCEPTS.ITransformationMenu$xi, CONCEPTS.ISubstituteMenu$Jl};
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellKeyMapDeclaration$T9 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfbc216b31bL, "jetbrains.mps.lang.editor.structure.CellKeyMapDeclaration");
-    /*package*/ static final SConcept CellModel_RefCell$VD = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, "jetbrains.mps.lang.editor.structure.CellModel_RefCell");
-    /*package*/ static final SConcept CellModel_ReferencePresentation$Wr = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x8ace515f0191e6eL, "jetbrains.mps.lang.editor.structure.CellModel_ReferencePresentation");
-    /*package*/ static final SConcept AutoDeletableStyleClassItem$mK = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd774e0L, "jetbrains.mps.lang.editor.structure.AutoDeletableStyleClassItem");
-    /*package*/ static final SConcept CellModel_Property$iE = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb02612eL, "jetbrains.mps.lang.editor.structure.CellModel_Property");
-    /*package*/ static final SConcept ConceptEditorDeclaration$s6 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration");
-    /*package*/ static final SConcept EditorComponentDeclaration$Lb = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, "jetbrains.mps.lang.editor.structure.EditorComponentDeclaration");
-    /*package*/ static final SConcept ConceptEditorContextHints$aY = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x527faacef4e35767L, "jetbrains.mps.lang.editor.structure.ConceptEditorContextHints");
-    /*package*/ static final SInterfaceConcept ITransformationMenu$lF = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c11832L, "jetbrains.mps.lang.editor.structure.ITransformationMenu");
-    /*package*/ static final SInterfaceConcept ISubstituteMenu$zI = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, "jetbrains.mps.lang.editor.structure.ISubstituteMenu");
+    /*package*/ static final SConcept CellKeyMapDeclaration$4K = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfbc216b31bL, "jetbrains.mps.lang.editor.structure.CellKeyMapDeclaration");
+    /*package*/ static final SConcept CellModel_RefCell$7g = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, "jetbrains.mps.lang.editor.structure.CellModel_RefCell");
+    /*package*/ static final SConcept CellModel_ReferencePresentation$82 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x8ace515f0191e6eL, "jetbrains.mps.lang.editor.structure.CellModel_ReferencePresentation");
+    /*package*/ static final SConcept AutoDeletableStyleClassItem$yn = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd774e0L, "jetbrains.mps.lang.editor.structure.AutoDeletableStyleClassItem");
+    /*package*/ static final SConcept CellModel_Property$uh = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb02612eL, "jetbrains.mps.lang.editor.structure.CellModel_Property");
+    /*package*/ static final SConcept ConceptEditorDeclaration$BH = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9845363abL, "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration");
+    /*package*/ static final SConcept EditorComponentDeclaration$WM = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb35c2bb47L, "jetbrains.mps.lang.editor.structure.EditorComponentDeclaration");
+    /*package*/ static final SConcept ConceptEditorContextHints$m_ = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x527faacef4e35767L, "jetbrains.mps.lang.editor.structure.ConceptEditorContextHints");
+    /*package*/ static final SInterfaceConcept ITransformationMenu$xi = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c11832L, "jetbrains.mps.lang.editor.structure.ITransformationMenu");
+    /*package*/ static final SInterfaceConcept ISubstituteMenu$Jl = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1bc2c2df999a7727L, "jetbrains.mps.lang.editor.structure.ISubstituteMenu");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink item$7u3i = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfbc216b31bL, 0x108b65d7766L, "item");
-    /*package*/ static final SContainmentLink childCellModel$Dkkw = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2518L, "childCellModel");
-    /*package*/ static final SReferenceLink relationDeclaration$_K5_ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
-    /*package*/ static final SContainmentLink cellModel$GQI_ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, 0xfba0ec5415L, "cellModel");
-    /*package*/ static final SContainmentLink styleItem$AYO2 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem");
-    /*package*/ static final SReferenceLink parentStyleClass$4KPv = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x132a500f473d6174L, 0x132a500f473d9055L, "parentStyleClass");
+    /*package*/ static final SContainmentLink item$bKeT = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfbc216b31bL, 0x108b65d7766L, "item");
+    /*package*/ static final SContainmentLink childCellModel$HAw7 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2518L, "childCellModel");
+    /*package*/ static final SReferenceLink relationDeclaration$E2hc = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10964446123L, 0x10973779681L, "relationDeclaration");
+    /*package*/ static final SContainmentLink cellModel$L8Uc = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfba0eb7c50L, 0xfba0ec5415L, "cellModel");
+    /*package*/ static final SContainmentLink styleItem$FgZD = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem");
+    /*package*/ static final SReferenceLink parentStyleClass$9316 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x132a500f473d6174L, 0x132a500f473d9055L, "parentStyleClass");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

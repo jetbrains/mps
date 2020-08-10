@@ -18,15 +18,15 @@ public class BinaryExpressionPriority_QuickFix extends QuickFix_Runtime {
     return "Fix syntax tree operation priorities.";
   }
   public void execute(SNode node) {
-    if (SLinkOperations.getTarget(((SNode) BinaryExpressionPriority_QuickFix.this.getField("parent")[0]), LINKS.leftExpression$lndx) == ((SNode) BinaryExpressionPriority_QuickFix.this.getField("child")[0])) {
+    if (SLinkOperations.getTarget(((SNode) BinaryExpressionPriority_QuickFix.this.getField("parent")[0]), LINKS.leftExpression$sEj) == ((SNode) BinaryExpressionPriority_QuickFix.this.getField("child")[0])) {
       ParenthesisUtil.rotateTree(((SNode) BinaryExpressionPriority_QuickFix.this.getField("child")[0]), ((SNode) BinaryExpressionPriority_QuickFix.this.getField("parent")[0]), false);
-    } else if (SLinkOperations.getTarget(((SNode) BinaryExpressionPriority_QuickFix.this.getField("parent")[0]), LINKS.rightExpression$li3b) == ((SNode) BinaryExpressionPriority_QuickFix.this.getField("child")[0])) {
+    } else if (SLinkOperations.getTarget(((SNode) BinaryExpressionPriority_QuickFix.this.getField("parent")[0]), LINKS.rightExpression$nvX) == ((SNode) BinaryExpressionPriority_QuickFix.this.getField("child")[0])) {
       ParenthesisUtil.rotateTree(((SNode) BinaryExpressionPriority_QuickFix.this.getField("child")[0]), ((SNode) BinaryExpressionPriority_QuickFix.this.getField("parent")[0]), true);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink leftExpression$sEj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$nvX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
   }
 }

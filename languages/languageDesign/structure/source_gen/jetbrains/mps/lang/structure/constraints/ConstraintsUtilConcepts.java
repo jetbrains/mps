@@ -74,7 +74,7 @@ public class ConstraintsUtilConcepts {
       }
     }).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
-        return SNodeOperations.cast(it, CONCEPTS.INamedConcept$nV);
+        return SNodeOperations.cast(it, CONCEPTS.INamedConcept$Kd);
       }
     });
   }
@@ -117,7 +117,7 @@ public class ConstraintsUtilConcepts {
       }
     }).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
-        return SNodeOperations.cast(it, CONCEPTS.INamedConcept$nV);
+        return SNodeOperations.cast(it, CONCEPTS.INamedConcept$Kd);
       }
     });
   }
@@ -140,7 +140,7 @@ public class ConstraintsUtilConcepts {
       }
     }).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
-        return SNodeOperations.cast(it, CONCEPTS.INamedConcept$nV);
+        return SNodeOperations.cast(it, CONCEPTS.INamedConcept$Kd);
       }
     });
   }
@@ -155,6 +155,6 @@ public class ConstraintsUtilConcepts {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

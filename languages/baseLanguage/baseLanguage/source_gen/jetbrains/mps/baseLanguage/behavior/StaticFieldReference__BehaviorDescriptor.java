@@ -43,18 +43,18 @@ public final class StaticFieldReference__BehaviorDescriptor extends BaseBHDescri
   }
 
   /*package*/ static boolean isCompileTimeConstant_idi1LOPRp(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getBoolean(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$7WwU), PROPS.isFinal$_qt3) && (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$7WwU), LINKS.initializer$no3R));
+    return SPropertyOperations.getBoolean(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), PROPS.isFinal$gvTP) && (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), LINKS.initializer$2twD));
   }
   /*package*/ static Object getCompileTimeConstantValue_idi1LP2xI(@NotNull SNode __thisNode__, SModule module) {
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.classifier$WKxm) == null) || !(SModelStereotype.isStubModel(SNodeOperations.getModel(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$WKxm))))) {
-      return ((boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$7WwU), LINKS.initializer$no3R)) ? Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$7WwU), LINKS.initializer$no3R), module) : null);
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.classifier$BPY8) == null) || !(SModelStereotype.isStubModel(SNodeOperations.getModel(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$BPY8))))) {
+      return ((boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), LINKS.initializer$2twD)) ? Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG), LINKS.initializer$2twD), module) : null);
     }
 
-    SNode field = SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$7WwU);
+    SNode field = SLinkOperations.getTarget(__thisNode__, LINKS.variableDeclaration$N1XG);
     SModule m = check_o8sx3d_a0d0b(SNodeOperations.getModel(field));
     if (m != null) {
       try {
-        final Object c = ReflectionUtil.getConstantValue(m, SLinkOperations.getTarget(__thisNode__, LINKS.classifier$WKxm), SPropertyOperations.getString(field, PROPS.name$lA7v));
+        final Object c = ReflectionUtil.getConstantValue(m, SLinkOperations.getTarget(__thisNode__, LINKS.classifier$BPY8), SPropertyOperations.getString(field, PROPS.name$MnvL));
         if (c != null) {
           return c;
         }
@@ -66,7 +66,7 @@ public final class StaticFieldReference__BehaviorDescriptor extends BaseBHDescri
       return null;
     }
     try {
-      return ReflectionUtil.getConstantValue(module, SLinkOperations.getTarget(__thisNode__, LINKS.classifier$WKxm), SPropertyOperations.getString(field, PROPS.name$lA7v));
+      return ReflectionUtil.getConstantValue(module, SLinkOperations.getTarget(__thisNode__, LINKS.classifier$BPY8), SPropertyOperations.getString(field, PROPS.name$MnvL));
     } catch (Throwable t) {
       return null;
     }
@@ -75,10 +75,10 @@ public final class StaticFieldReference__BehaviorDescriptor extends BaseBHDescri
     return true;
   }
   /*package*/ static SNode getClassifier_id7S22xyoLQG7(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.classifier$WKxm);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.classifier$BPY8);
   }
   /*package*/ static void setClassifier_id7S22xyoLQH8(@NotNull SNode __thisNode__, SNode classifier) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.classifier$WKxm, classifier);
+    SLinkOperations.setTarget(__thisNode__, LINKS.classifier$BPY8, classifier);
   }
 
   /*package*/ StaticFieldReference__BehaviorDescriptor() {
@@ -143,13 +143,13 @@ public final class StaticFieldReference__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SReferenceLink classifier$WKxm = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink initializer$2twD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SReferenceLink classifier$BPY8 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$gvTP = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

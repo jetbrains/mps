@@ -43,7 +43,7 @@ public final class NewTemplateInSwitchDefault_Intention extends AbstractIntentio
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SLinkOperations.getTarget(node, LINKS.defaultConsequence$jzhi) == null;
+    return SLinkOperations.getTarget(node, LINKS.defaultConsequence$GvWY) == null;
   }
   @Override
   public boolean isSurroundWith() {
@@ -66,15 +66,15 @@ public final class NewTemplateInSwitchDefault_Intention extends AbstractIntentio
     public void execute(final SNode node, final EditorContext editorContext) {
       String name = CreateFromUsageUtil.getText(editorContext);
       if (name == null || name.length() == 0) {
-        name = "default_" + SPropertyOperations.getString(node, PROPS.name$lA7v);
+        name = "default_" + SPropertyOperations.getString(node, PROPS.name$MnvL);
       }
-      SNode t = SNodeFactoryOperations.createNewRootNode(SNodeOperations.getModel(node), CONCEPTS.TemplateDeclaration$q0, null);
-      SPropertyOperations.set(t, PROPS.name$lA7v, name);
+      SNode t = SNodeFactoryOperations.createNewRootNode(SNodeOperations.getModel(node), CONCEPTS.TemplateDeclaration$5G, null);
+      SPropertyOperations.set(t, PROPS.name$MnvL, name);
       MacroIntentionsUtil.copyVirtualPackage(t, node);
       // make reference 
-      SNode tr = SNodeFactoryOperations.createNewNode(CONCEPTS.TemplateDeclarationReference$bd, null);
-      SLinkOperations.setTarget(tr, LINKS.template$B9Tq, t);
-      SLinkOperations.setTarget(node, LINKS.defaultConsequence$jzhi, tr);
+      SNode tr = SNodeFactoryOperations.createNewNode(CONCEPTS.TemplateDeclarationReference$QT, null);
+      SLinkOperations.setTarget(tr, LINKS.template$6_6, t);
+      SLinkOperations.setTarget(node, LINKS.defaultConsequence$GvWY, tr);
       SelectionUtil.selectCell(editorContext, tr, SelectionManager.FIRST_EDITABLE_CELL);
     }
     @Override
@@ -84,16 +84,16 @@ public final class NewTemplateInSwitchDefault_Intention extends AbstractIntentio
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink defaultConsequence$jzhi = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L, 0x11013877b73L, "defaultConsequence");
-    /*package*/ static final SReferenceLink template$B9Tq = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
+    /*package*/ static final SContainmentLink defaultConsequence$GvWY = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L, 0x11013877b73L, "defaultConsequence");
+    /*package*/ static final SReferenceLink template$6_6 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TemplateDeclaration$q0 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, "jetbrains.mps.lang.generator.structure.TemplateDeclaration");
-    /*package*/ static final SConcept TemplateDeclarationReference$bd = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11013906056L, "jetbrains.mps.lang.generator.structure.TemplateDeclarationReference");
+    /*package*/ static final SConcept TemplateDeclaration$5G = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, "jetbrains.mps.lang.generator.structure.TemplateDeclaration");
+    /*package*/ static final SConcept TemplateDeclarationReference$QT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11013906056L, "jetbrains.mps.lang.generator.structure.TemplateDeclarationReference");
   }
 }

@@ -24,11 +24,11 @@ public class typeof_Node_InsertNewNextSiblingOperation_InferenceRule extends Abs
     {
       SNode _nodeToCheck_1029348928467 = op;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1203712011547", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1203712011549", true), (SNode) _quotation_createNode_q7m0pf_a1a0c0a0b(SLinkOperations.getTarget(op, LINKS.concept$zIRm)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1203712011549", true), (SNode) _quotation_createNode_q7m0pf_a1a0c0a0b(SLinkOperations.getTarget(op, LINKS.concept$87SQ)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Node_InsertNewNextSiblingOperation$lB;
+    return CONCEPTS.Node_InsertNewNextSiblingOperation$n7;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -45,10 +45,10 @@ public class typeof_Node_InsertNewNextSiblingOperation_InferenceRule extends Abs
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$zIRm = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10964e26717L, 0x10964e34da0L, "concept");
+    /*package*/ static final SReferenceLink concept$87SQ = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10964e26717L, 0x10964e34da0L, "concept");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Node_InsertNewNextSiblingOperation$lB = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10964e26717L, "jetbrains.mps.lang.smodel.structure.Node_InsertNewNextSiblingOperation");
+    /*package*/ static final SConcept Node_InsertNewNextSiblingOperation$n7 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10964e26717L, "jetbrains.mps.lang.smodel.structure.Node_InsertNewNextSiblingOperation");
   }
 }

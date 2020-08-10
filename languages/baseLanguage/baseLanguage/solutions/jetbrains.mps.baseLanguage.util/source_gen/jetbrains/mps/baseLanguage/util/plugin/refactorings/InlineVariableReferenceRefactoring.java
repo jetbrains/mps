@@ -28,7 +28,7 @@ public class InlineVariableReferenceRefactoring extends InlineVariableRefactorin
   private SNode myReference;
   private SNode myAssignment;
   public InlineVariableReferenceRefactoring(SNode node) {
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.variableDeclaration$7WwU), CONCEPTS.LocalVariableDeclaration$Bf))) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41))) {
       throw new IllegalArgumentException();
     }
 
@@ -37,27 +37,27 @@ public class InlineVariableReferenceRefactoring extends InlineVariableRefactorin
   }
   @Override
   public SNode doRefactoring() {
-    final SNode variable = SLinkOperations.getTarget(this.myReference, LINKS.variableDeclaration$7WwU);
+    final SNode variable = SLinkOperations.getTarget(this.myReference, LINKS.variableDeclaration$N1XG);
     SNode nodeToSelect;
     if (myAssignment == null) {
-      nodeToSelect = SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(this.myReference, LINKS.variableDeclaration$7WwU), LINKS.initializer$no3R));
+      nodeToSelect = SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(this.myReference, LINKS.variableDeclaration$N1XG), LINKS.initializer$2twD));
       SNodeOperations.replaceWithAnother(this.myReference, nodeToSelect);
     } else
-    if (SNodeOperations.isInstanceOf(myAssignment, CONCEPTS.VariableDeclaration$xe)) {
-      nodeToSelect = SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(myAssignment, CONCEPTS.VariableDeclaration$xe), LINKS.initializer$no3R));
+    if (SNodeOperations.isInstanceOf(myAssignment, CONCEPTS.VariableDeclaration$Y0)) {
+      nodeToSelect = SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(myAssignment, CONCEPTS.VariableDeclaration$Y0), LINKS.initializer$2twD));
       SNodeOperations.replaceWithAnother(this.myReference, nodeToSelect);
-    } else if (SNodeOperations.isInstanceOf(myAssignment, CONCEPTS.AssignmentExpression$rS)) {
-      if (ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.cast(myAssignment, CONCEPTS.AssignmentExpression$rS), LINKS.rValue$LkmY), CONCEPTS.VariableReference$sQ, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+    } else if (SNodeOperations.isInstanceOf(myAssignment, CONCEPTS.AssignmentExpression$SE)) {
+      if (ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.cast(myAssignment, CONCEPTS.AssignmentExpression$SE), LINKS.rValue$spNK), CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return Objects.equals(SLinkOperations.getTarget(it, LINKS.variableDeclaration$7WwU), variable);
+          return Objects.equals(SLinkOperations.getTarget(it, LINKS.variableDeclaration$N1XG), variable);
         }
       }).isNotEmpty()) {
         // Assignments referring to the variable from their right side should not be inlined, since the resulting code will have different semantics than the original 
         return myReference;
       }
-      nodeToSelect = SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(myAssignment, CONCEPTS.AssignmentExpression$rS), LINKS.rValue$LkmY));
+      nodeToSelect = SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(myAssignment, CONCEPTS.AssignmentExpression$SE), LINKS.rValue$spNK));
       SNodeOperations.replaceWithAnother(this.myReference, nodeToSelect);
-      this.optimizeAssignment(SNodeOperations.cast(myAssignment, CONCEPTS.AssignmentExpression$rS), variable);
+      this.optimizeAssignment(SNodeOperations.cast(myAssignment, CONCEPTS.AssignmentExpression$SE), variable);
     } else {
       // ATM we do not inline if the last update was through a++ nor a+=1 type-of expressions 
       return myReference;
@@ -67,9 +67,9 @@ public class InlineVariableReferenceRefactoring extends InlineVariableRefactorin
     return nodeToSelect;
   }
   private void findAssignment(SNode node) {
-    SNode variable = SLinkOperations.getTarget(node, LINKS.variableDeclaration$7WwU);
+    SNode variable = SLinkOperations.getTarget(node, LINKS.variableDeclaration$N1XG);
     myAssignment = null;
-    SNode currentList = SNodeOperations.getNodeAncestor(node, CONCEPTS.StatementList$TN, false, false);
+    SNode currentList = SNodeOperations.getNodeAncestor(node, CONCEPTS.StatementList$m_, false, false);
     SNode currentStatement;
     while ((myAssignment == null) && (currentList != null)) {
       currentStatement = getParentStatement(node, currentList);
@@ -86,7 +86,7 @@ public class InlineVariableReferenceRefactoring extends InlineVariableRefactorin
           }
         }
       }
-      currentList = SNodeOperations.getNodeAncestor(currentList, CONCEPTS.StatementList$TN, false, false);
+      currentList = SNodeOperations.getNodeAncestor(currentList, CONCEPTS.StatementList$m_, false, false);
     }
   }
   private SNode getParentStatement(SNode node, SNode list) {
@@ -94,21 +94,21 @@ public class InlineVariableReferenceRefactoring extends InlineVariableRefactorin
     while ((curParent != null) && SNodeOperations.getParent(curParent) != list) {
       curParent = SNodeOperations.getParent(curParent);
     }
-    return SNodeOperations.cast(curParent, CONCEPTS.Statement$ok);
+    return SNodeOperations.cast(curParent, CONCEPTS.Statement$P6);
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink variableDeclaration$7WwU = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
-    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SContainmentLink rValue$LkmY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
+    /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
+    /*package*/ static final SContainmentLink initializer$2twD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink rValue$spNK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e99L, "rValue");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LocalVariableDeclaration$Bf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
-    /*package*/ static final SConcept VariableDeclaration$xe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
-    /*package*/ static final SConcept AssignmentExpression$rS = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression");
-    /*package*/ static final SConcept VariableReference$sQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
-    /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept LocalVariableDeclaration$41 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
+    /*package*/ static final SConcept VariableDeclaration$Y0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
+    /*package*/ static final SConcept AssignmentExpression$SE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e96L, "jetbrains.mps.baseLanguage.structure.AssignmentExpression");
+    /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
+    /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
   }
 }

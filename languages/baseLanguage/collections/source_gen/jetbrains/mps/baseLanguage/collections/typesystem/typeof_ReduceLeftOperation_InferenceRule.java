@@ -35,14 +35,14 @@ public class typeof_ReduceLeftOperation_InferenceRule extends AbstractInferenceR
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.closure$cZg5);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.closure$Rjuo);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1522217801069359765", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1522217801069359774", true), (SNode) _quotation_createNode_lspyj5_a1a0c0a0d0b(typeCheckingContext.getRepresentative(elementType_typevar_1522217801069359744), typeCheckingContext.getRepresentative(elementType_typevar_1522217801069359744), typeCheckingContext.getRepresentative(elementType_typevar_1522217801069359744)), true, true, _info_12389875345);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ReduceLeftOperation$wI;
+    return CONCEPTS.ReduceLeftOperation$J1;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -84,10 +84,10 @@ public class typeof_ReduceLeftOperation_InferenceRule extends AbstractInferenceR
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink closure$cZg5 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1188372895aL, 0x11883748452L, "closure");
+    /*package*/ static final SContainmentLink closure$Rjuo = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1188372895aL, 0x11883748452L, "closure");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ReduceLeftOperation$wI = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x152001066783f27aL, "jetbrains.mps.baseLanguage.collections.structure.ReduceLeftOperation");
+    /*package*/ static final SConcept ReduceLeftOperation$J1 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x152001066783f27aL, "jetbrains.mps.baseLanguage.collections.structure.ReduceLeftOperation");
   }
 }

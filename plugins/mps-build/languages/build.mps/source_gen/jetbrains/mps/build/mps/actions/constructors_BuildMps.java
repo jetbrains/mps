@@ -18,28 +18,28 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class constructors_BuildMps {
   public static class NodeFactory_8369506495128727676 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SPropertyOperations.assign(newNode, PROPS.compact$$kVD, true);
-      SNodeFactoryOperations.setNewChild(newNode, LINKS.path$NMkf, null);
+      SPropertyOperations.assign(newNode, PROPS.compact$3xo1, true);
+      SNodeFactoryOperations.setNewChild(newNode, LINKS.path$iYKB, null);
     }
   }
   public static class NodeFactory_2105528055260692130 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.BuildMpsLayout_ModuleSources$Zf)) {
-        SLinkOperations.setTarget(newNode, LINKS.module$4vBw, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.BuildMpsLayout_ModuleSources$Zf), LINKS.module$4vBw));
+      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.BuildMpsLayout_ModuleSources$rB)) {
+        SLinkOperations.setTarget(newNode, LINKS.module$zG3S, SLinkOperations.getTarget(SNodeOperations.cast(sampleNode, CONCEPTS.BuildMpsLayout_ModuleSources$rB), LINKS.module$zG3S));
       }
     }
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty compact$$kVD = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x742675d05378e98dL, "compact");
+    /*package*/ static final SProperty compact$3xo1 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x742675d05378e98dL, "compact");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink path$NMkf = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d47f25L, "path");
-    /*package*/ static final SReferenceLink module$4vBw = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x177c2feaf3463710L, 0x177c2feaf3463711L, "module");
+    /*package*/ static final SContainmentLink path$iYKB = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d47f25L, "path");
+    /*package*/ static final SReferenceLink module$zG3S = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x177c2feaf3463710L, 0x177c2feaf3463711L, "module");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildMpsLayout_ModuleSources$Zf = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x177c2feaf3463710L, "jetbrains.mps.build.mps.structure.BuildMpsLayout_ModuleSources");
+    /*package*/ static final SConcept BuildMpsLayout_ModuleSources$rB = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x177c2feaf3463710L, "jetbrains.mps.build.mps.structure.BuildMpsLayout_ModuleSources");
   }
 }

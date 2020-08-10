@@ -26,12 +26,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SPropertyAccess_Constraints extends BaseConstraintsDescriptor {
   public SPropertyAccess_Constraints() {
-    super(CONCEPTS.SPropertyAccess$bD);
+    super(CONCEPTS.SPropertyAccess$d9);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.property$lTMY, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.property$UiOu, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -48,21 +48,21 @@ public class SPropertyAccess_Constraints extends BaseConstraintsDescriptor {
           public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode dotExpression = null;
             if (_context.getReferenceNode() == null) {
-              dotExpression = SNodeOperations.cast(_context.getContextNode(), CONCEPTS.DotExpression$6a);
+              dotExpression = SNodeOperations.cast(_context.getContextNode(), CONCEPTS.DotExpression$yW);
             } else {
               SNode parent = SNodeOperations.getParent(_context.getReferenceNode());
-              if (SNodeOperations.isInstanceOf(parent, CONCEPTS.DotExpression$6a)) {
-                dotExpression = SNodeOperations.cast(parent, CONCEPTS.DotExpression$6a);
-              } else if (SNodeOperations.isInstanceOf(parent, CONCEPTS.BaseCommentAttribute$Zd)) {
+              if (SNodeOperations.isInstanceOf(parent, CONCEPTS.DotExpression$yW)) {
+                dotExpression = SNodeOperations.cast(parent, CONCEPTS.DotExpression$yW);
+              } else if (SNodeOperations.isInstanceOf(parent, CONCEPTS.BaseCommentAttribute$nv)) {
                 parent = SNodeOperations.getParent(parent);
-                if (SNodeOperations.isInstanceOf(parent, CONCEPTS.DotExpression$6a)) {
-                  dotExpression = SNodeOperations.cast(parent, CONCEPTS.DotExpression$6a);
+                if (SNodeOperations.isInstanceOf(parent, CONCEPTS.DotExpression$yW)) {
+                  dotExpression = SNodeOperations.cast(parent, CONCEPTS.DotExpression$yW);
                 }
               }
             }
 
             if (dotExpression != null) {
-              SNode dotOperandConcept = SNodeOperation__BehaviorDescriptor.getLeftNodeConcept_idhEwJdFJ.invoke(SNodeOperations.asSConcept(CONCEPTS.SNodeOperation$o6), dotExpression);
+              SNode dotOperandConcept = SNodeOperation__BehaviorDescriptor.getLeftNodeConcept_idhEwJdFJ.invoke(SNodeOperations.asSConcept(CONCEPTS.SNodeOperation$pA), dotExpression);
               return ListScope.forResolvableElements(AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(dotOperandConcept));
             } else {
               return new EmptyScope();
@@ -78,13 +78,13 @@ public class SPropertyAccess_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_uvodqp_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c895902fb(jetbrains.mps.lang.smodel.constraints)", "6836281137582797974");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SPropertyAccess$bD = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, "jetbrains.mps.lang.smodel.structure.SPropertyAccess");
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
-    /*package*/ static final SConcept BaseCommentAttribute$Zd = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
-    /*package*/ static final SConcept SNodeOperation$o6 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1090ea2ebacL, "jetbrains.mps.lang.smodel.structure.SNodeOperation");
+    /*package*/ static final SConcept SPropertyAccess$d9 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, "jetbrains.mps.lang.smodel.structure.SPropertyAccess");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept BaseCommentAttribute$nv = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
+    /*package*/ static final SConcept SNodeOperation$pA = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1090ea2ebacL, "jetbrains.mps.lang.smodel.structure.SNodeOperation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink property$lTMY = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property");
+    /*package*/ static final SReferenceLink property$UiOu = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96cca6fL, 0x108f9727bcdL, "property");
   }
 }

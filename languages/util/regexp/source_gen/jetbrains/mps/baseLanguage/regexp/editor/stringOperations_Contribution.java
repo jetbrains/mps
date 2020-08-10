@@ -97,7 +97,7 @@ public class stringOperations_Contribution extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_uamzhl_a0a(), CONCEPTS.FindMatchExpression$3_), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_uamzhl_b0a(), CONCEPTS.MatchRegexpExpression$_c), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_uamzhl_c0a(), CONCEPTS.ReplaceWithRegexpExpression$gC), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_uamzhl_d0a(), CONCEPTS.SplitExpression$Ij));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_uamzhl_a0a(), CONCEPTS.FindMatchExpression$Gp), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_uamzhl_b0a(), CONCEPTS.MatchRegexpExpression$e0), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_uamzhl_c0a(), CONCEPTS.ReplaceWithRegexpExpression$Ts), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_uamzhl_d0a(), CONCEPTS.SplitExpression$n7));
     }
     private class TMP_Action_uamzhl_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -137,8 +137,8 @@ public class stringOperations_Contribution extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode findMatchExpression = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.FindMatchExpression$3_);
-          SLinkOperations.setTarget(findMatchExpression, LINKS.inputExpression$5UHT, _context.getNode());
+          SNode findMatchExpression = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.FindMatchExpression$Gp);
+          SLinkOperations.setTarget(findMatchExpression, LINKS.inputExpression$TomH, _context.getNode());
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), findMatchExpression, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -146,7 +146,7 @@ public class stringOperations_Contribution extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.FindMatchExpression$3_;
+          return CONCEPTS.FindMatchExpression$Gp;
         }
 
 
@@ -157,7 +157,7 @@ public class stringOperations_Contribution extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.FindMatchExpression$3_;
+          SAbstractConcept outputConcept = CONCEPTS.FindMatchExpression$Gp;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -204,8 +204,8 @@ public class stringOperations_Contribution extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode matchRegexpExpression = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.MatchRegexpExpression$_c);
-          SLinkOperations.setTarget(matchRegexpExpression, LINKS.inputExpression$zKI$, _context.getNode());
+          SNode matchRegexpExpression = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.MatchRegexpExpression$e0);
+          SLinkOperations.setTarget(matchRegexpExpression, LINKS.inputExpression$neno, _context.getNode());
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), matchRegexpExpression, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -213,7 +213,7 @@ public class stringOperations_Contribution extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.MatchRegexpExpression$_c;
+          return CONCEPTS.MatchRegexpExpression$e0;
         }
 
 
@@ -224,7 +224,7 @@ public class stringOperations_Contribution extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.MatchRegexpExpression$_c;
+          SAbstractConcept outputConcept = CONCEPTS.MatchRegexpExpression$e0;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -271,8 +271,8 @@ public class stringOperations_Contribution extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode node = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.ReplaceWithRegexpExpression$gC);
-          SLinkOperations.setTarget(node, LINKS.expr$5cz$, _context.getNode());
+          SNode node = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.ReplaceWithRegexpExpression$Ts);
+          SLinkOperations.setTarget(node, LINKS.expr$SEco, _context.getNode());
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), node, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -280,7 +280,7 @@ public class stringOperations_Contribution extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.ReplaceWithRegexpExpression$gC;
+          return CONCEPTS.ReplaceWithRegexpExpression$Ts;
         }
 
 
@@ -291,7 +291,7 @@ public class stringOperations_Contribution extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.ReplaceWithRegexpExpression$gC;
+          SAbstractConcept outputConcept = CONCEPTS.ReplaceWithRegexpExpression$Ts;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -338,8 +338,8 @@ public class stringOperations_Contribution extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode node = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.SplitExpression$Ij);
-          SLinkOperations.setTarget(node, LINKS.expr$Tz$v, _context.getNode());
+          SNode node = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.SplitExpression$n7);
+          SLinkOperations.setTarget(node, LINKS.expr$H1dj, _context.getNode());
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), node, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -347,7 +347,7 @@ public class stringOperations_Contribution extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.SplitExpression$Ij;
+          return CONCEPTS.SplitExpression$n7;
         }
 
 
@@ -358,7 +358,7 @@ public class stringOperations_Contribution extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.SplitExpression$Ij;
+          SAbstractConcept outputConcept = CONCEPTS.SplitExpression$n7;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -376,16 +376,16 @@ public class stringOperations_Contribution extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept FindMatchExpression$3_ = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x550fbf4ebc5de3f5L, "jetbrains.mps.baseLanguage.regexp.structure.FindMatchExpression");
-    /*package*/ static final SConcept MatchRegexpExpression$_c = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x112972a0c32L, "jetbrains.mps.baseLanguage.regexp.structure.MatchRegexpExpression");
-    /*package*/ static final SConcept ReplaceWithRegexpExpression$gC = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117ef3f72dL, "jetbrains.mps.baseLanguage.regexp.structure.ReplaceWithRegexpExpression");
-    /*package*/ static final SConcept SplitExpression$Ij = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1119d41c734L, "jetbrains.mps.baseLanguage.regexp.structure.SplitExpression");
+    /*package*/ static final SConcept FindMatchExpression$Gp = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x550fbf4ebc5de3f5L, "jetbrains.mps.baseLanguage.regexp.structure.FindMatchExpression");
+    /*package*/ static final SConcept MatchRegexpExpression$e0 = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x112972a0c32L, "jetbrains.mps.baseLanguage.regexp.structure.MatchRegexpExpression");
+    /*package*/ static final SConcept ReplaceWithRegexpExpression$Ts = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117ef3f72dL, "jetbrains.mps.baseLanguage.regexp.structure.ReplaceWithRegexpExpression");
+    /*package*/ static final SConcept SplitExpression$n7 = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1119d41c734L, "jetbrains.mps.baseLanguage.regexp.structure.SplitExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink inputExpression$5UHT = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x550fbf4ebc5de3f5L, 0x550fbf4ebc5f5df9L, "inputExpression");
-    /*package*/ static final SContainmentLink inputExpression$zKI$ = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x112972a0c32L, 0x112972c11f2L, "inputExpression");
-    /*package*/ static final SContainmentLink expr$5cz$ = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117ef3f72dL, 0x1117ef5b26bL, "expr");
-    /*package*/ static final SContainmentLink expr$Tz$v = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1119d41c734L, 0x1119d425aa1L, "expr");
+    /*package*/ static final SContainmentLink inputExpression$TomH = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x550fbf4ebc5de3f5L, 0x550fbf4ebc5f5df9L, "inputExpression");
+    /*package*/ static final SContainmentLink inputExpression$neno = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x112972a0c32L, 0x112972c11f2L, "inputExpression");
+    /*package*/ static final SContainmentLink expr$SEco = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117ef3f72dL, 0x1117ef5b26bL, "expr");
+    /*package*/ static final SContainmentLink expr$H1dj = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1119d41c734L, 0x1119d425aa1L, "expr");
   }
 }

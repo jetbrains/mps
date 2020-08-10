@@ -24,8 +24,8 @@ public class DeleteWithSeparator {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SPropertyOperations.assign(node, PROPS.separator$nvou, "");
-        SPropertyOperations.assign(node, PROPS.withSeparator$SP0A, false);
+        SPropertyOperations.assign(node, PROPS.separator$jRB0, "");
+        SPropertyOperations.assign(node, PROPS.withSeparator$Pdf8, false);
         SelectionUtil.selectCell(editorContext, node, SelectionManager.LAST_EDITABLE_CELL);
       }
 
@@ -74,7 +74,7 @@ public class DeleteWithSeparator {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty separator$nvou = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x1201527819cL, 0x120152f5107L, "separator");
-    /*package*/ static final SProperty withSeparator$SP0A = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x1201527819cL, 0x1203d98429fL, "withSeparator");
+    /*package*/ static final SProperty separator$jRB0 = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x1201527819cL, 0x120152f5107L, "separator");
+    /*package*/ static final SProperty withSeparator$Pdf8 = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x1201527819cL, 0x1203d98429fL, "withSeparator");
   }
 }

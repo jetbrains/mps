@@ -22,7 +22,7 @@ public class typeof_ForeignParametersExpression_InferenceRule extends AbstractIn
   public typeof_ForeignParametersExpression_InferenceRule() {
   }
   public void applyRule(final SNode fve, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode vars = SLinkOperations.getTarget(SLinkOperations.getTarget(fve, LINKS.target$NMv2), LINKS.parameters$4w7G);
+    SNode vars = SLinkOperations.getTarget(SLinkOperations.getTarget(fve, LINKS.target$c87U), LINKS.parameters$sPK$);
     if (vars != null) {
       {
         SNode _nodeToCheck_1029348928467 = fve;
@@ -32,7 +32,7 @@ public class typeof_ForeignParametersExpression_InferenceRule extends AbstractIn
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ForeignParametersExpression$pG;
+    return CONCEPTS.ForeignParametersExpression$2$;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -49,11 +49,11 @@ public class typeof_ForeignParametersExpression_InferenceRule extends AbstractIn
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$NMv2 = MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x2e69d2eba535f3b0L, 0x2e69d2eba535f3beL, "target");
-    /*package*/ static final SContainmentLink parameters$4w7G = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, 0x6598ce4d2f20bbdfL, "parameters");
+    /*package*/ static final SReferenceLink target$c87U = MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x2e69d2eba535f3b0L, 0x2e69d2eba535f3beL, "target");
+    /*package*/ static final SContainmentLink parameters$sPK$ = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, 0x6598ce4d2f20bbdfL, "parameters");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ForeignParametersExpression$pG = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x2e69d2eba535f3b0L, "jetbrains.mps.make.facet.structure.ForeignParametersExpression");
+    /*package*/ static final SConcept ForeignParametersExpression$2$ = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x2e69d2eba535f3b0L, "jetbrains.mps.make.facet.structure.ForeignParametersExpression");
   }
 }

@@ -33,7 +33,7 @@ public final class TransformationLocation_ContextActionsTool__BehaviorDescriptor
   }
 
   /*package*/ static Collection<SConcept> getRequiredFeatures_id7L5lpRJHK_w(@NotNull SNode __thisNode__) {
-    return CollectionSequence.fromCollectionAndArray(new HashSet<SConcept>(), CONCEPTS.TransformationFeature_Icon$Ds, CONCEPTS.TransformationFeature_Tooltip$Xk);
+    return CollectionSequence.fromCollectionAndArray(new HashSet<SConcept>(), CONCEPTS.TransformationFeature_Icon$pD, CONCEPTS.TransformationFeature_Tooltip$Hx);
   }
 
   /*package*/ TransformationLocation_ContextActionsTool__BehaviorDescriptor() {
@@ -83,7 +83,7 @@ public final class TransformationLocation_ContextActionsTool__BehaviorDescriptor
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TransformationFeature_Icon$Ds = MetaAdapterFactory.getConcept(0xb1c7d06f525d43b5L, 0x9b0a2fc8f7f076baL, 0x7c45559defbb1ac7L, "jetbrains.mps.editor.contextActionsTool.lang.menus.structure.TransformationFeature_Icon");
-    /*package*/ static final SConcept TransformationFeature_Tooltip$Xk = MetaAdapterFactory.getConcept(0xb1c7d06f525d43b5L, 0x9b0a2fc8f7f076baL, 0x7c45559defbb1da5L, "jetbrains.mps.editor.contextActionsTool.lang.menus.structure.TransformationFeature_Tooltip");
+    /*package*/ static final SConcept TransformationFeature_Icon$pD = MetaAdapterFactory.getConcept(0xb1c7d06f525d43b5L, 0x9b0a2fc8f7f076baL, 0x7c45559defbb1ac7L, "jetbrains.mps.editor.contextActionsTool.lang.menus.structure.TransformationFeature_Icon");
+    /*package*/ static final SConcept TransformationFeature_Tooltip$Hx = MetaAdapterFactory.getConcept(0xb1c7d06f525d43b5L, 0x9b0a2fc8f7f076baL, 0x7c45559defbb1da5L, "jetbrains.mps.editor.contextActionsTool.lang.menus.structure.TransformationFeature_Tooltip");
   }
 }

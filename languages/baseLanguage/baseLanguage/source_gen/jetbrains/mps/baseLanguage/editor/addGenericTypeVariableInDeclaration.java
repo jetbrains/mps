@@ -76,7 +76,7 @@ public class addGenericTypeVariableInDeclaration extends TransformationMenuBase 
   public class TMP_Group_gsk890_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeVariableDeclaration$6cWB)).isEmpty() && !((SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.Annotation$Os) || SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.ConceptMethodDeclaration$VN)));
+      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeVariableDeclaration$Lipp)).isEmpty() && !((SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.Annotation$he) || SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.ConceptMethodDeclaration$N0)));
     }
 
     @NotNull
@@ -132,8 +132,8 @@ public class addGenericTypeVariableInDeclaration extends TransformationMenuBase 
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.typeVariableDeclaration$6cWB, null);
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeVariableDeclaration$6cWB)).first(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.typeVariableDeclaration$Lipp, null);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeVariableDeclaration$Lipp)).first(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
 
@@ -163,7 +163,7 @@ public class addGenericTypeVariableInDeclaration extends TransformationMenuBase 
   public class TMP_Group_gsk890_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeVariableDeclaration$6cWB)).isEmpty() && !((SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.Annotation$Os) || SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.ConceptMethodDeclaration$VN)));
+      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeVariableDeclaration$Lipp)).isEmpty() && !((SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.Annotation$he) || SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.ConceptMethodDeclaration$N0)));
     }
 
     @NotNull
@@ -219,8 +219,8 @@ public class addGenericTypeVariableInDeclaration extends TransformationMenuBase 
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.typeVariableDeclaration$6cWB, null);
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeVariableDeclaration$6cWB)).first(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SNodeFactoryOperations.addNewChild(_context.getNode(), LINKS.typeVariableDeclaration$Lipp, null);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeVariableDeclaration$Lipp)).first(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
 
@@ -249,11 +249,11 @@ public class addGenericTypeVariableInDeclaration extends TransformationMenuBase 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$Lipp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Annotation$Os = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation");
-    /*package*/ static final SConcept ConceptMethodDeclaration$VN = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
+    /*package*/ static final SConcept Annotation$he = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation");
+    /*package*/ static final SConcept ConceptMethodDeclaration$N0 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
   }
 }

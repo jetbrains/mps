@@ -18,12 +18,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class CompoundComponentWithCardinality_Constraints extends BaseConstraintsDescriptor {
   public CompoundComponentWithCardinality_Constraints() {
-    super(CONCEPTS.CompoundComponentWithCardinality$dw);
+    super(CONCEPTS.CompoundComponentWithCardinality$_V);
   }
 
   public static class Cardinality_Property extends BasePropertyConstraintsDescriptor {
     public Cardinality_Property(ConstraintsDescriptor container) {
-      super(PROPS.cardinality$ZAK0, container);
+      super(PROPS.cardinality$Vf8r, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -45,15 +45,15 @@ public class CompoundComponentWithCardinality_Constraints extends BaseConstraint
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.cardinality$ZAK0, new Cardinality_Property(this));
+    properties.put(PROPS.cardinality$Vf8r, new Cardinality_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CompoundComponentWithCardinality$dw = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, "jetbrains.mps.samples.ChemMastery.structure.CompoundComponentWithCardinality");
+    /*package*/ static final SConcept CompoundComponentWithCardinality$_V = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, "jetbrains.mps.samples.ChemMastery.structure.CompoundComponentWithCardinality");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty cardinality$ZAK0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd51L, "cardinality");
+    /*package*/ static final SProperty cardinality$Vf8r = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd51L, "cardinality");
   }
 }

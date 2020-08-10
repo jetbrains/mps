@@ -38,8 +38,8 @@ public final class BaseMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static String getVariableExpectedName_idhEwJgm_(@NotNull SNode __thisNode__) {
     String variableExpectedName = null;
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$ItxI) != null)) {
-      String name = SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$ItxI), PROPS.name$lA7v);
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$pyYw) != null)) {
+      String name = SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.baseMethodDeclaration$pyYw), PROPS.name$MnvL);
       if (name.startsWith("get")) {
         variableExpectedName = name.substring(3);
       } else
@@ -58,7 +58,7 @@ public final class BaseMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
     return true;
   }
   /*package*/ static boolean isInTypeInferenceContext_id4cxv$9$kw67(@NotNull SNode __thisNode__) {
-    return ((boolean) IMethodCall__BehaviorDescriptor.isInTypeInferenceContext_id4cxv$9$kw67.invoke0(__thisNode__, CONCEPTS.IMethodCall$ln));
+    return ((boolean) IMethodCall__BehaviorDescriptor.isInTypeInferenceContext_id4cxv$9$kw67.invoke0(__thisNode__, CONCEPTS.IMethodCall$M9));
   }
 
   /*package*/ BaseMethodCall__BehaviorDescriptor() {
@@ -112,14 +112,14 @@ public final class BaseMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IMethodCall$ln = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
+    /*package*/ static final SInterfaceConcept IMethodCall$M9 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
   }
 }

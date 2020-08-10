@@ -36,20 +36,20 @@ public final class ModulePointer__BehaviorDescriptor extends BaseBHDescriptor {
 
   @Nullable
   /*package*/ static SModuleReference toModuleReference_id1Bs_61$mqDd(@NotNull SNode __thisNode__) {
-    if (SPropertyOperations.getString(__thisNode__, PROPS.moduleId$io5C) == null) {
+    if (SPropertyOperations.getString(__thisNode__, PROPS.moduleId$QL78) == null) {
       return null;
     }
     PersistenceFacade pf = PersistenceFacade.getInstance();
-    SModuleId id = pf.createModuleId(SPropertyOperations.getString(__thisNode__, PROPS.moduleId$io5C));
-    return pf.createModuleReference(id, SPropertyOperations.getString(__thisNode__, PROPS.moduleName$inBA));
+    SModuleId id = pf.createModuleId(SPropertyOperations.getString(__thisNode__, PROPS.moduleId$QL78));
+    return pf.createModuleReference(id, SPropertyOperations.getString(__thisNode__, PROPS.moduleName$QKD6));
   }
   /*package*/ static void setModuleReference_idnJmxU5cSTj(@NotNull SNode __thisNode__, @Nullable SModuleReference moduleRef) {
     if (moduleRef == null) {
-      SPropertyOperations.assign(__thisNode__, PROPS.moduleId$io5C, null);
-      SPropertyOperations.assign(__thisNode__, PROPS.moduleName$inBA, null);
+      SPropertyOperations.assign(__thisNode__, PROPS.moduleId$QL78, null);
+      SPropertyOperations.assign(__thisNode__, PROPS.moduleName$QKD6, null);
     } else {
-      SPropertyOperations.assign(__thisNode__, PROPS.moduleId$io5C, PersistenceFacade.getInstance().asString(moduleRef.getModuleId()));
-      SPropertyOperations.assign(__thisNode__, PROPS.moduleName$inBA, moduleRef.getModuleName());
+      SPropertyOperations.assign(__thisNode__, PROPS.moduleId$QL78, PersistenceFacade.getInstance().asString(moduleRef.getModuleId()));
+      SPropertyOperations.assign(__thisNode__, PROPS.moduleName$QKD6, moduleRef.getModuleName());
     }
   }
 
@@ -103,7 +103,7 @@ public final class ModulePointer__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty moduleId$io5C = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, 0x5ef5a1e85338e1bL, "moduleId");
-    /*package*/ static final SProperty moduleName$inBA = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, 0x5ef5a1e85338e19L, "moduleName");
+    /*package*/ static final SProperty moduleId$QL78 = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, 0x5ef5a1e85338e1bL, "moduleId");
+    /*package*/ static final SProperty moduleName$QKD6 = MetaAdapterFactory.getProperty(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, 0x5ef5a1e85338e19L, "moduleName");
   }
 }

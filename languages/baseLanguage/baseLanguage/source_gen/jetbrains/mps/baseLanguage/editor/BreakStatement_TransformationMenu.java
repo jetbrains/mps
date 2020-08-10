@@ -78,7 +78,7 @@ public class BreakStatement_TransformationMenu extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.BreakStatement$w0)) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.BreakStatement$WM)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -102,18 +102,18 @@ public class BreakStatement_TransformationMenu extends TransformationMenuBase {
   public class TMP_Group_n2nn3v_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      if ((SLinkOperations.getTarget(_context.getNode(), LINKS.loopLabelReference$UQUI) == null)) {
-        boolean loopsWithLabels = ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.AbstractLoopStatement$wH, false)).where(new IWhereFilter<SNode>() {
+      if ((SLinkOperations.getTarget(_context.getNode(), LINKS.loopLabelReference$_Wnw) == null)) {
+        boolean loopsWithLabels = ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.AbstractLoopStatement$Xv, false)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return (SLinkOperations.getTarget(it, LINKS.loopLabel$Lb39) != null);
+            return (SLinkOperations.getTarget(it, LINKS.loopLabel$sgvV) != null);
           }
         }).isNotEmpty();
         if (loopsWithLabels) {
           return true;
         }
-        boolean switchStatementsWithLabels = ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.SwitchStatement$S1, false)).where(new IWhereFilter<SNode>() {
+        boolean switchStatementsWithLabels = ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.SwitchStatement$kN, false)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return (SLinkOperations.getTarget(it, LINKS.switchLabel$GHQ7) != null);
+            return (SLinkOperations.getTarget(it, LINKS.switchLabel$nNiT) != null);
           }
         }).isNotEmpty();
         return switchStatementsWithLabels;
@@ -134,7 +134,7 @@ public class BreakStatement_TransformationMenu extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Param_n2nn3v_a0b(), CONCEPTS.LoopLabel$R4));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Param_n2nn3v_a0b(), CONCEPTS.LoopLabel$jQ));
     }
     private class TMP_Param_n2nn3v_a0b extends ParameterizedMenuPart<SNode, TransformationMenuItem, TransformationMenuContext> {
 
@@ -148,7 +148,7 @@ public class BreakStatement_TransformationMenu extends TransformationMenuBase {
       @Override
       protected Iterable<? extends SNode> getParameters(TransformationMenuContext _context) {
         List<SNode> labels = new ArrayList<SNode>();
-        ListSequence.fromList(labels).addSequence(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.AbstractLoopStatement$wH, false)).translate(new ITranslator2<SNode, SNode>() {
+        ListSequence.fromList(labels).addSequence(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.AbstractLoopStatement$Xv, false)).translate(new ITranslator2<SNode, SNode>() {
           public Iterable<SNode> translate(final SNode it) {
             return new Iterable<SNode>() {
               public Iterator<SNode> iterator() {
@@ -163,7 +163,7 @@ __switch__:
                           assert false : "Internal error";
                           return false;
                         case 2:
-                          if ((SLinkOperations.getTarget(it, LINKS.loopLabel$Lb39) != null)) {
+                          if ((SLinkOperations.getTarget(it, LINKS.loopLabel$sgvV) != null)) {
                             this.__CP__ = 3;
                             break;
                           }
@@ -171,7 +171,7 @@ __switch__:
                           break;
                         case 4:
                           this.__CP__ = 1;
-                          this.yield(SLinkOperations.getTarget(it, LINKS.loopLabel$Lb39));
+                          this.yield(SLinkOperations.getTarget(it, LINKS.loopLabel$sgvV));
                           return true;
                         case 0:
                           this.__CP__ = 2;
@@ -190,7 +190,7 @@ __switch__:
             };
           }
         }));
-        ListSequence.fromList(labels).addSequence(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.SwitchStatement$S1, false)).translate(new ITranslator2<SNode, SNode>() {
+        ListSequence.fromList(labels).addSequence(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.SwitchStatement$kN, false)).translate(new ITranslator2<SNode, SNode>() {
           public Iterable<SNode> translate(final SNode it) {
             return new Iterable<SNode>() {
               public Iterator<SNode> iterator() {
@@ -205,7 +205,7 @@ __switch__:
                           assert false : "Internal error";
                           return false;
                         case 2:
-                          if ((SLinkOperations.getTarget(it, LINKS.switchLabel$GHQ7) != null)) {
+                          if ((SLinkOperations.getTarget(it, LINKS.switchLabel$nNiT) != null)) {
                             this.__CP__ = 3;
                             break;
                           }
@@ -213,7 +213,7 @@ __switch__:
                           break;
                         case 4:
                           this.__CP__ = 1;
-                          this.yield(SLinkOperations.getTarget(it, LINKS.switchLabel$GHQ7));
+                          this.yield(SLinkOperations.getTarget(it, LINKS.switchLabel$nNiT));
                           return true;
                         case 0:
                           this.__CP__ = 2;
@@ -283,13 +283,13 @@ __switch__:
           @Nullable
           @Override
           public String getLabelText(String pattern) {
-            return SPropertyOperations.getString(myParameterObject, PROPS.name$lA7v);
+            return SPropertyOperations.getString(myParameterObject, PROPS.name$MnvL);
           }
 
           @Override
           public void execute(@NotNull String pattern) {
-            SNode labelReference = SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.loopLabelReference$UQUI, null);
-            SLinkOperations.setTarget(labelReference, LINKS.loopLabel$Mx00, myParameterObject);
+            SNode labelReference = SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.loopLabelReference$_Wnw, null);
+            SLinkOperations.setTarget(labelReference, LINKS.loopLabel$tAsM, myParameterObject);
             SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), labelReference, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
           }
 
@@ -297,7 +297,7 @@ __switch__:
           @Nullable
           @Override
           public SAbstractConcept getOutputConcept() {
-            return CONCEPTS.LoopLabel$R4;
+            return CONCEPTS.LoopLabel$jQ;
           }
           @Override
           public String getShortDescriptionText(@NotNull String pattern) {
@@ -312,7 +312,7 @@ __switch__:
 
           public void customize(String pattern, EditorMenuItemStyle style) {
             EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-            SAbstractConcept outputConcept = CONCEPTS.LoopLabel$R4;
+            SAbstractConcept outputConcept = CONCEPTS.LoopLabel$jQ;
             EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(myParameterObject, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
             for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
               customizer.customize(style, compositeContext);
@@ -325,20 +325,20 @@ __switch__:
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BreakStatement$w0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, "jetbrains.mps.baseLanguage.structure.BreakStatement");
-    /*package*/ static final SConcept AbstractLoopStatement$wH = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, "jetbrains.mps.baseLanguage.structure.AbstractLoopStatement");
-    /*package*/ static final SConcept SwitchStatement$S1 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, "jetbrains.mps.baseLanguage.structure.SwitchStatement");
-    /*package*/ static final SConcept LoopLabel$R4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9552f6aL, "jetbrains.mps.baseLanguage.structure.LoopLabel");
+    /*package*/ static final SConcept BreakStatement$WM = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, "jetbrains.mps.baseLanguage.structure.BreakStatement");
+    /*package*/ static final SConcept AbstractLoopStatement$Xv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, "jetbrains.mps.baseLanguage.structure.AbstractLoopStatement");
+    /*package*/ static final SConcept SwitchStatement$kN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, "jetbrains.mps.baseLanguage.structure.SwitchStatement");
+    /*package*/ static final SConcept LoopLabel$jQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9552f6aL, "jetbrains.mps.baseLanguage.structure.LoopLabel");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink loopLabel$Lb39 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x50c493bf9555131L, "loopLabel");
-    /*package*/ static final SContainmentLink switchLabel$GHQ7 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x4091554b655a230eL, "switchLabel");
-    /*package*/ static final SContainmentLink loopLabelReference$UQUI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, 0x7dae85d6eb42f8c4L, "loopLabelReference");
-    /*package*/ static final SReferenceLink loopLabel$Mx00 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9555129L, 0x50c493bf955512aL, "loopLabel");
+    /*package*/ static final SContainmentLink loopLabel$sgvV = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x50c493bf9555131L, "loopLabel");
+    /*package*/ static final SContainmentLink switchLabel$nNiT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x4091554b655a230eL, "switchLabel");
+    /*package*/ static final SContainmentLink loopLabelReference$_Wnw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbe39a867fL, 0x7dae85d6eb42f8c4L, "loopLabelReference");
+    /*package*/ static final SReferenceLink loopLabel$tAsM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x50c493bf9555129L, 0x50c493bf955512aL, "loopLabel");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

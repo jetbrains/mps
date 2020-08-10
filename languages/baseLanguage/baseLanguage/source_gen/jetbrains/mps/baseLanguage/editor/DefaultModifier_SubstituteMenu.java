@@ -48,7 +48,7 @@ public class DefaultModifier_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_Group_bh5s0w_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return JavaLanguageLevel.JAVA_8.covers(new BaseLanguageEnvironmentHelper().getLanguageLevel(_context.getModel())) && SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.InstanceMethodDeclaration$An) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.as(_context.getParentNode(), CONCEPTS.InstanceMethodDeclaration$An), LINKS.visibility$jt1o), CONCEPTS.PrivateVisibility$Se));
+      return JavaLanguageLevel.JAVA_8.covers(new BaseLanguageEnvironmentHelper().getLanguageLevel(_context.getModel())) && SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.InstanceMethodDeclaration$39) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.as(_context.getParentNode(), CONCEPTS.InstanceMethodDeclaration$39), LINKS.visibility$Yyua), CONCEPTS.PrivateVisibility$l0));
     }
     @NotNull
     @Override
@@ -64,7 +64,7 @@ public class DefaultModifier_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.DefaultModifier$Z2) {
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.DefaultModifier$rO) {
 
         @NotNull
         @Override
@@ -77,17 +77,17 @@ public class DefaultModifier_SubstituteMenu extends SubstituteMenuBase {
             context.getEditorMenuTrace().popTraceInfo();
           }
         }
-      }, CONCEPTS.DefaultModifier$Z2));
+      }, CONCEPTS.DefaultModifier$rO));
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InstanceMethodDeclaration$An = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
-    /*package*/ static final SConcept PrivateVisibility$Se = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
-    /*package*/ static final SConcept DefaultModifier$Z2 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x40ed0df0ef40a332L, "jetbrains.mps.baseLanguage.structure.DefaultModifier");
+    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept PrivateVisibility$l0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
+    /*package*/ static final SConcept DefaultModifier$rO = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x40ed0df0ef40a332L, "jetbrains.mps.baseLanguage.structure.DefaultModifier");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 }

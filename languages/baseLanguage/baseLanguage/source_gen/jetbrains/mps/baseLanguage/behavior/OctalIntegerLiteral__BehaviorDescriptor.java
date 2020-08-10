@@ -33,7 +33,7 @@ public final class OctalIntegerLiteral__BehaviorDescriptor extends BaseBHDescrip
 
   /*package*/ static Object getCompileTimeConstantValue_idi1LP2xI(@NotNull SNode __thisNode__, SModule module) {
     try {
-      return Integer.parseInt(SPropertyOperations.getString(__thisNode__, PROPS.value$4VdX), 8);
+      return Integer.parseInt(SPropertyOperations.getString(__thisNode__, PROPS.value$K0EJ), 8);
     } catch (NumberFormatException num) {
       return 0;
     }
@@ -86,6 +86,6 @@ public final class OctalIntegerLiteral__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$4VdX = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xe81fba3b64ca8f8L, 0x11297628b3cL, "value");
+    /*package*/ static final SProperty value$K0EJ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xe81fba3b64ca8f8L, 0x11297628b3cL, "value");
   }
 }

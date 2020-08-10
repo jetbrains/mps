@@ -17,10 +17,10 @@ public class TurnReturnToContinue_QuickFix extends QuickFix_Runtime {
     return "Turn return into continue";
   }
   public void execute(SNode node) {
-    SNodeOperations.replaceWithNewChild(node, CONCEPTS.ContinueStatement$jc);
+    SNodeOperations.replaceWithNewChild(node, CONCEPTS.ContinueStatement$JY);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ContinueStatement$jc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbf3043726L, "jetbrains.mps.baseLanguage.structure.ContinueStatement");
+    /*package*/ static final SConcept ContinueStatement$JY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbf3043726L, "jetbrains.mps.baseLanguage.structure.ContinueStatement");
   }
 }

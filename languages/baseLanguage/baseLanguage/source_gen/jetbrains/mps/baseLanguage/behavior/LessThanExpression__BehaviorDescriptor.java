@@ -57,7 +57,7 @@ public final class LessThanExpression__BehaviorDescriptor extends BaseBHDescript
     return null;
   }
   /*package*/ static SNode getFlippedOperator_id14Lzlw0K236(@NotNull SNode __thisNode__) {
-    return SNodeFactoryOperations.createNewNode(CONCEPTS.GreaterThanExpression$wR, __thisNode__);
+    return SNodeFactoryOperations.createNewNode(CONCEPTS.GreaterThanExpression$XD, __thisNode__);
   }
 
   /*package*/ LessThanExpression__BehaviorDescriptor() {
@@ -111,6 +111,6 @@ public final class LessThanExpression__BehaviorDescriptor extends BaseBHDescript
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GreaterThanExpression$wR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbced38fcfL, "jetbrains.mps.baseLanguage.structure.GreaterThanExpression");
+    /*package*/ static final SConcept GreaterThanExpression$XD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbced38fcfL, "jetbrains.mps.baseLanguage.structure.GreaterThanExpression");
   }
 }

@@ -32,10 +32,10 @@ public final class QueryFunction_TransformationMenu__BehaviorDescriptor extends 
   }
 
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
-    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, CONCEPTS.QueryFunction_Menu$De);
-    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_editorContext$k8);
-    ListSequence.fromList(result).addElement(CONCEPTS.QueryFunctionParameter_TransformationMenu_node$H$);
-    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_model$Sy);
+    List<SConcept> result = ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invoke0(__thisNode__, CONCEPTS.QueryFunction_Menu$OP);
+    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_editorContext$vJ);
+    ListSequence.fromList(result).addElement(CONCEPTS.QueryFunctionParameter_TransformationMenu_node$Tb);
+    ListSequence.fromList(result).addElement(CONCEPTS.ConceptFunctionParameter_model$49);
 
     return result;
   }
@@ -87,9 +87,9 @@ public final class QueryFunction_TransformationMenu__BehaviorDescriptor extends 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept QueryFunction_Menu$De = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9039c3cL, "jetbrains.mps.lang.editor.structure.QueryFunction_Menu");
-    /*package*/ static final SConcept ConceptFunctionParameter_editorContext$k8 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10e76200a6fL, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_editorContext");
-    /*package*/ static final SConcept QueryFunctionParameter_TransformationMenu_node$H$ = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x162bf82611fb4032L, "jetbrains.mps.lang.editor.structure.QueryFunctionParameter_TransformationMenu_node");
-    /*package*/ static final SConcept ConceptFunctionParameter_model$Sy = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x69333c273254322aL, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_model");
+    /*package*/ static final SConcept QueryFunction_Menu$OP = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9039c3cL, "jetbrains.mps.lang.editor.structure.QueryFunction_Menu");
+    /*package*/ static final SConcept ConceptFunctionParameter_editorContext$vJ = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10e76200a6fL, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_editorContext");
+    /*package*/ static final SConcept QueryFunctionParameter_TransformationMenu_node$Tb = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x162bf82611fb4032L, "jetbrains.mps.lang.editor.structure.QueryFunctionParameter_TransformationMenu_node");
+    /*package*/ static final SConcept ConceptFunctionParameter_model$49 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x69333c273254322aL, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_model");
   }
 }

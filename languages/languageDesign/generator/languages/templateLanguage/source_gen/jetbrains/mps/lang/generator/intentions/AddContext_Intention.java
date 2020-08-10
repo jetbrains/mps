@@ -54,13 +54,13 @@ public final class AddContext_Intention extends AbstractIntentionDescriptor impl
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode tNode = SLinkOperations.getTarget(node, LINKS.templateNode$CUKK);
-      SLinkOperations.setTarget(node, LINKS.templateNode$CUKK, null);
-      SNode result = SNodeOperations.replaceWithNewChild(node, CONCEPTS.InlineTemplateWithContext_RuleConsequence$tA);
-      if (SNodeOperations.isInstanceOf(tNode, CONCEPTS.Expression$TP)) {
-        SLinkOperations.setTarget(result, LINKS.contentNode$tkcn, _quotation_createNode_4m6r5j_a0a0d0a(SNodeOperations.cast(tNode, CONCEPTS.Expression$TP)));
+      SNode tNode = SLinkOperations.getTarget(node, LINKS.templateNode$1Rss);
+      SLinkOperations.setTarget(node, LINKS.templateNode$1Rss, null);
+      SNode result = SNodeOperations.replaceWithNewChild(node, CONCEPTS.InlineTemplateWithContext_RuleConsequence$9i);
+      if (SNodeOperations.isInstanceOf(tNode, CONCEPTS.Expression$mB)) {
+        SLinkOperations.setTarget(result, LINKS.contentNode$QgS3, _quotation_createNode_4m6r5j_a0a0d0a(SNodeOperations.cast(tNode, CONCEPTS.Expression$mB)));
       } else {
-        SLinkOperations.setTarget(result, LINKS.contentNode$tkcn, tNode);
+        SLinkOperations.setTarget(result, LINKS.contentNode$QgS3, tNode);
       }
       EditingUtil.createTemplateFragment(tNode);
     }
@@ -88,12 +88,12 @@ public final class AddContext_Intention extends AbstractIntentionDescriptor impl
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink templateNode$CUKK = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, 0x112103ebf76L, "templateNode");
-    /*package*/ static final SContainmentLink contentNode$tkcn = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, 0x7b85dded0be53d6fL, "contentNode");
+    /*package*/ static final SContainmentLink templateNode$1Rss = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, 0x112103ebf76L, "templateNode");
+    /*package*/ static final SContainmentLink contentNode$QgS3 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, 0x7b85dded0be53d6fL, "contentNode");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InlineTemplateWithContext_RuleConsequence$tA = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, "jetbrains.mps.lang.generator.structure.InlineTemplateWithContext_RuleConsequence");
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept InlineTemplateWithContext_RuleConsequence$9i = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, "jetbrains.mps.lang.generator.structure.InlineTemplateWithContext_RuleConsequence");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 }

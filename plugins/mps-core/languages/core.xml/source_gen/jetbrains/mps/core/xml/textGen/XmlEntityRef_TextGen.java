@@ -18,20 +18,20 @@ public class XmlEntityRef_TextGen extends TextGenDescriptorBase {
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     SNode left = SNodeOperations.getPrevSibling(ctx.getPrimaryInput());
-    if (SNodeOperations.isInstanceOf(left, CONCEPTS.XmlContent$nZ) && (boolean) XmlPart__BehaviorDescriptor.hasNewLineAfter_id1Qs9WekVZ9E.invoke(SNodeOperations.cast(left, CONCEPTS.XmlContent$nZ))) {
+    if (SNodeOperations.isInstanceOf(left, CONCEPTS.XmlContent$Mu) && (boolean) XmlPart__BehaviorDescriptor.hasNewLineAfter_id1Qs9WekVZ9E.invoke(SNodeOperations.cast(left, CONCEPTS.XmlContent$Mu))) {
       tgs.newLine();
       tgs.indent();
     }
     tgs.append("&");
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.entityName$_kyv));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.entityName$uGWY));
     tgs.append(";");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XmlContent$nZ = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c549486bL, "jetbrains.mps.core.xml.structure.XmlContent");
+    /*package*/ static final SConcept XmlContent$Mu = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c549486bL, "jetbrains.mps.core.xml.structure.XmlContent");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty entityName$_kyv = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9c6f4dL, 0x16838b3fce9c6f8fL, "entityName");
+    /*package*/ static final SProperty entityName$uGWY = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9c6f4dL, 0x16838b3fce9c6f8fL, "entityName");
   }
 }

@@ -63,11 +63,11 @@ public class ClassifierUnitContext implements RootDependencies.Source {
 
   public void registerDependenciesOf(SNode cls) {
     boolean topClassifier = !((boolean) Classifier__BehaviorDescriptor.isInner_idsWroEc0xXl.invoke(cls));
-    if (SNodeOperations.isInstanceOf(cls, CONCEPTS.Interface$Kp)) {
-      registerExtendsRelation(SLinkOperations.getChildren(SNodeOperations.cast(cls, CONCEPTS.Interface$Kp), LINKS.extendedInterface$a$v2), topClassifier);
-    } else if (SNodeOperations.isInstanceOf(cls, CONCEPTS.ClassConcept$IY)) {
-      registerExtendsRelation(SLinkOperations.getChildren(SNodeOperations.cast(cls, CONCEPTS.ClassConcept$IY), LINKS.implementedInterface$KoQU), topClassifier);
-      registerExtendsRelation(Sequence.<SNode>singleton(SLinkOperations.getTarget(SNodeOperations.cast(cls, CONCEPTS.ClassConcept$IY), LINKS.superclass$7jGM)), topClassifier);
+    if (SNodeOperations.isInstanceOf(cls, CONCEPTS.Interface$db)) {
+      registerExtendsRelation(SLinkOperations.getChildren(SNodeOperations.cast(cls, CONCEPTS.Interface$db), LINKS.extendedInterface$PDVO), topClassifier);
+    } else if (SNodeOperations.isInstanceOf(cls, CONCEPTS.ClassConcept$bK)) {
+      registerExtendsRelation(SLinkOperations.getChildren(SNodeOperations.cast(cls, CONCEPTS.ClassConcept$bK), LINKS.implementedInterface$rujG), topClassifier);
+      registerExtendsRelation(Sequence.<SNode>singleton(SLinkOperations.getTarget(SNodeOperations.cast(cls, CONCEPTS.ClassConcept$bK), LINKS.superclass$Mp9$)), topClassifier);
     }
   }
 
@@ -82,7 +82,7 @@ public class ClassifierUnitContext implements RootDependencies.Source {
 
     // set<string> dependencies = getUserObjects(isTopClassifier ? TextGen.EXTENDS : TextGen.DEPENDENCY); 
     HashSet<String> deps = (isTopClassifier ? myExtends : myDepends);
-    for (SNode c : SLinkOperations.collect(classifiers, LINKS.classifier$xslD)) {
+    for (SNode c : SLinkOperations.collect(classifiers, LINKS.classifier$cxMr)) {
       deps.add(getTopmostClassifierName(c));
     }
   }
@@ -93,7 +93,7 @@ public class ClassifierUnitContext implements RootDependencies.Source {
     //     (a) they are in the same module anyway 
     //     (b) reverse map of class to module is built for top classifiers only, we won't find anything there for nested class 
     //         (see j.m.make.Dependencies) 
-    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(ListSequence.fromList(SNodeOperations.getNodeAncestors(c, CONCEPTS.Classifier$hJ, true)).last());
+    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(ListSequence.fromList(SNodeOperations.getNodeAncestors(c, CONCEPTS.Classifier$Ix, true)).last());
     // I don't need list of ancestors, but c.ancestor<root,concept> looks at the root node only (which is not right, IMO) 
     // Why not Java-specific naming utility here, e.g. JavaNameUtil? Because getFqName does the same better (respects nested classifiers) and without any statics. 
   }
@@ -117,15 +117,15 @@ public class ClassifierUnitContext implements RootDependencies.Source {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink extendedInterface$a$v2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
-    /*package*/ static final SContainmentLink implementedInterface$KoQU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
-    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink extendedInterface$PDVO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
+    /*package*/ static final SContainmentLink implementedInterface$rujG = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
+    /*package*/ static final SContainmentLink superclass$Mp9$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

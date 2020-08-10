@@ -50,8 +50,8 @@ public final class TryUniversalStatement__BehaviorDescriptor extends BaseBHDescr
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
-    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.VariableDeclaration$xe)) {
-      Iterable<SNode> resources = (ScopeUtils.comeFrom(LINKS.resource$Abww, __thisNode__, child) ? SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(SNodeOperations.getNodeAncestor(child, CONCEPTS.ResourceVariable$QC, false, false), false), CONCEPTS.ResourceVariable$QC) : SLinkOperations.getChildren(__thisNode__, LINKS.resource$Abww));
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.VariableDeclaration$Y0)) {
+      Iterable<SNode> resources = (ScopeUtils.comeFrom(LINKS.resource$hgXi, __thisNode__, child) ? SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(SNodeOperations.getNodeAncestor(child, CONCEPTS.ResourceVariable$jq, false, false), false), CONCEPTS.ResourceVariable$jq) : SLinkOperations.getChildren(__thisNode__, LINKS.resource$hgXi));
       return Scopes.forVariables(kind, resources, ScopeUtils.lazyParentScope(__thisNode__, kind));
     } else {
       return null;
@@ -59,17 +59,17 @@ public final class TryUniversalStatement__BehaviorDescriptor extends BaseBHDescr
   }
   /*package*/ static void collectUncaughtMethodThrowables_id4Gt7ANIVH8f(@NotNull SNode __thisNode__, Set<SNode> throwables, boolean ignoreMayBeThrowables) {
     Set<SNode> thrownsFromBody = SetSequence.fromSet(new HashSet<SNode>());
-    StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.body$lFey), thrownsFromBody, ((boolean) ignoreMayBeThrowables));
-    for (SNode resourceVar : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.resource$Abww))) {
-      SetSequence.fromSet(thrownsFromBody).addSequence(Sequence.fromIterable(SNodeOperations.ofConcept(new ResourceVariableHelper(resourceVar).getCloseThrown(), CONCEPTS.ClassifierType$IZ)).select(new ISelector<SNode, SNode>() {
+    StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.body$KFk), thrownsFromBody, ((boolean) ignoreMayBeThrowables));
+    for (SNode resourceVar : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.resource$hgXi))) {
+      SetSequence.fromSet(thrownsFromBody).addSequence(Sequence.fromIterable(SNodeOperations.ofConcept(new ResourceVariableHelper(resourceVar).getCloseThrown(), CONCEPTS.ClassifierType$bL)).select(new ISelector<SNode, SNode>() {
         public SNode select(SNode it) {
-          return SLinkOperations.getTarget(it, LINKS.classifier$xslD);
+          return SLinkOperations.getTarget(it, LINKS.classifier$cxMr);
         }
       }));
     }
 
     // remove what we have caught 
-    for (SNode catchClause : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.catchClause$lKBT))) {
+    for (SNode catchClause : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.catchClause$Q4F))) {
       Set<SNode> toRemove = SetSequence.fromSet(new HashSet<SNode>());
       for (SNode thrownFromBody : SetSequence.fromSet(thrownsFromBody)) {
         List<SNode> caughtTypes = AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(catchClause);
@@ -84,13 +84,13 @@ public final class TryUniversalStatement__BehaviorDescriptor extends BaseBHDescr
     SetSequence.fromSet(throwables).addSequence(SetSequence.fromSet(thrownsFromBody));
 
     // now collect what was thrown in catch blocks 
-    for (SNode catchClause : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.catchClause$lKBT))) {
-      StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(catchClause, LINKS.catchBody$fR$g), throwables, ((boolean) ignoreMayBeThrowables));
+    for (SNode catchClause : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.catchClause$Q4F))) {
+      StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(catchClause, LINKS.catchBody$UX12), throwables, ((boolean) ignoreMayBeThrowables));
     }
-    StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.finallyClause$lFtz), LINKS.finallyBody$XM3W), throwables, ((boolean) ignoreMayBeThrowables));
+    StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.finallyClause$KUl), LINKS.finallyBody$CRwI), throwables, ((boolean) ignoreMayBeThrowables));
   }
   /*package*/ static List<SNode> getCatchClauses_id3eptmOG0XgA(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getChildren(__thisNode__, LINKS.catchClause$lKBT);
+    return SLinkOperations.getChildren(__thisNode__, LINKS.catchClause$Q4F);
   }
 
   /*package*/ TryUniversalStatement__BehaviorDescriptor() {
@@ -152,18 +152,18 @@ public final class TryUniversalStatement__BehaviorDescriptor extends BaseBHDescr
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VariableDeclaration$xe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
-    /*package*/ static final SConcept ResourceVariable$QC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a546561eL, "jetbrains.mps.baseLanguage.structure.ResourceVariable");
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept VariableDeclaration$Y0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
+    /*package*/ static final SConcept ResourceVariable$jq = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a546561eL, "jetbrains.mps.baseLanguage.structure.ResourceVariable");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink resource$Abww = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x4a434b86a54515feL, "resource");
-    /*package*/ static final SContainmentLink body$lFey = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb114L, "body");
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink catchClause$lKBT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb116L, "catchClause");
-    /*package*/ static final SContainmentLink catchBody$fR$g = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L, 0x72ddc71311eda6f5L, "catchBody");
-    /*package*/ static final SContainmentLink finallyClause$lFtz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb115L, "finallyClause");
-    /*package*/ static final SContainmentLink finallyBody$XM3W = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x72ddc71312b892acL, 0x72ddc71312b89bbaL, "finallyBody");
+    /*package*/ static final SContainmentLink resource$hgXi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x4a434b86a54515feL, "resource");
+    /*package*/ static final SContainmentLink body$KFk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb114L, "body");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink catchClause$Q4F = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb116L, "catchClause");
+    /*package*/ static final SContainmentLink catchBody$UX12 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2aefd560f401b9c6L, 0x72ddc71311eda6f5L, "catchBody");
+    /*package*/ static final SContainmentLink finallyClause$KUl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb115L, "finallyClause");
+    /*package*/ static final SContainmentLink finallyBody$CRwI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x72ddc71312b892acL, 0x72ddc71312b89bbaL, "finallyBody");
   }
 }

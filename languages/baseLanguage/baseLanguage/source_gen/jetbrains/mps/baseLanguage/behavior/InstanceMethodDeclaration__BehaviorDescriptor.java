@@ -68,68 +68,68 @@ public final class InstanceMethodDeclaration__BehaviorDescriptor extends BaseBHD
   }
   @Deprecated
   /*package*/ static boolean isAbstract_idhWjv7RO(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getBoolean(__thisNode__, PROPS.isAbstract$gogN);
+    return SPropertyOperations.getBoolean(__thisNode__, PROPS.isAbstract$VtH_);
   }
   /*package*/ static boolean isAnAbstractMethod_id28P2dHxCoRl(@NotNull SNode __thisNode__) {
-    for (SNode modifier : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.modifiers$m0))) {
-      if (SNodeOperations.isInstanceOf(modifier, CONCEPTS.JavaModifier$nA)) {
-        if ((boolean) JavaModifier__BehaviorDescriptor.makesMethodNotAbstract_id4c$BrPwobKA.invoke(SNodeOperations.cast(modifier, CONCEPTS.JavaModifier$nA))) {
+    for (SNode modifier : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.modifiers$F5MM))) {
+      if (SNodeOperations.isInstanceOf(modifier, CONCEPTS.JavaModifier$Oo)) {
+        if ((boolean) JavaModifier__BehaviorDescriptor.makesMethodNotAbstract_id4c$BrPwobKA.invoke(SNodeOperations.cast(modifier, CONCEPTS.JavaModifier$Oo))) {
           return false;
         }
       }
     }
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.Interface$Kp) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$jt1o), CONCEPTS.PrivateVisibility$Se))) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.Interface$db) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$Yyua), CONCEPTS.PrivateVisibility$l0))) {
       return true;
     }
-    boolean isAbstractProperty = SPropertyOperations.getBoolean(__thisNode__, PROPS.isAbstract$gogN);
+    boolean isAbstractProperty = SPropertyOperations.getBoolean(__thisNode__, PROPS.isAbstract$VtH_);
     return isAbstractProperty;
   }
   /*package*/ static boolean hasBody_id10BRnhak8m8(@NotNull SNode __thisNode__) {
-    for (SNode modifier : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.modifiers$m0))) {
-      if (SNodeOperations.isInstanceOf(modifier, CONCEPTS.JavaModifier$nA)) {
-        if ((boolean) JavaModifier__BehaviorDescriptor.allowsBody_id10BRnhafkFC.invoke(SNodeOperations.cast(modifier, CONCEPTS.JavaModifier$nA))) {
+    for (SNode modifier : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.modifiers$F5MM))) {
+      if (SNodeOperations.isInstanceOf(modifier, CONCEPTS.JavaModifier$Oo)) {
+        if ((boolean) JavaModifier__BehaviorDescriptor.allowsBody_id10BRnhafkFC.invoke(SNodeOperations.cast(modifier, CONCEPTS.JavaModifier$Oo))) {
           return true;
         }
       }
     }
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.Interface$Kp) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$jt1o), CONCEPTS.PrivateVisibility$Se))) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.Interface$db) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$Yyua), CONCEPTS.PrivateVisibility$l0))) {
       return false;
     }
-    return !(SPropertyOperations.getBoolean(__thisNode__, PROPS.isAbstract$gogN)) && !(SPropertyOperations.getBoolean(__thisNode__, PROPS.isNative$1I9T));
+    return !(SPropertyOperations.getBoolean(__thisNode__, PROPS.isAbstract$VtH_)) && !(SPropertyOperations.getBoolean(__thisNode__, PROPS.isNative$GNAF));
   }
   /*package*/ static boolean hasVisibility_id1X7GQqyPHmE(@NotNull SNode __thisNode__) {
-    return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.Interface$Kp)) || ((SLinkOperations.getTarget(__thisNode__, LINKS.visibility$jt1o) != null) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$jt1o), CONCEPTS.PublicVisibility$qe)));
+    return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.Interface$db)) || ((SLinkOperations.getTarget(__thisNode__, LINKS.visibility$Yyua) != null) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$Yyua), CONCEPTS.PublicVisibility$R0)));
   }
   /*package*/ static List<SNode> getChildrenToDisplayIntention_id3vsDNFqJVhw(@NotNull SNode __thisNode__) {
-    List<SNode> result = HasAnnotation__BehaviorDescriptor.getChildrenToDisplayIntention_id3vsDNFqJVhw.invokeSuper(__thisNode__, CONCEPTS.InstanceMethodDeclaration$An);
-    ListSequence.fromList(result).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$jt1o));
+    List<SNode> result = HasAnnotation__BehaviorDescriptor.getChildrenToDisplayIntention_id3vsDNFqJVhw.invokeSuper(__thisNode__, CONCEPTS.InstanceMethodDeclaration$39);
+    ListSequence.fromList(result).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$Yyua));
     return result;
   }
   /*package*/ static SNode getImplementedInterfaceMethod_id7cTWCexFh1W(@NotNull SNode __thisNode__) {
-    SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$hJ, false, false);
+    SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$Ix, false, false);
     if ((containingClassifier == null)) {
       return null;
     }
-    Iterable<SNode> implementedInterfaces = SNodeOperations.ofConcept(ClassifierScopeUtils.getExtendedClassifiers(containingClassifier), CONCEPTS.Interface$Kp);
+    Iterable<SNode> implementedInterfaces = SNodeOperations.ofConcept(ClassifierScopeUtils.getExtendedClassifiers(containingClassifier), CONCEPTS.Interface$db);
     for (SNode method : Sequence.fromIterable(implementedInterfaces).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
         return (Iterable<SNode>) Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(it);
       }
     })) {
-      if (Objects.equals(SPropertyOperations.getString(method, PROPS.name$lA7v), SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).count() == ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$qsax)).count() && (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(method, __thisNode__)) {
+      if (Objects.equals(SPropertyOperations.getString(method, PROPS.name$MnvL), SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).count() == ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$5xBj)).count() && (boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(method, __thisNode__)) {
         return method;
       }
     }
     return null;
   }
   /*package*/ static SNode getNearestOverriddenMethod_id4DuBHEkPTzU(@NotNull SNode __thisNode__) {
-    SNode parent = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$hJ, false, false);
-    if (SNodeOperations.isInstanceOf(parent, CONCEPTS.AnonymousClass$aF)) {
-      parent = SLinkOperations.getTarget(SNodeOperations.cast(parent, CONCEPTS.AnonymousClass$aF), LINKS.classifier$JwxM);
-    } else if (SNodeOperations.isInstanceOf(parent, CONCEPTS.ClassConcept$IY)) {
-      SNode superclass = SLinkOperations.getTarget(SNodeOperations.cast(parent, CONCEPTS.ClassConcept$IY), LINKS.superclass$7jGM);
+    SNode parent = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$Ix, false, false);
+    if (SNodeOperations.isInstanceOf(parent, CONCEPTS.AnonymousClass$Bt)) {
+      parent = SLinkOperations.getTarget(SNodeOperations.cast(parent, CONCEPTS.AnonymousClass$Bt), LINKS.classifier$q_Y$);
+    } else if (SNodeOperations.isInstanceOf(parent, CONCEPTS.ClassConcept$bK)) {
+      SNode superclass = SLinkOperations.getTarget(SNodeOperations.cast(parent, CONCEPTS.ClassConcept$bK), LINKS.superclass$Mp9$);
       // XXX is there a need to access extendedClassifiers of Object? Can't we just use empty set for extendedClassifiers? 
-      parent = ((superclass == null) ? SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object") : SLinkOperations.getTarget(superclass, LINKS.classifier$xslD));
+      parent = ((superclass == null) ? SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object") : SLinkOperations.getTarget(superclass, LINKS.classifier$cxMr));
     }
     Set<SNode> extendedClassifiers = ClassifierScopeUtils.getExtendedClassifiers(parent);
     Iterable<SNode> instanceMethods = SetSequence.fromSet(extendedClassifiers).translate(new ITranslator2<SNode, SNode>() {
@@ -138,7 +138,7 @@ public final class InstanceMethodDeclaration__BehaviorDescriptor extends BaseBHD
       }
     });
     for (SNode methodCandidate : instanceMethods) {
-      if (methodCandidate != __thisNode__ && Objects.equals(SPropertyOperations.getString(methodCandidate, PROPS.name$lA7v), SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v)) && ListSequence.fromList(SLinkOperations.getChildren(methodCandidate, LINKS.parameter$qsax)).count() == ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$qsax)).count()) {
+      if (methodCandidate != __thisNode__ && Objects.equals(SPropertyOperations.getString(methodCandidate, PROPS.name$MnvL), SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL)) && ListSequence.fromList(SLinkOperations.getChildren(methodCandidate, LINKS.parameter$5xBj)).count() == ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$5xBj)).count()) {
         if ((boolean) BaseMethodDeclaration__BehaviorDescriptor.hasSameSignature_idhEwIB0z.invoke(methodCandidate, __thisNode__)) {
           return methodCandidate;
         }
@@ -155,11 +155,11 @@ public final class InstanceMethodDeclaration__BehaviorDescriptor extends BaseBHD
     context.hideMembersForAncestors(signature);
   }
   /*package*/ static String getFqName_idhEwIO9y(@NotNull SNode __thisNode__) {
-    SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$hJ, false, false);
+    SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$Ix, false, false);
     if (containingClassifier != null) {
-      return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(containingClassifier) + '.' + SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v);
+      return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(containingClassifier) + '.' + SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL);
     }
-    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke0(__thisNode__, CONCEPTS.MethodDeclaration$93);
+    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke0(__thisNode__, CONCEPTS.MethodDeclaration$_P);
   }
 
   /*package*/ InstanceMethodDeclaration__BehaviorDescriptor() {
@@ -232,29 +232,29 @@ public final class InstanceMethodDeclaration__BehaviorDescriptor extends BaseBHD
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isAbstract$gogN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
-    /*package*/ static final SProperty isNative$1I9T = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, 0x73f30e3df95c0b73L, "isNative");
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isAbstract$VtH_ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
+    /*package*/ static final SProperty isNative$GNAF = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, 0x73f30e3df95c0b73L, "isNative");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept JavaModifier$nA = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1027dd744a287198L, "jetbrains.mps.baseLanguage.structure.JavaModifier");
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
-    /*package*/ static final SConcept PrivateVisibility$Se = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
-    /*package*/ static final SConcept PublicVisibility$qe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility");
-    /*package*/ static final SConcept InstanceMethodDeclaration$An = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept AnonymousClass$aF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept MethodDeclaration$93 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, "jetbrains.mps.baseLanguage.structure.MethodDeclaration");
+    /*package*/ static final SConcept JavaModifier$Oo = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1027dd744a287198L, "jetbrains.mps.baseLanguage.structure.JavaModifier");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept PrivateVisibility$l0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
+    /*package*/ static final SConcept PublicVisibility$R0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility");
+    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept MethodDeclaration$_P = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, "jetbrains.mps.baseLanguage.structure.MethodDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink modifiers$m0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
-    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SReferenceLink classifier$JwxM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
-    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink modifiers$F5MM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
+    /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SReferenceLink classifier$q_Y$ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
+    /*package*/ static final SContainmentLink superclass$Mp9$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 }

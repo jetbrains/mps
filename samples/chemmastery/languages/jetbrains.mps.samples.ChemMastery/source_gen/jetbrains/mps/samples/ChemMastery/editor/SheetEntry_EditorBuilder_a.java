@@ -69,7 +69,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     return editorCell;
   }
   private boolean nodeCondition_ekbrl8_a2a() {
-    return SPropertyOperations.getBoolean(SNodeOperations.as(SNodeOperations.getContainingRoot(myNode), CONCEPTS.ChemSheet$zx), PROPS.showButtons$Fk_0);
+    return SPropertyOperations.getBoolean(SNodeOperations.as(SNodeOperations.getContainingRoot(myNode), CONCEPTS.ChemSheet$VW), PROPS.showButtons$AWXr);
   }
   private EditorCell createCollection_1() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Vertical());
@@ -81,7 +81,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     return editorCell;
   }
   private boolean nodeCondition_ekbrl8_a1a0() {
-    return SNodeOperations.isInstanceOf(myNode, CONCEPTS.EquationEntry$Nz);
+    return SNodeOperations.isInstanceOf(myNode, CONCEPTS.EquationEntry$bY);
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
@@ -95,7 +95,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   private EditorCell createReadOnlyModelAccessor_0() {
     EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
       public String getText() {
-        Iterable<SNode> entries = SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getParent(myNode), CONCEPTS.ChemSheet$zx), LINKS.entries$JUUU), CONCEPTS.EquationEntry$Nz);
+        Iterable<SNode> entries = SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getParent(myNode), CONCEPTS.ChemSheet$VW), LINKS.entries$Fzjl), CONCEPTS.EquationEntry$bY);
         return String.valueOf(Sequence.fromIterable(entries).indexOf(myNode) + 1) + ")";
       }
     }, myNode);
@@ -111,7 +111,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.samples.ChemMastery.editor.SheetEntryContent");
     DeleteSheetEntry.setCellActions(editorCell, myNode, getEditorContext());
-    editorCell.setTransformationMenuLookup(new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.SheetEntry$F9));
+    editorCell.setTransformationMenuLookup(new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.SheetEntry$3$));
     editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
     return editorCell;
   }
@@ -147,7 +147,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     return editorCell;
   }
   private boolean nodeCondition_ekbrl8_a3b2a() {
-    return SNodeOperations.isInstanceOf(myNode, CONCEPTS.EquationEntry$Nz) && !(SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(myNode), CONCEPTS.DocumentationEntry$Ox));
+    return SNodeOperations.isInstanceOf(myNode, CONCEPTS.EquationEntry$bY) && !(SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(myNode), CONCEPTS.DocumentationEntry$cW));
   }
   private EditorCell createCollection_4() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Vertical());
@@ -219,17 +219,17 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ChemSheet$zx = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2130L, "jetbrains.mps.samples.ChemMastery.structure.ChemSheet");
-    /*package*/ static final SConcept EquationEntry$Nz = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24e0L, "jetbrains.mps.samples.ChemMastery.structure.EquationEntry");
-    /*package*/ static final SConcept SheetEntry$F9 = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24daL, "jetbrains.mps.samples.ChemMastery.structure.SheetEntry");
-    /*package*/ static final SConcept DocumentationEntry$Ox = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24e2L, "jetbrains.mps.samples.ChemMastery.structure.DocumentationEntry");
+    /*package*/ static final SConcept ChemSheet$VW = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2130L, "jetbrains.mps.samples.ChemMastery.structure.ChemSheet");
+    /*package*/ static final SConcept EquationEntry$bY = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24e0L, "jetbrains.mps.samples.ChemMastery.structure.EquationEntry");
+    /*package*/ static final SConcept SheetEntry$3$ = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24daL, "jetbrains.mps.samples.ChemMastery.structure.SheetEntry");
+    /*package*/ static final SConcept DocumentationEntry$cW = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24e2L, "jetbrains.mps.samples.ChemMastery.structure.DocumentationEntry");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty showButtons$Fk_0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2130L, 0x5b2638e8bdbef0c0L, "showButtons");
+    /*package*/ static final SProperty showButtons$AWXr = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2130L, 0x5b2638e8bdbef0c0L, "showButtons");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink entries$JUUU = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2130L, 0x6ef7184fab9f24ddL, "entries");
+    /*package*/ static final SContainmentLink entries$Fzjl = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2130L, 0x6ef7184fab9f24ddL, "entries");
   }
 }

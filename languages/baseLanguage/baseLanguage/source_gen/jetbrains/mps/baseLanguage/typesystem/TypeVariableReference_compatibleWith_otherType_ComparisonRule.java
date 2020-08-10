@@ -18,7 +18,7 @@ public class TypeVariableReference_compatibleWith_otherType_ComparisonRule exten
   public TypeVariableReference_compatibleWith_otherType_ComparisonRule() {
   }
   public boolean areComparable(SNode node1, SNode node2, IsApplicable2Status status) {
-    SNode bound = SLinkOperations.getTarget(SLinkOperations.getTarget(node1, LINKS.typeVariableDeclaration$6t$W), LINKS.bound$vUbP);
+    SNode bound = SLinkOperations.getTarget(SLinkOperations.getTarget(node1, LINKS.typeVariableDeclaration$Lz1I), LINKS.bound$aZCB);
     if ((bound == null)) {
       return true;
     }
@@ -29,12 +29,12 @@ public class TypeVariableReference_compatibleWith_otherType_ComparisonRule exten
         {
           SNode matchingNode_p68yon_a2a = node2;
           if (matchingNode_p68yon_a2a != null) {
-            matches_p68yon_a2a = matchingNode_p68yon_a2a.getConcept().isSubConceptOf(CONCEPTS.TypeVariableReference$vZ);
+            matches_p68yon_a2a = matchingNode_p68yon_a2a.getConcept().isSubConceptOf(CONCEPTS.TypeVariableReference$WL);
           }
         }
         if (matches_p68yon_a2a) {
           {
-            SNode otherbound = SLinkOperations.getTarget(SLinkOperations.getTarget(matchedNode_p68yon_c0, LINKS.typeVariableDeclaration$6t$W), LINKS.bound$vUbP);
+            SNode otherbound = SLinkOperations.getTarget(SLinkOperations.getTarget(matchedNode_p68yon_c0, LINKS.typeVariableDeclaration$Lz1I), LINKS.bound$aZCB);
             if ((otherbound == null)) {
               return true;
             }
@@ -56,19 +56,19 @@ public class TypeVariableReference_compatibleWith_otherType_ComparisonRule exten
   }
 
   public SAbstractConcept getApplicableConcept1() {
-    return CONCEPTS.TypeVariableReference$vZ;
+    return CONCEPTS.TypeVariableReference$WL;
   }
   public SAbstractConcept getApplicableConcept2() {
-    return CONCEPTS.Type$IG;
+    return CONCEPTS.Type$bu;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink typeVariableDeclaration$6t$W = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
-    /*package*/ static final SContainmentLink bound$vUbP = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae375bda0L, "bound");
+    /*package*/ static final SReferenceLink typeVariableDeclaration$Lz1I = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink bound$aZCB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, 0x11ae375bda0L, "bound");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TypeVariableReference$vZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
-    /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept TypeVariableReference$WL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 }

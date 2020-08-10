@@ -14,17 +14,17 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public class TypedIdentifier_preserveName {
   public static class NodeFactory_315923949159711976 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.TypedDef$hM)) {
-        SPropertyOperations.assign(newNode, PROPS.name$lA7v, SPropertyOperations.getString(SNodeOperations.cast(sampleNode, CONCEPTS.TypedDef$hM), PROPS.name$lA7v));
+      if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.TypedDef$H3)) {
+        SPropertyOperations.assign(newNode, PROPS.name$MnvL, SPropertyOperations.getString(SNodeOperations.cast(sampleNode, CONCEPTS.TypedDef$H3), PROPS.name$MnvL));
       }
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept TypedDef$hM = MetaAdapterFactory.getInterfaceConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x653030359368062cL, "jetbrains.mps.lang.context.defs.structure.TypedDef");
+    /*package*/ static final SInterfaceConcept TypedDef$H3 = MetaAdapterFactory.getInterfaceConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x653030359368062cL, "jetbrains.mps.lang.context.defs.structure.TypedDef");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

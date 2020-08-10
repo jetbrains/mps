@@ -20,47 +20,47 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public class UnwrapStatementsUtil {
 
   public static SNode unwrapElse(final SNode ifStatement) {
-    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ifStatement, LINKS.ifFalseStatement$InyY), CONCEPTS.BlockStatement$1i))) {
-      SNode block = SNodeFactoryOperations.createNewNode(CONCEPTS.BlockStatement$1i, null);
-      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(block, LINKS.statements$J0D0), LINKS.statement$pYcS)).addElement(SLinkOperations.getTarget(ifStatement, LINKS.ifFalseStatement$InyY));
-      SLinkOperations.setTarget(ifStatement, LINKS.ifFalseStatement$InyY, block);
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ifStatement, LINKS.ifFalseStatement$psZK), CONCEPTS.BlockStatement$u4))) {
+      SNode block = SNodeFactoryOperations.createNewNode(CONCEPTS.BlockStatement$u4, null);
+      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(block, LINKS.statements$q65M), LINKS.statement$53DE)).addElement(SLinkOperations.getTarget(ifStatement, LINKS.ifFalseStatement$psZK));
+      SLinkOperations.setTarget(ifStatement, LINKS.ifFalseStatement$psZK, block);
     }
-    assert SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ifStatement, LINKS.ifFalseStatement$InyY), CONCEPTS.BlockStatement$1i);
+    assert SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ifStatement, LINKS.ifFalseStatement$psZK), CONCEPTS.BlockStatement$u4);
 
-    Iterable<SNode> commentedNodes = CommentUtil.uncommentAll(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(ifStatement, LINKS.ifFalseStatement$InyY), CONCEPTS.BlockStatement$1i), LINKS.statements$J0D0));
+    Iterable<SNode> commentedNodes = CommentUtil.uncommentAll(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(ifStatement, LINKS.ifFalseStatement$psZK), CONCEPTS.BlockStatement$u4), LINKS.statements$q65M));
     SNodeOperations.insertNextSiblingChild(ifStatement, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement")));
 
-    List<SNode> statements = ListSequence.fromListWithValues(new ArrayList<SNode>(), SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(ifStatement, LINKS.ifFalseStatement$InyY), CONCEPTS.BlockStatement$1i), LINKS.statements$J0D0), LINKS.statement$pYcS));
+    List<SNode> statements = ListSequence.fromListWithValues(new ArrayList<SNode>(), SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(ifStatement, LINKS.ifFalseStatement$psZK), CONCEPTS.BlockStatement$u4), LINKS.statements$q65M), LINKS.statement$53DE));
     ListSequence.fromList(statements).reversedList().visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         SNodeOperations.insertNextSiblingChild(ifStatement, it);
       }
     });
-    SNodeOperations.deleteNode(SLinkOperations.getTarget(ifStatement, LINKS.ifFalseStatement$InyY));
+    SNodeOperations.deleteNode(SLinkOperations.getTarget(ifStatement, LINKS.ifFalseStatement$psZK));
     CommentUtil.commentOutAll(commentedNodes);
     return (ListSequence.fromList(statements).last() != null ? ListSequence.fromList(statements).last() : (SNodeOperations.getNextSibling(ifStatement) != null ? SNodeOperations.getNextSibling(ifStatement) : ifStatement));
   }
 
   public static void unwrapIContainsStatementList(SNode oldContainer) {
-    if (!(SNodeOperations.isInstanceOf(oldContainer, CONCEPTS.Statement$ok))) {
+    if (!(SNodeOperations.isInstanceOf(oldContainer, CONCEPTS.Statement$P6))) {
       throw new IllegalArgumentException("The supplied statement container " + oldContainer + " is not a Statement.");
     }
-    unwrapStatementListInContainer(SNodeOperations.cast(oldContainer, CONCEPTS.Statement$ok), IContainsStatementList__BehaviorDescriptor.getStatementList_idi0zv5tb.invoke(oldContainer));
+    unwrapStatementListInContainer(SNodeOperations.cast(oldContainer, CONCEPTS.Statement$P6), IContainsStatementList__BehaviorDescriptor.getStatementList_idi0zv5tb.invoke(oldContainer));
   }
 
   public static void unwrapBlockStatement(SNode oldContainer) {
-    unwrapStatementListInContainer(oldContainer, SLinkOperations.getTarget(oldContainer, LINKS.statements$J0D0));
+    unwrapStatementListInContainer(oldContainer, SLinkOperations.getTarget(oldContainer, LINKS.statements$q65M));
   }
 
   private static void unwrapStatementListInContainer(final SNode toDelete, SNode oldContainer) {
-    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(toDelete), CONCEPTS.StatementList$TN))) {
-      SNode newBlock = SNodeOperations.replaceWithAnother(toDelete, SNodeFactoryOperations.createNewNode(CONCEPTS.BlockStatement$1i, null));
-      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(newBlock, LINKS.statements$J0D0), LINKS.statement$pYcS)).addElement(toDelete);
+    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(toDelete), CONCEPTS.StatementList$m_))) {
+      SNode newBlock = SNodeOperations.replaceWithAnother(toDelete, SNodeFactoryOperations.createNewNode(CONCEPTS.BlockStatement$u4, null));
+      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(newBlock, LINKS.statements$q65M), LINKS.statement$53DE)).addElement(toDelete);
     }
-    assert SNodeOperations.isInstanceOf(SNodeOperations.getParent(toDelete), CONCEPTS.StatementList$TN);
+    assert SNodeOperations.isInstanceOf(SNodeOperations.getParent(toDelete), CONCEPTS.StatementList$m_);
 
     Iterable<SNode> commentedNodes = CommentUtil.uncommentAll(oldContainer);
-    List<SNode> statements = SLinkOperations.getChildren(oldContainer, LINKS.statement$pYcS);
+    List<SNode> statements = SLinkOperations.getChildren(oldContainer, LINKS.statement$53DE);
     ListSequence.fromList(statements).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         SNodeOperations.insertPrevSiblingChild(toDelete, it);
@@ -71,14 +71,14 @@ public class UnwrapStatementsUtil {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BlockStatement$1i = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement");
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
-    /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
+    /*package*/ static final SConcept BlockStatement$u4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statements$J0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink ifFalseStatement$InyY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement");
+    /*package*/ static final SContainmentLink statements$q65M = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink ifFalseStatement$psZK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement");
   }
 }

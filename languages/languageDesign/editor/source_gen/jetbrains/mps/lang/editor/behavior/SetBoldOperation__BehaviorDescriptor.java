@@ -37,7 +37,7 @@ public final class SetBoldOperation__BehaviorDescriptor extends BaseBHDescriptor
     return "setBold";
   }
   /*package*/ static List<SNode> getOperationArgumentType_id5GZRL5t2d36(@NotNull SAbstractConcept __thisConcept__) {
-    List<SNode> result = AbstractStyledTextOperation__BehaviorDescriptor.getOperationArgumentType_id5GZRL5t2d36.invokeSuper(__thisConcept__, CONCEPTS.SetBoldOperation$Mu);
+    List<SNode> result = AbstractStyledTextOperation__BehaviorDescriptor.getOperationArgumentType_id5GZRL5t2d36.invokeSuper(__thisConcept__, CONCEPTS.SetBoldOperation$Y5);
     ListSequence.fromList(result).addElement(_quotation_createNode_s26y4o_a0a1a1());
     return result;
   }
@@ -97,6 +97,6 @@ public final class SetBoldOperation__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SetBoldOperation$Mu = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e34c38c0b28cacL, "jetbrains.mps.lang.editor.structure.SetBoldOperation");
+    /*package*/ static final SConcept SetBoldOperation$Y5 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3e34c38c0b28cacL, "jetbrains.mps.lang.editor.structure.SetBoldOperation");
   }
 }

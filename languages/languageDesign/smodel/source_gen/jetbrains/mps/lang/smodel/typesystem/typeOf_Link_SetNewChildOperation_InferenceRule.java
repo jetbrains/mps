@@ -23,7 +23,7 @@ public class typeOf_Link_SetNewChildOperation_InferenceRule extends AbstractInfe
   public void applyRule(final SNode op, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     final SNode Concept_typevar_1206099875685 = typeCheckingContext.createNewRuntimeTypesVariable();
     RulesUtil.equate_inputNodeConcept(typeCheckingContext, op, typeCheckingContext.getRepresentative(Concept_typevar_1206099875685));
-    SNode parameterConcept = SLinkOperations.getTarget(op, LINKS.concept$coHg);
+    SNode parameterConcept = SLinkOperations.getTarget(op, LINKS.concept$KLIK);
     if (parameterConcept == null) {
       {
         SNode _nodeToCheck_1029348928467 = op;
@@ -46,7 +46,7 @@ public class typeOf_Link_SetNewChildOperation_InferenceRule extends AbstractInfe
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Link_SetNewChildOperation$I5;
+    return CONCEPTS.Link_SetNewChildOperation$J_;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -77,10 +77,10 @@ public class typeOf_Link_SetNewChildOperation_InferenceRule extends AbstractInfe
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$coHg = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x109233dbca1L, 0x109662671bcL, "concept");
+    /*package*/ static final SReferenceLink concept$KLIK = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x109233dbca1L, 0x109662671bcL, "concept");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Link_SetNewChildOperation$I5 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x109233dbca1L, "jetbrains.mps.lang.smodel.structure.Link_SetNewChildOperation");
+    /*package*/ static final SConcept Link_SetNewChildOperation$J_ = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x109233dbca1L, "jetbrains.mps.lang.smodel.structure.Link_SetNewChildOperation");
   }
 }

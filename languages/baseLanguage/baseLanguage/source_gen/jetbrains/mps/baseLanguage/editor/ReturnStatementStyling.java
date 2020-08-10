@@ -34,7 +34,7 @@ public class ReturnStatementStyling implements EditorMenuItemCustomizer {
   private static class ReturnStatementStylingSpecific implements EditorMenuItemCustomizer {
 
     public boolean matches(EditorMenuItemCustomizationContext context) {
-      return new EditorMenuItemCreatingConceptContextMatcher(CONCEPTS.ReturnStatement$SF).matchesContext(context) && getCompletionItemInformation(context) != null;
+      return new EditorMenuItemCreatingConceptContextMatcher(CONCEPTS.ReturnStatement$lt).matchesContext(context) && getCompletionItemInformation(context) != null;
     }
 
 
@@ -56,7 +56,7 @@ public class ReturnStatementStyling implements EditorMenuItemCustomizer {
       customize_(getParentNode(context), getChild(context), getLink(context), style, getCompletionItemInformation(context));
     }
     private void customize_(SNode parentNode, SNode currentChild, SContainmentLink containmentLink, EditorMenuItemStyle style, CompletionItemInformation itemInformation) {
-      if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.StatementList$TN) && (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(parentNode, CONCEPTS.StatementList$TN), LINKS.statement$pYcS)).isEmpty() || Objects.equals(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(parentNode, CONCEPTS.StatementList$TN), LINKS.statement$pYcS)).last(), currentChild))) {
+      if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.StatementList$m_) && (ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(parentNode, CONCEPTS.StatementList$m_), LINKS.statement$53DE)).isEmpty() || Objects.equals(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(parentNode, CONCEPTS.StatementList$m_), LINKS.statement$53DE)).last(), currentChild))) {
         style.setPriority(2.0);
       }
       style.setBold();
@@ -67,11 +67,11 @@ public class ReturnStatementStyling implements EditorMenuItemCustomizer {
 
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ReturnStatement$SF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement");
-    /*package*/ static final SConcept StatementList$TN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
+    /*package*/ static final SConcept ReturnStatement$lt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7feL, "jetbrains.mps.baseLanguage.structure.ReturnStatement");
+    /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

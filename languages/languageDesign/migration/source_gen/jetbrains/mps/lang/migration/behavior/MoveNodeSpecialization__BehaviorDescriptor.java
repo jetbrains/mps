@@ -38,13 +38,13 @@ public final class MoveNodeSpecialization__BehaviorDescriptor extends BaseBHDesc
   }
 
   /*package*/ static SNode getFrom_id1NHZk5hj1Zl(@NotNull SNode __thisNode__, SRepository repository) {
-    return check_cflqrt_a0a0(SLinkOperations.getTarget(MoveNodeSpecialization__BehaviorDescriptor.getMyMoveNodeItem_id4yRsQKnq58F.invoke(__thisNode__), LINKS.fromNode$dXIt), repository);
+    return check_cflqrt_a0a0(SLinkOperations.getTarget(MoveNodeSpecialization__BehaviorDescriptor.getMyMoveNodeItem_id4yRsQKnq58F.invoke(__thisNode__), LINKS.fromNode$UG1d), repository);
   }
   /*package*/ static SNode getTo_id1NHZk5hj1ls(@NotNull SNode __thisNode__, SRepository repository) {
-    return check_cflqrt_a0a1(SLinkOperations.getTarget(MoveNodeSpecialization__BehaviorDescriptor.getMyMoveNodeItem_id4yRsQKnq58F.invoke(__thisNode__), LINKS.toNode$dYcv), repository);
+    return check_cflqrt_a0a1(SLinkOperations.getTarget(MoveNodeSpecialization__BehaviorDescriptor.getMyMoveNodeItem_id4yRsQKnq58F.invoke(__thisNode__), LINKS.toNode$UGvf), repository);
   }
   /*package*/ static SNode getMyMoveNodeItem_id4yRsQKnq58F(@NotNull SNode __thisNode__) {
-    return SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.MoveNodeMigrationPart$gB);
+    return SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.MoveNodeMigrationPart$zn);
   }
   /*package*/ static boolean shouldKeepOldNode_id1NHZk5hi$oq(@NotNull SNode __thisNode__) {
     return false;
@@ -120,11 +120,11 @@ public final class MoveNodeSpecialization__BehaviorDescriptor extends BaseBHDesc
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink fromNode$dXIt = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, 0x67236d4a58343d15L, "fromNode");
-    /*package*/ static final SContainmentLink toNode$dYcv = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, 0x67236d4a58343d17L, "toNode");
+    /*package*/ static final SContainmentLink fromNode$UG1d = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, 0x67236d4a58343d15L, "fromNode");
+    /*package*/ static final SContainmentLink toNode$UGvf = MetaAdapterFactory.getContainmentLink(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, 0x67236d4a58343d17L, "toNode");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MoveNodeMigrationPart$gB = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, "jetbrains.mps.lang.migration.structure.MoveNodeMigrationPart");
+    /*package*/ static final SConcept MoveNodeMigrationPart$zn = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x67236d4a5830221eL, "jetbrains.mps.lang.migration.structure.MoveNodeMigrationPart");
   }
 }

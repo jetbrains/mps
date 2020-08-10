@@ -79,38 +79,38 @@ public final class VisibleModules {
         continue;
       }
       seen.add(projectRef);
-      for (SNode dep : SLinkOperations.getChildren(project, LINKS.dependencies$fxFr)) {
-        SNode projectDependency = SNodeOperations.as(dep, CONCEPTS.BuildProjectDependency$Ug);
+      for (SNode dep : SLinkOperations.getChildren(project, LINKS.dependencies$redY)) {
+        SNode projectDependency = SNodeOperations.as(dep, CONCEPTS.BuildProjectDependency$sN);
         if (projectDependency == null) {
           continue;
         }
 
-        SNode depproj = SLinkOperations.getTarget(projectDependency, LINKS.script$UXIZ);
+        SNode depproj = SLinkOperations.getTarget(projectDependency, LINKS.script$6Ehy);
         if ((depproj == null)) {
-          SReference ref = SNodeOperations.getReference(projectDependency, LINKS.script$UXIZ);
+          SReference ref = SNodeOperations.getReference(projectDependency, LINKS.script$6Ehy);
           report("Cannot find the build project dependency " + SLinkOperations.getResolveInfo(ref) + " in the model " + check_xuwpka_a0a1a4a4a4a41(ref.getTargetSModelReference()), projectDependency);
         }
         if (depproj != null && !(seen.contains(depproj.getNodeId()))) {
           QueueSequence.fromQueue(queue).addLastElement(depproj);
         }
       }
-      for (SNode newModule : ListSequence.fromList(SNodeOperations.getNodeDescendants(project, CONCEPTS.BuildMps_AbstractModule$fB, false, new SAbstractConcept[]{}))) {
+      for (SNode newModule : ListSequence.fromList(SNodeOperations.getNodeDescendants(project, CONCEPTS.BuildMps_AbstractModule$FZ, false, new SAbstractConcept[]{}))) {
         // check duplicated id 
-        SNode existing = myId2Module.get(SPropertyOperations.getString(newModule, PROPS.uuid$UrzD));
+        SNode existing = myId2Module.get(SPropertyOperations.getString(newModule, PROPS.uuid$pC01));
         if (existing != null) {
           String msg = "There are two modules visible from the project [%s] with the id '%s'. The first module is '%s'[%s] from the model %s, the second module is '%s'[%s] from the model %s";
-          report(String.format(msg, SPropertyOperations.getString(myProject, PROPS.name$lA7v), SPropertyOperations.getString(newModule, PROPS.uuid$UrzD), SPropertyOperations.getString(existing, PROPS.name$lA7v), SPropertyOperations.getString(SNodeOperations.getNodeAncestor(existing, CONCEPTS.BuildProject$BF, false, false), PROPS.name$lA7v), SNodeOperations.getModel(existing), SPropertyOperations.getString(newModule, PROPS.name$lA7v), SPropertyOperations.getString(project, PROPS.name$lA7v), SNodeOperations.getModel(newModule)), existing);
+          report(String.format(msg, SPropertyOperations.getString(myProject, PROPS.name$MnvL), SPropertyOperations.getString(newModule, PROPS.uuid$pC01), SPropertyOperations.getString(existing, PROPS.name$MnvL), SPropertyOperations.getString(SNodeOperations.getNodeAncestor(existing, CONCEPTS.BuildProject$ae, false, false), PROPS.name$MnvL), SNodeOperations.getModel(existing), SPropertyOperations.getString(newModule, PROPS.name$MnvL), SPropertyOperations.getString(project, PROPS.name$MnvL), SNodeOperations.getModel(newModule)), existing);
         } else {
-          myId2Module.put(SPropertyOperations.getString(newModule, PROPS.uuid$UrzD), newModule);
+          myId2Module.put(SPropertyOperations.getString(newModule, PROPS.uuid$pC01), newModule);
         }
         // check duplicated name 
         // FIXME given we use only UUID of module identity to resolve modules, myName2Module is of no use for us. Besides, it forces unique module names, something we don't really care about. Why not to drop it altogether? 
-        existing = myName2Module.get(SPropertyOperations.getString(newModule, PROPS.name$lA7v));
+        existing = myName2Module.get(SPropertyOperations.getString(newModule, PROPS.name$MnvL));
         if (existing != null) {
           String msg = "There are two modules visible from the project [%s] with the same name '%s'. The first module is from project [%s] from the model %s, the second module is from [%s] from the model %s";
-          report(String.format(msg, SPropertyOperations.getString(myProject, PROPS.name$lA7v), SPropertyOperations.getString(newModule, PROPS.name$lA7v), SPropertyOperations.getString(SNodeOperations.getNodeAncestor(existing, CONCEPTS.BuildProject$BF, false, false), PROPS.name$lA7v), SNodeOperations.getModel(existing), SPropertyOperations.getString(project, PROPS.name$lA7v), SNodeOperations.getModel(newModule)), existing);
+          report(String.format(msg, SPropertyOperations.getString(myProject, PROPS.name$MnvL), SPropertyOperations.getString(newModule, PROPS.name$MnvL), SPropertyOperations.getString(SNodeOperations.getNodeAncestor(existing, CONCEPTS.BuildProject$ae, false, false), PROPS.name$MnvL), SNodeOperations.getModel(existing), SPropertyOperations.getString(project, PROPS.name$MnvL), SNodeOperations.getModel(newModule)), existing);
         } else {
-          myName2Module.put(SPropertyOperations.getString(newModule, PROPS.name$lA7v), newModule);
+          myName2Module.put(SPropertyOperations.getString(newModule, PROPS.name$MnvL), newModule);
         }
       }
     }
@@ -125,7 +125,7 @@ public final class VisibleModules {
     // solutions and generators, so that I can find by SLanguageId object 
     // i.e. take SLanguageId from SModuleReference from module descriptor, and use it as a map key instead of string 
     ModuleId langModuleId = ModuleId.regular(MetaIdHelper.getLanguage(language).getIdValue());
-    return SNodeOperations.as(resolveById(langModuleId.toString()), CONCEPTS.BuildMps_Language$re);
+    return SNodeOperations.as(resolveById(langModuleId.toString()), CONCEPTS.BuildMps_Language$RA);
   }
 
   public SNode resolve(SModuleReference moduleRef) {
@@ -133,11 +133,11 @@ public final class VisibleModules {
   }
 
   public SNode resolveLanguage(SModuleReference moduleRef) {
-    return SNodeOperations.as(resolve(moduleRef), CONCEPTS.BuildMps_Language$re);
+    return SNodeOperations.as(resolve(moduleRef), CONCEPTS.BuildMps_Language$RA);
   }
 
   public SNode resolveGenerator(SModuleReference moduleRef) {
-    return SNodeOperations.as(resolve(moduleRef), CONCEPTS.BuildMps_Generator$ru);
+    return SNodeOperations.as(resolve(moduleRef), CONCEPTS.BuildMps_Generator$RQ);
   }
 
   /**
@@ -171,20 +171,20 @@ public final class VisibleModules {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink dependencies$fxFr = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies");
-    /*package*/ static final SReferenceLink script$UXIZ = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x4df58c6f18f84a24L, "script");
+    /*package*/ static final SContainmentLink dependencies$redY = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x4df58c6f18f84a25L, "dependencies");
+    /*package*/ static final SReferenceLink script$6Ehy = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, 0x4df58c6f18f84a24L, "script");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildProjectDependency$Ug = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, "jetbrains.mps.build.structure.BuildProjectDependency");
-    /*package*/ static final SConcept BuildProject$BF = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
-    /*package*/ static final SConcept BuildMps_AbstractModule$fB = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, "jetbrains.mps.build.mps.structure.BuildMps_AbstractModule");
-    /*package*/ static final SConcept BuildMps_Language$re = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, "jetbrains.mps.build.mps.structure.BuildMps_Language");
-    /*package*/ static final SConcept BuildMps_Generator$ru = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, "jetbrains.mps.build.mps.structure.BuildMps_Generator");
+    /*package*/ static final SConcept BuildProjectDependency$sN = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd908c220L, "jetbrains.mps.build.structure.BuildProjectDependency");
+    /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+    /*package*/ static final SConcept BuildMps_AbstractModule$FZ = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, "jetbrains.mps.build.mps.structure.BuildMps_AbstractModule");
+    /*package*/ static final SConcept BuildMps_Language$RA = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, "jetbrains.mps.build.mps.structure.BuildMps_Language");
+    /*package*/ static final SConcept BuildMps_Generator$RQ = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, "jetbrains.mps.build.mps.structure.BuildMps_Generator");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty uuid$UrzD = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid");
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty uuid$pC01 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

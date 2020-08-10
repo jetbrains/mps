@@ -37,8 +37,8 @@
       <node id="1301388602724841120" at="39,63,40,30" concept="6" />
       <node id="1301388602724841120" at="40,30,41,228" concept="2" />
       <node id="1301388602724841120" at="41,228,42,24" concept="7" />
-      <node id="1301388602724839210" at="46,0,47,0" concept="9" trace="targetNode$imkK" />
-      <node id="1301388602724839210" at="50,0,51,0" concept="9" trace="ConnectionEndBLQuery$Ri" />
+      <node id="1301388602724839210" at="46,0,47,0" concept="9" trace="targetNode$Tvcz" />
+      <node id="1301388602724839210" at="50,0,51,0" concept="9" trace="ConnectionEndBLQuery$J5" />
       <node id="1301388602724839210" at="20,0,22,0" concept="1" trace="typeof_ConnectionEndBLQuery_InferenceRule#()V" />
       <node id="1301388602724839210" at="29,0,32,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1301388602724839210" at="32,0,35,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -102,8 +102,8 @@
       <node id="1301388602725019139" at="49,244,50,228" concept="2" />
       <node id="1301388602725019139" at="50,228,51,168" concept="2" />
       <node id="1301388602725019139" at="51,168,52,24" concept="7" />
-      <node id="1301388602725017214" at="56,0,57,0" concept="9" trace="query$BPGV" />
-      <node id="1301388602725017214" at="60,0,61,0" concept="9" trace="DiagramElementBLQuery$LG" />
+      <node id="1301388602725017214" at="56,0,57,0" concept="9" trace="query$eY$I" />
+      <node id="1301388602725017214" at="60,0,61,0" concept="9" trace="DiagramElementBLQuery$Dv" />
       <node id="1301388602725017214" at="20,0,22,0" concept="1" trace="typeof_DiagramElementBLQuery_InferenceRule#()V" />
       <node id="1301388602725017214" at="36,0,39,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1301388602725017214" at="39,0,42,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -156,8 +156,8 @@
       <node id="1491555030356781789" at="30,50,31,46" concept="7" />
       <node id="1491555030356781789" at="33,68,34,102" concept="7" />
       <node id="1491555030356781789" at="36,30,37,17" concept="7" />
-      <node id="1491555030356781789" at="41,0,42,0" concept="9" trace="name$lA7v" />
-      <node id="1491555030356781789" at="45,0,46,0" concept="9" trace="FigureParameterMapping$U0" />
+      <node id="1491555030356781789" at="41,0,42,0" concept="9" trace="name$MnvL" />
+      <node id="1491555030356781789" at="45,0,46,0" concept="9" trace="FigureParameterMapping$LN" />
       <node id="1491555030356781789" at="20,0,22,0" concept="1" trace="CheckAbstractFigureParameter_exists_NonTypesystemRule#()V" />
       <node id="1491555030356781789" at="30,0,33,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="1491555030356781789" at="33,0,36,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -221,8 +221,8 @@
       <node id="3229274890674900848" at="44,30,45,228" concept="2" />
       <node id="3229274890674900848" at="45,228,46,196" concept="2" />
       <node id="3229274890674900848" at="46,196,47,24" concept="7" />
-      <node id="3229274890674900516" at="51,0,52,0" concept="9" trace="BaseEditorComponent$Sy" />
-      <node id="3229274890674900516" at="52,0,53,0" concept="9" trace="ThisEditorNodeExpression$F0" />
+      <node id="3229274890674900516" at="51,0,52,0" concept="9" trace="BaseEditorComponent$49" />
+      <node id="3229274890674900516" at="52,0,53,0" concept="9" trace="ThisEditorNodeExpression$yN" />
       <node id="3229274890674900516" at="21,0,23,0" concept="1" trace="typeof_EditorNodeExpression_InferenceRule#()V" />
       <node id="3229274890674900516" at="33,0,36,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="3229274890674900516" at="36,0,39,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -295,9 +295,9 @@
       <node id="342110547582239779" at="60,30,61,232" concept="2" />
       <node id="342110547582239779" at="61,232,62,203" concept="2" />
       <node id="342110547582239779" at="62,203,63,24" concept="7" />
-      <node id="342110547582165843" at="67,0,68,0" concept="9" trace="link$GF0u" />
-      <node id="342110547582165843" at="68,0,69,0" concept="9" trace="target$TWaS" />
-      <node id="342110547582165843" at="72,0,73,0" concept="9" trace="LinkArgument$sw" />
+      <node id="342110547582165843" at="67,0,68,0" concept="9" trace="link$jNSh" />
+      <node id="342110547582165843" at="68,0,69,0" concept="9" trace="target$m40F" />
+      <node id="342110547582165843" at="72,0,73,0" concept="9" trace="LinkArgument$kj" />
       <node id="342110547582165843" at="22,0,24,0" concept="1" trace="typeof_LinkArgument_InferenceRule#()V" />
       <node id="342110547582165843" at="42,0,45,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="342110547582165843" at="45,0,48,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -370,17 +370,17 @@
     <file name="typeof_BLQueryArgument_InferenceRule.java">
       <node id="342110547582275916" at="22,7,23,59" concept="6" />
       <node id="342110547582275916" at="23,59,24,211" concept="6" />
-      <node id="342110547582275916" at="24,211,25,456" concept="2" />
+      <node id="342110547582275916" at="24,211,25,455" concept="2" />
       <node id="342110547582273010" at="29,50,30,39" concept="7" />
       <node id="342110547582273010" at="32,68,33,102" concept="7" />
       <node id="342110547582273010" at="35,30,36,17" concept="7" />
-      <node id="342110547582273010" at="40,0,41,0" concept="9" trace="query$p3Mw" />
-      <node id="342110547582273010" at="44,0,45,0" concept="9" trace="BLQueryArgument$7_" />
+      <node id="342110547582273010" at="40,0,41,0" concept="9" trace="query$cEj" />
+      <node id="342110547582273010" at="44,0,45,0" concept="9" trace="BLQueryArgument$Zo" />
       <node id="342110547582273010" at="18,0,20,0" concept="1" trace="typeof_BLQueryArgument_InferenceRule#()V" />
       <node id="342110547582273010" at="29,0,32,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="342110547582273010" at="32,0,35,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="342110547582273010" at="35,0,38,0" concept="5" trace="overrides#()Z" />
-      <node id="342110547582275916" at="21,79,26,7" concept="0" />
+      <node id="342110547582275916" at="21,78,26,7" concept="0" />
       <node id="342110547582273093" at="20,128,27,5" concept="4" />
       <node id="342110547582273010" at="20,0,29,0" concept="5" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="342110547582273010" at="18,49,18,49" />
@@ -388,7 +388,7 @@
       <scope id="342110547582273010" at="32,68,33,102" />
       <scope id="342110547582273010" at="35,30,36,17" />
       <scope id="342110547582273010" at="18,0,20,0" />
-      <scope id="342110547582275916" at="22,7,25,456">
+      <scope id="342110547582275916" at="22,7,25,455">
         <var name="_info_12389875345" id="342110547582275916" />
         <var name="_nodeToCheck_1029348928467" id="342110547582275916" />
       </scope>
@@ -397,7 +397,7 @@
         <var name="argument" id="342110547582273010" />
       </scope>
       <scope id="342110547582273010" at="35,0,38,0" />
-      <scope id="342110547582273096" at="21,79,26,7" />
+      <scope id="342110547582273096" at="21,78,26,7" />
       <scope id="342110547582273011" at="20,128,27,5" />
       <scope id="342110547582273010" at="20,0,29,0">
         <var name="blQueryArgument" id="342110547582273010" />
@@ -438,9 +438,9 @@
       <node id="342110547582643781" at="57,30,58,234" concept="2" />
       <node id="342110547582643781" at="58,234,59,437" concept="2" />
       <node id="342110547582643781" at="59,437,60,24" concept="7" />
-      <node id="342110547582633109" at="64,0,65,0" concept="9" trace="inputPort$xseF" />
-      <node id="342110547582633109" at="65,0,66,0" concept="9" trace="outputPort$xU1E" />
-      <node id="342110547582633109" at="69,0,70,0" concept="9" trace="CellModel_DiagramNode$Ry" />
+      <node id="342110547582633109" at="64,0,65,0" concept="9" trace="inputPort$8_6u" />
+      <node id="342110547582633109" at="65,0,66,0" concept="9" trace="outputPort$92Tt" />
+      <node id="342110547582633109" at="69,0,70,0" concept="9" trace="CellModel_DiagramNode$Jl" />
       <node id="342110547582633109" at="21,0,23,0" concept="1" trace="typeof_CellModel_DiagramNode_InferenceRule#()V" />
       <node id="342110547582633109" at="39,0,42,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="342110547582633109" at="42,0,45,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -517,11 +517,11 @@
       <node id="4088443785018266987" at="60,50,61,45" concept="7" />
       <node id="4088443785018266987" at="63,68,64,102" concept="7" />
       <node id="4088443785018266987" at="66,30,67,17" concept="7" />
-      <node id="4088443785018266987" at="71,0,72,0" concept="9" trace="figure$AKjl" />
-      <node id="4088443785018266987" at="72,0,73,0" concept="9" trace="parameters$GrWy" />
-      <node id="4088443785018266987" at="76,0,77,0" concept="9" trace="AbstractFigureReference$TJ" />
-      <node id="4088443785018266987" at="77,0,78,0" concept="9" trace="CellModel_DiagramNode$Ry" />
-      <node id="4088443785018266987" at="81,0,82,0" concept="9" trace="name$lA7v" />
+      <node id="4088443785018266987" at="71,0,72,0" concept="9" trace="figure$dTb8" />
+      <node id="4088443785018266987" at="72,0,73,0" concept="9" trace="parameters$j$Ol" />
+      <node id="4088443785018266987" at="76,0,77,0" concept="9" trace="AbstractFigureReference$Ly" />
+      <node id="4088443785018266987" at="77,0,78,0" concept="9" trace="CellModel_DiagramNode$Jl" />
+      <node id="4088443785018266987" at="81,0,82,0" concept="9" trace="name$MnvL" />
       <node id="4088443785018266987" at="29,0,31,0" concept="1" trace="check_CellModel_DiagramNode_NonTypesystemRule#()V" />
       <node id="4088443785018451844" at="48,12,50,7" concept="0" />
       <node id="6377978676692093724" at="31,117,34,5" concept="4" />
@@ -595,7 +595,7 @@
       <node id="6194248980637216119" at="26,50,27,31" concept="7" />
       <node id="6194248980637216119" at="29,68,30,102" concept="7" />
       <node id="6194248980637216119" at="32,30,33,17" concept="7" />
-      <node id="6194248980637216119" at="37,0,38,0" concept="9" trace="Palette$kE" />
+      <node id="6194248980637216119" at="37,0,38,0" concept="9" trace="Palette$ct" />
       <node id="6194248980637216119" at="18,0,20,0" concept="1" trace="check_Palette_NonTypesystemRule#()V" />
       <node id="6194248980637216119" at="26,0,29,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="6194248980637216119" at="29,0,32,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -645,9 +645,9 @@
       <node id="7200199917722151577" at="42,50,43,41" concept="7" />
       <node id="7200199917722151577" at="45,68,46,102" concept="7" />
       <node id="7200199917722151577" at="48,30,49,17" concept="7" />
-      <node id="7200199917722151577" at="53,0,54,0" concept="9" trace="EditorCellModel$5c" />
-      <node id="7200199917722151577" at="54,0,55,0" concept="9" trace="Synchronizeable$94" />
-      <node id="7200199917722151577" at="55,0,56,0" concept="9" trace="CellModel_Diagram$zA" />
+      <node id="7200199917722151577" at="53,0,54,0" concept="9" trace="EditorCellModel$gN" />
+      <node id="7200199917722151577" at="54,0,55,0" concept="9" trace="Synchronizeable$kF" />
+      <node id="7200199917722151577" at="55,0,56,0" concept="9" trace="CellModel_Diagram$rp" />
       <node id="7200199917722151577" at="23,0,25,0" concept="1" trace="check_CellModel_Diagram_NonTypesystemRule#()V" />
       <node id="6663698541542215932" at="26,33,29,5" concept="11" />
       <node id="4052492221165305727" at="32,0,35,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -711,14 +711,14 @@
       <node id="8570854907291318065" at="42,50,43,47" concept="7" />
       <node id="8570854907291318065" at="45,68,46,102" concept="7" />
       <node id="8570854907291318065" at="48,30,49,17" concept="7" />
-      <node id="8570854907291318065" at="53,0,54,0" concept="9" trace="query$$MXx" />
-      <node id="8570854907291318065" at="54,0,55,0" concept="9" trace="operation$_mGS" />
-      <node id="8570854907291318065" at="55,0,56,0" concept="9" trace="link$iNEw" />
-      <node id="8570854907291318065" at="56,0,57,0" concept="9" trace="concept$$TiW" />
-      <node id="8570854907291318065" at="57,0,58,0" concept="9" trace="target$TWaS" />
-      <node id="8570854907291318065" at="61,0,62,0" concept="9" trace="DotExpression$6a" />
-      <node id="8570854907291318065" at="62,0,63,0" concept="9" trace="SLinkListAccess$nk" />
-      <node id="8570854907291318065" at="63,0,64,0" concept="9" trace="AbstractDiagramCreation$DH" />
+      <node id="8570854907291318065" at="53,0,54,0" concept="9" trace="query$bVPk" />
+      <node id="8570854907291318065" at="54,0,55,0" concept="9" trace="operation$gs9E" />
+      <node id="8570854907291318065" at="55,0,56,0" concept="9" trace="link$RcG0" />
+      <node id="8570854907291318065" at="56,0,57,0" concept="9" trace="concept$c2aJ" />
+      <node id="8570854907291318065" at="57,0,58,0" concept="9" trace="target$m40F" />
+      <node id="8570854907291318065" at="61,0,62,0" concept="9" trace="DotExpression$yW" />
+      <node id="8570854907291318065" at="62,0,63,0" concept="9" trace="SLinkListAccess$oO" />
+      <node id="8570854907291318065" at="63,0,64,0" concept="9" trace="AbstractDiagramCreation$xw" />
       <node id="8570854907291318065" at="24,0,26,0" concept="1" trace="check_AbstractDiagramCreation_NonTypesystemRule#()V" />
       <node id="8570854907291318065" at="42,0,45,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="8570854907291318065" at="45,0,48,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -793,8 +793,8 @@
       <node id="8570854907291434813" at="58,63,59,30" concept="6" />
       <node id="8570854907291434813" at="59,30,60,228" concept="2" />
       <node id="8570854907291434813" at="60,228,61,24" concept="7" />
-      <node id="8570854907291434599" at="65,0,66,0" concept="9" trace="AbstractDiagramCreation$DH" />
-      <node id="8570854907291434599" at="66,0,67,0" concept="9" trace="NodeFunctionParameter$7O" />
+      <node id="8570854907291434599" at="65,0,66,0" concept="9" trace="AbstractDiagramCreation$xw" />
+      <node id="8570854907291434599" at="66,0,67,0" concept="9" trace="NodeFunctionParameter$ZB" />
       <node id="8570854907291434599" at="22,0,24,0" concept="1" trace="typeof_NodeFunctionParameter_InferenceRule#()V" />
       <node id="8570854907291434599" at="41,0,44,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="8570854907291434599" at="44,0,47,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -870,7 +870,7 @@
       <node id="8570854907291434955" at="37,63,38,30" concept="6" />
       <node id="8570854907291434955" at="38,30,39,230" concept="2" />
       <node id="8570854907291434955" at="39,230,40,24" concept="7" />
-      <node id="8570854907291434912" at="44,0,45,0" concept="9" trace="XFunctionParameter$jV" />
+      <node id="8570854907291434912" at="44,0,45,0" concept="9" trace="XFunctionParameter$bI" />
       <node id="8570854907291434912" at="18,0,20,0" concept="1" trace="typeof_XFunctionParameter_InferenceRule#()V" />
       <node id="8570854907291434912" at="27,0,30,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="8570854907291434912" at="30,0,33,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -927,7 +927,7 @@
       <node id="8570854907291436658" at="37,63,38,30" concept="6" />
       <node id="8570854907291436658" at="38,30,39,230" concept="2" />
       <node id="8570854907291436658" at="39,230,40,24" concept="7" />
-      <node id="8570854907291436625" at="44,0,45,0" concept="9" trace="YFunctionParameter$4r" />
+      <node id="8570854907291436625" at="44,0,45,0" concept="9" trace="YFunctionParameter$We" />
       <node id="8570854907291436625" at="18,0,20,0" concept="1" trace="typeof_YFunctionParameter_InferenceRule#()V" />
       <node id="8570854907291436625" at="27,0,30,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="8570854907291436625" at="30,0,33,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -983,8 +983,8 @@
       <node id="9176911587996716194" at="35,50,36,46" concept="7" />
       <node id="9176911587996716194" at="38,68,39,102" concept="7" />
       <node id="9176911587996716194" at="41,30,42,17" concept="7" />
-      <node id="9176911587996716194" at="46,0,47,0" concept="9" trace="argument$IDWp" />
-      <node id="9176911587996716194" at="50,0,51,0" concept="9" trace="FigureParameterMapping$U0" />
+      <node id="9176911587996716194" at="46,0,47,0" concept="9" trace="argument$lMOc" />
+      <node id="9176911587996716194" at="50,0,51,0" concept="9" trace="FigureParameterMapping$LN" />
       <node id="9176911587996716194" at="19,0,21,0" concept="1" trace="typeof_FigureParameterMapping_InferenceRule#()V" />
       <node id="9176911587996716194" at="35,0,38,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="9176911587996716194" at="38,0,41,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -1039,9 +1039,9 @@
       <node id="9176911587997316141" at="28,50,29,40" concept="7" />
       <node id="9176911587997316141" at="31,68,32,102" concept="7" />
       <node id="9176911587997316141" at="34,30,35,17" concept="7" />
-      <node id="9176911587997316141" at="39,0,40,0" concept="9" trace="property$Ey9S" />
-      <node id="9176911587997316141" at="40,0,41,0" concept="9" trace="dataType$Dbgb" />
-      <node id="9176911587997316141" at="44,0,45,0" concept="9" trace="PropertyArgument$NK" />
+      <node id="9176911587997316141" at="39,0,40,0" concept="9" trace="property$hF1F" />
+      <node id="9176911587997316141" at="40,0,41,0" concept="9" trace="dataType$5j5Y" />
+      <node id="9176911587997316141" at="44,0,45,0" concept="9" trace="PropertyArgument$Fz" />
       <node id="9176911587997316141" at="19,0,21,0" concept="1" trace="typeof_PropertyArgument_InferenceRule#()V" />
       <node id="9176911587997316141" at="28,0,31,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="9176911587997316141" at="31,0,34,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -1093,7 +1093,7 @@
       <node id="939897302409170325" at="37,63,38,30" concept="6" />
       <node id="939897302409170325" at="38,30,39,228" concept="2" />
       <node id="939897302409170325" at="39,228,40,24" concept="7" />
-      <node id="939897302409170321" at="44,0,45,0" concept="9" trace="FromNodeFunctionParameter$_r" />
+      <node id="939897302409170321" at="44,0,45,0" concept="9" trace="FromNodeFunctionParameter$te" />
       <node id="939897302409170321" at="18,0,20,0" concept="1" trace="typeof_FromNodeFunctionParameter_InferenceRule#()V" />
       <node id="939897302409170321" at="27,0,30,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="939897302409170321" at="30,0,33,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -1150,7 +1150,7 @@
       <node id="939897302409170739" at="37,63,38,30" concept="6" />
       <node id="939897302409170739" at="38,30,39,228" concept="2" />
       <node id="939897302409170739" at="39,228,40,24" concept="7" />
-      <node id="939897302409170735" at="44,0,45,0" concept="9" trace="ToNodeFunctionParameter$M1" />
+      <node id="939897302409170735" at="44,0,45,0" concept="9" trace="ToNodeFunctionParameter$DO" />
       <node id="939897302409170735" at="18,0,20,0" concept="1" trace="typeof_ToNodeFunctionParameter_InferenceRule#()V" />
       <node id="939897302409170735" at="27,0,30,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="939897302409170735" at="30,0,33,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -1208,7 +1208,7 @@
       <node id="939897302409170875" at="39,30,40,234" concept="2" />
       <node id="939897302409170875" at="40,234,41,435" concept="2" />
       <node id="939897302409170875" at="41,435,42,24" concept="7" />
-      <node id="939897302409170871" at="46,0,47,0" concept="9" trace="FromIdFunctionParameter$Os" />
+      <node id="939897302409170871" at="46,0,47,0" concept="9" trace="FromIdFunctionParameter$Gf" />
       <node id="939897302409170871" at="19,0,21,0" concept="1" trace="typeof_FromIdFunctionParameter_InferenceRule#()V" />
       <node id="939897302409170871" at="28,0,31,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="939897302409170871" at="31,0,34,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -1266,7 +1266,7 @@
       <node id="939897302409441935" at="39,30,40,234" concept="2" />
       <node id="939897302409441935" at="40,234,41,435" concept="2" />
       <node id="939897302409441935" at="41,435,42,24" concept="7" />
-      <node id="939897302409171007" at="46,0,47,0" concept="9" trace="ToIdFunctionParameter$12" />
+      <node id="939897302409171007" at="46,0,47,0" concept="9" trace="ToIdFunctionParameter$SP" />
       <node id="939897302409171007" at="19,0,21,0" concept="1" trace="typeof_ToIdFunctionParameter_InferenceRule#()V" />
       <node id="939897302409171007" at="28,0,31,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="939897302409171007" at="31,0,34,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />

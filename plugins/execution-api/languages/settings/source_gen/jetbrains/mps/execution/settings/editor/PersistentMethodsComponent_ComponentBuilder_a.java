@@ -73,10 +73,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.methods$28t2;
+      return LINKS.methods$QN1R;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.PersistentConfigurationMethod$dz;
+      return CONCEPTS.PersistentConfigurationMethod$Mo;
     }
 
     private String getSeparatorText(SNode prevNode, SNode nextNode) {
@@ -89,7 +89,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(methodsListHandler_55zktd_a0.this.getNode(), LINKS.methods$28t2));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(methodsListHandler_55zktd_a0.this.getNode(), LINKS.methods$QN1R));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -143,10 +143,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink methods$28t2 = MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910020L, 0xd244b712f910023L, "methods");
+    /*package*/ static final SContainmentLink methods$QN1R = MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910020L, 0xd244b712f910023L, "methods");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PersistentConfigurationMethod$dz = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001bL, "jetbrains.mps.execution.settings.structure.PersistentConfigurationMethod");
+    /*package*/ static final SConcept PersistentConfigurationMethod$Mo = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001bL, "jetbrains.mps.execution.settings.structure.PersistentConfigurationMethod");
   }
 }

@@ -12,26 +12,26 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AbstractEquationStatement_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$xJ6I));
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$xJlJ));
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.errorString$VyQO) != null)) {
-      _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.errorString$VyQO));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$U_o$));
+    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$U_B_));
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.errorString$kp8E) != null)) {
+      _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.errorString$kp8E));
     }
-    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.nodeToCheck$MXlb) != null)) {
-      _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.nodeToCheck$MXlb));
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.nodeToCheck$bNB1) != null)) {
+      _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.nodeToCheck$bNB1));
     }
-    if (ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.helginsIntention$TFCJ)).isNotEmpty()) {
-      for (SNode intetntion : SLinkOperations.getChildren(_context.getNode(), LINKS.helginsIntention$TFCJ)) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.helginsIntention$ixU_)).isNotEmpty()) {
+      for (SNode intetntion : SLinkOperations.getChildren(_context.getNode(), LINKS.helginsIntention$ixU_)) {
         _context.getBuilder().build((SNode) intetntion);
       }
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$xJ6I = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x1117f3d1d35L, "leftExpression");
-    /*package*/ static final SContainmentLink rightExpression$xJlJ = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x1117f3d1d36L, "rightExpression");
-    /*package*/ static final SContainmentLink errorString$VyQO = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x112d82366d0L, "errorString");
-    /*package*/ static final SContainmentLink nodeToCheck$MXlb = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x1117f58cf99L, "nodeToCheck");
-    /*package*/ static final SContainmentLink helginsIntention$TFCJ = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x11b2b6fabb9L, "helginsIntention");
+    /*package*/ static final SContainmentLink leftExpression$U_o$ = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x1117f3d1d35L, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$U_B_ = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x1117f3d1d36L, "rightExpression");
+    /*package*/ static final SContainmentLink errorString$kp8E = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x112d82366d0L, "errorString");
+    /*package*/ static final SContainmentLink nodeToCheck$bNB1 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x1117f58cf99L, "nodeToCheck");
+    /*package*/ static final SContainmentLink helginsIntention$ixU_ = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1117f3c1ffaL, 0x11b2b6fabb9L, "helginsIntention");
   }
 }

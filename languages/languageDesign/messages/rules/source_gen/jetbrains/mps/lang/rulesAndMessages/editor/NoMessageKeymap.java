@@ -41,7 +41,7 @@ public class NoMessageKeymap extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.InlineMessageProvider$lb))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.InlineMessageProvider$bB))) {
         return false;
       }
       return true;
@@ -51,7 +51,7 @@ public class NoMessageKeymap extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SLinkOperations.setTarget(node, LINKS.messagesExpr$RPc3, SNodeFactoryOperations.createNewNode(CONCEPTS.CombinedMessageExpression$e_, null));
+      SLinkOperations.setTarget(node, LINKS.messagesExpr$Ys2v, SNodeFactoryOperations.createNewNode(CONCEPTS.CombinedMessageExpression$6z, null));
     }
     public String getKeyStroke() {
       return "  ";
@@ -59,11 +59,11 @@ public class NoMessageKeymap extends KeyMapImpl {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InlineMessageProvider$lb = MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce81L, "jetbrains.mps.lang.rulesAndMessages.structure.InlineMessageProvider");
-    /*package*/ static final SConcept CombinedMessageExpression$e_ = MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, "jetbrains.mps.lang.messages.structure.CombinedMessageExpression");
+    /*package*/ static final SConcept InlineMessageProvider$bB = MetaAdapterFactory.getConcept(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce81L, "jetbrains.mps.lang.rulesAndMessages.structure.InlineMessageProvider");
+    /*package*/ static final SConcept CombinedMessageExpression$6z = MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, "jetbrains.mps.lang.messages.structure.CombinedMessageExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink messagesExpr$RPc3 = MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce81L, 0x48f860fc0e362dc8L, "messagesExpr");
+    /*package*/ static final SContainmentLink messagesExpr$Ys2v = MetaAdapterFactory.getContainmentLink(0xb3551702269c4f05L, 0xba6158060cef4292L, 0x46263286dc0ce81L, 0x48f860fc0e362dc8L, "messagesExpr");
   }
 }

@@ -26,12 +26,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class BuildMps_IdeaPluginGroupCustomModule_Constraints extends BaseConstraintsDescriptor {
   public BuildMps_IdeaPluginGroupCustomModule_Constraints() {
-    super(CONCEPTS.BuildMps_IdeaPluginGroupCustomModule$l);
+    super(CONCEPTS.BuildMps_IdeaPluginGroupCustomModule$sH);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.target$y55P, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.target$1hyd, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -46,11 +46,11 @@ public class BuildMps_IdeaPluginGroupCustomModule_Constraints extends BaseConstr
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode group = (SNodeOperations.isInstanceOf(_context.getContextNode(), CONCEPTS.BuildMps_IdeaPluginGroup$9v) ? SNodeOperations.cast(_context.getContextNode(), CONCEPTS.BuildMps_IdeaPluginGroup$9v) : SNodeOperations.as(SNodeOperations.getParent(_context.getContextNode()), CONCEPTS.BuildMps_IdeaPluginGroup$9v));
+            SNode group = (SNodeOperations.isInstanceOf(_context.getContextNode(), CONCEPTS.BuildMps_IdeaPluginGroup$_R) ? SNodeOperations.cast(_context.getContextNode(), CONCEPTS.BuildMps_IdeaPluginGroup$_R) : SNodeOperations.as(SNodeOperations.getParent(_context.getContextNode()), CONCEPTS.BuildMps_IdeaPluginGroup$_R));
             if ((group == null)) {
               return new EmptyScope();
             }
-            return SimpleRoleScope.forNamedElements(SLinkOperations.getTarget(group, LINKS.group$V$Jw), LINKS.modules$g9q0);
+            return SimpleRoleScope.forNamedElements(SLinkOperations.getTarget(group, LINKS.group$qLbS), LINKS.modules$JlQo);
           }
         };
       }
@@ -62,13 +62,13 @@ public class BuildMps_IdeaPluginGroupCustomModule_Constraints extends BaseConstr
   private static final SNodePointer breakingNode_q09jue_a0a0a0a0a1a0a0a0c = new SNodePointer("r:76dda237-5120-4688-b749-201ab5c5059d(jetbrains.mps.build.mps.constraints)", "6836281137582840140");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildMps_IdeaPluginGroupCustomModule$l = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x37fdb3de482e2b27L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginGroupCustomModule");
-    /*package*/ static final SConcept BuildMps_IdeaPluginGroup$9v = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginGroup");
+    /*package*/ static final SConcept BuildMps_IdeaPluginGroupCustomModule$sH = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x37fdb3de482e2b27L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginGroupCustomModule");
+    /*package*/ static final SConcept BuildMps_IdeaPluginGroup$_R = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginGroup");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$y55P = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x37fdb3de482e2b27L, 0x37fdb3de482e2b28L, "target");
-    /*package*/ static final SReferenceLink group$V$Jw = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, 0x5b7be37b4deb1202L, "group");
-    /*package*/ static final SContainmentLink modules$g9q0 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, 0x14d3fb6fb843ebdeL, "modules");
+    /*package*/ static final SReferenceLink target$1hyd = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x37fdb3de482e2b27L, 0x37fdb3de482e2b28L, "target");
+    /*package*/ static final SReferenceLink group$qLbS = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, 0x5b7be37b4deb1202L, "group");
+    /*package*/ static final SContainmentLink modules$JlQo = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, 0x14d3fb6fb843ebdeL, "modules");
   }
 }

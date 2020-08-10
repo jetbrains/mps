@@ -37,7 +37,7 @@ public final class SetWithIndent_Intention extends AbstractIntentionDescriptor i
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(node, CONCEPTS.ConstantStringAppendPart$AE) || SNodeOperations.isInstanceOf(node, CONCEPTS.NodeAppendPart$oe);
+    return SNodeOperations.isInstanceOf(node, CONCEPTS.ConstantStringAppendPart$Pc) || SNodeOperations.isInstanceOf(node, CONCEPTS.NodeAppendPart$AK);
   }
   @Override
   public boolean isSurroundWith() {
@@ -59,10 +59,10 @@ public final class SetWithIndent_Intention extends AbstractIntentionDescriptor i
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       boolean indent = (boolean) AbstractAppendPart__BehaviorDescriptor.withIndent_idi0uJgJ6.invoke(node);
-      if (SNodeOperations.isInstanceOf(node, CONCEPTS.ConstantStringAppendPart$AE)) {
-        SPropertyOperations.assign(SNodeOperations.cast(node, CONCEPTS.ConstantStringAppendPart$AE), PROPS.withIndent$m3K4, !(indent));
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.ConstantStringAppendPart$Pc)) {
+        SPropertyOperations.assign(SNodeOperations.cast(node, CONCEPTS.ConstantStringAppendPart$Pc), PROPS.withIndent$irYA, !(indent));
       } else {
-        SPropertyOperations.assign(SNodeOperations.cast(node, CONCEPTS.NodeAppendPart$oe), PROPS.withIndent$q3xV, !(indent));
+        SPropertyOperations.assign(SNodeOperations.cast(node, CONCEPTS.NodeAppendPart$AK), PROPS.withIndent$mrKt, !(indent));
       }
     }
     @Override
@@ -72,12 +72,12 @@ public final class SetWithIndent_Intention extends AbstractIntentionDescriptor i
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodeAppendPart$oe = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015251a28L, "jetbrains.mps.lang.textGen.structure.NodeAppendPart");
-    /*package*/ static final SConcept ConstantStringAppendPart$AE = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, "jetbrains.mps.lang.textGen.structure.ConstantStringAppendPart");
+    /*package*/ static final SConcept NodeAppendPart$AK = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015251a28L, "jetbrains.mps.lang.textGen.structure.NodeAppendPart");
+    /*package*/ static final SConcept ConstantStringAppendPart$Pc = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, "jetbrains.mps.lang.textGen.structure.ConstantStringAppendPart");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty withIndent$m3K4 = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, 0x1201534c74dL, "withIndent");
-    /*package*/ static final SProperty withIndent$q3xV = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015251a28L, 0x12015341f3eL, "withIndent");
+    /*package*/ static final SProperty withIndent$irYA = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015288286L, 0x1201534c74dL, "withIndent");
+    /*package*/ static final SProperty withIndent$mrKt = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015251a28L, 0x12015341f3eL, "withIndent");
   }
 }

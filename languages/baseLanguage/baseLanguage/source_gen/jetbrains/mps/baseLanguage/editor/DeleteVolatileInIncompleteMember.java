@@ -26,7 +26,7 @@ public class DeleteVolatileInIncompleteMember {
         if (DeletionApproverUtil.approve(editorContext, node, "volatileKeyword")) {
           return;
         }
-        SPropertyOperations.set(node, PROPS.volatile$LNoz, false);
+        SPropertyOperations.set(node, PROPS.volatile$sSPl, false);
         editorContext.selectWRTFocusPolicy(node);
       }
 
@@ -75,6 +75,6 @@ public class DeleteVolatileInIncompleteMember {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty volatile$LNoz = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e6fdbea6L, "volatile");
+    /*package*/ static final SProperty volatile$sSPl = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e6fdbea6L, "volatile");
   }
 }

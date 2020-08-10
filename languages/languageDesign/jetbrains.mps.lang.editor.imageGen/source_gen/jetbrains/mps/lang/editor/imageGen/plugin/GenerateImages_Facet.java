@@ -121,16 +121,16 @@ public class GenerateImages_Facet extends IFacet.Stub {
                         MapSequence.fromMap(folder2PrintRunnables).put(outputDir, ListSequence.fromList(new ArrayList<PrintNodeRunnable>()));
                       }
                       final DeltaKey dk = new DeltaKey(modelsPair._0().getModule(), modelsPair._0());
-                      for (SNode imageGenerator : ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.roots(modelsPair._1(), CONCEPTS.ImageGenerator$pF))) {
-                        SNodeId nodeId = PersistenceFacade.getInstance().createNodeId(SPropertyOperations.getString(imageGenerator, PROPS.id$S_ic));
+                      for (SNode imageGenerator : ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.roots(modelsPair._1(), CONCEPTS.ImageGenerator$Ng))) {
+                        SNodeId nodeId = PersistenceFacade.getInstance().createNodeId(SPropertyOperations.getString(imageGenerator, PROPS.id$7kFL));
                         SNode node = modelsPair._0().getNode(nodeId);
 
-                        PrintNodeRunnable printRunnable = new PrintNodeRunnable(node.getReference(), repository, SPropertyOperations.getString(imageGenerator, PROPS.fileName$eHsz), dk);
-                        if (SPropertyOperations.getString(imageGenerator, PROPS.imageFormat$MPCp) != null) {
-                          printRunnable.setImageFormat(SPropertyOperations.getString(imageGenerator, PROPS.imageFormat$MPCp));
+                        PrintNodeRunnable printRunnable = new PrintNodeRunnable(node.getReference(), repository, SPropertyOperations.getString(imageGenerator, PROPS.fileName$tsQ8), dk);
+                        if (SPropertyOperations.getString(imageGenerator, PROPS.imageFormat$1_1Y) != null) {
+                          printRunnable.setImageFormat(SPropertyOperations.getString(imageGenerator, PROPS.imageFormat$1_1Y));
                         }
-                        if (SPropertyOperations.getString(imageGenerator, PROPS.scale$naEK) != null) {
-                          printRunnable.setScale(Double.parseDouble(SPropertyOperations.getString(imageGenerator, PROPS.scale$naEK)));
+                        if (SPropertyOperations.getString(imageGenerator, PROPS.scale$_U4l) != null) {
+                          printRunnable.setScale(Double.parseDouble(SPropertyOperations.getString(imageGenerator, PROPS.scale$_U4l)));
                         }
                         printRunnable.setBackgroundColor(255, 255, 255, 255);
 
@@ -245,13 +245,13 @@ public class GenerateImages_Facet extends IFacet.Stub {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty id$S_ic = MetaAdapterFactory.getProperty(0x1839bec5cea641dfL, 0xb9e0c405ff35c41eL, 0x20c051df23a9488cL, 0x2d0ad2528389ad26L, "id");
-    /*package*/ static final SProperty fileName$eHsz = MetaAdapterFactory.getProperty(0x1839bec5cea641dfL, 0xb9e0c405ff35c41eL, 0x20c051df23a9488cL, 0x20c051df23a9da87L, "fileName");
-    /*package*/ static final SProperty imageFormat$MPCp = MetaAdapterFactory.getProperty(0x1839bec5cea641dfL, 0xb9e0c405ff35c41eL, 0x20c051df23a9488cL, 0x132781a3b11568fbL, "imageFormat");
-    /*package*/ static final SProperty scale$naEK = MetaAdapterFactory.getProperty(0x1839bec5cea641dfL, 0xb9e0c405ff35c41eL, 0x20c051df23a9488cL, 0x132781a3b11572e9L, "scale");
+    /*package*/ static final SProperty id$7kFL = MetaAdapterFactory.getProperty(0x1839bec5cea641dfL, 0xb9e0c405ff35c41eL, 0x20c051df23a9488cL, 0x2d0ad2528389ad26L, "id");
+    /*package*/ static final SProperty fileName$tsQ8 = MetaAdapterFactory.getProperty(0x1839bec5cea641dfL, 0xb9e0c405ff35c41eL, 0x20c051df23a9488cL, 0x20c051df23a9da87L, "fileName");
+    /*package*/ static final SProperty imageFormat$1_1Y = MetaAdapterFactory.getProperty(0x1839bec5cea641dfL, 0xb9e0c405ff35c41eL, 0x20c051df23a9488cL, 0x132781a3b11568fbL, "imageFormat");
+    /*package*/ static final SProperty scale$_U4l = MetaAdapterFactory.getProperty(0x1839bec5cea641dfL, 0xb9e0c405ff35c41eL, 0x20c051df23a9488cL, 0x132781a3b11572e9L, "scale");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ImageGenerator$pF = MetaAdapterFactory.getConcept(0x1839bec5cea641dfL, 0xb9e0c405ff35c41eL, 0x20c051df23a9488cL, "jetbrains.mps.lang.editor.imageGen.structure.ImageGenerator");
+    /*package*/ static final SConcept ImageGenerator$Ng = MetaAdapterFactory.getConcept(0x1839bec5cea641dfL, 0xb9e0c405ff35c41eL, 0x20c051df23a9488cL, "jetbrains.mps.lang.editor.imageGen.structure.ImageGenerator");
   }
 }

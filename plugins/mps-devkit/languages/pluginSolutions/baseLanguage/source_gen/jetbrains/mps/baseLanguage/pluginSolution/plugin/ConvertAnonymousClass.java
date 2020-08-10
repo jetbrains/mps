@@ -37,18 +37,18 @@ public class ConvertAnonymousClass implements MoveNodesAction {
     final Wrappers._boolean result = new Wrappers._boolean();
     project.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        result.value = ListSequence.fromList(nodes).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(nodes).first(), CONCEPTS.AnonymousClass$aF) && (SNodeOperations.getNodeAncestor(ListSequence.fromList(nodes).first(), CONCEPTS.Classifier$hJ, false, false) != null);
+        result.value = ListSequence.fromList(nodes).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(nodes).first(), CONCEPTS.AnonymousClass$Bt) && (SNodeOperations.getNodeAncestor(ListSequence.fromList(nodes).first(), CONCEPTS.Classifier$Ix, false, false) != null);
       }
     });
     return result.value;
   }
   public void execute(final MPSProject project, List<SNode> nodes) {
-    final SNode target = SNodeOperations.cast(ListSequence.fromList(nodes).first(), CONCEPTS.AnonymousClass$aF);
+    final SNode target = SNodeOperations.cast(ListSequence.fromList(nodes).first(), CONCEPTS.AnonymousClass$Bt);
 
     final Wrappers._T<String> classifierName = new Wrappers._T<String>();
     project.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        classifierName.value = SPropertyOperations.getString(SLinkOperations.getTarget(target, LINKS.classifier$JwxM), PROPS.name$lA7v);
+        classifierName.value = SPropertyOperations.getString(SLinkOperations.getTarget(target, LINKS.classifier$q_Y$), PROPS.name$MnvL);
       }
     });
 
@@ -65,15 +65,15 @@ public class ConvertAnonymousClass implements MoveNodesAction {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AnonymousClass$aF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$JwxM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
+    /*package*/ static final SReferenceLink classifier$q_Y$ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

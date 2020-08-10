@@ -28,8 +28,8 @@ public class typeof_PatternReduction_MappingRule_InferenceRule extends AbstractI
   }
   public void applyRule(final SNode rule, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SAbstractConcept applicableConcept = PatternReduction_MappingRule__BehaviorDescriptor.getConcept_id1$dcvTE6OGV.invoke(rule);
-    if (SLinkOperations.getTarget(SLinkOperations.getTarget(rule, LINKS.labelDeclaration$JDd_), LINKS.sourceConcept$BVhC) != null && applicableConcept != null) {
-      if (!(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(applicableConcept), SNodeOperations.asSConcept(SNodeOperations.asSConcept(SLinkOperations.getTarget(SLinkOperations.getTarget(rule, LINKS.labelDeclaration$JDd_), LINKS.sourceConcept$BVhC)))))) {
+    if (SLinkOperations.getTarget(SLinkOperations.getTarget(rule, LINKS.labelDeclaration$8_Th), LINKS.sourceConcept$RXk) != null && applicableConcept != null) {
+      if (!(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(applicableConcept), SNodeOperations.asSConcept(SNodeOperations.asSConcept(SLinkOperations.getTarget(SLinkOperations.getTarget(rule, LINKS.labelDeclaration$8_Th), LINKS.sourceConcept$RXk)))))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(rule, "Label has incorrect type", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1805153994417064793", null, errorTarget);
@@ -38,12 +38,12 @@ public class typeof_PatternReduction_MappingRule_InferenceRule extends AbstractI
       {
         SNode _nodeToCheck_1029348928467 = rule;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "1805153994417064796", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) _quotation_createNode_xjg16h_a0a0c0b0b0b(PatternReduction_MappingRule__BehaviorDescriptor.getTemplateType_id1$dcvTE731L.invoke(rule)), (SNode) _quotation_createNode_xjg16h_a1a0c0b0b0b(SLinkOperations.getTarget(SLinkOperations.getTarget(rule, LINKS.labelDeclaration$JDd_), LINKS.targetConcept$kZUb)), false, false, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) _quotation_createNode_xjg16h_a0a0c0b0b0b(PatternReduction_MappingRule__BehaviorDescriptor.getTemplateType_id1$dcvTE731L.invoke(rule)), (SNode) _quotation_createNode_xjg16h_a1a0c0b0b0b(SLinkOperations.getTarget(SLinkOperations.getTarget(rule, LINKS.labelDeclaration$8_Th), LINKS.targetConcept$HW_R)), false, false, _info_12389875345);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.PatternReduction_MappingRule$g5;
+    return CONCEPTS.PatternReduction_MappingRule$VL;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -67,12 +67,12 @@ public class typeof_PatternReduction_MappingRule_InferenceRule extends AbstractI
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink labelDeclaration$JDd_ = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a12ebb4L, 0x190d31fe6a12ebbaL, "labelDeclaration");
-    /*package*/ static final SReferenceLink sourceConcept$BVhC = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179be4dc5eL, "sourceConcept");
-    /*package*/ static final SReferenceLink targetConcept$kZUb = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179bfe3866L, "targetConcept");
+    /*package*/ static final SReferenceLink labelDeclaration$8_Th = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a12ebb4L, 0x190d31fe6a12ebbaL, "labelDeclaration");
+    /*package*/ static final SReferenceLink sourceConcept$RXk = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179be4dc5eL, "sourceConcept");
+    /*package*/ static final SReferenceLink targetConcept$HW_R = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179bfe3866L, "targetConcept");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PatternReduction_MappingRule$g5 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a12ebb4L, "jetbrains.mps.lang.generator.structure.PatternReduction_MappingRule");
+    /*package*/ static final SConcept PatternReduction_MappingRule$VL = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a12ebb4L, "jetbrains.mps.lang.generator.structure.PatternReduction_MappingRule");
   }
 }

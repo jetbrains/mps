@@ -32,7 +32,7 @@ public class ChildToSubstituteCustomization implements EditorMenuItemCustomizer 
 
   private static class ChildToSubstituteCustomizationSpecific implements EditorMenuItemCustomizer {
     public boolean matches(EditorMenuItemCustomizationContext context) {
-      return new EditorMenuItemModifyingConceptContextMatcher(CONCEPTS.TestCompletionCustomization_ContextMatcherChildToSubstitute$XT) {
+      return new EditorMenuItemModifyingConceptContextMatcher(CONCEPTS.TestCompletionCustomization_ContextMatcherChildToSubstitute$Mk) {
         protected boolean doMatchesContext(EditorMenuItemCustomizationContext context_) {
           return doMatchesContext_(getContextNode(context_), getContainmentLink(context_), getReference(context_), getProperty(context_)) && getCompletionItemInformation(context_) != null;
         }
@@ -74,6 +74,6 @@ public class ChildToSubstituteCustomization implements EditorMenuItemCustomizer 
 
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestCompletionCustomization_ContextMatcherChildToSubstitute$XT = MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80f0bc815L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ContextMatcherChildToSubstitute");
+    /*package*/ static final SConcept TestCompletionCustomization_ContextMatcherChildToSubstitute$Mk = MetaAdapterFactory.getConcept(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80f0bc815L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ContextMatcherChildToSubstitute");
   }
 }

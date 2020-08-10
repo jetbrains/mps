@@ -26,12 +26,12 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class LinkRefQualifier_Constraints extends BaseConstraintsDescriptor {
   public LinkRefQualifier_Constraints() {
-    super(CONCEPTS.LinkRefQualifier$te);
+    super(CONCEPTS.LinkRefQualifier$uI);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.link$eIB0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.link$N7Cw, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -47,10 +47,10 @@ public class LinkRefQualifier_Constraints extends BaseConstraintsDescriptor {
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             final SNode enclosingNode = (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode())));
-            if (!(SNodeOperations.isInstanceOf(enclosingNode, CONCEPTS.ILinkAccessQualifierContainer$nq))) {
+            if (!(SNodeOperations.isInstanceOf(enclosingNode, CONCEPTS.ILinkAccessQualifierContainer$oU))) {
               return new EmptyScope();
             }
-            SNode qualifierContainer = SNodeOperations.cast(enclosingNode, CONCEPTS.ILinkAccessQualifierContainer$nq);
+            SNode qualifierContainer = SNodeOperations.cast(enclosingNode, CONCEPTS.ILinkAccessQualifierContainer$oU);
             return ListScope.forResolvableElements(ILinkAccessQualifierContainer__BehaviorDescriptor.getLinkAccessScope_id2xk$X1Ld2Yi.invoke(qualifierContainer));
           }
         };
@@ -63,11 +63,11 @@ public class LinkRefQualifier_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_cgym5w_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c895902fb(jetbrains.mps.lang.smodel.constraints)", "6836281137582802839");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LinkRefQualifier$te = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11886c4bac0L, "jetbrains.mps.lang.smodel.structure.LinkRefQualifier");
-    /*package*/ static final SInterfaceConcept ILinkAccessQualifierContainer$nq = MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312a67f61731e269L, "jetbrains.mps.lang.smodel.structure.ILinkAccessQualifierContainer");
+    /*package*/ static final SConcept LinkRefQualifier$uI = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11886c4bac0L, "jetbrains.mps.lang.smodel.structure.LinkRefQualifier");
+    /*package*/ static final SInterfaceConcept ILinkAccessQualifierContainer$oU = MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312a67f61731e269L, "jetbrains.mps.lang.smodel.structure.ILinkAccessQualifierContainer");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink link$eIB0 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11886c4bac0L, 0x11886c4bac1L, "link");
+    /*package*/ static final SReferenceLink link$N7Cw = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x11886c4bac0L, 0x11886c4bac1L, "link");
   }
 }

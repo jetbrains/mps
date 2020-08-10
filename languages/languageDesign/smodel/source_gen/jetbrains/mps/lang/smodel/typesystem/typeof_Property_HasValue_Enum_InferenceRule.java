@@ -25,7 +25,7 @@ public class typeof_Property_HasValue_Enum_InferenceRule extends AbstractInferen
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Property_HasValue_Enum$bR;
+    return CONCEPTS.Property_HasValue_Enum$dn;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_Property_HasValue_Enum_InferenceRule extends AbstractInferen
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Property_HasValue_Enum$bR = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10add1ded2bL, "jetbrains.mps.lang.smodel.structure.Property_HasValue_Enum");
+    /*package*/ static final SConcept Property_HasValue_Enum$dn = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10add1ded2bL, "jetbrains.mps.lang.smodel.structure.Property_HasValue_Enum");
   }
 }

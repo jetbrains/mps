@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class OnEachFoundNodeCallback_Constraints extends BaseConstraintsDescriptor {
   public OnEachFoundNodeCallback_Constraints() {
-    super(CONCEPTS.OnEachFoundNodeCallback$GA);
+    super(CONCEPTS.OnEachFoundNodeCallback$u4);
   }
 
   @Override
@@ -37,12 +37,12 @@ public class OnEachFoundNodeCallback_Constraints extends BaseConstraintsDescript
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.OnEachNodeFoundByExpression$R);
+    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.OnEachNodeFoundByExpression$Ml);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590358(jetbrains.mps.lang.findUsages.constraints)", "1237139122105677276");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept OnEachFoundNodeCallback$GA = MetaAdapterFactory.getConcept(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x112b337a16caa96eL, "jetbrains.mps.lang.findUsages.structure.OnEachFoundNodeCallback");
-    /*package*/ static final SConcept OnEachNodeFoundByExpression$R = MetaAdapterFactory.getConcept(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x5f5488291166ada7L, "jetbrains.mps.lang.findUsages.structure.OnEachNodeFoundByExpression");
+    /*package*/ static final SConcept OnEachFoundNodeCallback$u4 = MetaAdapterFactory.getConcept(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x112b337a16caa96eL, "jetbrains.mps.lang.findUsages.structure.OnEachFoundNodeCallback");
+    /*package*/ static final SConcept OnEachNodeFoundByExpression$Ml = MetaAdapterFactory.getConcept(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x5f5488291166ada7L, "jetbrains.mps.lang.findUsages.structure.OnEachNodeFoundByExpression");
   }
 }

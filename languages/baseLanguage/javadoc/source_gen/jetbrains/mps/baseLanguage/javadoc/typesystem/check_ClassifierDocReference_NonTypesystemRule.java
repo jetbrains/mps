@@ -25,19 +25,19 @@ public class check_ClassifierDocReference_NonTypesystemRule extends AbstractNonT
   public check_ClassifierDocReference_NonTypesystemRule() {
   }
   public void applyRule(final SNode classifierDocReference, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode clazz = SLinkOperations.getTarget(classifierDocReference, LINKS.classifier$fT5w);
+    SNode clazz = SLinkOperations.getTarget(classifierDocReference, LINKS.classifier$AhRH);
     if ((clazz == null)) {
       return;
     }
-    if (!(VisibilityUtil.isVisible(classifierDocReference, SNodeOperations.as(clazz, CONCEPTS.IVisible$6G)))) {
+    if (!(VisibilityUtil.isVisible(classifierDocReference, SNodeOperations.as(clazz, CONCEPTS.IVisible$zu)))) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(classifierDocReference, "Symbol " + SPropertyOperations.getString(clazz, PROPS.name$lA7v) + " is inaccessible from here.", "r:65bec5f7-cc7d-4b90-b2b7-cc6bad1763aa(jetbrains.mps.baseLanguage.javadoc.typesystem)", "1370556966538863877", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(classifierDocReference, "Symbol " + SPropertyOperations.getString(clazz, PROPS.name$MnvL) + " is inaccessible from here.", "r:65bec5f7-cc7d-4b90-b2b7-cc6bad1763aa(jetbrains.mps.baseLanguage.javadoc.typesystem)", "1370556966538863877", null, errorTarget);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ClassifierDocReference$Mb;
+    return CONCEPTS.ClassifierDocReference$$o;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -47,15 +47,15 @@ public class check_ClassifierDocReference_NonTypesystemRule extends AbstractNonT
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$fT5w = MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2e4L, 0x1ec532ec2531d2e5L, "classifier");
+    /*package*/ static final SReferenceLink classifier$AhRH = MetaAdapterFactory.getReferenceLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2e4L, 0x1ec532ec2531d2e5L, "classifier");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IVisible$6G = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible");
-    /*package*/ static final SConcept ClassifierDocReference$Mb = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2e4L, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocReference");
+    /*package*/ static final SInterfaceConcept IVisible$zu = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible");
+    /*package*/ static final SConcept ClassifierDocReference$$o = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1ec532ec2531d2e4L, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocReference");
   }
 }

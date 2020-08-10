@@ -17,7 +17,7 @@ public class AnyType_subtypeOf_AllTypes_InequationReplacementRule extends Abstra
   public AnyType_subtypeOf_AllTypes_InequationReplacementRule() {
   }
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
-    return !(SNodeOperations.isInstanceOf(supertype, CONCEPTS.RuntimeTypeVariable$Mk));
+    return !(SNodeOperations.isInstanceOf(supertype, CONCEPTS.RuntimeTypeVariable$4a));
   }
   public void processInequation(final SNode subtype, final SNode supertype, final EquationInfo equationInfo, final TypeCheckingContext typeCheckingContext, IsApplicable2Status status, final boolean inequalityIsWeak, final boolean inequalityIsLessThan) {
   }
@@ -36,15 +36,15 @@ public class AnyType_subtypeOf_AllTypes_InequationReplacementRule extends Abstra
   }
 
   public SAbstractConcept getApplicableSubtypeConcept() {
-    return CONCEPTS.AnyType$mJ;
+    return CONCEPTS.AnyType$uN;
   }
   public SAbstractConcept getApplicableSupertypeConcept() {
-    return CONCEPTS.BaseConcept$Sz;
+    return CONCEPTS.BaseConcept$gP;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RuntimeTypeVariable$Mk = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x113f84956fbL, "jetbrains.mps.lang.typesystem.structure.RuntimeTypeVariable");
-    /*package*/ static final SConcept AnyType$mJ = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x184cd19a8be486c1L, "jetbrains.mps.samples.lambdaCalculus.structure.AnyType");
-    /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept RuntimeTypeVariable$4a = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x113f84956fbL, "jetbrains.mps.lang.typesystem.structure.RuntimeTypeVariable");
+    /*package*/ static final SConcept AnyType$uN = MetaAdapterFactory.getConcept(0x7c9e280794ad4afcL, 0xadf0aaee45eb2895L, 0x184cd19a8be486c1L, "jetbrains.mps.samples.lambdaCalculus.structure.AnyType");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }

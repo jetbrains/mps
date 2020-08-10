@@ -44,7 +44,7 @@ public class DefaultModifier_old_SubstituteMenu extends SubstituteMenuBase {
 
   public class SMP_Subconcepts_h19k30_a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.DefaultModifier_old$Z2);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.DefaultModifier_old$PN);
     }
     @NotNull
     @Override
@@ -65,6 +65,6 @@ public class DefaultModifier_old_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DefaultModifier_old$Z2 = MetaAdapterFactory.getConcept(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, 0x40ed0df0ef40a332L, "jetbrains.mps.baseLanguage.jdk8.structure.DefaultModifier_old");
+    /*package*/ static final SConcept DefaultModifier_old$PN = MetaAdapterFactory.getConcept(0xfdcdc48fbfd84831L, 0xaa765abac2ffa010L, 0x40ed0df0ef40a332L, "jetbrains.mps.baseLanguage.jdk8.structure.DefaultModifier_old");
   }
 }

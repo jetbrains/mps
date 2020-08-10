@@ -22,7 +22,7 @@ public class check_SubstituteFeaturesAreNotDuplicated_NonTypesystemRule extends 
   public check_SubstituteFeaturesAreNotDuplicated_NonTypesystemRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    ListSequence.fromList(DuplicationUtil.getDuplications(SLinkOperations.getChildren(node, LINKS.features$DvV0))).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(DuplicationUtil.getDuplications(SLinkOperations.getChildren(node, LINKS.features$HM6B))).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
@@ -32,7 +32,7 @@ public class check_SubstituteFeaturesAreNotDuplicated_NonTypesystemRule extends 
     });
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.IExtensibleSubstituteMenuPart$ZQ;
+    return CONCEPTS.IExtensibleSubstituteMenuPart$bt;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -42,10 +42,10 @@ public class check_SubstituteFeaturesAreNotDuplicated_NonTypesystemRule extends 
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink features$DvV0 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x75a895eb6bcee99dL, 0x75a895eb6bcee99eL, "features");
+    /*package*/ static final SContainmentLink features$HM6B = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x75a895eb6bcee99dL, 0x75a895eb6bcee99eL, "features");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IExtensibleSubstituteMenuPart$ZQ = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x75a895eb6bcee99dL, "jetbrains.mps.lang.editor.structure.IExtensibleSubstituteMenuPart");
+    /*package*/ static final SInterfaceConcept IExtensibleSubstituteMenuPart$bt = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x75a895eb6bcee99dL, "jetbrains.mps.lang.editor.structure.IExtensibleSubstituteMenuPart");
   }
 }

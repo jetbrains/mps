@@ -25,17 +25,17 @@ public class check_IHasUniqueId_NonTypesystemRule extends AbstractNonTypesystemR
   public check_IHasUniqueId_NonTypesystemRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    for (SNode root : ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(node), CONCEPTS.IRootWithUniqueName$qX))) {
+    for (SNode root : ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(node), CONCEPTS.IRootWithUniqueName$GJ))) {
       if (root != node) {
         if (!(!(Objects.equals(IRootWithUniqueName__BehaviorDescriptor.getId_id3vRuGRRXlj.invoke(root), IRootWithUniqueName__BehaviorDescriptor.getId_id3vRuGRRXlj.invoke(node))))) {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(node, "Duplicated name: " + SPropertyOperations.getString(node, PROPS.name$lA7v), "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "195736285282743922", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(node, "Duplicated name: " + SPropertyOperations.getString(node, PROPS.name$MnvL), "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "195736285282743922", null, errorTarget);
         }
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.IRootWithUniqueName$qX;
+    return CONCEPTS.IRootWithUniqueName$GJ;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -45,10 +45,10 @@ public class check_IHasUniqueId_NonTypesystemRule extends AbstractNonTypesystemR
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IRootWithUniqueName$qX = MetaAdapterFactory.getInterfaceConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2b7651d49ee9d72L, "jetbrains.mps.lang.extension.structure.IRootWithUniqueName");
+    /*package*/ static final SInterfaceConcept IRootWithUniqueName$GJ = MetaAdapterFactory.getInterfaceConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2b7651d49ee9d72L, "jetbrains.mps.lang.extension.structure.IRootWithUniqueName");
   }
 }

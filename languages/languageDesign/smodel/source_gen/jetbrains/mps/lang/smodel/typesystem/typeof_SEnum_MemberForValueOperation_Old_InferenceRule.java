@@ -27,7 +27,7 @@ public class typeof_SEnum_MemberForValueOperation_Old_InferenceRule extends Abst
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SEnum_MemberForValueOperation_Old$M3;
+    return CONCEPTS.SEnum_MemberForValueOperation_Old$Nz;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -44,6 +44,6 @@ public class typeof_SEnum_MemberForValueOperation_Old_InferenceRule extends Abst
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SEnum_MemberForValueOperation_Old$M3 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed37e64eL, "jetbrains.mps.lang.smodel.structure.SEnum_MemberForValueOperation_Old");
+    /*package*/ static final SConcept SEnum_MemberForValueOperation_Old$Nz = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x120ed37e64eL, "jetbrains.mps.lang.smodel.structure.SEnum_MemberForValueOperation_Old");
   }
 }

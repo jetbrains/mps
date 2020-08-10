@@ -31,17 +31,17 @@ public class DotExpression_Actions_DeleteOperation {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if ((SLinkOperations.getTarget(node, LINKS.operation$_mGS) == null) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.operation$_mGS))), SNodeOperations.asSConcept(CONCEPTS.AbstractOperation$Nk))) {
-          SNode operand = SLinkOperations.getTarget(node, LINKS.operand$P1i5);
+        if ((SLinkOperations.getTarget(node, LINKS.operation$gs9E) == null) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.operation$gs9E))), SNodeOperations.asSConcept(CONCEPTS.AbstractOperation$g6))) {
+          SNode operand = SLinkOperations.getTarget(node, LINKS.operand$w6IR);
           SNodeOperations.replaceWithAnother(node, operand);
           if ((operand != null)) {
             SelectionUtil.selectLabelCellAnSetCaret(editorContext, operand, SelectionManager.LAST_CELL, -1);
           }
         } else {
-          if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.operation$_mGS))) {
+          if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.operation$gs9E))) {
             return;
           }
-          SLinkOperations.setTarget(node, LINKS.operation$_mGS, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1196792d150L, "jetbrains.mps.baseLanguage.structure.AbstractOperation")));
+          SLinkOperations.setTarget(node, LINKS.operation$gs9E, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1196792d150L, "jetbrains.mps.baseLanguage.structure.AbstractOperation")));
         }
       }
 
@@ -90,11 +90,11 @@ public class DotExpression_Actions_DeleteOperation {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink operation$gs9E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractOperation$Nk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1196792d150L, "jetbrains.mps.baseLanguage.structure.AbstractOperation");
+    /*package*/ static final SConcept AbstractOperation$g6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1196792d150L, "jetbrains.mps.baseLanguage.structure.AbstractOperation");
   }
 }

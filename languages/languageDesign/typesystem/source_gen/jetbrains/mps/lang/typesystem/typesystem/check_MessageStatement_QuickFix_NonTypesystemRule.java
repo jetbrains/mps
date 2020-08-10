@@ -24,10 +24,10 @@ public class check_MessageStatement_QuickFix_NonTypesystemRule extends AbstractN
   public check_MessageStatement_QuickFix_NonTypesystemRule() {
   }
   public void applyRule(final SNode abstractReportStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    List<SNode> intentions = SLinkOperations.getChildren(abstractReportStatement, LINKS.helginsIntention$zrno);
+    List<SNode> intentions = SLinkOperations.getChildren(abstractReportStatement, LINKS.helginsIntention$WhDe);
     if (ListSequence.fromList(intentions).count() > 1) {
       for (SNode intention : intentions) {
-        if (SPropertyOperations.getBoolean(intention, PROPS.applyImmediately$veFS)) {
+        if (SPropertyOperations.getBoolean(intention, PROPS.applyImmediately$S4XI)) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(intention, "can't apply immediately if there are multiple quick fixes", "r:00000000-0000-4000-0000-011c895902b1(jetbrains.mps.lang.typesystem.typesystem)", "4258793651770372659", null, errorTarget);
@@ -37,7 +37,7 @@ public class check_MessageStatement_QuickFix_NonTypesystemRule extends AbstractN
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AbstractReportStatement$Qn;
+    return CONCEPTS.AbstractReportStatement$8d;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -47,14 +47,14 @@ public class check_MessageStatement_QuickFix_NonTypesystemRule extends AbstractN
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink helginsIntention$zrno = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5c15L, "helginsIntention");
+    /*package*/ static final SContainmentLink helginsIntention$WhDe = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, 0x36a3e6f668ce5c15L, "helginsIntention");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty applyImmediately$veFS = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL, 0x11b26df4083L, "applyImmediately");
+    /*package*/ static final SProperty applyImmediately$S4XI = MetaAdapterFactory.getProperty(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x119e85e030eL, 0x11b26df4083L, "applyImmediately");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractReportStatement$Qn = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, "jetbrains.mps.lang.typesystem.structure.AbstractReportStatement");
+    /*package*/ static final SConcept AbstractReportStatement$8d = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x36a3e6f668ce5a59L, "jetbrains.mps.lang.typesystem.structure.AbstractReportStatement");
   }
 }

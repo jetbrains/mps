@@ -25,12 +25,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class Enum_MemberLiteral_Constraints extends BaseConstraintsDescriptor {
   public Enum_MemberLiteral_Constraints() {
-    super(CONCEPTS.Enum_MemberLiteral$qN);
+    super(CONCEPTS.Enum_MemberLiteral$sj);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.memberDeclaration$4I6z, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.memberDeclaration$D783, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -46,8 +46,8 @@ public class Enum_MemberLiteral_Constraints extends BaseConstraintsDescriptor {
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             SNode parentNode = ((SNodeOperations.getParent(_context.getReferenceNode()) != null) ? SNodeOperations.getParent(_context.getReferenceNode()) : _context.getContextNode());
-            SNode enumm = SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(parentNode, CONCEPTS.DotExpression$6a), LINKS.operand$P1i5), CONCEPTS.EnumerationIdRefExpression$E1), LINKS.enumDeclaration$DP0w);
-            return ListScope.forNamedElements(SLinkOperations.getChildren(enumm, LINKS.members$4eAY));
+            SNode enumm = SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(parentNode, CONCEPTS.DotExpression$yW), LINKS.operand$w6IR), CONCEPTS.EnumerationIdRefExpression$Fx), LINKS.enumDeclaration$ee20);
+            return ListScope.forNamedElements(SLinkOperations.getChildren(enumm, LINKS.members$wmsL));
           }
         };
       }
@@ -59,15 +59,15 @@ public class Enum_MemberLiteral_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_s0o7vr_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c895902fb(jetbrains.mps.lang.smodel.constraints)", "2528767443165000032");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Enum_MemberLiteral$qN = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1b4bba1ba0012d60L, "jetbrains.mps.lang.smodel.structure.Enum_MemberLiteral");
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
-    /*package*/ static final SConcept EnumerationIdRefExpression$E1 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x50352c802d81bed4L, "jetbrains.mps.lang.smodel.structure.EnumerationIdRefExpression");
+    /*package*/ static final SConcept Enum_MemberLiteral$sj = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1b4bba1ba0012d60L, "jetbrains.mps.lang.smodel.structure.Enum_MemberLiteral");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept EnumerationIdRefExpression$Fx = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x50352c802d81bed4L, "jetbrains.mps.lang.smodel.structure.EnumerationIdRefExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink memberDeclaration$4I6z = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1b4bba1ba0012d60L, 0x1b4bba1ba0012d64L, "memberDeclaration");
-    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SReferenceLink enumDeclaration$DP0w = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x50352c802d81bed4L, 0x50352c802d81bed5L, "enumDeclaration");
-    /*package*/ static final SContainmentLink members$4eAY = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
+    /*package*/ static final SReferenceLink memberDeclaration$D783 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1b4bba1ba0012d60L, 0x1b4bba1ba0012d64L, "memberDeclaration");
+    /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SReferenceLink enumDeclaration$ee20 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x50352c802d81bed4L, 0x50352c802d81bed5L, "enumDeclaration");
+    /*package*/ static final SContainmentLink members$wmsL = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0x2e770ca32c607cc1L, "members");
   }
 }

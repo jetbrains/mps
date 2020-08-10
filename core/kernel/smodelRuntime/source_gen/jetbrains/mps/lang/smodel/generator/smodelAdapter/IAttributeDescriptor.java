@@ -50,11 +50,11 @@ public interface IAttributeDescriptor {
     }
     @Override
     public boolean match(@NotNull SNode attribute) {
-      return super.match(attribute) && (myLink == null || myLink.equals(((SReferenceLink) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.LinkAttribute$7j), CONCEPTS.LinkAttribute$7j, SMethodTrimmedId.create("getLink", CONCEPTS.LinkAttribute$7j, "1avfQ4BEFo6")))));
+      return super.match(attribute) && (myLink == null || myLink.equals(((SReferenceLink) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.LinkAttribute$v_), CONCEPTS.LinkAttribute$v_, SMethodTrimmedId.create("getLink", CONCEPTS.LinkAttribute$v_, "1avfQ4BEFo6")))));
     }
     @Override
     public void update(@NotNull SNode attribute) {
-      BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.LinkAttribute$7j), CONCEPTS.LinkAttribute$7j, SMethodTrimmedId.create("setLink", CONCEPTS.LinkAttribute$7j, "6Gg5KlvuxxF"), myLink);
+      BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.LinkAttribute$v_), CONCEPTS.LinkAttribute$v_, SMethodTrimmedId.create("setLink", CONCEPTS.LinkAttribute$v_, "6Gg5KlvuxxF"), myLink);
     }
   }
   class ChildAttribute extends AttributeDescriptor {
@@ -65,11 +65,11 @@ public interface IAttributeDescriptor {
     }
     @Override
     public boolean match(@NotNull SNode attribute) {
-      return super.match(attribute) && (myLink == null || myLink.equals(((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$XQ), CONCEPTS.ChildAttribute$XQ, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$XQ, "BpxLfMirzf")))));
+      return super.match(attribute) && (myLink == null || myLink.equals(((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzf")))));
     }
     @Override
     public void update(@NotNull SNode attribute) {
-      BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$XQ), CONCEPTS.ChildAttribute$XQ, SMethodTrimmedId.create("setLink", CONCEPTS.ChildAttribute$XQ, "BpxLfMirzM"), myLink);
+      BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("setLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzM"), myLink);
     }
   }
   class PropertyAttribute extends AttributeDescriptor {
@@ -80,17 +80,17 @@ public interface IAttributeDescriptor {
     }
     @Override
     public boolean match(@NotNull SNode attribute) {
-      return super.match(attribute) && (myProperty == null || myProperty.equals(((SProperty) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.PropertyAttribute$jT), CONCEPTS.PropertyAttribute$jT, SMethodTrimmedId.create("getProperty", CONCEPTS.PropertyAttribute$jT, "1avfQ4BBzOo")))));
+      return super.match(attribute) && (myProperty == null || myProperty.equals(((SProperty) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.PropertyAttribute$Gb), CONCEPTS.PropertyAttribute$Gb, SMethodTrimmedId.create("getProperty", CONCEPTS.PropertyAttribute$Gb, "1avfQ4BBzOo")))));
     }
     @Override
     public void update(@NotNull SNode attribute) {
-      BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.PropertyAttribute$jT), CONCEPTS.PropertyAttribute$jT, SMethodTrimmedId.create("setProperty", CONCEPTS.PropertyAttribute$jT, "6Gg5Klvu8CV"), myProperty);
+      BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.PropertyAttribute$Gb), CONCEPTS.PropertyAttribute$Gb, SMethodTrimmedId.create("setProperty", CONCEPTS.PropertyAttribute$Gb, "6Gg5Klvu8CV"), myProperty);
     }
   }
 
   final class CONCEPTS {
-    /*package*/ static final SConcept LinkAttribute$7j = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute");
-    /*package*/ static final SConcept ChildAttribute$XQ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
-    /*package*/ static final SConcept PropertyAttribute$jT = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept LinkAttribute$v_ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute");
+    /*package*/ static final SConcept ChildAttribute$m8 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
+    /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
   }
 }

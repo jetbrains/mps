@@ -28,12 +28,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class WhenConcreteVariableReference_Constraints extends BaseConstraintsDescriptor {
   public WhenConcreteVariableReference_Constraints() {
-    super(CONCEPTS.WhenConcreteVariableReference$4s);
+    super(CONCEPTS.WhenConcreteVariableReference$mi);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.whenConcreteVar$J1QP, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.whenConcreteVar$7S8F, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -48,10 +48,10 @@ public class WhenConcreteVariableReference_Constraints extends BaseConstraintsDe
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            List<SNode> whenConcreteStatements = SNodeOperations.getNodeAncestors(_context.getContextNode(), CONCEPTS.WhenConcreteStatement$JZ, false);
+            List<SNode> whenConcreteStatements = SNodeOperations.getNodeAncestors(_context.getContextNode(), CONCEPTS.WhenConcreteStatement$1P, false);
             List<SNode> declarations = new ArrayList<SNode>();
             for (SNode whenConcreteStatement : whenConcreteStatements) {
-              SNode variableDeclaration = SLinkOperations.getTarget(whenConcreteStatement, LINKS.argumentRepresentator$6yQd);
+              SNode variableDeclaration = SLinkOperations.getTarget(whenConcreteStatement, LINKS.argumentRepresentator$vp83);
               if (variableDeclaration != null) {
                 ListSequence.fromList(declarations).addElement(variableDeclaration);
               }
@@ -68,12 +68,12 @@ public class WhenConcreteVariableReference_Constraints extends BaseConstraintsDe
   private static final SNodePointer breakingNode_acirdv_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c895902ae(jetbrains.mps.lang.typesystem.constraints)", "6836281137582806289");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept WhenConcreteVariableReference$4s = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x118bd0e07f1L, "jetbrains.mps.lang.typesystem.structure.WhenConcreteVariableReference");
-    /*package*/ static final SConcept WhenConcreteStatement$JZ = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114177ce6cdL, "jetbrains.mps.lang.typesystem.structure.WhenConcreteStatement");
+    /*package*/ static final SConcept WhenConcreteVariableReference$mi = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x118bd0e07f1L, "jetbrains.mps.lang.typesystem.structure.WhenConcreteVariableReference");
+    /*package*/ static final SConcept WhenConcreteStatement$1P = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114177ce6cdL, "jetbrains.mps.lang.typesystem.structure.WhenConcreteStatement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink whenConcreteVar$J1QP = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x118bd0e07f1L, 0x118bd0e7418L, "whenConcreteVar");
-    /*package*/ static final SContainmentLink argumentRepresentator$6yQd = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114177ce6cdL, 0x118bd03e53bL, "argumentRepresentator");
+    /*package*/ static final SReferenceLink whenConcreteVar$7S8F = MetaAdapterFactory.getReferenceLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x118bd0e07f1L, 0x118bd0e7418L, "whenConcreteVar");
+    /*package*/ static final SContainmentLink argumentRepresentator$vp83 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114177ce6cdL, 0x118bd03e53bL, "argumentRepresentator");
   }
 }

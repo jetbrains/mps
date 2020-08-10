@@ -28,21 +28,21 @@ public class LibraryNameUniqueness_NonTypesystemRule extends AbstractNonTypesyst
   public LibraryNameUniqueness_NonTypesystemRule() {
   }
   public void applyRule(final SNode library, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    Iterable<String> scriptNames = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(library), CONCEPTS.Script$1X)).select(new ISelector<SNode, String>() {
+    Iterable<String> scriptNames = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(library), CONCEPTS.Script$FS)).select(new ISelector<SNode, String>() {
       public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$lA7v);
+        return SPropertyOperations.getString(it, PROPS.name$MnvL);
       }
     });
-    Iterable<String> libraryNames = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(library), CONCEPTS.Library$IO)).select(new ISelector<SNode, String>() {
+    Iterable<String> libraryNames = ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(library), CONCEPTS.Library$oJ)).select(new ISelector<SNode, String>() {
       public String select(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$lA7v);
+        return SPropertyOperations.getString(it, PROPS.name$MnvL);
       }
     });
     List<String> allNames = ListSequence.fromListWithValues(new ArrayList<String>(), scriptNames);
     ListSequence.fromList(allNames).addSequence(Sequence.fromIterable(libraryNames));
     if (ListSequence.fromList(allNames).where(new IWhereFilter<String>() {
       public boolean accept(String it) {
-        return it != null && it.equals(SPropertyOperations.getString(library, PROPS.name$lA7v));
+        return it != null && it.equals(SPropertyOperations.getString(library, PROPS.name$MnvL));
       }
     }).count() > 1) {
       {
@@ -52,7 +52,7 @@ public class LibraryNameUniqueness_NonTypesystemRule extends AbstractNonTypesyst
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Library$IO;
+    return CONCEPTS.Library$oJ;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -62,11 +62,11 @@ public class LibraryNameUniqueness_NonTypesystemRule extends AbstractNonTypesyst
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Script$1X = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc45746L, "jetbrains.mps.samples.Kaja.structure.Script");
-    /*package*/ static final SConcept Library$IO = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f19d316L, "jetbrains.mps.samples.Kaja.structure.Library");
+    /*package*/ static final SConcept Script$FS = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc45746L, "jetbrains.mps.samples.Kaja.structure.Script");
+    /*package*/ static final SConcept Library$oJ = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x3cfcda239f19d316L, "jetbrains.mps.samples.Kaja.structure.Library");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

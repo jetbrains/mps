@@ -37,7 +37,7 @@ public class AddExportAsImageAttribute extends IntentionsFactory {
   }
 
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.INamedConcept$nV;
+    return CONCEPTS.INamedConcept$Kd;
   }
 
   public SNodePointer getDeclarationNode() {
@@ -62,14 +62,14 @@ public class AddExportAsImageAttribute extends IntentionsFactory {
 
 
   public void execute(SNode node, EditorContext editorContext) {
-    if (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExportAsImage$Ua)) == null) {
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExportAsImage$Ua), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x9bcd3d4bc7894f70L, 0x85e4038ea20762b9L, 0x21e6800a818d97ecL, "jetbrains.mps.lang.editor.imageGen.testLanguage.structure.ExportAsImage")));
+    if (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExportAsImage$xS)) == null) {
+      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExportAsImage$xS), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x9bcd3d4bc7894f70L, 0x85e4038ea20762b9L, 0x21e6800a818d97ecL, "jetbrains.mps.lang.editor.imageGen.testLanguage.structure.ExportAsImage")));
     } else {
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExportAsImage$Ua), null);
+      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExportAsImage$xS), null);
     }
   }
   public String description(SNode node, EditorContext editorContext) {
-    return ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExportAsImage$Ua)) == null ? "Add" : "Remove")) + " export as image annotation";
+    return ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExportAsImage$xS)) == null ? "Add" : "Remove")) + " export as image annotation";
   }
 
   public Collection<NodeTransformer> getTreeTransformers(SNode node, SNode child, EditorContext editorContext) {
@@ -86,7 +86,7 @@ public class AddExportAsImageAttribute extends IntentionsFactory {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
-    /*package*/ static final SConcept ExportAsImage$Ua = MetaAdapterFactory.getConcept(0x9bcd3d4bc7894f70L, 0x85e4038ea20762b9L, 0x21e6800a818d97ecL, "jetbrains.mps.lang.editor.imageGen.testLanguage.structure.ExportAsImage");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept ExportAsImage$xS = MetaAdapterFactory.getConcept(0x9bcd3d4bc7894f70L, 0x85e4038ea20762b9L, 0x21e6800a818d97ecL, "jetbrains.mps.lang.editor.imageGen.testLanguage.structure.ExportAsImage");
   }
 }

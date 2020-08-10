@@ -28,7 +28,7 @@ public class ExtractStaticMethod_CallExpression_SubstituteMenu extends Substitut
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_8bwl7t_a(), CONCEPTS.ExtractStaticMethod_CallExpression$Wu));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_8bwl7t_a(), CONCEPTS.ExtractStaticMethod_CallExpression$dg));
     result.add(new SMP_Subconcepts_8bwl7t_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class ExtractStaticMethod_CallExpression_SubstituteMenu extends Substitut
 
     public SMP_ReferenceScope_8bwl7t_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.ExtractStaticMethod_CallExpression$Wu, LINKS.baseMethodDeclaration$ItxI);
+      super((SAbstractConcept) CONCEPTS.ExtractStaticMethod_CallExpression$dg, LINKS.baseMethodDeclaration$pyYw);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class ExtractStaticMethod_CallExpression_SubstituteMenu extends Substitut
   }
   public class SMP_Subconcepts_8bwl7t_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ExtractStaticMethod_CallExpression$Wu);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ExtractStaticMethod_CallExpression$dg);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class ExtractStaticMethod_CallExpression_SubstituteMenu extends Substitut
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ExtractStaticMethod_CallExpression$Wu = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x31c3f88088ed999aL, "jetbrains.mps.baseLanguageInternal.structure.ExtractStaticMethod_CallExpression");
+    /*package*/ static final SConcept ExtractStaticMethod_CallExpression$dg = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x31c3f88088ed999aL, "jetbrains.mps.baseLanguageInternal.structure.ExtractStaticMethod_CallExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 }

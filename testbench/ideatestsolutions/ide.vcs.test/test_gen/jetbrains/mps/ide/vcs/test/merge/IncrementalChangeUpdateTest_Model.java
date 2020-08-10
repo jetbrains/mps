@@ -157,8 +157,8 @@ public class IncrementalChangeUpdateTest_Model extends ChangesTestBase {
     return null;
   }
   private static SNode createClassConcept_2jv4hj_a0a1a5() {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassConcept$IY);
-    n0.setProperty(PROPS.name$lA7v, "NewRoot");
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassConcept$bK);
+    n0.setProperty(PROPS.name$MnvL, "NewRoot");
     return n0.getResult();
   }
   private static List<ModelChange> check_2jv4hj_a0a41a5(ChangeSet checkedDotOperand) {
@@ -175,10 +175,10 @@ public class IncrementalChangeUpdateTest_Model extends ChangesTestBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

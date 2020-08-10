@@ -34,7 +34,7 @@ public class BuildSource_JavaExternalJarRef_SmartReference extends SubstituteMen
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_fdjpgz_a(), CONCEPTS.BuildSource_JavaExternalJarRef$ad));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_fdjpgz_a(), CONCEPTS.BuildSource_JavaExternalJarRef$GK));
     return result;
   }
 
@@ -55,7 +55,7 @@ public class BuildSource_JavaExternalJarRef_SmartReference extends SubstituteMen
 
     public SMP_ReferenceScope_fdjpgz_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.BuildSource_JavaExternalJarRef$ad, LINKS.jar$$56w);
+      super((SAbstractConcept) CONCEPTS.BuildSource_JavaExternalJarRef$GK, LINKS.jar$JLD3);
     }
     @NotNull
     @Override
@@ -87,7 +87,7 @@ public class BuildSource_JavaExternalJarRef_SmartReference extends SubstituteMen
       }
       @Override
       public String getMatchingText(String pattern) {
-        SNode contextProject = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.BuildProject$BF, true, false);
+        SNode contextProject = SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.BuildProject$ae, true, false);
         String target = null;
         if ((contextProject != null)) {
           Scope importedArtifactsScope = ScopeUtil.getVisibleJarsScope(contextProject);
@@ -96,7 +96,7 @@ public class BuildSource_JavaExternalJarRef_SmartReference extends SubstituteMen
           }
         }
         if (target == null) {
-          target = (SNodeOperations.isInstanceOf(referencedNode, CONCEPTS.BuildInputSingleFile$yn) ? BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(SNodeOperations.cast(referencedNode, CONCEPTS.BuildInputSingleFile$yn), LINKS.path$2hSz)) : BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(referencedNode));
+          target = (SNodeOperations.isInstanceOf(referencedNode, CONCEPTS.BuildInputSingleFile$4U) ? BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(SNodeOperations.cast(referencedNode, CONCEPTS.BuildInputSingleFile$4U), LINKS.path$dYr6)) : BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(referencedNode));
         }
         return target;
       }
@@ -113,13 +113,13 @@ public class BuildSource_JavaExternalJarRef_SmartReference extends SubstituteMen
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildSource_JavaExternalJarRef$ad = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb2f64cL, "jetbrains.mps.build.structure.BuildSource_JavaExternalJarRef");
-    /*package*/ static final SConcept BuildProject$BF = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
-    /*package*/ static final SConcept BuildInputSingleFile$yn = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, "jetbrains.mps.build.structure.BuildInputSingleFile");
+    /*package*/ static final SConcept BuildSource_JavaExternalJarRef$GK = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb2f64cL, "jetbrains.mps.build.structure.BuildSource_JavaExternalJarRef");
+    /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+    /*package*/ static final SConcept BuildInputSingleFile$4U = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, "jetbrains.mps.build.structure.BuildInputSingleFile");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink jar$$56w = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb2f64cL, 0x4ddcec86afb2f64dL, "jar");
-    /*package*/ static final SContainmentLink path$2hSz = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, 0x48d5d03db922459aL, "path");
+    /*package*/ static final SReferenceLink jar$JLD3 = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb2f64cL, 0x4ddcec86afb2f64dL, "jar");
+    /*package*/ static final SContainmentLink path$dYr6 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, 0x48d5d03db922459aL, "path");
   }
 }

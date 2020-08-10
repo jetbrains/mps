@@ -30,11 +30,11 @@ public class FindUsagesDescriptor extends BaseFindUsagesDescriptor {
 
   @Override
   public void init(FinderRegistry reg) {
-    reg.add(CONCEPTS.ConceptMethodDeclaration$VN, 0, "OverriddenMethods");
-    reg.add(CONCEPTS.ConceptMethodDeclaration$VN, 1, "OverridingMethods");
+    reg.add(CONCEPTS.ConceptMethodDeclaration$N0, 0, "OverriddenMethods");
+    reg.add(CONCEPTS.ConceptMethodDeclaration$N0, 1, "OverridingMethods");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptMethodDeclaration$VN = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
+    /*package*/ static final SConcept ConceptMethodDeclaration$N0 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
   }
 }

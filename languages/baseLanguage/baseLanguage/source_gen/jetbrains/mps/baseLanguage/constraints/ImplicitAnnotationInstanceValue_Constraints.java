@@ -32,7 +32,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class ImplicitAnnotationInstanceValue_Constraints extends BaseConstraintsDescriptor {
   public ImplicitAnnotationInstanceValue_Constraints() {
-    super(CONCEPTS.ImplicitAnnotationInstanceValue$o4);
+    super(CONCEPTS.ImplicitAnnotationInstanceValue$OQ);
   }
 
   @Override
@@ -52,7 +52,7 @@ public class ImplicitAnnotationInstanceValue_Constraints extends BaseConstraints
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.key$wMU9, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.key$bSmV, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -67,7 +67,7 @@ public class ImplicitAnnotationInstanceValue_Constraints extends BaseConstraints
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.ImplicitAnnotationMethodKind$WE);
+            Scope scope = Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.ImplicitAnnotationMethodKind$ps);
             return (scope == null ? new EmptyScope() : scope);
           }
         };
@@ -78,10 +78,10 @@ public class ImplicitAnnotationInstanceValue_Constraints extends BaseConstraints
     return references;
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.AnnotationInstance$5z)) {
-      SNode annotationInstance = SNodeOperations.cast(parentNode, CONCEPTS.AnnotationInstance$5z);
-      if (ListSequence.fromList(SLinkOperations.getChildren(annotationInstance, LINKS.value$NE_P)).count() <= 1) {
-        if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(annotationInstance, LINKS.annotation$lXdy), LINKS.method$U$bY)).count() == 1) {
+    if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.AnnotationInstance$yl)) {
+      SNode annotationInstance = SNodeOperations.cast(parentNode, CONCEPTS.AnnotationInstance$yl);
+      if (ListSequence.fromList(SLinkOperations.getChildren(annotationInstance, LINKS.value$uK2B)).count() <= 1) {
+        if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(annotationInstance, LINKS.annotation$12Ek), LINKS.method$_DCK)).count() == 1) {
           return true;
         }
       }
@@ -92,15 +92,15 @@ public class ImplicitAnnotationInstanceValue_Constraints extends BaseConstraints
   private static final SNodePointer breakingNode_b29p6n_a0a0a0a0a1a0a0a0d = new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "7898359107948137098");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ImplicitAnnotationInstanceValue$o4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x23cf7b405b3b9761L, "jetbrains.mps.baseLanguage.structure.ImplicitAnnotationInstanceValue");
-    /*package*/ static final SInterfaceConcept ImplicitAnnotationMethodKind$WE = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5ce6f8ed8648519aL, "jetbrains.mps.baseLanguage.structure.ImplicitAnnotationMethodKind");
-    /*package*/ static final SConcept AnnotationInstance$5z = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, "jetbrains.mps.baseLanguage.structure.AnnotationInstance");
+    /*package*/ static final SConcept ImplicitAnnotationInstanceValue$OQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x23cf7b405b3b9761L, "jetbrains.mps.baseLanguage.structure.ImplicitAnnotationInstanceValue");
+    /*package*/ static final SInterfaceConcept ImplicitAnnotationMethodKind$ps = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5ce6f8ed8648519aL, "jetbrains.mps.baseLanguage.structure.ImplicitAnnotationMethodKind");
+    /*package*/ static final SConcept AnnotationInstance$yl = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, "jetbrains.mps.baseLanguage.structure.AnnotationInstance");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink key$wMU9 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71b44e3L, "key");
-    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
-    /*package*/ static final SContainmentLink method$U$bY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x101f2cc410bL, "method");
-    /*package*/ static final SContainmentLink value$NE_P = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a71c697fL, "value");
+    /*package*/ static final SReferenceLink key$bSmV = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a71b1af4L, 0x114a71b44e3L, "key");
+    /*package*/ static final SReferenceLink annotation$12Ek = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink method$_DCK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x101f2cc410bL, "method");
+    /*package*/ static final SContainmentLink value$uK2B = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a71c697fL, "value");
   }
 }

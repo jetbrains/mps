@@ -109,15 +109,15 @@ public class CollectionAppendPartWithSeparator extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SPropertyOperations.assign(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.CollectionAppendPart$vw), PROPS.withSeparator$SP0A, true);
+        SPropertyOperations.assign(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.CollectionAppendPart$I2), PROPS.withSeparator$Pdf8, true);
         SelectionUtil.selectCell(_context.getEditorContext(), SNodeOperations.getParent(_context.getNode()), SelectionManager.LAST_EDITABLE_CELL);
       }
 
       @Override
       public boolean canExecute(@NotNull String pattern) {
-        if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.CollectionAppendPart$vw)) {
-          SNode part = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.CollectionAppendPart$vw);
-          return !((SPropertyOperations.getBoolean(part, PROPS.withSeparator$SP0A) || isNotEmptyString(SPropertyOperations.getString(part, PROPS.separator$nvou))));
+        if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.CollectionAppendPart$I2)) {
+          SNode part = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.CollectionAppendPart$I2);
+          return !((SPropertyOperations.getBoolean(part, PROPS.withSeparator$Pdf8) || isNotEmptyString(SPropertyOperations.getString(part, PROPS.separator$jRB0))));
         }
         return false;
       }
@@ -149,11 +149,11 @@ public class CollectionAppendPartWithSeparator extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CollectionAppendPart$vw = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x1201527819cL, "jetbrains.mps.lang.textGen.structure.CollectionAppendPart");
+    /*package*/ static final SConcept CollectionAppendPart$I2 = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x1201527819cL, "jetbrains.mps.lang.textGen.structure.CollectionAppendPart");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty withSeparator$SP0A = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x1201527819cL, 0x1203d98429fL, "withSeparator");
-    /*package*/ static final SProperty separator$nvou = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x1201527819cL, 0x120152f5107L, "separator");
+    /*package*/ static final SProperty withSeparator$Pdf8 = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x1201527819cL, 0x1203d98429fL, "withSeparator");
+    /*package*/ static final SProperty separator$jRB0 = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x1201527819cL, 0x120152f5107L, "separator");
   }
 }

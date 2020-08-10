@@ -28,7 +28,7 @@ public class SimpleBuilderParameterReference_SubstituteMenu extends SubstituteMe
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_b5ripy_a(), CONCEPTS.SimpleBuilderParameterReference$6Y));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_b5ripy_a(), CONCEPTS.SimpleBuilderParameterReference$6D));
     result.add(new SMP_Subconcepts_b5ripy_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class SimpleBuilderParameterReference_SubstituteMenu extends SubstituteMe
 
     public SMP_ReferenceScope_b5ripy_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.SimpleBuilderParameterReference$6Y, LINKS.parameter$Rzv0);
+      super((SAbstractConcept) CONCEPTS.SimpleBuilderParameterReference$6D, LINKS.parameter$k4uF);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class SimpleBuilderParameterReference_SubstituteMenu extends SubstituteMe
   }
   public class SMP_Subconcepts_b5ripy_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.SimpleBuilderParameterReference$6Y);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.SimpleBuilderParameterReference$6D);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class SimpleBuilderParameterReference_SubstituteMenu extends SubstituteMe
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SimpleBuilderParameterReference$6Y = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4b4c01fdd9029ce4L, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilderParameterReference");
+    /*package*/ static final SConcept SimpleBuilderParameterReference$6D = MetaAdapterFactory.getConcept(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4b4c01fdd9029ce4L, "jetbrains.mps.baseLanguage.builders.structure.SimpleBuilderParameterReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink parameter$Rzv0 = MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4b4c01fdd9029ce4L, 0x4b4c01fdd9029ce5L, "parameter");
+    /*package*/ static final SReferenceLink parameter$k4uF = MetaAdapterFactory.getReferenceLink(0x132aa4d8a3f7441cL, 0xa7eb3fce23492c6aL, 0x4b4c01fdd9029ce4L, 0x4b4c01fdd9029ce5L, "parameter");
   }
 }

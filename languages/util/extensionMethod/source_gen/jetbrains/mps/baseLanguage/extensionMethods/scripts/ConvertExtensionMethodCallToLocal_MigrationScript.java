@@ -37,37 +37,37 @@ public final class ConvertExtensionMethodCallToLocal_MigrationScript extends Bas
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.InstanceMethodCallOperation$1G;
+        return CONCEPTS.InstanceMethodCallOperation$uu;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        if (!(SNodeOperations.isInstanceOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(node), CONCEPTS.ThisExtensionExpression$UG))) {
+        if (!(SNodeOperations.isInstanceOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(node), CONCEPTS.ThisExtensionExpression$8t))) {
           return false;
         }
-        SNode declaration = SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$ItxI);
-        SNode classifier = ExtensionMethodDeclaration__BehaviorDescriptor.getClassifier_id6EBM_lhz9HU.invoke(SNodeOperations.getNodeAncestor(node, CONCEPTS.ExtensionMethodDeclaration$9b, false, false));
+        SNode declaration = SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$pyYw);
+        SNode classifier = ExtensionMethodDeclaration__BehaviorDescriptor.getClassifier_id6EBM_lhz9HU.invoke(SNodeOperations.getNodeAncestor(node, CONCEPTS.ExtensionMethodDeclaration$mW, false, false));
         if (classifier == null) {
           return false;
         }
-        SNode declarationClassifier = SNodeOperations.getNodeAncestor(declaration, CONCEPTS.Classifier$hJ, false, false);
+        SNode declarationClassifier = SNodeOperations.getNodeAncestor(declaration, CONCEPTS.Classifier$Ix, false, false);
         if (!((classifier == declarationClassifier || ListSequence.fromList(SNodeOperations.getNodeAncestors(classifier, null, false)).contains(declarationClassifier)))) {
           return false;
         }
         while (classifier != declarationClassifier) {
           for (SNode method : Members.visibleInstanceMethods(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(classifier), node)) {
-            if (SPropertyOperations.getString(method, PROPS.name$lA7v).equals(SPropertyOperations.getString(declaration, PROPS.name$lA7v))) {
+            if (SPropertyOperations.getString(method, PROPS.name$MnvL).equals(SPropertyOperations.getString(declaration, PROPS.name$MnvL))) {
               return false;
             }
           }
-          classifier = SNodeOperations.getNodeAncestor(classifier, CONCEPTS.Classifier$hJ, false, false);
+          classifier = SNodeOperations.getNodeAncestor(classifier, CONCEPTS.Classifier$Ix, false, false);
         }
         return true;
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNode methodCall = SNodeOperations.replaceWithNewChild(SNodeOperations.getParent(node), CONCEPTS.LocalExtendedMethodCall$nt);
-        SLinkOperations.setTarget(methodCall, LINKS.baseMethodDeclaration$ItxI, SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$ItxI));
-        ListSequence.fromList(SLinkOperations.getChildren(methodCall, LINKS.actualArgument$ItKJ)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$ItKJ)));
+        SNode methodCall = SNodeOperations.replaceWithNewChild(SNodeOperations.getParent(node), CONCEPTS.LocalExtendedMethodCall$_e);
+        SLinkOperations.setTarget(methodCall, LINKS.baseMethodDeclaration$pyYw, SLinkOperations.getTarget(node, LINKS.baseMethodDeclaration$pyYw));
+        ListSequence.fromList(SLinkOperations.getChildren(methodCall, LINKS.actualArgument$pzdx)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$pzdx)));
       }
       @Override
       public boolean isShowAsIntention() {
@@ -83,19 +83,19 @@ public final class ConvertExtensionMethodCallToLocal_MigrationScript extends Bas
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InstanceMethodCallOperation$1G = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
-    /*package*/ static final SConcept ThisExtensionExpression$UG = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x2e076d2695911333L, "jetbrains.mps.baseLanguage.extensionMethods.structure.ThisExtensionExpression");
-    /*package*/ static final SConcept ExtensionMethodDeclaration$9b = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x1583d1b63365e7f9L, "jetbrains.mps.baseLanguage.extensionMethods.structure.ExtensionMethodDeclaration");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept LocalExtendedMethodCall$nt = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x6aa7ca55518b9170L, "jetbrains.mps.baseLanguage.extensionMethods.structure.LocalExtendedMethodCall");
+    /*package*/ static final SConcept InstanceMethodCallOperation$uu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation");
+    /*package*/ static final SConcept ThisExtensionExpression$8t = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x2e076d2695911333L, "jetbrains.mps.baseLanguage.extensionMethods.structure.ThisExtensionExpression");
+    /*package*/ static final SConcept ExtensionMethodDeclaration$mW = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x1583d1b63365e7f9L, "jetbrains.mps.baseLanguage.extensionMethods.structure.ExtensionMethodDeclaration");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept LocalExtendedMethodCall$_e = MetaAdapterFactory.getConcept(0x5dc5fc0d37ef4782L, 0x81928b5ce1f69f80L, 0x6aa7ca55518b9170L, "jetbrains.mps.baseLanguage.extensionMethods.structure.LocalExtendedMethodCall");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

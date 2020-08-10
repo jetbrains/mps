@@ -50,12 +50,12 @@ public class FloatConstantType_Test extends BaseTransformationTest {
 
     public void test_testTypes() throws Exception {
       addNodeById("5868639094257179247");
-      assert SNodeOperations.isInstanceOf(SNodeOperations.cast(getNodeById("5868639094257266015"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x102cb19a434L, "FloatingPointConstant"))), CONCEPTS.FloatingPointConstant$AA);
-      assert SNodeOperations.isInstanceOf(SNodeOperations.cast(getNodeById("5868639094257283261"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x102cb19a434L, "FloatingPointConstant"))), CONCEPTS.FloatingPointConstant$AA);
-      assert SNodeOperations.isInstanceOf(SNodeOperations.cast(getNodeById("5868639094257285927"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x494547eeedc219b9L, "FloatingPointFloatConstant"))), CONCEPTS.FloatingPointFloatConstant$pv);
-      assert SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SNodeOperations.cast(getNodeById("5868639094257266015"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x102cb19a434L, "FloatingPointConstant")))), CONCEPTS.DoubleType$4e);
-      assert SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SNodeOperations.cast(getNodeById("5868639094257283261"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x102cb19a434L, "FloatingPointConstant")))), CONCEPTS.DoubleType$4e);
-      assert SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SNodeOperations.cast(getNodeById("5868639094257285927"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x494547eeedc219b9L, "FloatingPointFloatConstant")))), CONCEPTS.FloatType$1B);
+      assert SNodeOperations.isInstanceOf(SNodeOperations.cast(getNodeById("5868639094257266015"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x102cb19a434L, "FloatingPointConstant"))), CONCEPTS.FloatingPointConstant$3o);
+      assert SNodeOperations.isInstanceOf(SNodeOperations.cast(getNodeById("5868639094257283261"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x102cb19a434L, "FloatingPointConstant"))), CONCEPTS.FloatingPointConstant$3o);
+      assert SNodeOperations.isInstanceOf(SNodeOperations.cast(getNodeById("5868639094257285927"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x494547eeedc219b9L, "FloatingPointFloatConstant"))), CONCEPTS.FloatingPointFloatConstant$Qh);
+      assert SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SNodeOperations.cast(getNodeById("5868639094257266015"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x102cb19a434L, "FloatingPointConstant")))), CONCEPTS.DoubleType$x0);
+      assert SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SNodeOperations.cast(getNodeById("5868639094257283261"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x102cb19a434L, "FloatingPointConstant")))), CONCEPTS.DoubleType$x0);
+      assert SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SNodeOperations.cast(getNodeById("5868639094257285927"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x494547eeedc219b9L, "FloatingPointFloatConstant")))), CONCEPTS.FloatType$up);
     }
 
     public void test_ErrorMessagesCheck5868639094267614275() throws Exception {
@@ -67,9 +67,9 @@ public class FloatConstantType_Test extends BaseTransformationTest {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept FloatingPointConstant$AA = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102cb19a434L, "jetbrains.mps.baseLanguage.structure.FloatingPointConstant");
-    /*package*/ static final SConcept FloatingPointFloatConstant$pv = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x494547eeedc219b9L, "jetbrains.mps.baseLanguage.structure.FloatingPointFloatConstant");
-    /*package*/ static final SConcept DoubleType$4e = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d451a6L, "jetbrains.mps.baseLanguage.structure.DoubleType");
-    /*package*/ static final SConcept FloatType$1B = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d327fdL, "jetbrains.mps.baseLanguage.structure.FloatType");
+    /*package*/ static final SConcept FloatingPointConstant$3o = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102cb19a434L, "jetbrains.mps.baseLanguage.structure.FloatingPointConstant");
+    /*package*/ static final SConcept FloatingPointFloatConstant$Qh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x494547eeedc219b9L, "jetbrains.mps.baseLanguage.structure.FloatingPointFloatConstant");
+    /*package*/ static final SConcept DoubleType$x0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d451a6L, "jetbrains.mps.baseLanguage.structure.DoubleType");
+    /*package*/ static final SConcept FloatType$up = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d327fdL, "jetbrains.mps.baseLanguage.structure.FloatType");
   }
 }

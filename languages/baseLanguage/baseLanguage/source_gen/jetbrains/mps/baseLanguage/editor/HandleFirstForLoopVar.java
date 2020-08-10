@@ -27,15 +27,15 @@ public class HandleFirstForLoopVar {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.variable$4Igk))) {
+        if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.variable$JNH6))) {
           return;
         }
-        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.additionalVar$QrML)).isEmpty()) {
-          SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.variable$4Igk));
+        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.additionalVar$xxfz)).isEmpty()) {
+          SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.variable$JNH6));
         } else {
-          SNode var = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.additionalVar$QrML)).removeElementAt(0);
-          SNode n = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalVariableDeclaration$Bf, var);
-          SNodeOperations.replaceWithAnother(SLinkOperations.getTarget(node, LINKS.variable$4Igk), n);
+          SNode var = ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.additionalVar$xxfz)).removeElementAt(0);
+          SNode n = SNodeFactoryOperations.createNewNode(CONCEPTS.LocalVariableDeclaration$41, var);
+          SNodeOperations.replaceWithAnother(SLinkOperations.getTarget(node, LINKS.variable$JNH6), n);
         }
       }
 
@@ -47,7 +47,7 @@ public class HandleFirstForLoopVar {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.additionalVar$QrML)).insertElement(0, SNodeFactoryOperations.createNewNode(CONCEPTS.AdditionalForLoopVariable$KW, SLinkOperations.getTarget(node, LINKS.variable$4Igk)));
+        ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.additionalVar$xxfz)).insertElement(0, SNodeFactoryOperations.createNewNode(CONCEPTS.AdditionalForLoopVariable$dI, SLinkOperations.getTarget(node, LINKS.variable$JNH6)));
       }
 
     };
@@ -99,12 +99,12 @@ public class HandleFirstForLoopVar {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink variable$4Igk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
-    /*package*/ static final SContainmentLink additionalVar$QrML = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0xe5318742b9d1411L, "additionalVar");
+    /*package*/ static final SContainmentLink variable$JNH6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a697996feL, 0x10a6979f36bL, "variable");
+    /*package*/ static final SContainmentLink additionalVar$xxfz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, 0xe5318742b9d1411L, "additionalVar");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LocalVariableDeclaration$Bf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
-    /*package*/ static final SConcept AdditionalForLoopVariable$KW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x19659b074928781eL, "jetbrains.mps.baseLanguage.structure.AdditionalForLoopVariable");
+    /*package*/ static final SConcept LocalVariableDeclaration$41 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
+    /*package*/ static final SConcept AdditionalForLoopVariable$dI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x19659b074928781eL, "jetbrains.mps.baseLanguage.structure.AdditionalForLoopVariable");
   }
 }

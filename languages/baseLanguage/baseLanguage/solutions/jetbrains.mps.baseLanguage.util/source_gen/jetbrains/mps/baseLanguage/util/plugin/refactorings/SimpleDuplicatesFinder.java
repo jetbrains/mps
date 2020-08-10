@@ -21,7 +21,7 @@ public class SimpleDuplicatesFinder {
   }
   public List<SNode> findDuplicates(SNode root) {
     List<SNode> found = new ArrayList<SNode>();
-    for (SNode node : ListSequence.fromList(SNodeOperations.getNodeDescendants(root, CONCEPTS.BaseConcept$Sz, false, new SAbstractConcept[]{}))) {
+    for (SNode node : ListSequence.fromList(SNodeOperations.getNodeDescendants(root, CONCEPTS.BaseConcept$gP, false, new SAbstractConcept[]{}))) {
       if (node != this.myNodeToMatch && MatchingUtil.matchNodes(node, this.myNodeToMatch)) {
         ListSequence.fromList(found).addElement(node);
       }
@@ -30,6 +30,6 @@ public class SimpleDuplicatesFinder {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }

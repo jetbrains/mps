@@ -141,7 +141,7 @@ public class ExpressionPatternProvider extends TransformationMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return CONCEPTS.AbstractPatternProvider$LR;
+      return CONCEPTS.AbstractPatternProvider$Zq;
     }
 
 
@@ -188,6 +188,6 @@ public class ExpressionPatternProvider extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractPatternProvider$LR = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18b16ecfbL, "jetbrains.mps.lang.pattern.structure.AbstractPatternProvider");
+    /*package*/ static final SConcept AbstractPatternProvider$Zq = MetaAdapterFactory.getConcept(0xd4615e3bd6714ba9L, 0xaf012b78369b0ba7L, 0x174c7ed18b16ecfbL, "jetbrains.mps.lang.pattern.structure.AbstractPatternProvider");
   }
 }

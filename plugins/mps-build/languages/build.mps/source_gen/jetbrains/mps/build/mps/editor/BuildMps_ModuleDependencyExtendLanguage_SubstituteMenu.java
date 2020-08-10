@@ -32,7 +32,7 @@ public class BuildMps_ModuleDependencyExtendLanguage_SubstituteMenu extends Subs
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_pjk97t_a(), CONCEPTS.BuildMps_ModuleDependencyExtendLanguage$$$));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_pjk97t_a(), CONCEPTS.BuildMps_ModuleDependencyExtendLanguage$W));
     result.add(new SMP_Subconcepts_pjk97t_b());
     return result;
   }
@@ -54,7 +54,7 @@ public class BuildMps_ModuleDependencyExtendLanguage_SubstituteMenu extends Subs
 
     public SMP_ReferenceScope_pjk97t_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.BuildMps_ModuleDependencyExtendLanguage$$$, LINKS.language$kMx1);
+      super((SAbstractConcept) CONCEPTS.BuildMps_ModuleDependencyExtendLanguage$W, LINKS.language$NYXp);
     }
     @NotNull
     @Override
@@ -101,7 +101,7 @@ public class BuildMps_ModuleDependencyExtendLanguage_SubstituteMenu extends Subs
   }
   public class SMP_Subconcepts_pjk97t_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BuildMps_ModuleDependencyExtendLanguage$$$);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BuildMps_ModuleDependencyExtendLanguage$W);
     }
     @NotNull
     @Override
@@ -122,10 +122,10 @@ public class BuildMps_ModuleDependencyExtendLanguage_SubstituteMenu extends Subs
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildMps_ModuleDependencyExtendLanguage$$$ = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c19032eL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyExtendLanguage");
+    /*package*/ static final SConcept BuildMps_ModuleDependencyExtendLanguage$W = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c19032eL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyExtendLanguage");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink language$kMx1 = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c19032eL, 0x3b60c4a45c190330L, "language");
+    /*package*/ static final SReferenceLink language$NYXp = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c19032eL, 0x3b60c4a45c190330L, "language");
   }
 }

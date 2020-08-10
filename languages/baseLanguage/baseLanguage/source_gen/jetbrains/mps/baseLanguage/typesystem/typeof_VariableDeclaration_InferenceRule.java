@@ -23,15 +23,15 @@ public class typeof_VariableDeclaration_InferenceRule extends AbstractInferenceR
   public typeof_VariableDeclaration_InferenceRule() {
   }
   public void applyRule(final SNode variableDeclaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode initializer = SLinkOperations.getTarget(variableDeclaration, LINKS.initializer$no3R);
+    SNode initializer = SLinkOperations.getTarget(variableDeclaration, LINKS.initializer$2twD);
     SConcept sconcept = SNodeOperations.getConcept(initializer);
     boolean abstractInitializer = sconcept != null && sconcept.isAbstract();
     if ((initializer != null)) {
-      if (abstractInitializer && ((SLinkOperations.getTarget(variableDeclaration, LINKS.type$uWuc) == null) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(variableDeclaration, LINKS.type$uWuc))), CONCEPTS.Type$IG))) {
+      if (abstractInitializer && ((SLinkOperations.getTarget(variableDeclaration, LINKS.type$a1UY) == null) || SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(variableDeclaration, LINKS.type$a1UY))), CONCEPTS.Type$bu))) {
         // needed for MPS-20925 
         return;
       } else {
-        if (!((CheckingUtil.isValidByteOrShortExpression(SLinkOperations.getTarget(variableDeclaration, LINKS.type$uWuc), initializer)))) {
+        if (!((CheckingUtil.isValidByteOrShortExpression(SLinkOperations.getTarget(variableDeclaration, LINKS.type$a1UY), initializer)))) {
           if (!(typeCheckingContext.isSingleTypeComputation())) {
             {
               SNode _nodeToCheck_1029348928467 = variableDeclaration;
@@ -81,7 +81,7 @@ public class typeof_VariableDeclaration_InferenceRule extends AbstractInferenceR
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.VariableDeclaration$xe;
+    return CONCEPTS.VariableDeclaration$Y0;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -97,12 +97,12 @@ public class typeof_VariableDeclaration_InferenceRule extends AbstractInferenceR
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink initializer$2twD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
-    /*package*/ static final SConcept VariableDeclaration$xe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept VariableDeclaration$Y0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
   }
 }

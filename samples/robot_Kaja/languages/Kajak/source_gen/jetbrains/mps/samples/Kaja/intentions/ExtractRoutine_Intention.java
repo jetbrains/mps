@@ -56,14 +56,14 @@ public final class ExtractRoutine_Intention extends AbstractIntentionDescriptor 
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode routineDefinition = SNodeFactoryOperations.createNewNode(CONCEPTS.RoutineDefinition$2l, null);
+      SNode routineDefinition = SNodeFactoryOperations.createNewNode(CONCEPTS.RoutineDefinition$Gg, null);
       List<SNode> selectedNodes = editorContext.getSelectedNodes();
-      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(node, CONCEPTS.Script$1X, true, false), LINKS.body$U29_), LINKS.commands$Gpbw)).addElement(routineDefinition);
+      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(node, CONCEPTS.Script$FS, true, false), LINKS.body$KJNw), LINKS.commands$z6Pr)).addElement(routineDefinition);
       SNode call = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f92L, "jetbrains.mps.samples.Kaja.structure.RoutineCall"));
-      SLinkOperations.setTarget(call, LINKS.definition$SqZ9, routineDefinition);
+      SLinkOperations.setTarget(call, LINKS.definition$J8D4, routineDefinition);
       SNodeOperations.insertPrevSiblingChild(ListSequence.fromList(selectedNodes).first(), call);
       for (SNode selectedNode : ListSequence.fromList(selectedNodes)) {
-        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(routineDefinition, LINKS.body$j6zR), LINKS.commands$Gpbw)).addElement(SNodeOperations.getNodeAncestor(selectedNode, CONCEPTS.AbstractCommand$3T, true, false));
+        ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(routineDefinition, LINKS.body$9OdM), LINKS.commands$z6Pr)).addElement(SNodeOperations.getNodeAncestor(selectedNode, CONCEPTS.AbstractCommand$HO, true, false));
       }
       editorContext.selectWRTFocusPolicy(routineDefinition);
     }
@@ -74,15 +74,15 @@ public final class ExtractRoutine_Intention extends AbstractIntentionDescriptor 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RoutineDefinition$2l = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f79L, "jetbrains.mps.samples.Kaja.structure.RoutineDefinition");
-    /*package*/ static final SConcept Script$1X = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc45746L, "jetbrains.mps.samples.Kaja.structure.Script");
-    /*package*/ static final SConcept AbstractCommand$3T = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL, "jetbrains.mps.samples.Kaja.structure.AbstractCommand");
+    /*package*/ static final SConcept RoutineDefinition$Gg = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f79L, "jetbrains.mps.samples.Kaja.structure.RoutineDefinition");
+    /*package*/ static final SConcept Script$FS = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc45746L, "jetbrains.mps.samples.Kaja.structure.Script");
+    /*package*/ static final SConcept AbstractCommand$HO = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL, "jetbrains.mps.samples.Kaja.structure.AbstractCommand");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$U29_ = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc45746L, 0x2d523c5e4cc4574cL, "body");
-    /*package*/ static final SContainmentLink commands$Gpbw = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL, 0x2de971c785f06a40L, "commands");
-    /*package*/ static final SReferenceLink definition$SqZ9 = MetaAdapterFactory.getReferenceLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f92L, 0x2de971c785ede3ccL, "definition");
-    /*package*/ static final SContainmentLink body$j6zR = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f79L, 0x2de971c785ed6f7cL, "body");
+    /*package*/ static final SContainmentLink body$KJNw = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc45746L, 0x2d523c5e4cc4574cL, "body");
+    /*package*/ static final SContainmentLink commands$z6Pr = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785f06a3fL, 0x2de971c785f06a40L, "commands");
+    /*package*/ static final SReferenceLink definition$J8D4 = MetaAdapterFactory.getReferenceLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f92L, 0x2de971c785ede3ccL, "definition");
+    /*package*/ static final SContainmentLink body$9OdM = MetaAdapterFactory.getContainmentLink(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ed6f79L, 0x2de971c785ed6f7cL, "body");
   }
 }

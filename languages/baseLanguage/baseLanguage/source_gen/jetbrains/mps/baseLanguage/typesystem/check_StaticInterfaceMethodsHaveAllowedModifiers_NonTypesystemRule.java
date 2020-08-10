@@ -23,13 +23,13 @@ public class check_StaticInterfaceMethodsHaveAllowedModifiers_NonTypesystemRule 
   }
   public void applyRule(final SNode intfc, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     for (SNode staticMethod : Sequence.fromIterable(Classifier__BehaviorDescriptor.staticMethods_id7fFTwQrQPHW.invoke(intfc))) {
-      if (SPropertyOperations.getBoolean(staticMethod, PROPS.isSynchronized$q3tZ)) {
+      if (SPropertyOperations.getBoolean(staticMethod, PROPS.isSynchronized$58UL)) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(staticMethod, "Modifier 'synchronized' is not allowed here", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7197377355156014714", null, errorTarget);
         }
       }
-      if (SPropertyOperations.getBoolean(staticMethod, PROPS.isNative$1I9T)) {
+      if (SPropertyOperations.getBoolean(staticMethod, PROPS.isNative$GNAF)) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(staticMethod, "Modifier 'native' is not allowed here", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7197377355156015810", null, errorTarget);
@@ -38,7 +38,7 @@ public class check_StaticInterfaceMethodsHaveAllowedModifiers_NonTypesystemRule 
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Interface$Kp;
+    return CONCEPTS.Interface$db;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -48,11 +48,11 @@ public class check_StaticInterfaceMethodsHaveAllowedModifiers_NonTypesystemRule 
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isSynchronized$q3tZ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x3b576cda23612c7aL, "isSynchronized");
-    /*package*/ static final SProperty isNative$1I9T = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, 0x73f30e3df95c0b73L, "isNative");
+    /*package*/ static final SProperty isSynchronized$58UL = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x3b576cda23612c7aL, "isSynchronized");
+    /*package*/ static final SProperty isNative$GNAF = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, 0x73f30e3df95c0b73L, "isNative");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
   }
 }

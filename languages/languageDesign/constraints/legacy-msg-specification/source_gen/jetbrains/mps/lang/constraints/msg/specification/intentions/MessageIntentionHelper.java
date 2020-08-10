@@ -40,7 +40,7 @@ public class MessageIntentionHelper {
 
   @Nullable
   public SNode addProblemCustomization(SNode nodeInConstraintsRoot, EditorContext context) {
-    SNode language = SNodeOperations.cast(SModelOperations.getModuleStub(SNodeOperations.getModel(nodeInConstraintsRoot)), CONCEPTS.Language$jx);
+    SNode language = SNodeOperations.cast(SModelOperations.getModuleStub(SNodeOperations.getModel(nodeInConstraintsRoot)), CONCEPTS.Language$yT);
     SModuleReference ref = PersistenceFacade.getInstance().createModuleReference(Module__BehaviorDescriptor.getModuleReference_id7OJukvJ5PmG.invoke(language));
     SModule lang = ref.resolve(context.getRepository());
     if (false == lang instanceof Language) {
@@ -57,24 +57,24 @@ public class MessageIntentionHelper {
       feedbackModel = feedbackAspect.getAspectModels(lang).stream().findAny().orElse(null);
     }
     assert feedbackModel != null;
-    List<SNode> roots = SModelOperations.roots(feedbackModel, CONCEPTS.FeedbackPerConceptRoot$oJ);
+    List<SNode> roots = SModelOperations.roots(feedbackModel, CONCEPTS.FeedbackPerConceptRoot$Vm);
     SNode newFeedbackRoot = ListSequence.fromList(roots).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Objects.equals(SLinkOperations.getTarget(it, LINKS.concept$HGgS), myConcept);
+        return Objects.equals(SLinkOperations.getTarget(it, LINKS.concept$NMNv), myConcept);
       }
     });
     if (newFeedbackRoot == null) {
       newFeedbackRoot = SModelOperations.createNewRootNode(feedbackModel, MetaAdapterFactory.getConcept(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, "jetbrains.mps.lang.feedback.skeleton.structure.FeedbackPerConceptRoot"));
-      SLinkOperations.setTarget(newFeedbackRoot, LINKS.concept$HGgS, myConcept);
+      SLinkOperations.setTarget(newFeedbackRoot, LINKS.concept$NMNv, myConcept);
     }
     assert newFeedbackRoot != null;
-    SNode newMessage = SNodeFactoryOperations.addNewChild(newFeedbackRoot, LINKS.feedbacks$$ue8, CONCEPTS.ShowMessage$3M);
-    SLinkOperations.setTarget(newMessage, LINKS.problem$I8FR, myProblem);
-    SLinkOperations.setTarget(newMessage, LINKS.message$ZrUE, SNodeFactoryOperations.createNewNode(CONCEPTS.CombinedMessageExpression$e_, null));
+    SNode newMessage = SNodeFactoryOperations.addNewChild(newFeedbackRoot, LINKS.feedbacks$E$KJ, CONCEPTS.ShowMessage$2L);
+    SLinkOperations.setTarget(newMessage, LINKS.problem$CvIq, myProblem);
+    SLinkOperations.setTarget(newMessage, LINKS.message$imTD, SNodeFactoryOperations.createNewNode(CONCEPTS.CombinedMessageExpression$6z, null));
     EditorPanelManager editorPanelManager = context.getEditorPanelManager();
     if (editorPanelManager != null) {
       editorPanelManager.openEditor(newFeedbackRoot);
-      context.selectWRTFocusPolicy(SLinkOperations.getTarget(newMessage, LINKS.message$ZrUE));
+      context.selectWRTFocusPolicy(SLinkOperations.getTarget(newMessage, LINKS.message$imTD));
     }
     SModel structureModel = SNodeOperations.getModel(myConcept);
     ModelImporter importer = new ModelImporter(SNodeOperations.getModel(newMessage));
@@ -84,16 +84,16 @@ public class MessageIntentionHelper {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Language$jx = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, "jetbrains.mps.lang.project.structure.Language");
-    /*package*/ static final SConcept FeedbackPerConceptRoot$oJ = MetaAdapterFactory.getConcept(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, "jetbrains.mps.lang.feedback.skeleton.structure.FeedbackPerConceptRoot");
-    /*package*/ static final SConcept ShowMessage$3M = MetaAdapterFactory.getConcept(0x16e76fe395344defL, 0xafb7925a169a7c0bL, 0x6530303593ae1651L, "jetbrains.mps.lang.feedback.messages.structure.ShowMessage");
-    /*package*/ static final SConcept CombinedMessageExpression$e_ = MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, "jetbrains.mps.lang.messages.structure.CombinedMessageExpression");
+    /*package*/ static final SConcept Language$yT = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1fL, "jetbrains.mps.lang.project.structure.Language");
+    /*package*/ static final SConcept FeedbackPerConceptRoot$Vm = MetaAdapterFactory.getConcept(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, "jetbrains.mps.lang.feedback.skeleton.structure.FeedbackPerConceptRoot");
+    /*package*/ static final SConcept ShowMessage$2L = MetaAdapterFactory.getConcept(0x16e76fe395344defL, 0xafb7925a169a7c0bL, 0x6530303593ae1651L, "jetbrains.mps.lang.feedback.messages.structure.ShowMessage");
+    /*package*/ static final SConcept CombinedMessageExpression$6z = MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, "jetbrains.mps.lang.messages.structure.CombinedMessageExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$HGgS = MetaAdapterFactory.getReferenceLink(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, 0x63c2f3669ce56d5dL, "concept");
-    /*package*/ static final SContainmentLink feedbacks$$ue8 = MetaAdapterFactory.getContainmentLink(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, 0x6530303593ae9cf2L, "feedbacks");
-    /*package*/ static final SContainmentLink problem$I8FR = MetaAdapterFactory.getContainmentLink(0xcd17a113ca4e472fL, 0xa8dec49008f9eea8L, 0x573ae5b8b8ccc349L, 0x573ae5b8b8ccc34cL, "problem");
-    /*package*/ static final SContainmentLink message$ZrUE = MetaAdapterFactory.getContainmentLink(0x16e76fe395344defL, 0xafb7925a169a7c0bL, 0x6530303593ae1651L, 0x48f860fc0e362dc8L, "message");
+    /*package*/ static final SReferenceLink concept$NMNv = MetaAdapterFactory.getReferenceLink(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, 0x63c2f3669ce56d5dL, "concept");
+    /*package*/ static final SContainmentLink feedbacks$E$KJ = MetaAdapterFactory.getContainmentLink(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, 0x6530303593ae9cf2L, "feedbacks");
+    /*package*/ static final SContainmentLink problem$CvIq = MetaAdapterFactory.getContainmentLink(0xcd17a113ca4e472fL, 0xa8dec49008f9eea8L, 0x573ae5b8b8ccc349L, 0x573ae5b8b8ccc34cL, "problem");
+    /*package*/ static final SContainmentLink message$imTD = MetaAdapterFactory.getContainmentLink(0x16e76fe395344defL, 0xafb7925a169a7c0bL, 0x6530303593ae1651L, 0x48f860fc0e362dc8L, "message");
   }
 }

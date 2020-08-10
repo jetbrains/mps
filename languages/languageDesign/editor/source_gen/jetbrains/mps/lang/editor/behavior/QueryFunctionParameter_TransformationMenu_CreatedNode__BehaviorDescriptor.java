@@ -36,9 +36,9 @@ public final class QueryFunctionParameter_TransformationMenu_CreatedNode__Behavi
   }
 
   /*package*/ static SNode getType_id27DJnJtIQ9C(@NotNull SNode __thisNode__) {
-    SNode ancestor = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.TransformationMenuPart_WrapSubstituteMenu$f1, false, false);
+    SNode ancestor = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.TransformationMenuPart_WrapSubstituteMenu$qC, false, false);
     if (ancestor != null) {
-      return _quotation_createNode_42hqo4_a0a1a0(IMenuReference__BehaviorDescriptor.getApplicableConcept_id1quYWAD4TFX.invoke(SLinkOperations.getTarget(ancestor, LINKS.menuReference$z7ww)));
+      return _quotation_createNode_42hqo4_a0a1a0(IMenuReference__BehaviorDescriptor.getApplicableConcept_id1quYWAD4TFX.invoke(SLinkOperations.getTarget(ancestor, LINKS.menuReference$BpG7)));
     }
     return _quotation_createNode_42hqo4_a2a0();
   }
@@ -103,10 +103,10 @@ public final class QueryFunctionParameter_TransformationMenu_CreatedNode__Behavi
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TransformationMenuPart_WrapSubstituteMenu$f1 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1a533160d670600cL, "jetbrains.mps.lang.editor.structure.TransformationMenuPart_WrapSubstituteMenu");
+    /*package*/ static final SConcept TransformationMenuPart_WrapSubstituteMenu$qC = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1a533160d670600cL, "jetbrains.mps.lang.editor.structure.TransformationMenuPart_WrapSubstituteMenu");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink menuReference$z7ww = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1a533160d670600cL, 0x1a533160d670600dL, "menuReference");
+    /*package*/ static final SContainmentLink menuReference$BpG7 = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1a533160d670600cL, 0x1a533160d670600dL, "menuReference");
   }
 }

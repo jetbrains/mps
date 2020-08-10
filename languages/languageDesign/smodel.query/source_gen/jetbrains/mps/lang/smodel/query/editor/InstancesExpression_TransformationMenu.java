@@ -56,7 +56,7 @@ public class InstancesExpression_TransformationMenu extends TransformationMenuBa
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.CONTEXT_ASSISTANT).contains(_context.getMenuLocation())) {
-      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_wuyy7s_a0(), CONCEPTS.InstancesExpression$OR));
+      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_wuyy7s_a0(), CONCEPTS.InstancesExpression$nT));
     }
     return result;
   }
@@ -99,21 +99,21 @@ public class InstancesExpression_TransformationMenu extends TransformationMenuBa
 
       @Override
       public void execute(@NotNull String pattern) {
-        if (SLinkOperations.getTarget(_context.getNode(), LINKS.parameter$1xt0) == null) {
-          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.parameter$1xt0, null);
+        if (SLinkOperations.getTarget(_context.getNode(), LINKS.parameter$jM02) == null) {
+          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.parameter$jM02, null);
         }
-        SNodeFactoryOperations.addNewChild(SLinkOperations.getTarget(_context.getNode(), LINKS.parameter$1xt0), LINKS.parameter$U4Jp, CONCEPTS.QueryParameterExact$8x);
+        SNodeFactoryOperations.addNewChild(SLinkOperations.getTarget(_context.getNode(), LINKS.parameter$jM02), LINKS.parameter$clir, CONCEPTS.QueryParameterExact$Fz);
       }
 
       @Override
       public boolean canExecute(@NotNull String pattern) {
-        return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.parameter$1xt0), LINKS.parameter$U4Jp), CONCEPTS.QueryParameterExact$8x)).isEmpty();
+        return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.parameter$jM02), LINKS.parameter$clir), CONCEPTS.QueryParameterExact$Fz)).isEmpty();
       }
 
       @Nullable
       @Override
       public SAbstractConcept getOutputConcept() {
-        return CONCEPTS.InstancesExpression$OR;
+        return CONCEPTS.InstancesExpression$nT;
       }
 
 
@@ -127,12 +127,12 @@ public class InstancesExpression_TransformationMenu extends TransformationMenuBa
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InstancesExpression$OR = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x6b643f33718aa10dL, "jetbrains.mps.lang.smodel.query.structure.InstancesExpression");
-    /*package*/ static final SConcept QueryParameterExact$8x = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x967fc67f6f09d70L, "jetbrains.mps.lang.smodel.query.structure.QueryParameterExact");
+    /*package*/ static final SConcept InstancesExpression$nT = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x6b643f33718aa10dL, "jetbrains.mps.lang.smodel.query.structure.InstancesExpression");
+    /*package*/ static final SConcept QueryParameterExact$Fz = MetaAdapterFactory.getConcept(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x967fc67f6f09d70L, "jetbrains.mps.lang.smodel.query.structure.QueryParameterExact");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$1xt0 = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760bacfdL, 0x3bc644217616e548L, "parameter");
-    /*package*/ static final SContainmentLink parameter$U4Jp = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc644217616ddf9L, 0x3bc6442176a262a6L, "parameter");
+    /*package*/ static final SContainmentLink parameter$jM02 = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc64421760bacfdL, 0x3bc644217616e548L, "parameter");
+    /*package*/ static final SContainmentLink parameter$clir = MetaAdapterFactory.getContainmentLink(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x3bc644217616ddf9L, 0x3bc6442176a262a6L, "parameter");
   }
 }

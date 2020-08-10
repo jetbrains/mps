@@ -23,15 +23,15 @@ public class typeof_XMLSAXChildHandler_childObject_InferenceRule extends Abstrac
   public typeof_XMLSAXChildHandler_childObject_InferenceRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode rule = SNodeOperations.getNodeAncestor(node, CONCEPTS.XMLSAXChildRule$v, false, false);
+    SNode rule = SNodeOperations.getNodeAncestor(node, CONCEPTS.XMLSAXChildRule$ls, false, false);
     {
       SNode _nodeToCheck_1029348928467 = node;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)", "2264311582634140497", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)", "2264311582634140525", true), (SNode) (((rule != null) && (SLinkOperations.getTarget(rule, LINKS.rule$h_RS) != null) && (SLinkOperations.getTarget(SLinkOperations.getTarget(rule, LINKS.rule$h_RS), LINKS.type$kjtw) != null) ? SLinkOperations.getTarget(SLinkOperations.getTarget(rule, LINKS.rule$h_RS), LINKS.type$kjtw) : _quotation_createNode_4xzpao_a0b0a2a1a1())), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)", "2264311582634140525", true), (SNode) (((rule != null) && (SLinkOperations.getTarget(rule, LINKS.rule$zMcP) != null) && (SLinkOperations.getTarget(SLinkOperations.getTarget(rule, LINKS.rule$zMcP), LINKS.type$AvMt) != null) ? SLinkOperations.getTarget(SLinkOperations.getTarget(rule, LINKS.rule$zMcP), LINKS.type$AvMt) : _quotation_createNode_4xzpao_a0b0a2a1a1())), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.XMLSAXChildHandler_childObject$Z2;
+    return CONCEPTS.XMLSAXChildHandler_childObject$jZ;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -48,12 +48,12 @@ public class typeof_XMLSAXChildHandler_childObject_InferenceRule extends Abstrac
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XMLSAXChildRule$v = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2d8L, "jetbrains.mps.core.xml.sax.structure.XMLSAXChildRule");
-    /*package*/ static final SConcept XMLSAXChildHandler_childObject$Z2 = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2d5L, "jetbrains.mps.core.xml.sax.structure.XMLSAXChildHandler_childObject");
+    /*package*/ static final SConcept XMLSAXChildRule$ls = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2d8L, "jetbrains.mps.core.xml.sax.structure.XMLSAXChildRule");
+    /*package*/ static final SConcept XMLSAXChildHandler_childObject$jZ = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2d5L, "jetbrains.mps.core.xml.sax.structure.XMLSAXChildHandler_childObject");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink rule$h_RS = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2d8L, 0x1f6c736337b5e2dcL, "rule");
-    /*package*/ static final SContainmentLink type$kjtw = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2f2L, 0x1f6c736337b5e2f3L, "type");
+    /*package*/ static final SReferenceLink rule$zMcP = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2d8L, 0x1f6c736337b5e2dcL, "rule");
+    /*package*/ static final SContainmentLink type$AvMt = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2f2L, 0x1f6c736337b5e2f3L, "type");
   }
 }

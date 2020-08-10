@@ -21,7 +21,7 @@ public class ConsoleIsSubtypeOfConsoleView_SubtypingRule extends SubtypingRule_R
     return _quotation_createNode_k48nuo_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConsoleType$J4;
+    return CONCEPTS.ConsoleType$rF;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,6 +38,6 @@ public class ConsoleIsSubtypeOfConsoleView_SubtypingRule extends SubtypingRule_R
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConsoleType$J4 = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x161fc6929dd1ac93L, "jetbrains.mps.execution.configurations.structure.ConsoleType");
+    /*package*/ static final SConcept ConsoleType$rF = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x161fc6929dd1ac93L, "jetbrains.mps.execution.configurations.structure.ConsoleType");
   }
 }

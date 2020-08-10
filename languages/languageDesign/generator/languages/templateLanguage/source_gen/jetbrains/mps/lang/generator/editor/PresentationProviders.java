@@ -16,22 +16,22 @@ public class PresentationProviders {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      return SPropertyOperations.getString(targetNode, PROPS.name$lA7v) + " : " + SLinkOperations.getTarget(targetNode, LINKS.type$yt60);
+      return SPropertyOperations.getString(targetNode, PROPS.name$MnvL) + " : " + SLinkOperations.getTarget(targetNode, LINKS.type$VpLG);
     }
   };
   public static final IReferentPresentationProvider PRESENTATION_ha31oa_a0a0a = new IReferentPresentationProvider() {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      return SPropertyOperations.getString(targetNode, PROPS.name$lA7v);
+      return SPropertyOperations.getString(targetNode, PROPS.name$MnvL);
     }
   };
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$yt60 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x90726ff283822d4L, 0x90726ff283822d5L, "type");
+    /*package*/ static final SContainmentLink type$VpLG = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x90726ff283822d4L, 0x90726ff283822d5L, "type");
   }
 }

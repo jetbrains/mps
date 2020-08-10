@@ -46,10 +46,10 @@ public class AddConstructorParameter_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     SNode n = event.getData(MPSCommonDataKeys.NODE);
-    if (!(SNodeOperations.isInstanceOf(n, CONCEPTS.FieldDeclaration$Ps))) {
+    if (!(SNodeOperations.isInstanceOf(n, CONCEPTS.FieldDeclaration$ie))) {
       return false;
     }
-    SNode field = SNodeOperations.as(event.getData(MPSCommonDataKeys.NODE), CONCEPTS.FieldDeclaration$Ps);
+    SNode field = SNodeOperations.as(event.getData(MPSCommonDataKeys.NODE), CONCEPTS.FieldDeclaration$ie);
     return new AddConstructorParameterRefactoring().isApplicable(field);
   }
   @Override
@@ -89,16 +89,16 @@ public class AddConstructorParameter_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    SNode field = SNodeOperations.as(event.getData(MPSCommonDataKeys.NODE), CONCEPTS.FieldDeclaration$Ps);
+    SNode field = SNodeOperations.as(event.getData(MPSCommonDataKeys.NODE), CONCEPTS.FieldDeclaration$ie);
 
-    SNode clazz = SNodeOperations.getNodeAncestor(field, CONCEPTS.ClassConcept$IY, false, false);
+    SNode clazz = SNodeOperations.getNodeAncestor(field, CONCEPTS.ClassConcept$bK, false, false);
     if (clazz == null) {
       return;
     }
 
     final AddConstructorParameterRefactoring refactoring = new AddConstructorParameterRefactoring();
     refactoring.isApplicable(field);
-    Iterable<SNode> constructors = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(clazz, CONCEPTS.ClassConcept$IY, SMethodTrimmedId.create("constructors", CONCEPTS.ClassConcept$IY, "4_LVZ3pCvsd")))).where(new IWhereFilter<SNode>() {
+    Iterable<SNode> constructors = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(clazz, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("constructors", CONCEPTS.ClassConcept$bK, "4_LVZ3pCvsd")))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return refactoring.doesNotContainFieldInitialization(it);
       }
@@ -108,7 +108,7 @@ public class AddConstructorParameter_Action extends BaseAction {
     SRepository repository = event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getRepository();
 
     if (Sequence.fromIterable(constructors).isEmpty()) {
-      SNode c = SNodeFactoryOperations.createNewNode(CONCEPTS.ConstructorDeclaration$5U, null);
+      SNode c = SNodeFactoryOperations.createNewNode(CONCEPTS.ConstructorDeclaration$yG, null);
       MemberInsertingUtils.insertClassifierMemberInBestPlace(clazz, c);
       selectedConstructors = new SNodeReference[]{SNodeOperations.getPointer(c)};
     } else if (Sequence.fromIterable(constructors).count() == 1) {
@@ -134,8 +134,8 @@ public class AddConstructorParameter_Action extends BaseAction {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept FieldDeclaration$Ps = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept ConstructorDeclaration$5U = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
+    /*package*/ static final SConcept FieldDeclaration$ie = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept ConstructorDeclaration$yG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
   }
 }

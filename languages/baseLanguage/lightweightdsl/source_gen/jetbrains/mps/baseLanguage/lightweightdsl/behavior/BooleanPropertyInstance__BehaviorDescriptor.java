@@ -34,7 +34,7 @@ public final class BooleanPropertyInstance__BehaviorDescriptor extends BaseBHDes
   }
 
   /*package*/ static SNode getValueExpression_id3m06Jgserfw(@NotNull SNode __thisNode__) {
-    return _quotation_createNode_uhky7j_a0a0(SPropertyOperations.getBoolean(__thisNode__, PROPS.value$PC1w));
+    return _quotation_createNode_uhky7j_a0a0(SPropertyOperations.getBoolean(__thisNode__, PROPS.value$jBnh));
   }
 
   /*package*/ BooleanPropertyInstance__BehaviorDescriptor() {
@@ -91,6 +91,6 @@ public final class BooleanPropertyInstance__BehaviorDescriptor extends BaseBHDes
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$PC1w = MetaAdapterFactory.getProperty(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e84100ec3L, 0x59e9926e84100ec4L, "value");
+    /*package*/ static final SProperty value$jBnh = MetaAdapterFactory.getProperty(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e84100ec3L, 0x59e9926e84100ec4L, "value");
   }
 }

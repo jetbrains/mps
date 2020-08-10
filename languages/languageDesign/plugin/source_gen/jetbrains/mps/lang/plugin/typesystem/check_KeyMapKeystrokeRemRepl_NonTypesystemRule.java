@@ -24,11 +24,11 @@ public class check_KeyMapKeystrokeRemRepl_NonTypesystemRule extends AbstractNonT
   public check_KeyMapKeystrokeRemRepl_NonTypesystemRule() {
   }
   public void applyRule(final SNode keyMapKeystroke, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode simpleShortcutChange = SNodeOperations.getNodeAncestor(keyMapKeystroke, CONCEPTS.SimpleShortcutChange$U5, false, false);
+    SNode simpleShortcutChange = SNodeOperations.getNodeAncestor(keyMapKeystroke, CONCEPTS.SimpleShortcutChange$R8, false, false);
     if ((simpleShortcutChange == null) || !((boolean) KeyMapKeystroke__BehaviorDescriptor.hasRemove_id4qYinf8$eal.invoke(keyMapKeystroke))) {
       return;
     }
-    if (ListSequence.fromList(SLinkOperations.getChildren(simpleShortcutChange, LINKS.keystroke$_Wm7)).any(new IWhereFilter<SNode>() {
+    if (ListSequence.fromList(SLinkOperations.getChildren(simpleShortcutChange, LINKS.keystroke$Nxja)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return (boolean) KeyMapKeystroke__BehaviorDescriptor.hasReplaceAll_id4qYinf8$enm.invoke(it);
       }
@@ -40,7 +40,7 @@ public class check_KeyMapKeystrokeRemRepl_NonTypesystemRule extends AbstractNonT
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.KeyMapKeystroke$7H;
+    return CONCEPTS.KeyMapKeystroke$4K;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -50,11 +50,11 @@ public class check_KeyMapKeystrokeRemRepl_NonTypesystemRule extends AbstractNonT
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SimpleShortcutChange$U5 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb076L, "jetbrains.mps.lang.plugin.structure.SimpleShortcutChange");
-    /*package*/ static final SConcept KeyMapKeystroke$7H = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, "jetbrains.mps.lang.plugin.structure.KeyMapKeystroke");
+    /*package*/ static final SConcept SimpleShortcutChange$R8 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb076L, "jetbrains.mps.lang.plugin.structure.SimpleShortcutChange");
+    /*package*/ static final SConcept KeyMapKeystroke$4K = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11919c665d4L, "jetbrains.mps.lang.plugin.structure.KeyMapKeystroke");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink keystroke$_Wm7 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb076L, 0x15afe07f2a9bb07eL, "keystroke");
+    /*package*/ static final SContainmentLink keystroke$Nxja = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb076L, 0x15afe07f2a9bb07eL, "keystroke");
   }
 }

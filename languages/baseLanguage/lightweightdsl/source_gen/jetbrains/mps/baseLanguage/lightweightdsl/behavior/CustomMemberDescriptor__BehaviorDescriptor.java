@@ -43,22 +43,22 @@ public final class CustomMemberDescriptor__BehaviorDescriptor extends BaseBHDesc
   }
 
   /*package*/ static SNode create_id7ay_HjIOVVe(@NotNull SNode __thisNode__, SModel futureModel) {
-    SNode res = SNodeFactoryOperations.createNewNode(SNodeOperations.asSConcept(SLinkOperations.getTarget(__thisNode__, LINKS.cncpt$gpR2)), null);
+    SNode res = SNodeFactoryOperations.createNewNode(SNodeOperations.asSConcept(SLinkOperations.getTarget(__thisNode__, LINKS.cncpt$IpcN)), null);
     ImportUtil.addModelDepsByNode(futureModel.getRepository(), futureModel, res, false);
-    return SNodeOperations.cast(res, CONCEPTS.ClassifierMember$9F);
+    return SNodeOperations.cast(res, CONCEPTS.ClassifierMember$At);
   }
   /*package*/ static Iterable<SNode> find_id2gzehMfi1$l(@NotNull SNode __thisNode__, SNode cls) {
-    return SNodeOperations.ofConcept(SLinkOperations.getChildren(cls, LINKS.member$6v_r), SNodeOperations.asSConcept(SNodeOperations.asSConcept(SLinkOperations.getTarget(__thisNode__, LINKS.cncpt$gpR2))));
+    return SNodeOperations.ofConcept(SLinkOperations.getChildren(cls, LINKS.member$L_2d), SNodeOperations.asSConcept(SNodeOperations.asSConcept(SLinkOperations.getTarget(__thisNode__, LINKS.cncpt$IpcN))));
   }
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    if (isNotEmptyString(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.cncpt$gpR2), PROPS.conceptAlias$oDJY))) {
-      return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.cncpt$gpR2), PROPS.conceptAlias$oDJY);
+    if (isNotEmptyString(SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.cncpt$IpcN), PROPS.conceptAlias$OL_L))) {
+      return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.cncpt$IpcN), PROPS.conceptAlias$OL_L);
     } else {
-      return BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.cncpt$gpR2));
+      return BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.cncpt$IpcN));
     }
   }
   /*package*/ static String getMatchingText_id2nUiI4k7qhh(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.cncpt$gpR2), PROPS.name$lA7v);
+    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.cncpt$IpcN), PROPS.name$MnvL);
   }
 
   /*package*/ CustomMemberDescriptor__BehaviorDescriptor() {
@@ -117,16 +117,16 @@ public final class CustomMemberDescriptor__BehaviorDescriptor extends BaseBHDesc
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink cncpt$gpR2 = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a044805d9cL, 0x72b255a044805d9fL, "cncpt");
-    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SReferenceLink cncpt$IpcN = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a044805d9cL, 0x72b255a044805d9fL, "cncpt");
+    /*package*/ static final SContainmentLink member$L_2d = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept ClassifierMember$9F = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember");
+    /*package*/ static final SInterfaceConcept ClassifierMember$At = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty conceptAlias$oDJY = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x46ab0ad5826c74caL, "conceptAlias");
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty conceptAlias$OL_L = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x46ab0ad5826c74caL, "conceptAlias");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

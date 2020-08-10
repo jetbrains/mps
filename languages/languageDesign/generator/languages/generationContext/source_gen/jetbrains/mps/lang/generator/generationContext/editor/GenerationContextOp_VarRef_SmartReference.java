@@ -28,7 +28,7 @@ public class GenerationContextOp_VarRef_SmartReference extends SubstituteMenuBas
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_e12rtz_a(), CONCEPTS.GenerationContextOp_VarRef$c3));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_e12rtz_a(), CONCEPTS.GenerationContextOp_VarRef$_D));
     return result;
   }
 
@@ -49,7 +49,7 @@ public class GenerationContextOp_VarRef_SmartReference extends SubstituteMenuBas
 
     public SMP_ReferenceScope_e12rtz_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.GenerationContextOp_VarRef$c3, LINKS.varmacro$2bbQ);
+      super((SAbstractConcept) CONCEPTS.GenerationContextOp_VarRef$_D, LINKS.varmacro$i6_s);
     }
     @NotNull
     @Override
@@ -81,7 +81,7 @@ public class GenerationContextOp_VarRef_SmartReference extends SubstituteMenuBas
       }
       @Override
       public String getMatchingText(String pattern) {
-        return SPropertyOperations.getString(referencedNode, PROPS.name$lA7v);
+        return SPropertyOperations.getString(referencedNode, PROPS.name$MnvL);
       }
       @Override
       public String getVisibleMatchingText(String pattern) {
@@ -96,14 +96,14 @@ public class GenerationContextOp_VarRef_SmartReference extends SubstituteMenuBas
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GenerationContextOp_VarRef$c3 = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x25c655ce6e80fdd8L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_VarRef");
+    /*package*/ static final SConcept GenerationContextOp_VarRef$_D = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x25c655ce6e80fdd8L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_VarRef");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink varmacro$2bbQ = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x25c655ce6e80fdd8L, 0x25c655ce6e80fddaL, "varmacro");
+    /*package*/ static final SReferenceLink varmacro$i6_s = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x25c655ce6e80fdd8L, 0x25c655ce6e80fddaL, "varmacro");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

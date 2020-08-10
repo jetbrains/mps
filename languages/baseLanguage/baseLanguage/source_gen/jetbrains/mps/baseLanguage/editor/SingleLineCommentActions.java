@@ -31,23 +31,23 @@ public class SingleLineCommentActions {
       public void execute_internal(EditorContext editorContext, SNode node) {
         SNode selectedNode = editorContext.getSelectedNode();
         SNode selectedPart;
-        if (SNodeOperations.isInstanceOf(selectedNode, CONCEPTS.CommentPart$kd)) {
-          selectedPart = SNodeOperations.cast(selectedNode, CONCEPTS.CommentPart$kd);
-        } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(selectedNode), CONCEPTS.CommentPart$kd)) {
+        if (SNodeOperations.isInstanceOf(selectedNode, CONCEPTS.CommentPart$KZ)) {
+          selectedPart = SNodeOperations.cast(selectedNode, CONCEPTS.CommentPart$KZ);
+        } else if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(selectedNode), CONCEPTS.CommentPart$KZ)) {
           //  commented statement comes in selection 
-          selectedPart = SNodeOperations.cast(SNodeOperations.getParent(selectedNode), CONCEPTS.CommentPart$kd);
+          selectedPart = SNodeOperations.cast(SNodeOperations.getParent(selectedNode), CONCEPTS.CommentPart$KZ);
         } else {
           return;
         }
 
-        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.commentPart$35$u)).last() == selectedPart) {
-          if (SNodeOperations.isInstanceOf(selectedPart, CONCEPTS.TextCommentPart$lb)) {
+        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.commentPart$Ib1g)).last() == selectedPart) {
+          if (SNodeOperations.isInstanceOf(selectedPart, CONCEPTS.TextCommentPart$LX)) {
             SingleLineCommentUtil.divideSingleLineCommentText((SNode) selectedPart, editorContext);
           } else {
-            SNodeOperations.insertNextSiblingChild(node, SNodeFactoryOperations.createNewNode(CONCEPTS.Statement$ok, null));
+            SNodeOperations.insertNextSiblingChild(node, SNodeFactoryOperations.createNewNode(CONCEPTS.Statement$P6, null));
           }
         } else {
-          SNodeOperations.insertNextSiblingChild(selectedPart, SNodeFactoryOperations.createNewNode(CONCEPTS.CommentPart$kd, null));
+          SNodeOperations.insertNextSiblingChild(selectedPart, SNodeFactoryOperations.createNewNode(CONCEPTS.CommentPart$KZ, null));
         }
       }
 
@@ -96,12 +96,12 @@ public class SingleLineCommentActions {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CommentPart$kd = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3bL, "jetbrains.mps.baseLanguage.structure.CommentPart");
-    /*package*/ static final SConcept TextCommentPart$lb = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart");
-    /*package*/ static final SConcept Statement$ok = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept CommentPart$KZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3bL, "jetbrains.mps.baseLanguage.structure.CommentPart");
+    /*package*/ static final SConcept TextCommentPart$LX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart");
+    /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink commentPart$35$u = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart");
+    /*package*/ static final SContainmentLink commentPart$Ib1g = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x57d533a7af16ff73L, "commentPart");
   }
 }

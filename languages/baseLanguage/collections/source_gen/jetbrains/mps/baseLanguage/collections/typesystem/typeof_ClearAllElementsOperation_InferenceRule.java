@@ -33,7 +33,7 @@ public class typeof_ClearAllElementsOperation_InferenceRule extends AbstractInfe
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ClearAllElementsOperation$sJ;
+    return CONCEPTS.ClearAllElementsOperation$F2;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -49,6 +49,6 @@ public class typeof_ClearAllElementsOperation_InferenceRule extends AbstractInfe
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClearAllElementsOperation$sJ = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11db03915deL, "jetbrains.mps.baseLanguage.collections.structure.ClearAllElementsOperation");
+    /*package*/ static final SConcept ClearAllElementsOperation$F2 = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11db03915deL, "jetbrains.mps.baseLanguage.collections.structure.ClearAllElementsOperation");
   }
 }

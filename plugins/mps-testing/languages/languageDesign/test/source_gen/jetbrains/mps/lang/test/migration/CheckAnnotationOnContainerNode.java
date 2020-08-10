@@ -47,7 +47,7 @@ public class CheckAnnotationOnContainerNode extends MigrationScriptBase {
         }
       };
       final MoveCheckToContainedNode intention = new MoveCheckToContainedNode();
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeOperationsContainer$UO, true)).where(new IWhereFilter<SNode>() {
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodeOperationsContainer$aj, true)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return intention.isApplicable(it, null);
         }
@@ -68,9 +68,9 @@ public class CheckAnnotationOnContainerNode extends MigrationScriptBase {
           return scope_kl3vza_a0f_0;
         }
       };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AbstractTestNodeAnnotation$5M, false)).where(new IWhereFilter<SNode>() {
+      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AbstractTestNodeAnnotation$lh, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return SNodeOperations.hasRole(it, LINKS.smodelAttribute$jXFL) && !((boolean) ITestAnnotationsContainer__BehaviorDescriptor.canAddTestAnnotation_id143xXLdhXGe.invoke(SNodeOperations.asSConcept(CONCEPTS.ITestAnnotationsContainer$pG), SNodeOperations.getParent(it)));
+          return SNodeOperations.hasRole(it, LINKS.smodelAttribute$KJ43) && !((boolean) ITestAnnotationsContainer__BehaviorDescriptor.canAddTestAnnotation_id143xXLdhXGe.invoke(SNodeOperations.asSConcept(CONCEPTS.ITestAnnotationsContainer$Db), SNodeOperations.getParent(it)));
         }
       }).select(new ISelector<SNode, Problem>() {
         public Problem select(SNode it) {
@@ -90,12 +90,12 @@ public class CheckAnnotationOnContainerNode extends MigrationScriptBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodeOperationsContainer$UO = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, "jetbrains.mps.lang.test.structure.NodeOperationsContainer");
-    /*package*/ static final SConcept AbstractTestNodeAnnotation$5M = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e0d52da47L, "jetbrains.mps.lang.test.structure.AbstractTestNodeAnnotation");
-    /*package*/ static final SInterfaceConcept ITestAnnotationsContainer$pG = MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x110387dc4d47c93dL, "jetbrains.mps.lang.test.structure.ITestAnnotationsContainer");
+    /*package*/ static final SConcept NodeOperationsContainer$aj = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, "jetbrains.mps.lang.test.structure.NodeOperationsContainer");
+    /*package*/ static final SConcept AbstractTestNodeAnnotation$lh = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e0d52da47L, "jetbrains.mps.lang.test.structure.AbstractTestNodeAnnotation");
+    /*package*/ static final SInterfaceConcept ITestAnnotationsContainer$Db = MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x110387dc4d47c93dL, "jetbrains.mps.lang.test.structure.ITestAnnotationsContainer");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink smodelAttribute$jXFL = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
+    /*package*/ static final SContainmentLink smodelAttribute$KJ43 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 }

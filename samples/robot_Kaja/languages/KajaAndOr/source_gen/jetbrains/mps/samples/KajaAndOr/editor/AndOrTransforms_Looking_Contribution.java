@@ -72,7 +72,7 @@ public class AndOrTransforms_Looking_Contribution extends TransformationMenuBase
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Param_tmm9j9_a0(), CONCEPTS.LogicalExpression$Sy));
+      result.add(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Param_tmm9j9_a0(), CONCEPTS.LogicalExpression$yt));
     }
     return result;
   }
@@ -88,7 +88,7 @@ public class AndOrTransforms_Looking_Contribution extends TransformationMenuBase
     @Nullable
     @Override
     protected Iterable<? extends SConcept> getParameters(TransformationMenuContext _context) {
-      return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.LogicalOperator$29, _context.getModel())).where(new IWhereFilter<SConcept>() {
+      return ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.LogicalOperator$a0, _context.getModel())).where(new IWhereFilter<SConcept>() {
         public boolean accept(SConcept it) {
           return !(it.isAbstract());
         }
@@ -149,16 +149,16 @@ public class AndOrTransforms_Looking_Contribution extends TransformationMenuBase
         @Override
         public void execute(@NotNull String pattern) {
           SNode newInitializedInstance = SNodeFactoryOperations.createNewNode(myParameterObject, null);
-          SLinkOperations.setTarget(newInitializedInstance, LINKS.left$QsIo, SNodeOperations.copyNode(_context.getNode()));
+          SLinkOperations.setTarget(newInitializedInstance, LINKS.left$uKQf, SNodeOperations.copyNode(_context.getNode()));
           SNodeOperations.replaceWithAnother(_context.getNode(), newInitializedInstance);
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(newInitializedInstance, LINKS.right$QsXp), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.getTarget(newInitializedInstance, LINKS.right$uL5g), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
 
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.LogicalExpression$Sy;
+          return CONCEPTS.LogicalExpression$yt;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
@@ -173,7 +173,7 @@ public class AndOrTransforms_Looking_Contribution extends TransformationMenuBase
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.LogicalExpression$Sy;
+          SAbstractConcept outputConcept = CONCEPTS.LogicalExpression$yt;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(myParameterObject, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -185,12 +185,12 @@ public class AndOrTransforms_Looking_Contribution extends TransformationMenuBase
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LogicalExpression$Sy = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fc1L, "jetbrains.mps.samples.Kaja.structure.LogicalExpression");
-    /*package*/ static final SConcept LogicalOperator$29 = MetaAdapterFactory.getConcept(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46d9L, "jetbrains.mps.samples.KajaAndOr.structure.LogicalOperator");
+    /*package*/ static final SConcept LogicalExpression$yt = MetaAdapterFactory.getConcept(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2de971c785ec9fc1L, "jetbrains.mps.samples.Kaja.structure.LogicalExpression");
+    /*package*/ static final SConcept LogicalOperator$a0 = MetaAdapterFactory.getConcept(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46d9L, "jetbrains.mps.samples.KajaAndOr.structure.LogicalOperator");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink left$QsIo = MetaAdapterFactory.getContainmentLink(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46d9L, 0x1a6f404e630a460cL, "left");
-    /*package*/ static final SContainmentLink right$QsXp = MetaAdapterFactory.getContainmentLink(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46d9L, 0x1a6f404e630a460dL, "right");
+    /*package*/ static final SContainmentLink left$uKQf = MetaAdapterFactory.getContainmentLink(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46d9L, 0x1a6f404e630a460cL, "left");
+    /*package*/ static final SContainmentLink right$uL5g = MetaAdapterFactory.getContainmentLink(0x44306fd2ef944b56L, 0x9806d9ab509536dbL, 0x1a6f404e630a46d9L, 0x1a6f404e630a460dL, "right");
   }
 }

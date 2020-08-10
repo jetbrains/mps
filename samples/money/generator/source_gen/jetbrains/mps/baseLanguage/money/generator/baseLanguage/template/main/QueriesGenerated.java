@@ -33,7 +33,7 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$Wnha), CONCEPTS.MoneyCreator$uF);
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$BsHW), CONCEPTS.MoneyCreator$Vp);
   }
   public static boolean rule_Condition_0_1(final BaseMappingRuleContext _context) {
     return Util.isPlusMinusExpressionMoneyExpression(_context.getNode());
@@ -49,52 +49,52 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static SNode sourceNodeQuery_0_0(final SourceSubstituteMacroNodeContext _context) {
     SNode new_node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral"));
-    SPropertyOperations.set(new_node, PROPS.value$P2m0, SPropertyOperations.getString(_context.getNode(), PROPS.amount$X722));
+    SPropertyOperations.set(new_node, PROPS.value$w7MM, SPropertyOperations.getString(_context.getNode(), PROPS.amount$IcuK));
     return new_node;
   }
   public static SNode sourceNodeQuery_0_1(final SourceSubstituteMacroNodeContext _context) {
     SNode new_node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral"));
-    SPropertyOperations.set(new_node, PROPS.value$P2m0, SPropertyOperations.getString(_context.getNode(), PROPS.currency$ek9l));
+    SPropertyOperations.set(new_node, PROPS.value$w7MM, SPropertyOperations.getString(_context.getNode(), PROPS.currency$ZpA3));
     return new_node;
   }
   public static SNode sourceNodeQuery_0_2(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$Wnha), CONCEPTS.MoneyCreator$uF), LINKS.amount$qIzr);
+    return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$BsHW), CONCEPTS.MoneyCreator$Vp), LINKS.amount$bO09);
   }
   public static SNode sourceNodeQuery_0_3(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$Wnha), CONCEPTS.MoneyCreator$uF), LINKS.currency$pLl_);
+    return SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.creator$BsHW), CONCEPTS.MoneyCreator$Vp), LINKS.currency$aQMj);
   }
   public static SNode sourceNodeQuery_0_4(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$lndx);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$sEj);
   }
   public static SNode sourceNodeQuery_0_5(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$li3b);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$nvX);
   }
   public static SNode sourceNodeQuery_0_6(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$lndx);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$sEj);
   }
   public static SNode sourceNodeQuery_0_7(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$li3b);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$nvX);
   }
   public static SNode sourceNodeQuery_0_8(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$lndx);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$sEj);
   }
   public static SNode sourceNodeQuery_0_9(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$li3b);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$nvX);
   }
   public static SNode sourceNodeQuery_0_10(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$lndx);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.leftExpression$sEj);
   }
   public static SNode sourceNodeQuery_0_11(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$li3b);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.rightExpression$nvX);
   }
   public static SNode sourceNodeQuery_0_12(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.instance$ZWLc);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.instance$L2dU);
   }
   public static SNode sourceNodeQuery_0_13(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.instance$ZWLc);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.instance$L2dU);
   }
   public static SNode sourceNodeQuery_0_14(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.instance$ZWLc);
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.instance$L2dU);
   }
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {
@@ -210,21 +210,21 @@ public class QueriesGenerated extends QueryProviderBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink creator$Wnha = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
-    /*package*/ static final SContainmentLink amount$qIzr = MetaAdapterFactory.getContainmentLink(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x11472ff5968L, 0x11473383db1L, "amount");
-    /*package*/ static final SContainmentLink currency$pLl_ = MetaAdapterFactory.getContainmentLink(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x11472ff5968L, 0x11473390f4aL, "currency");
-    /*package*/ static final SContainmentLink leftExpression$lndx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
-    /*package*/ static final SContainmentLink rightExpression$li3b = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
-    /*package*/ static final SContainmentLink instance$ZWLc = MetaAdapterFactory.getContainmentLink(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x114740b1673L, 0x114740fc5e3L, "instance");
+    /*package*/ static final SContainmentLink creator$BsHW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
+    /*package*/ static final SContainmentLink amount$bO09 = MetaAdapterFactory.getContainmentLink(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x11472ff5968L, 0x11473383db1L, "amount");
+    /*package*/ static final SContainmentLink currency$aQMj = MetaAdapterFactory.getContainmentLink(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x11472ff5968L, 0x11473390f4aL, "currency");
+    /*package*/ static final SContainmentLink leftExpression$sEj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11cL, "leftExpression");
+    /*package*/ static final SContainmentLink rightExpression$nvX = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, 0xfbdeb7a11bL, "rightExpression");
+    /*package*/ static final SContainmentLink instance$L2dU = MetaAdapterFactory.getContainmentLink(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x114740b1673L, 0x114740fc5e3L, "instance");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MoneyCreator$uF = MetaAdapterFactory.getConcept(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x11472ff5968L, "jetbrains.mps.baseLanguage.money.structure.MoneyCreator");
+    /*package*/ static final SConcept MoneyCreator$Vp = MetaAdapterFactory.getConcept(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x11472ff5968L, "jetbrains.mps.baseLanguage.money.structure.MoneyCreator");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$P2m0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
-    /*package*/ static final SProperty amount$X722 = MetaAdapterFactory.getProperty(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x1144ae7606aL, 0x1144aec21fdL, "amount");
-    /*package*/ static final SProperty currency$ek9l = MetaAdapterFactory.getProperty(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x1144ae7606aL, 0x1144aebdf40L, "currency");
+    /*package*/ static final SProperty value$w7MM = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+    /*package*/ static final SProperty amount$IcuK = MetaAdapterFactory.getProperty(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x1144ae7606aL, 0x1144aec21fdL, "amount");
+    /*package*/ static final SProperty currency$ZpA3 = MetaAdapterFactory.getProperty(0xf43135f9b8334685L, 0x8d26ffb6c8215f72L, 0x1144ae7606aL, 0x1144aebdf40L, "currency");
   }
 }

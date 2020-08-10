@@ -46,7 +46,7 @@ public class TypeClause_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_zbskfb_a(), CONCEPTS.NormalTypeClause$pk));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_zbskfb_a(), CONCEPTS.NormalTypeClause$Fa));
     result.add(new SMP_Subconcepts_zbskfb_b());
     return result;
   }
@@ -87,14 +87,14 @@ public class TypeClause_SubstituteMenu extends SubstituteMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.NormalTypeClause$pk;
+          return CONCEPTS.NormalTypeClause$Fa;
         }
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode nodeToWrap = super.createNode(pattern);
-          SNode normalTypeClause = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.NormalTypeClause$pk, null);
-          SLinkOperations.setTarget(normalTypeClause, LINKS.normalType$ESY5, nodeToWrap);
+          SNode normalTypeClause = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.NormalTypeClause$Fa, null);
+          SLinkOperations.setTarget(normalTypeClause, LINKS.normalType$3JfV, nodeToWrap);
           return normalTypeClause;
         }
 
@@ -121,12 +121,12 @@ public class TypeClause_SubstituteMenu extends SubstituteMenuBase {
       return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.Expression$TP;
+      return CONCEPTS.Expression$mB;
     }
   }
   public class SMP_Subconcepts_zbskfb_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.TypeClause$Jq);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.TypeClause$1g);
     }
     @NotNull
     @Override
@@ -147,12 +147,12 @@ public class TypeClause_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NormalTypeClause$pk = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1141682561cL, "jetbrains.mps.lang.typesystem.structure.NormalTypeClause");
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
-    /*package*/ static final SConcept TypeClause$Jq = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114168188c7L, "jetbrains.mps.lang.typesystem.structure.TypeClause");
+    /*package*/ static final SConcept NormalTypeClause$Fa = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1141682561cL, "jetbrains.mps.lang.typesystem.structure.NormalTypeClause");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept TypeClause$1g = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x114168188c7L, "jetbrains.mps.lang.typesystem.structure.TypeClause");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink normalType$ESY5 = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1141682561cL, 0x1141682cac0L, "normalType");
+    /*package*/ static final SContainmentLink normalType$3JfV = MetaAdapterFactory.getContainmentLink(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x1141682561cL, 0x1141682cac0L, "normalType");
   }
 }

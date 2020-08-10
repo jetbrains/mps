@@ -21,9 +21,9 @@ public class XmlTextValue_TextGen extends TextGenDescriptorBase {
       tgs.indent();
       tgs.append("\t\t");
     }
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$GoKl));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.text$_LaO));
     if ((boolean) XmlValuePart__BehaviorDescriptor.hasNewLineAfter_id2EZ251g0bSd.invoke(ctx.getPrimaryInput())) {
-      if (SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(ctx.getPrimaryInput()), CONCEPTS.XmlValuePart$Ad) && (boolean) XmlValuePart__BehaviorDescriptor.onNewLine_id2EZ251g0bS6.invoke(SNodeOperations.cast(SNodeOperations.getNextSibling(ctx.getPrimaryInput()), CONCEPTS.XmlValuePart$Ad))) {
+      if (SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(ctx.getPrimaryInput()), CONCEPTS.XmlValuePart$G) && (boolean) XmlValuePart__BehaviorDescriptor.onNewLine_id2EZ251g0bS6.invoke(SNodeOperations.cast(SNodeOperations.getNextSibling(ctx.getPrimaryInput()), CONCEPTS.XmlValuePart$G))) {
         return;
       }
       tgs.newLine();
@@ -33,10 +33,10 @@ public class XmlTextValue_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$GoKl = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text");
+    /*package*/ static final SProperty text$_LaO = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XmlValuePart$Ad = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1cL, "jetbrains.mps.core.xml.structure.XmlValuePart");
+    /*package*/ static final SConcept XmlValuePart$G = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1cL, "jetbrains.mps.core.xml.structure.XmlValuePart");
   }
 }

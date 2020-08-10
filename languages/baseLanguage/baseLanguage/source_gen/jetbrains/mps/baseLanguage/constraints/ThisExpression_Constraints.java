@@ -31,7 +31,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ThisExpression_Constraints extends BaseConstraintsDescriptor {
   public ThisExpression_Constraints() {
-    super(CONCEPTS.ThisExpression$7A);
+    super(CONCEPTS.ThisExpression$$o);
   }
 
   @Override
@@ -51,7 +51,7 @@ public class ThisExpression_Constraints extends BaseConstraintsDescriptor {
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.classConcept$StRd, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.classConcept$zzjZ, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -66,10 +66,10 @@ public class ThisExpression_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            if (!(SNodeOperations.isInstanceOf(_context.getReferenceNode(), CONCEPTS.ThisExpression$7A))) {
+            if (!(SNodeOperations.isInstanceOf(_context.getReferenceNode(), CONCEPTS.ThisExpression$$o))) {
               return new EmptyScope();
             }
-            return new NamedElementsScope(ThisExpression__BehaviorDescriptor.getPossibleClassifiers_idhGcjiYt.invoke(SNodeOperations.cast(_context.getReferenceNode(), CONCEPTS.ThisExpression$7A))) {
+            return new NamedElementsScope(ThisExpression__BehaviorDescriptor.getPossibleClassifiers_idhGcjiYt.invoke(SNodeOperations.cast(_context.getReferenceNode(), CONCEPTS.ThisExpression$$o))) {
               @Nullable
               @Override
               public SNode resolve(SNode contextNode, @NotNull String refText) {
@@ -95,10 +95,10 @@ public class ThisExpression_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_cfy36u_a0a0a0a0a1a0a0a0d = new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "6836281137582643767");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ThisExpression$7A = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression");
+    /*package*/ static final SConcept ThisExpression$$o = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classConcept$StRd = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
+    /*package*/ static final SReferenceLink classConcept$zzjZ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
   }
 }

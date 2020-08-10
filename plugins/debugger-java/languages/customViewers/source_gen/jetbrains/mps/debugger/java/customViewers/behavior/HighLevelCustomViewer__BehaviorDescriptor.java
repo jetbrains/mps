@@ -36,10 +36,10 @@ public final class HighLevelCustomViewer__BehaviorDescriptor extends BaseBHDescr
   }
 
   /*package*/ static SNode getValueTypeCopy_id2q5hg4fWIQ(@NotNull SNode __thisNode__) {
-    return SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.valueType$D$sv));
+    return SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.valueType$ShQV));
   }
   /*package*/ static String getClassName_id6$g4PBN66FS(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v) + "_WrapperFactory";
+    return SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL) + "_WrapperFactory";
   }
   /*package*/ static String getClassFqName_id6$g4PBN67n2(@NotNull SNode __thisNode__) {
     return jetbrains.mps.util.SNodeOperations.getModelLongName(SNodeOperations.getModel(__thisNode__)) + "." + HighLevelCustomViewer__BehaviorDescriptor.getClassName_id6$g4PBN66FS.invoke(__thisNode__);
@@ -96,10 +96,10 @@ public final class HighLevelCustomViewer__BehaviorDescriptor extends BaseBHDescr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink valueType$D$sv = MetaAdapterFactory.getContainmentLink(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x97038071a3bfa40L, 0x9a1514043fbc1aL, "valueType");
+    /*package*/ static final SContainmentLink valueType$ShQV = MetaAdapterFactory.getContainmentLink(0xfa8aeae94df94e13L, 0xbfb19b04c67ddb77L, 0x97038071a3bfa40L, 0x9a1514043fbc1aL, "valueType");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

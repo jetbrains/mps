@@ -75,7 +75,7 @@ public class ctor_IncompleteMemberInInterface extends SubstituteMenuBase {
   public class SMP_Group_4je5xk_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.Interface$Kp) && !(SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.IncompleteMemberDeclaration$QW));
+      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.Interface$db) && !(SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.IncompleteMemberDeclaration$jI));
     }
     @NotNull
     @Override
@@ -91,7 +91,7 @@ public class ctor_IncompleteMemberInInterface extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_4je5xk_a0(), CONCEPTS.IncompleteMemberDeclaration$QW), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_4je5xk_b0(), CONCEPTS.IncompleteMemberDeclaration$QW), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_4je5xk_c0(), CONCEPTS.IncompleteMemberDeclaration$QW), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_4je5xk_d0(), CONCEPTS.IncompleteMemberDeclaration$QW), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_4je5xk_e0(), CONCEPTS.IncompleteMemberDeclaration$QW), new SMP_Include_4je5xk_f0());
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_4je5xk_a0(), CONCEPTS.IncompleteMemberDeclaration$jI), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_4je5xk_b0(), CONCEPTS.IncompleteMemberDeclaration$jI), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_4je5xk_c0(), CONCEPTS.IncompleteMemberDeclaration$jI), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_4je5xk_d0(), CONCEPTS.IncompleteMemberDeclaration$jI), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_4je5xk_e0(), CONCEPTS.IncompleteMemberDeclaration$jI), new SMP_Include_4je5xk_f0());
     }
     private class SMP_Action_4je5xk_a0 extends SingleItemSubstituteMenuPart {
 
@@ -121,7 +121,7 @@ public class ctor_IncompleteMemberInInterface extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.IncompleteMemberDeclaration$QW, context);
+          super(CONCEPTS.IncompleteMemberDeclaration$jI, context);
           _context = context;
         }
 
@@ -133,7 +133,7 @@ public class ctor_IncompleteMemberInInterface extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode decl = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, "jetbrains.mps.baseLanguage.structure.IncompleteMemberDeclaration"));
-          SPropertyOperations.assign(decl, PROPS.final$11DX, true);
+          SPropertyOperations.assign(decl, PROPS.final$G76J, true);
           return decl;
         }
 
@@ -176,7 +176,7 @@ public class ctor_IncompleteMemberInInterface extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.IncompleteMemberDeclaration$QW, context);
+          super(CONCEPTS.IncompleteMemberDeclaration$jI, context);
           _context = context;
         }
 
@@ -188,7 +188,7 @@ public class ctor_IncompleteMemberInInterface extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode decl = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, "jetbrains.mps.baseLanguage.structure.IncompleteMemberDeclaration"));
-          SPropertyOperations.assign(decl, PROPS.abstract$12n0, true);
+          SPropertyOperations.assign(decl, PROPS.abstract$G7NM, true);
           return decl;
         }
 
@@ -231,7 +231,7 @@ public class ctor_IncompleteMemberInInterface extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.IncompleteMemberDeclaration$QW, context);
+          super(CONCEPTS.IncompleteMemberDeclaration$jI, context);
           _context = context;
         }
 
@@ -243,7 +243,7 @@ public class ctor_IncompleteMemberInInterface extends SubstituteMenuBase {
         @Override
         public SNode createNode(@NotNull String pattern) {
           SNode decl = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, "jetbrains.mps.baseLanguage.structure.IncompleteMemberDeclaration"));
-          SPropertyOperations.assign(decl, PROPS.static$WgA, true);
+          SPropertyOperations.assign(decl, PROPS.static$G1Ho, true);
           return decl;
         }
 
@@ -281,14 +281,14 @@ public class ctor_IncompleteMemberInInterface extends SubstituteMenuBase {
           @Nullable
           @Override
           public SAbstractConcept getOutputConcept() {
-            return CONCEPTS.IncompleteMemberDeclaration$QW;
+            return CONCEPTS.IncompleteMemberDeclaration$jI;
           }
           @Nullable
           @Override
           public SNode createNode(@NotNull String pattern) {
             SNode nodeToWrap = super.createNode(pattern);
             SNode decl = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, "jetbrains.mps.baseLanguage.structure.IncompleteMemberDeclaration"));
-            SLinkOperations.setTarget(decl, LINKS.visibility$jt1o, nodeToWrap);
+            SLinkOperations.setTarget(decl, LINKS.visibility$Yyua, nodeToWrap);
             return decl;
           }
 
@@ -315,7 +315,7 @@ public class ctor_IncompleteMemberInInterface extends SubstituteMenuBase {
         return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
       }
       private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-        return CONCEPTS.PrivateVisibility$Se;
+        return CONCEPTS.PrivateVisibility$l0;
       }
     }
     private class SMP_Wrap_4je5xk_e0 extends WrapperSubstituteMenuPart {
@@ -341,14 +341,14 @@ public class ctor_IncompleteMemberInInterface extends SubstituteMenuBase {
           @Nullable
           @Override
           public SAbstractConcept getOutputConcept() {
-            return CONCEPTS.IncompleteMemberDeclaration$QW;
+            return CONCEPTS.IncompleteMemberDeclaration$jI;
           }
           @Nullable
           @Override
           public SNode createNode(@NotNull String pattern) {
             SNode nodeToWrap = super.createNode(pattern);
             SNode decl = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, "jetbrains.mps.baseLanguage.structure.IncompleteMemberDeclaration"));
-            SLinkOperations.setTarget(decl, LINKS.type$yO11, nodeToWrap);
+            SLinkOperations.setTarget(decl, LINKS.type$dTtN, nodeToWrap);
             return decl;
           }
 
@@ -375,7 +375,7 @@ public class ctor_IncompleteMemberInInterface extends SubstituteMenuBase {
         return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
       }
       private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-        return CONCEPTS.Type$IG;
+        return CONCEPTS.Type$bu;
       }
     }
     public class SMP_Include_4je5xk_f0 extends IncludeSubstituteMenuSubstituteMenuPart {
@@ -399,27 +399,27 @@ public class ctor_IncompleteMemberInInterface extends SubstituteMenuBase {
         return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguage.editor.ctor_IncompleteFromModifier");
       }
       private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-        return CONCEPTS.ClassifierMember$9F;
+        return CONCEPTS.ClassifierMember$At;
       }
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
-    /*package*/ static final SConcept IncompleteMemberDeclaration$QW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, "jetbrains.mps.baseLanguage.structure.IncompleteMemberDeclaration");
-    /*package*/ static final SConcept PrivateVisibility$Se = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
-    /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
-    /*package*/ static final SInterfaceConcept ClassifierMember$9F = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept IncompleteMemberDeclaration$jI = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, "jetbrains.mps.baseLanguage.structure.IncompleteMemberDeclaration");
+    /*package*/ static final SConcept PrivateVisibility$l0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SInterfaceConcept ClassifierMember$At = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty final$11DX = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e6fdaf96L, "final");
-    /*package*/ static final SProperty abstract$12n0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e6fdaf99L, "abstract");
-    /*package*/ static final SProperty static$WgA = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e6fdaf94L, "static");
+    /*package*/ static final SProperty final$G76J = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e6fdaf96L, "final");
+    /*package*/ static final SProperty abstract$G7NM = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e6fdaf99L, "abstract");
+    /*package*/ static final SProperty static$G1Ho = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e6fdaf94L, "static");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
-    /*package*/ static final SContainmentLink type$yO11 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e8b632a8L, "type");
+    /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink type$dTtN = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32175ac2e6fcc181L, 0x32175ac2e8b632a8L, "type");
   }
 }

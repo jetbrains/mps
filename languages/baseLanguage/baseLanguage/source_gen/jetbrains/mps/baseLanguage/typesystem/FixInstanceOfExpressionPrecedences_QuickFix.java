@@ -16,17 +16,17 @@ public class FixInstanceOfExpressionPrecedences_QuickFix extends QuickFix_Runtim
     super(new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2643065713351098644"));
   }
   public void execute(SNode node) {
-    SNode instanceOfExpression = SNodeOperations.cast(node, CONCEPTS.InstanceOfExpression$JG);
-    SNodeOperations.replaceWithAnother(instanceOfExpression, SLinkOperations.getTarget(instanceOfExpression, LINKS.leftExpression$dnS9));
+    SNode instanceOfExpression = SNodeOperations.cast(node, CONCEPTS.InstanceOfExpression$cu);
+    SNodeOperations.replaceWithAnother(instanceOfExpression, SLinkOperations.getTarget(instanceOfExpression, LINKS.leftExpression$StkV));
     SNodeOperations.replaceWithAnother(((SNode) FixInstanceOfExpressionPrecedences_QuickFix.this.getField("expressionRoot")[0]), instanceOfExpression);
-    SLinkOperations.setTarget(instanceOfExpression, LINKS.leftExpression$dnS9, ((SNode) FixInstanceOfExpressionPrecedences_QuickFix.this.getField("expressionRoot")[0]));
+    SLinkOperations.setTarget(instanceOfExpression, LINKS.leftExpression$StkV, ((SNode) FixInstanceOfExpressionPrecedences_QuickFix.this.getField("expressionRoot")[0]));
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InstanceOfExpression$JG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, "jetbrains.mps.baseLanguage.structure.InstanceOfExpression");
+    /*package*/ static final SConcept InstanceOfExpression$cu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, "jetbrains.mps.baseLanguage.structure.InstanceOfExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink leftExpression$dnS9 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06218L, "leftExpression");
+    /*package*/ static final SContainmentLink leftExpression$StkV = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06218L, "leftExpression");
   }
 }

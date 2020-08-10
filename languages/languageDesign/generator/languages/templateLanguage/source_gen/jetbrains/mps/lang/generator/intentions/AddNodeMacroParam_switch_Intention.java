@@ -63,7 +63,7 @@ public final class AddNodeMacroParam_switch_Intention extends AbstractIntentionD
     return list;
   }
   private List<SNode> parameter(final SNode node, final EditorContext editorContext) {
-    return SModelOperations.roots(SNodeOperations.getModel(node), CONCEPTS.TemplateSwitch$BT);
+    return SModelOperations.roots(SNodeOperations.getModel(node), CONCEPTS.TemplateSwitch$j_);
   }
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable implements ParameterizedIntentionExecutable {
     private SNode myParameter;
@@ -77,9 +77,9 @@ public final class AddNodeMacroParam_switch_Intention extends AbstractIntentionD
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode nodeMacro = EditingUtil.addNodeMacro(node);
-      SNode switchMacro = SNodeFactoryOperations.createNewNode(CONCEPTS.TemplateSwitchMacro$o0, null);
+      SNode switchMacro = SNodeFactoryOperations.createNewNode(CONCEPTS.TemplateSwitchMacro$3G, null);
       SNodeOperations.replaceWithAnother(nodeMacro, switchMacro);
-      SLinkOperations.setTarget(switchMacro, LINKS.template$B9Tq, myParameter);
+      SLinkOperations.setTarget(switchMacro, LINKS.template$6_6, myParameter);
       // set caret 
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, switchMacro, SelectionManager.FIRST_CELL, 1);
     }
@@ -93,11 +93,11 @@ public final class AddNodeMacroParam_switch_Intention extends AbstractIntentionD
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TemplateSwitch$BT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L, "jetbrains.mps.lang.generator.structure.TemplateSwitch");
-    /*package*/ static final SConcept TemplateSwitchMacro$o0 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e51747593L, "jetbrains.mps.lang.generator.structure.TemplateSwitchMacro");
+    /*package*/ static final SConcept TemplateSwitch$j_ = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10313ed7688L, "jetbrains.mps.lang.generator.structure.TemplateSwitch");
+    /*package*/ static final SConcept TemplateSwitchMacro$3G = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e51747593L, "jetbrains.mps.lang.generator.structure.TemplateSwitchMacro");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink template$B9Tq = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
+    /*package*/ static final SReferenceLink template$6_6 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x17e941d108ce3120L, 0x17e941d108ce3173L, "template");
   }
 }

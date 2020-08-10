@@ -13,15 +13,15 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class ForEachFoundNode {
   public static class NodeFactory_1237139122106539383 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
-      SNodeFactoryOperations.addNewChild(newNode, LINKS.parameter$uR6p, CONCEPTS.ForEachNodeFoundClosureParameterDeclaration$4h);
+      SNodeFactoryOperations.addNewChild(newNode, LINKS.parameter$b4Y3, CONCEPTS.ForEachNodeFoundClosureParameterDeclaration$PJ);
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$uR6p = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter");
+    /*package*/ static final SContainmentLink parameter$b4Y3 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ForEachNodeFoundClosureParameterDeclaration$4h = MetaAdapterFactory.getConcept(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x112b337a16d39f72L, "jetbrains.mps.lang.findUsages.structure.ForEachNodeFoundClosureParameterDeclaration");
+    /*package*/ static final SConcept ForEachNodeFoundClosureParameterDeclaration$PJ = MetaAdapterFactory.getConcept(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x112b337a16d39f72L, "jetbrains.mps.lang.findUsages.structure.ForEachNodeFoundClosureParameterDeclaration");
   }
 }

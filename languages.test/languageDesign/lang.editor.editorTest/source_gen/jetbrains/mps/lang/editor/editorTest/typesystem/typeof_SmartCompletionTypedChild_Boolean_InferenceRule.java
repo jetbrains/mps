@@ -25,7 +25,7 @@ public class typeof_SmartCompletionTypedChild_Boolean_InferenceRule extends Abst
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SmartCompletionTypedChild_Boolean$LS;
+    return CONCEPTS.SmartCompletionTypedChild_Boolean$y5;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -41,6 +41,6 @@ public class typeof_SmartCompletionTypedChild_Boolean_InferenceRule extends Abst
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SmartCompletionTypedChild_Boolean$LS = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf08a0d4aL, "jetbrains.mps.lang.editor.editorTest.structure.SmartCompletionTypedChild_Boolean");
+    /*package*/ static final SConcept SmartCompletionTypedChild_Boolean$y5 = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x61249b1bf08a0d4aL, "jetbrains.mps.lang.editor.editorTest.structure.SmartCompletionTypedChild_Boolean");
   }
 }

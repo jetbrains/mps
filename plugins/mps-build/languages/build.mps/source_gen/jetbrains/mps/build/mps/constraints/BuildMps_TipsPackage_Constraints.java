@@ -27,12 +27,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class BuildMps_TipsPackage_Constraints extends BaseConstraintsDescriptor {
   public BuildMps_TipsPackage_Constraints() {
-    super(CONCEPTS.BuildMps_TipsPackage$2r);
+    super(CONCEPTS.BuildMps_TipsPackage$uN);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.tips$jqe8, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.tips$MAEw, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -47,10 +47,10 @@ public class BuildMps_TipsPackage_Constraints extends BaseConstraintsDescriptor 
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            List<SNode> descendants = SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.BuildProject$BF, false, false), CONCEPTS.BuildMps_Tips$aF, false, new SAbstractConcept[]{});
+            List<SNode> descendants = SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.BuildProject$ae, false, false), CONCEPTS.BuildMps_Tips$B3, false, new SAbstractConcept[]{});
             return new ListScope(descendants) {
               public String getName(SNode child) {
-                return SPropertyOperations.getString(SNodeOperations.cast(child, CONCEPTS.BuildMps_Tips$aF), PROPS.name$lA7v);
+                return SPropertyOperations.getString(SNodeOperations.cast(child, CONCEPTS.BuildMps_Tips$B3), PROPS.name$MnvL);
               }
             };
           }
@@ -64,16 +64,16 @@ public class BuildMps_TipsPackage_Constraints extends BaseConstraintsDescriptor 
   private static final SNodePointer breakingNode_l4noc4_a0a0a0a0a1a0a0a0c = new SNodePointer("r:76dda237-5120-4688-b749-201ab5c5059d(jetbrains.mps.build.mps.constraints)", "5554837124043851469");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildMps_TipsPackage$2r = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5ea1926fded234efL, "jetbrains.mps.build.mps.structure.BuildMps_TipsPackage");
-    /*package*/ static final SConcept BuildProject$BF = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
-    /*package*/ static final SConcept BuildMps_Tips$aF = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x71731b16a201d7bcL, "jetbrains.mps.build.mps.structure.BuildMps_Tips");
+    /*package*/ static final SConcept BuildMps_TipsPackage$uN = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5ea1926fded234efL, "jetbrains.mps.build.mps.structure.BuildMps_TipsPackage");
+    /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+    /*package*/ static final SConcept BuildMps_Tips$B3 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x71731b16a201d7bcL, "jetbrains.mps.build.mps.structure.BuildMps_Tips");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink tips$jqe8 = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5ea1926fded234efL, 0x65a11ce3e4101393L, "tips");
+    /*package*/ static final SReferenceLink tips$MAEw = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5ea1926fded234efL, 0x65a11ce3e4101393L, "tips");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

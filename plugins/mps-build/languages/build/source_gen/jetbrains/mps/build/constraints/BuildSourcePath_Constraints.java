@@ -8,16 +8,16 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildSourcePath_Constraints extends BaseConstraintsDescriptor {
   public BuildSourcePath_Constraints() {
-    super(CONCEPTS.BuildSourcePath$ua);
+    super(CONCEPTS.BuildSourcePath$H);
   }
 
   @Override
   public SConcept getDefaultConcreteConcept() {
-    return CONCEPTS.BuildSourceProjectRelativePath$VD;
+    return CONCEPTS.BuildSourceProjectRelativePath$uc;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildSourcePath$ua = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc3eL, "jetbrains.mps.build.structure.BuildSourcePath");
-    /*package*/ static final SConcept BuildSourceProjectRelativePath$VD = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4c12642949048fb2L, "jetbrains.mps.build.structure.BuildSourceProjectRelativePath");
+    /*package*/ static final SConcept BuildSourcePath$H = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc3eL, "jetbrains.mps.build.structure.BuildSourcePath");
+    /*package*/ static final SConcept BuildSourceProjectRelativePath$uc = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4c12642949048fb2L, "jetbrains.mps.build.structure.BuildSourceProjectRelativePath");
   }
 }

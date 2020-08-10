@@ -67,20 +67,20 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       super(editorContext, node);
       myPropertyCell_aofvvp_a0a = new PropertyMapperCell<Integer>(editorContext, node) {
         protected Integer getModelPropertyValueImpl() {
-          return SPropertyOperations.getInteger(node, PROPS.x$SCZU);
+          return SPropertyOperations.getInteger(node, PROPS.x$NHmW);
         }
         protected void setModelPropertyValueImpl(Integer value) {
-          SPropertyOperations.assign(node, PROPS.x$SCZU, value);
+          SPropertyOperations.assign(node, PROPS.x$NHmW, value);
         }
       };
       addEditorCell(myPropertyCell_aofvvp_a0a);
       myPropertyCell_aofvvp_a0a.getEditorComponent().getUpdater().getCurrentUpdateSession().registerCleanDependency(myPropertyCell_aofvvp_a0a, new Pair<SNodeReference, String>(new SNodePointer(node), "x"));
       myPropertyCell_aofvvp_a1a = new PropertyMapperCell<Integer>(editorContext, node) {
         protected Integer getModelPropertyValueImpl() {
-          return SPropertyOperations.getInteger(node, PROPS.y$SDtW);
+          return SPropertyOperations.getInteger(node, PROPS.y$NHOY);
         }
         protected void setModelPropertyValueImpl(Integer value) {
-          SPropertyOperations.assign(node, PROPS.y$SDtW, value);
+          SPropertyOperations.assign(node, PROPS.y$NHOY, value);
         }
       };
       addEditorCell(myPropertyCell_aofvvp_a1a);
@@ -199,7 +199,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty x$SCZU = MetaAdapterFactory.getProperty(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x7a0afda102e1de05L, 0x7a0afda102e2029cL, "x");
-    /*package*/ static final SProperty y$SDtW = MetaAdapterFactory.getProperty(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x7a0afda102e1de05L, 0x7a0afda102e2029eL, "y");
+    /*package*/ static final SProperty x$NHmW = MetaAdapterFactory.getProperty(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x7a0afda102e1de05L, 0x7a0afda102e2029cL, "x");
+    /*package*/ static final SProperty y$NHOY = MetaAdapterFactory.getProperty(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, 0x7a0afda102e1de05L, 0x7a0afda102e2029eL, "y");
   }
 }

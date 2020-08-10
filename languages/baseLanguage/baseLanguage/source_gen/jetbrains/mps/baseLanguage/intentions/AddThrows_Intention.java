@@ -36,7 +36,7 @@ public final class AddThrows_Intention extends AbstractIntentionDescriptor imple
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.throwsItem$X8vM)).isEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.throwsItem$CdW$)).isEmpty();
   }
   @Override
   public boolean isSurroundWith() {
@@ -57,8 +57,8 @@ public final class AddThrows_Intention extends AbstractIntentionDescriptor imple
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNodeFactoryOperations.addNewChild(node, LINKS.throwsItem$X8vM, null);
-      editorContext.select(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.throwsItem$X8vM)).last());
+      SNodeFactoryOperations.addNewChild(node, LINKS.throwsItem$CdW$, null);
+      editorContext.select(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.throwsItem$CdW$)).last());
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -67,6 +67,6 @@ public final class AddThrows_Intention extends AbstractIntentionDescriptor imple
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink throwsItem$X8vM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
+    /*package*/ static final SContainmentLink throwsItem$CdW$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
   }
 }

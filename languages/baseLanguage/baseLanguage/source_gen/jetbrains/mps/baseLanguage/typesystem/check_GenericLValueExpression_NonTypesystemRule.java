@@ -23,25 +23,25 @@ public class check_GenericLValueExpression_NonTypesystemRule extends AbstractNon
   public check_GenericLValueExpression_NonTypesystemRule() {
   }
   public void applyRule(final SNode glv, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SLinkOperations.getTarget(glv, LINKS.assignValueExression$iPFH) == null) {
+    if (SLinkOperations.getTarget(glv, LINKS.assignValueExression$XV8v) == null) {
       return;
     }
-    List<SNode> valueRefs = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(glv, LINKS.assignValueExression$iPFH), CONCEPTS.ValueRef$zw, false, new SAbstractConcept[]{});
+    List<SNode> valueRefs = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(glv, LINKS.assignValueExression$XV8v), CONCEPTS.ValueRef$i, false, new SAbstractConcept[]{});
     if (ListSequence.fromList(valueRefs).count() == 0) {
       {
-        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.assignValueExression$iPFH);
+        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.assignValueExression$XV8v);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(glv, "value is not used in assignment", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3140757037547068229", null, errorTarget);
       }
     }
     if (ListSequence.fromList(valueRefs).count() > 1) {
       {
-        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.assignValueExression$iPFH);
+        final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.assignValueExression$XV8v);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(glv, "value should be used exactly once in assignment", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "3140757037547070636", null, errorTarget);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.GenericLValueExpression$FD;
+    return CONCEPTS.GenericLValueExpression$8r;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -51,11 +51,11 @@ public class check_GenericLValueExpression_NonTypesystemRule extends AbstractNon
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink assignValueExression$iPFH = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, 0x7e4df7e6620fe175L, "assignValueExression");
+    /*package*/ static final SContainmentLink assignValueExression$XV8v = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, 0x7e4df7e6620fe175L, "assignValueExression");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ValueRef$zw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac33aL, "jetbrains.mps.baseLanguage.structure.ValueRef");
-    /*package*/ static final SConcept GenericLValueExpression$FD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, "jetbrains.mps.baseLanguage.structure.GenericLValueExpression");
+    /*package*/ static final SConcept ValueRef$i = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac33aL, "jetbrains.mps.baseLanguage.structure.ValueRef");
+    /*package*/ static final SConcept GenericLValueExpression$8r = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53cc4e75e79ac233L, "jetbrains.mps.baseLanguage.structure.GenericLValueExpression");
   }
 }

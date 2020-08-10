@@ -24,7 +24,7 @@ public class typeof_SimpleMathFloatConstant_InferenceRule extends AbstractInfere
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SimpleMathFloatConstant$Fa;
+    return CONCEPTS.SimpleMathFloatConstant$rB;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -33,12 +33,12 @@ public class typeof_SimpleMathFloatConstant_InferenceRule extends AbstractInfere
     return false;
   }
   private static SNode createSimpleMathFloatType_v572xj_a1a0c0a0b() {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathFloatType$Lj);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.SimpleMathFloatType$xK);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SimpleMathFloatConstant$Fa = MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b84b40a4L, "jetbrains.mps.samples.Expressions.structure.SimpleMathFloatConstant");
-    /*package*/ static final SConcept SimpleMathFloatType$Lj = MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b84b3e3eL, "jetbrains.mps.samples.Expressions.structure.SimpleMathFloatType");
+    /*package*/ static final SConcept SimpleMathFloatConstant$rB = MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b84b40a4L, "jetbrains.mps.samples.Expressions.structure.SimpleMathFloatConstant");
+    /*package*/ static final SConcept SimpleMathFloatType$xK = MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b84b3e3eL, "jetbrains.mps.samples.Expressions.structure.SimpleMathFloatType");
   }
 }

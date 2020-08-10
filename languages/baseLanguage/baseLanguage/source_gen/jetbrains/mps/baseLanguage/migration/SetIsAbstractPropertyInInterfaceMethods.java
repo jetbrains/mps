@@ -44,15 +44,15 @@ public class SetIsAbstractPropertyInInterfaceMethods extends MigrationScriptBase
           return scope_km8cgg_a0e_0;
         }
       };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.Interface$Kp, true)).visitAll(new IVisitor<SNode>() {
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.Interface$db, true)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.member$6v_r)).where(new IWhereFilter<SNode>() {
+          ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.member$L_2d)).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return SNodeOperations.isInstanceOf(it, CONCEPTS.InstanceMethodDeclaration$An);
+              return SNodeOperations.isInstanceOf(it, CONCEPTS.InstanceMethodDeclaration$39);
             }
           }).visitAll(new IVisitor<SNode>() {
             public void visit(SNode it) {
-              SPropertyOperations.assign(SNodeOperations.cast(it, CONCEPTS.InstanceMethodDeclaration$An), PROPS.isAbstract$gogN, false);
+              SPropertyOperations.assign(SNodeOperations.cast(it, CONCEPTS.InstanceMethodDeclaration$39), PROPS.isAbstract$VtH_, false);
             }
           });
         }
@@ -64,15 +64,15 @@ public class SetIsAbstractPropertyInInterfaceMethods extends MigrationScriptBase
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
-    /*package*/ static final SConcept InstanceMethodDeclaration$An = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink member$6v_r = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
+    /*package*/ static final SContainmentLink member$L_2d = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, 0x4a9a46de59132803L, "member");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isAbstract$gogN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
+    /*package*/ static final SProperty isAbstract$VtH_ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, 0x1126a8d157dL, "isAbstract");
   }
 }

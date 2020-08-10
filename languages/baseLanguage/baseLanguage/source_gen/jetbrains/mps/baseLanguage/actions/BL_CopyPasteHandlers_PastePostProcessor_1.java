@@ -28,48 +28,48 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class BL_CopyPasteHandlers_PastePostProcessor_1 implements PastePostProcessor {
   @Override
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ThisExpression$7A;
+    return CONCEPTS.ThisExpression$$o;
   }
   @Override
   public void postProcessNode(SNode pastedNode) {
 
-    if (ListSequence.fromList(SNodeOperations.getNodeAncestors(pastedNode, CONCEPTS.ClassifierMember$9F, false)).where(new IWhereFilter<SNode>() {
+    if (ListSequence.fromList(SNodeOperations.getNodeAncestors(pastedNode, CONCEPTS.ClassifierMember$At, false)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return !((boolean) ClassifierMember__BehaviorDescriptor.isStatic_id7MS72Gc8avw.invoke(it));
       }
     }).isEmpty()) {
       return;
     }
-    SNode containingClass = SNodeOperations.getNodeAncestor(pastedNode, CONCEPTS.ClassConcept$IY, false, false);
+    SNode containingClass = SNodeOperations.getNodeAncestor(pastedNode, CONCEPTS.ClassConcept$bK, false, false);
     if (containingClass == null) {
       return;
     }
 
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(pastedNode), CONCEPTS.DotExpression$6a)) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(pastedNode), CONCEPTS.DotExpression$yW)) {
       SNode parentDotExpression = (SNode) SNodeOperations.getParent(pastedNode);
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(parentDotExpression, LINKS.operation$_mGS), CONCEPTS.FieldReferenceOperation$N8)) {
-        SNode fieldReferenceOperation = (SNode) SLinkOperations.getTarget(parentDotExpression, LINKS.operation$_mGS);
-        SReference fieldDeclarationReference = SNodeOperations.getReference(fieldReferenceOperation, LINKS.fieldDeclaration$229u);
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(parentDotExpression, LINKS.operation$gs9E), CONCEPTS.FieldReferenceOperation$fU)) {
+        SNode fieldReferenceOperation = (SNode) SLinkOperations.getTarget(parentDotExpression, LINKS.operation$gs9E);
+        SReference fieldDeclarationReference = SNodeOperations.getReference(fieldReferenceOperation, LINKS.fieldDeclaration$H7Ag);
 
         // External reference 
         final String resolveInfo = SLinkOperations.getResolveInfo(fieldDeclarationReference);
 
         // Collecting possible classConcepts (this. targets) 
         List<SNode> possibleClassConcepts = new ArrayList<SNode>();
-        for (SNode clazz = containingClass; clazz != null; clazz = ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(clazz) ? null : SNodeOperations.getNodeAncestor(clazz, CONCEPTS.ClassConcept$IY, false, false))) {
+        for (SNode clazz = containingClass; clazz != null; clazz = ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(clazz) ? null : SNodeOperations.getNodeAncestor(clazz, CONCEPTS.ClassConcept$bK, false, false))) {
           ListSequence.fromList(possibleClassConcepts).addElement(clazz);
         }
 
         for (SNode nextClassConcept : ListSequence.fromList(possibleClassConcepts)) {
           if (Sequence.fromIterable(Members.visibleInstanceFields(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(nextClassConcept), pastedNode)).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return SPropertyOperations.getString(it, PROPS.name$lA7v).equals(resolveInfo);
+              return SPropertyOperations.getString(it, PROPS.name$MnvL).equals(resolveInfo);
             }
           }).isNotEmpty()) {
             if (nextClassConcept != containingClass) {
-              SLinkOperations.setTarget(pastedNode, LINKS.classConcept$StRd, nextClassConcept);
-            } else if (SNodeOperations.getReference(pastedNode, LINKS.classConcept$StRd) != null) {
-              SLinkOperations.setTarget(pastedNode, LINKS.classConcept$StRd, null);
+              SLinkOperations.setTarget(pastedNode, LINKS.classConcept$zzjZ, nextClassConcept);
+            } else if (SNodeOperations.getReference(pastedNode, LINKS.classConcept$zzjZ) != null) {
+              SLinkOperations.setTarget(pastedNode, LINKS.classConcept$zzjZ, null);
             }
             break;
           }
@@ -79,20 +79,20 @@ public final class BL_CopyPasteHandlers_PastePostProcessor_1 implements PastePos
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ThisExpression$7A = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression");
-    /*package*/ static final SInterfaceConcept ClassifierMember$9F = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept FieldReferenceOperation$N8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation");
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept ThisExpression$$o = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression");
+    /*package*/ static final SInterfaceConcept ClassifierMember$At = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept FieldReferenceOperation$fU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SReferenceLink fieldDeclaration$229u = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
-    /*package*/ static final SReferenceLink classConcept$StRd = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
+    /*package*/ static final SContainmentLink operation$gs9E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SReferenceLink fieldDeclaration$H7Ag = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, 0x116b484a653L, "fieldDeclaration");
+    /*package*/ static final SReferenceLink classConcept$zzjZ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, 0x1136d9d21b3L, "classConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

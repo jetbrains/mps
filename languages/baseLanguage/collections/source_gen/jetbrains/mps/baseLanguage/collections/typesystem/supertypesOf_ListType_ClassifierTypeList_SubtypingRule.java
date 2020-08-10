@@ -22,14 +22,14 @@ public class supertypesOf_ListType_ClassifierTypeList_SubtypingRule extends Subt
   public supertypesOf_ListType_ClassifierTypeList_SubtypingRule() {
   }
   public SNode getSubOrSuperType(SNode listType, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode et = SLinkOperations.getTarget(listType, LINKS.elementType$m8e4);
-    if (SNodeOperations.isInstanceOf(et, CONCEPTS.PrimitiveType$5)) {
+    SNode et = SLinkOperations.getTarget(listType, LINKS.elementType$ssn);
+    if (SNodeOperations.isInstanceOf(et, CONCEPTS.PrimitiveType$sR)) {
       et = Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(et);
     }
     return _quotation_createNode_tkf239_a2a1(et);
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ListType$z$;
+    return CONCEPTS.ListType$LR;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -51,11 +51,11 @@ public class supertypesOf_ListType_ClassifierTypeList_SubtypingRule extends Subt
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink elementType$m8e4 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, 0x10c25fe95c5L, "elementType");
+    /*package*/ static final SContainmentLink elementType$ssn = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, 0x10c25fe95c5L, "elementType");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PrimitiveType$5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
-    /*package*/ static final SConcept ListType$z$ = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, "jetbrains.mps.baseLanguage.collections.structure.ListType");
+    /*package*/ static final SConcept PrimitiveType$sR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
+    /*package*/ static final SConcept ListType$LR = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10c25fb076aL, "jetbrains.mps.baseLanguage.collections.structure.ListType");
   }
 }

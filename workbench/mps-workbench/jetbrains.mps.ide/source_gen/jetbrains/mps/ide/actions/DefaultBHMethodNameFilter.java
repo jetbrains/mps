@@ -36,17 +36,17 @@ public class DefaultBHMethodNameFilter implements Function<SNodeReference, Strin
       @Override
       public String compute() {
         SNode node = SPointerOperations.resolveNode(ptr, myRepo);
-        if (SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptMethodDeclaration$VN)) {
+        if (SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptMethodDeclaration$N0)) {
           SNode containingRoot = SNodeOperations.getContainingRoot(node);
-          if (SNodeOperations.isInstanceOf(containingRoot, CONCEPTS.ConceptBehavior$8P)) {
-            SNode behavior = SNodeOperations.cast(containingRoot, CONCEPTS.ConceptBehavior$8P);
+          if (SNodeOperations.isInstanceOf(containingRoot, CONCEPTS.ConceptBehavior$2)) {
+            SNode behavior = SNodeOperations.cast(containingRoot, CONCEPTS.ConceptBehavior$2);
             if (behavior != null) {
-              return SPropertyOperations.getString(SLinkOperations.getTarget(behavior, LINKS.concept$45m$), PROPS.name$lA7v);
+              return SPropertyOperations.getString(SLinkOperations.getTarget(behavior, LINKS.concept$u6dL), PROPS.name$MnvL);
             }
           } else {
-            return ((String) BHReflection.invoke0(containingRoot, CONCEPTS.BaseConcept$Sz, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
+            return ((String) BHReflection.invoke0(containingRoot, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
           }
-          return ((String) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.MethodDeclaration$93), CONCEPTS.INamedConcept$nV, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+          return ((String) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.MethodDeclaration$_P), CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
         } else if (node != null) {
           return ((SNode) node).getName();
         }
@@ -57,18 +57,18 @@ public class DefaultBHMethodNameFilter implements Function<SNodeReference, Strin
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptBehavior$8P = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
-    /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
-    /*package*/ static final SConcept MethodDeclaration$93 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, "jetbrains.mps.baseLanguage.structure.MethodDeclaration");
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
-    /*package*/ static final SConcept ConceptMethodDeclaration$VN = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
+    /*package*/ static final SConcept ConceptBehavior$2 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept MethodDeclaration$_P = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, "jetbrains.mps.baseLanguage.structure.MethodDeclaration");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept ConceptMethodDeclaration$N0 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$45m$ = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
+    /*package*/ static final SReferenceLink concept$u6dL = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, 0x11d43447b1fL, "concept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

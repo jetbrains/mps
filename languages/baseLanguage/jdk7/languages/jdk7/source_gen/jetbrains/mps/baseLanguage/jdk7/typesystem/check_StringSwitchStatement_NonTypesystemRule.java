@@ -33,22 +33,22 @@ public class check_StringSwitchStatement_NonTypesystemRule extends AbstractNonTy
     return false;
   }
   public void applyRule(final SNode switchStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode arg = SLinkOperations.getTarget(switchStatement, LINKS.expression$XdXc);
+    SNode arg = SLinkOperations.getTarget(switchStatement, LINKS.expression$CjpY);
     if (arg == null) {
       return;
     }
-    if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(arg), CONCEPTS.StringType$2b)) {
+    if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(arg), CONCEPTS.StringType$uX)) {
       return;
     }
 
-    if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(arg), CONCEPTS.ClassifierType$IZ)) {
-      if (SLinkOperations.hasPointer(SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(arg), CONCEPTS.ClassifierType$IZ), LINKS.classifier$xslD, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~String"))) {
+    if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(arg), CONCEPTS.ClassifierType$bL)) {
+      if (SLinkOperations.hasPointer(SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(arg), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~String"))) {
         return;
       }
     }
 
-    if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(arg), CONCEPTS.IWillBeClassifier$sr)) {
-      if (SNodeOperations.is(IWillBeClassifier__BehaviorDescriptor.baseClassifier_id3_1Lj9FFNJ0.invoke(SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(arg), CONCEPTS.IWillBeClassifier$sr)), new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~String"))) {
+    if (SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(arg), CONCEPTS.IWillBeClassifier$Td)) {
+      if (SNodeOperations.is(IWillBeClassifier__BehaviorDescriptor.baseClassifier_id3_1Lj9FFNJ0.invoke(SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(arg), CONCEPTS.IWillBeClassifier$Td)), new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~String"))) {
         return;
       }
     }
@@ -59,7 +59,7 @@ public class check_StringSwitchStatement_NonTypesystemRule extends AbstractNonTy
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.StringSwitchStatement$x7;
+    return CONCEPTS.StringSwitchStatement$Fm;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -69,14 +69,14 @@ public class check_StringSwitchStatement_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$XdXc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02ec241L, "expression");
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink expression$CjpY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02ec241L, "expression");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StringType$2b = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47da71ecL, "jetbrains.mps.baseLanguage.structure.StringType");
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
-    /*package*/ static final SInterfaceConcept IWillBeClassifier$sr = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3ff8b7a0d94242e1L, "jetbrains.mps.baseLanguage.structure.IWillBeClassifier");
-    /*package*/ static final SConcept StringSwitchStatement$x7 = MetaAdapterFactory.getConcept(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x58f5e8197ce2129L, "jetbrains.mps.baseLanguage.jdk7.structure.StringSwitchStatement");
+    /*package*/ static final SConcept StringType$uX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d47da71ecL, "jetbrains.mps.baseLanguage.structure.StringType");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SInterfaceConcept IWillBeClassifier$Td = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3ff8b7a0d94242e1L, "jetbrains.mps.baseLanguage.structure.IWillBeClassifier");
+    /*package*/ static final SConcept StringSwitchStatement$Fm = MetaAdapterFactory.getConcept(0x96ee7a94411d4cf8L, 0x9b9496cad7e52411L, 0x58f5e8197ce2129L, "jetbrains.mps.baseLanguage.jdk7.structure.StringSwitchStatement");
   }
 }

@@ -28,7 +28,7 @@ public class NamedNodeReference_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_t1mmv8_a(), CONCEPTS.NamedNodeReference$uC));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_t1mmv8_a(), CONCEPTS.NamedNodeReference$ab));
     return result;
   }
 
@@ -49,7 +49,7 @@ public class NamedNodeReference_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_t1mmv8_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.NamedNodeReference$uC, LINKS.target$kZN2);
+      super((SAbstractConcept) CONCEPTS.NamedNodeReference$ab, LINKS.target$fou_);
     }
     @NotNull
     @Override
@@ -81,7 +81,7 @@ public class NamedNodeReference_SubstituteMenu extends SubstituteMenuBase {
       }
       @Override
       public String getMatchingText(String pattern) {
-        return SPropertyOperations.getString(referencedNode, PROPS.name$lA7v);
+        return SPropertyOperations.getString(referencedNode, PROPS.name$MnvL);
       }
       @Override
       public String getVisibleMatchingText(String pattern) {
@@ -96,14 +96,14 @@ public class NamedNodeReference_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NamedNodeReference$uC = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x41af228e7e0d7f3eL, "jetbrains.mps.lang.modelapi.structure.NamedNodeReference");
+    /*package*/ static final SConcept NamedNodeReference$ab = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x41af228e7e0d7f3eL, "jetbrains.mps.lang.modelapi.structure.NamedNodeReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$kZN2 = MetaAdapterFactory.getReferenceLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x41af228e7e0d7f3eL, 0x64b394b6ee402faaL, "target");
+    /*package*/ static final SReferenceLink target$fou_ = MetaAdapterFactory.getReferenceLink(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x41af228e7e0d7f3eL, 0x64b394b6ee402faaL, "target");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

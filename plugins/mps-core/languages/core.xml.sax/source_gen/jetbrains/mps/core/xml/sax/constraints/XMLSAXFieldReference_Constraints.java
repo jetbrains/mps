@@ -26,12 +26,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class XMLSAXFieldReference_Constraints extends BaseConstraintsDescriptor {
   public XMLSAXFieldReference_Constraints() {
-    super(CONCEPTS.XMLSAXFieldReference$ey);
+    super(CONCEPTS.XMLSAXFieldReference$zv);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$hBh0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.declaration$zN_X, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -46,9 +46,9 @@ public class XMLSAXFieldReference_Constraints extends BaseConstraintsDescriptor 
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode n = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.XMLSAXParser$Sn, true, false);
+            SNode n = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.XMLSAXParser$dk, true, false);
             if ((n != null)) {
-              return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(n, LINKS.fields$kxNS)).concat(ListSequence.fromList(SLinkOperations.getChildren(n, LINKS.parameters$ksbw))));
+              return ListScope.forResolvableElements(ListSequence.fromList(SLinkOperations.getChildren(n, LINKS.fields$AI8P)).concat(ListSequence.fromList(SLinkOperations.getChildren(n, LINKS.parameters$ACwt))));
             }
             return null;
           }
@@ -62,13 +62,13 @@ public class XMLSAXFieldReference_Constraints extends BaseConstraintsDescriptor 
   private static final SNodePointer breakingNode_ar46fh_a0a0a0a0a1a0a0a0c = new SNodePointer("r:a2a452cd-a0b4-4774-9b7e-00f9c8226bfa(jetbrains.mps.core.xml.sax.constraints)", "6836281137582840697");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XMLSAXFieldReference$ey = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2e0L, "jetbrains.mps.core.xml.sax.structure.XMLSAXFieldReference");
-    /*package*/ static final SConcept XMLSAXParser$Sn = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e301L, "jetbrains.mps.core.xml.sax.structure.XMLSAXParser");
+    /*package*/ static final SConcept XMLSAXFieldReference$zv = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2e0L, "jetbrains.mps.core.xml.sax.structure.XMLSAXFieldReference");
+    /*package*/ static final SConcept XMLSAXParser$dk = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e301L, "jetbrains.mps.core.xml.sax.structure.XMLSAXParser");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$hBh0 = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2e0L, 0x1f6c736337b5e2e1L, "declaration");
-    /*package*/ static final SContainmentLink fields$kxNS = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e301L, 0x1f6c736337b5e305L, "fields");
-    /*package*/ static final SContainmentLink parameters$ksbw = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e301L, 0x1f6c736337b5e302L, "parameters");
+    /*package*/ static final SReferenceLink declaration$zN_X = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2e0L, 0x1f6c736337b5e2e1L, "declaration");
+    /*package*/ static final SContainmentLink fields$AI8P = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e301L, 0x1f6c736337b5e305L, "fields");
+    /*package*/ static final SContainmentLink parameters$ACwt = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e301L, 0x1f6c736337b5e302L, "parameters");
   }
 }

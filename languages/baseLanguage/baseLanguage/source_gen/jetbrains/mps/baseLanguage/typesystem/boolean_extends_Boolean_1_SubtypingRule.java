@@ -21,7 +21,7 @@ public class boolean_extends_Boolean_1_SubtypingRule extends SubtypingRule_Runti
     return _quotation_createNode_r631so_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BooleanType$8G;
+    return CONCEPTS.BooleanType$_u;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,6 +38,6 @@ public class boolean_extends_Boolean_1_SubtypingRule extends SubtypingRule_Runti
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BooleanType$8G = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d6513eL, "jetbrains.mps.baseLanguage.structure.BooleanType");
+    /*package*/ static final SConcept BooleanType$_u = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d6513eL, "jetbrains.mps.baseLanguage.structure.BooleanType");
   }
 }

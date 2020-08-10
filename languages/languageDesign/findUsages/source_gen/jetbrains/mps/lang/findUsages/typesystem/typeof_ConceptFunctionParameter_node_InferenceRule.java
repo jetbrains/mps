@@ -22,7 +22,7 @@ public class typeof_ConceptFunctionParameter_node_InferenceRule extends Abstract
   public typeof_ConceptFunctionParameter_node_InferenceRule() {
   }
   public void applyRule(final SNode conceptFunctionParameter_node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode applicableConcept = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(conceptFunctionParameter_node, CONCEPTS.FinderDeclaration$5E, false, false), LINKS.forConcept$gZt4);
+    SNode applicableConcept = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(conceptFunctionParameter_node, CONCEPTS.FinderDeclaration$R8, false, false), LINKS.forConcept$tZey);
     {
       SNode _nodeToCheck_1029348928467 = conceptFunctionParameter_node;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959035a(jetbrains.mps.lang.findUsages.typesystem)", "1205608715759", 0, null);
@@ -30,7 +30,7 @@ public class typeof_ConceptFunctionParameter_node_InferenceRule extends Abstract
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ConceptFunctionParameter_node$ji;
+    return CONCEPTS.ConceptFunctionParameter_node$4K;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -47,11 +47,11 @@ public class typeof_ConceptFunctionParameter_node_InferenceRule extends Abstract
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept FinderDeclaration$5E = MetaAdapterFactory.getConcept(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x116b5695a8dL, "jetbrains.mps.lang.findUsages.structure.FinderDeclaration");
-    /*package*/ static final SConcept ConceptFunctionParameter_node$ji = MetaAdapterFactory.getConcept(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x116c9c51f82L, "jetbrains.mps.lang.findUsages.structure.ConceptFunctionParameter_node");
+    /*package*/ static final SConcept FinderDeclaration$R8 = MetaAdapterFactory.getConcept(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x116b5695a8dL, "jetbrains.mps.lang.findUsages.structure.FinderDeclaration");
+    /*package*/ static final SConcept ConceptFunctionParameter_node$4K = MetaAdapterFactory.getConcept(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x116c9c51f82L, "jetbrains.mps.lang.findUsages.structure.ConceptFunctionParameter_node");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink forConcept$gZt4 = MetaAdapterFactory.getReferenceLink(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x11bd0c17f12L, 0x11bd0c2f241L, "forConcept");
+    /*package*/ static final SReferenceLink forConcept$tZey = MetaAdapterFactory.getReferenceLink(0x64d34fcdad024e73L, 0xaff8a581124c2e30L, 0x11bd0c17f12L, 0x11bd0c2f241L, "forConcept");
   }
 }

@@ -21,7 +21,7 @@ public class Complex_is_Object_weak_SubtypingRule extends SubtypingRule_Runtime 
     return _quotation_createNode_f46hoj_a0a1();
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ComplexType$CD;
+    return CONCEPTS.ComplexType$zx;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -38,6 +38,6 @@ public class Complex_is_Object_weak_SubtypingRule extends SubtypingRule_Runtime 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ComplexType$CD = MetaAdapterFactory.getConcept(0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686a0422aL, "jetbrains.mps.samples.complex.structure.ComplexType");
+    /*package*/ static final SConcept ComplexType$zx = MetaAdapterFactory.getConcept(0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686a0422aL, "jetbrains.mps.samples.complex.structure.ComplexType");
   }
 }

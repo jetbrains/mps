@@ -43,15 +43,15 @@
       <node id="1213877237627" at="97,14,98,58" concept="9" />
       <node id="1213877237627" at="104,48,105,22" concept="5" />
       <node id="1213877237627" at="110,40,111,19" concept="5" />
-      <node id="1213877237627" at="115,0,116,0" concept="6" trace="forConcept$nsWk" />
-      <node id="1213877237627" at="116,0,117,0" concept="6" trace="descriptionFunction$lLr$" />
-      <node id="1213877237627" at="117,0,118,0" concept="6" trace="body$z0FY" />
-      <node id="1213877237627" at="118,0,119,0" concept="6" trace="statement$pYcS" />
-      <node id="1213877237627" at="119,0,120,0" concept="6" trace="expression$zDGg" />
-      <node id="1213877237627" at="120,0,121,0" concept="6" trace="expression$qFF0" />
-      <node id="1213877237627" at="124,0,125,0" concept="6" trace="ReturnStatement$SF" />
-      <node id="1213877237627" at="125,0,126,0" concept="6" trace="ExpressionStatement$nm" />
-      <node id="1213877237627" at="126,0,127,0" concept="6" trace="StringLiteral$4G" />
+      <node id="1213877237627" at="115,0,116,0" concept="6" trace="forConcept$zyGL" />
+      <node id="1213877237627" at="116,0,117,0" concept="6" trace="descriptionFunction$xRc1" />
+      <node id="1213877237627" at="117,0,118,0" concept="6" trace="body$e68K" />
+      <node id="1213877237627" at="118,0,119,0" concept="6" trace="statement$53DE" />
+      <node id="1213877237627" at="119,0,120,0" concept="6" trace="expression$eJ92" />
+      <node id="1213877237627" at="120,0,121,0" concept="6" trace="expression$5L7M" />
+      <node id="1213877237627" at="124,0,125,0" concept="6" trace="ReturnStatement$lt" />
+      <node id="1213877237627" at="125,0,126,0" concept="6" trace="ExpressionStatement$O8" />
+      <node id="1213877237627" at="126,0,127,0" concept="6" trace="StringLiteral$xu" />
       <node id="1213877237627" at="38,0,40,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1213877237627" at="64,0,66,0" concept="0" trace="IntentionDeclaration__BehaviorDescriptor#()V" />
       <node id="1213877237627" at="41,0,44,0" concept="7" trace="getConceptName_idhEwIbu6#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
@@ -224,9 +224,9 @@
       <node id="658365993681973144" at="101,63,102,30" concept="4" />
       <node id="658365993681973144" at="102,30,103,230" concept="1" />
       <node id="658365993681973144" at="103,230,104,24" concept="5" />
-      <node id="1262430001741519711" at="108,0,109,0" concept="6" trace="ConceptFunction$Tt" />
-      <node id="1262430001741519711" at="109,0,110,0" concept="6" trace="ConceptFunctionParameter_editorContext$di" />
-      <node id="1262430001741519711" at="110,0,111,0" concept="6" trace="ConceptFunctionParameter_node$W5" />
+      <node id="1262430001741519711" at="108,0,109,0" concept="6" trace="ConceptFunction$mf" />
+      <node id="1262430001741519711" at="109,0,110,0" concept="6" trace="ConceptFunctionParameter_editorContext$eI" />
+      <node id="1262430001741519711" at="110,0,111,0" concept="6" trace="ConceptFunctionParameter_node$Gy" />
       <node id="1262430001741519711" at="35,0,37,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1262430001741519711" at="51,0,53,0" concept="0" trace="IsApplicableBlock__BehaviorDescriptor#()V" />
       <node id="1262430001741519711" at="38,0,41,0" concept="7" trace="showName_id1653mnvAgry#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Z" />
@@ -336,10 +336,10 @@
       <node id="1240492758690" at="107,240,108,39" concept="1" />
       <node id="1240492758690" at="109,31,110,203" concept="1" />
       <node id="1240492758690" at="111,5,112,24" concept="5" />
-      <node id="1262430001741703089" at="116,0,117,0" concept="6" trace="ConceptFunction$Tt" />
-      <node id="1262430001741703089" at="117,0,118,0" concept="6" trace="ConceptFunctionParameter_node$W5" />
-      <node id="1262430001741703089" at="118,0,119,0" concept="6" trace="ConceptFunctionParameter_editorContext$di" />
-      <node id="1262430001741703089" at="122,0,123,0" concept="6" trace="paramType$bqC0" />
+      <node id="1262430001741703089" at="116,0,117,0" concept="6" trace="ConceptFunction$mf" />
+      <node id="1262430001741703089" at="117,0,118,0" concept="6" trace="ConceptFunctionParameter_node$Gy" />
+      <node id="1262430001741703089" at="118,0,119,0" concept="6" trace="ConceptFunctionParameter_editorContext$eI" />
+      <node id="1262430001741703089" at="122,0,123,0" concept="6" trace="paramType$nwot" />
       <node id="1262430001741703089" at="38,0,40,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1262430001741703089" at="54,0,56,0" concept="0" trace="QueryBlock__BehaviorDescriptor#()V" />
       <node id="1262430001741703089" at="41,0,44,0" concept="7" trace="showName_id1653mnvAgry#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Z" />
@@ -453,11 +453,11 @@
       <node id="658365993681975247" at="105,63,106,30" concept="4" />
       <node id="658365993681975247" at="106,30,107,230" concept="1" />
       <node id="658365993681975247" at="107,230,108,24" concept="5" />
-      <node id="1262430001741719753" at="112,0,113,0" concept="6" trace="ConceptFunction$Tt" />
-      <node id="1262430001741719753" at="113,0,114,0" concept="6" trace="ConceptFunctionParameter_node$W5" />
-      <node id="1262430001741719753" at="114,0,115,0" concept="6" trace="ConceptFunctionParameter_editorContext$di" />
-      <node id="1262430001741719753" at="115,0,116,0" concept="6" trace="IntentionParameter$Xf" />
-      <node id="1262430001741719753" at="116,0,117,0" concept="6" trace="ParameterizedIntentionDeclaration$68" />
+      <node id="1262430001741719753" at="112,0,113,0" concept="6" trace="ConceptFunction$mf" />
+      <node id="1262430001741719753" at="113,0,114,0" concept="6" trace="ConceptFunctionParameter_node$Gy" />
+      <node id="1262430001741719753" at="114,0,115,0" concept="6" trace="ConceptFunctionParameter_editorContext$eI" />
+      <node id="1262430001741719753" at="115,0,116,0" concept="6" trace="IntentionParameter$HG" />
+      <node id="1262430001741719753" at="116,0,117,0" concept="6" trace="ParameterizedIntentionDeclaration$Q_" />
       <node id="1262430001741719753" at="36,0,38,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1262430001741719753" at="55,0,57,0" concept="0" trace="DescriptionBlock__BehaviorDescriptor#()V" />
       <node id="1262430001741719753" at="39,0,42,0" concept="7" trace="showName_id1653mnvAgry#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Z" />
@@ -567,11 +567,11 @@
       <node id="658365993682020122" at="105,63,106,30" concept="4" />
       <node id="658365993682020122" at="106,30,107,227" concept="1" />
       <node id="658365993682020122" at="107,227,108,24" concept="5" />
-      <node id="1262430001741720159" at="112,0,113,0" concept="6" trace="ConceptFunction$Tt" />
-      <node id="1262430001741720159" at="113,0,114,0" concept="6" trace="ConceptFunctionParameter_node$W5" />
-      <node id="1262430001741720159" at="114,0,115,0" concept="6" trace="ConceptFunctionParameter_editorContext$di" />
-      <node id="1262430001741720159" at="115,0,116,0" concept="6" trace="IntentionParameter$Xf" />
-      <node id="1262430001741720159" at="116,0,117,0" concept="6" trace="ParameterizedIntentionDeclaration$68" />
+      <node id="1262430001741720159" at="112,0,113,0" concept="6" trace="ConceptFunction$mf" />
+      <node id="1262430001741720159" at="113,0,114,0" concept="6" trace="ConceptFunctionParameter_node$Gy" />
+      <node id="1262430001741720159" at="114,0,115,0" concept="6" trace="ConceptFunctionParameter_editorContext$eI" />
+      <node id="1262430001741720159" at="115,0,116,0" concept="6" trace="IntentionParameter$HG" />
+      <node id="1262430001741720159" at="116,0,117,0" concept="6" trace="ParameterizedIntentionDeclaration$Q_" />
       <node id="1262430001741720159" at="36,0,38,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1262430001741720159" at="55,0,57,0" concept="0" trace="ExecuteBlock__BehaviorDescriptor#()V" />
       <node id="1262430001741720159" at="39,0,42,0" concept="7" trace="showName_id1653mnvAgry#(Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Z" />
@@ -678,10 +678,10 @@
       <node id="658365993682020038" at="96,63,97,30" concept="4" />
       <node id="658365993682020038" at="97,30,98,230" concept="1" />
       <node id="658365993682020038" at="98,230,99,24" concept="5" />
-      <node id="3044950653914719384" at="103,0,104,0" concept="6" trace="ConceptFunction$Tt" />
-      <node id="3044950653914719384" at="104,0,105,0" concept="6" trace="ConceptFunctionParameter_node$W5" />
-      <node id="3044950653914719384" at="105,0,106,0" concept="6" trace="ConceptFunctionParameter_childNode$DO" />
-      <node id="3044950653914719384" at="106,0,107,0" concept="6" trace="ConceptFunctionParameter_editorContext$di" />
+      <node id="3044950653914719384" at="103,0,104,0" concept="6" trace="ConceptFunction$mf" />
+      <node id="3044950653914719384" at="104,0,105,0" concept="6" trace="ConceptFunctionParameter_node$Gy" />
+      <node id="3044950653914719384" at="105,0,106,0" concept="6" trace="ConceptFunctionParameter_childNode$qh" />
+      <node id="3044950653914719384" at="106,0,107,0" concept="6" trace="ConceptFunctionParameter_editorContext$eI" />
       <node id="3044950653914719384" at="34,0,36,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="3044950653914719384" at="48,0,50,0" concept="0" trace="ChildFilterFunction__BehaviorDescriptor#()V" />
       <node id="3044950653914719384" at="44,0,47,0" concept="7" trace="getExpectedReturnType_idhEwIGRD#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -791,16 +791,16 @@
       <node id="6263518417926802282" at="119,14,120,58" concept="9" />
       <node id="6263518417926802282" at="126,48,127,22" concept="5" />
       <node id="6263518417926802282" at="132,40,133,19" concept="5" />
-      <node id="6263518417926802282" at="137,0,138,0" concept="6" trace="name$lA7v" />
-      <node id="6263518417926802282" at="141,0,142,0" concept="6" trace="forConcept$nsWk" />
-      <node id="6263518417926802282" at="142,0,143,0" concept="6" trace="descriptionFunction$lLr$" />
-      <node id="6263518417926802282" at="143,0,144,0" concept="6" trace="body$z0FY" />
-      <node id="6263518417926802282" at="144,0,145,0" concept="6" trace="statement$pYcS" />
-      <node id="6263518417926802282" at="145,0,146,0" concept="6" trace="expression$zDGg" />
-      <node id="6263518417926802282" at="146,0,147,0" concept="6" trace="expression$qFF0" />
-      <node id="6263518417926802282" at="150,0,151,0" concept="6" trace="ReturnStatement$SF" />
-      <node id="6263518417926802282" at="151,0,152,0" concept="6" trace="ExpressionStatement$nm" />
-      <node id="6263518417926802282" at="152,0,153,0" concept="6" trace="StringLiteral$4G" />
+      <node id="6263518417926802282" at="137,0,138,0" concept="6" trace="name$MnvL" />
+      <node id="6263518417926802282" at="141,0,142,0" concept="6" trace="forConcept$zyGL" />
+      <node id="6263518417926802282" at="142,0,143,0" concept="6" trace="descriptionFunction$xRc1" />
+      <node id="6263518417926802282" at="143,0,144,0" concept="6" trace="body$e68K" />
+      <node id="6263518417926802282" at="144,0,145,0" concept="6" trace="statement$53DE" />
+      <node id="6263518417926802282" at="145,0,146,0" concept="6" trace="expression$eJ92" />
+      <node id="6263518417926802282" at="146,0,147,0" concept="6" trace="expression$5L7M" />
+      <node id="6263518417926802282" at="150,0,151,0" concept="6" trace="ReturnStatement$lt" />
+      <node id="6263518417926802282" at="151,0,152,0" concept="6" trace="ExpressionStatement$O8" />
+      <node id="6263518417926802282" at="152,0,153,0" concept="6" trace="StringLiteral$xu" />
       <node id="6263518417926802282" at="44,0,46,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="6263518417926802282" at="79,0,81,0" concept="0" trace="BaseIntentionDeclaration__BehaviorDescriptor#()V" />
       <node id="6263518417926802282" at="47,0,50,0" concept="7" trace="getGeneratedName_id5rGvd38DcHL#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
@@ -927,7 +927,7 @@
       <node id="4958616572667243135" at="95,240,96,39" concept="1" />
       <node id="4958616572667243135" at="97,31,98,203" concept="1" />
       <node id="4958616572667243135" at="99,5,100,24" concept="5" />
-      <node id="7388353295030898203" at="104,0,105,0" concept="6" trace="parameterType$4IW0" />
+      <node id="7388353295030898203" at="104,0,105,0" concept="6" trace="parameterType$gOGt" />
       <node id="7388353295030898203" at="34,0,36,0" concept="7" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="7388353295030898203" at="44,0,46,0" concept="0" trace="Parameter__BehaviorDescriptor#()V" />
       <node id="7388353295030898203" at="37,0,40,0" concept="7" trace="getDeclaration_id7T23sO8vZuR#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />

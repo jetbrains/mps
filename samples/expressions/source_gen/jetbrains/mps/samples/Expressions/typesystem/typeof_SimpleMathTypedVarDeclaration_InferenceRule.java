@@ -21,11 +21,11 @@ public class typeof_SimpleMathTypedVarDeclaration_InferenceRule extends Abstract
     {
       SNode _nodeToCheck_1029348928467 = varDeclaration;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:9e78ab00-457d-4aa2-aec8-f0f0bf086985(jetbrains.mps.samples.Expressions.typesystem)", "8620208551721424561", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:9e78ab00-457d-4aa2-aec8-f0f0bf086985(jetbrains.mps.samples.Expressions.typesystem)", "8620208551721420047", true), (SNode) SLinkOperations.getTarget(varDeclaration, LINKS.type$CK8Q), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:9e78ab00-457d-4aa2-aec8-f0f0bf086985(jetbrains.mps.samples.Expressions.typesystem)", "8620208551721420047", true), (SNode) SLinkOperations.getTarget(varDeclaration, LINKS.type$bhTj), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.SimpleMathTypedVarDeclaration$oL;
+    return CONCEPTS.SimpleMathTypedVarDeclaration$9e;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -35,10 +35,10 @@ public class typeof_SimpleMathTypedVarDeclaration_InferenceRule extends Abstract
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$CK8Q = MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x77a1220187231476L, 0x77a122018723285dL, "type");
+    /*package*/ static final SContainmentLink type$bhTj = MetaAdapterFactory.getContainmentLink(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x77a1220187231476L, 0x77a122018723285dL, "type");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SimpleMathTypedVarDeclaration$oL = MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x77a1220187231476L, "jetbrains.mps.samples.Expressions.structure.SimpleMathTypedVarDeclaration");
+    /*package*/ static final SConcept SimpleMathTypedVarDeclaration$9e = MetaAdapterFactory.getConcept(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x77a1220187231476L, "jetbrains.mps.samples.Expressions.structure.SimpleMathTypedVarDeclaration");
   }
 }

@@ -32,10 +32,10 @@ public class CellUtil {
     if (isConceptDeprecated(node)) {
       return true;
     }
-    if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.IDeprecatable$EE))) {
+    if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.IDeprecatable$2W))) {
       return false;
     }
-    return ((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.IDeprecatable$EE), CONCEPTS.IDeprecatable$EE, SMethodTrimmedId.create("isDeprecated", null, "hOwoPtR")));
+    return ((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.IDeprecatable$2W), CONCEPTS.IDeprecatable$2W, SMethodTrimmedId.create("isDeprecated", null, "hOwoPtR")));
   }
   private static boolean isConceptDeprecated(SNode node) {
     ConceptPresentation cp = ConceptAspectsHelper.getPresentationAspect(node);
@@ -45,7 +45,7 @@ public class CellUtil {
     return cp.isDeprecated();
   }
   public static SNode getNodeToDelete(SNode node) {
-    while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.IWrapper$Ap)) {
+    while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.IWrapper$YF)) {
       node = SNodeOperations.getParent(node);
     }
     return node;
@@ -54,22 +54,22 @@ public class CellUtil {
    * TODO: think of moving jetbrains.mps.lang.editor.generator.internal into MPS
    */
   public static SNode getLinkDeclarationTarget(SNode linkDeclaration) {
-    return SLinkOperations.getTarget(linkDeclaration, LINKS.target$TWaS);
+    return SLinkOperations.getTarget(linkDeclaration, LINKS.target$m40F);
   }
   public static String getLinkDeclarationRole(SNode linkDeclaration) {
-    return SPropertyOperations.getString(linkDeclaration, PROPS.role$nkts);
+    return SPropertyOperations.getString(linkDeclaration, PROPS.role$Nsjf);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IDeprecatable$EE = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x11d205fe38dL, "jetbrains.mps.lang.core.structure.IDeprecatable");
-    /*package*/ static final SInterfaceConcept IWrapper$Ap = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x11c6fd75034L, "jetbrains.mps.lang.core.structure.IWrapper");
+    /*package*/ static final SInterfaceConcept IDeprecatable$2W = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x11d205fe38dL, "jetbrains.mps.lang.core.structure.IDeprecatable");
+    /*package*/ static final SInterfaceConcept IWrapper$YF = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x11c6fd75034L, "jetbrains.mps.lang.core.structure.IWrapper");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$TWaS = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
+    /*package*/ static final SReferenceLink target$m40F = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98055fef0L, "target");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty role$nkts = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
+    /*package*/ static final SProperty role$Nsjf = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL, 0xf98052f333L, "role");
   }
 }

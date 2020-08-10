@@ -28,15 +28,15 @@
       <node id="7791109065627129348" at="47,104,48,39" concept="2" />
       <node id="1421157252384388585" at="53,66,54,117" concept="2" />
       <node id="241647608299579900" at="56,52,57,40" concept="7" />
-      <node id="1135871461211125082" at="61,0,62,0" concept="10" trace="conceptId$ZjQr" />
-      <node id="1135871461211125082" at="62,0,63,0" concept="10" trace="propertyId$TXS7" />
-      <node id="1135871461211125082" at="63,0,64,0" concept="10" trace="linkId$Uajt" />
-      <node id="1135871461211125082" at="64,0,65,0" concept="10" trace="datatypeId$88Lt" />
-      <node id="1135871461211125082" at="65,0,66,0" concept="10" trace="memberId$lO88" />
-      <node id="1135871461211125082" at="69,0,70,0" concept="10" trace="propertyDeclaration$yMqt" />
-      <node id="1135871461211125082" at="70,0,71,0" concept="10" trace="linkDeclaration$yMbs" />
-      <node id="1135871461211125082" at="71,0,72,0" concept="10" trace="members$4eAY" />
-      <node id="1135871461211125082" at="75,0,76,0" concept="10" trace="EnumerationDeclaration$rG" />
+      <node id="1135871461211125082" at="61,0,62,0" concept="10" trace="conceptId$rrGe" />
+      <node id="1135871461211125082" at="62,0,63,0" concept="10" trace="propertyId$m5HU" />
+      <node id="1135871461211125082" at="63,0,64,0" concept="10" trace="linkId$mi9g" />
+      <node id="1135871461211125082" at="64,0,65,0" concept="10" trace="datatypeId$$gBg" />
+      <node id="1135871461211125082" at="65,0,66,0" concept="10" trace="memberId$LVXV" />
+      <node id="1135871461211125082" at="69,0,70,0" concept="10" trace="propertyDeclaration$YUgg" />
+      <node id="1135871461211125082" at="70,0,71,0" concept="10" trace="linkDeclaration$YU1f" />
+      <node id="1135871461211125082" at="71,0,72,0" concept="10" trace="members$wmsL" />
+      <node id="1135871461211125082" at="75,0,76,0" concept="10" trace="EnumerationDeclaration$hv" />
       <node id="241647608299568355" at="17,74,20,5" concept="4" />
       <node id="241647608299588393" at="21,0,24,5" concept="3" />
       <node id="241647608299609780" at="25,0,28,5" concept="3" />
@@ -127,10 +127,10 @@
       <node id="7487379546349376222" at="79,83,80,65" concept="2" />
       <node id="7487379546349376222" at="80,65,81,26" concept="7" />
       <node id="1782525708531760318" at="83,52,84,40" concept="7" />
-      <node id="1782525708519282748" at="88,0,89,0" concept="10" trace="SmartReferenceAttribute$Lg" />
-      <node id="1782525708519282748" at="92,0,93,0" concept="10" trace="charactersticReference$BT$4" />
-      <node id="1782525708519282748" at="96,0,97,0" concept="10" trace="conceptAlias$oDJY" />
-      <node id="1782525708519282748" at="97,0,98,0" concept="10" trace="abstract$Q3$6" />
+      <node id="1782525708519282748" at="88,0,89,0" concept="10" trace="SmartReferenceAttribute$B3" />
+      <node id="1782525708519282748" at="92,0,93,0" concept="10" trace="charactersticReference$41pR" />
+      <node id="1782525708519282748" at="96,0,97,0" concept="10" trace="conceptAlias$OL_L" />
+      <node id="1782525708519282748" at="97,0,98,0" concept="10" trace="abstract$ibpT" />
       <node id="1782525708519283076" at="22,0,24,0" concept="1" trace="SmartRefAttributeUtil#()V" />
       <node id="7487379546349368227" at="38,10,40,5" concept="0" />
       <node id="7487379546349286522" at="61,10,63,5" concept="0" />
@@ -243,16 +243,16 @@
       <node id="5424895381998459384" at="112,36,113,53" concept="7" />
       <node id="2819660830273539102" at="115,67,116,47" concept="7" />
       <node id="2819660830273560951" at="118,67,119,47" concept="7" />
-      <node id="6714410169261956123" at="123,0,124,0" concept="10" trace="AbstractConceptDeclaration$UN" />
-      <node id="6714410169261956123" at="124,0,125,0" concept="10" trace="DataTypeDeclaration$KQ" />
-      <node id="6714410169261956123" at="128,0,129,0" concept="10" trace="conceptId$ZjQr" />
-      <node id="6714410169261956123" at="129,0,130,0" concept="10" trace="datatypeId$88Lt" />
-      <node id="6714410169261956123" at="130,0,131,0" concept="10" trace="propertyId$TXS7" />
-      <node id="6714410169261956123" at="131,0,132,0" concept="10" trace="linkId$Uajt" />
-      <node id="6714410169261956123" at="132,0,133,0" concept="10" trace="memberId$lO88" />
-      <node id="6714410169261956123" at="136,0,137,0" concept="10" trace="propertyDeclaration$yMqt" />
-      <node id="6714410169261956123" at="137,0,138,0" concept="10" trace="linkDeclaration$yMbs" />
-      <node id="6714410169261956123" at="138,0,139,0" concept="10" trace="members$4eAY" />
+      <node id="6714410169261956123" at="123,0,124,0" concept="10" trace="AbstractConceptDeclaration$KA" />
+      <node id="6714410169261956123" at="124,0,125,0" concept="10" trace="DataTypeDeclaration$AD" />
+      <node id="6714410169261956123" at="128,0,129,0" concept="10" trace="conceptId$rrGe" />
+      <node id="6714410169261956123" at="129,0,130,0" concept="10" trace="datatypeId$$gBg" />
+      <node id="6714410169261956123" at="130,0,131,0" concept="10" trace="propertyId$m5HU" />
+      <node id="6714410169261956123" at="131,0,132,0" concept="10" trace="linkId$mi9g" />
+      <node id="6714410169261956123" at="132,0,133,0" concept="10" trace="memberId$LVXV" />
+      <node id="6714410169261956123" at="136,0,137,0" concept="10" trace="propertyDeclaration$YUgg" />
+      <node id="6714410169261956123" at="137,0,138,0" concept="10" trace="linkDeclaration$YU1f" />
+      <node id="6714410169261956123" at="138,0,139,0" concept="10" trace="members$wmsL" />
       <node id="6714410169262034549" at="29,0,32,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="7791109065626950190" at="41,0,44,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="5424895381998853802" at="53,0,56,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />

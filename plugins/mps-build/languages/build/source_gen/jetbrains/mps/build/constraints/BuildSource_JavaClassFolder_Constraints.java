@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BuildSource_JavaClassFolder_Constraints extends BaseConstraintsDescriptor {
   public BuildSource_JavaClassFolder_Constraints() {
-    super(CONCEPTS.BuildSource_JavaClassFolder$t2);
+    super(CONCEPTS.BuildSource_JavaClassFolder$Z_);
   }
 
   @Override
@@ -37,12 +37,12 @@ public class BuildSource_JavaClassFolder_Constraints extends BaseConstraintsDesc
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return (SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.BuildSource_JavaLibrary$zR, true, false) != null);
+    return (SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.BuildSource_JavaLibrary$6q, true, false) != null);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:5076fdb3-19c3-4563-aa26-7ace7591e78d(jetbrains.mps.build.constraints)", "1227128029536580466");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildSource_JavaClassFolder$t2 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x11779a1dbd021959L, "jetbrains.mps.build.structure.BuildSource_JavaClassFolder");
-    /*package*/ static final SConcept BuildSource_JavaLibrary$zR = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x540febaa6144b873L, "jetbrains.mps.build.structure.BuildSource_JavaLibrary");
+    /*package*/ static final SConcept BuildSource_JavaClassFolder$Z_ = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x11779a1dbd021959L, "jetbrains.mps.build.structure.BuildSource_JavaClassFolder");
+    /*package*/ static final SConcept BuildSource_JavaLibrary$6q = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x540febaa6144b873L, "jetbrains.mps.build.structure.BuildSource_JavaLibrary");
   }
 }

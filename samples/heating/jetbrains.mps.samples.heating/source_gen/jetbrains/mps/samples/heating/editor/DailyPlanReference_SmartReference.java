@@ -28,7 +28,7 @@ public class DailyPlanReference_SmartReference extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_5a277g_a(), CONCEPTS.DailyPlanReference$dO));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_5a277g_a(), CONCEPTS.DailyPlanReference$uf));
     return result;
   }
 
@@ -49,7 +49,7 @@ public class DailyPlanReference_SmartReference extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_5a277g_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.DailyPlanReference$dO, LINKS.target$M6U0);
+      super((SAbstractConcept) CONCEPTS.DailyPlanReference$uf, LINKS.target$hsar);
     }
     @NotNull
     @Override
@@ -81,7 +81,7 @@ public class DailyPlanReference_SmartReference extends SubstituteMenuBase {
       }
       @Override
       public String getMatchingText(String pattern) {
-        return SPropertyOperations.getString(referencedNode, PROPS.displayName$J0kO);
+        return SPropertyOperations.getString(referencedNode, PROPS.displayName$el_f);
       }
       @Override
       public String getVisibleMatchingText(String pattern) {
@@ -96,14 +96,14 @@ public class DailyPlanReference_SmartReference extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DailyPlanReference$dO = MetaAdapterFactory.getConcept(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0xcfa085c9af5e830L, "jetbrains.mps.samples.heating.structure.DailyPlanReference");
+    /*package*/ static final SConcept DailyPlanReference$uf = MetaAdapterFactory.getConcept(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0xcfa085c9af5e830L, "jetbrains.mps.samples.heating.structure.DailyPlanReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$M6U0 = MetaAdapterFactory.getReferenceLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0xcfa085c9af5e830L, 0xcfa085c9af5e831L, "target");
+    /*package*/ static final SReferenceLink target$hsar = MetaAdapterFactory.getReferenceLink(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0xcfa085c9af5e830L, 0xcfa085c9af5e831L, "target");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty displayName$J0kO = MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0x1dfff86fbfd92c74L, "displayName");
+    /*package*/ static final SProperty displayName$el_f = MetaAdapterFactory.getProperty(0xa7d67633e8d9473bL, 0x98ce995a7aa66941L, 0x4644aa4ce08aec4fL, 0x1dfff86fbfd92c74L, "displayName");
   }
 }

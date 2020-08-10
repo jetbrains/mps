@@ -24,10 +24,10 @@ public class rt_SubTask_AfterOrBefore {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.before$rF6u)).isEmpty()) {
-          SLinkOperations.addNewChild(node, LINKS.before$rF6u, CONCEPTS.BwfSubTaskDependency$kZ);
-        } else if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.after$trNs)).isEmpty()) {
-          SLinkOperations.addNewChild(node, LINKS.after$trNs, CONCEPTS.BwfSubTaskDependency$kZ);
+        if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.before$buA6)).isEmpty()) {
+          SLinkOperations.addNewChild(node, LINKS.before$buA6, CONCEPTS.BwfSubTaskDependency$OB);
+        } else if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.after$dfj4)).isEmpty()) {
+          SLinkOperations.addNewChild(node, LINKS.after$dfj4, CONCEPTS.BwfSubTaskDependency$OB);
         }
       }
 
@@ -76,11 +76,11 @@ public class rt_SubTask_AfterOrBefore {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink before$rF6u = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, 0x36fb0dc9fd36bb1bL, "before");
-    /*package*/ static final SContainmentLink after$trNs = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, 0x2670d5989d5b4a01L, "after");
+    /*package*/ static final SContainmentLink before$buA6 = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, 0x36fb0dc9fd36bb1bL, "before");
+    /*package*/ static final SContainmentLink after$dfj4 = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L, 0x2670d5989d5b4a01L, "after");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BwfSubTaskDependency$kZ = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5b49b8L, "jetbrains.mps.build.workflow.structure.BwfSubTaskDependency");
+    /*package*/ static final SConcept BwfSubTaskDependency$OB = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5b49b8L, "jetbrains.mps.build.workflow.structure.BwfSubTaskDependency");
   }
 }

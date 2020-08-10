@@ -27,8 +27,8 @@ public class LabelNode_DeleteLabel {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (isEmptyString(SPropertyOperations.getString(node, PROPS.name$lA7v)) || !(DeletionApproverUtil.approve(editorContext, node, "LABEL"))) {
-          SNode replaced = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.NodeBuilderNode$RN);
+        if (isEmptyString(SPropertyOperations.getString(node, PROPS.name$MnvL)) || !(DeletionApproverUtil.approve(editorContext, node, "LABEL"))) {
+          SNode replaced = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.NodeBuilderNode$Sn);
           SelectionUtil.selectLabelCellWithSelection(editorContext, replaced, SelectionManager.FIRST_EDITABLE_CELL, 0, 0);
         }
       }
@@ -81,10 +81,10 @@ public class LabelNode_DeleteLabel {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodeBuilderNode$RN = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, "jetbrains.mps.lang.quotation.structure.NodeBuilderNode");
+    /*package*/ static final SConcept NodeBuilderNode$Sn = MetaAdapterFactory.getConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L, "jetbrains.mps.lang.quotation.structure.NodeBuilderNode");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

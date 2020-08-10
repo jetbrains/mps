@@ -21,11 +21,11 @@ public class typeof_TemplateParameterDeclaration_InferenceRule extends AbstractI
     {
       SNode _nodeToCheck_1029348928467 = tpd;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "5659786285834507295", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "5659786285834495245", true), (SNode) SLinkOperations.getTarget(tpd, LINKS.type$tay0), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "5659786285834495245", true), (SNode) SLinkOperations.getTarget(tpd, LINKS.type$Q7dG), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.TemplateParameterDeclaration$ZW;
+    return CONCEPTS.TemplateParameterDeclaration$FC;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -35,10 +35,10 @@ public class typeof_TemplateParameterDeclaration_InferenceRule extends AbstractI
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$tay0 = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a0962e6L, 0x190d31fe6a096acfL, "type");
+    /*package*/ static final SContainmentLink type$Q7dG = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a0962e6L, 0x190d31fe6a096acfL, "type");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TemplateParameterDeclaration$ZW = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a0962e6L, "jetbrains.mps.lang.generator.structure.TemplateParameterDeclaration");
+    /*package*/ static final SConcept TemplateParameterDeclaration$FC = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x190d31fe6a0962e6L, "jetbrains.mps.lang.generator.structure.TemplateParameterDeclaration");
   }
 }

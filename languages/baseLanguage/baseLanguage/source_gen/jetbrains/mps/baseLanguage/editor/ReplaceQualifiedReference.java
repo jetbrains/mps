@@ -100,7 +100,7 @@ public class ReplaceQualifiedReference extends TransformationMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.baseLanguage.editor.ReplaceQuilifiedReference_Substitute");
     }
     private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-      return CONCEPTS.BaseConcept$Sz;
+      return CONCEPTS.BaseConcept$gP;
     }
 
 
@@ -183,8 +183,8 @@ public class ReplaceQualifiedReference extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNode expr = SNodeFactoryOperations.createNewNode(CONCEPTS.ClassifierClassExpression$T1, null);
-        SLinkOperations.setTarget(expr, LINKS.classifier$s_4n, QualifiedReference__BehaviorDescriptor.getClassifier_id7S22xyoLQG7.invoke(_context.getNode()));
+        SNode expr = SNodeFactoryOperations.createNewNode(CONCEPTS.ClassifierClassExpression$lN, null);
+        SLinkOperations.setTarget(expr, LINKS.classifier$7Ex9, QualifiedReference__BehaviorDescriptor.getClassifier_id7S22xyoLQG7.invoke(_context.getNode()));
         SNodeOperations.replaceWithAnother(_context.getNode(), expr);
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), expr, SelectionManager.LAST_CELL, -1);
       }
@@ -210,11 +210,11 @@ public class ReplaceQualifiedReference extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
-    /*package*/ static final SConcept ClassifierClassExpression$T1 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x103fb730c14L, "jetbrains.mps.baseLanguage.structure.ClassifierClassExpression");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept ClassifierClassExpression$lN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x103fb730c14L, "jetbrains.mps.baseLanguage.structure.ClassifierClassExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$s_4n = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x103fb730c14L, 0x103fb73a43eL, "classifier");
+    /*package*/ static final SReferenceLink classifier$7Ex9 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x103fb730c14L, 0x103fb73a43eL, "classifier");
   }
 }

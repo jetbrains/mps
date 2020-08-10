@@ -21,20 +21,20 @@ public class typeOf_AssertStatement_InferenceRule extends AbstractInferenceRule_
   }
   public void applyRule(final SNode assertStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(assertStatement, LINKS.condition$x6QC);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(assertStatement, LINKS.condition$ccjq);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1176899078020", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1176899056092", true), (SNode) _quotation_createNode_s4rvw8_a1a0c0a0b(), false, true, _info_12389875345);
     }
-    if ((SLinkOperations.getTarget(assertStatement, LINKS.message$cNOs) != null)) {
+    if ((SLinkOperations.getTarget(assertStatement, LINKS.message$RThe) != null)) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(assertStatement, LINKS.message$cNOs);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(assertStatement, LINKS.message$RThe);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1176899115123", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1176899107820", true), (SNode) _quotation_createNode_s4rvw8_a1a0c0a0b0b(), false, true, _info_12389875345);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.AssertStatement$c7;
+    return CONCEPTS.AssertStatement$CT;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -56,11 +56,11 @@ public class typeOf_AssertStatement_InferenceRule extends AbstractInferenceRule_
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink condition$x6QC = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL, 0x10e50ed44ceL, "condition");
-    /*package*/ static final SContainmentLink message$cNOs = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL, 0x10e50ed92e0L, "message");
+    /*package*/ static final SContainmentLink condition$ccjq = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL, 0x10e50ed44ceL, "condition");
+    /*package*/ static final SContainmentLink message$RThe = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL, 0x10e50ed92e0L, "message");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AssertStatement$c7 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL, "jetbrains.mps.baseLanguage.structure.AssertStatement");
+    /*package*/ static final SConcept AssertStatement$CT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL, "jetbrains.mps.baseLanguage.structure.AssertStatement");
   }
 }

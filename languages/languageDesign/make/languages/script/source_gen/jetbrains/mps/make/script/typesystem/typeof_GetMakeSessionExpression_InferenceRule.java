@@ -26,7 +26,7 @@ public class typeof_GetMakeSessionExpression_InferenceRule extends AbstractInfer
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.GetMakeSessionExpression$ET;
+    return CONCEPTS.GetMakeSessionExpression$CM;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,6 +43,6 @@ public class typeof_GetMakeSessionExpression_InferenceRule extends AbstractInfer
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GetMakeSessionExpression$ET = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x61c1a3d1c45fac8cL, "jetbrains.mps.make.script.structure.GetMakeSessionExpression");
+    /*package*/ static final SConcept GetMakeSessionExpression$CM = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x61c1a3d1c45fac8cL, "jetbrains.mps.make.script.structure.GetMakeSessionExpression");
   }
 }

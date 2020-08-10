@@ -23,17 +23,17 @@ public class check_ResourceVariable_NonTypesystemRule extends AbstractNonTypesys
   public check_ResourceVariable_NonTypesystemRule() {
   }
   public void applyRule(final SNode resourceVariable, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!((SLinkOperations.getTarget(resourceVariable, LINKS.initializer$no3R) != null))) {
-      final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.initializer$no3R);
+    if (!((SLinkOperations.getTarget(resourceVariable, LINKS.initializer$2twD) != null))) {
+      final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.initializer$2twD);
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(resourceVariable, "Resource variable should be initialized", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5351203823916850955", null, errorTarget);
     }
-    if (!(SPropertyOperations.getBoolean(resourceVariable, PROPS.isFinal$_qt3))) {
+    if (!(SPropertyOperations.getBoolean(resourceVariable, PROPS.isFinal$gvTP))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(resourceVariable, "Resource variable should be final", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5351203823916855891", null, errorTarget);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ResourceVariable$QC;
+    return CONCEPTS.ResourceVariable$jq;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,14 +43,14 @@ public class check_ResourceVariable_NonTypesystemRule extends AbstractNonTypesys
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink initializer$2twD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isFinal$gvTP = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ResourceVariable$QC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a546561eL, "jetbrains.mps.baseLanguage.structure.ResourceVariable");
+    /*package*/ static final SConcept ResourceVariable$jq = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a546561eL, "jetbrains.mps.baseLanguage.structure.ResourceVariable");
   }
 }

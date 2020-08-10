@@ -35,7 +35,7 @@ public final class TwoStepDeleteDefaultChild_AddAttribute_Intention extends Abst
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TwoStepDeleteAttribute$mZ)) == null;
+    return AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TwoStepDeleteAttribute$7c)) == null;
   }
   @Override
   public boolean isSurroundWith() {
@@ -56,7 +56,7 @@ public final class TwoStepDeleteDefaultChild_AddAttribute_Intention extends Abst
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TwoStepDeleteAttribute$mZ), CONCEPTS.TwoStepDeleteAttribute$mZ);
+      AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TwoStepDeleteAttribute$7c), CONCEPTS.TwoStepDeleteAttribute$7c);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -65,6 +65,6 @@ public final class TwoStepDeleteDefaultChild_AddAttribute_Intention extends Abst
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TwoStepDeleteAttribute$mZ = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x2198294affa4d593L, "jetbrains.mps.lang.editor.editorTest.structure.TwoStepDeleteAttribute");
+    /*package*/ static final SConcept TwoStepDeleteAttribute$7c = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x2198294affa4d593L, "jetbrains.mps.lang.editor.editorTest.structure.TwoStepDeleteAttribute");
   }
 }

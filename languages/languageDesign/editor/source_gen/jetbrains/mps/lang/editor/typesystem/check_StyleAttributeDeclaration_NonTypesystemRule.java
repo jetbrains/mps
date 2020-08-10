@@ -27,23 +27,23 @@ public class check_StyleAttributeDeclaration_NonTypesystemRule extends AbstractN
   public check_StyleAttributeDeclaration_NonTypesystemRule() {
   }
   public void applyRule(final SNode declaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(declaration, LINKS.valueType$tOnZ), CONCEPTS.PrimitiveType$5)) {
-      if (!((SLinkOperations.getTarget(declaration, LINKS.defaultValue$AUBL) != null))) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(declaration, LINKS.valueType$y6zA), CONCEPTS.PrimitiveType$sR)) {
+      if (!((SLinkOperations.getTarget(declaration, LINKS.defaultValue$FcNo) != null))) {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(declaration, "Attribute of primitive type should have default value", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "8307535009119141639", null, errorTarget);
       }
     }
-    if (!(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collectMany(SModelOperations.roots(SNodeOperations.getModel(declaration), CONCEPTS.StyleSheet$GD), LINKS.styles$dmJW), CONCEPTS.StyleAttributeDeclaration$8S)).all(new IWhereFilter<SNode>() {
+    if (!(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collectMany(SModelOperations.roots(SNodeOperations.getModel(declaration), CONCEPTS.StyleSheet$Sg), LINKS.styles$hCVz), CONCEPTS.StyleAttributeDeclaration$kv)).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !(Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), SPropertyOperations.getString(declaration, PROPS.name$lA7v))) || it == declaration;
+        return !(Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), SPropertyOperations.getString(declaration, PROPS.name$MnvL))) || it == declaration;
       }
     }))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
-      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(declaration, "Attribute with name " + SPropertyOperations.getString(declaration, PROPS.name$lA7v) + " is declared several times in this language", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "3160281275655011020", null, errorTarget);
+      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(declaration, "Attribute with name " + SPropertyOperations.getString(declaration, PROPS.name$MnvL) + " is declared several times in this language", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "3160281275655011020", null, errorTarget);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.StyleAttributeDeclaration$8S;
+    return CONCEPTS.StyleAttributeDeclaration$kv;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -53,18 +53,18 @@ public class check_StyleAttributeDeclaration_NonTypesystemRule extends AbstractN
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink defaultValue$AUBL = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9ea5367ebL, 0x3744c0f9ea545afbL, "defaultValue");
-    /*package*/ static final SContainmentLink valueType$tOnZ = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9ea5367ebL, 0x3744c0f9ea53826eL, "valueType");
-    /*package*/ static final SContainmentLink styles$dmJW = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b151743L, 0x1143b180146L, "styles");
+    /*package*/ static final SContainmentLink defaultValue$FcNo = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9ea5367ebL, 0x3744c0f9ea545afbL, "defaultValue");
+    /*package*/ static final SContainmentLink valueType$y6zA = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9ea5367ebL, 0x3744c0f9ea53826eL, "valueType");
+    /*package*/ static final SContainmentLink styles$hCVz = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b151743L, 0x1143b180146L, "styles");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PrimitiveType$5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
-    /*package*/ static final SConcept StyleSheet$GD = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b151743L, "jetbrains.mps.lang.editor.structure.StyleSheet");
-    /*package*/ static final SConcept StyleAttributeDeclaration$8S = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9ea5367ebL, "jetbrains.mps.lang.editor.structure.StyleAttributeDeclaration");
+    /*package*/ static final SConcept PrimitiveType$sR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
+    /*package*/ static final SConcept StyleSheet$Sg = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143b151743L, "jetbrains.mps.lang.editor.structure.StyleSheet");
+    /*package*/ static final SConcept StyleAttributeDeclaration$kv = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3744c0f9ea5367ebL, "jetbrains.mps.lang.editor.structure.StyleAttributeDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

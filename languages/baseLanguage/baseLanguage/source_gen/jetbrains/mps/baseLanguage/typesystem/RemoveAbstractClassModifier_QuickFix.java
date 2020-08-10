@@ -19,14 +19,14 @@ public class RemoveAbstractClassModifier_QuickFix extends QuickFix_Runtime {
     return "Remove the 'abstract' modifier";
   }
   public void execute(SNode node) {
-    SPropertyOperations.assign(SNodeOperations.as(node, CONCEPTS.ClassConcept$IY), PROPS.abstractClass$e4_b, false);
+    SPropertyOperations.assign(SNodeOperations.as(node, CONCEPTS.ClassConcept$bK), PROPS.abstractClass$Ta1X, false);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty abstractClass$e4_b = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
+    /*package*/ static final SProperty abstractClass$Ta1X = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
   }
 }

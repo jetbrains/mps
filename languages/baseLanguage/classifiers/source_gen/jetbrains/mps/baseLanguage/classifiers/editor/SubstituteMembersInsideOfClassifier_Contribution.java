@@ -73,23 +73,23 @@ public class SubstituteMembersInsideOfClassifier_Contribution extends Substitute
       super.initialize(_context);
       contextClassifier = new Computable<SNode>() {
         public SNode compute() {
-          SNode contextPart = SNodeOperations.getNodeAncestorWhereConceptInList(_context.getParentNode(), new SAbstractConcept[]{CONCEPTS.IClassifier$Cb, CONCEPTS.IClassifierPart$U9}, true, false);
-          if (SNodeOperations.isInstanceOf(contextPart, CONCEPTS.IClassifier$Cb)) {
-            return SNodeOperations.cast(contextPart, CONCEPTS.IClassifier$Cb);
+          SNode contextPart = SNodeOperations.getNodeAncestorWhereConceptInList(_context.getParentNode(), new SAbstractConcept[]{CONCEPTS.IClassifier$BZ, CONCEPTS.IClassifierPart$TX}, true, false);
+          if (SNodeOperations.isInstanceOf(contextPart, CONCEPTS.IClassifier$BZ)) {
+            return SNodeOperations.cast(contextPart, CONCEPTS.IClassifier$BZ);
           } else {
-            return IClassifierPart__BehaviorDescriptor.getMainClassifier_idhEwIfO4.invoke(SNodeOperations.cast(contextPart, CONCEPTS.IClassifierPart$U9));
+            return IClassifierPart__BehaviorDescriptor.getMainClassifier_idhEwIfO4.invoke(SNodeOperations.cast(contextPart, CONCEPTS.IClassifierPart$TX));
           }
         }
       }.compute();
       multipleClassifiers = new Computable<Boolean>() {
         public Boolean compute() {
-          return ListSequence.fromList(SNodeOperations.getNodeAncestorsWhereConceptInList(_context.getParentNode(), new SAbstractConcept[]{CONCEPTS.IClassifier$Cb, CONCEPTS.IClassifierPart$U9, CONCEPTS.Classifier$hJ}, true)).count() > 1;
+          return ListSequence.fromList(SNodeOperations.getNodeAncestorsWhereConceptInList(_context.getParentNode(), new SAbstractConcept[]{CONCEPTS.IClassifier$BZ, CONCEPTS.IClassifierPart$TX, CONCEPTS.Classifier$Ix}, true)).count() > 1;
         }
       }.compute();
     }
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return SNodeOperations.getNodeAncestorWhereConceptInList(_context.getParentNode(), new SAbstractConcept[]{CONCEPTS.IClassifier$Cb, CONCEPTS.IClassifierPart$U9}, true, false) != null;
+      return SNodeOperations.getNodeAncestorWhereConceptInList(_context.getParentNode(), new SAbstractConcept[]{CONCEPTS.IClassifier$BZ, CONCEPTS.IClassifierPart$TX}, true, false) != null;
     }
     @NotNull
     @Override
@@ -105,7 +105,7 @@ public class SubstituteMembersInsideOfClassifier_Contribution extends Substitute
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_c574em_a0(), CONCEPTS.DotExpression$6a));
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_c574em_a0(), CONCEPTS.DotExpression$yW));
     }
     private class SMP_Param_c574em_a0 extends ParameterizedMenuPart<SNode, SubstituteMenuItem, SubstituteMenuContext> {
       @NotNull
@@ -162,7 +162,7 @@ public class SubstituteMembersInsideOfClassifier_Contribution extends Substitute
           private final SubstituteMenuContext _context;
           private EditorMenuTraceInfo myTraceInfo;
           public Item(SubstituteMenuContext context) {
-            super(CONCEPTS.DotExpression$6a, context);
+            super(CONCEPTS.DotExpression$yW, context);
             _context = context;
           }
 
@@ -173,12 +173,12 @@ public class SubstituteMembersInsideOfClassifier_Contribution extends Substitute
           @Nullable
           @Override
           public SNode createNode(@NotNull String pattern) {
-            SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.DotExpression$6a, null);
-            SNodeFactoryOperations.setNewChild(result, LINKS.operand$P1i5, CONCEPTS.ThisClassifierExpression$xN);
+            SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.DotExpression$yW, null);
+            SNodeFactoryOperations.setNewChild(result, LINKS.operand$w6IR, CONCEPTS.ThisClassifierExpression$xB);
             if (multipleClassifiers) {
-              SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(result, LINKS.operand$P1i5), CONCEPTS.ThisClassifierExpression$xN), LINKS.classifier$Jeu5, contextClassifier);
+              SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(result, LINKS.operand$w6IR), CONCEPTS.ThisClassifierExpression$xB), LINKS.classifier$FItT, contextClassifier);
             }
-            SLinkOperations.setTarget(result, LINKS.operation$_mGS, IMember__BehaviorDescriptor.createOperation_idhEwIBCC.invoke(myParameterObject));
+            SLinkOperations.setTarget(result, LINKS.operation$gs9E, IMember__BehaviorDescriptor.createOperation_idhEwIBCC.invoke(myParameterObject));
             return result;
           }
 
@@ -188,7 +188,7 @@ public class SubstituteMembersInsideOfClassifier_Contribution extends Substitute
           }
           @NotNull
           protected CompletionItemInformation createInformation(String pattern) {
-            return new CompletionItemInformation(myParameterObject, CONCEPTS.DotExpression$6a, getMatchingText(pattern), getDescriptionText(pattern));
+            return new CompletionItemInformation(myParameterObject, CONCEPTS.DotExpression$yW, getMatchingText(pattern), getDescriptionText(pattern));
           }
           @Nullable
           @Override
@@ -221,16 +221,16 @@ public class SubstituteMembersInsideOfClassifier_Contribution extends Substitute
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IClassifier$Cb = MetaAdapterFactory.getInterfaceConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc6b2af5L, "jetbrains.mps.baseLanguage.classifiers.structure.IClassifier");
-    /*package*/ static final SInterfaceConcept IClassifierPart$U9 = MetaAdapterFactory.getInterfaceConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc6e188eL, "jetbrains.mps.baseLanguage.classifiers.structure.IClassifierPart");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
-    /*package*/ static final SConcept ThisClassifierExpression$xN = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc751a81L, "jetbrains.mps.baseLanguage.classifiers.structure.ThisClassifierExpression");
+    /*package*/ static final SInterfaceConcept IClassifier$BZ = MetaAdapterFactory.getInterfaceConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc6b2af5L, "jetbrains.mps.baseLanguage.classifiers.structure.IClassifier");
+    /*package*/ static final SInterfaceConcept IClassifierPart$TX = MetaAdapterFactory.getInterfaceConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc6e188eL, "jetbrains.mps.baseLanguage.classifiers.structure.IClassifierPart");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept ThisClassifierExpression$xB = MetaAdapterFactory.getConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc751a81L, "jetbrains.mps.baseLanguage.classifiers.structure.ThisClassifierExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SReferenceLink classifier$Jeu5 = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc751a81L, 0x11bc25d4bc3L, "classifier");
-    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SReferenceLink classifier$FItT = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc751a81L, 0x11bc25d4bc3L, "classifier");
+    /*package*/ static final SContainmentLink operation$gs9E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
   }
 }

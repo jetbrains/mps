@@ -198,7 +198,7 @@
       <node id="2180956403484883820" at="69,41,70,114" concept="4" />
       <node id="7831187068298105311" at="75,5,76,16" concept="10" />
       <node id="2180956403485255175" at="80,126,81,13" concept="10" />
-      <node id="2180956403485398379" at="86,50,87,166" concept="10" />
+      <node id="2180956403485398379" at="86,50,87,165" concept="10" />
       <node id="2180956403485142846" at="91,9,92,13" concept="10" />
       <node id="2180956403485404362" at="93,5,94,0" concept="12" />
       <node id="2180956403484972482" at="94,0,95,90" concept="4" />
@@ -233,16 +233,16 @@
       <node id="2180956403485033180" at="140,177,141,237" concept="4" />
       <node id="2180956403485033180" at="141,237,142,167" concept="4" />
       <node id="2180956403485033180" at="142,167,143,24" concept="10" />
-      <node id="7831187068298103528" at="147,0,148,0" concept="13" trace="TemplateDeclaration$q0" />
-      <node id="7831187068298103528" at="148,0,149,0" concept="13" trace="TemplateFragment$yI" />
-      <node id="7831187068298103528" at="149,0,150,0" concept="13" trace="InstanceMethodDeclaration$An" />
-      <node id="7831187068298103528" at="150,0,151,0" concept="13" trace="NodeMacro$Je" />
-      <node id="7831187068298103528" at="151,0,152,0" concept="13" trace="TemplateCallMacro$Iu" />
-      <node id="7831187068298103528" at="152,0,153,0" concept="13" trace="MappingConfiguration$rB" />
-      <node id="7831187068298103528" at="156,0,157,0" concept="13" trace="labelDeclaration$rV47" />
-      <node id="7831187068298103528" at="157,0,158,0" concept="13" trace="template$B9Tq" />
-      <node id="7831187068298103528" at="158,0,159,0" concept="13" trace="mappingLabel$zyzB" />
-      <node id="7831187068298103528" at="162,0,163,0" concept="13" trace="name$lA7v" />
+      <node id="7831187068298103528" at="147,0,148,0" concept="13" trace="TemplateDeclaration$5G" />
+      <node id="7831187068298103528" at="148,0,149,0" concept="13" trace="TemplateFragment$eq" />
+      <node id="7831187068298103528" at="149,0,150,0" concept="13" trace="InstanceMethodDeclaration$39" />
+      <node id="7831187068298103528" at="150,0,151,0" concept="13" trace="NodeMacro$qU" />
+      <node id="7831187068298103528" at="151,0,152,0" concept="13" trace="TemplateCallMacro$qa" />
+      <node id="7831187068298103528" at="152,0,153,0" concept="13" trace="MappingConfiguration$7j" />
+      <node id="7831187068298103528" at="156,0,157,0" concept="13" trace="labelDeclaration$ORJN" />
+      <node id="7831187068298103528" at="157,0,158,0" concept="13" trace="template$6_6" />
+      <node id="7831187068298103528" at="158,0,159,0" concept="13" trace="mappingLabel$Wvfj" />
+      <node id="7831187068298103528" at="162,0,163,0" concept="13" trace="name$MnvL" />
       <node id="129608261008895994" at="41,0,44,0" concept="2" trace="EditorGeneratorRefactoring#()V" />
       <node id="5369771541921952907" at="56,0,59,0" concept="8" trace="accept#(Lorg/jetbrains/mps/openapi/module/SDependency;)Z" />
       <node id="2180956403484877067" at="65,0,68,0" concept="8" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -271,7 +271,7 @@
       <scope id="2180956403484877068" at="65,45,66,209" />
       <scope id="2180956403484883561" at="69,41,70,114" />
       <scope id="2180956403485241146" at="80,126,81,13" />
-      <scope id="2180956403485398378" at="86,50,87,166" />
+      <scope id="2180956403485398378" at="86,50,87,165" />
       <scope id="2180956403485142350" at="91,9,92,13" />
       <scope id="2180956403484602865" at="100,39,101,94" />
       <scope id="7831187068298105318" at="107,34,108,57" />

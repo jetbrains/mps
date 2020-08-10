@@ -21,34 +21,34 @@ public class ConceptAncestorsProvider implements IDescendantsProvider {
   @Override
   public Set<SNode> getDescendants(SNode node) {
     Set<SNode> result = new HashSet<SNode>();
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptDeclaration$qU)) {
-      SNode conceptDeclaration = SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$qU);
-      SNode parent = SLinkOperations.getTarget(conceptDeclaration, LINKS.extends$9AAt);
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptDeclaration$gH)) {
+      SNode conceptDeclaration = SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$gH);
+      SNode parent = SLinkOperations.getTarget(conceptDeclaration, LINKS.extends$_Isg);
       if ((parent != null)) {
         result.add(parent);
       }
-      for (SNode interfaceConceptReference : SLinkOperations.getChildren(conceptDeclaration, LINKS.implements$2tZf)) {
-        result.add(SLinkOperations.getTarget(interfaceConceptReference, LINKS.intfc$7Eer));
+      for (SNode interfaceConceptReference : SLinkOperations.getChildren(conceptDeclaration, LINKS.implements$u_P2)) {
+        result.add(SLinkOperations.getTarget(interfaceConceptReference, LINKS.intfc$zM4e));
       }
     }
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.InterfaceConceptDeclaration$MT)) {
-      SNode interfaceConceptDeclaration = SNodeOperations.cast(node, CONCEPTS.InterfaceConceptDeclaration$MT);
-      for (SNode interfaceConceptReference : SLinkOperations.getChildren(interfaceConceptDeclaration, LINKS.extends$V2F7)) {
-        result.add(SLinkOperations.getTarget(interfaceConceptReference, LINKS.intfc$7Eer));
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.InterfaceConceptDeclaration$CG)) {
+      SNode interfaceConceptDeclaration = SNodeOperations.cast(node, CONCEPTS.InterfaceConceptDeclaration$CG);
+      for (SNode interfaceConceptReference : SLinkOperations.getChildren(interfaceConceptDeclaration, LINKS.extends$nawU)) {
+        result.add(SLinkOperations.getTarget(interfaceConceptReference, LINKS.intfc$zM4e));
       }
     }
     return result;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptDeclaration$qU = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
-    /*package*/ static final SConcept InterfaceConceptDeclaration$MT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
+    /*package*/ static final SConcept InterfaceConceptDeclaration$CG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink extends$9AAt = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
-    /*package*/ static final SContainmentLink implements$2tZf = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
-    /*package*/ static final SReferenceLink intfc$7Eer = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
-    /*package*/ static final SContainmentLink extends$V2F7 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
+    /*package*/ static final SReferenceLink extends$_Isg = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xf979be93cfL, "extends");
+    /*package*/ static final SContainmentLink implements$u_P2 = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0x110358d693eL, "implements");
+    /*package*/ static final SReferenceLink intfc$zM4e = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x110356fc618L, 0x110356fe029L, "intfc");
+    /*package*/ static final SContainmentLink extends$nawU = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, 0x110356e9df4L, "extends");
   }
 }

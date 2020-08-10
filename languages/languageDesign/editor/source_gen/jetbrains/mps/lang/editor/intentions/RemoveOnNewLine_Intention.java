@@ -58,7 +58,7 @@ public final class RemoveOnNewLine_Intention extends AbstractIntentionDescriptor
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNodeOperations.deleteNode(ListSequence.fromList(IStyleContainer__BehaviorDescriptor.getClassItems_idhJF5KPu.invoke(node, CONCEPTS.IndentLayoutOnNewLineStyleClassItem$El)).first());
+      SNodeOperations.deleteNode(ListSequence.fromList(IStyleContainer__BehaviorDescriptor.getClassItems_idhJF5KPu.invoke(node, CONCEPTS.IndentLayoutOnNewLineStyleClassItem$PW)).first());
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -67,6 +67,6 @@ public final class RemoveOnNewLine_Intention extends AbstractIntentionDescriptor
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IndentLayoutOnNewLineStyleClassItem$El = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x12019ed89beL, "jetbrains.mps.lang.editor.structure.IndentLayoutOnNewLineStyleClassItem");
+    /*package*/ static final SConcept IndentLayoutOnNewLineStyleClassItem$PW = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x12019ed89beL, "jetbrains.mps.lang.editor.structure.IndentLayoutOnNewLineStyleClassItem");
   }
 }

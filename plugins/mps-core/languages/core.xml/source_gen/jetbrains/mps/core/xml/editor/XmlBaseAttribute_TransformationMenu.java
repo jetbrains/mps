@@ -79,7 +79,7 @@ public class XmlBaseAttribute_TransformationMenu extends TransformationMenuBase 
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.XmlBaseAttribute$PP)) {
+      result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.XmlBaseAttribute$gk)) {
         @NotNull
         @Override
         public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -104,7 +104,7 @@ public class XmlBaseAttribute_TransformationMenu extends TransformationMenuBase 
   public class TMP_Group_xjbv2x_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.XmlElement$Pm);
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.XmlElement$fP);
     }
 
     @NotNull
@@ -143,7 +143,7 @@ public class XmlBaseAttribute_TransformationMenu extends TransformationMenuBase 
         return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
       }
       private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
-        return CONCEPTS.XmlBaseAttribute$PP;
+        return CONCEPTS.XmlBaseAttribute$gk;
       }
 
 
@@ -163,9 +163,9 @@ public class XmlBaseAttribute_TransformationMenu extends TransformationMenuBase 
         @Override
         public void execute(@NotNull String pattern) {
           SNode createdNode = getSubstituteItem().createNode(pattern);
-          SNode element = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.XmlElement$Pm);
-          int index = ListSequence.fromList(SLinkOperations.getChildren(element, LINKS.attributes$604n)).indexOf(_context.getNode());
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(element, LINKS.attributes$604n)).insertElement(index + 1, createdNode), SelectionManager.LAST_EDITABLE_CELL, -1);
+          SNode element = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.XmlElement$fP);
+          int index = ListSequence.fromList(SLinkOperations.getChildren(element, LINKS.attributes$ZouQ)).indexOf(_context.getNode());
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(element, LINKS.attributes$ZouQ)).insertElement(index + 1, createdNode), SelectionManager.LAST_EDITABLE_CELL, -1);
         }
 
         @Override
@@ -194,11 +194,11 @@ public class XmlBaseAttribute_TransformationMenu extends TransformationMenuBase 
   public class TMP_Group_xjbv2x_b1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.XmlElement$Pm)) || (SNodeOperations.getNextSibling(_context.getNode()) != null)) {
+      if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.XmlElement$fP)) || (SNodeOperations.getNextSibling(_context.getNode()) != null)) {
         return false;
       }
-      SNode elem = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.XmlElement$Pm);
-      return !(SPropertyOperations.getBoolean(elem, PROPS.shortEmptyNotation$HKi0));
+      SNode elem = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.XmlElement$fP);
+      return !(SPropertyOperations.getBoolean(elem, PROPS.shortEmptyNotation$B8Gv));
     }
 
     @NotNull
@@ -214,7 +214,7 @@ public class XmlBaseAttribute_TransformationMenu extends TransformationMenuBase 
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_xjbv2x_a1b(), CONCEPTS.XmlElement$Pm));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_xjbv2x_a1b(), CONCEPTS.XmlElement$fP));
     }
     private class TMP_Action_xjbv2x_a1b extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -254,9 +254,9 @@ public class XmlBaseAttribute_TransformationMenu extends TransformationMenuBase 
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode elem = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.XmlElement$Pm);
-          ListSequence.fromList(SLinkOperations.getChildren(elem, LINKS.content$DWs3)).clear();
-          SPropertyOperations.assign(elem, PROPS.shortEmptyNotation$HKi0, true);
+          SNode elem = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.XmlElement$fP);
+          ListSequence.fromList(SLinkOperations.getChildren(elem, LINKS.content$zkQy)).clear();
+          SPropertyOperations.assign(elem, PROPS.shortEmptyNotation$B8Gv, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), elem, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -264,7 +264,7 @@ public class XmlBaseAttribute_TransformationMenu extends TransformationMenuBase 
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.XmlElement$Pm;
+          return CONCEPTS.XmlElement$fP;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
@@ -279,7 +279,7 @@ public class XmlBaseAttribute_TransformationMenu extends TransformationMenuBase 
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.XmlElement$Pm;
+          SAbstractConcept outputConcept = CONCEPTS.XmlElement$fP;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -291,16 +291,16 @@ public class XmlBaseAttribute_TransformationMenu extends TransformationMenuBase 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XmlBaseAttribute$PP = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b3L, "jetbrains.mps.core.xml.structure.XmlBaseAttribute");
-    /*package*/ static final SConcept XmlElement$Pm = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement");
+    /*package*/ static final SConcept XmlBaseAttribute$gk = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b3L, "jetbrains.mps.core.xml.structure.XmlBaseAttribute");
+    /*package*/ static final SConcept XmlElement$fP = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink attributes$604n = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b5L, "attributes");
-    /*package*/ static final SContainmentLink content$DWs3 = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x16838b3fce9a4922L, "content");
+    /*package*/ static final SContainmentLink attributes$ZouQ = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b5L, "attributes");
+    /*package*/ static final SContainmentLink content$zkQy = MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x16838b3fce9a4922L, "content");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty shortEmptyNotation$HKi0 = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x61218fae7b61b5d5L, "shortEmptyNotation");
+    /*package*/ static final SProperty shortEmptyNotation$B8Gv = MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x61218fae7b61b5d5L, "shortEmptyNotation");
   }
 }

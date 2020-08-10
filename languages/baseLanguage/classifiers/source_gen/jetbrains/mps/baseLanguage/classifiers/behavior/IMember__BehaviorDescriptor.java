@@ -52,11 +52,11 @@ public final class IMember__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static SNode createOperation_idhEwIBCC(@NotNull SNode __thisNode__) {
     SNode result = SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(IMember__BehaviorDescriptor.getOperationSConcept_id6ALWH9g2jU8.invoke(__thisNode__)));
-    SLinkOperations.setTarget(result, LINKS.member$shti, __thisNode__);
+    SLinkOperations.setTarget(result, LINKS.member$oLt6, __thisNode__);
     return result;
   }
   /*package*/ static SNode getContainer_idhEwIBCW(@NotNull SNode __thisNode__) {
-    return IClassifier__BehaviorDescriptor.getContextClassifier_idhEwJim4.invoke(SNodeOperations.asSConcept(CONCEPTS.IClassifier$Cb), __thisNode__);
+    return IClassifier__BehaviorDescriptor.getContextClassifier_idhEwJim4.invoke(SNodeOperations.asSConcept(CONCEPTS.IClassifier$BZ), __thisNode__);
   }
   /*package*/ static boolean canOperationBeChild_id3YYagzpL_8S(@NotNull SNode __thisNode__, SNode parentNode) {
     return true;
@@ -122,10 +122,10 @@ public final class IMember__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink member$shti = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member");
+    /*package*/ static final SReferenceLink member$oLt6 = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IClassifier$Cb = MetaAdapterFactory.getInterfaceConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc6b2af5L, "jetbrains.mps.baseLanguage.classifiers.structure.IClassifier");
+    /*package*/ static final SInterfaceConcept IClassifier$BZ = MetaAdapterFactory.getInterfaceConcept(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bc6b2af5L, "jetbrains.mps.baseLanguage.classifiers.structure.IClassifier");
   }
 }

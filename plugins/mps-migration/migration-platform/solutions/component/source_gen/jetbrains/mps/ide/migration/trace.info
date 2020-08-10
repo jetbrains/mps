@@ -1388,7 +1388,7 @@
       <node id="2885477569138526707" at="239,42,240,23" concept="5" />
       <node id="2885477569138526711" at="240,23,241,21" concept="12" />
       <node id="2885477569138516642" at="243,11,244,24" concept="5" />
-      <node id="605495270532938240" at="251,0,252,0" concept="15" trace="MigrationAnnotation_old$E0" />
+      <node id="605495270532938240" at="251,0,252,0" concept="15" trace="MigrationAnnotation_old$2i" />
       <node id="4815078419494508409" at="72,0,75,0" concept="10" trace="accept#(Ljetbrains/mps/ide/migration/ScriptApplied;)Z" />
       <node id="2885477569135506070" at="76,71,79,11" concept="9" />
       <node id="6136913231205899624" at="94,0,97,0" concept="10" trace="accept#(Lorg/jetbrains/mps/openapi/module/SModule;)Z" />

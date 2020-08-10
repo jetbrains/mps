@@ -18,7 +18,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class IsConfigurationFromContext_ConceptFunction_Constraints extends BaseConstraintsDescriptor {
   public IsConfigurationFromContext_ConceptFunction_Constraints() {
-    super(CONCEPTS.IsConfigurationFromContext_ConceptFunction$v4);
+    super(CONCEPTS.IsConfigurationFromContext_ConceptFunction$bF);
   }
 
   @Override
@@ -37,12 +37,12 @@ public class IsConfigurationFromContext_ConceptFunction_Constraints extends Base
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(parentNode), CONCEPTS.RunConfigurationProducer$Ul);
+    return SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(parentNode), CONCEPTS.RunConfigurationProducer$AW);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:d6e5159c-3299-41f5-8a8a-81b5b79d5073(jetbrains.mps.execution.configurations.constraints)", "1227128029536566050");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IsConfigurationFromContext_ConceptFunction$v4 = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x490c79b029c39076L, "jetbrains.mps.execution.configurations.structure.IsConfigurationFromContext_ConceptFunction");
-    /*package*/ static final SConcept RunConfigurationProducer$Ul = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c842305L, "jetbrains.mps.execution.configurations.structure.RunConfigurationProducer");
+    /*package*/ static final SConcept IsConfigurationFromContext_ConceptFunction$bF = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x490c79b029c39076L, "jetbrains.mps.execution.configurations.structure.IsConfigurationFromContext_ConceptFunction");
+    /*package*/ static final SConcept RunConfigurationProducer$AW = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x3c97fcb79c842305L, "jetbrains.mps.execution.configurations.structure.RunConfigurationProducer");
   }
 }

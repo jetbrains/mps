@@ -22,11 +22,11 @@ public class typeof_GetToolInProjectOperation_InferenceRule extends AbstractInfe
     {
       SNode _nodeToCheck_1029348928467 = operation;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:4e47f84d-850f-4838-ad49-d37c376b2080(jetbrains.mps.lang.plugin.standalone.typesystem)", "681855071694758173", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:4e47f84d-850f-4838-ad49-d37c376b2080(jetbrains.mps.lang.plugin.standalone.typesystem)", "681855071694758181", true), (SNode) IClassifier__BehaviorDescriptor.createType_idhEwJimy.invoke(SLinkOperations.getTarget(operation, LINKS.tool$qDdw)), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:4e47f84d-850f-4838-ad49-d37c376b2080(jetbrains.mps.lang.plugin.standalone.typesystem)", "681855071694758181", true), (SNode) IClassifier__BehaviorDescriptor.createType_idhEwJimy.invoke(SLinkOperations.getTarget(operation, LINKS.tool$ptRB)), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.GetToolInProjectOperation$ir;
+    return CONCEPTS.GetToolInProjectOperation$Wy;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -36,10 +36,10 @@ public class typeof_GetToolInProjectOperation_InferenceRule extends AbstractInfe
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink tool$qDdw = MetaAdapterFactory.getReferenceLink(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x9766f9338aa2115L, 0x9766f9338aa2116L, "tool");
+    /*package*/ static final SReferenceLink tool$ptRB = MetaAdapterFactory.getReferenceLink(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x9766f9338aa2115L, 0x9766f9338aa2116L, "tool");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GetToolInProjectOperation$ir = MetaAdapterFactory.getConcept(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x9766f9338aa2115L, "jetbrains.mps.lang.plugin.standalone.structure.GetToolInProjectOperation");
+    /*package*/ static final SConcept GetToolInProjectOperation$Wy = MetaAdapterFactory.getConcept(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x9766f9338aa2115L, "jetbrains.mps.lang.plugin.standalone.structure.GetToolInProjectOperation");
   }
 }

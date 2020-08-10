@@ -38,10 +38,10 @@ public class ArtifactLookup {
     }
 
     StringBuilder suffix = new StringBuilder();
-    SNode current = SNodeOperations.as(path, CONCEPTS.BuildRelativePath$dD);
+    SNode current = SNodeOperations.as(path, CONCEPTS.BuildRelativePath$Kc);
     if (current != null) {
       suffix.append("/").append(BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(path));
-      current = SNodeOperations.as(BuildSourcePath__BehaviorDescriptor.getParent_id7wpYgMyTXsR.invoke(current), CONCEPTS.BuildRelativePath$dD);
+      current = SNodeOperations.as(BuildSourcePath__BehaviorDescriptor.getParent_id7wpYgMyTXsR.invoke(current), CONCEPTS.BuildRelativePath$Kc);
     }
     SNode containingRoot = SNodeOperations.getContainingRoot(path);
     while (current != null) {
@@ -51,7 +51,7 @@ public class ArtifactLookup {
       }
 
       suffix.insert(0, BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(current)).insert(0, "/");
-      current = SNodeOperations.as(BuildSourcePath__BehaviorDescriptor.getParent_id7wpYgMyTXsR.invoke(current), CONCEPTS.BuildRelativePath$dD);
+      current = SNodeOperations.as(BuildSourcePath__BehaviorDescriptor.getParent_id7wpYgMyTXsR.invoke(current), CONCEPTS.BuildRelativePath$Kc);
     }
 
     return MultiTuple.<SNode,String>from((SNode) null, (String) null);
@@ -60,8 +60,8 @@ public class ArtifactLookup {
   public SNode findArtifact(Object id) {
     if (id instanceof SNode) {
       SNode node = (SNode) id;
-      if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildLayout_PathElement$FJ) && myArtifacts.parent(SNodeOperations.as(node, CONCEPTS.BuildLayout_PathElement$FJ)) != null) {
-        return SNodeOperations.cast(node, CONCEPTS.BuildLayout_PathElement$FJ);
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildLayout_PathElement$ei) && myArtifacts.parent(SNodeOperations.as(node, CONCEPTS.BuildLayout_PathElement$ei)) != null) {
+        return SNodeOperations.cast(node, CONCEPTS.BuildLayout_PathElement$ei);
       }
       SNode rv = doFind(id);
       if (rv == null) {
@@ -98,7 +98,7 @@ public class ArtifactLookup {
     if (myDependencyHelper == null) {
       return null;
     }
-    return SNodeOperations.as(myDependencyHelper.artifacts().get(id), CONCEPTS.BuildLayout_Node$kC);
+    return SNodeOperations.as(myDependencyHelper.artifacts().get(id), CONCEPTS.BuildLayout_Node$Rb);
   }
 
   protected void cache(Object id, SNode element) {
@@ -126,8 +126,8 @@ public class ArtifactLookup {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildRelativePath$dD = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, "jetbrains.mps.build.structure.BuildRelativePath");
-    /*package*/ static final SInterfaceConcept BuildLayout_PathElement$FJ = MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x62ec2ed0f87da183L, "jetbrains.mps.build.structure.BuildLayout_PathElement");
-    /*package*/ static final SConcept BuildLayout_Node$kC = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node");
+    /*package*/ static final SConcept BuildRelativePath$Kc = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x65997a657729f6fbL, "jetbrains.mps.build.structure.BuildRelativePath");
+    /*package*/ static final SInterfaceConcept BuildLayout_PathElement$ei = MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x62ec2ed0f87da183L, "jetbrains.mps.build.structure.BuildLayout_PathElement");
+    /*package*/ static final SConcept BuildLayout_Node$Rb = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node");
   }
 }

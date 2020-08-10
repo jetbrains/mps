@@ -47,10 +47,10 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private String _StyleParameter_QueryFunction_twhn5o_a0a() {
-    return SPropertyOperations.getString(getNode(), PROPS.value$Y3o0);
+    return SPropertyOperations.getString(getNode(), PROPS.value$2QD4);
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$Y3o0 = MetaAdapterFactory.getProperty(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x7bc02723c1a35eddL, 0x7bc02723c1a35edeL, "value");
+    /*package*/ static final SProperty value$2QD4 = MetaAdapterFactory.getProperty(0xa936c42ccb2c4d64L, 0xa1dc12986579a998L, 0x7bc02723c1a35eddL, 0x7bc02723c1a35edeL, "value");
   }
 }

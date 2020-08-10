@@ -211,9 +211,9 @@
       <node id="3210697320273608275" at="125,89,126,145" concept="6" />
       <node id="3210697320273608275" at="127,12,128,24" concept="6" />
       <node id="3210697320273608275" at="129,15,130,40" concept="1" />
-      <node id="3210697320273608259" at="135,0,136,0" concept="8" trace="row$ydX0" />
-      <node id="3210697320273608259" at="136,0,137,0" concept="8" trace="col$yec1" />
-      <node id="3210697320273608259" at="140,0,141,0" concept="8" trace="PropertyAttribute$jT" />
+      <node id="3210697320273608259" at="135,0,136,0" concept="8" trace="row$N9sP" />
+      <node id="3210697320273608259" at="136,0,137,0" concept="8" trace="col$N9FQ" />
+      <node id="3210697320273608259" at="140,0,141,0" concept="8" trace="PropertyAttribute$Gb" />
       <node id="3210697320273608259" at="34,0,36,0" concept="2" trace="myNode" />
       <node id="3210697320273608259" at="48,0,51,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
       <node id="3210697320273608271" at="89,0,92,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
@@ -515,10 +515,10 @@
       <node id="542153281320335432" at="290,54,291,152" concept="5" />
       <node id="542153281320335740" at="291,152,292,69" concept="1" />
       <node id="542153281319938972" at="299,51,300,39" concept="6" />
-      <node id="542153281319938106" at="309,0,310,0" concept="8" trace="BuildWall$yC" />
-      <node id="542153281319938106" at="310,0,311,0" concept="8" trace="DestroyWall$WV" />
-      <node id="542153281319938106" at="311,0,312,0" concept="8" trace="DropMark$rr" />
-      <node id="542153281319938106" at="312,0,313,0" concept="8" trace="PickMark$9l" />
+      <node id="542153281319938106" at="309,0,310,0" concept="8" trace="BuildWall$2t" />
+      <node id="542153281319938106" at="310,0,311,0" concept="8" trace="DestroyWall$sK" />
+      <node id="542153281319938106" at="311,0,312,0" concept="8" trace="DropMark$Vg" />
+      <node id="542153281319938106" at="312,0,313,0" concept="8" trace="PickMark$Da" />
       <node id="542153281319938106" at="33,0,36,0" concept="0" trace="SceneBuildingCommands#()V" />
       <node id="7980428675270818296" at="57,156,60,5" concept="3" />
       <node id="542153281319938188" at="117,0,120,0" concept="0" trace="Item#(Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)V" />

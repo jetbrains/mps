@@ -28,12 +28,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class TargetDeclaration_Constraints extends BaseConstraintsDescriptor {
   public TargetDeclaration_Constraints() {
-    super(CONCEPTS.TargetDeclaration$7n);
+    super(CONCEPTS.TargetDeclaration$Kf);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.overrides$BiVx, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.overrides$ZC$p, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -48,9 +48,9 @@ public class TargetDeclaration_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forResolvableElements(Sequence.fromIterable(FacetDeclaration__BehaviorDescriptor.allExtends_id6O0kUTrsU9c.invoke(SNodeOperations.as((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), CONCEPTS.FacetDeclaration$al))).skip(1).translate(new ITranslator2<SNode, SNode>() {
+            return ListScope.forResolvableElements(Sequence.fromIterable(FacetDeclaration__BehaviorDescriptor.allExtends_id6O0kUTrsU9c.invoke(SNodeOperations.as((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), CONCEPTS.FacetDeclaration$Nd))).skip(1).translate(new ITranslator2<SNode, SNode>() {
               public Iterable<SNode> translate(SNode fd) {
-                return SLinkOperations.getChildren(fd, LINKS.targetDeclaration$aHx5);
+                return SLinkOperations.getChildren(fd, LINKS.targetDeclaration$z39X);
               }
             }));
           }
@@ -64,12 +64,12 @@ public class TargetDeclaration_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_5z7oj4_a0a0a0a0a1a0a0a0c = new SNodePointer("r:6df86908-c97f-4644-97f0-5eff375e8e15(jetbrains.mps.make.facet.constraints)", "6836281137582789894");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TargetDeclaration$7n = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, "jetbrains.mps.make.facet.structure.TargetDeclaration");
-    /*package*/ static final SConcept FacetDeclaration$al = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, "jetbrains.mps.make.facet.structure.FacetDeclaration");
+    /*package*/ static final SConcept TargetDeclaration$Kf = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, "jetbrains.mps.make.facet.structure.TargetDeclaration");
+    /*package*/ static final SConcept FacetDeclaration$Nd = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, "jetbrains.mps.make.facet.structure.FacetDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink overrides$BiVx = MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, 0x5912a2ab1cd24c55L, "overrides");
-    /*package*/ static final SContainmentLink targetDeclaration$aHx5 = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, 0x5912a2ab1cd4153eL, "targetDeclaration");
+    /*package*/ static final SReferenceLink overrides$ZC$p = MetaAdapterFactory.getReferenceLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, 0x5912a2ab1cd24c55L, "overrides");
+    /*package*/ static final SContainmentLink targetDeclaration$z39X = MetaAdapterFactory.getContainmentLink(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, 0x5912a2ab1cd4153eL, "targetDeclaration");
   }
 }

@@ -268,14 +268,14 @@
       <node id="887121589775260876" at="431,58,432,112" concept="4" />
       <node id="887121589775260884" at="433,5,434,0" concept="13" />
       <node id="887121589775260895" at="435,56,436,144" concept="4" />
-      <node id="8083368042256321540" at="441,0,442,0" concept="14" trace="Classifier$hJ" />
-      <node id="8083368042256321540" at="442,0,443,0" concept="14" trace="Annotation$Os" />
-      <node id="8083368042256321540" at="443,0,444,0" concept="14" trace="LocalVariableDeclaration$Bf" />
-      <node id="8083368042256321540" at="444,0,445,0" concept="14" trace="AnonymousClass$aF" />
-      <node id="8083368042256321540" at="448,0,449,0" concept="14" trace="name$lA7v" />
-      <node id="8083368042256321540" at="452,0,453,0" concept="14" trace="typeVariableDeclaration$6cWB" />
-      <node id="8083368042256321540" at="453,0,454,0" concept="14" trace="method$U$bY" />
-      <node id="8083368042256321540" at="454,0,455,0" concept="14" trace="parameter$qsax" />
+      <node id="8083368042256321540" at="441,0,442,0" concept="14" trace="Classifier$Ix" />
+      <node id="8083368042256321540" at="442,0,443,0" concept="14" trace="Annotation$he" />
+      <node id="8083368042256321540" at="443,0,444,0" concept="14" trace="LocalVariableDeclaration$41" />
+      <node id="8083368042256321540" at="444,0,445,0" concept="14" trace="AnonymousClass$Bt" />
+      <node id="8083368042256321540" at="448,0,449,0" concept="14" trace="name$MnvL" />
+      <node id="8083368042256321540" at="452,0,453,0" concept="14" trace="typeVariableDeclaration$Lipp" />
+      <node id="8083368042256321540" at="453,0,454,0" concept="14" trace="method$_DCK" />
+      <node id="8083368042256321540" at="454,0,455,0" concept="14" trace="parameter$5xBj" />
       <node id="8083368042256321542" at="63,0,66,0" concept="2" trace="JavaToMpsUtils#(Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
       <node id="8540292150829437545" at="67,0,70,0" concept="9" trace="getModule#()Lorg/jetbrains/mps/openapi/module/SModule;" />
       <node id="4795297196607510337" at="71,0,74,0" concept="15" trace="generateCode#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
@@ -666,28 +666,28 @@
       <node id="2623182543841384809" at="120,7,121,39" concept="4" />
       <node id="2623182543841387930" at="121,39,122,39" concept="4" />
       <node id="6528213125921225364" at="126,170,127,331" concept="4" />
-      <node id="8083368042256395971" at="132,0,133,0" concept="14" trace="body$qspy" />
-      <node id="8083368042256395971" at="133,0,134,0" concept="14" trace="initializer$no3R" />
-      <node id="8083368042256395971" at="134,0,135,0" concept="14" trace="superclass$7jGM" />
-      <node id="8083368042256395971" at="135,0,136,0" concept="14" trace="classifier$xslD" />
-      <node id="8083368042256395971" at="136,0,137,0" concept="14" trace="annotation$lXdy" />
-      <node id="8083368042256395971" at="137,0,138,0" concept="14" trace="annotation$4YGW" />
-      <node id="8083368042256395971" at="138,0,139,0" concept="14" trace="value$NE_P" />
-      <node id="8083368042256395971" at="139,0,140,0" concept="14" trace="key$wMU9" />
-      <node id="8083368042256395971" at="140,0,141,0" concept="14" trace="value$j1V$" />
-      <node id="8083368042256395971" at="141,0,142,0" concept="14" trace="enumConstantDeclaration$zW91" />
-      <node id="8083368042256395971" at="142,0,143,0" concept="14" trace="member$6v_r" />
-      <node id="8083368042256395971" at="146,0,147,0" concept="14" trace="BaseMethodDeclaration$RR" />
-      <node id="8083368042256395971" at="147,0,148,0" concept="14" trace="Classifier$hJ" />
-      <node id="8083368042256395971" at="148,0,149,0" concept="14" trace="VariableDeclaration$xe" />
-      <node id="8083368042256395971" at="149,0,150,0" concept="14" trace="ConstructorDeclaration$5U" />
-      <node id="8083368042256395971" at="150,0,151,0" concept="14" trace="ClassConcept$IY" />
-      <node id="8083368042256395971" at="151,0,152,0" concept="14" trace="Annotation$Os" />
-      <node id="8083368042256395971" at="152,0,153,0" concept="14" trace="EnumConstantReference$RO" />
-      <node id="8083368042256395971" at="153,0,154,0" concept="14" trace="AnnotationInstance$5z" />
-      <node id="8083368042256395971" at="154,0,155,0" concept="14" trace="JavaImports$IN" />
-      <node id="8083368042256395971" at="158,0,159,0" concept="14" trace="nonStatic$vRvm" />
-      <node id="8083368042256395971" at="159,0,160,0" concept="14" trace="name$lA7v" />
+      <node id="8083368042256395971" at="132,0,133,0" concept="14" trace="body$5xQk" />
+      <node id="8083368042256395971" at="133,0,134,0" concept="14" trace="initializer$2twD" />
+      <node id="8083368042256395971" at="134,0,135,0" concept="14" trace="superclass$Mp9$" />
+      <node id="8083368042256395971" at="135,0,136,0" concept="14" trace="classifier$cxMr" />
+      <node id="8083368042256395971" at="136,0,137,0" concept="14" trace="annotation$12Ek" />
+      <node id="8083368042256395971" at="137,0,138,0" concept="14" trace="annotation$K49I" />
+      <node id="8083368042256395971" at="138,0,139,0" concept="14" trace="value$uK2B" />
+      <node id="8083368042256395971" at="139,0,140,0" concept="14" trace="key$bSmV" />
+      <node id="8083368042256395971" at="140,0,141,0" concept="14" trace="value$Y7om" />
+      <node id="8083368042256395971" at="141,0,142,0" concept="14" trace="enumConstantDeclaration$f1_N" />
+      <node id="8083368042256395971" at="142,0,143,0" concept="14" trace="member$L_2d" />
+      <node id="8083368042256395971" at="146,0,147,0" concept="14" trace="BaseMethodDeclaration$kD" />
+      <node id="8083368042256395971" at="147,0,148,0" concept="14" trace="Classifier$Ix" />
+      <node id="8083368042256395971" at="148,0,149,0" concept="14" trace="VariableDeclaration$Y0" />
+      <node id="8083368042256395971" at="149,0,150,0" concept="14" trace="ConstructorDeclaration$yG" />
+      <node id="8083368042256395971" at="150,0,151,0" concept="14" trace="ClassConcept$bK" />
+      <node id="8083368042256395971" at="151,0,152,0" concept="14" trace="Annotation$he" />
+      <node id="8083368042256395971" at="152,0,153,0" concept="14" trace="EnumConstantReference$kA" />
+      <node id="8083368042256395971" at="153,0,154,0" concept="14" trace="AnnotationInstance$yl" />
+      <node id="8083368042256395971" at="154,0,155,0" concept="14" trace="JavaImports$b_" />
+      <node id="8083368042256395971" at="158,0,159,0" concept="14" trace="nonStatic$aWW8" />
+      <node id="8083368042256395971" at="159,0,160,0" concept="14" trace="name$MnvL" />
       <node id="8083368042256395973" at="32,0,34,0" concept="2" trace="NodePatcher#()V" />
       <node id="8083368042256395999" at="34,51,37,5" concept="7" />
       <node id="8083368042256398814" at="46,143,49,7" concept="8" />

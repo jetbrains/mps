@@ -27,13 +27,13 @@ public class typeof_PinTabOperation_InferenceRule extends AbstractInferenceRule_
       typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "4295816563224254288", true), (SNode) _quotation_createNode_enqt6v_a1a0c0a0b(), _info_12389875345);
     }
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(pinTabOp, LINKS.componentExpression$dxP0);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(pinTabOp, LINKS.componentExpression$r6M3);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "4295816563224253674", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c89590364(jetbrains.mps.lang.plugin.typesystem)", "4295816563224253683", true), (SNode) _quotation_createNode_enqt6v_a1a0c0b0b(), false, true, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.PinTabOperation$fk;
+    return CONCEPTS.PinTabOperation$cn;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -56,10 +56,10 @@ public class typeof_PinTabOperation_InferenceRule extends AbstractInferenceRule_
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink componentExpression$dxP0 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x3b9dce676f3861a1L, 0x4ac06ca1bf6e2840L, "componentExpression");
+    /*package*/ static final SContainmentLink componentExpression$r6M3 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x3b9dce676f3861a1L, 0x4ac06ca1bf6e2840L, "componentExpression");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PinTabOperation$fk = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x3b9dce676f3861a1L, "jetbrains.mps.lang.plugin.structure.PinTabOperation");
+    /*package*/ static final SConcept PinTabOperation$cn = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x3b9dce676f3861a1L, "jetbrains.mps.lang.plugin.structure.PinTabOperation");
   }
 }

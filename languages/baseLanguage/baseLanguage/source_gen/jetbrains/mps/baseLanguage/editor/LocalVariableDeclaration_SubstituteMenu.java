@@ -36,9 +36,9 @@ public class LocalVariableDeclaration_SubstituteMenu extends SubstituteMenuBase 
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_1soak2_a(), CONCEPTS.LocalVariableDeclaration$Bf));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_1soak2_a(), CONCEPTS.LocalVariableDeclaration$41));
     result.add(new SMP_Subconcepts_1soak2_b());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.LocalVariableDeclaration$Bf) {
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.LocalVariableDeclaration$41) {
 
       @NotNull
       @Override
@@ -51,7 +51,7 @@ public class LocalVariableDeclaration_SubstituteMenu extends SubstituteMenuBase 
           context.getEditorMenuTrace().popTraceInfo();
         }
       }
-    }, CONCEPTS.LocalVariableDeclaration$Bf));
+    }, CONCEPTS.LocalVariableDeclaration$41));
     return result;
   }
 
@@ -96,7 +96,7 @@ public class LocalVariableDeclaration_SubstituteMenu extends SubstituteMenuBase 
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.LocalVariableDeclaration$Bf, context);
+        super(CONCEPTS.LocalVariableDeclaration$41, context);
         _context = context;
       }
 
@@ -107,9 +107,9 @@ public class LocalVariableDeclaration_SubstituteMenu extends SubstituteMenuBase 
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.LocalVariableDeclaration$Bf, null);
+        SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.LocalVariableDeclaration$41, null);
 
-        SPropertyOperations.set(result, PROPS.isFinal$_qt3, true);
+        SPropertyOperations.set(result, PROPS.isFinal$gvTP, true);
         return result;
       }
 
@@ -131,7 +131,7 @@ public class LocalVariableDeclaration_SubstituteMenu extends SubstituteMenuBase 
   }
   public class SMP_Subconcepts_1soak2_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.LocalVariableDeclaration$Bf);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.LocalVariableDeclaration$41);
     }
     @NotNull
     @Override
@@ -152,10 +152,10 @@ public class LocalVariableDeclaration_SubstituteMenu extends SubstituteMenuBase 
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LocalVariableDeclaration$Bf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
+    /*package*/ static final SConcept LocalVariableDeclaration$41 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isFinal$gvTP = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 }

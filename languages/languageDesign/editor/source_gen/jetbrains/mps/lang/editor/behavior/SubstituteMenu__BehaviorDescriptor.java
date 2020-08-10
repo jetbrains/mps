@@ -30,7 +30,7 @@ public final class SubstituteMenu__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getApplicableConcept_id1quYWAD18xk(@NotNull SNode __thisNode__) {
-    return ((SNode) IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke0(__thisNode__, CONCEPTS.IMenu_Concept$UY));
+    return ((SNode) IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke0(__thisNode__, CONCEPTS.IMenu_Concept$6_));
   }
 
   /*package*/ SubstituteMenu__BehaviorDescriptor() {
@@ -80,6 +80,6 @@ public final class SubstituteMenu__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IMenu_Concept$UY = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, "jetbrains.mps.lang.editor.structure.IMenu_Concept");
+    /*package*/ static final SInterfaceConcept IMenu_Concept$6_ = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, "jetbrains.mps.lang.editor.structure.IMenu_Concept");
   }
 }

@@ -68,7 +68,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createModelAccess_0() {
     ModelAccessor modelAccessor = new ModelAccessor() {
       public String getText() {
-        return SPropertyOperations.getString(SLinkOperations.getTarget(myNode, LINKS.customConstructor$T7GZ), PROPS.leftParenthesis$bNTo);
+        return SPropertyOperations.getString(SLinkOperations.getTarget(myNode, LINKS.customConstructor$6$s7), PROPS.leftParenthesis$pgCw);
       }
       public void setText(String text) {
       }
@@ -102,17 +102,17 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
               @Override
               public SAbstractConcept getChildSConcept() {
-                return CONCEPTS.Expression$TP;
+                return CONCEPTS.Expression$mB;
               }
 
               @Override
               public SContainmentLink getSLink() {
-                return LINKS.element$TfFx;
+                return LINKS.element$6GqD;
               }
 
               @Override
               public SNode createNodeToInsert(EditorContext p0) {
-                return SNodeFactoryOperations.createNewNode(CONCEPTS.Expression$TP, null);
+                return SNodeFactoryOperations.createNewNode(CONCEPTS.Expression$mB, null);
               }
 
               @Override
@@ -131,7 +131,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
               @Override
               public EditorCell createEmptyCell() {
                 getCellFactory().pushCellContext();
-                getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.element$TfFx));
+                getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(getNode(), LINKS.element$6GqD));
                 try {
                   EditorCell emptyCell = super.createEmptyCell();
                   this.installElementCellActions(getNode(), null, emptyCell);
@@ -155,7 +155,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
                   }
                   if (elementCell.getUserObject(ELEMENT_CELL_ACTIONS_SET) == null) {
                     elementCell.putUserObject(ELEMENT_CELL_ACTIONS_SET, OBJ);
-                    elementCell.addKeyMap(new RefNodeListHandlerElementKeyMap(this, SPropertyOperations.getString(SLinkOperations.getTarget(myNode, LINKS.customConstructor$T7GZ), PROPS.separator$bNEn)));
+                    elementCell.addKeyMap(new RefNodeListHandlerElementKeyMap(this, SPropertyOperations.getString(SLinkOperations.getTarget(myNode, LINKS.customConstructor$6$s7), PROPS.separator$pgpv)));
                   }
                 }
                 if (elementCell.getUserObject(AbstractCellListHandler.ELEMENT_CELL_COMPLETE_SET) == null) {
@@ -167,7 +167,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
               }
 
               public EditorCell createSeparatorCell() {
-                EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), getNode(), SPropertyOperations.getString(SLinkOperations.getTarget(myNode, LINKS.customConstructor$T7GZ), PROPS.separator$bNEn));
+                EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), getNode(), SPropertyOperations.getString(SLinkOperations.getTarget(myNode, LINKS.customConstructor$6$s7), PROPS.separator$pgpv));
                 editorCell.setSelectable(false);
                 editorCell.getStyle().set(StyleAttributes.LAYOUT_CONSTRAINT, "");
                 editorCell.getStyle().set(StyleAttributes.PUNCTUATION_LEFT, true);
@@ -188,7 +188,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell createModelAccess_1() {
     ModelAccessor modelAccessor = new ModelAccessor() {
       public String getText() {
-        return SPropertyOperations.getString(SLinkOperations.getTarget(myNode, LINKS.customConstructor$T7GZ), PROPS.rightParenthesis$bO8p);
+        return SPropertyOperations.getString(SLinkOperations.getTarget(myNode, LINKS.customConstructor$6$s7), PROPS.rightParenthesis$pgRx);
       }
       public void setText(String text) {
       }
@@ -209,17 +209,17 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink customConstructor$T7GZ = MetaAdapterFactory.getReferenceLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, 0x5ea800dcf8cc71b3L, "customConstructor");
-    /*package*/ static final SContainmentLink element$TfFx = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, 0x5ea800dcf8cc71c0L, "element");
+    /*package*/ static final SReferenceLink customConstructor$6$s7 = MetaAdapterFactory.getReferenceLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, 0x5ea800dcf8cc71b3L, "customConstructor");
+    /*package*/ static final SContainmentLink element$6GqD = MetaAdapterFactory.getContainmentLink(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x5ea800dcf8ca1ca6L, 0x5ea800dcf8cc71c0L, "element");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty leftParenthesis$bNTo = MetaAdapterFactory.getProperty(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x2e373c3e4b60e010L, "leftParenthesis");
-    /*package*/ static final SProperty separator$bNEn = MetaAdapterFactory.getProperty(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x2e373c3e4b60e00fL, "separator");
-    /*package*/ static final SProperty rightParenthesis$bO8p = MetaAdapterFactory.getProperty(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x2e373c3e4b60e011L, "rightParenthesis");
+    /*package*/ static final SProperty leftParenthesis$pgCw = MetaAdapterFactory.getProperty(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x2e373c3e4b60e010L, "leftParenthesis");
+    /*package*/ static final SProperty separator$pgpv = MetaAdapterFactory.getProperty(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x2e373c3e4b60e00fL, "separator");
+    /*package*/ static final SProperty rightParenthesis$pgRx = MetaAdapterFactory.getProperty(0xae47ad35abd486cL, 0xac0f298884f39393L, 0x7500da2cf0943c2L, 0x2e373c3e4b60e011L, "rightParenthesis");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }
 }

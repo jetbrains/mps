@@ -93,16 +93,16 @@ public final class AddReferenceMacroParam_link_Intention extends AbstractIntenti
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode referenceMacro = EditingUtil.addReferenceMacro(node, editorContext.getSelectedCell());
-      SNode referentValue = SNodeFactoryOperations.createNewNode(CONCEPTS.ReferenceMacro_GetReferent$OO, null);
-      SNode dotExpression = SNodeFactoryOperations.createNewNode(CONCEPTS.DotExpression$6a, null);
-      SNode linkAccess = SNodeFactoryOperations.createNewNode(CONCEPTS.SLinkAccess$NO, null);
-      SLinkOperations.setTarget(linkAccess, LINKS.link$Z5Np, myParameter);
-      SLinkOperations.setTarget(dotExpression, LINKS.operation$_mGS, linkAccess);
-      SLinkOperations.setTarget(dotExpression, LINKS.operand$P1i5, SNodeFactoryOperations.createNewNode(CONCEPTS.TemplateFunctionParameter_sourceNode$A8, null));
-      SNode expressionStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.ExpressionStatement$nm, null);
-      SLinkOperations.setTarget(expressionStatement, LINKS.expression$qFF0, dotExpression);
-      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(referentValue, LINKS.body$z0FY), LINKS.statement$pYcS)).addElement(expressionStatement);
-      SLinkOperations.setTarget(referenceMacro, LINKS.referentFunction$HftC, referentValue);
+      SNode referentValue = SNodeFactoryOperations.createNewNode(CONCEPTS.ReferenceMacro_GetReferent$ww, null);
+      SNode dotExpression = SNodeFactoryOperations.createNewNode(CONCEPTS.DotExpression$yW, null);
+      SNode linkAccess = SNodeFactoryOperations.createNewNode(CONCEPTS.SLinkAccess$Pk, null);
+      SLinkOperations.setTarget(linkAccess, LINKS.link$zuOT, myParameter);
+      SLinkOperations.setTarget(dotExpression, LINKS.operation$gs9E, linkAccess);
+      SLinkOperations.setTarget(dotExpression, LINKS.operand$w6IR, SNodeFactoryOperations.createNewNode(CONCEPTS.TemplateFunctionParameter_sourceNode$hO, null));
+      SNode expressionStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.ExpressionStatement$O8, null);
+      SLinkOperations.setTarget(expressionStatement, LINKS.expression$5L7M, dotExpression);
+      ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(referentValue, LINKS.body$e68K), LINKS.statement$53DE)).addElement(expressionStatement);
+      SLinkOperations.setTarget(referenceMacro, LINKS.referentFunction$6c9k, referentValue);
       // set caret 
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, referenceMacro, SelectionManager.FIRST_CELL, 2);
     }
@@ -116,20 +116,20 @@ public final class AddReferenceMacroParam_link_Intention extends AbstractIntenti
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ReferenceMacro_GetReferent$OO = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fe485cc9bL, "jetbrains.mps.lang.generator.structure.ReferenceMacro_GetReferent");
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
-    /*package*/ static final SConcept SLinkAccess$NO = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96ea2caL, "jetbrains.mps.lang.smodel.structure.SLinkAccess");
-    /*package*/ static final SConcept TemplateFunctionParameter_sourceNode$A8 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b471fcL, "jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_sourceNode");
-    /*package*/ static final SConcept ExpressionStatement$nm = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
+    /*package*/ static final SConcept ReferenceMacro_GetReferent$ww = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fe485cc9bL, "jetbrains.mps.lang.generator.structure.ReferenceMacro_GetReferent");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept SLinkAccess$Pk = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96ea2caL, "jetbrains.mps.lang.smodel.structure.SLinkAccess");
+    /*package*/ static final SConcept TemplateFunctionParameter_sourceNode$hO = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b471fcL, "jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_sourceNode");
+    /*package*/ static final SConcept ExpressionStatement$O8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink link$Z5Np = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96ea2caL, 0x108f974549cL, "link");
-    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SContainmentLink expression$qFF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
-    /*package*/ static final SContainmentLink body$z0FY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink referentFunction$HftC = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd7f44d616L, 0x10fe489d9feL, "referentFunction");
+    /*package*/ static final SReferenceLink link$zuOT = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x108f96ea2caL, 0x108f974549cL, "link");
+    /*package*/ static final SContainmentLink operation$gs9E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SContainmentLink expression$5L7M = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SContainmentLink body$e68K = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x108bbca0f48L, 0x108bbd29b4aL, "body");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink referentFunction$6c9k = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd7f44d616L, 0x10fe489d9feL, "referentFunction");
   }
 }

@@ -17,7 +17,7 @@ public class interface_node_pointer_types_are_comparable_ComparisonRule extends 
   public interface_node_pointer_types_are_comparable_ComparisonRule() {
   }
   public boolean areComparable(SNode node1, SNode node2, IsApplicable2Status status) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node1, LINKS.concept$C9s3), CONCEPTS.InterfaceConceptDeclaration$MT) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node2, LINKS.concept$C9s3), CONCEPTS.InterfaceConceptDeclaration$MT)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node1, LINKS.concept$cytz), CONCEPTS.InterfaceConceptDeclaration$CG) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node2, LINKS.concept$cytz), CONCEPTS.InterfaceConceptDeclaration$CG)) {
       return true;
     }
     return false;
@@ -33,18 +33,18 @@ public class interface_node_pointer_types_are_comparable_ComparisonRule extends 
   }
 
   public SAbstractConcept getApplicableConcept1() {
-    return CONCEPTS.SNodePointerType$2t;
+    return CONCEPTS.SNodePointerType$3X;
   }
   public SAbstractConcept getApplicableConcept2() {
-    return CONCEPTS.SNodePointerType$2t;
+    return CONCEPTS.SNodePointerType$3X;
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$C9s3 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, 0x66b228a4fad6b2adL, "concept");
+    /*package*/ static final SReferenceLink concept$cytz = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, 0x66b228a4fad6b2adL, "concept");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InterfaceConceptDeclaration$MT = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
-    /*package*/ static final SConcept SNodePointerType$2t = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, "jetbrains.mps.lang.smodel.structure.SNodePointerType");
+    /*package*/ static final SConcept InterfaceConceptDeclaration$CG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration");
+    /*package*/ static final SConcept SNodePointerType$3X = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fad6b29eL, "jetbrains.mps.lang.smodel.structure.SNodePointerType");
   }
 }

@@ -32,7 +32,7 @@ public class GetPreferencesComponentInProjectOperation_SubstituteMenu extends Su
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_r7b91_a(), CONCEPTS.GetPreferencesComponentInProjectOperation$jS));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_r7b91_a(), CONCEPTS.GetPreferencesComponentInProjectOperation$XZ));
     result.add(new SMP_Subconcepts_r7b91_b());
     return result;
   }
@@ -54,7 +54,7 @@ public class GetPreferencesComponentInProjectOperation_SubstituteMenu extends Su
 
     public SMP_ReferenceScope_r7b91_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.GetPreferencesComponentInProjectOperation$jS, LINKS.componentDeclaration$qDW0);
+      super((SAbstractConcept) CONCEPTS.GetPreferencesComponentInProjectOperation$XZ, LINKS.componentDeclaration$puA7);
     }
     @NotNull
     @Override
@@ -101,7 +101,7 @@ public class GetPreferencesComponentInProjectOperation_SubstituteMenu extends Su
   }
   public class SMP_Subconcepts_r7b91_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.GetPreferencesComponentInProjectOperation$jS);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.GetPreferencesComponentInProjectOperation$XZ);
     }
     @NotNull
     @Override
@@ -122,10 +122,10 @@ public class GetPreferencesComponentInProjectOperation_SubstituteMenu extends Su
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GetPreferencesComponentInProjectOperation$jS = MetaAdapterFactory.getConcept(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x9766f9338aa2118L, "jetbrains.mps.lang.plugin.standalone.structure.GetPreferencesComponentInProjectOperation");
+    /*package*/ static final SConcept GetPreferencesComponentInProjectOperation$XZ = MetaAdapterFactory.getConcept(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x9766f9338aa2118L, "jetbrains.mps.lang.plugin.standalone.structure.GetPreferencesComponentInProjectOperation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink componentDeclaration$qDW0 = MetaAdapterFactory.getReferenceLink(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x9766f9338aa2118L, 0x9766f9338aa2119L, "componentDeclaration");
+    /*package*/ static final SReferenceLink componentDeclaration$puA7 = MetaAdapterFactory.getReferenceLink(0xef7bf5acd06c4342L, 0xb11de42104eb9343L, 0x9766f9338aa2118L, 0x9766f9338aa2119L, "componentDeclaration");
   }
 }

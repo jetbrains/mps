@@ -88,10 +88,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.availableTriggers$Cv3_;
+      return LINKS.availableTriggers$$2DI;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.Event$H_;
+      return CONCEPTS.Event$jI;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -101,7 +101,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(availableTriggersListHandler_e22zgz_b0.this.getNode(), LINKS.availableTriggers$Cv3_));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(availableTriggersListHandler_e22zgz_b0.this.getNode(), LINKS.availableTriggers$$2DI));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -171,10 +171,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.states$C$sW;
+      return LINKS.states$$835;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.State$J2;
+      return CONCEPTS.State$lb;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -184,7 +184,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(statesListHandler_e22zgz_d0.this.getNode(), LINKS.states$C$sW));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(statesListHandler_e22zgz_d0.this.getNode(), LINKS.states$$835));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -226,12 +226,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink availableTriggers$Cv3_ = MetaAdapterFactory.getContainmentLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x2dff568bfe7dd8b5L, 0x148d06483264e4b1L, "availableTriggers");
-    /*package*/ static final SContainmentLink states$C$sW = MetaAdapterFactory.getContainmentLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x2dff568bfe7dd8b5L, 0x148d06483264e4b3L, "states");
+    /*package*/ static final SContainmentLink availableTriggers$$2DI = MetaAdapterFactory.getContainmentLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x2dff568bfe7dd8b5L, 0x148d06483264e4b1L, "availableTriggers");
+    /*package*/ static final SContainmentLink states$$835 = MetaAdapterFactory.getContainmentLink(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x2dff568bfe7dd8b5L, 0x148d06483264e4b3L, "states");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Event$H_ = MetaAdapterFactory.getConcept(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a3L, "jetbrains.mps.samples.StateChart.structure.Event");
-    /*package*/ static final SConcept State$J2 = MetaAdapterFactory.getConcept(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a6L, "jetbrains.mps.samples.StateChart.structure.State");
+    /*package*/ static final SConcept Event$jI = MetaAdapterFactory.getConcept(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a3L, "jetbrains.mps.samples.StateChart.structure.Event");
+    /*package*/ static final SConcept State$lb = MetaAdapterFactory.getConcept(0xc3b0572e7f864ac7L, 0xac44ef15dc8f5c15L, 0x148d06483264e4a6L, "jetbrains.mps.samples.StateChart.structure.State");
   }
 }

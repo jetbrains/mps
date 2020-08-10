@@ -45,14 +45,14 @@ public final class AddRemoveSeparator_Intention extends AbstractIntentionDescrip
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return (SPropertyOperations.getBoolean(node, PROPS.withSeparator$SP0A) ? "Remove Separator" : "Add Separator");
+      return (SPropertyOperations.getBoolean(node, PROPS.withSeparator$Pdf8) ? "Remove Separator" : "Add Separator");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if (SPropertyOperations.getBoolean(node, PROPS.withSeparator$SP0A)) {
-        SPropertyOperations.set(node, PROPS.separator$nvou, "");
+      if (SPropertyOperations.getBoolean(node, PROPS.withSeparator$Pdf8)) {
+        SPropertyOperations.set(node, PROPS.separator$jRB0, "");
       }
-      SPropertyOperations.assign(node, PROPS.withSeparator$SP0A, !(SPropertyOperations.getBoolean(node, PROPS.withSeparator$SP0A)));
+      SPropertyOperations.assign(node, PROPS.withSeparator$Pdf8, !(SPropertyOperations.getBoolean(node, PROPS.withSeparator$Pdf8)));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -61,7 +61,7 @@ public final class AddRemoveSeparator_Intention extends AbstractIntentionDescrip
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty withSeparator$SP0A = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x1201527819cL, 0x1203d98429fL, "withSeparator");
-    /*package*/ static final SProperty separator$nvou = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x1201527819cL, 0x120152f5107L, "separator");
+    /*package*/ static final SProperty withSeparator$Pdf8 = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x1201527819cL, 0x1203d98429fL, "withSeparator");
+    /*package*/ static final SProperty separator$jRB0 = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x1201527819cL, 0x120152f5107L, "separator");
   }
 }

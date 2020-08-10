@@ -32,7 +32,7 @@ public final class ConceptFunctionParameter_nodeToCopyPreProcessOriginal__Behavi
   }
 
   /*package*/ static SNode getPreProcessor_id5abCRRjcA3f(@NotNull SNode __thisNode__) {
-    return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.CopyPreProcessor$Yc, false, false);
+    return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.CopyPreProcessor$Gv, false, false);
   }
   /*package*/ static boolean dontUseParameterObject_id1653mnvAgv$(@NotNull SAbstractConcept __thisConcept__) {
     return true;
@@ -87,6 +87,6 @@ public final class ConceptFunctionParameter_nodeToCopyPreProcessOriginal__Behavi
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CopyPreProcessor$Yc = MetaAdapterFactory.getConcept(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x528ba37dd3311946L, "jetbrains.mps.lang.actions.structure.CopyPreProcessor");
+    /*package*/ static final SConcept CopyPreProcessor$Gv = MetaAdapterFactory.getConcept(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x528ba37dd3311946L, "jetbrains.mps.lang.actions.structure.CopyPreProcessor");
   }
 }

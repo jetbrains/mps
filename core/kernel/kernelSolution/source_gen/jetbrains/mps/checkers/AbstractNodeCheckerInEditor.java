@@ -19,7 +19,7 @@ public abstract class AbstractNodeCheckerInEditor extends IChecker.AbstractNodeC
       return false;
     }
     public boolean skipSubtree(SNode root) {
-      return SNodeOperations.isInstanceOf(root, CONCEPTS.ISkipConstraintsChecking$K1);
+      return SNodeOperations.isInstanceOf(root, CONCEPTS.ISkipConstraintsChecking$8j);
     }
   };
   protected abstract void checkNodeInEditor(SNode node, LanguageErrorsCollector errorsCollector, SRepository repository);
@@ -34,6 +34,6 @@ public abstract class AbstractNodeCheckerInEditor extends IChecker.AbstractNodeC
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept ISkipConstraintsChecking$K1 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x50ef06e32fec9043L, "jetbrains.mps.lang.core.structure.ISkipConstraintsChecking");
+    /*package*/ static final SInterfaceConcept ISkipConstraintsChecking$8j = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x50ef06e32fec9043L, "jetbrains.mps.lang.core.structure.ISkipConstraintsChecking");
   }
 }

@@ -36,10 +36,10 @@ public final class ContextVariable_Node__BehaviorDescriptor extends BaseBHDescri
   }
 
   /*package*/ static SAbstractConcept getProviderConcept_idaxxf7pcCKs(@NotNull SAbstractConcept __thisConcept__) {
-    return CONCEPTS.INodeProvider$2a;
+    return CONCEPTS.INodeProvider$dL;
   }
   /*package*/ static SNode getApplicableConcept_id4Fjf6xN2WlM(@NotNull SNode __thisNode__) {
-    SNode provider = SNodeOperations.cast(ContextVariable__BehaviorDescriptor.findProvider_idhEwJh7Q.invoke(__thisNode__), CONCEPTS.INodeProvider$2a);
+    SNode provider = SNodeOperations.cast(ContextVariable__BehaviorDescriptor.findProvider_idhEwJh7Q.invoke(__thisNode__), CONCEPTS.INodeProvider$dL);
     return ((provider == null) ? null : INodeProvider__BehaviorDescriptor.getApplicableConcept_id7_cYeEu4lWA.invoke(provider));
   }
   /*package*/ static SNode getType_id27DJnJtIQ9C(@NotNull SNode __thisNode__) {
@@ -104,6 +104,6 @@ public final class ContextVariable_Node__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept INodeProvider$2a = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x794cf8ea9e1140f3L, "jetbrains.mps.lang.editor.structure.INodeProvider");
+    /*package*/ static final SInterfaceConcept INodeProvider$dL = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x794cf8ea9e1140f3L, "jetbrains.mps.lang.editor.structure.INodeProvider");
   }
 }

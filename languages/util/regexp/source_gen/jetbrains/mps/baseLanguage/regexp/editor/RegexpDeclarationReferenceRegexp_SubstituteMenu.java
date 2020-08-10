@@ -28,7 +28,7 @@ public class RegexpDeclarationReferenceRegexp_SubstituteMenu extends SubstituteM
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_xnowcq_a(), CONCEPTS.RegexpDeclarationReferenceRegexp$8P));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_xnowcq_a(), CONCEPTS.RegexpDeclarationReferenceRegexp$LD));
     result.add(new SMP_Subconcepts_xnowcq_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class RegexpDeclarationReferenceRegexp_SubstituteMenu extends SubstituteM
 
     public SMP_ReferenceScope_xnowcq_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.RegexpDeclarationReferenceRegexp$8P, LINKS.regexp$_0Rc);
+      super((SAbstractConcept) CONCEPTS.RegexpDeclarationReferenceRegexp$LD, LINKS.regexp$ouw0);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class RegexpDeclarationReferenceRegexp_SubstituteMenu extends SubstituteM
   }
   public class SMP_Subconcepts_xnowcq_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.RegexpDeclarationReferenceRegexp$8P);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.RegexpDeclarationReferenceRegexp$LD);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class RegexpDeclarationReferenceRegexp_SubstituteMenu extends SubstituteM
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RegexpDeclarationReferenceRegexp$8P = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117f58ea2aL, "jetbrains.mps.baseLanguage.regexp.structure.RegexpDeclarationReferenceRegexp");
+    /*package*/ static final SConcept RegexpDeclarationReferenceRegexp$LD = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117f58ea2aL, "jetbrains.mps.baseLanguage.regexp.structure.RegexpDeclarationReferenceRegexp");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink regexp$_0Rc = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117f58ea2aL, 0x1117f594636L, "regexp");
+    /*package*/ static final SReferenceLink regexp$ouw0 = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117f58ea2aL, 0x1117f594636L, "regexp");
   }
 }

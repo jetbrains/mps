@@ -42,27 +42,27 @@ public class BaseLanguageHierarchyViewTool extends AbstractHierarchyView {
     @Override
     protected Set<SNode> getParents(SNode node, Set<SNode> visited) {
       HashSet<SNode> result = new HashSet<SNode>();
-      if (SNodeOperations.isInstanceOf(node, CONCEPTS.ClassConcept$IY)) {
-        SNode classConcept = SNodeOperations.cast(node, CONCEPTS.ClassConcept$IY);
-        SNode classifierType = SLinkOperations.getTarget(classConcept, LINKS.superclass$7jGM);
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.ClassConcept$bK)) {
+        SNode classConcept = SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK);
+        SNode classifierType = SLinkOperations.getTarget(classConcept, LINKS.superclass$Mp9$);
         if (classifierType != null) {
-          SNode classifier = SLinkOperations.getTarget(classifierType, LINKS.classifier$xslD);
-          if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$IY)) {
+          SNode classifier = SLinkOperations.getTarget(classifierType, LINKS.classifier$cxMr);
+          if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$bK)) {
             result.add(classifier);
           }
         }
-        for (SNode interfaceType : SLinkOperations.getChildren(classConcept, LINKS.implementedInterface$KoQU)) {
-          SNode interfaceClassifier = SLinkOperations.getTarget(interfaceType, LINKS.classifier$xslD);
-          if (SNodeOperations.isInstanceOf(interfaceClassifier, CONCEPTS.Interface$Kp)) {
+        for (SNode interfaceType : SLinkOperations.getChildren(classConcept, LINKS.implementedInterface$rujG)) {
+          SNode interfaceClassifier = SLinkOperations.getTarget(interfaceType, LINKS.classifier$cxMr);
+          if (SNodeOperations.isInstanceOf(interfaceClassifier, CONCEPTS.Interface$db)) {
             result.add(interfaceClassifier);
           }
         }
       } else
-      if (SNodeOperations.isInstanceOf(node, CONCEPTS.Interface$Kp)) {
-        SNode anInterface = SNodeOperations.cast(node, CONCEPTS.Interface$Kp);
-        for (SNode interfaceType : SLinkOperations.getChildren(anInterface, LINKS.extendedInterface$a$v2)) {
-          SNode interfaceClassifier = SLinkOperations.getTarget(interfaceType, LINKS.classifier$xslD);
-          if (SNodeOperations.isInstanceOf(interfaceClassifier, CONCEPTS.Interface$Kp)) {
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.Interface$db)) {
+        SNode anInterface = SNodeOperations.cast(node, CONCEPTS.Interface$db);
+        for (SNode interfaceType : SLinkOperations.getChildren(anInterface, LINKS.extendedInterface$PDVO)) {
+          SNode interfaceClassifier = SLinkOperations.getTarget(interfaceType, LINKS.classifier$cxMr);
+          if (SNodeOperations.isInstanceOf(interfaceClassifier, CONCEPTS.Interface$db)) {
             result.add(interfaceClassifier);
           }
         }
@@ -75,18 +75,18 @@ public class BaseLanguageHierarchyViewTool extends AbstractHierarchyView {
     }
     @Override
     protected SNode getParent(SNode node) {
-      if (SNodeOperations.isInstanceOf(node, CONCEPTS.ClassConcept$IY)) {
-        SNode classConcept = SNodeOperations.cast(node, CONCEPTS.ClassConcept$IY);
-        SNode type = SLinkOperations.getTarget(classConcept, LINKS.superclass$7jGM);
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.ClassConcept$bK)) {
+        SNode classConcept = SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK);
+        SNode type = SLinkOperations.getTarget(classConcept, LINKS.superclass$Mp9$);
         if (type == null) {
           return null;
         }
-        SNode classifier = SLinkOperations.getTarget(type, LINKS.classifier$xslD);
-        if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$IY)) {
+        SNode classifier = SLinkOperations.getTarget(type, LINKS.classifier$cxMr);
+        if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$bK)) {
           return classifier;
         }
       } else
-      if (SNodeOperations.isInstanceOf(node, CONCEPTS.Interface$Kp)) {
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.Interface$db)) {
         return null;
       }
       return null;
@@ -101,23 +101,23 @@ public class BaseLanguageHierarchyViewTool extends AbstractHierarchyView {
       Set<SNode> result = new HashSet<SNode>();
       for (SReference usage : usages) {
         SNode sourceNode = usage.getSourceNode();
-        if (LINKS.classifier$xslD.equals(usage.getLink())) {
-          if (SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.ClassifierType$IZ)) {
-            SNode classifierType = SNodeOperations.cast(sourceNode, CONCEPTS.ClassifierType$IZ);
-            if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(classifierType), CONCEPTS.ClassConcept$IY) && LINKS.superclass$7jGM.equals(classifierType.getContainmentLink())) {
+        if (LINKS.classifier$cxMr.equals(usage.getLink())) {
+          if (SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.ClassifierType$bL)) {
+            SNode classifierType = SNodeOperations.cast(sourceNode, CONCEPTS.ClassifierType$bL);
+            if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(classifierType), CONCEPTS.ClassConcept$bK) && LINKS.superclass$Mp9$.equals(classifierType.getContainmentLink())) {
               result.add(SNodeOperations.getParent(classifierType));
             }
-            if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(classifierType), CONCEPTS.ClassConcept$IY) && LINKS.implementedInterface$KoQU.equals(classifierType.getContainmentLink())) {
+            if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(classifierType), CONCEPTS.ClassConcept$bK) && LINKS.implementedInterface$rujG.equals(classifierType.getContainmentLink())) {
               result.add(SNodeOperations.getParent(classifierType));
             }
-            if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(classifierType), CONCEPTS.Interface$Kp) && LINKS.extendedInterface$a$v2.equals(classifierType.getContainmentLink())) {
+            if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(classifierType), CONCEPTS.Interface$db) && LINKS.extendedInterface$PDVO.equals(classifierType.getContainmentLink())) {
               result.add(SNodeOperations.getParent(classifierType));
             }
           }
         }
-        if (LINKS.classifier$JwxM.equals(usage.getLink())) {
-          if (SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.AnonymousClass$aF)) {
-            SNode anonymousClass = SNodeOperations.cast(sourceNode, CONCEPTS.AnonymousClass$aF);
+        if (LINKS.classifier$q_Y$.equals(usage.getLink())) {
+          if (SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.AnonymousClass$Bt)) {
+            SNode anonymousClass = SNodeOperations.cast(sourceNode, CONCEPTS.AnonymousClass$Bt);
             result.add(anonymousClass);
           }
         }
@@ -127,17 +127,17 @@ public class BaseLanguageHierarchyViewTool extends AbstractHierarchyView {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
-    /*package*/ static final SConcept AnonymousClass$aF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink extendedInterface$a$v2 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SContainmentLink implementedInterface$KoQU = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
-    /*package*/ static final SReferenceLink classifier$JwxM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
+    /*package*/ static final SContainmentLink extendedInterface$PDVO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink superclass$Mp9$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SContainmentLink implementedInterface$rujG = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
+    /*package*/ static final SReferenceLink classifier$q_Y$ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
   }
 }

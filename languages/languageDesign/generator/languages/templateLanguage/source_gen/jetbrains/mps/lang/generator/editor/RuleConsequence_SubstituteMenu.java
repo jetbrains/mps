@@ -54,7 +54,7 @@ public class RuleConsequence_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_Group_ygcyd4_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.Weaving_MappingRule$Iv);
+      return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.Weaving_MappingRule$qb);
     }
     @NotNull
     @Override
@@ -70,7 +70,7 @@ public class RuleConsequence_SubstituteMenu extends SubstituteMenuBase {
 
     @Override
     protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Subconcepts_ygcyd4_a0(), new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.WeaveEach_RuleConsequence$M2) {
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new SMP_Subconcepts_ygcyd4_a0(), new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.WeaveEach_RuleConsequence$tI) {
 
         @NotNull
         @Override
@@ -83,18 +83,18 @@ public class RuleConsequence_SubstituteMenu extends SubstituteMenuBase {
             context.getEditorMenuTrace().popTraceInfo();
           }
         }
-      }, CONCEPTS.WeaveEach_RuleConsequence$M2));
+      }, CONCEPTS.WeaveEach_RuleConsequence$tI));
     }
     public class SMP_Subconcepts_ygcyd4_a0 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
       protected Collection getConcepts(final SubstituteMenuContext _context) {
-        return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.RuleConsequence$N0).stream().filter(new Predicate<SAbstractConcept>() {
+        return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.RuleConsequence$uG).stream().filter(new Predicate<SAbstractConcept>() {
           public boolean test(SAbstractConcept concept) {
             return filterConcept(_context, concept);
           }
         }).collect(Collectors.toList());
       }
       private boolean filterConcept(SubstituteMenuContext _context, SAbstractConcept concept) {
-        return !(Objects.equals(concept, CONCEPTS.DismissTopMappingRule$gK)) && !(Objects.equals(concept, CONCEPTS.InlineTemplate_RuleConsequence$Mt)) && !(Objects.equals(concept, CONCEPTS.InlineTemplateWithContext_RuleConsequence$tA)) && !(Objects.equals(concept, CONCEPTS.AbandonInput_RuleConsequence$GS));
+        return !(Objects.equals(concept, CONCEPTS.DismissTopMappingRule$Ws)) && !(Objects.equals(concept, CONCEPTS.InlineTemplate_RuleConsequence$u9)) && !(Objects.equals(concept, CONCEPTS.InlineTemplateWithContext_RuleConsequence$9i)) && !(Objects.equals(concept, CONCEPTS.AbandonInput_RuleConsequence$o$));
       }
       @NotNull
       @Override
@@ -117,7 +117,7 @@ public class RuleConsequence_SubstituteMenu extends SubstituteMenuBase {
   public class SMP_Group_ygcyd4_b extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
     protected boolean isApplicable(SubstituteMenuContext _context) {
-      return !(SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.Weaving_MappingRule$Iv));
+      return !(SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.Weaving_MappingRule$qb));
     }
     @NotNull
     @Override
@@ -138,7 +138,7 @@ public class RuleConsequence_SubstituteMenu extends SubstituteMenuBase {
     public class SMP_Group_ygcyd4_a1 extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
       @Override
       protected boolean isApplicable(SubstituteMenuContext _context) {
-        return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.Reduction_MappingRule$uh);
+        return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.Reduction_MappingRule$9X);
       }
       @NotNull
       @Override
@@ -154,7 +154,7 @@ public class RuleConsequence_SubstituteMenu extends SubstituteMenuBase {
 
       @Override
       protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
-        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.InlineSwitch_RuleConsequence$lz) {
+        return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.InlineSwitch_RuleConsequence$1f) {
 
           @NotNull
           @Override
@@ -167,12 +167,12 @@ public class RuleConsequence_SubstituteMenu extends SubstituteMenuBase {
               context.getEditorMenuTrace().popTraceInfo();
             }
           }
-        }, CONCEPTS.InlineSwitch_RuleConsequence$lz));
+        }, CONCEPTS.InlineSwitch_RuleConsequence$1f));
       }
     }
     public class SMP_Subconcepts_ygcyd4_b1 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
       protected Collection getConcepts(final SubstituteMenuContext _context) {
-        return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.RuleConsequence$N0);
+        return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.RuleConsequence$uG);
       }
       @NotNull
       @Override
@@ -194,14 +194,14 @@ public class RuleConsequence_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Weaving_MappingRule$Iv = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0d8c573L, "jetbrains.mps.lang.generator.structure.Weaving_MappingRule");
-    /*package*/ static final SConcept WeaveEach_RuleConsequence$M2 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L, "jetbrains.mps.lang.generator.structure.WeaveEach_RuleConsequence");
-    /*package*/ static final SConcept RuleConsequence$N0 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x110138ccc4bL, "jetbrains.mps.lang.generator.structure.RuleConsequence");
-    /*package*/ static final SConcept DismissTopMappingRule$gK = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11013931abdL, "jetbrains.mps.lang.generator.structure.DismissTopMappingRule");
-    /*package*/ static final SConcept InlineTemplate_RuleConsequence$Mt = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, "jetbrains.mps.lang.generator.structure.InlineTemplate_RuleConsequence");
-    /*package*/ static final SConcept InlineTemplateWithContext_RuleConsequence$tA = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, "jetbrains.mps.lang.generator.structure.InlineTemplateWithContext_RuleConsequence");
-    /*package*/ static final SConcept AbandonInput_RuleConsequence$GS = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1180b1792dbL, "jetbrains.mps.lang.generator.structure.AbandonInput_RuleConsequence");
-    /*package*/ static final SConcept Reduction_MappingRule$uh = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fca296532L, "jetbrains.mps.lang.generator.structure.Reduction_MappingRule");
-    /*package*/ static final SConcept InlineSwitch_RuleConsequence$lz = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11644fa2edeL, "jetbrains.mps.lang.generator.structure.InlineSwitch_RuleConsequence");
+    /*package*/ static final SConcept Weaving_MappingRule$qb = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0d8c573L, "jetbrains.mps.lang.generator.structure.Weaving_MappingRule");
+    /*package*/ static final SConcept WeaveEach_RuleConsequence$tI = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L, "jetbrains.mps.lang.generator.structure.WeaveEach_RuleConsequence");
+    /*package*/ static final SConcept RuleConsequence$uG = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x110138ccc4bL, "jetbrains.mps.lang.generator.structure.RuleConsequence");
+    /*package*/ static final SConcept DismissTopMappingRule$Ws = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11013931abdL, "jetbrains.mps.lang.generator.structure.DismissTopMappingRule");
+    /*package*/ static final SConcept InlineTemplate_RuleConsequence$u9 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x112103dd1e8L, "jetbrains.mps.lang.generator.structure.InlineTemplate_RuleConsequence");
+    /*package*/ static final SConcept InlineTemplateWithContext_RuleConsequence$9i = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7b85dded0be53d6cL, "jetbrains.mps.lang.generator.structure.InlineTemplateWithContext_RuleConsequence");
+    /*package*/ static final SConcept AbandonInput_RuleConsequence$o$ = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1180b1792dbL, "jetbrains.mps.lang.generator.structure.AbandonInput_RuleConsequence");
+    /*package*/ static final SConcept Reduction_MappingRule$9X = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fca296532L, "jetbrains.mps.lang.generator.structure.Reduction_MappingRule");
+    /*package*/ static final SConcept InlineSwitch_RuleConsequence$1f = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11644fa2edeL, "jetbrains.mps.lang.generator.structure.InlineSwitch_RuleConsequence");
   }
 }

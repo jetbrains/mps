@@ -24,9 +24,9 @@ public class check_ActionParameterInUse_NonTypesystemRule extends AbstractNonTyp
   public check_ActionParameterInUse_NonTypesystemRule() {
   }
   public void applyRule(final SNode actionParameter, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    boolean inUse = ListSequence.fromList(SNodeOperations.getNodeDescendantsWhereConceptInList(SNodeOperations.getNodeAncestor(actionParameter, CONCEPTS.ActionDeclaration$VX, false, false), new SAbstractConcept[]{CONCEPTS.ActionParameterReferenceOperation$fx, CONCEPTS.ActionDataParameterReferenceOperation$gU}, false, new SAbstractConcept[]{})).any(new IWhereFilter<SNode>() {
+    boolean inUse = ListSequence.fromList(SNodeOperations.getNodeDescendantsWhereConceptInList(SNodeOperations.getNodeAncestor(actionParameter, CONCEPTS.ActionDeclaration$T0, false, false), new SAbstractConcept[]{CONCEPTS.ActionParameterReferenceOperation$c$, CONCEPTS.ActionDataParameterReferenceOperation$dX}, false, new SAbstractConcept[]{})).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.member$shti) == actionParameter;
+        return SLinkOperations.getTarget(it, LINKS.member$oLt6) == actionParameter;
       }
     });
     if (!(inUse)) {
@@ -37,7 +37,7 @@ public class check_ActionParameterInUse_NonTypesystemRule extends AbstractNonTyp
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ActionParameter$ec;
+    return CONCEPTS.ActionParameter$bf;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -47,13 +47,13 @@ public class check_ActionParameterInUse_NonTypesystemRule extends AbstractNonTyp
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ActionDeclaration$VX = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, "jetbrains.mps.lang.plugin.structure.ActionDeclaration");
-    /*package*/ static final SConcept ActionParameterReferenceOperation$fx = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x118d0b7fab3L, "jetbrains.mps.lang.plugin.structure.ActionParameterReferenceOperation");
-    /*package*/ static final SConcept ActionDataParameterReferenceOperation$gU = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e60be0L, "jetbrains.mps.lang.plugin.structure.ActionDataParameterReferenceOperation");
-    /*package*/ static final SInterfaceConcept ActionParameter$ec = MetaAdapterFactory.getInterfaceConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b737a6b7cL, "jetbrains.mps.lang.plugin.structure.ActionParameter");
+    /*package*/ static final SConcept ActionDeclaration$T0 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x1181ca87c38L, "jetbrains.mps.lang.plugin.structure.ActionDeclaration");
+    /*package*/ static final SConcept ActionParameterReferenceOperation$c$ = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x118d0b7fab3L, "jetbrains.mps.lang.plugin.structure.ActionParameterReferenceOperation");
+    /*package*/ static final SConcept ActionDataParameterReferenceOperation$dX = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b69e60be0L, "jetbrains.mps.lang.plugin.structure.ActionDataParameterReferenceOperation");
+    /*package*/ static final SInterfaceConcept ActionParameter$bf = MetaAdapterFactory.getInterfaceConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11b737a6b7cL, "jetbrains.mps.lang.plugin.structure.ActionParameter");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink member$shti = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member");
+    /*package*/ static final SReferenceLink member$oLt6 = MetaAdapterFactory.getReferenceLink(0x443f4c36fcf54eb6L, 0x95008d06ed259e3eL, 0x118bca97396L, 0x118bcb657ecL, "member");
   }
 }

@@ -23,12 +23,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class JUnit3TestCaseRef_Constraints extends BaseConstraintsDescriptor {
   public JUnit3TestCaseRef_Constraints() {
-    super(CONCEPTS.JUnit3TestCaseRef$PG);
+    super(CONCEPTS.JUnit3TestCaseRef$yY);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.klass$dECA, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.klass$vilS, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -43,7 +43,7 @@ public class JUnit3TestCaseRef_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forResolvableElements(JUnit3TestCaseRef__BehaviorDescriptor.getTestClassesForModule_id1k5vvhzzWoK.invoke(SNodeOperations.asSConcept(CONCEPTS.JUnit3TestCaseRef$PG), SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ModuleSuite$D_, true, false)));
+            return ListScope.forResolvableElements(JUnit3TestCaseRef__BehaviorDescriptor.getTestClassesForModule_id1k5vvhzzWoK.invoke(SNodeOperations.asSConcept(CONCEPTS.JUnit3TestCaseRef$yY), SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.ModuleSuite$mR, true, false)));
           }
         };
       }
@@ -55,11 +55,11 @@ public class JUnit3TestCaseRef_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_qx1fe9_a0a0a0a0a1a0a0a0c = new SNodePointer("r:137cc691-13a2-4fdd-885a-88f9405e83c0(jetbrains.mps.testbench.suite.constraints)", "6836281137582852121");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept JUnit3TestCaseRef$PG = MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb9L, "jetbrains.mps.testbench.suite.structure.JUnit3TestCaseRef");
-    /*package*/ static final SConcept ModuleSuite$D_ = MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, "jetbrains.mps.testbench.suite.structure.ModuleSuite");
+    /*package*/ static final SConcept JUnit3TestCaseRef$yY = MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb9L, "jetbrains.mps.testbench.suite.structure.JUnit3TestCaseRef");
+    /*package*/ static final SConcept ModuleSuite$mR = MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, "jetbrains.mps.testbench.suite.structure.ModuleSuite");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink klass$dECA = MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb9L, 0x11c3fc56a6d10bbfL, "klass");
+    /*package*/ static final SReferenceLink klass$vilS = MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb9L, 0x11c3fc56a6d10bbfL, "klass");
   }
 }

@@ -41,14 +41,14 @@ public class OverrideMethod_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    SNode classConcept = SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("selectedNode")), CONCEPTS.Classifier$hJ, true, false);
-    if (SNodeOperations.isInstanceOf(classConcept, CONCEPTS.EnumClass$uy)) {
-      SNode enumConstant = SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("selectedNode")), CONCEPTS.EnumConstantDeclaration$ma, true, false);
+    SNode classConcept = SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("selectedNode")), CONCEPTS.Classifier$Ix, true, false);
+    if (SNodeOperations.isInstanceOf(classConcept, CONCEPTS.EnumClass$Vk)) {
+      SNode enumConstant = SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("selectedNode")), CONCEPTS.EnumConstantDeclaration$MW, true, false);
       if ((enumConstant != null)) {
-        return !(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).isInspector()) && ListSequence.fromList(((List<SNode>) BHReflection.invoke0(enumConstant, CONCEPTS.IMemberContainer$60, SMethodTrimmedId.create("getMethodsToOverride", null, "4GM03FJm3zL")))).isNotEmpty();
+        return !(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).isInspector()) && ListSequence.fromList(((List<SNode>) BHReflection.invoke0(enumConstant, CONCEPTS.IMemberContainer$yM, SMethodTrimmedId.create("getMethodsToOverride", null, "4GM03FJm3zL")))).isNotEmpty();
       }
     }
-    return (classConcept != null) && ListSequence.fromList(((List<SNode>) BHReflection.invoke0(classConcept, CONCEPTS.IMemberContainer$60, SMethodTrimmedId.create("getMethodsToOverride", null, "4GM03FJm3zL")))).isNotEmpty();
+    return (classConcept != null) && ListSequence.fromList(((List<SNode>) BHReflection.invoke0(classConcept, CONCEPTS.IMemberContainer$yM, SMethodTrimmedId.create("getMethodsToOverride", null, "4GM03FJm3zL")))).isNotEmpty();
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -86,7 +86,7 @@ public class OverrideMethod_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final boolean isInEnumConstant = new ModelAccessHelper(((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess()).runReadAction(new Computable<Boolean>() {
       public Boolean compute() {
-        return (SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("selectedNode")), CONCEPTS.EnumConstantDeclaration$ma, true, false) != null);
+        return (SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("selectedNode")), CONCEPTS.EnumConstantDeclaration$MW, true, false) != null);
       }
     });
     if (isInEnumConstant) {
@@ -97,9 +97,9 @@ public class OverrideMethod_Action extends BaseAction {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept EnumConstantDeclaration$ma = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration");
-    /*package*/ static final SInterfaceConcept IMemberContainer$60 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11638b31955L, "jetbrains.mps.baseLanguage.structure.IMemberContainer");
-    /*package*/ static final SConcept EnumClass$uy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept EnumConstantDeclaration$MW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration");
+    /*package*/ static final SInterfaceConcept IMemberContainer$yM = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11638b31955L, "jetbrains.mps.baseLanguage.structure.IMemberContainer");
+    /*package*/ static final SConcept EnumClass$Vk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
   }
 }

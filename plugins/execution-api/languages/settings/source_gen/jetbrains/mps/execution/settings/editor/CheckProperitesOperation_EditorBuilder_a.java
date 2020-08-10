@@ -63,14 +63,14 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   }
   private SNode _StyleParameter_QueryFunction_ti2jjv_a0a0() {
     {
-      SNode coercedNode_ti2jjv_a0a0a0 = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(getNode())), CONCEPTS.PersistentConfigurationType$e2);
+      SNode coercedNode_ti2jjv_a0a0a0 = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(getNode())), CONCEPTS.PersistentConfigurationType$MR);
       if (coercedNode_ti2jjv_a0a0a0 != null) {
         for (SNode member : ListSequence.fromList(BaseClassifierType__BehaviorDescriptor.getMembers_idhEwINC$.invoke(coercedNode_ti2jjv_a0a0a0, getNode()))) {
-          if (SNodeOperations.isInstanceOf(member, CONCEPTS.CheckProperties_Function$dx)) {
+          if (SNodeOperations.isInstanceOf(member, CONCEPTS.CheckProperties_Function$Mm)) {
             return member;
           }
         }
-        return SLinkOperations.getTarget(coercedNode_ti2jjv_a0a0a0, LINKS.persistentConfiguration$2710);
+        return SLinkOperations.getTarget(coercedNode_ti2jjv_a0a0a0, LINKS.persistentConfiguration$QL_P);
       } else {
         return null;
       }
@@ -78,11 +78,11 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PersistentConfigurationType$e2 = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, "jetbrains.mps.execution.settings.structure.PersistentConfigurationType");
-    /*package*/ static final SConcept CheckProperties_Function$dx = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910125L, "jetbrains.mps.execution.settings.structure.CheckProperties_Function");
+    /*package*/ static final SConcept PersistentConfigurationType$MR = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, "jetbrains.mps.execution.settings.structure.PersistentConfigurationType");
+    /*package*/ static final SConcept CheckProperties_Function$Mm = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910125L, "jetbrains.mps.execution.settings.structure.CheckProperties_Function");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink persistentConfiguration$2710 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
+    /*package*/ static final SReferenceLink persistentConfiguration$QL_P = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91001cL, 0xd244b712f91001dL, "persistentConfiguration");
   }
 }

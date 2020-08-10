@@ -45,11 +45,11 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
    * @return The Line contained in the container, can be null
    */
   public static SNode findLineInContainer(SNode lineContainer) {
-    if (SNodeOperations.isInstanceOf(lineContainer, CONCEPTS.Line$w3)) {
-      return SNodeOperations.as(lineContainer, CONCEPTS.Line$w3);
+    if (SNodeOperations.isInstanceOf(lineContainer, CONCEPTS.Line$yC)) {
+      return SNodeOperations.as(lineContainer, CONCEPTS.Line$yC);
     }
 
-    Iterable<SNode> lines = ListSequence.fromList(SNodeOperations.getNodeDescendants(lineContainer, CONCEPTS.Line$w3, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+    Iterable<SNode> lines = ListSequence.fromList(SNodeOperations.getNodeDescendants(lineContainer, CONCEPTS.Line$yC, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return !(SNodeOperations.getContainingLink(it).isMultiple());
       }
@@ -74,6 +74,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Line$w3 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
+    /*package*/ static final SConcept Line$yC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
   }
 }

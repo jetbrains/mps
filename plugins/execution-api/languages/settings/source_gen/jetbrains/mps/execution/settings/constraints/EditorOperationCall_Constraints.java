@@ -33,12 +33,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class EditorOperationCall_Constraints extends BaseConstraintsDescriptor {
   public EditorOperationCall_Constraints() {
-    super(CONCEPTS.EditorOperationCall$no);
+    super(CONCEPTS.EditorOperationCall$Wd);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.editorOperationDeclaration$cGa2, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.editorOperationDeclaration$1mIR, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -53,15 +53,15 @@ public class EditorOperationCall_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode instance = SLinkOperations.getTarget(SNodeOperations.cast((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), CONCEPTS.DotExpression$6a), LINKS.operand$P1i5);
-            SNode editorType = TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(instance), CONCEPTS.SettingsEditorType$Bn);
-            if ((editorType == null) || (SLinkOperations.getTarget(editorType, LINKS.configuration$cNFw) == null)) {
+            SNode instance = SLinkOperations.getTarget(SNodeOperations.cast((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR);
+            SNode editorType = TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(instance), CONCEPTS.SettingsEditorType$cc);
+            if ((editorType == null) || (SLinkOperations.getTarget(editorType, LINKS.configuration$1ugl) == null)) {
               return ListScope.forResolvableElements(Sequence.fromIterable(Collections.<SNode>emptyList()));
             }
-            List<SNode> operations = SettingsEditor__BehaviorDescriptor.getDeclaredOperations_idO$iR4J$gbn.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(editorType, LINKS.configuration$cNFw), LINKS.editor$27Z0));
+            List<SNode> operations = SettingsEditor__BehaviorDescriptor.getDeclaredOperations_idO$iR4J$gbn.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(editorType, LINKS.configuration$1ugl), LINKS.editor$QMzP));
             return ListScope.forResolvableElements(ListSequence.fromList(operations).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return ((SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.SettingsEditor$MZ, false, false) != null) ? (EditorOperationDeclaration__BehaviorDescriptor.getJavaMethod_idO$iR4J$gaJ.invoke(it) != null) : (EditorOperationDeclaration__BehaviorDescriptor.getPublicJavaMethod_idbkrofm9Fgz.invoke(it) != null));
+                return ((SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.SettingsEditor$nO, false, false) != null) ? (EditorOperationDeclaration__BehaviorDescriptor.getJavaMethod_idO$iR4J$gaJ.invoke(it) != null) : (EditorOperationDeclaration__BehaviorDescriptor.getPublicJavaMethod_idbkrofm9Fgz.invoke(it) != null));
               }
             }));
           }
@@ -75,16 +75,16 @@ public class EditorOperationCall_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_ow8wt3_a0a0a0a0a1a0a0a0c = new SNodePointer("r:26cd452e-c5c2-4d47-ad13-dda4362e8616(jetbrains.mps.execution.settings.constraints)", "6836281137582823054");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EditorOperationCall$no = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91012eL, "jetbrains.mps.execution.settings.structure.EditorOperationCall");
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
-    /*package*/ static final SConcept SettingsEditorType$Bn = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91013aL, "jetbrains.mps.execution.settings.structure.SettingsEditorType");
-    /*package*/ static final SConcept SettingsEditor$MZ = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91013dL, "jetbrains.mps.execution.settings.structure.SettingsEditor");
+    /*package*/ static final SConcept EditorOperationCall$Wd = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91012eL, "jetbrains.mps.execution.settings.structure.EditorOperationCall");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept SettingsEditorType$cc = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91013aL, "jetbrains.mps.execution.settings.structure.SettingsEditorType");
+    /*package*/ static final SConcept SettingsEditor$nO = MetaAdapterFactory.getConcept(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91013dL, "jetbrains.mps.execution.settings.structure.SettingsEditor");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink editorOperationDeclaration$cGa2 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91012eL, 0xd244b712f910131L, "editorOperationDeclaration");
-    /*package*/ static final SContainmentLink operand$P1i5 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-    /*package*/ static final SReferenceLink configuration$cNFw = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91013aL, 0xd244b712f91013bL, "configuration");
-    /*package*/ static final SContainmentLink editor$27Z0 = MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910020L, 0xd244b712f910021L, "editor");
+    /*package*/ static final SReferenceLink editorOperationDeclaration$1mIR = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91012eL, 0xd244b712f910131L, "editorOperationDeclaration");
+    /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+    /*package*/ static final SReferenceLink configuration$1ugl = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f91013aL, 0xd244b712f91013bL, "configuration");
+    /*package*/ static final SContainmentLink editor$QMzP = MetaAdapterFactory.getContainmentLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f910020L, 0xd244b712f910021L, "editor");
   }
 }

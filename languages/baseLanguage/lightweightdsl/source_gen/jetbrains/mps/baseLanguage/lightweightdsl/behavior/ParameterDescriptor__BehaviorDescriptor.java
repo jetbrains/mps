@@ -42,11 +42,11 @@ public final class ParameterDescriptor__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static SNode create_id2h59CdJp99Y(@NotNull SNode __thisNode__, SNode point) {
-    return createMethodParameterInstance_e87i4c_a0a0(SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v), __thisNode__, (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.type$fC91), CONCEPTS.DependentTypeDescriptor$1L) ? DependentTypeDescriptor__BehaviorDescriptor.create_id2h59CdJp8nr.invoke(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.type$fC91), CONCEPTS.DependentTypeDescriptor$1L), point) : SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.type$fC91))));
+    return createMethodParameterInstance_e87i4c_a0a0(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL), __thisNode__, (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.type$HBuM), CONCEPTS.DependentTypeDescriptor$ny) ? DependentTypeDescriptor__BehaviorDescriptor.create_id2h59CdJp8nr.invoke(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.type$HBuM), CONCEPTS.DependentTypeDescriptor$ny), point) : SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.type$HBuM))));
   }
   /*package*/ static boolean isNeeded_id7GXvAHO1j1d(@NotNull SNode __thisNode__, SNode node) {
     try {
-      String className = DSLDescriptor__BehaviorDescriptor.getGeneratedQueriesQualifiedClassName_id3UdX2XvIeC6.invoke(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.DSLDescriptor$dS, false, false));
+      String className = DSLDescriptor__BehaviorDescriptor.getGeneratedQueriesQualifiedClassName_id3UdX2XvIeC6.invoke(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.DSLDescriptor$zD, false, false));
       SModule classModule = __thisNode__.getModel().getModule();
       Method[] methods = ClassLoaderManager.getInstance().getClass(classModule, className).getMethods();
       for (Method m : methods) {
@@ -62,7 +62,7 @@ public final class ParameterDescriptor__BehaviorDescriptor extends BaseBHDescrip
     }
   }
   /*package*/ static String getGeneratedMethodName_id7GXvAHO1heb(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.MethodDescriptor$hh, false, false), PROPS.name$lA7v) + "_" + SPropertyOperations.getString(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ParameterDescriptor$fO, false, false), PROPS.name$lA7v) + "_opt";
+    return SPropertyOperations.getString(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.MethodDescriptor$B2, false, false), PROPS.name$MnvL) + "_" + SPropertyOperations.getString(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.ParameterDescriptor$__, false, false), PROPS.name$MnvL) + "_opt";
   }
 
   /*package*/ ParameterDescriptor__BehaviorDescriptor() {
@@ -115,29 +115,29 @@ public final class ParameterDescriptor__BehaviorDescriptor extends BaseBHDescrip
     return CONCEPT;
   }
   private static SNode createMethodParameterInstance_e87i4c_a0a0(String p0, SNode p1, SNode p2) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MethodParameterInstance$yX);
-    n0.setProperty(PROPS.name$lA7v, p0);
-    n0.setReferenceTarget(LINKS.decl$hLc5, p1);
-    n0.forChild(LINKS.type$uWuc).initNode(p2, CONCEPTS.Type$IG, true);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MethodParameterInstance$SI);
+    n0.setProperty(PROPS.name$MnvL, p0);
+    n0.setReferenceTarget(LINKS.decl$JKxQ, p1);
+    n0.forChild(LINKS.type$a1UY).initNode(p2, CONCEPTS.Type$bu, true);
     return n0.getResult();
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$fC91 = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d164L, 0x340eb2bd2e03d166L, "type");
-    /*package*/ static final SReferenceLink decl$hLc5 = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x7b3d7e6b74000c44L, 0x7b3d7e6b7400c831L, "decl");
-    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink type$HBuM = MetaAdapterFactory.getContainmentLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d164L, 0x340eb2bd2e03d166L, "type");
+    /*package*/ static final SReferenceLink decl$JKxQ = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x7b3d7e6b74000c44L, 0x7b3d7e6b7400c831L, "decl");
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DependentTypeDescriptor$1L = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d15cL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DependentTypeDescriptor");
-    /*package*/ static final SConcept DSLDescriptor$dS = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLDescriptor");
-    /*package*/ static final SConcept MethodDescriptor$hh = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d167L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodDescriptor");
-    /*package*/ static final SConcept ParameterDescriptor$fO = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d164L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.ParameterDescriptor");
-    /*package*/ static final SConcept MethodParameterInstance$yX = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x7b3d7e6b74000c44L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodParameterInstance");
-    /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept DependentTypeDescriptor$ny = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d15cL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DependentTypeDescriptor");
+    /*package*/ static final SConcept DSLDescriptor$zD = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d160L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLDescriptor");
+    /*package*/ static final SConcept MethodDescriptor$B2 = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d167L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodDescriptor");
+    /*package*/ static final SConcept ParameterDescriptor$__ = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x340eb2bd2e03d164L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.ParameterDescriptor");
+    /*package*/ static final SConcept MethodParameterInstance$SI = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x7b3d7e6b74000c44L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodParameterInstance");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 }

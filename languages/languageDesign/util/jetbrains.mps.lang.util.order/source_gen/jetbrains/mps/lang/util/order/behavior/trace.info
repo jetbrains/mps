@@ -42,11 +42,11 @@
       <node id="174635545557536477" at="103,48,104,22" concept="6" />
       <node id="174635545557536477" at="109,40,110,19" concept="6" />
       <node id="3038738109029048877" at="112,52,113,40" concept="6" />
-      <node id="174635545557536477" at="117,0,118,0" concept="7" trace="name$lA7v" />
-      <node id="174635545557536477" at="121,0,122,0" concept="7" trace="OrderParticipant$EX" />
-      <node id="174635545557536477" at="122,0,123,0" concept="7" trace="INamedConcept$nV" />
-      <node id="174635545557536477" at="126,0,127,0" concept="7" trace="seq$xqZ1" />
-      <node id="174635545557536477" at="127,0,128,0" concept="7" trace="target$xwDl" />
+      <node id="174635545557536477" at="117,0,118,0" concept="7" trace="name$MnvL" />
+      <node id="174635545557536477" at="121,0,122,0" concept="7" trace="OrderParticipant$nQ" />
+      <node id="174635545557536477" at="122,0,123,0" concept="7" trace="INamedConcept$Kd" />
+      <node id="174635545557536477" at="126,0,127,0" concept="7" trace="seq$cXFU" />
+      <node id="174635545557536477" at="127,0,128,0" concept="7" trace="target$d3me" />
       <node id="174635545557536477" at="40,0,42,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="3038738109029048919" at="47,10,49,5" concept="0" />
       <node id="174635545557536477" at="63,0,65,0" concept="1" trace="OrderDeclaration__BehaviorDescriptor#()V" />
@@ -221,7 +221,7 @@
       <node id="174635545557574590" at="72,14,73,58" concept="10" />
       <node id="174635545557574590" at="79,48,80,22" concept="6" />
       <node id="174635545557574590" at="85,40,86,19" concept="6" />
-      <node id="174635545557574590" at="90,0,91,0" concept="7" trace="order$VC70" />
+      <node id="174635545557574590" at="90,0,91,0" concept="7" trace="order$BaNT" />
       <node id="174635545557574590" at="31,0,33,0" concept="8" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="174635545557574590" at="41,0,43,0" concept="1" trace="OrderReference__BehaviorDescriptor#()V" />
       <node id="174635545557574590" at="34,0,37,0" concept="8" trace="presents_id1jgMklchcXk#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Z" />

@@ -22,11 +22,11 @@ public class typeof_ExtensionFieldReference_InferenceRule extends AbstractInfere
     {
       SNode _nodeToCheck_1029348928467 = efr;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "7036359038356115138", 0, null);
-      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "7036359038356115126", true), (SNode) SLinkOperations.getTarget(SLinkOperations.getTarget(efr, LINKS.declaration$qj$w), LINKS.fieldType$qdYz), _info_12389875345);
+      typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "7036359038356115126", true), (SNode) SLinkOperations.getTarget(SLinkOperations.getTarget(efr, LINKS.declaration$h3Qi), LINKS.fieldType$gYgl), _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ExtensionFieldReference$B9;
+    return CONCEPTS.ExtensionFieldReference$SV;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -36,11 +36,11 @@ public class typeof_ExtensionFieldReference_InferenceRule extends AbstractInfere
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$qj$w = MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x61a62b43e1534e9eL, 0x61a62b43e1534e9fL, "declaration");
-    /*package*/ static final SContainmentLink fieldType$qdYz = MetaAdapterFactory.getContainmentLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x61a62b43e1534e99L, 0x61a62b43e1534e9dL, "fieldType");
+    /*package*/ static final SReferenceLink declaration$h3Qi = MetaAdapterFactory.getReferenceLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x61a62b43e1534e9eL, 0x61a62b43e1534e9fL, "declaration");
+    /*package*/ static final SContainmentLink fieldType$gYgl = MetaAdapterFactory.getContainmentLink(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x61a62b43e1534e99L, 0x61a62b43e1534e9dL, "fieldType");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ExtensionFieldReference$B9 = MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x61a62b43e1534e9eL, "jetbrains.mps.lang.extension.structure.ExtensionFieldReference");
+    /*package*/ static final SConcept ExtensionFieldReference$SV = MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x61a62b43e1534e9eL, "jetbrains.mps.lang.extension.structure.ExtensionFieldReference");
   }
 }

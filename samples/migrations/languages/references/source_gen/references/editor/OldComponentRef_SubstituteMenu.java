@@ -28,7 +28,7 @@ public class OldComponentRef_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_buu76l_a(), CONCEPTS.OldComponentRef$GK));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_buu76l_a(), CONCEPTS.OldComponentRef$TN));
     result.add(new SMP_Subconcepts_buu76l_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class OldComponentRef_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_buu76l_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.OldComponentRef$GK, LINKS.target$j8yo);
+      super((SAbstractConcept) CONCEPTS.OldComponentRef$TN, LINKS.target$H6Jr);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class OldComponentRef_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_buu76l_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.OldComponentRef$GK);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.OldComponentRef$TN);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class OldComponentRef_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept OldComponentRef$GK = MetaAdapterFactory.getConcept(0x1610048531ac4899L, 0x91122289e22843ddL, 0x6aff2c104931574dL, "references.structure.OldComponentRef");
+    /*package*/ static final SConcept OldComponentRef$TN = MetaAdapterFactory.getConcept(0x1610048531ac4899L, 0x91122289e22843ddL, 0x6aff2c104931574dL, "references.structure.OldComponentRef");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink target$j8yo = MetaAdapterFactory.getReferenceLink(0x1610048531ac4899L, 0x91122289e22843ddL, 0x6aff2c104931574dL, 0x6aff2c104932a69aL, "target");
+    /*package*/ static final SReferenceLink target$H6Jr = MetaAdapterFactory.getReferenceLink(0x1610048531ac4899L, 0x91122289e22843ddL, 0x6aff2c104931574dL, 0x6aff2c104932a69aL, "target");
   }
 }

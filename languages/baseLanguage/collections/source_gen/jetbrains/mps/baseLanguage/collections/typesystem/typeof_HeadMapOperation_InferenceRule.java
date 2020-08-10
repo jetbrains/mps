@@ -31,7 +31,7 @@ public class typeof_HeadMapOperation_InferenceRule extends AbstractInferenceRule
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.toKey$k3p1);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(operation, LINKS.toKey$YnBk);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240240108699", 0, null);
         typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240240099695", true), (SNode) typeCheckingContext.getRepresentative(KEY_TYPE_typevar_1240239989539), true, true, _info_12389875345);
       }
@@ -43,7 +43,7 @@ public class typeof_HeadMapOperation_InferenceRule extends AbstractInferenceRule
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.HeadMapOperation$Lz;
+    return CONCEPTS.HeadMapOperation$ZQ;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -85,10 +85,10 @@ public class typeof_HeadMapOperation_InferenceRule extends AbstractInferenceRule
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink toKey$k3p1 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4071445L, 0x120c40fad39L, "toKey");
+    /*package*/ static final SContainmentLink toKey$YnBk = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4071445L, 0x120c40fad39L, "toKey");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept HeadMapOperation$Lz = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4071445L, "jetbrains.mps.baseLanguage.collections.structure.HeadMapOperation");
+    /*package*/ static final SConcept HeadMapOperation$ZQ = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x120c4071445L, "jetbrains.mps.baseLanguage.collections.structure.HeadMapOperation");
   }
 }

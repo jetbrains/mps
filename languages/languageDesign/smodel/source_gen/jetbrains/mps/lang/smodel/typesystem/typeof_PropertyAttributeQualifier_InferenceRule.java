@@ -22,13 +22,13 @@ public class typeof_PropertyAttributeQualifier_InferenceRule extends AbstractInf
   }
   public void applyRule(final SNode propertyAttributeQualifier, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(propertyAttributeQualifier, LINKS.propertyQualifier$2Gzx);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(propertyAttributeQualifier, LINKS.propertyQualifier$B5_1);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "4568673663674241142", 0, null);
       typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "4568673663674241148", true), (SNode) _quotation_createNode_gq43ib_a1a0c0a0b(), false, true, _info_12389875345);
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.PropertyAttributeQualifier$oD;
+    return CONCEPTS.PropertyAttributeQualifier$q9;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -45,10 +45,10 @@ public class typeof_PropertyAttributeQualifier_InferenceRule extends AbstractInf
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink propertyQualifier$2Gzx = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045c9b9L, 0x58ea5217b045c9bbL, "propertyQualifier");
+    /*package*/ static final SContainmentLink propertyQualifier$B5_1 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045c9b9L, 0x58ea5217b045c9bbL, "propertyQualifier");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertyAttributeQualifier$oD = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045c9b9L, "jetbrains.mps.lang.smodel.structure.PropertyAttributeQualifier");
+    /*package*/ static final SConcept PropertyAttributeQualifier$q9 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045c9b9L, "jetbrains.mps.lang.smodel.structure.PropertyAttributeQualifier");
   }
 }

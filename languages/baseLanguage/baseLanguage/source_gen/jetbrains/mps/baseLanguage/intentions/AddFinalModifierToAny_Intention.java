@@ -48,7 +48,7 @@ public final class AddFinalModifierToAny_Intention extends AbstractIntentionDesc
     if ((nodeUnderDecl == null)) {
       return true;
     }
-    if (SNodeOperations.hasRole(nodeUnderDecl, LINKS.initializer$no3R)) {
+    if (SNodeOperations.hasRole(nodeUnderDecl, LINKS.initializer$2twD)) {
       return false;
     }
 
@@ -69,11 +69,11 @@ public final class AddFinalModifierToAny_Intention extends AbstractIntentionDesc
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return (SPropertyOperations.getBoolean(node, PROPS.isFinal$_qt3) ? "Remove 'final' Modifier" : "Add 'final' Modifier");
+      return (SPropertyOperations.getBoolean(node, PROPS.isFinal$gvTP) ? "Remove 'final' Modifier" : "Add 'final' Modifier");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SPropertyOperations.set(node, PROPS.isFinal$_qt3, !(SPropertyOperations.getBoolean(node, PROPS.isFinal$_qt3)));
+      SPropertyOperations.set(node, PROPS.isFinal$gvTP, !(SPropertyOperations.getBoolean(node, PROPS.isFinal$gvTP)));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -82,10 +82,10 @@ public final class AddFinalModifierToAny_Intention extends AbstractIntentionDesc
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink initializer$2twD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isFinal$gvTP = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 }

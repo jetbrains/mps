@@ -116,10 +116,10 @@ public class TodoViewer extends JPanel {
     @Override
     public String getPresentation(SNode node) {
       SNode n = node;
-      if (SNodeOperations.isInstanceOf(n, CONCEPTS.TextCommentPart$lb)) {
-        return SPropertyOperations.getString(SNodeOperations.as(node, CONCEPTS.TextCommentPart$lb), PROPS.text$va_w);
+      if (SNodeOperations.isInstanceOf(n, CONCEPTS.TextCommentPart$LX)) {
+        return SPropertyOperations.getString(SNodeOperations.as(node, CONCEPTS.TextCommentPart$LX), PROPS.text$ag2i);
       }
-      return ((String) BHReflection.invoke0(SNodeOperations.as(node, CONCEPTS.IComment$kc), CONCEPTS.IComment$kc, SMethodTrimmedId.create("getTextualRepresentation", null, "fB3l80ylIb")));
+      return ((String) BHReflection.invoke0(SNodeOperations.as(node, CONCEPTS.IComment$KY), CONCEPTS.IComment$KY, SMethodTrimmedId.create("getTextualRepresentation", null, "fB3l80ylIb")));
     }
     @Override
     public String getResultsText(TextOptions options) {
@@ -146,11 +146,11 @@ public class TodoViewer extends JPanel {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TextCommentPart$lb = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart");
-    /*package*/ static final SInterfaceConcept IComment$kc = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3e70d51ff33226dL, "jetbrains.mps.baseLanguage.structure.IComment");
+    /*package*/ static final SConcept TextCommentPart$LX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, "jetbrains.mps.baseLanguage.structure.TextCommentPart");
+    /*package*/ static final SInterfaceConcept IComment$KY = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3e70d51ff33226dL, "jetbrains.mps.baseLanguage.structure.IComment");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty text$va_w = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text");
+    /*package*/ static final SProperty text$ag2i = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3dL, 0x57d533a7af15ed3eL, "text");
   }
 }

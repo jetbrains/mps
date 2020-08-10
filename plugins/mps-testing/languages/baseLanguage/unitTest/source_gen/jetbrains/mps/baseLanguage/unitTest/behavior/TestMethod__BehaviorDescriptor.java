@@ -43,15 +43,15 @@ public final class TestMethod__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static SNode getTestCase_idhGBgWVd(@NotNull SNode __thisNode__) {
     SNode method = __thisNode__;
-    return SNodeOperations.getNodeAncestor(method, CONCEPTS.BTestCase$o9, false, false);
+    return SNodeOperations.getNodeAncestor(method, CONCEPTS.BTestCase$_a, false, false);
   }
   /*package*/ static String getTestName_idhGBohAB(@NotNull SNode __thisNode__) {
     SNode method = __thisNode__;
-    return SPropertyOperations.getString(method, PROPS.name$lA7v);
+    return SPropertyOperations.getString(method, PROPS.name$MnvL);
   }
   /*package*/ static List<SNode> getThrowableTypes_id5op8ooRkkc7(@NotNull SNode __thisNode__) {
     List<SNode> result = new ArrayList<SNode>();
-    ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.throwsItem$X8vM)));
+    ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.throwsItem$CdW$)));
     ListSequence.fromList(result).addElement(_quotation_createNode_6y0hvj_a0a2a2());
     return result;
   }
@@ -114,14 +114,14 @@ public final class TestMethod__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BTestCase$o9 = MetaAdapterFactory.getConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110dc94e923L, "jetbrains.mps.baseLanguage.unitTest.structure.BTestCase");
+    /*package*/ static final SConcept BTestCase$_a = MetaAdapterFactory.getConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110dc94e923L, "jetbrains.mps.baseLanguage.unitTest.structure.BTestCase");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink throwsItem$X8vM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
+    /*package*/ static final SContainmentLink throwsItem$CdW$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
   }
 }

@@ -37,15 +37,15 @@ public final class OverrideConceptMethodsChecker extends BaseEventProcessingEdit
   @Override
   public UpdateResult update(EditorComponent component, boolean incremental, boolean applyQuickFixes, Cancellable cancellable) {
     SNode rootNode = component.getEditedNode();
-    if (!(SNodeOperations.isInstanceOf(rootNode, CONCEPTS.ConceptBehavior$8P))) {
+    if (!(SNodeOperations.isInstanceOf(rootNode, CONCEPTS.ConceptBehavior$2))) {
       return new UpdateResult.Completed(false, emptyListEditorMessage());
     }
 
-    List<SNode> descendants = SNodeOperations.getNodeDescendants(rootNode, CONCEPTS.ConceptMethodDeclaration$VN, false, new SAbstractConcept[]{});
+    List<SNode> descendants = SNodeOperations.getNodeDescendants(rootNode, CONCEPTS.ConceptMethodDeclaration$N0, false, new SAbstractConcept[]{});
     if (ListSequence.fromList(descendants).isEmpty()) {
       return new UpdateResult.Completed(false, emptyListEditorMessage());
     }
-    List<EditorMessage> result = calculateEditorMessages(SNodeOperations.cast(rootNode, CONCEPTS.ConceptBehavior$8P), cancellable);
+    List<EditorMessage> result = calculateEditorMessages(SNodeOperations.cast(rootNode, CONCEPTS.ConceptBehavior$2), cancellable);
     if (cancellable.isCancelled()) {
       return new UpdateResult.Cancelled();
     }
@@ -67,7 +67,7 @@ public final class OverrideConceptMethodsChecker extends BaseEventProcessingEdit
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptBehavior$8P = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
-    /*package*/ static final SConcept ConceptMethodDeclaration$VN = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
+    /*package*/ static final SConcept ConceptBehavior$2 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d43447b1aL, "jetbrains.mps.lang.behavior.structure.ConceptBehavior");
+    /*package*/ static final SConcept ConceptMethodDeclaration$N0 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, "jetbrains.mps.lang.behavior.structure.ConceptMethodDeclaration");
   }
 }

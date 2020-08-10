@@ -39,19 +39,19 @@ public final class CustomContainerCreator__BehaviorDescriptor extends BaseBHDesc
   }
 
   /*package*/ static SNode createType_idi0I0ppH(@NotNull final SNode __thisNode__) {
-    SNode res = SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.containerDeclaration$H60P), LINKS.containerType$iykV));
+    SNode res = SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.containerDeclaration$nqf8), LINKS.containerType$WQze));
     //  workaround an SModel's dumbness 
     ListSequence.fromList(SNodeOperations.getChildren(res)).toListSequence().visitAll(new IVisitor<SNode>() {
       public void visit(SNode chld) {
-        if (SNodeOperations.isInstanceOf(chld, CONCEPTS.TypeVariableReference$vZ)) {
-          SNodeOperations.replaceWithAnother(chld, SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$id8C)));
+        if (SNodeOperations.isInstanceOf(chld, CONCEPTS.TypeVariableReference$WL)) {
+          SNodeOperations.replaceWithAnother(chld, SNodeOperations.copyNode(SLinkOperations.getTarget(__thisNode__, LINKS.elementType$WxmV)));
         }
       }
     });
     return res;
   }
   /*package*/ static String getEntityName_id6LXz$urfgAS(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.containerDeclaration$H60P), PROPS.name$lA7v);
+    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.containerDeclaration$nqf8), PROPS.name$MnvL);
   }
 
   /*package*/ CustomContainerCreator__BehaviorDescriptor() {
@@ -103,16 +103,16 @@ public final class CustomContainerCreator__BehaviorDescriptor extends BaseBHDesc
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink containerDeclaration$H60P = MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x127be81db92655b3L, 0x127be81db92655b4L, "containerDeclaration");
-    /*package*/ static final SContainmentLink containerType$iykV = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x54a5d587c1f3c7e0L, 0x54a5d587c1f3c83fL, "containerType");
-    /*package*/ static final SContainmentLink elementType$id8C = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24e9fL, "elementType");
+    /*package*/ static final SReferenceLink containerDeclaration$nqf8 = MetaAdapterFactory.getReferenceLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x127be81db92655b3L, 0x127be81db92655b4L, "containerDeclaration");
+    /*package*/ static final SContainmentLink containerType$WQze = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x54a5d587c1f3c7e0L, 0x54a5d587c1f3c83fL, "containerType");
+    /*package*/ static final SContainmentLink elementType$WxmV = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1202df1ada0L, 0x1202df24e9fL, "elementType");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TypeVariableReference$vZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
+    /*package*/ static final SConcept TypeVariableReference$WL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

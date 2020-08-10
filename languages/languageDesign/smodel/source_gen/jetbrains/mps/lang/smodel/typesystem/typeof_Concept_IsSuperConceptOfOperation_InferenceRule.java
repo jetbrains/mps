@@ -20,7 +20,7 @@ public class typeof_Concept_IsSuperConceptOfOperation_InferenceRule extends Abst
   public typeof_Concept_IsSuperConceptOfOperation_InferenceRule() {
   }
   public void applyRule(final SNode op, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode conceptArg = SLinkOperations.getTarget(op, LINKS.conceptArgument$YC8E);
+    SNode conceptArg = SLinkOperations.getTarget(op, LINKS.conceptArgument$z1aa);
     {
       SNode _nodeToCheck_1029348928467 = conceptArg;
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "8933148862033741312", 0, null);
@@ -34,7 +34,7 @@ public class typeof_Concept_IsSuperConceptOfOperation_InferenceRule extends Abst
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.Concept_IsSuperConceptOfOperation$9c;
+    return CONCEPTS.Concept_IsSuperConceptOfOperation$aG;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -56,10 +56,10 @@ public class typeof_Concept_IsSuperConceptOfOperation_InferenceRule extends Abst
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink conceptArgument$YC8E = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x112bf289d94L, 0x112bf2b9fc0L, "conceptArgument");
+    /*package*/ static final SContainmentLink conceptArgument$z1aa = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x112bf289d94L, 0x112bf2b9fc0L, "conceptArgument");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Concept_IsSuperConceptOfOperation$9c = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x112bf289d94L, "jetbrains.mps.lang.smodel.structure.Concept_IsSuperConceptOfOperation");
+    /*package*/ static final SConcept Concept_IsSuperConceptOfOperation$aG = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x112bf289d94L, "jetbrains.mps.lang.smodel.structure.Concept_IsSuperConceptOfOperation");
   }
 }

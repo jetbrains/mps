@@ -25,9 +25,9 @@ public class DeleteIncompleteLeftParen {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode paren = AttributeOperations.getAttribute(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.Expression$TP), new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$yl));
+        SNode paren = AttributeOperations.getAttribute(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.Expression$mB), new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7));
         if ((boolean) IIncompleteParen__BehaviorDescriptor.isSingleParen_idVufYxgmHsD.invoke(paren)) {
-          AttributeOperations.setAttribute(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.Expression$TP), new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$yl), null);
+          AttributeOperations.setAttribute(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.Expression$mB), new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7), null);
         } else {
           IIncompleteParen__BehaviorDescriptor.decreaseCount_idVufYxgmFtR.invoke(paren);
         }
@@ -78,7 +78,7 @@ public class DeleteIncompleteLeftParen {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
-    /*package*/ static final SConcept IncompleteLeftParen$yl = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64a1ef64cd9b42ceL, "jetbrains.mps.baseLanguage.structure.IncompleteLeftParen");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept IncompleteLeftParen$Z7 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64a1ef64cd9b42ceL, "jetbrains.mps.baseLanguage.structure.IncompleteLeftParen");
   }
 }

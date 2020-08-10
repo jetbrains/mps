@@ -22,7 +22,7 @@ public class typeof_BinaryOperation_InferenceRule extends AbstractInferenceRule_
   }
   public void applyRule(final SNode op, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode lValue = RulesFunctions_Collections.getInput(typeCheckingContext, op);
-    SNode rValue = SLinkOperations.getTarget(op, LINKS.rightExpression$1wk4);
+    SNode rValue = SLinkOperations.getTarget(op, LINKS.rightExpression$FOyn);
     final SNode elementType_typevar_1184848397564 = typeCheckingContext.createNewRuntimeTypesVariable();
     final SNode sequenceType_typevar_1184848409899 = typeCheckingContext.createNewRuntimeTypesVariable();
     {
@@ -47,7 +47,7 @@ public class typeof_BinaryOperation_InferenceRule extends AbstractInferenceRule_
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BinaryOperation$SA;
+    return CONCEPTS.BinaryOperation$6T;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -68,10 +68,10 @@ public class typeof_BinaryOperation_InferenceRule extends AbstractInferenceRule_
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink rightExpression$1wk4 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11205199ac2L, 0x112051c6c86L, "rightExpression");
+    /*package*/ static final SContainmentLink rightExpression$FOyn = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11205199ac2L, 0x112051c6c86L, "rightExpression");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BinaryOperation$SA = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11205199ac2L, "jetbrains.mps.baseLanguage.collections.structure.BinaryOperation");
+    /*package*/ static final SConcept BinaryOperation$6T = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x11205199ac2L, "jetbrains.mps.baseLanguage.collections.structure.BinaryOperation");
   }
 }

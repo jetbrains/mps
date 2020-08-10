@@ -29,21 +29,21 @@ public class typeof_GenerationContextOp_RegisterLabel_InferenceRule extends Abst
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, LINKS.inputNode$ir5s);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, LINKS.inputNode$ymv2);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "5615708520036950066", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "5615708520036950071", true), (SNode) _quotation_createNode_euhyex_a1a0c0a0b0b(SLinkOperations.getTarget(SLinkOperations.getTarget(op, LINKS.label$$zMb), LINKS.sourceConcept$BVhC)), true, true, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "5615708520036950071", true), (SNode) _quotation_createNode_euhyex_a1a0c0a0b0b(SLinkOperations.getTarget(SLinkOperations.getTarget(op, LINKS.label$OvbL), LINKS.sourceConcept$RXk)), true, true, _info_12389875345);
       }
     }
     if (!(typeCheckingContext.isSingleTypeComputation())) {
       {
-        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, LINKS.outputNode$iymV);
+        SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(op, LINKS.outputNode$ytKx);
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "5615708520036992735", 0, null);
-        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "5615708520036992740", true), (SNode) _quotation_createNode_euhyex_a1a0c0a0c0b(SLinkOperations.getTarget(SLinkOperations.getTarget(op, LINKS.label$$zMb), LINKS.targetConcept$kZUb)), true, true, _info_12389875345);
+        typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902f1(jetbrains.mps.lang.generator.generationContext.typesystem)", "5615708520036992740", true), (SNode) _quotation_createNode_euhyex_a1a0c0a0c0b(SLinkOperations.getTarget(SLinkOperations.getTarget(op, LINKS.label$OvbL), LINKS.targetConcept$HW_R)), true, true, _info_12389875345);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.GenerationContextOp_RegisterLabel$HO;
+    return CONCEPTS.GenerationContextOp_RegisterLabel$7q;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -73,14 +73,14 @@ public class typeof_GenerationContextOp_RegisterLabel_InferenceRule extends Abst
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink inputNode$ir5s = MetaAdapterFactory.getContainmentLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x4def01254aef34cdL, 0x4def01254aef7b6eL, "inputNode");
-    /*package*/ static final SReferenceLink label$$zMb = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x4def01254aef34cdL, 0x4def01254aef7752L, "label");
-    /*package*/ static final SReferenceLink sourceConcept$BVhC = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179be4dc5eL, "sourceConcept");
-    /*package*/ static final SContainmentLink outputNode$iymV = MetaAdapterFactory.getContainmentLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x4def01254aef34cdL, 0x4def01254aef7b78L, "outputNode");
-    /*package*/ static final SReferenceLink targetConcept$kZUb = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179bfe3866L, "targetConcept");
+    /*package*/ static final SContainmentLink inputNode$ymv2 = MetaAdapterFactory.getContainmentLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x4def01254aef34cdL, 0x4def01254aef7b6eL, "inputNode");
+    /*package*/ static final SReferenceLink label$OvbL = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x4def01254aef34cdL, 0x4def01254aef7752L, "label");
+    /*package*/ static final SReferenceLink sourceConcept$RXk = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179be4dc5eL, "sourceConcept");
+    /*package*/ static final SContainmentLink outputNode$ytKx = MetaAdapterFactory.getContainmentLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x4def01254aef34cdL, 0x4def01254aef7b78L, "outputNode");
+    /*package*/ static final SReferenceLink targetConcept$HW_R = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x1179bfe3866L, "targetConcept");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GenerationContextOp_RegisterLabel$HO = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x4def01254aef34cdL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_RegisterLabel");
+    /*package*/ static final SConcept GenerationContextOp_RegisterLabel$7q = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x4def01254aef34cdL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_RegisterLabel");
   }
 }

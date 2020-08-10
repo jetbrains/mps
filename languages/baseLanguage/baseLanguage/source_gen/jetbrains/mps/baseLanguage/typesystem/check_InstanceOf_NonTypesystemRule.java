@@ -23,7 +23,7 @@ public class check_InstanceOf_NonTypesystemRule extends AbstractNonTypesystemRul
   public check_InstanceOf_NonTypesystemRule() {
   }
   public void applyRule(final SNode instanceOfExpression, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode classifierType = SLinkOperations.getTarget(instanceOfExpression, LINKS.classType$do7a);
+    SNode classifierType = SLinkOperations.getTarget(instanceOfExpression, LINKS.classType$StzW);
     if ((classifierType != null)) {
       if (!((boolean) Type__BehaviorDescriptor.isReifiable_id2soW6EObTNQ.invoke(classifierType))) {
         final MessageTarget errorTarget = new NodeMessageTarget();
@@ -44,7 +44,7 @@ public class check_InstanceOf_NonTypesystemRule extends AbstractNonTypesystemRul
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.InstanceOfExpression$JG;
+    return CONCEPTS.InstanceOfExpression$cu;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -54,10 +54,10 @@ public class check_InstanceOf_NonTypesystemRule extends AbstractNonTypesystemRul
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink classType$do7a = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06219L, "classType");
+    /*package*/ static final SContainmentLink classType$StzW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, 0xfbbff06219L, "classType");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept InstanceOfExpression$JG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, "jetbrains.mps.baseLanguage.structure.InstanceOfExpression");
+    /*package*/ static final SConcept InstanceOfExpression$cu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbff03700L, "jetbrains.mps.baseLanguage.structure.InstanceOfExpression");
   }
 }

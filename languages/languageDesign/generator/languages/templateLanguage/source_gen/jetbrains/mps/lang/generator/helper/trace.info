@@ -87,14 +87,14 @@
       <node id="2617465934949886122" at="207,5,208,16" concept="6" />
       <node id="2617465934949886123" at="211,36,212,48" concept="6" />
       <node id="2617465934949886123" at="213,5,214,16" concept="6" />
-      <node id="1205859480204" at="218,0,219,0" concept="9" trace="NodeMacro$Je" />
-      <node id="1205859480204" at="219,0,220,0" concept="9" trace="PropertyMacro$wt" />
-      <node id="1205859480204" at="220,0,221,0" concept="9" trace="ReferenceMacro$nk" />
-      <node id="1205859480204" at="221,0,222,0" concept="9" trace="RootTemplateAnnotation$u8" />
-      <node id="1205859480204" at="222,0,223,0" concept="9" trace="InlineTemplate_RuleConsequence$Mt" />
-      <node id="1205859480204" at="223,0,224,0" concept="9" trace="InlineTemplateWithContext_RuleConsequence$tA" />
-      <node id="1205859480204" at="224,0,225,0" concept="9" trace="TemplateFragment$yI" />
-      <node id="1205859480204" at="225,0,226,0" concept="9" trace="TemplateDeclaration$q0" />
+      <node id="1205859480204" at="218,0,219,0" concept="9" trace="NodeMacro$qU" />
+      <node id="1205859480204" at="219,0,220,0" concept="9" trace="PropertyMacro$c9" />
+      <node id="1205859480204" at="220,0,221,0" concept="9" trace="ReferenceMacro$30" />
+      <node id="1205859480204" at="221,0,222,0" concept="9" trace="RootTemplateAnnotation$9O" />
+      <node id="1205859480204" at="222,0,223,0" concept="9" trace="InlineTemplate_RuleConsequence$u9" />
+      <node id="1205859480204" at="223,0,224,0" concept="9" trace="InlineTemplateWithContext_RuleConsequence$9i" />
+      <node id="1205859480204" at="224,0,225,0" concept="9" trace="TemplateFragment$eq" />
+      <node id="1205859480204" at="225,0,226,0" concept="9" trace="TemplateDeclaration$5G" />
       <node id="1216154257901" at="104,10,106,5" concept="0" />
       <node id="1216153381242" at="27,0,30,0" concept="10" trace="isNodeMacroApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="7902250453896655452" at="31,80,34,5" concept="3" />
@@ -324,34 +324,34 @@
       <node id="7668726104734288795" at="64,77,65,127" concept="6" />
       <node id="7668726104734336707" at="66,5,67,0" concept="8" />
       <node id="1178668380671" at="67,0,68,16" concept="6" />
-      <node id="7668726104733964469" at="72,0,73,0" concept="9" trace="TemplateDeclaration$q0" />
-      <node id="7668726104733964469" at="73,0,74,0" concept="9" trace="BaseMappingRule$8p" />
-      <node id="7668726104733964469" at="74,0,75,0" concept="9" trace="PatternReduction_MappingRule$g5" />
-      <node id="7668726104733964469" at="75,0,76,0" concept="9" trace="DropRootRule$d7" />
-      <node id="7668726104733964469" at="76,0,77,0" concept="9" trace="DropAttributeRule$EX" />
-      <node id="7668726104733964469" at="77,0,78,0" concept="9" trace="ReferenceReductionRule$Lk" />
-      <node id="7668726104733964469" at="78,0,79,0" concept="9" trace="AbstractConceptDeclaration$UN" />
-      <node id="7668726104733964469" at="79,0,80,0" concept="9" trace="RootTemplateAnnotation$u8" />
-      <node id="7668726104733964469" at="80,0,81,0" concept="9" trace="TemplateSwitchMacro$o0" />
-      <node id="7668726104733964469" at="81,0,82,0" concept="9" trace="CopySrcNodeMacro$ud" />
-      <node id="7668726104733964469" at="82,0,83,0" concept="9" trace="CopySrcListMacro$63" />
-      <node id="7668726104733964469" at="83,0,84,0" concept="9" trace="MapSrcNodeMacro$Hp" />
-      <node id="7668726104733964469" at="84,0,85,0" concept="9" trace="MapSrcListMacro$vC" />
-      <node id="7668726104733964469" at="85,0,86,0" concept="9" trace="LoopMacro$md" />
-      <node id="7668726104733964469" at="86,0,87,0" concept="9" trace="TemplateCallMacro$Iu" />
-      <node id="7668726104733964469" at="90,0,91,0" concept="9" trace="applicableConcept$mVNP" />
-      <node id="7668726104733964469" at="91,0,92,0" concept="9" trace="applicableConcept$ksFC" />
-      <node id="7668726104733964469" at="92,0,93,0" concept="9" trace="applicableConcept$YaXN" />
-      <node id="7668726104733964469" at="93,0,94,0" concept="9" trace="applicableConcept$IlWy" />
-      <node id="7668726104733964469" at="94,0,95,0" concept="9" trace="link$iY3n" />
-      <node id="7668726104733964469" at="95,0,96,0" concept="9" trace="applicableConcept$oE3h" />
-      <node id="7668726104733964469" at="96,0,97,0" concept="9" trace="sourceNodeQuery$PNhv" />
-      <node id="7668726104733964469" at="97,0,98,0" concept="9" trace="sourceNodeQuery$ABzl" />
-      <node id="7668726104733964469" at="98,0,99,0" concept="9" trace="sourceNodesQuery$uLwL" />
-      <node id="7668726104733964469" at="99,0,100,0" concept="9" trace="sourceNodeQuery$Y46t" />
-      <node id="7668726104733964469" at="100,0,101,0" concept="9" trace="sourceNodesQuery$hptk" />
-      <node id="7668726104733964469" at="101,0,102,0" concept="9" trace="sourceNodesQuery$$mF2" />
-      <node id="7668726104733964469" at="102,0,103,0" concept="9" trace="sourceNodeQuery$2dcC" />
+      <node id="7668726104733964469" at="72,0,73,0" concept="9" trace="TemplateDeclaration$5G" />
+      <node id="7668726104733964469" at="73,0,74,0" concept="9" trace="BaseMappingRule$O5" />
+      <node id="7668726104733964469" at="74,0,75,0" concept="9" trace="PatternReduction_MappingRule$VL" />
+      <node id="7668726104733964469" at="75,0,76,0" concept="9" trace="DropRootRule$SN" />
+      <node id="7668726104733964469" at="76,0,77,0" concept="9" trace="DropAttributeRule$mD" />
+      <node id="7668726104733964469" at="77,0,78,0" concept="9" trace="ReferenceReductionRule$t0" />
+      <node id="7668726104733964469" at="78,0,79,0" concept="9" trace="AbstractConceptDeclaration$KA" />
+      <node id="7668726104733964469" at="79,0,80,0" concept="9" trace="RootTemplateAnnotation$9O" />
+      <node id="7668726104733964469" at="80,0,81,0" concept="9" trace="TemplateSwitchMacro$3G" />
+      <node id="7668726104733964469" at="81,0,82,0" concept="9" trace="CopySrcNodeMacro$9T" />
+      <node id="7668726104733964469" at="82,0,83,0" concept="9" trace="CopySrcListMacro$LJ" />
+      <node id="7668726104733964469" at="83,0,84,0" concept="9" trace="MapSrcNodeMacro$p5" />
+      <node id="7668726104733964469" at="84,0,85,0" concept="9" trace="MapSrcListMacro$bk" />
+      <node id="7668726104733964469" at="85,0,86,0" concept="9" trace="LoopMacro$1T" />
+      <node id="7668726104733964469" at="86,0,87,0" concept="9" trace="TemplateCallMacro$qa" />
+      <node id="7668726104733964469" at="90,0,91,0" concept="9" trace="applicableConcept$JSvx" />
+      <node id="7668726104733964469" at="91,0,92,0" concept="9" trace="applicableConcept$Hpnk" />
+      <node id="7668726104733964469" at="92,0,93,0" concept="9" trace="applicableConcept$n7Dv" />
+      <node id="7668726104733964469" at="93,0,94,0" concept="9" trace="applicableConcept$7iCe" />
+      <node id="7668726104733964469" at="94,0,95,0" concept="9" trace="link$FUJ3" />
+      <node id="7668726104733964469" at="95,0,96,0" concept="9" trace="applicableConcept$LAIX" />
+      <node id="7668726104733964469" at="96,0,97,0" concept="9" trace="sourceNodeQuery$eJXb" />
+      <node id="7668726104733964469" at="97,0,98,0" concept="9" trace="sourceNodeQuery$Z$f1" />
+      <node id="7668726104733964469" at="98,0,99,0" concept="9" trace="sourceNodesQuery$RIct" />
+      <node id="7668726104733964469" at="99,0,100,0" concept="9" trace="sourceNodeQuery$n0M9" />
+      <node id="7668726104733964469" at="100,0,101,0" concept="9" trace="sourceNodesQuery$Em90" />
+      <node id="7668726104733964469" at="101,0,102,0" concept="9" trace="sourceNodesQuery$XjmI" />
+      <node id="7668726104733964469" at="102,0,103,0" concept="9" trace="sourceNodeQuery$r9Sk" />
       <node id="1178670301351" at="19,312,22,5" concept="3" />
       <node id="1258575286550861894" at="22,5,25,5" concept="3" />
       <node id="1178670348233" at="25,5,28,5" concept="3" />

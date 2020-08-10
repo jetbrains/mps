@@ -45,13 +45,13 @@ public class RemoveOddAnnotations extends MigrationScriptBase {
           return scope_gqzzto_a0e_0;
         }
       };
-      Sequence.fromIterable(SNodeOperations.ofConcept(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AutoInitDSLClass$sF, false), CONCEPTS.ClassConcept$IY)).where(new IWhereFilter<SNode>() {
+      Sequence.fromIterable(SNodeOperations.ofConcept(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AutoInitDSLClass$Ms, false), CONCEPTS.ClassConcept$bK)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$dI)) != null);
+          return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv)) != null);
         }
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          SNodeOperations.deleteNode(AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$dI)));
+          SNodeOperations.deleteNode(AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv)));
         }
       });
     }
@@ -66,9 +66,9 @@ public class RemoveOddAnnotations extends MigrationScriptBase {
           return scope_gqzzto_a0f_0;
         }
       };
-      return Sequence.fromIterable(SNodeOperations.ofConcept(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AutoInitDSLClass$sF, false), CONCEPTS.ClassConcept$IY)).where(new IWhereFilter<SNode>() {
+      return Sequence.fromIterable(SNodeOperations.ofConcept(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AutoInitDSLClass$Ms, false), CONCEPTS.ClassConcept$bK)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$dI)) != null);
+          return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv)) != null);
         }
       }).select(new ISelector<SNode, Problem>() {
         public Problem select(SNode it) {
@@ -86,8 +86,8 @@ public class RemoveOddAnnotations extends MigrationScriptBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept AutoInitDSLClass$sF = MetaAdapterFactory.getInterfaceConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0xea740fb893a13edL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.AutoInitDSLClass");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept DSLAnnotation$dI = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLAnnotation");
+    /*package*/ static final SInterfaceConcept AutoInitDSLClass$Ms = MetaAdapterFactory.getInterfaceConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0xea740fb893a13edL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.AutoInitDSLClass");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept DSLAnnotation$zv = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLAnnotation");
   }
 }

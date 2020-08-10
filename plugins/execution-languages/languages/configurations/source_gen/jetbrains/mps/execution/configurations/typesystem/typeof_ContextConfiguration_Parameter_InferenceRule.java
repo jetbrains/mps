@@ -26,7 +26,7 @@ public class typeof_ContextConfiguration_Parameter_InferenceRule extends Abstrac
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.ContextConfiguration_Parameter$kc;
+    return CONCEPTS.ContextConfiguration_Parameter$N;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -43,6 +43,6 @@ public class typeof_ContextConfiguration_Parameter_InferenceRule extends Abstrac
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ContextConfiguration_Parameter$kc = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x42b01609553ff07fL, "jetbrains.mps.execution.configurations.structure.ContextConfiguration_Parameter");
+    /*package*/ static final SConcept ContextConfiguration_Parameter$N = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x42b01609553ff07fL, "jetbrains.mps.execution.configurations.structure.ContextConfiguration_Parameter");
   }
 }

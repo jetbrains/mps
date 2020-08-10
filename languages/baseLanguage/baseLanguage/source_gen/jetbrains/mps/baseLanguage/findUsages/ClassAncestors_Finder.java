@@ -23,7 +23,7 @@ public class ClassAncestors_Finder extends GeneratedFinder {
   public ClassAncestors_Finder() {
   }
   public boolean isVisible(SNode node, SearchScope scope) {
-    return SLinkOperations.getTarget(node, LINKS.superclass$7jGM) != null;
+    return SLinkOperations.getTarget(node, LINKS.superclass$Mp9$) != null;
   }
   @Override
   public boolean isVisible(SNode node) {
@@ -39,7 +39,7 @@ public class ClassAncestors_Finder extends GeneratedFinder {
   }
   @Override
   public SAbstractConcept getSConcept() {
-    return CONCEPTS.ClassConcept$IY;
+    return CONCEPTS.ClassConcept$bK;
   }
 
   @Override
@@ -47,10 +47,10 @@ public class ClassAncestors_Finder extends GeneratedFinder {
     try {
       monitor.start("Class Ancestors", 1);
       SNode current = node;
-      if (SNodeOperations.isInstanceOf(node, CONCEPTS.AnonymousClass$aF)) {
-        SNode classifier = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.AnonymousClass$aF), LINKS.classifier$JwxM);
-        if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$IY)) {
-          current = SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$IY);
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.AnonymousClass$Bt)) {
+        SNode classifier = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.AnonymousClass$Bt), LINKS.classifier$q_Y$);
+        if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$bK)) {
+          current = SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$bK);
           callback.onUsageFound(createSingleResult(current));
         }
       }
@@ -58,7 +58,7 @@ public class ClassAncestors_Finder extends GeneratedFinder {
         if (monitor.isCanceled()) {
           return;
         }
-        current = SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(current, LINKS.superclass$7jGM), LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY);
+        current = SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(current, LINKS.superclass$Mp9$), LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK);
         if (current != null) {
           callback.onUsageFound(createSingleResult(current));
         }
@@ -81,13 +81,13 @@ public class ClassAncestors_Finder extends GeneratedFinder {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink superclass$7jGM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
-    /*package*/ static final SReferenceLink classifier$JwxM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink superclass$Mp9$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SReferenceLink classifier$q_Y$ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept AnonymousClass$aF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
   }
 }

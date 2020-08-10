@@ -27,19 +27,19 @@ public class check_NodePropertyConstraint_noDuplications_NonTypesystemRule exten
   public check_NodePropertyConstraint_noDuplications_NonTypesystemRule() {
   }
   public void applyRule(final SNode nodePropertyConstraint, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    Iterable<SNode> siblings = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getParent(nodePropertyConstraint), CONCEPTS.ConceptConstraints$St), LINKS.property$w_EH)).subtract(Sequence.fromIterable(Sequence.<SNode>singleton(nodePropertyConstraint)));
+    Iterable<SNode> siblings = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getParent(nodePropertyConstraint), CONCEPTS.ConceptConstraints$Yt), LINKS.property$FqKH)).subtract(Sequence.fromIterable(Sequence.<SNode>singleton(nodePropertyConstraint)));
 
     for (SNode siblingConstraint : Sequence.fromIterable(siblings)) {
-      if (Objects.equals(SLinkOperations.getTarget(siblingConstraint, LINKS.applicableProperty$uAze), SLinkOperations.getTarget(nodePropertyConstraint, LINKS.applicableProperty$uAze))) {
+      if (Objects.equals(SLinkOperations.getTarget(siblingConstraint, LINKS.applicableProperty$DrDe), SLinkOperations.getTarget(nodePropertyConstraint, LINKS.applicableProperty$DrDe))) {
         {
-          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.applicableProperty$uAze);
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(nodePropertyConstraint, "Duplicate property constraint for '" + SPropertyOperations.getString(SLinkOperations.getTarget(nodePropertyConstraint, LINKS.applicableProperty$uAze), PROPS.name$lA7v) + "' property", "r:00000000-0000-4000-0000-011c89590309(jetbrains.mps.lang.constraints.typesystem)", "876880569411413691", null, errorTarget);
+          final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.applicableProperty$DrDe);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(nodePropertyConstraint, "Duplicate property constraint for '" + SPropertyOperations.getString(SLinkOperations.getTarget(nodePropertyConstraint, LINKS.applicableProperty$DrDe), PROPS.name$MnvL) + "' property", "r:00000000-0000-4000-0000-011c89590309(jetbrains.mps.lang.constraints.typesystem)", "876880569411413691", null, errorTarget);
         }
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.NodePropertyConstraint$pW;
+    return CONCEPTS.NodePropertyConstraint$vW;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -49,16 +49,16 @@ public class check_NodePropertyConstraint_noDuplications_NonTypesystemRule exten
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptConstraints$St = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, "jetbrains.mps.lang.constraints.structure.ConceptConstraints");
-    /*package*/ static final SConcept NodePropertyConstraint$pW = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b2a5eaa48L, "jetbrains.mps.lang.constraints.structure.NodePropertyConstraint");
+    /*package*/ static final SConcept ConceptConstraints$Yt = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, "jetbrains.mps.lang.constraints.structure.ConceptConstraints");
+    /*package*/ static final SConcept NodePropertyConstraint$vW = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b2a5eaa48L, "jetbrains.mps.lang.constraints.structure.NodePropertyConstraint");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink property$w_EH = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a7246dc3dL, "property");
-    /*package*/ static final SReferenceLink applicableProperty$uAze = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b2a5eaa48L, 0x10b2a61697bL, "applicableProperty");
+    /*package*/ static final SContainmentLink property$FqKH = MetaAdapterFactory.getContainmentLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x11a7208faaeL, 0x11a7246dc3dL, "property");
+    /*package*/ static final SReferenceLink applicableProperty$DrDe = MetaAdapterFactory.getReferenceLink(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b2a5eaa48L, 0x10b2a61697bL, "applicableProperty");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

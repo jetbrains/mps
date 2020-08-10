@@ -24,7 +24,7 @@ public class GenUtil {
   public static String getVar(TemplateQueryContext context, SNode node, int skipMacro) {
     List<SNode> macros = ListSequence.fromList(SNodeOperations.getChildren(node)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.NodeMacro$Je);
+        return SNodeOperations.isInstanceOf(it, CONCEPTS.NodeMacro$qU);
       }
     }).toListSequence();
     SNode real = (ListSequence.fromList(macros).count() <= skipMacro ? node : ListSequence.fromList(macros).getElement(skipMacro));
@@ -41,7 +41,7 @@ public class GenUtil {
     return varName;
   }
   public static String saveVar(TemplateQueryContext context, SNode node, String var) {
-    SNode original = (SNodeOperations.isInstanceOf(node, CONCEPTS.NodeMacro$Je) ? SNodeOperations.getParent(node) : node);
+    SNode original = (SNodeOperations.isInstanceOf(node, CONCEPTS.NodeMacro$qU) ? SNodeOperations.getParent(node) : node);
     if (context.getTransientObject(original) == null) {
       // guess, it's a mechanism to access variable name without knowledge of skipMacro value 
       context.putTransientObject(original, var);
@@ -103,8 +103,8 @@ public class GenUtil {
 
   public static boolean isGeneratable(SModel model) {
     SNode node = SModelOperations.getModuleStub(model);
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.Generator$kv)) {
-      return SPropertyOperations.getBoolean(SNodeOperations.cast(node, CONCEPTS.Generator$kv), PROPS.generateTemplates$HSE$);
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.Generator$zR)) {
+      return SPropertyOperations.getBoolean(SNodeOperations.cast(node, CONCEPTS.Generator$zR), PROPS.generateTemplates$FATW);
     }
     return false;
   }
@@ -142,11 +142,11 @@ public class GenUtil {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodeMacro$Je = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro");
-    /*package*/ static final SConcept Generator$kv = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, "jetbrains.mps.lang.project.structure.Generator");
+    /*package*/ static final SConcept NodeMacro$qU = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro");
+    /*package*/ static final SConcept Generator$zR = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, "jetbrains.mps.lang.project.structure.Generator");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty generateTemplates$HSE$ = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x29a5716c5dfed280L, "generateTemplates");
+    /*package*/ static final SProperty generateTemplates$FATW = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x29a5716c5dfed280L, "generateTemplates");
   }
 }

@@ -50,7 +50,7 @@ public final class AddDefaultPropertyAttribute_Intention extends AbstractIntenti
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.DefaultPropertyAttribute$wJ, PROPS.age$Yu2z)) != null)) {
+      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.DefaultPropertyAttribute$Dn, PROPS.age$rQbb)) != null)) {
         return "remove default property attribute";
       } else {
         return "add default property attribute";
@@ -58,11 +58,11 @@ public final class AddDefaultPropertyAttribute_Intention extends AbstractIntenti
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.DefaultPropertyAttribute$wJ, PROPS.age$Yu2z)) != null)) {
-        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.DefaultPropertyAttribute$wJ, PROPS.age$Yu2z)));
+      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.DefaultPropertyAttribute$Dn, PROPS.age$rQbb)) != null)) {
+        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.DefaultPropertyAttribute$Dn, PROPS.age$rQbb)));
       } else {
-        AttributeOperations.setAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.DefaultPropertyAttribute$wJ, PROPS.age$Yu2z), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0x27d5e845b8e8ae64L, "testDefaultEditor.structure.DefaultPropertyAttribute")));
-        SelectionUtil.selectCell(editorContext, AttributeOperations.getAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.DefaultPropertyAttribute$wJ, PROPS.age$Yu2z)), "const");
+        AttributeOperations.setAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.DefaultPropertyAttribute$Dn, PROPS.age$rQbb), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0x27d5e845b8e8ae64L, "testDefaultEditor.structure.DefaultPropertyAttribute")));
+        SelectionUtil.selectCell(editorContext, AttributeOperations.getAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.DefaultPropertyAttribute$Dn, PROPS.age$rQbb)), "const");
       }
 
     }
@@ -73,10 +73,10 @@ public final class AddDefaultPropertyAttribute_Intention extends AbstractIntenti
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DefaultPropertyAttribute$wJ = MetaAdapterFactory.getConcept(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0x27d5e845b8e8ae64L, "testDefaultEditor.structure.DefaultPropertyAttribute");
+    /*package*/ static final SConcept DefaultPropertyAttribute$Dn = MetaAdapterFactory.getConcept(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0x27d5e845b8e8ae64L, "testDefaultEditor.structure.DefaultPropertyAttribute");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty age$Yu2z = MetaAdapterFactory.getProperty(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0xd0768d7cf132939L, 0xd0768d7cf132948L, "age");
+    /*package*/ static final SProperty age$rQbb = MetaAdapterFactory.getProperty(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0xd0768d7cf132939L, 0xd0768d7cf132948L, "age");
   }
 }

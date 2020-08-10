@@ -69,7 +69,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean _StyleParameter_QueryFunction_9uirrd_a0a() {
-    return SNodeOperations.isInstanceOf(getNode(), CONCEPTS.Selectable$tE);
+    return SNodeOperations.isInstanceOf(getNode(), CONCEPTS.Selectable$dR);
   }
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.lang.core.editor.alias");
@@ -80,7 +80,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public ReplaceWith_NonSelectableContainer_cellMenu_9uirrd_a0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return CONCEPTS.NonSelectableContainer$i2;
+      return CONCEPTS.NonSelectableContainer$2f;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -91,7 +91,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public ReplaceWith_SelectableContainer_cellMenu_9uirrd_b0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return CONCEPTS.SelectableContainer$ix;
+      return CONCEPTS.SelectableContainer$2I;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -102,7 +102,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public ReplaceWith_SelectableCustomizedContainer_cellMenu_9uirrd_c0a0() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return CONCEPTS.SelectableCustomizedContainer$3T;
+      return CONCEPTS.SelectableCustomizedContainer$O6;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
@@ -145,10 +145,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.containers$Afiz;
+      return LINKS.containers$oP2K;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.Container$tb;
+      return CONCEPTS.Container$do;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -158,7 +158,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(containersListHandler_9uirrd_c0.this.getNode(), LINKS.containers$Afiz));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(containersListHandler_9uirrd_c0.this.getNode(), LINKS.containers$oP2K));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -209,14 +209,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept Selectable$tE = MetaAdapterFactory.getInterfaceConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6c1b61fd2cd1eeffL, "jetbrains.mps.lang.editor.editorTest.structure.Selectable");
-    /*package*/ static final SConcept NonSelectableContainer$i2 = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6c1b61fd2cd1eefcL, "jetbrains.mps.lang.editor.editorTest.structure.NonSelectableContainer");
-    /*package*/ static final SConcept SelectableContainer$ix = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6c1b61fd2cd1eefdL, "jetbrains.mps.lang.editor.editorTest.structure.SelectableContainer");
-    /*package*/ static final SConcept SelectableCustomizedContainer$3T = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x75a0f7b242cdb65bL, "jetbrains.mps.lang.editor.editorTest.structure.SelectableCustomizedContainer");
-    /*package*/ static final SConcept Container$tb = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6c1b61fd2cd1eefeL, "jetbrains.mps.lang.editor.editorTest.structure.Container");
+    /*package*/ static final SInterfaceConcept Selectable$dR = MetaAdapterFactory.getInterfaceConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6c1b61fd2cd1eeffL, "jetbrains.mps.lang.editor.editorTest.structure.Selectable");
+    /*package*/ static final SConcept NonSelectableContainer$2f = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6c1b61fd2cd1eefcL, "jetbrains.mps.lang.editor.editorTest.structure.NonSelectableContainer");
+    /*package*/ static final SConcept SelectableContainer$2I = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6c1b61fd2cd1eefdL, "jetbrains.mps.lang.editor.editorTest.structure.SelectableContainer");
+    /*package*/ static final SConcept SelectableCustomizedContainer$O6 = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x75a0f7b242cdb65bL, "jetbrains.mps.lang.editor.editorTest.structure.SelectableCustomizedContainer");
+    /*package*/ static final SConcept Container$do = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6c1b61fd2cd1eefeL, "jetbrains.mps.lang.editor.editorTest.structure.Container");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink containers$Afiz = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6c1b61fd2cd1eefeL, 0x6c1b61fd2cd1ef02L, "containers");
+    /*package*/ static final SContainmentLink containers$oP2K = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6c1b61fd2cd1eefeL, 0x6c1b61fd2cd1ef02L, "containers");
   }
 }

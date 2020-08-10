@@ -54,29 +54,29 @@ public final class SimpleShortcutChange__BehaviorDescriptor extends BaseBHDescri
       public void visit(SEnumerationLiteral it) {
         {
           final String currentEnum = Keymap_MigrationUtils.value(it);
-          final Wrappers._T<SNode> keyMap = new Wrappers._T<SNode>(ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.KeymapChangesDeclaration$TA)).findFirst(new IWhereFilter<SNode>() {
+          final Wrappers._T<SNode> keyMap = new Wrappers._T<SNode>(ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.KeymapChangesDeclaration$QD)).findFirst(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return Keymap_MigrationUtils.value(SPropertyOperations.getEnum(it, PROPS.keymap$APmr)).equals(currentEnum);
+              return Keymap_MigrationUtils.value(SPropertyOperations.getEnum(it, PROPS.keymap$Oqju)).equals(currentEnum);
             }
           }));
           if ((keyMap.value == null)) {
             keyMap.value = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, "jetbrains.mps.lang.plugin.structure.KeymapChangesDeclaration"));
             // Enum value has not got any constraint, so it needs to be converted to valid identifier 
-            SPropertyOperations.set(keyMap.value, PROPS.name$lA7v, NameUtil.toValidCamelIdentifier(Keymap_MigrationUtils.value(it)));
-            SPropertyOperations.setEnum(keyMap.value, PROPS.keymap$APmr, it);
+            SPropertyOperations.set(keyMap.value, PROPS.name$MnvL, NameUtil.toValidCamelIdentifier(Keymap_MigrationUtils.value(it)));
+            SPropertyOperations.setEnum(keyMap.value, PROPS.keymap$Oqju, it);
             // If IdeaConfigurationXml exists, take it in account 
-            SPropertyOperations.set(keyMap.value, PROPS.isPluginXmlKeymap$Bh6N, ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.IdeaConfigurationXml$ry)).isNotEmpty());
-            if (ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.IdeaConfigurationXml$ry)).isNotEmpty()) {
-              ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.IdeaConfigurationXml$ry)).where(new IWhereFilter<SNode>() {
+            SPropertyOperations.set(keyMap.value, PROPS.isPluginXmlKeymap$OQ3Q, ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.IdeaConfigurationXml$o_)).isNotEmpty());
+            if (ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.IdeaConfigurationXml$o_)).isNotEmpty()) {
+              ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.IdeaConfigurationXml$o_)).where(new IWhereFilter<SNode>() {
                 public boolean accept(SNode it) {
-                  return (SLinkOperations.getTarget(it, LINKS.actions$WI01) != null);
+                  return (SLinkOperations.getTarget(it, LINKS.actions$aiX4) != null);
                 }
               }).visitAll(new IVisitor<SNode>() {
                 public void visit(SNode it) {
                   {
                     SNode keymapRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa87eL, "jetbrains.mps.lang.plugin.structure.KeymapRef"));
-                    SLinkOperations.setTarget(keymapRef, LINKS.keymap$u030, keyMap.value);
-                    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.actions$WI01), LINKS.keymapsRef$rgym)).addElement(keymapRef);
+                    SLinkOperations.setTarget(keymapRef, LINKS.keymap$F_03, keyMap.value);
+                    ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(it, LINKS.actions$aiX4), LINKS.keymapsRef$CPvp)).addElement(keymapRef);
                   }
                 }
               });
@@ -88,12 +88,12 @@ public final class SimpleShortcutChange__BehaviorDescriptor extends BaseBHDescri
 
           // Have to copy node, because can't add same node to several concepts as child 
           _shortcutChange.value = SNodeOperations.copyNode(_shortcutChange.value);
-          ListSequence.fromList(SLinkOperations.getChildren(keyMap.value, LINKS.shortcutChange$zt21)).addElement(_shortcutChange.value);
+          ListSequence.fromList(SLinkOperations.getChildren(keyMap.value, LINKS.shortcutChange$L1Z4)).addElement(_shortcutChange.value);
 
           EditorPanelManager editorPanelManager = editorContext.getEditorPanelManager();
           if (editorPanelManager != null) {
             // Focus on last keystroke as newly added will be last 
-            editorPanelManager.openEditor(ListSequence.fromList(SLinkOperations.getChildren(_shortcutChange.value, LINKS.keystroke$_Wm7)).last());
+            editorPanelManager.openEditor(ListSequence.fromList(SLinkOperations.getChildren(_shortcutChange.value, LINKS.keystroke$Nxja)).last());
           }
         }
       }
@@ -148,21 +148,21 @@ public final class SimpleShortcutChange__BehaviorDescriptor extends BaseBHDescri
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept KeymapChangesDeclaration$TA = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, "jetbrains.mps.lang.plugin.structure.KeymapChangesDeclaration");
-    /*package*/ static final SConcept IdeaConfigurationXml$ry = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7d36ab0e3b095aL, "jetbrains.mps.lang.plugin.structure.IdeaConfigurationXml");
+    /*package*/ static final SConcept KeymapChangesDeclaration$QD = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, "jetbrains.mps.lang.plugin.structure.KeymapChangesDeclaration");
+    /*package*/ static final SConcept IdeaConfigurationXml$o_ = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7d36ab0e3b095aL, "jetbrains.mps.lang.plugin.structure.IdeaConfigurationXml");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty keymap$APmr = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, 0x15afe07f2a9bb0c9L, "keymap");
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isPluginXmlKeymap$Bh6N = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, 0x77ff578948f6b772L, "isPluginXmlKeymap");
+    /*package*/ static final SProperty keymap$Oqju = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, 0x15afe07f2a9bb0c9L, "keymap");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isPluginXmlKeymap$OQ3Q = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, 0x77ff578948f6b772L, "isPluginXmlKeymap");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actions$WI01 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7d36ab0e3b095aL, 0x2c7d36ab0e3b095cL, "actions");
-    /*package*/ static final SReferenceLink keymap$u030 = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa87eL, 0x498be7ea73fa87fL, "keymap");
-    /*package*/ static final SContainmentLink keymapsRef$rgym = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa71eL, 0x498be7ea73fa880L, "keymapsRef");
-    /*package*/ static final SContainmentLink shortcutChange$zt21 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, 0x15afe07f2a9bb077L, "shortcutChange");
-    /*package*/ static final SContainmentLink keystroke$_Wm7 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb076L, 0x15afe07f2a9bb07eL, "keystroke");
+    /*package*/ static final SContainmentLink actions$aiX4 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x2c7d36ab0e3b095aL, 0x2c7d36ab0e3b095cL, "actions");
+    /*package*/ static final SReferenceLink keymap$F_03 = MetaAdapterFactory.getReferenceLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa87eL, 0x498be7ea73fa87fL, "keymap");
+    /*package*/ static final SContainmentLink keymapsRef$CPvp = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa71eL, 0x498be7ea73fa880L, "keymapsRef");
+    /*package*/ static final SContainmentLink shortcutChange$L1Z4 = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb075L, 0x15afe07f2a9bb077L, "shortcutChange");
+    /*package*/ static final SContainmentLink keystroke$Nxja = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb076L, 0x15afe07f2a9bb07eL, "keystroke");
   }
 }

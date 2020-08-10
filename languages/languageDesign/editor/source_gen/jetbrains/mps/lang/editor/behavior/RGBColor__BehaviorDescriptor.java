@@ -35,7 +35,7 @@ public final class RGBColor__BehaviorDescriptor extends BaseBHDescriptor {
     return false;
   }
   /*package*/ static String getRGBValue_idhPj_Kt2(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.value$gccz);
+    return SPropertyOperations.getString(__thisNode__, PROPS.value$kuoa);
   }
 
   /*package*/ RGBColor__BehaviorDescriptor() {
@@ -87,6 +87,6 @@ public final class RGBColor__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$gccz = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11d52e2b1a0L, 0x11d52e5171bL, "value");
+    /*package*/ static final SProperty value$kuoa = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11d52e2b1a0L, 0x11d52e5171bL, "value");
   }
 }

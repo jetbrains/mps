@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class AbstractFunctionType_Constraints extends BaseConstraintsDescriptor {
   public AbstractFunctionType_Constraints() {
-    super(CONCEPTS.AbstractFunctionType$Cr);
+    super(CONCEPTS.AbstractFunctionType$w5);
   }
 
   @Override
@@ -43,6 +43,6 @@ public class AbstractFunctionType_Constraints extends BaseConstraintsDescriptor 
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:00000000-0000-4000-0000-011c89590334(jetbrains.mps.baseLanguage.closures.constraints)", "1227128029536560043");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractFunctionType$Cr = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x4de23a15f719357dL, "jetbrains.mps.baseLanguage.closures.structure.AbstractFunctionType");
+    /*package*/ static final SConcept AbstractFunctionType$w5 = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x4de23a15f719357dL, "jetbrains.mps.baseLanguage.closures.structure.AbstractFunctionType");
   }
 }

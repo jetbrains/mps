@@ -53,48 +53,48 @@ public final class JUnit4TestCaseRef__BehaviorDescriptor extends BaseBHDescripto
   }
 
   /*package*/ static SNode getTargetTest_id7BTZ519MNAR(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.klass$_suC);
+    return SLinkOperations.getTarget(__thisNode__, LINKS.klass$R4bU);
   }
   /*package*/ static boolean isSame_id1ouvi_ymQH(@NotNull SNode __thisNode__, SNode testRef) {
-    return SLinkOperations.getTarget(SNodeOperations.as(testRef, CONCEPTS.JUnit4TestCaseRef$Pd), LINKS.klass$_suC) == SLinkOperations.getTarget(__thisNode__, LINKS.klass$_suC);
+    return SLinkOperations.getTarget(SNodeOperations.as(testRef, CONCEPTS.JUnit4TestCaseRef$yv), LINKS.klass$R4bU) == SLinkOperations.getTarget(__thisNode__, LINKS.klass$R4bU);
   }
   /*package*/ static String fqClassName_id2$98zG5liRT(@NotNull SNode __thisNode__) {
-    return (String) UnitConcept__BehaviorDescriptor.getUnitName_id4pl5GY7LKmR.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.klass$_suC));
+    return (String) UnitConcept__BehaviorDescriptor.getUnitName_id4pl5GY7LKmR.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.klass$R4bU));
   }
   /*package*/ static Iterable<String> testNames_id3z1mdFUF$j3(@NotNull SNode __thisNode__) {
-    final SNode testAnn = SLinkOperations.getTarget(_quotation_createNode_856esj_a0a0a3(), LINKS.annotation$lXdy);
-    final SNode ignoreAnn = SLinkOperations.getTarget(_quotation_createNode_856esj_a0a1a3(), LINKS.annotation$lXdy);
+    final SNode testAnn = SLinkOperations.getTarget(_quotation_createNode_856esj_a0a0a3(), LINKS.annotation$12Ek);
+    final SNode ignoreAnn = SLinkOperations.getTarget(_quotation_createNode_856esj_a0a1a3(), LINKS.annotation$12Ek);
 
-    return Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.klass$_suC))).where(new IWhereFilter<SNode>() {
+    return Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.klass$R4bU))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode m) {
-        return ListSequence.fromList(SLinkOperations.getChildren(m, LINKS.annotation$4YGW)).any(new IWhereFilter<SNode>() {
+        return ListSequence.fromList(SLinkOperations.getChildren(m, LINKS.annotation$K49I)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode mann) {
-            return SLinkOperations.getTarget(mann, LINKS.annotation$lXdy) == testAnn;
+            return SLinkOperations.getTarget(mann, LINKS.annotation$12Ek) == testAnn;
           }
-        }) && !(ListSequence.fromList(SLinkOperations.getChildren(m, LINKS.annotation$4YGW)).any(new IWhereFilter<SNode>() {
+        }) && !(ListSequence.fromList(SLinkOperations.getChildren(m, LINKS.annotation$K49I)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode mann) {
-            return SLinkOperations.getTarget(mann, LINKS.annotation$lXdy) == ignoreAnn;
+            return SLinkOperations.getTarget(mann, LINKS.annotation$12Ek) == ignoreAnn;
           }
         }));
       }
     }).select(new ISelector<SNode, String>() {
       public String select(SNode m) {
-        return SPropertyOperations.getString(m, PROPS.name$lA7v);
+        return SPropertyOperations.getString(m, PROPS.name$MnvL);
       }
     });
   }
   /*package*/ static Iterable<SNode> getTestClassesForModule_id1k5vvhz$GBa(@NotNull SAbstractConcept __thisConcept__, SNode module) {
     return Sequence.fromIterable(ModuleSuite__BehaviorDescriptor.models_id173Z5qAOyPn.invoke(module)).translate(new ITranslator2<SModel, SNode>() {
       public Iterable<SNode> translate(SModel it) {
-        return ListSequence.fromList(SModelOperations.roots(((SModel) it), CONCEPTS.ClassConcept$IY)).where(new IWhereFilter<SNode>() {
+        return ListSequence.fromList(SModelOperations.roots(((SModel) it), CONCEPTS.ClassConcept$bK)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(it)).translate(new ITranslator2<SNode, SNode>() {
               public Iterable<SNode> translate(SNode m) {
-                return SLinkOperations.getChildren(m, LINKS.annotation$4YGW);
+                return SLinkOperations.getChildren(m, LINKS.annotation$K49I);
               }
             }).any(new IWhereFilter<SNode>() {
               public boolean accept(SNode ann) {
-                return SLinkOperations.hasPointer(ann, LINKS.annotation$lXdy, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~Test"));
+                return SLinkOperations.hasPointer(ann, LINKS.annotation$12Ek, new SNodePointer("49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)", "~Test"));
               }
             });
           }
@@ -172,17 +172,17 @@ public final class JUnit4TestCaseRef__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink klass$_suC = MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb8L, 0x3e81ed1e2be77cc1L, "klass");
-    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
-    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SReferenceLink klass$R4bU = MetaAdapterFactory.getReferenceLink(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb8L, 0x3e81ed1e2be77cc1L, "klass");
+    /*package*/ static final SReferenceLink annotation$12Ek = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink annotation$K49I = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept JUnit4TestCaseRef$Pd = MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb8L, "jetbrains.mps.testbench.suite.structure.JUnit4TestCaseRef");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept JUnit4TestCaseRef$yv = MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb8L, "jetbrains.mps.testbench.suite.structure.JUnit4TestCaseRef");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

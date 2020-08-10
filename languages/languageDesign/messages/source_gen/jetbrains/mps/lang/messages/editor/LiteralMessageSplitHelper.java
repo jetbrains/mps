@@ -36,8 +36,8 @@ public final class LiteralMessageSplitHelper {
   public void insertMacro(SNode target) {
     SNode macro = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e41e4a2L, "jetbrains.mps.lang.messages.structure.MacroMessageExpression"));
     if ((target != null)) {
-      SLinkOperations.setTarget(macro, LINKS.defRef$6TXJ, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, "jetbrains.mps.lang.context.defs.structure.TypedDefReference")));
-      SLinkOperations.setTarget(SLinkOperations.getTarget(macro, LINKS.defRef$6TXJ), LINKS.declaration$VTET, target);
+      SLinkOperations.setTarget(macro, LINKS.defRef$oUPH, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, "jetbrains.mps.lang.context.defs.structure.TypedDefReference")));
+      SLinkOperations.setTarget(SLinkOperations.getTarget(macro, LINKS.defRef$oUPH), LINKS.declaration$xU6a, target);
     }
     insertMessageExpr(macro);
   }
@@ -48,7 +48,7 @@ public final class LiteralMessageSplitHelper {
       EditorCell selectedCell = ((SingularSelection) selection).getEditorCell();
       if (selectedCell instanceof EditorCell_Label) {
         int splitPosition = ((EditorCell_Label) selectedCell).getCaretPosition();
-        String messageToSplit = SPropertyOperations.getString(myMessage, PROPS.message$cm50);
+        String messageToSplit = SPropertyOperations.getString(myMessage, PROPS.message$umWY);
         List<SNode> messages = ListSequence.fromList(new ArrayList<SNode>());
         if (splitPosition > 0) {
           ListSequence.fromList(messages).addElement(createLiteralMessageExpression_fsei94_a0a0a3a1a1a7(messageToSplit.substring(0, splitPosition)));
@@ -59,8 +59,8 @@ public final class LiteralMessageSplitHelper {
         if (messageToSplit != null && splitPosition < messageToSplit.length()) {
           ListSequence.fromList(messages).addElement(createLiteralMessageExpression_fsei94_a0a0a5a1a1a7(messageToSplit.substring(splitPosition)));
         }
-        if (SNodeOperations.hasRole(myMessage, LINKS.part$2Bxx)) {
-          SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(myMessage), CONCEPTS.CombinedMessageExpression$e_), LINKS.part$2Bxx).addAll(SNodeOperations.getIndexInParent(myMessage), messages);
+        if (SNodeOperations.hasRole(myMessage, LINKS.part$kCpv)) {
+          SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(myMessage), CONCEPTS.CombinedMessageExpression$6z), LINKS.part$kCpv).addAll(SNodeOperations.getIndexInParent(myMessage), messages);
           SNodeOperations.deleteNode(myMessage);
         } else {
           SNodeOperations.replaceWithAnother(myMessage, createCombinedMessageExpression_fsei94_a0a0a0g0b0b0h(messages));
@@ -72,34 +72,34 @@ public final class LiteralMessageSplitHelper {
     }
   }
   private static SNode createLiteralMessageExpression_fsei94_a0a0a3a1a1a7(String p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$Ga);
-    n0.setProperty(PROPS.message$cm50, p0);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$$8);
+    n0.setProperty(PROPS.message$umWY, p0);
     return n0.getResult();
   }
   private static SNode createLiteralMessageExpression_fsei94_a0a0a5a1a1a7(String p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$Ga);
-    n0.setProperty(PROPS.message$cm50, p0);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.LiteralMessageExpression$$8);
+    n0.setProperty(PROPS.message$umWY, p0);
     return n0.getResult();
   }
   private static SNode createCombinedMessageExpression_fsei94_a0a0a0g0b0b0h(Iterable<? extends SNode> p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CombinedMessageExpression$e_);
-    n0.forChild(LINKS.part$2Bxx).initNodeList(p0, CONCEPTS.MessageExpression$FF);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.CombinedMessageExpression$6z);
+    n0.forChild(LINKS.part$kCpv).initNodeList(p0, CONCEPTS.MessageExpression$zD);
     return n0.getResult();
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink defRef$6TXJ = MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e41e4a2L, 0x25b197ac2c49e208L, "defRef");
-    /*package*/ static final SReferenceLink declaration$VTET = MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration");
-    /*package*/ static final SContainmentLink part$2Bxx = MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, 0x48f860fc0e404561L, "part");
+    /*package*/ static final SContainmentLink defRef$oUPH = MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e41e4a2L, 0x25b197ac2c49e208L, "defRef");
+    /*package*/ static final SReferenceLink declaration$xU6a = MetaAdapterFactory.getReferenceLink(0xea3159bff48e4720L, 0xbde286dba75f0d34L, 0x6530303593574311L, 0x6530303593578e5eL, "declaration");
+    /*package*/ static final SContainmentLink part$kCpv = MetaAdapterFactory.getContainmentLink(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, 0x48f860fc0e404561L, "part");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty message$cm50 = MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, 0x48f860fc0e362dc6L, "message");
+    /*package*/ static final SProperty message$umWY = MetaAdapterFactory.getProperty(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, 0x48f860fc0e362dc6L, "message");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CombinedMessageExpression$e_ = MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, "jetbrains.mps.lang.messages.structure.CombinedMessageExpression");
-    /*package*/ static final SConcept LiteralMessageExpression$Ga = MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, "jetbrains.mps.lang.messages.structure.LiteralMessageExpression");
-    /*package*/ static final SConcept MessageExpression$FF = MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc4L, "jetbrains.mps.lang.messages.structure.MessageExpression");
+    /*package*/ static final SConcept CombinedMessageExpression$6z = MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e40455fL, "jetbrains.mps.lang.messages.structure.CombinedMessageExpression");
+    /*package*/ static final SConcept LiteralMessageExpression$$8 = MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc5L, "jetbrains.mps.lang.messages.structure.LiteralMessageExpression");
+    /*package*/ static final SConcept MessageExpression$zD = MetaAdapterFactory.getConcept(0xad93155d79b24759L, 0xb10c55123e763903L, 0x48f860fc0e362dc4L, "jetbrains.mps.lang.messages.structure.MessageExpression");
   }
 }

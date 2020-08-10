@@ -77,7 +77,7 @@ public class NTCD_add_final_Contribution extends TransformationMenuBase {
   public class TMP_Group_d177af_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleComponentDeclaration$lm) && !(SPropertyOperations.getBoolean(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleComponentDeclaration$lm), PROPS.final$qIXA));
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleComponentDeclaration$r7) && !(SPropertyOperations.getBoolean(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleComponentDeclaration$r7), PROPS.final$G43n));
     }
 
     @NotNull
@@ -93,7 +93,7 @@ public class NTCD_add_final_Contribution extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_d177af_a0a(), CONCEPTS.NamedTupleComponentDeclaration$lm));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_d177af_a0a(), CONCEPTS.NamedTupleComponentDeclaration$r7));
     }
     private class TMP_Action_d177af_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -133,7 +133,7 @@ public class NTCD_add_final_Contribution extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SPropertyOperations.assign(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleComponentDeclaration$lm), PROPS.final$qIXA, true);
+          SPropertyOperations.assign(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.NamedTupleComponentDeclaration$r7), PROPS.final$G43n, true);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
@@ -141,7 +141,7 @@ public class NTCD_add_final_Contribution extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.NamedTupleComponentDeclaration$lm;
+          return CONCEPTS.NamedTupleComponentDeclaration$r7;
         }
 
 
@@ -152,7 +152,7 @@ public class NTCD_add_final_Contribution extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.NamedTupleComponentDeclaration$lm;
+          SAbstractConcept outputConcept = CONCEPTS.NamedTupleComponentDeclaration$r7;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -164,10 +164,10 @@ public class NTCD_add_final_Contribution extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NamedTupleComponentDeclaration$lm = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleComponentDeclaration");
+    /*package*/ static final SConcept NamedTupleComponentDeclaration$r7 = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleComponentDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty final$qIXA = MetaAdapterFactory.getProperty(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, 0x120cda6c3beL, "final");
+    /*package*/ static final SProperty final$G43n = MetaAdapterFactory.getProperty(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, 0x120cda6c3beL, "final");
   }
 }

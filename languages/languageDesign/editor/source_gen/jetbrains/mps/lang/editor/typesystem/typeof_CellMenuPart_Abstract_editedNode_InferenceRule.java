@@ -21,7 +21,7 @@ public class typeof_CellMenuPart_Abstract_editedNode_InferenceRule extends Abstr
   public typeof_CellMenuPart_Abstract_editedNode_InferenceRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode hostComponent = SNodeOperations.getNodeAncestor(node, CONCEPTS.AbstractComponent$Ng, false, false);
+    SNode hostComponent = SNodeOperations.getNodeAncestor(node, CONCEPTS.AbstractComponent$YR, false, false);
     SNode editedConcept = AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(hostComponent);
     {
       SNode _nodeToCheck_1029348928467 = node;
@@ -30,7 +30,7 @@ public class typeof_CellMenuPart_Abstract_editedNode_InferenceRule extends Abstr
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.CellMenuPart_Abstract_editedNode$AC;
+    return CONCEPTS.CellMenuPart_Abstract_editedNode$Mf;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -47,7 +47,7 @@ public class typeof_CellMenuPart_Abstract_editedNode_InferenceRule extends Abstr
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractComponent$Ng = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, "jetbrains.mps.lang.editor.structure.AbstractComponent");
-    /*package*/ static final SConcept CellMenuPart_Abstract_editedNode$AC = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10eecc9de0fL, "jetbrains.mps.lang.editor.structure.CellMenuPart_Abstract_editedNode");
+    /*package*/ static final SConcept AbstractComponent$YR = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, "jetbrains.mps.lang.editor.structure.AbstractComponent");
+    /*package*/ static final SConcept CellMenuPart_Abstract_editedNode$Mf = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10eecc9de0fL, "jetbrains.mps.lang.editor.structure.CellMenuPart_Abstract_editedNode");
   }
 }

@@ -29,12 +29,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ComponentUsage_Constraints extends BaseConstraintsDescriptor {
   public ComponentUsage_Constraints() {
-    super(CONCEPTS.ComponentUsage$e0);
+    super(CONCEPTS.ComponentUsage$p$);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.usedComponent$b4lB, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.usedComponent$uCxb, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -49,22 +49,22 @@ public class ComponentUsage_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            Iterable<SNode> unusedComponents = ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.Component$HX)).where(new IWhereFilter<SNode>() {
+            Iterable<SNode> unusedComponents = ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.Component$Tx)).where(new IWhereFilter<SNode>() {
               public boolean accept(final SNode b) {
-                return ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.ComponentUsage$e0)).where(new IWhereFilter<SNode>() {
+                return ListSequence.fromList(SModelOperations.nodes(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.ComponentUsage$p$)).where(new IWhereFilter<SNode>() {
                   public boolean accept(SNode u) {
                     return !(Objects.equals(u, _context.getContextNode()));
                   }
                 }).all(new IWhereFilter<SNode>() {
                   public boolean accept(SNode u) {
-                    return !(Objects.equals(SLinkOperations.getTarget(u, LINKS.usedComponent$b4lB), b));
+                    return !(Objects.equals(SLinkOperations.getTarget(u, LINKS.usedComponent$uCxb), b));
                   }
                 });
               }
             });
             return new ListScope(unusedComponents) {
               public String getName(SNode child) {
-                return (String) Component__BehaviorDescriptor.fullName_id4Vpsm2KEoLo.invoke(SNodeOperations.cast(child, CONCEPTS.Component$HX));
+                return (String) Component__BehaviorDescriptor.fullName_id4Vpsm2KEoLo.invoke(SNodeOperations.cast(child, CONCEPTS.Component$Tx));
               }
             };
           }
@@ -78,11 +78,11 @@ public class ComponentUsage_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_4swebx_a0a0a0a0a1a0a0a0c = new SNodePointer("r:7e1c7518-df7a-4f22-84b2-a5e68261264a(jetbrains.mps.samples.languagePatterns.Basic.constraints)", "6836281137582847690");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ComponentUsage$e0 = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x4ed97160b0a7fb71L, "jetbrains.mps.samples.languagePatterns.Basic.structure.ComponentUsage");
-    /*package*/ static final SConcept Component$HX = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x4ed97160b0a7fa2aL, "jetbrains.mps.samples.languagePatterns.Basic.structure.Component");
+    /*package*/ static final SConcept ComponentUsage$p$ = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x4ed97160b0a7fb71L, "jetbrains.mps.samples.languagePatterns.Basic.structure.ComponentUsage");
+    /*package*/ static final SConcept Component$Tx = MetaAdapterFactory.getConcept(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x4ed97160b0a7fa2aL, "jetbrains.mps.samples.languagePatterns.Basic.structure.Component");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink usedComponent$b4lB = MetaAdapterFactory.getReferenceLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x4ed97160b0a7fb71L, 0x4ed97160b0a7fba5L, "usedComponent");
+    /*package*/ static final SReferenceLink usedComponent$uCxb = MetaAdapterFactory.getReferenceLink(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x4ed97160b0a7fb71L, 0x4ed97160b0a7fba5L, "usedComponent");
   }
 }

@@ -49,7 +49,7 @@ public final class Image__BehaviorDescriptor extends BaseBHDescriptor {
     if (macroHelper == null) {
       return false;
     }
-    String path = macroHelper.expandPath(SPropertyOperations.getString(__thisNode__, PROPS.file$KTuA));
+    String path = macroHelper.expandPath(SPropertyOperations.getString(__thisNode__, PROPS.file$He6o));
     if (path == null) {
       return false;
     }
@@ -67,7 +67,7 @@ public final class Image__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static byte[] getImageForGeneration_id2p1v3tObywX(@NotNull final SNode __thisNode__) {
     return IconCreationUtil.drawIcon(new Consumer<IconCreationUtil.DrawContext>() {
       public void consume(IconCreationUtil.DrawContext dc) {
-        new ImageIcon(SPropertyOperations.getString(__thisNode__, PROPS.file$KTuA)).paintIcon(null, dc.g, 0, 0);
+        new ImageIcon(SPropertyOperations.getString(__thisNode__, PROPS.file$He6o)).paintIcon(null, dc.g, 0, 0);
       }
     });
   }
@@ -121,6 +121,6 @@ public final class Image__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty file$KTuA = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0xb8b96b5078f3367L, 0xb8b96b5078f33bbL, "file");
+    /*package*/ static final SProperty file$He6o = MetaAdapterFactory.getProperty(0x982eb8df2c964bd7L, 0x996311712ea622e5L, 0xb8b96b5078f3367L, 0xb8b96b5078f33bbL, "file");
   }
 }

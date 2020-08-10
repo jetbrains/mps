@@ -42,33 +42,33 @@ public final class ModelName__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode create_id_GDk1qZ6bz(@NotNull SAbstractConcept __thisConcept__, SModel where, String value) {
-    SNode rv = SModelOperations.createNewNode(where, null, CONCEPTS.ModelName$Ux);
-    SPropertyOperations.assign(rv, PROPS.value$SXgw, value);
+    SNode rv = SModelOperations.createNewNode(where, null, CONCEPTS.ModelName$A4);
+    SPropertyOperations.assign(rv, PROPS.value$NlW3, value);
     return rv;
   }
   /*package*/ static SNode create_id_GDk1qZdiH(@NotNull SAbstractConcept __thisConcept__, SModel where, SModelName modelName) {
-    SNode rv = SModelOperations.createNewNode(where, null, CONCEPTS.ModelName$Ux);
-    SPropertyOperations.assign(rv, PROPS.value$SXgw, modelName.getValue());
+    SNode rv = SModelOperations.createNewNode(where, null, CONCEPTS.ModelName$A4);
+    SPropertyOperations.assign(rv, PROPS.value$NlW3, modelName.getValue());
     return rv;
   }
   /*package*/ static String getNamespace_id_GDk1qYZiR(@NotNull SNode __thisNode__) {
-    return new SModelName(SPropertyOperations.getString(__thisNode__, PROPS.value$SXgw)).getNamespace();
+    return new SModelName(SPropertyOperations.getString(__thisNode__, PROPS.value$NlW3)).getNamespace();
   }
   /*package*/ static String getStereotype_id_GDk1qZ1fV(@NotNull SNode __thisNode__) {
-    return new SModelName(SPropertyOperations.getString(__thisNode__, PROPS.value$SXgw)).getStereotype();
+    return new SModelName(SPropertyOperations.getString(__thisNode__, PROPS.value$NlW3)).getStereotype();
   }
   /*package*/ static String getLongName_id_GDk1qZ1tf(@NotNull SNode __thisNode__) {
-    return new SModelName(SPropertyOperations.getString(__thisNode__, PROPS.value$SXgw)).getLongName();
+    return new SModelName(SPropertyOperations.getString(__thisNode__, PROPS.value$NlW3)).getLongName();
   }
   /*package*/ static String getSimpleName_id_GDk1qZ1ND(@NotNull SNode __thisNode__) {
-    return new SModelName(SPropertyOperations.getString(__thisNode__, PROPS.value$SXgw)).getSimpleName();
+    return new SModelName(SPropertyOperations.getString(__thisNode__, PROPS.value$NlW3)).getSimpleName();
   }
   /*package*/ static SModelName getNameObject_id2bm9xT0zK3P(@NotNull SNode __thisNode__) {
-    return new SModelName(SPropertyOperations.getString(__thisNode__, PROPS.value$SXgw));
+    return new SModelName(SPropertyOperations.getString(__thisNode__, PROPS.value$NlW3));
   }
   /*package*/ static void updateValue_id2bm9xT0zPoJ(@NotNull SNode __thisNode__, SModelName modelName) {
     // I don't expect to get null value here, if null comes, it's better to fail right away, rather than unexpectedly on later getNamespace()  
-    SPropertyOperations.assign(__thisNode__, PROPS.value$SXgw, modelName.getValue());
+    SPropertyOperations.assign(__thisNode__, PROPS.value$NlW3, modelName.getValue());
   }
 
   /*package*/ ModelName__BehaviorDescriptor() {
@@ -133,10 +133,10 @@ public final class ModelName__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ModelName$Ux = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x96ca5405afbf490L, "jetbrains.mps.lang.modelapi.structure.ModelName");
+    /*package*/ static final SConcept ModelName$A4 = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x96ca5405afbf490L, "jetbrains.mps.lang.modelapi.structure.ModelName");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$SXgw = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x96ca5405afbf490L, 0x96ca5405afbf491L, "value");
+    /*package*/ static final SProperty value$NlW3 = MetaAdapterFactory.getProperty(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x96ca5405afbf490L, 0x96ca5405afbf491L, "value");
   }
 }

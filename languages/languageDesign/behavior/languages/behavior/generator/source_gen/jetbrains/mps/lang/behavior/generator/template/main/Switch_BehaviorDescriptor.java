@@ -43,7 +43,7 @@ public class Switch_BehaviorDescriptor extends TemplateSwitchBase implements Tem
   }
   /*package*/ final class ReductionRule0 extends ReductionRuleBase implements TemplateRuleWithCondition {
     public ReductionRule0() {
-      super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1570228009929814969"), CONCEPTS.ModelReference$sT, false);
+      super(new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1570228009929814969"), CONCEPTS.ModelReference$Gh, false);
     }
     @Override
     public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
@@ -185,6 +185,6 @@ public class Switch_BehaviorDescriptor extends TemplateSwitchBase implements Tem
   private static final SNodePointer templateNode_q5kmqu_c0a0a1a1a1a1a1a1a1a2a2a2f = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4147950839246919590");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ModelReference$sT = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe27L, "jetbrains.mps.lang.project.structure.ModelReference");
+    /*package*/ static final SConcept ModelReference$Gh = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe27L, "jetbrains.mps.lang.project.structure.ModelReference");
   }
 }

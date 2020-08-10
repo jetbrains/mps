@@ -36,26 +36,26 @@ public final class ExpressionStatement__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static boolean canServeAsReturn_idi2fkDTg(@NotNull SNode __thisNode__) {
-    SNode methodLike = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IMethodLike$kl, false, false);
-    if (SNodeOperations.isInstanceOf(methodLike, CONCEPTS.IStatementListContainer$4L) && (boolean) IStatementListContainer__BehaviorDescriptor.isExecuteSynchronous_idhTIpcC8.invoke(SNodeOperations.cast(methodLike, CONCEPTS.IStatementListContainer$4L))) {
+    SNode methodLike = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IMethodLike$L7, false, false);
+    if (SNodeOperations.isInstanceOf(methodLike, CONCEPTS.IStatementListContainer$xz) && (boolean) IStatementListContainer__BehaviorDescriptor.isExecuteSynchronous_idhTIpcC8.invoke(SNodeOperations.cast(methodLike, CONCEPTS.IStatementListContainer$xz))) {
       return false;
     }
 
     // no return inside void methods or constructors 
     SNode retType = IMethodLike__BehaviorDescriptor.getExpectedRetType_idi2fhBNC.invoke(methodLike);
-    if (retType == null || SNodeOperations.isInstanceOf(retType, CONCEPTS.VoidType$aT)) {
+    if (retType == null || SNodeOperations.isInstanceOf(retType, CONCEPTS.VoidType$BF)) {
       return false;
     }
 
     // statement 'a.b()' where b returns void can't produce return value 
     SNode methodCall = null;
-    SNode expression = SLinkOperations.getTarget(__thisNode__, LINKS.expression$qFF0);
-    if (SNodeOperations.isInstanceOf(expression, CONCEPTS.IMethodCall$ln)) {
-      methodCall = SNodeOperations.cast(expression, CONCEPTS.IMethodCall$ln);
-    } else if (SNodeOperations.isInstanceOf(expression, CONCEPTS.DotExpression$6a) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.DotExpression$6a), LINKS.operation$_mGS), CONCEPTS.IMethodCall$ln)) {
-      methodCall = SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.DotExpression$6a), LINKS.operation$_mGS), CONCEPTS.IMethodCall$ln);
+    SNode expression = SLinkOperations.getTarget(__thisNode__, LINKS.expression$5L7M);
+    if (SNodeOperations.isInstanceOf(expression, CONCEPTS.IMethodCall$M9)) {
+      methodCall = SNodeOperations.cast(expression, CONCEPTS.IMethodCall$M9);
+    } else if (SNodeOperations.isInstanceOf(expression, CONCEPTS.DotExpression$yW) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.DotExpression$yW), LINKS.operation$gs9E), CONCEPTS.IMethodCall$M9)) {
+      methodCall = SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(expression, CONCEPTS.DotExpression$yW), LINKS.operation$gs9E), CONCEPTS.IMethodCall$M9);
     }
-    if (methodCall != null && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$ItxI), LINKS.returnType$qrVw), CONCEPTS.VoidType$aT)) {
+    if (methodCall != null && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$pyYw), LINKS.returnType$5xoi), CONCEPTS.VoidType$BF)) {
       return false;
     }
 
@@ -66,19 +66,19 @@ public final class ExpressionStatement__BehaviorDescriptor extends BaseBHDescrip
       return true;
     }
     // check if body ends with if and this statement completes this if 
-    if (SNodeOperations.isInstanceOf(lastStatement, CONCEPTS.IfStatement$pi) && SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IfStatement$pi, false, false) == lastStatement) {
-      SNode ifStmt = SNodeOperations.cast(lastStatement, CONCEPTS.IfStatement$pi);
-      if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifStmt, LINKS.ifTrue$qLNm), LINKS.statement$pYcS)).last() == __thisNode__ || SLinkOperations.getTarget(ifStmt, LINKS.ifFalseStatement$InyY) == __thisNode__) {
+    if (SNodeOperations.isInstanceOf(lastStatement, CONCEPTS.IfStatement$Q4) && SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IfStatement$Q4, false, false) == lastStatement) {
+      SNode ifStmt = SNodeOperations.cast(lastStatement, CONCEPTS.IfStatement$Q4);
+      if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifStmt, LINKS.ifTrue$5Rg8), LINKS.statement$53DE)).last() == __thisNode__ || SLinkOperations.getTarget(ifStmt, LINKS.ifFalseStatement$psZK) == __thisNode__) {
         return true;
       }
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ifStmt, LINKS.ifFalseStatement$InyY), CONCEPTS.BlockStatement$1i)) {
-        SNode elseBlock = SNodeOperations.cast(SLinkOperations.getTarget(ifStmt, LINKS.ifFalseStatement$InyY), CONCEPTS.BlockStatement$1i);
-        if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(elseBlock, LINKS.statements$J0D0), LINKS.statement$pYcS)).last() == __thisNode__) {
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ifStmt, LINKS.ifFalseStatement$psZK), CONCEPTS.BlockStatement$u4)) {
+        SNode elseBlock = SNodeOperations.cast(SLinkOperations.getTarget(ifStmt, LINKS.ifFalseStatement$psZK), CONCEPTS.BlockStatement$u4);
+        if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(elseBlock, LINKS.statements$q65M), LINKS.statement$53DE)).last() == __thisNode__) {
           return true;
         }
       }
-      for (SNode elsif : SLinkOperations.getChildren(ifStmt, LINKS.elsifClauses$ZQja)) {
-        if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(elsif, LINKS.statementList$G9pt), LINKS.statement$pYcS)).last() == __thisNode__) {
+      for (SNode elsif : SLinkOperations.getChildren(ifStmt, LINKS.elsifClauses$EVJW)) {
+        if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(elsif, LINKS.statementList$neQf), LINKS.statement$53DE)).last() == __thisNode__) {
           return true;
         }
       }
@@ -133,25 +133,25 @@ public final class ExpressionStatement__BehaviorDescriptor extends BaseBHDescrip
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IMethodLike$kl = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1208f458d37L, "jetbrains.mps.baseLanguage.structure.IMethodLike");
-    /*package*/ static final SInterfaceConcept IStatementListContainer$4L = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11750ef8265L, "jetbrains.mps.baseLanguage.structure.IStatementListContainer");
-    /*package*/ static final SConcept VoidType$aT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
-    /*package*/ static final SInterfaceConcept IMethodCall$ln = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
-    /*package*/ static final SConcept DotExpression$6a = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
-    /*package*/ static final SConcept IfStatement$pi = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
-    /*package*/ static final SConcept BlockStatement$1i = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement");
+    /*package*/ static final SInterfaceConcept IMethodLike$L7 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1208f458d37L, "jetbrains.mps.baseLanguage.structure.IMethodLike");
+    /*package*/ static final SInterfaceConcept IStatementListContainer$xz = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11750ef8265L, "jetbrains.mps.baseLanguage.structure.IStatementListContainer");
+    /*package*/ static final SConcept VoidType$BF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType");
+    /*package*/ static final SInterfaceConcept IMethodCall$M9 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall");
+    /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
+    /*package*/ static final SConcept IfStatement$Q4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
+    /*package*/ static final SConcept BlockStatement$u4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, "jetbrains.mps.baseLanguage.structure.BlockStatement");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$qFF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
-    /*package*/ static final SContainmentLink operation$_mGS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SContainmentLink returnType$qrVw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
-    /*package*/ static final SContainmentLink ifTrue$qLNm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink ifFalseStatement$InyY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement");
-    /*package*/ static final SContainmentLink statements$J0D0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
-    /*package*/ static final SContainmentLink statementList$G9pt = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0f8fdL, "statementList");
-    /*package*/ static final SContainmentLink elsifClauses$ZQja = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0x118cecf1287L, "elsifClauses");
+    /*package*/ static final SContainmentLink expression$5L7M = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SContainmentLink operation$gs9E = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink returnType$5xoi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
+    /*package*/ static final SContainmentLink ifTrue$5Rg8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xf8cc56b219L, "ifTrue");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink ifFalseStatement$psZK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0xfc092b6b76L, "ifFalseStatement");
+    /*package*/ static final SContainmentLink statements$q65M = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L, 0xfc092b6b78L, "statements");
+    /*package*/ static final SContainmentLink statementList$neQf = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL, 0x118ced0f8fdL, "statementList");
+    /*package*/ static final SContainmentLink elsifClauses$EVJW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, 0x118cecf1287L, "elsifClauses");
   }
 }

@@ -24,13 +24,13 @@ public class CastExpression_typeAction {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if ((SLinkOperations.getTarget(node, LINKS.type$izF0) == null)) {
-          SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.expression$izU1));
+        if ((SLinkOperations.getTarget(node, LINKS.type$XD7M) == null)) {
+          SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.expression$XDmN));
         } else {
-          if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.type$izF0))) {
+          if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.type$XD7M))) {
             return;
           }
-          SLinkOperations.setTarget(node, LINKS.type$izF0, null);
+          SLinkOperations.setTarget(node, LINKS.type$XD7M, null);
         }
       }
 
@@ -79,7 +79,7 @@ public class CastExpression_typeAction {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$izU1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
-    /*package*/ static final SContainmentLink type$izF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4bL, "type");
+    /*package*/ static final SContainmentLink expression$XDmN = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
+    /*package*/ static final SContainmentLink type$XD7M = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4bL, "type");
   }
 }

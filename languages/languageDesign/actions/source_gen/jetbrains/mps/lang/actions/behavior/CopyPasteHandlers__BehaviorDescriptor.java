@@ -42,24 +42,24 @@ public final class CopyPasteHandlers__BehaviorDescriptor extends BaseBHDescripto
 
   /*package*/ static List<SNode> getBaseConceptCollection_id4$$3zrO3UBG(@NotNull SNode __thisNode__) {
     final List<SNode> result = new ArrayList<SNode>();
-    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.preProcessor$R4So)).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.preProcessor$8IAF)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
-        ListSequence.fromList(result).addElement(SLinkOperations.getTarget(it, LINKS.concept$cmPm));
+        ListSequence.fromList(result).addElement(SLinkOperations.getTarget(it, LINKS.concept$u0zD));
       }
     });
-    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.postProcessor$R4Dn)).visitAll(new IVisitor<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.postProcessor$8InE)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
-        ListSequence.fromList(result).addElement(SLinkOperations.getTarget(it, LINKS.concept$HOP7));
+        ListSequence.fromList(result).addElement(SLinkOperations.getTarget(it, LINKS.concept$Zuzq));
       }
     });
     return result;
   }
   /*package*/ static void setBaseConcept_id5r_35Ihc58c(@NotNull SNode __thisNode__, SNode baseConcept) {
     SNode pastePostProcessor = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x7d4ebb4f893516cL, "jetbrains.mps.lang.actions.structure.PastePostProcessor"));
-    SLinkOperations.setTarget(pastePostProcessor, LINKS.concept$HOP7, baseConcept);
-    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.postProcessor$R4Dn)).addElement(pastePostProcessor);
+    SLinkOperations.setTarget(pastePostProcessor, LINKS.concept$Zuzq, baseConcept);
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.postProcessor$8InE)).addElement(pastePostProcessor);
     String name = SModelUtil.getDeclaringLanguage(baseConcept).getModuleName();
-    SPropertyOperations.set(__thisNode__, PROPS.name$lA7v, NameUtil.shortNameFromLongName(name) + "_CopyPasteHandlers");
+    SPropertyOperations.set(__thisNode__, PROPS.name$MnvL, NameUtil.shortNameFromLongName(name) + "_CopyPasteHandlers");
   }
 
   /*package*/ CopyPasteHandlers__BehaviorDescriptor() {
@@ -112,13 +112,13 @@ public final class CopyPasteHandlers__BehaviorDescriptor extends BaseBHDescripto
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink preProcessor$R4So = MetaAdapterFactory.getContainmentLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x528ba37dd3383e1eL, 0x528ba37dd3383f1fL, "preProcessor");
-    /*package*/ static final SReferenceLink concept$cmPm = MetaAdapterFactory.getReferenceLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x528ba37dd3311946L, 0x528ba37dd3317b8dL, "concept");
-    /*package*/ static final SContainmentLink postProcessor$R4Dn = MetaAdapterFactory.getContainmentLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x528ba37dd3383e1eL, 0x528ba37dd3383f1eL, "postProcessor");
-    /*package*/ static final SReferenceLink concept$HOP7 = MetaAdapterFactory.getReferenceLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x7d4ebb4f893516cL, 0x53a34ae13c0c947bL, "concept");
+    /*package*/ static final SContainmentLink preProcessor$8IAF = MetaAdapterFactory.getContainmentLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x528ba37dd3383e1eL, 0x528ba37dd3383f1fL, "preProcessor");
+    /*package*/ static final SReferenceLink concept$u0zD = MetaAdapterFactory.getReferenceLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x528ba37dd3311946L, 0x528ba37dd3317b8dL, "concept");
+    /*package*/ static final SContainmentLink postProcessor$8InE = MetaAdapterFactory.getContainmentLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x528ba37dd3383e1eL, 0x528ba37dd3383f1eL, "postProcessor");
+    /*package*/ static final SReferenceLink concept$Zuzq = MetaAdapterFactory.getReferenceLink(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x7d4ebb4f893516cL, 0x53a34ae13c0c947bL, "concept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

@@ -23,8 +23,8 @@ public final class CompoundComponentWithCardinality__BehaviorDescriptor extends 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.assign(__thisNode__, PROPS.cardinality$ZAK0, 1);
-    SPropertyOperations.assign(__thisNode__, PROPS.cardinalityVisible$ZAZ1, false);
+    SPropertyOperations.assign(__thisNode__, PROPS.cardinality$Vf8r, 1);
+    SPropertyOperations.assign(__thisNode__, PROPS.cardinalityVisible$Vfns, false);
   }
 
 
@@ -73,7 +73,7 @@ public final class CompoundComponentWithCardinality__BehaviorDescriptor extends 
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty cardinality$ZAK0 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd51L, "cardinality");
-    /*package*/ static final SProperty cardinalityVisible$ZAZ1 = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd52L, "cardinalityVisible");
+    /*package*/ static final SProperty cardinality$Vf8r = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd51L, "cardinality");
+    /*package*/ static final SProperty cardinalityVisible$Vfns = MetaAdapterFactory.getProperty(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L, 0x2b5828a8c1c2fd52L, "cardinalityVisible");
   }
 }

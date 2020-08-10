@@ -37,14 +37,14 @@ public final class EnumerationMemberDeclaration__BehaviorDescriptor extends Base
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v);
+    return SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL);
   }
   /*package*/ static String getMemberPresentation_idVFd4X$DFGV(@NotNull SNode __thisNode__) {
-    String presentation = SPropertyOperations.getString(__thisNode__, PROPS.presentation$bbH8);
-    return ((presentation == null || presentation.length() == 0) ? SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v) : presentation);
+    String presentation = SPropertyOperations.getString(__thisNode__, PROPS.presentation$BjyV);
+    return ((presentation == null || presentation.length() == 0) ? SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL) : presentation);
   }
   /*package*/ static boolean isDefault_idVFd4X$DLvk(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.EnumerationDeclaration$rG), LINKS.defaultMember$3dwT) == __thisNode__;
+    return SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.EnumerationDeclaration$hv), LINKS.defaultMember$vlmG) == __thisNode__;
   }
 
   /*package*/ EnumerationMemberDeclaration__BehaviorDescriptor() {
@@ -98,15 +98,15 @@ public final class EnumerationMemberDeclaration__BehaviorDescriptor extends Base
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty presentation$bbH8 = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0x9538e3a78561888L, "presentation");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty presentation$BjyV = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c60L, 0x9538e3a78561888L, "presentation");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumerationDeclaration$rG = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
+    /*package*/ static final SConcept EnumerationDeclaration$hv = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, "jetbrains.mps.lang.structure.structure.EnumerationDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink defaultMember$3dwT = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0xeeb344f63fe016cL, "defaultMember");
+    /*package*/ static final SReferenceLink defaultMember$vlmG = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x2e770ca32c607c5fL, 0xeeb344f63fe016cL, "defaultMember");
   }
 }

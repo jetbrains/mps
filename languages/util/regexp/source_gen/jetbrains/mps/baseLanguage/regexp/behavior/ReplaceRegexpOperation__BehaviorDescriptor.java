@@ -32,9 +32,9 @@ public final class ReplaceRegexpOperation__BehaviorDescriptor extends BaseBHDesc
 
   /*package*/ static String getReplacementString_id3iI_KKp9qzv(@NotNull SNode __thisNode__) {
     StringBuilder sb = new StringBuilder();
-    for (SNode rep : SLinkOperations.getChildren(__thisNode__, LINKS.replacement$K950)) {
+    for (SNode rep : SLinkOperations.getChildren(__thisNode__, LINKS.replacement$zAHO)) {
       if ((rep != null)) {
-        sb.append(Replacement__BehaviorDescriptor.toString_id3iI_KKpaF_p.invoke(rep, SLinkOperations.getTarget(__thisNode__, LINKS.search$ZDnU)));
+        sb.append(Replacement__BehaviorDescriptor.toString_id3iI_KKpaF_p.invoke(rep, SLinkOperations.getTarget(__thisNode__, LINKS.search$N70I)));
       }
     }
     return sb.toString();
@@ -87,7 +87,7 @@ public final class ReplaceRegexpOperation__BehaviorDescriptor extends BaseBHDesc
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink search$ZDnU = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, 0x34ae970c1924ee3bL, "search");
-    /*package*/ static final SContainmentLink replacement$K950 = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, 0x34ae970c1923d18bL, "replacement");
+    /*package*/ static final SContainmentLink search$N70I = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, 0x34ae970c1924ee3bL, "search");
+    /*package*/ static final SContainmentLink replacement$zAHO = MetaAdapterFactory.getContainmentLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c1923d18aL, 0x34ae970c1923d18bL, "replacement");
   }
 }

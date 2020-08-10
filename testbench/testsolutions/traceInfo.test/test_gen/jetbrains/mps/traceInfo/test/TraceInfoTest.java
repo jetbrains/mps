@@ -87,7 +87,7 @@ public class TraceInfoTest implements EnvironmentAware {
             TestClass.ifTest();
           }
         });
-        Assert.assertTrue("Node " + node.getNodeId().toString() + " is of concept " + SNodeOperations.getConcept(node), SNodeOperations.isInstanceOf(node, CONCEPTS.IfStatement$pi));
+        Assert.assertTrue("Node " + node.getNodeId().toString() + " is of concept " + SNodeOperations.getConcept(node), SNodeOperations.isInstanceOf(node, CONCEPTS.IfStatement$Q4));
       }
     });
   }
@@ -101,7 +101,7 @@ public class TraceInfoTest implements EnvironmentAware {
             TestClass.forTest();
           }
         });
-        Assert.assertTrue("Node " + node.getNodeId().toString() + " is of concept " + SNodeOperations.getConcept(node), SNodeOperations.isInstanceOf(node, CONCEPTS.ForStatement$Y9));
+        Assert.assertTrue("Node " + node.getNodeId().toString() + " is of concept " + SNodeOperations.getConcept(node), SNodeOperations.isInstanceOf(node, CONCEPTS.ForStatement$qV));
       }
     });
   }
@@ -114,7 +114,7 @@ public class TraceInfoTest implements EnvironmentAware {
             TestClass.blockStatementTest();
           }
         });
-        Assert.assertTrue("Node " + node.getNodeId().toString() + " is of concept " + SNodeOperations.getConcept(node), SNodeOperations.isInstanceOf(node, CONCEPTS.ThrowStatement$yK));
+        Assert.assertTrue("Node " + node.getNodeId().toString() + " is of concept " + SNodeOperations.getConcept(node), SNodeOperations.isInstanceOf(node, CONCEPTS.ThrowStatement$Zy));
       }
     });
   }
@@ -131,7 +131,7 @@ public class TraceInfoTest implements EnvironmentAware {
           Assert.assertFalse(variableNodesForPosition.isEmpty());
           SNode node = variableNodesForPosition.get(0).resolve(myProject.getRepository());
           Assert.assertNotNull(node);
-          Assert.assertTrue("Node " + node + " for variable it.", SNodeOperations.isInstanceOf(node, CONCEPTS.ForEachVariable$8t));
+          Assert.assertTrue("Node " + node + " for variable it.", SNodeOperations.isInstanceOf(node, CONCEPTS.ForEachVariable$mK));
         }
       }
     });
@@ -149,7 +149,7 @@ public class TraceInfoTest implements EnvironmentAware {
           Assert.assertFalse(variableNodesForPosition.isEmpty());
           SNode node = variableNodesForPosition.get(0).resolve(myProject.getRepository());
           Assert.assertNotNull(node);
-          Assert.assertTrue("Node " + node + " for variable it_gen.", SNodeOperations.isInstanceOf(node, CONCEPTS.ForEachVariable$8t));
+          Assert.assertTrue("Node " + node + " for variable it_gen.", SNodeOperations.isInstanceOf(node, CONCEPTS.ForEachVariable$mK));
         }
       }
     });
@@ -164,12 +164,12 @@ public class TraceInfoTest implements EnvironmentAware {
   public void internalClassTest() {
     invokeTestWithModelRead(new _FunctionTypes._void_P0_E0() {
       public void invoke() {
-        SNode testClass = SNodeOperations.cast(new SNodePointer("r:fc539459-610a-408b-8472-ac3a7316412f(jetbrains.mps.traceInfo.test@tests)", "8529179251482782650").resolve(myProject.getRepository()), CONCEPTS.ClassConcept$IY);
+        SNode testClass = SNodeOperations.cast(new SNodePointer("r:fc539459-610a-408b-8472-ac3a7316412f(jetbrains.mps.traceInfo.test@tests)", "8529179251482782650").resolve(myProject.getRepository()), CONCEPTS.ClassConcept$bK);
         SNode statement = Sequence.fromIterable(SLinkOperations.collectMany(SLinkOperations.collect(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(testClass)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SPropertyOperations.getString(it, PROPS.name$lA7v).equals("internalClassTest");
+            return SPropertyOperations.getString(it, PROPS.name$MnvL).equals("internalClassTest");
           }
-        }), LINKS.body$qspy), LINKS.statement$pYcS)).first();
+        }), LINKS.body$5xQk), LINKS.statement$53DE)).first();
         BreakpointLocation location = new BreakpointLocation(statement);
         Assert.assertEquals("jetbrains.mps.traceInfo.test.TestClass", location.getTargetUnitName());
       }
@@ -197,19 +197,19 @@ public class TraceInfoTest implements EnvironmentAware {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept IfStatement$pi = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
-    /*package*/ static final SConcept ForStatement$Y9 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, "jetbrains.mps.baseLanguage.structure.ForStatement");
-    /*package*/ static final SConcept ThrowStatement$yK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, "jetbrains.mps.baseLanguage.structure.ThrowStatement");
-    /*package*/ static final SConcept ForEachVariable$8t = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6f0962L, "jetbrains.mps.baseLanguage.collections.structure.ForEachVariable");
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept IfStatement$Q4 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L, "jetbrains.mps.baseLanguage.structure.IfStatement");
+    /*package*/ static final SConcept ForStatement$qV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL, "jetbrains.mps.baseLanguage.structure.ForStatement");
+    /*package*/ static final SConcept ThrowStatement$Zy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L, "jetbrains.mps.baseLanguage.structure.ThrowStatement");
+    /*package*/ static final SConcept ForEachVariable$mK = MetaAdapterFactory.getConcept(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x10cac6f0962L, "jetbrains.mps.baseLanguage.collections.structure.ForEachVariable");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink body$qspy = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

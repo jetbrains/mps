@@ -34,7 +34,7 @@ public final class QueryFunctionParameter_SubstituteMenu_NodeToWrap__BehaviorDes
   }
 
   /*package*/ static SNode getType_id27DJnJtIQ9C(@NotNull SNode __thisNode__) {
-    SNode wrapperPart = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.SubstituteMenuPart_Wrapper$Dn, false, false);
+    SNode wrapperPart = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.SubstituteMenuPart_Wrapper$OY, false, false);
     if (wrapperPart != null && (IIncludeSubstituteMenuPart__BehaviorDescriptor.getReference_id3rSzFHWOe4u.invoke(wrapperPart) != null) && (IMenuReference__BehaviorDescriptor.getApplicableConcept_id1quYWAD4TFX.invoke(IIncludeSubstituteMenuPart__BehaviorDescriptor.getReference_id3rSzFHWOe4u.invoke(wrapperPart)) != null)) {
       return _quotation_createNode_xlagjx_a0a1a0(IMenuReference__BehaviorDescriptor.getApplicableConcept_id1quYWAD4TFX.invoke(IIncludeSubstituteMenuPart__BehaviorDescriptor.getReference_id3rSzFHWOe4u.invoke(wrapperPart)));
     }
@@ -101,6 +101,6 @@ public final class QueryFunctionParameter_SubstituteMenu_NodeToWrap__BehaviorDes
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SubstituteMenuPart_Wrapper$Dn = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5cc5669cafd1be9bL, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_Wrapper");
+    /*package*/ static final SConcept SubstituteMenuPart_Wrapper$OY = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5cc5669cafd1be9bL, "jetbrains.mps.lang.editor.structure.SubstituteMenuPart_Wrapper");
   }
 }

@@ -25,14 +25,14 @@ public class ExtractMethodFromStatementsRefactoring extends ExtractMethodRefacto
   protected SNode createMethodBody() {
     SNode body = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"));
     this.modifyPartToExtract();
-    ListSequence.fromList(SLinkOperations.getChildren(body, LINKS.statement$pYcS)).addSequence(ListSequence.fromList((List<SNode>) CopyUtil.copy(this.myStatements)));
+    ListSequence.fromList(SLinkOperations.getChildren(body, LINKS.statement$53DE)).addSequence(ListSequence.fromList((List<SNode>) CopyUtil.copy(this.myStatements)));
     return body;
   }
   @Override
   public void replaceMatch(MethodMatch match, SNode methodDeclaration) {
     SNode methodCall = this.createMethodCall(match, methodDeclaration);
     SNode callStatement = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement"));
-    SLinkOperations.setTarget(callStatement, LINKS.expression$qFF0, methodCall);
+    SLinkOperations.setTarget(callStatement, LINKS.expression$5L7M, methodCall);
     List<SNode> statements = match.getNodes();
     SNodeOperations.insertPrevSiblingChild(ListSequence.fromList(statements).first(), callStatement);
     for (SNode statement : ListSequence.fromList(statements)) {
@@ -47,7 +47,7 @@ public class ExtractMethodFromStatementsRefactoring extends ExtractMethodRefacto
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink statement$pYcS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink expression$qFF0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
+    /*package*/ static final SContainmentLink expression$5L7M = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, 0xf8cc56b214L, "expression");
   }
 }

@@ -34,7 +34,7 @@ public class ReplaceQuilifiedReference_Substitute extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_bfoztr_a(), CONCEPTS.BaseConcept$Sz));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_bfoztr_a(), CONCEPTS.BaseConcept$gP));
     return result;
   }
 
@@ -71,7 +71,7 @@ public class ReplaceQuilifiedReference_Substitute extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-      return QueriesUtil.replaceNodeMenu_parameterObjects(QualifiedReference__BehaviorDescriptor.getClassifier_id7S22xyoLQG7.invoke(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.QualifiedReference$lF)), _context.getParentNode());
+      return QueriesUtil.replaceNodeMenu_parameterObjects(QualifiedReference__BehaviorDescriptor.getClassifier_id7S22xyoLQG7.invoke(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.QualifiedReference$Mt)), _context.getParentNode());
     }
     private class SMP_Action_bfoztr_a0 extends SingleItemSubstituteMenuPart {
       private final SNode myParameterObject;
@@ -106,7 +106,7 @@ public class ReplaceQuilifiedReference_Substitute extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.BaseConcept$Sz, context);
+          super(CONCEPTS.BaseConcept$gP, context);
           _context = context;
         }
 
@@ -117,7 +117,7 @@ public class ReplaceQuilifiedReference_Substitute extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          return QueriesUtil.replaceNodeMenu_createNewNode(QualifiedReference__BehaviorDescriptor.getClassifier_id7S22xyoLQG7.invoke(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.QualifiedReference$lF)), myParameterObject, SNodeOperations.cast(_context.getParentNode(), CONCEPTS.QualifiedReference$lF));
+          return QueriesUtil.replaceNodeMenu_createNewNode(QualifiedReference__BehaviorDescriptor.getClassifier_id7S22xyoLQG7.invoke(SNodeOperations.cast(_context.getParentNode(), CONCEPTS.QualifiedReference$Mt)), myParameterObject, SNodeOperations.cast(_context.getParentNode(), CONCEPTS.QualifiedReference$Mt));
         }
 
         @Override
@@ -126,7 +126,7 @@ public class ReplaceQuilifiedReference_Substitute extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, CONCEPTS.BaseConcept$Sz, getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.BaseConcept$gP, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -156,7 +156,7 @@ public class ReplaceQuilifiedReference_Substitute extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
-    /*package*/ static final SInterfaceConcept QualifiedReference$lF = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x7e020a1898c76ae1L, "jetbrains.mps.baseLanguage.structure.QualifiedReference");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SInterfaceConcept QualifiedReference$Mt = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x7e020a1898c76ae1L, "jetbrains.mps.baseLanguage.structure.QualifiedReference");
   }
 }

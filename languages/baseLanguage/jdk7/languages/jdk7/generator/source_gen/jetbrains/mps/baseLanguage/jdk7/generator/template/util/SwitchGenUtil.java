@@ -21,9 +21,9 @@ public class SwitchGenUtil {
   public SwitchGenUtil() {
   }
   public static Iterable<SNode> getNodes(SNode node) {
-    return Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, LINKS.case$tKvS), LINKS.expression$bKRk)).sort(new ISelector<SNode, String>() {
+    return Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(node, LINKS.case$8PWE), LINKS.expression$QQk6)).sort(new ISelector<SNode, String>() {
       public String select(SNode it) {
-        return SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.StringLiteral$4G), PROPS.value$P2m0);
+        return SPropertyOperations.getString(SNodeOperations.cast(it, CONCEPTS.StringLiteral$xu), PROPS.value$w7MM);
       }
     }, true);
   }
@@ -37,22 +37,22 @@ public class SwitchGenUtil {
     m = MapSequence.fromMap(new HashMap<String, Integer>());
     int index = 0;
     for (SNode e : nodes) {
-      MapSequence.fromMap(m).put(SPropertyOperations.getString(SNodeOperations.cast(e, CONCEPTS.StringLiteral$4G), PROPS.value$P2m0), index++);
+      MapSequence.fromMap(m).put(SPropertyOperations.getString(SNodeOperations.cast(e, CONCEPTS.StringLiteral$xu), PROPS.value$w7MM), index++);
     }
     genContext.putTransientObject("switch" + node.getNodeId().toString(), m);
     return m;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink case$tKvS = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02edcafL, "case");
-    /*package*/ static final SContainmentLink expression$bKRk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression");
+    /*package*/ static final SContainmentLink case$8PWE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02edcafL, "case");
+    /*package*/ static final SContainmentLink expression$QQk6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StringLiteral$4G = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral");
+    /*package*/ static final SConcept StringLiteral$xu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$P2m0 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+    /*package*/ static final SProperty value$w7MM = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
   }
 }

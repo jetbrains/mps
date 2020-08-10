@@ -28,7 +28,7 @@ public class ImplementationCode_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_8hwvgs_a(), CONCEPTS.ImplementationCode$jA));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_8hwvgs_a(), CONCEPTS.ImplementationCode$Dn));
     result.add(new SMP_Subconcepts_8hwvgs_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class ImplementationCode_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_8hwvgs_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.ImplementationCode$jA, LINKS.descriptor$ah2);
+      super((SAbstractConcept) CONCEPTS.ImplementationCode$Dn, LINKS.descriptor$u9AN);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class ImplementationCode_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_8hwvgs_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ImplementationCode$jA);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.ImplementationCode$Dn);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class ImplementationCode_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ImplementationCode$jA = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3e8df42f5fb8641cL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.ImplementationCode");
+    /*package*/ static final SConcept ImplementationCode$Dn = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3e8df42f5fb8641cL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.ImplementationCode");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink descriptor$ah2 = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3e8df42f5fb8641cL, 0x3e8df42f5fb8641fL, "descriptor");
+    /*package*/ static final SReferenceLink descriptor$u9AN = MetaAdapterFactory.getReferenceLink(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3e8df42f5fb8641cL, 0x3e8df42f5fb8641fL, "descriptor");
   }
 }

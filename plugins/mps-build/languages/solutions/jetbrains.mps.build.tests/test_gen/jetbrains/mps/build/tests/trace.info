@@ -51,7 +51,7 @@
       <node id="763409143595572699" at="105,40,106,40" concept="1" />
       <node id="384280137912153748" at="106,40,107,40" concept="1" />
       <node id="384280137912313343" at="107,40,108,935" concept="1" />
-      <node id="193602448594327346" at="115,0,116,0" concept="8" trace="BuildMacro$RE" />
+      <node id="193602448594327346" at="115,0,116,0" concept="8" trace="BuildMacro$qd" />
       <node id="193602448594327346" at="23,0,25,0" concept="8" trace="ourParamCache" />
       <node id="193602448594327346" at="25,0,27,0" concept="2" trace="myWithCommandRule" />
       <node id="193602448594327346" at="28,0,31,0" concept="0" trace="MacroTest_Test#()V" />

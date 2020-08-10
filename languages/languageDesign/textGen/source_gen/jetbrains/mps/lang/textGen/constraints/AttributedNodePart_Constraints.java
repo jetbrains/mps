@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class AttributedNodePart_Constraints extends BaseConstraintsDescriptor {
   public AttributedNodePart_Constraints() {
-    super(CONCEPTS.AttributedNodePart$TQ);
+    super(CONCEPTS.AttributedNodePart$8o);
   }
 
   @Override
@@ -41,17 +41,17 @@ public class AttributedNodePart_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    SNode ctgd = SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.ConceptTextGenDeclaration$gF, false, false);
-    return (ctgd == null) || Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(SLinkOperations.getTarget(ctgd, LINKS.conceptDeclaration$BC7U), ((boolean) false))).contains(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "3364660638048049748"));
+    SNode ctgd = SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.ConceptTextGenDeclaration$vd, false, false);
+    return (ctgd == null) || Sequence.fromIterable(AbstractConceptDeclaration__BehaviorDescriptor.getAllSuperConcepts_id2A8AB0rAWpG.invoke(SLinkOperations.getTarget(ctgd, LINKS.conceptDeclaration$$0ms), ((boolean) false))).contains(SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "3364660638048049748"));
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:472e3702-e789-4c3f-b300-132c65ad44f1(jetbrains.mps.lang.textGen.constraints)", "1227128029536563721");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AttributedNodePart$TQ = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x7c096989aaf957c1L, "jetbrains.mps.lang.textGen.structure.AttributedNodePart");
-    /*package*/ static final SConcept ConceptTextGenDeclaration$gF = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f3c776369L, "jetbrains.mps.lang.textGen.structure.ConceptTextGenDeclaration");
+    /*package*/ static final SConcept AttributedNodePart$8o = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x7c096989aaf957c1L, "jetbrains.mps.lang.textGen.structure.AttributedNodePart");
+    /*package*/ static final SConcept ConceptTextGenDeclaration$vd = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f3c776369L, "jetbrains.mps.lang.textGen.structure.ConceptTextGenDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink conceptDeclaration$BC7U = MetaAdapterFactory.getReferenceLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f3c776369L, 0x11f3c7a3d4dL, "conceptDeclaration");
+    /*package*/ static final SReferenceLink conceptDeclaration$$0ms = MetaAdapterFactory.getReferenceLink(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x11f3c776369L, 0x11f3c7a3d4dL, "conceptDeclaration");
   }
 }

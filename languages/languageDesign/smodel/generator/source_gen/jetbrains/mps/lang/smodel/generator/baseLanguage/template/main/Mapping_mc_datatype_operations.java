@@ -38,7 +38,7 @@ public class Mapping_mc_datatype_operations extends MapConfigBase implements Tem
   }
   /*package*/ final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8822815258147266885"), CONCEPTS.PropertySerializeExpression$eE, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8822815258147266885"), CONCEPTS.PropertySerializeExpression$ga, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -71,7 +71,7 @@ public class Mapping_mc_datatype_operations extends MapConfigBase implements Tem
   }
   /*package*/ final class ReductionRule1 extends ReductionRuleBase {
     public ReductionRule1() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377346111391"), CONCEPTS.PropertyDeserializeExpression$Ef, false);
+      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377346111391"), CONCEPTS.PropertyDeserializeExpression$FJ, false);
     }
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
@@ -120,7 +120,7 @@ public class Mapping_mc_datatype_operations extends MapConfigBase implements Tem
   private static final SNodePointer templateSwitchNode_tk1ivr_a0a0c0a1a2a1e = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864763");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PropertySerializeExpression$eE = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x76dcb083baaeddeaL, "jetbrains.mps.lang.smodel.structure.PropertySerializeExpression");
-    /*package*/ static final SConcept PropertyDeserializeExpression$Ef = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x76dcb083bab109deL, "jetbrains.mps.lang.smodel.structure.PropertyDeserializeExpression");
+    /*package*/ static final SConcept PropertySerializeExpression$ga = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x76dcb083baaeddeaL, "jetbrains.mps.lang.smodel.structure.PropertySerializeExpression");
+    /*package*/ static final SConcept PropertyDeserializeExpression$FJ = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x76dcb083bab109deL, "jetbrains.mps.lang.smodel.structure.PropertyDeserializeExpression");
   }
 }

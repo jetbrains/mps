@@ -220,11 +220,11 @@ public class SNodeOperations {
    */
   @Deprecated
   public static String getResolveInfo(SNode n) {
-    String resolveInfo = SNodeUtil.getResolveInfo(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.as(n, CONCEPTS.IResolveInfo$c2));
+    String resolveInfo = SNodeUtil.getResolveInfo(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.as(n, CONCEPTS.IResolveInfo$$k));
     if (resolveInfo != null) {
       return resolveInfo;
     }
-    return SPropertyOperations.getString(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.as(n, CONCEPTS.INamedConcept$nV), PROPS.name$lA7v);
+    return SPropertyOperations.getString(jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.as(n, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL);
   }
   /**
    * 
@@ -340,11 +340,11 @@ public class SNodeOperations {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IResolveInfo$c2 = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, "jetbrains.mps.lang.core.structure.IResolveInfo");
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SInterfaceConcept IResolveInfo$$k = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x116b17c6e46L, "jetbrains.mps.lang.core.structure.IResolveInfo");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

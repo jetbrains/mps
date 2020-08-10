@@ -19,15 +19,15 @@ public class FieldConversions {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       {
         final SNode field = sampleNode;
-        if (SNodeOperations.isInstanceOf(field, CONCEPTS.FieldDeclaration$Ps)) {
-          SPropertyOperations.assign(newNode, PROPS.name$lA7v, SPropertyOperations.getString(field, PROPS.name$lA7v));
-          SLinkOperations.setTarget(newNode, LINKS.type$uWuc, SLinkOperations.getTarget(field, LINKS.type$uWuc));
-          SLinkOperations.setTarget(newNode, LINKS.initializer$no3R, SLinkOperations.getTarget(field, LINKS.initializer$no3R));
-          SPropertyOperations.set(newNode, PROPS.isVolatile$In3y, SPropertyOperations.getBoolean(field, PROPS.isVolatile$2Bfn));
-          SPropertyOperations.set(newNode, PROPS.isFinal$_qt3, SPropertyOperations.getBoolean(field, PROPS.isFinal$_qt3));
-          SPropertyOperations.set(newNode, PROPS.isTransient$8jX_, SPropertyOperations.getBoolean(field, PROPS.isTransient$4Yfs));
-          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.annotation$4YGW)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(field, LINKS.annotation$4YGW)));
-          SLinkOperations.setTarget(newNode, LINKS.visibility$jt1o, SLinkOperations.getTarget(field, LINKS.visibility$jt1o));
+        if (SNodeOperations.isInstanceOf(field, CONCEPTS.FieldDeclaration$ie)) {
+          SPropertyOperations.assign(newNode, PROPS.name$MnvL, SPropertyOperations.getString(field, PROPS.name$MnvL));
+          SLinkOperations.setTarget(newNode, LINKS.type$a1UY, SLinkOperations.getTarget(field, LINKS.type$a1UY));
+          SLinkOperations.setTarget(newNode, LINKS.initializer$2twD, SLinkOperations.getTarget(field, LINKS.initializer$2twD));
+          SPropertyOperations.set(newNode, PROPS.isVolatile$pswk, SPropertyOperations.getBoolean(field, PROPS.isVolatile$HGG9));
+          SPropertyOperations.set(newNode, PROPS.isFinal$gvTP, SPropertyOperations.getBoolean(field, PROPS.isFinal$gvTP));
+          SPropertyOperations.set(newNode, PROPS.isTransient$Npqn, SPropertyOperations.getBoolean(field, PROPS.isTransient$K3Ge));
+          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.annotation$K49I)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(field, LINKS.annotation$K49I)));
+          SLinkOperations.setTarget(newNode, LINKS.visibility$Yyua, SLinkOperations.getTarget(field, LINKS.visibility$Yyua));
         }
       }
     }
@@ -36,38 +36,38 @@ public class FieldConversions {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       {
         final SNode staticField = sampleNode;
-        if (SNodeOperations.isInstanceOf(staticField, CONCEPTS.StaticFieldDeclaration$R5)) {
-          SPropertyOperations.assign(newNode, PROPS.name$lA7v, SPropertyOperations.getString(staticField, PROPS.name$lA7v));
-          SLinkOperations.setTarget(newNode, LINKS.type$uWuc, SLinkOperations.getTarget(staticField, LINKS.type$uWuc));
-          SLinkOperations.setTarget(newNode, LINKS.initializer$no3R, SLinkOperations.getTarget(staticField, LINKS.initializer$no3R));
-          SPropertyOperations.set(newNode, PROPS.isVolatile$2Bfn, SPropertyOperations.getBoolean(staticField, PROPS.isVolatile$In3y));
-          SPropertyOperations.set(newNode, PROPS.isFinal$_qt3, SPropertyOperations.getBoolean(staticField, PROPS.isFinal$_qt3));
-          SPropertyOperations.set(newNode, PROPS.isTransient$4Yfs, SPropertyOperations.getBoolean(staticField, PROPS.isTransient$8jX_));
-          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.annotation$4YGW)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(staticField, LINKS.annotation$4YGW)));
-          SLinkOperations.setTarget(newNode, LINKS.visibility$jt1o, SLinkOperations.getTarget(staticField, LINKS.visibility$jt1o));
+        if (SNodeOperations.isInstanceOf(staticField, CONCEPTS.StaticFieldDeclaration$jR)) {
+          SPropertyOperations.assign(newNode, PROPS.name$MnvL, SPropertyOperations.getString(staticField, PROPS.name$MnvL));
+          SLinkOperations.setTarget(newNode, LINKS.type$a1UY, SLinkOperations.getTarget(staticField, LINKS.type$a1UY));
+          SLinkOperations.setTarget(newNode, LINKS.initializer$2twD, SLinkOperations.getTarget(staticField, LINKS.initializer$2twD));
+          SPropertyOperations.set(newNode, PROPS.isVolatile$HGG9, SPropertyOperations.getBoolean(staticField, PROPS.isVolatile$pswk));
+          SPropertyOperations.set(newNode, PROPS.isFinal$gvTP, SPropertyOperations.getBoolean(staticField, PROPS.isFinal$gvTP));
+          SPropertyOperations.set(newNode, PROPS.isTransient$K3Ge, SPropertyOperations.getBoolean(staticField, PROPS.isTransient$Npqn));
+          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.annotation$K49I)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(staticField, LINKS.annotation$K49I)));
+          SLinkOperations.setTarget(newNode, LINKS.visibility$Yyua, SLinkOperations.getTarget(staticField, LINKS.visibility$Yyua));
         }
       }
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept FieldDeclaration$Ps = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
-    /*package*/ static final SConcept StaticFieldDeclaration$R5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
+    /*package*/ static final SConcept FieldDeclaration$ie = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
+    /*package*/ static final SConcept StaticFieldDeclaration$jR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isVolatile$In3y = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, 0x59c57f2ed491b12fL, "isVolatile");
-    /*package*/ static final SProperty isVolatile$2Bfn = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, 0x120c4a208a1L, "isVolatile");
-    /*package*/ static final SProperty isFinal$_qt3 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
-    /*package*/ static final SProperty isTransient$8jX_ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, 0x59c57f2ed491ae1aL, "isTransient");
-    /*package*/ static final SProperty isTransient$4Yfs = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, 0x776fe644792f90adL, "isTransient");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isVolatile$pswk = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, 0x59c57f2ed491b12fL, "isVolatile");
+    /*package*/ static final SProperty isVolatile$HGG9 = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, 0x120c4a208a1L, "isVolatile");
+    /*package*/ static final SProperty isFinal$gvTP = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
+    /*package*/ static final SProperty isTransient$Npqn = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, 0x59c57f2ed491ae1aL, "isTransient");
+    /*package*/ static final SProperty isTransient$K3Ge = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, 0x776fe644792f90adL, "isTransient");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink initializer$no3R = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
-    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
-    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink initializer$2twD = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0xf8c37f506eL, "initializer");
+    /*package*/ static final SContainmentLink annotation$K49I = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 }

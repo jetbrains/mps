@@ -39,10 +39,10 @@ public class RemoveCellModelCollectionDeprecatedProps extends MigrationScriptBas
           return scope_rnfh72_a0e_0;
         }
       };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.CellModel_Collection$CD, false)).visitAll(new IVisitor<SNode>() {
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.CellModel_Collection$Og, false)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          SPropertyOperations.remove(it, PROPS.vertical$Dkzx);
-          SPropertyOperations.remove(it, PROPS.gridLayout$DkMy);
+          SPropertyOperations.remove(it, PROPS.vertical$HAJ8);
+          SPropertyOperations.remove(it, PROPS.gridLayout$HAY9);
         }
       });
     }
@@ -52,11 +52,11 @@ public class RemoveCellModelCollectionDeprecatedProps extends MigrationScriptBas
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellModel_Collection$CD = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection");
+    /*package*/ static final SConcept CellModel_Collection$Og = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty vertical$Dkzx = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2519L, "vertical");
-    /*package*/ static final SProperty gridLayout$DkMy = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff251aL, "gridLayout");
+    /*package*/ static final SProperty vertical$HAJ8 = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff2519L, "vertical");
+    /*package*/ static final SProperty gridLayout$HAY9 = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0xf9eaff251aL, "gridLayout");
   }
 }

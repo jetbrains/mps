@@ -28,7 +28,7 @@ public class PredefinedSymbolClassSymbolClassPart_SubstituteMenu extends Substit
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_kon73z_a(), CONCEPTS.PredefinedSymbolClassSymbolClassPart$3$));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_kon73z_a(), CONCEPTS.PredefinedSymbolClassSymbolClassPart$Go));
     result.add(new SMP_Subconcepts_kon73z_b());
     return result;
   }
@@ -50,7 +50,7 @@ public class PredefinedSymbolClassSymbolClassPart_SubstituteMenu extends Substit
 
     public SMP_ReferenceScope_kon73z_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.PredefinedSymbolClassSymbolClassPart$3$, LINKS.declaration$SIgd);
+      super((SAbstractConcept) CONCEPTS.PredefinedSymbolClassSymbolClassPart$Go, LINKS.declaration$GbT1);
     }
     @NotNull
     @Override
@@ -67,7 +67,7 @@ public class PredefinedSymbolClassSymbolClassPart_SubstituteMenu extends Substit
   }
   public class SMP_Subconcepts_kon73z_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.PredefinedSymbolClassSymbolClassPart$3$);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.PredefinedSymbolClassSymbolClassPart$Go);
     }
     @NotNull
     @Override
@@ -88,10 +88,10 @@ public class PredefinedSymbolClassSymbolClassPart_SubstituteMenu extends Substit
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PredefinedSymbolClassSymbolClassPart$3$ = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117928d9f2L, "jetbrains.mps.baseLanguage.regexp.structure.PredefinedSymbolClassSymbolClassPart");
+    /*package*/ static final SConcept PredefinedSymbolClassSymbolClassPart$Go = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117928d9f2L, "jetbrains.mps.baseLanguage.regexp.structure.PredefinedSymbolClassSymbolClassPart");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink declaration$SIgd = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117928d9f2L, 0x111792942ceL, "declaration");
+    /*package*/ static final SReferenceLink declaration$GbT1 = MetaAdapterFactory.getReferenceLink(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x1117928d9f2L, 0x111792942ceL, "declaration");
   }
 }

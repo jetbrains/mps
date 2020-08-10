@@ -48,14 +48,14 @@
       <node id="1588042961787737333" at="140,42,141,42" concept="1" />
       <node id="1588042961787417546" at="141,42,142,22" concept="5" />
       <node id="1588042961787417546" at="144,0,145,0" concept="7" trace="breakingNode_fhl8yz_a0a0a0a0a1a0a0a0g" />
-      <node id="1588042961787417546" at="147,0,148,0" concept="7" trace="TestSubstituteParentPropertyAndReference$GV" />
-      <node id="1588042961787417546" at="148,0,149,0" concept="7" trace="TestSubstituteConceptChildToReference$pb" />
-      <node id="1588042961787417546" at="152,0,153,0" concept="7" trace="enumPropertyWithIsValidConstraints$raaz" />
-      <node id="1588042961787417546" at="153,0,154,0" concept="7" trace="enumPropertyWithGetter$StPu" />
-      <node id="1588042961787417546" at="154,0,155,0" concept="7" trace="enumPropertyWithSetter$jghx" />
-      <node id="1588042961787417546" at="155,0,156,0" concept="7" trace="name$lA7v" />
-      <node id="1588042961787417546" at="159,0,160,0" concept="7" trace="referenceWithScope$tSfR" />
-      <node id="1588042961787417546" at="160,0,161,0" concept="7" trace="referenceWithSetHandler$wIM1" />
+      <node id="1588042961787417546" at="147,0,148,0" concept="7" trace="TestSubstituteParentPropertyAndReference$Xs" />
+      <node id="1588042961787417546" at="148,0,149,0" concept="7" trace="TestSubstituteConceptChildToReference$DG" />
+      <node id="1588042961787417546" at="152,0,153,0" concept="7" trace="enumPropertyWithIsValidConstraints$pLr4" />
+      <node id="1588042961787417546" at="153,0,154,0" concept="7" trace="enumPropertyWithGetter$R55Z" />
+      <node id="1588042961787417546" at="154,0,155,0" concept="7" trace="enumPropertyWithSetter$hRy2" />
+      <node id="1588042961787417546" at="155,0,156,0" concept="7" trace="name$MnvL" />
+      <node id="1588042961787417546" at="159,0,160,0" concept="7" trace="referenceWithScope$svwo" />
+      <node id="1588042961787417546" at="160,0,161,0" concept="7" trace="referenceWithSetHandler$vm2y" />
       <node id="1588042961787417546" at="36,0,39,0" concept="0" trace="TestSubstituteParentPropertyAndReference_Constraints#()V" />
       <node id="1588042961787417547" at="41,0,44,0" concept="0" trace="EnumPropertyWithIsValidConstraints_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="1588042961787417547" at="51,103,54,7" concept="2" />
@@ -195,20 +195,20 @@
       <node id="705057939849524982" at="47,55,48,70" concept="1" />
       <node id="705057939849524982" at="49,9,50,0" concept="6" />
       <node id="705057939849524982" at="50,0,51,22" concept="5" />
-      <node id="1227128029536583142" at="56,59,57,91" concept="5" />
+      <node id="1227128029536583142" at="56,60,57,91" concept="5" />
       <node id="1227128029536583153" at="59,67,60,98" concept="5" />
       <node id="1227128029536583162" at="61,5,62,16" concept="5" />
       <node id="1227128029536583120" at="64,149,65,281" concept="5" />
       <node id="705057939849524982" at="67,0,68,0" concept="7" trace="canBeParentBreakingPoint" />
       <node id="705057939849524982" at="68,0,69,0" concept="7" trace="canBeRootBreakingPoint" />
-      <node id="705057939849524982" at="71,0,72,0" concept="7" trace="TestSubstituteParentWithConstraints$PL" />
-      <node id="705057939849524982" at="72,0,73,0" concept="7" trace="TestSubstituteChildWithConstraints1$gI" />
-      <node id="705057939849524982" at="73,0,74,0" concept="7" trace="TestSubstituteChildWithConstraintsWrapper1$Ef" />
-      <node id="705057939849524982" at="74,0,75,0" concept="7" trace="TestSubstituteGrandChildWithConstraintsProhibited$fM" />
-      <node id="705057939849524982" at="75,0,76,0" concept="7" trace="TestSubstituteChildWithConstraints3$$g" />
-      <node id="705057939849524982" at="76,0,77,0" concept="7" trace="TestSubstituteChildWithConstraintsWrapper3$XV" />
-      <node id="705057939849524982" at="80,0,81,0" concept="7" trace="childCanBeParent$w2Q" />
-      <node id="705057939849524982" at="81,0,82,0" concept="7" trace="childWrapperCanBeParent$jVUz" />
+      <node id="705057939849524982" at="71,0,72,0" concept="7" trace="TestSubstituteParentWithConstraints$6i" />
+      <node id="705057939849524982" at="72,0,73,0" concept="7" trace="TestSubstituteChildWithConstraints1$xf" />
+      <node id="705057939849524982" at="73,0,74,0" concept="7" trace="TestSubstituteChildWithConstraintsWrapper1$UK" />
+      <node id="705057939849524982" at="74,0,75,0" concept="7" trace="TestSubstituteGrandChildWithConstraintsProhibited$wj" />
+      <node id="705057939849524982" at="75,0,76,0" concept="7" trace="TestSubstituteChildWithConstraints3$OL" />
+      <node id="705057939849524982" at="76,0,77,0" concept="7" trace="TestSubstituteChildWithConstraintsWrapper3$es" />
+      <node id="705057939849524982" at="80,0,81,0" concept="7" trace="childCanBeParent$Z7jn" />
+      <node id="705057939849524982" at="81,0,82,0" concept="7" trace="childWrapperCanBeParent$izb4" />
       <node id="705057939849524982" at="21,0,24,0" concept="0" trace="TestSubstituteParentWithConstraints_Constraints#()V" />
       <node id="705057939849524982" at="31,0,34,9" concept="2" />
       <node id="705057939849524982" at="46,0,49,9" concept="2" />
@@ -225,7 +225,7 @@
       <scope id="705057939849524982" at="21,60,22,59" />
       <scope id="705057939849524982" at="32,55,33,72" />
       <scope id="705057939849524982" at="47,55,48,70" />
-      <scope id="1227128029536583141" at="56,59,57,91" />
+      <scope id="1227128029536583141" at="56,60,57,91" />
       <scope id="1227128029536583152" at="59,67,60,98" />
       <scope id="1227128029536583119" at="64,149,65,281" />
       <scope id="705057939849524982" at="21,0,24,0" />
@@ -278,8 +278,8 @@
       <node id="705057939849795250" at="34,0,35,22" concept="5" />
       <node id="1227128029536583201" at="39,128,40,63" concept="5" />
       <node id="705057939849795250" at="42,0,43,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="705057939849795250" at="45,0,46,0" concept="7" trace="TestSubstituteChildWithConstraints1$gI" />
-      <node id="705057939849795250" at="49,0,50,0" concept="7" trace="childCanBeChild$ZtfY" />
+      <node id="705057939849795250" at="45,0,46,0" concept="7" trace="TestSubstituteChildWithConstraints1$xf" />
+      <node id="705057939849795250" at="49,0,50,0" concept="7" trace="childCanBeChild$Y4wv" />
       <node id="705057939849795250" at="20,0,23,0" concept="0" trace="TestSubstituteChildWithConstraints1_Constraints#()V" />
       <node id="705057939849795250" at="30,0,33,9" concept="2" />
       <node id="705057939849795250" at="39,0,42,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -321,8 +321,8 @@
       <node id="705057939850079394" at="34,0,35,22" concept="5" />
       <node id="1227128029536583185" at="39,128,40,70" concept="5" />
       <node id="705057939850079394" at="42,0,43,0" concept="7" trace="canBeChildBreakingPoint" />
-      <node id="705057939850079394" at="45,0,46,0" concept="7" trace="TestSubstituteChildWithConstraintsWrapper1$Ef" />
-      <node id="705057939850079394" at="49,0,50,0" concept="7" trace="childWrapperCanBeChild$Lj1T" />
+      <node id="705057939850079394" at="45,0,46,0" concept="7" trace="TestSubstituteChildWithConstraintsWrapper1$UK" />
+      <node id="705057939850079394" at="49,0,50,0" concept="7" trace="childWrapperCanBeChild$JUiq" />
       <node id="705057939850079394" at="20,0,23,0" concept="0" trace="TestSubstituteChildWithConstraintsWrapper1_Constraints#()V" />
       <node id="705057939850079394" at="30,0,33,9" concept="2" />
       <node id="705057939850079394" at="39,0,42,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
@@ -364,9 +364,9 @@
       <node id="7432042996949761866" at="58,131,59,42" concept="1" />
       <node id="7432042996949761861" at="59,42,60,22" concept="5" />
       <node id="7432042996949761861" at="62,0,63,0" concept="7" trace="breakingNode_4l1ims_a0a0a0a0a1a0a0a0c" />
-      <node id="7432042996949761861" at="65,0,66,0" concept="7" trace="TestSubstituteSmartRef_WithoutExplicitMenu$ma" />
-      <node id="7432042996949761861" at="66,0,67,0" concept="7" trace="TestSubstituteConceptChildToReference$pb" />
-      <node id="7432042996949761861" at="70,0,71,0" concept="7" trace="childToReference$dF50" />
+      <node id="7432042996949761861" at="65,0,66,0" concept="7" trace="TestSubstituteSmartRef_WithoutExplicitMenu$AF" />
+      <node id="7432042996949761861" at="66,0,67,0" concept="7" trace="TestSubstituteConceptChildToReference$DG" />
+      <node id="7432042996949761861" at="70,0,71,0" concept="7" trace="childToReference$cilx" />
       <node id="7432042996949761861" at="27,0,30,0" concept="0" trace="TestSubstituteSmartRef_WithoutExplicitMenu_Constraints#()V" />
       <node id="7432042996949761866" at="34,0,38,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="7432042996949761866" at="42,0,46,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -416,9 +416,9 @@
       <node id="7432042996949774813" at="50,131,51,42" concept="1" />
       <node id="7432042996949774301" at="51,42,52,22" concept="5" />
       <node id="7432042996949774301" at="54,0,55,0" concept="7" trace="breakingNode_7zklhy_a0a0a0a0a1a0a0a0c" />
-      <node id="7432042996949774301" at="57,0,58,0" concept="7" trace="TestSubstituteSmartRef_WithoutExplicitMenu_Subconcept$8z" />
-      <node id="7432042996949774301" at="58,0,59,0" concept="7" trace="TestSubstituteChildToReferenceSubconcept$F5" />
-      <node id="7432042996949774301" at="62,0,63,0" concept="7" trace="childToReference$dF50" />
+      <node id="7432042996949774301" at="57,0,58,0" concept="7" trace="TestSubstituteSmartRef_WithoutExplicitMenu_Subconcept$p4" />
+      <node id="7432042996949774301" at="58,0,59,0" concept="7" trace="TestSubstituteChildToReferenceSubconcept$VA" />
+      <node id="7432042996949774301" at="62,0,63,0" concept="7" trace="childToReference$cilx" />
       <node id="7432042996949774301" at="24,0,27,0" concept="0" trace="TestSubstituteSmartRef_WithoutExplicitMenu_Subconcept_Constraints#()V" />
       <node id="7432042996949774813" at="31,0,35,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="7432042996949774813" at="39,0,43,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />

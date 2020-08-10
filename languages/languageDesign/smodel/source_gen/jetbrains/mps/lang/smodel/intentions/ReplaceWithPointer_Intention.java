@@ -53,7 +53,7 @@ public final class ReplaceWithPointer_Intention extends AbstractIntentionDescrip
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode nodeIdentity = NodePointerMigrations.toNodeIdentity(node);
-      SLinkOperations.setTarget(SNodeOperations.replaceWithNewChild(node, CONCEPTS.NodePointerExpression$DS), LINKS.ref$GPtX, nodeIdentity);
+      SLinkOperations.setTarget(SNodeOperations.replaceWithNewChild(node, CONCEPTS.NodePointerExpression$Fo), LINKS.ref$hevt, nodeIdentity);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -62,10 +62,10 @@ public final class ReplaceWithPointer_Intention extends AbstractIntentionDescrip
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodePointerExpression$DS = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fb0c9435L, "jetbrains.mps.lang.smodel.structure.NodePointerExpression");
+    /*package*/ static final SConcept NodePointerExpression$Fo = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fb0c9435L, "jetbrains.mps.lang.smodel.structure.NodePointerExpression");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink ref$GPtX = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fb0c9435L, 0x66b228a4fb0c9496L, "ref");
+    /*package*/ static final SContainmentLink ref$hevt = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x66b228a4fb0c9435L, 0x66b228a4fb0c9496L, "ref");
   }
 }

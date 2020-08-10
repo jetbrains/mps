@@ -106,10 +106,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.trigger$y1q3;
+      return LINKS.trigger$kBag;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.QuickFixErrorTrigger$1T;
+      return CONCEPTS.QuickFixErrorTrigger$M6;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -119,7 +119,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(triggerListHandler_du3hdu_d0.this.getNode(), LINKS.trigger$y1q3));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(triggerListHandler_du3hdu_d0.this.getNode(), LINKS.trigger$kBag));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_2();
@@ -212,10 +212,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.resolution$jj16;
+      return LINKS.resolution$5SLj;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.QuickFixResolution$IY;
+      return CONCEPTS.QuickFixResolution$vb;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -225,7 +225,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(resolutionListHandler_du3hdu_g0.this.getNode(), LINKS.resolution$jj16));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(resolutionListHandler_du3hdu_g0.this.getNode(), LINKS.resolution$5SLj));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_5();
@@ -282,12 +282,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink trigger$y1q3 = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6f8750efb3b35c46L, 0x6f8750efb3b35c4aL, "trigger");
-    /*package*/ static final SContainmentLink resolution$jj16 = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6f8750efb3b35c46L, 0x6f8750efb3c03c17L, "resolution");
+    /*package*/ static final SContainmentLink trigger$kBag = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6f8750efb3b35c46L, 0x6f8750efb3b35c4aL, "trigger");
+    /*package*/ static final SContainmentLink resolution$5SLj = MetaAdapterFactory.getContainmentLink(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6f8750efb3b35c46L, 0x6f8750efb3c03c17L, "resolution");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept QuickFixErrorTrigger$1T = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6f8750efb3b35c47L, "jetbrains.mps.lang.editor.editorTest.structure.QuickFixErrorTrigger");
-    /*package*/ static final SConcept QuickFixResolution$IY = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6f8750efb3c02480L, "jetbrains.mps.lang.editor.editorTest.structure.QuickFixResolution");
+    /*package*/ static final SConcept QuickFixErrorTrigger$M6 = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6f8750efb3b35c47L, "jetbrains.mps.lang.editor.editorTest.structure.QuickFixErrorTrigger");
+    /*package*/ static final SConcept QuickFixResolution$vb = MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x6f8750efb3c02480L, "jetbrains.mps.lang.editor.editorTest.structure.QuickFixResolution");
   }
 }

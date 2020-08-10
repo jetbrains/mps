@@ -19,12 +19,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class EncodingLiteral_Constraints extends BaseConstraintsDescriptor {
   public EncodingLiteral_Constraints() {
-    super(CONCEPTS.EncodingLiteral$Uv);
+    super(CONCEPTS.EncodingLiteral$91);
   }
 
   public static class Encoding_Property extends BasePropertyConstraintsDescriptor {
     public Encoding_Property(ConstraintsDescriptor container) {
-      super(PROPS.encoding$atfw, container);
+      super(PROPS.encoding$6Pu2, container);
     }
     @Override
     public boolean hasOwnValidator() {
@@ -60,15 +60,15 @@ public class EncodingLiteral_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.encoding$atfw, new Encoding_Property(this));
+    properties.put(PROPS.encoding$6Pu2, new Encoding_Property(this));
     return properties;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EncodingLiteral$Uv = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x63754d97e1c86b8cL, "jetbrains.mps.lang.textGen.structure.EncodingLiteral");
+    /*package*/ static final SConcept EncodingLiteral$91 = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x63754d97e1c86b8cL, "jetbrains.mps.lang.textGen.structure.EncodingLiteral");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty encoding$atfw = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x63754d97e1c86b8cL, 0x63754d97e1c86b8dL, "encoding");
+    /*package*/ static final SProperty encoding$6Pu2 = MetaAdapterFactory.getProperty(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x63754d97e1c86b8cL, 0x63754d97e1c86b8dL, "encoding");
   }
 }

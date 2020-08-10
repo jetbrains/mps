@@ -15,7 +15,7 @@ public class any_type_comparable_with_nulltype_ComparisonRule extends Comparison
   public any_type_comparable_with_nulltype_ComparisonRule() {
   }
   public boolean areComparable(SNode node1, SNode node2, IsApplicable2Status status) {
-    if (SNodeOperations.isInstanceOf(node1, CONCEPTS.PrimitiveType$5) || SNodeOperations.isInstanceOf(node1, CONCEPTS.PrimitiveTypeDescriptor$od)) {
+    if (SNodeOperations.isInstanceOf(node1, CONCEPTS.PrimitiveType$sR) || SNodeOperations.isInstanceOf(node1, CONCEPTS.PrimitiveTypeDescriptor$At)) {
       return false;
     }
     return true;
@@ -31,16 +31,16 @@ public class any_type_comparable_with_nulltype_ComparisonRule extends Comparison
   }
 
   public SAbstractConcept getApplicableConcept1() {
-    return CONCEPTS.BaseConcept$Sz;
+    return CONCEPTS.BaseConcept$gP;
   }
   public SAbstractConcept getApplicableConcept2() {
-    return CONCEPTS.NullType$do;
+    return CONCEPTS.NullType$Ea;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PrimitiveTypeDescriptor$od = MetaAdapterFactory.getConcept(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cae1d1L, "jetbrains.mps.baseLanguage.blTypes.structure.PrimitiveTypeDescriptor");
-    /*package*/ static final SConcept PrimitiveType$5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
-    /*package*/ static final SConcept BaseConcept$Sz = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
-    /*package*/ static final SConcept NullType$do = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1185ff468caL, "jetbrains.mps.baseLanguage.structure.NullType");
+    /*package*/ static final SConcept PrimitiveTypeDescriptor$At = MetaAdapterFactory.getConcept(0xed6d7656532c4bc2L, 0x81d1af945aeb8280L, 0x10de9cae1d1L, "jetbrains.mps.baseLanguage.blTypes.structure.PrimitiveTypeDescriptor");
+    /*package*/ static final SConcept PrimitiveType$sR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept NullType$Ea = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1185ff468caL, "jetbrains.mps.baseLanguage.structure.NullType");
   }
 }

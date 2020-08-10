@@ -37,12 +37,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class IMenu_Concept_Constraints extends BaseConstraintsDescriptor {
   public IMenu_Concept_Constraints() {
-    super(CONCEPTS.IMenu_Concept$UY);
+    super(CONCEPTS.IMenu_Concept$6_);
   }
 
   public static class Name_Property extends BasePropertyConstraintsDescriptor {
     public Name_Property(ConstraintsDescriptor container) {
-      super(PROPS.name$lA7v, container);
+      super(PROPS.name$MnvL, container);
     }
     @Override
     public boolean hasOwnGetter() {
@@ -50,14 +50,14 @@ public class IMenu_Concept_Constraints extends BaseConstraintsDescriptor {
     }
     @Override
     public Object getValue(SNode node) {
-      SAbstractConcept cncpt = SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.type$Y1Qo));
+      SAbstractConcept cncpt = SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.type$2k1Z));
       switch (conceptIndex.index(cncpt)) {
         case 0:
-          return SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.conceptDeclaration$VYS3), PROPS.name$lA7v) + "_" + SNodeOperations.getConcept(node).getName();
+          return SPropertyOperations.getString(SLinkOperations.getTarget(node, LINKS.conceptDeclaration$h3E), PROPS.name$MnvL) + "_" + SNodeOperations.getConcept(node).getName();
         case 1:
-          return SPropertyOperations.getString(SNodeOperations.as(SLinkOperations.getTarget(node, LINKS.type$Y1Qo), CONCEPTS.MenuTypeNamed$SE), PROPS.name$lA7v);
+          return SPropertyOperations.getString(SNodeOperations.as(SLinkOperations.getTarget(node, LINKS.type$2k1Z), CONCEPTS.MenuTypeNamed$4h), PROPS.name$MnvL);
         default:
-          return SPropertyOperations.getString(node, PROPS.name$lA7v);
+          return SPropertyOperations.getString(node, PROPS.name$MnvL);
       }
     }
     private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5326ef9ad1607089L), MetaIdFactory.conceptId(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5326ef9ad160708aL)).seal();
@@ -65,12 +65,12 @@ public class IMenu_Concept_Constraints extends BaseConstraintsDescriptor {
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
     Map<SProperty, PropertyConstraintsDescriptor> properties = new HashMap<SProperty, PropertyConstraintsDescriptor>();
-    properties.put(PROPS.name$lA7v, new Name_Property(this));
+    properties.put(PROPS.name$MnvL, new Name_Property(this));
     return properties;
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.conceptDeclaration$VYS3, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.conceptDeclaration$h3E, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -85,7 +85,7 @@ public class IMenu_Concept_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SConcept acd = CONCEPTS.AbstractConceptDeclaration$UN;
+            SConcept acd = CONCEPTS.AbstractConceptDeclaration$KA;
             if (!(SNodeOperations.getModel(_context.getContextNode()).getModule() instanceof Language)) {
               return new ModelPlusImportedScope(SNodeOperations.getModel(_context.getContextNode()), true, acd);
             }
@@ -101,17 +101,17 @@ public class IMenu_Concept_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_ftgaz8_a0a0a0a0a1a0a0a0e = new SNodePointer("r:00000000-0000-4000-0000-011c89590298(jetbrains.mps.lang.editor.constraints)", "5188168501463728172");
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IMenu_Concept$UY = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, "jetbrains.mps.lang.editor.structure.IMenu_Concept");
-    /*package*/ static final SConcept MenuTypeNamed$SE = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5326ef9ad160708aL, "jetbrains.mps.lang.editor.structure.MenuTypeNamed");
-    /*package*/ static final SConcept AbstractConceptDeclaration$UN = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SInterfaceConcept IMenu_Concept$6_ = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, "jetbrains.mps.lang.editor.structure.IMenu_Concept");
+    /*package*/ static final SConcept MenuTypeNamed$4h = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5326ef9ad160708aL, "jetbrains.mps.lang.editor.structure.MenuTypeNamed");
+    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink type$Y1Qo = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5326ef9ad16080e3L, "type");
-    /*package*/ static final SReferenceLink conceptDeclaration$VYS3 = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
+    /*package*/ static final SContainmentLink type$2k1Z = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5326ef9ad16080e3L, "type");
+    /*package*/ static final SReferenceLink conceptDeclaration$h3E = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, 0x5b7b4c4d511049b4L, "conceptDeclaration");
   }
 }

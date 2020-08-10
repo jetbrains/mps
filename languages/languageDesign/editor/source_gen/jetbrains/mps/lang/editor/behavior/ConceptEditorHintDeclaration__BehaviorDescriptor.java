@@ -32,14 +32,14 @@ public final class ConceptEditorHintDeclaration__BehaviorDescriptor extends Base
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getHintsContainer_id59ZEGVRaGvE, getQualifiedName_id59ZEGVRaGvv);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.assign(__thisNode__, PROPS.showInUI$aX4s, true);
+    SPropertyOperations.assign(__thisNode__, PROPS.showInUI$ffg3, true);
   }
 
   /*package*/ static SNode getHintsContainer_id59ZEGVRaGvE(@NotNull SNode __thisNode__) {
-    return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.ConceptEditorContextHints$aY);
+    return SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.ConceptEditorContextHints$m_);
   }
   /*package*/ static String getQualifiedName_id59ZEGVRaGvv(@NotNull SNode __thisNode__) {
-    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(ConceptEditorHintDeclaration__BehaviorDescriptor.getHintsContainer_id59ZEGVRaGvE.invoke(__thisNode__)) + "." + SPropertyOperations.getString(__thisNode__, PROPS.name$lA7v);
+    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(ConceptEditorHintDeclaration__BehaviorDescriptor.getHintsContainer_id59ZEGVRaGvE.invoke(__thisNode__)) + "." + SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL);
   }
 
   /*package*/ ConceptEditorHintDeclaration__BehaviorDescriptor() {
@@ -91,11 +91,11 @@ public final class ConceptEditorHintDeclaration__BehaviorDescriptor extends Base
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty showInUI$aX4s = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x527faacef50d095eL, 0x256260d9230ff77L, "showInUI");
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty showInUI$ffg3 = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x527faacef50d095eL, 0x256260d9230ff77L, "showInUI");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConceptEditorContextHints$aY = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x527faacef4e35767L, "jetbrains.mps.lang.editor.structure.ConceptEditorContextHints");
+    /*package*/ static final SConcept ConceptEditorContextHints$m_ = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x527faacef4e35767L, "jetbrains.mps.lang.editor.structure.ConceptEditorContextHints");
   }
 }

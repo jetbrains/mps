@@ -106,10 +106,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.mentions$k7cJ;
+      return LINKS.mentions$Vn9B;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.RequirementEntryReference$dL;
+      return CONCEPTS.RequirementEntryReference$aD;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -119,7 +119,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(mentionsListHandler_yys6sy_b1a.this.getNode(), LINKS.mentions$k7cJ));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(mentionsListHandler_yys6sy_b1a.this.getNode(), LINKS.mentions$Vn9B));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -173,7 +173,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
   }
   private boolean nodeCondition_yys6sy_a1b0() {
-    return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.mentions$k7cJ)).count() > 1;
+    return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.mentions$Vn9B)).count() > 1;
   }
   private EditorCell createConstant_1() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "/");
@@ -184,10 +184,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink mentions$k7cJ = MetaAdapterFactory.getContainmentLink(0x81a3307bd10f4e90L, 0x8043ff6aa5380c33L, 0x39ed36a1ccd3a494L, 0x39ed36a1ccd45001L, "mentions");
+    /*package*/ static final SContainmentLink mentions$Vn9B = MetaAdapterFactory.getContainmentLink(0x81a3307bd10f4e90L, 0x8043ff6aa5380c33L, 0x39ed36a1ccd3a494L, 0x39ed36a1ccd45001L, "mentions");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RequirementEntryReference$dL = MetaAdapterFactory.getConcept(0x81a3307bd10f4e90L, 0x8043ff6aa5380c33L, 0x39ed36a1ccd6180aL, "jetbrains.mps.samples.requirementTracking.Traces.structure.RequirementEntryReference");
+    /*package*/ static final SConcept RequirementEntryReference$aD = MetaAdapterFactory.getConcept(0x81a3307bd10f4e90L, 0x8043ff6aa5380c33L, 0x39ed36a1ccd6180aL, "jetbrains.mps.samples.requirementTracking.Traces.structure.RequirementEntryReference");
   }
 }

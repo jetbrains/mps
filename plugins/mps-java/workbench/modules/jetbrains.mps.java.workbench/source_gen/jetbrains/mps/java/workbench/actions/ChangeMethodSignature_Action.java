@@ -60,7 +60,7 @@ public class ChangeMethodSignature_Action extends BaseAction {
     }
     {
       SNode node = event.getData(MPSCommonDataKeys.NODE);
-      if (node != null && !(SNodeOperations.isInstanceOf(node, CONCEPTS.BaseMethodDeclaration$RR))) {
+      if (node != null && !(SNodeOperations.isInstanceOf(node, CONCEPTS.BaseMethodDeclaration$kD))) {
         node = null;
       }
       MapSequence.fromMap(_params).put("method", node);
@@ -94,9 +94,9 @@ public class ChangeMethodSignature_Action extends BaseAction {
     modelAccess.runWriteAction(new Runnable() {
       public void run() {
         repo.saveAll();
-        baseMethod.value = ((SNode) BHReflection.invoke0(((SNode) MapSequence.fromMap(_params).get("method")), CONCEPTS.BaseMethodDeclaration$RR, SMethodTrimmedId.create("getBaseMethod", CONCEPTS.BaseMethodDeclaration$RR, "4mmymf_0z7l")));
+        baseMethod.value = ((SNode) BHReflection.invoke0(((SNode) MapSequence.fromMap(_params).get("method")), CONCEPTS.BaseMethodDeclaration$kD, SMethodTrimmedId.create("getBaseMethod", CONCEPTS.BaseMethodDeclaration$kD, "4mmymf_0z7l")));
         if (baseMethod.value != null) {
-          message.value = "Method " + ((SNode) MapSequence.fromMap(_params).get("method")).getPresentation() + " overrides method from " + SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(baseMethod.value), CONCEPTS.Classifier$hJ), PROPS.name$lA7v) + ".\n";
+          message.value = "Method " + ((SNode) MapSequence.fromMap(_params).get("method")).getPresentation() + " overrides method from " + SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(baseMethod.value), CONCEPTS.Classifier$Ix), PROPS.name$MnvL) + ".\n";
           message.value += "Do you want to change signature of this method instead?";
         }
       }
@@ -130,11 +130,11 @@ public class ChangeMethodSignature_Action extends BaseAction {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseMethodDeclaration$RR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

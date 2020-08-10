@@ -39,7 +39,7 @@ public class ActionTestChildToWrap1_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_kxaev4_a(), CONCEPTS.ActionTestChildToWrap1$uP));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_kxaev4_a(), CONCEPTS.ActionTestChildToWrap1$JE));
     return result;
   }
 
@@ -76,7 +76,7 @@ public class ActionTestChildToWrap1_SubstituteMenu extends SubstituteMenuBase {
     @Nullable
     @Override
     protected Iterable<? extends SConcept> getParameters(SubstituteMenuContext _context) {
-      return SConceptOperations.getAllSubConcepts2(CONCEPTS.ActionTestChildToWrap1$uP, _context.getModel());
+      return SConceptOperations.getAllSubConcepts2(CONCEPTS.ActionTestChildToWrap1$JE, _context.getModel());
     }
     private class SMP_Action_kxaev4_a0 extends SingleItemSubstituteMenuPart {
       private final SConcept myParameterObject;
@@ -111,7 +111,7 @@ public class ActionTestChildToWrap1_SubstituteMenu extends SubstituteMenuBase {
         private final SubstituteMenuContext _context;
         private EditorMenuTraceInfo myTraceInfo;
         public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.ActionTestChildToWrap1$uP, context);
+          super(CONCEPTS.ActionTestChildToWrap1$JE, context);
           _context = context;
         }
 
@@ -131,7 +131,7 @@ public class ActionTestChildToWrap1_SubstituteMenu extends SubstituteMenuBase {
         }
         @NotNull
         protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, CONCEPTS.ActionTestChildToWrap1$uP, getMatchingText(pattern), getDescriptionText(pattern));
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.ActionTestChildToWrap1$JE, getMatchingText(pattern), getDescriptionText(pattern));
         }
         @Nullable
         @Override
@@ -178,6 +178,6 @@ public class ActionTestChildToWrap1_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ActionTestChildToWrap1$uP = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x47ad1fca2ee71badL, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestChildToWrap1");
+    /*package*/ static final SConcept ActionTestChildToWrap1$JE = MetaAdapterFactory.getConcept(0x737ed1fffa634ebcL, 0xa834435499b23c64L, 0x47ad1fca2ee71badL, "jetbrains.mps.lang.actions.testLanguage.structure.ActionTestChildToWrap1");
   }
 }

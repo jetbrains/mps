@@ -41,7 +41,7 @@ public class RepositoryLanguages_SubstituteWrapped extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_z8062m_a(), CONCEPTS.LanguageIdentityBySourceModule$RC));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_z8062m_a(), CONCEPTS.LanguageIdentityBySourceModule$T8));
     return result;
   }
 
@@ -81,7 +81,7 @@ public class RepositoryLanguages_SubstituteWrapped extends SubstituteMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.LanguageIdentityBySourceModule$RC;
+          return CONCEPTS.LanguageIdentityBySourceModule$T8;
         }
         @Nullable
         @Override
@@ -114,22 +114,22 @@ public class RepositoryLanguages_SubstituteWrapped extends SubstituteMenuBase {
       return new NamedSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor, "jetbrains.mps.lang.smodel.editor.RepositoryLanguages_Substitute");
     }
     private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
-      return CONCEPTS.ModulePointer$_2;
+      return CONCEPTS.ModulePointer$Ay;
     }
   }
   private static SNode createLanguageIdentityBySourceModule_z8062m_a0a0a(SNode p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.LanguageIdentityBySourceModule$RC);
-    n0.forChild(LINKS.moduleReference$aLb5).initNode(p0, CONCEPTS.ModuleIdentity$Sx, true);
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.LanguageIdentityBySourceModule$T8);
+    n0.forChild(LINKS.moduleReference$Jac_).initNode(p0, CONCEPTS.ModuleIdentity$U1, true);
     return n0.getResult();
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept LanguageIdentityBySourceModule$RC = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2246d35517e858c2L, "jetbrains.mps.lang.smodel.structure.LanguageIdentityBySourceModule");
-    /*package*/ static final SConcept ModulePointer$_2 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, "jetbrains.mps.lang.smodel.structure.ModulePointer");
-    /*package*/ static final SInterfaceConcept ModuleIdentity$Sx = MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e85338e1eL, "jetbrains.mps.lang.smodel.structure.ModuleIdentity");
+    /*package*/ static final SConcept LanguageIdentityBySourceModule$T8 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2246d35517e858c2L, "jetbrains.mps.lang.smodel.structure.LanguageIdentityBySourceModule");
+    /*package*/ static final SConcept ModulePointer$Ay = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e853388b3L, "jetbrains.mps.lang.smodel.structure.ModulePointer");
+    /*package*/ static final SInterfaceConcept ModuleIdentity$U1 = MetaAdapterFactory.getInterfaceConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5ef5a1e85338e1eL, "jetbrains.mps.lang.smodel.structure.ModuleIdentity");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink moduleReference$aLb5 = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2246d35517e858c2L, 0x2246d35517e858e9L, "moduleReference");
+    /*package*/ static final SContainmentLink moduleReference$Jac_ = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2246d35517e858c2L, 0x2246d35517e858e9L, "moduleReference");
   }
 }

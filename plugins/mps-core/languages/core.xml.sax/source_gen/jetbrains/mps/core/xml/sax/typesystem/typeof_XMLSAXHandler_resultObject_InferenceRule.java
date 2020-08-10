@@ -20,26 +20,26 @@ public class typeof_XMLSAXHandler_resultObject_InferenceRule extends AbstractInf
   public typeof_XMLSAXHandler_resultObject_InferenceRule() {
   }
   public void applyRule(final SNode node, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SNode parent = SNodeOperations.getParent(SNodeOperations.getNodeAncestor(node, CONCEPTS.XMLSAXTextRule$jY, false, false));
-    if (SNodeOperations.isInstanceOf(parent, CONCEPTS.XMLSAXParser$Sn)) {
+    SNode parent = SNodeOperations.getParent(SNodeOperations.getNodeAncestor(node, CONCEPTS.XMLSAXTextRule$CV, false, false));
+    if (SNodeOperations.isInstanceOf(parent, CONCEPTS.XMLSAXParser$dk)) {
       {
         SNode _nodeToCheck_1029348928467 = node;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)", "2264311582634140448", 0, null);
-        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)", "2264311582634140457", true), (SNode) SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(parent, CONCEPTS.XMLSAXParser$Sn), LINKS.root$ksqx), LINKS.type$kjtw), _info_12389875345);
+        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)", "2264311582634140457", true), (SNode) SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(parent, CONCEPTS.XMLSAXParser$dk), LINKS.root$ACJu), LINKS.type$AvMt), _info_12389875345);
       }
     } else {
-      SNode parentMacro = SNodeOperations.getNodeAncestor(node, CONCEPTS.XMLSAXNodeRule$AV, false, false);
+      SNode parentMacro = SNodeOperations.getNodeAncestor(node, CONCEPTS.XMLSAXNodeRule$VS, false, false);
       if (parentMacro != null) {
         {
           SNode _nodeToCheck_1029348928467 = node;
           EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)", "2264311582634140475", 0, null);
-          typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)", "2264311582634140477", true), (SNode) SLinkOperations.getTarget(parentMacro, LINKS.type$kjtw), _info_12389875345);
+          typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:553bcb75-a1cc-4005-9641-b5a2524d9f6a(jetbrains.mps.core.xml.sax.typesystem)", "2264311582634140477", true), (SNode) SLinkOperations.getTarget(parentMacro, LINKS.type$AvMt), _info_12389875345);
         }
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.XMLSAXHandler_resultObject$tz;
+    return CONCEPTS.XMLSAXHandler_resultObject$Mw;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -49,14 +49,14 @@ public class typeof_XMLSAXHandler_resultObject_InferenceRule extends AbstractInf
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept XMLSAXTextRule$jY = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e310L, "jetbrains.mps.core.xml.sax.structure.XMLSAXTextRule");
-    /*package*/ static final SConcept XMLSAXParser$Sn = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e301L, "jetbrains.mps.core.xml.sax.structure.XMLSAXParser");
-    /*package*/ static final SConcept XMLSAXNodeRule$AV = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2f2L, "jetbrains.mps.core.xml.sax.structure.XMLSAXNodeRule");
-    /*package*/ static final SConcept XMLSAXHandler_resultObject$tz = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2eaL, "jetbrains.mps.core.xml.sax.structure.XMLSAXHandler_resultObject");
+    /*package*/ static final SConcept XMLSAXTextRule$CV = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e310L, "jetbrains.mps.core.xml.sax.structure.XMLSAXTextRule");
+    /*package*/ static final SConcept XMLSAXParser$dk = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e301L, "jetbrains.mps.core.xml.sax.structure.XMLSAXParser");
+    /*package*/ static final SConcept XMLSAXNodeRule$VS = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2f2L, "jetbrains.mps.core.xml.sax.structure.XMLSAXNodeRule");
+    /*package*/ static final SConcept XMLSAXHandler_resultObject$Mw = MetaAdapterFactory.getConcept(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2eaL, "jetbrains.mps.core.xml.sax.structure.XMLSAXHandler_resultObject");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink root$ksqx = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e301L, 0x1f6c736337b5e303L, "root");
-    /*package*/ static final SContainmentLink type$kjtw = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2f2L, 0x1f6c736337b5e2f3L, "type");
+    /*package*/ static final SReferenceLink root$ACJu = MetaAdapterFactory.getReferenceLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e301L, 0x1f6c736337b5e303L, "root");
+    /*package*/ static final SContainmentLink type$AvMt = MetaAdapterFactory.getContainmentLink(0xdcb5a83a19a844ffL, 0xa4cbfc7d324ecc63L, 0x1f6c736337b5e2f2L, 0x1f6c736337b5e2f3L, "type");
   }
 }

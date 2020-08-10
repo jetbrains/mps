@@ -14,16 +14,16 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 @Deprecated
 public class ConceptNodeUtil {
   public static boolean isSuper(SNode e) {
-    return SNodeOperations.isInstanceOf(e, CONCEPTS.SuperNodeExpression$A_) || SNodeOperations.isInstanceOf(e, CONCEPTS.SuperConceptExpression$HR);
+    return SNodeOperations.isInstanceOf(e, CONCEPTS.SuperNodeExpression$tM) || SNodeOperations.isInstanceOf(e, CONCEPTS.SuperConceptExpression$_4);
   }
   public static boolean isThis(SNode e) {
-    return SNodeOperations.isInstanceOf(e, CONCEPTS.ThisNodeExpression$BO) || SNodeOperations.isInstanceOf(e, CONCEPTS.ThisConceptExpression$T_);
+    return SNodeOperations.isInstanceOf(e, CONCEPTS.ThisNodeExpression$v1) || SNodeOperations.isInstanceOf(e, CONCEPTS.ThisConceptExpression$KM);
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SuperNodeExpression$A_ = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434a6558L, "jetbrains.mps.lang.behavior.structure.SuperNodeExpression");
-    /*package*/ static final SConcept SuperConceptExpression$HR = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x69a9d7dcb057a7a7L, "jetbrains.mps.lang.behavior.structure.SuperConceptExpression");
-    /*package*/ static final SConcept ThisNodeExpression$BO = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434b5be1L, "jetbrains.mps.lang.behavior.structure.ThisNodeExpression");
-    /*package*/ static final SConcept ThisConceptExpression$T_ = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x17a53cfe586da642L, "jetbrains.mps.lang.behavior.structure.ThisConceptExpression");
+    /*package*/ static final SConcept SuperNodeExpression$tM = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434a6558L, "jetbrains.mps.lang.behavior.structure.SuperNodeExpression");
+    /*package*/ static final SConcept SuperConceptExpression$_4 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x69a9d7dcb057a7a7L, "jetbrains.mps.lang.behavior.structure.SuperConceptExpression");
+    /*package*/ static final SConcept ThisNodeExpression$v1 = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d434b5be1L, "jetbrains.mps.lang.behavior.structure.ThisNodeExpression");
+    /*package*/ static final SConcept ThisConceptExpression$KM = MetaAdapterFactory.getConcept(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x17a53cfe586da642L, "jetbrains.mps.lang.behavior.structure.ThisConceptExpression");
   }
 }

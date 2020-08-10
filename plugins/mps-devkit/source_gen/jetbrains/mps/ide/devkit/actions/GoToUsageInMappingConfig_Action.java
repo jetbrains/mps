@@ -49,7 +49,7 @@ public class GoToUsageInMappingConfig_Action extends BaseAction {
     if ((SNodeOperations.getContainingRoot(event.getData(MPSCommonDataKeys.NODE)) == null)) {
       return false;
     }
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(event.getData(MPSCommonDataKeys.NODE)), CONCEPTS.MappingConfiguration$rB)) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(event.getData(MPSCommonDataKeys.NODE)), CONCEPTS.MappingConfiguration$7j)) {
       return false;
     }
     return true;
@@ -91,6 +91,6 @@ public class GoToUsageInMappingConfig_Action extends BaseAction {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept MappingConfiguration$rB = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration");
+    /*package*/ static final SConcept MappingConfiguration$7j = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration");
   }
 }

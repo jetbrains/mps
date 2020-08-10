@@ -15,25 +15,25 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class wrappers_PasteWrapper_2 implements PasteWrapper {
   @Override
   public SAbstractConcept getSourceConcept() {
-    return CONCEPTS.BuildSource_JavaJar$OF;
+    return CONCEPTS.BuildSource_JavaJar$ne;
   }
   @Override
   public SAbstractConcept getTargetConcept() {
-    return CONCEPTS.BuildSource_JavaDependencyJar$ka;
+    return CONCEPTS.BuildSource_JavaDependencyJar$QH;
   }
   @Override
   public SNode wrap(SNode sourceNode) {
-    SNode nn = SModelOperations.createNewNode(SNodeOperations.getModel(sourceNode), null, CONCEPTS.BuildSource_JavaDependencyJar$ka);
-    SLinkOperations.setTarget(nn, LINKS.jar$Ca50, sourceNode);
+    SNode nn = SModelOperations.createNewNode(SNodeOperations.getModel(sourceNode), null, CONCEPTS.BuildSource_JavaDependencyJar$QH);
+    SLinkOperations.setTarget(nn, LINKS.jar$NQBz, sourceNode);
     return nn;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildSource_JavaJar$OF = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x11779a1dbcff551aL, "jetbrains.mps.build.structure.BuildSource_JavaJar");
-    /*package*/ static final SConcept BuildSource_JavaDependencyJar$ka = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b6185c40L, "jetbrains.mps.build.structure.BuildSource_JavaDependencyJar");
+    /*package*/ static final SConcept BuildSource_JavaJar$ne = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x11779a1dbcff551aL, "jetbrains.mps.build.structure.BuildSource_JavaJar");
+    /*package*/ static final SConcept BuildSource_JavaDependencyJar$QH = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b6185c40L, "jetbrains.mps.build.structure.BuildSource_JavaDependencyJar");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink jar$Ca50 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b6185c40L, 0x3395e884b6185c41L, "jar");
+    /*package*/ static final SContainmentLink jar$NQBz = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b6185c40L, 0x3395e884b6185c41L, "jar");
   }
 }

@@ -30,7 +30,7 @@ public final class TextBackgroundColorStyleClassItem__BehaviorDescriptor extends
   }
 
   /*package*/ static boolean isApplicableToCellConcept_id2u3gVK1lsco(@NotNull SAbstractConcept __thisConcept__, SConcept cellConcept) {
-    return cellConcept.isSubConceptOf(CONCEPTS.CellModel_AbstractLabel$ji) || cellConcept.isSubConceptOf(CONCEPTS.CellModel_ReferencePresentation$Wr);
+    return cellConcept.isSubConceptOf(CONCEPTS.CellModel_AbstractLabel$uT) || cellConcept.isSubConceptOf(CONCEPTS.CellModel_ReferencePresentation$82);
   }
 
   /*package*/ TextBackgroundColorStyleClassItem__BehaviorDescriptor() {
@@ -80,7 +80,7 @@ public final class TextBackgroundColorStyleClassItem__BehaviorDescriptor extends
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CellModel_ReferencePresentation$Wr = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x8ace515f0191e6eL, "jetbrains.mps.lang.editor.structure.CellModel_ReferencePresentation");
-    /*package*/ static final SConcept CellModel_AbstractLabel$ji = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb4e7c3a4cL, "jetbrains.mps.lang.editor.structure.CellModel_AbstractLabel");
+    /*package*/ static final SConcept CellModel_ReferencePresentation$82 = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x8ace515f0191e6eL, "jetbrains.mps.lang.editor.structure.CellModel_ReferencePresentation");
+    /*package*/ static final SConcept CellModel_AbstractLabel$uT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfb4e7c3a4cL, "jetbrains.mps.lang.editor.structure.CellModel_AbstractLabel");
   }
 }

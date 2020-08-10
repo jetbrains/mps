@@ -22,12 +22,12 @@ public class RuleVariableDeclaration implements DataFlowConstructor {
     return concept.equals(applicableConcept) || concept.isSubConceptOf(applicableConcept);
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.VariableDeclaration$xe;
+    return CONCEPTS.VariableDeclaration$Y0;
   }
   public void performActions(Program o, SNode node) {
-    if (SLinkOperations.getChildren(node, LINKS.annotation$4YGW) != null) {
-      for (SNode annotation : SLinkOperations.getChildren(node, LINKS.annotation$4YGW)) {
-        if (SLinkOperations.hasPointer(annotation, LINKS.annotation$lXdy, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~Nullable"))) {
+    if (SLinkOperations.getChildren(node, LINKS.annotation$K49I) != null) {
+      for (SNode annotation : SLinkOperations.getChildren(node, LINKS.annotation$K49I)) {
+        if (SLinkOperations.hasPointer(annotation, LINKS.annotation$12Ek, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~Nullable"))) {
           {
             Object object = node;
             if (((Program) o).contains(object)) {
@@ -40,7 +40,7 @@ public class RuleVariableDeclaration implements DataFlowConstructor {
             }
           }
         }
-        if (SLinkOperations.hasPointer(annotation, LINKS.annotation$lXdy, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~NotNull"))) {
+        if (SLinkOperations.hasPointer(annotation, LINKS.annotation$12Ek, new SNodePointer("3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)", "~NotNull"))) {
           {
             Object object = node;
             if (((Program) o).contains(object)) {
@@ -58,11 +58,11 @@ public class RuleVariableDeclaration implements DataFlowConstructor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VariableDeclaration$xe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
+    /*package*/ static final SConcept VariableDeclaration$Y0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink annotation$lXdy = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
-    /*package*/ static final SContainmentLink annotation$4YGW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SReferenceLink annotation$12Ek = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
+    /*package*/ static final SContainmentLink annotation$K49I = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
   }
 }

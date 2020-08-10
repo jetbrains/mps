@@ -32,14 +32,14 @@ public class CellAction_Comment extends AbstractCommentAction {
 
   @Override
   public boolean canExecute(EditorContext editorContext) {
-    if (SNodeOperations.getParent(this.myNode) == null || SNodeOperations.isInstanceOf(SNodeOperations.getParent(myNode), CONCEPTS.BaseCommentAttribute$Zd)) {
+    if (SNodeOperations.getParent(this.myNode) == null || SNodeOperations.isInstanceOf(SNodeOperations.getParent(myNode), CONCEPTS.BaseCommentAttribute$nv)) {
       return false;
     }
     return isNonTrivialSingleSelection(editorContext);
   }
 
   public void executeInternal(EditorContext editorContext) {
-    if (!(SNodeOperations.isInstanceOf(myNode, CONCEPTS.Attribute$RJ))) {
+    if (!(SNodeOperations.isInstanceOf(myNode, CONCEPTS.Attribute$g1))) {
       CommentUtil.commentOut(myNode);
     }
   }
@@ -51,7 +51,7 @@ public class CellAction_Comment extends AbstractCommentAction {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BaseCommentAttribute$Zd = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
-    /*package*/ static final SConcept Attribute$RJ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x47bf8397520e5939L, "jetbrains.mps.lang.core.structure.Attribute");
+    /*package*/ static final SConcept BaseCommentAttribute$nv = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
+    /*package*/ static final SConcept Attribute$g1 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x47bf8397520e5939L, "jetbrains.mps.lang.core.structure.Attribute");
   }
 }

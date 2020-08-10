@@ -24,12 +24,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class ValueReference_Constraints extends BaseConstraintsDescriptor {
   public ValueReference_Constraints() {
-    super(CONCEPTS.ValueReference$nL);
+    super(CONCEPTS.ValueReference$QC);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.value$HhXf, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.value$mys6, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -44,7 +44,7 @@ public class ValueReference_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            SNode plan = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Plan$nk, true, false);
+            SNode plan = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Plan$Qb, true, false);
             return ListScope.forResolvableElements(SNodeOperations.getNodeDescendants(plan, null, false, new SAbstractConcept[]{}));
           }
         };
@@ -57,11 +57,11 @@ public class ValueReference_Constraints extends BaseConstraintsDescriptor {
   private static final SNodePointer breakingNode_r7tp2g_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c89590408(jetbrains.mps.samples.agreementLanguage.constraints)", "6836281137582846955");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ValueReference$nL = MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102eaa8102cL, "jetbrains.mps.samples.agreementLanguage.structure.ValueReference");
-    /*package*/ static final SConcept Plan$nk = MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbe79bfeL, "jetbrains.mps.samples.agreementLanguage.structure.Plan");
+    /*package*/ static final SConcept ValueReference$QC = MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102eaa8102cL, "jetbrains.mps.samples.agreementLanguage.structure.ValueReference");
+    /*package*/ static final SConcept Plan$Qb = MetaAdapterFactory.getConcept(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102dbe79bfeL, "jetbrains.mps.samples.agreementLanguage.structure.Plan");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink value$HhXf = MetaAdapterFactory.getReferenceLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102eaa8102cL, 0x102eaa8542bL, "value");
+    /*package*/ static final SReferenceLink value$mys6 = MetaAdapterFactory.getReferenceLink(0x144f7012c2d543beL, 0xbe2b4bfb7dff6503L, 0x102eaa8102cL, 0x102eaa8542bL, "value");
   }
 }

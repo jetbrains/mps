@@ -24,12 +24,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class RefactoringParameterReference_Constraints extends BaseConstraintsDescriptor {
   public RefactoringParameterReference_Constraints() {
-    super(CONCEPTS.RefactoringParameterReference$gK);
+    super(CONCEPTS.RefactoringParameterReference$Hp);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.refactoringParameter$Q8o0, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.refactoringParameter$o4OD, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -44,7 +44,7 @@ public class RefactoringParameterReference_Constraints extends BaseConstraintsDe
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return ListScope.forResolvableElements(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Refactoring$J9, false, false), LINKS.parameter$HstS));
+            return ListScope.forResolvableElements(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.Refactoring$bM, false, false), LINKS.parameter$foUx));
           }
         };
       }
@@ -56,12 +56,12 @@ public class RefactoringParameterReference_Constraints extends BaseConstraintsDe
   private static final SNodePointer breakingNode_vznh2k_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c89590313(jetbrains.mps.lang.refactoring.constraints)", "6836281137582796958");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RefactoringParameterReference$gK = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77cda06L, "jetbrains.mps.lang.refactoring.structure.RefactoringParameterReference");
-    /*package*/ static final SConcept Refactoring$J9 = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, "jetbrains.mps.lang.refactoring.structure.Refactoring");
+    /*package*/ static final SConcept RefactoringParameterReference$Hp = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77cda06L, "jetbrains.mps.lang.refactoring.structure.RefactoringParameterReference");
+    /*package*/ static final SConcept Refactoring$bM = MetaAdapterFactory.getConcept(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, "jetbrains.mps.lang.refactoring.structure.Refactoring");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink refactoringParameter$Q8o0 = MetaAdapterFactory.getReferenceLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77cda06L, 0x5fb04b74a77cda07L, "refactoringParameter");
-    /*package*/ static final SContainmentLink parameter$HstS = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, 0x5fb04b74a778e2d8L, "parameter");
+    /*package*/ static final SReferenceLink refactoringParameter$o4OD = MetaAdapterFactory.getReferenceLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a77cda06L, 0x5fb04b74a77cda07L, "refactoringParameter");
+    /*package*/ static final SContainmentLink parameter$foUx = MetaAdapterFactory.getContainmentLink(0x3ecd7c84cde345deL, 0x886c135ecc69b742L, 0x5fb04b74a778e245L, 0x5fb04b74a778e2d8L, "parameter");
   }
 }

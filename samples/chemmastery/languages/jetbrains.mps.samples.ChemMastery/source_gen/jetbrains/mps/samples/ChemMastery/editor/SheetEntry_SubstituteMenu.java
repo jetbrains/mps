@@ -41,7 +41,7 @@ public class SheetEntry_SubstituteMenu extends SubstituteMenuBase {
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
     result.add(new SMP_Subconcepts_njcabm_a());
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_njcabm_b(), CONCEPTS.SheetEntry$F9));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_njcabm_b(), CONCEPTS.SheetEntry$3$));
     return result;
   }
 
@@ -60,7 +60,7 @@ public class SheetEntry_SubstituteMenu extends SubstituteMenuBase {
 
   public class SMP_Subconcepts_njcabm_a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.SheetEntry$F9);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.SheetEntry$3$);
     }
     @NotNull
     @Override
@@ -107,7 +107,7 @@ public class SheetEntry_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.SheetEntry$F9, context);
+        super(CONCEPTS.SheetEntry$3$, context);
         _context = context;
       }
 
@@ -118,11 +118,11 @@ public class SheetEntry_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode doc = SNodeOperations.replaceWithNewChild(_context.getCurrentTargetNode(), CONCEPTS.DocumentationEntry$Ox);
-        SLinkOperations.setTarget(doc, LINKS.text$PUgw, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, "jetbrains.mps.lang.text.structure.Text")));
-        SNode l = SLinkOperations.addNewChild(SLinkOperations.getTarget(doc, LINKS.text$PUgw), LINKS.lines$y1jy, null);
-        SNode w = SLinkOperations.addNewChild(l, LINKS.elements$cK1w, CONCEPTS.Word$AM);
-        SPropertyOperations.assign(w, PROPS.value$bjp0, pattern);
+        SNode doc = SNodeOperations.replaceWithNewChild(_context.getCurrentTargetNode(), CONCEPTS.DocumentationEntry$cW);
+        SLinkOperations.setTarget(doc, LINKS.text$LyCV, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, "jetbrains.mps.lang.text.structure.Text")));
+        SNode l = SLinkOperations.addNewChild(SLinkOperations.getTarget(doc, LINKS.text$LyCV), LINKS.lines$U$m7, null);
+        SNode w = SLinkOperations.addNewChild(l, LINKS.elements$_j45, CONCEPTS.Word$Dn);
+        SPropertyOperations.assign(w, PROPS.value$zQr_, pattern);
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), doc, SelectionManager.FIRST_EDITABLE_CELL, -1);
         return doc;
       }
@@ -151,18 +151,18 @@ public class SheetEntry_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SheetEntry$F9 = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24daL, "jetbrains.mps.samples.ChemMastery.structure.SheetEntry");
-    /*package*/ static final SConcept DocumentationEntry$Ox = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24e2L, "jetbrains.mps.samples.ChemMastery.structure.DocumentationEntry");
-    /*package*/ static final SConcept Word$AM = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
+    /*package*/ static final SConcept SheetEntry$3$ = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24daL, "jetbrains.mps.samples.ChemMastery.structure.SheetEntry");
+    /*package*/ static final SConcept DocumentationEntry$cW = MetaAdapterFactory.getConcept(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24e2L, "jetbrains.mps.samples.ChemMastery.structure.DocumentationEntry");
+    /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink text$PUgw = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24e2L, 0x6ef7184fab9f24e3L, "text");
-    /*package*/ static final SContainmentLink lines$y1jy = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, 0x2331694e561a03b8L, "lines");
-    /*package*/ static final SContainmentLink elements$cK1w = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink text$LyCV = MetaAdapterFactory.getContainmentLink(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24e2L, 0x6ef7184fab9f24e3L, "text");
+    /*package*/ static final SContainmentLink lines$U$m7 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, 0x2331694e561a03b8L, "lines");
+    /*package*/ static final SContainmentLink elements$_j45 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$bjp0 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
+    /*package*/ static final SProperty value$zQr_ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
   }
 }

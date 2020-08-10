@@ -41,17 +41,17 @@ public final class RunConfiguration__BehaviorDescriptor extends BaseBHDescriptor
 
   @Nullable
   /*package*/ static SNode getExecutor_id3gs394eDyIj(@NotNull final SNode __thisNode__) {
-    return ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(__thisNode__), CONCEPTS.AbstractRunConfigurationExecutor$YM)).findFirst(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(SModelOperations.roots(SNodeOperations.getModel(__thisNode__), CONCEPTS.AbstractRunConfigurationExecutor$Fp)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.configuration$O7z0) == __thisNode__;
+        return SLinkOperations.getTarget(it, LINKS.configuration$CM7P) == __thisNode__;
       }
     });
   }
   /*package*/ static boolean isForeign_id3wpI_WC06mf(@NotNull SNode __thisNode__) {
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.configurationKind$136_) == null)) {
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.configurationKind$$GNc) == null)) {
       return false;
     }
-    return !(Objects.equals(SNodeOperations.getModel(SLinkOperations.getTarget(__thisNode__, LINKS.configurationKind$136_)), SNodeOperations.getModel(__thisNode__)));
+    return !(Objects.equals(SNodeOperations.getModel(SLinkOperations.getTarget(__thisNode__, LINKS.configurationKind$$GNc)), SNodeOperations.getModel(__thisNode__)));
   }
   /*package*/ static String getGeneratedFactoryName_id1XgDflG1h5w(@NotNull SNode __thisNode__) {
     return IGeneratedToClass__BehaviorDescriptor.getGeneratedClassName_idO$iR4JBsSg.invoke(__thisNode__) + "_Factory";
@@ -108,11 +108,11 @@ public final class RunConfiguration__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractRunConfigurationExecutor$YM = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, "jetbrains.mps.execution.configurations.structure.AbstractRunConfigurationExecutor");
+    /*package*/ static final SConcept AbstractRunConfigurationExecutor$Fp = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f52479L, "jetbrains.mps.execution.configurations.structure.AbstractRunConfigurationExecutor");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink configuration$O7z0 = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f9dce91L, 0xd244b712f9dce92L, "configuration");
-    /*package*/ static final SReferenceLink configurationKind$136_ = MetaAdapterFactory.getReferenceLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f46e49L, 0x2153d8f1c1f48ae2L, "configurationKind");
+    /*package*/ static final SReferenceLink configuration$CM7P = MetaAdapterFactory.getReferenceLink(0x756e911c3f1f4a48L, 0xbdf5a2ceb91b723cL, 0xd244b712f9dce91L, 0xd244b712f9dce92L, "configuration");
+    /*package*/ static final SReferenceLink configurationKind$$GNc = MetaAdapterFactory.getReferenceLink(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x2153d8f1c1f46e49L, 0x2153d8f1c1f48ae2L, "configurationKind");
   }
 }

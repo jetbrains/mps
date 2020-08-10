@@ -55,8 +55,8 @@ public class OverrideImplementMethodsDialog extends GroupedNodesChooser {
 
   @Override
   protected String getText(SNode node) {
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.Classifier$hJ)) {
-      return ((String) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.Classifier$hJ), CONCEPTS.INamedConcept$nV, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.Classifier$Ix)) {
+      return ((String) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.Classifier$Ix), CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
     }
     return super.getText(node);
   }
@@ -118,7 +118,7 @@ public class OverrideImplementMethodsDialog extends GroupedNodesChooser {
   }
 
   public static Iterable<SNode> sortMethods(SNode baseClassifier, Iterable<SNode> methods) {
-    return sortMethods(((List<SNode>) BHReflection.invoke0(baseClassifier, CONCEPTS.Classifier$hJ, SMethodTrimmedId.create("getAllSuperClassifiers", CONCEPTS.Classifier$hJ, "59G_UM6ah0X"))), methods);
+    return sortMethods(((List<SNode>) BHReflection.invoke0(baseClassifier, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("getAllSuperClassifiers", CONCEPTS.Classifier$Ix, "59G_UM6ah0X"))), methods);
   }
 
   public static SNodeReference[] toNodePointers(Iterable<SNode> methods) {
@@ -130,7 +130,7 @@ public class OverrideImplementMethodsDialog extends GroupedNodesChooser {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
   }
 }

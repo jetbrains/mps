@@ -231,10 +231,10 @@
       <node id="1719162360410063011" at="164,54,165,40" concept="1" />
       <node id="1719162360410063011" at="165,40,166,92" concept="1" />
       <node id="1719162360410063011" at="166,92,167,22" concept="6" />
-      <node id="1719162360410047536" at="171,0,172,0" concept="9" trace="classifier_old$cWV3" />
-      <node id="1719162360410047536" at="175,0,176,0" concept="9" trace="LinkAttribute$7j" />
-      <node id="1719162360410047536" at="176,0,177,0" concept="9" trace="PropertyAttribute$jT" />
-      <node id="1719162360410047536" at="180,0,181,0" concept="9" trace="name$lA7v" />
+      <node id="1719162360410047536" at="171,0,172,0" concept="9" trace="classifier_old$ybLO" />
+      <node id="1719162360410047536" at="175,0,176,0" concept="9" trace="LinkAttribute$v_" />
+      <node id="1719162360410047536" at="176,0,177,0" concept="9" trace="PropertyAttribute$Gb" />
+      <node id="1719162360410047536" at="180,0,181,0" concept="9" trace="name$MnvL" />
       <node id="1719162360410047536" at="40,0,42,0" concept="2" trace="myNode" />
       <node id="1719162360410062971" at="105,0,107,0" concept="2" trace="myNode" />
       <node id="1719162360410047536" at="54,0,57,0" concept="4" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
@@ -381,9 +381,9 @@
       <node id="2649128189911787239" at="95,0,96,77" concept="7" />
       <node id="6348240317717505787" at="97,60,98,66" concept="1" />
       <node id="2649128189913759277" at="100,63,101,69" concept="1" />
-      <node id="2649128189911787239" at="106,0,107,0" concept="9" trace="BaseMethodDeclaration$RR" />
-      <node id="2649128189911787239" at="110,0,111,0" concept="9" trace="body$qspy" />
-      <node id="2649128189911787239" at="111,0,112,0" concept="9" trace="statement$pYcS" />
+      <node id="2649128189911787239" at="106,0,107,0" concept="9" trace="BaseMethodDeclaration$kD" />
+      <node id="2649128189911787239" at="110,0,111,0" concept="9" trace="body$5xQk" />
+      <node id="2649128189911787239" at="111,0,112,0" concept="9" trace="statement$53DE" />
       <node id="6348240317717505787" at="25,0,28,0" concept="4" trace="execute#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="2649128189911790197" at="31,29,34,11" concept="3" />
       <node id="2649128189913759277" at="43,0,46,0" concept="4" trace="execute#(Ljetbrains/mps/openapi/editor/EditorContext;)V" />
@@ -489,7 +489,7 @@
       <node id="3845357643094222841" at="54,11,55,42" concept="6" />
       <node id="3845357643094222841" at="56,17,57,52" concept="1" />
       <node id="3845357643094222841" at="62,125,63,149" concept="6" />
-      <node id="3845357643094222839" at="68,0,69,0" concept="9" trace="DefaultModifier_old$Z2" />
+      <node id="3845357643094222839" at="68,0,69,0" concept="9" trace="DefaultModifier_old$PN" />
       <node id="3845357643094222841" at="46,0,49,0" concept="4" trace="getConcepts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/Collection;" />
       <node id="3845357643094222841" at="61,0,65,0" concept="4" trace="createItemsForConcept#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Ljava/util/Collection;" />
       <node id="3845357643094222839" at="36,256,41,5" concept="12" />
@@ -544,7 +544,7 @@
       <node id="3845357643094222853" at="54,11,55,42" concept="6" />
       <node id="3845357643094222853" at="56,17,57,52" concept="1" />
       <node id="3845357643094222853" at="62,125,63,149" concept="6" />
-      <node id="3845357643094222851" at="68,0,69,0" concept="9" trace="SuperInterfaceMethodCall_old$VW" />
+      <node id="3845357643094222851" at="68,0,69,0" concept="9" trace="SuperInterfaceMethodCall_old$MH" />
       <node id="3845357643094222853" at="46,0,49,0" concept="4" trace="getConcepts#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;)Ljava/util/Collection;" />
       <node id="3845357643094222853" at="61,0,65,0" concept="4" trace="createItemsForConcept#(Ljetbrains/mps/openapi/editor/menus/substitute/SubstituteMenuContext;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;)Ljava/util/Collection;" />
       <node id="3845357643094222851" at="36,265,41,5" concept="12" />

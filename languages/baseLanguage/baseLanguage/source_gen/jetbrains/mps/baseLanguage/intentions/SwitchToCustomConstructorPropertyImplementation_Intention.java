@@ -37,7 +37,7 @@ public final class SwitchToCustomConstructorPropertyImplementation_Intention ext
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.propertyImplementation$Cx6e), CONCEPTS.CustomSetterPropertyImplementation$E1));
+    return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.propertyImplementation$jAz0), CONCEPTS.CustomSetterPropertyImplementation$6N));
   }
   @Override
   public boolean isSurroundWith() {
@@ -54,14 +54,14 @@ public final class SwitchToCustomConstructorPropertyImplementation_Intention ext
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.propertyImplementation$Cx6e), CONCEPTS.DefaultPropertyImplementation$NN) ? "Customize Setter" : "Make Getter Default");
+      return (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.propertyImplementation$jAz0), CONCEPTS.DefaultPropertyImplementation$g_) ? "Customize Setter" : "Make Getter Default");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode toBeReplaced = SLinkOperations.getTarget(node, LINKS.propertyImplementation$Cx6e);
-      SNode replacingNode = SNodeFactoryOperations.replaceWithNewChild(toBeReplaced, CONCEPTS.CustomSetterPropertyImplementation$E1);
-      if (SNodeOperations.isInstanceOf(toBeReplaced, CONCEPTS.CustomPropertyImplementation$9G)) {
-        SLinkOperations.setTarget(replacingNode, LINKS.setAccessor$1uFz, SLinkOperations.getTarget(SNodeOperations.cast(toBeReplaced, CONCEPTS.CustomPropertyImplementation$9G), LINKS.setAccessor$h0eM));
+      SNode toBeReplaced = SLinkOperations.getTarget(node, LINKS.propertyImplementation$jAz0);
+      SNode replacingNode = SNodeFactoryOperations.replaceWithNewChild(toBeReplaced, CONCEPTS.CustomSetterPropertyImplementation$6N);
+      if (SNodeOperations.isInstanceOf(toBeReplaced, CONCEPTS.CustomPropertyImplementation$Au)) {
+        SLinkOperations.setTarget(replacingNode, LINKS.setAccessor$G$8l, SLinkOperations.getTarget(SNodeOperations.cast(toBeReplaced, CONCEPTS.CustomPropertyImplementation$Au), LINKS.setAccessor$W5F$));
       }
     }
     @Override
@@ -71,14 +71,14 @@ public final class SwitchToCustomConstructorPropertyImplementation_Intention ext
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink propertyImplementation$Cx6e = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, 0x117b75fb65aL, "propertyImplementation");
-    /*package*/ static final SContainmentLink setAccessor$1uFz = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, 0x3b7a2005a14d0185L, "setAccessor");
-    /*package*/ static final SContainmentLink setAccessor$h0eM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b8f1b18eL, 0x117bd9b26faL, "setAccessor");
+    /*package*/ static final SContainmentLink propertyImplementation$jAz0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL, 0x117b75fb65aL, "propertyImplementation");
+    /*package*/ static final SContainmentLink setAccessor$G$8l = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, 0x3b7a2005a14d0185L, "setAccessor");
+    /*package*/ static final SContainmentLink setAccessor$W5F$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b8f1b18eL, 0x117bd9b26faL, "setAccessor");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CustomSetterPropertyImplementation$E1 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, "jetbrains.mps.baseLanguage.structure.CustomSetterPropertyImplementation");
-    /*package*/ static final SConcept DefaultPropertyImplementation$NN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b7633177L, "jetbrains.mps.baseLanguage.structure.DefaultPropertyImplementation");
-    /*package*/ static final SConcept CustomPropertyImplementation$9G = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b8f1b18eL, "jetbrains.mps.baseLanguage.structure.CustomPropertyImplementation");
+    /*package*/ static final SConcept CustomSetterPropertyImplementation$6N = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, "jetbrains.mps.baseLanguage.structure.CustomSetterPropertyImplementation");
+    /*package*/ static final SConcept DefaultPropertyImplementation$g_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b7633177L, "jetbrains.mps.baseLanguage.structure.DefaultPropertyImplementation");
+    /*package*/ static final SConcept CustomPropertyImplementation$Au = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b8f1b18eL, "jetbrains.mps.baseLanguage.structure.CustomPropertyImplementation");
   }
 }

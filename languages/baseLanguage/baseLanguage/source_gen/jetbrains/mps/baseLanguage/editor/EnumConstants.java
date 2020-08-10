@@ -44,7 +44,7 @@ public class EnumConstants extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.EnumClass$uy))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.EnumClass$Vk))) {
         return false;
       }
       return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
@@ -54,17 +54,17 @@ public class EnumConstants extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.enumConstant$JnOa)).isEmpty();
+      return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.enumConstant$qtgW)).isEmpty();
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SNode constant = SNodeFactoryOperations.createNewNode(CONCEPTS.EnumConstantDeclaration$ma, null);
+      SNode constant = SNodeFactoryOperations.createNewNode(CONCEPTS.EnumConstantDeclaration$MW, null);
       SNode constructor = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(node)).first();
       if ((constructor == null)) {
-        SLinkOperations.setPointer(constant, LINKS.baseMethodDeclaration$ItxI, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object.<init>()"));
+        SLinkOperations.setPointer(constant, LINKS.baseMethodDeclaration$pyYw, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object.<init>()"));
       } else {
-        SLinkOperations.setTarget(constant, LINKS.baseMethodDeclaration$ItxI, constructor);
+        SLinkOperations.setTarget(constant, LINKS.baseMethodDeclaration$pyYw, constructor);
       }
-      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.enumConstant$JnOa)).addElement(constant);
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.enumConstant$qtgW)).addElement(constant);
     }
     public String getKeyStroke() {
       return "any non-space char";
@@ -72,12 +72,12 @@ public class EnumConstants extends KeyMapImpl {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumClass$uy = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
-    /*package*/ static final SConcept EnumConstantDeclaration$ma = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration");
+    /*package*/ static final SConcept EnumClass$Vk = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, "jetbrains.mps.baseLanguage.structure.EnumClass");
+    /*package*/ static final SConcept EnumConstantDeclaration$MW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L, "jetbrains.mps.baseLanguage.structure.EnumConstantDeclaration");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink enumConstant$JnOa = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SContainmentLink enumConstant$qtgW = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367070a5L, 0xfc367503acL, "enumConstant");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 }

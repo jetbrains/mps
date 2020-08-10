@@ -37,7 +37,7 @@ public class typeof_RefactorOperation_InferenceRule extends AbstractInferenceRul
     }
     final SNode refactoringParamType_typevar_1240677567421 = typeCheckingContext.createNewRuntimeTypesVariable();
     {
-      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(refactorOperation, LINKS.closure$cZg5);
+      SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(refactorOperation, LINKS.closure$Rjuo);
       EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:52a00659-de5e-42a5-97ab-47bf270f55a9(jetbrains.mps.console.scripts.typesystem)", "2704222862538118755", 0, null);
       typeCheckingContext.createGreaterThanInequality((SNode) _quotation_createNode_u2w4di_a0a0c0e0b(typeCheckingContext.getRepresentative(refactoringParamType_typevar_1240677567421)), (SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:52a00659-de5e-42a5-97ab-47bf270f55a9(jetbrains.mps.console.scripts.typesystem)", "2704222862538112956", true), false, true, _info_12389875345);
     }
@@ -53,7 +53,7 @@ public class typeof_RefactorOperation_InferenceRule extends AbstractInferenceRul
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.RefactorOperation$jt;
+    return CONCEPTS.RefactorOperation$hX;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -100,10 +100,10 @@ public class typeof_RefactorOperation_InferenceRule extends AbstractInferenceRul
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink closure$cZg5 = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1188372895aL, 0x11883748452L, "closure");
+    /*package*/ static final SContainmentLink closure$Rjuo = MetaAdapterFactory.getContainmentLink(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, 0x1188372895aL, 0x11883748452L, "closure");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept RefactorOperation$jt = MetaAdapterFactory.getConcept(0xf26691d20def4c06L, 0xaec62cb90c4af0a4L, 0x20fd2063d7de993eL, "jetbrains.mps.console.scripts.structure.RefactorOperation");
+    /*package*/ static final SConcept RefactorOperation$hX = MetaAdapterFactory.getConcept(0xf26691d20def4c06L, 0xaec62cb90c4af0a4L, 0x20fd2063d7de993eL, "jetbrains.mps.console.scripts.structure.RefactorOperation");
   }
 }

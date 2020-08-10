@@ -82,12 +82,12 @@ public class Expression_to_type_Cast extends TransformationMenuBase {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       SNode currentNode = _context.getNode();
-      while ((SNodeOperations.getParent(currentNode) != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(currentNode), CONCEPTS.Expression$TP)) {
-        currentNode = SNodeOperations.cast(SNodeOperations.getParent(currentNode), CONCEPTS.Expression$TP);
+      while ((SNodeOperations.getParent(currentNode) != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(currentNode), CONCEPTS.Expression$mB)) {
+        currentNode = SNodeOperations.cast(SNodeOperations.getParent(currentNode), CONCEPTS.Expression$mB);
       }
-      return ListSequence.fromList(SNodeOperations.getNodeDescendants(currentNode, CONCEPTS.Expression$TP, true, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+      return ListSequence.fromList(SNodeOperations.getNodeDescendants(currentNode, CONCEPTS.Expression$mB, true, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$yl)) != null) || (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$rq)) != null);
+          return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7)) != null) || (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc)) != null);
         }
       }).isEmpty();
     }
@@ -105,7 +105,7 @@ public class Expression_to_type_Cast extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_94hljn_a0a(), CONCEPTS.CastExpression$7m), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_94hljn_b0a(), CONCEPTS.CastExpression$7m));
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_94hljn_a0a(), CONCEPTS.CastExpression$$8), new ConstraintsFilteringTransformationMenuPartDecorator(new TMP_Action_94hljn_b0a(), CONCEPTS.CastExpression$$8));
     }
     private class TMP_Action_94hljn_a0a extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
       @Nullable
@@ -140,32 +140,32 @@ public class Expression_to_type_Cast extends TransformationMenuBase {
         @Nullable
         @Override
         public String getLabelText(String pattern) {
-          return "(" + CONCEPTS.CastExpression$7m.getConceptAlias() + ")";
+          return "(" + CONCEPTS.CastExpression$$8.getConceptAlias() + ")";
         }
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.CastExpression$7m, null);
+          SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.CastExpression$$8, null);
           SNode targetExpression = _context.getNode();
           SNodeOperations.replaceWithAnother(targetExpression, result);
-          SLinkOperations.setTarget(result, LINKS.expression$izU1, targetExpression);
+          SLinkOperations.setTarget(result, LINKS.expression$XDmN, targetExpression);
           PrecedenceUtil.parenthesiseIfNecessary(targetExpression);
 
           SNode parens = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression"));
           SNodeOperations.replaceWithAnother(result, parens);
-          SLinkOperations.setTarget(parens, LINKS.expression$efP0, result);
+          SLinkOperations.setTarget(parens, LINKS.expression$TlhM, result);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), result, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 
         @Override
         public boolean canExecute(@NotNull String pattern) {
-          return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ParenthesizedExpression$vE));
+          return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.ParenthesizedExpression$Ws));
         }
 
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.CastExpression$7m;
+          return CONCEPTS.CastExpression$$8;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
@@ -180,7 +180,7 @@ public class Expression_to_type_Cast extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.CastExpression$7m;
+          SAbstractConcept outputConcept = CONCEPTS.CastExpression$$8;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -227,16 +227,16 @@ public class Expression_to_type_Cast extends TransformationMenuBase {
 
         @Override
         public void execute(@NotNull String pattern) {
-          SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.CastExpression$7m, null);
+          SNode result = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.CastExpression$$8, null);
           SNode targetExpression = PrecedenceUtil.getTargetForLeftTransform(_context.getNode(), result);
           SNodeOperations.replaceWithAnother(targetExpression, result);
-          SLinkOperations.setTarget(result, LINKS.expression$izU1, targetExpression);
+          SLinkOperations.setTarget(result, LINKS.expression$XDmN, targetExpression);
           PrecedenceUtil.parenthesiseIfNecessary(targetExpression);
 
-          if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(result), CONCEPTS.Expression$TP) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(result), CONCEPTS.ParenthesizedExpression$vE)) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(result), CONCEPTS.BinaryOperation$vf))) {
+          if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(result), CONCEPTS.Expression$mB) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(result), CONCEPTS.ParenthesizedExpression$Ws)) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(result), CONCEPTS.BinaryOperation$W1))) {
             SNode parens = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression"));
             SNodeOperations.replaceWithAnother(result, parens);
-            SLinkOperations.setTarget(parens, LINKS.expression$efP0, result);
+            SLinkOperations.setTarget(parens, LINKS.expression$TlhM, result);
           }
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), result, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
@@ -245,11 +245,11 @@ public class Expression_to_type_Cast extends TransformationMenuBase {
         @Nullable
         @Override
         public SAbstractConcept getOutputConcept() {
-          return CONCEPTS.CastExpression$7m;
+          return CONCEPTS.CastExpression$$8;
         }
         @Override
         public String getShortDescriptionText(@NotNull String pattern) {
-          return CONCEPTS.CastExpression$7m.getShortDescription();
+          return CONCEPTS.CastExpression$$8.getShortDescription();
         }
 
 
@@ -260,7 +260,7 @@ public class Expression_to_type_Cast extends TransformationMenuBase {
 
         public void customize(String pattern, EditorMenuItemStyle style) {
           EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
-          SAbstractConcept outputConcept = CONCEPTS.CastExpression$7m;
+          SAbstractConcept outputConcept = CONCEPTS.CastExpression$$8;
           EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
           for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
             customizer.customize(style, compositeContext);
@@ -272,16 +272,16 @@ public class Expression_to_type_Cast extends TransformationMenuBase {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Expression$TP = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
-    /*package*/ static final SConcept IncompleteRightParen$rq = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2052c4520af308e1L, "jetbrains.mps.baseLanguage.structure.IncompleteRightParen");
-    /*package*/ static final SConcept IncompleteLeftParen$yl = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64a1ef64cd9b42ceL, "jetbrains.mps.baseLanguage.structure.IncompleteLeftParen");
-    /*package*/ static final SConcept CastExpression$7m = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, "jetbrains.mps.baseLanguage.structure.CastExpression");
-    /*package*/ static final SConcept ParenthesizedExpression$vE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
-    /*package*/ static final SConcept BinaryOperation$vf = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept IncompleteRightParen$Sc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2052c4520af308e1L, "jetbrains.mps.baseLanguage.structure.IncompleteRightParen");
+    /*package*/ static final SConcept IncompleteLeftParen$Z7 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64a1ef64cd9b42ceL, "jetbrains.mps.baseLanguage.structure.IncompleteLeftParen");
+    /*package*/ static final SConcept CastExpression$$8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, "jetbrains.mps.baseLanguage.structure.CastExpression");
+    /*package*/ static final SConcept ParenthesizedExpression$Ws = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
+    /*package*/ static final SConcept BinaryOperation$W1 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink expression$izU1 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
-    /*package*/ static final SContainmentLink expression$efP0 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
+    /*package*/ static final SContainmentLink expression$XDmN = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
+    /*package*/ static final SContainmentLink expression$TlhM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, 0xfb4ed32b80L, "expression");
   }
 }

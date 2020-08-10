@@ -27,17 +27,17 @@ public class indexedTupleType_supertypeOf_namedTupleType_SubtypingRule extends S
   }
   public SNode getSubOrSuperType(SNode ntt, TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     final List<SNode> queue = ListSequence.fromList(new LinkedList<SNode>());
-    final List<SNode> pts = SLinkOperations.getChildren(ntt, LINKS.parameter$HlfM);
-    return _quotation_createNode_pquv4f_a2a1(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ntt, LINKS.classifier$xslD), LINKS.component$fjBK)).select(new ISelector<SNode, SNode>() {
+    final List<SNode> pts = SLinkOperations.getChildren(ntt, LINKS.parameter$oqG$);
+    return _quotation_createNode_pquv4f_a2a1(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ntt, LINKS.classifier$cxMr), LINKS.component$wCHx)).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode cmp) {
         SNode tmp = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, "jetbrains.mps.baseLanguage.structure.ArrayType"));
-        SLinkOperations.setTarget(tmp, LINKS.componentType$vfw, SNodeOperations.copyNode(SLinkOperations.getTarget(cmp, LINKS.type$9fyo)));
+        SLinkOperations.setTarget(tmp, LINKS.componentType$F$Gi, SNodeOperations.copyNode(SLinkOperations.getTarget(cmp, LINKS.type$q$C9)));
         ListSequence.fromList(queue).clear();
-        ListSequence.fromList(queue).addElement(SLinkOperations.getTarget(tmp, LINKS.componentType$vfw));
+        ListSequence.fromList(queue).addElement(SLinkOperations.getTarget(tmp, LINKS.componentType$F$Gi));
         while (ListSequence.fromList(queue).isNotEmpty()) {
           SNode t = ListSequence.fromList(queue).removeElementAt(0);
-          if (SNodeOperations.isInstanceOf(t, CONCEPTS.TypeVariableReference$vZ)) {
-            int idx = SNodeOperations.getIndexInParent(SLinkOperations.getTarget(SNodeOperations.cast(t, CONCEPTS.TypeVariableReference$vZ), LINKS.typeVariableDeclaration$6t$W));
+          if (SNodeOperations.isInstanceOf(t, CONCEPTS.TypeVariableReference$WL)) {
+            int idx = SNodeOperations.getIndexInParent(SLinkOperations.getTarget(SNodeOperations.cast(t, CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I));
             if (idx < ListSequence.fromList(pts).count()) {
               SNodeOperations.replaceWithAnother(t, SNodeOperations.copyNode(ListSequence.fromList(pts).getElement(idx)));
             }
@@ -47,12 +47,12 @@ public class indexedTupleType_supertypeOf_namedTupleType_SubtypingRule extends S
             }
           }
         }
-        return SLinkOperations.getTarget(tmp, LINKS.componentType$vfw);
+        return SLinkOperations.getTarget(tmp, LINKS.componentType$F$Gi);
       }
     }).toListSequence());
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.NamedTupleType$$b;
+    return CONCEPTS.NamedTupleType$DW;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -75,16 +75,16 @@ public class indexedTupleType_supertypeOf_namedTupleType_SubtypingRule extends S
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$HlfM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink component$fjBK = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, 0x12099b7fca9L, "component");
-    /*package*/ static final SContainmentLink componentType$vfw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
-    /*package*/ static final SContainmentLink type$9fyo = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, 0x12095c0134fL, "type");
-    /*package*/ static final SReferenceLink typeVariableDeclaration$6t$W = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink parameter$oqG$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink component$wCHx = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, 0x12099b7fca9L, "component");
+    /*package*/ static final SContainmentLink componentType$F$Gi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L, 0xf940d819f8L, "componentType");
+    /*package*/ static final SContainmentLink type$q$C9 = MetaAdapterFactory.getContainmentLink(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12095b3e54fL, 0x12095c0134fL, "type");
+    /*package*/ static final SReferenceLink typeVariableDeclaration$Lz1I = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TypeVariableReference$vZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
-    /*package*/ static final SConcept NamedTupleType$$b = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12099dc1365L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleType");
+    /*package*/ static final SConcept TypeVariableReference$WL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
+    /*package*/ static final SConcept NamedTupleType$DW = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x12099dc1365L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleType");
   }
 }
