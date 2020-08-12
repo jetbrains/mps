@@ -21,16 +21,16 @@
       </concept>
     </language>
     <language id="049a08c5-1fe5-43cc-bd99-8b46d641d7f5" name="jetbrains.mps.samples.Kaja">
-      <concept id="3210697320273763054" name="jetbrains.mps.samples.Kaja.structure.TraceMessage" flags="ng" index="24IuFt">
+      <concept id="3210697320273763054" name="jetbrains.mps.samples.Kaja.structure.TraceMessage" flags="nn" index="24IuFt">
         <property id="3210697320273763055" name="message" index="24IuFs" />
       </concept>
       <concept id="4394627182934741782" name="jetbrains.mps.samples.Kaja.structure.Library" flags="ng" index="2zTg$P">
         <child id="4394627182934741783" name="definitions" index="2zTg$O" />
       </concept>
-      <concept id="4394627182934757449" name="jetbrains.mps.samples.Kaja.structure.Require" flags="ng" index="2zTGDE">
+      <concept id="4394627182934757449" name="jetbrains.mps.samples.Kaja.structure.Require" flags="nn" index="2zTGDE">
         <reference id="4394627182934757450" name="library" index="2zTGDD" />
       </concept>
-      <concept id="3308300503039700882" name="jetbrains.mps.samples.Kaja.structure.RoutineCall" flags="ng" index="2C11Tl">
+      <concept id="3308300503039700882" name="jetbrains.mps.samples.Kaja.structure.RoutineCall" flags="nn" index="2C11Tl">
         <reference id="3308300503039730636" name="definition" index="2C198b" />
       </concept>
       <concept id="3308300503039700857" name="jetbrains.mps.samples.Kaja.structure.RoutineDefinition" flags="ng" index="2C11UY">
@@ -41,11 +41,11 @@
       </concept>
       <concept id="3308300503039683644" name="jetbrains.mps.samples.Kaja.structure.West" flags="ng" index="2C15RV" />
       <concept id="3308300503039675723" name="jetbrains.mps.samples.Kaja.structure.South" flags="ng" index="2C17Mc" />
-      <concept id="3308300503039667424" name="jetbrains.mps.samples.Kaja.structure.While" flags="ng" index="2C1pOB">
+      <concept id="3308300503039667424" name="jetbrains.mps.samples.Kaja.structure.While" flags="nn" index="2C1pOB">
         <child id="3308300503039667427" name="body" index="2C1pO$" />
         <child id="3308300503039667426" name="condition" index="2C1pO_" />
       </concept>
-      <concept id="3308300503039660364" name="jetbrains.mps.samples.Kaja.structure.Repeat" flags="ng" index="2C1q2b">
+      <concept id="3308300503039660364" name="jetbrains.mps.samples.Kaja.structure.Repeat" flags="nn" index="2C1q2b">
         <property id="3308300503039660366" name="count" index="2C1q29" />
         <child id="3308300503039660367" name="body" index="2C1q28" />
       </concept>
@@ -53,35 +53,35 @@
         <child id="3308300503039654067" name="original" index="2C1s_O" />
       </concept>
       <concept id="3308300503039647788" name="jetbrains.mps.samples.Kaja.structure.IsWall" flags="ng" index="2C1t7F" />
-      <concept id="3308300503039647627" name="jetbrains.mps.samples.Kaja.structure.LeftTurn" flags="ng" index="2C1uTc" />
-      <concept id="3308300503039647678" name="jetbrains.mps.samples.Kaja.structure.IfStatement" flags="ng" index="2C1uTT">
+      <concept id="3308300503039647627" name="jetbrains.mps.samples.Kaja.structure.LeftTurn" flags="nn" index="2C1uTc" />
+      <concept id="3308300503039647678" name="jetbrains.mps.samples.Kaja.structure.IfStatement" flags="nn" index="2C1uTT">
         <child id="3308300503039647685" name="falseBranch" index="2C1uS2" />
         <child id="3308300503039647684" name="trueBranch" index="2C1uS3" />
         <child id="3308300503039647680" name="condition" index="2C1uS7" />
       </concept>
-      <concept id="3308300503039740438" name="jetbrains.mps.samples.Kaja.structure.EmptyLine" flags="ng" index="2C1RJh" />
-      <concept id="3308300503039896127" name="jetbrains.mps.samples.Kaja.structure.CommandList" flags="ng" index="2C6hJS">
+      <concept id="3308300503039740438" name="jetbrains.mps.samples.Kaja.structure.EmptyLine" flags="nn" index="2C1RJh" />
+      <concept id="3308300503039896127" name="jetbrains.mps.samples.Kaja.structure.CommandList" flags="nn" index="2C6hJS">
         <child id="3308300503039896128" name="commands" index="2C6hI7" />
       </concept>
-      <concept id="6405700485436120871" name="jetbrains.mps.samples.Kaja.structure.Drop" flags="ng" index="1b4w60" />
+      <concept id="6405700485436120871" name="jetbrains.mps.samples.Kaja.structure.Drop" flags="nn" index="1b4w60" />
       <concept id="6405700485436186598" name="jetbrains.mps.samples.Kaja.structure.IsMark" flags="ng" index="1b7g51" />
-      <concept id="6405700485436170013" name="jetbrains.mps.samples.Kaja.structure.Pick" flags="ng" index="1b7s6U" />
-      <concept id="6405700485436287811" name="jetbrains.mps.samples.Kaja.structure.CommentLine" flags="ng" index="1b7Vn$">
+      <concept id="6405700485436170013" name="jetbrains.mps.samples.Kaja.structure.Pick" flags="nn" index="1b7s6U" />
+      <concept id="6405700485436287811" name="jetbrains.mps.samples.Kaja.structure.CommentLine" flags="nn" index="1b7Vn$">
         <property id="6405700485436287813" name="text" index="1b7Vny" />
       </concept>
       <concept id="3265739055509559110" name="jetbrains.mps.samples.Kaja.structure.Script" flags="ng" index="1x_AGo">
         <child id="3265739055509559116" name="body" index="1x_AGi" />
       </concept>
-      <concept id="3265739055509559138" name="jetbrains.mps.samples.Kaja.structure.Step" flags="ng" index="1x_AGW" />
+      <concept id="3265739055509559138" name="jetbrains.mps.samples.Kaja.structure.Step" flags="nn" index="1x_AGW" />
       <concept id="859008965969439768" name="jetbrains.mps.samples.Kaja.structure.IsFull" flags="ng" index="1S$3K2" />
     </language>
     <language id="b56912a3-674f-4530-b0cf-55261b526a1f" name="jetbrains.mps.samples.KajaSceneConstruction">
-      <concept id="3210697320273608255" name="jetbrains.mps.samples.KajaSceneConstruction.structure.AbstractBuilderCommand" flags="ng" index="24I$Sc">
+      <concept id="3210697320273608255" name="jetbrains.mps.samples.KajaSceneConstruction.structure.AbstractBuilderCommand" flags="nn" index="24I$Sc">
         <property id="3210697320273608257" name="col" index="24I$TM" />
         <property id="3210697320273608256" name="row" index="24I$TN" />
       </concept>
-      <concept id="3210697320273608254" name="jetbrains.mps.samples.KajaSceneConstruction.structure.DropMark" flags="ng" index="24I$Sd" />
-      <concept id="3210697320273550864" name="jetbrains.mps.samples.KajaSceneConstruction.structure.BuildWall" flags="ng" index="24IESz" />
+      <concept id="3210697320273608254" name="jetbrains.mps.samples.KajaSceneConstruction.structure.DropMark" flags="nn" index="24I$Sd" />
+      <concept id="3210697320273550864" name="jetbrains.mps.samples.KajaSceneConstruction.structure.BuildWall" flags="nn" index="24IESz" />
     </language>
   </registry>
   <node concept="1x_AGo" id="2RDssu5WraF">
