@@ -31,7 +31,7 @@ public class VisibleClassConstructorsScope extends Scope {
     classifiers = new FilteringScope(ClassifierScopes.getVisibleClassifiersScope(contextNode, true)) {
       @Override
       public boolean isExcluded(SNode node) {
-        return SNodeOperations.isInstanceOf(node, CONCEPTS.Interface$db);
+        return SNodeOperations.isInstanceOf(node, CONCEPTS.Interface$Kp);
       }
     };
   }
@@ -41,7 +41,7 @@ public class VisibleClassConstructorsScope extends Scope {
       public Iterable<SNode> translate(SNode it) {
         return ListSequence.fromList(SNodeOperations.getChildren(it)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(it, CONCEPTS.ConstructorDeclaration$yG);
+            return SNodeOperations.isInstanceOf(it, CONCEPTS.ConstructorDeclaration$5U);
           }
         });
       }
@@ -50,33 +50,33 @@ public class VisibleClassConstructorsScope extends Scope {
   @Override
   public boolean contains(SNode node) {
     // todo: visibility check! 
-    return SNodeOperations.isInstanceOf(node, CONCEPTS.ConstructorDeclaration$yG) && classifiers.contains(SNodeOperations.getParent(SNodeOperations.cast(node, CONCEPTS.ConstructorDeclaration$yG)));
+    return SNodeOperations.isInstanceOf(node, CONCEPTS.ConstructorDeclaration$5U) && classifiers.contains(SNodeOperations.getParent(SNodeOperations.cast(node, CONCEPTS.ConstructorDeclaration$5U)));
   }
   @Nullable
   @Override
   public String getReferenceText(SNode contextNode, @NotNull SNode node) {
-    return SPropertyOperations.getString(SNodeOperations.cast(contextNode, CONCEPTS.ConstructorDeclaration$yG), PROPS.name$MnvL);
+    return SPropertyOperations.getString(SNodeOperations.cast(contextNode, CONCEPTS.ConstructorDeclaration$5U), PROPS.name$lA7v);
   }
   @Nullable
   @Override
   public SNode resolve(SNode contextNode, @NotNull String refText) {
-    SNode classifier = SNodeOperations.cast(classifiers.resolve(contextNode, refText), CONCEPTS.Classifier$Ix);
-    if (classifier == null || !(SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$bK))) {
+    SNode classifier = SNodeOperations.cast(classifiers.resolve(contextNode, refText), CONCEPTS.Classifier$hJ);
+    if (classifier == null || !(SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$IY))) {
       return null;
     }
 
     // resolve only by name 
-    List<SNode> constructors = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$bK))).toListSequence();
+    List<SNode> constructors = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$IY))).toListSequence();
     if (ListSequence.fromList(constructors).count() == 1) {
       return ListSequence.fromList(constructors).first();
     }
 
     // use arguments 
-    if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.ClassCreator$ZG))) {
+    if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.ClassCreator$yU))) {
       return null;
     }
-    List<SNode> actualArguments = SLinkOperations.getChildren(SNodeOperations.cast(contextNode, CONCEPTS.ClassCreator$ZG), LINKS.actualArgument$pzdx);
-    List<SNode> typeParameters = SLinkOperations.getChildren(SNodeOperations.cast(contextNode, CONCEPTS.ClassCreator$ZG), LINKS.typeParameter$uYiw);
+    List<SNode> actualArguments = SLinkOperations.getChildren(SNodeOperations.cast(contextNode, CONCEPTS.ClassCreator$yU), LINKS.actualArgument$ItKJ);
+    List<SNode> typeParameters = SLinkOperations.getChildren(SNodeOperations.cast(contextNode, CONCEPTS.ClassCreator$yU), LINKS.typeParameter$NSPI);
 
     // use arguments count 
     constructors = (List<SNode>) MethodResolveUtil.selectByParmCount(constructors, actualArguments);
@@ -86,7 +86,7 @@ public class VisibleClassConstructorsScope extends Scope {
 
     // use types 
     Iterator<SNode> typeParms = (Iterator<SNode>) typeParameters.iterator();
-    Iterator<SNode> typeVars = (Iterator<SNode>) SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$Lipp).iterator();
+    Iterator<SNode> typeVars = (Iterator<SNode>) SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$6cWB).iterator();
     Map<SNode, SNode> typeByTypeVar = new HashMap<SNode, SNode>();
     while (typeParms.hasNext() && typeVars.hasNext()) {
       typeByTypeVar.put(typeVars.next(), typeParms.next());
@@ -95,20 +95,20 @@ public class VisibleClassConstructorsScope extends Scope {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
-    /*package*/ static final SConcept ConstructorDeclaration$yG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
-    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept ClassCreator$ZG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, "jetbrains.mps.baseLanguage.structure.ClassCreator");
+    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept ConstructorDeclaration$5U = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
+    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept ClassCreator$yU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, "jetbrains.mps.baseLanguage.structure.ClassCreator");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink typeParameter$uYiw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter");
-    /*package*/ static final SContainmentLink typeVariableDeclaration$Lipp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink typeParameter$NSPI = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
   }
 }

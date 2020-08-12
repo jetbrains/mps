@@ -24,21 +24,21 @@ public class MemberScopes {
     // todo[MM]: concepts here must be replaces with a regular Java enum. No point in using concepts here 
     Scope membersScope = Classifier__BehaviorDescriptor.getMembers_id1UeCwxlVpJs.invoke(contextClassifier, kind);
     if (membersScope == null) {
-      throw new IllegalArgumentException("Member scope for classifier " + SPropertyOperations.getString(contextClassifier, PROPS.name$MnvL) + " and kind " + kind.getName() + " is null");
+      throw new IllegalArgumentException("Member scope for classifier " + SPropertyOperations.getString(contextClassifier, PROPS.name$lA7v) + " and kind " + kind.getName() + " is null");
     }
     return new FilteringScope(membersScope) {
       @Override
       public boolean isExcluded(SNode node) {
-        return !(SNodeOperations.isInstanceOf(node, CONCEPTS.ClassifierMember$At)) || !((boolean) ClassifierMember__BehaviorDescriptor.isVisible_id70J2WaK_oVl.invoke(SNodeOperations.cast(node, CONCEPTS.ClassifierMember$At), contextClassifier, contextNode));
+        return !(SNodeOperations.isInstanceOf(node, CONCEPTS.ClassifierMember$9F)) || !((boolean) ClassifierMember__BehaviorDescriptor.isVisible_id70J2WaK_oVl.invoke(SNodeOperations.cast(node, CONCEPTS.ClassifierMember$9F), contextClassifier, contextNode));
       }
     };
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept ClassifierMember$At = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember");
+    /*package*/ static final SInterfaceConcept ClassifierMember$9F = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112574373bdL, "jetbrains.mps.baseLanguage.structure.ClassifierMember");
   }
 }

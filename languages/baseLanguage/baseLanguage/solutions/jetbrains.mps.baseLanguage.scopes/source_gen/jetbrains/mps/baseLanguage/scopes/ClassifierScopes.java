@@ -34,9 +34,9 @@ public class ClassifierScopes {
   private ClassifierScopes() {
   }
   public static Scope filterVisibleClassifiersScope(@NotNull final SNode contextNode, @NotNull Scope inner) {
-    final List<SNode> vars = ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, CONCEPTS.GenericDeclaration$bC, true)).translate(new ITranslator2<SNode, SNode>() {
+    final List<SNode> vars = ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, CONCEPTS.GenericDeclaration$IQ, true)).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
-        return SLinkOperations.getChildren(it, LINKS.typeVariableDeclaration$Lipp);
+        return SLinkOperations.getChildren(it, LINKS.typeVariableDeclaration$6cWB);
       }
     }).toListSequence();
     return new FilteringScope(inner) {
@@ -46,15 +46,15 @@ public class ClassifierScopes {
           // todo: ? 
           return true;
         }
-        if (!(VisibilityUtil.isVisible(contextNode, SNodeOperations.cast(node, CONCEPTS.IVisible$zu)))) {
+        if (!(VisibilityUtil.isVisible(contextNode, SNodeOperations.cast(node, CONCEPTS.IVisible$6G)))) {
           return true;
         }
 
-        if (ListSequence.fromList(vars).isNotEmpty() && SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$Kd)) {
-          final String nodeName = SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL);
+        if (ListSequence.fromList(vars).isNotEmpty() && SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$nV)) {
+          final String nodeName = SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.INamedConcept$nV), PROPS.name$lA7v);
           return ListSequence.fromList(vars).any(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), nodeName);
+              return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), nodeName);
             }
           });
         }
@@ -66,15 +66,15 @@ public class ClassifierScopes {
     return new FilteringScope(inner) {
       @Override
       public boolean isExcluded(SNode node) {
-        return SNodeOperations.isInstanceOf(node, CONCEPTS.NamedTupleDeclaration$aM);
+        return SNodeOperations.isInstanceOf(node, CONCEPTS.NamedTupleDeclaration$51);
       }
     };
   }
   public static Scope getReachableClassifiersScope(@NotNull SModel model, SNode clas, boolean includeAncestors) {
-    return new ClassifiersScope(model, clas, CONCEPTS.Classifier$Ix, includeAncestors);
+    return new ClassifiersScope(model, clas, CONCEPTS.Classifier$hJ, includeAncestors);
   }
   public static Scope getVisibleClassifiersScope(@NotNull final SNode contextNode, boolean includeAncestors) {
-    SNode clas = SNodeOperations.getNodeAncestor(contextNode, CONCEPTS.Classifier$Ix, true, false);
+    SNode clas = SNodeOperations.getNodeAncestor(contextNode, CONCEPTS.Classifier$hJ, true, false);
     SModel model = SNodeOperations.getModel(contextNode);
     if (model == null) {
       return null;
@@ -85,13 +85,13 @@ public class ClassifierScopes {
     return new FilteringScope(ClassifierScopes.getVisibleClassifiersScope(contextNode, false)) {
       @Override
       public boolean isExcluded(SNode node) {
-        if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.ClassConcept$bK))) {
+        if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.ClassConcept$IY))) {
           return true;
         }
-        SNode clazz = SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK);
+        SNode clazz = SNodeOperations.cast(node, CONCEPTS.ClassConcept$IY);
         SNode noArgCons = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(clazz)).findFirst(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).isEmpty();
+            return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$qsax)).isEmpty();
           }
         });
         if (noArgCons != null) {
@@ -109,28 +109,28 @@ public class ClassifierScopes {
     };
   }
   public static Scope getVisibleClassesScope(@NotNull final SNode contextNode) {
-    SNode clas = SNodeOperations.getNodeAncestor(contextNode, CONCEPTS.Classifier$Ix, true, false);
-    return filterVisibleClassifiersScope(contextNode, new ClassifiersScope(SNodeOperations.getModel(contextNode), clas, CONCEPTS.ClassConcept$bK));
+    SNode clas = SNodeOperations.getNodeAncestor(contextNode, CONCEPTS.Classifier$hJ, true, false);
+    return filterVisibleClassifiersScope(contextNode, new ClassifiersScope(SNodeOperations.getModel(contextNode), clas, CONCEPTS.ClassConcept$IY));
   }
   public static Scope getVisibleInterfacesScope(@NotNull final SNode contextNode) {
-    SNode clas = SNodeOperations.getNodeAncestor(contextNode, CONCEPTS.Classifier$Ix, true, false);
-    return filterVisibleClassifiersScope(contextNode, new ClassifiersScope(SNodeOperations.getModel(contextNode), clas, CONCEPTS.Interface$db));
+    SNode clas = SNodeOperations.getNodeAncestor(contextNode, CONCEPTS.Classifier$hJ, true, false);
+    return filterVisibleClassifiersScope(contextNode, new ClassifiersScope(SNodeOperations.getModel(contextNode), clas, CONCEPTS.Interface$Kp));
   }
   public static Scope getWithClassExpressionClassifiers(@NotNull SNode contextNode) {
-    SNode clas = SNodeOperations.getNodeAncestor(contextNode, CONCEPTS.Classifier$Ix, true, false);
+    SNode clas = SNodeOperations.getNodeAncestor(contextNode, CONCEPTS.Classifier$hJ, true, false);
     return filterVisibleClassifiersScope(contextNode, filterWithClassExpressionClassifiers(getReachableClassifiersScope(SNodeOperations.getModel(contextNode), clas, false)));
   }
   public static Scope getAnnotationClassifiersScope(@NotNull final SNode contextNode) {
-    SNode clas = SNodeOperations.getNodeAncestor(contextNode, CONCEPTS.Classifier$Ix, true, false);
-    return filterVisibleClassifiersScope(contextNode, new ClassifiersScope(SNodeOperations.getModel(contextNode), clas, CONCEPTS.Annotation$he, true));
+    SNode clas = SNodeOperations.getNodeAncestor(contextNode, CONCEPTS.Classifier$hJ, true, false);
+    return filterVisibleClassifiersScope(contextNode, new ClassifiersScope(SNodeOperations.getModel(contextNode), clas, CONCEPTS.Annotation$Os, true));
   }
   public static Scope getThrowablesScope(@NotNull SNode contextNode) {
-    SNode clas = SNodeOperations.getNodeAncestor(contextNode, CONCEPTS.Classifier$Ix, true, false);
-    return new FilteringScope(new ClassifiersScope(SNodeOperations.getModel(contextNode), clas, CONCEPTS.ClassConcept$bK)) {
+    SNode clas = SNodeOperations.getNodeAncestor(contextNode, CONCEPTS.Classifier$hJ, true, false);
+    return new FilteringScope(new ClassifiersScope(SNodeOperations.getModel(contextNode), clas, CONCEPTS.ClassConcept$IY)) {
       @Override
       public boolean isExcluded(SNode node) {
         // check extended classes only as Throwable is class 
-        SNode cc = SNodeOperations.as(node, CONCEPTS.ClassConcept$bK);
+        SNode cc = SNodeOperations.as(node, CONCEPTS.ClassConcept$IY);
         while (cc != null) {
           if (SNodeOperations.is(cc, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Throwable"))) {
             return false;
@@ -138,25 +138,25 @@ public class ClassifierScopes {
           if (SNodeOperations.is(cc, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object"))) {
             return true;
           }
-          cc = SNodeOperations.as(SLinkOperations.getTarget(ClassConcept__BehaviorDescriptor.getSuperclass_idi3H_lLu.invoke(cc), LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK);
+          cc = SNodeOperations.as(SLinkOperations.getTarget(ClassConcept__BehaviorDescriptor.getSuperclass_idi3H_lLu.invoke(cc), LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY);
         }
         return true;
       }
     };
   }
   public static Scope getClassesForExtends(@NotNull SNode contextNode) {
-    SNode clas = SNodeOperations.getNodeAncestor(contextNode, CONCEPTS.Classifier$Ix, true, false);
+    SNode clas = SNodeOperations.getNodeAncestor(contextNode, CONCEPTS.Classifier$hJ, true, false);
     // not final ClassConcepts 
-    return new FilteringScope(ClassifierScopes.filterWithClassExpressionClassifiers(new ClassifiersScope(SNodeOperations.getModel(contextNode), clas, CONCEPTS.ClassConcept$bK))) {
+    return new FilteringScope(ClassifierScopes.filterWithClassExpressionClassifiers(new ClassifiersScope(SNodeOperations.getModel(contextNode), clas, CONCEPTS.ClassConcept$IY))) {
       @Override
       public boolean isExcluded(SNode node) {
-        return SPropertyOperations.getBoolean(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK), PROPS.isFinal$f7C_);
+        return SPropertyOperations.getBoolean(SNodeOperations.cast(node, CONCEPTS.ClassConcept$IY), PROPS.isFinal$$2bN);
       }
     };
   }
   public static Scope getClassesForStaticFieldReference(@NotNull SNode contextNode) {
     final Set<SNode> enclosingClassifierAncestors = SetSequence.fromSet(new HashSet<SNode>());
-    SetSequence.fromSet(enclosingClassifierAncestors).addSequence(ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, CONCEPTS.Classifier$Ix, false)));
+    SetSequence.fromSet(enclosingClassifierAncestors).addSequence(ListSequence.fromList(SNodeOperations.getNodeAncestors(contextNode, CONCEPTS.Classifier$hJ, false)));
 
     return new FilteringScope(ClassifierScopes.getVisibleClassifiersScope(contextNode, true)) {
       @Override
@@ -165,7 +165,7 @@ public class ClassifierScopes {
           return false;
         }
 
-        SNode classifier = SNodeOperations.cast(node, CONCEPTS.Classifier$Ix);
+        SNode classifier = SNodeOperations.cast(node, CONCEPTS.Classifier$hJ);
         if (!((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(classifier))) {
           return true;
         }
@@ -178,7 +178,7 @@ public class ClassifierScopes {
         // todo: VOODOO PEOPLE MAGIC PEOPLE 
         return ListSequence.fromList(ancestors).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return !(SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$Ix));
+            return !(SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$hJ));
           }
         }).isNotEmpty() && ListSequence.fromList(ancestors).intersect(SetSequence.fromSet(enclosingClassifierAncestors)).isEmpty();
       }
@@ -186,24 +186,24 @@ public class ClassifierScopes {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept GenericDeclaration$bC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, "jetbrains.mps.baseLanguage.structure.GenericDeclaration");
-    /*package*/ static final SInterfaceConcept IVisible$zu = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible");
-    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
-    /*package*/ static final SConcept NamedTupleDeclaration$aM = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleDeclaration");
-    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
-    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
-    /*package*/ static final SConcept Annotation$he = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation");
+    /*package*/ static final SConcept GenericDeclaration$IQ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, "jetbrains.mps.baseLanguage.structure.GenericDeclaration");
+    /*package*/ static final SInterfaceConcept IVisible$6G = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible");
+    /*package*/ static final SInterfaceConcept INamedConcept$nV = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept NamedTupleDeclaration$51 = MetaAdapterFactory.getConcept(0xa247e09e243545baL, 0xb8d207e93feba96aL, 0x1208fa48aa5L, "jetbrains.mps.baseLanguage.tuples.structure.NamedTupleDeclaration");
+    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept Interface$Kp = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept Annotation$Os = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL, "jetbrains.mps.baseLanguage.structure.Annotation");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink typeVariableDeclaration$Lipp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-    /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isFinal$f7C_ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x11c6af4b284L, "isFinal");
+    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$$2bN = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x11c6af4b284L, "isFinal");
   }
 }

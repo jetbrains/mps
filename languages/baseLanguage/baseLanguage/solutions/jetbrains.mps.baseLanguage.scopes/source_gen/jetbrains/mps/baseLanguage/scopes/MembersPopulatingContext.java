@@ -128,10 +128,10 @@ public class MembersPopulatingContext {
   }
 
   public boolean isElementVisible(SNode element) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(element, LINKS.visibility$Yyua), CONCEPTS.PrivateVisibility$l0)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(element, LINKS.visibility$jt1o), CONCEPTS.PrivateVisibility$Se)) {
       return isPrivateVisible();
     }
-    if ((SLinkOperations.getTarget(element, LINKS.visibility$Yyua) == null)) {
+    if ((SLinkOperations.getTarget(element, LINKS.visibility$jt1o) == null)) {
       return isPackageProtectedVisible();
     }
     return true;
@@ -142,10 +142,10 @@ public class MembersPopulatingContext {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PrivateVisibility$l0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
+    /*package*/ static final SConcept PrivateVisibility$Se = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
   }
 }
