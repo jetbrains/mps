@@ -35,13 +35,9 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.HashMap;
 import java.util.function.Function;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.persistence.MetaModelInfoProvider;
-import jetbrains.mps.smodel.DefaultSModel;
-import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
-import jetbrains.mps.smodel.runtime.StaticScope;
 import jetbrains.mps.util.LongestCommonSubsequenceFinder;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
+import jetbrains.mps.vcs.diff.merge.SNodeCompare;
 import jetbrains.mps.vcs.diff.changes.NodeGroupChange;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -277,19 +273,6 @@ public class ChangeSetBuilder {
     return roleToChildCollection;
   }
 
-  private boolean conceptHasStaticScopeNone(SAbstractConcept concept) {
-    SModel oldModel = myChangeSet.getNewModel();
-    MetaModelInfoProvider mmip = null;
-    if (oldModel instanceof DefaultSModel) {
-      DefaultSModel defaultSModel = (DefaultSModel) oldModel;
-      mmip = defaultSModel.getSModelHeader().getMetaInfoProvider();
-    }
-    if (mmip == null) {
-      mmip = new MetaModelInfoProvider.RegularMetaModelInfo();
-    }
-    return mmip.getScope(((SConceptAdapterById) concept).getId()) == StaticScope.NONE;
-  }
-
   public void buildForNodeRole(final List<? extends SNode> oldChildren, List<? extends SNode> newChildren, final SNodeId oldParentId, final SNodeId newParentId, final SContainmentLink role) {
 
     final List<SNodeId> oldIds = ListSequence.fromList(((List<? extends SNode>) oldChildren)).select(new ISelector<SNode, SNodeId>() {
@@ -341,7 +324,7 @@ public class ChangeSetBuilder {
           if (!(Objects.equals(SNodeOperations.getConcept(oldNode), SNodeOperations.getConcept(newNode)))) {
             continue;
           }
-          if (!(conceptHasStaticScopeNone(SNodeOperations.getConcept(oldNode)))) {
+          if (!(SNodeCompare.conceptHasStaticScopeNone(SNodeOperations.getConcept(oldNode), myChangeSet.getOldModel()))) {
             continue;
           }
           if (allPropertiesAreEqual(oldNode, newNode) && allReferencesAreEqual(oldNode, newNode)) {
@@ -372,7 +355,7 @@ public class ChangeSetBuilder {
         if (newStart1 < ListSequence.fromList(newIds2).count()) {
           final Wrappers._T<SNodeId> newNodeId = new Wrappers._T<SNodeId>(ListSequence.fromList(newIds2).getElement(newStart1));
           if (MapSequence.fromMap(newToOldMap).containsValue(newNodeId.value)) {
-            newNodeId.value = check_nbyrtw_a0a0b0h0i0m0kb(MapSequence.fromMap(newToOldMap).findFirst(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
+            newNodeId.value = check_nbyrtw_a0a0b0h0i0m0ib(MapSequence.fromMap(newToOldMap).findFirst(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
               public boolean accept(IMapping<SNodeId, SNodeId> it) {
                 return Objects.equals(it.value(), newNodeId.value);
               }
@@ -386,7 +369,7 @@ public class ChangeSetBuilder {
         if (newEnd1 < ListSequence.fromList(newIds2).count()) {
           final Wrappers._T<SNodeId> newNodeId = new Wrappers._T<SNodeId>(ListSequence.fromList(newIds2).getElement(newEnd1));
           if (MapSequence.fromMap(newToOldMap).containsValue(newNodeId.value)) {
-            newNodeId.value = check_nbyrtw_a0a0b0j0i0m0kb(MapSequence.fromMap(newToOldMap).findFirst(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
+            newNodeId.value = check_nbyrtw_a0a0b0j0i0m0ib(MapSequence.fromMap(newToOldMap).findFirst(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
               public boolean accept(IMapping<SNodeId, SNodeId> it) {
                 return Objects.equals(it.value(), newNodeId.value);
               }
@@ -405,7 +388,7 @@ public class ChangeSetBuilder {
         }
       }).visitAll(new IVisitor<SNodeId>() {
         public void visit(final SNodeId oldNodeId) {
-          SNodeId newNodeId = check_nbyrtw_a0a0a0a01a21a63(MapSequence.fromMap(newToOldMap).findFirst(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
+          SNodeId newNodeId = check_nbyrtw_a0a0a0a01a21a43(MapSequence.fromMap(newToOldMap).findFirst(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
             public boolean accept(IMapping<SNodeId, SNodeId> it) {
               return Objects.equals(it.value(), oldNodeId);
             }
@@ -423,9 +406,9 @@ public class ChangeSetBuilder {
     Iterable<D> added;
     Iterable<D> deleted;
     {
-      Tuples._2<Iterable<D>, Iterable<D>> _tmp_nbyrtw_c0mb = getAddedAndDeleted(referencesExtractor);
-      added = _tmp_nbyrtw_c0mb._0();
-      deleted = _tmp_nbyrtw_c0mb._1();
+      Tuples._2<Iterable<D>, Iterable<D>> _tmp_nbyrtw_c0kb = getAddedAndDeleted(referencesExtractor);
+      added = _tmp_nbyrtw_c0kb._0();
+      deleted = _tmp_nbyrtw_c0kb._1();
     }
     ListSequence.fromList(myNewChanges).addSequence(Sequence.fromIterable(added).select(new ISelector<D, DependencyChange>() {
       public DependencyChange select(D r) {
@@ -562,7 +545,7 @@ public class ChangeSetBuilder {
   }
 
   private <D> Tuples._2<Iterable<D>, Iterable<D>> getAddedAndDeleted(_FunctionTypes._return_P1_E0<? extends Iterable<D>, ? super SModelBase> itemsExtractor) {
-    return getAddedAndDeleted(itemsExtractor.invoke(as_nbyrtw_a0a0a0gc(myOldModel, SModelBase.class)), itemsExtractor.invoke(as_nbyrtw_a0b0a0gc(myNewModel, SModelBase.class)));
+    return getAddedAndDeleted(itemsExtractor.invoke(as_nbyrtw_a0a0a0ec(myOldModel, SModelBase.class)), itemsExtractor.invoke(as_nbyrtw_a0b0a0ec(myNewModel, SModelBase.class)));
   }
 
   public static ModelChangeSet buildChangeSet(SModel oldModel, SModel newModel) {
@@ -669,28 +652,28 @@ public class ChangeSetBuilder {
     }
     return null;
   }
-  private static SNodeId check_nbyrtw_a0a0b0h0i0m0kb(IMapping<SNodeId, SNodeId> checkedDotOperand) {
+  private static SNodeId check_nbyrtw_a0a0b0h0i0m0ib(IMapping<SNodeId, SNodeId> checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.key();
     }
     return null;
   }
-  private static SNodeId check_nbyrtw_a0a0b0j0i0m0kb(IMapping<SNodeId, SNodeId> checkedDotOperand) {
+  private static SNodeId check_nbyrtw_a0a0b0j0i0m0ib(IMapping<SNodeId, SNodeId> checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.key();
     }
     return null;
   }
-  private static SNodeId check_nbyrtw_a0a0a0a01a21a63(IMapping<SNodeId, SNodeId> checkedDotOperand) {
+  private static SNodeId check_nbyrtw_a0a0a0a01a21a43(IMapping<SNodeId, SNodeId> checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.key();
     }
     return null;
   }
-  private static <T> T as_nbyrtw_a0a0a0gc(Object o, Class<T> type) {
+  private static <T> T as_nbyrtw_a0a0a0ec(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_nbyrtw_a0b0a0gc(Object o, Class<T> type) {
+  private static <T> T as_nbyrtw_a0b0a0ec(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

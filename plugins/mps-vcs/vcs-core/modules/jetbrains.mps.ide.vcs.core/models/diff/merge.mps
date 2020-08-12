@@ -60,7 +60,7 @@
       <concept id="1153422305557" name="jetbrains.mps.baseLanguage.structure.LessThanOrEqualsExpression" flags="nn" index="2dkUwp" />
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
-      <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
+      <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
       <concept id="1076505808687" name="jetbrains.mps.baseLanguage.structure.WhileStatement" flags="nn" index="2$JKZl">
         <child id="1076505808688" name="condition" index="2$JKZa" />
       </concept>
@@ -9959,36 +9959,51 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs6" id="5vGj4lszZck" role="3cqZAp">
-          <node concept="3clFbC" id="5vGj4lszZcl" role="3cqZAk">
-            <node concept="Rm8GO" id="5vGj4lszZcm" role="3uHU7w">
-              <ref role="Rm8GQ" to="ze1i:~StaticScope.NONE" resolve="NONE" />
-              <ref role="1Px2BO" to="ze1i:~StaticScope" resolve="StaticScope" />
-            </node>
-            <node concept="2OqwBi" id="5vGj4lszZcn" role="3uHU7B">
-              <node concept="37vLTw" id="5vGj4lszZco" role="2Oq$k0">
-                <ref role="3cqZAo" node="5vGj4lszZbO" resolve="mmip" />
-              </node>
-              <node concept="liA8E" id="5vGj4lszZcp" role="2OqNvi">
-                <ref role="37wK5l" to="pa15:~MetaModelInfoProvider.getScope(jetbrains.mps.smodel.adapter.ids.SConceptId)" resolve="getScope" />
-                <node concept="2OqwBi" id="5vGj4lszZcq" role="37wK5m">
-                  <node concept="1eOMI4" id="5vGj4lszZcr" role="2Oq$k0">
-                    <node concept="10QFUN" id="5vGj4lszZcs" role="1eOMHV">
-                      <node concept="3uibUv" id="5vGj4ls$896" role="10QFUM">
-                        <ref role="3uigEE" to="vxxo:~SConceptAdapterById" resolve="SConceptAdapterById" />
+        <node concept="3clFbJ" id="7fqmVGYg5ts" role="3cqZAp">
+          <node concept="3clFbS" id="7fqmVGYg5tu" role="3clFbx">
+            <node concept="3cpWs6" id="5vGj4lszZck" role="3cqZAp">
+              <node concept="3clFbC" id="5vGj4lszZcl" role="3cqZAk">
+                <node concept="Rm8GO" id="5vGj4lszZcm" role="3uHU7w">
+                  <ref role="Rm8GQ" to="ze1i:~StaticScope.NONE" resolve="NONE" />
+                  <ref role="1Px2BO" to="ze1i:~StaticScope" resolve="StaticScope" />
+                </node>
+                <node concept="2OqwBi" id="5vGj4lszZcn" role="3uHU7B">
+                  <node concept="liA8E" id="5vGj4lszZcp" role="2OqNvi">
+                    <ref role="37wK5l" to="pa15:~MetaModelInfoProvider.getScope(jetbrains.mps.smodel.adapter.ids.SConceptId)" resolve="getScope" />
+                    <node concept="2OqwBi" id="5vGj4lszZcq" role="37wK5m">
+                      <node concept="1eOMI4" id="5vGj4lszZcr" role="2Oq$k0">
+                        <node concept="10QFUN" id="5vGj4lszZcs" role="1eOMHV">
+                          <node concept="3uibUv" id="5vGj4ls$896" role="10QFUM">
+                            <ref role="3uigEE" to="vxxo:~SConceptAdapterById" resolve="SConceptAdapterById" />
+                          </node>
+                          <node concept="37vLTw" id="5vGj4lszZcu" role="10QFUP">
+                            <ref role="3cqZAo" node="5vGj4lszZcx" resolve="concept" />
+                          </node>
+                        </node>
                       </node>
-                      <node concept="37vLTw" id="5vGj4lszZcu" role="10QFUP">
-                        <ref role="3cqZAo" node="5vGj4lszZcx" resolve="concept" />
+                      <node concept="liA8E" id="5vGj4lszZcv" role="2OqNvi">
+                        <ref role="37wK5l" to="vxxo:~SConceptAdapterById.getId()" resolve="getId" />
                       </node>
                     </node>
                   </node>
-                  <node concept="liA8E" id="5vGj4lszZcv" role="2OqNvi">
-                    <ref role="37wK5l" to="vxxo:~SConceptAdapterById.getId()" resolve="getId" />
+                  <node concept="37vLTw" id="5vGj4lszZco" role="2Oq$k0">
+                    <ref role="3cqZAo" node="5vGj4lszZbO" resolve="mmip" />
                   </node>
                 </node>
               </node>
             </node>
           </node>
+          <node concept="2ZW3vV" id="7fqmVGYg6Bp" role="3clFbw">
+            <node concept="3uibUv" id="7fqmVGYg6KR" role="2ZW6by">
+              <ref role="3uigEE" to="vxxo:~SConceptAdapterById" resolve="SConceptAdapterById" />
+            </node>
+            <node concept="37vLTw" id="7fqmVGYg5_L" role="2ZW6bz">
+              <ref role="3cqZAo" node="5vGj4lszZcx" resolve="concept" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="7fqmVGYg7k_" role="3cqZAp">
+          <node concept="3clFbT" id="7fqmVGYg7sw" role="3cqZAk" />
         </node>
       </node>
       <node concept="10P_77" id="5vGj4lszZcw" role="3clF45" />
@@ -10002,7 +10017,7 @@
           <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
         </node>
       </node>
-      <node concept="3Tm6S6" id="5vGj4lszZcz" role="1B3o_S" />
+      <node concept="3Tm1VV" id="laAoEmQ0mV" role="1B3o_S" />
     </node>
     <node concept="2tJIrI" id="yQXwz4g2HR" role="jymVt" />
     <node concept="2YIFZL" id="yQXwz4fong" role="jymVt">

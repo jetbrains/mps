@@ -105,7 +105,7 @@ public class SNodeCompare {
     return true;
   }
 
-  private static boolean conceptHasStaticScopeNone(SAbstractConcept concept, SModel model) {
+  public static boolean conceptHasStaticScopeNone(SAbstractConcept concept, SModel model) {
     MetaModelInfoProvider mmip = null;
     if (model instanceof SModelBase) {
       SModelData modelData = ((SModelBase) model).getModelData();
@@ -117,7 +117,10 @@ public class SNodeCompare {
     if (mmip == null) {
       mmip = new MetaModelInfoProvider.RegularMetaModelInfo();
     }
-    return mmip.getScope(((SConceptAdapterById) concept).getId()) == StaticScope.NONE;
+    if (concept instanceof SConceptAdapterById) {
+      return mmip.getScope(((SConceptAdapterById) concept).getId()) == StaticScope.NONE;
+    }
+    return false;
   }
 
   public static boolean nodeEquals(SNode a, SNode b) {
