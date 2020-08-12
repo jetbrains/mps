@@ -56,10 +56,10 @@ public class MethodResolveUtil {
     int index = 0;
     for (SNode method : methods) {
       int parmCountDiff;
-      int count = ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).count();
+      int count = ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).count();
       int actualArgsCount = ListSequence.fromList(actualArgs).count();
       boolean vararg = false;
-      if (count > 0 && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$qsax)).last(), LINKS.type$uWuc), CONCEPTS.VariableArityType$jT)) {
+      if (count > 0 && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).last(), LINKS.type$a1UY), CONCEPTS.VariableArityType$KF)) {
         vararg = true;
         parmCountDiff = Math.max(0, (count - 1) - actualArgsCount);
       } else {
@@ -130,7 +130,7 @@ public class MethodResolveUtil {
     if (ListSequence.fromList(candidates).count() > 1) {
       List<SNode> candidates1 = ListSequence.fromList(candidates).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$qsax)).last(), LINKS.type$uWuc), CONCEPTS.VariableArityType$jT));
+          return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).last(), LINKS.type$a1UY), CONCEPTS.VariableArityType$KF));
         }
       }).toListSequence();
       if (ListSequence.fromList(candidates1).isNotEmpty()) {
@@ -144,9 +144,9 @@ public class MethodResolveUtil {
     Map<NodeWrapper, List<SNode>> typesOfParamToMethods = MapSequence.fromMap(new HashMap<NodeWrapper, List<SNode>>());
     for (SNode candidate : candidates) {
       boolean varArg = false;
-      List<SNode> params = SLinkOperations.getChildren(candidate, LINKS.parameter$qsax);
-      SNode type = SLinkOperations.getTarget(ListSequence.fromList(params).last(), LINKS.type$uWuc);
-      if (SNodeOperations.isInstanceOf(type, CONCEPTS.VariableArityType$jT)) {
+      List<SNode> params = SLinkOperations.getChildren(candidate, LINKS.parameter$5xBj);
+      SNode type = SLinkOperations.getTarget(ListSequence.fromList(params).last(), LINKS.type$a1UY);
+      if (SNodeOperations.isInstanceOf(type, CONCEPTS.VariableArityType$KF)) {
         if (ListSequence.fromList(params).count() - 1 <= indexOfArg) {
           varArg = true;
         }
@@ -155,15 +155,15 @@ public class MethodResolveUtil {
           continue;
         }
       }
-      Set<SNode> methodTypeVariableDecls = SetSequence.fromSetWithValues(new HashSet<SNode>(), SLinkOperations.getChildren(candidate, LINKS.typeVariableDeclaration$6cWB));
-      SNode typeOfParam = (varArg ? SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.VariableArityType$jT), LINKS.componentType$RjTw) : SLinkOperations.getTarget(ListSequence.fromList(params).getElement(indexOfArg), LINKS.type$uWuc));
+      Set<SNode> methodTypeVariableDecls = SetSequence.fromSetWithValues(new HashSet<SNode>(), SLinkOperations.getChildren(candidate, LINKS.typeVariableDeclaration$Lipp));
+      SNode typeOfParam = (varArg ? SLinkOperations.getTarget(SNodeOperations.cast(type, CONCEPTS.VariableArityType$KF), LINKS.componentType$ypmi) : SLinkOperations.getTarget(ListSequence.fromList(params).getElement(indexOfArg), LINKS.type$a1UY));
       if ((typeOfParam == null)) {
         continue;
       }
       typeOfParam = GenericTypesUtil.getTypeWithResolvedTypeVars(typeOfParam, typeByTypeVar);
       typeOfParam = GenericTypesUtil.methodParamTypeWoutTypeVars(typeOfParam, methodTypeVariableDecls);
       // only respect boxing-unboxing 
-      boolean boxingInvolved = SNodeOperations.isInstanceOf(typeOfArg, CONCEPTS.PrimitiveType$5) != SNodeOperations.isInstanceOf(typeOfParam, CONCEPTS.PrimitiveType$5);
+      boolean boxingInvolved = SNodeOperations.isInstanceOf(typeOfArg, CONCEPTS.PrimitiveType$sR) != SNodeOperations.isInstanceOf(typeOfParam, CONCEPTS.PrimitiveType$sR);
       // in case boxing is involved and isWeak is false, isSubtype is always false 
       if ((isWeak || !(boxingInvolved)) && TypecheckingFacade.getFromContext().isSubtype(typeOfArg, typeOfParam)) {
         List<SNode> methods = MapSequence.fromMap(typesOfParamToMethods).get(new NodeWrapper(typeOfParam));
@@ -227,28 +227,28 @@ with_next_t:
       typeByTypeVar.put(elem.key(), elem.value());
     }
     Iterator<SNode> typeParms = Sequence.fromIterable(typeParameters).iterator();
-    for (SNode typeVar : ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$6cWB))) {
+    for (SNode typeVar : ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$Lipp))) {
       if (!(typeParms.hasNext())) {
         break;
       }
-      SNode typeParm = SNodeOperations.as(typeParms.next(), CONCEPTS.Type$IG);
-      if ((typeParm == null) || SLinkOperations.getTarget(SNodeOperations.as(typeParm, CONCEPTS.TypeVariableReference$vZ), LINKS.typeVariableDeclaration$6t$W) == typeVar) {
+      SNode typeParm = SNodeOperations.as(typeParms.next(), CONCEPTS.Type$bu);
+      if ((typeParm == null) || SLinkOperations.getTarget(SNodeOperations.as(typeParm, CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I) == typeVar) {
         continue;
       }
-      MapSequence.fromMap(typeByTypeVar).put(typeVar, SNodeOperations.cast(typeParm, CONCEPTS.Type$IG));
+      MapSequence.fromMap(typeByTypeVar).put(typeVar, SNodeOperations.cast(typeParm, CONCEPTS.Type$bu));
     }
     return typeByTypeVar;
   }
   public static String getMethodName(SNode methodCall) {
-    SNode baseMethodDeclaration = SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$ItxI);
+    SNode baseMethodDeclaration = SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$pyYw);
     if (baseMethodDeclaration == null) {
-      if (SLinkOperations.getTarget(SNodeOperations.as(methodCall, CONCEPTS.AnonymousClass$aF), LINKS.classifier$JwxM) != null) {
-        return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.as(methodCall, CONCEPTS.AnonymousClass$aF), LINKS.classifier$JwxM), PROPS.name$lA7v);
+      if (SLinkOperations.getTarget(SNodeOperations.as(methodCall, CONCEPTS.AnonymousClass$Bt), LINKS.classifier$q_Y$) != null) {
+        return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.as(methodCall, CONCEPTS.AnonymousClass$Bt), LINKS.classifier$q_Y$), PROPS.name$MnvL);
       } else {
-        return SLinkOperations.getResolveInfo(SNodeOperations.getReference(methodCall, LINKS.baseMethodDeclaration$ItxI));
+        return SLinkOperations.getResolveInfo(SNodeOperations.getReference(methodCall, LINKS.baseMethodDeclaration$pyYw));
       }
     } else {
-      return SPropertyOperations.getString(baseMethodDeclaration, PROPS.name$lA7v);
+      return SPropertyOperations.getString(baseMethodDeclaration, PROPS.name$MnvL);
     }
   }
 
@@ -260,8 +260,8 @@ with_next_t:
       return;
     }
 
-    if (newTarget != null && newTarget != SLinkOperations.getTarget(methodCallNode, LINKS.baseMethodDeclaration$ItxI)) {
-      SLinkOperations.setTarget(methodCallNode, LINKS.baseMethodDeclaration$ItxI, newTarget);
+    if (newTarget != null && newTarget != SLinkOperations.getTarget(methodCallNode, LINKS.baseMethodDeclaration$pyYw)) {
+      SLinkOperations.setTarget(methodCallNode, LINKS.baseMethodDeclaration$pyYw, newTarget);
     }
   }
 
@@ -283,18 +283,18 @@ with_next_t:
   }
 
   private static Tuples._2<SNode, Boolean> resolveMethodUsingScopes(SNode methodCall, final String name) {
-    if (SNodeOperations.getReference(methodCall, LINKS.baseMethodDeclaration$ItxI) == null) {
+    if (SNodeOperations.getReference(methodCall, LINKS.baseMethodDeclaration$pyYw) == null) {
       return MultiTuple.<SNode,Boolean>from(((SNode) null), false);
     }
 
-    Scope scope = ModelConstraints.getScope(SNodeOperations.getReference(methodCall, LINKS.baseMethodDeclaration$ItxI));
-    SNode resolvedMethod = SNodeOperations.cast(scope.resolve(methodCall, name), CONCEPTS.BaseMethodDeclaration$RR);
+    Scope scope = ModelConstraints.getScope(SNodeOperations.getReference(methodCall, LINKS.baseMethodDeclaration$pyYw));
+    SNode resolvedMethod = SNodeOperations.cast(scope.resolve(methodCall, name), CONCEPTS.BaseMethodDeclaration$kD);
     if ((resolvedMethod != null)) {
       return MultiTuple.<SNode,Boolean>from(resolvedMethod, true);
     } else {
       return resolveMethodByCandidatesAndTypes(methodCall, Sequence.fromIterable(((Iterable<SNode>) scope.getAvailableElements(name))).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$lA7v), name);
+          return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), name);
         }
       }), false);
     }
@@ -302,7 +302,7 @@ with_next_t:
 
   private static Tuples._2<SNode, Boolean> resolveMethodByCandidatesAndTypes(SNode methodCall, Iterable<SNode> candidates, boolean utilizeParameterTypes) {
 
-    List<SNode> actualArgs = SLinkOperations.getChildren(methodCall, LINKS.actualArgument$ItKJ);
+    List<SNode> actualArgs = SLinkOperations.getChildren(methodCall, LINKS.actualArgument$pzdx);
 
     Pair<List<SNode>, Boolean> parmCountPair = MethodResolveUtil.selectByVisibilityReportNoGoodMethodNode(Sequence.fromIterable(candidates).toListSequence(), methodCall);
     List<SNode> methodDeclarationsGoodParams = parmCountPair.o1;
@@ -318,7 +318,7 @@ with_next_t:
         if (utilizeParameterTypes) {
           Map<SNode, SNode> typeByTypeVar = getTypeByTypeVar(methodCall);
           if (typeByTypeVar != null) {
-            SNode baseMethodDeclaration = SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$ItxI);
+            SNode baseMethodDeclaration = SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$pyYw);
             Pair<SNode, Boolean> parmTypesPair = MethodResolveUtil.chooseByParameterTypeReportNoGoodMethodNode(baseMethodDeclaration, methodDeclarationsGoodParams, actualArgs, typeByTypeVar);
             return MultiTuple.<SNode,Boolean>from(parmTypesPair.o1, parmTypesPair.o2);
           }
@@ -344,22 +344,22 @@ with_next_t:
     List<SNode> goodMethods = new ArrayList<SNode>();
     List<SNode> badMethods = new ArrayList<SNode>();
     for (SNode method : methods) {
-      if (SNodeOperations.isInstanceOf(method, CONCEPTS.IVisible$6G)) {
-        SNode visibility = SLinkOperations.getTarget(SNodeOperations.cast(method, CONCEPTS.IVisible$6G), LINKS.visibility$jt1o);
-        if (SNodeOperations.isInstanceOf(visibility, CONCEPTS.PublicVisibility$qe)) {
+      if (SNodeOperations.isInstanceOf(method, CONCEPTS.IVisible$zu)) {
+        SNode visibility = SLinkOperations.getTarget(SNodeOperations.cast(method, CONCEPTS.IVisible$zu), LINKS.visibility$Yyua);
+        if (SNodeOperations.isInstanceOf(visibility, CONCEPTS.PublicVisibility$R0)) {
           goodMethods.add(method);
-        } else if (SNodeOperations.isInstanceOf(visibility, CONCEPTS.PrivateVisibility$Se)) {
+        } else if (SNodeOperations.isInstanceOf(visibility, CONCEPTS.PrivateVisibility$l0)) {
           if (SNodeOperations.getContainingRoot(methodCall) == SNodeOperations.getContainingRoot(method)) {
             goodMethods.add(method);
           } else {
             badMethods.add(method);
           }
-        } else if (SNodeOperations.isInstanceOf(visibility, CONCEPTS.ProtectedVisibility$OD)) {
+        } else if (SNodeOperations.isInstanceOf(visibility, CONCEPTS.ProtectedVisibility$hr)) {
           if (hasEqualsFQName(SNodeOperations.getModel(methodCall), SNodeOperations.getModel(method))) {
             goodMethods.add(method);
           } else {
-            SNode desc = SNodeOperations.getNodeAncestor(methodCall, CONCEPTS.Classifier$hJ, false, false);
-            SNode anc = SNodeOperations.getNodeAncestor(method, CONCEPTS.Classifier$hJ, false, false);
+            SNode desc = SNodeOperations.getNodeAncestor(methodCall, CONCEPTS.Classifier$Ix, false, false);
+            SNode anc = SNodeOperations.getNodeAncestor(method, CONCEPTS.Classifier$Ix, false, false);
             if (desc != null && anc != null && (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(desc, anc)) {
               goodMethods.add(method);
             } else {
@@ -393,11 +393,11 @@ with_next_t:
       return type;
     }
 
-    if (SNodeOperations.isInstanceOf(type, CONCEPTS.TypeVariableReference$vZ)) {
-      return MethodResolveUtil.getTypeByTypeVariable(SNodeOperations.cast(type, CONCEPTS.TypeVariableReference$vZ), typeByTypeVar);
+    if (SNodeOperations.isInstanceOf(type, CONCEPTS.TypeVariableReference$WL)) {
+      return MethodResolveUtil.getTypeByTypeVariable(SNodeOperations.cast(type, CONCEPTS.TypeVariableReference$WL), typeByTypeVar);
     } else {
-      SNode typeCopy = SNodeOperations.copyNode(SNodeOperations.cast(type, CONCEPTS.ClassifierType$IZ));
-      for (SNode typeVariableRef : ListSequence.fromList(SNodeOperations.getNodeDescendants(typeCopy, CONCEPTS.TypeVariableReference$vZ, false, new SAbstractConcept[]{}))) {
+      SNode typeCopy = SNodeOperations.copyNode(SNodeOperations.cast(type, CONCEPTS.ClassifierType$bL));
+      for (SNode typeVariableRef : ListSequence.fromList(SNodeOperations.getNodeDescendants(typeCopy, CONCEPTS.TypeVariableReference$WL, false, new SAbstractConcept[]{}))) {
         SNode resolvedType = MethodResolveUtil.getTypeByTypeVariable(typeVariableRef, typeByTypeVar);
         if (resolvedType != typeVariableRef) {
           SNodeOperations.replaceWithAnother(typeVariableRef, SNodeOperations.copyNode(resolvedType));
@@ -409,15 +409,15 @@ with_next_t:
 
   private static SNode getTypeByTypeVariable(SNode typeVariableRef, Map<SNode, SNode> typeByTypeVar) {
     SNode result = typeVariableRef;
-    SNode typeVar = SLinkOperations.getTarget(typeVariableRef, LINKS.typeVariableDeclaration$6t$W);
+    SNode typeVar = SLinkOperations.getTarget(typeVariableRef, LINKS.typeVariableDeclaration$Lz1I);
     while ((typeVar != null)) {
       SNode typeVarValue = typeByTypeVar.get(typeVar);
       if ((typeVarValue == null)) {
         break;
       }
       result = typeVarValue;
-      if (SNodeOperations.isInstanceOf(result, CONCEPTS.TypeVariableReference$vZ)) {
-        SNode newTypeVar = SLinkOperations.getTarget(SNodeOperations.cast(result, CONCEPTS.TypeVariableReference$vZ), LINKS.typeVariableDeclaration$6t$W);
+      if (SNodeOperations.isInstanceOf(result, CONCEPTS.TypeVariableReference$WL)) {
+        SNode newTypeVar = SLinkOperations.getTarget(SNodeOperations.cast(result, CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I);
         if (typeVar == newTypeVar) {
           break;
         }
@@ -453,33 +453,33 @@ with_next_t:
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink type$uWuc = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SContainmentLink typeVariableDeclaration$6cWB = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
-    /*package*/ static final SContainmentLink componentType$RjTw = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, 0x11c08f5f38cL, "componentType");
-    /*package*/ static final SReferenceLink typeVariableDeclaration$6t$W = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
-    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
-    /*package*/ static final SReferenceLink classifier$JwxM = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
-    /*package*/ static final SContainmentLink actualArgument$ItKJ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink typeVariableDeclaration$Lipp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
+    /*package*/ static final SContainmentLink componentType$ypmi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, 0x11c08f5f38cL, "componentType");
+    /*package*/ static final SReferenceLink typeVariableDeclaration$Lz1I = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink classifier$q_Y$ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
+    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept VariableArityType$jT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, "jetbrains.mps.baseLanguage.structure.VariableArityType");
-    /*package*/ static final SConcept PrimitiveType$5 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
-    /*package*/ static final SConcept Type$IG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
-    /*package*/ static final SConcept TypeVariableReference$vZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
-    /*package*/ static final SConcept AnonymousClass$aF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
-    /*package*/ static final SConcept BaseMethodDeclaration$RR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
-    /*package*/ static final SInterfaceConcept IVisible$6G = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible");
-    /*package*/ static final SConcept PrivateVisibility$Se = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept ProtectedVisibility$OD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af958b686L, "jetbrains.mps.baseLanguage.structure.ProtectedVisibility");
-    /*package*/ static final SConcept PublicVisibility$qe = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility");
-    /*package*/ static final SConcept ClassifierType$IZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept VariableArityType$KF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, "jetbrains.mps.baseLanguage.structure.VariableArityType");
+    /*package*/ static final SConcept PrimitiveType$sR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L, "jetbrains.mps.baseLanguage.structure.PrimitiveType");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
+    /*package*/ static final SConcept TypeVariableReference$WL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");
+    /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
+    /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
+    /*package*/ static final SInterfaceConcept IVisible$zu = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible");
+    /*package*/ static final SConcept PrivateVisibility$l0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept ProtectedVisibility$hr = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af958b686L, "jetbrains.mps.baseLanguage.structure.ProtectedVisibility");
+    /*package*/ static final SConcept PublicVisibility$R0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility");
+    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty name$lA7v = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

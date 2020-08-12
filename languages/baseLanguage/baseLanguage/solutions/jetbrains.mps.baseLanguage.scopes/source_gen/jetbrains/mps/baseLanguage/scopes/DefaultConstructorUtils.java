@@ -33,16 +33,16 @@ public final class DefaultConstructorUtils {
     if (Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(clazz)).isNotEmpty()) {
       return false;
     }
-    if ((SLinkOperations.getTarget(ClassConcept__BehaviorDescriptor.getSuperclass_idi3H_lLu.invoke(clazz), LINKS.classifier$xslD) == null)) {
+    if ((SLinkOperations.getTarget(ClassConcept__BehaviorDescriptor.getSuperclass_idi3H_lLu.invoke(clazz), LINKS.classifier$cxMr) == null)) {
       return false;
     }
-    return containsVisibleNoArgumentsConstructor(SNodeOperations.cast(SLinkOperations.getTarget(ClassConcept__BehaviorDescriptor.getSuperclass_idi3H_lLu.invoke(clazz), LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY), clazz);
+    return containsVisibleNoArgumentsConstructor(SNodeOperations.cast(SLinkOperations.getTarget(ClassConcept__BehaviorDescriptor.getSuperclass_idi3H_lLu.invoke(clazz), LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK), clazz);
   }
   private static boolean containsVisibleNoArgumentsConstructor(SNode currentClass, SNode startClass) {
     if (Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(currentClass)).isNotEmpty()) {
       SNode constructor = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(currentClass)).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$qsax)).isEmpty();
+          return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.parameter$5xBj)).isEmpty();
         }
       });
       if ((constructor == null)) {
@@ -50,15 +50,15 @@ public final class DefaultConstructorUtils {
       }
       return (boolean) ClassifierMember__BehaviorDescriptor.isVisible_id70J2WaK_oVl.invoke(constructor, currentClass, startClass);
     } else {
-      if ((SLinkOperations.getTarget(ClassConcept__BehaviorDescriptor.getSuperclass_idi3H_lLu.invoke(currentClass), LINKS.classifier$xslD) == null)) {
+      if ((SLinkOperations.getTarget(ClassConcept__BehaviorDescriptor.getSuperclass_idi3H_lLu.invoke(currentClass), LINKS.classifier$cxMr) == null)) {
         return false;
       }
-      return containsVisibleNoArgumentsConstructor(SNodeOperations.cast(SLinkOperations.getTarget(ClassConcept__BehaviorDescriptor.getSuperclass_idi3H_lLu.invoke(currentClass), LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY), startClass);
+      return containsVisibleNoArgumentsConstructor(SNodeOperations.cast(SLinkOperations.getTarget(ClassConcept__BehaviorDescriptor.getSuperclass_idi3H_lLu.invoke(currentClass), LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK), startClass);
     }
   }
   public static List<SNode> retrieveSuperConstructors(final SNode currentClass) {
     List<SNode> constructors = new ArrayList<SNode>();
-    SNode superClass = SNodeOperations.as(SLinkOperations.getTarget(ClassConcept__BehaviorDescriptor.getSuperclass_idi3H_lLu.invoke(currentClass), LINKS.classifier$xslD), CONCEPTS.ClassConcept$IY);
+    SNode superClass = SNodeOperations.as(SLinkOperations.getTarget(ClassConcept__BehaviorDescriptor.getSuperclass_idi3H_lLu.invoke(currentClass), LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK);
     if ((superClass == null) || Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(superClass)).isEmpty()) {
       return constructors;
     }
@@ -72,11 +72,11 @@ public final class DefaultConstructorUtils {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink classifier$xslD = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink parameter$qsax = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
+    /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ClassConcept$IY = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 }

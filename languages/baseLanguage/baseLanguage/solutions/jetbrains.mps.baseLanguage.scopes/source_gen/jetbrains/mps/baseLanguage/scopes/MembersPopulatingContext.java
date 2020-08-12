@@ -10,16 +10,17 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.baseLanguage.behavior.IClassifier__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import java.util.Objects;
 import jetbrains.mps.baseLanguage.behavior.IClassifierType__BehaviorDescriptor;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Iterator;
+import jetbrains.mps.baseLanguage.behavior.IClassifier__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.util.JavaNameUtil;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.Objects;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Collections;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -51,11 +52,6 @@ public class MembersPopulatingContext {
 
   public void exposeMember(SNode member, Signature signature) {
     SNode contextClassifier = foundSignatures2Classifier.get(signature);
-    boolean b = !(Sequence.fromIterable(IClassifier__BehaviorDescriptor.getSuperTypes_id6r77ob2URYj.invoke(contextClassifier)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(IClassifierType__BehaviorDescriptor.getClassifier_id6r77ob2URY9.invoke(it), getCurrentClassifier());
-      }
-    }));
     if (contextClassifier == null || contextClassifier == getCurrentClassifier()) {
       // exposing all members using following condition: 
       // 1. member was not "masked" by a member from sub-classifier 
@@ -113,6 +109,18 @@ public class MembersPopulatingContext {
 
   public void exitClassifierInternal(SNode classifier) {
     assert classifiers.pop() == IClassifierType__BehaviorDescriptor.getClassifier_id6r77ob2URY9.invoke(classifier);
+    Set<Map.Entry<Signature, SNode>> entrySet = foundSignatures2Classifier.entrySet();
+    List<Signature> keysToRemove = ListSequence.fromList(new ArrayList<Signature>());
+    for (Map.Entry<Signature, SNode> entry : entrySet) {
+      if (Objects.equals(entry.getValue(), IClassifierType__BehaviorDescriptor.getClassifier_id6r77ob2URY9.invoke(classifier))) {
+        ListSequence.fromList(keysToRemove).addElement(entry.getKey());
+      }
+    }
+    ListSequence.fromList(keysToRemove).visitAll(new IVisitor<Signature>() {
+      public void visit(Signature it) {
+        foundSignatures2Classifier.remove(it);
+      }
+    });
   }
 
   private SNode getCurrentClassifier() {
@@ -128,10 +136,10 @@ public class MembersPopulatingContext {
   }
 
   public boolean isElementVisible(SNode element) {
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(element, LINKS.visibility$jt1o), CONCEPTS.PrivateVisibility$Se)) {
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(element, LINKS.visibility$Yyua), CONCEPTS.PrivateVisibility$l0)) {
       return isPrivateVisible();
     }
-    if ((SLinkOperations.getTarget(element, LINKS.visibility$jt1o) == null)) {
+    if ((SLinkOperations.getTarget(element, LINKS.visibility$Yyua) == null)) {
       return isPackageProtectedVisible();
     }
     return true;
@@ -142,10 +150,10 @@ public class MembersPopulatingContext {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink visibility$jt1o = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept PrivateVisibility$Se = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
+    /*package*/ static final SConcept PrivateVisibility$l0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility");
   }
 }
