@@ -22,8 +22,8 @@ public final class LanguageIdCalculator {
   }
 
   public String calcLangId(SNode decl) {
-    if (SPropertyOperations.getString(decl, PROPS.languageId$79NI) != null) {
-      return SPropertyOperations.getString(decl, PROPS.languageId$79NI);
+    if (SPropertyOperations.getString(decl, PROPS.languageId$F1XV) != null) {
+      return SPropertyOperations.getString(decl, PROPS.languageId$F1XV);
     }
     SModel model = SNodeOperations.getModel(decl);
     if (model.getModule() instanceof TransientSModule) {
@@ -35,6 +35,6 @@ public final class LanguageIdCalculator {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty languageId$79NI = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x7cf94884f2237423L, "languageId");
+    /*package*/ static final SProperty languageId$F1XV = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0x7cf94884f2237423L, "languageId");
   }
 }

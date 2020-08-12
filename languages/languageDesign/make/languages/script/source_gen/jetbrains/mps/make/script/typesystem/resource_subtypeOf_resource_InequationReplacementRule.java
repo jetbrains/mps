@@ -22,11 +22,11 @@ public class resource_subtypeOf_resource_InequationReplacementRule extends Abstr
   public resource_subtypeOf_resource_InequationReplacementRule() {
   }
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
-    SNode leftCT = SLinkOperations.getTarget(subtype, LINKS.classifierType$SVcU);
+    SNode leftCT = SLinkOperations.getTarget(subtype, LINKS.classifierType$XIf1);
     if (leftCT == null) {
       leftCT = _quotation_createNode_em7qpx_a0a0b0b();
     }
-    SNode rightCT = SLinkOperations.getTarget(supertype, LINKS.classifierType$SVcU);
+    SNode rightCT = SLinkOperations.getTarget(supertype, LINKS.classifierType$XIf1);
     if (rightCT == null) {
       rightCT = _quotation_createNode_em7qpx_a0a0d0b();
     }
@@ -49,10 +49,10 @@ public class resource_subtypeOf_resource_InequationReplacementRule extends Abstr
   }
 
   public SAbstractConcept getApplicableSubtypeConcept() {
-    return CONCEPTS.ResourceType$sR;
+    return CONCEPTS.ResourceType$uY;
   }
   public SAbstractConcept getApplicableSupertypeConcept() {
-    return CONCEPTS.ResourceType$sR;
+    return CONCEPTS.ResourceType$uY;
   }
   private static SNode _quotation_createNode_em7qpx_a0a0b0b() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
@@ -70,10 +70,10 @@ public class resource_subtypeOf_resource_InequationReplacementRule extends Abstr
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink classifierType$SVcU = MetaAdapterFactory.getContainmentLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a947282L, 0x2dead7037d3bef52L, "classifierType");
+    /*package*/ static final SContainmentLink classifierType$XIf1 = MetaAdapterFactory.getContainmentLink(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a947282L, 0x2dead7037d3bef52L, "classifierType");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ResourceType$sR = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a947282L, "jetbrains.mps.make.script.structure.ResourceType");
+    /*package*/ static final SConcept ResourceType$uY = MetaAdapterFactory.getConcept(0x95f8a3e6f9944ca0L, 0xa65e763c9bae2d3bL, 0x20c069f80a947282L, "jetbrains.mps.make.script.structure.ResourceType");
   }
 }

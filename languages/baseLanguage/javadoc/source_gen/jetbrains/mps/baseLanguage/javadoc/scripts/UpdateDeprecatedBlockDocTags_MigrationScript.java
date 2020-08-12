@@ -29,15 +29,15 @@ public final class UpdateDeprecatedBlockDocTags_MigrationScript extends BaseMigr
       }
       @Override
       public SAbstractConcept getApplicableConcept() {
-        return CONCEPTS.DeprecatedBlockDocTag$8n;
+        return CONCEPTS.DeprecatedBlockDocTag$ma;
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return (SLinkOperations.getTarget(node, LINKS.text$c2BW) == null);
+        return (SLinkOperations.getTarget(node, LINKS.text$PDPJ) == null);
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {
-        SNodeFactoryOperations.setNewChild(node, LINKS.text$c2BW, null);
+        SNodeFactoryOperations.setNewChild(node, LINKS.text$PDPJ, null);
       }
       @Override
       public boolean isShowAsIntention() {
@@ -53,10 +53,10 @@ public final class UpdateDeprecatedBlockDocTags_MigrationScript extends BaseMigr
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept DeprecatedBlockDocTag$8n = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L, "jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag");
+    /*package*/ static final SConcept DeprecatedBlockDocTag$ma = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L, "jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink text$c2BW = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L, 0x250631c6c859e113L, "text");
+    /*package*/ static final SContainmentLink text$PDPJ = MetaAdapterFactory.getContainmentLink(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x757ba20a4c87f964L, 0x250631c6c859e113L, "text");
   }
 }

@@ -25,12 +25,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class EnumConstantReference_Constraints extends BaseConstraintsDescriptor {
   public EnumConstantReference_Constraints() {
-    super(CONCEPTS.EnumConstantReference$kA);
+    super(CONCEPTS.EnumConstantReference$RO);
   }
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.enumConstantDeclaration$f1_N, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.enumConstantDeclaration$zW91, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -45,8 +45,8 @@ public class EnumConstantReference_Constraints extends BaseConstraintsDescriptor
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            if (SNodeOperations.isInstanceOf(_context.getContextNode(), CONCEPTS.EnumConstantReference$kA) && (SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), CONCEPTS.EnumConstantReference$kA), LINKS.enumClass$bGAj) != null)) {
-              return new NamedElementsScope(Members.visibleEnumConstants(SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), CONCEPTS.EnumConstantReference$kA), LINKS.enumClass$bGAj)));
+            if (SNodeOperations.isInstanceOf(_context.getContextNode(), CONCEPTS.EnumConstantReference$RO) && (SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), CONCEPTS.EnumConstantReference$RO), LINKS.enumClass$wB9x) != null)) {
+              return new NamedElementsScope(Members.visibleEnumConstants(SLinkOperations.getTarget(SNodeOperations.cast(_context.getContextNode(), CONCEPTS.EnumConstantReference$RO), LINKS.enumClass$wB9x)));
             } else {
               return new EmptyScope();
             }
@@ -61,11 +61,11 @@ public class EnumConstantReference_Constraints extends BaseConstraintsDescriptor
   private static final SNodePointer breakingNode_xpgkri_a0a0a0a0a1a0a0a0c = new SNodePointer("r:00000000-0000-4000-0000-011c895902c1(jetbrains.mps.baseLanguage.constraints)", "6836281137582643428");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept EnumConstantReference$kA = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference");
+    /*package*/ static final SConcept EnumConstantReference$RO = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink enumConstantDeclaration$f1_N = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration");
-    /*package*/ static final SReferenceLink enumClass$bGAj = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0x10a758428feL, "enumClass");
+    /*package*/ static final SReferenceLink enumConstantDeclaration$zW91 = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration");
+    /*package*/ static final SReferenceLink enumClass$wB9x = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0x10a758428feL, "enumClass");
   }
 }

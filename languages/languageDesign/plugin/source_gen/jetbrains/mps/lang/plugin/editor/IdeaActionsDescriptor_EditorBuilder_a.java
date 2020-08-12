@@ -112,10 +112,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.actionGroups$jHRA;
+      return LINKS.actionGroups$68Uz;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.ActionGroupRef$dX;
+      return CONCEPTS.ActionGroupRef$gU;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -125,7 +125,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(actionGroupsListHandler_rofybv_b1a.this.getNode(), LINKS.actionGroups$jHRA));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(actionGroupsListHandler_rofybv_b1a.this.getNode(), LINKS.actionGroups$68Uz));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -209,10 +209,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return myNode;
     }
     public SContainmentLink getSLink() {
-      return LINKS.keymapsRef$CPvp;
+      return LINKS.keymapsRef$rgym;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.KeymapRef$X9;
+      return CONCEPTS.KeymapRef$6;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -222,7 +222,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(keymapsRefListHandler_rofybv_e1a.this.getNode(), LINKS.keymapsRef$CPvp));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(keymapsRefListHandler_rofybv_e1a.this.getNode(), LINKS.keymapsRef$rgym));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -264,12 +264,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actionGroups$jHRA = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa71eL, 0x498be7ea73fa722L, "actionGroups");
-    /*package*/ static final SContainmentLink keymapsRef$CPvp = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa71eL, 0x498be7ea73fa880L, "keymapsRef");
+    /*package*/ static final SContainmentLink actionGroups$68Uz = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa71eL, 0x498be7ea73fa722L, "actionGroups");
+    /*package*/ static final SContainmentLink keymapsRef$rgym = MetaAdapterFactory.getContainmentLink(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa71eL, 0x498be7ea73fa880L, "keymapsRef");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ActionGroupRef$dX = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa71fL, "jetbrains.mps.lang.plugin.structure.ActionGroupRef");
-    /*package*/ static final SConcept KeymapRef$X9 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa87eL, "jetbrains.mps.lang.plugin.structure.KeymapRef");
+    /*package*/ static final SConcept ActionGroupRef$gU = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa71fL, "jetbrains.mps.lang.plugin.structure.ActionGroupRef");
+    /*package*/ static final SConcept KeymapRef$6 = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x498be7ea73fa87eL, "jetbrains.mps.lang.plugin.structure.KeymapRef");
   }
 }

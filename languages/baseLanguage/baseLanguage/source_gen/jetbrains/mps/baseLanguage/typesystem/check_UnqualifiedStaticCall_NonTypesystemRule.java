@@ -24,19 +24,19 @@ public class check_UnqualifiedStaticCall_NonTypesystemRule extends AbstractNonTy
   public check_UnqualifiedStaticCall_NonTypesystemRule() {
   }
   public void applyRule(final SNode localCall, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    SReference ref = SNodeOperations.getReference(localCall, LINKS.baseMethodDeclaration$pyYw);
+    SReference ref = SNodeOperations.getReference(localCall, LINKS.baseMethodDeclaration$ItxI);
     if (!(ref instanceof StaticReference)) {
       return;
     }
     SNode target = ref.getTargetNode();
-    if (!(SNodeOperations.isInstanceOf(target, CONCEPTS.StaticMethodDeclaration$FJ))) {
+    if (!(SNodeOperations.isInstanceOf(target, CONCEPTS.StaticMethodDeclaration$eX))) {
       return;
     }
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(target), CONCEPTS.BaseCommentAttribute$nv)) {
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(target), CONCEPTS.BaseCommentAttribute$Zd)) {
       return;
     }
 
-    Scope staticMethodScope = Scope.getScope(SNodeOperations.getParent(localCall), localCall, CONCEPTS.StaticMethodDeclaration$FJ);
+    Scope staticMethodScope = Scope.getScope(SNodeOperations.getParent(localCall), localCall, CONCEPTS.StaticMethodDeclaration$eX);
     if (staticMethodScope == null) {
       return;
     }
@@ -51,13 +51,13 @@ public class check_UnqualifiedStaticCall_NonTypesystemRule extends AbstractNonTy
       {
         BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.MakeStaticCall_QuickFix", "3151797052704010863", true);
         intentionProvider.putArgument("replacee", localCall);
-        intentionProvider.putArgument("staticMethod", SNodeOperations.cast(target, CONCEPTS.StaticMethodDeclaration$FJ));
+        intentionProvider.putArgument("staticMethod", SNodeOperations.cast(target, CONCEPTS.StaticMethodDeclaration$eX));
         _reporter_2309309498.addIntentionProvider(intentionProvider);
       }
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.LocalMethodCall$zT;
+    return CONCEPTS.LocalMethodCall$77;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -67,12 +67,12 @@ public class check_UnqualifiedStaticCall_NonTypesystemRule extends AbstractNonTy
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
+    /*package*/ static final SReferenceLink baseMethodDeclaration$ItxI = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept StaticMethodDeclaration$FJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
-    /*package*/ static final SConcept BaseCommentAttribute$nv = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
-    /*package*/ static final SConcept LocalMethodCall$zT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall");
+    /*package*/ static final SConcept StaticMethodDeclaration$eX = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration");
+    /*package*/ static final SConcept BaseCommentAttribute$Zd = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
+    /*package*/ static final SConcept LocalMethodCall$77 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall");
   }
 }
