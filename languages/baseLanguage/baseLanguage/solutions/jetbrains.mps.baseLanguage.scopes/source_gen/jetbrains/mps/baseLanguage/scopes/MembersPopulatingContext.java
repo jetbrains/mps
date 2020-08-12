@@ -10,10 +10,12 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
-import jetbrains.mps.baseLanguage.behavior.IClassifierType__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import java.util.Iterator;
 import jetbrains.mps.baseLanguage.behavior.IClassifier__BehaviorDescriptor;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import java.util.Objects;
+import jetbrains.mps.baseLanguage.behavior.IClassifierType__BehaviorDescriptor;
+import java.util.Iterator;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -49,10 +51,16 @@ public class MembersPopulatingContext {
 
   public void exposeMember(SNode member, Signature signature) {
     SNode contextClassifier = foundSignatures2Classifier.get(signature);
+    boolean b = !(Sequence.fromIterable(IClassifier__BehaviorDescriptor.getSuperTypes_id6r77ob2URYj.invoke(contextClassifier)).any(new IWhereFilter<SNode>() {
+      public boolean accept(SNode it) {
+        return Objects.equals(IClassifierType__BehaviorDescriptor.getClassifier_id6r77ob2URY9.invoke(it), getCurrentClassifier());
+      }
+    }));
     if (contextClassifier == null || contextClassifier == getCurrentClassifier()) {
       // exposing all members using following condition: 
       // 1. member was not "masked" by a member from sub-classifier 
       // 2. showing all members with same signatures if they are defined in the same classifier 
+      // 3. accept members with same signatures coming from independent interfaces (not inheriting from one another) 
       members.add(member);
     }
   }
