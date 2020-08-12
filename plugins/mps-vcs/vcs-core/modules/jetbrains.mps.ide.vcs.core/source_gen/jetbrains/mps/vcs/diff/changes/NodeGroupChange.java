@@ -20,9 +20,7 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.util.NameUtil;
-import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -231,42 +229,79 @@ public class NodeGroupChange extends ModelChange {
     return getDescription(true);
   }
 
-  public String getDescription(boolean verbose) {
-    List<SNode> newChildren = null;
-    String newIds = null;
-    if (verbose) {
-      newChildren = getChangedCollection(true);
-      newIds = IterableUtils.join(ListSequence.fromList(newChildren).page(myResultBegin, myResultEnd).select(new ISelector<SNode, String>() {
-        public String select(SNode n) {
-          return "#" + n.getNodeId();
-        }
-      }), ", ");
-    }
 
-    String role = myRole.getName();
-    String oldStuff = (myEnd - myBegin == 1 ? role : NameUtil.formatNumericalString(myEnd - myBegin, role));
-    String newStuff = (myResultEnd - myResultBegin == 1 ? role : NameUtil.formatNumericalString(myResultEnd - myResultBegin, role));
-    // FIXME get rid of this dirty magic with role names "pluralization". PLEASE!!! 
-    if (Objects.equals(newStuff, role) && Objects.equals(oldStuff, role)) {
-      newStuff = "another";
-    } else if (myEnd != myBegin) {
-      newStuff = "another " + newStuff;
+  private String getNewIdsAsString(List<SNode> newChildren) {
+
+    List<String> allIds = ListSequence.fromList(newChildren).page(myResultBegin, myResultEnd).select(new ISelector<SNode, String>() {
+      public String select(SNode n) {
+        return "#" + n.getNodeId();
+      }
+    }).toListSequence();
+    int size = ListSequence.fromList(allIds).count();
+    if (size == 1) {
+      return ListSequence.fromList(allIds).getElement(0);
     }
-    if (myEnd == myBegin) {
-      if (verbose) {
-        String addedOrInserted = (myResultEnd == ListSequence.fromList(newChildren).count() ? "Added" : "Inserted");
-        return String.format("%s %s: %s", addedOrInserted, newStuff, newIds);
-      } else {
-        return String.format("Added %s", newStuff);
+    StringBuilder sb = new StringBuilder("\n");
+    int idsPerLine = 0;
+    final int maxIdsPerLine = 3;
+    for (int i = 0; i < size; i++) {
+      sb.append(ListSequence.fromList(allIds).getElement(i));
+      if (i != size - 1) {
+        sb.append(", ");
+        idsPerLine++;
+        if (idsPerLine == maxIdsPerLine) {
+          sb.append("\n");
+          idsPerLine = 0;
+        }
       }
     }
-    if (myResultEnd == myResultBegin) {
-      return String.format("Removed %s", oldStuff);
-    }
+    return sb.toString();
+  }
+
+  private String getRemovedDescription(boolean verbose) {
+    String role = myRole.getName();
+    int removedSize = myEnd - myBegin;
+    // FIXME get rid of this dirty magic with role names "pluralization". PLEASE!!! 
+    String removedItems = (removedSize == 1 ? role : NameUtil.formatNumericalString(removedSize, role));
+    return String.format("Removed %s", removedItems);
+  }
+
+  private String getAddedDescription(boolean verbose) {
+    String role = myRole.getName();
+    int addedSize = myResultEnd - myResultBegin;
+    // FIXME get rid of this dirty magic with role names "pluralization". PLEASE!!! 
+    String addedItems = (addedSize == 1 ? role : NameUtil.formatNumericalString(addedSize, role));
     if (verbose) {
-      return String.format("Replaced %s with %s: %s", oldStuff, newStuff, newIds);
+      List<SNode> newChildren = getChangedCollection(true);
+      String addedOrInserted = (myResultEnd == ListSequence.fromList(newChildren).count() ? "Added" : "Inserted");
+      return String.format("%s %s: %s", addedOrInserted, addedItems, getNewIdsAsString(newChildren));
     } else {
-      return String.format("Replaced %s with %s", oldStuff, newStuff);
+      return String.format("Added %s", addedItems);
+    }
+  }
+
+  private String getReplacedDescription(boolean verbose) {
+    String role = myRole.getName();
+    int removedSize = myEnd - myBegin;
+    int addedSize = myResultEnd - myResultBegin;
+    // FIXME get rid of this dirty magic with role names "pluralization". PLEASE!!! 
+    String removedItems = (removedSize == 1 ? role : NameUtil.formatNumericalString(removedSize, role));
+    String addedItems = (addedSize == 1 ? role : NameUtil.formatNumericalString(addedSize, role));
+    addedItems = (addedSize == 1 && removedSize == 1 ? "another" : "another " + addedItems);
+    if (verbose) {
+      return String.format("Replaced %s with %s: %s", removedItems, addedItems, getNewIdsAsString(getChangedCollection(true)));
+    } else {
+      return String.format("Replaced %s with %s", removedItems, addedItems);
+    }
+  }
+
+  public String getDescription(boolean verbose) {
+    if (myResultBegin == myResultEnd) {
+      return getRemovedDescription(verbose);
+    } else if (myBegin == myEnd) {
+      return getAddedDescription(verbose);
+    } else {
+      return getReplacedDescription(verbose);
     }
   }
 

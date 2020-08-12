@@ -98,7 +98,7 @@ public class SetConceptChange extends NodeChange {
   }
   @Override
   public String getDescription() {
-    return String.format("Changed concept of #%s from '%s' to '%s'", getAffectedNodeId(false), getChangeSet().getOldModel().getNode(getAffectedNodeId(false)).getConcept(), getChangeSet().getNewModel().getNode(getAffectedNodeId(true)).getConcept());
+    return String.format("Changed concept of #%s from\n'%s'\nto\n'%s'", getAffectedNodeId(false), getChangeSet().getOldModel().getNode(getAffectedNodeId(false)).getConcept(), getChangeSet().getNewModel().getNode(getAffectedNodeId(true)).getConcept());
   }
 
 }
