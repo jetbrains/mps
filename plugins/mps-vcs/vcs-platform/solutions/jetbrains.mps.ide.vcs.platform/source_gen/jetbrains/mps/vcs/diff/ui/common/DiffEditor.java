@@ -41,8 +41,10 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.awt.Point;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Collection;
+import jetbrains.mps.openapi.editor.cells.CellActionType;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
+import jetbrains.mps.openapi.editor.cells.CellAction;
 import javax.swing.JScrollPane;
 import com.intellij.ui.ScrollPaneFactory;
 import jetbrains.mps.nodeEditor.commands.CommandContextWithVF;
@@ -403,6 +405,10 @@ public class DiffEditor implements EditorMessageOwner {
     return strips;
   }
 
+  private static boolean isFoldingAction(CellActionType type) {
+    return type == CellActionType.FOLD_RECURSIVELY || type == CellActionType.FOLD_ALL || type == CellActionType.FOLD || type == CellActionType.UNFOLD || type == CellActionType.UNFOLD_RECURSIVELY || type == CellActionType.UNFOLD_ALL;
+  }
+
   public class MyInspectorEditorComponent extends InspectorEditorComponent {
 
     public MyInspectorEditorComponent(@NotNull SRepository repository, boolean rightToLeft) {
@@ -416,6 +422,14 @@ public class DiffEditor implements EditorMessageOwner {
     public String getToolTipText(MouseEvent event) {
       String text = super.getToolTipText(event);
       return (text != null ? text : getToolTipTextFromColoredStrips(getColoredStripsUnderMouse(event, true)));
+    }
+
+    @Override
+    public CellAction getComponentAction(CellActionType type) {
+      if (isFoldingAction(type)) {
+        return null;
+      }
+      return super.getComponentAction(type);
     }
 
     @Override
@@ -448,6 +462,13 @@ public class DiffEditor implements EditorMessageOwner {
       return ScrollPaneFactory.createScrollPane(null, true);
     }
 
+    @Override
+    public CellAction getComponentAction(CellActionType type) {
+      if (isFoldingAction(type)) {
+        return null;
+      }
+      return super.getComponentAction(type);
+    }
 
     @Override
     public EditorCell createEmptyCell() {

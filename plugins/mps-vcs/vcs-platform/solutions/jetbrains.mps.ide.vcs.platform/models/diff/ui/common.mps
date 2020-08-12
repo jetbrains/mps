@@ -135,7 +135,7 @@
       <concept id="1153422305557" name="jetbrains.mps.baseLanguage.structure.LessThanOrEqualsExpression" flags="nn" index="2dkUwp" />
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
-      <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
+      <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
       <concept id="1239709250944" name="jetbrains.mps.baseLanguage.structure.PrefixIncrementExpression" flags="nn" index="2$rviw" />
       <concept id="5279705229678483897" name="jetbrains.mps.baseLanguage.structure.FloatingPointFloatConstant" flags="nn" index="2$xPTn">
         <property id="5279705229678483899" name="value" index="2$xPTl" />
@@ -12017,6 +12017,86 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="mi7pRfp_JC" role="jymVt" />
+    <node concept="2YIFZL" id="mi7pRfpOCg" role="jymVt">
+      <property role="TrG5h" value="isFoldingAction" />
+      <node concept="3clFbS" id="mi7pRfpOCj" role="3clF47">
+        <node concept="3clFbF" id="mi7pRfpVtV" role="3cqZAp">
+          <node concept="22lmx$" id="mi7pRfpVtX" role="3clFbG">
+            <node concept="3clFbC" id="mi7pRfpVtY" role="3uHU7w">
+              <node concept="Rm8GO" id="mi7pRfpVtZ" role="3uHU7w">
+                <ref role="Rm8GQ" to="f4zo:~CellActionType.UNFOLD_ALL" resolve="UNFOLD_ALL" />
+                <ref role="1Px2BO" to="f4zo:~CellActionType" resolve="CellActionType" />
+              </node>
+              <node concept="37vLTw" id="mi7pRfpVu0" role="3uHU7B">
+                <ref role="3cqZAo" node="mi7pRfpU8Y" resolve="type" />
+              </node>
+            </node>
+            <node concept="22lmx$" id="mi7pRfpVu1" role="3uHU7B">
+              <node concept="22lmx$" id="mi7pRfpVu2" role="3uHU7B">
+                <node concept="22lmx$" id="mi7pRfpVu3" role="3uHU7B">
+                  <node concept="22lmx$" id="mi7pRfpVu4" role="3uHU7B">
+                    <node concept="3clFbC" id="mi7pRfpVu5" role="3uHU7B">
+                      <node concept="37vLTw" id="mi7pRfpVu6" role="3uHU7B">
+                        <ref role="3cqZAo" node="mi7pRfpU8Y" resolve="type" />
+                      </node>
+                      <node concept="Rm8GO" id="mi7pRfpVu7" role="3uHU7w">
+                        <ref role="Rm8GQ" to="f4zo:~CellActionType.FOLD_RECURSIVELY" resolve="FOLD_RECURSIVELY" />
+                        <ref role="1Px2BO" to="f4zo:~CellActionType" resolve="CellActionType" />
+                      </node>
+                    </node>
+                    <node concept="3clFbC" id="mi7pRfpVu8" role="3uHU7w">
+                      <node concept="37vLTw" id="mi7pRfpVu9" role="3uHU7B">
+                        <ref role="3cqZAo" node="mi7pRfpU8Y" resolve="type" />
+                      </node>
+                      <node concept="Rm8GO" id="mi7pRfpVua" role="3uHU7w">
+                        <ref role="Rm8GQ" to="f4zo:~CellActionType.FOLD_ALL" resolve="FOLD_ALL" />
+                        <ref role="1Px2BO" to="f4zo:~CellActionType" resolve="CellActionType" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3clFbC" id="mi7pRfpVub" role="3uHU7w">
+                    <node concept="37vLTw" id="mi7pRfpVuc" role="3uHU7B">
+                      <ref role="3cqZAo" node="mi7pRfpU8Y" resolve="type" />
+                    </node>
+                    <node concept="Rm8GO" id="mi7pRfpVud" role="3uHU7w">
+                      <ref role="1Px2BO" to="f4zo:~CellActionType" resolve="CellActionType" />
+                      <ref role="Rm8GQ" to="f4zo:~CellActionType.FOLD" resolve="FOLD" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbC" id="mi7pRfpVue" role="3uHU7w">
+                  <node concept="37vLTw" id="mi7pRfpVuf" role="3uHU7B">
+                    <ref role="3cqZAo" node="mi7pRfpU8Y" resolve="type" />
+                  </node>
+                  <node concept="Rm8GO" id="mi7pRfpVug" role="3uHU7w">
+                    <ref role="Rm8GQ" to="f4zo:~CellActionType.UNFOLD" resolve="UNFOLD" />
+                    <ref role="1Px2BO" to="f4zo:~CellActionType" resolve="CellActionType" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbC" id="mi7pRfpVuh" role="3uHU7w">
+                <node concept="37vLTw" id="mi7pRfpVui" role="3uHU7B">
+                  <ref role="3cqZAo" node="mi7pRfpU8Y" resolve="type" />
+                </node>
+                <node concept="Rm8GO" id="mi7pRfpVuj" role="3uHU7w">
+                  <ref role="Rm8GQ" to="f4zo:~CellActionType.UNFOLD_RECURSIVELY" resolve="UNFOLD_RECURSIVELY" />
+                  <ref role="1Px2BO" to="f4zo:~CellActionType" resolve="CellActionType" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm6S6" id="mi7pRfpIT_" role="1B3o_S" />
+      <node concept="10P_77" id="mi7pRfpTL8" role="3clF45" />
+      <node concept="37vLTG" id="mi7pRfpU8Y" role="3clF46">
+        <property role="TrG5h" value="type" />
+        <node concept="3uibUv" id="mi7pRfpU8X" role="1tU5fm">
+          <ref role="3uigEE" to="f4zo:~CellActionType" resolve="CellActionType" />
+        </node>
+      </node>
+    </node>
     <node concept="2tJIrI" id="2Yog8Efzz9q" role="jymVt" />
     <node concept="312cEu" id="1UUFr_mXe2t" role="jymVt">
       <property role="2bfB8j" value="true" />
@@ -12175,7 +12255,47 @@
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
-      <node concept="2tJIrI" id="3N64syXlqkE" role="jymVt" />
+      <node concept="2tJIrI" id="mi7pRfq4Wg" role="jymVt" />
+      <node concept="3clFb_" id="mi7pRfq5Jh" role="jymVt">
+        <property role="TrG5h" value="getComponentAction" />
+        <node concept="3Tm1VV" id="mi7pRfq5Ji" role="1B3o_S" />
+        <node concept="3uibUv" id="mi7pRfq5Jj" role="3clF45">
+          <ref role="3uigEE" to="f4zo:~CellAction" resolve="CellAction" />
+        </node>
+        <node concept="37vLTG" id="mi7pRfq5Jk" role="3clF46">
+          <property role="TrG5h" value="type" />
+          <node concept="3uibUv" id="mi7pRfq5Jl" role="1tU5fm">
+            <ref role="3uigEE" to="f4zo:~CellActionType" resolve="CellActionType" />
+          </node>
+        </node>
+        <node concept="3clFbS" id="mi7pRfq5Jm" role="3clF47">
+          <node concept="3clFbJ" id="mi7pRfq5Jn" role="3cqZAp">
+            <node concept="3clFbS" id="mi7pRfq5Jo" role="3clFbx">
+              <node concept="3cpWs6" id="mi7pRfq5Jp" role="3cqZAp">
+                <node concept="10Nm6u" id="mi7pRfq5Jq" role="3cqZAk" />
+              </node>
+            </node>
+            <node concept="1rXfSq" id="mi7pRfq5Jr" role="3clFbw">
+              <ref role="37wK5l" node="mi7pRfpOCg" resolve="isFoldingAction" />
+              <node concept="37vLTw" id="mi7pRfq5Js" role="37wK5m">
+                <ref role="3cqZAo" node="mi7pRfq5Jk" resolve="type" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="mi7pRfq5Jt" role="3cqZAp">
+            <node concept="3nyPlj" id="mi7pRfq5Ju" role="3clFbG">
+              <ref role="37wK5l" to="exr9:~EditorComponent.getComponentAction(jetbrains.mps.openapi.editor.cells.CellActionType)" resolve="getComponentAction" />
+              <node concept="37vLTw" id="mi7pRfq5Jv" role="37wK5m">
+                <ref role="3cqZAo" node="mi7pRfq5Jk" resolve="type" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="2AHcQZ" id="mi7pRfq5Jw" role="2AJF6D">
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+        </node>
+      </node>
+      <node concept="2tJIrI" id="mi7pRfq5eF" role="jymVt" />
       <node concept="3clFb_" id="1UUFr_mXrvt" role="jymVt">
         <property role="TrG5h" value="createScrollPane" />
         <node concept="3Tmbuc" id="1UUFr_mXrvu" role="1B3o_S" />
@@ -12429,6 +12549,45 @@
         </node>
       </node>
       <node concept="2tJIrI" id="3uyMLt62pYU" role="jymVt" />
+      <node concept="3clFb_" id="mi7pRfog0D" role="jymVt">
+        <property role="TrG5h" value="getComponentAction" />
+        <node concept="3Tm1VV" id="mi7pRfog0E" role="1B3o_S" />
+        <node concept="3uibUv" id="mi7pRfog0G" role="3clF45">
+          <ref role="3uigEE" to="f4zo:~CellAction" resolve="CellAction" />
+        </node>
+        <node concept="37vLTG" id="mi7pRfog0H" role="3clF46">
+          <property role="TrG5h" value="type" />
+          <node concept="3uibUv" id="mi7pRfog0I" role="1tU5fm">
+            <ref role="3uigEE" to="f4zo:~CellActionType" resolve="CellActionType" />
+          </node>
+        </node>
+        <node concept="3clFbS" id="mi7pRfog0J" role="3clF47">
+          <node concept="3clFbJ" id="mi7pRforiK" role="3cqZAp">
+            <node concept="3clFbS" id="mi7pRforiM" role="3clFbx">
+              <node concept="3cpWs6" id="mi7pRfo$vZ" role="3cqZAp">
+                <node concept="10Nm6u" id="mi7pRfo_EB" role="3cqZAk" />
+              </node>
+            </node>
+            <node concept="1rXfSq" id="mi7pRfq1wY" role="3clFbw">
+              <ref role="37wK5l" node="mi7pRfpOCg" resolve="isFoldingAction" />
+              <node concept="37vLTw" id="mi7pRfq4zr" role="37wK5m">
+                <ref role="3cqZAo" node="mi7pRfog0H" resolve="type" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="mi7pRfog0N" role="3cqZAp">
+            <node concept="3nyPlj" id="mi7pRfog0M" role="3clFbG">
+              <ref role="37wK5l" to="exr9:~EditorComponent.getComponentAction(jetbrains.mps.openapi.editor.cells.CellActionType)" resolve="getComponentAction" />
+              <node concept="37vLTw" id="mi7pRfog0L" role="37wK5m">
+                <ref role="3cqZAo" node="mi7pRfog0H" resolve="type" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="2AHcQZ" id="mi7pRfog0K" role="2AJF6D">
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+        </node>
+      </node>
       <node concept="2tJIrI" id="31N$ZESZ$eg" role="jymVt" />
       <node concept="3clFb_" id="3uyMLt62xH0" role="jymVt">
         <property role="1EzhhJ" value="false" />

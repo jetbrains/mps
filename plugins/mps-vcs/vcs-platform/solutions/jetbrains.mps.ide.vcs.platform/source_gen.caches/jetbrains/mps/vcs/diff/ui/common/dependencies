@@ -284,6 +284,8 @@
     <classNode dependClassName="jetbrains.mps.nodeEditor.leftHighlighter.BackgroundWithFoldingLinePainter" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.leftHighlighter.LeftEditorHighlighter" />
     <classNode dependClassName="jetbrains.mps.nodefs.MPSNodeVirtualFile" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellAction" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.CellActionType" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.extensions.EditorExtensionUtil" />
     <classNode dependClassName="jetbrains.mps.project.IProject" />
