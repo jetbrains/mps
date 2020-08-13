@@ -25,6 +25,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
+import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.UIUtil;
 import gnu.trove.THashMap;
 import jetbrains.mps.ide.actions.MPSActions;
@@ -42,6 +43,7 @@ import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.workbench.action.ActionUtils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
@@ -74,7 +76,7 @@ import java.util.TreeSet;
 /**
  * This class should be called in UI (EventDispatch) thread only
  */
-public class LeftEditorHighlighter extends JComponent implements TooltipComponent {
+public final class LeftEditorHighlighter extends JComponent implements TooltipComponent {
   public static final String ICON_AREA = "LeftEditorHighlighterIconArea";
 
   private static final int MIN_LEFT_TEXT_WIDTH = 0;
@@ -87,6 +89,8 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
     }
     return painter1.getWeight() - painter2.getWeight();
   };
+  @Nullable
+  private MessageBusConnection myMessageBusConnection;
 
   private EditorComponent myEditorComponent;
   private NavigableSet<AbstractFoldingAreaPainter> myFoldingAreaPainters = new TreeSet<>(PAINTERS_COMPARATOR);
@@ -182,7 +186,8 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
     myBackgroundPainters.add(mySelectedCellAreaPainter);
 
     if (ApplicationManager.getApplication() != null) {
-      ApplicationManager.getApplication().getMessageBus().connect().subscribe(
+      myMessageBusConnection = ApplicationManager.getApplication().getMessageBus().connect();
+      myMessageBusConnection.subscribe(
           EditorColorsManager.TOPIC, scheme -> LeftEditorHighlighter.this.setBackground(EditorSettings.getInstance().getLeftHighlighterBackgroundColor())
       );
     }
@@ -236,6 +241,9 @@ public class LeftEditorHighlighter extends JComponent implements TooltipComponen
   }
 
   public void dispose() {
+    if (myMessageBusConnection != null) {
+      myMessageBusConnection.disconnect();
+    }
     for (AbstractFoldingAreaPainter painter : myFoldingAreaPainters) {
       painter.dispose();
     }

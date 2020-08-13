@@ -50,6 +50,7 @@ import com.intellij.ui.components.JBScrollBar;
 import com.intellij.ui.components.JBScrollPane;
 import com.intellij.ui.components.JBScrollPane.Flip;
 import com.intellij.util.io.URLUtil;
+import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.ButtonlessScrollBarUI;
 import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.classloading.ClassLoaderManager;
@@ -231,6 +232,8 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   private String myDefaultPopupGroupId = MPSActions.EDITOR_POPUP_GROUP;
   private InputMethodRequests myInputMethodRequests;
   protected Handle myTypecheckingSessionHandle;
+  @Nullable
+  private MessageBusConnection myMessageBusConnection;
 
   public static void turnOnAliasingIfPossible(Graphics2D g) {
     if (!RenderingHints.VALUE_TEXT_ANTIALIAS_OFF.equals(AntialiasingType.getKeyForCurrentScope(true))) {
@@ -553,12 +556,11 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     enablePasteFromHistory();
 
     if (ApplicationManager.getApplication() != null) {
-      ApplicationManager.getApplication().getMessageBus().connect().subscribe(
+      myMessageBusConnection = ApplicationManager.getApplication().getMessageBus().connect();
+      myMessageBusConnection.subscribe(
           EditorColorsManager.TOPIC, scheme -> {
-            if (!EditorComponent.this.isDisposed()) {
-              EditorComponent.this.update();
-              EditorComponent.this.setBackground(StyleRegistry.getInstance().getEditorBackground());
-            }
+            EditorComponent.this.update();
+            EditorComponent.this.setBackground(StyleRegistry.getInstance().getEditorBackground());
           }
       );
     }
@@ -1421,6 +1423,10 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     fireEditorWillBeDisposed();
     myDisposed = true;
     myDisposedTrace = new Throwable("Editor was disposed by: ");
+
+    if (myMessageBusConnection != null) {
+      myMessageBusConnection.disconnect();
+    }
 
     releaseTypecheckingSession();
 

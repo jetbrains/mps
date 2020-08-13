@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.ide.editor;
 
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
 import com.intellij.openapi.editor.colors.ColorKey;
@@ -38,7 +39,7 @@ import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StyleRegistryIdeaImpl extends StyleRegistry {
+public class StyleRegistryIdeaImpl extends StyleRegistry implements Disposable {
   private static final Logger LOG = LogManager.getLogger(StyleRegistryIdeaImpl.class);
 
   private final static int colorIterationSteps = 5;
@@ -51,7 +52,7 @@ public class StyleRegistryIdeaImpl extends StyleRegistry {
     ourInstance = this;
     fillIdeaMappings();
     fillColorMappings();
-    ApplicationManager.getApplication().getMessageBus().connect().subscribe(
+    ApplicationManager.getApplication().getMessageBus().connect(this).subscribe(
         EditorColorsManager.TOPIC, scheme -> StyleRegistryIdeaImpl.this.clearCache()
     );
   }
@@ -229,10 +230,17 @@ public class StyleRegistryIdeaImpl extends StyleRegistry {
     return EditorColorsManager.getInstance().getGlobalScheme();
   }
 
-  private class StyleRegistryMappingKeyException extends Exception {
-    public StyleRegistryMappingKeyException(String mpsKey, String oldIdeaKey, String newIdeaKey) {
-      super("Can't set value '" + newIdeaKey + "' for key '" + mpsKey
-          + "', because it has been already defined with value '" + oldIdeaKey + "'");
+  @Override
+  public void dispose() {
+    clearCache();
+    my2DarkColorsMapping.clear();
+    myIDEAStylesMapping.clear();
+  }
+
+  private static class StyleRegistryMappingKeyException extends Exception {
+    StyleRegistryMappingKeyException(String mpsKey, String oldIdeaKey, String newIdeaKey) {
+      super(String.format("Can't set value '%s' for key '%s', because it has been already defined with value '%s'",
+                          newIdeaKey, mpsKey, oldIdeaKey));
     }
   }
 }
