@@ -47,5 +47,61 @@
     <action id="WhatsNewAction" class="com.intellij.ide.actions.WhatsNewAction">
       <add-to-group group-id="HelpMenu" anchor="after" relative-to-action="ShowTips"/>
     </action>
+
+    <!-- See ProblemsView tool windows registration in MPSLangExtensions.xml. See MPS-32414 -->
+    <!--
+    <group id="ProblemsView.ToolWindow.SecondaryActions">
+      <action id="ProblemsView.AutoscrollToSource"
+              icon="AllIcons.General.AutoscrollToSource"
+              class="com.intellij.analysis.problemsView.toolWindow.AutoscrollToSource"/>
+      <action id="ProblemsView.ShowPreview"
+              icon="AllIcons.Actions.PreviewDetails"
+              class="com.intellij.analysis.problemsView.toolWindow.ShowPreview"/>
+      <separator/>
+      <group id="ProblemsView.SeverityFilters" class="com.intellij.analysis.problemsView.toolWindow.SeverityFiltersActionGroup"/>
+      <separator/>
+      <action id="ProblemsView.SortFoldersFirst"
+              icon="AllIcons.ObjectBrowser.SortByType"
+              class="com.intellij.analysis.problemsView.toolWindow.SortFoldersFirst"/>
+      <action id="ProblemsView.SortBySeverity"
+              icon="AllIcons.Nodes.SortBySeverity"
+              class="com.intellij.analysis.problemsView.toolWindow.SortBySeverity"/>
+      <action id="ProblemsView.SortByName"
+              icon="AllIcons.ObjectBrowser.Sorted"
+              class="com.intellij.analysis.problemsView.toolWindow.SortByName"/>
+    </group>
+
+    <group id="ProblemsView.ToolWindow.Toolbar">
+      <group id="ProblemsView.Options" icon="AllIcons.Actions.Show" popup="true">
+        <reference ref="ProblemsView.SeverityFilters"/>
+        <separator/>
+        <reference ref="ProblemsView.SortFoldersFirst"/>
+        <reference ref="ProblemsView.SortBySeverity"/>
+        <reference ref="ProblemsView.SortByName"/>
+      </group>
+      <reference ref="ProblemsView.ShowPreview"/>
+      <action id="ProblemsView.ExpandAll"
+              icon="AllIcons.Actions.Expandall"
+              use-shortcut-of="ExpandAll"
+              class="com.intellij.analysis.problemsView.toolWindow.TreeExpandAllAction"/>
+      <action id="ProblemsView.CollapseAll"
+              icon="AllIcons.Actions.Collapseall"
+              use-shortcut-of="CollapseAll"
+              class="com.intellij.analysis.problemsView.toolWindow.TreeCollapseAllAction"/>
+      <action id="ProblemsView.QuickFixes"
+              icon="AllIcons.Actions.IntentionBulb"
+              use-shortcut-of="ShowIntentionActions"
+              class="com.intellij.analysis.problemsView.toolWindow.ShowQuickFixesAction"/>
+    </group>
+
+    <group id="ProblemsView.ToolWindow.TreePopup">
+      <reference ref="ProblemsView.QuickFixes"/>
+      <action id="ProblemsView.CopyProblemDescription"
+              icon="AllIcons.Actions.Copy"
+              use-shortcut-of="$Copy"
+              class="com.intellij.analysis.problemsView.toolWindow.CopyProblemDescriptionAction"/>
+      <reference ref="EditSource"/>
+    </group>
+    -->
   </actions>
 </component>

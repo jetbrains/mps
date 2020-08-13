@@ -1428,12 +1428,17 @@
 
     <applicationService serviceImplementation="com.intellij.util.indexing.IndexableSetContributorModificationTracker"/>
 
+    <!-- MPS Patch: turn off Problems View - it does not make sense without integration.
+         When will be tuned on - uncomment part with actions in MPSRichPlatformActions.xml
+         See MPS-32414 -->
+    <!--
     <toolWindow id="Problems View" anchor="bottom" icon="AllIcons.Toolwindows.ToolWindowProblemsEmpty" canCloseContents="true"
                 factoryClass="com.intellij.analysis.problemsView.toolWindow.ProblemsView"/>
     <experimentalFeature id="problems.view.project.errors.enabled" percentOfUsers="0" internalFeature="true">
       <description>Allows to use the Project Errors tab in the Problems View toolwindow.</description>
     </experimentalFeature>
     <projectService serviceImplementation="com.intellij.analysis.problemsView.toolWindow.ProblemsViewStateManager"/>
+    -->
     <notificationAllowlist groupIds="Problems View;Inspection Results;Find in Path;Dependencies;Execution;Suggest Run Dashboard;
     Parameter Name Hints;Print;Actions;Load Error;Project Template;Run Anything;Reformat changed text;Module Manager;Project Loading Error"/>
 
