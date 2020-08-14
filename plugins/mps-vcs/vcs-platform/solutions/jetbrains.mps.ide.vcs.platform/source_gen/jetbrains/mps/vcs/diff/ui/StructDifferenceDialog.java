@@ -149,7 +149,7 @@ public class StructDifferenceDialog extends DialogWrapper implements DataProvide
 
   private static void check_rohu9p_a0a4a0a0k0j(StructDifferencePane checkedDotOperand) {
     if (null != checkedDotOperand) {
-      checkedDotOperand.rehighlight(true);
+      checkedDotOperand.rehighlight();
     }
 
   }

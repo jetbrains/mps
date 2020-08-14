@@ -46,6 +46,10 @@
     <classNode extendsClassName="jetbrains.mps.nodeEditor.leftHighlighter.AbstractFoldingAreaPainter" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.diff.ui.common.ChangeColors">
+    <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
+    <classNode dependClassName="com.intellij.openapi.editor.colors.EditorColors" />
+    <classNode dependClassName="com.intellij.openapi.editor.colors.EditorColorsManager" />
+    <classNode dependClassName="com.intellij.openapi.editor.colors.EditorColorsScheme" />
     <classNode dependClassName="com.intellij.openapi.vcs.FileStatus" />
     <classNode dependClassName="java.awt.Color" />
     <classNode dependClassName="java.util.EnumMap" />
@@ -56,6 +60,7 @@
     <classNode dependClassName="jetbrains.mps.openapi.editor.style.StyleRegistry" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.ChangeType" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessage">
     <classNode dependClassName="java.awt.Color" />

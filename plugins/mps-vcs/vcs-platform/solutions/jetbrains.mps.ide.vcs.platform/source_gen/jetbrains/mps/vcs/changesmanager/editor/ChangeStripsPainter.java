@@ -70,7 +70,7 @@ public class ChangeStripsPainter extends AbstractFoldingAreaPainter {
     for (ChangeGroup changeGroup : ListSequence.fromList(myChangeGroupLayout.getChangeGroups())) {
       Bounds bounds = changeGroup.getBounds(true);
       int y = (int) bounds.start();
-      g.setColor(ChangeColors.get(changeGroup.getChangeType()));
+      g.setColor(ChangeColors.getForGutter(changeGroup.getChangeType()));
       if (bounds.length() <= 1) {
         Graphics2D g2d = ((Graphics2D) g);
         Object oldAntialiasing = g2d.getRenderingHint(RenderingHints.KEY_ANTIALIASING);

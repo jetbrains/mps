@@ -364,12 +364,11 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
 
   private class GutterMark {
     private int myX, myY, myWidth, myHeight;
-    private Color myColor;
     private SimpleEditorMessage myMessage;
     private boolean myValid = false;
 
     GutterMark(SimpleEditorMessage message) {
-      if ((myMessage = message) == null || (myColor = myMessage.getColor()) == null ||
+      if ((myMessage = message) == null || (myMessage.getColor()) == null ||
           myMessage instanceof EditorMessage && !((EditorMessage) myMessage).isValid(myEditorComponent)) {
         return;
       }
@@ -415,21 +414,22 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
 
     public void paint(Graphics g) {
       assert myValid;
-      g.setColor(myColor);
+      Color color = myMessage.getColor();
+      g.setColor(color);
       int x = getX();
       int y = getY();
       int height = Math.max(getHeight(), 3);
       int width = getWidth();
       g.fillRect(x + 1, y, width - 2, height);
 
-      Color brighter = myColor.brighter();
+      Color brighter = color.brighter();
       g.setColor(brighter);
       // left decoration
       UIUtil.drawLine(g, x, y, x, y + height);
       // top decoration
       UIUtil.drawLine(g, x + 1, y, x + width - 2, y);
 
-      Color darker = ColorUtil.shift(myColor, 0.75);
+      Color darker = ColorUtil.shift(color, 0.75);
       g.setColor(darker);
       // bottom decoration
       UIUtil.drawLine(g, x + 1, y + height, x + width - 2, y + height);   // large bottom to let overwrite by hl below

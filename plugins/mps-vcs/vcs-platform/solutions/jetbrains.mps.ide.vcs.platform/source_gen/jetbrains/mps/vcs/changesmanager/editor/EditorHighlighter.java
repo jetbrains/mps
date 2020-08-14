@@ -4,7 +4,6 @@ package jetbrains.mps.vcs.changesmanager.editor;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
-import com.intellij.openapi.editor.colors.EditorColorsListener;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import java.util.Map;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
@@ -15,7 +14,6 @@ import java.util.HashMap;
 import jetbrains.mps.vcs.changesmanager.CurrentDifference;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
-import jetbrains.mps.vcs.diff.ui.common.ChangeColors;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -27,19 +25,18 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.ide.ThreadUtils;
-import org.jetbrains.annotations.Nullable;
-import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.vcs.diff.changes.AddRootChange;
 import jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessageFactory;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.nodeEditor.NodeHighlightManager;
 import jetbrains.mps.nodeEditor.leftHighlighter.LeftEditorHighlighter;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceAdapter;
 
 @GeneratedClass(node = "r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)/6402272430682173534", model = "r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)")
-public class EditorHighlighter implements EditorMessageOwner, EditorColorsListener {
+public class EditorHighlighter implements EditorMessageOwner {
   private EditorComponent myEditorComponent;
   private final Map<ModelChange, List<ChangeEditorMessage>> myChangesMessages = MapSequence.fromMap(new HashMap<ModelChange, List<ChangeEditorMessage>>());
   private CurrentDifference myCurrentDifference;
@@ -49,8 +46,6 @@ public class EditorHighlighter implements EditorMessageOwner, EditorColorsListen
   private boolean myDisposed = false;
   public EditorHighlighter(@NotNull final Project project, @NotNull final EditorComponent editorComponent) {
     myEditorComponent = editorComponent;
-    ChangeColors.updateEditorColors();
-    myEditorComponent.addEditorColorsListener(this);
 
     CurrentDifferenceRegistry.getInstance(project).getCommandQueue().runTask(new Runnable() {
       public void run() {
@@ -112,10 +107,6 @@ public class EditorHighlighter implements EditorMessageOwner, EditorColorsListen
       }
     });
   }
-  @Override
-  public void globalSchemeChange(@Nullable EditorColorsScheme scheme) {
-    ChangeColors.updateEditorColors();
-  }
   private List<ChangeEditorMessage> createMessages(final ModelChange change) {
     final Wrappers._T<List<ChangeEditorMessage>> messages = new Wrappers._T<List<ChangeEditorMessage>>(null);
     if (!(change instanceof AddRootChange)) {
@@ -164,9 +155,6 @@ public class EditorHighlighter implements EditorMessageOwner, EditorColorsListen
   public void dispose() {
     synchronized (myDisposedLock) {
       myDisposed = true;
-      if (!(myEditorComponent.isDisposed())) {
-        myEditorComponent.removeEditorColorsListener(this);
-      }
       try {
         synchronized (myChangesMessages) {
           SetSequence.fromSet(MapSequence.fromMap(myChangesMessages).keySet()).toListSequence().visitAll(new IVisitor<ModelChange>() {
@@ -190,7 +178,7 @@ public class EditorHighlighter implements EditorMessageOwner, EditorColorsListen
   }
   @Nullable
   /*package*/ ChangeSet getChangeSet() {
-    return check_urq9my_a0a31(myCurrentDifference);
+    return check_urq9my_a0a21(myCurrentDifference);
   }
   /*package*/ ChangeStripsPainter getStripsPainter() {
     return myStripsPainter;
@@ -234,20 +222,20 @@ public class EditorHighlighter implements EditorMessageOwner, EditorColorsListen
         for (ChangeEditorMessage addedMessage : ListSequence.fromList(myAddedMessages)) {
           nodeHighlightManager.mark(addedMessage);
         }
-        check_urq9my_a3a1a5s(myStripsPainter);
+        check_urq9my_a3a1a5r(myStripsPainter);
         nodeHighlightManager.repaintAndRebuildEditorMessages();
         ListSequence.fromList(myAddedMessages).clear();
         ListSequence.fromList(myRemovedMessages).clear();
       }
     }
   }
-  private static ChangeSet check_urq9my_a0a31(CurrentDifference checkedDotOperand) {
+  private static ChangeSet check_urq9my_a0a21(CurrentDifference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getChangeSet();
     }
     return null;
   }
-  private static void check_urq9my_a3a1a5s(ChangeStripsPainter checkedDotOperand) {
+  private static void check_urq9my_a3a1a5r(ChangeStripsPainter checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.relayout();
     }

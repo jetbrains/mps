@@ -9,7 +9,6 @@
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
-    <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="0" />
   </languages>
   <imports>
     <import index="bmv6" ref="r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)" />
@@ -48,10 +47,6 @@
     <import index="ksd0" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.diff.tools.util(MPS.IDEA/)" />
     <import index="xo69" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.diff.util(MPS.IDEA/)" />
     <import index="mnlj" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.beans(JDK/)" />
-    <import index="4b2m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.messages(MPS.IDEA/)" />
-    <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
-    <import index="drih" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.editor.colors(MPS.IDEA/)" />
-    <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" implicit="true" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -294,9 +289,6 @@
       </concept>
       <concept id="8974276187400348181" name="jetbrains.mps.lang.access.structure.ExecuteLightweightCommandStatement" flags="nn" index="1QHqEK" />
       <concept id="8974276187400348183" name="jetbrains.mps.lang.access.structure.ExecuteWriteActionStatement" flags="nn" index="1QHqEM" />
-    </language>
-    <language id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots">
-      <concept id="4079382982702596667" name="jetbrains.mps.baseLanguage.checkedDots.structure.CheckedDotExpression" flags="nn" index="2EnYce" />
     </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
       <concept id="1235746970280" name="jetbrains.mps.baseLanguage.closures.structure.CompactInvokeFunctionExpression" flags="nn" index="2Sg_IR">
@@ -2554,18 +2546,6 @@
         </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="u23UKDMhC3" role="jymVt" />
-    <node concept="312cEg" id="u23UKDMEs4" role="jymVt">
-      <property role="TrG5h" value="myMessageBusConnection" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3Tm6S6" id="u23UKDMqAR" role="1B3o_S" />
-      <node concept="3uibUv" id="u23UKDMEqP" role="1tU5fm">
-        <ref role="3uigEE" to="4b2m:~MessageBusConnection" resolve="MessageBusConnection" />
-      </node>
-      <node concept="2AHcQZ" id="u23UKDP9gP" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
-      </node>
-    </node>
     <node concept="2tJIrI" id="2jv$fqwl_Uk" role="jymVt" />
     <node concept="3clFbW" id="2jv$fqwev8m" role="jymVt">
       <node concept="37vLTG" id="2jv$fqwev8n" role="3clF46">
@@ -2833,72 +2813,7 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="u23UKDN6$N" role="3cqZAp" />
-        <node concept="3clFbF" id="4shEHBYbgw7" role="3cqZAp">
-          <node concept="2YIFZM" id="4shEHBYbgw8" role="3clFbG">
-            <ref role="1Pybhc" to="hdhb:42hl10VH9R2" resolve="ChangeColors" />
-            <ref role="37wK5l" to="hdhb:5ZshaoOu8hy" resolve="updateEditorColors" />
-          </node>
-        </node>
-        <node concept="3clFbJ" id="4shEHBY9LqG" role="3cqZAp">
-          <node concept="3clFbS" id="4shEHBY9LqI" role="3clFbx">
-            <node concept="3clFbF" id="4shEHBY9OL4" role="3cqZAp">
-              <node concept="37vLTI" id="4shEHBY9PCF" role="3clFbG">
-                <node concept="2OqwBi" id="4shEHBY9RW_" role="37vLTx">
-                  <node concept="2OqwBi" id="4shEHBY9Ra5" role="2Oq$k0">
-                    <node concept="2YIFZM" id="4shEHBY9QS_" role="2Oq$k0">
-                      <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
-                      <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
-                    </node>
-                    <node concept="liA8E" id="4shEHBY9RKX" role="2OqNvi">
-                      <ref role="37wK5l" to="1m72:~ComponentManager.getMessageBus()" resolve="getMessageBus" />
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="4shEHBY9SbY" role="2OqNvi">
-                    <ref role="37wK5l" to="4b2m:~MessageBus.connect()" resolve="connect" />
-                  </node>
-                </node>
-                <node concept="37vLTw" id="4shEHBY9OL2" role="37vLTJ">
-                  <ref role="3cqZAo" node="u23UKDMEs4" resolve="myMessageBusConnection" />
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="4shEHBY9WdN" role="3cqZAp">
-              <node concept="2OqwBi" id="4shEHBY9X9b" role="3clFbG">
-                <node concept="37vLTw" id="4shEHBY9WdL" role="2Oq$k0">
-                  <ref role="3cqZAo" node="u23UKDMEs4" resolve="myMessageBusConnection" />
-                </node>
-                <node concept="liA8E" id="4shEHBY9XAq" role="2OqNvi">
-                  <ref role="37wK5l" to="4b2m:~SimpleMessageBusConnection.subscribe(com.intellij.util.messages.Topic,java.lang.Object)" resolve="subscribe" />
-                  <node concept="10M0yZ" id="4shEHBYa3W_" role="37wK5m">
-                    <ref role="1PxDUh" to="drih:~EditorColorsManager" resolve="EditorColorsManager" />
-                    <ref role="3cqZAo" to="drih:~EditorColorsManager.TOPIC" resolve="TOPIC" />
-                  </node>
-                  <node concept="Xjq3P" id="4shEHBYac6b" role="37wK5m" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3y3z36" id="4shEHBY9Nin" role="3clFbw">
-            <node concept="10Nm6u" id="4shEHBY9NUN" role="3uHU7w" />
-            <node concept="2YIFZM" id="4shEHBY9MSp" role="3uHU7B">
-              <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
-              <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
-            </node>
-          </node>
-          <node concept="9aQIb" id="4shEHBY9SfG" role="9aQIa">
-            <node concept="3clFbS" id="4shEHBY9SfH" role="9aQI4">
-              <node concept="3clFbF" id="4shEHBY9TkO" role="3cqZAp">
-                <node concept="37vLTI" id="4shEHBY9Ucr" role="3clFbG">
-                  <node concept="10Nm6u" id="4shEHBY9UT9" role="37vLTx" />
-                  <node concept="37vLTw" id="4shEHBY9TkM" role="37vLTJ">
-                    <ref role="3cqZAo" node="u23UKDMEs4" resolve="myMessageBusConnection" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
+        <node concept="3clFbH" id="2jv$fqwxOhY" role="3cqZAp" />
         <node concept="3clFbF" id="2jv$fqwevbA" role="3cqZAp">
           <node concept="1rXfSq" id="4hiugqyzflU" role="3clFbG">
             <ref role="37wK5l" node="2jv$fqwevgu" resolve="highlightAllChanges" />
@@ -2938,56 +2853,6 @@
         </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="u23UKDNa6X" role="jymVt" />
-    <node concept="3clFb_" id="u23UKDL1xf" role="jymVt">
-      <property role="TrG5h" value="globalSchemeChange" />
-      <node concept="3Tm1VV" id="u23UKDL1xg" role="1B3o_S" />
-      <node concept="3cqZAl" id="u23UKDL1xh" role="3clF45" />
-      <node concept="37vLTG" id="u23UKDL1xi" role="3clF46">
-        <property role="TrG5h" value="scheme" />
-        <node concept="3uibUv" id="u23UKDL1xj" role="1tU5fm">
-          <ref role="3uigEE" to="drih:~EditorColorsScheme" resolve="EditorColorsScheme" />
-        </node>
-        <node concept="2AHcQZ" id="u23UKDL1xk" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
-        </node>
-      </node>
-      <node concept="3clFbS" id="u23UKDL1xl" role="3clF47">
-        <node concept="3clFbF" id="u23UKDL1xm" role="3cqZAp">
-          <node concept="2YIFZM" id="u23UKDL1xn" role="3clFbG">
-            <ref role="37wK5l" to="hdhb:5ZshaoOu8hy" resolve="updateEditorColors" />
-            <ref role="1Pybhc" to="hdhb:42hl10VH9R2" resolve="ChangeColors" />
-          </node>
-        </node>
-        <node concept="3clFbF" id="u23UKDL1xo" role="3cqZAp">
-          <node concept="2EnYce" id="u23UKDL1xp" role="3clFbG">
-            <node concept="2YIFZM" id="u23UKDL1xq" role="2Oq$k0">
-              <ref role="37wK5l" to="alof:~ProjectHelper.getModelAccess(com.intellij.openapi.project.Project)" resolve="getModelAccess" />
-              <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
-              <node concept="37vLTw" id="u23UKDL1xs" role="37wK5m">
-                <ref role="3cqZAo" node="2jv$fqwev73" resolve="myProject" />
-              </node>
-            </node>
-            <node concept="liA8E" id="u23UKDL1xu" role="2OqNvi">
-              <ref role="37wK5l" to="lui2:~ModelAccess.runReadAction(java.lang.Runnable)" resolve="runReadAction" />
-              <node concept="1bVj0M" id="u23UKDL1xv" role="37wK5m">
-                <node concept="3clFbS" id="u23UKDL1xw" role="1bW5cS">
-                  <node concept="3clFbF" id="u23UKDL1xx" role="3cqZAp">
-                    <node concept="1rXfSq" id="u23UKDNlWe" role="3clFbG">
-                      <ref role="37wK5l" node="2jv$fqwevfx" resolve="rehighlight" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="u23UKDL1xz" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="u23UKDNcUg" role="jymVt" />
     <node concept="2tJIrI" id="50LFMYN3o8n" role="jymVt" />
     <node concept="3clFb_" id="2lt5FSxy8nC" role="jymVt">
       <property role="TrG5h" value="propertyChange" />
@@ -6362,35 +6227,12 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbJ" id="u23UKDNnaJ" role="3cqZAp">
-              <node concept="3clFbS" id="u23UKDNnaL" role="3clFbx">
-                <node concept="3clFbF" id="u23UKDNpLf" role="3cqZAp">
-                  <node concept="2OqwBi" id="u23UKDNqqK" role="3clFbG">
-                    <node concept="37vLTw" id="u23UKDNpLd" role="2Oq$k0">
-                      <ref role="3cqZAo" node="u23UKDMEs4" resolve="myMessageBusConnection" />
-                    </node>
-                    <node concept="liA8E" id="u23UKDNqXe" role="2OqNvi">
-                      <ref role="37wK5l" to="4b2m:~SimpleMessageBusConnection.disconnect()" resolve="disconnect" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="3y3z36" id="u23UKDNoId" role="3clFbw">
-                <node concept="10Nm6u" id="u23UKDNpig" role="3uHU7w" />
-                <node concept="37vLTw" id="u23UKDNo1Y" role="3uHU7B">
-                  <ref role="3cqZAo" node="u23UKDMEs4" resolve="myMessageBusConnection" />
-                </node>
-              </node>
-            </node>
           </node>
         </node>
       </node>
     </node>
     <node concept="3uibUv" id="5rV$5P0GmgL" role="EKbjA">
       <ref role="3uigEE" to="mnlj:~PropertyChangeListener" resolve="PropertyChangeListener" />
-    </node>
-    <node concept="3uibUv" id="u23UKDMT5i" role="EKbjA">
-      <ref role="3uigEE" to="drih:~EditorColorsListener" resolve="EditorColorsListener" />
     </node>
   </node>
   <node concept="312cEu" id="2jv$fqwD$ox">

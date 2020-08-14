@@ -4,7 +4,6 @@ package jetbrains.mps.vcs.diff.ui;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import java.beans.PropertyChangeListener;
-import com.intellij.openapi.editor.colors.EditorColorsListener;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.vcs.diff.ModelChangeSet;
 import org.jetbrains.mps.openapi.model.SNodeId;
@@ -18,13 +17,6 @@ import com.intellij.diff.tools.util.side.TwosideContentPanel;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.vcs.diff.ui.common.NextPreviousTraverser;
-import org.jetbrains.annotations.Nullable;
-import com.intellij.util.messages.MessageBusConnection;
-import jetbrains.mps.vcs.diff.ui.common.ChangeColors;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.editor.colors.EditorColorsManager;
-import com.intellij.openapi.editor.colors.EditorColorsScheme;
-import jetbrains.mps.ide.project.ProjectHelper;
 import java.beans.PropertyChangeEvent;
 import com.intellij.openapi.ui.Splitter;
 import java.util.Arrays;
@@ -40,6 +32,7 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import com.intellij.diff.util.DiffDrawUtil;
+import org.jetbrains.annotations.Nullable;
 import java.awt.Color;
 import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.util.ui.GraphicsUtil;
@@ -49,9 +42,12 @@ import jetbrains.mps.vcs.diff.ui.common.ChangeGroup;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.vcs.diff.ui.common.Bounds;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
+import jetbrains.mps.vcs.diff.ui.common.ChangeColors;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import javax.swing.JPanel;
+import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.vcs.diff.ui.common.ChangeGroupMessages;
 import jetbrains.mps.smodel.SModelOperations;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -62,7 +58,7 @@ import jetbrains.mps.vcs.diff.ChangeSetBuilder;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 
 @GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/8817948936268058313", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
-public class RootDifferencePane implements IHighlighter, PropertyChangeListener, EditorColorsListener {
+public class RootDifferencePane implements IHighlighter, PropertyChangeListener {
   private static final String PARAM_SHOW_INSPECTOR = RootDifferencePane.class.getName() + "ShowInspector";
   private static final String PARAM_HIDE_ID_CHANGES = RootDifferencePane.class.getName() + "HideIdChanges";
   private static final String PARAM_INSPECTOR_SPLITTER_POSITION = RootDifferencePane.class.getName() + "InspectorSplitterPosition";
@@ -84,8 +80,6 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener,
 
 
   private boolean myHideIdChanges = PropertiesComponent.getInstance().getBoolean(PARAM_HIDE_ID_CHANGES, false);
-  @Nullable
-  private final MessageBusConnection myMessageBusConnection;
 
   public RootDifferencePane(MPSProject project, ModelChangeSet changeSet, SNodeId rootId, String rootName, String[] titles, boolean isEditable) {
     myChangeSet = changeSet;
@@ -97,19 +91,6 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener,
     myTraverser = new NextPreviousTraverser(myChangeGroupLayouts, myNewEditor.getMainEditor());
     // todo: add possibility to hide resolve info only changes, see MPSSPRT-209 
     createActionGroup(isEditable, rootName);
-    ChangeColors.updateEditorColors();
-    if (ApplicationManager.getApplication() != null) {
-      myMessageBusConnection = ApplicationManager.getApplication().getMessageBus().connect();
-      myMessageBusConnection.subscribe(EditorColorsManager.TOPIC, this);
-    } else {
-      myMessageBusConnection = null;
-    }
-  }
-
-  @Override
-  public void globalSchemeChange(@Nullable EditorColorsScheme scheme) {
-    ChangeColors.updateEditorColors();
-    check_guncoj_a1a52(ProjectHelper.getModelAccess(myProject.getProject()), this);
   }
 
   @Override
@@ -344,7 +325,7 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener,
     }
     myHideIdChanges = hide;
     PropertiesComponent.getInstance().setValue(PARAM_HIDE_ID_CHANGES, hide);
-    check_guncoj_a3a05(ProjectHelper.getModelAccess(myProject.getProject()), this);
+    check_guncoj_a3a74(ProjectHelper.getModelAccess(myProject.getProject()), this);
   }
 
   private void rehighlightNoRebuild() {
@@ -439,22 +420,9 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener,
     myDiffEditorsGroup.dispose();
     myOldEditor = null;
     myNewEditor = null;
-    if (myMessageBusConnection != null) {
-      myMessageBusConnection.disconnect();
-    }
   }
 
-  private static void check_guncoj_a1a52(ModelAccess checkedDotOperand, final RootDifferencePane checkedDotThisExpression) {
-    if (null != checkedDotOperand) {
-      checkedDotOperand.runReadAction(new Runnable() {
-        public void run() {
-          checkedDotThisExpression.rehighlightNoRebuild();
-        }
-      });
-    }
-
-  }
-  private static void check_guncoj_a3a05(ModelAccess checkedDotOperand, final RootDifferencePane checkedDotThisExpression) {
+  private static void check_guncoj_a3a74(ModelAccess checkedDotOperand, final RootDifferencePane checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       checkedDotOperand.runReadAction(new Runnable() {
         public void run() {

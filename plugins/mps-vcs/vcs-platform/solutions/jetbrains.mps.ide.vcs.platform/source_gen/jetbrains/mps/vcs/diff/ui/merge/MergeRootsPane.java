@@ -4,7 +4,6 @@ package jetbrains.mps.vcs.diff.ui.merge;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import java.beans.PropertyChangeListener;
-import com.intellij.openapi.editor.colors.EditorColorsListener;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.vcs.diff.merge.MergeSession;
 import org.jetbrains.mps.openapi.model.SNodeId;
@@ -26,16 +25,10 @@ import jetbrains.mps.vcs.diff.ui.common.DiffEditorsGroup;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.vcs.diff.ui.common.NextPreviousTraverser;
 import com.intellij.ui.JBSplitter;
-import org.jetbrains.annotations.Nullable;
-import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.vcs.diff.ui.common.ChangeColors;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.editor.colors.EditorColorsManager;
-import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import java.beans.PropertyChangeEvent;
 import com.intellij.openapi.ui.Splitter;
 import java.util.Iterator;
@@ -51,6 +44,7 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import com.intellij.diff.util.DiffDrawUtil;
+import org.jetbrains.annotations.Nullable;
 import java.awt.Color;
 import com.intellij.openapi.ui.GraphicsConfig;
 import com.intellij.util.ui.GraphicsUtil;
@@ -58,6 +52,7 @@ import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.vcs.diff.ui.common.ChangeGroup;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.vcs.diff.ui.common.Bounds;
+import jetbrains.mps.vcs.diff.ui.common.ChangeColors;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import javax.swing.JPanel;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
@@ -67,7 +62,7 @@ import jetbrains.mps.vcs.diff.ui.common.ChangeGroupMessages;
 import org.jetbrains.mps.openapi.model.SNode;
 
 @GeneratedClass(node = "r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)/2657001694096388534", model = "r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)")
-public class MergeRootsPane implements PropertyChangeListener, EditorColorsListener {
+public class MergeRootsPane implements PropertyChangeListener {
   private static final String PARAM_SHOW_INSPECTOR = MergeRootsPane.class.getName() + "ShowInspector";
   private static final String PARAM_INSPECTOR_SPLITTER_POSITION = MergeRootsPane.class.getName() + "InspectorSplitterPosition";
   private Project myProject;
@@ -93,9 +88,6 @@ public class MergeRootsPane implements PropertyChangeListener, EditorColorsListe
   private DefaultActionGroup myActionGroup;
   private NextPreviousTraverser myTraverser;
   private List<JBSplitter> mySplitters = ListSequence.fromList(new ArrayList<JBSplitter>());
-
-  @Nullable
-  private final MessageBusConnection myMessageBusConnection;
 
   public MergeRootsPane(Project project, MergeSession mergeSession, SNodeId rootId, String rootName, String[] titles) {
     myProject = project;
@@ -131,23 +123,9 @@ public class MergeRootsPane implements PropertyChangeListener, EditorColorsListe
 
     createActionGroup(rootName);
 
-    ChangeColors.updateEditorColors();
-    if (ApplicationManager.getApplication() != null) {
-      myMessageBusConnection = ApplicationManager.getApplication().getMessageBus().connect();
-      myMessageBusConnection.subscribe(EditorColorsManager.TOPIC, this);
-    } else {
-      myMessageBusConnection = null;
-    }
     highlightAllChanges();
     myTraverser.goToFirstChangeLater();
   }
-
-  @Override
-  public void globalSchemeChange(@Nullable EditorColorsScheme scheme) {
-    ChangeColors.updateEditorColors();
-    check_lifo0_a1a03(ProjectHelper.getModelAccess(myProject), this);
-  }
-
 
   @Override
   public void propertyChange(PropertyChangeEvent event) {
@@ -493,19 +471,6 @@ public class MergeRootsPane implements PropertyChangeListener, EditorColorsListe
       });
       ListSequence.fromList(myEdtiorSeparators).clear();
       myDisposed = true;
-      if (myMessageBusConnection != null) {
-        myMessageBusConnection.disconnect();
-      }
     }
-  }
-  private static void check_lifo0_a1a03(ModelAccess checkedDotOperand, final MergeRootsPane checkedDotThisExpression) {
-    if (null != checkedDotOperand) {
-      checkedDotOperand.runReadAction(new Runnable() {
-        public void run() {
-          checkedDotThisExpression.rehighlight();
-        }
-      });
-    }
-
   }
 }

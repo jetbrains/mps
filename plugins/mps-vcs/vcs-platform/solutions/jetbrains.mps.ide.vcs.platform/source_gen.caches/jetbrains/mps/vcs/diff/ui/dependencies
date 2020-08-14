@@ -164,12 +164,9 @@
     <classNode dependClassName="com.intellij.openapi.actionSystem.DefaultActionGroup" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.ToggleAction" />
     <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
-    <classNode dependClassName="com.intellij.openapi.editor.colors.EditorColorsManager" />
-    <classNode dependClassName="com.intellij.openapi.editor.colors.EditorColorsScheme" />
     <classNode dependClassName="com.intellij.openapi.ui.GraphicsConfig" />
     <classNode dependClassName="com.intellij.openapi.ui.Splitter" />
     <classNode dependClassName="com.intellij.ui.JBSplitter" />
-    <classNode dependClassName="com.intellij.util.messages.MessageBusConnection" />
     <classNode dependClassName="com.intellij.util.ui.GraphicsUtil" />
     <classNode dependClassName="java.awt.Color" />
     <classNode dependClassName="java.awt.Graphics" />
@@ -216,7 +213,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeId" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.ModelAccess" />
-    <classNode extendsClassName="com.intellij.openapi.editor.colors.EditorColorsListener" />
     <classNode extendsClassName="java.beans.PropertyChangeListener" />
     <classNode extendsClassName="jetbrains.mps.vcs.diff.ui.IHighlighter" />
   </dependency>
@@ -420,13 +416,10 @@
     <classNode dependClassName="com.intellij.openapi.actionSystem.DefaultActionGroup" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.ToggleAction" />
     <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
-    <classNode dependClassName="com.intellij.openapi.editor.colors.EditorColorsManager" />
-    <classNode dependClassName="com.intellij.openapi.editor.colors.EditorColorsScheme" />
     <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="com.intellij.openapi.ui.GraphicsConfig" />
     <classNode dependClassName="com.intellij.openapi.ui.Splitter" />
     <classNode dependClassName="com.intellij.ui.JBSplitter" />
-    <classNode dependClassName="com.intellij.util.messages.MessageBusConnection" />
     <classNode dependClassName="com.intellij.util.ui.GraphicsUtil" />
     <classNode dependClassName="java.awt.Color" />
     <classNode dependClassName="java.awt.Graphics" />
@@ -466,8 +459,6 @@
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeId" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.module.ModelAccess" />
-    <classNode extendsClassName="com.intellij.openapi.editor.colors.EditorColorsListener" />
     <classNode extendsClassName="java.beans.PropertyChangeListener" />
   </dependency>
 </dependenciesRoot>
