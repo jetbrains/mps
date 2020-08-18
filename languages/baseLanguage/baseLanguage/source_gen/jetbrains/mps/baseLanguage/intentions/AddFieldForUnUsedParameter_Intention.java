@@ -88,6 +88,7 @@ public final class AddFieldForUnUsedParameter_Intention extends AbstractIntentio
       SNode field = SNodeFactoryOperations.createNewNode(CONCEPTS.FieldDeclaration$ie, null);
       SPropertyOperations.assign(field, PROPS.name$MnvL, (useThis ? SPropertyOperations.getString(node, PROPS.name$MnvL) : "my" + NameUtil.capitalize(SPropertyOperations.getString(node, PROPS.name$MnvL))));
       SLinkOperations.setTarget(field, LINKS.type$a1UY, SNodeOperations.copyNode(SLinkOperations.getTarget(node, LINKS.type$a1UY)));
+      SPropertyOperations.assign(field, PROPS.isFinal$gvTP, true);
       SNode lastFieldDecl = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(clazz, LINKS.member$L_2d), CONCEPTS.FieldDeclaration$ie)).last();
       if ((lastFieldDecl != null)) {
         ListSequence.fromList(SLinkOperations.getChildren(clazz, LINKS.member$L_2d)).insertElement(ListSequence.fromList(SLinkOperations.getChildren(clazz, LINKS.member$L_2d)).lastIndexOf(lastFieldDecl) + 1, field);
@@ -149,5 +150,6 @@ public final class AddFieldForUnUsedParameter_Intention extends AbstractIntentio
 
   private static final class PROPS {
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isFinal$gvTP = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, 0x111f9e9f00cL, "isFinal");
   }
 }

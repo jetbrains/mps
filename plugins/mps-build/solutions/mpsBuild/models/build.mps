@@ -43944,25 +43944,6 @@
           <ref role="3bR37D" node="44LXwdzyvTi" resolve="Annotations" />
         </node>
       </node>
-      <node concept="1SiIV0" id="4wxeloVug3w" role="3bR37C">
-        <node concept="1BurEX" id="4wxeloVug3x" role="1SiIV1">
-          <node concept="398BVA" id="4wxeloVug3m" role="1BurEY">
-            <ref role="398BVh" node="6ifcnI8$2ke" resolve="mps_home" />
-            <node concept="2Ry0Ak" id="4wxeloVug3n" role="iGT6I">
-              <property role="2Ry0Am" value="plugins" />
-              <node concept="2Ry0Ak" id="4wxeloVug3o" role="2Ry0An">
-                <property role="2Ry0Am" value="git4idea" />
-                <node concept="2Ry0Ak" id="4wxeloVug3p" role="2Ry0An">
-                  <property role="2Ry0Am" value="lib" />
-                  <node concept="2Ry0Ak" id="4wxeloVug3q" role="2Ry0An">
-                    <property role="2Ry0Am" value="git4idea-rt.jar" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
       <node concept="1SiIV0" id="4wxeloVug3G" role="3bR37C">
         <node concept="1BurEX" id="4wxeloVug3H" role="1SiIV1">
           <node concept="398BVA" id="4wxeloVug3y" role="1BurEY">
@@ -43979,6 +43960,31 @@
                 </node>
               </node>
             </node>
+          </node>
+          <node concept="3yrxFa" id="2NYcxOd6q79" role="2gdwQb">
+            <ref role="3yrxFb" node="4tNwrSpam8F" />
+          </node>
+        </node>
+      </node>
+      <node concept="1SiIV0" id="4wxeloVug3w" role="3bR37C">
+        <node concept="1BurEX" id="4wxeloVug3x" role="1SiIV1">
+          <node concept="398BVA" id="4wxeloVug3m" role="1BurEY">
+            <ref role="398BVh" node="6ifcnI8$2ke" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="4wxeloVug3n" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="4wxeloVug3o" role="2Ry0An">
+                <property role="2Ry0Am" value="git4idea" />
+                <node concept="2Ry0Ak" id="4wxeloVug3p" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="2NYcxOd6q74" role="2Ry0An">
+                    <property role="2Ry0Am" value="git4idea-rt.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3yrxFa" id="2NYcxOd6q76" role="2gdwQb">
+            <ref role="3yrxFb" node="7ad8nWle5X5" />
           </node>
         </node>
       </node>
@@ -43999,6 +44005,9 @@
               </node>
             </node>
           </node>
+          <node concept="3yrxFa" id="2NYcxOd6q7c" role="2gdwQb">
+            <ref role="3yrxFb" node="7ad8nWle5Yb" />
+          </node>
         </node>
       </node>
       <node concept="1SiIV0" id="4wxeloVug44" role="3bR37C">
@@ -44017,6 +44026,9 @@
                 </node>
               </node>
             </node>
+          </node>
+          <node concept="3yrxFa" id="2NYcxOd6q7f" role="2gdwQb">
+            <ref role="3yrxFb" node="7ad8nWle5Zl" />
           </node>
         </node>
       </node>
@@ -44176,7 +44188,7 @@
               </node>
             </node>
             <node concept="3yLZsm" id="GF9IugZbdY" role="3yL2VB">
-              <property role="3yLZsk" value="../../git4idea/lib/remote-servers-get.jar" />
+              <property role="3yLZsk" value="../../git4idea/lib/remote-servers-git.jar" />
               <node concept="398BVA" id="GF9IugZbdZ" role="3yLZsn">
                 <ref role="398BVh" node="6ifcnI8$2ke" resolve="mps_home" />
                 <node concept="2Ry0Ak" id="GF9IugZbe0" role="iGT6I">

@@ -1181,6 +1181,31 @@
         <ref role="3uigEE" node="6rx4kZDk5A9" resolve="EnvironmentConfig" />
       </node>
     </node>
+    <node concept="2tJIrI" id="245jbU$BLIk" role="jymVt" />
+    <node concept="3clFb_" id="245jbU$BLCn" role="jymVt">
+      <property role="1EzhhJ" value="false" />
+      <property role="TrG5h" value="withGit4IdeaStubsPlugin" />
+      <property role="od$2w" value="false" />
+      <property role="DiZV1" value="false" />
+      <property role="2aFKle" value="false" />
+      <node concept="3clFbS" id="245jbU$BLCo" role="3clF47">
+        <node concept="3cpWs6" id="245jbU$BLCp" role="3cqZAp">
+          <node concept="1rXfSq" id="245jbU$BLCq" role="3cqZAk">
+            <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
+            <node concept="Xl_RD" id="245jbU$BLCr" role="37wK5m">
+              <property role="Xl_RC" value="mps-git4idea" />
+            </node>
+            <node concept="Xl_RD" id="245jbU$BLCs" role="37wK5m">
+              <property role="Xl_RC" value="jetbrains.mps.git4idea.stubs" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="245jbU$BLCt" role="1B3o_S" />
+      <node concept="3uibUv" id="245jbU$BLCu" role="3clF45">
+        <ref role="3uigEE" node="6rx4kZDk5A9" resolve="EnvironmentConfig" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="ECLZhkqBgL" role="jymVt" />
     <node concept="3clFb_" id="ECLZhkqBgM" role="jymVt">
       <property role="1EzhhJ" value="false" />
@@ -1568,6 +1593,19 @@
         </node>
       </node>
     </node>
+    <node concept="3Tm1VV" id="6rx4kZDk5Aa" role="1B3o_S" />
+    <node concept="3UR2Jj" id="3eUNqOk6xny" role="lGtFl">
+      <node concept="TZ5HA" id="3eUNqOk6xnz" role="TZ5H$">
+        <node concept="1dT_AC" id="3eUNqOk6xn$" role="1dT_Ay">
+          <property role="1dT_AB" value="Represents a configuration options list for an environment, used a Builder pattern" />
+        </node>
+      </node>
+      <node concept="VUp57" id="3eUNqOk6xPi" role="3nqlJM">
+        <node concept="VXe08" id="3eUNqOk6Ga5" role="VUp5m">
+          <ref role="VXe09" node="HKKzfMjqRV" resolve="Environment" />
+        </node>
+      </node>
+    </node>
     <node concept="2tJIrI" id="28TMbOSET_P" role="jymVt" />
     <node concept="3clFb_" id="28TMbOSEVXt" role="jymVt">
       <property role="TrG5h" value="withTestModeOn" />
@@ -1603,19 +1641,6 @@
       </node>
       <node concept="3Tm1VV" id="28TMbOSF3vQ" role="1B3o_S" />
       <node concept="10P_77" id="28TMbOSF4yT" role="3clF45" />
-    </node>
-    <node concept="3Tm1VV" id="6rx4kZDk5Aa" role="1B3o_S" />
-    <node concept="3UR2Jj" id="3eUNqOk6xny" role="lGtFl">
-      <node concept="TZ5HA" id="3eUNqOk6xnz" role="TZ5H$">
-        <node concept="1dT_AC" id="3eUNqOk6xn$" role="1dT_Ay">
-          <property role="1dT_AB" value="Represents a configuration options list for an environment, used a Builder pattern" />
-        </node>
-      </node>
-      <node concept="VUp57" id="3eUNqOk6xPi" role="3nqlJM">
-        <node concept="VXe08" id="3eUNqOk6Ga5" role="VUp5m">
-          <ref role="VXe09" node="HKKzfMjqRV" resolve="Environment" />
-        </node>
-      </node>
     </node>
   </node>
   <node concept="312cEu" id="6rx4kZDk6yp">
@@ -1863,8 +1888,8 @@
                               <node concept="YeOm9" id="tIvp9sU1jU" role="2ShVmc">
                                 <node concept="1Y3b0j" id="tIvp9sU1jV" role="YeSDq">
                                   <property role="2bfB8j" value="true" />
-                                  <ref role="37wK5l" to="3qmy:~DumbIdeaPluginFacet.&lt;init&gt;(org.jetbrains.mps.openapi.module.SModule)" resolve="DumbIdeaPluginFacet" />
                                   <ref role="1Y3XeK" to="3qmy:~DumbIdeaPluginFacet" resolve="DumbIdeaPluginFacet" />
+                                  <ref role="37wK5l" to="3qmy:~DumbIdeaPluginFacet.&lt;init&gt;(org.jetbrains.mps.openapi.module.SModule)" resolve="DumbIdeaPluginFacet" />
                                   <node concept="3Tm1VV" id="tIvp9sU1jW" role="1B3o_S" />
                                   <node concept="3clFb_" id="tIvp9sU1jX" role="jymVt">
                                     <property role="1EzhhJ" value="false" />
