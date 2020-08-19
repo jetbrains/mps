@@ -316,7 +316,9 @@
     <webServerRootsProvider implementation="org.jetbrains.builtInWebServer.ArtifactWebServerRootsProvider" order="last"/>
   </extensions>
 
+  -->
   <xi:include href="/META-INF/xdebugger.xml" xpointer="xpointer(/idea-plugin/*)"/>
+  <!--
   <xi:include href="/META-INF/RemoteServers.xml" xpointer="xpointer(/idea-plugin/*)">
     <xi:fallback/>
   </xi:include>
@@ -351,6 +353,10 @@
   <xi:include href="/META-INF/SpellCheckerPlugin.xml" xpointer="xpointer(/idea-plugin/*)"/>
 
   <xi:include href="/META-INF/builtInServer.xml">
+    <xi:fallback/>
+  </xi:include>
+
+  <xi:include href="/META-INF/tasks.xml">
     <xi:fallback/>
   </xi:include>
 </idea-plugin>

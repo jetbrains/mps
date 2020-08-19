@@ -1038,8 +1038,10 @@
       <reference ref="ViewBreakpoints"/>
       <reference ref="XDebugger.MuteBreakpoints"/>
     </group>
+    -->
 
     <group id="XDebugger.ValueGroup" popup="false">
+      <!--
       <reference ref="XDebugger.Inspect"/>
       <reference ref="Debugger.MarkObject"/>
       <reference ref="XDebugger.SetValue"/>
@@ -1055,7 +1057,9 @@
       <reference ref="XDebugger.JumpToSource"/>
       <reference ref="XDebugger.JumpToTypeSource"/>
       <separator/>
+      -->
     </group>
+    <!--
 
     <group id="XDebugger.Evaluation.Dialog.Tree.Popup">
       <reference ref="XDebugger.ValueGroup"/>

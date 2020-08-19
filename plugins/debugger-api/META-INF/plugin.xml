@@ -70,7 +70,6 @@
   <extensions defaultExtensionNs="com.intellij">
     <programRunner id="defaultDebugRunner" implementation="jetbrains.mps.debugger.api.runner.MPSDebugRunner"
                    order="last"/>
-    <executor implementation="com.intellij.execution.executors.DefaultDebugExecutor" order="after run" id="debug"/>
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
     <mps.LanguageLibrary dir=""/>
     <mps.PluginComponentContributor application="jetbrains.mps.debugger.api.ui.actions.Runtime_ApplicationPlugin" />
