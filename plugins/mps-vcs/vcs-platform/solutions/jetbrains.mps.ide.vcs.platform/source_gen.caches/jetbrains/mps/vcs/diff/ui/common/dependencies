@@ -483,6 +483,14 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SReference" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
   </dependency>
+  <dependency className="jetbrains.mps.vcs.diff.ui.common.EditorSettingsEditorColorsListener">
+    <classNode dependClassName="com.intellij.openapi.editor.colors.EditorColorsScheme" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+    <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.ChangeColors" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode extendsClassName="com.intellij.openapi.editor.colors.EditorColorsListener" />
+  </dependency>
   <dependency className="jetbrains.mps.vcs.diff.ui.common.FoldingAreaButton">
     <classNode dependClassName="java.awt.Graphics" />
     <classNode dependClassName="java.lang.String" />

@@ -17,7 +17,7 @@
   </root>
   <root nodeRef="r:874d959d-e3b4-4d04-b931-ca849af130dd(jetbrains.mps.ide.build)/2130197740972030755">
     <file name="mpsVcsPlatformPre.xml">
-      <unit id="2130197740972030755" at="1,0,173,10" name="jetbrains.mps.ide.build.mpsVcsPlatformPre" />
+      <unit id="2130197740972030755" at="1,0,169,10" name="jetbrains.mps.ide.build.mpsVcsPlatformPre" />
     </file>
   </root>
   <root nodeRef="r:874d959d-e3b4-4d04-b931-ca849af130dd(jetbrains.mps.ide.build)/2405506926871158265">

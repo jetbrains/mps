@@ -3888,6 +3888,17 @@
       <unit id="739457190729175664" at="18,0,108,0" name="jetbrains.mps.vcs.diff.ui.common.ChangeGroupMessages" />
     </file>
   </root>
+  <root nodeRef="r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/8366029351943284486">
+    <file name="EditorSettingsEditorColorsListener.java">
+      <node id="8366029351943390591" at="14,71,15,44" concept="6" />
+      <node id="8366029351943389940" at="13,0,17,0" concept="11" trace="globalSchemeChange#(Lcom/intellij/openapi/editor/colors/EditorColorsScheme;)V" />
+      <scope id="8366029351943389947" at="14,71,15,44" />
+      <scope id="8366029351943389940" at="13,0,17,0">
+        <var name="scheme" id="8366029351943389944" />
+      </scope>
+      <unit id="8366029351943284486" at="10,0,18,0" name="jetbrains.mps.vcs.diff.ui.common.EditorSettingsEditorColorsListener" />
+    </file>
+  </root>
   <root nodeRef="r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/8733553229778921962">
     <file name="InvokeTextDiffAction.java">
       <node id="4435250098740535444" at="19,0,20,0" concept="16" trace="TEXT_ICON" />

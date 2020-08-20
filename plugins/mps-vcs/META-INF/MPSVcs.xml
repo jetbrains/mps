@@ -1,7 +1,4 @@
 <components>
-  <applicationListeners>
-    <listener class="jetbrains.mps.vcs.diff.ui.common.EditorSettingsEditorColorsListener" topic="com.intellij.openapi.editor.colors.EditorColorsListener"/>
-  </applicationListeners>
   <actions>
     <action id="jetbrains.mps.vcs.platform.actions.Annotate_Action" class="jetbrains.mps.vcs.platform.actions.Annotate_Action"></action>
     <action id="jetbrains.mps.vcs.platform.actions.CopyOldNodes_Action" class="jetbrains.mps.vcs.platform.actions.CopyOldNodes_Action"></action>

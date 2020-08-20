@@ -47921,10 +47921,6 @@
           <property role="nFU4j" value="solutions/jetbrains.mps.ide.vcs.platform/source_gen" />
           <property role="3LZaj6" value="source" />
         </node>
-        <node concept="nFU4i" id="1QfYSW$vwPV" role="nFU4p">
-          <property role="nFU4j" value="solutions/jetbrains.mps.ide.vcs.platform/source" />
-          <property role="3LZaj6" value="source" />
-        </node>
       </node>
     </node>
     <node concept="13uUGR" id="1QfYSWzYzHY" role="1l3spa">

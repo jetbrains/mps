@@ -24483,5 +24483,41 @@
       </node>
     </node>
   </node>
+  <node concept="312cEu" id="7gq6PVn4ys6">
+    <property role="TrG5h" value="EditorSettingsEditorColorsListener" />
+    <property role="1EXbeo" value="true" />
+    <node concept="2tJIrI" id="7gq6PVn4Wbq" role="jymVt" />
+    <node concept="3uibUv" id="7gq6PVn4Wb9" role="EKbjA">
+      <ref role="3uigEE" to="drih:~EditorColorsListener" resolve="EditorColorsListener" />
+    </node>
+    <node concept="3clFb_" id="7gq6PVn4WbO" role="jymVt">
+      <property role="TrG5h" value="globalSchemeChange" />
+      <node concept="3Tm1VV" id="7gq6PVn4WbP" role="1B3o_S" />
+      <node concept="3cqZAl" id="7gq6PVn4WbR" role="3clF45" />
+      <node concept="37vLTG" id="7gq6PVn4WbS" role="3clF46">
+        <property role="TrG5h" value="scheme" />
+        <node concept="3uibUv" id="7gq6PVn4WbT" role="1tU5fm">
+          <ref role="3uigEE" to="drih:~EditorColorsScheme" resolve="EditorColorsScheme" />
+        </node>
+        <node concept="2AHcQZ" id="7gq6PVn4WbU" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="7gq6PVn4WbV" role="3clF47">
+        <node concept="3clFbF" id="7gq6PVn4WlZ" role="3cqZAp">
+          <node concept="2YIFZM" id="7gq6PVn4Wn_" role="3clFbG">
+            <ref role="1Pybhc" node="42hl10VH9R2" resolve="ChangeColors" />
+            <ref role="37wK5l" node="5ZshaoOu8hy" resolve="updateEditorColors" />
+            <node concept="37vLTw" id="7gq6PVn4WnA" role="37wK5m">
+              <ref role="3cqZAo" node="7gq6PVn4WbS" resolve="scheme" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="7gq6PVn4WbW" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+  </node>
 </model>
 

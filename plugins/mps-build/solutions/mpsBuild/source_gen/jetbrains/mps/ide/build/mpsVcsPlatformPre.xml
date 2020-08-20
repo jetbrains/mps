@@ -127,10 +127,7 @@
     <mkdir dir="${build.tmp}/java/out/vcs-platform" />
     <javac2 destdir="${build.tmp}/java/out/vcs-platform" fork="false" encoding="utf8" includeantruntime="false" debug="true">
       <compilerarg value="-Xlint:none" />
-      <src>
-        <pathelement path="${mps_home}/plugins/mps-vcs/vcs-platform/solutions/jetbrains.mps.ide.vcs.platform/source_gen" />
-        <pathelement path="${mps_home}/plugins/mps-vcs/vcs-platform/solutions/jetbrains.mps.ide.vcs.platform/source" />
-      </src>
+      <src path="${mps_home}/plugins/mps-vcs/vcs-platform/solutions/jetbrains.mps.ide.vcs.platform/source_gen" />
       <classpath>
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-openapi.jar" />
@@ -167,7 +164,6 @@
     </javac2>
     <copy todir="${build.tmp}/java/out/vcs-platform">
       <fileset dir="${mps_home}/plugins/mps-vcs/vcs-platform/solutions/jetbrains.mps.ide.vcs.platform/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${mps_home}/plugins/mps-vcs/vcs-platform/solutions/jetbrains.mps.ide.vcs.platform/source" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
 </project>
