@@ -17,6 +17,13 @@ import com.intellij.diff.tools.util.side.TwosideContentPanel;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.vcs.diff.ui.common.NextPreviousTraverser;
+import jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry;
+import org.jetbrains.mps.openapi.model.EditableSModel;
+import jetbrains.mps.vcs.changesmanager.CurrentDifference;
+import jetbrains.mps.vcs.changesmanager.CurrentDifferenceAdapter;
+import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.vcs.diff.changes.ModelChange;
+import jetbrains.mps.ide.project.ProjectHelper;
 import java.beans.PropertyChangeEvent;
 import com.intellij.openapi.ui.Splitter;
 import java.util.Arrays;
@@ -25,10 +32,8 @@ import javax.swing.JComponent;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import jetbrains.mps.ide.icons.IdeIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import jetbrains.mps.vcs.diff.changes.ModelChange;
 import com.intellij.diff.tools.util.DiffSplitter;
 import com.intellij.diff.util.DiffDividerDrawUtil;
-import org.jetbrains.annotations.NotNull;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import com.intellij.diff.util.DiffDrawUtil;
@@ -47,7 +52,6 @@ import com.intellij.openapi.actionSystem.ActionGroup;
 import javax.swing.JPanel;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.vcs.diff.ui.common.ChangeGroupMessages;
 import jetbrains.mps.smodel.SModelOperations;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -62,7 +66,7 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
   private static final String PARAM_SHOW_INSPECTOR = RootDifferencePane.class.getName() + "ShowInspector";
   private static final String PARAM_HIDE_ID_CHANGES = RootDifferencePane.class.getName() + "HideIdChanges";
   private static final String PARAM_INSPECTOR_SPLITTER_POSITION = RootDifferencePane.class.getName() + "InspectorSplitterPosition";
-  private final MPSProject myProject;
+  private final MPSProject myMpsProject;
   private ModelChangeSet myChangeSet;
   private SNodeId myRootId;
 
@@ -78,19 +82,59 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
   private DefaultActionGroup myActionGroup;
   private NextPreviousTraverser myTraverser;
 
+  private final CurrentDifferenceRegistry myDiffRegistry;
+  private MyDifferenceListener myDifferenceListener = new MyDifferenceListener();
+
 
   private boolean myHideIdChanges = PropertiesComponent.getInstance().getBoolean(PARAM_HIDE_ID_CHANGES, false);
 
-  public RootDifferencePane(MPSProject project, ModelChangeSet changeSet, SNodeId rootId, String rootName, String[] titles, boolean isEditable) {
+  public RootDifferencePane(MPSProject project, final ModelChangeSet changeSet, SNodeId rootId, String rootName, String[] titles, boolean isEditable) {
     myChangeSet = changeSet;
     myRootId = rootId;
-    myProject = project;
+    myMpsProject = project;
     myOldEditor = addEditor(myChangeSet.getOldModel(), titles[0], true);
     myNewEditor = addEditor(myChangeSet.getNewModel(), titles[1], false);
     myPanel = createTwosideContentPanel();
     myTraverser = new NextPreviousTraverser(myChangeGroupLayouts, myNewEditor.getMainEditor());
     // todo: add possibility to hide resolve info only changes, see MPSSPRT-209 
     createActionGroup(isEditable, rootName);
+    myDiffRegistry = CurrentDifferenceRegistry.getInstance(myMpsProject.getProject());
+    myDiffRegistry.getCommandQueue().runTask(new Runnable() {
+      public void run() {
+        if (myChangeSet.getOldModel() instanceof EditableSModel) {
+          final CurrentDifference currentDifference = myDiffRegistry.getCurrentDifference((EditableSModel) changeSet.getOldModel());
+
+          currentDifference.addDifferenceListener(myDifferenceListener);
+        }
+        if (myChangeSet.getNewModel() instanceof EditableSModel) {
+          final CurrentDifference currentDifference = myDiffRegistry.getCurrentDifference((EditableSModel) changeSet.getNewModel());
+          currentDifference.addDifferenceListener(myDifferenceListener);
+        }
+      }
+    });
+  }
+
+  private class MyDifferenceListener extends CurrentDifferenceAdapter {
+
+    @Override
+    public void changeUpdateFinished() {
+      rehighlightWithRebuild();
+    }
+    @Override
+    public void changesAdded(@NotNull List<ModelChange> changes) {
+      rehighlightWithRebuild();
+    }
+    @Override
+    public void changesRemoved(@NotNull List<ModelChange> changes) {
+      rehighlightWithRebuild();
+    }
+
+    private void rehighlightWithRebuild() {
+      check_guncoj_a0a5bb(ProjectHelper.getModelAccess(myMpsProject.getProject()), this);
+    }
+    private void doRehighlight() {
+      rehighlight(true);
+    }
   }
 
   @Override
@@ -325,7 +369,7 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
     }
     myHideIdChanges = hide;
     PropertiesComponent.getInstance().setValue(PARAM_HIDE_ID_CHANGES, hide);
-    check_guncoj_a3a74(ProjectHelper.getModelAccess(myProject.getProject()), this);
+    check_guncoj_a3a25(ProjectHelper.getModelAccess(myMpsProject.getProject()), this);
   }
 
   private void rehighlightNoRebuild() {
@@ -333,7 +377,7 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
   }
 
   private void linkEditors(TwosideContentPanel panel, boolean inspector) {
-    DiffChangeGroupLayout layout = new DiffChangeGroupLayout(null, myProject.getRepository(), myChangeSet, myOldEditor, myNewEditor, getSplitterRepainter(panel), inspector);
+    DiffChangeGroupLayout layout = new DiffChangeGroupLayout(null, myMpsProject.getRepository(), myChangeSet, myOldEditor, myNewEditor, getSplitterRepainter(panel), inspector);
     ChangeGroupMessages.startMaintaining(layout);
     ListSequence.fromList(myChangeGroupLayouts).addElement(layout);
     if (!(SModelOperations.isReadOnly(myChangeSet.getNewModel()))) {
@@ -352,7 +396,7 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
   }
 
   private DiffEditor addEditor(SModel model, String title, boolean isLeftEditor) {
-    DiffEditor result = new DiffEditor(myProject, model.getNode(myRootId), title, isLeftEditor, isInspectorShown);
+    DiffEditor result = new DiffEditor(myMpsProject, model.getNode(myRootId), title, isLeftEditor, isInspectorShown);
     myDiffEditorsGroup.add(result);
     return result;
   }
@@ -415,14 +459,33 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
   }
 
   public void dispose() {
+    myDiffRegistry.getCommandQueue().runTask(new Runnable() {
+      public void run() {
+        if (myChangeSet.getOldModel() instanceof EditableSModel) {
+          myDiffRegistry.getCurrentDifference((EditableSModel) myChangeSet.getOldModel()).removeDifferenceListener(myDifferenceListener);
+        }
+        if (myChangeSet.getNewModel() instanceof EditableSModel) {
+          myDiffRegistry.getCurrentDifference((EditableSModel) myChangeSet.getNewModel()).removeDifferenceListener(myDifferenceListener);
+        }
+      }
+    });
     myActionGroup.removeAll();
     myActionGroup = null;
     myDiffEditorsGroup.dispose();
     myOldEditor = null;
     myNewEditor = null;
   }
+  private static void check_guncoj_a0a5bb(ModelAccess checkedDotOperand, final MyDifferenceListener checkedDotThisExpression) {
+    if (null != checkedDotOperand) {
+      checkedDotOperand.runReadInEDT(new Runnable() {
+        public void run() {
+          checkedDotThisExpression.doRehighlight();
+        }
+      });
+    }
 
-  private static void check_guncoj_a3a74(ModelAccess checkedDotOperand, final RootDifferencePane checkedDotThisExpression) {
+  }
+  private static void check_guncoj_a3a25(ModelAccess checkedDotOperand, final RootDifferencePane checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       checkedDotOperand.runReadAction(new Runnable() {
         public void run() {

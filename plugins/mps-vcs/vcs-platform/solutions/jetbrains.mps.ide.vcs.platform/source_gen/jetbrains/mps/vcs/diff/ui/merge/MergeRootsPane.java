@@ -25,10 +25,15 @@ import jetbrains.mps.vcs.diff.ui.common.DiffEditorsGroup;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.vcs.diff.ui.common.NextPreviousTraverser;
 import com.intellij.ui.JBSplitter;
+import jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.ide.project.ProjectHelper;
+import org.jetbrains.mps.openapi.model.EditableSModel;
+import jetbrains.mps.vcs.changesmanager.CurrentDifference;
+import jetbrains.mps.vcs.changesmanager.CurrentDifferenceAdapter;
+import org.jetbrains.annotations.NotNull;
 import java.beans.PropertyChangeEvent;
 import com.intellij.openapi.ui.Splitter;
 import java.util.Iterator;
@@ -40,7 +45,6 @@ import jetbrains.mps.ide.icons.IdeIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.diff.tools.util.DiffSplitter;
 import com.intellij.diff.util.DiffDividerDrawUtil;
-import org.jetbrains.annotations.NotNull;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import com.intellij.diff.util.DiffDrawUtil;
@@ -89,6 +93,10 @@ public class MergeRootsPane implements PropertyChangeListener {
   private NextPreviousTraverser myTraverser;
   private List<JBSplitter> mySplitters = ListSequence.fromList(new ArrayList<JBSplitter>());
 
+  private final CurrentDifferenceRegistry myDiffRegistry;
+  private MyDifferenceListener myDifferenceListener = new MyDifferenceListener();
+
+
   public MergeRootsPane(Project project, MergeSession mergeSession, SNodeId rootId, String rootName, String[] titles) {
     myProject = project;
     myMergeSession = mergeSession;
@@ -125,6 +133,38 @@ public class MergeRootsPane implements PropertyChangeListener {
 
     highlightAllChanges();
     myTraverser.goToFirstChangeLater();
+    myDiffRegistry = CurrentDifferenceRegistry.getInstance(myProject);
+    myDiffRegistry.getCommandQueue().runTask(new Runnable() {
+      public void run() {
+        if (myMergeSession.getMyModel() instanceof EditableSModel) {
+          final CurrentDifference currentDifference = myDiffRegistry.getCurrentDifference((EditableSModel) myMergeSession.getMyModel());
+          currentDifference.addDifferenceListener(myDifferenceListener);
+        }
+      }
+    });
+  }
+
+  private class MyDifferenceListener extends CurrentDifferenceAdapter {
+
+    @Override
+    public void changeUpdateFinished() {
+      rehighlightWithRebuild();
+    }
+    @Override
+    public void changesAdded(@NotNull List<ModelChange> changes) {
+      rehighlightWithRebuild();
+    }
+    @Override
+    public void changesRemoved(@NotNull List<ModelChange> changes) {
+      rehighlightWithRebuild();
+    }
+
+    private void rehighlightWithRebuild() {
+      check_lifo0_a0a5gb(ProjectHelper.getModelAccess(myProject), this);
+    }
+    private void doRehighlight() {
+      rehighlight();
+    }
   }
 
   @Override
@@ -456,6 +496,13 @@ public class MergeRootsPane implements PropertyChangeListener {
       if (myDisposed) {
         return;
       }
+      myDiffRegistry.getCommandQueue().runTask(new Runnable() {
+        public void run() {
+          if (myMergeSession.getMyModel() instanceof EditableSModel) {
+            myDiffRegistry.getCurrentDifference((EditableSModel) myMergeSession.getMyModel()).removeDifferenceListener(myDifferenceListener);
+          }
+        }
+      });
       if (myActionGroup != null) {
         myActionGroup.removeAll();
       }
@@ -472,5 +519,15 @@ public class MergeRootsPane implements PropertyChangeListener {
       ListSequence.fromList(myEdtiorSeparators).clear();
       myDisposed = true;
     }
+  }
+  private static void check_lifo0_a0a5gb(ModelAccess checkedDotOperand, final MyDifferenceListener checkedDotThisExpression) {
+    if (null != checkedDotOperand) {
+      checkedDotOperand.runReadInEDT(new Runnable() {
+        public void run() {
+          checkedDotThisExpression.doRehighlight();
+        }
+      });
+    }
+
   }
 }

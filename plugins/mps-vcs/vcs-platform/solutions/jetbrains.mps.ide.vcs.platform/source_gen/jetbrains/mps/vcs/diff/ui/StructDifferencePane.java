@@ -16,8 +16,15 @@ import com.intellij.diff.tools.util.side.TwosideContentPanel;
 import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.vcs.diff.ui.common.NextPreviousTraverser;
+import jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeId;
+import org.jetbrains.mps.openapi.model.EditableSModel;
+import jetbrains.mps.vcs.changesmanager.CurrentDifference;
+import jetbrains.mps.vcs.changesmanager.CurrentDifferenceAdapter;
+import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.vcs.diff.changes.ModelChange;
+import jetbrains.mps.ide.project.ProjectHelper;
 import java.beans.PropertyChangeEvent;
 import com.intellij.openapi.ui.Splitter;
 import java.util.Arrays;
@@ -28,7 +35,6 @@ import jetbrains.mps.ide.icons.IdeIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.diff.tools.util.DiffSplitter;
 import com.intellij.diff.util.DiffDividerDrawUtil;
-import org.jetbrains.annotations.NotNull;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import com.intellij.diff.util.DiffDrawUtil;
@@ -45,13 +51,12 @@ import jetbrains.mps.vcs.diff.ui.common.ChangeColors;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import javax.swing.JPanel;
 import com.intellij.openapi.application.ApplicationManager;
-import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.vcs.diff.ui.common.ChangeGroupMessages;
 import jetbrains.mps.smodel.SModelOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.vcs.diff.StructChangeSetBuilder;
+import org.jetbrains.mps.openapi.module.ModelAccess;
 
 @GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/4664177994952686123", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
 public class StructDifferencePane implements PropertyChangeListener {
@@ -72,7 +77,11 @@ public class StructDifferencePane implements PropertyChangeListener {
   private DefaultActionGroup myActionGroup;
   private NextPreviousTraverser myTraverser;
 
-  public StructDifferencePane(Project project, StructChangeSet changeSet, String[] titles) {
+  private final CurrentDifferenceRegistry myDiffRegistry;
+  private MyDifferenceListener myDifferenceListener = new MyDifferenceListener();
+
+
+  public StructDifferencePane(Project project, final StructChangeSet changeSet, String[] titles) {
     myChangeSet = changeSet;
     myProject = project;
     myDiffEditorsGroup = new DiffEditorsGroup() {
@@ -97,6 +106,43 @@ public class StructDifferencePane implements PropertyChangeListener {
     myPanel = createTwosideContentPanel();
     myTraverser = new NextPreviousTraverser(myChangeGroupLayouts, myNewEditor.getMainEditor());
     createActionGroup();
+    myDiffRegistry = CurrentDifferenceRegistry.getInstance(myProject);
+    myDiffRegistry.getCommandQueue().runTask(new Runnable() {
+      public void run() {
+        if (myChangeSet.getOldModel() instanceof EditableSModel) {
+          final CurrentDifference currentDifference = myDiffRegistry.getCurrentDifference((EditableSModel) changeSet.getOldModel());
+
+          currentDifference.addDifferenceListener(myDifferenceListener);
+        }
+        if (myChangeSet.getNewModel() instanceof EditableSModel) {
+          final CurrentDifference currentDifference = myDiffRegistry.getCurrentDifference((EditableSModel) changeSet.getNewModel());
+          currentDifference.addDifferenceListener(myDifferenceListener);
+        }
+      }
+    });
+  }
+
+  private class MyDifferenceListener extends CurrentDifferenceAdapter {
+
+    @Override
+    public void changeUpdateFinished() {
+      rehighlightWithRebuild();
+    }
+    @Override
+    public void changesAdded(@NotNull List<ModelChange> changes) {
+      rehighlightWithRebuild();
+    }
+    @Override
+    public void changesRemoved(@NotNull List<ModelChange> changes) {
+      rehighlightWithRebuild();
+    }
+
+    private void rehighlightWithRebuild() {
+      check_n8nr2l_a0a5x(ProjectHelper.getModelAccess(myProject), this);
+    }
+    private void doRehighlight() {
+      rehighlight();
+    }
   }
 
   @Override
@@ -342,6 +388,16 @@ public class StructDifferencePane implements PropertyChangeListener {
   }
 
   public void dispose() {
+    myDiffRegistry.getCommandQueue().runTask(new Runnable() {
+      public void run() {
+        if (myChangeSet.getOldModel() instanceof EditableSModel) {
+          myDiffRegistry.getCurrentDifference((EditableSModel) myChangeSet.getOldModel()).removeDifferenceListener(myDifferenceListener);
+        }
+        if (myChangeSet.getNewModel() instanceof EditableSModel) {
+          myDiffRegistry.getCurrentDifference((EditableSModel) myChangeSet.getNewModel()).removeDifferenceListener(myDifferenceListener);
+        }
+      }
+    });
     myActionGroup.removeAll();
     myActionGroup = null;
     myDiffEditorsGroup.dispose();
@@ -349,4 +405,14 @@ public class StructDifferencePane implements PropertyChangeListener {
     myNewEditor = null;
   }
 
+  private static void check_n8nr2l_a0a5x(ModelAccess checkedDotOperand, final MyDifferenceListener checkedDotThisExpression) {
+    if (null != checkedDotOperand) {
+      checkedDotOperand.runReadInEDT(new Runnable() {
+        public void run() {
+          checkedDotThisExpression.doRehighlight();
+        }
+      });
+    }
+
+  }
 }
