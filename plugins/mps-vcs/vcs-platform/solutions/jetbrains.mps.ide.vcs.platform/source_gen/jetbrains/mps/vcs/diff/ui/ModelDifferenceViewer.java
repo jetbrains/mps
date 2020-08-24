@@ -87,7 +87,7 @@ public class ModelDifferenceViewer implements DataProvider {
     });
     project.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        if (showTree) {
+        if (showTree || rootId == null) {
           myChangeSet = ChangeSetBuilder.buildChangeSet(oldModel, newModel, true);
         } else {
           myChangeSet = ChangeSetBuilder.buildChangeSetForNode(oldModel, newModel, rootId, true);

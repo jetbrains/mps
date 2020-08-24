@@ -24,9 +24,16 @@ import org.jetbrains.mps.openapi.model.SModel;
 
 public final class ModelDiffContent extends DiffContentBase {
   private final SModel myModel;
+  private final FileType myFileType;
 
   public ModelDiffContent(@Nullable SModel model) {
     myModel = model;
+    myFileType=null;
+  }
+
+  public ModelDiffContent(@Nullable SModel model, FileType fileType) {
+    myModel = model;
+    myFileType=fileType;
   }
 
   @Nullable
@@ -36,6 +43,6 @@ public final class ModelDiffContent extends DiffContentBase {
 
   @Nullable
   public FileType getContentType() {
-    return null; // why?
+    return myFileType;
   }
 }

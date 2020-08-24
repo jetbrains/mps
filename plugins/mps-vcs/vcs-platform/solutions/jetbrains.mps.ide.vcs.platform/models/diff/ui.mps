@@ -8364,9 +8364,6 @@
           <node concept="1QHqEC" id="5zPLqcHJBbV" role="1QHqEI">
             <node concept="3clFbS" id="5zPLqcHJBbW" role="1bW5cS">
               <node concept="3clFbJ" id="1iCb9SvmIMz" role="3cqZAp">
-                <node concept="37vLTw" id="1iCb9SvmJD7" role="3clFbw">
-                  <ref role="3cqZAo" node="5zPLqcHJXV4" resolve="showTree" />
-                </node>
                 <node concept="3clFbS" id="1iCb9SvmIM_" role="3clFbx">
                   <node concept="3clFbF" id="5zPLqcHJBc2" role="3cqZAp">
                     <node concept="37vLTI" id="5zPLqcHJBc3" role="3clFbG">
@@ -8414,6 +8411,17 @@
                         </node>
                       </node>
                     </node>
+                  </node>
+                </node>
+                <node concept="22lmx$" id="62CnoZgPbPA" role="3clFbw">
+                  <node concept="3clFbC" id="62CnoZgPcU2" role="3uHU7w">
+                    <node concept="10Nm6u" id="62CnoZgPdbO" role="3uHU7w" />
+                    <node concept="37vLTw" id="62CnoZgPctR" role="3uHU7B">
+                      <ref role="3cqZAo" node="5zPLqcHJZ9t" resolve="rootId" />
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="1iCb9SvmJD7" role="3uHU7B">
+                    <ref role="3cqZAo" node="5zPLqcHJXV4" resolve="showTree" />
                   </node>
                 </node>
               </node>
@@ -18637,9 +18645,17 @@
             </node>
             <node concept="2ShNRf" id="4arIk_lRNde" role="3K4GZi">
               <node concept="1pGfFk" id="4arIk_lRNdf" role="2ShVmc">
-                <ref role="37wK5l" to="24bc:~ModelDiffContent.&lt;init&gt;(org.jetbrains.mps.openapi.model.SModel)" resolve="ModelDiffContent" />
+                <ref role="37wK5l" to="24bc:~ModelDiffContent.&lt;init&gt;(org.jetbrains.mps.openapi.model.SModel,com.intellij.openapi.fileTypes.FileType)" resolve="ModelDiffContent" />
                 <node concept="37vLTw" id="4arIk_lRNdg" role="37wK5m">
                   <ref role="3cqZAo" node="4arIk_lRNc_" resolve="loaded" />
+                </node>
+                <node concept="2OqwBi" id="2U4sMJkFkHM" role="37wK5m">
+                  <node concept="37vLTw" id="2U4sMJkFaPo" role="2Oq$k0">
+                    <ref role="3cqZAo" node="F8s4TbSzCJ" resolve="myActualFile" />
+                  </node>
+                  <node concept="liA8E" id="2U4sMJkFve3" role="2OqNvi">
+                    <ref role="37wK5l" to="jlff:~VirtualFile.getFileType()" resolve="getFileType" />
+                  </node>
                 </node>
               </node>
             </node>

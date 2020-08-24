@@ -372,7 +372,7 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
       return null;
     }
     // ModelDiffViewer doesn't tolerate reusable detached models, it registers and disposes such models solely on its own discretion 
-    return (loaded == null ? new EmptyContent() : new ModelDiffContent(loaded));
+    return (loaded == null ? new EmptyContent() : new ModelDiffContent(loaded, myActualFile.getFileType()));
   }
 
   @NotNull
