@@ -315,7 +315,7 @@ public class NonTypeSystemComponent extends IncrementalTypecheckingComponent<Sta
   }
 
   private void applyNonTypesystemRulesToNode(@NotNull final SNode node, final TypeCheckingContext typeCheckingContext) {
-    assert typeCheckingContext.isNonTypesystemComputation() || RuntimeFlags.isTestMode();
+    assert typeCheckingContext.isNonTypesystemComputation() || RuntimeFlags.getTestMode().isInsideTestEnvironment();
     getTypechecking().runApplyRulesTo(node, () -> {
 
       List<Pair<NonTypesystemRule_Runtime, IsApplicableStatus>> nonTypesystemRules = TypeChecker.getInstance().getRulesManager().getNonTypesystemRules(node);
