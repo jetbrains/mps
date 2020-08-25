@@ -176,6 +176,7 @@
       <zipfileset file="${mps_home}/languages/core/stub/MPS.IDEA/MPS.IDEA.msd" prefix="modules/MPS.IDEA" />
       <zipfileset file="${mps_home}/languages/core/stub/MPS.Core/MPS.Core.msd" prefix="modules/MPS.Core" />
       <zipfileset file="${mps_home}/languages/core/stub/Testbench/Testbench.msd" prefix="modules/Testbench" />
+      <zipfileset file="${mps_home}/languages/core/stub/JAXB/JAXB.msd" prefix="modules/JAXB" />
     </jar>
     <mkdir dir="${build.layout}/languages/devkits" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.devkit.bootstrap-languages.jar" />
@@ -16024,6 +16025,7 @@
         <module file="${mps_home}/languages/core/stub/Ant/Ant.msd" />
         <module file="${mps_home}/languages/core/stub/diffutils/diffutils.msd" />
         <module file="${mps_home}/languages/core/stub/hamcrest/hamcrest.msd" />
+        <module file="${mps_home}/languages/core/stub/JAXB/JAXB.msd" />
         <module file="${mps_home}/languages/core/stub/JDK/JDK.msd" />
         <module file="${mps_home}/languages/core/stub/junit/junit.msd" />
         <module file="${mps_home}/languages/core/stub/MPS.Core/MPS.Core.msd" />

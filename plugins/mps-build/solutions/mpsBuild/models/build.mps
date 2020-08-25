@@ -2458,6 +2458,9 @@
             <node concept="1bldCd" id="1OSlDLmrG9X" role="39821P">
               <ref role="3$exzV" node="nbn5Dym2sp" resolve="Testbench" />
             </node>
+            <node concept="1bldCd" id="6U$p2g0q5MB" role="39821P">
+              <ref role="3$exzV" node="6U$p2g0pj3R" resolve="JAXB" />
+            </node>
           </node>
           <node concept="3_J27D" id="10txAzI7sE7" role="Nbhlr">
             <node concept="3Mxwew" id="10txAzI7te9" role="3MwsjC">
@@ -4259,6 +4262,56 @@
           <node concept="3bR9La" id="1xb0AuwNc7$" role="1SiIV1">
             <property role="3bR36h" value="true" />
             <ref role="3bR37D" node="1xb0AuwMYDt" resolve="Hamcrest" />
+          </node>
+        </node>
+      </node>
+      <node concept="1E1JtA" id="6U$p2g0pj3R" role="2G$12L">
+        <property role="BnDLt" value="true" />
+        <property role="TrG5h" value="JAXB" />
+        <property role="3LESm3" value="72acac8d-4dd3-4bac-a8ea-ee97162c24e8" />
+        <property role="2GAjPV" value="true" />
+        <node concept="398BVA" id="6U$p2g0pk8_" role="3LF7KH">
+          <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+          <node concept="2Ry0Ak" id="6U$p2g0pklw" role="iGT6I">
+            <property role="2Ry0Am" value="languages" />
+            <node concept="2Ry0Ak" id="6U$p2g0pkJf" role="2Ry0An">
+              <property role="2Ry0Am" value="core" />
+              <node concept="2Ry0Ak" id="6U$p2g0pkW9" role="2Ry0An">
+                <property role="2Ry0Am" value="stub" />
+                <node concept="2Ry0Ak" id="6U$p2g0pllS" role="2Ry0An">
+                  <property role="2Ry0Am" value="JAXB" />
+                  <node concept="2Ry0Ak" id="6U$p2g0plyM" role="2Ry0An">
+                    <property role="2Ry0Am" value="JAXB.msd" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="6U$p2g0plT7" role="3bR37C">
+          <node concept="3bR9La" id="6U$p2g0plT8" role="1SiIV1">
+            <property role="3bR36h" value="true" />
+            <ref role="3bR37D" node="mXGwHwhVPj" resolve="JDK" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="6U$p2g0plTh" role="3bR37C">
+          <node concept="1BurEX" id="6U$p2g0plTi" role="1SiIV1">
+            <node concept="398BVA" id="6U$p2g0plT9" role="1BurEY">
+              <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+              <node concept="2Ry0Ak" id="6U$p2g0plTa" role="iGT6I">
+                <property role="2Ry0Am" value="jaxb-api-2.3.1.jar" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="6U$p2g0plTr" role="3bR37C">
+          <node concept="1BurEX" id="6U$p2g0plTs" role="1SiIV1">
+            <node concept="398BVA" id="6U$p2g0plTj" role="1BurEY">
+              <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+              <node concept="2Ry0Ak" id="6U$p2g0plTk" role="iGT6I">
+                <property role="2Ry0Am" value="jaxb-runtime-2.3.1.jar" />
+              </node>
+            </node>
           </node>
         </node>
       </node>
