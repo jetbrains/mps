@@ -89,6 +89,7 @@
     <classNode extendsClassName="jetbrains.mps.ide.findusages.model.SearchTask" />
   </dependency>
   <dependency className="jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerPreferencesPage">
+    <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
     <classNode dependClassName="com.intellij.openapi.options.ConfigurationException" />
     <classNode dependClassName="java.awt.BorderLayout" />
     <classNode dependClassName="java.awt.Dimension" />

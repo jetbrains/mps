@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.smodel;
 
 
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.options.SearchableConfigurable;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
@@ -34,8 +35,8 @@ public class ModelValidationConfigurable implements SearchableConfigurable {
   private JPanel myJPanel = new JPanel(new BorderLayout());
   private JCheckBox myCheckBoxTypeWasNotCalculated = new JCheckBox("Enable 'type was not calculated' check");
 
-  public ModelValidationConfigurable(@NotNull ModelValidationSettings modelValidationSettings) {
-    myModelValidationSettings = modelValidationSettings;
+  public ModelValidationConfigurable() {
+    myModelValidationSettings = ApplicationManager.getApplication().getComponent(ModelValidationSettings.class);
     Box box = Box.createVerticalBox();
     box.add(myCheckBoxTypeWasNotCalculated);
     myJPanel.add(box, BorderLayout.WEST);

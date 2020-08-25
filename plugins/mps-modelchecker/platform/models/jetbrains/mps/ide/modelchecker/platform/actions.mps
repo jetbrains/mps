@@ -2942,20 +2942,23 @@
     </node>
     <node concept="2tJIrI" id="63oasX2fuK_" role="jymVt" />
     <node concept="3clFbW" id="3etVqSRKzPZ" role="jymVt">
-      <node concept="37vLTG" id="3etVqSRKzQ0" role="3clF46">
-        <property role="TrG5h" value="settings" />
-        <node concept="3uibUv" id="3etVqSRKzQ1" role="1tU5fm">
-          <ref role="3uigEE" node="3etVqSRKzpg" resolve="ModelCheckerSettings" />
-        </node>
-      </node>
       <node concept="3clFbS" id="3etVqSRKzQ2" role="3clF47">
         <node concept="3clFbF" id="3etVqSRKzQ3" role="3cqZAp">
           <node concept="37vLTI" id="3etVqSRKzQ4" role="3clFbG">
             <node concept="37vLTw" id="2BHiRxeujQE" role="37vLTJ">
               <ref role="3cqZAo" node="3etVqSRKzPW" resolve="myModelCheckerSettings" />
             </node>
-            <node concept="37vLTw" id="2BHiRxgkZYd" role="37vLTx">
-              <ref role="3cqZAo" node="3etVqSRKzQ0" resolve="settings" />
+            <node concept="2OqwBi" id="6T$9HOHwVGE" role="37vLTx">
+              <node concept="2YIFZM" id="6T$9HOHwS2F" role="2Oq$k0">
+                <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+                <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+              </node>
+              <node concept="liA8E" id="6T$9HOHwWlP" role="2OqNvi">
+                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
+                <node concept="3VsKOn" id="6T$9HOHwYau" role="37wK5m">
+                  <ref role="3VsUkX" node="3etVqSRKzpg" resolve="ModelCheckerSettings" />
+                </node>
+              </node>
             </node>
           </node>
         </node>

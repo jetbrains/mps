@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JCheckBox;
 import javax.swing.JTextArea;
+import com.intellij.openapi.application.ApplicationManager;
 import java.util.Hashtable;
 import javax.swing.JLabel;
 import java.awt.Dimension;
@@ -37,8 +38,8 @@ public class ModelCheckerPreferencesPage implements SearchableConfigurable {
   private ModelCheckerSettings myModelCheckerSettings;
   private JTextArea myDescriptionText = new JTextArea();
 
-  public ModelCheckerPreferencesPage(ModelCheckerSettings settings) {
-    myModelCheckerSettings = settings;
+  public ModelCheckerPreferencesPage() {
+    myModelCheckerSettings = ApplicationManager.getApplication().getComponent(ModelCheckerSettings.class);
 
     Hashtable t = new Hashtable();
     for (ModelCheckerSettings.CheckingLevel level : ModelCheckerSettings.CheckingLevel.values()) {

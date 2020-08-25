@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.ide.generator;
 
 import com.intellij.ide.ui.UISettings;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.options.SearchableConfigurable;
 import com.intellij.ui.IdeBorderFactory;
 import com.intellij.ui.JBColor;
@@ -81,8 +82,12 @@ class GenerationSettingsPreferencesPage implements SearchableConfigurable {
   private final IModifiableGenerationSettings myGenerationSettings;
   private final ButtonSelectStateTracker myButtonState = new ButtonSelectStateTracker();
 
-  public GenerationSettingsPreferencesPage(MPSCoreComponents coreComponents) {
-    myGenerationSettings = coreComponents.getPlatform().findComponent(GenerationSettingsProvider.class).getGenerationSettings();
+  public GenerationSettingsPreferencesPage() {
+    myGenerationSettings = ApplicationManager.getApplication()
+                                             .getComponent(MPSCoreComponents.class)
+                                             .getPlatform()
+                                             .findComponent(GenerationSettingsProvider.class)
+                                             .getGenerationSettings();
     reset();
     myPage = createPage();
     myButtonState.reset();
@@ -294,10 +299,10 @@ class GenerationSettingsPreferencesPage implements SearchableConfigurable {
 
   private int getTracingLevel() {
     return
-      myTraceTypes.isSelected() ? GenerationOptions.TRACE_TYPES :
+        myTraceTypes.isSelected() ? GenerationOptions.TRACE_TYPES :
         myTraceLanguages.isSelected() ? GenerationOptions.TRACE_LANGS :
-          myTraceSteps.isSelected() ? GenerationOptions.TRACE_STEPS
-            : GenerationOptions.TRACE_OFF;
+        myTraceSteps.isSelected() ? GenerationOptions.TRACE_STEPS
+                                  : GenerationOptions.TRACE_OFF;
   }
 
   private int getNumberOfModelsToKeep() {
@@ -307,8 +312,8 @@ class GenerationSettingsPreferencesPage implements SearchableConfigurable {
   @Override
   public boolean isModified() {
     return myButtonState.isStateModified() ||
-      myGenerationSettings.getNumberOfModelsToKeep() != getNumberOfModelsToKeep() ||
-      myGenerationSettings.getNumberOfParallelThreads() != (Integer) myNumberOfParallelThreads.getValue();
+           myGenerationSettings.getNumberOfModelsToKeep() != getNumberOfModelsToKeep() ||
+           myGenerationSettings.getNumberOfParallelThreads() != (Integer) myNumberOfParallelThreads.getValue();
   }
 
   @Override
@@ -353,8 +358,9 @@ class GenerationSettingsPreferencesPage implements SearchableConfigurable {
     myStatusLabel.setVisible(false);
     ArrayList<String> messages = new ArrayList<>();
     if (myInplaceTransform.isSelected() && mySaveTransientModelsCheckBox.isSelected()) {
-      messages.add(String.format("<h2>Warning:</h2>Using <strong>%s</strong><br>together with <strong>%s</strong>may slow down generation process significantly",
-                                 myInplaceTransform.getText(), mySaveTransientModelsCheckBox.getText()));
+      messages.add(
+          String.format("<h2>Warning:</h2>Using <strong>%s</strong><br>together with <strong>%s</strong>may slow down generation process significantly",
+                        myInplaceTransform.getText(), mySaveTransientModelsCheckBox.getText()));
     }
     if (!messages.isEmpty()) {
       myStatusLabel.setText(String.format("<html>%s</html>", String.join("<br/>", messages)));
@@ -379,7 +385,7 @@ class GenerationSettingsPreferencesPage implements SearchableConfigurable {
   @Nls
   @Override
   public String getDisplayName() {
-    return  "Generator";
+    return "Generator";
   }
 
   @Nullable
@@ -415,13 +421,15 @@ class GenerationSettingsPreferencesPage implements SearchableConfigurable {
 
     @Override
     public String valueToString(@Nullable Object value) {
-      if (value == null) return null;
+      if (value == null) {
+        return null;
+      }
       return Integer.toString((Integer) value);
     }
   }
 
   private static class ButtonSelectStateTracker {
-    private final Map<AbstractButton,Boolean> myButtonStates = new HashMap<>();
+    private final Map<AbstractButton, Boolean> myButtonStates = new HashMap<>();
 
     public ButtonSelectStateTracker track(AbstractButton... buttons) {
       for (AbstractButton btn : buttons) {

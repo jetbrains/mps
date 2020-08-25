@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,21 +16,17 @@
 package jetbrains.mps.library;
 
 
+import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.ide.library.LibraryManagerPreferences;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.Nullable;
 
 public class LibraryManagerConfigurable extends BaseLibraryManagerConfigurable {
-  private final AdditionalLibrariesManager myLibraryManager;
-
-  public LibraryManagerConfigurable(AdditionalLibrariesManager libraryManager) {
-    myLibraryManager = libraryManager;
-  }
 
   @Override
   protected LibraryManagerPreferences getPreferences() {
     if (myPreferences == null) {
-      myPreferences = new LibraryManagerPreferences(myLibraryManager);
+      myPreferences = new LibraryManagerPreferences(ApplicationManager.getApplication().getComponent(AdditionalLibrariesManager.class));
     }
     return myPreferences;
   }
