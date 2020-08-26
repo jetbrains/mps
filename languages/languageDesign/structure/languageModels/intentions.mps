@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model ref="r:e5a8b5c7-85b5-4d59-9e4e-850a142e2560(jetbrains.mps.lang.structure.intentions)">
   <persistence version="9" />
+  <attribute name="doNotGenerate" value="false" />
   <languages>
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="-1" />
@@ -2241,23 +2242,6 @@
             </node>
           </node>
           <node concept="1Wc70l" id="35dGiMsDq1$" role="3clFbw">
-            <node concept="2OqwBi" id="35dGiMsDrpx" role="3uHU7w">
-              <node concept="2OqwBi" id="35dGiMsDqM4" role="2Oq$k0">
-                <node concept="37vLTw" id="35dGiMsDq$T" role="2Oq$k0">
-                  <ref role="3cqZAo" node="6_mTUEdwajL" resolve="cell" />
-                </node>
-                <node concept="liA8E" id="35dGiMsDr4c" role="2OqNvi">
-                  <ref role="37wK5l" to="f4zo:~EditorCell.getSRole()" resolve="getSRole" />
-                </node>
-              </node>
-              <node concept="liA8E" id="35dGiMsDrJo" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
-                <node concept="359W_D" id="35dGiMsDs20" role="37wK5m">
-                  <ref role="359W_E" to="tpce:f_TJgxE" resolve="LinkDeclaration" />
-                  <ref role="359W_F" to="tpce:fA0lvVK" resolve="target" />
-                </node>
-              </node>
-            </node>
             <node concept="1Wc70l" id="35dGiMsDlpj" role="3uHU7B">
               <node concept="2OqwBi" id="3jCIZp$v8yd" role="3uHU7B">
                 <node concept="37vLTw" id="2vVaxPsWPgA" role="2Oq$k0">
@@ -2276,6 +2260,23 @@
                 <node concept="liA8E" id="35dGiMsDntl" role="2OqNvi">
                   <ref role="37wK5l" to="f4zo:~EditorCell.isErrorState()" resolve="isErrorState" />
                 </node>
+              </node>
+            </node>
+            <node concept="2OqwBi" id="1K976ULvlq8" role="3uHU7w">
+              <node concept="liA8E" id="1K976ULvlqa" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
+                <node concept="2OqwBi" id="1K976ULvlqb" role="37wK5m">
+                  <node concept="37vLTw" id="1K976ULvlqc" role="2Oq$k0">
+                    <ref role="3cqZAo" node="6_mTUEdwajL" resolve="cell" />
+                  </node>
+                  <node concept="liA8E" id="1K976ULvlqd" role="2OqNvi">
+                    <ref role="37wK5l" to="f4zo:~EditorCell.getSRole()" resolve="getSRole" />
+                  </node>
+                </node>
+              </node>
+              <node concept="359W_D" id="35dGiMsDs20" role="2Oq$k0">
+                <ref role="359W_E" to="tpce:f_TJgxE" resolve="LinkDeclaration" />
+                <ref role="359W_F" to="tpce:fA0lvVK" resolve="target" />
               </node>
             </node>
           </node>
@@ -2530,20 +2531,20 @@
                   </node>
                 </node>
               </node>
-              <node concept="2OqwBi" id="35dGiMsEmQP" role="3uHU7w">
-                <node concept="2OqwBi" id="35dGiMsEmQQ" role="2Oq$k0">
-                  <node concept="37vLTw" id="35dGiMsEmQR" role="2Oq$k0">
-                    <ref role="3cqZAo" node="6_mTUEdwajL" resolve="cell" />
-                  </node>
-                  <node concept="liA8E" id="35dGiMsEmQS" role="2OqNvi">
-                    <ref role="37wK5l" to="f4zo:~EditorCell.getSRole()" resolve="getSRole" />
-                  </node>
+              <node concept="2OqwBi" id="1K976ULvin5" role="3uHU7w">
+                <node concept="359W_D" id="1K976ULvhKP" role="2Oq$k0">
+                  <ref role="359W_E" to="tpce:f_TIwhg" resolve="ConceptDeclaration" />
+                  <ref role="359W_F" to="tpce:h0Pzm$Y" resolve="implements" />
                 </node>
-                <node concept="liA8E" id="35dGiMsEmQT" role="2OqNvi">
+                <node concept="liA8E" id="1K976ULviD4" role="2OqNvi">
                   <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
-                  <node concept="359W_D" id="35dGiMsEmQU" role="37wK5m">
-                    <ref role="359W_E" to="tpce:f_TIwhg" resolve="ConceptDeclaration" />
-                    <ref role="359W_F" to="tpce:h0Pzm$Y" resolve="implements" />
+                  <node concept="2OqwBi" id="1K976ULvj7t" role="37wK5m">
+                    <node concept="37vLTw" id="1K976ULviQt" role="2Oq$k0">
+                      <ref role="3cqZAo" node="6_mTUEdwajL" resolve="cell" />
+                    </node>
+                    <node concept="liA8E" id="1K976ULvjfq" role="2OqNvi">
+                      <ref role="37wK5l" to="f4zo:~EditorCell.getSRole()" resolve="getSRole" />
+                    </node>
                   </node>
                 </node>
               </node>
@@ -2644,20 +2645,20 @@
                 </node>
               </node>
               <node concept="2OqwBi" id="1v7iNoRbR3" role="3uHU7w">
-                <node concept="2OqwBi" id="1v7iNoRbR4" role="2Oq$k0">
-                  <node concept="37vLTw" id="1v7iNoRbR5" role="2Oq$k0">
-                    <ref role="3cqZAo" node="6_mTUEdwajL" resolve="cell" />
-                  </node>
-                  <node concept="liA8E" id="1v7iNoRbR6" role="2OqNvi">
-                    <ref role="37wK5l" to="f4zo:~EditorCell.getSRole()" resolve="getSRole" />
-                  </node>
-                </node>
                 <node concept="liA8E" id="1v7iNoRbR7" role="2OqNvi">
                   <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
-                  <node concept="359W_D" id="1v7iNoRbR8" role="37wK5m">
-                    <ref role="359W_E" to="tpce:f_TIwhg" resolve="ConceptDeclaration" />
-                    <ref role="359W_F" to="tpce:f_TJDff" resolve="extends" />
+                  <node concept="2OqwBi" id="1K976ULvn9G" role="37wK5m">
+                    <node concept="37vLTw" id="1K976ULvmRr" role="2Oq$k0">
+                      <ref role="3cqZAo" node="6_mTUEdwajL" resolve="cell" />
+                    </node>
+                    <node concept="liA8E" id="1K976ULvniH" role="2OqNvi">
+                      <ref role="37wK5l" to="f4zo:~EditorCell.getSRole()" resolve="getSRole" />
+                    </node>
                   </node>
+                </node>
+                <node concept="359W_D" id="1v7iNoRbR8" role="2Oq$k0">
+                  <ref role="359W_E" to="tpce:f_TIwhg" resolve="ConceptDeclaration" />
+                  <ref role="359W_F" to="tpce:f_TJDff" resolve="extends" />
                 </node>
               </node>
             </node>
@@ -2801,20 +2802,20 @@
                 </node>
               </node>
               <node concept="2OqwBi" id="1v7iNoQLFL" role="3uHU7w">
-                <node concept="2OqwBi" id="1v7iNoQLFM" role="2Oq$k0">
-                  <node concept="37vLTw" id="1v7iNoQLFN" role="2Oq$k0">
-                    <ref role="3cqZAo" node="6_mTUEdwajL" resolve="cell" />
-                  </node>
-                  <node concept="liA8E" id="1v7iNoQLFO" role="2OqNvi">
-                    <ref role="37wK5l" to="f4zo:~EditorCell.getSRole()" resolve="getSRole" />
-                  </node>
-                </node>
                 <node concept="liA8E" id="1v7iNoQLFP" role="2OqNvi">
                   <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
-                  <node concept="359W_D" id="1v7iNoQLFQ" role="37wK5m">
-                    <ref role="359W_E" to="tpce:h0PlHMJ" resolve="InterfaceConceptDeclaration" />
-                    <ref role="359W_F" to="tpce:h0PrDRO" resolve="extends" />
+                  <node concept="2OqwBi" id="1K976ULv$Ot" role="37wK5m">
+                    <node concept="37vLTw" id="1K976ULv$$b" role="2Oq$k0">
+                      <ref role="3cqZAo" node="6_mTUEdwajL" resolve="cell" />
+                    </node>
+                    <node concept="liA8E" id="1K976ULv$VK" role="2OqNvi">
+                      <ref role="37wK5l" to="f4zo:~EditorCell.getSRole()" resolve="getSRole" />
+                    </node>
                   </node>
+                </node>
+                <node concept="359W_D" id="1v7iNoQLFQ" role="2Oq$k0">
+                  <ref role="359W_E" to="tpce:h0PlHMJ" resolve="InterfaceConceptDeclaration" />
+                  <ref role="359W_F" to="tpce:h0PrDRO" resolve="extends" />
                 </node>
               </node>
             </node>

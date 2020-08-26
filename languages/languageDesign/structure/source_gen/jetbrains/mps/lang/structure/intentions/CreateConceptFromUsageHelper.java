@@ -78,7 +78,7 @@ public class CreateConceptFromUsageHelper {
     // created is different from "method!=null", differs in case ex does not execute passed closure 
     boolean created = false;
     final Wrappers._T<SNode> createdConcept = new Wrappers._T<SNode>(null);
-    if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.LinkDeclaration$1p) && cell.isErrorState() && cell.getSRole().equals(LINKS.target$m40F)) {
+    if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.LinkDeclaration$1p) && cell.isErrorState() && LINKS.target$m40F.equals(cell.getSRole())) {
       created = true;
       ex.exec(new _FunctionTypes._void_P0_E0() {
         public void invoke() {
@@ -97,7 +97,7 @@ public class CreateConceptFromUsageHelper {
           createdConcept.value = intfc;
         }
       });
-    } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.ConceptDeclaration$gH) && cell.isErrorState() && cell.getSRole().equals(LINKS.implements$u_P2)) {
+    } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.ConceptDeclaration$gH) && cell.isErrorState() && LINKS.implements$u_P2.equals(cell.getSRole())) {
       // ref concept not yet created, but no reference is set 
       created = true;
       ex.exec(new _Adapters._return_P0_E0_to__void_P0_E0_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
@@ -107,7 +107,7 @@ public class CreateConceptFromUsageHelper {
           return createdConcept.value = intfc;
         }
       }));
-    } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.ConceptDeclaration$gH) && cell.isErrorState() && cell.getSRole().equals(LINKS.extends$_Isg)) {
+    } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.ConceptDeclaration$gH) && cell.isErrorState() && LINKS.extends$_Isg.equals(cell.getSRole())) {
       created = true;
       ex.exec(new _FunctionTypes._void_P0_E0() {
         public void invoke() {
@@ -116,7 +116,7 @@ public class CreateConceptFromUsageHelper {
           createdConcept.value = cncpt;
         }
       });
-    } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.InterfaceConceptDeclaration$CG) && cell.isErrorState() && cell.getSRole().equals(LINKS.extends$nawU)) {
+    } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.InterfaceConceptDeclaration$CG) && cell.isErrorState() && LINKS.extends$nawU.equals(cell.getSRole())) {
       // ref concept not yet created, but no reference is set 
       created = true;
       ex.exec(new _Adapters._return_P0_E0_to__void_P0_E0_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
