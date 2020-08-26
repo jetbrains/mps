@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,13 +69,17 @@ public class ProjectFactory {
           return;
         }
 
-        final String projectFilePath = myOptions.getStorageScheme().equals(StorageScheme.DIRECTORY_BASED)
+        final String projectFilePath = myOptions.getStorageScheme() == StorageScheme.DIRECTORY_BASED
                                        ? myOptions.getProjectPath()
                                        : myOptions.getProjectPath() + File.separator + myOptions.getProjectName() + MPSExtentions.DOT_MPS_PROJECT;
         //MPS-22895 need to run in EDT
         ApplicationManager.getApplication().invokeAndWait(() -> {
           try {
-            myCreatedProject = ProjectManagerEx.getInstanceEx().newProject(myOptions.getProjectName(), projectFilePath, true, false);
+            ApplicationManager.getApplication().runWriteAction(() -> {
+              myCreatedProject = ProjectManagerEx.getInstanceEx().newProject(
+                  myOptions.getProjectName(), projectFilePath,
+                  true, false);
+            });
           } catch (Exception e) {
             throw new RuntimeException(e);
           }

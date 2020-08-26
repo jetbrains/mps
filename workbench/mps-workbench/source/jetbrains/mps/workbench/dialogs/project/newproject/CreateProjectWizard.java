@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,15 @@
 package jetbrains.mps.workbench.dialogs.project.newproject;
 
 import com.intellij.ide.GeneralSettings;
+import com.intellij.ide.JavaUiBundle;
 import com.intellij.ide.impl.ProjectUtil;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CustomShortcutSet;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ProjectManager;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.ui.popup.ListItemDescriptor;
@@ -492,18 +495,21 @@ public final class CreateProjectWizard extends DialogWrapper {
     myOptions.setCreateNewSolution(false);
     myOptions.setStorageScheme(myProjectFormatPanel.isDefault());
 
-    //invoke later is for plugins to be ready
-    ApplicationManager.getApplication().invokeLater(() -> {
+    // Copy/paste from com.intellij.ide.impl.NewProjectUtil#createNewProject(AbstractProjectWizard)
+    String title = JavaUiBundle.message("project.new.wizard.progress.title");
+    Runnable warmUp = () -> ProjectManager.getInstance().getDefaultProject();  // warm-up components
+    boolean proceed = ProgressManager.getInstance().runProcessWithProgressSynchronously(warmUp, title, true, null);
+    if (proceed) {
       try {
         ProjectFactory factory = new ProjectFactory(myOptions);
         Project project = factory.createProject();
         myCurrentTemplateItem.getTemplateFiller().fillProjectWithModules(project.getComponent(MPSProject.class));
-        factory.activate();
+        ApplicationManager.getApplication().executeOnPooledThread(factory::activate);
       } catch (ProjectNotCreatedException e) {
         final String message = e.getMessage() != null ? e.getMessage() : "No message was provided by exception";
         Messages.showErrorDialog(message, "Project Creation Failed");
       }
-    });
+    }
   }
 
   private final class TemplateItem {
