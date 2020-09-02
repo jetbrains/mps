@@ -80,7 +80,7 @@
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
-        <child id="8118189177080264854" name="classes" index="nSUat" />
+        <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="1076505808687" name="jetbrains.mps.baseLanguage.structure.WhileStatement" flags="nn" index="2$JKZl">
@@ -282,7 +282,7 @@
       </concept>
       <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
-        <child id="8276990574886367509" name="finallyBody" index="1zxBo6" />
+        <child id="8276990574886367509" name="finallyClause" index="1zxBo6" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
@@ -7729,13 +7729,8 @@
         <node concept="3clFbJ" id="2v0ve8x$pfW" role="3cqZAp">
           <node concept="3clFbS" id="2v0ve8x$pfX" role="3clFbx">
             <node concept="3cpWs6" id="2v0ve8x$pfY" role="3cqZAp">
-              <node concept="2OqwBi" id="2v0ve8x$pfZ" role="3cqZAk">
-                <node concept="37vLTw" id="2v0ve8x$pg0" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2v0ve8x$pfL" resolve="errorsComponent" />
-                </node>
-                <node concept="liA8E" id="2v0ve8x$pg1" role="2OqNvi">
-                  <ref role="37wK5l" to="wsw7:6se4BTU212x" resolve="checkInspector" />
-                </node>
+              <node concept="3clFbT" id="3Ob1fGfOOsx" role="3cqZAk">
+                <property role="3clFbU" value="true" />
               </node>
             </node>
           </node>
@@ -8001,7 +7996,7 @@
                     <node concept="3oM_SD" id="ATZLwXoa2i" role="1PaTwD">
                       <property role="3oM_SC" value="all" />
                     </node>
-                    <node concept="3oM_SD" id="ATZLwXoa2j" role="1PaTwD">
+                    <node concept="3oM_SD" id="29bbuCXIzAx" role="1PaTwD">
                       <property role="3oM_SC" value="messages" />
                     </node>
                     <node concept="3oM_SD" id="ATZLwXoa2k" role="1PaTwD">
