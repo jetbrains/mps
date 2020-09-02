@@ -56,6 +56,10 @@ public class FieldDeclarationCanBeLocalVariable_Test extends BaseTransformationT
     new TestBody(this).test_ErrorMessagesCheck4914675704512541562();
   }
   @Test
+  public void test_NodeFieldCanBeConvertedIntoCheck1500881288847768704() throws Throwable {
+    new TestBody(this).test_NodeFieldCanBeConvertedIntoCheck1500881288847768704();
+  }
+  @Test
   public void test_NodeTheConditionIsAlwaysCheck2857825852305591095() throws Throwable {
     new TestBody(this).test_NodeTheConditionIsAlwaysCheck2857825852305591095();
   }
@@ -113,6 +117,11 @@ public class FieldDeclarationCanBeLocalVariable_Test extends BaseTransformationT
       SNode operation = getRealNodeById("4914675704512541562");
       new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("3951985765451230872"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6640766779592666289"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("4914675704512547161"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
     }
+    public void test_NodeFieldCanBeConvertedIntoCheck1500881288847768704() throws Exception {
+      SNode nodeToCheck = getRealNodeById("4914675704512555939");
+      SNode operation = getRealNodeById("1500881288847768704");
+      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6640766779592666289"), "Warning: Field can be converted into a local variable", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
+    }
     public void test_NodeTheConditionIsAlwaysCheck2857825852305591095() throws Exception {
       SNode nodeToCheck = getRealNodeById("4914675704512561996");
       SNode operation = getRealNodeById("2857825852305591095");
@@ -121,7 +130,7 @@ public class FieldDeclarationCanBeLocalVariable_Test extends BaseTransformationT
     public void test_ErrorMessagesCheck4914675704512555962() throws Exception {
       SNode nodeToCheck = getRealNodeById("4914675704512555938");
       SNode operation = getRealNodeById("4914675704512555962");
-      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("4914675704512561996"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
+      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(false).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("4914675704512555939"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6640766779592666289"), "Warning: Field can be converted into a local variable", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("4914675704512561996"), MessageStatus.WARNING, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8245314650935561947"), "", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
     }
     public void test_NodeFieldCanBeConvertedIntoCheck6923385624929216447() throws Exception {
       SNode nodeToCheck = getRealNodeById("3951985765451227978");
