@@ -20,7 +20,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root>
     <file name="DataFlowAspectDescriptorImpl.java">
-      <unit at="17,0,176,0" name="jetbrains.mps.baseLanguage.dataFlow.DataFlowAspectDescriptorImpl" />
+      <unit at="17,0,178,0" name="jetbrains.mps.baseLanguage.dataFlow.DataFlowAspectDescriptorImpl" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1206454554507">
@@ -1533,6 +1533,19 @@
       </scope>
       <unit id="1383888600185289441" at="96,0,100,0" name="jetbrains.mps.baseLanguage.dataFlow.RuleEqualsExpression$CONCEPTS" />
       <unit id="1383888600185289441" at="17,0,101,0" name="jetbrains.mps.baseLanguage.dataFlow.RuleEqualsExpression" />
+    </file>
+  </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/1500881288848505965">
+    <file name="SetAccessor_DataFlow.java">
+      <node id="1500881288848505997" at="13,60,14,113" concept="4" />
+      <node id="1500881288848505965" at="18,0,19,0" concept="13" trace="statementList$hO$9" />
+      <node id="1500881288848505965" at="13,0,16,0" concept="8" trace="build#(Ljetbrains/mps/lang/dataFlow/DataFlowBuilderContext;)V" />
+      <scope id="1500881288848505967" at="13,60,14,113" />
+      <scope id="1500881288848505965" at="13,0,16,0">
+        <var name="_context" id="1500881288848505965" />
+      </scope>
+      <unit id="1500881288848505965" at="17,0,20,0" name="jetbrains.mps.baseLanguage.dataFlow.SetAccessor_DataFlow$LINKS" />
+      <unit id="1500881288848505965" at="12,0,21,0" name="jetbrains.mps.baseLanguage.dataFlow.SetAccessor_DataFlow" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/2166452585249271024">
