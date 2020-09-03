@@ -104,7 +104,7 @@ public enum LanguageAspect {
   MIGRATION("migration", BootstrapLanguages.migrationLanguageRef(), LanguageAspect.HELP_CENTER_BASE + "migrations.html");
 
   //TODO must be changed for each major/minor version release
-  public static final String HELP_CENTER_BASE = "https://www.jetbrains.com/help/mps/2020.2/";
+  public static final String HELP_CENTER_BASE = "https://www.jetbrains.com/help/mps/2020.3/";
 
   private String myName;
   private final SModuleReference myMainLang;

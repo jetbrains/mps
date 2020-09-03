@@ -67,7 +67,7 @@
     <mkdir dir="${build.tmp}/default/branding.jar/idea" />
     <echoxml file="${build.tmp}/default/branding.jar/idea/IdeaApplicationInfo.xml">
       <component>
-        <version major="${mpsBootstrapCore.version.major}" minor="${mpsBootstrapCore.version.minor}${mpsBootstrapCore.version.bugfixNr}" eap="false" update-channel="MPS202" />
+        <version major="${mpsBootstrapCore.version.major}" minor="${mpsBootstrapCore.version.minor}${mpsBootstrapCore.version.bugfixNr}" eap="true" update-channel="MPS203EAP" />
         <company name="JetBrains s.r.o." url="https://www.jetbrains.com/?fromIDE" copyrightStart="2009" />
         <build number="${build.number}" date="${date}" />
         <logo url="/splash.png" textcolor="FFFFFF" progressColor="FFFFFF" progressX="117" progressY="280" progressHeight="3" />
@@ -87,7 +87,7 @@
         <support url="https://www.jetbrains.com/support/mps/index.html" />
         <feedback url="https://www.jetbrains.com/feedback/feedback.jsp?product=mps" />
         <whatsnew url="https://www.jetbrains.com/mps/whatsnew/index.html" />
-        <keymap win="https://www.jetbrains.com/help/mps/2020.2/default-keymap-reference.html" mac="https://www.jetbrains.com/help/mps/2020.2/default-keymap-reference.html" />
+        <keymap win="https://www.jetbrains.com/help/mps/2020.3/default-keymap-reference.html" mac="https://www.jetbrains.com/help/mps/2020.3/default-keymap-reference.html" />
         <jetbrains-tv url="https://www.youtube.com/user/JetBrainsTV/search?query=MPS" />
         
       </component>
