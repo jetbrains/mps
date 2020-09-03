@@ -198,6 +198,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           cpb.deprecateProperty(0x308857b584c74e45L, "minor");
           cpb.deprecateProperty(0x3acf8ab06f017071L, "bugfixNr");
           cpb.deprecateProperty(0x308857b584c74e46L, "eap");
+          cpb.deprecateAggregation(0x6e805e55fee09551L, "progressX");
           cpb.deprecateAggregation(0x54c4eb89feb0001cL, "icon32opaque");
           cpb.deprecateAggregation(0x5efec015d9c0dee8L, "iconToolWindow");
           cpb.deprecateAggregation(0x54a6365f080e9d69L, "editorBGUrl");
