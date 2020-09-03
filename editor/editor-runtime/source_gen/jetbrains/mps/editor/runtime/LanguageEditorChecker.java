@@ -146,7 +146,7 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
 
   private boolean runChecks(boolean inspector, LanguageErrorsComponent errorsComponent, TypeCheckingContext context, SNode node, EditorContext editorContext, Cancellable cancellable) {
     if (inspector) {
-      return errorsComponent.checkInspector();
+      return true;
     }
 
     try {

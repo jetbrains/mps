@@ -84,7 +84,6 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
   private boolean myFullCheckCompleted = false;
   private SNode myCurrentNode = null;
   private SModel myModel;
-  private boolean myUpdateInspector = false;
 
   public LanguageErrorsComponent(SModel model) {
     myModel = model;
@@ -274,7 +273,6 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
 
     // traversed the whole root, all invalid nodes should have been removed 
     assert SetSequence.fromSet(myInvalidNodes).isEmpty();
-    myUpdateInspector = true;
     return true;
   }
   private void prepareWorkForCheck() {
@@ -305,13 +303,6 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
     }
   }
 
-  public boolean checkInspector() {
-    if (myUpdateInspector) {
-      myUpdateInspector = false;
-      return true;
-    }
-    return false;
-  }
   public void clear() {
     myFullCheckIterator = null;
     myFullCheckCompleted = false;

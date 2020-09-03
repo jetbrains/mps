@@ -3001,7 +3001,7 @@
                                   </node>
                                   <node concept="2OqwBi" id="nMAdlmy9va" role="37wK5m">
                                     <node concept="37vLTw" id="nMAdlmy9vb" role="2Oq$k0">
-                                      <ref role="3cqZAo" node="LiJMKzcNhN" resolve="moduleDir" />
+                                      <ref role="3cqZAo" node="LiJMKzcNhN" />
                                     </node>
                                     <node concept="liA8E" id="nMAdlmy9vc" role="2OqNvi">
                                       <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
@@ -3097,7 +3097,7 @@
                                             </node>
                                             <node concept="2OqwBi" id="nMAdlmyD3K" role="37wK5m">
                                               <node concept="37vLTw" id="nMAdlmyD3L" role="2Oq$k0">
-                                                <ref role="3cqZAo" node="LiJMKzcpC$" resolve="chosenFile" />
+                                                <ref role="3cqZAo" node="LiJMKzcpC$" />
                                               </node>
                                               <node concept="liA8E" id="nMAdlmyD3M" role="2OqNvi">
                                                 <ref role="37wK5l" to="jlff:~VirtualFile.getName()" resolve="getName" />
@@ -3129,10 +3129,10 @@
                                             <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
                                             <ref role="37wK5l" to="jkm4:~Messages.showYesNoDialog(java.awt.Component,java.lang.String,java.lang.String,javax.swing.Icon)" resolve="showYesNoDialog" />
                                             <node concept="37vLTw" id="3tsZ25DGoi" role="37wK5m">
-                                              <ref role="3cqZAo" node="1nhYb0FOxH9" resolve="button" />
+                                              <ref role="3cqZAo" node="1nhYb0FOxH9" />
                                             </node>
                                             <node concept="37vLTw" id="nMAdlmytuv" role="37wK5m">
-                                              <ref role="3cqZAo" node="nMAdlmytut" resolve="rewriteMessage" />
+                                              <ref role="3cqZAo" node="nMAdlmytut" />
                                             </node>
                                             <node concept="Xl_RD" id="6SE3eil_YI" role="37wK5m">
                                               <property role="Xl_RC" value="Warning" />
@@ -7648,13 +7648,8 @@
         <node concept="3clFbJ" id="2v0ve8x$pfW" role="3cqZAp">
           <node concept="3clFbS" id="2v0ve8x$pfX" role="3clFbx">
             <node concept="3cpWs6" id="2v0ve8x$pfY" role="3cqZAp">
-              <node concept="2OqwBi" id="2v0ve8x$pfZ" role="3cqZAk">
-                <node concept="37vLTw" id="2v0ve8x$pg0" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2v0ve8x$pfL" resolve="errorsComponent" />
-                </node>
-                <node concept="liA8E" id="2v0ve8x$pg1" role="2OqNvi">
-                  <ref role="37wK5l" to="wsw7:6se4BTU212x" resolve="checkInspector" />
-                </node>
+              <node concept="3clFbT" id="3Ob1fGfOOsx" role="3cqZAk">
+                <property role="3clFbU" value="true" />
               </node>
             </node>
           </node>
@@ -7670,7 +7665,7 @@
                 <node concept="3clFbF" id="4VpcCIwXWAI" role="3cqZAp">
                   <node concept="2OqwBi" id="4VpcCIwXWAJ" role="3clFbG">
                     <node concept="37vLTw" id="4VpcCIwXWAK" role="2Oq$k0">
-                      <ref role="3cqZAo" node="2v0ve8x$pfN" resolve="context" />
+                      <ref role="3cqZAo" node="2v0ve8x$pfN" />
                     </node>
                     <node concept="liA8E" id="4VpcCIwXWAL" role="2OqNvi">
                       <ref role="37wK5l" to="u78q:~TypeCheckingContext.setNonTypesystemComputationMode(jetbrains.mps.typesystem.inference.TypeCheckingContext$NonTypesystemComputationMode)" resolve="setNonTypesystemComputationMode" />
@@ -7738,7 +7733,7 @@
                   <node concept="3clFbF" id="4VpcCIwY$4u" role="3cqZAp">
                     <node concept="2OqwBi" id="4VpcCIwY$4v" role="3clFbG">
                       <node concept="37vLTw" id="4VpcCIwY$4w" role="2Oq$k0">
-                        <ref role="3cqZAo" node="2v0ve8x$pfN" resolve="context" />
+                        <ref role="3cqZAo" node="2v0ve8x$pfN" />
                       </node>
                       <node concept="liA8E" id="4VpcCIwY$4x" role="2OqNvi">
                         <ref role="37wK5l" to="u78q:~TypeCheckingContext.setNonTypesystemComputationMode(jetbrains.mps.typesystem.inference.TypeCheckingContext$NonTypesystemComputationMode)" resolve="setNonTypesystemComputationMode" />
@@ -7928,7 +7923,7 @@
                     <node concept="3oM_SD" id="ATZLwXoa2i" role="1PaTwD">
                       <property role="3oM_SC" value="all" />
                     </node>
-                    <node concept="3oM_SD" id="ATZLwXoa2j" role="1PaTwD">
+                    <node concept="3oM_SD" id="29bbuCXIzAx" role="1PaTwD">
                       <property role="3oM_SC" value="messages" />
                     </node>
                     <node concept="3oM_SD" id="ATZLwXoa2k" role="1PaTwD">
