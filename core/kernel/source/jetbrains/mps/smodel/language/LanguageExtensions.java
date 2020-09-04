@@ -21,13 +21,13 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import java.util.function.Consumer;
 
 /**
- * Lnaguage runtime needs to know what modules contribute extensions to aspects of the language. MPS used to rely on 'extends' relation
+ * Language runtime needs to know what modules contribute extensions to aspects of the language. MPS used to rely on 'extends' relation
  * between language modules to find out possible contributors, which is not perfect - misguiding ('extending' language is not
  * necessarily the same as 'contributing' language) and way too coarse (e.g. editor contributions are not necessarily relate to extends between concepts).
- * Besides, given the fact all MPS languages extend j.m.lang.core, aspects of any language are treated as 'contrubuting' extensions to concepts of
+ * Besides, given the fact all MPS languages extend j.m.lang.core, aspects of any language are treated as 'contributing' extensions to concepts of
  * j.m.lang.core (e.g. INamedConcept).
  *
- * Implemtentation of this interface is supplied to a LanguageRuntime by MPS runtime code; it's not expected to be implemented by clients.
+ * Implementation of this interface is supplied to a LanguageRuntime by MPS runtime code; it's not expected to be implemented by clients.
  *
  * Perhaps, "ModuleRuntimeExtensions" would be better name
  *

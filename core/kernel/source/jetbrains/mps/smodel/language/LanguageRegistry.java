@@ -466,11 +466,14 @@ public class LanguageRegistry implements CoreComponent, DeployListener {
       notifyUnload(languagesToUnload);
       monitor.advance(1);
 
+      Set<SLanguageId> extensionTargets = new HashSet<>();
       for (LanguageRuntime languageRuntime : languagesToUnload) {
-        myExtensionRegistry.clearContributionsOf(languageRuntime);
+        // XXX why do I use map at LER and don't store data right inside LR instance?
+        myExtensionRegistry.clearContributionsOf(languageRuntime, extensionTargets);
         languageRuntime.dispose();
         myLanguagesById.remove(languageRuntime.getId());
       }
+      notifyExtensionsChanged(extensionTargets);
       reinitialize();
     } finally {
       myRuntimeInstanceAccess.writeLock().unlock();
@@ -503,11 +506,17 @@ public class LanguageRegistry implements CoreComponent, DeployListener {
         }
       }
       reinitialize();
+      Set<SLanguageId> extensionTargets = new HashSet<>();
       // perhaps, could be part of LangRuntime.initialize(LangReg), if I expose (package-local) LangExtReg from here
       for (LanguageRuntime lr : loadedRuntimes) {
-        final LanguageExtensions languageExtensions = myExtensionRegistry.forContributor(this, lr);
+        final LanguageExtensions languageExtensions = myExtensionRegistry.forContributor(this, lr, extensionTargets);
         lr.contributeExtensions(languageExtensions);
       }
+      // note, extensionTargets is filled the moment LR.contributeExtensions() works, not inside LER.forContributor().
+      //
+      // if I improve aspects/extensions for any module, would need to move this down, when all the modules get the chance to initialise
+      // at the moment, it's only languages, that's why I do it right after I handled all the languages
+      notifyExtensionsChanged(extensionTargets);
       monitor.advance(1);
 
       monitor.step("Generator Runtime");
@@ -570,6 +579,20 @@ public class LanguageRegistry implements CoreComponent, DeployListener {
   private void reinitialize() {
     myLanguagesById.values().forEach(LanguageRuntime::deinitialize);
     myLanguagesById.values().forEach(languageRuntime -> languageRuntime.initialize(this));
+  }
+
+  private void notifyExtensionsChanged(Set<SLanguageId> extensionTargets) {
+    // in case any existing/new language has cached extensions for its aspects, let them know there might be new one
+    for (SLanguageId lid : extensionTargets) {
+      final LanguageRuntime extTargetRT = myLanguagesById.get(lid);
+      if (extTargetRT != null) {
+        // assume target language module could be present for CL but LR failed to instantiate, see
+        // comments inside LER.forContributor.
+        // Another case is when target language has been disposed along with the contributor, we don't care to notify
+        // disposed RT about the change, it is going to be disposed anyway
+        extTargetRT.languageExtensionsChanged();
+      }
+    }
   }
 
   /*package*/ final LanguageExtensionRegistry getExtensionRegistry() {

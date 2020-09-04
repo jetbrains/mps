@@ -18,6 +18,7 @@ package jetbrains.mps.smodel.language;
 import jetbrains.mps.smodel.BootstrapLanguages;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.smodel.runtime.AspectExtensionsAware;
 import jetbrains.mps.smodel.runtime.ILanguageAspect;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -281,6 +282,13 @@ public abstract class LanguageRuntime {
     myLanguageRegistry.getExtensionRegistry().forEachContributor(this, aspectClass, visitor);
   }
 
+  void languageExtensionsChanged() {
+    myAspectDescriptors.forEach((k, a) -> {
+      if (a instanceof AspectExtensionsAware) {
+        ((AspectExtensionsAware) a).extensionsChanged();
+      }
+    });
+  }
 
   void dispose() {
     myAspectDescriptors.values().forEach(ILanguageAspect::dispose);
