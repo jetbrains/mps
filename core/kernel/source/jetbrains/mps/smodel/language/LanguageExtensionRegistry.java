@@ -56,11 +56,12 @@ class LanguageExtensionRegistry {
     targets.add(targetId);
   }
 
-  /*package*/ void clearContributionsOf(LanguageRuntime contributor) {
+  /*package*/ void clearContributionsOf(LanguageRuntime contributor, Set<SLanguageId> extensionTargets) {
     Set<SLanguageId> extended  = myContributorsMap.get(contributor.getId());
     if (extended == null) {
       return;
     }
+    extensionTargets.addAll(extended);
     for (SLanguageId lid : extended) {
       ExtensionRecord rec = myExtensionRecords.get(lid);
       if (rec == null) {
@@ -107,18 +108,22 @@ class LanguageExtensionRegistry {
     extRecords.forEach(aspectClass, visitor);
   }
 
-  /*package*/ LanguageExtensions forContributor(@NotNull final LanguageRegistry languageRegistry, @NotNull final LanguageRuntime contributorRuntime) {
+  /*package*/ LanguageExtensions forContributor(@NotNull final LanguageRegistry languageRegistry, @NotNull final LanguageRuntime contributorRuntime,
+                                                @NotNull final Set<SLanguageId> extensionTargets) {
     return new LanguageExtensions() {
       @Override
       public void recordContribution(SLanguage targetLanguage, Class<? extends ILanguageAspect> aspectClass) {
         // the moment LR gets a chance to tell what it contributes to, its dependant modules already present
         // however, module presence and CL availability don't guarantee us LanguageRuntime class was loaded successfully (MPS-31873).
-        LanguageExtensionRegistry.this.record(MetaIdHelper.getLanguage(targetLanguage), aspectClass, contributorRuntime);
+        final SLanguageId langId = MetaIdHelper.getLanguage(targetLanguage);
+        extensionTargets.add(langId);
+        LanguageExtensionRegistry.this.record(langId, aspectClass, contributorRuntime);
       }
 
       @Override
       public void recordContribution(String targetLanguageName, String targetLanguageId, Class<? extends ILanguageAspect> aspectClass) {
         final SLanguageId langId = SLanguageId.deserialize(targetLanguageId);
+        extensionTargets.add(langId);
         LanguageExtensionRegistry.this.record(langId, aspectClass, contributorRuntime);
       }
     };

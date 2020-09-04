@@ -110,7 +110,7 @@ abstract class EditorAspectContributionsCache<KeyT, ContributionT> {
     return result;
   }
 
-  private static <KeyT, ValueT> void putIfNotEmpty(Map<KeyT, Collection<ValueT>> map, KeyT key, Collection<ValueT> values) {
+  private static <MK, MV> void putIfNotEmpty(Map<MK, Collection<MV>> map, MK key, Collection<MV> values) {
     if (!values.isEmpty()) {
       map.put(key, values);
     }
