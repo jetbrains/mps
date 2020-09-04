@@ -234,8 +234,10 @@ public class TransientModelsModule extends AbstractModule implements TransientSM
    * @return simple integer id unique within this module, with value from MPS reserved range {@link IntegerSModelId}
    */
   public IntegerSModelId nextModelId(int idHint) {
-    int prefix = 0x100 + myCounter.getAndIncrement();
-    return new IntegerSModelId((prefix << 20) | (idHint & 0x000FFFFF));
+//    int prefix = 0x100 + myCounter.getAndIncrement();
+//    return new IntegerSModelId((prefix << 20) | (idHint & 0x000FFFFF));
+    // next alternative gives almost complete integer range (except some ~270M)
+    return new IntegerSModelId(0x10000000 + myCounter.incrementAndGet());
   }
 
   /**

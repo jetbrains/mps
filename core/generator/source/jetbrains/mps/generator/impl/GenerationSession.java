@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -673,11 +673,11 @@ class GenerationSession {
 
   private SModelReference createTransientModelReference(int majorStep, int minorStep, String stereotype) {
     // 3 least-significant hex digits for minor, then 2 for major, total 5 (expect myMajorStep to be less than 256)
-    int idHint = ((majorStep+1) << 12) | minorStep;
-    assert idHint < 1<<20 : "got only 5 hex digits reserved for the model identity";
+//    int idHint = ((majorStep+1) << 12) | minorStep;
+//    assert idHint < 1<<20 : "got only 5 hex digits reserved for the model identity";
     TransientModelsModule module = mySessionContext.getModule();
     final SModelName transientModelName = myOriginalInputModel.getName().withStereotype(stereotype);
-    IntegerSModelId id = module.nextModelId(idHint);
+    IntegerSModelId id = module.nextModelId(0/*idHint*/);
     return myControlEnv.getPersistenceFacade().createModelReference(module.getModuleReference(), id, transientModelName);
   }
 
