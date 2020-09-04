@@ -362,6 +362,7 @@
         <child id="1081773367580" name="leftExpression" index="3uHU7B" />
       </concept>
       <concept id="1073239437375" name="jetbrains.mps.baseLanguage.structure.NotEqualsExpression" flags="nn" index="3y3z36" />
+      <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
     <language id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions">
       <concept id="767145758118872830" name="jetbrains.mps.lang.actions.structure.NF_Link_SetNewChildOperation" flags="nn" index="2DeJnY" />
@@ -2855,15 +2856,50 @@
             <node concept="3F1sOY" id="5VYK1npI6QN" role="3EZMnx">
               <ref role="1NtTu8" to="kdzh:5VYK1npI0o$" resolve="progressColor" />
             </node>
-            <node concept="3F0ifn" id="6U0n_nYS9mq" role="3EZMnx">
-              <property role="3F0ifm" value="progress X coordinate" />
-              <ref role="1k5W1q" to="o2va:hwW5xkg" resolve="keyword" />
-              <node concept="pVoyu" id="6U0n_nYS9mF" role="3F10Kt">
+            <node concept="3EZMnI" id="6l6Dd6v_1jb" role="3EZMnx">
+              <node concept="VPM3Z" id="6l6Dd6v_1jd" role="3F10Kt" />
+              <node concept="2iRfu4" id="6l6Dd6v_1jg" role="2iSdaV" />
+              <node concept="pVoyu" id="6l6Dd6v_1jB" role="3F10Kt">
                 <property role="VOm3f" value="true" />
               </node>
-            </node>
-            <node concept="3F1sOY" id="6U0n_nYS9mX" role="3EZMnx">
-              <ref role="1NtTu8" to="kdzh:6U0n_nYS9lh" resolve="progressX" />
+              <node concept="3F0ifn" id="6U0n_nYS9mq" role="3EZMnx">
+                <property role="3F0ifm" value="progress X coordinate" />
+                <ref role="1k5W1q" to="o2va:hwW5xkg" resolve="keyword" />
+              </node>
+              <node concept="3F1sOY" id="6U0n_nYS9mX" role="3EZMnx">
+                <ref role="1NtTu8" to="kdzh:6U0n_nYS9lh" resolve="progressX" />
+              </node>
+              <node concept="pkWqt" id="6l6Dd6v_1kt" role="pqm2j">
+                <node concept="3clFbS" id="6l6Dd6v_1ku" role="2VODD2">
+                  <node concept="3clFbF" id="6l6Dd6v_1oo" role="3cqZAp">
+                    <node concept="1Wc70l" id="6l6Dd6vAxMm" role="3clFbG">
+                      <node concept="2OqwBi" id="6l6Dd6vA_5C" role="3uHU7w">
+                        <node concept="2OqwBi" id="6l6Dd6vAyBP" role="2Oq$k0">
+                          <node concept="2OqwBi" id="6l6Dd6vAybZ" role="2Oq$k0">
+                            <node concept="pncrf" id="6l6Dd6vAxWM" role="2Oq$k0" />
+                            <node concept="3TrEf2" id="6l6Dd6vAyu7" role="2OqNvi">
+                              <ref role="3Tt5mk" to="kdzh:6U0n_nYS9lh" resolve="progressX" />
+                            </node>
+                          </node>
+                          <node concept="3Tsc0h" id="6l6Dd6vAz6c" role="2OqNvi">
+                            <ref role="3TtcxE" to="3ior:4gdvEeQzbDb" resolve="parts" />
+                          </node>
+                        </node>
+                        <node concept="3GX2aA" id="6l6Dd6vACyt" role="2OqNvi" />
+                      </node>
+                      <node concept="2OqwBi" id="6l6Dd6v_1YZ" role="3uHU7B">
+                        <node concept="2OqwBi" id="6l6Dd6v_1Bm" role="2Oq$k0">
+                          <node concept="pncrf" id="6l6Dd6v_1on" role="2Oq$k0" />
+                          <node concept="3TrEf2" id="6l6Dd6v_1Px" role="2OqNvi">
+                            <ref role="3Tt5mk" to="kdzh:6U0n_nYS9lh" resolve="progressX" />
+                          </node>
+                        </node>
+                        <node concept="3x8VRR" id="6l6Dd6v_2dd" role="2OqNvi" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
             </node>
             <node concept="3F0ifn" id="5VYK1npI6Rx" role="3EZMnx">
               <property role="3F0ifm" value="progress Y coordinate" />

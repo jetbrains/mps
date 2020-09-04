@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,8 @@
  */
 package jetbrains.mps.intentions;
 
-import com.intellij.facet.ModifiableFacetModel.Listener;
 import com.intellij.openapi.options.Configurable;
 import com.intellij.openapi.options.Configurable.Composite;
-import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.ui.CheckboxTree;
 import com.intellij.ui.CheckboxTree.CheckboxTreeCellRenderer;
 import com.intellij.ui.CheckboxTreeBase.CheckPolicy;
@@ -41,23 +39,15 @@ import javax.swing.JPanel;
 import javax.swing.JTree;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 
 public class IntentionSettingsConfigurable implements Configurable, Composite {
-  private IntentionsManager myIntentionsManager;
 
   private CheckboxTree myTree;
-  private Map<String, LanguageTreeNode> myLanguageTreeNodes = new HashMap<>();
-
-  public IntentionSettingsConfigurable(IntentionsManager intentionsManager) {
-    myIntentionsManager = intentionsManager;
-  }
+  private final Map<String, LanguageTreeNode> myLanguageTreeNodes = new HashMap<>();
 
   @Nls
   @Override
@@ -92,7 +82,7 @@ public class IntentionSettingsConfigurable implements Configurable, Composite {
   }
 
   private void initCheckBoxes() {
-    Map<LanguageRuntime, Collection<IntentionFactory>> allIntentionFactories = myIntentionsManager.getAllIntentionFactories();
+    Map<LanguageRuntime, Collection<IntentionFactory>> allIntentionFactories = IntentionsManager.getInstance().getAllIntentionFactories();
     List<LanguageRuntime> runtimes = new ArrayList<>(allIntentionFactories.keySet());
     runtimes.sort((LanguageRuntime l1, LanguageRuntime l2) -> StringUtil.compare(l1.getNamespace(), l2.getNamespace()));
     for (LanguageRuntime runtime : runtimes) {
@@ -152,7 +142,7 @@ public class IntentionSettingsConfigurable implements Configurable, Composite {
 
   private class LanguageTreeNode extends CheckedTreeNode {
 
-    public LanguageTreeNode(final String languageFqName) {
+    LanguageTreeNode(final String languageFqName) {
       super(languageFqName);
     }
 
@@ -165,7 +155,7 @@ public class IntentionSettingsConfigurable implements Configurable, Composite {
   private class IntentionTreeNode extends CheckedTreeNode {
     private final String myPersistentStateKey;
 
-    public IntentionTreeNode(final IntentionDescriptor intentionDescriptor) {
+    IntentionTreeNode(final IntentionDescriptor intentionDescriptor) {
       super(intentionDescriptor);
       myPersistentStateKey = intentionDescriptor.getPersistentStateKey();
     }
@@ -176,15 +166,15 @@ public class IntentionSettingsConfigurable implements Configurable, Composite {
     }
 
     private boolean isModified() {
-      return myIntentionsManager.isIntentionDisabled(myPersistentStateKey) == isChecked();
+      return IntentionsManager.getInstance().isIntentionDisabled(myPersistentStateKey) == isChecked();
     }
 
     private void apply() {
-      myIntentionsManager.setIntentionState(myPersistentStateKey, !isChecked());
+      IntentionsManager.getInstance().setIntentionState(myPersistentStateKey, !isChecked());
     }
 
     private void reset() {
-      setChecked(!myIntentionsManager.isIntentionDisabled(myPersistentStateKey));
+      setChecked(!IntentionsManager.getInstance().isIntentionDisabled(myPersistentStateKey));
     }
   }
 
