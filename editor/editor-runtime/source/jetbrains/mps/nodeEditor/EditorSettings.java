@@ -476,6 +476,7 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
       indentSize = myState.indentSize;
       verticalBound = myState.verticalBound;
       autoQuickFix = myState.autoQuickFix;
+      completionStyling = myState.completionStyling;
       showPlain = myState.showPlain;
       showGrayed = myState.showGrayed;
       show = myState.show;
@@ -525,6 +526,9 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
       if (autoQuickFix != myState.autoQuickFix) {
         return false;
       }
+      if (completionStyling != myState.completionStyling) {
+        return false;
+      }
       if (showPlain != myState.showPlain) {
         return false;
       }
@@ -562,6 +566,7 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
       result = 31 * result + indentSize;
       result = 31 * result + verticalBound;
       result = 31 * result + (autoQuickFix ? 1 : 0);
+      result = 31 * result + (completionStyling ? 1 : 0);
       result = 31 * result + (showPlain ? 1 : 0);
       result = 31 * result + (showGrayed ? 1 : 0);
       result = 31 * result + (show ? 1 : 0);

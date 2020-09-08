@@ -1265,6 +1265,7 @@
     <editorActionHandler action="EditorEscape" implementationClass="com.intellij.refactoring.changeSignature.inplace.EscapeHandler" id="changeSignatureEscape" order="before hide-search"/>
 
     <daemon.tooltipActionProvider order="last" id="defaultProvider" implementation="com.intellij.codeInsight.daemon.impl.DaemonTooltipActionProvider" />
+    -->
 
     <schemeExporter
         name="IntelliJ IDEA code style XML"
@@ -1295,6 +1296,7 @@
         schemeClass="com.intellij.codeInspection.ex.InspectionProfileModifiableModel"
         implementationClass="com.intellij.profile.codeInspection.ui.InspectionProfileImporter"/>
 
+    <!--
     <nonProjectFileWritingAccessExtension implementation="com.intellij.ide.actions.EditCustomPropertiesAction$AccessExtension"/>
     <nonProjectFileWritingAccessExtension implementation="com.intellij.ide.actions.EditCustomVmOptionsAction$AccessExtension"/>
     <lineIndentProvider

@@ -25,10 +25,10 @@ import com.intellij.openapi.Disposable;
 import com.intellij.openapi.vfs.newvfs.impl.VfsRootAccess;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.util.Disposer;
+import com.intellij.openapi.application.Application;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.project.ProjectManager;
-import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ModalityState;
 import jetbrains.mps.library.LibraryInitializer;
 import java.util.Collections;
@@ -226,7 +226,8 @@ public final class IdeaEnvironment extends EnvironmentBase {
 
   @Override
   public void doDispose() {
-    ApplicationManager.getApplication().invokeAndWait(new Runnable() {
+    final Application application = ApplicationManager.getApplication();
+    application.invokeAndWait(new Runnable() {
       @Override
       public void run() {
         List<Project> openedProjects = new ArrayList<Project>(ProjectManager.getInstance().getOpenedProjects());
@@ -238,21 +239,18 @@ public final class IdeaEnvironment extends EnvironmentBase {
             // TODO: find way to put MPSProject#dispose() under writeAction 
             project.dispose();
           } else {
-            ApplicationManager.getApplication().runWriteAction(new Runnable() {
+            application.runWriteAction(new Runnable() {
               public void run() {
                 project.dispose();
               }
             });
           }
         }
-        final Application application = ApplicationManager.getApplication();
         application.runWriteAction(new Runnable() {
           public void run() {
             // for IdeaTestApplication case (myUnitTestMode == true) dispose() eventually clears DTA.ourInstance field 
             if (myIdeaApplication instanceof Disposable) {
               Disposer.dispose((Disposable) myIdeaApplication);
-            } else if (myIdeaApplication instanceof TestApplicationManager) {
-              ((TestApplicationManager) myIdeaApplication).dispose();
             }
             myIdeaApplication = null;
           }
