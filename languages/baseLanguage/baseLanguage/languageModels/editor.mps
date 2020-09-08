@@ -13821,6 +13821,43 @@
       </node>
       <node concept="l2Vlx" id="i0Dx7Mr" role="2iSdaV" />
     </node>
+    <node concept="3EZMnI" id="6buBd$3SKxR" role="6VMZX">
+      <node concept="l2Vlx" id="6buBd$3SKxS" role="2iSdaV" />
+      <node concept="3EZMnI" id="6buBd$3SKxT" role="3EZMnx">
+        <node concept="ljvvj" id="6buBd$3SKxU" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="2iRfu4" id="6buBd$3SKxV" role="2iSdaV" />
+        <node concept="3F0ifn" id="6buBd$3SKxW" role="3EZMnx">
+          <property role="3F0ifm" value="package" />
+        </node>
+        <node concept="3F0A7n" id="6buBd$3SKxX" role="3EZMnx">
+          <property role="1$x2rV" value="&lt;qualified model name&gt;" />
+          <property role="1O74Pk" value="true" />
+          <ref role="1NtTu8" to="tpee:2qY3fqbSpPD" resolve="packageName" />
+        </node>
+        <node concept="pkWqt" id="6buBd$3SKxY" role="pqm2j">
+          <node concept="3clFbS" id="6buBd$3SKxZ" role="2VODD2">
+            <node concept="3clFbF" id="6buBd$3SKy0" role="3cqZAp">
+              <node concept="3fqX7Q" id="6buBd$3SKy1" role="3clFbG">
+                <node concept="2OqwBi" id="6buBd$3SKy2" role="3fr31v">
+                  <node concept="pncrf" id="6buBd$3SKy3" role="2Oq$k0" />
+                  <node concept="2qgKlT" id="6buBd$3SKy4" role="2OqNvi">
+                    <ref role="37wK5l" to="tpek:sWroEc0xXl" resolve="isInner" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="PMmxH" id="6buBd$3SKy5" role="3EZMnx">
+        <ref role="PMmxG" to="tpco:1GOfCi7TDXl" resolve="VirtualPackage" />
+      </node>
+      <node concept="VPM3Z" id="6buBd$3SKy6" role="3F10Kt">
+        <property role="VOm3f" value="false" />
+      </node>
+    </node>
   </node>
   <node concept="24kQdi" id="hiACDOY">
     <property role="3GE5qa" value="classifiers.members" />
