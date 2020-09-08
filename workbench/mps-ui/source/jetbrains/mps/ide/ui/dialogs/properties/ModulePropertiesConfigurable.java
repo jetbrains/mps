@@ -88,6 +88,7 @@ import jetbrains.mps.ide.ui.finders.LanguageUsagesFinder;
 import jetbrains.mps.ide.ui.finders.ModelUsagesFinder;
 import jetbrains.mps.ide.ui.finders.ModuleUsagesFinder;
 import jetbrains.mps.lang.migration.runtime.base.VersionFixer;
+import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.MPSProject;
@@ -1607,6 +1608,14 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         if (myFacet == null) {
           final FacetsRegistry facetRegistry = myMPSProject.getComponent(FacetsRegistry.class);
           myFacet = facetRegistry.getFacetFactory(myFacetType).create(myModule);
+          // Give the new facet instance chance to initialize itself with defaults. This doesn't look nice,
+          // but there's no general contract what's initialization sequence for a facet is.
+          // Alternatives are: (1) to initialize facet defaults inside factory/cons, which is not that good, too
+          // as it would happen for regular facets that would get populated later with subsequent load(properMemento) call;
+          // (2) not to use Facet instance to represent a tab but rather ModuleFacetDescriptor (the code that adds facet in apply
+          // goes from Facet instance through MFD anyway). Latter change is far greater and would expose memento keys to UI
+          // (now FacetTab could use typed access of Facet instance), which is not perfect either.
+          myFacet.load(new MementoImpl());
         }
         if (myFacetTab == null) {
           myFacetTab = myFacetTabsPersistence.getFacetTab(myFacet);
