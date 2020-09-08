@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -70,6 +70,16 @@ public class SModelNodeListeners {
 
       @Override
       public void modelReplaced(SModel model) {
+        refreshAffectedTreeNodes(model);
+      }
+
+      @Override
+      public void modelLoaded(SModel model, boolean partially) {
+        refreshAffectedTreeNodes(model);
+      }
+
+      @Override
+      public void modelUnloaded(SModel model) {
         refreshAffectedTreeNodes(model);
       }
     };

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,24 +24,30 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class MessageCollectProcessor<T extends ReportItem> implements Processor<T>, Consumer<T> {
-  private List<String> myWarnings = new ArrayList<>(1);
-  private List<String> myErrors = new ArrayList<>(1);
-  private final boolean myCollectWarnings;
+  private List<String> myWarnings = new ArrayList<>(4);
+  private List<String> myErrors = new ArrayList<>(4);
+  private List<String> myInfos = new ArrayList<>(4);
+  private final boolean myCollectNonErrors;
 
   public MessageCollectProcessor() {
     this(true);
   }
 
-  public MessageCollectProcessor(boolean collectWarnings) {
-    myCollectWarnings = collectWarnings;
+  public MessageCollectProcessor(boolean collectWarningsAndInfos) {
+    myCollectNonErrors = collectWarningsAndInfos;
   }
 
   @Override
   public boolean process(T problem) {
     if (problem.getSeverity() == MessageStatus.ERROR) {
       myErrors.add(formatMessage(problem));
-    } else if (myCollectWarnings){
+    } else if (!myCollectNonErrors) {
+      return true;
+    }
+    if (problem.getSeverity() == MessageStatus.WARNING) {
       myWarnings.add(formatMessage(problem));
+    } else {
+      myInfos.add(formatMessage(problem));
     }
     return true;
   }
@@ -53,6 +59,10 @@ public class MessageCollectProcessor<T extends ReportItem> implements Processor<
 
   protected String formatMessage(T problem) {
     return problem.getMessage();
+  }
+
+  public List<String> getInfos() {
+    return myInfos;
   }
 
   public List<String> getWarnings() {
