@@ -407,6 +407,11 @@ public final class ModulesMiner {
       IFile sourceDescriptorFile = getSourceDescriptorFile(file, deploymentDescriptor);
       if (sourceDescriptorFile != null) {
         result = loadSourceModuleDescriptor(sourceDescriptorFile);
+        // XXX it's tempting to strip off GeneratorDescriptor out of LD when we've read language's DD and its source MD (which likely
+        // lists generator module(s) that were part of the language source module. However, I refrain from doing it right away
+        // as there's (likely) code that discovers language's generators by looking into its source MD (e.g. Language.getDescriptor().getGenerators())
+        // and I don't want this ruined now.
+        //
         if (DeploymentDescriptor.TYPE_GENERATOR.equals(deploymentDescriptor.getType()) && result instanceof LanguageDescriptor) {
           // source module keeps generators as part of a language (the only possible layout for the time being)
           for (GeneratorDescriptor gd : ((LanguageDescriptor) result).getGenerators()) {

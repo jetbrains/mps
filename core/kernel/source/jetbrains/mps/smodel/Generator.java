@@ -130,6 +130,7 @@ public class Generator extends ReloadableModuleBase {
     if (false == moduleDescriptor instanceof GeneratorDescriptor) {
       return;
     }
+    final GeneratorDescriptor oldGD = myGeneratorDescriptor;
     final GeneratorDescriptor generatorDescriptor = (GeneratorDescriptor) moduleDescriptor;
     myGeneratorDescriptor = generatorDescriptor;
     if (generatorDescriptor.isStandaloneModule()) {
@@ -141,7 +142,7 @@ public class Generator extends ReloadableModuleBase {
       return;
     }
     LanguageDescriptor languageDescriptor = mySourceLanguage.getModuleDescriptor();
-    int index = languageDescriptor.getGenerators().indexOf(getModuleDescriptor());
+    int index = languageDescriptor.getGenerators().indexOf(oldGD);
     if (index != -1) {
       languageDescriptor.getGenerators().remove(index);
       languageDescriptor.getGenerators().add(index, generatorDescriptor);
