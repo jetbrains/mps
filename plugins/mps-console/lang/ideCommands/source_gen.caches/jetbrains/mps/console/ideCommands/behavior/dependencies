@@ -577,7 +577,6 @@
     <classNode dependClassName="java.util.HashSet" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.function.Consumer" />
-    <classNode dependClassName="jetbrains.mps.console.ideCommands.behavior.ModelReference__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.console.ideCommands.util.PartitioningHelper" />
     <classNode dependClassName="jetbrains.mps.console.tool.ConsoleContext" />
     <classNode dependClassName="jetbrains.mps.console.tool.ConsoleStream" />

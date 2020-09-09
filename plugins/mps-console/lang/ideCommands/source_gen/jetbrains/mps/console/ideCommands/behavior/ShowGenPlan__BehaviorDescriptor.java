@@ -56,12 +56,7 @@ public final class ShowGenPlan__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static void doExecute_id2SpVAIqougW(@NotNull SNode __thisNode__, ConsoleContext context, final ConsoleStream console) {
     SRepository repo = context.getProject().getRepository();
-    final SModel model;
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.targetModel$AZJC) != null)) {
-      model = ModelIdentity__BehaviorDescriptor.toModelReference_id1Bs_61$mvvu.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.targetModel$AZJC)).resolve(repo);
-    } else {
-      model = ModelReference__BehaviorDescriptor.getModel_id67MRmR$z8Z2.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.targetModelOld$vCw2), repo);
-    }
+    final SModel model = ((SLinkOperations.getTarget(__thisNode__, LINKS.targetModel$AZJC) != null) ? ModelIdentity__BehaviorDescriptor.toModelReference_id1Bs_61$mvvu.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.targetModel$AZJC)).resolve(repo) : null);
     if (model == null) {
       return;
     }
@@ -170,7 +165,6 @@ public final class ShowGenPlan__BehaviorDescriptor extends BaseBHDescriptor {
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink targetModel$AZJC = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, 0x70ee8fac615b4f33L, "targetModel");
-    /*package*/ static final SContainmentLink targetModelOld$vCw2 = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x61f2dd6de47f85e4L, 0x61f2dd6de47f867aL, "targetModelOld");
     /*package*/ static final SContainmentLink target$IMmQ = MetaAdapterFactory.getContainmentLink(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x72ed699ef9552c28L, 0x72ed699ef9552c2dL, "target");
   }
 
