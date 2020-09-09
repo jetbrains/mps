@@ -20,6 +20,7 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.modelapi.behavior.ModelIdentity__BehaviorDescriptor;
+import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.ide.messages.MessagesViewTool;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.generator.GenPlanExtractor;
@@ -60,6 +61,8 @@ public final class ShowGenPlan__BehaviorDescriptor extends BaseBHDescriptor {
     if (model == null) {
       return;
     }
+
+    final LanguageRegistry languageRegistry = context.getProject().getComponent(LanguageRegistry.class);
 
     MessagesViewTool messagesView = MessagesViewTool.getInstance(context.getProject());
 
@@ -105,7 +108,7 @@ public final class ShowGenPlan__BehaviorDescriptor extends BaseBHDescriptor {
     helper.show(gp);
     EngagedGeneratorCollector egc = new EngagedGeneratorCollector(model, null);
     egc.getGenerators();
-    helper.printLanguages(egc.getDirectlyUsedLanguages(), gp.getGenerators());
+    helper.printLanguages(languageRegistry, egc.getDirectlyUsedLanguages(), gp.getGenerators());
     final ArrayList<String> trace = new ArrayList<String>();
     egc.dump(new Consumer<String>() {
       public void accept(String s) {

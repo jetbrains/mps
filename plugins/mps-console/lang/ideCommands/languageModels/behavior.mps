@@ -44,6 +44,7 @@
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="kz9k" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.navigation(MPS.Editor/)" />
     <import index="dvox" ref="r:9dfd3567-3b1f-4edb-85a0-3981ca2bfd8c(jetbrains.mps.lang.modelapi.structure)" />
+    <import index="vndm" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.language(MPS.Core/)" />
     <import index="eynw" ref="r:359b1d2b-77c4-46df-9bf2-b25cbea32254(jetbrains.mps.console.base.structure)" implicit="true" />
     <import index="jkm4" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui(MPS.IDEA/)" implicit="true" />
   </imports>
@@ -2081,6 +2082,32 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbH" id="UFnFoNtM2s" role="3cqZAp" />
+        <node concept="3cpWs8" id="UFnFoNtRbM" role="3cqZAp">
+          <node concept="3cpWsn" id="UFnFoNtRbN" role="3cpWs9">
+            <property role="TrG5h" value="languageRegistry" />
+            <property role="3TUv4t" value="true" />
+            <node concept="3uibUv" id="UFnFoNtR8w" role="1tU5fm">
+              <ref role="3uigEE" to="vndm:~LanguageRegistry" resolve="LanguageRegistry" />
+            </node>
+            <node concept="2OqwBi" id="UFnFoNtRbO" role="33vP2m">
+              <node concept="2OqwBi" id="UFnFoNtRbP" role="2Oq$k0">
+                <node concept="37vLTw" id="UFnFoNtRbQ" role="2Oq$k0">
+                  <ref role="3cqZAo" node="67MRmR$wIVQ" resolve="context" />
+                </node>
+                <node concept="liA8E" id="UFnFoNtRbR" role="2OqNvi">
+                  <ref role="37wK5l" to="qgo0:3MPHfSuPT3Y" resolve="getProject" />
+                </node>
+              </node>
+              <node concept="liA8E" id="UFnFoNtRbS" role="2OqNvi">
+                <ref role="37wK5l" to="z1c3:~Project.getComponent(java.lang.Class)" resolve="getComponent" />
+                <node concept="3VsKOn" id="UFnFoNtRbT" role="37wK5m">
+                  <ref role="3VsUkX" to="vndm:~LanguageRegistry" resolve="LanguageRegistry" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbH" id="2DNBjvGmth" role="3cqZAp" />
         <node concept="3cpWs8" id="4dzOCaryA3M" role="3cqZAp">
           <node concept="3cpWsn" id="4dzOCaryA3N" role="3cpWs9">
@@ -2738,6 +2765,9 @@
             </node>
             <node concept="liA8E" id="4FXPPIUfuVC" role="2OqNvi">
               <ref role="37wK5l" to="2r67:4FXPPIUfq8B" resolve="printLanguages" />
+              <node concept="37vLTw" id="UFnFoNtTyu" role="37wK5m">
+                <ref role="3cqZAo" node="UFnFoNtRbN" resolve="languageRegistry" />
+              </node>
               <node concept="2OqwBi" id="4FXPPIUfmMs" role="37wK5m">
                 <node concept="37vLTw" id="4FXPPIUfmta" role="2Oq$k0">
                   <ref role="3cqZAo" node="4FXPPIUfiHr" resolve="egc" />
