@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,6 +35,7 @@ import org.jetbrains.mps.openapi.ui.persistence.FacetTab;
 
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
+import java.util.function.Supplier;
 
 /**
  * @author Artem Tikhomirov
@@ -60,8 +61,12 @@ class CustomGenerationTab extends BaseTab implements FacetTab {
   public void init() {
     JPanel p = new JPanel();
     // XXX For now, restrict to plan models from the visible modules, generally, shall allow from anywhere
-    //     Don't initialize scope here (hence 'lazy') as there's no model read when tab is initialized
-    LazyVisibleDepsScope scope = new LazyVisibleDepsScope(myProject.getRepository(), myModuleFacet.getModule());
+    //     Don't initialize scope until there's model read. There's no model read when tab is initialized,
+    //     it's ModelScopeIterable of ChooseByNamePanel that grabs model read, hence 'lazy' scope postpones
+    //     its initialization till the first getModels() call.
+    //     Give a supplier rather than scope instance as module dependencies could change between GenPlanPickPanel '...' actions, and
+    //     VisibleDepsSearchScope builds set of modules at initialization time (i.e. need to forget LVDS.myDelegate between the calls)
+    Supplier<SearchScope> scope = () -> new LazyVisibleDepsScope(myProject.getRepository(), myModuleFacet.getModule());
     myPlanPanel = new GenPlanPickPanel(myProject, scope, "Custom generation plan");
     myPlanPanel.setPlanModel(myModuleFacet.getPlanModelReference());
     p.setLayout(new BorderLayout());
