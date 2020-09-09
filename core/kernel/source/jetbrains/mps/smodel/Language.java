@@ -202,6 +202,15 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
    * This is another place in addition to ModulesMiner that knows about language-generator MD containment
    */
   private void revalidateGenerators() {
+    if (myLanguageDescriptor.getDeploymentDescriptor() != null) {
+      // do not process generators listed in a source descriptor of a deployed language, assume generators
+      // are managed on their own (use of source MD in case of deployed module is sort of design defect we can hardly fix, but at least
+      // we shall not use information sored therein if we know that generators are treated separately when language got module.xml DD)
+      // Perhaps, this could be approached in another way, by using getOwnedGenerators (see below) and not reporting GD for a LD read from
+      // source along with language's DD (ModulesMiner#loadDeploymentDescriptor). I like this approach more as it would keep knowledge
+      // about deployment inside MM, however, I'm quite sure that would ruin some code that relies on Language's knowledge about its generators.
+      return;
+    }
     // Fair implementation shall deal with getOwnedGenerators() only, however, at the moment, Generator module needs its source Language module
     // and it's tricky to write external code that would deal with standalone/external generators when language's MD changes (there's no proper notification
     // mechanism or anything else to react to MD change). That's why we control all generators associated with the language here.
