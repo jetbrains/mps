@@ -24,7 +24,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class JavaCompilerOptionsComponent {
-  private Map<Project, JavaCompilerOptions> myProjectToOptions = new ConcurrentHashMap<>();
+  private final Map<Project, JavaCompilerOptions> myProjectToOptions = new ConcurrentHashMap<>();
   private static JavaCompilerOptionsComponent INSTANCE;
   public static JavaVersion DEFAULT_JAVA_VERSION = getDefaultJavaVersion();
   public static JavaCompilerOptions DEFAULT_JAVA_COMPILER_OPTIONS = new JavaCompilerOptions(DEFAULT_JAVA_VERSION);
@@ -74,7 +74,9 @@ public class JavaCompilerOptionsComponent {
     VERSION_9(CompilerOptions.VERSION_9),
     VERSION_10(CompilerOptions.VERSION_10),
     VERSION_11(CompilerOptions.VERSION_11);
-    private String myCompilerVersion;
+
+    private final String myCompilerVersion;
+
     JavaVersion(@NotNull String compilerVersion) {
       myCompilerVersion = compilerVersion;
     }
@@ -83,6 +85,7 @@ public class JavaCompilerOptionsComponent {
     public String getCompilerVersion() {
       return myCompilerVersion;
     }
+
     public boolean isAtLeast(@NotNull JavaVersion version) {
       return compareTo(version) >= 0;
     }

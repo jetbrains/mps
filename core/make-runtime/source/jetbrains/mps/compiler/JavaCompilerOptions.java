@@ -19,7 +19,7 @@ import jetbrains.mps.compiler.JavaCompilerOptionsComponent.JavaVersion;
 import org.jetbrains.annotations.NotNull;
 
 public class JavaCompilerOptions {
-  private JavaVersion myTargetVersion;
+  private final JavaVersion myTargetVersion;
   public JavaCompilerOptions(@NotNull JavaVersion targetVersion) {
     myTargetVersion = targetVersion;
   }
