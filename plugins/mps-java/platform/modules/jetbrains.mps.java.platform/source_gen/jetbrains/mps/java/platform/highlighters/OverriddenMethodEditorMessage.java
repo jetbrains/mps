@@ -17,16 +17,16 @@ import com.intellij.openapi.actionSystem.ActionManager;
 public class OverriddenMethodEditorMessage extends AbstractOverrideEditorMessage {
   private static final EditorMessageIconRenderer.IconRendererType TYPE = new EditorMessageIconRenderer.IconRendererType(2);
 
-  private final boolean isOverriden;
+  private final boolean myOverridenFlag;
 
   public OverriddenMethodEditorMessage(SNode node, EditorMessageOwner owner, String tooltip, boolean overriden) {
     super(node, owner, tooltip);
-    this.isOverriden = overriden;
+    myOverridenFlag = overriden;
   }
 
   @Override
   public Icon getIcon() {
-    return (this.isOverriden ? IconResourceBundle_OverrideImplements.getInstance().getResource("OVERRIDDEN") : IconResourceBundle_OverrideImplements.getInstance().getResource("IMPLEMENTED"));
+    return (myOverridenFlag ? IconResourceBundle_OverrideImplements.getInstance().getResource("OVERRIDDEN") : IconResourceBundle_OverrideImplements.getInstance().getResource("IMPLEMENTED"));
   }
 
   @Override

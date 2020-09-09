@@ -128,7 +128,10 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
 
   private void collectOverriddenMethods(SNode container, Set<EditorMessage> messages) {
     List<SNode> derivedClassifiers = ClassifierSuccessors.getInstance().getDerivedClassifiers(container, new GlobalScope(myProject.getRepository()));
-    if (ListSequence.fromList(derivedClassifiers).isEmpty()) {
+    // fixme derivedClassifiers looks for project modules (because ClassifiersSuccessors works only with EditableSModel 
+    // fixme in this method we decide whether to show the icon in the gutter for the classifier; in EditorMessageIconRenderer#getClickAction we do the real search where we invoke DerivedClassifiers/DerivedInterfaces finder 
+    // fixme the latter works for all models 
+    if (myProject.isProjectModule(SNodeOperations.getModel(container).getModule()) && ListSequence.fromList(derivedClassifiers).isEmpty()) {
       return;
     }
     boolean isInterface = SNodeOperations.isInstanceOf(container, CONCEPTS.Interface$db);
