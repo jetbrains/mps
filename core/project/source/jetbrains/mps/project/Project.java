@@ -211,6 +211,7 @@ public abstract class Project implements MPSModuleOwner, IProject {
    * closes and disposes the project
    */
   public void dispose() {
+    getRepository().getModelAccess().runWriteAction(() -> getProjectModules().forEach(this::removeModule));
     myRepository.dispose();
     myDisposed = true;
   }
