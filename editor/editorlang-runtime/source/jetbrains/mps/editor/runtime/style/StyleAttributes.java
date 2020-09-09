@@ -177,10 +177,6 @@ public class StyleAttributes {
 
   public static final StyleAttribute<Boolean> CONTROL_OVERED_REFERENCE = new SimpleStyleAttribute<>("control-overed-reference", false, true);
 
-  @Deprecated
-  @ToRemove(version = 2018.3)
-  public static final StyleAttribute<String> RT_ANCHOR_TAG =
-      new SimpleStyleAttribute<>("rt-anchor-tag", SideTransformTagUtils.getDefaultSideTransformTag(), true);
   public static final StyleAttribute<String> LAYOUT_CONSTRAINT = new SimpleStyleAttribute<>("layout-constraint", null, true);
   public static final StyleAttribute<FocusPolicy> FOCUS_POLICY = new SimpleStyleAttribute<>("focus-policy", FocusPolicy.NONE, true);
   public static final StyleAttribute<CaretPosition> DEFAULT_CARET_POSITION = new SimpleStyleAttribute<>("default-caret-position", null, true);
