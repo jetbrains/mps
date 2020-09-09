@@ -19,7 +19,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.modelapi.behavior.ModelPointer__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.console.tool.ConsoleTool;
-import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
+import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.console.tool.BaseConsoleTab;
 import java.awt.event.InputEvent;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -78,7 +78,7 @@ public class ShowGenerationPlan_Action extends BaseAction {
     // next code comes from ConsoleTool.executeCommand(node<Command>) 
     ConsoleTool.TabState ts = new ConsoleTool.TabState();
     ts.isHistoryTab = true;
-    ts.title = BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(command);
+    ts.title = String.format("%s plan", NameUtil.compactModelName(event.getData(MPSCommonDataKeys.MODEL).getReference()));
     final BaseConsoleTab tab = ct.addConsoleTab(ts, null, true);
     event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().executeCommand(new Runnable() {
       public void run() {
