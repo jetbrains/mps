@@ -16,27 +16,12 @@
 package jetbrains.mps.smodel.runtime;
 
 import jetbrains.mps.scope.Scope;
-import jetbrains.mps.smodel.IOperationContext;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 public interface ReferenceScopeProvider {
   // since 2019.3
   default Scope createScope(ReferenceConstraintsContext _context) {
     return null;
-  }
-
-  // see getPresentation(), below
-  @ToRemove(version = 2020.1)
-  default boolean hasPresentation() {
-    return false;
-  }
-
-  // In 19.3, there were template fragments that generate overrides for the method, (two calls for BaseScopeProvider), templates removed in 2020.1
-  // left for binary compatibility with code generated in 19.3; drop once 2020.1 is out
-  @ToRemove(version = 2020.1)
-  default String getPresentation(IOperationContext operationContext, ReferencePresentationContext _context) {
-    throw new UnsupportedOperationException();
   }
 
   /**
