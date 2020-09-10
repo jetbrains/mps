@@ -30,7 +30,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.nodeEditor.selection.NodeRangeSelection;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
@@ -200,8 +199,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     }
 
     protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
-      final IOperationContext operationContext = editorContext.getOperationContext();
-      boolean var = operationContext != null || node != null || editorContext != null;
+      boolean var = node != null || editorContext != null;
       return (var ? null : null);
 
     }
@@ -209,8 +207,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
       this.handleAction_impl((String) parameterObject, node, model, editorContext);
     }
     private void handleAction_impl(String parameterObject, SNode node, SModel model, EditorContext editorContext) {
-      final IOperationContext operationContext = editorContext.getOperationContext();
-      boolean var = parameterObject != null || node != null || model != null || editorContext != null || operationContext != null;
+      boolean var = parameterObject != null || node != null || model != null || editorContext != null;
       if (var) {
         // just usage of var 
       }
@@ -258,16 +255,14 @@ import org.jetbrains.mps.openapi.language.SProperty;
     public RefNodeList_differentTypeOfChildren_cellMenu_d0l3p8_c0a0() {
     }
     protected List<?> createParameterObjects(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, EditorContext editorContext) {
-      final IOperationContext operationContext = editorContext.getOperationContext();
-      boolean var = operationContext != null || node != null || currentChild != null || defaultChildConcept.getDeclarationNode() != null;
+      boolean var = node != null || currentChild != null || defaultChildConcept != null;
       return (var ? null : null);
     }
     protected boolean isCustomCreateChildNode() {
       return true;
     }
     protected SNode customCreateChildNode(Object parameterObject, SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model, EditorContext editorContext) {
-      final IOperationContext operationContext = editorContext.getOperationContext();
-      boolean var = operationContext != null || defaultChildConcept.getDeclarationNode() != null || model != null || node != null || currentChild != null || parameterObject != null;
+      boolean var = defaultChildConcept != null || model != null || node != null || currentChild != null || parameterObject != null;
       return (var ? null : null);
     }
 
@@ -300,14 +295,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
     public RefNodeList_customReplace_cellMenu_d0l3p8_e0a0() {
     }
     protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
-      final IOperationContext operationContext = editorContext.getOperationContext();
-      boolean var = operationContext != null || node != null || editorContext != null;
+      boolean var = node != null || editorContext != null;
       return (var ? null : null);
     }
     protected SNode createReplacementNode(Object _parameterObject, SNode node, SModel model, EditorContext editorContext) {
-      final IOperationContext operationContext = editorContext.getOperationContext();
       final String parameterObject = (String) _parameterObject;
-      boolean var = parameterObject != null || node != null || model != null || editorContext != null || operationContext != null;
+      boolean var = parameterObject != null || node != null || model != null || editorContext != null;
       return (var ? null : null);
     }
     @Override
@@ -371,8 +364,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     }
 
     protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
-      IOperationContext operationContext = editorContext.getOperationContext();
-      boolean var = node != null || model != null || editorContext != null || operationContext != null;
+      boolean var = node != null || model != null || editorContext != null;
       if (var) {
         // just usage of var 
       }
@@ -394,8 +386,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     public RefNodeList_differentTypeOfChildren_cellMenu_d0l3p8_j0a0() {
     }
     protected SNode getConceptOfChild(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, EditorContext editorContext) {
-      final IOperationContext operationContext = editorContext.getOperationContext();
-      boolean var = currentChild != null || defaultChildConcept.getDeclarationNode() != null || node != null || operationContext != null;
+      boolean var = currentChild != null || defaultChildConcept != null || node != null;
       return (var ? null : null);
     }
     @Override
@@ -435,8 +426,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
       return true;
     }
     protected SNode customCreateChildNode(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model, EditorContext editorContext) {
-      final IOperationContext operationContext = editorContext.getOperationContext();
-      boolean var = currentChild != null || defaultChildConcept.getDeclarationNode() != null || operationContext != null || model != null || node != null;
+      boolean var = currentChild != null || defaultChildConcept != null || model != null || node != null;
       return (var ? null : null);
     }
   }

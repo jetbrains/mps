@@ -22,7 +22,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
@@ -94,8 +93,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
 
     protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
-      final IOperationContext operationContext = editorContext.getOperationContext();
-      boolean var = operationContext != null || node != null || editorContext != null;
+      boolean var = node != null || editorContext != null;
       return (var ? null : null);
 
     }
@@ -103,8 +101,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       this.handleAction_impl((String) parameterObject, node, model, editorContext);
     }
     private void handleAction_impl(String parameterObject, SNode node, SModel model, EditorContext editorContext) {
-      final IOperationContext operationContext = editorContext.getOperationContext();
-      boolean var = parameterObject != null || node != null || model != null || editorContext != null || operationContext != null;
+      boolean var = parameterObject != null || node != null || model != null || editorContext != null;
       if (var) {
         // just usage of var 
       }
@@ -152,14 +149,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     public Error_customReplace_cellMenu_x93f0h_c0a0() {
     }
     protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
-      final IOperationContext operationContext = editorContext.getOperationContext();
-      boolean var = operationContext != null || node != null || editorContext != null;
+      boolean var = node != null || editorContext != null;
       return (var ? null : null);
     }
     protected SNode createReplacementNode(Object _parameterObject, SNode node, SModel model, EditorContext editorContext) {
-      final IOperationContext operationContext = editorContext.getOperationContext();
       final String parameterObject = (String) _parameterObject;
-      boolean var = parameterObject != null || node != null || model != null || editorContext != null || operationContext != null;
+      boolean var = parameterObject != null || node != null || model != null || editorContext != null;
       return (var ? null : null);
     }
     @Override
@@ -223,8 +218,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     }
 
     protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
-      IOperationContext operationContext = editorContext.getOperationContext();
-      boolean var = node != null || model != null || editorContext != null || operationContext != null;
+      boolean var = node != null || model != null || editorContext != null;
       if (var) {
         // just usage of var 
       }
