@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,8 +43,7 @@ public abstract class AbstractCellMenuPart_Generic_Group implements SubstituteIn
   @Override
   public List<SubstituteAction> createActions(CellContext cellContext, final EditorContext editorContext) {
     final SNode node = cellContext.get(BasicCellContext.EDITED_NODE);
-    final IOperationContext context = editorContext.getOperationContext();
-    List parameterObjects = createParameterObjects(node, context, editorContext);
+    List parameterObjects = createParameterObjects(node, editorContext);
     if (parameterObjects == null) {
       return Collections.emptyList();
     }
@@ -70,7 +69,7 @@ public abstract class AbstractCellMenuPart_Generic_Group implements SubstituteIn
 
         @Override
         public SNode doSubstitute(@Nullable final EditorContext editorContext, String pattern) {
-          handleAction(parameterObject, node, node.getModel(), context, editorContext);
+          handleAction(parameterObject, node, node.getModel(), editorContext);
           return null;
         }
 
@@ -101,16 +100,39 @@ public abstract class AbstractCellMenuPart_Generic_Group implements SubstituteIn
     return "";
   }
 
-  /**
-   * should become abstract after MPS 3.0
-   */
-  protected abstract List createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext);
+  @Nullable
+  protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
+    // FIXME once 2020.3 is out, decide whether return null or make abstract
+    return createParameterObjects(node, editorContext.getOperationContext(), editorContext);
+  }
 
-  protected abstract void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext);
+  /**
+   * @deprecated override {@link #createParameterObjects(SNode, EditorContext)} instead
+   */
+  @Deprecated(forRemoval = true)
+  @ToRemove(version = 2020.2)
+  protected List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    return null;
+  }
+
+  protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+    // FIXME make method abstract once 2020.3 is out
+    handleAction(parameterObject, node, model, editorContext.getOperationContext(), editorContext);
+  }
+
+  /**
+   * @deprecated override {@link #handleAction(Object, SNode, SModel, EditorContext)} instead
+   */
+  @Deprecated(forRemoval = true)
+  @ToRemove(version = 2020.2)
+  protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    // no-op, just can't be abstract to facilitate generation of new method override
+  }
 
   /**
    * @deprecated This method was used only to distinct concept declaration reference and concept that is given as node.
    * Now we should use truly concepts in parameter objects, not concept nodes.
+   * [2020.2] can't remove as there are still uses in MPS
    */
   @Deprecated
   @ToRemove(version = 3.5)

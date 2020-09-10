@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.action.AbstractNodeSubstituteAction;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -38,7 +39,6 @@ public abstract class AbstractCellMenuPart_Generic_Item implements SubstituteInf
   @Override
   public List<SubstituteAction> createActions(CellContext cellContext, final EditorContext editorContext) {
     final SNode node = cellContext.get(BasicCellContext.EDITED_NODE);
-    final IOperationContext context = editorContext.getOperationContext();
 
     return Collections.singletonList(new AbstractNodeSubstituteAction(null, null, node) {
 
@@ -59,13 +59,25 @@ public abstract class AbstractCellMenuPart_Generic_Item implements SubstituteInf
 
       @Override
       public SNode doSubstitute(@Nullable final EditorContext editorContext, String pattern) {
-        handleAction(node, node.getModel(), context, editorContext);
+        handleAction(node, node.getModel(), editorContext);
         return null;
       }
     });
   }
 
-  protected abstract void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext);
+  protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
+    // FIXME make abstract once 2020.3 is out
+    handleAction(node, model, editorContext.getOperationContext(), editorContext);
+  }
+
+  /**
+   * @deprecated override {@link #handleAction(SNode, SModel, EditorContext)} instead
+   */
+  @Deprecated(forRemoval = true)
+  @ToRemove(version = 2020.2)
+  protected void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    // no-op, just can't be abstract to facilitate generation of new method override
+  }
 
   protected abstract String getMatchingText();
 }

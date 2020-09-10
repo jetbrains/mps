@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,8 +55,7 @@ public abstract class AbstractCellMenuPart_ReplaceNode_Group implements Substitu
       return Collections.emptyList();
     }
 
-    final IOperationContext context = editorContext.getOperationContext();
-    List parameterObjects = createParameterObjects(node, context, editorContext);
+    List parameterObjects = createParameterObjects(node, editorContext);
     if (parameterObjects == null) {
       return Collections.emptyList();
     }
@@ -76,7 +75,7 @@ public abstract class AbstractCellMenuPart_ReplaceNode_Group implements Substitu
 
         @Override
         public SNode doSubstitute(@Nullable final EditorContext editorContext, String pattern) {
-          SNode newNode = createReplacementNode(parameterObject, node, node.getModel(), context, editorContext);
+          SNode newNode = createReplacementNode(parameterObject, node, node.getModel(), editorContext);
           if (newNode != node) {
             SNodeUtil.replaceWithAnother(node, newNode);
             node.delete();
@@ -136,10 +135,35 @@ public abstract class AbstractCellMenuPart_ReplaceNode_Group implements Substitu
     return "";
   }
 
-  protected abstract List createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext);
+  @Nullable
+  protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
+    // FIXME once 2020.3 is out, either become abstract or just return null?
+    return createParameterObjects(node, editorContext.getOperationContext(), editorContext);
+  }
 
-  protected abstract SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext,
-      EditorContext editorContext);
+  /**
+   * @deprecated override {@link #createParameterObjects(SNode, EditorContext)} instead
+   */
+  @Deprecated(forRemoval = true)
+  @ToRemove(version = 2020.2)
+  protected List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    return null;
+  }
+
+  protected SNode createReplacementNode(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+    // FIXME make abstract once 2020.3 is out
+    return createReplacementNode(parameterObject, node, model, editorContext.getOperationContext(), editorContext);
+  }
+
+  /**
+   * @deprecated override {@link #createReplacementNode(Object, SNode, SModel, EditorContext)} instead
+   */
+  @Deprecated(forRemoval = true)
+  @ToRemove(version = 2020.2)
+  protected SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext,
+      EditorContext editorContext) {
+    return null;
+  }
 
   protected EditorMenuDescriptor getEditorMenuDescriptor(Object parameterObject) {
     return null;

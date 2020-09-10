@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -37,8 +38,7 @@ public abstract class AbstractCellMenuPart_PropertyValues implements SubstituteI
   public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
     SNode node = cellContext.get(PropertyCellContext.EDITED_NODE);
     SProperty property = cellContext.get(PropertyCellContext.PROPERTY_DECLARATION);
-    IOperationContext context = editorContext.getOperationContext();
-    List<String> values = getPropertyValues(node, context, editorContext);
+    List<String> values = getPropertyValues(node, editorContext);
     List<SubstituteAction> actions = new ArrayList<>(values.size());
     for (String value : values) {
       actions.add(new SPropertySubstituteAction(node, property, value));
@@ -46,5 +46,12 @@ public abstract class AbstractCellMenuPart_PropertyValues implements SubstituteI
     return actions;
   }
 
-  protected abstract List<String> getPropertyValues(SNode node, IOperationContext operationContext, EditorContext editorContext);
+  protected List<String> getPropertyValues(SNode node, EditorContext editorContext) {
+    // FIXME remove once 2020.3 is out
+    return getPropertyValues(node, editorContext.getOperationContext(), editorContext);
+  }
+
+  protected List<String> getPropertyValues(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    return Collections.emptyList();
+  }
 }

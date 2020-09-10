@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,6 +32,7 @@ import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.smodel.presentation.IPropertyPresentationProvider;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.util.PatternUtil;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -41,6 +42,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -55,8 +57,7 @@ public abstract class AbstractCellMenuPart_PropertyPostfixHints implements Subst
   public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
     SNode node = cellContext.get(PropertyCellContext.EDITED_NODE);
     final SProperty property = cellContext.get(PropertyCellContext.PROPERTY_DECLARATION);
-    final IOperationContext context = editorContext.getOperationContext();
-    List<String> postfixes = getPostfixes(node, context, editorContext);
+    List<String> postfixes = getPostfixes(node, editorContext);
     if (postfixes == null) {
       postfixes = new ArrayList<>();
     }
@@ -77,7 +78,20 @@ public abstract class AbstractCellMenuPart_PropertyPostfixHints implements Subst
     return actions;
   }
 
-  public abstract List<String> getPostfixes(SNode node, IOperationContext operationContext, EditorContext editorContext);
+  @Nullable
+  protected List<String> getPostfixes(SNode node, EditorContext editorContext) {
+    // FIXME shall become abstract once 2020.3 is out
+    return getPostfixes(node, editorContext.getOperationContext(), editorContext);
+  }
+
+  /**
+   * @deprecated override {@link #getPostfixes(SNode, EditorContext)} instead
+   */
+  @Deprecated(forRemoval = true)
+  @ToRemove(version = 2020.2)
+  public List<String> getPostfixes(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    return null;
+  }
 
   public static class PostfixGroup {
     private List<String> myPostfixes;
