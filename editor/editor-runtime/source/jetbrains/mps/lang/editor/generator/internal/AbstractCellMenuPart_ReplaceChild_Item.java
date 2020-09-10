@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,7 +49,6 @@ public abstract class AbstractCellMenuPart_ReplaceChild_Item implements Substitu
     IChildNodeSetter setter = new DefaultSChildSetter(containmentLink);
     final SNode currentChild = cellContext.getOpt(AggregationCellContext.CURRENT_CHILD_NODE);
 
-    final IOperationContext context = editorContext.getOperationContext();
     return Collections.singletonList(
         new DefaultChildNodeSubstituteAction(defaultConceptOfChild, parentNode, currentChild, setter) {
           @Override
@@ -66,7 +65,7 @@ public abstract class AbstractCellMenuPart_ReplaceChild_Item implements Substitu
           public SNode createChildNode(Object parameterObject, SModel model, String pattern) {
             if (isCustomCreateChildNode()) {
               SNode newChild = AbstractCellMenuPart_ReplaceChild_Item.this.customCreateChildNode(parentNode, currentChild, defaultConceptOfChild,
-                  parentNode.getModel(), context, editorContext);
+                  parentNode.getModel(), editorContext);
               if (newChild != null) {
                 NodeFactoryManager.setupNode(defaultConceptOfChild, newChild, currentChild, parentNode, model);
               }
@@ -81,17 +80,20 @@ public abstract class AbstractCellMenuPart_ReplaceChild_Item implements Substitu
     return false;
   }
 
-  @Deprecated
-  @ToRemove(version = 3.5)
-  protected SNode customCreateChildNode(SNode node, SNode currentChild, SNode defaultConceptOfChild, SModel model,
-      IOperationContext operationContext, EditorContext editorContext){
-    return customCreateChildNode(node, currentChild, MetaAdapterByDeclaration.getConcept(defaultConceptOfChild), model, operationContext, editorContext);
+
+  protected SNode customCreateChildNode(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model, EditorContext editorContext) {
+    // remove body once 2020.3 is out
+    return customCreateChildNode(node, currentChild, defaultChildConcept, model, editorContext.getOperationContext(), editorContext);
   }
 
+    /**
+     * @deprecated
+     */
+  @ToRemove(version = 2020.2)
+  @Deprecated(forRemoval = true)
   protected SNode customCreateChildNode(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model,
                                          IOperationContext operationContext, EditorContext editorContext){
-    //todo remove body after 3.3, review callees, rewrite generator
-    return customCreateChildNode(node, currentChild, defaultChildConcept.getDeclarationNode(), model, operationContext, editorContext);
+    return null;
   }
 
   protected abstract String getMatchingText();

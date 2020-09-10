@@ -1,6 +1,6 @@
 /*
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+1 * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,9 +29,9 @@ import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.action.DefaultChildNodeSubstituteAction;
 import jetbrains.mps.smodel.action.DefaultSChildSetter;
 import jetbrains.mps.smodel.action.IChildNodeSetter;
-import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.util.annotation.ToRemove;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -55,8 +55,7 @@ public abstract class AbstractCellMenuPart_ReplaceChild_Group implements Substit
     IChildNodeSetter setter = new DefaultSChildSetter(containmentLink);
     final SNode currentChild = cellContext.getOpt(AggregationCellContext.CURRENT_CHILD_NODE);
 
-    final IOperationContext context = editorContext.getOperationContext();
-    List parameterObjects = createParameterObjects(parentNode, currentChild, defaultConceptOfChild, context, editorContext);
+    List parameterObjects = createParameterObjects(parentNode, currentChild, defaultConceptOfChild, editorContext);
     if (parameterObjects == null) {
       return Collections.emptyList();
     }
@@ -78,7 +77,7 @@ public abstract class AbstractCellMenuPart_ReplaceChild_Group implements Substit
         public SNode createChildNode(Object parameterObjectWhichActuallyAnOutputConcept, SModel model, String pattern) {
           SNode newChild;
           if (isCustomCreateChildNode()) {
-            newChild = customCreateChildNode(parameterObject, parentNode, currentChild, defaultConceptOfChild, model, context, editorContext);
+            newChild = customCreateChildNode(parameterObject, parentNode, currentChild, defaultConceptOfChild, model, editorContext);
           } else {
             newChild = super.createChildNode(parameterObject, model, pattern);
           }
@@ -101,16 +100,20 @@ public abstract class AbstractCellMenuPart_ReplaceChild_Group implements Substit
     return false;
   }
 
-  @Deprecated
-  @ToRemove(version = 3.5)
-  protected SNode customCreateChildNode(Object parameterObject, SNode node, SNode currentChild, SNode defaultConceptOfChild, SModel model,
-                                        IOperationContext context, EditorContext editorContext) {
-    return null;
+  protected SNode customCreateChildNode(Object parameterObject, SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model, EditorContext editorContext) {
+    // remove once 2020.3 is out
+    return customCreateChildNode(parameterObject, node, currentChild, defaultChildConcept, model, editorContext.getOperationContext(), editorContext);
   }
 
+  /**
+   * @deprecated left for compatibility with code generated in 2020.2, override {@link #customCreateChildNode(Object, SNode, SNode, SAbstractConcept, SModel, EditorContext)} instead
+   */
+  @ToRemove(version = 2020.3)
+  @Deprecated(forRemoval = true)
+  @Nullable
   protected SNode customCreateChildNode(Object parameterObject, SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model,
                                         IOperationContext context, EditorContext editorContext) {
-    return customCreateChildNode(parameterObject, node, currentChild, defaultChildConcept.getDeclarationNode(), model, context, editorContext);
+    return null;
   }
 
   protected String getMatchingText(Object parameterObject) {
@@ -132,24 +135,27 @@ public abstract class AbstractCellMenuPart_ReplaceChild_Group implements Substit
     return null;
   }
 
-  @Deprecated
-  @ToRemove(version = 3.5)
-  protected List createParameterObjects(SNode node, SNode currentChild, SNode defaultConceptOfChild, IOperationContext operationContext,
-                                        EditorContext editorContext) {
-    return createParameterObjects(node, currentChild, MetaAdapterByDeclaration.getConcept(defaultConceptOfChild), operationContext, editorContext);
+  protected List createParameterObjects(SNode node, SNode currentChild, SAbstractConcept defaultConceptOfChild, EditorContext editorContext) {
+    return createParameterObjects(node, currentChild, defaultConceptOfChild, editorContext.getOperationContext(), editorContext);
   }
 
+  /**
+   * @deprecated left for compatibility with code generated in 2020.2, override {@link #createParameterObjects(SNode, SNode, SAbstractConcept, EditorContext)} instead
+   */
+  @ToRemove(version = 2020.3)
+  @Deprecated(forRemoval = true)
+  @Nullable
   protected List createParameterObjects(SNode node, SNode currentChild, SAbstractConcept defaultConceptOfChild, IOperationContext operationContext,
                                         EditorContext editorContext) {
-    //todo remove body after 3.5, rewrite generator (affects implementation only)
-    return createParameterObjects(node, currentChild, defaultConceptOfChild.getDeclarationNode(), operationContext, editorContext);
+    return null;
   }
 
   /**
    * @deprecated This method was used only to distinct concept declaration reference and concept that is given as node.
    * Now we should use truly concepts in parameter objects, not concept nodes.
+   * Templates in 2020.2 still generate override for the method, despite it being unused.
    */
-  @Deprecated
+  @Deprecated(forRemoval = true)
   @ToRemove(version = 3.5)
   protected boolean isReferentPresentation() {
     return true;
