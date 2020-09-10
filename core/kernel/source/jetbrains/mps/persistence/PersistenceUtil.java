@@ -42,8 +42,11 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
 /**
@@ -229,7 +232,7 @@ public final class PersistenceUtil {
   }
 
   public static class InMemoryMultiStreamDataSource extends MultiStreamDataSourceBase {
-    private final Map<StreamDataSource, ByteArrayOutputStream> myStreams = new HashMap<>();
+    private final Set<InMemoryStreamDataSource> myStreams = new HashSet<>();
 
     public InMemoryMultiStreamDataSource() {
       super("in-memory");
@@ -238,25 +241,20 @@ public final class PersistenceUtil {
     @NotNull
     @Override
     public Stream<StreamDataSource> getSubStreams() {
-      return myStreams.keySet().stream();
-    }
-
-    @Nullable
-    @Override
-    public StreamDataSource getStreamByName(@NotNull String name) {
-      var res = super.getStreamByName(name);
-      if (res == null) {
-        InMemoryStreamDataSource key = new InMemoryStreamDataSource(name);
-        myStreams.putIfAbsent(key, new ByteArrayOutputStream());
-        return key;
-      }
-      return res;
+      return myStreams.stream()
+                      .map(Function.identity()); // for the cast
     }
 
     @NotNull
     @Override
     public StreamDataSource getStreamByNameOrCreate(@NotNull String name) {
-      return getStreamByNameOrFail(name);
+      var res = getStreamByName(name);
+      if (res == null) {
+        InMemoryStreamDataSource newOne = new InMemoryStreamDataSource(name);
+        myStreams.add(newOne);
+        return newOne;
+      }
+      return res;
     }
 
     @Override
@@ -270,16 +268,11 @@ public final class PersistenceUtil {
     }
 
     public String getContent(String name, String charsetName) {
-      try {
-        ByteArrayOutputStream stream = myStreams.get(getStreamByNameOrFail(name));
-        if (stream == null) {
-          return null;
-        }
-        return stream.toString(charsetName);
-      } catch (UnsupportedEncodingException e) {
-        LOG.error(e);
+      StreamDataSource streamByName = getStreamByName(name);
+      if (!(streamByName instanceof InMemoryStreamDataSource)) {
+        return null;
       }
-      return null;
+      return ((InMemoryStreamDataSource) streamByName).getContent(charsetName);
     }
   }
 }

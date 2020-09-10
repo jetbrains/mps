@@ -36,7 +36,7 @@ public final class ByteArrayInputSource extends StreamDataSourceBase {
   private final byte[] myInput;
 
   public ByteArrayInputSource(@NotNull byte[] input) {
-    super("no-name", "in-memory");
+    super("byte array input source no-name", "in-memory");
     myInput = input;
   }
 

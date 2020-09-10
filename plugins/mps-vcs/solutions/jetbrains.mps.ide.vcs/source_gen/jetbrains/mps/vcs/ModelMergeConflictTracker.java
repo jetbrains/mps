@@ -81,57 +81,55 @@ public final class ModelMergeConflictTracker implements StartupActivity.Backgrou
     public void problemsDetected(SModel model, Iterable<SModel.Problem> problems) {
       if (model instanceof EditableSModel) {
         //  eventually we'd need to reload a model, which we can do for editable models only (for whatever reason) 
-      }
-      // XXX do I need to filter 'Load' problems only? 
-      // FIXME seems that would be better to implement FileStatusListener here and to record conflicted VF from IDEA 
-      //      and them match these to file of conflicting model (it's easier to go from Project+VF to IFile than to get VF from IFile, unless it's IdeaFile, which is sort of hack) 
-      // Even better is to attach repo listener ONLY when there are merge conflicts to avoid SRepositoryContentAdapter overhead 
-      //  
-      // FWIW, SuspiciousModelIndex I'm replacing with this class used to consult MPSVscManager.isInConflict(), which has some distinct logic to find out whether file  
-      // has been merged with conflict. While ConflictsUtil here uses IDEA's FileStatusManager, MPSVcsManager.isInConflict resorted to AbstractVcs and ChangeProvider 
-      // Given MPSVcsManager.isInConflict is gloomy heritage from Julia ( 39501a9e, "Code issues", ORLY?!), I don't think there's any value in using it, despite  
-      // perverted satisfaction reading the code.  
-      // JFTR, there's openapi.vcs.FileStatusManager#getStatus and openapi.vcs.changes.ChangeListManager#getStatus(), with no documentation which one to use and what's the difference 
-      // ChangeListManager, however, got ChangeListListener.TOPIC, that would allow to register listener right from XML, without the hassle of project component/service/activity 
-      final SModelReference modelInConflict = model.getReference();
-      final List<VirtualFile> conflictingModelFiles = ConflictsUtil.getConflictingModelFiles(model, myProject.getProject());
-      if (ListSequence.fromList(conflictingModelFiles).isEmpty()) {
-        return;
-      }
-
-      // FIXME next code originates from SuspiciousModelIndex and needs to be refactored! 
-      // runnable to get executed in EDT 
-      final Computable<Object> conflictableReload = new Computable<Object>() {
-        public Object compute() {
-          final SRepository projectRepo = myProject.getRepository();
-          // see MPS-18743 
-          new SaveRepositoryCommand(projectRepo).execute();
-
-          final AbstractVcsHelper vcsHelper = AbstractVcsHelper.getInstance(myProject.getProject());
-          List<VirtualFile> mergedFiles = vcsHelper.showMergeDialog(conflictingModelFiles);
-          if (!(mergedFiles.isEmpty())) {
-            // SuspiciousModelIndex used to force reload from disk inside model command. I don't see any reason for that 
-            // git log suggests ( 86fb2dc0) it was to fix MPS-7990, though I believe it might be related to module, not model files (i.e. command to re-register models) 
-            projectRepo.getModelAccess().runWriteAction(new Runnable() {
-              public void run() {
-                SModel model = modelInConflict.resolve(projectRepo);
-                if (model instanceof EditableSModel) {
-                  ((EditableSModel) model).reloadFromSource();
-                }
-              }
-            });
-          }
-          return null;
-        }
-      };
-      ApplicationManager.getApplication().invokeLater(new Runnable() {
-        public void run() {
-          ReloadManager reloadManager = ApplicationManager.getApplication().getComponent(ReloadManager.class);
-          reloadManager.computeNoReload(conflictableReload);
+        // XXX do I need to filter 'Load' problems only? 
+        // FIXME seems that would be better to implement FileStatusListener here and to record conflicted VF from IDEA 
+        //      and them match these to file of conflicting model (it's easier to go from Project+VF to IFile than to get VF from IFile, unless it's IdeaFile, which is sort of hack) 
+        // Even better is to attach repo listener ONLY when there are merge conflicts to avoid SRepositoryContentAdapter overhead 
+        //  
+        // FWIW, SuspiciousModelIndex I'm replacing with this class used to consult MPSVscManager.isInConflict(), which has some distinct logic to find out whether file  
+        // has been merged with conflict. While ConflictsUtil here uses IDEA's FileStatusManager, MPSVcsManager.isInConflict resorted to AbstractVcs and ChangeProvider 
+        // Given MPSVcsManager.isInConflict is gloomy heritage from Julia ( 39501a9e, "Code issues", ORLY?!), I don't think there's any value in using it, despite  
+        // perverted satisfaction reading the code.  
+        // JFTR, there's openapi.vcs.FileStatusManager#getStatus and openapi.vcs.changes.ChangeListManager#getStatus(), with no documentation which one to use and what's the difference 
+        // ChangeListManager, however, got ChangeListListener.TOPIC, that would allow to register listener right from XML, without the hassle of project component/service/activity 
+        final SModelReference modelInConflict = model.getReference();
+        final List<VirtualFile> conflictingModelFiles = ConflictsUtil.getConflictingModelFiles(model, myProject.getProject());
+        if (ListSequence.fromList(conflictingModelFiles).isEmpty()) {
           return;
         }
-      }, ModalityState.defaultModalityState(), myProject.getProject().getDisposed());
 
+        // FIXME next code originates from SuspiciousModelIndex and needs to be refactored! 
+        // runnable to get executed in EDT 
+        final Computable<Object> conflictableReload = new Computable<Object>() {
+          public Object compute() {
+            final SRepository projectRepo = myProject.getRepository();
+            // see MPS-18743 
+            new SaveRepositoryCommand(projectRepo).execute();
+
+            final AbstractVcsHelper vcsHelper = AbstractVcsHelper.getInstance(myProject.getProject());
+            List<VirtualFile> mergedFiles = vcsHelper.showMergeDialog(conflictingModelFiles);
+            if (!(mergedFiles.isEmpty())) {
+              // SuspiciousModelIndex used to force reload from disk inside model command. I don't see any reason for that 
+              // git log suggests ( 86fb2dc0) it was to fix MPS-7990, though I believe it might be related to module, not model files (i.e. command to re-register models) 
+              projectRepo.getModelAccess().runWriteAction(new Runnable() {
+                public void run() {
+                  SModel model = modelInConflict.resolve(projectRepo);
+                  if (model instanceof EditableSModel) {
+                    ((EditableSModel) model).reloadFromSource();
+                  }
+                }
+              });
+            }
+            return null;
+          }
+        };
+        ApplicationManager.getApplication().invokeLater(new Runnable() {
+          public void run() {
+            ReloadManager reloadManager = ApplicationManager.getApplication().getComponent(ReloadManager.class);
+            reloadManager.computeNoReload(conflictableReload);
+          }
+        }, ModalityState.defaultModalityState(), myProject.getProject().getDisposed());
+      }
     }
   }
 }
