@@ -5,7 +5,6 @@ package jetbrains.mps.baseLanguage.lightweightdsl.editor;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -20,14 +19,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class ClassLikeMemberPlaceholderMenu extends AbstractCellMenuPart_Generic_Group {
   public ClassLikeMemberPlaceholderMenu() {
   }
-  public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+  public List<?> createParameterObjects(SNode node, EditorContext editorContext) {
     return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(node, LINKS.decl$GtTj));
   }
   @Override
   protected String getMatchingText(Object object) {
     return (String) DSLClassMember__BehaviorDescriptor.getMatchingText_id2nUiI4k7qhh.invoke(((SNode) object));
   }
-  protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+  protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
     EditorUtil.substitutePlaceholder(SNodeOperations.cast(node, CONCEPTS.MemberPlaceholder$hW), model);
   }
   public boolean isReferentPresentation() {

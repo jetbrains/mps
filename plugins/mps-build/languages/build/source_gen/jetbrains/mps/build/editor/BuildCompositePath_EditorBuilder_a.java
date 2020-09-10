@@ -47,7 +47,6 @@ import jetbrains.mps.nodeEditor.menus.EditorMenuTraceInfoImpl;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import java.util.stream.Collectors;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.build.behavior.BuildRelativePath__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
@@ -160,7 +159,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return actions.stream().map(mapper).collect(Collectors.toList());
     }
 
-    public List<String> getPropertyValues(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<String> getPropertyValues(SNode node, EditorContext editorContext) {
       return (List<String>) BuildCompositePath__BehaviorDescriptor.getHeadSuggestions_id4jjtc7X04td.invoke(node, BuildRelativePath__BehaviorDescriptor.getBasePath_id4jjtc7WZMYz.invoke(SNodeOperations.getNodeAncestor(node, CONCEPTS.BuildRelativePath$Kc, false, false), Context.defaultContext()));
     }
   }

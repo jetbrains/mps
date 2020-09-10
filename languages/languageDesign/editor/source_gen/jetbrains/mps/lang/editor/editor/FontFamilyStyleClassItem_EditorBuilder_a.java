@@ -42,7 +42,6 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
 import jetbrains.mps.lang.editor.behavior.FontFamilyContainer__BehaviorDescriptor;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -158,16 +157,17 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public FontFamilyStyleClassItem_generic_cellMenu_w2alof_a0c0() {
     }
 
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
       List<String> list = ListSequence.fromList(new ArrayList<String>());
       ListSequence.fromList(list).addSequence(SetSequence.fromSet(FontRegistry.getInstance().getAvailableFontFamilyNames()));
       ListSequence.fromList(list).addElement("query");
       return list;
+
     }
-    protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
+    protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      this.handleAction_impl((String) parameterObject, node, model, editorContext);
     }
-    public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    private void handleAction_impl(String parameterObject, SNode node, SModel model, EditorContext editorContext) {
       if (Objects.equals(parameterObject, "query")) {
         SPropertyOperations.set(node, PROPS.family$Yyw7, null);
         SNodeFactoryOperations.setNewChild(node, LINKS.query$pb17, null);
@@ -175,7 +175,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         SPropertyOperations.set(node, PROPS.family$Yyw7, parameterObject);
       }
     }
-    public boolean isReferentPresentation() {
+    protected boolean isReferentPresentation() {
       return false;
     }
 

@@ -57,7 +57,6 @@ import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import java.util.stream.Collectors;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_Group;
@@ -331,7 +330,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return actions.stream().map(mapper).collect(Collectors.toList());
     }
 
-    public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
       SNode expr = SNodeFactoryOperations.createNewNode(CONCEPTS.ClassifierClassExpression$lN, null);
       SLinkOperations.setTarget(expr, LINKS.classifier$7Ex9, SLinkOperations.getTarget(node, LINKS.classifier$BPY8));
       SNodeOperations.replaceWithAnother(node, expr);
@@ -347,7 +346,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   public static class PrivateStaticFieldReference_customReplace_cellMenu_62ivzp_c0a2a extends AbstractCellMenuPart_ReplaceNode_Group {
     public PrivateStaticFieldReference_customReplace_cellMenu_62ivzp_c0a2a() {
     }
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
       Iterable<SNode> staticMembers = Sequence.fromIterable(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(SLinkOperations.getTarget(node, LINKS.classifier$BPY8)))).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return SNodeOperations.isInstanceOf(it, CONCEPTS.StaticFieldDeclaration$jR) || SNodeOperations.isInstanceOf(it, CONCEPTS.StaticMethodDeclaration$FJ) || SNodeOperations.isInstanceOf(it, CONCEPTS.EnumConstantDeclaration$MW);
@@ -355,19 +354,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
       });
       return QueriesUtil.replaceNodeMenu_parameterObjects(staticMembers, SLinkOperations.getTarget(node, LINKS.classifier$BPY8));
     }
-    public SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      return createReplacementNode_impl((SNode) parameterObject, node, model, operationContext, editorContext);
-    }
-    public SNode createReplacementNode_impl(SNode parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected SNode createReplacementNode(Object _parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      final SNode parameterObject = (SNode) _parameterObject;
       if (SNodeOperations.isInstanceOf(parameterObject, CONCEPTS.StaticMethodDeclaration$FJ) && !(VisibilityUtil.isVisible(node, SNodeOperations.cast(parameterObject, CONCEPTS.StaticMethodDeclaration$FJ)))) {
         SNode newNode = SNodeFactoryOperations.createNewNode(model, CONCEPTS.PrivateStaticMethodCall$BY, null);
         return QueriesUtil.fillStaticMethodCall(newNode, parameterObject, SLinkOperations.getTarget(node, LINKS.classifier$BPY8), node);
 
       }
       return QueriesUtil.replaceNodeMenu_createNewNode(SLinkOperations.getTarget(node, LINKS.classifier$BPY8), parameterObject, node);
-    }
-    public boolean isReferentPresentation() {
-      return true;
     }
     @Override
     protected EditorMenuDescriptor getEditorMenuDescriptor(Object parameterObject) {

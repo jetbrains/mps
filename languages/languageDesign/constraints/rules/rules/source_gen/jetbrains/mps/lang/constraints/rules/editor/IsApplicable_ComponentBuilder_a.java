@@ -50,7 +50,6 @@ import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import java.util.stream.Collectors;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
@@ -272,7 +271,7 @@ import jetbrains.mps.openapi.editor.selection.SelectionManager;
       return actions.stream().map(mapper).collect(Collectors.toList());
     }
 
-    public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
       SLinkOperations.setTarget(node, LINKS.condition$h$Ae, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x3172094ab484cd2cL, "jetbrains.mps.lang.constraints.rules.structure.ApplicableCondition")));
       SLinkOperations.setTarget(SLinkOperations.getTarget(node, LINKS.condition$h$Ae), LINKS.expr$ZgCK, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x126f1320a26cf7f1L, "jetbrains.mps.lang.constraints.rules.structure.ExpressionWrapper")));
       SLinkOperations.setTarget(SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.condition$h$Ae), LINKS.expr$ZgCK), LINKS.expression$aVsE, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression")));
@@ -322,7 +321,7 @@ import jetbrains.mps.openapi.editor.selection.SelectionManager;
       return actions.stream().map(mapper).collect(Collectors.toList());
     }
 
-    public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
       SLinkOperations.setTarget(node, LINKS.condition$h$Ae, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x3172094ab484cd2cL, "jetbrains.mps.lang.constraints.rules.structure.ApplicableCondition")));
       SLinkOperations.setTarget(SLinkOperations.getTarget(node, LINKS.condition$h$Ae), LINKS.expr$ZgCK, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x47257bf378d3470bL, 0x89d98c3261a61d15L, 0x126f1320a26cf7f1L, "jetbrains.mps.lang.constraints.rules.structure.ExpressionWrapper")));
       SelectionUtil.selectCell(editorContext, SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.condition$h$Ae), LINKS.expr$ZgCK), SelectionManager.FIRST_EDITABLE_CELL);

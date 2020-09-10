@@ -45,7 +45,6 @@ import jetbrains.mps.nodeEditor.menus.EditorMenuTraceInfoImpl;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import java.util.stream.Collectors;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.build.workflow.behavior.BwfJavaModule__BehaviorDescriptor;
 import java.util.Arrays;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
@@ -375,7 +374,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return actions.stream().map(mapper).collect(Collectors.toList());
     }
 
-    public List<String> getPropertyValues(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<String> getPropertyValues(SNode node, EditorContext editorContext) {
       return (List<String>) BwfJavaModule__BehaviorDescriptor.getCompilerNames_id3Par5_LaIPl.invoke(SNodeOperations.asSConcept(CONCEPTS.BwfJavaModule$gv));
     }
   }
@@ -437,7 +436,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return actions.stream().map(mapper).collect(Collectors.toList());
     }
 
-    public List<String> getPropertyValues(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<String> getPropertyValues(SNode node, EditorContext editorContext) {
       return Arrays.asList(new String[]{"1.5", "1.6", "1.7", "1.8"});
     }
   }

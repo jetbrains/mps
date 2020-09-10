@@ -8,7 +8,6 @@ import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Replace
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -30,28 +29,17 @@ public class LoadedLanguages_CellMenu extends AbstractCellMenuComponent {
   public static class LanguageIdentity_null_cellMenu_lbhw0l_a0 extends AbstractCellMenuPart_ReplaceChild_Group {
     public LanguageIdentity_null_cellMenu_lbhw0l_a0() {
     }
-    public List<?> createParameterObjects(SNode node, SNode currentChild, SAbstractConcept defaultConceptOfChild, IOperationContext operationContext, EditorContext editorContext) {
-      return createParameterObjects_impl(node, currentChild, defaultConceptOfChild.getDeclarationNode(), defaultConceptOfChild, operationContext, editorContext);
-    }
-
-    private List<?> createParameterObjects_impl(SNode node, SNode currentChild, SNode defaultConceptOfChild, SAbstractConcept defaultChildConcept, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<?> createParameterObjects(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, EditorContext editorContext) {
       Collection<SLanguage> allLanguages = LanguageRegistry.getInstance().getAllLanguages();
       return new ArrayList<SLanguage>(allLanguages);
     }
-
-    public boolean isCustomCreateChildNode() {
+    protected boolean isCustomCreateChildNode() {
       return true;
     }
-    public SNode customCreateChildNode(Object parameterObject, SNode node, SNode currentChild, SAbstractConcept defaultConceptOfChild, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      return this.customCreateChildNode_impl((SLanguage) parameterObject, node, currentChild, defaultConceptOfChild.getDeclarationNode(), defaultConceptOfChild, model, operationContext, editorContext);
-    }
-    public SNode customCreateChildNode_impl(SLanguage parameterObject, SNode node, SNode currentChild, SNode defaultConceptOfChild, SAbstractConcept defaultChildConcept, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected SNode customCreateChildNode(Object parameterObject, SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model, EditorContext editorContext) {
       SNode lid = SModelOperations.createNewNode(model, null, CONCEPTS.LanguageId$UR);
       LanguageIdentity__BehaviorDescriptor.setLanguage_id34EJa6aIcyw.invoke(lid, parameterObject);
       return lid;
-    }
-    public boolean isReferentPresentation() {
-      return false;
     }
 
     @Override

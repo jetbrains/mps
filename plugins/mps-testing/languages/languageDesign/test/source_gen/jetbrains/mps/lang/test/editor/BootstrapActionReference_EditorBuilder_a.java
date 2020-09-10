@@ -44,7 +44,6 @@ import jetbrains.mps.nodeEditor.menus.EditorMenuTraceInfoImpl;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import java.util.stream.Collectors;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.structure.ExtensionPoint;
@@ -138,7 +137,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return actions.stream().map(mapper).collect(Collectors.toList());
     }
 
-    public List<String> getPropertyValues(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<String> getPropertyValues(SNode node, EditorContext editorContext) {
       List<String> result = ListSequence.fromList(new ArrayList<String>());
       for (List<String> ext : new ExtensionPoint<List<String>>("jetbrains.mps.lang.test.ActionIDs").getObjects()) {
         ListSequence.fromList(result).addSequence(ListSequence.fromList(ext));

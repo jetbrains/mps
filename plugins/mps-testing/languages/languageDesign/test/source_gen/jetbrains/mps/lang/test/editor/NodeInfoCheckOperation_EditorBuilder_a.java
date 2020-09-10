@@ -27,7 +27,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -167,7 +166,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       public NodeInfoCheckOperation_generic_cellMenu_4bw08u_a0b0() {
       }
 
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
         SAbstractConcept concept = CONCEPTS.InfoStatement$Y5;
         AbstractModule module = ((AbstractModule) SNodeOperations.getModel(node).getModule());
         Set<SNode> statementInstances = FindUsagesManager.getInstance().findInstances(module.getScope(), Collections.singleton(concept), true, new EmptyProgressMonitor());
@@ -176,21 +175,20 @@ import org.jetbrains.mps.openapi.language.SConcept;
             return SNodeOperations.cast(it, CONCEPTS.InfoStatement$Y5);
           }
         }).toListSequence();
+
       }
-      protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        this.handleAction_impl((SNode) parameterObject, node, model, operationContext, editorContext);
+      protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        this.handleAction_impl((SNode) parameterObject, node, model, editorContext);
       }
-      public void handleAction_impl(SNode parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      private void handleAction_impl(SNode parameterObject, SNode node, SModel model, EditorContext editorContext) {
         SLinkOperations.setTarget(node, LINKS.statementRef$zSVB, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1de1fbd5fbfe9cf9L, "jetbrains.mps.lang.test.structure.InfoStatementReference")));
         SLinkOperations.setTarget(SLinkOperations.getTarget(node, LINKS.statementRef$zSVB), LINKS.declaration$oKj7, parameterObject);
       }
-      public boolean isReferentPresentation() {
+      protected boolean isReferentPresentation() {
         return false;
       }
-      public String getMatchingText(Object parameterObject) {
-        return this.getMatchingText_internal((SNode) parameterObject);
-      }
-      public String getMatchingText_internal(SNode parameterObject) {
+      protected String getMatchingText(Object _parameterObject) {
+        final SNode parameterObject = (SNode) _parameterObject;
         return MessageStatement__BehaviorDescriptor.getName_id1oFBbRehoLP.invoke(parameterObject);
       }
 

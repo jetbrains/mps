@@ -33,7 +33,6 @@ import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import java.util.stream.Collectors;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
@@ -119,7 +118,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       return actions.stream().map(mapper).collect(Collectors.toList());
     }
 
-    public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
       SPropertyOperations.assign(node, PROPS.startIncluded$hGHf, false);
     }
     public String getMatchingText() {
@@ -147,7 +146,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       return actions.stream().map(mapper).collect(Collectors.toList());
     }
 
-    public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
       SPropertyOperations.assign(node, PROPS.startIncluded$hGHf, true);
     }
     public String getMatchingText() {
@@ -320,7 +319,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       return actions.stream().map(mapper).collect(Collectors.toList());
     }
 
-    public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
       SPropertyOperations.assign(node, PROPS.endIncluded$hGWg, false);
     }
     public String getMatchingText() {
@@ -348,7 +347,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       return actions.stream().map(mapper).collect(Collectors.toList());
     }
 
-    public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
       SPropertyOperations.assign(node, PROPS.endIncluded$hGWg, true);
     }
     public String getMatchingText() {

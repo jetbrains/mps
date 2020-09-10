@@ -41,7 +41,6 @@ import jetbrains.mps.nodeEditor.menus.EditorMenuTraceInfoImpl;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import java.util.stream.Collectors;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -130,7 +129,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
       return actions.stream().map(mapper).collect(Collectors.toList());
     }
 
-    public List<String> getPostfixes(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<String> getPostfixes(SNode node, EditorContext editorContext) {
       SNode nodeConcept = SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.IfInstanceOfStatement$rG), LINKS.nodeConcept$jFJS);
       List<String> variableSuffixes = ListSequence.fromListAndArray(new ArrayList<String>(), "node");
       if (nodeConcept != null) {

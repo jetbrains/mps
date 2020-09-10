@@ -30,7 +30,6 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.nodeEditor.menus.EditorMenuTraceInfoImpl;
 import java.util.stream.Collectors;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.IBLDeprecatable__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -171,7 +170,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       return actions.stream().map(mapper).collect(Collectors.toList());
     }
 
-    public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
       SNode comment = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.BaseDocComment$bU);
       IBLDeprecatable__BehaviorDescriptor.markDeprecated_id6Va_BJexupi.invoke(SNodeOperations.getNodeAncestor(comment, CONCEPTS.IBLDeprecatable$ah, false, false));
       SNodeOperations.deleteNode(node);

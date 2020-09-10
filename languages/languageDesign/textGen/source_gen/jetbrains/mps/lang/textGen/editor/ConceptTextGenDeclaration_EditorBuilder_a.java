@@ -62,7 +62,6 @@ import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import java.util.stream.Collectors;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -641,7 +640,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
         return actions.stream().map(mapper).collect(Collectors.toList());
       }
 
-      public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
         SLinkOperations.setNewChild(node, LINKS.encoding$w2Vh, CONCEPTS.EncodingDeclaration$Dh);
       }
       public String getMatchingText() {
@@ -652,17 +651,18 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       public ConceptTextGenDeclaration_generic_cellMenu_9mcqjq_b0c3h0() {
       }
 
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
         return ListSequence.fromListWithValues(new ArrayList<String>(), Charset.availableCharsets().keySet());
+
       }
-      protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
+      protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        this.handleAction_impl((String) parameterObject, node, model, editorContext);
       }
-      public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      private void handleAction_impl(String parameterObject, SNode node, SModel model, EditorContext editorContext) {
         SLinkOperations.setNewChild(node, LINKS.encoding$w2Vh, CONCEPTS.EncodingLiteral$91);
         SPropertyOperations.assign(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.encoding$w2Vh), CONCEPTS.EncodingLiteral$91), PROPS.encoding$6Pu2, parameterObject);
       }
-      public boolean isReferentPresentation() {
+      protected boolean isReferentPresentation() {
         return false;
       }
 

@@ -40,7 +40,6 @@ import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -161,17 +160,18 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     public ColorStyleClassItem_generic_cellMenu_azr75j_a0c0() {
     }
 
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
       return ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfc609b3d55L, "jetbrains.mps.lang.editor.structure._Colors_Enum"))).toListSequence();
+
     }
-    protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      this.handleAction_impl((SEnumerationLiteral) parameterObject, node, model, operationContext, editorContext);
+    protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      this.handleAction_impl((SEnumerationLiteral) parameterObject, node, model, editorContext);
     }
-    public void handleAction_impl(SEnumerationLiteral parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    private void handleAction_impl(SEnumerationLiteral parameterObject, SNode node, SModel model, EditorContext editorContext) {
       SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.query$J8Xh));
       SPropertyOperations.setEnum(node, PROPS.color$cOQW, parameterObject);
     }
-    public boolean isReferentPresentation() {
+    protected boolean isReferentPresentation() {
       return false;
     }
 
@@ -201,7 +201,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       return actions.stream().map(mapper).collect(Collectors.toList());
     }
 
-    public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
       SNodeFactoryOperations.setNewChild(node, LINKS.query$J8Xh, CONCEPTS.RGBColor$ds);
     }
     public String getMatchingText() {
@@ -229,7 +229,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       return actions.stream().map(mapper).collect(Collectors.toList());
     }
 
-    public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
       SNodeFactoryOperations.setNewChild(node, LINKS.query$J8Xh, CONCEPTS.QueryFunction_Color$ma);
     }
     public String getMatchingText() {
@@ -257,7 +257,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       return actions.stream().map(mapper).collect(Collectors.toList());
     }
 
-    public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
       SNodeFactoryOperations.setNewChild(node, LINKS.query$J8Xh, CONCEPTS.QueryFunction_ColorComposit$Cd);
     }
     public String getMatchingText() {
@@ -325,17 +325,18 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       public ColorStyleClassItem_generic_cellMenu_azr75j_a0d0() {
       }
 
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
         return ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfc609b3d55L, "jetbrains.mps.lang.editor.structure._Colors_Enum"))).toListSequence();
+
       }
-      protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        this.handleAction_impl((SEnumerationLiteral) parameterObject, node, model, operationContext, editorContext);
+      protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        this.handleAction_impl((SEnumerationLiteral) parameterObject, node, model, editorContext);
       }
-      public void handleAction_impl(SEnumerationLiteral parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      private void handleAction_impl(SEnumerationLiteral parameterObject, SNode node, SModel model, EditorContext editorContext) {
         SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.query$J8Xh));
         SPropertyOperations.setEnum(node, PROPS.color$cOQW, parameterObject);
       }
-      public boolean isReferentPresentation() {
+      protected boolean isReferentPresentation() {
         return false;
       }
 
@@ -365,7 +366,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
         return actions.stream().map(mapper).collect(Collectors.toList());
       }
 
-      public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
         SNodeFactoryOperations.setNewChild(node, LINKS.query$J8Xh, CONCEPTS.RGBColor$ds);
       }
       public String getMatchingText() {
@@ -393,7 +394,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
         return actions.stream().map(mapper).collect(Collectors.toList());
       }
 
-      public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
         SNodeFactoryOperations.setNewChild(node, LINKS.query$J8Xh, CONCEPTS.QueryFunction_Color$ma);
       }
       public String getMatchingText() {
@@ -421,7 +422,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
         return actions.stream().map(mapper).collect(Collectors.toList());
       }
 
-      public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
         SNodeFactoryOperations.setNewChild(node, LINKS.query$J8Xh, CONCEPTS.QueryFunction_ColorComposit$Cd);
       }
       public String getMatchingText() {

@@ -1772,13 +1772,6 @@
           <ref role="ehGHo" to="oubp:5BD$AU43nQM" resolve="MemberPlaceholder" />
         </node>
       </node>
-      <node concept="37vLTG" id="2nUiI4k5D6X" role="3clF46">
-        <property role="TrG5h" value="operationContext" />
-        <property role="3TUv4t" value="false" />
-        <node concept="3uibUv" id="2nUiI4k5Trq" role="1tU5fm">
-          <ref role="3uigEE" to="w1kc:~IOperationContext" resolve="IOperationContext" />
-        </node>
-      </node>
       <node concept="37vLTG" id="2nUiI4k5D6Z" role="3clF46">
         <property role="TrG5h" value="editorContext" />
         <property role="3TUv4t" value="false" />
@@ -1869,13 +1862,6 @@
         <property role="3TUv4t" value="false" />
         <node concept="3uibUv" id="2nUiI4k5UZL" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="2nUiI4k5D7r" role="3clF46">
-        <property role="TrG5h" value="operationContext" />
-        <property role="3TUv4t" value="false" />
-        <node concept="3uibUv" id="2nUiI4k5VbI" role="1tU5fm">
-          <ref role="3uigEE" to="w1kc:~IOperationContext" resolve="IOperationContext" />
         </node>
       </node>
       <node concept="37vLTG" id="2nUiI4k5D7t" role="3clF46">

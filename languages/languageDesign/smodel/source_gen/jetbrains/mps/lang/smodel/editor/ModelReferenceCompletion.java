@@ -7,7 +7,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
@@ -30,24 +29,23 @@ public class ModelReferenceCompletion extends AbstractCellMenuComponent {
     public ModelReferenceExpression_generic_cellMenu_fkcdzz_a0() {
     }
 
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
       return IterableUtil.asList(new ModuleRepositoryFacade(editorContext.getRepository()).getAllModels());
+
     }
-    protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      this.handleAction_impl((SModel) parameterObject, node, model, operationContext, editorContext);
+    protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      this.handleAction_impl((SModel) parameterObject, node, model, editorContext);
     }
-    public void handleAction_impl(SModel parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    private void handleAction_impl(SModel parameterObject, SNode node, SModel model, EditorContext editorContext) {
       SPropertyOperations.set(node, PROPS.name$bAf3, NameUtil.getModelLongName(parameterObject));
       SPropertyOperations.set(node, PROPS.stereotype$Trmg, SModelStereotype.getStereotype(parameterObject));
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, "FQName", -1);
     }
-    public boolean isReferentPresentation() {
+    protected boolean isReferentPresentation() {
       return false;
     }
-    public String getMatchingText(Object parameterObject) {
-      return this.getMatchingText_internal((SModel) parameterObject);
-    }
-    public String getMatchingText_internal(SModel parameterObject) {
+    protected String getMatchingText(Object _parameterObject) {
+      final SModel parameterObject = (SModel) _parameterObject;
       return parameterObject.getModelName();
     }
 

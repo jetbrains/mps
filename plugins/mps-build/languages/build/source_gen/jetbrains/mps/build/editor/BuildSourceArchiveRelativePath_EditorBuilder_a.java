@@ -28,7 +28,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.editor.runtime.style.FocusPolicy;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.build.behavior.BuildRelativePath__BehaviorDescriptor;
@@ -212,7 +211,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
       public BuildSourceArchiveRelativePath_generic_cellMenu_4z471d_a0c0() {
       }
 
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
         IFile file = FileSystem.getInstance().getFile(BuildRelativePath__BehaviorDescriptor.getBasePath_id4jjtc7WZMYz.invoke(node, Context.defaultContext()));
         if (!(file.exists())) {
           return ListSequence.fromList(new ArrayList<String>());
@@ -231,18 +230,19 @@ import org.jetbrains.mps.openapi.language.SProperty;
             return it;
           }
         }, true).toListSequence();
+
       }
-      protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
+      protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        this.handleAction_impl((String) parameterObject, node, model, editorContext);
       }
-      public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      private void handleAction_impl(String parameterObject, SNode node, SModel model, EditorContext editorContext) {
         if ((SLinkOperations.getTarget(node, LINKS.compositePart$blMW) == null)) {
           SNodeFactoryOperations.setNewChild(node, LINKS.compositePart$blMW, null);
         }
         SPropertyOperations.set(SLinkOperations.getTarget(node, LINKS.compositePart$blMW), PROPS.head$$gC$, parameterObject);
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, SLinkOperations.getTarget(node, LINKS.compositePart$blMW), "*" + CellIdManager.createPropertyId("head"), -1);
       }
-      public boolean isReferentPresentation() {
+      protected boolean isReferentPresentation() {
         return false;
       }
 

@@ -7,7 +7,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -31,18 +30,19 @@ public class ConceptMethodDeclaration_Menu extends AbstractCellMenuComponent {
     public ConceptMethodDeclaration_generic_cellMenu_v7l746_a0() {
     }
 
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
       return (List<SNode>) AbstractConceptDeclaration__BehaviorDescriptor.getVirtualConceptMethods_idhEwILHM.invoke(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(node, CONCEPTS.ConceptBehavior$2, false, false), LINKS.concept$u6dL));
+
     }
-    protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      this.handleAction_impl((SNode) parameterObject, node, model, operationContext, editorContext);
+    protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      this.handleAction_impl((SNode) parameterObject, node, model, editorContext);
     }
-    public void handleAction_impl(SNode parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    private void handleAction_impl(SNode parameterObject, SNode node, SModel model, EditorContext editorContext) {
       SLinkOperations.setTarget(node, LINKS.overriddenMethod$quKH, parameterObject);
       SLinkOperations.setTarget(node, LINKS.visibility$Yyua, SNodeOperations.copyNode(SLinkOperations.getTarget(parameterObject, LINKS.visibility$Yyua)));
       SPropertyOperations.set(node, PROPS.isStatic$JhJe, SPropertyOperations.getBoolean(parameterObject, PROPS.isStatic$JhJe));
     }
-    public boolean isReferentPresentation() {
+    protected boolean isReferentPresentation() {
       return false;
     }
 

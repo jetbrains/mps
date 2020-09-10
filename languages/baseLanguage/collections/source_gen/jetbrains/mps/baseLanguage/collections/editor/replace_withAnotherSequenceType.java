@@ -7,7 +7,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_Group;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -30,7 +29,7 @@ public class replace_withAnotherSequenceType extends AbstractCellMenuComponent {
   public static class Type_customReplace_cellMenu_qhej2e_a0 extends AbstractCellMenuPart_ReplaceNode_Group {
     public Type_customReplace_cellMenu_qhej2e_a0() {
     }
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
       List<SAbstractConcept> others = ListSequence.fromListAndArray(new ArrayList<SAbstractConcept>(), CONCEPTS.SequenceType$_s, CONCEPTS.ListType$LR, CONCEPTS.SetType$g6, CONCEPTS.SortedSetType$7K);
       SConcept act = CONCEPTS.AbstractContainerType$t4;
       return ListSequence.fromList(others).concat(ListSequence.fromList(SConceptOperations.getAllSubConcepts2(act, SNodeOperations.getModel(node))).where(new IWhereFilter<SConcept>() {
@@ -39,14 +38,9 @@ public class replace_withAnotherSequenceType extends AbstractCellMenuComponent {
         }
       })).toListSequence();
     }
-    public SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      return createReplacementNode_impl((SAbstractConcept) parameterObject, node, model, operationContext, editorContext);
-    }
-    public SNode createReplacementNode_impl(SAbstractConcept parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected SNode createReplacementNode(Object _parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      final SAbstractConcept parameterObject = (SAbstractConcept) _parameterObject;
       return SNodeFactoryOperations.createNewNode(parameterObject, node);
-    }
-    public boolean isReferentPresentation() {
-      return false;
     }
     @Override
     protected EditorMenuDescriptor getEditorMenuDescriptor(Object parameterObject) {

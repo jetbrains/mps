@@ -53,7 +53,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -367,17 +366,18 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       public MigrationTestCase_generic_cellMenu_w3rzlq_a0a2c0() {
       }
 
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
         return SModelOperations.rootsIncludingImported(SNodeOperations.getModel(node), CONCEPTS.IMigrationUnit$xq);
+
       }
-      protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        this.handleAction_impl((SNode) parameterObject, node, model, operationContext, editorContext);
+      protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        this.handleAction_impl((SNode) parameterObject, node, model, editorContext);
       }
-      public void handleAction_impl(SNode parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      private void handleAction_impl(SNode parameterObject, SNode node, SModel model, EditorContext editorContext) {
         ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.migration$BNbu)).addElement(createMigrationReference_w3rzlq_a0a0a0a0a2c0(parameterObject));
         SPropertyOperations.assign(node, PROPS.name$MnvL, SPropertyOperations.getString(parameterObject, PROPS.name$MnvL) + "_Test");
       }
-      public boolean isReferentPresentation() {
+      protected boolean isReferentPresentation() {
         return false;
       }
 

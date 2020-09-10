@@ -62,7 +62,6 @@ import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import java.util.stream.Collectors;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -416,7 +415,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
         return actions.stream().map(mapper).collect(Collectors.toList());
       }
 
-      public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
         SLinkOperations.setTarget(node, LINKS.initializer$1oZx, _quotation_createNode_jtr19c_a0a0a0a8a(SLinkOperations.getTarget(node, LINKS.preferredConcept$1q4V)));
       }
       public String getMatchingText() {

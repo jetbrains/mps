@@ -29,7 +29,6 @@ import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -138,17 +137,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public static class RelativePosition_customReplace_cellMenu_wv5dgr_b0b0 extends AbstractCellMenuPart_ReplaceNode_Group {
       public RelativePosition_customReplace_cellMenu_wv5dgr_b0b0() {
       }
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
         return ListSequence.fromListAndArray(new ArrayList<String>(), "label");
       }
-      public SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        return createReplacementNode_impl((String) parameterObject, node, model, operationContext, editorContext);
-      }
-      public SNode createReplacementNode_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      protected SNode createReplacementNode(Object _parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        final String parameterObject = (String) _parameterObject;
         return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7fa12e9cb9494976L, 0xb4fa19accbc320b4L, 0x1190a8b1526L, "jetbrains.mps.lang.dataFlow.structure.LabelPosition"));
-      }
-      public boolean isReferentPresentation() {
-        return false;
       }
       @Override
       protected EditorMenuDescriptor getEditorMenuDescriptor(Object parameterObject) {

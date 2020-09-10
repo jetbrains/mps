@@ -36,7 +36,6 @@ import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.smodel.behavior.ModuleReferenceExpression__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -126,23 +125,22 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public ModuleReferenceExpression_generic_cellMenu_c6z1wa_a0c0() {
     }
 
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
       return (List<SModule>) ModuleReferenceExpression__BehaviorDescriptor.getVisibleModules_id3wj3sjzSgF$.invoke(node);
+
     }
-    protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      this.handleAction_impl((SModule) parameterObject, node, model, operationContext, editorContext);
+    protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      this.handleAction_impl((SModule) parameterObject, node, model, editorContext);
     }
-    public void handleAction_impl(SModule parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    private void handleAction_impl(SModule parameterObject, SNode node, SModel model, EditorContext editorContext) {
       String mr = PersistenceFacade.getInstance().asString(parameterObject.getModuleReference().getModuleId());
       SPropertyOperations.set(node, PROPS.moduleId$cMi1, mr);
     }
-    public boolean isReferentPresentation() {
+    protected boolean isReferentPresentation() {
       return false;
     }
-    public String getMatchingText(Object parameterObject) {
-      return this.getMatchingText_internal((SModule) parameterObject);
-    }
-    public String getMatchingText_internal(SModule parameterObject) {
+    protected String getMatchingText(Object _parameterObject) {
+      final SModule parameterObject = (SModule) _parameterObject;
       return parameterObject.getModuleName();
     }
 

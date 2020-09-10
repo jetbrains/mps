@@ -135,7 +135,8 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       return actions.stream().map(mapper).collect(Collectors.toList());
     }
 
-    public List<String> getPostfixes(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<String> getPostfixes(SNode node, EditorContext editorContext) {
+      final IOperationContext operationContext = editorContext.getOperationContext();
       List<String> result = ListSequence.fromList(new ArrayList<String>());
       SNode nodeType = SLinkOperations.getTarget(node, LINKS.type$a1UY);
       if (nodeType != null) {

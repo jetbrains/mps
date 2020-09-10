@@ -58,7 +58,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
@@ -647,24 +646,23 @@ import org.jetbrains.mps.openapi.language.SConcept;
     public CellModel_RefNodeList_generic_cellMenu_2v2794_a0b6d0() {
     }
 
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
       List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
       ListSequence.fromList(result).addElement(SNodeFactoryOperations.createNewNode(CONCEPTS.QueryFunction_SeparatorText$Zc, null));
       return result;
+
     }
-    protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      this.handleAction_impl((SNode) parameterObject, node, model, operationContext, editorContext);
+    protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      this.handleAction_impl((SNode) parameterObject, node, model, editorContext);
     }
-    public void handleAction_impl(SNode parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    private void handleAction_impl(SNode parameterObject, SNode node, SModel model, EditorContext editorContext) {
       SLinkOperations.setTarget(node, LINKS.separatorTextQuery$lFmm, parameterObject);
     }
-    public boolean isReferentPresentation() {
+    protected boolean isReferentPresentation() {
       return false;
     }
-    public String getMatchingText(Object parameterObject) {
-      return this.getMatchingText_internal((SNode) parameterObject);
-    }
-    public String getMatchingText_internal(SNode parameterObject) {
+    protected String getMatchingText(Object _parameterObject) {
+      final SNode parameterObject = (SNode) _parameterObject;
       return "query";
     }
 
@@ -736,30 +734,27 @@ import org.jetbrains.mps.openapi.language.SConcept;
       public CellModel_RefNodeList_generic_cellMenu_2v2794_a0c6d0() {
       }
 
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
         List<String> result = ListSequence.fromList(new ArrayList<String>());
         ListSequence.fromList(result).addElement(SPropertyOperations.getString(node, PROPS.separatorText$owLB));
         return result;
+
       }
-      protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        this.handleAction_impl((String) parameterObject, node, model, operationContext, editorContext);
+      protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        this.handleAction_impl((String) parameterObject, node, model, editorContext);
       }
-      public void handleAction_impl(String parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      private void handleAction_impl(String parameterObject, SNode node, SModel model, EditorContext editorContext) {
         SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.separatorTextQuery$lFmm));
       }
-      public boolean isReferentPresentation() {
+      protected boolean isReferentPresentation() {
         return false;
       }
-      public String getMatchingText(Object parameterObject) {
-        return this.getMatchingText_internal((String) parameterObject);
-      }
-      public String getMatchingText_internal(String parameterObject) {
+      protected String getMatchingText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
         return parameterObject;
       }
-      public String getDescriptionText(Object parameterObject) {
-        return this.getDescriptionText_internal((String) parameterObject);
-      }
-      public String getDescriptionText_internal(String parameterObject) {
+      protected String getDescriptionText(Object _parameterObject) {
+        final String parameterObject = (String) _parameterObject;
         return "static text";
       }
 

@@ -32,7 +32,6 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.editor.runtime.style.ScriptKind;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -151,7 +150,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     public ExponentialOperation_generic_cellMenu_spngij_a0b0() {
     }
 
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
       List<SConcept> result = ListSequence.fromList(new ArrayList<SConcept>());
       for (SAbstractConcept a : ListSequence.fromList(SConceptOperations.getAllSubConcepts(SNodeOperations.asSConcept(ListSequence.fromList(ExponentialOperation__BehaviorDescriptor.getAllowedSubstituends_id2D1PBM_bxH0.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(node)))).first()), SNodeOperations.getModel(node)))) {
         if (!(a.isAbstract()) && SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(a), CONCEPTS.ExponentialOperation$AR)) {
@@ -159,26 +158,23 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
         }
       }
       return result;
+
     }
-    protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      this.handleAction_impl((SConcept) parameterObject, node, model, operationContext, editorContext);
+    protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      this.handleAction_impl((SConcept) parameterObject, node, model, editorContext);
     }
-    public void handleAction_impl(SConcept parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    private void handleAction_impl(SConcept parameterObject, SNode node, SModel model, EditorContext editorContext) {
       SNodeOperations.replaceWithAnother(node, SNodeFactoryOperations.createNewNode(parameterObject, SLinkOperations.getTarget(node, LINKS.expr$yZgT)));
     }
-    public boolean isReferentPresentation() {
+    protected boolean isReferentPresentation() {
       return false;
     }
-    public String getMatchingText(Object parameterObject) {
-      return this.getMatchingText_internal((SConcept) parameterObject);
-    }
-    public String getMatchingText_internal(SConcept parameterObject) {
+    protected String getMatchingText(Object _parameterObject) {
+      final SConcept parameterObject = (SConcept) _parameterObject;
       return (String) ExponentialOperation__BehaviorDescriptor.getOperationSymbol_id1653mnvAgnB.invoke(SNodeOperations.asSConcept(parameterObject));
     }
-    public String getDescriptionText(Object parameterObject) {
-      return this.getDescriptionText_internal((SConcept) parameterObject);
-    }
-    public String getDescriptionText_internal(SConcept parameterObject) {
+    protected String getDescriptionText(Object _parameterObject) {
+      final SConcept parameterObject = (SConcept) _parameterObject;
       return SConceptOperations.shortDescription(parameterObject);
     }
 

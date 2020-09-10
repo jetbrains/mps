@@ -30,7 +30,6 @@ import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceChild_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.smodel.language.LanguageRegistry;
@@ -191,11 +190,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   public static class ApplyGenerators_generator_cellMenu_34tr3z_a0a1a extends AbstractCellMenuPart_ReplaceChild_Group {
     public ApplyGenerators_generator_cellMenu_34tr3z_a0a1a() {
     }
-    public List<?> createParameterObjects(SNode node, SNode currentChild, SAbstractConcept defaultConceptOfChild, IOperationContext operationContext, EditorContext editorContext) {
-      return createParameterObjects_impl(node, currentChild, defaultConceptOfChild.getDeclarationNode(), defaultConceptOfChild, operationContext, editorContext);
-    }
-
-    private List<?> createParameterObjects_impl(SNode node, SNode currentChild, SNode defaultConceptOfChild, SAbstractConcept defaultChildConcept, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<?> createParameterObjects(SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, EditorContext editorContext) {
       final ArrayList<SModuleReference> rv = new ArrayList<SModuleReference>();
       LanguageRegistry languageRegistry = LanguageRegistry.getInstance(SNodeOperations.getModel(node).getRepository());
       languageRegistry.withAvailableLanguages(new Consumer<LanguageRuntime>() {
@@ -207,32 +202,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
       });
       return rv;
     }
-
-    public boolean isCustomCreateChildNode() {
+    protected boolean isCustomCreateChildNode() {
       return true;
     }
-    public SNode customCreateChildNode(Object parameterObject, SNode node, SNode currentChild, SAbstractConcept defaultConceptOfChild, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      return this.customCreateChildNode_impl((SModuleReference) parameterObject, node, currentChild, defaultConceptOfChild.getDeclarationNode(), defaultConceptOfChild, model, operationContext, editorContext);
-    }
-    public SNode customCreateChildNode_impl(SModuleReference parameterObject, SNode node, SNode currentChild, SNode defaultConceptOfChild, SAbstractConcept defaultChildConcept, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected SNode customCreateChildNode(Object parameterObject, SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model, EditorContext editorContext) {
       SNode newNode = SModelOperations.createNewNode(model, null, CONCEPTS.GeneratorModulePointer$49);
       SLinkOperations.setNewChild(newNode, LINKS.module$u1do, null);
       ModuleIdentity__BehaviorDescriptor.setModuleReference_idnJmxU5cSTj.invoke(SLinkOperations.getTarget(newNode, LINKS.module$u1do), parameterObject);
       return newNode;
     }
-    public boolean isReferentPresentation() {
-      return false;
-    }
-    public String getMatchingText(Object parameterObject) {
-      return this.getMatchingText_internal((SModuleReference) parameterObject);
-    }
-    public String getMatchingText_internal(SModuleReference parameterObject) {
+    protected String getMatchingText(Object _parameterObject) {
+      final SModuleReference parameterObject = (SModuleReference) _parameterObject;
       return parameterObject.getModuleName();
     }
-    public String getDescriptionText(Object parameterObject) {
-      return this.getDescriptionText_internal((SModuleReference) parameterObject);
-    }
-    public String getDescriptionText_internal(SModuleReference parameterObject) {
+    protected String getDescriptionText(Object _parameterObject) {
+      final SModuleReference parameterObject = (SModuleReference) _parameterObject;
       return parameterObject.getModuleName();
     }
 

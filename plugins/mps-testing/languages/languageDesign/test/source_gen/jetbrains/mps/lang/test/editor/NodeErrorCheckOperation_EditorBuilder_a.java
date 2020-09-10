@@ -27,7 +27,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -167,7 +166,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       public NodeErrorCheckOperation_generic_cellMenu_kzyi6r_a0b0() {
       }
 
-      public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+      protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
         SAbstractConcept concept = CONCEPTS.ReportErrorStatement$v1;
         AbstractModule module = ((AbstractModule) SNodeOperations.getModel(node).getModule());
         Set<SNode> errorInstances = FindUsagesManager.getInstance().findInstances(module.getScope(), Collections.singleton(concept), true, new EmptyProgressMonitor());
@@ -176,21 +175,20 @@ import org.jetbrains.mps.openapi.language.SConcept;
             return SNodeOperations.cast(it, CONCEPTS.ReportErrorStatement$v1);
           }
         }).toListSequence();
+
       }
-      protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-        this.handleAction_impl((SNode) parameterObject, node, model, operationContext, editorContext);
+      protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+        this.handleAction_impl((SNode) parameterObject, node, model, editorContext);
       }
-      public void handleAction_impl(SNode parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+      private void handleAction_impl(SNode parameterObject, SNode node, SModel model, EditorContext editorContext) {
         SLinkOperations.setTarget(node, LINKS.errorRef$Yjyj, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x3ee2cbee8b19b06dL, "jetbrains.mps.lang.test.structure.ReportErrorStatementReference")));
         SLinkOperations.setTarget(SLinkOperations.getTarget(node, LINKS.errorRef$Yjyj), LINKS.declaration$oKj7, parameterObject);
       }
-      public boolean isReferentPresentation() {
+      protected boolean isReferentPresentation() {
         return false;
       }
-      public String getMatchingText(Object parameterObject) {
-        return this.getMatchingText_internal((SNode) parameterObject);
-      }
-      public String getMatchingText_internal(SNode parameterObject) {
+      protected String getMatchingText(Object _parameterObject) {
+        final SNode parameterObject = (SNode) _parameterObject;
         SNode errorStatement = parameterObject;
         return MessageStatement__BehaviorDescriptor.getName_id1oFBbRehoLP.invoke(errorStatement);
       }

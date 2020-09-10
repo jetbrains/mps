@@ -18,7 +18,6 @@ import jetbrains.mps.smodel.SNodePointer;
 import java.util.stream.Collectors;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.behavior.QualifiedReference__BehaviorDescriptor;
@@ -56,7 +55,7 @@ public class QualifiedReferenceMenu extends AbstractCellMenuComponent {
       return actions.stream().map(mapper).collect(Collectors.toList());
     }
 
-    public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
       SNode expr = SNodeFactoryOperations.createNewNode(CONCEPTS.ClassifierClassExpression$lN, null);
       SLinkOperations.setTarget(expr, LINKS.classifier$7Ex9, QualifiedReference__BehaviorDescriptor.getClassifier_id7S22xyoLQG7.invoke(node));
       SNodeOperations.replaceWithAnother(node, expr);
@@ -69,17 +68,12 @@ public class QualifiedReferenceMenu extends AbstractCellMenuComponent {
   public static class QualifiedReference_customReplace_cellMenu_dbgh7b_b0 extends AbstractCellMenuPart_ReplaceNode_Group {
     public QualifiedReference_customReplace_cellMenu_dbgh7b_b0() {
     }
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
       return QueriesUtil.replaceNodeMenu_parameterObjects(QualifiedReference__BehaviorDescriptor.getClassifier_id7S22xyoLQG7.invoke(node), node);
     }
-    public SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      return createReplacementNode_impl((SNode) parameterObject, node, model, operationContext, editorContext);
-    }
-    public SNode createReplacementNode_impl(SNode parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected SNode createReplacementNode(Object _parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      final SNode parameterObject = (SNode) _parameterObject;
       return QueriesUtil.replaceNodeMenu_createNewNode(QualifiedReference__BehaviorDescriptor.getClassifier_id7S22xyoLQG7.invoke(node), parameterObject, node);
-    }
-    public boolean isReferentPresentation() {
-      return true;
     }
     @Override
     protected EditorMenuDescriptor getEditorMenuDescriptor(Object parameterObject) {

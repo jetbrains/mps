@@ -7,7 +7,6 @@ import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -34,7 +33,7 @@ public class Quotation_quotedNode extends AbstractCellMenuComponent {
     public Quotation_generic_cellMenu_61vnku_a0() {
     }
 
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
       List<SAbstractConcept> result = ListSequence.fromList(new ArrayList<SAbstractConcept>());
       LanguageRegistry lr = LanguageRegistry.getInstance(editorContext.getRepository());
       for (SLanguage l : new SLanguageHierarchy(lr, SModelOperations.getAllLanguageImports(SNodeOperations.getModel(node))).getExtended()) {
@@ -45,18 +44,19 @@ public class Quotation_quotedNode extends AbstractCellMenuComponent {
         }
       }
       return result;
+
     }
-    protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      this.handleAction_impl((SAbstractConcept) parameterObject, node, model, operationContext, editorContext);
+    protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      this.handleAction_impl((SAbstractConcept) parameterObject, node, model, editorContext);
     }
-    public void handleAction_impl(SAbstractConcept parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    private void handleAction_impl(SAbstractConcept parameterObject, SNode node, SModel model, EditorContext editorContext) {
       SNode oldInstance = SLinkOperations.getTarget(node, LINKS.quotedNode$ip4);
       SLinkOperations.setTarget(node, LINKS.quotedNode$ip4, SNodeFactoryOperations.createNewNode(parameterObject, null));
       if (oldInstance != null) {
         SNodeOperations.deleteNode(oldInstance);
       }
     }
-    public boolean isReferentPresentation() {
+    protected boolean isReferentPresentation() {
       return true;
     }
 

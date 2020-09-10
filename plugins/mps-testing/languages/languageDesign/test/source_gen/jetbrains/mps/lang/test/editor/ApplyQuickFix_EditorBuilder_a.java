@@ -40,7 +40,6 @@ import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Group;
 import java.util.List;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.project.AbstractModule;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.Set;
@@ -177,7 +176,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     public ApplyQuickFix_generic_cellMenu_jhinkb_a0b0() {
     }
 
-    public List<?> createParameterObjects(SNode node, IOperationContext operationContext, EditorContext editorContext) {
+    protected List<?> createParameterObjects(SNode node, EditorContext editorContext) {
       AbstractModule module = (AbstractModule) SNodeOperations.getModel(node).getModule();
 
       SAbstractConcept reportConcept = CONCEPTS.AbstractReportStatement$8d;
@@ -212,20 +211,19 @@ import org.jetbrains.mps.openapi.language.SProperty;
         intentions.addAll(ListSequence.fromList(SLinkOperations.getChildren(report, LINKS.helginsIntention$ixU_)).toListSequence());
       }
       return intentions;
+
     }
-    protected void handleAction(Object parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
-      this.handleAction_impl((SNode) parameterObject, node, model, operationContext, editorContext);
+    protected void handleAction(Object parameterObject, SNode node, SModel model, EditorContext editorContext) {
+      this.handleAction_impl((SNode) parameterObject, node, model, editorContext);
     }
-    public void handleAction_impl(SNode parameterObject, SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    private void handleAction_impl(SNode parameterObject, SNode node, SModel model, EditorContext editorContext) {
       SLinkOperations.setTarget(node, LINKS.quickfix$q6rO, parameterObject);
     }
-    public boolean isReferentPresentation() {
+    protected boolean isReferentPresentation() {
       return false;
     }
-    public String getMatchingText(Object parameterObject) {
-      return this.getMatchingText_internal((SNode) parameterObject);
-    }
-    public String getMatchingText_internal(SNode parameterObject) {
+    protected String getMatchingText(Object _parameterObject) {
+      final SNode parameterObject = (SNode) _parameterObject;
       return SPropertyOperations.getString(SLinkOperations.getTarget(parameterObject, LINKS.quickFix$ClX6), PROPS.name$MnvL) + " from " + MessageStatement__BehaviorDescriptor.getName_id1oFBbRehoLP.invoke(SNodeOperations.cast(SNodeOperations.getParent(parameterObject), CONCEPTS.MessageStatement$8b));
     }
 

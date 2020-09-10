@@ -32,7 +32,6 @@ import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import java.util.stream.Collectors;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.IOperationContext;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.nodeEditor.MPSColors;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -131,7 +130,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       return actions.stream().map(mapper).collect(Collectors.toList());
     }
 
-    public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
       SPropertyOperations.set(node, PROPS.canRun$gS0N, false);
     }
     public String getMatchingText() {
@@ -169,7 +168,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       return actions.stream().map(mapper).collect(Collectors.toList());
     }
 
-    public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
       SPropertyOperations.set(node, PROPS.canRun$gS0N, true);
     }
     public String getMatchingText() {
@@ -233,7 +232,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       return actions.stream().map(mapper).collect(Collectors.toList());
     }
 
-    public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
       SPropertyOperations.set(node, PROPS.canDebug$cxkv, false);
     }
     public String getMatchingText() {
@@ -271,7 +270,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       return actions.stream().map(mapper).collect(Collectors.toList());
     }
 
-    public void handleAction(SNode node, SModel model, IOperationContext operationContext, EditorContext editorContext) {
+    protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
       SPropertyOperations.set(node, PROPS.canDebug$cxkv, true);
     }
     public String getMatchingText() {

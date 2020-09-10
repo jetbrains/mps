@@ -2457,48 +2457,47 @@
   </root>
   <root nodeRef="r:dc79d042-ba38-4e91-9392-42f38106ae44(jetbrains.mps.lang.behavior.editor)/1225202142298">
     <file name="ConceptMethodDeclaration_Menu.java">
-      <node id="1225202142298" at="27,42,28,98" concept="12" />
-      <node id="1225202142303" at="34,120,35,244" concept="8" />
-      <node id="1225202142300" at="37,148,38,100" concept="2" />
-      <node id="1225202142316" at="40,149,41,84" concept="2" />
+      <node id="1225202142298" at="26,42,27,98" concept="12" />
+      <node id="1225202142303" at="33,87,34,244" concept="8" />
+      <node id="1225202142300" at="34,244,35,0" concept="10" />
+      <node id="1225202142300" at="37,112,38,82" concept="2" />
+      <node id="1225202142316" at="40,114,41,84" concept="2" />
       <node id="1225202142323" at="41,84,42,154" concept="2" />
       <node id="334628810662599550" at="42,154,43,127" concept="2" />
-      <node id="1225202142300" at="45,45,46,19" concept="8" />
+      <node id="1225202142300" at="45,48,46,19" concept="8" />
       <node id="1225202142300" at="50,84,51,257" concept="8" />
       <node id="1225202142298" at="56,0,57,0" concept="11" trace="ConceptBehavior$2" />
       <node id="1225202142298" at="60,0,61,0" concept="11" trace="concept$u6dL" />
       <node id="1225202142298" at="61,0,62,0" concept="11" trace="overriddenMethod$quKH" />
       <node id="1225202142298" at="62,0,63,0" concept="11" trace="visibility$Yyua" />
       <node id="1225202142298" at="66,0,67,0" concept="11" trace="isStatic$JhJe" />
-      <node id="1225202142300" at="31,0,33,0" concept="1" trace="ConceptMethodDeclaration_generic_cellMenu_v7l746_a0#()V" />
-      <node id="1225202142298" at="27,0,30,0" concept="1" trace="ConceptMethodDeclaration_Menu#()V" />
-      <node id="1225202142300" at="34,0,37,0" concept="6" trace="createParameterObjects#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/util/List;" />
-      <node id="1225202142300" at="37,0,40,0" concept="6" trace="handleAction#(Ljava/lang/Object;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
+      <node id="1225202142300" at="30,0,32,0" concept="1" trace="ConceptMethodDeclaration_generic_cellMenu_v7l746_a0#()V" />
+      <node id="1225202142298" at="26,0,29,0" concept="1" trace="ConceptMethodDeclaration_Menu#()V" />
+      <node id="1225202142300" at="37,0,40,0" concept="6" trace="handleAction#(Ljava/lang/Object;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
       <node id="1225202142300" at="45,0,48,0" concept="6" trace="isReferentPresentation#()Z" />
+      <node id="1225202142300" at="33,0,37,0" concept="6" trace="createParameterObjects#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/util/List;" />
       <node id="1225202142300" at="49,0,53,0" concept="6" trace="getEditorMenuDescriptor#(Ljava/lang/Object;)Ljetbrains/mps/openapi/editor/menus/EditorMenuDescriptor;" />
-      <node id="1225202142300" at="40,0,45,0" concept="6" trace="handleAction_impl#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;Ljetbrains/mps/smodel/IOperationContext;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
-      <scope id="1225202142300" at="31,66,31,66" />
-      <scope id="1225202142298" at="27,42,28,98" />
-      <scope id="1225202142302" at="34,120,35,244" />
-      <scope id="1225202142300" at="37,148,38,100" />
-      <scope id="1225202142300" at="45,45,46,19" />
+      <node id="1225202142300" at="40,0,45,0" concept="6" trace="handleAction_impl#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
+      <scope id="1225202142300" at="30,66,30,66" />
+      <scope id="1225202142298" at="26,42,27,98" />
+      <scope id="1225202142300" at="37,112,38,82" />
+      <scope id="1225202142300" at="45,48,46,19" />
       <scope id="1225202142300" at="50,84,51,257" />
-      <scope id="1225202142300" at="31,0,33,0" />
-      <scope id="1225202142298" at="27,0,30,0" />
-      <scope id="1225202142300" at="34,0,37,0">
-        <var name="editorContext" id="1225202142300" />
-        <var name="node" id="1225202142300" />
-        <var name="operationContext" id="1225202142300" />
-      </scope>
+      <scope id="1225202142300" at="30,0,32,0" />
+      <scope id="1225202142300" at="33,87,35,0" />
+      <scope id="1225202142298" at="26,0,29,0" />
       <scope id="1225202142300" at="37,0,40,0">
         <var name="editorContext" id="1225202142300" />
         <var name="model" id="1225202142300" />
         <var name="node" id="1225202142300" />
-        <var name="operationContext" id="1225202142300" />
         <var name="parameterObject" id="1225202142300" />
       </scope>
-      <scope id="1225202142315" at="40,149,43,127" />
+      <scope id="1225202142300" at="40,114,43,127" />
       <scope id="1225202142300" at="45,0,48,0" />
+      <scope id="1225202142300" at="33,0,37,0">
+        <var name="editorContext" id="1225202142300" />
+        <var name="node" id="1225202142300" />
+      </scope>
       <scope id="1225202142300" at="49,0,53,0">
         <var name="parameterObject" id="1225202142300" />
       </scope>
@@ -2506,14 +2505,13 @@
         <var name="editorContext" id="1225202142300" />
         <var name="model" id="1225202142300" />
         <var name="node" id="1225202142300" />
-        <var name="operationContext" id="1225202142300" />
         <var name="parameterObject" id="1225202142300" />
       </scope>
       <unit id="1225202142298" at="55,0,58,0" name="jetbrains.mps.lang.behavior.editor.ConceptMethodDeclaration_Menu$CONCEPTS" />
       <unit id="1225202142298" at="65,0,68,0" name="jetbrains.mps.lang.behavior.editor.ConceptMethodDeclaration_Menu$PROPS" />
       <unit id="1225202142298" at="59,0,64,0" name="jetbrains.mps.lang.behavior.editor.ConceptMethodDeclaration_Menu$LINKS" />
-      <unit id="1225202142300" at="30,0,54,0" name="jetbrains.mps.lang.behavior.editor.ConceptMethodDeclaration_Menu$ConceptMethodDeclaration_generic_cellMenu_v7l746_a0" />
-      <unit id="1225202142298" at="26,0,69,0" name="jetbrains.mps.lang.behavior.editor.ConceptMethodDeclaration_Menu" />
+      <unit id="1225202142300" at="29,0,54,0" name="jetbrains.mps.lang.behavior.editor.ConceptMethodDeclaration_Menu$ConceptMethodDeclaration_generic_cellMenu_v7l746_a0" />
+      <unit id="1225202142298" at="25,0,69,0" name="jetbrains.mps.lang.behavior.editor.ConceptMethodDeclaration_Menu" />
     </file>
   </root>
   <root nodeRef="r:dc79d042-ba38-4e91-9392-42f38106ae44(jetbrains.mps.lang.behavior.editor)/1703835097132541536">
