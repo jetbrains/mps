@@ -24,8 +24,10 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.model.SModel;
 import java.util.ArrayList;
 import jetbrains.mps.generator.impl.plan.ConnectedComponentPartitioner;
+import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import java.util.HashSet;
+import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.generator.impl.plan.Conflict;
 import java.util.Set;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -148,7 +150,7 @@ public class PartitioningHelper {
     // } 
   }
 
-  public void printLanguages(Collection<SLanguage> languagesInUse, Collection<TemplateModule> actualGenerators) {
+  public void printLanguages(LanguageRegistry langRegistry, Collection<SLanguage> languagesInUse, Collection<TemplateModule> actualGenerators) {
     console.addText("Model directly uses next languages (including explicitly engaged, if any):\n");
     HashSet<SLanguage> coveredByPlanGenerators = new HashSet<SLanguage>();
     // XXX perhaps, shall change/extend contract of MGP.coversLanguage() instead of collecting source languages from templates. 
@@ -159,9 +161,18 @@ public class PartitioningHelper {
       console.addText("Beware, some languages used in the model are not covered by the generation plan!\n\n");
     }
     for (SLanguage l : languagesInUse) {
-      console.addText("  ");
-      String m = String.format((coveredByPlanGenerators.contains(l) ? "%s\n" : "%s  [NOT IN THE PLAN]\n"), l.getQualifiedName());
-      console.addText(m);
+      String msg = "  %s\n";
+      if (!(coveredByPlanGenerators.contains(l))) {
+        LanguageRuntime lr = langRegistry.getLanguage(l);
+        if (lr == null) {
+          msg = "  %s  [Unknown or not deployed language]\n";
+        } else if (lr.getGenerators().isEmpty()) {
+          msg = "  %s  [Language without generators]\n";
+        } else {
+          msg = "  %s  [NOT IN THE PLAN]\n";
+        }
+      }
+      console.addText(String.format(msg, l.getQualifiedName()));
     }
     consoleDelimiter();
   }

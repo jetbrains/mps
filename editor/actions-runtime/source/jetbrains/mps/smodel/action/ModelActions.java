@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -85,29 +85,6 @@ public class ModelActions {
                                                                        EditorContext editorContext) {
     return ReferentSubstituteActionsHelper.createActions(referenceNode, link, matchingTextProvider, visibleMatchingTextProvider, editorContext);
   }
-
-  //-------------------
-  // right-transform hint substitute
-  //-------------------
-
-  /**
-   * @deprecated use {@link #createSideTransformSubstituteActions(EditorCell, Side)}
-   */
-  @Deprecated
-  @ToRemove(version = 2019.3)
-  public static boolean canCreateSideTransformHintSubstituteActions(SNode sourceNode, CellSide side, String transformTag, IOperationContext context) {
-    return false;
-  }
-
-  /**
-   * @deprecated use {@link #createSideTransformSubstituteActions(EditorCell, Side)}
-   */
-  @Deprecated
-  @ToRemove(version = 2019.3)
-  public static List<SubstituteAction> createSideTransformHintSubstituteActions(SNode sourceNode, CellSide side, String transformTag, IOperationContext context) {
-    return Collections.emptyList();
-  }
-
 
   public static List<SubstituteAction> createSideTransformSubstituteActions(@NotNull EditorCell cell, @NotNull SideTransformSubstituteInfo.Side side) {
     final SNode sourceNode = cell.getSNode();

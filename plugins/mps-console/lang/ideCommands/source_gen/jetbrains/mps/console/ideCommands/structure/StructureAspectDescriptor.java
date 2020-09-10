@@ -372,7 +372,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:135a606f-0376-4c5c-9ab8-4030f051a062(jetbrains.mps.console.ideCommands.structure)/7057947030097724900");
     b.version(2);
     b.property("ignoreExternalPlan", 0x2c510b378f8ce5ddL).type(PrimitiveTypeId.BOOLEAN).origin("3193345944041874909").done();
-    b.aggregate("targetModelOld", 0x61f2dd6de47f867aL).target(0xa5e4de5346a344daL, 0xaab368fdf1c34ed0L, 0x6c8954f469900928L).optional(true).ordered(true).multiple(false).origin("7057947030097725050").done();
     b.aggregate("targetModel", 0x70ee8fac615b4f33L).target(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x7d58bd9fd9c8b6d3L).optional(true).ordered(true).multiple(false).origin("8137599547235585843").done();
     b.alias("#showGenPlan");
     return b.create();

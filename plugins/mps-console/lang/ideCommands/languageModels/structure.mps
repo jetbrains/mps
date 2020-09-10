@@ -202,16 +202,6 @@
     <property role="R4oN_" value="show the generation plan" />
     <property role="EcuMT" value="7057947030097724900" />
     <ref role="1TJDcQ" to="eynw:1yfzJNJq9L_" resolve="InterpretedCommand" />
-    <node concept="1TJgyj" id="67MRmR$vSpU" role="1TKVEi">
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="targetModelOld" />
-      <property role="IQ2ns" value="7057947030097725050" />
-      <ref role="20lvS9" node="6M9lfhD$0$C" resolve="ModelReference" />
-      <node concept="asaX9" id="73IzULxmLje" role="lGtFl">
-        <property role="YLPcu" value="2018.2" />
-        <property role="YLQ7P" value="ModelReference is faulty, deprecated and about to cease existence. Set targetModel[1] once old is gone" />
-      </node>
-    </node>
     <node concept="1TJgyj" id="73IzULxmOWN" role="1TKVEi">
       <property role="IQ2ns" value="8137599547235585843" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />

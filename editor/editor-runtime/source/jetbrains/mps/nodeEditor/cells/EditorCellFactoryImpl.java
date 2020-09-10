@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,9 +59,9 @@ public class EditorCellFactoryImpl implements EditorCellFactory {
 
   private final EditorContext myEditorContext;
   private Deque<EditorCellContextImpl> myCellContextStack;
-  private Map<SNode, Set<Class<? extends ConceptEditor>>> myUsedEditors = new HashMap<>();
-  private Map<EditorCellContext, Map<SConcept, Map<Collection<Class<? extends ConceptEditor>>, ConceptEditor>>> myEditorsCache = new HashMap<>();
-  private Map<EditorCellContext, Map<SConcept, Map<String, ConceptEditorComponent>>> myEditorComponentsCache = new HashMap<>();
+  private final Map<SNode, Set<Class<? extends ConceptEditor>>> myUsedEditors = new HashMap<>();
+  private final Map<Collection<String>, Map<SConcept, Map<Collection<Class<? extends ConceptEditor>>, ConceptEditor>>> myEditorsCache = new HashMap<>();
+  private final Map<Collection<String>, Map<SConcept, Map<String, ConceptEditorComponent>>> myEditorComponentsCache = new HashMap<>();
 
   public EditorCellFactoryImpl(EditorContext editorContext) {
     myEditorContext = editorContext;
@@ -233,21 +233,23 @@ public class EditorCellFactoryImpl implements EditorCellFactory {
   }
 
   private ConceptEditor getCachedEditor(SConcept concept, Collection<Class<? extends ConceptEditor>> excludedEditors) {
-    return myEditorsCache.computeIfAbsent(getCellContext(), c -> new HashMap<>()).computeIfAbsent(concept, c -> new HashMap<>()).computeIfAbsent(
-        excludedEditors, key -> new ConceptEditorRegistry(key).get(concept));
+    final Collection<String> hints = getCellContext().getHints();
+    return myEditorsCache.computeIfAbsent(hints, c -> new HashMap<>()).computeIfAbsent(concept, c -> new HashMap<>()).computeIfAbsent(
+        excludedEditors, key -> new ConceptEditorRegistry(hints, key).get(concept));
   }
 
 
   private ConceptEditorComponent getCachedEditorComponent(SConcept concept, String editorComponentId) {
-    return myEditorComponentsCache.computeIfAbsent(getCellContext(), c -> new HashMap<>()).computeIfAbsent(concept, c -> new HashMap<>()).computeIfAbsent(
-        editorComponentId, id -> new ConceptEditorComponentRegistry(id).get(concept));
+    final Collection<String> hints = getCellContext().getHints();
+    return myEditorComponentsCache.computeIfAbsent(hints, c -> new HashMap<>()).computeIfAbsent(concept, c -> new HashMap<>()).computeIfAbsent(
+        editorComponentId, id -> new ConceptEditorComponentRegistry(hints, id).get(concept));
   }
 
   private class ConceptEditorRegistry extends AbstractEditorRegistry<ConceptEditor> {
     private final Collection<Class<? extends ConceptEditor>> myExcludedEditors;
 
-    private ConceptEditorRegistry(Collection<Class<? extends ConceptEditor>> excludedEditors) {
-      super(getCellContext(), myEditorContext.getRepository());
+    private ConceptEditorRegistry(Collection<String> hints, Collection<Class<? extends ConceptEditor>> excludedEditors) {
+      super(hints, myEditorContext.getRepository());
       myExcludedEditors = excludedEditors;
     }
 
@@ -261,8 +263,8 @@ public class EditorCellFactoryImpl implements EditorCellFactory {
   private class ConceptEditorComponentRegistry extends AbstractEditorRegistry<ConceptEditorComponent> {
     private final String myEditorComponentId;
 
-    private ConceptEditorComponentRegistry(String editorComponentId) {
-      super(getCellContext(), myEditorContext.getRepository());
+    private ConceptEditorComponentRegistry(Collection<String> hints, String editorComponentId) {
+      super(hints, myEditorContext.getRepository());
       myEditorComponentId = editorComponentId;
     }
 

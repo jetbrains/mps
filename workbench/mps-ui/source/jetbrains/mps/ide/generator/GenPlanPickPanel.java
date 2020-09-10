@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,6 +46,7 @@ import javax.swing.JTextField;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
+import java.util.function.Supplier;
 
 /**
  * UI component to select a model with custom generation plan.
@@ -55,13 +56,17 @@ import java.awt.event.ActionEvent;
  */
 public class GenPlanPickPanel extends JPanel {
   private final MPSProject myProject;
-  private final SearchScope myScope;
+  private final Supplier<SearchScope> myScope;
   private final JTextField myModelName;
   private SModelReference myActualReference;
 
   public GenPlanPickPanel(@NotNull MPSProject mpsProject, @NotNull SearchScope scope, @NotNull String title) {
+    this(mpsProject, () -> scope, title);
+  }
+
+  public GenPlanPickPanel(@NotNull MPSProject mpsProject, @NotNull Supplier<SearchScope> scopeProvider, @NotNull String title) {
     myProject = mpsProject;
-    myScope = scope;
+    myScope = scopeProvider;
     setBorder(IdeBorderFactory.createTitledBorder(title));
     setLayout(new GridBagLayout());
     JLabel l = new JLabel("Model:");
@@ -82,7 +87,7 @@ public class GenPlanPickPanel extends JPanel {
     c.weightx = 0;
     add(b, c);
     b.addActionListener(e -> {
-      PickGenPlanModelDialog dialog = new PickGenPlanModelDialog(myProject, myScope);
+      PickGenPlanModelDialog dialog = new PickGenPlanModelDialog(myProject, myScope.get());
       dialog.show();
       if (dialog.isOK()) {
         setPlanModel(dialog.getResult());
