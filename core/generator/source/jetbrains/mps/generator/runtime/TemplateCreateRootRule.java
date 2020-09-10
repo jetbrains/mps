@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.generator.runtime;
 
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -29,13 +28,4 @@ public interface TemplateCreateRootRule extends TemplateRuleWithCondition {
 
   @Nullable
   Collection<SNode> apply(@NotNull TemplateContext context) throws GenerationException;
-
-  /**
-   * @deprecated 19.3 generates overrides for the method; drop once 2020.1 is out
-   */
-  @Deprecated
-  @ToRemove(version = 2020.1)
-  default Collection<SNode> apply(TemplateExecutionEnvironment environment) throws GenerationException {
-    return null;
-  }
 }

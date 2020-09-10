@@ -16,7 +16,6 @@
 package jetbrains.mps.generator.runtime;
 
 import jetbrains.mps.generator.template.ITemplateGenerator;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -43,23 +42,6 @@ public abstract class MapConfigBase implements TemplateMappingConfiguration {
   protected final SProperty[] myProperties;
   protected final SReferenceLink[] myAssociationLinks;
   protected final SContainmentLink[] myAggregationLinks;
-
-  /**
-   * @deprecated shall use {@link #MapConfigBase(SNodeReference, String, TemplateModel, boolean, MetaObjectContainer)} instead
-   *             Code generated with 20.1 uses this cons but doesn't access fields that are null.
-   */
-  @Deprecated
-  @ToRemove(version = 2020.2)
-  protected MapConfigBase(@NotNull SNodeReference mcNode, @NotNull String name, @NotNull TemplateModel templateModel, boolean topPri) {
-    myMapConfigNode = mcNode;
-    myName = name;
-    myTemplateModel = templateModel;
-    myTopPriority = topPri;
-    myConcepts = null;
-    myProperties = null;
-    myAssociationLinks = null;
-    myAggregationLinks = null;
-  }
 
   protected MapConfigBase(@NotNull SNodeReference mcNode, @NotNull String name, @NotNull TemplateModel templateModel, boolean topPri, MetaObjectContainer moc) {
     myMapConfigNode = mcNode;
