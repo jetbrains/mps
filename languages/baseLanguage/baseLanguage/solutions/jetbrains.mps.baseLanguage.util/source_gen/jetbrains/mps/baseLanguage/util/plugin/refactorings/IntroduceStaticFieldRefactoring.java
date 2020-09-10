@@ -82,6 +82,7 @@ public class IntroduceStaticFieldRefactoring extends AbstractIntroduceFieldRefac
         replaceNode(duplicate, newDeclaration);
       }
     }
+    replaceReferences(newDeclaration);
     return newDeclaration;
   }
 

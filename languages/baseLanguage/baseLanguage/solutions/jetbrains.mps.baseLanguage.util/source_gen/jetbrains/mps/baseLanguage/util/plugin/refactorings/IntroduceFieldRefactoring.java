@@ -76,6 +76,7 @@ public class IntroduceFieldRefactoring extends AbstractIntroduceFieldRefactoring
         replaceNode(duplicate, newDeclaration);
       }
     }
+    replaceReferences(newDeclaration);
     return newDeclaration;
   }
 
