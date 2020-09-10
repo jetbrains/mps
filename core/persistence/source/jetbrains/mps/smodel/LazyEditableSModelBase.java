@@ -54,11 +54,15 @@ public abstract class LazyEditableSModelBase extends EditableSModelBase {
 
   @Override
   public final void load() {
+    ModelLoadingState oldState = getLoadingState();
     myLoadSupport.getModel(ModelLoadingState.FULLY_LOADED);
+    // e.g. could transition from INTERFACE_LOADED to FULLY_LOADED
+    fireModelStateChanged(oldState, getLoadingState());
   }
 
   @Override
   protected final SModel getCurrentModelInternal() {
+    // getModel(null) is not expected to change loading state, hence no fireModeStateChanged here
     return myLoadSupport.getModel(null);
   }
 

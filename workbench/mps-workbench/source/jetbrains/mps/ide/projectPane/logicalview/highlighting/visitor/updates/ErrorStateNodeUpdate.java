@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,9 +33,9 @@ public class ErrorStateNodeUpdate extends NodeUpdate {
     myTooltipText = null;
   }
 
-  public ErrorStateNodeUpdate(String tooltipText, boolean isWarning) {
+  public ErrorStateNodeUpdate(String tooltipText, boolean isWarningNotError) {
     myTooltipText = tooltipText;
-    myErrorState = myTooltipText == null ? ErrorState.NONE : (isWarning ? ErrorState.WARNING : ErrorState.ERROR);
+    myErrorState = myTooltipText == null ? ErrorState.NONE : (isWarningNotError ? ErrorState.WARNING : ErrorState.ERROR);
   }
 
   @Override

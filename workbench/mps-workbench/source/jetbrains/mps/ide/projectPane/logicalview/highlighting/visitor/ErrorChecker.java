@@ -19,6 +19,9 @@ import jetbrains.mps.errors.item.ModelReportItem;
 import jetbrains.mps.errors.item.ModuleReportItem;
 import jetbrains.mps.extapi.model.TransientSModel;
 import jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.updates.ErrorStateNodeUpdate;
+import jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.updates.NodeUpdate;
+import jetbrains.mps.ide.ui.tree.ErrorState;
+import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.ide.ui.tree.module.ProjectModuleTreeNode;
 import jetbrains.mps.ide.ui.tree.module.ProjectTreeNode;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
@@ -54,7 +57,11 @@ public class ErrorChecker extends TreeUpdateVisitor {
     final ModelValidator modelValidator = new ModelValidator(myProject.getPlatform(), model);
     modelValidator.skipUnlessLoaded(); // no reason to load all the models unless user gets to one
     modelValidator.validate(collector, new EmptyProgressMonitor());
-    addUpdate(node, createNodeUpdate(collector));
+    if (!model.isLoaded() && collector.getErrors().isEmpty() && collector.getWarnings().isEmpty()) {
+      addUpdate(node, new ModelNotLoadedInfo());
+    } else {
+      addUpdate(node, createNodeUpdate(collector));
+    }
   }
 
   @Override
@@ -91,5 +98,22 @@ public class ErrorChecker extends TreeUpdateVisitor {
   public void visitProjectNode(@NotNull final ProjectTreeNode node) {
     String errors = ((StandaloneMPSProject) node.getProject()).getErrors();
     addUpdate(node, new ErrorStateNodeUpdate(errors, false));
+  }
+
+  private static class ModelNotLoadedInfo extends NodeUpdate {
+    private final String msg = "Model is not loaded; no validity check";
+
+    @Override
+    public boolean needed(MPSTreeNode node) {
+      return !msg.equals(node.getTooltipText());
+    }
+
+    @Override
+    public void update(MPSTreeNode node) {
+      // do not override anything that could be there, even of 'info' level; message about not loaded model is of least significance
+      if (node.getErrorState() == ErrorState.NONE && node.getTooltipText() == null) {
+        node.setTooltipText(msg);
+      }
+    }
   }
 }
