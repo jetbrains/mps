@@ -149,15 +149,4 @@ public abstract class AbstractCellMenuPart_ReplaceChild_Group implements Substit
                                         EditorContext editorContext) {
     return null;
   }
-
-  /**
-   * @deprecated This method was used only to distinct concept declaration reference and concept that is given as node.
-   * Now we should use truly concepts in parameter objects, not concept nodes.
-   * Templates in 2020.2 still generate override for the method, despite it being unused.
-   */
-  @Deprecated(forRemoval = true)
-  @ToRemove(version = 3.5)
-  protected boolean isReferentPresentation() {
-    return true;
-  }
 }

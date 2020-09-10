@@ -141,16 +141,6 @@ public abstract class AbstractCellMenuPart_ReplaceNode_Group implements Substitu
   protected abstract SNode createReplacementNode(Object parameterObject, SNode node, SModel model, IOperationContext operationContext,
       EditorContext editorContext);
 
-  /**
-   * @deprecated This method was used only to distinct concept declaration reference and concept that is given as node.
-   *             Now we should use truly concepts in parameter objects, not concept nodes.
-   */
-  @Deprecated
-  @ToRemove(version = 3.5)
-  protected boolean isReferentPresentation() {
-    return true;
-  }
-
   protected EditorMenuDescriptor getEditorMenuDescriptor(Object parameterObject) {
     return null;
   }
