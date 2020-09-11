@@ -128,8 +128,6 @@
     <classNode dependClassName="jetbrains.mps.core.platform.PlatformOptionsBuilder" />
     <classNode dependClassName="jetbrains.mps.core.tool.environment.util.FileMPSProject" />
     <classNode dependClassName="jetbrains.mps.extapi.module.FacetsRegistry" />
-    <classNode dependClassName="jetbrains.mps.generator.DefaultModifiableGenerationSettings" />
-    <classNode dependClassName="jetbrains.mps.generator.GenerationSettingsProvider" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
     <classNode dependClassName="jetbrains.mps.library.LibraryInitializer" />

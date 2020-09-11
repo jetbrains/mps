@@ -37,7 +37,7 @@ import javax.swing.Icon;
   storages = @Storage("generationSettings.xml"),
     reportStatistic = true
 )
-public class GenerationSettings implements PersistentStateComponent<MyState>, Disposable {
+public final class GenerationSettings implements PersistentStateComponent<MyState>, Disposable {
 
   private final DefaultModifiableGenerationSettings myState = new DefaultModifiableGenerationSettings();
   private final MPSCoreComponents myCoreComponents;
@@ -95,7 +95,7 @@ public class GenerationSettings implements PersistentStateComponent<MyState>, Di
     return null;
   }
 
-  public IModifiableGenerationSettings getModifiableSettings() {
+  private IModifiableGenerationSettings getModifiableSettings() {
     return myState;
   }
 

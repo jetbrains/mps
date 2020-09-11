@@ -320,12 +320,11 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
 
     @Override
     public void setup(IPropertiesPool ppool, Iterable<ITarget> targets, Iterable<? extends IResource> input) {
-      // todo: why should we specify project only for Generate facet? 
       ppool.setPredecessor(predParamPool);
       predParamPool = ppool;
       new GenerateFacetInitializer().populate(ppool);
 
-      IModifiableGenerationSettings genSettings = GenerationSettingsProvider.getInstance().getGenerationSettings();
+      IModifiableGenerationSettings genSettings = getSession().getProject().getComponent(GenerationSettingsProvider.class).getGenerationSettings();
       new TextGenFacetInitializer().generateDebugInfo(genSettings.isGenerateDebugInfo()).populate(ppool);
 
       new JavaCompileFacetInitializer().setJavaCompileOptions(JavaCompilerOptionsComponent.getInstance().getJavaCompilerOptions(getSession().getProject())).populate(ppool);

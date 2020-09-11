@@ -6,7 +6,6 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
-    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
   </languages>
   <imports>
     <import index="hfuk" ref="r:b25dd364-bc3f-4a66-97d1-262009610c5e(jetbrains.mps.make)" />
@@ -40,7 +39,6 @@
     <import index="l46t" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.compiler(MPS.Core/)" />
     <import index="jqcx" ref="r:8e0d2787-667a-41b8-9f98-9bb45c087fba(jetbrains.mps.internal.make.runtime.script)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
-    <import index="ncw5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util.annotation(MPS.Core/)" />
     <import index="mk8z" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.progress(MPS.Platform/)" />
     <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" />
   </imports>
@@ -2520,40 +2518,6 @@
           </node>
         </node>
         <node concept="3clFbS" id="9D0Ba05v4m" role="3clF47">
-          <node concept="3SKdUt" id="2zR2ackj8lP" role="3cqZAp">
-            <node concept="1PaTwC" id="ATZLwXos9f" role="1aUNEU">
-              <node concept="3oM_SD" id="ATZLwXos9g" role="1PaTwD">
-                <property role="3oM_SC" value="todo:" />
-              </node>
-              <node concept="3oM_SD" id="ATZLwXos9h" role="1PaTwD">
-                <property role="3oM_SC" value="why" />
-              </node>
-              <node concept="3oM_SD" id="ATZLwXos9i" role="1PaTwD">
-                <property role="3oM_SC" value="should" />
-              </node>
-              <node concept="3oM_SD" id="ATZLwXos9j" role="1PaTwD">
-                <property role="3oM_SC" value="we" />
-              </node>
-              <node concept="3oM_SD" id="ATZLwXos9k" role="1PaTwD">
-                <property role="3oM_SC" value="specify" />
-              </node>
-              <node concept="3oM_SD" id="ATZLwXos9l" role="1PaTwD">
-                <property role="3oM_SC" value="project" />
-              </node>
-              <node concept="3oM_SD" id="ATZLwXos9m" role="1PaTwD">
-                <property role="3oM_SC" value="only" />
-              </node>
-              <node concept="3oM_SD" id="ATZLwXos9n" role="1PaTwD">
-                <property role="3oM_SC" value="for" />
-              </node>
-              <node concept="3oM_SD" id="ATZLwXos9o" role="1PaTwD">
-                <property role="3oM_SC" value="Generate" />
-              </node>
-              <node concept="3oM_SD" id="ATZLwXos9p" role="1PaTwD">
-                <property role="3oM_SC" value="facet?" />
-              </node>
-            </node>
-          </node>
           <node concept="3clFbF" id="9D0Ba05v4n" role="3cqZAp">
             <node concept="2OqwBi" id="9D0Ba05v4o" role="3clFbG">
               <node concept="37vLTw" id="2BHiRxghf28" role="2Oq$k0">
@@ -2600,12 +2564,24 @@
                 <ref role="3uigEE" to="ap4t:~IModifiableGenerationSettings" resolve="IModifiableGenerationSettings" />
               </node>
               <node concept="2OqwBi" id="72ouys9IxMI" role="33vP2m">
-                <node concept="2YIFZM" id="72ouys9IxM2" role="2Oq$k0">
-                  <ref role="37wK5l" to="ap4t:~GenerationSettingsProvider.getInstance()" resolve="getInstance" />
-                  <ref role="1Pybhc" to="ap4t:~GenerationSettingsProvider" resolve="GenerationSettingsProvider" />
-                </node>
-                <node concept="liA8E" id="72ouys9IxRe" role="2OqNvi">
+                <node concept="liA8E" id="65agz9YeM1V" role="2OqNvi">
                   <ref role="37wK5l" to="ap4t:~GenerationSettingsProvider.getGenerationSettings()" resolve="getGenerationSettings" />
+                </node>
+                <node concept="2OqwBi" id="65agz9YeK8o" role="2Oq$k0">
+                  <node concept="2OqwBi" id="65agz9YeGYq" role="2Oq$k0">
+                    <node concept="1rXfSq" id="65agz9YeFMm" role="2Oq$k0">
+                      <ref role="37wK5l" node="9D0Ba05vfM" resolve="getSession" />
+                    </node>
+                    <node concept="liA8E" id="65agz9YeHHL" role="2OqNvi">
+                      <ref role="37wK5l" to="hfuk:2BjwmTxTf34" resolve="getProject" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="65agz9YeLop" role="2OqNvi">
+                    <ref role="37wK5l" to="z1c3:~Project.getComponent(java.lang.Class)" resolve="getComponent" />
+                    <node concept="3VsKOn" id="65agz9YeLN7" role="37wK5m">
+                      <ref role="3VsUkX" to="ap4t:~GenerationSettingsProvider" resolve="GenerationSettingsProvider" />
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>

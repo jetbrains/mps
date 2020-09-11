@@ -12,7 +12,6 @@
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
-    <import index="ap4t" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator(MPS.Core/)" />
     <import index="je6q" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.library.contributor(MPS.Core/)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="32g5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.library(MPS.Core/)" />
@@ -1723,30 +1722,6 @@
             </node>
             <node concept="37vLTw" id="11RXB4mdbcP" role="37vLTJ">
               <ref role="3cqZAo" node="11RXB4md7v2" resolve="myPlatform" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbH" id="5mffBJ2WjPp" role="3cqZAp" />
-        <node concept="3clFbF" id="KL8AqljyHw" role="3cqZAp">
-          <node concept="2OqwBi" id="KL8AqljyHx" role="3clFbG">
-            <node concept="liA8E" id="KL8AqljyHz" role="2OqNvi">
-              <ref role="37wK5l" to="ap4t:~GenerationSettingsProvider.setGenerationSettings(jetbrains.mps.generator.IModifiableGenerationSettings)" resolve="setGenerationSettings" />
-              <node concept="2ShNRf" id="KL8AqljyH$" role="37wK5m">
-                <node concept="1pGfFk" id="KL8AqljyH_" role="2ShVmc">
-                  <ref role="37wK5l" to="ap4t:~DefaultModifiableGenerationSettings.&lt;init&gt;()" resolve="DefaultModifiableGenerationSettings" />
-                </node>
-              </node>
-            </node>
-            <node concept="2OqwBi" id="1Pvl5nreID1" role="2Oq$k0">
-              <node concept="37vLTw" id="1Pvl5nreIiM" role="2Oq$k0">
-                <ref role="3cqZAo" node="11RXB4md7v2" resolve="myPlatform" />
-              </node>
-              <node concept="liA8E" id="1Pvl5nreJ6c" role="2OqNvi">
-                <ref role="37wK5l" to="wyuk:~ComponentHost.findComponent(java.lang.Class)" resolve="findComponent" />
-                <node concept="3VsKOn" id="1Pvl5nreJhB" role="37wK5m">
-                  <ref role="3VsUkX" to="ap4t:~GenerationSettingsProvider" resolve="GenerationSettingsProvider" />
-                </node>
-              </node>
             </node>
           </node>
         </node>

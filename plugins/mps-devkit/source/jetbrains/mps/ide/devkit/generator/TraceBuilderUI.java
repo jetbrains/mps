@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.ide.devkit.generator;
 
-import jetbrains.mps.generator.GenerationSettingsProvider;
 import jetbrains.mps.generator.GenerationTrace;
 import jetbrains.mps.generator.IGenerationSettings.GenTraceSettings;
 import jetbrains.mps.ide.devkit.generator.TraceNodeUI.Kind;
@@ -37,8 +36,8 @@ import java.util.Set;
 
 /**
  * Visitor to compose trace tree. Either resort to
- * {@link #buildBackTrace(GenerationTrace, SNode, SRepository)} and
- * {@link #buildTrace(GenerationTrace, SNode, SRepository)} default builders, or use directly:
+ * {@link #buildBackTrace(GenerationTrace, SNode, SRepository, GenTraceSettings)} and
+ * {@link #buildTrace(GenerationTrace, SNode, SRepository, GenTraceSettings)} default builders, or use directly:
  * <pre>
  *   GenerationTrace trace = ...;
  *   TraceBuilderUI builder = new TraceBulderUI();
@@ -248,18 +247,18 @@ L1:   for (SNodeReference t : templateNodes) {
   /**
    * Handy default forward trace composer.
    */
-  public static Collection<TraceNodeUI> buildTrace(@NotNull GenerationTrace trace, @NotNull SNode node, @Nullable SRepository templateSources) {
-    final TraceBuilderUI v = defaults(new TraceBuilderUI(templateSources));
-    if (!GenerationSettingsProvider.getInstance().getGenerationSettings().getTraceSettings().isGroupByChange()) {
+  public static Collection<TraceNodeUI> buildTrace(@NotNull GenerationTrace trace, @NotNull SNode node, @Nullable SRepository templateSources, @NotNull GenTraceSettings gts) {
+    final TraceBuilderUI v = defaults(new TraceBuilderUI(templateSources), gts);
+    if (!gts.isGroupByChange()) {
       v.groupByInputNode();
     }
     trace.walkForward(node, v);
     return v.getResult();
   }
 
-  public static Collection<TraceNodeUI> buildBackTrace(@NotNull GenerationTrace trace, @NotNull final SNode node, @Nullable SRepository templateSources) {
-    final TraceBuilderUI v = defaults(new TraceBuilderUI(templateSources));
-    if (!GenerationSettingsProvider.getInstance().getGenerationSettings().getTraceSettings().isGroupByChange()) {
+  public static Collection<TraceNodeUI> buildBackTrace(@NotNull GenerationTrace trace, @NotNull final SNode node, @Nullable SRepository templateSources, @NotNull GenTraceSettings gts) {
+    final TraceBuilderUI v = defaults(new TraceBuilderUI(templateSources), gts);
+    if (!gts.isGroupByChange()) {
       v.groupByOutputNode();
     }
     trace.walkBackward(node, v);
@@ -267,12 +266,9 @@ L1:   for (SNodeReference t : templateNodes) {
   }
 
   /**
-   * populate builder with settings from {@link GenerationSettingsProvider}
-   * @param builder
-   * @return
+   * populate builder with settings from {@link jetbrains.mps.generator.IGenerationSettings.GenTraceSettings}
    */
-  public static TraceBuilderUI defaults(TraceBuilderUI builder) {
-    GenTraceSettings s = GenerationSettingsProvider.getInstance().getGenerationSettings().getTraceSettings();
+  public static TraceBuilderUI defaults(TraceBuilderUI builder, GenTraceSettings s) {
     return builder.excludeEmptySteps(!s.isShowEmptySteps()).compactTemplates(s.isCompactTemplates()).groupByStep(s.isGroupByStep());
   }
 

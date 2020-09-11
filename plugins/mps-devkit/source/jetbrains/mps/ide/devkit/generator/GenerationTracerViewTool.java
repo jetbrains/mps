@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,9 +27,13 @@ import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentManager;
 import com.intellij.ui.content.ContentManagerAdapter;
 import com.intellij.ui.content.ContentManagerEvent;
+import com.intellij.ui.content.ContentManagerListener;
+import jetbrains.mps.generator.GenerationSettingsProvider;
 import jetbrains.mps.generator.GenerationTrace;
+import jetbrains.mps.generator.IGenerationSettings.GenTraceSettings;
 import jetbrains.mps.generator.TransientModelsProvider;
 import jetbrains.mps.ide.icons.IdeIcons;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.tools.BaseProjectTool;
 import jetbrains.mps.ide.tools.CloseAction;
 import jetbrains.mps.smodel.ModelAccessHelper;
@@ -56,8 +60,9 @@ public class GenerationTracerViewTool extends BaseProjectTool {
   private NoTabsComponent myNoTabsComponent;
 
   private List<GenerationTracerView> myTracerViews = new ArrayList<>();
-  private ContentManagerAdapter myContentListener;
+  private ContentManagerListener myContentListener;
   private final TransientModelsProvider myTransientModelsOwner;
+  private final GenTraceSettings myTraceSettings;
   private boolean myAutoscroll;
 
 
@@ -65,6 +70,7 @@ public class GenerationTracerViewTool extends BaseProjectTool {
     super(project, "Generation Tracer", null, IdeIcons.DEFAULT_ICON, ToolWindowAnchor.BOTTOM, false, true);
     myTransientModelsOwner = project.getComponent(TransientModelsProvider.class);
     myNoTabsComponent = new NoTabsComponent(this);
+    myTraceSettings = ProjectHelper.fromIdeaProject(project).getComponent(GenerationSettingsProvider.class).getGenerationSettings().getTraceSettings();
   }
 
   //////
@@ -232,7 +238,7 @@ public class GenerationTracerViewTool extends BaseProjectTool {
     TraceNodeUI newTrace = new TraceNodeUI("New gen tracer", Icons.COLLECTION, node.getReference());
     // XXX for now, we assume template source models reside in the same repository as the transient/origin node, this in
     // not generally true. Likely shall be project repository (if different than that of transient modules) or the one with deployed languages
-    for (TraceNodeUI n : TraceBuilderUI.buildTrace(ngt, node, node.getModel().getRepository())) {
+    for (TraceNodeUI n : TraceBuilderUI.buildTrace(ngt, node, node.getModel().getRepository(), myTraceSettings)) {
       newTrace.addChild(n);
     }
     return newTrace;
@@ -243,7 +249,7 @@ public class GenerationTracerViewTool extends BaseProjectTool {
       return null;
     }
     TraceNodeUI newTrace = new TraceNodeUI("New gen tracer", Icons.COLLECTION, node.getReference());
-    for (TraceNodeUI n : TraceBuilderUI.buildBackTrace(ngt, node, node.getModel().getRepository())) {
+    for (TraceNodeUI n : TraceBuilderUI.buildBackTrace(ngt, node, node.getModel().getRepository(), myTraceSettings)) {
       newTrace.addChild(n);
     }
     return newTrace;

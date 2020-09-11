@@ -9,8 +9,6 @@ import jetbrains.mps.core.platform.Platform;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.core.platform.PlatformFactory;
 import jetbrains.mps.core.platform.PlatformOptionsBuilder;
-import jetbrains.mps.generator.GenerationSettingsProvider;
-import jetbrains.mps.generator.DefaultModifiableGenerationSettings;
 import jetbrains.mps.extapi.module.FacetsRegistry;
 import org.jetbrains.mps.openapi.module.FacetsFacade;
 import jetbrains.mps.classloading.DumbIdeaPluginFacet;
@@ -48,8 +46,6 @@ public final class MpsEnvironment extends EnvironmentBase {
       LOG.info("Creating MPS environment");
     }
     myPlatform = PlatformFactory.initPlatform(PlatformOptionsBuilder.ALL);
-
-    myPlatform.findComponent(GenerationSettingsProvider.class).setGenerationSettings(new DefaultModifiableGenerationSettings());
     myPlugins = new PlatformPlugins(myConfig);
     registerFacetFactory(myPlatform.findComponent(FacetsRegistry.class));
     super.init(myPlatform);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,6 @@
 
 package jetbrains.mps.jps.build;
 
-import jetbrains.mps.generator.DefaultModifiableGenerationSettings;
-import jetbrains.mps.generator.GenerationSettingsProvider;
 import jetbrains.mps.idea.core.make.MPSMakeConstants;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.jps.project.JpsMPSProject;
@@ -74,8 +72,6 @@ public class MPSMakeMediator {
    * @return true if successful
    */
   public boolean build() {
-    GenerationSettingsProvider.getInstance().setGenerationSettings(new DefaultModifiableGenerationSettings());
-
     Iterable<MResource> resources = collectResources(myModelToTargetMap.keySet());
     GenerationPathsController pathsController = new GenerationPathsController(myProject, myContext, resources);
     pathsController.init(myModelToTargetMap.values());
