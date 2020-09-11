@@ -424,7 +424,8 @@ public class ModelPersistence {
 
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
-      throw new BreakParseSAXException();
+      // do not react on element end, when <persistence /> is processed, there are chances for <attribute>
+      // let startElement fail once it get to an element it doesn't care about.
     }
   }
 }
