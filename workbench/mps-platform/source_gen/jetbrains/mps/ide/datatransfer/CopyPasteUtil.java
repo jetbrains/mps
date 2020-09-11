@@ -54,7 +54,7 @@ public final class CopyPasteUtil {
   private static final Logger LOG = LogManager.getLogger(CopyPasteUtil.class);
   public CopyPasteUtil() {
   }
-  private static void processImportsAndLanguages(Set<SModelReference> necessaryImports, Set<SLanguage> necessaryLanguages, Map<SNode, SNode> sourceNodesToNewNodes, Set<SReference> allReferences) {
+  public static void processImportsAndLanguages(Set<SModelReference> necessaryImports, Set<SLanguage> necessaryLanguages, Map<SNode, SNode> sourceNodesToNewNodes, Set<SReference> allReferences) {
     necessaryImports.clear();
     necessaryLanguages.clear();
     Set<SNode> sourceNodes = sourceNodesToNewNodes.keySet();

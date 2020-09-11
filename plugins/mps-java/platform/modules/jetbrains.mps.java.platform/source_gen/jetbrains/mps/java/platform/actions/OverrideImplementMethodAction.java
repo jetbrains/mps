@@ -17,6 +17,18 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
+import java.util.Map;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
+import java.util.HashMap;
+import java.util.Set;
+import org.jetbrains.mps.openapi.model.SReference;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
+import java.util.HashSet;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.smodel.SModelRepository;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -82,6 +94,18 @@ public class OverrideImplementMethodAction {
           if (insertedMethods.isEmpty()) {
             return;
           }
+
+          Map<SNode, SNode> sourceNodesToNewNodes = MapSequence.fromMap(new HashMap<SNode, SNode>());
+          Set<SReference> allReferences = SetSequence.fromSet(new HashSet<SReference>());
+          Set<SModelReference> necessaryModels = SetSequence.fromSet(new HashSet<SModelReference>());
+          Set<SLanguage> necessaryLanguages = SetSequence.fromSet(new HashSet<SLanguage>());
+          CopyPasteUtil.processImportsAndLanguages(necessaryModels, necessaryLanguages, sourceNodesToNewNodes, allReferences);
+
+          SModel model = SModelRepository.getInstance().getModelDescriptor("Kaja.sandbox.sandbox");
+          SetSequence.fromSet(necessaryModels).addElement(model.getReference());
+
+          CopyPasteUtil.addImportsWithDialog(SNodeOperations.getModel(mySelectedNode), necessaryLanguages, necessaryModels, myProject);
+
           SNode firstMethod = ListSequence.fromList(insertedMethods).first();
           SNode nodeToSelect;
           if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(firstMethod, LINKS.body$5xQk), LINKS.statement$53DE)).isNotEmpty()) {
