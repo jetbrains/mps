@@ -15,21 +15,24 @@ import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.project.ProjectHelper;
+import java.util.ArrayList;
+import java.util.Set;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
+import java.util.HashSet;
+import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import java.util.Set;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.model.SReference;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
-import java.util.HashSet;
-import org.jetbrains.mps.openapi.model.SModelReference;
-import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.SModelRepository;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -80,7 +83,11 @@ public class OverrideImplementMethodAction {
     if (dialog.isOK()) {
       final Iterable<SNodeReference> selectedElements = (Iterable<SNodeReference>) dialog.getSelectedElements();
 
-      myProject.getModelAccess().executeCommandInEDT(new Runnable() {
+      final List<SNode> insertedMethods = new ArrayList<SNode>();
+      final Set<SModelReference> necessaryModels = SetSequence.fromSet(new HashSet<SModelReference>());
+      final Set<SLanguage> necessaryLanguages = SetSequence.fromSet(new HashSet<SLanguage>());
+
+      myProject.getModelAccess().executeCommand(new Runnable() {
         @Override
         public void run() {
           List<SNode> selection = Sequence.fromIterable(selectedElements).select(new ISelector<SNodeReference, SNode>() {
@@ -90,22 +97,45 @@ public class OverrideImplementMethodAction {
           }).toListSequence();
 
           OverrideImplementMethodsHelper helper = new OverrideImplementMethodsHelper(myProject, contextClassifier, contextMember, dialog.isRemoveAttributes(), dialog.isInsertOverrideAnnotation(), dialog.isAddReturn());
-          List<SNode> insertedMethods = helper.insertMethods(selection, SNodeOperations.isInstanceOf(contextClassifier, CONCEPTS.Interface$db) && myIsOverride);
+          ListSequence.fromList(insertedMethods).addSequence(ListSequence.fromList(helper.insertMethods(selection, SNodeOperations.isInstanceOf(contextClassifier, CONCEPTS.Interface$db) && myIsOverride)));
           if (insertedMethods.isEmpty()) {
             return;
           }
 
-          Map<SNode, SNode> sourceNodesToNewNodes = MapSequence.fromMap(new HashMap<SNode, SNode>());
-          Set<SReference> allReferences = SetSequence.fromSet(new HashSet<SReference>());
-          Set<SModelReference> necessaryModels = SetSequence.fromSet(new HashSet<SModelReference>());
-          Set<SLanguage> necessaryLanguages = SetSequence.fromSet(new HashSet<SLanguage>());
+          Iterable<SNode> insertedNodes = ListSequence.fromList(insertedMethods).translate(new ITranslator2<SNode, SNode>() {
+            public Iterable<SNode> translate(SNode it) {
+              return SNodeOperations.getNodeDescendants(it, CONCEPTS.BaseConcept$gP, false, new SAbstractConcept[]{});
+            }
+          });
+
+          final Map<SNode, SNode> sourceNodesToNewNodes = MapSequence.fromMap(new HashMap<SNode, SNode>());
+          Sequence.fromIterable(insertedNodes).visitAll(new IVisitor<SNode>() {
+            public void visit(SNode it) {
+              MapSequence.fromMap(sourceNodesToNewNodes).put(it, it);
+            }
+          });
+
+          final Set<SReference> allReferences = SetSequence.fromSet(new HashSet<SReference>());
+          Sequence.fromIterable(insertedNodes).visitAll(new IVisitor<SNode>() {
+            public void visit(SNode it) {
+              Iterable<? extends SReference> references = it.getReferences();
+              for (SReference ref : references) {
+                SetSequence.fromSet(allReferences).addElement(ref);
+              }
+            }
+          });
           CopyPasteUtil.processImportsAndLanguages(necessaryModels, necessaryLanguages, sourceNodesToNewNodes, allReferences);
+        }
+      });
 
-          SModel model = SModelRepository.getInstance().getModelDescriptor("Kaja.sandbox.sandbox");
-          SetSequence.fromSet(necessaryModels).addElement(model.getReference());
+      Runnable imports = CopyPasteUtil.addImportsWithDialog(SNodeOperations.getModel(mySelectedNode), necessaryLanguages, necessaryModels, myProject);
+      if (imports != null) {
+        myProject.getModelAccess().executeCommand(imports);
+      }
 
-          CopyPasteUtil.addImportsWithDialog(SNodeOperations.getModel(mySelectedNode), necessaryLanguages, necessaryModels, myProject);
-
+      myProject.getModelAccess().executeCommandInEDT(new Runnable() {
+        @Override
+        public void run() {
           SNode firstMethod = ListSequence.fromList(insertedMethods).first();
           SNode nodeToSelect;
           if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(firstMethod, LINKS.body$5xQk), LINKS.statement$53DE)).isNotEmpty()) {
@@ -115,8 +145,12 @@ public class OverrideImplementMethodAction {
           }
           myEditorContext.flushEvents();
           myEditorContext.getSelectionManager().setSelection(nodeToSelect);
+          EditorCell cell = myEditorContext.getEditorComponent().findNodeCell(SNodeOperations.getParent(firstMethod));
+          cell.getEditorComponent().update();
         }
       });
+
+
     }
   }
 
@@ -126,6 +160,7 @@ public class OverrideImplementMethodAction {
     /*package*/ static final SInterfaceConcept IMemberContainer$yM = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11638b31955L, "jetbrains.mps.baseLanguage.structure.IMemberContainer");
     /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
     /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 
   private static final class LINKS {
