@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model ref="r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)">
   <persistence version="9" />
-  <attribute name="doNotGenerate" value="false" />
   <languages>
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
@@ -7251,7 +7250,7 @@
         <node concept="H_c77" id="5ikp7PIH5lT" role="1tU5fm" />
       </node>
     </node>
-    <node concept="2tJIrI" id="5VXhZ2wXKmf" role="jymVt" />
+    <node concept="2tJIrI" id="4E5ZkB30uH5" role="jymVt" />
     <node concept="3HP615" id="3UEHyzu03mb" role="jymVt">
       <property role="TrG5h" value="ChangesInvalidateHandler" />
       <property role="2bfB8j" value="true" />
@@ -7263,7 +7262,7 @@
         <node concept="3clFbS" id="3UEHyzu03mg" role="3clF47" />
       </node>
     </node>
-    <node concept="2tJIrI" id="5VXhZ2wXJZv" role="jymVt" />
+    <node concept="2tJIrI" id="4E5ZkB30o3m" role="jymVt" />
     <node concept="312cEu" id="3UEHyztZP5F" role="jymVt">
       <property role="TrG5h" value="MyResultModelListener" />
       <property role="2bfB8j" value="true" />
@@ -7279,13 +7278,13 @@
           <property role="3clFbU" value="true" />
         </node>
       </node>
-      <node concept="2tJIrI" id="5VXhZ2wXJW3" role="jymVt" />
+      <node concept="2tJIrI" id="4E5ZkB30$Ro" role="jymVt" />
       <node concept="3clFbW" id="3UEHyztZP5H" role="jymVt">
         <node concept="3cqZAl" id="3UEHyztZP5I" role="3clF45" />
         <node concept="3Tm6S6" id="3UEHyztZP5N" role="1B3o_S" />
         <node concept="3clFbS" id="3UEHyztZP5K" role="3clF47" />
       </node>
-      <node concept="2tJIrI" id="5VXhZ2wXJSu" role="jymVt" />
+      <node concept="2tJIrI" id="4E5ZkB30n4Q" role="jymVt" />
       <node concept="3clFb_" id="2L8bCWnw62P" role="jymVt">
         <property role="TrG5h" value="enable" />
         <node concept="3clFbS" id="2L8bCWnw62S" role="3clF47">
@@ -7303,7 +7302,7 @@
         <node concept="3Tm6S6" id="2L8bCWnw54k" role="1B3o_S" />
         <node concept="3cqZAl" id="2L8bCWnw5Nm" role="3clF45" />
       </node>
-      <node concept="2tJIrI" id="5VXhZ2wXJSv" role="jymVt" />
+      <node concept="2tJIrI" id="4E5ZkB30n4R" role="jymVt" />
       <node concept="3clFb_" id="2L8bCWnwaQM" role="jymVt">
         <property role="TrG5h" value="disable" />
         <node concept="3clFbS" id="2L8bCWnwaQP" role="3clF47">
@@ -7319,7 +7318,7 @@
         <node concept="3Tm6S6" id="2L8bCWnw9TL" role="1B3o_S" />
         <node concept="3cqZAl" id="2L8bCWnwaDj" role="3clF45" />
       </node>
-      <node concept="2tJIrI" id="5VXhZ2wXJSw" role="jymVt" />
+      <node concept="2tJIrI" id="4E5ZkB30n4S" role="jymVt" />
       <node concept="3clFb_" id="3P5BSgf_z2Q" role="jymVt">
         <property role="TrG5h" value="invalidateDeletedRoot" />
         <node concept="37vLTG" id="3P5BSgf_z2U" role="3clF46">
@@ -7393,7 +7392,7 @@
           </node>
         </node>
       </node>
-      <node concept="2tJIrI" id="5VXhZ2wXJSx" role="jymVt" />
+      <node concept="2tJIrI" id="4E5ZkB30n4T" role="jymVt" />
       <node concept="3clFb_" id="3UEHyztZP6K" role="jymVt">
         <property role="TrG5h" value="beforeNodeRemovedRecursively" />
         <node concept="3cqZAl" id="3UEHyztZP6L" role="3clF45" />
@@ -7482,7 +7481,7 @@
           <node concept="3Tqbb2" id="3UEHyztZP6P" role="1tU5fm" />
         </node>
       </node>
-      <node concept="2tJIrI" id="5VXhZ2wXJSy" role="jymVt" />
+      <node concept="2tJIrI" id="4E5ZkB30n4U" role="jymVt" />
       <node concept="3clFb_" id="3UEHyztZP5O" role="jymVt">
         <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="referenceModified" />
@@ -7511,7 +7510,7 @@
           </node>
         </node>
       </node>
-      <node concept="2tJIrI" id="5VXhZ2wXJSz" role="jymVt" />
+      <node concept="2tJIrI" id="4E5ZkB30n4V" role="jymVt" />
       <node concept="3clFb_" id="3UEHyztZPke" role="jymVt">
         <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="referenceRemoved" />
@@ -7548,7 +7547,7 @@
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
-      <node concept="2tJIrI" id="5VXhZ2wXJS$" role="jymVt" />
+      <node concept="2tJIrI" id="4E5ZkB30n4W" role="jymVt" />
       <node concept="3clFb_" id="3UEHyztZP5U" role="jymVt">
         <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="referenceAdded" />
@@ -7585,7 +7584,7 @@
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
-      <node concept="2tJIrI" id="5VXhZ2wXJS_" role="jymVt" />
+      <node concept="2tJIrI" id="4E5ZkB30n4X" role="jymVt" />
       <node concept="3clFb_" id="3UEHyztZP60" role="jymVt">
         <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="beforeChildRemoved" />
@@ -7640,7 +7639,7 @@
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
-      <node concept="2tJIrI" id="5VXhZ2wXJSA" role="jymVt" />
+      <node concept="2tJIrI" id="4E5ZkB30n4Y" role="jymVt" />
       <node concept="3clFb_" id="3UEHyztZP66" role="jymVt">
         <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="childAdded" />
@@ -7682,7 +7681,7 @@
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
-      <node concept="2tJIrI" id="5VXhZ2wXJSB" role="jymVt" />
+      <node concept="2tJIrI" id="4E5ZkB30n4Z" role="jymVt" />
       <node concept="3clFb_" id="3UEHyztZP6c" role="jymVt">
         <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="propertyChanged" />
@@ -7724,7 +7723,7 @@
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
-      <node concept="2tJIrI" id="5VXhZ2wXJSC" role="jymVt" />
+      <node concept="2tJIrI" id="4E5ZkB30n50" role="jymVt" />
       <node concept="3clFb_" id="3UEHyztZPpj" role="jymVt">
         <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="beforeRootRemoved" />
