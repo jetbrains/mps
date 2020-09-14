@@ -111,6 +111,12 @@
       <concept id="763829979718664966" name="jetbrains.mps.build.mps.structure.BuildMps_ModuleResources" flags="ng" index="3rtmxn">
         <child id="763829979718664967" name="files" index="3rtmxm" />
       </concept>
+      <concept id="4278635856200817744" name="jetbrains.mps.build.mps.structure.BuildMps_ModuleModelRoot" flags="ng" index="1BupzO">
+        <property id="8137134783396907368" name="convert2binary" index="1Hdu6h" />
+        <property id="8137134783396676838" name="extracted" index="1HemKv" />
+        <property id="2889113830911481881" name="deployFolderName" index="3ZfqAx" />
+        <child id="8137134783396676835" name="location" index="1HemKq" />
+      </concept>
       <concept id="3189788309731840247" name="jetbrains.mps.build.mps.structure.BuildMps_Solution" flags="ng" index="1E1JtA" />
       <concept id="3189788309731928315" name="jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyOnJavaModule" flags="ng" index="1E1SXE">
         <reference id="3189788309731928317" name="module" index="1E1SXG" />
@@ -504,11 +510,29 @@
           </node>
         </node>
       </node>
+      <node concept="1BupzO" id="1TJfDKuLFPP" role="3bR31x">
+        <property role="3ZfqAx" value="models" />
+        <property role="1Hdu6h" value="true" />
+        <property role="1HemKv" value="true" />
+        <node concept="3LXTmp" id="1TJfDKuLFPQ" role="1HemKq">
+          <node concept="55IIr" id="1TJfDKuLFPM" role="3LXTmr">
+            <node concept="2Ry0Ak" id="1TJfDKuLFPN" role="iGT6I">
+              <property role="2Ry0Am" value="jetbrains.mps.build.mps.runner.test.test1" />
+              <node concept="2Ry0Ak" id="1TJfDKuLFPO" role="2Ry0An">
+                <property role="2Ry0Am" value="models" />
+              </node>
+            </node>
+          </node>
+          <node concept="3qWCbU" id="1TJfDKuLFPR" role="3LXTna">
+            <property role="3qWCbO" value="**/*.mps, **/*.mpsr, **/.model" />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="1E1JtA" id="2R_g56b_5wd" role="3989C9">
-      <property role="BnDLt" value="true" />
       <property role="TrG5h" value="jetbrains.mps.build.mps.runner.test.test5" />
       <property role="3LESm3" value="07566df8-279c-48af-b73c-c8a1a451c7b2" />
+      <property role="BnDLt" value="true" />
       <node concept="55IIr" id="2R_g56b_5we" role="3LF7KH">
         <node concept="2Ry0Ak" id="2R_g56b_5wf" role="iGT6I">
           <property role="2Ry0Am" value="jetbrains.mps.build.mps.runner.test.test5" />
@@ -557,9 +581,22 @@
           <ref role="3bR37D" to="ffeo:1TaHNgiIbIQ" resolve="MPS.Core" />
         </node>
       </node>
-      <node concept="1SiIV0" id="7TMk5vUYZiO" role="3bR37C">
-        <node concept="3bR9La" id="7TMk5vUYZiP" role="1SiIV1">
-          <ref role="3bR37D" to="ffeo:7gQEwkA7ulN" resolve="jetbrains.mps.console.base#5336086527852717844" />
+      <node concept="1BupzO" id="1TJfDKuLFPV" role="3bR31x">
+        <property role="3ZfqAx" value="models" />
+        <property role="1Hdu6h" value="true" />
+        <property role="1HemKv" value="true" />
+        <node concept="3LXTmp" id="1TJfDKuLFPW" role="1HemKq">
+          <node concept="55IIr" id="1TJfDKuLFPS" role="3LXTmr">
+            <node concept="2Ry0Ak" id="1TJfDKuLFPT" role="iGT6I">
+              <property role="2Ry0Am" value="jetbrains.mps.build.mps.runner.test.test5" />
+              <node concept="2Ry0Ak" id="1TJfDKuLFPU" role="2Ry0An">
+                <property role="2Ry0Am" value="models" />
+              </node>
+            </node>
+          </node>
+          <node concept="3qWCbU" id="1TJfDKuLFPX" role="3LXTna">
+            <property role="3qWCbO" value="**/*.mps, **/*.mpsr, **/.model" />
+          </node>
         </node>
       </node>
     </node>
