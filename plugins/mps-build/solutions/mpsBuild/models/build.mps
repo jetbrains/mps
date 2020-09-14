@@ -45224,16 +45224,6 @@
             <node concept="Saw0i" id="6pse5qHNgjg" role="39821P">
               <ref role="Saw0g" node="6pse5qHNggp" resolve="http-support" />
             </node>
-            <node concept="398223" id="7VTSVc23LQm" role="39821P">
-              <node concept="3_J27D" id="7VTSVc23LQo" role="Nbhlr">
-                <node concept="3Mxwew" id="7VTSVc23LR$" role="3MwsjC">
-                  <property role="3MwjfP" value="modules" />
-                </node>
-              </node>
-              <node concept="1bldCd" id="7VTSVc23LSH" role="39821P">
-                <ref role="3$exzV" node="6pse5qHNhL7" resolve="jetbrains.mps.ide.httpsupport.manager" />
-              </node>
-            </node>
           </node>
         </node>
         <node concept="398223" id="58NZw_y0PeR" role="39821P">
@@ -45247,6 +45237,18 @@
           </node>
         </node>
         <node concept="398223" id="6pse5qHNgoW" role="39821P">
+          <node concept="L2wRC" id="1TJfDKuLWm1" role="39821P">
+            <ref role="L2wRA" node="6pse5qHNhL7" resolve="jetbrains.mps.ide.httpsupport.manager" />
+            <node concept="3yLZsm" id="1TJfDKuLWm_" role="3yL2VB">
+              <property role="3yLZsk" value="../lib/httpsupport.jar" />
+              <node concept="398BVA" id="1TJfDKuLWmD" role="3yLZsn">
+                <ref role="398BVh" node="6pse5qHNgh5" resolve="plugin_home" />
+                <node concept="2Ry0Ak" id="1TJfDKuLWmR" role="iGT6I">
+                  <property role="2Ry0Am" value="classes" />
+                </node>
+              </node>
+            </node>
+          </node>
           <node concept="3_J27D" id="6pse5qHNgoY" role="Nbhlr">
             <node concept="3Mxwew" id="6pse5qHNgpg" role="3MwsjC">
               <property role="3MwjfP" value="solutions" />
