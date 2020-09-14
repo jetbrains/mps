@@ -7,9 +7,9 @@ import jetbrains.mps.vcs.diff.ChangeSet;
 import java.util.Map;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import java.util.List;
+import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
-import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import java.util.Set;
@@ -37,24 +37,27 @@ import jetbrains.mps.smodel.SModelAdapter;
 import jetbrains.mps.smodel.event.SModelEvent;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.event.SModelReferenceEvent;
 import jetbrains.mps.smodel.event.SModelChildEvent;
 import jetbrains.mps.smodel.event.SModelPropertyEvent;
 import jetbrains.mps.smodel.event.SModelRootEvent;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @GeneratedClass(node = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)/4124845871897265510", model = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)")
 public final class MergeSession {
-  private ChangeSet myMineChangeSet;
-  private ChangeSet myRepositoryChangeSet;
-  private Map<ModelChange, List<ModelChange>> myConflictingChanges = MapSequence.fromMap(new HashMap<ModelChange, List<ModelChange>>());
-  private Map<ModelChange, List<ModelChange>> mySymmetricChanges = MapSequence.fromMap(new HashMap<ModelChange, List<ModelChange>>());
-  private Map<SNodeId, List<ModelChange>> myRootToChanges = MapSequence.fromMap(new HashMap<SNodeId, List<ModelChange>>());
-  private Map<SNodeId, List<ModelChange>> myNodeToChanges = MapSequence.fromMap(new HashMap<SNodeId, List<ModelChange>>());
-  private List<ModelChange> myMetadataChanges = ListSequence.fromList(new ArrayList<ModelChange>());
-  private MergeTemporaryModel myResultModel;
-  private Set<ModelChange> myResolvedChanges = SetSequence.fromSet(new HashSet<ModelChange>());
-  private NodeCopier myNodeCopier;
-  private MyResultModelListener myModelListener = new MyResultModelListener();
+  private final ChangeSet myMineChangeSet;
+  private final ChangeSet myRepositoryChangeSet;
+  private final Map<ModelChange, List<ModelChange>> myConflictingChanges;
+  private final Map<ModelChange, List<ModelChange>> mySymmetricChanges;
+  private final Map<SNodeId, List<ModelChange>> myRootToChanges = MapSequence.fromMap(new HashMap<SNodeId, List<ModelChange>>());
+  private final Map<SNodeId, List<ModelChange>> myNodeToChanges = MapSequence.fromMap(new HashMap<SNodeId, List<ModelChange>>());
+  private final List<ModelChange> myMetadataChanges = ListSequence.fromList(new ArrayList<ModelChange>());
+  private final MergeTemporaryModel myResultModel;
+  private final Set<ModelChange> myResolvedChanges = SetSequence.fromSet(new HashSet<ModelChange>());
+  private final NodeCopier myNodeCopier;
+  private final MyResultModelListener myModelListener = new MyResultModelListener();
   private ChangesInvalidateHandler myChangesInvalidateHandler;
 
   public static MergeSession createMergeSession(SModel base, SModel mine, SModel repository) {
@@ -75,6 +78,7 @@ public final class MergeSession {
     myResultModel = result;
     myNodeCopier = new NodeCopier(myResultModel);
   }
+
   private void fillRootToChangesMap() {
     for (ModelChange change : Sequence.fromIterable(getAllChanges())) {
       SNodeId rootId = change.getRootId();
@@ -89,9 +93,11 @@ public final class MergeSession {
       }
     }
   }
+
   public void installResultModelListener() {
     myResultModel.addModelListener(myModelListener);
   }
+
   private void fillNodeToChangesMap() {
     for (ModelChange change : Sequence.fromIterable(getAllChanges())) {
       SNodeId nodeId = null;
@@ -110,6 +116,7 @@ public final class MergeSession {
       }
     }
   }
+
   public Iterable<ModelChange> getApplicableChangesForRoot(SNodeId rootId) {
     return ListSequence.fromList(MapSequence.fromMap(myRootToChanges).get(rootId)).where(new IWhereFilter<ModelChange>() {
       public boolean accept(ModelChange ch) {
@@ -117,6 +124,7 @@ public final class MergeSession {
       }
     });
   }
+
   public Iterable<ModelChange> getApplicableChangesInNonConflictingRoots() {
     return Sequence.fromIterable((Sequence.fromIterable(MapSequence.fromMap(myRootToChanges).values()).concat(ListSequence.fromList(Arrays.asList(myMetadataChanges))))).translate(new ITranslator2<List<ModelChange>, ModelChange>() {
       public Iterable<ModelChange> translate(List<ModelChange> changes) {
@@ -137,35 +145,44 @@ public final class MergeSession {
       }
     });
   }
+
   public Iterable<ModelChange> getAllChanges() {
     return ListSequence.fromList(myMineChangeSet.getModelChanges()).concat(ListSequence.fromList(myRepositoryChangeSet.getModelChanges()));
   }
+
   public Iterable<SNodeId> getAffectedRoots() {
     return (ListSequence.fromList(myMetadataChanges).isEmpty() ? MapSequence.fromMap(myRootToChanges).keySet() : SetSequence.fromSet(MapSequence.fromMap(myRootToChanges).keySet()).concat(ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<SNodeId>(), null))));
   }
+
   public List<ModelChange> getChangesForRoot(@NotNull SNodeId rootId) {
     return MapSequence.fromMap(myRootToChanges).get(rootId);
   }
+
   public List<ModelChange> getMetadataChanges() {
     return myMetadataChanges;
   }
+
   public Iterable<ModelChange> getConflictedWith(ModelChange change) {
     // even after conlict resolving we still consider the change conflicted, so it should be applied manually 
     return MapSequence.fromMap(myConflictingChanges).get(change);
   }
+
   public boolean isChangeResolved(ModelChange change) {
     return SetSequence.fromSet(myResolvedChanges).contains(change);
   }
+
   public void applyChanges(Iterable<ModelChange> changes) {
     myModelListener.disable();
     applyChangesNoRestoreIds(changes);
     myNodeCopier.restoreIds(false);
     myModelListener.enable();
   }
+
   public void excludeChanges(Iterable<ModelChange> changes) {
     excludeChangesNoRestoreIds(changes);
     myNodeCopier.restoreIds(false);
   }
+
   private void applyChangesNoRestoreIds(Iterable<ModelChange> changes) {
     Sequence.fromIterable(changes).ofType(NodeGroupChange.class).visitAll(new IVisitor<NodeGroupChange>() {
       public void visit(NodeGroupChange ch) {
@@ -184,11 +201,13 @@ public final class MergeSession {
       applyChange(c);
     }
   }
+
   private void excludeChangesNoRestoreIds(Iterable<ModelChange> changes) {
     for (ModelChange c : Sequence.fromIterable(changes)) {
       excludeChange(c);
     }
   }
+
   private void applyChange(ModelChange change) {
     if (SetSequence.fromSet(myResolvedChanges).contains(change)) {
       return;
@@ -224,7 +243,7 @@ public final class MergeSession {
       for (NodeGroupChange ch : ListSequence.fromList(ngcConflictedChanges)) {
         // add new changes only for insertions, we need ChangeSetImpl to manually add one change there 
         // original conflicted changes will be resolved 
-        ChangeSetImpl changeSet = as_bow6nj_a0a2a5a5a13(ch.getChangeSet(), ChangeSetImpl.class);
+        ChangeSetImpl changeSet = as_bow6nj_a0a2a5a5a74(ch.getChangeSet(), ChangeSetImpl.class);
         assert changeSet != null;
         NodeGroupChange newChange = new NodeGroupChange(changeSet, ch.getParentNodeId(), ch.getRoleLink(), anchorIndex, anchorIndex, ch.getResultBegin(), ch.getResultEnd());
         if (isNotEmptyChange(newChange)) {
@@ -245,9 +264,11 @@ public final class MergeSession {
     SetSequence.fromSet(myResolvedChanges).addSequence(ListSequence.fromList(MapSequence.fromMap(mySymmetricChanges).get(change)));
     excludeChangesNoRestoreIds(conflictedChanges);
   }
+
   private boolean isNotEmptyChange(NodeGroupChange change) {
     return change.getBegin() < change.getEnd() || change.getResultBegin() < change.getResultEnd();
   }
+
   private void excludeChange(ModelChange change) {
     if (SetSequence.fromSet(myResolvedChanges).contains(change)) {
       return;
@@ -255,89 +276,115 @@ public final class MergeSession {
     SetSequence.fromSet(myResolvedChanges).addElement(change);
     SetSequence.fromSet(myResolvedChanges).addSequence(ListSequence.fromList(MapSequence.fromMap(mySymmetricChanges).get(change)));
   }
+
   public boolean hasIdsToRestore() {
     return myNodeCopier.hasIdsToRestore();
   }
+
   public SNodeId getReplacementId(SNodeId originalId) {
     return myNodeCopier.getReplacementId(originalId);
   }
+
   public SModel getResultModel() {
     return myResultModel;
   }
+
   public SModel getBaseModel() {
     return myMineChangeSet.getOldModel();
   }
+
   public SModel getMyModel() {
     return myMineChangeSet.getNewModel();
   }
+
   public SModel getRepositoryModel() {
     return myRepositoryChangeSet.getNewModel();
   }
+
   public ChangeSet getMyChangeSet() {
     return myMineChangeSet;
   }
+
   public ChangeSet getRepositoryChangeSet() {
     return myRepositoryChangeSet;
   }
+
   public boolean isMyChange(ModelChange change) {
     return change.getChangeSet() == myMineChangeSet;
   }
+
   public MergeSessionState getCurrentState() {
     return new MergeSessionState(myResultModel, myResolvedChanges, myNodeCopier.getState());
   }
+
   public void restoreState(MergeSessionState state) {
     MergeSessionState stateCopy = new MergeSessionState(state);
     myResultModel.setSModelInternal(stateCopy.myResultModel.getSModel());
 
-    myResolvedChanges = stateCopy.myResolvedChanges;
+    SetSequence.fromSet(myResolvedChanges).clear();
+    SetSequence.fromSet(myResolvedChanges).addSequence(SetSequence.fromSet(stateCopy.myResolvedChanges));
     myNodeCopier.setState(stateCopy.myIdReplacementCache, myResultModel);
   }
+
   public void setChangesInvalidateHandler(ChangesInvalidateHandler changesInvalidateHandler) {
     myChangesInvalidateHandler = changesInvalidateHandler;
   }
+
   private void invalidateChanges() {
-    check_bow6nj_a0a64(myChangesInvalidateHandler);
+    if (myChangesInvalidateHandler != null) {
+      myChangesInvalidateHandler.someChangesInvalidated();
+    }
   }
+
   private void resolveChanges(Iterable<? extends ModelChange> changes) {
     SetSequence.fromSet(myResolvedChanges).addSequence(Sequence.fromIterable(changes));
   }
+
   private static int getPersistenceVersion(SModel model) {
     if (model instanceof PersistenceVersionAware) {
       return ((PersistenceVersionAware) model).getPersistenceVersion();
     }
     return -1;
   }
+
   public interface ChangesInvalidateHandler {
     void someChangesInvalidated();
   }
+
   private class MyResultModelListener extends SModelAdapter {
     private boolean myListeningAllowed = true;
+
     private MyResultModelListener() {
     }
+
     private void enable() {
       myListeningAllowed = true;
     }
+
     private void disable() {
       myListeningAllowed = false;
     }
+
     private void invalidateDeletedRoot(SModelEvent event) {
       assert event.getAffectedRoot() != null;
       List<ModelChange> nodeChanges = MapSequence.fromMap(myNodeToChanges).get(event.getAffectedRoot().getNodeId());
       resolveChanges(ListSequence.fromList(nodeChanges).ofType(DeleteRootChange.class));
       invalidateChanges();
     }
+
     private void beforeNodeRemovedRecursively(SNode node) {
-      for (SNode child : ListSequence.fromList(SNodeOperations.getChildren(node))) {
-        beforeNodeRemovedRecursively(child);
+      List<SNode> descendants = SNodeOperations.getNodeDescendants(node, CONCEPTS.BaseConcept$gP, true, new SAbstractConcept[]{});
+      for (SNode child : ListSequence.fromList(descendants)) {
+        // resolve changes connected to the node 
+        resolveChanges(MapSequence.fromMap(myNodeToChanges).get(child.getNodeId()));
       }
-      // invalidate and resolve changes connected to the node 
-      resolveChanges(MapSequence.fromMap(myNodeToChanges).get(node.getNodeId()));
-      invalidateChanges();
     }
+
     private void referenceModified(SModelReferenceEvent event) {
-      invalidateChanges();
       invalidateDeletedRoot(event);
+      invalidateChanges();
     }
+
     @Override
     public void referenceRemoved(SModelReferenceEvent event) {
       if (!(myListeningAllowed)) {
@@ -345,6 +392,7 @@ public final class MergeSession {
       }
       referenceModified(event);
     }
+
     @Override
     public void referenceAdded(SModelReferenceEvent event) {
       if (!(myListeningAllowed)) {
@@ -352,6 +400,7 @@ public final class MergeSession {
       }
       referenceModified(event);
     }
+
     @Override
     public void beforeChildRemoved(SModelChildEvent event) {
       if (!(myListeningAllowed)) {
@@ -361,6 +410,7 @@ public final class MergeSession {
       invalidateDeletedRoot(event);
       invalidateChanges();
     }
+
     @Override
     public void childAdded(SModelChildEvent event) {
       if (!(myListeningAllowed)) {
@@ -369,14 +419,16 @@ public final class MergeSession {
       invalidateDeletedRoot(event);
       invalidateChanges();
     }
+
     @Override
     public void propertyChanged(SModelPropertyEvent event) {
       if (!(myListeningAllowed)) {
         return;
       }
-      invalidateChanges();
       invalidateDeletedRoot(event);
+      invalidateChanges();
     }
+
     @Override
     public void beforeRootRemoved(SModelRootEvent event) {
       if (!(myListeningAllowed)) {
@@ -384,15 +436,14 @@ public final class MergeSession {
       }
       beforeNodeRemovedRecursively(event.getRoot());
       invalidateDeletedRoot(event);
+      invalidateChanges();
     }
   }
-  private static void check_bow6nj_a0a64(ChangesInvalidateHandler checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      checkedDotOperand.someChangesInvalidated();
-    }
-
-  }
-  private static <T> T as_bow6nj_a0a2a5a5a13(Object o, Class<T> type) {
+  private static <T> T as_bow6nj_a0a2a5a5a74(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }

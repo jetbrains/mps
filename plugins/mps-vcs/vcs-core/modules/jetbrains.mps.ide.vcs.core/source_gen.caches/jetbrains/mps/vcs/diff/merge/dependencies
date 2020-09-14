@@ -70,6 +70,7 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.persistence.PersistenceVersionAware" />
     <classNode dependClassName="jetbrains.mps.smodel.SModelAdapter" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="jetbrains.mps.smodel.event.SModelChildEvent" />
     <classNode dependClassName="jetbrains.mps.smodel.event.SModelEvent" />
     <classNode dependClassName="jetbrains.mps.smodel.event.SModelPropertyEvent" />
@@ -89,6 +90,8 @@
     <classNode dependClassName="jetbrains.mps.vcs.diff.merge.MergeTemporaryModel" />
     <classNode dependClassName="jetbrains.mps.vcs.util.MergeStrategy" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeId" />
