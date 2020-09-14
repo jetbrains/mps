@@ -42,6 +42,9 @@ import jetbrains.mps.vcs.diff.ui.common.ChangeGroupMessages;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.repository.CommandListener;
+import java.util.concurrent.atomic.AtomicBoolean;
+import org.jetbrains.annotations.NotNull;
 
 @GeneratedClass(node = "r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)/2657001694096388534", model = "r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)")
 public class MergeRootsPane {
@@ -72,6 +75,8 @@ public class MergeRootsPane {
   private DefaultActionGroup myActionGroup;
   private NextPreviousTraverser myTraverser;
 
+  private final InvalidationHandler myInvalidationHandler;
+
   public MergeRootsPane(Project project, MergeSession mergeSession, SNodeId rootId, String rootName, String[] titles) {
     myProject = project;
     myMergeSession = mergeSession;
@@ -94,16 +99,9 @@ public class MergeRootsPane {
     linkEditors(true, true);
     linkEditors(false, true);
 
-    final ModelAccess modelAccess = ProjectHelper.fromIdeaProject(myProject).getRepository().getModelAccess();
-    myMergeSession.setChangesInvalidateHandler(new MergeSession.ChangesInvalidateHandler() {
-      public void someChangesInvalidated() {
-        modelAccess.runWriteInEDT(new Runnable() {
-          public void run() {
-            rehighlight();
-          }
-        });
-      }
-    });
+    ModelAccess modelAccess = ProjectHelper.fromIdeaProject(myProject).getRepository().getModelAccess();
+    myInvalidationHandler = new InvalidationHandler(modelAccess);
+    myMergeSession.setChangesInvalidateHandler(myInvalidationHandler);
 
     myPanel.setSplitterProportionKey(PARAM_INSPECTOR_SPLITTER_POSITION);
     myPanel.setFirstComponent(myTopPanel);
@@ -118,6 +116,7 @@ public class MergeRootsPane {
     highlightAllChanges();
     myTraverser.goToFirstChangeLater();
   }
+
   private void createActionGroup(String rootName) {
     myActionGroup = new DefaultActionGroup();
     myActionGroup.add(new ApplyNonConflictsForRoot(this));
@@ -135,17 +134,21 @@ public class MergeRootsPane {
       }
     });
   }
+
   public ActionGroup getActions() {
     return myActionGroup;
   }
+
   public void registerShortcuts(JComponent component) {
     myTraverser.previousAction().registerCustomShortcutSet(NextPreviousTraverser.PREV_CHANGE_SHORTCUT, component);
     myTraverser.nextAction().registerCustomShortcutSet(NextPreviousTraverser.NEXT_CHANGE_SHORTCUT, component);
   }
+
   public void unregisterShortcuts(JComponent component) {
     myTraverser.previousAction().unregisterCustomShortcutSet(component);
     myTraverser.nextAction().unregisterCustomShortcutSet(component);
   }
+
   public JPanel getPanel() {
     return myPanel;
   }
@@ -153,6 +156,7 @@ public class MergeRootsPane {
   public SNodeId getRootId() {
     return myRootId;
   }
+
   public void setRootId(SNodeId rootId) {
     myRootId = rootId;
     myStateToRestore = myMergeSession.getCurrentState();
@@ -162,6 +166,7 @@ public class MergeRootsPane {
     rehighlight();
     myTraverser.goToFirstChangeLater();
   }
+
   public void setRoodId(SNodeId rootId, final MergeSession mergeSession) {
     myMergeSession = mergeSession;
     MapSequence.fromMap(myDiffLayoutPart).visitAll(new IVisitor<IMapping<DiffChangeGroupLayout, Boolean>>() {
@@ -171,6 +176,7 @@ public class MergeRootsPane {
     });
     setRootId(rootId);
   }
+
   private void showInspector(boolean show) {
     if (isInspectorShown == show) {
       return;
@@ -185,6 +191,7 @@ public class MergeRootsPane {
     MapSequence.fromMap(myDiffLayoutPart).put(layout, mine);
     return layout;
   }
+
   public void rehighlight() {
     if (myDisposed) {
       return;
@@ -205,6 +212,7 @@ public class MergeRootsPane {
 
     highlightAllChanges();
   }
+
   private void highlightAllChanges() {
     ListSequence.fromList(myChangeGroupLayouts).visitAll(new IVisitor<ChangeGroupLayout>() {
       public void visit(ChangeGroupLayout b) {
@@ -235,9 +243,11 @@ public class MergeRootsPane {
     myResultEditor.repaintAndRebuildEditorMessages();
     myRepositoryEditor.repaintAndRebuildEditorMessages();
   }
+
   private void higlightChange(DiffEditor diffEditor, SModel model, boolean isOldEditor, ModelChange change) {
     diffEditor.highlightChange(model, change, isOldEditor, myConflictChecker);
   }
+
   private void linkEditors(boolean mine, boolean inspector) {
     // create change group builder, trapecium strip and merge buttons painter 
     // 'mine' parameter means mine changeset, 'inspector' - highlight inspector editor component 
@@ -251,6 +261,7 @@ public class MergeRootsPane {
     ListSequence.fromList(myEdtiorSeparators).addElement(separator);
     MergeButtonsPainter.addTo(this, (mine ? myMineEditor : myRepositoryEditor), layout, inspector);
   }
+
   private SNodeId getRootNodeId(SModel model) {
     SNode node = model.getNode(myRootId);
     if (node != null && node.getParent() == null) {
@@ -281,6 +292,7 @@ public class MergeRootsPane {
   /*package*/ MergeSession getMergeSession() {
     return myMergeSession;
   }
+
   public void restoreState() {
     myMergeSession.restoreState(myStateToRestore);
   }
@@ -304,7 +316,48 @@ public class MergeRootsPane {
         }
       });
       ListSequence.fromList(myEdtiorSeparators).clear();
+      myInvalidationHandler.dispose();
+      myMergeSession.setChangesInvalidateHandler(null);
       myDisposed = true;
+    }
+  }
+
+  private final class InvalidationHandler implements MergeSession.ChangesInvalidateHandler, CommandListener {
+    private final AtomicBoolean myHighlighScheduled = new AtomicBoolean(false);
+    private final ModelAccess myMA;
+
+    private InvalidationHandler(@NotNull ModelAccess ma) {
+      myMA = ma;
+      myMA.addCommandListener(this);
+    }
+
+    private void doInvalidate() {
+      myMA.runReadInEDT(new Runnable() {
+        public void run() {
+          rehighlight();
+        }
+      });
+    }
+
+    public void dispose() {
+      myMA.removeCommandListener(this);
+    }
+
+    @Override
+    public void someChangesInvalidated() {
+      myHighlighScheduled.set(true);
+    }
+
+    @Override
+    public void commandStarted() {
+      // nop 
+    }
+
+    @Override
+    public void commandFinished() {
+      if (myHighlighScheduled.compareAndSet(true, false)) {
+        doInvalidate();
+      }
     }
   }
 }

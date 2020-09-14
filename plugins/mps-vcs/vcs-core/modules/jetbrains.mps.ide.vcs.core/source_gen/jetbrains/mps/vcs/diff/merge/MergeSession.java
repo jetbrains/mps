@@ -336,9 +336,6 @@ public final class MergeSession {
     }
   }
 
-  private void resolveChanges(Iterable<? extends ModelChange> changes) {
-    SetSequence.fromSet(myResolvedChanges).addSequence(Sequence.fromIterable(changes));
-  }
 
   private static int getPersistenceVersion(SModel model) {
     if (model instanceof PersistenceVersionAware) {
@@ -368,7 +365,7 @@ public final class MergeSession {
     private void invalidateDeletedRoot(SModelEvent event) {
       assert event.getAffectedRoot() != null;
       List<ModelChange> nodeChanges = MapSequence.fromMap(myNodeToChanges).get(event.getAffectedRoot().getNodeId());
-      resolveChanges(ListSequence.fromList(nodeChanges).ofType(DeleteRootChange.class));
+      SetSequence.fromSet(myResolvedChanges).addSequence(ListSequence.fromList(nodeChanges).ofType(DeleteRootChange.class));
       invalidateChanges();
     }
 
@@ -376,7 +373,7 @@ public final class MergeSession {
       List<SNode> descendants = SNodeOperations.getNodeDescendants(node, CONCEPTS.BaseConcept$gP, true, new SAbstractConcept[]{});
       for (SNode child : ListSequence.fromList(descendants)) {
         // resolve changes connected to the node 
-        resolveChanges(MapSequence.fromMap(myNodeToChanges).get(child.getNodeId()));
+        SetSequence.fromSet(myResolvedChanges).addSequence(ListSequence.fromList(MapSequence.fromMap(myNodeToChanges).get(child.getNodeId())));
       }
     }
 
