@@ -322,7 +322,6 @@
       <library file="${artifacts.mps}/languages/util/jetbrains.mps.project.jar" />
       <library file="${artifacts.mps}/languages/util/jetbrains.mps.refactoring.jar" />
       <library file="${artifacts.mps}/languages/util/jetbrains.mps.runtime.jar" />
-      <library file="${artifacts.mps}/plugins/mps-testing/languages/baseLanguage/jetbrains.mps.baseLanguage.unitTest.jar" />
       <chunk>
         <module file="${basedir}/testbench/modules/testPackaged/testPackagedLanguage/testPackagedLanguage.mpl" />
         <module file="${basedir}/testbench/modules/testPackaged/testPackagedLanguage.test/testPackagedLanguage.test.msd" />

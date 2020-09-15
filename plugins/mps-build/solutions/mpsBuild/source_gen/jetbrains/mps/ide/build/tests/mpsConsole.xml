@@ -248,16 +248,6 @@
       <library file="${artifacts.mps}/languages/util/jetbrains.mps.runtime.jar" />
       <library file="${artifacts.mps}/languages/workbench-stub.jar" />
       <library file="${artifacts.mps}/languages/workbench/jetbrains.mps.ide.jar" />
-      <library file="${artifacts.mps}/plugins/mps-console/lang/jetbrains.mps.console.base.jar" />
-      <library file="${artifacts.mps}/plugins/mps-console/lang/jetbrains.mps.console.ideCommands.jar" />
-      <library file="${artifacts.mps}/plugins/mps-console/lang/jetbrains.mps.console.ideCommands.runtime.jar" />
-      <library file="${artifacts.mps}/plugins/mps-console/lang/jetbrains.mps.console.jar" />
-      <library file="${artifacts.mps}/plugins/mps-console/lang/jetbrains.mps.console.scripts.jar" />
-      <library file="${artifacts.mps}/plugins/mps-make/languages/jetbrains.mps.ide.make.jar" />
-      <library file="${artifacts.mps}/plugins/mps-testing/languages/baseLanguage/jetbrains.mps.baseLanguage.unitTest.jar" />
-      <library file="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.jar" />
-      <library file="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.matcher.jar" />
-      <library file="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.runtime.jar" />
       <chunk>
         <module file="${basedir}/testbench/testsolutions/console.tests/jetbrains.mps.console.tests.msd" />
       </chunk>
