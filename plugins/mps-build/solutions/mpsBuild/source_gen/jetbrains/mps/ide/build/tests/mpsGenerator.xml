@@ -1003,8 +1003,8 @@
       <library file="${artifacts.mps}/plugins/mps-execution-api/lib/execution-api.jar" />
       <library file="${artifacts.mps}/plugins/mps-execution-configurations/languages/mps-execution-configurations/jetbrains.mps.ant.execution.jar" />
       <library file="${artifacts.mps}/plugins/mps-execution-configurations/languages/mps-execution-configurations/jetbrains.mps.baseLanguage.execution.util.jar" />
-      <library file="${artifacts.mps}/plugins/mps-execution-languages/languages/mps-execution-languages/jetbrains.mps.execution.commands.jar" />
-      <library file="${artifacts.mps}/plugins/mps-execution-languages/languages/mps-execution-languages/jetbrains.mps.execution.library.jar" />
+      <library file="${artifacts.mps}/plugins/mps-execution-languages/languages/jetbrains.mps.execution.commands.jar" />
+      <library file="${artifacts.mps}/plugins/mps-execution-languages/languages/jetbrains.mps.execution.library.jar" />
       <library file="${artifacts.mps}/plugins/mps-testing/languages/baseLanguage/jetbrains.mps.baseLanguage.unitTest.jar" />
       <library file="${artifacts.mps}/plugins/mps-testing/languages/gentest/jetbrains.mps.lang.test.generator.jar" />
       <library file="${artifacts.mps}/plugins/mps-testing/languages/gentest/jetbrains.mps.lang.test.generator.rt.jar" />
@@ -1909,8 +1909,8 @@
       <pathelement location="${artifacts.mps}/plugins/mps-execution-api/lib/execution-api.jar" />
       <pathelement location="${artifacts.mps}/plugins/mps-execution-configurations/languages/mps-execution-configurations/jetbrains.mps.ant.execution.jar" />
       <pathelement location="${artifacts.mps}/plugins/mps-execution-configurations/languages/mps-execution-configurations/jetbrains.mps.baseLanguage.execution.util.jar" />
-      <pathelement location="${artifacts.mps}/plugins/mps-execution-languages/languages/mps-execution-languages/jetbrains.mps.execution.commands.jar" />
-      <pathelement location="${artifacts.mps}/plugins/mps-execution-languages/languages/mps-execution-languages/jetbrains.mps.execution.library.jar" />
+      <pathelement location="${artifacts.mps}/plugins/mps-execution-languages/languages/jetbrains.mps.execution.commands.jar" />
+      <pathelement location="${artifacts.mps}/plugins/mps-execution-languages/languages/jetbrains.mps.execution.library.jar" />
       <pathelement location="${artifacts.mps}/plugins/mps-testing/languages/baseLanguage/jetbrains.mps.baseLanguage.unitTest.jar" />
       <pathelement location="${artifacts.mps}/plugins/mps-testing/languages/gentest/jetbrains.mps.lang.test.generator.jar" />
       <pathelement location="${artifacts.mps}/plugins/mps-testing/languages/gentest/jetbrains.mps.lang.test.generator.rt.jar" />

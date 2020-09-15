@@ -34238,7 +34238,7 @@
       </node>
     </node>
     <node concept="398b33" id="5xa9wY2vh8j" role="3989C9">
-      <property role="TrG5h" value="execution-languages" />
+      <property role="TrG5h" value="execution-impl-idea" />
       <node concept="nCB5N" id="73u3wWztR3G" role="nCB5Z">
         <property role="1Sh$E4" value="true" />
         <ref role="nCB5Y" node="73u3wWztPUY" resolve="execution-api" />
@@ -34462,6 +34462,7 @@
       <node concept="1E1JtD" id="5xa9wY2vh8W" role="2G$12L">
         <property role="TrG5h" value="jetbrains.mps.execution.configurations" />
         <property role="3LESm3" value="22e72e4c-0f69-46ce-8403-6750153aa615" />
+        <property role="BnDLt" value="true" />
         <node concept="3rtmxn" id="EpEP7iii2m" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iii2n" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iii2o" role="3LXTna">
@@ -34803,7 +34804,7 @@
         </node>
         <node concept="1E1SXE" id="5xa9wY2vh9E" role="3bR37C">
           <property role="1E1SXH" value="true" />
-          <ref role="1E1SXG" node="5xa9wY2vh8j" resolve="execution-languages" />
+          <ref role="1E1SXG" node="5xa9wY2vh8j" resolve="execution-impl-idea" />
         </node>
         <node concept="1SiIV0" id="2a9bszgrvp$" role="3bR37C">
           <node concept="3bR9La" id="2a9bszgrvpz" role="1SiIV1">
@@ -35072,7 +35073,7 @@
         </node>
         <node concept="1E1SXE" id="5xa9wY2vha3" role="3bR37C">
           <property role="1E1SXH" value="true" />
-          <ref role="1E1SXG" node="5xa9wY2vh8j" resolve="execution-languages" />
+          <ref role="1E1SXG" node="5xa9wY2vh8j" resolve="execution-impl-idea" />
         </node>
         <node concept="1BupzO" id="73GUf$umuQ4" role="3bR31x">
           <property role="3ZfqAx" value="models" />
@@ -35205,7 +35206,7 @@
         </node>
         <node concept="1E1SXE" id="6mTG60y64e1" role="3bR37C">
           <property role="1E1SXH" value="true" />
-          <ref role="1E1SXG" node="5xa9wY2vh8j" resolve="execution-languages" />
+          <ref role="1E1SXG" node="5xa9wY2vh8j" resolve="execution-impl-idea" />
           <node concept="398BVA" id="6mTG60y64eE" role="17Grwy">
             <ref role="398BVh" node="3IKDaVZorXK" resolve="mps_home" />
             <node concept="2Ry0Ak" id="6mTG60y64eF" role="iGT6I">
@@ -35973,17 +35974,7 @@
               </node>
             </node>
             <node concept="Saw0i" id="5xa9wY2vh84" role="39821P">
-              <ref role="Saw0g" node="5xa9wY2vh8j" resolve="execution-languages" />
-            </node>
-            <node concept="398223" id="5xa9wY2vh85" role="39821P">
-              <node concept="1bldCd" id="73u3wWztK7z" role="39821P">
-                <ref role="3$exzV" node="73u3wWztDaV" resolve="jetbrains.mps.execution.impl" />
-              </node>
-              <node concept="3_J27D" id="5xa9wY2vh89" role="Nbhlr">
-                <node concept="3Mxwew" id="5xa9wY2vh8a" role="3MwsjC">
-                  <property role="3MwjfP" value="modules" />
-                </node>
-              </node>
+              <ref role="Saw0g" node="5xa9wY2vh8j" resolve="execution-impl-idea" />
             </node>
           </node>
         </node>
@@ -35993,30 +35984,47 @@
               <property role="3MwjfP" value="languages" />
             </node>
           </node>
-          <node concept="398223" id="5peYeZGo8Wp" role="39821P">
-            <node concept="3_J27D" id="5peYeZGo8Wq" role="Nbhlr">
-              <node concept="3Mxwew" id="5peYeZGo8Wr" role="3MwsjC">
-                <property role="3MwjfP" value="mps-execution-languages" />
+          <node concept="L2wRC" id="1_7hqbtQ9WG" role="39821P">
+            <ref role="L2wRA" node="73u3wWztDaV" resolve="jetbrains.mps.execution.impl" />
+            <node concept="3yLZsm" id="1_7hqbtQ9Xd" role="3yL2VB">
+              <property role="3yLZsk" value="../lib/execution-languages.jar" />
+              <node concept="398BVA" id="1_7hqbtQ9Xt" role="3yLZsn">
+                <ref role="398BVh" node="3IKDaVZorXK" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="1_7hqbtQ9Xu" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="1_7hqbtQ9Xv" role="2Ry0An">
+                    <property role="2Ry0Am" value="execution-languages" />
+                    <node concept="2Ry0Ak" id="1_7hqbtQ9Xw" role="2Ry0An">
+                      <property role="2Ry0Am" value="languages" />
+                      <node concept="2Ry0Ak" id="1_7hqbtQ9Xx" role="2Ry0An">
+                        <property role="2Ry0Am" value="jetbrains.mps.execution.impl" />
+                        <node concept="2Ry0Ak" id="1_7hqbtQ9Xy" role="2Ry0An">
+                          <property role="2Ry0Am" value="classes" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
               </node>
             </node>
-            <node concept="L2wRC" id="5peYeZGo8Ws" role="39821P">
-              <ref role="L2wRA" node="5xa9wY2vh8H" resolve="jetbrains.mps.execution.commands" />
-            </node>
-            <node concept="L2wRC" id="5peYeZGo8Wt" role="39821P">
-              <ref role="L2wRA" node="5xa9wY2vh8W" resolve="jetbrains.mps.execution.configurations" />
-            </node>
-            <node concept="L2wRC" id="5peYeZGo8Wu" role="39821P">
-              <ref role="L2wRA" node="5xa9wY2vh9z" resolve="jetbrains.mps.execution.library" />
-            </node>
-            <node concept="L2wRC" id="5peYeZGo8Wv" role="39821P">
-              <ref role="L2wRA" node="5xa9wY2vh9N" resolve="jetbrains.mps.execution.configurations.pluginSolution" />
-            </node>
-            <node concept="L2wRC" id="5peYeZGo8Ww" role="39821P">
-              <ref role="L2wRA" node="5xa9wY2vh9W" resolve="jetbrains.mps.execution.languages" />
-            </node>
-            <node concept="L2wRC" id="5peYeZGo8Wx" role="39821P">
-              <ref role="L2wRA" node="6GZSYuUUfRM" resolve="jetbrains.mps.execution.devkit" />
-            </node>
+          </node>
+          <node concept="L2wRC" id="5peYeZGo8Ws" role="39821P">
+            <ref role="L2wRA" node="5xa9wY2vh8H" resolve="jetbrains.mps.execution.commands" />
+          </node>
+          <node concept="L2wRC" id="5peYeZGo8Wt" role="39821P">
+            <ref role="L2wRA" node="5xa9wY2vh8W" resolve="jetbrains.mps.execution.configurations" />
+          </node>
+          <node concept="L2wRC" id="5peYeZGo8Wu" role="39821P">
+            <ref role="L2wRA" node="5xa9wY2vh9z" resolve="jetbrains.mps.execution.library" />
+          </node>
+          <node concept="L2wRC" id="5peYeZGo8Wv" role="39821P">
+            <ref role="L2wRA" node="5xa9wY2vh9N" resolve="jetbrains.mps.execution.configurations.pluginSolution" />
+          </node>
+          <node concept="L2wRC" id="5peYeZGo8Ww" role="39821P">
+            <ref role="L2wRA" node="5xa9wY2vh9W" resolve="jetbrains.mps.execution.languages" />
+          </node>
+          <node concept="L2wRC" id="5peYeZGo8Wx" role="39821P">
+            <ref role="L2wRA" node="6GZSYuUUfRM" resolve="jetbrains.mps.execution.devkit" />
           </node>
         </node>
       </node>
