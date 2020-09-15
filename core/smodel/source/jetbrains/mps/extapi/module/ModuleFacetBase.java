@@ -28,6 +28,7 @@ import org.jetbrains.mps.openapi.module.SModuleFacet;
 import org.jetbrains.mps.openapi.persistence.Memento;
 
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Consumer;
 
 /**
  * Base class for all module facets.
@@ -39,14 +40,22 @@ public abstract class ModuleFacetBase implements SModuleFacet, DetachableFacet {
 
   private final String myFacetType;
   private final AtomicReference<SModule> myModule = new AtomicReference<>();
+  private Consumer<SModule> myOnModuleReset = null;
 
   /**
    * the common flow is to have module already in construction, register it once and for all (#setModule + #attach), dispose in the end
+   *
+   * @deprecated prefer the second constructor, help yourself avoiding all #setModule, #attach invocations
    */
+  @Deprecated
+  @ScheduledForRemoval(inVersion = "2020.3")
   protected ModuleFacetBase(@NotNull String facetType) {
     myFacetType = facetType;
   }
 
+  /**
+   * attach happens automatically so you can initialize a facet in one line
+   */
   protected ModuleFacetBase(@NotNull String facetType, @NotNull SModule module) {
     myFacetType = facetType;
     attach(module);
@@ -56,17 +65,6 @@ public abstract class ModuleFacetBase implements SModuleFacet, DetachableFacet {
   @Override
   public final String getFacetType() {
     return myFacetType;
-  }
-
-  /**
-   * Is not used anymore.
-   *
-   * @deprecated implement {@link FacetFactory#getPresentation()} instead.
-   */
-  @Deprecated
-  @ToRemove(version = 2020.1)
-  public String getFacetPresentation() {
-    return getFacetType();
   }
 
   @Nullable
@@ -80,16 +78,14 @@ public abstract class ModuleFacetBase implements SModuleFacet, DetachableFacet {
    *
    * @deprecated use {@link #attach(SModule)}
    */
-  @ScheduledForRemoval(inVersion = "2020.2")
-  @Deprecated
-  public final boolean setModule(@NotNull SModule module) {
-    // FIXME the 'cannot work' logic shall move to FacetFactory.isApplicable()
+  private boolean setModule(@NotNull SModule module) {
     throwIfAlreadyAttached();
     myModule.set(module);
+    myOnModuleReset.accept(module);
     return true;
   }
 
-  protected void throwIfAlreadyAttached() {
+  private void throwIfAlreadyAttached() {
     if (isAttached()) {
       throw new IllegalStateException("Already attached");
     }
@@ -112,20 +108,31 @@ public abstract class ModuleFacetBase implements SModuleFacet, DetachableFacet {
     myModule.set(null);
   }
 
-  /**
-   * deceitful naming, prefer #detach
-   * @deprecated
-   */
-  @ScheduledForRemoval(inVersion = "202")
-  @Deprecated
-  public void dispose() {
-  }
-
   @Override
   public void save(@NotNull Memento memento) {
   }
 
   @Override
   public void load(@NotNull Memento memento) {
+  }
+
+  /**
+   * #attach and #detach are designed final, doing the simplest thing (resetting the field #myModule)
+   * It appears that sometimes a client of this class needs to perform a custom initialization when
+   * the owning module is being changed.
+   *
+   * We do not want to go back to overridable #attach, instead offering to provide a single callback
+   * in a separate method below.
+   *
+   * @param callback -- will be called in this method and on each module re-set.
+   */
+  public final void callBackOnModuleReset(@NotNull Consumer<SModule> callback) {
+    if (myOnModuleReset != null) {
+      throw new IllegalStateException("Can be set only once");
+    }
+    myOnModuleReset = callback;
+    if (getModule() != null) {
+      callback.accept(getModule());
+    }
   }
 }
