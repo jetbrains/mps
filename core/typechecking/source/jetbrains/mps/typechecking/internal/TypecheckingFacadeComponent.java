@@ -27,12 +27,14 @@ import jetbrains.mps.typechecking.backend.TypecheckingController;
 import jetbrains.mps.typechecking.backend.TypecheckingSessionImpl;
 import jetbrains.mps.typechecking.TypecheckingSession.Flags;
 import jetbrains.mps.typechecking.backend.WorkbenchTypecheckingController;
+import jetbrains.mps.util.containers.ConcurrentHashSet;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.SwingUtilities;
+import java.lang.ref.PhantomReference;
+import java.lang.ref.ReferenceQueue;
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.function.Supplier;
 
 /**
@@ -46,7 +48,8 @@ public class TypecheckingFacadeComponent implements CoreComponent {
   private final TypecheckingBackend myTypecheckingBackend;
 
   // managed stuff
-  private ConcurrentLinkedQueue<ContextTypecheckingFacade> myFacadeQueue = new ConcurrentLinkedQueue<>();
+  private ConcurrentHashSet<DisposeReference> myLiveDisposeReferences = new ConcurrentHashSet<>();
+  private ReferenceQueue<ContextTypecheckingFacade> myReferenceQueue = new ReferenceQueue<>();
 
   /**
    * Created by {@link MPSTypechecking}.
@@ -105,15 +108,21 @@ public class TypecheckingFacadeComponent implements CoreComponent {
 
   @Override
   public void dispose() {
-    while (!myFacadeQueue.isEmpty()) {
-      myFacadeQueue.remove().dispose();
+    for (DisposeReference ref : myLiveDisposeReferences) {
+      ref.dipose();
     }
   }
 
   private ContextTypecheckingFacade createFacade(TypecheckingControllerFactory sharedControllerFactory)
   {
+    DisposeReference ref = null;
+    while ((ref = (DisposeReference) myReferenceQueue.poll()) != null) {
+      ref.dipose();
+      myLiveDisposeReferences.remove(ref);
+    }
+
     ContextTypecheckingFacade facade = new ContextTypecheckingFacade(sharedControllerFactory);
-    myFacadeQueue.add(facade);
+    myLiveDisposeReferences.add(new DisposeReference(facade, myReferenceQueue));
     return facade;
   }
 
@@ -140,12 +149,6 @@ public class TypecheckingFacadeComponent implements CoreComponent {
 
     public ContextTypecheckingFacade(@NotNull TypecheckingControllerFactory controllerFactory) {
       myControllerFactory = controllerFactory;
-    }
-
-    protected void dispose() {
-      while (!myControllerStack.isEmpty()) {
-        myControllerStack.removeFirst().dispose();
-      }
     }
 
     private void init() {
@@ -180,6 +183,23 @@ public class TypecheckingFacadeComponent implements CoreComponent {
     @Override
     protected void resetOverride() {
       myControllerStack.removeFirst().dispose();
+    }
+  }
+
+  private static class DisposeReference extends PhantomReference<ContextTypecheckingFacade> {
+
+    private final Deque<TypecheckingController> myReferentControllerStack;
+
+    private DisposeReference(ContextTypecheckingFacade referent,
+                             ReferenceQueue<? super ContextTypecheckingFacade> q) {
+      super(referent, q);
+      myReferentControllerStack = referent.myControllerStack;
+    }
+
+    private void dipose() {
+      while (!myReferentControllerStack.isEmpty()) {
+        myReferentControllerStack.removeFirst().dispose();
+      }
     }
   }
 
