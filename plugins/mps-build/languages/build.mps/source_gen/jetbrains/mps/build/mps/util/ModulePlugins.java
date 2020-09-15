@@ -7,10 +7,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -33,6 +33,7 @@ public class ModulePlugins {
   private final TemplateQueryContext myContext;
   private final SNode myInitialProject;
   private final Set<SNode> myPluginDependencies = SetSequence.fromSet(new HashSet<SNode>());
+  private final List<SNode> myNonPluginModules = ListSequence.fromList(new ArrayList<SNode>());
 
   public ModulePlugins(SNode initialProject, TemplateQueryContext context) {
     myContext = context;
@@ -46,8 +47,10 @@ public class ModulePlugins {
 
   public void collect(@NotNull Iterable<SNode> modules, @NotNull List<SNode> additionalPlugins) {
     List<SNode> initialPlugins = ListSequence.fromListWithValues(new ArrayList<SNode>(), additionalPlugins);
+    ListSequence.fromList(myNonPluginModules).clear();
     for (final SNode module : Sequence.fromIterable(modules)) {
       List<SNode> projectPlugins = SNodeOperations.getNodeDescendants(SNodeOperations.cast(SNodeOperations.getContainingRoot(module), CONCEPTS.BuildProject$ae), CONCEPTS.BuildMps_IdeaPlugin$po, false, new SAbstractConcept[]{});
+      boolean coveredByPlugin = false;
       for (SNode plugin : ListSequence.fromList(projectPlugins)) {
         if (ListSequence.fromList(SLinkOperations.getChildren(plugin, LINKS.content$9T6D)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
@@ -55,8 +58,12 @@ public class ModulePlugins {
           }
         })) {
           ListSequence.fromList(initialPlugins).addElement(plugin);
+          coveredByPlugin = true;
           break;
         }
+      }
+      if (!(coveredByPlugin)) {
+        ListSequence.fromList(myNonPluginModules).addElement(module);
       }
     }
 
@@ -74,6 +81,14 @@ public class ModulePlugins {
         return it._0();
       }
     }).toGenericArray(String.class);
+  }
+
+  /**
+   * For tasks capable to extract modules of plugin, there's no reason to specify these modules explicitly.
+   * This collection gives subset of closure from collect() with modules that are not part of any dependency plugin.
+   */
+  public Iterable<SNode> getModulesNotInPlugins() {
+    return myNonPluginModules;
   }
 
   public List<Tuples._2<String, String>> getPlugins() {

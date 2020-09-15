@@ -53,6 +53,7 @@ import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.LinkedHashSet;
 import java.util.HashSet;
+import jetbrains.mps.build.mps.util.ModulePlugins;
 import jetbrains.mps.build.mps.util.ModuleFinder;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -68,7 +69,6 @@ import jetbrains.mps.build.mps.util.ModuleChecker;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import jetbrains.mps.build.util.LocalSourcePathArtifact;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
-import jetbrains.mps.build.mps.util.ModulePlugins;
 import jetbrains.mps.build.mps.util.VisibleModules;
 import jetbrains.mps.build.util.ProjectDependency;
 import java.util.Map;
@@ -1401,14 +1401,16 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.plugin$ZarS), LINKS.xml$djzj);
   }
   public static Iterable<SNode> sourceNodesQuery_10_0(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(Sequence.fromArray(((String[]) _context.getVariable("var:requiredPlugins")))).select(new ISelector<String, SNode>() {
+    // FIXME in fact, we can utilize plugin id now as well (see EnvironmentConfig and PluginData) 
+    //      however, would need a node to hold 2 string values at a time 
+    return Sequence.fromIterable(Sequence.fromArray(((ModulePlugins) _context.getVariable("var:requiredPlugins")).getPluginPaths())).select(new ISelector<String, SNode>() {
       public SNode select(String it) {
-        return createGeneratorInternal_String_x583g4_a0a0a0a0fm(it);
+        return createGeneratorInternal_String_x583g4_a0a0a0c0fm(it);
       }
     });
   }
   public static Iterable<SNode> sourceNodesQuery_10_1(final SourceSubstituteMacroNodesContext _context) {
-    return ModuleFinder.findModules(((MPSModulesPartitioner) _context.getVariable("var:closure")).getExternal(), _context, _context.getNode());
+    return ModuleFinder.findModules(((ModulePlugins) _context.getVariable("var:requiredPlugins")).getModulesNotInPlugins(), _context, _context.getNode());
   }
   public static Iterable<SNode> sourceNodesQuery_10_2(final SourceSubstituteMacroNodesContext _context) {
     return ListSequence.fromList(((MPSModulesPartitioner) _context.getVariable("var:closure")).getChunks()).select(new ISelector<MPSModulesPartitioner.Chunk, SNode>() {
@@ -1773,7 +1775,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object varMacro_Value_10_5(final TemplateVarContext _context) {
     ModulePlugins plugins = new ModulePlugins(SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$ae), _context);
     plugins.collect(((MPSModulesPartitioner) _context.getVariable("var:closure")).getExternal(), new ArrayList<SNode>());
-    return plugins.getPluginPaths();
+    return plugins;
   }
   public static Object varMacro_Value_10_6(final TemplateVarContext _context) {
     return (MPSModulesPartitioner.Chunk) _context.getNode().getUserObject("chunk");
@@ -3079,7 +3081,7 @@ public class QueriesGenerated extends QueryProviderBase {
     vvqMethods.put("2409421742521905614", new VVQ(12));
     vvqMethods.put("5121314058278737571", new VVQ(13));
     vvqMethods.put("5121314058278757759", new VVQ(14));
-    vvqMethods.put("2409421742521905622", new VVQ(15));
+    vvqMethods.put("4438567763349653940", new VVQ(15));
     vvqMethods.put("2409421742521905625", new VVQ(16));
     vvqMethods.put("2409421742521905630", new VVQ(17));
     vvqMethods.put("2409421742521905633", new VVQ(18));
@@ -3257,7 +3259,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
   }
-  private static SNode createGeneratorInternal_String_x583g4_a0a0a0a0fm(String p0) {
+  private static SNode createGeneratorInternal_String_x583g4_a0a0a0c0fm(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_String$CC);
     n0.setProperty(PROPS.path$oN2q, p0);
     return n0.getResult();

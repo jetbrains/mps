@@ -584,6 +584,7 @@
       </concept>
       <concept id="1227008614712" name="jetbrains.mps.baseLanguage.collections.structure.LinkedListCreator" flags="nn" index="2Jqq0_" />
       <concept id="1227022179634" name="jetbrains.mps.baseLanguage.collections.structure.AddLastElementOperation" flags="nn" index="2Ke9KJ" />
+      <concept id="1227022210526" name="jetbrains.mps.baseLanguage.collections.structure.ClearAllElementsOperation" flags="nn" index="2Kehj3" />
       <concept id="1227026082377" name="jetbrains.mps.baseLanguage.collections.structure.RemoveFirstElementOperation" flags="nn" index="2Kt2Hk" />
       <concept id="1201306600024" name="jetbrains.mps.baseLanguage.collections.structure.ContainsKeyOperation" flags="nn" index="2Nt0df">
         <child id="1201654602639" name="key" index="38cxEo" />
@@ -31121,6 +31122,21 @@
         </node>
       </node>
     </node>
+    <node concept="312cEg" id="3QoXtOXVyHP" role="jymVt">
+      <property role="TrG5h" value="myNonPluginModules" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="3QoXtOXVvuk" role="1B3o_S" />
+      <node concept="2I9FWS" id="3QoXtOXVyuT" role="1tU5fm">
+        <ref role="2I9WkF" to="kdzh:hS0KzPONfF" resolve="BuildMps_AbstractModule" />
+      </node>
+      <node concept="2ShNRf" id="3QoXtOXV_BX" role="33vP2m">
+        <node concept="Tc6Ow" id="3QoXtOXVBHw" role="2ShVmc">
+          <node concept="3Tqbb2" id="3QoXtOXVCwv" role="HW$YZ">
+            <ref role="ehGHo" to="kdzh:hS0KzPONfF" resolve="BuildMps_AbstractModule" />
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="2tJIrI" id="5VKiljfxJo" role="jymVt" />
     <node concept="3clFbW" id="3pzPpUFO9wL" role="jymVt">
       <node concept="37vLTG" id="3pzPpUFO9wM" role="3clF46">
@@ -31234,6 +31250,14 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="3QoXtOXVEuB" role="3cqZAp">
+          <node concept="2OqwBi" id="3QoXtOXVHnX" role="3clFbG">
+            <node concept="37vLTw" id="3QoXtOXVEu_" role="2Oq$k0">
+              <ref role="3cqZAo" node="3QoXtOXVyHP" resolve="myNonPluginModules" />
+            </node>
+            <node concept="2Kehj3" id="3QoXtOXVJAT" role="2OqNvi" />
+          </node>
+        </node>
         <node concept="2Gpval" id="3pzPpUFO9xi" role="3cqZAp">
           <node concept="37vLTw" id="5VKiljgpKj" role="2GsD0m">
             <ref role="3cqZAo" node="5VKiljgn7f" resolve="modules" />
@@ -31268,6 +31292,13 @@
                     </node>
                   </node>
                 </node>
+              </node>
+            </node>
+            <node concept="3cpWs8" id="3QoXtOXVsP8" role="3cqZAp">
+              <node concept="3cpWsn" id="3QoXtOXVsPb" role="3cpWs9">
+                <property role="TrG5h" value="coveredByPlugin" />
+                <node concept="10P_77" id="3QoXtOXVsP6" role="1tU5fm" />
+                <node concept="3clFbT" id="3QoXtOXVsWz" role="33vP2m" />
               </node>
             </node>
             <node concept="2Gpval" id="3pzPpUFO9xz" role="3cqZAp">
@@ -31325,8 +31356,39 @@
                         </node>
                       </node>
                     </node>
+                    <node concept="3clFbF" id="3QoXtOXVt0E" role="3cqZAp">
+                      <node concept="37vLTI" id="3QoXtOXVtkQ" role="3clFbG">
+                        <node concept="3clFbT" id="3QoXtOXVtnd" role="37vLTx">
+                          <property role="3clFbU" value="true" />
+                        </node>
+                        <node concept="37vLTw" id="3QoXtOXVt0C" role="37vLTJ">
+                          <ref role="3cqZAo" node="3QoXtOXVsPb" resolve="coveredByPlugin" />
+                        </node>
+                      </node>
+                    </node>
                     <node concept="3zACq4" id="3pzPpUFO9xY" role="3cqZAp" />
                   </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbJ" id="3QoXtOXVtqW" role="3cqZAp">
+              <node concept="3clFbS" id="3QoXtOXVtqY" role="3clFbx">
+                <node concept="3clFbF" id="3QoXtOXVMTe" role="3cqZAp">
+                  <node concept="2OqwBi" id="3QoXtOXVORH" role="3clFbG">
+                    <node concept="37vLTw" id="3QoXtOXVMTc" role="2Oq$k0">
+                      <ref role="3cqZAo" node="3QoXtOXVyHP" resolve="myNonPluginModules" />
+                    </node>
+                    <node concept="TSZUe" id="3QoXtOXVQJu" role="2OqNvi">
+                      <node concept="2GrUjf" id="3QoXtOXVRh$" role="25WWJ7">
+                        <ref role="2Gs0qQ" node="3pzPpUFO9xm" resolve="module" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3fqX7Q" id="3QoXtOXVtyo" role="3clFbw">
+                <node concept="37vLTw" id="3QoXtOXVtyq" role="3fr31v">
+                  <ref role="3cqZAo" node="3QoXtOXVsPb" resolve="coveredByPlugin" />
                 </node>
               </node>
             </node>
@@ -31485,6 +31547,35 @@
       <node concept="3Tm1VV" id="3pzPpUFQGMz" role="1B3o_S" />
       <node concept="10Q1$e" id="3pzPpUFQH5O" role="3clF45">
         <node concept="17QB3L" id="3pzPpUFQH5M" role="10Q1$1" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="3QoXtOXVRs6" role="jymVt" />
+    <node concept="3clFb_" id="3QoXtOXW166" role="jymVt">
+      <property role="TrG5h" value="getModulesNotInPlugins" />
+      <node concept="3clFbS" id="3QoXtOXW169" role="3clF47">
+        <node concept="3clFbF" id="3QoXtOXW76e" role="3cqZAp">
+          <node concept="37vLTw" id="3QoXtOXW76d" role="3clFbG">
+            <ref role="3cqZAo" node="3QoXtOXVyHP" resolve="myNonPluginModules" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="3QoXtOXVWSn" role="1B3o_S" />
+      <node concept="A3Dl8" id="3QoXtOXW0Va" role="3clF45">
+        <node concept="3Tqbb2" id="3QoXtOXW150" role="A3Ik2">
+          <ref role="ehGHo" to="kdzh:hS0KzPONfF" resolve="BuildMps_AbstractModule" />
+        </node>
+      </node>
+      <node concept="P$JXv" id="3QoXtOXW7Dj" role="lGtFl">
+        <node concept="TZ5HA" id="3QoXtOXW7Dk" role="TZ5H$">
+          <node concept="1dT_AC" id="3QoXtOXW7Dl" role="1dT_Ay">
+            <property role="1dT_AB" value="For tasks capable to extract modules of plugin, there's no reason to specify these modules explicitly." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="3QoXtOXWdDY" role="TZ5H$">
+          <node concept="1dT_AC" id="3QoXtOXWdDZ" role="1dT_Ay">
+            <property role="1dT_AB" value="This collection gives subset of closure from collect() with modules that are not part of any dependency plugin." />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="2tJIrI" id="3a3EL8RURoK" role="jymVt" />
