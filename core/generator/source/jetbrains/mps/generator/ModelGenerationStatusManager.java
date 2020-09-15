@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@ import jetbrains.mps.extapi.module.SRepositoryRegistry;
 import jetbrains.mps.generator.impl.dependencies.GenerationDependencies;
 import jetbrains.mps.generator.impl.dependencies.GenerationDependenciesCache;
 import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -40,23 +39,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ModelGenerationStatusManager implements CoreComponent {
-  private static ModelGenerationStatusManager INSTANCE;
   private final SRepositoryRegistry myRepositoryRegistry;
-
-  /**
-   * @return Use {@link CoreComponent} instance available through respective {@link jetbrains.mps.components.ComponentHost}.
-   *         It's {@link MPSGenerator generator component plugin} that supplies instance, and one can use {@code MPSCoreComponents}
-   *         from IDEA project/application components, or {@code MPSProject#getComponent(Class)} to access it.
-   *         XXX there's single use in MPS left, MPSMakeMediator in idea plugin, which needs to be refactored with respect to
-   *             GenerationPathsController (which changes location of 'generated' files, and the question is what location we shall use
-   *             in MPSMakeMediator.collectResources() then).
-   *         There are uses in mbeddr.
-   */
-  @Deprecated
-  @ToRemove(version = 2017.2)
-  public static ModelGenerationStatusManager getInstance() {
-    return INSTANCE;
-  }
 
   private final List<ModelGenerationStatusListener> myListeners = new ArrayList<>();
 
@@ -129,18 +112,12 @@ public class ModelGenerationStatusManager implements CoreComponent {
 
   @Override
   public void init() {
-    if (INSTANCE != null) {
-      throw new IllegalStateException("double initialization");
-    }
-
-    INSTANCE = this;
     myRepositoryRegistry.addGlobalListener(myModelReloadListener);
   }
 
   @Override
   public void dispose() {
     myRepositoryRegistry.removeGlobalListener(myModelReloadListener);
-    INSTANCE = null;
   }
 
   /*package*/ String currentHash(SModel md) {

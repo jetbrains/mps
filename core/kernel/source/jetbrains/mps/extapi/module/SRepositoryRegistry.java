@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.extapi.module;
 
 import jetbrains.mps.components.CoreComponent;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SRepositoryListener;
 
@@ -27,37 +26,19 @@ import java.util.Set;
  * evgeny, 5/21/13
  */
 public class SRepositoryRegistry implements CoreComponent {
-  private static SRepositoryRegistry INSTANCE;
-
   private final Object LOCK = new Object();
   private Set<SRepository> myRepositories = new LinkedHashSet<>();
   private Set<SRepositoryListener> myGlobalListeners = new LinkedHashSet<>();
-
-  /**
-   * @deprecated Instead, access instance through respective kernel {@link jetbrains.mps.components.ComponentPlugin} (i.e. {@code MPSCore}).
-   *             There are no uses in MPS, although there are still few in mbeddr
-   */
-  @Deprecated
-  @ToRemove(version = 2017.2)
-  public static SRepositoryRegistry getInstance() {
-    return INSTANCE;
-  }
 
   public SRepositoryRegistry() {
   }
 
   @Override
   public void init() {
-    if (INSTANCE != null) {
-      throw new IllegalStateException("double initialization");
-    }
-
-    INSTANCE = this;
   }
 
   @Override
   public void dispose() {
-    INSTANCE = null;
   }
 
   public void addRepository(final SRepository repository) {
@@ -104,6 +85,5 @@ public class SRepositoryRegistry implements CoreComponent {
       }
       myGlobalListeners.remove(listener);
     }
-
   }
 }
