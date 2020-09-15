@@ -78,10 +78,14 @@ public abstract class ModuleFacetBase implements SModuleFacet, DetachableFacet {
    *
    * @deprecated use {@link #attach(SModule)}
    */
-  private boolean setModule(@NotNull SModule module) {
+  @Deprecated
+  @ScheduledForRemoval(inVersion = "2020.3")
+  public final boolean setModule(@NotNull SModule module) {
     throwIfAlreadyAttached();
     myModule.set(module);
-    myOnModuleReset.accept(module);
+    if (myOnModuleReset != null) {
+      myOnModuleReset.accept(module);
+    }
     return true;
   }
 
