@@ -52,16 +52,56 @@
       <fileset file="${mps_home}/plugins/execution-api/META-INF/plugin.xml" />
     </copy>
     <mkdir dir="${build.layout}/mps-execution-api/lib" />
+    <jar destfile="${build.layout}/mps-execution-api/lib/execution-api.jar" duplicate="preserve">
+      <fileset dir="${build.tmp}/java/out/execution-api" />
+    </jar>
+    <mkdir dir="${build.layout}/mps-execution-api/languages" />
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.execution.api.jar" />
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.execution.api.jar/META-INF" />
+    <echoxml file="${build.tmp}/default/jetbrains.mps.execution.api.jar/META-INF/module.xml">
+      <module namespace="jetbrains.mps.execution.api" type="solution" uuid="36c11d2d-1875-4a95-8bdb-70ea1ac63222">
+        <dependencies>
+          <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="rt" />
+          <module ref="4c6a28d1-2c60-478d-b36e-db9b3cbb21fb(closures.runtime)" kind="rt" />
+          <module ref="9b80526e-f0bf-4992-bdf5-cee39c1833f3(collections.runtime)" kind="rt" />
+          <module ref="a3e4657f-a76c-45bb-bbda-c764596ecc65(jetbrains.mps.baseLanguage.logging.runtime)" kind="rt" />
+          <module ref="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
+          <module ref="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="cl" />
+          <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
+          <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
+          <module ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5(MPS.IDEA)" kind="cl" />
+          <module ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61(MPS.Platform)" kind="cl" />
+          <module ref="86441d7a-e194-42da-81a5-2161ec62a379(MPS.Workbench)" kind="cl" />
+        </dependencies>
+        <uses>
+          <language id="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" />
+          <language id="l:fd392034-7849-419d-9071-12563d152375:jetbrains.mps.baseLanguage.closures" />
+          <language id="l:83888646-71ce-4f1c-9c53-c54016f6ad4f:jetbrains.mps.baseLanguage.collections" />
+          <language id="l:f2801650-65d5-424e-bb1b-463a8781b786:jetbrains.mps.baseLanguage.javadoc" />
+          <language id="l:760a0a8c-eabb-4521-8bfd-65db761a9ba3:jetbrains.mps.baseLanguage.logging" />
+        </uses>
+        <library jar="../lib/execution-api.jar" />
+        <sources jar="jetbrains.mps.execution.api-src.jar" descriptor="jetbrains.mps.execution.api.msd" />
+      </module>
+    </echoxml>
+    <jar destfile="${build.layout}/mps-execution-api/languages/jetbrains.mps.execution.api.jar" duplicate="preserve">
+      <fileset dir="${mps_home}/plugins/execution-api" includes="icons/**, resources/**" />
+      <fileset dir="${mps_home}/plugins/execution-api/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${build.tmp}/default/jetbrains.mps.execution.api.jar" />
+    </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-execution-api-models">
       <fileset dir="${mps_home}/plugins/execution-api/models" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
-    <jar destfile="${build.layout}/mps-execution-api/lib/execution-api.jar" duplicate="preserve">
-      <fileset dir="${build.tmp}/java/out/execution-api" />
-      <zipfileset file="${mps_home}/plugins/execution-api/jetbrains.mps.execution.api.msd" prefix="modules/jetbrains.mps.execution.api" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-execution-api-models" prefix="modules/jetbrains.mps.execution.api/models" />
+    <jar destfile="${build.layout}/mps-execution-api/languages/jetbrains.mps.execution.api-src.jar" duplicate="preserve">
+      <fileset dir="${mps_home}/plugins/execution-api/source_gen">
+        <exclude name="**/trace.info" />
+        <exclude name="**/exports" />
+        <exclude name="**/checkpoints" />
+        <exclude name="**/*.mps" />
+      </fileset>
+      <zipfileset file="${mps_home}/plugins/execution-api/jetbrains.mps.execution.api.msd" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-execution-api-models" prefix="module/models" />
     </jar>
-    <mkdir dir="${build.layout}/mps-execution-api/languages" />
-    <mkdir dir="${build.layout}/mps-execution-api/languages/mps-execution-api" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.execution.settings.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.execution.settings.jar/META-INF" />
     <echoxml file="${build.tmp}/default/jetbrains.mps.execution.settings.jar/META-INF/module.xml">
@@ -151,7 +191,7 @@
         <sources jar="jetbrains.mps.execution.settings-src.jar" descriptor="jetbrains.mps.execution.settings.mpl" />
       </module>
     </echoxml>
-    <jar destfile="${build.layout}/mps-execution-api/languages/mps-execution-api/jetbrains.mps.execution.settings.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/mps-execution-api/languages/jetbrains.mps.execution.settings.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.execution.settings" />
       <fileset dir="${mps_home}/plugins/execution-api/languages/settings" includes="icons/**, resources/**" />
       <fileset dir="${mps_home}/plugins/execution-api/languages/settings/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
@@ -205,7 +245,7 @@
         <sources jar="jetbrains.mps.execution.settings-src.jar" descriptor="jetbrains.mps.execution.settings.mpl" />
       </module>
     </echoxml>
-    <jar destfile="${build.layout}/mps-execution-api/languages/mps-execution-api/jetbrains.mps.execution.settings-generator.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/mps-execution-api/languages/jetbrains.mps.execution.settings-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.execution.settings#946964771156035778" />
       <fileset dir="${mps_home}/plugins/execution-api/languages/settings/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.execution.settings-generator.jar" />
@@ -216,7 +256,7 @@
     <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-execution-api-languages-settings-generator-template">
       <fileset dir="${mps_home}/plugins/execution-api/languages/settings/generator/template" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
-    <jar destfile="${build.layout}/mps-execution-api/languages/mps-execution-api/jetbrains.mps.execution.settings-src.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/mps-execution-api/languages/jetbrains.mps.execution.settings-src.jar" duplicate="preserve">
       <fileset dir="${mps_home}/plugins/execution-api/languages/settings/generator/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
@@ -315,7 +355,7 @@
         <sources jar="jetbrains.mps.execution.common-src.jar" descriptor="jetbrains.mps.execution.common.mpl" />
       </module>
     </echoxml>
-    <jar destfile="${build.layout}/mps-execution-api/languages/mps-execution-api/jetbrains.mps.execution.common.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/mps-execution-api/languages/jetbrains.mps.execution.common.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.execution.common" />
       <fileset dir="${mps_home}/plugins/execution-api/languages/common" includes="icons/**, resources/**" />
       <fileset dir="${mps_home}/plugins/execution-api/languages/common/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
@@ -324,7 +364,7 @@
     <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-execution-api-languages-common-languageModels">
       <fileset dir="${mps_home}/plugins/execution-api/languages/common/languageModels" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
-    <jar destfile="${build.layout}/mps-execution-api/languages/mps-execution-api/jetbrains.mps.execution.common-src.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/mps-execution-api/languages/jetbrains.mps.execution.common-src.jar" duplicate="preserve">
       <fileset dir="${mps_home}/plugins/execution-api/languages/common/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
@@ -340,21 +380,136 @@
       <fileset file="${mps_home}/plugins/debugger-api/META-INF/plugin.xml" />
     </copy>
     <mkdir dir="${build.layout}/mps-debugger-api/lib" />
+    <jar destfile="${build.layout}/mps-debugger-api/lib/debugger-api.jar" duplicate="preserve">
+      <fileset dir="${build.tmp}/java/out/debugger-api" />
+    </jar>
+    <mkdir dir="${build.layout}/mps-debugger-api/languages" />
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.debugger.api.api.jar" />
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.debugger.api.api.jar/META-INF" />
+    <echoxml file="${build.tmp}/default/jetbrains.mps.debugger.api.api.jar/META-INF/module.xml">
+      <module namespace="jetbrains.mps.debugger.api.api" type="solution" uuid="cc7da2f6-419f-4133-a811-31fcd3295a85">
+        <dependencies>
+          <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="rt" />
+          <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="rt" />
+          <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="rt" />
+          <module ref="4c6a28d1-2c60-478d-b36e-db9b3cbb21fb(closures.runtime)" kind="rt" />
+          <module ref="9b80526e-f0bf-4992-bdf5-cee39c1833f3(collections.runtime)" kind="rt" />
+          <module ref="a3e4657f-a76c-45bb-bbda-c764596ecc65(jetbrains.mps.baseLanguage.logging.runtime)" kind="rt" />
+          <module ref="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
+          <module ref="d44dab97-aaac-44cb-9745-8a14db674c03(jetbrains.mps.baseLanguage.tuples.runtime)" kind="rt" />
+          <module ref="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt" />
+          <module ref="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt" />
+          <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
+          <module ref="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="cl" />
+          <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
+          <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
+          <module ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5(MPS.IDEA)" kind="cl" />
+          <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="cl" />
+          <module ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61(MPS.Platform)" kind="cl" />
+          <module ref="25891414-2b70-48c7-b1cc-8dc0c127d669(jetbrains.mps.debugger.api.runtime)" kind="cl" />
+          <module ref="019b622b-0aef-4dd3-86d0-4eef01f3f6bb(jetbrains.mps.ide)" kind="cl" />
+          <module ref="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="cl" />
+          <module ref="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" kind="cl" />
+        </dependencies>
+        <uses>
+          <language id="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" />
+          <language id="l:fd392034-7849-419d-9071-12563d152375:jetbrains.mps.baseLanguage.closures" />
+          <language id="l:83888646-71ce-4f1c-9c53-c54016f6ad4f:jetbrains.mps.baseLanguage.collections" />
+          <language id="l:f2801650-65d5-424e-bb1b-463a8781b786:jetbrains.mps.baseLanguage.javadoc" />
+          <language id="l:760a0a8c-eabb-4521-8bfd-65db761a9ba3:jetbrains.mps.baseLanguage.logging" />
+          <language id="l:a247e09e-2435-45ba-b8d2-07e93feba96a:jetbrains.mps.baseLanguage.tuples" />
+          <language id="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" />
+        </uses>
+        <library jar="../lib/debugger-api.jar" />
+        <sources jar="jetbrains.mps.debugger.api.api-src.jar" descriptor="jetbrains.mps.debugger.api.api.msd" />
+      </module>
+    </echoxml>
+    <jar destfile="${build.layout}/mps-debugger-api/languages/jetbrains.mps.debugger.api.api.jar" duplicate="preserve">
+      <fileset dir="${mps_home}/plugins/debugger-api/api" includes="icons/**, resources/**" />
+      <fileset dir="${mps_home}/plugins/debugger-api/api/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${build.tmp}/default/jetbrains.mps.debugger.api.api.jar" />
+    </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-debugger-api-api-jetbrains">
       <fileset dir="${mps_home}/plugins/debugger-api/api/jetbrains" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
+    <jar destfile="${build.layout}/mps-debugger-api/languages/jetbrains.mps.debugger.api.api-src.jar" duplicate="preserve">
+      <fileset dir="${mps_home}/plugins/debugger-api/api/source_gen">
+        <exclude name="**/trace.info" />
+        <exclude name="**/exports" />
+        <exclude name="**/checkpoints" />
+        <exclude name="**/*.mps" />
+      </fileset>
+      <zipfileset file="${mps_home}/plugins/debugger-api/api/jetbrains.mps.debugger.api.api.msd" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-debugger-api-api-jetbrains" prefix="module/jetbrains" />
+    </jar>
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.debugger.api.runtime.jar" />
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.debugger.api.runtime.jar/META-INF" />
+    <echoxml file="${build.tmp}/default/jetbrains.mps.debugger.api.runtime.jar/META-INF/module.xml">
+      <module namespace="jetbrains.mps.debugger.api.runtime" type="solution" uuid="25891414-2b70-48c7-b1cc-8dc0c127d669">
+        <dependencies>
+          <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="rt" />
+          <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="rt" />
+          <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="rt" />
+          <module ref="86441d7a-e194-42da-81a5-2161ec62a379(MPS.Workbench)" kind="rt" />
+          <module ref="4c6a28d1-2c60-478d-b36e-db9b3cbb21fb(closures.runtime)" kind="rt" />
+          <module ref="9b80526e-f0bf-4992-bdf5-cee39c1833f3(collections.runtime)" kind="rt" />
+          <module ref="a3e4657f-a76c-45bb-bbda-c764596ecc65(jetbrains.mps.baseLanguage.logging.runtime)" kind="rt" />
+          <module ref="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
+          <module ref="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="rt" />
+          <module ref="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt" />
+          <module ref="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt" />
+          <module ref="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
+          <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
+          <module ref="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="cl" />
+          <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
+          <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
+          <module ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224(MPS.Editor)" kind="cl" />
+          <module ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5(MPS.IDEA)" kind="cl" />
+          <module ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61(MPS.Platform)" kind="cl" />
+          <module ref="86441d7a-e194-42da-81a5-2161ec62a379(MPS.Workbench)" kind="cl" />
+          <module ref="cc7da2f6-419f-4133-a811-31fcd3295a85(jetbrains.mps.debugger.api.api)" kind="cl" />
+          <module ref="36c11d2d-1875-4a95-8bdb-70ea1ac63222(jetbrains.mps.execution.api)" kind="cl" />
+          <module ref="019b622b-0aef-4dd3-86d0-4eef01f3f6bb(jetbrains.mps.ide)" kind="cl" />
+          <module ref="5b1f863d-65a0-41a6-a801-33896be24202(jetbrains.mps.ide.editor)" kind="cl" />
+          <module ref="8d29d73f-ed99-4652-ae0a-083cdfe53c34(jetbrains.mps.ide.platform)" kind="cl" />
+          <module ref="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="cl" />
+        </dependencies>
+        <uses>
+          <language id="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" />
+          <language id="l:774bf8a0-62e5-41e1-af63-f4812e60e48b:jetbrains.mps.baseLanguage.checkedDots" />
+          <language id="l:443f4c36-fcf5-4eb6-9500-8d06ed259e3e:jetbrains.mps.baseLanguage.classifiers" />
+          <language id="l:fd392034-7849-419d-9071-12563d152375:jetbrains.mps.baseLanguage.closures" />
+          <language id="l:83888646-71ce-4f1c-9c53-c54016f6ad4f:jetbrains.mps.baseLanguage.collections" />
+          <language id="l:f2801650-65d5-424e-bb1b-463a8781b786:jetbrains.mps.baseLanguage.javadoc" />
+          <language id="l:760a0a8c-eabb-4521-8bfd-65db761a9ba3:jetbrains.mps.baseLanguage.logging" />
+          <language id="l:63650c59-16c8-498a-99c8-005c7ee9515d:jetbrains.mps.lang.access" />
+          <language id="l:28f9e497-3b42-4291-aeba-0a1039153ab1:jetbrains.mps.lang.plugin" />
+          <language id="l:ef7bf5ac-d06c-4342-b11d-e42104eb9343:jetbrains.mps.lang.plugin.standalone" />
+          <language id="l:982eb8df-2c96-4bd7-9963-11712ea622e5:jetbrains.mps.lang.resources" />
+          <language id="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" />
+        </uses>
+        <library jar="../lib/debugger-api.jar" />
+        <sources jar="jetbrains.mps.debugger.api.runtime-src.jar" descriptor="jetbrains.mps.debugger.api.runtime.msd" />
+      </module>
+    </echoxml>
+    <jar destfile="${build.layout}/mps-debugger-api/languages/jetbrains.mps.debugger.api.runtime.jar" duplicate="preserve">
+      <fileset dir="${mps_home}/plugins/debugger-api/runtime" includes="icons/**, resources/**" />
+      <fileset dir="${mps_home}/plugins/debugger-api/runtime/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${build.tmp}/default/jetbrains.mps.debugger.api.runtime.jar" />
+    </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-debugger-api-runtime-jetbrains">
       <fileset dir="${mps_home}/plugins/debugger-api/runtime/jetbrains" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
-    <jar destfile="${build.layout}/mps-debugger-api/lib/debugger-api.jar" duplicate="preserve">
-      <fileset dir="${build.tmp}/java/out/debugger-api" />
-      <zipfileset file="${mps_home}/plugins/debugger-api/api/jetbrains.mps.debugger.api.api.msd" prefix="modules/jetbrains.mps.debugger.api.api" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-debugger-api-api-jetbrains" prefix="modules/jetbrains.mps.debugger.api.api/jetbrains" />
-      <zipfileset file="${mps_home}/plugins/debugger-api/runtime/jetbrains.mps.debugger.api.runtime.msd" prefix="modules/jetbrains.mps.debugger.api.runtime" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-debugger-api-runtime-jetbrains" prefix="modules/jetbrains.mps.debugger.api.runtime/jetbrains" />
+    <jar destfile="${build.layout}/mps-debugger-api/languages/jetbrains.mps.debugger.api.runtime-src.jar" duplicate="preserve">
+      <fileset dir="${mps_home}/plugins/debugger-api/runtime/source_gen">
+        <exclude name="**/trace.info" />
+        <exclude name="**/exports" />
+        <exclude name="**/checkpoints" />
+        <exclude name="**/*.mps" />
+      </fileset>
+      <zipfileset file="${mps_home}/plugins/debugger-api/runtime/jetbrains.mps.debugger.api.runtime.msd" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-debugger-api-runtime-jetbrains" prefix="module/jetbrains" />
     </jar>
-    <mkdir dir="${build.layout}/mps-debugger-api/languages" />
-    <mkdir dir="${build.layout}/mps-debugger-api/languages/mps-debugger-api" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.debugger.api.lang.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.debugger.api.lang.jar/META-INF" />
     <echoxml file="${build.tmp}/default/jetbrains.mps.debugger.api.lang.jar/META-INF/module.xml">
@@ -451,7 +606,7 @@
         <sources jar="jetbrains.mps.debugger.api.lang-src.jar" descriptor="jetbrains.mps.debugger.api.lang.mpl" />
       </module>
     </echoxml>
-    <jar destfile="${build.layout}/mps-debugger-api/languages/mps-debugger-api/jetbrains.mps.debugger.api.lang.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/mps-debugger-api/languages/jetbrains.mps.debugger.api.lang.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.debugger.api.lang" />
       <fileset dir="${mps_home}/plugins/debugger-api/languages/jetbrains.mps.debugger.api.lang" includes="icons/**, resources/**" />
       <fileset dir="${mps_home}/plugins/debugger-api/languages/jetbrains.mps.debugger.api.lang/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
@@ -506,7 +661,7 @@
         <sources jar="jetbrains.mps.debugger.api.lang-src.jar" descriptor="jetbrains.mps.debugger.api.lang.mpl" />
       </module>
     </echoxml>
-    <jar destfile="${build.layout}/mps-debugger-api/languages/mps-debugger-api/jetbrains.mps.debugger.api.lang-generator.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/mps-debugger-api/languages/jetbrains.mps.debugger.api.lang-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.debugger.api.lang#1270798772176052788" />
       <fileset dir="${mps_home}/plugins/debugger-api/languages/jetbrains.mps.debugger.api.lang/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.debugger.api.lang-generator.jar" />
@@ -517,7 +672,7 @@
     <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-debugger-api-languages-jetbrains.mps.debugger.api.lang-generator-template">
       <fileset dir="${mps_home}/plugins/debugger-api/languages/jetbrains.mps.debugger.api.lang/generator/template" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
-    <jar destfile="${build.layout}/mps-debugger-api/languages/mps-debugger-api/jetbrains.mps.debugger.api.lang-src.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/mps-debugger-api/languages/jetbrains.mps.debugger.api.lang-src.jar" duplicate="preserve">
       <fileset dir="${mps_home}/plugins/debugger-api/languages/jetbrains.mps.debugger.api.lang/generator/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
@@ -540,26 +695,10 @@
       <fileset file="${mps_home}/plugins/debugger-java/META-INF/plugin.xml" />
     </copy>
     <mkdir dir="${build.layout}/mps-debugger-java/lib" />
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-debugger-java-api-jetbrains">
-      <fileset dir="${mps_home}/plugins/debugger-java/api/jetbrains" includes="**/*.mps, **/*.mpsr, **/.model" />
-    </copyModels>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-debugger-java-runtime-models">
-      <fileset dir="${mps_home}/plugins/debugger-java/runtime/models" includes="**/*.mps, **/*.mpsr, **/.model" />
-    </copyModels>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-debugger-java-customViewers-models">
-      <fileset dir="${mps_home}/plugins/debugger-java/customViewers/models" includes="**/*.mps, **/*.mpsr, **/.model" />
-    </copyModels>
     <jar destfile="${build.layout}/mps-debugger-java/lib/debugger-java.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/debugger-java" />
-      <zipfileset file="${mps_home}/plugins/debugger-java/api/jetbrains.mps.debugger.java.api.msd" prefix="modules/jetbrains.mps.debugger.java.api" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-debugger-java-api-jetbrains" prefix="modules/jetbrains.mps.debugger.java.api/jetbrains" />
-      <zipfileset file="${mps_home}/plugins/debugger-java/runtime/jetbrains.mps.debugger.java.runtime.msd" prefix="modules/jetbrains.mps.debugger.java.runtime" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-debugger-java-runtime-models" prefix="modules/jetbrains.mps.debugger.java.runtime/models" />
-      <zipfileset file="${mps_home}/plugins/debugger-java/customViewers/jetbrains.mps.debugger.java.customViewers.plugin.msd" prefix="modules/jetbrains.mps.debugger.java.customViewers.plugin" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-debugger-java-customViewers-models" prefix="modules/jetbrains.mps.debugger.java.customViewers.plugin/models" />
     </jar>
     <mkdir dir="${build.layout}/mps-debugger-java/languages" />
-    <mkdir dir="${build.layout}/mps-debugger-java/languages/mps-debugger-java" />
     <mkdir dir="${build.tmp}/default/JDK-tools.jar" />
     <mkdir dir="${build.tmp}/default/JDK-tools.jar/META-INF" />
     <echoxml file="${build.tmp}/default/JDK-tools.jar/META-INF/module.xml">
@@ -571,9 +710,218 @@
         <sources jar="." descriptor="JDK-tools.msd" />
       </module>
     </echoxml>
-    <jar destfile="${build.layout}/mps-debugger-java/languages/mps-debugger-java/JDK-tools.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/mps-debugger-java/languages/JDK-tools.jar" duplicate="preserve">
       <zipfileset file="${mps_home}/languages/core/stub/JDK-tools/JDK-tools.msd" prefix="module" />
       <fileset dir="${build.tmp}/default/JDK-tools.jar" />
+    </jar>
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.debugger.java.api.jar" />
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.debugger.java.api.jar/META-INF" />
+    <echoxml file="${build.tmp}/default/jetbrains.mps.debugger.java.api.jar/META-INF/module.xml">
+      <module namespace="jetbrains.mps.debugger.java.api" type="solution" uuid="cf8c9de5-1b4a-4dc8-8e6d-847159af31dd">
+        <dependencies>
+          <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="rt" />
+          <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="rt" />
+          <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="rt" />
+          <module ref="4c6a28d1-2c60-478d-b36e-db9b3cbb21fb(closures.runtime)" kind="rt" />
+          <module ref="9b80526e-f0bf-4992-bdf5-cee39c1833f3(collections.runtime)" kind="rt" />
+          <module ref="a3e4657f-a76c-45bb-bbda-c764596ecc65(jetbrains.mps.baseLanguage.logging.runtime)" kind="rt" />
+          <module ref="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
+          <module ref="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt" />
+          <module ref="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt" />
+          <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
+          <module ref="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="cl" />
+          <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
+          <module ref="b387285c-3448-452c-b3bb-a3f8de8eaf08(JDK-tools)" kind="cl" />
+          <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
+          <module ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5(MPS.IDEA)" kind="cl" />
+          <module ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61(MPS.Platform)" kind="cl" />
+          <module ref="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)" kind="cl" />
+          <module ref="ed6d7656-532c-4bc2-81d1-af945aeb8280(jetbrains.mps.baseLanguage.blTypes)" kind="cl" />
+          <module ref="fd392034-7849-419d-9071-12563d152375(jetbrains.mps.baseLanguage.closures)" kind="cl" />
+          <module ref="df345b11-b8c7-4213-ac66-48d2a9b75d88(jetbrains.mps.baseLanguageInternal)" kind="cl" />
+          <module ref="cc7da2f6-419f-4133-a811-31fcd3295a85(jetbrains.mps.debugger.api.api)" kind="cl" />
+          <module ref="7da4580f-9d75-4603-8162-51a896d78375(jetbrains.mps.debugger.java.evaluation)" kind="cl" />
+        </dependencies>
+        <uses>
+          <language id="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" />
+          <language id="l:ed6d7656-532c-4bc2-81d1-af945aeb8280:jetbrains.mps.baseLanguage.blTypes" />
+          <language id="l:fd392034-7849-419d-9071-12563d152375:jetbrains.mps.baseLanguage.closures" />
+          <language id="l:83888646-71ce-4f1c-9c53-c54016f6ad4f:jetbrains.mps.baseLanguage.collections" />
+          <language id="l:f2801650-65d5-424e-bb1b-463a8781b786:jetbrains.mps.baseLanguage.javadoc" />
+          <language id="l:760a0a8c-eabb-4521-8bfd-65db761a9ba3:jetbrains.mps.baseLanguage.logging" />
+          <language id="l:df345b11-b8c7-4213-ac66-48d2a9b75d88:jetbrains.mps.baseLanguageInternal" />
+          <language id="l:ceab5195-25ea-4f22-9b92-103b95ca8c0c:jetbrains.mps.lang.core" />
+          <language id="l:3a13115c-633c-4c5c-bbcc-75c4219e9555:jetbrains.mps.lang.quotation" />
+          <language id="l:982eb8df-2c96-4bd7-9963-11712ea622e5:jetbrains.mps.lang.resources" />
+          <language id="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" />
+          <language id="l:7a5dda62-9140-4668-ab76-d5ed1746f2b2:jetbrains.mps.lang.typesystem" />
+        </uses>
+        <library jar="../lib/debugger-java.jar" />
+        <sources jar="jetbrains.mps.debugger.java.api-src.jar" descriptor="jetbrains.mps.debugger.java.api.msd" />
+      </module>
+    </echoxml>
+    <jar destfile="${build.layout}/mps-debugger-java/languages/jetbrains.mps.debugger.java.api.jar" duplicate="preserve">
+      <fileset dir="${mps_home}/plugins/debugger-java/api" includes="icons/**, resources/**" />
+      <fileset dir="${mps_home}/plugins/debugger-java/api/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${build.tmp}/default/jetbrains.mps.debugger.java.api.jar" />
+    </jar>
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-debugger-java-api-jetbrains">
+      <fileset dir="${mps_home}/plugins/debugger-java/api/jetbrains" includes="**/*.mps, **/*.mpsr, **/.model" />
+    </copyModels>
+    <jar destfile="${build.layout}/mps-debugger-java/languages/jetbrains.mps.debugger.java.api-src.jar" duplicate="preserve">
+      <fileset dir="${mps_home}/plugins/debugger-java/api/source_gen">
+        <exclude name="**/trace.info" />
+        <exclude name="**/exports" />
+        <exclude name="**/checkpoints" />
+        <exclude name="**/*.mps" />
+      </fileset>
+      <zipfileset file="${mps_home}/plugins/debugger-java/api/jetbrains.mps.debugger.java.api.msd" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-debugger-java-api-jetbrains" prefix="module/jetbrains" />
+    </jar>
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.debugger.java.runtime.jar" />
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.debugger.java.runtime.jar/META-INF" />
+    <echoxml file="${build.tmp}/default/jetbrains.mps.debugger.java.runtime.jar/META-INF/module.xml">
+      <module namespace="jetbrains.mps.debugger.java.runtime" type="solution" uuid="fcffe3cf-3ebc-4d3d-989b-2f30533bc904">
+        <dependencies>
+          <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="rt" />
+          <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="rt" />
+          <module ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224(MPS.Editor)" kind="rt" />
+          <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="rt" />
+          <module ref="86441d7a-e194-42da-81a5-2161ec62a379(MPS.Workbench)" kind="rt" />
+          <module ref="4c6a28d1-2c60-478d-b36e-db9b3cbb21fb(closures.runtime)" kind="rt" />
+          <module ref="9b80526e-f0bf-4992-bdf5-cee39c1833f3(collections.runtime)" kind="rt" />
+          <module ref="a3e4657f-a76c-45bb-bbda-c764596ecc65(jetbrains.mps.baseLanguage.logging.runtime)" kind="rt" />
+          <module ref="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
+          <module ref="d44dab97-aaac-44cb-9745-8a14db674c03(jetbrains.mps.baseLanguage.tuples.runtime)" kind="rt" />
+          <module ref="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="rt" />
+          <module ref="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt" />
+          <module ref="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt" />
+          <module ref="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
+          <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
+          <module ref="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" kind="cl" />
+          <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
+          <module ref="b387285c-3448-452c-b3bb-a3f8de8eaf08(JDK-tools)" kind="cl" />
+          <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
+          <module ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224(MPS.Editor)" kind="cl" />
+          <module ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5(MPS.IDEA)" kind="cl" />
+          <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="cl" />
+          <module ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61(MPS.Platform)" kind="cl" />
+          <module ref="86441d7a-e194-42da-81a5-2161ec62a379(MPS.Workbench)" kind="cl" />
+          <module ref="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)" kind="cl" />
+          <module ref="443f4c36-fcf5-4eb6-9500-8d06ed259e3e(jetbrains.mps.baseLanguage.classifiers)" kind="cl" />
+          <module ref="a0c108f0-1637-416e-a249-3effbaa4c998(jetbrains.mps.baseLanguage.search)" kind="cl" />
+          <module ref="df345b11-b8c7-4213-ac66-48d2a9b75d88(jetbrains.mps.baseLanguageInternal)" kind="cl" />
+          <module ref="cc7da2f6-419f-4133-a811-31fcd3295a85(jetbrains.mps.debugger.api.api)" kind="cl" />
+          <module ref="25891414-2b70-48c7-b1cc-8dc0c127d669(jetbrains.mps.debugger.api.runtime)" kind="cl" />
+          <module ref="cf8c9de5-1b4a-4dc8-8e6d-847159af31dd(jetbrains.mps.debugger.java.api)" kind="cl" />
+          <module ref="7da4580f-9d75-4603-8162-51a896d78375(jetbrains.mps.debugger.java.evaluation)" kind="cl" />
+          <module ref="019b622b-0aef-4dd3-86d0-4eef01f3f6bb(jetbrains.mps.ide)" kind="cl" />
+          <module ref="8d29d73f-ed99-4652-ae0a-083cdfe53c34(jetbrains.mps.ide.platform)" kind="cl" />
+          <module ref="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="cl" />
+          <module ref="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" kind="cl" />
+          <module ref="9ded098b-ad6a-4657-bfd9-48636cfe8bc3(jetbrains.mps.lang.traceable)" kind="cl" />
+          <module ref="f8e20673-3f65-44e9-84c0-c4a4b6ede37e(jetbrains.mps.make.facets)" kind="cl" />
+          <module ref="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="cl" />
+          <module ref="9ef82768-a1b1-451e-b136-5a86b2b5fdbb(jetbrains.mps.persistence)" kind="cl" />
+          <module ref="df9d410f-2ebb-43f7-893a-483a4f085250(jetbrains.mps.smodel.resources)" kind="cl" />
+        </dependencies>
+        <uses>
+          <language id="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" />
+          <language id="l:774bf8a0-62e5-41e1-af63-f4812e60e48b:jetbrains.mps.baseLanguage.checkedDots" />
+          <language id="l:443f4c36-fcf5-4eb6-9500-8d06ed259e3e:jetbrains.mps.baseLanguage.classifiers" />
+          <language id="l:fd392034-7849-419d-9071-12563d152375:jetbrains.mps.baseLanguage.closures" />
+          <language id="l:83888646-71ce-4f1c-9c53-c54016f6ad4f:jetbrains.mps.baseLanguage.collections" />
+          <language id="l:f2801650-65d5-424e-bb1b-463a8781b786:jetbrains.mps.baseLanguage.javadoc" />
+          <language id="l:760a0a8c-eabb-4521-8bfd-65db761a9ba3:jetbrains.mps.baseLanguage.logging" />
+          <language id="l:a247e09e-2435-45ba-b8d2-07e93feba96a:jetbrains.mps.baseLanguage.tuples" />
+          <language id="l:aee9cad2-acd4-4608-aef2-0004f6a1cdbd:jetbrains.mps.lang.actions" />
+          <language id="l:28f9e497-3b42-4291-aeba-0a1039153ab1:jetbrains.mps.lang.plugin" />
+          <language id="l:ef7bf5ac-d06c-4342-b11d-e42104eb9343:jetbrains.mps.lang.plugin.standalone" />
+          <language id="l:3a13115c-633c-4c5c-bbcc-75c4219e9555:jetbrains.mps.lang.quotation" />
+          <language id="l:982eb8df-2c96-4bd7-9963-11712ea622e5:jetbrains.mps.lang.resources" />
+          <language id="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" />
+          <language id="l:7a5dda62-9140-4668-ab76-d5ed1746f2b2:jetbrains.mps.lang.typesystem" />
+          <language id="l:696c1165-4a59-463b-bc5d-902caab85dd0:jetbrains.mps.make.facet" />
+        </uses>
+        <library jar="../lib/debugger-java.jar" />
+        <sources jar="jetbrains.mps.debugger.java.runtime-src.jar" descriptor="jetbrains.mps.debugger.java.runtime.msd" />
+      </module>
+    </echoxml>
+    <jar destfile="${build.layout}/mps-debugger-java/languages/jetbrains.mps.debugger.java.runtime.jar" duplicate="preserve">
+      <fileset dir="${mps_home}/plugins/debugger-java/runtime" includes="icons/**, resources/**" />
+      <fileset dir="${mps_home}/plugins/debugger-java/runtime/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${build.tmp}/default/jetbrains.mps.debugger.java.runtime.jar" />
+    </jar>
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-debugger-java-runtime-models">
+      <fileset dir="${mps_home}/plugins/debugger-java/runtime/models" includes="**/*.mps, **/*.mpsr, **/.model" />
+    </copyModels>
+    <jar destfile="${build.layout}/mps-debugger-java/languages/jetbrains.mps.debugger.java.runtime-src.jar" duplicate="preserve">
+      <fileset dir="${mps_home}/plugins/debugger-java/runtime/source_gen">
+        <exclude name="**/trace.info" />
+        <exclude name="**/exports" />
+        <exclude name="**/checkpoints" />
+        <exclude name="**/*.mps" />
+      </fileset>
+      <zipfileset file="${mps_home}/plugins/debugger-java/runtime/jetbrains.mps.debugger.java.runtime.msd" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-debugger-java-runtime-models" prefix="module/models" />
+    </jar>
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.debugger.java.customViewers.plugin.jar" />
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.debugger.java.customViewers.plugin.jar/META-INF" />
+    <echoxml file="${build.tmp}/default/jetbrains.mps.debugger.java.customViewers.plugin.jar/META-INF/module.xml">
+      <module namespace="jetbrains.mps.debugger.java.customViewers.plugin" type="solution" uuid="754e95cf-5780-40da-99c6-8f6584d9c260">
+        <dependencies>
+          <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="rt" />
+          <module ref="b387285c-3448-452c-b3bb-a3f8de8eaf08(JDK-tools)" kind="rt" />
+          <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="rt" />
+          <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="rt" />
+          <module ref="86441d7a-e194-42da-81a5-2161ec62a379(MPS.Workbench)" kind="rt" />
+          <module ref="4c6a28d1-2c60-478d-b36e-db9b3cbb21fb(closures.runtime)" kind="rt" />
+          <module ref="9b80526e-f0bf-4992-bdf5-cee39c1833f3(collections.runtime)" kind="rt" />
+          <module ref="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
+          <module ref="cc7da2f6-419f-4133-a811-31fcd3295a85(jetbrains.mps.debugger.api.api)" kind="rt" />
+          <module ref="cf8c9de5-1b4a-4dc8-8e6d-847159af31dd(jetbrains.mps.debugger.java.api)" kind="rt" />
+          <module ref="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="rt" />
+          <module ref="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt" />
+          <module ref="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt" />
+          <module ref="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
+          <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
+          <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
+          <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
+          <module ref="9b80526e-f0bf-4992-bdf5-cee39c1833f3(collections.runtime)" kind="cl" />
+          <module ref="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)" kind="cl" />
+          <module ref="d44dab97-aaac-44cb-9745-8a14db674c03(jetbrains.mps.baseLanguage.tuples.runtime)" kind="cl" />
+          <module ref="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="cl" />
+        </dependencies>
+        <uses>
+          <language id="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" />
+          <language id="l:fbc14279-5e2a-4c87-a5d1-5f7061e6c456:jetbrains.mps.debugger.api.lang" />
+          <language id="l:fa8aeae9-4df9-4e13-bfb1-9b04c67ddb77:jetbrains.mps.debugger.java.customViewers" />
+          <language id="l:80208897-4572-437d-b50e-8f050cba9566:jetbrains.mps.debugger.java.privateMembers" />
+          <language id="l:28f9e497-3b42-4291-aeba-0a1039153ab1:jetbrains.mps.lang.plugin" />
+          <language id="l:ef7bf5ac-d06c-4342-b11d-e42104eb9343:jetbrains.mps.lang.plugin.standalone" />
+          <language id="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" />
+        </uses>
+        <library jar="../lib/debugger-java.jar" />
+        <sources jar="jetbrains.mps.debugger.java.customViewers.plugin-src.jar" descriptor="jetbrains.mps.debugger.java.customViewers.plugin.msd" />
+      </module>
+    </echoxml>
+    <jar destfile="${build.layout}/mps-debugger-java/languages/jetbrains.mps.debugger.java.customViewers.plugin.jar" duplicate="preserve">
+      <fileset dir="${mps_home}/plugins/debugger-java/customViewers" includes="icons/**, resources/**" />
+      <fileset dir="${mps_home}/plugins/debugger-java/customViewers/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${build.tmp}/default/jetbrains.mps.debugger.java.customViewers.plugin.jar" />
+    </jar>
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-debugger-java-customViewers-models">
+      <fileset dir="${mps_home}/plugins/debugger-java/customViewers/models" includes="**/*.mps, **/*.mpsr, **/.model" />
+    </copyModels>
+    <jar destfile="${build.layout}/mps-debugger-java/languages/jetbrains.mps.debugger.java.customViewers.plugin-src.jar" duplicate="preserve">
+      <fileset dir="${mps_home}/plugins/debugger-java/customViewers/source_gen">
+        <exclude name="**/trace.info" />
+        <exclude name="**/exports" />
+        <exclude name="**/checkpoints" />
+        <exclude name="**/*.mps" />
+      </fileset>
+      <zipfileset file="${mps_home}/plugins/debugger-java/customViewers/jetbrains.mps.debugger.java.customViewers.plugin.msd" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-debugger-java-customViewers-models" prefix="module/models" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.debugger.java.privateMembers.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.debugger.java.privateMembers.jar/META-INF" />
@@ -656,7 +1004,7 @@
         <sources jar="jetbrains.mps.debugger.java.privateMembers-src.jar" descriptor="jetbrains.mps.debugger.java.privateMembers.mpl" />
       </module>
     </echoxml>
-    <jar destfile="${build.layout}/mps-debugger-java/languages/mps-debugger-java/jetbrains.mps.debugger.java.privateMembers.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/mps-debugger-java/languages/jetbrains.mps.debugger.java.privateMembers.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.debugger.java.privateMembers" />
       <fileset dir="${mps_home}/plugins/debugger-java/languages/privateMembers" includes="icons/**, resources/**" />
       <fileset dir="${mps_home}/plugins/debugger-java/languages/privateMembers/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
@@ -665,7 +1013,7 @@
     <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-debugger-java-languages-privateMembers-languageModels">
       <fileset dir="${mps_home}/plugins/debugger-java/languages/privateMembers/languageModels" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
-    <jar destfile="${build.layout}/mps-debugger-java/languages/mps-debugger-java/jetbrains.mps.debugger.java.privateMembers-src.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/mps-debugger-java/languages/jetbrains.mps.debugger.java.privateMembers-src.jar" duplicate="preserve">
       <fileset dir="${mps_home}/plugins/debugger-java/languages/privateMembers/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
@@ -776,7 +1124,7 @@
         <sources jar="jetbrains.mps.debugger.java.customViewers-src.jar" descriptor="jetbrains.mps.debugger.java.customViewers.mpl" />
       </module>
     </echoxml>
-    <jar destfile="${build.layout}/mps-debugger-java/languages/mps-debugger-java/jetbrains.mps.debugger.java.customViewers.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/mps-debugger-java/languages/jetbrains.mps.debugger.java.customViewers.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.debugger.java.customViewers" />
       <fileset dir="${mps_home}/plugins/debugger-java/languages/customViewers" includes="icons/**, resources/**" />
       <fileset dir="${mps_home}/plugins/debugger-java/languages/customViewers/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
@@ -838,7 +1186,7 @@
         <sources jar="jetbrains.mps.debugger.java.customViewers-src.jar" descriptor="jetbrains.mps.debugger.java.customViewers.mpl" />
       </module>
     </echoxml>
-    <jar destfile="${build.layout}/mps-debugger-java/languages/mps-debugger-java/jetbrains.mps.debugger.java.customViewers-generator.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/mps-debugger-java/languages/jetbrains.mps.debugger.java.customViewers-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.debugger.java.customViewers#4089989733346806812" />
       <fileset dir="${mps_home}/plugins/debugger-java/languages/customViewers/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.debugger.java.customViewers-generator.jar" />
@@ -849,7 +1197,7 @@
     <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-debugger-java-languages-customViewers-generator-template">
       <fileset dir="${mps_home}/plugins/debugger-java/languages/customViewers/generator/template" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
-    <jar destfile="${build.layout}/mps-debugger-java/languages/mps-debugger-java/jetbrains.mps.debugger.java.customViewers-src.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/mps-debugger-java/languages/jetbrains.mps.debugger.java.customViewers-src.jar" duplicate="preserve">
       <fileset dir="${mps_home}/plugins/debugger-java/languages/customViewers/generator/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
@@ -957,7 +1305,7 @@
         <sources jar="jetbrains.mps.debugger.java.evaluation-src.jar" descriptor="jetbrains.mps.debugger.java.evaluation.mpl" />
       </module>
     </echoxml>
-    <jar destfile="${build.layout}/mps-debugger-java/languages/mps-debugger-java/jetbrains.mps.debugger.java.evaluation.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/mps-debugger-java/languages/jetbrains.mps.debugger.java.evaluation.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.debugger.java.evaluation" />
       <fileset dir="${mps_home}/plugins/debugger-java/languages/evaluation" includes="icons/**, resources/**" />
       <fileset dir="${mps_home}/plugins/debugger-java/languages/evaluation/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
@@ -1004,7 +1352,7 @@
         <sources jar="jetbrains.mps.debugger.java.evaluation-src.jar" descriptor="jetbrains.mps.debugger.java.evaluation.mpl" />
       </module>
     </echoxml>
-    <jar destfile="${build.layout}/mps-debugger-java/languages/mps-debugger-java/jetbrains.mps.debugger.java.evaluation-generator.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/mps-debugger-java/languages/jetbrains.mps.debugger.java.evaluation-generator.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.debugger.java.evaluation#1620955434532134778" />
       <fileset dir="${mps_home}/plugins/debugger-java/languages/evaluation/generator/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.debugger.java.evaluation-generator.jar" />
@@ -1015,7 +1363,7 @@
     <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-debugger-java-languages-evaluation-generator-template">
       <fileset dir="${mps_home}/plugins/debugger-java/languages/evaluation/generator/template" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
-    <jar destfile="${build.layout}/mps-debugger-java/languages/mps-debugger-java/jetbrains.mps.debugger.java.evaluation-src.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/mps-debugger-java/languages/jetbrains.mps.debugger.java.evaluation-src.jar" duplicate="preserve">
       <fileset dir="${mps_home}/plugins/debugger-java/languages/evaluation/generator/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />

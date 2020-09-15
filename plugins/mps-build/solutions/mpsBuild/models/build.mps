@@ -34281,36 +34281,37 @@
             <node concept="Saw0i" id="7JhNVLpH4Qe" role="39821P">
               <ref role="Saw0g" node="73u3wWztPUY" resolve="execution-api" />
             </node>
-            <node concept="398223" id="76jm2XY_K97" role="39821P">
-              <node concept="3_J27D" id="76jm2XY_LY6" role="Nbhlr">
-                <node concept="3Mxwew" id="76jm2XY_LYc" role="3MwsjC">
-                  <property role="3MwjfP" value="modules" />
-                </node>
-              </node>
-              <node concept="1bldCd" id="7JhNVLpH4Zv" role="39821P">
-                <ref role="3$exzV" node="2eDSGe9d1qo" resolve="jetbrains.mps.execution.api" />
-              </node>
-            </node>
           </node>
         </node>
         <node concept="398223" id="5peYeZGo8WN" role="39821P">
+          <node concept="L2wRC" id="4202SB_RDhF" role="39821P">
+            <ref role="L2wRA" node="2eDSGe9d1qo" resolve="jetbrains.mps.execution.api" />
+            <node concept="3yLZsm" id="4202SB_RDlp" role="3yL2VB">
+              <property role="3yLZsk" value="../lib/execution-api.jar" />
+              <node concept="398BVA" id="4202SB_RDlt" role="3yLZsn">
+                <ref role="398BVh" node="5xa9wY2uOS9" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="4202SB_RDlu" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="4202SB_RDlv" role="2Ry0An">
+                    <property role="2Ry0Am" value="execution-api" />
+                    <node concept="2Ry0Ak" id="4202SB_RDlw" role="2Ry0An">
+                      <property role="2Ry0Am" value="classes" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
           <node concept="3_J27D" id="5peYeZGo8WO" role="Nbhlr">
             <node concept="3Mxwew" id="5peYeZGo8WP" role="3MwsjC">
               <property role="3MwjfP" value="languages" />
             </node>
           </node>
-          <node concept="398223" id="5peYeZGo8WQ" role="39821P">
-            <node concept="3_J27D" id="5peYeZGo8WR" role="Nbhlr">
-              <node concept="3Mxwew" id="5peYeZGo8WS" role="3MwsjC">
-                <property role="3MwjfP" value="mps-execution-api" />
-              </node>
-            </node>
-            <node concept="L2wRC" id="5peYeZGo8WT" role="39821P">
-              <ref role="L2wRA" node="3IKDaVZp4tJ" resolve="jetbrains.mps.execution.settings" />
-            </node>
-            <node concept="L2wRC" id="5peYeZGo8WU" role="39821P">
-              <ref role="L2wRA" node="3IKDaVZp4tZ" resolve="jetbrains.mps.execution.common" />
-            </node>
+          <node concept="L2wRC" id="5peYeZGo8WT" role="39821P">
+            <ref role="L2wRA" node="3IKDaVZp4tJ" resolve="jetbrains.mps.execution.settings" />
+          </node>
+          <node concept="L2wRC" id="5peYeZGo8WU" role="39821P">
+            <ref role="L2wRA" node="3IKDaVZp4tZ" resolve="jetbrains.mps.execution.common" />
           </node>
         </node>
       </node>
@@ -34332,19 +34333,6 @@
             <node concept="Saw0i" id="2fQZjorSjPS" role="39821P">
               <ref role="Saw0g" node="1Ad03kwQxZn" resolve="debugger-api" />
             </node>
-            <node concept="398223" id="5mc7nVumr1J" role="39821P">
-              <node concept="1bldCd" id="4ewQI7WRN2P" role="39821P">
-                <ref role="3$exzV" node="7gdoTYdo$et" resolve="jetbrains.mps.debugger.api.api" />
-              </node>
-              <node concept="1bldCd" id="4ewQI7WRN2R" role="39821P">
-                <ref role="3$exzV" node="7gdoTYdo$eB" resolve="jetbrains.mps.debugger.api.runtime" />
-              </node>
-              <node concept="3_J27D" id="5mc7nVumr1K" role="Nbhlr">
-                <node concept="3Mxwew" id="5mc7nVumr1L" role="3MwsjC">
-                  <property role="3MwjfP" value="modules" />
-                </node>
-              </node>
-            </node>
           </node>
         </node>
         <node concept="398223" id="5peYeZGo8W_" role="39821P">
@@ -34353,15 +34341,50 @@
               <property role="3MwjfP" value="languages" />
             </node>
           </node>
-          <node concept="398223" id="5peYeZGo8WC" role="39821P">
-            <node concept="3_J27D" id="5peYeZGo8WD" role="Nbhlr">
-              <node concept="3Mxwew" id="5peYeZGo8WE" role="3MwsjC">
-                <property role="3MwjfP" value="mps-debugger-api" />
+          <node concept="L2wRC" id="4202SB_RDpl" role="39821P">
+            <ref role="L2wRA" node="7gdoTYdo$et" resolve="jetbrains.mps.debugger.api.api" />
+            <node concept="3yLZsm" id="4202SB_RDu4" role="3yL2VB">
+              <property role="3yLZsk" value="../lib/debugger-api.jar" />
+              <node concept="398BVA" id="4202SB_RDBm" role="3yLZsn">
+                <ref role="398BVh" node="5xa9wY2uOS9" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="4202SB_RDBn" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="4202SB_RDBo" role="2Ry0An">
+                    <property role="2Ry0Am" value="debugger-api" />
+                    <node concept="2Ry0Ak" id="4202SB_RDBp" role="2Ry0An">
+                      <property role="2Ry0Am" value="api" />
+                      <node concept="2Ry0Ak" id="4202SB_RDBq" role="2Ry0An">
+                        <property role="2Ry0Am" value="classes" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
               </node>
             </node>
-            <node concept="L2wRC" id="5peYeZGo8WF" role="39821P">
-              <ref role="L2wRA" node="4LDuh$Ud1LG" resolve="jetbrains.mps.debugger.api.lang" />
+          </node>
+          <node concept="L2wRC" id="4202SB_RDsb" role="39821P">
+            <ref role="L2wRA" node="7gdoTYdo$eB" resolve="jetbrains.mps.debugger.api.runtime" />
+            <node concept="3yLZsm" id="4202SB_RDCq" role="3yL2VB">
+              <property role="3yLZsk" value="../lib/debugger-api.jar" />
+              <node concept="398BVA" id="4202SB_RDDo" role="3yLZsn">
+                <ref role="398BVh" node="5xa9wY2uOS9" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="4202SB_RDDp" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="4202SB_RDDq" role="2Ry0An">
+                    <property role="2Ry0Am" value="debugger-api" />
+                    <node concept="2Ry0Ak" id="4202SB_RDDr" role="2Ry0An">
+                      <property role="2Ry0Am" value="runtime" />
+                      <node concept="2Ry0Ak" id="4202SB_RDDs" role="2Ry0An">
+                        <property role="2Ry0Am" value="classes" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
             </node>
+          </node>
+          <node concept="L2wRC" id="5peYeZGo8WF" role="39821P">
+            <ref role="L2wRA" node="4LDuh$Ud1LG" resolve="jetbrains.mps.debugger.api.lang" />
           </node>
         </node>
       </node>
@@ -34378,22 +34401,6 @@
             <node concept="Saw0i" id="2fQZjorSjPQ" role="39821P">
               <ref role="Saw0g" node="1Ad03kwQxZE" resolve="debugger-java" />
             </node>
-            <node concept="398223" id="5mc7nVumr1$" role="39821P">
-              <node concept="1bldCd" id="4ewQI7WRN2U" role="39821P">
-                <ref role="3$exzV" node="4LDuh$Ud1Lx" resolve="jetbrains.mps.debugger.java.api" />
-              </node>
-              <node concept="1bldCd" id="4ewQI7WRN2V" role="39821P">
-                <ref role="3$exzV" node="4LDuh$Ud1Mj" resolve="jetbrains.mps.debugger.java.runtime" />
-              </node>
-              <node concept="1bldCd" id="6qKQ86S$Roj" role="39821P">
-                <ref role="3$exzV" node="4LDuh$Ud1Nd" resolve="jetbrains.mps.debugger.java.customViewers.plugin" />
-              </node>
-              <node concept="3_J27D" id="5mc7nVumr1_" role="Nbhlr">
-                <node concept="3Mxwew" id="5mc7nVumr1A" role="3MwsjC">
-                  <property role="3MwjfP" value="modules" />
-                </node>
-              </node>
-            </node>
             <node concept="3_J27D" id="5mc7nVumr1t" role="Nbhlr">
               <node concept="3Mxwew" id="5mc7nVumr1u" role="3MwsjC">
                 <property role="3MwjfP" value="debugger-java.jar" />
@@ -34407,24 +34414,80 @@
               <property role="3MwjfP" value="languages" />
             </node>
           </node>
-          <node concept="398223" id="5peYeZGo8VX" role="39821P">
-            <node concept="3_J27D" id="5peYeZGo8VY" role="Nbhlr">
-              <node concept="3Mxwew" id="5peYeZGo8VZ" role="3MwsjC">
-                <property role="3MwjfP" value="mps-debugger-java" />
+          <node concept="L2wRC" id="5peYeZGo8W0" role="39821P">
+            <ref role="L2wRA" node="3405ypXZilV" resolve="JDK-tools" />
+          </node>
+          <node concept="L2wRC" id="4202SB_RDO2" role="39821P">
+            <ref role="L2wRA" node="4LDuh$Ud1Lx" resolve="jetbrains.mps.debugger.java.api" />
+            <node concept="3yLZsm" id="4202SB_RDVT" role="3yL2VB">
+              <property role="3yLZsk" value="../lib/debugger-java.jar" />
+              <node concept="398BVA" id="4202SB_RDWR" role="3yLZsn">
+                <ref role="398BVh" node="5xa9wY2uOS9" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="4202SB_RDWS" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="4202SB_RDWT" role="2Ry0An">
+                    <property role="2Ry0Am" value="debugger-java" />
+                    <node concept="2Ry0Ak" id="4202SB_RDWU" role="2Ry0An">
+                      <property role="2Ry0Am" value="api" />
+                      <node concept="2Ry0Ak" id="4202SB_RDWV" role="2Ry0An">
+                        <property role="2Ry0Am" value="classes" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
               </node>
             </node>
-            <node concept="L2wRC" id="5peYeZGo8W0" role="39821P">
-              <ref role="L2wRA" node="3405ypXZilV" resolve="JDK-tools" />
+          </node>
+          <node concept="L2wRC" id="4202SB_RDQY" role="39821P">
+            <ref role="L2wRA" node="4LDuh$Ud1Mj" resolve="jetbrains.mps.debugger.java.runtime" />
+            <node concept="3yLZsm" id="4202SB_RDXV" role="3yL2VB">
+              <property role="3yLZsk" value="../lib/debugger-java.jar" />
+              <node concept="398BVA" id="4202SB_RDYT" role="3yLZsn">
+                <ref role="398BVh" node="5xa9wY2uOS9" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="4202SB_RDYU" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="4202SB_RDYV" role="2Ry0An">
+                    <property role="2Ry0Am" value="debugger-java" />
+                    <node concept="2Ry0Ak" id="4202SB_RDYW" role="2Ry0An">
+                      <property role="2Ry0Am" value="runtime" />
+                      <node concept="2Ry0Ak" id="4202SB_RDYX" role="2Ry0An">
+                        <property role="2Ry0Am" value="classes" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
             </node>
-            <node concept="L2wRC" id="5peYeZGo8W1" role="39821P">
-              <ref role="L2wRA" node="4LDuh$Ud1N2" resolve="jetbrains.mps.debugger.java.privateMembers" />
+          </node>
+          <node concept="L2wRC" id="4202SB_RDTW" role="39821P">
+            <ref role="L2wRA" node="4LDuh$Ud1Nd" resolve="jetbrains.mps.debugger.java.customViewers.plugin" />
+            <node concept="3yLZsm" id="4202SB_RE0R" role="3yL2VB">
+              <property role="3yLZsk" value="../lib/debugger-java.jar" />
+              <node concept="398BVA" id="4202SB_RE1P" role="3yLZsn">
+                <ref role="398BVh" node="5xa9wY2uOS9" resolve="mps_home" />
+                <node concept="2Ry0Ak" id="4202SB_RE1Q" role="iGT6I">
+                  <property role="2Ry0Am" value="plugins" />
+                  <node concept="2Ry0Ak" id="4202SB_RE1R" role="2Ry0An">
+                    <property role="2Ry0Am" value="debugger-java" />
+                    <node concept="2Ry0Ak" id="4202SB_RE2T" role="2Ry0An">
+                      <property role="2Ry0Am" value="customViewers" />
+                      <node concept="2Ry0Ak" id="4202SB_RE3S" role="2Ry0An">
+                        <property role="2Ry0Am" value="classes" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
             </node>
-            <node concept="L2wRC" id="5peYeZGo8W2" role="39821P">
-              <ref role="L2wRA" node="4LDuh$Ud1My" resolve="jetbrains.mps.debugger.java.customViewers" />
-            </node>
-            <node concept="L2wRC" id="5peYeZGo8W3" role="39821P">
-              <ref role="L2wRA" node="4LDuh$Ud1MP" resolve="jetbrains.mps.debugger.java.evaluation" />
-            </node>
+          </node>
+          <node concept="L2wRC" id="5peYeZGo8W1" role="39821P">
+            <ref role="L2wRA" node="4LDuh$Ud1N2" resolve="jetbrains.mps.debugger.java.privateMembers" />
+          </node>
+          <node concept="L2wRC" id="5peYeZGo8W2" role="39821P">
+            <ref role="L2wRA" node="4LDuh$Ud1My" resolve="jetbrains.mps.debugger.java.customViewers" />
+          </node>
+          <node concept="L2wRC" id="5peYeZGo8W3" role="39821P">
+            <ref role="L2wRA" node="4LDuh$Ud1MP" resolve="jetbrains.mps.debugger.java.evaluation" />
           </node>
         </node>
       </node>
