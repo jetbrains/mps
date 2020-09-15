@@ -146,7 +146,7 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static void fetchGenerationDeps_id3WZD5LHqDLU(@NotNull SNode __thisNode__, VisibleArtifacts artifacts, RequiredDependenciesBuilder builder) {
     MPSModulesPartitioner partitioner = new MPSModulesPartitioner(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__));
-    partitioner.buildChunks();
+    // XXX I see no apparent reason to build chunks as long as all we use is set of 'external' modules 
     partitioner.buildExternalDependencies();
     Iterable<SNode> allModules = partitioner.getExternal();
     for (SNode generationDep : Sequence.fromIterable(allModules)) {
