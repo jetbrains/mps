@@ -59,13 +59,10 @@ class EditorMessagesPanel extends JPanel implements IMessageHandler {
   public void handle(@NotNull IMessage msg) {
     SNodeReference node = (SNodeReference) msg.getHintObject();
     SNodeId nodeId = node.getNodeId();
+    removeReport(nodeId);
     if (msg.getKind() == MessageKind.ERROR) {
-      if (!reportedNodes.containsKey(nodeId)) {
-        addErrorPanel(msg, node);
-        setVisible(true);
-      }
-    } else {
-      removeReport(nodeId);
+      addErrorPanel(msg, node);
+      setVisible(true);
     }
   }
 
