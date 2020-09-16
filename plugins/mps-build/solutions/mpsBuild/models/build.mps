@@ -25461,15 +25461,15 @@
     <node concept="2sgV4H" id="ymnOULF4Lo" role="1l3spa">
       <ref role="1l3spb" node="6S1jmf0xDFC" resolve="mpsBootstrapCore" />
     </node>
-    <node concept="2sgV4H" id="7aWTg_1qs$y" role="1l3spa">
-      <ref role="1l3spb" node="5D1dJ7xWer5" resolve="mpsCore" />
-    </node>
     <node concept="398rNT" id="5WtSFRWue0V" role="1l3spd">
       <property role="TrG5h" value="idea_home" />
     </node>
     <node concept="398rNT" id="2eDSGe9d1qB" role="1l3spd">
       <property role="TrG5h" value="mps_home" />
       <node concept="55IIr" id="2eDSGe9d1qC" role="398pKh" />
+    </node>
+    <node concept="2sgV4H" id="7aWTg_1qs$y" role="1l3spa">
+      <ref role="1l3spb" node="5D1dJ7xWer5" resolve="mpsCore" />
     </node>
   </node>
   <node concept="13uchq" id="6eCuTcwOnJO">
@@ -25511,7 +25511,7 @@
       <node concept="13uQ2_" id="5w9VucA$Mg7" role="39821P">
         <node concept="3_J27D" id="5w9VucA$Mg9" role="13uQ07">
           <node concept="3Mxwew" id="4vNfevbfZxr" role="3MwsjC">
-            <property role="3MwjfP" value="ecj-4.13.jar" />
+            <property role="3MwjfP" value="ecj-4.16.jar" />
           </node>
         </node>
       </node>
@@ -25824,7 +25824,7 @@
           <node concept="13uQ2_" id="3UiXxTrwi5$" role="39821P">
             <node concept="3_J27D" id="3UiXxTrwi5_" role="13uQ07">
               <node concept="3Mxwew" id="3UiXxTrwi5C" role="3MwsjC">
-                <property role="3MwjfP" value="ecj-4.13.jar" />
+                <property role="3MwjfP" value="ecj-4.16.jar" />
               </node>
             </node>
           </node>
@@ -29156,23 +29156,23 @@
       </node>
       <node concept="1SiIV0" id="4IP11oWmBUA" role="3bR37C">
         <node concept="3bR9La" id="4IP11oWmBUB" role="1SiIV1">
-          <ref role="3bR37D" node="mXGwHwhVPj" resolve="JDK" />
+          <ref role="3bR37D" node="mXGwHwhVPj" />
         </node>
       </node>
       <node concept="1SiIV0" id="4IP11oWmBU$" role="3bR37C">
         <node concept="3bR9La" id="4IP11oWmBU_" role="1SiIV1">
-          <ref role="3bR37D" node="44LXwdzyvTi" resolve="Annotations" />
+          <ref role="3bR37D" node="44LXwdzyvTi" />
         </node>
       </node>
       <node concept="1SiIV0" id="4IP11oWmBUw" role="3bR37C">
         <node concept="3bR9La" id="4IP11oWmBUx" role="1SiIV1">
-          <ref role="3bR37D" node="1H905DlDUSw" resolve="MPS.OpenAPI" />
+          <ref role="3bR37D" node="1H905DlDUSw" />
         </node>
       </node>
       <node concept="1SiIV0" id="4IP11oWmBUK" role="3bR37C">
         <node concept="3bR9La" id="4IP11oWmBUL" role="1SiIV1">
           <property role="3bR36h" value="true" />
-          <ref role="3bR37D" node="1TaHNgiIbIQ" resolve="MPS.Core" />
+          <ref role="3bR37D" node="1TaHNgiIbIQ" />
         </node>
       </node>
       <node concept="1SiIV0" id="4IP11oWmBUk" role="3bR37C">
@@ -29188,7 +29188,7 @@
       </node>
       <node concept="1SiIV0" id="4IP11oWmBUI" role="3bR37C">
         <node concept="3bR9La" id="4IP11oWmBUJ" role="1SiIV1">
-          <ref role="3bR37D" node="7Kfy9QB6LfQ" resolve="jetbrains.mps.kernel" />
+          <ref role="3bR37D" node="7Kfy9QB6LfQ" />
         </node>
       </node>
       <node concept="1SiIV0" id="4IP11oWmBUu" role="3bR37C">
@@ -31867,9 +31867,6 @@
     </node>
     <node concept="m$_wf" id="RJsmGEieyQ" role="3989C9">
       <property role="m$_wk" value="jetbrains.mps.vcs" />
-      <node concept="m$_yC" id="7aWTg_1mQiO" role="m$_yJ">
-        <ref role="m$_y1" node="4k71ibbKLe8" resolve="jetbrains.mps.core" />
-      </node>
       <node concept="m$_yB" id="3SChJ9XzWyx" role="m$_yh">
         <ref role="m$_yA" node="39HJr_hyEqi" resolve="jetbrains.mps.ide.vcs" />
       </node>
@@ -31929,6 +31926,9 @@
             </node>
           </node>
         </node>
+      </node>
+      <node concept="m$_yC" id="7aWTg_1mQiO" role="m$_yJ">
+        <ref role="m$_y1" node="4k71ibbKLe8" resolve="jetbrains.mps.core" />
       </node>
       <node concept="m$_yC" id="6pfW_jueeEg" role="m$_yJ">
         <ref role="m$_y1" node="4k71ibbLe59" resolve="com.intellij.modules.mps" />
@@ -34329,6 +34329,11 @@
           </node>
         </node>
         <node concept="398223" id="5peYeZGo8WN" role="39821P">
+          <node concept="3_J27D" id="5peYeZGo8WO" role="Nbhlr">
+            <node concept="3Mxwew" id="5peYeZGo8WP" role="3MwsjC">
+              <property role="3MwjfP" value="languages" />
+            </node>
+          </node>
           <node concept="L2wRC" id="4202SB_RDhF" role="39821P">
             <ref role="L2wRA" node="2eDSGe9d1qo" resolve="jetbrains.mps.execution.api" />
             <node concept="3yLZsm" id="4202SB_RDlp" role="3yL2VB">
@@ -34345,11 +34350,6 @@
                   </node>
                 </node>
               </node>
-            </node>
-          </node>
-          <node concept="3_J27D" id="5peYeZGo8WO" role="Nbhlr">
-            <node concept="3Mxwew" id="5peYeZGo8WP" role="3MwsjC">
-              <property role="3MwjfP" value="languages" />
             </node>
           </node>
           <node concept="L2wRC" id="5peYeZGo8WT" role="39821P">
@@ -40217,9 +40217,6 @@
     </node>
     <node concept="m$_wf" id="6EN03E8oSte" role="3989C9">
       <property role="m$_wk" value="jetbrains.mps.ide.make" />
-      <node concept="m$_yC" id="7aWTg_1mQj7" role="m$_yJ">
-        <ref role="m$_y1" node="4k71ibbKLe8" resolve="jetbrains.mps.core" />
-      </node>
       <node concept="398BVA" id="6EN03E8oStf" role="I30fb">
         <ref role="398BVh" node="5rNMDvYzen0" resolve="mps_home" />
         <node concept="2Ry0Ak" id="6EN03E8oStg" role="iGT6I">
@@ -40256,6 +40253,9 @@
       </node>
       <node concept="m$_yB" id="6EN03E8p6e0" role="m$_yh">
         <ref role="m$_yA" node="71aLKqdKvPp" resolve="jetbrains.mps.ide.make" />
+      </node>
+      <node concept="m$_yC" id="7aWTg_1mQj7" role="m$_yJ">
+        <ref role="m$_y1" node="4k71ibbKLe8" resolve="jetbrains.mps.core" />
       </node>
       <node concept="m$_yC" id="6EN03E8pc83" role="m$_yJ">
         <ref role="m$_y1" node="4k71ibbLe59" resolve="com.intellij.modules.mps" />

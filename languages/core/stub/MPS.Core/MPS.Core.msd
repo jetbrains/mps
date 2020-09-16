@@ -22,7 +22,7 @@
       <sourceRoot location="log4j.jar" />
       <sourceRoot location="trove4j.jar" />
       <sourceRoot location="jdom.jar" />
-      <sourceRoot location="ecj-4.13.jar" />
+      <sourceRoot location="ecj-4.16.jar" />
     </modelRoot>
   </models>
   <facets>
@@ -50,7 +50,7 @@
     <stubModelEntry path="${platform_lib}/log4j.jar" />
     <stubModelEntry path="${platform_lib}/trove4j.jar" />
     <stubModelEntry path="${platform_lib}/jdom.jar" />
-    <stubModelEntry path="${platform_lib}/ecj-4.13.jar" />
+    <stubModelEntry path="${platform_lib}/ecj-4.16.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>
