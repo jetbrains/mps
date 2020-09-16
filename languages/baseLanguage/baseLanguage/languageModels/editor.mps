@@ -51562,14 +51562,14 @@
                 <node concept="3uibUv" id="6Q0Nj3nznuF" role="1tU5fm">
                   <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
                 </node>
-                <node concept="2OqwBi" id="6Q0Nj3nzoj5" role="33vP2m">
-                  <node concept="10M0yZ" id="6Q0Nj3nzoj6" role="2Oq$k0">
-                    <ref role="3cqZAo" to="xx25:~SPrimitiveTypes.INTEGER" resolve="INTEGER" />
-                    <ref role="1PxDUh" to="xx25:~SPrimitiveTypes" resolve="SPrimitiveTypes" />
+                <node concept="2OqwBi" id="6wURfZ9b6xP" role="33vP2m">
+                  <node concept="10M0yZ" id="6wURfZ9b6xQ" role="2Oq$k0">
+                    <ref role="1PxDUh" to="5b0:~IPropertyPresentationProvider" resolve="IPropertyPresentationProvider" />
+                    <ref role="3cqZAo" to="5b0:~IPropertyPresentationProvider.INTEGER" resolve="INTEGER" />
                   </node>
-                  <node concept="liA8E" id="6Q0Nj3nzoj7" role="2OqNvi">
-                    <ref role="37wK5l" to="c17a:~SDataType.fromString(java.lang.String)" resolve="fromString" />
-                    <node concept="ub8z3" id="6Q0Nj3nzoj8" role="37wK5m" />
+                  <node concept="liA8E" id="6wURfZ9b6xR" role="2OqNvi">
+                    <ref role="37wK5l" to="5b0:~IPropertyPresentationProvider.fromPresentation(java.lang.String)" resolve="fromPresentation" />
+                    <node concept="ub8z3" id="6wURfZ9b6xS" role="37wK5m" />
                   </node>
                 </node>
               </node>
@@ -51621,14 +51621,14 @@
               <node concept="3uibUv" id="6Q0Nj3nCEQP" role="1tU5fm">
                 <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
               </node>
-              <node concept="2OqwBi" id="6Q0Nj3nCEQQ" role="33vP2m">
-                <node concept="10M0yZ" id="6Q0Nj3nCEQR" role="2Oq$k0">
-                  <ref role="1PxDUh" to="xx25:~SPrimitiveTypes" resolve="SPrimitiveTypes" />
-                  <ref role="3cqZAo" to="xx25:~SPrimitiveTypes.INTEGER" resolve="INTEGER" />
+              <node concept="2OqwBi" id="6wURfZ9fKDx" role="33vP2m">
+                <node concept="10M0yZ" id="6wURfZ9fKDy" role="2Oq$k0">
+                  <ref role="1PxDUh" to="5b0:~IPropertyPresentationProvider" resolve="IPropertyPresentationProvider" />
+                  <ref role="3cqZAo" to="5b0:~IPropertyPresentationProvider.INTEGER" resolve="INTEGER" />
                 </node>
-                <node concept="liA8E" id="6Q0Nj3nCEQS" role="2OqNvi">
-                  <ref role="37wK5l" to="c17a:~SDataType.fromString(java.lang.String)" resolve="fromString" />
-                  <node concept="ub8z3" id="6Q0Nj3nCEQT" role="37wK5m" />
+                <node concept="liA8E" id="6wURfZ9fKDz" role="2OqNvi">
+                  <ref role="37wK5l" to="5b0:~IPropertyPresentationProvider.fromPresentation(java.lang.String)" resolve="fromPresentation" />
+                  <node concept="ub8z3" id="6wURfZ9fKD$" role="37wK5m" />
                 </node>
               </node>
             </node>

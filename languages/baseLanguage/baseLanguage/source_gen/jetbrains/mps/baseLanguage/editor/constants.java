@@ -19,7 +19,7 @@ import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.smodel.adapter.structure.types.SPrimitiveTypes;
+import jetbrains.mps.smodel.presentation.IPropertyPresentationProvider;
 import org.jetbrains.mps.openapi.language.SType;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
@@ -104,7 +104,7 @@ public class constants extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode intConst = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.IntegerConstant$Na, null);
-        Object result = SPrimitiveTypes.INTEGER.fromString(pattern);
+        Object result = IPropertyPresentationProvider.INTEGER.fromPresentation(pattern);
         if (result == null || result == SType.NOT_A_VALUE) {
           SPropertyOperations.set(intConst, PROPS.value$jgCM, 0);
         } else {
@@ -131,7 +131,7 @@ public class constants extends SubstituteMenuBase {
         return canExecute_internal(pattern, true);
       }
       public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
-        Object result = SPrimitiveTypes.INTEGER.fromString(pattern);
+        Object result = IPropertyPresentationProvider.INTEGER.fromPresentation(pattern);
         return (result == null ? !(strictly) : result != SType.NOT_A_VALUE);
       }
     }

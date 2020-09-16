@@ -110,10 +110,31 @@ public interface IPropertyPresentationProvider {
     }
   };
 
+  IPropertyPresentationProvider INTEGER = new IPropertyPresentationProvider() {
+
+    @Override
+    public String getPresentation(Object value) {
+      return SPrimitiveTypes.INTEGER.toString(value);
+    }
+
+    @Override
+    public Object fromPresentation(@Nullable String presentation) {
+      if (presentation != null) {
+        if (presentation.startsWith("+") || presentation.length() > 1 && presentation.charAt(0) == '0') {
+          return SType.NOT_A_VALUE;
+        }
+      }
+      return SPrimitiveTypes.INTEGER.fromString(presentation);
+    }
+  };
+
   static IPropertyPresentationProvider getPresentationProviderFor(@NotNull SProperty property) {
     final SDataType type = property.getType();
     if (type == SPrimitiveTypes.BOOLEAN) {
       return BOOLEAN;
+    }
+    if (type == SPrimitiveTypes.INTEGER) {
+      return INTEGER;
     }
     if (type instanceof SEnumeration) {
       return getEnumPresentationProvider((SEnumeration) type);
