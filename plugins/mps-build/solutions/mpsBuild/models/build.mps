@@ -23692,9 +23692,6 @@
     <node concept="m$_wf" id="4k71ibbLe59" role="3989C9">
       <property role="m$_wk" value="com.intellij.modules.mps" />
       <property role="1NdglO" value="true" />
-      <node concept="m$_yC" id="4k71ibbLe5s" role="m$_yJ">
-        <ref role="m$_y1" node="4k71ibbKLe8" resolve="jetbrains.mps.core" />
-      </node>
       <node concept="3_J27D" id="4k71ibbLe5a" role="m$_yQ">
         <node concept="3Mxwew" id="4k71ibbLe5h" role="3MwsjC">
           <property role="3MwjfP" value="MPS IDE plugin" />
@@ -23709,6 +23706,57 @@
         <node concept="3Mxwey" id="4k71ibbLe5j" role="3MwsjC">
           <ref role="3Mxwex" node="5HVSRHdVf2d" resolve="version" />
         </node>
+      </node>
+      <node concept="m$f5U" id="7aWTg_1mTYr" role="m$_yh">
+        <ref role="m$f5T" node="1jjYQYShJYG" resolve="bootstrap" />
+      </node>
+      <node concept="m$f5U" id="7aWTg_1mTZl" role="m$_yh">
+        <ref role="m$f5T" node="36zc_GPzJym" resolve="behavior" />
+      </node>
+      <node concept="m$f5U" id="7aWTg_1mTZm" role="m$_yh">
+        <ref role="m$f5T" node="1jjYQYSj1Bc" resolve="ant" />
+      </node>
+      <node concept="m$f5U" id="7aWTg_1mTZn" role="m$_yh">
+        <ref role="m$f5T" node="1jjYQYShOpS" resolve="kernel" />
+      </node>
+      <node concept="m$f5U" id="7aWTg_1mTZo" role="m$_yh">
+        <ref role="m$f5T" node="1jjYQYSiWgI" resolve="editor" />
+      </node>
+      <node concept="m$f5U" id="7aWTg_1mTZp" role="m$_yh">
+        <ref role="m$f5T" node="1jjYQYShOpJ" resolve="devkits" />
+      </node>
+      <node concept="m$f5U" id="7aWTg_1mTZq" role="m$_yh">
+        <ref role="m$f5T" node="1jjYQYShOpH" resolve="baseLanguage" />
+      </node>
+      <node concept="m$f5U" id="7aWTg_1mTZr" role="m$_yh">
+        <ref role="m$f5T" node="1jjYQYShOpF" resolve="languageDesign" />
+      </node>
+      <node concept="m$f5U" id="7aWTg_1mTZs" role="m$_yh">
+        <ref role="m$f5T" node="SHPhCCYR3o" resolve="feedback" />
+      </node>
+      <node concept="m$f5U" id="7aWTg_1mTZt" role="m$_yh">
+        <ref role="m$f5T" node="SHPhCCYOl5" resolve="constraints" />
+      </node>
+      <node concept="m$f5U" id="7aWTg_1mTZu" role="m$_yh">
+        <ref role="m$f5T" node="SHPhCD0Qe$" resolve="context" />
+      </node>
+      <node concept="m$f5U" id="7aWTg_1mTZv" role="m$_yh">
+        <ref role="m$f5T" node="1jjYQYShOpL" resolve="make" />
+      </node>
+      <node concept="m$f5U" id="7aWTg_1mTZw" role="m$_yh">
+        <ref role="m$f5T" node="3zjMY$95SR8" resolve="environment" />
+      </node>
+      <node concept="m$f5U" id="7aWTg_1mTZx" role="m$_yh">
+        <ref role="m$f5T" node="1jjYQYShOpO" resolve="ide" />
+      </node>
+      <node concept="m$f5U" id="7aWTg_1mTZz" role="m$_yh">
+        <ref role="m$f5T" node="3HV74$ebibB" resolve="text" />
+      </node>
+      <node concept="m$f5U" id="7aWTg_1mTZ$" role="m$_yh">
+        <ref role="m$f5T" node="7KapL9OABnl" resolve="ui" />
+      </node>
+      <node concept="m$f5U" id="7aWTg_1qs_s" role="m$_yh">
+        <ref role="m$f5T" node="EsyHx2GPbl" resolve="properties" />
       </node>
       <node concept="m$f5U" id="4k71ibbLe5l" role="m$_yh">
         <ref role="m$f5T" node="2eDSGe9d1q0" resolve="workbench" />
@@ -25413,11 +25461,8 @@
     <node concept="2sgV4H" id="ymnOULF4Lo" role="1l3spa">
       <ref role="1l3spb" node="6S1jmf0xDFC" resolve="mpsBootstrapCore" />
     </node>
-    <node concept="2sgV4H" id="1anAQ3czncK" role="1l3spa">
+    <node concept="2sgV4H" id="7aWTg_1qs$y" role="1l3spa">
       <ref role="1l3spb" node="5D1dJ7xWer5" resolve="mpsCore" />
-    </node>
-    <node concept="2sgV4H" id="5Ti9jVZ6_2Z" role="1l3spa">
-      <ref role="1l3spb" node="ymnOULAEsd" resolve="mpsTesting" />
     </node>
     <node concept="398rNT" id="5WtSFRWue0V" role="1l3spd">
       <property role="TrG5h" value="idea_home" />
@@ -31822,6 +31867,9 @@
     </node>
     <node concept="m$_wf" id="RJsmGEieyQ" role="3989C9">
       <property role="m$_wk" value="jetbrains.mps.vcs" />
+      <node concept="m$_yC" id="7aWTg_1mQiO" role="m$_yJ">
+        <ref role="m$_y1" node="4k71ibbKLe8" resolve="jetbrains.mps.core" />
+      </node>
       <node concept="m$_yB" id="3SChJ9XzWyx" role="m$_yh">
         <ref role="m$_yA" node="39HJr_hyEqi" resolve="jetbrains.mps.ide.vcs" />
       </node>
@@ -40169,6 +40217,9 @@
     </node>
     <node concept="m$_wf" id="6EN03E8oSte" role="3989C9">
       <property role="m$_wk" value="jetbrains.mps.ide.make" />
+      <node concept="m$_yC" id="7aWTg_1mQj7" role="m$_yJ">
+        <ref role="m$_y1" node="4k71ibbKLe8" resolve="jetbrains.mps.core" />
+      </node>
       <node concept="398BVA" id="6EN03E8oStf" role="I30fb">
         <ref role="398BVh" node="5rNMDvYzen0" resolve="mps_home" />
         <node concept="2Ry0Ak" id="6EN03E8oStg" role="iGT6I">
@@ -45349,6 +45400,9 @@
       </node>
       <node concept="m$_yB" id="4qmhgpFI_YI" role="m$_yh">
         <ref role="m$_yA" node="2ucthr8W$$t" resolve="jetbrains.mps.java.workbench" />
+      </node>
+      <node concept="m$_yC" id="7aWTg_1mQk8" role="m$_yJ">
+        <ref role="m$_y1" node="4k71ibbKLe8" resolve="jetbrains.mps.core" />
       </node>
       <node concept="m$_yC" id="2pZ8abj57t4" role="m$_yJ">
         <ref role="m$_y1" node="4k71ibbLe59" resolve="com.intellij.modules.mps" />

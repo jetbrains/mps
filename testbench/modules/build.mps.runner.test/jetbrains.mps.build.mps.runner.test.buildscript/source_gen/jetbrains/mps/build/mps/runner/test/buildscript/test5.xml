@@ -310,7 +310,6 @@
       <plugin path="${artifacts.mps}/plugins/git4idea" id="Git4Idea" />
       <plugin path="${artifacts.mps}/plugins/mps-core" id="jetbrains.mps.core" />
       <plugin path="${artifacts.mps}/plugins/mps-git4idea" id="jetbrains.mps.git4idea.stubs" />
-      <plugin path="${artifacts.mps}/plugins/mps-testing" id="jetbrains.mps.testing" />
       <plugin path="${artifacts.mps}/plugins/mps-vcs" id="jetbrains.mps.vcs" />
       <plugin path="${artifacts.mps}/plugins/svn4idea" id="Subversion" />
       <library file="${artifacts.mps}/languages/baseLanguage/closures.runtime.jar" />
