@@ -23695,9 +23695,6 @@
       <node concept="m$_yC" id="4k71ibbLe5s" role="m$_yJ">
         <ref role="m$_y1" node="4k71ibbKLe8" resolve="jetbrains.mps.core" />
       </node>
-      <node concept="m$_yC" id="ymnOULD7ur" role="m$_yJ">
-        <ref role="m$_y1" node="ymnOULATpW" resolve="jetbrains.mps.testing" />
-      </node>
       <node concept="3_J27D" id="4k71ibbLe5a" role="m$_yQ">
         <node concept="3Mxwew" id="4k71ibbLe5h" role="3MwsjC">
           <property role="3MwjfP" value="MPS IDE plugin" />
