@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,6 +33,7 @@ import jetbrains.mps.util.Pair;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.module.ModelAccess;
@@ -73,8 +74,11 @@ public class HighlighterUpdateSession {
     List<Pair<EditorComponent, Boolean>> input = new ArrayList<>();
     HashSet<SNodePointer> visited = new HashSet<>();
     for (EditorComponent ecomp : myAllEditorComponents) {
-      SNodePointer pointer = new SNodePointer(ecomp.getNodeForTypechecking());
-      input.add(new Pair<>(ecomp, !visited.contains(pointer)));
+      final SNode nodeForTypechecking = ecomp.getNodeForTypechecking();
+      final SModel model = nodeForTypechecking == null ? null : nodeForTypechecking.getModel();
+      final boolean readOnly = ecomp.isReadOnly() || (model != null && model.isReadOnly());
+      SNodePointer pointer = new SNodePointer(nodeForTypechecking);
+      input.add(new Pair<>(ecomp, !readOnly && !visited.contains(pointer)));
       visited.add(pointer);
     }
 
