@@ -52,12 +52,11 @@ public abstract class StreamDataSourceBase implements StreamDataSource, StreamAs
 
   @Override
   public void addListener(@NotNull DataSourceListener listener) {
-    throw new UnsupportedOperationException();
+    // intentionally no-op
   }
 
   @Override
   public void removeListener(@NotNull DataSourceListener listener) {
-    throw new UnsupportedOperationException();
   }
 
   @Override
