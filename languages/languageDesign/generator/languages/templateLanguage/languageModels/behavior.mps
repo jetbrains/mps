@@ -7169,6 +7169,38 @@
       <ref role="13i0hy" to="tpcu:52_Geb4QDV$" resolve="getScope" />
       <node concept="3Tm1VV" id="UesZ_nZp5G" role="1B3o_S" />
       <node concept="3clFbS" id="UesZ_nZp5H" role="3clF47">
+        <node concept="3clFbJ" id="1zLmi8IF_wA" role="3cqZAp">
+          <node concept="3clFbS" id="1zLmi8IF_wC" role="3clFbx">
+            <node concept="3cpWs6" id="1zLmi8IFBno" role="3cqZAp">
+              <node concept="2OqwBi" id="1zLmi8IFBnp" role="3cqZAk">
+                <node concept="13iAh5" id="1zLmi8IFBnq" role="2Oq$k0">
+                  <ref role="3eA5LN" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
+                </node>
+                <node concept="2qgKlT" id="1zLmi8IFBnr" role="2OqNvi">
+                  <ref role="37wK5l" to="tpcu:52_Geb4QDV$" resolve="getScope" />
+                  <node concept="37vLTw" id="1zLmi8IFBns" role="37wK5m">
+                    <ref role="3cqZAo" node="UesZ_nZp6g" resolve="kind" />
+                  </node>
+                  <node concept="37vLTw" id="1zLmi8IFBnt" role="37wK5m">
+                    <ref role="3cqZAo" node="UesZ_nZp6i" resolve="child" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3fqX7Q" id="1zLmi8IFAR7" role="3clFbw">
+            <node concept="2OqwBi" id="1zLmi8IFAR9" role="3fr31v">
+              <node concept="37vLTw" id="1zLmi8IFARa" role="2Oq$k0">
+                <ref role="3cqZAo" node="UesZ_nZp6g" resolve="kind" />
+              </node>
+              <node concept="3O6GUB" id="1zLmi8IFARb" role="2OqNvi">
+                <node concept="chp4Y" id="1zLmi8IFARc" role="3QVz_e">
+                  <ref role="cht4Q" to="tpf8:UesZ_nZ2I6" resolve="VarDeclaration" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs6" id="UesZ_nZp5V" role="3cqZAp">
           <node concept="2ShNRf" id="UesZ_nZp5W" role="3cqZAk">
             <node concept="1pGfFk" id="UesZ_nZp5X" role="2ShVmc">
