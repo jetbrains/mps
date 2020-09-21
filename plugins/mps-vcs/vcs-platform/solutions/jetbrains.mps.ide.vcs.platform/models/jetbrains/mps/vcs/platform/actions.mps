@@ -3825,7 +3825,7 @@
     <property role="TrG5h" value="IDEAGitFileActions" />
     <node concept="ftmFs" id="7yFo2E9ZaKY" role="ftER_" />
     <node concept="Xl_RD" id="7yFo2E9ZaJO" role="3mKD$K">
-      <property role="Xl_RC" value="GitFileActions" />
+      <property role="Xl_RC" value="Git.FileActions" />
     </node>
   </node>
   <node concept="sE7Ow" id="7yFo2E9ZaYJ">

@@ -33,7 +33,7 @@
       <reference ref="jetbrains.mps.vcs.platform.actions.ResolveNonconflictingChanges_Action" />
       <reference ref="jetbrains.mps.vcs.platform.actions.ShowRootHistory_Action" />
       <reference ref="jetbrains.mps.vcs.platform.actions.ShowNodeHistory_Action" />
-      <add-to-group group-id="GitFileActions" anchor="last" />
+      <add-to-group group-id="Git.FileActions" anchor="last" />
     </group>
     <group id="jetbrains.mps.vcs.platform.actions.AnnotateGroup_ActionGroup">
       <reference ref="jetbrains.mps.vcs.platform.actions.Annotate_Action" />
