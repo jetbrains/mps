@@ -3426,11 +3426,9 @@ public class QueriesGenerated extends QueryProviderBase {
     ListSequence.fromList(nodes).addSequence(ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.GenerationContextOp_GenParameterRef$h_)));
     ListSequence.fromList(nodes).addSequence(ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.GenerationContextOp_ContextVarRef$4q)));
     for (SNode n : nodes) {
-      SNode replacement = SModelOperations.createNewNode(_context.getModel(), null, CONCEPTS.TypeHintExpression$fb);
-      SLinkOperations.setTarget(replacement, LINKS.typeHint$Ybko, SNodeOperations.cast(SNodeOperations.copyNode(TypecheckingFacade.getFromContext().getTypeOf(n)), CONCEPTS.Type$bu));
       SNode de = IOperation__BehaviorDescriptor.getDotExpression_idhO_4GYO.invoke(n);
-      SNodeOperations.replaceWithAnother(de, replacement);
-      SLinkOperations.setTarget(replacement, LINKS.expression$yOYz, de);
+      AttributeOperations.createAndSetAttrbiute(de, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TypeHintAttribute$E9), CONCEPTS.TypeHintAttribute$E9);
+      SLinkOperations.setTarget(AttributeOperations.getAttribute(de, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TypeHintAttribute$E9)), LINKS.typeHint$CtJm, SNodeOperations.cast(SNodeOperations.copyNode(TypecheckingFacade.getFromContext().getTypeOf(n)), CONCEPTS.Type$bu));
     }
   }
   public static void mappingScript_CodeBlock_3(final MappingScriptContext _context) {
@@ -7233,7 +7231,7 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SConcept GenerationContextOp_VarRef2$2B = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0xe8e73f957fd5246L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_VarRef2");
     /*package*/ static final SConcept GenerationContextOp_GenParameterRef$h_ = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x22cdba820a9a0583L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GenParameterRef");
     /*package*/ static final SConcept GenerationContextOp_ContextVarRef$4q = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x671e792f3dbdfe7eL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_ContextVarRef");
-    /*package*/ static final SConcept TypeHintExpression$fb = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11763791866L, "jetbrains.mps.baseLanguageInternal.structure.TypeHintExpression");
+    /*package*/ static final SConcept TypeHintAttribute$E9 = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x48a0854d160ecd45L, "jetbrains.mps.lang.generator.generationContext.structure.TypeHintAttribute");
     /*package*/ static final SConcept GenerationContextOp_GetOutputByLabel$HU = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5282d0d6L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetOutputByLabel");
     /*package*/ static final SConcept GenerationContextOp_GetOutputByLabelAndInput$Kl = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5282d0dbL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetOutputByLabelAndInput");
     /*package*/ static final SConcept GenerationContextOp_GetOutputByLabelAndInputAndReferenceScope$Wn = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11c5652e4d5L, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetOutputByLabelAndInputAndReferenceScope");
@@ -7338,8 +7336,7 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SReferenceLink templateNode$vPtI = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fbbd5854aL, 0x10fbbd5854dL, "templateNode");
     /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
     /*package*/ static final SContainmentLink variables$Eqmf = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b7eL, 0xe8e73f957fc2b8dL, "variables");
-    /*package*/ static final SContainmentLink typeHint$Ybko = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11763791866L, 0x11763794499L, "typeHint");
-    /*package*/ static final SContainmentLink expression$yOYz = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11763791866L, 0x117637931bcL, "expression");
+    /*package*/ static final SContainmentLink typeHint$CtJm = MetaAdapterFactory.getContainmentLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x48a0854d160ecd45L, 0x11763794499L, "typeHint");
     /*package*/ static final SReferenceLink label$V_zA = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5282d0d6L, 0x11b5282d0d7L, "label");
     /*package*/ static final SReferenceLink label$VAL6 = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11b5282d0dbL, 0x11b5282d0dcL, "label");
     /*package*/ static final SReferenceLink label$Vr1N = MetaAdapterFactory.getReferenceLink(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x11c5652e4d5L, 0x11c5658ea6fL, "label");

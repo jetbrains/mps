@@ -43,6 +43,7 @@ public final class LanguageConceptSwitch {
   public static final int GenerationContextOp_VarRef2 = 31;
   public static final int GenerationContextType = 32;
   public static final int TemplateFunctionParameter_generationContext = 33;
+  public static final int TypeHintAttribute = 34;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xd7706f639be2479cL, 0xa3daae92af1e64d5L);
@@ -80,6 +81,7 @@ public final class LanguageConceptSwitch {
     builder.put(0xe8e73f957fd5246L, GenerationContextOp_VarRef2);
     builder.put(0x11b5282d0e1L, GenerationContextType);
     builder.put(0x11b5282d0e3L, TemplateFunctionParameter_generationContext);
+    builder.put(0x48a0854d160ecd45L, TypeHintAttribute);
     myIndex = builder.seal();
   }
 

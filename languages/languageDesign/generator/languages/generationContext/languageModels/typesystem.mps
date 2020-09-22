@@ -37,6 +37,9 @@
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
+      <concept id="1137021947720" name="jetbrains.mps.baseLanguage.structure.ConceptFunction" flags="in" index="2VMwT0">
+        <child id="1137022507850" name="body" index="2VODD2" />
+      </concept>
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
@@ -65,6 +68,9 @@
       </concept>
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
+      </concept>
+      <concept id="1068580123137" name="jetbrains.mps.baseLanguage.structure.BooleanConstant" flags="nn" index="3clFbT">
+        <property id="1068580123138" name="value" index="3clFbU" />
       </concept>
       <concept id="1068581242878" name="jetbrains.mps.baseLanguage.structure.ReturnStatement" flags="nn" index="3cpWs6">
         <child id="1068581517676" name="expression" index="3cqZAk" />
@@ -126,6 +132,7 @@
       </concept>
     </language>
     <language id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem">
+      <concept id="7307171874933646339" name="jetbrains.mps.lang.typesystem.structure.SupersedeConceptFunction" flags="ig" index="2bjmSp" />
       <concept id="1185788614172" name="jetbrains.mps.lang.typesystem.structure.NormalTypeClause" flags="ng" index="mw_s8">
         <child id="1185788644032" name="normalType" index="mwGJk" />
       </concept>
@@ -137,6 +144,7 @@
       <concept id="1179479408386" name="jetbrains.mps.lang.typesystem.structure.JoinType" flags="ng" index="2usRSg">
         <child id="1179479418730" name="argument" index="2usUpS" />
       </concept>
+      <concept id="2401040147804061830" name="jetbrains.mps.lang.typesystem.structure.AttributedNodeExpression" flags="ng" index="G0znd" />
       <concept id="1175517400280" name="jetbrains.mps.lang.typesystem.structure.AssertStatement" flags="nn" index="2Mj0R9">
         <child id="1175517761460" name="condition" index="2MkoU_" />
       </concept>
@@ -159,7 +167,9 @@
       <concept id="1174642788531" name="jetbrains.mps.lang.typesystem.structure.ConceptReference" flags="ig" index="1YaCAy">
         <reference id="1174642800329" name="concept" index="1YaFvo" />
       </concept>
-      <concept id="1174643105530" name="jetbrains.mps.lang.typesystem.structure.InferenceRule" flags="ig" index="1YbPZF" />
+      <concept id="1174643105530" name="jetbrains.mps.lang.typesystem.structure.InferenceRule" flags="ig" index="1YbPZF">
+        <child id="7307171874933775112" name="supersedesFun" index="2bjP4i" />
+      </concept>
       <concept id="1174648085619" name="jetbrains.mps.lang.typesystem.structure.AbstractRule" flags="ng" index="1YuPPy">
         <child id="1174648101952" name="applicableNode" index="1YuTPh" />
       </concept>
@@ -1710,6 +1720,41 @@
     <node concept="1YaCAy" id="2NfDgTadzgs" role="1YuTPh">
       <property role="TrG5h" value="uvi" />
       <ref role="1YaFvo" to="tpf3:2NfDgTadzb_" resolve="GenerationContextOp_UniqueValidId" />
+    </node>
+  </node>
+  <node concept="1YbPZF" id="4ywxkOm3Iwn">
+    <property role="TrG5h" value="typeof_TypeHintAttribute" />
+    <node concept="3clFbS" id="4ywxkOm3Iwo" role="18ibNy">
+      <node concept="1Z5TYs" id="4ywxkOm3J5d" role="3cqZAp">
+        <node concept="mw_s8" id="4ywxkOm3J5C" role="1ZfhKB">
+          <node concept="2OqwBi" id="4ywxkOm3Je9" role="mwGJk">
+            <node concept="1YBJjd" id="4ywxkOm3J5A" role="2Oq$k0">
+              <ref role="1YBMHb" node="4ywxkOm3Iwq" resolve="typeHintAttribute" />
+            </node>
+            <node concept="3TrEf2" id="4ywxkOm3Jo1" role="2OqNvi">
+              <ref role="3Tt5mk" to="tpf3:htzukip" resolve="typeHint" />
+            </node>
+          </node>
+        </node>
+        <node concept="mw_s8" id="4ywxkOm3J5g" role="1ZfhK$">
+          <node concept="1Z2H0r" id="4ywxkOm3IUV" role="mwGJk">
+            <node concept="G0znd" id="4ywxkOm3IWJ" role="1Z2MuG" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="4ywxkOm3Iwq" role="1YuTPh">
+      <property role="TrG5h" value="typeHintAttribute" />
+      <ref role="1YaFvo" to="tpf3:4ywxkOm3GP5" resolve="TypeHintAttribute" />
+    </node>
+    <node concept="2bjmSp" id="4ywxkOm3Iwu" role="2bjP4i">
+      <node concept="3clFbS" id="4ywxkOm3Iwv" role="2VODD2">
+        <node concept="3clFbF" id="4ywxkOm3IJA" role="3cqZAp">
+          <node concept="3clFbT" id="4ywxkOm3IJ_" role="3clFbG">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
     </node>
   </node>
 </model>

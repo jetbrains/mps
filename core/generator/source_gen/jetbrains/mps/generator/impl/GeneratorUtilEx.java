@@ -75,13 +75,9 @@ public final class GeneratorUtilEx {
    * @return true if expression is not simple enough to get evaluated in runtime without actual Java code generated
    */
   public static boolean shallGenerateFunctionToEvaluate(SNode expr) {
-    if (SNodeOperations.isInstanceOf(expr, CONCEPTS.TypeHintExpression$fb)) {
-      // Some Expressions (e.g. genContext.variable) get wrapped with TypeHintExpression at startup (see AddTypeHints script), 
-      // therefore, we shall look into original expression, instead. 
-      // Indeed, at the moment we don't handle here any of expressions that are replaced with TypeHintExpression (i.e. GenerationContextOp operations) 
-      //  nevertheless, I feel important to prevent future errors, i.e. when this function report different result during codegen (with TypeHintExpr) and at runtime (no TypeHintExpr). 
-      expr = SLinkOperations.getTarget(SNodeOperations.as(expr, CONCEPTS.TypeHintExpression$fb), LINKS.expression$yOYz);
-    }
+    // Some Expressions (e.g. genContext.variable) used to get wrapped with TypeHintExpression at startup (see AddTypeHints script), 
+    // but now it's TypeHintAttribute we shall not notice here 
+    //  
     // For generated templates, assumptions here shall match switch_Argument, 
     // for interpreted, TemplateCall#toExpressionRuntime 
     if (SNodeOperations.isInstanceOf(expr, CONCEPTS.TemplateArgumentQueryExpression$Zq)) {
@@ -166,7 +162,6 @@ public final class GeneratorUtilEx {
     /*package*/ static final SReferenceLink mappingLabel$jbOO = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, 0x1179bf24befL, "mappingLabel");
     /*package*/ static final SReferenceLink labelDeclaration$ORJN = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, 0x1179c366b2fL, "labelDeclaration");
     /*package*/ static final SContainmentLink smodelAttribute$KJ43 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
-    /*package*/ static final SContainmentLink expression$yOYz = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11763791866L, 0x117637931bcL, "expression");
   }
 
   private static final class PROPS {
@@ -181,7 +176,6 @@ public final class GeneratorUtilEx {
   private static final class CONCEPTS {
     /*package*/ static final SConcept TemplateArgumentPatternRef$dA = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x42d71bfbeb1a07e5L, "jetbrains.mps.lang.generator.structure.TemplateArgumentPatternRef");
     /*package*/ static final SConcept TemplateFragment$eq = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment");
-    /*package*/ static final SConcept TypeHintExpression$fb = MetaAdapterFactory.getConcept(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x11763791866L, "jetbrains.mps.baseLanguageInternal.structure.TypeHintExpression");
     /*package*/ static final SConcept TemplateArgumentQueryExpression$Zq = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x380132d742e8ccb0L, "jetbrains.mps.lang.generator.structure.TemplateArgumentQueryExpression");
     /*package*/ static final SConcept TemplateArgumentVarRefExpression2$1W = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f9584aee0fL, "jetbrains.mps.lang.generator.structure.TemplateArgumentVarRefExpression2");
     /*package*/ static final SConcept TemplateArgumentParameterExpression$$z = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x457655815a794e79L, "jetbrains.mps.lang.generator.structure.TemplateArgumentParameterExpression");

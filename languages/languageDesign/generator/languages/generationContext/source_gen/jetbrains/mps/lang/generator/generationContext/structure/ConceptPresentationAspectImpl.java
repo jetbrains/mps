@@ -43,6 +43,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_GenerationContextOp_VarRef2;
   private ConceptPresentation props_GenerationContextType;
   private ConceptPresentation props_TemplateFunctionParameter_generationContext;
+  private ConceptPresentation props_TypeHintAttribute;
 
   @Override
   @Nullable
@@ -306,6 +307,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_TemplateFunctionParameter_generationContext = cpb.create();
         }
         return props_TemplateFunctionParameter_generationContext;
+      case LanguageConceptSwitch.TypeHintAttribute:
+        if (props_TypeHintAttribute == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("TypeHintAttribute");
+          props_TypeHintAttribute = cpb.create();
+        }
+        return props_TypeHintAttribute;
     }
     return null;
   }

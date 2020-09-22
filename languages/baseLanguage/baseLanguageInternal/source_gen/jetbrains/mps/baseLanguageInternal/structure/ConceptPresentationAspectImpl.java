@@ -229,6 +229,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.TypeHintExpression:
         if (props_TypeHintExpression == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.rawPresentation("TypeHintExpression");
           props_TypeHintExpression = cpb.create();
         }
