@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.ide.editor;
 
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.project.Project;
@@ -38,6 +39,9 @@ public final class MPSEditorUtil {
    */
   @Nullable
   public static SNode getCurrentEditedNodeFromTabbedEditor(@NotNull Project project, @NotNull MPSNodeVirtualFile file) {
+    if (!ApplicationManager.getApplication().isDispatchThread()) {
+      return null;
+    }
     FileEditor editor = FileEditorManager.getInstance(project).getSelectedEditor(file);
     if (!(editor instanceof MPSFileNodeEditor)) {
       return null;
