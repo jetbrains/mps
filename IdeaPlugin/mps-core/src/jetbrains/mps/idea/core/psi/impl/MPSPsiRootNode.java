@@ -134,7 +134,7 @@ public class MPSPsiRootNode extends MPSPsiNodeBase implements PsiFile, PsiBinary
   }
 
   @Override
-  public boolean processChildren(PsiElementProcessor<PsiFileSystemItem> processor) {
+  public boolean processChildren(PsiElementProcessor<? super PsiFileSystemItem> processor) {
     return false;
   }
 

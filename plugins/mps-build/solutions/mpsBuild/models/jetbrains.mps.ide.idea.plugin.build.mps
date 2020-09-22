@@ -1146,7 +1146,7 @@
       <property role="TrG5h" value="idea-devkit-jps" />
       <node concept="25yagZ" id="7quUOWmbsOU" role="PiKyV">
         <node concept="3yqu4x" id="7quUOWmbsOQ" role="25yagT">
-          <node concept="3yrxFa" id="U5FMkawn6L" role="3yqu4I">
+          <node concept="3yrxFa" id="5i_vir09mrX" role="3yqu4I">
             <ref role="3yrxFb" to="ffeo:7quUOWmbqGO" />
           </node>
         </node>

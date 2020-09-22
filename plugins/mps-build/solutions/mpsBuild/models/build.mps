@@ -25721,7 +25721,7 @@
           <node concept="13uQ2_" id="7quUOWmbqGO" role="39821P">
             <node concept="3_J27D" id="7quUOWmbqGP" role="13uQ07">
               <node concept="3Mxwew" id="7quUOWmbsOu" role="3MwsjC">
-                <property role="3MwjfP" value="devkit-jps-plugin.jar" />
+                <property role="3MwjfP" value="devkit-jps.jar" />
               </node>
             </node>
           </node>

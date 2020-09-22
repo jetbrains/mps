@@ -388,7 +388,7 @@
           <include name="**/*.jar"/>
         </fileset>
         <fileset dir="${ideaPath}/plugins/devkit/lib">
-          <include name="devkit-jps-plugin.jar"/>
+          <include name="devkit-jps.jar"/>
         </fileset>
         <!-- all JPS jars as specified in plugin.xmlS -->
         <pathelement path="${jps.classpath}"/>

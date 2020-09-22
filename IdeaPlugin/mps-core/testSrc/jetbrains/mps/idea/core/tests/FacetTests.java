@@ -27,6 +27,7 @@ import com.intellij.openapi.roots.ModifiableRootModel;
 import com.intellij.openapi.roots.ModuleOrderEntry;
 import com.intellij.openapi.roots.ModuleRootManager;
 import com.intellij.openapi.roots.OrderEntry;
+import com.intellij.util.ThrowableRunnable;
 import jetbrains.mps.extapi.persistence.SourceRoot;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.idea.core.facet.MPSConfigurationBean;
@@ -41,6 +42,7 @@ import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.vfs.FileSystem;
 import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SDependency;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
@@ -62,9 +64,9 @@ public class FacetTests extends AbstractMPSFixtureTestCase {
   }
 
   @Override
-  protected void runTest() throws Throwable {
+  protected void runTestRunnable(@NotNull ThrowableRunnable<java.lang.Throwable> testRunnable) throws Throwable {
     getMpsFixture().flushEDT();
-    super.runTest();
+    super.runTestRunnable(testRunnable);
   }
 
   public void testFacetInitialized() {

@@ -49,7 +49,7 @@
   </path>
   
   <path id="path.java.library.idea-devkit-jps">
-    <fileset file="${artifacts.IDEA}/plugins/devkit/lib/devkit-jps-plugin.jar" />
+    <fileset file="${artifacts.IDEA}/plugins/devkit/lib/devkit-jps.jar" />
   </path>
   
   <path id="path.java.library.mps-testing-artifacts">

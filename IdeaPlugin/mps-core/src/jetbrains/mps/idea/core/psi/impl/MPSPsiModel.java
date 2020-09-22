@@ -200,7 +200,7 @@ public class MPSPsiModel extends MPSPsiNodeBase implements PsiDirectory {
   }
 
   @Override
-  public boolean processChildren(PsiElementProcessor<PsiFileSystemItem> processor) {
+  public boolean processChildren(PsiElementProcessor<? super PsiFileSystemItem> processor) {
     return false;
   }
 
