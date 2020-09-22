@@ -110,8 +110,6 @@ public class TemplateCall {
         ae.add(new PatternRefExpr(argExpr, i));
       } else if (argConcept.isSubConceptOf(RuleUtil.concept_TemplateArgumentQueryExpression)) {
         ae.add(new QueryExpr(argExpr));
-      } else if (argConcept.isSubConceptOf(RuleUtil.concept_TemplateArgumentVarRefExpression)) {
-        ae.add(new VarRefExpr(argExpr));
       } else if (argConcept.isSubConceptOf(RuleUtil.concept_TemplateArgumentVarRefExpression2)) {
         ae.add(new VarRefExpr2(argExpr));
       } else if(GeneratorUtilEx.shallGenerateFunctionToEvaluate(argExpr)) {
@@ -201,19 +199,6 @@ public class TemplateCall {
         q = myQuery = queryProvider.getTemplateCallArgumentQuery(myQueryKey);
       }
       return context.getEnvironment().getQueryExecutor().evaluate(q, new TemplateArgumentContext(context, myQueryKey.getTemplateNode()));
-    }
-  }
-
-  // TemplateArgumentVariableRefExpression
-  private static class VarRefExpr implements ArgumentExpression {
-    private final String myMacroVarName;
-    public VarRefExpr(SNode varRefExpression) {
-      SNode varmacro = RuleUtil.getTemplateArgumentVarRef_VarMacro(varRefExpression);
-      myMacroVarName = RuleUtil.getVarMacro_Name(varmacro);
-    }
-    @Override
-    public Object evaluate(TemplateContext context) throws GenerationFailureException {
-      return context.getVariable(myMacroVarName);
     }
   }
 

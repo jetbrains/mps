@@ -181,7 +181,6 @@
       </concept>
       <concept id="1235566554328" name="jetbrains.mps.baseLanguage.collections.structure.AnyOperation" flags="nn" index="2HwmR7" />
       <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
-      <concept id="1160612413312" name="jetbrains.mps.baseLanguage.collections.structure.AddElementOperation" flags="nn" index="TSZUe" />
       <concept id="1160666733551" name="jetbrains.mps.baseLanguage.collections.structure.AddAllElementsOperation" flags="nn" index="X8dFx" />
       <concept id="1176501494711" name="jetbrains.mps.baseLanguage.collections.structure.IsNotEmptyOperation" flags="nn" index="3GX2aA" />
     </language>
@@ -604,102 +603,6 @@
                 <node concept="13MTOL" id="5Vvmn_QkOJ9" role="2OqNvi">
                   <ref role="13MTZf" to="tpf8:28lK$1mBjJ2" resolve="generationParameters" />
                 </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-  </node>
-  <node concept="1M2fIO" id="2n6lsTIwfRz">
-    <ref role="1M2myG" to="tpf3:2n6lsTIwfRo" resolve="GenerationContextOp_VarRef" />
-    <node concept="1N5Pfh" id="2n6lsTIwfR$" role="1Mr941">
-      <ref role="1N5Vy1" to="tpf3:2n6lsTIwfRq" resolve="varmacro" />
-      <node concept="3dgokm" id="5Vvmn_QkOJa" role="1N6uqs">
-        <node concept="3clFbS" id="5Vvmn_QkOJb" role="2VODD2">
-          <node concept="3cpWs8" id="5Vvmn_QkOJc" role="3cqZAp">
-            <node concept="3cpWsn" id="5Vvmn_QkOJd" role="3cpWs9">
-              <property role="TrG5h" value="contextNode" />
-              <node concept="3Tqbb2" id="5Vvmn_QkOJe" role="1tU5fm" />
-              <node concept="2rP1CM" id="5Vvmn_QkOKc" role="33vP2m" />
-            </node>
-          </node>
-          <node concept="3cpWs8" id="5Vvmn_QkOJl" role="3cqZAp">
-            <node concept="3cpWsn" id="5Vvmn_QkOJm" role="3cpWs9">
-              <property role="TrG5h" value="vars" />
-              <node concept="2I9FWS" id="5Vvmn_QkOJn" role="1tU5fm">
-                <ref role="2I9WkF" to="tpf8:4mp7qFmCXde" resolve="VarMacro" />
-              </node>
-              <node concept="2ShNRf" id="5Vvmn_QkOJo" role="33vP2m">
-                <node concept="2T8Vx0" id="5Vvmn_QkOJp" role="2ShVmc">
-                  <node concept="2I9FWS" id="5Vvmn_QkOJq" role="2T96Bj">
-                    <ref role="2I9WkF" to="tpf8:4mp7qFmCXde" resolve="VarMacro" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="2$JKZl" id="5Vvmn_QkOJr" role="3cqZAp">
-            <node concept="2OqwBi" id="5Vvmn_QkOJs" role="2$JKZa">
-              <node concept="37vLTw" id="5Vvmn_QkOJt" role="2Oq$k0">
-                <ref role="3cqZAo" node="5Vvmn_QkOJd" resolve="contextNode" />
-              </node>
-              <node concept="3x8VRR" id="5Vvmn_QkOJu" role="2OqNvi" />
-            </node>
-            <node concept="3clFbS" id="5Vvmn_QkOJv" role="2LFqv$">
-              <node concept="3clFbJ" id="5Vvmn_QkOJw" role="3cqZAp">
-                <node concept="3clFbS" id="5Vvmn_QkOJx" role="3clFbx">
-                  <node concept="3clFbF" id="5Vvmn_QkOJy" role="3cqZAp">
-                    <node concept="2OqwBi" id="5Vvmn_QkOJz" role="3clFbG">
-                      <node concept="37vLTw" id="5Vvmn_QkOJ$" role="2Oq$k0">
-                        <ref role="3cqZAo" node="5Vvmn_QkOJm" resolve="vars" />
-                      </node>
-                      <node concept="TSZUe" id="5Vvmn_QkOJ_" role="2OqNvi">
-                        <node concept="1PxgMI" id="5Vvmn_QkOJA" role="25WWJ7">
-                          <node concept="37vLTw" id="5Vvmn_QkOJB" role="1m5AlR">
-                            <ref role="3cqZAo" node="5Vvmn_QkOJd" resolve="contextNode" />
-                          </node>
-                          <node concept="chp4Y" id="5Vvmn_QkOJC" role="3oSUPX">
-                            <ref role="cht4Q" to="tpf8:4mp7qFmCXde" resolve="VarMacro" />
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-                <node concept="2OqwBi" id="5Vvmn_QkOJD" role="3clFbw">
-                  <node concept="37vLTw" id="5Vvmn_QkOJE" role="2Oq$k0">
-                    <ref role="3cqZAo" node="5Vvmn_QkOJd" resolve="contextNode" />
-                  </node>
-                  <node concept="1mIQ4w" id="5Vvmn_QkOJF" role="2OqNvi">
-                    <node concept="chp4Y" id="5Vvmn_QkOJG" role="cj9EA">
-                      <ref role="cht4Q" to="tpf8:4mp7qFmCXde" resolve="VarMacro" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="3clFbF" id="5Vvmn_QkOJH" role="3cqZAp">
-                <node concept="37vLTI" id="5Vvmn_QkOJI" role="3clFbG">
-                  <node concept="37vLTw" id="5Vvmn_QkOJJ" role="37vLTJ">
-                    <ref role="3cqZAo" node="5Vvmn_QkOJd" resolve="contextNode" />
-                  </node>
-                  <node concept="2YIFZM" id="5Vvmn_QkOJK" role="37vLTx">
-                    <ref role="1Pybhc" to="o8zo:3fifI_xCtN$" resolve="Scope" />
-                    <ref role="37wK5l" to="o8zo:3fifI_xCtPZ" resolve="parent" />
-                    <node concept="37vLTw" id="5Vvmn_QkOJL" role="37wK5m">
-                      <ref role="3cqZAo" node="5Vvmn_QkOJd" resolve="contextNode" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbF" id="5Vvmn_QkOJM" role="3cqZAp">
-            <node concept="2YIFZM" id="5Vvmn_QkOLB" role="3clFbG">
-              <ref role="37wK5l" to="o8zo:3jEbQoczdCs" resolve="forResolvableElements" />
-              <ref role="1Pybhc" to="o8zo:4IP40Bi3e_R" resolve="ListScope" />
-              <node concept="37vLTw" id="5Vvmn_QkOLC" role="37wK5m">
-                <ref role="3cqZAo" node="5Vvmn_QkOJm" resolve="vars" />
               </node>
             </node>
           </node>

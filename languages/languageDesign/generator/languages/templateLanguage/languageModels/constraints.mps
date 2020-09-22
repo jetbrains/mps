@@ -922,16 +922,6 @@
       </node>
     </node>
   </node>
-  <node concept="1M2fIO" id="3PJ9groyF22">
-    <property role="3GE5qa" value="rule.argument" />
-    <ref role="1M2myG" to="tpf8:3PJ9groyE0C" resolve="TemplateArgumentVariableRefExpression" />
-    <node concept="1N5Pfh" id="3PJ9groyFT0" role="1Mr941">
-      <ref role="1N5Vy1" to="tpf8:2n6lsTIwfRq" resolve="varmacro" />
-      <node concept="1dDu$B" id="79OxvCzfwr6" role="1N6uqs">
-        <ref role="1dDu$A" to="tpf8:4mp7qFmCXde" resolve="VarMacro" />
-      </node>
-    </node>
-  </node>
   <node concept="1M2fIO" id="7u6$QPxIvZh">
     <property role="3GE5qa" value="rule" />
     <ref role="1M2myG" to="tpf8:7u6$QPxIdFU" resolve="ReferenceReductionRule" />

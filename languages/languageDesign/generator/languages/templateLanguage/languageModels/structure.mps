@@ -37,10 +37,6 @@
       <concept id="6491077959632463275" name="jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo" flags="ng" index="3l_iC">
         <child id="6491077959632463286" name="oldProperty" index="3l_iP" />
       </concept>
-      <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
-        <property id="1225118929411" name="build" index="YLPcu" />
-        <property id="1225118933224" name="comment" index="YLQ7P" />
-      </concept>
       <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
         <property id="7862711839422615217" name="text" index="t5JxN" />
       </concept>
@@ -1580,42 +1576,6 @@
       <ref role="20lvS9" node="SFyHGUI$GV" resolve="WeavingAnchorQuery" />
     </node>
   </node>
-  <node concept="1TIwiD" id="4mp7qFmCXde">
-    <property role="R5$K7" value="false" />
-    <property role="R5$K2" value="false" />
-    <property role="R4oN_" value="(DEPRECTATED) compute and store value in variable" />
-    <property role="TrG5h" value="VarMacro" />
-    <property role="3GE5qa" value="macro" />
-    <property role="34LRSv" value="$VAR$" />
-    <property role="EcuMT" value="5015072279636464462" />
-    <ref role="1TJDcQ" node="fP7Vmt2" resolve="NodeMacro" />
-    <node concept="M6xJ_" id="6_gUeuqOeP8" role="lGtFl">
-      <property role="Hh88m" value="" />
-    </node>
-    <node concept="1TJgyj" id="4mp7qFmD$jV" role="1TKVEi">
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="type" />
-      <property role="IQ2ns" value="5015072279636624635" />
-      <ref role="20lvS9" to="tpee:fz3vP1H" resolve="Type" />
-    </node>
-    <node concept="1TJgyj" id="4mp7qFmD$jk" role="1TKVEi">
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="value" />
-      <property role="20lbJX" value="fLJekj4/1" />
-      <property role="IQ2ns" value="5015072279636624596" />
-      <ref role="20lvS9" node="4mp7qFmDssq" resolve="VarMacro_ValueQuery" />
-    </node>
-    <node concept="PrWs8" id="4mp7qFmD2rk" role="PzmwI">
-      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
-    </node>
-    <node concept="PrWs8" id="79OxvCzeQYT" role="PzmwI">
-      <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
-    </node>
-    <node concept="asaX9" id="UesZ_nZ2I1" role="lGtFl">
-      <property role="YLPcu" value="2019.1" />
-      <property role="YLQ7P" value="Replaced with a new macro that can declare few variables at once" />
-    </node>
-  </node>
   <node concept="1TIwiD" id="4mp7qFmDssq">
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
@@ -1678,18 +1638,6 @@
     </node>
     <node concept="PrWs8" id="QzR6ThdYAO" role="PrDN$">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
-    </node>
-  </node>
-  <node concept="1TIwiD" id="3PJ9groyE0C">
-    <property role="3GE5qa" value="rule.argument" />
-    <property role="TrG5h" value="TemplateArgumentVariableRefExpression" />
-    <property role="EcuMT" value="4426797670061482024" />
-    <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
-    <node concept="1TJgyj" id="2n6lsTIwfRq" role="1TKVEi">
-      <property role="20kJfa" value="varmacro" />
-      <property role="20lbJX" value="fLJekj4/1" />
-      <property role="IQ2ns" value="2721957369897614810" />
-      <ref role="20lvS9" node="4mp7qFmCXde" resolve="VarMacro" />
     </node>
   </node>
   <node concept="1TIwiD" id="21N1KFSD2Ix">

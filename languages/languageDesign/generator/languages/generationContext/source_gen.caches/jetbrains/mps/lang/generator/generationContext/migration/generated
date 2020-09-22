@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="6ucfwrahw0s794wxw6nvhh17h3wuco8">
-  <files names="MigratePropertyPatternVariables.java:MigrationDescriptor.java:NewVarMacro.java" />
+<product version="3" modelHash="-6rrzk9g6sqs0r73gozrwjsgs5xv4w46">
+  <files names="MigratePropertyPatternVariables.java:MigrationDescriptor.java" />
 </product>
 

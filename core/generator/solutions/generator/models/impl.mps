@@ -1185,8 +1185,8 @@
                 <ref role="3cqZAo" node="4_2twMIW7es" resolve="expr" />
               </node>
               <node concept="1mIQ4w" id="4_2twMIWQ5P" role="2OqNvi">
-                <node concept="chp4Y" id="4_2twMIWQ6z" role="cj9EA">
-                  <ref role="cht4Q" to="tpf8:3PJ9groyE0C" resolve="TemplateArgumentVariableRefExpression" />
+                <node concept="chp4Y" id="3xDEu4ZxAXQ" role="cj9EA">
+                  <ref role="cht4Q" to="tpf8:UesZ_oiISf" resolve="TemplateArgumentVarRefExpression2" />
                 </node>
               </node>
             </node>
@@ -1223,23 +1223,6 @@
             </node>
             <node concept="37vLTw" id="4_2twMIWUZR" role="37vLTJ">
               <ref role="3cqZAo" node="4_2twMIWQh_" resolve="customProcessing" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="ut$TDL35dX" role="3cqZAp">
-          <node concept="3vZ8r8" id="ut$TDL36Dd" role="3clFbG">
-            <node concept="37vLTw" id="ut$TDL36Df" role="37vLTJ">
-              <ref role="3cqZAo" node="4_2twMIWQh_" resolve="customProcessing" />
-            </node>
-            <node concept="2OqwBi" id="ut$TDL36Dg" role="37vLTx">
-              <node concept="37vLTw" id="ut$TDL36Dh" role="2Oq$k0">
-                <ref role="3cqZAo" node="4_2twMIW7es" resolve="expr" />
-              </node>
-              <node concept="1mIQ4w" id="ut$TDL36Di" role="2OqNvi">
-                <node concept="chp4Y" id="ut$TDL36Dj" role="cj9EA">
-                  <ref role="cht4Q" to="tpf8:UesZ_oiISf" resolve="TemplateArgumentVarRefExpression2" />
-                </node>
-              </node>
             </node>
           </node>
         </node>
@@ -2205,17 +2188,6 @@
         <ref role="35c_gD" to="tpf8:4sWLrFSCuu$" resolve="LabelMacro" />
       </node>
     </node>
-    <node concept="Wx3nA" id="4mp7qFmE6Ap" role="jymVt">
-      <property role="TrG5h" value="concept_VarMacro" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3Tm1VV" id="4mp7qFmE6Aq" role="1B3o_S" />
-      <node concept="3uibUv" id="7vbaBZCTwQ7" role="1tU5fm">
-        <ref role="3uigEE" to="c17a:~SConcept" resolve="SConcept" />
-      </node>
-      <node concept="35c_gC" id="7vbaBZCUiWf" role="33vP2m">
-        <ref role="35c_gD" to="tpf8:4mp7qFmCXde" resolve="VarMacro" />
-      </node>
-    </node>
     <node concept="Wx3nA" id="UesZ_o2Dkz" role="jymVt">
       <property role="TrG5h" value="concept_VarMacro2" />
       <property role="3TUv4t" value="true" />
@@ -2512,17 +2484,6 @@
       </node>
       <node concept="35c_gC" id="6RlRW_SRYVw" role="33vP2m">
         <ref role="35c_gD" to="tpf8:4lQlo5qukTT" resolve="TemplateArgumentParameterExpression" />
-      </node>
-    </node>
-    <node concept="Wx3nA" id="4ijrH0B_piJ" role="jymVt">
-      <property role="TrG5h" value="concept_TemplateArgumentVarRefExpression" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3Tm1VV" id="4ijrH0B_piK" role="1B3o_S" />
-      <node concept="3uibUv" id="6RlRW_SRYwH" role="1tU5fm">
-        <ref role="3uigEE" to="c17a:~SConcept" resolve="SConcept" />
-      </node>
-      <node concept="35c_gC" id="6RlRW_SRYZF" role="33vP2m">
-        <ref role="35c_gD" to="tpf8:3PJ9groyE0C" resolve="TemplateArgumentVariableRefExpression" />
       </node>
     </node>
     <node concept="Wx3nA" id="79XVXw$rq3P" role="jymVt">
@@ -2911,19 +2872,6 @@
               <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />
               <node concept="37vLTw" id="64UEbXFVmBU" role="37wK5m">
                 <ref role="3cqZAo" node="11WvlAiNan3" resolve="concept_TraceMacro" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="64UEbXFV9hT" role="3cqZAp">
-          <node concept="2OqwBi" id="64UEbXFV9hU" role="3clFbG">
-            <node concept="37vLTw" id="64UEbXFV9iR" role="2Oq$k0">
-              <ref role="3cqZAo" node="63JL00BB6qa" resolve="NodeMacroConcepts" />
-            </node>
-            <node concept="liA8E" id="64UEbXFV9hV" role="2OqNvi">
-              <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />
-              <node concept="37vLTw" id="64UEbXFVmKP" role="37wK5m">
-                <ref role="3cqZAo" node="4mp7qFmE6Ap" resolve="concept_VarMacro" />
               </node>
             </node>
           </node>
@@ -5509,31 +5457,6 @@
         </node>
       </node>
     </node>
-    <node concept="2YIFZL" id="4ijrH0B_uVu" role="jymVt">
-      <property role="TrG5h" value="getTemplateArgumentVarRef_VarMacro" />
-      <node concept="3Tqbb2" id="4ijrH0B_w23" role="3clF45">
-        <ref role="ehGHo" to="tpf8:4mp7qFmCXde" resolve="VarMacro" />
-      </node>
-      <node concept="3Tm1VV" id="4ijrH0B_uVx" role="1B3o_S" />
-      <node concept="3clFbS" id="4ijrH0B_uVy" role="3clF47">
-        <node concept="3cpWs6" id="4ijrH0B_xdL" role="3cqZAp">
-          <node concept="2OqwBi" id="4ijrH0B_xi_" role="3cqZAk">
-            <node concept="37vLTw" id="4ijrH0B_xfc" role="2Oq$k0">
-              <ref role="3cqZAo" node="4ijrH0B_xc1" resolve="expr" />
-            </node>
-            <node concept="3TrEf2" id="4ijrH0B_xr0" role="2OqNvi">
-              <ref role="3Tt5mk" to="tpf8:2n6lsTIwfRq" resolve="varmacro" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="37vLTG" id="4ijrH0B_xc1" role="3clF46">
-        <property role="TrG5h" value="expr" />
-        <node concept="3Tqbb2" id="4ijrH0B_xc0" role="1tU5fm">
-          <ref role="ehGHo" to="tpf8:3PJ9groyE0C" resolve="TemplateArgumentVariableRefExpression" />
-        </node>
-      </node>
-    </node>
     <node concept="2YIFZL" id="3nRidJ2fe6R" role="jymVt">
       <property role="TrG5h" value="getTemplateArgumentVarRef2_VarDeclaration" />
       <node concept="3Tqbb2" id="3nRidJ2fe6S" role="3clF45">
@@ -5684,54 +5607,6 @@
         <property role="TrG5h" value="mapping" />
         <node concept="3Tqbb2" id="2vcFxFCHJ6" role="1tU5fm">
           <ref role="ehGHo" to="tpf8:fWbUwhP" resolve="MappingConfiguration" />
-        </node>
-      </node>
-    </node>
-    <node concept="2YIFZL" id="64ZA8rC7szm" role="jymVt">
-      <property role="TrG5h" value="getVarMacro_Name" />
-      <node concept="17QB3L" id="64ZA8rC7$Dx" role="3clF45" />
-      <node concept="3Tm1VV" id="64ZA8rC7szo" role="1B3o_S" />
-      <node concept="3clFbS" id="64ZA8rC7szp" role="3clF47">
-        <node concept="3clFbF" id="64ZA8rC7szq" role="3cqZAp">
-          <node concept="2OqwBi" id="64ZA8rC7szr" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxgm9DX" role="2Oq$k0">
-              <ref role="3cqZAo" node="64ZA8rC7szu" resolve="macro" />
-            </node>
-            <node concept="2qgKlT" id="64ZA8rC7$Dv" role="2OqNvi">
-              <ref role="37wK5l" to="tpfh:2n6lsTIwojm" resolve="getName" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="37vLTG" id="64ZA8rC7szu" role="3clF46">
-        <property role="TrG5h" value="macro" />
-        <node concept="3Tqbb2" id="64ZA8rC7szv" role="1tU5fm">
-          <ref role="ehGHo" to="tpf8:4mp7qFmCXde" resolve="VarMacro" />
-        </node>
-      </node>
-    </node>
-    <node concept="2YIFZL" id="64ZA8rC7$M$" role="jymVt">
-      <property role="TrG5h" value="getVarMacro_Query" />
-      <node concept="3Tqbb2" id="64ZA8rC7$MO" role="3clF45">
-        <ref role="ehGHo" to="tpf8:4mp7qFmDssq" resolve="VarMacro_ValueQuery" />
-      </node>
-      <node concept="3Tm1VV" id="64ZA8rC7$MA" role="1B3o_S" />
-      <node concept="3clFbS" id="64ZA8rC7$MB" role="3clF47">
-        <node concept="3clFbF" id="64ZA8rC7$MC" role="3cqZAp">
-          <node concept="2OqwBi" id="64ZA8rC7$MJ" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxgma1n" role="2Oq$k0">
-              <ref role="3cqZAo" node="64ZA8rC7$MG" resolve="macro" />
-            </node>
-            <node concept="3TrEf2" id="64ZA8rC7$MN" role="2OqNvi">
-              <ref role="3Tt5mk" to="tpf8:4mp7qFmD$jk" resolve="value" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="37vLTG" id="64ZA8rC7$MG" role="3clF46">
-        <property role="TrG5h" value="macro" />
-        <node concept="3Tqbb2" id="64ZA8rC7$MH" role="1tU5fm">
-          <ref role="ehGHo" to="tpf8:4mp7qFmCXde" resolve="VarMacro" />
         </node>
       </node>
     </node>

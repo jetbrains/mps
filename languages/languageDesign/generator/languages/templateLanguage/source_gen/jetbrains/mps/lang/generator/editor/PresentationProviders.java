@@ -19,13 +19,6 @@ public class PresentationProviders {
       return SPropertyOperations.getString(targetNode, PROPS.name$MnvL) + " : " + SLinkOperations.getTarget(targetNode, LINKS.type$VpLG);
     }
   };
-  public static final IReferentPresentationProvider PRESENTATION_ha31oa_a0a0a = new IReferentPresentationProvider() {
-    @NotNull
-    @Override
-    public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      return SPropertyOperations.getString(targetNode, PROPS.name$MnvL);
-    }
-  };
 
   private static final class PROPS {
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");

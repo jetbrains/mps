@@ -3946,37 +3946,6 @@
       <ref role="1YaFvo" to="tpf8:gZ0H$p7" resolve="BaseMappingRule" />
     </node>
   </node>
-  <node concept="1YbPZF" id="3PJ9groBR9M">
-    <property role="TrG5h" value="typeof_TemplateArgumentVariableRefExpression" />
-    <property role="3GE5qa" value="rule.argument" />
-    <node concept="3clFbS" id="3PJ9groBR9N" role="18ibNy">
-      <node concept="1Z5TYs" id="3PJ9groBRQJ" role="3cqZAp">
-        <node concept="mw_s8" id="3PJ9groBRR6" role="1ZfhKB">
-          <node concept="1Z2H0r" id="3PJ9groBRR2" role="mwGJk">
-            <node concept="2OqwBi" id="3PJ9groBRTj" role="1Z2MuG">
-              <node concept="1YBJjd" id="3PJ9groBRRz" role="2Oq$k0">
-                <ref role="1YBMHb" node="3PJ9groBR9P" resolve="arg" />
-              </node>
-              <node concept="3TrEf2" id="3PJ9groBS3g" role="2OqNvi">
-                <ref role="3Tt5mk" to="tpf8:2n6lsTIwfRq" resolve="varmacro" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="mw_s8" id="3PJ9groBRQM" role="1ZfhK$">
-          <node concept="1Z2H0r" id="3PJ9groBRNf" role="mwGJk">
-            <node concept="1YBJjd" id="3PJ9groBRNC" role="1Z2MuG">
-              <ref role="1YBMHb" node="3PJ9groBR9P" resolve="arg" />
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="1YaCAy" id="3PJ9groBR9P" role="1YuTPh">
-      <property role="TrG5h" value="arg" />
-      <ref role="1YaFvo" to="tpf8:3PJ9groyE0C" resolve="TemplateArgumentVariableRefExpression" />
-    </node>
-  </node>
   <node concept="18kY7G" id="6j1nfBdBOIN">
     <property role="18ip37" value="false" />
     <property role="TrG5h" value="check_TemplateCallMacro" />

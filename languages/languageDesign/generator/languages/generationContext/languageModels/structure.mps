@@ -505,23 +505,6 @@
       <ref role="20lvS9" to="tpf8:$79JWCfbYa" resolve="GeneratorParameterReference" />
     </node>
   </node>
-  <node concept="1TIwiD" id="2n6lsTIwfRo">
-    <property role="TrG5h" value="GenerationContextOp_VarRef" />
-    <property role="2_RsDV" value="4G1g3fIR8JG/none" />
-    <property role="EcuMT" value="2721957369897614808" />
-    <ref role="1TJDcQ" node="hHiwH3j" resolve="GenerationContextOp_Base" />
-    <node concept="1TJgyj" id="2n6lsTIwfRq" role="1TKVEi">
-      <property role="20kJfa" value="varmacro" />
-      <property role="20lbJX" value="fLJekj4/1" />
-      <property role="IQ2ns" value="2721957369897614810" />
-      <ref role="20lvS9" to="tpf8:4mp7qFmCXde" resolve="VarMacro" />
-    </node>
-    <node concept="1TJgyi" id="2n6lsTIwfRp" role="1TKVEl">
-      <property role="TrG5h" value="name_intern" />
-      <property role="IQ2nx" value="2721957369897614809" />
-      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
-    </node>
-  </node>
   <node concept="1TIwiD" id="6suuiWXJvTY">
     <property role="TrG5h" value="GenerationContextOp_ContextVarRef" />
     <property role="34LRSv" value="#context variable#" />

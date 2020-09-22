@@ -181,14 +181,13 @@ public final class TemplateProcessor implements ITemplateProcessor {
       macroImplMap.put(RuleUtil.concept_InsertMacro, 4);
       macroImplMap.put(RuleUtil.concept_WeaveMacro, 5);
       macroImplMap.put(RuleUtil.concept_LabelMacro, 6);
-      macroImplMap.put(RuleUtil.concept_VarMacro, 7);
+      macroImplMap.put(RuleUtil.concept_VarMacro2, 7);
       macroImplMap.put(RuleUtil.concept_IfMacro, 8);
       macroImplMap.put(RuleUtil.concept_MapSrcNodeMacro, 9);
       macroImplMap.put(RuleUtil.concept_MapSrcListMacro, 10);
       macroImplMap.put(RuleUtil.concept_TemplateSwitchMacro, 12);
       macroImplMap.put(RuleUtil.concept_TemplateCallMacro, 14);
       macroImplMap.put(RuleUtil.concept_TraceMacro, 15);
-      macroImplMap.put(RuleUtil.concept_VarMacro2, 16);
     }
 
     @Override
@@ -205,14 +204,13 @@ public final class TemplateProcessor implements ITemplateProcessor {
         case 4 : return new InsertMacro(macro, templateNode, next, myTemplateProcessor);
         case 5 : return new WeaveMacro(macro, templateNode, next, myTemplateProcessor);
         case 6 : return new LabelMacro(macro, templateNode, next, myTemplateProcessor);
-        case 7 : return new VarMacro(macro, templateNode, next, myTemplateProcessor);
+        case 7 : return new VarMacro2(macro, templateNode, next, myTemplateProcessor);
         case 8 : return new IfMacro(macro, templateNode, next, myTemplateProcessor);
         case 9 : return new MapSrcMacros(macro, templateNode, next, myTemplateProcessor, true);
         case 10 : return new MapSrcMacros(macro, templateNode, next, myTemplateProcessor, false);
         case 12 : return new SwitchMacro(macro, templateNode, next, myTemplateProcessor);
         case 14 : return new CallMacro(macro, templateNode, next, myTemplateProcessor);
         case 15 : return new TraceMacro(macro, templateNode, next, myTemplateProcessor);
-        case 16 : return new VarMacro2(macro, templateNode, next, myTemplateProcessor);
         default: return new NoMacro(macro, templateNode, next, myTemplateProcessor);
       }
     }
@@ -546,29 +544,6 @@ public final class TemplateProcessor implements ITemplateProcessor {
   }
 
   // $VAR$
-  private static class VarMacro extends MacroImpl {
-    private final VariableValueQuery myValueQuery;
-
-    protected VarMacro(@NotNull SNode macro, @NotNull TemplateNode templateNode, @Nullable MacroNode next, @NotNull TemplateProcessor templateProcessor) {
-      super(macro, templateNode, next, templateProcessor);
-      QueryKeyImpl qk = new QueryKeyImpl(getMacroNodeRef(), RuleUtil.getVarMacro_Query(macro).getNodeId());
-      myValueQuery = templateProcessor.getQueryProvider(getMacroNodeRef()).getVariableValueQuery(qk);
-    }
-
-    @NotNull
-    @Override
-    public List<SNode> apply(@NotNull TemplateContext templateContext) throws DismissTopMappingRuleException, GenerationFailureException,
-        GenerationCanceledException {
-      String varName = RuleUtil.getVarMacro_Name(macro);
-      Object varValue = templateContext.getEnvironment().getQueryExecutor().evaluate(myValueQuery, new TemplateVarContext(templateContext, getMacroNodeRef()));
-      TemplateContext newContext = templateContext.subContext(Collections.singletonMap(varName, varValue));
-
-      // tc.subContext(Map props) doesn't save mapping label, so "LABEL aaa VAR bb <templateNode>" fails to
-      // establish mapping aaa:templateNode. However, instead of passing ML here once again, shall consider updating subContext(Map)
-      // contract to preserve mapping label. Can't do it without thorough check of the method usage in generated templates
-      return nextMacro(newContext.subContext(templateContext.getInputName()));
-    }
-  }
 
   private static class VarMacro2 extends MacroImpl {
     private final String[] myVarName;
