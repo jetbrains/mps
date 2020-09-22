@@ -3384,45 +3384,10 @@
               <ref role="37wK5l" to="bd8o:~Application.invokeAndWait(java.lang.Runnable,com.intellij.openapi.application.ModalityState)" resolve="invokeAndWait" />
               <node concept="1bVj0M" id="2LiUEk8pil4" role="37wK5m">
                 <node concept="3clFbS" id="2LiUEk8pil5" role="1bW5cS">
-                  <node concept="3J1_TO" id="69OmYVxkBnm" role="3cqZAp">
-                    <node concept="3uVAMA" id="69OmYVxkBnp" role="1zxBo5">
-                      <node concept="XOnhg" id="69OmYVxkBnr" role="1zc67B">
-                        <property role="3TUv4t" value="false" />
-                        <property role="TrG5h" value="e" />
-                        <node concept="nSUau" id="xvs04dIxyb" role="1tU5fm">
-                          <node concept="3uibUv" id="69OmYVxkBDu" role="nSUat">
-                            <ref role="3uigEE" to="wyt6:~InterruptedException" resolve="InterruptedException" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="3clFbS" id="69OmYVxkBnv" role="1zc67A">
-                        <node concept="YS8fn" id="69OmYVxkBUF" role="3cqZAp">
-                          <node concept="2ShNRf" id="69OmYVxkC06" role="YScLw">
-                            <node concept="YeOm9" id="3oT7WQ90wrp" role="2ShVmc">
-                              <node concept="1Y3b0j" id="3oT7WQ90wrs" role="YeSDq">
-                                <property role="2bfB8j" value="true" />
-                                <ref role="1Y3XeK" to="79ha:3oT7WQ8ZQQP" resolve="EnvironmentSetupException" />
-                                <ref role="37wK5l" to="79ha:3oT7WQ8ZVnb" resolve="EnvironmentSetupException" />
-                                <node concept="3Tm1VV" id="3oT7WQ90wrt" role="1B3o_S" />
-                                <node concept="Xl_RD" id="3oT7WQ90wtX" role="37wK5m">
-                                  <property role="Xl_RC" value="Interrupted" />
-                                </node>
-                                <node concept="37vLTw" id="3oT7WQ90wt5" role="37wK5m">
-                                  <ref role="3cqZAo" node="69OmYVxkBnr" resolve="e" />
-                                </node>
-                              </node>
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="3clFbS" id="69OmYVxkBno" role="1zxBo7">
-                      <node concept="3clFbF" id="2P80UC067dX" role="3cqZAp">
-                        <node concept="2YIFZM" id="2P80UC06cWN" role="3clFbG">
-                          <ref role="1Pybhc" to="anz6:~PlatformTestUtil" resolve="PlatformTestUtil" />
-                          <ref role="37wK5l" to="anz6:~PlatformTestUtil.dispatchAllEventsInIdeEventQueue()" resolve="dispatchAllEventsInIdeEventQueue" />
-                        </node>
-                      </node>
+                  <node concept="3clFbF" id="2P80UC067dX" role="3cqZAp">
+                    <node concept="2YIFZM" id="2P80UC06cWN" role="3clFbG">
+                      <ref role="1Pybhc" to="anz6:~PlatformTestUtil" resolve="PlatformTestUtil" />
+                      <ref role="37wK5l" to="anz6:~PlatformTestUtil.dispatchAllEventsInIdeEventQueue()" resolve="dispatchAllEventsInIdeEventQueue" />
                     </node>
                   </node>
                 </node>

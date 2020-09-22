@@ -364,7 +364,7 @@
                       <ref role="3cqZAo" node="3oW7HLfqDrC" resolve="e" />
                     </node>
                     <node concept="liA8E" id="3oW7HLfqDrK" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~Throwable.getMessage()" resolve="getMessage" />
+                      <ref role="37wK5l" to="hq8m:~ConfigurationException.getMessage()" resolve="getMessage" />
                     </node>
                   </node>
                   <node concept="Xl_RD" id="3oW7HLfqDrL" role="37wK5m">
