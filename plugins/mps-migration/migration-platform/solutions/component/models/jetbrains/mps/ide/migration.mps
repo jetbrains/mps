@@ -15120,6 +15120,31 @@
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
+      <node concept="2tJIrI" id="51eoIizNIH3" role="jymVt" />
+      <node concept="3clFb_" id="51eoIizNmkY" role="jymVt">
+        <property role="TrG5h" value="isIncluded" />
+        <node concept="2AHcQZ" id="51eoIizNmkZ" role="2AJF6D">
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+        </node>
+        <node concept="37vLTG" id="51eoIizNml0" role="3clF46">
+          <property role="TrG5h" value="module" />
+          <node concept="3uibUv" id="51eoIizNml1" role="1tU5fm">
+            <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
+          </node>
+        </node>
+        <node concept="3clFbS" id="51eoIizNml2" role="3clF47">
+          <node concept="3clFbF" id="59wdDrD6TKT" role="3cqZAp">
+            <node concept="1rXfSq" id="21LwviESvKB" role="3clFbG">
+              <ref role="37wK5l" node="76a4RXpsqrx" resolve="isProjectMigrateableModule" />
+              <node concept="37vLTw" id="59wdDrD7b34" role="37wK5m">
+                <ref role="3cqZAo" node="51eoIizNml0" resolve="module" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3Tmbuc" id="51eoIizNml6" role="1B3o_S" />
+        <node concept="10P_77" id="51eoIizNml7" role="3clF45" />
+      </node>
       <node concept="2tJIrI" id="2i74bFCnml2" role="jymVt" />
       <node concept="3clFb_" id="3ReTDvBw9vx" role="jymVt">
         <property role="1EzhhJ" value="false" />
@@ -15387,30 +15412,15 @@
               </node>
             </node>
           </node>
-          <node concept="3clFbJ" id="76a4RXptP7Y" role="3cqZAp">
-            <node concept="3clFbS" id="76a4RXptP80" role="3clFbx">
-              <node concept="3clFbF" id="1WW5sXgjKQ3" role="3cqZAp">
-                <node concept="2OqwBi" id="1WW5sXgjMex" role="3clFbG">
-                  <node concept="37vLTw" id="1WW5sXgjKQ1" role="2Oq$k0">
-                    <ref role="3cqZAo" node="1WW5sXgjCJU" resolve="myModelListener" />
-                  </node>
-                  <node concept="liA8E" id="1WW5sXgjM_$" role="2OqNvi">
-                    <ref role="37wK5l" to="w1kc:~ModelsEventsCollector.startListeningToModel(org.jetbrains.mps.openapi.model.SModel)" resolve="startListeningToModel" />
-                    <node concept="37vLTw" id="1WW5sXgjNMf" role="37wK5m">
-                      <ref role="3cqZAo" node="1WW5sXgjjzl" resolve="model" />
-                    </node>
-                  </node>
-                </node>
+          <node concept="3clFbF" id="1WW5sXgjKQ3" role="3cqZAp">
+            <node concept="2OqwBi" id="1WW5sXgjMex" role="3clFbG">
+              <node concept="37vLTw" id="1WW5sXgjKQ1" role="2Oq$k0">
+                <ref role="3cqZAo" node="1WW5sXgjCJU" resolve="myModelListener" />
               </node>
-            </node>
-            <node concept="1rXfSq" id="21LwviESvKB" role="3clFbw">
-              <ref role="37wK5l" node="76a4RXpsqrx" resolve="isProjectMigrateableModule" />
-              <node concept="2OqwBi" id="76a4RXptZlj" role="37wK5m">
-                <node concept="37vLTw" id="76a4RXptY69" role="2Oq$k0">
+              <node concept="liA8E" id="1WW5sXgjM_$" role="2OqNvi">
+                <ref role="37wK5l" to="w1kc:~ModelsEventsCollector.startListeningToModel(org.jetbrains.mps.openapi.model.SModel)" resolve="startListeningToModel" />
+                <node concept="37vLTw" id="1WW5sXgjNMf" role="37wK5m">
                   <ref role="3cqZAo" node="1WW5sXgjjzl" resolve="model" />
-                </node>
-                <node concept="liA8E" id="76a4RXptZVQ" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
                 </node>
               </node>
             </node>
@@ -15443,30 +15453,15 @@
               </node>
             </node>
           </node>
-          <node concept="3clFbJ" id="76a4RXptVoW" role="3cqZAp">
-            <node concept="3clFbS" id="76a4RXptVoX" role="3clFbx">
-              <node concept="3clFbF" id="1WW5sXgjO5F" role="3cqZAp">
-                <node concept="2OqwBi" id="1WW5sXgjO5G" role="3clFbG">
-                  <node concept="37vLTw" id="1WW5sXgjO5H" role="2Oq$k0">
-                    <ref role="3cqZAo" node="1WW5sXgjCJU" resolve="myModelListener" />
-                  </node>
-                  <node concept="liA8E" id="1WW5sXgjO5I" role="2OqNvi">
-                    <ref role="37wK5l" to="w1kc:~ModelsEventsCollector.stopListeningToModel(org.jetbrains.mps.openapi.model.SModel)" resolve="stopListeningToModel" />
-                    <node concept="37vLTw" id="1WW5sXgjO5J" role="37wK5m">
-                      <ref role="3cqZAo" node="1WW5sXgjl8R" resolve="model" />
-                    </node>
-                  </node>
-                </node>
+          <node concept="3clFbF" id="1WW5sXgjO5F" role="3cqZAp">
+            <node concept="2OqwBi" id="1WW5sXgjO5G" role="3clFbG">
+              <node concept="37vLTw" id="1WW5sXgjO5H" role="2Oq$k0">
+                <ref role="3cqZAo" node="1WW5sXgjCJU" resolve="myModelListener" />
               </node>
-            </node>
-            <node concept="1rXfSq" id="21LwviESx5o" role="3clFbw">
-              <ref role="37wK5l" node="76a4RXpsqrx" resolve="isProjectMigrateableModule" />
-              <node concept="2OqwBi" id="76a4RXpu00P" role="37wK5m">
-                <node concept="37vLTw" id="76a4RXpu00Q" role="2Oq$k0">
+              <node concept="liA8E" id="1WW5sXgjO5I" role="2OqNvi">
+                <ref role="37wK5l" to="w1kc:~ModelsEventsCollector.stopListeningToModel(org.jetbrains.mps.openapi.model.SModel)" resolve="stopListeningToModel" />
+                <node concept="37vLTw" id="1WW5sXgjO5J" role="37wK5m">
                   <ref role="3cqZAo" node="1WW5sXgjl8R" resolve="model" />
-                </node>
-                <node concept="liA8E" id="76a4RXpu00R" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
                 </node>
               </node>
             </node>
