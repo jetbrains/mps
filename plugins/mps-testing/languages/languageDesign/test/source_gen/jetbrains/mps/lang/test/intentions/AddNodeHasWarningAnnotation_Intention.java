@@ -15,7 +15,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -66,7 +65,7 @@ public final class AddNodeHasWarningAnnotation_Intention extends AbstractIntenti
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode newAnnotation = SNodeFactoryOperations.createNewNode(CONCEPTS.NodeOperationsContainer$aj, null);
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj), newAnnotation);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj).set(node, newAnnotation);
       SNode warningCheck = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b0224b421L, "jetbrains.mps.lang.test.structure.NodeWarningCheckOperation"));
       ListSequence.fromList(SLinkOperations.getChildren(newAnnotation, LINKS.nodeOperations$Mgf9)).addElement(warningCheck);
       SelectionUtil.selectCell(editorContext, warningCheck, SelectionManager.LAST_EDITABLE_CELL);

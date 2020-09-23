@@ -57,7 +57,7 @@ public final class AddDeprecatedAnnotation_Intention extends AbstractIntentionDe
     public void execute(final SNode node, final EditorContext editorContext) {
       if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV)) == null)) {
         SNode annotation = SNodeFactoryOperations.createNewNode(CONCEPTS.DeprecatedNodeAnnotation$zV, null);
-        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV), annotation);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV).set(node, annotation);
       } else {
         SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV)));
       }

@@ -271,10 +271,10 @@ public class MergeTest extends ChangesTestBase {
         SNode reviewMigration = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x78c7e79625a38e06L, "jetbrains.mps.lang.core.structure.ReviewMigration"));
         SNode commentedMethod = ChangesTestUtil.createCommentedMethod();
 
-        AttributeOperations.setAttribute(getMineClassRoot(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u), reviewMigration);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u).set(getMineClassRoot(), reviewMigration);
         insertCommentPreservingId(getTheirsClassRoot(), commentedMethod, 0);
 
-        AttributeOperations.setAttribute(getClassRoot(expectedModel), new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_), (SNode) CopyUtil.copyAndPreserveId(reviewMigration));
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).set(getClassRoot(expectedModel), (SNode) CopyUtil.copyAndPreserveId(reviewMigration));
         insertCommentPreservingId(getClassRoot(expectedModel), commentedMethod, 0);
       }
     });

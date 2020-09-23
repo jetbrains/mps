@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.migration.util.NodeReferenceUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -48,7 +47,7 @@ public final class MoveConcept__BehaviorDescriptor extends BaseBHDescriptor {
     SLinkOperations.setTarget(MoveNodeSpecialization__BehaviorDescriptor.getMyMoveNodeItem_id4yRsQKnq58F.invoke(__thisNode__), LINKS.fromNode$UG1d, NodeReferenceUtil.makeDirect(from));
     SNode to = SNodeOperations.cast(MoveNodeSpecialization__BehaviorDescriptor.getTo_id1NHZk5hj1ls.invoke(__thisNode__, repository), CONCEPTS.AbstractConceptDeclaration$KA);
     SPropertyOperations.plusAssignStringProp(from, PROPS.name$MnvL, "_old");
-    AttributeOperations.setAttribute(SNodeOperations.cast(from, CONCEPTS.AbstractConceptDeclaration$KA), new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV), createDeprecatedNodeAnnotation_t3xq9p_a0e0b("The concept was moved to language \"" + SNodeOperations.getModel(SNodeOperations.cast(to, CONCEPTS.AbstractConceptDeclaration$KA)).getModule().getModuleName() + "\""));
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV).set(SNodeOperations.cast(from, CONCEPTS.AbstractConceptDeclaration$KA), createDeprecatedNodeAnnotation_t3xq9p_a0e0b("The concept was moved to language \"" + SNodeOperations.getModel(SNodeOperations.cast(to, CONCEPTS.AbstractConceptDeclaration$KA)).getModule().getModuleName() + "\""));
   }
 
   /*package*/ MoveConcept__BehaviorDescriptor() {

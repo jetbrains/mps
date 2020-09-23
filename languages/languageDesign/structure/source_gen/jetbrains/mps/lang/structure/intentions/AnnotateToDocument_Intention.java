@@ -55,7 +55,7 @@ public final class AnnotateToDocument_Intention extends AbstractIntentionDescrip
       if (ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentedNodeAnnotation$C3))).isEmpty()) {
         SNodeFactoryOperations.addNewAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentedNodeAnnotation$C3), CONCEPTS.DocumentedNodeAnnotation$C3);
       } else {
-        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentedNodeAnnotation$C3), null);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentedNodeAnnotation$C3).set(node, null);
       }
     }
     @Override

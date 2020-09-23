@@ -81,7 +81,7 @@ public class IntroduceSmartRefAttribute extends MigrationScriptBase {
 
             SPropertyOperations.remove(conceptNode, PROPS.conceptAlias$OL_L);
 
-            AttributeOperations.setAttribute(conceptNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3), createSmartReferenceAttribute_nopsft_a0f0d0h0c0a0g(characteristicLink));
+            new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3).set(conceptNode, createSmartReferenceAttribute_nopsft_a0f0d0h0c0a0g(characteristicLink));
             if ((prefix != null && prefix.length() > 0) || (suffix != null && suffix.length() > 0)) {
               SLinkOperations.setTarget(AttributeOperations.getAttribute(conceptNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3)), LINKS.refPresentationTemplate$di5B, createRefPresentationTemplate_nopsft_a0a0g0d0h0c0a0g(prefix, suffix));
             }

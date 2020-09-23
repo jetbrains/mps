@@ -63,7 +63,7 @@ public final class UnmarkStaticMethodCallAsThreadSafe_Intention extends Abstract
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ), null);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ).set(node, null);
     }
     @Override
     public IntentionDescriptor getDescriptor() {

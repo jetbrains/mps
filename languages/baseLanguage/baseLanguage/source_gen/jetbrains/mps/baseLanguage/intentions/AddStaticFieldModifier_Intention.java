@@ -19,8 +19,8 @@ import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -85,7 +85,7 @@ public final class AddStaticFieldModifier_Intention extends AbstractIntentionDes
       SPropertyOperations.set(field, PROPS.name$MnvL, SPropertyOperations.getString(node, PROPS.name$MnvL));
       SPropertyOperations.set(field, PROPS.isFinal$gvTP, SPropertyOperations.getBoolean(node, PROPS.isFinal$gvTP));
       ListSequence.fromList(SLinkOperations.getChildren(field, LINKS.annotation$K49I)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.annotation$K49I)));
-      AttributeOperations.setAttribute(field, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl), AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl)));
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl).set(field, AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl)));
       SNodeOperations.deleteNode(node);
       editorContext.selectWRTFocusPolicy(field);
     }

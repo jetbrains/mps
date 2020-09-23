@@ -89,7 +89,7 @@ public class AnnotateRefPresentationQueriesAsMigrated extends MigrationScriptBas
         for (SNode refConstraint : ListSequence.fromList(SLinkOperations.getChildren(conceptConstraint, LINKS.referent$k0ZK))) {
           SNode presentation = SLinkOperations.getTarget(refConstraint, LINKS.presentation$VLnP);
           if ((presentation != null) && (AttributeOperations.getAttribute(presentation, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$T3)) == null)) {
-            AttributeOperations.setAttribute(presentation, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$T3), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x583cd121d513aabeL, "jetbrains.mps.lang.constraints.structure.RefPresentationMigrated")));
+            new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$T3).set(presentation, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x583cd121d513aabeL, "jetbrains.mps.lang.constraints.structure.RefPresentationMigrated")));
             Iterable<SNode> superEditorComponents = findSuperEditorComponentsUsingReference(SLinkOperations.getTarget(conceptConstraint, LINKS.concept$EVpZ), SLinkOperations.getTarget(refConstraint, LINKS.applicableLink$7IrX));
             for (SNode editorComponent : Sequence.fromIterable(superEditorComponents)) {
               ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(presentation, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$T3)), LINKS.problems$4CuI)).addElement(createRefPresentationMigratedProblem_lpnriw_a0a0a2a1a0a7a1a6(editorComponent));

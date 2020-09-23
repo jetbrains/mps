@@ -26,7 +26,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     SNode node = n;
     if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O)) == null)) {
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O), SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.RootTemplateAnnotation$9O));
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).set(node, SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.RootTemplateAnnotation$9O));
     }
   }
 

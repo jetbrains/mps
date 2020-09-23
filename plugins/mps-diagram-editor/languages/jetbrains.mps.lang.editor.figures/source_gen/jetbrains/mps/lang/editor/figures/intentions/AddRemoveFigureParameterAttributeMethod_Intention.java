@@ -77,9 +77,9 @@ public final class AddRemoveFigureParameterAttributeMethod_Intention extends Abs
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FigureParameterAttributeMethod$yb)) != null) {
-        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FigureParameterAttributeMethod$yb), null);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.FigureParameterAttributeMethod$yb).set(node, null);
       } else {
-        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FigureParameterAttributeMethod$yb), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x1ceea85e3fd59954L, "jetbrains.mps.lang.editor.figures.structure.FigureParameterAttributeMethod")));
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.FigureParameterAttributeMethod$yb).set(node, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x1ceea85e3fd59954L, "jetbrains.mps.lang.editor.figures.structure.FigureParameterAttributeMethod")));
       }
     }
     @Override

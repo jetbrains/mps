@@ -13,9 +13,9 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -60,12 +60,12 @@ public final class CreateListAntiquotation_Intention extends AbstractIntentionDe
       if (SNodeOperations.isInstanceOf(contextNode, CONCEPTS.ListAntiquotation$XK)) {
         SNode attributedNode = SNodeOperations.getParent(contextNode);
         assert attributedNode != null;
-        AttributeOperations.setAttribute(attributedNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK), null);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK).set(attributedNode, null);
         return;
       }
       SModel model = SNodeOperations.getModel(contextNode);
       if ((AttributeOperations.getAttribute(contextNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK)) != null)) {
-        AttributeOperations.setAttribute(contextNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK), null);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK).set(contextNode, null);
       } else {
         SNode listAntiquotation = SNodeFactoryOperations.setNewAttribute(contextNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK), CONCEPTS.ListAntiquotation$XK);
         editorContext.selectWRTFocusPolicy(listAntiquotation);

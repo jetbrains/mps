@@ -180,7 +180,7 @@ public class MigrateScopes extends MigrationScriptBase {
     SPropertyOperations.assign(ann, PROPS.reasonShort$6I8j, text);
     SPropertyOperations.assign(ann, PROPS.todo$6GXe, "This node should have been migrated, but could not be migrated automatically since this code seems to be not valid. Please review this code and migrate manually if necessary.");
     SPropertyOperations.assign(ann, PROPS.readableId$SY7S, "Migrate Query Scopes");
-    AttributeOperations.setAttribute(oldParameter, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration_old$2j), ann);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration_old$2j).set(oldParameter, ann);
   }
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x307931d0f98575c9L), MetaIdFactory.conceptId(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x307931d0f952484eL), MetaIdFactory.conceptId(0x1a8554c4eb8443baL, 0x8c346f0d90c6e75aL, 0x263c7e661fa6d53dL)).seal();
   private static SNode createCustomScope_9zyy9x_a0a0a0a0m0d0d(SNode p0) {

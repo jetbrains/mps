@@ -58,7 +58,7 @@ public final class MarkAsThreadSafe_Intention extends AbstractIntentionDescripto
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNodeFactoryOperations.setNewAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ), CONCEPTS.ThreadSafe$eJ);
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NonThreadSafeClass$7D), null);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.NonThreadSafeClass$7D).set(node, null);
     }
     @Override
     public IntentionDescriptor getDescriptor() {

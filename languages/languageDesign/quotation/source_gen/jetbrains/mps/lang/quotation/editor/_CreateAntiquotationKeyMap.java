@@ -10,8 +10,8 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.List;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -71,11 +71,11 @@ public class _CreateAntiquotationKeyMap extends KeyMapImpl {
         return;
       }
       if (SNodeOperations.isInstanceOf(contextNode, CONCEPTS.Antiquotation$UQ)) {
-        AttributeOperations.setAttribute(SNodeOperations.getParent(contextNode), new IAttributeDescriptor.NodeAttribute(CONCEPTS.Antiquotation$UQ), null);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.Antiquotation$UQ).set(SNodeOperations.getParent(contextNode), null);
         return;
       }
       if (AttributeOperations.getAttribute(contextNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.Antiquotation$UQ)) != null) {
-        AttributeOperations.setAttribute(contextNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.Antiquotation$UQ), null);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.Antiquotation$UQ).set(contextNode, null);
       } else
       SNodeFactoryOperations.setNewAttribute(contextNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.Antiquotation$UQ), CONCEPTS.Antiquotation$UQ);
     }
@@ -122,11 +122,11 @@ public class _CreateAntiquotationKeyMap extends KeyMapImpl {
       if (SNodeOperations.isInstanceOf(contextNode, CONCEPTS.ListAntiquotation$XK)) {
         SNode attributedNode = SNodeOperations.getParent(contextNode);
         assert attributedNode != null;
-        AttributeOperations.setAttribute(attributedNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK), null);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK).set(attributedNode, null);
         return;
       }
       if ((AttributeOperations.getAttribute(contextNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK)) != null)) {
-        AttributeOperations.setAttribute(contextNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK), null);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK).set(contextNode, null);
       } else
       SNodeFactoryOperations.setNewAttribute(contextNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK), CONCEPTS.ListAntiquotation$XK);
     }
@@ -178,11 +178,11 @@ public class _CreateAntiquotationKeyMap extends KeyMapImpl {
       if (SNodeOperations.isInstanceOf(contextNode, CONCEPTS.ReferenceAntiquotation$Xh)) {
         SNode attributedNode = SNodeOperations.cast(SNodeOperations.getParent(contextNode), CONCEPTS.BaseConcept$gP);
         assert attributedNode != null;
-        AttributeOperations.setAttribute(attributedNode, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAntiquotation$Xh, ref), null);
+        new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAntiquotation$Xh, ref).set(attributedNode, null);
         return;
       }
       if (AttributeOperations.getAttribute(contextNode, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAntiquotation$Xh, ref)) != null) {
-        AttributeOperations.setAttribute(contextNode, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAntiquotation$Xh, ref), null);
+        new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAntiquotation$Xh, ref).set(contextNode, null);
       } else {
         SNode referenceAntiquotation = SNodeFactoryOperations.setNewAttribute(contextNode, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAntiquotation$Xh, ref), CONCEPTS.ReferenceAntiquotation$Xh);
         if (selectedCell.isSingleNodeCell()) {
@@ -238,11 +238,11 @@ public class _CreateAntiquotationKeyMap extends KeyMapImpl {
       if (SNodeOperations.isInstanceOf(contextNode, CONCEPTS.PropertyAntiquotation$13)) {
         SNode attributedNode = SNodeOperations.cast(SNodeOperations.getParent(contextNode), CONCEPTS.BaseConcept$gP);
         assert attributedNode != null;
-        AttributeOperations.setAttribute(attributedNode, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyAntiquotation$13, p), null);
+        new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyAntiquotation$13, p).set(attributedNode, null);
         return;
       }
       if (AttributeOperations.getAttribute(contextNode, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyAntiquotation$13, p)) != null) {
-        AttributeOperations.setAttribute(contextNode, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyAntiquotation$13, p), null);
+        new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyAntiquotation$13, p).set(contextNode, null);
       } else {
         SNode propertyAntiquotation = SNodeFactoryOperations.setNewAttribute(contextNode, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyAntiquotation$13, p), CONCEPTS.PropertyAntiquotation$13);
         if (selectedCell.isSingleNodeCell()) {

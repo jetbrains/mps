@@ -69,7 +69,7 @@ public final class MarkLocalStaticMethodCallAsThreadSafe_Intention extends Abstr
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ), SNodeFactoryOperations.createNewNode(CONCEPTS.ThreadSafe$eJ, null));
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ).set(node, SNodeFactoryOperations.createNewNode(CONCEPTS.ThreadSafe$eJ, null));
     }
     @Override
     public IntentionDescriptor getDescriptor() {

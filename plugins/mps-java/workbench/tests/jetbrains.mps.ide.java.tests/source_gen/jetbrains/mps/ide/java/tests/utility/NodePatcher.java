@@ -124,7 +124,7 @@ public class NodePatcher {
   }
   public static void copyImportAttrs(SNode from, SNode to) {
     if ((AttributeOperations.getAttribute(SNodeOperations.cast(from, CONCEPTS.Classifier$Ix), new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_)) != null)) {
-      AttributeOperations.setAttribute(SNodeOperations.cast(to, CONCEPTS.Classifier$Ix), new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_), SNodeOperations.copyNode(AttributeOperations.getAttribute(SNodeOperations.cast(from, CONCEPTS.Classifier$Ix), new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_))));
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).set(SNodeOperations.cast(to, CONCEPTS.Classifier$Ix), SNodeOperations.copyNode(AttributeOperations.getAttribute(SNodeOperations.cast(from, CONCEPTS.Classifier$Ix), new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_))));
     }
   }
 

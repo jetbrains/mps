@@ -80,7 +80,7 @@ public final class AddClasslikeAnnotation_Intention extends AbstractIntentionDes
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv), createDSLAnnotation_qk2y7i_a0a0a(myParameter));
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv).set(node, createDSLAnnotation_qk2y7i_a0a0a(myParameter));
       ClassLikeInitHelper.init(node, myParameter, SNodeOperations.getModel(node));
     }
     @Override

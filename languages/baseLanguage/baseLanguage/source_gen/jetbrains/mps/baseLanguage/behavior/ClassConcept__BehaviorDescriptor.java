@@ -334,7 +334,7 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
     Classifier__BehaviorDescriptor.addMember_id32Td0IabBk_.invoke(__thisNode__, constructor, ListSequence.fromListAndArray(new ArrayList<SAbstractConcept>(), CONCEPTS.ConstructorDeclaration$yG, CONCEPTS.InstanceMethodDeclaration$39, CONCEPTS.StaticMethodDeclaration$FJ));
   }
   /*package*/ static void markLoadedNodeAsDeprecated_id5H8W9_EDlcn(@NotNull SAbstractConcept __thisConcept__, SNode node) {
-    AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh), DeprecationUtil.createDocComment(CONCEPTS.ClassifierDocComment$mh));
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh).set(node, DeprecationUtil.createDocComment(CONCEPTS.ClassifierDocComment$mh));
   }
 
   /*package*/ ClassConcept__BehaviorDescriptor() {

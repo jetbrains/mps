@@ -26,9 +26,9 @@ public class Attributes {
   }
   public void accessToPropertyAttribute_2(SNode node) {
     SNode propMacro = null;
-    AttributeOperations.setAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.name$MnvL), propMacro);
-    AttributeOperations.setAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.name$MnvL), propMacro);
-    AttributeOperations.setAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.name$MnvL), propMacro);
+    new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.name$MnvL).set(node, propMacro);
+    new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.name$MnvL).set(node, propMacro);
+    new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.name$MnvL).set(node, propMacro);
   }
   public void accessToReferenceAttribute_1(SNode node) {
     SNode referenceMacro = AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, LINKS.variableDeclaration$N1XG));
@@ -36,9 +36,9 @@ public class Attributes {
   }
   public void accessToReferenceAttribute_2(SNode node) {
     SNode refMacro = null;
-    AttributeOperations.setAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, LINKS.variableDeclaration$N1XG), refMacro);
-    AttributeOperations.setAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, LINKS.variableDeclaration$N1XG), refMacro);
-    AttributeOperations.setAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, LINKS.variableDeclaration$N1XG), refMacro);
+    new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, LINKS.variableDeclaration$N1XG).set(node, refMacro);
+    new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, LINKS.variableDeclaration$N1XG).set(node, refMacro);
+    new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, LINKS.variableDeclaration$N1XG).set(node, refMacro);
   }
   public void other(SNode node) {
     SNodeOperations.isAttribute(node);

@@ -15,7 +15,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
@@ -62,7 +61,7 @@ public final class AddTestAnnotation_Intention extends AbstractIntentionDescript
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode newAnnotation = SNodeFactoryOperations.createNewNode(CONCEPTS.TestNodeAnnotation$27, null);
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AbstractTestNodeAnnotation$lh), newAnnotation);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.AbstractTestNodeAnnotation$lh).set(node, newAnnotation);
       SelectionUtil.selectCell(editorContext, newAnnotation, SelectionManager.FIRST_EDITABLE_CELL);
     }
     @Override

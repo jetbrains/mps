@@ -64,7 +64,7 @@ public final class AddMethodDocComment_Intention extends AbstractIntentionDescri
       DocCommentHelper.addJavadocLangIfMissing(node);
 
       if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)) != null)) {
-        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI), null);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).set(node, null);
         if (editorContext.getSelectedNode() != node) {
           editorContext.selectWRTFocusPolicy(node);
         }

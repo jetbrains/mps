@@ -77,9 +77,9 @@ public final class AddRemoveFigureParameterAttributeField_Intention extends Abst
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FigureParameterAttributeField$rl)) != null) {
-        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FigureParameterAttributeField$rl), null);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.FigureParameterAttributeField$rl).set(node, null);
       } else {
-        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FigureParameterAttributeField$rl), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x1ceea85e3fd59976L, "jetbrains.mps.lang.editor.figures.structure.FigureParameterAttributeField")));
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.FigureParameterAttributeField$rl).set(node, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x1ceea85e3fd59976L, "jetbrains.mps.lang.editor.figures.structure.FigureParameterAttributeField")));
       }
     }
     @Override

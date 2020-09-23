@@ -69,7 +69,7 @@ public final class AddClassifierDocComment_Intention extends AbstractIntentionDe
       DocCommentHelper.addJavadocLangIfMissing(node);
 
       if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh)) != null)) {
-        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh), null);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh).set(node, null);
         if (editorContext.getSelectedNode() != node) {
           editorContext.selectWRTFocusPolicy(node);
         }

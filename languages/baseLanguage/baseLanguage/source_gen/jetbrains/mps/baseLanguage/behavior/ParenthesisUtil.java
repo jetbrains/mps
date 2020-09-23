@@ -435,12 +435,12 @@ public class ParenthesisUtil {
     int count = 0;
     if (completingByRightParen) {
       count = SPropertyOperations.getInteger(AttributeOperations.getAttribute(otherExpression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7)), PROPS.count$FDpi);
-      AttributeOperations.setAttribute(otherExpression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7), null);
-      AttributeOperations.setAttribute(parens, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7), null);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).set(otherExpression, null);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).set(parens, null);
     } else {
       count = SPropertyOperations.getInteger(AttributeOperations.getAttribute(otherExpression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc)), PROPS.count$FDpi);
-      AttributeOperations.setAttribute(otherExpression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc), null);
-      AttributeOperations.setAttribute(parens, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc), null);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).set(otherExpression, null);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).set(parens, null);
     }
 
     // One paren has been matched, so we should decrease the count 

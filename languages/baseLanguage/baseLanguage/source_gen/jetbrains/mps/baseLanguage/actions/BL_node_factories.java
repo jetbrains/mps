@@ -10,8 +10,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import java.util.List;
 import jetbrains.mps.typechecking.TypecheckingFacade;
@@ -59,7 +59,7 @@ public class BL_node_factories {
           ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.annotation$K49I)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(original, LINKS.annotation$K49I)));
           ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.parameter$5xBj)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(original, LINKS.parameter$5xBj)));
           ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.typeVariableDeclaration$Lipp)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(original, LINKS.typeVariableDeclaration$Lipp)));
-          AttributeOperations.setAttribute(newNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI), AttributeOperations.getAttribute(original, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)));
+          new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).set(newNode, AttributeOperations.getAttribute(original, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)));
         }
       }
       if (SNodeOperations.isInstanceOf(enclosingNode, CONCEPTS.Interface$db)) {
@@ -126,7 +126,7 @@ public class BL_node_factories {
           ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.annotation$K49I)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(original, LINKS.annotation$K49I)));
           ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.parameter$5xBj)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(original, LINKS.parameter$5xBj)));
           ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.typeVariableDeclaration$Lipp)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(original, LINKS.typeVariableDeclaration$Lipp)));
-          AttributeOperations.setAttribute(newNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI), AttributeOperations.getAttribute(original, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)));
+          new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).set(newNode, AttributeOperations.getAttribute(original, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)));
         }
       }
       if (SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.IncompleteMemberDeclaration$jI) || SNodeOperations.isInstanceOf(sampleNode, CONCEPTS.PlaceholderMember$s8)) {

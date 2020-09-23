@@ -23,7 +23,7 @@ public class FixAttributeInfo_QuickFix extends QuickFix_Runtime {
   public void execute(SNode node) {
     SNode conceptDeclaration = SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$gH);
     if (AttributeDesignTimeOperations.isAttributeDeclaration(conceptDeclaration) && (AttributeOperations.getAttribute(conceptDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$hg)) == null)) {
-      AttributeOperations.setAttribute(SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$gH), new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$hg), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x29889a701b928195L, "jetbrains.mps.lang.structure.structure.AttributeInfo")));
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$hg).set(SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$gH), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x29889a701b928195L, "jetbrains.mps.lang.structure.structure.AttributeInfo")));
     }
     if (!(AttributeDesignTimeOperations.isAttributeDeclaration(conceptDeclaration)) && (AttributeOperations.getAttribute(conceptDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$hg)) != null)) {
       SNodeOperations.deleteNode(AttributeOperations.getAttribute(SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$gH), new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$hg)));

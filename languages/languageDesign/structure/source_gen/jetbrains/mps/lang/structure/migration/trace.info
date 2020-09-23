@@ -1337,7 +1337,7 @@
       <node id="3160346131750778104" at="80,55,81,0" concept="10" />
       <node id="3160346131750780523" at="81,0,82,77" concept="2" />
       <node id="1782525708519517211" at="82,77,83,0" concept="10" />
-      <node id="3160346131750718093" at="83,0,84,207" concept="2" />
+      <node id="3160346131750718093" at="83,0,84,177" concept="2" />
       <node id="3160346131750707047" at="85,101,86,270" concept="2" />
       <node id="3160346131749731897" at="93,51,94,149" concept="8" />
       <node id="2115302367868443368" at="98,0,99,0" concept="11" trace="SMART_ALIAS_PATTERN" />
@@ -1370,7 +1370,7 @@
       <node id="7334773246456918903" at="60,9,63,9" concept="5" />
       <node id="2823822248428017909" at="63,9,66,9" concept="5" />
       <node id="3017733173182796796" at="73,0,76,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="3160346131750392733" at="84,207,87,13" concept="5" />
+      <node id="3160346131750392733" at="84,177,87,13" concept="5" />
       <node id="3160346131749731897" at="93,0,96,0" concept="6" trace="getDescriptor#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
       <node id="2115302367868450478" at="100,0,103,0" concept="6" trace="getSmartAliasMatcher#(Ljava/lang/String;)Ljava/util/regex/Matcher;" />
       <node id="6948801002403299471" at="104,52,107,5" concept="5" />

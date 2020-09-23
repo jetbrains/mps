@@ -17,7 +17,6 @@ import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.scope.Scope;
@@ -68,7 +67,7 @@ public final class AddScopeTestAnnotation_Intention extends AbstractIntentionDes
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode newAnnotation = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x7181d929c720809L, "jetbrains.mps.lang.test.structure.ScopesTest"));
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ScopesTest$TD), newAnnotation);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.ScopesTest$TD).set(node, newAnnotation);
 
       if ((boolean) ScopesTest__BehaviorDescriptor.isSimple_id4IvydoGvpbr.invoke(SNodeOperations.asSConcept(CONCEPTS.ScopesTest$TD), node)) {
         SLinkOperations.setTarget(newAnnotation, LINKS.checkingReference$LcK9, ScopesTest__BehaviorDescriptor.getCheckingReference_id4IvydoGvimX.invoke(newAnnotation).getTargetNode());

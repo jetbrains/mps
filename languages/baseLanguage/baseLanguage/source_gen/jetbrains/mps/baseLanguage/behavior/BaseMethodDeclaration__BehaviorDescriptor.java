@@ -352,7 +352,7 @@ public final class BaseMethodDeclaration__BehaviorDescriptor extends BaseBHDescr
     AnnotationUtil.detachUniqueAnnotation(__thisNode__, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated"));
   }
   /*package*/ static void markLoadedNodeAsDeprecated_id5H8W9_EDFVg(@NotNull SAbstractConcept __thisConcept__, SNode node) {
-    AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI), DeprecationUtil.createDocComment(CONCEPTS.MethodDocComment$HI));
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).set(node, DeprecationUtil.createDocComment(CONCEPTS.MethodDocComment$HI));
   }
 
   /*package*/ BaseMethodDeclaration__BehaviorDescriptor() {

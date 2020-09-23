@@ -9,8 +9,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -28,7 +28,7 @@ public class SideTransformInfoUtil {
     SNode info = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7ae9194dL, "jetbrains.mps.lang.core.structure.SideTransformInfo"));
     SPropertyOperations.assign(info, PROPS.cellId$4_YN, cellId);
     SPropertyOperations.assignEnum(info, PROPS.side$gxaJ, SEnumOperations.getMemberForName(MetaAdapterFactory.getEnumeration(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7aee25ecL, "jetbrains.mps.lang.core.structure.SideTransformSide"), (isRight ? SEnumOperations.getMemberName0(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7aee25ecL, "jetbrains.mps.lang.core.structure.SideTransformSide"), 0xad0053c7aee25edL, "right")) : SEnumOperations.getMemberName0(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0xad0053c7aee25ecL, "jetbrains.mps.lang.core.structure.SideTransformSide"), 0xad0053c7aee2e4fL, "left")))));
-    AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SideTransformInfo$Hi), info);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.SideTransformInfo$Hi).set(node, info);
   }
 
   public static boolean hasRightTransformInfo(SNode node) {
@@ -40,7 +40,7 @@ public class SideTransformInfoUtil {
   }
 
   public static void removeTransformInfo(SNode node) {
-    AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SideTransformInfo$Hi), null);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.SideTransformInfo$Hi).set(node, null);
   }
 
   public static String getCellIdFromTransformInfo(SNode node) {

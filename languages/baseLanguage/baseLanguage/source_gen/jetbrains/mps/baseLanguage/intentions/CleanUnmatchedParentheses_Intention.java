@@ -71,8 +71,8 @@ public final class CleanUnmatchedParentheses_Intention extends AbstractIntention
         }
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          AttributeOperations.setAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7), null);
-          AttributeOperations.setAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc), null);
+          new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).set(it, null);
+          new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).set(it, null);
         }
       });
     }

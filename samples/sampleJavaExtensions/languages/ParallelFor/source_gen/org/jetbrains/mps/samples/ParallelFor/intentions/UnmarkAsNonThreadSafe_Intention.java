@@ -63,7 +63,7 @@ public final class UnmarkAsNonThreadSafe_Intention extends AbstractIntentionDesc
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NonThreadSafeClass$7D), null);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.NonThreadSafeClass$7D).set(node, null);
     }
     @Override
     public IntentionDescriptor getDescriptor() {

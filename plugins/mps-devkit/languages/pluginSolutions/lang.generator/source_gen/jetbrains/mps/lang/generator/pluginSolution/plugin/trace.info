@@ -1022,7 +1022,7 @@
       <node id="6213885063989783193" at="22,43,23,50" concept="11" />
       <node id="6213885063989783203" at="24,270,25,13" concept="12" />
       <node id="6213885063989783215" at="26,5,27,19" concept="11" />
-      <node id="6213885063989783221" at="28,135,29,227" concept="6" />
+      <node id="6213885063989783221" at="28,135,29,197" concept="6" />
       <node id="6213885063989783002" at="34,0,35,0" concept="15" trace="RootTemplateAnnotation$9O" />
       <node id="6213885063989783176" at="19,0,22,0" concept="10" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
       <node id="6213885063989783201" at="23,50,26,5" concept="9" />
@@ -1030,7 +1030,7 @@
       <node id="6213885063989783186" at="22,0,32,0" concept="10" trace="setupRoot#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <scope id="6213885063989783182" at="19,50,20,48" />
       <scope id="6213885063989783202" at="24,270,25,13" />
-      <scope id="6213885063989783220" at="28,135,29,227" />
+      <scope id="6213885063989783220" at="28,135,29,197" />
       <scope id="6213885063989783176" at="19,0,22,0">
         <var name="m" id="6213885063989783179" />
       </scope>

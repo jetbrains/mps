@@ -23,7 +23,6 @@ import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.selection.NodeRangeSelection;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
@@ -103,7 +102,7 @@ public final class AddCellAnnotation_Intention extends AbstractIntentionDescript
         SLinkOperations.setTarget(newAnnotation, LINKS.nodeRangeSelectionStart$Qss5, nodeRangeSelection.getFirstNode());
         SLinkOperations.setTarget(newAnnotation, LINKS.nodeRangeSelectionEnd$QsF6, nodeRangeSelection.getLastNode());
       }
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AbstractTestNodeAnnotation$lh), newAnnotation);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.AbstractTestNodeAnnotation$lh).set(node, newAnnotation);
       SelectionUtil.selectNode(editorContext, newAnnotation);
     }
     @Override

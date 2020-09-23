@@ -61,7 +61,7 @@ public final class AddDefaultReferenceAttribute_Intention extends AbstractIntent
       if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.DefaultReferenceAttribute$Cs, LINKS.bestFriend$rXFF)) != null)) {
         SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.DefaultReferenceAttribute$Cs, LINKS.bestFriend$rXFF)));
       } else {
-        AttributeOperations.setAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.DefaultReferenceAttribute$Cs, LINKS.bestFriend$rXFF), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0x27d5e845b8e8aeb7L, "testDefaultEditor.structure.DefaultReferenceAttribute")));
+        new IAttributeDescriptor.LinkAttribute(CONCEPTS.DefaultReferenceAttribute$Cs, LINKS.bestFriend$rXFF).set(node, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0x27d5e845b8e8aeb7L, "testDefaultEditor.structure.DefaultReferenceAttribute")));
         SelectionUtil.selectCell(editorContext, AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.DefaultReferenceAttribute$Cs, LINKS.bestFriend$rXFF)), "const");
       }
 

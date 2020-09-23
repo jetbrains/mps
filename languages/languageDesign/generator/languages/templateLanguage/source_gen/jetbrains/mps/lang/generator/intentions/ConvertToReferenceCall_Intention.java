@@ -91,7 +91,7 @@ public final class ConvertToReferenceCall_Intention extends AbstractIntentionDes
       }).first());
       ListSequence.fromList(SLinkOperations.getChildren(replacement, LINKS.actualArgument$pzdx)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$gHks)));
       if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.methodName$lufi)) != null)) {
-        AttributeOperations.setAttribute(replacement, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, LINKS.baseMethodDeclaration$pyYw), createReferenceMacro_nfdvwd_a0a0e0a(SLinkOperations.getTarget(SLinkOperations.getTarget(AttributeOperations.getAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.methodName$lufi)), LINKS.propertyValueFunction$7Sh_), LINKS.body$e68K)));
+        new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, LINKS.baseMethodDeclaration$pyYw).set(replacement, createReferenceMacro_nfdvwd_a0a0e0a(SLinkOperations.getTarget(SLinkOperations.getTarget(AttributeOperations.getAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.methodName$lufi)), LINKS.propertyValueFunction$7Sh_), LINKS.body$e68K)));
       }
       SNodeOperations.replaceWithAnother(node, createDotExpression_nfdvwd_a0a5a0(SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.instance$oRHo)), replacement));
     }

@@ -63,7 +63,7 @@ public final class AddExperimentalApiAnnotation_Intention extends AbstractIntent
     public void execute(final SNode node, final EditorContext editorContext) {
       if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExperimentalAPINodeAttribute$rc)) == null)) {
         SNode annotation = SNodeFactoryOperations.createNewNode(CONCEPTS.ExperimentalAPINodeAttribute$rc, null);
-        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExperimentalAPINodeAttribute$rc), annotation);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExperimentalAPINodeAttribute$rc).set(node, annotation);
       } else {
         SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExperimentalAPINodeAttribute$rc)));
       }

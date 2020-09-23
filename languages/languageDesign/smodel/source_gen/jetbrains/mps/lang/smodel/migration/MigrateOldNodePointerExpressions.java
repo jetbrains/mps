@@ -12,7 +12,6 @@ import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.scripts.NodePointerMigrations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -52,7 +51,7 @@ public class MigrateOldNodePointerExpressions extends MigrationScriptBase {
       };
       for (SNode node : CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.NodePointerExpression_Old$34, false))) {
         if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43)).isNotEmpty()) {
-          AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration_old$2j), createReviewMigration_old_5d7h7i_a0a0a0a0a0a6());
+          new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration_old$2j).set(node, createReviewMigration_old_5d7h7i_a0a0a0a0a0a6());
         } else {
           SNode replacement = createNodePointerExpression_5d7h7i_a0a0a0a0a0a6(NodePointerMigrations.nodeIdentityForNamedNode(SLinkOperations.getTarget(node, LINKS.referentNode$vTNw)));
           if (!(NodePointerMigrations.isSafeToReplace(node))) {

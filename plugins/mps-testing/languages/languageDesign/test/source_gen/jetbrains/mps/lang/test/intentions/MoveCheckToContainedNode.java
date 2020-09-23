@@ -71,7 +71,7 @@ public class MoveCheckToContainedNode extends IntentionsFactory {
   public void execute(SNode node, EditorContext editorContext) {
     SPropertyOperations.assign(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.nodeOperations$Mgf9)).first(), CONCEPTS.CheckNodeForErrorMessagesOperation$rv), PROPS.includeSelf$xNXw, true);
     if ((AttributeOperations.getAttribute(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.TestNode$zF), LINKS.nodeToCheck$OBcW), new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj)) == null)) {
-      AttributeOperations.setAttribute(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.TestNode$zF), LINKS.nodeToCheck$OBcW), new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj), node);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj).set(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.TestNode$zF), LINKS.nodeToCheck$OBcW), node);
     } else {
       ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.TestNode$zF), LINKS.nodeToCheck$OBcW), new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj)), LINKS.nodeOperations$Mgf9)).insertElement(0, ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.nodeOperations$Mgf9)).first());
       SNodeOperations.deleteNode(node);

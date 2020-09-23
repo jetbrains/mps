@@ -63,9 +63,9 @@ public class AddExportAsImageAttribute extends IntentionsFactory {
 
   public void execute(SNode node, EditorContext editorContext) {
     if (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExportAsImage$xS)) == null) {
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExportAsImage$xS), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x9bcd3d4bc7894f70L, 0x85e4038ea20762b9L, 0x21e6800a818d97ecL, "jetbrains.mps.lang.editor.imageGen.testLanguage.structure.ExportAsImage")));
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExportAsImage$xS).set(node, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x9bcd3d4bc7894f70L, 0x85e4038ea20762b9L, 0x21e6800a818d97ecL, "jetbrains.mps.lang.editor.imageGen.testLanguage.structure.ExportAsImage")));
     } else {
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExportAsImage$xS), null);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExportAsImage$xS).set(node, null);
     }
   }
   public String description(SNode node, EditorContext editorContext) {

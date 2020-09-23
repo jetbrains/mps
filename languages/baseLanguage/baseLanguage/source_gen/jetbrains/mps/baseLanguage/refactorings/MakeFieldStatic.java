@@ -14,8 +14,8 @@ import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -65,7 +65,7 @@ public class MakeFieldStatic extends BaseRefactoring {
     SPropertyOperations.assign(newDeclaration, PROPS.isFinal$gvTP, SPropertyOperations.getBoolean(((SNode) refactoringContext.getParameter("declaration")), PROPS.isFinal$gvTP));
     SLinkOperations.setTarget(newDeclaration, LINKS.initializer$2twD, SNodeOperations.copyNode(SLinkOperations.getTarget(((SNode) refactoringContext.getParameter("declaration")), LINKS.initializer$2twD)));
     ListSequence.fromList(SLinkOperations.getChildren(newDeclaration, LINKS.annotation$K49I)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(((SNode) refactoringContext.getParameter("declaration")), LINKS.annotation$K49I)));
-    AttributeOperations.setAttribute(newDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl), AttributeOperations.getAttribute(((SNode) refactoringContext.getParameter("declaration")), new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl)));
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl).set(newDeclaration, AttributeOperations.getAttribute(((SNode) refactoringContext.getParameter("declaration")), new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl)));
 
     SNodeOperations.insertNextSiblingChild(((SNode) refactoringContext.getParameter("declaration")), newDeclaration);
     for (SearchResult<SNode> result : ListSequence.fromList(((SearchResults<SNode>) refactoringContext.getParameter("usages")).getSearchResults())) {

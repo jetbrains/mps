@@ -84,7 +84,7 @@ public class TransformStatementDetachFix extends MigrationScriptBase {
     SPropertyOperations.assign(ann, PROPS.reasonShort$dDui, "language semantic changed");
     SPropertyOperations.assign(ann, PROPS.todo$dICC, "Pattern variable references now are not detached from their model on first variable read. If detach is needed for the code to work properly, perform detach manually.");
     SPropertyOperations.assign(ann, PROPS.readableId$dIRD, "Transform Detach Changed");
-    AttributeOperations.setAttribute(expression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u), ann);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u).set(expression, ann);
   }
 
   private void addAnnotationAntiquotation(SNode expression) {
@@ -93,7 +93,7 @@ public class TransformStatementDetachFix extends MigrationScriptBase {
     SPropertyOperations.assign(ann, PROPS.reasonShort$dDui, "language semantic changed");
     SPropertyOperations.assign(ann, PROPS.todo$dICC, "When embedded into transform statement, quotations behave quite differently: instead of copying node while inserting in into the antiquotation, the node is detached from its parent. If copying is needed for the code to work properly, perform copy manually.");
     SPropertyOperations.assign(ann, PROPS.readableId$dIRD, "Transform Detach Changed");
-    AttributeOperations.setAttribute(expression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u), ann);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u).set(expression, ann);
   }
 
 

@@ -27,7 +27,7 @@ public class DeleteIncompleteLeftParen {
       public void execute_internal(EditorContext editorContext, SNode node) {
         SNode paren = AttributeOperations.getAttribute(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.Expression$mB), new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7));
         if ((boolean) IIncompleteParen__BehaviorDescriptor.isSingleParen_idVufYxgmHsD.invoke(paren)) {
-          AttributeOperations.setAttribute(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.Expression$mB), new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7), null);
+          new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).set(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.Expression$mB), null);
         } else {
           IIncompleteParen__BehaviorDescriptor.decreaseCount_idVufYxgmFtR.invoke(paren);
         }

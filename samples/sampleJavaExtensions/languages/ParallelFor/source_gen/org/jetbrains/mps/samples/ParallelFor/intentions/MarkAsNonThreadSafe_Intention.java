@@ -57,8 +57,8 @@ public final class MarkAsNonThreadSafe_Intention extends AbstractIntentionDescri
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NonThreadSafeClass$7D), SNodeFactoryOperations.createNewNode(CONCEPTS.NonThreadSafeClass$7D, null));
-      AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ), null);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.NonThreadSafeClass$7D).set(node, SNodeFactoryOperations.createNewNode(CONCEPTS.NonThreadSafeClass$7D, null));
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ).set(node, null);
     }
     @Override
     public IntentionDescriptor getDescriptor() {

@@ -172,7 +172,7 @@ public final class Interface__BehaviorDescriptor extends BaseBHDescriptor {
     AnnotationUtil.detachUniqueAnnotation(__thisNode__, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated"));
   }
   /*package*/ static void markLoadedNodeAsDeprecated_id5H8W9_EDv7w(@NotNull SAbstractConcept __thisConcept__, SNode node) {
-    AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh), DeprecationUtil.createDocComment(CONCEPTS.ClassifierDocComment$mh));
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh).set(node, DeprecationUtil.createDocComment(CONCEPTS.ClassifierDocComment$mh));
   }
 
   /*package*/ Interface__BehaviorDescriptor() {

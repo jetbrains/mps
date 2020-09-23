@@ -15,8 +15,8 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -39,7 +39,7 @@ public final class ReportErrorStatement__BehaviorDescriptor extends BaseBHDescri
 
   /*package*/ static void attachNewMessageAnnotation_id7nf9pEwlup1(@NotNull SNode __thisNode__) {
     SNode newAnnotation = SNodeFactoryOperations.createNewNode(CONCEPTS.ReportErrorStatementAnnotation$A0, null);
-    AttributeOperations.setAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MessageStatementAnnotation$Ig), newAnnotation);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.MessageStatementAnnotation$Ig).set(__thisNode__, newAnnotation);
   }
   /*package*/ static String getName_id1oFBbRehoLP(@NotNull SNode __thisNode__) {
     if ((AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MessageStatementAnnotation$Ig)) != null)) {

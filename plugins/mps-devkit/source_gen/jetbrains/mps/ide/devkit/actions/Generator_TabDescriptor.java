@@ -213,7 +213,7 @@ public class Generator_TabDescriptor extends RelationDescriptor {
           result.value = SNodeFactoryOperations.createNewNode(concept, null);
           SNode rootTemplateNode = jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.createNewNode(model, null, CONCEPTS.RootTemplateAnnotation$9O);
           SLinkOperations.setTarget(rootTemplateNode, LINKS.applicableConcept$LAIX, node);
-          AttributeOperations.setAttribute(result.value, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O), rootTemplateNode);
+          new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).set(result.value, rootTemplateNode);
           SPropertyOperations.set(SNodeOperations.as(result.value, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL, SPropertyOperations.getString(node, PROPS.name$MnvL));
           jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.addRootNode(model, result.value);
           BHReflection.invoke0(mapping.value, CONCEPTS.MappingConfiguration$7j, SMethodTrimmedId.create("addMember", CONCEPTS.MappingConfiguration$7j, "2JKPiG_HmQX"), result.value);

@@ -20,7 +20,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.baseLanguage.lightweightdsl.behavior.DSLDescriptor__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.baseLanguage.lightweightdsl.intentions.ClassLikeInitHelper;
 import jetbrains.mps.ide.projectPane.NewRootNodeAction;
@@ -88,7 +87,7 @@ public class NewClassLike_Action extends BaseAction {
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.ClassConcept$bK)) {
       newClass = SNodeFactoryOperations.createNewNode(CONCEPTS.ClassConcept$bK, null);
       event.getData(MPSCommonDataKeys.MODEL).addRootNode(newClass);
-      AttributeOperations.setAttribute(newClass, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv), createDSLAnnotation_3skzbb_a0c0c0a(NewClassLike_Action.this.descr));
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv).set(newClass, createDSLAnnotation_3skzbb_a0c0c0a(NewClassLike_Action.this.descr));
       ClassLikeInitHelper.init(newClass, NewClassLike_Action.this.descr, event.getData(MPSCommonDataKeys.MODEL));
     } else {
       newClass = SNodeOperations.cast(SNodeFactoryOperations.createNewRootNode(event.getData(MPSCommonDataKeys.MODEL), c, null), CONCEPTS.ClassConcept$bK);

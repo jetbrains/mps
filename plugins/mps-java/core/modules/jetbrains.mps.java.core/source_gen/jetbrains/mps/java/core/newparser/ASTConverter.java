@@ -344,9 +344,9 @@ public class ASTConverter {
       int start = f.javadoc.sourceStart;
       SNode doc = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dc44bf2L, "jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment"));
       if (SNodeOperations.isInstanceOf(fDecl, CONCEPTS.FieldDeclaration$ie)) {
-        AttributeOperations.setAttribute(SNodeOperations.cast(fDecl, CONCEPTS.FieldDeclaration$ie), new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl), doc);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl).set(SNodeOperations.cast(fDecl, CONCEPTS.FieldDeclaration$ie), doc);
       } else if (SNodeOperations.isInstanceOf(fDecl, CONCEPTS.StaticFieldDeclaration$jR)) {
-        AttributeOperations.setAttribute(SNodeOperations.cast(fDecl, CONCEPTS.StaticFieldDeclaration$jR), new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl), doc);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl).set(SNodeOperations.cast(fDecl, CONCEPTS.StaticFieldDeclaration$jR), doc);
       }
       MapSequence.fromMap(myJavadocs).put(start, doc);
     }
@@ -1291,8 +1291,8 @@ public class ASTConverter {
     /*package*/ static final SConcept ClassifierDocComment$mh = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x1cb65d9fe66a764cL, "jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment");
     /*package*/ static final SConcept AnnotationMethodDeclaration$4O = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6a17a27L, "jetbrains.mps.baseLanguage.structure.AnnotationMethodDeclaration");
     /*package*/ static final SInterfaceConcept IVisible$zu = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible");
-    /*package*/ static final SConcept FieldDeclaration$ie = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
     /*package*/ static final SConcept FieldDocComment$wl = MetaAdapterFactory.getConcept(0xf280165065d5424eL, 0xbb1b463a8781b786L, 0x5ed0d79d7dc44bf2L, "jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment");
+    /*package*/ static final SConcept FieldDeclaration$ie = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
     /*package*/ static final SConcept StaticFieldDeclaration$jR = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL, "jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration");
     /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
     /*package*/ static final SConcept DefaultModifier$rO = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x40ed0df0ef40a332L, "jetbrains.mps.baseLanguage.structure.DefaultModifier");

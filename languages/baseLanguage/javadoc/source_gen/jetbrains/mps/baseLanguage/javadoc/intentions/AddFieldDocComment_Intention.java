@@ -62,7 +62,7 @@ public final class AddFieldDocComment_Intention extends AbstractIntentionDescrip
         SNode firstPart = SNodeFactoryOperations.addNewChild(line, LINKS.part$QuzQ, CONCEPTS.TextCommentLinePart$Eb);
         SelectionUtil.selectCell(editorContext, firstPart, SelectionManager.FIRST_CELL);
       } else {
-        AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl), null);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl).set(node, null);
       }
     }
     @Override

@@ -162,7 +162,7 @@ public final class FieldDeclaration__BehaviorDescriptor extends BaseBHDescriptor
     AnnotationUtil.detachUniqueAnnotation(__thisNode__, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated"));
   }
   /*package*/ static void markLoadedNodeAsDeprecated_id5H8W9_ECA0g(@NotNull SAbstractConcept __thisConcept__, SNode node) {
-    AttributeOperations.setAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl), DeprecationUtil.createDocComment(CONCEPTS.FieldDocComment$wl));
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl).set(node, DeprecationUtil.createDocComment(CONCEPTS.FieldDocComment$wl));
   }
   /*package*/ static String getFqName_idhEwIO9y(@NotNull SNode __thisNode__) {
     SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$Ix, false, false);

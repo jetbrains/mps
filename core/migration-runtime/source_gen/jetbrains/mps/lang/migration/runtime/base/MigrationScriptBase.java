@@ -19,8 +19,8 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import java.util.Objects;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
@@ -178,7 +178,7 @@ public abstract class MigrationScriptBase implements MigrationScript {
     SPropertyOperations.assign(ann, PROPS.reasonShort$dDui, "unknown attributes");
     SPropertyOperations.assign(ann, PROPS.todo$dICC, "This node should have been migrated, but has annotations not recognised by the migration. Please review this code and migrate manually if necessary. Unknown attribute: " + SNodeOperations.getConcept(ListSequence.fromList(unknownAttrs).first()).getQualifiedName());
     SPropertyOperations.assign(ann, PROPS.readableId$dIRD, getCaption());
-    AttributeOperations.setAttribute(n, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u), ann);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u).set(n, ann);
 
     // we want this annotation to be shown as outermost one 
     SNode firstAnnot = ListSequence.fromList(AttributeOperations.getAttributeList(n, new IAttributeDescriptor.AllAttributes())).first();

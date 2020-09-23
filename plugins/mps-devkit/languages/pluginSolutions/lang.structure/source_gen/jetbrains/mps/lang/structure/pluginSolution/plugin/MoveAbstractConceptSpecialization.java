@@ -16,7 +16,6 @@ import java.util.List;
 import jetbrains.mps.refactoring.participant.RefactoringParticipant;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.structure.util.ConceptIdHelper;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -69,7 +68,7 @@ public class MoveAbstractConceptSpecialization extends StructureSpecializationBa
     SNode from = SNodeOperations.cast(SPointerOperations.resolveNode(initialState, repository), CONCEPTS.AbstractConceptDeclaration$KA);
     SNode to = SNodeOperations.cast(SPointerOperations.resolveNode(finalState, repository), CONCEPTS.AbstractConceptDeclaration$KA);
     SPropertyOperations.plusAssignStringProp(from, PROPS.name$MnvL, "_old");
-    AttributeOperations.setAttribute(from, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV), createDeprecatedNodeAnnotation_c4c66o_a0d0c("The concept was moved to language \"" + SNodeOperations.getModel(to).getModule().getModuleName() + "\""));
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV).set(from, createDeprecatedNodeAnnotation_c4c66o_a0d0c("The concept was moved to language \"" + SNodeOperations.getModel(to).getModule().getModuleName() + "\""));
     SPropertyOperations.assign(to, PROPS.conceptId$rrGe, ConceptIdHelper.generateConceptId(SNodeOperations.getModel(to), to) + "");
 
     SModule fromModule = SNodeOperations.getModel(from).getModule();

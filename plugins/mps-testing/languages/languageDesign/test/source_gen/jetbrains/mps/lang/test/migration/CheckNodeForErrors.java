@@ -92,7 +92,7 @@ public class CheckNodeForErrors extends MigrationScriptBase {
             SPropertyOperations.assign(ann, PROPS.reasonShort$dDui, "too complex to migrate");
             SPropertyOperations.assign(ann, PROPS.todo$dICC, "This statement should have been migrated, but test method is too complex to be migrated. Please replace `check error messages` statements with test node annotations.");
             SPropertyOperations.assign(ann, PROPS.readableId$dIRD, CheckNodeForErrors.this.description);
-            AttributeOperations.setAttribute(source, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u), ann);
+            new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u).set(source, ann);
           }
         }
       });
