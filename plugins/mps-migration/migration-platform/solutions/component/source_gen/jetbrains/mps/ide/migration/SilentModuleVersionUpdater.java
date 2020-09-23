@@ -126,6 +126,11 @@ import org.jetbrains.mps.openapi.model.SModel;
     }
 
     @Override
+    protected boolean isIncluded(SModule module) {
+      return isProjectMigrateableModule(module);
+    }
+
+    @Override
     public void stopListening(@NotNull SRepository repository) {
       super.stopListening(repository);
       myModelListener.dispose();
@@ -159,17 +164,13 @@ import org.jetbrains.mps.openapi.model.SModel;
     @Override
     protected void startListening(SModel model) {
       super.startListening(model);
-      if (isProjectMigrateableModule(model.getModule())) {
-        myModelListener.startListeningToModel(model);
-      }
+      myModelListener.startListeningToModel(model);
     }
 
     @Override
     protected void stopListening(SModel model) {
       super.stopListening(model);
-      if (isProjectMigrateableModule(model.getModule())) {
-        myModelListener.stopListeningToModel(model);
-      }
+      myModelListener.stopListeningToModel(model);
     }
   }
 }

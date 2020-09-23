@@ -69,14 +69,6 @@ public class SRepositoryContentAdapter extends SModuleListenerBase implements
     if (!isIncluded(module)) return;
     module.addModuleListener(this);
     for (SModel model : module.getModels()) {
-      //check for MPS-32460, can be removed when the issue is fixed
-      assert
-          model.getModule() != null :
-          "Inconsistency detected: model " + model.getName() + " from module " + module.getModuleName() + " returned null module.\n" +
-          "Model's class is " + model.getClass().getName() + "\n" +
-          "Module repository is " + module.getRepository() + "\n" +
-          "Model repository is " + model.getRepository() +"\n" +
-          "module.getModel(id) = " + module.getModel(model.getModelId()) + ", model with a problem is " + model;
       startListening(model);
     }
   }
