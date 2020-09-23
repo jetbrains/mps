@@ -9,6 +9,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.apache.log4j.Level;
 import java.util.List;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -66,11 +67,23 @@ public class AttributeOperations {
   public static List<SNode> getAttributeList(SNode node, IAttributeDescriptor descriptor) {
     return (node == null ? null : new AttributeList(node, descriptor));
   }
+  /**
+   * 
+   * @deprecated  use {@code  IAttributeDescriptor.setNew()} instead
+   */
+  @Deprecated(forRemoval = true)
+  @ToRemove(version = 2020.3)
   public static SNode createAndSetAttrbiute(SNode node, IAttributeDescriptor descriptor, SConcept newConcept) {
-    return setAttribute(node, descriptor, SModelOperations.createNewNode(node.getModel(), null, newConcept));
+    return descriptor.setNew(node, newConcept);
   }
-  public static SNode createAndAddAttribute(SNode node, IAttributeDescriptor descriptor, SConcept newConceptFqname) {
-    return addAttribute(node, descriptor, (SNode) SModelOperations.createNewNode(node.getModel(), null, newConceptFqname));
+  /**
+   * 
+   * @deprecated  use {@code  IAttributeDescriptor.addNew} instead
+   */
+  @Deprecated(forRemoval = true)
+  @ToRemove(version = 2020.3)
+  public static SNode createAndAddAttribute(SNode node, IAttributeDescriptor descriptor, SConcept newConcept) {
+    return descriptor.addNew(node, newConcept);
   }
   public static Iterable<SNode> getChildNodesAndAttributes(SNode parent, final SContainmentLink link) {
     Iterable<? extends SNode> children = parent.getChildren();

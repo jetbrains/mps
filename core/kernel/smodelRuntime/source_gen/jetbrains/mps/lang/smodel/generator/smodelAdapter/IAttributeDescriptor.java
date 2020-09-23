@@ -5,9 +5,9 @@ package jetbrains.mps.lang.smodel.generator.smodelAdapter;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
@@ -17,19 +17,58 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @GeneratedClass(node = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)/6407023681583030432", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
 public interface IAttributeDescriptor {
-  boolean match(@NotNull SNode attribute);
-  void update(@NotNull SNode attribute);
+  default boolean match(@NotNull SNode attribute) {
+    return false;
+  }
+  default void update(@NotNull SNode attribute) {
+    // no-op 
+  }
+  default SNode setNew(@Nullable SNode recipient) {
+    return null;
+  }
+  default SNode setNew(@Nullable SNode recipient, @NotNull SConcept attributeConcept) {
+    return null;
+  }
+  default SNode addNew(@Nullable SNode recipient) {
+    return null;
+  }
+  default SNode addNew(@Nullable SNode recipient, @NotNull SConcept attributeConcept) {
+    return null;
+  }
+
   class AttributeDescriptor implements IAttributeDescriptor {
-    protected SAbstractConcept myAttributeConcept;
-    public AttributeDescriptor(@Nullable SAbstractConcept attributeConceptName) {
-      myAttributeConcept = attributeConceptName;
+    protected final SAbstractConcept myAttributeConcept;
+    public AttributeDescriptor(@Nullable SAbstractConcept attributeConcept) {
+      myAttributeConcept = attributeConcept;
     }
     @Override
     public boolean match(@NotNull SNode attribute) {
       return myAttributeConcept == null || SNodeOperations.isInstanceOf(attribute, myAttributeConcept);
     }
+
+    protected final SAbstractConcept attrConcept() {
+      // myAttributeConcept == null only for AllAttributes qualifier, in which case it used to be qualifier.getTargetConcept() == node/Attribute/ 
+      return (myAttributeConcept != null ? myAttributeConcept : CONCEPTS.Attribute$g1);
+    }
     @Override
-    public void update(@NotNull SNode attribute) {
+    public SNode setNew(@Nullable SNode recipient) {
+      SNode newAttr = SModelOperations.createNewNode((recipient == null ? null : recipient.getModel()), null, attrConcept());
+      return AttributeOperations.setAttribute(recipient, this, newAttr);
+    }
+    @Override
+    public SNode setNew(@Nullable SNode recipient, @NotNull SConcept attributeConcept) {
+      SNode newAttr = SModelOperations.createNewNode((recipient == null ? null : recipient.getModel()), null, attributeConcept);
+      return AttributeOperations.setAttribute(recipient, this, newAttr);
+    }
+    @Override
+    public SNode addNew(@Nullable SNode recipient) {
+      SNode newAttr = (SNode) SModelOperations.createNewNode((recipient == null ? null : recipient.getModel()), null, attrConcept());
+      return AttributeOperations.addAttribute(recipient, this, newAttr);
+    }
+    @Override
+    public SNode addNew(@Nullable SNode recipient, @NotNull SConcept attributeConcept) {
+      SNode newAttr = (SNode) SModelOperations.createNewNode((recipient == null ? null : recipient.getModel()), null, attributeConcept);
+      return AttributeOperations.addAttribute(recipient, this, newAttr);
     }
   }
   class AllAttributes extends AttributeDescriptor {
@@ -89,6 +128,7 @@ public interface IAttributeDescriptor {
   }
 
   final class CONCEPTS {
+    /*package*/ static final SConcept Attribute$g1 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x47bf8397520e5939L, "jetbrains.mps.lang.core.structure.Attribute");
     /*package*/ static final SConcept LinkAttribute$v_ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute");
     /*package*/ static final SConcept ChildAttribute$m8 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
     /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
