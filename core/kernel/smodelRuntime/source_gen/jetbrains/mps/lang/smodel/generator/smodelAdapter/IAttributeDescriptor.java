@@ -7,6 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
+import java.util.List;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.behaviour.BHReflection;
@@ -40,6 +41,12 @@ public interface IAttributeDescriptor {
   }
   default SNode add(@Nullable SNode recipient, @Nullable SNode attrValue) {
     return attrValue;
+  }
+  default SNode get(@Nullable SNode recipient) {
+    return null;
+  }
+  default List<SNode> list(@Nullable SNode recipient) {
+    return null;
   }
 
   class AttributeDescriptor implements IAttributeDescriptor {
@@ -84,6 +91,15 @@ public interface IAttributeDescriptor {
     @Override
     public SNode add(@Nullable SNode recipient, @Nullable SNode attrValue) {
       return AttributeOperations.addAttribute(recipient, this, (SNode) attrValue);
+    }
+
+    @Override
+    public SNode get(@Nullable SNode recipient) {
+      return AttributeOperations.getAttribute(recipient, this);
+    }
+    @Override
+    public List<SNode> list(@Nullable SNode recipient) {
+      return AttributeOperations.getAttributeList(recipient, this);
     }
   }
   class AllAttributes extends AttributeDescriptor {

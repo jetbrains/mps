@@ -63,6 +63,7 @@
   </dependency>
   <dependency className="jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor">
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations" />

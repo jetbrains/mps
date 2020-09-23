@@ -28,6 +28,11 @@ public class AttributeOperations {
   private static final Logger LOG = LogManager.getLogger(AttributeOperations.class);
   private AttributeOperations() {
   }
+  /**
+   * 
+   * @deprecated  use {@code  IAttributeDescriptor} 
+   */
+  @Deprecated
   public static SNode getAttribute(SNode node, IAttributeDescriptor descriptor) {
     Iterable<SNode> list = getAttributes(node, descriptor);
     if (Sequence.fromIterable(list).isEmpty()) {
@@ -70,6 +75,11 @@ public class AttributeOperations {
     }
     return value;
   }
+  /**
+   * 
+   * @deprecated  use {@code  IAttributeDescriptor}
+   */
+  @Deprecated
   public static List<SNode> getAttributeList(SNode node, IAttributeDescriptor descriptor) {
     return (node == null ? null : new AttributeList(node, descriptor));
   }
