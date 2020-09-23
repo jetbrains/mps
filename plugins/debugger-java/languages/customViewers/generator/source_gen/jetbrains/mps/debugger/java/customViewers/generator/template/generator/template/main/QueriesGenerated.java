@@ -20,7 +20,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.generator.template.MapSrcMacroPostProcContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -28,6 +27,7 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.generator.template.MappingScriptContext;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.CreateRootCondition;
 import java.util.HashMap;
@@ -159,42 +159,42 @@ public class QueriesGenerated extends QueryProviderBase {
     return SModelOperations.roots(_context.getInputModel(), CONCEPTS.HighLevelCustomViewer$Bb);
   }
   public static void mapSrcMacro_post_3_0(final MapSrcMacroPostProcContext _context) {
-    AttributeOperations.createAndSetAttrbiute(_context.getOutputNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.ToProcessMethod$O5), CONCEPTS.ToProcessMethod$O5);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.ToProcessMethod$O5).setNew(_context.getOutputNode());
   }
   public static void mapSrcMacro_post_3_1(final MapSrcMacroPostProcContext _context) {
-    AttributeOperations.createAndSetAttrbiute(_context.getOutputNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.ToProcessMethod$O5), CONCEPTS.ToProcessMethod$O5);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.ToProcessMethod$O5).setNew(_context.getOutputNode());
   }
   public static void mapSrcMacro_post_3_2(final MapSrcMacroPostProcContext _context) {
-    AttributeOperations.createAndSetAttrbiute(_context.getOutputNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.ToProcessMethod$O5), CONCEPTS.ToProcessMethod$O5);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.ToProcessMethod$O5).setNew(_context.getOutputNode());
   }
   public static void mapSrcMacro_post_5_0(final MapSrcMacroPostProcContext _context) {
-    AttributeOperations.createAndSetAttrbiute(_context.getOutputNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw), CONCEPTS.DoNotTransformAnnotation$kw);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw).setNew(_context.getOutputNode());
   }
   public static void mapSrcMacro_post_6_0(final MapSrcMacroPostProcContext _context) {
-    AttributeOperations.createAndSetAttrbiute(_context.getOutputNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw), CONCEPTS.DoNotTransformAnnotation$kw);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw).setNew(_context.getOutputNode());
   }
   public static void mapSrcMacro_post_6_1(final MapSrcMacroPostProcContext _context) {
-    AttributeOperations.createAndSetAttrbiute(_context.getOutputNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw), CONCEPTS.DoNotTransformAnnotation$kw);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw).setNew(_context.getOutputNode());
   }
   public static void mapSrcMacro_post_6_2(final MapSrcMacroPostProcContext _context) {
-    AttributeOperations.createAndSetAttrbiute(_context.getOutputNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw), CONCEPTS.DoNotTransformAnnotation$kw);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw).setNew(_context.getOutputNode());
   }
   public static void mapSrcMacro_post_6_3(final MapSrcMacroPostProcContext _context) {
-    AttributeOperations.createAndSetAttrbiute(_context.getOutputNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw), CONCEPTS.DoNotTransformAnnotation$kw);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw).setNew(_context.getOutputNode());
   }
   public static void mapSrcMacro_post_6_4(final MapSrcMacroPostProcContext _context) {
-    AttributeOperations.createAndSetAttrbiute(_context.getOutputNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw), CONCEPTS.DoNotTransformAnnotation$kw);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw).setNew(_context.getOutputNode());
   }
   public static void mapSrcMacro_post_7_0(final MapSrcMacroPostProcContext _context) {
-    AttributeOperations.createAndSetAttrbiute(_context.getOutputNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw), CONCEPTS.DoNotTransformAnnotation$kw);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw).setNew(_context.getOutputNode());
     ListSequence.fromList(SNodeOperations.getNodeDescendants(_context.getOutputNode(), null, false, new SAbstractConcept[]{})).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
-        AttributeOperations.createAndSetAttrbiute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw), CONCEPTS.DoNotTransformAnnotation$kw);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw).setNew(it);
       }
     });
   }
   public static void mapSrcMacro_post_8_0(final MapSrcMacroPostProcContext _context) {
-    AttributeOperations.createAndSetAttrbiute(_context.getOutputNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw), CONCEPTS.DoNotTransformAnnotation$kw);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw).setNew(_context.getOutputNode());
   }
   public static void mappingScript_CodeBlock_4(final MappingScriptContext _context) {
     for (SNode classConcept : ListSequence.fromList(SModelOperations.roots(_context.getModel(), CONCEPTS.ClassConcept$bK))) {

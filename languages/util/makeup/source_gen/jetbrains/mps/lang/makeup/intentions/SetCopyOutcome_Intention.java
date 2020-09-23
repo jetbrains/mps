@@ -60,7 +60,7 @@ public final class SetCopyOutcome_Intention extends AbstractIntentionDescriptor 
       if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$us)) != null)) {
         SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$us)));
       } else {
-        AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$us), CONCEPTS.CopyOutcome$us);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$us).setNew(node);
       }
     }
     @Override

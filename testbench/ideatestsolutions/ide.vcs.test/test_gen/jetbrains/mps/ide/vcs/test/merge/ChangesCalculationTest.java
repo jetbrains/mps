@@ -34,10 +34,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.vcs.diff.changes.NodeIdChange;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.vcs.diff.changes.NodeGroupChange;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import java.util.List;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.impl.cellActions.CommentUtil;
@@ -185,7 +185,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
   public void addNodeAttribute() {
     testDiffCorrectness(new Runnable() {
       public void run() {
-        AttributeOperations.createAndSetAttrbiute(myRootNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u), CONCEPTS.ReviewMigration$8u);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u).setNew(myRootNode);
       }
     }, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, myRootNodeId, LINKS.smodelAttribute$KJ43, 0, 0, 0, 1));
   }

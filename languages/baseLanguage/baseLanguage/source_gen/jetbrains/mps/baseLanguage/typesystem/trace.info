@@ -11149,39 +11149,39 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/1228302110245">
     <file name="ReplaceClassAntiquotationWithClassifierType_QuickFix.java">
-      <node id="1228302110245" at="18,65,19,126" concept="18" />
-      <node id="1228302141236" at="21,44,22,85" concept="13" />
-      <node id="1228302252733" at="24,35,25,169" concept="12" />
-      <node id="1228303730498" at="25,169,26,143" concept="12" />
-      <node id="1228304328715" at="26,143,27,121" concept="6" />
-      <node id="1228302284608" at="27,121,28,99" concept="12" />
-      <node id="1228302363834" at="28,99,29,228" concept="12" />
-      <node id="1228302366986" at="29,228,30,88" concept="6" />
-      <node id="1228302110245" at="34,0,35,0" concept="16" trace="expression$hE$" />
-      <node id="1228302110245" at="35,0,36,0" concept="16" trace="classifier$cxMr" />
-      <node id="1228302110245" at="39,0,40,0" concept="16" trace="ClassifierType$bL" />
-      <node id="1228302110245" at="40,0,41,0" concept="16" trace="ReferenceAntiquotation$Xh" />
-      <node id="1228302110245" at="18,0,21,0" concept="3" trace="ReplaceClassAntiquotationWithClassifierType_QuickFix#()V" />
-      <node id="1228302110245" at="21,0,24,0" concept="11" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="1228302110245" at="24,0,32,0" concept="11" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <scope id="1228302110245" at="18,65,19,126" />
-      <scope id="1228302140091" at="21,44,22,85" />
-      <scope id="1228302110245" at="18,0,21,0" />
-      <scope id="1228302110245" at="21,0,24,0">
+      <node id="1228302110245" at="17,65,18,126" concept="18" />
+      <node id="1228302141236" at="20,44,21,85" concept="13" />
+      <node id="1228302252733" at="23,35,24,169" concept="12" />
+      <node id="1228303730498" at="24,169,25,143" concept="12" />
+      <node id="1228304328715" at="25,143,26,121" concept="6" />
+      <node id="1228302284608" at="26,121,27,99" concept="12" />
+      <node id="1228302363834" at="27,99,28,156" concept="12" />
+      <node id="1228302366986" at="28,156,29,88" concept="6" />
+      <node id="1228302110245" at="33,0,34,0" concept="16" trace="expression$hE$" />
+      <node id="1228302110245" at="34,0,35,0" concept="16" trace="classifier$cxMr" />
+      <node id="1228302110245" at="38,0,39,0" concept="16" trace="ClassifierType$bL" />
+      <node id="1228302110245" at="39,0,40,0" concept="16" trace="ReferenceAntiquotation$Xh" />
+      <node id="1228302110245" at="17,0,20,0" concept="3" trace="ReplaceClassAntiquotationWithClassifierType_QuickFix#()V" />
+      <node id="1228302110245" at="20,0,23,0" concept="11" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="1228302110245" at="23,0,31,0" concept="11" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <scope id="1228302110245" at="17,65,18,126" />
+      <scope id="1228302140091" at="20,44,21,85" />
+      <scope id="1228302110245" at="17,0,20,0" />
+      <scope id="1228302110245" at="20,0,23,0">
         <var name="node" id="1228302110245" />
       </scope>
-      <scope id="1228302110247" at="24,35,30,88">
+      <scope id="1228302110247" at="23,35,29,88">
         <var name="classifierType" id="1228302284609" />
         <var name="expression" id="1228302252734" />
         <var name="parent" id="1228303730499" />
         <var name="referenceAntiquotation" id="1228302363835" />
       </scope>
-      <scope id="1228302110245" at="24,0,32,0">
+      <scope id="1228302110245" at="23,0,31,0">
         <var name="node" id="1228302110245" />
       </scope>
-      <unit id="1228302110245" at="33,0,37,0" name="jetbrains.mps.baseLanguage.typesystem.ReplaceClassAntiquotationWithClassifierType_QuickFix$LINKS" />
-      <unit id="1228302110245" at="38,0,42,0" name="jetbrains.mps.baseLanguage.typesystem.ReplaceClassAntiquotationWithClassifierType_QuickFix$CONCEPTS" />
-      <unit id="1228302110245" at="17,0,43,0" name="jetbrains.mps.baseLanguage.typesystem.ReplaceClassAntiquotationWithClassifierType_QuickFix" />
+      <unit id="1228302110245" at="32,0,36,0" name="jetbrains.mps.baseLanguage.typesystem.ReplaceClassAntiquotationWithClassifierType_QuickFix$LINKS" />
+      <unit id="1228302110245" at="37,0,41,0" name="jetbrains.mps.baseLanguage.typesystem.ReplaceClassAntiquotationWithClassifierType_QuickFix$CONCEPTS" />
+      <unit id="1228302110245" at="16,0,42,0" name="jetbrains.mps.baseLanguage.typesystem.ReplaceClassAntiquotationWithClassifierType_QuickFix" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/1228406942093">

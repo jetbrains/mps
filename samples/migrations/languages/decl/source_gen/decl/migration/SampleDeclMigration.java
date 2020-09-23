@@ -22,7 +22,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 import jetbrains.mps.internal.collections.runtime.ISelector;
@@ -77,7 +76,7 @@ public class SampleDeclMigration extends MigrationScriptBase {
           SModelOperations.addRootNode(SNodeOperations.getModel(oldNode), newNode);
 
           // create the data annotation to hold mapping between old and new ids of the instances 
-          SPropertyOperations.set(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.setTarget(AttributeOperations.createAndAddAttribute(newNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MigrationDataAnnotation$Ct), CONCEPTS.MigrationDataAnnotation$Ct), LINKS.dataNode$lPK2, createDeclMigrationData_i4ro0d_a0f0a0a5a3a5(oldNode.getNodeId().toString(), newNode.getNodeId().toString()))), CONCEPTS.MigrationDataAnnotation$Ct), PROPS.createdByScript$dQMM, SampleDeclMigration.this.getReference().serialize());
+          SPropertyOperations.set(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.setTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.MigrationDataAnnotation$Ct).addNew(newNode, CONCEPTS.MigrationDataAnnotation$Ct), LINKS.dataNode$lPK2, createDeclMigrationData_i4ro0d_a0f0a0a5a3a5(oldNode.getNodeId().toString(), newNode.getNodeId().toString()))), CONCEPTS.MigrationDataAnnotation$Ct), PROPS.createdByScript$dQMM, SampleDeclMigration.this.getReference().serialize());
 
         }
       });

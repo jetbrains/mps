@@ -14,7 +14,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.editor.runtime.impl.cellActions.CommentUtil;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -107,7 +106,7 @@ public class IncrementalChangeUpdateTest_Nodes extends ChangesTestBase {
   public void addNodeAttribute() {
     testChanges(new Runnable() {
       public void run() {
-        AttributeOperations.createAndSetAttrbiute(getTestRoot(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u), CONCEPTS.ReviewMigration$8u);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u).setNew(getTestRoot());
       }
     });
   }

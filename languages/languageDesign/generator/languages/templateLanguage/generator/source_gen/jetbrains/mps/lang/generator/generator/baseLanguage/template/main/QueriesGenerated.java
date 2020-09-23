@@ -3427,7 +3427,7 @@ public class QueriesGenerated extends QueryProviderBase {
     ListSequence.fromList(nodes).addSequence(ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.GenerationContextOp_ContextVarRef$4q)));
     for (SNode n : nodes) {
       SNode de = IOperation__BehaviorDescriptor.getDotExpression_idhO_4GYO.invoke(n);
-      AttributeOperations.createAndSetAttrbiute(de, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TypeHintAttribute$E9), CONCEPTS.TypeHintAttribute$E9);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.TypeHintAttribute$E9).setNew(de);
       SLinkOperations.setTarget(AttributeOperations.getAttribute(de, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TypeHintAttribute$E9)), LINKS.typeHint$CtJm, SNodeOperations.cast(SNodeOperations.copyNode(TypecheckingFacade.getFromContext().getTypeOf(n)), CONCEPTS.Type$bu));
     }
   }

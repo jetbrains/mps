@@ -12,7 +12,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -50,7 +49,7 @@ public final class AttachComment1_Intention extends AbstractIntentionDescriptor 
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      AttributeOperations.createAndAddAttribute(node, new IAttributeDescriptor.AllAttributes(), CONCEPTS.CommentAttribute$4r);
+      new IAttributeDescriptor.AllAttributes().addNew(node, CONCEPTS.CommentAttribute$4r);
     }
     @Override
     public IntentionDescriptor getDescriptor() {

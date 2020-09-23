@@ -52,7 +52,7 @@ public final class AddRemoveUnconditionalPresenceAnnotation_Intention extends Ab
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnconditionalOverrideAnnotation$2L)) == null)) {
-        AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnconditionalOverrideAnnotation$2L), CONCEPTS.UnconditionalOverrideAnnotation$2L);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnconditionalOverrideAnnotation$2L).setNew(node);
 
       } else {
         SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnconditionalOverrideAnnotation$2L)));

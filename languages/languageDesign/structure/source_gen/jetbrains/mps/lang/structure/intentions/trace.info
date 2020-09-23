@@ -1395,7 +1395,7 @@
       <node id="8842732777748598574" at="49,37,50,105" concept="2" />
       <node id="8842732777748598574" at="51,5,52,30" concept="8" />
       <node id="8842732777748599131" at="58,87,59,50" concept="8" />
-      <node id="8842732777748639809" at="62,78,63,168" concept="2" />
+      <node id="8842732777748639809" at="62,78,63,95" concept="2" />
       <node id="8842732777750321607" at="64,147,65,317" concept="2" />
       <node id="8842732777748598574" at="69,48,70,58" concept="8" />
       <node id="8842732777748598574" at="75,0,76,0" concept="11" trace="SmartReferenceAttribute$B3" />
@@ -1405,7 +1405,7 @@
       <node id="8842732777748598574" at="35,84,38,5" concept="5" />
       <node id="8842732777748598574" at="41,0,44,0" concept="6" trace="isApplicableToNode#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Z" />
       <node id="8842732777748598574" at="48,99,51,5" concept="5" />
-      <node id="8842732777750271037" at="63,168,66,7" concept="5" />
+      <node id="8842732777750271037" at="63,95,66,7" concept="5" />
       <node id="8842732777748598574" at="30,0,34,0" concept="6" trace="getPresentation#()Ljava/lang/String;" />
       <node id="8842732777748598574" at="44,0,48,0" concept="6" trace="isSurroundWith#()Z" />
       <node id="8842732777748598574" at="57,0,61,0" concept="6" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/lang/String;" />

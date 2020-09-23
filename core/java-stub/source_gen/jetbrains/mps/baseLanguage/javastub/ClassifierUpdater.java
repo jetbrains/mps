@@ -15,7 +15,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMTypeVariable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -154,7 +153,7 @@ public class ClassifierUpdater {
     if ((text == null || text.length() == 0)) {
       return;
     }
-    SNode c = AttributeOperations.createAndSetAttrbiute(myClassifier, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh), CONCEPTS.ClassifierDocComment$mh);
+    SNode c = new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh).setNew(myClassifier);
     for (String l : text.split("\n")) {
       SPropertyOperations.set(SLinkOperations.addNewChild(SLinkOperations.addNewChild(c, LINKS.body$OAGp, null), LINKS.part$QuzQ, CONCEPTS.TextCommentLinePart$Eb), PROPS.text$aOLd, l);
     }
@@ -319,7 +318,7 @@ public class ClassifierUpdater {
     if ((text == null || text.length() == 0)) {
       return;
     }
-    SNode c = AttributeOperations.createAndAddAttribute(classMember, new IAttributeDescriptor.AllAttributes(), CONCEPTS.FieldDocComment$wl);
+    SNode c = new IAttributeDescriptor.AllAttributes().addNew(classMember, CONCEPTS.FieldDocComment$wl);
     for (String l : text.split("\n")) {
       SPropertyOperations.set(SLinkOperations.addNewChild(SLinkOperations.addNewChild(c, LINKS.body$OAGp, null), LINKS.part$QuzQ, CONCEPTS.TextCommentLinePart$Eb), PROPS.text$aOLd, l);
     }
@@ -396,7 +395,7 @@ public class ClassifierUpdater {
     if ((text == null || text.length() == 0)) {
       return;
     }
-    SNode c = AttributeOperations.createAndSetAttrbiute(classMember, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI), CONCEPTS.MethodDocComment$HI);
+    SNode c = new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).setNew(classMember);
     for (String l : text.split("\n")) {
       SPropertyOperations.set(SLinkOperations.addNewChild(SLinkOperations.addNewChild(c, LINKS.body$OAGp, null), LINKS.part$QuzQ, CONCEPTS.TextCommentLinePart$Eb), PROPS.text$aOLd, l);
     }

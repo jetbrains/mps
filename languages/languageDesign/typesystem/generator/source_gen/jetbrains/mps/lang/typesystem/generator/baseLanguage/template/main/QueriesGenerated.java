@@ -1660,13 +1660,13 @@ public class QueriesGenerated extends QueryProviderBase {
   public static SNode sourceNodeQuery_57_0(final SourceSubstituteMacroNodeContext _context) {
     SNode methodDeclaration = SNodeOperations.copyNode(_context.getNode());
     ListSequence.fromList(SLinkOperations.getChildren(methodDeclaration, LINKS.parameter$5xBj)).insertElement(0, _quotation_createNode_x583g4_a0a1a604());
-    AttributeOperations.createAndSetAttrbiute(methodDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.Processed$XQ), CONCEPTS.Processed$XQ);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.Processed$XQ).setNew(methodDeclaration);
     return methodDeclaration;
   }
   public static SNode sourceNodeQuery_58_0(final SourceSubstituteMacroNodeContext _context) {
     SNode methodCall = SNodeOperations.copyNode(_context.getNode());
     ListSequence.fromList(SLinkOperations.getChildren(methodCall, LINKS.actualArgument$pzdx)).insertElement(0, _quotation_createNode_x583g4_a0a1a704());
-    AttributeOperations.createAndSetAttrbiute(methodCall, new IAttributeDescriptor.NodeAttribute(CONCEPTS.Processed$XQ), CONCEPTS.Processed$XQ);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.Processed$XQ).setNew(methodCall);
     return methodCall;
   }
   public static SNode sourceNodeQuery_61_0(final SourceSubstituteMacroNodeContext _context) {
@@ -2001,7 +2001,7 @@ parametersLoop:
       SNode origNode = _context.getOriginalCopiedInputNode((SNodeOperations.isInstanceOf(node, CONCEPTS.SubstituteTypeRule$ei) ? SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.SubstituteTypeRule$ei), LINKS.body$WwKD) : node));
       if ((origNode != null)) {
         String nodeId = origNode.getNodeId().toString();
-        SNode annotation = AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK), CONCEPTS.OriginalNodeId$kK);
+        SNode annotation = new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK).setNew(node);
         SPropertyOperations.assign(annotation, PROPS.nodeId$UZun, nodeId);
         SPropertyOperations.assign(annotation, PROPS.modelId$VlxP, modelId);
       } else {

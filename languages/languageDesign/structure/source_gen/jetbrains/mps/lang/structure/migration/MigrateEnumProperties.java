@@ -20,7 +20,6 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -94,7 +93,7 @@ public class MigrateEnumProperties extends MigrationScriptBase {
       SPropertyOperations.assign(newPropertyDeclaration, PROPS.propertyId$m5HU, SPropertyOperations.getString(propertyDeclaration, PROPS.propertyId$m5HU));
       SLinkOperations.setTarget(newPropertyDeclaration, LINKS.dataType$5j5Y, SNodeOperations.cast(SNodeOperations.getParent(enumMigrationInfo), CONCEPTS.EnumerationDeclaration$hv));
       SNodeOperations.replaceWithAnother(propertyDeclaration, newPropertyDeclaration);
-      SLinkOperations.setTarget(AttributeOperations.createAndSetAttrbiute(newPropertyDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumPropertyMigrationInfo$O3), CONCEPTS.EnumPropertyMigrationInfo$O3), LINKS.oldProperty$Vefi, propertyDeclaration);
+      SLinkOperations.setTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumPropertyMigrationInfo$O3).setNew(newPropertyDeclaration), LINKS.oldProperty$Vefi, propertyDeclaration);
     }
   }
 

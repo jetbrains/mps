@@ -56,7 +56,7 @@ public final class AddOrRemoveTransientAttribute_Intention extends AbstractInten
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_TransparentEditor$1D)) == null)) {
-        AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_TransparentEditor$1D), CONCEPTS.TestSubstituteAttribute_TransparentEditor$1D);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_TransparentEditor$1D).setNew(node);
       } else {
         SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_TransparentEditor$1D)));
       }

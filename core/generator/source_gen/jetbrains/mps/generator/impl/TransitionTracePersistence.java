@@ -10,9 +10,9 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.extapi.model.ModelWithAttributes;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -69,7 +69,7 @@ public final class TransitionTracePersistence {
       }
       SNodeId origin = originTrace.getOrigin(n);
       SNode nid = ((SNode) BHReflection.invoke0(SNodeOperations.asSConcept(CONCEPTS.ElementaryNodeId$Yd), CONCEPTS.ElementaryNodeId$Yd, SMethodTrimmedId.create("create", CONCEPTS.ElementaryNodeId$Yd, "6UZRahyzeh3"), myCheckpointModel, origin));
-      SNode ot = AttributeOperations.createAndSetAttrbiute(n, new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginTrace$kG), CONCEPTS.OriginTrace$kG);
+      SNode ot = new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginTrace$kG).setNew(n);
       SLinkOperations.setTarget(ot, LINKS.origin$MM7K, nid);
     }
   }

@@ -56,7 +56,7 @@ public final class AddOrRemoveRegularAttribute_Intention extends AbstractIntenti
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_RegularEditor$28)) == null)) {
-        AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_RegularEditor$28), CONCEPTS.TestSubstituteAttribute_RegularEditor$28);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_RegularEditor$28).setNew(node);
       } else {
         SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_RegularEditor$28)));
       }

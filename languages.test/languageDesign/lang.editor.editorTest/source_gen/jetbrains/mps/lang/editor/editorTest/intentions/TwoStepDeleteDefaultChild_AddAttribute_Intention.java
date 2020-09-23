@@ -56,7 +56,7 @@ public final class TwoStepDeleteDefaultChild_AddAttribute_Intention extends Abst
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TwoStepDeleteAttribute$7c), CONCEPTS.TwoStepDeleteAttribute$7c);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.TwoStepDeleteAttribute$7c).setNew(node);
     }
     @Override
     public IntentionDescriptor getDescriptor() {

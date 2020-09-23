@@ -27,13 +27,13 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.migration.runtime.base.DeprecatedConceptNotMigratedProblem;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
 import jetbrains.mps.lang.structure.behavior.EnumerationDataTypeDeclaration_Old__BehaviorDescriptor;
 import jetbrains.mps.lang.structure.behavior.EnumerationMemberDeclaration_Old__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import java.util.List;
 import jetbrains.mps.smodel.SNodePointer;
@@ -136,7 +136,7 @@ public class MigrateToNewEnumration extends MigrationScriptBase {
     SPropertyOperations.assign(newEnum, PROPS.virtualPackage$EkXl, SPropertyOperations.getString(oldEnum, PROPS.virtualPackage$EkXl));
     SPropertyOperations.assign(newEnum, PROPS.datatypeId$$gBg, SPropertyOperations.getString(oldEnum, PROPS.datatypeId$$gBg));
 
-    SNode enumMigrationInfo = AttributeOperations.createAndSetAttrbiute(newEnum, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$), CONCEPTS.EnumMigrationInfo$S$);
+    SNode enumMigrationInfo = new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$).setNew(newEnum);
     SLinkOperations.setTarget(enumMigrationInfo, LINKS.oldEnum$mg5q, SNodeOperations.deleteNode(oldEnum));
 
     final NamingStrategy namingStrategy = chooseMigrationStrategy(enumMigrationInfo);

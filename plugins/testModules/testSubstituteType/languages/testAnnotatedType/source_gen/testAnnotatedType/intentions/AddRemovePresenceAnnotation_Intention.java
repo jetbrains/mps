@@ -52,7 +52,7 @@ public final class AddRemovePresenceAnnotation_Intention extends AbstractIntenti
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SubstituteAnnotation$zn)) == null)) {
-        SNode sa = AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SubstituteAnnotation$zn), CONCEPTS.SubstituteAnnotation$zn);
+        SNode sa = new IAttributeDescriptor.NodeAttribute(CONCEPTS.SubstituteAnnotation$zn).setNew(node);
       } else {
         SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SubstituteAnnotation$zn)));
       }

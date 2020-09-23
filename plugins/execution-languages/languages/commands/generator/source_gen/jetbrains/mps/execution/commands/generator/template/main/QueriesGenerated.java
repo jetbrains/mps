@@ -27,10 +27,10 @@ import java.util.List;
 import jetbrains.mps.execution.commands.behavior.ExecuteCommandPart__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.generator.template.MapSrcMacroContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.generator.template.MapSrcMacroPostProcContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.generator.template.MappingScriptContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
@@ -336,7 +336,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     })) {
       SNode ref = _quotation_createNode_x583g4_a0a0b0cd(_context.getOutputNodeByInputNodeAndMappingLabel(argument, "CommandParameterAssignmentToLocalVariable"));
-      AttributeOperations.createAndSetAttrbiute(ref, new IAttributeDescriptor.NodeAttribute(CONCEPTS.BuilderParameter$vk), CONCEPTS.BuilderParameter$vk);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.BuilderParameter$vk).setNew(ref);
 
       String name = CommandParameterDeclaration__BehaviorDescriptor.getSetterLongName_id3gpm$NHlR8F.invoke(SLinkOperations.getTarget(argument, LINKS.parameterDeclaration$Zibc));
       expression = _quotation_createNode_x583g4_a0e0b0cd(expression, ref, name);
@@ -361,7 +361,7 @@ public class QueriesGenerated extends QueryProviderBase {
         SNodeOperations.deleteNode(parent);
       }
     }
-    AttributeOperations.createAndSetAttrbiute(_context.getOutputNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.BuilderBlockStatement$tR), CONCEPTS.BuilderBlockStatement$tR);
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.BuilderBlockStatement$tR).setNew(_context.getOutputNode());
   }
   public static void mappingScript_CodeBlock_9(final MappingScriptContext _context) {
     for (SNode commandRef : ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.CommandParameterReference$LM))) {

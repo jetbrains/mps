@@ -56,7 +56,7 @@ public final class AddPlaceholderChildAttribute_Intention extends AbstractIntent
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.PlaceholderChildAttribute$pu)) == null)) {
-        AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.PlaceholderChildAttribute$pu), CONCEPTS.PlaceholderChildAttribute$pu);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.PlaceholderChildAttribute$pu).setNew(node);
       } else {
         SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.PlaceholderChildAttribute$pu)));
       }

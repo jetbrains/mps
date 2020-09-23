@@ -60,7 +60,7 @@ public final class AttachSmartReferenceAttribute_Intention extends AbstractInten
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3), CONCEPTS.SmartReferenceAttribute$B3);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3).setNew(node);
       if (ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(node)).count() == 1) {
         SLinkOperations.setTarget(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3)), LINKS.charactersticReference$41pR, ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(node)).first());
       }

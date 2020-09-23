@@ -80,7 +80,7 @@ public class CheckNodeForErrors extends MigrationScriptBase {
           if (MapSequence.fromMap(nameMap).containsKey(source)) {
             SNode nodeToCheck = SNodeOperations.getParent(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(source, LINKS.nodeToCheck$bx55), CONCEPTS.TestNodeReference$hm), LINKS.declaration$hXIv));
             if ((AttributeOperations.getAttribute(nodeToCheck, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj)) == null)) {
-              AttributeOperations.createAndSetAttrbiute(nodeToCheck, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj), CONCEPTS.NodeOperationsContainer$aj);
+              new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj).setNew(nodeToCheck);
             }
             ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(nodeToCheck, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj)), LINKS.nodeOperations$Mgf9)).addElement(createCheckNodeForErrorMessagesOperation_j3gqtx_a0a2a0a0a0d0a0d(SPropertyOperations.getBoolean(source, PROPS.includeSelf$q9ZQ), MapSequence.fromMap(nameMap).get(source)));
             SNodeOperations.insertPrevSiblingChild(source, _quotation_createNode_j3gqtx_a0a3a0a0a0d0a0d());

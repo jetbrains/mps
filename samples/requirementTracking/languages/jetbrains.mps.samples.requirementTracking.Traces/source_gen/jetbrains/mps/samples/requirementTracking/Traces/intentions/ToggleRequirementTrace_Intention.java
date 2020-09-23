@@ -85,7 +85,7 @@ public final class ToggleRequirementTrace_Intention extends AbstractIntentionDes
           editorContext.getEditorComponent().getUpdater().setInitialEditorHints(newHints);
           editorContext.getEditorComponent().getUpdater().update();
         } finally {
-          AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RequirementTrace$U6), CONCEPTS.RequirementTrace$U6);
+          new IAttributeDescriptor.NodeAttribute(CONCEPTS.RequirementTrace$U6).setNew(node);
           SelectionUtil.selectCell(editorContext, AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RequirementTrace$U6)), SelectionManager.LAST_EDITABLE_CELL);
         }
 

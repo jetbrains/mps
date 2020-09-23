@@ -57,7 +57,7 @@ public final class ToggleDeprecatedAnnotation_Intention extends AbstractIntentio
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedAnnotation$xW)) == null)) {
-        AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedAnnotation$xW), CONCEPTS.DeprecatedAnnotation$xW);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedAnnotation$xW).setNew(node);
       } else {
         SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedAnnotation$xW)));
       }

@@ -7,7 +7,6 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -31,9 +30,9 @@ public class PatternAddingUtil {
     SNode node = contextCell.getSNode();
     if (contextCell.isReferenceCell()) {
       SReferenceLink ref = (SReferenceLink) contextCell.getSRole();
-      AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.LinkPatternVariableDeclaration$8a, ref), CONCEPTS.LinkPatternVariableDeclaration$8a);
+      new IAttributeDescriptor.LinkAttribute(CONCEPTS.LinkPatternVariableDeclaration$8a, ref).setNew(node, CONCEPTS.LinkPatternVariableDeclaration$8a);
     } else {
-      AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.Pattern$XL), CONCEPTS.PatternVariableDeclaration$ZH);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.Pattern$XL).setNew(node, CONCEPTS.PatternVariableDeclaration$ZH);
     }
   }
 

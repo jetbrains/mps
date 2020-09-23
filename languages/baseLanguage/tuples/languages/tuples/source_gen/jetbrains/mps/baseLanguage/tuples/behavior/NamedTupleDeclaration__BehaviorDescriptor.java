@@ -191,7 +191,7 @@ public final class NamedTupleDeclaration__BehaviorDescriptor extends BaseBHDescr
     AnnotationUtil.detachUniqueAnnotation(__thisNode__, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated"));
   }
   /*package*/ static void markLoadedNodeAsDeprecated_id5H8W9_ECA0g(@NotNull SAbstractConcept __thisConcept__, SNode node) {
-    SLinkOperations.addNewChild(AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh), CONCEPTS.ClassifierDocComment$mh), LINKS.tags$stUD, CONCEPTS.DeprecatedBlockDocTag$8n);
+    SLinkOperations.addNewChild(new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh).setNew(node), LINKS.tags$stUD, CONCEPTS.DeprecatedBlockDocTag$8n);
   }
 
   /*package*/ NamedTupleDeclaration__BehaviorDescriptor() {

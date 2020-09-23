@@ -56,7 +56,7 @@ public final class AddOrRemoveReferenceAttribute_Intention extends AbstractInten
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_WithReference$2B)) == null)) {
-        AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_WithReference$2B), CONCEPTS.TestSubstituteAttribute_WithReference$2B);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_WithReference$2B).setNew(node);
       } else {
         SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_WithReference$2B)));
       }

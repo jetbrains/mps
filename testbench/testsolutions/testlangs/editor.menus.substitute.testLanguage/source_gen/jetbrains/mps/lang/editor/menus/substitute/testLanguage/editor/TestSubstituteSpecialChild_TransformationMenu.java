@@ -122,7 +122,7 @@ public class TestSubstituteSpecialChild_TransformationMenu extends Transformatio
         if ((AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteSpecialChildAttribute$TJ)) != null)) {
           SNodeOperations.deleteNode(AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteSpecialChildAttribute$TJ)));
         } else {
-          AttributeOperations.createAndSetAttrbiute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteSpecialChildAttribute$TJ), CONCEPTS.TestSubstituteSpecialChildAttribute$TJ);
+          new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteSpecialChildAttribute$TJ).setNew(_context.getNode());
         }
       }
 

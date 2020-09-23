@@ -147,7 +147,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
 
     // add unprocessed annotations to everything 
     for (SNode node : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, null, false, new SAbstractConcept[]{}))) {
-      AttributeOperations.createAndSetAttrbiute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnprocessedAnnotation$E6), CONCEPTS.UnprocessedAnnotation$E6);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnprocessedAnnotation$E6).setNew(node);
     }
 
     // here we must calculate type for all binary operations and remeber it 
@@ -358,7 +358,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
       SLinkOperations.setTarget(staticMethodCall, LINKS.classConcept$M5BC, SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(localStaticMethodCall, LINKS.baseMethodDeclaration$pyYw)), CONCEPTS.Classifier$Ix));
       SLinkOperations.setTarget(staticMethodCall, LINKS.baseMethodDeclaration$pyYw, SLinkOperations.getTarget(localStaticMethodCall, LINKS.baseMethodDeclaration$pyYw));
       ListSequence.fromList(SLinkOperations.getChildren(staticMethodCall, LINKS.actualArgument$pzdx)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(localStaticMethodCall, LINKS.actualArgument$pzdx)));
-      AttributeOperations.createAndSetAttrbiute(staticMethodCall, new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnprocessedAnnotation$E6), CONCEPTS.UnprocessedAnnotation$E6);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnprocessedAnnotation$E6).setNew(staticMethodCall);
       SNodeOperations.replaceWithAnother(localStaticMethodCall, staticMethodCall);
     }
     // convert local instance method calls to qualified instance method calls 
@@ -374,7 +374,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
       SNode instanceMethodCall = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation"));
       SLinkOperations.setTarget(instanceMethodCall, LINKS.baseMethodDeclaration$pyYw, SLinkOperations.getTarget(localInstanceMethodCall, LINKS.baseMethodDeclaration$pyYw));
       ListSequence.fromList(SLinkOperations.getChildren(instanceMethodCall, LINKS.actualArgument$pzdx)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(localInstanceMethodCall, LINKS.actualArgument$pzdx)));
-      AttributeOperations.createAndSetAttrbiute(instanceMethodCall, new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnprocessedAnnotation$E6), CONCEPTS.UnprocessedAnnotation$E6);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnprocessedAnnotation$E6).setNew(instanceMethodCall);
       SNodeOperations.replaceWithAnother(localInstanceMethodCall, _quotation_createNode_s72qk1_a0a4a3a02(instanceMethodCall, TransformationUtil.createThisNodeReplacement()));
     }
     // convert local static field references to static field references 
@@ -390,7 +390,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
       SNode staticFieldReference = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, "jetbrains.mps.baseLanguage.structure.StaticFieldReference"));
       SLinkOperations.setTarget(staticFieldReference, LINKS.variableDeclaration$N1XG, SLinkOperations.getTarget(localStaticFieldReference, LINKS.variableDeclaration$N1XG));
       SLinkOperations.setTarget(staticFieldReference, LINKS.classifier$BPY8, SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(localStaticFieldReference, LINKS.variableDeclaration$N1XG)), CONCEPTS.ClassConcept$bK));
-      AttributeOperations.createAndSetAttrbiute(staticFieldReference, new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnprocessedAnnotation$E6), CONCEPTS.UnprocessedAnnotation$E6);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnprocessedAnnotation$E6).setNew(staticFieldReference);
       SNodeOperations.replaceWithAnother(localStaticFieldReference, staticFieldReference);
     }
     // convert local instance field references to fied reference operations 
@@ -405,7 +405,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
     })) {
       SNode fieldReferenceOperation = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b483d77aL, "jetbrains.mps.baseLanguage.structure.FieldReferenceOperation"));
       SLinkOperations.setTarget(fieldReferenceOperation, LINKS.fieldDeclaration$H7Ag, SLinkOperations.getTarget(localInstanceFieldReference, LINKS.variableDeclaration$N1XG));
-      AttributeOperations.createAndSetAttrbiute(fieldReferenceOperation, new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnprocessedAnnotation$E6), CONCEPTS.UnprocessedAnnotation$E6);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnprocessedAnnotation$E6).setNew(fieldReferenceOperation);
       SNodeOperations.replaceWithAnother(localInstanceFieldReference, _quotation_createNode_s72qk1_a0a3a7a02(fieldReferenceOperation, TransformationUtil.createThisNodeReplacement()));
     }
   }
