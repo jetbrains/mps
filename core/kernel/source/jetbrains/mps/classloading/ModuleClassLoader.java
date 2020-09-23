@@ -32,11 +32,15 @@ import java.net.URL;
 import java.security.ProtectionDomain;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 /**
  * MPS implementation of <code>java.lang.ClassLoader</code> which uses non-standard way of class loading delegation.
@@ -256,10 +260,15 @@ public final class ModuleClassLoader extends MPSModuleClassLoader {
   @NotNull
   @Override
   public Enumeration<URL> getResources(@NonNls String name) throws IOException {
-    Enumeration<URL> ownResources = findResources(name);
-    Enumeration<URL> parentResources = getParent().getResources(name);
-    //noinspection unchecked
+    Enumeration<URL> ownResources = notNull(findResources(name));
+    Enumeration<URL> parentResources = notNull(getParent().getResources(name));
     return new IterableEnumeration<>(() -> new MergeIterator<>(ownResources::asIterator, parentResources::asIterator));
+  }
+
+  @NotNull
+  private static <T> Enumeration<T> notNull(Enumeration<T> enumeration) {
+    return enumeration != null ? enumeration
+                               : Collections.emptyEnumeration();
   }
 
   @Override
