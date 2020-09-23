@@ -16,7 +16,6 @@ import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
@@ -85,7 +84,7 @@ public final class CreateReferenceAntiquotation_Intention extends AbstractIntent
         new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAntiquotation$Xh, ref).set(attributedNode, null);
         return;
       }
-      if (AttributeOperations.getAttribute(contextNode, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAntiquotation$Xh, ref)) != null) {
+      if (new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAntiquotation$Xh, ref).get(contextNode) != null) {
         new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAntiquotation$Xh, ref).set(contextNode, null);
       } else {
         SNode referenceAntiquotation = SNodeFactoryOperations.setNewAttribute(contextNode, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAntiquotation$Xh, ref), CONCEPTS.ReferenceAntiquotation$Xh);

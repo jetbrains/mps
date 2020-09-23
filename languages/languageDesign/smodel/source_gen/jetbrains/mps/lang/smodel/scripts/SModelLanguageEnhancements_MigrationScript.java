@@ -9,7 +9,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
@@ -45,14 +44,14 @@ public final class SModelLanguageEnhancements_MigrationScript extends BaseMigrat
         if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.type$XD7M), CONCEPTS.SNodeType$hR))) {
           return false;
         }
-        if (ListSequence.fromList(AttributeOperations.getAttributeList(SLinkOperations.getTarget(node, LINKS.type$XD7M), new IAttributeDescriptor.AllAttributes())).isNotEmpty()) {
+        if (ListSequence.fromList(new IAttributeDescriptor.AllAttributes().list(SLinkOperations.getTarget(node, LINKS.type$XD7M))).isNotEmpty()) {
           return false;
         }
         SNode nodeConcept = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.type$XD7M), CONCEPTS.SNodeType$hR), LINKS.concept$OMgE);
         if (nodeConcept == null) {
           return false;
         }
-        if (ListSequence.fromList(AttributeOperations.getAttributeList(nodeConcept, new IAttributeDescriptor.AllAttributes())).isNotEmpty()) {
+        if (ListSequence.fromList(new IAttributeDescriptor.AllAttributes().list(nodeConcept)).isNotEmpty()) {
           return false;
         }
         SNode realType = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(node, LINKS.expression$XDmN));
@@ -123,7 +122,7 @@ public final class SModelLanguageEnhancements_MigrationScript extends BaseMigrat
         if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.type$a1UY), CONCEPTS.ClassifierType$bL))) {
           return false;
         }
-        if (ListSequence.fromList(AttributeOperations.getAttributeList(SLinkOperations.getTarget(node, LINKS.type$a1UY), new IAttributeDescriptor.AllAttributes())).isNotEmpty()) {
+        if (ListSequence.fromList(new IAttributeDescriptor.AllAttributes().list(SLinkOperations.getTarget(node, LINKS.type$a1UY))).isNotEmpty()) {
           return false;
         }
         SNode classifier = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.type$a1UY), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr);
@@ -162,7 +161,7 @@ public final class SModelLanguageEnhancements_MigrationScript extends BaseMigrat
         if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.type$a1UY), CONCEPTS.ClassifierType$bL))) {
           return false;
         }
-        if (ListSequence.fromList(AttributeOperations.getAttributeList(SLinkOperations.getTarget(node, LINKS.type$a1UY), new IAttributeDescriptor.AllAttributes())).isNotEmpty()) {
+        if (ListSequence.fromList(new IAttributeDescriptor.AllAttributes().list(SLinkOperations.getTarget(node, LINKS.type$a1UY))).isNotEmpty()) {
           return false;
         }
         SNode classifier = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.type$a1UY), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr);

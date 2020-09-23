@@ -15,7 +15,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -59,7 +58,7 @@ public class DoNotSuppressErrors_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    ListSequence.fromList(AttributeOperations.getAttributeList(((SNode) ((SNode) MapSequence.fromMap(_params).get("node"))), new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1))).clear();
+    ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1).list(((SNode) ((SNode) MapSequence.fromMap(_params).get("node"))))).clear();
   }
 
   private static final class CONCEPTS {

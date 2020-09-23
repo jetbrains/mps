@@ -29,7 +29,6 @@ import jetbrains.mps.openapi.editor.menus.transformation.ConstraintsVerifiableAc
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -139,7 +138,7 @@ public class CreateOrPattern_Contribution extends TransformationMenuBase {
         @Override
         public void execute(@NotNull String pattern) {
           SNode orPattern = SNodeFactoryOperations.createNewNode(CONCEPTS.OrPattern$Lk, null);
-          ListSequence.fromList(AttributeOperations.getAttributeList(_context.getNode(), new IAttributeDescriptor.AllAttributes())).addElement(orPattern);
+          ListSequence.fromList(new IAttributeDescriptor.AllAttributes().list(_context.getNode())).addElement(orPattern);
           SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SLinkOperations.setTarget(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(orPattern, LINKS.clause$z7ps)).first(), LINKS.pattern$GuFI), LINKS.quotedNode$ip4, SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(SNodeOperations.getConcept(_context.getNode())))), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
         }
 

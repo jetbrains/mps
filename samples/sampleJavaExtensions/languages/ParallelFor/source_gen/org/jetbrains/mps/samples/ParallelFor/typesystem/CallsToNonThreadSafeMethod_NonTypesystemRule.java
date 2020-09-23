@@ -8,7 +8,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -30,7 +29,7 @@ public class CallsToNonThreadSafeMethod_NonTypesystemRule extends AbstractNonTyp
     SNode parentLoop = SNodeOperations.getNodeAncestor(baseMethodCall, CONCEPTS.ParallelFor$2i, false, false);
     if (parentLoop != null) {
       if (SNodeOperations.isInstanceOf(baseMethodCall, CONCEPTS.StaticMethodCall$Fg)) {
-        if (AttributeOperations.getAttribute(SNodeOperations.cast(baseMethodCall, CONCEPTS.StaticMethodCall$Fg), new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ)) != null) {
+        if (new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ).get(SNodeOperations.cast(baseMethodCall, CONCEPTS.StaticMethodCall$Fg)) != null) {
           return;
         }
         final SNode classifier = SLinkOperations.getTarget(SNodeOperations.cast(baseMethodCall, CONCEPTS.StaticMethodCall$Fg), LINKS.classConcept$M5BC);
@@ -38,10 +37,10 @@ public class CallsToNonThreadSafeMethod_NonTypesystemRule extends AbstractNonTyp
           return;
         }
         SNode classConcept = SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$bK);
-        if (AttributeOperations.getAttribute(classConcept, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ)) != null) {
+        if (new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ).get(classConcept) != null) {
           return;
         }
-        if (AttributeOperations.getAttribute(classConcept, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NonThreadSafeClass$7D)) != null) {
+        if (new IAttributeDescriptor.NodeAttribute(CONCEPTS.NonThreadSafeClass$7D).get(classConcept) != null) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(baseMethodCall, "Calling a method on a non-thread-safe class", "r:4c36f4b4-7816-4067-aa6e-a49c547265ed(org.jetbrains.mps.samples.ParallelFor.typesystem)", "5384012304952426855", null, errorTarget);
@@ -59,15 +58,15 @@ public class CallsToNonThreadSafeMethod_NonTypesystemRule extends AbstractNonTyp
           }
         }
       } else if ((SNodeOperations.isInstanceOf(baseMethodCall, CONCEPTS.LocalMethodCall$zT) && (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(baseMethodCall, CONCEPTS.LocalMethodCall$zT), LINKS.baseMethodDeclaration$pyYw), CONCEPTS.InstanceMethodDeclaration$39)))) {
-        if (AttributeOperations.getAttribute(SNodeOperations.cast(baseMethodCall, CONCEPTS.LocalMethodCall$zT), new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ)) != null) {
+        if (new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ).get(SNodeOperations.cast(baseMethodCall, CONCEPTS.LocalMethodCall$zT)) != null) {
           return;
         }
         SNode instanceMethodDeclaration = SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(baseMethodCall, CONCEPTS.LocalMethodCall$zT), LINKS.baseMethodDeclaration$pyYw), CONCEPTS.InstanceMethodDeclaration$39);
         SNode declaringClass = SNodeOperations.getNodeAncestor(instanceMethodDeclaration, CONCEPTS.ClassConcept$bK, false, false);
-        if (declaringClass != null && AttributeOperations.getAttribute(declaringClass, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ)) != null && SPropertyOperations.getBoolean(declaringClass, PROPS.isFinal$f7C_)) {
+        if (declaringClass != null && new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ).get(declaringClass) != null && SPropertyOperations.getBoolean(declaringClass, PROPS.isFinal$f7C_)) {
           return;
         }
-        if (declaringClass != null && AttributeOperations.getAttribute(declaringClass, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NonThreadSafeClass$7D)) != null) {
+        if (declaringClass != null && new IAttributeDescriptor.NodeAttribute(CONCEPTS.NonThreadSafeClass$7D).get(declaringClass) != null) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(baseMethodCall, "Calling a method on a non-thread-safe shared object", "r:4c36f4b4-7816-4067-aa6e-a49c547265ed(org.jetbrains.mps.samples.ParallelFor.typesystem)", "5384012304952487123", null, errorTarget);
@@ -79,15 +78,15 @@ public class CallsToNonThreadSafeMethod_NonTypesystemRule extends AbstractNonTyp
         }
         return;
       } else if ((SNodeOperations.isInstanceOf(baseMethodCall, CONCEPTS.LocalMethodCall$zT) && (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(baseMethodCall, CONCEPTS.LocalMethodCall$zT), LINKS.baseMethodDeclaration$pyYw), CONCEPTS.StaticMethodDeclaration$FJ)))) {
-        if (AttributeOperations.getAttribute(SNodeOperations.cast(baseMethodCall, CONCEPTS.LocalMethodCall$zT), new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ)) != null) {
+        if (new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ).get(SNodeOperations.cast(baseMethodCall, CONCEPTS.LocalMethodCall$zT)) != null) {
           return;
         }
         SNode staticMethodDeclaration = SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(baseMethodCall, CONCEPTS.LocalMethodCall$zT), LINKS.baseMethodDeclaration$pyYw), CONCEPTS.StaticMethodDeclaration$FJ);
         SNode declaringClassifier = SNodeOperations.getNodeAncestor(staticMethodDeclaration, CONCEPTS.ClassConcept$bK, false, false);
-        if (declaringClassifier != null && AttributeOperations.getAttribute(declaringClassifier, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ)) != null) {
+        if (declaringClassifier != null && new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ).get(declaringClassifier) != null) {
           return;
         }
-        if (declaringClassifier != null && AttributeOperations.getAttribute(declaringClassifier, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NonThreadSafeClass$7D)) != null) {
+        if (declaringClassifier != null && new IAttributeDescriptor.NodeAttribute(CONCEPTS.NonThreadSafeClass$7D).get(declaringClassifier) != null) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(baseMethodCall, "Calling a method on a non-thread-safe classifier", "r:4c36f4b4-7816-4067-aa6e-a49c547265ed(org.jetbrains.mps.samples.ParallelFor.typesystem)", "5384012304952487099", null, errorTarget);
@@ -113,8 +112,8 @@ public class CallsToNonThreadSafeMethod_NonTypesystemRule extends AbstractNonTyp
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ParallelFor$2i = MetaAdapterFactory.getConcept(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x7bd8445d1e8770aaL, "org.jetbrains.mps.samples.ParallelFor.structure.ParallelFor");
-    /*package*/ static final SConcept StaticMethodCall$Fg = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, "jetbrains.mps.baseLanguage.structure.StaticMethodCall");
     /*package*/ static final SConcept ThreadSafe$eJ = MetaAdapterFactory.getConcept(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x294c1cd4b84332e6L, "org.jetbrains.mps.samples.ParallelFor.structure.ThreadSafe");
+    /*package*/ static final SConcept StaticMethodCall$Fg = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, "jetbrains.mps.baseLanguage.structure.StaticMethodCall");
     /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
     /*package*/ static final SConcept NonThreadSafeClass$7D = MetaAdapterFactory.getConcept(0xcb7388e8f1824cdaL, 0xbd839796e8634856L, 0x294c1cd4b8450380L, "org.jetbrains.mps.samples.ParallelFor.structure.NonThreadSafeClass");
     /*package*/ static final SConcept LocalMethodCall$zT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall");

@@ -16,7 +16,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -34,7 +33,7 @@ public final class SourceSubstituteMacro__BehaviorDescriptor extends BaseBHDescr
   }
 
   /*package*/ static boolean suppress_id2WmWrdnSpX7(@NotNull SNode __thisNode__, SNode child) {
-    Iterable<SNode> noAttr = ListSequence.fromList(SNodeOperations.getChildren(SNodeOperations.getParent(__thisNode__))).subtract(ListSequence.fromList(AttributeOperations.getAttributeList(SNodeOperations.getParent(__thisNode__), new IAttributeDescriptor.AllAttributes())));
+    Iterable<SNode> noAttr = ListSequence.fromList(SNodeOperations.getChildren(SNodeOperations.getParent(__thisNode__))).subtract(ListSequence.fromList(new IAttributeDescriptor.AllAttributes().list(SNodeOperations.getParent(__thisNode__))));
     return child == SNodeOperations.getParent(__thisNode__) || ListSequence.fromList(SNodeOperations.getNodeAncestors(child, null, true)).intersect(Sequence.fromIterable(noAttr)).isNotEmpty();
   }
 

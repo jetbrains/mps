@@ -155,7 +155,6 @@
     <classNode dependClassName="jetbrains.mps.lang.messages.editor.LiteralMessageExpression_KeyMap" />
     <classNode dependClassName="jetbrains.mps.lang.messages.editor.MessageExpression_Actions" />
     <classNode dependClassName="jetbrains.mps.lang.messages.editor.MessageStyles_StyleSheet.MessageLiteralStyleClass" />
-    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorManager" />

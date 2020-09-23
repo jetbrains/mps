@@ -19,7 +19,6 @@ import jetbrains.mps.nodeEditor.cells.SPropertyAccessor;
 import jetbrains.mps.nodeEditor.cellMenu.SPropertySubstituteInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
@@ -106,7 +105,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setCellId("property_year");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(ListSequence.fromList(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes())), CONCEPTS.PropertyAttribute$Gb);
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(ListSequence.fromList(new IAttributeDescriptor.AllAttributes().list(myNode)), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
         public Boolean invoke(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
@@ -156,7 +155,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       editorCell.setCellId("property_model");
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
-      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(ListSequence.fromList(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes())), CONCEPTS.PropertyAttribute$Gb);
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(ListSequence.fromList(new IAttributeDescriptor.AllAttributes().list(myNode)), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
         public Boolean invoke(SNode it) {
           return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);

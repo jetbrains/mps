@@ -8,7 +8,6 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -34,7 +33,7 @@ public class _ClassConcept_Implements_Delete {
           return;
         }
         ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.implementedInterface$rujG)).clear();
-        ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.implementedInterface$rujG))).visitAll(new IVisitor<SNode>() {
+        ListSequence.fromList(new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.implementedInterface$rujG).list(node)).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
             SNodeOperations.deleteNode(it);
           }

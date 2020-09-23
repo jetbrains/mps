@@ -16,7 +16,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.core.behavior.ISuppressErrors__BehaviorDescriptor;
@@ -36,7 +35,7 @@ public final class RootTemplateAnnotation__BehaviorDescriptor extends BaseBHDesc
   }
 
   /*package*/ static boolean suppress_id3612de_vrfV(@NotNull SNode __thisNode__, final NodeReportItem reportItem) {
-    return ListSequence.fromList(AttributeOperations.getAttributeList(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1))).any(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1).list(__thisNode__)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return (boolean) ISuppressErrors__BehaviorDescriptor.suppress_id3612de_vrfV.invoke(it, reportItem);
       }

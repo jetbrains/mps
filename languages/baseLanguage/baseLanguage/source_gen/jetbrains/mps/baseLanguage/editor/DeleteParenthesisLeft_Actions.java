@@ -5,7 +5,6 @@ package jetbrains.mps.baseLanguage.editor;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -31,8 +30,8 @@ public class DeleteParenthesisLeft_Actions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        int unmatchedLeftParens = ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7)) != null) ? SPropertyOperations.getInteger(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7)), PROPS.count$FDpi) : 0);
-        int unmatchedRightParens = ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc)) != null) ? SPropertyOperations.getInteger(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc)), PROPS.count$FDpi) : 0);
+        int unmatchedLeftParens = ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(node) != null) ? SPropertyOperations.getInteger(new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(node), PROPS.count$FDpi) : 0);
+        int unmatchedRightParens = ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(node) != null) ? SPropertyOperations.getInteger(new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(node), PROPS.count$FDpi) : 0);
 
 
         SNode replacing = SLinkOperations.getTarget(node, LINKS.expression$TlhM);

@@ -25,7 +25,6 @@ import jetbrains.mps.lang.core.behavior.ISuppressErrors__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -80,7 +79,7 @@ public final class LoopMacro__BehaviorDescriptor extends BaseBHDescriptor {
     // child is not under any other macro except this one 
     return ((boolean) ISuppressErrors__BehaviorDescriptor.suppress_id2WmWrdnSpX7.invokeSuper(__thisNode__, CONCEPTS.LoopMacro$1T, child)) && ListSequence.fromList(SNodeOperations.getNodeAncestors(child, null, true)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return Sequence.fromIterable(SNodeOperations.ofConcept(AttributeOperations.getAttributeList(it, new IAttributeDescriptor.AllAttributes()), CONCEPTS.AbstractMacro$bo)).isNotEmpty();
+        return Sequence.fromIterable(SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(it), CONCEPTS.AbstractMacro$bo)).isNotEmpty();
       }
     }) == SNodeOperations.getParent(__thisNode__);
   }

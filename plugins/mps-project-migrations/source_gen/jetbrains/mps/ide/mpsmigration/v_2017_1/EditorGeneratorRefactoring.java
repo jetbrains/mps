@@ -22,7 +22,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -82,7 +81,7 @@ public class EditorGeneratorRefactoring extends BaseProjectMigration {
     }
     if (ListSequence.fromList(SNodeOperations.getAllSiblings(method, false)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode templateMethod) {
-        return SNodeOperations.isInstanceOf(templateMethod, CONCEPTS.InstanceMethodDeclaration$39) && AttributeOperations.getAttribute(templateMethod, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq)) != null && ListSequence.fromList(AttributeOperations.getAttributeList(templateMethod, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU))).any(new IWhereFilter<SNode>() {
+        return SNodeOperations.isInstanceOf(templateMethod, CONCEPTS.InstanceMethodDeclaration$39) && new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq).get(templateMethod) != null && ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU).list(templateMethod)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode nodeMacro) {
             return SLinkOperations.getTarget(SNodeOperations.as(nodeMacro, CONCEPTS.TemplateCallMacro$qa), LINKS.template$6_6) == myCellFactoryCompatibilityTemplate;
           }

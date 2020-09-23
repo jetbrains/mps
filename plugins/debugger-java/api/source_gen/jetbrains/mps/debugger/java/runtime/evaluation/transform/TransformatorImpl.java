@@ -10,7 +10,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.SModelInternal;
@@ -104,8 +103,8 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
   private void postprocess() {
     // clean annotations 
     for (SNode node : ListSequence.fromList(SNodeOperations.getNodeDescendants(myWhatToEvaluate, null, false, new SAbstractConcept[]{}))) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnprocessedAnnotation$E6)) != null)) {
-        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnprocessedAnnotation$E6)));
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnprocessedAnnotation$E6).get(node) != null)) {
+        SNodeOperations.deleteNode(new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnprocessedAnnotation$E6).get(node));
       }
     }
 
@@ -486,7 +485,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
             finished = false;
           } else {
             SLinkOperations.setTarget(binaryOperation, LINKS.leftExpression$sEj, _quotation_createNode_s72qk1_a0a0a0a0a0a2a1a52(((SNode) binaryOperation.getUserObject(LTYPE)), SLinkOperations.getTarget(binaryOperation, LINKS.leftExpression$sEj)));
-            SNodeOperations.deleteNode(AttributeOperations.getAttribute(binaryOperation, new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnprocessedAnnotation$E6)));
+            SNodeOperations.deleteNode(new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnprocessedAnnotation$E6).get(binaryOperation));
             finished = false;
           }
         }
@@ -497,7 +496,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
 
           } else {
             SLinkOperations.setTarget(binaryOperation, LINKS.rightExpression$nvX, _quotation_createNode_s72qk1_a0a0a0a0b0a2a1a52(((SNode) binaryOperation.getUserObject(RTYPE)), SLinkOperations.getTarget(binaryOperation, LINKS.rightExpression$nvX)));
-            SNodeOperations.deleteNode(AttributeOperations.getAttribute(binaryOperation, new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnprocessedAnnotation$E6)));
+            SNodeOperations.deleteNode(new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnprocessedAnnotation$E6).get(binaryOperation));
             finished = false;
           }
         }

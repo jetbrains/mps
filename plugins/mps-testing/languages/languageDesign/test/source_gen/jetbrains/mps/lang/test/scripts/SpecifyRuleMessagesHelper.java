@@ -9,7 +9,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.components.ComponentHost;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.test.behavior.NodeOperationsContainer__BehaviorDescriptor;
 import jetbrains.mps.errors.item.NodeReportItem;
@@ -38,7 +37,7 @@ public final class SpecifyRuleMessagesHelper {
 
   public void fillContainerWithRuleMessages() {
     attachNewContainerIfNeeded(myNodeWeCheck);
-    SNode operationsContainer = AttributeOperations.getAttribute(myNodeWeCheck, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj));
+    SNode operationsContainer = new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj).get(myNodeWeCheck);
     assert (operationsContainer != null);
     NodeOperationsContainer__BehaviorDescriptor.detachAllErrorOperations_id4QaU5oI0Q4j.invoke(operationsContainer);
     Iterable<NodeReportItem> reporters = getErrorReporters();
@@ -53,7 +52,7 @@ public final class SpecifyRuleMessagesHelper {
   }
 
   private static void attachNewContainerIfNeeded(SNode node) {
-    if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj)) == null)) {
+    if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj).get(node) == null)) {
       SNode container = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07a3d4b5L, "jetbrains.mps.lang.test.structure.NodeOperationsContainer"));
       new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj).set(node, container);
     }

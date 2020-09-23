@@ -12,7 +12,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
@@ -47,14 +46,14 @@ public final class AddRemovePresenceAnnotation_Intention extends AbstractIntenti
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SubstituteAnnotation$zn)) == null) ? "Add Presence Annotation" : "Remove Presence Annotation");
+      return ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.SubstituteAnnotation$zn).get(node) == null) ? "Add Presence Annotation" : "Remove Presence Annotation");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SubstituteAnnotation$zn)) == null)) {
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.SubstituteAnnotation$zn).get(node) == null)) {
         SNode sa = new IAttributeDescriptor.NodeAttribute(CONCEPTS.SubstituteAnnotation$zn).setNew(node);
       } else {
-        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SubstituteAnnotation$zn)));
+        SNodeOperations.deleteNode(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SubstituteAnnotation$zn).get(node));
       }
     }
     @Override

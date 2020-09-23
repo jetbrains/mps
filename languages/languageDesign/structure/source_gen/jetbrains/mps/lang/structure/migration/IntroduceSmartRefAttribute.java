@@ -11,7 +11,6 @@ import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.regex.Matcher;
@@ -55,7 +54,7 @@ public class IntroduceSmartRefAttribute extends MigrationScriptBase {
 
       for (SNode conceptNode : CollectionSequence.fromCollection(conceptNodes)) {
 
-        if ((AttributeOperations.getAttribute(conceptNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3)) != null)) {
+        if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3).get(conceptNode) != null)) {
           continue;
         }
         if (SPropertyOperations.getBoolean(conceptNode, PROPS.abstract$ibpT)) {
@@ -83,7 +82,7 @@ public class IntroduceSmartRefAttribute extends MigrationScriptBase {
 
             new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3).set(conceptNode, createSmartReferenceAttribute_nopsft_a0f0d0h0c0a0g(characteristicLink));
             if ((prefix != null && prefix.length() > 0) || (suffix != null && suffix.length() > 0)) {
-              SLinkOperations.setTarget(AttributeOperations.getAttribute(conceptNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3)), LINKS.refPresentationTemplate$di5B, createRefPresentationTemplate_nopsft_a0a0g0d0h0c0a0g(prefix, suffix));
+              SLinkOperations.setTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3).get(conceptNode), LINKS.refPresentationTemplate$di5B, createRefPresentationTemplate_nopsft_a0a0g0d0h0c0a0g(prefix, suffix));
             }
           }
         }

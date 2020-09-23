@@ -19,7 +19,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.errors.item.UnresolvedReferenceReportItem;
 import jetbrains.mps.resolve.ResolverComponent;
@@ -74,7 +73,7 @@ public class AspectDependenciesChecker extends SpecificChecker {
       }
       // Check for unresolved references 
       for (final SReference ref : ListSequence.fromList(SNodeOperations.getReferences(node))) {
-        if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, ref.getLink())) != null)) {
+        if ((new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, ref.getLink()).get(node) != null)) {
           continue;
         }
         SNode targetNode = jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(ref);

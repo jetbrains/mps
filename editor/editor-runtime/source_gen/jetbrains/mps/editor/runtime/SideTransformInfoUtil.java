@@ -10,7 +10,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -32,11 +31,11 @@ public class SideTransformInfoUtil {
   }
 
   public static boolean hasRightTransformInfo(SNode node) {
-    return SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SideTransformInfo$Hi)), PROPS.side$gxaJ), 0xad0053c7aee25edL);
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SideTransformInfo$Hi).get(node), PROPS.side$gxaJ), 0xad0053c7aee25edL);
   }
 
   public static boolean hasLeftTransformInfo(SNode node) {
-    return SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SideTransformInfo$Hi)), PROPS.side$gxaJ), 0xad0053c7aee2e4fL);
+    return SEnumOperations.isMember(SPropertyOperations.getEnum(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SideTransformInfo$Hi).get(node), PROPS.side$gxaJ), 0xad0053c7aee2e4fL);
   }
 
   public static void removeTransformInfo(SNode node) {
@@ -44,11 +43,11 @@ public class SideTransformInfoUtil {
   }
 
   public static String getCellIdFromTransformInfo(SNode node) {
-    return SPropertyOperations.getString(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SideTransformInfo$Hi)), PROPS.cellId$4_YN);
+    return SPropertyOperations.getString(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SideTransformInfo$Hi).get(node), PROPS.cellId$4_YN);
   }
 
   public static String getAnchorTagFromTransformInfo(SNode node) {
-    return SPropertyOperations.getString(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SideTransformInfo$Hi)), PROPS.anchorTag$lMf);
+    return SPropertyOperations.getString(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SideTransformInfo$Hi).get(node), PROPS.anchorTag$lMf);
   }
 
   private static final class PROPS {

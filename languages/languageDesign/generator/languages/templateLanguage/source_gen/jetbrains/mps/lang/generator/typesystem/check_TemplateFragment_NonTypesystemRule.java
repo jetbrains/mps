@@ -9,7 +9,6 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -23,13 +22,13 @@ public class check_TemplateFragment_NonTypesystemRule extends AbstractNonTypesys
   }
   public void applyRule(final SNode tf, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode fragmentNode = SNodeOperations.getParent(tf);
-    if (Sequence.fromIterable(SNodeOperations.ofConcept(AttributeOperations.getAttributeList(fragmentNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.TemplateFragment$eq)).count() > 1) {
+    if (Sequence.fromIterable(SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(fragmentNode), CONCEPTS.TemplateFragment$eq)).count() > 1) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(tf, "More than one template fragment for a node. Are there node attributes with template macros?", "r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)", "3852116826972485480", null, errorTarget);
       }
     }
-    if (SNodeOperations.isAttribute(fragmentNode) && (AttributeOperations.getAttribute(SNodeOperations.getParent(fragmentNode), new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq)) != null)) {
+    if (SNodeOperations.isAttribute(fragmentNode) && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq).get(SNodeOperations.getParent(fragmentNode)) != null)) {
       // https://youtrack.jetbrains.com/issue/MPS-20691 
       {
         final MessageTarget errorTarget = new NodeMessageTarget();

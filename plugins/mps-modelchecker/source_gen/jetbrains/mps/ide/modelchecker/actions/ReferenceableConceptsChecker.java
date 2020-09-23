@@ -24,7 +24,6 @@ import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import org.jetbrains.mps.openapi.model.SReference;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.errors.item.UnresolvedReferenceReportItem;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -98,7 +97,7 @@ public class ReferenceableConceptsChecker extends SpecificChecker {
       }
       // Check for unresolved references 
       for (SReference ref : ListSequence.fromList(SNodeOperations.getReferences(node))) {
-        if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, ref.getLink())) != null)) {
+        if ((new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, ref.getLink()).get(node) != null)) {
           continue;
         }
         SNode target = jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(ref);

@@ -8,7 +8,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import java.util.List;
 import java.util.ArrayList;
@@ -68,8 +67,8 @@ public final class MacroIntentionsUtil {
     if (contextNode == null) {
       return null;
     }
-    if (ListSequence.fromList(AttributeOperations.getAttributeList(contextNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU))).isNotEmpty()) {
-      return ListSequence.fromList(AttributeOperations.getAttributeList(contextNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU))).last();
+    if (ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU).list(contextNode)).isNotEmpty()) {
+      return ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU).list(contextNode)).last();
     }
     return findOuterMacro(SNodeOperations.getParent(contextNode));
   }

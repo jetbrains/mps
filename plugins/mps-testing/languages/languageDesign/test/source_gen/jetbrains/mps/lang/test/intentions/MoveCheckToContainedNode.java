@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -51,7 +50,7 @@ public class MoveCheckToContainedNode extends IntentionsFactory {
 
 
   private boolean isApplicableHelper(SNode node, EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.TestNode$zF) && AttributeOperations.getAttribute(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.TestNode$zF), new IAttributeDescriptor.NodeAttribute(CONCEPTS.AbstractTestNodeAnnotation$lh)) == node && ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.nodeOperations$Mgf9)).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.nodeOperations$Mgf9)).first(), CONCEPTS.CheckNodeForErrorMessagesOperation$rv) && SPropertyOperations.getBoolean(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.nodeOperations$Mgf9)).first(), CONCEPTS.CheckNodeForErrorMessagesOperation$rv), PROPS.includeSelf$xNXw) == false;
+    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.TestNode$zF) && new IAttributeDescriptor.NodeAttribute(CONCEPTS.AbstractTestNodeAnnotation$lh).get(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.TestNode$zF)) == node && ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.nodeOperations$Mgf9)).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.nodeOperations$Mgf9)).first(), CONCEPTS.CheckNodeForErrorMessagesOperation$rv) && SPropertyOperations.getBoolean(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.nodeOperations$Mgf9)).first(), CONCEPTS.CheckNodeForErrorMessagesOperation$rv), PROPS.includeSelf$xNXw) == false;
   }
 
 
@@ -70,10 +69,10 @@ public class MoveCheckToContainedNode extends IntentionsFactory {
 
   public void execute(SNode node, EditorContext editorContext) {
     SPropertyOperations.assign(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.nodeOperations$Mgf9)).first(), CONCEPTS.CheckNodeForErrorMessagesOperation$rv), PROPS.includeSelf$xNXw, true);
-    if ((AttributeOperations.getAttribute(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.TestNode$zF), LINKS.nodeToCheck$OBcW), new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj)) == null)) {
+    if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj).get(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.TestNode$zF), LINKS.nodeToCheck$OBcW)) == null)) {
       new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj).set(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.TestNode$zF), LINKS.nodeToCheck$OBcW), node);
     } else {
-      ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.TestNode$zF), LINKS.nodeToCheck$OBcW), new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj)), LINKS.nodeOperations$Mgf9)).insertElement(0, ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.nodeOperations$Mgf9)).first());
+      ListSequence.fromList(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj).get(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.TestNode$zF), LINKS.nodeToCheck$OBcW)), LINKS.nodeOperations$Mgf9)).insertElement(0, ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.nodeOperations$Mgf9)).first());
       SNodeOperations.deleteNode(node);
     }
   }

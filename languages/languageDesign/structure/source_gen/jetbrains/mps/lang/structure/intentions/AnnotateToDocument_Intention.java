@@ -13,7 +13,6 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
@@ -48,11 +47,11 @@ public final class AnnotateToDocument_Intention extends AbstractIntentionDescrip
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return (ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentedNodeAnnotation$C3))).isEmpty() ? "Document" : "Remove documentation");
+      return (ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentedNodeAnnotation$C3).list(node)).isEmpty() ? "Document" : "Remove documentation");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if (ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentedNodeAnnotation$C3))).isEmpty()) {
+      if (ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentedNodeAnnotation$C3).list(node)).isEmpty()) {
         SNodeFactoryOperations.addNewAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentedNodeAnnotation$C3), CONCEPTS.DocumentedNodeAnnotation$C3);
       } else {
         new IAttributeDescriptor.NodeAttribute(CONCEPTS.DocumentedNodeAnnotation$C3).set(node, null);

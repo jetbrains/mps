@@ -9,7 +9,6 @@ import jetbrains.mps.smodel.SModelStereotype;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -25,7 +24,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return;
     }
     SNode node = n;
-    if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O)) == null)) {
+    if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(node) == null)) {
       new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).set(node, SModelOperations.createNewNode(SNodeOperations.getModel(node), null, CONCEPTS.RootTemplateAnnotation$9O));
     }
   }

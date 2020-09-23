@@ -14,7 +14,6 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Generator;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -70,7 +69,7 @@ public class ConceptEditorOpenHelper {
   private static SNode findBaseNodeMultiTab(SNode node) {
     SNode baseNode = null;
     if (jetbrains.mps.util.SNodeOperations.isRoot(node)) {
-      SNode annotation = AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O));
+      SNode annotation = new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(node);
       if ((annotation != null) && (SLinkOperations.getTarget(annotation, LINKS.applicableConcept$LAIX) != null)) {
         baseNode = SLinkOperations.getTarget(annotation, LINKS.applicableConcept$LAIX);
       }

@@ -19,7 +19,6 @@ import java.awt.event.ActionEvent;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.JComponent;
 import java.awt.Insets;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
@@ -106,12 +105,12 @@ public class AttachMappingLabelDialog extends DialogWrapper {
     myEditorContext.getRepository().getModelAccess().executeCommand(new Runnable() {
       public void run() {
         SNode mappingLabel = MappingLabelUtil.findOrCreateMappingLabelForName(AttachMappingLabelDialog.this.myTemplateNode, AttachMappingLabelDialog.this.myResultLabelName);
-        SNode existingMacro = ListSequence.fromList(AttributeOperations.getAttributeList(AttachMappingLabelDialog.this.myTemplateNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU))).last();
+        SNode existingMacro = ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeMacro$qU).list(AttachMappingLabelDialog.this.myTemplateNode)).last();
         if (existingMacro != null) {
           SLinkOperations.setTarget(existingMacro, LINKS.mappingLabel$jbOO, mappingLabel);
           return;
         }
-        SNode templateFragment = AttributeOperations.getAttribute(AttachMappingLabelDialog.this.myTemplateNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq));
+        SNode templateFragment = new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq).get(AttachMappingLabelDialog.this.myTemplateNode);
         if (templateFragment != null) {
           SLinkOperations.setTarget(templateFragment, LINKS.labelDeclaration$ORJN, mappingLabel);
           return;

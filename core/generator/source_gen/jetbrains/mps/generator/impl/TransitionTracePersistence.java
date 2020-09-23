@@ -12,7 +12,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.extapi.model.ModelWithAttributes;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -79,7 +78,7 @@ public final class TransitionTracePersistence {
       return;
     }
     for (SNode n : SNodeUtil.getDescendants(myCheckpointModel)) {
-      SNode originTrace = AttributeOperations.getAttribute(n, new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginTrace$kG));
+      SNode originTrace = new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginTrace$kG).get(n);
       if ((originTrace == null)) {
         continue;
       }

@@ -6,7 +6,6 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -44,10 +43,10 @@ public class QuotationConverter {
     if (quotedNode == null) {
       return null;
     }
-    if ((AttributeOperations.getAttribute(quotedNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.Antiquotation$UQ)) != null)) {
+    if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.Antiquotation$UQ).get(quotedNode) != null)) {
       return null;
     }
-    if ((AttributeOperations.getAttribute(quotedNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK)) != null)) {
+    if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK).get(quotedNode) != null)) {
       return null;
     }
     SNode node = convertNode(quotedNode);
@@ -126,11 +125,11 @@ public class QuotationConverter {
     List<SNode> childBuilders = ListSequence.fromList(new ArrayList<SNode>());
     List<Boolean> childBuildersIsList = ListSequence.fromList(new ArrayList<Boolean>());
     for (SNode child : ListSequence.fromList(children)) {
-      if ((AttributeOperations.getAttribute(child, new IAttributeDescriptor.NodeAttribute(CONCEPTS.Antiquotation$UQ)) != null)) {
-        ListSequence.fromList(childBuilders).addElement(SNodeOperations.deleteNode(convertNodeExpression(SLinkOperations.getTarget(AttributeOperations.getAttribute(child, new IAttributeDescriptor.NodeAttribute(CONCEPTS.Antiquotation$UQ)), LINKS.expression$hE$))));
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.Antiquotation$UQ).get(child) != null)) {
+        ListSequence.fromList(childBuilders).addElement(SNodeOperations.deleteNode(convertNodeExpression(SLinkOperations.getTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.Antiquotation$UQ).get(child), LINKS.expression$hE$))));
         ListSequence.fromList(childBuildersIsList).addElement(false);
-      } else if ((AttributeOperations.getAttribute(child, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK)) != null)) {
-        ListSequence.fromList(childBuilders).addElement(SNodeOperations.deleteNode(convertNodeExpression(SLinkOperations.getTarget(AttributeOperations.getAttribute(child, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK)), LINKS.expression$hE$))));
+      } else if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK).get(child) != null)) {
+        ListSequence.fromList(childBuilders).addElement(SNodeOperations.deleteNode(convertNodeExpression(SLinkOperations.getTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK).get(child), LINKS.expression$hE$))));
         ListSequence.fromList(childBuildersIsList).addElement(true);
       } else {
         ListSequence.fromList(childBuilders).addElement(convertNode(child));
@@ -300,7 +299,7 @@ public class QuotationConverter {
       }
     }, true).toListSequence();
     for (SProperty property : properties) {
-      SNode attribute = AttributeOperations.getAttribute(quotationNode, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyAntiquotation$13, property));
+      SNode attribute = new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyAntiquotation$13, property).get(quotationNode);
       String value = quotationNode.getProperty(property);
       if (value == null && attribute == null) {
         continue;
@@ -315,7 +314,7 @@ public class QuotationConverter {
       }
     }, true).toListSequence();
     for (SReferenceLink link : ListSequence.fromList(referenceLinks)) {
-      SNode attribute = AttributeOperations.getAttribute(quotationNode, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAntiquotation$Xh, link));
+      SNode attribute = new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAntiquotation$Xh, link).get(quotationNode);
       SReference reference = quotationNode.getReference(link);
       if (reference == null && attribute == null) {
         continue;

@@ -10,10 +10,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.baseLanguage.lightweightdsl.behavior.MemberInstance__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration;
 import jetbrains.mps.baseLanguage.lightweightdsl.behavior.PlaceholderModifier__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -32,11 +31,11 @@ public class EditorUtil {
       decl.value = MemberInstance__BehaviorDescriptor.getDeclaration_id7T23sO8vZuR.invoke(SNodeOperations.cast(mi, CONCEPTS.MemberInstance$YT));
     } else {
       // custom members 
-      decl.value = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(AttributeOperations.getAttribute(ListSequence.fromList(SNodeOperations.getNodeAncestors(mi, CONCEPTS.ClassConcept$bK, false)).findFirst(new IWhereFilter<SNode>() {
+      decl.value = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv).get(ListSequence.fromList(SNodeOperations.getNodeAncestors(mi, CONCEPTS.ClassConcept$bK, false)).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv)) != null);
+          return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv).get(it) != null);
         }
-      }), new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv)), LINKS.descriptor$aNbO), LINKS.classLikeMember$ZDsQ), CONCEPTS.CustomMemberDescriptor$8z)).findFirst(new IWhereFilter<SNode>() {
+      })), LINKS.descriptor$aNbO), LINKS.classLikeMember$ZDsQ), CONCEPTS.CustomMemberDescriptor$8z)).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           // viva la interpretation! 
           return SNodeOperations.getConcept(mi).equals(MetaAdapterByDeclaration.getConcept(SLinkOperations.getTarget(it, LINKS.cncpt$IpcN)));
@@ -73,8 +72,8 @@ public class EditorUtil {
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept MemberInstance$YT = MetaAdapterFactory.getInterfaceConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x59e9926e840d9179L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.MemberInstance");
-    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
     /*package*/ static final SConcept DSLAnnotation$zv = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x3190d3f9f1cab0caL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.DSLAnnotation");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
     /*package*/ static final SConcept CustomMemberDescriptor$8z = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a044805d9cL, "jetbrains.mps.baseLanguage.lightweightdsl.structure.CustomMemberDescriptor");
   }
 }

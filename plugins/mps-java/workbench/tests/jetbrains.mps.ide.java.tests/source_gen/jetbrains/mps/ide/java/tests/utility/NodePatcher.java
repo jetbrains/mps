@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -114,7 +113,7 @@ public class NodePatcher {
     ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addSequence(ListSequence.fromList(nested));
   }
   public static void removeSModelAttrs(SNode node) {
-    for (SNode attr : ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.AllAttributes()))) {
+    for (SNode attr : ListSequence.fromList(new IAttributeDescriptor.AllAttributes().list(node))) {
       if (SConceptOperations.isExactly(SNodeOperations.asSConcept(SNodeOperations.getConcept(attr)), CONCEPTS.JavaImports$b_)) {
         continue;
       }
@@ -123,8 +122,8 @@ public class NodePatcher {
     }
   }
   public static void copyImportAttrs(SNode from, SNode to) {
-    if ((AttributeOperations.getAttribute(SNodeOperations.cast(from, CONCEPTS.Classifier$Ix), new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_)) != null)) {
-      new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).set(SNodeOperations.cast(to, CONCEPTS.Classifier$Ix), SNodeOperations.copyNode(AttributeOperations.getAttribute(SNodeOperations.cast(from, CONCEPTS.Classifier$Ix), new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_))));
+    if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).get(SNodeOperations.cast(from, CONCEPTS.Classifier$Ix)) != null)) {
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).set(SNodeOperations.cast(to, CONCEPTS.Classifier$Ix), SNodeOperations.copyNode(new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).get(SNodeOperations.cast(from, CONCEPTS.Classifier$Ix))));
     }
   }
 

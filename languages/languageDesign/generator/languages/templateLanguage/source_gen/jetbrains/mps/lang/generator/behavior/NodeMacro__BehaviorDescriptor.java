@@ -16,7 +16,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -75,7 +74,7 @@ public final class NodeMacro__BehaviorDescriptor extends BaseBHDescriptor {
       return null;
     }
     SNode result = null;
-    for (SNode currentAttribute : AttributeOperations.getAttributeList(currentNode, new IAttributeDescriptor.AllAttributes())) {
+    for (SNode currentAttribute : new IAttributeDescriptor.AllAttributes().list(currentNode)) {
       if (SNodeOperations.isInstanceOf(currentAttribute, CONCEPTS.NodeMacro$qU)) {
         if (currentAttribute == currentMacro) {
           break;
@@ -96,7 +95,7 @@ public final class NodeMacro__BehaviorDescriptor extends BaseBHDescriptor {
     if (SNodeOperations.isInstanceOf(ancestor, CONCEPTS.BaseMappingRule$O5)) {
       return SLinkOperations.getTarget(SNodeOperations.cast(ancestor, CONCEPTS.BaseMappingRule$O5), LINKS.applicableConcept$Hpnk);
     }
-    SNode rootAnnotation = AttributeOperations.getAttribute(SNodeOperations.getContainingRoot(__thisNode__), new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O));
+    SNode rootAnnotation = new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(SNodeOperations.getContainingRoot(__thisNode__));
     return SLinkOperations.getTarget(SNodeOperations.cast(rootAnnotation, CONCEPTS.RootTemplateAnnotation$9O), LINKS.applicableConcept$LAIX);
   }
   /*package*/ static boolean hasMappingLabel_id5KmckUrKj9u(@NotNull SNode __thisNode__) {

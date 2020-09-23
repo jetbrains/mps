@@ -16,7 +16,6 @@ import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -62,7 +61,7 @@ public final class CreateActionAsPattern_Intention extends AbstractIntentionDesc
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode currentNode = editorContext.getSelectedNode();
       SNodeFactoryOperations.setNewAttribute(currentNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AsPattern$WN), CONCEPTS.ActionAsPattern$7o);
-      SPropertyOperations.assign(AttributeOperations.getAttribute(currentNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AsPattern$WN)), PROPS.varName$kQdS, "action_var_" + currentNode.getNodeId().toString());
+      SPropertyOperations.assign(new IAttributeDescriptor.NodeAttribute(CONCEPTS.AsPattern$WN).get(currentNode), PROPS.varName$kQdS, "action_var_" + currentNode.getNodeId().toString());
     }
     @Override
     public IntentionDescriptor getDescriptor() {

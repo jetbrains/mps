@@ -12,7 +12,6 @@ import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -48,7 +47,7 @@ public class DropMigratedRefPresentationQueries extends MigrationScriptBase {
         if ((SLinkOperations.getTarget(rc, LINKS.presentation$VLnP) == null)) {
           continue;
         }
-        SNode migrated = AttributeOperations.getAttribute(SLinkOperations.getTarget(rc, LINKS.presentation$VLnP), new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$T3));
+        SNode migrated = new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$T3).get(SLinkOperations.getTarget(rc, LINKS.presentation$VLnP));
         if ((migrated != null) && ListSequence.fromList(SLinkOperations.getChildren(migrated, LINKS.problems$4CuI)).isEmpty()) {
           SNodeOperations.deleteNode(SLinkOperations.getTarget(rc, LINKS.presentation$VLnP));
         }

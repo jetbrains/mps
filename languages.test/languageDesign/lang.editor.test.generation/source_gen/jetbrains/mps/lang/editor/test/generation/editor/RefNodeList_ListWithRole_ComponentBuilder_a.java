@@ -75,7 +75,6 @@ import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.nodeEditor.cells.SPropertyAccessor;
 import jetbrains.mps.lang.editor.cellProviders.PropertyCellContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -2424,7 +2423,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.AbstractCellTest$Pr, "jetbrains.mps.lang.editor.test.generation.editor.TestTargetTransformationMenu"));
         editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new PropertyCellContext(myNode, property), new SubstituteInfoPartExt[]{new RefNodeList_generic_cellMenu_i8r80j_a0c31a0a(), new RefNodeList_generic_cellMenu_i8r80j_b0c31a0a(), new RefNodeList_customReplace_cellMenu_i8r80j_c0c31a0a(), new RefNodeList_customReplace_cellMenu_i8r80j_d0c31a0a(), new RefNodeList_component_cellMenu_i8r80j_e0c31a0a(), new RefNodeList_generic_cellMenu_i8r80j_f0c31a0a(), new RefNodeList_theProperty_postfixCellMenu_i8r80j_g0c31a0a(), new RefNodeList_theProperty_cellMenu_i8r80j_h0c31a0a(), new ReplaceWith_Constant_cellMenu_i8r80j_i0c31a0a(), new SChildSubstituteInfoPartEx(editorCell)}));
         setCellContext(editorCell);
-        Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(AttributeOperations.getAttributeList(myNode, new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAttribute$Gb);
+        Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
         Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);

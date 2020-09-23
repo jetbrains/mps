@@ -4,7 +4,6 @@ package jetbrains.mps.baseLanguage.behavior;
 
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -50,8 +49,8 @@ public class ParenthesisUtil {
 
     SNode current = findWrappingParens(expressionToProcess);
     while (current != null) {
-      SNode leftParenOnParens = AttributeOperations.getAttribute(current, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7));
-      SNode rightParenOnParens = AttributeOperations.getAttribute(current, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc));
+      SNode leftParenOnParens = new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(current);
+      SNode rightParenOnParens = new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(current);
       boolean propagateNewParensInsteadOfExpr = false;
 
       SNode replacing = SLinkOperations.getTarget(SNodeOperations.cast(current, CONCEPTS.ParenthesizedExpression$Ws), LINKS.expression$TlhM);
@@ -115,7 +114,7 @@ public class ParenthesisUtil {
   }
 
   private static void setOrIncreaseParen(SNode node, boolean right) {
-    SNode paren = (right ? AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc)) : AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7)));
+    SNode paren = (right ? new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(node) : new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(node));
     if (paren != null) {
       IIncompleteParen__BehaviorDescriptor.increaseCount_idVufYxgmE1y.invoke(paren);
     } else {
@@ -128,7 +127,7 @@ public class ParenthesisUtil {
   }
 
   private static void setOrMergeParen(SNode myNode, boolean right, SNode parens) {
-    SNode nodesParens = (right ? AttributeOperations.getAttribute(myNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc)) : AttributeOperations.getAttribute(myNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7)));
+    SNode nodesParens = (right ? new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(myNode) : new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(myNode));
     if (nodesParens == null) {
       if (right) {
         nodesParens = SNodeFactoryOperations.setNewAttribute(myNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc), CONCEPTS.IncompleteRightParen$Sc);
@@ -148,12 +147,12 @@ public class ParenthesisUtil {
    */
   private static SNode createUnmatchedParenthesis(@NotNull SNode myExpression, boolean completingByRightParen) {
 
-    if (!(completingByRightParen) && AttributeOperations.getAttribute(myExpression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7)) != null) {
-      IIncompleteParen__BehaviorDescriptor.increaseCount_idVufYxgmE1y.invoke(AttributeOperations.getAttribute(myExpression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7)));
+    if (!(completingByRightParen) && new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(myExpression) != null) {
+      IIncompleteParen__BehaviorDescriptor.increaseCount_idVufYxgmE1y.invoke(new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(myExpression));
       return myExpression;
     }
-    if (completingByRightParen && AttributeOperations.getAttribute(myExpression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc)) != null) {
-      IIncompleteParen__BehaviorDescriptor.increaseCount_idVufYxgmE1y.invoke(AttributeOperations.getAttribute(myExpression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc)));
+    if (completingByRightParen && new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(myExpression) != null) {
+      IIncompleteParen__BehaviorDescriptor.increaseCount_idVufYxgmE1y.invoke(new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(myExpression));
       return myExpression;
     }
 
@@ -292,7 +291,7 @@ public class ParenthesisUtil {
 
     result = ListSequence.fromList(result).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return completingByRightParen && (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7)) != null) || !(completingByRightParen) && (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc)) != null);
+        return completingByRightParen && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(it) != null) || !(completingByRightParen) && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(it) != null);
       }
     }).toListSequence();
 
@@ -434,11 +433,11 @@ public class ParenthesisUtil {
   private static void clearIncompleteParens(SNode otherExpression, boolean completingByRightParen, SNode parens) {
     int count = 0;
     if (completingByRightParen) {
-      count = SPropertyOperations.getInteger(AttributeOperations.getAttribute(otherExpression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7)), PROPS.count$FDpi);
+      count = SPropertyOperations.getInteger(new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(otherExpression), PROPS.count$FDpi);
       new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).set(otherExpression, null);
       new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).set(parens, null);
     } else {
-      count = SPropertyOperations.getInteger(AttributeOperations.getAttribute(otherExpression, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc)), PROPS.count$FDpi);
+      count = SPropertyOperations.getInteger(new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(otherExpression), PROPS.count$FDpi);
       new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).set(otherExpression, null);
       new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).set(parens, null);
     }

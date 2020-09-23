@@ -13,7 +13,6 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -62,13 +61,13 @@ public final class AddClassifierDocComment_Intention extends AbstractIntentionDe
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh)) == null) ? "Add Documentation Comment" : "Remove Documentation Comment");
+      return ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh).get(node) == null) ? "Add Documentation Comment" : "Remove Documentation Comment");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       DocCommentHelper.addJavadocLangIfMissing(node);
 
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh)) != null)) {
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh).get(node) != null)) {
         new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh).set(node, null);
         if (editorContext.getSelectedNode() != node) {
           editorContext.selectWRTFocusPolicy(node);
@@ -77,14 +76,14 @@ public final class AddClassifierDocComment_Intention extends AbstractIntentionDe
       }
 
       SNodeFactoryOperations.setNewAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh), CONCEPTS.ClassifierDocComment$mh);
-      SNode line = SNodeFactoryOperations.addNewChild(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh)), LINKS.body$OAGp, CONCEPTS.CommentLine$hJ);
+      SNode line = SNodeFactoryOperations.addNewChild(new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh).get(node), LINKS.body$OAGp, CONCEPTS.CommentLine$hJ);
       SNode firstPart = SNodeFactoryOperations.addNewChild(line, LINKS.part$QuzQ, CONCEPTS.TextCommentLinePart$Eb);
 
       //  Type variables 
       for (SNode typeVariableDeclaration : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeVariableDeclaration$Lipp))) {
         SNode paramTag = SNodeFactoryOperations.createNewNode(CONCEPTS.ParameterBlockDocTag$ie, null);
         SLinkOperations.setTarget(paramTag, LINKS.parameter$eWDw, _quotation_createNode_peeqac_a0b0j0a(typeVariableDeclaration));
-        ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh)), LINKS.tags$stUD)).addElement(paramTag);
+        ListSequence.fromList(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh).get(node), LINKS.tags$stUD)).addElement(paramTag);
       }
       SelectionUtil.selectCell(editorContext, firstPart, SelectionManager.FIRST_CELL);
     }

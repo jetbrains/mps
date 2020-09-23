@@ -7,7 +7,6 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -22,7 +21,7 @@ public class FixRootTemplateAnnotation_QuickFix extends QuickFix_Runtime {
   public void execute(SNode node) {
     SNode template = SLinkOperations.getTarget(((SNode) FixRootTemplateAnnotation_QuickFix.this.getField("rule")[0]), LINKS.template$n_Qy);
     new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).setNew(template);
-    SLinkOperations.setTarget(AttributeOperations.getAttribute(template, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O)), LINKS.applicableConcept$LAIX, SLinkOperations.getTarget(((SNode) FixRootTemplateAnnotation_QuickFix.this.getField("rule")[0]), LINKS.applicableConcept$Hpnk));
+    SLinkOperations.setTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(template), LINKS.applicableConcept$LAIX, SLinkOperations.getTarget(((SNode) FixRootTemplateAnnotation_QuickFix.this.getField("rule")[0]), LINKS.applicableConcept$Hpnk));
   }
 
   private static final class LINKS {

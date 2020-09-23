@@ -15,7 +15,6 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo;
 import jetbrains.mps.openapi.editor.cells.EditorCellContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -274,7 +273,7 @@ public class _PatternExpression_KeyMap extends KeyMapImpl {
       if (contextNode == null) {
         return;
       }
-      if (AttributeOperations.getAttribute(contextNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.Antiquotation$UQ)) != null) {
+      if (new IAttributeDescriptor.NodeAttribute(CONCEPTS.Antiquotation$UQ).get(contextNode) != null) {
         new IAttributeDescriptor.NodeAttribute(CONCEPTS.Antiquotation$UQ).set(contextNode, null);
       } else
       SNodeFactoryOperations.setNewAttribute(contextNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.Antiquotation$UQ), CONCEPTS.Antiquotation$UQ);
@@ -322,7 +321,7 @@ public class _PatternExpression_KeyMap extends KeyMapImpl {
         new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK).set(attributedNode, null);
         return;
       }
-      if ((AttributeOperations.getAttribute(contextNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK)) != null)) {
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK).get(contextNode) != null)) {
         new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK).set(contextNode, null);
       } else
       SNodeFactoryOperations.setNewAttribute(contextNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK), CONCEPTS.ListAntiquotation$XK);
@@ -375,7 +374,7 @@ public class _PatternExpression_KeyMap extends KeyMapImpl {
         new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAntiquotation$Xh, ref).set(attributedNode, null);
         return;
       }
-      if (AttributeOperations.getAttribute(contextNode, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAntiquotation$Xh, ref)) != null) {
+      if (new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAntiquotation$Xh, ref).get(contextNode) != null) {
         new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAntiquotation$Xh, ref).set(contextNode, null);
       } else {
         SNodeFactoryOperations.setNewAttribute(contextNode, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAntiquotation$Xh, ref), CONCEPTS.ReferenceAntiquotation$Xh);

@@ -17,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -55,9 +54,9 @@ public final class MappingConfiguration__BehaviorDescriptor extends BaseBHDescri
     return members;
   }
   /*package*/ static void addMember_id2JKPiG_HmQX(@NotNull SNode __thisNode__, SNode newMember) {
-    if ((AttributeOperations.getAttribute(newMember, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O)) != null)) {
+    if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(newMember) != null)) {
       SNode ruleNode = SLinkOperations.addNewChild(__thisNode__, LINKS.rootMappingRule$edB6, CONCEPTS.Root_MappingRule$NH);
-      SLinkOperations.setTarget(ruleNode, LINKS.applicableConcept$Hpnk, SLinkOperations.getTarget(AttributeOperations.getAttribute(newMember, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O)), LINKS.applicableConcept$LAIX));
+      SLinkOperations.setTarget(ruleNode, LINKS.applicableConcept$Hpnk, SLinkOperations.getTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(newMember), LINKS.applicableConcept$LAIX));
       SLinkOperations.setTarget(ruleNode, LINKS.template$n_Qy, SNodeOperations.cast(newMember, CONCEPTS.INamedConcept$Kd));
     } else if (SNodeOperations.isInstanceOf(newMember, CONCEPTS.TemplateDeclaration$5G)) {
       SNode mappingRule = SLinkOperations.addNewChild(__thisNode__, LINKS.reductionMappingRule$epW2, CONCEPTS.Reduction_MappingRule$9X);

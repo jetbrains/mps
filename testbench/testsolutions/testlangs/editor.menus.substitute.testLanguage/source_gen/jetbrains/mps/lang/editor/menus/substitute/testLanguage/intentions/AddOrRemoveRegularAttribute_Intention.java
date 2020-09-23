@@ -12,7 +12,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
@@ -47,7 +46,7 @@ public final class AddOrRemoveRegularAttribute_Intention extends AbstractIntenti
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_RegularEditor$28)) == null)) {
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_RegularEditor$28).get(node) == null)) {
         return "Add Regular Attribute";
       } else {
         return "Remove Regular Attribute";
@@ -55,10 +54,10 @@ public final class AddOrRemoveRegularAttribute_Intention extends AbstractIntenti
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_RegularEditor$28)) == null)) {
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_RegularEditor$28).get(node) == null)) {
         new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_RegularEditor$28).setNew(node);
       } else {
-        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_RegularEditor$28)));
+        SNodeOperations.deleteNode(new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_RegularEditor$28).get(node));
       }
     }
     @Override

@@ -20,7 +20,6 @@ import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -321,7 +320,7 @@ public final class RuleUtil {
     return SLinkOperations.getTarget(rule, LINKS.ruleConsequence$JzSl);
   }
   public static SNode getTemplateFragmentByAnnotatedNode(SNode node) {
-    return AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq));
+    return new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq).get(node);
   }
   /**
    * 

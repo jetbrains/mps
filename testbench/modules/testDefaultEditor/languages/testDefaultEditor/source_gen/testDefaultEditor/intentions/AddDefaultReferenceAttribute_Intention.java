@@ -12,7 +12,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -50,7 +49,7 @@ public final class AddDefaultReferenceAttribute_Intention extends AbstractIntent
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.DefaultReferenceAttribute$Cs, LINKS.bestFriend$rXFF)) != null)) {
+      if ((new IAttributeDescriptor.LinkAttribute(CONCEPTS.DefaultReferenceAttribute$Cs, LINKS.bestFriend$rXFF).get(node) != null)) {
         return "remove default reference attribute";
       } else {
         return "add default reference attribute";
@@ -58,11 +57,11 @@ public final class AddDefaultReferenceAttribute_Intention extends AbstractIntent
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.DefaultReferenceAttribute$Cs, LINKS.bestFriend$rXFF)) != null)) {
-        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.DefaultReferenceAttribute$Cs, LINKS.bestFriend$rXFF)));
+      if ((new IAttributeDescriptor.LinkAttribute(CONCEPTS.DefaultReferenceAttribute$Cs, LINKS.bestFriend$rXFF).get(node) != null)) {
+        SNodeOperations.deleteNode(new IAttributeDescriptor.LinkAttribute(CONCEPTS.DefaultReferenceAttribute$Cs, LINKS.bestFriend$rXFF).get(node));
       } else {
         new IAttributeDescriptor.LinkAttribute(CONCEPTS.DefaultReferenceAttribute$Cs, LINKS.bestFriend$rXFF).set(node, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0x27d5e845b8e8aeb7L, "testDefaultEditor.structure.DefaultReferenceAttribute")));
-        SelectionUtil.selectCell(editorContext, AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.DefaultReferenceAttribute$Cs, LINKS.bestFriend$rXFF)), "const");
+        SelectionUtil.selectCell(editorContext, new IAttributeDescriptor.LinkAttribute(CONCEPTS.DefaultReferenceAttribute$Cs, LINKS.bestFriend$rXFF).get(node), "const");
       }
 
     }

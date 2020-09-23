@@ -41,7 +41,6 @@ import jetbrains.mps.baseLanguage.scopes.MemberScopes;
 import jetbrains.mps.scope.FilteringScope;
 import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -317,17 +316,17 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static void markDeprecated_id6Va_BJexupi(@NotNull SNode __thisNode__) {
     IBLDeprecatable__BehaviorDescriptor.markDeprecated_id6Va_BJexupi.invoke0(__thisNode__, CONCEPTS.IBLDeprecatable$ah);
-    if ((AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh)) == null)) {
+    if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh).get(__thisNode__) == null)) {
       SNodeFactoryOperations.setNewAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh), CONCEPTS.ClassifierDocComment$mh);
     }
     if (!(((boolean) IBLDeprecatable__BehaviorDescriptor.hasDeprecatedBlockDocTag_id3yvWaPI09DC.invoke(__thisNode__)))) {
-      SNodeFactoryOperations.addNewChild(AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh)), LINKS.tags$stUD, CONCEPTS.DeprecatedBlockDocTag$8n);
+      SNodeFactoryOperations.addNewChild(new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh).get(__thisNode__), LINKS.tags$stUD, CONCEPTS.DeprecatedBlockDocTag$8n);
     }
     AnnotationUtil.attachUniqueAnnotation(__thisNode__, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated"));
   }
   /*package*/ static void unmarkDeprecated_id6Va_BJex$aE(@NotNull SNode __thisNode__) {
     IBLDeprecatable__BehaviorDescriptor.unmarkDeprecated_id6Va_BJex$aE.invoke0(__thisNode__, CONCEPTS.IBLDeprecatable$ah);
-    IBLDeprecatable__BehaviorDescriptor.removeDeprecationFromDoc_id63oBH1IM79r.invoke(__thisNode__, AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh)));
+    IBLDeprecatable__BehaviorDescriptor.removeDeprecationFromDoc_id63oBH1IM79r.invoke(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh).get(__thisNode__));
     AnnotationUtil.detachUniqueAnnotation(__thisNode__, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated"));
   }
   /*package*/ static void addConstructor_id32Td0Ia9Mgr(@NotNull SNode __thisNode__, SNode constructor) {

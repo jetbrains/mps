@@ -12,7 +12,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -86,7 +85,7 @@ public class QueriesUtil {
         ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.typeArgument$jaIN)).addElement(SNodeOperations.copyNode(arg));
       }
     }
-    for (SNode attribute : ListSequence.fromList(AttributeOperations.getAttributeList(oldNode, new IAttributeDescriptor.AllAttributes()))) {
+    for (SNode attribute : ListSequence.fromList(new IAttributeDescriptor.AllAttributes().list(oldNode))) {
       SContainmentLink role = SNodeOperations.getContainingLink(attribute);
       newNode.addChild(role, SNodeOperations.copyNode(attribute));
     }

@@ -14,7 +14,6 @@ import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -43,12 +42,12 @@ public class check_ThisExpression_ClassConceptSpecified_InGenerator_NonTypesyste
 
     boolean expressionInTemplate = ListSequence.fromList(SNodeOperations.getNodeAncestors(expression, null, true)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq)) != null;
+        return new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq).get(it) != null;
       }
     }).isNotEmpty() || (SNodeOperations.getNodeAncestor(expression, CONCEPTS.InlineTemplate_RuleConsequence$u9, false, false) != null);
     boolean classifierInTemplate = ListSequence.fromList(SNodeOperations.getNodeAncestors(SLinkOperations.getTarget(expression, LINKS.classConcept$zzjZ), null, true)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq)) != null;
+        return new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq).get(it) != null;
       }
     }).isNotEmpty() || (SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(expression, LINKS.classConcept$zzjZ), CONCEPTS.InlineTemplate_RuleConsequence$u9, false, false) != null);
     if (expressionInTemplate && !(classifierInTemplate)) {

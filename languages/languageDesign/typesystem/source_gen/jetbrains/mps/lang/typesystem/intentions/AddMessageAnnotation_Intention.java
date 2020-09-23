@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
@@ -38,7 +37,7 @@ public final class AddMessageAnnotation_Intention extends AbstractIntentionDescr
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MessageStatementAnnotation$Ig)) == null);
+    return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.MessageStatementAnnotation$Ig).get(node) == null);
   }
   @Override
   public boolean isSurroundWith() {
@@ -60,7 +59,7 @@ public final class AddMessageAnnotation_Intention extends AbstractIntentionDescr
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       MessageStatement__BehaviorDescriptor.attachNewMessageAnnotation_id7nf9pEwlup1.invoke(node);
-      SelectionUtil.selectCell(editorContext, AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MessageStatementAnnotation$Ig)), SelectionManager.FIRST_EDITABLE_CELL);
+      SelectionUtil.selectCell(editorContext, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MessageStatementAnnotation$Ig).get(node), SelectionManager.FIRST_EDITABLE_CELL);
     }
     @Override
     public IntentionDescriptor getDescriptor() {

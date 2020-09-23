@@ -26,7 +26,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import java.util.StringTokenizer;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.project.AbstractModule;
@@ -283,7 +282,7 @@ public class ClassifierResolveUtils {
     }
 
     SNode root = Sequence.fromIterable(pathToRoot).last();
-    SNode javaImports = AttributeOperations.getAttribute(root, new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_));
+    SNode javaImports = new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).get(root);
 
     if (javaImports == null) {
       return null;

@@ -12,7 +12,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
@@ -39,7 +38,7 @@ public final class AttachSmartReferenceAttribute_Intention extends AbstractInten
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(node)).isNotEmpty() && (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3)) == null);
+    return ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(node)).isNotEmpty() && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3).get(node) == null);
   }
   @Override
   public boolean isSurroundWith() {
@@ -62,7 +61,7 @@ public final class AttachSmartReferenceAttribute_Intention extends AbstractInten
     public void execute(final SNode node, final EditorContext editorContext) {
       new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3).setNew(node);
       if (ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(node)).count() == 1) {
-        SLinkOperations.setTarget(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3)), LINKS.charactersticReference$41pR, ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(node)).first());
+        SLinkOperations.setTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3).get(node), LINKS.charactersticReference$41pR, ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(node)).first());
       }
     }
     @Override

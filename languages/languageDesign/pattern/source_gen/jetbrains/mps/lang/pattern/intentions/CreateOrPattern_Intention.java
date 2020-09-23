@@ -15,7 +15,6 @@ import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -65,7 +64,7 @@ public final class CreateOrPattern_Intention extends AbstractIntentionDescriptor
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode currentNode = editorContext.getSelectedNode();
       SNode orPattern = SNodeFactoryOperations.createNewNode(CONCEPTS.OrPattern$Lk, null);
-      ListSequence.fromList(AttributeOperations.getAttributeList(currentNode, new IAttributeDescriptor.AllAttributes())).addElement(orPattern);
+      ListSequence.fromList(new IAttributeDescriptor.AllAttributes().list(currentNode)).addElement(orPattern);
       SLinkOperations.setTarget(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(orPattern, LINKS.clause$z7ps)).first(), LINKS.pattern$GuFI), LINKS.quotedNode$ip4, SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(SNodeOperations.getConcept(currentNode))));
     }
     @Override

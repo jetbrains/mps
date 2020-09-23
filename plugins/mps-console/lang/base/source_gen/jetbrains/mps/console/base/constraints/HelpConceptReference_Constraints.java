@@ -20,7 +20,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.query.behavior.HelpProvider__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import java.util.HashMap;
 import jetbrains.mps.smodel.SNodePointer;
@@ -57,7 +56,7 @@ public class HelpConceptReference_Constraints extends BaseConstraintsDescriptor 
             }) {
               @Override
               public boolean isExcluded(SNode node) {
-                return !(SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptDeclaration$gH)) || SPropertyOperations.getBoolean(SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$gH), PROPS.abstract$ibpT) || AttributeOperations.getAttribute(SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$gH), new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV)) != null;
+                return !(SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptDeclaration$gH)) || SPropertyOperations.getBoolean(SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$gH), PROPS.abstract$ibpT) || new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV).get(SNodeOperations.cast(node, CONCEPTS.ConceptDeclaration$gH)) != null;
 
               }
             };
@@ -73,8 +72,8 @@ public class HelpConceptReference_Constraints extends BaseConstraintsDescriptor 
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept HelpConceptReference$Y8 = MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x60279080c2f3b209L, "jetbrains.mps.console.base.structure.HelpConceptReference");
-    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
     /*package*/ static final SConcept DeprecatedNodeAnnotation$zV = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x11d0a70ae54L, "jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation");
+    /*package*/ static final SConcept ConceptDeclaration$gH = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration");
   }
 
   private static final class LINKS {

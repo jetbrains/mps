@@ -12,7 +12,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
@@ -50,15 +49,15 @@ public final class AddFieldDocComment_Intention extends AbstractIntentionDescrip
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl)) == null) ? "Add Documentation Comment" : "Remove Documentation Comment");
+      return ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl).get(node) == null) ? "Add Documentation Comment" : "Remove Documentation Comment");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       DocCommentHelper.addJavadocLangIfMissing(node);
 
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl)) == null)) {
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl).get(node) == null)) {
         SNodeFactoryOperations.setNewAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl), CONCEPTS.FieldDocComment$wl);
-        SNode line = SNodeFactoryOperations.addNewChild(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl)), LINKS.body$OAGp, CONCEPTS.CommentLine$hJ);
+        SNode line = SNodeFactoryOperations.addNewChild(new IAttributeDescriptor.NodeAttribute(CONCEPTS.FieldDocComment$wl).get(node), LINKS.body$OAGp, CONCEPTS.CommentLine$hJ);
         SNode firstPart = SNodeFactoryOperations.addNewChild(line, LINKS.part$QuzQ, CONCEPTS.TextCommentLinePart$Eb);
         SelectionUtil.selectCell(editorContext, firstPart, SelectionManager.FIRST_CELL);
       } else {

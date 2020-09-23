@@ -12,7 +12,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -49,7 +48,7 @@ public final class AddDefaultNodeAttribute_Intention extends AbstractIntentionDe
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$_u)) != null)) {
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$_u).get(node) != null)) {
         return "remove default node attribute";
       } else {
         return "add default node attribute";
@@ -57,11 +56,11 @@ public final class AddDefaultNodeAttribute_Intention extends AbstractIntentionDe
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$_u)) != null)) {
-        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$_u)));
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$_u).get(node) != null)) {
+        SNodeOperations.deleteNode(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$_u).get(node));
       } else {
         new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$_u).set(node, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0x27d5e845b8e8aee1L, "testDefaultEditor.structure.DefaultNodeAttribute")));
-        SelectionUtil.selectCell(editorContext, AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$_u)), "const");
+        SelectionUtil.selectCell(editorContext, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DefaultNodeAttribute$_u).get(node), "const");
       }
     }
     @Override

@@ -46,7 +46,6 @@ import java.util.Objects;
 import jetbrains.mps.baseLanguage.util.BaseLanguageEnvironmentHelper;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.baseLanguage.scopes.ClassifierResolveUtils;
 import jetbrains.mps.baseLanguage.scopes.Scopes;
@@ -554,8 +553,8 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
     // todo: remove this logic from Classifier 
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.VariableDeclaration$Y0)) {
       Iterable<SNode> staticImportedFields = null;
-      if ((AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_)) != null)) {
-        staticImportedFields = ClassifierResolveUtils.staticImportedFields(AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_)));
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).get(__thisNode__) != null)) {
+        staticImportedFields = ClassifierResolveUtils.staticImportedFields(new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).get(__thisNode__));
       }
       Iterable<SNode> variables = SNodeOperations.ofConcept(Sequence.fromIterable(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(__thisNode__))).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
@@ -569,8 +568,8 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
 
     if (SConceptOperations.isExactly(SNodeOperations.asSConcept(kind), CONCEPTS.MethodDeclaration$_P)) {
       Iterable<SNode> staticImportedMethods = null;
-      if ((AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_)) != null)) {
-        staticImportedMethods = ClassifierResolveUtils.staticImportedMethods(AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_)));
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).get(__thisNode__) != null)) {
+        staticImportedMethods = ClassifierResolveUtils.staticImportedMethods(new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).get(__thisNode__));
       }
       Iterable<SNode> methods = SNodeOperations.ofConcept(Sequence.fromIterable(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(__thisNode__))).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {

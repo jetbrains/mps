@@ -13,7 +13,6 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -50,7 +49,7 @@ public final class ConvertToReferenceCall_Intention extends AbstractIntentionDes
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43)).subtract(Sequence.fromIterable(Sequence.<SNode>singleton(AttributeOperations.getAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.methodName$lufi))))).isNotEmpty()) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43)).subtract(Sequence.fromIterable(Sequence.<SNode>singleton(new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.methodName$lufi).get(node)))).isNotEmpty()) {
       return false;
     }
     SNode classifierType = TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(node, LINKS.instance$oRHo)), CONCEPTS.ClassifierType$bL);
@@ -90,8 +89,8 @@ public final class ConvertToReferenceCall_Intention extends AbstractIntentionDes
         }
       }).first());
       ListSequence.fromList(SLinkOperations.getChildren(replacement, LINKS.actualArgument$pzdx)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$gHks)));
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.methodName$lufi)) != null)) {
-        new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, LINKS.baseMethodDeclaration$pyYw).set(replacement, createReferenceMacro_nfdvwd_a0a0e0a(SLinkOperations.getTarget(SLinkOperations.getTarget(AttributeOperations.getAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.methodName$lufi)), LINKS.propertyValueFunction$7Sh_), LINKS.body$e68K)));
+      if ((new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.methodName$lufi).get(node) != null)) {
+        new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, LINKS.baseMethodDeclaration$pyYw).set(replacement, createReferenceMacro_nfdvwd_a0a0e0a(SLinkOperations.getTarget(SLinkOperations.getTarget(new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.methodName$lufi).get(node), LINKS.propertyValueFunction$7Sh_), LINKS.body$e68K)));
       }
       SNodeOperations.replaceWithAnother(node, createDotExpression_nfdvwd_a0a5a0(SNodeOperations.deleteNode(SLinkOperations.getTarget(node, LINKS.instance$oRHo)), replacement));
     }

@@ -6,7 +6,6 @@ import jetbrains.mps.generator.runtime.Generated;
 import jetbrains.mps.generator.impl.query.QueryProviderBase;
 import jetbrains.mps.generator.template.DropRootRuleContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -103,7 +102,7 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean dropRootRule_Condition_56_0(final DropRootRuleContext _context) {
-    if (!(SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.ClassConcept$bK)) || AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O)) != null) {
+    if (!(SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.ClassConcept$bK)) || new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(_context.getNode()) != null) {
       return true;
     }
     return Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.as(_context.getNode(), CONCEPTS.ClassConcept$bK), LINKS.annotation$K49I), LINKS.annotation$12Ek)).all(new IWhereFilter<SNode>() {
@@ -113,7 +112,7 @@ public class QueriesGenerated extends QueryProviderBase {
     });
   }
   public static boolean rule_Condition_1_0(final BaseMappingRuleContext _context) {
-    return AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O)) != null;
+    return new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(_context.getNode()) != null;
   }
   public static boolean rule_Condition_51_0(final BaseMappingRuleContext _context) {
     return GeneratorUtilEx.shallGenerateFunctionToEvaluate(_context.getNode());
@@ -2139,7 +2138,7 @@ public class QueriesGenerated extends QueryProviderBase {
     boolean directRef = SNodeOperations.getModel(((SNode) _context.getVariable("template"))) == SNodeOperations.getModel(_context.getNode());
     if (directRef && !(SNodeOperations.isInstanceOf(((SNode) _context.getVariable("template")), CONCEPTS.TemplateDeclaration$5G))) {
       // check template 
-      if (AttributeOperations.getAttribute(((SNode) _context.getVariable("template")), new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O)) == null) {
+      if (new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(((SNode) _context.getVariable("template"))) == null) {
         _context.showErrorMessage(_context.getNode(), "cannot refer template root without template annotation");
         return false;
       }
@@ -3025,7 +3024,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Iterable<SNode> sourceNodesQuery_0_18(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.collect(ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.MappingConfiguration$7j)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O)) == null && (SLinkOperations.getTarget(it, LINKS.condition$2Y_U) != null);
+        return new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(it) == null && (SLinkOperations.getTarget(it, LINKS.condition$2Y_U) != null);
       }
     }), LINKS.condition$2Y_U);
   }
@@ -3059,7 +3058,7 @@ public class QueriesGenerated extends QueryProviderBase {
     MetaObjectGenerationHelper moh = ((MetaObjectGenerationHelper) _context.getVariable("mogh"));
 
     for (SProperty property : Sequence.fromIterable(_context.getNode().getProperties())) {
-      if ((AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, property)) != null)) {
+      if ((new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, property).get(_context.getNode()) != null)) {
         continue;
       }
       SNode propertyNode = SModelOperations.createNewNode(_context.getInputModel(), null, CONCEPTS.GeneratorInternal_PropertyDescriptor$l3);
@@ -3204,7 +3203,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Iterable<SNode> sourceNodesQuery_40_3(final SourceSubstituteMacroNodesContext _context) {
     return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.INamedConcept$Kd)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O)) != null;
+        return new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(it) != null;
       }
     });
   }
@@ -3428,7 +3427,7 @@ public class QueriesGenerated extends QueryProviderBase {
     for (SNode n : nodes) {
       SNode de = IOperation__BehaviorDescriptor.getDotExpression_idhO_4GYO.invoke(n);
       new IAttributeDescriptor.NodeAttribute(CONCEPTS.TypeHintAttribute$E9).setNew(de);
-      SLinkOperations.setTarget(AttributeOperations.getAttribute(de, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TypeHintAttribute$E9)), LINKS.typeHint$CtJm, SNodeOperations.cast(SNodeOperations.copyNode(TypecheckingFacade.getFromContext().getTypeOf(n)), CONCEPTS.Type$bu));
+      SLinkOperations.setTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.TypeHintAttribute$E9).get(de), LINKS.typeHint$CtJm, SNodeOperations.cast(SNodeOperations.copyNode(TypecheckingFacade.getFromContext().getTypeOf(n)), CONCEPTS.Type$bu));
     }
   }
   public static void mappingScript_CodeBlock_3(final MappingScriptContext _context) {
@@ -3634,7 +3633,7 @@ public class QueriesGenerated extends QueryProviderBase {
     MetaObjectGenerationHelper moh = ((MetaObjectGenerationHelper) _context.getVariable("mogh"));
 
     for (SReference reference : _context.getNode().getReferences()) {
-      if (AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, reference.getLink())) != null) {
+      if (new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, reference.getLink()).get(_context.getNode()) != null) {
         continue;
       }
       SNode targetNode = jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(reference);
@@ -3772,7 +3771,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object varMacro_Value_55_10(final TemplateVarContext _context) {
     return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.MappingConfiguration$7j)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O)) == null && (SLinkOperations.getTarget(it, LINKS.condition$2Y_U) != null);
+        return new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(it) == null && (SLinkOperations.getTarget(it, LINKS.condition$2Y_U) != null);
       }
     }).toListSequence();
   }

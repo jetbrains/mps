@@ -33,7 +33,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
 import jetbrains.mps.lang.structure.behavior.EnumerationDataTypeDeclaration_Old__BehaviorDescriptor;
 import jetbrains.mps.lang.structure.behavior.EnumerationMemberDeclaration_Old__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import java.util.List;
 import jetbrains.mps.smodel.SNodePointer;
@@ -162,7 +161,7 @@ public class MigrateToNewEnumration extends MigrationScriptBase {
   }
 
   public static SNode generateReplacementMethods(SNode enumm) {
-    SNode enumMigration = AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$));
+    SNode enumMigration = new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$).get(enumm);
 
     if (!(SEnumOperations.isMember(SPropertyOperations.getEnum(enumMigration, PROPS.nameOpMigration$L1EO), 0x5a14f10359640645L)) && !(SEnumOperations.isMember(SPropertyOperations.getEnum(enumMigration, PROPS.valueOpMigration$UswM), 0x5a14f103596433d8L))) {
       return null;

@@ -30,7 +30,6 @@ import jetbrains.mps.generator.template.MapSrcMacroContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.generator.template.MapSrcMacroPostProcContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.generator.template.MappingScriptContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
@@ -351,7 +350,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }).toListSequence().where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.BuilderParameter$vk)) != null);
+        return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.BuilderParameter$vk).get(it) != null);
       }
     });
     for (SNode ref : Sequence.fromIterable(references)) {
@@ -372,7 +371,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static void mappingScript_CodeBlock_10(final MappingScriptContext _context) {
     for (SNode blockStatement : ListSequence.fromList(SModelOperations.nodes(_context.getModel(), CONCEPTS.BlockStatement$u4)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.BuilderBlockStatement$tR)) != null);
+        return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.BuilderBlockStatement$tR).get(it) != null);
       }
     })) {
       SNodeOperations.replaceWithAnother(blockStatement, SLinkOperations.getTarget(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(blockStatement, LINKS.statements$q65M), LINKS.statement$53DE)).where(new IWhereFilter<SNode>() {

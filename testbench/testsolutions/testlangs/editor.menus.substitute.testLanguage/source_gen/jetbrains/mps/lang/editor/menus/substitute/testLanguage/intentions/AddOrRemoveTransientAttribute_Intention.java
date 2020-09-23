@@ -12,7 +12,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
@@ -47,7 +46,7 @@ public final class AddOrRemoveTransientAttribute_Intention extends AbstractInten
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_TransparentEditor$1D)) == null)) {
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_TransparentEditor$1D).get(node) == null)) {
         return "Add Transient Attribute";
       } else {
         return "Remove Transient Attribute";
@@ -55,10 +54,10 @@ public final class AddOrRemoveTransientAttribute_Intention extends AbstractInten
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_TransparentEditor$1D)) == null)) {
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_TransparentEditor$1D).get(node) == null)) {
         new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_TransparentEditor$1D).setNew(node);
       } else {
-        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_TransparentEditor$1D)));
+        SNodeOperations.deleteNode(new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_TransparentEditor$1D).get(node));
       }
     }
     @Override

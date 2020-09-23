@@ -8,9 +8,8 @@ import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
-import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
+import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
@@ -44,7 +43,7 @@ public class NewRootMappingRule_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(final AnActionEvent event, final Map<String, Object> _params) {
-    SNode annotation = AttributeOperations.getAttribute(event.getData(MPSCommonDataKeys.NODE), new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O));
+    SNode annotation = new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(event.getData(MPSCommonDataKeys.NODE));
     if (annotation == null) {
       return false;
     }
@@ -104,7 +103,7 @@ public class NewRootMappingRule_Action extends BaseAction {
     }
     //  add new rule 
     SNode rule = SNodeFactoryOperations.addNewChild(ListSequence.fromList(configs).first(), LINKS.rootMappingRule$edB6, null);
-    SLinkOperations.setTarget(rule, LINKS.applicableConcept$Hpnk, SLinkOperations.getTarget(AttributeOperations.getAttribute(event.getData(MPSCommonDataKeys.NODE), new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O)), LINKS.applicableConcept$LAIX));
+    SLinkOperations.setTarget(rule, LINKS.applicableConcept$Hpnk, SLinkOperations.getTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(event.getData(MPSCommonDataKeys.NODE)), LINKS.applicableConcept$LAIX));
     SLinkOperations.setTarget(rule, LINKS.template$n_Qy, event.getData(MPSCommonDataKeys.NODE));
     //  open in editor 
     NavigationSupport.getInstance().openNode(event.getData(MPSCommonDataKeys.MPS_PROJECT), rule, true, true);

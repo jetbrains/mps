@@ -13,7 +13,6 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -53,12 +52,12 @@ public final class SetCopyOutcome_Intention extends AbstractIntentionDescriptor 
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$us)) != null) ? "Remove @CopyOutcome annotation" : "Add @CopyOutcome annotation");
+      return ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$us).get(node) != null) ? "Remove @CopyOutcome annotation" : "Add @CopyOutcome annotation");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$us)) != null)) {
-        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$us)));
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$us).get(node) != null)) {
+        SNodeOperations.deleteNode(new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$us).get(node));
       } else {
         new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$us).setNew(node);
       }

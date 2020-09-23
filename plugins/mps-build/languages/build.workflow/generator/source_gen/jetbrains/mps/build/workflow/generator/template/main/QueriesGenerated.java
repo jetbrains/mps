@@ -25,7 +25,6 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.build.workflow.behavior.BwfProjectPart__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.generator.template.MapSrcMacroPostProcContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import java.io.File;
 import jetbrains.mps.generator.template.MappingScriptContext;
@@ -448,12 +447,12 @@ public class QueriesGenerated extends QueryProviderBase {
     // I can't use drop attribute rule or a reduction rule as input node is the same 
     // (BwfProject instance), and there's no output node information to tell when 
     // I shall and shall not drop/reduce the attribute 
-    if ((AttributeOperations.getAttribute(_context.getOutputNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$us)) != null)) {
-      String loc = SPropertyOperations.getString(AttributeOperations.getAttribute(_context.getOutputNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$us)), PROPS.location$Jy3A);
+    if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$us).get(_context.getOutputNode()) != null)) {
+      String loc = SPropertyOperations.getString(new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$us).get(_context.getOutputNode()), PROPS.location$Jy3A);
       if ((loc != null && loc.length() > 0)) {
         File parent = new File(loc).getParentFile();
         if (parent != null) {
-          SPropertyOperations.assign(AttributeOperations.getAttribute(_context.getOutputNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$us)), PROPS.location$Jy3A, new File(parent, SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL) + ".properties").getPath());
+          SPropertyOperations.assign(new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$us).get(_context.getOutputNode()), PROPS.location$Jy3A, new File(parent, SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL) + ".properties").getPath());
         }
       }
     }

@@ -8,7 +8,6 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -34,7 +33,7 @@ public class _ClassConcept_Extends_Delete {
           return;
         }
         SLinkOperations.setTarget(node, LINKS.superclass$Mp9$, null);
-        ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.superclass$Mp9$))).visitAll(new IVisitor<SNode>() {
+        ListSequence.fromList(new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.superclass$Mp9$).list(node)).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
             SNodeOperations.deleteNode(it);
           }

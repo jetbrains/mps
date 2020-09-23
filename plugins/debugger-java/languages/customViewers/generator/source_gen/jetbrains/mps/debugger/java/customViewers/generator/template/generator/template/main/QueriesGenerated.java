@@ -27,7 +27,6 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.generator.template.MappingScriptContext;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import java.util.Map;
 import jetbrains.mps.generator.impl.query.CreateRootCondition;
 import java.util.HashMap;
@@ -201,7 +200,7 @@ public class QueriesGenerated extends QueryProviderBase {
       if (SLinkOperations.hasPointer(SLinkOperations.getTarget(classConcept, LINKS.superclass$Mp9$), LINKS.classifier$cxMr, new SNodePointer("r:ac4cce94-c169-4971-be8f-807482637028(jetbrains.mps.debugger.java.api.state.proxy)", "3432969378036017270")) && SPropertyOperations.getString(classConcept, PROPS.name$MnvL).endsWith("_WrapperFactory")) {
         for (SNode method : ListSequence.fromList(SNodeOperations.getNodeDescendants(classConcept, CONCEPTS.InstanceMethodDeclaration$39, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ToProcessMethod$O5)) != null);
+            return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.ToProcessMethod$O5).get(it) != null);
           }
         })) {
           if ((method == null)) {

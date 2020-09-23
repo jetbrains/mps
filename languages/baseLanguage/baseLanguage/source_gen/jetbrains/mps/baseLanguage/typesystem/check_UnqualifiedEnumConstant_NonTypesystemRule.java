@@ -21,7 +21,6 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.errors.BaseQuickFixProvider;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.baseLanguage.behavior.JavaImports__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.Tokens__BehaviorDescriptor;
@@ -82,7 +81,7 @@ public class check_UnqualifiedEnumConstant_NonTypesystemRule extends AbstractNon
     if (!(SNodeOperations.isInstanceOf(root, CONCEPTS.Classifier$Ix))) {
       return;
     }
-    SNode javaImports = AttributeOperations.getAttribute(SNodeOperations.cast(root, CONCEPTS.Classifier$Ix), new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_));
+    SNode javaImports = new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).get(SNodeOperations.cast(root, CONCEPTS.Classifier$Ix));
     if ((javaImports == null)) {
       return;
     }

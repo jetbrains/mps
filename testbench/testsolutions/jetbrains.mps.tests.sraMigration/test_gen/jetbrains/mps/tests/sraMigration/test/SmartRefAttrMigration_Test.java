@@ -13,7 +13,6 @@ import jetbrains.mps.lang.structure.util.SmartRefAttributeUtil;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.test.matcher.NodesMatcher;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -83,7 +82,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
         SNode node_explicitAttr_OneCustom = resolveCD(ref_explicitAttr_OneCustom);
 
         {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), AttributeOperations.getAttribute(node_explicitAttr_OneCustom, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3)));
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3).get(node_explicitAttr_OneCustom));
           List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_m5qb0v_a0a0b0c0a0a0b0(resolveLD(ref_explicitAttr_OneCustom_characteristicRef)));
           Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
         }
@@ -96,7 +95,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
         SNode node_explicitAttr_OneOfTwo = resolveCD(ref_explicitAttr_OneOfTwo);
 
         {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), AttributeOperations.getAttribute(node_explicitAttr_OneOfTwo, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3)));
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3).get(node_explicitAttr_OneOfTwo));
           List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_m5qb0v_a0a0b0c0a0a0c0(resolveLD(ref_explicitAttr_OneOfTwo_characteristicRef)));
           Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
         }
@@ -109,7 +108,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
         SNode node_explicitAttr_OneNoReq = resolveCD(ref_explicitAttr_OneNoReq);
 
         {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), AttributeOperations.getAttribute(node_explicitAttr_OneNoReq, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3)));
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3).get(node_explicitAttr_OneNoReq));
           List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_m5qb0v_a0a0b0c0a0a0d0(resolveLD(ref_explicitAttr_OneNoReq_characteristicRef)));
           Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
         }
@@ -122,7 +121,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
         SNode node_explicitAttr_Specialized = resolveCD(ref_explicitAttr_Specialized);
 
         {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), AttributeOperations.getAttribute(node_explicitAttr_Specialized, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3)));
+          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3).get(node_explicitAttr_Specialized));
           List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_m5qb0v_a0a0b0c0a0a0e0(resolveLD(ref_explicitAttr_Specialized_characteristicRef)));
           Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
         }
@@ -285,7 +284,7 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
     SModel model = modelRef.resolve(project.getRepository());
     return ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.SubstituteMenu_Named$cm)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.GeneratedSubstituteMenuAttribute$Ya)) != null) && SLinkOperations.getTarget(it, LINKS.conceptDeclaration$h3E) == concept;
+        return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.GeneratedSubstituteMenuAttribute$Ya).get(it) != null) && SLinkOperations.getTarget(it, LINKS.conceptDeclaration$h3E) == concept;
       }
     }).first();
   }

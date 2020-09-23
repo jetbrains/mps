@@ -13,7 +13,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.util.DescendantsTreeIterator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -49,7 +48,7 @@ public class GeneratorTemplatesChecker extends SpecificChecker {
     List<IssueKindReportItem> results = ListSequence.fromList(new ArrayList<IssueKindReportItem>());
 
     for (SNode root : ListSequence.fromList(SModelOperations.roots(model, null))) {
-      if (AttributeOperations.getAttribute(root, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O)) != null) {
+      if (new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(root) != null) {
         scanTemplateNode(results, root, progressMonitor);
       }
       if (progressMonitor.isCanceled()) {
@@ -87,7 +86,7 @@ public class GeneratorTemplatesChecker extends SpecificChecker {
   private void checkReferences(List<IssueKindReportItem> results, SNode node) {
     for (SReference ref : ListSequence.fromList(SNodeOperations.getReferences(node))) {
       // there's macro to adjust the reference, don't care 
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, ref.getLink())) != null)) {
+      if ((new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceMacro$30, ref.getLink()).get(node) != null)) {
         continue;
       }
       SNode target = jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(ref);
@@ -100,7 +99,7 @@ public class GeneratorTemplatesChecker extends SpecificChecker {
       }
       SNode root = SNodeOperations.getContainingRoot(target);
       //  and it's a root template in the generator model... 
-      if (AttributeOperations.getAttribute(root, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O)) == null) {
+      if (new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(root) == null) {
         continue;
       }
       if (root == SNodeOperations.getContainingRoot(node)) {

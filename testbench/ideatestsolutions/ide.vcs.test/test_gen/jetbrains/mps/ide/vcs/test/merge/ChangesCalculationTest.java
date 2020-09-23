@@ -37,7 +37,6 @@ import jetbrains.mps.vcs.diff.changes.NodeGroupChange;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import java.util.List;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.impl.cellActions.CommentUtil;
@@ -225,7 +224,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
 
   @Test
   public void removeChildAttribute() {
-    final SNode commented = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collect(AttributeOperations.getAttributeList(myRootNode, new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.member$L_2d)), LINKS.commentedNode$MYvG), CONCEPTS.InstanceMethodDeclaration$39)).where(new IWhereFilter<SNode>() {
+    final SNode commented = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collect(new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.member$L_2d).list(myRootNode), LINKS.commentedNode$MYvG), CONCEPTS.InstanceMethodDeclaration$39)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "commented");
       }

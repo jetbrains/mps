@@ -17,7 +17,6 @@ import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -69,12 +68,12 @@ public final class AddRemoveFigureParameterAttributePropertySpecification_Intent
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FigureParameterAttributeViewProperty$gb)) == null ? "Add figure parameter attribute" : "Remove figure parameter attribute");
+      return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.FigureParameterAttributeViewProperty$gb).get(node) == null ? "Add figure parameter attribute" : "Remove figure parameter attribute");
 
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FigureParameterAttributeViewProperty$gb)) != null) {
+      if (new IAttributeDescriptor.NodeAttribute(CONCEPTS.FigureParameterAttributeViewProperty$gb).get(node) != null) {
         new IAttributeDescriptor.NodeAttribute(CONCEPTS.FigureParameterAttributeViewProperty$gb).set(node, null);
       } else {
         new IAttributeDescriptor.NodeAttribute(CONCEPTS.FigureParameterAttributeViewProperty$gb).set(node, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x6595651980a1f8ecL, "jetbrains.mps.lang.editor.figures.structure.FigureParameterAttributeViewProperty")));

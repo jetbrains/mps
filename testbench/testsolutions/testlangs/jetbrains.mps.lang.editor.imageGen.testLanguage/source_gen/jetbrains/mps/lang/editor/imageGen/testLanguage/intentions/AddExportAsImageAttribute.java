@@ -8,7 +8,6 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -62,14 +61,14 @@ public class AddExportAsImageAttribute extends IntentionsFactory {
 
 
   public void execute(SNode node, EditorContext editorContext) {
-    if (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExportAsImage$xS)) == null) {
+    if (new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExportAsImage$xS).get(node) == null) {
       new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExportAsImage$xS).set(node, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x9bcd3d4bc7894f70L, 0x85e4038ea20762b9L, 0x21e6800a818d97ecL, "jetbrains.mps.lang.editor.imageGen.testLanguage.structure.ExportAsImage")));
     } else {
       new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExportAsImage$xS).set(node, null);
     }
   }
   public String description(SNode node, EditorContext editorContext) {
-    return ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExportAsImage$xS)) == null ? "Add" : "Remove")) + " export as image annotation";
+    return ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExportAsImage$xS).get(node) == null ? "Add" : "Remove")) + " export as image annotation";
   }
 
   public Collection<NodeTransformer> getTreeTransformers(SNode node, SNode child, EditorContext editorContext) {

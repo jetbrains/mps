@@ -7,23 +7,22 @@ import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class check_GenerationDescriptor_Class_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_GenerationDescriptor_Class_NonTypesystemRule() {
   }
   public void applyRule(final SNode c, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((AttributeOperations.getAttribute(SLinkOperations.getTarget(c, LINKS.implTemplate$Z$ZX), new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.name$MnvL)) == null)) {
+    if ((new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyMacro$c9, PROPS.name$MnvL).get(SLinkOperations.getTarget(c, LINKS.implTemplate$Z$ZX)) == null)) {
       return;
     }
     {
@@ -41,10 +40,6 @@ public class check_GenerationDescriptor_Class_NonTypesystemRule extends Abstract
     return false;
   }
 
-  private static final class LINKS {
-    /*package*/ static final SReferenceLink implTemplate$Z$ZX = MetaAdapterFactory.getReferenceLink(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x5c2c36f4ea0d3b2fL, 0x5921e5e41155f7ddL, "implTemplate");
-  }
-
   private static final class CONCEPTS {
     /*package*/ static final SConcept PropertyMacro$c9 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47e9f6f0L, "jetbrains.mps.lang.generator.structure.PropertyMacro");
     /*package*/ static final SConcept GenerationDescriptor_Class$Tm = MetaAdapterFactory.getConcept(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x5c2c36f4ea0d3b2fL, "jetbrains.mps.lang.aspect.structure.GenerationDescriptor_Class");
@@ -52,5 +47,9 @@ public class check_GenerationDescriptor_Class_NonTypesystemRule extends Abstract
 
   private static final class PROPS {
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SReferenceLink implTemplate$Z$ZX = MetaAdapterFactory.getReferenceLink(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x5c2c36f4ea0d3b2fL, 0x5921e5e41155f7ddL, "implTemplate");
   }
 }

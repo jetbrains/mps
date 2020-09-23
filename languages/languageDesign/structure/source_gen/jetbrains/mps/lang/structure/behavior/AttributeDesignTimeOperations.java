@@ -13,7 +13,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
@@ -44,7 +43,7 @@ public class AttributeDesignTimeOperations {
     }).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         // todo: why not getAttributeRole? 
-        return isNotEmptyString(SPropertyOperations.getString(AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$hg)), PROPS.role$vUyK)) && Sequence.fromIterable(getApplicableConcepts(it)).any(new IWhereFilter<SNode>() {
+        return isNotEmptyString(SPropertyOperations.getString(new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$hg).get(it), PROPS.role$vUyK)) && Sequence.fromIterable(getApplicableConcepts(it)).any(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
             return (boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(nodeConcept, it);
           }
@@ -59,22 +58,22 @@ public class AttributeDesignTimeOperations {
     if (!(isAttributeDeclaration(attributeDeclaration))) {
       return false;
     }
-    return SPropertyOperations.getBoolean(SLinkOperations.getTarget(AttributeOperations.getAttribute(SetSequence.fromSet(getSuperConcepts(attributeDeclaration)).findFirst(new IWhereFilter<SNode>() {
+    return SPropertyOperations.getBoolean(SLinkOperations.getTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$hg).get(SetSequence.fromSet(getSuperConcepts(attributeDeclaration)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return (SLinkOperations.getTarget(AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$hg)), LINKS.multiple$eysG) != null);
+        return (SLinkOperations.getTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$hg).get(it), LINKS.multiple$eysG) != null);
       }
-    }), new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$hg)), LINKS.multiple$eysG), PROPS.value$JccR);
+    })), LINKS.multiple$eysG), PROPS.value$JccR);
   }
   @Nullable
   public static String getAttributeRole(SNode attributeDeclaration) {
     if (!(isAttributeDeclaration(attributeDeclaration))) {
       return null;
     }
-    return SPropertyOperations.getString(AttributeOperations.getAttribute(SetSequence.fromSet(getSuperConcepts(attributeDeclaration)).findFirst(new IWhereFilter<SNode>() {
+    return SPropertyOperations.getString(new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$hg).get(SetSequence.fromSet(getSuperConcepts(attributeDeclaration)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return isNotEmptyString(SPropertyOperations.getString(AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$hg)), PROPS.role$vUyK));
+        return isNotEmptyString(SPropertyOperations.getString(new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$hg).get(it), PROPS.role$vUyK));
       }
-    }), new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$hg)), PROPS.role$vUyK);
+    })), PROPS.role$vUyK);
   }
 
   @Nullable
@@ -96,7 +95,7 @@ public class AttributeDesignTimeOperations {
     }
     return SetSequence.fromSet(getSuperConcepts(attributeDeclaration)).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
-        return SLinkOperations.collect(SLinkOperations.getChildren(AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$hg)), LINKS.attributed$sGW5), LINKS.concept$sRY2);
+        return SLinkOperations.collect(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.AttributeInfo$hg).get(it), LINKS.attributed$sGW5), LINKS.concept$sRY2);
       }
     }).distinct().where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {

@@ -20,7 +20,6 @@ import jetbrains.mps.smodel.adapter.ids.SPropertyId;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import org.jetbrains.mps.openapi.language.SEnumeration;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -61,8 +60,8 @@ public final class PropertyAttribute__BehaviorDescriptor extends BaseBHDescripto
     if (property.getType() instanceof SEnumeration) {
       if (SPropertyOperations.getBoolean(__thisNode__, PROPS.enumUsageMigrated$64YW) && SNodeOperations.hasRole(propertyDeclaration, LINKS.oldProperty$Vefi)) {
         propertyDeclaration = SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.getParent(propertyDeclaration)), CONCEPTS.PropertyDeclaration$1S);
-      } else if (!(SPropertyOperations.getBoolean(__thisNode__, PROPS.enumUsageMigrated$64YW)) && SNodeOperations.hasRole(propertyDeclaration, LINKS.propertyDeclaration$YUgg) && (AttributeOperations.getAttribute(propertyDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumPropertyMigrationInfo$O3)) != null)) {
-        propertyDeclaration = SLinkOperations.getTarget(AttributeOperations.getAttribute(propertyDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumPropertyMigrationInfo$O3)), LINKS.oldProperty$Vefi);
+      } else if (!(SPropertyOperations.getBoolean(__thisNode__, PROPS.enumUsageMigrated$64YW)) && SNodeOperations.hasRole(propertyDeclaration, LINKS.propertyDeclaration$YUgg) && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumPropertyMigrationInfo$O3).get(propertyDeclaration) != null)) {
+        propertyDeclaration = SLinkOperations.getTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumPropertyMigrationInfo$O3).get(propertyDeclaration), LINKS.oldProperty$Vefi);
       }
     }
     return propertyDeclaration;

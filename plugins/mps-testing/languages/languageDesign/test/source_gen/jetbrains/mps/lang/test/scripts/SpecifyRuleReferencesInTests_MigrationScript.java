@@ -6,7 +6,6 @@ import jetbrains.mps.lang.script.runtime.BaseMigrationScript;
 import jetbrains.mps.lang.script.runtime.AbstractMigrationRefactoring;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.components.ComponentHost;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -36,7 +35,7 @@ public final class SpecifyRuleReferencesInTests_MigrationScript extends BaseMigr
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        return (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj)) != null);
+        return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj).get(node) != null);
       }
       @Override
       public void doUpdateInstanceNode(SNode node) {

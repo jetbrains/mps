@@ -17,7 +17,6 @@ import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
@@ -73,7 +72,7 @@ public class AnnotateRefPresentationQueriesAsMigrated extends MigrationScriptBas
       for (SNode conceptConstraint : CollectionSequence.fromCollection(conceptConstraints)) {
         for (SNode refConstraint : ListSequence.fromList(SLinkOperations.getChildren(conceptConstraint, LINKS.referent$k0ZK))) {
           SNode presentation = SLinkOperations.getTarget(refConstraint, LINKS.presentation$VLnP);
-          if ((presentation != null) && (AttributeOperations.getAttribute(presentation, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$T3)) == null)) {
+          if ((presentation != null) && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$T3).get(presentation) == null)) {
             SetSequence.fromSet(engagedConcepts).addSequence(Sequence.fromIterable(getConceptStack(SLinkOperations.getTarget(conceptConstraint, LINKS.concept$EVpZ), SLinkOperations.getTarget(refConstraint, LINKS.applicableLink$7IrX))));
           }
         }
@@ -88,11 +87,11 @@ public class AnnotateRefPresentationQueriesAsMigrated extends MigrationScriptBas
       for (SNode conceptConstraint : CollectionSequence.fromCollection(conceptConstraints)) {
         for (SNode refConstraint : ListSequence.fromList(SLinkOperations.getChildren(conceptConstraint, LINKS.referent$k0ZK))) {
           SNode presentation = SLinkOperations.getTarget(refConstraint, LINKS.presentation$VLnP);
-          if ((presentation != null) && (AttributeOperations.getAttribute(presentation, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$T3)) == null)) {
+          if ((presentation != null) && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$T3).get(presentation) == null)) {
             new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$T3).set(presentation, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x583cd121d513aabeL, "jetbrains.mps.lang.constraints.structure.RefPresentationMigrated")));
             Iterable<SNode> superEditorComponents = findSuperEditorComponentsUsingReference(SLinkOperations.getTarget(conceptConstraint, LINKS.concept$EVpZ), SLinkOperations.getTarget(refConstraint, LINKS.applicableLink$7IrX));
             for (SNode editorComponent : Sequence.fromIterable(superEditorComponents)) {
-              ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(presentation, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$T3)), LINKS.problems$4CuI)).addElement(createRefPresentationMigratedProblem_lpnriw_a0a0a2a1a0a7a1a6(editorComponent));
+              ListSequence.fromList(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$T3).get(presentation), LINKS.problems$4CuI)).addElement(createRefPresentationMigratedProblem_lpnriw_a0a0a2a1a0a7a1a6(editorComponent));
             }
           }
         }
@@ -112,7 +111,7 @@ public class AnnotateRefPresentationQueriesAsMigrated extends MigrationScriptBas
       };
       ListSequence.fromList(problems).addSequence(CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConstraintFunction_ReferentSearchScope_Presentation$uU, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$T3)), LINKS.problems$4CuI)).isNotEmpty();
+          return ListSequence.fromList(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.RefPresentationMigrated$T3).get(it), LINKS.problems$4CuI)).isNotEmpty();
         }
       }).select(new ISelector<SNode, PresentationQueryMigratedWithProblems>() {
         public PresentationQueryMigratedWithProblems select(SNode it) {

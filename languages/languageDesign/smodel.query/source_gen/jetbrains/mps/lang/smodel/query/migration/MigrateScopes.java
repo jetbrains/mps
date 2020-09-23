@@ -20,7 +20,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
@@ -158,7 +157,7 @@ public class MigrateScopes extends MigrationScriptBase {
     for (SNode qe : Sequence.fromIterable(qes)) {
       if (Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$jM02), LINKS.parameter$clir), CONCEPTS.QueryParameterScope_old$ZG)).concat(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(qe, LINKS.parameter$jM02), LINKS.parameter$clir), CONCEPTS.QueryParameterIncludeReadOnly_old$kr))).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration_old$2j)) == null;
+          return new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration_old$2j).get(it) == null;
         }
       }).isEmpty()) {
         continue;

@@ -23,7 +23,6 @@ import org.jetbrains.annotations.Nullable;
 import org.apache.log4j.Logger;
 import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -110,7 +109,7 @@ public class TestSubstituteSpecialChild_TransformationMenu extends Transformatio
       @Nullable
       @Override
       public String getLabelText(String pattern) {
-        if ((AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteSpecialChildAttribute$TJ)) != null)) {
+        if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteSpecialChildAttribute$TJ).get(_context.getNode()) != null)) {
           return "Remove Attribute ";
         } else {
           return "Add Attribute";
@@ -119,8 +118,8 @@ public class TestSubstituteSpecialChild_TransformationMenu extends Transformatio
 
       @Override
       public void execute(@NotNull String pattern) {
-        if ((AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteSpecialChildAttribute$TJ)) != null)) {
-          SNodeOperations.deleteNode(AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteSpecialChildAttribute$TJ)));
+        if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteSpecialChildAttribute$TJ).get(_context.getNode()) != null)) {
+          SNodeOperations.deleteNode(new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteSpecialChildAttribute$TJ).get(_context.getNode()));
         } else {
           new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteSpecialChildAttribute$TJ).setNew(_context.getNode());
         }

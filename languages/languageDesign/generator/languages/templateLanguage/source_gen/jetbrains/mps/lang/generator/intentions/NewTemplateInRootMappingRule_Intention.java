@@ -20,7 +20,6 @@ import jetbrains.mps.util.Setter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import org.jetbrains.mps.util.Condition;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -81,7 +80,7 @@ public final class NewTemplateInRootMappingRule_Intention extends AbstractIntent
           }
           MacroIntentionsUtil.copyVirtualPackage(root, node);
           SNodeFactoryOperations.setNewAttribute(root, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O), CONCEPTS.RootTemplateAnnotation$9O);
-          SLinkOperations.setTarget(AttributeOperations.getAttribute(root, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O)), LINKS.applicableConcept$LAIX, SLinkOperations.getTarget(rule, LINKS.applicableConcept$Hpnk));
+          SLinkOperations.setTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(root), LINKS.applicableConcept$LAIX, SLinkOperations.getTarget(rule, LINKS.applicableConcept$Hpnk));
           SLinkOperations.setTarget(rule, LINKS.template$n_Qy, root);
           SelectionUtil.selectCell(editorContext, rule, "templateName");
         }

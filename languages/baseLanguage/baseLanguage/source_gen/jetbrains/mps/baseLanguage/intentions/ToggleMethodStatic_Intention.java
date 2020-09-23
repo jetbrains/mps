@@ -20,7 +20,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
@@ -87,7 +86,7 @@ public final class ToggleMethodStatic_Intention extends AbstractIntentionDescrip
       SLinkOperations.setTarget(method, LINKS.returnType$5xoi, SLinkOperations.getTarget(node, LINKS.returnType$5xoi));
       ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.throwsItem$CdW$)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.throwsItem$CdW$)));
       ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.typeVariableDeclaration$Lipp)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeVariableDeclaration$Lipp)));
-      new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).set(method, AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)));
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).set(method, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).get(node));
       SLinkOperations.setTarget(SNodeOperations.cast(method, CONCEPTS.IVisible$zu), LINKS.visibility$Yyua, SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.IVisible$zu), LINKS.visibility$Yyua));
       ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.smodelAttribute$KJ43)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43)));
       SNodeOperations.insertNextSiblingChild(node, method);

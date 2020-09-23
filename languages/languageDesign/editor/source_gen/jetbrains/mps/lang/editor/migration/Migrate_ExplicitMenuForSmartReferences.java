@@ -20,7 +20,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -72,7 +71,7 @@ public class Migrate_ExplicitMenuForSmartReferences extends MigrationScriptBase 
 
           SNode alreadyGeneratedMenu = ListSequence.fromList(SModelOperations.roots(editorModel, CONCEPTS.SubstituteMenu_Named$cm)).findFirst(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.GeneratedSubstituteMenuAttribute$Ya)) != null) && SLinkOperations.getTarget(it, LINKS.conceptDeclaration$h3E) == conceptNode;
+              return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.GeneratedSubstituteMenuAttribute$Ya).get(it) != null) && SLinkOperations.getTarget(it, LINKS.conceptDeclaration$h3E) == conceptNode;
             }
           });
           if ((alreadyGeneratedMenu != null)) {

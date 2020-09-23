@@ -13,7 +13,6 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.lang.generator.helper.EditingUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.test.behavior.NodesTestCase__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -52,7 +51,7 @@ public final class AddTestReferenceAnnotation_Intention extends AbstractIntentio
     }
 
     SNode referentNode = EditingUtil.getEditedLinkReferentNode(cell);
-    if (referentNode == null || AttributeOperations.getAttribute(referentNode, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAnnotataion$ZZ, ref)) != null) {
+    if (referentNode == null || new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAnnotataion$ZZ, ref).get(referentNode) != null) {
       return false;
     }
 

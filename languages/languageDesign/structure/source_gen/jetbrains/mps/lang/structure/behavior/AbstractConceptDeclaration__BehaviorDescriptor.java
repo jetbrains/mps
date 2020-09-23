@@ -33,7 +33,6 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -160,7 +159,7 @@ public final class AbstractConceptDeclaration__BehaviorDescriptor extends BaseBH
       for (SModel sd : g.getOwnTemplateModels()) {
         SModel m = sd;
         for (SNode node : ListSequence.fromList(SModelOperations.roots(m, null))) {
-          if (SNodeOperations.isInstanceOf(node, CONCEPTS.TemplateDeclaration$5G) && SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.TemplateDeclaration$5G), LINKS.applicableConcept$JSvx) == __thisNode__ || SLinkOperations.getTarget(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O)), LINKS.applicableConcept$LAIX) == __thisNode__) {
+          if (SNodeOperations.isInstanceOf(node, CONCEPTS.TemplateDeclaration$5G) && SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.TemplateDeclaration$5G), LINKS.applicableConcept$JSvx) == __thisNode__ || SLinkOperations.getTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(node), LINKS.applicableConcept$LAIX) == __thisNode__) {
             ListSequence.fromList(result).addElement(node);
           } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.MappingConfiguration$7j) || SNodeOperations.isInstanceOf(node, CONCEPTS.TemplateSwitch$j_)) {
             // generator rules 

@@ -14,7 +14,6 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.lang.smodel.behavior.ModuleIdentity__BehaviorDescriptor;
@@ -55,7 +54,7 @@ public class ProperIdentityInLanguageRef extends MigrationScriptBase {
         }
       })) {
         SNode moduleId = SNodeOperations.cast(SLinkOperations.getTarget(lre, LINKS.languageId$xSH1), CONCEPTS.LanguageIdentityBySourceModule$T8);
-        if (ListSequence.fromList(AttributeOperations.getAttributeList(moduleId, new IAttributeDescriptor.AllAttributes())).isNotEmpty() || ListSequence.fromList(AttributeOperations.getAttributeList(SLinkOperations.getTarget(moduleId, LINKS.moduleReference$Jac_), new IAttributeDescriptor.AllAttributes())).isNotEmpty()) {
+        if (ListSequence.fromList(new IAttributeDescriptor.AllAttributes().list(moduleId)).isNotEmpty() || ListSequence.fromList(new IAttributeDescriptor.AllAttributes().list(SLinkOperations.getTarget(moduleId, LINKS.moduleReference$Jac_))).isNotEmpty()) {
           // likely, some generator macros that require human intervention to get them fixed properly 
           continue;
         }

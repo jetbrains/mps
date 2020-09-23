@@ -15,7 +15,6 @@ import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -56,11 +55,11 @@ public final class AddRemoveFigureAttribute_Intention extends AbstractIntentionD
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FigureAttribute$A0)) == null ? "Add figure attribute" : "Remove figure attribute");
+      return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.FigureAttribute$A0).get(node) == null ? "Add figure attribute" : "Remove figure attribute");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.FigureAttribute$A0)) != null) {
+      if (new IAttributeDescriptor.NodeAttribute(CONCEPTS.FigureAttribute$A0).get(node) != null) {
         new IAttributeDescriptor.NodeAttribute(CONCEPTS.FigureAttribute$A0).set(node, null);
       } else {
         new IAttributeDescriptor.NodeAttribute(CONCEPTS.FigureAttribute$A0).set(node, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x4b412569a095b5a4L, "jetbrains.mps.lang.editor.figures.structure.FigureAttribute")));

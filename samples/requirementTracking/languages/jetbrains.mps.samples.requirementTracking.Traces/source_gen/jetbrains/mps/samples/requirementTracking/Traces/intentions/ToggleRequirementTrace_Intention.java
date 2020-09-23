@@ -14,7 +14,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
@@ -57,7 +56,7 @@ public final class ToggleRequirementTrace_Intention extends AbstractIntentionDes
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RequirementTrace$U6)) != null)) {
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.RequirementTrace$U6).get(node) != null)) {
         return "Remove Requirement Traces";
       } else {
         return "Add Requirement Traces";
@@ -65,8 +64,8 @@ public final class ToggleRequirementTrace_Intention extends AbstractIntentionDes
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RequirementTrace$U6)) != null)) {
-        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RequirementTrace$U6)));
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.RequirementTrace$U6).get(node) != null)) {
+        SNodeOperations.deleteNode(new IAttributeDescriptor.NodeAttribute(CONCEPTS.RequirementTrace$U6).get(node));
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, SelectionManager.LAST_CELL, -1);
       } else {
         try {
@@ -86,7 +85,7 @@ public final class ToggleRequirementTrace_Intention extends AbstractIntentionDes
           editorContext.getEditorComponent().getUpdater().update();
         } finally {
           new IAttributeDescriptor.NodeAttribute(CONCEPTS.RequirementTrace$U6).setNew(node);
-          SelectionUtil.selectCell(editorContext, AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RequirementTrace$U6)), SelectionManager.LAST_EDITABLE_CELL);
+          SelectionUtil.selectCell(editorContext, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RequirementTrace$U6).get(node), SelectionManager.LAST_EDITABLE_CELL);
         }
 
       }

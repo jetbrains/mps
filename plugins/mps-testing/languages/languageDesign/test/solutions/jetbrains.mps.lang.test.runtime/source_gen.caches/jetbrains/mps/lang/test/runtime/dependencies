@@ -424,7 +424,6 @@
     <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.analyzers.InitializedVariablesAnalyzer" />
     <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.analyzers.LivenessAnalyzer" />
     <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.instructions.Instruction" />
-    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />

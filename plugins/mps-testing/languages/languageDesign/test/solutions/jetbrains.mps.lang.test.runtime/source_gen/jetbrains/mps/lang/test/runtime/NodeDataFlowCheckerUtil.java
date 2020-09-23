@@ -16,7 +16,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import junit.framework.Assert;
@@ -40,11 +39,11 @@ public class NodeDataFlowCheckerUtil {
     AnalysisResult<VarSet> live = program.analyze(new LivenessAnalyzer());
     for (SNode child : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.BaseConcept$gP, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj)) != null);
+        return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj).get(it) != null);
       }
     })) {
-      assert AttributeOperations.getAttribute(child, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj)) != null;
-      SNode container = AttributeOperations.getAttribute(child, new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj));
+      assert new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj).get(child) != null;
+      SNode container = new IAttributeDescriptor.NodeAttribute(CONCEPTS.NodeOperationsContainer$aj).get(child);
       for (SNode operation : SLinkOperations.getChildren(container, LINKS.nodeOperations$Mgf9)) {
         if (ListSequence.fromList(instructions).isNotEmpty()) {
           instruction = program.getInstructionsFor(child).get(0);

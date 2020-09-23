@@ -19,7 +19,6 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.editor.runtime.impl.cellActions.CommentUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.SNodePointer;
@@ -27,6 +26,7 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.vcs.diff.merge.MergeSession;
 import junit.framework.Assert;
@@ -197,8 +197,8 @@ public class MergeTest extends ChangesTestBase {
   public void testSymmetricChanges_RemoveChildAttribute() {
     testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelCreator() {
       public SModel createModel() {
-        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(AttributeOperations.getAttributeList(getMineClassRoot(), new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.member$L_2d))).first()));
-        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(AttributeOperations.getAttributeList(getTheirsClassRoot(), new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.member$L_2d))).first()));
+        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.member$L_2d).list(getMineClassRoot())).first()));
+        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.member$L_2d).list(getTheirsClassRoot())).first()));
         return myMineModel;
       }
     });
@@ -284,10 +284,10 @@ public class MergeTest extends ChangesTestBase {
     testMergeNoConflictingChangesAndCheckNoDifferencesWithExpectedModel(new ModelChanger() {
       public void changeModel(SModel expectedModel) {
         SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(SLinkOperations.getChildren(getMineClassRoot(), LINKS.member$L_2d)).first()));
-        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(AttributeOperations.getAttributeList(getTheirsClassRoot(), new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.member$L_2d))).first()));
+        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.member$L_2d).list(getTheirsClassRoot())).first()));
 
 
-        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(AttributeOperations.getAttributeList(getClassRoot(expectedModel), new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.member$L_2d))).first()));
+        SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.member$L_2d).list(getClassRoot(expectedModel))).first()));
         SNodeOperations.deleteNode(SNodeOperations.getParent(ListSequence.fromList(SLinkOperations.getChildren(getClassRoot(expectedModel), LINKS.member$L_2d)).first()));
       }
     });

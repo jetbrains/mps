@@ -2727,74 +2727,74 @@
   </root>
   <root nodeRef="r:cf512d15-78eb-402a-a0bd-f5eea680b5a8(jetbrains.mps.lang.structure.pluginSolution.plugin)/669686131483500217">
     <file name="DropEnumPropertyMigrationAttribute_Action.java">
-      <node id="669686131483500217" at="22,0,23,0" concept="13" trace="ICON" />
-      <node id="669686131483500217" at="24,54,25,64" concept="15" />
-      <node id="669686131483500217" at="25,64,26,35" concept="4" />
-      <node id="669686131483500217" at="26,35,27,52" concept="4" />
-      <node id="669686131483500217" at="30,32,31,16" concept="10" />
-      <node id="669686131486838038" at="34,87,35,55" concept="9" />
-      <node id="669686131486838044" at="35,55,36,218" concept="10" />
-      <node id="669686131483500217" at="39,89,40,85" concept="4" />
-      <node id="669686131483500217" at="44,53,45,19" concept="10" />
-      <node id="669686131483827988" at="47,5,48,54" concept="9" />
-      <node id="669686131483827989" at="49,22,50,21" concept="10" />
-      <node id="669686131483500217" at="52,5,53,16" concept="10" />
-      <node id="669686131486856403" at="56,96,57,55" concept="9" />
-      <node id="669686131483853073" at="57,55,58,232" concept="9" />
-      <node id="669686131484713669" at="58,232,59,0" concept="12" />
-      <node id="669686131483949510" at="59,0,60,351" concept="9" />
-      <node id="669686131483950033" at="60,351,61,0" concept="12" />
-      <node id="669686131483968049" at="62,32,63,57" concept="4" />
+      <node id="669686131483500217" at="21,0,22,0" concept="13" trace="ICON" />
+      <node id="669686131483500217" at="23,54,24,64" concept="15" />
+      <node id="669686131483500217" at="24,64,25,35" concept="4" />
+      <node id="669686131483500217" at="25,35,26,52" concept="4" />
+      <node id="669686131483500217" at="29,32,30,16" concept="10" />
+      <node id="669686131486838038" at="33,87,34,55" concept="9" />
+      <node id="669686131486838044" at="34,55,35,188" concept="10" />
+      <node id="669686131483500217" at="38,89,39,85" concept="4" />
+      <node id="669686131483500217" at="43,53,44,19" concept="10" />
+      <node id="669686131483827988" at="46,5,47,54" concept="9" />
+      <node id="669686131483827989" at="48,22,49,21" concept="10" />
+      <node id="669686131483500217" at="51,5,52,16" concept="10" />
+      <node id="669686131486856403" at="55,96,56,55" concept="9" />
+      <node id="669686131483853073" at="56,55,57,202" concept="9" />
+      <node id="669686131484713669" at="57,202,58,0" concept="12" />
+      <node id="669686131483949510" at="58,0,59,351" concept="9" />
+      <node id="669686131483950033" at="59,351,60,0" concept="12" />
+      <node id="669686131483968049" at="61,32,62,57" concept="4" />
+      <node id="669686131483500217" at="67,0,68,0" concept="13" trace="EnumPropertyMigrationInfo$O3" />
       <node id="669686131483500217" at="68,0,69,0" concept="13" trace="PropertyDeclaration$1S" />
-      <node id="669686131483500217" at="69,0,70,0" concept="13" trace="EnumPropertyMigrationInfo$O3" />
-      <node id="669686131483500217" at="43,95,46,5" concept="7" />
-      <node id="669686131483827989" at="48,54,51,7" concept="7" />
-      <node id="669686131483950685" at="61,0,64,5" concept="7" />
-      <node id="669686131483500217" at="29,0,33,0" concept="8" trace="isDumbAware#()Z" />
-      <node id="669686131483500217" at="38,0,42,0" concept="8" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="669686131483500217" at="24,0,29,0" concept="3" trace="DropEnumPropertyMigrationAttribute_Action#()V" />
-      <node id="669686131483500217" at="33,0,38,0" concept="8" trace="isApplicable#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <node id="669686131483827988" at="46,5,52,5" concept="2" />
-      <node id="669686131483500217" at="55,0,66,0" concept="8" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="669686131483500217" at="42,0,55,0" concept="8" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <scope id="669686131483500217" at="30,32,31,16" />
-      <scope id="669686131483500217" at="39,89,40,85" />
-      <scope id="669686131483500217" at="44,53,45,19" />
-      <scope id="669686131483827989" at="49,22,50,21" />
-      <scope id="669686131483950687" at="62,32,63,57" />
-      <scope id="669686131486837932" at="34,87,36,218">
+      <node id="669686131483500217" at="42,95,45,5" concept="7" />
+      <node id="669686131483827989" at="47,54,50,7" concept="7" />
+      <node id="669686131483950685" at="60,0,63,5" concept="7" />
+      <node id="669686131483500217" at="28,0,32,0" concept="8" trace="isDumbAware#()Z" />
+      <node id="669686131483500217" at="37,0,41,0" concept="8" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="669686131483500217" at="23,0,28,0" concept="3" trace="DropEnumPropertyMigrationAttribute_Action#()V" />
+      <node id="669686131483500217" at="32,0,37,0" concept="8" trace="isApplicable#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
+      <node id="669686131483827988" at="45,5,51,5" concept="2" />
+      <node id="669686131483500217" at="54,0,65,0" concept="8" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="669686131483500217" at="41,0,54,0" concept="8" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
+      <scope id="669686131483500217" at="29,32,30,16" />
+      <scope id="669686131483500217" at="38,89,39,85" />
+      <scope id="669686131483500217" at="43,53,44,19" />
+      <scope id="669686131483827989" at="48,22,49,21" />
+      <scope id="669686131483950687" at="61,32,62,57" />
+      <scope id="669686131486837932" at="33,87,35,188">
         <var name="node" id="669686131486838039" />
       </scope>
-      <scope id="669686131483500217" at="24,54,27,52" />
-      <scope id="669686131483500217" at="29,0,33,0" />
-      <scope id="669686131483500217" at="38,0,42,0">
+      <scope id="669686131483500217" at="23,54,26,52" />
+      <scope id="669686131483500217" at="28,0,32,0" />
+      <scope id="669686131483500217" at="37,0,41,0">
         <var name="_params" id="669686131483500217" />
         <var name="event" id="669686131483500217" />
       </scope>
-      <scope id="669686131483827988" at="47,5,51,7">
+      <scope id="669686131483827988" at="46,5,50,7">
         <var name="p" id="669686131483827988" />
       </scope>
-      <scope id="669686131483500217" at="24,0,29,0" />
-      <scope id="669686131483500217" at="33,0,38,0">
+      <scope id="669686131483500217" at="23,0,28,0" />
+      <scope id="669686131483500217" at="32,0,37,0">
         <var name="_params" id="669686131483500217" />
         <var name="event" id="669686131483500217" />
       </scope>
-      <scope id="669686131483500217" at="56,96,64,5">
+      <scope id="669686131483500217" at="55,96,63,5">
         <var name="migrationInfoAttribute" id="669686131483853074" />
         <var name="node" id="669686131486856404" />
         <var name="result" id="669686131483949511" />
       </scope>
-      <scope id="669686131483500217" at="43,95,53,16" />
-      <scope id="669686131483500217" at="55,0,66,0">
+      <scope id="669686131483500217" at="42,95,52,16" />
+      <scope id="669686131483500217" at="54,0,65,0">
         <var name="_params" id="669686131483500217" />
         <var name="event" id="669686131483500217" />
       </scope>
-      <scope id="669686131483500217" at="42,0,55,0">
+      <scope id="669686131483500217" at="41,0,54,0">
         <var name="_params" id="669686131483500217" />
         <var name="event" id="669686131483500217" />
       </scope>
-      <unit id="669686131483500217" at="67,0,71,0" name="jetbrains.mps.lang.structure.pluginSolution.plugin.DropEnumPropertyMigrationAttribute_Action$CONCEPTS" />
-      <unit id="669686131483500217" at="21,0,72,0" name="jetbrains.mps.lang.structure.pluginSolution.plugin.DropEnumPropertyMigrationAttribute_Action" />
+      <unit id="669686131483500217" at="66,0,70,0" name="jetbrains.mps.lang.structure.pluginSolution.plugin.DropEnumPropertyMigrationAttribute_Action$CONCEPTS" />
+      <unit id="669686131483500217" at="20,0,71,0" name="jetbrains.mps.lang.structure.pluginSolution.plugin.DropEnumPropertyMigrationAttribute_Action" />
     </file>
     <file name="PluginSolution_ApplicationPlugin.java">
       <node id="669686131483500217" at="25,55,26,63" concept="4" />
@@ -2802,99 +2802,99 @@
   </root>
   <root nodeRef="r:cf512d15-78eb-402a-a0bd-f5eea680b5a8(jetbrains.mps.lang.structure.pluginSolution.plugin)/669686131486693180">
     <file name="DropEnumMigrationAttribute_Action.java">
-      <node id="669686131486693180" at="26,0,27,0" concept="13" trace="ICON" />
-      <node id="669686131486693180" at="28,46,29,62" concept="15" />
-      <node id="669686131486693180" at="29,62,30,35" concept="4" />
-      <node id="669686131486693180" at="30,35,31,52" concept="4" />
-      <node id="669686131486693180" at="34,32,35,16" concept="10" />
-      <node id="669686131486728222" at="38,87,39,55" concept="9" />
-      <node id="669686131486704849" at="39,55,40,213" concept="10" />
-      <node id="669686131486693180" at="43,89,44,85" concept="4" />
-      <node id="669686131486693180" at="48,53,49,19" concept="10" />
-      <node id="669686131486693221" at="51,5,52,54" concept="9" />
-      <node id="669686131486693222" at="53,22,54,21" concept="10" />
-      <node id="669686131486693223" at="56,32,57,21" concept="10" />
-      <node id="669686131486693180" at="59,5,60,16" concept="10" />
-      <node id="669686131486748874" at="63,96,64,55" concept="9" />
-      <node id="8705818373704016709" at="64,55,65,105" concept="9" />
-      <node id="669686131486693183" at="65,105,66,146" concept="9" />
-      <node id="669686131486693199" at="66,146,67,0" concept="12" />
-      <node id="669686131486693200" at="67,0,68,358" concept="9" />
-      <node id="669686131486693209" at="68,358,69,0" concept="12" />
-      <node id="8705818373704022853" at="71,106,72,69" concept="4" />
-      <node id="669686131486693212" at="73,7,74,57" concept="4" />
-      <node id="669686131486693225" at="77,49,78,27" concept="9" />
-      <node id="669686131486693229" at="78,27,79,108" concept="9" />
-      <node id="669686131486693238" at="79,108,80,135" concept="10" />
+      <node id="669686131486693180" at="25,0,26,0" concept="13" trace="ICON" />
+      <node id="669686131486693180" at="27,46,28,62" concept="15" />
+      <node id="669686131486693180" at="28,62,29,35" concept="4" />
+      <node id="669686131486693180" at="29,35,30,52" concept="4" />
+      <node id="669686131486693180" at="33,32,34,16" concept="10" />
+      <node id="669686131486728222" at="37,87,38,55" concept="9" />
+      <node id="669686131486704849" at="38,55,39,183" concept="10" />
+      <node id="669686131486693180" at="42,89,43,85" concept="4" />
+      <node id="669686131486693180" at="47,53,48,19" concept="10" />
+      <node id="669686131486693221" at="50,5,51,54" concept="9" />
+      <node id="669686131486693222" at="52,22,53,21" concept="10" />
+      <node id="669686131486693223" at="55,32,56,21" concept="10" />
+      <node id="669686131486693180" at="58,5,59,16" concept="10" />
+      <node id="669686131486748874" at="62,96,63,55" concept="9" />
+      <node id="8705818373704016709" at="63,55,64,105" concept="9" />
+      <node id="669686131486693183" at="64,105,65,116" concept="9" />
+      <node id="669686131486693199" at="65,116,66,0" concept="12" />
+      <node id="669686131486693200" at="66,0,67,358" concept="9" />
+      <node id="669686131486693209" at="67,358,68,0" concept="12" />
+      <node id="8705818373704022853" at="70,106,71,69" concept="4" />
+      <node id="669686131486693212" at="72,7,73,57" concept="4" />
+      <node id="669686131486693225" at="76,49,77,27" concept="9" />
+      <node id="669686131486693229" at="77,27,78,108" concept="9" />
+      <node id="669686131486693238" at="78,108,79,105" concept="10" />
+      <node id="669686131486693180" at="83,0,84,0" concept="13" trace="EnumMigrationInfo$S$" />
       <node id="669686131486693180" at="84,0,85,0" concept="13" trace="EnumerationDeclaration$hv" />
-      <node id="669686131486693180" at="85,0,86,0" concept="13" trace="EnumMigrationInfo$S$" />
-      <node id="669686131486693180" at="89,0,90,0" concept="13" trace="oldMember$tsh" />
-      <node id="669686131486693180" at="90,0,91,0" concept="13" trace="members$wmsL" />
-      <node id="669686131486693180" at="47,95,50,5" concept="7" />
-      <node id="669686131486693222" at="52,54,55,7" concept="7" />
-      <node id="669686131486693223" at="55,7,58,7" concept="7" />
-      <node id="8705818373704019453" at="70,32,73,7" concept="6" />
-      <node id="669686131486693180" at="33,0,37,0" concept="8" trace="isDumbAware#()Z" />
-      <node id="669686131486693180" at="42,0,46,0" concept="8" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="669686131486693180" at="28,0,33,0" concept="3" trace="DropEnumMigrationAttribute_Action#()V" />
-      <node id="669686131486693180" at="37,0,42,0" concept="8" trace="isApplicable#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <node id="669686131486693223" at="77,0,82,0" concept="8" trace="nodeCondition#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="669686131486693210" at="69,0,75,5" concept="7" />
-      <node id="669686131486693221" at="50,5,59,5" concept="2" />
-      <node id="669686131486693180" at="62,0,77,0" concept="8" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="669686131486693180" at="46,0,62,0" concept="8" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <scope id="669686131486693180" at="34,32,35,16" />
-      <scope id="669686131486693180" at="43,89,44,85" />
-      <scope id="669686131486693180" at="48,53,49,19" />
-      <scope id="669686131486693222" at="53,22,54,21" />
-      <scope id="669686131486693223" at="56,32,57,21" />
-      <scope id="8705818373704019459" at="71,106,72,69" />
-      <scope id="669686131486704541" at="38,87,40,213">
+      <node id="669686131486693180" at="88,0,89,0" concept="13" trace="oldMember$tsh" />
+      <node id="669686131486693180" at="89,0,90,0" concept="13" trace="members$wmsL" />
+      <node id="669686131486693180" at="46,95,49,5" concept="7" />
+      <node id="669686131486693222" at="51,54,54,7" concept="7" />
+      <node id="669686131486693223" at="54,7,57,7" concept="7" />
+      <node id="8705818373704019453" at="69,32,72,7" concept="6" />
+      <node id="669686131486693180" at="32,0,36,0" concept="8" trace="isDumbAware#()Z" />
+      <node id="669686131486693180" at="41,0,45,0" concept="8" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="669686131486693180" at="27,0,32,0" concept="3" trace="DropEnumMigrationAttribute_Action#()V" />
+      <node id="669686131486693180" at="36,0,41,0" concept="8" trace="isApplicable#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
+      <node id="669686131486693223" at="76,0,81,0" concept="8" trace="nodeCondition#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="669686131486693210" at="68,0,74,5" concept="7" />
+      <node id="669686131486693221" at="49,5,58,5" concept="2" />
+      <node id="669686131486693180" at="61,0,76,0" concept="8" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="669686131486693180" at="45,0,61,0" concept="8" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
+      <scope id="669686131486693180" at="33,32,34,16" />
+      <scope id="669686131486693180" at="42,89,43,85" />
+      <scope id="669686131486693180" at="47,53,48,19" />
+      <scope id="669686131486693222" at="52,22,53,21" />
+      <scope id="669686131486693223" at="55,32,56,21" />
+      <scope id="8705818373704019459" at="70,106,71,69" />
+      <scope id="669686131486704541" at="37,87,39,183">
         <var name="node" id="669686131486728223" />
       </scope>
-      <scope id="669686131486693180" at="28,46,31,52" />
-      <scope id="8705818373704019453" at="70,32,73,7">
+      <scope id="669686131486693180" at="27,46,30,52" />
+      <scope id="8705818373704019453" at="69,32,72,7">
         <var name="member" id="8705818373704019455" />
       </scope>
-      <scope id="669686131486693224" at="77,49,80,135">
+      <scope id="669686131486693224" at="76,49,79,105">
         <var name="enumDecl" id="669686131486693230" />
         <var name="node" id="669686131486693226" />
       </scope>
-      <scope id="669686131486693180" at="33,0,37,0" />
-      <scope id="669686131486693180" at="42,0,46,0">
+      <scope id="669686131486693180" at="32,0,36,0" />
+      <scope id="669686131486693180" at="41,0,45,0">
         <var name="_params" id="669686131486693180" />
         <var name="event" id="669686131486693180" />
       </scope>
-      <scope id="669686131486693211" at="70,32,74,57" />
-      <scope id="669686131486693180" at="28,0,33,0" />
-      <scope id="669686131486693180" at="37,0,42,0">
+      <scope id="669686131486693211" at="69,32,73,57" />
+      <scope id="669686131486693180" at="27,0,32,0" />
+      <scope id="669686131486693180" at="36,0,41,0">
         <var name="_params" id="669686131486693180" />
         <var name="event" id="669686131486693180" />
       </scope>
-      <scope id="669686131486693223" at="77,0,82,0">
+      <scope id="669686131486693223" at="76,0,81,0">
         <var name="parameter" id="669686131486693223" />
       </scope>
-      <scope id="669686131486693221" at="51,5,58,7">
+      <scope id="669686131486693221" at="50,5,57,7">
         <var name="p" id="669686131486693221" />
       </scope>
-      <scope id="669686131486693180" at="63,96,75,5">
+      <scope id="669686131486693180" at="62,96,74,5">
         <var name="enumm" id="8705818373704016710" />
         <var name="migrationInfoAttribute" id="669686131486693184" />
         <var name="node" id="669686131486748875" />
         <var name="result" id="669686131486693201" />
       </scope>
-      <scope id="669686131486693180" at="47,95,60,16" />
-      <scope id="669686131486693180" at="62,0,77,0">
+      <scope id="669686131486693180" at="46,95,59,16" />
+      <scope id="669686131486693180" at="61,0,76,0">
         <var name="_params" id="669686131486693180" />
         <var name="event" id="669686131486693180" />
       </scope>
-      <scope id="669686131486693180" at="46,0,62,0">
+      <scope id="669686131486693180" at="45,0,61,0">
         <var name="_params" id="669686131486693180" />
         <var name="event" id="669686131486693180" />
       </scope>
-      <unit id="669686131486693180" at="83,0,87,0" name="jetbrains.mps.lang.structure.pluginSolution.plugin.DropEnumMigrationAttribute_Action$CONCEPTS" />
-      <unit id="669686131486693180" at="88,0,92,0" name="jetbrains.mps.lang.structure.pluginSolution.plugin.DropEnumMigrationAttribute_Action$LINKS" />
-      <unit id="669686131486693180" at="25,0,93,0" name="jetbrains.mps.lang.structure.pluginSolution.plugin.DropEnumMigrationAttribute_Action" />
+      <unit id="669686131486693180" at="82,0,86,0" name="jetbrains.mps.lang.structure.pluginSolution.plugin.DropEnumMigrationAttribute_Action$CONCEPTS" />
+      <unit id="669686131486693180" at="87,0,91,0" name="jetbrains.mps.lang.structure.pluginSolution.plugin.DropEnumMigrationAttribute_Action$LINKS" />
+      <unit id="669686131486693180" at="24,0,92,0" name="jetbrains.mps.lang.structure.pluginSolution.plugin.DropEnumMigrationAttribute_Action" />
     </file>
     <file name="PluginSolution_ApplicationPlugin.java">
       <node id="669686131486693180" at="24,51,25,55" concept="4" />

@@ -18,7 +18,6 @@ import jetbrains.mps.lang.pattern.util.MatchingUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.generator.template.PropertyMacroContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.typesystem.enumMigration.InequationPriority_MigrationUtils;
@@ -333,10 +332,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.applicableNode$Ro4C), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_4_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK)), PROPS.modelId$VlxP);
+    return SPropertyOperations.getString(new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK).get(_context.getNode()), PROPS.modelId$VlxP);
   }
   public static Object propertyMacro_GetValue_4_1(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK)), PROPS.nodeId$UZun);
+    return SPropertyOperations.getString(new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK).get(_context.getNode()), PROPS.nodeId$UZun);
   }
   public static Object propertyMacro_GetValue_4_2(final PropertyMacroContext _context) {
     return !(SPropertyOperations.getBoolean(_context.getNode(), PROPS.skipDependencyOnCurrent$8O6I));
@@ -397,14 +396,14 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.createUniqueName("CustomOverloadedOperationsTypesProvider", null);
   }
   public static Object propertyMacro_GetValue_17_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK)), PROPS.modelId$VlxP);
+    return SPropertyOperations.getString(new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK).get(_context.getNode()), PROPS.modelId$VlxP);
   }
   public static Object propertyMacro_GetValue_17_1(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK)), PROPS.nodeId$UZun);
+    return SPropertyOperations.getString(new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK).get(_context.getNode()), PROPS.nodeId$UZun);
   }
   public static Object propertyMacro_GetValue_17_2(final PropertyMacroContext _context) {
     SNode quickFix = SLinkOperations.getTarget(_context.getNode(), LINKS.quickFix$ClX6);
-    SNode id = AttributeOperations.getAttribute(quickFix, new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK));
+    SNode id = new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK).get(quickFix);
     String smodelId;
     if (id != null) {
       smodelId = SPropertyOperations.getString(id, PROPS.modelId$VlxP);
@@ -429,14 +428,14 @@ public class QueriesGenerated extends QueryProviderBase {
     return null;
   }
   public static Object propertyMacro_GetValue_18_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK)), PROPS.modelId$VlxP);
+    return SPropertyOperations.getString(new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK).get(_context.getNode()), PROPS.modelId$VlxP);
   }
   public static Object propertyMacro_GetValue_18_1(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK)), PROPS.nodeId$UZun);
+    return SPropertyOperations.getString(new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK).get(_context.getNode()), PROPS.nodeId$UZun);
   }
   public static Object propertyMacro_GetValue_18_2(final PropertyMacroContext _context) {
     SNode quickFix = SLinkOperations.getTarget(_context.getNode(), LINKS.quickFix$ClX6);
-    SNode id = AttributeOperations.getAttribute(quickFix, new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK));
+    SNode id = new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK).get(quickFix);
     String smodelId;
     if (id != null) {
       smodelId = SPropertyOperations.getString(id, PROPS.modelId$VlxP);
@@ -482,10 +481,10 @@ public class QueriesGenerated extends QueryProviderBase {
     }
   }
   public static Object propertyMacro_GetValue_31_1(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK)), PROPS.modelId$VlxP);
+    return SPropertyOperations.getString(new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK).get(_context.getNode()), PROPS.modelId$VlxP);
   }
   public static Object propertyMacro_GetValue_31_2(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK)), PROPS.nodeId$UZun);
+    return SPropertyOperations.getString(new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK).get(_context.getNode()), PROPS.nodeId$UZun);
   }
   public static Object propertyMacro_GetValue_31_3(final PropertyMacroContext _context) {
     return SPropertyOperations.getBoolean(_context.getNode(), PROPS.isShallow$lrox);
@@ -521,14 +520,14 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.whenConcreteVar$7S8F), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_44_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK)), PROPS.modelId$VlxP);
+    return SPropertyOperations.getString(new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK).get(_context.getNode()), PROPS.modelId$VlxP);
   }
   public static Object propertyMacro_GetValue_44_1(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK)), PROPS.nodeId$UZun);
+    return SPropertyOperations.getString(new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK).get(_context.getNode()), PROPS.nodeId$UZun);
   }
   public static Object propertyMacro_GetValue_44_2(final PropertyMacroContext _context) {
     SNode quickFix = SLinkOperations.getTarget(_context.getNode(), LINKS.quickFix$ClX6);
-    SNode id = AttributeOperations.getAttribute(quickFix, new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK));
+    SNode id = new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK).get(quickFix);
     String smodelId;
     if (id != null) {
       smodelId = SPropertyOperations.getString(id, PROPS.modelId$VlxP);
@@ -557,10 +556,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return null;
   }
   public static Object propertyMacro_GetValue_45_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK)), PROPS.modelId$VlxP);
+    return SPropertyOperations.getString(new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK).get(_context.getNode()), PROPS.modelId$VlxP);
   }
   public static Object propertyMacro_GetValue_45_1(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK)), PROPS.nodeId$UZun);
+    return SPropertyOperations.getString(new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK).get(_context.getNode()), PROPS.nodeId$UZun);
   }
   public static Object propertyMacro_GetValue_45_2(final PropertyMacroContext _context) {
     if (SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.AbstractInequationStatement$7T)) {
@@ -570,7 +569,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object propertyMacro_GetValue_45_3(final PropertyMacroContext _context) {
     SNode quickFix = SLinkOperations.getTarget(_context.getNode(), LINKS.quickFix$ClX6);
-    SNode id = AttributeOperations.getAttribute(quickFix, new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK));
+    SNode id = new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK).get(quickFix);
     String smodelId;
     if (id != null) {
       smodelId = SPropertyOperations.getString(id, PROPS.modelId$VlxP);
@@ -655,14 +654,14 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.whenConcreteVar$7S8F), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_64_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK)), PROPS.modelId$VlxP);
+    return SPropertyOperations.getString(new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK).get(_context.getNode()), PROPS.modelId$VlxP);
   }
   public static Object propertyMacro_GetValue_64_1(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK)), PROPS.nodeId$UZun);
+    return SPropertyOperations.getString(new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK).get(_context.getNode()), PROPS.nodeId$UZun);
   }
   public static Object propertyMacro_GetValue_64_2(final PropertyMacroContext _context) {
     SNode quickFix = SLinkOperations.getTarget(_context.getNode(), LINKS.quickFix$ClX6);
-    SNode id = AttributeOperations.getAttribute(quickFix, new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK));
+    SNode id = new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK).get(quickFix);
     String smodelId;
     if (id != null) {
       smodelId = SPropertyOperations.getString(id, PROPS.modelId$VlxP);
@@ -729,10 +728,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.applicableNode$Ro4C), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_84_1(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK)), PROPS.modelId$VlxP);
+    return SPropertyOperations.getString(new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK).get(_context.getNode()), PROPS.modelId$VlxP);
   }
   public static Object propertyMacro_GetValue_84_2(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK)), PROPS.nodeId$UZun);
+    return SPropertyOperations.getString(new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginalNodeId$kK).get(_context.getNode()), PROPS.nodeId$UZun);
   }
   public static Object propertyMacro_GetValue_86_0(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.applicableNode$Ro4C), PROPS.name$MnvL);

@@ -16,7 +16,6 @@ import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
@@ -86,7 +85,7 @@ public final class CreatePropertyAntiquotation_Intention extends AbstractIntenti
         new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyAntiquotation$13, p).set(attributedNode, null);
         return;
       }
-      if (AttributeOperations.getAttribute(contextNode, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyAntiquotation$13, p)) != null) {
+      if (new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyAntiquotation$13, p).get(contextNode) != null) {
         new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyAntiquotation$13, p).set(contextNode, null);
       } else {
         SNode propertyAntiquotation = SNodeFactoryOperations.setNewAttribute(contextNode, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyAntiquotation$13, p), CONCEPTS.PropertyAntiquotation$13);

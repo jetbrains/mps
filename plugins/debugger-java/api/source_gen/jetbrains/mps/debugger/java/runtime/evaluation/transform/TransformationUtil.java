@@ -13,7 +13,6 @@ import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -143,7 +142,7 @@ public class TransformationUtil {
     return !(SNodeOperations.isInstanceOf(type, CONCEPTS.NullType$Ea)) && TypecheckingFacade.getFromContext().isSubtype(type, _quotation_createNode_crriw5_b0a0b0q());
   }
   public static boolean isUnprocessed(SNode node) {
-    return (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnprocessedAnnotation$E6)) != null) && (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw)) == null);
+    return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.UnprocessedAnnotation$E6).get(node) != null) && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.DoNotTransformAnnotation$kw).get(node) == null);
   }
   public static boolean isLowLevelVariableReference(SNode variableRef) {
     if (SNodeOperations.isInstanceOf(variableRef, CONCEPTS.LowLevelVariableReference$GJ)) {

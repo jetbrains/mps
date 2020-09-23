@@ -20,7 +20,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.annotations.Nullable;
@@ -66,7 +65,7 @@ public final class ScopesTest__BehaviorDescriptor extends BaseBHDescriptor {
     return SNodeOperations.getConcept(node).getReferenceLinks().size() == 1;
   }
   /*package*/ static boolean isApplicable_id4IvydoGviup(@NotNull SAbstractConcept __thisConcept__, SNode node) {
-    return ListSequence.fromList(SNodeOperations.getReferences(node)).isNotEmpty() && (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ScopesTest$TD)) == null) && !(SNodeOperations.isInstanceOf(node, CONCEPTS.ScopesTest$TD));
+    return ListSequence.fromList(SNodeOperations.getReferences(node)).isNotEmpty() && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.ScopesTest$TD).get(node) == null) && !(SNodeOperations.isInstanceOf(node, CONCEPTS.ScopesTest$TD));
   }
   /*package*/ static SNode getTestCase_idhGBgWVd(@NotNull SNode __thisNode__) {
     return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.NodesTestCase$nd, false, false);

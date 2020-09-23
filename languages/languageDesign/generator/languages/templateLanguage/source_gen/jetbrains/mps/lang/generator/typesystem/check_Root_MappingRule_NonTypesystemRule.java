@@ -8,7 +8,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
@@ -32,7 +31,7 @@ public class check_Root_MappingRule_NonTypesystemRule extends AbstractNonTypesys
   public void applyRule(final SNode rule, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode template = SLinkOperations.getTarget(rule, LINKS.template$n_Qy);
     if ((template != null)) {
-      SNode attrib = AttributeOperations.getAttribute(template, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O));
+      SNode attrib = new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(template);
       if ((attrib != null)) {
         SNode templateApplicableConcept = SLinkOperations.getTarget(SNodeOperations.cast(attrib, CONCEPTS.RootTemplateAnnotation$9O), LINKS.applicableConcept$LAIX);
         SNode ruleApplicableConcept = SLinkOperations.getTarget(rule, LINKS.applicableConcept$Hpnk);

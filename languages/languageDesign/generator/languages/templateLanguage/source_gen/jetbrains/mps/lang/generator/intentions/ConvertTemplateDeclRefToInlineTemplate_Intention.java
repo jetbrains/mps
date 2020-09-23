@@ -17,7 +17,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -71,7 +70,7 @@ public final class ConvertTemplateDeclRefToInlineTemplate_Intention extends Abst
       SNode oldTemplate = SNodeOperations.as(SLinkOperations.getTarget(node, LINKS.template$6_6), CONCEPTS.TemplateDeclaration$5G);
       List<SNode> TFs = SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(oldTemplate, LINKS.contentNode$CQ7t), CONCEPTS.TemplateFragment$eq, false, new SAbstractConcept[]{});
       SNode fragmentToSet = SNodeOperations.copyNode(SNodeOperations.getParent(ListSequence.fromList(TFs).first()));
-      SNode TFtoDelete = AttributeOperations.getAttribute(fragmentToSet, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq));
+      SNode TFtoDelete = new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq).get(fragmentToSet);
       SNodeOperations.deleteNode(TFtoDelete);
       SNode inlineTemplate = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.InlineTemplate_RuleConsequence$u9);
       SLinkOperations.setTarget(inlineTemplate, LINKS.templateNode$1Rss, fragmentToSet);

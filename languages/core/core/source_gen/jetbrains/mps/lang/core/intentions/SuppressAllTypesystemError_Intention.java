@@ -11,7 +11,6 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.errors.item.IssueKindReportItem;
@@ -50,7 +49,7 @@ public final class SuppressAllTypesystemError_Intention extends AbstractIntentio
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    if (ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1))).isNotEmpty()) {
+    if (ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1).list(node)).isNotEmpty()) {
       return false;
     }
     EditorComponent editorComponent = (EditorComponent) editorContext.getEditorComponent();
@@ -87,13 +86,13 @@ public final class SuppressAllTypesystemError_Intention extends AbstractIntentio
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if (ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1))).isEmpty()) {
+      if (ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1).list(node)).isEmpty()) {
         SNode annotation = SNodeFactoryOperations.addNewAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1), CONCEPTS.SuppressErrorsAnnotation$D1);
         Map<String, String> flavours = MapSequence.<String, String>fromMapAndKeysArray(new HashMap<String, String>(), IssueKindReportItem.FLAVOUR_ISSUE_KIND.getId()).withValues(IssueKindReportItem.TYPESYSTEM.deriveItemKind().toString());
         SPropertyOperations.assign(annotation, PROPS.filter$LICx, new FlavouredItem.ReportItemPredicate(flavours).serialize());
         SPropertyOperations.assign(annotation, PROPS.message$_mpB, "all typesystem messages");
       } else {
-        ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1))).clear();
+        ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1).list(node)).clear();
       }
     }
     @Override

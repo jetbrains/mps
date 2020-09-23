@@ -49,7 +49,6 @@ import jetbrains.mps.util.IFileUtil;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
@@ -631,7 +630,7 @@ public class JavaToMpsConverter {
           if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.Classifier$Ix))) {
             continue;
           }
-          if ((AttributeOperations.getAttribute(SNodeOperations.cast(node, CONCEPTS.Classifier$Ix), new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_)) == null)) {
+          if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).get(SNodeOperations.cast(node, CONCEPTS.Classifier$Ix)) == null)) {
             continue;
           }
 
@@ -650,7 +649,7 @@ public class JavaToMpsConverter {
             }
           });
 
-          SNode importAnnotation = AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_));
+          SNode importAnnotation = new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).get(node);
           if (ListSequence.fromList(SLinkOperations.getChildren(importAnnotation, LINKS.entries$neZo)).isEmpty()) {
             SNodeOperations.deleteNode(importAnnotation);
           }
@@ -694,7 +693,7 @@ public class JavaToMpsConverter {
     if (!(SNodeOperations.isInstanceOf(root, CONCEPTS.Classifier$Ix))) {
       return null;
     }
-    SNode javaImports = AttributeOperations.getAttribute(SNodeOperations.cast(root, CONCEPTS.Classifier$Ix), new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_));
+    SNode javaImports = new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).get(SNodeOperations.cast(root, CONCEPTS.Classifier$Ix));
     if ((javaImports == null)) {
       return null;
     }
@@ -864,7 +863,7 @@ public class JavaToMpsConverter {
     // FIXME share or re-use code with the corresponding NonTypesystemRule 
 
     final Map<String, SNode> importsByName = MapSequence.fromMap(new HashMap<String, SNode>());
-    ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(root, new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_)), LINKS.entries$neZo)).where(new IWhereFilter<SNode>() {
+    ListSequence.fromList(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).get(root), LINKS.entries$neZo)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return !(SPropertyOperations.getBoolean(it, PROPS.onDemand$Gmdi));
       }
@@ -911,7 +910,7 @@ public class JavaToMpsConverter {
     // on the other hand, if everything is resolved, remove all imports altogether 
     if (dynRefsPresent == false) {
       // quick-fix 
-      return SLinkOperations.getChildren(AttributeOperations.getAttribute(root, new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_)), LINKS.entries$neZo);
+      return SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).get(root), LINKS.entries$neZo);
     }
     // removing only those single-type imports that didn't get into retain set 
     // quick fix 

@@ -29,7 +29,6 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.internal.make.runtime.util.FilesDelta;
 import jetbrains.mps.internal.make.runtime.util.DeltaKey;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.make.script.IFeedback;
@@ -110,7 +109,7 @@ public class Makeup_Facet extends IFacet.Stub {
                   public void run() {
                     for (TextUnit tu : generatedTextUnits) {
                       SNode startNode = tu.getStartNode();
-                      SNode annotationCopy = AttributeOperations.getAttribute(startNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$us));
+                      SNode annotationCopy = new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$us).get(startNode);
                       if ((annotationCopy == null)) {
                         continue;
                       }

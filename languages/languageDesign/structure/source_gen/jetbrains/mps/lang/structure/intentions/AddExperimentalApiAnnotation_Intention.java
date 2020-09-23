@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collections;
@@ -37,7 +36,7 @@ public final class AddExperimentalApiAnnotation_Intention extends AbstractIntent
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV)) == null) && SNodeOperations.getParent(node) == null && SNodeOperations.getContainingRoot(node) == node;
+    return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV).get(node) == null) && SNodeOperations.getParent(node) == null && SNodeOperations.getContainingRoot(node) == node;
   }
   @Override
   public boolean isSurroundWith() {
@@ -54,18 +53,18 @@ public final class AddExperimentalApiAnnotation_Intention extends AbstractIntent
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExperimentalAPINodeAttribute$rc)) == null)) {
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExperimentalAPINodeAttribute$rc).get(node) == null)) {
         return "Add Experimental API Attribute";
       }
       return "Remove Experimental API Attribute";
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExperimentalAPINodeAttribute$rc)) == null)) {
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExperimentalAPINodeAttribute$rc).get(node) == null)) {
         SNode annotation = SNodeFactoryOperations.createNewNode(CONCEPTS.ExperimentalAPINodeAttribute$rc, null);
         new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExperimentalAPINodeAttribute$rc).set(node, annotation);
       } else {
-        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExperimentalAPINodeAttribute$rc)));
+        SNodeOperations.deleteNode(new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExperimentalAPINodeAttribute$rc).get(node));
       }
     }
     @Override

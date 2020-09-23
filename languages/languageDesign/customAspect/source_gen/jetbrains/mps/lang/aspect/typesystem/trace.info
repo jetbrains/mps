@@ -95,48 +95,48 @@
       </scope>
     </file>
     <file name="check_GenerationDescriptor_Class_NonTypesystemRule.java">
-      <node id="6422667311313324270" at="26,196,27,13" concept="6" />
-      <node id="6422667311313324286" at="29,5,30,92" concept="5" />
-      <node id="6422667311313324286" at="30,92,31,270" concept="5" />
-      <node id="6422667311313318807" at="34,50,35,50" concept="6" />
-      <node id="6422667311313318807" at="37,68,38,102" concept="6" />
-      <node id="6422667311313318807" at="40,30,41,17" concept="6" />
-      <node id="6422667311313318807" at="45,0,46,0" concept="7" trace="implTemplate$Z$ZX" />
-      <node id="6422667311313318807" at="49,0,50,0" concept="7" trace="PropertyMacro$c9" />
-      <node id="6422667311313318807" at="50,0,51,0" concept="7" trace="GenerationDescriptor_Class$Tm" />
-      <node id="6422667311313318807" at="54,0,55,0" concept="7" trace="name$MnvL" />
-      <node id="6422667311313318807" at="23,0,25,0" concept="1" trace="check_GenerationDescriptor_Class_NonTypesystemRule#()V" />
-      <node id="6422667311313324014" at="25,114,28,5" concept="3" />
-      <node id="6422667311313318807" at="34,0,37,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="6422667311313318807" at="37,0,40,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="6422667311313318807" at="40,0,43,0" concept="4" trace="overrides#()Z" />
-      <node id="6422667311313324286" at="28,5,32,5" concept="0" />
-      <node id="6422667311313318807" at="25,0,34,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-      <scope id="6422667311313318807" at="23,63,23,63" />
-      <scope id="6422667311313324015" at="26,196,27,13" />
-      <scope id="6422667311313318807" at="34,50,35,50" />
-      <scope id="6422667311313318807" at="37,68,38,102" />
-      <scope id="6422667311313318807" at="40,30,41,17" />
-      <scope id="6422667311313318807" at="23,0,25,0" />
-      <scope id="6422667311313324286" at="29,5,31,270">
+      <node id="6422667311313324270" at="25,166,26,13" concept="6" />
+      <node id="6422667311313324286" at="28,5,29,92" concept="5" />
+      <node id="6422667311313324286" at="29,92,30,270" concept="5" />
+      <node id="6422667311313318807" at="33,50,34,50" concept="6" />
+      <node id="6422667311313318807" at="36,68,37,102" concept="6" />
+      <node id="6422667311313318807" at="39,30,40,17" concept="6" />
+      <node id="6422667311313318807" at="44,0,45,0" concept="7" trace="PropertyMacro$c9" />
+      <node id="6422667311313318807" at="45,0,46,0" concept="7" trace="GenerationDescriptor_Class$Tm" />
+      <node id="6422667311313318807" at="49,0,50,0" concept="7" trace="name$MnvL" />
+      <node id="6422667311313318807" at="53,0,54,0" concept="7" trace="implTemplate$Z$ZX" />
+      <node id="6422667311313318807" at="22,0,24,0" concept="1" trace="check_GenerationDescriptor_Class_NonTypesystemRule#()V" />
+      <node id="6422667311313324014" at="24,114,27,5" concept="3" />
+      <node id="6422667311313318807" at="33,0,36,0" concept="4" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="6422667311313318807" at="36,0,39,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="6422667311313318807" at="39,0,42,0" concept="4" trace="overrides#()Z" />
+      <node id="6422667311313324286" at="27,5,31,5" concept="0" />
+      <node id="6422667311313318807" at="24,0,33,0" concept="4" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="6422667311313318807" at="22,63,22,63" />
+      <scope id="6422667311313324015" at="25,166,26,13" />
+      <scope id="6422667311313318807" at="33,50,34,50" />
+      <scope id="6422667311313318807" at="36,68,37,102" />
+      <scope id="6422667311313318807" at="39,30,40,17" />
+      <scope id="6422667311313318807" at="22,0,24,0" />
+      <scope id="6422667311313324286" at="28,5,30,270">
         <var name="_reporter_2309309498" id="6422667311313324286" />
         <var name="errorTarget" id="6422667311313324286" />
       </scope>
-      <scope id="6422667311313318807" at="34,0,37,0" />
-      <scope id="6422667311313318807" at="37,0,40,0">
+      <scope id="6422667311313318807" at="33,0,36,0" />
+      <scope id="6422667311313318807" at="36,0,39,0">
         <var name="argument" id="6422667311313318807" />
       </scope>
-      <scope id="6422667311313318807" at="40,0,43,0" />
-      <scope id="6422667311313318808" at="25,114,32,5" />
-      <scope id="6422667311313318807" at="25,0,34,0">
+      <scope id="6422667311313318807" at="39,0,42,0" />
+      <scope id="6422667311313318808" at="24,114,31,5" />
+      <scope id="6422667311313318807" at="24,0,33,0">
         <var name="c" id="6422667311313318807" />
         <var name="status" id="6422667311313318807" />
         <var name="typeCheckingContext" id="6422667311313318807" />
       </scope>
-      <unit id="6422667311313318807" at="44,0,47,0" name="jetbrains.mps.lang.aspect.typesystem.check_GenerationDescriptor_Class_NonTypesystemRule$LINKS" />
-      <unit id="6422667311313318807" at="53,0,56,0" name="jetbrains.mps.lang.aspect.typesystem.check_GenerationDescriptor_Class_NonTypesystemRule$PROPS" />
-      <unit id="6422667311313318807" at="48,0,52,0" name="jetbrains.mps.lang.aspect.typesystem.check_GenerationDescriptor_Class_NonTypesystemRule$CONCEPTS" />
-      <unit id="6422667311313318807" at="22,0,57,0" name="jetbrains.mps.lang.aspect.typesystem.check_GenerationDescriptor_Class_NonTypesystemRule" />
+      <unit id="6422667311313318807" at="48,0,51,0" name="jetbrains.mps.lang.aspect.typesystem.check_GenerationDescriptor_Class_NonTypesystemRule$PROPS" />
+      <unit id="6422667311313318807" at="52,0,55,0" name="jetbrains.mps.lang.aspect.typesystem.check_GenerationDescriptor_Class_NonTypesystemRule$LINKS" />
+      <unit id="6422667311313318807" at="43,0,47,0" name="jetbrains.mps.lang.aspect.typesystem.check_GenerationDescriptor_Class_NonTypesystemRule$CONCEPTS" />
+      <unit id="6422667311313318807" at="21,0,56,0" name="jetbrains.mps.lang.aspect.typesystem.check_GenerationDescriptor_Class_NonTypesystemRule" />
     </file>
   </root>
 </debug-info>

@@ -8,7 +8,6 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collection;
@@ -46,7 +45,7 @@ public final class AddClasslikeAnnotation_Intention extends AbstractIntentionDes
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv)) == null) && !(SNodeOperations.isInstanceOf(node, CONCEPTS.AutoInitDSLClass$Ms));
+    return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv).get(node) == null) && !(SNodeOperations.isInstanceOf(node, CONCEPTS.AutoInitDSLClass$Ms));
   }
   @Override
   public boolean isSurroundWith() {

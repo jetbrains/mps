@@ -25,7 +25,6 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import java.util.ArrayList;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -89,7 +88,7 @@ public class ErrorReportHelper {
 
   private List<SNode> getNodeAttributes(SNode node) {
     if (!(MapSequence.fromMap(cachedNodeAttributes).containsKey(node))) {
-      MapSequence.fromMap(cachedNodeAttributes).put(node, ListSequence.fromListWithValues(new ArrayList<SNode>(), AttributeOperations.getAttributeList(node, new IAttributeDescriptor.AllAttributes())));
+      MapSequence.fromMap(cachedNodeAttributes).put(node, ListSequence.fromListWithValues(new ArrayList<SNode>(), new IAttributeDescriptor.AllAttributes().list(node)));
     }
     return MapSequence.fromMap(cachedNodeAttributes).get(node);
   }

@@ -12,7 +12,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -50,7 +49,7 @@ public final class AddDefaultPropertyAttribute_Intention extends AbstractIntenti
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.DefaultPropertyAttribute$Dn, PROPS.age$rQbb)) != null)) {
+      if ((new IAttributeDescriptor.PropertyAttribute(CONCEPTS.DefaultPropertyAttribute$Dn, PROPS.age$rQbb).get(node) != null)) {
         return "remove default property attribute";
       } else {
         return "add default property attribute";
@@ -58,11 +57,11 @@ public final class AddDefaultPropertyAttribute_Intention extends AbstractIntenti
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.DefaultPropertyAttribute$Dn, PROPS.age$rQbb)) != null)) {
-        SNodeOperations.deleteNode(AttributeOperations.getAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.DefaultPropertyAttribute$Dn, PROPS.age$rQbb)));
+      if ((new IAttributeDescriptor.PropertyAttribute(CONCEPTS.DefaultPropertyAttribute$Dn, PROPS.age$rQbb).get(node) != null)) {
+        SNodeOperations.deleteNode(new IAttributeDescriptor.PropertyAttribute(CONCEPTS.DefaultPropertyAttribute$Dn, PROPS.age$rQbb).get(node));
       } else {
         new IAttributeDescriptor.PropertyAttribute(CONCEPTS.DefaultPropertyAttribute$Dn, PROPS.age$rQbb).set(node, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb5734616c4b04639L, 0x9c6af3a1cf5dc4dbL, 0x27d5e845b8e8ae64L, "testDefaultEditor.structure.DefaultPropertyAttribute")));
-        SelectionUtil.selectCell(editorContext, AttributeOperations.getAttribute(node, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.DefaultPropertyAttribute$Dn, PROPS.age$rQbb)), "const");
+        SelectionUtil.selectCell(editorContext, new IAttributeDescriptor.PropertyAttribute(CONCEPTS.DefaultPropertyAttribute$Dn, PROPS.age$rQbb).get(node), "const");
       }
 
     }

@@ -20,7 +20,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import java.util.Objects;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
@@ -181,7 +180,7 @@ public abstract class MigrationScriptBase implements MigrationScript {
     new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u).set(n, ann);
 
     // we want this annotation to be shown as outermost one 
-    SNode firstAnnot = ListSequence.fromList(AttributeOperations.getAttributeList(n, new IAttributeDescriptor.AllAttributes())).first();
+    SNode firstAnnot = ListSequence.fromList(new IAttributeDescriptor.AllAttributes().list(n)).first();
     if ((firstAnnot != null) && !(Objects.equals(firstAnnot, ann))) {
       SNodeOperations.insertPrevSiblingChild(firstAnnot, ann);
     }

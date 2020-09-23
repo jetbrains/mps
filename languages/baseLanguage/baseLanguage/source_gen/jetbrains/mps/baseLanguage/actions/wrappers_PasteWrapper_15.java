@@ -14,7 +14,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -58,7 +57,7 @@ public final class wrappers_PasteWrapper_15 implements PasteWrapper {
         SNodeOperations.replaceWithNewChild(it, CONCEPTS.ThisClassifierExpression$xB);
       }
     });
-    new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).set(method, AttributeOperations.getAttribute(sourceNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)));
+    new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).set(method, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).get(sourceNode));
     return method;
   }
 

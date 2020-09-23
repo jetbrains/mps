@@ -15,7 +15,6 @@ import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.editor.runtime.impl.cellActions.CommentUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -59,7 +58,7 @@ public class ChangesTestUtil {
   }
 
   public static void uncommentFirstCommentedMethod(SNode clazz) {
-    CommentUtil.uncomment(ListSequence.fromList(AttributeOperations.getAttributeList(clazz, new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.member$L_2d))).first());
+    CommentUtil.uncomment(ListSequence.fromList(new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.member$L_2d).list(clazz)).first());
   }
   private static SNode _quotation_createNode_l1u5rv_a0c0a() {
     PersistenceFacade facade = PersistenceFacade.getInstance();

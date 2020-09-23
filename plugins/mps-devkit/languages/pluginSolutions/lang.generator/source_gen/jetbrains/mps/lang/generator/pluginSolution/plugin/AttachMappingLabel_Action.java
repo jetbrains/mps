@@ -12,7 +12,6 @@ import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -64,7 +63,7 @@ public class AttachMappingLabel_Action extends BaseAction {
       return false;
     }
     //  in root template - ok 
-    if (AttributeOperations.getAttribute(SNodeOperations.getContainingRoot(node), new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O)) != null) {
+    if (new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(SNodeOperations.getContainingRoot(node)) != null) {
       return true;
     }
     //  in in-line template - ok 
@@ -75,7 +74,7 @@ public class AttachMappingLabel_Action extends BaseAction {
     if (SNodeOperations.getNodeAncestor(node, CONCEPTS.InlineTemplateWithContext_RuleConsequence$9i, false, false) != null) {
       return ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq)) != null;
+          return new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq).get(it) != null;
         }
       }) != null;
     }
@@ -83,7 +82,7 @@ public class AttachMappingLabel_Action extends BaseAction {
     if (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(node), CONCEPTS.TemplateDeclaration$5G)) {
       return ListSequence.fromList(SNodeOperations.getNodeAncestors(node, null, true)).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq)) != null;
+          return new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq).get(it) != null;
         }
       }) != null;
     }

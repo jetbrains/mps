@@ -37,7 +37,6 @@ import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.lang.core.behavior.IDeprecatable__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.TemplateArgumentContext;
@@ -472,7 +471,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return (boolean) IDeprecatable__BehaviorDescriptor.isDeprecated_idhOwoPtR.invoke(_context.getNode());
   }
   public static boolean ifMacro_Condition_4_2(final IfMacroContext _context) {
-    return (AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExperimentalAPINodeAttribute$rc)) != null);
+    return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.ExperimentalAPINodeAttribute$rc).get(_context.getNode()) != null);
   }
   public static boolean ifMacro_Condition_4_3(final IfMacroContext _context) {
     return isNotEmptyString(SPropertyOperations.getString(_context.getNode(), PROPS.conceptShortDescription$is9d));
@@ -505,7 +504,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return isNotEmptyString(SPropertyOperations.getString(_context.getNode(), PROPS.internalValue$1ost));
   }
   public static boolean ifMacro_Condition_13_0(final IfMacroContext _context) {
-    return (AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$)) != null);
+    return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$).get(_context.getNode()) != null);
   }
   public static boolean ifMacro_Condition_13_1(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.oldMember$tsh) != null);
@@ -535,7 +534,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.memberDataType$ahxG);
   }
   public static SNode sourceNodeQuery_13_0(final SourceSubstituteMacroNodeContext _context) {
-    return SLinkOperations.getTarget(SLinkOperations.getTarget(AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$)), LINKS.oldEnum$mg5q), LINKS.memberDataType$ahxG);
+    return SLinkOperations.getTarget(SLinkOperations.getTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$).get(_context.getNode()), LINKS.oldEnum$mg5q), LINKS.memberDataType$ahxG);
   }
   public static Object templateArgumentQuery_2_0(final TemplateArgumentContext _context) {
     return MetaIdByDeclaration.getDatatypeId(_context.getOriginalCopiedInputNode(_context.getNode()));

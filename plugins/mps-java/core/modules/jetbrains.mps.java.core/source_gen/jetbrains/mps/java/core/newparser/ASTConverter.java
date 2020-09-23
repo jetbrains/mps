@@ -22,7 +22,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.eclipse.jdt.internal.compiler.ast.FieldDeclaration;
 import org.eclipse.jdt.internal.compiler.ast.AbstractMethodDeclaration;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -246,7 +245,7 @@ public class ASTConverter {
 
     if (x.javadoc != null) {
       new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh).setNew(cls);
-      MapSequence.fromMap(myJavadocs).put(x.javadoc.sourceStart, AttributeOperations.getAttribute(cls, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh)));
+      MapSequence.fromMap(myJavadocs).put(x.javadoc.sourceStart, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ClassifierDocComment$mh).get(cls));
     }
 
     if (SNodeOperations.isInstanceOf(cls, CONCEPTS.Annotation$he)) {
@@ -410,7 +409,7 @@ public class ASTConverter {
 
     if (method.javadoc != null) {
       new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).setNew(result);
-      MapSequence.fromMap(myJavadocs).put(method.javadoc.sourceStart, AttributeOperations.getAttribute(result, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)));
+      MapSequence.fromMap(myJavadocs).put(method.javadoc.sourceStart, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).get(result));
     }
 
     return result;

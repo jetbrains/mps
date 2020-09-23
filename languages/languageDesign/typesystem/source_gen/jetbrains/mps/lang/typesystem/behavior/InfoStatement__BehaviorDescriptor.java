@@ -16,7 +16,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -42,8 +41,8 @@ public final class InfoStatement__BehaviorDescriptor extends BaseBHDescriptor {
     new IAttributeDescriptor.NodeAttribute(CONCEPTS.MessageStatementAnnotation$Ig).set(__thisNode__, newAnnotation);
   }
   /*package*/ static String getName_id1oFBbRehoLP(@NotNull SNode __thisNode__) {
-    if ((AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MessageStatementAnnotation$Ig)) != null)) {
-      return SPropertyOperations.getString(AttributeOperations.getAttribute(__thisNode__, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MessageStatementAnnotation$Ig)), PROPS.name$MnvL);
+    if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.MessageStatementAnnotation$Ig).get(__thisNode__) != null)) {
+      return SPropertyOperations.getString(new IAttributeDescriptor.NodeAttribute(CONCEPTS.MessageStatementAnnotation$Ig).get(__thisNode__), PROPS.name$MnvL);
     } else {
       String nameGenerated = MessageStatementUtil.generateNameFromExpression(SLinkOperations.getTarget(__thisNode__, LINKS.infoText$13Kl));
       if (nameGenerated != null && nameGenerated.length() > MessageStatementUtil.MIN_LENGTH) {

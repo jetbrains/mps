@@ -12,7 +12,6 @@ import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
@@ -47,11 +46,11 @@ public class RemoveOddAnnotations extends MigrationScriptBase {
       };
       Sequence.fromIterable(SNodeOperations.ofConcept(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AutoInitDSLClass$Ms, false), CONCEPTS.ClassConcept$bK)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv)) != null);
+          return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv).get(it) != null);
         }
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          SNodeOperations.deleteNode(AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv)));
+          SNodeOperations.deleteNode(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv).get(it));
         }
       });
     }
@@ -68,7 +67,7 @@ public class RemoveOddAnnotations extends MigrationScriptBase {
       };
       return Sequence.fromIterable(SNodeOperations.ofConcept(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AutoInitDSLClass$Ms, false), CONCEPTS.ClassConcept$bK)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv)) != null);
+          return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.DSLAnnotation$zv).get(it) != null);
         }
       }).select(new ISelector<SNode, Problem>() {
         public Problem select(SNode it) {

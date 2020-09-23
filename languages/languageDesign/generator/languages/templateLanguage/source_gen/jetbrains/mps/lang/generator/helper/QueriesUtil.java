@@ -7,7 +7,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.generator.behavior.PatternReduction_MappingRule__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -36,7 +35,7 @@ public final class QueriesUtil {
       return SNodeOperations.as(SNodeOperations.getParent(SLinkOperations.getTarget(SNodeOperations.cast(ancestor, CONCEPTS.ReferenceReductionRule$t0), LINKS.link$FUJ3)), CONCEPTS.AbstractConceptDeclaration$KA);
     }
     // ============ 
-    SNode rootAnnotation = AttributeOperations.getAttribute(SNodeOperations.getContainingRoot(node), new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O));
+    SNode rootAnnotation = new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(SNodeOperations.getContainingRoot(node));
     return SLinkOperations.getTarget(SNodeOperations.cast(rootAnnotation, CONCEPTS.RootTemplateAnnotation$9O), LINKS.applicableConcept$LAIX);
   }
   public static SNode getQueryFunction_fromSourceSubstituteMacro(SNode macro) {

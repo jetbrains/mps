@@ -22,7 +22,6 @@ import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.openapi.intentions.ParameterizedIntentionExecutable;
 import jetbrains.mps.lang.core.behavior.ICanSuppressErrors__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -77,7 +76,7 @@ public final class SuppressSpecificInspection_Intention extends AbstractIntentio
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNode annotation = ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1))).insertElement(0, SNodeFactoryOperations.createNewNode(CONCEPTS.SuppressErrorsAnnotation$D1, null));
+      SNode annotation = ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1).list(node)).insertElement(0, SNodeFactoryOperations.createNewNode(CONCEPTS.SuppressErrorsAnnotation$D1, null));
       SPropertyOperations.assign(annotation, PROPS.filter$LICx, myParameter.toPredicate(myParameter.getIdFlavours()).serialize());
       SPropertyOperations.assign(annotation, PROPS.message$_mpB, myParameter.getMessage());
     }

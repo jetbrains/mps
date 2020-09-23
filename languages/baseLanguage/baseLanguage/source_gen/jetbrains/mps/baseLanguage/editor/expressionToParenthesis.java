@@ -31,7 +31,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.behavior.ParenthesisUtil;
 import java.util.Objects;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -138,7 +137,7 @@ public class expressionToParenthesis extends TransformationMenuBase {
         public void execute(@NotNull String pattern) {
           SNode parenthesisedNode = ParenthesisUtil.createUnmatchedLeftParenthesis(_context.getNode());
           if (Objects.equals(parenthesisedNode, _context.getNode())) {
-            SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), AttributeOperations.getAttribute(parenthesisedNode, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7)), SelectionManager.FIRST_CELL, -1);
+            SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteLeftParen$Z7).get(parenthesisedNode), SelectionManager.FIRST_CELL, -1);
           } else {
             SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), SNodeOperations.cast(parenthesisedNode, CONCEPTS.ParenthesizedExpression$Ws), "openParen", -1);
           }
@@ -235,7 +234,7 @@ public class expressionToParenthesis extends TransformationMenuBase {
         public void execute(@NotNull String pattern) {
           SNode parens = ParenthesisUtil.createUnmatchedRightParenthesis(_context.getNode());
           if (Objects.equals(parens, _context.getNode())) {
-            SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), AttributeOperations.getAttribute(parens, new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc)), SelectionManager.LAST_CELL, -1);
+            SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.IncompleteRightParen$Sc).get(parens), SelectionManager.LAST_CELL, -1);
           } else {
             SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), parens, SelectionManager.LAST_CELL, -1);
           }

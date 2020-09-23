@@ -10,7 +10,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import java.util.List;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -90,7 +89,7 @@ public class QueriesUtil {
         return null;
       }
     }
-    List<SNode> attributes = (currMacroNode == null ? AttributeOperations.getAttributeList(node, new IAttributeDescriptor.AllAttributes()) : SNodeOperations.getPrevSiblings(currMacroNode, false));
+    List<SNode> attributes = (currMacroNode == null ? new IAttributeDescriptor.AllAttributes().list(node) : SNodeOperations.getPrevSiblings(currMacroNode, false));
     SNode prevMacro = SNodeOperations.as(ListSequence.fromList(attributes).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         if (!(SNodeOperations.isInstanceOf(it, CONCEPTS.SourceSubstituteMacro$Uv))) {
@@ -150,7 +149,7 @@ __switch__:
                       this.__CP__ = 2;
                       break;
                     case 2:
-                      this._5_TF = AttributeOperations.getAttribute(((SNode) it), new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq));
+                      this._5_TF = new IAttributeDescriptor.NodeAttribute(CONCEPTS.TemplateFragment$eq).get(((SNode) it));
                       this.__CP__ = 6;
                       break;
                     case 7:

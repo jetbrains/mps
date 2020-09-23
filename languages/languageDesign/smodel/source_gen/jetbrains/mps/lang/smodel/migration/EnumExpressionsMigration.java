@@ -16,7 +16,6 @@ import jetbrains.mps.baseLanguage.behavior.IOperation__BehaviorDescriptor;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -206,7 +205,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
   }
 
   public SNode insertMemberNameOp(SNode enumm, SNode position, SNode receiver) {
-    SEnumerationLiteral nameOpMigration = SPropertyOperations.getEnum(AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$)), PROPS.nameOpMigration$L1EO);
+    SEnumerationLiteral nameOpMigration = SPropertyOperations.getEnum(new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$).get(enumm), PROPS.nameOpMigration$L1EO);
 
     switch (enumSwitchIndex_dd9n22_a0c0o.indexNullable(nameOpMigration)) {
       case 0:
@@ -236,7 +235,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
   }
 
   public SNode insertMemberValueOp(SNode enumm, SNode position, SNode receiver) {
-    SEnumerationLiteral valueOpMigration = SPropertyOperations.getEnum(AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$)), PROPS.valueOpMigration$UswM);
+    SEnumerationLiteral valueOpMigration = SPropertyOperations.getEnum(new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$).get(enumm), PROPS.valueOpMigration$UswM);
 
     switch (enumSwitchIndex_dd9n22_a0c0q.indexNullable(valueOpMigration)) {
       case 0:
@@ -293,7 +292,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
   }
 
   public void insertMemberForNameOp(SNode enumm, SNode position, SNode argument) {
-    SEnumerationLiteral nameOpMigration = SPropertyOperations.getEnum(AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$)), PROPS.nameOpMigration$L1EO);
+    SEnumerationLiteral nameOpMigration = SPropertyOperations.getEnum(new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$).get(enumm), PROPS.nameOpMigration$L1EO);
 
     switch (enumSwitchIndex_dd9n22_a0c0s.indexNullable(nameOpMigration)) {
       case 0:
@@ -321,7 +320,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
   }
 
   public void insertMemberForValueOp(SNode enumm, SNode position, SNode argument) {
-    SEnumerationLiteral valueOpMigration = SPropertyOperations.getEnum(AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$)), PROPS.valueOpMigration$UswM);
+    SEnumerationLiteral valueOpMigration = SPropertyOperations.getEnum(new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$).get(enumm), PROPS.valueOpMigration$UswM);
 
     switch (enumSwitchIndex_dd9n22_a0c0u.indexNullable(valueOpMigration)) {
       case 0:
@@ -386,7 +385,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
         GeneratedMatchingPattern matchingPattern_dd9n22_a1a22 = new Pattern_dd9n22_a0b0b0b0w(_quotation_createNode_dd9n22_a0a0b0b0b0w());
         matches_dd9n22_a1a22 = matchingPattern_dd9n22_a1a22.match(matchedNode_dd9n22_b0w);
         if (matches_dd9n22_a1a22) {
-          if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(matchingPattern_dd9n22_a1a22.getMatchedNode("enum"), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$)), PROPS.valueOpMigration$UswM), 0x5a14f103596433c6L)) {
+          if (SEnumOperations.isMember(SPropertyOperations.getEnum(new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$).get(matchingPattern_dd9n22_a1a22.getMatchedNode("enum")), PROPS.valueOpMigration$UswM), 0x5a14f103596433c6L)) {
             if (matchingPattern_dd9n22_a1a22.getMatchedNode("enum") == matchingPattern_dd9n22_a1a22.getMatchedNode("enum0") && matchingPattern_dd9n22_a1a22.getMatchedNode("trueMember") == findBooleanTrueMember(matchingPattern_dd9n22_a1a22.getMatchedNode("enum")) && matchingPattern_dd9n22_a1a22.getMatchedNode("falseMember") == findBooleanFalseMember(matchingPattern_dd9n22_a1a22.getMatchedNode("enum"))) {
               return MultiTuple.<SNode,SNode>from(matchingPattern_dd9n22_a1a22.getMatchedNode("res"), matchingPattern_dd9n22_a1a22.getMatchedNode("enum"));
             }
@@ -396,7 +395,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
           GeneratedMatchingPattern matchingPattern_dd9n22_b1a22 = new Pattern_dd9n22_a0b0a3a1a1a22(_quotation_createNode_dd9n22_a0a0b0a3a1a1a22());
           matches_dd9n22_b1a22 = matchingPattern_dd9n22_b1a22.match(matchedNode_dd9n22_b0w);
           if (matches_dd9n22_b1a22) {
-            if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(matchingPattern_dd9n22_b1a22.getMatchedNode("enum"), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$)), PROPS.valueOpMigration$UswM), 0x5a14f103596433cbL)) {
+            if (SEnumOperations.isMember(SPropertyOperations.getEnum(new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$).get(matchingPattern_dd9n22_b1a22.getMatchedNode("enum")), PROPS.valueOpMigration$UswM), 0x5a14f103596433cbL)) {
               return MultiTuple.<SNode,SNode>from(matchingPattern_dd9n22_b1a22.getMatchedNode("res"), matchingPattern_dd9n22_b1a22.getMatchedNode("enum"));
             }
           } else {
@@ -404,7 +403,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
             GeneratedMatchingPattern matchingPattern_dd9n22_c1a22 = new Pattern_dd9n22_a0b0a3a0d0b0b0w(_quotation_createNode_dd9n22_a0a0b0a3a0d0b0b0w());
             matches_dd9n22_c1a22 = matchingPattern_dd9n22_c1a22.match(matchedNode_dd9n22_b0w);
             if (matches_dd9n22_c1a22) {
-              if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(matchingPattern_dd9n22_c1a22.getMatchedNode("enum"), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$)), PROPS.valueOpMigration$UswM), 0x5a14f103596433d1L)) {
+              if (SEnumOperations.isMember(SPropertyOperations.getEnum(new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$).get(matchingPattern_dd9n22_c1a22.getMatchedNode("enum")), PROPS.valueOpMigration$UswM), 0x5a14f103596433d1L)) {
                 return MultiTuple.<SNode,SNode>from(matchingPattern_dd9n22_c1a22.getMatchedNode("res"), matchingPattern_dd9n22_c1a22.getMatchedNode("enum"));
               }
             } else {
@@ -412,7 +411,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
               GeneratedMatchingPattern matchingPattern_dd9n22_d1a22 = new Pattern_dd9n22_a0b0a3a0d0a3a1a1a22(_quotation_createNode_dd9n22_a0a0b0a3a0d0a3a1a1a22());
               matches_dd9n22_d1a22 = matchingPattern_dd9n22_d1a22.match(matchedNode_dd9n22_b0w);
               if (matches_dd9n22_d1a22) {
-                if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(matchingPattern_dd9n22_d1a22.getMatchedNode("enum"), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$)), PROPS.valueOpMigration$UswM), 0x5a14f103596433beL)) {
+                if (SEnumOperations.isMember(SPropertyOperations.getEnum(new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$).get(matchingPattern_dd9n22_d1a22.getMatchedNode("enum")), PROPS.valueOpMigration$UswM), 0x5a14f103596433beL)) {
                   return MultiTuple.<SNode,SNode>from(matchingPattern_dd9n22_d1a22.getMatchedNode("res"), matchingPattern_dd9n22_d1a22.getMatchedNode("enum"));
                 }
               } else {
@@ -420,7 +419,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
                 GeneratedMatchingPattern matchingPattern_dd9n22_e1a22 = new Pattern_dd9n22_a0b0a3a0d0a3a0d0b0b0w(_quotation_createNode_dd9n22_a0a0b0a3a0d0a3a0d0b0b0w());
                 matches_dd9n22_e1a22 = matchingPattern_dd9n22_e1a22.match(matchedNode_dd9n22_b0w);
                 if (matches_dd9n22_e1a22) {
-                  if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(matchingPattern_dd9n22_e1a22.getMatchedNode("enum"), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$)), PROPS.valueOpMigration$UswM), 0x5a14f103596433bfL)) {
+                  if (SEnumOperations.isMember(SPropertyOperations.getEnum(new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$).get(matchingPattern_dd9n22_e1a22.getMatchedNode("enum")), PROPS.valueOpMigration$UswM), 0x5a14f103596433bfL)) {
                     return MultiTuple.<SNode,SNode>from(matchingPattern_dd9n22_e1a22.getMatchedNode("res"), matchingPattern_dd9n22_e1a22.getMatchedNode("enum"));
                   }
                 } else {
@@ -429,7 +428,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
                   matches_dd9n22_f1a22 = matchingPattern_dd9n22_f1a22.match(matchedNode_dd9n22_b0w);
                   if (matches_dd9n22_f1a22) {
                     {
-                      SNode replacement = AttributeOperations.getAttribute(matchingPattern_dd9n22_f1a22.getMatchedNode("method"), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumCustomMethodReplacementInfo$$w));
+                      SNode replacement = new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumCustomMethodReplacementInfo$$w).get(matchingPattern_dd9n22_f1a22.getMatchedNode("method"));
                       if (SEnumOperations.isMember(SPropertyOperations.getEnum(replacement, PROPS.kind$h$_E), 0x2e9237b686f1e937L)) {
                         return MultiTuple.<SNode,SNode>from(matchingPattern_dd9n22_f1a22.getMatchedNode("res"), SLinkOperations.getTarget(replacement, LINKS.enum$h_3G));
                       }
@@ -446,7 +445,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
   }
 
   public static SNode matchConstant(SNode expr, SNode enumDeclaration) {
-    SNode oldEnum = SLinkOperations.getTarget(AttributeOperations.getAttribute(enumDeclaration, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$)), LINKS.oldEnum$mg5q);
+    SNode oldEnum = SLinkOperations.getTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$).get(enumDeclaration), LINKS.oldEnum$mg5q);
     SNode memberDataType = SLinkOperations.getTarget(oldEnum, LINKS.memberDataType$ahxG);
     if (ListSequence.fromList(SLinkOperations.getChildren(expr, LINKS.smodelAttribute$KJ43)).isNotEmpty()) {
       return null;
@@ -494,7 +493,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
         if (matches_dd9n22_a1a62) {
           {
             SNode enumm = enumMemberType(matchingPattern_dd9n22_a1a62.getMatchedNode("res"));
-            if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$)), PROPS.valueOpMigration$UswM), 0x5a14f103596433c6L) && matchingPattern_dd9n22_a1a62.getMatchedNode("enumMember") == findBooleanTrueMember(enumm)) {
+            if (SEnumOperations.isMember(SPropertyOperations.getEnum(new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$).get(enumm), PROPS.valueOpMigration$UswM), 0x5a14f103596433c6L) && matchingPattern_dd9n22_a1a62.getMatchedNode("enumMember") == findBooleanTrueMember(enumm)) {
               return MultiTuple.<SNode,SNode>from(matchingPattern_dd9n22_a1a62.getMatchedNode("res"), enumm);
             }
           }
@@ -505,7 +504,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
           if (matches_dd9n22_b1a62) {
             {
               SNode enumm = enumMemberType(matchingPattern_dd9n22_b1a62.getMatchedNode("res"));
-              if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$)), PROPS.valueOpMigration$UswM), 0x5a14f103596433cbL) && matchingPattern_dd9n22_b1a62.getMatchedNode("enum") == enumm) {
+              if (SEnumOperations.isMember(SPropertyOperations.getEnum(new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$).get(enumm), PROPS.valueOpMigration$UswM), 0x5a14f103596433cbL) && matchingPattern_dd9n22_b1a62.getMatchedNode("enum") == enumm) {
                 return MultiTuple.<SNode,SNode>from(matchingPattern_dd9n22_b1a62.getMatchedNode("res"), enumm);
               }
             }
@@ -516,7 +515,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
             if (matches_dd9n22_c1a62) {
               {
                 SNode enumm = enumMemberType(matchingPattern_dd9n22_c1a62.getMatchedNode("res"));
-                if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$)), PROPS.valueOpMigration$UswM), 0x5a14f103596433d1L) && matchingPattern_dd9n22_c1a62.getMatchedNode("enum") == enumm) {
+                if (SEnumOperations.isMember(SPropertyOperations.getEnum(new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$).get(enumm), PROPS.valueOpMigration$UswM), 0x5a14f103596433d1L) && matchingPattern_dd9n22_c1a62.getMatchedNode("enum") == enumm) {
                   return MultiTuple.<SNode,SNode>from(matchingPattern_dd9n22_c1a62.getMatchedNode("res"), enumm);
                 }
               }
@@ -527,7 +526,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
               if (matches_dd9n22_d1a62) {
                 {
                   SNode enumm = enumMemberType(matchingPattern_dd9n22_d1a62.getMatchedNode("res"));
-                  if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$)), PROPS.valueOpMigration$UswM), 0x5a14f103596433beL)) {
+                  if (SEnumOperations.isMember(SPropertyOperations.getEnum(new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$).get(enumm), PROPS.valueOpMigration$UswM), 0x5a14f103596433beL)) {
                     return MultiTuple.<SNode,SNode>from(matchingPattern_dd9n22_d1a62.getMatchedNode("res"), enumm);
                   }
                 }
@@ -538,7 +537,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
                 if (matches_dd9n22_e1a62) {
                   {
                     SNode enumm = enumMemberType(matchingPattern_dd9n22_e1a62.getMatchedNode("res"));
-                    if (SEnumOperations.isMember(SPropertyOperations.getEnum(AttributeOperations.getAttribute(enumm, new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$)), PROPS.valueOpMigration$UswM), 0x5a14f103596433bfL)) {
+                    if (SEnumOperations.isMember(SPropertyOperations.getEnum(new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$).get(enumm), PROPS.valueOpMigration$UswM), 0x5a14f103596433bfL)) {
                       return MultiTuple.<SNode,SNode>from(matchingPattern_dd9n22_e1a62.getMatchedNode("res"), enumm);
                     }
                   }
@@ -548,7 +547,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
                   matches_dd9n22_f1a62 = matchingPattern_dd9n22_f1a62.match(matchedNode_dd9n22_b0ab);
                   if (matches_dd9n22_f1a62) {
                     {
-                      SNode replacement = AttributeOperations.getAttribute(matchingPattern_dd9n22_f1a62.getMatchedNode("method"), new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumCustomMethodReplacementInfo$$w));
+                      SNode replacement = new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumCustomMethodReplacementInfo$$w).get(matchingPattern_dd9n22_f1a62.getMatchedNode("method"));
                       if (SEnumOperations.isMember(SPropertyOperations.getEnum(replacement, PROPS.kind$h$_E), 0x2e9237b686f1e936L)) {
                         return MultiTuple.<SNode,SNode>from(matchingPattern_dd9n22_f1a62.getMatchedNode("res"), SLinkOperations.getTarget(replacement, LINKS.enum$h_3G));
                       }

@@ -16,7 +16,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -119,8 +118,8 @@ public class ClassifiersScope extends FilteringScope {
     }
 
     SNode root = Sequence.fromIterable(ClassifierResolveUtils.getPathToRoot(myClassifier)).last();
-    if ((root != null) && (AttributeOperations.getAttribute(root, new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_)) != null)) {
-      return ClassifierResolveUtils.isImportedBy(SNodeOperations.cast(node, CONCEPTS.Classifier$Ix), AttributeOperations.getAttribute(root, new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_)));
+    if ((root != null) && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).get(root) != null)) {
+      return ClassifierResolveUtils.isImportedBy(SNodeOperations.cast(node, CONCEPTS.Classifier$Ix), new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).get(root));
     }
 
     return false;

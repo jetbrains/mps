@@ -20,7 +20,6 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import org.apache.log4j.Logger;
@@ -102,7 +101,7 @@ public class RunConfigurationTypeContribution extends SubstituteMenuBase {
       protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
         return ListSequence.fromList(SModelOperations.rootsIncludingImported(_context.getModel(), CONCEPTS.RunConfiguration$B$)).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return (AttributeOperations.getAttribute(it, new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedAnnotation$xW)) == null);
+            return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedAnnotation$xW).get(it) == null);
           }
         }).toListSequence();
       }

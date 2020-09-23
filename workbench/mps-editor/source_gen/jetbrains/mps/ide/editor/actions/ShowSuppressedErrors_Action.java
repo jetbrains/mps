@@ -46,7 +46,6 @@ import jetbrains.mps.ide.editor.util.CaptionFunction;
 import jetbrains.mps.ide.editor.util.CustomizedNavigatableRenderer;
 import java.util.Comparator;
 import com.intellij.util.Function;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -197,7 +196,7 @@ public class ShowSuppressedErrors_Action extends BaseAction {
     SNode parent;
     if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("selectedNode")), CONCEPTS.ICanSuppressErrors$q8)) {
       parent = SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("selectedNode")), CONCEPTS.ICanSuppressErrors$q8);
-      ListSequence.fromList(suppressed).addSequence(ListSequence.fromList(AttributeOperations.getAttributeList(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("selectedNode")), CONCEPTS.ICanSuppressErrors$q8), new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1))));
+      ListSequence.fromList(suppressed).addSequence(ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1).list(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("selectedNode")), CONCEPTS.ICanSuppressErrors$q8))));
       return MultiTuple.<SNode,List<SNode>>from(parent, suppressed);
     } else if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("selectedNode")), CONCEPTS.SuppressErrorsAnnotation$D1)) {
       parent = SNodeOperations.cast(SNodeOperations.getParent(SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("selectedNode")), CONCEPTS.SuppressErrorsAnnotation$D1)), CONCEPTS.ICanSuppressErrors$q8);

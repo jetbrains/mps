@@ -42,7 +42,6 @@ import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import java.util.List;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.language.SProperty;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -548,7 +547,7 @@ public class QueriesGenerated {
   public static Iterable<SNode> sourceNodesQuery_0_0(final SourceSubstituteMacroNodesContext _context) {
     final List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
     for (SProperty property : Sequence.fromIterable(_context.getNode().getProperties())) {
-      if ((AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyAntiquotation$13, property)) != null)) {
+      if ((new IAttributeDescriptor.PropertyAttribute(CONCEPTS.PropertyAntiquotation$13, property).get(_context.getNode()) != null)) {
         continue;
       }
       SNode propertyNode = SModelOperations.createNewNode(_context.getOutputModel(), null, CONCEPTS.GeneratorInternal_PropertyDescriptor$Cz);
@@ -561,7 +560,7 @@ public class QueriesGenerated {
     return result;
   }
   public static Iterable<SNode> sourceNodesQuery_0_1(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(AttributeOperations.getAttributeList(_context.getNode(), new IAttributeDescriptor.AllAttributes()), CONCEPTS.PropertyAntiquotation$13)).sort(new ISelector<SNode, String>() {
+    return Sequence.fromIterable(SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(_context.getNode()), CONCEPTS.PropertyAntiquotation$13)).sort(new ISelector<SNode, String>() {
       public String select(SNode it) {
         return PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it).getName();
       }
@@ -576,7 +575,7 @@ public class QueriesGenerated {
     }
     SNode originalAncestor = SNodeOperations.getNodeAncestor(originalNode, CONCEPTS.Quotation$Vl, false, false);
     for (SReference ref : Sequence.fromIterable(originalNode.getReferences())) {
-      if ((AttributeOperations.getAttribute(_context.getNode(), new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAntiquotation$Xh, ref.getLink())) != null)) {
+      if ((new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAntiquotation$Xh, ref.getLink()).get(_context.getNode()) != null)) {
         continue;
       }
       SNode targetNode = ((SNode) ref.getTargetNode());
@@ -622,7 +621,7 @@ public class QueriesGenerated {
     return result;
   }
   public static Iterable<SNode> sourceNodesQuery_0_3(final SourceSubstituteMacroNodesContext _context) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(AttributeOperations.getAttributeList(_context.getNode(), new IAttributeDescriptor.AllAttributes()), CONCEPTS.ReferenceAntiquotation$Xh)).sort(new ISelector<SNode, String>() {
+    return Sequence.fromIterable(SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(_context.getNode()), CONCEPTS.ReferenceAntiquotation$Xh)).sort(new ISelector<SNode, String>() {
       public String select(SNode it) {
         return (String) LinkAttribute__BehaviorDescriptor.getNameForReporting_id5gACAVBuLQd.invoke(it);
       }
@@ -704,7 +703,7 @@ public class QueriesGenerated {
         for (SNode child : SNodeOperations.getChildren(node)) {
           if (!(SNodeOperations.isInstanceOf(child, CONCEPTS.AbstractAntiquotation$TS))) {
             for (SReference reference : child.getReferences()) {
-              if (AttributeOperations.getAttribute(child, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAntiquotation$Xh, reference.getLink())) != null || AttributeOperations.getAttribute(child, new IAttributeDescriptor.NodeAttribute(CONCEPTS.Antiquotation$UQ)) != null || AttributeOperations.getAttribute(child, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK)) != null) {
+              if (new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAntiquotation$Xh, reference.getLink()).get(child) != null || new IAttributeDescriptor.NodeAttribute(CONCEPTS.Antiquotation$UQ).get(child) != null || new IAttributeDescriptor.NodeAttribute(CONCEPTS.ListAntiquotation$XK).get(child) != null) {
                 continue;
               }
               SNode targetNode = reference.getTargetNode();

@@ -19,7 +19,6 @@ import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.SModelOperations;
@@ -91,7 +90,7 @@ public class Generator_TabDescriptor extends RelationDescriptor {
     if (rootable || isInterface) {
       boolean isNeedRootTemplate = true;
       for (SNode genFragment : ((List<SNode>) BHReflection.invoke0(node, CONCEPTS.AbstractConceptDeclaration$KA, SMethodTrimmedId.create("findGeneratorFragments", CONCEPTS.AbstractConceptDeclaration$KA, "5zMz2aJEI4B")))) {
-        if ((AttributeOperations.getAttribute(genFragment, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O)) != null)) {
+        if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).get(genFragment) != null)) {
           isNeedRootTemplate = false;
           break;
         }

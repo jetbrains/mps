@@ -13,7 +13,6 @@ import jetbrains.mps.openapi.intentions.IntentionExecutable;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -53,7 +52,7 @@ public final class UnsuppressError_Intention extends AbstractIntentionDescriptor
     return list;
   }
   private List<SNode> parameter(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(AttributeOperations.getAttributeList(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1))).where(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1).list(node)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return isNotEmptyString(SPropertyOperations.getString(it, PROPS.message$_mpB));
       }

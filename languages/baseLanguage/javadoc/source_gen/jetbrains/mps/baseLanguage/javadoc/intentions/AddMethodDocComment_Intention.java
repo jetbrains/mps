@@ -12,7 +12,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
@@ -57,13 +56,13 @@ public final class AddMethodDocComment_Intention extends AbstractIntentionDescri
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)) == null) ? "Add Documentation Comment" : "Remove Documentation Comment");
+      return ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).get(node) == null) ? "Add Documentation Comment" : "Remove Documentation Comment");
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       DocCommentHelper.addJavadocLangIfMissing(node);
 
-      if ((AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)) != null)) {
+      if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).get(node) != null)) {
         new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).set(node, null);
         if (editorContext.getSelectedNode() != node) {
           editorContext.selectWRTFocusPolicy(node);
@@ -73,36 +72,36 @@ public final class AddMethodDocComment_Intention extends AbstractIntentionDescri
       }
 
       SNodeFactoryOperations.setNewAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI), CONCEPTS.MethodDocComment$HI);
-      SNode line = SNodeFactoryOperations.addNewChild(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)), LINKS.body$OAGp, CONCEPTS.CommentLine$hJ);
+      SNode line = SNodeFactoryOperations.addNewChild(new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).get(node), LINKS.body$OAGp, CONCEPTS.CommentLine$hJ);
       SNode firstPart = SNodeFactoryOperations.addNewChild(line, LINKS.part$QuzQ, CONCEPTS.TextCommentLinePart$Eb);
 
       if ((boolean) BaseMethodDeclaration__BehaviorDescriptor.hasAnnotation_id3WDGf12DPy8.invoke(node, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Deprecated"))) {
-        SNodeFactoryOperations.addNewChild(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)), LINKS.tags$stUD, CONCEPTS.DeprecatedBlockDocTag$8n);
+        SNodeFactoryOperations.addNewChild(new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).get(node), LINKS.tags$stUD, CONCEPTS.DeprecatedBlockDocTag$8n);
       }
       //  Method parameters 
       for (SNode parameterDeclaration : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$5xBj))) {
         SNode paramTag = SNodeFactoryOperations.createNewNode(CONCEPTS.ParameterBlockDocTag$ie, null);
         SLinkOperations.setTarget(paramTag, LINKS.parameter$eWDw, _quotation_createNode_i2k1f8_a0b0k0a(parameterDeclaration));
-        ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)), LINKS.tags$stUD)).addElement(paramTag);
+        ListSequence.fromList(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).get(node), LINKS.tags$stUD)).addElement(paramTag);
       }
 
       //  Type variables 
       for (SNode typeVariableDeclaration : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeVariableDeclaration$Lipp))) {
         SNode paramTag = SNodeFactoryOperations.createNewNode(CONCEPTS.ParameterBlockDocTag$ie, null);
         SLinkOperations.setTarget(paramTag, LINKS.parameter$eWDw, _quotation_createNode_i2k1f8_a0b0n0a(typeVariableDeclaration));
-        ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)), LINKS.tags$stUD)).addElement(paramTag);
+        ListSequence.fromList(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).get(node), LINKS.tags$stUD)).addElement(paramTag);
       }
 
       //  Thrown exceptions 
       for (SNode throwsItem : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.throwsItem$CdW$))) {
         SNode throwsTag = SNodeFactoryOperations.createNewNode(CONCEPTS.ThrowsBlockDocTag$bu, null);
         SLinkOperations.setTarget(throwsTag, LINKS.exceptionType$7VDs, SNodeOperations.copyNode(throwsItem));
-        ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)), LINKS.tags$stUD)).addElement(throwsTag);
+        ListSequence.fromList(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).get(node), LINKS.tags$stUD)).addElement(throwsTag);
       }
 
       //  Return value 
       if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.returnType$5xoi), CONCEPTS.VoidType$BF))) {
-        ListSequence.fromList(SLinkOperations.getChildren(AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI)), LINKS.tags$stUD)).addElement(SNodeFactoryOperations.createNewNode(CONCEPTS.ReturnBlockDocTag$KD, null));
+        ListSequence.fromList(SLinkOperations.getChildren(new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).get(node), LINKS.tags$stUD)).addElement(SNodeFactoryOperations.createNewNode(CONCEPTS.ReturnBlockDocTag$KD, null));
       }
 
       SelectionUtil.selectCell(editorContext, firstPart, SelectionManager.FIRST_CELL);

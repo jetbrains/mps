@@ -8,7 +8,6 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
@@ -35,7 +34,7 @@ public class _Interface_Extends_Delete_Last {
             return;
           }
           ListSequence.fromList(SLinkOperations.getChildren(clazz, LINKS.extendedInterface$PDVO)).clear();
-          ListSequence.fromList(AttributeOperations.getAttributeList(clazz, new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.extendedInterface$PDVO))).visitAll(new IVisitor<SNode>() {
+          ListSequence.fromList(new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.extendedInterface$PDVO).list(clazz)).visitAll(new IVisitor<SNode>() {
             public void visit(SNode it) {
               SNodeOperations.deleteNode(it);
             }

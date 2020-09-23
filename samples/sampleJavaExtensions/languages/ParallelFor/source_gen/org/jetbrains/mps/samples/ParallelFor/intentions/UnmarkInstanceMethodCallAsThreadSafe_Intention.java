@@ -12,7 +12,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
@@ -41,7 +40,7 @@ public final class UnmarkInstanceMethodCallAsThreadSafe_Intention extends Abstra
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.operation$gs9E), CONCEPTS.InstanceMethodCallOperation$uu) && AttributeOperations.getAttribute(node, new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ)) != null;
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.operation$gs9E), CONCEPTS.InstanceMethodCallOperation$uu) && new IAttributeDescriptor.NodeAttribute(CONCEPTS.ThreadSafe$eJ).get(node) != null;
   }
   private boolean isVisibleInChild(final SNode node, final SNode childNode, final EditorContext editorContext) {
     return SNodeOperations.getParent(childNode) == node;
