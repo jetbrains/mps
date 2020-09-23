@@ -47,6 +47,7 @@
       <concept id="1137021947720" name="jetbrains.mps.baseLanguage.structure.ConceptFunction" flags="in" index="2VMwT0">
         <child id="1137022507850" name="body" index="2VODD2" />
       </concept>
+      <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
@@ -75,11 +76,13 @@
       <concept id="4079382982702596667" name="jetbrains.mps.baseLanguage.checkedDots.structure.CheckedDotExpression" flags="nn" index="2EnYce" />
     </language>
     <language id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator">
-      <concept id="5015072279636464462" name="jetbrains.mps.lang.generator.structure.VarMacro" flags="lg" index="2jeGV$">
-        <child id="5015072279636624596" name="value" index="2jfP_Y" />
-      </concept>
       <concept id="5015072279636592410" name="jetbrains.mps.lang.generator.structure.VarMacro_ValueQuery" flags="in" index="2jfdEK" />
-      <concept id="1167169188348" name="jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_sourceNode" flags="nn" index="30H73N" />
+      <concept id="1048903277984099206" name="jetbrains.mps.lang.generator.structure.VarDeclaration" flags="ng" index="1ps_xZ">
+        <child id="1048903277984099210" name="value" index="1ps_xN" />
+      </concept>
+      <concept id="1048903277984099198" name="jetbrains.mps.lang.generator.structure.VarMacro2" flags="lg" index="1ps_y7">
+        <child id="1048903277984099213" name="variables" index="1ps_xO" />
+      </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
@@ -134,15 +137,16 @@
               <node concept="1tp6Ag" id="6UtCO5dImV8" role="lGtFl">
                 <property role="1tp6A2" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1(jetbrains.mps.lang.smodel)/4" />
                 <property role="1tp6Ah" value="unknown attributes" />
-                <property role="1tp6Au" value="This node should have been migrated, but has annotations not recognised by the migration. Please review this code and migrate manually if necessary. Unknown attribute: jetbrains.mps.lang.generator.structure.VarMacro" />
+                <property role="1tp6Au" value="This node should have been migrated, but has annotations not recognised by the migration. Please review this code and migrate manually if necessary. Unknown attribute: jetbrains.mps.lang.generator.structure.VarMacro2" />
                 <property role="1tp6Av" value="Migrate popular concept&lt;-&gt;node conversions" />
               </node>
-              <node concept="2jeGV$" id="4gQZRkTTpKE" role="lGtFl">
-                <property role="TrG5h" value="thevar" />
-                <node concept="2jfdEK" id="4gQZRkTTpKF" role="2jfP_Y">
-                  <node concept="3clFbS" id="4gQZRkTTpKG" role="2VODD2">
-                    <node concept="3clFbF" id="4gQZRkTTpKH" role="3cqZAp">
-                      <node concept="30H73N" id="4gQZRkTTpKI" role="3clFbG" />
+              <node concept="1ps_y7" id="4gQZRkTTpKE" role="lGtFl">
+                <node concept="1ps_xZ" id="2UE0o0HMVuu" role="1ps_xO">
+                  <node concept="2jfdEK" id="2UE0o0HMVuv" role="1ps_xN">
+                    <node concept="3clFbS" id="2UE0o0HMVuw" role="2VODD2">
+                      <node concept="3clFbF" id="2UE0o0HMVwt" role="3cqZAp">
+                        <node concept="10Nm6u" id="2UE0o0HMVws" role="3clFbG" />
+                      </node>
                     </node>
                   </node>
                 </node>
@@ -248,12 +252,13 @@
               <node concept="3TrcHB" id="7Ift4HfT7Qi" role="2OqNvi">
                 <ref role="3TsBF5" to="tpce:4qF2Hm2r7ja" resolve="conceptAlias" />
               </node>
-              <node concept="2jeGV$" id="2Qr33HiCinb" role="lGtFl">
-                <property role="TrG5h" value="thevar" />
-                <node concept="2jfdEK" id="2Qr33HiCind" role="2jfP_Y">
-                  <node concept="3clFbS" id="2Qr33HiCinf" role="2VODD2">
-                    <node concept="3clFbF" id="2Qr33HiET0w" role="3cqZAp">
-                      <node concept="30H73N" id="2Qr33HiET0v" role="3clFbG" />
+              <node concept="1ps_y7" id="2Qr33HiCinb" role="lGtFl">
+                <node concept="1ps_xZ" id="2UE0o0HMVqk" role="1ps_xO">
+                  <node concept="2jfdEK" id="2UE0o0HMVql" role="1ps_xN">
+                    <node concept="3clFbS" id="2UE0o0HMVqm" role="2VODD2">
+                      <node concept="3clFbF" id="2UE0o0HMVs8" role="3cqZAp">
+                        <node concept="10Nm6u" id="2UE0o0HMVs7" role="3clFbG" />
+                      </node>
                     </node>
                   </node>
                 </node>
