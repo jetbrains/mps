@@ -4,6 +4,8 @@ package jetbrains.mps.vcs.diff.ui;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.actionSystem.DataProvider;
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.vcs.diff.ModelChangeSet;
 import org.jetbrains.mps.openapi.model.SNodeId;
@@ -14,14 +16,15 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import jetbrains.mps.vcs.diff.ui.common.GoToNeighbourRootActions;
+import com.intellij.ui.ScrollPaneFactory;
+import java.awt.Dimension;
+import com.intellij.openapi.util.DimensionService;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.util.SNodeOperations;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.vcs.diff.ui.common.DiffModelUtil;
 import jetbrains.mps.vcs.diff.ChangeSetBuilder;
-import com.intellij.ui.ScrollPaneFactory;
-import java.awt.Dimension;
-import com.intellij.openapi.util.DimensionService;
+import org.apache.log4j.Level;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
@@ -51,6 +54,7 @@ import java.util.Arrays;
 
 @GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/6410246949269566016", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
 public class ModelDifferenceViewer implements DataProvider {
+  private static final Logger LOG = LogManager.getLogger(ModelDifferenceViewer.class);
   private final MPSProject myProject;
   private ModelChangeSet myChangeSet;
   private ModelChangeSet myMetadataChangeSet;
@@ -69,38 +73,8 @@ public class ModelDifferenceViewer implements DataProvider {
   private boolean myOldRegistered;
   private boolean myNewRegistered;
 
-  public ModelDifferenceViewer(MPSProject project, final SModel oldModel, final SModel newModel, final SNodeId rootId, final boolean showTree, final boolean fixReferences) {
+  public ModelDifferenceViewer(MPSProject project, boolean showTree) {
     myProject = project;
-    myOldRegistered = SNodeOperations.isRegistered(oldModel);
-    myNewRegistered = SNodeOperations.isRegistered(newModel);
-    myEditable = newModel instanceof EditableSModel && myNewRegistered;
-    // register models in repository and create changeset 
-    project.getRepository().getModelAccess().runWriteAction(new Runnable() {
-      public void run() {
-        if (!(myNewRegistered)) {
-          DiffModelUtil.renameModelAndRegister(newModel, "new", fixReferences);
-        }
-        if (!(myOldRegistered)) {
-          DiffModelUtil.renameModelAndRegister(oldModel, "old", fixReferences);
-        }
-      }
-    });
-    project.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        if (showTree || rootId == null) {
-          myChangeSet = ChangeSetBuilder.buildChangeSet(oldModel, newModel, true);
-        } else {
-          myChangeSet = ChangeSetBuilder.buildChangeSetForNode(oldModel, newModel, rootId, true);
-        }
-      }
-    });
-    project.getRepository().getModelAccess().runWriteAction(new Runnable() {
-      public void run() {
-        SModel newMetaModel = MetadataUtil.createMetadataModel(newModel, "metadata_new", myEditable);
-        SModel oldMetaModel = MetadataUtil.createMetadataModel(oldModel, "metadata_old", false);
-        myMetadataChangeSet = ChangeSetBuilder.buildChangeSet(oldMetaModel, newMetaModel, true);
-      }
-    });
 
     // create panels 
     myPanel.setSplitterProportionKey(getClass().getName() + "ModelTreeSplitter");
@@ -114,13 +88,7 @@ public class ModelDifferenceViewer implements DataProvider {
       myGoToNeighbourRootActions = new MyGoToNeighbourRootActions();
       myGoToNeighbourRootActions.previous().registerCustomShortcutSet(GoToNeighbourRootActions.PREV_ROOT_SHORTCUT, myComponent);
       myGoToNeighbourRootActions.next().registerCustomShortcutSet(GoToNeighbourRootActions.NEXT_ROOT_SHORTCUT, myComponent);
-      if (rootId != null) {
-        setCurrentRoot(rootId);
-      }
-    } else {
-      setCurrentRoot(rootId);
     }
-
 
     myComponent.add(myPanel, BorderLayout.CENTER);
 
@@ -128,6 +96,37 @@ public class ModelDifferenceViewer implements DataProvider {
     if (size == null) {
       myComponent.setPreferredSize(new Dimension(500, 700));
     }
+  }
+
+  public void prepareModels(final SModel oldModel, final SModel newModel, final SNodeId rootId, final boolean fixReferences) {
+    myOldRegistered = SNodeOperations.isRegistered(oldModel);
+    myNewRegistered = SNodeOperations.isRegistered(newModel);
+    myEditable = newModel instanceof EditableSModel && myNewRegistered;
+    // register models in repository and create changeset 
+    myProject.getRepository().getModelAccess().runWriteAction(new Runnable() {
+      public void run() {
+        try {
+          if (!(myNewRegistered)) {
+            DiffModelUtil.renameModelAndRegister(newModel, "new", fixReferences);
+          }
+          if (!(myOldRegistered)) {
+            DiffModelUtil.renameModelAndRegister(oldModel, "old", fixReferences);
+          }
+          if (rootId == null) {
+            myChangeSet = ChangeSetBuilder.buildChangeSet(oldModel, newModel, true);
+          } else {
+            myChangeSet = ChangeSetBuilder.buildChangeSetForNode(oldModel, newModel, rootId, true);
+          }
+          SModel newMetaModel = MetadataUtil.createMetadataModel(newModel, "metadata_new", myEditable);
+          SModel oldMetaModel = MetadataUtil.createMetadataModel(oldModel, "metadata_old", false);
+          myMetadataChangeSet = ChangeSetBuilder.buildChangeSet(oldMetaModel, newMetaModel, true);
+        } catch (Exception ex) {
+          if (LOG.isEnabledFor(Level.ERROR)) {
+            LOG.error("Failed to diff models", ex);
+          }
+        }
+      }
+    });
   }
 
   public String getDimensionServiceKey() {

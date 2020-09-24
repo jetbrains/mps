@@ -25,6 +25,7 @@ import com.intellij.diff.contents.DocumentContent;
 import com.intellij.diff.contents.FileContent;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 import jetbrains.mps.vcs.diff.merge.MergeTemporaryModel;
 import jetbrains.mps.smodel.SModelReference;
 import jetbrains.mps.smodel.SModelId;
@@ -54,28 +55,31 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
 
     List<DiffContent> contents = request.getContents();
     FileType type = (contents.get(0).getContentType() != null ? contents.get(0).getContentType() : contents.get(1).getContentType());
-
+    SNodeId rootId;
     if (MPSFileTypeFactory.MPS_ROOT_FILE_TYPE.equals(type) || MPSFileTypeFactory.MPS_HEADER_FILE_TYPE.equals(type)) {
       Tuples._2<SModel, SNodeId> oldModel = getModelAndRoot(mpsProject, contents.get(0), type);
       Tuples._2<SModel, SNodeId> newModel = getModelAndRoot(mpsProject, contents.get(1), type);
-      SNodeId rootId = (newModel._1() != null ? newModel._1() : oldModel._1());
+      rootId = (newModel._1() != null ? newModel._1() : oldModel._1());
       final boolean showTree = DIFF_SHOW_TREE.get(request, false);
-      myViewer = new ModelDifferenceViewer(mpsProject, oldModel._0(), newModel._0(), rootId, showTree, true);
+      myViewer = new ModelDifferenceViewer(mpsProject, showTree);
+      myViewer.prepareModels(oldModel._0(), newModel._0(), (showTree ? null : rootId), true);
     } else {
       SModel oldModel = ModelDiffViewer.getModel(mpsProject, contents.get(0), type);
       SModel newModel = ModelDiffViewer.getModel(mpsProject, contents.get(1), type);
       //  show one root only if requested 
-      SNodeId rootId = request.getUserData(DIFF_SHOW_ROOTID);
+      rootId = request.getUserData(DIFF_SHOW_ROOTID);
       final boolean showTree = DIFF_SHOW_TREE.get(request, true);
-      myViewer = new ModelDifferenceViewer(mpsProject, oldModel, newModel, rootId, showTree, false);
-      // navigate to specific place in editor if requested 
-      Bounds scrollTo = request.getUserData(DIFF_NAVIGATE_TO);
-      if (scrollTo != null) {
-        myViewer.navigate(scrollTo);
-      }
+      myViewer = new ModelDifferenceViewer(mpsProject, showTree);
+      myViewer.prepareModels(oldModel, newModel, (showTree ? null : rootId), false);
     }
     List<String> titles = request.getContentTitles();
     myViewer.setContentTitles(titles.get(0), titles.get(1));
+    myViewer.setCurrentRoot(rootId);
+    // navigate to specific place in editor if requested 
+    Bounds scrollTo = request.getUserData(DIFF_NAVIGATE_TO);
+    if (scrollTo != null) {
+      myViewer.navigate(scrollTo);
+    }
   }
 
   public static boolean canShow(@NotNull DiffContext context, @NotNull DiffRequest request) {
@@ -122,6 +126,9 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
 
   @NotNull
   public JComponent getComponent() {
+    if (myViewer == null) {
+      return new JLabel("Failed to create diff viewer");
+    }
     return myViewer.getComponent();
   }
   @Nullable
@@ -134,8 +141,8 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
   }
   public void dispose() {
     if (myViewer != null) {
-      // in EDT? 
       myViewer.dispose();
+      myViewer = null;
     }
   }
 
