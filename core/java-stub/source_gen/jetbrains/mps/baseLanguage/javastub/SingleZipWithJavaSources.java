@@ -62,6 +62,10 @@ public class SingleZipWithJavaSources implements JavadocSupplier {
       return;
     }
     synchronized (this) {
+      if (myZipFile != null) {
+        // e.g. other thread got the guard to 0 and about to release the zip, but we got into synchronized section first 
+        return;
+      }
       try {
         myZipFile = new ZipFile(myZipFileName);
         myClassToDoc = new HashMap<String, Documentation>();
@@ -80,6 +84,11 @@ public class SingleZipWithJavaSources implements JavadocSupplier {
       return;
     }
     synchronized (this) {
+      // while we were getting ready to release the zip, someone else came and tries to acquire(), don't need to release then. 
+      if (myZipGuard.get() != 0) {
+        return;
+      }
+
       try {
         myZipFile.close();
       } catch (IOException ex) {
