@@ -10,6 +10,7 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.baseLanguage.behavior.ConstructorDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
@@ -28,8 +29,13 @@ public class check_HasSuperConstructorCall_NonTypesystemRule extends AbstractNon
     if ((boolean) ConstructorDeclaration__BehaviorDescriptor.containsImplicitSuperConstructorCall_id6d19RW5IPof.invoke(constructorDeclaration)) {
       SNode superConstructor = ConstructorDeclaration__BehaviorDescriptor.getSuperDefaultConstructor_id6d19RW5J1tP.invoke(constructorDeclaration);
       if (superConstructor == null && !((boolean) ConstructorDeclaration__BehaviorDescriptor.hasImplicitSuperDefaultConstructor_id5lFB3KB0eQS.invoke(constructorDeclaration))) {
-        SNode superClass = SNodeOperations.as(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(constructorDeclaration), CONCEPTS.ClassConcept$bK), LINKS.superclass$Mp9$), LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK);
-        if (SNodeOperations.getModel(superClass).isReadOnly()) {
+        SNode enclosing = SNodeOperations.as(SNodeOperations.getParent(constructorDeclaration), CONCEPTS.ClassConcept$bK);
+        SNode superClass = SNodeOperations.as(SLinkOperations.getTarget(SLinkOperations.getTarget(enclosing, LINKS.superclass$Mp9$), LINKS.classifier$cxMr), CONCEPTS.ClassConcept$bK);
+        SModel model = SNodeOperations.getModel(superClass);
+        if (model == null) {
+          return;
+        }
+        if (model.isReadOnly()) {
           {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(constructorDeclaration, "there is no default constructor available in superclass " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(superClass), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2782601603365247587", null, errorTarget);
