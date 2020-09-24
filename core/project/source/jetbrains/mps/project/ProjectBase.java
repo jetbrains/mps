@@ -302,12 +302,12 @@ public abstract class ProjectBase extends Project {
    * in the case of idea platform presence they are triggered from the corresponding idea project opened/closed events.
    * in the other case they are triggered at the init/dispose methods
    */
-  public void projectOpened() {
+  public final void projectOpened() {
     LOG.info("Project '" + getName() + "' is opened");
     myProjectManager.projectOpened(this);
   }
 
-  public void projectClosed() {
+  public final void projectClosed() {
     checkNotDisposed();
     LOG.info("Project '" + getName() + "' is closing");
     myProjectManager.projectClosed(this);
