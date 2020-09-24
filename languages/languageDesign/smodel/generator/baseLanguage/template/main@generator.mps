@@ -574,6 +574,13 @@
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
+      <concept id="709746936026466394" name="jetbrains.mps.lang.core.structure.ChildAttribute" flags="ng" index="3VBwX9">
+        <property id="709746936026609031" name="linkId" index="3V$3ak" />
+        <property id="709746936026609029" name="role_DebugInfo" index="3V$3am" />
+      </concept>
+      <concept id="4452961908202556907" name="jetbrains.mps.lang.core.structure.BaseCommentAttribute" flags="ng" index="1X3_iC">
+        <child id="3078666699043039389" name="commentedNode" index="8Wnug" />
+      </concept>
     </language>
     <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
       <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="nn" index="3oM_SD">
@@ -8649,14 +8656,18 @@
   <node concept="bUwia" id="5zEkxuKhrUk">
     <property role="TrG5h" value="mc_attribute_access" />
     <property role="3GE5qa" value="attribute" />
-    <node concept="3aamgX" id="r00i4Qcn0C" role="3acgRq">
-      <property role="36QftV" value="true" />
-      <property role="2n97ot" value="Other generators (like one in node factories) don't call switch_AttributeQualifier" />
-      <ref role="30HIoZ" to="tp25:5zEkxuKhrAF" resolve="AttributeQualifier" />
-      <node concept="gft3U" id="r00i4QcpfD" role="1lVwrX">
-        <node concept="2VYdi" id="r00i4QcpfF" role="gfFT$">
-          <node concept="1sPUBX" id="r00i4QcpfL" role="lGtFl">
-            <ref role="v9R2y" node="1URfAck18Ad" resolve="switch_AttributeQualifier" />
+    <node concept="1X3_iC" id="4P7F1YoO0GG" role="lGtFl">
+      <property role="3V$3am" value="reductionMappingRule" />
+      <property role="3V$3ak" value="b401a680-8325-4110-8fd3-84331ff25bef/1095416546421/1167328349397" />
+      <node concept="3aamgX" id="r00i4Qcn0C" role="8Wnug">
+        <property role="36QftV" value="true" />
+        <property role="2n97ot" value="Other generators (like one in node factories) don't call switch_AttributeQualifier" />
+        <ref role="30HIoZ" to="tp25:5zEkxuKhrAF" resolve="AttributeQualifier" />
+        <node concept="gft3U" id="r00i4QcpfD" role="1lVwrX">
+          <node concept="2VYdi" id="r00i4QcpfF" role="gfFT$">
+            <node concept="1sPUBX" id="r00i4QcpfL" role="lGtFl">
+              <ref role="v9R2y" node="1URfAck18Ad" resolve="switch_AttributeQualifier" />
+            </node>
           </node>
         </node>
       </node>
