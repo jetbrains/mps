@@ -9,6 +9,12 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import org.apache.log4j.Logger;
+import java.util.ArrayList;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
@@ -16,6 +22,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
+/**
+ * Note, public methods shall not use smodel concepts like node&lt;&gt; as they get referenced from templates of 
+ * lang.smodel language and therefore could get life of subsequent generators harder (i.e. if they copy smodel type and 
+ * inject it elsewhere - it won't get reduced as lang.smodel generator is already over). Private/protected methods are 
+ * not referenced from outside and are safe to use whatever deemed necessary.
+ */
 @GeneratedClass(node = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)/6407023681583030432", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
 public interface IAttributeDescriptor {
   default boolean match(@NotNull SNode attribute) {
@@ -59,6 +71,14 @@ public interface IAttributeDescriptor {
       return myAttributeConcept == null || SNodeOperations.isInstanceOf(attribute, myAttributeConcept);
     }
 
+    protected Iterable<SNode> doGet(SNode node) {
+      return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43)).where(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return match(it);
+        }
+      });
+    }
+
     protected final SAbstractConcept attrConcept() {
       // myAttributeConcept == null only for AllAttributes qualifier, in which case it used to be qualifier.getTargetConcept() == node/Attribute/ 
       return (myAttributeConcept != null ? myAttributeConcept : CONCEPTS.Attribute$g1);
@@ -66,53 +86,108 @@ public interface IAttributeDescriptor {
     @Override
     public SNode setNew(@Nullable SNode recipient) {
       SNode newAttr = SModelOperations.createNewNode((recipient == null ? null : recipient.getModel()), null, attrConcept());
-      return AttributeOperations.setAttribute(recipient, this, newAttr);
+      return set(recipient, newAttr);
     }
     @Override
     public SNode setNew(@Nullable SNode recipient, @NotNull SConcept attributeConcept) {
       SNode newAttr = SModelOperations.createNewNode((recipient == null ? null : recipient.getModel()), null, attributeConcept);
-      return AttributeOperations.setAttribute(recipient, this, newAttr);
+      return set(recipient, newAttr);
     }
     @Override
     public SNode addNew(@Nullable SNode recipient) {
       SNode newAttr = (SNode) SModelOperations.createNewNode((recipient == null ? null : recipient.getModel()), null, attrConcept());
-      return AttributeOperations.addAttribute(recipient, this, newAttr);
+      return add(recipient, newAttr);
     }
     @Override
     public SNode addNew(@Nullable SNode recipient, @NotNull SConcept attributeConcept) {
-      SNode newAttr = (SNode) SModelOperations.createNewNode((recipient == null ? null : recipient.getModel()), null, attributeConcept);
-      return AttributeOperations.addAttribute(recipient, this, newAttr);
+      SNode newAttr = SModelOperations.createNewNode((recipient == null ? null : recipient.getModel()), null, attributeConcept);
+      return add(recipient, newAttr);
     }
 
     @Override
     public SNode set(@Nullable SNode recipient, @Nullable SNode attrValue) {
-      return AttributeOperations.setAttribute(recipient, this, attrValue);
-    }
-    @Override
-    public SNode add(@Nullable SNode recipient, @Nullable SNode attrValue) {
-      return AttributeOperations.addAttribute(recipient, this, (SNode) attrValue);
+      if (attrValue == null) {
+        deleteAll(recipient);
+        return null;
+      }
+      Iterable<SNode> list = doGet(recipient);
+      if (Sequence.fromIterable(list).isEmpty()) {
+        doAdd(recipient, (SNode) attrValue);
+      } else {
+        SNode attr = Sequence.fromIterable(list).first();
+        if (Sequence.fromIterable(list).count() > 1) {
+          String f = "%d nodes match single value attribute during attribute replacing. Only the first found node replaced.\n node=%s; attribute concept=%s(%s)";
+          // log error from logging language doesn't handle statements in a class that is not top-level (can't weave LOG field)) 
+          Logger.getLogger(getClass()).error(String.format(f, Sequence.fromIterable(list).count(), recipient.getReference(), SNodeOperations.getConcept(attr).getName(), attr.getNodeId()));
+        }
+        SNodeOperations.replaceWithAnother(attr, attrValue);
+        update(attrValue);
+      }
+      return attrValue;
     }
 
     @Override
-    public SNode get(@Nullable SNode recipient) {
-      return AttributeOperations.getAttribute(recipient, this);
+    public SNode add(@Nullable SNode recipient, @Nullable SNode attrValue) {
+      if (attrValue == null) {
+        return null;
+      }
+      return doAdd(recipient, (SNode) attrValue);
+    }
+
+    private SNode doAdd(SNode recipient, SNode attrValue) {
+      // assume attrValue != null 
+      ListSequence.fromList(SLinkOperations.getChildren(recipient, LINKS.smodelAttribute$KJ43)).addElement(attrValue);
+      update(attrValue);
+      return attrValue;
+    }
+
+    private void deleteAll(SNode node) {
+      List<SNode> list = new ArrayList<SNode>();
+      ListSequence.fromList(list).addSequence(Sequence.fromIterable(doGet(node)));
+      ListSequence.fromList(list).visitAll(new IVisitor<SNode>() {
+        public void visit(SNode it) {
+          SNodeOperations.deleteNode(it);
+        }
+      });
+    }
+
+    /*package*/ void deleteOne(SNode node, final SNode attrValue) {
+      SNodeOperations.deleteNode(Sequence.fromIterable(doGet(node)).findFirst(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return it == attrValue;
+        }
+      }));
+    }
+
+    @Override
+    public SNode get(@Nullable SNode node) {
+      Iterable<SNode> list = doGet(node);
+      if (Sequence.fromIterable(list).isEmpty()) {
+        return null;
+      }
+      SNode attr = Sequence.fromIterable(list).first();
+      if (Sequence.fromIterable(list).count() > 1) {
+        String f = "%d  nodes match single value attribute. The first found node returned as the value.\n node=%s; attribute concept=%s(%s)";
+        Logger.getLogger(getClass()).error(String.format(f, Sequence.fromIterable(list).count(), node.getReference(), SNodeOperations.getConcept(attr).getName(), attr.getNodeId()));
+      }
+      return attr;
     }
     @Override
-    public List<SNode> list(@Nullable SNode recipient) {
-      return AttributeOperations.getAttributeList(recipient, this);
+    public List<SNode> list(@Nullable SNode node) {
+      return (node == null ? null : new AttributeOperations.AttributeList(node, this));
     }
   }
-  class AllAttributes extends AttributeDescriptor {
+  final class AllAttributes extends AttributeDescriptor {
     public AllAttributes() {
       super((SAbstractConcept) null);
     }
   }
-  class NodeAttribute extends AttributeDescriptor {
+  final class NodeAttribute extends AttributeDescriptor {
     public NodeAttribute(@NotNull SConcept attributeDeclaration) {
       super(attributeDeclaration);
     }
   }
-  class LinkAttribute extends AttributeDescriptor {
+  final class LinkAttribute extends AttributeDescriptor {
     private SReferenceLink myLink;
     public LinkAttribute(@NotNull SConcept attributeDeclaration, SReferenceLink link) {
       super(attributeDeclaration);
@@ -127,7 +202,7 @@ public interface IAttributeDescriptor {
       BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.LinkAttribute$v_), CONCEPTS.LinkAttribute$v_, SMethodTrimmedId.create("setLink", CONCEPTS.LinkAttribute$v_, "6Gg5KlvuxxF"), myLink);
     }
   }
-  class ChildAttribute extends AttributeDescriptor {
+  final class ChildAttribute extends AttributeDescriptor {
     private SContainmentLink myLink;
     public ChildAttribute(@NotNull SConcept attributeDeclaration, SContainmentLink link) {
       super(attributeDeclaration);
@@ -142,7 +217,7 @@ public interface IAttributeDescriptor {
       BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("setLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzM"), myLink);
     }
   }
-  class PropertyAttribute extends AttributeDescriptor {
+  final class PropertyAttribute extends AttributeDescriptor {
     private SProperty myProperty;
     public PropertyAttribute(@NotNull SConcept attributeDeclaration, @NotNull SProperty property) {
       super(attributeDeclaration);
@@ -156,6 +231,10 @@ public interface IAttributeDescriptor {
     public void update(@NotNull SNode attribute) {
       BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.PropertyAttribute$Gb), CONCEPTS.PropertyAttribute$Gb, SMethodTrimmedId.create("setProperty", CONCEPTS.PropertyAttribute$Gb, "6Gg5Klvu8CV"), myProperty);
     }
+  }
+
+  final class LINKS {
+    /*package*/ static final SContainmentLink smodelAttribute$KJ43 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 
   final class CONCEPTS {
