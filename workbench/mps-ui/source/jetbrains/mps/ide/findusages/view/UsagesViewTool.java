@@ -52,14 +52,13 @@ import jetbrains.mps.ide.findusages.view.UsagesView.RerunAction;
 import jetbrains.mps.ide.findusages.view.UsagesView.SearchTaskImpl;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.DataTreeChangesNotifier;
 import jetbrains.mps.ide.findusages.view.treeholder.treeview.INodeRepresentator;
+import jetbrains.mps.ide.findusages.view.treeholder.treeview.ViewOptions;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
-import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.Logger;
 import org.jdom.Element;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -68,7 +67,6 @@ import org.jetbrains.mps.openapi.module.SRepository;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
-import javax.swing.text.html.HTMLDocument.RunElement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,9 +86,8 @@ public class UsagesViewTool extends TabbedUsagesTool implements PersistentStateC
   private static final String DEFAULT_VIEW_OPTIONS = "default_view_options";
   private static final String TOOL_WINDOW_ID = "Usages";
 
-  private List<UsageViewData> myUsageViewsData = new ArrayList<>();
-  private jetbrains.mps.ide.findusages.view.treeholder.treeview.ViewOptions myDefaultViewOptions =
-      new jetbrains.mps.ide.findusages.view.treeholder.treeview.ViewOptions();
+  private final List<UsageViewData> myUsageViewsData = new ArrayList<>();
+  private final ViewOptions myDefaultViewOptions = new ViewOptions();
   private final DataTreeChangesNotifier myChangeTracker = new DataTreeChangesNotifier();
 
   //----CONSTRUCT STUFF----
