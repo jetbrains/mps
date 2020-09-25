@@ -22,12 +22,12 @@ import com.intellij.openapi.actionSystem.ActionManager;
 @GeneratedClass(node = "r:fa4569a3-1bd4-4159-97bc-db03b3aeff88(jetbrains.mps.java.platform.highlighters)/8432634623182579978", model = "r:fa4569a3-1bd4-4159-97bc-db03b3aeff88(jetbrains.mps.java.platform.highlighters)")
 public class SubclassedClassifierEditorMessage extends AbstractLeftEditorHighlighterMessage {
   private static final EditorMessageIconRenderer.IconRendererType TYPE = new EditorMessageIconRenderer.IconRendererType(1);
-  private boolean myIsInterface;
-  private Condition<EditorCell> myClassifierNameCellCondition;
+  private final boolean myInterfaceFlag;
+  private final Condition<EditorCell> myClassifierNameCellCondition;
 
   public SubclassedClassifierEditorMessage(final SNode node, EditorMessageOwner owner, String tooltip, boolean isInterface) {
     super(node, owner, tooltip);
-    myIsInterface = isInterface;
+    myInterfaceFlag = isInterface;
     myClassifierNameCellCondition = new Condition<EditorCell>() {
       @Override
       public boolean met(EditorCell cell) {
@@ -38,7 +38,7 @@ public class SubclassedClassifierEditorMessage extends AbstractLeftEditorHighlig
 
   @Override
   public Icon getIcon() {
-    return (myIsInterface ? IconResourceBundle_OverrideImplements.getInstance().getResource("IMPLEMENTED") : IconResourceBundle_OverrideImplements.getInstance().getResource("OVERRIDDEN"));
+    return (myInterfaceFlag ? IconResourceBundle_OverrideImplements.getInstance().getResource("IMPLEMENTED") : IconResourceBundle_OverrideImplements.getInstance().getResource("OVERRIDDEN"));
   }
 
   @Override

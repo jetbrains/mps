@@ -89,6 +89,7 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> hasStaticMemebers_idhFq8xqE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasStaticMemebers").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hFq8xqE").build();
   public static final SMethod<String> getNestedName_id7q4lzBFjvIX = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getNestedName").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7q4lzBFjvIX").build();
   /*package*/ static final SMethod<SNode> getAncestorNonAnnymousClassifier_id5mpyJtmQBek = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getAncestorNonAnnymousClassifier").modifiers(SModifiersImpl.create(1, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("5mpyJtmQBek").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  /*package*/ static final SMethod<Boolean> banParent_id4o2ZZuMGUFv = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("banParent").modifiers(SModifiersImpl.create(1, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("4o2ZZuMGUFv").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   /*package*/ static final SMethod<List<SNode>> getClassifierPathToContext_id2qKFNTWiPl1 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getClassifierPathToContext").modifiers(SModifiersImpl.create(0, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("2qKFNTWiPl1").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<List<SNode>> getClassifierPathDistinctFromContext_id2qKFNTWlEOm = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getClassifierPathDistinctFromContext").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2qKFNTWlEOm").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<String> buildClassifierPath_id2qKFNTWoqtI = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("buildClassifierPath").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2qKFNTWoqtI").build(SMethodBuilder.createJavaParameter((Class<List<SNode>>) ((Class) Object.class), ""));
@@ -125,7 +126,7 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<String> getPresentation_id69Qfsw3IoJg = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("69Qfsw3IoJg").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Void> addMember_id32Td0IabBk_ = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addMember").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("32Td0IabBk_").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<List<SAbstractConcept>>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIconMarks_id6TtJ6IUkhQJ, getVisibleMembers_id70J2WaK$Uj3, traverseClassifierHierarchy_id3rj45ZUtGbP, dfs_id3rj45ZVCYEm, getMethodsToImplement_id4GM03FJm5q2, getMethodsToOverride_id4GM03FJm3zL, getFqName_idhEwIO9y, getMembers_idhEwJjl2, getMembers_id1UeCwxlVpJs, getExtendedClassifierTypes_id1UeCwxlWKny, getAllSuperClassifiers_id59G_UM6ah0X, getAllExtendedClassifiers_id2xreLMO8jma, getAllExtendedClassifiers_id2xreLMO8jm_, getPresentation_idhEwIMiw, hasStaticMemebers_idhFq8xqE, getNestedName_id7q4lzBFjvIX, getAncestorNonAnnymousClassifier_id5mpyJtmQBek, getClassifierPathToContext_id2qKFNTWiPl1, getClassifierPathDistinctFromContext_id2qKFNTWlEOm, buildClassifierPath_id2qKFNTWoqtI, getNestedNameInContext_id7q4lzBFjvF8, isStatic_idsWroEc0xXc, isStatic_id6r77ob2USS8, isInner_idsWroEc0xXl, checkLoops_id3sXyOQUqKq0, isDescendant_id6dL7A1DpKo1, isDescendant_checkLoops_id6dL7A1DpKoA, isSame_id4dzXPK1BpyE, checkLoops_id3sXyOQUqKq5, canInstantiateIn_id610WLfjPjne, getOwnMethods_id1DPgsAlM_WC, getSideIcon_id6TtJ6IUjtJX, getThisType_id2RtWPFZ12w7, getWithResolvedTypevars_id2RtWPFZ0VAJ, getResolvedVar_id2RtWPFZ12Bt, getResolvedMethodVar_idIqmIRMsvlW, getScope_id52_Geb4QDV$, getTypeVariables_id6r77ob2URXZ, getSuperTypes_id6r77ob2URYj, getThisType_id6r77ob2UWbY, populateMembers_id6r77ob2USUV, members_id1hodSy8nQmC, nestedClassifiers_id4_LVZ3pBjGQ, staticFields_id4_LVZ3pBr7M, staticMethods_id7fFTwQrQPHW, methods_id4_LVZ3pBKCn, canBeInterfaceMember_id2zJQqQIUx2B, getNonStaticContextClassifiers_id5S7J9l$QYtM, getContextClassifier_id5mDmeD1aaq0, populateMember_id6r77ob2UW9O, getPresentation_id69Qfsw3IoJg, addMember_id32Td0IabBk_);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIconMarks_id6TtJ6IUkhQJ, getVisibleMembers_id70J2WaK$Uj3, traverseClassifierHierarchy_id3rj45ZUtGbP, dfs_id3rj45ZVCYEm, getMethodsToImplement_id4GM03FJm5q2, getMethodsToOverride_id4GM03FJm3zL, getFqName_idhEwIO9y, getMembers_idhEwJjl2, getMembers_id1UeCwxlVpJs, getExtendedClassifierTypes_id1UeCwxlWKny, getAllSuperClassifiers_id59G_UM6ah0X, getAllExtendedClassifiers_id2xreLMO8jma, getAllExtendedClassifiers_id2xreLMO8jm_, getPresentation_idhEwIMiw, hasStaticMemebers_idhFq8xqE, getNestedName_id7q4lzBFjvIX, getAncestorNonAnnymousClassifier_id5mpyJtmQBek, banParent_id4o2ZZuMGUFv, getClassifierPathToContext_id2qKFNTWiPl1, getClassifierPathDistinctFromContext_id2qKFNTWlEOm, buildClassifierPath_id2qKFNTWoqtI, getNestedNameInContext_id7q4lzBFjvF8, isStatic_idsWroEc0xXc, isStatic_id6r77ob2USS8, isInner_idsWroEc0xXl, checkLoops_id3sXyOQUqKq0, isDescendant_id6dL7A1DpKo1, isDescendant_checkLoops_id6dL7A1DpKoA, isSame_id4dzXPK1BpyE, checkLoops_id3sXyOQUqKq5, canInstantiateIn_id610WLfjPjne, getOwnMethods_id1DPgsAlM_WC, getSideIcon_id6TtJ6IUjtJX, getThisType_id2RtWPFZ12w7, getWithResolvedTypevars_id2RtWPFZ0VAJ, getResolvedVar_id2RtWPFZ12Bt, getResolvedMethodVar_idIqmIRMsvlW, getScope_id52_Geb4QDV$, getTypeVariables_id6r77ob2URXZ, getSuperTypes_id6r77ob2URYj, getThisType_id6r77ob2UWbY, populateMembers_id6r77ob2USUV, members_id1hodSy8nQmC, nestedClassifiers_id4_LVZ3pBjGQ, staticFields_id4_LVZ3pBr7M, staticMethods_id7fFTwQrQPHW, methods_id4_LVZ3pBKCn, canBeInterfaceMember_id2zJQqQIUx2B, getNonStaticContextClassifiers_id5S7J9l$QYtM, getContextClassifier_id5mDmeD1aaq0, populateMember_id6r77ob2UW9O, getPresentation_id69Qfsw3IoJg, addMember_id32Td0IabBk_);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SLinkOperations.setNewChild(__thisNode__, LINKS.visibility$Yyua, CONCEPTS.PublicVisibility$R0);
@@ -343,18 +344,22 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
       }
     }).first();
   }
+  /*package*/ static boolean banParent_id4o2ZZuMGUFv(@NotNull SAbstractConcept __thisConcept__, SNode curNode) {
+    return SNodeOperations.hasRole(curNode, LINKS.superclass$Mp9$) || SNodeOperations.hasRole(curNode, LINKS.implementedInterface$rujG) || SNodeOperations.hasRole(curNode, LINKS.extendedInterface$PDVO) || SNodeOperations.hasRole(curNode, LINKS.annotation$K49I);
+  }
   /*package*/ static List<SNode> getClassifierPathToContext_id2qKFNTWiPl1(@NotNull SNode __thisNode__, SNode context) {
     List<SNode> bannedAncestors = ListSequence.fromList(new ArrayList<SNode>());
     boolean targetIsStatic = (SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.Interface$db) || ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(__thisNode__))) && SNodeOperations.getParent(__thisNode__) != null;
 
-    List<SNode> contextAncestors = SNodeOperations.getNodeAncestorsWhereConceptInList(context, new SAbstractConcept[]{CONCEPTS.Classifier$Ix, CONCEPTS.StaticKind$IK, CONCEPTS.ClassifierType$bL}, true);
+    List<SNode> contextAncestors = SNodeOperations.getNodeAncestorsWhereConceptInList(context, new SAbstractConcept[]{CONCEPTS.Classifier$Ix, CONCEPTS.StaticKind$IK, CONCEPTS.ClassifierType$bL, CONCEPTS.AnnotationInstance$yl}, true);
 
     List<SNode> contextContainers = ListSequence.fromList(new ArrayList<SNode>());
     for (SNode currentContextAncestor : contextAncestors) {
       if (SNodeOperations.isInstanceOf(currentContextAncestor, CONCEPTS.Classifier$Ix) && ListSequence.fromList(bannedAncestors).contains(SNodeOperations.cast(currentContextAncestor, CONCEPTS.Classifier$Ix))) {
         continue;
       }
-      if (SNodeOperations.hasRole(currentContextAncestor, LINKS.superclass$Mp9$) || SNodeOperations.hasRole(currentContextAncestor, LINKS.implementedInterface$rujG) || SNodeOperations.hasRole(currentContextAncestor, LINKS.extendedInterface$PDVO)) {
+
+      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(currentContextAncestor), CONCEPTS.Classifier$Ix) && ((boolean) Classifier__BehaviorDescriptor.banParent_id4o2ZZuMGUFv.invoke(__thisNode__.getConcept(), currentContextAncestor))) {
         ListSequence.fromList(bannedAncestors).addElement(SNodeOperations.cast(SNodeOperations.getParent(currentContextAncestor), CONCEPTS.Classifier$Ix));
         continue;
       }
@@ -504,7 +509,7 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
     return result;
   }
   /*package*/ static SNode getWithResolvedTypevars_id2RtWPFZ0VAJ(@NotNull SNode __thisNode__, SNode t, SNode ancestor, SNode method, SNode baseMethod) {
-    SNode coercedType = TypecheckingFacade.getFromContext().coerceType(Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(__thisNode__), new Pattern_qw8l7c_b0a0a0hb(_quotation_createNode_qw8l7c_a0b0a0a0hb(ancestor)));
+    SNode coercedType = TypecheckingFacade.getFromContext().coerceType(Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(__thisNode__), new Pattern_qw8l7c_b0a0a0ib(_quotation_createNode_qw8l7c_a0b0a0a0ib(ancestor)));
     if (SNodeOperations.isInstanceOf(t, CONCEPTS.TypeVariableReference$WL)) {
       return Classifier__BehaviorDescriptor.getResolvedVar_id2RtWPFZ12Bt.invoke(__thisNode__, SNodeOperations.cast(t, CONCEPTS.TypeVariableReference$WL), ancestor, coercedType, method, baseMethod);
     } else {
@@ -804,71 +809,71 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((Boolean) hasStaticMemebers_idhFq8xqE(node));
       case 15:
         return (T) ((String) getNestedName_id7q4lzBFjvIX(node));
-      case 17:
-        return (T) ((List<SNode>) getClassifierPathToContext_id2qKFNTWiPl1(node, (SNode) parameters[0]));
       case 18:
-        return (T) ((List<SNode>) getClassifierPathDistinctFromContext_id2qKFNTWlEOm(node, (SNode) parameters[0]));
+        return (T) ((List<SNode>) getClassifierPathToContext_id2qKFNTWiPl1(node, (SNode) parameters[0]));
       case 19:
-        return (T) ((String) buildClassifierPath_id2qKFNTWoqtI(node, (List<SNode>) parameters[0]));
+        return (T) ((List<SNode>) getClassifierPathDistinctFromContext_id2qKFNTWlEOm(node, (SNode) parameters[0]));
       case 20:
-        return (T) ((String) getNestedNameInContext_id7q4lzBFjvF8(node, (SNode) parameters[0]));
+        return (T) ((String) buildClassifierPath_id2qKFNTWoqtI(node, (List<SNode>) parameters[0]));
       case 21:
-        return (T) ((Boolean) isStatic_idsWroEc0xXc(node));
+        return (T) ((String) getNestedNameInContext_id7q4lzBFjvF8(node, (SNode) parameters[0]));
       case 22:
-        return (T) ((Boolean) isStatic_id6r77ob2USS8(node));
+        return (T) ((Boolean) isStatic_idsWroEc0xXc(node));
       case 23:
-        return (T) ((Boolean) isInner_idsWroEc0xXl(node));
+        return (T) ((Boolean) isStatic_id6r77ob2USS8(node));
       case 24:
-        return (T) ((Boolean) checkLoops_id3sXyOQUqKq0(node));
+        return (T) ((Boolean) isInner_idsWroEc0xXl(node));
       case 25:
-        return (T) ((Boolean) isDescendant_id6dL7A1DpKo1(node, (SNode) parameters[0]));
+        return (T) ((Boolean) checkLoops_id3sXyOQUqKq0(node));
       case 26:
-        return (T) ((Boolean) isDescendant_checkLoops_id6dL7A1DpKoA(node, (SNode) parameters[0], (Set<SNode>) parameters[1]));
+        return (T) ((Boolean) isDescendant_id6dL7A1DpKo1(node, (SNode) parameters[0]));
       case 27:
-        return (T) ((Boolean) isSame_id4dzXPK1BpyE(node, (SNode) parameters[0]));
+        return (T) ((Boolean) isDescendant_checkLoops_id6dL7A1DpKoA(node, (SNode) parameters[0], (Set<SNode>) parameters[1]));
       case 28:
-        return (T) ((Boolean) checkLoops_id3sXyOQUqKq5(node, (Set<SNode>) parameters[0]));
+        return (T) ((Boolean) isSame_id4dzXPK1BpyE(node, (SNode) parameters[0]));
       case 29:
-        return (T) ((Boolean) canInstantiateIn_id610WLfjPjne(node, (SNode) parameters[0]));
+        return (T) ((Boolean) checkLoops_id3sXyOQUqKq5(node, (Set<SNode>) parameters[0]));
       case 30:
-        return (T) ((List<SNode>) getOwnMethods_id1DPgsAlM_WC(node));
+        return (T) ((Boolean) canInstantiateIn_id610WLfjPjne(node, (SNode) parameters[0]));
       case 31:
-        return (T) ((IconResource) getSideIcon_id6TtJ6IUjtJX(node));
+        return (T) ((List<SNode>) getOwnMethods_id1DPgsAlM_WC(node));
       case 32:
-        return (T) ((SNode) getThisType_id2RtWPFZ12w7(node));
+        return (T) ((IconResource) getSideIcon_id6TtJ6IUjtJX(node));
       case 33:
-        return (T) ((SNode) getWithResolvedTypevars_id2RtWPFZ0VAJ(node, (SNode) parameters[0], (SNode) parameters[1], (SNode) parameters[2], (SNode) parameters[3]));
+        return (T) ((SNode) getThisType_id2RtWPFZ12w7(node));
       case 34:
-        return (T) ((SNode) getResolvedVar_id2RtWPFZ12Bt(node, (SNode) parameters[0], (SNode) parameters[1], (SNode) parameters[2], (SNode) parameters[3], (SNode) parameters[4]));
+        return (T) ((SNode) getWithResolvedTypevars_id2RtWPFZ0VAJ(node, (SNode) parameters[0], (SNode) parameters[1], (SNode) parameters[2], (SNode) parameters[3]));
       case 35:
-        return (T) ((SNode) getResolvedMethodVar_idIqmIRMsvlW(node, (SNode) parameters[0], (SNode) parameters[1], (SNode) parameters[2]));
+        return (T) ((SNode) getResolvedVar_id2RtWPFZ12Bt(node, (SNode) parameters[0], (SNode) parameters[1], (SNode) parameters[2], (SNode) parameters[3], (SNode) parameters[4]));
       case 36:
-        return (T) ((Scope) getScope_id52_Geb4QDV$(node, (SAbstractConcept) parameters[0], (SNode) parameters[1]));
+        return (T) ((SNode) getResolvedMethodVar_idIqmIRMsvlW(node, (SNode) parameters[0], (SNode) parameters[1], (SNode) parameters[2]));
       case 37:
-        return (T) ((Iterable<SNode>) getTypeVariables_id6r77ob2URXZ(node));
+        return (T) ((Scope) getScope_id52_Geb4QDV$(node, (SAbstractConcept) parameters[0], (SNode) parameters[1]));
       case 38:
-        return (T) ((Iterable<SNode>) getSuperTypes_id6r77ob2URYj(node));
+        return (T) ((Iterable<SNode>) getTypeVariables_id6r77ob2URXZ(node));
       case 39:
-        return (T) ((SNode) getThisType_id6r77ob2UWbY(node));
+        return (T) ((Iterable<SNode>) getSuperTypes_id6r77ob2URYj(node));
       case 40:
+        return (T) ((SNode) getThisType_id6r77ob2UWbY(node));
+      case 41:
         populateMembers_id6r77ob2USUV(node, (MembersPopulatingContext) parameters[0], (SNode) parameters[1]);
         return null;
-      case 41:
-        return (T) ((Iterable<SNode>) members_id1hodSy8nQmC(node));
       case 42:
-        return (T) ((Iterable<SNode>) nestedClassifiers_id4_LVZ3pBjGQ(node));
+        return (T) ((Iterable<SNode>) members_id1hodSy8nQmC(node));
       case 43:
-        return (T) ((Iterable<SNode>) staticFields_id4_LVZ3pBr7M(node));
+        return (T) ((Iterable<SNode>) nestedClassifiers_id4_LVZ3pBjGQ(node));
       case 44:
-        return (T) ((Iterable<SNode>) staticMethods_id7fFTwQrQPHW(node));
+        return (T) ((Iterable<SNode>) staticFields_id4_LVZ3pBr7M(node));
       case 45:
+        return (T) ((Iterable<SNode>) staticMethods_id7fFTwQrQPHW(node));
+      case 46:
         return (T) ((Iterable<SNode>) methods_id4_LVZ3pBKCn(node));
-      case 49:
+      case 50:
         populateMember_id6r77ob2UW9O(node, (MembersPopulatingContext) parameters[0], (SNode) parameters[1]);
         return null;
-      case 50:
-        return (T) ((String) getPresentation_id69Qfsw3IoJg(node, (SNode) parameters[0]));
       case 51:
+        return (T) ((String) getPresentation_id69Qfsw3IoJg(node, (SNode) parameters[0]));
+      case 52:
         addMember_id32Td0IabBk_(node, (SNode) parameters[0], (List<SAbstractConcept>) parameters[1]);
         return null;
       default:
@@ -885,11 +890,13 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
     switch (methodIndex) {
       case 16:
         return (T) ((SNode) getAncestorNonAnnymousClassifier_id5mpyJtmQBek(concept, (SNode) parameters[0]));
-      case 46:
-        return (T) ((Boolean) canBeInterfaceMember_id2zJQqQIUx2B(concept));
+      case 17:
+        return (T) ((Boolean) banParent_id4o2ZZuMGUFv(concept, (SNode) parameters[0]));
       case 47:
-        return (T) ((List<SNode>) getNonStaticContextClassifiers_id5S7J9l$QYtM(concept, (SNode) parameters[0]));
+        return (T) ((Boolean) canBeInterfaceMember_id2zJQqQIUx2B(concept));
       case 48:
+        return (T) ((List<SNode>) getNonStaticContextClassifiers_id5S7J9l$QYtM(concept, (SNode) parameters[0]));
+      case 49:
         return (T) ((SNode) getContextClassifier_id5mDmeD1aaq0(concept, (SNode) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -914,7 +921,7 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
     quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Object")));
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_qw8l7c_a0b0a0a0hb(Object parameter_1) {
+  private static SNode _quotation_createNode_qw8l7c_a0b0a0a0ib(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
@@ -936,6 +943,7 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
     /*package*/ static final SContainmentLink superclass$Mp9$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
     /*package*/ static final SContainmentLink implementedInterface$rujG = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
     /*package*/ static final SContainmentLink extendedInterface$PDVO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
+    /*package*/ static final SContainmentLink annotation$K49I = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
     /*package*/ static final SReferenceLink typeVariableDeclaration$Lz1I = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, 0x1024673a581L, "typeVariableDeclaration");
     /*package*/ static final SContainmentLink parameter$oqG$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
     /*package*/ static final SContainmentLink typeVariableDeclaration$Lipp = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102463b447aL, 0x102463bb98eL, "typeVariableDeclaration");
@@ -967,6 +975,7 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
     /*package*/ static final SConcept AnonymousClass$Bt = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass");
     /*package*/ static final SInterfaceConcept StaticKind$IK = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x427c475b3d6201deL, "jetbrains.mps.baseLanguage.structure.StaticKind");
     /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept AnnotationInstance$yl = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, "jetbrains.mps.baseLanguage.structure.AnnotationInstance");
     /*package*/ static final SConcept TypeVariableDeclaration$4Y = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L, "jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration");
     /*package*/ static final SConcept NestedNewExpression$zV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x650f9fedfcb5b664L, "jetbrains.mps.baseLanguage.structure.NestedNewExpression");
     /*package*/ static final SConcept TypeVariableReference$WL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x102467229d8L, "jetbrains.mps.baseLanguage.structure.TypeVariableReference");

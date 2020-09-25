@@ -1487,9 +1487,11 @@
     </node>
     <node concept="312cEg" id="4iUaVbRglKi" role="jymVt">
       <property role="TrG5h" value="myTooltip" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="4iUaVbRglKj" role="1B3o_S" />
       <node concept="17QB3L" id="4iUaVbRglKk" role="1tU5fm" />
     </node>
+    <node concept="2tJIrI" id="18Zp_RMzN3h" role="jymVt" />
     <node concept="3clFbW" id="4iUaVbRglKm" role="jymVt">
       <node concept="37vLTG" id="4iUaVbRglKn" role="3clF46">
         <property role="TrG5h" value="node" />
@@ -1559,6 +1561,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="18Zp_RMzN08" role="jymVt" />
     <node concept="3clFb_" id="4iUaVbRglKQ" role="jymVt">
       <property role="TrG5h" value="isValid" />
       <node concept="3Tm1VV" id="4iUaVbRglKR" role="1B3o_S" />
@@ -1580,6 +1583,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="18Zp_RMzN09" role="jymVt" />
     <node concept="3clFb_" id="4iUaVbRglKZ" role="jymVt">
       <property role="TrG5h" value="sameAs" />
       <node concept="3Tm1VV" id="4iUaVbRglL0" role="1B3o_S" />
@@ -1670,6 +1674,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="18Zp_RMzN0a" role="jymVt" />
     <node concept="3clFb_" id="4iUaVbRglLz" role="jymVt">
       <property role="TrG5h" value="getTooltipText" />
       <node concept="3Tm1VV" id="4iUaVbRglL$" role="1B3o_S" />
@@ -1687,6 +1692,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="18Zp_RMzN0b" role="jymVt" />
     <node concept="3clFb_" id="4iUaVbRglLD" role="jymVt">
       <property role="TrG5h" value="getMouseOverCursor" />
       <node concept="3Tm1VV" id="4iUaVbRglLE" role="1B3o_S" />
@@ -1709,6 +1715,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="18Zp_RMzN0c" role="jymVt" />
     <node concept="3clFb_" id="4iUaVbRglLK" role="jymVt">
       <property role="TrG5h" value="showInGutter" />
       <node concept="3Tm1VV" id="4iUaVbRglLL" role="1B3o_S" />

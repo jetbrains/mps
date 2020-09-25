@@ -43,13 +43,9 @@
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
-      <concept id="1197029447546" name="jetbrains.mps.baseLanguage.structure.FieldReferenceOperation" flags="nn" index="2OwXpG">
-        <reference id="1197029500499" name="fieldDeclaration" index="2Oxat5" />
-      </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
       </concept>
-      <concept id="1070475354124" name="jetbrains.mps.baseLanguage.structure.ThisExpression" flags="nn" index="Xjq3P" />
       <concept id="1070475587102" name="jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" flags="nn" index="XkiVB" />
       <concept id="1182160077978" name="jetbrains.mps.baseLanguage.structure.AnonymousClassCreator" flags="nn" index="YeOm9">
         <child id="1182160096073" name="cls" index="YeSDq" />
@@ -157,6 +153,7 @@
     <property role="1sVAO0" value="true" />
     <node concept="312cEg" id="7k6J8c3tih0" role="jymVt">
       <property role="TrG5h" value="myReturnTypeCellCondition" />
+      <property role="3TUv4t" value="true" />
       <node concept="3uibUv" id="7k6J8c3tih2" role="1tU5fm">
         <ref role="3uigEE" to="y49u:~Condition" resolve="Condition" />
         <node concept="3uibUv" id="3rlQhneECnS" role="11_B2D">
@@ -197,11 +194,8 @@
         </node>
         <node concept="3clFbF" id="7k6J8c3tihp" role="3cqZAp">
           <node concept="37vLTI" id="3rlQhneEHC5" role="3clFbG">
-            <node concept="2OqwBi" id="7k6J8c3tihr" role="37vLTJ">
-              <node concept="Xjq3P" id="7k6J8c3tiht" role="2Oq$k0" />
-              <node concept="2OwXpG" id="7k6J8c3tihs" role="2OqNvi">
-                <ref role="2Oxat5" node="7k6J8c3tih0" resolve="myReturnTypeCellCondition" />
-              </node>
+            <node concept="37vLTw" id="18Zp_RMzEVw" role="37vLTJ">
+              <ref role="3cqZAo" node="7k6J8c3tih0" resolve="myReturnTypeCellCondition" />
             </node>
             <node concept="2ShNRf" id="7k6J8c3tihv" role="37vLTx">
               <node concept="YeOm9" id="7k6J8c3tihw" role="2ShVmc">

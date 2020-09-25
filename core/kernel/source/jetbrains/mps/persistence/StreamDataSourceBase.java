@@ -16,6 +16,8 @@
 package jetbrains.mps.persistence;
 
 import jetbrains.mps.extapi.persistence.StreamAsMultiDataSource;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.persistence.DataSourceListener;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
@@ -52,11 +54,16 @@ public abstract class StreamDataSourceBase implements StreamDataSource, StreamAs
 
   @Override
   public void addListener(@NotNull DataSourceListener listener) {
-    // intentionally no-op
+    if (isReadOnly()) {
+      LogManager.getLogger(getClass()).warn("Adding " + listener + " to read-only " + this);
+    }
   }
 
   @Override
   public void removeListener(@NotNull DataSourceListener listener) {
+    if (isReadOnly()) {
+      LogManager.getLogger(getClass()).warn("Removing " + listener + " from read-only " + this);
+    }
   }
 
   @Override

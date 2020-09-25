@@ -18,7 +18,8 @@ import javax.swing.JPopupMenu;
 
 @GeneratedClass(node = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)/4952318787899710481", model = "r:2af017c2-293f-4ebb-99f3-81e353b3d6e6(jetbrains.mps.editor.runtime)")
 public abstract class AbstractLeftEditorHighlighterMessage extends DefaultEditorMessage implements EditorMessageIconRenderer {
-  private String myTooltip;
+  private final String myTooltip;
+
   public AbstractLeftEditorHighlighterMessage(SNode node, EditorMessageOwner owner, String tooltip) {
     super(node, null, "", owner);
     myTooltip = tooltip;
@@ -27,10 +28,12 @@ public abstract class AbstractLeftEditorHighlighterMessage extends DefaultEditor
   @Override
   public void paint(Graphics graphics, EditorComponent component, EditorCell cell) {
   }
+
   @Override
   public boolean isValid(EditorComponent component) {
     return true;
   }
+
   @Override
   public boolean sameAs(SimpleEditorMessage message) {
     if (message instanceof AbstractLeftEditorHighlighterMessage) {
@@ -39,14 +42,17 @@ public abstract class AbstractLeftEditorHighlighterMessage extends DefaultEditor
     }
     return false;
   }
+
   @Override
   public String getTooltipText() {
     return myTooltip;
   }
+
   @Override
   public Cursor getMouseOverCursor() {
     return Cursor.getPredefinedCursor(Cursor.HAND_CURSOR);
   }
+
   @Override
   public boolean showInGutter() {
     return false;

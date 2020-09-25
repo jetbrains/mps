@@ -17,6 +17,7 @@ package jetbrains.mps.persistence;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.persistence.DataSourceListener;
 import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 
 import java.io.ByteArrayInputStream;

@@ -104,6 +104,7 @@ public class CompilerSettingsComponent implements PersistentStateComponent<Compi
   private JavaCompilerOptions createOptions() {
     String targetVersion = myState.getTargetVersion();
     JavaVersion parsedTargetVersion = JavaVersion.parse(targetVersion);
-    return new JavaCompilerOptions(parsedTargetVersion == null ? JavaCompilerOptionsComponent.DEFAULT_JAVA_VERSION : parsedTargetVersion);
+    return new JavaCompilerOptions(parsedTargetVersion == null ? JavaCompilerOptionsComponent.DEFAULT_JAVA_VERSION
+                                                               : parsedTargetVersion);
   }
 }

@@ -16,12 +16,12 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @GeneratedClass(node = "r:579b6612-4f9e-4479-8e4c-5ef2ee0f9722(jetbrains.mps.ide.editor.popup)/8432634623182578751", model = "r:579b6612-4f9e-4479-8e4c-5ef2ee0f9722(jetbrains.mps.ide.editor.popup)")
 public abstract class AbstractOverrideEditorMessage extends AbstractLeftEditorHighlighterMessage {
-  private Condition<EditorCell> myReturnTypeCellCondition;
+  private final Condition<EditorCell> myReturnTypeCellCondition;
 
   public AbstractOverrideEditorMessage(SNode node, EditorMessageOwner owner, String tooltip) {
     super(node, owner, tooltip);
     final SNode returnTypeNode = SLinkOperations.getTarget(node, LINKS.returnType$5xoi);
-    this.myReturnTypeCellCondition = new Condition<EditorCell>() {
+    myReturnTypeCellCondition = new Condition<EditorCell>() {
       @Override
       public boolean met(EditorCell cell) {
         return cell.getSNode() == returnTypeNode;

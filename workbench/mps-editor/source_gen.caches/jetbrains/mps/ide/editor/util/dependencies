@@ -21,8 +21,10 @@
     <classNode dependClassName="com.intellij.openapi.application.ModalityState" />
     <classNode dependClassName="com.intellij.openapi.progress.ProgressIndicator" />
     <classNode dependClassName="com.intellij.openapi.progress.ProgressManager" />
+    <classNode dependClassName="com.intellij.openapi.ui.MessageType" />
     <classNode dependClassName="com.intellij.openapi.ui.popup.JBPopup" />
     <classNode dependClassName="com.intellij.openapi.util.Ref" />
+    <classNode dependClassName="com.intellij.openapi.wm.ToolWindowManager" />
     <classNode dependClassName="com.intellij.ui.SortedListModel" />
     <classNode dependClassName="com.intellij.ui.components.JBList" />
     <classNode dependClassName="com.intellij.util.Alarm" />

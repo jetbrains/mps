@@ -42,9 +42,7 @@
     <import index="9erk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model(MPS.Core/)" />
     <import index="k4i4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.findalgorithm.finders(MPS.Core/)" />
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
-    <import index="svy1" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.progress.impl(MPS.IDEA/)" />
     <import index="dixw" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.pom(MPS.IDEA/)" />
-    <import index="z2i8" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.icons(MPS.IDEA/)" />
     <import index="ncw5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util.annotation(MPS.Core/)" />
     <import index="9w4s" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util(MPS.IDEA/)" />
     <import index="lzb2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui(MPS.IDEA/)" />
@@ -53,8 +51,8 @@
     <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
     <import index="zn9m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util(MPS.IDEA/)" />
     <import index="xcyp" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.actionSystem.impl(MPS.IDEA/)" />
-    <import index="jkm4" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui(MPS.IDEA/)" implicit="true" />
-    <import index="3ab" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.find(MPS.IDEA/)" implicit="true" />
+    <import index="jkny" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.wm(MPS.IDEA/)" />
+    <import index="jkm4" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui(MPS.IDEA/)" />
     <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -354,13 +352,6 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
-      </concept>
-      <concept id="709746936026466394" name="jetbrains.mps.lang.core.structure.ChildAttribute" flags="ng" index="3VBwX9">
-        <property id="709746936026609031" name="linkId" index="3V$3ak" />
-        <property id="709746936026609029" name="role_DebugInfo" index="3V$3am" />
-      </concept>
-      <concept id="4452961908202556907" name="jetbrains.mps.lang.core.structure.BaseCommentAttribute" flags="ng" index="1X3_iC">
-        <child id="3078666699043039389" name="commentedNode" index="8Wnug" />
       </concept>
     </language>
     <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
@@ -5149,39 +5140,26 @@
             <node concept="1v1jN8" id="6pLKVTpBIWm" role="2OqNvi" />
           </node>
           <node concept="3clFbS" id="67we17RGNcX" role="3clFbx">
-            <node concept="1X3_iC" id="5ljwgzfOPBn" role="lGtFl">
-              <property role="3V$3am" value="statement" />
-              <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
-              <node concept="3clFbF" id="67we17RGNcY" role="8Wnug">
-                <node concept="2YIFZM" id="67we17RXk1Y" role="3clFbG">
-                  <ref role="37wK5l" to="jkm4:~Messages.showInfoMessage(java.awt.Component,java.lang.String,java.lang.String)" resolve="showInfoMessage" />
-                  <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
-                  <node concept="2OqwBi" id="67we17RXk1Z" role="37wK5m">
-                    <node concept="2OqwBi" id="63HiSAD_nud" role="2Oq$k0">
-                      <node concept="37vLTw" id="63HiSAD_n2n" role="2Oq$k0">
-                        <ref role="3cqZAo" node="4CAk1Udai1L" resolve="mySettings" />
-                      </node>
-                      <node concept="2OwXpG" id="63HiSAD_rGY" role="2OqNvi">
-                        <ref role="2Oxat5" node="63HiSADtQ8y" resolve="point" />
-                      </node>
-                    </node>
-                    <node concept="liA8E" id="67we17RXk21" role="2OqNvi">
-                      <ref role="37wK5l" to="vmdq:~RelativePoint.getComponent()" resolve="getComponent" />
-                    </node>
+            <node concept="3clFbF" id="1AsQlJhBD$U" role="3cqZAp">
+              <node concept="2OqwBi" id="1AsQlJhBEJL" role="3clFbG">
+                <node concept="2YIFZM" id="1AsQlJhBDLH" role="2Oq$k0">
+                  <ref role="37wK5l" to="jkny:~ToolWindowManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+                  <ref role="1Pybhc" to="jkny:~ToolWindowManager" resolve="ToolWindowManager" />
+                  <node concept="37vLTw" id="1AsQlJhBEtN" role="37wK5m">
+                    <ref role="3cqZAo" to="xygl:~Task.myProject" resolve="myProject" />
                   </node>
-                  <node concept="2YIFZM" id="67we17RXk22" role="37wK5m">
-                    <ref role="37wK5l" to="3ab:~FindBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
-                    <ref role="1Pybhc" to="3ab:~FindBundle" resolve="FindBundle" />
-                    <node concept="Xl_RD" id="67we17RXk23" role="37wK5m">
-                      <property role="Xl_RC" value="find.usage.view.no.usages.text" />
-                    </node>
+                </node>
+                <node concept="liA8E" id="1AsQlJhBF0w" role="2OqNvi">
+                  <ref role="37wK5l" to="jkny:~ToolWindowManager.notifyByBalloon(java.lang.String,com.intellij.openapi.ui.MessageType,java.lang.String)" resolve="notifyByBalloon" />
+                  <node concept="Xl_RD" id="1AsQlJhBNno" role="37wK5m">
+                    <property role="Xl_RC" value="Usages" />
                   </node>
-                  <node concept="2YIFZM" id="67we17RXk24" role="37wK5m">
-                    <ref role="37wK5l" to="3ab:~FindBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
-                    <ref role="1Pybhc" to="3ab:~FindBundle" resolve="FindBundle" />
-                    <node concept="Xl_RD" id="67we17RXk25" role="37wK5m">
-                      <property role="Xl_RC" value="find.pointcut.applications.not.found.title" />
-                    </node>
+                  <node concept="10M0yZ" id="1AsQlJhBGXz" role="37wK5m">
+                    <ref role="3cqZAo" to="jkm4:~MessageType.INFO" resolve="INFO" />
+                    <ref role="1PxDUh" to="jkm4:~MessageType" resolve="MessageType" />
+                  </node>
+                  <node concept="Xl_RD" id="1AsQlJhBHdr" role="37wK5m">
+                    <property role="Xl_RC" value="No usages found in the global scope" />
                   </node>
                 </node>
               </node>

@@ -19,6 +19,7 @@ import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.util.IterableUtil;
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 
@@ -90,27 +91,59 @@ import java.util.Map;
       for (int i = 0; i < sortedList.size() - 1; ++i) {
         for (int j = i + 1; j < sortedList.size(); ++j) {
           for (int h = j + 1; h < sortedList.size(); ++h) {
-            SNode n1 = (SNode) sortedList.get(i).getObject();
-            SNode n2 = (SNode) sortedList.get(j).getObject();
-            SNode n3 = (SNode) sortedList.get(h).getObject();
-            int c1 = compareNodes(node2Ancestors, n1, n2);
-            int c2 = compareNodes(node2Ancestors, n2, n3);
-            int c3 = compareNodes(node2Ancestors, n1, n3);
-            if (c1 <= 0 && c2 <= 0) {
-              assert c3 <= 0 : "n1 " + n1 + "; n2 " + n2 + "; n3 " + n3;
-            }
-            if ((c1 < 0 && c2 <= 0) || (c1 <= 0 && c2 < 0)) {
-              assert c3 < 0 : "n1 " + n1 + "; n2 " + n2 + "; n3 " + n3;
-            }
+            cmp3(sortedList, node2Ancestors, i, j, h);
           }
         }
       }
     }
   }
 
+  private void cmp3(List<SearchResult<?>> sortedList, Map<SNode, List<SNode>> node2Ancestors, int i, int j, int h) {
+    SNode n1 = (SNode) sortedList.get(i).getObject();
+    SNode n2 = (SNode) sortedList.get(j).getObject();
+    SNode n3 = (SNode) sortedList.get(h).getObject();
+    int c1 = compareNodes(node2Ancestors, n1, n2);
+    int c2 = compareNodes(node2Ancestors, n2, n3);
+    int c3 = compareNodes(node2Ancestors, n1, n3);
+    if (c1 <= 0 && c2 <= 0) {
+      assert c3 <= 0 : "n1 " + n1 + "; n2 " + n2 + "; n3 " + n3;
+    }
+    if ((c1 < 0 && c2 <= 0) || (c1 <= 0 && c2 < 0)) {
+      assert c3 < 0 : "n1 " + n1 + "; n2 " + n2 + "; n3 " + n3;
+    }
+  }
+
+  private int compareModels(SNode n1, SNode n2) {
+    var m1 = n1.getModel();
+    var m2 = n2.getModel();
+    if (m1 == null && m2 != null) {
+      return 1;
+    } else if (m1 != null && m2 == null) {
+      return -1;
+    } else {
+      if (m1.equals(m2)) {
+        return 0;
+      }
+      var name1 = m1.getName().getLongName();
+      var name2 = m2.getName().getLongName();
+      if (name1.equals(name2)) {
+        int rv = m1.getReference().toString().compareTo(m2.getReference().toString());
+        if (rv == 0) {
+          LogManager.getLogger(SearchResultsSorter.class).warn("The comparing for models " + m1 + " and " + m2 + " return 0 though they are supposed to be different");
+        }
+        return rv;
+      }
+      return name1.compareTo(name2);
+    }
+  }
+
   private int compareNodes(Map<SNode, List<SNode>> node2Ancestors, SNode n1, SNode n2) {
     if (n1.equals(n2)) {
       return 0;
+    }
+    int compareModelsRes = compareModels(n1, n2);
+    if (compareModelsRes != 0) {
+      return compareModelsRes;
     }
     List<SNode> pathFromRoot1 = node2Ancestors.get(n1);
     List<SNode> pathFromRoot2 = node2Ancestors.get(n2);

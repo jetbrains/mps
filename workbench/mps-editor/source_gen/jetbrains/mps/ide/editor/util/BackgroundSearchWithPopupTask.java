@@ -21,6 +21,8 @@ import com.intellij.openapi.application.ModalityState;
 import java.util.List;
 import java.util.ArrayList;
 import com.intellij.openapi.progress.ProgressManager;
+import com.intellij.openapi.wm.ToolWindowManager;
+import com.intellij.openapi.ui.MessageType;
 
 @GeneratedClass(node = "r:4e6037e6-9135-44f8-9403-04d79fc40f4a(jetbrains.mps.ide.editor.util)/5343046100067132614", model = "r:4e6037e6-9135-44f8-9403-04d79fc40f4a(jetbrains.mps.ide.editor.util)")
 public class BackgroundSearchWithPopupTask extends BackgroundSearchTask {
@@ -121,6 +123,7 @@ public class BackgroundSearchWithPopupTask extends BackgroundSearchTask {
     }
     myFinished = true;
     if (SetSequence.fromSet(myCurrentResults).isEmpty()) {
+      ToolWindowManager.getInstance(myProject).notifyByBalloon("Usages", MessageType.INFO, "No usages found in the global scope");
     } else if (SetSequence.fromSet(myCurrentResults).count() == 1) {
       myPopup.cancel();
       NodeNavigatable navigatable = SetSequence.fromSet(myCurrentResults).first();

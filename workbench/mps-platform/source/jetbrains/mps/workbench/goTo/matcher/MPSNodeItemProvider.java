@@ -44,7 +44,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * This is copied from com.intellij.ide.util.gotoByName.DefaultChooseByNameItemProvider, the change is
@@ -71,10 +73,12 @@ public class MPSNodeItemProvider implements ChooseByNameItemProvider {
 
     ChooseByNameModel model = base.getModel();
     boolean empty = namePattern.isEmpty() ||
-        namePattern.equals("@") && model instanceof GotoClassModel2;    // TODO[yole]: remove implicit dependency
+                    "@".equals(namePattern) && model instanceof GotoClassModel2;    // TODO[yole]: remove implicit dependency
     if (empty && !base.canShowListForEmptyPattern()) return true;
 
-    Set<String> names = new THashSet<>(Arrays.asList(base.getNames(everywhere)));
+    Set<String> names = Arrays.stream(base.getNames(everywhere))
+                              .filter(Objects::nonNull)
+                              .collect(Collectors.toSet());
 
     if (base.isSearchInAnyPlace() && !namePattern.trim().isEmpty()) {
       String middleMatchPattern = "*" + namePattern + (namePattern.endsWith(" ") ? "" : "*");

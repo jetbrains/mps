@@ -43,7 +43,7 @@
         <var name="tooltip" id="8432634623182578762" />
       </scope>
       <unit id="8432634623182578751" at="39,0,42,0" name="jetbrains.mps.ide.editor.popup.AbstractOverrideEditorMessage$LINKS" />
-      <unit id="8432634623182578785" at="24,41,29,5" name="jetbrains.mps.ide.editor.popup.AbstractOverrideEditorMessage$1" />
+      <unit id="8432634623182578785" at="24,36,29,5" name="jetbrains.mps.ide.editor.popup.AbstractOverrideEditorMessage$1" />
       <unit id="8432634623182578751" at="17,0,43,0" name="jetbrains.mps.ide.editor.popup.AbstractOverrideEditorMessage" />
     </file>
   </root>

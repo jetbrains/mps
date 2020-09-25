@@ -34,7 +34,7 @@ import org.jetbrains.mps.openapi.model.SModel;
  * @author Kostik
  */
 public class SModelAdapter implements SModelListener {
-  private SModelListenerPriority myPriority;
+  private final SModelListenerPriority myPriority;
 
   public SModelAdapter() {
     this(SModelListenerPriority.CLIENT);
