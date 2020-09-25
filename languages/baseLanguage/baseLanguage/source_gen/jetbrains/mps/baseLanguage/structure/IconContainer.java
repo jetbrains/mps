@@ -5,18 +5,18 @@ package jetbrains.mps.baseLanguage.structure;
 import jetbrains.mps.smodel.runtime.IconResource;
 
 public class IconContainer {
-  protected static IconResource RESOURCE_a0a3a0a11b0rl = new IconResource("annotationtype.png", IconContainer.class);
-  protected static IconResource RESOURCE_a0a4a0a61b0rl = new IconResource("anonymousClass.png", IconContainer.class);
-  protected static IconResource RESOURCE_a0a1a0a23b0rl = new IconResource("method.png", IconContainer.class);
-  protected static IconResource RESOURCE_a0a01a0a45b0rl = new IconResource("class.png", IconContainer.class);
-  protected static IconResource RESOURCE_a0a1a0a86b0rl = new IconResource("parameter.png", IconContainer.class);
-  protected static IconResource RESOURCE_a0a3a0a78b0rl = new IconResource("enum.png", IconContainer.class);
-  protected static IconResource RESOURCE_a0a2a0a69b0rl = new IconResource("field.png", IconContainer.class);
-  protected static IconResource RESOURCE_a0a2a0a751b0rl = new IconResource("classInitializer.png", IconContainer.class);
-  protected static IconResource RESOURCE_a0a2a0a951b0rl = new IconResource("method.png", IconContainer.class);
-  protected static IconResource RESOURCE_a0a3a0a461b0rl = new IconResource("interfaceType.png", IconContainer.class);
-  protected static IconResource RESOURCE_a0a3a0a081b0rl = new IconResource("variable.png", IconContainer.class);
-  protected static IconResource RESOURCE_a0a3a0a702b0rl = new IconResource("parameter.png", IconContainer.class);
-  protected static IconResource RESOURCE_a0a3a0a342b0rl = new IconResource("field.png", IconContainer.class);
-  protected static IconResource RESOURCE_a0a2a0a542b0rl = new IconResource("classInitializer.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a3a0a11b0sl = new IconResource("annotationtype.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a4a0a61b0sl = new IconResource("anonymousClass.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a1a0a23b0sl = new IconResource("method.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a01a0a45b0sl = new IconResource("class.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a1a0a86b0sl = new IconResource("parameter.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a3a0a78b0sl = new IconResource("enum.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a2a0a69b0sl = new IconResource("field.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a2a0a751b0sl = new IconResource("classInitializer.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a2a0a951b0sl = new IconResource("method.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a3a0a461b0sl = new IconResource("interfaceType.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a3a0a081b0sl = new IconResource("variable.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a3a0a702b0sl = new IconResource("parameter.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a3a0a342b0sl = new IconResource("field.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a2a0a542b0sl = new IconResource("classInitializer.png", IconContainer.class);
 }

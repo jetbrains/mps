@@ -19069,6 +19069,112 @@
       <unit id="6412722656403968316" at="13,0,40,0" name="jetbrains.mps.editorTest.BlockStatementUnwrap2_Test" />
     </file>
   </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/6427750727968508578">
+    <file name="CreateFirstAdditionalCaseInSwitch_Test.java">
+      <node id="6427750727968508578" at="18,51,19,25" concept="11" />
+      <node id="6427750727968508578" at="23,73,24,36" concept="2" />
+      <node id="6427750727968508578" at="29,52,30,19" concept="11" />
+      <node id="6427750727968508578" at="34,51,35,72" concept="2" />
+      <node id="6427750727968513680" at="35,72,36,26" concept="2" />
+      <node id="6427750727968508578" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="6427750727968508578" at="18,0,21,0" concept="1" trace="CreateFirstAdditionalCaseInSwitch_Test#()V" />
+      <node id="6427750727968508578" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="6427750727968508578" at="22,0,26,0" concept="5" trace="test_CreateFirstAdditionalCaseInSwitch#()V" />
+      <node id="6427750727968508578" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="6427750727968508578" at="18,51,19,25" />
+      <scope id="6427750727968508578" at="23,73,24,36" />
+      <scope id="6427750727968508578" at="29,52,30,19" />
+      <scope id="6427750727968508578" at="34,51,36,26" />
+      <scope id="6427750727968508578" at="18,0,21,0" />
+      <scope id="6427750727968508578" at="29,0,32,0">
+        <var name="owner" id="6427750727968508578" />
+      </scope>
+      <scope id="6427750727968508578" at="22,0,26,0" />
+      <scope id="6427750727968508578" at="33,0,38,0" />
+      <unit id="6427750727968508578" at="27,0,39,0" name="jetbrains.mps.editorTest.CreateFirstAdditionalCaseInSwitch_Test$TestBody" />
+      <unit id="6427750727968508578" at="13,0,40,0" name="jetbrains.mps.editorTest.CreateFirstAdditionalCaseInSwitch_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/6427750727968668238">
+    <file name="CreateSecondAdditionalCaseInSwitch_Test.java">
+      <node id="6427750727968668238" at="18,52,19,25" concept="11" />
+      <node id="6427750727968668238" at="23,74,24,36" concept="2" />
+      <node id="6427750727968668238" at="29,52,30,19" concept="11" />
+      <node id="6427750727968668238" at="34,51,35,72" concept="2" />
+      <node id="6427750727968668278" at="35,72,36,26" concept="2" />
+      <node id="6427750727968668238" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="6427750727968668238" at="18,0,21,0" concept="1" trace="CreateSecondAdditionalCaseInSwitch_Test#()V" />
+      <node id="6427750727968668238" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="6427750727968668238" at="22,0,26,0" concept="5" trace="test_CreateSecondAdditionalCaseInSwitch#()V" />
+      <node id="6427750727968668238" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="6427750727968668238" at="18,52,19,25" />
+      <scope id="6427750727968668238" at="23,74,24,36" />
+      <scope id="6427750727968668238" at="29,52,30,19" />
+      <scope id="6427750727968668238" at="34,51,36,26" />
+      <scope id="6427750727968668238" at="18,0,21,0" />
+      <scope id="6427750727968668238" at="29,0,32,0">
+        <var name="owner" id="6427750727968668238" />
+      </scope>
+      <scope id="6427750727968668238" at="22,0,26,0" />
+      <scope id="6427750727968668238" at="33,0,38,0" />
+      <unit id="6427750727968668238" at="27,0,39,0" name="jetbrains.mps.editorTest.CreateSecondAdditionalCaseInSwitch_Test$TestBody" />
+      <unit id="6427750727968668238" at="13,0,40,0" name="jetbrains.mps.editorTest.CreateSecondAdditionalCaseInSwitch_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/6427750727968668992">
+    <file name="DeleteSecondAdditionalCaseInSwitch_Test.java">
+      <node id="6427750727968668992" at="18,52,19,25" concept="11" />
+      <node id="6427750727968668992" at="23,74,24,36" concept="2" />
+      <node id="6427750727968668992" at="29,52,30,19" concept="11" />
+      <node id="6427750727968668992" at="34,51,35,72" concept="2" />
+      <node id="6427750727968670198" at="35,72,36,72" concept="2" />
+      <node id="6427750727968670310" at="36,72,37,72" concept="2" />
+      <node id="6427750727968668992" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="6427750727968668992" at="18,0,21,0" concept="1" trace="DeleteSecondAdditionalCaseInSwitch_Test#()V" />
+      <node id="6427750727968668992" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="6427750727968668992" at="22,0,26,0" concept="5" trace="test_DeleteSecondAdditionalCaseInSwitch#()V" />
+      <node id="6427750727968668992" at="33,0,39,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="6427750727968668992" at="18,52,19,25" />
+      <scope id="6427750727968668992" at="23,74,24,36" />
+      <scope id="6427750727968668992" at="29,52,30,19" />
+      <scope id="6427750727968668992" at="18,0,21,0" />
+      <scope id="6427750727968668992" at="29,0,32,0">
+        <var name="owner" id="6427750727968668992" />
+      </scope>
+      <scope id="6427750727968668992" at="34,51,37,72" />
+      <scope id="6427750727968668992" at="22,0,26,0" />
+      <scope id="6427750727968668992" at="33,0,39,0" />
+      <unit id="6427750727968668992" at="27,0,40,0" name="jetbrains.mps.editorTest.DeleteSecondAdditionalCaseInSwitch_Test$TestBody" />
+      <unit id="6427750727968668992" at="13,0,41,0" name="jetbrains.mps.editorTest.DeleteSecondAdditionalCaseInSwitch_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/6427750727968670351">
+    <file name="DeleteFirstAdditionalCaseInSwitch_Test.java">
+      <node id="6427750727968670351" at="18,51,19,25" concept="11" />
+      <node id="6427750727968670351" at="23,73,24,36" concept="2" />
+      <node id="6427750727968670351" at="29,52,30,19" concept="11" />
+      <node id="6427750727968670351" at="34,51,35,72" concept="2" />
+      <node id="6427750727968670395" at="35,72,36,72" concept="2" />
+      <node id="6427750727968670397" at="36,72,37,72" concept="2" />
+      <node id="6427750727968670351" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="6427750727968670351" at="18,0,21,0" concept="1" trace="DeleteFirstAdditionalCaseInSwitch_Test#()V" />
+      <node id="6427750727968670351" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="6427750727968670351" at="22,0,26,0" concept="5" trace="test_DeleteFirstAdditionalCaseInSwitch#()V" />
+      <node id="6427750727968670351" at="33,0,39,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="6427750727968670351" at="18,51,19,25" />
+      <scope id="6427750727968670351" at="23,73,24,36" />
+      <scope id="6427750727968670351" at="29,52,30,19" />
+      <scope id="6427750727968670351" at="18,0,21,0" />
+      <scope id="6427750727968670351" at="29,0,32,0">
+        <var name="owner" id="6427750727968670351" />
+      </scope>
+      <scope id="6427750727968670351" at="34,51,37,72" />
+      <scope id="6427750727968670351" at="22,0,26,0" />
+      <scope id="6427750727968670351" at="33,0,39,0" />
+      <unit id="6427750727968670351" at="27,0,40,0" name="jetbrains.mps.editorTest.DeleteFirstAdditionalCaseInSwitch_Test$TestBody" />
+      <unit id="6427750727968670351" at="13,0,41,0" name="jetbrains.mps.editorTest.DeleteFirstAdditionalCaseInSwitch_Test" />
+    </file>
+  </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/6450120067538677210">
     <file name="BooleanConstantDelete1_Test.java">
       <node id="6450120067538677210" at="18,40,19,25" concept="11" />

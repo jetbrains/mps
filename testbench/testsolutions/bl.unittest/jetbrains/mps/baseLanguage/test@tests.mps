@@ -129,6 +129,9 @@
       <concept id="1225978065297" name="jetbrains.mps.lang.test.structure.SimpleNodeTest" flags="ng" index="1LZb2c" />
     </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="7877620156201500108" name="jetbrains.mps.baseLanguage.structure.SwitchCaseExtension" flags="ng" index="0yx07">
+        <child id="7877620156201500109" name="expression" index="0yx06" />
+      </concept>
       <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1219920932475" name="jetbrains.mps.baseLanguage.structure.VariableArityType" flags="in" index="8X2XB">
         <child id="1219921048460" name="componentType" index="8Xvag" />
@@ -447,6 +450,15 @@
         <child id="1163668914799" name="condition" index="3K4Cdx" />
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
+      </concept>
+      <concept id="1163670490218" name="jetbrains.mps.baseLanguage.structure.SwitchStatement" flags="nn" index="3KaCP$">
+        <child id="1163670766145" name="expression" index="3KbGdf" />
+        <child id="1163670772911" name="case" index="3KbHQx" />
+      </concept>
+      <concept id="1163670641947" name="jetbrains.mps.baseLanguage.structure.SwitchCase" flags="ng" index="3KbdKl">
+        <child id="7877620156201576123" name="switchCaseExtensions" index="0ycHK" />
+        <child id="1163670677455" name="expression" index="3Kbmr1" />
+        <child id="1163670683720" name="body" index="3Kbo56" />
       </concept>
       <concept id="1206629501431" name="jetbrains.mps.baseLanguage.structure.InstanceInitializer" flags="lg" index="3KIgzJ">
         <child id="1206629521979" name="statementList" index="3KIlGz" />
@@ -32776,6 +32788,730 @@
             <node concept="1DMPye" id="7k2oRj$QnVn" role="1DMPz9">
               <property role="1DMPyf" value="Error: Illegal combination of modifiers 'final' and 'abstract'" />
             </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1lH9Xt" id="5$NXjGXlKaC">
+    <property role="TrG5h" value="SwitchStatementDuplicateCase" />
+    <property role="3GE5qa" value="typeSystem" />
+    <node concept="1qefOq" id="5$NXjGXlKaF" role="1SKRRt">
+      <node concept="9aQIb" id="5$NXjGXlKaD" role="1qenE9">
+        <node concept="3clFbS" id="5$NXjGXlKaE" role="9aQI4">
+          <node concept="3cpWs8" id="5$NXjGXlNdX" role="3cqZAp">
+            <node concept="3cpWsn" id="5$NXjGXlNe0" role="3cpWs9">
+              <property role="TrG5h" value="a" />
+              <node concept="10Oyi0" id="5$NXjGXlNdW" role="1tU5fm" />
+              <node concept="3cmrfG" id="5$NXjGXlNef" role="33vP2m">
+                <property role="3cmrfH" value="1" />
+              </node>
+            </node>
+          </node>
+          <node concept="3KaCP$" id="5$NXjGXlNjm" role="3cqZAp">
+            <node concept="3KbdKl" id="5$NXjGXlNj_" role="3KbHQx">
+              <node concept="3cmrfG" id="5$NXjGXlNjM" role="3Kbmr1">
+                <property role="3cmrfH" value="1" />
+                <node concept="7CXmI" id="5$NXjGXlNlN" role="lGtFl">
+                  <node concept="1TM$A" id="5$NXjGXlNmK" role="7EUXB">
+                    <node concept="2PYRI3" id="5$NXjGXlNmL" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:7rQge4jcF3h" />
+                    </node>
+                    <node concept="1DMPye" id="5$NXjGXlNmM" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: Duplicate case" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbS" id="5$NXjGXlNjB" role="3Kbo56" />
+            </node>
+            <node concept="3KbdKl" id="5$NXjGXlNkh" role="3KbHQx">
+              <node concept="3cmrfG" id="5$NXjGXlNkE" role="3Kbmr1">
+                <property role="3cmrfH" value="2" />
+              </node>
+              <node concept="3clFbS" id="5$NXjGXlNkj" role="3Kbo56" />
+            </node>
+            <node concept="3KbdKl" id="5$NXjGXlNkT" role="3KbHQx">
+              <node concept="3cmrfG" id="5$NXjGXlNls" role="3Kbmr1">
+                <property role="3cmrfH" value="1" />
+                <node concept="7CXmI" id="5$NXjGXlNn5" role="lGtFl">
+                  <node concept="1TM$A" id="5$NXjGXlNo2" role="7EUXB">
+                    <node concept="2PYRI3" id="5$NXjGXlNo3" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:7rQge4jcF3h" />
+                    </node>
+                    <node concept="1DMPye" id="5$NXjGXlNo4" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: Duplicate case" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbS" id="5$NXjGXlNkV" role="3Kbo56" />
+            </node>
+            <node concept="37vLTw" id="5$NXjGXlNjw" role="3KbGdf">
+              <ref role="3cqZAo" node="5$NXjGXlNe0" resolve="a" />
+            </node>
+          </node>
+        </node>
+        <node concept="7CXmI" id="5$NXjGXlNlJ" role="lGtFl">
+          <node concept="7OXhh" id="5$NXjGXlNlL" role="7EUXB">
+            <property role="GvXf4" value="true" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="5$NXjGXlNon" role="1SKRRt">
+      <node concept="9aQIb" id="5$NXjGXlNoo" role="1qenE9">
+        <node concept="3clFbS" id="5$NXjGXlNop" role="9aQI4">
+          <node concept="3cpWs8" id="5$NXjGXlNoq" role="3cqZAp">
+            <node concept="3cpWsn" id="5$NXjGXlNor" role="3cpWs9">
+              <property role="TrG5h" value="a" />
+              <node concept="10Oyi0" id="5$NXjGXlNos" role="1tU5fm" />
+              <node concept="3cmrfG" id="5$NXjGXlNot" role="33vP2m">
+                <property role="3cmrfH" value="1" />
+              </node>
+            </node>
+          </node>
+          <node concept="3KaCP$" id="5$NXjGXlNou" role="3cqZAp">
+            <node concept="3KbdKl" id="5$NXjGXlNov" role="3KbHQx">
+              <node concept="0yx07" id="5$NXjGXlNqx" role="0ycHK">
+                <node concept="3cmrfG" id="5$NXjGXlNqP" role="0yx06">
+                  <property role="3cmrfH" value="2" />
+                  <node concept="7CXmI" id="5$NXjGXlNtH" role="lGtFl">
+                    <node concept="1TM$A" id="5$NXjGXlNvK" role="7EUXB">
+                      <node concept="2PYRI3" id="5$NXjGXlNvL" role="3lydEf">
+                        <ref role="39XzEq" to="tpeh:7rQge4jcF3h" />
+                      </node>
+                      <node concept="1DMPye" id="5$NXjGXlNvM" role="1DMPz9">
+                        <property role="1DMPyf" value="Error: Duplicate case" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3cmrfG" id="5$NXjGXlNow" role="3Kbmr1">
+                <property role="3cmrfH" value="1" />
+              </node>
+              <node concept="3clFbS" id="5$NXjGXlNo_" role="3Kbo56" />
+            </node>
+            <node concept="3KbdKl" id="5$NXjGXlNoA" role="3KbHQx">
+              <node concept="3cmrfG" id="5$NXjGXlNoB" role="3Kbmr1">
+                <property role="3cmrfH" value="2" />
+                <node concept="7CXmI" id="5$NXjGXlNrl" role="lGtFl">
+                  <node concept="1TM$A" id="5$NXjGXlNto" role="7EUXB">
+                    <node concept="2PYRI3" id="5$NXjGXlNtp" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:7rQge4jcF3h" />
+                    </node>
+                    <node concept="1DMPye" id="5$NXjGXlNtq" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: Duplicate case" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbS" id="5$NXjGXlNoC" role="3Kbo56" />
+            </node>
+            <node concept="3KbdKl" id="5$NXjGXlNoD" role="3KbHQx">
+              <node concept="3clFbS" id="5$NXjGXlNoJ" role="3Kbo56" />
+              <node concept="3cmrfG" id="5$NXjGXlNr0" role="3Kbmr1">
+                <property role="3cmrfH" value="3" />
+              </node>
+            </node>
+            <node concept="37vLTw" id="5$NXjGXlNoK" role="3KbGdf">
+              <ref role="3cqZAo" node="5$NXjGXlNor" resolve="a" />
+            </node>
+          </node>
+        </node>
+        <node concept="7CXmI" id="5$NXjGXlNoL" role="lGtFl">
+          <node concept="7OXhh" id="5$NXjGXlNoM" role="7EUXB">
+            <property role="GvXf4" value="true" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="5$NXjGXlNw1" role="1SKRRt">
+      <node concept="9aQIb" id="5$NXjGXlNw2" role="1qenE9">
+        <node concept="3clFbS" id="5$NXjGXlNw3" role="9aQI4">
+          <node concept="3cpWs8" id="5$NXjGXlNw4" role="3cqZAp">
+            <node concept="3cpWsn" id="5$NXjGXlNw5" role="3cpWs9">
+              <property role="TrG5h" value="a" />
+              <node concept="10Oyi0" id="5$NXjGXlNw6" role="1tU5fm" />
+              <node concept="3cmrfG" id="5$NXjGXlNw7" role="33vP2m">
+                <property role="3cmrfH" value="1" />
+              </node>
+            </node>
+          </node>
+          <node concept="3KaCP$" id="5$NXjGXlNw8" role="3cqZAp">
+            <node concept="3KbdKl" id="5$NXjGXlNw9" role="3KbHQx">
+              <node concept="0yx07" id="5$NXjGXlNwa" role="0ycHK">
+                <node concept="3cmrfG" id="5$NXjGXlNwb" role="0yx06">
+                  <property role="3cmrfH" value="2" />
+                  <node concept="7CXmI" id="5$NXjGXlNwc" role="lGtFl">
+                    <node concept="1TM$A" id="5$NXjGXlNwd" role="7EUXB">
+                      <node concept="2PYRI3" id="5$NXjGXlNwe" role="3lydEf">
+                        <ref role="39XzEq" to="tpeh:7rQge4jcF3h" />
+                      </node>
+                      <node concept="1DMPye" id="5$NXjGXlNwf" role="1DMPz9">
+                        <property role="1DMPyf" value="Error: Duplicate case" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbS" id="5$NXjGXlNwh" role="3Kbo56" />
+              <node concept="3cmrfG" id="5$NXjGXlNyQ" role="3Kbmr1">
+                <property role="3cmrfH" value="2" />
+                <node concept="7CXmI" id="5$NXjGXlNze" role="lGtFl">
+                  <node concept="1TM$A" id="5$NXjGXlNAn" role="7EUXB">
+                    <node concept="2PYRI3" id="5$NXjGXlNAo" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:7rQge4jcF3h" />
+                    </node>
+                    <node concept="1DMPye" id="5$NXjGXlNAp" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: Duplicate case" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3KbdKl" id="5$NXjGXlNwi" role="3KbHQx">
+              <node concept="3cmrfG" id="5$NXjGXlNwj" role="3Kbmr1">
+                <property role="3cmrfH" value="2" />
+                <node concept="7CXmI" id="5$NXjGXlNwk" role="lGtFl">
+                  <node concept="1TM$A" id="5$NXjGXlNwl" role="7EUXB">
+                    <node concept="2PYRI3" id="5$NXjGXlNwm" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:7rQge4jcF3h" />
+                    </node>
+                    <node concept="1DMPye" id="5$NXjGXlNwn" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: Duplicate case" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbS" id="5$NXjGXlNwo" role="3Kbo56" />
+            </node>
+            <node concept="3KbdKl" id="5$NXjGXlNwp" role="3KbHQx">
+              <node concept="3clFbS" id="5$NXjGXlNwq" role="3Kbo56" />
+              <node concept="3cmrfG" id="5$NXjGXlNwr" role="3Kbmr1">
+                <property role="3cmrfH" value="3" />
+              </node>
+            </node>
+            <node concept="37vLTw" id="5$NXjGXlNws" role="3KbGdf">
+              <ref role="3cqZAo" node="5$NXjGXlNw5" resolve="a" />
+            </node>
+          </node>
+        </node>
+        <node concept="7CXmI" id="5$NXjGXlNwt" role="lGtFl">
+          <node concept="7OXhh" id="5$NXjGXlNwu" role="7EUXB">
+            <property role="GvXf4" value="true" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="9EY7CVk9I6" role="1SKRRt">
+      <node concept="9aQIb" id="9EY7CVk9I7" role="1qenE9">
+        <node concept="3clFbS" id="9EY7CVk9I8" role="9aQI4">
+          <node concept="3cpWs8" id="9EY7CVk9I9" role="3cqZAp">
+            <node concept="3cpWsn" id="9EY7CVk9Ia" role="3cpWs9">
+              <property role="TrG5h" value="a" />
+              <node concept="10Pfzv" id="9EY7CVk9ZB" role="1tU5fm" />
+              <node concept="1Xhbcc" id="9EY7CVk9UB" role="33vP2m">
+                <property role="1XhdNS" value="a" />
+              </node>
+            </node>
+          </node>
+          <node concept="3KaCP$" id="9EY7CVk9Id" role="3cqZAp">
+            <node concept="3KbdKl" id="9EY7CVk9Ie" role="3KbHQx">
+              <node concept="0yx07" id="9EY7CVk9If" role="0ycHK">
+                <node concept="1Xhbcc" id="9EY7CVkaxf" role="0yx06">
+                  <property role="1XhdNS" value="\b" />
+                  <node concept="7CXmI" id="9EY7CVkbd6" role="lGtFl">
+                    <node concept="1TM$A" id="9EY7CVkbpf" role="7EUXB">
+                      <node concept="2PYRI3" id="9EY7CVkbpg" role="3lydEf">
+                        <ref role="39XzEq" to="tpeh:7rQge4jcF3h" />
+                      </node>
+                      <node concept="1DMPye" id="9EY7CVkbph" role="1DMPz9">
+                        <property role="1DMPyf" value="Error: Duplicate case" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbS" id="9EY7CVk9Il" role="3Kbo56" />
+              <node concept="1Xhbcc" id="9EY7CVkafV" role="3Kbmr1">
+                <property role="1XhdNS" value="\b" />
+                <node concept="7CXmI" id="9EY7CVka_I" role="lGtFl">
+                  <node concept="1TM$A" id="9EY7CVkaEb" role="7EUXB">
+                    <node concept="2PYRI3" id="9EY7CVkaEc" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:7rQge4jcF3h" />
+                    </node>
+                    <node concept="1DMPye" id="9EY7CVkaEd" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: Duplicate case" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3KbdKl" id="9EY7CVk9Ir" role="3KbHQx">
+              <node concept="0yx07" id="9EY7CVk9R$" role="0ycHK">
+                <node concept="1Xhbcc" id="9EY7CVk9RU" role="0yx06">
+                  <property role="1XhdNS" value="\t" />
+                </node>
+              </node>
+              <node concept="3clFbS" id="9EY7CVk9Ix" role="3Kbo56" />
+              <node concept="1Xhbcc" id="9EY7CVkahN" role="3Kbmr1">
+                <property role="1XhdNS" value="b" />
+              </node>
+            </node>
+            <node concept="3KbdKl" id="9EY7CVk9Iy" role="3KbHQx">
+              <node concept="3clFbS" id="9EY7CVk9Iz" role="3Kbo56" />
+              <node concept="1Xhbcc" id="9EY7CVkaku" role="3Kbmr1">
+                <property role="1XhdNS" value="c" />
+              </node>
+            </node>
+            <node concept="37vLTw" id="9EY7CVk9I_" role="3KbGdf">
+              <ref role="3cqZAo" node="9EY7CVk9Ia" resolve="a" />
+            </node>
+          </node>
+        </node>
+        <node concept="7CXmI" id="9EY7CVk9IA" role="lGtFl">
+          <node concept="7OXhh" id="9EY7CVk9IB" role="7EUXB">
+            <property role="GvXf4" value="true" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="9EY7CVkaHU" role="1SKRRt">
+      <node concept="9aQIb" id="9EY7CVkaHV" role="1qenE9">
+        <node concept="3clFbS" id="9EY7CVkaHW" role="9aQI4">
+          <node concept="3cpWs8" id="9EY7CVkaHX" role="3cqZAp">
+            <node concept="3cpWsn" id="9EY7CVkaHY" role="3cpWs9">
+              <property role="TrG5h" value="a" />
+              <node concept="10Pfzv" id="9EY7CVkaHZ" role="1tU5fm" />
+              <node concept="1Xhbcc" id="9EY7CVkaI0" role="33vP2m">
+                <property role="1XhdNS" value="a" />
+              </node>
+            </node>
+          </node>
+          <node concept="3KaCP$" id="9EY7CVkaI1" role="3cqZAp">
+            <node concept="3KbdKl" id="9EY7CVkaI2" role="3KbHQx">
+              <node concept="0yx07" id="9EY7CVkaI3" role="0ycHK">
+                <node concept="1Xhbcc" id="9EY7CVkaI4" role="0yx06">
+                  <property role="1XhdNS" value="\b" />
+                </node>
+              </node>
+              <node concept="3clFbS" id="9EY7CVkaI5" role="3Kbo56" />
+              <node concept="1Xhbcc" id="9EY7CVkaI6" role="3Kbmr1">
+                <property role="1XhdNS" value="\t" />
+                <node concept="7CXmI" id="9EY7CVkbvO" role="lGtFl">
+                  <node concept="1TM$A" id="9EY7CVkbFV" role="7EUXB">
+                    <node concept="2PYRI3" id="9EY7CVkbFW" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:7rQge4jcF3h" />
+                    </node>
+                    <node concept="1DMPye" id="9EY7CVkbFX" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: Duplicate case" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3KbdKl" id="9EY7CVkaIb" role="3KbHQx">
+              <node concept="0yx07" id="9EY7CVkaIc" role="0ycHK">
+                <node concept="1Xhbcc" id="9EY7CVkaId" role="0yx06">
+                  <property role="1XhdNS" value="\t" />
+                  <node concept="7CXmI" id="9EY7CVkbHY" role="lGtFl">
+                    <node concept="1TM$A" id="9EY7CVkbU7" role="7EUXB">
+                      <node concept="2PYRI3" id="9EY7CVkbU8" role="3lydEf">
+                        <ref role="39XzEq" to="tpeh:7rQge4jcF3h" />
+                      </node>
+                      <node concept="1DMPye" id="9EY7CVkbU9" role="1DMPz9">
+                        <property role="1DMPyf" value="Error: Duplicate case" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbS" id="9EY7CVkaIe" role="3Kbo56" />
+              <node concept="1Xhbcc" id="9EY7CVkaIf" role="3Kbmr1">
+                <property role="1XhdNS" value="b" />
+              </node>
+            </node>
+            <node concept="3KbdKl" id="9EY7CVkaIg" role="3KbHQx">
+              <node concept="3clFbS" id="9EY7CVkaIh" role="3Kbo56" />
+              <node concept="1Xhbcc" id="9EY7CVkaIi" role="3Kbmr1">
+                <property role="1XhdNS" value="c" />
+              </node>
+            </node>
+            <node concept="37vLTw" id="9EY7CVkaIj" role="3KbGdf">
+              <ref role="3cqZAo" node="9EY7CVkaHY" resolve="a" />
+            </node>
+          </node>
+        </node>
+        <node concept="7CXmI" id="9EY7CVkaIk" role="lGtFl">
+          <node concept="7OXhh" id="9EY7CVkaIl" role="7EUXB">
+            <property role="GvXf4" value="true" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="9EY7CVkaLl" role="1SKRRt">
+      <node concept="9aQIb" id="9EY7CVkaLm" role="1qenE9">
+        <node concept="3clFbS" id="9EY7CVkaLn" role="9aQI4">
+          <node concept="3cpWs8" id="9EY7CVkaLo" role="3cqZAp">
+            <node concept="3cpWsn" id="9EY7CVkaLp" role="3cpWs9">
+              <property role="TrG5h" value="a" />
+              <node concept="10Pfzv" id="9EY7CVkaLq" role="1tU5fm" />
+              <node concept="1Xhbcc" id="9EY7CVkaLr" role="33vP2m">
+                <property role="1XhdNS" value="a" />
+              </node>
+            </node>
+          </node>
+          <node concept="3KaCP$" id="9EY7CVkaLs" role="3cqZAp">
+            <node concept="3KbdKl" id="9EY7CVkaLt" role="3KbHQx">
+              <node concept="0yx07" id="9EY7CVkaLu" role="0ycHK">
+                <node concept="1Xhbcc" id="9EY7CVkaLv" role="0yx06">
+                  <property role="1XhdNS" value="\&quot;" />
+                  <node concept="7CXmI" id="9EY7CVkc2v" role="lGtFl">
+                    <node concept="1TM$A" id="9EY7CVkceA" role="7EUXB">
+                      <node concept="2PYRI3" id="9EY7CVkceB" role="3lydEf">
+                        <ref role="39XzEq" to="tpeh:7rQge4jcF3h" />
+                      </node>
+                      <node concept="1DMPye" id="9EY7CVkceC" role="1DMPz9">
+                        <property role="1DMPyf" value="Error: Duplicate case" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbS" id="9EY7CVkaLw" role="3Kbo56" />
+              <node concept="1Xhbcc" id="9EY7CVkaLx" role="3Kbmr1">
+                <property role="1XhdNS" value="\&quot;" />
+                <node concept="7CXmI" id="9EY7CVkcgz" role="lGtFl">
+                  <node concept="1TM$A" id="9EY7CVkcsE" role="7EUXB">
+                    <node concept="2PYRI3" id="9EY7CVkcsF" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:7rQge4jcF3h" />
+                    </node>
+                    <node concept="1DMPye" id="9EY7CVkcsG" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: Duplicate case" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3KbdKl" id="9EY7CVkaLA" role="3KbHQx">
+              <node concept="0yx07" id="9EY7CVkaLB" role="0ycHK">
+                <node concept="1Xhbcc" id="9EY7CVkaLC" role="0yx06">
+                  <property role="1XhdNS" value="\t" />
+                </node>
+              </node>
+              <node concept="3clFbS" id="9EY7CVkaLD" role="3Kbo56" />
+              <node concept="1Xhbcc" id="9EY7CVkaLE" role="3Kbmr1">
+                <property role="1XhdNS" value="b" />
+              </node>
+            </node>
+            <node concept="3KbdKl" id="9EY7CVkaLF" role="3KbHQx">
+              <node concept="3clFbS" id="9EY7CVkaLG" role="3Kbo56" />
+              <node concept="1Xhbcc" id="9EY7CVkaLH" role="3Kbmr1">
+                <property role="1XhdNS" value="c" />
+              </node>
+            </node>
+            <node concept="37vLTw" id="9EY7CVkaLI" role="3KbGdf">
+              <ref role="3cqZAo" node="9EY7CVkaLp" resolve="a" />
+            </node>
+          </node>
+        </node>
+        <node concept="7CXmI" id="9EY7CVkaLJ" role="lGtFl">
+          <node concept="7OXhh" id="9EY7CVkaLK" role="7EUXB">
+            <property role="GvXf4" value="true" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="9EY7CVkaPa" role="1SKRRt">
+      <node concept="9aQIb" id="9EY7CVkaPb" role="1qenE9">
+        <node concept="3clFbS" id="9EY7CVkaPc" role="9aQI4">
+          <node concept="3cpWs8" id="9EY7CVkaPd" role="3cqZAp">
+            <node concept="3cpWsn" id="9EY7CVkaPe" role="3cpWs9">
+              <property role="TrG5h" value="a" />
+              <node concept="10Pfzv" id="9EY7CVkaPf" role="1tU5fm" />
+              <node concept="1Xhbcc" id="9EY7CVkaPg" role="33vP2m">
+                <property role="1XhdNS" value="a" />
+              </node>
+            </node>
+          </node>
+          <node concept="3KaCP$" id="9EY7CVkaPh" role="3cqZAp">
+            <node concept="3KbdKl" id="9EY7CVkaPi" role="3KbHQx">
+              <node concept="0yx07" id="9EY7CVkaPj" role="0ycHK">
+                <node concept="1Xhbcc" id="9EY7CVkaPk" role="0yx06">
+                  <property role="1XhdNS" value="\b" />
+                </node>
+              </node>
+              <node concept="3clFbS" id="9EY7CVkaPl" role="3Kbo56" />
+              <node concept="1Xhbcc" id="9EY7CVkaPm" role="3Kbmr1">
+                <property role="1XhdNS" value="\&quot;" />
+                <node concept="7CXmI" id="9EY7CVkcMo" role="lGtFl">
+                  <node concept="1TM$A" id="9EY7CVkcYv" role="7EUXB">
+                    <node concept="2PYRI3" id="9EY7CVkcYw" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:7rQge4jcF3h" />
+                    </node>
+                    <node concept="1DMPye" id="9EY7CVkcYx" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: Duplicate case" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3KbdKl" id="9EY7CVkaPr" role="3KbHQx">
+              <node concept="0yx07" id="9EY7CVkaPs" role="0ycHK">
+                <node concept="1Xhbcc" id="9EY7CVkaPt" role="0yx06">
+                  <property role="1XhdNS" value="&quot;" />
+                  <node concept="7CXmI" id="9EY7CVkc$i" role="lGtFl">
+                    <node concept="1TM$A" id="9EY7CVkcKr" role="7EUXB">
+                      <node concept="2PYRI3" id="9EY7CVkcKs" role="3lydEf">
+                        <ref role="39XzEq" to="tpeh:7rQge4jcF3h" />
+                      </node>
+                      <node concept="1DMPye" id="9EY7CVkcKt" role="1DMPz9">
+                        <property role="1DMPyf" value="Error: Duplicate case" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbS" id="9EY7CVkaPu" role="3Kbo56" />
+              <node concept="1Xhbcc" id="9EY7CVkaPv" role="3Kbmr1">
+                <property role="1XhdNS" value="b" />
+              </node>
+            </node>
+            <node concept="3KbdKl" id="9EY7CVkaPw" role="3KbHQx">
+              <node concept="3clFbS" id="9EY7CVkaPx" role="3Kbo56" />
+              <node concept="1Xhbcc" id="9EY7CVkaPy" role="3Kbmr1">
+                <property role="1XhdNS" value="c" />
+              </node>
+            </node>
+            <node concept="37vLTw" id="9EY7CVkaPz" role="3KbGdf">
+              <ref role="3cqZAo" node="9EY7CVkaPe" resolve="a" />
+            </node>
+          </node>
+        </node>
+        <node concept="7CXmI" id="9EY7CVkaP$" role="lGtFl">
+          <node concept="7OXhh" id="9EY7CVkaP_" role="7EUXB">
+            <property role="GvXf4" value="true" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="9EY7CVkaSM" role="1SKRRt">
+      <node concept="9aQIb" id="9EY7CVkaSN" role="1qenE9">
+        <node concept="3clFbS" id="9EY7CVkaSO" role="9aQI4">
+          <node concept="3cpWs8" id="9EY7CVkaSP" role="3cqZAp">
+            <node concept="3cpWsn" id="9EY7CVkaSQ" role="3cpWs9">
+              <property role="TrG5h" value="a" />
+              <node concept="10Pfzv" id="9EY7CVkaSR" role="1tU5fm" />
+              <node concept="1Xhbcc" id="9EY7CVkaSS" role="33vP2m">
+                <property role="1XhdNS" value="a" />
+              </node>
+            </node>
+          </node>
+          <node concept="3KaCP$" id="9EY7CVkaST" role="3cqZAp">
+            <node concept="3KbdKl" id="9EY7CVkaSU" role="3KbHQx">
+              <node concept="0yx07" id="9EY7CVkaSV" role="0ycHK">
+                <node concept="1Xhbcc" id="9EY7CVkaSW" role="0yx06">
+                  <property role="1XhdNS" value="\b" />
+                </node>
+              </node>
+              <node concept="3clFbS" id="9EY7CVkaSX" role="3Kbo56" />
+              <node concept="1Xhbcc" id="9EY7CVkaSY" role="3Kbmr1">
+                <property role="1XhdNS" value="\'" />
+                <node concept="7CXmI" id="9EY7CVkdl3" role="lGtFl">
+                  <node concept="1TM$A" id="9EY7CVkdxa" role="7EUXB">
+                    <node concept="2PYRI3" id="9EY7CVkdxb" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:7rQge4jcF3h" />
+                    </node>
+                    <node concept="1DMPye" id="9EY7CVkdxc" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: Duplicate case" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3KbdKl" id="9EY7CVkaT3" role="3KbHQx">
+              <node concept="0yx07" id="9EY7CVkaT4" role="0ycHK">
+                <node concept="1Xhbcc" id="9EY7CVkaT5" role="0yx06">
+                  <property role="1XhdNS" value="\'" />
+                  <node concept="7CXmI" id="9EY7CVkd7o" role="lGtFl">
+                    <node concept="1TM$A" id="9EY7CVkdjx" role="7EUXB">
+                      <node concept="2PYRI3" id="9EY7CVkdjy" role="3lydEf">
+                        <ref role="39XzEq" to="tpeh:7rQge4jcF3h" />
+                      </node>
+                      <node concept="1DMPye" id="9EY7CVkdjz" role="1DMPz9">
+                        <property role="1DMPyf" value="Error: Duplicate case" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbS" id="9EY7CVkaT6" role="3Kbo56" />
+              <node concept="1Xhbcc" id="9EY7CVkaT7" role="3Kbmr1">
+                <property role="1XhdNS" value="b" />
+              </node>
+            </node>
+            <node concept="3KbdKl" id="9EY7CVkaT8" role="3KbHQx">
+              <node concept="3clFbS" id="9EY7CVkaT9" role="3Kbo56" />
+              <node concept="1Xhbcc" id="9EY7CVkaTa" role="3Kbmr1">
+                <property role="1XhdNS" value="c" />
+              </node>
+            </node>
+            <node concept="37vLTw" id="9EY7CVkaTb" role="3KbGdf">
+              <ref role="3cqZAo" node="9EY7CVkaSQ" resolve="a" />
+            </node>
+          </node>
+        </node>
+        <node concept="7CXmI" id="9EY7CVkaTc" role="lGtFl">
+          <node concept="7OXhh" id="9EY7CVkaTd" role="7EUXB">
+            <property role="GvXf4" value="true" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="9EY7CVkaY8" role="1SKRRt">
+      <node concept="9aQIb" id="9EY7CVkaY9" role="1qenE9">
+        <node concept="3clFbS" id="9EY7CVkaYa" role="9aQI4">
+          <node concept="3cpWs8" id="9EY7CVkaYb" role="3cqZAp">
+            <node concept="3cpWsn" id="9EY7CVkaYc" role="3cpWs9">
+              <property role="TrG5h" value="a" />
+              <node concept="10Pfzv" id="9EY7CVkaYd" role="1tU5fm" />
+              <node concept="1Xhbcc" id="9EY7CVkaYe" role="33vP2m">
+                <property role="1XhdNS" value="a" />
+              </node>
+            </node>
+          </node>
+          <node concept="3KaCP$" id="9EY7CVkaYf" role="3cqZAp">
+            <node concept="3KbdKl" id="9EY7CVkaYg" role="3KbHQx">
+              <node concept="0yx07" id="9EY7CVkaYh" role="0ycHK">
+                <node concept="1Xhbcc" id="9EY7CVkaYi" role="0yx06">
+                  <property role="1XhdNS" value="\b" />
+                </node>
+              </node>
+              <node concept="3clFbS" id="9EY7CVkaYj" role="3Kbo56" />
+              <node concept="1Xhbcc" id="9EY7CVkaYk" role="3Kbmr1">
+                <property role="1XhdNS" value="\\" />
+                <node concept="7CXmI" id="9EY7CVkdSZ" role="lGtFl">
+                  <node concept="1TM$A" id="9EY7CVke58" role="7EUXB">
+                    <node concept="2PYRI3" id="9EY7CVke59" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:7rQge4jcF3h" />
+                    </node>
+                    <node concept="1DMPye" id="9EY7CVke5a" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: Duplicate case" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3KbdKl" id="9EY7CVkaYp" role="3KbHQx">
+              <node concept="0yx07" id="9EY7CVkaYq" role="0ycHK">
+                <node concept="1Xhbcc" id="9EY7CVkaYr" role="0yx06">
+                  <property role="1XhdNS" value="\\" />
+                  <node concept="7CXmI" id="9EY7CVkdDC" role="lGtFl">
+                    <node concept="1TM$A" id="9EY7CVkdPL" role="7EUXB">
+                      <node concept="2PYRI3" id="9EY7CVkdPM" role="3lydEf">
+                        <ref role="39XzEq" to="tpeh:7rQge4jcF3h" />
+                      </node>
+                      <node concept="1DMPye" id="9EY7CVkdPN" role="1DMPz9">
+                        <property role="1DMPyf" value="Error: Duplicate case" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbS" id="9EY7CVkaYs" role="3Kbo56" />
+              <node concept="1Xhbcc" id="9EY7CVkaYt" role="3Kbmr1">
+                <property role="1XhdNS" value="b" />
+              </node>
+            </node>
+            <node concept="3KbdKl" id="9EY7CVkaYu" role="3KbHQx">
+              <node concept="3clFbS" id="9EY7CVkaYv" role="3Kbo56" />
+              <node concept="1Xhbcc" id="9EY7CVkaYw" role="3Kbmr1">
+                <property role="1XhdNS" value="c" />
+              </node>
+            </node>
+            <node concept="37vLTw" id="9EY7CVkaYx" role="3KbGdf">
+              <ref role="3cqZAo" node="9EY7CVkaYc" resolve="a" />
+            </node>
+          </node>
+        </node>
+        <node concept="7CXmI" id="9EY7CVkaYy" role="lGtFl">
+          <node concept="7OXhh" id="9EY7CVkaYz" role="7EUXB">
+            <property role="GvXf4" value="true" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="9EY7CVkb3h" role="1SKRRt">
+      <node concept="9aQIb" id="9EY7CVkb3i" role="1qenE9">
+        <node concept="3clFbS" id="9EY7CVkb3j" role="9aQI4">
+          <node concept="3cpWs8" id="9EY7CVkb3k" role="3cqZAp">
+            <node concept="3cpWsn" id="9EY7CVkb3l" role="3cpWs9">
+              <property role="TrG5h" value="a" />
+              <node concept="10Pfzv" id="9EY7CVkb3m" role="1tU5fm" />
+              <node concept="1Xhbcc" id="9EY7CVkb3n" role="33vP2m">
+                <property role="1XhdNS" value="a" />
+              </node>
+            </node>
+          </node>
+          <node concept="3KaCP$" id="9EY7CVkb3o" role="3cqZAp">
+            <node concept="3KbdKl" id="9EY7CVkb3p" role="3KbHQx">
+              <node concept="0yx07" id="9EY7CVkb3q" role="0ycHK">
+                <node concept="1Xhbcc" id="9EY7CVkb3r" role="0yx06">
+                  <property role="1XhdNS" value="\uaaaa" />
+                  <node concept="7CXmI" id="9EY7CVkejI" role="lGtFl">
+                    <node concept="1TM$A" id="9EY7CVkevR" role="7EUXB">
+                      <node concept="2PYRI3" id="9EY7CVkevS" role="3lydEf">
+                        <ref role="39XzEq" to="tpeh:7rQge4jcF3h" />
+                      </node>
+                      <node concept="1DMPye" id="9EY7CVkevT" role="1DMPz9">
+                        <property role="1DMPyf" value="Error: Duplicate case" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbS" id="9EY7CVkb3s" role="3Kbo56" />
+              <node concept="1Xhbcc" id="9EY7CVkb3t" role="3Kbmr1">
+                <property role="1XhdNS" value="\uaaaa" />
+                <node concept="7CXmI" id="9EY7CVkeyf" role="lGtFl">
+                  <node concept="1TM$A" id="9EY7CVkeIm" role="7EUXB">
+                    <node concept="2PYRI3" id="9EY7CVkeIn" role="3lydEf">
+                      <ref role="39XzEq" to="tpeh:7rQge4jcF3h" />
+                    </node>
+                    <node concept="1DMPye" id="9EY7CVkeIo" role="1DMPz9">
+                      <property role="1DMPyf" value="Error: Duplicate case" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3KbdKl" id="9EY7CVkb3y" role="3KbHQx">
+              <node concept="0yx07" id="9EY7CVkb3z" role="0ycHK">
+                <node concept="1Xhbcc" id="9EY7CVkb3$" role="0yx06">
+                  <property role="1XhdNS" value="\uaaab" />
+                </node>
+              </node>
+              <node concept="3clFbS" id="9EY7CVkb3_" role="3Kbo56" />
+              <node concept="1Xhbcc" id="9EY7CVkb3A" role="3Kbmr1">
+                <property role="1XhdNS" value="b" />
+              </node>
+            </node>
+            <node concept="3KbdKl" id="9EY7CVkb3B" role="3KbHQx">
+              <node concept="3clFbS" id="9EY7CVkb3C" role="3Kbo56" />
+              <node concept="1Xhbcc" id="9EY7CVkb3D" role="3Kbmr1">
+                <property role="1XhdNS" value="c" />
+              </node>
+            </node>
+            <node concept="37vLTw" id="9EY7CVkb3E" role="3KbGdf">
+              <ref role="3cqZAo" node="9EY7CVkb3l" resolve="a" />
+            </node>
+          </node>
+        </node>
+        <node concept="7CXmI" id="9EY7CVkb3F" role="lGtFl">
+          <node concept="7OXhh" id="9EY7CVkb3G" role="7EUXB">
+            <property role="GvXf4" value="true" />
           </node>
         </node>
       </node>
