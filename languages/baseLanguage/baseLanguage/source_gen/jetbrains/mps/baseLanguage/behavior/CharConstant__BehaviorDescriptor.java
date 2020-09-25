@@ -33,8 +33,35 @@ public final class CharConstant__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Object getCompileTimeConstantValue_idi1LP2xI(@NotNull SNode __thisNode__, SModule module) {
-    if (SPropertyOperations.getString(__thisNode__, PROPS.charConstant$DOTs).length() > 0) {
-      return new Character(SPropertyOperations.getString(__thisNode__, PROPS.charConstant$DOTs).charAt(0));
+    if (SPropertyOperations.getString(__thisNode__, PROPS.charConstant$DOTs) == null) {
+      return null;
+    }
+    if (SPropertyOperations.getString(__thisNode__, PROPS.charConstant$DOTs).length() > 5 && SPropertyOperations.getString(__thisNode__, PROPS.charConstant$DOTs).charAt(1) == 'u') {
+      int code = Integer.parseInt(SPropertyOperations.getString(__thisNode__, PROPS.charConstant$DOTs).substring(2, 6), 16);
+      return (char) code;
+    } else if (SPropertyOperations.getString(__thisNode__, PROPS.charConstant$DOTs).length() > 1) {
+      switch (SPropertyOperations.getString(__thisNode__, PROPS.charConstant$DOTs).charAt(1)) {
+        case 't':
+          return '\t';
+        case 'n':
+          return '\n';
+        case '\\':
+          return '\\';
+        case 'r':
+          return '\r';
+        case 'f':
+          return '\f';
+        case 'b':
+          return '\b';
+        case '\'':
+          return '\'';
+        case '"':
+          return '"';
+        default:
+          return null;
+      }
+    } else if (SPropertyOperations.getString(__thisNode__, PROPS.charConstant$DOTs).length() > 0) {
+      return Character.valueOf(SPropertyOperations.getString(__thisNode__, PROPS.charConstant$DOTs).charAt(0));
     } else {
       return null;
     }
