@@ -530,18 +530,22 @@
     </group>
 
     <group id="NavBarToolBarOthers"/>
-    <!--
     <group id="NavBarToolBar">
+    <!--
       <reference ref="ToolbarRunGroup"/>
       <separator/>
       <reference ref="NavBarVcsGroup"/>
       <separator/>
+      -->
       <reference id="NavBarToolBarOthers"/>
+      <!--
       <separator/>
-      <reference ref="RunAnything"/>
+      <reference ref="RunAnything"/->
       <reference ref="SearchEverywhere"/>
+      -->
     </group>
 
+    <!--
     <group id="Bookmarks">
       <reference ref="ToggleBookmark"/>
       <reference ref="ShowBookmarks"/>
