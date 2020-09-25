@@ -24881,7 +24881,8 @@
       <node id="4313092516461872700" at="98,0,99,0" concept="15" trace="Statement$P6" />
       <node id="4313092516461872700" at="102,0,103,0" concept="15" trace="expression$QQk6" />
       <node id="4313092516461872700" at="103,0,104,0" concept="15" trace="switchCaseExtensions$2298" />
-      <node id="4313092516461872700" at="104,0,105,0" concept="15" trace="body$5LhG" />
+      <node id="4313092516461872700" at="104,0,105,0" concept="15" trace="expression$bChi" />
+      <node id="4313092516461872700" at="105,0,106,0" concept="15" trace="body$5LhG" />
       <node id="4313092516461872700" at="35,0,37,0" concept="16" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4313092516461872700" at="50,0,52,0" concept="3" trace="SwitchCase__BehaviorDescriptor#()V" />
       <node id="7877620156201618282" at="42,0,45,0" concept="10" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -24947,8 +24948,8 @@
       </scope>
       <unit id="4313092516461872700" at="97,0,100,0" name="jetbrains.mps.baseLanguage.behavior.SwitchCase__BehaviorDescriptor$CONCEPTS" />
       <unit id="7877620156201618282" at="41,117,45,7" name="jetbrains.mps.baseLanguage.behavior.SwitchCase__BehaviorDescriptor$1" />
-      <unit id="4313092516461872700" at="101,0,106,0" name="jetbrains.mps.baseLanguage.behavior.SwitchCase__BehaviorDescriptor$LINKS" />
-      <unit id="4313092516461872700" at="28,0,107,0" name="jetbrains.mps.baseLanguage.behavior.SwitchCase__BehaviorDescriptor" />
+      <unit id="4313092516461872700" at="101,0,107,0" name="jetbrains.mps.baseLanguage.behavior.SwitchCase__BehaviorDescriptor$LINKS" />
+      <unit id="4313092516461872700" at="28,0,108,0" name="jetbrains.mps.baseLanguage.behavior.SwitchCase__BehaviorDescriptor" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)/4313092516461999629">
