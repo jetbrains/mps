@@ -1850,6 +1850,13 @@
       <property role="IQ2ns" value="1163670677455" />
       <ref role="20lvS9" node="fz3vP1J" resolve="Expression" />
     </node>
+    <node concept="1TJgyj" id="6PiVsHHQyqV" role="1TKVEi">
+      <property role="IQ2ns" value="7877620156201576123" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="switchCaseExtensions" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="6PiVsHHQfRc" resolve="SwitchCaseExtension" />
+    </node>
     <node concept="1TJgyj" id="gVKbo18" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="body" />
@@ -4776,6 +4783,19 @@
   <node concept="PlHQZ" id="6sjyiRHauQ$">
     <property role="EcuMT" value="7427431040809561508" />
     <property role="TrG5h" value="IThrowCheckedExceptions" />
+  </node>
+  <node concept="1TIwiD" id="6PiVsHHQfRc">
+    <property role="EcuMT" value="7877620156201500108" />
+    <property role="3GE5qa" value="control_flow.if_switch" />
+    <property role="TrG5h" value="SwitchCaseExtension" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="6PiVsHHQfRd" role="1TKVEi">
+      <property role="IQ2ns" value="7877620156201500109" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="expression" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="fz3vP1J" resolve="Expression" />
+    </node>
   </node>
 </model>
 

@@ -7,11 +7,15 @@ import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
+import java.util.List;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -31,50 +35,59 @@ public class check_UnqualifiedEnumConstUnderSwitch_NonTypesystemRule extends Abs
   }
   public void applyRule(final SNode switchCase, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // FIXME: almost duplicate code with MultipleFilesParser 
-    SNode caseExp = SLinkOperations.getTarget(switchCase, LINKS.expression$QQk6);
-    if (!(SNodeOperations.isInstanceOf(caseExp, CONCEPTS.VariableReference$TC))) {
-      return;
-    }
-    SReference ref = SNodeOperations.getReference(SNodeOperations.cast(caseExp, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG);
-    if (!(SLinkOperations.isDynamic(ref))) {
-      return;
-    }
+    List<SNode> exps = ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(switchCase, LINKS.expression$QQk6));
+    ListSequence.fromList(exps).addSequence(ListSequence.fromList(SLinkOperations.getChildren(switchCase, LINKS.switchCaseExtensions$2298)).select(new ISelector<SNode, SNode>() {
+      public SNode select(SNode it) {
+        return SLinkOperations.getTarget(it, LINKS.expression$bChi);
+      }
+    }));
+    ListSequence.fromList(exps).visitAll(new IVisitor<SNode>() {
+      public void visit(SNode caseExp) {
+        if (!(SNodeOperations.isInstanceOf(caseExp, CONCEPTS.VariableReference$TC))) {
+          return;
+        }
+        SReference ref = SNodeOperations.getReference(SNodeOperations.cast(caseExp, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG);
+        if (!(SLinkOperations.isDynamic(ref))) {
+          return;
+        }
 
-    final String enumConstName = SLinkOperations.getResolveInfo(ref);
+        final String enumConstName = SLinkOperations.getResolveInfo(ref);
 
-    SNode scrutenee = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(caseExp, CONCEPTS.SwitchStatement$kN, false, false), LINKS.expression$CjpY);
-    if ((scrutenee == null)) {
-      return;
-    }
+        SNode scrutenee = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(caseExp, CONCEPTS.SwitchStatement$kN, false, false), LINKS.expression$CjpY);
+        if ((scrutenee == null)) {
+          return;
+        }
 
-    SNode scruteneeType = TypecheckingFacade.getFromContext().getTypeOf(scrutenee);
-    if (!(SNodeOperations.isInstanceOf(scruteneeType, CONCEPTS.ClassifierType$bL))) {
-      return;
-    }
+        SNode scruteneeType = TypecheckingFacade.getFromContext().getTypeOf(scrutenee);
+        if (!(SNodeOperations.isInstanceOf(scruteneeType, CONCEPTS.ClassifierType$bL))) {
+          return;
+        }
 
-    SNode claz = SLinkOperations.getTarget(SNodeOperations.cast(scruteneeType, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr);
-    if (!(SNodeOperations.isInstanceOf(claz, CONCEPTS.EnumClass$Vk))) {
-      return;
-    }
+        SNode claz = SLinkOperations.getTarget(SNodeOperations.cast(scruteneeType, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr);
+        if (!(SNodeOperations.isInstanceOf(claz, CONCEPTS.EnumClass$Vk))) {
+          return;
+        }
 
-    SNode enumConst = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(claz, CONCEPTS.EnumClass$Vk), LINKS.enumConstant$qtgW)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getString(it, PROPS.name$MnvL).equals(enumConstName);
+        SNode enumConst = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(claz, CONCEPTS.EnumClass$Vk), LINKS.enumConstant$qtgW)).findFirst(new IWhereFilter<SNode>() {
+          public boolean accept(SNode it) {
+            return SPropertyOperations.getString(it, PROPS.name$MnvL).equals(enumConstName);
+          }
+        });
+        SNode qualifiedEnumRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference"));
+        SLinkOperations.setTarget(qualifiedEnumRef, LINKS.enumClass$bGAj, SNodeOperations.cast(claz, CONCEPTS.EnumClass$Vk));
+        SLinkOperations.setTarget(qualifiedEnumRef, LINKS.enumConstantDeclaration$f1_N, enumConst);
+
+        {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(caseExp, "Unqualified enum constant reference", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5230012391939085755", null, errorTarget);
+          {
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.replaceNode_QuickFix", "5230012391939085757", true);
+            intentionProvider.putArgument("newNode", qualifiedEnumRef);
+            _reporter_2309309498.addIntentionProvider(intentionProvider);
+          }
+        }
       }
     });
-    SNode qualifiedEnumRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, "jetbrains.mps.baseLanguage.structure.EnumConstantReference"));
-    SLinkOperations.setTarget(qualifiedEnumRef, LINKS.enumClass$bGAj, SNodeOperations.cast(claz, CONCEPTS.EnumClass$Vk));
-    SLinkOperations.setTarget(qualifiedEnumRef, LINKS.enumConstantDeclaration$f1_N, enumConst);
-
-    {
-      final MessageTarget errorTarget = new NodeMessageTarget();
-      IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(caseExp, "Unqualified enum constant reference", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "5230012391939085755", null, errorTarget);
-      {
-        BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.replaceNode_QuickFix", "5230012391939085757", true);
-        intentionProvider.putArgument("newNode", qualifiedEnumRef);
-        _reporter_2309309498.addIntentionProvider(intentionProvider);
-      }
-    }
   }
   public SAbstractConcept getApplicableConcept() {
     return CONCEPTS.SwitchCase$7o;
@@ -88,6 +101,8 @@ public class check_UnqualifiedEnumConstUnderSwitch_NonTypesystemRule extends Abs
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink expression$QQk6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression");
+    /*package*/ static final SContainmentLink switchCaseExtensions$2298 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x6d52edcb6dda26bbL, "switchCaseExtensions");
+    /*package*/ static final SContainmentLink expression$bChi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6d52edcb6dd8fdccL, 0x6d52edcb6dd8fdcdL, "expression");
     /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
     /*package*/ static final SContainmentLink expression$CjpY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02ec241L, "expression");
     /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
