@@ -192,7 +192,7 @@ public class ProjectPluginManager extends BasePluginManager<BaseProjectPlugin> i
 
   @Override
   public boolean isDisposed() {
-    return myMpsProject.isDisposed();
+    return myProject.isDisposed();
   }
 
   //----------------COMPONENT STUFF---------------------
