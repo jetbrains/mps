@@ -174,6 +174,9 @@ import java.io.OutputStream;
           // no changes, use current file content 
           try {
             if (!(file.exists())) {
+              if (LOG.isEnabledFor(Level.WARN)) {
+                LOG.warn("file does not exist");
+              }
               return null;
             }
             return file.contentsToByteArray();
@@ -187,6 +190,9 @@ import java.io.OutputStream;
 
         ContentRevision beforeRevision = change.getBeforeRevision();
         if (beforeRevision == null) {
+          if (LOG.isEnabledFor(Level.WARN)) {
+            LOG.warn("before revision is null for " + file);
+          }
           return null;
         }
         if (beforeRevision instanceof BinaryContentRevision) {
@@ -194,6 +200,9 @@ import java.io.OutputStream;
         } else {
           String content = beforeRevision.getContent();
           if (content == null) {
+            if (LOG.isEnabledFor(Level.WARN)) {
+              LOG.warn("content for before revision is null");
+            }
             return null;
           }
           return content.getBytes(FileUtil.DEFAULT_CHARSET);
