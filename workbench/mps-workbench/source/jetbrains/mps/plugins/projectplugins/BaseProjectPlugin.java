@@ -39,17 +39,17 @@ import java.util.List;
 public abstract class BaseProjectPlugin implements PersistentStateComponent<PluginState> {
   private static final Logger LOG = LogManager.getLogger(BaseProjectPlugin.class);
 
-  private Project myProject;
+  private Project myIJProject;
   private MPSProject myMPSProject;
 
-  private List<BaseTool> myTools = new ArrayList<>();
-  private EDTAccessor<List<BaseTool>> myInitializedTools = new EDTAccessor<>(new ArrayList<>());
+  private final List<BaseTool> myTools = new ArrayList<>();
+  private final EDTAccessor<List<BaseTool>> myInitializedTools = new EDTAccessor<>(new ArrayList<>());
   private List<ProjectPluginPart> myCustomParts = new ArrayList<>();
   private List<BaseProjectPrefsComponent> myPrefsComponents = new ArrayList<>();
   private List<RelationDescriptor> myTabDescriptors = new ArrayList<>();
 
   public Project getProject() {
-    return myProject;
+    return myIJProject;
   }
 
   //------------------stuff to generate-----------------------
@@ -84,8 +84,8 @@ public abstract class BaseProjectPlugin implements PersistentStateComponent<Plug
   }
 
   public final void init(@NotNull final Project project) {
-    myProject = project;
-    myMPSProject = ProjectHelper.fromIdeaProject(myProject);
+    myIJProject = project;
+    myMPSProject = ProjectHelper.fromIdeaProject(myIJProject);
 
     initTabbedEditors1(project);
     initCustomParts();
@@ -96,7 +96,7 @@ public abstract class BaseProjectPlugin implements PersistentStateComponent<Plug
 
   private void createPrefComponents1() {
     try {
-      myPrefsComponents = createPreferencesComponents(myProject);
+      myPrefsComponents = createPreferencesComponents(myIJProject);
     } catch (Throwable t) {
       LOG.error("Exception on project preference components init:", t);
     }
@@ -104,7 +104,7 @@ public abstract class BaseProjectPlugin implements PersistentStateComponent<Plug
 
   protected void initTools1() {
     try {
-      myTools.addAll(initAllTools1(myProject));
+      myTools.addAll(initAllTools1(myIJProject));
     } catch (Throwable t) {
       LOG.error("Exception on tools init:", t);
     }
@@ -124,7 +124,7 @@ public abstract class BaseProjectPlugin implements PersistentStateComponent<Plug
 
     for (BaseTool tool : toolsToInit) {
       try {
-        tool.init(myProject);
+        tool.init(myIJProject);
         tool.register();
       } catch (Throwable t) {
         LOG.error("Exception on a tool init: " + tool, t);
@@ -150,8 +150,10 @@ public abstract class BaseProjectPlugin implements PersistentStateComponent<Plug
   }
 
   private void disposePrefsToolsAndCustomParts() {
-    disposePrefComponents(myPrefsComponents);
-    disposeTools(myTools);
+    if (!myIJProject.isDisposed()) {
+      disposePrefComponents(myPrefsComponents);
+      disposeTools(myTools);
+    }
     disposeCustomPluginParts();
     myPrefsComponents.clear();
     myTools.clear();
@@ -260,7 +262,7 @@ public abstract class BaseProjectPlugin implements PersistentStateComponent<Plug
   }
 
   private static class EDTAccessor<T> {
-    private T myT;
+    private final T myT;
 
     public EDTAccessor(T t) {
       myT = t;
