@@ -21,8 +21,10 @@ import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PatternLayout;
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Assume;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.time.temporal.ChronoUnit;
@@ -53,11 +55,22 @@ public class EDTExecutorInternalTest {
     return fib(k - 1) + fib(k - 2);
   }
 
+  @BeforeClass
+  public static void setup() {
+    Logger logger = LogManager.getLogger(EDTExecutorInternal.class);
+    logger.setLevel(Level.TRACE);
+  }
+
+  @AfterClass
+  public static void teardown() {
+    Logger logger = LogManager.getLogger(EDTExecutorInternal.class);
+    logger.setLevel(Level.INFO);
+  }
+
+
   @Test
   public void firstTaskInvokesFlush() throws InterruptedException {
     LOG.info("My thread is " + Thread.currentThread());
-    Logger logger = LogManager.getLogger(EDTExecutorInternal.class);
-    logger.setLevel(Level.TRACE);
     EDTExecutorInternal edtExecutorInternal = new EDTExecutorInternal();
     ExecutorService pool = Executors.newFixedThreadPool(1);
     Collection<Callable<Object>> taskList = new ArrayList<>();
@@ -194,7 +207,6 @@ public class EDTExecutorInternalTest {
     }
 
     new ExecutorServiceShutdownHelper(pool).shutdownAndAwaitTermination(5000);
-    LogManager.getLogger(EDTExecutorInternal.class).setLevel(Level.INFO);
   }
 }
 
