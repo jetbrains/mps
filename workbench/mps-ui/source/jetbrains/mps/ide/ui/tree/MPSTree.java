@@ -36,6 +36,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.AbstractAction;
 import javax.swing.JPopupMenu;
 import javax.swing.KeyStroke;
+import javax.swing.SwingUtilities;
 import javax.swing.ToolTipManager;
 import javax.swing.event.TreeExpansionEvent;
 import javax.swing.event.TreeExpansionListener;
@@ -46,7 +47,9 @@ import javax.swing.plaf.TreeUI;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
+import java.awt.Component;
 import java.awt.Graphics;
+import java.awt.Insets;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
@@ -285,7 +288,7 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
     }
   }
 
-  private void myMouseClicked(MouseEvent e) {
+  protected void mouseClicked(MouseEvent e) {
     if (e.isPopupTrigger()) {
       showPopup(e.getX(), e.getY(), e);
     }
@@ -946,7 +949,7 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-      myMouseClicked(e);
+      MPSTree.this.mouseClicked(e);
     }
 
     @Override

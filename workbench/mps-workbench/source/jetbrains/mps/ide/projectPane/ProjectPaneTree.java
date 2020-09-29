@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.ide.projectPane.logicalview;
+package jetbrains.mps.ide.projectPane;
 
 import com.intellij.ide.projectView.ProjectView;
 import com.intellij.ide.projectView.impl.AbstractProjectViewPane;
@@ -22,19 +22,22 @@ import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.project.DumbService;
 import com.intellij.openapi.project.DumbService.DumbModeListener;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.ui.popup.Balloon;
+import com.intellij.openapi.ui.popup.Balloon.Position;
+import com.intellij.openapi.ui.popup.BalloonBuilder;
+import com.intellij.openapi.ui.popup.JBPopupFactory;
 import com.intellij.openapi.util.Disposer;
+import com.intellij.ui.awt.RelativePoint;
 import com.intellij.util.ArrayUtil;
 import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.ide.projectPane.BaseLogicalViewProjectPane;
-import jetbrains.mps.ide.projectPane.ProjectPane;
-import jetbrains.mps.ide.projectPane.ProjectPaneActionGroups;
-import jetbrains.mps.ide.projectPane.ProjectPaneDnDListener;
+import jetbrains.mps.ide.projectPane.logicalview.ProjectTree;
 import jetbrains.mps.ide.projectPane.logicalview.highlighting.ProjectPaneTreeHighlighter;
 import jetbrains.mps.ide.ui.smodel.ConceptTreeNode;
 import jetbrains.mps.ide.ui.smodel.PropertiesTreeNode;
 import jetbrains.mps.ide.ui.smodel.ReferencesTreeNode;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
+import jetbrains.mps.ide.ui.tree.NewMPSTreeCellRenderer;
 import jetbrains.mps.ide.ui.tree.module.ProjectModuleTreeNode;
 import jetbrains.mps.ide.ui.tree.module.SModelsSubtree;
 import jetbrains.mps.ide.ui.tree.smodel.NodeTargetProvider;
@@ -45,7 +48,6 @@ import jetbrains.mps.ide.ui.tree.smodel.SNodeTreeNode;
 import jetbrains.mps.ide.ui.tree.smodel.SNodeTreeNode.NodeChildrenProvider;
 import jetbrains.mps.make.IMakeNotificationListener;
 import jetbrains.mps.make.IMakeNotificationListener.Stub;
-import jetbrains.mps.make.IMakeService;
 import jetbrains.mps.make.MakeNotification;
 import jetbrains.mps.make.MakeServiceComponent;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
@@ -64,7 +66,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
+import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
 import javax.swing.tree.TreePath;
+import java.awt.Component;
+import java.awt.Insets;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.dnd.DnDConstants;
@@ -77,6 +83,7 @@ import java.awt.dnd.DropTarget;
 import java.awt.dnd.InvalidDnDOperationException;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
@@ -90,6 +97,7 @@ import java.util.stream.Collectors;
  */
 public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider, ProjectModuleTreeNode.ModuleNodeChildrenProvider {
   private final ProjectPane myProjectPane;
+  private final ProjectTreeCellRenderer myCellRenderer;
 
   private final KeyAdapter myKeyListener = new KeyAdapter() {
     @Override
@@ -113,6 +121,9 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
   public ProjectPaneTree(ProjectPane projectPane, Project project) {
     super(ProjectHelper.fromIdeaProject(project));
     myProjectPane = projectPane;
+
+    myCellRenderer = new ProjectTreeCellRenderer();
+    setCellRenderer(myCellRenderer);
 
     final MPSProject mpsProject = ProjectHelper.fromIdeaProject(project);
     myHighlighter = new ProjectPaneTreeHighlighter(this, mpsProject);
@@ -155,6 +166,7 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
 
   @Override
   public void rebuildNow() {
+    myCellRenderer.errorComponentVisible(myProjectPane.isErrorIndicatorVisible());
     super.rebuildNow();
     // FIXME do it through PPTH or any other way, but don't add dumbUpdate ro runRebuildAction() which is in use for refresh
     //       of a single tree node.
@@ -199,6 +211,20 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
       // fall-through
     }
     super.autoscroll(nodeToClick);
+  }
+
+  @Override
+  protected void mouseClicked(MouseEvent e) {
+    super.mouseClicked(e);
+    if (e.isConsumed()) {
+      return;
+    }
+    if (myCellRenderer.isErrorStateComponentEvent(e)) {
+      final BalloonBuilder bb = JBPopupFactory.getInstance().createBalloonBuilder(new JLabel("jfslkdfjsdl"));
+      bb.setDisposable(this);
+      final Balloon b = bb.setTitle("AAA").setHideOnClickOutside(true).setHideOnKeyOutside(true).setShowCallout(true).createBalloon();
+      b.show(new RelativePoint(e), Position.below);
+    }
   }
 
   @Override

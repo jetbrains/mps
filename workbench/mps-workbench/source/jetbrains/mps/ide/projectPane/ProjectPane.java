@@ -46,7 +46,6 @@ import jetbrains.mps.ide.editor.MPSFileNodeEditor;
 import jetbrains.mps.ide.editor.tabs.TabbedEditor;
 import jetbrains.mps.ide.platform.watching.ReloadListener;
 import jetbrains.mps.ide.platform.watching.ReloadManager;
-import jetbrains.mps.ide.projectPane.logicalview.ProjectPaneTree;
 import jetbrains.mps.ide.projectPane.logicalview.ProjectTree;
 import jetbrains.mps.ide.projectPane.logicalview.ProjectTreeFindHelper;
 import jetbrains.mps.ide.projectView.ProjectViewPaneOverride;
@@ -537,15 +536,15 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
     return createFindHelper().findNextTreeNode(node);
   }
 
-  public boolean isDescriptorModelInGeneratorVisible() {
+  /*package*/ boolean isDescriptorModelInGeneratorVisible() {
     return myShowDescriptorModelsAction.isSelected();
   }
 
-  public boolean isDescriptorModelInSolutionVisible() {
+  /*package*/ boolean isDescriptorModelInSolutionVisible() {
     return Boolean.getBoolean("mps.module.rt");
   }
 
-  public boolean isErrorIndicatorVisible() {
+  /*package*/ boolean isErrorIndicatorVisible() {
     return myShowErrorComponent.isSelected();
   }
 

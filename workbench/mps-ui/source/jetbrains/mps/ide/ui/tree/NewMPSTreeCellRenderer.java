@@ -32,8 +32,10 @@ import javax.swing.JTree;
 import javax.swing.UIManager;
 import javax.swing.tree.TreeCellRenderer;
 import java.awt.Component;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 
 
@@ -46,8 +48,8 @@ public class NewMPSTreeCellRenderer implements TreeCellRenderer {
   public NewMPSTreeCellRenderer() {
     myPanel = new JBPanel() {
       @Override
-      public void paint(Graphics g) {
-        super.paint(g);
+      public void paintBorder(Graphics g) {
+        super.paintBorder(g);
 
         int imageOffset;
         Icon icon = myMainTextLabel.getIcon();
@@ -95,6 +97,7 @@ public class NewMPSTreeCellRenderer implements TreeCellRenderer {
       icon = treeNode.getIcon();
       text = treeNode.getText();
       additionalText = treeNode.getAdditionalText();
+      configureAuxComponents(treeNode, myMainTextLabel.getFontMetrics(treeFont));
 
       // XXX I feel that having a context with cached font for a given set of attributes could be beneficial here
       final Font mlFont = treeFont.deriveFont(treeNode.getFontAttributes());
@@ -129,6 +132,14 @@ public class NewMPSTreeCellRenderer implements TreeCellRenderer {
     }
     myMainTextLabel.setIcon(icon);
 
+    return myPanel;
+  }
+
+  protected void configureAuxComponents(MPSTreeNode treeNode, FontMetrics mainLabelFont) {
+    // no-op
+  }
+
+  protected final Container getPanel() {
     return myPanel;
   }
 }

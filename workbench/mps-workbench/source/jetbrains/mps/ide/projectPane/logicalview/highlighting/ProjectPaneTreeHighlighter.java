@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.ide.projectPane.logicalview.highlighting;
 
-import jetbrains.mps.ide.projectPane.logicalview.ProjectPaneTree;
+import jetbrains.mps.ide.projectPane.ProjectPaneTree;
 import jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.ErrorChecker;
 import jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.GenStatusUpdater;
 import jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.ModifiedMarker;

@@ -15,13 +15,11 @@
  */
 package jetbrains.mps.ide.ui.smodel;
 
-import jetbrains.mps.ide.projectPane.logicalview.SNodeTreeUpdater;
-import jetbrains.mps.ide.ui.smodel.SModelEventsDispatcher.SModelEventsListener;
+import jetbrains.mps.ide.projectPane.SNodeTreeUpdater;
 import jetbrains.mps.ide.ui.tree.smodel.SNodeTreeNode;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.ModelsEventsCollector;
 import jetbrains.mps.smodel.event.SModelEvent;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
