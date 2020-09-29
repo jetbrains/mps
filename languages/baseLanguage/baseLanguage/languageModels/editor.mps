@@ -22594,10 +22594,7 @@
       <node concept="1iCGBv" id="2s$p4KaO3F7" role="3EZMnx">
         <ref role="1NtTu8" to="tpee:2s$p4KaM3eA" resolve="classifier" />
         <node concept="1sVBvm" id="2Ja1M$Rkirv" role="1sWHZn">
-          <node concept="3F0A7n" id="2Ja1M$Rkirx" role="2wV5jI">
-            <property role="1Intyy" value="true" />
-            <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
-          </node>
+          <node concept="3SHvHV" id="3Ey6sU_V0rj" role="2wV5jI" />
         </node>
         <node concept="A1WHu" id="1wEcoXjJMIQ" role="3vIgyS">
           <ref role="A1WHt" node="1wEcoXjIDNZ" resolve="newExpression_DefaultClassCreator_ext_2" />
