@@ -56,9 +56,7 @@ import jetbrains.mps.ide.ui.tree.TreeHighlighterExtension;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
 import jetbrains.mps.ide.ui.tree.smodel.SNodeGroupTreeNode;
 import jetbrains.mps.openapi.editor.EditorComponent;
-import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.ModelReadRunnable;
 import jetbrains.mps.smodel.tempmodel.TempModule;
 import jetbrains.mps.smodel.tempmodel.TempModule2;
@@ -136,7 +134,8 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
   private List<List<String>> myExpandedPathsRaw = Collections.emptyList();
   private List<List<String>> mySelectedPathsRaw = Collections.emptyList();
   private MessageBusConnection myConnection;
-  private final ShowDescriptorModelsAction myShowDescriptorModelsAction;
+  private final ToggleAndRebuildAction myShowDescriptorModelsAction;
+  private final ToggleAndRebuildAction myShowErrorComponent;
   private final MessageBusConnection myMessageBus;
 
   public ProjectPane(final Project project) {
@@ -153,7 +152,8 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
       }
     };
     ApplicationManager.getApplication().getComponent(ReloadManager.class).addReloadListener(myReloadListener);
-    myShowDescriptorModelsAction = new ShowDescriptorModelsAction(this);
+    myShowDescriptorModelsAction = new ToggleAndRebuildAction(this, "Show @descriptor models in Generators", "showGeneratorDescriptor");
+    myShowErrorComponent = new ToggleAndRebuildAction(this, "Show error indication", "showErrorComponent");
     myMessageBus = myProject.getMessageBus().connect(this);
     myMessageBus.subscribe(TabbedEditor.TAB_CHANGES, nodeRef -> {
       if (getProjectView().isAutoscrollFromSource(ID)) {
@@ -321,6 +321,7 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
   public void addToolbarActions(DefaultActionGroup group) {
     super.addToolbarActions(group);
     group.addAction(myShowDescriptorModelsAction).setAsSecondary(true);
+    group.addAction(myShowErrorComponent).setAsSecondary(true);
   }
 
   @Override
@@ -364,11 +365,8 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
 
     writePaths(subPane, myExpandedPathsRaw, "PATH");
     writePaths(subPane, mySelectedPathsRaw, "SELECTED");
-    if (!myShowDescriptorModelsAction.isDefaultState()) {
-      Element option1 = new Element(ShowDescriptorModelsAction.KEY);
-      option1.setAttribute("value", Boolean.toString(myShowDescriptorModelsAction.isSelected()));
-      subPane.addContent(option1);
-    }
+    myShowDescriptorModelsAction.writeTo(subPane);
+    myShowErrorComponent.writeTo(subPane);
 
     element.addContent(subPane);
   }
@@ -407,10 +405,8 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
     for (Element subPane : subPanes) {
       myExpandedPathsRaw = readPaths(subPane, "PATH");
       mySelectedPathsRaw = readPaths(subPane, "SELECTED");
-      Element option1 = subPane.getChild(ShowDescriptorModelsAction.KEY);
-      if (option1 != null) {
-        myShowDescriptorModelsAction.setState(Boolean.parseBoolean(option1.getAttributeValue("value")));
-      }
+      myShowDescriptorModelsAction.readFrom(subPane);
+      myShowErrorComponent.readFrom(subPane);
     }
   }
 
@@ -549,6 +545,10 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
     return Boolean.getBoolean("mps.module.rt");
   }
 
+  public boolean isErrorIndicatorVisible() {
+    return myShowErrorComponent.isSelected();
+  }
+
   @NotNull
   /*package*/ ProjectTreeFindHelper createFindHelper() {
     return new ProjectTreeFindHelper(getTree());
@@ -680,13 +680,14 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
     }
   }
 
-  private static class ShowDescriptorModelsAction extends ToggleAction {
+  private static class ToggleAndRebuildAction extends ToggleAction {
     private final ProjectPane myProjectPane;
+    private final String mySettingsKey;
     private boolean myState = false;
-    /*package*/ static final String KEY = "showGeneratorDescriptor";
 
-    ShowDescriptorModelsAction(ProjectPane projectPane) {
-      super("Show @descriptor models in Generators");
+    ToggleAndRebuildAction(ProjectPane projectPane, @NotNull String title, @NotNull String key) {
+      super(title);
+      mySettingsKey = key;
       myProjectPane = projectPane;
     }
 
@@ -712,6 +713,22 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
     public void setSelected(AnActionEvent e, boolean state) {
       myState = state;
       myProjectPane.rebuild();
+    }
+
+    /*package*/ void writeTo(Element element) {
+      if (isDefaultState()) {
+        return;
+      }
+      Element option1 = new Element(mySettingsKey);
+      option1.setAttribute("value", Boolean.toString(isSelected()));
+      element.addContent(option1);
+    }
+
+    /*package*/ void readFrom(Element element) {
+      Element option = element.getChild(mySettingsKey);
+      if (option != null) {
+        setState(Boolean.parseBoolean(option.getAttributeValue("value")));
+      }
     }
   }
 }
