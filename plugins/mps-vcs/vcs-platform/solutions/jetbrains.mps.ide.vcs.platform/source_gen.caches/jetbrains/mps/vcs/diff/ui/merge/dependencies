@@ -96,8 +96,6 @@
     <classNode dependClassName="javax.swing.JComponent" />
     <classNode dependClassName="javax.swing.JLabel" />
     <classNode dependClassName="javax.swing.SwingConstants" />
-    <classNode dependClassName="javax.swing.event.TreeSelectionEvent" />
-    <classNode dependClassName="javax.swing.event.TreeSelectionListener" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.ide.project.ProjectHelper" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />

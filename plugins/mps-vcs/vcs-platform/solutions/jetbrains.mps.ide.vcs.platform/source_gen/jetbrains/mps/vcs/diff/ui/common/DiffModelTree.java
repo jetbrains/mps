@@ -9,21 +9,22 @@ import com.intellij.openapi.actionSystem.DataKey;
 import com.intellij.openapi.util.Ref;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import java.util.List;
-import jetbrains.mps.workbench.action.BaseAction;
 import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import com.intellij.ui.ColoredTreeCellRenderer;
 import javax.swing.JTree;
-import jetbrains.mps.workbench.action.ActionUtils;
-import com.intellij.openapi.actionSystem.ActionPlaces;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.event.TreeSelectionEvent;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.workbench.action.BaseAction;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.workbench.action.ActionUtils;
+import com.intellij.openapi.actionSystem.ActionPlaces;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Collections;
 import java.util.Enumeration;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.tree.TreePath;
 import java.util.Objects;
@@ -51,36 +52,26 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   public static DataKey<Ref<SNodeId>> NODE_ID_DATAKEY = DataKey.create("MPS_SNodeId");
   private List<RootTreeNode> myRootNodes;
-  private Iterable<BaseAction> myActions;
   private final SRepository myRepo;
 
   public DiffModelTree(SRepository repo) {
     // FIXME This code deserves a refactoring much like MergeModelsPanel, as there's unlikely need for repository lock when we diff detached models. 
-    // Besides, it's ugly to build a tree during construction time! 
     myRepo = repo;
-    rebuildNow();
-    // FIXME oh, no, abstract method called from a constructor! 
-    myActions = getRootActions();
-    Sequence.fromIterable(myActions).visitAll(new IVisitor<BaseAction>() {
-      public void visit(BaseAction a) {
-        a.registerCustomShortcutSet(a.getShortcutSet(), DiffModelTree.this);
-      }
-    });
     setCellRenderer(new ColoredTreeCellRenderer() {
       @Override
-      public void customizeCellRenderer(JTree p0, final Object value, boolean p2, boolean p3, boolean p4, int p5, boolean p6) {
+      public void customizeCellRenderer(JTree p0, Object value, boolean p2, boolean p3, boolean p4, int p5, boolean p6) {
         if (value instanceof TreeNode) {
+          final TreeNode tn = (TreeNode) value;
           // FIXME this code is poor, need to check TreeNode subclasses if they really care to have model access 
           myRepo.getModelAccess().runReadAction(new Runnable() {
             public void run() {
-              ((TreeNode) value).doUpdatePresentation();
+              tn.doUpdatePresentation();
             }
           });
-          ((TreeNode) value).renderTreeNode(this);
+          tn.renderTreeNode(this);
         }
       }
     });
-    setPopupGroup(ActionUtils.groupFromActions(Sequence.fromIterable(myActions).toGenericArray(BaseAction.class)), ActionPlaces.CHANGES_VIEW_POPUP);
     // listen for selection changes 
     getSelectionModel().addTreeSelectionListener(new TreeSelectionListener() {
       public void valueChanged(TreeSelectionEvent e) {
@@ -94,18 +85,23 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
     });
   }
 
+  protected void setActions(Iterable<BaseAction> actions) {
+    Sequence.fromIterable(actions).visitAll(new IVisitor<BaseAction>() {
+      public void visit(BaseAction a) {
+        a.registerCustomShortcutSet(a.getShortcutSet(), DiffModelTree.this);
+      }
+    });
+    setPopupGroup(ActionUtils.groupFromActions(Sequence.fromIterable(actions).toGenericArray(BaseAction.class)), ActionPlaces.CHANGES_VIEW_POPUP);
+  }
+
   public void dispose() {
     // Workaround for MPS-31166 and similar issues where tree cell is about to be repainted but the model is already disposed 
     setCellRenderer(null);
   }
 
   protected TreeNode rebuild() {
-    ModelTreeNode modelNode = new ModelTreeNode();
-    myRootNodes = Sequence.fromIterable(getAffectedRoots()).where(new IWhereFilter<SNodeId>() {
-      public boolean accept(SNodeId r) {
-        return r != null;
-      }
-    }).select(new ISelector<SNodeId, RootTreeNode>() {
+    ModelTreeNode modelNode = new ModelTreeNode(getModels());
+    myRootNodes = Sequence.fromIterable(getAffectedRoots()).where(new NotNullWhereFilter<SNodeId>()).select(new ISelector<SNodeId, RootTreeNode>() {
       public RootTreeNode select(SNodeId r) {
         return new RootTreeNode(r);
       }
@@ -149,7 +145,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
     // todo: find path by rootId 
     TreePath path = null;
     for (int i = 0; i < getRowCount(); ++i) {
-      RootTreeNode node = as_5x0uld_a0a0a2a11(getPathForRow(i).getLastPathComponent(), RootTreeNode.class);
+      RootTreeNode node = as_5x0uld_a0a0a2a21(getPathForRow(i).getLastPathComponent(), RootTreeNode.class);
       if (node != null && Objects.equals(node.getRootId(), rootId)) {
         path = getPathForRow(i);
         break;
@@ -182,7 +178,6 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   protected abstract Iterable<SNodeId> getAffectedRoots();
   protected abstract Iterable<SModel> getModels();
   protected abstract void updateRootCustomPresentation(@NotNull RootTreeNode rootTreeNode);
-  protected abstract Iterable<BaseAction> getRootActions();
   protected boolean isMultipleRootNames() {
     return false;
   }
@@ -224,10 +219,11 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
     }
     return null;
   }
-  public class ModelTreeNode extends TreeNode {
-    public ModelTreeNode() {
+
+  public static class ModelTreeNode extends TreeNode {
+    public ModelTreeNode(Iterable<SModel> models) {
       super("model");
-      String modelName = SModelOperations.getModelName(Sequence.fromIterable(getModels()).findFirst(new IWhereFilter<SModel>() {
+      String modelName = SModelOperations.getModelName(Sequence.fromIterable(models).findFirst(new IWhereFilter<SModel>() {
         public boolean accept(SModel it) {
           return isNotEmptyString(SModelOperations.getModelName(it));
         }
@@ -237,12 +233,17 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
       }
       setIcon(IdeIcons.MODEL_ICON);
     }
+    private static boolean isNotEmptyString(String str) {
+      return str != null && str.length() > 0;
+    }
   }
-  private class PackageTreeNode extends TreeNode {
+
+  private static class PackageTreeNode extends TreeNode {
     private PackageTreeNode(@NotNull String packageName) {
       super(packageName);
     }
   }
+
   public class RootTreeNode extends TreeNode {
     private SNodeId myRootId;
     private String myPresentation = null;
@@ -306,7 +307,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
       return "Model Properties";
     }
   }
-  public abstract class TreeNode extends DefaultMutableTreeNode {
+  public static abstract class TreeNode extends DefaultMutableTreeNode {
     @NotNull
     private String myText;
     private int myTextStyle = SimpleTextAttributes.STYLE_PLAIN;
@@ -372,7 +373,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
   }
-  private static <T> T as_5x0uld_a0a0a2a11(Object o, Class<T> type) {
+  private static <T> T as_5x0uld_a0a0a2a21(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 

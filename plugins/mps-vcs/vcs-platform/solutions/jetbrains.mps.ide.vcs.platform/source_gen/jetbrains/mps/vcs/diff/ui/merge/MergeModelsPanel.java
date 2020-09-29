@@ -51,10 +51,8 @@ import jetbrains.mps.vcs.diff.ui.common.DiffModelTree;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.util.NameUtil;
-import javax.swing.event.TreeSelectionListener;
-import javax.swing.event.TreeSelectionEvent;
-import jetbrains.mps.workbench.action.BaseAction;
 import java.util.Arrays;
+import jetbrains.mps.workbench.action.BaseAction;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
 import com.intellij.ui.SimpleTextAttributes;
 import jetbrains.mps.vcs.diff.changes.AddRootChange;
@@ -154,6 +152,7 @@ public class MergeModelsPanel extends JPanel {
   protected void init() {
     myPanel.setSplitterProportionKey(getClass().getName() + "ModelTreeSplitter");
     myMergeTree = new MergeModelsTree(myProjectRepository);
+    myMergeTree.rebuildNow();
     myPanel.setFirstComponent(ScrollPaneFactory.createScrollPane(myMergeTree));
     myPanel.setSecondComponent(myNoRootPanel);
 
@@ -454,17 +453,10 @@ public class MergeModelsPanel extends JPanel {
   private class MergeModelsTree extends DiffModelTree {
     private MergeModelsTree(SRepository repo) {
       super(repo);
-      addTreeSelectionListener(new TreeSelectionListener() {
-        @Override
-        public void valueChanged(TreeSelectionEvent event) {
-        }
-      });
-    }
-    @Override
-    protected Iterable<BaseAction> getRootActions() {
       MergeModelsPanel md = MergeModelsPanel.this;
-      return Arrays.<BaseAction>asList(AcceptYoursTheirs.yoursInstance(md), AcceptYoursTheirs.theirsInstance(md));
+      setActions(Arrays.<BaseAction>asList(AcceptYoursTheirs.yoursInstance(md), AcceptYoursTheirs.theirsInstance(md)));
     }
+
     @Override
     protected void updateRootCustomPresentation(@NotNull DiffModelTree.RootTreeNode rootTreeNode) {
       final MergeSession session = (rootTreeNode.getRootId() == null ? myMetadataMergeSession : myMergeSession);

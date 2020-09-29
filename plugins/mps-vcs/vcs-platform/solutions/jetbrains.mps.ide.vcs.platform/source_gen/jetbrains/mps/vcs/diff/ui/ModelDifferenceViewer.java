@@ -37,8 +37,8 @@ import org.jetbrains.annotations.NonNls;
 import jetbrains.mps.vcs.diff.ui.common.DiffModelTree;
 import com.intellij.openapi.util.Ref;
 import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.workbench.action.BaseAction;
 import java.util.List;
+import jetbrains.mps.workbench.action.BaseAction;
 import java.util.ArrayList;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -127,6 +127,11 @@ public class ModelDifferenceViewer implements DataProvider {
         }
       }
     });
+    if (myTree != null) {
+      // Beware, ModelDifferenceTree is inner class that access fields of this one while constructing the tree, 
+      //   rebuild shall happen no earlier than we've got everything in this class ready. 
+      myTree.rebuildNow();
+    }
   }
 
   public String getDimensionServiceKey() {
@@ -278,11 +283,7 @@ public class ModelDifferenceViewer implements DataProvider {
   private class ModelDifferenceTree extends DiffModelTree {
     private ModelDifferenceTree(SRepository repo) {
       super(repo);
-    }
-    @Override
-    protected Iterable<BaseAction> getRootActions() {
       List<BaseAction> actions = ListSequence.fromList(new ArrayList<BaseAction>());
-
       if (myEditable) {
         ListSequence.fromList(actions).addElement(new RevertRootsAction("roots") {
           @Override
@@ -317,8 +318,9 @@ public class ModelDifferenceViewer implements DataProvider {
           }
         });
       }
-      return actions;
+      setActions(actions);
     }
+
     @Override
     protected void updateRootCustomPresentation(@NotNull DiffModelTree.RootTreeNode rootTreeNode) {
       ChangeType compositeChangeType = ChangeType.CHANGE;

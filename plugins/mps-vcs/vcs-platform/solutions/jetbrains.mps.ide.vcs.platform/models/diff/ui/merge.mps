@@ -26,7 +26,6 @@
     <import index="exr9" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor(MPS.Editor/)" />
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
-    <import index="gsia" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing.event(JDK/)" />
     <import index="qkt" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.actionSystem(MPS.IDEA/)" />
     <import index="jkm4" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui(MPS.IDEA/)" />
     <import index="7bx7" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.workbench.action(MPS.Platform/)" />
@@ -7692,6 +7691,16 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="2cFxs3P7tzW" role="3cqZAp">
+          <node concept="2OqwBi" id="2cFxs3P7w4q" role="3clFbG">
+            <node concept="37vLTw" id="2cFxs3P7tzU" role="2Oq$k0">
+              <ref role="3cqZAo" node="2jv$fqwD$oV" resolve="myMergeTree" />
+            </node>
+            <node concept="liA8E" id="2cFxs3P7yUp" role="2OqNvi">
+              <ref role="37wK5l" to="hdhb:42hl10VHaON" resolve="rebuildNow" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="2jv$fqwZq_3" role="3cqZAp">
           <node concept="2OqwBi" id="2jv$fqwZwoG" role="3clFbG">
             <node concept="liA8E" id="2jv$fqwZCrv" role="2OqNvi">
@@ -10116,65 +10125,6 @@
               <ref role="3cqZAo" node="QicWNw69$z" resolve="repo" />
             </node>
           </node>
-          <node concept="3clFbF" id="2jv$fqwD$Fc" role="3cqZAp">
-            <node concept="1rXfSq" id="4hiugqyz9Zb" role="3clFbG">
-              <ref role="37wK5l" to="dxuu:~JTree.addTreeSelectionListener(javax.swing.event.TreeSelectionListener)" resolve="addTreeSelectionListener" />
-              <node concept="2ShNRf" id="2jv$fqwD$Fe" role="37wK5m">
-                <node concept="YeOm9" id="2jv$fqwD$Ff" role="2ShVmc">
-                  <node concept="1Y3b0j" id="2jv$fqwD$Fg" role="YeSDq">
-                    <property role="2bfB8j" value="true" />
-                    <ref role="1Y3XeK" to="gsia:~TreeSelectionListener" resolve="TreeSelectionListener" />
-                    <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
-                    <node concept="3Tm1VV" id="2jv$fqwD$Fh" role="1B3o_S" />
-                    <node concept="3clFb_" id="2jv$fqwD$Fi" role="jymVt">
-                      <property role="1EzhhJ" value="false" />
-                      <property role="TrG5h" value="valueChanged" />
-                      <property role="DiZV1" value="false" />
-                      <node concept="3Tm1VV" id="2jv$fqwD$Fj" role="1B3o_S" />
-                      <node concept="3cqZAl" id="2jv$fqwD$Fk" role="3clF45" />
-                      <node concept="37vLTG" id="2jv$fqwD$Fl" role="3clF46">
-                        <property role="TrG5h" value="event" />
-                        <node concept="3uibUv" id="2jv$fqwD$Fm" role="1tU5fm">
-                          <ref role="3uigEE" to="gsia:~TreeSelectionEvent" resolve="TreeSelectionEvent" />
-                        </node>
-                      </node>
-                      <node concept="3clFbS" id="2jv$fqwD$Fn" role="3clF47">
-                        <node concept="1X3_iC" id="4qk_0lIzRBx" role="lGtFl">
-                          <property role="3V$3am" value="statement" />
-                          <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
-                          <node concept="3clFbF" id="2jv$fqwD$Fo" role="8Wnug">
-                            <node concept="2OqwBi" id="2jv$fqwD$Fp" role="3clFbG">
-                              <node concept="37vLTw" id="2BHiRxeuebg" role="2Oq$k0">
-                                <ref role="3cqZAo" node="2jv$fqwD$pr" resolve="myToolbar" />
-                              </node>
-                              <node concept="liA8E" id="2jv$fqwD$Fr" role="2OqNvi">
-                                <ref role="37wK5l" to="qkt:~ActionToolbar.updateActionsImmediately()" resolve="updateActionsImmediately" />
-                              </node>
-                            </node>
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="2AHcQZ" id="2jv$fqwD$Fs" role="2AJF6D">
-                        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3clFb_" id="2jv$fqwD$Ft" role="jymVt">
-        <property role="1EzhhJ" value="false" />
-        <property role="TrG5h" value="getRootActions" />
-        <node concept="A3Dl8" id="2jv$fqwD$Fu" role="3clF45">
-          <node concept="3uibUv" id="2jv$fqwD$Fv" role="A3Ik2">
-            <ref role="3uigEE" to="7bx7:~BaseAction" resolve="BaseAction" />
-          </node>
-        </node>
-        <node concept="3Tmbuc" id="2jv$fqwD$Fw" role="1B3o_S" />
-        <node concept="3clFbS" id="2jv$fqwD$Fx" role="3clF47">
           <node concept="3cpWs8" id="2jv$fqwD$Fy" role="3cqZAp">
             <node concept="3cpWsn" id="2jv$fqwD$Fz" role="3cpWs9">
               <property role="TrG5h" value="md" />
@@ -10186,34 +10136,35 @@
               </node>
             </node>
           </node>
-          <node concept="3cpWs6" id="2jv$fqwD$FA" role="3cqZAp">
-            <node concept="2YIFZM" id="2jv$fqwD$FB" role="3cqZAk">
-              <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
-              <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
-              <node concept="2YIFZM" id="2jv$fqwD$FF" role="37wK5m">
-                <ref role="1Pybhc" node="BjUsE2KPW8" resolve="AcceptYoursTheirs" />
-                <ref role="37wK5l" node="BjUsE2KPW9" resolve="yoursInstance" />
-                <node concept="37vLTw" id="3GM_nagTrnJ" role="37wK5m">
-                  <ref role="3cqZAo" node="2jv$fqwD$Fz" resolve="md" />
+          <node concept="3clFbF" id="2jv$fqwD$Fc" role="3cqZAp">
+            <node concept="1rXfSq" id="2cFxs3P4LtY" role="3clFbG">
+              <ref role="37wK5l" to="hdhb:2cFxs3P3R2z" resolve="setActions" />
+              <node concept="2YIFZM" id="2jv$fqwD$FB" role="37wK5m">
+                <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
+                <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
+                <node concept="2YIFZM" id="2jv$fqwD$FF" role="37wK5m">
+                  <ref role="37wK5l" node="BjUsE2KPW9" resolve="yoursInstance" />
+                  <ref role="1Pybhc" node="BjUsE2KPW8" resolve="AcceptYoursTheirs" />
+                  <node concept="37vLTw" id="3GM_nagTrnJ" role="37wK5m">
+                    <ref role="3cqZAo" node="2jv$fqwD$Fz" resolve="md" />
+                  </node>
                 </node>
-              </node>
-              <node concept="2YIFZM" id="2jv$fqwD$FH" role="37wK5m">
-                <ref role="1Pybhc" node="BjUsE2KPW8" resolve="AcceptYoursTheirs" />
-                <ref role="37wK5l" node="BjUsE2KPWk" resolve="theirsInstance" />
-                <node concept="37vLTw" id="3GM_nagTs$w" role="37wK5m">
-                  <ref role="3cqZAo" node="2jv$fqwD$Fz" resolve="md" />
+                <node concept="2YIFZM" id="2jv$fqwD$FH" role="37wK5m">
+                  <ref role="37wK5l" node="BjUsE2KPWk" resolve="theirsInstance" />
+                  <ref role="1Pybhc" node="BjUsE2KPW8" resolve="AcceptYoursTheirs" />
+                  <node concept="37vLTw" id="3GM_nagTs$w" role="37wK5m">
+                    <ref role="3cqZAo" node="2jv$fqwD$Fz" resolve="md" />
+                  </node>
                 </node>
-              </node>
-              <node concept="3uibUv" id="2jv$fqwD$FJ" role="3PaCim">
-                <ref role="3uigEE" to="7bx7:~BaseAction" resolve="BaseAction" />
+                <node concept="3uibUv" id="2jv$fqwD$FJ" role="3PaCim">
+                  <ref role="3uigEE" to="7bx7:~BaseAction" resolve="BaseAction" />
+                </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="2AHcQZ" id="2jv$fqwD$FK" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-        </node>
       </node>
+      <node concept="2tJIrI" id="2cFxs3P5byi" role="jymVt" />
       <node concept="3clFb_" id="2jv$fqwD$FL" role="jymVt">
         <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="updateRootCustomPresentation" />
