@@ -394,8 +394,10 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
   }
 
   private boolean isWideSelectionUI() {
-    TreeUI ui = getUI();
-    return ui instanceof WideSelectionTreeUI && ((WideSelectionTreeUI) ui).isWideSelection();
+    // afaik, WideSelectionTreeUI is IDEA's approach to show long element as a tooltip when tree width is not sufficient.
+    // now it's part of DefaultTreeUI. Besides that, it also makes selection outside of element's bounds possible (regular Java respects
+    // clicks within bounds of the label only)
+    return WideSelectionTreeUI.isWideSelection(this);
   }
 
   private void showPopup(int x, int y, MouseEvent e) {
