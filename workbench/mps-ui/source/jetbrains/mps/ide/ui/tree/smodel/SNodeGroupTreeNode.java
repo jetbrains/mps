@@ -15,8 +15,6 @@
  */
 package jetbrains.mps.ide.ui.tree.smodel;
 
-import com.intellij.ui.JBColor;
-import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.ide.ui.tree.TextTreeNode;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModelReference;
@@ -44,28 +42,6 @@ public class SNodeGroupTreeNode extends TextTreeNode {
 
   public SModelReference getModelReference() {
     return myModelReference;
-  }
-
-  @Override
-  protected void doUpdatePresentation() {
-    super.doUpdatePresentation();
-    if (hasErrors()) {
-      setColor(JBColor.RED);
-    }
-  }
-
-  private boolean hasErrors() {
-    // FIXME this is no-op method, always false, as SNodeTreeNode.hasError doesn't check for errors since 2008, and composing 'false' would never yield anything else
-    for (MPSTreeNode node : getChildren()) {
-      if (node instanceof SNodeTreeNode && ((SNodeTreeNode) node).hasErrors()) {
-        return true;
-      }
-      if (node instanceof SNodeGroupTreeNode && ((SNodeGroupTreeNode) node).hasErrors()) {
-        return true;
-      }
-    }
-
-    return false;
   }
 
   public boolean isAutoDelete() {

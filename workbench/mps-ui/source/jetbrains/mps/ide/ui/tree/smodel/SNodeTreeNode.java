@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.ide.ui.tree.smodel;
 
-import com.intellij.ui.JBColor;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.ide.ui.tree.ErrorState;
 import jetbrains.mps.ide.ui.tree.MPSTreeNodeEx;
@@ -86,9 +85,6 @@ public class SNodeTreeNode extends MPSTreeNodeEx implements NodeTargetProvider {
   protected void doUpdatePresentation_internal() {
     if (myNode == null) {
       return;
-    }
-    if (hasErrors()) {
-      setColor(JBColor.RED);
     }
     Icon nodeIcon = GlobalIconManager.getInstance().getIconFor(myNode);
     setIcon(nodeIcon);
@@ -212,10 +208,6 @@ public class SNodeTreeNode extends MPSTreeNodeEx implements NodeTargetProvider {
     }
 
     return output.toString();
-  }
-
-  public boolean hasErrors() {
-    return false;
   }
 
   public interface NodeChildrenProvider {

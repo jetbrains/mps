@@ -304,7 +304,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
     return v == null ? 2 : v;
   }
 
-  public void setToggleClickCount(int clickCount) {
+  public final void setToggleClickCount(int clickCount) {
     myOptionalAttributes.setOrDrop("mps.tree.clickcount", clickCount, 2);
   }
 
