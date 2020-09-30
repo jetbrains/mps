@@ -15,10 +15,12 @@
  */
 package jetbrains.mps.ide.projectPane;
 
+import jetbrains.mps.ide.ui.tree.ErrorState;
 import jetbrains.mps.ide.ui.tree.ErrorStateComponent;
 import jetbrains.mps.ide.ui.tree.MPSTree;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.ide.ui.tree.NewMPSTreeCellRenderer;
+import jetbrains.mps.ide.ui.tree.TreeErrorMessage;
 
 import javax.swing.Box;
 import javax.swing.tree.TreePath;
@@ -27,6 +29,7 @@ import java.awt.FontMetrics;
 import java.awt.Insets;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
+import java.util.Collection;
 
 /**
  * Augments cell renderer of {@code MPSTree} with a component to represent error state
@@ -70,7 +73,14 @@ import java.awt.event.MouseEvent;
     if (!myEnabled) {
       return;
     }
-    myIndicator.setState(treeNode.getAggregatedErrorState(), mainLabelFont);
+    final Collection<TreeErrorMessage> messages = treeNode.findMessages(TreeErrorMessage.class);
+    if (messages.stream().anyMatch(m -> m.getErrorState() == ErrorState.ERROR)) {
+      myIndicator.setState(ErrorState.ERROR, mainLabelFont);
+    } else if (messages.stream().anyMatch(m -> m.getErrorState() == ErrorState.WARNING)) {
+      myIndicator.setState(ErrorState.WARNING, mainLabelFont);
+    } else {
+      myIndicator.setState(ErrorState.NONE, mainLabelFont);
+    }
   }
 
   /*package*/ boolean isErrorStateComponentEvent(MouseEvent e) {

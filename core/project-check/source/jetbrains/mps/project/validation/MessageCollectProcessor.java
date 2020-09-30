@@ -24,9 +24,9 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class MessageCollectProcessor<T extends ReportItem> implements Processor<T>, Consumer<T> {
-  private List<String> myWarnings = new ArrayList<>(4);
-  private List<String> myErrors = new ArrayList<>(4);
-  private List<String> myInfos = new ArrayList<>(4);
+  private final List<String> myWarnings = new ArrayList<>(4);
+  private final List<String> myErrors = new ArrayList<>(4);
+  private final List<String> myInfos = new ArrayList<>(4);
   private final boolean myCollectNonErrors;
 
   public MessageCollectProcessor() {

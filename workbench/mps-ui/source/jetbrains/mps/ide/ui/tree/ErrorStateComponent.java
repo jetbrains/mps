@@ -39,11 +39,11 @@ public class ErrorStateComponent extends Component {
   public void setState(ErrorState s, FontMetrics fm) {
     myState = s != null ? s : ErrorState.NONE;
     if (fm != null) {
-      final int max = fm.charWidth('W') * 3;
+      final int max = fm.charWidth('W') * 2;
       if (isPreferredSizeSet() && getPreferredSize().width == max) {
         return;
       }
-      setMinimumSize(new Dimension(max / 3, max));
+      setMinimumSize(new Dimension(max / 2, max));
       setPreferredSize(new Dimension(max, max));
       setMaximumSize(new Dimension(max, max));
     }

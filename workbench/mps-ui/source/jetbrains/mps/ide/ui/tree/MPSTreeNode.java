@@ -30,6 +30,8 @@ import javax.swing.tree.TreeNode;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.font.TextAttribute;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
@@ -330,7 +332,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
     if (myTree != null) {
       myTree.fireTreeNodeUpdated(this);
     }
-    List<TreeMessage> treeMessages = getOptionalAttribute("mps.tree.messages", null);
+    List<TreeMessage> treeMessages = getOptionalAttribute("messages.tree", null);
     if (treeMessages != null) {
       treeMessages.stream()
                     .filter(TreeMessage::alternatesColor)
@@ -371,11 +373,11 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
    * @param message message to attach
    */
   public boolean addTreeMessage(@NotNull TreeMessage message) {
-    List<TreeMessage> treeMessages = getOptionalAttribute("mps.tree.messages", null);
+    List<TreeMessage> treeMessages = getOptionalAttribute("messages.tree", null);
     if (treeMessages == null) {
       synchronized (this) {
         // it seems cheaper to use copy-on-write list than to keep distinct synchronization object in all nodes (most of which don't use extra messages)
-        treeMessages = initOptionalAttributes().get("mps.tree.messages", CopyOnWriteArrayList::new);
+        treeMessages = initOptionalAttributes().get("messages.tree", CopyOnWriteArrayList::new);
       }
     }
     return treeMessages.add(message);
@@ -386,12 +388,12 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
    * This method can be invoked from any thread.
    * To trigger UI update, use {@link #renewPresentation()} from correct (EDT/UI) thread.
    *
-   * @param owner identifies messages to remove
+   * @param owner identifies messages to remove. No messages are removed if {@code null} despite the fact messages could be 
    * @return set of detached messages, or empty collection if none found
    */
   @NotNull
-  public Set<TreeMessage> removeTreeMessages(TreeMessageOwner owner) {
-    List<TreeMessage> treeMessages = getOptionalAttribute("mps.tree.messages", null);
+  public Set<TreeMessage> removeTreeMessages(@Nullable TreeMessageOwner owner) {
+    List<TreeMessage> treeMessages = getOptionalAttribute("messages.tree", null);
     if (owner == null || treeMessages == null) {
       return Collections.emptySet();
     }
@@ -402,6 +404,21 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
       }
     }
     treeMessages.removeAll(result);
+    return result;
+  }
+
+  @NotNull
+  public <M extends TreeMessage> Collection<M> findMessages(@NotNull Class<M> kind) {
+    List<TreeMessage> treeMessages = getOptionalAttribute("messages.tree", null);
+    if (treeMessages == null) {
+      return Collections.emptyList();
+    }
+    ArrayList<M> result = new ArrayList<>(4);
+    for (TreeMessage message : treeMessages) {
+      if (kind.isInstance(message)) {
+        result.add(kind.cast(message));
+      }
+    }
     return result;
   }
 
@@ -555,10 +572,21 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
     setOrDropOptionalAttribute("tooltip.tree", tooltipText, null);
   }
 
+  /**
+   * @deprecated see {@link #setErrorState(ErrorState)} for reasons ErrorState ain't no good
+   */
+  @Deprecated(forRemoval = true)
+  @ToRemove(version = 2020.3)
   public final boolean isErrorState() {
     return getErrorState() == ErrorState.ERROR;
   }
 
+  /**
+   * @deprecated Error state without a message makes little sense. Tooltips as a way to communicate error messages suck.
+   *             Use {@link #addTreeMessage(TreeMessage)} and {@link TreeErrorMessage} instead.
+   */
+  @Deprecated(forRemoval = true)
+  @ToRemove(version = 2020.3)
   public final void setErrorState(ErrorState state) {
     if (state == null) {
       state = ErrorState.NONE;
@@ -570,6 +598,11 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
     }
   }
 
+  /**
+   * @deprecated see {@link #setErrorState(ErrorState)} for reasons ErrorState ain't no good
+   */
+  @Deprecated(forRemoval = true)
+  @ToRemove(version = 2020.3)
   public final ErrorState getErrorState() {
     return getOptionalAttribute("error.tree", ErrorState.NONE);
   }

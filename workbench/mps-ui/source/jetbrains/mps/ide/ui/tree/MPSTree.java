@@ -304,7 +304,7 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
   }
 
   @Nullable
-  private MPSTreeNode getNodeFromPath(@Nullable TreePath path) {
+  protected MPSTreeNode getNodeFromPath(@Nullable TreePath path) {
     if (path == null) {
       return null;
     }

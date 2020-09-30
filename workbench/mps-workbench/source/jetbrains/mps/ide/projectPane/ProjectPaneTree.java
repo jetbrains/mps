@@ -36,7 +36,9 @@ import jetbrains.mps.ide.projectPane.logicalview.highlighting.ProjectPaneTreeHig
 import jetbrains.mps.ide.ui.smodel.ConceptTreeNode;
 import jetbrains.mps.ide.ui.smodel.PropertiesTreeNode;
 import jetbrains.mps.ide.ui.smodel.ReferencesTreeNode;
+import jetbrains.mps.ide.ui.tree.ErrorState;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
+import jetbrains.mps.ide.ui.tree.TreeErrorMessage;
 import jetbrains.mps.ide.ui.tree.module.ProjectModuleTreeNode;
 import jetbrains.mps.ide.ui.tree.module.SModelsSubtree;
 import jetbrains.mps.ide.ui.tree.smodel.NodeTargetProvider;
@@ -81,6 +83,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -215,10 +218,39 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
     if (e.isConsumed()) {
       return;
     }
-    if (myCellRenderer.isErrorStateComponentEvent(e)) {
-      final BalloonBuilder bb = JBPopupFactory.getInstance().createBalloonBuilder(new JLabel("jfslkdfjsdl"));
+    MPSTreeNode tn;
+    if (myCellRenderer.isErrorStateComponentEvent(e) && (tn = getNodeFromPath(getClosestPathForLocation(e.getX(), e.getY()))) != null) {
+      e.consume();
+      final Collection<TreeErrorMessage> messages = tn.findMessages(TreeErrorMessage.class);
+      if (messages.isEmpty()) {
+        return;
+      }
+      String title;
+      final List<TreeErrorMessage> errors = messages.stream().filter(m -> m.getErrorState() == ErrorState.ERROR).collect(Collectors.toList());
+      final List<TreeErrorMessage> warnings = messages.stream().filter(m -> m.getErrorState() == ErrorState.WARNING).collect(Collectors.toList());
+      final StringBuilder sb = new StringBuilder();
+      sb.append("<html><ul>");
+      if (!errors.isEmpty()) {
+        title = "Errors";
+        errors.forEach(m -> sb.append("<li>").append(m.getMessage()));
+        if (!warnings.isEmpty()) {
+          sb.append(String.format("<p> and %d warnings...</p>", warnings.size()));
+        }
+      } else if (!warnings.isEmpty()) {
+        title = "Warnings";
+        warnings.forEach(m -> sb.append("<li>").append(m.getMessage()));
+      } else {
+        title = null;
+        messages.forEach(m -> sb.append("<li>").append(m.getMessage()));
+      }
+      sb.append("</ul></html>");
+
+      final BalloonBuilder bb = JBPopupFactory.getInstance().createBalloonBuilder(new JLabel(sb.toString()));
       bb.setDisposable(this);
-      final Balloon b = bb.setTitle("AAA").setHideOnClickOutside(true).setHideOnKeyOutside(true).setShowCallout(true).createBalloon();
+      if (title != null) {
+        bb.setTitle(title);
+      }
+      final Balloon b = bb.setHideOnClickOutside(true).setHideOnKeyOutside(true).setShowCallout(true).createBalloon();
       b.show(new RelativePoint(e), Position.below);
     }
   }

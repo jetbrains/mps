@@ -18,6 +18,7 @@ package jetbrains.mps.ide.ui.tree.smodel;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.ide.ui.tree.ErrorState;
 import jetbrains.mps.ide.ui.tree.MPSTreeNodeEx;
+import jetbrains.mps.ide.ui.tree.TreeErrorMessage;
 import jetbrains.mps.ide.ui.util.NodeAttributesUtil;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -90,7 +91,7 @@ public class SNodeTreeNode extends MPSTreeNodeEx implements NodeTargetProvider {
     setIcon(nodeIcon);
 
     if (!myNode.getConcept().isValid()) {
-      setErrorState(ErrorState.ERROR);
+      addTreeMessage(new TreeErrorMessage(ErrorState.ERROR, "Invalid concept", null));
     }
     if (NodeAttributesUtil.isDeprecatedNode(myNode)) {
       addFontAttribute(TextAttribute.STRIKETHROUGH, TextAttribute.STRIKETHROUGH_ON);

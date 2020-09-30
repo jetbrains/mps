@@ -19,9 +19,9 @@ import jetbrains.mps.errors.item.ModelReportItem;
 import jetbrains.mps.errors.item.ModuleReportItem;
 import jetbrains.mps.extapi.model.TransientSModel;
 import jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.updates.ErrorStateNodeUpdate;
-import jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.updates.NodeUpdate;
 import jetbrains.mps.ide.ui.tree.ErrorState;
-import jetbrains.mps.ide.ui.tree.MPSTreeNode;
+import jetbrains.mps.ide.ui.tree.TreeErrorMessage;
+import jetbrains.mps.ide.ui.tree.TreeMessageOwner;
 import jetbrains.mps.ide.ui.tree.module.ProjectModuleTreeNode;
 import jetbrains.mps.ide.ui.tree.module.ProjectTreeNode;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
@@ -36,10 +36,13 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 /**
  * visitXXX methods require model read
  */
-public class ErrorChecker extends TreeUpdateVisitor {
+public class ErrorChecker extends TreeUpdateVisitor implements TreeMessageOwner {
   private final MPSProject myProject;
 
   public ErrorChecker(MPSProject mpsProject) {
@@ -57,11 +60,7 @@ public class ErrorChecker extends TreeUpdateVisitor {
     final ModelValidator modelValidator = new ModelValidator(myProject.getPlatform(), model);
     modelValidator.skipUnlessLoaded(); // no reason to load all the models unless user gets to one
     modelValidator.validate(collector, new EmptyProgressMonitor());
-    if (!model.isLoaded() && collector.getErrors().isEmpty() && collector.getWarnings().isEmpty()) {
-      addUpdate(node, new ModelNotLoadedInfo());
-    } else {
-      addUpdate(node, createNodeUpdate(collector));
-    }
+    addUpdate(node, createNodeUpdate(collector));
   }
 
   @Override
@@ -76,44 +75,23 @@ public class ErrorChecker extends TreeUpdateVisitor {
   }
 
   /*package*/ ErrorStateNodeUpdate createNodeUpdate(MessageCollectProcessor<?> messages) {
-    if (messages.getErrors().isEmpty() && messages.getWarnings().isEmpty()) {
-      return new ErrorStateNodeUpdate();
-    } else {
-      StringBuilder result = new StringBuilder();
-      result.append("<html>");
-      for (String error : messages.getErrors()) {
-        result.append(error);
-        result.append("<br>");
-      }
-      for (String warn : messages.getWarnings()) {
-        result.append("warn: ");
-        result.append(warn);
-        result.append("<br>");
-      }
-      return new ErrorStateNodeUpdate(result.toString(), messages.getErrors().isEmpty());
-    }
+    final ArrayList<TreeErrorMessage> msg = new ArrayList<>();
+    messages.getErrors().stream().map(s -> new TreeErrorMessage(ErrorState.ERROR, s, this)).forEach(msg::add);
+    messages.getWarnings().stream().map(s -> new TreeErrorMessage(ErrorState.WARNING, s, this)).forEach(msg::add);
+    messages.getInfos().stream().map(s -> new TreeErrorMessage(ErrorState.NONE, s, this)).forEach(msg::add);
+    return new ErrorStateNodeUpdate(this, msg);
   }
 
   @Override
   public void visitProjectNode(@NotNull final ProjectTreeNode node) {
+    // FIXME stupid code Project.getErrors():String
     String errors = ((StandaloneMPSProject) node.getProject()).getErrors();
-    addUpdate(node, new ErrorStateNodeUpdate(errors, false));
-  }
-
-  private static class ModelNotLoadedInfo extends NodeUpdate {
-    private final String msg = "Model is not loaded; no validity check";
-
-    @Override
-    public boolean needed(MPSTreeNode node) {
-      return !msg.equals(node.getTooltipText());
+    ErrorStateNodeUpdate u;
+    if (errors.isBlank()) {
+      u = new ErrorStateNodeUpdate(this);
+    } else {
+      u = new ErrorStateNodeUpdate(this, Collections.singleton(new TreeErrorMessage(ErrorState.ERROR, errors, this)));
     }
-
-    @Override
-    public void update(MPSTreeNode node) {
-      // do not override anything that could be there, even of 'info' level; message about not loaded model is of least significance
-      if (node.getErrorState() == ErrorState.NONE && node.getTooltipText() == null) {
-        node.setTooltipText(msg);
-      }
-    }
+    addUpdate(node, u);
   }
 }
