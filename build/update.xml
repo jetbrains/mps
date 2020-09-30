@@ -313,7 +313,7 @@
              feedback="http://youtrack.jetbrains.net"
              majorVersion="2020" minorVersoin="1">
       <build number="201.8743.1556" version="2020.1.5">
-        <message>JetBrains MPS 2020.1.5.</message>
+        <message>JetBrains MPS 2020.1.6 is now available.</message>
         <button name="Download" url="https://confluence.jetbrains.com/display/MPS/JetBrains+MPS+2020.1+Download+Page" download="true"/>
       </build>
     </channel>
@@ -322,8 +322,8 @@
              url="https://confluence.jetbrains.com/display/MPS/JetBrains+MPS+2020.1+Download+Page"
              feedback="http://youtrack.jetbrains.net"
              majorVersion="2020" minorVersoin="1">
-      <build number="201.8743.1556" version="2020.1.5">
-        <message>JetBrains MPS 2020.1.5 is now available.</message>
+      <build number="201.8743.1572" version="2020.1.6">
+        <message>JetBrains MPS 2020.1.6 is now available.</message>
         <button name="Download" url="https://confluence.jetbrains.com/display/MPS/JetBrains+MPS+2020.1+Download+Page" download="true"/>
       </build>
     </channel>
