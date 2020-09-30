@@ -46,6 +46,10 @@ import java.awt.event.MouseEvent;
     myEnabled = false;
   }
 
+  /*package*/ void resetColors() {
+    myColors.reset();
+  }
+
   void errorComponentVisible(boolean enableErrorComponent) {
     if (myEnabled == enableErrorComponent) {
       return;
@@ -98,5 +102,4 @@ import java.awt.event.MouseEvent;
     System.out.println(componentAt);
     return componentAt == myIndicator;
   }
-
 }

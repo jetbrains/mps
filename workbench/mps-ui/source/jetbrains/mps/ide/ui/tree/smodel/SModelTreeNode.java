@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,6 @@
  */
 package jetbrains.mps.ide.ui.tree.smodel;
 
-import com.intellij.openapi.editor.colors.ColorKey;
-import com.intellij.openapi.editor.colors.EditorColorsManager;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.mps.ide.ui.tree.MPSTreeChildOrder;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
@@ -267,8 +265,8 @@ public class SModelTreeNode extends MPSTreeNode implements TreeElement {
 
   @Override
   protected void doUpdatePresentation() {
+    super.doUpdatePresentation();
     setText(myTextSource.calculateText(this));
-    setColor(EditorColorsManager.getInstance().getGlobalScheme().getColor(ColorKey.createColorKey("FILESTATUS_NOT_CHANGED")));
   }
 
   @Override

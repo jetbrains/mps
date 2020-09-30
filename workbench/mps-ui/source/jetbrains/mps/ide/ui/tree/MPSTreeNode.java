@@ -16,8 +16,6 @@
 package jetbrains.mps.ide.ui.tree;
 
 import com.intellij.icons.AllIcons;
-import com.intellij.openapi.editor.colors.ColorKey;
-import com.intellij.openapi.editor.colors.EditorColorsManager;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -54,11 +52,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
   private Icon myIcon = AllIcons.Nodes.Folder;
   private String myNodeIdentifier;
   private String myText;
-  private Color myColor = EditorColorsManager.getInstance().getGlobalScheme().getColor(ColorKey.createColorKey("FILESTATUS_NOT_CHANGED"));
-  // initialized once with the value of myColor the moment node is created, to facilitate nodes with pre-defined colors (initialized in cons)
-  // which sometimes is overridden with colors coming from extra messages (we need to revert to 'normal' color the moment all messages that have
-  // altered the color are gone).
-  private Color myDefaultColor;
+  private Color myColor = null; // frequent change target, don't bother to keep in optional attributes. NULL indicates use of defaults from cell renderer
   private final AttributeStorage myOptionalAttributes = new AttributeStorage();
 
   public MPSTreeNode() {
@@ -144,6 +138,8 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
    */
   public void init() {
     if (isInitialized()) {
+      // account for colors set in cons
+      recordDefaultColorIfSet();
       return;
     }
     MPSTree tree = getTree();
@@ -152,12 +148,21 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
     } else {
       doInit();
     }
-    if (myDefaultColor == null) {
-      // in case subclasses have specified color during construction or in their doInit(), record it as default value to reset to at each visual update
-      // see #doUpdatePresentation()
-      myDefaultColor = myColor;
+    recordDefaultColorIfSet(); // account for colors set in doInit()
+  }
+
+  // MPSTreeNode doesn't keep color unless explicitly set, to keep default color value in a single place, CellRenderer.
+  // In rare cases when subclasses specify color during construction or in their doInit(), have to record it as default value to reset
+  // to at each visual update, see #doUpdatePresentation().
+  // Default color is initialized once with the value of myColor, if present, the moment node is created.
+  // Node's color might get overridden with colors coming from extra messages; we need to revert to 'normal' color the moment
+  // all messages that have altered the color are gone.
+  private void recordDefaultColorIfSet() {
+    if (myColor != null) {
+      myOptionalAttributes.set("color.default", myColor);
     }
   }
+
 
   /**
    * This method shall not be invoked by code outside of MPSTree framework.
@@ -400,11 +405,17 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
     return result;
   }
 
+  /**
+   * default implementation resets node's color to a default value (e.g. the one specified in cons
+   * or the one from cell renderer).
+   */
   protected void doUpdatePresentation() {
-    if (myDefaultColor != null) {
-      // reset color to default in case there were messages that affected color of the node
-      setColor(myDefaultColor);
-    }
+    // reset color to default in case there were messages that affected color of the node
+    // Note, this code is not part of final updatePresentation() (which is likely a better place) as
+    // I'd like to give subclasses a chance to turn this logic off, if needed (e.g. to keep color value).
+    // However, it's purely speculative scenario, no idea if there's a true need for that.
+    Color defaultColor = myOptionalAttributes.get("color.default", null);
+    setColor(defaultColor);
   }
 
   /**
@@ -433,11 +444,16 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
     myIcon = newIcon;
   }
 
+  @Nullable
   public final Color getColor() {
     return myColor;
   }
 
-  public final void setColor(Color color) {
+  /**
+   *
+   * @param color use {@code null} to use defaults from {@link javax.swing.tree.TreeCellRenderer}
+   */
+  public final void setColor(@Nullable Color color) {
     myColor = color;
   }
 

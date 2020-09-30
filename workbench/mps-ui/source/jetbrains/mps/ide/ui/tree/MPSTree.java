@@ -36,20 +36,16 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.AbstractAction;
 import javax.swing.JPopupMenu;
 import javax.swing.KeyStroke;
-import javax.swing.SwingUtilities;
 import javax.swing.ToolTipManager;
 import javax.swing.event.TreeExpansionEvent;
 import javax.swing.event.TreeExpansionListener;
 import javax.swing.event.TreeModelEvent;
 import javax.swing.event.TreeModelListener;
 import javax.swing.event.TreeWillExpandListener;
-import javax.swing.plaf.TreeUI;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
-import java.awt.Component;
 import java.awt.Graphics;
-import java.awt.Insets;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
@@ -587,8 +583,15 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
       setAnchorSelectionPath(null);
       setLeadSelectionPath(null);
 
+      RebuildAwareTreeCellRenderer rar = getCellRenderer() instanceof RebuildAwareTreeCellRenderer ? ((RebuildAwareTreeCellRenderer) getCellRenderer()) : null;
+      if (rar != null) {
+        rar.rebuildStarted();
+      }
       MPSTreeNode root = rebuild();
       setRootNode(root);
+      if (rar != null) {
+        rar.rebuildFinished();
+      }
     }, true);
   }
 

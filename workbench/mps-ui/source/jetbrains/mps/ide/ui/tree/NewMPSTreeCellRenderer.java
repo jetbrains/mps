@@ -15,12 +15,8 @@
  */
 package jetbrains.mps.ide.ui.tree;
 
-import com.intellij.openapi.editor.colors.CodeInsightColors;
-import com.intellij.openapi.editor.colors.EditorColorsManager;
-import com.intellij.ui.JBColor;
 import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.components.JBPanel;
-import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.ide.util.ColorAndGraphicsUtil;
 
 import javax.swing.Box;
@@ -31,6 +27,7 @@ import javax.swing.JPanel;
 import javax.swing.JTree;
 import javax.swing.UIManager;
 import javax.swing.tree.TreeCellRenderer;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -39,13 +36,15 @@ import java.awt.FontMetrics;
 import java.awt.Graphics;
 
 
-public class NewMPSTreeCellRenderer implements TreeCellRenderer {
+public class NewMPSTreeCellRenderer implements TreeCellRenderer, RebuildAwareTreeCellRenderer {
   private final JPanel myPanel;
   private final JLabel myMainTextLabel;
   private final JLabel myAdditionalTextLabel;
   private MPSTreeNode myNode;
+  protected final TreeRendererColors myColors;
 
   public NewMPSTreeCellRenderer() {
+    myColors = new TreeRendererColors();
     myPanel = new JBPanel() {
       @Override
       public void paintBorder(Graphics g) {
@@ -61,9 +60,9 @@ public class NewMPSTreeCellRenderer implements TreeCellRenderer {
 
         if (myNode != null && myNode.getAggregatedErrorState() != ErrorState.NONE) {
           if (myNode.getAggregatedErrorState() == ErrorState.ERROR) {
-            g.setColor(EditorColorsManager.getInstance().getGlobalScheme().getAttributes(CodeInsightColors.ERRORS_ATTRIBUTES).getErrorStripeColor());
+            g.setColor(myColors.getErrorStripeColor());
           } else {
-            g.setColor(EditorColorsManager.getInstance().getGlobalScheme().getAttributes(CodeInsightColors.WARNINGS_ATTRIBUTES).getErrorStripeColor());
+            g.setColor(myColors.getWarningStripeColor());
           }
           ColorAndGraphicsUtil.drawWave(g, imageOffset, myMainTextLabel.getWidth(), getHeight() - ColorAndGraphicsUtil.WAVE_HEIGHT - 1);
         }
@@ -83,14 +82,11 @@ public class NewMPSTreeCellRenderer implements TreeCellRenderer {
 
   @Override
   public Component getTreeCellRendererComponent(JTree tree, Object value, boolean selected, boolean expanded, boolean leaf, int row, boolean hasFocus) {
-    myPanel.setOpaque(false);
-
-    myMainTextLabel.setForeground(selected ? UIUtil.getTreeSelectionForeground(tree.hasFocus()) : UIUtil.getTreeForeground());
-    myAdditionalTextLabel.setForeground(selected ? myMainTextLabel.getForeground() : JBColor.GRAY);
-
     Icon icon = null;
     String text = value.toString();
     String additionalText = null;
+    // null color to use default tree element color from TreeRendererColors
+    Color nodeColor = null;
     final Font treeFont = tree.getFont();
     if (value instanceof MPSTreeNode) {
       MPSTreeNode treeNode = (MPSTreeNode) value;
@@ -104,9 +100,7 @@ public class NewMPSTreeCellRenderer implements TreeCellRenderer {
       myMainTextLabel.setFont(mlFont);
       myAdditionalTextLabel.setFont(treeFont);
 
-      if (!selected) {
-        myMainTextLabel.setForeground(treeNode.getColor());
-      }
+      nodeColor = treeNode.getColor();
       myNode = treeNode;
     } else {
       myMainTextLabel.setFont(treeFont);
@@ -114,6 +108,9 @@ public class NewMPSTreeCellRenderer implements TreeCellRenderer {
       myNode = null;
     }
 
+    final boolean focused = tree.hasFocus();
+    myMainTextLabel.setForeground(myColors.getMainLabelForeground(selected, focused, nodeColor));
+    myAdditionalTextLabel.setForeground(myColors.getAdditionalLabelForeground(selected, focused));
     myMainTextLabel.setText(text);
     if (additionalText != null) {
       myAdditionalTextLabel.setText(" (" + additionalText + ") ");
@@ -133,6 +130,11 @@ public class NewMPSTreeCellRenderer implements TreeCellRenderer {
     myMainTextLabel.setIcon(icon);
 
     return myPanel;
+  }
+
+  @Override
+  public void rebuildStarted() {
+    myColors.reset();
   }
 
   protected void configureAuxComponents(MPSTreeNode treeNode, FontMetrics mainLabelFont) {

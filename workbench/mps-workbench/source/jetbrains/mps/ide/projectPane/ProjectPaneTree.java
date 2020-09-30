@@ -19,6 +19,7 @@ import com.intellij.ide.projectView.ProjectView;
 import com.intellij.ide.projectView.impl.AbstractProjectViewPane;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionPlaces;
+import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.project.DumbService;
 import com.intellij.openapi.project.DumbService.DumbModeListener;
 import com.intellij.openapi.project.Project;
@@ -26,7 +27,6 @@ import com.intellij.openapi.ui.popup.Balloon;
 import com.intellij.openapi.ui.popup.Balloon.Position;
 import com.intellij.openapi.ui.popup.BalloonBuilder;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
-import com.intellij.openapi.util.Disposer;
 import com.intellij.ui.awt.RelativePoint;
 import com.intellij.util.ArrayUtil;
 import com.intellij.util.messages.MessageBusConnection;
@@ -37,7 +37,6 @@ import jetbrains.mps.ide.ui.smodel.ConceptTreeNode;
 import jetbrains.mps.ide.ui.smodel.PropertiesTreeNode;
 import jetbrains.mps.ide.ui.smodel.ReferencesTreeNode;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
-import jetbrains.mps.ide.ui.tree.NewMPSTreeCellRenderer;
 import jetbrains.mps.ide.ui.tree.module.ProjectModuleTreeNode;
 import jetbrains.mps.ide.ui.tree.module.SModelsSubtree;
 import jetbrains.mps.ide.ui.tree.smodel.NodeTargetProvider;
@@ -67,10 +66,7 @@ import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import javax.swing.JLabel;
-import javax.swing.SwingUtilities;
 import javax.swing.tree.TreePath;
-import java.awt.Component;
-import java.awt.Insets;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.dnd.DnDConstants;
@@ -137,8 +133,7 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
     DragSource.getDefaultDragSource().createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_MOVE, new MyDragGestureListener());
     new DropTarget(this, new ProjectPaneDnDListener(this, new MyTransferable(null).getTransferDataFlavors()[0]));
 
-    MessageBusConnection connection = project.getMessageBus().connect();
-    Disposer.register(this, connection);
+    MessageBusConnection connection = project.getMessageBus().connect(this);
     connection.subscribe(DumbService.DUMB_MODE, new DumbModeListener() {
       @Override
       public void enteredDumbMode() {
@@ -151,6 +146,7 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
         myHighlighter.dumbUpdate();
       }
     });
+    connection.subscribe(EditorColorsManager.TOPIC, scheme -> myCellRenderer.resetColors());
     mpsProject.getComponent(MakeServiceComponent.class).get().addListener(myMakeListener = new Stub() {
       @Override
       public void sessionOpened(MakeNotification notification) {

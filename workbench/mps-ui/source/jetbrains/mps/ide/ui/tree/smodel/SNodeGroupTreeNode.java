@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,6 @@
  */
 package jetbrains.mps.ide.ui.tree.smodel;
 
-import com.intellij.openapi.editor.colors.ColorKey;
-import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.ui.JBColor;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.ide.ui.tree.TextTreeNode;
@@ -50,13 +48,14 @@ public class SNodeGroupTreeNode extends TextTreeNode {
 
   @Override
   protected void doUpdatePresentation() {
+    super.doUpdatePresentation();
     if (hasErrors()) {
       setColor(JBColor.RED);
     }
-    setColor(EditorColorsManager.getInstance().getGlobalScheme().getColor(ColorKey.createColorKey("FILESTATUS_NOT_CHANGED")));
   }
 
   private boolean hasErrors() {
+    // FIXME this is no-op method, always false, as SNodeTreeNode.hasError doesn't check for errors since 2008, and composing 'false' would never yield anything else
     for (MPSTreeNode node : getChildren()) {
       if (node instanceof SNodeTreeNode && ((SNodeTreeNode) node).hasErrors()) {
         return true;
