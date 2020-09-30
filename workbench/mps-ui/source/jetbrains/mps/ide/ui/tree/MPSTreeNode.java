@@ -36,6 +36,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -53,7 +54,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
   private String myNodeIdentifier;
   private String myText;
   private Color myColor = null; // frequent change target, don't bother to keep in optional attributes. NULL indicates use of defaults from cell renderer
-  private final AttributeStorage myOptionalAttributes = new AttributeStorage();
+  private AttributeStorage myOptionalAttributes;
 
   public MPSTreeNode() {
     super(null);
@@ -159,7 +160,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
   // all messages that have altered the color are gone.
   private void recordDefaultColorIfSet() {
     if (myColor != null) {
-      myOptionalAttributes.set("color.default", myColor);
+      initOptionalAttributes().set("color.default", myColor);
     }
   }
 
@@ -300,12 +301,11 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
    * Default value is: 2
    */
   public int getToggleClickCount() {
-    Integer v = myOptionalAttributes.get("mps.tree.clickcount");
-    return v == null ? 2 : v;
+    return getOptionalAttribute("toggle.clicks", 2);
   }
 
   public final void setToggleClickCount(int clickCount) {
-    myOptionalAttributes.setOrDrop("mps.tree.clickcount", clickCount, 2);
+    setOrDropOptionalAttribute("toggle.clicks", clickCount, 2);
   }
 
   //updates and refreshes tree
@@ -330,7 +330,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
     if (myTree != null) {
       myTree.fireTreeNodeUpdated(this);
     }
-    List<TreeMessage> treeMessages = myOptionalAttributes.get("mps.tree.messages");
+    List<TreeMessage> treeMessages = getOptionalAttribute("mps.tree.messages", null);
     if (treeMessages != null) {
       treeMessages.stream()
                     .filter(TreeMessage::alternatesColor)
@@ -371,11 +371,11 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
    * @param message message to attach
    */
   public boolean addTreeMessage(@NotNull TreeMessage message) {
-    List<TreeMessage> treeMessages = myOptionalAttributes.get("mps.tree.messages");
+    List<TreeMessage> treeMessages = getOptionalAttribute("mps.tree.messages", null);
     if (treeMessages == null) {
       synchronized (this) {
         // it seems cheaper to use copy-on-write list than to keep distinct synchronization object in all nodes (most of which don't use extra messages)
-        treeMessages = myOptionalAttributes.get("mps.tree.messages", CopyOnWriteArrayList::new);
+        treeMessages = initOptionalAttributes().get("mps.tree.messages", CopyOnWriteArrayList::new);
       }
     }
     return treeMessages.add(message);
@@ -391,7 +391,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
    */
   @NotNull
   public Set<TreeMessage> removeTreeMessages(TreeMessageOwner owner) {
-    List<TreeMessage> treeMessages = myOptionalAttributes.get("mps.tree.messages");
+    List<TreeMessage> treeMessages = getOptionalAttribute("mps.tree.messages", null);
     if (owner == null || treeMessages == null) {
       return Collections.emptySet();
     }
@@ -414,7 +414,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
     // Note, this code is not part of final updatePresentation() (which is likely a better place) as
     // I'd like to give subclasses a chance to turn this logic off, if needed (e.g. to keep color value).
     // However, it's purely speculative scenario, no idea if there's a true need for that.
-    Color defaultColor = myOptionalAttributes.get("color.default", null);
+    Color defaultColor = getOptionalAttribute("color.default", null);
     setColor(defaultColor);
   }
 
@@ -490,7 +490,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
       addFontAttribute(TextAttribute.POSTURE, TextAttribute.POSTURE_OBLIQUE);
     }
     if (fontStyle == Font.PLAIN) {
-      final WithFontAttributes fontAttributes = myOptionalAttributes.get("mps.tree.font");
+      final WithFontAttributes fontAttributes = getOptionalAttribute("mps.tree.font", null);
       if (fontAttributes != null) {
         fontAttributes.setFontAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_REGULAR);
         fontAttributes.setFontAttribute(TextAttribute.POSTURE, TextAttribute.POSTURE_REGULAR);
@@ -499,12 +499,12 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
   }
 
   public final void addFontAttribute(TextAttribute key, Object value) {
-    myOptionalAttributes.get("mps.tree.font", WithFontAttributes::newDelegate).setFontAttribute(key, value);
+    initOptionalAttributes().get("mps.tree.font", WithFontAttributes::newDelegate).setFontAttribute(key, value);
   }
 
   @NotNull
   public final Map<TextAttribute, Object> getFontAttributes() {
-    final WithFontAttributes fontAttributes = myOptionalAttributes.get("mps.tree.font");
+    final WithFontAttributes fontAttributes = getOptionalAttribute("mps.tree.font", null);
     return fontAttributes == null ? Collections.emptyMap() : fontAttributes.getFontAttributes();
   }
 
@@ -528,11 +528,11 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
   }
 
   public final String getAdditionalText() {
-    return myOptionalAttributes.get("text.aux.tree");
+    return getOptionalAttribute("text.aux.tree", null);
   }
 
   public final void setAdditionalText(String newAdditionalText) {
-    myOptionalAttributes.setOrDrop("text.aux.tree", newAdditionalText, null);
+    setOrDropOptionalAttribute("text.aux.tree", newAdditionalText, null);
   }
 
   public final String getText() {
@@ -548,11 +548,11 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
   }
 
   public final String getTooltipText() {
-    return myOptionalAttributes.get("tooltip.tree");
+    return getOptionalAttribute("tooltip.tree", null);
   }
 
   public final void setTooltipText(String tooltipText) {
-    myOptionalAttributes.setOrDrop("tooltip.tree", tooltipText, null);
+    setOrDropOptionalAttribute("tooltip.tree", tooltipText, null);
   }
 
   public final boolean isErrorState() {
@@ -561,19 +561,21 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
 
   public final void setErrorState(ErrorState state) {
     if (state == null) {
-      myOptionalAttributes.drop("error.tree");
-    } else {
-      myOptionalAttributes.setOrDrop("error.tree", state, ErrorState.NONE);
+      state = ErrorState.NONE;
     }
-    updateErrorState();
+    boolean needUpdate = !state.equals(getErrorState());
+    setOrDropOptionalAttribute("error.tree", state, ErrorState.NONE);
+    if (needUpdate) {
+      updateErrorState();
+    }
   }
 
   public final ErrorState getErrorState() {
-    return myOptionalAttributes.get("error.tree", ErrorState.NONE);
+    return getOptionalAttribute("error.tree", ErrorState.NONE);
   }
 
   public final ErrorState getAggregatedErrorState() {
-    return myOptionalAttributes.get("merged.error.tree", ErrorState.NONE);
+    return getOptionalAttribute("merged.error.tree", ErrorState.NONE);
   }
 
   protected void updateErrorState() {
@@ -584,7 +586,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
       }
     }
     ErrorState combinedErrorState = state.combine(getErrorState());
-    myOptionalAttributes.setOrDrop("merged.error.tree", combinedErrorState, ErrorState.NONE);
+    setOrDropOptionalAttribute("merged.error.tree", combinedErrorState, ErrorState.NONE);
     if (getParent() != null) {
       ((MPSTreeNode) getParent()).updateErrorState();
     }
@@ -599,15 +601,11 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
   }
 
   public final boolean isAutoExpandable() {
-    return myOptionalAttributes.get("expand.auto.tree", Boolean.TRUE);
+    return getOptionalAttribute("expand.auto.tree", Boolean.TRUE);
   }
 
   public final void setAutoExpandable(boolean autoExpandable) {
-    if (autoExpandable) {
-      myOptionalAttributes.drop("expand.auto.tree");
-    } else {
-      myOptionalAttributes.set("expand.auto.tree", Boolean.FALSE);
-    }
+    setOrDropOptionalAttribute("expand.auto.tree", Boolean.valueOf(autoExpandable), Boolean.TRUE);
   }
 
   /**
@@ -636,5 +634,35 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
 
   public boolean isLoadingEnabled() {
     return false;
+  }
+
+  private <V> V getOptionalAttribute(String key, V value) {
+    if (myOptionalAttributes == null) {
+      return value;
+    }
+    return myOptionalAttributes.get(key, value);
+  }
+
+  // set new value unless it's equal to the {@code dropValue}; doesn't initialize myOptionalAttributes unless necessary
+  private void setOrDropOptionalAttribute(String key, Object value, Object dropValue) {
+    if (Objects.equals(value, dropValue)) {
+      if (myOptionalAttributes == null) {
+        return;
+      }
+      myOptionalAttributes.drop(key);
+    } else {
+      initOptionalAttributes().set(key, value);
+    }
+  }
+
+  private AttributeStorage initOptionalAttributes() {
+    if (myOptionalAttributes == null) {
+      synchronized (this) {
+        if (myOptionalAttributes == null) {
+          myOptionalAttributes = new AttributeStorage();
+        }
+      }
+    }
+    return myOptionalAttributes;
   }
 }

@@ -87,6 +87,9 @@ final class AttributeStorage {
     return value;
   }
 
+  /**
+   * set new value unless it's equal to the {@code dropValue}, in which case existing key-value pair is removed
+   */
   public <V> void setOrDrop(String key, @Nullable V value, @Nullable V dropValue) {
     if (Objects.equals(value, dropValue)) {
       drop(key);
