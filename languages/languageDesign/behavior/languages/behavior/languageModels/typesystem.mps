@@ -3,6 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="-1" />
+    <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
     <devkit ref="00000000-0000-4000-0000-1de82b3a4936(jetbrains.mps.devkit.aspect.typesystem)" />
   </languages>
   <imports>
@@ -214,6 +215,10 @@
         <child id="1138662048170" name="value" index="tz02z" />
       </concept>
       <concept id="7453996997717780434" name="jetbrains.mps.lang.smodel.structure.Node_GetSConceptOperation" flags="nn" index="2yIwOk" />
+      <concept id="2396822768958367367" name="jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression" flags="nn" index="$5XWr">
+        <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
+        <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
+      </concept>
       <concept id="1145383075378" name="jetbrains.mps.lang.smodel.structure.SNodeListType" flags="in" index="2I9FWS">
         <reference id="1145383142433" name="elementConcept" index="2I9WkF" />
       </concept>
@@ -229,6 +234,7 @@
         <child id="1207343664468" name="conceptArgument" index="ri$Ld" />
       </concept>
       <concept id="1144146199828" name="jetbrains.mps.lang.smodel.structure.Node_CopyOperation" flags="nn" index="1$rogu" />
+      <concept id="1140137987495" name="jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression" flags="nn" index="1PxgMI" />
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
         <reference id="1138405853777" name="concept" index="ehGHo" />
       </concept>
@@ -1825,6 +1831,89 @@
     <node concept="1YaCAy" id="172ROKPERhT" role="1YuTPh">
       <property role="TrG5h" value="conceptBehavior" />
       <ref role="1YaFvo" to="1i04:hP3h7Gq" resolve="ConceptBehavior" />
+    </node>
+  </node>
+  <node concept="18kY7G" id="1fLDBPFb_om">
+    <property role="TrG5h" value="check_PrivateMethodIsNotVirtual" />
+    <property role="3GE5qa" value="" />
+    <node concept="3clFbS" id="1fLDBPFb_on" role="18ibNy">
+      <node concept="3clFbJ" id="1fLDBPFb_oo" role="3cqZAp">
+        <node concept="1Wc70l" id="1fLDBPFb_op" role="3clFbw">
+          <node concept="2OqwBi" id="1fLDBPFb_or" role="3uHU7w">
+            <node concept="1YBJjd" id="1fLDBPFb_os" role="2Oq$k0">
+              <ref role="1YBMHb" node="1fLDBPFb_oC" resolve="conceptMethodDeclaration" />
+            </node>
+            <node concept="2qgKlT" id="1fLDBPFb_ot" role="2OqNvi">
+              <ref role="37wK5l" to="csvn:6WSEafdhbZX" resolve="isVirtual" />
+            </node>
+          </node>
+          <node concept="2OqwBi" id="1fLDBPFbAdG" role="3uHU7B">
+            <node concept="2OqwBi" id="1fLDBPFb_ou" role="2Oq$k0">
+              <node concept="3TrEf2" id="1fLDBPFbA40" role="2OqNvi">
+                <ref role="3Tt5mk" to="tpee:h9B3oxE" resolve="visibility" />
+              </node>
+              <node concept="1YBJjd" id="1fLDBPFb_ow" role="2Oq$k0">
+                <ref role="1YBMHb" node="1fLDBPFb_oC" resolve="conceptMethodDeclaration" />
+              </node>
+            </node>
+            <node concept="1mIQ4w" id="1fLDBPFbAnf" role="2OqNvi">
+              <node concept="chp4Y" id="1fLDBPFbApK" role="cj9EA">
+                <ref role="cht4Q" to="tpee:gFTm6Wc" resolve="PrivateVisibility" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbS" id="1fLDBPFb_ox" role="3clFbx">
+          <node concept="2MkqsV" id="1fLDBPFbMAR" role="3cqZAp">
+            <node concept="Xl_RD" id="1fLDBPFbMAT" role="2MkJ7o">
+              <property role="Xl_RC" value="A private method must not be virtual" />
+            </node>
+            <node concept="1YBJjd" id="1fLDBPFbMAU" role="1urrMF">
+              <ref role="1YBMHb" node="1fLDBPFb_oC" resolve="conceptMethodDeclaration" />
+            </node>
+            <node concept="3Cnw8n" id="1fLDBPFbMAV" role="1urrFz">
+              <ref role="QpYPw" node="1fLDBPFbK02" resolve="MakePrivateMethodNonVirtual" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="1fLDBPFb_oC" role="1YuTPh">
+      <property role="TrG5h" value="conceptMethodDeclaration" />
+      <ref role="1YaFvo" to="1i04:hP3i0lY" resolve="ConceptMethodDeclaration" />
+    </node>
+  </node>
+  <node concept="Q5z_Y" id="1fLDBPFbK02">
+    <property role="3GE5qa" value="quickfixes" />
+    <property role="TrG5h" value="MakePrivateMethodNonVirtual" />
+    <node concept="Q5ZZ6" id="1fLDBPFbK03" role="Q6x$H">
+      <node concept="3clFbS" id="1fLDBPFbK04" role="2VODD2">
+        <node concept="3clFbF" id="1fLDBPFbKCg" role="3cqZAp">
+          <node concept="37vLTI" id="1fLDBPFbMtp" role="3clFbG">
+            <node concept="3clFbT" id="1fLDBPFbMyl" role="37vLTx" />
+            <node concept="2OqwBi" id="1fLDBPFbLpK" role="37vLTJ">
+              <node concept="1PxgMI" id="1fLDBPFbL3J" role="2Oq$k0">
+                <node concept="chp4Y" id="1fLDBPFbL4N" role="3oSUPX">
+                  <ref role="cht4Q" to="1i04:hP3i0lY" resolve="ConceptMethodDeclaration" />
+                </node>
+                <node concept="Q6c8r" id="1fLDBPFbKCf" role="1m5AlR" />
+              </node>
+              <node concept="3TrcHB" id="1fLDBPFbLXW" role="2OqNvi">
+                <ref role="3TsBF5" to="1i04:hP3i0m0" resolve="isVirtual" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="QznSV" id="1fLDBPFbK6f" role="QzAvj">
+      <node concept="3clFbS" id="1fLDBPFbK6g" role="2VODD2">
+        <node concept="3clFbF" id="1fLDBPFbKbf" role="3cqZAp">
+          <node concept="Xl_RD" id="1fLDBPFbKbe" role="3clFbG">
+            <property role="Xl_RC" value="Make private method non virtual" />
+          </node>
+        </node>
+      </node>
     </node>
   </node>
 </model>
