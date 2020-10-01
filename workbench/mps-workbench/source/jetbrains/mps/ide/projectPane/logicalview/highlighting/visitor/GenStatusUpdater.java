@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@ import jetbrains.mps.extapi.model.GeneratableSModel;
 import jetbrains.mps.generator.ModelGenerationStatusManager;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.updates.AdditionalTextNodeUpdate;
+import jetbrains.mps.ide.ui.tree.TreeNodeVisitor;
 import jetbrains.mps.ide.ui.tree.module.NamespaceTextNode;
 import jetbrains.mps.ide.ui.tree.module.ProjectModuleTreeNode;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
@@ -49,6 +50,24 @@ public class GenStatusUpdater extends TreeUpdateVisitor {
     myGenerationStatusManager = mpsProject.getComponent(ModelGenerationStatusManager.class);
     myProject = mpsProject;
     myMakeComponent = mpsProject.getComponent(MakeServiceComponent.class);
+  }
+
+  @Nullable
+  public TreeNodeVisitor getParentUpdater() {
+    return new TreeNodeVisitor() {
+      @Override
+      public void visitModuleNode(@NotNull ProjectModuleTreeNode moduleNode) {
+        GenerationStatus s = new StatusUpdate(moduleNode).update();
+        if (moduleNode.getModule() instanceof Generator) {
+          final ProjectModuleTreeNode languageNode = getContainingModuleNode(moduleNode);
+          if (languageNode != null) {
+            new StatusUpdate(languageNode).update(s);
+          }
+        }
+        // FIXME need to decide if can use visitNamespaceNode of this post-processing visitor instead
+        propagateStatusToNamespaceNodes(moduleNode, s);
+      }
+    };
   }
 
   private ProjectModuleTreeNode getContainingModuleNode(TreeNode node) {
@@ -125,14 +144,6 @@ public class GenStatusUpdater extends TreeUpdateVisitor {
     }
 
     new StatusUpdate(modelNode).update();
-    GenerationStatus s = new StatusUpdate(moduleNode).update();
-    if (moduleNode.getModule() instanceof Generator) {
-      final ProjectModuleTreeNode languageNode = getContainingModuleNode(moduleNode);
-      if (languageNode != null) {
-        new StatusUpdate(languageNode).update(s);
-      }
-    }
-    propagateStatusToNamespaceNodes(moduleNode, s);
   }
 
   private void propagateStatusToNamespaceNodes(ProjectModuleTreeNode node, GenerationStatus status) {

@@ -21,6 +21,7 @@ import jetbrains.mps.ide.ui.tree.TreeMessageOwner;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Objects;
 
 public class ErrorStateNodeUpdate extends NodeUpdate {
@@ -34,6 +35,10 @@ public class ErrorStateNodeUpdate extends NodeUpdate {
   public ErrorStateNodeUpdate(@NotNull TreeMessageOwner owner) {
     myMessageOwner = owner;
     myMessages = null;
+  }
+
+  public ErrorStateNodeUpdate(@NotNull TreeMessageOwner owner, @NotNull TreeErrorMessage message) {
+    this(owner, Collections.singleton(message));
   }
 
   public ErrorStateNodeUpdate(@NotNull TreeMessageOwner owner, @NotNull Collection<TreeErrorMessage> messages) {

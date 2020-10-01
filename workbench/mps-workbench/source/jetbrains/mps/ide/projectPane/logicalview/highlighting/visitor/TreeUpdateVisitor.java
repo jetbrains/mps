@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,11 +19,7 @@ import jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.updates.No
 import jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.updates.TreeNodeUpdater;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.ide.ui.tree.TreeNodeVisitor;
-import jetbrains.mps.ide.ui.tree.module.NamespaceTextNode;
-import jetbrains.mps.ide.ui.tree.module.ProjectModuleTreeNode;
-import jetbrains.mps.ide.ui.tree.module.ProjectTreeNode;
-import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
-import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Visitor that updates tree elements
@@ -35,21 +31,17 @@ public abstract class TreeUpdateVisitor implements TreeNodeVisitor {
   protected TreeUpdateVisitor() {
   }
 
-  @Override
-  public void visitNamespaceNode(@NotNull NamespaceTextNode node) {
+  /**
+   * Provide a visitor that get post-notification about parents of all nodes visited by the main visitor.
+   * Parent nodes are reported in a reverse order.
+   * This visitor doesn't get model read as it's assumed it deals with state of tree nodes only.
+   * @return {@code null} if visitor is not interested in post-processing notifications
+   */
+  @Nullable
+  public TreeNodeVisitor getParentUpdater() {
+    return null;
   }
 
-  @Override
-  public void visitModuleNode(@NotNull ProjectModuleTreeNode node) {
-  }
-
-  @Override
-  public void visitProjectNode(@NotNull ProjectTreeNode node) {
-  }
-
-  @Override
-  public void visitModelNode(@NotNull SModelTreeNode node) {
-  }
 
   @SuppressWarnings("WeakerAccess")
   protected void addUpdate(MPSTreeNode node, NodeUpdate r) {

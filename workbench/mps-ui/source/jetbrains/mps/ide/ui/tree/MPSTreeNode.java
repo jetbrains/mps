@@ -607,6 +607,12 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
     return getOptionalAttribute("error.tree", ErrorState.NONE);
   }
 
+  /**
+   * @deprecated node's error state has been replaced with {@link TreeErrorMessage}
+   * @return doesn't give anything meaningful unless one also uses {@link #setErrorState(ErrorState)}
+   */
+  @Deprecated(forRemoval = true)
+  @ToRemove(version = 2020.3)
   public final ErrorState getAggregatedErrorState() {
     return getOptionalAttribute("merged.error.tree", ErrorState.NONE);
   }
@@ -625,6 +631,13 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
     }
   }
 
+  /**
+   * error propAgation is controlled by external code (and there's not too much use of this anyway - just
+   * ProjectModulesPoolTreeNode, which btw doesn't get aggregated errors in the new approach as it's not a namespace node,
+   * or any other node subject to 'parent update')
+   */
+  @Deprecated(forRemoval = true)
+  @ToRemove(version = 2020.3)
   protected boolean propogateErrorUpwards() {
     return true;
   }

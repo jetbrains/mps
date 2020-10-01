@@ -19,6 +19,7 @@ import jetbrains.mps.ide.projectPane.ProjectPaneTree;
 import jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.ErrorChecker;
 import jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.GenStatusUpdater;
 import jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.ModifiedMarker;
+import jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.TreeUpdateVisitor;
 import jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.updates.TreeNodeUpdater;
 import jetbrains.mps.ide.ui.tree.MPSTree;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
@@ -38,11 +39,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Deque;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.RejectedExecutionHandler;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
 
 public class ProjectPaneTreeHighlighter {
   private final GenStatusUpdater myGenStatusVisitor;
@@ -163,6 +167,7 @@ public class ProjectPaneTreeHighlighter {
       return;
     }
     // XXX don't need to keep instance of a visitor any more. Can instantiate here as needed, and then visitors could utilize their state.
+    //     except that ErrorChecker now uses its instance as TreeMessageOwner and would need a refactoring then
     scheduleTreeNodeUpdate(treeNodes, myErrorVisitor, false);
     scheduleTreeNodeUpdate(treeNodes, myModifiedMarker, false);
     scheduleTreeNodeUpdate(treeNodes, myGenStatusVisitor, false);
@@ -183,8 +188,18 @@ public class ProjectPaneTreeHighlighter {
       childrenQueue.add(nodes);
       final int maxAttemptsWhenReadFails = 10;
       int attemptCount = 0;
+      final LinkedHashSet<TreeElement> parentsOfUpdated;
+      Consumer<TreeElement> consumeParents;
+      TreeNodeVisitor parentVisitor = visitor instanceof TreeUpdateVisitor ? ((TreeUpdateVisitor) visitor).getParentUpdater() : null;
+      if (parentVisitor != null) {
+        parentsOfUpdated = new LinkedHashSet<>();
+        consumeParents = parentsOfUpdated::add;
+      } else {
+        parentsOfUpdated = null;
+        consumeParents = e -> {};
+      }
       while (!childrenQueue.isEmpty() && !myExecutor.isShutdown()) {
-        final VisitTreeWithRead r = new VisitTreeWithRead(childrenQueue, visitor, withChildren);
+        final VisitTreeWithRead r = new VisitTreeWithRead(childrenQueue, visitor, withChildren, consumeParents);
         myProjectRepository.getModelAccess().runReadAction(r);
         if (r.queueHasBeenChanged()) {
           attemptCount = 0; // reset
@@ -206,6 +221,15 @@ public class ProjectPaneTreeHighlighter {
           break;
         }
       }
+      if (myExecutor.isShutdown() || parentsOfUpdated == null || parentVisitor == null) {
+        return;
+      }
+      // assume we walk tree top to bottom, and parents in the set are in respective order; walk in reversed order
+      // to update bottom elements first
+      final TreeElement[] parents2update = parentsOfUpdated.toArray(new TreeElement[parentsOfUpdated.size()]);
+      for (int i = parents2update.length - 1; i >=0; i--) {
+        parents2update[i].accept(parentVisitor);
+      }
     });
   }
 
@@ -225,25 +249,32 @@ public class ProjectPaneTreeHighlighter {
     private final Deque<Collection<? extends MPSTreeNode>> myQueue;
     private final TreeNodeVisitor myVisitor;
     private final boolean myWithChildren;
+    private final Consumer<TreeElement> myParentOfUpdated;
     private boolean myQueueChanged = false;
 
-    VisitTreeWithRead(/*modified by reference*/ Deque<Collection<? extends MPSTreeNode>> queue, TreeNodeVisitor visitor, boolean withChildren) {
+    VisitTreeWithRead(/*modified by reference*/ Deque<Collection<? extends MPSTreeNode>> queue, TreeNodeVisitor visitor, boolean withChildren, Consumer<TreeElement> parentOfUpdated) {
       myQueue = queue;
       myVisitor = visitor;
       myWithChildren = withChildren;
+      myParentOfUpdated = parentOfUpdated;
     }
 
     @Override
     protected void execute() {
+      HashSet<TreeElement> parents2visit = new HashSet<>();
       while (!myQueue.isEmpty()) {
         final Collection<? extends MPSTreeNode> next = myQueue.peekFirst();
         for (MPSTreeNode treeNode : next) {
           if (treeNode.getTree() == null) {
             continue;
           }
+          if (treeNode.getParent() instanceof TreeElement) {
+            parents2visit.add(((TreeElement) treeNode.getParent()));
+          }
           if (isCancelRequested()) {
             confirmCancel();
             // we keep `next` list in childrenQueue to try it next time (unless there would be no containing tree)
+            // as sell as don't process parents as they would get handled the moment 'next' get processed again and consumed successfully.
             return;
           }
           if (treeNode instanceof TreeElement) {
@@ -256,6 +287,8 @@ public class ProjectPaneTreeHighlighter {
           }
         }
         myQueue.removeFirst();
+        parents2visit.forEach(myParentOfUpdated);
+        parents2visit.clear();
         myQueueChanged = true;
       }
     }

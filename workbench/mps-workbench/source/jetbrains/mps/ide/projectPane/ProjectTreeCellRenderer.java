@@ -105,11 +105,11 @@ import java.util.Collection;
     final Component crc = getTreeCellRendererComponent(tree, nodeFromPath, false, false, false, rowForPath, false);
     crc.setBounds(pathBounds.x, pathBounds.y, tree.getWidth() - pathBounds.x - insets.right, pathBounds.height);
     crc.doLayout();
-    System.out.printf("renderer bounds: %s; indicator bounds: %s;  click@[%d,%d], tree (X:%d Width:%d)\n", crc.getBounds(), myIndicator.getBounds(), e.getX(), e.getY(), tree.getX(), tree.getWidth());
+//    System.out.printf("renderer bounds: %s; indicator bounds: %s;  click@[%d,%d], tree (X:%d Width:%d)\n", crc.getBounds(), myIndicator.getBounds(), e.getX(), e.getY(), tree.getX(), tree.getWidth());
     final int eventX = e.getX() - crc.getX();
     final int eventY = e.getY() - crc.getY();
     final Component componentAt = crc.getComponentAt(eventX, eventY);
-    System.out.println(componentAt);
+//    System.out.println(componentAt);
     return componentAt == myIndicator;
   }
 }

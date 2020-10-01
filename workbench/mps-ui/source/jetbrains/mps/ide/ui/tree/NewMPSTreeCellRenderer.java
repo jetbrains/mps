@@ -34,13 +34,14 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
+import java.util.Collection;
 
 
 public class NewMPSTreeCellRenderer implements TreeCellRenderer, RebuildAwareTreeCellRenderer {
   private final JPanel myPanel;
   private final JLabel myMainTextLabel;
   private final JLabel myAdditionalTextLabel;
-  private MPSTreeNode myNode;
+  private Color myWaveColor;
   protected final TreeRendererColors myColors;
 
   public NewMPSTreeCellRenderer() {
@@ -58,12 +59,8 @@ public class NewMPSTreeCellRenderer implements TreeCellRenderer, RebuildAwareTre
           imageOffset = 0;
         }
 
-        if (myNode != null && myNode.getAggregatedErrorState() != ErrorState.NONE) {
-          if (myNode.getAggregatedErrorState() == ErrorState.ERROR) {
-            g.setColor(myColors.getErrorStripeColor());
-          } else {
-            g.setColor(myColors.getWarningStripeColor());
-          }
+        if (myWaveColor != null) {
+          g.setColor(myWaveColor);
           ColorAndGraphicsUtil.drawWave(g, imageOffset, myMainTextLabel.getWidth(), getHeight() - ColorAndGraphicsUtil.WAVE_HEIGHT - 1);
         }
       }
@@ -101,11 +98,18 @@ public class NewMPSTreeCellRenderer implements TreeCellRenderer, RebuildAwareTre
       myAdditionalTextLabel.setFont(treeFont);
 
       nodeColor = treeNode.getColor();
-      myNode = treeNode;
+      final Collection<TreeErrorMessage> messages = treeNode.findMessages(TreeErrorMessage.class);
+      if (messages.stream().anyMatch(TreeErrorMessage::isError)) {
+        myWaveColor = myColors.getErrorStripeColor();
+      } else if (messages.stream().anyMatch(TreeErrorMessage::isWarning)) {
+        myWaveColor = myColors.getWarningStripeColor();
+      } else {
+        myWaveColor = null;
+      }
     } else {
       myMainTextLabel.setFont(treeFont);
       myAdditionalTextLabel.setFont(treeFont);
-      myNode = null;
+      myWaveColor = null;
     }
 
     final boolean focused = tree.hasFocus();
