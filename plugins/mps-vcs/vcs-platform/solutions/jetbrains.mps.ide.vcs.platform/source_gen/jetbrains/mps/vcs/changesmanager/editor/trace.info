@@ -995,7 +995,7 @@
       <node id="867367425399189487" at="67,80,68,13" concept="12" />
       <node id="867367425399299117" at="70,98,71,50" concept="11" />
       <node id="867367425399189510" at="71,50,72,35" concept="11" />
-      <node id="867367425399189516" at="72,35,73,73" concept="5" />
+      <node id="867367425399189516" at="72,35,73,89" concept="5" />
       <node id="867367425399189525" at="74,33,75,42" concept="11" />
       <node id="867367425399189532" at="75,42,76,87" concept="11" />
       <node id="867367425399189539" at="76,87,77,97" concept="5" />
@@ -1121,7 +1121,7 @@
       <node id="7429456937243135882" at="135,70,145,5" concept="9" />
       <node id="5814105446971273955" at="117,68,128,9" concept="9" />
       <node id="2472608513402197690" at="147,96,158,5" concept="9" />
-      <node id="867367425399189523" at="73,73,86,7" concept="9" />
+      <node id="867367425399189523" at="73,89,86,7" concept="9" />
       <node id="2472608513402197680" at="147,0,160,0" concept="10" trace="setGroupHighlighted#(Ljetbrains/mps/vcs/diff/ui/common/ChangeGroup;Z)V" />
       <node id="7429456937243134093" at="160,0,173,0" concept="10" trace="setGroupUnderMouse#(Ljetbrains/mps/vcs/diff/ui/common/ChangeGroup;)V" />
       <node id="1216620237029569507" at="173,0,186,0" concept="10" trace="mouseMoved#(Ljava/awt/event/MouseEvent;)V" />

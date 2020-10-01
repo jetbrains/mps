@@ -6287,18 +6287,23 @@
                   <node concept="3uibUv" id="7iXGI_OoPBB" role="1tU5fm">
                     <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
                   </node>
-                  <node concept="2YIFZM" id="7iXGI_OoPBC" role="33vP2m">
-                    <ref role="37wK5l" to="hdhb:42hl10VH9R3" resolve="get" />
-                    <ref role="1Pybhc" to="hdhb:42hl10VH9R2" resolve="ChangeColors" />
-                    <node concept="2OqwBi" id="7iXGI_OoPBD" role="37wK5m">
-                      <node concept="2OqwBi" id="7iXGI_OoPBE" role="2Oq$k0">
-                        <node concept="2GrUjf" id="7iXGI_OoPBF" role="2Oq$k0">
-                          <ref role="2Gs0qQ" node="7iXGI_OoPAS" resolve="groupWithBounds" />
+                  <node concept="2OqwBi" id="7dUqWL4pyvF" role="33vP2m">
+                    <node concept="2YIFZM" id="7dUqWL4pycN" role="2Oq$k0">
+                      <ref role="37wK5l" to="hdhb:3$C2wb7p0AM" resolve="getInstance" />
+                      <ref role="1Pybhc" to="hdhb:42hl10VH9R2" resolve="ChangeColors" />
+                    </node>
+                    <node concept="liA8E" id="7dUqWL4pySo" role="2OqNvi">
+                      <ref role="37wK5l" to="hdhb:3$C2wb7oVfi" resolve="getDiffColor" />
+                      <node concept="2OqwBi" id="7dUqWL4pycO" role="37wK5m">
+                        <node concept="2OqwBi" id="7dUqWL4pycP" role="2Oq$k0">
+                          <node concept="2GrUjf" id="7dUqWL4pycQ" role="2Oq$k0">
+                            <ref role="2Gs0qQ" node="7iXGI_OoPAS" resolve="groupWithBounds" />
+                          </node>
+                          <node concept="3AY5_j" id="7dUqWL4pycR" role="2OqNvi" />
                         </node>
-                        <node concept="3AY5_j" id="7iXGI_OoPBG" role="2OqNvi" />
-                      </node>
-                      <node concept="liA8E" id="7iXGI_OoPBH" role="2OqNvi">
-                        <ref role="37wK5l" to="hdhb:42hl10VHagR" resolve="getChangeType" />
+                        <node concept="liA8E" id="7dUqWL4pycS" role="2OqNvi">
+                          <ref role="37wK5l" to="hdhb:42hl10VHagR" resolve="getChangeType" />
+                        </node>
                       </node>
                     </node>
                   </node>
@@ -10361,11 +10366,16 @@
                       <ref role="3cqZAo" node="5zPLqcHJBpr" resolve="compositeChangeType" />
                     </node>
                   </node>
-                  <node concept="2YIFZM" id="5zPLqcHJBqy" role="3K4GZi">
-                    <ref role="37wK5l" to="hdhb:42hl10VH9Rf" resolve="getForTree" />
-                    <ref role="1Pybhc" to="hdhb:42hl10VH9R2" resolve="ChangeColors" />
-                    <node concept="37vLTw" id="5zPLqcHJBqz" role="37wK5m">
-                      <ref role="3cqZAo" node="5zPLqcHJBpr" resolve="compositeChangeType" />
+                  <node concept="2OqwBi" id="7dUqWL4p5kL" role="3K4GZi">
+                    <node concept="2YIFZM" id="7dUqWL4p5d1" role="2Oq$k0">
+                      <ref role="37wK5l" to="hdhb:3$C2wb7p0AM" resolve="getInstance" />
+                      <ref role="1Pybhc" to="hdhb:42hl10VH9R2" resolve="ChangeColors" />
+                    </node>
+                    <node concept="liA8E" id="7dUqWL4p5wo" role="2OqNvi">
+                      <ref role="37wK5l" to="hdhb:3$C2wb7pOSG" resolve="getTreeColor" />
+                      <node concept="37vLTw" id="7dUqWL4p5d2" role="37wK5m">
+                        <ref role="3cqZAo" node="5zPLqcHJBpr" resolve="compositeChangeType" />
+                      </node>
                     </node>
                   </node>
                 </node>
@@ -12577,18 +12587,23 @@
                   <node concept="3uibUv" id="KAZ6yAb7Ua" role="1tU5fm">
                     <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
                   </node>
-                  <node concept="2YIFZM" id="KAZ6yAb7Ub" role="33vP2m">
-                    <ref role="37wK5l" to="hdhb:42hl10VH9R3" resolve="get" />
-                    <ref role="1Pybhc" to="hdhb:42hl10VH9R2" resolve="ChangeColors" />
-                    <node concept="2OqwBi" id="KAZ6yAb7Uc" role="37wK5m">
-                      <node concept="2OqwBi" id="KAZ6yAb7Ud" role="2Oq$k0">
-                        <node concept="2GrUjf" id="KAZ6yAb7Ue" role="2Oq$k0">
-                          <ref role="2Gs0qQ" node="KAZ6yAb7Tr" resolve="groupWithBounds" />
+                  <node concept="2OqwBi" id="7dUqWL4pEf9" role="33vP2m">
+                    <node concept="2YIFZM" id="7dUqWL4pDX0" role="2Oq$k0">
+                      <ref role="37wK5l" to="hdhb:3$C2wb7p0AM" resolve="getInstance" />
+                      <ref role="1Pybhc" to="hdhb:42hl10VH9R2" resolve="ChangeColors" />
+                    </node>
+                    <node concept="liA8E" id="7dUqWL4pEB5" role="2OqNvi">
+                      <ref role="37wK5l" to="hdhb:3$C2wb7oVfi" resolve="getDiffColor" />
+                      <node concept="2OqwBi" id="7dUqWL4pDX1" role="37wK5m">
+                        <node concept="2OqwBi" id="7dUqWL4pDX2" role="2Oq$k0">
+                          <node concept="2GrUjf" id="7dUqWL4pDX3" role="2Oq$k0">
+                            <ref role="2Gs0qQ" node="KAZ6yAb7Tr" resolve="groupWithBounds" />
+                          </node>
+                          <node concept="3AY5_j" id="7dUqWL4pDX4" role="2OqNvi" />
                         </node>
-                        <node concept="3AY5_j" id="KAZ6yAb7Uf" role="2OqNvi" />
-                      </node>
-                      <node concept="liA8E" id="KAZ6yAb7Ug" role="2OqNvi">
-                        <ref role="37wK5l" to="hdhb:42hl10VHagR" resolve="getChangeType" />
+                        <node concept="liA8E" id="7dUqWL4pDX5" role="2OqNvi">
+                          <ref role="37wK5l" to="hdhb:42hl10VHagR" resolve="getChangeType" />
+                        </node>
                       </node>
                     </node>
                   </node>

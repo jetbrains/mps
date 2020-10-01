@@ -2643,15 +2643,20 @@
                 </node>
                 <node concept="liA8E" id="K9wxfKEv0f" role="2OqNvi">
                   <ref role="37wK5l" to="z60i:~Graphics.setColor(java.awt.Color)" resolve="setColor" />
-                  <node concept="2YIFZM" id="2WvuDpQ7qrl" role="37wK5m">
-                    <ref role="37wK5l" to="hdhb:2WvuDpQ6myg" resolve="getForGutter" />
-                    <ref role="1Pybhc" to="hdhb:42hl10VH9R2" resolve="ChangeColors" />
-                    <node concept="2OqwBi" id="2WvuDpQ7qrm" role="37wK5m">
-                      <node concept="2GrUjf" id="2WvuDpQ7qrn" role="2Oq$k0">
-                        <ref role="2Gs0qQ" node="K9wxfKEv03" resolve="changeGroup" />
-                      </node>
-                      <node concept="liA8E" id="2WvuDpQ7qro" role="2OqNvi">
-                        <ref role="37wK5l" to="hdhb:42hl10VHagR" resolve="getChangeType" />
+                  <node concept="2OqwBi" id="7dUqWL4oTvR" role="37wK5m">
+                    <node concept="2YIFZM" id="7dUqWL4oS1d" role="2Oq$k0">
+                      <ref role="37wK5l" to="hdhb:3$C2wb7p0AM" resolve="getInstance" />
+                      <ref role="1Pybhc" to="hdhb:42hl10VH9R2" resolve="ChangeColors" />
+                    </node>
+                    <node concept="liA8E" id="7dUqWL4oU3k" role="2OqNvi">
+                      <ref role="37wK5l" to="hdhb:3$C2wb7p4kP" resolve="getGutterColor" />
+                      <node concept="2OqwBi" id="7dUqWL4oS1e" role="37wK5m">
+                        <node concept="2GrUjf" id="7dUqWL4oS1f" role="2Oq$k0">
+                          <ref role="2Gs0qQ" node="K9wxfKEv03" resolve="changeGroup" />
+                        </node>
+                        <node concept="liA8E" id="7dUqWL4oS1g" role="2OqNvi">
+                          <ref role="37wK5l" to="hdhb:42hl10VHagR" resolve="getChangeType" />
+                        </node>
                       </node>
                     </node>
                   </node>

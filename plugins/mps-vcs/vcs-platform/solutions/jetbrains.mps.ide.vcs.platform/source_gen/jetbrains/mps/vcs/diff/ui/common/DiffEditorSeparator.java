@@ -103,9 +103,9 @@ public class DiffEditorSeparator extends JComponent implements TooltipComponent 
         int[] xx = new int[]{0, getWidth(), getWidth(), 0};
         int[] yy = new int[]{(int) left.start(), (int) right.start(), (int) right.end(), (int) left.end()};
 
-        g.setColor(ChangeColors.get(groupWithBounds.key().getChangeType()));
+        g.setColor(ChangeColors.getInstance().getDiffColor(groupWithBounds.key().getChangeType()));
         g.fillPolygon(xx, yy, 4);
-        g.setColor(ChangeColors.get(groupWithBounds.key().getChangeType()).darker());
+        g.setColor(ChangeColors.getInstance().getDiffColor(groupWithBounds.key().getChangeType()).darker());
         g.drawLine(0, (int) left.start(), getWidth() - 1, (int) right.start());
         g.drawLine(0, (int) left.end(), getWidth() - 1, (int) right.end());
       }

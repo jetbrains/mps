@@ -68,7 +68,7 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
   }
   @Override
   public Color getColor() {
-    return ChangeColors.get((isConflicted() ? ChangeType.CONFLICTED : myChange.getType()));
+    return ChangeColors.getInstance().getDiffColor((isConflicted() ? ChangeType.CONFLICTED : myChange.getType()));
   }
   public ModelChange getChange() {
     return myChange;
@@ -117,7 +117,7 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
         }
       } else {
         Rectangle bounds = (isIndirectRoot(editor) ? getFirstPseudoLineBounds(editor) : GeometryUtil.getBounds(cell));
-        graphics.setColor(ChangeColors.get((isConflicted() ? ChangeType.CONFLICTED : ChangeType.CHANGE)));
+        graphics.setColor(ChangeColors.getInstance().getDiffColor((isConflicted() ? ChangeType.CONFLICTED : ChangeType.CHANGE)));
         graphics.drawRect(bounds.x + 1, bounds.y + 1, bounds.width - 2, bounds.height - 2);
       }
     }

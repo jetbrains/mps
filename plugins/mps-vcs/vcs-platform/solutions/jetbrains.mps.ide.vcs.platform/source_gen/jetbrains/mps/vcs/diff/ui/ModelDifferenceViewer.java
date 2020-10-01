@@ -335,7 +335,7 @@ public class ModelDifferenceViewer implements DataProvider {
           compositeChangeType = null;
         }
       }
-      rootTreeNode.setColor((compositeChangeType == null ? null : ChangeColors.getForTree(compositeChangeType)));
+      rootTreeNode.setColor((compositeChangeType == null ? null : ChangeColors.getInstance().getTreeColor(compositeChangeType)));
     }
     @Override
     protected Iterable<SModel> getModels() {
