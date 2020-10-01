@@ -872,7 +872,7 @@
     <property role="1qHB85" value="/MPS_16.png" />
     <property role="TrG5h" value="MPS Languages DevKit" />
     <property role="9BnSO" value="201.1" />
-    <property role="9BnSK" value="2020.1.6" />
+    <property role="9BnSK" value="2020.1.7" />
   </node>
   <node concept="tC5Ba" id="56$IWKxe1aW">
     <property role="TrG5h" value="ProjectNewActionsEx" />
