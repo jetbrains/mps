@@ -19,6 +19,7 @@ import com.intellij.openapi.project.IndexNotReadyException;
 import jetbrains.mps.make.MakeServiceComponent;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.EditorMessage;
+import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.nodeEditor.NodeHighlightManager;
 import jetbrains.mps.nodeEditor.PriorityComparator;
 import jetbrains.mps.nodeEditor.checking.EditorChecker;
@@ -71,6 +72,7 @@ public class HighlighterUpdateSession {
       return;
     }
 
+    boolean immediateQuickFixesEnabled = !EditorSettings.getInstance().isDisableImmediateQuickFix();
     List<Pair<EditorComponent, Boolean>> input = new ArrayList<>();
     HashSet<SNodePointer> visited = new HashSet<>();
     for (EditorComponent ecomp : myAllEditorComponents) {
@@ -78,7 +80,7 @@ public class HighlighterUpdateSession {
       final SModel model = nodeForTypechecking == null ? null : nodeForTypechecking.getModel();
       final boolean readOnly = ecomp.isReadOnly() || (model != null && model.isReadOnly());
       SNodePointer pointer = new SNodePointer(nodeForTypechecking);
-      input.add(new Pair<>(ecomp, !readOnly && !visited.contains(pointer)));
+      input.add(new Pair<>(ecomp, immediateQuickFixesEnabled && !readOnly && !visited.contains(pointer)));
       visited.add(pointer);
     }
 

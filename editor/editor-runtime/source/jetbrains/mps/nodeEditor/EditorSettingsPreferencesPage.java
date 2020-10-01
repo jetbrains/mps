@@ -53,6 +53,7 @@ class EditorSettingsPreferencesPage implements Disposable {
   private final JCheckBox myUseBraces;
   private final JCheckBox myUseTwoStepDeletion;
   private final JCheckBox myTypeOverExistingText;
+  private final JCheckBox myDisableImmediateQuickFix;
   private final JCheckBox myShowContextAssistant;
   private final JSpinner myCaretBlinkPeriod;
   private final JBRadioButton myDontShow;
@@ -123,6 +124,9 @@ class EditorSettingsPreferencesPage implements Disposable {
     myTypeOverExistingText = new JCheckBox(EditorSettingsBundle.message("checkbox.type.over.existing.text"));
     checkboxes.add(myTypeOverExistingText);
 
+    myDisableImmediateQuickFix = new JCheckBox(EditorSettingsBundle.message("checkbox.disable.immediate.quick.fix"));
+    checkboxes.add(myDisableImmediateQuickFix);
+
     myAutoQuickFixCheckBox = new JCheckBox(EditorSettingsBundle.message("checkbox.auto.resolve.refs"));
     checkboxes.add(myAutoQuickFixCheckBox);
 
@@ -167,6 +171,7 @@ class EditorSettingsPreferencesPage implements Disposable {
     editorSettings.setShowContextAssistant(myShowContextAssistant.isSelected());
     editorSettings.setUseTwoStepDeletion(myUseTwoStepDeletion.isSelected());
     editorSettings.setTypeOverExistingText(myTypeOverExistingText.isSelected());
+    editorSettings.setDisableImmediateQuickFix(myDisableImmediateQuickFix.isSelected());
 
     editorSettings.setAutoQuickFix(myAutoQuickFixCheckBox.isSelected());
 
@@ -202,6 +207,7 @@ class EditorSettingsPreferencesPage implements Disposable {
     boolean sameUseBraces = myUseBraces.isSelected() == editorSettings.useBraces();
     boolean sameTwoStepBackspace = myUseTwoStepDeletion.isSelected() == editorSettings.isUseTwoStepDeletion();
     boolean sameTypeOverExistingText = myTypeOverExistingText.isSelected() == editorSettings.isTypeOverExistingText();
+    boolean sameDisableImmediateQuickFix = myDisableImmediateQuickFix.isSelected() == editorSettings.isDisableImmediateQuickFix();
     boolean sameAutoQuickFix = myAutoQuickFixCheckBox.isSelected() == editorSettings.isAutoQuickFix();
     boolean sameCompletionStyling = myCompletionStylingCheckBox.isSelected() == editorSettings.isCompletionStyling();
     boolean sameBlinkingRate = myCaretBlinkPeriod.getModel().getValue().equals(editorSettings.getCaretBlinkPeriod());
@@ -211,6 +217,7 @@ class EditorSettingsPreferencesPage implements Disposable {
     return !(sameTextWidth && sameIndentSize &&
              sameUseBraces && sameTwoStepBackspace &&
              sameTypeOverExistingText && sameAutoQuickFix &&
+             sameDisableImmediateQuickFix &&
              sameCompletionStyling && sameBlinkingRate &&
              sameTabs && sameUseContextAssistant);
   }
@@ -222,6 +229,7 @@ class EditorSettingsPreferencesPage implements Disposable {
     myUseBraces.setSelected(editorSettings.useBraces());
     myUseTwoStepDeletion.setSelected(editorSettings.isUseTwoStepDeletion());
     myTypeOverExistingText.setSelected(editorSettings.isTypeOverExistingText());
+    myDisableImmediateQuickFix.setSelected(editorSettings.isDisableImmediateQuickFix());
     myAutoQuickFixCheckBox.setSelected(editorSettings.isAutoQuickFix());
     myCompletionStylingCheckBox.setSelected(editorSettings.isCompletionStyling());
     myShowContextAssistant.setSelected(editorSettings.isShowContextAssistant());

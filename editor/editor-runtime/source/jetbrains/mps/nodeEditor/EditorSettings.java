@@ -210,6 +210,14 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
     return myState.typeOverExistingText;
   }
 
+  public void setDisableImmediateQuickFix(boolean disableImmediateQuickFix) {
+    myState.disableImmediateQuickFix = disableImmediateQuickFix;
+  }
+
+  public boolean isDisableImmediateQuickFix() {
+    return myState.disableImmediateQuickFix;
+  }
+
   @Deprecated
   // todo: merge read-only and editable default editors, remove this flag
   public boolean isReflectiveEditorReadonly() {
@@ -450,6 +458,7 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
 
     public boolean useTwoStepDeletion = true;
     public boolean typeOverExistingText = true;
+    public boolean disableImmediateQuickFix = false;
 
     public int indentSize = 2;
     public int verticalBound = 120;
@@ -473,6 +482,7 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
       useBraces = myState.useBraces;
       useTwoStepDeletion = myState.useTwoStepDeletion;
       typeOverExistingText = myState.typeOverExistingText;
+      disableImmediateQuickFix = myState.disableImmediateQuickFix;
       indentSize = myState.indentSize;
       verticalBound = myState.verticalBound;
       autoQuickFix = myState.autoQuickFix;
@@ -515,6 +525,9 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
         return false;
       }
       if (typeOverExistingText != myState.typeOverExistingText) {
+        return false;
+      }
+      if (disableImmediateQuickFix != myState.disableImmediateQuickFix) {
         return false;
       }
       if (indentSize != myState.indentSize) {
@@ -563,6 +576,7 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
       result = 31 * result + (useBraces ? 1 : 0);
       result = 31 * result + (useTwoStepDeletion ? 1 : 0);
       result = 31 * result + (typeOverExistingText ? 1 : 0);
+      result = 31 * result + (disableImmediateQuickFix ? 1 : 0);
       result = 31 * result + indentSize;
       result = 31 * result + verticalBound;
       result = 31 * result + (autoQuickFix ? 1 : 0);
