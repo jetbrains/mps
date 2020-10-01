@@ -30,12 +30,12 @@
 
 
   <actions>
-    <group id="MPSWelcomeSamplesMenu">
-      <action id="OpenSampleLanguageProject"
+    <group id="WelcomeScreen.QuickStart.MPS.Samples">
+      <action id="WelcomeScreen.Samples"
               class="jetbrains.mps.workbench.actions.welcomeScreen.OpenSampleProjectAction"
-              text="Open Sample Project"
+              text="Samples"
               description="Choose one of the MPS sample project files"/>
-      <add-to-group group-id="MPSWelcomeGettingStartedMenu" anchor="after" relative-to-action="OpenExistingProjectAction"/>
+      <add-to-group group-id="WelcomeScreen.QuickStart.MPS.Tutorial" anchor="before" relative-to-action="WelcomeScreen.Tutorial"/>
     </group>
   </actions>
 
