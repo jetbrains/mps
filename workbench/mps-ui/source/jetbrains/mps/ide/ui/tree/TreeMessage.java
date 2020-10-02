@@ -16,9 +16,11 @@
 package jetbrains.mps.ide.ui.tree;
 
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.annotations.Immutable;
 
 import java.awt.Color;
 
+@Immutable
 public class TreeMessage {
   private final Color myColor;
   private final String myAdditionalText;

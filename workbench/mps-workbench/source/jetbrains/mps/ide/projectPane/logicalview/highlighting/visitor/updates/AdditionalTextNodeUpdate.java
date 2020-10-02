@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2012 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,15 @@
 package jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.updates;
 
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
+import jetbrains.mps.util.annotation.ToRemove;
 
 import java.util.Objects;
 
+/**
+ * @deprecated Use {@link jetbrains.mps.ide.ui.tree.TreeMessage} with {@code additional text}
+ */
+@ToRemove(version = 2020.3)
+@Deprecated(forRemoval = true)
 public class AdditionalTextNodeUpdate extends NodeUpdate {
   private final String myText;
 

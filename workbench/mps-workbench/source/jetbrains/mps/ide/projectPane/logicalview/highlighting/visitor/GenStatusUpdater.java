@@ -21,7 +21,10 @@ import com.intellij.openapi.project.DumbService;
 import jetbrains.mps.extapi.model.GeneratableSModel;
 import jetbrains.mps.generator.ModelGenerationStatusManager;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.updates.AdditionalTextNodeUpdate;
+import jetbrains.mps.ide.projectPane.GenStatusTreeMessage;
+import jetbrains.mps.ide.projectPane.GenStatusTreeMessage.GenerationStatus;
+import jetbrains.mps.ide.ui.tree.MPSTreeNode;
+import jetbrains.mps.ide.ui.tree.TreeMessageOwner;
 import jetbrains.mps.ide.ui.tree.TreeNodeVisitor;
 import jetbrains.mps.ide.ui.tree.module.NamespaceTextNode;
 import jetbrains.mps.ide.ui.tree.module.ProjectModuleTreeNode;
@@ -37,19 +40,22 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 
 import javax.swing.tree.TreeNode;
+import java.util.stream.Stream;
 
 /**
  * visitXXX methods require model read
  */
-public class GenStatusUpdater extends TreeUpdateVisitor {
+public class GenStatusUpdater extends TreeUpdateVisitor implements TreeMessageOwner {
   private final ModelGenerationStatusManager myGenerationStatusManager;
   private final MakeServiceComponent myMakeComponent;
+  private final GenStatusTreeMessage myUpdatingMessage;
   private final Project myProject;
 
   public GenStatusUpdater(Project mpsProject) {
     myGenerationStatusManager = mpsProject.getComponent(ModelGenerationStatusManager.class);
     myProject = mpsProject;
     myMakeComponent = mpsProject.getComponent(MakeServiceComponent.class);
+    myUpdatingMessage = new GenStatusTreeMessage(this, GenerationStatus.UPDATING);
   }
 
   @Nullable
@@ -57,17 +63,58 @@ public class GenStatusUpdater extends TreeUpdateVisitor {
     return new TreeNodeVisitor() {
       @Override
       public void visitModuleNode(@NotNull ProjectModuleTreeNode moduleNode) {
-        GenerationStatus s = new StatusUpdate(moduleNode).update();
-        if (moduleNode.getModule() instanceof Generator) {
-          final ProjectModuleTreeNode languageNode = getContainingModuleNode(moduleNode);
-          if (languageNode != null) {
-            new StatusUpdate(languageNode).update(s);
-          }
+        // we get here when status of one of our model nodes has been refreshed. It might be that
+        // status of module node has been refreshed as well, check this first, and only then check children status
+        // Note, nothing prevents stops us from using new StatusUpdate(moduleNode).update(); as it doesn't require
+        // model read we don't get here, but it seems more consistent to rely on status from the tree elements.
+        if (!moduleNode.findMessages(GenStatusTreeMessage.class).isEmpty()) {
+          // just keep the one calculated for the node (assuming no 'updating' get to any tree node but namespace)
+          // Besides, assume namespace node of the module's would come here (into visitNamespaceNode) later as parent
+          // of a node from main visitor.
+          return;
         }
-        // FIXME need to decide if can use visitNamespaceNode of this post-processing visitor instead
-        propagateStatusToNamespaceNodes(moduleNode, s);
+        // moduleNode could be a node for Language module, which is 'clear', but nests a Generator module
+        // with 'generation required'. Could also be a module of recalculated model, shall get its status updated
+        // from new status from its UI children
+        final GenStatusTreeMessage m = useRequiredFromChildren(moduleNode);
+        // inv: m != null iff it's 'required' status
+
+        // we get here, in visitModuleNode of 'parent updater' in 2 cases:
+        // - update of a model/nested module(generator in a language). in this case there'd be no subsequent visitNamespaceNode() call
+        // - top-down update that involves module node and its children (plus, likely, top NS nodes). visitNamespaceNode() would be invoked.
+        //  It's  not possible to figure out which one is here, so I assume it's better to propagate 'generation required', if any
+        //  in all cases. Indeed, it's no-op if I get to visitNamespaceNode() later, as it would remove the message and
+        //  add it again base on the same useRequiredFromChildren() logic
+        if (m != null) {
+          propagateStatusToNamespaceNodes(moduleNode, m);
+        }
       }
+
+      @Override
+      public void visitNamespaceNode(@NotNull NamespaceTextNode node) {
+        node.removeTreeMessages(GenStatusUpdater.this);
+        useRequiredFromChildren(node);
+      }
+
+      private GenStatusTreeMessage useRequiredFromChildren(MPSTreeNode node) {
+        final GenStatusTreeMessage childMessage = childrenMessages(node).filter(GenStatusTreeMessage::required).findAny().orElse(null);
+        if (childMessage != null) {
+          // see if I can reuse tree messages, they are immutable, after all. As long as messages are kept per
+          // tree node, seems it's safe to use same message instance. OTOH, is there a big gain reusing small object like this?
+          // Note, implies GenStatusMessage originate from this owner only (even if some else TMO would post its messages, it
+          // is safe to reuse one here, the only question would be removal of the message with the right owner
+          // so that we don't get them added forever)
+          node.addTreeMessage(childMessage);
+          addUpdate(node, null);
+        }
+        return childMessage;
+      }
+
     };
+  }
+
+  /*local*/ static Stream<GenStatusTreeMessage> childrenMessages(MPSTreeNode node) {
+    return node.getChildren().stream().flatMap(c -> c.findMessages(GenStatusTreeMessage.class).stream());
   }
 
   private ProjectModuleTreeNode getContainingModuleNode(TreeNode node) {
@@ -84,7 +131,16 @@ public class GenStatusUpdater extends TreeUpdateVisitor {
     }
 
     Application application = ApplicationManager.getApplication();
-    return (application.isDisposed() || application.isDisposeInProgress() || myProject.isDisposed());
+    return (application.isDisposed() || myProject.isDisposed());
+  }
+
+  @Override
+  public void visitNamespaceNode(@NotNull NamespaceTextNode node) {
+    if (node.removeTreeMessages(GenStatusUpdater.this).isEmpty()) {
+      addUpdate(node, null);
+      // we don't visit just NS nodes, child module node would calculate update
+      // and post-process for this NS node (as module's parent) would get it in place
+    }
   }
 
   @Override
@@ -95,19 +151,17 @@ public class GenStatusUpdater extends TreeUpdateVisitor {
       return;
     }
     if (node.getModule().isReadOnly()) {
-      new StatusUpdate(node).update(GenerationStatus.READONLY);
+      new StatusUpdate(node).update(GenStatusTreeMessage.GenerationStatus.READONLY);
       return;
     }
     final com.intellij.openapi.project.Project project = ProjectHelper.toIdeaProject(myProject);
     if (project != null && DumbService.getInstance(project).isDumb()) {
       // see visitModelNode for explanation
-      propagateStatusToNamespaceNodes(node, GenerationStatus.UPDATING);
+      propagateStatusToNamespaceNodes(node, myUpdatingMessage);
       return;
     }
-    GenerationStatus s = new StatusUpdate(node).update();
-    // no need to check for generator and language here as #visitModelNode does, as now
-    // we can face generator module only as sibling to language's models (i.e. SModelTreeNodes)
-    propagateStatusToNamespaceNodes(node, s);
+    new StatusUpdate(node).update();
+
   }
 
   @Override
@@ -139,18 +193,21 @@ public class GenStatusUpdater extends TreeUpdateVisitor {
       // however, as long as we use index for hashes, seems reasonable to wait for end of dumb mode
       // and to update status again then (PPTH.dumbUpdate does that).
       // Here, I don't care to set status of individual models and modules - status for a group seems to be enough
-      propagateStatusToNamespaceNodes(moduleNode, GenerationStatus.UPDATING);
+      propagateStatusToNamespaceNodes(moduleNode, myUpdatingMessage);
       return;
     }
 
     new StatusUpdate(modelNode).update();
   }
 
-  private void propagateStatusToNamespaceNodes(ProjectModuleTreeNode node, GenerationStatus status) {
-    final AdditionalTextNodeUpdate r = new AdditionalTextNodeUpdate(status.getMessage());
+  private void propagateStatusToNamespaceNodes(ProjectModuleTreeNode node, GenStatusTreeMessage statusMessage) {
     for (TreeNode n = node; n != null; n = n.getParent()) {
       if (n instanceof NamespaceTextNode) {
-        addUpdate((NamespaceTextNode) n, r);
+        final NamespaceTextNode nn = (NamespaceTextNode) n;
+        if (nn.findMessages(GenStatusTreeMessage.class).isEmpty()) {
+          nn.addTreeMessage(statusMessage);
+          addUpdate(nn, null);
+        }
       }
     }
   }
@@ -181,13 +238,23 @@ public class GenStatusUpdater extends TreeUpdateVisitor {
     }
     public void update(GenerationStatus status) {
       if (myModelNode != null) {
-        addUpdate(myModelNode, new AdditionalTextNodeUpdate(status.getMessage()));
+        myModelNode.removeTreeMessages(GenStatusUpdater.this);
+        if (status != GenerationStatus.NOT_REQUIRED) {
+          // FIXME can reuse GenStatusMessage instances (create fixed set, one for each GenerationStatus)
+          myModelNode.addTreeMessage(new GenStatusTreeMessage(GenStatusUpdater.this, status));
+        }
+        addUpdate(myModelNode, null);
       }
       if (myModuleNode != null) {
-        addUpdate(myModuleNode, new AdditionalTextNodeUpdate(status.getMessage()));
+        myModuleNode.removeTreeMessages(GenStatusUpdater.this);
+        if (status != GenerationStatus.NOT_REQUIRED) {
+          myModuleNode.addTreeMessage(new GenStatusTreeMessage(GenStatusUpdater.this, status));
+        }
+        addUpdate(myModuleNode, null);
       }
     }
 
+    // FIXME could be lambda
     private GenerationStatus compute() {
       if (myModelNode != null) {
         return getGenerationStatus(myModelNode.getModel());
@@ -210,34 +277,34 @@ public class GenStatusUpdater extends TreeUpdateVisitor {
 
   private GenerationStatus getGenerationStatus(SModule module) {
     if (module.isReadOnly()) {
-      return GenerationStatus.READONLY;
+      return GenStatusTreeMessage.GenerationStatus.READONLY;
     }
     if (generationRequired(module)) {
-      return GenerationStatus.REQUIRED;
+      return GenStatusTreeMessage.GenerationStatus.REQUIRED;
     }
     if (module instanceof Language) {
       for (Generator generator : ((Language) module).getOwnedGenerators()) {
         if (generationRequired(generator)) {
-          return GenerationStatus.REQUIRED;
+          return GenStatusTreeMessage.GenerationStatus.REQUIRED;
         }
       }
     }
-    return GenerationStatus.NOT_REQUIRED;
+    return GenStatusTreeMessage.GenerationStatus.NOT_REQUIRED;
   }
 
   private GenerationStatus getGenerationStatus(SModel model) {
     if (model == null || model.getModule() == null) {
-      return GenerationStatus.NOT_REQUIRED;
+      return GenStatusTreeMessage.GenerationStatus.NOT_REQUIRED;
     }
     if (isPackaged(model)) {
-      return GenerationStatus.READONLY;
+      return GenStatusTreeMessage.GenerationStatus.READONLY;
     }
     if (isDoNotGenerate(model)) {
-      return GenerationStatus.DO_NOT_GENERATE;
+      return GenStatusTreeMessage.GenerationStatus.DO_NOT_GENERATE;
     }
 
     boolean required = myGenerationStatusManager.generationRequired(model);
-    return required ? GenerationStatus.REQUIRED : GenerationStatus.NOT_REQUIRED;
+    return required ? GenStatusTreeMessage.GenerationStatus.REQUIRED : GenStatusTreeMessage.GenerationStatus.NOT_REQUIRED;
   }
 
   private static boolean isPackaged(SModel md) {
@@ -249,22 +316,4 @@ public class GenStatusUpdater extends TreeUpdateVisitor {
     return md instanceof GeneratableSModel && ((GeneratableSModel) md).isDoNotGenerate();
   }
 
-  public enum GenerationStatus {
-    READONLY("read only"),
-    DO_NOT_GENERATE("do not generate"),
-    UPDATING("updating..."),
-    REQUIRED("generation required"),
-    NOT_REQUIRED(null);
-
-    private String myMessage;
-
-    GenerationStatus(String message) {
-      myMessage = message;
-    }
-
-    @Nullable
-    public String getMessage() {
-      return myMessage;
-    }
-  }
 }

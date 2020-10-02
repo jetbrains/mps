@@ -16,12 +16,14 @@
 package jetbrains.mps.ide.ui.tree;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.annotations.Immutable;
 
 import java.util.Objects;
 
 /**
  * @author Artem Tikhomirov
  */
+@Immutable
 public final class TreeErrorMessage extends TreeMessage {
   private final ErrorState myErrorState;
   private final String myMessage;

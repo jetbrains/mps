@@ -91,6 +91,8 @@ public final class TreeNodeUpdater {
     }
   }
 
+  // FIXME once there are no uses of NodeUpdate other than blank one that triggers updateNodePresentationInTree(),
+  //       shall use identity(node) to merge numerous update requests into a single UI update
   public void addUpdate(MPSTreeNode node, NodeUpdate r) {
     if (!r.needed(node)) {
       return;

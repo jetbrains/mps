@@ -142,23 +142,9 @@ public class ErrorChecker extends TreeUpdateVisitor implements TreeMessageOwner 
     addUpdate(node, u);
   }
 
-  private final BlankNodeUpdate r1 = new BlankNodeUpdate();
-
   @Override
   protected void addUpdate(MPSTreeNode node, NodeUpdate r) {
     r.update(node);
-    super.addUpdate(node, r1);
-  }
-
-
-  private static class BlankNodeUpdate extends NodeUpdate {
-    @Override
-    public boolean needed(MPSTreeNode node) {
-      return true;
-    }
-
-    @Override
-    public void update(MPSTreeNode node) {
-    }
+    super.addUpdate(node, null);
   }
 }
