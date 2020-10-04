@@ -18,17 +18,18 @@ package jetbrains.mps.util.iterable;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Iterator;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * XXX what's the benefit having distinct MergeIterator when there's FlattenIterable (@see IterableUtil#merge())?
  * Evgeny Gryaznov, 9/13/11
+ *
+ * not thread-safe
  */
 public class MergeIterator<T> implements Iterable<T>, Iterator<T> {
   private final Iterable<T> myFirst, mySecond;
-  private boolean firstHasNext;
   private Iterator<T> myIt1, myIt2;
-  private final AtomicBoolean myInitialized = new AtomicBoolean(false);
+
+  private boolean myInitialized = false;
 
   public MergeIterator(@NotNull Iterable<T> it1, @NotNull Iterable<T> it2) {
     myFirst = it1;
@@ -36,7 +37,8 @@ public class MergeIterator<T> implements Iterable<T>, Iterator<T> {
   }
 
   private void init() {
-    if (myInitialized.compareAndSet(false, true)) {
+    if (!myInitialized) {
+      myInitialized = true;
       reset();
     }
   }
@@ -50,24 +52,20 @@ public class MergeIterator<T> implements Iterable<T>, Iterator<T> {
   @Override
   public Iterator<T> iterator() {
     reset();
-    firstHasNext = myIt1.hasNext();
     return this;
   }
 
   @Override
   public boolean hasNext() {
     init();
-    if (!firstHasNext) {
-      return myIt2.hasNext();
-    }
-    firstHasNext = myIt1.hasNext();
-    return firstHasNext || myIt2.hasNext();
+    return myIt1.hasNext() || myIt2.hasNext();
   }
 
   @Override
   public T next() {
     init();
-    return firstHasNext ? myIt1.next() : myIt2.next();
+    return myIt1.hasNext() ? myIt1.next()
+                           : myIt2.next();
   }
 
   @Override
