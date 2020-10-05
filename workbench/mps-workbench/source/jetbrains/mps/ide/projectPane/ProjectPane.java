@@ -151,8 +151,8 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
       }
     };
     ApplicationManager.getApplication().getComponent(ReloadManager.class).addReloadListener(myReloadListener);
-    myShowDescriptorModelsAction = new ToggleAndRebuildAction(this, "Show @descriptor models in Generators", "showGeneratorDescriptor");
-    myShowErrorComponent = new ToggleAndRebuildAction(this, "Show error indication", "showErrorComponent");
+    myShowDescriptorModelsAction = new ToggleAndRebuildAction(this, "@descriptor models in Generators", "showGeneratorDescriptor");
+    myShowErrorComponent = new ToggleAndRebuildAction(this, "Error Indicator", "showErrorComponent");
     myMessageBus = myProject.getMessageBus().connect(this);
     myMessageBus.subscribe(TabbedEditor.TAB_CHANGES, nodeRef -> {
       if (getProjectView().isAutoscrollFromSource(ID)) {
