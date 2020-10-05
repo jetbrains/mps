@@ -36,14 +36,6 @@
       <implementation-class>jetbrains.mps.vcs.changesmanager.editor.EditorHighlighterFactory</implementation-class>
       <skipForDefaultProject/>
     </component>
-  </project-components>
-
-  <extensions defaultExtensionNs="com.intellij">
-    <diff.DiffTool implementation="jetbrains.mps.vcs.platform.integration.ModelDiffTool"/>
-    <diff.merge.MergeTool implementation="jetbrains.mps.vcs.platform.integration.ModelMergeTool"/>
-  </extensions>
-
-  <project-components>
     <component>
       <implementation-class>jetbrains.mps.vcs.MPSVcsManager</implementation-class>
     </component>
@@ -81,6 +73,20 @@
   </actions>
 
   <extensions defaultExtensionNs="com.intellij">
+    <applicationService serviceInterface="jetbrains.mps.vcs.platform.mergedriver.MergeDriverPacker"
+                        serviceImplementation="jetbrains.mps.vcs.MergeDriverPackerImpl" />
+    <applicationService serviceImplementation="jetbrains.mps.vcs.diff.ui.common.ChangeColors"/>
+
+    <projectService serviceInterface="com.intellij.openapi.vcs.AbstractVcsHelper"
+                    serviceImplementation="jetbrains.mps.vcs.platform.integration.MPSVcsHelper" overrides="true"/>
+    <projectService serviceInterface="com.intellij.openapi.vcs.impl.VcsPathPresenter"
+                    serviceImplementation="jetbrains.mps.vcs.integration.ModuleVcsPathPresenter"
+                    overrides="true"/>
+
+
+    <diff.DiffTool implementation="jetbrains.mps.vcs.platform.integration.ModelDiffTool"/>
+    <diff.merge.MergeTool implementation="jetbrains.mps.vcs.platform.integration.ModelMergeTool"/>
+
     <mps.LanguageLibrary dir="/"/>
 
     <vcs.fileStatusProvider implementation="jetbrains.mps.vcs.changesmanager.NodeFileStatusProvider"/>
@@ -89,16 +95,6 @@
     <checkoutListener implementation="jetbrains.mps.vcs.integration.ProjectCheckoutListener"/>
     <checkinHandlerFactory implementation="jetbrains.mps.vcs.platform.integration.OptimizeImportsCheckinHandler$OptimizeImportsCheckinHandlerFactory"/>
     <mps.editorWarningsProvider implementation="jetbrains.mps.vcs.platform.integration.ConflictingModelsWarnings"/>
-
-    <projectService serviceInterface="com.intellij.openapi.vcs.AbstractVcsHelper"
-                    serviceImplementation="jetbrains.mps.vcs.platform.integration.MPSVcsHelper" overrides="true"/>
-
-    <projectService serviceInterface="com.intellij.openapi.vcs.impl.VcsPathPresenter"
-                    serviceImplementation="jetbrains.mps.vcs.integration.ModuleVcsPathPresenter"
-                    overrides="true"/>
-
-    <applicationService serviceInterface="jetbrains.mps.vcs.platform.mergedriver.MergeDriverPacker"
-            serviceImplementation="jetbrains.mps.vcs.MergeDriverPackerImpl" />
 
     <backgroundPostStartupActivity implementation="jetbrains.mps.vcs.ModelMergeConflictTracker" />
 

@@ -41,6 +41,10 @@
     <component>
       <implementation-class>jetbrains.mps.typesystem.checking.EditorCheckerComponent</implementation-class>
     </component>
+
+    <component>
+      <implementation-class>jetbrains.mps.ide.editor.StyleRegistryIdeaImpl</implementation-class>
+    </component>
   </application-components>
 
   <project-components>
@@ -77,11 +81,6 @@
 
     <component>
       <implementation-class>com.intellij.openapi.fileEditor.FileEditorDataProviderManager</implementation-class>
-    </component>
-
-    <component>
-      <implementation-class>jetbrains.mps.ide.editor.StyleRegistryIdeaImpl</implementation-class>
-      <loadForDefaultProject/>
     </component>
 
     <component>

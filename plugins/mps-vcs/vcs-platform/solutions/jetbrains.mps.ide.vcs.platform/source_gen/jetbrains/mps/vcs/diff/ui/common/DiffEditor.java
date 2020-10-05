@@ -380,7 +380,7 @@ public class DiffEditor implements EditorMessageOwner {
     int prevGroupBottomLineY = -1;
 
     for (ChangeGroup changeGroup : ListSequence.fromList(layout.getChangeGroups())) {
-      Color color = ChangeColors.get(changeGroup.getChangeType());
+      Color color = ChangeColors.getInstance().getDiffColor(changeGroup.getChangeType());
       Bounds bounds = changeGroup.getBounds(isLeftEditor);
       int y = (int) bounds.start();
       int height = bounds.length();

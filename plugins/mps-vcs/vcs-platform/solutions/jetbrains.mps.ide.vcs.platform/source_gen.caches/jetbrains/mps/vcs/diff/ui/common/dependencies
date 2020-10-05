@@ -52,6 +52,7 @@
     <classNode dependClassName="com.intellij.openapi.editor.colors.EditorColorsScheme" />
     <classNode dependClassName="com.intellij.openapi.vcs.FileStatus" />
     <classNode dependClassName="java.awt.Color" />
+    <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.util.EnumMap" />
     <classNode dependClassName="java.util.Map" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
@@ -59,6 +60,7 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.MapSequence" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.style.StyleRegistry" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.ChangeType" />
+    <classNode dependClassName="org.jetbrains.annotations.ApiStatus" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
   </dependency>
@@ -485,6 +487,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.diff.ui.common.EditorSettingsEditorColorsListener">
+    <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
     <classNode dependClassName="com.intellij.openapi.editor.colors.EditorColorsScheme" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />

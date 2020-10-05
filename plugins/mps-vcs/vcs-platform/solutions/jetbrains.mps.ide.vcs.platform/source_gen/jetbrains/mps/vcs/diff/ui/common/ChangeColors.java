@@ -7,50 +7,83 @@ import java.util.Map;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
 import java.awt.Color;
 import java.util.EnumMap;
-import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.editor.colors.EditorColorsManager;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import com.intellij.openapi.vcs.FileStatus;
+import com.intellij.openapi.application.ApplicationManager;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.editor.colors.EditorColorsManager;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import com.intellij.openapi.editor.colors.EditorColors;
 
 @GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/4652592318748335554", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 public class ChangeColors {
-  private static final Map<ChangeType, Color> ourDiffColors = new EnumMap<ChangeType, Color>(ChangeType.class);
-  private static final Map<ChangeType, Color> ourTreeColors = new EnumMap<ChangeType, Color>(ChangeType.class);
-  private static final Map<ChangeType, Color> ourGutterColors = new EnumMap<ChangeType, Color>(ChangeType.class);
+  private final Map<ChangeType, Color> myDiffColors = new EnumMap<ChangeType, Color>(ChangeType.class);
+  private final Map<ChangeType, Color> myTreeColors = new EnumMap<ChangeType, Color>(ChangeType.class);
+  private final Map<ChangeType, Color> myGutterColors = new EnumMap<ChangeType, Color>(ChangeType.class);
 
 
   private ChangeColors() {
+    updateEditorColors(EditorColorsManager.getInstance().getGlobalScheme());
+    MapSequence.fromMap(myTreeColors).put(ChangeType.ADD, FileStatus.ADDED.getColor());
+    MapSequence.fromMap(myTreeColors).put(ChangeType.DELETE, FileStatus.DELETED.getColor());
+    MapSequence.fromMap(myTreeColors).put(ChangeType.CHANGE, FileStatus.MODIFIED.getColor());
+    MapSequence.fromMap(myTreeColors).put(ChangeType.CONFLICTED, FileStatus.MERGED_WITH_CONFLICTS.getColor());
   }
 
+  public static ChangeColors getInstance() {
+    return ApplicationManager.getApplication().getService(ChangeColors.class);
+  }
+
+  /**
+   * 
+   * @deprecated use {@link jetbrains.mps.vcs.diff.ui.common.ChangeColors#getDiffColor(ChangeType) } instead
+   */
   @NotNull
+  @ApiStatus.ScheduledForRemoval(inVersion = "2020.3")
+  @Deprecated(since = "2020.2.2", forRemoval = true)
   public synchronized static Color get(@NotNull ChangeType changeType) {
-    return MapSequence.fromMap(ourDiffColors).get(changeType);
+    return getInstance().getDiffColor(changeType);
   }
 
+  public Color getDiffColor(@NotNull ChangeType changeType) {
+    return MapSequence.fromMap(myDiffColors).get(changeType);
+  }
+
+  /**
+   * 
+   * @deprecated use {@link jetbrains.mps.vcs.diff.ui.common.ChangeColors#getGutterColor(ChangeType) } instead
+   */
+  @ApiStatus.ScheduledForRemoval(inVersion = "2020.3")
+  @Deprecated(since = "2020.2.2", forRemoval = true)
   public synchronized static Color getForGutter(@NotNull ChangeType changeType) {
-    return MapSequence.fromMap(ourGutterColors).get(changeType);
+    return getInstance().getGutterColor(changeType);
+  }
+
+  public Color getGutterColor(@NotNull ChangeType changeType) {
+    return MapSequence.fromMap(myGutterColors).get(changeType);
+  }
+
+  /**
+   * 
+   * @deprecated use {@link jetbrains.mps.vcs.diff.ui.common.ChangeColors#getTreeColor(ChangeType) } instead
+   */
+  @NotNull
+  @ApiStatus.ScheduledForRemoval(inVersion = "2020.3")
+  @Deprecated(since = "2020.2.2", forRemoval = true)
+  public static Color getForTree(@NotNull ChangeType changeType) {
+    return getInstance().getTreeColor(changeType);
   }
 
   @NotNull
-  public static Color getForTree(@NotNull ChangeType changeType) {
-    return MapSequence.fromMap(ourTreeColors).get(changeType);
+  public Color getTreeColor(@NotNull ChangeType changeType) {
+    return MapSequence.fromMap(myTreeColors).get(changeType);
   }
 
-  static {
-    updateEditorColors(null);
-    MapSequence.fromMap(ourTreeColors).put(ChangeType.ADD, FileStatus.ADDED.getColor());
-    MapSequence.fromMap(ourTreeColors).put(ChangeType.DELETE, FileStatus.DELETED.getColor());
-    MapSequence.fromMap(ourTreeColors).put(ChangeType.CHANGE, FileStatus.MODIFIED.getColor());
-    MapSequence.fromMap(ourTreeColors).put(ChangeType.CONFLICTED, FileStatus.MERGED_WITH_CONFLICTS.getColor());
-  }
-
-  /*package*/ synchronized static void updateEditorColors(@Nullable EditorColorsScheme scheme) {
+  /*package*/ void updateEditorColors(@Nullable EditorColorsScheme scheme) {
 
     if (scheme == null) {
       if (ApplicationManager.getApplication() == null) {
@@ -59,18 +92,18 @@ public class ChangeColors {
       scheme = EditorColorsManager.getInstance().getGlobalScheme();
     }
 
-    MapSequence.fromMap(ourDiffColors).put(ChangeType.ADD, StyleRegistry.getInstance().getStyle("DIFF_INSERTED").get(StyleAttributes.TEXT_BACKGROUND_COLOR));
+    MapSequence.fromMap(myDiffColors).put(ChangeType.ADD, StyleRegistry.getInstance().getStyle("DIFF_INSERTED").get(StyleAttributes.TEXT_BACKGROUND_COLOR));
 
-    MapSequence.fromMap(ourDiffColors).put(ChangeType.DELETE, StyleRegistry.getInstance().getStyle("DIFF_DELETED").get(StyleAttributes.TEXT_BACKGROUND_COLOR));
+    MapSequence.fromMap(myDiffColors).put(ChangeType.DELETE, StyleRegistry.getInstance().getStyle("DIFF_DELETED").get(StyleAttributes.TEXT_BACKGROUND_COLOR));
 
-    MapSequence.fromMap(ourDiffColors).put(ChangeType.CHANGE, StyleRegistry.getInstance().getStyle("DIFF_MODIFIED").get(StyleAttributes.TEXT_BACKGROUND_COLOR));
+    MapSequence.fromMap(myDiffColors).put(ChangeType.CHANGE, StyleRegistry.getInstance().getStyle("DIFF_MODIFIED").get(StyleAttributes.TEXT_BACKGROUND_COLOR));
 
-    MapSequence.fromMap(ourDiffColors).put(ChangeType.CONFLICTED, StyleRegistry.getInstance().getStyle("DIFF_CONFLICT").get(StyleAttributes.TEXT_BACKGROUND_COLOR));
+    MapSequence.fromMap(myDiffColors).put(ChangeType.CONFLICTED, StyleRegistry.getInstance().getStyle("DIFF_CONFLICT").get(StyleAttributes.TEXT_BACKGROUND_COLOR));
 
-    MapSequence.fromMap(ourGutterColors).put(ChangeType.ADD, scheme.getColor(EditorColors.ADDED_LINES_COLOR));
+    MapSequence.fromMap(myGutterColors).put(ChangeType.ADD, scheme.getColor(EditorColors.ADDED_LINES_COLOR));
 
-    MapSequence.fromMap(ourGutterColors).put(ChangeType.DELETE, scheme.getColor(EditorColors.DELETED_LINES_COLOR));
+    MapSequence.fromMap(myGutterColors).put(ChangeType.DELETE, scheme.getColor(EditorColors.DELETED_LINES_COLOR));
 
-    MapSequence.fromMap(ourGutterColors).put(ChangeType.CHANGE, scheme.getColor(EditorColors.MODIFIED_LINES_COLOR));
+    MapSequence.fromMap(myGutterColors).put(ChangeType.CHANGE, scheme.getColor(EditorColors.MODIFIED_LINES_COLOR));
   }
 }

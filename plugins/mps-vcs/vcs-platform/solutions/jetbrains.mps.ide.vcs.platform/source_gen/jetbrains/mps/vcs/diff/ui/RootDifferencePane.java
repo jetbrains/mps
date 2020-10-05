@@ -279,7 +279,7 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
         int leftEnd = (int) left.end() + leftOffset;
         int rightStart = (int) right.start() + rightOffset;
         int rightEnd = (int) right.end() + rightOffset;
-        Color color = ChangeColors.get(groupWithBounds.key().getChangeType());
+        Color color = ChangeColors.getInstance().getDiffColor(groupWithBounds.key().getChangeType());
         // separate changes close to each other 
         if (leftStart == prevLeftEnd) {
           leftStart++;
