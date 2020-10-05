@@ -12,7 +12,6 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.openapi.application.ApplicationManager;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
@@ -38,44 +37,12 @@ public class ChangeColors {
     return ApplicationManager.getApplication().getService(ChangeColors.class);
   }
 
-  /**
-   * 
-   * @deprecated use {@link jetbrains.mps.vcs.diff.ui.common.ChangeColors#getDiffColor(ChangeType) } instead
-   */
-  @NotNull
-  @ApiStatus.ScheduledForRemoval(inVersion = "2020.3")
-  @Deprecated(since = "2020.2.2", forRemoval = true)
-  public synchronized static Color get(@NotNull ChangeType changeType) {
-    return getInstance().getDiffColor(changeType);
-  }
-
   public Color getDiffColor(@NotNull ChangeType changeType) {
     return MapSequence.fromMap(myDiffColors).get(changeType);
   }
 
-  /**
-   * 
-   * @deprecated use {@link jetbrains.mps.vcs.diff.ui.common.ChangeColors#getGutterColor(ChangeType) } instead
-   */
-  @ApiStatus.ScheduledForRemoval(inVersion = "2020.3")
-  @Deprecated(since = "2020.2.2", forRemoval = true)
-  public synchronized static Color getForGutter(@NotNull ChangeType changeType) {
-    return getInstance().getGutterColor(changeType);
-  }
-
   public Color getGutterColor(@NotNull ChangeType changeType) {
     return MapSequence.fromMap(myGutterColors).get(changeType);
-  }
-
-  /**
-   * 
-   * @deprecated use {@link jetbrains.mps.vcs.diff.ui.common.ChangeColors#getTreeColor(ChangeType) } instead
-   */
-  @NotNull
-  @ApiStatus.ScheduledForRemoval(inVersion = "2020.3")
-  @Deprecated(since = "2020.2.2", forRemoval = true)
-  public static Color getForTree(@NotNull ChangeType changeType) {
-    return getInstance().getTreeColor(changeType);
   }
 
   @NotNull

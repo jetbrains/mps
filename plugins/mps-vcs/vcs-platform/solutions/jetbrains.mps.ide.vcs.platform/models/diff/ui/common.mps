@@ -156,14 +156,9 @@
       </concept>
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
-        <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
-      </concept>
-      <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
-        <reference id="1188214555875" name="key" index="2B6OnR" />
-        <child id="1188214607812" name="value" index="2B70Vg" />
       </concept>
       <concept id="1095950406618" name="jetbrains.mps.baseLanguage.structure.DivExpression" flags="nn" index="FJ1c_" />
       <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
@@ -411,31 +406,6 @@
       </concept>
       <concept id="1225797177491" name="jetbrains.mps.baseLanguage.closures.structure.InvokeFunctionOperation" flags="nn" index="1Bd96e">
         <child id="1225797361612" name="parameter" index="1BdPVh" />
-      </concept>
-    </language>
-    <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="2546654756694997551" name="jetbrains.mps.baseLanguage.javadoc.structure.LinkInlineDocTag" flags="ng" index="92FcH">
-        <child id="2546654756694997556" name="reference" index="92FcQ" />
-        <child id="3106559687488913694" name="line" index="2XjZqd" />
-      </concept>
-      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
-        <child id="5383422241790532083" name="tags" index="3nqlJM" />
-      </concept>
-      <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
-      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
-        <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
-        <child id="2667874559098216723" name="text" index="3HnX3l" />
-      </concept>
-      <concept id="2217234381367530195" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocReference" flags="ng" index="VXe0Z">
-        <reference id="2217234381367530196" name="methodDeclaration" index="VXe0S" />
-      </concept>
-      <concept id="8970989240999019145" name="jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentLinePart" flags="ng" index="1dT_AA">
-        <child id="6962838954693749192" name="tag" index="qph3F" />
-      </concept>
-      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
-        <property id="8970989240999019144" name="text" index="1dT_AB" />
       </concept>
     </language>
     <language id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging">
@@ -2078,86 +2048,6 @@
         <ref role="3uigEE" node="42hl10VH9R2" resolve="ChangeColors" />
       </node>
     </node>
-    <node concept="2tJIrI" id="5ZshaoOufCp" role="jymVt" />
-    <node concept="2YIFZL" id="42hl10VH9R3" role="jymVt">
-      <property role="TrG5h" value="get" />
-      <property role="od$2w" value="true" />
-      <node concept="3Tm1VV" id="42hl10VH9R8" role="1B3o_S" />
-      <node concept="3clFbS" id="42hl10VH9R9" role="3clF47">
-        <node concept="3clFbF" id="3$C2wb7p2p4" role="3cqZAp">
-          <node concept="2OqwBi" id="3$C2wb7p2wy" role="3clFbG">
-            <node concept="1rXfSq" id="3$C2wb7p2p3" role="2Oq$k0">
-              <ref role="37wK5l" node="3$C2wb7p0AM" resolve="getInstance" />
-            </node>
-            <node concept="liA8E" id="3$C2wb7p2Bh" role="2OqNvi">
-              <ref role="37wK5l" node="3$C2wb7oVfi" resolve="getDiffColor" />
-              <node concept="37vLTw" id="3$C2wb7p2Qk" role="37wK5m">
-                <ref role="3cqZAo" node="42hl10VH9R4" resolve="changeType" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="42hl10VH9Re" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-      </node>
-      <node concept="3uibUv" id="42hl10VH9R7" role="3clF45">
-        <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
-      </node>
-      <node concept="37vLTG" id="42hl10VH9R4" role="3clF46">
-        <property role="TrG5h" value="changeType" />
-        <node concept="2AHcQZ" id="42hl10VH9R6" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-        </node>
-        <node concept="3uibUv" id="42hl10VH9R5" role="1tU5fm">
-          <ref role="3uigEE" to="btf5:7inhnIFBpHM" resolve="ChangeType" />
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="3$C2wb7pb0V" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~ApiStatus$ScheduledForRemoval" resolve="ApiStatus.ScheduledForRemoval" />
-        <node concept="2B6LJw" id="3$C2wb7pbIZ" role="2B76xF">
-          <ref role="2B6OnR" to="mhfm:~ApiStatus$ScheduledForRemoval.inVersion()" resolve="inVersion" />
-          <node concept="Xl_RD" id="3$C2wb7pbQh" role="2B70Vg">
-            <property role="Xl_RC" value="2020.3" />
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="3$C2wb7p64H" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-        <node concept="2B6LJw" id="3$C2wb7p68U" role="2B76xF">
-          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
-          <node concept="Xl_RD" id="3$C2wb7p8Cx" role="2B70Vg">
-            <property role="Xl_RC" value="2020.2.2" />
-          </node>
-        </node>
-        <node concept="2B6LJw" id="3$C2wb7p83L" role="2B76xF">
-          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
-          <node concept="3clFbT" id="3$C2wb7paQx" role="2B70Vg">
-            <property role="3clFbU" value="true" />
-          </node>
-        </node>
-      </node>
-      <node concept="P$JXv" id="3$C2wb7p64E" role="lGtFl">
-        <node concept="TZ5HI" id="3$C2wb7p64F" role="3nqlJM">
-          <node concept="TZ5HA" id="3$C2wb7p64G" role="3HnX3l">
-            <node concept="1dT_AC" id="3$C2wb7pbQK" role="1dT_Ay">
-              <property role="1dT_AB" value="use " />
-            </node>
-            <node concept="1dT_AA" id="3$C2wb7pbQN" role="1dT_Ay">
-              <node concept="92FcH" id="3$C2wb7pbQT" role="qph3F">
-                <node concept="TZ5HA" id="3$C2wb7pbQV" role="2XjZqd" />
-                <node concept="VXe0Z" id="3$C2wb7pNdF" role="92FcQ">
-                  <ref role="VXe0S" node="3$C2wb7oVfi" resolve="getDiffColor" />
-                </node>
-              </node>
-            </node>
-            <node concept="1dT_AC" id="3$C2wb7pbQM" role="1dT_Ay">
-              <property role="1dT_AB" value=" instead" />
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
     <node concept="2tJIrI" id="3$C2wb7om82" role="jymVt" />
     <node concept="3clFb_" id="3$C2wb7oVfi" role="jymVt">
       <property role="TrG5h" value="getDiffColor" />
@@ -2182,83 +2072,6 @@
             </node>
             <node concept="37vLTw" id="3$C2wb7oXEm" role="3ElQJh">
               <ref role="3cqZAo" node="3$C2wb7q605" resolve="myDiffColors" />
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="2WvuDpQ69XI" role="jymVt" />
-    <node concept="2YIFZL" id="2WvuDpQ6myg" role="jymVt">
-      <property role="TrG5h" value="getForGutter" />
-      <property role="od$2w" value="true" />
-      <node concept="37vLTG" id="2WvuDpQ6mLG" role="3clF46">
-        <property role="TrG5h" value="changeType" />
-        <node concept="2AHcQZ" id="2WvuDpQ6mLH" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-        </node>
-        <node concept="3uibUv" id="2WvuDpQ6mLI" role="1tU5fm">
-          <ref role="3uigEE" to="btf5:7inhnIFBpHM" resolve="ChangeType" />
-        </node>
-      </node>
-      <node concept="3clFbS" id="2WvuDpQ6myj" role="3clF47">
-        <node concept="3clFbF" id="3$C2wb7p5vR" role="3cqZAp">
-          <node concept="2OqwBi" id="3$C2wb7p5AX" role="3clFbG">
-            <node concept="1rXfSq" id="3$C2wb7p5vP" role="2Oq$k0">
-              <ref role="37wK5l" node="3$C2wb7p0AM" resolve="getInstance" />
-            </node>
-            <node concept="liA8E" id="3$C2wb7p5Is" role="2OqNvi">
-              <ref role="37wK5l" node="3$C2wb7p4kP" resolve="getGutterColor" />
-              <node concept="37vLTw" id="3$C2wb7p5XC" role="37wK5m">
-                <ref role="3cqZAo" node="2WvuDpQ6mLG" resolve="changeType" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="2WvuDpQ6lml" role="1B3o_S" />
-      <node concept="3uibUv" id="2WvuDpQ6mvF" role="3clF45">
-        <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
-      </node>
-      <node concept="2AHcQZ" id="3$C2wb7pNji" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~ApiStatus$ScheduledForRemoval" resolve="ApiStatus.ScheduledForRemoval" />
-        <node concept="2B6LJw" id="3$C2wb7pNjj" role="2B76xF">
-          <ref role="2B6OnR" to="mhfm:~ApiStatus$ScheduledForRemoval.inVersion()" resolve="inVersion" />
-          <node concept="Xl_RD" id="3$C2wb7pNjk" role="2B70Vg">
-            <property role="Xl_RC" value="2020.3" />
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="3$C2wb7pNeS" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-        <node concept="2B6LJw" id="3$C2wb7pNgQ" role="2B76xF">
-          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
-          <node concept="Xl_RD" id="3$C2wb7pNgR" role="2B70Vg">
-            <property role="Xl_RC" value="2020.2.2" />
-          </node>
-        </node>
-        <node concept="2B6LJw" id="3$C2wb7pNgS" role="2B76xF">
-          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
-          <node concept="3clFbT" id="3$C2wb7pNgT" role="2B70Vg">
-            <property role="3clFbU" value="true" />
-          </node>
-        </node>
-      </node>
-      <node concept="P$JXv" id="3$C2wb7pNeP" role="lGtFl">
-        <node concept="TZ5HI" id="3$C2wb7pNeQ" role="3nqlJM">
-          <node concept="TZ5HA" id="3$C2wb7pNeR" role="3HnX3l">
-            <node concept="1dT_AC" id="3$C2wb7pNno" role="1dT_Ay">
-              <property role="1dT_AB" value="use " />
-            </node>
-            <node concept="1dT_AA" id="3$C2wb7pNnr" role="1dT_Ay">
-              <node concept="92FcH" id="3$C2wb7pNnx" role="qph3F">
-                <node concept="TZ5HA" id="3$C2wb7pNnz" role="2XjZqd" />
-                <node concept="VXe0Z" id="3$C2wb7pNnE" role="92FcQ">
-                  <ref role="VXe0S" node="3$C2wb7p4kP" resolve="getGutterColor" />
-                </node>
-              </node>
-            </node>
-            <node concept="1dT_AC" id="3$C2wb7pNnq" role="1dT_Ay">
-              <property role="1dT_AB" value=" instead" />
             </node>
           </node>
         </node>
@@ -2292,85 +2105,6 @@
         </node>
       </node>
       <node concept="3Tm1VV" id="3$C2wb7p4kZ" role="1B3o_S" />
-    </node>
-    <node concept="2tJIrI" id="5ZshaoOufPP" role="jymVt" />
-    <node concept="2YIFZL" id="42hl10VH9Rf" role="jymVt">
-      <property role="TrG5h" value="getForTree" />
-      <node concept="2AHcQZ" id="42hl10VH9Rq" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-      </node>
-      <node concept="3uibUv" id="42hl10VH9Rj" role="3clF45">
-        <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
-      </node>
-      <node concept="37vLTG" id="42hl10VH9Rg" role="3clF46">
-        <property role="TrG5h" value="changeType" />
-        <node concept="2AHcQZ" id="42hl10VH9Ri" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-        </node>
-        <node concept="3uibUv" id="42hl10VH9Rh" role="1tU5fm">
-          <ref role="3uigEE" to="btf5:7inhnIFBpHM" resolve="ChangeType" />
-        </node>
-      </node>
-      <node concept="3clFbS" id="42hl10VH9Rl" role="3clF47">
-        <node concept="3clFbF" id="3$C2wb7pQU1" role="3cqZAp">
-          <node concept="2OqwBi" id="3$C2wb7pR1h" role="3clFbG">
-            <node concept="1rXfSq" id="3$C2wb7pQU0" role="2Oq$k0">
-              <ref role="37wK5l" node="3$C2wb7p0AM" resolve="getInstance" />
-            </node>
-            <node concept="liA8E" id="3$C2wb7pR8w" role="2OqNvi">
-              <ref role="37wK5l" node="3$C2wb7pOSG" resolve="getTreeColor" />
-              <node concept="37vLTw" id="3$C2wb7pRnM" role="37wK5m">
-                <ref role="3cqZAo" node="42hl10VH9Rg" resolve="changeType" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="42hl10VH9Rk" role="1B3o_S" />
-      <node concept="2AHcQZ" id="3$C2wb7pRQh" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~ApiStatus$ScheduledForRemoval" resolve="ApiStatus.ScheduledForRemoval" />
-        <node concept="2B6LJw" id="3$C2wb7pRQi" role="2B76xF">
-          <ref role="2B6OnR" to="mhfm:~ApiStatus$ScheduledForRemoval.inVersion()" resolve="inVersion" />
-          <node concept="Xl_RD" id="3$C2wb7pRQj" role="2B70Vg">
-            <property role="Xl_RC" value="2020.3" />
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="3$C2wb7pRN4" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-        <node concept="2B6LJw" id="3$C2wb7pRPz" role="2B76xF">
-          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
-          <node concept="Xl_RD" id="3$C2wb7pRP$" role="2B70Vg">
-            <property role="Xl_RC" value="2020.2.2" />
-          </node>
-        </node>
-        <node concept="2B6LJw" id="3$C2wb7pRP_" role="2B76xF">
-          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
-          <node concept="3clFbT" id="3$C2wb7pRPA" role="2B70Vg">
-            <property role="3clFbU" value="true" />
-          </node>
-        </node>
-      </node>
-      <node concept="P$JXv" id="3$C2wb7pRN1" role="lGtFl">
-        <node concept="TZ5HI" id="3$C2wb7pRN2" role="3nqlJM">
-          <node concept="TZ5HA" id="3$C2wb7pRN3" role="3HnX3l">
-            <node concept="1dT_AC" id="3$C2wb7pRSU" role="1dT_Ay">
-              <property role="1dT_AB" value="use " />
-            </node>
-            <node concept="1dT_AA" id="3$C2wb7pRSX" role="1dT_Ay">
-              <node concept="92FcH" id="3$C2wb7pRT3" role="qph3F">
-                <node concept="TZ5HA" id="3$C2wb7pRT5" role="2XjZqd" />
-                <node concept="VXe0Z" id="3$C2wb7pRTc" role="92FcQ">
-                  <ref role="VXe0S" node="3$C2wb7pOSG" resolve="getTreeColor" />
-                </node>
-              </node>
-            </node>
-            <node concept="1dT_AC" id="3$C2wb7pRSW" role="1dT_Ay">
-              <property role="1dT_AB" value=" instead" />
-            </node>
-          </node>
-        </node>
-      </node>
     </node>
     <node concept="2tJIrI" id="3$C2wb7pRt2" role="jymVt" />
     <node concept="3clFb_" id="3$C2wb7pOSG" role="jymVt">

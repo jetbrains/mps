@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-7jdf0pun96mr3egbl728pw78dq6438n">
+<product version="3" modelHash="ey10b13cvzu1sa5qo8fpjn4zxrj9bft">
   <files names="BaseDiffModelTreeAction.java:Bounds.java:ButtonsPainter.java:ChangeColors.java:ChangeEditorMessage.java:ChangeEditorMessageFactory.java:ChangeGroup.java:ChangeGroupInvalidateListener.java:ChangeGroupLayout.java:ChangeGroupMessages.java:DiffChangeGroupLayout.java:DiffEditor.java:DiffEditorSeparator.java:DiffEditorsGroup.java:DiffFileEditor.java:DiffModelTree.java:DiffModelUtil.java:EditorSettingsEditorColorsListener.java:FoldingAreaButton.java:GoToNeighbourRootActions.java:InvokeTextDiffAction.java:NextPreviousTraverser.java" />
 </product>
 
