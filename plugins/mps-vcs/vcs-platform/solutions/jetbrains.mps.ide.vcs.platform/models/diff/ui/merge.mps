@@ -10134,10 +10134,10 @@
             <node concept="3cpWsn" id="2jv$fqwD$Fz" role="3cpWs9">
               <property role="TrG5h" value="md" />
               <node concept="3uibUv" id="2jv$fqwD$F$" role="1tU5fm">
-                <ref role="3uigEE" node="2jv$fqwD$ox" />
+                <ref role="3uigEE" node="2jv$fqwD$ox" resolve="MergeModelsPanel" />
               </node>
               <node concept="Xjq3P" id="2jv$fqwD$F_" role="33vP2m">
-                <ref role="1HBi2w" node="2jv$fqwD$ox" />
+                <ref role="1HBi2w" node="2jv$fqwD$ox" resolve="MergeModelsPanel" />
               </node>
             </node>
           </node>
@@ -10148,15 +10148,15 @@
                 <ref role="37wK5l" to="33ny:~Arrays.asList(java.lang.Object...)" resolve="asList" />
                 <ref role="1Pybhc" to="33ny:~Arrays" resolve="Arrays" />
                 <node concept="2YIFZM" id="2jv$fqwD$FF" role="37wK5m">
-                  <ref role="37wK5l" node="BjUsE2KPW9" />
-                  <ref role="1Pybhc" node="BjUsE2KPW8" />
+                  <ref role="37wK5l" node="BjUsE2KPW9" resolve="yoursInstance" />
+                  <ref role="1Pybhc" node="BjUsE2KPW8" resolve="AcceptYoursTheirs" />
                   <node concept="37vLTw" id="3GM_nagTrnJ" role="37wK5m">
                     <ref role="3cqZAo" node="2jv$fqwD$Fz" resolve="md" />
                   </node>
                 </node>
                 <node concept="2YIFZM" id="2jv$fqwD$FH" role="37wK5m">
-                  <ref role="37wK5l" node="BjUsE2KPWk" />
-                  <ref role="1Pybhc" node="BjUsE2KPW8" />
+                  <ref role="37wK5l" node="BjUsE2KPWk" resolve="theirsInstance" />
+                  <ref role="1Pybhc" node="BjUsE2KPW8" resolve="AcceptYoursTheirs" />
                   <node concept="37vLTw" id="3GM_nagTs$w" role="37wK5m">
                     <ref role="3cqZAo" node="2jv$fqwD$Fz" resolve="md" />
                   </node>

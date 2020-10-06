@@ -1951,7 +1951,7 @@
       <node concept="3clFbS" id="42hl10VH9RN" role="3clF47">
         <node concept="3clFbF" id="5ZshaoOuelO" role="3cqZAp">
           <node concept="1rXfSq" id="5ZshaoOuelM" role="3clFbG">
-            <ref role="37wK5l" node="3$C2wb7q2Fm" />
+            <ref role="37wK5l" node="3$C2wb7q2Fm" resolve="updateEditorColors" />
             <node concept="2OqwBi" id="3$C2wb7q06e" role="37wK5m">
               <node concept="2YIFZM" id="3$C2wb7q00w" role="2Oq$k0">
                 <ref role="37wK5l" to="drih:~EditorColorsManager.getInstance()" resolve="getInstance" />
@@ -1980,7 +1980,7 @@
                 <ref role="Rm8GQ" to="btf5:7inhnIFBpHO" resolve="ADD" />
               </node>
               <node concept="37vLTw" id="3$C2wb7pSe7" role="3ElQJh">
-                <ref role="3cqZAo" node="3$C2wb7q6A$" />
+                <ref role="3cqZAo" node="3$C2wb7q6A$" resolve="myTreeColors" />
               </node>
             </node>
           </node>
@@ -1998,7 +1998,7 @@
             </node>
             <node concept="3EllGN" id="42hl10VH9Sb" role="37vLTJ">
               <node concept="37vLTw" id="3$C2wb7pSed" role="3ElQJh">
-                <ref role="3cqZAo" node="3$C2wb7q6A$" />
+                <ref role="3cqZAo" node="3$C2wb7q6A$" resolve="myTreeColors" />
               </node>
               <node concept="Rm8GO" id="42hl10VH9Sc" role="3ElVtu">
                 <ref role="1Px2BO" to="btf5:7inhnIFBpHM" resolve="ChangeType" />
@@ -2024,7 +2024,7 @@
                 <ref role="Rm8GQ" to="btf5:7inhnIFBpI0" resolve="CHANGE" />
               </node>
               <node concept="37vLTw" id="3$C2wb7pSej" role="3ElQJh">
-                <ref role="3cqZAo" node="3$C2wb7q6A$" />
+                <ref role="3cqZAo" node="3$C2wb7q6A$" resolve="myTreeColors" />
               </node>
             </node>
           </node>
@@ -2033,7 +2033,7 @@
           <node concept="37vLTI" id="42hl10VH9S$" role="3clFbG">
             <node concept="3EllGN" id="42hl10VH9S_" role="37vLTJ">
               <node concept="37vLTw" id="3$C2wb7pSen" role="3ElQJh">
-                <ref role="3cqZAo" node="3$C2wb7q6A$" />
+                <ref role="3cqZAo" node="3$C2wb7q6A$" resolve="myTreeColors" />
               </node>
               <node concept="Rm8GO" id="42hl10VH9SA" role="3ElVtu">
                 <ref role="1Px2BO" to="btf5:7inhnIFBpHM" resolve="ChangeType" />
@@ -2087,12 +2087,12 @@
         <node concept="3clFbF" id="3$C2wb7p2p4" role="3cqZAp">
           <node concept="2OqwBi" id="3$C2wb7p2wy" role="3clFbG">
             <node concept="1rXfSq" id="3$C2wb7p2p3" role="2Oq$k0">
-              <ref role="37wK5l" node="3$C2wb7p0AM" />
+              <ref role="37wK5l" node="3$C2wb7p0AM" resolve="getInstance" />
             </node>
             <node concept="liA8E" id="3$C2wb7p2Bh" role="2OqNvi">
-              <ref role="37wK5l" node="3$C2wb7oVfi" />
+              <ref role="37wK5l" node="3$C2wb7oVfi" resolve="getDiffColor" />
               <node concept="37vLTw" id="3$C2wb7p2Qk" role="37wK5m">
-                <ref role="3cqZAo" node="42hl10VH9R4" />
+                <ref role="3cqZAo" node="42hl10VH9R4" resolve="changeType" />
               </node>
             </node>
           </node>
@@ -2204,12 +2204,12 @@
         <node concept="3clFbF" id="3$C2wb7p5vR" role="3cqZAp">
           <node concept="2OqwBi" id="3$C2wb7p5AX" role="3clFbG">
             <node concept="1rXfSq" id="3$C2wb7p5vP" role="2Oq$k0">
-              <ref role="37wK5l" node="3$C2wb7p0AM" />
+              <ref role="37wK5l" node="3$C2wb7p0AM" resolve="getInstance" />
             </node>
             <node concept="liA8E" id="3$C2wb7p5Is" role="2OqNvi">
-              <ref role="37wK5l" node="3$C2wb7p4kP" />
+              <ref role="37wK5l" node="3$C2wb7p4kP" resolve="getGutterColor" />
               <node concept="37vLTw" id="3$C2wb7p5XC" role="37wK5m">
-                <ref role="3cqZAo" node="2WvuDpQ6mLG" />
+                <ref role="3cqZAo" node="2WvuDpQ6mLG" resolve="changeType" />
               </node>
             </node>
           </node>
@@ -2315,12 +2315,12 @@
         <node concept="3clFbF" id="3$C2wb7pQU1" role="3cqZAp">
           <node concept="2OqwBi" id="3$C2wb7pR1h" role="3clFbG">
             <node concept="1rXfSq" id="3$C2wb7pQU0" role="2Oq$k0">
-              <ref role="37wK5l" node="3$C2wb7p0AM" />
+              <ref role="37wK5l" node="3$C2wb7p0AM" resolve="getInstance" />
             </node>
             <node concept="liA8E" id="3$C2wb7pR8w" role="2OqNvi">
-              <ref role="37wK5l" node="3$C2wb7pOSG" />
+              <ref role="37wK5l" node="3$C2wb7pOSG" resolve="getTreeColor" />
               <node concept="37vLTw" id="3$C2wb7pRnM" role="37wK5m">
-                <ref role="3cqZAo" node="42hl10VH9Rg" />
+                <ref role="3cqZAo" node="42hl10VH9Rg" resolve="changeType" />
               </node>
             </node>
           </node>
@@ -24744,14 +24744,14 @@
               <node concept="liA8E" id="3$C2wb7q1NX" role="2OqNvi">
                 <ref role="37wK5l" to="1m72:~ComponentManager.getServiceIfCreated(java.lang.Class)" resolve="getServiceIfCreated" />
                 <node concept="3VsKOn" id="3$C2wb7q2h2" role="37wK5m">
-                  <ref role="3VsUkX" node="42hl10VH9R2" />
+                  <ref role="3VsUkX" node="42hl10VH9R2" resolve="ChangeColors" />
                 </node>
               </node>
             </node>
             <node concept="liA8E" id="3$C2wb7q3HL" role="2OqNvi">
-              <ref role="37wK5l" node="3$C2wb7q2Fm" />
+              <ref role="37wK5l" node="3$C2wb7q2Fm" resolve="updateEditorColors" />
               <node concept="37vLTw" id="3$C2wb7q4Fb" role="37wK5m">
-                <ref role="3cqZAo" node="7gq6PVn4WbS" />
+                <ref role="3cqZAo" node="7gq6PVn4WbS" resolve="scheme" />
               </node>
             </node>
           </node>
