@@ -101,9 +101,11 @@ import java.util.Collection;
     }
     final Rectangle pathBounds = tree.getPathBounds(pathForLocation);
     final int rowForPath = tree.getRowForPath(pathForLocation); // XXX we don't care about row in the renderer, can pass 0
-    final Insets insets = tree.getInsets();
+    final Rectangle viewArea = tree.getVisibleRect();
     final Component crc = getTreeCellRendererComponent(tree, nodeFromPath, false, false, false, rowForPath, false);
-    crc.setBounds(pathBounds.x, pathBounds.y, tree.getWidth() - pathBounds.x - insets.right, pathBounds.height);
+//    crc.setBounds(pathBounds.x, pathBounds.y, tree.getWidth() - pathBounds.x - insets.right, pathBounds.height);
+//    crc.setBounds(pathBounds);
+    crc.setBounds(pathBounds.x, pathBounds.y, viewArea.width + viewArea.x - pathBounds.x, pathBounds.height);
     crc.doLayout();
 //    System.out.printf("renderer bounds: %s; indicator bounds: %s;  click@[%d,%d], tree (X:%d Width:%d)\n", crc.getBounds(), myIndicator.getBounds(), e.getX(), e.getY(), tree.getX(), tree.getWidth());
     final int eventX = e.getX() - crc.getX();

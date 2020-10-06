@@ -27,6 +27,7 @@ import com.intellij.openapi.ui.popup.Balloon;
 import com.intellij.openapi.ui.popup.Balloon.Position;
 import com.intellij.openapi.ui.popup.BalloonBuilder;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
+import com.intellij.ui.JBColor;
 import com.intellij.ui.awt.RelativePoint;
 import com.intellij.util.ArrayUtil;
 import com.intellij.util.messages.MessageBusConnection;
@@ -250,6 +251,7 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
       if (title != null) {
         bb.setTitle(title);
       }
+      bb.setFillColor(JBColor.lightGray).setFadeoutTime(10000);
       final Balloon b = bb.setHideOnClickOutside(true).setHideOnKeyOutside(true).setShowCallout(true).createBalloon();
       b.show(new RelativePoint(e), Position.below);
     }

@@ -62,5 +62,7 @@ public class ErrorStateComponent extends Component {
     g.fillOval(x, y, d, d);
     g.setColor(Color.black);
     g.drawOval(x, y, d, d);
+//    g.fillRect(x + d/2-1, y + d/4, 2, d/2);
+//    g.fillRect(x + d/2-1, y + d/4 + d/2 + 1, 2, 1);
   }
 }
