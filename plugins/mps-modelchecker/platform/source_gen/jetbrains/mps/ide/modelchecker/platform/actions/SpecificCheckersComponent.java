@@ -7,6 +7,7 @@ import com.intellij.openapi.components.BaseComponent;
 import java.util.List;
 import jetbrains.mps.checkers.IChecker;
 import jetbrains.mps.errors.CheckerRegistry;
+import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -21,11 +22,12 @@ public class SpecificCheckersComponent implements BaseComponent {
 
   @Override
   public void initComponent() {
-    myCheckerRegistry = MPSCoreComponents.getInstance().getPlatform().findComponent(CheckerRegistry.class);
+    ComponentHost platform = MPSCoreComponents.getInstance().getPlatform();
+    myCheckerRegistry = platform.findComponent(CheckerRegistry.class);
     if (myCheckerRegistry == null) {
       return;
     }
-    myCheckers = ListSequence.fromListAndArray(new ArrayList<IChecker<?, ?>>(), new UnresolvedReferencesChecker(), new GeneratorTemplatesChecker());
+    myCheckers = ListSequence.fromListAndArray(new ArrayList<IChecker<?, ?>>(), new UnresolvedReferencesChecker(), new GeneratorTemplatesChecker(), new ProperGenPlanChecker(platform));
     for (IChecker<?, ?> checker : ListSequence.fromList(myCheckers)) {
       myCheckerRegistry.registerChecker(checker);
     }

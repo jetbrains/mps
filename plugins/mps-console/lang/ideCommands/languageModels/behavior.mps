@@ -2739,11 +2739,13 @@
             </node>
             <node concept="2ShNRf" id="4FXPPIUfiHs" role="33vP2m">
               <node concept="1pGfFk" id="4FXPPIUfiHt" role="2ShVmc">
-                <ref role="37wK5l" to="tft2:~EngagedGeneratorCollector.&lt;init&gt;(org.jetbrains.mps.openapi.model.SModel,java.util.Collection)" resolve="EngagedGeneratorCollector" />
+                <ref role="37wK5l" to="tft2:~EngagedGeneratorCollector.&lt;init&gt;(jetbrains.mps.smodel.language.LanguageRegistry,org.jetbrains.mps.openapi.model.SModel)" resolve="EngagedGeneratorCollector" />
+                <node concept="37vLTw" id="7lc5ByQQP1q" role="37wK5m">
+                  <ref role="3cqZAo" node="UFnFoNtRbN" resolve="languageRegistry" />
+                </node>
                 <node concept="37vLTw" id="4FXPPIUfiHu" role="37wK5m">
                   <ref role="3cqZAo" node="bxo68MxMqU" resolve="model" />
                 </node>
-                <node concept="10Nm6u" id="4FXPPIUfiHv" role="37wK5m" />
               </node>
             </node>
           </node>

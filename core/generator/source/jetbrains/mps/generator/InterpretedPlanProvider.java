@@ -71,7 +71,7 @@ public final class InterpretedPlanProvider implements ModelGenerationPlan.Provid
     GenPlanTranslator gpt = new GenPlanTranslator(planDecl);
     // FIXME in fact, shall respect additional languages passed through GenerationParametersProviderEx.getAdditionalLanguages(SModel), like
     // original GenerationPlan did. However, it's rarely (if ever) used feature and contemporary GPs replace it completely, so I do not bother.
-    EngagedGeneratorCollector egc = new EngagedGeneratorCollector(model, null);
+    EngagedGeneratorCollector egc = new EngagedGeneratorCollector(myLanguageRegistry, model);
     RegularPlanBuilder planBuilder = new RegularPlanBuilder(myLanguageRegistry, egc.getGenerators(), myMessageHandler);
     gpt.feed(planBuilder);
     return planBuilder.wrapUp(gpt.getPlanIdentity());

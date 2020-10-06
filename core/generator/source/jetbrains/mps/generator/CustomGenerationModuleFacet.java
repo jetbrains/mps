@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -65,8 +65,9 @@ public class CustomGenerationModuleFacet extends ModuleFacetBase implements Mode
     myCachedPlanTimestamp = modelActualTimestamp;
 
     GenPlanTranslator gpt = new GenPlanTranslator(planModel.getRootNodes().iterator().next());
-    EngagedGeneratorCollector egc = new EngagedGeneratorCollector(model, null); // see comment in GenPlanExtractor regarding additional languages
-    RegularPlanBuilder planBuilder = new RegularPlanBuilder(LanguageRegistry.getInstance(model.getRepository()), egc.getGenerators());
+    final LanguageRegistry languageRegistry = LanguageRegistry.getInstance(model.getRepository());
+    EngagedGeneratorCollector egc = new EngagedGeneratorCollector(languageRegistry, model); // see comment in GenPlanExtractor regarding additional languages
+    RegularPlanBuilder planBuilder = new RegularPlanBuilder(languageRegistry, egc.getGenerators());
     gpt.feed(planBuilder);
     myCachedPlanInstance = planBuilder.wrapUp(gpt.getPlanIdentity());
     return myCachedPlanInstance;

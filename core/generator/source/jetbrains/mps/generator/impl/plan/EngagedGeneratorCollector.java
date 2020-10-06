@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import jetbrains.mps.generator.runtime.TemplateModule;
 import jetbrains.mps.smodel.language.GeneratorRuntime;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -50,6 +51,7 @@ public final class EngagedGeneratorCollector {
   @NotNull
   private final SModel myModel;
   private final List<SLanguage> myAdditionalLanguages;
+  private final LanguageRegistry myLanguageRegistry;
   private Collection<SLanguage> myDirectLangUse;
   private Collection<TemplateModule> myEngagedGenerators;
   private final Set<SLanguage> myBadLanguages = new HashSet<>();
@@ -57,9 +59,21 @@ public final class EngagedGeneratorCollector {
   // e.g. L1 with G1 and L2 with G2, both G1 and G2 extend G3, which would show up twice in this case
   private final List<EngagedGenerator> myEngagedTrace = new ArrayList<>();
 
+  /**
+   * @deprecated use the cons with {@code LanguageRegistry}. There's no use for additionalLanguages (generation parameters shall fade away; could get replaced with GP if necessary)
+   */
+  @Deprecated(forRemoval = true)
+  @ToRemove(version = 2020.3)
   public EngagedGeneratorCollector(@NotNull SModel model, @Nullable Collection<SLanguage> additionalLanguages) {
+    myLanguageRegistry = LanguageRegistry.getInstance();
     myModel = model;
     myAdditionalLanguages = additionalLanguages == null ? Collections.emptyList() : new ArrayList<>(additionalLanguages);
+  }
+
+  public EngagedGeneratorCollector(@NotNull LanguageRegistry languageRegistry, @NotNull SModel model) {
+    myLanguageRegistry = languageRegistry;
+    myModel = model;
+    myAdditionalLanguages = Collections.emptyList();
   }
 
   /**
@@ -185,7 +199,7 @@ public final class EngagedGeneratorCollector {
         // do not resolve more than once
         continue;
       }
-      LanguageRuntime language = LanguageRegistry.getInstance().getLanguage(next);
+      LanguageRuntime language = myLanguageRegistry.getLanguage(next);
       if (language == null) {
         if (origin == null) {
           final String msg = "Model %s uses language %s which is missing (likely is not yet generated or is a bootstrap dependency)";
