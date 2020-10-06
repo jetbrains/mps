@@ -46,7 +46,7 @@ public class FoldingButtonsPainter extends AbstractFoldingAreaPainter {
     EditorComponent editorComponent = getEditorComponent();
     for (EditorCell_Collection foldable : editorComponent.getCellTracker().getFoldableCells()) {
       assert foldable.getEditorComponent() == editorComponent : "cell must be from my editor";
-      myFoldingButtons.add(new FoldingButton(foldable, getLeftHighlighter().getBackground()));
+      myFoldingButtons.add(new FoldingButton(foldable));
     }
     myNeedsRelayout = true;
   }

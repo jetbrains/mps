@@ -23,7 +23,6 @@ import com.intellij.ui.ColorUtil;
 import com.intellij.util.IconUtil;
 import com.intellij.util.containers.SortedList;
 import com.intellij.util.ui.ButtonlessScrollBarUI;
-import com.intellij.util.ui.UIUtil;
 import com.intellij.util.ui.update.MergingUpdateQueue;
 import com.intellij.util.ui.update.Update;
 import jetbrains.mps.errors.MessageStatus;
@@ -59,13 +58,13 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
                                                                                                 otherMark.getPriority() - mark.getPriority() :
                                                                                                 otherMark.getStatus().ordinal() - mark.getStatus().ordinal();
 
-  private EditorComponent myEditorComponent;
-  private MyErrorsButton myErrorsButton = new MyErrorsButton();
-  private List<SimpleEditorMessage> myMessages = new CopyOnWriteArrayList<>();
+  private final EditorComponent myEditorComponent;
+  private final MyErrorsButton myErrorsButton = new MyErrorsButton();
+  private final List<SimpleEditorMessage> myMessages = new CopyOnWriteArrayList<>();
   private List<GutterMark> myGutterMarks = Collections.emptyList();
-  private boolean myRightToLeft;
+  private final boolean myRightToLeft;
   private MergingUpdateQueue myUpdateQueue;
-  private Object myUpdateIdentity = new Object();
+  private final Object myUpdateIdentity = new Object();
 
   public MessagesGutter(EditorComponent editorComponent, boolean rightToLeft) {
     myEditorComponent = editorComponent;
@@ -364,7 +363,7 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
 
   private class GutterMark {
     private int myX, myY, myWidth, myHeight;
-    private SimpleEditorMessage myMessage;
+    private final SimpleEditorMessage myMessage;
     private boolean myValid = false;
 
     GutterMark(SimpleEditorMessage message) {
@@ -419,22 +418,8 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
       int x = getX();
       int y = getY();
       int height = Math.max(getHeight(), 3);
-      int width = getWidth();
-      g.fillRect(x + 1, y, width - 2, height);
 
-      Color brighter = color.brighter();
-      g.setColor(brighter);
-      // left decoration
-      UIUtil.drawLine(g, x, y, x, y + height);
-      // top decoration
-      UIUtil.drawLine(g, x + 1, y, x + width - 2, y);
-
-      Color darker = ColorUtil.shift(color, 0.75);
-      g.setColor(darker);
-      // bottom decoration
-      UIUtil.drawLine(g, x + 1, y + height, x + width - 2, y + height);   // large bottom to let overwrite by hl below
-      // right decoration
-      UIUtil.drawLine(g, x + width - 2, y, x + width - 2, y + height - 1);
+      g.fillRect(x + 2, y, 2, height);
     }
 
     public int getX() {
@@ -483,7 +468,7 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
     }
   }
 
-  private class MyErrorsButton extends JButton {
+  private final class MyErrorsButton extends JButton {
     private MyErrorsButton() {
       super(General.InspectionsEye);
       setFocusable(false);

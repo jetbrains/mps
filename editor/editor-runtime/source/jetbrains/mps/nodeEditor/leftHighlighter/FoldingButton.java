@@ -17,6 +17,7 @@ package jetbrains.mps.nodeEditor.leftHighlighter;
 
 import com.intellij.openapi.editor.colors.EditorColors;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
+import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.cells.CellInfo;
 import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
@@ -48,13 +49,11 @@ class FoldingButton {
   private boolean myMouseOver = false;
   private boolean myTopCovered = false;
   private boolean myBottomCovered = false;
-  private final Color myBackgroundColor;
 
-  FoldingButton(@NotNull EditorCell_Collection cell, @NotNull Color background) {
+  FoldingButton(@NotNull EditorCell_Collection cell) {
     //TODO: Can we hold cell directly instead of CellInfo here?
     myCellInfo = cell.getCellInfo();
     myEditor = cell.getEditorComponent();
-    myBackgroundColor = background;
   }
 
   /**
@@ -104,6 +103,10 @@ class FoldingButton {
         : EditorColorsManager.getInstance().getGlobalScheme().getColor(EditorColors.TEARLINE_COLOR);
   }
 
+  private Color getBackgroundColor() {
+    return EditorSettings.getInstance().getLeftHighlighterBackgroundColor();
+  }
+
   void paintFeedback(Graphics g) {
     if (myMouseOver && !myIsFolded) {
       g.setColor(getBorderColor());
@@ -131,12 +134,13 @@ class FoldingButton {
       return;
     }
     Color borderColor = getBorderColor();
+    Color backgroundColor = getBackgroundColor();
     if (!myIsFolded) {
       int [] xs = {-HALF_WIDTH, -HALF_WIDTH, 0, HALF_WIDTH, HALF_WIDTH};
       int [] ys = {myY1, myY1 + CANT_HEIGHT, myY1 + HEIGHT, myY1 + CANT_HEIGHT, myY1};
 
       if (myMouseOver || !myTopCovered) {
-        g.setColor(myBackgroundColor);
+        g.setColor(backgroundColor);
         g.fillPolygon(xs, ys, xs.length);
         g.setColor(borderColor);
         g.drawPolygon(xs, ys, xs.length);
@@ -147,7 +151,7 @@ class FoldingButton {
         for (int i = 0; i < xs.length; i++) {
           ys[i] = myY2 - (ys[i] - myY1);
         }
-        g.setColor(myBackgroundColor);
+        g.setColor(backgroundColor);
         g.fillPolygon(xs, ys, xs.length);
         g.setColor(borderColor);
         g.drawPolygon(xs, ys, xs.length);
@@ -155,7 +159,7 @@ class FoldingButton {
       }
 
     } else if (myMouseOver || !myBottomCovered || !myTopCovered) {
-      g.setColor(myBackgroundColor);
+      g.setColor(backgroundColor);
       g.fillRect(-HALF_WIDTH, myY1, HALF_WIDTH * 2, HALF_WIDTH * 2);
 
       g.setColor(borderColor);
