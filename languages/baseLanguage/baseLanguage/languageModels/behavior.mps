@@ -9397,7 +9397,7 @@
               <node concept="22lmx$" id="7Il004DXkpw" role="3uHU7B">
                 <node concept="2OqwBi" id="7Il004DXkpx" role="3uHU7w">
                   <node concept="37vLTw" id="4o2ZZuMJY7d" role="2Oq$k0">
-                    <ref role="3cqZAo" node="4o2ZZuMGVmA" />
+                    <ref role="3cqZAo" node="4o2ZZuMGVmA" resolve="curNode" />
                   </node>
                   <node concept="1BlSNk" id="7Il004DXkpz" role="2OqNvi">
                     <ref role="1BmUXE" to="tpee:fz12cDA" resolve="ClassConcept" />
@@ -9406,7 +9406,7 @@
                 </node>
                 <node concept="2OqwBi" id="7Il004DXkp$" role="3uHU7B">
                   <node concept="37vLTw" id="4o2ZZuMJXTU" role="2Oq$k0">
-                    <ref role="3cqZAo" node="4o2ZZuMGVmA" />
+                    <ref role="3cqZAo" node="4o2ZZuMGVmA" resolve="curNode" />
                   </node>
                   <node concept="1BlSNk" id="7Il004DXkpA" role="2OqNvi">
                     <ref role="1BmUXE" to="tpee:fz12cDA" resolve="ClassConcept" />
@@ -9416,7 +9416,7 @@
               </node>
               <node concept="2OqwBi" id="7Il004DXkpB" role="3uHU7w">
                 <node concept="37vLTw" id="4o2ZZuMJYbN" role="2Oq$k0">
-                  <ref role="3cqZAo" node="4o2ZZuMGVmA" />
+                  <ref role="3cqZAo" node="4o2ZZuMGVmA" resolve="curNode" />
                 </node>
                 <node concept="1BlSNk" id="7Il004DXkpD" role="2OqNvi">
                   <ref role="1BmUXE" to="tpee:g7HP654" resolve="Interface" />

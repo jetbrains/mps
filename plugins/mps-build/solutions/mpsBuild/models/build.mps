@@ -29156,23 +29156,23 @@
       </node>
       <node concept="1SiIV0" id="4IP11oWmBUA" role="3bR37C">
         <node concept="3bR9La" id="4IP11oWmBUB" role="1SiIV1">
-          <ref role="3bR37D" node="mXGwHwhVPj" />
+          <ref role="3bR37D" node="mXGwHwhVPj" resolve="JDK" />
         </node>
       </node>
       <node concept="1SiIV0" id="4IP11oWmBU$" role="3bR37C">
         <node concept="3bR9La" id="4IP11oWmBU_" role="1SiIV1">
-          <ref role="3bR37D" node="44LXwdzyvTi" />
+          <ref role="3bR37D" node="44LXwdzyvTi" resolve="Annotations" />
         </node>
       </node>
       <node concept="1SiIV0" id="4IP11oWmBUw" role="3bR37C">
         <node concept="3bR9La" id="4IP11oWmBUx" role="1SiIV1">
-          <ref role="3bR37D" node="1H905DlDUSw" />
+          <ref role="3bR37D" node="1H905DlDUSw" resolve="MPS.OpenAPI" />
         </node>
       </node>
       <node concept="1SiIV0" id="4IP11oWmBUK" role="3bR37C">
         <node concept="3bR9La" id="4IP11oWmBUL" role="1SiIV1">
           <property role="3bR36h" value="true" />
-          <ref role="3bR37D" node="1TaHNgiIbIQ" />
+          <ref role="3bR37D" node="1TaHNgiIbIQ" resolve="MPS.Core" />
         </node>
       </node>
       <node concept="1SiIV0" id="4IP11oWmBUk" role="3bR37C">
@@ -29188,7 +29188,7 @@
       </node>
       <node concept="1SiIV0" id="4IP11oWmBUI" role="3bR37C">
         <node concept="3bR9La" id="4IP11oWmBUJ" role="1SiIV1">
-          <ref role="3bR37D" node="7Kfy9QB6LfQ" />
+          <ref role="3bR37D" node="7Kfy9QB6LfQ" resolve="jetbrains.mps.kernel" />
         </node>
       </node>
       <node concept="1SiIV0" id="4IP11oWmBUu" role="3bR37C">

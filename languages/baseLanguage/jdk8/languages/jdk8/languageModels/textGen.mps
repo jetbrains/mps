@@ -53,7 +53,7 @@
     </language>
   </registry>
   <node concept="WtQ9Q" id="5_deIS4VsfG">
-    <ref role="WuzLi" to="jqf9:1vrGgVFsInp" resolve="SuperInterfaceMethodCall" />
+    <ref role="WuzLi" to="jqf9:1vrGgVFsInp" resolve="SuperInterfaceMethodCall_old" />
     <node concept="11bSqf" id="5_deIS4VsfH" role="11c4hB">
       <node concept="3clFbS" id="5_deIS4VsfI" role="2VODD2">
         <node concept="lc7rE" id="5_deIS4Vt$4" role="3cqZAp">
@@ -64,7 +64,7 @@
               <node concept="37Cfm0" id="6fUw26UkGHH" role="2OqNvi">
                 <node concept="1aIX9F" id="6fUw26UkGHI" role="37CeNk">
                   <node concept="26LbJo" id="5_deIS4Vu0a" role="1aIX9E">
-                    <ref role="26LbJp" to="jqf9:1vrGgVFtizu" resolve="classifier" />
+                    <ref role="26LbJp" to="jqf9:1vrGgVFtizu" resolve="classifier_old" />
                   </node>
                 </node>
               </node>
@@ -82,7 +82,7 @@
     </node>
   </node>
   <node concept="WtQ9Q" id="4c$BrPwIrcM">
-    <ref role="WuzLi" to="jqf9:43H3v3JgacM" resolve="DefaultModifier" />
+    <ref role="WuzLi" to="jqf9:43H3v3JgacM" resolve="DefaultModifier_old" />
     <node concept="11bSqf" id="4c$BrPwIrcN" role="11c4hB">
       <node concept="3clFbS" id="4c$BrPwIrcO" role="2VODD2">
         <node concept="lc7rE" id="4c$BrPwIrd9" role="3cqZAp">

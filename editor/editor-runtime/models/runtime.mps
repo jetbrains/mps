@@ -3008,7 +3008,7 @@
                                   </node>
                                   <node concept="2OqwBi" id="nMAdlmy9va" role="37wK5m">
                                     <node concept="37vLTw" id="nMAdlmy9vb" role="2Oq$k0">
-                                      <ref role="3cqZAo" node="LiJMKzcNhN" />
+                                      <ref role="3cqZAo" node="LiJMKzcNhN" resolve="moduleDir" />
                                     </node>
                                     <node concept="liA8E" id="nMAdlmy9vc" role="2OqNvi">
                                       <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
@@ -3104,7 +3104,7 @@
                                             </node>
                                             <node concept="2OqwBi" id="nMAdlmyD3K" role="37wK5m">
                                               <node concept="37vLTw" id="nMAdlmyD3L" role="2Oq$k0">
-                                                <ref role="3cqZAo" node="LiJMKzcpC$" />
+                                                <ref role="3cqZAo" node="LiJMKzcpC$" resolve="chosenFile" />
                                               </node>
                                               <node concept="liA8E" id="nMAdlmyD3M" role="2OqNvi">
                                                 <ref role="37wK5l" to="jlff:~VirtualFile.getName()" resolve="getName" />
@@ -3136,10 +3136,10 @@
                                             <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
                                             <ref role="37wK5l" to="jkm4:~Messages.showYesNoDialog(java.awt.Component,java.lang.String,java.lang.String,javax.swing.Icon)" resolve="showYesNoDialog" />
                                             <node concept="37vLTw" id="3tsZ25DGoi" role="37wK5m">
-                                              <ref role="3cqZAo" node="1nhYb0FOxH9" />
+                                              <ref role="3cqZAo" node="1nhYb0FOxH9" resolve="button" />
                                             </node>
                                             <node concept="37vLTw" id="nMAdlmytuv" role="37wK5m">
-                                              <ref role="3cqZAo" node="nMAdlmytut" />
+                                              <ref role="3cqZAo" node="nMAdlmytut" resolve="rewriteMessage" />
                                             </node>
                                             <node concept="Xl_RD" id="6SE3eil_YI" role="37wK5m">
                                               <property role="Xl_RC" value="Warning" />
@@ -7672,7 +7672,7 @@
                 <node concept="3clFbF" id="4VpcCIwXWAI" role="3cqZAp">
                   <node concept="2OqwBi" id="4VpcCIwXWAJ" role="3clFbG">
                     <node concept="37vLTw" id="4VpcCIwXWAK" role="2Oq$k0">
-                      <ref role="3cqZAo" node="2v0ve8x$pfN" />
+                      <ref role="3cqZAo" node="2v0ve8x$pfN" resolve="context" />
                     </node>
                     <node concept="liA8E" id="4VpcCIwXWAL" role="2OqNvi">
                       <ref role="37wK5l" to="u78q:~TypeCheckingContext.setNonTypesystemComputationMode(jetbrains.mps.typesystem.inference.TypeCheckingContext$NonTypesystemComputationMode)" resolve="setNonTypesystemComputationMode" />
@@ -7740,7 +7740,7 @@
                   <node concept="3clFbF" id="4VpcCIwY$4u" role="3cqZAp">
                     <node concept="2OqwBi" id="4VpcCIwY$4v" role="3clFbG">
                       <node concept="37vLTw" id="4VpcCIwY$4w" role="2Oq$k0">
-                        <ref role="3cqZAo" node="2v0ve8x$pfN" />
+                        <ref role="3cqZAo" node="2v0ve8x$pfN" resolve="context" />
                       </node>
                       <node concept="liA8E" id="4VpcCIwY$4x" role="2OqNvi">
                         <ref role="37wK5l" to="u78q:~TypeCheckingContext.setNonTypesystemComputationMode(jetbrains.mps.typesystem.inference.TypeCheckingContext$NonTypesystemComputationMode)" resolve="setNonTypesystemComputationMode" />

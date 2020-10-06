@@ -131,9 +131,9 @@
     </language>
   </registry>
   <node concept="1M2fIO" id="1vrGgVFtiyT">
-    <ref role="1M2myG" to="jqf9:1vrGgVFsInp" resolve="SuperInterfaceMethodCall" />
+    <ref role="1M2myG" to="jqf9:1vrGgVFsInp" resolve="SuperInterfaceMethodCall_old" />
     <node concept="1N5Pfh" id="4zV8CAtqn4W" role="1Mr941">
-      <ref role="1N5Vy1" to="jqf9:1vrGgVFtizu" resolve="classifier" />
+      <ref role="1N5Vy1" to="jqf9:1vrGgVFtizu" resolve="classifier_old" />
       <node concept="1dDu$B" id="7c4zijkcF6B" role="1N6uqs">
         <ref role="1dDu$A" to="tpee:7c4zijk9vdu" resolve="SuperInerfaceKind" />
       </node>
@@ -151,7 +151,7 @@
               <node concept="2OqwBi" id="5Vvmn_QkLWL" role="33vP2m">
                 <node concept="3kakTB" id="5Vvmn_QkLWM" role="2Oq$k0" />
                 <node concept="3TrEf2" id="5Vvmn_QkLWN" role="2OqNvi">
-                  <ref role="3Tt5mk" to="jqf9:1vrGgVFtizu" resolve="classifier" />
+                  <ref role="3Tt5mk" to="jqf9:1vrGgVFtizu" resolve="classifier_old" />
                 </node>
               </node>
             </node>
@@ -259,7 +259,7 @@
   </node>
   <node concept="1M2fIO" id="10BRnha9ULz">
     <property role="3GE5qa" value="" />
-    <ref role="1M2myG" to="jqf9:43H3v3JgacM" resolve="DefaultModifier" />
+    <ref role="1M2myG" to="jqf9:43H3v3JgacM" resolve="DefaultModifier_old" />
     <node concept="9S07l" id="10BRnha9UL$" role="9Vyp8">
       <node concept="3clFbS" id="10BRnha9UL_" role="2VODD2">
         <node concept="3clFbF" id="10BRnha9USS" role="3cqZAp">

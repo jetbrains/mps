@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model ref="r:4eb07a03-dce5-40ad-b78d-8affb3b04aa7(jetbrains.mps.samples.highlevel.simpleEditor.gpeditor)" doNotGenerate="true">
+<model ref="r:4eb07a03-dce5-40ad-b78d-8affb3b04aa7(jetbrains.mps.samples.highlevel.simpleEditor.gpeditor)">
   <persistence version="9" />
+  <attribute name="doNotGenerate" value="true" />
   <languages>
     <use id="7ab1a6fa-0a11-4b95-9e48-75f363d6cb00" name="jetbrains.mps.lang.generator.plan" version="1" />
     <devkit ref="2677cb18-f558-4e33-bc38-a5139cee06dc(jetbrains.mps.devkit.language-design)" />
