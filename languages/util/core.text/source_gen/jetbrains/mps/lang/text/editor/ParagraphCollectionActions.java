@@ -37,16 +37,16 @@ public class ParagraphCollectionActions {
         EditorCellLabelSelection selection = as_82br6w_a0a1a1a0a0a1(selectionManager.getSelection(), EditorCellLabelSelection.class);
 
         List<SNode> selectedNodes = selection.getSelectedNodes();
-        SNode currentLetter = SNodeOperations.as(selectedNodes.get(0), CONCEPTS.TextualElement$73);
+        SNode currentLetter = SNodeOperations.as(selectedNodes.get(0), CONCEPTS.TextualElement$9C);
 
         EditorCell cell = selection.getEditorCell();
         SNode nodeAbove = LetterRangeSelection.findNodeAbove(currentLetter, cell);
         if (nodeAbove == null) {
-          SNode currentLine = SNodeOperations.as(SNodeOperations.getParent(currentLetter), CONCEPTS.Paragraph$V6);
-          LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), ListSequence.fromList(SLinkOperations.getChildren(currentLine, LINKS.letters$3gw1)).first(), currentLetter, false);
+          SNode currentLine = SNodeOperations.as(SNodeOperations.getParent(currentLetter), CONCEPTS.Paragraph$XF);
+          LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), ListSequence.fromList(SLinkOperations.getChildren(currentLine, LINKS.letters$rNyA)).first(), currentLetter, false);
           selectionManager.pushSelection(ws);
         } else {
-          LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), SNodeOperations.as(nodeAbove, CONCEPTS.TextualElement$73), SNodeOperations.as(currentLetter, CONCEPTS.TextualElement$73), false);
+          LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), SNodeOperations.as(nodeAbove, CONCEPTS.TextualElement$9C), SNodeOperations.as(currentLetter, CONCEPTS.TextualElement$9C), false);
           selectionManager.pushSelection(ws);
         }
       }
@@ -63,15 +63,15 @@ public class ParagraphCollectionActions {
         EditorCellLabelSelection selection = as_82br6w_a0a1a1a0a0a2(selectionManager.getSelection(), EditorCellLabelSelection.class);
 
         List<SNode> selectedNodes = selection.getSelectedNodes();
-        SNode currentLetter = SNodeOperations.as(selectedNodes.get(0), CONCEPTS.TextualElement$73);
+        SNode currentLetter = SNodeOperations.as(selectedNodes.get(0), CONCEPTS.TextualElement$9C);
         boolean includePreviousOnly = selection.getSelectionEnd() == selection.getSelectionStart() && (SNodeOperations.getPrevSibling(currentLetter) == null);
         boolean includePreviousNodeInSelection = includePreviousOnly || selection.getSelectionEnd() != selection.getSelectionStart();
 
-        SNode prevNode = SNodeOperations.as(SNodeOperations.getPrevSibling(currentLetter), CONCEPTS.TextualElement$73);
+        SNode prevNode = SNodeOperations.as(SNodeOperations.getPrevSibling(currentLetter), CONCEPTS.TextualElement$9C);
         if (prevNode == null && includePreviousNodeInSelection) {
-          SNode prevParagraph = SNodeOperations.as(SNodeOperations.getPrevSibling(SNodeOperations.getParent(currentLetter)), CONCEPTS.Paragraph$V6);
+          SNode prevParagraph = SNodeOperations.as(SNodeOperations.getPrevSibling(SNodeOperations.getParent(currentLetter)), CONCEPTS.Paragraph$XF);
           if (prevParagraph != null) {
-            SNode lastLetter = ListSequence.fromList(SLinkOperations.getChildren(prevParagraph, LINKS.letters$3gw1)).last();
+            SNode lastLetter = ListSequence.fromList(SLinkOperations.getChildren(prevParagraph, LINKS.letters$rNyA)).last();
             // todo fix selecting empty lines 
             prevNode = (lastLetter != null ? lastLetter : currentLetter);
           } else {
@@ -97,17 +97,17 @@ public class ParagraphCollectionActions {
         EditorCellLabelSelection selection = as_82br6w_a0a3a1a0a0a3(selectionManager.getSelection(), EditorCellLabelSelection.class);
 
         List<SNode> selectedNodes = selection.getSelectedNodes();
-        SNode currentLetter = SNodeOperations.as(selectedNodes.get(0), CONCEPTS.TextualElement$73);
+        SNode currentLetter = SNodeOperations.as(selectedNodes.get(0), CONCEPTS.TextualElement$9C);
 
         EditorCell cell = selection.getEditorCell();
         SNode nodeBelow = LetterRangeSelection.findNodeBelow(currentLetter, cell);
         SNode nextSelectableNode = (pos != 0 ? LetterRangeSelection.getNextSelectableNode(currentLetter, true) : null);
         if (nodeBelow == null) {
-          SNode currentLine = SNodeOperations.as(SNodeOperations.getParent(currentLetter), CONCEPTS.Paragraph$V6);
-          LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), (nextSelectableNode != null ? nextSelectableNode : currentLetter), ListSequence.fromList(SLinkOperations.getChildren(currentLine, LINKS.letters$3gw1)).last(), true);
+          SNode currentLine = SNodeOperations.as(SNodeOperations.getParent(currentLetter), CONCEPTS.Paragraph$XF);
+          LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), (nextSelectableNode != null ? nextSelectableNode : currentLetter), ListSequence.fromList(SLinkOperations.getChildren(currentLine, LINKS.letters$rNyA)).last(), true);
           selectionManager.pushSelection(ws);
         } else {
-          LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), (nextSelectableNode != null ? nextSelectableNode : currentLetter), SNodeOperations.as(nodeBelow, CONCEPTS.TextualElement$73), true);
+          LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), (nextSelectableNode != null ? nextSelectableNode : currentLetter), SNodeOperations.as(nodeBelow, CONCEPTS.TextualElement$9C), true);
           selectionManager.pushSelection(ws);
         }
 
@@ -125,13 +125,13 @@ public class ParagraphCollectionActions {
         EditorCellLabelSelection selection = as_82br6w_a0a1a1a0a0a4(selectionManager.getSelection(), EditorCellLabelSelection.class);
 
         List<SNode> selectedNodes = selection.getSelectedNodes();
-        SNode currentLetter = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextualElement$73);
+        SNode currentLetter = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextualElement$9C);
 
-        SNode nextNode = SNodeOperations.as(SNodeOperations.getNextSibling(currentLetter), CONCEPTS.TextualElement$73);
+        SNode nextNode = SNodeOperations.as(SNodeOperations.getNextSibling(currentLetter), CONCEPTS.TextualElement$9C);
         if (nextNode == null) {
-          SNode nextParagraph = SNodeOperations.as(SNodeOperations.getNextSibling(SNodeOperations.getParent(currentLetter)), CONCEPTS.Paragraph$V6);
+          SNode nextParagraph = SNodeOperations.as(SNodeOperations.getNextSibling(SNodeOperations.getParent(currentLetter)), CONCEPTS.Paragraph$XF);
           if (nextParagraph != null) {
-            SNode firstLetter = ListSequence.fromList(SLinkOperations.getChildren(nextParagraph, LINKS.letters$3gw1)).first();
+            SNode firstLetter = ListSequence.fromList(SLinkOperations.getChildren(nextParagraph, LINKS.letters$rNyA)).first();
             nextNode = (firstLetter != null ? firstLetter : currentLetter);
           } else {
             nextNode = currentLetter;
@@ -154,11 +154,11 @@ public class ParagraphCollectionActions {
         EditorCellLabelSelection selection = as_82br6w_a0a1a1a0a0a5(selectionManager.getSelection(), EditorCellLabelSelection.class);
 
         List<SNode> selectedNodes = selection.getSelectedNodes();
-        SNode currentLetter = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextualElement$73);
+        SNode currentLetter = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextualElement$9C);
 
-        Iterable<SNode> paragraphs = SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(SNodeOperations.getParent(currentLetter), true), CONCEPTS.Paragraph$V6);
-        SNode f = ListSequence.fromList(SLinkOperations.getChildren(Sequence.fromIterable(paragraphs).first(), LINKS.letters$3gw1)).first();
-        SNode l = ListSequence.fromList(SLinkOperations.getChildren(Sequence.fromIterable(paragraphs).last(), LINKS.letters$3gw1)).last();
+        Iterable<SNode> paragraphs = SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(SNodeOperations.getParent(currentLetter), true), CONCEPTS.Paragraph$XF);
+        SNode f = ListSequence.fromList(SLinkOperations.getChildren(Sequence.fromIterable(paragraphs).first(), LINKS.letters$rNyA)).first();
+        SNode l = ListSequence.fromList(SLinkOperations.getChildren(Sequence.fromIterable(paragraphs).last(), LINKS.letters$rNyA)).last();
 
         LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), f, l, true);
         selectionManager.pushSelection(ws);
@@ -176,8 +176,8 @@ public class ParagraphCollectionActions {
         EditorCellLabelSelection selection = as_82br6w_a0a1a1a0a0a6(selectionManager.getSelection(), EditorCellLabelSelection.class);
 
         List<SNode> selectedNodes = selection.getSelectedNodes();
-        SNode currentLetter = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextualElement$73);
-        SNode f = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getPrevSiblings(currentLetter, true), CONCEPTS.TextualElement$73)).first();
+        SNode currentLetter = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextualElement$9C);
+        SNode f = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getPrevSiblings(currentLetter, true), CONCEPTS.TextualElement$9C)).first();
 
         LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), f, currentLetter, false);
         selectionManager.pushSelection(ws);
@@ -195,9 +195,9 @@ public class ParagraphCollectionActions {
         EditorCellLabelSelection selection = as_82br6w_a0a1a1a0a0a7(selectionManager.getSelection(), EditorCellLabelSelection.class);
 
         List<SNode> selectedNodes = selection.getSelectedNodes();
-        SNode currentLetter = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextualElement$73);
-        SNode nextNode = SNodeOperations.as(SNodeOperations.getNextSibling(currentLetter), CONCEPTS.TextualElement$73);
-        SNode l = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(currentLetter, true), CONCEPTS.TextualElement$73)).last();
+        SNode currentLetter = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextualElement$9C);
+        SNode nextNode = SNodeOperations.as(SNodeOperations.getNextSibling(currentLetter), CONCEPTS.TextualElement$9C);
+        SNode l = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(currentLetter, true), CONCEPTS.TextualElement$9C)).last();
 
         LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), ((SNodeOperations.getPrevSibling(currentLetter) != null) || selection.getSelectionStart() > 0 ? nextNode : currentLetter), l, true);
         selectionManager.pushSelection(ws);
@@ -215,11 +215,11 @@ public class ParagraphCollectionActions {
         EditorCellLabelSelection selection = as_82br6w_a0a1a1a0a0a8(selectionManager.getSelection(), EditorCellLabelSelection.class);
 
         List<SNode> selectedNodes = selection.getSelectedNodes();
-        SNode currentLetter = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextualElement$73);
+        SNode currentLetter = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextualElement$9C);
 
         if ((SNodeOperations.getPrevSibling(currentLetter) == null) && selection.getSelectionStart() == 0) {
           // cursor at the beginning of a paragraph 
-          SNode l = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getPrevSibling(SNodeOperations.getParent(currentLetter)), CONCEPTS.Paragraph$V6), LINKS.letters$3gw1)).last();
+          SNode l = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getPrevSibling(SNodeOperations.getParent(currentLetter)), CONCEPTS.Paragraph$XF), LINKS.letters$rNyA)).last();
           if ((l != null)) {
             currentLetter = l;
           } else {
@@ -244,8 +244,8 @@ public class ParagraphCollectionActions {
         EditorCellLabelSelection selection = as_82br6w_a0a1a1a0a0a9(selectionManager.getSelection(), EditorCellLabelSelection.class);
 
         List<SNode> selectedNodes = selection.getSelectedNodes();
-        SNode currentLetter = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextualElement$73);
-        SNode nextNode = SNodeOperations.as(SNodeOperations.getNextSibling(currentLetter), CONCEPTS.TextualElement$73);
+        SNode currentLetter = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextualElement$9C);
+        SNode nextNode = SNodeOperations.as(SNodeOperations.getNextSibling(currentLetter), CONCEPTS.TextualElement$9C);
         SNode end = TextualElement__BehaviorDescriptor.findNextWordEnd_id3VJiP1sDz5g.invoke(((nextNode != null ? nextNode : currentLetter)));
 
         LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), ((SNodeOperations.getPrevSibling(currentLetter) != null) || selection.getSelectionStart() > 0 ? nextNode : currentLetter), end, true);
@@ -374,11 +374,11 @@ public class ParagraphCollectionActions {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TextualElement$73 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20d9cfbL, "jetbrains.mps.lang.text.structure.TextualElement");
-    /*package*/ static final SConcept Paragraph$V6 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph");
+    /*package*/ static final SConcept TextualElement$9C = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20d9cfbL, "jetbrains.mps.lang.text.structure.TextualElement");
+    /*package*/ static final SConcept Paragraph$XF = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink letters$3gw1 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, 0x7ee31bf598f4eddfL, "letters");
+    /*package*/ static final SContainmentLink letters$rNyA = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, 0x7ee31bf598f4eddfL, "letters");
   }
 }

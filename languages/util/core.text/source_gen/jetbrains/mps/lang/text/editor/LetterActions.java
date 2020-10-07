@@ -83,7 +83,7 @@ public class LetterActions {
         if ((SNodeOperations.getPrevSibling(node) != null)) {
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, TextualElement__BehaviorDescriptor.findPreviousWordStart_id3VJiP1sDlYQ.invoke(node), SelectionManager.FIRST_CELL, 0);
         } else {
-          SNode l = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getPrevSibling(SNodeOperations.getParent(node)), CONCEPTS.Paragraph$V6), LINKS.letters$3gw1)).last();
+          SNode l = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getPrevSibling(SNodeOperations.getParent(node)), CONCEPTS.Paragraph$XF), LINKS.letters$rNyA)).last();
           if ((l != null)) {
             SelectionUtil.selectLabelCellAnSetCaret(editorContext, l, SelectionManager.LAST_CELL, -1);
           }
@@ -98,15 +98,15 @@ public class LetterActions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode nextNode = SNodeOperations.as(SNodeOperations.getNextSibling(node), CONCEPTS.TextualElement$73);
+        SNode nextNode = SNodeOperations.as(SNodeOperations.getNextSibling(node), CONCEPTS.TextualElement$9C);
         if ((nextNode != null)) {
-          if (SNodeOperations.isInstanceOf(nextNode, CONCEPTS.Letter$hC)) {
+          if (SNodeOperations.isInstanceOf(nextNode, CONCEPTS.Letter$kd)) {
             SelectionUtil.selectLabelCellAnSetCaret(editorContext, TextualElement__BehaviorDescriptor.findNextWordEnd_id3VJiP1sDz5g.invoke(nextNode), SelectionManager.LAST_CELL, -1);
           } else {
             SelectionUtil.selectCell(editorContext, nextNode, SelectionManager.FIRST_EDITABLE_CELL);
           }
         } else {
-          SNode f = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getNextSibling(SNodeOperations.getParent(node)), CONCEPTS.Paragraph$V6), LINKS.letters$3gw1)).first();
+          SNode f = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getNextSibling(SNodeOperations.getParent(node)), CONCEPTS.Paragraph$XF), LINKS.letters$rNyA)).first();
           if ((f != null)) {
             SelectionUtil.selectLabelCellAnSetCaret(editorContext, f, SelectionManager.FIRST_CELL, 0);
           }
@@ -122,7 +122,7 @@ public class LetterActions {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         SNode currentNode = editorContext.getSelectedNode();
-        SNode p = SNodeOperations.as(SNodeOperations.getParent(currentNode), CONCEPTS.Paragraph$V6);
+        SNode p = SNodeOperations.as(SNodeOperations.getParent(currentNode), CONCEPTS.Paragraph$XF);
         SNode prev = SNodeOperations.getPrevSibling(currentNode);
         if (prev != null) {
           SNodeOperations.deleteNode(currentNode);
@@ -130,12 +130,12 @@ public class LetterActions {
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, prev, SelectionManager.LAST_CELL, -1);
         } else if (!(Objects.equals(currentNode, node))) {
           // node is the last node on the previous line, currentNode is the first node on the current line 
-          SNode myParagraph = SNodeOperations.as(SNodeOperations.getParent(currentNode), CONCEPTS.Paragraph$V6);
-          SNode prevParagraph = SNodeOperations.as(SNodeOperations.getPrevSibling(SNodeOperations.getParent(currentNode)), CONCEPTS.Paragraph$V6);
+          SNode myParagraph = SNodeOperations.as(SNodeOperations.getParent(currentNode), CONCEPTS.Paragraph$XF);
+          SNode prevParagraph = SNodeOperations.as(SNodeOperations.getPrevSibling(SNodeOperations.getParent(currentNode)), CONCEPTS.Paragraph$XF);
           if (prevParagraph != null) {
-            ListSequence.fromList(SLinkOperations.getChildren(prevParagraph, LINKS.letters$3gw1)).addSequence(Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(currentNode, true), CONCEPTS.TextualElement$73)).where(new IWhereFilter<SNode>() {
+            ListSequence.fromList(SLinkOperations.getChildren(prevParagraph, LINKS.letters$rNyA)).addSequence(Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(currentNode, true), CONCEPTS.TextualElement$9C)).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return !(SNodeOperations.isInstanceOf(it, CONCEPTS.EmptyParagraphLetter$Tx));
+                return !(SNodeOperations.isInstanceOf(it, CONCEPTS.EmptyParagraphLetter$W6));
               }
             }));
             SNodeOperations.deleteNode(myParagraph);
@@ -166,14 +166,14 @@ public class LetterActions {
         int pos = ((EditorCell_Label) editorContext.getSelectedCell()).getCaretPosition();
         SNode next = (pos != 0 ? SNodeOperations.getNextSibling(currentNode) : currentNode);
         if (next != null) {
-          SNode p = SNodeOperations.as(SNodeOperations.getParent(next), CONCEPTS.Paragraph$V6);
+          SNode p = SNodeOperations.as(SNodeOperations.getParent(next), CONCEPTS.Paragraph$XF);
           SNodeOperations.deleteNode(next);
           Paragraph__BehaviorDescriptor.initialize_id1v077Wg2A59.invoke(p);
         } else {
-          SNode myParagraph = SNodeOperations.as(SNodeOperations.getParent(currentNode), CONCEPTS.Paragraph$V6);
-          SNode nextParagraph = SNodeOperations.as(SNodeOperations.getNextSibling(SNodeOperations.getParent(currentNode)), CONCEPTS.Paragraph$V6);
+          SNode myParagraph = SNodeOperations.as(SNodeOperations.getParent(currentNode), CONCEPTS.Paragraph$XF);
+          SNode nextParagraph = SNodeOperations.as(SNodeOperations.getNextSibling(SNodeOperations.getParent(currentNode)), CONCEPTS.Paragraph$XF);
           if (nextParagraph != null) {
-            ListSequence.fromList(SLinkOperations.getChildren(myParagraph, LINKS.letters$3gw1)).addSequence(Sequence.fromIterable(Paragraph__BehaviorDescriptor.nonEmptyLetters_id7r4EKYUyqfh.invoke(nextParagraph)));
+            ListSequence.fromList(SLinkOperations.getChildren(myParagraph, LINKS.letters$rNyA)).addSequence(Sequence.fromIterable(Paragraph__BehaviorDescriptor.nonEmptyLetters_id7r4EKYUyqfh.invoke(nextParagraph)));
             SNodeOperations.deleteNode(nextParagraph);
           }
         }
@@ -188,11 +188,11 @@ public class LetterActions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        final SNode next = SNodeOperations.insertNextSiblingChild(SNodeOperations.getNodeAncestor(node, CONCEPTS.Paragraph$V6, false, false), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph")));
+        final SNode next = SNodeOperations.insertNextSiblingChild(SNodeOperations.getNodeAncestor(node, CONCEPTS.Paragraph$XF, false, false), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph")));
         SNode nextLetter = SNodeOperations.getNextSibling(node);
-        Sequence.fromIterable((SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(node, false), CONCEPTS.Letter$hC))).visitAll(new IVisitor<SNode>() {
+        Sequence.fromIterable((SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(node, false), CONCEPTS.Letter$kd))).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
-            ListSequence.fromList(SLinkOperations.getChildren(next, LINKS.letters$3gw1)).addElement(it);
+            ListSequence.fromList(SLinkOperations.getChildren(next, LINKS.letters$rNyA)).addElement(it);
           }
         });
         Paragraph__BehaviorDescriptor.initialize_id1v077Wg2A59.invoke(next);
@@ -215,7 +215,7 @@ public class LetterActions {
         boolean firstPositionOnLine = pos == 0 && (SNodeOperations.getPrevSibling(node) == null);
         SNode currentNode = node;
         PasteHandler.paste(editorContext, currentNode, firstPositionOnLine);
-        if (isEmptyString(SPropertyOperations.getString(node, PROPS.value$$$QO))) {
+        if (isEmptyString(SPropertyOperations.getString(node, PROPS.value$X7Tp))) {
           SNodeOperations.deleteNode(node);
         }
       }
@@ -307,17 +307,17 @@ public class LetterActions {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Paragraph$V6 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph");
-    /*package*/ static final SConcept TextualElement$73 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20d9cfbL, "jetbrains.mps.lang.text.structure.TextualElement");
-    /*package*/ static final SConcept Letter$hC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter");
-    /*package*/ static final SConcept EmptyParagraphLetter$Tx = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x17c01c7f100e844bL, "jetbrains.mps.lang.text.structure.EmptyParagraphLetter");
+    /*package*/ static final SConcept Paragraph$XF = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph");
+    /*package*/ static final SConcept TextualElement$9C = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20d9cfbL, "jetbrains.mps.lang.text.structure.TextualElement");
+    /*package*/ static final SConcept Letter$kd = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter");
+    /*package*/ static final SConcept EmptyParagraphLetter$W6 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x17c01c7f100e844bL, "jetbrains.mps.lang.text.structure.EmptyParagraphLetter");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink letters$3gw1 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, 0x7ee31bf598f4eddfL, "letters");
+    /*package*/ static final SContainmentLink letters$rNyA = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, 0x7ee31bf598f4eddfL, "letters");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$$$QO = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7ee31bf598f4ad9eL, "value");
+    /*package*/ static final SProperty value$X7Tp = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7ee31bf598f4ad9eL, "value");
   }
 }

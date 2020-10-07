@@ -16,22 +16,22 @@ public class LetterFactories {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       {
         final SNode l = sampleNode;
-        if (SNodeOperations.isInstanceOf(l, CONCEPTS.Letter$hC)) {
-          SPropertyOperations.assign(newNode, PROPS.underlined$$RAL, SPropertyOperations.getBoolean(l, PROPS.underlined$$RAL));
-          SPropertyOperations.assign(newNode, PROPS.bold$$R8J, SPropertyOperations.getBoolean(l, PROPS.bold$$R8J));
-          SPropertyOperations.assign(newNode, PROPS.italic$$RnK, SPropertyOperations.getBoolean(l, PROPS.italic$$RnK));
+        if (SNodeOperations.isInstanceOf(l, CONCEPTS.Letter$kd)) {
+          SPropertyOperations.assign(newNode, PROPS.underlined$XqDm, SPropertyOperations.getBoolean(l, PROPS.underlined$XqDm));
+          SPropertyOperations.assign(newNode, PROPS.bold$Xqbk, SPropertyOperations.getBoolean(l, PROPS.bold$Xqbk));
+          SPropertyOperations.assign(newNode, PROPS.italic$Xqql, SPropertyOperations.getBoolean(l, PROPS.italic$Xqql));
         }
       }
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Letter$hC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter");
+    /*package*/ static final SConcept Letter$kd = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty underlined$$RAL = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737742L, "underlined");
-    /*package*/ static final SProperty bold$$R8J = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737740L, "bold");
-    /*package*/ static final SProperty italic$$RnK = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737741L, "italic");
+    /*package*/ static final SProperty underlined$XqDm = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737742L, "underlined");
+    /*package*/ static final SProperty bold$Xqbk = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737740L, "bold");
+    /*package*/ static final SProperty italic$Xqql = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737741L, "italic");
   }
 }

@@ -49,7 +49,7 @@ public final class InsertNodeWrapperOnEmptyLine_Intention extends AbstractIntent
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SNodeOperations.replaceWithNewChild(node, CONCEPTS.NodeWrapperTextualElement$sG);
+      SNodeOperations.replaceWithNewChild(node, CONCEPTS.NodeWrapperTextualElement$vh);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -58,6 +58,6 @@ public final class InsertNodeWrapperOnEmptyLine_Intention extends AbstractIntent
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept NodeWrapperTextualElement$sG = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20dcb4fL, "jetbrains.mps.lang.text.structure.NodeWrapperTextualElement");
+    /*package*/ static final SConcept NodeWrapperTextualElement$vh = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20dcb4fL, "jetbrains.mps.lang.text.structure.NodeWrapperTextualElement");
   }
 }

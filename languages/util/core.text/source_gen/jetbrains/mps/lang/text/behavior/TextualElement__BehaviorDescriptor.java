@@ -38,30 +38,30 @@ public final class TextualElement__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode findPreviousWordStart_id3VJiP1sDlYQ(@NotNull SNode __thisNode__) {
-    SNode closest = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getPrevSiblings(__thisNode__, false), CONCEPTS.TextualElement$73)).where(new IWhereFilter<SNode>() {
+    SNode closest = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getPrevSiblings(__thisNode__, false), CONCEPTS.TextualElement$9C)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.Letter$hC)) || Objects.equals(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Letter$hC), PROPS.value$$$QO), " ");
+        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.Letter$kd)) || Objects.equals(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Letter$kd), PROPS.value$X7Tp), " ");
       }
     }).last();
     if ((closest == null)) {
-      return SNodeOperations.as(ListSequence.fromList(SNodeOperations.getPrevSiblings(__thisNode__, true)).first(), CONCEPTS.TextualElement$73);
+      return SNodeOperations.as(ListSequence.fromList(SNodeOperations.getPrevSiblings(__thisNode__, true)).first(), CONCEPTS.TextualElement$9C);
     } else {
-      return SNodeOperations.as(SNodeOperations.getNextSibling(closest), CONCEPTS.TextualElement$73);
+      return SNodeOperations.as(SNodeOperations.getNextSibling(closest), CONCEPTS.TextualElement$9C);
     }
   }
   /*package*/ static SNode findNextWordEnd_id3VJiP1sDz5g(@NotNull SNode __thisNode__) {
     if ((SNodeOperations.getNextSibling(__thisNode__) == null)) {
       return __thisNode__;
     }
-    SNode closest = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(__thisNode__, false), CONCEPTS.TextualElement$73)).where(new IWhereFilter<SNode>() {
+    SNode closest = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(__thisNode__, false), CONCEPTS.TextualElement$9C)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.Letter$hC)) || Objects.equals(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Letter$hC), PROPS.value$$$QO), " ");
+        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.Letter$kd)) || Objects.equals(SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.Letter$kd), PROPS.value$X7Tp), " ");
       }
     }).first();
     if ((closest == null)) {
-      return SNodeOperations.as(ListSequence.fromList(SNodeOperations.getNextSiblings(__thisNode__, false)).last(), CONCEPTS.TextualElement$73);
+      return SNodeOperations.as(ListSequence.fromList(SNodeOperations.getNextSiblings(__thisNode__, false)).last(), CONCEPTS.TextualElement$9C);
     } else {
-      return SNodeOperations.as(SNodeOperations.getPrevSibling(closest), CONCEPTS.TextualElement$73);
+      return SNodeOperations.as(SNodeOperations.getPrevSibling(closest), CONCEPTS.TextualElement$9C);
     }
   }
 
@@ -114,11 +114,11 @@ public final class TextualElement__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TextualElement$73 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20d9cfbL, "jetbrains.mps.lang.text.structure.TextualElement");
-    /*package*/ static final SConcept Letter$hC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter");
+    /*package*/ static final SConcept TextualElement$9C = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20d9cfbL, "jetbrains.mps.lang.text.structure.TextualElement");
+    /*package*/ static final SConcept Letter$kd = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty value$$$QO = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7ee31bf598f4ad9eL, "value");
+    /*package*/ static final SProperty value$X7Tp = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7ee31bf598f4ad9eL, "value");
   }
 }

@@ -40,7 +40,7 @@ public final class ConvertToParagraphs_Intention extends AbstractIntentionDescri
     return true;
   }
   private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.lines$y1jy)).isNotEmpty() && ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.paragraphs$B3LY)).isEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.lines$U$m7)).isNotEmpty() && ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.paragraphs$ZAOz)).isEmpty();
   }
   @Override
   public boolean isSurroundWith() {
@@ -61,15 +61,15 @@ public final class ConvertToParagraphs_Intention extends AbstractIntentionDescri
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.lines$y1jy)).visitAll(new IVisitor<SNode>() {
+      ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.lines$U$m7)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
           SNode p = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph"));
-          ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.paragraphs$B3LY)).addElement(p);
+          ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.paragraphs$ZAOz)).addElement(p);
           SNodeOperations.deleteNode(it);
           Paragraph__BehaviorDescriptor.initializeFromLine_id6n6K0Pj71DU.invoke(p, it);
         }
       });
-      SLinkOperations.addNewChild(node, LINKS.lines$y1jy, CONCEPTS.Line$w3);
+      SLinkOperations.addNewChild(node, LINKS.lines$U$m7, CONCEPTS.Line$yC);
     }
     @Override
     public IntentionDescriptor getDescriptor() {
@@ -78,11 +78,11 @@ public final class ConvertToParagraphs_Intention extends AbstractIntentionDescri
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink paragraphs$B3LY = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, 0x7ee31bf598f6d778L, "paragraphs");
-    /*package*/ static final SContainmentLink lines$y1jy = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, 0x2331694e561a03b8L, "lines");
+    /*package*/ static final SContainmentLink paragraphs$ZAOz = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, 0x7ee31bf598f6d778L, "paragraphs");
+    /*package*/ static final SContainmentLink lines$U$m7 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, 0x2331694e561a03b8L, "lines");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Line$w3 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
+    /*package*/ static final SConcept Line$yC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
   }
 }

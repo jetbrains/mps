@@ -42,7 +42,7 @@ public class LetterStylingKeys extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.Letter$hC))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.Letter$kd))) {
         return false;
       }
       return true;
@@ -52,7 +52,7 @@ public class LetterStylingKeys extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SPropertyOperations.assign(node, PROPS.bold$$R8J, !(SPropertyOperations.getBoolean(node, PROPS.bold$$R8J)));
+      SPropertyOperations.assign(node, PROPS.bold$Xqbk, !(SPropertyOperations.getBoolean(node, PROPS.bold$Xqbk)));
     }
     public String getKeyStroke() {
       return "ctrl B";
@@ -74,7 +74,7 @@ public class LetterStylingKeys extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.Letter$hC))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.Letter$kd))) {
         return false;
       }
       return true;
@@ -84,7 +84,7 @@ public class LetterStylingKeys extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SPropertyOperations.assign(node, PROPS.italic$$RnK, !(SPropertyOperations.getBoolean(node, PROPS.italic$$RnK)));
+      SPropertyOperations.assign(node, PROPS.italic$Xqql, !(SPropertyOperations.getBoolean(node, PROPS.italic$Xqql)));
     }
     public String getKeyStroke() {
       return "ctrl I";
@@ -106,7 +106,7 @@ public class LetterStylingKeys extends KeyMapImpl {
       if (contextNode == null) {
         return false;
       }
-      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.Letter$hC))) {
+      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.Letter$kd))) {
         return false;
       }
       return true;
@@ -116,7 +116,7 @@ public class LetterStylingKeys extends KeyMapImpl {
       this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
     }
     private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
-      SPropertyOperations.assign(node, PROPS.underlined$$RAL, !(SPropertyOperations.getBoolean(node, PROPS.underlined$$RAL)));
+      SPropertyOperations.assign(node, PROPS.underlined$XqDm, !(SPropertyOperations.getBoolean(node, PROPS.underlined$XqDm)));
     }
     public String getKeyStroke() {
       return "ctrl U";
@@ -124,12 +124,12 @@ public class LetterStylingKeys extends KeyMapImpl {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Letter$hC = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter");
+    /*package*/ static final SConcept Letter$kd = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty bold$$R8J = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737740L, "bold");
-    /*package*/ static final SProperty italic$$RnK = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737741L, "italic");
-    /*package*/ static final SProperty underlined$$RAL = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737742L, "underlined");
+    /*package*/ static final SProperty bold$Xqbk = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737740L, "bold");
+    /*package*/ static final SProperty italic$Xqql = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737741L, "italic");
+    /*package*/ static final SProperty underlined$XqDm = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737742L, "underlined");
   }
 }

@@ -4,23 +4,35 @@ package jetbrains.mps.lang.text.structure;
 
 import jetbrains.mps.smodel.runtime.BaseStructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptDescriptor;
+import jetbrains.mps.smodel.runtime.ConstrainedStringDatatypeDescriptor;
+import jetbrains.mps.smodel.runtime.ConstrainedStringDatatypeDescriptorImpl;
 import java.util.Collection;
 import java.util.Arrays;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.adapter.ids.SConceptId;
+import jetbrains.mps.smodel.runtime.DataTypeDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
+import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
+import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.ConceptKind;
 import jetbrains.mps.smodel.runtime.StaticScope;
-import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
+  /*package*/ final ConceptDescriptor myConceptChapter = createDescriptorForChapter();
+  /*package*/ final ConceptDescriptor myConceptEmptyParagraphLetter = createDescriptorForEmptyParagraphLetter();
   /*package*/ final ConceptDescriptor myConceptIHoldLines = createDescriptorForIHoldLines();
+  /*package*/ final ConceptDescriptor myConceptIHoldParagraphs = createDescriptorForIHoldParagraphs();
+  /*package*/ final ConceptDescriptor myConceptLetter = createDescriptorForLetter();
   /*package*/ final ConceptDescriptor myConceptLine = createDescriptorForLine();
   /*package*/ final ConceptDescriptor myConceptNodeWrapperElement = createDescriptorForNodeWrapperElement();
+  /*package*/ final ConceptDescriptor myConceptNodeWrapperTextualElement = createDescriptorForNodeWrapperTextualElement();
+  /*package*/ final ConceptDescriptor myConceptParagraph = createDescriptorForParagraph();
   /*package*/ final ConceptDescriptor myConceptText = createDescriptorForText();
   /*package*/ final ConceptDescriptor myConceptTextElement = createDescriptorForTextElement();
+  /*package*/ final ConceptDescriptor myConceptTextualElement = createDescriptorForTextualElement();
   /*package*/ final ConceptDescriptor myConceptWord = createDescriptorForWord();
+  /*package*/ final ConstrainedStringDatatypeDescriptor myCSDatatypeCharacterValueType = new ConstrainedStringDatatypeDescriptorImpl(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4aee0L, "CharacterValueType", "r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/9143182410139348704", ".");
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -36,23 +48,37 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptIHoldLines, myConceptLine, myConceptNodeWrapperElement, myConceptText, myConceptTextElement, myConceptWord);
+    return Arrays.asList(myConceptChapter, myConceptEmptyParagraphLetter, myConceptIHoldLines, myConceptIHoldParagraphs, myConceptLetter, myConceptLine, myConceptNodeWrapperElement, myConceptNodeWrapperTextualElement, myConceptParagraph, myConceptText, myConceptTextElement, myConceptTextualElement, myConceptWord);
   }
 
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
     switch (myIndexSwitch.index(id)) {
+      case LanguageConceptSwitch.Chapter:
+        return myConceptChapter;
+      case LanguageConceptSwitch.EmptyParagraphLetter:
+        return myConceptEmptyParagraphLetter;
       case LanguageConceptSwitch.IHoldLines:
         return myConceptIHoldLines;
+      case LanguageConceptSwitch.IHoldParagraphs:
+        return myConceptIHoldParagraphs;
+      case LanguageConceptSwitch.Letter:
+        return myConceptLetter;
       case LanguageConceptSwitch.Line:
         return myConceptLine;
       case LanguageConceptSwitch.NodeWrapperElement:
         return myConceptNodeWrapperElement;
+      case LanguageConceptSwitch.NodeWrapperTextualElement:
+        return myConceptNodeWrapperTextualElement;
+      case LanguageConceptSwitch.Paragraph:
+        return myConceptParagraph;
       case LanguageConceptSwitch.Text:
         return myConceptText;
       case LanguageConceptSwitch.TextElement:
         return myConceptTextElement;
+      case LanguageConceptSwitch.TextualElement:
+        return myConceptTextualElement;
       case LanguageConceptSwitch.Word:
         return myConceptWord;
       default:
@@ -60,16 +86,57 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     }
   }
 
+  @Override
+  public Collection<DataTypeDescriptor> getDataTypeDescriptors() {
+    return Arrays.asList(myCSDatatypeCharacterValueType);
+  }
 
   /*package*/ int internalIndex(SAbstractConcept c) {
     return myIndexSwitch.index(c);
   }
 
+  private static ConceptDescriptor createDescriptorForChapter() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "Chapter", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x61a4317ad7d0a36dL);
+    b.class_(false, false, false);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/7035802921536103277");
+    b.version(2);
+    b.aggregate("paragraphs", 0x61a4317ad7d0a52eL).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL).optional(true).ordered(true).multiple(true).origin("7035802921536103726").done();
+    b.alias("chapter");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForEmptyParagraphLetter() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "EmptyParagraphLetter", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x17c01c7f100e844bL);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.lang.text.structure.TextualElement", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20d9cfbL);
+    b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/1711399190456599627");
+    b.version(2);
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForIHoldLines() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "IHoldLines", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6b2f47401707d876L);
     b.interface_();
     b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/7723470226553559158");
     b.version(2);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForIHoldParagraphs() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "IHoldParagraphs", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20dd8a1L);
+    b.interface_();
+    b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/3213792450771277985");
+    b.version(2);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForLetter() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "Letter", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.lang.text.structure.TextualElement", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20d9cfbL);
+    b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/9143182410139347997");
+    b.version(2);
+    b.property("value", 0x7ee31bf598f4ad9eL).type(MetaIdFactory.dataTypeId(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4aee0L)).origin("9143182410139348382").done();
+    b.property("bold", 0x7f8646038f737740L).type(PrimitiveTypeId.BOOLEAN).origin("9189109070801631040").done();
+    b.property("italic", 0x7f8646038f737741L).type(PrimitiveTypeId.BOOLEAN).origin("9189109070801631041").done();
+    b.property("underlined", 0x7f8646038f737742L).type(PrimitiveTypeId.BOOLEAN).origin("9189109070801631042").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForLine() {
@@ -94,6 +161,26 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.alias("node");
     return b.create();
   }
+  private static ConceptDescriptor createDescriptorForNodeWrapperTextualElement() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "NodeWrapperTextualElement", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20dcb4fL);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.lang.text.structure.TextualElement", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20d9cfbL);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x50ef06e32fec9043L);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x1ec383e5b4bdca56L);
+    b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/3213792450771274575");
+    b.version(2);
+    b.aggregate("node", 0x2b7b49e536031feaL).target(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL).optional(true).ordered(true).multiple(false).origin("3213792450771274576").done();
+    b.alias("wrapped node");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForParagraph() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "Paragraph", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL);
+    b.class_(false, false, false);
+    b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/9143182410139364510");
+    b.version(2);
+    b.aggregate("letters", 0x7ee31bf598f4eddfL).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20d9cfbL).optional(true).ordered(true).multiple(true).origin("9143182410139364831").done();
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForText() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "Text", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L);
     b.class_(false, false, false);
@@ -101,6 +188,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x6b2f47401707d876L);
     b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/2535923850359206929");
     b.version(2);
+    b.aggregate("paragraphs", 0x7ee31bf598f6d778L).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL).optional(true).ordered(true).multiple(true).origin("9143182410139490168").done();
     b.aggregate("lines", 0x2331694e561a03b8L).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L).optional(false).ordered(true).multiple(true).origin("2535923850359210936").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     return b.create();
@@ -111,6 +199,13 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/155656958578482919");
     b.version(2);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForTextualElement() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "TextualElement", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20d9cfbL);
+    b.class_(false, true, false);
+    b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/3213792450771262715");
+    b.version(2);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForWord() {
