@@ -83,8 +83,8 @@ public class FileMPSProject extends ProjectBase implements FileBasedProject {
   @Override
   public void dispose() {
     projectClosed();
-    super.dispose();
     assert getProjectModules().isEmpty();
+    super.dispose();
   }
 
   @Override
