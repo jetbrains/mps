@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="ASM">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/asm-all-8.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/asm-all-9.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

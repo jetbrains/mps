@@ -6,7 +6,7 @@
       <sourceRoot location="models" />
     </modelRoot>
     <modelRoot contentPath="${platform_lib}" type="java_classes">
-      <sourceRoot location="asm-all-8.0.1.jar" />
+      <sourceRoot location="asm-all-9.0.jar" />
     </modelRoot>
   </models>
   <facets>
@@ -17,7 +17,7 @@
   </facets>
   <stubModelEntries>
     <stubModelEntry path="${module}/classes" />
-    <stubModelEntry path="${platform_lib}/asm-all-8.0.1.jar" />
+    <stubModelEntry path="${platform_lib}/asm-all-9.0.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>
