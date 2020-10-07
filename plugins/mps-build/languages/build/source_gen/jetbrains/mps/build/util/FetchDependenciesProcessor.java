@@ -54,10 +54,12 @@ public class FetchDependenciesProcessor {
       ListSequence.fromList(SLinkOperations.getChildren(project, LINKS.aspects$6r0Q)).addElement(wf);
     }
   }
-  private class RequiredDependenciesBuilderImpl implements RequiredDependenciesBuilder {
+
+  private static class RequiredDependenciesBuilderImpl implements RequiredDependenciesBuilder {
     protected final VisibleArtifacts artifacts;
     protected final SNode dep;
     private final UnpackHelper helper;
+
     public RequiredDependenciesBuilderImpl(VisibleArtifacts artifacts, SNode dep, UnpackHelper helper) {
       this.artifacts = artifacts;
       this.dep = dep;
@@ -84,24 +86,9 @@ public class FetchDependenciesProcessor {
       helper.add(node, true);
     }
 
-    @Override
-    public void needsFetch(SNode node) {
-      // copied as is from VisibleArtifacts.needsFetch. VA has to become 'initialize once' container, 
-      // while this builder is intended for composing fetch state. 
-      if ((node == null)) {
-        return;
-      }
-      // helper.requiresFetch() is invoked with gc.getOriginaInput, hence need originalNode here. 
-      node = helper.getOriginalNode(node);
-      if ((node == null)) {
-        return;
-      }
-      helper.doFetch(node);
-    }
-
     private boolean check(SNode node) {
       if (!(artifacts.contains(node))) {
-        genContext.showErrorMessage(dep, "returned node which is not available in dependencies: " + jetbrains.mps.util.SNodeOperations.getDebugText(node));
+        helper.getGenContext().showErrorMessage(dep, "returned node which is not available in dependencies: " + jetbrains.mps.util.SNodeOperations.getDebugText(node));
         return false;
       }
       return true;

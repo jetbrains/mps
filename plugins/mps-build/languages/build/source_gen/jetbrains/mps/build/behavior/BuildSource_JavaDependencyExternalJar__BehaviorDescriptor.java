@@ -18,7 +18,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -37,7 +36,6 @@ public final class BuildSource_JavaDependencyExternalJar__BehaviorDescriptor ext
   /*package*/ static void fetchDependencies_id57YmpYyL8F1(@NotNull SNode __thisNode__, VisibleArtifacts artifacts, RequiredDependenciesBuilder builder) {
     Tuples._2<SNode, Boolean> artifact = BuildSource_JavaExternalJarRef__BehaviorDescriptor.getDependencyTarget_id4RsV8qJGJqY.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.extJar$wAfT), artifacts);
     if (artifact != null) {
-      builder.needsFetch(SNodeOperations.getParent(__thisNode__));
       if ((boolean) artifact._1()) {
         builder.addWithContent(artifact._0());
       } else {

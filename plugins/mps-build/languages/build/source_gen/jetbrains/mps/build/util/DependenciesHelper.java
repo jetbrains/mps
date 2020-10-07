@@ -4,7 +4,6 @@ package jetbrains.mps.build.util;
 
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
-import java.util.Set;
 import jetbrains.mps.generator.template.TemplateQueryContext;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
@@ -19,7 +18,6 @@ public class DependenciesHelper {
   private final Map<SNode, String> locationMap;
   private final Map<SNode, String> contentLocationMap;
   private final Map<Object, SNode> idToArtifactMap;
-  private final Set<SNode> requiresFetch;
   protected final MacroHelper macros;
   private final TemplateQueryContext myGenContext;
   private final SNode myProject;
@@ -32,7 +30,6 @@ public class DependenciesHelper {
     this.contentLocationMap = GenerationUtil.<SNode,String>getSessionMap(project, genContext, "contentLocation");
     this.idToArtifactMap = GenerationUtil.<Object,SNode>getSessionMap(project, genContext, "IDToArtifact");
     this.macros = new MacroHelper.MacroContext(project, genContext).getMacros(project);
-    this.requiresFetch = GenerationUtil.getSessionSet(project, genContext, "requiresFetch");
     myGenContext = genContext;
     myProject = project;
     myLocationKey = "location:" + SModelOperations.getModelName(SNodeOperations.getModel(project)) + '/' + SPropertyOperations.getString(project, PROPS.name$MnvL);
@@ -140,13 +137,6 @@ public class DependenciesHelper {
     idToArtifactMap.put(id, artifact);
   }
 
-  public boolean requiresFetch(SNode node) {
-    return requiresFetch.contains(node);
-  }
-
-  /*package*/ void doFetch(SNode node) {
-    requiresFetch.add(node);
-  }
   public MacroHelper getMacroHelper() {
     return macros;
   }

@@ -63,12 +63,8 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
   }
   /*package*/ static void fetchDependencies_id57YmpYyL8F1(@NotNull SNode __thisNode__, VisibleArtifacts artifacts, RequiredDependenciesBuilder builder) {
     MPSModulesClosure closure = new MPSModulesClosure(__thisNode__, new MPSModulesClosure.ModuleDependenciesOptions()).closure();
-    boolean needsFetch = ((boolean) BuildMps_Module__BehaviorDescriptor.fetchMPSDeps_id3WZD5LHqVGt.invoke(__thisNode__, closure, artifacts, builder));
-    needsFetch |= ((boolean) BuildMps_Module__BehaviorDescriptor.fetchJavaDeps_id3WZD5LHqUHY.invoke(__thisNode__, closure, artifacts, builder));
-
-    if (needsFetch) {
-      builder.needsFetch(__thisNode__);
-    }
+    BuildMps_Module__BehaviorDescriptor.fetchMPSDeps_id3WZD5LHqVGt.invoke(__thisNode__, closure, artifacts, builder);
+    BuildMps_Module__BehaviorDescriptor.fetchJavaDeps_id3WZD5LHqUHY.invoke(__thisNode__, closure, artifacts, builder);
   }
   /*package*/ static boolean addJarPath_id3WZD5LHqnU8(@NotNull SAbstractConcept __thisConcept__, SNode path, VisibleArtifacts artifacts, RequiredDependenciesBuilder builder) {
     Tuples._2<SNode, String> resource = artifacts.getResource(path);

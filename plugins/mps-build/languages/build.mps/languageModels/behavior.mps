@@ -1279,60 +1279,32 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="1GEzjKC9gpj" role="3cqZAp">
-          <node concept="3cpWsn" id="1GEzjKC9gpk" role="3cpWs9">
-            <property role="TrG5h" value="needsFetch" />
-            <node concept="BsUDl" id="3WZD5LHqVGz" role="33vP2m">
-              <ref role="37wK5l" node="3WZD5LHqVGt" resolve="fetchMPSDeps" />
-              <node concept="37vLTw" id="3WZD5LHqVGw" role="37wK5m">
-                <ref role="3cqZAo" node="6xJrZo0GWcm" resolve="closure" />
-              </node>
-              <node concept="37vLTw" id="3WZD5LHqVGx" role="37wK5m">
-                <ref role="3cqZAo" node="57YmpYyL8LS" resolve="artifacts" />
-              </node>
-              <node concept="37vLTw" id="3WZD5LHqVGy" role="37wK5m">
-                <ref role="3cqZAo" node="57YmpYyL8LU" resolve="builder" />
-              </node>
+        <node concept="3clFbF" id="4aljlo3tjcg" role="3cqZAp">
+          <node concept="BsUDl" id="3WZD5LHqVGz" role="3clFbG">
+            <ref role="37wK5l" node="3WZD5LHqVGt" resolve="fetchMPSDeps" />
+            <node concept="37vLTw" id="3WZD5LHqVGw" role="37wK5m">
+              <ref role="3cqZAo" node="6xJrZo0GWcm" resolve="closure" />
             </node>
-            <node concept="10P_77" id="1GEzjKC9gpl" role="1tU5fm" />
-          </node>
-        </node>
-        <node concept="3clFbF" id="3WZD5LHqUIa" role="3cqZAp">
-          <node concept="3vZ8r8" id="6Z_3H2bahlj" role="3clFbG">
-            <node concept="37vLTw" id="6Z_3H2bahll" role="37vLTJ">
-              <ref role="3cqZAo" node="1GEzjKC9gpk" resolve="needsFetch" />
+            <node concept="37vLTw" id="3WZD5LHqVGx" role="37wK5m">
+              <ref role="3cqZAo" node="57YmpYyL8LS" resolve="artifacts" />
             </node>
-            <node concept="BsUDl" id="6Z_3H2bahlm" role="37vLTx">
-              <ref role="37wK5l" node="3WZD5LHqUHY" resolve="fetchJavaDeps" />
-              <node concept="37vLTw" id="6Z_3H2bahln" role="37wK5m">
-                <ref role="3cqZAo" node="6xJrZo0GWcm" resolve="closure" />
-              </node>
-              <node concept="37vLTw" id="6Z_3H2bahlo" role="37wK5m">
-                <ref role="3cqZAo" node="57YmpYyL8LS" resolve="artifacts" />
-              </node>
-              <node concept="37vLTw" id="6Z_3H2bahlp" role="37wK5m">
-                <ref role="3cqZAo" node="57YmpYyL8LU" resolve="builder" />
-              </node>
+            <node concept="37vLTw" id="3WZD5LHqVGy" role="37wK5m">
+              <ref role="3cqZAo" node="57YmpYyL8LU" resolve="builder" />
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="2eDSGe9c_8e" role="3cqZAp" />
-        <node concept="3clFbJ" id="6PrCok1L_Ho" role="3cqZAp">
-          <node concept="3clFbS" id="6PrCok1L_Hp" role="3clFbx">
-            <node concept="3clFbF" id="6PrCok1LsAw" role="3cqZAp">
-              <node concept="2OqwBi" id="6PrCok1LsAx" role="3clFbG">
-                <node concept="37vLTw" id="4WwUR8hPdsw" role="2Oq$k0">
-                  <ref role="3cqZAo" node="57YmpYyL8LU" resolve="builder" />
-                </node>
-                <node concept="liA8E" id="6PrCok1LsAz" role="2OqNvi">
-                  <ref role="37wK5l" to="o3n2:4WwUR8hO$pV" resolve="needsFetch" />
-                  <node concept="13iPFW" id="2eDSGe9czlA" role="37wK5m" />
-                </node>
-              </node>
+        <node concept="3clFbF" id="4aljlo3tiKK" role="3cqZAp">
+          <node concept="BsUDl" id="6Z_3H2bahlm" role="3clFbG">
+            <ref role="37wK5l" node="3WZD5LHqUHY" resolve="fetchJavaDeps" />
+            <node concept="37vLTw" id="6Z_3H2bahln" role="37wK5m">
+              <ref role="3cqZAo" node="6xJrZo0GWcm" resolve="closure" />
             </node>
-          </node>
-          <node concept="37vLTw" id="3GM_nagTs0a" role="3clFbw">
-            <ref role="3cqZAo" node="1GEzjKC9gpk" resolve="needsFetch" />
+            <node concept="37vLTw" id="6Z_3H2bahlo" role="37wK5m">
+              <ref role="3cqZAo" node="57YmpYyL8LS" resolve="artifacts" />
+            </node>
+            <node concept="37vLTw" id="6Z_3H2bahlp" role="37wK5m">
+              <ref role="3cqZAo" node="57YmpYyL8LU" resolve="builder" />
+            </node>
           </node>
         </node>
       </node>

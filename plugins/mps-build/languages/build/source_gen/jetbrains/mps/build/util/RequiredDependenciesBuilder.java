@@ -16,6 +16,5 @@ public interface RequiredDependenciesBuilder {
    * Tells that specified layout node is composite and is required, along with its nested nodes, to build a project.
    */
   void addWithContent(SNode node);
-  void needsFetch(SNode node);
   TemplateQueryContext getGenContext();
 }
