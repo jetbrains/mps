@@ -37,28 +37,9 @@
   </extensionPoints>
 
   <extensions defaultExtensionNs="com.intellij">
-    <!--
-    <xi:include href="/META-INF/ExternalSystemExtensions.xml" xpointer="xpointer(/idea-plugin/extensions/*)"/>
-
-    <appStarter implementation="com.intellij.compiler.ant.GenerateAntMain"/>
-
-    <renameHandler implementation="com.intellij.ide.projectView.impl.RenameModuleHandler"/>
-    <renameHandler implementation="com.intellij.openapi.roots.impl.libraries.RenameLibraryHandler"/>
-
-    <packaging.sourceItemProvider implementation="com.intellij.openapi.roots.ui.configuration.artifacts.sourceItems.ModulesAndLibrariesSourceItemsProvider"/>
-    <packaging.sourceItemProvider implementation="com.intellij.openapi.roots.ui.configuration.artifacts.sourceItems.ArtifactsSourceItemsProvider"/>
-    <packaging.artifactType implementation="com.intellij.packaging.impl.artifacts.JarArtifactType" order="first"/>
-    <packaging.artifactType implementation="com.intellij.packaging.impl.artifacts.PlainArtifactType" order="last"/>
-    <compiler.buildTargetScopeProvider implementation="com.intellij.packaging.impl.compiler.ArtifactBuildTargetScopeProvider"/>
-    <compiler implementation="com.intellij.packaging.impl.compiler.ArtifactsCompiler" id="artifactsCompiler"/>
-
-    <projectTaskRunner implementation="com.intellij.task.impl.JpsProjectTaskRunner" id="jps" order="last"/>
-
-    <gotoRelatedProvider implementation="com.intellij.testIntegration.GotoTestRelatedProvider"/>
-    -->
-
     <applicationService serviceInterface="com.intellij.ide.RecentProjectsManager"
-                        serviceImplementation="com.intellij.ide.RecentProjectsManagerBase"/>
+                        serviceImplementation="com.intellij.ide.RecentProjectsManagerBase"
+                        preload="notHeadless"/>
 
     <applicationService serviceImplementation="com.intellij.ide.RecentProjectListActionProvider"/>
 
