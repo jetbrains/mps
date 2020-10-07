@@ -1335,28 +1335,28 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.path$Wlt3);
   }
   public static Object templateArgumentQuery_0_0(final TemplateArgumentContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.targetModule$4853);
-  }
-  public static Object templateArgumentQuery_0_1(final TemplateArgumentContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.targetJar$lPKz);
-  }
-  public static Object templateArgumentQuery_0_2(final TemplateArgumentContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.targetFile$f8Q3);
-  }
-  public static Object templateArgumentQuery_0_3(final TemplateArgumentContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.targetFolder$gAO3);
   }
-  public static Object templateArgumentQuery_0_4(final TemplateArgumentContext _context) {
+  public static Object templateArgumentQuery_0_1(final TemplateArgumentContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.suffix$UtG0);
   }
-  public static Object templateArgumentQuery_0_5(final TemplateArgumentContext _context) {
-    return SLinkOperations.getTarget(_context.getNode(), LINKS.targetLibrary$pWiz);
-  }
-  public static Object templateArgumentQuery_0_6(final TemplateArgumentContext _context) {
+  public static Object templateArgumentQuery_0_2(final TemplateArgumentContext _context) {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.extJar$Hzyz), LINKS.jar$JLD3);
   }
-  public static Object templateArgumentQuery_0_7(final TemplateArgumentContext _context) {
+  public static Object templateArgumentQuery_0_3(final TemplateArgumentContext _context) {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.extFolder$gew$), LINKS.folder$95wz);
+  }
+  public static Object templateArgumentQuery_0_4(final TemplateArgumentContext _context) {
+    return _context.getNode();
+  }
+  public static Object templateArgumentQuery_0_5(final TemplateArgumentContext _context) {
+    return _context.getNode();
+  }
+  public static Object templateArgumentQuery_0_6(final TemplateArgumentContext _context) {
+    return _context.getNode();
+  }
+  public static Object templateArgumentQuery_0_7(final TemplateArgumentContext _context) {
+    return _context.getNode();
   }
   public static Object templateArgumentQuery_0_8(final TemplateArgumentContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.library$sob3);
@@ -1438,31 +1438,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.sources$9b9b);
   }
   public static Iterable<SNode> sourceNodesQuery_0_15(final SourceSubstituteMacroNodesContext _context) {
-    List<SNode> result = new ArrayList<SNode>();
-    for (SNode module : ((JavaModulesClosure) _context.getVariable("var:depsClosure")).getModules()) {
-      SNode loopnode = SModelOperations.createNewNode(_context.getOutputModel(), null, CONCEPTS.GeneratorInternal_BuildSource_JavaModule$pC);
-      SLinkOperations.setTarget(loopnode, LINKS.targetModule$4853, module);
-      ListSequence.fromList(result).addElement(loopnode);
-    }
-    return result;
+    return ((JavaModulesClosure) _context.getVariable("var:depsClosure")).getModules();
   }
   public static Iterable<SNode> sourceNodesQuery_0_16(final SourceSubstituteMacroNodesContext _context) {
-    List<SNode> result = new ArrayList<SNode>();
-    for (SNode jar : ((JavaModulesClosure) _context.getVariable("var:depsClosure")).getJars()) {
-      SNode loopnode = SModelOperations.createNewNode(_context.getOutputModel(), null, CONCEPTS.GeneratorInternal_BuildSource_JavaJar$OZ);
-      SLinkOperations.setTarget(loopnode, LINKS.targetJar$lPKz, jar);
-      ListSequence.fromList(result).addElement(loopnode);
-    }
-    return result;
+    return ((JavaModulesClosure) _context.getVariable("var:depsClosure")).getJars();
   }
   public static Iterable<SNode> sourceNodesQuery_0_17(final SourceSubstituteMacroNodesContext _context) {
-    List<SNode> result = new ArrayList<SNode>();
-    for (SNode jar : ((JavaModulesClosure) _context.getVariable("var:depsClosure")).getExternalJars()) {
-      SNode loopnode = SModelOperations.createNewNode(_context.getOutputModel(), null, CONCEPTS.GeneratorInternal_BuildSource_SingleFile$ra);
-      SLinkOperations.setTarget(loopnode, LINKS.targetFile$f8Q3, jar);
-      ListSequence.fromList(result).addElement(loopnode);
-    }
-    return result;
+    return ((JavaModulesClosure) _context.getVariable("var:depsClosure")).getExternalJars();
   }
   public static Iterable<SNode> sourceNodesQuery_0_18(final SourceSubstituteMacroNodesContext _context) {
     List<SNode> result = new ArrayList<SNode>();
@@ -1475,13 +1457,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return result;
   }
   public static Iterable<SNode> sourceNodesQuery_0_19(final SourceSubstituteMacroNodesContext _context) {
-    List<SNode> result = new ArrayList<SNode>();
-    for (SNode library : ((JavaModulesClosure) _context.getVariable("var:depsClosure")).getLibraries()) {
-      SNode loopnode = SModelOperations.createNewNode(_context.getOutputModel(), null, CONCEPTS.GeneratorInternal_BuildSource_JavaLibrary$23);
-      SLinkOperations.setTarget(loopnode, LINKS.targetLibrary$pWiz, library);
-      ListSequence.fromList(result).addElement(loopnode);
-    }
-    return result;
+    return ((JavaModulesClosure) _context.getVariable("var:depsClosure")).getLibraries();
   }
   public static Iterable<SNode> sourceNodesQuery_0_20(final SourceSubstituteMacroNodesContext _context) {
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.dependencies$eBQR)).where(new IWhereFilter<SNode>() {
@@ -3423,14 +3399,14 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, CallArgumentQuery> caqMethods = new HashMap<String, CallArgumentQuery>();
   {
-    caqMethods.put("4821808014881251889", new CAQ(0));
-    caqMethods.put("8169228734285529870", new CAQ(1));
-    caqMethods.put("6859736767834590330", new CAQ(2));
-    caqMethods.put("5680938682773841397", new CAQ(3));
-    caqMethods.put("5680938682773841634", new CAQ(4));
-    caqMethods.put("144710003695561026", new CAQ(5));
-    caqMethods.put("5610619299014495885", new CAQ(6));
-    caqMethods.put("5610619299014531917", new CAQ(7));
+    caqMethods.put("5680938682773841397", new CAQ(0));
+    caqMethods.put("5680938682773841634", new CAQ(1));
+    caqMethods.put("5610619299014495885", new CAQ(2));
+    caqMethods.put("5610619299014531917", new CAQ(3));
+    caqMethods.put("4797826009838532346", new CAQ(4));
+    caqMethods.put("4797826009839199017", new CAQ(5));
+    caqMethods.put("4797826009839189287", new CAQ(6));
+    caqMethods.put("4797826009839182745", new CAQ(7));
     caqMethods.put("4821808014881175200", new CAQ(8));
     caqMethods.put("4821808014881207698", new CAQ(9));
     caqMethods.put("8169228734285538428", new CAQ(10));
@@ -3572,11 +3548,7 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SContainmentLink jars$4Au$ = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b61fe867L, 0x3395e884b61fe869L, "jars");
     /*package*/ static final SContainmentLink path$xmoo = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7ea63ceef6e8c0edL, 0x7ea63ceef6e8c11aL, "path");
     /*package*/ static final SContainmentLink path$Wlt3 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x262a04c08b56faffL, 0x262a04c08b56fb00L, "path");
-    /*package*/ static final SReferenceLink targetModule$4853 = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x44e5dd192e7c0c18L, 0x44e5dd192e7c0c19L, "targetModule");
-    /*package*/ static final SReferenceLink targetJar$lPKz = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x44e5dd192e7c0de4L, 0x44e5dd192e7c0de5L, "targetJar");
-    /*package*/ static final SReferenceLink targetFile$f8Q3 = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x44e5dd192e7c0d4aL, 0x44e5dd192e7c0d4bL, "targetFile");
     /*package*/ static final SReferenceLink targetFolder$gAO3 = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x508044c9892402f6L, 0x508044c9892402f7L, "targetFolder");
-    /*package*/ static final SReferenceLink targetLibrary$pWiz = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x44e5dd192e7c0e6fL, 0x44e5dd192e7c0e70L, "targetLibrary");
     /*package*/ static final SContainmentLink extJar$Hzyz = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb50da7L, 0x4ddcec86afb50da8L, "extJar");
     /*package*/ static final SReferenceLink jar$JLD3 = MetaAdapterFactory.getReferenceLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb2f64cL, 0x4ddcec86afb2f64dL, "jar");
     /*package*/ static final SContainmentLink extFolder$gew$ = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4ddcec86afb65af8L, 0x4ddcec86afb65afaL, "extFolder");
@@ -3635,11 +3607,7 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SConcept GeneratorInternal_Mapping$5j = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x508044c9892d3b5bL, "jetbrains.mps.build.structure.GeneratorInternal_Mapping");
     /*package*/ static final SInterfaceConcept BuildFileSelectorInAttribute$a3 = MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7819f90ca2eb7c4bL, "jetbrains.mps.build.structure.BuildFileSelectorInAttribute");
     /*package*/ static final SConcept BuildSource_JavaFiles$ZS = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x14d3fb6fb8480882L, "jetbrains.mps.build.structure.BuildSource_JavaFiles");
-    /*package*/ static final SConcept GeneratorInternal_BuildSource_JavaModule$pC = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x44e5dd192e7c0c18L, "jetbrains.mps.build.structure.GeneratorInternal_BuildSource_JavaModule");
-    /*package*/ static final SConcept GeneratorInternal_BuildSource_JavaJar$OZ = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x44e5dd192e7c0de4L, "jetbrains.mps.build.structure.GeneratorInternal_BuildSource_JavaJar");
-    /*package*/ static final SConcept GeneratorInternal_BuildSource_SingleFile$ra = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x44e5dd192e7c0d4aL, "jetbrains.mps.build.structure.GeneratorInternal_BuildSource_SingleFile");
     /*package*/ static final SConcept GeneratorInternal_BuildSource_JarFolder$n6 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x508044c9892402f6L, "jetbrains.mps.build.structure.GeneratorInternal_BuildSource_JarFolder");
-    /*package*/ static final SConcept GeneratorInternal_BuildSource_JavaLibrary$23 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x44e5dd192e7c0e6fL, "jetbrains.mps.build.structure.GeneratorInternal_BuildSource_JavaLibrary");
     /*package*/ static final SConcept BuildSource_JavaDependencyLibrary$TO = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd9079dceL, "jetbrains.mps.build.structure.BuildSource_JavaDependencyLibrary");
     /*package*/ static final SConcept BuildSource_JavaDependencyModule$Wc = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263ae7d4319896a7L, "jetbrains.mps.build.structure.BuildSource_JavaDependencyModule");
     /*package*/ static final SConcept BuildSource_JavaDependencyJar$QH = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3395e884b6185c40L, "jetbrains.mps.build.structure.BuildSource_JavaDependencyJar");

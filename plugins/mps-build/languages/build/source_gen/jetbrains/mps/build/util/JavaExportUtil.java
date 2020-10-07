@@ -104,8 +104,9 @@ public class JavaExportUtil {
     // dependencies closure 
     JavaModulesClosure closure = new JavaModulesClosure(target).closure(true);
 
-    // searh for artifacts 
-    Iterable<SNode> required = Sequence.fromIterable(((Iterable<SNode>) closure.getModules())).concat(Sequence.fromIterable(((Iterable<SNode>) closure.getJars())).select(new ISelector<SNode, SNode>() {
+    // search for artifacts 
+    // XXX how come we concat BuildSource_JavaModule with BuildSourcePath, and use findArtifact for both? 
+    Iterable<SNode> required = Sequence.fromIterable(closure.getModules()).concat(Sequence.fromIterable(closure.getJars()).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
         return SLinkOperations.getTarget(it, LINKS.path$M9si);
       }
@@ -123,7 +124,7 @@ public class JavaExportUtil {
       }
     }
 
-    for (SNode lib : Sequence.fromIterable((Iterable<SNode>) closure.getLibraries())) {
+    for (SNode lib : Sequence.fromIterable(closure.getLibraries())) {
       if (SNodeOperations.getContainingRoot(lib) == SNodeOperations.getContainingRoot(contextNode)) {
         continue;
       }
@@ -131,7 +132,7 @@ public class JavaExportUtil {
       requireLibrary(artifacts, lib, contextNode, builder);
     }
 
-    for (SNode extJar : CollectionSequence.fromCollection(closure.getExternalJars())) {
+    for (SNode extJar : Sequence.fromIterable(closure.getExternalJars())) {
       if (SNodeOperations.getContainingRoot(extJar) == SNodeOperations.getContainingRoot(contextNode)) {
         continue;
       }

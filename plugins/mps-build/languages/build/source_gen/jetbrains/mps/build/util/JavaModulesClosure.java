@@ -10,11 +10,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
-import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
+import java.util.Collection;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -90,20 +90,20 @@ public class JavaModulesClosure {
     }
   }
 
-  public Collection<SNode> getModules() {
+  public Iterable<SNode> getModules() {
     return modules;
   }
-  public Collection<SNode> getLibraries() {
+  public Iterable<SNode> getLibraries() {
     return libraries;
   }
-  public Collection<SNode> getJars() {
+  public Iterable<SNode> getJars() {
     return Sequence.fromIterable(((Iterable<SNode>) jars)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return (SLinkOperations.getTarget(it, LINKS.customLocation$T4ZX) == null);
       }
     }).toListSequence();
   }
-  public Collection<SNode> getExternalJars() {
+  public Iterable<SNode> getExternalJars() {
     return Sequence.fromIterable(((Iterable<SNode>) jars)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return (SLinkOperations.getTarget(it, LINKS.customLocation$T4ZX) != null);
