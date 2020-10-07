@@ -38,7 +38,10 @@ public class ProjectPlugin_ProjectPluginPart extends ProjectPluginPart {
 
       @Override
       public void uninstall(@NotNull jetbrains.mps.openapi.editor.EditorComponent editorComponent) {
-        ProjectPlugin_ProjectPluginPart.this.managersPool.remove(editorComponent);
+        TooltipManager tm = ProjectPlugin_ProjectPluginPart.this.managersPool.remove(editorComponent);
+        if (tm != null) {
+          tm.dispose();
+        }
       }
     };
     project.getComponent(EditorExtensionRegistry.class).registerExtension(ProjectPlugin_ProjectPluginPart.this.myCreateListener);
