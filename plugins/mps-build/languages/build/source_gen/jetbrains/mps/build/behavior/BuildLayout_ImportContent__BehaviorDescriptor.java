@@ -43,7 +43,6 @@ public final class BuildLayout_ImportContent__BehaviorDescriptor extends BaseBHD
 
     SNode artifact = SNodeOperations.as(artifacts.findArtifact(SLinkOperations.getTarget(__thisNode__, LINKS.target$HFO4)), CONCEPTS.BuildLayout_Node$Rb);
     if (SNodeOperations.isInstanceOf(artifact, CONCEPTS.BuildLayout_Container$vv)) {
-      builder.needsFetch(SNodeOperations.getNodeAncestorWhereConceptInList(__thisNode__, new SAbstractConcept[]{CONCEPTS.BuildLayout$aH, CONCEPTS.BuildNamedLayout$ZG}, false, false));
       builder.addWithContent(artifact);
     }
   }
@@ -106,8 +105,6 @@ public final class BuildLayout_ImportContent__BehaviorDescriptor extends BaseBHD
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept BuildLayout_Node$Rb = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node");
-    /*package*/ static final SConcept BuildLayout$aH = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a14L, "jetbrains.mps.build.structure.BuildLayout");
-    /*package*/ static final SConcept BuildNamedLayout$ZG = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x31292e1a60d9f330L, "jetbrains.mps.build.structure.BuildNamedLayout");
     /*package*/ static final SInterfaceConcept BuildLayout_Container$vv = MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, "jetbrains.mps.build.structure.BuildLayout_Container");
   }
 }
