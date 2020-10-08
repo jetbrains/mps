@@ -288,6 +288,7 @@
       <modulePath path="$PROJECT_DIR$/plugins/mps-devkit/languages/pluginSolutions/lang.plugin/jetbrains.mps.lang.plugin.pluginSolution.msd" folder="core.aspects.plugin" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-devkit/languages/pluginSolutions/lang.quotation/jetbrains.mps.lang.quotation.pluginSolution.msd" folder="core.languages" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-devkit/languages/pluginSolutions/lang.structure/jetbrains.mps.lang.structure.pluginSolution.msd" folder="core.aspects.structure" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-devkit/languages/pluginSolutions/lang.text/jetbrains.mps.lang.text.actions.msd" folder="core.languages.text" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-devkit/languages/pluginSolutions/lang.typesystem.devkit/jetbrains.mps.lang.typesystem.devkit.pluginSolution.msd" folder="core.aspects.typesystem" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-diagram-editor/languages/jetbrains.mps.lang.editor.diagram/jetbrains.mps.lang.editor.diagram.mpl" folder="core.aspects.editor.diagram" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-diagram-editor/languages/jetbrains.mps.lang.editor.figures/jetbrains.mps.lang.editor.figures.mpl" folder="core.aspects.editor.diagram" />
