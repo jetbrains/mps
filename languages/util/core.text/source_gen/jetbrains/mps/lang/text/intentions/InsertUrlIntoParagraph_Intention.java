@@ -19,14 +19,14 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-public final class InsertNodeWrapper_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
+public final class InsertUrlIntoParagraph_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
-  public InsertNodeWrapper_Intention() {
-    super(Kind.NORMAL, false, new SNodePointer("r:d0aef15b-6499-4272-812e-6bb6f7408ee0(jetbrains.mps.lang.text.intentions)", "3213792450771388834"));
+  public InsertUrlIntoParagraph_Intention() {
+    super(Kind.NORMAL, false, new SNodePointer("r:d0aef15b-6499-4272-812e-6bb6f7408ee0(jetbrains.mps.lang.text.intentions)", "8331485905611982491"));
   }
   @Override
   public String getPresentation() {
-    return "InsertNodeWrapper";
+    return "InsertUrlIntoParagraph";
   }
   @Override
   public boolean isApplicable(final SNode node, final EditorContext editorContext) {
@@ -47,15 +47,15 @@ public final class InsertNodeWrapper_Intention extends AbstractIntentionDescript
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return "Insert Node Wrapper";
+      return "Insert Url";
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      Paragraph__BehaviorDescriptor.insertTextualElementAtCaret_id7evo$BZbvad.invoke(SNodeOperations.getNodeAncestor(node, CONCEPTS.Paragraph$XF, false, false), editorContext, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20dcb4fL, "jetbrains.mps.lang.text.structure.NodeWrapperTextualElement")));
+      Paragraph__BehaviorDescriptor.insertTextualElementAtCaret_id7evo$BZbvad.invoke(SNodeOperations.getNodeAncestor(node, CONCEPTS.Paragraph$XF, false, false), editorContext, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x739f6249ff2c0691L, "jetbrains.mps.lang.text.structure.UrlTextualElement")));
     }
     @Override
     public IntentionDescriptor getDescriptor() {
-      return InsertNodeWrapper_Intention.this;
+      return InsertUrlIntoParagraph_Intention.this;
     }
   }
 

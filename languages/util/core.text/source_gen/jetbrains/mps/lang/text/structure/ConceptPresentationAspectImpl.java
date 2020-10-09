@@ -21,6 +21,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_Text;
   private ConceptPresentation props_TextElement;
   private ConceptPresentation props_TextualElement;
+  private ConceptPresentation props_UrlTextualElement;
   private ConceptPresentation props_Word;
 
   @Override
@@ -111,6 +112,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_TextualElement = cpb.create();
         }
         return props_TextualElement;
+      case LanguageConceptSwitch.UrlTextualElement:
+        if (props_UrlTextualElement == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("element that holds a url");
+          cpb.rawPresentation("url");
+          props_UrlTextualElement = cpb.create();
+        }
+        return props_UrlTextualElement;
       case LanguageConceptSwitch.Word:
         if (props_Word == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

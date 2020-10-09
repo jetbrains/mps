@@ -11,6 +11,7 @@ import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
@@ -23,6 +24,7 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -40,8 +42,9 @@ public final class Paragraph__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Void> merge_id4HqBHuNzqyK = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("merge").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4HqBHuNzqyK").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
   public static final SMethod<SNode> split_id4HqBHuN_RSC = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("split").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4HqBHuN_RSC").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Void> initializeFromLine_id6n6K0Pj71DU = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("initializeFromLine").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6n6K0Pj71DU").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<Void> insertTextualElementAtCaret_id7evo$BZbvad = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("insertTextualElementAtCaret").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7evo$BZbvad").build(SMethodBuilder.createJavaParameter(EditorContext.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(initialize_id1v077Wg2A59, isEmptyParagraph_id7r4EKYUymRW, nonEmptyLetters_id7r4EKYUyqfh, merge_id4HqBHuNzqyw, merge_id4HqBHuNzqyK, split_id4HqBHuN_RSC, initializeFromLine_id6n6K0Pj71DU);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(initialize_id1v077Wg2A59, isEmptyParagraph_id7r4EKYUymRW, nonEmptyLetters_id7r4EKYUyqfh, merge_id4HqBHuNzqyw, merge_id4HqBHuNzqyK, split_id4HqBHuN_RSC, initializeFromLine_id6n6K0Pj71DU, insertTextualElementAtCaret_id7evo$BZbvad);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -91,7 +94,7 @@ public final class Paragraph__BehaviorDescriptor extends BaseBHDescriptor {
         }
       }
     });
-    if (!((boolean) Paragraph__BehaviorDescriptor.isEmptyParagraph_id7r4EKYUymRW.invoke(other)) && isEmptyString(trim_7af07r_a0a0e0s(SPropertyOperations.getString(SNodeOperations.as(position, CONCEPTS.Letter$kd), PROPS.value$X7Tp)))) {
+    if (!((boolean) Paragraph__BehaviorDescriptor.isEmptyParagraph_id7r4EKYUymRW.invoke(other)) && isEmptyString(trim_7af07r_a0a0e0t(SPropertyOperations.getString(SNodeOperations.as(position, CONCEPTS.Letter$kd), PROPS.value$X7Tp)))) {
       SNodeOperations.deleteNode(position);
     }
   }
@@ -134,6 +137,20 @@ public final class Paragraph__BehaviorDescriptor extends BaseBHDescriptor {
       }
     });
   }
+  /*package*/ static void insertTextualElementAtCaret_id7evo$BZbvad(@NotNull SNode __thisNode__, EditorContext editorContext, SNode element) {
+    SNode selectedNode = editorContext.getSelectedNode();
+    SNode currentElement = SNodeOperations.getNodeAncestor(selectedNode, CONCEPTS.TextualElement$9C, true, false);
+    if (SNodeOperations.isInstanceOf(currentElement, CONCEPTS.EmptyParagraphLetter$W6)) {
+      SNodeOperations.replaceWithAnother(currentElement, element);
+    } else {
+      int pos = (SNodeOperations.isInstanceOf(currentElement, CONCEPTS.Letter$kd) ? ((EditorCell_Label) (editorContext.getSelectedCell())).getCaretPosition() : 2);
+      if (pos > 0) {
+        SNodeOperations.insertNextSiblingChild(currentElement, element);
+      } else {
+        SNodeOperations.insertPrevSiblingChild(currentElement, element);
+      }
+    }
+  }
 
   /*package*/ Paragraph__BehaviorDescriptor() {
   }
@@ -168,6 +185,9 @@ public final class Paragraph__BehaviorDescriptor extends BaseBHDescriptor {
       case 6:
         initializeFromLine_id6n6K0Pj71DU(node, (SNode) parameters[0]);
         return null;
+      case 7:
+        insertTextualElementAtCaret_id7evo$BZbvad(node, (EditorContext) parameters[0], (SNode) parameters[1]);
+        return null;
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -199,7 +219,7 @@ public final class Paragraph__BehaviorDescriptor extends BaseBHDescriptor {
   private static boolean isEmptyString(String str) {
     return str == null || str.isEmpty();
   }
-  public static String trim_7af07r_a0a0e0s(String str) {
+  public static String trim_7af07r_a0a0e0t(String str) {
     return (str == null ? null : str.trim());
   }
 

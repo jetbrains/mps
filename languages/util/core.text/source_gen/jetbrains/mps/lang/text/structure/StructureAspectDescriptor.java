@@ -31,6 +31,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptText = createDescriptorForText();
   /*package*/ final ConceptDescriptor myConceptTextElement = createDescriptorForTextElement();
   /*package*/ final ConceptDescriptor myConceptTextualElement = createDescriptorForTextualElement();
+  /*package*/ final ConceptDescriptor myConceptUrlTextualElement = createDescriptorForUrlTextualElement();
   /*package*/ final ConceptDescriptor myConceptWord = createDescriptorForWord();
   /*package*/ final ConstrainedStringDatatypeDescriptor myCSDatatypeCharacterValueType = new ConstrainedStringDatatypeDescriptorImpl(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4aee0L, "CharacterValueType", "r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/9143182410139348704", ".");
   private final LanguageConceptSwitch myIndexSwitch;
@@ -48,7 +49,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptChapter, myConceptEmptyParagraphLetter, myConceptIHoldLines, myConceptIHoldParagraphs, myConceptLetter, myConceptLine, myConceptNodeWrapperElement, myConceptNodeWrapperTextualElement, myConceptParagraph, myConceptText, myConceptTextElement, myConceptTextualElement, myConceptWord);
+    return Arrays.asList(myConceptChapter, myConceptEmptyParagraphLetter, myConceptIHoldLines, myConceptIHoldParagraphs, myConceptLetter, myConceptLine, myConceptNodeWrapperElement, myConceptNodeWrapperTextualElement, myConceptParagraph, myConceptText, myConceptTextElement, myConceptTextualElement, myConceptUrlTextualElement, myConceptWord);
   }
 
   @Override
@@ -79,6 +80,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptTextElement;
       case LanguageConceptSwitch.TextualElement:
         return myConceptTextualElement;
+      case LanguageConceptSwitch.UrlTextualElement:
+        return myConceptUrlTextualElement;
       case LanguageConceptSwitch.Word:
         return myConceptWord;
       default:
@@ -207,6 +210,18 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, true, false);
     b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/3213792450771262715");
     b.version(2);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForUrlTextualElement() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "UrlTextualElement", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x739f6249ff2c0691L);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.lang.text.structure.TextualElement", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20d9cfbL);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x50ef06e32fec9043L);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x1ec383e5b4bdca56L);
+    b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/8331485905611916945");
+    b.version(2);
+    b.property("text", 0x739f6249ff2c0dd6L).type(PrimitiveTypeId.STRING).origin("8331485905611918806").done();
+    b.alias("url");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForWord() {

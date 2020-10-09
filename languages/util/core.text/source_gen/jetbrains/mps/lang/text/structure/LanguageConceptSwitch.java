@@ -21,7 +21,8 @@ public final class LanguageConceptSwitch {
   public static final int Text = 9;
   public static final int TextElement = 10;
   public static final int TextualElement = 11;
-  public static final int Word = 12;
+  public static final int UrlTextualElement = 12;
+  public static final int Word = 13;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L);
@@ -37,6 +38,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x2331694e5619f411L, Text);
     builder.put(0x229012ddae35ee7L, TextElement);
     builder.put(0x2c99af34e20d9cfbL, TextualElement);
+    builder.put(0x739f6249ff2c0691L, UrlTextualElement);
     builder.put(0x229012ddae35f04L, Word);
     myIndex = builder.seal();
   }

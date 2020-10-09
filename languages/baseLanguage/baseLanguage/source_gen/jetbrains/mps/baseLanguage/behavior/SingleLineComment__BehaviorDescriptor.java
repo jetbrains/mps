@@ -107,7 +107,11 @@ public final class SingleLineComment__BehaviorDescriptor extends BaseBHDescripto
   }
   @Deprecated
   /*package*/ static List<SNode> getLines_id6GJhO0n1Xys(@NotNull SNode __thisNode__) {
-    return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(__thisNode__, LINKS.line$9eiT));
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.line$9eiT) != null)) {
+      return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(__thisNode__, LINKS.line$9eiT));
+    } else {
+      return ListSequence.fromList(new ArrayList<SNode>());
+    }
   }
   /*package*/ static List<SNode> getParagraphs_id2MpFNjy3tMn(@NotNull SNode __thisNode__) {
     return ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(__thisNode__, LINKS.paragraph$y$du));

@@ -45,7 +45,7 @@ public final class InsertNodeWrapperOnEmptyLine_Intention extends AbstractIntent
     }
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return "Insert Node Wrapper";
+      return "Insert Node Wrapper into empty";
     }
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {

@@ -267,5 +267,24 @@
       <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
   </node>
+  <node concept="1TIwiD" id="7evo$BZb0qh">
+    <property role="EcuMT" value="8331485905611916945" />
+    <property role="3GE5qa" value="textual" />
+    <property role="TrG5h" value="UrlTextualElement" />
+    <property role="34LRSv" value="url" />
+    <property role="R4oN_" value="element that holds a url" />
+    <ref role="1TJDcQ" node="2MpFNjy3pNV" resolve="TextualElement" />
+    <node concept="1TJgyi" id="7evo$BZb0Rm" role="1TKVEl">
+      <property role="IQ2nx" value="8331485905611918806" />
+      <property role="TrG5h" value="text" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="PrWs8" id="7evo$BZb0Ai" role="PzmwI">
+      <ref role="PrY4T" to="tpck:53J1IcJV913" resolve="ISkipConstraintsChecking" />
+    </node>
+    <node concept="PrWs8" id="7evo$BZb0Aj" role="PzmwI">
+      <ref role="PrY4T" to="tpck:1V3wYmOJsDm" resolve="IDontApplyTypesystemRules" />
+    </node>
+  </node>
 </model>
 

@@ -40,7 +40,9 @@ public abstract class Comments {
         tgs.append(SPropertyOperations.getString(l, PROPS.value$X7Tp));
       }
       if (SNodeOperations.isInstanceOf(el, CONCEPTS.NodeWrapperTextualElement$vh)) {
+        tgs.append(" ");
         tgs.append("<node>");
+        tgs.append(" ");
       }
     }
   }
