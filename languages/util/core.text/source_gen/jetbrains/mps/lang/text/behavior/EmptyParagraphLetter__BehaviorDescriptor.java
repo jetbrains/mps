@@ -10,44 +10,29 @@ import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
-import jetbrains.mps.openapi.editor.EditorContext;
-import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.language.SProperty;
 
-public final class Letter__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter");
+public final class EmptyParagraphLetter__BehaviorDescriptor extends BaseBHDescriptor {
+  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x17c01c7f100e844bL, "jetbrains.mps.lang.text.structure.EmptyParagraphLetter");
 
-  public static final SMethod<Void> insertTextualElementAtCaret_id2MpFNjy4v6O = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("insertTextualElementAtCaret").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2MpFNjy4v6O").build(SMethodBuilder.createJavaParameter(EditorContext.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<String> getTextualRepresentation_id69wk_bF5sg9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTextualRepresentation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("69wk_bF5sg9").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(insertTextualElementAtCaret_id2MpFNjy4v6O, getTextualRepresentation_id69wk_bF5sg9);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTextualRepresentation_id69wk_bF5sg9);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.assign(__thisNode__, PROPS.value$X7Tp, "");
   }
 
-  /*package*/ static void insertTextualElementAtCaret_id2MpFNjy4v6O(@NotNull SNode __thisNode__, EditorContext editorContext, SNode element) {
-    int pos = ((EditorCell_Label) editorContext.getSelectedCell()).getCaretPosition();
-    if (pos > 0) {
-      SNodeOperations.insertNextSiblingChild(__thisNode__, element);
-    } else {
-      SNodeOperations.insertPrevSiblingChild(__thisNode__, element);
-    }
-  }
   /*package*/ static String getTextualRepresentation_id69wk_bF5sg9(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.value$X7Tp);
+    return "";
   }
 
-  /*package*/ Letter__BehaviorDescriptor() {
+  /*package*/ EmptyParagraphLetter__BehaviorDescriptor() {
   }
 
   @Override
@@ -63,9 +48,6 @@ public final class Letter__BehaviorDescriptor extends BaseBHDescriptor {
     }
     switch (methodIndex) {
       case 0:
-        insertTextualElementAtCaret_id2MpFNjy4v6O(node, (EditorContext) parameters[0], (SNode) parameters[1]);
-        return null;
-      case 1:
         return (T) ((String) getTextualRepresentation_id69wk_bF5sg9(node));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -94,9 +76,5 @@ public final class Letter__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty value$X7Tp = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7ee31bf598f4ad9eL, "value");
   }
 }

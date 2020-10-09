@@ -15,9 +15,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -31,15 +30,14 @@ public final class MultiLineComment__BehaviorDescriptor extends BaseBHDescriptor
 
   public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<List<SNode>> getLines_id6GJhO0n1Xys = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getLines").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6GJhO0n1Xys").build();
+  public static final SMethod<List<SNode>> getParagraphs_id2MpFNjy3tMn = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getParagraphs").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2MpFNjy3tMn").build();
+  public static final SMethod<Void> addParagraph_idfxHsktC$hi = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addParagraph").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("fxHsktC$hi").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getLines_id6GJhO0n1Xys);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, getLines_id6GJhO0n1Xys, getParagraphs_id2MpFNjy3tMn, addParagraph_idfxHsktC$hi);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.lines$lpTr)).isEmpty()) {
-      SNode line = SNodeFactoryOperations.addNewChild(__thisNode__, LINKS.lines$lpTr, null);
-      ListSequence.fromList(SLinkOperations.getChildren(line, LINKS.elements$_j45)).clear();
-      SNode w = SNodeFactoryOperations.addNewChild(line, LINKS.elements$_j45, CONCEPTS.Word$Dn);
-    }
+    SLinkOperations.addNewChild(__thisNode__, LINKS.paragraphs$z2IK, null);
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.lines$lpTr)).clear();
   }
 
   /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
@@ -52,8 +50,15 @@ public final class MultiLineComment__BehaviorDescriptor extends BaseBHDescriptor
     }
     return null;
   }
+  @Deprecated
   /*package*/ static List<SNode> getLines_id6GJhO0n1Xys(@NotNull SNode __thisNode__) {
     return SLinkOperations.getChildren(__thisNode__, LINKS.lines$lpTr);
+  }
+  /*package*/ static List<SNode> getParagraphs_id2MpFNjy3tMn(@NotNull SNode __thisNode__) {
+    return SLinkOperations.getChildren(__thisNode__, LINKS.paragraphs$z2IK);
+  }
+  /*package*/ static void addParagraph_idfxHsktC$hi(@NotNull SNode __thisNode__, SNode p) {
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.paragraphs$z2IK)).addElement(p);
   }
 
   /*package*/ MultiLineComment__BehaviorDescriptor() {
@@ -75,6 +80,11 @@ public final class MultiLineComment__BehaviorDescriptor extends BaseBHDescriptor
         return (T) ((Scope) getScope_id52_Geb4QDV$(node, (SAbstractConcept) parameters[0], (SNode) parameters[1]));
       case 1:
         return (T) ((List<SNode>) getLines_id6GJhO0n1Xys(node));
+      case 2:
+        return (T) ((List<SNode>) getParagraphs_id2MpFNjy3tMn(node));
+      case 3:
+        addParagraph_idfxHsktC$hi(node, (SNode) parameters[0]);
+        return null;
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -105,12 +115,11 @@ public final class MultiLineComment__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   private static final class LINKS {
+    /*package*/ static final SContainmentLink paragraphs$z2IK = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL, 0x62605252eb1ae0e7L, "paragraphs");
     /*package*/ static final SContainmentLink lines$lpTr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL, 0x1809ed668ddac789L, "lines");
-    /*package*/ static final SContainmentLink elements$_j45 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
     /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
     /*package*/ static final SConcept LocalVariableDeclaration$41 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL, "jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration");
   }

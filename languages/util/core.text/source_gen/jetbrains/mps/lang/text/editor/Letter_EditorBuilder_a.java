@@ -65,7 +65,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       style.set(StyleAttributes.FONT_STYLE, _StyleParameter_QueryFunction_uxymkz_a4a());
       editorCell.getStyle().putAll(style);
       LetterActions.setCellActions(editorCell, myNode, getEditorContext());
-      editorCell.addKeyMap(new LetterStylingKeys());
+      editorCell.addKeyMap(new LetterKeys());
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);
       Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);

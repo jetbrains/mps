@@ -32,6 +32,18 @@ public abstract class Comments {
       }
     }
   }
+  public static void commentParagraph(SNode p, final TextGenContext ctx) {
+    final TextGenSupport tgs = new TextGenSupport(ctx);
+    for (SNode el : SLinkOperations.getChildren(p, LINKS.letters$rNyA)) {
+      if (SNodeOperations.isInstanceOf(el, CONCEPTS.Letter$kd)) {
+        SNode l = SNodeOperations.cast(el, CONCEPTS.Letter$kd);
+        tgs.append(SPropertyOperations.getString(l, PROPS.value$X7Tp));
+      }
+      if (SNodeOperations.isInstanceOf(el, CONCEPTS.NodeWrapperTextualElement$vh)) {
+        tgs.append("<node>");
+      }
+    }
+  }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
   }
@@ -39,14 +51,18 @@ public abstract class Comments {
   private static final class CONCEPTS {
     /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
     /*package*/ static final SConcept NodeWrapperElement$c8 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, "jetbrains.mps.lang.text.structure.NodeWrapperElement");
+    /*package*/ static final SConcept Letter$kd = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter");
+    /*package*/ static final SConcept NodeWrapperTextualElement$vh = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20dcb4fL, "jetbrains.mps.lang.text.structure.NodeWrapperTextualElement");
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty value$zQr_ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
     /*package*/ static final SProperty url$SIrt = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
+    /*package*/ static final SProperty value$X7Tp = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7ee31bf598f4ad9eL, "value");
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink elements$_j45 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink letters$rNyA = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, 0x7ee31bf598f4eddfL, "letters");
   }
 }

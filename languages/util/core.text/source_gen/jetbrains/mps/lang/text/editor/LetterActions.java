@@ -16,15 +16,13 @@ import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
@@ -46,13 +44,6 @@ public class LetterActions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-      }
-      @Override
-      public boolean canExecute(EditorContext editorContext) {
-        return this.canExecute_internal(editorContext, node);
-      }
-      public boolean canExecute_internal(EditorContext editorContext, SNode node) {
-        return false;
       }
 
     };
@@ -182,29 +173,6 @@ public class LetterActions {
 
     };
   }
-  /*package*/ static AbstractCellAction createAction_INSERT(final SNode node) {
-    return new AbstractCellAction() {
-      public void execute(EditorContext editorContext) {
-        this.execute_internal(editorContext, node);
-      }
-      public void execute_internal(EditorContext editorContext, SNode node) {
-        final SNode next = SNodeOperations.insertNextSiblingChild(SNodeOperations.getNodeAncestor(node, CONCEPTS.Paragraph$XF, false, false), SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph")));
-        SNode nextLetter = SNodeOperations.getNextSibling(node);
-        Sequence.fromIterable((SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(node, false), CONCEPTS.Letter$kd))).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode it) {
-            ListSequence.fromList(SLinkOperations.getChildren(next, LINKS.letters$rNyA)).addElement(it);
-          }
-        });
-        Paragraph__BehaviorDescriptor.initialize_id1v077Wg2A59.invoke(next);
-        if (nextLetter != null) {
-          SelectionUtil.selectLabelCellAnSetCaret(editorContext, nextLetter, SelectionManager.FIRST_CELL, 0);
-        } else {
-          SelectionUtil.selectCell(editorContext, next, SelectionManager.FIRST_EDITABLE_CELL);
-        }
-      }
-
-    };
-  }
   /*package*/ static AbstractCellAction createAction_PASTE(final SNode node) {
     return new AbstractCellAction() {
       public void execute(EditorContext editorContext) {
@@ -256,6 +224,7 @@ public class LetterActions {
 
   public static void setDefinedCellActions(EditorCell editorCell, SNode node, EditorContext context) {
     // set cell actions from all imported action maps 
+    InsertOnTextualElement.setDefinedCellActions(editorCell, node, context);
 
     // set cell actions defined directly in this action map 
     editorCell.setAction(CellActionType.COMMENT, createAction_COMMENT(node));
@@ -265,13 +234,13 @@ public class LetterActions {
     editorCell.setAction(CellActionType.LOCAL_END, createAction_LOCAL_END(node));
     editorCell.setAction(CellActionType.BACKSPACE, createAction_BACKSPACE(node));
     editorCell.setAction(CellActionType.DELETE, createAction_DELETE(node));
-    editorCell.setAction(CellActionType.INSERT, createAction_INSERT(node));
     editorCell.setAction(CellActionType.PASTE, createAction_PASTE(node));
   }
 
   public static void setDefinedCellActionsOfType(EditorCell editorCell, SNode node, EditorContext context, CellActionType actionType) {
 
     // set cell action(s) of the given type from imported action maps 
+    InsertOnTextualElement.setDefinedCellActionsOfType(editorCell, node, context, actionType);
 
     // set cell action of the given type defined directly in this action map 
     if (Objects.equals(actionType, CellActionType.COMMENT)) {
@@ -294,9 +263,6 @@ public class LetterActions {
     }
     if (Objects.equals(actionType, CellActionType.DELETE)) {
       editorCell.setAction(actionType, createAction_DELETE(node));
-    }
-    if (Objects.equals(actionType, CellActionType.INSERT)) {
-      editorCell.setAction(actionType, createAction_INSERT(node));
     }
     if (Objects.equals(actionType, CellActionType.PASTE)) {
       editorCell.setAction(actionType, createAction_PASTE(node));

@@ -49,9 +49,11 @@ public class UncommentSingleLineComment {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         if (SNodeOperations.isInstanceOf(SNodeOperations.getPrevSibling(node), CONCEPTS.SingleLineComment$Kw)) {
-          SNode firstMoved = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.line$9eiT), LINKS.elements$_j45)).first();
+          SNode firstWord = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.line$9eiT), LINKS.elements$_j45)).first();
           ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getPrevSibling(node), CONCEPTS.SingleLineComment$Kw), LINKS.line$9eiT), LINKS.elements$_j45)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.line$9eiT), LINKS.elements$_j45)));
-          SelectionUtil.selectLabelCellAnSetCaret(editorContext, firstMoved, SelectionManager.FIRST_CELL, 0);
+          SNode firstLetter = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.paragraph$y$du), LINKS.letters$rNyA)).first();
+          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getPrevSibling(node), CONCEPTS.SingleLineComment$Kw), LINKS.paragraph$y$du), LINKS.letters$rNyA)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.paragraph$y$du), LINKS.letters$rNyA)));
+          SelectionUtil.selectLabelCellAnSetCaret(editorContext, ((firstWord != null ? firstWord : firstLetter)), SelectionManager.FIRST_CELL, 0);
         } else {
           if (DeletionApproverUtil.approve(editorContext, node)) {
             return;
@@ -111,6 +113,8 @@ public class UncommentSingleLineComment {
   private static final class LINKS {
     /*package*/ static final SContainmentLink line$9eiT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x73f69d82391da738L, "line");
     /*package*/ static final SContainmentLink elements$_j45 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
+    /*package*/ static final SContainmentLink paragraph$y$du = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x62605252eb1b533aL, "paragraph");
+    /*package*/ static final SContainmentLink letters$rNyA = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, 0x7ee31bf598f4eddfL, "letters");
   }
 
   private static final class CONCEPTS {

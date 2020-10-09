@@ -45,6 +45,7 @@ import jetbrains.mps.editor.runtime.style.Measure;
     style.set(StyleAttributes.FIRST_POSITION_ALLOWED, true);
     editorCell.getStyle().putAll(style);
     EmptyLetterActions.setCellActions(editorCell, myNode, getEditorContext());
+    editorCell.addKeyMap(new EmptyParagraphLetterKeys());
     editorCell.setDefaultText("");
     return editorCell;
   }

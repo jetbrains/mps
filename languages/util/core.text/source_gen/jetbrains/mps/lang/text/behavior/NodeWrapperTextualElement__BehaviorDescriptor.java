@@ -10,44 +10,33 @@ import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
-import jetbrains.mps.openapi.editor.EditorContext;
-import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-public final class Letter__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter");
+public final class NodeWrapperTextualElement__BehaviorDescriptor extends BaseBHDescriptor {
+  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20dcb4fL, "jetbrains.mps.lang.text.structure.NodeWrapperTextualElement");
 
-  public static final SMethod<Void> insertTextualElementAtCaret_id2MpFNjy4v6O = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("insertTextualElementAtCaret").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2MpFNjy4v6O").build(SMethodBuilder.createJavaParameter(EditorContext.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<String> getTextualRepresentation_id69wk_bF5sg9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTextualRepresentation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("69wk_bF5sg9").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(insertTextualElementAtCaret_id2MpFNjy4v6O, getTextualRepresentation_id69wk_bF5sg9);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTextualRepresentation_id69wk_bF5sg9);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SPropertyOperations.assign(__thisNode__, PROPS.value$X7Tp, "");
   }
 
-  /*package*/ static void insertTextualElementAtCaret_id2MpFNjy4v6O(@NotNull SNode __thisNode__, EditorContext editorContext, SNode element) {
-    int pos = ((EditorCell_Label) editorContext.getSelectedCell()).getCaretPosition();
-    if (pos > 0) {
-      SNodeOperations.insertNextSiblingChild(__thisNode__, element);
-    } else {
-      SNodeOperations.insertPrevSiblingChild(__thisNode__, element);
-    }
-  }
   /*package*/ static String getTextualRepresentation_id69wk_bF5sg9(@NotNull SNode __thisNode__) {
-    return SPropertyOperations.getString(__thisNode__, PROPS.value$X7Tp);
+    // todo maybe a better way to visualize the wrapped node should be used 
+    return (String) BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.node$pn2z));
   }
 
-  /*package*/ Letter__BehaviorDescriptor() {
+  /*package*/ NodeWrapperTextualElement__BehaviorDescriptor() {
   }
 
   @Override
@@ -63,9 +52,6 @@ public final class Letter__BehaviorDescriptor extends BaseBHDescriptor {
     }
     switch (methodIndex) {
       case 0:
-        insertTextualElementAtCaret_id2MpFNjy4v6O(node, (EditorContext) parameters[0], (SNode) parameters[1]);
-        return null;
-      case 1:
         return (T) ((String) getTextualRepresentation_id69wk_bF5sg9(node));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -96,7 +82,7 @@ public final class Letter__BehaviorDescriptor extends BaseBHDescriptor {
     return CONCEPT;
   }
 
-  private static final class PROPS {
-    /*package*/ static final SProperty value$X7Tp = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7ee31bf598f4ad9eL, "value");
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink node$pn2z = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20dcb4fL, 0x2b7b49e536031feaL, "node");
   }
 }

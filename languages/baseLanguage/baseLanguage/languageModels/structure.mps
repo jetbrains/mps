@@ -3784,6 +3784,15 @@
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="line" />
       <ref role="20lvS9" to="zqge:2cLqkTm6J5A" resolve="Line" />
+      <node concept="asaX9" id="69wk_bF6Pm1" role="lGtFl">
+        <property role="YLQ7P" value="Use paragraph instead" />
+      </node>
+    </node>
+    <node concept="1TJgyj" id="69wk_bF6PcU" role="1TKVEi">
+      <property role="IQ2ns" value="7088756329566393146" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="paragraph" />
+      <ref role="20lvS9" to="zqge:7Vz6ZmoXeMu" resolve="Paragraph" />
     </node>
   </node>
   <node concept="1TIwiD" id="6KbE6jv0m5S">
@@ -4631,9 +4640,19 @@
       <property role="20kJfa" value="lines" />
       <property role="20lbJX" value="fLJekj5/_0__n" />
       <ref role="20lvS9" to="zqge:2cLqkTm6J5A" resolve="Line" />
+      <node concept="asaX9" id="69wk_bF6IdE" role="lGtFl">
+        <property role="YLQ7P" value="Use paragraphs instead" />
+      </node>
     </node>
     <node concept="PrWs8" id="fB3l7ZJDB7" role="PzmwI">
       <ref role="PrY4T" node="fB3l7ZcM9H" resolve="IComment" />
+    </node>
+    <node concept="1TJgyj" id="69wk_bF6I3B" role="1TKVEi">
+      <property role="IQ2ns" value="7088756329566363879" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="paragraphs" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" to="zqge:7Vz6ZmoXeMu" resolve="Paragraph" />
     </node>
   </node>
   <node concept="1TIwiD" id="72DAwHBizyl">
@@ -4768,6 +4787,9 @@
     <property role="EcuMT" value="281208147558998637" />
     <property role="3GE5qa" value="comments" />
     <property role="TrG5h" value="IComment" />
+    <node concept="PrWs8" id="69wk_bF5h$4" role="PrDN$">
+      <ref role="PrY4T" to="zqge:2MpFNjy3tyx" resolve="IHoldParagraphs" />
+    </node>
     <node concept="PrWs8" id="fB3l7ZteEn" role="PrDN$">
       <ref role="PrY4T" to="zqge:6GJhO0n1XxQ" resolve="IHoldLines" />
     </node>
@@ -4789,6 +4811,23 @@
       <ref role="20lvS9" node="fz3vP1J" resolve="Expression" />
     </node>
   </node>
+  <node concept="1TIwiD" id="3mPoTkdZzdR">
+    <property role="EcuMT" value="3870108946630849399" />
+    <property role="3GE5qa" value="classifiers.refs" />
+    <property role="TrG5h" value="StaticFieldReferenceOperation" />
+    <property role="R4oN_" value="static field reference" />
+    <ref role="1TJDcQ" node="fz7vLUo" resolve="VariableReference" />
+    <node concept="PrWs8" id="3mPoTkdZzdS" role="PzmwI">
+      <ref role="PrY4T" node="hqOqG0K" resolve="IOperation" />
+    </node>
+    <node concept="1TJgyj" id="3mPoTkdZzrB" role="1TKVEi">
+      <property role="IQ2ns" value="3870108946630850279" />
+      <property role="20kJfa" value="staticFieldDeclaration" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="f$Wx3kv" resolve="StaticFieldDeclaration" />
+      <ref role="20ksaX" node="fzcqZ_w" resolve="variableDeclaration" />
+    </node>
+  </node>
   <node concept="1TIwiD" id="4ZXDgjUm4vW">
     <property role="EcuMT" value="5763944538902644732" />
     <property role="3GE5qa" value="classifiers.refs" />
@@ -4806,23 +4845,6 @@
     </node>
     <node concept="PrWs8" id="6382hnZshhl" role="PzmwI">
       <ref role="PrY4T" node="hxndl_i" resolve="IMethodCall" />
-    </node>
-  </node>
-  <node concept="1TIwiD" id="3mPoTkdZzdR">
-    <property role="EcuMT" value="3870108946630849399" />
-    <property role="3GE5qa" value="classifiers.refs" />
-    <property role="TrG5h" value="StaticFieldReferenceOperation" />
-    <property role="R4oN_" value="static field reference" />
-    <ref role="1TJDcQ" node="fz7vLUo" resolve="VariableReference" />
-    <node concept="PrWs8" id="3mPoTkdZzdS" role="PzmwI">
-      <ref role="PrY4T" node="hqOqG0K" resolve="IOperation" />
-    </node>
-    <node concept="1TJgyj" id="3mPoTkdZzrB" role="1TKVEi">
-      <property role="IQ2ns" value="3870108946630850279" />
-      <property role="20kJfa" value="staticFieldDeclaration" />
-      <property role="20lbJX" value="fLJekj4/_1" />
-      <ref role="20lvS9" node="f$Wx3kv" resolve="StaticFieldDeclaration" />
-      <ref role="20ksaX" node="fzcqZ_w" resolve="variableDeclaration" />
     </node>
   </node>
 </model>

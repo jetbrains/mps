@@ -212,19 +212,26 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
       case 22:
         if (true) {
           // concept 
+          intentions = new IntentionFactory[1];
+          intentions[0] = new ConvertCommentToParagraphs_Intention();
+        }
+        break;
+      case 23:
+        if (true) {
+          // concept 
           intentions = new IntentionFactory[2];
           intentions[0] = new AlterStatementListContainer_Intention();
           intentions[1] = new UnwrapStatementList_Intention();
         }
         break;
-      case 23:
+      case 24:
         if (true) {
           // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new AddTypeParameters_Intention();
         }
         break;
-      case 24:
+      case 25:
         if (true) {
           // concept 
           intentions = new IntentionFactory[12];
@@ -242,7 +249,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
           intentions[11] = new UnwrapUnnecessaryElse_Intention();
         }
         break;
-      case 25:
+      case 26:
         if (true) {
           // concept 
           intentions = new IntentionFactory[2];
@@ -250,7 +257,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
           intentions[1] = new FilpEqualsIntention_Intention();
         }
         break;
-      case 26:
+      case 27:
         if (true) {
           // concept 
           intentions = new IntentionFactory[4];
@@ -260,42 +267,42 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
           intentions[3] = new ToggleMethodDefault_Intention();
         }
         break;
-      case 27:
+      case 28:
         if (true) {
           // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new SpecifyClass_Intention();
         }
         break;
-      case 28:
+      case 29:
         if (true) {
           // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new SplitIntoDeclarationAndAssignment_Intention();
         }
         break;
-      case 29:
+      case 30:
         if (true) {
           // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new ToggleMethodStatic_Intention();
         }
         break;
-      case 30:
+      case 31:
         if (true) {
           // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new AddFieldForUnUsedParameter_Intention();
         }
         break;
-      case 31:
+      case 32:
         if (true) {
           // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new MergeStringConcatenation_Intention();
         }
         break;
-      case 32:
+      case 33:
         if (true) {
           // concept 
           intentions = new IntentionFactory[3];
@@ -304,15 +311,14 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
           intentions[2] = new SwitchToCustomConstructorPropertyImplementation_Intention();
         }
         break;
-      case 33:
+      case 34:
         if (true) {
           // concept 
-          intentions = new IntentionFactory[2];
-          intentions[0] = new UpdateComment_Intention();
-          intentions[1] = new UpdateCommentToSingleLineStructure_Intention();
+          intentions = new IntentionFactory[1];
+          intentions[0] = new UpdateCommentToSingleLineStructure_Intention();
         }
         break;
-      case 34:
+      case 35:
         if (true) {
           // concept 
           intentions = new IntentionFactory[14];
@@ -332,7 +338,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
           intentions[13] = new MoveUpIntoIfBranches_Intention();
         }
         break;
-      case 35:
+      case 36:
         if (true) {
           // concept 
           intentions = new IntentionFactory[3];
@@ -341,14 +347,14 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
           intentions[2] = new MakeStaticFieldTransient_Intention();
         }
         break;
-      case 36:
+      case 37:
         if (true) {
           // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new SplitStringIntoConcatenation_Intention();
         }
         break;
-      case 37:
+      case 38:
         if (true) {
           // concept 
           intentions = new IntentionFactory[2];
@@ -356,35 +362,35 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
           intentions[1] = new SwapTernaryBranches_Intention();
         }
         break;
-      case 38:
+      case 39:
         if (true) {
           // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new CreateReferenceOnClass_Intention();
         }
         break;
-      case 39:
+      case 40:
         if (true) {
           // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new AddRuntimeExceptionToMethodSignature_Intention();
         }
         break;
-      case 40:
+      case 41:
         if (true) {
           // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new ConvertToArrayType_Intention();
         }
         break;
-      case 41:
+      case 42:
         if (true) {
           // concept 
           intentions = new IntentionFactory[1];
           intentions[0] = new AddFinalModifierToAny_Intention();
         }
         break;
-      case 42:
+      case 43:
         if (true) {
           // concept 
           intentions = new IntentionFactory[3];
@@ -393,7 +399,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
           intentions[2] = new MakeParameterFinal_Intention();
         }
         break;
-      case 43:
+      case 44:
         if (true) {
           // concept 
           intentions = new IntentionFactory[1];
@@ -504,18 +510,18 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     rv[91] = new AutoSpacing_Intention();
     rv[92] = new UnwrapUnnecessaryElse_Intention();
     rv[93] = new SurroundWithPassByRef_Intention();
-    rv[94] = new UpdateComment_Intention();
-    rv[95] = new CreateMatchingConstructor_Intention();
-    rv[96] = new FixMissingDefaultConstructor_Intention();
-    rv[97] = new CreateMethodFromUsage_Intention();
-    rv[98] = new CreateRootClassFromUsage_Intention();
-    rv[99] = new UpdateCommentToSingleLineStructure_Intention();
-    rv[100] = new ToggleMethodDefault_Intention();
-    rv[101] = new UnwrapBlockStatement_Intention();
-    rv[102] = new SurroundWithTypeCastInParens_Intention();
-    rv[103] = new UnwrapStatementList_Intention();
-    rv[104] = new MoveUpIntoIfBranches_Intention();
+    rv[94] = new CreateMatchingConstructor_Intention();
+    rv[95] = new FixMissingDefaultConstructor_Intention();
+    rv[96] = new CreateMethodFromUsage_Intention();
+    rv[97] = new CreateRootClassFromUsage_Intention();
+    rv[98] = new UpdateCommentToSingleLineStructure_Intention();
+    rv[99] = new ToggleMethodDefault_Intention();
+    rv[100] = new UnwrapBlockStatement_Intention();
+    rv[101] = new SurroundWithTypeCastInParens_Intention();
+    rv[102] = new UnwrapStatementList_Intention();
+    rv[103] = new MoveUpIntoIfBranches_Intention();
+    rv[104] = new ConvertCommentToParagraphs_Intention();
     return Arrays.asList(rv);
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab844af9bL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL), MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b210L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b9245fc5L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d2ea8a339L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120237c2cebL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7fbL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfaa4bf0f2fL)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab844af9bL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940d819f7L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10e50ecba3dL), MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc092b6b77L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x2724644c0ac833a5L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118ceceb41aL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b210L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a698082feL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10a6933ce33L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b9245fc5L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d2ea8a339L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3e70d51ff33226dL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x120237c2cebL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b217L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x118154a6332L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7efL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7fbL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b744dafeL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93c84351fL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef01239c9L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f3ee082d8L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L), MetaIdFactory.conceptId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfaa4bf0f2fL)).seal();
 }
