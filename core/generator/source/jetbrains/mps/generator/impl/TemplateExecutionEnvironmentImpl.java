@@ -182,11 +182,12 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
   }
 
   @Override
-  public SNode insertCallSiteNode(SNodeReference templateNode, TemplateContext templateContext) throws GenerationCanceledException, GenerationFailureException {
+  public Collection<SNode> callSiteNode(SNodeReference templateNode, TemplateContext templateContext) throws GenerationCanceledException, GenerationFailureException {
     // assume call site node has been produced by a regular template transcription process, and we don't need to check/adopt the call site node
     SNode callSiteNode = templateContext.getCallSiteNode();
     if (callSiteNode == null) {
-      return null;
+      // XXX shall I warn/error about missing call site? E.g calling a template with needCallSite from within a $WEAVE$
+      return Collections.emptyList();
     }
     if (callSiteNode.getParent() != null) {
       final String m = "Call site node has parent assigned. Using the node more than once can lead to reference resolution issues. Replaced with a copy of the original node";
@@ -196,7 +197,7 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
     // in case callSiteNode is a copy, trace likely makes no sense (id of the copy not necessarily persists once it is added to a model),
     // but this is a general disadvantage of using node id.
     getTrace().trace(templateContext.getInput().getNodeId(), Collections.singletonList(callSiteNode.getNodeId()), templateNode);
-    return callSiteNode;
+    return Collections.singletonList(callSiteNode);
   }
 
   @Override

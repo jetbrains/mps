@@ -103,16 +103,21 @@ public interface TemplateExecutionEnvironment extends GeneratorQueryProvider.Sou
 
   /**
    * Support for $INSERT$ macro, adopt a node, prepare it to get inserted into output model
+   * Doesn't tolerate {@code null} for node
+   * @return not {@code null} value, either the supplied {@code node}, or its copy.
    */
   SNode insertNode(SNode node, SNodeReference templateNode, TemplateContext templateContext) throws GenerationCanceledException, GenerationFailureException;
 
   /**
-   * Support for $CALL-SITE$ macro, insert a node that has been produced by template processor earlier.
+   * Support for $CALL-SITE$ macro, provides a node that has been produced by template processor earlier.
    * XXX Not sure I need this, could get the value right from TC, but generally a level of indirection doesn't hurt
    * FIXME why do I stick to SNodeReference to identify template location, just for the sake of navigation? Can I use smth like TemplateDeclarationKey instead?
+   * @return empty list if no call site node is available
+   *         Though we support single node as a call site at the moment, use Collection here for uniformity in generated templates.
+   *         XXX Perhaps, later I'd reconsider and provide list of call site nodes to consume by clients
    * @since 2020.3
    */
-  SNode insertCallSiteNode(SNodeReference templateNode, TemplateContext templateContext) throws GenerationCanceledException, GenerationFailureException;
+  Collection<SNode> callSiteNode(SNodeReference templateNode, TemplateContext templateContext) throws GenerationCanceledException, GenerationFailureException;
 
   /**
    * FIXME provisional API just to get rid of TemplateGenerator:getGenerator exposure. Would be great to use smth like TemplateDeclarationKey, just the name is unfortunate

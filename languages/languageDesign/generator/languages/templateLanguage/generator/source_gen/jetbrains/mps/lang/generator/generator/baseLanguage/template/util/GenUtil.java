@@ -5,9 +5,9 @@ package jetbrains.mps.lang.generator.generator.baseLanguage.template.util;
 import jetbrains.mps.generator.template.TemplateQueryContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.generator.impl.template.MetaObjectGenerationHelper;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -22,11 +22,7 @@ public class GenUtil {
   public GenUtil() {
   }
   public static String getVar(TemplateQueryContext context, SNode node, int skipMacro) {
-    List<SNode> macros = ListSequence.fromList(SNodeOperations.getChildren(node)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.NodeMacro$qU);
-      }
-    }).toListSequence();
+    List<SNode> macros = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(node), CONCEPTS.NodeMacro$qU)).toListSequence();
     SNode real = (ListSequence.fromList(macros).count() <= skipMacro ? node : ListSequence.fromList(macros).getElement(skipMacro));
     return (String) context.getTransientObject(MultiTuple.<String,SNode>from(KEY, real));
   }

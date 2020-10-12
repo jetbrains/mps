@@ -265,6 +265,15 @@ public final class TemplateProcessor implements ITemplateProcessor {
     protected final IGeneratorLogger getLogger() {
       return myTemplateProcessor.getGenerator().getLogger();
     }
+
+    /**
+     * Bridge {@link TemplateExecutionEnvironment} contract of {@code Collection<>} with {@code List<>} of {@link ITemplateProcessor#apply(SNode, TemplateContext)}
+     * Intended to avoid copying collection in case it's List already
+     * Would be great to stick to same approach to avoid translations like that.
+     */
+    protected static List<SNode> asList(Collection<SNode> rv) {
+      return rv instanceof List ? (List<SNode>) rv : new ArrayList<>(rv);
+    }
   }
 
   // could be standalone facility, not an element in class hierarchy
@@ -447,8 +456,7 @@ public final class TemplateProcessor implements ITemplateProcessor {
     @NotNull
     @Override
     public List<SNode> apply(@NotNull TemplateContext templateContext) throws GenerationFailureException, GenerationCanceledException {
-      final SNode cs = templateContext.getEnvironment().insertCallSiteNode(getMacroNodeRef(), templateContext);
-      return Collections.singletonList(cs);
+      return asList(templateContext.getEnvironment().callSiteNode(getMacroNodeRef(), templateContext));
     }
   }
 
@@ -800,7 +808,7 @@ public final class TemplateProcessor implements ITemplateProcessor {
         // use initial context, not the one prepared (could be filled with switch arguments)
         collection = nextMacro(templateContext.subContext(newInputNode));
       }
-      return new ArrayList<>(collection);
+      return asList(collection);
     }
   }
 
@@ -852,7 +860,7 @@ public final class TemplateProcessor implements ITemplateProcessor {
       TemplateContext tcInput = prepareArguments(templateContext, callSiteOutputNodes).subContext(newInputNode);
 
       try {
-        return (List<SNode>) myTemplateRT.apply(tcInput);
+        return asList(myTemplateRT.apply(tcInput));
       } catch (GenerationFailureException | DismissTopMappingRuleException | GenerationCanceledException ex) {
         throw ex;
       } catch (GenerationException ex) {
