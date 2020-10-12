@@ -54,7 +54,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
@@ -438,7 +437,7 @@ public final class TemplateProcessor implements ITemplateProcessor {
     }
   }
 
-  // $CALL-SITE
+  // $CALL-SITE$
   private static class InsertCallSiteMacro extends MacroImpl {
 
     protected InsertCallSiteMacro(@NotNull SNode macro, @NotNull TemplateNode templateNode, @Nullable MacroNode next, @NotNull TemplateProcessor templateProcessor) {
@@ -724,34 +723,49 @@ public final class TemplateProcessor implements ITemplateProcessor {
     }
 
     protected TemplateContext prepareContext(TemplateContext templateContext) throws GenerationFailureException {
+      // XXX would be great to hide call site node processing here, or even inside TemplateCall processor (as it knows about needCallSite() in the first place)
       return callProcessor(templateContext).prepareCallContext(templateContext);
     }
 
     @NotNull
     @Override
-    public List<SNode> apply(@NotNull TemplateContext templateContext) throws DismissTopMappingRuleException, GenerationFailureException,
+    public List<SNode> apply(@NotNull final TemplateContext templateContext) throws DismissTopMappingRuleException, GenerationFailureException,
         GenerationCanceledException {
       SNode templateSwitch = getTemplateSwitch();
       if (templateSwitch == null) {
         throw new TemplateProcessingFailureException(macro, "error processing $SWITCH$ - bad TemplateSwitch reference",
             GeneratorUtil.describeInput(templateContext));
       }
+      final TemplateContext callSiteContext;
+      // null indicated we didn't attempt to calculate these
+      final List<SNode> callSiteOutputNodes;
       if (callProcessor(templateContext).needCallSite()) {
-        final List<SNode> callSiteNodes = nextMacro(templateContext);
-        if (callSiteNodes.size() == 1) {
-          templateContext = templateContext.withCallSiteNode(callSiteNodes.get(0));
+        callSiteOutputNodes = nextMacro(templateContext);
+        if (callSiteOutputNodes.size() == 1) {
+          callSiteContext = templateContext.withCallSiteNode(callSiteOutputNodes.get(0));
         } else {
+          callSiteContext = templateContext.withCallSiteNode(null);
           getLogger().error(getMacroNodeRef(), "Invoked template needs exactly 1 node for call site", GeneratorUtil.describeInput(templateContext));
         }
+      } else {
+        if (templateContext.getCallSiteNode() != null) {
+          // just hide the one available in the current context
+          callSiteContext = templateContext.withCallSiteNode(null);
+        } else {
+          callSiteContext = templateContext;
+        }
+        callSiteOutputNodes = null;
       }
       final SNodeReference switchPtr = templateSwitch.getReference();
+      // use original TC to get input, though perhaps could make use of callsite node in the query (if I expose TC.getCallSiteNode() through
+      // genContext.operation; now there's no access to it) - e.g. to do SWITCH [SWITCH []] and decide input of the outer switch based on output of the inner.
       SNode newInputNode = getNewInputNode(templateContext);
       if (newInputNode == null) {
         templateContext.getEnvironment().nullInputSwitch(switchPtr);
         return Collections.emptyList(); // skip template
       }
 
-      final TemplateContext switchContext = prepareContext(templateContext).subContext(newInputNode);
+      final TemplateContext switchContext = prepareContext(callSiteContext).subContext(newInputNode);
 
       Collection<SNode> collection = null;
       try {
@@ -762,6 +776,10 @@ public final class TemplateProcessor implements ITemplateProcessor {
         getLogger().error(switchPtr, "internal error in switch: " + e.toString(), GeneratorUtil.describe(macro, "macro"));
       }
       if (collection == null) {
+        if (callSiteOutputNodes != null) {
+          // We've processed nextMacro already, just use the list value
+          return callSiteOutputNodes;
+        }
         // XXX why tryDefault is part of trySwitch, and not here? For the sake of generated code, perhaps (not to generate conditions 'if nothing generated')?
         // no switch-case found for the inputNode - continue with templateNode under the $switch$
         // use initial context, not the one prepared (could be filled with switch arguments)
