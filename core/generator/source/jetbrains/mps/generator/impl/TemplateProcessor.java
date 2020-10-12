@@ -504,6 +504,7 @@ public final class TemplateProcessor implements ITemplateProcessor {
       }
       ////
 
+      // FIXME could I re-use MacroWithTemplateCall here?
       final SNode contextNode = _outputNodes.get(0);
       final TemplateContext tcWithArgs = myCallProcessor.prepareCallContext(templateContext);
 
@@ -697,24 +698,19 @@ public final class TemplateProcessor implements ITemplateProcessor {
     }
   }
 
-  // $SWITCH$
-  private static class SwitchMacro extends MacroWithInput {
+  private abstract static class MacroWithTemplateCall extends MacroWithInput {
     private volatile TemplateCall myCallProcessor;
 
-    protected SwitchMacro(@NotNull SNode macro, @NotNull TemplateNode templateNode, @Nullable MacroNode next, @NotNull TemplateProcessor templateProcessor) {
+    protected MacroWithTemplateCall(@NotNull SNode macro, @NotNull TemplateNode templateNode, @Nullable MacroNode next, @NotNull TemplateProcessor templateProcessor) {
       super(macro, templateNode, next, templateProcessor);
     }
 
-    protected SNode getTemplateSwitch() {
-      return RuleUtil.getTemplateSwitchMacro_TemplateSwitch(macro);
-    }
-
-    private TemplateCall callProcessor(TemplateContext templateContext) {
+    protected final TemplateCall callProcessor() {
       TemplateCall tc = myCallProcessor;
       if (tc == null) {
         tc = new TemplateCall(macro);
         if (tc.argumentsMismatch()) {
-          getLogger().error(getMacroNodeRef(), "number of arguments doesn't match template", GeneratorUtil.describeInput(templateContext));
+          getLogger().error(getMacroNodeRef(), "number of arguments doesn't match template");
           // fall-through
         }
         myCallProcessor = tc;
@@ -722,9 +718,40 @@ public final class TemplateProcessor implements ITemplateProcessor {
       return tc;
     }
 
-    protected TemplateContext prepareContext(TemplateContext templateContext) throws GenerationFailureException {
+    // shall return argument if does nothing. templateContext != null.
+    protected final TemplateContext prepareArguments(TemplateContext templateContext, @Nullable List<SNode> callSiteOutputNodes) throws GenerationFailureException {
       // XXX would be great to hide call site node processing here, or even inside TemplateCall processor (as it knows about needCallSite() in the first place)
-      return callProcessor(templateContext).prepareCallContext(templateContext);
+      final TemplateCall callProcessor = callProcessor();
+      final TemplateContext withArgs = callProcessor.prepareCallContext(templateContext);
+      // null indicated we didn't attempt to calculate these
+      if (callProcessor.needCallSite()) {
+        // in fact, callSiteOutputNodes shall never be null provided caller follows proper needCallSite->nextMacro routine. However, don't want assert or NPE here
+        if (callSiteOutputNodes != null && callSiteOutputNodes.size() == 1) {
+          return withArgs.withCallSiteNode(callSiteOutputNodes.get(0));
+        } else {
+          getLogger().error(getMacroNodeRef(), "Invoked template needs exactly 1 node for call site", GeneratorUtil.describeInput(templateContext));
+          return withArgs.withCallSiteNode(null);
+        }
+      } else {
+        if (templateContext.getCallSiteNode() != null) {
+          // just hide the one available in the current context
+          return withArgs.withCallSiteNode(null);
+        } else {
+          return withArgs;
+        }
+      }
+    }
+  }
+
+  // $SWITCH$
+  private static class SwitchMacro extends MacroWithTemplateCall {
+
+    protected SwitchMacro(@NotNull SNode macro, @NotNull TemplateNode templateNode, @Nullable MacroNode next, @NotNull TemplateProcessor templateProcessor) {
+      super(macro, templateNode, next, templateProcessor);
+    }
+
+    protected SNode getTemplateSwitch() {
+      return RuleUtil.getTemplateSwitchMacro_TemplateSwitch(macro);
     }
 
     @NotNull
@@ -736,26 +763,6 @@ public final class TemplateProcessor implements ITemplateProcessor {
         throw new TemplateProcessingFailureException(macro, "error processing $SWITCH$ - bad TemplateSwitch reference",
             GeneratorUtil.describeInput(templateContext));
       }
-      final TemplateContext callSiteContext;
-      // null indicated we didn't attempt to calculate these
-      final List<SNode> callSiteOutputNodes;
-      if (callProcessor(templateContext).needCallSite()) {
-        callSiteOutputNodes = nextMacro(templateContext);
-        if (callSiteOutputNodes.size() == 1) {
-          callSiteContext = templateContext.withCallSiteNode(callSiteOutputNodes.get(0));
-        } else {
-          callSiteContext = templateContext.withCallSiteNode(null);
-          getLogger().error(getMacroNodeRef(), "Invoked template needs exactly 1 node for call site", GeneratorUtil.describeInput(templateContext));
-        }
-      } else {
-        if (templateContext.getCallSiteNode() != null) {
-          // just hide the one available in the current context
-          callSiteContext = templateContext.withCallSiteNode(null);
-        } else {
-          callSiteContext = templateContext;
-        }
-        callSiteOutputNodes = null;
-      }
       final SNodeReference switchPtr = templateSwitch.getReference();
       // use original TC to get input, though perhaps could make use of callsite node in the query (if I expose TC.getCallSiteNode() through
       // genContext.operation; now there's no access to it) - e.g. to do SWITCH [SWITCH []] and decide input of the outer switch based on output of the inner.
@@ -765,7 +772,15 @@ public final class TemplateProcessor implements ITemplateProcessor {
         return Collections.emptyList(); // skip template
       }
 
-      final TemplateContext switchContext = prepareContext(callSiteContext).subContext(newInputNode);
+      // null indicates we didn't attempt to calculate these
+      final List<SNode> callSiteOutputNodes;
+      if (callProcessor().needCallSite()) {
+        callSiteOutputNodes = nextMacro(templateContext);
+      } else {
+        callSiteOutputNodes = null;
+      }
+
+      final TemplateContext switchContext = prepareArguments(templateContext, callSiteOutputNodes).subContext(newInputNode);
 
       Collection<SNode> collection = null;
       try {
@@ -790,28 +805,13 @@ public final class TemplateProcessor implements ITemplateProcessor {
   }
 
   // $CALL$
-  private static class CallMacro extends MacroWithInput {
+  private static class CallMacro extends MacroWithTemplateCall {
     private final SNode myInvokedTemplate;
     private volatile TemplateCallSite myTemplateRT;
-    private volatile TemplateCall myCallProcessor;
 
     protected CallMacro(@NotNull SNode macro, @NotNull TemplateNode templateNode, @Nullable MacroNode next, @NotNull TemplateProcessor templateProcessor) {
       super(macro, templateNode, next, templateProcessor);
       myInvokedTemplate = RuleUtil.getCallMacro_Template(macro);
-    }
-
-    // shall return argument if does nothing. templateContext != null.
-    private TemplateContext prepareArguments(TemplateContext templateContext) throws GenerationFailureException {
-      TemplateCall tc = myCallProcessor;
-      if (tc == null) {
-        tc = new TemplateCall(macro);
-        if (tc.argumentsMismatch()) {
-          getLogger().error(getMacroNodeRef(), "number of arguments doesn't match template", GeneratorUtil.describeInput(templateContext));
-          // fall-through
-        }
-        myCallProcessor = tc;
-      }
-      return tc.prepareCallContext(templateContext);
     }
 
     @NotNull
@@ -841,8 +841,15 @@ public final class TemplateProcessor implements ITemplateProcessor {
       // XXX here, arguments are evaluated with 'outer' context, with no respect to input node coming from 'mapped node' query method
       //     while in reduction rule, context for arguments would include input node. I don't know if we have to deal with this small discrepancy,
       //     just a note we are aware of it.
+
+      final List<SNode> callSiteOutputNodes;
+      if (callProcessor().needCallSite()) {
+        callSiteOutputNodes = nextMacro(templateContext);
+      } else {
+        callSiteOutputNodes = null;
+      }
       // XXX this code is similar to SwitchMacro, can I refactor to avoid duplication?
-      TemplateContext tcInput = prepareArguments(templateContext).subContext(newInputNode);
+      TemplateContext tcInput = prepareArguments(templateContext, callSiteOutputNodes).subContext(newInputNode);
 
       try {
         return (List<SNode>) myTemplateRT.apply(tcInput);
@@ -851,6 +858,7 @@ public final class TemplateProcessor implements ITemplateProcessor {
       } catch (GenerationException ex) {
         throw new GenerationFailureException(ex);
       }
+      // XXX unlike $SWITCH$, we don't process callSiteOutputNodes here in case of failure, is it something I'd like to address?
     }
   }
 
