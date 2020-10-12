@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodeEditor.cells;
 
+import com.intellij.ui.JBColor;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import jetbrains.mps.editor.runtime.style.Padding;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -156,8 +157,8 @@ public class EditorCell_Collection extends EditorCell_Basic implements jetbrains
       Style style = foldedCell.getStyle();
       // COLORS: Remove hardcoded colors & font
       style.set(StyleAttributes.FONT_STYLE, Font.BOLD);
-      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, Color.lightGray);
-      style.set(StyleAttributes.TEXT_COLOR, Color.darkGray);
+      style.set(StyleAttributes.TEXT_BACKGROUND_COLOR, JBColor.LIGHT_GRAY);
+      style.set(StyleAttributes.TEXT_COLOR, JBColor.DARK_GRAY);
       style.set(StyleAttributes.SELECTABLE, Boolean.FALSE);
       setFoldedCell(foldedCell);
     }
