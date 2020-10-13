@@ -95,8 +95,8 @@
     <ant antfile="../../../../build/mpsBootstrapCore.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="../../../../build/mpsCore.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="../../../../build/mpsBuild.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="../../../../build/mpsTesting.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="../../../../build/mpsWorkbench.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="../../../../build/mpsTesting.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="../../../../build/mpsDevKit.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="../../../../build/mpsMakePlugin.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="../../../../build/mpsConsolePlugin.xml" inheritAll="false" useNativeBasedir="true" />
@@ -177,6 +177,11 @@
       <library file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.behavior.jar" />
       <library file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.checkedName.jar" />
       <library file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.constraints.jar" />
+      <library file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.constraints.rules.jar" />
+      <library file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.constraints.rules.kinds.jar" />
+      <library file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.constraints.rules.skeleton.jar" />
+      <library file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.context.defs.jar" />
+      <library file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.context.jar" />
       <library file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.core.jar" />
       <library file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.dataFlow.jar" />
       <library file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.descriptor.jar" />
@@ -263,11 +268,11 @@
       <target name="generate" />
       <target name="assemble" />
     </ant>
-    <ant antfile="../../../../build/mpsTesting.xml" inheritAll="false" useNativeBasedir="true">
+    <ant antfile="../../../../build/mpsWorkbench.xml" inheritAll="false" useNativeBasedir="true">
       <target name="generate" />
       <target name="assemble" />
     </ant>
-    <ant antfile="../../../../build/mpsWorkbench.xml" inheritAll="false" useNativeBasedir="true">
+    <ant antfile="../../../../build/mpsTesting.xml" inheritAll="false" useNativeBasedir="true">
       <target name="generate" />
       <target name="assemble" />
     </ant>
