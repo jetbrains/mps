@@ -209,8 +209,8 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
                             if (switchInput31 == null) {
                               tlist31 = Collections.emptyList();
                             } else {
-                              TemplateContext switchContext31;
-                              switchContext31 = context12.subContext(null, switchInput31);
+                              TemplateContext switchContext31 = context12;
+                              switchContext31 = switchContext31.subContext(null, switchInput31);
                               tlist31 = environment.trySwitch(templateSwitchNode_rc46g0_a0a0c0a1a1a1a1a1a1a1a1a1a0b0b0d0c0g, switchContext31);
                               if (tlist31 == null) {
                                 final SNode tnode32 = environment.createOutputNode(myConcepts[2]);
@@ -273,8 +273,8 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
                             if (switchInput41 == null) {
                               tlist41 = Collections.emptyList();
                             } else {
-                              TemplateContext switchContext41;
-                              switchContext41 = context14.subContext(null, switchInput41);
+                              TemplateContext switchContext41 = context14;
+                              switchContext41 = switchContext41.subContext(null, switchInput41);
                               tlist41 = environment.trySwitch(templateSwitchNode_rc46g0_a0a0c0a1a1a2a1a1a1a1a2a1a0b0b0d0c0g, switchContext41);
                               if (tlist41 == null) {
                                 final SNode tnode42 = environment.createOutputNode(myConcepts[2]);
@@ -313,8 +313,8 @@ public class Template_reduce_EnumSwitchExpression extends TemplateDeclarationBas
                         if (switchInput47 == null) {
                           tlist47 = Collections.emptyList();
                         } else {
-                          TemplateContext switchContext47;
-                          switchContext47 = context15.subContext(null, switchInput47);
+                          TemplateContext switchContext47 = context15;
+                          switchContext47 = switchContext47.subContext(null, switchInput47);
                           tlist47 = environment.trySwitch(templateSwitchNode_rc46g0_a0a0c0a1a1a1a1a1a3a1a0b0b0d0c0g, switchContext47);
                           if (tlist47 == null) {
                             final SNode tnode48 = environment.createOutputNode(myConcepts[2]);

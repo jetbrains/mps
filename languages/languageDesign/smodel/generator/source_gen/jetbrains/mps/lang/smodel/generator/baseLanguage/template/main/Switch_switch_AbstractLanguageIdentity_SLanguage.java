@@ -69,8 +69,8 @@ public class Switch_switch_AbstractLanguageIdentity_SLanguage extends TemplateSw
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
       SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_88_0(new SourceSubstituteMacroNodeContext(context, callMacro_9oew2a_b0a0a2a1i));
-      TemplateContext context1;
-      context1 = context.subContext(null, callInputNode1);
+      TemplateContext context1 = context;
+      context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
         tlist1 = environment.callSite(new Template_reduce_ModuleIdentity_SLanguage(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2469893808086103396")).apply(context1);
       } else {

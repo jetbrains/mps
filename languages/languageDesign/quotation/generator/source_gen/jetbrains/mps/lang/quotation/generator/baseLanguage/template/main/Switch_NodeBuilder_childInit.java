@@ -160,8 +160,8 @@ public class Switch_NodeBuilder_childInit extends TemplateSwitchBase implements 
         {
           Collection<SNode> tlist2 = null;
           SNode callInputNode2 = QueriesGenerated.sourceNodeQuery_6_1(new SourceSubstituteMacroNodeContext(context1, callMacro_83ulml_b0a0a1a2a2a1i));
-          TemplateContext context2;
-          context2 = context1.subContext(null, callInputNode2);
+          TemplateContext context2 = context1;
+          context2 = context2.subContext(null, callInputNode2);
           if (callInputNode2 != null) {
             tlist2 = environment.callSite(environment.createTemplateKey("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6506750610319308637", "reduce_ConceptDeclaration2SAbstractConcept"), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567145033367")).apply(context2);
           } else {

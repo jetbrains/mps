@@ -27,8 +27,6 @@ import jetbrains.mps.generator.impl.reference.RefResolver;
 import jetbrains.mps.generator.template.TemplateArgumentContext;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
-import java.util.Map;
-import java.util.HashMap;
 import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -223,8 +221,8 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
           if (QueriesGenerated.ifMacro_Condition_0_0(new IfMacroContext(context1, ifMacroRef_rbibyw_b0a0b0e0c0c31))) {
             Collection<SNode> tlist5 = null;
             SNode callInputNode5 = QueriesGenerated.sourceNodeQuery_0_2(new SourceSubstituteMacroNodeContext(context1, callMacro_rbibyw_b0a0a1a1a4a2a2n));
-            TemplateContext context2;
-            context2 = context1.subContext(null, callInputNode5);
+            TemplateContext context2 = context1;
+            context2 = context2.subContext(null, callInputNode5);
             if (callInputNode5 != null) {
               tlist5 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145271")).apply(context2);
             } else {
@@ -238,8 +236,8 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
               if (switchInput6 == null) {
                 tlist6 = Collections.emptyList();
               } else {
-                TemplateContext switchContext6;
-                switchContext6 = context1.subContext(null, switchInput6);
+                TemplateContext switchContext6 = context1;
+                switchContext6 = switchContext6.subContext(null, switchInput6);
                 tlist6 = environment.trySwitch(templateSwitchNode_rbibyw_a0a0c0a1a1a0b0e0c0c31, switchContext6);
                 if (tlist6 == null) {
                   final SNode tnode7 = environment.createOutputNode(myConcepts[3]);
@@ -288,8 +286,8 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
           if (QueriesGenerated.ifMacro_Condition_0_1(new IfMacroContext(context1, ifMacroRef_rbibyw_b0a0b0e0c0c41))) {
             Collection<SNode> tlist5 = null;
             SNode callInputNode5 = QueriesGenerated.sourceNodeQuery_0_5(new SourceSubstituteMacroNodeContext(context1, callMacro_rbibyw_b0a0a1a1a4a2a2o));
-            TemplateContext context2;
-            context2 = context1.subContext(null, callInputNode5);
+            TemplateContext context2 = context1;
+            context2 = context2.subContext(null, callInputNode5);
             if (callInputNode5 != null) {
               tlist5 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145272")).apply(context2);
             } else {
@@ -303,8 +301,8 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
               if (switchInput6 == null) {
                 tlist6 = Collections.emptyList();
               } else {
-                TemplateContext switchContext6;
-                switchContext6 = context1.subContext(null, switchInput6);
+                TemplateContext switchContext6 = context1;
+                switchContext6 = switchContext6.subContext(null, switchInput6);
                 tlist6 = environment.trySwitch(templateSwitchNode_rbibyw_a0a0c0a1a1a0b0e0c0c41, switchContext6);
                 if (tlist6 == null) {
                   final SNode tnode7 = environment.createOutputNode(myConcepts[3]);
@@ -370,8 +368,8 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
           if (QueriesGenerated.ifMacro_Condition_0_2(new IfMacroContext(context1, ifMacroRef_rbibyw_b0a0b0e0c0c61))) {
             Collection<SNode> tlist5 = null;
             SNode callInputNode5 = QueriesGenerated.sourceNodeQuery_0_9(new SourceSubstituteMacroNodeContext(context1, callMacro_rbibyw_b0a0a1a1a4a2a2q));
-            TemplateContext context2;
-            context2 = context1.subContext(null, callInputNode5);
+            TemplateContext context2 = context1;
+            context2 = context2.subContext(null, callInputNode5);
             if (callInputNode5 != null) {
               tlist5 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145274")).apply(context2);
             } else {
@@ -385,8 +383,8 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
               if (switchInput6 == null) {
                 tlist6 = Collections.emptyList();
               } else {
-                TemplateContext switchContext6;
-                switchContext6 = context1.subContext(null, switchInput6);
+                TemplateContext switchContext6 = context1;
+                switchContext6 = switchContext6.subContext(null, switchInput6);
                 tlist6 = environment.trySwitch(templateSwitchNode_rbibyw_a0a0c0a1a1a0b0e0c0c61, switchContext6);
                 if (tlist6 == null) {
                   final SNode tnode7 = environment.createOutputNode(myConcepts[3]);
@@ -447,8 +445,8 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
                 if (switchInput6 == null) {
                   tlist6 = Collections.emptyList();
                 } else {
-                  TemplateContext switchContext6;
-                  switchContext6 = context2.subContext(null, switchInput6);
+                  TemplateContext switchContext6 = context2;
+                  switchContext6 = switchContext6.subContext(null, switchInput6);
                   tlist6 = environment.trySwitch(templateSwitchNode_rbibyw_a0a0c0a1a1a2a1a4a2a2r, switchContext6);
                   if (tlist6 == null) {
                     final SNode tnode7 = environment.createOutputNode(myConcepts[3]);
@@ -500,8 +498,8 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
           if (QueriesGenerated.ifMacro_Condition_0_3(new IfMacroContext(context1, ifMacroRef_rbibyw_b0a0b0e0c0b81))) {
             Collection<SNode> tlist5 = null;
             SNode callInputNode5 = QueriesGenerated.sourceNodeQuery_0_14(new SourceSubstituteMacroNodeContext(context1, callMacro_rbibyw_b0a0a1a1a4a2a1s));
-            TemplateContext context2;
-            context2 = context1.subContext(null, callInputNode5);
+            TemplateContext context2 = context1;
+            context2 = context2.subContext(null, callInputNode5);
             if (callInputNode5 != null) {
               tlist5 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145275")).apply(context2);
             } else {
@@ -515,8 +513,8 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
               if (switchInput6 == null) {
                 tlist6 = Collections.emptyList();
               } else {
-                TemplateContext switchContext6;
-                switchContext6 = context1.subContext(null, switchInput6);
+                TemplateContext switchContext6 = context1;
+                switchContext6 = switchContext6.subContext(null, switchInput6);
                 tlist6 = environment.trySwitch(templateSwitchNode_rbibyw_a0a0c0a1a1a0b0e0c0b81, switchContext6);
                 if (tlist6 == null) {
                   final SNode tnode7 = environment.createOutputNode(myConcepts[3]);
@@ -644,8 +642,8 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
         {
           Collection<SNode> tlist2 = null;
           SNode callInputNode2 = QueriesGenerated.sourceNodeQuery_0_18(new SourceSubstituteMacroNodeContext(context1, callMacro_rbibyw_b0a0a1a1a2a1x));
-          TemplateContext context2;
-          context2 = context1.subContext(null, callInputNode2);
+          TemplateContext context2 = context1;
+          context2 = context2.subContext(null, callInputNode2);
           if (callInputNode2 != null) {
             tlist2 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6898071015833051028")).apply(context2);
           } else {
@@ -677,8 +675,8 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
       if (QueriesGenerated.ifMacro_Condition_0_4(new IfMacroContext(context, ifMacroRef_rbibyw_b0a0c0b42))) {
         Collection<SNode> tlist2 = null;
         SNode callInputNode2 = QueriesGenerated.sourceNodeQuery_0_20(new SourceSubstituteMacroNodeContext(context, callMacro_rbibyw_b0a0a1a2a1y));
-        TemplateContext context1;
-        context1 = context.subContext(null, callInputNode2);
+        TemplateContext context1 = context;
+        context1 = context1.subContext(null, callInputNode2);
         if (callInputNode2 != null) {
           tlist2 = environment.callSite(new Template_reduce_ConceptDeclaration_Bootstrap_SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2565258849285847308")).apply(context1);
         } else {
@@ -688,8 +686,8 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
       } else {
         Collection<SNode> tlist3 = null;
         SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_0_19(new SourceSubstituteMacroNodeContext(context, callMacro_rbibyw_b0a0a1a0c0b42));
-        TemplateContext context2;
-        context2 = context.subContext(null, callInputNode3);
+        TemplateContext context2 = context;
+        context2 = context2.subContext(null, callInputNode3);
         if (callInputNode3 != null) {
           tlist3 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2565258849285850010")).apply(context2);
         } else {
@@ -709,8 +707,8 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
       SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_0_21(new SourceSubstituteMacroNodeContext(context, callMacro_rbibyw_b0a0a2a1z));
-      TemplateContext context1;
-      context1 = context.subContext(null, callInputNode1);
+      TemplateContext context1 = context;
+      context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
         tlist1 = environment.callSite(new Template_reduce_EnumerationDeclaration_SEnumeration(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2591525195860697566")).apply(context1);
       } else {
@@ -791,8 +789,8 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
       SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_0_22(new SourceSubstituteMacroNodeContext(context, callMacro_rbibyw_b0a0a2a1cb));
-      TemplateContext context1;
-      context1 = context.subContext(null, callInputNode1);
+      TemplateContext context1 = context;
+      context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
         tlist1 = environment.callSite(new Template_reduce_NodeIdentity_SNodeReference(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3320646261222312634")).apply(context1);
       } else {
@@ -816,8 +814,8 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
         {
           Collection<SNode> tlist2 = null;
           SNode callInputNode2 = QueriesGenerated.sourceNodeQuery_0_23(new SourceSubstituteMacroNodeContext(context1, callMacro_rbibyw_b0a0a1a3a2a1db));
-          TemplateContext context2;
-          context2 = context1.subContext(null, callInputNode2);
+          TemplateContext context2 = context1;
+          context2 = context2.subContext(null, callInputNode2);
           if (callInputNode2 != null) {
             tlist2 = environment.callSite(new Template_reduce_LinkDeclaration_SLink(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145276")).apply(context2);
           } else {
@@ -843,8 +841,8 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
       if (QueriesGenerated.ifMacro_Condition_0_5(new IfMacroContext(context, ifMacroRef_rbibyw_b0a0c0b03))) {
         Collection<SNode> tlist2 = null;
         SNode callInputNode2 = QueriesGenerated.sourceNodeQuery_0_25(new SourceSubstituteMacroNodeContext(context, callMacro_rbibyw_b0a0a1a2a1eb));
-        TemplateContext context1;
-        context1 = context.subContext(null, callInputNode2);
+        TemplateContext context1 = context;
+        context1 = context1.subContext(null, callInputNode2);
         if (callInputNode2 != null) {
           tlist2 = environment.callSite(new Template_reduce_LinkDeclaration_Bootstrap_SLink(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2565258849285665843")).apply(context1);
         } else {
@@ -854,8 +852,8 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
       } else {
         Collection<SNode> tlist3 = null;
         SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_0_24(new SourceSubstituteMacroNodeContext(context, callMacro_rbibyw_b0a0a1a0c0b03));
-        TemplateContext context2;
-        context2 = context.subContext(null, callInputNode3);
+        TemplateContext context2 = context;
+        context2 = context2.subContext(null, callInputNode3);
         if (callInputNode3 != null) {
           tlist3 = environment.callSite(new Template_reduce_LinkDeclaration_SLink(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2565258849285667019")).apply(context2);
         } else {
@@ -877,8 +875,8 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
       if (QueriesGenerated.ifMacro_Condition_0_6(new IfMacroContext(context, ifMacroRef_rbibyw_b0a0c0b13))) {
         Collection<SNode> tlist2 = null;
         SNode callInputNode2 = QueriesGenerated.sourceNodeQuery_0_27(new SourceSubstituteMacroNodeContext(context, callMacro_rbibyw_b0a0a1a2a1fb));
-        TemplateContext context1;
-        context1 = context.subContext(null, callInputNode2);
+        TemplateContext context1 = context;
+        context1 = context1.subContext(null, callInputNode2);
         if (callInputNode2 != null) {
           tlist2 = environment.callSite(new Template_reduce_PropertyDeclaration_Bootstrap_SProperty(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2565258849285571240")).apply(context1);
         } else {
@@ -888,8 +886,8 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
       } else {
         Collection<SNode> tlist3 = null;
         SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_0_26(new SourceSubstituteMacroNodeContext(context, callMacro_rbibyw_b0a0a1a0c0b13));
-        TemplateContext context2;
-        context2 = context.subContext(null, callInputNode3);
+        TemplateContext context2 = context;
+        context2 = context2.subContext(null, callInputNode3);
         if (callInputNode3 != null) {
           tlist3 = environment.callSite(new Template_reduce_PropertyDeclaration_SProperty(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2565258849285600822")).apply(context2);
         } else {
@@ -946,15 +944,10 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
         if (switchInput1 == null) {
           tlist1 = Collections.emptyList();
         } else {
-          TemplateContext switchContext1;
-          {
-            final Map<String, Object> args1 = new HashMap<String, Object>();
-            args1.put("dotExpr", ((SNode) QueriesGenerated.templateArgumentQuery_0_1(new TemplateArgumentContext(context, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386968667")))));
-            switchContext1 = context.subContext(args1);
-            switchContext1 = switchContext1.subContext(null, switchInput1);
-
-          }
-          tlist1 = environment.trySwitch(templateSwitchNode_rbibyw_a0a0c0a1a2a2ib, switchContext1);
+          TemplateContext switchContext1 = context;
+          switchContext1 = switchContext1.withVariable("dotExpr", ((SNode) QueriesGenerated.templateArgumentQuery_0_1(new TemplateArgumentContext(switchContext1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386968667")))));
+          switchContext1 = switchContext1.subContext(null, switchInput1);
+          tlist1 = environment.trySwitch(templateSwitchNode_rbibyw_a0a0d0a1a2a2ib, switchContext1);
           if (tlist1 == null) {
             final SNode tnode2 = environment.createOutputNode(myConcepts[3]);
             tlist1 = TemplateUtil.singletonList(tnode2);
@@ -981,15 +974,10 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
         if (switchInput1 == null) {
           tlist1 = Collections.emptyList();
         } else {
-          TemplateContext switchContext1;
-          {
-            final Map<String, Object> args1 = new HashMap<String, Object>();
-            args1.put("dotExpr", ((SNode) QueriesGenerated.templateArgumentQuery_0_2(new TemplateArgumentContext(context, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386972509")))));
-            switchContext1 = context.subContext(args1);
-            switchContext1 = switchContext1.subContext(null, switchInput1);
-
-          }
-          tlist1 = environment.trySwitch(templateSwitchNode_rbibyw_a0a0c0a1a2a2jb, switchContext1);
+          TemplateContext switchContext1 = context;
+          switchContext1 = switchContext1.withVariable("dotExpr", ((SNode) QueriesGenerated.templateArgumentQuery_0_2(new TemplateArgumentContext(switchContext1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386972509")))));
+          switchContext1 = switchContext1.subContext(null, switchInput1);
+          tlist1 = environment.trySwitch(templateSwitchNode_rbibyw_a0a0d0a1a2a2jb, switchContext1);
           if (tlist1 == null) {
             final SNode tnode2 = environment.createOutputNode(myConcepts[3]);
             tlist1 = TemplateUtil.singletonList(tnode2);
@@ -1348,9 +1336,9 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
   private static final SNodePointer propertyMacro_rbibyw_c0a2a0a2a1gb = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3778812090364386841");
   private static final SNodePointer copySrcMacro_rbibyw_b0a0d0c33 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7535495554809989721");
   private static final SNodePointer switchMacroRef_rbibyw_b0a0a0a2a2ib = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386965672");
-  private static final SNodePointer templateSwitchNode_rbibyw_a0a0c0a1a2a2ib = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386630999");
+  private static final SNodePointer templateSwitchNode_rbibyw_a0a0d0a1a2a2ib = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386630999");
   private static final SNodePointer switchMacroRef_rbibyw_b0a0a0a2a2jb = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386972502");
-  private static final SNodePointer templateSwitchNode_rbibyw_a0a0c0a1a2a2jb = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386681065");
+  private static final SNodePointer templateSwitchNode_rbibyw_a0a0d0a1a2a2jb = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6683433361386681065");
   private static final SNodePointer copySrcMacro_rbibyw_b0a0d0c63 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1203104890037");
   private static final SNodePointer propertyMacro_rbibyw_c0a2a0a2a1mb = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1883223317721112275");
   private static final SNodePointer copySrcMacro_rbibyw_b0a0c0c0b0b0b0b0c0c14 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1423104411233682003");

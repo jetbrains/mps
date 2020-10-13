@@ -65,8 +65,8 @@ public class Switch_switch_Parameter extends TemplateSwitchBase implements Templ
             if (switchInput2 == null) {
               tlist2 = Collections.emptyList();
             } else {
-              TemplateContext switchContext2;
-              switchContext2 = context1.subContext(null, switchInput2);
+              TemplateContext switchContext2 = context1;
+              switchContext2 = switchContext2.subContext(null, switchInput2);
               tlist2 = environment.trySwitch(templateSwitchNode_vnjhlw_a0a0c0a1a1a3a2a2f, switchContext2);
               if (tlist2 == null) {
                 final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
@@ -108,8 +108,8 @@ public class Switch_switch_Parameter extends TemplateSwitchBase implements Templ
             if (switchInput2 == null) {
               tlist2 = Collections.emptyList();
             } else {
-              TemplateContext switchContext2;
-              switchContext2 = context1.subContext(null, switchInput2);
+              TemplateContext switchContext2 = context1;
+              switchContext2 = switchContext2.subContext(null, switchInput2);
               tlist2 = environment.trySwitch(templateSwitchNode_vnjhlw_a0a0c0a1a1a3a2a1g, switchContext2);
               if (tlist2 == null) {
                 final SNode tnode3 = environment.createOutputNode(myConcepts[1]);

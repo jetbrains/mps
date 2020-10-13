@@ -60,8 +60,8 @@ public class Template_reduce_Property_SetOperation extends TemplateDeclarationBa
       {
         Collection<SNode> tlist4 = null;
         SNode callInputNode4 = QueriesGenerated.sourceNodeQuery_134_1(new SourceSubstituteMacroNodeContext(context1, callMacro_jdfal9_b0a0a1a4a2a6));
-        TemplateContext context2;
-        context2 = context1.subContext(null, callInputNode4);
+        TemplateContext context2 = context1;
+        context2 = context2.subContext(null, callInputNode4);
         if (callInputNode4 != null) {
           tlist4 = environment.callSite(new Template_reduce_PropertyDeclaration_SProperty(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145277")).apply(context2);
         } else {

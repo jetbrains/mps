@@ -13,8 +13,6 @@ import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SNode;
-import java.util.Map;
-import java.util.HashMap;
 import jetbrains.mps.generator.template.TemplateArgumentContext;
 import jetbrains.mps.generator.runtime.TemplateUtil;
 import jetbrains.mps.generator.runtime.ApplySink;
@@ -42,16 +40,11 @@ public class Template_reduce_InputNode extends TemplateDeclarationBase {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = null;
     try {
-      TemplateContext switchContext1;
-      {
-        final Map<String, Object> args1 = new HashMap<String, Object>();
-        args1.put("text", ((String) QueriesGenerated.templateArgumentQuery_2_0(new TemplateArgumentContext(context, new SNodePointer("r:f37420d7-c952-44cf-aaac-346288c56298(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments@generator)", "6736062018948525024")))));
-        args1.put("value", ((Integer) QueriesGenerated.templateArgumentQuery_2_1(new TemplateArgumentContext(context, new SNodePointer("r:f37420d7-c952-44cf-aaac-346288c56298(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments@generator)", "6736062018948578444")))));
-        args1.put("element", ((SNode) context.getVariable("element")));
-        switchContext1 = context.subContext(args1);
-        switchContext1 = switchContext1.subContext(null, context.getInput());
-      }
-      tlist1 = environment.trySwitch(templateSwitchNodeNoInput_dc4xlo_a0a0c0c0h, switchContext1);
+      TemplateContext switchContext1 = context;
+      switchContext1 = switchContext1.withVariable("text", ((String) QueriesGenerated.templateArgumentQuery_2_0(new TemplateArgumentContext(switchContext1, new SNodePointer("r:f37420d7-c952-44cf-aaac-346288c56298(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments@generator)", "6736062018948525024")))));
+      switchContext1 = switchContext1.withVariable("value", ((Integer) QueriesGenerated.templateArgumentQuery_2_1(new TemplateArgumentContext(switchContext1, new SNodePointer("r:f37420d7-c952-44cf-aaac-346288c56298(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments@generator)", "6736062018948578444")))));
+      switchContext1 = switchContext1.withVariable("element", ((SNode) switchContext1.getVariable("element")));
+      tlist1 = environment.trySwitch(templateSwitchNodeNoInput_dc4xlo_a0a0e0c0h, switchContext1);
       if (tlist1 == null) {
         final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
         tlist1 = TemplateUtil.singletonList(tnode2);
@@ -83,5 +76,5 @@ public class Template_reduce_InputNode extends TemplateDeclarationBase {
       return rv;
     }
   }
-  private static final SNodePointer templateSwitchNodeNoInput_dc4xlo_a0a0c0c0h = new SNodePointer("r:f37420d7-c952-44cf-aaac-346288c56298(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments@generator)", "6736062018948523705");
+  private static final SNodePointer templateSwitchNodeNoInput_dc4xlo_a0a0e0c0h = new SNodePointer("r:f37420d7-c952-44cf-aaac-346288c56298(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments@generator)", "6736062018948523705");
 }

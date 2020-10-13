@@ -54,8 +54,8 @@ public class Template_reduce_InsertNewPrevSiblingOperation extends TemplateDecla
       {
         Collection<SNode> tlist4 = null;
         SNode callInputNode4 = QueriesGenerated.sourceNodeQuery_7_1(new SourceSubstituteMacroNodeContext(context1, callMacro_v0mmj9_b0a0a1a4a2a6));
-        TemplateContext context2;
-        context2 = context1.subContext(null, callInputNode4);
+        TemplateContext context2 = context1;
+        context2 = context2.subContext(null, callInputNode4);
         if (callInputNode4 != null) {
           tlist4 = environment.callSite(new Template_reduce_ConceptDeclaration2SConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145284")).apply(context2);
         } else {

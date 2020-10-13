@@ -53,8 +53,8 @@ public class Template_reduce_ConceptId_SConcept extends TemplateDeclarationBase 
             environment.nullInputSwitch(templateSwitchNode_r2ji7m_a0a0c0a1a1a3a2a6);
             tlist2 = Collections.emptyList();
           } else {
-            TemplateContext switchContext2;
-            switchContext2 = context1.subContext(null, switchInput2);
+            TemplateContext switchContext2 = context1;
+            switchContext2 = switchContext2.subContext(null, switchInput2);
             tlist2 = environment.trySwitch(templateSwitchNode_r2ji7m_a0a0c0a1a1a3a2a6, switchContext2);
             if (tlist2 == null) {
               final SNode tnode3 = environment.createOutputNode(myConcepts[1]);

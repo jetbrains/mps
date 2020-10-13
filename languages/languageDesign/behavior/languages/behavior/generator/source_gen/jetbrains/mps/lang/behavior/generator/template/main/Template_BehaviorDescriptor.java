@@ -180,8 +180,8 @@ public class Template_BehaviorDescriptor extends TemplateDeclarationBase {
                                                     if (switchInput24 == null) {
                                                       tlist24 = Collections.emptyList();
                                                     } else {
-                                                      TemplateContext switchContext24;
-                                                      switchContext24 = context14.subContext(null, switchInput24);
+                                                      TemplateContext switchContext24 = context14;
+                                                      switchContext24 = switchContext24.subContext(null, switchInput24);
                                                       tlist24 = environment.trySwitch(templateSwitchNode_sy2aw3_a0a0c0a1a1a2a1a1a1a2a1a1a1a1a1a1a1a1a1a1a1a1a1a6a4a3a7a2a5, switchContext24);
                                                       if (tlist24 == null) {
                                                         final SNode tnode25 = environment.createOutputNode(myConcepts[10]);
@@ -332,9 +332,8 @@ public class Template_BehaviorDescriptor extends TemplateDeclarationBase {
                         TemplateContext context21 = context20.subContext(itnode40);
                         Collection<SNode> tlist41 = null;
                         try {
-                          TemplateContext switchContext41;
-                          switchContext41 = context21;
-                          tlist41 = environment.trySwitch(templateSwitchNodeNoInput_sy2aw3_a0a0c0d0c0c0b0c0b0g0e0d0h0c0f, switchContext41);
+                          TemplateContext switchContext41 = context21;
+                          tlist41 = environment.trySwitch(templateSwitchNodeNoInput_sy2aw3_a0a0b0d0c0c0b0c0b0g0e0d0h0c0f, switchContext41);
                           if (tlist41 == null) {
                             final SNode tnode42 = environment.createOutputNode(myConcepts[10]);
                             tlist41 = TemplateUtil.singletonList(tnode42);
@@ -1987,7 +1986,7 @@ public class Template_BehaviorDescriptor extends TemplateDeclarationBase {
   private static final SNodePointer templateNode_sy2aw3_c0a0a1a2a1a2a1a1a1a1a1a6a4a3a7a2a5 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "3176885412941064887");
   private static final SNodePointer propertyMacro_sy2aw3_c0a2a0a1a2a1a2a1a1a1a6a4a3a7a2a5 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "5216932936550453172");
   private static final SNodePointer loopMacroRef_sy2aw3_b0a0a1a2a1a2a1a6a4a3a7a2a5 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4698411099515327826");
-  private static final SNodePointer templateSwitchNodeNoInput_sy2aw3_a0a0c0d0c0c0b0c0b0g0e0d0h0c0f = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4698411099515185335");
+  private static final SNodePointer templateSwitchNodeNoInput_sy2aw3_a0a0b0d0c0c0b0c0b0g0e0d0h0c0f = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "4698411099515185335");
   private static final SNodePointer loopMacroRef_sy2aw3_b0a0a1a3a1a6a1a9a2a5 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "737333977598577041");
   private static final SNodePointer propertyMacro_sy2aw3_c0a2a1a1a11a2a5 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1843690775058914307");
   private static final SNodePointer copySrcListMacro_sy2aw3_b0a0a1a1a1a5a1a11a2a5 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1080818790394409712");

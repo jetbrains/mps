@@ -63,8 +63,8 @@ public class Template_reduce_invokeWithSuper extends TemplateDeclarationBase {
           {
             Collection<SNode> tlist4 = null;
             SNode callInputNode4 = QueriesGenerated.sourceNodeQuery_113_0(new SourceSubstituteMacroNodeContext(context3, callMacro_6fy3ro_b0a0a1a2a1a1a5a6));
-            TemplateContext context4;
-            context4 = context3.subContext(null, callInputNode4);
+            TemplateContext context4 = context3;
+            context4 = context4.subContext(null, callInputNode4);
             if (callInputNode4 != null) {
               tlist4 = environment.callSite(new Template_NodeOrConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892189215")).apply(context4);
             } else {
@@ -94,8 +94,8 @@ public class Template_reduce_invokeWithSuper extends TemplateDeclarationBase {
           }
           {
             Collection<SNode> tlist9 = null;
-            TemplateContext context5;
-            context5 = context3.withVariable("methodDeclaration", ((SNode) QueriesGenerated.templateArgumentQuery_113_0(new TemplateArgumentContext(context3, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892189226")))));
+            TemplateContext context5 = context3;
+            context5 = context5.withVariable("methodDeclaration", ((SNode) QueriesGenerated.templateArgumentQuery_113_0(new TemplateArgumentContext(context5, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892189226")))));
             tlist9 = environment.callSite(new Template_reduce_Parameters(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892189225")).apply(context5);
             for (SNode child10 : TemplateUtil.asNotNull(tlist9)) {
               tnode3.addChild(myAggregationLinks[0], child10);

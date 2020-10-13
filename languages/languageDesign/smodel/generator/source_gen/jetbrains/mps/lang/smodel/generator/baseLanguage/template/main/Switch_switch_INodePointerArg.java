@@ -68,8 +68,8 @@ public class Switch_switch_INodePointerArg extends TemplateSwitchBase implements
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
       SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_126_1(new SourceSubstituteMacroNodeContext(context, callMacro_230kvm_b0a0a2a1h));
-      TemplateContext context1;
-      context1 = context.subContext(null, callInputNode1);
+      TemplateContext context1 = context;
+      context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
         tlist1 = environment.callSite(new Template_reduce_NodeIdentity_SNodeReference(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3320646261222259361")).apply(context1);
       } else {

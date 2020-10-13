@@ -32,8 +32,8 @@ public class Template_GDClass extends TemplateDeclarationBase {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = null;
     SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_5_0(new SourceSubstituteMacroNodeContext(context, callMacro_in8ni3_b0a0a2a5));
-    TemplateContext context1;
-    context1 = context.subContext(null, callInputNode1);
+    TemplateContext context1 = context;
+    context1 = context1.subContext(null, callInputNode1);
     if (callInputNode1 != null) {
       tlist1 = environment.callSite(new Template_GeneratorRuntime(), new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "263208052639693915")).apply(context1);
     } else {

@@ -23,8 +23,6 @@ import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import java.util.Collections;
-import java.util.Map;
-import java.util.HashMap;
 import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -205,15 +203,10 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
         if (switchInput1 == null) {
           tlist1 = Collections.emptyList();
         } else {
-          TemplateContext switchContext1;
-          {
-            final Map<String, Object> args1 = new HashMap<String, Object>();
-            args1.put("parameter", ((SNode) context.getVariable("parameter")));
-            switchContext1 = context.subContext(args1);
-            switchContext1 = switchContext1.subContext(null, switchInput1);
-
-          }
-          tlist1 = environment.trySwitch(templateSwitchNode_s05n17_a0a0c0a1a2a1l, switchContext1);
+          TemplateContext switchContext1 = context;
+          switchContext1 = switchContext1.withVariable("parameter", ((SNode) switchContext1.getVariable("parameter")));
+          switchContext1 = switchContext1.subContext(null, switchInput1);
+          tlist1 = environment.trySwitch(templateSwitchNode_s05n17_a0a0d0a1a2a1l, switchContext1);
           if (tlist1 == null) {
             final SNode tnode2 = environment.createOutputNode(myConcepts[3]);
             tlist1 = TemplateUtil.singletonList(tnode2);
@@ -268,7 +261,7 @@ public class Switch_switch_DataTypeDeclaration_deserialize extends TemplateSwitc
   private static final SNodePointer propertyMacro_s05n17_c0a2a0a1a6a2a1k = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377345134033");
   private static final SNodePointer copySrcMacro_s05n17_b0a0c0h0c0b01 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377345134040");
   private static final SNodePointer switchMacroRef_s05n17_b0a0a0a2a1l = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864823");
-  private static final SNodePointer templateSwitchNode_s05n17_a0a0c0a1a2a1l = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864763");
+  private static final SNodePointer templateSwitchNode_s05n17_a0a0d0a1a2a1l = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6373819377344864763");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept PrimitiveDataTypeDeclaration$80 = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc3652de27L, "jetbrains.mps.lang.structure.structure.PrimitiveDataTypeDeclaration");

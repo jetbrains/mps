@@ -75,8 +75,8 @@ public class Mapping_mc_sequence_operations extends MapConfigBase implements Tem
             if (switchInput4 == null) {
               tlist4 = Collections.emptyList();
             } else {
-              TemplateContext switchContext4;
-              switchContext4 = context1.subContext(null, switchInput4);
+              TemplateContext switchContext4 = context1;
+              switchContext4 = switchContext4.subContext(null, switchInput4);
               tlist4 = environment.trySwitch(templateSwitchNode_jil9eh_a0a0c0a1a1a4a2a2e, switchContext4);
               if (tlist4 == null) {
                 final SNode tnode5 = environment.createOutputNode(myConcepts[1]);

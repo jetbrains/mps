@@ -100,8 +100,8 @@ public class Template_reduce_IfInstanceOfStatement extends TemplateDeclarationBa
                   {
                     Collection<SNode> tlist11 = null;
                     SNode callInputNode11 = QueriesGenerated.sourceNodeQuery_55_1(new SourceSubstituteMacroNodeContext(context6, callMacro_bb7ynt_b0a0a1a4a1a1a1a2a1a1a2a6));
-                    TemplateContext context7;
-                    context7 = context6.subContext(null, callInputNode11);
+                    TemplateContext context7 = context6;
+                    context7 = context7.subContext(null, callInputNode11);
                     if (callInputNode11 != null) {
                       tlist11 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145316")).apply(context7);
                     } else {

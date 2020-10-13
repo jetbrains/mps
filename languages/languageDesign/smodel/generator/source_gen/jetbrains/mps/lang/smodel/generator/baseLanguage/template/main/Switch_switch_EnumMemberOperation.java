@@ -256,8 +256,8 @@ public class Switch_switch_EnumMemberOperation extends TemplateSwitchBase implem
         {
           Collection<SNode> tlist4 = null;
           SNode callInputNode4 = QueriesGenerated.sourceNodeQuery_118_7(new SourceSubstituteMacroNodeContext(context1, callMacro_8rqa92_b0a0a1a4a2a1m));
-          TemplateContext context2;
-          context2 = context1.subContext(null, callInputNode4);
+          TemplateContext context2 = context1;
+          context2 = context2.subContext(null, callInputNode4);
           if (callInputNode4 != null) {
             tlist4 = environment.callSite(new Template_reduce_EnumMember2Id(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1144794804654544672")).apply(context2);
           } else {

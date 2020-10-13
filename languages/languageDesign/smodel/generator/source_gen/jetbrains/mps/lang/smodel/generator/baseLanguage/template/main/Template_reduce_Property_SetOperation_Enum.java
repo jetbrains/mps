@@ -57,8 +57,8 @@ public class Template_reduce_Property_SetOperation_Enum extends TemplateDeclarat
       {
         Collection<SNode> tlist4 = null;
         SNode callInputNode4 = QueriesGenerated.sourceNodeQuery_142_1(new SourceSubstituteMacroNodeContext(context1, callMacro_543klu_b0a0a1a4a2a6));
-        TemplateContext context2;
-        context2 = context1.subContext(null, callInputNode4);
+        TemplateContext context2 = context1;
+        context2 = context2.subContext(null, callInputNode4);
         if (callInputNode4 != null) {
           tlist4 = environment.callSite(new Template_reduce_PropertyDeclaration_SProperty(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6202631021711153849")).apply(context2);
         } else {
@@ -72,8 +72,8 @@ public class Template_reduce_Property_SetOperation_Enum extends TemplateDeclarat
       {
         Collection<SNode> tlist6 = null;
         SNode callInputNode6 = QueriesGenerated.sourceNodeQuery_142_2(new SourceSubstituteMacroNodeContext(context1, callMacro_543klu_b0a0a1a5a2a6));
-        TemplateContext context3;
-        context3 = context1.subContext(null, callInputNode6);
+        TemplateContext context3 = context1;
+        context3 = context3.subContext(null, callInputNode6);
         if (callInputNode6 != null) {
           tlist6 = environment.callSite(new Template_reduce_EnumMember2Id(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8540066610856020057")).apply(context3);
         } else {

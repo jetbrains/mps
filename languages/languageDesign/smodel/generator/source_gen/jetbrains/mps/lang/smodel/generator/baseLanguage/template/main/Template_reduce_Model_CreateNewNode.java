@@ -71,8 +71,8 @@ public class Template_reduce_Model_CreateNewNode extends TemplateDeclarationBase
       {
         Collection<SNode> tlist8 = null;
         SNode callInputNode8 = QueriesGenerated.sourceNodeQuery_11_2(new SourceSubstituteMacroNodeContext(context1, callMacro_tot7xa_b0a0a1a5a2a6));
-        TemplateContext context2;
-        context2 = context1.subContext(null, callInputNode8);
+        TemplateContext context2 = context1;
+        context2 = context2.subContext(null, callInputNode8);
         if (callInputNode8 != null) {
           tlist8 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145285")).apply(context2);
         } else {

@@ -95,8 +95,8 @@ public class Template_reduce_GetDescendants_noConceptsList extends TemplateDecla
                   TemplateContext context4 = context3.subContext(itnode10);
                   Collection<SNode> tlist11 = null;
                   SNode callInputNode11 = QueriesGenerated.sourceNodeQuery_22_1(new SourceSubstituteMacroNodeContext(context4, callMacro_btzevu_b0a0a3a2a2a1a1a1a6a2a6));
-                  TemplateContext context5;
-                  context5 = context4.subContext(null, callInputNode11);
+                  TemplateContext context5 = context4;
+                  context5 = context5.subContext(null, callInputNode11);
                   if (callInputNode11 != null) {
                     tlist11 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145294")).apply(context5);
                   } else {

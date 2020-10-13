@@ -64,8 +64,8 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
               if (switchInput3 == null) {
                 tlist3 = Collections.emptyList();
               } else {
-                TemplateContext switchContext3;
-                switchContext3 = context1.subContext(null, switchInput3);
+                TemplateContext switchContext3 = context1;
+                switchContext3 = switchContext3.subContext(null, switchInput3);
                 tlist3 = environment.trySwitch(templateSwitchNode_szb33j_a0a0c0a1a1a1a1a2a1e, switchContext3);
                 if (tlist3 == null) {
                   final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
@@ -118,8 +118,8 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
               if (switchInput11 == null) {
                 tlist11 = Collections.emptyList();
               } else {
-                TemplateContext switchContext11;
-                switchContext11 = context4.subContext(null, switchInput11);
+                TemplateContext switchContext11 = context4;
+                switchContext11 = switchContext11.subContext(null, switchInput11);
                 tlist11 = environment.trySwitch(templateSwitchNode_szb33j_a0a0c0a1a1a1a1a0c0b4, switchContext11);
                 if (tlist11 == null) {
                   final SNode tnode12 = environment.createOutputNode(myConcepts[1]);
@@ -186,8 +186,8 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
             if (switchInput2 == null) {
               tlist2 = Collections.emptyList();
             } else {
-              TemplateContext switchContext2;
-              switchContext2 = context1.subContext(null, switchInput2);
+              TemplateContext switchContext2 = context1;
+              switchContext2 = switchContext2.subContext(null, switchInput2);
               tlist2 = environment.trySwitch(templateSwitchNode_szb33j_a0a0c0a1a1a1a2a2f, switchContext2);
               if (tlist2 == null) {
                 final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
@@ -261,8 +261,8 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
             if (switchInput2 == null) {
               tlist2 = Collections.emptyList();
             } else {
-              TemplateContext switchContext2;
-              switchContext2 = context1.subContext(null, switchInput2);
+              TemplateContext switchContext2 = context1;
+              switchContext2 = switchContext2.subContext(null, switchInput2);
               tlist2 = environment.trySwitch(templateSwitchNode_szb33j_a0a0c0a1a1a1a2a2g, switchContext2);
               if (tlist2 == null) {
                 final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
@@ -336,8 +336,8 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
             if (switchInput2 == null) {
               tlist2 = Collections.emptyList();
             } else {
-              TemplateContext switchContext2;
-              switchContext2 = context1.subContext(null, switchInput2);
+              TemplateContext switchContext2 = context1;
+              switchContext2 = switchContext2.subContext(null, switchInput2);
               tlist2 = environment.trySwitch(templateSwitchNode_szb33j_a0a0c0a1a1a1a2a2h, switchContext2);
               if (tlist2 == null) {
                 final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
@@ -378,8 +378,8 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
               if (QueriesGenerated.ifMacro_Condition_56_0(new IfMacroContext(context3, ifMacroRef_szb33j_b0a0b0d0b0c0c0c7))) {
                 Collection<SNode> tlist10 = null;
                 SNode callInputNode10 = QueriesGenerated.sourceNodeQuery_56_12(new SourceSubstituteMacroNodeContext(context3, callMacro_szb33j_b0a0a1a1a3a1a2a2a2h));
-                TemplateContext context4;
-                context4 = context3.subContext(null, callInputNode10);
+                TemplateContext context4 = context3;
+                context4 = context4.subContext(null, callInputNode10);
                 if (callInputNode10 != null) {
                   tlist10 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2213306337134427371")).apply(context4);
                 } else {
@@ -421,8 +421,8 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
             if (switchInput2 == null) {
               tlist2 = Collections.emptyList();
             } else {
-              TemplateContext switchContext2;
-              switchContext2 = context1.subContext(null, switchInput2);
+              TemplateContext switchContext2 = context1;
+              switchContext2 = switchContext2.subContext(null, switchInput2);
               tlist2 = environment.trySwitch(templateSwitchNode_szb33j_a0a0c0a1a1a1a2a2i, switchContext2);
               if (tlist2 == null) {
                 final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
@@ -463,8 +463,8 @@ public class Mapping_mc_attribute_access extends MapConfigBase implements Templa
               if (QueriesGenerated.ifMacro_Condition_56_1(new IfMacroContext(context3, ifMacroRef_szb33j_b0a0b0d0b0c0c0c8))) {
                 Collection<SNode> tlist10 = null;
                 SNode callInputNode10 = QueriesGenerated.sourceNodeQuery_56_15(new SourceSubstituteMacroNodeContext(context3, callMacro_szb33j_b0a0a1a1a3a1a2a2a2i));
-                TemplateContext context4;
-                context4 = context3.subContext(null, callInputNode10);
+                TemplateContext context4 = context3;
+                context4 = context4.subContext(null, callInputNode10);
                 if (callInputNode10 != null) {
                   tlist10 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145322")).apply(context4);
                 } else {

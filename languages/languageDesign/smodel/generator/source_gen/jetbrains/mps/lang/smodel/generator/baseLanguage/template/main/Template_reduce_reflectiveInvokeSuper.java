@@ -60,8 +60,8 @@ public class Template_reduce_reflectiveInvokeSuper extends TemplateDeclarationBa
       {
         Collection<SNode> tlist3 = null;
         SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_116_0(new SourceSubstituteMacroNodeContext(context2, callMacro_3yq9wq_b0a0a1a3a5a6));
-        TemplateContext context3;
-        context3 = context2.subContext(null, callInputNode3);
+        TemplateContext context3 = context2;
+        context3 = context3.subContext(null, callInputNode3);
         if (callInputNode3 != null) {
           tlist3 = environment.callSite(new Template_NodeOrConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892235962")).apply(context3);
         } else {
@@ -127,8 +127,8 @@ public class Template_reduce_reflectiveInvokeSuper extends TemplateDeclarationBa
       }
       {
         Collection<SNode> tlist13 = null;
-        TemplateContext context5;
-        context5 = context2.withVariable("methodDeclaration", ((SNode) QueriesGenerated.templateArgumentQuery_116_0(new TemplateArgumentContext(context2, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892236076")))));
+        TemplateContext context5 = context2;
+        context5 = context5.withVariable("methodDeclaration", ((SNode) QueriesGenerated.templateArgumentQuery_116_0(new TemplateArgumentContext(context5, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892236076")))));
         tlist13 = environment.callSite(new Template_reduce_Parameters(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892236075")).apply(context5);
         for (SNode child14 : TemplateUtil.asNotNull(tlist13)) {
           tnode2.addChild(myAggregationLinks[0], child14);

@@ -42,8 +42,8 @@ public class Switch_switch_ConceptMethodReflectiveCall extends TemplateSwitchBas
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = null;
     SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_78_4(new SourceSubstituteMacroNodeContext(context, callMacro_dxinld_b0a0a2a5));
-    TemplateContext context1;
-    context1 = context.subContext(null, callInputNode1);
+    TemplateContext context1 = context;
+    context1 = context1.subContext(null, callInputNode1);
     if (callInputNode1 != null) {
       tlist1 = environment.callSite(new Template_reduce_ConceptMethodCallReflectiveCommon(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525798710")).apply(context1);
     } else {
@@ -60,8 +60,8 @@ public class Switch_switch_ConceptMethodReflectiveCall extends TemplateSwitchBas
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
       SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_78_0(new SourceSubstituteMacroNodeContext(context, callMacro_dxinld_b0a0a2a1g));
-      TemplateContext context1;
-      context1 = context.subContext(null, callInputNode1);
+      TemplateContext context1 = context;
+      context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
         tlist1 = environment.callSite(new Template_reduce_ConceptMethodCallReflectiveWithThis(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525798689")).apply(context1);
       } else {
@@ -79,8 +79,8 @@ public class Switch_switch_ConceptMethodReflectiveCall extends TemplateSwitchBas
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
       SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_78_1(new SourceSubstituteMacroNodeContext(context, callMacro_dxinld_b0a0a2a1h));
-      TemplateContext context1;
-      context1 = context.subContext(null, callInputNode1);
+      TemplateContext context1 = context;
+      context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
         tlist1 = environment.callSite(new Template_reduce_ConceptMethodCallReflectiveWithThis(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2926695023080382650")).apply(context1);
       } else {
@@ -98,8 +98,8 @@ public class Switch_switch_ConceptMethodReflectiveCall extends TemplateSwitchBas
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
       SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_78_2(new SourceSubstituteMacroNodeContext(context, callMacro_dxinld_b0a0a2a1i));
-      TemplateContext context1;
-      context1 = context.subContext(null, callInputNode1);
+      TemplateContext context1 = context;
+      context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
         tlist1 = environment.callSite(new Template_reduce_ConceptMethodCallReflectiveWithSuper(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6862765979525910579")).apply(context1);
       } else {
@@ -117,8 +117,8 @@ public class Switch_switch_ConceptMethodReflectiveCall extends TemplateSwitchBas
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
       SNode callInputNode1 = QueriesGenerated.sourceNodeQuery_78_3(new SourceSubstituteMacroNodeContext(context, callMacro_dxinld_b0a0a2a1j));
-      TemplateContext context1;
-      context1 = context.subContext(null, callInputNode1);
+      TemplateContext context1 = context;
+      context1 = context1.subContext(null, callInputNode1);
       if (callInputNode1 != null) {
         tlist1 = environment.callSite(new Template_reduce_ConceptMethodCallReflectiveWithSuper(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2926695023080383215")).apply(context1);
       } else {

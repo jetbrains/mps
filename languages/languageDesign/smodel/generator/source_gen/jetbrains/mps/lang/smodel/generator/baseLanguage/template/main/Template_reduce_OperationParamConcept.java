@@ -49,8 +49,8 @@ public class Template_reduce_OperationParamConcept extends TemplateDeclarationBa
         if (switchInput3 == null) {
           tlist3 = Collections.emptyList();
         } else {
-          TemplateContext switchContext3;
-          switchContext3 = context1.subContext(null, switchInput3);
+          TemplateContext switchContext3 = context1;
+          switchContext3 = switchContext3.subContext(null, switchInput3);
           tlist3 = environment.trySwitch(templateSwitchNode_t65l13_a0a0c0a1a1a5a6, switchContext3);
           if (tlist3 == null) {
             final SNode tnode4 = environment.createOutputNode(myConcepts[0]);

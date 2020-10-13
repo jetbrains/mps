@@ -73,8 +73,8 @@ public class Template_reduce_SPropertyAccess extends TemplateDeclarationBase {
           {
             Collection<SNode> tlist7 = null;
             SNode callInputNode7 = QueriesGenerated.sourceNodeQuery_130_2(new SourceSubstituteMacroNodeContext(context2, callMacro_1rfr18_b0a0a1a4a1a2a2a6));
-            TemplateContext context3;
-            context3 = context2.subContext(null, callInputNode7);
+            TemplateContext context3 = context2;
+            context3 = context3.subContext(null, callInputNode7);
             if (callInputNode7 != null) {
               tlist7 = environment.callSite(new Template_reduce_PropertyDeclaration_SProperty(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145280")).apply(context3);
             } else {
@@ -112,8 +112,8 @@ public class Template_reduce_SPropertyAccess extends TemplateDeclarationBase {
           {
             Collection<SNode> tlist12 = null;
             SNode callInputNode12 = QueriesGenerated.sourceNodeQuery_130_4(new SourceSubstituteMacroNodeContext(context4, callMacro_1rfr18_b0a0a1a4a1a3a2a6));
-            TemplateContext context5;
-            context5 = context4.subContext(null, callInputNode12);
+            TemplateContext context5 = context4;
+            context5 = context5.subContext(null, callInputNode12);
             if (callInputNode12 != null) {
               tlist12 = environment.callSite(new Template_reduce_PropertyDeclaration_SProperty(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5834820604012871007")).apply(context5);
             } else {
@@ -151,8 +151,8 @@ public class Template_reduce_SPropertyAccess extends TemplateDeclarationBase {
           {
             Collection<SNode> tlist17 = null;
             SNode callInputNode17 = QueriesGenerated.sourceNodeQuery_130_6(new SourceSubstituteMacroNodeContext(context6, callMacro_1rfr18_b0a0a1a4a1a4a2a6));
-            TemplateContext context7;
-            context7 = context6.subContext(null, callInputNode17);
+            TemplateContext context7 = context6;
+            context7 = context7.subContext(null, callInputNode17);
             if (callInputNode17 != null) {
               tlist17 = environment.callSite(new Template_reduce_PropertyDeclaration_SProperty(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5834820604012874889")).apply(context7);
             } else {

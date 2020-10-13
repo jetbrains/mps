@@ -62,8 +62,8 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
         {
           Collection<SNode> tlist4 = null;
           SNode callInputNode4 = QueriesGenerated.sourceNodeQuery_2_1(new SourceSubstituteMacroNodeContext(context1, callMacro_jzpaek_b0a0a1a4a2a1d));
-          TemplateContext context2;
-          context2 = context1.subContext(null, callInputNode4);
+          TemplateContext context2 = context1;
+          context2 = context2.subContext(null, callInputNode4);
           if (callInputNode4 != null) {
             tlist4 = environment.callSite(new Template_reduce_LinkDeclaration_SLink(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145281")).apply(context2);
           } else {
@@ -110,8 +110,8 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
             if (switchInput4 == null) {
               tlist4 = Collections.emptyList();
             } else {
-              TemplateContext switchContext4;
-              switchContext4 = context1.subContext(null, switchInput4);
+              TemplateContext switchContext4 = context1;
+              switchContext4 = switchContext4.subContext(null, switchInput4);
               tlist4 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a2e, switchContext4);
               if (tlist4 == null) {
                 final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
@@ -129,8 +129,8 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
           if (QueriesGenerated.ifMacro_Condition_2_0(new IfMacroContext(context1, ifMacroRef_jzpaek_b0a0b0f0c0c4))) {
             Collection<SNode> tlist8 = null;
             SNode callInputNode8 = QueriesGenerated.sourceNodeQuery_2_4(new SourceSubstituteMacroNodeContext(context1, callMacro_jzpaek_b0a0a1a1a5a2a2e));
-            TemplateContext context2;
-            context2 = context1.subContext(null, callInputNode8);
+            TemplateContext context2 = context1;
+            context2 = context2.subContext(null, callInputNode8);
             if (callInputNode8 != null) {
               tlist8 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145282")).apply(context2);
             } else {
@@ -182,8 +182,8 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
             if (switchInput4 == null) {
               tlist4 = Collections.emptyList();
             } else {
-              TemplateContext switchContext4;
-              switchContext4 = context1.subContext(null, switchInput4);
+              TemplateContext switchContext4 = context1;
+              switchContext4 = switchContext4.subContext(null, switchInput4);
               tlist4 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a2f, switchContext4);
               if (tlist4 == null) {
                 final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
@@ -237,8 +237,8 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
             if (switchInput4 == null) {
               tlist4 = Collections.emptyList();
             } else {
-              TemplateContext switchContext4;
-              switchContext4 = context1.subContext(null, switchInput4);
+              TemplateContext switchContext4 = context1;
+              switchContext4 = switchContext4.subContext(null, switchInput4);
               tlist4 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a1g, switchContext4);
               if (tlist4 == null) {
                 final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
@@ -258,8 +258,8 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
             if (switchInput7 == null) {
               tlist7 = Collections.emptyList();
             } else {
-              TemplateContext switchContext7;
-              switchContext7 = context1.subContext(null, switchInput7);
+              TemplateContext switchContext7 = context1;
+              switchContext7 = switchContext7.subContext(null, switchInput7);
               tlist7 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a5a2a1g, switchContext7);
               if (tlist7 == null) {
                 final SNode tnode8 = environment.createOutputNode(myConcepts[1]);
@@ -308,8 +308,8 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
             if (switchInput4 == null) {
               tlist4 = Collections.emptyList();
             } else {
-              TemplateContext switchContext4;
-              switchContext4 = context1.subContext(null, switchInput4);
+              TemplateContext switchContext4 = context1;
+              switchContext4 = switchContext4.subContext(null, switchInput4);
               tlist4 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a2h, switchContext4);
               if (tlist4 == null) {
                 final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
@@ -358,8 +358,8 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
             if (switchInput4 == null) {
               tlist4 = Collections.emptyList();
             } else {
-              TemplateContext switchContext4;
-              switchContext4 = context1.subContext(null, switchInput4);
+              TemplateContext switchContext4 = context1;
+              switchContext4 = switchContext4.subContext(null, switchInput4);
               tlist4 = environment.trySwitch(templateSwitchNode_jzpaek_a0a0c0a1a1a4a2a2i, switchContext4);
               if (tlist4 == null) {
                 final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
@@ -375,8 +375,8 @@ public class Mapping_mc_link_operations extends MapConfigBase implements Templat
         {
           Collection<SNode> tlist7 = null;
           SNode callInputNode7 = QueriesGenerated.sourceNodeQuery_2_15(new SourceSubstituteMacroNodeContext(context1, callMacro_jzpaek_b0a0a1a5a2a2i));
-          TemplateContext context2;
-          context2 = context1.subContext(null, callInputNode7);
+          TemplateContext context2 = context1;
+          context2 = context2.subContext(null, callInputNode7);
           if (callInputNode7 != null) {
             tlist7 = environment.callSite(new Template_reduce_NodeIdentity_SNodeReference(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "9051222292532846779")).apply(context2);
           } else {

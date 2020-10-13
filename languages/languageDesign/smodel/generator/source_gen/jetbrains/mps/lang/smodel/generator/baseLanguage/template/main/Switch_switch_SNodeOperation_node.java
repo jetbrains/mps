@@ -315,8 +315,8 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
             if (switchInput4 == null) {
               tlist4 = Collections.emptyList();
             } else {
-              TemplateContext switchContext4;
-              switchContext4 = context1.subContext(null, switchInput4);
+              TemplateContext switchContext4 = context1;
+              switchContext4 = switchContext4.subContext(null, switchInput4);
               tlist4 = environment.trySwitch(templateSwitchNode_yds1mf_a0a0c0a1a1a4a2a1w, switchContext4);
               if (tlist4 == null) {
                 final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
@@ -648,8 +648,8 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
             if (switchInput4 == null) {
               tlist4 = Collections.emptyList();
             } else {
-              TemplateContext switchContext4;
-              switchContext4 = context1.subContext(null, switchInput4);
+              TemplateContext switchContext4 = context1;
+              switchContext4 = switchContext4.subContext(null, switchInput4);
               tlist4 = environment.trySwitch(templateSwitchNode_yds1mf_a0a0c0a1a1a4a2a1sb, switchContext4);
               if (tlist4 == null) {
                 final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
@@ -773,8 +773,8 @@ public class Switch_switch_SNodeOperation_node extends TemplateSwitchBase implem
         {
           Collection<SNode> tlist4 = null;
           SNode callInputNode4 = QueriesGenerated.sourceNodeQuery_121_13(new SourceSubstituteMacroNodeContext(context1, callMacro_yds1mf_b0a0a1a4a2a2wb));
-          TemplateContext context2;
-          context2 = context1.subContext(null, callInputNode4);
+          TemplateContext context2 = context1;
+          context2 = context2.subContext(null, callInputNode4);
           if (callInputNode4 != null) {
             tlist4 = environment.callSite(new Template_reduce_NodeIdentity_SNodeReference(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3661776679763994850")).apply(context2);
           } else {

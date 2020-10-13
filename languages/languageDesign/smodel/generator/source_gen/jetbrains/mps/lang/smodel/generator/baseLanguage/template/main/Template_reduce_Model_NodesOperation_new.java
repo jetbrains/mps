@@ -61,8 +61,8 @@ public class Template_reduce_Model_NodesOperation_new extends TemplateDeclaratio
             if (switchInput5 == null) {
               tlist5 = Collections.emptyList();
             } else {
-              TemplateContext switchContext5;
-              switchContext5 = context1.subContext(null, switchInput5);
+              TemplateContext switchContext5 = context1;
+              switchContext5 = switchContext5.subContext(null, switchInput5);
               tlist5 = environment.trySwitch(templateSwitchNode_68un6o_a0a0c0a1a1a1a4a2a6, switchContext5);
               if (tlist5 == null) {
                 final SNode tnode6 = environment.createOutputNode(myConcepts[1]);

@@ -54,8 +54,8 @@ public class Template_reduce_Property_HasValue_Enum extends TemplateDeclarationB
       {
         Collection<SNode> tlist4 = null;
         SNode callInputNode4 = QueriesGenerated.sourceNodeQuery_133_1(new SourceSubstituteMacroNodeContext(context1, callMacro_fer9l5_b0a0a1a4a2a6));
-        TemplateContext context2;
-        context2 = context1.subContext(null, callInputNode4);
+        TemplateContext context2 = context1;
+        context2 = context2.subContext(null, callInputNode4);
         if (callInputNode4 != null) {
           tlist4 = environment.callSite(new Template_reduce_PropertyDeclaration_SProperty(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1189519421089020023")).apply(context2);
         } else {

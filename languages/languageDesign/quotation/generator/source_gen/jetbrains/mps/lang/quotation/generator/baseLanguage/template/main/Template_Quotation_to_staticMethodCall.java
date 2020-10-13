@@ -199,8 +199,8 @@ public class Template_Quotation_to_staticMethodCall extends TemplateDeclarationB
                   {
                     Collection<SNode> tlist27 = null;
                     SNode callInputNode27 = QueriesGenerated.sourceNodeQuery_2_0(new SourceSubstituteMacroNodeContext(context14, callMacro_6fpfng_b0a0a1a1a1a3a1a6a1a2a5a6));
-                    TemplateContext context15;
-                    context15 = context14.subContext(null, callInputNode27);
+                    TemplateContext context15 = context14;
+                    context15 = context15.subContext(null, callInputNode27);
                     if (callInputNode27 != null) {
                       tlist27 = environment.callSite(new Template_QuotedNode_to_statementList(), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "767161977424627382")).apply(context15);
                     } else {
@@ -249,8 +249,8 @@ public class Template_Quotation_to_staticMethodCall extends TemplateDeclarationB
                             {
                               Collection<SNode> tlist34 = null;
                               SNode callInputNode34 = QueriesGenerated.sourceNodeQuery_2_1(new SourceSubstituteMacroNodeContext(context19, callMacro_6fpfng_b0a0a1a2a1a2a1a1a3a2a4a1a6a1a2a5a6));
-                              TemplateContext context20;
-                              context20 = context19.subContext(null, callInputNode34);
+                              TemplateContext context20 = context19;
+                              context20 = context20.subContext(null, callInputNode34);
                               if (callInputNode34 != null) {
                                 tlist34 = environment.callSite(environment.createTemplateKey("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "8415841354032418697", "reduce_ReferenceLinkId_SReferenceLink"), new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144945")).apply(context20);
                               } else {

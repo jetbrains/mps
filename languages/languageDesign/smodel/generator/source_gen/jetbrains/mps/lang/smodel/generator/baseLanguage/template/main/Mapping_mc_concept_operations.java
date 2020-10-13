@@ -77,8 +77,8 @@ public class Mapping_mc_concept_operations extends MapConfigBase implements Temp
             if (switchInput5 == null) {
               tlist5 = Collections.emptyList();
             } else {
-              TemplateContext switchContext5;
-              switchContext5 = context1.subContext(null, switchInput5);
+              TemplateContext switchContext5 = context1;
+              switchContext5 = switchContext5.subContext(null, switchInput5);
               tlist5 = environment.trySwitch(templateSwitchNode_y3pd1p_a0a0c0a1a1a4a2a1d, switchContext5);
               if (tlist5 == null) {
                 final SNode tnode6 = environment.createOutputNode(myConcepts[1]);
@@ -133,8 +133,8 @@ public class Mapping_mc_concept_operations extends MapConfigBase implements Temp
             if (switchInput5 == null) {
               tlist5 = Collections.emptyList();
             } else {
-              TemplateContext switchContext5;
-              switchContext5 = context1.subContext(null, switchInput5);
+              TemplateContext switchContext5 = context1;
+              switchContext5 = switchContext5.subContext(null, switchInput5);
               tlist5 = environment.trySwitch(templateSwitchNode_y3pd1p_a0a0c0a1a1a4a2a1e, switchContext5);
               if (tlist5 == null) {
                 final SNode tnode6 = environment.createOutputNode(myConcepts[1]);
@@ -189,8 +189,8 @@ public class Mapping_mc_concept_operations extends MapConfigBase implements Temp
             if (switchInput5 == null) {
               tlist5 = Collections.emptyList();
             } else {
-              TemplateContext switchContext5;
-              switchContext5 = context1.subContext(null, switchInput5);
+              TemplateContext switchContext5 = context1;
+              switchContext5 = switchContext5.subContext(null, switchInput5);
               tlist5 = environment.trySwitch(templateSwitchNode_y3pd1p_a0a0c0a1a1a4a2a1f, switchContext5);
               if (tlist5 == null) {
                 final SNode tnode6 = environment.createOutputNode(myConcepts[1]);

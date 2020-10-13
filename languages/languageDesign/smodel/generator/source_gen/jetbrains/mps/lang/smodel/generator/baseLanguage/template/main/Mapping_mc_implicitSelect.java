@@ -75,8 +75,8 @@ public class Mapping_mc_implicitSelect extends MapConfigBase implements Template
           {
             Collection<SNode> tlist5 = null;
             SNode callInputNode5 = QueriesGenerated.sourceNodeQuery_50_1(new SourceSubstituteMacroNodeContext(context1, callMacro_x5z8bg_b0a0a1a4a1a2a2e));
-            TemplateContext context2;
-            context2 = context1.subContext(null, callInputNode5);
+            TemplateContext context2 = context1;
+            context2 = context2.subContext(null, callInputNode5);
             if (callInputNode5 != null) {
               tlist5 = environment.callSite(new Template_reduce_LinkDeclaration_SLink(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4877343046905176267")).apply(context2);
             } else {
@@ -107,8 +107,8 @@ public class Mapping_mc_implicitSelect extends MapConfigBase implements Template
           {
             Collection<SNode> tlist10 = null;
             SNode callInputNode10 = QueriesGenerated.sourceNodeQuery_50_3(new SourceSubstituteMacroNodeContext(context3, callMacro_x5z8bg_b0a0a1a4a1a0c0c4));
-            TemplateContext context4;
-            context4 = context3.subContext(null, callInputNode10);
+            TemplateContext context4 = context3;
+            context4 = context4.subContext(null, callInputNode10);
             if (callInputNode10 != null) {
               tlist10 = environment.callSite(new Template_reduce_LinkDeclaration_SLink(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4877343046905225317")).apply(context4);
             } else {
@@ -139,8 +139,8 @@ public class Mapping_mc_implicitSelect extends MapConfigBase implements Template
           {
             Collection<SNode> tlist15 = null;
             SNode callInputNode15 = QueriesGenerated.sourceNodeQuery_50_5(new SourceSubstituteMacroNodeContext(context5, callMacro_x5z8bg_b0a0a1a4a1a1c0c4));
-            TemplateContext context6;
-            context6 = context5.subContext(null, callInputNode15);
+            TemplateContext context6 = context5;
+            context6 = context6.subContext(null, callInputNode15);
             if (callInputNode15 != null) {
               tlist15 = environment.callSite(new Template_reduce_LinkDeclaration_SLink(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "4877343046905241422")).apply(context6);
             } else {

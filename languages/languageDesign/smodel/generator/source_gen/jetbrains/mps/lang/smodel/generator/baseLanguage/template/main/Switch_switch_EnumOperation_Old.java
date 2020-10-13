@@ -68,8 +68,8 @@ public class Switch_switch_EnumOperation_Old extends TemplateSwitchBase implemen
         {
           Collection<SNode> tlist2 = null;
           SNode callInputNode2 = QueriesGenerated.sourceNodeQuery_117_0(new SourceSubstituteMacroNodeContext(context1, callMacro_vmdyp3_b0a0a1a3a2a1g));
-          TemplateContext context2;
-          context2 = context1.subContext(null, callInputNode2);
+          TemplateContext context2 = context1;
+          context2 = context2.subContext(null, callInputNode2);
           if (callInputNode2 != null) {
             tlist2 = environment.callSite(new Template_reduce_EnumDeclaration_indentityValueSequence(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919553278886")).apply(context2);
           } else {
@@ -125,8 +125,8 @@ public class Switch_switch_EnumOperation_Old extends TemplateSwitchBase implemen
         {
           Collection<SNode> tlist2 = null;
           SNode callInputNode2 = QueriesGenerated.sourceNodeQuery_117_1(new SourceSubstituteMacroNodeContext(context1, callMacro_vmdyp3_b0a0a1a3a2a1h));
-          TemplateContext context2;
-          context2 = context1.subContext(null, callInputNode2);
+          TemplateContext context2 = context1;
+          context2 = context2.subContext(null, callInputNode2);
           if (callInputNode2 != null) {
             tlist2 = environment.callSite(new Template_reduce_EnumDeclaration_indentityValueSequence(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5171076324157703563")).apply(context2);
           } else {
@@ -165,8 +165,8 @@ public class Switch_switch_EnumOperation_Old extends TemplateSwitchBase implemen
         {
           Collection<SNode> tlist4 = null;
           SNode callInputNode4 = QueriesGenerated.sourceNodeQuery_117_3(new SourceSubstituteMacroNodeContext(context1, callMacro_vmdyp3_b0a0a1a4a2a1i));
-          TemplateContext context2;
-          context2 = context1.subContext(null, callInputNode4);
+          TemplateContext context2 = context1;
+          context2 = context2.subContext(null, callInputNode4);
           if (callInputNode4 != null) {
             tlist4 = environment.callSite(new Template_reduce_EnumDeclaration_indentityValueSequence(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919553280585")).apply(context2);
           } else {
@@ -230,8 +230,8 @@ public class Switch_switch_EnumOperation_Old extends TemplateSwitchBase implemen
         {
           Collection<SNode> tlist9 = null;
           SNode callInputNode9 = QueriesGenerated.sourceNodeQuery_117_6(new SourceSubstituteMacroNodeContext(context1, callMacro_vmdyp3_b0a0a1a4a2a1j));
-          TemplateContext context3;
-          context3 = context1.subContext(null, callInputNode9);
+          TemplateContext context3 = context1;
+          context3 = context3.subContext(null, callInputNode9);
           if (callInputNode9 != null) {
             tlist9 = environment.callSite(new Template_reduce_EnumDeclaration_indentityValueSequence(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2733396919553281070")).apply(context3);
           } else {

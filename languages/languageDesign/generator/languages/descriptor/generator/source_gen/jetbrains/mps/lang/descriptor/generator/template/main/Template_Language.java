@@ -24,8 +24,6 @@ import jetbrains.mps.generator.runtime.ApplySink;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.generator.runtime.TemplateUtil;
-import java.util.Map;
-import java.util.HashMap;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -799,13 +797,8 @@ public class Template_Language extends TemplateDeclarationBase {
                           context41 = context41.withVariable("var:model", QueriesGenerated.varMacro_Value_0_1(new TemplateVarContext(context40, new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2409421742521900521"))));
                           Collection<SNode> tlist96 = null;
                           try {
-                            TemplateContext switchContext96;
-                            {
-                              final Map<String, Object> args96 = new HashMap<String, Object>();
-                              args96.put("model", ((SModel) context41.getVariable("var:model")));
-                              switchContext96 = context41.subContext(args96);
-                              switchContext96 = switchContext96.subContext(null, context41.getInput());
-                            }
+                            TemplateContext switchContext96 = context41;
+                            switchContext96 = switchContext96.withVariable("model", ((SModel) switchContext96.getVariable("var:model")));
                             tlist96 = environment.trySwitch(templateSwitchNodeNoInput_ko6gu6_a0a0c0g0c0b0b0b0d0e0b0i0b0r0g0g, switchContext96);
                             if (tlist96 == null) {
                               final SNode tnode97 = environment.createOutputNode(myConcepts[0]);
@@ -932,13 +925,8 @@ public class Template_Language extends TemplateDeclarationBase {
                   context48 = context48.withVariable("var:model", QueriesGenerated.varMacro_Value_0_4(new TemplateVarContext(context47, new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "3242214770611282315"))));
                   Collection<SNode> tlist115 = null;
                   try {
-                    TemplateContext switchContext115;
-                    {
-                      final Map<String, Object> args115 = new HashMap<String, Object>();
-                      args115.put("model", ((SModel) context48.getVariable("var:model")));
-                      switchContext115 = context48.subContext(args115);
-                      switchContext115 = switchContext115.subContext(null, context48.getInput());
-                    }
+                    TemplateContext switchContext115 = context48;
+                    switchContext115 = switchContext115.withVariable("model", ((SModel) switchContext115.getVariable("var:model")));
                     tlist115 = environment.trySwitch(templateSwitchNodeNoInput_ko6gu6_a0a0c0g0c0b0b0f0b0t0g0g, switchContext115);
                     if (tlist115 == null) {
                       final SNode tnode116 = environment.createOutputNode(myConcepts[2]);

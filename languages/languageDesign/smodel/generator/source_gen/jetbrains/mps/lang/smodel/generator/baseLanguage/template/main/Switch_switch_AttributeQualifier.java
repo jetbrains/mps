@@ -92,8 +92,8 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
             {
               Collection<SNode> tlist3 = null;
               SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_145_0(new SourceSubstituteMacroNodeContext(context2, callMacro_cadkmf_b0a0a1a2a1a1a2a1h));
-              TemplateContext context3;
-              context3 = context2.subContext(null, callInputNode3);
+              TemplateContext context3 = context2;
+              context3 = context3.subContext(null, callInputNode3);
               if (callInputNode3 != null) {
                 tlist3 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2213306337134414333")).apply(context3);
               } else {
@@ -130,8 +130,8 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
             {
               Collection<SNode> tlist3 = null;
               SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_145_1(new SourceSubstituteMacroNodeContext(context2, callMacro_cadkmf_b0a0a1a2a1a1a2a1i));
-              TemplateContext context3;
-              context3 = context2.subContext(null, callInputNode3);
+              TemplateContext context3 = context2;
+              context3 = context3.subContext(null, callInputNode3);
               if (callInputNode3 != null) {
                 tlist3 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2213306337134414345")).apply(context3);
               } else {
@@ -149,8 +149,8 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
                 if (switchInput5 == null) {
                   tlist5 = Collections.emptyList();
                 } else {
-                  TemplateContext switchContext5;
-                  switchContext5 = context2.subContext(null, switchInput5);
+                  TemplateContext switchContext5 = context2;
+                  switchContext5 = switchContext5.subContext(null, switchInput5);
                   tlist5 = environment.trySwitch(templateSwitchNode_cadkmf_a0a0c0a1a1a3a1a1a2a1i, switchContext5);
                   if (tlist5 == null) {
                     final SNode tnode6 = environment.createOutputNode(myConcepts[2]);
@@ -189,8 +189,8 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
             {
               Collection<SNode> tlist3 = null;
               SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_145_3(new SourceSubstituteMacroNodeContext(context2, callMacro_cadkmf_b0a0a1a2a1a1a2a1j));
-              TemplateContext context3;
-              context3 = context2.subContext(null, callInputNode3);
+              TemplateContext context3 = context2;
+              context3 = context3.subContext(null, callInputNode3);
               if (callInputNode3 != null) {
                 tlist3 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2213306337134414365")).apply(context3);
               } else {
@@ -208,8 +208,8 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
                 if (switchInput5 == null) {
                   tlist5 = Collections.emptyList();
                 } else {
-                  TemplateContext switchContext5;
-                  switchContext5 = context2.subContext(null, switchInput5);
+                  TemplateContext switchContext5 = context2;
+                  switchContext5 = switchContext5.subContext(null, switchInput5);
                   tlist5 = environment.trySwitch(templateSwitchNode_cadkmf_a0a0c0a1a1a3a1a1a2a1j, switchContext5);
                   if (tlist5 == null) {
                     final SNode tnode6 = environment.createOutputNode(myConcepts[2]);
@@ -248,8 +248,8 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
             {
               Collection<SNode> tlist3 = null;
               SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_145_5(new SourceSubstituteMacroNodeContext(context2, callMacro_cadkmf_b0a0a1a2a1a1a2a1k));
-              TemplateContext context3;
-              context3 = context2.subContext(null, callInputNode3);
+              TemplateContext context3 = context2;
+              context3 = context3.subContext(null, callInputNode3);
               if (callInputNode3 != null) {
                 tlist3 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2213306337134414385")).apply(context3);
               } else {
@@ -267,8 +267,8 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
                 if (switchInput5 == null) {
                   tlist5 = Collections.emptyList();
                 } else {
-                  TemplateContext switchContext5;
-                  switchContext5 = context2.subContext(null, switchInput5);
+                  TemplateContext switchContext5 = context2;
+                  switchContext5 = switchContext5.subContext(null, switchInput5);
                   tlist5 = environment.trySwitch(templateSwitchNode_cadkmf_a0a0c0a1a1a3a1a1a2a1k, switchContext5);
                   if (tlist5 == null) {
                     final SNode tnode6 = environment.createOutputNode(myConcepts[2]);

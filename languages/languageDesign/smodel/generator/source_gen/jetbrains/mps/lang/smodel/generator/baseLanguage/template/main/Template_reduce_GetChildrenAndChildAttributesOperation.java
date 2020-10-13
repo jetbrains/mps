@@ -58,8 +58,8 @@ public class Template_reduce_GetChildrenAndChildAttributesOperation extends Temp
           if (switchInput4 == null) {
             tlist4 = Collections.emptyList();
           } else {
-            TemplateContext switchContext4;
-            switchContext4 = context1.subContext(null, switchInput4);
+            TemplateContext switchContext4 = context1;
+            switchContext4 = switchContext4.subContext(null, switchInput4);
             tlist4 = environment.trySwitch(templateSwitchNode_hvlio5_a0a0c0a1a1a4a2a6, switchContext4);
             if (tlist4 == null) {
               final SNode tnode5 = environment.createOutputNode(myConcepts[1]);

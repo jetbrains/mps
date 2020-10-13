@@ -181,8 +181,8 @@ public class Template_processStatement extends TemplateDeclarationBase {
   protected FragmentResult applyPart2(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = null;
-    TemplateContext context1;
-    context1 = context.withVariable("nnnn", ((SNode) context.getVariable("expr")));
+    TemplateContext context1 = context;
+    context1 = context1.withVariable("nnnn", ((SNode) context1.getVariable("expr")));
     tlist1 = environment.callSite(new Template_aaaaa(), new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "5005282049926092705")).apply(context1);
     FragmentResult rv = listFragment(2, tlist1);
     return rv;

@@ -465,8 +465,8 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
             }
             {
               Collection<SNode> tlist4 = null;
-              TemplateContext context3;
-              context3 = context2.withVariable("node", ((SNode) context2.getPatternVariable("patternVar_ref")));
+              TemplateContext context3 = context2;
+              context3 = context3.withVariable("node", ((SNode) context3.getPatternVariable("patternVar_ref")));
               tlist4 = environment.callSite(new Template_process42(), new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "6509983489805214623")).apply(context3);
               for (SNode child5 : TemplateUtil.asNotNull(tlist4)) {
                 tnode2.addChild(myAggregationLinks[5], child5);
@@ -495,9 +495,8 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
       final TemplateContext context = templateContext.subContext(pattern);
       Collection<SNode> tlist1 = null;
       try {
-        TemplateContext switchContext1;
-        switchContext1 = context;
-        tlist1 = environment.trySwitch(templateSwitchNodeNoInput_ief6mt_a0a0c0f0b91, switchContext1);
+        TemplateContext switchContext1 = context;
+        tlist1 = environment.trySwitch(templateSwitchNodeNoInput_ief6mt_a0a0b0f0b91, switchContext1);
         if (tlist1 == null) {
           final SNode tnode2 = environment.createOutputNode(myConcepts[15]);
           tlist1 = TemplateUtil.singletonList(tnode2);
@@ -649,7 +648,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
   private static final SNodePointer copySrcMacro_ief6mt_b0a0c0c0f0b41 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "2681305894288387820");
   private static final SNodePointer templArgCall_ief6mt_b0a0a1a0a4a1p = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4816349095291000367");
   private static final SNodePointer propertyMacro_ief6mt_c0a2a0a1a1a1a2a1a1a5a1q = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "2163819695913945866");
-  private static final SNodePointer templateSwitchNodeNoInput_ief6mt_a0a0c0f0b91 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "8371596541809088655");
+  private static final SNodePointer templateSwitchNodeNoInput_ief6mt_a0a0b0f0b91 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "8371596541809088655");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept OutputNode_forDontApplyReductionTwice_test$xx = MetaAdapterFactory.getConcept(0x157a9668bf58417bL, 0x893e53d86388dc56L, 0x119a204b891L, "jetbrains.mps.transformation.test.outputLang.structure.OutputNode_forDontApplyReductionTwice_test");

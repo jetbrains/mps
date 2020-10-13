@@ -164,8 +164,8 @@ public class Template_reduce_ConceptSwitch_SubconceptCases extends TemplateDecla
                 {
                   Collection<SNode> tlist14 = null;
                   SNode callInputNode14 = QueriesGenerated.sourceNodeQuery_106_0(new SourceSubstituteMacroNodeContext(context7, callMacro_nyxx76_b0a0a1a4a1a2a1a2a3a3a7));
-                  TemplateContext context8;
-                  context8 = context7.subContext(null, callInputNode14);
+                  TemplateContext context8 = context7;
+                  context8 = context8.subContext(null, callInputNode14);
                   if (callInputNode14 != null) {
                     tlist14 = environment.callSite(new Template_reduce_ConceptDeclaration2SAbstractConcept(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145332")).apply(context8);
                   } else {

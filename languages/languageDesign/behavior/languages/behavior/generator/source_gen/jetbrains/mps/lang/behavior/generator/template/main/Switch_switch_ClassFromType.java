@@ -150,8 +150,8 @@ public class Switch_switch_ClassFromType extends TemplateSwitchBase implements T
         if (switchInput1 == null) {
           tlist1 = Collections.emptyList();
         } else {
-          TemplateContext switchContext1;
-          switchContext1 = context.subContext(null, switchInput1);
+          TemplateContext switchContext1 = context;
+          switchContext1 = switchContext1.subContext(null, switchInput1);
           tlist1 = environment.trySwitch(templateSwitchNode_ef4au6_a0a0c0a1a2a1j, switchContext1);
           if (tlist1 == null) {
             final SNode tnode2 = environment.createOutputNode(myConcepts[2]);
