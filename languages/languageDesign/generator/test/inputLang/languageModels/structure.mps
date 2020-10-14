@@ -239,6 +239,13 @@
     <property role="3GE5qa" value="RefTest" />
     <property role="EcuMT" value="3315811491560119817" />
     <ref role="1TJDcQ" node="2S48fJgAlS1" resolve="RefTestExpression" />
+    <node concept="1TJgyj" id="2k$Qx00K8dc" role="1TKVEi">
+      <property role="IQ2ns" value="2676503840831865676" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="arguments" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="2S48fJgAlS7" resolve="RefTestParamRef" />
+    </node>
     <node concept="1TJgyj" id="2S48fJgAlSa" role="1TKVEi">
       <property role="20kJfa" value="method" />
       <property role="20lbJX" value="fLJekj4/1" />

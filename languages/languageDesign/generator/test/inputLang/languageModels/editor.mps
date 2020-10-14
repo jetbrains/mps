@@ -13,6 +13,7 @@
       <concept id="1071666914219" name="jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration" flags="ig" index="24kQdi" />
       <concept id="1140524381322" name="jetbrains.mps.lang.editor.structure.CellModel_ListWithRole" flags="ng" index="2czfm3">
         <property id="1140524450557" name="separatorText" index="2czwfO" />
+        <property id="1156252885376" name="separatorLayoutConstraint" index="Q2I2d" />
         <child id="1140524464360" name="cellLayout" index="2czzBx" />
         <child id="1140524464359" name="emptyCellModel" index="2czzBI" />
       </concept>
@@ -392,8 +393,19 @@
         </node>
       </node>
       <node concept="3F0ifn" id="2S48fJgAlSk" role="3EZMnx">
-        <property role="3F0ifm" value="();" />
+        <property role="3F0ifm" value="(" />
         <node concept="11L4FC" id="2S48fJgAlSl" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+      </node>
+      <node concept="3F2HdR" id="2k$Qx00K8dD" role="3EZMnx">
+        <property role="Q2I2d" value="g$1Qtxb/punctuation" />
+        <ref role="1NtTu8" to="tpm0:2k$Qx00K8dc" resolve="arguments" />
+        <node concept="l2Vlx" id="2k$Qx00K8dF" role="2czzBx" />
+      </node>
+      <node concept="3F0ifn" id="2k$Qx00K8du" role="3EZMnx">
+        <property role="3F0ifm" value=");" />
+        <node concept="11LMrY" id="2k$Qx00K8dB" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
       </node>
