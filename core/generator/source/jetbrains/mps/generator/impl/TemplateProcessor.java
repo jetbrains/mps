@@ -437,8 +437,13 @@ public final class TemplateProcessor implements ITemplateProcessor {
       if (child != null) {
         child = templateContext.getEnvironment().insertNode(child, getMacroNodeRef(), templateContext);
         // XXX TEEI.insertNode doesn't register ML, perhaps shall behave the same as this code?
-        //     It's enerated code that registers the label, why don't we move the code into TEEE.inseertNode?
-        // label
+        //     It's generated code that registers the label, why don't we move the code into TEEE.insertNode?
+        // FIXME For a regular macro, it's TemplateProcessor.applyTemplate that does env.registerLabel for any node produced by a macro (once we
+        //    reach TN macro is attached to), while here we don't reach TemplateNode and just produce one from the air. HOWEVER, not sure
+        //    what's going on for macros like CALL/SWITCH that don't proceed their TN - where's the code that associates output of templates they invoked
+        //    with a label they could have assigned? The label is in the TC instance, does it go all the way down to first TN produced (that would
+        //    explain why we need explicit registerML here) or it's some code up the stack that takes template output of CALL and assigns it to CALL's ML?
+        //    In latter case, this registerML here is excessive.
         myTemplateProcessor.getGenerator().registerMappingLabel(templateContext.getInput(), templateContext.getInputName(), child);
         return Collections.singletonList(child);
       }
@@ -744,6 +749,17 @@ public final class TemplateProcessor implements ITemplateProcessor {
         }
       }
     }
+
+    // templateContext shall point to the initial one of CALL/SWITCH, not the one they pass into template -
+    // we need access to context ML at the time. Can not use MacroImpl.getMappingLabel() as it's not necessarily CALL/SWITCH
+    // that bear the ML we've cleared for site evaluation, it may be some outer code to supply one (e.g. LOOP ML [SWITCH []])
+    protected final void reattachLabel(Collection<SNode> result, TemplateContext templateContext) {
+      final TemplateExecutionEnvironment env = templateContext.getEnvironment();
+      if (callProcessor().needCallSite() && templateContext.getInputName() != null) {
+        // we likely have cleared ML name, and if CALL-SITE is the only thing CALL/SWITCH returns, we need to record the labels back
+        env.registerLabel(templateContext.getInput(), result, templateContext.getInputName());
+      }
+    }
   }
 
   // $SWITCH$
@@ -778,7 +794,8 @@ public final class TemplateProcessor implements ITemplateProcessor {
       // null indicates we didn't attempt to calculate these
       final List<SNode> callSiteOutputNodes;
       if (callProcessor().needCallSite()) {
-        callSiteOutputNodes = nextMacro(templateContext);
+        // clear ML, if any, so that site node doesn't get erroneously associated with this macro's label
+        callSiteOutputNodes = nextMacro(templateContext.subContext());
       } else {
         callSiteOutputNodes = null;
       }
@@ -796,12 +813,17 @@ public final class TemplateProcessor implements ITemplateProcessor {
       if (collection == null) {
         if (callSiteOutputNodes != null) {
           // We've processed nextMacro already, just use the list value
+          // though first need to make sure ML, if this SWITCH got any, get associated with produced nodes
+          reattachLabel(callSiteOutputNodes, templateContext);
           return callSiteOutputNodes;
         }
         // XXX why tryDefault is part of trySwitch, and not here? For the sake of generated code, perhaps (not to generate conditions 'if nothing generated')?
         // no switch-case found for the inputNode - continue with templateNode under the $switch$
         // use initial context, not the one prepared (could be filled with switch arguments)
+        // JFTR, don't need to re-apply labels here as it's regular ML handling in nextMacro
         collection = nextMacro(templateContext.subContext(newInputNode));
+      } else {
+        reattachLabel(collection, templateContext);
       }
       return asList(collection);
     }
@@ -847,7 +869,8 @@ public final class TemplateProcessor implements ITemplateProcessor {
 
       final List<SNode> callSiteOutputNodes;
       if (callProcessor().needCallSite()) {
-        callSiteOutputNodes = nextMacro(templateContext);
+        // reset ML, if any, so that CALL-SITE node doesn't get a label of this CALL
+        callSiteOutputNodes = nextMacro(templateContext.subContext());
       } else {
         callSiteOutputNodes = null;
       }
@@ -855,7 +878,9 @@ public final class TemplateProcessor implements ITemplateProcessor {
       final TemplateContext tcInput = prepareArguments(templateContext, callSiteOutputNodes).subContext(newInputNode);
 
       try {
-        return asList(myTemplateRT.apply(tcInput));
+        final Collection<SNode> applied = myTemplateRT.apply(tcInput);
+        reattachLabel(applied, templateContext);
+        return asList(applied);
       } catch (GenerationFailureException | DismissTopMappingRuleException | GenerationCanceledException ex) {
         throw ex;
       } catch (GenerationException ex) {
