@@ -15,6 +15,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.generator.runtime.TemplateDeclaration;
 import jetbrains.mps.generator.runtime.TemplateDeclarationKey;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.smodel.SNodePointer;
 
 @Generated
 public class TemplateModelImpl extends TemplateModelBase {
@@ -24,7 +25,7 @@ public class TemplateModelImpl extends TemplateModelBase {
   public TemplateModelImpl(TemplateModule module) {
     super(module);
     mappings = TemplateUtil.<TemplateMappingConfiguration>asCollection(new Mapping_MainCompiled(this));
-    switches = TemplateUtil.<TemplateSwitchMapping>asCollection();
+    switches = TemplateUtil.<TemplateSwitchMapping>asCollection(new Switch_reduce_Expressions(), new Switch_reduce_ParameterDeclaration());
     model = PersistenceFacade.getInstance().createModelReference("r:3ae70081-5af6-4df2-938d-3936a0c7a546(jetbrains.mps.transformation.test.inputLang.generator02.templates@generator)");
   }
   public String getLongName() {
@@ -47,6 +48,18 @@ public class TemplateModelImpl extends TemplateModelBase {
       return null;
     }
     final SNodeReference template = key.getSourceNode();
+    if (template.equals(new SNodePointer("r:3ae70081-5af6-4df2-938d-3936a0c7a546(jetbrains.mps.transformation.test.inputLang.generator02.templates@generator)", "2676503840832333563"))) {
+      return new Template_notNullCheck();
+    }
+    if (template.equals(new SNodePointer("r:3ae70081-5af6-4df2-938d-3936a0c7a546(jetbrains.mps.transformation.test.inputLang.generator02.templates@generator)", "2676503840832205682"))) {
+      return new Template_reduce_Comment();
+    }
+    if (template.equals(new SNodePointer("r:3ae70081-5af6-4df2-938d-3936a0c7a546(jetbrains.mps.transformation.test.inputLang.generator02.templates@generator)", "2676503840832204892"))) {
+      return new Template_reduce_MethodDeclaration();
+    }
+    if (template.equals(new SNodePointer("r:3ae70081-5af6-4df2-938d-3936a0c7a546(jetbrains.mps.transformation.test.inputLang.generator02.templates@generator)", "2676503840832080254"))) {
+      return new Template_C();
+    }
     return null;
   }
 }
