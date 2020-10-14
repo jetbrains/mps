@@ -1797,7 +1797,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.sourceNodeQuery$r9Sk) != null);
   }
   public static boolean ifMacro_Condition_17_1(final IfMacroContext _context) {
-    return (boolean) NodeMacro__BehaviorDescriptor.hasMappingLabel_id5KmckUrKj9u.invoke(_context.getNode()) || (SLinkOperations.getTarget(_context.getNode(), LINKS.sourceNodeQuery$r9Sk) != null) || ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.actualArgument$ZcRg)).isNotEmpty();
+    return (boolean) NodeMacro__BehaviorDescriptor.hasMappingLabel_id5KmckUrKj9u.invoke(_context.getNode()) || (SLinkOperations.getTarget(_context.getNode(), LINKS.sourceNodeQuery$r9Sk) != null) || ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.actualArgument$ZcRg)).isNotEmpty() || SPropertyOperations.getBoolean(SLinkOperations.getTarget(_context.getNode(), LINKS.template$6_6), PROPS.needCallSite$fSr_);
   }
   public static boolean ifMacro_Condition_17_2(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.sourceNodeQuery$r9Sk) != null);
