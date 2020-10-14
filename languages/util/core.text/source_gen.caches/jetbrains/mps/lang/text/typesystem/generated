@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="98kio6wkmuoq34sjj00a9ooehrynucr">
-  <files names="AddWordToEmptyLine_QuickFix.java:RemoveSpacesFromWord_QuickFix.java:TurnWordIntoLink_QuickFix.java:TypesystemDescriptor.java:check_Line_NonTypesystemRule.java:check_Word_NonTypesystemRule.java" />
+<product version="3" modelHash="-1eyauk42xs7mfoweec91b5sa1utti6s">
+  <files names="AddEmptyParagraphLetterToEmptyParagraph_QuickFix.java:AddWordToEmptyLine_QuickFix.java:RemoveSpacesFromWord_QuickFix.java:TurnWordIntoLink_QuickFix.java:TypesystemDescriptor.java:check_Empty_Paragraph_NonTypesystemRule.java:check_Line_NonTypesystemRule.java:check_Word_NonTypesystemRule.java" />
 </product>
 

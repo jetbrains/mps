@@ -140,6 +140,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.property("bold", 0x7f8646038f737740L).type(PrimitiveTypeId.BOOLEAN).origin("9189109070801631040").done();
     b.property("italic", 0x7f8646038f737741L).type(PrimitiveTypeId.BOOLEAN).origin("9189109070801631041").done();
     b.property("underlined", 0x7f8646038f737742L).type(PrimitiveTypeId.BOOLEAN).origin("9189109070801631042").done();
+    b.alias("letter");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForLine() {

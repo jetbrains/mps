@@ -88,6 +88,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       style.set(StyleAttributes.FONT_STYLE, MPSFonts.ITALIC);
       style.set(StyleAttributes.UNDERLINED, true);
       editorCell.getStyle().putAll(style);
+      DeleteNonLetter.setCellActions(editorCell, myNode, getEditorContext());
       editorCell.setTransformationMenuLookup(new DefaultTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.TextualElement$9C));
       editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
       setCellContext(editorCell);

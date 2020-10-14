@@ -59,7 +59,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.Letter:
         if (props_Letter == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("Letter");
+          cpb.rawPresentation("letter");
           props_Letter = cpb.create();
         }
         return props_Letter;

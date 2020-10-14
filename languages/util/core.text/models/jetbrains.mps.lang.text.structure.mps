@@ -245,6 +245,7 @@
     <property role="EcuMT" value="9143182410139347997" />
     <property role="TrG5h" value="Letter" />
     <property role="3GE5qa" value="textual" />
+    <property role="34LRSv" value="letter" />
     <ref role="1TJDcQ" node="2MpFNjy3pNV" resolve="TextualElement" />
     <node concept="1TJgyi" id="7Vz6ZmoXaQu" role="1TKVEl">
       <property role="IQ2nx" value="9143182410139348382" />

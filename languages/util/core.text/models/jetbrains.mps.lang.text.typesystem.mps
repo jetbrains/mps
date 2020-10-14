@@ -452,5 +452,73 @@
       </node>
     </node>
   </node>
+  <node concept="18kY7G" id="3axPPmgaNor">
+    <property role="TrG5h" value="check_Empty_Paragraph" />
+    <property role="3GE5qa" value="textual" />
+    <node concept="3clFbS" id="3axPPmgaNos" role="18ibNy">
+      <node concept="3clFbJ" id="3axPPmgaNuo" role="3cqZAp">
+        <node concept="2OqwBi" id="3axPPmgaPrg" role="3clFbw">
+          <node concept="2OqwBi" id="3axPPmgaNEj" role="2Oq$k0">
+            <node concept="1YBJjd" id="3axPPmgaNvZ" role="2Oq$k0">
+              <ref role="1YBMHb" node="3axPPmgaNou" resolve="paragraph" />
+            </node>
+            <node concept="3Tsc0h" id="3axPPmgaNMT" role="2OqNvi">
+              <ref role="3TtcxE" to="zqge:7Vz6ZmoXeRv" resolve="letters" />
+            </node>
+          </node>
+          <node concept="1v1jN8" id="3axPPmgaR28" role="2OqNvi" />
+        </node>
+        <node concept="3clFbS" id="3axPPmgaNuq" role="3clFbx">
+          <node concept="a7r0C" id="3axPPmgaR7c" role="3cqZAp">
+            <node concept="Xl_RD" id="3axPPmgaRbT" role="a7wSD">
+              <property role="Xl_RC" value="Empty paragraph" />
+            </node>
+            <node concept="1YBJjd" id="3axPPmgaRjL" role="1urrMF">
+              <ref role="1YBMHb" node="3axPPmgaNou" resolve="paragraph" />
+            </node>
+            <node concept="3Cnw8n" id="3axPPmgaSPS" role="1urrFz">
+              <property role="ARO6o" value="true" />
+              <ref role="QpYPw" node="3axPPmgaRry" resolve="AddEmptyParagraphLetterToEmptyParagraph" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="3axPPmgaNou" role="1YuTPh">
+      <property role="TrG5h" value="paragraph" />
+      <ref role="1YaFvo" to="zqge:7Vz6ZmoXeMu" resolve="Paragraph" />
+    </node>
+  </node>
+  <node concept="Q5z_Y" id="3axPPmgaRry">
+    <property role="3GE5qa" value="textual" />
+    <property role="TrG5h" value="AddEmptyParagraphLetterToEmptyParagraph" />
+    <node concept="Q5ZZ6" id="3axPPmgaRrz" role="Q6x$H">
+      <node concept="3clFbS" id="3axPPmgaRr$" role="2VODD2">
+        <node concept="3clFbF" id="3axPPmgaRHA" role="3cqZAp">
+          <node concept="2OqwBi" id="3axPPmgaS2d" role="3clFbG">
+            <node concept="1PxgMI" id="3axPPmgaRRP" role="2Oq$k0">
+              <property role="1BlNFB" value="true" />
+              <node concept="chp4Y" id="3axPPmgaRUT" role="3oSUPX">
+                <ref role="cht4Q" to="zqge:7Vz6ZmoXeMu" resolve="Paragraph" />
+              </node>
+              <node concept="Q6c8r" id="3axPPmgaRH_" role="1m5AlR" />
+            </node>
+            <node concept="2qgKlT" id="3axPPmgaScp" role="2OqNvi">
+              <ref role="37wK5l" to="vdrq:1v077Wg2A59" resolve="initialize" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="QznSV" id="3axPPmgaShD" role="QzAvj">
+      <node concept="3clFbS" id="3axPPmgaShE" role="2VODD2">
+        <node concept="3clFbF" id="3axPPmgaSmD" role="3cqZAp">
+          <node concept="Xl_RD" id="3axPPmgaSmC" role="3clFbG">
+            <property role="Xl_RC" value="Initialize Paragraph" />
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 
