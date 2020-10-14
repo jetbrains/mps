@@ -522,7 +522,7 @@
     <property role="9BnSM" value="JetBrains" />
     <property role="1qHB85" value="/MPS_16.png" />
     <property role="TrG5h" value="Model Checker" />
-    <property role="9BnSO" value="202.1" />
+    <property role="9BnSO" value="203.1" />
     <property role="9BnSK" value="2020.3" />
   </node>
   <node concept="tC5Ba" id="1gEYwydCrTu">

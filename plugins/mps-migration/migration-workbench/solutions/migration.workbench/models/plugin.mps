@@ -4870,7 +4870,7 @@
     <property role="9BnSM" value="foo" />
     <property role="9BnSP" value="foo" />
     <property role="1qHB85" value="foo" />
-    <property role="9BnSO" value="foo" />
+    <property role="9BnSO" value="1" />
   </node>
   <node concept="tC5Ba" id="7R6nBIbwjvd">
     <property role="3GE5qa" value="migrationList" />

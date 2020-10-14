@@ -145,6 +145,7 @@
       <concept id="5023285075122009364" name="jetbrains.mps.lang.plugin.structure.IdeaInitializerDescriptor" flags="ng" index="9BnSX">
         <property id="5023285075122009368" name="descripttion" index="9BnSL" />
         <property id="5023285075122009371" name="vendor" index="9BnSM" />
+        <property id="5023285075122009373" name="ideaVersion" index="9BnSO" />
         <property id="5023285075122009372" name="vendorUrl" index="9BnSP" />
         <property id="5023285075122009366" name="id" index="9BnSZ" />
         <property id="8842945788826116904" name="loadModules" index="2PJ1tZ" />
@@ -801,6 +802,7 @@
     <property role="1qHB85" value="/MPS_16.png" />
     <property role="TrG5h" value="Execution Configurations" />
     <property role="2PJ1tZ" value="true" />
+    <property role="9BnSO" value="203.1" />
     <node concept="26PsSl" id="5WZfybTHuxE" role="2Tc6Ou">
       <ref role="26PsSk" to="4dtg:5WZfybTHucy" resolve="Execution Languages" />
     </node>
