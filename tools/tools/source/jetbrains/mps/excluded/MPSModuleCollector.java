@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,19 +19,19 @@ import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.excluded.Utils.MyMacroHelper;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.ProjectPathUtil;
+import jetbrains.mps.project.facets.JavaModuleFacetImpl;
 import jetbrains.mps.project.facets.TestsFacetImpl;
 import jetbrains.mps.project.io.DescriptorIOException;
 import jetbrains.mps.project.io.DescriptorIOFacade;
+import jetbrains.mps.project.structure.modules.DevkitDescriptor;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
-import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.VFSManager;
-import jetbrains.mps.vfs.util.PathUtil;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -98,42 +98,48 @@ class MPSModuleCollector {
         throw new RuntimeException(String.format("Failed to read %s", moduleIFile), ex);
       }
 
-      IFile moduleDir = moduleIFile.getParent();
-      // todo: rewrite this code using ProjectPathUtil
-      IFile classesGenDir = moduleDir.findChild(AbstractModule.CLASSES_GEN);
-      DescriptorEntry de = new DescriptorEntry(moduleDir);
-      if (md instanceof SolutionDescriptor) {
-        SolutionDescriptor sd = ((SolutionDescriptor) md);
-        if (!sd.getCompileInMPS()) {
-          continue;
-        }
+      if (md instanceof DevkitDescriptor) {
+        // don't handle devkits at the moment, and they are not 'compiledInMPS', anyway
+        continue;
+      }
+      if (!md.getCompileInMPS()) {
+        // may face UOE here if some unexpected MPS module descriptor is in the project, though
+        // I doubt myDescriptorIO would let aus get that far
+        continue;
+      }
 
-        String srcPath = ProjectPathUtil.getGeneratorOutputPath(sd);
-        de.addSourcePath(getCanonicalPath(srcPath));
-        final IFile testsOutputPath = TestsFacetImpl.getTestsOutputPath(sd, moduleIFile);
-        if (testsOutputPath != null) {
-          String testPath = testsOutputPath.getPath();
-          de.addSourcePath(getCanonicalPath(testPath));
-        }
-        de.addClassGenPath(classesGenDir);
-        myResult.add(de);
-      } else if (md instanceof LanguageDescriptor) {
+      IFile moduleDir = moduleIFile.getParent();
+      IFile classesGenDir = classGenOrLegacy(md, moduleIFile);
+      DescriptorEntry de = new DescriptorEntry(moduleDir);
+      String srcPath = ProjectPathUtil.getGeneratorOutputPath(md);
+      de.addSourcePath(getCanonicalPath(srcPath));
+      final IFile testsOutputPath = TestsFacetImpl.getTestsOutputPath(md, moduleIFile);
+      if (testsOutputPath != null) {
+        String testPath = testsOutputPath.getPath();
+        de.addSourcePath(getCanonicalPath(testPath));
+      }
+      de.addClassGenPath(classesGenDir);
+      if (md instanceof LanguageDescriptor) {
         LanguageDescriptor ld = ((LanguageDescriptor) md);
-        String srcPath = ProjectPathUtil.getGeneratorOutputPath(ld);
-        de.addSourcePath(getCanonicalPath(srcPath));
-        de.addClassGenPath(classesGenDir);
-        myResult.add(de);
-        // currently same getGeneratorOutputPath used for all generators, so generatorSrcPath will be the same for
-        // all generators in the language. Using only first one for now.
         for (GeneratorDescriptor generator : ld.getGenerators()) {
           String generatorSrcPath = getCanonicalPath(ProjectPathUtil.getGeneratorOutputPath(generator));
           de.addSourcePath(generatorSrcPath);
-          // FIXME need a proper mechanism to discover classesGen folder of a module.
-          // Next code comes from JavaModuleFacetImpl.getClassesGen(), would be great to reuse one rather than copy
-          de.addClassGenPath(myFileSystem.getFile(PathUtil.toSystemIndependent(generatorSrcPath)).getParent().findChild(AbstractModule.CLASSES_GEN));
+          de.addClassGenPath(classGenOrLegacy(generator, moduleIFile));
         }
       }
+      myResult.add(de);
     }
+  }
+
+  private static IFile classGenOrLegacy(ModuleDescriptor md, IFile moduleFile) {
+    IFile classesGenDir = JavaModuleFacetImpl.classGenPath(md, moduleFile);
+    if (classesGenDir != null) {
+      return classesGenDir;
+    }
+    // Generally, contemporary modules shall have path specified in their Java facet,
+    // however, there are still quite few modules around without serialized values (e.g. modules for migration tests),
+    // resort to legacy default (don't want to keep that in JavaModuleFacetImpl.classGenPath as I need this only here
+    return moduleFile.getParent().findChild(AbstractModule.CLASSES_GEN);
   }
 
   private static String getCanonicalPath(String path) {

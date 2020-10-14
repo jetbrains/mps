@@ -20,6 +20,7 @@ import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.MementoWithFS;
 import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
+import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.openapi.FileSystem;
@@ -27,6 +28,7 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.TestOnly;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.Memento;
 
@@ -233,6 +235,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
       // FIXME LEHA
       FileSystem fs = memento instanceof MementoWithFS ? ((MementoWithFS) memento).getFileSystem() : getAbstractModule().getFileSystem();
       boolean hasClassesGenSerialized = false;
+      // JFTR, intentionally pretty much the same logic is below in classGenPath
       for (Memento m : memento.getChildren(CLASSES_KEY)) {
         if (Boolean.parseBoolean(m.get(GENERATED_KEY))) {
           hasClassesGenSerialized = true;
@@ -248,6 +251,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
   }
 
   // fallback for legacy module descriptors that don't keep the setting
+  // guess, with facet persistence in a wild for a year now, could drop this fallback
   private IFile legacyClassesGenLocation(FileSystem fs) {
     if (isAtDeployedModule()) {
       // generally, shall never get here, there's guard outside of this method that handles deployed scenario
@@ -282,5 +286,28 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     // module source dir not being in archive, which is not exactly the same, hence extra check here.
     ModuleDescriptor moduleDescriptor = getAbstractModule().getModuleDescriptor();
     return moduleDescriptor != null && moduleDescriptor.getDeploymentDescriptor() != null;
+  }
+
+  /**
+   * INTERNAL CODE
+   * Use to fill gensources.iml with actual values.
+   * @return null if there's no Java facet in a module descriptor, or facet doesn't specify location for generated classes
+   */
+  @TestOnly
+  @Nullable
+  public static IFile classGenPath(ModuleDescriptor descriptor, IFile moduleDescriptorFile) {
+    final ModuleFacetDescriptor fd = descriptor.getModuleFacetDescriptors().stream().filter(d -> FACET_TYPE.equals(d.getType())).findFirst().orElse(null);
+    if (fd == null) {
+      return null;
+    }
+    // Could use  `new JavaModuleFacetImpl().load(fd.getMemento()).myGeneratedClassesLocation`
+    // but don't want to depend on load() assumptions about memento kind or attached module, rather duplicate its part
+    for (Memento m : fd.getMemento().getChildren(CLASSES_KEY)) {
+      if (Boolean.parseBoolean(m.get(GENERATED_KEY))) {
+        final String v = m.get(PATH_KEY);
+        return v == null ? null : moduleDescriptorFile.getFS().getFile(v);
+      }
+    }
+    return null;
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,6 +42,9 @@ import java.util.Collections;
   }
 
   /*package*/ void addClassGenPath(IFile path) {
+    if (path == null) {
+      throw new IllegalArgumentException(String.format("Module at %d doesn't have location of generated classes specified", myModuleDir));
+    }
     if (!myClassGenPaths.contains(path)) {
       myClassGenPaths.add(path);
     }
