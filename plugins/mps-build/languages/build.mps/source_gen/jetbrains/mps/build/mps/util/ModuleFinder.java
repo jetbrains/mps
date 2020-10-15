@@ -12,7 +12,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.build.behavior.BuildLayout_PathElement__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -42,11 +42,7 @@ public class ModuleFinder {
         }
         return val;
       }
-    }).where(new IWhereFilter<String>() {
-      public boolean accept(String it) {
-        return it != null;
-      }
-    }).sort(new ISelector<String, String>() {
+    }).where(new NotNullWhereFilter<String>()).sort(new ISelector<String, String>() {
       public String select(String it) {
         return it;
       }
