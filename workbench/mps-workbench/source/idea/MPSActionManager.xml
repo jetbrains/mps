@@ -5,22 +5,25 @@
       <add-to-group group-id="ToolbarRunGroup" relative-to-action="RunConfiguration" anchor="before"/>
     </group>
 
-    <group id="MPSWelcomeGettingStartedMenu">
-      <action id="CreateNewProjectAction"
+    <group id="WelcomeScreen.QuickStart.MPS">
+      <action id="WelcomeScreen.CreateNewProject"
               class="jetbrains.mps.workbench.actions.NewMPSProjectAction"
-              text="Create New Project"
+              text="New Project"
               description="You can create a new project with this action"/>
-      <action id="OpenExistingProjectAction"
+      <action id="WelcomeScreen.OpenProject"
               class="jetbrains.mps.workbench.actions.OpenMPSProjectAction"
-              text="Open Project"
+              text="Open"
               description="You can open existing project with this action"/>
-      <action id="MPSTutorial"
-                class="jetbrains.mps.workbench.actions.ShowTutorialAction"
-                text="Show Tutorial"
-                description="You can read a tutorial on how to create a simple language with MPS">
+      <add-to-group group-id="WelcomeScreen.QuickStart" anchor="first"/>
+    </group>
+    <group id="WelcomeScreen.QuickStart.MPS.Tutorial">
+      <action id="WelcomeScreen.Tutorial"
+              class="jetbrains.mps.workbench.actions.ShowTutorialAction"
+              text="Tutorial"
+              description="You can read a tutorial on how to create a simple language with MPS">
         <keyboard-shortcut first-keystroke="alt shift T" keymap="$default"/>
       </action>
-      <add-to-group group-id="WelcomeScreen.QuickStart" anchor="first"/>
+      <add-to-group group-id="WelcomeScreen.QuickStart" anchor="last"/>
     </group>
   </actions>
 </component>

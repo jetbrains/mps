@@ -239,7 +239,7 @@ public class EditorCell_Image extends EditorCell_Basic {
 
         try {
           URL iconUrl = iconFile.getUrl();
-          iconCache.put(fullPath, IconLoader.findIcon(iconUrl, false));
+          iconCache.put(fullPath, IconLoader.findIcon(iconUrl, true /* Should be false. IDEA-252868 workaround until fixed. */));
         } catch (MalformedURLException e) {
           LOG.error("can't convert icon path to url: " + fullPath, e);
         }

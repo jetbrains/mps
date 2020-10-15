@@ -71,9 +71,9 @@
     <mps.PluginComponentContributor application="jetbrains.mps.ide.devkit.actions.Mpsdevkit_ApplicationPlugin" project="jetbrains.mps.ide.devkit.actions.Mpsdevkit_ProjectPlugin" />
   </extensions>
   <actions>
-    <group id="MPSWelcomeDocumentationMenu">
+    <group id="WelcomeScreen.Documentation.MPS">
       <reference id="OnlineDocAction"/>
-      <add-to-group group-id="WelcomeScreen.Documentation" anchor="first"/>
+      <add-to-group group-id="WelcomeScreen.Documentation" anchor="last"/>
     </group>
     <group id="MPSHelpMenu">
       <separator/>

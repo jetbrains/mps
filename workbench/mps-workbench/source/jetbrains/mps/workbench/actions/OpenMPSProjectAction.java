@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,45 +15,45 @@
  */
 package jetbrains.mps.workbench.actions;
 
-import com.intellij.icons.AllIcons.Actions;
+import com.intellij.icons.AllIcons;
 import com.intellij.ide.IdeBundle;
 import com.intellij.ide.impl.ProjectUtil;
-import com.intellij.openapi.actionSystem.ActionPlaces;
+import com.intellij.idea.ActionsBundle;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.fileChooser.ex.FileChooserDialogImpl;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.SystemInfo;
+import com.intellij.openapi.util.registry.Registry;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.workbench.action.BaseAction;
 
-import javax.swing.Icon;
 import java.io.File;
 import java.util.Map;
 
 public class OpenMPSProjectAction extends BaseAction {
-  private static final Icon OPEN_ICON = Actions.Menu_open;
-  private static final Icon OPEN_ICON_WELCOME_SCREEN = Actions.Menu_open;
 
   public OpenMPSProjectAction() {
     setExecuteOutsideCommand(true);
     setDisableOnNoProject(false);
-
-    getTemplatePresentation().setIcon(OPEN_ICON_WELCOME_SCREEN);
   }
 
 
   @Override
   protected void doUpdate(AnActionEvent e, Map<String, Object> _params) {
     super.doUpdate(e, _params);
-
-    if (ActionPlaces.WELCOME_SCREEN.equals(e.getPlace())) {
-      e.getPresentation().setIcon(OPEN_ICON_WELCOME_SCREEN);
-    } else {
-      e.getPresentation().setIcon(OPEN_ICON);
+    Presentation presentation = e.getPresentation();
+    if (Registry.is("use.tabbed.welcome.screen")) {
+      presentation.setIcon(AllIcons.Welcome.Open);
+      presentation.setSelectedIcon(AllIcons.Welcome.OpenSelected);
+      presentation.setText(ActionsBundle.message("action.Tabbed.WelcomeScreen.OpenProject.text"));
+    }
+    else {
+      presentation.setIcon(AllIcons.Actions.Menu_open);
     }
   }
 

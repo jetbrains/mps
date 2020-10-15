@@ -560,7 +560,6 @@ public class PluginLoaderRegistry implements Disposable {
       try {
         Optional<JdomSerializer> jdomSerializer = ServiceLoader.load(JdomSerializer.class, JdomSerializer.class.getClassLoader()).findFirst();
         jdomSerializer.ifPresent(JdomSerializer::clearSerializationCaches);
-        BeanBinding.clearSerializationCaches();
       } catch (Throwable t) {
         LOG.error("Caught exception while clearing IDEA serialization caches", t);
       }

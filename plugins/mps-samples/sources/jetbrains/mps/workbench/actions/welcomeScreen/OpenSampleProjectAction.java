@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,7 +44,7 @@ public class OpenSampleProjectAction extends AnAction {
     final Project currentProject = PlatformDataKeys.PROJECT.getData(e.getDataContext());
 
     final FileChooserDescriptor descriptor = new OpenMPSProjectFileChooserDescriptor(true);
-    descriptor.setTitle("Open Sample Project");
+    descriptor.setTitle("Samples");
 
     VirtualFile userHomeDir = null;
 

@@ -6,7 +6,7 @@
   <description>foo</description>
   <version>foo</version>
   <vendor url="foo">foo</vendor>
-  <idea-version since-build="foo" />
+  <idea-version since-build="1" />
   
   
   <extensions defaultExtensionNs="com.intellij">
