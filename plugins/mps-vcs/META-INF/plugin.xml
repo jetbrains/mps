@@ -101,6 +101,9 @@
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
     <mps.PluginComponentContributor application="jetbrains.mps.vcs.plugin.Vcs_ApplicationPlugin" />
 
+    <registryKey key="vcs.show.root.history.compare.models" defaultValue="true"
+                 description="Show Root History action uses models comparison if true, otherwise the persisted files comparison is used."/>
+
     <obsoleteStorage file="$WORKSPACE_FILE$" isProjectLevel="true">
       <components>
         <component>MPSVcsConfiguration</component>
