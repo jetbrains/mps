@@ -12,6 +12,7 @@ import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.baseLanguage.actions.PrecedenceUtil;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
@@ -35,8 +36,9 @@ public final class BinaryOperation__BehaviorDescriptor extends BaseBHDescriptor 
   public static final SMethod<Boolean> bothShouldBeWidenedTo_id5otPu$gIcHo = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("bothShouldBeWidenedTo").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("5otPu$gIcHo").build(SMethodBuilder.createJavaParameter(Class.class, ""), SMethodBuilder.createJavaParameter(Object.class, ""), SMethodBuilder.createJavaParameter(Object.class, ""));
   public static final SMethod<SNode> getFlippedOperator_id14Lzlw0K236 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getFlippedOperator").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("14Lzlw0K236").build();
   public static final SMethod<Boolean> flipChangesSemantics_id14Lzlw0RrBK = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("flipChangesSemantics").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("14Lzlw0RrBK").build();
+  public static final SMethod<PrecedenceUtil.Precedence> getPrecedenceLevel_id1O90zDONSxM = new SMethodBuilder<PrecedenceUtil.Precedence>(new SJavaCompoundTypeImpl(PrecedenceUtil.Precedence.class)).name("getPrecedenceLevel").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1O90zDONSxM").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPriority_id1653mnvAgo2, setSyntacticallyLeftSideExpression_id1wHCnsn58ZK, setSyntacticallyRightSideExpression_id1wHCnsn58ZY, getSyntacticallyLeftSideExpression_id1wHCnsn590c, getSyntacticallyRightSideExpression_id1wHCnsn590i, isCompileTimeConstant_idi1LOPRp, getCompileTimeConstantValue_idi1LP2xI, calculateCompileTimeConstantValue_id1o8Ht9sN5Hn, bothShouldBeWidenedTo_id5otPu$gIcHo, getFlippedOperator_id14Lzlw0K236, flipChangesSemantics_id14Lzlw0RrBK);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPriority_id1653mnvAgo2, setSyntacticallyLeftSideExpression_id1wHCnsn58ZK, setSyntacticallyRightSideExpression_id1wHCnsn58ZY, getSyntacticallyLeftSideExpression_id1wHCnsn590c, getSyntacticallyRightSideExpression_id1wHCnsn590i, isCompileTimeConstant_idi1LOPRp, getCompileTimeConstantValue_idi1LP2xI, calculateCompileTimeConstantValue_id1o8Ht9sN5Hn, bothShouldBeWidenedTo_id5otPu$gIcHo, getFlippedOperator_id14Lzlw0K236, flipChangesSemantics_id14Lzlw0RrBK, getPrecedenceLevel_id1O90zDONSxM);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -78,6 +80,42 @@ public final class BinaryOperation__BehaviorDescriptor extends BaseBHDescriptor 
   }
   /*package*/ static boolean flipChangesSemantics_id14Lzlw0RrBK(@NotNull SNode __thisNode__) {
     return false;
+  }
+  /*package*/ static PrecedenceUtil.Precedence getPrecedenceLevel_id1O90zDONSxM(@NotNull SAbstractConcept __thisConcept__) {
+    switch (((int) BinaryOperation__BehaviorDescriptor.getPriority_id1653mnvAgo2.invoke(__thisConcept__))) {
+      case 2:
+        // || 
+        return PrecedenceUtil.Precedence.J_13;
+      case 3:
+        // && 
+        return PrecedenceUtil.Precedence.J_12;
+      case 4:
+        // | 
+        return PrecedenceUtil.Precedence.J_11;
+      case 5:
+        // ^ 
+        return PrecedenceUtil.Precedence.J_10;
+      case 6:
+        // & 
+        return PrecedenceUtil.Precedence.J_9;
+      case 7:
+        // ==, != 
+        return PrecedenceUtil.Precedence.J_8;
+      case 8:
+        // <, <=, >, >= 
+        return PrecedenceUtil.Precedence.J_7;
+      case 9:
+        // >>, << 
+        return PrecedenceUtil.Precedence.J_6;
+      case 10:
+        // +, - 
+        return PrecedenceUtil.Precedence.J_5;
+      case 11:
+        // *, /, % 
+        return PrecedenceUtil.Precedence.J_4;
+      default:
+        return PrecedenceUtil.Precedence.DEFAULT;
+    }
   }
 
   /*package*/ BinaryOperation__BehaviorDescriptor() {
@@ -131,6 +169,8 @@ public final class BinaryOperation__BehaviorDescriptor extends BaseBHDescriptor 
         return (T) ((Integer) getPriority_id1653mnvAgo2(concept));
       case 8:
         return (T) ((Boolean) bothShouldBeWidenedTo_id5otPu$gIcHo(concept, (Class) parameters[0], (Object) parameters[1], (Object) parameters[2]));
+      case 11:
+        return (T) ((PrecedenceUtil.Precedence) getPrecedenceLevel_id1O90zDONSxM(concept));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

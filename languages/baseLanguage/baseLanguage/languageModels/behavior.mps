@@ -52,6 +52,7 @@
     <import index="1ka" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking(MPS.Core/)" />
     <import index="ev0w" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking.backend(MPS.Core/)" />
     <import index="vdrq" ref="r:85354f47-14fd-40e6-a7cc-2d1aa842c4cd(jetbrains.mps.lang.text.behavior)" />
+    <import index="tpcz" ref="r:00000000-0000-4000-0000-011c895902bf(jetbrains.mps.baseLanguage.actions)" />
     <import index="356a" ref="r:3b7ed80f-6cfd-45bc-b051-2f66c620dd27(jetbrains.mps.lang.traceable.structure)" implicit="true" />
     <import index="bzl4" ref="r:9d0684e9-039f-4e88-b824-947b454f70f2(jetbrains.mps.baseLanguage.javadoc.behavior)" implicit="true" />
   </imports>
@@ -94,6 +95,7 @@
         <reference id="5299096511375896640" name="superConcept" index="3eA5LN" />
       </concept>
       <concept id="1225194691553" name="jetbrains.mps.lang.behavior.structure.ThisNodeExpression" flags="nn" index="13iPFW" />
+      <concept id="1703835097132541506" name="jetbrains.mps.lang.behavior.structure.ThisConceptExpression" flags="ng" index="1fM9EW" />
     </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
@@ -21675,6 +21677,23 @@
       </node>
       <node concept="10P_77" id="1o8Ht9sESH9" role="3clF45" />
     </node>
+    <node concept="13i0hz" id="1O90zDOSFT7" role="13h7CS">
+      <property role="TrG5h" value="getPrecedenceLevel" />
+      <property role="2Ki8OM" value="true" />
+      <ref role="13i0hy" node="1O90zDONSxM" resolve="getPrecedenceLevel" />
+      <node concept="3Tm1VV" id="1O90zDOSFT8" role="1B3o_S" />
+      <node concept="3clFbS" id="1O90zDOSFTd" role="3clF47">
+        <node concept="3cpWs6" id="1O90zDOSGe4" role="3cqZAp">
+          <node concept="Rm8GO" id="1O90zDOSGe5" role="3cqZAk">
+            <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+            <ref role="Rm8GQ" to="tpcz:w4320ilFSj" resolve="ARRAY_OPERATIONS_AND_METHOD_CALLS" />
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="1O90zDOSFTe" role="3clF45">
+        <ref role="3uigEE" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+      </node>
+    </node>
   </node>
   <node concept="13h7C7" id="hEwIAXp">
     <property role="3GE5qa" value="" />
@@ -31100,6 +31119,23 @@
       </node>
       <node concept="3cqZAl" id="1wHCnsn5Uk5" role="3clF45" />
     </node>
+    <node concept="13i0hz" id="1O90zDOSKK4" role="13h7CS">
+      <property role="TrG5h" value="getPrecedenceLevel" />
+      <property role="2Ki8OM" value="true" />
+      <ref role="13i0hy" node="1O90zDONSxM" resolve="getPrecedenceLevel" />
+      <node concept="3Tm1VV" id="1O90zDOSKK5" role="1B3o_S" />
+      <node concept="3clFbS" id="1O90zDOSKKa" role="3clF47">
+        <node concept="3cpWs6" id="18ik2d67n7R" role="3cqZAp">
+          <node concept="Rm8GO" id="18ik2d67$iz" role="3cqZAk">
+            <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+            <ref role="Rm8GQ" to="tpcz:18ik2d67I29" resolve="DOT_EXPRESSION" />
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="1O90zDOSKKb" role="3clF45">
+        <ref role="3uigEE" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+      </node>
+    </node>
   </node>
   <node concept="13h7C7" id="hEwIRsq">
     <property role="3GE5qa" value="to_remove" />
@@ -39754,6 +39790,23 @@
         </node>
       </node>
     </node>
+    <node concept="13i0hz" id="1O90zDONSxM" role="13h7CS">
+      <property role="13i0it" value="true" />
+      <property role="TrG5h" value="getPrecedenceLevel" />
+      <property role="2Ki8OM" value="true" />
+      <node concept="3Tm1VV" id="1O90zDONSxN" role="1B3o_S" />
+      <node concept="3uibUv" id="1O90zDONSxO" role="3clF45">
+        <ref role="3uigEE" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+      </node>
+      <node concept="3clFbS" id="1O90zDONSxP" role="3clF47">
+        <node concept="3clFbF" id="1O90zDONSLl" role="3cqZAp">
+          <node concept="Rm8GO" id="1O90zDONSX8" role="3clFbG">
+            <ref role="Rm8GQ" to="tpcz:18ik2d67I2p" resolve="DEFAULT" />
+            <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+          </node>
+        </node>
+      </node>
+    </node>
   </node>
   <node concept="13h7C7" id="hEwJgD2">
     <property role="3GE5qa" value="classifiers.refs" />
@@ -43080,6 +43133,23 @@
         </node>
       </node>
       <node concept="3cqZAl" id="6QxdFpZqdv5" role="3clF45" />
+    </node>
+    <node concept="13i0hz" id="1O90zDOT8YU" role="13h7CS">
+      <property role="TrG5h" value="getPrecedenceLevel" />
+      <property role="2Ki8OM" value="true" />
+      <ref role="13i0hy" node="1O90zDONSxM" resolve="getPrecedenceLevel" />
+      <node concept="3Tm1VV" id="1O90zDOT8YV" role="1B3o_S" />
+      <node concept="3clFbS" id="1O90zDOT8Z0" role="3clF47">
+        <node concept="3cpWs6" id="18ik2d67rgw" role="3cqZAp">
+          <node concept="Rm8GO" id="18ik2d67$lj" role="3cqZAk">
+            <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+            <ref role="Rm8GQ" to="tpcz:18ik2d67I2o" resolve="J_15" />
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="1O90zDOT8Z1" role="3clF45">
+        <ref role="3uigEE" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+      </node>
     </node>
   </node>
   <node concept="13h7C7" id="hIdhugb">
@@ -46409,6 +46479,23 @@
         </node>
       </node>
       <node concept="10P_77" id="i26PXAi" role="3clF45" />
+    </node>
+    <node concept="13i0hz" id="1O90zDOT1xb" role="13h7CS">
+      <property role="TrG5h" value="getPrecedenceLevel" />
+      <property role="2Ki8OM" value="true" />
+      <ref role="13i0hy" node="1O90zDONSxM" resolve="getPrecedenceLevel" />
+      <node concept="3Tm1VV" id="1O90zDOT1xc" role="1B3o_S" />
+      <node concept="3clFbS" id="1O90zDOT1xh" role="3clF47">
+        <node concept="3cpWs6" id="18ik2d67neG" role="3cqZAp">
+          <node concept="Rm8GO" id="18ik2d67$iE" role="3cqZAk">
+            <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+            <ref role="Rm8GQ" to="tpcz:18ik2d67I2b" resolve="J_3" />
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="1O90zDOT1xi" role="3clF45">
+        <ref role="3uigEE" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+      </node>
     </node>
   </node>
   <node concept="13h7C7" id="i2fhBf9">
@@ -54557,6 +54644,45 @@
         <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
       </node>
     </node>
+    <node concept="13i0hz" id="1O90zDOSpA8" role="13h7CS">
+      <property role="TrG5h" value="getPrecedenceLevel" />
+      <property role="2Ki8OM" value="true" />
+      <ref role="13i0hy" node="1O90zDONSxM" resolve="getPrecedenceLevel" />
+      <node concept="3Tm1VV" id="1O90zDOSpA9" role="1B3o_S" />
+      <node concept="3clFbS" id="1O90zDOSpAe" role="3clF47">
+        <node concept="3SKdUt" id="w4320ilUev" role="3cqZAp">
+          <node concept="1PaTwC" id="ATZLwXnPch" role="1aUNEU">
+            <node concept="3oM_SD" id="ATZLwXnPci" role="1PaTwD">
+              <property role="3oM_SC" value="TODO:" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPcj" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPck" role="1PaTwD">
+              <property role="3oM_SC" value="sure" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPcl" role="1PaTwD">
+              <property role="3oM_SC" value="concerning" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPcm" role="1PaTwD">
+              <property role="3oM_SC" value="ParenthesizedExpression" />
+            </node>
+            <node concept="3oM_SD" id="ATZLwXnPcn" role="1PaTwD">
+              <property role="3oM_SC" value="priorities.." />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="w4320ilUea" role="3cqZAp">
+          <node concept="Rm8GO" id="w4320ilUep" role="3cqZAk">
+            <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+            <ref role="Rm8GQ" to="tpcz:w4320ilUem" resolve="PARENTHESES" />
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="1O90zDOSpAf" role="3clF45">
+        <ref role="3uigEE" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+      </node>
+    </node>
   </node>
   <node concept="312cEu" id="4c9ExjQny7L">
     <property role="TrG5h" value="ParenthesisUtil" />
@@ -61135,6 +61261,23 @@
       </node>
       <node concept="10P_77" id="55tuCQiwKei" role="3clF45" />
     </node>
+    <node concept="13i0hz" id="1O90zDOSHgs" role="13h7CS">
+      <property role="TrG5h" value="getPrecedenceLevel" />
+      <property role="2Ki8OM" value="true" />
+      <ref role="13i0hy" node="1O90zDONSxM" resolve="getPrecedenceLevel" />
+      <node concept="3Tm1VV" id="1O90zDOSHgt" role="1B3o_S" />
+      <node concept="3clFbS" id="1O90zDOSHgy" role="3clF47">
+        <node concept="3cpWs6" id="1O90zDOSHkW" role="3cqZAp">
+          <node concept="Rm8GO" id="1O90zDOSHkX" role="3cqZAk">
+            <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+            <ref role="Rm8GQ" to="tpcz:w4320ilFSj" resolve="ARRAY_OPERATIONS_AND_METHOD_CALLS" />
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="1O90zDOSHgz" role="3clF45">
+        <ref role="3uigEE" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+      </node>
+    </node>
   </node>
   <node concept="13h7C7" id="SORzhOpB6q">
     <property role="3GE5qa" value="variables" />
@@ -66474,6 +66617,257 @@
         </node>
       </node>
     </node>
+    <node concept="13i0hz" id="1O90zDOSlg6" role="13h7CS">
+      <property role="TrG5h" value="getPrecedenceLevel" />
+      <property role="2Ki8OM" value="true" />
+      <ref role="13i0hy" node="1O90zDONSxM" resolve="getPrecedenceLevel" />
+      <node concept="3Tm1VV" id="1O90zDOSlg7" role="1B3o_S" />
+      <node concept="3clFbS" id="1O90zDOSlgc" role="3clF47">
+        <node concept="3KaCP$" id="7jIRU7c5pJp" role="3cqZAp">
+          <node concept="3KbdKl" id="7jIRU7c5pJq" role="3KbHQx">
+            <node concept="3clFbS" id="7jIRU7c5pJr" role="3Kbo56">
+              <node concept="3SKdUt" id="7jIRU7c5pJs" role="3cqZAp">
+                <node concept="1PaTwC" id="ATZLwXnPbP" role="1aUNEU">
+                  <node concept="3oM_SD" id="ATZLwXnPbQ" role="1PaTwD">
+                    <property role="3oM_SC" value="||" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3cpWs6" id="7jIRU7c5pJu" role="3cqZAp">
+                <node concept="Rm8GO" id="7jIRU7c5pJv" role="3cqZAk">
+                  <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+                  <ref role="Rm8GQ" to="tpcz:18ik2d67I2m" resolve="J_13" />
+                </node>
+              </node>
+            </node>
+            <node concept="3cmrfG" id="5IZw6offkOl" role="3Kbmr1">
+              <property role="3cmrfH" value="2" />
+            </node>
+          </node>
+          <node concept="3KbdKl" id="7jIRU7c5pJw" role="3KbHQx">
+            <node concept="3cmrfG" id="7jIRU7c5pJx" role="3Kbmr1">
+              <property role="3cmrfH" value="3" />
+            </node>
+            <node concept="3clFbS" id="7jIRU7c5pJy" role="3Kbo56">
+              <node concept="3SKdUt" id="7jIRU7c5pJz" role="3cqZAp">
+                <node concept="1PaTwC" id="ATZLwXnPbR" role="1aUNEU">
+                  <node concept="3oM_SD" id="ATZLwXnPbS" role="1PaTwD">
+                    <property role="3oM_SC" value="&amp;&amp;" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3cpWs6" id="7jIRU7c5pJ_" role="3cqZAp">
+                <node concept="Rm8GO" id="7jIRU7c5pJA" role="3cqZAk">
+                  <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+                  <ref role="Rm8GQ" to="tpcz:18ik2d67I2l" resolve="J_12" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3KbdKl" id="7jIRU7c5pJB" role="3KbHQx">
+            <node concept="3clFbS" id="7jIRU7c5pJC" role="3Kbo56">
+              <node concept="3SKdUt" id="7jIRU7c5pJD" role="3cqZAp">
+                <node concept="1PaTwC" id="ATZLwXnPbT" role="1aUNEU">
+                  <node concept="3oM_SD" id="ATZLwXnPbU" role="1PaTwD">
+                    <property role="3oM_SC" value="|" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3cpWs6" id="7jIRU7c5pJF" role="3cqZAp">
+                <node concept="Rm8GO" id="7jIRU7c5pJG" role="3cqZAk">
+                  <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+                  <ref role="Rm8GQ" to="tpcz:18ik2d67I2k" resolve="J_11" />
+                </node>
+              </node>
+            </node>
+            <node concept="3cmrfG" id="5IZw6offkQa" role="3Kbmr1">
+              <property role="3cmrfH" value="4" />
+            </node>
+          </node>
+          <node concept="3KbdKl" id="7jIRU7c5pJH" role="3KbHQx">
+            <node concept="3clFbS" id="7jIRU7c5pJI" role="3Kbo56">
+              <node concept="3SKdUt" id="7jIRU7c5pJJ" role="3cqZAp">
+                <node concept="1PaTwC" id="ATZLwXnPbV" role="1aUNEU">
+                  <node concept="3oM_SD" id="ATZLwXnPbW" role="1PaTwD">
+                    <property role="3oM_SC" value="^" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3cpWs6" id="7jIRU7c5pJL" role="3cqZAp">
+                <node concept="Rm8GO" id="7jIRU7c5pJM" role="3cqZAk">
+                  <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+                  <ref role="Rm8GQ" to="tpcz:18ik2d67I2j" resolve="J_10" />
+                </node>
+              </node>
+            </node>
+            <node concept="3cmrfG" id="5IZw6offkQ3" role="3Kbmr1">
+              <property role="3cmrfH" value="5" />
+            </node>
+          </node>
+          <node concept="3KbdKl" id="7jIRU7c5pJN" role="3KbHQx">
+            <node concept="3clFbS" id="7jIRU7c5pJO" role="3Kbo56">
+              <node concept="3SKdUt" id="7jIRU7c5pJP" role="3cqZAp">
+                <node concept="1PaTwC" id="ATZLwXnPbX" role="1aUNEU">
+                  <node concept="3oM_SD" id="ATZLwXnPbY" role="1PaTwD">
+                    <property role="3oM_SC" value="&amp;" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3cpWs6" id="7jIRU7c5pJR" role="3cqZAp">
+                <node concept="Rm8GO" id="7jIRU7c5pJS" role="3cqZAk">
+                  <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+                  <ref role="Rm8GQ" to="tpcz:18ik2d67I2i" resolve="J_9" />
+                </node>
+              </node>
+            </node>
+            <node concept="3cmrfG" id="5IZw6offkPQ" role="3Kbmr1">
+              <property role="3cmrfH" value="6" />
+            </node>
+          </node>
+          <node concept="3KbdKl" id="7jIRU7c5pJT" role="3KbHQx">
+            <node concept="3cmrfG" id="7jIRU7c5pJU" role="3Kbmr1">
+              <property role="3cmrfH" value="7" />
+            </node>
+            <node concept="3clFbS" id="7jIRU7c5pJV" role="3Kbo56">
+              <node concept="3SKdUt" id="7jIRU7c5pJW" role="3cqZAp">
+                <node concept="1PaTwC" id="ATZLwXnPbZ" role="1aUNEU">
+                  <node concept="3oM_SD" id="ATZLwXnPc0" role="1PaTwD">
+                    <property role="3oM_SC" value="==," />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnPc1" role="1PaTwD">
+                    <property role="3oM_SC" value="!=" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3cpWs6" id="7jIRU7c5pJY" role="3cqZAp">
+                <node concept="Rm8GO" id="7jIRU7c5pJZ" role="3cqZAk">
+                  <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+                  <ref role="Rm8GQ" to="tpcz:18ik2d67I2h" resolve="J_8" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3KbdKl" id="7jIRU7c5pK0" role="3KbHQx">
+            <node concept="3clFbS" id="7jIRU7c5pK1" role="3Kbo56">
+              <node concept="3SKdUt" id="7jIRU7c5pK2" role="3cqZAp">
+                <node concept="1PaTwC" id="ATZLwXnPc2" role="1aUNEU">
+                  <node concept="3oM_SD" id="ATZLwXnPc3" role="1PaTwD">
+                    <property role="3oM_SC" value="&lt;," />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnPc4" role="1PaTwD">
+                    <property role="3oM_SC" value="&lt;=," />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnPc5" role="1PaTwD">
+                    <property role="3oM_SC" value="&gt;," />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnPc6" role="1PaTwD">
+                    <property role="3oM_SC" value="&gt;=" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3cpWs6" id="7jIRU7c5pK4" role="3cqZAp">
+                <node concept="Rm8GO" id="7jIRU7c5pK5" role="3cqZAk">
+                  <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+                  <ref role="Rm8GQ" to="tpcz:18ik2d67I2g" resolve="J_7" />
+                </node>
+              </node>
+            </node>
+            <node concept="3cmrfG" id="5IZw6offkOJ" role="3Kbmr1">
+              <property role="3cmrfH" value="8" />
+            </node>
+          </node>
+          <node concept="3KbdKl" id="7jIRU7c5pK6" role="3KbHQx">
+            <node concept="3clFbS" id="7jIRU7c5pK7" role="3Kbo56">
+              <node concept="3SKdUt" id="7jIRU7c5pK8" role="3cqZAp">
+                <node concept="1PaTwC" id="ATZLwXnPc7" role="1aUNEU">
+                  <node concept="3oM_SD" id="ATZLwXnPc8" role="1PaTwD">
+                    <property role="3oM_SC" value="&gt;&gt;," />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnPc9" role="1PaTwD">
+                    <property role="3oM_SC" value="&lt;&lt;" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3cpWs6" id="7jIRU7c5pKa" role="3cqZAp">
+                <node concept="Rm8GO" id="7jIRU7c5pKb" role="3cqZAk">
+                  <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+                  <ref role="Rm8GQ" to="tpcz:18ik2d67I2f" resolve="J_6" />
+                </node>
+              </node>
+            </node>
+            <node concept="3cmrfG" id="5IZw6offkPJ" role="3Kbmr1">
+              <property role="3cmrfH" value="9" />
+            </node>
+          </node>
+          <node concept="3KbdKl" id="7jIRU7c5pKc" role="3KbHQx">
+            <node concept="3clFbS" id="7jIRU7c5pKd" role="3Kbo56">
+              <node concept="3SKdUt" id="7jIRU7c5pKe" role="3cqZAp">
+                <node concept="1PaTwC" id="ATZLwXnPca" role="1aUNEU">
+                  <node concept="3oM_SD" id="ATZLwXnPcb" role="1PaTwD">
+                    <property role="3oM_SC" value="+," />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnPcc" role="1PaTwD">
+                    <property role="3oM_SC" value="-" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3cpWs6" id="7jIRU7c5pKg" role="3cqZAp">
+                <node concept="Rm8GO" id="7jIRU7c5pKh" role="3cqZAk">
+                  <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+                  <ref role="Rm8GQ" to="tpcz:18ik2d67I2e" resolve="J_5" />
+                </node>
+              </node>
+            </node>
+            <node concept="3cmrfG" id="5IZw6offkOQ" role="3Kbmr1">
+              <property role="3cmrfH" value="10" />
+            </node>
+          </node>
+          <node concept="3clFbS" id="7jIRU7c5pKi" role="3Kb1Dw">
+            <node concept="3cpWs6" id="1O90zDOSmmA" role="3cqZAp">
+              <node concept="Rm8GO" id="1O90zDOSmmC" role="3cqZAk">
+                <ref role="Rm8GQ" to="tpcz:18ik2d67I2p" resolve="DEFAULT" />
+                <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+              </node>
+            </node>
+          </node>
+          <node concept="3KbdKl" id="7jIRU7c5pKj" role="3KbHQx">
+            <node concept="3clFbS" id="7jIRU7c5pKk" role="3Kbo56">
+              <node concept="3SKdUt" id="7jIRU7c5pKl" role="3cqZAp">
+                <node concept="1PaTwC" id="ATZLwXnPcd" role="1aUNEU">
+                  <node concept="3oM_SD" id="ATZLwXnPce" role="1PaTwD">
+                    <property role="3oM_SC" value="*," />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnPcf" role="1PaTwD">
+                    <property role="3oM_SC" value="/," />
+                  </node>
+                  <node concept="3oM_SD" id="ATZLwXnPcg" role="1PaTwD">
+                    <property role="3oM_SC" value="%" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3cpWs6" id="7jIRU7c5pKn" role="3cqZAp">
+                <node concept="Rm8GO" id="7jIRU7c5pKo" role="3cqZAk">
+                  <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+                  <ref role="Rm8GQ" to="tpcz:18ik2d67I2d" resolve="J_4" />
+                </node>
+              </node>
+            </node>
+            <node concept="3cmrfG" id="5IZw6offkPy" role="3Kbmr1">
+              <property role="3cmrfH" value="11" />
+            </node>
+          </node>
+          <node concept="2OqwBi" id="4uue52BGbrH" role="3KbGdf">
+            <node concept="2qgKlT" id="4uue52BGjY_" role="2OqNvi">
+              <ref role="37wK5l" node="1653mnvAgo2" resolve="getPriority" />
+            </node>
+            <node concept="1fM9EW" id="1O90zDOSlFY" role="2Oq$k0" />
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="1O90zDOSlgd" role="3clF45">
+        <ref role="3uigEE" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+      </node>
+    </node>
   </node>
   <node concept="13h7C7" id="1653mnvAmkP">
     <ref role="13h7C2" to="tpee:6KbE6jv0m5S" resolve="LocalInstanceFieldReference" />
@@ -68014,6 +68408,23 @@
       </node>
       <node concept="3Tqbb2" id="1S7XYuYkInk" role="3clF45">
         <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
+      </node>
+    </node>
+    <node concept="13i0hz" id="1O90zDOSv1W" role="13h7CS">
+      <property role="TrG5h" value="getPrecedenceLevel" />
+      <property role="2Ki8OM" value="true" />
+      <ref role="13i0hy" node="1O90zDONSxM" resolve="getPrecedenceLevel" />
+      <node concept="3Tm1VV" id="1O90zDOSv1X" role="1B3o_S" />
+      <node concept="3clFbS" id="1O90zDOSv22" role="3clF47">
+        <node concept="3cpWs6" id="w4320ilG1c" role="3cqZAp">
+          <node concept="Rm8GO" id="w4320ilG1j" role="3cqZAk">
+            <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+            <ref role="Rm8GQ" to="tpcz:w4320ilFSj" resolve="ARRAY_OPERATIONS_AND_METHOD_CALLS" />
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="1O90zDOSv23" role="3clF45">
+        <ref role="3uigEE" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
       </node>
     </node>
   </node>
@@ -71832,6 +72243,23 @@
         <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
       </node>
     </node>
+    <node concept="13i0hz" id="1O90zDOSZBD" role="13h7CS">
+      <property role="TrG5h" value="getPrecedenceLevel" />
+      <property role="2Ki8OM" value="true" />
+      <ref role="13i0hy" node="1O90zDONSxM" resolve="getPrecedenceLevel" />
+      <node concept="3Tm1VV" id="1O90zDOSZBE" role="1B3o_S" />
+      <node concept="3clFbS" id="1O90zDOSZBJ" role="3clF47">
+        <node concept="3cpWs6" id="1O90zDOSZGx" role="3cqZAp">
+          <node concept="Rm8GO" id="1O90zDOSZGy" role="3cqZAk">
+            <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+            <ref role="Rm8GQ" to="tpcz:18ik2d67I2a" resolve="J_2" />
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="1O90zDOSZBK" role="3clF45">
+        <ref role="3uigEE" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+      </node>
+    </node>
   </node>
   <node concept="13h7C7" id="3HU80mxjg7L">
     <property role="3GE5qa" value="ext.property.implementation.mixed" />
@@ -71941,6 +72369,23 @@
       </node>
       <node concept="3Tqbb2" id="1wHCnsmquCG" role="3clF45">
         <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
+      </node>
+    </node>
+    <node concept="13i0hz" id="1O90zDOSXqk" role="13h7CS">
+      <property role="TrG5h" value="getPrecedenceLevel" />
+      <property role="2Ki8OM" value="true" />
+      <ref role="13i0hy" node="1O90zDONSxM" resolve="getPrecedenceLevel" />
+      <node concept="3Tm1VV" id="1O90zDOSXql" role="1B3o_S" />
+      <node concept="3clFbS" id="1O90zDOSXqq" role="3clF47">
+        <node concept="3cpWs6" id="1O90zDOSXvc" role="3cqZAp">
+          <node concept="Rm8GO" id="1O90zDOSXvd" role="3cqZAk">
+            <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+            <ref role="Rm8GQ" to="tpcz:18ik2d67I2a" resolve="J_2" />
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="1O90zDOSXqr" role="3clF45">
+        <ref role="3uigEE" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
       </node>
     </node>
   </node>
@@ -72111,6 +72556,23 @@
         <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
       </node>
     </node>
+    <node concept="13i0hz" id="1O90zDOSNAh" role="13h7CS">
+      <property role="TrG5h" value="getPrecedenceLevel" />
+      <property role="2Ki8OM" value="true" />
+      <ref role="13i0hy" node="1O90zDONSxM" resolve="getPrecedenceLevel" />
+      <node concept="3Tm1VV" id="1O90zDOSNAi" role="1B3o_S" />
+      <node concept="3clFbS" id="1O90zDOSNAn" role="3clF47">
+        <node concept="3cpWs6" id="1O90zDOSNFa" role="3cqZAp">
+          <node concept="Rm8GO" id="1O90zDOSNFb" role="3cqZAk">
+            <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+            <ref role="Rm8GQ" to="tpcz:w4320ilG2k" resolve="POSTFIX_EXPRESSIONS" />
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="1O90zDOSNAo" role="3clF45">
+        <ref role="3uigEE" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+      </node>
+    </node>
   </node>
   <node concept="13h7C7" id="3HU80mwfsuA">
     <property role="3GE5qa" value="ext.property.implementation.custom" />
@@ -72271,6 +72733,23 @@
         <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
       </node>
     </node>
+    <node concept="13i0hz" id="1O90zDOSMTj" role="13h7CS">
+      <property role="TrG5h" value="getPrecedenceLevel" />
+      <property role="2Ki8OM" value="true" />
+      <ref role="13i0hy" node="1O90zDONSxM" resolve="getPrecedenceLevel" />
+      <node concept="3Tm1VV" id="1O90zDOSMTk" role="1B3o_S" />
+      <node concept="3clFbS" id="1O90zDOSMTp" role="3clF47">
+        <node concept="3cpWs6" id="w4320ilG1r" role="3cqZAp">
+          <node concept="Rm8GO" id="w4320ilG2n" role="3cqZAk">
+            <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+            <ref role="Rm8GQ" to="tpcz:w4320ilG2k" resolve="POSTFIX_EXPRESSIONS" />
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="1O90zDOSMTq" role="3clF45">
+        <ref role="3uigEE" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+      </node>
+    </node>
   </node>
   <node concept="13h7C7" id="1cFY5dWZqIW">
     <property role="3GE5qa" value="primitive" />
@@ -72412,6 +72891,23 @@
         </node>
       </node>
       <node concept="3cqZAl" id="5kVsVGfkcqp" role="3clF45" />
+    </node>
+    <node concept="13i0hz" id="1O90zDOT2fL" role="13h7CS">
+      <property role="TrG5h" value="getPrecedenceLevel" />
+      <property role="2Ki8OM" value="true" />
+      <ref role="13i0hy" node="1O90zDONSxM" resolve="getPrecedenceLevel" />
+      <node concept="3Tm1VV" id="1O90zDOT2fM" role="1B3o_S" />
+      <node concept="3clFbS" id="1O90zDOT2fR" role="3clF47">
+        <node concept="3cpWs6" id="1O90zDOT2q7" role="3cqZAp">
+          <node concept="Rm8GO" id="1O90zDOT2q8" role="3cqZAk">
+            <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+            <ref role="Rm8GQ" to="tpcz:18ik2d67I2b" resolve="J_3" />
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="1O90zDOT2fS" role="3clF45">
+        <ref role="3uigEE" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+      </node>
     </node>
   </node>
   <node concept="13h7C7" id="2eNNusnIuEm">
@@ -72913,6 +73409,23 @@
         <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
       </node>
     </node>
+    <node concept="13i0hz" id="1O90zDOT6wR" role="13h7CS">
+      <property role="TrG5h" value="getPrecedenceLevel" />
+      <property role="2Ki8OM" value="true" />
+      <ref role="13i0hy" node="1O90zDONSxM" resolve="getPrecedenceLevel" />
+      <node concept="3Tm1VV" id="1O90zDOT6wS" role="1B3o_S" />
+      <node concept="3clFbS" id="1O90zDOT6wX" role="3clF47">
+        <node concept="3cpWs6" id="18ik2d67reP" role="3cqZAp">
+          <node concept="Rm8GO" id="18ik2d67$lg" role="3cqZAk">
+            <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+            <ref role="Rm8GQ" to="tpcz:18ik2d67I2n" resolve="J_14" />
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="1O90zDOT6wY" role="3clF45">
+        <ref role="3uigEE" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+      </node>
+    </node>
   </node>
   <node concept="13h7C7" id="27wQ$CoTFvb">
     <property role="3GE5qa" value="expressions" />
@@ -73192,6 +73705,23 @@
     </node>
     <node concept="13hLZK" id="27wQ$CoTFvc" role="13h7CW">
       <node concept="3clFbS" id="27wQ$CoTFvd" role="2VODD2" />
+    </node>
+    <node concept="13i0hz" id="1O90zDOSV5I" role="13h7CS">
+      <property role="TrG5h" value="getPrecedenceLevel" />
+      <property role="2Ki8OM" value="true" />
+      <ref role="13i0hy" node="1O90zDONSxM" resolve="getPrecedenceLevel" />
+      <node concept="3Tm1VV" id="1O90zDOSV5J" role="1B3o_S" />
+      <node concept="3clFbS" id="1O90zDOSV5O" role="3clF47">
+        <node concept="3cpWs6" id="1O90zDOSVkU" role="3cqZAp">
+          <node concept="Rm8GO" id="1O90zDOSVkV" role="3cqZAk">
+            <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+            <ref role="Rm8GQ" to="tpcz:18ik2d67I2a" resolve="J_2" />
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="1O90zDOSV5P" role="3clF45">
+        <ref role="3uigEE" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+      </node>
     </node>
   </node>
   <node concept="13h7C7" id="1wHCnsn58Xd">
@@ -73839,6 +74369,23 @@
       </node>
       <node concept="3uibUv" id="1o8Ht9sFhFe" role="3clF45">
         <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
+      </node>
+    </node>
+    <node concept="13i0hz" id="1O90zDOSRQN" role="13h7CS">
+      <property role="TrG5h" value="getPrecedenceLevel" />
+      <property role="2Ki8OM" value="true" />
+      <ref role="13i0hy" node="1O90zDONSxM" resolve="getPrecedenceLevel" />
+      <node concept="3Tm1VV" id="1O90zDOSRQO" role="1B3o_S" />
+      <node concept="3clFbS" id="1O90zDOSRQT" role="3clF47">
+        <node concept="3cpWs6" id="1O90zDOSS6d" role="3cqZAp">
+          <node concept="Rm8GO" id="1O90zDOSS6e" role="3cqZAk">
+            <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+            <ref role="Rm8GQ" to="tpcz:18ik2d67I2a" resolve="J_2" />
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="1O90zDOSRQU" role="3clF45">
+        <ref role="3uigEE" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
       </node>
     </node>
   </node>
@@ -75194,6 +75741,23 @@
     </node>
     <node concept="13hLZK" id="7plk_f0weY1" role="13h7CW">
       <node concept="3clFbS" id="7plk_f0weY2" role="2VODD2" />
+    </node>
+    <node concept="13i0hz" id="1O90zDOT4hk" role="13h7CS">
+      <property role="TrG5h" value="getPrecedenceLevel" />
+      <property role="2Ki8OM" value="true" />
+      <ref role="13i0hy" node="1O90zDONSxM" resolve="getPrecedenceLevel" />
+      <node concept="3Tm1VV" id="1O90zDOT4hl" role="1B3o_S" />
+      <node concept="3clFbS" id="1O90zDOT4hq" role="3clF47">
+        <node concept="3cpWs6" id="18ik2d67qXJ" role="3cqZAp">
+          <node concept="Rm8GO" id="18ik2d67$kL" role="3cqZAk">
+            <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+            <ref role="Rm8GQ" to="tpcz:18ik2d67I2g" resolve="J_7" />
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="1O90zDOT4hr" role="3clF45">
+        <ref role="3uigEE" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+      </node>
     </node>
   </node>
   <node concept="13h7C7" id="6LXz$urfgAH">
@@ -77327,6 +77891,30 @@
     </node>
     <node concept="13hLZK" id="6sjyiRHav80" role="13h7CW">
       <node concept="3clFbS" id="6sjyiRHav81" role="2VODD2" />
+    </node>
+  </node>
+  <node concept="13h7C7" id="1O90zDOSPwt">
+    <property role="3GE5qa" value="expressions" />
+    <ref role="13h7C2" to="tpee:hPH0AXv" resolve="BitwiseNotExpression" />
+    <node concept="13hLZK" id="1O90zDOSPwu" role="13h7CW">
+      <node concept="3clFbS" id="1O90zDOSPwv" role="2VODD2" />
+    </node>
+    <node concept="13i0hz" id="1O90zDOSPwC" role="13h7CS">
+      <property role="TrG5h" value="getPrecedenceLevel" />
+      <property role="2Ki8OM" value="true" />
+      <ref role="13i0hy" node="1O90zDONSxM" resolve="getPrecedenceLevel" />
+      <node concept="3Tm1VV" id="1O90zDOSPwD" role="1B3o_S" />
+      <node concept="3clFbS" id="1O90zDOSPwI" role="3clF47">
+        <node concept="3cpWs6" id="18ik2d67nap" role="3cqZAp">
+          <node concept="Rm8GO" id="18ik2d67$iA" role="3cqZAk">
+            <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+            <ref role="Rm8GQ" to="tpcz:18ik2d67I2a" resolve="J_2" />
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="1O90zDOSPwJ" role="3clF45">
+        <ref role="3uigEE" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+      </node>
     </node>
   </node>
 </model>

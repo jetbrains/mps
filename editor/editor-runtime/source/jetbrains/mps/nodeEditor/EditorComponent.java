@@ -28,6 +28,7 @@ import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.DataProvider;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
@@ -224,6 +225,11 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
                                                                     jetbrains.mps.openapi.editor.EditorComponent {
 
   private static final Logger LOG = Logger.wrap(LogManager.getLogger(EditorComponent.class));
+  /**
+   * @deprecated use {@link MPSActions#EDITOR_POPUP_GROUP} directly
+   */
+  @ScheduledForRemoval(inVersion = "2021.1")
+  @Deprecated(since = "2020.3", forRemoval = true)
   public static final String EDITOR_POPUP_MENU_ACTIONS = MPSActions.EDITOR_POPUP_GROUP;
 
   private static final int SCROLL_GAP = 15;
@@ -2422,8 +2428,12 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   @Deprecated
   @ToRemove(version = 3.5)
   protected final jetbrains.mps.project.Project getCurrentProject() {
-    // there's no need in MPSProject, there's just no key for generic MPS project in MPSCommonDataKeys.
-    final MPSProject p = MPSCommonDataKeys.MPS_PROJECT.getData(DataManager.getInstance().getDataContext(this));
+    // It is safer to get IntelliJ project and convert to MPS one:
+    // There are different DataManager implementations for normal/test mode with several possible DataProvider classes.
+    // Such providers behavior with custom MPSCommonDataKeys can be different, but more stable with platform CommonDataKeys.
+    //
+    // There's no need in a concrete MPSProject project implementation, there's just no method for generic MPS project in ProjectHelper.
+    final MPSProject p = ProjectHelper.fromIdeaProject(CommonDataKeys.PROJECT.getData(DataManager.getInstance().getDataContext(this)));
     return p != null ? p : ProjectHelper.getProject(myRepository);
   }
 

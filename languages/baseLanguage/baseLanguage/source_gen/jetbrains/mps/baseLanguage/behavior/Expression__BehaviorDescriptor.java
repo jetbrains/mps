@@ -11,6 +11,7 @@ import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.baseLanguage.actions.PrecedenceUtil;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
@@ -33,8 +34,9 @@ public final class Expression__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> legalAsStatement_id1653mnvAgqK = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("legalAsStatement").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgqK").build();
   public static final SMethod<Boolean> constant_id1653mnvAgr2 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("constant").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1653mnvAgr2").build();
   public static final SMethod<Boolean> singleValue_id1o8Ht9sES3u = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("singleValue").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1o8Ht9sES3u").build();
+  public static final SMethod<PrecedenceUtil.Precedence> getPrecedenceLevel_id1O90zDONSxM = new SMethodBuilder<PrecedenceUtil.Precedence>(new SJavaCompoundTypeImpl(PrecedenceUtil.Precedence.class)).name("getPrecedenceLevel").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1O90zDONSxM").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableExpectedName_idhEwJgm_, isLValue_idhEwJgmE, isCompileTimeConstant_idi1LOPRp, getCompileTimeConstantValue_idi1LP2xI, isLegalAsStatement_idi26MfYG, lvalue_id1653mnvAgpj, legalAsStatement_id1653mnvAgqK, constant_id1653mnvAgr2, singleValue_id1o8Ht9sES3u);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableExpectedName_idhEwJgm_, isLValue_idhEwJgmE, isCompileTimeConstant_idi1LOPRp, getCompileTimeConstantValue_idi1LP2xI, isLegalAsStatement_idi26MfYG, lvalue_id1653mnvAgpj, legalAsStatement_id1653mnvAgqK, constant_id1653mnvAgr2, singleValue_id1o8Ht9sES3u, getPrecedenceLevel_id1O90zDONSxM);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -68,6 +70,9 @@ public final class Expression__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static boolean singleValue_id1o8Ht9sES3u(@NotNull SAbstractConcept __thisConcept__) {
     return ((boolean) Expression__BehaviorDescriptor.constant_id1653mnvAgr2.invoke(__thisConcept__));
+  }
+  /*package*/ static PrecedenceUtil.Precedence getPrecedenceLevel_id1O90zDONSxM(@NotNull SAbstractConcept __thisConcept__) {
+    return PrecedenceUtil.Precedence.DEFAULT;
   }
 
   /*package*/ Expression__BehaviorDescriptor() {
@@ -115,6 +120,8 @@ public final class Expression__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((Boolean) constant_id1653mnvAgr2(concept));
       case 8:
         return (T) ((Boolean) singleValue_id1o8Ht9sES3u(concept));
+      case 9:
+        return (T) ((PrecedenceUtil.Precedence) getPrecedenceLevel_id1O90zDONSxM(concept));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

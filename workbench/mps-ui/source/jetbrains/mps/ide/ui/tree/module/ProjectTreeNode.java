@@ -15,10 +15,10 @@
  */
 package jetbrains.mps.ide.ui.tree.module;
 
+import com.intellij.configurationStore.SettingsSavingComponentJavaAdapter;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.components.Service;
 import com.intellij.openapi.project.ProjectUtil;
-import com.intellij.openapi.project.ex.ProjectEx.ProjectSaved;
-import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.ide.ui.tree.TextTreeNode;
 import jetbrains.mps.ide.ui.tree.TreeElement;
@@ -28,16 +28,14 @@ import jetbrains.mps.project.Project;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.font.TextAttribute;
+import java.util.HashSet;
 
 public class ProjectTreeNode extends TextTreeNode implements TreeElement {
   private final Project myProject;
-  private MessageBusConnection myConnect;
 
   public ProjectTreeNode(Project project) {
-    super("Project");
-
+    super(project.getName());
     myProject = project;
-
     setIcon(IdeIcons.PROJECT_ICON);
   }
 
@@ -68,22 +66,28 @@ public class ProjectTreeNode extends TextTreeNode implements TreeElement {
   @Override
   protected void onAdd() {
     super.onAdd();
-
-    myConnect = ApplicationManager.getApplication().getMessageBus().connect(this.getTree());
-    myConnect.subscribe(ProjectSaved.TOPIC, new ProjectSaved() {
-      @Override
-      public void duringSave(@NotNull com.intellij.openapi.project.Project project) {
-        ProjectTreeNode.this.doUpdatePresentation();
-      }
-    });
+    ProjectRenameWatcher.getInstance().myProjectTreeNodes.add(this);
   }
 
   @Override
   protected void onRemove() {
+    ProjectRenameWatcher.getInstance().myProjectTreeNodes.remove(this);
     super.onRemove();
+  }
 
-    if (myConnect != null) {
-      myConnect.disconnect();
+  @Service
+  private static final class ProjectRenameWatcher implements SettingsSavingComponentJavaAdapter {
+    final HashSet<ProjectTreeNode> myProjectTreeNodes = new HashSet<>();
+
+    static ProjectRenameWatcher getInstance() {
+      return ApplicationManager.getApplication().getService(ProjectRenameWatcher.class);
+    }
+
+    @Override
+    public void doSave() {
+      for (ProjectTreeNode projectTreeNode : myProjectTreeNodes) {
+        projectTreeNode.doUpdatePresentation();
+      }
     }
   }
 }

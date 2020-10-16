@@ -23,6 +23,7 @@
     <import index="fnmy" ref="r:89c0fb70-0977-4113-a076-5906f9d8630f(jetbrains.mps.baseLanguage.scopes)" />
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
+    <import index="tpcz" ref="r:00000000-0000-4000-0000-011c895902bf(jetbrains.mps.baseLanguage.actions)" />
   </imports>
   <registry>
     <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
@@ -73,6 +74,10 @@
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
+      </concept>
+      <concept id="1083260308424" name="jetbrains.mps.baseLanguage.structure.EnumConstantReference" flags="nn" index="Rm8GO">
+        <reference id="1083260308426" name="enumConstantDeclaration" index="Rm8GQ" />
+        <reference id="1144432896254" name="enumClass" index="1Px2BO" />
       </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
@@ -6098,6 +6103,23 @@
         </node>
       </node>
     </node>
+    <node concept="13i0hz" id="1O90zDOSIS5" role="13h7CS">
+      <property role="TrG5h" value="getPrecedenceLevel" />
+      <property role="2Ki8OM" value="true" />
+      <ref role="13i0hy" to="tpek:1O90zDONSxM" resolve="getPrecedenceLevel" />
+      <node concept="3Tm1VV" id="1O90zDOSIS6" role="1B3o_S" />
+      <node concept="3clFbS" id="1O90zDOSISb" role="3clF47">
+        <node concept="3cpWs6" id="1O90zDOSIW6" role="3cqZAp">
+          <node concept="Rm8GO" id="1O90zDOSIW7" role="3cqZAk">
+            <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+            <ref role="Rm8GQ" to="tpcz:w4320ilFSj" resolve="ARRAY_OPERATIONS_AND_METHOD_CALLS" />
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="1O90zDOSISc" role="3clF45">
+        <ref role="3uigEE" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+      </node>
+    </node>
   </node>
   <node concept="13h7C7" id="1653mnvAORb">
     <ref role="13h7C2" to="tp2q:hrEllC_" resolve="MapElement" />
@@ -6117,6 +6139,23 @@
             <property role="3clFbU" value="true" />
           </node>
         </node>
+      </node>
+    </node>
+    <node concept="13i0hz" id="1O90zDOSIfU" role="13h7CS">
+      <property role="TrG5h" value="getPrecedenceLevel" />
+      <property role="2Ki8OM" value="true" />
+      <ref role="13i0hy" to="tpek:1O90zDONSxM" resolve="getPrecedenceLevel" />
+      <node concept="3Tm1VV" id="1O90zDOSIfV" role="1B3o_S" />
+      <node concept="3clFbS" id="1O90zDOSIg0" role="3clF47">
+        <node concept="3cpWs6" id="w4320ilG1c" role="3cqZAp">
+          <node concept="Rm8GO" id="w4320ilG1j" role="3cqZAk">
+            <ref role="1Px2BO" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
+            <ref role="Rm8GQ" to="tpcz:w4320ilFSj" resolve="ARRAY_OPERATIONS_AND_METHOD_CALLS" />
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="1O90zDOSIg1" role="3clF45">
+        <ref role="3uigEE" to="tpcz:18ik2d67I23" resolve="PrecedenceUtil.Precedence" />
       </node>
     </node>
   </node>
