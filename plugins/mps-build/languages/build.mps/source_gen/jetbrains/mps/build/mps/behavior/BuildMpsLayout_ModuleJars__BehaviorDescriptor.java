@@ -51,11 +51,21 @@ public final class BuildMpsLayout_ModuleJars__BehaviorDescriptor extends BaseBHD
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.module$iRYT), CONCEPTS.BuildMps_Language$RA)) {
       moduleLocation = moduleLocation.substring(0, moduleLocation.length() - ".jar".length());
       int i = 0;
-      for (SNode gm : Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.as(SLinkOperations.getTarget(__thisNode__, LINKS.module$iRYT), CONCEPTS.BuildMps_Language$RA), LINKS.managedGenerators$Hbof), LINKS.generator$98gH))) {
+      SNode asLang = SNodeOperations.as(SLinkOperations.getTarget(__thisNode__, LINKS.module$iRYT), CONCEPTS.BuildMps_Language$RA);
+      // BEWARE here comes some odd peculiarity of build language. We do unpack for dependencies both from the same model (@0 transient) 
+      //   and external models that are not intended for modification (putLayoutRelativePath adds UO to the node), and what helps us here 
+      //   is that managedGenerators are initialized for @0 model and are empty otherwise. This leads to troubles referencing not the  
+      //   first one (default) generator from an external (different model) project - we don't know its i value from outside. 
+      // XXX perhaps, shall introduce an int property into Generator to keep its index? Or just force independent 'module' layout for managed  
+      // generators as well? Still, it's all just workarounds to get this bloody logic fixed, instead, shall use checkpoint models with  
+      // respective values obtained right from the intermediate model rather than introducing values into original model to support this sh!t 
+      for (SNode gm : Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(asLang, LINKS.managedGenerators$Hbof), LINKS.generator$98gH))) {
         // see property macro for module-generator.jar name in reduce_BuildMpsLayout_ModuleJars 
         helper.putLayoutRelativePath(__thisNode__, gm, moduleLocation + ((i > 0 ? String.format("-%d-generator.jar", i) : "-generator.jar")));
         i++;
       }
+      // I assume unpack() is invoked *after* loadMods MC (loadModules script) moves generator modules as language siblings 
+      // load_deps MC with prepare_dependencies script/FetchProcessor goes after loadMods 
     }
   }
   /*package*/ static String location_id6b4RkXS8sT2(@NotNull SNode __thisNode__, DependenciesHelper helper, Object artifactId) {
@@ -63,22 +73,32 @@ public final class BuildMpsLayout_ModuleJars__BehaviorDescriptor extends BaseBHD
       SNode node = (SNode) artifactId;
       String moduleLocation = helper.getLocation(__thisNode__);
 
-      if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildMps_Generator$RQ) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.module$iRYT), CONCEPTS.BuildMps_Language$RA)) {
-        // I have to check this.module.isInstanceOf(BM_Language) not to give  
-        // location for arbitrary standalone generator modules. However, I assume this method  
-        // is invoked for 'module' that told 'exports(BM_Generator)' true, and therefore we've already checked generator is managed  
-        // and is part of this layout module, therefore I don't check isManagedBy() once again. 
-        // XXX utilize values calculated above in unpack() 
-        // try pre-calculated location 
+      // could be generator that is part of a language (aka managed), then it would have layoutRelativePath set in unpack(), above 
+      //   this further falls into 2 options, when language/generator are part of the same model (and get layoutRelativePath set), 
+      //   or when they are part of external project and therefore we have only location for this layout node only. 
+      // also it could be a standalone generator module, or a 'managed' generator which is not part of the Language module. 
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildMps_Generator$RQ)) {
+        // I'd like to check this.module.isInstanceOf(BM_Language) not to give  
+        // location for arbitrary standalone generator modules. However, location() may get invoked with 'this' from transient model 0, 
+        // with artifactId from transient model 6+, and attempt to navigate 'this.module' may end up in disposed model,  
+        // rendering isInstanceOf check false. 
+        // Moreover, model 0 may get disposed during TC/test execution, and not disposed in IDE, leading to hard-to-tackle inconsistency defects.  
+        // If generator comes from the same model, utilize values calculated above in unpack() 
         String layoutRelativePath = helper.getLayoutRelativePath(__thisNode__, node);
         if ((layoutRelativePath != null && layoutRelativePath.length() > 0)) {
           return layoutRelativePath;
         }
-        // fallback to default path calculation, which doesn't respect multiple generators per language, by the way. 
-        // FIXME btw, this is the way regular Generator modules get their path I believe (in unpack, only 'managedGenerators' get 
-        //   layoutRelativePath assigned, while the one in .generator does not. Would be great to get some consistency here. 
-        return moduleLocation.substring(0, moduleLocation.length() - ".jar".length()) + "-generator.jar";
+        // if there's no value, generator is either from external model (expect module from the same model to get UO with path) or is standalone 
+        // for external model case, this.module would point to a non-transient module; if it's a language, we are in layout node to cover language and 
+        // its managed generators. We don't have a mechanism to find out specific index of the managed generator, and default to the first one, which  
+        // is incorrect but tolerable as long as MPS itself doesn't expose managed generators for use in dependent projects. 
+        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.module$iRYT), CONCEPTS.BuildMps_Language$RA)) {
+          // fallback to default path calculation, which doesn't respect multiple generators per language, by the way. 
+          return moduleLocation.substring(0, moduleLocation.length() - ".jar".length()) + "-generator.jar";
+        }
+        // fall-through, for standalone generators with their own 'module' layout, we don't have layoutRelativePath, the one to use is that of layoutNode. 
       }
+
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildMps_AbstractModule$FZ)) {
         return moduleLocation;
       }
