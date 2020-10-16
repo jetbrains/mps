@@ -352,7 +352,6 @@
 
     <projectService serviceInterface="com.intellij.facet.ProjectFacetManager"
                     serviceImplementation="com.intellij.facet.impl.ProjectFacetManagerImpl"/>
-    <applicationService serviceImplementation="com.intellij.facet.impl.invalid.InvalidFacetType"/>
     <projectService serviceInterface="com.intellij.facet.impl.invalid.InvalidFacetManager"
                     serviceImplementation="com.intellij.facet.impl.invalid.InvalidFacetManagerImpl"/>
     <backgroundPostStartupActivity implementation="com.intellij.facet.FacetTypeFeatureCollector"/>
@@ -717,6 +716,7 @@
     <!--
 
     <ideRootPaneNorth implementation="com.intellij.ide.navigationToolbar.NavBarRootPaneExtension"/>
+    <ideRootPaneNorth implementation="com.intellij.ide.navigationToolbar.experimental.NewToolbarRootPaneExtension" order="first"/>
     <navbar implementation="com.intellij.ide.navigationToolbar.DefaultNavBarExtension" id="defaultNavbar" order="last"/>
     <applicationService serviceInterface="com.intellij.ide.navigationToolbar.NavBarModelBuilder"
                         serviceImplementation="com.intellij.ide.navigationToolbar.NavBarModelBuilderImpl"/>
@@ -806,7 +806,7 @@
     <experimentalFeature id="run.targets" percentOfUsers="0">
       <description>Makes available running on remote runtime environments (Java on Docker or SSH server)</description>
     </experimentalFeature>
-    <experimentalFeature id="edit.run.configurations.while.dumb" percentOfUsers="0">
+    <experimentalFeature id="edit.run.configurations.while.dumb" percentOfUsers="100">
       <description>Enables editing of Run Configurations during indexing</description>
     </experimentalFeature>
     <applicationService serviceImplementation="com.intellij.execution.target.TargetEnvironmentsManager"/>
@@ -1408,6 +1408,7 @@
                     testServiceImplementation="com.intellij.build.internal.DummySyncViewManager"/>
     <projectService serviceInterface="com.intellij.build.BuildWorkspaceConfiguration"
                     serviceImplementation="com.intellij.build.BuildWorkspaceConfigurationImpl"/>
+    <projectService serviceImplementation="com.intellij.build.BuildViewProblemsService"/>
 
     <moveLeftRightHandler language=""
                           implementationClass="com.intellij.codeInsight.editorActions.moveLeftRight.DefaultMoveElementLeftRightHandler"
@@ -1518,6 +1519,9 @@
 
     <projectService serviceImplementation="com.intellij.execution.segmentedRunDebugWidget.RunDebugConfigManager"/>
   </extensions>
+  <applicationListeners>
+    <listener class="com.intellij.util.indexing.FileBasedIndexPluginListener" topic="com.intellij.ide.plugins.DynamicPluginListener"/>
+  </applicationListeners>
   <projectListeners>
     <listener class="com.intellij.openapi.fileEditor.impl.FileEditorVirtualFileAppearanceListener"
               topic="com.intellij.ide.ui.VirtualFileAppearanceListener"/>
