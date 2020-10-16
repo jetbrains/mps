@@ -211,9 +211,7 @@ public class ModuleGenerationHolder {
           List<String> olines = fileToStrings(onext);
           List<String> rlines = fileToStrings(rnext);
           Iterable<String> diffLines = ListSequence.fromList(olines).subtract(ListSequence.fromList(rlines)).union(ListSequence.fromList(rlines).subtract(ListSequence.fromList(olines)));
-          if (Sequence.fromIterable(diffLines).isEmpty()) {
-            continue;
-          }
+          // note, empty diffLines not necessarily mean there're no changes, re-arranged lines would go unnoticed by sequence subtraction 
           if (Sequence.fromIterable(diffLines).count() >= 100) {
             ListSequence.fromList(diffs).addElement(String.format("Too many changed lines (%d) in file %s", Sequence.fromIterable(diffLines).count(), onext.getPath()));
             continue;
