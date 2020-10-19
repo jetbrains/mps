@@ -17,14 +17,18 @@ package jetbrains.mps.nodeEditor;
 
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.editor.EditorFactory;
+import com.intellij.ui.ContextHelpLabel;
 import com.intellij.ui.IdeBorderFactory;
 import com.intellij.ui.components.JBRadioButton;
 import com.intellij.ui.components.panels.HorizontalLayout;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.util.ui.JBInsets;
+import com.intellij.util.ui.JBUI;
 import jetbrains.mps.nodeEditor.resources.EditorSettingsBundle;
 
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
@@ -128,7 +132,7 @@ class EditorSettingsPreferencesPage implements Disposable {
     checkboxes.add(myDisableImmediateQuickFix);
 
     myAutoQuickFixCheckBox = new JCheckBox(EditorSettingsBundle.message("checkbox.auto.resolve.refs"));
-    checkboxes.add(myAutoQuickFixCheckBox);
+    checkboxes.add(withTooltip(myAutoQuickFixCheckBox, EditorSettingsBundle.message("checkbox.auto.resolve.refs.tooltip")));
 
     panel.add(checkboxes, getConstraint(mainPanelRowCount++, 0));
 
@@ -145,6 +149,15 @@ class EditorSettingsPreferencesPage implements Disposable {
 
     myEditorSettingsPanel = new JPanel(new BorderLayout());
     myEditorSettingsPanel.add(panel, BorderLayout.NORTH);
+  }
+
+  private static JComponent withTooltip(JComponent component, String tooltip) {
+    JPanel wrapper = new JPanel();
+    wrapper.setLayout(new BoxLayout(wrapper, BoxLayout.LINE_AXIS));
+    wrapper.add(component);
+    wrapper.add(Box.createRigidArea(JBUI.size(5, 0)));
+    wrapper.add(ContextHelpLabel.create(tooltip));
+    return wrapper;
   }
 
   private GridConstraints getConstraint(int row, int column) {
