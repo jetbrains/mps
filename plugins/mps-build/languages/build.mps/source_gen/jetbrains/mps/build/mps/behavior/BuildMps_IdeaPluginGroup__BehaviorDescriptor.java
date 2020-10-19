@@ -15,8 +15,9 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -38,7 +39,8 @@ public final class BuildMps_IdeaPluginGroup__BehaviorDescriptor extends BaseBHDe
     if (object instanceof SNode) {
       SNode node = (SNode) object;
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildMps_AbstractModule$FZ)) {
-        return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.group$qLbS), LINKS.modules$JlQo)).contains(SNodeOperations.cast(node, CONCEPTS.BuildMps_AbstractModule$FZ));
+        List<SNode> groupContent = SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.group$qLbS), LINKS.modules$JlQo);
+        return ListSequence.fromList(groupContent).union(Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(groupContent, CONCEPTS.BuildMps_Language$RA), LINKS.generator$OCOG))).contains(SNodeOperations.cast(node, CONCEPTS.BuildMps_AbstractModule$FZ));
       }
     }
     return ((boolean) BuildMps_IdeaPluginContent__BehaviorDescriptor.exports_id5FtnUVJQES1.invokeSuper(__thisNode__, CONCEPTS.BuildMps_IdeaPluginGroup$_R, object));
@@ -93,9 +95,11 @@ public final class BuildMps_IdeaPluginGroup__BehaviorDescriptor extends BaseBHDe
   private static final class LINKS {
     /*package*/ static final SReferenceLink group$qLbS = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, 0x5b7be37b4deb1202L, "group");
     /*package*/ static final SContainmentLink modules$JlQo = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, 0x14d3fb6fb843ebdeL, "modules");
+    /*package*/ static final SContainmentLink generator$OCOG = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x7fae147806433827L, "generator");
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept BuildMps_Language$RA = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, "jetbrains.mps.build.mps.structure.BuildMps_Language");
     /*package*/ static final SConcept BuildMps_AbstractModule$FZ = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, "jetbrains.mps.build.mps.structure.BuildMps_AbstractModule");
     /*package*/ static final SConcept BuildMps_IdeaPluginGroup$_R = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginGroup");
   }

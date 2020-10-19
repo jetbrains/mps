@@ -5,6 +5,7 @@ package jetbrains.mps.build.mps.typesystem;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.List;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -35,8 +36,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
       return;
     }
 
-    visible.addAll(Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(plugin, LINKS.content$9T6D), CONCEPTS.BuildMps_IdeaPluginModule$rY), LINKS.target$ccfo)).toListSequence());
-    visible.addAll(Sequence.fromIterable(SLinkOperations.collectMany(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(plugin, LINKS.content$9T6D), CONCEPTS.BuildMps_IdeaPluginGroup$_R), LINKS.group$qLbS), LINKS.modules$JlQo)).toListSequence());
+    List<SNode> pc = Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(plugin, LINKS.content$9T6D), CONCEPTS.BuildMps_IdeaPluginModule$rY), LINKS.target$ccfo)).union(Sequence.fromIterable(SLinkOperations.collectMany(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(plugin, LINKS.content$9T6D), CONCEPTS.BuildMps_IdeaPluginGroup$_R), LINKS.group$qLbS), LINKS.modules$JlQo))).toListSequence();
+    visible.addAll(pc);
+    visible.addAll(Sequence.fromIterable(SLinkOperations.collect(SNodeOperations.ofConcept(pc, CONCEPTS.BuildMps_Language$RA), LINKS.generator$OCOG)).toListSequence());
     for (SNode dep : ListSequence.fromList(SLinkOperations.getChildren(plugin, LINKS.dependencies$9_ak))) {
       collectVisible(SLinkOperations.getTarget(dep, LINKS.target$cxAi), seen);
     }
@@ -72,6 +74,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     /*package*/ static final SReferenceLink target$ccfo = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, 0x5b7be37b4de9bbddL, "target");
     /*package*/ static final SReferenceLink group$qLbS = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, 0x5b7be37b4deb1202L, "group");
     /*package*/ static final SContainmentLink modules$JlQo = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, 0x14d3fb6fb843ebdeL, "modules");
+    /*package*/ static final SContainmentLink generator$OCOG = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, 0x7fae147806433827L, "generator");
     /*package*/ static final SReferenceLink target$cxAi = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbd3L, 0x5b7be37b4de9bbfaL, "target");
     /*package*/ static final SContainmentLink dependencies$9_ak = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bb74L, 0x5b7be37b4de9bbd4L, "dependencies");
   }
@@ -79,6 +82,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
   private static final class CONCEPTS {
     /*package*/ static final SConcept BuildMps_IdeaPluginModule$rY = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4de9bbdcL, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginModule");
     /*package*/ static final SConcept BuildMps_IdeaPluginGroup$_R = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4deb1201L, "jetbrains.mps.build.mps.structure.BuildMps_IdeaPluginGroup");
+    /*package*/ static final SConcept BuildMps_Language$RA = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, "jetbrains.mps.build.mps.structure.BuildMps_Language");
     /*package*/ static final SConcept BuildMps_Module$JW = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, "jetbrains.mps.build.mps.structure.BuildMps_Module");
   }
 
