@@ -37,10 +37,12 @@
     <classNode dependClassName="jetbrains.mps.build.generator.util.JavaExternalLibraryHelper" />
     <classNode dependClassName="jetbrains.mps.build.util.Context" />
     <classNode dependClassName="jetbrains.mps.build.util.DependenciesHelper" />
+    <classNode dependClassName="jetbrains.mps.build.util.FDP2" />
     <classNode dependClassName="jetbrains.mps.build.util.FetchDependenciesProcessor" />
     <classNode dependClassName="jetbrains.mps.build.util.FileSetUtil" />
     <classNode dependClassName="jetbrains.mps.build.util.JavaModulesClosure" />
     <classNode dependClassName="jetbrains.mps.build.util.MacroHelper" />
+    <classNode dependClassName="jetbrains.mps.build.util.PathProvider" />
     <classNode dependClassName="jetbrains.mps.build.util.ProjectDependency" />
     <classNode dependClassName="jetbrains.mps.build.util.RelativePathHelper" />
     <classNode dependClassName="jetbrains.mps.generator.impl.GenerationFailureException" />
