@@ -37,6 +37,8 @@ public final class LanguageConceptSwitch {
   public static final int BwfTaskLibrary = 25;
   public static final int BwfTaskLibraryDependency = 26;
   public static final int BwfTaskPart = 27;
+  public static final int BwfValueReference = 28;
+  public static final int BwfValueStatement = 29;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L);
@@ -68,6 +70,8 @@ public final class LanguageConceptSwitch {
     builder.put(0x6565da114724ce92L, BwfTaskLibrary);
     builder.put(0x6565da1147260537L, BwfTaskLibraryDependency);
     builder.put(0x36fb0dc9fd32c1b8L, BwfTaskPart);
+    builder.put(0x7a5e92d76995138eL, BwfValueReference);
+    builder.put(0x7a5e92d769951211L, BwfValueStatement);
     myIndex = builder.seal();
   }
 

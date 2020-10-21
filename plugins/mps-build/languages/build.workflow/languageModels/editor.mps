@@ -38,6 +38,7 @@
         <child id="1140524464360" name="cellLayout" index="2czzBx" />
         <child id="1140524464359" name="emptyCellModel" index="2czzBI" />
       </concept>
+      <concept id="1106270549637" name="jetbrains.mps.lang.editor.structure.CellLayout_Horizontal" flags="nn" index="2iRfu4" />
       <concept id="6089045305654894366" name="jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Default" flags="ng" index="2kknPJ" />
       <concept id="1237303669825" name="jetbrains.mps.lang.editor.structure.CellLayout_Indent" flags="nn" index="l2Vlx" />
       <concept id="1237307900041" name="jetbrains.mps.lang.editor.structure.IndentLayoutIndentStyleClassItem" flags="ln" index="lj46D" />
@@ -2405,6 +2406,41 @@
               </node>
               <node concept="1GpqW3" id="2jHvEnOA1Di" role="3uHU7B" />
             </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="7Du$HtD_hcv">
+    <property role="3GE5qa" value="Tasks" />
+    <ref role="1XX52x" to="8xvf:7Du$HtD_h8h" resolve="BwfValueStatement" />
+    <node concept="3EZMnI" id="7Du$HtD_hcx" role="2wV5jI">
+      <node concept="3F0A7n" id="7Du$HtD_hcC" role="3EZMnx">
+        <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+      </node>
+      <node concept="3F0ifn" id="7Du$HtD_hcI" role="3EZMnx">
+        <property role="3F0ifm" value="=" />
+      </node>
+      <node concept="3F0A7n" id="7Du$HtD_hcV" role="3EZMnx">
+        <ref role="1NtTu8" to="8xvf:7Du$HtD_h8i" resolve="value" />
+      </node>
+      <node concept="2iRfu4" id="7Du$HtD_hc$" role="2iSdaV" />
+    </node>
+  </node>
+  <node concept="24kQdi" id="7Du$HtD_hfv">
+    <property role="3GE5qa" value="Structure" />
+    <ref role="1XX52x" to="8xvf:7Du$HtD_hee" resolve="BwfValueReference" />
+    <node concept="3EZMnI" id="7Du$HtD_hfx" role="2wV5jI">
+      <node concept="3F0ifn" id="7Du$HtD_hfC" role="3EZMnx">
+        <property role="3F0ifm" value="value of " />
+      </node>
+      <node concept="2iRfu4" id="7Du$HtD_hf$" role="2iSdaV" />
+      <node concept="1iCGBv" id="7Du$HtD_hfO" role="3EZMnx">
+        <ref role="1NtTu8" to="8xvf:7Du$HtD_hf3" resolve="path" />
+        <node concept="1sVBvm" id="7Du$HtD_hfQ" role="1sWHZn">
+          <node concept="3F0A7n" id="7Du$HtD_hfY" role="2wV5jI">
+            <property role="1Intyy" value="true" />
+            <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
           </node>
         </node>
       </node>

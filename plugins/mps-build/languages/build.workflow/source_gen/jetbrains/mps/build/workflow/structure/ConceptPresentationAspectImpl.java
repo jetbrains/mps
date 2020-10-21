@@ -37,6 +37,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_BwfTaskLibrary;
   private ConceptPresentation props_BwfTaskLibraryDependency;
   private ConceptPresentation props_BwfTaskPart;
+  private ConceptPresentation props_BwfValueReference;
+  private ConceptPresentation props_BwfValueStatement;
 
   @Override
   @Nullable
@@ -238,6 +240,21 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_BwfTaskPart = cpb.create();
         }
         return props_BwfTaskPart;
+      case LanguageConceptSwitch.BwfValueReference:
+        if (props_BwfValueReference == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x7a5e92d76995138eL, 0x7a5e92d7699513c3L, "path", "", "");
+          props_BwfValueReference = cpb.create();
+        }
+        return props_BwfValueReference;
+      case LanguageConceptSwitch.BwfValueStatement:
+        if (props_BwfValueStatement == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.experimental(true);
+          cpb.presentationByName();
+          props_BwfValueStatement = cpb.create();
+        }
+        return props_BwfValueStatement;
     }
     return null;
   }

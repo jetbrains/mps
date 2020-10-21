@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
-  <dependency className="jetbrains.mps.build.workflow.generator.template.main.Pattern_x583g4_a0a0ud">
-    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
-  </dependency>
   <dependency className="jetbrains.mps.build.workflow.generator.template.main.Pattern_x583g4_a0a0vd">
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
@@ -16,6 +11,11 @@
     <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
   </dependency>
   <dependency className="jetbrains.mps.build.workflow.generator.template.main.Pattern_x583g4_a0a0xd">
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
+  </dependency>
+  <dependency className="jetbrains.mps.build.workflow.generator.template.main.Pattern_x583g4_a0a0yd">
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
@@ -38,10 +38,10 @@
     <classNode dependClassName="jetbrains.mps.build.workflow.behavior.BwfJavaModule__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.build.workflow.behavior.BwfPathDeclaration__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.build.workflow.behavior.BwfProjectPart__BehaviorDescriptor" />
-    <classNode dependClassName="jetbrains.mps.build.workflow.generator.template.main.Pattern_x583g4_a0a0ud" />
     <classNode dependClassName="jetbrains.mps.build.workflow.generator.template.main.Pattern_x583g4_a0a0vd" />
     <classNode dependClassName="jetbrains.mps.build.workflow.generator.template.main.Pattern_x583g4_a0a0wd" />
     <classNode dependClassName="jetbrains.mps.build.workflow.generator.template.main.Pattern_x583g4_a0a0xd" />
+    <classNode dependClassName="jetbrains.mps.build.workflow.generator.template.main.Pattern_x583g4_a0a0yd" />
     <classNode dependClassName="jetbrains.mps.build.workflow.generator.util.CycleHelper" />
     <classNode dependClassName="jetbrains.mps.build.workflow.generator.util.SubTaskOrderHelper" />
     <classNode dependClassName="jetbrains.mps.build.workflow.generator.util.TaskLibrariesHelper" />
