@@ -32,7 +32,8 @@ public class Delete3_Test extends BaseTransformationTest {
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("7035802921536558369", "7035802921536558379");
+      initEditorComponent("8489260469047639772", "8489260469047639790");
+      invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
       invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
     }
   }

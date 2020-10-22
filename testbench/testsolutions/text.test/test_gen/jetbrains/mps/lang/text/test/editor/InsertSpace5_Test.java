@@ -32,7 +32,7 @@ public class InsertSpace5_Test extends BaseTransformationTest {
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("7035802921536479644", "7035802921536479654");
+      initEditorComponent("8489260469047659514", "8489260469047659683");
       typeString(" ");
     }
   }

@@ -2321,23 +2321,24 @@
       <node id="7035802921536558367" at="29,52,30,19" concept="5" />
       <node id="7035802921536558367" at="34,51,35,72" concept="1" />
       <node id="7035802921536558376" at="35,72,36,69" concept="1" />
+      <node id="8489260469047639817" at="36,69,37,69" concept="1" />
       <node id="7035802921536558367" at="15,0,17,0" concept="4" trace="ourParamCache" />
       <node id="7035802921536558367" at="18,0,21,0" concept="0" trace="Delete3_Test#()V" />
       <node id="7035802921536558367" at="29,0,32,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="7035802921536558367" at="22,0,26,0" concept="2" trace="test_Delete3#()V" />
-      <node id="7035802921536558367" at="33,0,38,0" concept="2" trace="testMethodImpl#()V" />
+      <node id="7035802921536558367" at="33,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="7035802921536558367" at="18,25,19,25" />
       <scope id="7035802921536558367" at="23,47,24,36" />
       <scope id="7035802921536558367" at="29,52,30,19" />
-      <scope id="7035802921536558367" at="34,51,36,69" />
       <scope id="7035802921536558367" at="18,0,21,0" />
       <scope id="7035802921536558367" at="29,0,32,0">
         <var name="owner" id="7035802921536558367" />
       </scope>
+      <scope id="7035802921536558367" at="34,51,37,69" />
       <scope id="7035802921536558367" at="22,0,26,0" />
-      <scope id="7035802921536558367" at="33,0,38,0" />
-      <unit id="7035802921536558367" at="27,0,39,0" name="jetbrains.mps.lang.text.test.editor.Delete3_Test$TestBody" />
-      <unit id="7035802921536558367" at="13,0,40,0" name="jetbrains.mps.lang.text.test.editor.Delete3_Test" />
+      <scope id="7035802921536558367" at="33,0,39,0" />
+      <unit id="7035802921536558367" at="27,0,40,0" name="jetbrains.mps.lang.text.test.editor.Delete3_Test$TestBody" />
+      <unit id="7035802921536558367" at="13,0,41,0" name="jetbrains.mps.lang.text.test.editor.Delete3_Test" />
     </file>
   </root>
   <root nodeRef="r:6cf522f1-8af4-45dd-b0f5-721b6e5caab5(jetbrains.mps.lang.text.test.editor@tests)/7035802921536558393">

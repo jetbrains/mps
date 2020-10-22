@@ -32,7 +32,7 @@ public class Delete5_Test extends BaseTransformationTest {
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("7035802921536558446", "7035802921536558458");
+      initEditorComponent("8489260469047653874", "8489260469047653919");
       invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
     }
   }

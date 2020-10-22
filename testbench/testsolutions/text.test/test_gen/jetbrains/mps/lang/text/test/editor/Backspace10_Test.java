@@ -32,7 +32,7 @@ public class Backspace10_Test extends BaseTransformationTest {
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("7035802921536517103", "7035802921536517117");
+      initEditorComponent("8489260469047660108", "8489260469047660333");
       invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
       invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
     }
