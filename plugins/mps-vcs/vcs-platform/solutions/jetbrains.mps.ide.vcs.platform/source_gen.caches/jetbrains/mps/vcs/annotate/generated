@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="c2femf5fv4jep42fow12rc5jzrl0c3s">
-  <files names="AnnotateBackgroundableTask.java:AnnotatedCellMessage.java:AnnotatedCellTooltipRenderer.java:AnnotationAspectSubcolumn.java:AnnotationColumn.java:AnnotationColumnsUtil.java:AnnotationEditorMessage.java:AuthorAspectSubcolumn.java:CommitNumberSubcolumn.java:DateAspectSubcolumn.java:EditorUtils.java:GitCommitTooltipLinkHandler.java:HighlightRevisionSubcolumn.java:NodeAnnotation.java:RevisionAspectSubcolumn.java:RootAnnotation.java:RootAnnotationProvider.java:ShowAffectedFilesAction.java:ShowDiffFromAnnotationAction.java:VcsRevisionRange.java:ViewActionGroup.java" />
+<product version="3" modelHash="4bdzqc541h0kl5k4el7xnbuou107nxm">
+  <files names="AnnotateBackgroundableTask.java:AnnotatedCellMessage.java:AnnotationAspectSubcolumn.java:AnnotationColumn.java:AnnotationColumnsUtil.java:AnnotationEditorMessage.java:AuthorAspectSubcolumn.java:CommitNumberSubcolumn.java:DateAspectSubcolumn.java:EditorUtils.java:HighlightRevisionSubcolumn.java:NodeAnnotation.java:RevisionAspectSubcolumn.java:RootAnnotation.java:RootAnnotationProvider.java:ShowAffectedFilesAction.java:ShowDiffFromAnnotationAction.java:VcsRevisionRange.java:ViewActionGroup.java" />
 </product>
 

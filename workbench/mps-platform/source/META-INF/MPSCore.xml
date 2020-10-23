@@ -121,10 +121,6 @@
                     beanClass="jetbrains.mps.persistence.DataSourceFactoryRuleProvider"/>
     <extensionPoint qualifiedName="com.intellij.mps.PluginComponentContributor"
                     beanClass="jetbrains.mps.plugins.ComponentContributorExtension"/>
-    <extensionPoint qualifiedName="com.intellij.mps.codeInsight.linkHandler"
-                    beanClass="jetbrains.mps.codeInsight.hint.TooltipLinkHandlerEP" dynamic="true">
-      <with attribute="handlerClass" implements="jetbrains.mps.codeInsight.highlighting.TooltipLinkHandler"/>
-    </extensionPoint>
   </extensionPoints>
 
   <extensions defaultExtensionNs="com.intellij">

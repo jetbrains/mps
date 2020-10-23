@@ -141,10 +141,6 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
         if (isInFoldingArea(e)) {
           mouseMovedInFoldingArea(e);
         } else if (isInTextArea(e)) {
-          AbstractLeftColumn leftColumn = getTextColumnByX(e.getX());
-          if(leftColumn!= null){
-            leftColumn.mouseEntered(e);
-          }
           mouseMovedInTextArea(e);
         } else {
           mouseMovedInIconsArea(e);
@@ -176,12 +172,8 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
       @Override
       public void editorUpdated(jetbrains.mps.openapi.editor.EditorComponent editorComponent) {
         assert SwingUtilities.isEventDispatchThread() : "LeftEditorHighlighter$RebuildListener should be called in eventDispatchThread";
-        for (AbstractFoldingAreaPainter painter : myFoldingAreaPainters) {
-          painter.editorRebuilt();
-        }
-        for(AbstractLeftColumn column : myLeftColumns){
-          column.editorRebuilt();
-        }
+        myFoldingAreaPainters.forEach(AbstractFoldingAreaPainter::editorRebuilt);
+        myLeftColumns.forEach(AbstractLeftColumn::editorRebuilt);
         relayout(true);
       }
     });
@@ -232,7 +224,7 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
     return myRightToLeft ? getFoldingAreaWidth() + myIconRenderersWidth : 0;
   }
 
-  public int getFoldingAreaWidth() {
+  private int getFoldingAreaWidth() {
     return myLeftFoldingAreaWidth + FOLDING_LINE_WIDTH + myRightFoldingAreaWidth;
   }
 
@@ -719,13 +711,9 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
     }
   }
 
-  private void mouseExitedTextArea(MouseEvent e){
+  private void mouseExitedTextArea(MouseEvent e) {
     setCursor(null);
-    for(AbstractLeftColumn leftColumn : myLeftColumns){
-      if(leftColumn.isMouseInside()){
-        leftColumn.mouseExited(e);
-      }
-    }
+    myLeftColumns.forEach(AbstractLeftColumn::mouseExited);
   }
 
   private void mouseExitedIconsArea(MouseEvent e) {
@@ -753,22 +741,13 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
     } else {
       setCursor(null);
     }
-    AbstractLeftColumn prevColumnWithMouse = null;
-    for(AbstractLeftColumn leftColumn : myLeftColumns){
-      if(leftColumn.isMouseInside()){
-        prevColumnWithMouse = leftColumn;
-        break;
+    int x = e.getX();
+    for (AbstractLeftColumn leftColumn : myLeftColumns) {
+      if (x >= leftColumn.getX() && x < leftColumn.getX() + leftColumn.getWidth()) {
+        leftColumn.mouseMoved(e);
+      } else {
+        leftColumn.mouseExited();
       }
-    }
-    if(textColumn!=null){
-      if(textColumn != prevColumnWithMouse){
-        textColumn.mouseEntered(e);
-      }else{
-        textColumn.mouseMoved(e);
-      }
-    }
-    if(prevColumnWithMouse!=null && prevColumnWithMouse != textColumn){
-      prevColumnWithMouse.mouseExited(e);
     }
   }
 

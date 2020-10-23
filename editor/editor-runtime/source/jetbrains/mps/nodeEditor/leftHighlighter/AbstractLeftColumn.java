@@ -31,7 +31,6 @@ import java.awt.event.MouseEvent;
 public abstract class AbstractLeftColumn {
   private int myX = 0;
   private LeftEditorHighlighter myLeftEditorHighlighter;
-  private boolean myIsMouseInside = false;
 
   protected AbstractLeftColumn(LeftEditorHighlighter leftEditorHighlighter) {
     myLeftEditorHighlighter = leftEditorHighlighter;
@@ -60,23 +59,10 @@ public abstract class AbstractLeftColumn {
     return null;
   }
 
-  public void setIsMouseInside(boolean isMouseInside) {
-    myIsMouseInside = isMouseInside;
-  }
-
-  public boolean isMouseInside() {
-    return myIsMouseInside;
-  }
-
   public void mouseMoved(MouseEvent e) {
   }
 
-  public void mouseExited(MouseEvent e) {
-    myIsMouseInside = false;
-  }
-
-  public void mouseEntered(MouseEvent e) {
-    myIsMouseInside = true;
+  public void mouseExited() {
   }
 
   public abstract void relayout();

@@ -22,7 +22,6 @@ import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcs.annotate.AnnotationColumn;
-import jetbrains.mps.nodeEditor.RootAnnotation;
 import com.intellij.openapi.progress.ProgressManager;
 import jetbrains.mps.vcs.annotate.AnnotateBackgroundableTask;
 import jetbrains.mps.nodeEditor.leftHighlighter.AbstractLeftColumn;
@@ -122,11 +121,6 @@ public class Annotate_Action extends BaseAction {
       }
     });
     AbstractVcs activeVCS = ProjectLevelVcsManager.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject()).getVcsFor(vf.value);
-    RootAnnotation rootAnnotation = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getRootAnnotation();
-    if (rootAnnotation != null) {
-      AnnotationColumnsUtil.addColumn(event.getData(MPSCommonDataKeys.MPS_PROJECT), activeVCS, event.getData(MPSEditorDataKeys.EDITOR_COMPONENT), event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode(), rootAnnotation);
-      return;
-    }
     String taskName = "Retrieving annotations for " + event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode().getName();
     AnnotationColumnsUtil.setEditorInProgress(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT));
     try {

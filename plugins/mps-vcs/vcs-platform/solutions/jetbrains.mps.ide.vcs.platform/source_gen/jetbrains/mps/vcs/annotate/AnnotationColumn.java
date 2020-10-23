@@ -26,9 +26,7 @@ import java.util.HashMap;
 import com.intellij.openapi.util.Couple;
 import com.intellij.openapi.vcs.history.VcsRevisionNumber;
 import java.awt.Color;
-import jetbrains.mps.nodeEditor.RootAnnotation;
 import jetbrains.mps.openapi.editor.style.StyleRegistry;
-import jetbrains.mps.nodeEditor.EditorTooltipProvider;
 import jetbrains.mps.nodeEditor.leftHighlighter.LeftEditorHighlighter;
 import org.jetbrains.mps.openapi.module.SRepository;
 import com.intellij.openapi.project.Project;
@@ -37,7 +35,10 @@ import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.vcs.diff.ModelChangeSet;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener;
+import com.intellij.openapi.vcs.annotate.FileAnnotation;
+import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
+import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.vcs.actions.AnnotationsSettings;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
@@ -94,17 +95,14 @@ import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.workbench.action.ActionUtils;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
-import com.intellij.codeInsight.hint.TooltipGroup;
-import jetbrains.mps.codeInsight.hint.TooltipRenderer;
-import jetbrains.mps.codeInsight.hint.TooltipController;
-import jetbrains.mps.openapi.editor.cells.CellMessagesUtil;
-import com.intellij.openapi.ui.popup.Balloon;
+import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessageFactory;
 import jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessage;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceAdapter;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/309173295241373953", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 public class AnnotationColumn extends AbstractLeftColumn implements EditorMessageOwner {
+
   private final MPSProject myMpsProject;
   private final AbstractVcs myVcs;
   private final SNode myRoot;
@@ -129,7 +127,6 @@ public class AnnotationColumn extends AbstractLeftColumn implements EditorMessag
   private static final String HIGHLIGHT_CELLS_ACTION_KEY = "annotate.show.highlightcells";
   private static final String ANNOTATE_CELLS_ACTION_KEY = "annotate.show.annotatecells";
   private volatile boolean myLocalChangeIsAdding;
-  private EditorTooltipProvider myEditorTooltipProvider;
 
 
   public AnnotationColumn(LeftEditorHighlighter leftEditorHighlighter, MPSProject mpsProject, AbstractVcs vcs, SNode root, RootAnnotation annotation) {
@@ -177,17 +174,15 @@ public class AnnotationColumn extends AbstractLeftColumn implements EditorMessag
     myMessageBusConnection.subscribe(EditorComponentCreateListener.EDITOR_COMPONENT_CREATION, new MyEditorComponentCreateListener());
   }
 
-
   /**
-   * Copied from AnnotationToggleAction.computeBgColors
+   * Copied from {@link com.intellij.openapi.vcs.actions.AnnotateToggleAction#computeBgColors(FileAnnotation, Editor) }
    */
   private Couple<Map<VcsRevisionNumber, Color>> computeBgColors() {
 
     Map<VcsRevisionNumber, Color> commitOrderColors = new HashMap<VcsRevisionNumber, Color>();
     final Map<VcsRevisionNumber, Color> commitAuthorColors = new HashMap<VcsRevisionNumber, Color>();
 
-    EditorSettings editorSettings = EditorSettings.getInstance();
-    EditorColorsScheme colorsScheme = editorSettings.getColorScheme();
+    EditorColorsScheme colorsScheme = EditorColorsManager.getInstance().getGlobalScheme();
     AnnotationsSettings settings = AnnotationsSettings.getInstance();
     List<Color> authorsColorPalette = settings.getAuthorsColors(colorsScheme);
     List<Color> orderedColorPalette = settings.getOrderedColors(colorsScheme);
@@ -260,7 +255,6 @@ public class AnnotationColumn extends AbstractLeftColumn implements EditorMessag
   public String getName() {
     return "Annotations";
   }
-
 
   @Nullable
   private Color getRevisionColor(VcsFileRevision revision) {
@@ -399,7 +393,6 @@ public class AnnotationColumn extends AbstractLeftColumn implements EditorMessag
     return lines;
   }
 
-
   private static int compareRevisions(VcsFileRevision a, VcsFileRevision b) {
     if ((a == null && b == null) || a == b) {
       return 0;
@@ -532,7 +525,6 @@ public class AnnotationColumn extends AbstractLeftColumn implements EditorMessag
     return tooltipText;
   }
 
-
   @Nullable
   @Override
   public Cursor getCursor(MouseEvent event) {
@@ -550,18 +542,12 @@ public class AnnotationColumn extends AbstractLeftColumn implements EditorMessag
   }
 
   @Override
-  public void mouseExited(MouseEvent e) {
-    super.mouseExited(e);
+  public void mouseExited() {
+    super.mouseExited();
     if (!(cellsAreAnnotated())) {
       unhighlightAllMessages();
     }
     myRevisionUnderMouse = null;
-  }
-
-  @Override
-  public void mouseEntered(MouseEvent e) {
-    super.mouseEntered(e);
-    mouseMoved(e);
   }
 
   private static boolean cellsAreHighlighted() {
@@ -571,7 +557,6 @@ public class AnnotationColumn extends AbstractLeftColumn implements EditorMessag
   private static boolean cellsAreAnnotated() {
     return PropertiesComponent.getInstance().getBoolean(ANNOTATE_CELLS_ACTION_KEY);
   }
-
 
   @Override
   public void mouseMoved(MouseEvent e) {
@@ -597,14 +582,9 @@ public class AnnotationColumn extends AbstractLeftColumn implements EditorMessag
         });
         myHighlightedMessages = null;
       }
-      if (myEditorTooltipProvider != null) {
-        getEditorComponent().removeTooltipProvider(myEditorTooltipProvider);
-        myEditorTooltipProvider = null;
-      }
     }
     getEditorComponent().getHighlightManager().repaintAndRebuildEditorMessages();
   }
-
 
   private Iterable<AnnotationEditorMessage> getLocalMessages() {
     return MapSequence.fromMap(myLocalChangesMessageMap).translate(new ITranslator2<IMapping<ModelChange, List<AnnotationEditorMessage>>, AnnotationEditorMessage>() {
@@ -613,7 +593,6 @@ public class AnnotationColumn extends AbstractLeftColumn implements EditorMessag
       }
     });
   }
-
 
   private Iterable<AnnotationEditorMessage> getCellMessages(final EditorCell cell, final VcsFileRevision revision) {
     List<AnnotationEditorMessage> allMessages = ListSequence.fromList(new ArrayList<AnnotationEditorMessage>());
@@ -630,7 +609,6 @@ public class AnnotationColumn extends AbstractLeftColumn implements EditorMessag
       }
     });
   }
-
 
   /*package*/ void highlightMessagesForRevision(final VcsFileRevision revision) {
 
@@ -685,9 +663,9 @@ public class AnnotationColumn extends AbstractLeftColumn implements EditorMessag
       }
     });
     if (!(oneColor.value)) {
-      return ChangeColors.get(ChangeType.CHANGE);
+      return ChangeColors.getInstance().getDiffColor(ChangeType.CHANGE);
     }
-    return ChangeColors.get(changeType.value);
+    return ChangeColors.getInstance().getDiffColor(changeType.value);
   }
 
   private void showPathsAffectedByRevision(VcsFileRevision revision) {
@@ -712,7 +690,6 @@ public class AnnotationColumn extends AbstractLeftColumn implements EditorMessag
     myMessageBusConnection.disconnect();
   }
 
-
   public void close() {
     getLeftEditorHighlighter().removeLeftColumn(this);
     dispose();
@@ -727,7 +704,7 @@ public class AnnotationColumn extends AbstractLeftColumn implements EditorMessag
   }
 
   private VcsFileRevision getRevisionByY(final int y) {
-    return check_5mnya_a0a401(MapSequence.fromMap(myLineRevisionMap).findFirst(new IWhereFilter<IMapping<Bounds, VcsFileRevision>>() {
+    return check_5mnya_a0a39(MapSequence.fromMap(myLineRevisionMap).findFirst(new IWhereFilter<IMapping<Bounds, VcsFileRevision>>() {
       public boolean accept(IMapping<Bounds, VcsFileRevision> it) {
         return it.key().contains(y);
       }
@@ -839,86 +816,13 @@ public class AnnotationColumn extends AbstractLeftColumn implements EditorMessag
               return it.getChangeDescription();
             }
           }), "\n");
-          ListSequence.fromList(myHighlightedMessages).addElement(new AnnotatedCellMessage(leaf, color, revision, messagesText, AnnotationColumn.this));
+          String tooltipText = messagesText + "\n" + UIUtil.BORDER_LINE + "\n" + getRevisionTooltip(revision);
+          ListSequence.fromList(myHighlightedMessages).addElement(new AnnotatedCellMessage(leaf, color, revision, tooltipText, AnnotationColumn.this));
         }
       });
       getEditorComponent().getHighlightManager().mark(myHighlightedMessages);
-      if (myEditorTooltipProvider != null) {
-        getEditorComponent().removeTooltipProvider(myEditorTooltipProvider);
-      }
-      myEditorTooltipProvider = new MyTooltipProvider();
     }
-    getEditorComponent().addTooltipProvider(myEditorTooltipProvider);
     getEditorComponent().getHighlightManager().repaintAndRebuildEditorMessages();
-  }
-
-  private class MyTooltipProvider implements EditorTooltipProvider {
-
-    private EditorCell myLastCellUnderMouse;
-    private final TooltipGroup myTooltipGroup = new TooltipGroup("ANNOTATION_TOOLTIP_GROUP", 0);
-
-
-    @Override
-    public boolean supressOtherTooltips() {
-      return true;
-    }
-
-    @Override
-    public TooltipRenderer getTooltipRenderer(MouseEvent e) {
-
-      EditorCell cell = getEditorComponent().getCellAtPoint(e.getPoint());
-
-      if (cell != myLastCellUnderMouse) {
-        TooltipController.getInstance().cancelTooltip(myTooltipGroup, null, true);
-        myLastCellUnderMouse = cell;
-      }
-      AnnotatedCellMessage message = getMessage(cell);
-      if (cell == null || message == null) {
-        TooltipController.getInstance().cancelTooltip(myTooltipGroup, null, false);
-        return null;
-      }
-      return new AnnotatedCellTooltipRenderer(message, myMpsProject.getProject(), getRevisionActions(message.getRevision()));
-    }
-
-    private List<AnAction> getRevisionActions(final VcsFileRevision revision) {
-      List<AnAction> actions = ListSequence.fromList(new ArrayList<AnAction>());
-      if (revision != null) {
-        ListSequence.fromList(actions).addElement(new ShowDiffFromAnnotationAction(myRootAnnotation.getPreviousRevision(revision), revision, myRoot, getProject(), myRootAnnotation.getFile().getExtension()));
-        ListSequence.fromList(actions).addElement(new ShowAffectedFilesAction(getProject(), revision, myRootAnnotation.getFile(), myVcs.getKeyInstanceMethod()));
-        ListSequence.fromList(actions).addElement(new AnAction("Copy Revision Number") {
-          @Override
-          public void actionPerformed(AnActionEvent p1) {
-            String asString = revision.getRevisionNumber().asString();
-            CopyPasteManager.getInstance().setContents(new TextTransferable(asString, asString));
-          }
-        });
-      }
-      return actions;
-    }
-
-    private AnnotatedCellMessage getMessage(EditorCell cell) {
-      EditorCell parent = cell;
-      while (parent != null) {
-        if (cell.getBottom() < parent.getBottom() && parent.getSNode() != cell.getSNode()) {
-          return null;
-        }
-        List<AnnotatedCellMessage> messages = CellMessagesUtil.getMessages(parent, AnnotatedCellMessage.class);
-        if (!(messages.isEmpty())) {
-          return messages.get(0);
-        }
-        parent = parent.getParent();
-      }
-      return null;
-    }
-
-    @Override
-    public Balloon.Position getPreferredPosition() {
-      return Balloon.Position.below;
-    }
-    @Override
-    public TooltipGroup getTooltipGroup() {
-      return myTooltipGroup;
-    }
   }
 
   public void invalidateLayout() {
@@ -981,14 +885,13 @@ public class AnnotationColumn extends AbstractLeftColumn implements EditorMessag
       }
     }
   }
-
   private static List<ModelChange> check_5mnya_a0a0a0a3a0a0w0bb(ModelChangeSet checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModelChanges();
     }
     return null;
   }
-  private static VcsFileRevision check_5mnya_a0a401(IMapping<Bounds, VcsFileRevision> checkedDotOperand) {
+  private static VcsFileRevision check_5mnya_a0a39(IMapping<Bounds, VcsFileRevision> checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.value();
     }

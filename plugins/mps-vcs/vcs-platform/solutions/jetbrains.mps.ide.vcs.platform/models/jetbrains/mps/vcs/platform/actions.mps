@@ -10,7 +10,6 @@
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="4" />
     <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="2" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
-    <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="0" />
   </languages>
   <imports>
     <import index="lsse" ref="r:06e50ed3-c893-4772-ba4a-878fc9de01d0(jetbrains.mps.vcs.changesmanager.editor)" />
@@ -3856,71 +3855,6 @@
                   </node>
                 </node>
               </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="5TjNZGqm84s" role="3cqZAp">
-          <node concept="3cpWsn" id="5TjNZGqm84t" role="3cpWs9">
-            <property role="TrG5h" value="rootAnnotation" />
-            <node concept="3uibUv" id="fIMhHtAhWp" role="1tU5fm">
-              <ref role="3uigEE" to="exr9:~RootAnnotation" resolve="RootAnnotation" />
-            </node>
-            <node concept="2OqwBi" id="46NyyHjtvCn" role="33vP2m">
-              <node concept="2OqwBi" id="46NyyHjttLV" role="2Oq$k0">
-                <node concept="2WthIp" id="46NyyHjtt7u" role="2Oq$k0" />
-                <node concept="1DTwFV" id="46NyyHjtuxY" role="2OqNvi">
-                  <ref role="2WH_rO" node="3WCIgQv3c81" resolve="editor" />
-                </node>
-              </node>
-              <node concept="liA8E" id="46NyyHjtxhP" role="2OqNvi">
-                <ref role="37wK5l" to="exr9:~EditorComponent.getRootAnnotation()" resolve="getRootAnnotation" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="5TjNZGqm9bo" role="3cqZAp">
-          <node concept="3clFbS" id="5TjNZGqm9bq" role="3clFbx">
-            <node concept="3clFbF" id="5TjNZGqmaPc" role="3cqZAp">
-              <node concept="2YIFZM" id="5TjNZGqmaQo" role="3clFbG">
-                <ref role="37wK5l" to="bvbc:5TjNZGqkeod" resolve="addColumn" />
-                <ref role="1Pybhc" to="bvbc:7L8MbJlwgBq" resolve="AnnotationColumnsUtil" />
-                <node concept="2OqwBi" id="5TjNZGqmb9C" role="37wK5m">
-                  <node concept="2WthIp" id="5TjNZGqmaRD" role="2Oq$k0" />
-                  <node concept="1DTwFV" id="5TjNZGqmbum" role="2OqNvi">
-                    <ref role="2WH_rO" node="13$TqNLJqBK" resolve="project" />
-                  </node>
-                </node>
-                <node concept="37vLTw" id="5TjNZGqmerL" role="37wK5m">
-                  <ref role="3cqZAo" node="2$2IPPcWWtJ" resolve="activeVCS" />
-                </node>
-                <node concept="2OqwBi" id="5TjNZGqmg4P" role="37wK5m">
-                  <node concept="2WthIp" id="5TjNZGqmfr2" role="2Oq$k0" />
-                  <node concept="1DTwFV" id="5TjNZGqmgOd" role="2OqNvi">
-                    <ref role="2WH_rO" node="3WCIgQv3c81" resolve="editor" />
-                  </node>
-                </node>
-                <node concept="2OqwBi" id="5TjNZGqmmZg" role="37wK5m">
-                  <node concept="2OqwBi" id="5TjNZGqml0K" role="2Oq$k0">
-                    <node concept="2WthIp" id="5TjNZGqmjC6" role="2Oq$k0" />
-                    <node concept="1DTwFV" id="5TjNZGqmlTQ" role="2OqNvi">
-                      <ref role="2WH_rO" node="3WCIgQv3c81" resolve="editor" />
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="5TjNZGqmouz" role="2OqNvi">
-                    <ref role="37wK5l" to="exr9:~EditorComponent.getEditedNode()" resolve="getEditedNode" />
-                  </node>
-                </node>
-                <node concept="37vLTw" id="5TjNZGqmplo" role="37wK5m">
-                  <ref role="3cqZAo" node="5TjNZGqm84t" resolve="rootAnnotation" />
-                </node>
-              </node>
-            </node>
-            <node concept="3cpWs6" id="5TjNZGqmqgt" role="3cqZAp" />
-          </node>
-          <node concept="3y3z36" id="5TjNZGqmaaB" role="3clFbw">
-            <node concept="10Nm6u" id="5TjNZGqmaEE" role="3uHU7w" />
-            <node concept="37vLTw" id="5TjNZGqm9D_" role="3uHU7B">
-              <ref role="3cqZAo" node="5TjNZGqm84t" resolve="rootAnnotation" />
             </node>
           </node>
         </node>

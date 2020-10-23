@@ -25,7 +25,6 @@ import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.editor.colors.EditorColors;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
-import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.colors.FontPreferences;
 import com.intellij.openapi.editor.colors.ModifiableFontPreferences;
 import com.intellij.openapi.editor.colors.impl.AppEditorFontOptions;
@@ -432,10 +431,6 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
       }
     }
     updateCachedValue();
-  }
-
-  public EditorColorsScheme getColorScheme() {
-    return getECM() == null ? null : getECM().getGlobalScheme();
   }
 
   void updateCachedValue() {

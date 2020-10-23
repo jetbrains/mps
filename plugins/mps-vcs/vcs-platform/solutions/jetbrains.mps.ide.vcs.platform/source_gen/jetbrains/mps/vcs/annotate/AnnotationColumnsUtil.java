@@ -11,7 +11,6 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.vcs.AbstractVcs;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.nodeEditor.RootAnnotation;
 import jetbrains.mps.nodeEditor.leftHighlighter.LeftEditorHighlighter;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/8955628568092674522", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
@@ -58,7 +57,6 @@ public class AnnotationColumnsUtil {
         LeftEditorHighlighter leftEditorHighlighter = editor.getLeftEditorHighlighter();
         AnnotationColumn annotationColumn = new AnnotationColumn(leftEditorHighlighter, project, vcs, root, rootAnnotation);
         leftEditorHighlighter.addLeftColumn(annotationColumn);
-        editor.setRootAnnotation(rootAnnotation);
         addAnnotatedColumn(annotationColumn);
       }
     });

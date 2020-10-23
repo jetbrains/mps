@@ -43,15 +43,6 @@ import java.awt.Point;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Collection;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
-import jetbrains.mps.nodeEditor.EditorTooltipProvider;
-import com.intellij.codeInsight.hint.TooltipGroup;
-import jetbrains.mps.codeInsight.hint.TooltipRenderer;
-import jetbrains.mps.codeInsight.hint.TooltipController;
-import jetbrains.mps.codeInsight.hint.LineTooltipRenderer;
-import java.util.Set;
-import com.intellij.util.ui.UIUtil;
-import java.util.HashSet;
-import com.intellij.openapi.ui.popup.Balloon;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
 import jetbrains.mps.openapi.editor.cells.CellAction;
@@ -431,57 +422,6 @@ public class DiffEditor implements EditorMessageOwner {
     return type == CellActionType.FOLD_RECURSIVELY || type == CellActionType.FOLD_ALL || type == CellActionType.FOLD || type == CellActionType.UNFOLD || type == CellActionType.UNFOLD_RECURSIVELY || type == CellActionType.UNFOLD_ALL;
   }
 
-  private class MyTooltipProvider implements EditorTooltipProvider {
-
-    private final boolean myInspector;
-    private final TooltipGroup myTooltipGroup;
-    private List<ColoredStripWithTooltip> myStripsUnderMouse;
-
-    private MyTooltipProvider(boolean inspector) {
-      myInspector = inspector;
-      myTooltipGroup = new TooltipGroup((inspector ? "INSPECTOR_TOOLTIP_GROUP" : "MAIN_TOOLTIP_GROUP"), 0);
-    }
-
-    @Override
-    public TooltipRenderer getTooltipRenderer(MouseEvent e) {
-      List<ColoredStripWithTooltip> strips = getColoredStripsUnderMouse(e, myInspector);
-      if (!(Objects.equals(strips, myStripsUnderMouse))) {
-        TooltipController.getInstance().cancelTooltip(myTooltipGroup, e, true);
-        myStripsUnderMouse = strips;
-      }
-      if (strips.isEmpty()) {
-        TooltipController.getInstance().cancelTooltip(myTooltipGroup, e, false);
-        return null;
-      }
-      LineTooltipRenderer bigRenderer = null;
-      Set<String> tooltips = null;
-      for (ColoredStripWithTooltip strip : strips) {
-        if (strip.tooltipText == null || isEmptyString(strip.tooltipText)) {
-          continue;
-        }
-        String text = strip.tooltipText.replace("\n\n", UIUtil.BORDER_LINE);
-        if (tooltips == null) {
-          tooltips = new HashSet<String>();
-        }
-        if (tooltips.add(text)) {
-          if (bigRenderer == null) {
-            bigRenderer = new LineTooltipRenderer(text, new Object[]{text});
-          } else {
-            bigRenderer.addBelow(text);
-          }
-        }
-      }
-      return bigRenderer;
-    }
-    @Override
-    public Balloon.Position getPreferredPosition() {
-      return Balloon.Position.atRight;
-    }
-    @Override
-    public TooltipGroup getTooltipGroup() {
-      return myTooltipGroup;
-    }
-  }
 
   public class MyInspectorEditorComponent extends InspectorEditorComponent {
 
@@ -490,7 +430,12 @@ public class DiffEditor implements EditorMessageOwner {
       addAdditionalPainter(new MyEditorComponentPainter(true));
       LeftEditorHighlighter leftHighlighter = getLeftEditorHighlighter();
       leftHighlighter.addBackgroundPainter(new MyLeftHighlighterPainter(leftHighlighter, true));
-      addTooltipProvider(new MyTooltipProvider(true));
+    }
+
+    @Override
+    public String getToolTipText(MouseEvent event) {
+      String text = super.getToolTipText(event);
+      return (text != null ? text : getToolTipTextFromColoredStrips(getColoredStripsUnderMouse(event, true)));
     }
 
     @Override
@@ -518,12 +463,17 @@ public class DiffEditor implements EditorMessageOwner {
       addAdditionalPainter(new MyEditorComponentPainter(false));
       LeftEditorHighlighter leftHighlighter = getLeftEditorHighlighter();
       leftHighlighter.addBackgroundPainter(new MyLeftHighlighterPainter(leftHighlighter, false));
-      addTooltipProvider(new MyTooltipProvider(false));
     }
 
     @Override
     protected JScrollPane createScrollPane() {
       return ScrollPaneFactory.createScrollPane(null, true);
+    }
+
+    @Override
+    public String getToolTipText(MouseEvent event) {
+      String text = super.getToolTipText(event);
+      return (text != null ? text : getToolTipTextFromColoredStrips(getColoredStripsUnderMouse(event, false)));
     }
 
     @Override
@@ -555,9 +505,6 @@ public class DiffEditor implements EditorMessageOwner {
     public MPSNodeVirtualFile getVirtualFile() {
       return myCommandContext.getContextVirtualFile();
     }
-  }
-  private static boolean isEmptyString(String str) {
-    return str == null || str.isEmpty();
   }
 
   private static final class CONCEPTS {

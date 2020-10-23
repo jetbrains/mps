@@ -30,7 +30,7 @@ import java.util.NavigableSet;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/5611602621953836093", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
-public class RootAnnotation implements EditorMessageOwner, jetbrains.mps.nodeEditor.RootAnnotation {
+public class RootAnnotation implements EditorMessageOwner {
 
   private AbstractVcs myVcs;
   private VirtualFile myFile;
@@ -76,7 +76,6 @@ public class RootAnnotation implements EditorMessageOwner, jetbrains.mps.nodeEdi
     nodeAnnotation.addMessage(annotationMessage);
   }
 
-  @Override
   public boolean hasData() {
     return ListSequence.fromList(myNodeAnnotations).findFirst(new IWhereFilter<NodeAnnotation>() {
       public boolean accept(NodeAnnotation it) {
@@ -85,7 +84,6 @@ public class RootAnnotation implements EditorMessageOwner, jetbrains.mps.nodeEdi
     }) != null;
   }
 
-  @Override
   public List<AnnotationEditorMessage> getMessages() {
     return ListSequence.fromList(myNodeAnnotations).translate(new ITranslator2<NodeAnnotation, AnnotationEditorMessage>() {
       public Iterable<AnnotationEditorMessage> translate(NodeAnnotation it) {
@@ -94,7 +92,6 @@ public class RootAnnotation implements EditorMessageOwner, jetbrains.mps.nodeEdi
     }).toListSequence();
   }
 
-  @Override
   public VirtualFile getFile() {
     return myFile;
   }
@@ -103,12 +100,10 @@ public class RootAnnotation implements EditorMessageOwner, jetbrains.mps.nodeEdi
     return myVcs instanceof GitVcs;
   }
 
-  @Override
   public VcsFileRevision getPreviousRevision(VcsFileRevision revision) {
     return MapSequence.fromMap(myRevisionToPrevious).get(revision);
   }
 
-  @Override
   public Map<VcsRevisionNumber, String> getAuthors() {
     if (myAuthors == null) {
       myAuthors = MapSequence.fromMap(new HashMap<VcsRevisionNumber, String>());
@@ -131,7 +126,6 @@ public class RootAnnotation implements EditorMessageOwner, jetbrains.mps.nodeEdi
   /**
    * Copied from FileAnnotation and GitFileAnnotation
    */
-  @Override
   public List<List<VcsRevisionNumber>> getOrderedRevisionNumbers() {
     if (myOrderedRevisionNumbers == null) {
       if (isGit()) {
@@ -180,7 +174,6 @@ public class RootAnnotation implements EditorMessageOwner, jetbrains.mps.nodeEdi
     return result;
   }
 
-  @Override
   public List<VcsFileRevision> getRevisions() {
     if (myRevisions == null) {
       myRevisions = ListSequence.fromList(getMessages()).select(new ISelector<AnnotationEditorMessage, VcsFileRevision>() {

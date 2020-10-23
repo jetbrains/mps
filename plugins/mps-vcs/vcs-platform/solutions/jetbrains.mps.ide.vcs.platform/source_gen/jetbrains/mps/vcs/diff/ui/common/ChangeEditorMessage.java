@@ -15,7 +15,6 @@ import java.awt.Color;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
-import jetbrains.mps.errors.messageTargets.IdMessageTarget;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
 import java.awt.Graphics;
@@ -55,7 +54,7 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
   private ConflictChecker myConflictsChecker;
   private boolean myHighlighted;
   protected ChangeEditorMessage(SNode node, MessageTarget target, EditorMessageOwner owner, ModelChange change, ConflictChecker conflictChecker, boolean highlighted) {
-    super(node, MessageStatus.OK, target, null, "", owner);
+    super(node, MessageStatus.OK, target, null, change.getDescription(), owner);
     myChange = change;
     myConflictsChecker = conflictChecker;
     myHighlighted = highlighted;
@@ -90,7 +89,7 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
     if (cell == null) {
       return false;
     }
-    if (myMessageTarget instanceof NodeMessageTarget || myMessageTarget instanceof IdMessageTarget) {
+    if (myMessageTarget instanceof NodeMessageTarget) {
       return getNode() == cell.getSNode();
     } else {
       // cell with name of a node is often used as an 'indicative' cell for changes otherwise not visible in the editor 
@@ -134,7 +133,7 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
 
   protected void paintIndirectCell(Graphics graphics, EditorComponent editor, EditorCell cell) {
     Rectangle bounds = getIndirectCellRectangle(editor, cell);
-    graphics.setColor(ChangeColors.get((isConflicted() ? ChangeType.CONFLICTED : ChangeType.CHANGE)));
+    graphics.setColor(ChangeColors.getInstance().getDiffColor((isConflicted() ? ChangeType.CONFLICTED : ChangeType.CHANGE)));
     graphics.drawRect(bounds.x + 1, bounds.y + 1, bounds.width - 2, bounds.height - 2);
   }
 
