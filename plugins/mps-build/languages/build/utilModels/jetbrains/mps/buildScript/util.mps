@@ -14709,12 +14709,28 @@
               </node>
             </node>
             <node concept="3cpWs6" id="5zIo$W4pZzG" role="3cqZAp">
-              <node concept="2OqwBi" id="5zIo$W4pZ$3" role="3cqZAk">
-                <node concept="liA8E" id="5zIo$W4pZ$9" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~StringBuilder.toString()" resolve="toString" />
+              <node concept="3K4zz7" id="2Wk1xJ4ovjV" role="3cqZAk">
+                <node concept="10Nm6u" id="2Wk1xJ4ovBh" role="3K4E3e" />
+                <node concept="3clFbC" id="2Wk1xJ4ou7E" role="3K4Cdx">
+                  <node concept="3cmrfG" id="2Wk1xJ4ov5J" role="3uHU7w">
+                    <property role="3cmrfH" value="0" />
+                  </node>
+                  <node concept="2OqwBi" id="2Wk1xJ4orwd" role="3uHU7B">
+                    <node concept="37vLTw" id="2Wk1xJ4oqYm" role="2Oq$k0">
+                      <ref role="3cqZAo" node="5zIo$W4pZuX" resolve="sb" />
+                    </node>
+                    <node concept="liA8E" id="2Wk1xJ4os9Y" role="2OqNvi">
+                      <ref role="37wK5l" to="wyt6:~AbstractStringBuilder.length()" resolve="length" />
+                    </node>
+                  </node>
                 </node>
-                <node concept="37vLTw" id="3GM_nagTwQH" role="2Oq$k0">
-                  <ref role="3cqZAo" node="5zIo$W4pZuX" resolve="sb" />
+                <node concept="2OqwBi" id="5zIo$W4pZ$3" role="3K4GZi">
+                  <node concept="liA8E" id="5zIo$W4pZ$9" role="2OqNvi">
+                    <ref role="37wK5l" to="wyt6:~StringBuilder.toString()" resolve="toString" />
+                  </node>
+                  <node concept="37vLTw" id="3GM_nagTwQH" role="2Oq$k0">
+                    <ref role="3cqZAo" node="5zIo$W4pZuX" resolve="sb" />
+                  </node>
                 </node>
               </node>
             </node>

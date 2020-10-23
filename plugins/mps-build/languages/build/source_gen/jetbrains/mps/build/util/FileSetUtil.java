@@ -95,7 +95,7 @@ public class FileSetUtil {
         }
         sb.append(folderName);
       }
-      return sb.toString();
+      return (sb.length() == 0 ? null : sb.toString());
     }
     return null;
   }

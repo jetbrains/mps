@@ -35,6 +35,8 @@ import jetbrains.mps.build.behavior.BuildProject__BehaviorDescriptor;
 import jetbrains.mps.build.util.RelativePathHelper;
 import jetbrains.mps.build.util.MacroHelper;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
+import jetbrains.mps.util.Pair;
+import jetbrains.mps.build.behavior.BuildLayout_ContainerAcceptingFileSet__BehaviorDescriptor;
 import jetbrains.mps.build.util.DependenciesHelper;
 import jetbrains.mps.build.behavior.BuildLayout_PathElement__BehaviorDescriptor;
 import jetbrains.mps.build.behavior.BuildSource_SingleFile__BehaviorDescriptor;
@@ -43,7 +45,6 @@ import jetbrains.mps.build.behavior.BuildCompositePath__BehaviorDescriptor;
 import jetbrains.mps.build.behavior.BuildSourceArchiveRelativePath__BehaviorDescriptor;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.generator.template.IfMacroContext;
-import jetbrains.mps.build.behavior.BuildLayout_ContainerAcceptingFileSet__BehaviorDescriptor;
 import jetbrains.mps.build.util.JavaModulesClosure;
 import jetbrains.mps.build.util.FDP2;
 import java.util.List;
@@ -70,7 +71,6 @@ import jetbrains.mps.build.util.FetchDependenciesProcessor;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import jetbrains.mps.build.util.PathProvider;
 import jetbrains.mps.build.util.ProjectDependency;
-import jetbrains.mps.util.Pair;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.generator.impl.query.ReductionRuleCondition;
 import java.util.HashMap;
@@ -682,40 +682,41 @@ public class QueriesGenerated extends QueryProviderBase {
     return (String) BuildSourcePath__BehaviorDescriptor.getAntPath_id7ro1ZztyOh5.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.dir$e6r$), Context.defaultContext(_context));
   }
   public static Object propertyMacro_GetValue_2_18(final PropertyMacroContext _context) {
-    return ((Tuples._4<String, String, String, String>) _context.getVariable("var:archive"))._1();
+    return ((String) _context.getVariable("_pathPrefix"));
   }
   public static Object propertyMacro_GetValue_2_19(final PropertyMacroContext _context) {
-    return ((Tuples._4<String, String, String, String>) _context.getVariable("var:archive"))._3();
+    return ((Pair<String, String>) _context.getVariable("_filemode")).o2;
   }
   public static Object propertyMacro_GetValue_2_20(final PropertyMacroContext _context) {
-    return ((Tuples._4<String, String, String, String>) _context.getVariable("var:archive"))._2();
+    return ((Pair<String, String>) _context.getVariable("_filemode")).o1;
   }
   public static Object propertyMacro_GetValue_2_21(final PropertyMacroContext _context) {
-    return ((Tuples._4<String, String, String, String>) _context.getVariable("var:archive"))._0();
+    // it's sufficient to use <fileset> unless we specify any extended attributes 
+    return (((String) _context.getVariable("_pathPrefix")) == null && ((Pair<String, String>) _context.getVariable("_filemode")) == null ? "fileset" : BuildLayout_ContainerAcceptingFileSet__BehaviorDescriptor.getFileSetExtension_id5zIo$W4pFTK.invoke(((SNode) _context.getVariable("_archive"))));
   }
   public static Object propertyMacro_GetValue_2_22(final PropertyMacroContext _context) {
     return (String) BuildSourcePath__BehaviorDescriptor.getAntPath_id7ro1ZztyOh5.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.path$dYr6), Context.defaultContext(_context));
   }
   public static Object propertyMacro_GetValue_2_23(final PropertyMacroContext _context) {
-    return ((Tuples._3<String, String, String>) _context.getVariable("var:archive"))._1();
+    return ((String) _context.getVariable("_pathPrefix"));
   }
   public static Object propertyMacro_GetValue_2_24(final PropertyMacroContext _context) {
-    return ((Tuples._3<String, String, String>) _context.getVariable("var:archive"))._2();
+    return ((Pair<String, String>) _context.getVariable("_filemode")).o2;
   }
   public static Object propertyMacro_GetValue_2_25(final PropertyMacroContext _context) {
-    return ((Tuples._3<String, String, String>) _context.getVariable("var:archive"))._0();
+    return (((String) _context.getVariable("_pathPrefix")) == null && (((Pair<String, String>) _context.getVariable("_filemode")) == null || ((Pair<String, String>) _context.getVariable("_filemode")).o2 == null) ? "fileset" : BuildLayout_ContainerAcceptingFileSet__BehaviorDescriptor.getFileSetExtension_id5zIo$W4pFTK.invoke(((SNode) _context.getVariable("_archive"))));
   }
   public static Object propertyMacro_GetValue_2_26(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.path$bazz);
   }
   public static Object propertyMacro_GetValue_2_27(final PropertyMacroContext _context) {
-    return ((Tuples._3<String, String, String>) _context.getVariable("var:archive"))._1();
+    return ((String) _context.getVariable("_pathPrefix"));
   }
   public static Object propertyMacro_GetValue_2_28(final PropertyMacroContext _context) {
-    return ((Tuples._3<String, String, String>) _context.getVariable("var:archive"))._2();
+    return ((Pair<String, String>) _context.getVariable("_filemode")).o2;
   }
   public static Object propertyMacro_GetValue_2_29(final PropertyMacroContext _context) {
-    return ((Tuples._3<String, String, String>) _context.getVariable("var:archive"))._0();
+    return (((String) _context.getVariable("_pathPrefix")) == null && (((Pair<String, String>) _context.getVariable("_filemode")) == null || ((Pair<String, String>) _context.getVariable("_filemode")).o2 == null) ? "fileset" : BuildLayout_ContainerAcceptingFileSet__BehaviorDescriptor.getFileSetExtension_id5zIo$W4pFTK.invoke(((SNode) _context.getVariable("_archive"))));
   }
   public static Object propertyMacro_GetValue_6_0(final PropertyMacroContext _context) {
     SNode project = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BuildProject$ae, false, false);
@@ -1318,25 +1319,25 @@ public class QueriesGenerated extends QueryProviderBase {
     return ((Tuples._4<String, String, String, String>) _context.getVariable("var:archive"))._2() != null;
   }
   public static boolean ifMacro_Condition_2_10(final IfMacroContext _context) {
-    return isNotEmptyString(((Tuples._4<String, String, String, String>) _context.getVariable("var:archive"))._1());
+    return ((String) _context.getVariable("_pathPrefix")) != null;
   }
   public static boolean ifMacro_Condition_2_11(final IfMacroContext _context) {
-    return ((Tuples._4<String, String, String, String>) _context.getVariable("var:archive"))._3() != null;
+    return ((Pair<String, String>) _context.getVariable("_filemode")) != null && ((Pair<String, String>) _context.getVariable("_filemode")).o2 != null;
   }
   public static boolean ifMacro_Condition_2_12(final IfMacroContext _context) {
-    return ((Tuples._4<String, String, String, String>) _context.getVariable("var:archive"))._2() != null;
+    return ((Pair<String, String>) _context.getVariable("_filemode")) != null && ((Pair<String, String>) _context.getVariable("_filemode")).o1 != null;
   }
   public static boolean ifMacro_Condition_2_13(final IfMacroContext _context) {
-    return isNotEmptyString(((Tuples._3<String, String, String>) _context.getVariable("var:archive"))._1());
+    return ((String) _context.getVariable("_pathPrefix")) != null;
   }
   public static boolean ifMacro_Condition_2_14(final IfMacroContext _context) {
-    return ((Tuples._3<String, String, String>) _context.getVariable("var:archive"))._2() != null;
+    return ((Pair<String, String>) _context.getVariable("_filemode")) != null && ((Pair<String, String>) _context.getVariable("_filemode")).o2 != null;
   }
   public static boolean ifMacro_Condition_2_15(final IfMacroContext _context) {
-    return isNotEmptyString(((Tuples._3<String, String, String>) _context.getVariable("var:archive"))._1());
+    return ((String) _context.getVariable("_pathPrefix")) != null;
   }
   public static boolean ifMacro_Condition_2_16(final IfMacroContext _context) {
-    return ((Tuples._3<String, String, String>) _context.getVariable("var:archive"))._2() != null;
+    return ((Pair<String, String>) _context.getVariable("_filemode")) != null && ((Pair<String, String>) _context.getVariable("_filemode")).o2 != null;
   }
   public static boolean ifMacro_Condition_5_0(final IfMacroContext _context) {
     return SNodeOperations.getContainingRoot(_context.getNode()) != SNodeOperations.getContainingRoot(((SNode) _context.getVariable("library")));
@@ -1442,6 +1443,22 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object templateArgumentQuery_0_3(final TemplateArgumentContext _context) {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.extFolder$gew$), LINKS.folder$95wz);
   }
+  public static Object templateArgumentQuery_2_0(final TemplateArgumentContext _context) {
+    MacroHelper macros = Context.defaultContext(_context).getMacros(_context.getNode());
+    return FileSetUtil.getPrefix(_context.getNode(), macros);
+  }
+  public static Object templateArgumentQuery_2_1(final TemplateArgumentContext _context) {
+    MacroHelper macros = Context.defaultContext(_context).getMacros(_context.getNode());
+    return FileSetUtil.getFilemode(_context.getNode(), macros);
+  }
+  public static Object templateArgumentQuery_2_2(final TemplateArgumentContext _context) {
+    MacroHelper macros = Context.defaultContext(_context).getMacros(_context.getNode());
+    return FileSetUtil.getPrefix(_context.getNode(), macros);
+  }
+  public static Object templateArgumentQuery_2_3(final TemplateArgumentContext _context) {
+    MacroHelper macros = Context.defaultContext(_context).getMacros(_context.getNode());
+    return FileSetUtil.getFilemode(_context.getNode(), macros);
+  }
   public static Object templateArgumentQuery_0_4(final TemplateArgumentContext _context) {
     return _context.getNode();
   }
@@ -1471,6 +1488,15 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object templateArgumentQuery_0_13(final TemplateArgumentContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.suffix$8IfW);
+  }
+  public static Object templateArgumentQuery_0_14(final TemplateArgumentContext _context) {
+    return ((SNode) _context.getVariable("var:archive"));
+  }
+  public static Object templateArgumentQuery_0_15(final TemplateArgumentContext _context) {
+    return ((SNode) _context.getVariable("var:archive"));
+  }
+  public static Object templateArgumentQuery_0_16(final TemplateArgumentContext _context) {
+    return ((SNode) _context.getVariable("var:archive"));
   }
   public static Iterable<SNode> sourceNodesQuery_0_0(final SourceSubstituteMacroNodesContext _context) {
     return FileSetUtil.getImplicitFilesets(_context.getNode());
@@ -1718,11 +1744,7 @@ public class QueriesGenerated extends QueryProviderBase {
     });
   }
   public static Iterable<SNode> sourceNodesQuery_2_2(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.selectors$hp_C)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildFileSelectorInAttribute$a3);
-      }
-    });
+    return SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.selectors$hp_C), CONCEPTS.BuildFileSelectorInAttribute$a3);
   }
   public static Iterable<SNode> sourceNodesQuery_2_3(final SourceSubstituteMacroNodesContext _context) {
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.selectors$hp_C)).where(new IWhereFilter<SNode>() {
@@ -1801,21 +1823,30 @@ public class QueriesGenerated extends QueryProviderBase {
     }
   }
   public static Object varMacro_Value_0_0(final TemplateVarContext _context) {
-    return FileSetUtil.getContainerPrefix(_context.getNode(), Context.defaultContext(_context).getMacros(_context.getNode()));
+    return _context.getNode();
   }
   public static Object varMacro_Value_0_1(final TemplateVarContext _context) {
     return FileSetUtil.getContainerPrefix(_context.getNode(), Context.defaultContext(_context).getMacros(_context.getNode()));
   }
   public static Object varMacro_Value_0_2(final TemplateVarContext _context) {
-    return FileSetUtil.getContainerPrefix(_context.getNode(), Context.defaultContext(_context).getMacros(_context.getNode()));
+    return _context.getNode();
   }
   public static Object varMacro_Value_0_3(final TemplateVarContext _context) {
-    return (String) BuildLayout_CopyProcessor__BehaviorDescriptor.getTempFolder_id19QsrPvjYS$.invoke(_context.getNode(), _context);
+    return FileSetUtil.getContainerPrefix(_context.getNode(), Context.defaultContext(_context).getMacros(_context.getNode()));
   }
   public static Object varMacro_Value_0_4(final TemplateVarContext _context) {
-    return new String[]{null};
+    return _context.getNode();
   }
   public static Object varMacro_Value_0_5(final TemplateVarContext _context) {
+    return FileSetUtil.getContainerPrefix(_context.getNode(), Context.defaultContext(_context).getMacros(_context.getNode()));
+  }
+  public static Object varMacro_Value_0_6(final TemplateVarContext _context) {
+    return (String) BuildLayout_CopyProcessor__BehaviorDescriptor.getTempFolder_id19QsrPvjYS$.invoke(_context.getNode(), _context);
+  }
+  public static Object varMacro_Value_0_7(final TemplateVarContext _context) {
+    return new String[]{null};
+  }
+  public static Object varMacro_Value_0_8(final TemplateVarContext _context) {
     SNode project = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BuildProject$ae, false, false);
     if (project == null) {
       _context.showErrorMessage(_context.getNode(), "no context project defined");
@@ -1828,7 +1859,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }
     return val;
   }
-  public static Object varMacro_Value_0_6(final TemplateVarContext _context) {
+  public static Object varMacro_Value_0_9(final TemplateVarContext _context) {
     SNode project = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BuildProject$ae, false, false);
     if (project == null) {
       _context.showErrorMessage(_context.getNode(), "no context project defined");
@@ -1841,10 +1872,10 @@ public class QueriesGenerated extends QueryProviderBase {
     }
     return val;
   }
-  public static Object varMacro_Value_0_7(final TemplateVarContext _context) {
+  public static Object varMacro_Value_0_10(final TemplateVarContext _context) {
     return new JavaModulesClosure(_context.getNode()).closure(false);
   }
-  public static Object varMacro_Value_0_8(final TemplateVarContext _context) {
+  public static Object varMacro_Value_0_11(final TemplateVarContext _context) {
     SNode options = SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$FDHw), LINKS.compileOptions$Eyr4);
     if (options == null) {
       options = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(_context.getNode(), false), CONCEPTS.BuildSource_JavaOptions$D)).findFirst(new IWhereFilter<SNode>() {
@@ -1878,7 +1909,7 @@ public class QueriesGenerated extends QueryProviderBase {
     List<Tuples._2<SNode, String>> dependencies = new ProjectDependency(_context, _context.getNode()).collectDependencies().getDependencies();
     return ListSequence.fromList(dependencies).select(new ISelector<Tuples._2<SNode, String>, SNode>() {
       public SNode select(Tuples._2<SNode, String> it) {
-        return createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a424(it._1(), it._0());
+        return createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a434(it._1(), it._0());
       }
     }).toListSequence();
   }
@@ -1891,8 +1922,7 @@ public class QueriesGenerated extends QueryProviderBase {
     String prefix = FileSetUtil.getPrefix(_context.getNode(), macros);
     Pair<String, String> filemode = FileSetUtil.getFilemode(_context.getNode(), macros);
     if ((prefix != null && prefix.length() > 0) || filemode != null) {
-      SNode filesetContainer = FileSetUtil.getFilesetLayoutContainer(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.BuildLayout_Node$Rb));
-      fsetExt = BuildLayout_ContainerAcceptingFileSet__BehaviorDescriptor.getFileSetExtension_id5zIo$W4pFTK.invoke(filesetContainer);
+      fsetExt = BuildLayout_ContainerAcceptingFileSet__BehaviorDescriptor.getFileSetExtension_id5zIo$W4pFTK.invoke(((SNode) _context.getVariable("_archive")));
     }
     return MultiTuple.<String,String,String,String>from(fsetExt, prefix, (filemode != null ? filemode.o1 : null), (filemode != null ? filemode.o2 : null));
   }
@@ -1945,54 +1975,6 @@ public class QueriesGenerated extends QueryProviderBase {
       fsetExt = BuildLayout_ContainerAcceptingFileSet__BehaviorDescriptor.getFileSetExtension_id5zIo$W4pFTK.invoke(filesetContainer);
     }
     return MultiTuple.<String,String,String,String>from(fsetExt, prefix, (filemode != null ? filemode.o1 : null), (filemode != null ? filemode.o2 : null));
-  }
-  public static Object varMacro_Value_2_5(final TemplateVarContext _context) {
-    String fsetExt = "fileset";
-    String prefix = null;
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.BuildLayout_Copy$E8)) {
-      SNode copyContainer = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.BuildLayout_Copy$E8);
-      MacroHelper macros = Context.defaultContext(_context).getMacros(_context.getNode());
-      prefix = FileSetUtil.getPrefix(copyContainer, macros);
-      Pair<String, String> filemode = FileSetUtil.getFilemode(copyContainer, macros);
-      if ((prefix != null && prefix.length() > 0) || filemode != null) {
-        SNode filesetContainer = FileSetUtil.getFilesetLayoutContainer(SNodeOperations.as(SNodeOperations.getParent(copyContainer), CONCEPTS.BuildLayout_Node$Rb));
-        fsetExt = BuildLayout_ContainerAcceptingFileSet__BehaviorDescriptor.getFileSetExtension_id5zIo$W4pFTK.invoke(filesetContainer);
-      }
-      return MultiTuple.<String,String,String,String>from(fsetExt, prefix, (filemode != null ? filemode.o1 : null), (filemode != null ? filemode.o2 : null));
-    }
-    return MultiTuple.<String,String,Object,Object>from(fsetExt, prefix, null, null);
-  }
-  public static Object varMacro_Value_2_6(final TemplateVarContext _context) {
-    String fsetExt = "fileset";
-    String prefix = null;
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.BuildLayout_Copy$E8)) {
-      SNode copyContainer = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.BuildLayout_Copy$E8);
-      MacroHelper macros = Context.defaultContext(_context).getMacros(_context.getNode());
-      prefix = FileSetUtil.getPrefix(copyContainer, macros);
-      Pair<String, String> filemode = FileSetUtil.getFilemode(copyContainer, macros);
-      if ((prefix != null && prefix.length() > 0) || filemode != null && filemode.o2 != null) {
-        SNode filesetContainer = FileSetUtil.getFilesetLayoutContainer(SNodeOperations.as(SNodeOperations.getParent(copyContainer), CONCEPTS.BuildLayout_Node$Rb));
-        fsetExt = BuildLayout_ContainerAcceptingFileSet__BehaviorDescriptor.getFileSetExtension_id5zIo$W4pFTK.invoke(filesetContainer);
-      }
-      return MultiTuple.<String,String,String>from(fsetExt, prefix, (filemode != null ? filemode.o2 : null));
-    }
-    return MultiTuple.<String,String,Object>from(fsetExt, prefix, null);
-  }
-  public static Object varMacro_Value_2_7(final TemplateVarContext _context) {
-    String fsetExt = "fileset";
-    String prefix = null;
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.BuildLayout_Copy$E8)) {
-      SNode copyContainer = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.BuildLayout_Copy$E8);
-      MacroHelper macros = Context.defaultContext(_context).getMacros(_context.getNode());
-      prefix = FileSetUtil.getPrefix(copyContainer, macros);
-      Pair<String, String> filemode = FileSetUtil.getFilemode(copyContainer, macros);
-      if ((prefix != null && prefix.length() > 0) || filemode != null && filemode.o2 != null) {
-        SNode filesetContainer = FileSetUtil.getFilesetLayoutContainer(SNodeOperations.as(SNodeOperations.getParent(copyContainer), CONCEPTS.BuildLayout_Node$Rb));
-        fsetExt = BuildLayout_ContainerAcceptingFileSet__BehaviorDescriptor.getFileSetExtension_id5zIo$W4pFTK.invoke(filesetContainer);
-      }
-      return MultiTuple.<String,String,String>from(fsetExt, prefix, (filemode != null ? filemode.o2 : null));
-    }
-    return MultiTuple.<String,String,Object>from(fsetExt, prefix, null);
   }
   private final Map<String, ReductionRuleCondition> rrcMethods = new HashMap<String, ReductionRuleCondition>();
   {
@@ -3455,29 +3437,29 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, VariableValueQuery> vvqMethods = new HashMap<String, VariableValueQuery>();
   {
-    vvqMethods.put("2409421742521907965", new VVQ(0));
-    vvqMethods.put("2409421742521907969", new VVQ(1));
-    vvqMethods.put("2409421742521907973", new VVQ(2));
-    vvqMethods.put("2409421742521907977", new VVQ(3));
-    vvqMethods.put("2409421742521907982", new VVQ(4));
-    vvqMethods.put("2409421742521907990", new VVQ(5));
-    vvqMethods.put("2409421742521907993", new VVQ(6));
-    vvqMethods.put("2409421742521907996", new VVQ(7));
-    vvqMethods.put("2409421742521908008", new VVQ(8));
-    vvqMethods.put("2409421742521908022", new VVQ(9));
-    vvqMethods.put("1468765359385376557", new VVQ(10));
-    vvqMethods.put("1468765359385727831", new VVQ(11));
-    vvqMethods.put("1468765359386652809", new VVQ(12));
-    vvqMethods.put("2409421742521908026", new VVQ(13));
-    vvqMethods.put("2409421742521908030", new VVQ(14));
-    vvqMethods.put("2409421742521908041", new VVQ(15));
-    vvqMethods.put("2409421742521908050", new VVQ(16));
-    vvqMethods.put("2409421742521908053", new VVQ(17));
-    vvqMethods.put("2409421742521908062", new VVQ(18));
-    vvqMethods.put("2409421742521908065", new VVQ(19));
-    vvqMethods.put("2409421742521908074", new VVQ(20));
-    vvqMethods.put("2409421742521908083", new VVQ(21));
-    vvqMethods.put("2409421742521908090", new VVQ(22));
+    vvqMethods.put("3392343135645315971", new VVQ(0));
+    vvqMethods.put("2409421742521907965", new VVQ(1));
+    vvqMethods.put("3392343135645318382", new VVQ(2));
+    vvqMethods.put("2409421742521907969", new VVQ(3));
+    vvqMethods.put("3392343135645320374", new VVQ(4));
+    vvqMethods.put("2409421742521907973", new VVQ(5));
+    vvqMethods.put("2409421742521907977", new VVQ(6));
+    vvqMethods.put("2409421742521907982", new VVQ(7));
+    vvqMethods.put("2409421742521907990", new VVQ(8));
+    vvqMethods.put("2409421742521907993", new VVQ(9));
+    vvqMethods.put("2409421742521907996", new VVQ(10));
+    vvqMethods.put("2409421742521908008", new VVQ(11));
+    vvqMethods.put("2409421742521908022", new VVQ(12));
+    vvqMethods.put("1468765359385376557", new VVQ(13));
+    vvqMethods.put("1468765359385727831", new VVQ(14));
+    vvqMethods.put("1468765359386652809", new VVQ(15));
+    vvqMethods.put("2409421742521908026", new VVQ(16));
+    vvqMethods.put("2409421742521908030", new VVQ(17));
+    vvqMethods.put("2409421742521908041", new VVQ(18));
+    vvqMethods.put("2409421742521908050", new VVQ(19));
+    vvqMethods.put("2409421742521908053", new VVQ(20));
+    vvqMethods.put("2409421742521908062", new VVQ(21));
+    vvqMethods.put("2409421742521908065", new VVQ(22));
   }
   @NotNull
   @Override
@@ -3515,33 +3497,33 @@ public class QueriesGenerated extends QueryProviderBase {
         case 8:
           return QueriesGenerated.varMacro_Value_0_8(ctx);
         case 9:
-          return QueriesGenerated.varMacro_Value_1_0(ctx);
+          return QueriesGenerated.varMacro_Value_0_9(ctx);
         case 10:
-          return QueriesGenerated.varMacro_Value_1_1(ctx);
+          return QueriesGenerated.varMacro_Value_0_10(ctx);
         case 11:
-          return QueriesGenerated.varMacro_Value_1_2(ctx);
+          return QueriesGenerated.varMacro_Value_0_11(ctx);
         case 12:
-          return QueriesGenerated.varMacro_Value_1_3(ctx);
+          return QueriesGenerated.varMacro_Value_1_0(ctx);
         case 13:
-          return QueriesGenerated.varMacro_Value_1_4(ctx);
+          return QueriesGenerated.varMacro_Value_1_1(ctx);
         case 14:
-          return QueriesGenerated.varMacro_Value_1_5(ctx);
+          return QueriesGenerated.varMacro_Value_1_2(ctx);
         case 15:
-          return QueriesGenerated.varMacro_Value_2_0(ctx);
+          return QueriesGenerated.varMacro_Value_1_3(ctx);
         case 16:
-          return QueriesGenerated.varMacro_Value_2_1(ctx);
+          return QueriesGenerated.varMacro_Value_1_4(ctx);
         case 17:
-          return QueriesGenerated.varMacro_Value_2_2(ctx);
+          return QueriesGenerated.varMacro_Value_1_5(ctx);
         case 18:
-          return QueriesGenerated.varMacro_Value_2_3(ctx);
+          return QueriesGenerated.varMacro_Value_2_0(ctx);
         case 19:
-          return QueriesGenerated.varMacro_Value_2_4(ctx);
+          return QueriesGenerated.varMacro_Value_2_1(ctx);
         case 20:
-          return QueriesGenerated.varMacro_Value_2_5(ctx);
+          return QueriesGenerated.varMacro_Value_2_2(ctx);
         case 21:
-          return QueriesGenerated.varMacro_Value_2_6(ctx);
+          return QueriesGenerated.varMacro_Value_2_3(ctx);
         case 22:
-          return QueriesGenerated.varMacro_Value_2_7(ctx);
+          return QueriesGenerated.varMacro_Value_2_4(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -3553,16 +3535,23 @@ public class QueriesGenerated extends QueryProviderBase {
     caqMethods.put("5680938682773841634", new CAQ(1));
     caqMethods.put("5610619299014495885", new CAQ(2));
     caqMethods.put("5610619299014531917", new CAQ(3));
-    caqMethods.put("4797826009838532346", new CAQ(4));
-    caqMethods.put("4797826009839199017", new CAQ(5));
-    caqMethods.put("4797826009839189287", new CAQ(6));
-    caqMethods.put("4797826009839182745", new CAQ(7));
-    caqMethods.put("4821808014881175200", new CAQ(8));
-    caqMethods.put("4821808014881207698", new CAQ(9));
-    caqMethods.put("8169228734285538428", new CAQ(10));
-    caqMethods.put("5610619299014362371", new CAQ(11));
-    caqMethods.put("342830306171239712", new CAQ(12));
-    caqMethods.put("342830306171239922", new CAQ(13));
+    caqMethods.put("3392343135645364653", new CAQ(4));
+    caqMethods.put("3392343135645377067", new CAQ(5));
+    caqMethods.put("3392343135645608070", new CAQ(6));
+    caqMethods.put("3392343135645609992", new CAQ(7));
+    caqMethods.put("4797826009838532346", new CAQ(8));
+    caqMethods.put("4797826009839199017", new CAQ(9));
+    caqMethods.put("4797826009839189287", new CAQ(10));
+    caqMethods.put("4797826009839182745", new CAQ(11));
+    caqMethods.put("4821808014881175200", new CAQ(12));
+    caqMethods.put("4821808014881207698", new CAQ(13));
+    caqMethods.put("8169228734285538428", new CAQ(14));
+    caqMethods.put("5610619299014362371", new CAQ(15));
+    caqMethods.put("342830306171239712", new CAQ(16));
+    caqMethods.put("342830306171239922", new CAQ(17));
+    caqMethods.put("3392343135645317303", new CAQ(18));
+    caqMethods.put("3392343135645319555", new CAQ(19));
+    caqMethods.put("3392343135645321507", new CAQ(20));
   }
   @NotNull
   @Override
@@ -3590,25 +3579,39 @@ public class QueriesGenerated extends QueryProviderBase {
         case 3:
           return QueriesGenerated.templateArgumentQuery_0_3(ctx);
         case 4:
-          return QueriesGenerated.templateArgumentQuery_0_4(ctx);
+          return QueriesGenerated.templateArgumentQuery_2_0(ctx);
         case 5:
-          return QueriesGenerated.templateArgumentQuery_0_5(ctx);
+          return QueriesGenerated.templateArgumentQuery_2_1(ctx);
         case 6:
-          return QueriesGenerated.templateArgumentQuery_0_6(ctx);
+          return QueriesGenerated.templateArgumentQuery_2_2(ctx);
         case 7:
-          return QueriesGenerated.templateArgumentQuery_0_7(ctx);
+          return QueriesGenerated.templateArgumentQuery_2_3(ctx);
         case 8:
-          return QueriesGenerated.templateArgumentQuery_0_8(ctx);
+          return QueriesGenerated.templateArgumentQuery_0_4(ctx);
         case 9:
-          return QueriesGenerated.templateArgumentQuery_0_9(ctx);
+          return QueriesGenerated.templateArgumentQuery_0_5(ctx);
         case 10:
-          return QueriesGenerated.templateArgumentQuery_0_10(ctx);
+          return QueriesGenerated.templateArgumentQuery_0_6(ctx);
         case 11:
-          return QueriesGenerated.templateArgumentQuery_0_11(ctx);
+          return QueriesGenerated.templateArgumentQuery_0_7(ctx);
         case 12:
-          return QueriesGenerated.templateArgumentQuery_0_12(ctx);
+          return QueriesGenerated.templateArgumentQuery_0_8(ctx);
         case 13:
+          return QueriesGenerated.templateArgumentQuery_0_9(ctx);
+        case 14:
+          return QueriesGenerated.templateArgumentQuery_0_10(ctx);
+        case 15:
+          return QueriesGenerated.templateArgumentQuery_0_11(ctx);
+        case 16:
+          return QueriesGenerated.templateArgumentQuery_0_12(ctx);
+        case 17:
           return QueriesGenerated.templateArgumentQuery_0_13(ctx);
+        case 18:
+          return QueriesGenerated.templateArgumentQuery_0_14(ctx);
+        case 19:
+          return QueriesGenerated.templateArgumentQuery_0_15(ctx);
+        case 20:
+          return QueriesGenerated.templateArgumentQuery_0_16(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -3642,7 +3645,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
   }
-  private static SNode createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a424(String p0, SNode p1) {
+  private static SNode createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a434(String p0, SNode p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_ProjectDependency$bb);
     n0.setProperty(PROPS.path$URGX, p0);
     n0.setReferenceTarget(LINKS.project$ciHu, p1);
@@ -3771,7 +3774,6 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SInterfaceConcept IWorkflowParticipant$QH = MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x546bf9ab92fe0b3fL, "jetbrains.mps.build.structure.IWorkflowParticipant");
     /*package*/ static final SConcept BwfTaskPart$sR = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x36fb0dc9fd32c1b8L, "jetbrains.mps.build.workflow.structure.BwfTaskPart");
     /*package*/ static final SConcept BuildSource_JavaOptions$D = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xcdff0e1a96739c2L, "jetbrains.mps.build.structure.BuildSource_JavaOptions");
-    /*package*/ static final SConcept BuildLayout_Copy$E8 = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92339b9L, "jetbrains.mps.build.structure.BuildLayout_Copy");
     /*package*/ static final SConcept GeneratorInternal_ProjectDependency$bb = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x5830b38e16a0164cL, "jetbrains.mps.build.structure.GeneratorInternal_ProjectDependency");
   }
 
