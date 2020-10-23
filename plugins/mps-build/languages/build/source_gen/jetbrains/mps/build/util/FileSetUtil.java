@@ -9,6 +9,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.build.behavior.BuildLayout_FileSet__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.ArrayDeque;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.Stack;
 import jetbrains.mps.build.behavior.BuildString__BehaviorDescriptor;
 import jetbrains.mps.build.behavior.BuildLayout_ContainerAcceptingFileSet__BehaviorDescriptor;
@@ -39,26 +43,52 @@ public class FileSetUtil {
     }
     return result;
   }
-  public static Iterable<SNode> getExplicitFilemodeRoots(SNode container) {
-    Iterable<SNode> result = SNodeOperations.ofConcept(SLinkOperations.getChildren(container, LINKS.children$aMRO), CONCEPTS.BuildLayout_Filemode$sx);
 
-    for (SNode folder : ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.children$aMRO)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Folder$AH) || SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Filemode$sx);
+  /**
+   * Collect BL_Filemode under an archive that could not be processed solely as part of archive fileset, got some mkdir
+   * created and populated aside archive's assemble subtask (see RR for BL_Filemode, prepare subtask)
+   */
+  public static Iterable<SNode> getExplicitFilemodeRoots(SNode container) {
+    List<SNode> rv = new ArrayList<SNode>();
+    ArrayDeque<SNode> queue = new ArrayDeque<SNode>();
+    queue.add(container);
+    do {
+      SNode c = queue.removeFirst();
+      for (SNode fm : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(c, LINKS.children$aMRO), CONCEPTS.BuildLayout_Filemode$sx))) {
+        if (hasExplicitFilesetsDescendant(fm)) {
+          ListSequence.fromList(rv).addElement(fm);
+          // FIXME do I truly need to go inside a Filemode container once I know it has 'explicit' fileset somewhere down there? 
+          //      It only makes sense in case there's another Filemode in descendands, but I wonder if it won't be part of the same filesystem hierarchy 
+          //      as the one I've already found (and would <zipfileset> in reduce_FilemodeRootsFileset anyway. FIXME check if nested Filemode creates a 
+          //      completely independent temp folder than needs to be <zipfileset> individually. If not, can addLast() only for else{} case. 
+        }
+        queue.addLast(fm);
       }
-    })) {
-      result = Sequence.fromIterable(result).concat(Sequence.fromIterable(getExplicitFilemodeRoots(SNodeOperations.cast(folder, CONCEPTS.BuildLayout_Container$vv))));
-    }
-    return Sequence.fromIterable(result).where(new IWhereFilter<SNode>() {
+      for (SNode folder : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(c, LINKS.children$aMRO), CONCEPTS.BuildLayout_Folder$AH))) {
+        queue.addLast(folder);
+      }
+    } while (!(queue.isEmpty()));
+    return rv;
+  }
+  private static boolean hasExplicitFilesetsDescendant(SNode container) {
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(container, null, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return hasExplicitFilesets(it);
+        return SNodeOperations.hasRole(it, LINKS.children$aMRO);
+      }
+    }).any(new IWhereFilter<SNode>() {
+      public boolean accept(SNode it) {
+        return !((SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_FileSet$5F) && (boolean) BuildLayout_FileSet__BehaviorDescriptor.isImplicit_id19QsrPuCW11.invoke(SNodeOperations.cast(it, CONCEPTS.BuildLayout_FileSet$5F)))) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Filemode$sx)) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Folder$AH));
       }
     });
   }
+
   public static boolean hasExplicitFilesets(SNode container) {
+    // XXX why do we recurse hasExplicitFilesets() into BL_Folder only, and not into BL_Filemode? What if there's Filemode with nested FileSet.isImplicit=false  
+    // (_CustomCopy with few processors, e.g. translated file) - do we recognize it as 'explicit'? 
+    // Also, I don't quite understand why children other than specified are treated as explicit filesets, e.g. BL_ExportAsJavaLibrary or BuildMpsLayout_ModuleSources 
     return ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.children$aMRO)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !((SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_FileSet$5F) && (boolean) BuildLayout_FileSet__BehaviorDescriptor.isImplicit_id19QsrPuCW11.invoke(SNodeOperations.cast(it, CONCEPTS.BuildLayout_FileSet$5F)))) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Filemode$sx)) && (!(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Folder$AH)) || hasExplicitFilesets(SNodeOperations.cast(it, CONCEPTS.BuildLayout_Container$vv)));
+        return !((SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_FileSet$5F) && (boolean) BuildLayout_FileSet__BehaviorDescriptor.isImplicit_id19QsrPuCW11.invoke(SNodeOperations.cast(it, CONCEPTS.BuildLayout_FileSet$5F)))) && !(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Filemode$sx)) && (!(SNodeOperations.isInstanceOf(it, CONCEPTS.BuildLayout_Folder$AH)) || hasExplicitFilesets(SNodeOperations.cast(it, CONCEPTS.BuildLayout_Folder$AH)));
       }
     });
   }
