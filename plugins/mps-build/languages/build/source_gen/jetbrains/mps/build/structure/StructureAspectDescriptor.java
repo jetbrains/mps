@@ -736,6 +736,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForBuildLayout_ContainerAcceptingFileSet() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.build", "BuildLayout_ContainerAcceptingFileSet", 0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db927f229L);
     b.interface_();
+    b.parent(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L);
     b.origin("r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/5248329904288166441");
     b.version(2);
     return b.create();

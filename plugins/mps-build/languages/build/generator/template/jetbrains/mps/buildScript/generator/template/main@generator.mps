@@ -19854,44 +19854,11 @@
         <node concept="1WS0z7" id="2Wk1xJ4yGDB" role="lGtFl">
           <node concept="3JmXsc" id="2Wk1xJ4yGDC" role="3Jn$fo">
             <node concept="3clFbS" id="2Wk1xJ4yGDD" role="2VODD2">
-              <node concept="3SKdUt" id="2Wk1xJ4yNBM" role="3cqZAp">
-                <node concept="1PaTwC" id="2Wk1xJ4yNBN" role="1aUNEU">
-                  <node concept="3oM_SD" id="2Wk1xJ4yNBO" role="1PaTwD">
-                    <property role="3oM_SC" value="XXX" />
-                  </node>
-                  <node concept="3oM_SD" id="2Wk1xJ4yO0V" role="1PaTwD">
-                    <property role="3oM_SC" value="no" />
-                  </node>
-                  <node concept="3oM_SD" id="2Wk1xJ4yO10" role="1PaTwD">
-                    <property role="3oM_SC" value="idea" />
-                  </node>
-                  <node concept="3oM_SD" id="2Wk1xJ4yO16" role="1PaTwD">
-                    <property role="3oM_SC" value="why" />
-                  </node>
-                  <node concept="3oM_SD" id="2Wk1xJ4yO1t" role="1PaTwD">
-                    <property role="3oM_SC" value="BL_ContainerAcceptingFileSet" />
-                  </node>
-                  <node concept="3oM_SD" id="2Wk1xJ4yO3l" role="1PaTwD">
-                    <property role="3oM_SC" value="doesn't" />
-                  </node>
-                  <node concept="3oM_SD" id="2Wk1xJ4yO3I" role="1PaTwD">
-                    <property role="3oM_SC" value="extend" />
-                  </node>
-                  <node concept="3oM_SD" id="2Wk1xJ4yO3S" role="1PaTwD">
-                    <property role="3oM_SC" value="BL_Container" />
-                  </node>
-                </node>
-              </node>
               <node concept="3clFbF" id="2Wk1xJ4yGDE" role="3cqZAp">
                 <node concept="2YIFZM" id="2Wk1xJ4yGDF" role="3clFbG">
                   <ref role="37wK5l" to="o3n2:6L3dtXeyaBQ" resolve="getExplicitFilemodeRoots" />
                   <ref role="1Pybhc" to="o3n2:5zIo$W4pNB9" resolve="FileSetUtil" />
-                  <node concept="1PxgMI" id="2Wk1xJ4yNi9" role="37wK5m">
-                    <node concept="chp4Y" id="2Wk1xJ4yNsv" role="3oSUPX">
-                      <ref role="cht4Q" to="3ior:450ejGzh8b3" resolve="BuildLayout_Container" />
-                    </node>
-                    <node concept="30H73N" id="2Wk1xJ4yGDG" role="1m5AlR" />
-                  </node>
+                  <node concept="30H73N" id="2Wk1xJ4yGDG" role="37wK5m" />
                 </node>
               </node>
             </node>

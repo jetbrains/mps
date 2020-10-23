@@ -1748,8 +1748,7 @@ public class QueriesGenerated extends QueryProviderBase {
     });
   }
   public static Iterable<SNode> sourceNodesQuery_18_0(final SourceSubstituteMacroNodesContext _context) {
-    // XXX no idea why BL_ContainerAcceptingFileSet doesn't extend BL_Container 
-    return FileSetUtil.getExplicitFilemodeRoots(SNodeOperations.cast(_context.getNode(), CONCEPTS.BuildLayout_Container$vv));
+    return FileSetUtil.getExplicitFilemodeRoots(_context.getNode());
   }
   public static void mapSrcMacro_post_12_0(final MapSrcMacroPostProcContext _context) {
     // HACK. At the moment, DependenciesHelper is populated with locations, with 
