@@ -12450,16 +12450,7 @@
             <node concept="2YIFZM" id="7UAfeVQUcrb" role="33vP2m">
               <ref role="37wK5l" to="o3n2:7UAfeVQUcp9" resolve="getFilesetLayoutContainer" />
               <ref role="1Pybhc" to="o3n2:5zIo$W4pNB9" resolve="FileSetUtil" />
-              <node concept="1PxgMI" id="7UAfeVQUcrc" role="37wK5m">
-                <property role="1BlNFB" value="true" />
-                <node concept="chp4Y" id="714IaVdH0_P" role="3oSUPX">
-                  <ref role="cht4Q" to="3ior:6qcrfIJF4M5" resolve="BuildLayout_Node" />
-                </node>
-                <node concept="2OqwBi" id="7UAfeVQUcrd" role="1m5AlR">
-                  <node concept="13iPFW" id="7UAfeVQUcre" role="2Oq$k0" />
-                  <node concept="1mfA1w" id="7UAfeVQUcrf" role="2OqNvi" />
-                </node>
-              </node>
+              <node concept="13iPFW" id="7UAfeVQUcre" role="37wK5m" />
             </node>
           </node>
         </node>

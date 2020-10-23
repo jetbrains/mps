@@ -91,7 +91,7 @@ public final class BuildLayout_File__BehaviorDescriptor extends BaseBHDescriptor
     }
   }
   /*package*/ static boolean canHaveFilemode_id7UAfeVQUccL(@NotNull SNode __thisNode__) {
-    SNode filesetLayoutContainer = FileSetUtil.getFilesetLayoutContainer(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildLayout_Node$Rb));
+    SNode filesetLayoutContainer = FileSetUtil.getFilesetLayoutContainer(__thisNode__);
     return (filesetLayoutContainer != null) && (boolean) BuildLayout_ContainerAcceptingFileSet__BehaviorDescriptor.hasFileModeAttribute_id5zIo$W4pFU5.invoke(filesetLayoutContainer);
   }
 

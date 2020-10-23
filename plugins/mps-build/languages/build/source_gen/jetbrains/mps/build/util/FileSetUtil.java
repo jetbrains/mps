@@ -63,12 +63,13 @@ public class FileSetUtil {
     });
   }
 
-  public static SNode getFilesetLayoutContainer(SNode contextContainer) {
+  public static SNode getFilesetLayoutContainer(SNode context) {
+    SNode contextContainer = SNodeOperations.getParent(context);
     if (SNodeOperations.isInstanceOf(contextContainer, CONCEPTS.BuildLayout_ContainerAcceptingFileSet$KQ)) {
       return SNodeOperations.cast(contextContainer, CONCEPTS.BuildLayout_ContainerAcceptingFileSet$KQ);
     }
     while (SNodeOperations.isInstanceOf(contextContainer, CONCEPTS.BuildLayout_Folder$AH) || SNodeOperations.isInstanceOf(contextContainer, CONCEPTS.BuildLayout_Filemode$sx)) {
-      contextContainer = SNodeOperations.as(SNodeOperations.getParent(contextContainer), CONCEPTS.BuildLayout_Node$Rb);
+      contextContainer = SNodeOperations.getParent(contextContainer);
     }
     if (SNodeOperations.isInstanceOf(contextContainer, CONCEPTS.BuildLayout_ContainerAcceptingFileSet$KQ)) {
       return SNodeOperations.cast(contextContainer, CONCEPTS.BuildLayout_ContainerAcceptingFileSet$KQ);
@@ -124,10 +125,6 @@ public class FileSetUtil {
     }
     return null;
   }
-
-  public static boolean isExplicit(SNode fileset) {
-    return getFilesetLayoutContainer(SNodeOperations.as(SNodeOperations.getParent(fileset), CONCEPTS.BuildLayout_Node$Rb)) == null || !((boolean) BuildLayout_FileSet__BehaviorDescriptor.isImplicit_id19QsrPuCW11.invoke(fileset));
-  }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
   }
@@ -143,7 +140,6 @@ public class FileSetUtil {
     /*package*/ static final SConcept BuildLayout_Filemode$sx = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x6c4335df4e838e40L, "jetbrains.mps.build.structure.BuildLayout_Filemode");
     /*package*/ static final SConcept BuildLayout_Folder$AH = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c78L, "jetbrains.mps.build.structure.BuildLayout_Folder");
     /*package*/ static final SInterfaceConcept BuildLayout_ContainerAcceptingFileSet$KQ = MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db927f229L, "jetbrains.mps.build.structure.BuildLayout_ContainerAcceptingFileSet");
-    /*package*/ static final SConcept BuildLayout_Node$Rb = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node");
   }
 
   private static final class PROPS {

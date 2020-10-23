@@ -45,6 +45,7 @@ import jetbrains.mps.build.behavior.BuildCompositePath__BehaviorDescriptor;
 import jetbrains.mps.build.behavior.BuildSourceArchiveRelativePath__BehaviorDescriptor;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.generator.template.IfMacroContext;
+import jetbrains.mps.build.behavior.BuildLayout_FileSet__BehaviorDescriptor;
 import jetbrains.mps.build.util.JavaModulesClosure;
 import jetbrains.mps.build.util.FDP2;
 import java.util.List;
@@ -110,10 +111,11 @@ public class QueriesGenerated extends QueryProviderBase {
     super(1);
   }
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
-    return FileSetUtil.isExplicit(_context.getNode());
+    return FileSetUtil.getFilesetLayoutContainer(_context.getNode()) == null;
   }
   public static boolean rule_Condition_0_1(final BaseMappingRuleContext _context) {
-    if (!(FileSetUtil.isExplicit(_context.getNode()))) {
+    // BL_Import under an archive (aka BL_CAFS) are processed in reduce_FileSetInArchive 
+    if (FileSetUtil.getFilesetLayoutContainer(_context.getNode()) != null) {
       return false;
     }
     if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.BuildLayout_Container$vv))) {
@@ -125,7 +127,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }
   }
   public static boolean rule_Condition_0_2(final BaseMappingRuleContext _context) {
-    if (!(FileSetUtil.isExplicit(_context.getNode()))) {
+    if (FileSetUtil.getFilesetLayoutContainer(_context.getNode()) != null) {
       return false;
     }
     if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.BuildLayout_Container$vv))) {
@@ -1102,7 +1104,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return ((String[]) _context.getVariable("var:lpath"))[0] != null;
   }
   public static boolean ifMacro_Condition_0_25(final IfMacroContext _context) {
-    return FileSetUtil.isExplicit(_context.getNode());
+    return FileSetUtil.getFilesetLayoutContainer(_context.getNode()) == null || !((boolean) BuildLayout_FileSet__BehaviorDescriptor.isImplicit_id19QsrPuCW11.invoke(_context.getNode()));
   }
   public static boolean ifMacro_Condition_0_26(final IfMacroContext _context) {
     return ((String[]) _context.getVariable("var:lpath"))[0] != null;
