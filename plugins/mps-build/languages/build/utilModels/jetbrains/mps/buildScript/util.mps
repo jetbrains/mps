@@ -15024,16 +15024,15 @@
           <ref role="ehGHo" to="3ior:Y2EImGIi9D" resolve="BuildLayout_FileSet" />
         </node>
       </node>
-      <node concept="37vLTG" id="6L3dtXexDo2" role="3clF46">
-        <property role="TrG5h" value="helper" />
-        <node concept="3uibUv" id="6L3dtXexDo3" role="1tU5fm">
-          <ref role="3uigEE" node="5FtnUVJR86u" resolve="MacroHelper" />
-        </node>
-      </node>
       <node concept="3uibUv" id="6L3dtXexDBi" role="3clF45">
         <ref role="3uigEE" to="18ew:~Pair" resolve="Pair" />
         <node concept="17QB3L" id="6L3dtXexDBk" role="11_B2D" />
         <node concept="17QB3L" id="6L3dtXexDBm" role="11_B2D" />
+      </node>
+      <node concept="P$JXv" id="2Wk1xJ4xTpN" role="lGtFl">
+        <node concept="x79VA" id="2Wk1xJ4xTpT" role="3nqlJM">
+          <property role="x79VB" value="not null only if there's BL_Filenode between this fileset and archive(BL_ContainerAcceptingFileSet) ancestor that supports file mode attributes" />
+        </node>
       </node>
     </node>
     <node concept="2YIFZL" id="5zIo$W4pR28" role="jymVt">

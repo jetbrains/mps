@@ -1448,16 +1448,14 @@ public class QueriesGenerated extends QueryProviderBase {
     return FileSetUtil.getPrefix(_context.getNode(), macros);
   }
   public static Object templateArgumentQuery_2_1(final TemplateArgumentContext _context) {
-    MacroHelper macros = Context.defaultContext(_context).getMacros(_context.getNode());
-    return FileSetUtil.getFilemode(_context.getNode(), macros);
+    return FileSetUtil.getFilemode(_context.getNode());
   }
   public static Object templateArgumentQuery_2_2(final TemplateArgumentContext _context) {
     MacroHelper macros = Context.defaultContext(_context).getMacros(_context.getNode());
     return FileSetUtil.getPrefix(_context.getNode(), macros);
   }
   public static Object templateArgumentQuery_2_3(final TemplateArgumentContext _context) {
-    MacroHelper macros = Context.defaultContext(_context).getMacros(_context.getNode());
-    return FileSetUtil.getFilemode(_context.getNode(), macros);
+    return FileSetUtil.getFilemode(_context.getNode());
   }
   public static Object templateArgumentQuery_0_4(final TemplateArgumentContext _context) {
     return _context.getNode();
@@ -1730,11 +1728,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.plugins$AsCR);
   }
   public static Iterable<SNode> sourceNodesQuery_2_0(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.selectors$LiDN)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildFileSelectorInAttribute$a3);
-      }
-    });
+    return SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.selectors$LiDN), CONCEPTS.BuildFileSelectorInAttribute$a3);
   }
   public static Iterable<SNode> sourceNodesQuery_2_1(final SourceSubstituteMacroNodesContext _context) {
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.selectors$LiDN)).where(new IWhereFilter<SNode>() {
@@ -1920,7 +1914,7 @@ public class QueriesGenerated extends QueryProviderBase {
     MacroHelper macros = Context.defaultContext(_context).getMacros(_context.getNode());
     String fsetExt = "fileset";
     String prefix = FileSetUtil.getPrefix(_context.getNode(), macros);
-    Pair<String, String> filemode = FileSetUtil.getFilemode(_context.getNode(), macros);
+    Pair<String, String> filemode = FileSetUtil.getFilemode(_context.getNode());
     if ((prefix != null && prefix.length() > 0) || filemode != null) {
       fsetExt = BuildLayout_ContainerAcceptingFileSet__BehaviorDescriptor.getFileSetExtension_id5zIo$W4pFTK.invoke(((SNode) _context.getVariable("_archive")));
     }
@@ -1945,10 +1939,9 @@ public class QueriesGenerated extends QueryProviderBase {
     MacroHelper macros = Context.defaultContext(_context).getMacros(_context.getNode());
     String fsetExt = "fileset";
     String prefix = FileSetUtil.getPrefix(_context.getNode(), macros);
-    Pair<String, String> filemode = FileSetUtil.getFilemode(_context.getNode(), macros);
+    Pair<String, String> filemode = FileSetUtil.getFilemode(_context.getNode());
     if ((prefix != null && prefix.length() > 0) || filemode != null) {
-      SNode filesetContainer = FileSetUtil.getFilesetLayoutContainer(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.BuildLayout_Node$Rb));
-      fsetExt = BuildLayout_ContainerAcceptingFileSet__BehaviorDescriptor.getFileSetExtension_id5zIo$W4pFTK.invoke(filesetContainer);
+      fsetExt = BuildLayout_ContainerAcceptingFileSet__BehaviorDescriptor.getFileSetExtension_id5zIo$W4pFTK.invoke(((SNode) _context.getVariable("_archive")));
     }
     return MultiTuple.<String,String,String,String>from(fsetExt, prefix, (filemode != null ? filemode.o1 : null), (filemode != null ? filemode.o2 : null));
   }
@@ -1969,10 +1962,9 @@ public class QueriesGenerated extends QueryProviderBase {
     MacroHelper macros = Context.defaultContext(_context).getMacros(_context.getNode());
     String fsetExt = "fileset";
     String prefix = FileSetUtil.getPrefix(_context.getNode(), macros);
-    Pair<String, String> filemode = FileSetUtil.getFilemode(_context.getNode(), macros);
+    Pair<String, String> filemode = FileSetUtil.getFilemode(_context.getNode());
     if ((prefix != null && prefix.length() > 0) || filemode != null) {
-      SNode filesetContainer = FileSetUtil.getFilesetLayoutContainer(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.BuildLayout_Node$Rb));
-      fsetExt = BuildLayout_ContainerAcceptingFileSet__BehaviorDescriptor.getFileSetExtension_id5zIo$W4pFTK.invoke(filesetContainer);
+      fsetExt = BuildLayout_ContainerAcceptingFileSet__BehaviorDescriptor.getFileSetExtension_id5zIo$W4pFTK.invoke(((SNode) _context.getVariable("_archive")));
     }
     return MultiTuple.<String,String,String,String>from(fsetExt, prefix, (filemode != null ? filemode.o1 : null), (filemode != null ? filemode.o2 : null));
   }

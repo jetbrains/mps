@@ -99,7 +99,11 @@ public class FileSetUtil {
     }
     return null;
   }
-  public static Pair<String, String> getFilemode(SNode fileset, MacroHelper helper) {
+  /**
+   * 
+   * @return not null only if there's BL_Filenode between this fileset and archive(BL_ContainerAcceptingFileSet) ancestor that supports file mode attributes
+   */
+  public static Pair<String, String> getFilemode(SNode fileset) {
     SNode parent = SNodeOperations.getParent(fileset);
     String filemode = null;
     String dirmode = null;
