@@ -57,10 +57,9 @@ public class FileSetUtil {
       for (SNode fm : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(c, LINKS.children$aMRO), CONCEPTS.BuildLayout_Filemode$sx))) {
         if (hasExplicitFilesetsDescendant(fm)) {
           ListSequence.fromList(rv).addElement(fm);
-          // FIXME do I truly need to go inside a Filemode container once I know it has 'explicit' fileset somewhere down there? 
-          //      It only makes sense in case there's another Filemode in descendands, but I wonder if it won't be part of the same filesystem hierarchy 
-          //      as the one I've already found (and would <zipfileset> in reduce_FilemodeRootsFileset anyway. FIXME check if nested Filemode creates a 
-          //      completely independent temp folder than needs to be <zipfileset> individually. If not, can addLast() only for else{} case. 
+          // I do truly need to go inside a Filemode container - each Filemode that has 'explicit' filesets get distinct temp directory, 
+          //   not part of ancestor temp dir; each such Filemode get independent <zipfileset> in reduce_FilemodeRootsFileset 
+          //   So in case there's nested Filemode, still need to go further down. 
         }
         queue.addLast(fm);
       }
@@ -71,7 +70,10 @@ public class FileSetUtil {
     return rv;
   }
   private static boolean hasExplicitFilesetsDescendant(SNode container) {
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(container, null, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+    // FIXME not that I care to get BL_Node, it's just a defect in descendants implementation that ignore stop concepts unless there's specific concept to look up. 
+    // JFTR, we care to get "explicit" (generated explicitly, as part of 'assembly' task, not as part of archive) of this Filemode node, not of any  
+    // potential Filemode descendant, hence use of stop concept in descendants (and !BL_Filemode check, too). 
+    return ListSequence.fromList(SNodeOperations.getNodeDescendants(container, CONCEPTS.BuildLayout_Node$Rb, false, new SAbstractConcept[]{CONCEPTS.BuildLayout_Filemode$sx})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.hasRole(it, LINKS.children$aMRO);
       }
@@ -84,7 +86,9 @@ public class FileSetUtil {
 
   public static boolean hasExplicitFilesets(SNode container) {
     // XXX why do we recurse hasExplicitFilesets() into BL_Folder only, and not into BL_Filemode? What if there's Filemode with nested FileSet.isImplicit=false  
-    // (_CustomCopy with few processors, e.g. translated file) - do we recognize it as 'explicit'? 
+    // (_CustomCopy with few processors, e.g. translated file) - do we recognize it as 'explicit'?  
+    //  ^^^^ Seems that we treat each Filemode's explicit fileset independently 
+    //  
     // Also, I don't quite understand why children other than specified are treated as explicit filesets, e.g. BL_ExportAsJavaLibrary or BuildMpsLayout_ModuleSources 
     return ListSequence.fromList(SLinkOperations.getChildren(container, LINKS.children$aMRO)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
@@ -169,6 +173,7 @@ public class FileSetUtil {
     /*package*/ static final SInterfaceConcept BuildLayout_Container$vv = MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4140393b234482c3L, "jetbrains.mps.build.structure.BuildLayout_Container");
     /*package*/ static final SConcept BuildLayout_Filemode$sx = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x6c4335df4e838e40L, "jetbrains.mps.build.structure.BuildLayout_Filemode");
     /*package*/ static final SConcept BuildLayout_Folder$AH = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c78L, "jetbrains.mps.build.structure.BuildLayout_Folder");
+    /*package*/ static final SConcept BuildLayout_Node$Rb = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafac4c85L, "jetbrains.mps.build.structure.BuildLayout_Node");
     /*package*/ static final SInterfaceConcept BuildLayout_ContainerAcceptingFileSet$KQ = MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db927f229L, "jetbrains.mps.build.structure.BuildLayout_ContainerAcceptingFileSet");
   }
 
