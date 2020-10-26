@@ -676,6 +676,19 @@
               </node>
             </node>
           </node>
+          <node concept="3clFbF" id="30eFrqxsfpP" role="3cqZAp">
+            <node concept="2OqwBi" id="30eFrqxsfpQ" role="3clFbG">
+              <node concept="37vLTw" id="30eFrqxsfpR" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="30eFrqxsfpS" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="30eFrqxsfpT" role="37wK5m">
+                  <property role="Xl_RC" value="|(BaseDataReader: setsid .*git(\\.exe)?.*)" />
+                </node>
+              </node>
+            </node>
+          </node>
           <node concept="3clFbH" id="3m4z3Ef7kVb" role="3cqZAp" />
           <node concept="3SKdUt" id="3PwYUBHEfWW" role="3cqZAp">
             <node concept="1PaTwC" id="3PwYUBHEfWX" role="1aUNEU">
@@ -921,6 +934,27 @@
                 <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
                 <node concept="Xl_RD" id="4Ty7LDC$crv" role="37wK5m">
                   <property role="Xl_RC" value="|(Reloading MPS Plugins)" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbH" id="30eFrqxsriN" role="3cqZAp" />
+          <node concept="3SKdUt" id="30eFrqxssbm" role="3cqZAp">
+            <node concept="1PaTwC" id="30eFrqxssbn" role="1aUNEU">
+              <node concept="3oM_SD" id="30eFrqxssKJ" role="1PaTwD">
+                <property role="3oM_SC" value="jetbrains.mps.nodeEditor.Highlighter#startUpdater" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="30eFrqxssKR" role="3cqZAp">
+            <node concept="2OqwBi" id="30eFrqxssKS" role="3clFbG">
+              <node concept="37vLTw" id="30eFrqxssKT" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="30eFrqxssKU" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="30eFrqxssKV" role="37wK5m">
+                  <property role="Xl_RC" value="|(Highlighter)" />
                 </node>
               </node>
             </node>

@@ -60,6 +60,7 @@ public class ThreadWatcher implements Output {
       // com.intellij.util.io.BaseDataReader 
       builder.append("|(BaseDataReader: error stream of .*git(\\.exe)?.*)");
       builder.append("|(BaseDataReader: output stream of .*git(\\.exe)?.*)");
+      builder.append("|(BaseDataReader: setsid .*git(\\.exe)?.*)");
 
       // com.intellij.execution.process.ProcessIOExecutorService 
       builder.append("|(I/O pool [0-9]+)");
@@ -96,6 +97,9 @@ public class ThreadWatcher implements Output {
 
       // jetbrains.mps.plugins.PluginLoaderRegistry.UpdatingTask 
       builder.append("|(Reloading MPS Plugins)");
+
+      // jetbrains.mps.nodeEditor.Highlighter#startUpdater 
+      builder.append("|(Highlighter)");
       // -------------------------------- 
 
 
