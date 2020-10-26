@@ -36,7 +36,7 @@ import org.junit.runners.model.RunnerBuilder;
     jetbrains.mps.environment.IdeaEnvironmentTest.class,
     jetbrains.mps.classloading.DeploymentConcurrencyTest.class,
     jetbrains.mps.workbench.ProjectCreationTest.class,
-    jetbrains.mps.vfs.tracking.DiskMemoryConflictTest.class,
+//    jetbrains.mps.vfs.tracking.DiskMemoryConflictTest.class, //temporary disabled, see commit message
     jetbrains.mps.ide.vcs.test.merge.ChangesCalculationTest.class,
     jetbrains.mps.ide.vcs.test.merge.StructuredChangesCalculationTest.class,
     jetbrains.mps.ide.vcs.test.merge.RootStatusTest.class,
