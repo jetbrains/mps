@@ -15,10 +15,10 @@
  */
 package jetbrains.mps.project;
 
-import com.intellij.ide.impl.ProjectUtil;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.components.ProjectComponent;
+import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
 import com.intellij.openapi.project.ex.ProjectManagerEx;
 import com.intellij.openapi.util.InvalidDataException;
 import com.intellij.openapi.vcs.changes.ChangeListManager;
@@ -128,7 +128,10 @@ public class MPSProject extends ProjectBase implements FileBasedProject, Project
   @Override
   public void dispose() {
     if (isOpened()) {
-      ApplicationManager.getApplication().invokeAndWait(() -> ProjectUtil.closeAndDispose(myProject), ModalityState.NON_MODAL);
+      ApplicationManager.getApplication().invokeAndWait(() -> {
+        FileEditorManagerEx.getInstanceEx(myProject).closeAllFiles();
+        ProjectManagerEx.getInstanceEx().closeAndDispose(myProject);
+      }, ModalityState.NON_MODAL);
     }
 
     super.dispose();
