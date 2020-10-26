@@ -7,9 +7,11 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class MakePrivateMethodNonVirtual_QuickFix extends QuickFix_Runtime {
   public MakePrivateMethodNonVirtual_QuickFix() {
@@ -20,6 +22,7 @@ public class MakePrivateMethodNonVirtual_QuickFix extends QuickFix_Runtime {
   }
   public void execute(SNode node) {
     SPropertyOperations.assign(SNodeOperations.cast(node, CONCEPTS.ConceptMethodDeclaration$N0), PROPS.isVirtual$quZI, false);
+    SLinkOperations.setTarget(SNodeOperations.cast(node, CONCEPTS.ConceptMethodDeclaration$N0), LINKS.overriddenMethod$quKH, null);
   }
 
   private static final class CONCEPTS {
@@ -28,5 +31,9 @@ public class MakePrivateMethodNonVirtual_QuickFix extends QuickFix_Runtime {
 
   private static final class PROPS {
     /*package*/ static final SProperty isVirtual$quZI = MetaAdapterFactory.getProperty(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d43480580L, "isVirtual");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SReferenceLink overriddenMethod$quKH = MetaAdapterFactory.getReferenceLink(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, 0x11d4348057eL, 0x11d4348057fL, "overriddenMethod");
   }
 }
