@@ -25,7 +25,7 @@
   <xi:include href="/META-INF/PlatformExtensionPoints.xml"/>
   <xi:include href="/META-INF/LangExtensionPoints.xml"/>
 
-  <xi:include href="/META-INF/MPSPlatformExtensions.xml"/>
+  <xi:include href="/META-INF/PlatformExtensions.xml"/>
   <xi:include href="/META-INF/MPSLangExtensions.xml"/>
 
   <xi:include href="/META-INF/WorkspaceModelExtensions.xml"/>

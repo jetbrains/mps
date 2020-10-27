@@ -13,6 +13,7 @@
   <xi:include href="/jetbrains/mps/ide/editor/actions/MPSEditorActions.xml" xpointer="xpointer(/components/*)"/>
 
   <extensions defaultExtensionNs="com.intellij">
+    <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
     <!-- The only reason this contribution is here is that it replaces Ide_PluginInitializer app component that used to be registered here -->
     <mps.PluginComponentContributor application="jetbrains.mps.ide.actions.Ide_ApplicationPlugin" project="jetbrains.mps.ide.actions.Ide_ProjectPlugin" />
   </extensions>
@@ -46,6 +47,10 @@
     <!-- MPS Patch-->
     <applicationService serviceInterface="com.intellij.ui.EditorTextFieldProvider"
                         serviceImplementation="jetbrains.mps.EditorTextFieldProviderImpl"
+                        overrides="true"/>
+    <!-- MPS patch: allows show custom info when no editors opened-->
+    <applicationService serviceInterface="com.intellij.openapi.fileEditor.impl.EditorEmptyTextPainter"
+                        serviceImplementation="jetbrains.mps.ide.ui.fileEditor.MPSEditorEmptyTextPainter"
                         overrides="true"/>
 
     <!--Editor-->
