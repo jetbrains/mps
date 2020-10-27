@@ -31,15 +31,10 @@ public class VisibleArtifacts {
 
   public void collect(boolean localProjectOnly) {
     if (!(localProjectOnly)) {
-      for (SNode layoutDependency : SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.dependencies$redY), CONCEPTS.BuildExternalLayoutDependency$oL)) {
-        SNode target = SLinkOperations.getTarget(layoutDependency, LINKS.layout$GC7_);
-        collectInExternalLayout(layoutDependency, target);
-      }
-      for (SNode projectDependency : SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.dependencies$redY), CONCEPTS.BuildProjectDependency$sN)) {
-        SNode target = SLinkOperations.getTarget(projectDependency, LINKS.script$6Ehy);
-        collectInProject(projectDependency, target);
-      }
+      collectOnlyExternal();
     }
+    // FIXME why do we need artifacts from this very project?! It dates back to 6404ac9c with no clear explanation why do we need it there. 
+    //      I assume now we need modules of this project only in cases when localProjectOnly == true. 
     collectProjectArtifacts();
   }
 
@@ -148,13 +143,6 @@ public class VisibleArtifacts {
   @NotNull
   public Tuples._2<SNode, String> getResource(SNode path) {
     return getLookup().getResource(path);
-  }
-
-  public static VisibleArtifacts createFor(SNode project) {
-    assert !(SNodeOperations.getModel(project).getModule() instanceof TransientModelsModule);
-    VisibleArtifacts artifacts = new VisibleArtifacts(project);
-    artifacts.collect(false);
-    return artifacts;
   }
 
   public static VisibleArtifacts createExternalFor(SNode project) {

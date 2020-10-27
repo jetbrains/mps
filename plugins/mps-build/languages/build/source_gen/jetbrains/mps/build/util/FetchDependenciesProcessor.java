@@ -34,7 +34,7 @@ public class FetchDependenciesProcessor {
         return new ArtifactLookup(this, new DependenciesHelper(FetchDependenciesProcessor.this.genContext, project));
       }
     };
-    artifacts.collect(false);
+    artifacts.collectOnlyExternal();
     UnpackHelper helper = new UnpackHelper(artifacts, genContext);
     for (SNode dep : SNodeOperations.getNodeDescendants(project, CONCEPTS.BuildExternalDependency$vq, false, new SAbstractConcept[]{})) {
       BuildExternalDependency__BehaviorDescriptor.fetchDependencies_id57YmpYyL8F1.invoke(dep, artifacts, new RequiredDependenciesBuilderImpl(artifacts, dep, helper));

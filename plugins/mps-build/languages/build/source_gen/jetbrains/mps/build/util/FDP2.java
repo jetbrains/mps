@@ -38,7 +38,7 @@ public class FDP2 {
 
   public void process() {
     VisibleArtifacts artifacts = new VisibleArtifacts(project);
-    artifacts.collect(false);
+    artifacts.collectOnlyExternal();
     DepCollector db;
     db = new DepCollector(artifacts);
     for (SNode dep : ListSequence.fromList(SNodeOperations.getNodeDescendants(project, CONCEPTS.BuildExternalDependency$vq, false, new SAbstractConcept[]{}))) {

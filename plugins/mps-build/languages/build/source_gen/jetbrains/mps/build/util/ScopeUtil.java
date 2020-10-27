@@ -94,7 +94,7 @@ public class ScopeUtil {
       SModule transientModule = SNodeOperations.getModel(project).getModule();
       return new ModelPlusImportedScope(SNodeOperations.getModel(project), false, CONCEPTS.BuildLayout_Node$Rb);
     }
-    return new VisibleArtifactsScope(VisibleArtifacts.createFor(project), includeLayoutRoots);
+    return new VisibleArtifactsScope(VisibleArtifacts.createExternalFor(project), includeLayoutRoots);
   }
 
   /**
