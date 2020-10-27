@@ -1,3 +1,4 @@
+<!--Patched copy of PlatformLangPlugin.xml-->
 <idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude">
 
   <module value="com.intellij.modules.platform"/>
@@ -8,7 +9,7 @@
   <module value="com.intellij.modules.xml"/>
   <module value="com.intellij.modules.externalSystem"/>
 
-  <xi:include href="/componentSets/MPSIdeaComponents.xml" xpointer="xpointer(/idea-plugin/*)"/>
+  <xi:include href="/componentSets/PlatformLangComponents.xml"/>
   <xi:include href="/idea/MPSRichPlatformActions.xml"/>
 
   <xi:include href="/META-INF/Core.xml"/>
