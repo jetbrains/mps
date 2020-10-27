@@ -20,7 +20,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.generator.template.TemplateQueryContext;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.build.mps.util.MPSModulesClosure;
 import jetbrains.mps.build.mps.util.ModulePlugins;
@@ -57,7 +56,6 @@ public final class BuildMpsLayout_TestModules__BehaviorDescriptor extends BaseBH
   }
   /*package*/ static void fetchDependencies_id57YmpYyL8F1(@NotNull SNode __thisNode__, VisibleArtifacts artifacts, RequiredDependenciesBuilder builder) {
     SNode project = artifacts.getProject();
-    TemplateQueryContext genContext = builder.getGenContext();
     Iterable<SNode> originalModules = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.modules$V7vE)).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
         return (Iterable<SNode>) BuildMpsLayout_TestModules_Content__BehaviorDescriptor.getModules_id3X9rC2XzJij.invoke(it);
@@ -66,7 +64,7 @@ public final class BuildMpsLayout_TestModules__BehaviorDescriptor extends BaseBH
     MPSModulesClosure designtimeClosure = new MPSModulesClosure(originalModules, new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits()).designtimeClosure();
 
     // fetch required plugins 
-    ModulePlugins plugins = new ModulePlugins(project, genContext);
+    ModulePlugins plugins = new ModulePlugins(project);
     List<SNode> additionalPlugins = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.options$gctq), LINKS.requiredPlugins$eyJB)).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
         return SLinkOperations.getTarget(it, LINKS.plugin$qDpN);

@@ -19,7 +19,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.generator.template.TemplateQueryContext;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.build.mps.util.ModulePlugins;
 import jetbrains.mps.build.mps.util.MPSModulesClosure;
@@ -61,10 +60,9 @@ public final class BuildSolutionRunnerAspect__BehaviorDescriptor extends BaseBHD
   }
   /*package*/ static void fetchDependencies_id57YmpYyL8F1(@NotNull SNode __thisNode__, VisibleArtifacts artifacts, RequiredDependenciesBuilder builder) {
     SNode project = artifacts.getProject();
-    TemplateQueryContext genContext = builder.getGenContext();
 
     Iterable<SNode> originalModules = Sequence.<SNode>singleton(SLinkOperations.getTarget(__thisNode__, LINKS.solution$MOiH));
-    ModulePlugins plugins = new ModulePlugins(project, genContext);
+    ModulePlugins plugins = new ModulePlugins(project);
     MPSModulesClosure runtimeClosure = new MPSModulesClosure(originalModules, new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits().setIncludeInitial()).designtimeClosure();
     List<SNode> additionalPlugins = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.requiredPlugin$RiWU)).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {

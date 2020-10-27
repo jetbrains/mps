@@ -3072,7 +3072,6 @@
                               <ref role="cht4Q" to="3ior:4RPz6WoY4Cj" resolve="BuildProject" />
                             </node>
                           </node>
-                          <node concept="1iwH7S" id="5VKiljKNLu" role="37wK5m" />
                         </node>
                       </node>
                     </node>
@@ -3124,6 +3123,7 @@
                       </node>
                       <node concept="liA8E" id="3pzPpUGgG1O" role="2OqNvi">
                         <ref role="37wK5l" to="tken:3pzPpUFQH5V" resolve="getPluginPaths" />
+                        <node concept="1iwH7S" id="3vNUe1zkabv" role="37wK5m" />
                       </node>
                     </node>
                   </node>

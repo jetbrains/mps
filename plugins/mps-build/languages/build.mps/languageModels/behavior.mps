@@ -8498,14 +8498,6 @@
                 <node concept="BsUDl" id="3SWSDDlUmZj" role="37wK5m">
                   <ref role="37wK5l" to="vbkb:13YBgBBS7ex" resolve="getProject" />
                 </node>
-                <node concept="2OqwBi" id="5VKiljnaA$" role="37wK5m">
-                  <node concept="37vLTw" id="5VKiljnaBe" role="2Oq$k0">
-                    <ref role="3cqZAo" node="5VKiljnaB5" resolve="builder" />
-                  </node>
-                  <node concept="liA8E" id="5VKiljnaAA" role="2OqNvi">
-                    <ref role="37wK5l" to="o3n2:7eQOMx82$Ev" resolve="getGenContext" />
-                  </node>
-                </node>
               </node>
             </node>
           </node>

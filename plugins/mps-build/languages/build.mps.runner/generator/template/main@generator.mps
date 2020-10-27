@@ -437,7 +437,6 @@
                                     </node>
                                   </node>
                                 </node>
-                                <node concept="1iwH7S" id="5VKiljfMl$" role="37wK5m" />
                               </node>
                             </node>
                           </node>
@@ -523,6 +522,7 @@
                             <node concept="2OqwBi" id="3pzPpUGgFyt" role="2Oq$k0">
                               <node concept="liA8E" id="3pzPpUGgG1O" role="2OqNvi">
                                 <ref role="37wK5l" to="tken:3a3EL8RUD5I" resolve="getPlugins" />
+                                <node concept="1iwH7S" id="3vNUe1zk1zv" role="37wK5m" />
                               </node>
                               <node concept="37vLTw" id="1bDPmBff00s" role="2Oq$k0">
                                 <ref role="3cqZAo" node="5VKiljfMls" resolve="modulePlugins" />

@@ -97,7 +97,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return "run." + SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.solution$MOiH), PROPS.name$MnvL);
   }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
-    ModulePlugins modulePlugins = new ModulePlugins(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BuildProject$ae, false, false), _context);
+    ModulePlugins modulePlugins = new ModulePlugins(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BuildProject$ae, false, false));
     Iterable<SNode> allModules = ((MPSModulesClosure) _context.getVariable("var:closure")).getAllModules();
     List<SNode> additionalPlugins = ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.requiredPlugin$RiWU)).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
@@ -105,7 +105,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }).toListSequence();
     modulePlugins.collect(allModules, additionalPlugins);
-    return ListSequence.fromList(modulePlugins.getPlugins()).select(new ISelector<Tuples._2<String, String>, SNode>() {
+    return ListSequence.fromList(modulePlugins.getPlugins(_context)).select(new ISelector<Tuples._2<String, String>, SNode>() {
       public SNode select(Tuples._2<String, String> it) {
         return createGeneratorInternal_PluginExpanded_x583g4_a0a0a0e0n(it._0(), it._1());
       }

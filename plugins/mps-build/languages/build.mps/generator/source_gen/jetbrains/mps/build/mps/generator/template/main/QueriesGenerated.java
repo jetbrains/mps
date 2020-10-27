@@ -1382,9 +1382,11 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Iterable<SNode> sourceNodesQuery_10_0(final SourceSubstituteMacroNodesContext _context) {
     // FIXME in fact, we can utilize plugin id now as well (see EnvironmentConfig and PluginData) 
     //      however, would need a node to hold 2 string values at a time 
-    return Sequence.fromIterable(Sequence.fromArray(((ModulePlugins) _context.getVariable("var:requiredPlugins")).getPluginPaths())).select(new ISelector<String, SNode>() {
+    // XXX FWIW, there's GeneratorInternal_PluginExpanded; though I hope to replace with just _IdeaPlugin reference some day, 
+    //    which is to be reduced to path value later. 
+    return Sequence.fromIterable(Sequence.fromArray(((ModulePlugins) _context.getVariable("var:requiredPlugins")).getPluginPaths(_context))).select(new ISelector<String, SNode>() {
       public SNode select(String it) {
-        return createGeneratorInternal_String_x583g4_a0a0a0c0em(it);
+        return createGeneratorInternal_String_x583g4_a0a0a0e0em(it);
       }
     });
   }
@@ -1752,7 +1754,7 @@ public class QueriesGenerated extends QueryProviderBase {
     });
   }
   public static Object varMacro_Value_10_5(final TemplateVarContext _context) {
-    ModulePlugins plugins = new ModulePlugins(SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$ae), _context);
+    ModulePlugins plugins = new ModulePlugins(SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$ae));
     plugins.collect(((MPSModulesPartitioner) _context.getVariable("var:closure")).getExternal(), new ArrayList<SNode>());
     return plugins;
   }
@@ -1760,9 +1762,9 @@ public class QueriesGenerated extends QueryProviderBase {
     return (MPSModulesPartitioner.Chunk) _context.getNode().getUserObject("chunk");
   }
   public static Object varMacro_Value_10_7(final TemplateVarContext _context) {
-    ModulePlugins plugins = new ModulePlugins(SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$ae), _context);
+    ModulePlugins plugins = new ModulePlugins(SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$ae));
     plugins.collect(((MPSModulesPartitioner) _context.getVariable("var:closure")).getExternal(), new ArrayList<SNode>());
-    return plugins.getPluginPaths();
+    return plugins.getPluginPaths(_context);
   }
   public static Object varMacro_Value_10_8(final TemplateVarContext _context) {
     VisibleModules visibleModules = new VisibleModules(_context.getNode(), _context);
@@ -3235,7 +3237,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
   }
-  private static SNode createGeneratorInternal_String_x583g4_a0a0a0c0em(String p0) {
+  private static SNode createGeneratorInternal_String_x583g4_a0a0a0e0em(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_String$CC);
     n0.setProperty(PROPS.path$oN2q, p0);
     return n0.getResult();

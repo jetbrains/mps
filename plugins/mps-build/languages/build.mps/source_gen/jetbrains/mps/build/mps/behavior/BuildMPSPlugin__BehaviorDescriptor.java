@@ -159,7 +159,7 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
     BuildMPSPlugin__BehaviorDescriptor.addPluginsRequiredForGenerationToDepBuilder_id5VKiljnaBi.invoke(__thisNode__, builder, allModules, artifacts);
   }
   /*package*/ static void addPluginsRequiredForGenerationToDepBuilder_id5VKiljnaBi(@NotNull SNode __thisNode__, RequiredDependenciesBuilder builder, Iterable<SNode> allRequiredModules, VisibleArtifacts artifacts) {
-    ModulePlugins plugins = new ModulePlugins(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__), builder.getGenContext());
+    ModulePlugins plugins = new ModulePlugins(BuildPlugin__BehaviorDescriptor.getProject_id13YBgBBS7ex.invoke(__thisNode__));
     plugins.collect(allRequiredModules, new ArrayList<SNode>());
     for (SNode plugin : Sequence.fromIterable(plugins.getDependency())) {
       SNode pluginArtifact = SNodeOperations.as(artifacts.findArtifact(plugin), CONCEPTS.BuildLayout_Node$Rb);

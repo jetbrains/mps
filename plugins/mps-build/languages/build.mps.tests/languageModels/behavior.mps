@@ -132,9 +132,6 @@
         <child id="1199569916463" name="body" index="1bW5cS" />
       </concept>
     </language>
-    <language id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext">
-      <concept id="1216860049633" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextType" flags="in" index="1iwH7U" />
-    </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
       <concept id="5455284157994012186" name="jetbrains.mps.lang.quotation.structure.NodeBuilderInitLink" flags="ng" index="2pIpSj">
         <reference id="5455284157994012188" name="link" index="2pIpSl" />
@@ -335,20 +332,6 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="5aPYql$l11c" role="3cqZAp">
-          <node concept="3cpWsn" id="5aPYql$l11d" role="3cpWs9">
-            <property role="TrG5h" value="genContext" />
-            <node concept="1iwH7U" id="5aPYql$l10a" role="1tU5fm" />
-            <node concept="2OqwBi" id="7eQOMx82MHh" role="33vP2m">
-              <node concept="37vLTw" id="7eQOMx82MHi" role="2Oq$k0">
-                <ref role="3cqZAo" node="3X9rC2XzJei" resolve="builder" />
-              </node>
-              <node concept="liA8E" id="7eQOMx82MHj" role="2OqNvi">
-                <ref role="37wK5l" to="o3n2:7eQOMx82$Ev" resolve="getGenContext" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs8" id="2whOjLMv809" role="3cqZAp">
           <node concept="3cpWsn" id="2whOjLMv7Zx" role="3cpWs9">
             <property role="TrG5h" value="originalModules" />
@@ -440,9 +423,6 @@
                 <ref role="37wK5l" to="tken:3pzPpUFO9wL" resolve="ModulePlugins" />
                 <node concept="37vLTw" id="3qWAZKIrrUH" role="37wK5m">
                   <ref role="3cqZAo" node="3X9rC2XzJen" resolve="project" />
-                </node>
-                <node concept="37vLTw" id="5aPYql$l11h" role="37wK5m">
-                  <ref role="3cqZAo" node="5aPYql$l11d" resolve="genContext" />
                 </node>
               </node>
             </node>

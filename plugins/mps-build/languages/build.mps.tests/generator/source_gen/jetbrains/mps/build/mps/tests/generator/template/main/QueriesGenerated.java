@@ -224,9 +224,9 @@ public class QueriesGenerated extends QueryProviderBase {
     }), new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits()).designtimeClosure();
   }
   public static Object varMacro_Value_0_3(final TemplateVarContext _context) {
-    ModulePlugins plugins = new ModulePlugins(SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$ae), _context);
+    ModulePlugins plugins = new ModulePlugins(SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$ae));
     plugins.collect(((MPSModulesClosure) _context.getVariable("var:closure")).getAllModules(), Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.requiredPlugins$eyJB), LINKS.plugin$qDpN)).toListSequence());
-    return plugins.getPluginPaths();
+    return plugins.getPluginPaths(_context);
   }
   public static Object varMacro_Value_0_4(final TemplateVarContext _context) {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq) == null) || (SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.options$gctq), LINKS.compressArgs$RBk7) == null)) {
