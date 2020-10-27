@@ -32,7 +32,7 @@ public class DeleteFirstAdditionalCaseInSwitch_Test extends BaseTransformationTe
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("6427750727968670353", "6427750727968670375");
+      initEditorComponent("6427750727968670353", "4710857371590990839");
       invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
       invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
     }

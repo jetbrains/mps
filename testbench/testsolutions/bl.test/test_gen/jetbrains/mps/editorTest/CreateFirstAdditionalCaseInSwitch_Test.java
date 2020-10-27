@@ -32,7 +32,7 @@ public class CreateFirstAdditionalCaseInSwitch_Test extends BaseTransformationTe
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("6427750727968508595", "6427750727968513096");
+      initEditorComponent("6427750727968508595", "4710857371590919984");
       typeString("case3");
     }
   }

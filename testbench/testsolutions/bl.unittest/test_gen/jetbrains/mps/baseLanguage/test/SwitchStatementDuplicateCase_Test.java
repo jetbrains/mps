@@ -44,116 +44,16 @@ public class SwitchStatementDuplicateCase_Test extends BaseTransformationTest {
     new TestBody(this).test_ErrorMessagesCheck6427750727968830833();
   }
   @Test
-  public void test_NodeDuplicateCaseCheck6427750727968831472() throws Throwable {
-    new TestBody(this).test_NodeDuplicateCaseCheck6427750727968831472();
+  public void test_NodeDuplicateCaseCheck8139570363454868788() throws Throwable {
+    new TestBody(this).test_NodeDuplicateCaseCheck8139570363454868788();
   }
   @Test
-  public void test_NodeDuplicateCaseCheck6427750727968831320() throws Throwable {
-    new TestBody(this).test_NodeDuplicateCaseCheck6427750727968831320();
+  public void test_NodeDuplicateCaseCheck8139570363454868798() throws Throwable {
+    new TestBody(this).test_NodeDuplicateCaseCheck8139570363454868798();
   }
   @Test
-  public void test_ErrorMessagesCheck6427750727968831026() throws Throwable {
-    new TestBody(this).test_ErrorMessagesCheck6427750727968831026();
-  }
-  @Test
-  public void test_NodeDuplicateCaseCheck6427750727968831501() throws Throwable {
-    new TestBody(this).test_NodeDuplicateCaseCheck6427750727968831501();
-  }
-  @Test
-  public void test_NodeDuplicateCaseCheck6427750727968831895() throws Throwable {
-    new TestBody(this).test_NodeDuplicateCaseCheck6427750727968831895();
-  }
-  @Test
-  public void test_NodeDuplicateCaseCheck6427750727968831509() throws Throwable {
-    new TestBody(this).test_NodeDuplicateCaseCheck6427750727968831509();
-  }
-  @Test
-  public void test_ErrorMessagesCheck6427750727968831518() throws Throwable {
-    new TestBody(this).test_ErrorMessagesCheck6427750727968831518();
-  }
-  @Test
-  public void test_NodeDuplicateCaseCheck174224739472029263() throws Throwable {
-    new TestBody(this).test_NodeDuplicateCaseCheck174224739472029263();
-  }
-  @Test
-  public void test_NodeDuplicateCaseCheck174224739472026251() throws Throwable {
-    new TestBody(this).test_NodeDuplicateCaseCheck174224739472026251();
-  }
-  @Test
-  public void test_ErrorMessagesCheck174224739472022439() throws Throwable {
-    new TestBody(this).test_ErrorMessagesCheck174224739472022439();
-  }
-  @Test
-  public void test_NodeDuplicateCaseCheck174224739472030459() throws Throwable {
-    new TestBody(this).test_NodeDuplicateCaseCheck174224739472030459();
-  }
-  @Test
-  public void test_NodeDuplicateCaseCheck174224739472031367() throws Throwable {
-    new TestBody(this).test_NodeDuplicateCaseCheck174224739472031367();
-  }
-  @Test
-  public void test_ErrorMessagesCheck174224739472026517() throws Throwable {
-    new TestBody(this).test_ErrorMessagesCheck174224739472026517();
-  }
-  @Test
-  public void test_NodeDuplicateCaseCheck174224739472032678() throws Throwable {
-    new TestBody(this).test_NodeDuplicateCaseCheck174224739472032678();
-  }
-  @Test
-  public void test_NodeDuplicateCaseCheck174224739472033578() throws Throwable {
-    new TestBody(this).test_NodeDuplicateCaseCheck174224739472033578();
-  }
-  @Test
-  public void test_ErrorMessagesCheck174224739472026736() throws Throwable {
-    new TestBody(this).test_ErrorMessagesCheck174224739472026736();
-  }
-  @Test
-  public void test_NodeDuplicateCaseCheck174224739472035743() throws Throwable {
-    new TestBody(this).test_NodeDuplicateCaseCheck174224739472035743();
-  }
-  @Test
-  public void test_NodeDuplicateCaseCheck174224739472034843() throws Throwable {
-    new TestBody(this).test_NodeDuplicateCaseCheck174224739472034843();
-  }
-  @Test
-  public void test_ErrorMessagesCheck174224739472026981() throws Throwable {
-    new TestBody(this).test_ErrorMessagesCheck174224739472026981();
-  }
-  @Test
-  public void test_NodeDuplicateCaseCheck174224739472037962() throws Throwable {
-    new TestBody(this).test_NodeDuplicateCaseCheck174224739472037962();
-  }
-  @Test
-  public void test_NodeDuplicateCaseCheck174224739472037089() throws Throwable {
-    new TestBody(this).test_NodeDuplicateCaseCheck174224739472037089();
-  }
-  @Test
-  public void test_ErrorMessagesCheck174224739472027213() throws Throwable {
-    new TestBody(this).test_ErrorMessagesCheck174224739472027213();
-  }
-  @Test
-  public void test_NodeDuplicateCaseCheck174224739472040264() throws Throwable {
-    new TestBody(this).test_NodeDuplicateCaseCheck174224739472040264();
-  }
-  @Test
-  public void test_NodeDuplicateCaseCheck174224739472039281() throws Throwable {
-    new TestBody(this).test_NodeDuplicateCaseCheck174224739472039281();
-  }
-  @Test
-  public void test_ErrorMessagesCheck174224739472027555() throws Throwable {
-    new TestBody(this).test_ErrorMessagesCheck174224739472027555();
-  }
-  @Test
-  public void test_NodeDuplicateCaseCheck174224739472041975() throws Throwable {
-    new TestBody(this).test_NodeDuplicateCaseCheck174224739472041975();
-  }
-  @Test
-  public void test_NodeDuplicateCaseCheck174224739472042902() throws Throwable {
-    new TestBody(this).test_NodeDuplicateCaseCheck174224739472042902();
-  }
-  @Test
-  public void test_ErrorMessagesCheck174224739472027884() throws Throwable {
-    new TestBody(this).test_ErrorMessagesCheck174224739472027884();
+  public void test_ErrorMessagesCheck8139570363454868804() throws Throwable {
+    new TestBody(this).test_ErrorMessagesCheck8139570363454868804();
   }
 
   /*package*/ static class TestBody extends BaseTestBody {
@@ -178,145 +78,20 @@ public class SwitchStatementDuplicateCase_Test extends BaseTransformationTest {
       SNode operation = getRealNodeById("6427750727968830833");
       new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("6427750727968830706"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("6427750727968830812"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
     }
-    public void test_NodeDuplicateCaseCheck6427750727968831472() throws Exception {
-      SNode nodeToCheck = getRealNodeById("6427750727968831157");
-      SNode operation = getRealNodeById("6427750727968831472");
+    public void test_NodeDuplicateCaseCheck8139570363454868788() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8139570363454868786");
+      SNode operation = getRealNodeById("8139570363454868788");
       new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
     }
-    public void test_NodeDuplicateCaseCheck6427750727968831320() throws Exception {
-      SNode nodeToCheck = getRealNodeById("6427750727968831015");
-      SNode operation = getRealNodeById("6427750727968831320");
+    public void test_NodeDuplicateCaseCheck8139570363454868798() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8139570363454868796");
+      SNode operation = getRealNodeById("8139570363454868798");
       new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
     }
-    public void test_ErrorMessagesCheck6427750727968831026() throws Exception {
-      SNode nodeToCheck = getRealNodeById("6427750727968831000");
-      SNode operation = getRealNodeById("6427750727968831026");
-      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("6427750727968831157"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("6427750727968831015"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
-    }
-    public void test_NodeDuplicateCaseCheck6427750727968831501() throws Exception {
-      SNode nodeToCheck = getRealNodeById("6427750727968831499");
-      SNode operation = getRealNodeById("6427750727968831501");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
-    }
-    public void test_NodeDuplicateCaseCheck6427750727968831895() throws Exception {
-      SNode nodeToCheck = getRealNodeById("6427750727968831670");
-      SNode operation = getRealNodeById("6427750727968831895");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
-    }
-    public void test_NodeDuplicateCaseCheck6427750727968831509() throws Exception {
-      SNode nodeToCheck = getRealNodeById("6427750727968831507");
-      SNode operation = getRealNodeById("6427750727968831509");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
-    }
-    public void test_ErrorMessagesCheck6427750727968831518() throws Exception {
-      SNode nodeToCheck = getRealNodeById("6427750727968831490");
-      SNode operation = getRealNodeById("6427750727968831518");
-      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("6427750727968831499"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("6427750727968831670"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("6427750727968831507"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
-    }
-    public void test_NodeDuplicateCaseCheck174224739472029263() throws Exception {
-      SNode nodeToCheck = getRealNodeById("174224739472025679");
-      SNode operation = getRealNodeById("174224739472029263");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
-    }
-    public void test_NodeDuplicateCaseCheck174224739472026251() throws Exception {
-      SNode nodeToCheck = getRealNodeById("174224739472024571");
-      SNode operation = getRealNodeById("174224739472026251");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
-    }
-    public void test_ErrorMessagesCheck174224739472022439() throws Exception {
-      SNode nodeToCheck = getRealNodeById("174224739472022407");
-      SNode operation = getRealNodeById("174224739472022439");
-      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("174224739472025679"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("174224739472024571"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
-    }
-    public void test_NodeDuplicateCaseCheck174224739472030459() throws Exception {
-      SNode nodeToCheck = getRealNodeById("174224739472026502");
-      SNode operation = getRealNodeById("174224739472030459");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
-    }
-    public void test_NodeDuplicateCaseCheck174224739472031367() throws Exception {
-      SNode nodeToCheck = getRealNodeById("174224739472026509");
-      SNode operation = getRealNodeById("174224739472031367");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
-    }
-    public void test_ErrorMessagesCheck174224739472026517() throws Exception {
-      SNode nodeToCheck = getRealNodeById("174224739472026491");
-      SNode operation = getRealNodeById("174224739472026517");
-      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("174224739472026502"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("174224739472026509"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
-    }
-    public void test_NodeDuplicateCaseCheck174224739472032678() throws Exception {
-      SNode nodeToCheck = getRealNodeById("174224739472026719");
-      SNode operation = getRealNodeById("174224739472032678");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
-    }
-    public void test_NodeDuplicateCaseCheck174224739472033578() throws Exception {
-      SNode nodeToCheck = getRealNodeById("174224739472026721");
-      SNode operation = getRealNodeById("174224739472033578");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
-    }
-    public void test_ErrorMessagesCheck174224739472026736() throws Exception {
-      SNode nodeToCheck = getRealNodeById("174224739472026710");
-      SNode operation = getRealNodeById("174224739472026736");
-      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("174224739472026719"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("174224739472026721"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
-    }
-    public void test_NodeDuplicateCaseCheck174224739472035743() throws Exception {
-      SNode nodeToCheck = getRealNodeById("174224739472026966");
-      SNode operation = getRealNodeById("174224739472035743");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
-    }
-    public void test_NodeDuplicateCaseCheck174224739472034843() throws Exception {
-      SNode nodeToCheck = getRealNodeById("174224739472026973");
-      SNode operation = getRealNodeById("174224739472034843");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
-    }
-    public void test_ErrorMessagesCheck174224739472026981() throws Exception {
-      SNode nodeToCheck = getRealNodeById("174224739472026955");
-      SNode operation = getRealNodeById("174224739472026981");
-      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("174224739472026966"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("174224739472026973"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
-    }
-    public void test_NodeDuplicateCaseCheck174224739472037962() throws Exception {
-      SNode nodeToCheck = getRealNodeById("174224739472027198");
-      SNode operation = getRealNodeById("174224739472037962");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
-    }
-    public void test_NodeDuplicateCaseCheck174224739472037089() throws Exception {
-      SNode nodeToCheck = getRealNodeById("174224739472027205");
-      SNode operation = getRealNodeById("174224739472037089");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
-    }
-    public void test_ErrorMessagesCheck174224739472027213() throws Exception {
-      SNode nodeToCheck = getRealNodeById("174224739472027187");
-      SNode operation = getRealNodeById("174224739472027213");
-      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("174224739472027198"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("174224739472027205"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
-    }
-    public void test_NodeDuplicateCaseCheck174224739472040264() throws Exception {
-      SNode nodeToCheck = getRealNodeById("174224739472027540");
-      SNode operation = getRealNodeById("174224739472040264");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
-    }
-    public void test_NodeDuplicateCaseCheck174224739472039281() throws Exception {
-      SNode nodeToCheck = getRealNodeById("174224739472027547");
-      SNode operation = getRealNodeById("174224739472039281");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
-    }
-    public void test_ErrorMessagesCheck174224739472027555() throws Exception {
-      SNode nodeToCheck = getRealNodeById("174224739472027529");
-      SNode operation = getRealNodeById("174224739472027555");
-      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("174224739472027540"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("174224739472027547"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
-    }
-    public void test_NodeDuplicateCaseCheck174224739472041975() throws Exception {
-      SNode nodeToCheck = getRealNodeById("174224739472027867");
-      SNode operation = getRealNodeById("174224739472041975");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
-    }
-    public void test_NodeDuplicateCaseCheck174224739472042902() throws Exception {
-      SNode nodeToCheck = getRealNodeById("174224739472027869");
-      SNode operation = getRealNodeById("174224739472042902");
-      new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(nodeToCheck, MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()).run();
-    }
-    public void test_ErrorMessagesCheck174224739472027884() throws Exception {
-      SNode nodeToCheck = getRealNodeById("174224739472027858");
-      SNode operation = getRealNodeById("174224739472027884");
-      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("174224739472027867"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("174224739472027869"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
+    public void test_ErrorMessagesCheck8139570363454868804() throws Exception {
+      SNode nodeToCheck = getRealNodeById("8139570363454868778");
+      SNode operation = getRealNodeById("8139570363454868804");
+      new CheckErrorMessagesRunnable(nodeToCheck, false, false, ((ProjectBase) myProject).getPlatform()).includeSelf(true).exclude(ListSequence.fromListAndArray(new ArrayList<CheckExpectedMessageRunnable>(), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8139570363454868786"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()), new CheckExpectedMessageRunnable.CheckExpectedRuleMessageRunnable(getRealNodeById("8139570363454868796"), MessageStatus.ERROR, new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276180226257"), "Error: Duplicate case", myProject.getRepository(), ((ProjectBase) myProject).getPlatform()))).run();
     }
 
   }
