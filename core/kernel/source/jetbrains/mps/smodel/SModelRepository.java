@@ -171,7 +171,7 @@ public class SModelRepository {
     }
 
     synchronized (myModelsLock) {
-      for (EditableSModel emd : getModelsToSave()) {
+      for (EditableSModel emd : modelsToRefresh) {
         try {
           emd.save();
         } catch (Throwable t) {
