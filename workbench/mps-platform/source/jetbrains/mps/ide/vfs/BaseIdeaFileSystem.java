@@ -19,6 +19,7 @@ import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.WriteAction;
 import com.intellij.openapi.fileTypes.FileTypeManager;
+import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.openapi.vfs.VirtualFileSystem;
@@ -131,13 +132,12 @@ public abstract class BaseIdeaFileSystem implements IFileSystem, CachingFileSyst
 
   @Override
   public void refresh(@NotNull CachingContext context, Collection<CachingFile> files) {
-    Set<VirtualFile> virtualFiles = files.stream()
-                                         .map(file -> ((IdeaFile) file).getVirtualFile())
-                                         .filter(Objects::nonNull)
-                                         .collect(Collectors.toSet());
-    virtualFiles.forEach(VirtualFile::getChildren); // to enforce refresh for this file
-    // XXX there's VfsUtil.markDirtyAndRefresh() that might serve as better alternative
-    RefreshQueue.getInstance().refresh(!context.isSynchronous(), context.isRecursive(), null, virtualFiles);
+    VirtualFile[] filesArray = files.stream()
+                                    .map(file -> ((IdeaFile) file).getVirtualFile())
+                                    .filter(Objects::nonNull)
+                                    .distinct()
+                                    .toArray(VirtualFile[]::new);
+    VfsUtil.markDirtyAndRefresh(!context.isSynchronous(), context.isRecursive(), true, filesArray);
   }
 
   @Override

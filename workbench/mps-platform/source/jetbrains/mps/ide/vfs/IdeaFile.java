@@ -522,7 +522,7 @@ public class IdeaFile implements IFile, CachingFile {
     if (virtualFile != null) {
       myFS.refresh(context, Collections.singleton(this));
     } else {
-      virtualFile = findVirtualFile0(true);
+      virtualFile = findVirtualFile0(true); // not a mistake the same logic is in LFS#findFileByIoFile
       if (virtualFile != null) {
         myFS.refresh(context, Collections.singleton(this));
       }

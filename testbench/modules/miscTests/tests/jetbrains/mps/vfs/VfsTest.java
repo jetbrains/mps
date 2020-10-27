@@ -36,6 +36,8 @@ import java.util.Collections;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -179,9 +181,7 @@ public class VfsTest implements EnvironmentAware {
       readmeFile.openOutputStream();
       // if file was opened for output, it is an error
       fail();
-    } catch (UnsupportedOperationException e) {
-      // ok
-    } catch (IOException e) {
+    } catch (UnsupportedOperationException | IOException e) {
       // ok
     }
 
@@ -195,8 +195,8 @@ public class VfsTest implements EnvironmentAware {
     }
 
     assertEquals(jarRoot.getPath(), file1.getParent().getParent().getParent().getPath());
-    assertTrue(jarRoot.getParent() != null);
-    assertTrue(jarRoot.getParent().getParent() == null);
+    assertNotNull(jarRoot.getParent());
+    assertNull(jarRoot.getParent().getParent());
   }
 
   @Test

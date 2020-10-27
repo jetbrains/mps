@@ -24,9 +24,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.smodel.DefaultSModel;
-import jetbrains.mps.smodel.DefaultSModelDescriptor;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
@@ -38,6 +36,7 @@ import jetbrains.mps.tool.environment.EnvironmentAware;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.Reference;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.refresh.CachingFile;
 import jetbrains.mps.vfs.refresh.DefaultCachingContext;
@@ -50,7 +49,6 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.EditableSModel;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -89,13 +87,12 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
       Pattern.compile("\\s*<concept id=\"" + ((SConceptAdapterById) CONCEPTS.FieldDeclaration$Ps).getId().getIdValue() + "\"([^\\/]+)/>");
   private static final Pattern CONCEPT_INDEX_MATCHING_PATTERN = Pattern.compile(".*index=\"([^/]+)\".*");
   private static final Pattern PROPERTY_VALUE_MATCHING_PATTERN = Pattern.compile(".*<property.*value=\"([^\"]+)\".*");
-
-  private static final File DESTINATION_PROJECT_DIR = new File(FileUtil.getTempDir(), "testConflicts");
   private static final File PROJECT_LOCATION = new File("testbench/modules/simpleProject");
-  private static final File MODEL_FILE = getModelFile();
   private static final String FIELD_DEFAULT_NAME = "theField";
   private static final String FIELD_NAME_IN_FILE = "theFieldInFile";
   private static final String FIELD_NAME_IN_MODEL = "theFieldInModel";
+
+  private static int ourTestCounter = 0;
 
   private static ProjectCloneSupport ourProject;
 
@@ -110,6 +107,15 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
   private volatile ModelStorageProblemsListener myOldModelStorageListener; // to preserve the model conflict logic as it was in @afterTest
   private volatile DiskMemoryDialogExposer myExposer = (a, b, c) -> UserChoice.MEMORY_CHOSEN; // will be changed from test to test
 
+  @NotNull
+  private File getDestinationProjectDir() {
+    try {
+      return new File(FileUtil.getTempDir(), "testConflicts" + ourTestCounter).getCanonicalFile();
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
   public DiskMemoryConflictTest() {
   }
 
@@ -121,14 +127,13 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
 
   @AfterClass
   public static void deleteProjectClone() {
-    ourProject.closeAndDelete();
+//    ourProject.closeAndDelete();
   }
 
   @Before
   public void beforeTest() {
-    if (ourProject == null) {
-      ourProject = new ProjectCloneSupport(myEnv).cloneProject(PROJECT_LOCATION, DESTINATION_PROJECT_DIR);
-    }
+    ++ourTestCounter;
+    ourProject = new ProjectCloneSupport(myEnv).cloneProject(PROJECT_LOCATION, getDestinationProjectDir());
     Assume.assumeNotNull(ourProject);
     myModelAccess = ourProject.get().getModelAccess();
     Assume.assumeNotNull(myModelAccess);
@@ -136,13 +141,15 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
     Assume.assumeNotNull(myRepository);
     createResolver(); // must be called before any model is in the repo
     Assume.assumeNotNull(myConflictListener);
-    myModelAccess.runReadAction(() -> {
-      SModel model = getModel();
-      myModelBackup = (DefaultSModel) CopyUtil.copyModel(((DefaultSModelDescriptor) model).getSModel());
-      myOriginalModelDataSource = (StreamDataSource) model.getSource();
-    });
-    Assume.assumeNotNull(myModelBackup);
-    Assume.assumeNotNull(myOriginalModelDataSource);
+//    myModelAccess.runReadAction(() -> {
+//      SModel model = getModel();
+//      myModelBackup = (DefaultSModel) CopyUtil.copyModel(((DefaultSModelDescriptor) model).getSModel());
+//      myOriginalModelDataSource = (StreamDataSource) model.getSource();
+//    });
+//    Assume.assumeNotNull(myModelBackup);
+//    Assume.assumeNotNull(myOriginalModelDataSource);
+    IFile existingFile = getFileSystem().findExistingFile(getModelFile().getAbsolutePath());
+    Assume.assumeNotNull(existingFile);
   }
 
   @NotNull
@@ -172,11 +179,10 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
 
   @After
   public void afterTest() {
-    restoreModel();
-    checkInitialState();
-
+//    checkInitialState();
     ModelTracking modelTracking = getModelTracking();
     modelTracking.replaceListener(myOldModelStorageListener);
+    ourProject.closeAndDelete();
   }
 
   @NotNull
@@ -186,6 +192,7 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
 
   @Test
   public void conflictDetectedExactlyOnce() {
+    myExposer = (parentComponent, model, backupFile) -> UserChoice.MEMORY_CHOSEN;
     setFieldNameInModel(FIELD_NAME_IN_MODEL);
     setFieldNameInFile();
     refreshVfs();
@@ -220,7 +227,7 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
   public void deleteDisk_chooseMemory() {
     myExposer = (parentComponent, model, backupFile) -> UserChoice.MEMORY_CHOSEN;
     setFieldNameInModel(FIELD_NAME_IN_MODEL);
-    DiskMemoryConflictTest.delete();
+    delete();
     refreshVfs();
     waitForResolve();
 
@@ -231,7 +238,7 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
   public void deleteDisk_chooseDisk() {
     myExposer = (parentComponent, model, backupFile) -> UserChoice.DISK_CHOSEN;
     setFieldNameInModel(FIELD_NAME_IN_MODEL);
-    DiskMemoryConflictTest.delete();
+    delete();
     refreshVfs();
     waitForResolve();
 
@@ -297,14 +304,15 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
    */
   private String processFieldNameInFile(final String nameToWrite) {
     //  File stuff 
-    if (!(DiskMemoryConflictTest.MODEL_FILE.exists())) {
+    File modelFile = getModelFile();
+    if (!(modelFile.exists())) {
       return null;
     }
     List<String> lines = new ArrayList<>();
     try {
-      try (Scanner scanner = new Scanner(DiskMemoryConflictTest.MODEL_FILE)) {
-        boolean fieldFound = false;
-        boolean nameFound = false;
+      boolean fieldFound = false;
+      boolean nameFound = false;
+      try (Scanner scanner = new Scanner(modelFile)) {
         Pattern fieldStartPattern = null;
         while (scanner.hasNextLine()) {
           String line = scanner.nextLine();
@@ -325,17 +333,14 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
           }
           lines.add(line);
         }
+        Assume.assumeTrue(nameFound);
+        Assume.assumeTrue(fieldFound);
       }
-      long lastModifiedBefore = DiskMemoryConflictTest.MODEL_FILE.lastModified();
-      PrintWriter w = new PrintWriter(DiskMemoryConflictTest.MODEL_FILE);
-      for (String line : lines) {
-        w.println(line);
+      try (PrintWriter writer = new PrintWriter(modelFile)) {
+        for (String line : lines) {
+          writer.println(line);
+        }
       }
-      w.close();
-      if (DiskMemoryConflictTest.MODEL_FILE.lastModified() == lastModifiedBefore) {
-        DiskMemoryConflictTest.setLastModified(lastModifiedBefore + 1000);
-      }
-      DiskMemoryConflictTest.setLastModified(lastModifiedBefore + 2000 + (int) (Math.random() * 100000));
     } catch (FileNotFoundException e) {
       Assert.fail();
     }
@@ -389,8 +394,13 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
   }
 
   private void refreshVfs() {
-    IFile modelFile = myEnv.getPlatform().findComponent(VFSManager.class).getFileSystem(VFSManager.FILE_FS).getFile(DiskMemoryConflictTest.MODEL_FILE);
+    IFileSystem fileSystem = getFileSystem();
+    IFile modelFile = fileSystem.getFile(getModelFile());
     ((CachingFile) modelFile).refresh(new DefaultCachingContext(true, true));
+  }
+
+  private IFileSystem getFileSystem() {
+    return myEnv.getPlatform().findComponent(VFSManager.class).getFileSystem(VFSManager.FILE_FS);
   }
 
   /**
@@ -423,23 +433,17 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
     }
   }
 
-  private static File getModelFile() { File modelFile = new File(DiskMemoryConflictTest.DESTINATION_PROJECT_DIR, "solutions/simpleProject/simpleModel.mps");
+  private File getModelFile() {
+    File modelFile = new File(getDestinationProjectDir(), "solutions/simpleProject/simpleModel.mps");
     try {
       return modelFile.getCanonicalFile();
     } catch (IOException ex) {
-      ex.printStackTrace();
-    }
-    return modelFile;
-  }
-
-  private static void setLastModified(long timeStamp) {
-    if (!(MODEL_FILE.setLastModified(timeStamp))) {
-      Assert.fail();
+      throw new RuntimeException(ex);
     }
   }
 
-  private static void delete() {
-    if (!(MODEL_FILE.delete())) {
+  private void delete() {
+    if (!(getModelFile().delete())) {
       Assert.fail();
     }
   }
@@ -466,7 +470,7 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
 
     @Override
     public void onConflictResolved(@NotNull EditableSModel model) {
-      LOG.info("Got conflict for the model " + model);
+      LOG.info("Got conflict resolved for the model " + model);
       Assume.assumeTrue(!myFuture.isDone());
       myFuture.complete(null);
     }

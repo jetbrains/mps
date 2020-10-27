@@ -52,7 +52,7 @@ public class FSChangesWatcher implements ApplicationComponent {
   };
 
   private MessageBusConnection myConnection;
-  private BulkFileListener myBusListener = new BulkFileChangesListener();
+  private final BulkFileListener myBusListener = new BulkFileChangesListener();
   private final ReloadManagerComponent myReloadManager;
   private final IdeaFileSystem myIdeaFileSystem;
 
