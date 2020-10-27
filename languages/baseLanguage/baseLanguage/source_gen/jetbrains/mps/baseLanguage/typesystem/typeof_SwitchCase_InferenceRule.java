@@ -10,8 +10,6 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typesystem.inference.EquationInfo;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -21,7 +19,7 @@ public class typeof_SwitchCase_InferenceRule extends AbstractInferenceRule_Runti
   public typeof_SwitchCase_InferenceRule() {
   }
   public void applyRule(final SNode switchCase, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    final SNode switchNode = SNodeOperations.as(SNodeOperations.getParent(switchCase), CONCEPTS.SwitchStatement$kN);
+    SNode switchNode = SNodeOperations.as(SNodeOperations.getParent(switchCase), CONCEPTS.SwitchStatement$kN);
     if ((switchNode != null)) {
       if (!(typeCheckingContext.isSingleTypeComputation())) {
         {
@@ -30,17 +28,6 @@ public class typeof_SwitchCase_InferenceRule extends AbstractInferenceRule_Runti
           typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "9035995549588792243", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(switchNode, LINKS.expression$CjpY), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "9035995549588792240", true), true, false, _info_12389875345);
         }
       }
-      ListSequence.fromList(SLinkOperations.getChildren(switchCase, LINKS.switchCaseExtensions$2298)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          if (!(typeCheckingContext.isSingleTypeComputation())) {
-            {
-              SNode _nodeToCheck_1029348928467 = SLinkOperations.getTarget(it, LINKS.expression$bChi);
-              EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276169443659", 0, null);
-              typeCheckingContext.createLessThanInequality((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276169443666", true), (SNode) typeCheckingContext.typeOf(SLinkOperations.getTarget(switchNode, LINKS.expression$CjpY), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8572110276169443661", true), true, false, _info_12389875345);
-            }
-          }
-        }
-      });
     }
   }
   public SAbstractConcept getApplicableConcept() {
@@ -61,7 +48,5 @@ public class typeof_SwitchCase_InferenceRule extends AbstractInferenceRule_Runti
   private static final class LINKS {
     /*package*/ static final SContainmentLink expression$QQk6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression");
     /*package*/ static final SContainmentLink expression$CjpY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02ec241L, "expression");
-    /*package*/ static final SContainmentLink switchCaseExtensions$2298 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x6d52edcb6dda26bbL, "switchCaseExtensions");
-    /*package*/ static final SContainmentLink expression$bChi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6d52edcb6dd8fdccL, 0x6d52edcb6dd8fdcdL, "expression");
   }
 }

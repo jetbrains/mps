@@ -17,8 +17,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -35,14 +33,9 @@ public final class SwitchCase__BehaviorDescriptor extends BaseBHDescriptor {
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static void collectUncaughtThrowables_id3JrbGEZ6KoZ(@NotNull SNode __thisNode__, final Set<SNode> throwables, boolean ignoreMayBeThrowables) {
+  /*package*/ static void collectUncaughtThrowables_id3JrbGEZ6KoZ(@NotNull SNode __thisNode__, Set<SNode> throwables, boolean ignoreMayBeThrowables) {
     if (!(ignoreMayBeThrowables)) {
       Statement__BehaviorDescriptor.collectUncaughtMethodThrowables_id4Gt7ANIVBW7.invoke(SNodeOperations.asSConcept(CONCEPTS.Statement$P6), throwables, SLinkOperations.getTarget(__thisNode__, LINKS.expression$QQk6));
-      ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.switchCaseExtensions$2298)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          Statement__BehaviorDescriptor.collectUncaughtMethodThrowables_id4Gt7ANIVBW7.invoke(SNodeOperations.asSConcept(CONCEPTS.Statement$P6), throwables, SLinkOperations.getTarget(it, LINKS.expression$bChi));
-        }
-      });
     }
     StatementList__BehaviorDescriptor.collectUncaughtThrowables_id4Gt7ANIVHca.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.body$5LhG), throwables, ((boolean) ignoreMayBeThrowables));
   }
@@ -100,8 +93,6 @@ public final class SwitchCase__BehaviorDescriptor extends BaseBHDescriptor {
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink expression$QQk6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression");
-    /*package*/ static final SContainmentLink switchCaseExtensions$2298 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x6d52edcb6dda26bbL, "switchCaseExtensions");
-    /*package*/ static final SContainmentLink expression$bChi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6d52edcb6dd8fdccL, 0x6d52edcb6dd8fdcdL, "expression");
     /*package*/ static final SContainmentLink body$5LhG = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d8048L, "body");
   }
 }

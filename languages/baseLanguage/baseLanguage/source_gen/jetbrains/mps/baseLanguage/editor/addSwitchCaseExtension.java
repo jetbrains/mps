@@ -22,9 +22,12 @@ import org.apache.log4j.Logger;
 import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -33,6 +36,8 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class addSwitchCaseExtension extends TransformationMenuBase {
@@ -102,7 +107,10 @@ public class addSwitchCaseExtension extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.switchCaseExtensions$2298)).insertElement(0, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6d52edcb6dd8fdccL, "jetbrains.mps.baseLanguage.structure.SwitchCaseExtension")));
+        SNode n = SNodeOperations.insertNextSiblingChild(_context.getNode(), SNodeFactoryOperations.createNewNode(CONCEPTS.SwitchCase$7o, null));
+        SLinkOperations.setTarget(n, LINKS.body$5LhG, SLinkOperations.getTarget(_context.getNode(), LINKS.body$5LhG));
+        SLinkOperations.setTarget(_context.getNode(), LINKS.body$5LhG, SNodeFactoryOperations.createNewNode(CONCEPTS.StatementList$m_, null));
+        SelectionUtil.selectCell(_context.getEditorContext(), n, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL);
       }
 
 
@@ -125,7 +133,12 @@ public class addSwitchCaseExtension extends TransformationMenuBase {
 
   }
 
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept SwitchCase$7o = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, "jetbrains.mps.baseLanguage.structure.SwitchCase");
+    /*package*/ static final SConcept StatementList$m_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList");
+  }
+
   private static final class LINKS {
-    /*package*/ static final SContainmentLink switchCaseExtensions$2298 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x6d52edcb6dda26bbL, "switchCaseExtensions");
+    /*package*/ static final SContainmentLink body$5LhG = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d8048L, "body");
   }
 }

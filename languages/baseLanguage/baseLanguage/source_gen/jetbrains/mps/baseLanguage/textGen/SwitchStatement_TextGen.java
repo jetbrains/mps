@@ -48,16 +48,6 @@ public class SwitchStatement_TextGen extends TextGenDescriptorBase {
         tgs.appendNode(SLinkOperations.getTarget(sc, LINKS.expression$QQk6));
       }
       tgs.append(":");
-      for (SNode ex : SLinkOperations.getChildren(sc, LINKS.switchCaseExtensions$2298)) {
-        tgs.append(" case ");
-        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ex, LINKS.expression$bChi), CONCEPTS.EnumConstantReference$kA)) {
-          SNode enumConstant = (SNode) SLinkOperations.getTarget(ex, LINKS.expression$bChi);
-          tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(enumConstant, LINKS.enumConstantDeclaration$f1_N), PROPS.name$MnvL));
-        } else {
-          tgs.appendNode(SLinkOperations.getTarget(ex, LINKS.expression$bChi));
-        }
-        tgs.append(":");
-      }
       ctx.getBuffer().area().increaseIndent();
       tgs.appendNode(SLinkOperations.getTarget(sc, LINKS.body$5LhG));
       ctx.getBuffer().area().decreaseIndent();
@@ -84,8 +74,6 @@ public class SwitchStatement_TextGen extends TextGenDescriptorBase {
     /*package*/ static final SContainmentLink expression$CjpY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02ec241L, "expression");
     /*package*/ static final SContainmentLink expression$QQk6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression");
     /*package*/ static final SReferenceLink enumConstantDeclaration$f1_N = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc37588bc8L, 0xfc37588bcaL, "enumConstantDeclaration");
-    /*package*/ static final SContainmentLink expression$bChi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6d52edcb6dd8fdccL, 0x6d52edcb6dd8fdcdL, "expression");
-    /*package*/ static final SContainmentLink switchCaseExtensions$2298 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x6d52edcb6dda26bbL, "switchCaseExtensions");
     /*package*/ static final SContainmentLink body$5LhG = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d8048L, "body");
     /*package*/ static final SContainmentLink case$8PWE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02edcafL, "case");
     /*package*/ static final SContainmentLink defaultBlock$QOu8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02c1b6eL, "defaultBlock");

@@ -331,7 +331,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setCellId("refNodeList_case");
     Style style = new StyleImpl();
     style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
-    style.set(StyleAttributes.INDENT_LAYOUT_CHILDREN_NEWLINE, true);
     editorCell.getStyle().putAll(style);
     editorCell.setSRole(handler.getElementSRole());
     return editorCell;

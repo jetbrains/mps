@@ -3672,7 +3672,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)/1163670641947");
     b.version(2);
     b.aggregate("expression", 0x10ef02d67cfL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1163670677455").done();
-    b.aggregate("switchCaseExtensions", 0x6d52edcb6dda26bbL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6d52edcb6dd8fdccL).optional(true).ordered(true).multiple(true).origin("7877620156201576123").done();
     b.aggregate("body", 0x10ef02d8048L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L).optional(false).ordered(true).multiple(false).origin("1163670683720").done();
     b.alias("case");
     return b.create();

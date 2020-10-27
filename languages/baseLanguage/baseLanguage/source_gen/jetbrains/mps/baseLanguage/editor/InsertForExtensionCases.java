@@ -5,13 +5,16 @@ package jetbrains.mps.baseLanguage.editor;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class NoInsertForExtensionCases {
+public class InsertForExtensionCases {
 
   /*package*/ static AbstractCellAction createAction_INSERT(final SNode node) {
     return new AbstractCellAction() {
@@ -19,13 +22,7 @@ public class NoInsertForExtensionCases {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-      }
-      @Override
-      public boolean canExecute(EditorContext editorContext) {
-        return this.canExecute_internal(editorContext, node);
-      }
-      public boolean canExecute_internal(EditorContext editorContext, SNode node) {
-        return false;
+        SLinkOperations.addNewChild(SLinkOperations.getTarget(node, LINKS.body$5LhG), LINKS.statement$53DE, null);
       }
 
     };
@@ -70,5 +67,10 @@ public class NoInsertForExtensionCases {
     if (Objects.equals(actionType, CellActionType.INSERT)) {
       editorCell.setAction(actionType, createAction_INSERT(node));
     }
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink body$5LhG = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d8048L, "body");
+    /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
   }
 }

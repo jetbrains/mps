@@ -10,7 +10,6 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.behavior.Expression__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -36,15 +35,7 @@ public class check_DuplicateCase_NonTypesystemRule extends AbstractNonTypesystem
       public SNode select(SNode it) {
         return SLinkOperations.getTarget(it, LINKS.expression$QQk6);
       }
-    }).union(ListSequence.fromList(SLinkOperations.getChildren(switchStatement, LINKS.case$8PWE)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.switchCaseExtensions$2298)).select(new ISelector<SNode, SNode>() {
-          public SNode select(SNode ex) {
-            return SLinkOperations.getTarget(ex, LINKS.expression$bChi);
-          }
-        });
-      }
-    })).where(new IWhereFilter<SNode>() {
+    }).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return (boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(it);
       }
@@ -88,8 +79,6 @@ public class check_DuplicateCase_NonTypesystemRule extends AbstractNonTypesystem
   private static final class LINKS {
     /*package*/ static final SContainmentLink case$8PWE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02edcafL, "case");
     /*package*/ static final SContainmentLink expression$QQk6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression");
-    /*package*/ static final SContainmentLink switchCaseExtensions$2298 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x6d52edcb6dda26bbL, "switchCaseExtensions");
-    /*package*/ static final SContainmentLink expression$bChi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6d52edcb6dd8fdccL, 0x6d52edcb6dd8fdcdL, "expression");
   }
 
   private static final class CONCEPTS {

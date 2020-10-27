@@ -3176,78 +3176,60 @@
       <node id="1237463992702" at="45,90,46,144" concept="5" />
       <node id="1237463991978" at="47,14,48,77" concept="5" />
       <node id="1237561671448" at="49,7,50,22" concept="5" />
-      <node id="7877620156201788677" at="51,89,52,29" concept="5" />
-      <node id="7877620156201788804" at="53,132,54,92" concept="11" />
-      <node id="7877620156201788813" at="54,92,55,146" concept="5" />
-      <node id="7877620156201788828" at="56,16,57,79" concept="5" />
-      <node id="7877620156201788833" at="58,9,59,24" concept="5" />
-      <node id="1235133293900" at="60,7,61,46" concept="5" />
-      <node id="1237463992052" at="61,46,62,69" concept="5" />
-      <node id="1235133293900" at="62,69,63,46" concept="5" />
-      <node id="1237463993075" at="65,94,66,20" concept="5" />
-      <node id="1237466021128" at="66,20,67,19" concept="5" />
-      <node id="1237466021128" at="67,19,68,29" concept="5" />
-      <node id="6064641261140942067" at="68,29,69,46" concept="5" />
-      <node id="1237463993141" at="69,46,70,96" concept="5" />
-      <node id="6064641261140942067" at="70,96,71,46" concept="5" />
-      <node id="1235133163324" at="72,5,73,44" concept="5" />
-      <node id="1237561639255" at="73,44,74,18" concept="5" />
-      <node id="1237466039851" at="74,18,75,17" concept="5" />
-      <node id="1237466039851" at="75,17,76,20" concept="5" />
-      <node id="1235133163324" at="77,30,78,181" concept="5" />
-      <node id="1235133163324" at="83,0,84,0" concept="15" trace="switchLabel$nNiT" />
-      <node id="1235133163324" at="84,0,85,0" concept="15" trace="expression$CjpY" />
-      <node id="1235133163324" at="85,0,86,0" concept="15" trace="expression$QQk6" />
-      <node id="1235133163324" at="86,0,87,0" concept="15" trace="enumConstantDeclaration$f1_N" />
-      <node id="1235133163324" at="87,0,88,0" concept="15" trace="expression$bChi" />
-      <node id="1235133163324" at="88,0,89,0" concept="15" trace="switchCaseExtensions$2298" />
-      <node id="1235133163324" at="89,0,90,0" concept="15" trace="body$5LhG" />
-      <node id="1235133163324" at="90,0,91,0" concept="15" trace="case$8PWE" />
-      <node id="1235133163324" at="91,0,92,0" concept="15" trace="defaultBlock$QOu8" />
-      <node id="1235133163324" at="95,0,96,0" concept="15" trace="name$MnvL" />
-      <node id="1235133163324" at="96,0,97,0" concept="15" trace="label$vLWZ" />
-      <node id="1235133163324" at="100,0,101,0" concept="15" trace="EnumConstantReference$kA" />
-      <node id="1235133163324" at="101,0,102,0" concept="15" trace="TraceableConcept$L" />
+      <node id="1235133293900" at="50,22,51,46" concept="5" />
+      <node id="1237463992052" at="51,46,52,69" concept="5" />
+      <node id="1235133293900" at="52,69,53,46" concept="5" />
+      <node id="1237463993075" at="55,94,56,20" concept="5" />
+      <node id="1237466021128" at="56,20,57,19" concept="5" />
+      <node id="1237466021128" at="57,19,58,29" concept="5" />
+      <node id="6064641261140942067" at="58,29,59,46" concept="5" />
+      <node id="1237463993141" at="59,46,60,96" concept="5" />
+      <node id="6064641261140942067" at="60,96,61,46" concept="5" />
+      <node id="1235133163324" at="62,5,63,44" concept="5" />
+      <node id="1237561639255" at="63,44,64,18" concept="5" />
+      <node id="1237466039851" at="64,18,65,17" concept="5" />
+      <node id="1237466039851" at="65,17,66,20" concept="5" />
+      <node id="1235133163324" at="67,30,68,181" concept="5" />
+      <node id="1235133163324" at="73,0,74,0" concept="15" trace="switchLabel$nNiT" />
+      <node id="1235133163324" at="74,0,75,0" concept="15" trace="expression$CjpY" />
+      <node id="1235133163324" at="75,0,76,0" concept="15" trace="expression$QQk6" />
+      <node id="1235133163324" at="76,0,77,0" concept="15" trace="enumConstantDeclaration$f1_N" />
+      <node id="1235133163324" at="77,0,78,0" concept="15" trace="body$5LhG" />
+      <node id="1235133163324" at="78,0,79,0" concept="15" trace="case$8PWE" />
+      <node id="1235133163324" at="79,0,80,0" concept="15" trace="defaultBlock$QOu8" />
+      <node id="1235133163324" at="83,0,84,0" concept="15" trace="name$MnvL" />
+      <node id="1235133163324" at="84,0,85,0" concept="15" trace="label$vLWZ" />
+      <node id="1235133163324" at="88,0,89,0" concept="15" trace="EnumConstantReference$kA" />
+      <node id="1235133163324" at="89,0,90,0" concept="15" trace="TraceableConcept$L" />
       <node id="1235133501352" at="47,12,49,7" concept="1" />
-      <node id="7877620156201788825" at="56,14,58,9" concept="1" />
-      <node id="1235133163324" at="76,20,79,5" concept="9" />
+      <node id="1235133163324" at="66,20,69,5" concept="9" />
       <node id="1235133341981" at="43,26,49,7" concept="9" />
-      <node id="7877620156201788802" at="52,29,58,9" concept="9" />
-      <node id="6064641261140942065" at="64,5,72,5" concept="9" />
+      <node id="6064641261140942065" at="54,5,62,5" concept="9" />
       <node id="4652593672362426966" at="24,29,33,5" concept="9" />
-      <node id="7877620156201766239" at="50,22,60,7" concept="8" />
-      <node id="1235133293899" at="39,44,64,5" concept="8" />
-      <node id="1235133163324" at="21,0,81,0" concept="10" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
+      <node id="1235133293899" at="39,44,54,5" concept="8" />
+      <node id="1235133163324" at="21,0,71,0" concept="10" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
       <scope id="1235133501353" at="47,14,48,77" />
-      <scope id="7877620156201788826" at="56,16,57,79" />
-      <scope id="1235133163324" at="77,30,78,181" />
+      <scope id="1235133163324" at="67,30,68,181" />
       <scope id="1235133341982" at="44,130,46,144">
         <var name="enumConstant" id="1235133400763" />
       </scope>
-      <scope id="7877620156201788803" at="53,132,55,146">
-        <var name="enumConstant" id="7877620156201788805" />
-      </scope>
       <scope id="4652593672362426967" at="25,93,28,22" />
       <scope id="4652593672362426996" at="29,96,32,22" />
-      <scope id="6064641261140942067" at="65,94,71,46" />
-      <scope id="7877620156201766241" at="51,89,59,24" />
-      <scope id="7877620156201766239" at="50,22,60,7">
-        <var name="ex" id="7877620156201766242" />
-      </scope>
-      <scope id="1235133293900" at="40,90,63,46" />
-      <scope id="1235133293899" at="39,44,64,5">
+      <scope id="6064641261140942067" at="55,94,61,46" />
+      <scope id="1235133293900" at="40,90,53,46" />
+      <scope id="1235133293899" at="39,44,54,5">
         <var name="sc" id="1235133293903" />
       </scope>
-      <scope id="1235133163324" at="22,54,79,5">
+      <scope id="1235133163324" at="22,54,69,5">
         <var name="tgs" id="1235133163324" />
       </scope>
-      <scope id="1235133163324" at="21,0,81,0">
+      <scope id="1235133163324" at="21,0,71,0">
         <var name="ctx" id="1235133163324" />
       </scope>
-      <unit id="1235133163324" at="94,0,98,0" name="jetbrains.mps.baseLanguage.textGen.SwitchStatement_TextGen$PROPS" />
-      <unit id="1235133163324" at="99,0,103,0" name="jetbrains.mps.baseLanguage.textGen.SwitchStatement_TextGen$CONCEPTS" />
-      <unit id="1235133163324" at="82,0,93,0" name="jetbrains.mps.baseLanguage.textGen.SwitchStatement_TextGen$LINKS" />
-      <unit id="1235133163324" at="20,0,104,0" name="jetbrains.mps.baseLanguage.textGen.SwitchStatement_TextGen" />
+      <unit id="1235133163324" at="82,0,86,0" name="jetbrains.mps.baseLanguage.textGen.SwitchStatement_TextGen$PROPS" />
+      <unit id="1235133163324" at="87,0,91,0" name="jetbrains.mps.baseLanguage.textGen.SwitchStatement_TextGen$CONCEPTS" />
+      <unit id="1235133163324" at="72,0,81,0" name="jetbrains.mps.baseLanguage.textGen.SwitchStatement_TextGen$LINKS" />
+      <unit id="1235133163324" at="20,0,92,0" name="jetbrains.mps.baseLanguage.textGen.SwitchStatement_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
       <node id="1235133163324" at="287,49,288,45" concept="12" />

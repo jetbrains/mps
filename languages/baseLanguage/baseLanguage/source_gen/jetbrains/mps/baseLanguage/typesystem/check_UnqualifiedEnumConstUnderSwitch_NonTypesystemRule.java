@@ -11,7 +11,6 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SReference;
@@ -36,11 +35,6 @@ public class check_UnqualifiedEnumConstUnderSwitch_NonTypesystemRule extends Abs
   public void applyRule(final SNode switchCase, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // FIXME: almost duplicate code with MultipleFilesParser 
     List<SNode> exps = ListSequence.fromListAndArray(new ArrayList<SNode>(), SLinkOperations.getTarget(switchCase, LINKS.expression$QQk6));
-    ListSequence.fromList(exps).addSequence(ListSequence.fromList(SLinkOperations.getChildren(switchCase, LINKS.switchCaseExtensions$2298)).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.expression$bChi);
-      }
-    }));
     ListSequence.fromList(exps).visitAll(new IVisitor<SNode>() {
       public void visit(SNode caseExp) {
         if (!(SNodeOperations.isInstanceOf(caseExp, CONCEPTS.VariableReference$TC))) {
@@ -101,8 +95,6 @@ public class check_UnqualifiedEnumConstUnderSwitch_NonTypesystemRule extends Abs
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink expression$QQk6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression");
-    /*package*/ static final SContainmentLink switchCaseExtensions$2298 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x6d52edcb6dda26bbL, "switchCaseExtensions");
-    /*package*/ static final SContainmentLink expression$bChi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6d52edcb6dd8fdccL, 0x6d52edcb6dd8fdcdL, "expression");
     /*package*/ static final SReferenceLink variableDeclaration$N1XG = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration");
     /*package*/ static final SContainmentLink expression$CjpY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02ec241L, "expression");
     /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
