@@ -3971,11 +3971,8 @@
                         <node concept="37vLTw" id="3vW0fDNPreX" role="2Oq$k0">
                           <ref role="3cqZAo" node="3vW0fDNPreQ" resolve="localArtifacts" />
                         </node>
-                        <node concept="liA8E" id="3vW0fDNPreY" role="2OqNvi">
-                          <ref role="37wK5l" to="o3n2:450ejGzgMJM" resolve="collect" />
-                          <node concept="3clFbT" id="3vW0fDNPreZ" role="37wK5m">
-                            <property role="3clFbU" value="true" />
-                          </node>
+                        <node concept="liA8E" id="3vNUe1yBwWz" role="2OqNvi">
+                          <ref role="37wK5l" to="o3n2:2whOjLMobIM" resolve="collectProjectArtifacts" />
                         </node>
                       </node>
                     </node>

@@ -213,7 +213,7 @@
     <file name="check_BuildMpsLayout_TestModules_NonTypesystemRule.java">
       <node id="2834134232274841256" at="31,124,32,114" concept="6" />
       <node id="3307067233294926653" at="32,114,33,63" concept="6" />
-      <node id="3307067233294896374" at="33,63,34,28" concept="2" />
+      <node id="3307067233294896374" at="33,63,34,40" concept="2" />
       <node id="2834134232275895007" at="38,11,39,70" concept="6" />
       <node id="2834134232275895007" at="39,70,40,357" concept="6" />
       <node id="2834134232276643490" at="41,13,42,181" concept="6" />
@@ -235,7 +235,7 @@
       <node id="2834134232275895007" at="37,55,47,11" concept="0" />
       <node id="3307067233294961239" at="36,157,48,9" concept="4" />
       <node id="3307067233295704943" at="35,121,49,7" concept="3" />
-      <node id="3307067233294958220" at="34,28,50,5" concept="3" />
+      <node id="3307067233294958220" at="34,40,50,5" concept="3" />
       <node id="3307067233294621118" at="31,0,52,0" concept="5" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="3307067233294621118" at="29,63,29,63" />
       <scope id="3307067233294621118" at="52,50,53,50" />
@@ -260,7 +260,7 @@
       <scope id="3307067233295704943" at="35,121,49,7">
         <var name="module" id="3307067233295704945" />
       </scope>
-      <scope id="3307067233294958220" at="34,28,50,5">
+      <scope id="3307067233294958220" at="34,40,50,5">
         <var name="testModuleContent" id="3307067233294958222" />
       </scope>
       <scope id="3307067233294621119" at="31,124,50,5">

@@ -1611,7 +1611,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }
 
     VisibleArtifacts localArtifacts = new VisibleArtifacts(project);
-    localArtifacts.collect(true);
+    localArtifacts.collectProjectArtifacts();
     return localArtifacts;
   }
   public static Object varMacro_Value_0_4(final TemplateVarContext _context) {

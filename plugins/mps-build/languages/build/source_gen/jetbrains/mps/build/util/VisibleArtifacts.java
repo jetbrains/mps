@@ -49,7 +49,7 @@ public class VisibleArtifacts {
     }
   }
 
-  private void collectProjectArtifacts() {
+  public void collectProjectArtifacts() {
     collectInProject(SLinkOperations.getTarget(project, LINKS.layout$r7bw), project);
   }
 

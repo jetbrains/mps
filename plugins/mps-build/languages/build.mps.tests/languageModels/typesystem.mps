@@ -72,9 +72,6 @@
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
-      <concept id="1068580123137" name="jetbrains.mps.baseLanguage.structure.BooleanConstant" flags="nn" index="3clFbT">
-        <property id="1068580123138" name="value" index="3clFbU" />
-      </concept>
       <concept id="1068581242875" name="jetbrains.mps.baseLanguage.structure.PlusExpression" flags="nn" index="3cpWs3" />
       <concept id="1068581242878" name="jetbrains.mps.baseLanguage.structure.ReturnStatement" flags="nn" index="3cpWs6" />
       <concept id="1068581242864" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" flags="nn" index="3cpWs8">
@@ -569,11 +566,8 @@
           <node concept="37vLTw" id="2R_4228Scd2" role="2Oq$k0">
             <ref role="3cqZAo" node="2R_4228SccY" resolve="artifacts" />
           </node>
-          <node concept="liA8E" id="2R_4228Sg23" role="2OqNvi">
-            <ref role="37wK5l" to="o3n2:450ejGzgMJM" resolve="collect" />
-            <node concept="3clFbT" id="2R_4228Sg3m" role="37wK5m">
-              <property role="3clFbU" value="true" />
-            </node>
+          <node concept="liA8E" id="3vNUe1yBnxn" role="2OqNvi">
+            <ref role="37wK5l" to="o3n2:2whOjLMobIM" resolve="collectProjectArtifacts" />
           </node>
         </node>
       </node>

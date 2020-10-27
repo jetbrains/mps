@@ -31,7 +31,7 @@ public class check_BuildMpsLayout_TestModules_NonTypesystemRule extends Abstract
   public void applyRule(final SNode testModules, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     @NotNull SNode project = SNodeOperations.getNodeAncestor(testModules, CONCEPTS.BuildProject$ae, false, false);
     VisibleArtifacts artifacts = new VisibleArtifacts(project);
-    artifacts.collect(true);
+    artifacts.collectProjectArtifacts();
     for (SNode testModuleContent : ListSequence.fromList(SLinkOperations.getChildren(testModules, LINKS.modules$V7vE))) {
       for (SNode module : Sequence.fromIterable(BuildMpsLayout_TestModules_Content__BehaviorDescriptor.getModules_id3X9rC2XzJij.invoke(testModuleContent))) {
         if ((artifacts.findArtifact(module) == null)) {
