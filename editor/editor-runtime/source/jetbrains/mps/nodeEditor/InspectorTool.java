@@ -136,7 +136,7 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
   @Override
   public void initComponent() {
     createTool();
-    StartupManager.getInstance(getProject()).registerPostStartupActivity(this::registerLater);
+    StartupManager.getInstance(getProject()).runAfterOpened(this::registerLater);
   }
 
   @Override
