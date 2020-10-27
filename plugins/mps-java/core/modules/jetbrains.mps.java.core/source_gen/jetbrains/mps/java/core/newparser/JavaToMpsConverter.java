@@ -562,12 +562,12 @@ public class JavaToMpsConverter {
 
           progress.advance(1);
 
-          for (SNode swicthCase : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.SwitchCase$7o, false, new SAbstractConcept[]{}))) {
-            SNode subst = transformUnqualifedEnumUnderSwitch(swicthCase);
+          for (SNode switchCase : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.SwitchCase$7o, false, new SAbstractConcept[]{}))) {
+            SNode subst = transformUnqualifedEnumUnderSwitch(switchCase);
             if ((subst == null)) {
               continue;
             }
-            MapSequence.fromMap(enumConstRefs).put(SNodeOperations.cast(SLinkOperations.getTarget(swicthCase, LINKS.expression$QQk6), CONCEPTS.VariableReference$TC), subst);
+            MapSequence.fromMap(enumConstRefs).put(SNodeOperations.cast(SLinkOperations.getTarget(switchCase, LINKS.expression$QQk6), CONCEPTS.VariableReference$TC), subst);
           }
 
           progress.advance(1);

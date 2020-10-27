@@ -272,7 +272,15 @@ public class FullASTConverter extends ASTConverterWithExpressions {
           } else {
             SNode switchCase = convertCaseStatement((CaseStatement) stmt);
             if ((switchCase != null)) {
-              ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.case$8PWE)).addElement(switchCase);
+              SNode lastCase = ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.case$8PWE)).last();
+              if ((currentSwitchCase != null) && (lastCase != null) && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(lastCase, LINKS.body$5LhG), LINKS.statement$53DE)).isEmpty()) {
+                SNode switchCaseExtension = SLinkOperations.addNewChild(lastCase, LINKS.switchCaseExtensions$2298, null);
+                SLinkOperations.setTarget(switchCaseExtension, LINKS.expression$bChi, SLinkOperations.getTarget(switchCase, LINKS.expression$QQk6));
+                ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(lastCase, LINKS.body$5LhG), LINKS.statement$53DE)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(switchCase, LINKS.body$5LhG), LINKS.statement$53DE)));
+                switchCase = lastCase;
+              } else {
+                ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.case$8PWE)).addElement(switchCase);
+              }
             }
             currentSwitchCase = ((switchCase == null) ? null : SLinkOperations.getTarget(switchCase, LINKS.body$5LhG));
           }
@@ -821,8 +829,10 @@ public class FullASTConverter extends ASTConverterWithExpressions {
     /*package*/ static final SContainmentLink expression$CjpY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02ec241L, "expression");
     /*package*/ static final SContainmentLink defaultBlock$QOu8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02c1b6eL, "defaultBlock");
     /*package*/ static final SContainmentLink case$8PWE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02a8c6aL, 0x10ef02edcafL, "case");
-    /*package*/ static final SContainmentLink body$5LhG = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d8048L, "body");
+    /*package*/ static final SContainmentLink switchCaseExtensions$2298 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x6d52edcb6dda26bbL, "switchCaseExtensions");
+    /*package*/ static final SContainmentLink expression$bChi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6d52edcb6dd8fdccL, 0x6d52edcb6dd8fdcdL, "expression");
     /*package*/ static final SContainmentLink expression$QQk6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression");
+    /*package*/ static final SContainmentLink body$5LhG = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d8048L, "body");
     /*package*/ static final SContainmentLink condition$UPf8 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11232674988L, 0x11232679422L, "condition");
     /*package*/ static final SContainmentLink body$c1sm = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10cb1ac5adeL, 0x10cb1ada6e8L, "body");
     /*package*/ static final SContainmentLink localVariableDeclaration$RpjM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc67c7f0L, 0xf8cc67c7f1L, "localVariableDeclaration");
