@@ -10,7 +10,7 @@
   <module value="com.intellij.modules.externalSystem"/>
 
   <xi:include href="/componentSets/PlatformLangComponents.xml"/>
-  <xi:include href="/idea/MPSRichPlatformActions.xml"/>
+  <xi:include href="/idea/PlatformLangActionManager.xml"/>
 
   <xi:include href="/META-INF/Core.xml"/>
   <xi:include href="/META-INF/CoreImpl.xml"/>
@@ -336,9 +336,11 @@
   </extensionPoints>
   <!--
   <xi:include href="/META-INF/XmlPlugin.xml" xpointer="xpointer(/idea-plugin/*)"/>
+  -->
   <xi:include href="/META-INF/JsonPlugin.xml" xpointer="xpointer(/idea-plugin/*)">
       <xi:fallback/>
   </xi:include>
+  <!--
     <xi:include href="/META-INF/RegExpPlugin.xml" xpointer="xpointer(/idea-plugin/*)">
     <xi:fallback/>
   </xi:include>

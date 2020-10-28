@@ -7,10 +7,52 @@
 
   <xi:include href="/META-INF/IdeTipsAndTricks.xml" xpointer="xpointer(/idea-plugin/*)"/>
   <xi:include href="/idea/MPSRichPlatformPlugin.xml" xpointer="xpointer(/idea-plugin/*)"/>
-  <xi:include href="/META-INF/MPSComponents.xml" xpointer="xpointer(/components/*)"/>
-  <xi:include href="/idea/MPSActionManager.xml" xpointer="xpointer(/component/*)"/>
-  <xi:include href="/jetbrains/mps/ide/platform/actions/PlatformActions.xml" xpointer="xpointer(/components/*)"/>
-  <xi:include href="/jetbrains/mps/ide/editor/actions/MPSEditorActions.xml" xpointer="xpointer(/components/*)"/>
+
+  <!-- Customizations to platform -->
+  <actions>
+    <!-- File -->
+    <action id="NewElement" class="com.intellij.ide.actions.NewElementAction"/>
+    <group id="OpenProjectGroup">
+      <group id="NewElementInMenuGroup" class="com.intellij.ide.actions.NewActionGroup" text="New" popup="true"/>
+      <add-to-group group-id="FileOpenGroup" anchor="first"/>
+    </group>
+    <group id="MPSNewProjectOrModuleGroup">
+      <action id="NewProject" class="jetbrains.mps.workbench.actions.NewMPSProjectAction" text="New MPS Project"/>
+      <add-to-group group-id="NewProjectOrModuleGroup"/>
+    </group>
+    <action id="ForceSaveAll" class="jetbrains.mps.ide.actions.ForcedSaveAll_Action">
+      <add-to-group group-id="FileMenu" relative-to-action="SaveAll" anchor="after"/>
+    </action>
+    <action id="SaveAsNewFormat" class="com.intellij.ide.actions.SaveAsDirectoryBasedFormatAction" text="Save as Directory-Based Format...">
+      <add-to-group group-id="ExportImportGroup" anchor="last"/>
+    </action>
+
+    <!--Start of analog of groups changes from JavaActions.xml-->
+    <!-- Analyze -->
+    <group overrides="true" class="com.intellij.openapi.actionSystem.EmptyActionGroup" id="AnalyzePlatformMenu"/>
+    <group overrides="true" class="com.intellij.openapi.actionSystem.EmptyActionGroup" id="InspectCodeInCodeMenuGroup"/>
+    <group overrides="true" class="com.intellij.openapi.actionSystem.EmptyActionGroup" id="InspectCodeActionInPopupMenus"/>
+
+    <group id="AnalyzeActions">
+    </group>
+
+    <group id="AnalyzeMenu" popup="true">
+      <separator/>
+      <reference ref="AnalyzeActions"/>
+      <add-to-group group-id="MainMenu" anchor="after" relative-to-action="CodeMenu"/>
+    </group>
+
+    <!-- Help -->
+    <action id="WhatsNewAction" class="com.intellij.ide.actions.WhatsNewAction">
+      <add-to-group group-id="HelpMenu" anchor="after" relative-to-action="ShowTips"/>
+    </action>
+    <!--End of analog of groups changes from JavaActions.xml-->
+  </actions>
+
+  <xi:include href="/META-INF/MPSComponents.xml" xpointer="xpointer(/components/*)"/> <!--only MPS components-->
+  <xi:include href="/idea/MPSActionManager.xml" xpointer="xpointer(/component/*)"/> <!--only MPS actions-->
+  <xi:include href="/jetbrains/mps/ide/platform/actions/PlatformActions.xml" xpointer="xpointer(/components/*)"/> <!--only MPS actions-->
+  <xi:include href="/jetbrains/mps/ide/editor/actions/MPSEditorActions.xml" xpointer="xpointer(/components/*)"/> <!--only MPS editor actions-->
 
   <extensions defaultExtensionNs="com.intellij">
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
