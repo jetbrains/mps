@@ -5,8 +5,24 @@
   <module value="com.intellij.modules.mps"/>
   <module value="com.intellij.modules.all"/>
 
+  <!-- Temporary fix TODO: remove after XmlPlugin.xml will be available in platform build -->
+  <module value="com.intellij.modules.xml"/>
+
   <xi:include href="/META-INF/IdeTipsAndTricks.xml" xpointer="xpointer(/idea-plugin/*)"/>
+  <!-- Include copy of PlatformLangPlugin.xml while it is not available in platform build -->
   <xi:include href="/idea/MPSRichPlatformPlugin.xml" xpointer="xpointer(/idea-plugin/*)"/>
+
+  <!-- Remove after XmlPlugin.xml included back in platform build -->
+  <extensionPoints>
+    <!-- Copy paste from XmlPlugin.xml-->
+    <extensionPoint name="embeddedTokenHighlighter" interface="com.intellij.ide.highlighter.EmbeddedTokenHighlighter"/>
+  </extensionPoints>
+
+  <!-- Next two includes can be removed if PlatformLangXmlPlugin.xml will be imported instead of PlatformLangPlugin.xml -->
+  <xi:include href="/META-INF/JsonPlugin.xml" xpointer="xpointer(/idea-plugin/*)">
+    <xi:fallback/>
+  </xi:include>
+  <xi:include href="/META-INF/SpellCheckerPlugin.xml" xpointer="xpointer(/idea-plugin/*)"/>
 
   <!-- Customizations to platform -->
   <actions>
@@ -95,6 +111,47 @@
                         serviceImplementation="jetbrains.mps.ide.ui.fileEditor.MPSEditorEmptyTextPainter"
                         overrides="true"/>
 
+    <!-- Same as in community/java/ide-customization/resources/META-INF/plugin.xml -->
+    <!-- preload because in any case will be requested to reopen last projects -->
+    <applicationService serviceInterface="com.intellij.ide.RecentProjectsManager"
+                        serviceImplementation="com.intellij.ide.RecentProjectsManagerBase"
+                        overrides="true" preload="notHeadless"/>
+
+    <!-- Start of same registrations as in JavaPlugin.xml TODO: check applicability in MPS -->
+    <applicationService serviceInterface="com.intellij.openapi.projectRoots.ProjectJdkTable"
+                        serviceImplementation="com.intellij.openapi.projectRoots.impl.JavaAwareProjectJdkTableImpl"
+                        overrides="true"/>
+
+    <applicationService serviceInterface="com.intellij.execution.runners.ProcessProxyFactory"
+                        serviceImplementation="com.intellij.execution.runners.ProcessProxyFactoryImpl"/>
+
+    <applicationService serviceImplementation="com.intellij.debugger.settings.NodeRendererSettings"/>
+    <applicationService serviceImplementation="com.intellij.debugger.settings.ViewsGeneralSettings"/>
+    <applicationService serviceImplementation="com.intellij.debugger.settings.DebuggerSettings"/>
+    <projectService serviceImplementation="com.intellij.debugger.settings.DebuggerProjectSettings"/>
+    <applicationService serviceImplementation="com.intellij.debugger.settings.ThreadsViewSettings"/>
+    <applicationService serviceImplementation="com.intellij.debugger.settings.TraceSettings"/>
+    <projectService serviceInterface="com.intellij.debugger.ui.HotSwapUI" serviceImplementation="com.intellij.debugger.ui.HotSwapUIImpl"/>
+    <projectService serviceInterface="com.intellij.debugger.DebuggerManager" serviceImplementation="com.intellij.debugger.impl.DebuggerManagerImpl"/>
+
+    <statistics.counterUsagesCollector groupId="java.find.usages" version="1"/>
+    <statistics.counterUsagesCollector groupId="java.extract.method" version="1"/>
+    <statistics.applicationUsagesCollector implementation="com.intellij.debugger.settings.DebuggerSettingsStatisticsCollector"/>
+    <statistics.applicationUsagesCollector implementation="com.intellij.refactoring.JavaRefactoringUsageCollector"/>
+
+    <applicationService serviceInterface="com.intellij.packaging.elements.PackagingElementFactory"
+                        serviceImplementation="com.intellij.packaging.impl.elements.PackagingElementFactoryImpl"/>
+
+    <applicationService serviceInterface="com.intellij.openapi.roots.ui.OrderEntryAppearanceService"
+                        serviceImplementation="com.intellij.openapi.roots.ui.OrderEntryAppearanceServiceImpl"/>
+
+    <projectService serviceInterface="com.intellij.packaging.artifacts.ArtifactPointerManager"
+                    serviceImplementation="com.intellij.packaging.impl.artifacts.ArtifactPointerManagerImpl"/>
+    <projectService serviceInterface="com.intellij.packaging.impl.artifacts.ArtifactBySourceFileFinder"
+                    serviceImplementation="com.intellij.packaging.impl.artifacts.ArtifactBySourceFileFinderImpl"/>
+    <applicationService serviceImplementation="com.intellij.packaging.impl.artifacts.InvalidArtifactType"/>
+    <!-- End of same registrations as in JavaPlugin.xml -->
+
     <!--Editor-->
     <editorOptionsProvider instance="jetbrains.mps.nodeEditor.EditorSettingsConfigurable$EditorSettingsConfigurableOptionsProvider"/>
     <!--Editor Hints-->
@@ -109,20 +166,18 @@
     <applicationConfigurable groupId="editor" key="intention.settings" bundle="messages.CodeInsightBundle"
                              instance="jetbrains.mps.intentions.IntentionSettingsConfigurable" id="preferences.intentionPowerPack2"/>
 
+    <!--MPS patch: add two setting pages-->
+    <projectConfigurable groupId="build" groupWeight="130" instance="jetbrains.mps.library.ProjectLibraryManagerConfigurable"
+                         id="preferences.projectLibraryManager" nonDefaultProject="true"/>
+    <applicationConfigurable groupId="build" groupWeight="120" instance="jetbrains.mps.library.LibraryManagerConfigurable"
+                             id="preferences.libraryManager"/>
+
     <!-- Use MPS Project View Implementation-->
     <toolWindow id="Project" anchor="left" icon="AllIcons.Toolwindows.ToolWindowProject"
                 factoryClass="jetbrains.mps.ide.projectPane.MPSProjectViewToolWindowFactory"/>
 
-    <projectService serviceInterface="com.intellij.ide.projectView.impl.nodes.ProjectViewDirectoryHelper"
-                    serviceImplementation="com.intellij.ide.projectView.impl.nodes.ProjectViewDirectoryHelper"/>
-    <!--<projectService serviceInterface="com.intellij.openapi.vcs.changes.patch.PatchBaseDirectoryDetec  tor"
-                    serviceImplementation="jetbrains.mps.MPSPatchBaseDirectoryDetector"/>-->
-
     <projectService serviceInterface="com.intellij.openapi.roots.FileIndexFacade"
                     serviceImplementation="com.intellij.mock.MockFileIndexFacade" overrides="true"/>
-
-    <projectService serviceInterface="com.intellij.platform.ProjectBaseDirectory"
-                    serviceImplementation="com.intellij.platform.ProjectBaseDirectory"/>
 
     <!-- Use default implementation instead of PsiCachedValuesFactory in CoreImpl.xml-->
     <projectService serviceInterface="com.intellij.util.CachedValuesFactory"
@@ -138,9 +193,6 @@
                  implementationClass="jetbrains.mps.workbench.dataExtraction.runConfig.LocationRule"/>
 
     <editorTabTitleProvider implementation="jetbrains.mps.ide.editor.tabs.EditorTabTitleProviderImpl"/>
-
-    <applicationService serviceInterface="com.intellij.profile.codeInspection.InspectionProfileManager"
-                        serviceImplementation="com.intellij.codeInspection.ex.ApplicationInspectionProfileManager"/>
 
     <favoriteNodeProvider implementation="jetbrains.mps.ide.projectPane.favorites.providers.MPSFavoriteNodeProvider"/>
     <favoriteNodeProvider implementation="jetbrains.mps.ide.projectPane.favorites.providers.MPSFavoriteReferenceProvider"/>

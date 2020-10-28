@@ -21,10 +21,13 @@ import com.intellij.openapi.vcs.changes.patch.PatchBaseDirectoryDetector;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.search.FilenameIndex;
 import com.intellij.psi.search.GlobalSearchScope;
+import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
 
 import java.util.Collection;
 
 //copied from PsiPatchBaseDirectoryDetector, except that allScope is used instead of projectScope
+@ScheduledForRemoval(inVersion = "2021.1")
+@Deprecated(since = "2020.3", forRemoval = true)
 public class MPSPatchBaseDirectoryDetector extends PatchBaseDirectoryDetector {
   private final Project myProject;
 
