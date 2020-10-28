@@ -2613,17 +2613,17 @@
       <pathelement location="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.jar" />
       <pathelement location="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.matcher.jar" />
       <pathelement location="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.runtime.jar" />
-      <pathelement location="${build.layout}/generator/jetbrains.mps.transformation.test.inputLang.generator02.jar" />
-      <pathelement location="${build.layout}/traceMacro/jetbrains.mps.traceInfo.testWeavingGenerated.data.jar" />
-      <pathelement location="${build.layout}/generator/jetbrains.mps.transformation.test.inputLang.generator01.jar" />
-      <pathelement location="${build.layout}/traceMacro/jetbrains.mps.traceInfo.testWeavingInterpreted.data.jar" />
-      <pathelement location="${build.layout}/crossmodel/jetbrains.mps.generator.test.crossmodel.property.jar" />
       <pathelement location="${build.layout}/crossmodel/jetbrains.mps.generator.crossmodel.sandbox.jar" />
-      <pathelement location="${build.layout}/crossmodel/jetbrains.mps.generator.test.crossmodel.entity-generator.jar" />
       <pathelement location="${build.layout}/crossmodel/jetbrains.mps.generator.test.crossmodel.entity.jar" />
+      <pathelement location="${build.layout}/crossmodel/jetbrains.mps.generator.test.crossmodel.entity-generator.jar" />
+      <pathelement location="${build.layout}/crossmodel/jetbrains.mps.generator.test.crossmodel.property.jar" />
       <pathelement location="${build.layout}/crossmodel/jetbrains.mps.generator.test.crossmodel.property-generator.jar" />
       <pathelement location="${build.layout}/crossmodel/jetbrains.mps.generator.test.crossmodel.property-1-generator.jar" />
+      <pathelement location="${build.layout}/traceMacro/jetbrains.mps.traceInfo.testWeavingGenerated.data.jar" />
+      <pathelement location="${build.layout}/traceMacro/jetbrains.mps.traceInfo.testWeavingInterpreted.data.jar" />
       <pathelement location="${build.layout}/generator/jetbrains.mps.transformation.test.inputLang.jar" />
+      <pathelement location="${build.layout}/generator/jetbrains.mps.transformation.test.inputLang.generator01.jar" />
+      <pathelement location="${build.layout}/generator/jetbrains.mps.transformation.test.inputLang.generator02.jar" />
       <pathelement location="${build.layout}/generator/jetbrains.mps.transformation.test.outputLang.jar" />
     </path>
     <pathconvert pathsep="${path.separator}" property="mps.libraries.path.string" refid="mps.libraries.path" />

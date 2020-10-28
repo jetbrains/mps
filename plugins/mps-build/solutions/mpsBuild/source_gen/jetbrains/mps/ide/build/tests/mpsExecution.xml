@@ -1031,8 +1031,8 @@
       <pathelement location="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.runtime.jar" />
       <pathelement location="${artifacts.mps}/plugins/mps-testing/lib/jetbrains.mps.lang.test.util.jar" />
       <pathelement location="${build.layout}/jetbrains.mps.execution.impl.tests.sandbox.jar" />
-      <pathelement location="${build.layout}/testLangWithRT.runtime.jar" />
       <pathelement location="${build.layout}/testLangWithRT.jar" />
+      <pathelement location="${build.layout}/testLangWithRT.runtime.jar" />
     </path>
     <pathconvert pathsep="${path.separator}" property="mps.libraries.path.string" refid="mps.libraries.path" />
     <path id="mps.plugins.path">

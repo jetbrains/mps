@@ -1279,12 +1279,12 @@
       <pathelement location="${artifacts.mps}/languages/util/jetbrains.mps.runtime.jar" />
       <pathelement location="${artifacts.mps}/plugins/mps-testing/languages/baseLanguage/jetbrains.mps.baseLanguage.unitTest.jar" />
       <pathelement location="${build.layout}/behavior-tests/test.behavior.plugin/languages/BHL1.jar" />
-      <pathelement location="${build.layout}/behavior-tests/test.behavior.plugin/languages/BHL4.jar" />
-      <pathelement location="${build.layout}/behavior-tests/test.behavior.plugin/languages/BHL6.jar" />
-      <pathelement location="${build.layout}/behavior-tests/test.behavior.plugin/languages/BHL7.jar" />
       <pathelement location="${build.layout}/behavior-tests/test.behavior.plugin/languages/BHL2.jar" />
       <pathelement location="${build.layout}/behavior-tests/test.behavior.plugin/languages/BHL3.jar" />
+      <pathelement location="${build.layout}/behavior-tests/test.behavior.plugin/languages/BHL4.jar" />
       <pathelement location="${build.layout}/behavior-tests/test.behavior.plugin/languages/BHL5.jar" />
+      <pathelement location="${build.layout}/behavior-tests/test.behavior.plugin/languages/BHL6.jar" />
+      <pathelement location="${build.layout}/behavior-tests/test.behavior.plugin/languages/BHL7.jar" />
     </path>
     <pathconvert pathsep="${path.separator}" property="mps.libraries.path.string" refid="mps.libraries.path" />
     <path id="mps.plugins.path">

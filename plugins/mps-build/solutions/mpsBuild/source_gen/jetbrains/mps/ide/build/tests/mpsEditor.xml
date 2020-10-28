@@ -2926,17 +2926,17 @@
       <pathelement location="${artifacts.mpsTesting}/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.jar" />
       <pathelement location="${artifacts.mpsTesting}/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.matcher.jar" />
       <pathelement location="${artifacts.mpsTesting}/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.runtime.jar" />
-      <pathelement location="${build.layout}/languages/jetbrains.mps.lang.editor.styleTests.jar" />
+      <pathelement location="${build.layout}/languages/jetbrains.mps.lang.actions.testLanguage.jar" />
       <pathelement location="${build.layout}/languages/jetbrains.mps.lang.editor.editorTest.jar" />
-      <pathelement location="${build.layout}/languages/testDefaultEditor.jar" />
+      <pathelement location="${build.layout}/languages/jetbrains.mps.lang.editor.editorTest.extension.jar" />
+      <pathelement location="${build.layout}/languages/jetbrains.mps.lang.editor.formsTests.jar" />
       <pathelement location="${build.layout}/languages/jetbrains.mps.lang.editor.multiple.extension.testLanguage.jar" />
       <pathelement location="${build.layout}/languages/jetbrains.mps.lang.editor.multiple.testLanguage.jar" />
-      <pathelement location="${build.layout}/languages/jetbrains.mps.lang.editor.editorTest.extension.jar" />
-      <pathelement location="${build.layout}/languages/jetbrains.mps.lang.actions.testLanguage.jar" />
-      <pathelement location="${build.layout}/languages/testSpaceCompletion.jar" />
-      <pathelement location="${build.layout}/languages/testMoveElements.jar" />
+      <pathelement location="${build.layout}/languages/jetbrains.mps.lang.editor.styleTests.jar" />
       <pathelement location="${build.layout}/languages/jetbrains.mps.lang.editor.tableTests.jar" />
-      <pathelement location="${build.layout}/languages/jetbrains.mps.lang.editor.formsTests.jar" />
+      <pathelement location="${build.layout}/languages/testDefaultEditor.jar" />
+      <pathelement location="${build.layout}/languages/testMoveElements.jar" />
+      <pathelement location="${build.layout}/languages/testSpaceCompletion.jar" />
     </path>
     <pathconvert pathsep="${path.separator}" property="mps.libraries.path.string" refid="mps.libraries.path" />
     <path id="mps.plugins.path">

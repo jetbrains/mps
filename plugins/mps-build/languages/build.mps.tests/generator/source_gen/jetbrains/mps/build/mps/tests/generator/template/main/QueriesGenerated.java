@@ -142,11 +142,19 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Iterable<SNode> sourceNodesQuery_0_1(final SourceSubstituteMacroNodesContext _context) {
     final SNode project = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BuildProject$ae, false, false);
     final VisibleArtifacts local = ((VisibleArtifacts) _context.getVariable("var:localArtifacts"));
+    // FIXME there's some issues with type calculation if I don't use local var for sequence here, any collection operation after where doesn't get its element type recognized 
     Iterable<SNode> seq = Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:modules"))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.getNodeAncestor(it, CONCEPTS.BuildProject$ae, false, false) == project;
       }
     });
+    // MPSModuleClosure indeed uses linked hashset for some of its collection, but not for all. 
+    // Though I don't like sorting it here, just too lazy to modify MPSModuleClosure right now and find all the places I'd need to rebuild then. 
+    seq = Sequence.fromIterable(seq).sort(new ISelector<SNode, String>() {
+      public String select(SNode it) {
+        return SPropertyOperations.getString(it, PROPS.name$MnvL);
+      }
+    }, true);
     return SNodeOperations.ofConcept(Sequence.fromIterable(seq).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it2) {
         return local.findArtifact(it2);

@@ -911,9 +911,9 @@
       <pathelement location="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.jar" />
       <pathelement location="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.matcher.jar" />
       <pathelement location="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.runtime.jar" />
-      <pathelement location="${build.layout}/languages/testExtendingAnalyzer.jar" />
-      <pathelement location="${build.layout}/languages/testCustomAnalyzer.jar" />
       <pathelement location="${build.layout}/languages/jetbrains.mps.testCustomDataFlow.jar" />
+      <pathelement location="${build.layout}/languages/testCustomAnalyzer.jar" />
+      <pathelement location="${build.layout}/languages/testExtendingAnalyzer.jar" />
     </path>
     <pathconvert pathsep="${path.separator}" property="mps.libraries.path.string" refid="mps.libraries.path" />
     <path id="mps.plugins.path">
