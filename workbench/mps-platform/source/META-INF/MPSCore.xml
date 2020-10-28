@@ -17,6 +17,9 @@
 <components>
   <actions>
     <group id="MPS.MessagesView" popup="false"/>
+    <!-- MPS patch: see MPS-24488  TODO: investigate-->
+    <action id="QuickImplementations" class="jetbrains.mps.codeInsight.hint.actions.MockShowImplementationsAction" overrides="true"/>
+    <action id="QuickJavaDoc" class="jetbrains.mps.codeInsight.documentation.actions.MockShowQuickDocInfoAction" overrides="true"/>
   </actions>
 
   <application-components>
