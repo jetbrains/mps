@@ -67,11 +67,6 @@ public class FetchDependenciesProcessor {
     }
 
     @Override
-    public TemplateQueryContext getGenContext() {
-      return helper.getGenContext();
-    }
-
-    @Override
     public void add(SNode node) {
       if (!(check(node))) {
         return;
@@ -84,6 +79,13 @@ public class FetchDependenciesProcessor {
         return;
       }
       helper.add(node, true);
+    }
+
+
+    @Override
+    public void addWithTag(SNode node, String artifactId) {
+      add(node);
+      helper.putArtifact(artifactId, node);
     }
 
     private boolean check(SNode node) {

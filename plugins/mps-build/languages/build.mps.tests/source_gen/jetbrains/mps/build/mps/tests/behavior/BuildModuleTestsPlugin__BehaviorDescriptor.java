@@ -19,7 +19,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.build.behavior.BuildPlugin__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.build.util.DependenciesHelper;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -51,16 +50,12 @@ public final class BuildModuleTestsPlugin__BehaviorDescriptor extends BaseBHDesc
     SNode project = artifacts.getProject();
 
     // find mps-test.jar 
-    DependenciesHelper helper = new DependenciesHelper(builder.getGenContext(), project);
     SNode mpsTestModule = SNodeOperations.as(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(project, CONCEPTS.BuildSource_JavaModule$NC, LINKS.parts$mGDj, ((int) 0)).resolve(project, "mps-test"), CONCEPTS.BuildSource_JavaModule$NC);
     if ((mpsTestModule != null)) {
       SNode mpsTestJar = SNodeOperations.as(artifacts.findArtifact(mpsTestModule), CONCEPTS.BuildLayout_Node$Rb);
       if ((mpsTestJar != null)) {
-        // specify explicitly what we need maybe? 
-        helper.putArtifact("mps-test-folder", SNodeOperations.as(SNodeOperations.getParent(mpsTestJar), CONCEPTS.BuildLayout_Folder$AH));
-        // XXX seems that there's no use for artifact labeled 'mps-test' any more, reduce_TestModules uses mps-test-folder 
-        helper.putArtifact("mps-test", mpsTestJar);
-        builder.add(mpsTestJar);
+        // seems that there's no use for artifact labeled 'mps-test' any more, reduce_TestModules uses mps-test-folder 
+        builder.addWithTag(SNodeOperations.cast(artifacts.parent(mpsTestJar), CONCEPTS.BuildLayout_Folder$AH), "mps-test-folder");
       }
     }
   }

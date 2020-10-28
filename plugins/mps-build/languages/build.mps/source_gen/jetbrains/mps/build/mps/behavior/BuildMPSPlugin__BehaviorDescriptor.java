@@ -21,11 +21,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.build.util.DescendantsScope;
 import jetbrains.mps.build.behavior.BuildPlugin__BehaviorDescriptor;
-import jetbrains.mps.build.util.DependenciesHelper;
 import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.build.mps.util.VisibleModules;
 import jetbrains.mps.build.mps.util.MPSModulesClosure;
 import jetbrains.mps.build.behavior.BuildProject__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ISelector;
@@ -74,25 +72,21 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
     BuildMPSPlugin__BehaviorDescriptor.fetchGenerationDeps_id3WZD5LHqDLU.invoke(__thisNode__, artifacts, builder);
 
     // fetch stuff for ant task classpath 
-    DependenciesHelper helper = new DependenciesHelper(builder.getGenContext(), project);
-    SNode originalProject = project;
-    SNode antMpsModule = SNodeOperations.as(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(originalProject, CONCEPTS.BuildSource_JavaModule$NC, LINKS.parts$mGDj, ((int) 0)).resolve(originalProject, "ant-mps"), CONCEPTS.BuildSource_JavaModule$NC);
+    SNode antMpsModule = SNodeOperations.as(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(project, CONCEPTS.BuildSource_JavaModule$NC, LINKS.parts$mGDj, ((int) 0)).resolve(project, "ant-mps"), CONCEPTS.BuildSource_JavaModule$NC);
     if ((antMpsModule != null)) {
       SNode antMpsJar = SNodeOperations.as(artifacts.findArtifact(antMpsModule), CONCEPTS.BuildLayout_Node$Rb);
       if ((antMpsJar != null)) {
-        helper.putArtifact("ant-mps", antMpsJar);
-        builder.add(antMpsJar);
+        builder.addWithTag(antMpsJar, "ant-mps");
       }
     }
     // FIXME consider JavaExternalLibraryHelper re-use 
-    // XXX isn't it odd to populate DependenciesHelper here, and not in unpack? 
+    // XXX isn't it odd to populate DependenciesHelper here (addWithTag hides this now, but still), and not in unpack? 
     SNode jdomLib = SNodeOperations.as(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(project, CONCEPTS.BuildSource_JavaLibrary$6q, LINKS.parts$mGDj, ((int) 0)).resolve(project, "jdom-lib"), CONCEPTS.BuildSource_JavaLibrary$6q);
     if (jdomLib != null) {
       SNode jdomJarRef = SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(jdomLib, LINKS.elements$fli0), CONCEPTS.BuildSource_JavaLibraryCP$up)).first(), LINKS.classpath$WEG$), CONCEPTS.BuildSource_JavaLibraryExternalJar$gz), LINKS.extJar$Hzyz);
       SNode jdomArtifact = SNodeOperations.as(artifacts.findArtifact(SLinkOperations.getTarget(jdomJarRef, LINKS.jar$JLD3)), CONCEPTS.BuildLayout_Node$Rb);
       if (jdomArtifact != null) {
-        helper.putArtifact("jdom", jdomArtifact);
-        builder.add(jdomArtifact);
+        builder.addWithTag(jdomArtifact, "jdom");
       }
     }
     SNode log4jLib = SNodeOperations.as(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(project, CONCEPTS.BuildSource_JavaLibrary$6q, LINKS.parts$mGDj, ((int) 0)).resolve(project, "log4j-lib"), CONCEPTS.BuildSource_JavaLibrary$6q);
@@ -100,28 +94,21 @@ public final class BuildMPSPlugin__BehaviorDescriptor extends BaseBHDescriptor {
       SNode log4jJarRef = SLinkOperations.getTarget(SNodeOperations.as(SLinkOperations.getTarget(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(log4jLib, LINKS.elements$fli0), CONCEPTS.BuildSource_JavaLibraryCP$up)).first(), LINKS.classpath$WEG$), CONCEPTS.BuildSource_JavaLibraryExternalJar$gz), LINKS.extJar$Hzyz);
       SNode log4jArtifact = SNodeOperations.as(artifacts.findArtifact(SLinkOperations.getTarget(log4jJarRef, LINKS.jar$JLD3)), CONCEPTS.BuildLayout_Node$Rb);
       if (log4jArtifact != null) {
-        helper.putArtifact("log4j", log4jArtifact);
-        builder.add(log4jArtifact);
+        builder.addWithTag(log4jArtifact, "log4j");
       }
     }
 
-    // fetch gentest language 
-    VisibleModules visibleModules = new VisibleModules(artifacts.getProject(), builder.getGenContext());
-    visibleModules.collect();
-    // jetbrains.mps.tool.gentest 
-    SNode gentest = SNodeOperations.cast(visibleModules.resolveById("3ba7b7cf-6a5a-4981-ba0b-3302e59ffef7"), CONCEPTS.BuildMps_Module$JW);
+    // fetch jetbrains.mps.tool.gentest language which holds Diff and Test make facets 
+    SNode gentest = SNodeOperations.cast(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QFgX.invoke(project, CONCEPTS.BuildMps_Module$JW, LINKS.parts$mGDj, ((int) 0)).resolve(project, "jetbrains.mps.tool.gentest"), CONCEPTS.BuildMps_Module$JW);
 
-    if ((gentest != null)) {
-      if (SNodeOperations.getContainingRoot(gentest) != SNodeOperations.getContainingRoot(__thisNode__)) {
-        MPSModulesClosure closure = new MPSModulesClosure(gentest, new MPSModulesClosure.ModuleDependenciesOptions());
-        Iterable<SNode> gentestDeps = Sequence.fromIterable(closure.runtimeClosure().getAllModules()).union(Sequence.fromIterable(Sequence.<SNode>singleton(gentest)));
+    if ((gentest != null) && SNodeOperations.getContainingRoot(gentest) != SNodeOperations.getContainingRoot(__thisNode__)) {
+      MPSModulesClosure closure = new MPSModulesClosure(gentest, new MPSModulesClosure.ModuleDependenciesOptions());
+      Iterable<SNode> gentestDeps = Sequence.fromIterable(closure.runtimeClosure().getAllModules()).union(Sequence.fromIterable(Sequence.<SNode>singleton(gentest)));
 
-        for (SNode gentestDep : Sequence.fromIterable(gentestDeps)) {
-          SNode depLayoutNode = SNodeOperations.as(artifacts.findArtifact(gentestDep), CONCEPTS.BuildLayout_Node$Rb);
-          if (depLayoutNode != null) {
-            // FIXME what's the purpose of uuid string to node mapping here? I didn't find any use 
-            builder.add(depLayoutNode);
-          }
+      for (SNode gentestDep : Sequence.fromIterable(gentestDeps)) {
+        SNode depLayoutNode = SNodeOperations.as(artifacts.findArtifact(gentestDep), CONCEPTS.BuildLayout_Node$Rb);
+        if (depLayoutNode != null) {
+          builder.add(depLayoutNode);
         }
       }
     }

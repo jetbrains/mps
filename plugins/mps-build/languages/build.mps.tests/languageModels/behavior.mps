@@ -3,7 +3,6 @@
   <persistence version="9" />
   <languages>
     <use id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior" version="2" />
-    <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="2" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
@@ -13,11 +12,6 @@
     <import index="o3n2" ref="r:26eadcf0-f275-4e90-be37-e4432772a74d(jetbrains.mps.build.util)" />
     <import index="3ior" ref="r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)" />
     <import index="tken" ref="r:38bad86e-d92c-4ea7-ad52-a111dc6c2457(jetbrains.mps.build.mps.util)" />
-    <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
-    <import index="2txq" ref="r:2c8fa2a8-11a0-4729-bd56-47f702d30278(jetbrains.mps.build.mps.behavior)" />
-    <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
-    <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
-    <import index="zc50" ref="r:3726dcc0-b53e-48d5-a1a1-933a30016b1b(jetbrains.mps.build.mps.tests.util)" />
     <import index="o8zo" ref="r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" />
     <import index="8xvf" ref="r:ed179f4d-7cf2-479d-8348-50c1fc63b96a(jetbrains.mps.build.workflow.structure)" />
@@ -172,7 +166,6 @@
         <reference id="2644386474300074837" name="conceptDeclaration" index="35c_gD" />
       </concept>
       <concept id="6677504323281689838" name="jetbrains.mps.lang.smodel.structure.SConceptType" flags="in" index="3bZ5Sz" />
-      <concept id="1139613262185" name="jetbrains.mps.lang.smodel.structure.Node_GetParentOperation" flags="nn" index="1mfA1w" />
       <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
       <concept id="1140137987495" name="jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression" flags="nn" index="1PxgMI">
         <property id="1238684351431" name="asCast" index="1BlNFB" />
@@ -1079,30 +1072,6 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="3ag$5R8Sr$l" role="3cqZAp">
-          <node concept="3cpWsn" id="3ag$5R8SrzL" role="3cpWs9">
-            <property role="TrG5h" value="helper" />
-            <node concept="3uibUv" id="3ag$5R8Sr$m" role="1tU5fm">
-              <ref role="3uigEE" to="o3n2:41__iZjkZ0W" resolve="DependenciesHelper" />
-            </node>
-            <node concept="2ShNRf" id="7eQOMx81PVx" role="33vP2m">
-              <node concept="1pGfFk" id="7eQOMx81Qdd" role="2ShVmc">
-                <ref role="37wK5l" to="o3n2:41__iZjkZ0Y" resolve="DependenciesHelper" />
-                <node concept="2OqwBi" id="7eQOMx81Pg8" role="37wK5m">
-                  <node concept="37vLTw" id="7eQOMx82LeN" role="2Oq$k0">
-                    <ref role="3cqZAo" node="3umvbTBQBvs" resolve="builder" />
-                  </node>
-                  <node concept="liA8E" id="7eQOMx81Pup" role="2OqNvi">
-                    <ref role="37wK5l" to="o3n2:7eQOMx82$Ev" resolve="getGenContext" />
-                  </node>
-                </node>
-                <node concept="37vLTw" id="7eQOMx81QSd" role="37wK5m">
-                  <ref role="3cqZAo" node="2TqXzNe$YQE" resolve="project" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs8" id="2TqXzNe_6HN" role="3cqZAp">
           <node concept="3cpWsn" id="2TqXzNe_6HO" role="3cpWs9">
             <property role="TrG5h" value="mpsTestModule" />
@@ -1175,59 +1144,9 @@
             </node>
             <node concept="3clFbJ" id="2TqXzNe_M6X" role="3cqZAp">
               <node concept="3clFbS" id="2TqXzNe_M6Y" role="3clFbx">
-                <node concept="3SKdUt" id="akLgX4tE2E" role="3cqZAp">
-                  <node concept="1PaTwC" id="ATZLwXo0jP" role="1aUNEU">
-                    <node concept="3oM_SD" id="ATZLwXo0jQ" role="1PaTwD">
-                      <property role="3oM_SC" value="specify" />
-                    </node>
-                    <node concept="3oM_SD" id="ATZLwXo0jR" role="1PaTwD">
-                      <property role="3oM_SC" value="explicitly" />
-                    </node>
-                    <node concept="3oM_SD" id="ATZLwXo0jS" role="1PaTwD">
-                      <property role="3oM_SC" value="what" />
-                    </node>
-                    <node concept="3oM_SD" id="ATZLwXo0jT" role="1PaTwD">
-                      <property role="3oM_SC" value="we" />
-                    </node>
-                    <node concept="3oM_SD" id="ATZLwXo0jU" role="1PaTwD">
-                      <property role="3oM_SC" value="need" />
-                    </node>
-                    <node concept="3oM_SD" id="ATZLwXo0jV" role="1PaTwD">
-                      <property role="3oM_SC" value="maybe?" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="3clFbF" id="2TqXzNe_6K0" role="3cqZAp">
-                  <node concept="2OqwBi" id="2TqXzNe_6Km" role="3clFbG">
-                    <node concept="37vLTw" id="3GM_nagTAoO" role="2Oq$k0">
-                      <ref role="3cqZAo" node="3ag$5R8SrzL" resolve="helper" />
-                    </node>
-                    <node concept="liA8E" id="3h6igUoXzjW" role="2OqNvi">
-                      <ref role="37wK5l" to="o3n2:4WwUR8hW0t5" resolve="putArtifact" />
-                      <node concept="Xl_RD" id="2TqXzNe_6KS" role="37wK5m">
-                        <property role="Xl_RC" value="mps-test-folder" />
-                      </node>
-                      <node concept="1PxgMI" id="3h6igUoZNuK" role="37wK5m">
-                        <property role="1BlNFB" value="true" />
-                        <node concept="2OqwBi" id="akLgX4sT9B" role="1m5AlR">
-                          <node concept="1mfA1w" id="akLgX4sUR5" role="2OqNvi" />
-                          <node concept="37vLTw" id="akLgX4sT30" role="2Oq$k0">
-                            <ref role="3cqZAo" node="2TqXzNe_6JH" resolve="mpsTestJar" />
-                          </node>
-                        </node>
-                        <node concept="chp4Y" id="714IaVdH1Gy" role="3oSUPX">
-                          <ref role="cht4Q" to="3ior:6qcrfIJF4LS" resolve="BuildLayout_Folder" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
                 <node concept="3SKdUt" id="7anWVWZAvFI" role="3cqZAp">
                   <node concept="1PaTwC" id="7anWVWZAvFJ" role="1aUNEU">
-                    <node concept="3oM_SD" id="7anWVWZAvFK" role="1PaTwD">
-                      <property role="3oM_SC" value="XXX" />
-                    </node>
-                    <node concept="3oM_SD" id="7anWVWZAvIQ" role="1PaTwD">
+                    <node concept="3oM_SD" id="7i60Frlw5F3" role="1PaTwD">
                       <property role="3oM_SC" value="seems" />
                     </node>
                     <node concept="3oM_SD" id="7anWVWZAvJ1" role="1PaTwD">
@@ -1271,31 +1190,31 @@
                     </node>
                   </node>
                 </node>
-                <node concept="3clFbF" id="akLgX4sVOP" role="3cqZAp">
-                  <node concept="2OqwBi" id="akLgX4sVOR" role="3clFbG">
-                    <node concept="37vLTw" id="3GM_nagT$nY" role="2Oq$k0">
-                      <ref role="3cqZAo" node="3ag$5R8SrzL" resolve="helper" />
-                    </node>
-                    <node concept="liA8E" id="3h6igUoXzVM" role="2OqNvi">
-                      <ref role="37wK5l" to="o3n2:4WwUR8hW0t5" resolve="putArtifact" />
-                      <node concept="Xl_RD" id="akLgX4sVOV" role="37wK5m">
-                        <property role="Xl_RC" value="mps-test" />
-                      </node>
-                      <node concept="37vLTw" id="akLgX4sVOY" role="37wK5m">
-                        <ref role="3cqZAo" node="2TqXzNe_6JH" resolve="mpsTestJar" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
                 <node concept="3clFbF" id="2TqXzNe_6KW" role="3cqZAp">
                   <node concept="2OqwBi" id="2TqXzNe_6Li" role="3clFbG">
                     <node concept="37vLTw" id="2BHiRxgmNCU" role="2Oq$k0">
                       <ref role="3cqZAo" node="3umvbTBQBvs" resolve="builder" />
                     </node>
                     <node concept="liA8E" id="2TqXzNe_6Lo" role="2OqNvi">
-                      <ref role="37wK5l" to="o3n2:57YmpYyL8Fh" resolve="add" />
-                      <node concept="37vLTw" id="3GM_nagTuLB" role="37wK5m">
-                        <ref role="3cqZAo" node="2TqXzNe_6JH" resolve="mpsTestJar" />
+                      <ref role="37wK5l" to="o3n2:7i60FrlvY8I" resolve="addWithTag" />
+                      <node concept="1PxgMI" id="7i60Frlw5Si" role="37wK5m">
+                        <node concept="chp4Y" id="7i60Frlw5UG" role="3oSUPX">
+                          <ref role="cht4Q" to="3ior:6qcrfIJF4LS" resolve="BuildLayout_Folder" />
+                        </node>
+                        <node concept="2OqwBi" id="7i60Frlw5jV" role="1m5AlR">
+                          <node concept="37vLTw" id="7i60Frlw5bY" role="2Oq$k0">
+                            <ref role="3cqZAo" node="3umvbTBQBvq" resolve="artifacts" />
+                          </node>
+                          <node concept="liA8E" id="7i60Frlw5rz" role="2OqNvi">
+                            <ref role="37wK5l" to="o3n2:6bGbH3Svbad" resolve="parent" />
+                            <node concept="37vLTw" id="7i60Frlw5uH" role="37wK5m">
+                              <ref role="3cqZAo" node="2TqXzNe_6JH" resolve="mpsTestJar" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="Xl_RD" id="2TqXzNe_6KS" role="37wK5m">
+                        <property role="Xl_RC" value="mps-test-folder" />
                       </node>
                     </node>
                   </node>

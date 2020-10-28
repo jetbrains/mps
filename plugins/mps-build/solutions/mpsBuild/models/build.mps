@@ -30016,6 +30016,11 @@
             <ref role="3bR37D" node="7pdFgzxlDoI" resolve="jetbrains.mps.build.workflow" />
           </node>
         </node>
+        <node concept="1SiIV0" id="7i60FrlEJyS" role="3bR37C">
+          <node concept="3bR9La" id="7i60FrlEJzk" role="1SiIV1">
+            <ref role="3bR37D" node="1WGJoq9Wd0d" resolve="jetbrains.mps.build.workflow.preset" />
+          </node>
+        </node>
         <node concept="398BVA" id="7pdFgzxlDoC" role="3LF7KH">
           <ref role="398BVh" node="7pdFgzxlDn3" resolve="mps_home" />
           <node concept="2Ry0Ak" id="7pdFgzxlDoD" role="iGT6I">

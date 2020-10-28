@@ -1841,7 +1841,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object varMacro_Value_1_1(final TemplateVarContext _context) {
     // find all layout elements that contain layout elements for foreign project parts that are dependency target of some part in this project 
-    FDP2 fdp = new FDP2(_context.getNode(), _context);
+    FDP2 fdp = new FDP2(_context.getNode());
     fdp.process();
     return fdp;
   }
