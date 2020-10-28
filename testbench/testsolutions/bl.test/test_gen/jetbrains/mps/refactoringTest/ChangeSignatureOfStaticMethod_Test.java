@@ -12,8 +12,6 @@ import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ChangeMethodSignatureParameters;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -23,6 +21,7 @@ import java.util.ArrayList;
 import junit.framework.Assert;
 import jetbrains.mps.lang.test.matcher.NodesMatcher;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class ChangeSignatureOfStaticMethod_Test extends BaseTransformationTest {
@@ -49,21 +48,21 @@ public class ChangeSignatureOfStaticMethod_Test extends BaseTransformationTest {
     public void test_ChangeSignatureOfStaticMethod() throws Exception {
       addNodeById("1230052903079");
       addNodeById("1230052903110");
-      ChangeMethodSignatureParameters params = new ChangeMethodSignatureParameters(SNodeOperations.cast(getNodeById("1230052903099"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbbebabf0aL, "StaticMethodDeclaration"))));
+      ChangeMethodSignatureParameters params = new ChangeMethodSignatureParameters(getNodeById("1230052903099"));
       SNode p1 = ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$5xBj)).first();
       SNode p0 = ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$5xBj)).getElement(1);
       ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$5xBj)).clear();
       ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$5xBj)).addElement(p0);
       ListSequence.fromList(SLinkOperations.getChildren(params.getDeclaration(), LINKS.parameter$5xBj)).addElement(p1);
-      ChangeMethodSignatureRefactoring ref = new ChangeMethodSignatureRefactoring(params, SNodeOperations.cast(getNodeById("1230052903099"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbbebabf0aL, "StaticMethodDeclaration"))));
+      ChangeMethodSignatureRefactoring ref = new ChangeMethodSignatureRefactoring(params, getNodeById("1230052903099"));
       List<SNode> ussages = ListSequence.fromList(new ArrayList<SNode>());
-      ListSequence.fromList(ussages).addElement(SNodeOperations.cast(getNodeById("1230052903086"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x6c6b6a1e379f9404L, "LocalMethodCall"))));
-      ListSequence.fromList(ussages).addElement(SNodeOperations.cast(getNodeById("1230052903093"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbbebabf09L, "StaticMethodCall"))));
+      ListSequence.fromList(ussages).addElement(getNodeById("1230052903086"));
+      ListSequence.fromList(ussages).addElement(getNodeById("1230052903093"));
       ref.setUsages(ussages);
       ref.doRefactoring();
       {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("1230052903080"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("1230052903111"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
+        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230052903080"));
+        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230052903111"));
         Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
       }
     }

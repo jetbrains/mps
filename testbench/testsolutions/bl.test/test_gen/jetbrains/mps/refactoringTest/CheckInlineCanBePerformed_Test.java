@@ -13,8 +13,6 @@ import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import junit.framework.Assert;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.InlineMethodModel;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class CheckInlineCanBePerformed_Test extends BaseTransformationTest {
@@ -40,16 +38,16 @@ public class CheckInlineCanBePerformed_Test extends BaseTransformationTest {
 
     public void test_CheckInlineCanBePerformed() throws Exception {
       addNodeById("1230053187318");
-      Assert.assertNull(new InlineMethodModel(SNodeOperations.cast(getNodeById("1230053187326"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x118154a6332L, "InstanceMethodCallOperation")))).getErrors());
-      Assert.assertTrue(new InlineMethodModel(SNodeOperations.cast(getNodeById("1230053187332"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x118154a6332L, "InstanceMethodCallOperation")))).getErrors() != null);
-      Assert.assertNull(new InlineMethodModel(SNodeOperations.cast(getNodeById("1230053187337"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x118154a6332L, "InstanceMethodCallOperation")))).getErrors());
-      Assert.assertNull(new InlineMethodModel(SNodeOperations.cast(getNodeById("1230053187342"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x118154a6332L, "InstanceMethodCallOperation")))).getErrors());
-      Assert.assertTrue(new InlineMethodModel(SNodeOperations.cast(getNodeById("1230053187347"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x118154a6332L, "InstanceMethodCallOperation")))).getErrors() != null);
-      Assert.assertNull(new InlineMethodModel(SNodeOperations.cast(getNodeById("1230053187351"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x118154a6332L, "InstanceMethodCallOperation")))).getErrors());
-      Assert.assertNotNull(new InlineMethodModel(SNodeOperations.cast(getNodeById("4516930249753972654"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x118154a6332L, "InstanceMethodCallOperation")))).getErrors());
-      Assert.assertNotNull(new InlineMethodModel(SNodeOperations.cast(getNodeById("8924724747233233998"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x118154a6332L, "InstanceMethodCallOperation")))).getErrors());
-      Assert.assertNull(new InlineMethodModel(SNodeOperations.cast(getNodeById("8924724747233354928"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x118154a6332L, "InstanceMethodCallOperation")))).getErrors());
-      Assert.assertNull(new InlineMethodModel(SNodeOperations.cast(getNodeById("8924724747233546124"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x118154a6332L, "InstanceMethodCallOperation")))).getErrors());
+      Assert.assertNull(new InlineMethodModel(getNodeById("1230053187326")).getErrors());
+      Assert.assertTrue(new InlineMethodModel(getNodeById("1230053187332")).getErrors() != null);
+      Assert.assertNull(new InlineMethodModel(getNodeById("1230053187337")).getErrors());
+      Assert.assertNull(new InlineMethodModel(getNodeById("1230053187342")).getErrors());
+      Assert.assertTrue(new InlineMethodModel(getNodeById("1230053187347")).getErrors() != null);
+      Assert.assertNull(new InlineMethodModel(getNodeById("1230053187351")).getErrors());
+      Assert.assertNotNull(new InlineMethodModel(getNodeById("4516930249753972654")).getErrors());
+      Assert.assertNotNull(new InlineMethodModel(getNodeById("8924724747233233998")).getErrors());
+      Assert.assertNull(new InlineMethodModel(getNodeById("8924724747233354928")).getErrors());
+      Assert.assertNull(new InlineMethodModel(getNodeById("8924724747233546124")).getErrors());
     }
 
 

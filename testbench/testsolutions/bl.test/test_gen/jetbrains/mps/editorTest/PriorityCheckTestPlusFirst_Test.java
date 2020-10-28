@@ -55,12 +55,12 @@ public class PriorityCheckTestPlusFirst_Test extends BaseTransformationTest {
       SNode constant = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, "jetbrains.mps.baseLanguage.structure.IntegerConstant"));
       SPropertyOperations.assign(constant, PROPS.value$jgCM, 3);
       SLinkOperations.setTarget(op, LINKS.leftExpression$sEj, constant);
-      SNodeOperations.replaceWithAnother(SNodeOperations.cast(getNodeById("818296778579252641"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfe476b758fL, "MulExpression"))), op);
-      SLinkOperations.setTarget(op, LINKS.rightExpression$nvX, SNodeOperations.cast(getNodeById("818296778579252641"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfe476b758fL, "MulExpression"))));
+      SNodeOperations.replaceWithAnother(getNodeById("818296778579252641"), op);
+      SLinkOperations.setTarget(op, LINKS.rightExpression$nvX, getNodeById("818296778579252641"));
       ParenthesisUtil.checkOperationWRTPriority(op);
       {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("818296778579245167"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement"))));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("818296778579245158"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement"))));
+        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("818296778579245167"));
+        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("818296778579245158"));
         Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
       }
     }

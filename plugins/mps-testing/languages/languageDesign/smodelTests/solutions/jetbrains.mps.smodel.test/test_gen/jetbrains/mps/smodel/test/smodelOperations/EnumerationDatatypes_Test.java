@@ -16,8 +16,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 @MPSLaunch
@@ -134,7 +134,7 @@ public class EnumerationDatatypes_Test extends BaseTransformationTest {
       addNodeById("7060593544921882462");
       addNodeById("7060593544921942801");
       SNode container1 = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x61fc446ba477f2e1L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_Container"));
-      SNode container2 = SNodeOperations.cast(getNodeById("7060593544921931916"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x61fc446ba477f2e1L, "TestEnum_Container")));
+      SNode container2 = getNodeById("7060593544921931916");
 
       this.test_init(container1);
       this.test_init(container2);
@@ -150,7 +150,7 @@ public class EnumerationDatatypes_Test extends BaseTransformationTest {
       SPropertyOperations.assignEnum(container2, PROPS.enumWODefault$6hVk, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014df2L, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WODefault"), 0x61fc446ba477f2ddL, "name_1"));
       SPropertyOperations.assignEnum(container2, PROPS.enumWithDefault$6hti, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, 0x55fd055f8f014dbfL, "jetbrains.mps.lang.smodelTests.structure.TestEnum_WithDefault"), 0x125bc18df9d40efaL, "name_1"));
 
-      SNode container3 = SNodeOperations.cast(getNodeById("7060593544921942802"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x61fc446ba477f2e1L, "TestEnum_Container")));
+      SNode container3 = getNodeById("7060593544921942802");
 
       this.test_setfirst(container1);
       this.test_setfirst(container2);
@@ -159,7 +159,7 @@ public class EnumerationDatatypes_Test extends BaseTransformationTest {
     public void test_enumProperties_remove() throws Exception {
       addNodeById("7060593544921882462");
       addNodeById("7060593544921942801");
-      SNode container_proto = SNodeOperations.cast(getNodeById("7060593544921942802"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x61fc446ba477f2e1L, "TestEnum_Container")));
+      SNode container_proto = getNodeById("7060593544921942802");
 
       SNode container1 = SNodeOperations.copyNode(container_proto);
       SPropertyOperations.remove(container1, PROPS.enumWODefault$6hVk);

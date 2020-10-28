@@ -13,8 +13,6 @@ import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.InlineVariableRefactoring;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.InlineVariableAssignmentRefactoring;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -52,22 +50,22 @@ public class InlineFromConceptFunction_Test extends BaseTransformationTest {
     public void test_deinition() throws Exception {
       addNodeById("1230053266366");
       addNodeById("1230053266380");
-      InlineVariableRefactoring ref = new InlineVariableAssignmentRefactoring(SNodeOperations.cast(getNodeById("1230053266370"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7efL, "LocalVariableDeclaration"))));
+      InlineVariableRefactoring ref = new InlineVariableAssignmentRefactoring(getNodeById("1230053266370"));
       ref.doRefactoring();
       {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("1230053266367"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x108bbca0f48L, "ConceptFunction"))));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("1230053266381"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x108bbca0f48L, "ConceptFunction"))));
+        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230053266367"));
+        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230053266381"));
         Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
       }
     }
     public void test_reference() throws Exception {
       addNodeById("1230053266366");
       addNodeById("1230053266380");
-      InlineVariableRefactoring ref = new InlineVariableReferenceRefactoring(SNodeOperations.cast(getNodeById("1230053266377"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c77f1e98L, "VariableReference"))));
+      InlineVariableRefactoring ref = new InlineVariableReferenceRefactoring(getNodeById("1230053266377"));
       ref.doRefactoring();
       {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("1230053266367"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x108bbca0f48L, "ConceptFunction"))));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.cast(getNodeById("1230053266381"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x108bbca0f48L, "ConceptFunction"))));
+        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230053266367"));
+        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("1230053266381"));
         Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
       }
     }

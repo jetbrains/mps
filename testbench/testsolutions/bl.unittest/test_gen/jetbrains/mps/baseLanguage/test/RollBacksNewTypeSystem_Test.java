@@ -12,8 +12,6 @@ import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.lang.test.runtime.TypeSystemCheckUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class RollBacksNewTypeSystem_Test extends BaseTransformationTest {
@@ -39,7 +37,7 @@ public class RollBacksNewTypeSystem_Test extends BaseTransformationTest {
 
     public void test_GenerationMode() throws Exception {
       addNodeById("5210914756411638024");
-      TypeSystemCheckUtil.checkRollBacks(SNodeOperations.cast(getNodeById("5210914756411638027"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b204L, "ConstructorDeclaration"))));
+      TypeSystemCheckUtil.checkRollBacks(getNodeById("5210914756411638027"));
     }
 
 

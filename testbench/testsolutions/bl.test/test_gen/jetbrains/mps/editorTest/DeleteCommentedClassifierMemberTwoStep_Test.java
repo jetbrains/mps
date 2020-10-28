@@ -12,8 +12,6 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.lang.test.runtime.EditorTestUtil;
 import junit.framework.Assert;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class DeleteCommentedClassifierMemberTwoStep_Test extends BaseTransformationTest {
@@ -43,7 +41,7 @@ public class DeleteCommentedClassifierMemberTwoStep_Test extends BaseTransformat
           invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
           getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
             public void run() {
-              Assert.assertTrue(DeletionApproverUtil.isApprovedForDeletion(getEditorComponent().getEditorContext(), SNodeOperations.cast(getNodeById("8979250711592873343"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core"), 0x3dcc194340c24debL, "BaseCommentAttribute")))));
+              Assert.assertTrue(DeletionApproverUtil.isApprovedForDeletion(getEditorComponent().getEditorContext(), getNodeById("8979250711592873343")));
             }
           });
           invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");

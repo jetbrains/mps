@@ -10,8 +10,6 @@ import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import junit.framework.Assert;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
@@ -42,7 +40,7 @@ public class SmartReferenseUpdateOnChange_Test extends BaseTransformationTest {
       invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
       getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
         public void run() {
-          SNode testNode = SNodeOperations.cast(getNodeById("2345623147105496859"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")));
+          SNode testNode = getNodeById("2345623147105496859");
           EditorCell editorCell = getEditorComponent().findCellWithId(testNode, "ReferencePresentation_91bvrs_a0a0");
           Assert.assertEquals("SmartReferenseUpdat", ((EditorCell_Label) editorCell).getText());
         }

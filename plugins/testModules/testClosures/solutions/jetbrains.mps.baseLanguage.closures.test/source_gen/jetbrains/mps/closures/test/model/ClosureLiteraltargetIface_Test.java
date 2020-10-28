@@ -13,14 +13,13 @@ import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.generator.template.TemplateQueryContext;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.closures.helper.ClosureLiteralTarget;
 import jetbrains.mps.baseLanguage.closures.helper.Values;
 import junit.framework.Assert;
 import jetbrains.mps.lang.pattern.util.MatchingUtil;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.SReference;
 
 @MPSLaunch
@@ -53,7 +52,7 @@ public class ClosureLiteraltargetIface_Test extends BaseTransformationTest {
       addNodeById("7178287329507546170");
       addNodeById("7178287329507578878");
       TemplateQueryContext genContext = this.getContext();
-      SNode literal = SNodeOperations.cast(getNodeById("7178287329507578897"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfd3920347849419dL, 0x907112563d152375L, "jetbrains.mps.baseLanguage.closures"), 0x1174bed3125L, "ClosureLiteral")));
+      SNode literal = getNodeById("7178287329507578897");
       new ClosureLiteralTarget(genContext).setTarget(literal, _quotation_createNode_u745oo_b0a4a3i());
       this.assertLiteralTarget(genContext, literal, _quotation_createNode_u745oo_c0a5a3i());
     }
@@ -61,7 +60,7 @@ public class ClosureLiteraltargetIface_Test extends BaseTransformationTest {
       addNodeById("7178287329507546170");
       addNodeById("7178287329507578878");
       TemplateQueryContext genContext = this.getContext();
-      SNode literal = SNodeOperations.cast(getNodeById("7178287329507578897"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfd3920347849419dL, 0x907112563d152375L, "jetbrains.mps.baseLanguage.closures"), 0x1174bed3125L, "ClosureLiteral")));
+      SNode literal = getNodeById("7178287329507578897");
       new ClosureLiteralTarget(genContext).setTarget(literal, _quotation_createNode_u745oo_b0a4a4i());
       this.assertLiteralTarget(genContext, literal, _quotation_createNode_u745oo_c0a5a4i());
     }

@@ -12,8 +12,6 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.nodeEditor.EditorContext;
 import javax.swing.SwingUtilities;
 import jetbrains.mps.openapi.editor.assist.ContextAssistantManager;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import junit.framework.Assert;
 
 @MPSLaunch
@@ -46,7 +44,7 @@ public class ContextAssistant_ShowAssistantOnSubconcept_Test extends BaseTransfo
             public void run() {
               ContextAssistantManager contextAssistantManager = editorContext.getContextAssistantManager();
 
-              getEditorComponent().getSelectionManager().setSelection(SNodeOperations.cast(getNodeById("9025427969322528788"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage"), 0x7d40c2eb5957a904L, "OtherSubconceptOfChild"))));
+              getEditorComponent().getSelectionManager().setSelection(getNodeById("9025427969322528788"));
               contextAssistantManager.updateImmediately();
               Assert.assertNotNull(contextAssistantManager.getActiveAssistant());
               Assert.assertNotNull(contextAssistantManager.getActiveMenuItems());

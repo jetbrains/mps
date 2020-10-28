@@ -16,7 +16,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import junit.framework.Assert;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
@@ -74,10 +73,10 @@ public class Pattern_References_Test extends BaseTransformationTest {
       addNodeById("8950533135207579924");
       boolean matches;
       {
-        SNode matchedNode_kxljzf_b0b = _quotation_createNode_1sosjx_a0a0c0e9(SNodeOperations.cast(getNodeById("8950533135207579936"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7efL, "LocalVariableDeclaration"))));
+        SNode matchedNode_kxljzf_b0b = _quotation_createNode_1sosjx_a0a0c0e9(getNodeById("8950533135207579936"));
         {
           boolean matches_kxljzf_a1a1 = false;
-          GeneratedMatchingPattern matchingPattern_kxljzf_a1a1 = new Pattern_kxljzf_a0b0b0b0b(_quotation_createNode_1sosjx_a0a0b0b0c0e9(SNodeOperations.cast(getNodeById("8950533135207579936"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc67c7efL, "LocalVariableDeclaration")))));
+          GeneratedMatchingPattern matchingPattern_kxljzf_a1a1 = new Pattern_kxljzf_a0b0b0b0b(_quotation_createNode_1sosjx_a0a0b0b0c0e9(getNodeById("8950533135207579936")));
           matches_kxljzf_a1a1 = matchingPattern_kxljzf_a1a1.match(matchedNode_kxljzf_b0b);
           if (matches_kxljzf_a1a1) {
             matches = true;

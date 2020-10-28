@@ -12,8 +12,6 @@ import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.ide.java.tests.utility.JavaToMpsUtils;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -81,13 +79,13 @@ public class JavaToMps_Test extends BaseTransformationTest {
       addNodeById("4795297196607520929");
       addNodeById("1218582063869484737");
       addNodeById("8083368042256419833");
-      new JavaToMpsUtils(myProject.getRepository()).checkFile(this.testsLocation().findChild("singleFiles").findChild("selfref"), SNodeOperations.cast(getNodeById("4795297196607521155"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
+      new JavaToMpsUtils(myProject.getRepository()).checkFile(this.testsLocation().findChild("singleFiles").findChild("selfref"), getNodeById("4795297196607521155"));
     }
     public void test_ClassWInnerInterace() throws Exception {
       addNodeById("4795297196607520929");
       addNodeById("1218582063869484737");
       addNodeById("8083368042256419833");
-      new JavaToMpsUtils(myProject.getRepository()).checkFile(this.testsLocation().findChild("singleFiles").findChild("classwiface"), SNodeOperations.cast(getNodeById("1218582063869484741"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
+      new JavaToMpsUtils(myProject.getRepository()).checkFile(this.testsLocation().findChild("singleFiles").findChild("classwiface"), getNodeById("1218582063869484741"));
     }
     public void test_Imports1() throws Exception {
       addNodeById("4795297196607520929");
@@ -117,7 +115,7 @@ public class JavaToMps_Test extends BaseTransformationTest {
       addNodeById("4795297196607520929");
       addNodeById("1218582063869484737");
       addNodeById("8083368042256419833");
-      new JavaToMpsUtils(myProject.getRepository()).checkFile(this.testsLocation().findChild("singleFiles").findChild("nestcontainer"), SNodeOperations.cast(getNodeById("8083368042256419834"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8c108ca66L, "ClassConcept"))));
+      new JavaToMpsUtils(myProject.getRepository()).checkFile(this.testsLocation().findChild("singleFiles").findChild("nestcontainer"), getNodeById("8083368042256419834"));
     }
     public void test_FullSource() throws Exception {
       addNodeById("4795297196607520929");

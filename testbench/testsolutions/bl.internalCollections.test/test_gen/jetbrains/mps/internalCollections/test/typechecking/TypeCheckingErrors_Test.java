@@ -13,8 +13,6 @@ import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.lang.test.runtime.NodeCheckerUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.checkers.SuppressErrorsChecker;
@@ -59,8 +57,8 @@ public class TypeCheckingErrors_Test extends BaseTransformationTest {
       addNodeById("1089557578627272135");
       addNodeById("360223900466871399");
       addNodeById("5532302989585163343");
-      assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(SNodeOperations.cast(getNodeById("1301553664997476018"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement"))), null)).isEmpty();
-      assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(SNodeOperations.cast(getNodeById("3441689827373215907"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement"))), null)).isEmpty();
+      assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(getNodeById("1301553664997476018"), null)).isEmpty();
+      assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(getNodeById("3441689827373215907"), null)).isEmpty();
     }
     public void test_varar_raw() throws Exception {
       addNodeById("1301553664999174765");
@@ -68,7 +66,7 @@ public class TypeCheckingErrors_Test extends BaseTransformationTest {
       addNodeById("1089557578627272135");
       addNodeById("360223900466871399");
       addNodeById("5532302989585163343");
-      assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(SNodeOperations.cast(getNodeById("1089557578627275112"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b21dL, "InstanceMethodDeclaration"))), null)).all(new IWhereFilter<NodeReportItem>() {
+      assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(getNodeById("1089557578627275112"), null)).all(new IWhereFilter<NodeReportItem>() {
         public boolean accept(NodeReportItem it) {
           return SuppressErrorsChecker.FLAVOUR_ACTIVE_SUPPRESSOR.canGet(it);
         }
@@ -80,7 +78,7 @@ public class TypeCheckingErrors_Test extends BaseTransformationTest {
       addNodeById("1089557578627272135");
       addNodeById("360223900466871399");
       addNodeById("5532302989585163343");
-      assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(SNodeOperations.cast(getNodeById("360223900466887047"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b21dL, "InstanceMethodDeclaration"))), null)).isEmpty();
+      assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(getNodeById("360223900466887047"), null)).isEmpty();
     }
     public void test_meet_with_variable_excluded_from_lcs() throws Exception {
       addNodeById("1301553664999174765");
@@ -88,7 +86,7 @@ public class TypeCheckingErrors_Test extends BaseTransformationTest {
       addNodeById("1089557578627272135");
       addNodeById("360223900466871399");
       addNodeById("5532302989585163343");
-      assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(SNodeOperations.cast(getNodeById("6368058149914761648"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b21dL, "InstanceMethodDeclaration"))), null)).isEmpty();
+      assert CollectionSequence.fromCollection(NodeCheckerUtil.checkForNodeMessages(getNodeById("6368058149914761648"), null)).isEmpty();
     }
 
 

@@ -11,8 +11,6 @@ import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.jetpad.mapper.Mapper;
 import jetbrains.mps.nodeEditor.cells.jetpad.PortCell;
 import junit.framework.Assert;
@@ -49,7 +47,7 @@ public class PortDecoratorTest_Test extends BaseTransformationTest {
       final Wrappers._T<SNode> node = new Wrappers._T<SNode>();
       getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
         public void run() {
-          node.value = SNodeOperations.cast(getNodeById("1560508619094050075"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, "jetbrains.mps.lang.editor.diagram.testLanguage"), 0x4ce40ecaf41f71f2L, "InputPort")));
+          node.value = getNodeById("1560508619094050075");
         }
       });
 

@@ -16,8 +16,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.behavior.ConceptFunction__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import junit.framework.Assert;
 import jetbrains.mps.lang.test.matcher.NodesMatcher;
 import jetbrains.mps.lang.test.runtime.CheckErrorMessagesRunnable;
@@ -28,6 +26,7 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 @MPSLaunch
@@ -65,7 +64,7 @@ public class Include_MenuAndTargetNodeCorrespondence_Test extends BaseTransforma
       addNodeById("6903010549536712693");
       {
         List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), createSNodeType_sxmjox_a0a0a0c0d9());
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), ConceptFunction__BehaviorDescriptor.getExpectedReturnType_idhEwIGRD.invoke(SNodeOperations.cast(getNodeById("2705676212747008292"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor"), 0xae2d2fe1c9d6e2eL, "QueryFunction_TransformationMenu_TargetNode")))));
+        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), ConceptFunction__BehaviorDescriptor.getExpectedReturnType_idhEwIGRD.invoke(getNodeById("2705676212747008292")));
         Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
       }
     }

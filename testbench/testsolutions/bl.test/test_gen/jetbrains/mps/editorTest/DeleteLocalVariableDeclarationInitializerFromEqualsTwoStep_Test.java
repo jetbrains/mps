@@ -12,8 +12,6 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.lang.test.runtime.EditorTestUtil;
 import junit.framework.Assert;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class DeleteLocalVariableDeclarationInitializerFromEqualsTwoStep_Test extends BaseTransformationTest {
@@ -43,7 +41,7 @@ public class DeleteLocalVariableDeclarationInitializerFromEqualsTwoStep_Test ext
           invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
           getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
             public void run() {
-              Assert.assertTrue(DeletionApproverUtil.isApprovedForDeletion(getEditorComponent().getEditorContext(), SNodeOperations.cast(getNodeById("8979250711603169136"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc59b314L, "IntegerConstant")))));
+              Assert.assertTrue(DeletionApproverUtil.isApprovedForDeletion(getEditorComponent().getEditorContext(), getNodeById("8979250711603169136")));
             }
           });
           invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");

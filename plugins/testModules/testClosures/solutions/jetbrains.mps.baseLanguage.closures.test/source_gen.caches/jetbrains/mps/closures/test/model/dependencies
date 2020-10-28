@@ -11,7 +11,6 @@
     <classNode dependClassName="jetbrains.mps.errors.MessageStatus" />
     <classNode dependClassName="jetbrains.mps.generator.template.TemplateQueryContext" />
     <classNode dependClassName="jetbrains.mps.lang.pattern.util.MatchingUtil" />
-    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.test.runtime.BaseTestBody" />
     <classNode dependClassName="jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable" />
     <classNode dependClassName="jetbrains.mps.lang.test.runtime.RunWithCommand" />
@@ -38,7 +37,6 @@
     <classNode dependClassName="jetbrains.mps.closures.test.model.MockTemplateQueryContext" />
     <classNode dependClassName="jetbrains.mps.generator.template.TemplateQueryContext" />
     <classNode dependClassName="jetbrains.mps.lang.pattern.util.MatchingUtil" />
-    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.test.runtime.BaseTestBody" />
     <classNode dependClassName="jetbrains.mps.lang.test.runtime.RunWithCommand" />
     <classNode dependClassName="jetbrains.mps.lang.test.runtime.TestParametersCache" />

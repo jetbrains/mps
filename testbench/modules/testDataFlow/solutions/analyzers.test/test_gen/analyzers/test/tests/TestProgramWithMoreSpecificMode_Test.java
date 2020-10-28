@@ -17,14 +17,13 @@ import jetbrains.mps.lang.dataFlow.framework.ProgramBuilderContextImpl;
 import java.util.Collections;
 import jetbrains.mps.lang.dataFlow.framework.ConceptDataFlowModeId;
 import jetbrains.mps.lang.dataFlow.framework.Program;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import junit.framework.Assert;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Arrays;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class TestProgramWithMoreSpecificMode_Test extends BaseTransformationTest {
@@ -55,14 +54,14 @@ public class TestProgramWithMoreSpecificMode_Test extends BaseTransformationTest
     public void test_testLessSpecificMode() throws Exception {
       addNodeById("7078910619969225966");
       MPSProgramBuilder builder = new MPSProgramBuilder(null, new InstructionBuilder(), new ProgramBuilderContextImpl(Collections.singletonList(new ConceptDataFlowModeId("jetbrains.mps.lang.dataFlow.structure.IntraProcedural_BuilderMode"))));
-      Program program = builder.buildProgram(SNodeOperations.cast(getNodeById("7078910619969226058"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, "testCustomAnalyzer"), 0x623d57b40400d6baL, "OtherRoot"))));
-      Assert.assertTrue(program.getInstructions().size() == ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(getNodeById("7078910619969226058"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, "testCustomAnalyzer"), 0x623d57b40400d6baL, "OtherRoot"))), LINKS.child$cKRN)).count() + 1);
+      Program program = builder.buildProgram(getNodeById("7078910619969226058"));
+      Assert.assertTrue(program.getInstructions().size() == ListSequence.fromList(SLinkOperations.getChildren(getNodeById("7078910619969226058"), LINKS.child$cKRN)).count() + 1);
     }
     public void test_testMoreSpecificMode() throws Exception {
       addNodeById("7078910619969225966");
       MPSProgramBuilder builder = new MPSProgramBuilder(null, new InstructionBuilder(), new ProgramBuilderContextImpl(Arrays.asList(new ConceptDataFlowModeId("jetbrains.mps.testCustomDataFlow.structure.IntraProceduralSpecific_BuilderMode"), new ConceptDataFlowModeId("jetbrains.mps.lang.dataFlow.structure.IntraProcedural_BuilderMode"))));
-      Program program = builder.buildProgram(SNodeOperations.cast(getNodeById("7078910619969226058"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, "testCustomAnalyzer"), 0x623d57b40400d6baL, "OtherRoot"))));
-      Assert.assertTrue(program.getInstructions().size() == ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(getNodeById("7078910619969226058"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, "testCustomAnalyzer"), 0x623d57b40400d6baL, "OtherRoot"))), LINKS.child$cKRN)).count() + Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SNodeOperations.cast(getNodeById("7078910619969226058"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, "testCustomAnalyzer"), 0x623d57b40400d6baL, "OtherRoot"))), LINKS.child$cKRN), LINKS.child$fPvo)).count() + 1);
+      Program program = builder.buildProgram(getNodeById("7078910619969226058"));
+      Assert.assertTrue(program.getInstructions().size() == ListSequence.fromList(SLinkOperations.getChildren(getNodeById("7078910619969226058"), LINKS.child$cKRN)).count() + Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(getNodeById("7078910619969226058"), LINKS.child$cKRN), LINKS.child$fPvo)).count() + 1);
     }
 
 

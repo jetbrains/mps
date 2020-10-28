@@ -10,8 +10,6 @@ import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import junit.framework.Assert;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class SelectAllNonSelectableRootThroughNonSelectable_Test extends BaseTransformationTest {
@@ -39,7 +37,7 @@ public class SelectAllNonSelectableRootThroughNonSelectable_Test extends BaseTra
       invokeAction("jetbrains.mps.ide.editor.actions.SelectAll_Action");
       getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
         public void run() {
-          Assert.assertEquals(SNodeOperations.cast(getNodeById("3756708898179594226"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, "jetbrains.mps.lang.editor.editorTest"), 0x6c1b61fd2cd1eefdL, "SelectableContainer"))), getEditorComponent().getSelectedNode());
+          Assert.assertEquals(getNodeById("3756708898179594226"), getEditorComponent().getSelectedNode());
         }
       });
       invokeAction("jetbrains.mps.ide.editor.actions.SelectDown_Action");

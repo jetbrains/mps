@@ -9,8 +9,6 @@ import jetbrains.mps.lang.test.runtime.TestParametersCache;
 import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import junit.framework.Assert;
 import jetbrains.mps.nodeEditor.reflectiveEditor.ReflectiveHintsManager;
 
@@ -39,21 +37,21 @@ public class ShowReflectiveEditorsForSubtree_ThenRegularEditorsForSubtreeForChil
       initEditorComponent("5835012958528646097", "");
       ReflectiveEditorActionsUtil.runReadInEDTAndWait(getEditorComponent(), new Runnable() {
         public void run() {
-          getEditorComponent().selectNode(SNodeOperations.cast(getNodeById("5835012958528646100"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfaa4bf0f2fL, "WhileStatement"))));
+          getEditorComponent().selectNode(getNodeById("5835012958528646100"));
         }
       });
       invokeAction("jetbrains.mps.ide.editor.actions.ShowReflectiveEditorsForSubtree_Action");
 
       ReflectiveEditorActionsUtil.runReadInEDTAndWait(getEditorComponent(), new Runnable() {
         public void run() {
-          getEditorComponent().selectNode(SNodeOperations.cast(getNodeById("5835012958528646102"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement"))));
+          getEditorComponent().selectNode(getNodeById("5835012958528646102"));
         }
       });
       invokeAction("jetbrains.mps.ide.editor.actions.ShowRegularEditor_Action");
 
       ReflectiveEditorActionsUtil.runReadInEDTAndWait(getEditorComponent(), new Runnable() {
         public void run() {
-          getEditorComponent().selectNode(SNodeOperations.cast(getNodeById("5835012958528646100"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfaa4bf0f2fL, "WhileStatement"))));
+          getEditorComponent().selectNode(getNodeById("5835012958528646100"));
         }
       });
       invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
@@ -62,9 +60,9 @@ public class ShowReflectiveEditorsForSubtree_ThenRegularEditorsForSubtreeForChil
 
       getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
         public void run() {
-          Assert.assertFalse(ReflectiveHintsManager.shouldShowReflectiveEditor(getEditorComponent().getBigValidCellForNode(SNodeOperations.cast(getNodeById("5835012958528646097"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b217L, "IfStatement")))).getCellContext()));
-          Assert.assertFalse(ReflectiveHintsManager.shouldShowReflectiveEditor(getEditorComponent().getBigValidCellForNode(SNodeOperations.cast(getNodeById("5835012958528646100"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfaa4bf0f2fL, "WhileStatement")))).getCellContext()));
-          Assert.assertFalse(ReflectiveHintsManager.shouldShowReflectiveEditor(getEditorComponent().getBigValidCellForNode(SNodeOperations.cast(getNodeById("5835012958528646102"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement")))).getCellContext()));
+          Assert.assertFalse(ReflectiveHintsManager.shouldShowReflectiveEditor(getEditorComponent().getBigValidCellForNode(getNodeById("5835012958528646097")).getCellContext()));
+          Assert.assertFalse(ReflectiveHintsManager.shouldShowReflectiveEditor(getEditorComponent().getBigValidCellForNode(getNodeById("5835012958528646100")).getCellContext()));
+          Assert.assertFalse(ReflectiveHintsManager.shouldShowReflectiveEditor(getEditorComponent().getBigValidCellForNode(getNodeById("5835012958528646102")).getCellContext()));
         }
       });
     }

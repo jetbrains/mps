@@ -13,8 +13,6 @@ import jetbrains.mps.nodeEditor.EditorContext;
 import javax.swing.SwingUtilities;
 import jetbrains.mps.openapi.editor.assist.ContextAssistantManager;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import junit.framework.Assert;
 
 @MPSLaunch
@@ -47,12 +45,12 @@ public class ContextAssistant_EmptySubclassMenuOverridesNonEmptySuperclassMenu_T
             public void run() {
               ContextAssistantManager contextAssistantManager = editorContext.getContextAssistantManager();
 
-              getEditorComponent().getSelectionManager().setSelection(((SNode) SNodeOperations.cast(getNodeById("1966322953445270119"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage"), 0x4d6a8b533e60aa32L, "Child")))));
+              getEditorComponent().getSelectionManager().setSelection(((SNode) getNodeById("1966322953445270119")));
               contextAssistantManager.updateImmediately();
               Assert.assertNotNull(contextAssistantManager.getActiveAssistant());
               Assert.assertNotNull(contextAssistantManager.getActiveMenuItems());
 
-              getEditorComponent().getSelectionManager().setSelection(((SNode) SNodeOperations.cast(getNodeById("1966322953445265940"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage"), 0x1b49c84ee1cc743bL, "SubconceptOfChild")))));
+              getEditorComponent().getSelectionManager().setSelection(((SNode) getNodeById("1966322953445265940")));
               contextAssistantManager.updateImmediately();
               Assert.assertNull(contextAssistantManager.getActiveAssistant());
               Assert.assertNull(contextAssistantManager.getActiveMenuItems());

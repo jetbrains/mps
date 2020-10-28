@@ -10,8 +10,6 @@ import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import javax.swing.SwingUtilities;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.jetpad.mapper.Mapper;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -48,7 +46,7 @@ public class SelectAnotherNodeFromCode_Test extends BaseTransformationTest {
         public void run() {
           getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
             public void run() {
-              getEditorComponent().selectNode(SNodeOperations.cast(getNodeById("8041297453110598748"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, "jetbrains.mps.lang.editor.diagram.testLanguage"), 0x7a0afda102e202aaL, "NodeWithSize"))));
+              getEditorComponent().selectNode(getNodeById("8041297453110598748"));
             }
           });
         }

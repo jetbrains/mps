@@ -12,8 +12,6 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.lang.test.runtime.EditorTestUtil;
 import junit.framework.Assert;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class DeleteTryCatchStatementCatchClauseTwoStep_Test extends BaseTransformationTest {
@@ -43,7 +41,7 @@ public class DeleteTryCatchStatementCatchClauseTwoStep_Test extends BaseTransfor
           invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
           getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
             public void run() {
-              Assert.assertTrue(DeletionApproverUtil.isApprovedForDeletion(getEditorComponent().getEditorContext(), SNodeOperations.cast(getNodeById("2640093672105151080"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x2aefd560f401b9c6L, "MultipleCatchClause")))));
+              Assert.assertTrue(DeletionApproverUtil.isApprovedForDeletion(getEditorComponent().getEditorContext(), getNodeById("2640093672105151080")));
             }
           });
           invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");

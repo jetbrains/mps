@@ -11,8 +11,6 @@ import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.jetpad.mapper.Mapper;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import junit.framework.Assert;
 import jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.NodeDecoratorView;
 
@@ -42,7 +40,7 @@ public class BlockHasNoDecoratorTest_Test extends BaseTransformationTest {
       final Wrappers._T<Mapper> descendantMapper = new Wrappers._T<Mapper>();
       getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
         public void run() {
-          descendantMapper.value = DecoratorTestRunner.getMapper(SNodeOperations.cast(getNodeById("83003444452611281"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, "jetbrains.mps.lang.editor.diagram.testLanguage"), 0xb6a495df3833bdeL, "NodeWithName"))), getEditorComponent());
+          descendantMapper.value = DecoratorTestRunner.getMapper(getNodeById("83003444452611281"), getEditorComponent());
         }
       });
 

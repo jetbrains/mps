@@ -12,7 +12,6 @@ import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.test.runtime.CheckErrorMessagesRunnable;
@@ -21,6 +20,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class FloatConstantType_Test extends BaseTransformationTest {
@@ -50,12 +50,12 @@ public class FloatConstantType_Test extends BaseTransformationTest {
 
     public void test_testTypes() throws Exception {
       addNodeById("5868639094257179247");
-      assert SNodeOperations.isInstanceOf(SNodeOperations.cast(getNodeById("5868639094257266015"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x102cb19a434L, "FloatingPointConstant"))), CONCEPTS.FloatingPointConstant$3o);
-      assert SNodeOperations.isInstanceOf(SNodeOperations.cast(getNodeById("5868639094257283261"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x102cb19a434L, "FloatingPointConstant"))), CONCEPTS.FloatingPointConstant$3o);
-      assert SNodeOperations.isInstanceOf(SNodeOperations.cast(getNodeById("5868639094257285927"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x494547eeedc219b9L, "FloatingPointFloatConstant"))), CONCEPTS.FloatingPointFloatConstant$Qh);
-      assert SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SNodeOperations.cast(getNodeById("5868639094257266015"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x102cb19a434L, "FloatingPointConstant")))), CONCEPTS.DoubleType$x0);
-      assert SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SNodeOperations.cast(getNodeById("5868639094257283261"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x102cb19a434L, "FloatingPointConstant")))), CONCEPTS.DoubleType$x0);
-      assert SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(SNodeOperations.cast(getNodeById("5868639094257285927"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x494547eeedc219b9L, "FloatingPointFloatConstant")))), CONCEPTS.FloatType$up);
+      assert SNodeOperations.isInstanceOf(getNodeById("5868639094257266015"), CONCEPTS.FloatingPointConstant$3o);
+      assert SNodeOperations.isInstanceOf(getNodeById("5868639094257283261"), CONCEPTS.FloatingPointConstant$3o);
+      assert SNodeOperations.isInstanceOf(getNodeById("5868639094257285927"), CONCEPTS.FloatingPointFloatConstant$Qh);
+      assert SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(getNodeById("5868639094257266015")), CONCEPTS.DoubleType$x0);
+      assert SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(getNodeById("5868639094257283261")), CONCEPTS.DoubleType$x0);
+      assert SNodeOperations.isInstanceOf(TypecheckingFacade.getFromContext().getTypeOf(getNodeById("5868639094257285927")), CONCEPTS.FloatType$up);
     }
 
     public void test_ErrorMessagesCheck5868639094267614275() throws Exception {

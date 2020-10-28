@@ -75,7 +75,6 @@
     <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.ProgramBuilderContextImpl" />
     <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.instructions.InstructionBuilder" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
-    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.test.runtime.BaseTestBody" />
     <classNode dependClassName="jetbrains.mps.lang.test.runtime.RunWithCommand" />
     <classNode dependClassName="jetbrains.mps.lang.test.runtime.TestParametersCache" />
@@ -102,7 +101,6 @@
     <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.ProgramBuilderContextImpl" />
     <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.instructions.InstructionBuilder" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
-    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.test.runtime.BaseTestBody" />
     <classNode dependClassName="jetbrains.mps.lang.test.runtime.RunWithCommand" />
     <classNode dependClassName="jetbrains.mps.lang.test.runtime.TestParametersCache" />

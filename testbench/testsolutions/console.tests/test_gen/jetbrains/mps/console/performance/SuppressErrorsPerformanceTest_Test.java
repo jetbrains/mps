@@ -16,9 +16,8 @@ import junit.framework.Assert;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.checkers.IChecker;
 import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.project.validation.StructureChecker;
@@ -31,6 +30,7 @@ import jetbrains.mps.util.CollectConsumer;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 @MPSLaunch
@@ -68,11 +68,11 @@ public class SuppressErrorsPerformanceTest_Test extends BaseTransformationTest {
 
     public Duration measureSuppressPerformance(int modelSize) {
       SNode var5968606277576107105 = getNodeById("5968606277576107085");
-      ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(getNodeById("5968606277576107085"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, "jetbrains.mps.console.base"), 0x4e3b035171a5ba02L, "Response"))), LINKS.item$upGD)).clear();
+      ListSequence.fromList(SLinkOperations.getChildren(getNodeById("5968606277576107085"), LINKS.item$upGD)).clear();
       for (int i = 0; i < modelSize; i++) {
-        ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(getNodeById("5968606277576107085"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, "jetbrains.mps.console.base"), 0x4e3b035171a5ba02L, "Response"))), LINKS.item$upGD)).addElement(createNodeResponseItem_wxn1w7_a0a0a2a6h());
+        ListSequence.fromList(SLinkOperations.getChildren(getNodeById("5968606277576107085"), LINKS.item$upGD)).addElement(createNodeResponseItem_wxn1w7_a0a0a2a6h());
       }
-      SModel modelToCheck = SNodeOperations.getModel(SNodeOperations.cast(getNodeById("5968606277576107085"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, "jetbrains.mps.console.base"), 0x4e3b035171a5ba02L, "Response"))));
+      SModel modelToCheck = SNodeOperations.getModel(getNodeById("5968606277576107085"));
       IChecker<SNode, NodeReportItem> structureChecker = new StructureChecker();
       long startTime = System.nanoTime();
       IAbstractChecker<ModelCheckerBuilder.ItemsToCheck, IssueKindReportItem> checker = new ModelCheckerBuilder(false).createChecker(ListSequence.fromListAndArray(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>(), structureChecker, new SuppressErrorsChecker()));

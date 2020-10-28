@@ -14,7 +14,6 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 import junit.framework.Assert;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ISelector;
@@ -24,6 +23,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
@@ -81,8 +81,8 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
       addNodeById("2906110183022219843");
       addNodeById("2906110183022354865");
       addNodeById("2906110183022432276");
-      Assert.assertTrue(ListSequence.fromList(SNodeOperations.getReferences(SNodeOperations.cast(getNodeById("2906110183022219808"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer"))))).isEmpty());
-      Assert.assertEquals(3, ListSequence.fromList(SNodeOperations.getReferences(SNodeOperations.cast(getNodeById("2906110183022219844"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer"))))).count());
+      Assert.assertTrue(ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022219808"))).isEmpty());
+      Assert.assertEquals(3, ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022219844"))).count());
     }
     public void test_target() throws Exception {
       addNodeById("2906110183022219846");
@@ -90,7 +90,7 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
       addNodeById("2906110183022219843");
       addNodeById("2906110183022354865");
       addNodeById("2906110183022432276");
-      TestUtilities.assertEquals(Sequence.fromArray(new SNode[]{SNodeOperations.cast(getNodeById("2906110183022219847"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x3dd540b968e9fc5L, "Root"))), SNodeOperations.cast(getNodeById("2906110183022219848"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x3dd540b968e9fbfL, "Child"))), SNodeOperations.cast(getNodeById("2906110183022311236"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x7a02788de4ab4dL, "ChildSubConcept")))}), ListSequence.fromList(SNodeOperations.getReferences(SNodeOperations.cast(getNodeById("2906110183022219844"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer"))))).select(new ISelector<SReference, SNode>() {
+      TestUtilities.assertEquals(Sequence.fromArray(new SNode[]{getNodeById("2906110183022219847"), getNodeById("2906110183022219848"), getNodeById("2906110183022311236")}), ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022219844"))).select(new ISelector<SReference, SNode>() {
         public SNode select(SReference it) {
           return SLinkOperations.getTargetNode(it);
         }
@@ -102,7 +102,7 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
       addNodeById("2906110183022219843");
       addNodeById("2906110183022354865");
       addNodeById("2906110183022432276");
-      TestUtilities.assertEquals(Sequence.fromArray(new SReferenceLink[]{LINKS.root$cBIX, LINKS.leftChild$f5Cu, LINKS.rightChild$f5Rv}), ListSequence.fromList(SNodeOperations.getReferences(SNodeOperations.cast(getNodeById("2906110183022219844"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer"))))).select(new ISelector<SReference, SReferenceLink>() {
+      TestUtilities.assertEquals(Sequence.fromArray(new SReferenceLink[]{LINKS.root$cBIX, LINKS.leftChild$f5Cu, LINKS.rightChild$f5Rv}), ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022219844"))).select(new ISelector<SReference, SReferenceLink>() {
         public SReferenceLink select(SReference it) {
           return SLinkOperations.getRefLink(it);
         }
@@ -114,7 +114,7 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
       addNodeById("2906110183022219843");
       addNodeById("2906110183022354865");
       addNodeById("2906110183022432276");
-      TestUtilities.assertEquals(Sequence.fromArray(new SReferenceLink[]{LINKS.root$cBIX, LINKS.leftChild$f5Cu, LINKS.rightChild$f5Rv}), ListSequence.fromList(SNodeOperations.getReferences(SNodeOperations.cast(getNodeById("2906110183022219844"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer"))))).select(new ISelector<SReference, SReferenceLink>() {
+      TestUtilities.assertEquals(Sequence.fromArray(new SReferenceLink[]{LINKS.root$cBIX, LINKS.leftChild$f5Cu, LINKS.rightChild$f5Rv}), ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022219844"))).select(new ISelector<SReference, SReferenceLink>() {
         public SReferenceLink select(SReference it) {
           return SLinkOperations.getRefLink(it);
         }
@@ -127,12 +127,12 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
       addNodeById("2906110183022354865");
       addNodeById("2906110183022432276");
       // Resolving references by accessing .target node: 
-      ListSequence.fromList(SNodeOperations.getReferences(SNodeOperations.cast(getNodeById("2906110183022219844"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer"))))).visitAll(new IVisitor<SReference>() {
+      ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022219844"))).visitAll(new IVisitor<SReference>() {
         public void visit(SReference it) {
           SLinkOperations.getTargetNode(it);
         }
       });
-      ListSequence.fromList(SNodeOperations.getReferences(SNodeOperations.cast(getNodeById("2906110183022219844"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer"))))).select(new ISelector<SReference, String>() {
+      ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022219844"))).select(new ISelector<SReference, String>() {
         public String select(SReference it) {
           return SLinkOperations.getResolveInfo(it);
         }
@@ -149,11 +149,11 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
       addNodeById("2906110183022354865");
       addNodeById("2906110183022432276");
       // Adding one unspecified reference and checking if it was added properly 
-      int initialSize = ListSequence.fromList(SNodeOperations.getReferences(SNodeOperations.cast(getNodeById("2906110183022432277"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer"))))).count();
-      String unspecifiedReferenceName = this.addUnspecifiedReference(SNodeOperations.cast(getNodeById("2906110183022432277"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer"))), SNodeOperations.cast(getNodeById("2906110183022219849"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x3dd540b968e9fc4L, "GrandChild"))));
-      Assert.assertEquals(initialSize + 1, ListSequence.fromList(SNodeOperations.getReferences(SNodeOperations.cast(getNodeById("2906110183022432277"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer"))))).count());
+      int initialSize = ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022432277"))).count();
+      String unspecifiedReferenceName = this.addUnspecifiedReference(getNodeById("2906110183022432277"), getNodeById("2906110183022219849"));
+      Assert.assertEquals(initialSize + 1, ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022432277"))).count());
       // Checking if unspecified reference is working properly 
-      Iterable<SReference> unspecifiedReferences = ListSequence.fromList(SNodeOperations.getReferences(SNodeOperations.cast(getNodeById("2906110183022432277"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer"))))).where(new IWhereFilter<SReference>() {
+      Iterable<SReference> unspecifiedReferences = ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022432277"))).where(new IWhereFilter<SReference>() {
         public boolean accept(SReference it) {
           return (SLinkOperations.findLinkDeclaration(it) == null);
         }
@@ -161,7 +161,7 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
       Assert.assertEquals(1, Sequence.fromIterable(unspecifiedReferences).count());
       SReference theReference = Sequence.fromIterable(unspecifiedReferences).first();
       Assert.assertEquals(unspecifiedReferenceName, check_s3ecl5_a31a8o(SLinkOperations.getRefLink(theReference)));
-      Assert.assertEquals(SNodeOperations.cast(getNodeById("2906110183022219849"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x3dd540b968e9fc4L, "GrandChild"))), SLinkOperations.getTargetNode(theReference));
+      Assert.assertEquals(getNodeById("2906110183022219849"), SLinkOperations.getTargetNode(theReference));
     }
     public void test_unresolvedReference() throws Exception {
       addNodeById("2906110183022219846");
@@ -169,27 +169,27 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
       addNodeById("2906110183022219843");
       addNodeById("2906110183022354865");
       addNodeById("2906110183022432276");
-      SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("2906110183022219844"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer"))), LINKS.root$cBIX);
-      SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("2906110183022219844"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer"))), LINKS.leftChild$f5Cu);
-      SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("2906110183022219844"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer"))), LINKS.rightChild$f5Rv);
+      SLinkOperations.getTarget(getNodeById("2906110183022219844"), LINKS.root$cBIX);
+      SLinkOperations.getTarget(getNodeById("2906110183022219844"), LINKS.leftChild$f5Cu);
+      SLinkOperations.getTarget(getNodeById("2906110183022219844"), LINKS.rightChild$f5Rv);
 
-      SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("2906110183022354866"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x279bb63b8ca8b7feL, "ReferenceContainerSubConcept"))), LINKS.root$cBIX);
-      SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("2906110183022354866"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x279bb63b8ca8b7feL, "ReferenceContainerSubConcept"))), LINKS.leftChild$f5Cu);
-      SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("2906110183022354866"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x279bb63b8ca8b7feL, "ReferenceContainerSubConcept"))), LINKS.rightChild$f5Rv);
+      SLinkOperations.getTarget(getNodeById("2906110183022354866"), LINKS.root$cBIX);
+      SLinkOperations.getTarget(getNodeById("2906110183022354866"), LINKS.leftChild$f5Cu);
+      SLinkOperations.getTarget(getNodeById("2906110183022354866"), LINKS.rightChild$f5Rv);
 
-      int initialSize = ListSequence.fromList(SNodeOperations.getReferences(SNodeOperations.cast(getNodeById("2906110183022432277"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer"))))).count();
-      Assert.assertTrue(ListSequence.fromList(SNodeOperations.getReferences(SNodeOperations.cast(getNodeById("2906110183022432277"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer"))))).where(new IWhereFilter<SReference>() {
+      int initialSize = ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022432277"))).count();
+      Assert.assertTrue(ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022432277"))).where(new IWhereFilter<SReference>() {
         public boolean accept(SReference it) {
           return (SLinkOperations.getTargetNode(it) == null);
         }
       }).isEmpty());
-      final SNode deletedNode = SLinkOperations.getTarget(SNodeOperations.cast(getNodeById("2906110183022432277"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer"))), LINKS.root$cBIX);
+      final SNode deletedNode = SLinkOperations.getTarget(getNodeById("2906110183022432277"), LINKS.root$cBIX);
       SNodeOperations.deleteNode(deletedNode);
-      Assert.assertEquals(initialSize, ListSequence.fromList(SNodeOperations.getReferences(SNodeOperations.cast(getNodeById("2906110183022432277"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer"))))).count());
+      Assert.assertEquals(initialSize, ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022432277"))).count());
       // the whole test method runs within a command, our model implementation makes sure reference resolution during 
       // command works even for nodes deleted during the same command (UnregisteredNodes) 
       // Perhaps, need another test to check association target truly gone once command is over 
-      Iterable<SReference> brokenReferences = ListSequence.fromList(SNodeOperations.getReferences(SNodeOperations.cast(getNodeById("2906110183022432277"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer"))))).where(new IWhereFilter<SReference>() {
+      Iterable<SReference> brokenReferences = ListSequence.fromList(SNodeOperations.getReferences(getNodeById("2906110183022432277"))).where(new IWhereFilter<SReference>() {
         public boolean accept(SReference it) {
           return SNodeOperations.getModel(SLinkOperations.getTargetNode(it)) == null;
         }
@@ -199,7 +199,7 @@ public class SNodeGetReferencesOperation_Test extends BaseTransformationTest {
       Assert.assertSame(deletedNode, SLinkOperations.getTargetNode(theReference));
       // make sure that the link target is truly deleted from the model 
       Assert.assertTrue(SNodeOperations.getModel(deletedNode) == null);
-      Assert.assertNull(SNodeOperations.getModel(SNodeOperations.cast(getNodeById("2906110183022219844"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb02ae39f4c164545L, 0x8dfa88df16804e7eL, "jetbrains.mps.lang.smodelTests"), 0x798c0d67da965ac6L, "ReferenceContainer")))).getNode(deletedNode.getNodeId()));
+      Assert.assertNull(SNodeOperations.getModel(getNodeById("2906110183022219844")).getNode(deletedNode.getNodeId()));
       Assert.assertEquals(LINKS.root$cBIX, SLinkOperations.getRefLink(theReference));
       Assert.assertNotNull(SLinkOperations.getResolveInfo(theReference));
     }

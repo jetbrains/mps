@@ -18,10 +18,9 @@ import junit.framework.Assert;
 import jetbrains.mps.nodeEditor.cells.jetpad.DiagramCell;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.jetpad.projectional.view.View;
 import org.jetbrains.mps.openapi.language.SProperty;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class SelectPortQuery_Test extends BaseTransformationTest {
@@ -59,7 +58,7 @@ public class SelectPortQuery_Test extends BaseTransformationTest {
           EditorCell selectedCell = getEditorComponent().getSelectedCell();
           Assert.assertTrue(selectedCell != null);
           DiagramCell diagramCell = CellFinderUtil.findChildByClass(getEditorComponent().getRootCell(), DiagramCell.class, true);
-          descendantMapper.value = diagramCell.getRootMapper().getDescendantMapper(SPropertyOperations.getString(SNodeOperations.cast(getNodeById("2278461409092334466"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x50560c9658e49c5L, 0xb8e79e4db4c7e97fL, "jetbrains.mps.lang.editor.diagram.testLanguage"), 0x4ce40ecaf41f722aL, "OutputPort"))), PROPS.name$MnvL));
+          descendantMapper.value = diagramCell.getRootMapper().getDescendantMapper(SPropertyOperations.getString(getNodeById("2278461409092334466"), PROPS.name$MnvL));
         }
       });
       Assert.assertTrue(descendantMapper.value != null && descendantMapper.value.getTarget() != null);

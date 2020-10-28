@@ -7,7 +7,6 @@
     <classNode dependClassName="java.lang.Throwable" />
     <classNode dependClassName="jetbrains.mps.MPSLaunch" />
     <classNode dependClassName="jetbrains.mps.lang.pattern.test.LightPattern_Reference_Test" />
-    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.test.runtime.BaseTestBody" />
     <classNode dependClassName="jetbrains.mps.lang.test.runtime.RunWithCommand" />
     <classNode dependClassName="jetbrains.mps.lang.test.runtime.TestParametersCache" />
@@ -254,7 +253,6 @@
     <classNode dependClassName="jetbrains.mps.lang.pattern.test.Pattern_kxljzf_a0b0b0b0c" />
     <classNode dependClassName="jetbrains.mps.lang.pattern.test.Pattern_kxljzf_a0b0b0c0a" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations" />
-    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.test.runtime.BaseTestBody" />
     <classNode dependClassName="jetbrains.mps.lang.test.runtime.RunWithCommand" />
     <classNode dependClassName="jetbrains.mps.lang.test.runtime.TestParametersCache" />

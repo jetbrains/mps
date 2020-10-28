@@ -7169,74 +7169,74 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)/494962652073944531">
     <file name="TestMigrateCommentBlock_Test.java">
-      <node id="494962652073944531" at="31,41,32,25" concept="9" />
-      <node id="494962652073945241" at="36,52,37,43" concept="3" />
-      <node id="494962652073944531" at="42,52,43,19" concept="9" />
-      <node id="494962652073944659" at="46,54,47,40" concept="3" />
-      <node id="494962652073944777" at="47,40,48,40" concept="3" />
-      <node id="494962652073949661" at="48,40,49,383" concept="3" />
-      <node id="494962652074116837" at="50,7,51,352" concept="6" />
-      <node id="494962652074116837" at="51,352,52,351" concept="6" />
-      <node id="494962652074116837" at="52,351,53,160" concept="3" />
-      <node id="494962652073944531" at="26,0,28,0" concept="8" trace="ourParamCache" />
-      <node id="494962652073944531" at="28,0,30,0" concept="4" trace="myWithCommandRule" />
-      <node id="494962652073944531" at="31,0,34,0" concept="2" trace="TestMigrateCommentBlock_Test#()V" />
-      <node id="494962652073944531" at="42,0,45,0" concept="2" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="494962652073945241" at="35,0,39,0" concept="5" trace="test_MigrateBlock#()V" />
-      <node id="494962652074116837" at="49,383,54,7" concept="1" />
-      <node id="494962652073945241" at="46,0,56,0" concept="5" trace="test_MigrateBlock#()V" />
-      <scope id="494962652073944531" at="31,41,32,25" />
-      <scope id="494962652073945241" at="36,52,37,43" />
-      <scope id="494962652073944531" at="42,52,43,19" />
-      <scope id="494962652073944531" at="31,0,34,0" />
-      <scope id="494962652073944531" at="42,0,45,0">
+      <node id="494962652073944531" at="30,41,31,25" concept="9" />
+      <node id="494962652073945241" at="35,52,36,43" concept="3" />
+      <node id="494962652073944531" at="41,52,42,19" concept="9" />
+      <node id="494962652073944659" at="45,54,46,40" concept="3" />
+      <node id="494962652073944777" at="46,40,47,40" concept="3" />
+      <node id="494962652073949661" at="47,40,48,154" concept="3" />
+      <node id="494962652074116837" at="49,7,50,123" concept="6" />
+      <node id="494962652074116837" at="50,123,51,122" concept="6" />
+      <node id="494962652074116837" at="51,122,52,160" concept="3" />
+      <node id="494962652073944531" at="25,0,27,0" concept="8" trace="ourParamCache" />
+      <node id="494962652073944531" at="27,0,29,0" concept="4" trace="myWithCommandRule" />
+      <node id="494962652073944531" at="30,0,33,0" concept="2" trace="TestMigrateCommentBlock_Test#()V" />
+      <node id="494962652073944531" at="41,0,44,0" concept="2" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="494962652073945241" at="34,0,38,0" concept="5" trace="test_MigrateBlock#()V" />
+      <node id="494962652074116837" at="48,154,53,7" concept="1" />
+      <node id="494962652073945241" at="45,0,55,0" concept="5" trace="test_MigrateBlock#()V" />
+      <scope id="494962652073944531" at="30,41,31,25" />
+      <scope id="494962652073945241" at="35,52,36,43" />
+      <scope id="494962652073944531" at="41,52,42,19" />
+      <scope id="494962652073944531" at="30,0,33,0" />
+      <scope id="494962652073944531" at="41,0,44,0">
         <var name="owner" id="494962652073944531" />
       </scope>
-      <scope id="494962652074116837" at="50,7,53,160">
+      <scope id="494962652074116837" at="49,7,52,160">
         <var name="nodesAfter" id="494962652074116837" />
         <var name="nodesBefore" id="494962652074116837" />
       </scope>
-      <scope id="494962652073945241" at="35,0,39,0" />
-      <scope id="494962652073945241" at="46,54,54,7" />
-      <scope id="494962652073945241" at="46,0,56,0" />
-      <unit id="494962652073944531" at="40,0,59,0" name="jetbrains.mps.baseLanguage.test.TestMigrateCommentBlock_Test$TestBody" />
-      <unit id="494962652073944531" at="24,0,60,0" name="jetbrains.mps.baseLanguage.test.TestMigrateCommentBlock_Test" />
+      <scope id="494962652073945241" at="34,0,38,0" />
+      <scope id="494962652073945241" at="45,54,53,7" />
+      <scope id="494962652073945241" at="45,0,55,0" />
+      <unit id="494962652073944531" at="39,0,58,0" name="jetbrains.mps.baseLanguage.test.TestMigrateCommentBlock_Test$TestBody" />
+      <unit id="494962652073944531" at="23,0,59,0" name="jetbrains.mps.baseLanguage.test.TestMigrateCommentBlock_Test" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)/494962652073962808">
     <file name="TestMigrateCommentLines_Test.java">
-      <node id="494962652073962808" at="31,41,32,25" concept="9" />
-      <node id="494962652073962869" at="36,52,37,43" concept="3" />
-      <node id="494962652073962808" at="42,52,43,19" concept="9" />
-      <node id="494962652073962809" at="46,54,47,40" concept="3" />
-      <node id="494962652073962837" at="47,40,48,40" concept="3" />
-      <node id="494962652073962872" at="48,40,49,367" concept="3" />
-      <node id="494962652074118002" at="50,7,51,352" concept="6" />
-      <node id="494962652074118002" at="51,352,52,351" concept="6" />
-      <node id="494962652074118002" at="52,351,53,160" concept="3" />
-      <node id="494962652073962808" at="26,0,28,0" concept="8" trace="ourParamCache" />
-      <node id="494962652073962808" at="28,0,30,0" concept="4" trace="myWithCommandRule" />
-      <node id="494962652073962808" at="31,0,34,0" concept="2" trace="TestMigrateCommentLines_Test#()V" />
-      <node id="494962652073962808" at="42,0,45,0" concept="2" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="494962652073962869" at="35,0,39,0" concept="5" trace="test_MigrateBlock#()V" />
-      <node id="494962652074118002" at="49,367,54,7" concept="1" />
-      <node id="494962652073962869" at="46,0,56,0" concept="5" trace="test_MigrateBlock#()V" />
-      <scope id="494962652073962808" at="31,41,32,25" />
-      <scope id="494962652073962869" at="36,52,37,43" />
-      <scope id="494962652073962808" at="42,52,43,19" />
-      <scope id="494962652073962808" at="31,0,34,0" />
-      <scope id="494962652073962808" at="42,0,45,0">
+      <node id="494962652073962808" at="30,41,31,25" concept="9" />
+      <node id="494962652073962869" at="35,52,36,43" concept="3" />
+      <node id="494962652073962808" at="41,52,42,19" concept="9" />
+      <node id="494962652073962809" at="45,54,46,40" concept="3" />
+      <node id="494962652073962837" at="46,40,47,40" concept="3" />
+      <node id="494962652073962872" at="47,40,48,138" concept="3" />
+      <node id="494962652074118002" at="49,7,50,123" concept="6" />
+      <node id="494962652074118002" at="50,123,51,122" concept="6" />
+      <node id="494962652074118002" at="51,122,52,160" concept="3" />
+      <node id="494962652073962808" at="25,0,27,0" concept="8" trace="ourParamCache" />
+      <node id="494962652073962808" at="27,0,29,0" concept="4" trace="myWithCommandRule" />
+      <node id="494962652073962808" at="30,0,33,0" concept="2" trace="TestMigrateCommentLines_Test#()V" />
+      <node id="494962652073962808" at="41,0,44,0" concept="2" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="494962652073962869" at="34,0,38,0" concept="5" trace="test_MigrateBlock#()V" />
+      <node id="494962652074118002" at="48,138,53,7" concept="1" />
+      <node id="494962652073962869" at="45,0,55,0" concept="5" trace="test_MigrateBlock#()V" />
+      <scope id="494962652073962808" at="30,41,31,25" />
+      <scope id="494962652073962869" at="35,52,36,43" />
+      <scope id="494962652073962808" at="41,52,42,19" />
+      <scope id="494962652073962808" at="30,0,33,0" />
+      <scope id="494962652073962808" at="41,0,44,0">
         <var name="owner" id="494962652073962808" />
       </scope>
-      <scope id="494962652074118002" at="50,7,53,160">
+      <scope id="494962652074118002" at="49,7,52,160">
         <var name="nodesAfter" id="494962652074118002" />
         <var name="nodesBefore" id="494962652074118002" />
       </scope>
-      <scope id="494962652073962869" at="35,0,39,0" />
-      <scope id="494962652073962869" at="46,54,54,7" />
-      <scope id="494962652073962869" at="46,0,56,0" />
-      <unit id="494962652073962808" at="40,0,59,0" name="jetbrains.mps.baseLanguage.test.TestMigrateCommentLines_Test$TestBody" />
-      <unit id="494962652073962808" at="24,0,60,0" name="jetbrains.mps.baseLanguage.test.TestMigrateCommentLines_Test" />
+      <scope id="494962652073962869" at="34,0,38,0" />
+      <scope id="494962652073962869" at="45,54,53,7" />
+      <scope id="494962652073962869" at="45,0,55,0" />
+      <unit id="494962652073962808" at="39,0,58,0" name="jetbrains.mps.baseLanguage.test.TestMigrateCommentLines_Test$TestBody" />
+      <unit id="494962652073962808" at="23,0,59,0" name="jetbrains.mps.baseLanguage.test.TestMigrateCommentLines_Test" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)/5113180367541522955">
@@ -7902,29 +7902,29 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)/5210914756411638023">
     <file name="RollBacksNewTypeSystem_Test.java">
-      <node id="5210914756411638023" at="25,40,26,25" concept="9" />
-      <node id="5210914756411638054" at="30,54,31,45" concept="3" />
-      <node id="5210914756411638023" at="36,52,37,19" concept="9" />
-      <node id="5210914756411638024" at="40,56,41,41" concept="3" />
-      <node id="5210914756411638057" at="41,41,42,303" concept="3" />
-      <node id="5210914756411638023" at="20,0,22,0" concept="8" trace="ourParamCache" />
-      <node id="5210914756411638023" at="22,0,24,0" concept="4" trace="myWithCommandRule" />
-      <node id="5210914756411638023" at="25,0,28,0" concept="2" trace="RollBacksNewTypeSystem_Test#()V" />
-      <node id="5210914756411638023" at="36,0,39,0" concept="2" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="5210914756411638054" at="29,0,33,0" concept="5" trace="test_GenerationMode#()V" />
-      <node id="5210914756411638054" at="40,0,44,0" concept="5" trace="test_GenerationMode#()V" />
-      <scope id="5210914756411638023" at="25,40,26,25" />
-      <scope id="5210914756411638054" at="30,54,31,45" />
-      <scope id="5210914756411638023" at="36,52,37,19" />
-      <scope id="5210914756411638054" at="40,56,42,303" />
-      <scope id="5210914756411638023" at="25,0,28,0" />
-      <scope id="5210914756411638023" at="36,0,39,0">
+      <node id="5210914756411638023" at="23,40,24,25" concept="9" />
+      <node id="5210914756411638054" at="28,54,29,45" concept="3" />
+      <node id="5210914756411638023" at="34,52,35,19" concept="9" />
+      <node id="5210914756411638024" at="38,56,39,41" concept="3" />
+      <node id="5210914756411638057" at="39,41,40,77" concept="3" />
+      <node id="5210914756411638023" at="18,0,20,0" concept="8" trace="ourParamCache" />
+      <node id="5210914756411638023" at="20,0,22,0" concept="4" trace="myWithCommandRule" />
+      <node id="5210914756411638023" at="23,0,26,0" concept="2" trace="RollBacksNewTypeSystem_Test#()V" />
+      <node id="5210914756411638023" at="34,0,37,0" concept="2" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="5210914756411638054" at="27,0,31,0" concept="5" trace="test_GenerationMode#()V" />
+      <node id="5210914756411638054" at="38,0,42,0" concept="5" trace="test_GenerationMode#()V" />
+      <scope id="5210914756411638023" at="23,40,24,25" />
+      <scope id="5210914756411638054" at="28,54,29,45" />
+      <scope id="5210914756411638023" at="34,52,35,19" />
+      <scope id="5210914756411638054" at="38,56,40,77" />
+      <scope id="5210914756411638023" at="23,0,26,0" />
+      <scope id="5210914756411638023" at="34,0,37,0">
         <var name="owner" id="5210914756411638023" />
       </scope>
-      <scope id="5210914756411638054" at="29,0,33,0" />
-      <scope id="5210914756411638054" at="40,0,44,0" />
-      <unit id="5210914756411638023" at="34,0,47,0" name="jetbrains.mps.baseLanguage.test.RollBacksNewTypeSystem_Test$TestBody" />
-      <unit id="5210914756411638023" at="18,0,48,0" name="jetbrains.mps.baseLanguage.test.RollBacksNewTypeSystem_Test" />
+      <scope id="5210914756411638054" at="27,0,31,0" />
+      <scope id="5210914756411638054" at="38,0,42,0" />
+      <unit id="5210914756411638023" at="32,0,45,0" name="jetbrains.mps.baseLanguage.test.RollBacksNewTypeSystem_Test$TestBody" />
+      <unit id="5210914756411638023" at="16,0,46,0" name="jetbrains.mps.baseLanguage.test.RollBacksNewTypeSystem_Test" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)/5229232619738859562">
@@ -8049,12 +8049,12 @@
       <node id="5868639094267614275" at="41,77,42,68" concept="3" />
       <node id="5868639094257169531" at="47,52,48,19" concept="9" />
       <node id="5868639094257179247" at="51,51,52,41" concept="3" />
-      <node id="5868639094257282095" at="52,41,53,339" concept="0" />
-      <node id="5868639094257285967" at="53,339,54,339" concept="0" />
-      <node id="5868639094257285982" at="54,339,55,354" concept="0" />
-      <node id="5868639094257287077" at="55,354,56,375" concept="0" />
-      <node id="5868639094257289977" at="56,375,57,375" concept="0" />
-      <node id="5868639094257290190" at="57,375,58,384" concept="0" />
+      <node id="5868639094257282095" at="52,41,53,113" concept="0" />
+      <node id="5868639094257285967" at="53,113,54,113" concept="0" />
+      <node id="5868639094257285982" at="54,113,55,118" concept="0" />
+      <node id="5868639094257287077" at="55,118,56,149" concept="0" />
+      <node id="5868639094257289977" at="56,149,57,149" concept="0" />
+      <node id="5868639094257290190" at="57,149,58,148" concept="0" />
       <node id="5868639094267614275" at="61,79,62,65" concept="6" />
       <node id="5868639094267614275" at="62,65,63,63" concept="6" />
       <node id="5868639094267614275" at="63,63,64,208" concept="3" />
@@ -8085,7 +8085,7 @@
       <scope id="5868639094257281965" at="36,0,40,0" />
       <scope id="5868639094267614275" at="40,0,44,0" />
       <scope id="5868639094267614275" at="61,0,66,0" />
-      <scope id="5868639094257281965" at="51,51,58,384" />
+      <scope id="5868639094257281965" at="51,51,58,148" />
       <scope id="5868639094257281965" at="51,0,60,0" />
       <unit id="5868639094257169531" at="69,0,75,0" name="jetbrains.mps.baseLanguage.test.FloatConstantType_Test$CONCEPTS" />
       <unit id="5868639094257169531" at="45,0,68,0" name="jetbrains.mps.baseLanguage.test.FloatConstantType_Test$TestBody" />
@@ -10072,29 +10072,29 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)/6639374232683434563">
     <file name="hasSameSignatureTest_Test.java">
-      <node id="6639374232683434563" at="26,38,27,25" concept="9" />
-      <node id="6639374232683434579" at="31,44,32,35" concept="3" />
-      <node id="6639374232683434563" at="37,52,38,19" concept="9" />
-      <node id="5157939743593407746" at="41,46,42,41" concept="3" />
-      <node id="5157939743593410699" at="42,41,43,641" concept="3" />
-      <node id="6639374232683434563" at="21,0,23,0" concept="8" trace="ourParamCache" />
-      <node id="6639374232683434563" at="23,0,25,0" concept="4" trace="myWithCommandRule" />
-      <node id="6639374232683434563" at="26,0,29,0" concept="2" trace="hasSameSignatureTest_Test#()V" />
-      <node id="6639374232683434563" at="37,0,40,0" concept="2" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="6639374232683434579" at="30,0,34,0" concept="5" trace="test_list#()V" />
-      <node id="6639374232683434579" at="41,0,45,0" concept="5" trace="test_list#()V" />
-      <scope id="6639374232683434563" at="26,38,27,25" />
-      <scope id="6639374232683434579" at="31,44,32,35" />
-      <scope id="6639374232683434563" at="37,52,38,19" />
-      <scope id="6639374232683434579" at="41,46,43,641" />
-      <scope id="6639374232683434563" at="26,0,29,0" />
-      <scope id="6639374232683434563" at="37,0,40,0">
+      <node id="6639374232683434563" at="24,38,25,25" concept="9" />
+      <node id="6639374232683434579" at="29,44,30,35" concept="3" />
+      <node id="6639374232683434563" at="35,52,36,19" concept="9" />
+      <node id="5157939743593407746" at="39,46,40,41" concept="3" />
+      <node id="5157939743593410699" at="40,41,41,183" concept="3" />
+      <node id="6639374232683434563" at="19,0,21,0" concept="8" trace="ourParamCache" />
+      <node id="6639374232683434563" at="21,0,23,0" concept="4" trace="myWithCommandRule" />
+      <node id="6639374232683434563" at="24,0,27,0" concept="2" trace="hasSameSignatureTest_Test#()V" />
+      <node id="6639374232683434563" at="35,0,38,0" concept="2" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="6639374232683434579" at="28,0,32,0" concept="5" trace="test_list#()V" />
+      <node id="6639374232683434579" at="39,0,43,0" concept="5" trace="test_list#()V" />
+      <scope id="6639374232683434563" at="24,38,25,25" />
+      <scope id="6639374232683434579" at="29,44,30,35" />
+      <scope id="6639374232683434563" at="35,52,36,19" />
+      <scope id="6639374232683434579" at="39,46,41,183" />
+      <scope id="6639374232683434563" at="24,0,27,0" />
+      <scope id="6639374232683434563" at="35,0,38,0">
         <var name="owner" id="6639374232683434563" />
       </scope>
-      <scope id="6639374232683434579" at="30,0,34,0" />
-      <scope id="6639374232683434579" at="41,0,45,0" />
-      <unit id="6639374232683434563" at="35,0,48,0" name="jetbrains.mps.baseLanguage.test.hasSameSignatureTest_Test$TestBody" />
-      <unit id="6639374232683434563" at="19,0,49,0" name="jetbrains.mps.baseLanguage.test.hasSameSignatureTest_Test" />
+      <scope id="6639374232683434579" at="28,0,32,0" />
+      <scope id="6639374232683434579" at="39,0,43,0" />
+      <unit id="6639374232683434563" at="33,0,46,0" name="jetbrains.mps.baseLanguage.test.hasSameSignatureTest_Test$TestBody" />
+      <unit id="6639374232683434563" at="17,0,47,0" name="jetbrains.mps.baseLanguage.test.hasSameSignatureTest_Test" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)/6640766779615010044">
@@ -10234,62 +10234,62 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)/6649467621789725810">
     <file name="AnonymousClassJavaName_Test.java">
-      <node id="6649467621789725810" at="27,40,28,25" concept="9" />
-      <node id="6649467621789800767" at="32,53,33,44" concept="3" />
-      <node id="6649467621789725810" at="38,52,39,19" concept="9" />
-      <node id="6649467621789725811" at="42,55,43,41" concept="3" />
-      <node id="6649467621789930734" at="43,41,44,408" concept="0" />
-      <node id="6649467621790014147" at="44,408,45,408" concept="0" />
-      <node id="6649467621790015035" at="45,408,46,410" concept="0" />
-      <node id="6649467621790015071" at="46,410,47,410" concept="0" />
-      <node id="7102466869931835904" at="47,410,48,414" concept="0" />
-      <node id="6649467621789725810" at="55,0,56,0" concept="8" trace="cls$Saf6" />
-      <node id="6649467621789725810" at="22,0,24,0" concept="8" trace="ourParamCache" />
-      <node id="6649467621789725810" at="24,0,26,0" concept="4" trace="myWithCommandRule" />
-      <node id="6649467621789725810" at="27,0,30,0" concept="2" trace="AnonymousClassJavaName_Test#()V" />
-      <node id="6649467621789725810" at="38,0,41,0" concept="2" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="6649467621789800767" at="31,0,35,0" concept="5" trace="test_testJavaNames#()V" />
-      <node id="6649467621789800767" at="42,0,50,0" concept="5" trace="test_testJavaNames#()V" />
-      <scope id="6649467621789725810" at="27,40,28,25" />
-      <scope id="6649467621789800767" at="32,53,33,44" />
-      <scope id="6649467621789725810" at="38,52,39,19" />
-      <scope id="6649467621789725810" at="27,0,30,0" />
-      <scope id="6649467621789725810" at="38,0,41,0">
+      <node id="6649467621789725810" at="26,40,27,25" concept="9" />
+      <node id="6649467621789800767" at="31,53,32,44" concept="3" />
+      <node id="6649467621789725810" at="37,52,38,19" concept="9" />
+      <node id="6649467621789725811" at="41,55,42,41" concept="3" />
+      <node id="6649467621789930734" at="42,41,43,182" concept="0" />
+      <node id="6649467621790014147" at="43,182,44,182" concept="0" />
+      <node id="6649467621790015035" at="44,182,45,184" concept="0" />
+      <node id="6649467621790015071" at="45,184,46,184" concept="0" />
+      <node id="7102466869931835904" at="46,184,47,188" concept="0" />
+      <node id="6649467621789725810" at="54,0,55,0" concept="8" trace="cls$Saf6" />
+      <node id="6649467621789725810" at="21,0,23,0" concept="8" trace="ourParamCache" />
+      <node id="6649467621789725810" at="23,0,25,0" concept="4" trace="myWithCommandRule" />
+      <node id="6649467621789725810" at="26,0,29,0" concept="2" trace="AnonymousClassJavaName_Test#()V" />
+      <node id="6649467621789725810" at="37,0,40,0" concept="2" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="6649467621789800767" at="30,0,34,0" concept="5" trace="test_testJavaNames#()V" />
+      <node id="6649467621789800767" at="41,0,49,0" concept="5" trace="test_testJavaNames#()V" />
+      <scope id="6649467621789725810" at="26,40,27,25" />
+      <scope id="6649467621789800767" at="31,53,32,44" />
+      <scope id="6649467621789725810" at="37,52,38,19" />
+      <scope id="6649467621789725810" at="26,0,29,0" />
+      <scope id="6649467621789725810" at="37,0,40,0">
         <var name="owner" id="6649467621789725810" />
       </scope>
-      <scope id="6649467621789800767" at="31,0,35,0" />
-      <scope id="6649467621789800767" at="42,55,48,414" />
-      <scope id="6649467621789800767" at="42,0,50,0" />
-      <unit id="6649467621789725810" at="54,0,57,0" name="jetbrains.mps.baseLanguage.test.AnonymousClassJavaName_Test$LINKS" />
-      <unit id="6649467621789725810" at="36,0,53,0" name="jetbrains.mps.baseLanguage.test.AnonymousClassJavaName_Test$TestBody" />
-      <unit id="6649467621789725810" at="20,0,58,0" name="jetbrains.mps.baseLanguage.test.AnonymousClassJavaName_Test" />
+      <scope id="6649467621789800767" at="30,0,34,0" />
+      <scope id="6649467621789800767" at="41,55,47,188" />
+      <scope id="6649467621789800767" at="41,0,49,0" />
+      <unit id="6649467621789725810" at="53,0,56,0" name="jetbrains.mps.baseLanguage.test.AnonymousClassJavaName_Test$LINKS" />
+      <unit id="6649467621789725810" at="35,0,52,0" name="jetbrains.mps.baseLanguage.test.AnonymousClassJavaName_Test$TestBody" />
+      <unit id="6649467621789725810" at="19,0,57,0" name="jetbrains.mps.baseLanguage.test.AnonymousClassJavaName_Test" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)/7187651930235347758">
     <file name="TestGenerationMode_Test.java">
-      <node id="7187651930235347758" at="25,36,26,25" concept="9" />
-      <node id="7187651930235347795" at="30,54,31,45" concept="3" />
-      <node id="7187651930235347758" at="36,52,37,19" concept="9" />
-      <node id="7187651930235347759" at="40,56,41,41" concept="3" />
-      <node id="5210914756411573029" at="41,41,42,308" concept="3" />
-      <node id="7187651930235347758" at="20,0,22,0" concept="8" trace="ourParamCache" />
-      <node id="7187651930235347758" at="22,0,24,0" concept="4" trace="myWithCommandRule" />
-      <node id="7187651930235347758" at="25,0,28,0" concept="2" trace="TestGenerationMode_Test#()V" />
-      <node id="7187651930235347758" at="36,0,39,0" concept="2" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="7187651930235347795" at="29,0,33,0" concept="5" trace="test_GenerationMode#()V" />
-      <node id="7187651930235347795" at="40,0,44,0" concept="5" trace="test_GenerationMode#()V" />
-      <scope id="7187651930235347758" at="25,36,26,25" />
-      <scope id="7187651930235347795" at="30,54,31,45" />
-      <scope id="7187651930235347758" at="36,52,37,19" />
-      <scope id="7187651930235347795" at="40,56,42,308" />
-      <scope id="7187651930235347758" at="25,0,28,0" />
-      <scope id="7187651930235347758" at="36,0,39,0">
+      <node id="7187651930235347758" at="23,36,24,25" concept="9" />
+      <node id="7187651930235347795" at="28,54,29,45" concept="3" />
+      <node id="7187651930235347758" at="34,52,35,19" concept="9" />
+      <node id="7187651930235347759" at="38,56,39,41" concept="3" />
+      <node id="5210914756411573029" at="39,41,40,82" concept="3" />
+      <node id="7187651930235347758" at="18,0,20,0" concept="8" trace="ourParamCache" />
+      <node id="7187651930235347758" at="20,0,22,0" concept="4" trace="myWithCommandRule" />
+      <node id="7187651930235347758" at="23,0,26,0" concept="2" trace="TestGenerationMode_Test#()V" />
+      <node id="7187651930235347758" at="34,0,37,0" concept="2" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="7187651930235347795" at="27,0,31,0" concept="5" trace="test_GenerationMode#()V" />
+      <node id="7187651930235347795" at="38,0,42,0" concept="5" trace="test_GenerationMode#()V" />
+      <scope id="7187651930235347758" at="23,36,24,25" />
+      <scope id="7187651930235347795" at="28,54,29,45" />
+      <scope id="7187651930235347758" at="34,52,35,19" />
+      <scope id="7187651930235347795" at="38,56,40,82" />
+      <scope id="7187651930235347758" at="23,0,26,0" />
+      <scope id="7187651930235347758" at="34,0,37,0">
         <var name="owner" id="7187651930235347758" />
       </scope>
-      <scope id="7187651930235347795" at="29,0,33,0" />
-      <scope id="7187651930235347795" at="40,0,44,0" />
-      <unit id="7187651930235347758" at="34,0,47,0" name="jetbrains.mps.baseLanguage.test.TestGenerationMode_Test$TestBody" />
-      <unit id="7187651930235347758" at="18,0,48,0" name="jetbrains.mps.baseLanguage.test.TestGenerationMode_Test" />
+      <scope id="7187651930235347795" at="27,0,31,0" />
+      <scope id="7187651930235347795" at="38,0,42,0" />
+      <unit id="7187651930235347758" at="32,0,45,0" name="jetbrains.mps.baseLanguage.test.TestGenerationMode_Test$TestBody" />
+      <unit id="7187651930235347758" at="16,0,46,0" name="jetbrains.mps.baseLanguage.test.TestGenerationMode_Test" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)/7209837885462471125">

@@ -675,48 +675,48 @@
   </root>
   <root nodeRef="r:e796bc79-24a8-4433-8903-c71c59526bf7(jetbrains.mps.lang.editor.style.test)/8545423393708262847">
     <file name="FontStyleInheritanceTest_Test.java">
-      <node id="8545423393708262847" at="24,42,25,25" concept="8" />
-      <node id="8545423393708262847" at="29,64,30,36" concept="1" />
-      <node id="8545423393708262847" at="35,52,36,19" concept="8" />
-      <node id="8545423393708262847" at="40,51,41,53" concept="1" />
-      <node id="491383275435186151" at="43,27,44,0" concept="6" />
-      <node id="491383275435184922" at="44,0,45,421" concept="4" />
-      <node id="8545423393708727755" at="45,421,46,79" concept="1" />
-      <node id="8545423393708740618" at="46,79,47,72" concept="1" />
-      <node id="8545423393708742558" at="47,72,48,0" concept="6" />
-      <node id="491383275435207134" at="48,0,49,422" concept="4" />
-      <node id="8545423393708729870" at="49,422,50,80" concept="1" />
-      <node id="8545423393708734247" at="50,80,51,79" concept="1" />
-      <node id="8545423393708743042" at="51,79,52,0" concept="6" />
-      <node id="491383275435219921" at="52,0,53,431" concept="4" />
-      <node id="8545423393708736182" at="53,431,54,93" concept="1" />
-      <node id="8545423393708743527" at="54,93,55,88" concept="1" />
-      <node id="8545423393708262847" at="21,0,23,0" concept="7" trace="ourParamCache" />
-      <node id="8545423393708262847" at="24,0,27,0" concept="0" trace="FontStyleInheritanceTest_Test#()V" />
-      <node id="8545423393708262847" at="35,0,38,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="8545423393708262847" at="28,0,32,0" concept="3" trace="test_FontStyleInheritanceTest#()V" />
-      <node id="8545423393708670967" at="43,0,57,0" concept="3" trace="run#()V" />
-      <node id="8545423393708670966" at="41,53,57,9" concept="1" />
-      <node id="8545423393708262847" at="39,0,59,0" concept="3" trace="testMethodImpl#()V" />
-      <scope id="8545423393708262847" at="24,42,25,25" />
-      <scope id="8545423393708262847" at="29,64,30,36" />
-      <scope id="8545423393708262847" at="35,52,36,19" />
-      <scope id="8545423393708262847" at="24,0,27,0" />
-      <scope id="8545423393708262847" at="35,0,38,0">
+      <node id="8545423393708262847" at="22,42,23,25" concept="8" />
+      <node id="8545423393708262847" at="27,64,28,36" concept="1" />
+      <node id="8545423393708262847" at="33,52,34,19" concept="8" />
+      <node id="8545423393708262847" at="38,51,39,53" concept="1" />
+      <node id="491383275435186151" at="41,27,42,0" concept="6" />
+      <node id="491383275435184922" at="42,0,43,193" concept="4" />
+      <node id="8545423393708727755" at="43,193,44,79" concept="1" />
+      <node id="8545423393708740618" at="44,79,45,72" concept="1" />
+      <node id="8545423393708742558" at="45,72,46,0" concept="6" />
+      <node id="491383275435207134" at="46,0,47,194" concept="4" />
+      <node id="8545423393708729870" at="47,194,48,80" concept="1" />
+      <node id="8545423393708734247" at="48,80,49,79" concept="1" />
+      <node id="8545423393708743042" at="49,79,50,0" concept="6" />
+      <node id="491383275435219921" at="50,0,51,203" concept="4" />
+      <node id="8545423393708736182" at="51,203,52,93" concept="1" />
+      <node id="8545423393708743527" at="52,93,53,88" concept="1" />
+      <node id="8545423393708262847" at="19,0,21,0" concept="7" trace="ourParamCache" />
+      <node id="8545423393708262847" at="22,0,25,0" concept="0" trace="FontStyleInheritanceTest_Test#()V" />
+      <node id="8545423393708262847" at="33,0,36,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="8545423393708262847" at="26,0,30,0" concept="3" trace="test_FontStyleInheritanceTest#()V" />
+      <node id="8545423393708670967" at="41,0,55,0" concept="3" trace="run#()V" />
+      <node id="8545423393708670966" at="39,53,55,9" concept="1" />
+      <node id="8545423393708262847" at="37,0,57,0" concept="3" trace="testMethodImpl#()V" />
+      <scope id="8545423393708262847" at="22,42,23,25" />
+      <scope id="8545423393708262847" at="27,64,28,36" />
+      <scope id="8545423393708262847" at="33,52,34,19" />
+      <scope id="8545423393708262847" at="22,0,25,0" />
+      <scope id="8545423393708262847" at="33,0,36,0">
         <var name="owner" id="8545423393708262847" />
       </scope>
-      <scope id="8545423393708262847" at="28,0,32,0" />
-      <scope id="8545423393708670968" at="43,27,55,88">
+      <scope id="8545423393708262847" at="26,0,30,0" />
+      <scope id="8545423393708670968" at="41,27,53,88">
         <var name="nodeWithCustomFontSizeAndFamily_font" id="491383275435219922" />
         <var name="nodeWithCustomFontSize_font" id="491383275435207135" />
         <var name="nodeWithoutCustomFont_font" id="491383275435184923" />
       </scope>
-      <scope id="8545423393708670967" at="43,0,57,0" />
-      <scope id="8545423393708262847" at="40,51,57,9" />
-      <scope id="8545423393708262847" at="39,0,59,0" />
-      <unit id="8545423393708670967" at="42,98,57,7" name="jetbrains.mps.lang.editor.style.test.FontStyleInheritanceTest_Test$TestBody$1" />
-      <unit id="8545423393708262847" at="33,0,60,0" name="jetbrains.mps.lang.editor.style.test.FontStyleInheritanceTest_Test$TestBody" />
-      <unit id="8545423393708262847" at="19,0,61,0" name="jetbrains.mps.lang.editor.style.test.FontStyleInheritanceTest_Test" />
+      <scope id="8545423393708670967" at="41,0,55,0" />
+      <scope id="8545423393708262847" at="38,51,55,9" />
+      <scope id="8545423393708262847" at="37,0,57,0" />
+      <unit id="8545423393708670967" at="40,98,55,7" name="jetbrains.mps.lang.editor.style.test.FontStyleInheritanceTest_Test$TestBody$1" />
+      <unit id="8545423393708262847" at="31,0,58,0" name="jetbrains.mps.lang.editor.style.test.FontStyleInheritanceTest_Test$TestBody" />
+      <unit id="8545423393708262847" at="17,0,59,0" name="jetbrains.mps.lang.editor.style.test.FontStyleInheritanceTest_Test" />
     </file>
   </root>
 </debug-info>

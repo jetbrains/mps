@@ -13,10 +13,9 @@ import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.jetbrains.mps.openapi.model.SNode;
 import junit.framework.Assert;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 
@@ -64,7 +63,7 @@ public class LightPatternReferenceTest_Test extends BaseTransformationTest {
     public void test_patternSwitch4_referenceMismatch() throws Exception {
       addNodeById("8187773339868678967");
       boolean matches;
-      SNode nodeToMatch = _quotation_createNode_9nn70n_a0c0e9(SNodeOperations.cast(getNodeById("8187773339868709516"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b204L, "ConstructorDeclaration"))));
+      SNode nodeToMatch = _quotation_createNode_9nn70n_a0c0e9(getNodeById("8187773339868709516"));
       if (new LightPattern_Reference_Test.Pattern4_Pattern().match(nodeToMatch)) {
         matches = true;
       } else {
@@ -75,11 +74,11 @@ public class LightPatternReferenceTest_Test extends BaseTransformationTest {
     public void test_patternSwitch5_matchesWithReference() throws Exception {
       addNodeById("8187773339868678967");
       boolean matches;
-      SNode nodeToMatch = _quotation_createNode_9nn70n_a0c0f9(SNodeOperations.cast(getNodeById("8187773339868709516"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b204L, "ConstructorDeclaration"))));
+      SNode nodeToMatch = _quotation_createNode_9nn70n_a0c0f9(getNodeById("8187773339868709516"));
       if (new LightPattern_Reference_Test.Pattern5_Pattern().match(nodeToMatch)) {
-        matches = LightPattern_Reference_Test.Pattern5_Pattern.getVar(nodeToMatch) == SNodeOperations.cast(getNodeById("8187773339868709516"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b204L, "ConstructorDeclaration")));
+        matches = LightPattern_Reference_Test.Pattern5_Pattern.getVar(nodeToMatch) == getNodeById("8187773339868709516");
         System.out.println(LightPattern_Reference_Test.Pattern5_Pattern.getVar(nodeToMatch).getModel());
-        System.out.println(SNodeOperations.cast(getNodeById("8187773339868709516"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b204L, "ConstructorDeclaration"))).getModel());
+        System.out.println(getNodeById("8187773339868709516").getModel());
       } else {
         matches = false;
       }

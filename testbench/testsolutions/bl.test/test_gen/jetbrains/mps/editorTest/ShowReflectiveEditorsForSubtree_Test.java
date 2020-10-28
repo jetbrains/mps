@@ -11,8 +11,6 @@ import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import junit.framework.Assert;
 import jetbrains.mps.nodeEditor.reflectiveEditor.ReflectiveHintsManager;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class ShowReflectiveEditorsForSubtree_Test extends BaseTransformationTest {
@@ -45,7 +43,7 @@ public class ShowReflectiveEditorsForSubtree_Test extends BaseTransformationTest
 
       ReflectiveEditorActionsUtil.runReadInEDTAndWait(getEditorComponent(), new Runnable() {
         public void run() {
-          getEditorComponent().selectNode(SNodeOperations.cast(getNodeById("897648160458178476"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf8cc56b213L, "ExpressionStatement"))));
+          getEditorComponent().selectNode(getNodeById("897648160458178476"));
         }
       });
       Assert.assertTrue(ReflectiveHintsManager.shouldShowReflectiveEditor(getEditorComponent().getSelectedCell().getCellContext()));

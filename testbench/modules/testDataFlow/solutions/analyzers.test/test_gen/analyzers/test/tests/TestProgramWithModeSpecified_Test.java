@@ -17,8 +17,6 @@ import jetbrains.mps.lang.dataFlow.framework.ProgramBuilderContextImpl;
 import java.util.Collections;
 import jetbrains.mps.lang.dataFlow.framework.ConceptDataFlowModeId;
 import jetbrains.mps.lang.dataFlow.framework.Program;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import junit.framework.Assert;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -26,6 +24,7 @@ import java.util.Arrays;
 import jetbrains.mps.lang.dataFlow.framework.IDataFlowModeId;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class TestProgramWithModeSpecified_Test extends BaseTransformationTest {
@@ -60,19 +59,19 @@ public class TestProgramWithModeSpecified_Test extends BaseTransformationTest {
     public void test_testNonEmptyInstructionsWithModeSpecified() throws Exception {
       addNodeById("2955426575105884967");
       MPSProgramBuilder builder = new MPSProgramBuilder(null, new InstructionBuilder(), new ProgramBuilderContextImpl(Collections.singletonList(new ConceptDataFlowModeId("jetbrains.mps.lang.dataFlow.structure.IntraProcedural_BuilderMode"))));
-      Program program = builder.buildProgram(SNodeOperations.cast(getNodeById("2955426575105884969"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, "testCustomAnalyzer"), 0x73a316f7f5468ed4L, "Root"))));
-      Assert.assertTrue(program.getInstructions().size() == ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(getNodeById("2955426575105884969"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, "testCustomAnalyzer"), 0x73a316f7f5468ed4L, "Root"))), LINKS.child$G3Ei)).count() + 1);
+      Program program = builder.buildProgram(getNodeById("2955426575105884969"));
+      Assert.assertTrue(program.getInstructions().size() == ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2955426575105884969"), LINKS.child$G3Ei)).count() + 1);
     }
     public void test_testNonEmptyInstructionsWithMoreSpecificModeSpecified() throws Exception {
       addNodeById("2955426575105884967");
       MPSProgramBuilder builder = new MPSProgramBuilder(null, new InstructionBuilder(), new ProgramBuilderContextImpl(Arrays.asList(new ConceptDataFlowModeId("jetbrains.mps.testCustomDataFlow.structure.IntraProceduralSpecific_BuilderMode"), new ConceptDataFlowModeId("jetbrains.mps.lang.dataFlow.structure.IntraProcedural_BuilderMode"))));
-      Program program = builder.buildProgram(SNodeOperations.cast(getNodeById("2955426575105884969"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, "testCustomAnalyzer"), 0x73a316f7f5468ed4L, "Root"))));
-      Assert.assertTrue(program.getInstructions().size() == ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(getNodeById("2955426575105884969"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, "testCustomAnalyzer"), 0x73a316f7f5468ed4L, "Root"))), LINKS.child$G3Ei)).count() * 2 + 1);
+      Program program = builder.buildProgram(getNodeById("2955426575105884969"));
+      Assert.assertTrue(program.getInstructions().size() == ListSequence.fromList(SLinkOperations.getChildren(getNodeById("2955426575105884969"), LINKS.child$G3Ei)).count() * 2 + 1);
     }
     public void test_testEmptyInstructionsWithModeSpecified() throws Exception {
       addNodeById("2955426575105884967");
       MPSProgramBuilder builder = new MPSProgramBuilder(null, new InstructionBuilder(), new ProgramBuilderContextImpl(Collections.<IDataFlowModeId>emptyList()));
-      Program program = builder.buildProgram(SNodeOperations.cast(getNodeById("2955426575105884969"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xb124c25e1e164432L, 0xad5e0ac0ecae98f5L, "testCustomAnalyzer"), 0x73a316f7f5468ed4L, "Root"))));
+      Program program = builder.buildProgram(getNodeById("2955426575105884969"));
       Assert.assertTrue(program.getInstructions().size() == 1 && Objects.equals(program.getEnd(), program.getInstructions().get(0)));
     }
 

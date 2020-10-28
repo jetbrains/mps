@@ -13,8 +13,6 @@ import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.generator.template.TemplateQueryContext;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.closures.helper.ClosureLiteralTarget;
 import jetbrains.mps.baseLanguage.closures.behavior.FunctionType__BehaviorDescriptor;
 import jetbrains.mps.lang.test.runtime.CheckExpectedMessageRunnable;
@@ -25,6 +23,7 @@ import junit.framework.Assert;
 import jetbrains.mps.lang.pattern.util.MatchingUtil;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.SReference;
 
 @MPSLaunch
@@ -57,8 +56,8 @@ public class ClosureLiteraltargetFunType_Test extends BaseTransformationTest {
       addNodeById("6374750171056867594");
       addNodeById("6374750171056867606");
       TemplateQueryContext genContext = this.getContext();
-      SNode literal = SNodeOperations.cast(getNodeById("6374750171056867612"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfd3920347849419dL, 0x907112563d152375L, "jetbrains.mps.baseLanguage.closures"), 0x1174bed3125L, "ClosureLiteral")));
-      SNode funtype = SNodeOperations.cast(getNodeById("6374750171056867639"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xfd3920347849419dL, 0x907112563d152375L, "jetbrains.mps.baseLanguage.closures"), 0x1174a4d19ffL, "FunctionType")));
+      SNode literal = getNodeById("6374750171056867612");
+      SNode funtype = getNodeById("6374750171056867639");
       new ClosureLiteralTarget(genContext).setTarget(literal, FunctionType__BehaviorDescriptor.getDeclarationRuntimeType_idhTOKQzf.invoke(funtype));
       this.assertLiteralTarget(genContext, literal, _quotation_createNode_7325qm_c0a6a3i());
     }

@@ -13,8 +13,6 @@ import jetbrains.mps.nodeEditor.EditorContext;
 import javax.swing.SwingUtilities;
 import jetbrains.mps.openapi.editor.assist.ContextAssistantManager;
 import junit.framework.Assert;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class ContextAssistant_HiddenWhenNoMenu_Test extends BaseTransformationTest {
@@ -49,7 +47,7 @@ public class ContextAssistant_HiddenWhenNoMenu_Test extends BaseTransformationTe
               Assert.assertNotNull(contextAssistantManager.getActiveAssistant());
               Assert.assertNotNull(contextAssistantManager.getActiveMenuItems());
 
-              getEditorComponent().getSelectionManager().setSelection(SNodeOperations.cast(getNodeById("6183626235528683202"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x9a629f9aabc94c29L, 0xb1b8db7f349f7fbcL, "jetbrains.mps.lang.editor.menus.contextAssistant.testLanguage"), 0x4d6a8b533e60aa4dL, "Parent"))));
+              getEditorComponent().getSelectionManager().setSelection(getNodeById("6183626235528683202"));
 
               contextAssistantManager.updateImmediately();
 

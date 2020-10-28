@@ -78,7 +78,7 @@ public class NodeOperationsApplicableFlags_Test extends BaseTransformationTest {
     }
     public void test_allConceptsAreIncludedInTest() throws Exception {
       addNodeById("6410670351275222996");
-      Set<SLanguage> allLanguages = SetSequence.fromSetWithValues(new HashSet<SLanguage>(), LanguageRegistry.getInstance(SNodeOperations.getModel(SNodeOperations.cast(getNodeById("6410670351275225853"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfc092b6b77L, "BlockStatement")))).getRepository()).getAllLanguages());
+      Set<SLanguage> allLanguages = SetSequence.fromSetWithValues(new HashSet<SLanguage>(), LanguageRegistry.getInstance(SNodeOperations.getModel(getNodeById("6410670351275225853")).getRepository()).getAllLanguages());
       Assert.assertTrue(SetSequence.fromSet(allLanguages).contains(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel")));
       Assert.assertTrue(SetSequence.fromSet(allLanguages).contains(MetaAdapterFactory.getLanguage(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, "jetbrains.mps.lang.editor")));
       Assert.assertTrue(SetSequence.fromSet(allLanguages).contains(MetaAdapterFactory.getLanguage(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, "jetbrains.mps.lang.typesystem")));
@@ -89,7 +89,7 @@ public class NodeOperationsApplicableFlags_Test extends BaseTransformationTest {
 
     public Iterable<SAbstractConcept> getAllNodeOperations() {
       SNode var6410670351275231787 = getNodeById("6410670351275225853");
-      Set<SLanguage> allLanguages = SetSequence.fromSetWithValues(new HashSet<SLanguage>(), LanguageRegistry.getInstance(SNodeOperations.getModel(SNodeOperations.cast(getNodeById("6410670351275225853"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfc092b6b77L, "BlockStatement")))).getRepository()).getAllLanguages());
+      Set<SLanguage> allLanguages = SetSequence.fromSetWithValues(new HashSet<SLanguage>(), LanguageRegistry.getInstance(SNodeOperations.getModel(getNodeById("6410670351275225853")).getRepository()).getAllLanguages());
       return SConceptOperations.getAllSubConcepts(CONCEPTS.SNodeOperation$pA, allLanguages);
     }
     public int countFlags(List<Boolean> flags) {

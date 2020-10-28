@@ -13,8 +13,6 @@ import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import junit.framework.Assert;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.InlineMethodModel;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @MPSLaunch
 public class InlineWithNoSourcesAttached_Test extends BaseTransformationTest {
@@ -40,7 +38,7 @@ public class InlineWithNoSourcesAttached_Test extends BaseTransformationTest {
 
     public void test_InlineWithNoSourcesAttached() throws Exception {
       addNodeById("1230052989307");
-      Assert.assertTrue(new InlineMethodModel(SNodeOperations.cast(getNodeById("1230052989317"), SNodeOperations.asSConcept(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x118154a6332L, "InstanceMethodCallOperation")))).getErrors() != null);
+      Assert.assertTrue(new InlineMethodModel(getNodeById("1230052989317")).getErrors() != null);
     }
 
 

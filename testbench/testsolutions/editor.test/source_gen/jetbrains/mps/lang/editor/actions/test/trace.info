@@ -75,40 +75,40 @@
   </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/1241246198931557723">
     <file name="TwoStepDeleteSingleRequired_Test.java">
-      <node id="1241246198931557723" at="23,45,24,25" concept="8" />
-      <node id="1241246198931557723" at="28,67,29,36" concept="1" />
-      <node id="1241246198931557723" at="34,52,35,19" concept="8" />
-      <node id="1241246198931557723" at="39,51,40,72" concept="1" />
-      <node id="1241246198931557729" at="42,44,43,73" concept="1" />
-      <node id="1241246198932005546" at="45,31,46,407" concept="1" />
-      <node id="1241246198931557739" at="48,13,49,73" concept="1" />
-      <node id="1241246198931557723" at="20,0,22,0" concept="7" trace="ourParamCache" />
-      <node id="1241246198931557723" at="23,0,26,0" concept="0" trace="TwoStepDeleteSingleRequired_Test#()V" />
-      <node id="1241246198931557723" at="34,0,37,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="1241246198932005544" at="45,0,48,0" concept="3" trace="run#()V" />
-      <node id="1241246198931557723" at="27,0,31,0" concept="3" trace="test_TwoStepDeleteSingleRequired#()V" />
-      <node id="1241246198932005534" at="43,73,48,13" concept="1" />
-      <node id="1241246198931557727" at="42,0,51,0" concept="3" trace="run#()V" />
-      <node id="1241246198931557725" at="40,72,51,15" concept="1" />
-      <node id="1241246198931557723" at="38,0,53,0" concept="3" trace="testMethodImpl#()V" />
-      <scope id="1241246198931557723" at="23,45,24,25" />
-      <scope id="1241246198931557723" at="28,67,29,36" />
-      <scope id="1241246198931557723" at="34,52,35,19" />
-      <scope id="1241246198932005545" at="45,31,46,407" />
-      <scope id="1241246198931557723" at="23,0,26,0" />
-      <scope id="1241246198931557723" at="34,0,37,0">
+      <node id="1241246198931557723" at="21,45,22,25" concept="8" />
+      <node id="1241246198931557723" at="26,67,27,36" concept="1" />
+      <node id="1241246198931557723" at="32,52,33,19" concept="8" />
+      <node id="1241246198931557723" at="37,51,38,72" concept="1" />
+      <node id="1241246198931557729" at="40,44,41,73" concept="1" />
+      <node id="1241246198932005546" at="43,31,44,153" concept="1" />
+      <node id="1241246198931557739" at="46,13,47,73" concept="1" />
+      <node id="1241246198931557723" at="18,0,20,0" concept="7" trace="ourParamCache" />
+      <node id="1241246198931557723" at="21,0,24,0" concept="0" trace="TwoStepDeleteSingleRequired_Test#()V" />
+      <node id="1241246198931557723" at="32,0,35,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="1241246198932005544" at="43,0,46,0" concept="3" trace="run#()V" />
+      <node id="1241246198931557723" at="25,0,29,0" concept="3" trace="test_TwoStepDeleteSingleRequired#()V" />
+      <node id="1241246198932005534" at="41,73,46,13" concept="1" />
+      <node id="1241246198931557727" at="40,0,49,0" concept="3" trace="run#()V" />
+      <node id="1241246198931557725" at="38,72,49,15" concept="1" />
+      <node id="1241246198931557723" at="36,0,51,0" concept="3" trace="testMethodImpl#()V" />
+      <scope id="1241246198931557723" at="21,45,22,25" />
+      <scope id="1241246198931557723" at="26,67,27,36" />
+      <scope id="1241246198931557723" at="32,52,33,19" />
+      <scope id="1241246198932005545" at="43,31,44,153" />
+      <scope id="1241246198931557723" at="21,0,24,0" />
+      <scope id="1241246198931557723" at="32,0,35,0">
         <var name="owner" id="1241246198931557723" />
       </scope>
-      <scope id="1241246198932005544" at="45,0,48,0" />
-      <scope id="1241246198931557723" at="27,0,31,0" />
-      <scope id="1241246198931557728" at="42,44,49,73" />
-      <scope id="1241246198931557727" at="42,0,51,0" />
-      <scope id="1241246198931557723" at="39,51,51,15" />
-      <scope id="1241246198931557723" at="38,0,53,0" />
-      <unit id="1241246198932005544" at="44,101,48,11" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteSingleRequired_Test$TestBody$1$1" />
-      <unit id="1241246198931557727" at="41,48,51,7" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteSingleRequired_Test$TestBody$1" />
-      <unit id="1241246198931557723" at="32,0,54,0" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteSingleRequired_Test$TestBody" />
-      <unit id="1241246198931557723" at="18,0,55,0" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteSingleRequired_Test" />
+      <scope id="1241246198932005544" at="43,0,46,0" />
+      <scope id="1241246198931557723" at="25,0,29,0" />
+      <scope id="1241246198931557728" at="40,44,47,73" />
+      <scope id="1241246198931557727" at="40,0,49,0" />
+      <scope id="1241246198931557723" at="37,51,49,15" />
+      <scope id="1241246198931557723" at="36,0,51,0" />
+      <unit id="1241246198932005544" at="42,101,46,11" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteSingleRequired_Test$TestBody$1$1" />
+      <unit id="1241246198931557727" at="39,48,49,7" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteSingleRequired_Test$TestBody$1" />
+      <unit id="1241246198931557723" at="30,0,52,0" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteSingleRequired_Test$TestBody" />
+      <unit id="1241246198931557723" at="16,0,53,0" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteSingleRequired_Test" />
     </file>
   </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/1241246198931558484">
@@ -208,40 +208,40 @@
   </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/1241246198931629129">
     <file name="TwoStepDeleteSingleRequiredWholeSelected_Test.java">
-      <node id="1241246198931629129" at="23,58,24,25" concept="8" />
-      <node id="1241246198931629129" at="28,80,29,36" concept="1" />
-      <node id="1241246198931629129" at="34,52,35,19" concept="8" />
-      <node id="1241246198931629129" at="39,51,40,72" concept="1" />
-      <node id="1241246198931629135" at="42,44,43,73" concept="1" />
-      <node id="1241246198932007379" at="45,31,46,407" concept="1" />
-      <node id="1241246198931629145" at="48,13,49,73" concept="1" />
-      <node id="1241246198931629129" at="20,0,22,0" concept="7" trace="ourParamCache" />
-      <node id="1241246198931629129" at="23,0,26,0" concept="0" trace="TwoStepDeleteSingleRequiredWholeSelected_Test#()V" />
-      <node id="1241246198931629129" at="34,0,37,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="1241246198932007377" at="45,0,48,0" concept="3" trace="run#()V" />
-      <node id="1241246198931629129" at="27,0,31,0" concept="3" trace="test_TwoStepDeleteSingleRequiredWholeSelected#()V" />
-      <node id="1241246198932007367" at="43,73,48,13" concept="1" />
-      <node id="1241246198931629133" at="42,0,51,0" concept="3" trace="run#()V" />
-      <node id="1241246198931629131" at="40,72,51,15" concept="1" />
-      <node id="1241246198931629129" at="38,0,53,0" concept="3" trace="testMethodImpl#()V" />
-      <scope id="1241246198931629129" at="23,58,24,25" />
-      <scope id="1241246198931629129" at="28,80,29,36" />
-      <scope id="1241246198931629129" at="34,52,35,19" />
-      <scope id="1241246198932007378" at="45,31,46,407" />
-      <scope id="1241246198931629129" at="23,0,26,0" />
-      <scope id="1241246198931629129" at="34,0,37,0">
+      <node id="1241246198931629129" at="21,58,22,25" concept="8" />
+      <node id="1241246198931629129" at="26,80,27,36" concept="1" />
+      <node id="1241246198931629129" at="32,52,33,19" concept="8" />
+      <node id="1241246198931629129" at="37,51,38,72" concept="1" />
+      <node id="1241246198931629135" at="40,44,41,73" concept="1" />
+      <node id="1241246198932007379" at="43,31,44,153" concept="1" />
+      <node id="1241246198931629145" at="46,13,47,73" concept="1" />
+      <node id="1241246198931629129" at="18,0,20,0" concept="7" trace="ourParamCache" />
+      <node id="1241246198931629129" at="21,0,24,0" concept="0" trace="TwoStepDeleteSingleRequiredWholeSelected_Test#()V" />
+      <node id="1241246198931629129" at="32,0,35,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="1241246198932007377" at="43,0,46,0" concept="3" trace="run#()V" />
+      <node id="1241246198931629129" at="25,0,29,0" concept="3" trace="test_TwoStepDeleteSingleRequiredWholeSelected#()V" />
+      <node id="1241246198932007367" at="41,73,46,13" concept="1" />
+      <node id="1241246198931629133" at="40,0,49,0" concept="3" trace="run#()V" />
+      <node id="1241246198931629131" at="38,72,49,15" concept="1" />
+      <node id="1241246198931629129" at="36,0,51,0" concept="3" trace="testMethodImpl#()V" />
+      <scope id="1241246198931629129" at="21,58,22,25" />
+      <scope id="1241246198931629129" at="26,80,27,36" />
+      <scope id="1241246198931629129" at="32,52,33,19" />
+      <scope id="1241246198932007378" at="43,31,44,153" />
+      <scope id="1241246198931629129" at="21,0,24,0" />
+      <scope id="1241246198931629129" at="32,0,35,0">
         <var name="owner" id="1241246198931629129" />
       </scope>
-      <scope id="1241246198932007377" at="45,0,48,0" />
-      <scope id="1241246198931629129" at="27,0,31,0" />
-      <scope id="1241246198931629134" at="42,44,49,73" />
-      <scope id="1241246198931629133" at="42,0,51,0" />
-      <scope id="1241246198931629129" at="39,51,51,15" />
-      <scope id="1241246198931629129" at="38,0,53,0" />
-      <unit id="1241246198932007377" at="44,101,48,11" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteSingleRequiredWholeSelected_Test$TestBody$1$1" />
-      <unit id="1241246198931629133" at="41,48,51,7" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteSingleRequiredWholeSelected_Test$TestBody$1" />
-      <unit id="1241246198931629129" at="32,0,54,0" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteSingleRequiredWholeSelected_Test$TestBody" />
-      <unit id="1241246198931629129" at="18,0,55,0" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteSingleRequiredWholeSelected_Test" />
+      <scope id="1241246198932007377" at="43,0,46,0" />
+      <scope id="1241246198931629129" at="25,0,29,0" />
+      <scope id="1241246198931629134" at="40,44,47,73" />
+      <scope id="1241246198931629133" at="40,0,49,0" />
+      <scope id="1241246198931629129" at="37,51,49,15" />
+      <scope id="1241246198931629129" at="36,0,51,0" />
+      <unit id="1241246198932007377" at="42,101,46,11" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteSingleRequiredWholeSelected_Test$TestBody$1$1" />
+      <unit id="1241246198931629133" at="39,48,49,7" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteSingleRequiredWholeSelected_Test$TestBody$1" />
+      <unit id="1241246198931629129" at="30,0,52,0" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteSingleRequiredWholeSelected_Test$TestBody" />
+      <unit id="1241246198931629129" at="16,0,53,0" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteSingleRequiredWholeSelected_Test" />
     </file>
   </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/1241246198932159587">
@@ -473,40 +473,40 @@
   </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/1241246198933157168">
     <file name="TwoStepDeleteChildFromParent_Test.java">
-      <node id="1241246198933157168" at="23,46,24,25" concept="8" />
-      <node id="1241246198933157168" at="28,68,29,36" concept="1" />
-      <node id="1241246198933157168" at="34,52,35,19" concept="8" />
-      <node id="1241246198933157168" at="39,51,40,72" concept="1" />
-      <node id="1241246198933157174" at="42,44,43,73" concept="1" />
-      <node id="1241246198933217038" at="45,31,46,397" concept="1" />
-      <node id="1241246198933157185" at="48,13,49,73" concept="1" />
-      <node id="1241246198933157168" at="20,0,22,0" concept="7" trace="ourParamCache" />
-      <node id="1241246198933157168" at="23,0,26,0" concept="0" trace="TwoStepDeleteChildFromParent_Test#()V" />
-      <node id="1241246198933157168" at="34,0,37,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="1241246198933217036" at="45,0,48,0" concept="3" trace="run#()V" />
-      <node id="1241246198933157168" at="27,0,31,0" concept="3" trace="test_TwoStepDeleteChildFromParent#()V" />
-      <node id="1241246198933217026" at="43,73,48,13" concept="1" />
-      <node id="1241246198933157172" at="42,0,51,0" concept="3" trace="run#()V" />
-      <node id="1241246198933157170" at="40,72,51,15" concept="1" />
-      <node id="1241246198933157168" at="38,0,53,0" concept="3" trace="testMethodImpl#()V" />
-      <scope id="1241246198933157168" at="23,46,24,25" />
-      <scope id="1241246198933157168" at="28,68,29,36" />
-      <scope id="1241246198933157168" at="34,52,35,19" />
-      <scope id="1241246198933217037" at="45,31,46,397" />
-      <scope id="1241246198933157168" at="23,0,26,0" />
-      <scope id="1241246198933157168" at="34,0,37,0">
+      <node id="1241246198933157168" at="21,46,22,25" concept="8" />
+      <node id="1241246198933157168" at="26,68,27,36" concept="1" />
+      <node id="1241246198933157168" at="32,52,33,19" concept="8" />
+      <node id="1241246198933157168" at="37,51,38,72" concept="1" />
+      <node id="1241246198933157174" at="40,44,41,73" concept="1" />
+      <node id="1241246198933217038" at="43,31,44,153" concept="1" />
+      <node id="1241246198933157185" at="46,13,47,73" concept="1" />
+      <node id="1241246198933157168" at="18,0,20,0" concept="7" trace="ourParamCache" />
+      <node id="1241246198933157168" at="21,0,24,0" concept="0" trace="TwoStepDeleteChildFromParent_Test#()V" />
+      <node id="1241246198933157168" at="32,0,35,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="1241246198933217036" at="43,0,46,0" concept="3" trace="run#()V" />
+      <node id="1241246198933157168" at="25,0,29,0" concept="3" trace="test_TwoStepDeleteChildFromParent#()V" />
+      <node id="1241246198933217026" at="41,73,46,13" concept="1" />
+      <node id="1241246198933157172" at="40,0,49,0" concept="3" trace="run#()V" />
+      <node id="1241246198933157170" at="38,72,49,15" concept="1" />
+      <node id="1241246198933157168" at="36,0,51,0" concept="3" trace="testMethodImpl#()V" />
+      <scope id="1241246198933157168" at="21,46,22,25" />
+      <scope id="1241246198933157168" at="26,68,27,36" />
+      <scope id="1241246198933157168" at="32,52,33,19" />
+      <scope id="1241246198933217037" at="43,31,44,153" />
+      <scope id="1241246198933157168" at="21,0,24,0" />
+      <scope id="1241246198933157168" at="32,0,35,0">
         <var name="owner" id="1241246198933157168" />
       </scope>
-      <scope id="1241246198933217036" at="45,0,48,0" />
-      <scope id="1241246198933157168" at="27,0,31,0" />
-      <scope id="1241246198933157173" at="42,44,49,73" />
-      <scope id="1241246198933157172" at="42,0,51,0" />
-      <scope id="1241246198933157168" at="39,51,51,15" />
-      <scope id="1241246198933157168" at="38,0,53,0" />
-      <unit id="1241246198933217036" at="44,101,48,11" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteChildFromParent_Test$TestBody$1$1" />
-      <unit id="1241246198933157172" at="41,48,51,7" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteChildFromParent_Test$TestBody$1" />
-      <unit id="1241246198933157168" at="32,0,54,0" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteChildFromParent_Test$TestBody" />
-      <unit id="1241246198933157168" at="18,0,55,0" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteChildFromParent_Test" />
+      <scope id="1241246198933217036" at="43,0,46,0" />
+      <scope id="1241246198933157168" at="25,0,29,0" />
+      <scope id="1241246198933157173" at="40,44,47,73" />
+      <scope id="1241246198933157172" at="40,0,49,0" />
+      <scope id="1241246198933157168" at="37,51,49,15" />
+      <scope id="1241246198933157168" at="36,0,51,0" />
+      <unit id="1241246198933217036" at="42,101,46,11" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteChildFromParent_Test$TestBody$1$1" />
+      <unit id="1241246198933157172" at="39,48,49,7" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteChildFromParent_Test$TestBody$1" />
+      <unit id="1241246198933157168" at="30,0,52,0" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteChildFromParent_Test$TestBody" />
+      <unit id="1241246198933157168" at="16,0,53,0" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteChildFromParent_Test" />
     </file>
   </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/1241246198933217963">
@@ -542,79 +542,79 @@
   </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/1241246198933554451">
     <file name="TwoStepBackspacePreviousChild_Test.java">
-      <node id="1241246198933554451" at="23,47,24,25" concept="8" />
-      <node id="1241246198933554451" at="28,69,29,36" concept="1" />
-      <node id="1241246198933554451" at="34,52,35,19" concept="8" />
-      <node id="1241246198933554451" at="39,51,40,72" concept="1" />
-      <node id="1241246198933554457" at="42,44,43,76" concept="1" />
-      <node id="1241246198933656740" at="45,31,46,398" concept="1" />
-      <node id="1241246198933658482" at="48,13,49,76" concept="1" />
-      <node id="1241246198933554451" at="20,0,22,0" concept="7" trace="ourParamCache" />
-      <node id="1241246198933554451" at="23,0,26,0" concept="0" trace="TwoStepBackspacePreviousChild_Test#()V" />
-      <node id="1241246198933554451" at="34,0,37,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="1241246198933656738" at="45,0,48,0" concept="3" trace="run#()V" />
-      <node id="1241246198933554451" at="27,0,31,0" concept="3" trace="test_TwoStepBackspacePreviousChild#()V" />
-      <node id="1241246198933656728" at="43,76,48,13" concept="1" />
-      <node id="1241246198933554455" at="42,0,51,0" concept="3" trace="run#()V" />
-      <node id="1241246198933554453" at="40,72,51,15" concept="1" />
-      <node id="1241246198933554451" at="38,0,53,0" concept="3" trace="testMethodImpl#()V" />
-      <scope id="1241246198933554451" at="23,47,24,25" />
-      <scope id="1241246198933554451" at="28,69,29,36" />
-      <scope id="1241246198933554451" at="34,52,35,19" />
-      <scope id="1241246198933656739" at="45,31,46,398" />
-      <scope id="1241246198933554451" at="23,0,26,0" />
-      <scope id="1241246198933554451" at="34,0,37,0">
+      <node id="1241246198933554451" at="21,47,22,25" concept="8" />
+      <node id="1241246198933554451" at="26,69,27,36" concept="1" />
+      <node id="1241246198933554451" at="32,52,33,19" concept="8" />
+      <node id="1241246198933554451" at="37,51,38,72" concept="1" />
+      <node id="1241246198933554457" at="40,44,41,76" concept="1" />
+      <node id="1241246198933656740" at="43,31,44,153" concept="1" />
+      <node id="1241246198933658482" at="46,13,47,76" concept="1" />
+      <node id="1241246198933554451" at="18,0,20,0" concept="7" trace="ourParamCache" />
+      <node id="1241246198933554451" at="21,0,24,0" concept="0" trace="TwoStepBackspacePreviousChild_Test#()V" />
+      <node id="1241246198933554451" at="32,0,35,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="1241246198933656738" at="43,0,46,0" concept="3" trace="run#()V" />
+      <node id="1241246198933554451" at="25,0,29,0" concept="3" trace="test_TwoStepBackspacePreviousChild#()V" />
+      <node id="1241246198933656728" at="41,76,46,13" concept="1" />
+      <node id="1241246198933554455" at="40,0,49,0" concept="3" trace="run#()V" />
+      <node id="1241246198933554453" at="38,72,49,15" concept="1" />
+      <node id="1241246198933554451" at="36,0,51,0" concept="3" trace="testMethodImpl#()V" />
+      <scope id="1241246198933554451" at="21,47,22,25" />
+      <scope id="1241246198933554451" at="26,69,27,36" />
+      <scope id="1241246198933554451" at="32,52,33,19" />
+      <scope id="1241246198933656739" at="43,31,44,153" />
+      <scope id="1241246198933554451" at="21,0,24,0" />
+      <scope id="1241246198933554451" at="32,0,35,0">
         <var name="owner" id="1241246198933554451" />
       </scope>
-      <scope id="1241246198933656738" at="45,0,48,0" />
-      <scope id="1241246198933554451" at="27,0,31,0" />
-      <scope id="1241246198933554456" at="42,44,49,76" />
-      <scope id="1241246198933554455" at="42,0,51,0" />
-      <scope id="1241246198933554451" at="39,51,51,15" />
-      <scope id="1241246198933554451" at="38,0,53,0" />
-      <unit id="1241246198933656738" at="44,101,48,11" name="jetbrains.mps.lang.editor.actions.test.TwoStepBackspacePreviousChild_Test$TestBody$1$1" />
-      <unit id="1241246198933554455" at="41,48,51,7" name="jetbrains.mps.lang.editor.actions.test.TwoStepBackspacePreviousChild_Test$TestBody$1" />
-      <unit id="1241246198933554451" at="32,0,54,0" name="jetbrains.mps.lang.editor.actions.test.TwoStepBackspacePreviousChild_Test$TestBody" />
-      <unit id="1241246198933554451" at="18,0,55,0" name="jetbrains.mps.lang.editor.actions.test.TwoStepBackspacePreviousChild_Test" />
+      <scope id="1241246198933656738" at="43,0,46,0" />
+      <scope id="1241246198933554451" at="25,0,29,0" />
+      <scope id="1241246198933554456" at="40,44,47,76" />
+      <scope id="1241246198933554455" at="40,0,49,0" />
+      <scope id="1241246198933554451" at="37,51,49,15" />
+      <scope id="1241246198933554451" at="36,0,51,0" />
+      <unit id="1241246198933656738" at="42,101,46,11" name="jetbrains.mps.lang.editor.actions.test.TwoStepBackspacePreviousChild_Test$TestBody$1$1" />
+      <unit id="1241246198933554455" at="39,48,49,7" name="jetbrains.mps.lang.editor.actions.test.TwoStepBackspacePreviousChild_Test$TestBody$1" />
+      <unit id="1241246198933554451" at="30,0,52,0" name="jetbrains.mps.lang.editor.actions.test.TwoStepBackspacePreviousChild_Test$TestBody" />
+      <unit id="1241246198933554451" at="16,0,53,0" name="jetbrains.mps.lang.editor.actions.test.TwoStepBackspacePreviousChild_Test" />
     </file>
   </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/1241246198933657715">
     <file name="TwoStepBackspaceDelete_Test.java">
-      <node id="1241246198933657715" at="23,40,24,25" concept="8" />
-      <node id="1241246198933657715" at="28,62,29,36" concept="1" />
-      <node id="1241246198933657715" at="34,52,35,19" concept="8" />
-      <node id="1241246198933657715" at="39,51,40,72" concept="1" />
-      <node id="1241246198933657721" at="42,44,43,76" concept="1" />
-      <node id="1241246198933657735" at="45,31,46,398" concept="1" />
-      <node id="1241246198933659607" at="48,13,49,73" concept="1" />
-      <node id="1241246198933660876" at="49,73,50,153" concept="1" />
-      <node id="1241246198933657715" at="20,0,22,0" concept="7" trace="ourParamCache" />
-      <node id="1241246198933657715" at="23,0,26,0" concept="0" trace="TwoStepBackspaceDelete_Test#()V" />
-      <node id="1241246198933657715" at="34,0,37,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="1241246198933657733" at="45,0,48,0" concept="3" trace="run#()V" />
-      <node id="1241246198933657715" at="27,0,31,0" concept="3" trace="test_TwoStepBackspaceDelete#()V" />
-      <node id="1241246198933657723" at="43,76,48,13" concept="1" />
-      <node id="1241246198933657719" at="42,0,52,0" concept="3" trace="run#()V" />
-      <node id="1241246198933657717" at="40,72,52,15" concept="1" />
-      <node id="1241246198933657715" at="38,0,54,0" concept="3" trace="testMethodImpl#()V" />
-      <scope id="1241246198933657715" at="23,40,24,25" />
-      <scope id="1241246198933657715" at="28,62,29,36" />
-      <scope id="1241246198933657715" at="34,52,35,19" />
-      <scope id="1241246198933657734" at="45,31,46,398" />
-      <scope id="1241246198933657715" at="23,0,26,0" />
-      <scope id="1241246198933657715" at="34,0,37,0">
+      <node id="1241246198933657715" at="21,40,22,25" concept="8" />
+      <node id="1241246198933657715" at="26,62,27,36" concept="1" />
+      <node id="1241246198933657715" at="32,52,33,19" concept="8" />
+      <node id="1241246198933657715" at="37,51,38,72" concept="1" />
+      <node id="1241246198933657721" at="40,44,41,76" concept="1" />
+      <node id="1241246198933657735" at="43,31,44,153" concept="1" />
+      <node id="1241246198933659607" at="46,13,47,73" concept="1" />
+      <node id="1241246198933660876" at="47,73,48,153" concept="1" />
+      <node id="1241246198933657715" at="18,0,20,0" concept="7" trace="ourParamCache" />
+      <node id="1241246198933657715" at="21,0,24,0" concept="0" trace="TwoStepBackspaceDelete_Test#()V" />
+      <node id="1241246198933657715" at="32,0,35,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="1241246198933657733" at="43,0,46,0" concept="3" trace="run#()V" />
+      <node id="1241246198933657715" at="25,0,29,0" concept="3" trace="test_TwoStepBackspaceDelete#()V" />
+      <node id="1241246198933657723" at="41,76,46,13" concept="1" />
+      <node id="1241246198933657719" at="40,0,50,0" concept="3" trace="run#()V" />
+      <node id="1241246198933657717" at="38,72,50,15" concept="1" />
+      <node id="1241246198933657715" at="36,0,52,0" concept="3" trace="testMethodImpl#()V" />
+      <scope id="1241246198933657715" at="21,40,22,25" />
+      <scope id="1241246198933657715" at="26,62,27,36" />
+      <scope id="1241246198933657715" at="32,52,33,19" />
+      <scope id="1241246198933657734" at="43,31,44,153" />
+      <scope id="1241246198933657715" at="21,0,24,0" />
+      <scope id="1241246198933657715" at="32,0,35,0">
         <var name="owner" id="1241246198933657715" />
       </scope>
-      <scope id="1241246198933657733" at="45,0,48,0" />
-      <scope id="1241246198933657715" at="27,0,31,0" />
-      <scope id="1241246198933657720" at="42,44,50,153" />
-      <scope id="1241246198933657719" at="42,0,52,0" />
-      <scope id="1241246198933657715" at="39,51,52,15" />
-      <scope id="1241246198933657715" at="38,0,54,0" />
-      <unit id="1241246198933657733" at="44,101,48,11" name="jetbrains.mps.lang.editor.actions.test.TwoStepBackspaceDelete_Test$TestBody$1$1" />
-      <unit id="1241246198933657719" at="41,48,52,7" name="jetbrains.mps.lang.editor.actions.test.TwoStepBackspaceDelete_Test$TestBody$1" />
-      <unit id="1241246198933657715" at="32,0,55,0" name="jetbrains.mps.lang.editor.actions.test.TwoStepBackspaceDelete_Test$TestBody" />
-      <unit id="1241246198933657715" at="18,0,56,0" name="jetbrains.mps.lang.editor.actions.test.TwoStepBackspaceDelete_Test" />
+      <scope id="1241246198933657733" at="43,0,46,0" />
+      <scope id="1241246198933657715" at="25,0,29,0" />
+      <scope id="1241246198933657720" at="40,44,48,153" />
+      <scope id="1241246198933657719" at="40,0,50,0" />
+      <scope id="1241246198933657715" at="37,51,50,15" />
+      <scope id="1241246198933657715" at="36,0,52,0" />
+      <unit id="1241246198933657733" at="42,101,46,11" name="jetbrains.mps.lang.editor.actions.test.TwoStepBackspaceDelete_Test$TestBody$1$1" />
+      <unit id="1241246198933657719" at="39,48,50,7" name="jetbrains.mps.lang.editor.actions.test.TwoStepBackspaceDelete_Test$TestBody$1" />
+      <unit id="1241246198933657715" at="30,0,53,0" name="jetbrains.mps.lang.editor.actions.test.TwoStepBackspaceDelete_Test$TestBody" />
+      <unit id="1241246198933657715" at="16,0,54,0" name="jetbrains.mps.lang.editor.actions.test.TwoStepBackspaceDelete_Test" />
     </file>
   </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/1350862557304186944">
@@ -1296,40 +1296,40 @@
   </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/2420730201805048185">
     <file name="TwoStepDeleteChildWithAttributeChildSelected_Test.java">
-      <node id="2420730201805048185" at="23,62,24,25" concept="8" />
-      <node id="2420730201805048185" at="28,84,29,36" concept="1" />
-      <node id="2420730201805048185" at="34,52,35,19" concept="8" />
-      <node id="2420730201805048185" at="39,51,40,72" concept="1" />
-      <node id="2420730201805048191" at="42,44,43,76" concept="1" />
-      <node id="2420730201805048205" at="45,31,46,395" concept="1" />
-      <node id="2420730201805048211" at="48,13,49,76" concept="1" />
-      <node id="2420730201805048185" at="20,0,22,0" concept="7" trace="ourParamCache" />
-      <node id="2420730201805048185" at="23,0,26,0" concept="0" trace="TwoStepDeleteChildWithAttributeChildSelected_Test#()V" />
-      <node id="2420730201805048185" at="34,0,37,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="2420730201805048203" at="45,0,48,0" concept="3" trace="run#()V" />
-      <node id="2420730201805048185" at="27,0,31,0" concept="3" trace="test_TwoStepDeleteChildWithAttributeChildSelected#()V" />
-      <node id="2420730201805048193" at="43,76,48,13" concept="1" />
-      <node id="2420730201805048189" at="42,0,51,0" concept="3" trace="run#()V" />
-      <node id="2420730201805048187" at="40,72,51,15" concept="1" />
-      <node id="2420730201805048185" at="38,0,53,0" concept="3" trace="testMethodImpl#()V" />
-      <scope id="2420730201805048185" at="23,62,24,25" />
-      <scope id="2420730201805048185" at="28,84,29,36" />
-      <scope id="2420730201805048185" at="34,52,35,19" />
-      <scope id="2420730201805048204" at="45,31,46,395" />
-      <scope id="2420730201805048185" at="23,0,26,0" />
-      <scope id="2420730201805048185" at="34,0,37,0">
+      <node id="2420730201805048185" at="21,62,22,25" concept="8" />
+      <node id="2420730201805048185" at="26,84,27,36" concept="1" />
+      <node id="2420730201805048185" at="32,52,33,19" concept="8" />
+      <node id="2420730201805048185" at="37,51,38,72" concept="1" />
+      <node id="2420730201805048191" at="40,44,41,76" concept="1" />
+      <node id="2420730201805048205" at="43,31,44,153" concept="1" />
+      <node id="2420730201805048211" at="46,13,47,76" concept="1" />
+      <node id="2420730201805048185" at="18,0,20,0" concept="7" trace="ourParamCache" />
+      <node id="2420730201805048185" at="21,0,24,0" concept="0" trace="TwoStepDeleteChildWithAttributeChildSelected_Test#()V" />
+      <node id="2420730201805048185" at="32,0,35,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="2420730201805048203" at="43,0,46,0" concept="3" trace="run#()V" />
+      <node id="2420730201805048185" at="25,0,29,0" concept="3" trace="test_TwoStepDeleteChildWithAttributeChildSelected#()V" />
+      <node id="2420730201805048193" at="41,76,46,13" concept="1" />
+      <node id="2420730201805048189" at="40,0,49,0" concept="3" trace="run#()V" />
+      <node id="2420730201805048187" at="38,72,49,15" concept="1" />
+      <node id="2420730201805048185" at="36,0,51,0" concept="3" trace="testMethodImpl#()V" />
+      <scope id="2420730201805048185" at="21,62,22,25" />
+      <scope id="2420730201805048185" at="26,84,27,36" />
+      <scope id="2420730201805048185" at="32,52,33,19" />
+      <scope id="2420730201805048204" at="43,31,44,153" />
+      <scope id="2420730201805048185" at="21,0,24,0" />
+      <scope id="2420730201805048185" at="32,0,35,0">
         <var name="owner" id="2420730201805048185" />
       </scope>
-      <scope id="2420730201805048203" at="45,0,48,0" />
-      <scope id="2420730201805048185" at="27,0,31,0" />
-      <scope id="2420730201805048190" at="42,44,49,76" />
-      <scope id="2420730201805048189" at="42,0,51,0" />
-      <scope id="2420730201805048185" at="39,51,51,15" />
-      <scope id="2420730201805048185" at="38,0,53,0" />
-      <unit id="2420730201805048203" at="44,101,48,11" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteChildWithAttributeChildSelected_Test$TestBody$1$1" />
-      <unit id="2420730201805048189" at="41,48,51,7" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteChildWithAttributeChildSelected_Test$TestBody$1" />
-      <unit id="2420730201805048185" at="32,0,54,0" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteChildWithAttributeChildSelected_Test$TestBody" />
-      <unit id="2420730201805048185" at="18,0,55,0" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteChildWithAttributeChildSelected_Test" />
+      <scope id="2420730201805048203" at="43,0,46,0" />
+      <scope id="2420730201805048185" at="25,0,29,0" />
+      <scope id="2420730201805048190" at="40,44,47,76" />
+      <scope id="2420730201805048189" at="40,0,49,0" />
+      <scope id="2420730201805048185" at="37,51,49,15" />
+      <scope id="2420730201805048185" at="36,0,51,0" />
+      <unit id="2420730201805048203" at="42,101,46,11" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteChildWithAttributeChildSelected_Test$TestBody$1$1" />
+      <unit id="2420730201805048189" at="39,48,49,7" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteChildWithAttributeChildSelected_Test$TestBody$1" />
+      <unit id="2420730201805048185" at="30,0,52,0" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteChildWithAttributeChildSelected_Test$TestBody" />
+      <unit id="2420730201805048185" at="16,0,53,0" name="jetbrains.mps.lang.editor.actions.test.TwoStepDeleteChildWithAttributeChildSelected_Test" />
     </file>
   </root>
   <root nodeRef="r:c44f4b8c-137c-4225-8bd9-38d232a9b736(jetbrains.mps.lang.editor.actions.test)/2420730201805087069">
