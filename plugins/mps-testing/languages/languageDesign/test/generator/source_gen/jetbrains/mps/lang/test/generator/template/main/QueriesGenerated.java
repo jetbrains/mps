@@ -36,7 +36,6 @@ import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.smodel.behavior.ConceptId__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.behavior.ReferenceLinkId__BehaviorDescriptor;
 import jetbrains.mps.lang.test.behavior.ScopesTest__BehaviorDescriptor;
 import jetbrains.mps.lang.modelapi.behavior.NodePointer__BehaviorDescriptor;
@@ -447,11 +446,6 @@ public class QueriesGenerated extends QueryProviderBase {
   public static SNode sourceNodeQuery_0_5(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.actionReference$weYP);
   }
-  public static SNode sourceNodeQuery_1_0(final SourceSubstituteMacroNodeContext _context) {
-    SNode conceptId = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, "jetbrains.mps.lang.smodel.structure.ConceptId"));
-    ConceptId__BehaviorDescriptor.setConcept_id5ZE7FBYYR6j.invoke(conceptId, SNodeOperations.getConcept(SNodeOperations.getParent(SLinkOperations.getTarget(_context.getNode(), LINKS.declaration$hXIv))));
-    return conceptId;
-  }
   public static SNode sourceNodeQuery_2_0(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.message$SzPZ), LINKS.message$FmaW);
   }
@@ -618,7 +612,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return result;
   }
   public static Object varMacro_Value_15_0(final TemplateVarContext _context) {
-    return _quotation_createNode_x583g4_a0a751();
+    return _quotation_createNode_x583g4_a0a651();
   }
   public static Object varMacro_Value_15_1(final TemplateVarContext _context) {
     SNode result = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9404L, "jetbrains.mps.baseLanguage.structure.LocalMethodCall"));
@@ -728,7 +722,6 @@ public class QueriesGenerated extends QueryProviderBase {
     snqMethods.put("1227010390721", new SNQ(i++));
     snqMethods.put("1863298100471496915", new SNQ(i++));
     snqMethods.put("6610965663658714965", new SNQ(i++));
-    snqMethods.put("1765785632127538090", new SNQ(i++));
     snqMethods.put("3455411064017536710", new SNQ(i++));
     snqMethods.put("6970935187424965263", new SNQ(i++));
     snqMethods.put("1221567898644", new SNQ(i++));
@@ -777,40 +770,38 @@ public class QueriesGenerated extends QueryProviderBase {
         case 5:
           return QueriesGenerated.sourceNodeQuery_0_5(ctx);
         case 6:
-          return QueriesGenerated.sourceNodeQuery_1_0(ctx);
-        case 7:
           return QueriesGenerated.sourceNodeQuery_2_0(ctx);
-        case 8:
+        case 7:
           return QueriesGenerated.sourceNodeQuery_3_0(ctx);
-        case 9:
+        case 8:
           return QueriesGenerated.sourceNodeQuery_3_1(ctx);
-        case 10:
+        case 9:
           return QueriesGenerated.sourceNodeQuery_7_0(ctx);
-        case 11:
+        case 10:
           return QueriesGenerated.sourceNodeQuery_13_0(ctx);
-        case 12:
+        case 11:
           return QueriesGenerated.sourceNodeQuery_15_0(ctx);
-        case 13:
+        case 12:
           return QueriesGenerated.sourceNodeQuery_15_1(ctx);
-        case 14:
+        case 13:
           return QueriesGenerated.sourceNodeQuery_15_2(ctx);
-        case 15:
+        case 14:
           return QueriesGenerated.sourceNodeQuery_15_3(ctx);
-        case 16:
+        case 15:
           return QueriesGenerated.sourceNodeQuery_16_0(ctx);
-        case 17:
+        case 16:
           return QueriesGenerated.sourceNodeQuery_16_1(ctx);
-        case 18:
+        case 17:
           return QueriesGenerated.sourceNodeQuery_16_2(ctx);
-        case 19:
+        case 18:
           return QueriesGenerated.sourceNodeQuery_16_3(ctx);
-        case 20:
+        case 19:
           return QueriesGenerated.sourceNodeQuery_16_4(ctx);
-        case 21:
+        case 20:
           return QueriesGenerated.sourceNodeQuery_16_5(ctx);
-        case 22:
+        case 21:
           return QueriesGenerated.sourceNodeQuery_16_6(ctx);
-        case 23:
+        case 22:
           return QueriesGenerated.sourceNodeQuery_16_7(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
@@ -1353,7 +1344,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
   }
-  private static SNode _quotation_createNode_x583g4_a0a751() {
+  private static SNode _quotation_createNode_x583g4_a0a651() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
