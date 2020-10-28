@@ -7,14 +7,11 @@
     <use id="479c7a8c-02f9-43b5-9139-d910cb22f298" name="jetbrains.mps.core.xml" version="0" />
     <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="3" />
     <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="2" />
-    <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
-    <use id="0cf935df-4699-4e9c-a132-fa109541cba3" name="jetbrains.mps.build.mps" version="7" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
   <imports>
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="tken" ref="r:38bad86e-d92c-4ea7-ad52-a111dc6c2457(jetbrains.mps.build.mps.util)" />
-    <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="vbkb" ref="r:08f2b659-8469-4592-93bf-a6edb46ec86d(jetbrains.mps.build.behavior)" />
     <import index="3ior" ref="r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)" />
     <import index="kdzh" ref="r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)" />
@@ -23,6 +20,7 @@
     <import index="7f1d" ref="r:7bb3f1f1-7557-4f02-8802-5f9a48253a88(jetbrains.mps.build.mps.tests.behavior)" />
     <import index="g07" ref="r:fdebfc98-bbd7-4c50-8a8d-eda16da9406e(jetbrains.mps.build.generator.template.main@generator)" />
     <import index="54mp" ref="r:e6234636-faf1-4112-be6c-55df7ec7314a(jetbrains.mps.build.mps.tests.accessories)" />
+    <import index="7kwb" ref="r:54537613-52b5-40a8-b223-e87f0960b04f(jetbrains.mps.build.mps.generator.template.main@generator)" />
     <import index="arit" ref="r:0d66e868-9778-4307-b6f9-4795c00f662f(jetbrains.mps.build.workflow.preset.general)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
@@ -155,9 +153,6 @@
       <concept id="1622293396948952339" name="jetbrains.mps.core.xml.structure.XmlText" flags="nn" index="3o6iSG" />
     </language>
     <language id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator">
-      <concept id="1095416546421" name="jetbrains.mps.lang.generator.structure.MappingConfiguration" flags="ig" index="bUwia">
-        <child id="1167328349397" name="reductionMappingRule" index="3acgRq" />
-      </concept>
       <concept id="1177093525992" name="jetbrains.mps.lang.generator.structure.InlineTemplate_RuleConsequence" flags="lg" index="gft3U">
         <child id="1177093586806" name="templateNode" index="gfFT$" />
       </concept>
@@ -3730,15 +3725,6 @@
       </node>
     </node>
   </node>
-  <node concept="bUwia" id="9doRgOjHX1">
-    <property role="TrG5h" value="tests" />
-    <node concept="3aamgX" id="2HnWMReJtMg" role="3acgRq">
-      <ref role="30HIoZ" to="5tjl:3X9rC2XzJdH" resolve="BuildMpsLayout_TestModules" />
-      <node concept="j$656" id="3umvbTBu2DR" role="1lVwrX">
-        <ref role="v9R2y" node="9doRgNsoyX" resolve="reduce_TestModules" />
-      </node>
-    </node>
-  </node>
   <node concept="jVnub" id="3umvbTBQCMr">
     <property role="TrG5h" value="reduce_ModuleTestsLibraryImport" />
     <ref role="phYkn" to="g07:5KZfyKsVsFI" resolve="reduce_PluginToImport" />
@@ -3748,6 +3734,16 @@
         <node concept="ygXWA" id="3umvbTBQDDr" role="gfFT$">
           <ref role="ygXWD" to="54mp:m8_23bzloH" resolve="module-tests" />
         </node>
+      </node>
+    </node>
+  </node>
+  <node concept="jVnub" id="L6i6iqIJXp">
+    <property role="TrG5h" value="switch_TestAspectForMPS" />
+    <ref role="phYkn" to="7kwb:L6i6iqEOhN" resolve="switch_BuildAspectInBuildMPS" />
+    <node concept="3aamgX" id="2HnWMReJtMg" role="3aUrZf">
+      <ref role="30HIoZ" to="5tjl:3X9rC2XzJdH" resolve="BuildMpsLayout_TestModules" />
+      <node concept="j$656" id="3umvbTBu2DR" role="1lVwrX">
+        <ref role="v9R2y" node="9doRgNsoyX" resolve="reduce_TestModules" />
       </node>
     </node>
   </node>

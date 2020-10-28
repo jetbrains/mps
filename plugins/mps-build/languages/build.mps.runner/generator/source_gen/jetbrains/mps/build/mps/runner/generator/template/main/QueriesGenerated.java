@@ -47,28 +47,28 @@ public class QueriesGenerated extends QueryProviderBase {
   public QueriesGenerated() {
     super(1);
   }
-  public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetValue_0_0(final PropertyMacroContext _context) {
     return "Running code from " + SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.solution$MOiH), PROPS.name$MnvL) + " solution in MPS";
   }
-  public static Object propertyMacro_GetValue_1_1(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetValue_0_1(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.path$4PFd);
   }
-  public static Object propertyMacro_GetValue_1_2(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetValue_0_2(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.id$4PUe);
   }
-  public static Object propertyMacro_GetValue_1_3(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetValue_0_3(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.path$oN2q);
   }
-  public static Object propertyMacro_GetValue_1_4(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetValue_0_4(final PropertyMacroContext _context) {
     return (String) BuildLayout_NamedContainer__BehaviorDescriptor.getOutputPath_WithMacro_idfzIHCHip1Q.invoke(_context.getNode(), Context.defaultContext(_context));
   }
-  public static Object propertyMacro_GetValue_1_5(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetValue_0_5(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
-  public static Object propertyMacro_GetValue_1_6(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetValue_0_6(final PropertyMacroContext _context) {
     return "${" + SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL) + "}";
   }
-  public static Object propertyMacro_GetValue_1_7(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetValue_0_7(final PropertyMacroContext _context) {
     SNode mpsAspect = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(((SNode) _context.getVariable("var:buildProject")), LINKS.aspects$6r0Q), CONCEPTS.BuildMpsAspect$Ey)).first();
 
     int heapSize;
@@ -82,19 +82,19 @@ public class QueriesGenerated extends QueryProviderBase {
 
     return "-Xmx" + heapSize + "m";
   }
-  public static Object propertyMacro_GetValue_1_8(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetValue_0_8(final PropertyMacroContext _context) {
     return (String) BuildMps_AbstractModule__BehaviorDescriptor.getModuleReference_id41K1b4v5ZCB.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.solution$MOiH));
   }
-  public static Object propertyMacro_GetValue_1_9(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetValue_0_9(final PropertyMacroContext _context) {
     return (String) BuildSolutionRunnerAspect__BehaviorDescriptor.getFQClassName_id1aYLt$9eyUg.invoke(_context.getNode());
   }
-  public static Object propertyMacro_GetValue_1_10(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetValue_0_10(final PropertyMacroContext _context) {
     return (String) BuildSolutionRunnerAspect__BehaviorDescriptor.getMethodName_id1aYLt$9dX0a.invoke(_context.getNode());
   }
-  public static Object propertyMacro_GetValue_1_11(final PropertyMacroContext _context) {
+  public static Object propertyMacro_GetValue_0_11(final PropertyMacroContext _context) {
     return "run." + SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.solution$MOiH), PROPS.name$MnvL);
   }
-  public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
+  public static Iterable<SNode> sourceNodesQuery_0_0(final SourceSubstituteMacroNodesContext _context) {
     ModulePlugins modulePlugins = new ModulePlugins(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BuildProject$ae, false, false));
     Iterable<SNode> allModules = ((MPSModulesClosure) _context.getVariable("var:closure")).getAllModules();
     List<SNode> additionalPlugins = ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.requiredPlugin$RiWU)).select(new ISelector<SNode, SNode>() {
@@ -106,7 +106,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return modulePlugins.getPlugins(_context, true);
 
   }
-  public static Iterable<SNode> sourceNodesQuery_1_1(final SourceSubstituteMacroNodesContext _context) {
+  public static Iterable<SNode> sourceNodesQuery_0_1(final SourceSubstituteMacroNodesContext _context) {
     Iterable<SNode> libs = ((MPSModulesClosure) _context.getVariable("var:closure")).getAllModules();
     return ModuleFinder.findModules(Sequence.fromIterable(libs).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
@@ -114,7 +114,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }), _context, _context.getNode());
   }
-  public static Iterable<SNode> sourceNodesQuery_1_2(final SourceSubstituteMacroNodesContext _context) {
+  public static Iterable<SNode> sourceNodesQuery_0_2(final SourceSubstituteMacroNodesContext _context) {
     // see reduce_TestModules, LOOP for mps.tests.path for details 
     Iterable<SNode> libs = ((MPSModulesClosure) _context.getVariable("var:closure")).getAllModules();
     final VisibleArtifacts local = new VisibleArtifacts(((SNode) _context.getVariable("var:buildProject")));
@@ -129,13 +129,13 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }), CONCEPTS.BuildLayout_Jar$bd);
   }
-  public static Iterable<SNode> sourceNodesQuery_1_3(final SourceSubstituteMacroNodesContext _context) {
+  public static Iterable<SNode> sourceNodesQuery_0_3(final SourceSubstituteMacroNodesContext _context) {
     return SNodeOperations.ofConcept(SLinkOperations.getChildren(((SNode) _context.getVariable("var:buildProject")), LINKS.macros$r8_A), CONCEPTS.BuildFolderMacro$mR);
   }
-  public static Object varMacro_Value_1_0(final TemplateVarContext _context) {
+  public static Object varMacro_Value_0_0(final TemplateVarContext _context) {
     return new MPSModulesClosure(Sequence.<SNode>singleton(SLinkOperations.getTarget(_context.getNode(), LINKS.solution$MOiH)), new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits().setIncludeInitial()).designtimeClosure();
   }
-  public static Object varMacro_Value_1_1(final TemplateVarContext _context) {
+  public static Object varMacro_Value_0_1(final TemplateVarContext _context) {
     return SNodeOperations.as(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.BuildProject$ae);
   }
   private final Map<String, SourceNodesQuery> snsqMethods = new HashMap<String, SourceNodesQuery>();
@@ -164,13 +164,13 @@ public class QueriesGenerated extends QueryProviderBase {
     public Collection<SNode> evaluate(@NotNull SourceSubstituteMacroNodesContext ctx) throws GenerationFailureException {
       switch (methodKey) {
         case 0:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_1_0(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_0_0(ctx));
         case 1:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_1_1(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_0_1(ctx));
         case 2:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_1_2(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_0_2(ctx));
         case 3:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_1_3(ctx));
+          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_0_3(ctx));
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -211,29 +211,29 @@ public class QueriesGenerated extends QueryProviderBase {
     public Object evaluate(@NotNull PropertyMacroContext ctx) throws GenerationFailureException {
       switch (methodKey) {
         case 0:
-          return QueriesGenerated.propertyMacro_GetValue_1_0(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_0_0(ctx);
         case 1:
-          return QueriesGenerated.propertyMacro_GetValue_1_1(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_0_1(ctx);
         case 2:
-          return QueriesGenerated.propertyMacro_GetValue_1_2(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_0_2(ctx);
         case 3:
-          return QueriesGenerated.propertyMacro_GetValue_1_3(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_0_3(ctx);
         case 4:
-          return QueriesGenerated.propertyMacro_GetValue_1_4(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_0_4(ctx);
         case 5:
-          return QueriesGenerated.propertyMacro_GetValue_1_5(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_0_5(ctx);
         case 6:
-          return QueriesGenerated.propertyMacro_GetValue_1_6(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_0_6(ctx);
         case 7:
-          return QueriesGenerated.propertyMacro_GetValue_1_7(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_0_7(ctx);
         case 8:
-          return QueriesGenerated.propertyMacro_GetValue_1_8(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_0_8(ctx);
         case 9:
-          return QueriesGenerated.propertyMacro_GetValue_1_9(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_0_9(ctx);
         case 10:
-          return QueriesGenerated.propertyMacro_GetValue_1_10(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_0_10(ctx);
         case 11:
-          return QueriesGenerated.propertyMacro_GetValue_1_11(ctx);
+          return QueriesGenerated.propertyMacro_GetValue_0_11(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -262,9 +262,9 @@ public class QueriesGenerated extends QueryProviderBase {
     public Object evaluate(@NotNull TemplateVarContext ctx) throws GenerationFailureException {
       switch (methodKey) {
         case 0:
-          return QueriesGenerated.varMacro_Value_1_0(ctx);
+          return QueriesGenerated.varMacro_Value_0_0(ctx);
         case 1:
-          return QueriesGenerated.varMacro_Value_1_1(ctx);
+          return QueriesGenerated.varMacro_Value_0_1(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }

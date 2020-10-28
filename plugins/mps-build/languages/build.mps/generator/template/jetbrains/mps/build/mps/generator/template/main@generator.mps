@@ -980,8 +980,16 @@
       <node concept="b5Tf3" id="5HVSRHdWinG" role="1lVwrX" />
     </node>
     <node concept="3aamgX" id="5D0zVz80B2T" role="3acgRq">
-      <ref role="30HIoZ" to="kdzh:5D0zVz80y2D" resolve="BuildMpsAspect" />
-      <node concept="b5Tf3" id="5D0zVz80B2V" role="1lVwrX" />
+      <property role="36QftV" value="true" />
+      <property role="2n97ot" value="extension point for aspects to inject functionality into build.mps -&gt; build step. If necessary, similar BuildAspect processing, with different switch to extend, could be part of build language." />
+      <ref role="30HIoZ" to="3ior:34DbxDwRlgt" resolve="BuildAspect" />
+      <node concept="gft3U" id="L6i6iqEPsz" role="1lVwrX">
+        <node concept="2VYdi" id="L6i6iqEPs_" role="gfFT$">
+          <node concept="1sPUBX" id="L6i6iqEPsF" role="lGtFl">
+            <ref role="v9R2y" node="L6i6iqEOhN" resolve="switch_BuildAspectInBuildMPS" />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="3aamgX" id="65Xm57EYquO" role="3acgRq">
       <ref role="30HIoZ" to="kdzh:3Iy_$1rrNGr" resolve="BuildMps_GeneratorOptions" />
@@ -1882,13 +1890,13 @@
                     </node>
                   </node>
                 </node>
-                <node concept="3yrxFa" id="6hX_UKecaLM" role="3yrxIG">
-                  <ref role="3yrxFb" node="1tWbYFNhyL0" resolve="aaa.jar" />
+                <node concept="3yrxFa" id="L6i6iqJyD0" role="3yrxIG">
+                  <ref role="3yrxFb" node="7gAtt1jtVXy" resolve="aaa.jar" />
                 </node>
               </node>
               <node concept="2GhqfE" id="bgY2XVZacP" role="nCB5Z">
                 <node concept="3yrxFa" id="bgY2XVZacX" role="3yrxIG">
-                  <ref role="3yrxFb" node="1tWbYFNhyL0" resolve="aaa.jar" />
+                  <ref role="3yrxFb" node="7gAtt1jtVXy" resolve="aaa.jar" />
                   <node concept="1ZhdrF" id="bgY2XVZacY" role="lGtFl">
                     <property role="2qtEX8" value="jar" />
                     <property role="P3scX" value="798100da-4f0a-421a-b991-71f8c50ce5d2/5610619299014309452/5610619299014309453" />
@@ -7961,8 +7969,8 @@
             </node>
           </node>
         </node>
-        <node concept="3yrxFa" id="6hX_UKeexAY" role="3yrxIG">
-          <ref role="3yrxFb" node="1tWbYFNhyL0" resolve="aaa.jar" />
+        <node concept="3yrxFa" id="L6i6iqJFyv" role="3yrxIG">
+          <ref role="3yrxFb" node="7gAtt1jtVXy" resolve="aaa.jar" />
         </node>
       </node>
     </node>
@@ -21062,6 +21070,15 @@
       <node concept="10PD9b" id="5Ux$AZuPOFi" role="10PD9s" />
       <node concept="3b7kt6" id="5Ux$AZuPOFj" role="10PD9s" />
     </node>
+  </node>
+  <node concept="jVnub" id="L6i6iqEOhN">
+    <property role="TrG5h" value="switch_BuildAspectInBuildMPS" />
+    <node concept="3aamgX" id="L6i6iqEOhT" role="3aUrZf">
+      <property role="36QftV" value="true" />
+      <ref role="30HIoZ" to="kdzh:5D0zVz80y2D" resolve="BuildMpsAspect" />
+      <node concept="b5Tf3" id="L6i6iqEOhX" role="1lVwrX" />
+    </node>
+    <node concept="j$LIH" id="L6i6iqEOi0" role="jxRDz" />
   </node>
 </model>
 

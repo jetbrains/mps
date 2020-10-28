@@ -15,6 +15,7 @@
     <import index="kdzh" ref="r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)" />
     <import index="boe" ref="r:4e917293-f5b9-4023-b36a-fcf2132c435c(jetbrains.mps.build.mps.runner.accessories)" />
     <import index="o3n2" ref="r:26eadcf0-f275-4e90-be37-e4432772a74d(jetbrains.mps.build.util)" />
+    <import index="7kwb" ref="r:54537613-52b5-40a8-b223-e87f0960b04f(jetbrains.mps.build.mps.generator.template.main@generator)" />
     <import index="as3y" ref="r:0f2b4a26-93a1-4327-97ef-ca91b7a4cf5e(jetbrains.mps.build.mps.runner.structure)" implicit="true" />
     <import index="arit" ref="r:0d66e868-9778-4307-b6f9-4795c00f662f(jetbrains.mps.build.workflow.preset.general)" implicit="true" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
@@ -148,9 +149,6 @@
       <concept id="1622293396948952339" name="jetbrains.mps.core.xml.structure.XmlText" flags="nn" index="3o6iSG" />
     </language>
     <language id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator">
-      <concept id="1095416546421" name="jetbrains.mps.lang.generator.structure.MappingConfiguration" flags="ig" index="bUwia">
-        <child id="1167328349397" name="reductionMappingRule" index="3acgRq" />
-      </concept>
       <concept id="1177093525992" name="jetbrains.mps.lang.generator.structure.InlineTemplate_RuleConsequence" flags="lg" index="gft3U">
         <child id="1177093586806" name="templateNode" index="gfFT$" />
       </concept>
@@ -298,15 +296,6 @@
       <concept id="1202128969694" name="jetbrains.mps.baseLanguage.collections.structure.SelectOperation" flags="nn" index="3$u5V9" />
     </language>
   </registry>
-  <node concept="bUwia" id="3BExUgsJD1S">
-    <property role="TrG5h" value="main" />
-    <node concept="3aamgX" id="3BExUgsKe0l" role="3acgRq">
-      <ref role="30HIoZ" to="as3y:3BExUgsK89Y" resolve="BuildSolutionRunnerAspect" />
-      <node concept="j$656" id="3BExUgsKe0m" role="1lVwrX">
-        <ref role="v9R2y" node="3BExUgsKe0j" resolve="reduce_BuildSolutionRunnerAspect" />
-      </node>
-    </node>
-  </node>
   <node concept="13MO4I" id="3BExUgsKe0j">
     <property role="TrG5h" value="reduce_BuildSolutionRunnerAspect" />
     <ref role="3gUMe" to="as3y:3BExUgsK89Y" resolve="BuildSolutionRunnerAspect" />
@@ -1310,6 +1299,16 @@
         <node concept="ygXWA" id="3BExUgsPx1N" role="gfFT$">
           <ref role="ygXWD" to="boe:3BExUgsK9rC" resolve="run-mps-code" />
         </node>
+      </node>
+    </node>
+  </node>
+  <node concept="jVnub" id="L6i6iqJ68P">
+    <property role="TrG5h" value="switch_RunAspectForMPS" />
+    <ref role="phYkn" to="7kwb:L6i6iqEOhN" resolve="switch_BuildAspectInBuildMPS" />
+    <node concept="3aamgX" id="3BExUgsKe0l" role="3aUrZf">
+      <ref role="30HIoZ" to="as3y:3BExUgsK89Y" resolve="BuildSolutionRunnerAspect" />
+      <node concept="j$656" id="3BExUgsKe0m" role="1lVwrX">
+        <ref role="v9R2y" node="3BExUgsKe0j" resolve="reduce_BuildSolutionRunnerAspect" />
       </node>
     </node>
   </node>
