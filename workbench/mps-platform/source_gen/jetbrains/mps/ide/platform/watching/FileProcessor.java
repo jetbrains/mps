@@ -115,7 +115,7 @@ import java.util.Arrays;
 
   /*package*/ void processDelete(String path) {
     final IFile file = FS.getFile(path);
-    ListSequence.fromList(getData(file.getPath(), EventKind.REMOVED)).visitAll(new IVisitor<ListenerData>() {
+    ListSequence.fromList(getData(path, EventKind.REMOVED)).visitAll(new IVisitor<ListenerData>() {
       public void visit(ListenerData it) {
         it.removed.add(file);
       }
@@ -183,13 +183,11 @@ import java.util.Arrays;
     CONTENT_CHANGED()
   }
 
-
   private static boolean acceptDescendant(String eventPath, FileSystemListener listenerToChildFile, EventKind kind) {
     IFile childFile = listenerToChildFile.getFileToListen();
-    String path = childFile.toRealPath();
-    // contract to comment out later; some problems with IJ startsWith, it does not handle jar paths with !/ too well
-    assert StringUtil.startsWith(path, eventPath) || FileUtil.startsWith(path, eventPath)
-        : "Contract is broken: " + path + " does not start with " + eventPath;
+    String realChildPath = childFile.toRealPath();
+    // contract to comment out later; some problems with IJ startsWith, it does not handle jar paths with !/ too well 
+    assert StringUtil.startsWith(realChildPath, eventPath) || FileUtil.startsWith(realChildPath, eventPath) : "Contract is broken: " + realChildPath + " does not start with " + eventPath;
     if (kind == EventKind.CREATED && listenerToChildFile.listeningPreferences().notifyOnParentCreation) {
       return true;
     } else if (kind == EventKind.CONTENT_CHANGED && listenerToChildFile.listeningPreferences().notifyOnParentChange) {
@@ -202,10 +200,9 @@ import java.util.Arrays;
 
   private static boolean acceptAncestor(String eventPath, FileSystemListener listenerToParentFile, EventKind kind) {
     IFile parentFile = listenerToParentFile.getFileToListen();
-    String path = parentFile.toRealPath();
-    // contract to comment out later; some problems with IJ startsWith, it does not handle jar paths with !/ too well
-    assert StringUtil.startsWith(eventPath, path) || FileUtil.startsWith(eventPath, path) : "Contract is broken: " + eventPath + " does not start with " +
-                                                                                                                            path;
+    String realParentPath = parentFile.toRealPath();
+    // contract to comment out later; some problems with IJ startsWith, it does not handle jar paths with !/ too well 
+    assert StringUtil.startsWith(eventPath, realParentPath) || FileUtil.startsWith(eventPath, realParentPath) : "Contract is broken: " + eventPath + " does not start with " + realParentPath;
     if (kind == EventKind.CREATED && listenerToParentFile.listeningPreferences().notifyOnChildCreation) {
       return true;
     } else if (kind == EventKind.CONTENT_CHANGED && listenerToParentFile.listeningPreferences().notifyOnChildChange) {
@@ -263,5 +260,4 @@ import java.util.Arrays;
   private static String setToString(Set<?> set) {
     return Arrays.toString(set.toArray());
   }
-
 }

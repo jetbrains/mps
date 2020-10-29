@@ -41,6 +41,9 @@
     <import index="asz6" ref="r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)" />
     <import index="z60i" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt(JDK/)" />
     <import index="ew0j" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.tool.environment(MPS.Platform/)" />
+    <import index="g1qu" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.ui(MPS.IDEA/)" />
+    <import index="cyhs" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vfs.impl.jar(MPS.IDEA/)" />
+    <import index="3fye" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application.impl(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -2523,9 +2526,52 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="6w1R7bIZvzf" role="3cqZAp">
+          <node concept="2YIFZM" id="6w1R7bIZwd0" role="3clFbG">
+            <ref role="37wK5l" to="3a50:~ThreadUtils.runInUIThreadAndWait(java.lang.Runnable)" resolve="runInUIThreadAndWait" />
+            <ref role="1Pybhc" to="3a50:~ThreadUtils" resolve="ThreadUtils" />
+            <node concept="2ShNRf" id="6w1R7bIZwff" role="37wK5m">
+              <node concept="YeOm9" id="6w1R7bJ05xf" role="2ShVmc">
+                <node concept="1Y3b0j" id="6w1R7bJ05xi" role="YeSDq">
+                  <property role="2bfB8j" value="true" />
+                  <ref role="1Y3XeK" to="wyt6:~Runnable" resolve="Runnable" />
+                  <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
+                  <node concept="3Tm1VV" id="6w1R7bJ05xj" role="1B3o_S" />
+                  <node concept="3clFb_" id="6w1R7bJ05xo" role="jymVt">
+                    <property role="TrG5h" value="run" />
+                    <node concept="3Tm1VV" id="6w1R7bJ05xp" role="1B3o_S" />
+                    <node concept="3cqZAl" id="6w1R7bJ05xr" role="3clF45" />
+                    <node concept="3clFbS" id="6w1R7bJ05xs" role="3clF47">
+                      <node concept="3clFbF" id="6w1R7bJ09Xk" role="3cqZAp">
+                        <node concept="2YIFZM" id="6w1R7bJ0aaN" role="3clFbG">
+                          <ref role="37wK5l" to="g1qu:~UIUtil.dispatchAllInvocationEvents()" resolve="dispatchAllInvocationEvents" />
+                          <ref role="1Pybhc" to="g1qu:~UIUtil" resolve="UIUtil" />
+                        </node>
+                      </node>
+                      <node concept="3clFbF" id="6w1R7bJ0azJ" role="3cqZAp">
+                        <node concept="2YIFZM" id="6w1R7bJ0aDa" role="3clFbG">
+                          <ref role="37wK5l" to="cyhs:~JarFileSystemImpl.cleanupForNextTest()" resolve="cleanupForNextTest" />
+                          <ref role="1Pybhc" to="cyhs:~JarFileSystemImpl" resolve="JarFileSystemImpl" />
+                        </node>
+                      </node>
+                      <node concept="3clFbF" id="6w1R7bJ0bQK" role="3cqZAp">
+                        <node concept="2YIFZM" id="6w1R7bJ0bWi" role="3clFbG">
+                          <ref role="37wK5l" to="3fye:~LaterInvocator.dispatchPendingFlushes()" resolve="dispatchPendingFlushes" />
+                          <ref role="1Pybhc" to="3fye:~LaterInvocator" resolve="LaterInvocator" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="2AHcQZ" id="6w1R7bJ05xu" role="2AJF6D">
+                      <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="28$8eDnaekl" role="jymVt" />
     <node concept="2tJIrI" id="28$8eDnae_4" role="jymVt" />
     <node concept="3clFb_" id="28$8eDnahaU" role="jymVt">
       <property role="TrG5h" value="initLibraries" />

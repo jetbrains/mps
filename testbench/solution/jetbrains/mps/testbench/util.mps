@@ -579,6 +579,42 @@
               </node>
             </node>
           </node>
+          <node concept="3clFbH" id="6w1R7bIYRih" role="3cqZAp" />
+          <node concept="3SKdUt" id="6w1R7bIYT5e" role="3cqZAp">
+            <node concept="1PaTwC" id="6w1R7bIYT5f" role="1aUNEU">
+              <node concept="3oM_SD" id="6w1R7bIYT5g" role="1PaTwD">
+                <property role="3oM_SC" value="no" />
+              </node>
+              <node concept="3oM_SD" id="6w1R7bIYTan" role="1PaTwD">
+                <property role="3oM_SC" value="idea" />
+              </node>
+              <node concept="3oM_SD" id="6w1R7bIYTaq" role="1PaTwD">
+                <property role="3oM_SC" value="why" />
+              </node>
+              <node concept="3oM_SD" id="6w1R7bIYTau" role="1PaTwD">
+                <property role="3oM_SC" value="this" />
+              </node>
+              <node concept="3oM_SD" id="6w1R7bIYTaz" role="1PaTwD">
+                <property role="3oM_SC" value="thread" />
+              </node>
+              <node concept="3oM_SD" id="6w1R7bIYTaD" role="1PaTwD">
+                <property role="3oM_SC" value="hangs" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="6w1R7bIYNdP" role="3cqZAp">
+            <node concept="2OqwBi" id="6w1R7bIYNdQ" role="3clFbG">
+              <node concept="37vLTw" id="6w1R7bIYNdR" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="6w1R7bIYNdS" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="6w1R7bIYNdT" role="37wK5m">
+                  <property role="Xl_RC" value="|(AWT.*)" />
+                </node>
+              </node>
+            </node>
+          </node>
           <node concept="3clFbH" id="3m4z3Ef6Ljb" role="3cqZAp" />
           <node concept="3SKdUt" id="3m4z3Ef7bKr" role="3cqZAp">
             <node concept="1PaTwC" id="3m4z3Ef7bKs" role="1aUNEU">

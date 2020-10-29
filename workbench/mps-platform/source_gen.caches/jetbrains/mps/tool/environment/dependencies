@@ -7,14 +7,17 @@
     <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
     <classNode dependClassName="com.intellij.openapi.application.ModalityState" />
     <classNode dependClassName="com.intellij.openapi.application.PathManager" />
+    <classNode dependClassName="com.intellij.openapi.application.impl.LaterInvocator" />
     <classNode dependClassName="com.intellij.openapi.project.DumbService" />
     <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="com.intellij.openapi.project.ex.ProjectManagerEx" />
     <classNode dependClassName="com.intellij.openapi.util.Disposer" />
+    <classNode dependClassName="com.intellij.openapi.vfs.impl.jar.JarFileSystemImpl" />
     <classNode dependClassName="com.intellij.openapi.vfs.newvfs.impl.VfsRootAccess" />
     <classNode dependClassName="com.intellij.testFramework.PlatformTestUtil" />
     <classNode dependClassName="com.intellij.testFramework.TestApplicationManager" />
     <classNode dependClassName="com.intellij.util.PlatformUtils" />
+    <classNode dependClassName="com.intellij.util.ui.UIUtil" />
     <classNode dependClassName="java.awt.GraphicsEnvironment" />
     <classNode dependClassName="java.io.File" />
     <classNode dependClassName="java.lang.Boolean" />
@@ -37,6 +40,7 @@
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.core.platform.Platform" />
     <classNode dependClassName="jetbrains.mps.ide.MPSCoreComponents" />
+    <classNode dependClassName="jetbrains.mps.ide.ThreadUtils" />
     <classNode dependClassName="jetbrains.mps.ide.vfs.IdeaFileSystem" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
     <classNode dependClassName="jetbrains.mps.library.LibraryInitializer" />

@@ -273,6 +273,22 @@
       <node concept="3Tm1VV" id="2S7hKDHpGpA" role="1B3o_S" />
       <node concept="3cqZAl" id="2S7hKDHpGpB" role="3clF45" />
       <node concept="3clFbS" id="2S7hKDHpGpC" role="3clF47">
+        <node concept="3clFbJ" id="6w1R7bIYvuO" role="3cqZAp">
+          <node concept="3clFbS" id="6w1R7bIYvuQ" role="3clFbx">
+            <node concept="3cpWs6" id="6w1R7bIYBTT" role="3cqZAp" />
+          </node>
+          <node concept="3fqX7Q" id="6w1R7bIYv_g" role="3clFbw">
+            <node concept="2OqwBi" id="6w1R7bIYBO7" role="3fr31v">
+              <node concept="2YIFZM" id="6w1R7bIYwKR" role="2Oq$k0">
+                <ref role="37wK5l" to="ddhc:~GeneralSettings.getInstance()" resolve="getInstance" />
+                <ref role="1Pybhc" to="ddhc:~GeneralSettings" resolve="GeneralSettings" />
+              </node>
+              <node concept="liA8E" id="6w1R7bIYBTD" role="2OqNvi">
+                <ref role="37wK5l" to="ddhc:~GeneralSettings.isSyncOnFrameActivation()" resolve="isSyncOnFrameActivation" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="27YAZ4fyPMP" role="3cqZAp">
           <node concept="3cpWsn" id="27YAZ4fyPMS" role="3cpWs9">
             <property role="TrG5h" value="files" />
@@ -296,61 +312,6 @@
             <property role="TrG5h" value="project" />
           </node>
           <node concept="3clFbS" id="2S7hKDHpGpS" role="2LFqv$">
-            <node concept="3SKdUt" id="27YAZ4fzaoE" role="3cqZAp">
-              <node concept="1PaTwC" id="ATZLwXosgZ" role="1aUNEU">
-                <node concept="3oM_SD" id="ATZLwXosh0" role="1PaTwD">
-                  <property role="3oM_SC" value="XXX" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXosh1" role="1PaTwD">
-                  <property role="3oM_SC" value="could" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXosh2" role="1PaTwD">
-                  <property role="3oM_SC" value="use" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXosh3" role="1PaTwD">
-                  <property role="3oM_SC" value="MPS's" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXosh4" role="1PaTwD">
-                  <property role="3oM_SC" value="ProjectManager," />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXosh5" role="1PaTwD">
-                  <property role="3oM_SC" value="but" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXosh6" role="1PaTwD">
-                  <property role="3oM_SC" value="it's" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXosh7" role="1PaTwD">
-                  <property role="3oM_SC" value="complicated" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXosh8" role="1PaTwD">
-                  <property role="3oM_SC" value="to" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXosh9" role="1PaTwD">
-                  <property role="3oM_SC" value="get" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXosha" role="1PaTwD">
-                  <property role="3oM_SC" value="IDEA" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXoshb" role="1PaTwD">
-                  <property role="3oM_SC" value="project" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXoshc" role="1PaTwD">
-                  <property role="3oM_SC" value="out" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXoshd" role="1PaTwD">
-                  <property role="3oM_SC" value="of" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXoshe" role="1PaTwD">
-                  <property role="3oM_SC" value="regular" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXoshf" role="1PaTwD">
-                  <property role="3oM_SC" value="mps's" />
-                </node>
-                <node concept="3oM_SD" id="ATZLwXoshg" role="1PaTwD">
-                  <property role="3oM_SC" value="Project." />
-                </node>
-              </node>
-            </node>
             <node concept="3cpWs8" id="27YAZ4fz94B" role="3cqZAp">
               <node concept="3cpWsn" id="27YAZ4fz94C" role="3cpWs9">
                 <property role="TrG5h" value="mpsProject" />

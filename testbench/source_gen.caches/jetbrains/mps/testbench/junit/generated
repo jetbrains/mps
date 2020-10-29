@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-9sfo6eys47pco0sviuxirxx4diguozx">
+<product version="3" modelHash="-7lpc05c8kt6mzx28ego99d86sjrl82h">
   <files names="DelegatingRunNotifier.java:ExpectLogEvent.java:IgnoreLogEvents.java:IgnoringPatternErrorStream.java:Order.java:OrderComparator.java:UncleanTestExecutionException.java:WatchingRunNotifier.java" />
 </product>
 
