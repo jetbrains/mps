@@ -43,6 +43,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptBwfTaskPart = createDescriptorForBwfTaskPart();
   /*package*/ final ConceptDescriptor myConceptBwfValueReference = createDescriptorForBwfValueReference();
   /*package*/ final ConceptDescriptor myConceptBwfValueStatement = createDescriptorForBwfValueStatement();
+  /*package*/ final ConceptDescriptor myConceptXmlForeignRefValue = createDescriptorForXmlForeignRefValue();
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -59,7 +60,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptBwfAntStatement, myConceptBwfAntTaskBundleDeclaration, myConceptBwfAntTaskDeclaration, myConceptBwfCustomMacro, myConceptBwfDependency, myConceptBwfFileSet, myConceptBwfJavaClassPath, myConceptBwfJavaDependency, myConceptBwfJavaDescriptor, myConceptBwfJavaLibrary, myConceptBwfJavaLibraryReference, myConceptBwfJavaModule, myConceptBwfJavaModuleReference, myConceptBwfMacro, myConceptBwfMacroListImport, myConceptBwfPathDeclaration, myConceptBwfPathReference, myConceptBwfProject, myConceptBwfProjectPart, myConceptBwfProjectPartStatement, myConceptBwfStatement, myConceptBwfSubTask, myConceptBwfSubTaskDependency, myConceptBwfTask, myConceptBwfTaskDependency, myConceptBwfTaskLibrary, myConceptBwfTaskLibraryDependency, myConceptBwfTaskPart, myConceptBwfValueReference, myConceptBwfValueStatement);
+    return Arrays.asList(myConceptBwfAntStatement, myConceptBwfAntTaskBundleDeclaration, myConceptBwfAntTaskDeclaration, myConceptBwfCustomMacro, myConceptBwfDependency, myConceptBwfFileSet, myConceptBwfJavaClassPath, myConceptBwfJavaDependency, myConceptBwfJavaDescriptor, myConceptBwfJavaLibrary, myConceptBwfJavaLibraryReference, myConceptBwfJavaModule, myConceptBwfJavaModuleReference, myConceptBwfMacro, myConceptBwfMacroListImport, myConceptBwfPathDeclaration, myConceptBwfPathReference, myConceptBwfProject, myConceptBwfProjectPart, myConceptBwfProjectPartStatement, myConceptBwfStatement, myConceptBwfSubTask, myConceptBwfSubTaskDependency, myConceptBwfTask, myConceptBwfTaskDependency, myConceptBwfTaskLibrary, myConceptBwfTaskLibraryDependency, myConceptBwfTaskPart, myConceptBwfValueReference, myConceptBwfValueStatement, myConceptXmlForeignRefValue);
   }
 
   @Override
@@ -126,6 +127,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptBwfValueReference;
       case LanguageConceptSwitch.BwfValueStatement:
         return myConceptBwfValueStatement;
+      case LanguageConceptSwitch.XmlForeignRefValue:
+        return myConceptXmlForeignRefValue;
       default:
         return null;
     }
@@ -451,6 +454,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:ed179f4d-7cf2-479d-8348-50c1fc63b96a(jetbrains.mps.build.workflow.structure)/8817646574325010961");
     b.version(2);
     b.property("value", 0x7a5e92d769951212L).type(PrimitiveTypeId.STRING).origin("8817646574325010962").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForXmlForeignRefValue() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.build.workflow", "XmlForeignRefValue", 0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x98b3588cc616ccaL);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.core.xml.structure.XmlValuePart", 0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1cL);
+    b.origin("r:ed179f4d-7cf2-479d-8348-50c1fc63b96a(jetbrains.mps.build.workflow.structure)/687702229764893898");
+    b.version(2);
+    b.associate("target", 0x98b3588cc616ccbL).target(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL).optional(false).origin("687702229764893899").done();
     return b.create();
   }
 }

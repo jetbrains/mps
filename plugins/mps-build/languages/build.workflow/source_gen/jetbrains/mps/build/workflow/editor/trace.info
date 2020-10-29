@@ -59,7 +59,14 @@
       <unit at="26,0,98,0" name="jetbrains.mps.build.workflow.editor.BwfValueReference_SubstituteMenu" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="19,0,163,0" name="jetbrains.mps.build.workflow.editor.EditorAspectDescriptorImpl" />
+      <unit at="19,0,167,0" name="jetbrains.mps.build.workflow.editor.EditorAspectDescriptorImpl" />
+    </file>
+    <file name="XmlForeignRefValue_SubstituteMenu.java">
+      <unit at="90,0,93,0" name="jetbrains.mps.build.workflow.editor.XmlForeignRefValue_SubstituteMenu$CONCEPTS" />
+      <unit at="94,0,97,0" name="jetbrains.mps.build.workflow.editor.XmlForeignRefValue_SubstituteMenu$LINKS" />
+      <unit at="49,0,68,0" name="jetbrains.mps.build.workflow.editor.XmlForeignRefValue_SubstituteMenu$SMP_ReferenceScope_l0qw1a_a" />
+      <unit at="68,0,89,0" name="jetbrains.mps.build.workflow.editor.XmlForeignRefValue_SubstituteMenu$SMP_Subconcepts_l0qw1a_b" />
+      <unit at="26,0,98,0" name="jetbrains.mps.build.workflow.editor.XmlForeignRefValue_SubstituteMenu" />
     </file>
   </root>
   <root nodeRef="r:1267752b-a233-4432-a848-3e68e0ea0db1(jetbrains.mps.build.workflow.editor)/144710003695346442">
@@ -449,8 +456,8 @@
   </root>
   <root nodeRef="r:1267752b-a233-4432-a848-3e68e0ea0db1(jetbrains.mps.build.workflow.editor)/1741258697587102496">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587102496" at="111,86,112,99" concept="7" />
-      <scope id="1741258697587102496" at="111,86,112,99" />
+      <node id="1741258697587102496" at="113,86,114,99" concept="7" />
+      <scope id="1741258697587102496" at="113,86,114,99" />
     </file>
     <file name="add_dependencies_BwfTask_ext_2.java">
       <node id="1741258697587102496" at="44,0,45,0" concept="2" trace="myLocations" />
@@ -595,8 +602,8 @@
   </root>
   <root nodeRef="r:1267752b-a233-4432-a848-3e68e0ea0db1(jetbrains.mps.build.workflow.editor)/1741258697587102541">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587102541" at="102,89,103,102" concept="7" />
-      <scope id="1741258697587102541" at="102,89,103,102" />
+      <node id="1741258697587102541" at="104,89,105,102" concept="7" />
+      <scope id="1741258697587102541" at="104,89,105,102" />
     </file>
     <file name="add_dependencies_BwfSubTask_ext_3.java">
       <node id="1741258697587102541" at="44,0,45,0" concept="2" trace="myLocations" />
@@ -741,8 +748,8 @@
   </root>
   <root nodeRef="r:1267752b-a233-4432-a848-3e68e0ea0db1(jetbrains.mps.build.workflow.editor)/1741258697587102586">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587102586" at="120,84,121,97" concept="7" />
-      <scope id="1741258697587102586" at="120,84,121,97" />
+      <node id="1741258697587102586" at="122,84,123,97" concept="7" />
+      <scope id="1741258697587102586" at="122,84,123,97" />
     </file>
     <file name="add_dependencies_BwfTaskPart.java">
       <node id="1741258697587102586" at="44,0,45,0" concept="2" trace="myLocations" />
@@ -887,8 +894,8 @@
   </root>
   <root nodeRef="r:1267752b-a233-4432-a848-3e68e0ea0db1(jetbrains.mps.build.workflow.editor)/1741258697587102631">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587102631" at="100,72,101,85" concept="7" />
-      <scope id="1741258697587102631" at="100,72,101,85" />
+      <node id="1741258697587102631" at="102,72,103,85" concept="7" />
+      <scope id="1741258697587102631" at="102,72,103,85" />
     </file>
     <file name="add_dependencies.java">
       <node id="1741258697587102631" at="44,0,45,0" concept="2" trace="myLocations" />
@@ -1577,8 +1584,8 @@
       <unit id="1741258697587217141" at="29,0,110,0" name="jetbrains.mps.build.workflow.editor.BwfSubTask_ApplySideTransforms" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587217141" at="98,86,99,99" concept="7" />
-      <scope id="1741258697587217141" at="98,86,99,99" />
+      <node id="1741258697587217141" at="100,86,101,99" concept="7" />
+      <scope id="1741258697587217141" at="100,86,101,99" />
     </file>
   </root>
   <root nodeRef="r:1267752b-a233-4432-a848-3e68e0ea0db1(jetbrains.mps.build.workflow.editor)/2059109515400477504">
@@ -7149,6 +7156,167 @@
       <unit id="6647099934207069217" at="100,42,119,5" name="jetbrains.mps.build.workflow.editor.BwfPathReference_EditorBuilder_a$1" />
       <unit id="6647099934207069220" at="141,0,191,0" name="jetbrains.mps.build.workflow.editor.BwfPathReference_EditorBuilder_a$Inline_Builder0" />
       <unit id="6647099934207069217" at="45,0,215,0" name="jetbrains.mps.build.workflow.editor.BwfPathReference_EditorBuilder_a" />
+    </file>
+  </root>
+  <root nodeRef="r:1267752b-a233-4432-a848-3e68e0ea0db1(jetbrains.mps.build.workflow.editor)/687702229764898375">
+    <file name="XmlForeignRefValue_Editor.java">
+      <node id="687702229764898375" at="11,79,12,84" concept="7" />
+      <node id="687702229764898375" at="11,0,14,0" concept="5" trace="createEditorCell#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <scope id="687702229764898375" at="11,79,12,84" />
+      <scope id="687702229764898375" at="11,0,14,0">
+        <var name="editorContext" id="687702229764898375" />
+        <var name="node" id="687702229764898375" />
+      </scope>
+      <unit id="687702229764898375" at="10,0,15,0" name="jetbrains.mps.build.workflow.editor.XmlForeignRefValue_Editor" />
+    </file>
+    <file name="XmlForeignRefValue_EditorBuilder_a.java">
+      <node id="687702229764898375" at="40,98,41,19" concept="12" />
+      <node id="687702229764898375" at="41,19,42,18" concept="1" />
+      <node id="687702229764898375" at="47,26,48,18" concept="7" />
+      <node id="687702229764898375" at="51,39,52,32" concept="7" />
+      <node id="687702229764898375" at="55,43,56,122" concept="6" />
+      <node id="687702229764898375" at="56,122,57,48" concept="1" />
+      <node id="687702229764898375" at="57,48,58,28" concept="1" />
+      <node id="687702229764898375" at="58,28,59,31" concept="1" />
+      <node id="687702229764898384" at="59,31,60,49" concept="1" />
+      <node id="687702229764898427" at="60,49,61,48" concept="1" />
+      <node id="687702229764898394" at="61,48,62,49" concept="1" />
+      <node id="687702229764898375" at="62,49,63,22" concept="7" />
+      <node id="687702229764898384" at="65,41,66,95" concept="6" />
+      <node id="687702229764898384" at="66,95,67,47" concept="1" />
+      <node id="687702229764898384" at="67,47,68,34" concept="1" />
+      <node id="687702229764898384" at="68,34,69,22" concept="7" />
+      <node id="687702229764898375" at="71,40,72,59" concept="6" />
+      <node id="687702229764898375" at="76,39,77,95" concept="7" />
+      <node id="687702229764898375" at="79,42,80,60" concept="1" />
+      <node id="687702229764898375" at="80,60,81,48" concept="1" />
+      <node id="687702229764898375" at="81,48,82,58" concept="1" />
+      <node id="687702229764898375" at="82,58,83,20" concept="7" />
+      <node id="687702229764898375" at="86,58,87,97" concept="6" />
+      <node id="687702229764898375" at="87,97,88,131" concept="1" />
+      <node id="687702229764898375" at="88,131,89,135" concept="1" />
+      <node id="687702229764898375" at="89,135,90,20" concept="7" />
+      <node id="687702229764898375" at="92,6,93,0" concept="9" />
+      <node id="687702229764898375" at="93,0,94,44" concept="1" />
+      <node id="687702229764898375" at="94,44,95,50" concept="6" />
+      <node id="687702229764898375" at="95,50,96,0" concept="9" />
+      <node id="687702229764898375" at="97,40,98,40" concept="1" />
+      <node id="687702229764898375" at="98,40,99,45" concept="1" />
+      <node id="687702229764898375" at="100,5,101,143" concept="1" />
+      <node id="687702229764898375" at="101,143,102,150" concept="6" />
+      <node id="687702229764898375" at="104,39,105,113" concept="7" />
+      <node id="687702229764898375" at="108,73,109,87" concept="6" />
+      <node id="687702229764898375" at="109,87,110,145" concept="7" />
+      <node id="687702229764898375" at="111,10,112,22" concept="7" />
+      <node id="687702229764898429" at="117,0,118,0" concept="2" trace="myReferencingNode" />
+      <node id="687702229764898429" at="119,109,120,21" concept="12" />
+      <node id="687702229764898429" at="120,21,121,42" concept="1" />
+      <node id="687702229764898429" at="121,42,122,20" concept="1" />
+      <node id="687702229764898429" at="125,41,126,45" concept="7" />
+      <node id="687702229764898429" at="131,28,132,20" concept="7" />
+      <node id="687702229764898438" at="135,56,136,193" concept="6" />
+      <node id="687702229764898438" at="136,193,137,64" concept="1" />
+      <node id="687702229764898438" at="137,64,138,24" concept="7" />
+      <node id="687702229764898394" at="141,41,142,94" concept="6" />
+      <node id="687702229764898394" at="142,94,143,47" concept="1" />
+      <node id="687702229764898394" at="143,47,144,34" concept="1" />
+      <node id="687702229764898394" at="144,34,145,22" concept="7" />
+      <node id="687702229764898375" at="149,0,150,0" concept="10" trace="target$L6dC" />
+      <node id="687702229764898375" at="153,0,154,0" concept="10" trace="LinkAttribute$v_" />
+      <node id="687702229764898375" at="37,0,39,0" concept="2" trace="myNode" />
+      <node id="687702229764898429" at="115,0,117,0" concept="2" trace="myNode" />
+      <node id="687702229764898375" at="51,0,54,0" concept="5" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="687702229764898375" at="76,0,79,0" concept="5" trace="compute#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="687702229764898375" at="104,0,107,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="687702229764898429" at="125,0,128,0" concept="5" trace="createCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="687702229764898375" at="40,0,44,0" concept="0" trace="XmlForeignRefValue_EditorBuilder_a#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="687702229764898375" at="96,0,100,5" concept="4" />
+      <node id="687702229764898375" at="45,0,50,0" concept="5" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="687702229764898375" at="74,72,79,42" concept="6" />
+      <node id="687702229764898375" at="102,150,107,7" concept="6" />
+      <node id="687702229764898375" at="107,7,112,22" concept="4" />
+      <node id="687702229764898429" at="119,0,124,0" concept="0" trace="Inline_Builder0#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="687702229764898429" at="129,0,134,0" concept="5" trace="getNode#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="687702229764898438" at="135,0,140,0" concept="5" trace="createReferencePresentation_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="687702229764898384" at="65,0,71,0" concept="5" trace="createConstant_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="687702229764898394" at="141,0,147,0" concept="5" trace="createConstant_1#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="687702229764898375" at="85,0,92,0" concept="5" trace="createErrorCell#(Ljava/lang/String;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="687702229764898375" at="55,0,65,0" concept="5" trace="createCollection_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="687702229764898375" at="74,0,85,0" concept="5" trace="createReferenceCell#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="687702229764898375" at="72,59,92,6" concept="6" />
+      <node id="687702229764898375" at="71,0,114,0" concept="5" trace="createRefCell_0#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <scope id="687702229764898375" at="47,26,48,18" />
+      <scope id="687702229764898375" at="51,39,52,32" />
+      <scope id="687702229764898375" at="76,39,77,95" />
+      <scope id="687702229764898375" at="104,39,105,113" />
+      <scope id="687702229764898429" at="125,41,126,45" />
+      <scope id="687702229764898429" at="131,28,132,20" />
+      <scope id="687702229764898375" at="40,98,42,18" />
+      <scope id="687702229764898375" at="97,40,99,45" />
+      <scope id="687702229764898375" at="108,73,110,145">
+        <var name="manager" id="687702229764898375" />
+      </scope>
+      <scope id="687702229764898375" at="51,0,54,0" />
+      <scope id="687702229764898375" at="76,0,79,0" />
+      <scope id="687702229764898375" at="104,0,107,0">
+        <var name="it" id="687702229764898375" />
+      </scope>
+      <scope id="687702229764898429" at="119,109,122,20" />
+      <scope id="687702229764898429" at="125,0,128,0" />
+      <scope id="687702229764898438" at="135,56,138,24">
+        <var name="editorCell" id="687702229764898438" />
+      </scope>
+      <scope id="687702229764898375" at="40,0,44,0">
+        <var name="context" id="687702229764898375" />
+        <var name="node" id="687702229764898375" />
+      </scope>
+      <scope id="687702229764898384" at="65,41,69,22">
+        <var name="editorCell" id="687702229764898384" />
+      </scope>
+      <scope id="687702229764898375" at="86,58,90,20">
+        <var name="cell" id="687702229764898375" />
+      </scope>
+      <scope id="687702229764898394" at="141,41,145,22">
+        <var name="editorCell" id="687702229764898394" />
+      </scope>
+      <scope id="687702229764898375" at="45,0,50,0" />
+      <scope id="687702229764898429" at="119,0,124,0">
+        <var name="context" id="687702229764898429" />
+        <var name="node" id="687702229764898429" />
+        <var name="referencingNode" id="687702229764898429" />
+      </scope>
+      <scope id="687702229764898429" at="129,0,134,0" />
+      <scope id="687702229764898438" at="135,0,140,0" />
+      <scope id="687702229764898384" at="65,0,71,0" />
+      <scope id="687702229764898394" at="141,0,147,0" />
+      <scope id="687702229764898375" at="85,0,92,0">
+        <var name="error" id="687702229764898375" />
+      </scope>
+      <scope id="687702229764898375" at="55,43,63,22">
+        <var name="editorCell" id="687702229764898375" />
+      </scope>
+      <scope id="687702229764898375" at="74,72,83,20">
+        <var name="cell" id="687702229764898375" />
+      </scope>
+      <scope id="687702229764898375" at="55,0,65,0" />
+      <scope id="687702229764898375" at="74,0,85,0">
+        <var name="targetNode" id="687702229764898375" />
+      </scope>
+      <scope id="687702229764898375" at="71,40,112,22">
+        <var name="currentReferenceAttributes" id="687702229764898375" />
+        <var name="editorCell" id="687702229764898375" />
+        <var name="provider" id="687702229764898375" />
+        <var name="referenceAttributes" id="687702229764898375" />
+        <var name="referenceLink" id="687702229764898375" />
+      </scope>
+      <scope id="687702229764898375" at="71,0,114,0" />
+      <unit id="687702229764898375" at="148,0,151,0" name="jetbrains.mps.build.workflow.editor.XmlForeignRefValue_EditorBuilder_a$LINKS" />
+      <unit id="687702229764898375" at="152,0,155,0" name="jetbrains.mps.build.workflow.editor.XmlForeignRefValue_EditorBuilder_a$CONCEPTS" />
+      <unit id="687702229764898375" at="75,74,79,9" name="jetbrains.mps.build.workflow.editor.XmlForeignRefValue_EditorBuilder_a$1$1" />
+      <unit id="687702229764898375" at="103,102,107,5" name="jetbrains.mps.build.workflow.editor.XmlForeignRefValue_EditorBuilder_a$2" />
+      <unit id="687702229764898375" at="73,42,92,5" name="jetbrains.mps.build.workflow.editor.XmlForeignRefValue_EditorBuilder_a$1" />
+      <unit id="687702229764898429" at="114,0,141,0" name="jetbrains.mps.build.workflow.editor.XmlForeignRefValue_EditorBuilder_a$Inline_Builder0" />
+      <unit id="687702229764898375" at="36,0,156,0" name="jetbrains.mps.build.workflow.editor.XmlForeignRefValue_EditorBuilder_a" />
     </file>
   </root>
   <root nodeRef="r:1267752b-a233-4432-a848-3e68e0ea0db1(jetbrains.mps.build.workflow.editor)/6896005762093571404">

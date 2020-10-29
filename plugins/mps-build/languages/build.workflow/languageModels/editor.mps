@@ -224,6 +224,7 @@
         <child id="7980428675268276157" name="locations" index="1Qtc8$" />
         <child id="7980428675268276159" name="parts" index="1Qtc8A" />
       </concept>
+      <concept id="625126330682908270" name="jetbrains.mps.lang.editor.structure.CellModel_ReferencePresentation" flags="sg" stub="730538219795961225" index="3SHvHV" />
       <concept id="1166049232041" name="jetbrains.mps.lang.editor.structure.AbstractComponent" flags="ng" index="1XWOmA">
         <reference id="1166049300910" name="conceptDeclaration" index="1XX52x" />
       </concept>
@@ -2444,6 +2445,24 @@
           </node>
         </node>
       </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="AbdozconT7">
+    <ref role="1XX52x" to="8xvf:AbdozcomNa" resolve="XmlForeignRefValue" />
+    <node concept="3EZMnI" id="AbdozconT9" role="2wV5jI">
+      <node concept="3F0ifn" id="AbdozconTg" role="3EZMnx">
+        <property role="3F0ifm" value="*[" />
+      </node>
+      <node concept="1iCGBv" id="AbdozconTV" role="3EZMnx">
+        <ref role="1NtTu8" to="8xvf:AbdozcomNb" resolve="target" />
+        <node concept="1sVBvm" id="AbdozconTX" role="1sWHZn">
+          <node concept="3SHvHV" id="AbdozconU6" role="2wV5jI" />
+        </node>
+      </node>
+      <node concept="3F0ifn" id="AbdozconTq" role="3EZMnx">
+        <property role="3F0ifm" value="]" />
+      </node>
+      <node concept="2iRfu4" id="AbdozconTc" role="2iSdaV" />
     </node>
   </node>
 </model>

@@ -39,6 +39,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_BwfTaskPart;
   private ConceptPresentation props_BwfValueReference;
   private ConceptPresentation props_BwfValueStatement;
+  private ConceptPresentation props_XmlForeignRefValue;
 
   @Override
   @Nullable
@@ -255,6 +256,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_BwfValueStatement = cpb.create();
         }
         return props_BwfValueStatement;
+      case LanguageConceptSwitch.XmlForeignRefValue:
+        if (props_XmlForeignRefValue == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.experimental(true);
+          cpb.presentationByReference(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x98b3588cc616ccaL, 0x98b3588cc616ccbL, "target", "", "");
+          props_XmlForeignRefValue = cpb.create();
+        }
+        return props_XmlForeignRefValue;
     }
     return null;
   }

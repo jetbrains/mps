@@ -642,5 +642,20 @@
       <ref role="20lvS9" node="7Du$HtD_h8h" resolve="BwfValueStatement" />
     </node>
   </node>
+  <node concept="1TIwiD" id="AbdozcomNa">
+    <property role="EcuMT" value="687702229764893898" />
+    <property role="TrG5h" value="XmlForeignRefValue" />
+    <ref role="1TJDcQ" to="iuxj:5M4a$b5jfOs" resolve="XmlValuePart" />
+    <node concept="1TJgyj" id="AbdozcomNb" role="1TKVEi">
+      <property role="IQ2ns" value="687702229764893899" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <property role="20kJfa" value="target" />
+      <ref role="20lvS9" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    </node>
+    <node concept="1AhYRh" id="AbdozcomNh" role="lGtFl" />
+    <node concept="t5JxF" id="AbdozconQe" role="lGtFl">
+      <property role="t5JxN" value="Mechanism to build attribute value based on referenced value" />
+    </node>
+  </node>
 </model>
 
