@@ -131,7 +131,10 @@ public final class ProjectModuleFileChangeListener implements ProjectModuleLoadi
     myMpsProject = mpsProject;
     myProjectModulesAndFiles = new ModuleFileTracker();
     // prefs copied from ModuleFileTracker;
-    final FileListeningPreferences prefs = FileListeningPreferences.construct().notifyOnDescendantCreation().notifyOnParentRemoval().build();
+    final FileListeningPreferences prefs = FileListeningPreferences.construct()
+                                                                   .notifyOnDescendantCreation()
+                                                                   .notifyOnParentRemoval()
+                                                                   .build();
     myRedispatchListener = new RedispatchListener(this::update, prefs);
   }
 

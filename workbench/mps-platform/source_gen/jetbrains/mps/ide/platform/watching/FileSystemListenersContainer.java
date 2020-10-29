@@ -68,7 +68,7 @@ public class FileSystemListenersContainer {
     if (myListener2Path.containsKey(adapter)) {
       return;
     }
-    String path = file.getPath();
+    String path = file.toRealPath();
     if (myListener2Path.putIfAbsent(adapter, path) != null) {
       return;
     }

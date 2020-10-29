@@ -186,8 +186,10 @@ import java.util.Arrays;
 
   private static boolean acceptDescendant(String eventPath, FileSystemListener listenerToChildFile, EventKind kind) {
     IFile childFile = listenerToChildFile.getFileToListen();
-    // contract to comment out later; some problems with IJ startsWith, it does not handle jar paths with !/ too well 
-    assert StringUtil.startsWith(childFile.getPath(), eventPath) || FileUtil.startsWith(childFile.getPath(), eventPath) : "Contract is broken: " + childFile.getPath() + " does not start with " + eventPath;
+    String path = childFile.toRealPath();
+    // contract to comment out later; some problems with IJ startsWith, it does not handle jar paths with !/ too well
+    assert StringUtil.startsWith(path, eventPath) || FileUtil.startsWith(path, eventPath)
+        : "Contract is broken: " + path + " does not start with " + eventPath;
     if (kind == EventKind.CREATED && listenerToChildFile.listeningPreferences().notifyOnParentCreation) {
       return true;
     } else if (kind == EventKind.CONTENT_CHANGED && listenerToChildFile.listeningPreferences().notifyOnParentChange) {
@@ -200,8 +202,10 @@ import java.util.Arrays;
 
   private static boolean acceptAncestor(String eventPath, FileSystemListener listenerToParentFile, EventKind kind) {
     IFile parentFile = listenerToParentFile.getFileToListen();
-    // contract to comment out later; some problems with IJ startsWith, it does not handle jar paths with !/ too well 
-    assert StringUtil.startsWith(eventPath, parentFile.getPath()) || FileUtil.startsWith(eventPath, parentFile.getPath()) : "Contract is broken: " + eventPath + " does not start with " + parentFile.getPath();
+    String path = parentFile.toRealPath();
+    // contract to comment out later; some problems with IJ startsWith, it does not handle jar paths with !/ too well
+    assert StringUtil.startsWith(eventPath, path) || FileUtil.startsWith(eventPath, path) : "Contract is broken: " + eventPath + " does not start with " +
+                                                                                                                            path;
     if (kind == EventKind.CREATED && listenerToParentFile.listeningPreferences().notifyOnChildCreation) {
       return true;
     } else if (kind == EventKind.CONTENT_CHANGED && listenerToParentFile.listeningPreferences().notifyOnChildChange) {
