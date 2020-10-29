@@ -76,6 +76,17 @@ public interface IFile {
   String getPath();
 
   /**
+   * Like java.io.File.#getCanonicalPath
+   * Supposed to re-resolve the path physically on disk.
+   * The return value may vary if for example some directories are removed or symlinks changed
+   * All parts like ".." and "." are supposed to be inlined in this method, not sure about #getPath.
+   *
+   * @see java.nio.file.Path#toRealPath
+   */
+  @NotNull
+  String toRealPath();
+
+  /**
    * use getQualifiedPath()
    */
   @Nullable

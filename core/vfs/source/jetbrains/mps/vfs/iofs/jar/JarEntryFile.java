@@ -25,6 +25,7 @@ import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.impl.IoFileSystem;
 import jetbrains.mps.vfs.util.PathFormatChecker;
 import jetbrains.mps.vfs.util.PathUtil;
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
 
@@ -144,6 +145,17 @@ public class JarEntryFile implements IFile {
   @Override
   public String getPath() {
     return PathUtil.toSystemIndependent(myJarFile.getAbsolutePath()) + "!/" + myEntryPath;
+  }
+
+  @NotNull
+  @Override
+  public String toRealPath() {
+    try {
+      return PathUtil.toSystemIndependent(myJarFile.getCanonicalPath()) + "!/" + myEntryPath;
+    } catch (IOException e) {
+      LogManager.getLogger(JarEntryFile.class).warn("Got problem while accessing canonical path of " + this, e);
+      return getPath();
+    }
   }
 
   @Override

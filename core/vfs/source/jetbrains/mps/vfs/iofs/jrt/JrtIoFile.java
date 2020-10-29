@@ -88,6 +88,13 @@ public class JrtIoFile implements IFile {
     return myJdkPath + JrtIoFileSystem.JDK_PATH_SEPARATOR + getPathInJDK();
   }
 
+  @NotNull
+  @Override
+  public String toRealPath() {
+    // not much thinking here
+    return getPath();
+  }
+
   @Nullable
   @Override
   @Deprecated

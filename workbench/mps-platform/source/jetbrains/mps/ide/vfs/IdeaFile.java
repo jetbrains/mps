@@ -95,6 +95,13 @@ public class IdeaFile implements IFile, CachingFile {
     return virtualFile != null ? virtualFile.getPath() : myPath;
   }
 
+  @NotNull
+  @Override
+  public String toRealPath() {
+    VirtualFile virtualFile = findVirtualFile();
+    return virtualFile != null ? virtualFile.getCanonicalPath() : myPath;
+  }
+
   @Override
   public QualifiedPath getQualifiedPath() {
     String path = getPath();

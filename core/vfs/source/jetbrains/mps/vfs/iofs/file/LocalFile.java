@@ -100,6 +100,17 @@ class LocalFile implements IFile {
     return myPath;
   }
 
+  @NotNull
+  @Override
+  public String toRealPath() {
+    try {
+      return myFile.getCanonicalPath();
+    } catch (IOException e) {
+      LOG.warn("Got while accessing the canonical path of " + this, e);
+      return getPath();
+    }
+  }
+
   @Override
   public QualifiedPath getQualifiedPath() {
     return new QualifiedPath(VFSManager.FILE_FS, getPath());
