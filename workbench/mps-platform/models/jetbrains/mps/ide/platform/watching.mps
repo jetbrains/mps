@@ -4681,11 +4681,11 @@
           <node concept="3cpWsn" id="5gUstTWf33z" role="3cpWs9">
             <property role="TrG5h" value="path" />
             <node concept="2OqwBi" id="5gUstTWf8U_" role="33vP2m">
-              <node concept="liA8E" id="5gUstTWf9P_" role="2OqNvi">
-                <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
-              </node>
               <node concept="37vLTw" id="5_$SPto42AS" role="2Oq$k0">
                 <ref role="3cqZAo" node="5_$SPto40eA" resolve="file" />
+              </node>
+              <node concept="liA8E" id="5gUstTWf9P_" role="2OqNvi">
+                <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
               </node>
             </node>
             <node concept="17QB3L" id="5gUstTWf33u" role="1tU5fm" />
@@ -9077,6 +9077,15 @@
       <node concept="3cqZAl" id="4SUKy4FU8kC" role="3clF45" />
     </node>
     <node concept="3Tm1VV" id="491od_XJZer" role="1B3o_S" />
+    <node concept="3clFb_" id="1_gIph7KAtr" role="jymVt">
+      <property role="1EzhhJ" value="true" />
+      <property role="TrG5h" value="flushAllPendingReloads" />
+      <property role="od$2w" value="false" />
+      <property role="DiZV1" value="false" />
+      <node concept="3clFbS" id="1_gIph7KAts" role="3clF47" />
+      <node concept="3Tm1VV" id="1_gIph7KAtt" role="1B3o_S" />
+      <node concept="3cqZAl" id="1_gIph7KAtu" role="3clF45" />
+    </node>
   </node>
   <node concept="312cEu" id="501K0YLMPSm">
     <property role="TrG5h" value="WatchedRoots" />

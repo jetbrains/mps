@@ -46,7 +46,7 @@ public class FSChangesWatcher implements ApplicationComponent {
     public void afterRefreshFinish(boolean async) {
       myReloadManager.resumeReloads();
       if (!(async)) {
-        myReloadManager.flush();
+        myReloadManager.flushAllPendingReloads();
       }
     }
   };
