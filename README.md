@@ -18,19 +18,21 @@ Useful links
 
 Building MPS from sources
 -------------------------
-
-1. Clone MPS
-2. Open the project in [IntelliJ IDEA](http://www.jetbrains.com/idea) (either Community or Ultimate Edition)
-3. Attach JB JDK 11 to the project
+Download IntelliJ IDEA from the JetBrains website. Community edition will work just fine.
+1. Fork the MPS [GitHub repository](https://github.com/JetBrains/MPS) into your own space using the GitHub UI (go to the MPS repo and press the fork button at the top. This will create a fork of the repository in your github space).
+2. Clone your fork to your local machine: git clone git@github.com:<yourGitHubName>/MPS.git. Depending on your internet connection, this may take a long time, MPS is big. Consider using the _--depth_ git parameter to clone only part of the history of the project to save time and space.
+3. It is preferable to work in your own branch, so create a new branch to work in git checkout -b my_branch_name
+4. Open the project in [IntelliJ IDEA](http://www.jetbrains.com/idea) (either Community or Ultimate Edition)
+5. Attach JB JDK 11 to the project
     1. Download latest JB JDK 11 for your OS from https://bintray.com/jetbrains/intellij-jbr/
     2. *Main menu -> File -> Project Structure* opens the Project Structure dialog
     3. Under *Platform Settings -> SDK*, add a new JDK named "JB JDK 11"
-4. Additionally, create an *IntelliJ Platform Plugin SDK* in the same *Platform Settings -> SDK* dialog and name it "IDEA IC".
+6. Additionally, create an *IntelliJ Platform Plugin SDK* in the same *Platform Settings -> SDK* dialog and name it "IDEA IC".
 The *ideaIntegrationCommon*, *IDEAPlugin* and *ups-idea-plugin* modules need this SDK and they will be using it automatically as soon as you create it and give it the "IDEA IC" name.
 For more details on how to add an IntelliJ Platform Plugin SDK, consult this [help page](http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/setting_up_environment.html).
-5. Rebuild the project from the _Build_ menu (it will take quite a while the first time)
-6. Run the _MPS -> Run_ run configuration in the _Run_ menu
-7. Once MPS starts, open the _MPS_ project (point MPS to the root folder of what you've cloned)
+7. Rebuild the project from the _Build_ menu (it will take quite a while the first time)
+8. Run the _MPS -> Run_ run configuration in the _Run_ menu
+9. Once MPS starts, open the _MPS_ project (point MPS to the root folder of what you've cloned)
 
 Download
 --------
