@@ -378,8 +378,8 @@
       <modulePath path="$PROJECT_DIR$/samples/customAspect/solutions/SampleCustomAspect.build/SampleCustomAspect.build.msd" folder="samples.customAspect" />
       <modulePath path="$PROJECT_DIR$/samples/customAspect/solutions/jetbrains.mps.samples.customAspect.documentation.pluginSolution/jetbrains.mps.samples.customAspect.documentation.pluginSolution.msd" folder="samples.customAspect" />
       <modulePath path="$PROJECT_DIR$/samples/customAspect/solutions/jetbrains.mps.samples.customAspect.documentation.runtime/jetbrains.mps.samples.customAspect.documentation.runtime.msd" folder="samples.customAspect" />
-      <modulePath path="$PROJECT_DIR$/samples/customTestCases0/languages/jetbrains.mps.samples.CustomTestCases/jetbrains.mps.samples.CustomTestCases.mpl" folder="samples.customTestCases" />
-      <modulePath path="$PROJECT_DIR$/samples/customTestCases0/languages/jetbrains.mps.samples.CustomTestCases/sandbox/jetbrains.mps.samples.CustomTestCases.sandbox.msd" folder="samples.customTestCases" />
+      <modulePath path="$PROJECT_DIR$/samples/customTestCases/languages/jetbrains.mps.samples.CustomTestCases/jetbrains.mps.samples.CustomTestCases.mpl" folder="samples.customTestCases" />
+      <modulePath path="$PROJECT_DIR$/samples/customTestCases/languages/jetbrains.mps.samples.CustomTestCases/sandbox/jetbrains.mps.samples.CustomTestCases.sandbox.msd" folder="samples.customTestCases" />
       <modulePath path="$PROJECT_DIR$/samples/customizedDebugger/languages/jetbrains.mps.samples.customizedDebugger.Bottomline/jetbrains.mps.samples.customizedDebugger.Bottomline.mpl" folder="samples.customizedDebugger" />
       <modulePath path="$PROJECT_DIR$/samples/customizedDebugger/languages/jetbrains.mps.samples.customizedDebugger.Bottomline/sandbox/jetbrains.mps.samples.customizedDebugger.Bottomline.sandbox.msd" folder="samples.customizedDebugger" />
       <modulePath path="$PROJECT_DIR$/samples/customizedDebugger/languages/jetbrains.mps.samples.customizedDebugger.Highlevel/jetbrains.mps.samples.customizedDebugger.Highlevel.mpl" folder="samples.customizedDebugger" />
