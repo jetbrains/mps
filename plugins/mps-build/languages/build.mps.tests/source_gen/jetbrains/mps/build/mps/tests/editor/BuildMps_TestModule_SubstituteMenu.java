@@ -23,13 +23,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
-public class BuildMpsLayout_TestModule_SubstituteMenu extends SubstituteMenuBase {
+public class BuildMps_TestModule_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_wsor6b_a(), CONCEPTS.BuildMpsLayout_TestModule$oW));
-    result.add(new SMP_Subconcepts_wsor6b_b());
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_w1eb5a_a(), CONCEPTS.BuildMps_TestModule$oW));
+    result.add(new SMP_Subconcepts_w1eb5a_b());
     return result;
   }
 
@@ -37,7 +37,7 @@ public class BuildMpsLayout_TestModule_SubstituteMenu extends SubstituteMenuBase
   @Override
   public List<SubstituteMenuItem> createMenuItems(@NotNull SubstituteMenuContext context) {
     context.getEditorMenuTrace().pushTraceInfo();
-    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("default substitute menu for BuildMpsLayout_TestModule. Generated from implicit smart reference attribute.", new SNodePointer("r:5315d75f-2eea-4bf2-899f-f3d94810cea5(jetbrains.mps.build.mps.tests.structure)", "4560297596904469362")));
+    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("default substitute menu for BuildMps_TestModule. Generated from implicit smart reference attribute.", new SNodePointer("r:5315d75f-2eea-4bf2-899f-f3d94810cea5(jetbrains.mps.build.mps.tests.structure)", "4560297596904469362")));
     try {
       return super.createMenuItems(context);
     } finally {
@@ -46,11 +46,11 @@ public class BuildMpsLayout_TestModule_SubstituteMenu extends SubstituteMenuBase
   }
 
 
-  public class SMP_ReferenceScope_wsor6b_a extends ReferenceScopeSubstituteMenuPart {
+  public class SMP_ReferenceScope_w1eb5a_a extends ReferenceScopeSubstituteMenuPart {
 
-    public SMP_ReferenceScope_wsor6b_a() {
+    public SMP_ReferenceScope_w1eb5a_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051 
-      super((SAbstractConcept) CONCEPTS.BuildMpsLayout_TestModule$oW, LINKS.module$V8pj);
+      super((SAbstractConcept) CONCEPTS.BuildMps_TestModule$oW, LINKS.module$V8pj);
     }
     @NotNull
     @Override
@@ -65,15 +65,15 @@ public class BuildMpsLayout_TestModule_SubstituteMenu extends SubstituteMenuBase
     }
 
   }
-  public class SMP_Subconcepts_wsor6b_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
+  public class SMP_Subconcepts_w1eb5a_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BuildMpsLayout_TestModule$oW);
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BuildMps_TestModule$oW);
     }
     @NotNull
     @Override
     public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
       context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "BuildMpsLayout_TestModule", null));
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "BuildMps_TestModule", null));
       try {
         return super.createItems(context);
       } finally {
@@ -88,7 +88,7 @@ public class BuildMpsLayout_TestModule_SubstituteMenu extends SubstituteMenuBase
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildMpsLayout_TestModule$oW = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef372L, "jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModule");
+    /*package*/ static final SConcept BuildMps_TestModule$oW = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef372L, "jetbrains.mps.build.mps.tests.structure.BuildMps_TestModule");
   }
 
   private static final class LINKS {

@@ -16,9 +16,9 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class BuildMpsLayout_TestModules_Options_Constraints extends BaseConstraintsDescriptor {
-  public BuildMpsLayout_TestModules_Options_Constraints() {
-    super(CONCEPTS.BuildMpsLayout_TestModules_Options$iJ);
+public class BuildMps_TestModules_Options_Constraints extends BaseConstraintsDescriptor {
+  public BuildMps_TestModules_Options_Constraints() {
+    super(CONCEPTS.BuildMps_TestModules_Options$iJ);
   }
 
   @Override
@@ -37,12 +37,12 @@ public class BuildMpsLayout_TestModules_Options_Constraints extends BaseConstrai
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.BuildMpsLayout_TestModules$cm);
+    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.BuildAspect_MpsTestModules$cm);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:09cf4c23-1b4d-4723-ac0b-a240d2fdcc67(jetbrains.mps.build.mps.tests.constraints)", "6593674873640691653");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildMpsLayout_TestModules_Options$iJ = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, "jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModules_Options");
-    /*package*/ static final SConcept BuildMpsLayout_TestModules$cm = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, "jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModules");
+    /*package*/ static final SConcept BuildMps_TestModules_Options$iJ = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, "jetbrains.mps.build.mps.tests.structure.BuildMps_TestModules_Options");
+    /*package*/ static final SConcept BuildAspect_MpsTestModules$cm = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, "jetbrains.mps.build.mps.tests.structure.BuildAspect_MpsTestModules");
   }
 }

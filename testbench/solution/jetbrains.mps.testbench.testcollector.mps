@@ -310,7 +310,7 @@
                               </node>
                               <node concept="2SmgA7" id="7Jeq984xmDo" role="2OqNvi">
                                 <node concept="chp4Y" id="7Jeq984xmDp" role="1dBWTz">
-                                  <ref role="cht4Q" to="5tjl:3X9rC2XzJdH" resolve="BuildMpsLayout_TestModules" />
+                                  <ref role="cht4Q" to="5tjl:3X9rC2XzJdH" resolve="BuildAspect_MpsTestModules" />
                                 </node>
                               </node>
                             </node>

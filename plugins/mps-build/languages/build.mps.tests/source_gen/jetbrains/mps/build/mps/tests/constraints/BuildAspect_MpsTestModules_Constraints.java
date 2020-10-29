@@ -19,9 +19,9 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class BuildMpsLayout_TestModules_Constraints extends BaseConstraintsDescriptor {
-  public BuildMpsLayout_TestModules_Constraints() {
-    super(CONCEPTS.BuildMpsLayout_TestModules$cm);
+public class BuildAspect_MpsTestModules_Constraints extends BaseConstraintsDescriptor {
+  public BuildAspect_MpsTestModules_Constraints() {
+    super(CONCEPTS.BuildAspect_MpsTestModules$cm);
   }
 
   @Override
@@ -55,7 +55,7 @@ public class BuildMpsLayout_TestModules_Constraints extends BaseConstraintsDescr
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:09cf4c23-1b4d-4723-ac0b-a240d2fdcc67(jetbrains.mps.build.mps.tests.constraints)", "1227128029536566784");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildMpsLayout_TestModules$cm = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, "jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModules");
+    /*package*/ static final SConcept BuildAspect_MpsTestModules$cm = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, "jetbrains.mps.build.mps.tests.structure.BuildAspect_MpsTestModules");
     /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
     /*package*/ static final SConcept BuildModuleTestsPlugin$mU = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x37967cbe67d9eca4L, "jetbrains.mps.build.mps.tests.structure.BuildModuleTestsPlugin");
   }

@@ -22,8 +22,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-public final class BuildMpsLayout_TestModuleGroup__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36bL, "jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModuleGroup");
+public final class BuildMps_TestModuleGroup__BehaviorDescriptor extends BaseBHDescriptor {
+  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36bL, "jetbrains.mps.build.mps.tests.structure.BuildMps_TestModuleGroup");
 
   public static final SMethod<Boolean> contains_id3X9rC2XzJi8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("contains").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3X9rC2XzJi8").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Iterable<SNode>> getModules_id3X9rC2XzJij = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getModules").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3X9rC2XzJij").build();
@@ -40,7 +40,7 @@ public final class BuildMpsLayout_TestModuleGroup__BehaviorDescriptor extends Ba
     return SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.group$V1Bj), LINKS.modules$JlQo);
   }
 
-  /*package*/ BuildMpsLayout_TestModuleGroup__BehaviorDescriptor() {
+  /*package*/ BuildMps_TestModuleGroup__BehaviorDescriptor() {
   }
 
   @Override

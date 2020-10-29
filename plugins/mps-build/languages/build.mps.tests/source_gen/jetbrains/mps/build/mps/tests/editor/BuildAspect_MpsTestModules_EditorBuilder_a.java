@@ -43,11 +43,11 @@ import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-/*package*/ class BuildMpsLayout_TestModules_EditorBuilder_a extends AbstractEditorBuilder {
+/*package*/ class BuildAspect_MpsTestModules_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
   private SNode myNode;
 
-  public BuildMpsLayout_TestModules_EditorBuilder_a(@NotNull EditorContext context, @NotNull SNode node) {
+  public BuildAspect_MpsTestModules_EditorBuilder_a(@NotNull EditorContext context, @NotNull SNode node) {
     super(context);
     myNode = node;
   }
@@ -64,7 +64,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
   private EditorCell createCollection_0() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
-    editorCell.setCellId("Collection_aky039_a");
+    editorCell.setCellId("Collection_5plagn_a");
     editorCell.setBig(true);
     setCellContext(editorCell);
     editorCell.addEditorCell(createProperty_0());
@@ -99,7 +99,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "test configuration");
-    editorCell.setCellId("Constant_aky039_b0");
+    editorCell.setCellId("Constant_5plagn_b0");
     Style style = new StyleImpl();
     new projectPartKeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
@@ -108,7 +108,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
   private EditorCell createCollection_1() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
-    editorCell.setCellId("Collection_aky039_c0");
+    editorCell.setCellId("Collection_5plagn_c0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE, true);
     style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
@@ -120,7 +120,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
   private EditorCell createConstant_1() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "run tests from modules:");
-    editorCell.setCellId("Constant_aky039_a2a");
+    editorCell.setCellId("Constant_5plagn_a2a");
     Style style = new StyleImpl();
     new keywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     style.set(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE, true);
@@ -130,7 +130,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
   private EditorCell createCollection_2() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
-    editorCell.setCellId("Collection_aky039_b2a");
+    editorCell.setCellId("Collection_5plagn_b2a");
     Style style = new StyleImpl();
     style.set(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE, true);
     style.set(StyleAttributes.SELECTABLE, false);
@@ -140,7 +140,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new modulesListHandler_aky039_a1c0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new modulesListHandler_5plagn_a1c0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_modules");
     Style style = new StyleImpl();
@@ -149,11 +149,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setSRole(handler.getElementSRole());
     return editorCell;
   }
-  private static class modulesListHandler_aky039_a1c0 extends RefNodeListHandler {
+  private static class modulesListHandler_5plagn_a1c0 extends RefNodeListHandler {
     @NotNull
     private SNode myNode;
 
-    public modulesListHandler_aky039_a1c0(SNode ownerNode, EditorContext context) {
+    public modulesListHandler_5plagn_a1c0(SNode ownerNode, EditorContext context) {
       super(context, false);
       myNode = ownerNode;
     }
@@ -166,7 +166,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return LINKS.modules$V7vE;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.BuildMpsLayout_TestModules_Content$ot;
+      return CONCEPTS.BuildMps_TestModules_Content$ot;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -176,7 +176,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(modulesListHandler_aky039_a1c0.this.getNode(), LINKS.modules$V7vE));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(modulesListHandler_5plagn_a1c0.this.getNode(), LINKS.modules$V7vE));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -217,14 +217,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new optionsSingleRoleHandler_aky039_c2a(myNode, LINKS.options$gctq, getEditorContext());
+    SingleRoleCellProvider provider = new optionsSingleRoleHandler_5plagn_c2a(myNode, LINKS.options$gctq, getEditorContext());
     return provider.createCell();
   }
-  private static class optionsSingleRoleHandler_aky039_c2a extends SingleRoleCellProvider {
+  private static class optionsSingleRoleHandler_5plagn_c2a extends SingleRoleCellProvider {
     @NotNull
     private SNode myNode;
 
-    public optionsSingleRoleHandler_aky039_c2a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+    public optionsSingleRoleHandler_5plagn_c2a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
       super(containmentLink, context);
       myNode = ownerNode;
     }
@@ -279,7 +279,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
-    /*package*/ static final SConcept BuildMpsLayout_TestModules_Content$ot = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef371L, "jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModules_Content");
+    /*package*/ static final SConcept BuildMps_TestModules_Content$ot = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef371L, "jetbrains.mps.build.mps.tests.structure.BuildMps_TestModules_Content");
   }
 
   private static final class LINKS {

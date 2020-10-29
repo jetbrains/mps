@@ -25,7 +25,7 @@ import jetbrains.mps.build.util.VisibleArtifacts;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.build.mps.tests.behavior.BuildMpsLayout_TestModules_Content__BehaviorDescriptor;
+import jetbrains.mps.build.mps.tests.behavior.BuildMps_TestModules_Content__BehaviorDescriptor;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -186,7 +186,7 @@ public class QueriesGenerated extends QueryProviderBase {
     final VisibleArtifacts local = ((VisibleArtifacts) _context.getVariable("var:localArtifacts"));
     Iterable<SNode> seq = ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.modules$V7vE)).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
-        return (Iterable<SNode>) BuildMpsLayout_TestModules_Content__BehaviorDescriptor.getModules_id3X9rC2XzJij.invoke(it);
+        return (Iterable<SNode>) BuildMps_TestModules_Content__BehaviorDescriptor.getModules_id3X9rC2XzJij.invoke(it);
       }
     });
     return SNodeOperations.ofConcept(Sequence.fromIterable(seq).where(new IWhereFilter<SNode>() {
@@ -203,7 +203,7 @@ public class QueriesGenerated extends QueryProviderBase {
     final SNode project = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.BuildProject$ae, false, false);
     Iterable<SNode> seq = ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.modules$V7vE)).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
-        return (Iterable<SNode>) BuildMpsLayout_TestModules_Content__BehaviorDescriptor.getModules_id3X9rC2XzJij.invoke(it);
+        return (Iterable<SNode>) BuildMps_TestModules_Content__BehaviorDescriptor.getModules_id3X9rC2XzJij.invoke(it);
       }
     });
     return ModuleFinder.findModules(Sequence.fromIterable(seq).where(new IWhereFilter<SNode>() {
@@ -243,7 +243,7 @@ public class QueriesGenerated extends QueryProviderBase {
     // design-time because of editor tests we need languages 
     return new MPSModulesClosure(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.modules$V7vE)).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
-        return (Iterable<SNode>) BuildMpsLayout_TestModules_Content__BehaviorDescriptor.getModules_id3X9rC2XzJij.invoke(it);
+        return (Iterable<SNode>) BuildMps_TestModules_Content__BehaviorDescriptor.getModules_id3X9rC2XzJij.invoke(it);
       }
     }), new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits()).designtimeClosure();
   }

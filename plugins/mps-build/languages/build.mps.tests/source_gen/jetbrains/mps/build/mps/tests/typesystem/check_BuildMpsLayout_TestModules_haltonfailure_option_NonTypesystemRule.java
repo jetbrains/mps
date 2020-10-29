@@ -38,7 +38,7 @@ public class check_BuildMpsLayout_TestModules_haltonfailure_option_NonTypesystem
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BuildMpsLayout_TestModules_Options$iJ;
+    return CONCEPTS.BuildMps_TestModules_Options$iJ;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -52,6 +52,6 @@ public class check_BuildMpsLayout_TestModules_haltonfailure_option_NonTypesystem
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildMpsLayout_TestModules_Options$iJ = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, "jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModules_Options");
+    /*package*/ static final SConcept BuildMps_TestModules_Options$iJ = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L, "jetbrains.mps.build.mps.tests.structure.BuildMps_TestModules_Options");
   }
 }

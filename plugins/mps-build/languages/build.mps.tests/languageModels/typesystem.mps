@@ -329,7 +329,7 @@
     </node>
     <node concept="1YaCAy" id="5I1s5NvHqoT" role="1YuTPh">
       <property role="TrG5h" value="options" />
-      <ref role="1YaFvo" to="5tjl:5I1s5NvGLjw" resolve="BuildMpsLayout_TestModules_Options" />
+      <ref role="1YaFvo" to="5tjl:5I1s5NvGLjw" resolve="BuildMps_TestModules_Options" />
     </node>
   </node>
   <node concept="18kY7G" id="2tkRx60x3rT">
@@ -386,7 +386,7 @@
     </node>
     <node concept="1YaCAy" id="2tkRx60x3rW" role="1YuTPh">
       <property role="TrG5h" value="testmodule" />
-      <ref role="1YaFvo" to="5tjl:3X9rC2XzJdM" resolve="BuildMpsLayout_TestModule" />
+      <ref role="1YaFvo" to="5tjl:3X9rC2XzJdM" resolve="BuildMps_TestModule" />
     </node>
   </node>
   <node concept="Q5z_Y" id="2tkRx60B0_r">
@@ -660,7 +660,7 @@
     </node>
     <node concept="1YaCAy" id="2R_4228R1BE" role="1YuTPh">
       <property role="TrG5h" value="testModules" />
-      <ref role="1YaFvo" to="5tjl:3X9rC2XzJdH" resolve="BuildMpsLayout_TestModules" />
+      <ref role="1YaFvo" to="5tjl:3X9rC2XzJdH" resolve="BuildAspect_MpsTestModules" />
     </node>
   </node>
   <node concept="18kY7G" id="7BTZ519LZAC">
@@ -751,7 +751,7 @@
     </node>
     <node concept="1YaCAy" id="7BTZ519LZAF" role="1YuTPh">
       <property role="TrG5h" value="testGroup" />
-      <ref role="1YaFvo" to="5tjl:3X9rC2XzJdF" resolve="BuildMpsLayout_TestModuleGroup" />
+      <ref role="1YaFvo" to="5tjl:3X9rC2XzJdF" resolve="BuildMps_TestModuleGroup" />
     </node>
   </node>
   <node concept="18kY7G" id="1tJmw8EAYG7">
@@ -861,7 +861,7 @@
     </node>
     <node concept="1YaCAy" id="1tJmw8EAYGP" role="1YuTPh">
       <property role="TrG5h" value="options" />
-      <ref role="1YaFvo" to="5tjl:5I1s5NvGLjw" resolve="BuildMpsLayout_TestModules_Options" />
+      <ref role="1YaFvo" to="5tjl:5I1s5NvGLjw" resolve="BuildMps_TestModules_Options" />
     </node>
   </node>
 </model>

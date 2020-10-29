@@ -107,7 +107,7 @@
   </registry>
   <node concept="24kQdi" id="3X9rC2XzJji">
     <property role="3GE5qa" value="Project.Testing" />
-    <ref role="1XX52x" to="5tjl:3X9rC2XzJdM" resolve="BuildMpsLayout_TestModule" />
+    <ref role="1XX52x" to="5tjl:3X9rC2XzJdM" resolve="BuildMps_TestModule" />
     <node concept="3EZMnI" id="3X9rC2XzJjj" role="2wV5jI">
       <node concept="1iCGBv" id="3X9rC2XzJjk" role="3EZMnx">
         <ref role="1NtTu8" to="5tjl:3X9rC2XzJdN" resolve="module" />
@@ -122,7 +122,7 @@
   </node>
   <node concept="24kQdi" id="3X9rC2XzJjo">
     <property role="3GE5qa" value="Project.Testing" />
-    <ref role="1XX52x" to="5tjl:3X9rC2XzJdH" resolve="BuildMpsLayout_TestModules" />
+    <ref role="1XX52x" to="5tjl:3X9rC2XzJdH" resolve="BuildAspect_MpsTestModules" />
     <node concept="3EZMnI" id="3X9rC2XzJjp" role="2wV5jI">
       <node concept="3F0A7n" id="7rX0uM1se1L" role="3EZMnx">
         <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
@@ -175,7 +175,7 @@
   </node>
   <node concept="24kQdi" id="3X9rC2XzJj_">
     <property role="3GE5qa" value="Project.Testing" />
-    <ref role="1XX52x" to="5tjl:3X9rC2XzJdF" resolve="BuildMpsLayout_TestModuleGroup" />
+    <ref role="1XX52x" to="5tjl:3X9rC2XzJdF" resolve="BuildMps_TestModuleGroup" />
     <node concept="3EZMnI" id="3X9rC2XzJjA" role="2wV5jI">
       <node concept="1iCGBv" id="3X9rC2XzJjB" role="3EZMnx">
         <ref role="1NtTu8" to="5tjl:3X9rC2XzJdG" resolve="group" />
@@ -217,7 +217,7 @@
   </node>
   <node concept="24kQdi" id="5I1s5NvGLjU">
     <property role="3GE5qa" value="Project.Testing" />
-    <ref role="1XX52x" to="5tjl:5I1s5NvGLjw" resolve="BuildMpsLayout_TestModules_Options" />
+    <ref role="1XX52x" to="5tjl:5I1s5NvGLjw" resolve="BuildMps_TestModules_Options" />
     <node concept="3EZMnI" id="5I1s5NvGZWj" role="2wV5jI">
       <node concept="3F0ifn" id="5I1s5NvGZXf" role="3EZMnx">
         <property role="3F0ifm" value="options" />
@@ -298,7 +298,7 @@
   <node concept="1h_SRR" id="4yJrsdlBlWF">
     <property role="3GE5qa" value="Project.Testing" />
     <property role="TrG5h" value="NoDeleteForOptionsChild" />
-    <ref role="1h_SK9" to="5tjl:3X9rC2XzJdH" resolve="BuildMpsLayout_TestModules" />
+    <ref role="1h_SK9" to="5tjl:3X9rC2XzJdH" resolve="BuildAspect_MpsTestModules" />
     <node concept="1hA7zw" id="4yJrsdlBlWG" role="1h_SK8">
       <property role="1hAc7j" value="g_hAxAO/delete_action_id" />
       <node concept="1hAIg9" id="4yJrsdlBlWH" role="1hA7z_">

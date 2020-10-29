@@ -34,7 +34,7 @@ public class BuildTestsHelper {
     final Wrappers._T<List<SModuleReference>> buildTestModulesWithSources = new Wrappers._T<List<SModuleReference>>();
     Iterable<SNode> buildSolutions = SNodeOperations.ofConcept(Sequence.fromIterable(((Iterable<SModel>) buildScope.getModels())).translate(new ITranslator2<SModel, SNode>() {
       public Iterable<SNode> translate(SModel it) {
-        return SModelOperations.nodes(((SModel) it), CONCEPTS.BuildMpsLayout_TestModules$cm);
+        return SModelOperations.nodes(((SModel) it), CONCEPTS.BuildAspect_MpsTestModules$cm);
       }
     }).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode buildTest) {
@@ -42,7 +42,7 @@ public class BuildTestsHelper {
       }
     }).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
-        return ((Iterable<SNode>) (Iterable<SNode>) BHReflection.invoke0(it, CONCEPTS.BuildMpsLayout_TestModules_Content$ot, SMethodTrimmedId.create("getModules", null, "3X9rC2XzJij")));
+        return ((Iterable<SNode>) (Iterable<SNode>) BHReflection.invoke0(it, CONCEPTS.BuildMps_TestModules_Content$ot, SMethodTrimmedId.create("getModules", null, "3X9rC2XzJij")));
       }
     }), CONCEPTS.BuildMps_Solution$R7);
     buildTestModulesWithTests.value = Sequence.fromIterable(buildSolutions).where(new IWhereFilter<SNode>() {
@@ -102,8 +102,8 @@ public class BuildTestsHelper {
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildMpsLayout_TestModules$cm = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, "jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModules");
-    /*package*/ static final SConcept BuildMpsLayout_TestModules_Content$ot = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef371L, "jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModules_Content");
+    /*package*/ static final SConcept BuildAspect_MpsTestModules$cm = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, "jetbrains.mps.build.mps.tests.structure.BuildAspect_MpsTestModules");
+    /*package*/ static final SConcept BuildMps_TestModules_Content$ot = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef371L, "jetbrains.mps.build.mps.tests.structure.BuildMps_TestModules_Content");
     /*package*/ static final SConcept BuildMps_Solution$R7 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, "jetbrains.mps.build.mps.structure.BuildMps_Solution");
     /*package*/ static final SConcept BuildMps_AbstractModule$FZ = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, "jetbrains.mps.build.mps.structure.BuildMps_AbstractModule");
     /*package*/ static final SInterfaceConcept ITestRef$zt = MetaAdapterFactory.getInterfaceConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cbaL, "jetbrains.mps.testbench.suite.structure.ITestRef");

@@ -7,7 +7,7 @@ import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
-import jetbrains.mps.build.mps.tests.behavior.BuildMpsLayout_TestModules_Content__BehaviorDescriptor;
+import jetbrains.mps.build.mps.tests.behavior.BuildMps_TestModules_Content__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.build.mps.behavior.BuildMps_Solution__BehaviorDescriptor;
@@ -25,7 +25,7 @@ public class check_BuildMpsLayout_TestModuleGroupHasTestSources_NonTypesystemRul
   public check_BuildMpsLayout_TestModuleGroupHasTestSources_NonTypesystemRule() {
   }
   public void applyRule(final SNode testGroup, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    Iterable<SNode> modules = BuildMpsLayout_TestModules_Content__BehaviorDescriptor.getModules_id3X9rC2XzJij.invoke(testGroup);
+    Iterable<SNode> modules = BuildMps_TestModules_Content__BehaviorDescriptor.getModules_id3X9rC2XzJij.invoke(testGroup);
     for (SNode solution : Sequence.fromIterable(SNodeOperations.ofConcept(modules, CONCEPTS.BuildMps_Solution$R7))) {
       if (!((boolean) BuildMps_Solution__BehaviorDescriptor.hasTestsSources_id6ogfLD6evrW.invoke(solution))) {
         {
@@ -41,7 +41,7 @@ public class check_BuildMpsLayout_TestModuleGroupHasTestSources_NonTypesystemRul
     }
   }
   public SAbstractConcept getApplicableConcept() {
-    return CONCEPTS.BuildMpsLayout_TestModuleGroup$bo;
+    return CONCEPTS.BuildMps_TestModuleGroup$bo;
   }
   public IsApplicableStatus isApplicableAndPattern(SNode argument) {
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
@@ -56,6 +56,6 @@ public class check_BuildMpsLayout_TestModuleGroupHasTestSources_NonTypesystemRul
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept BuildMps_Solution$R7 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, "jetbrains.mps.build.mps.structure.BuildMps_Solution");
-    /*package*/ static final SConcept BuildMpsLayout_TestModuleGroup$bo = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36bL, "jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModuleGroup");
+    /*package*/ static final SConcept BuildMps_TestModuleGroup$bo = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36bL, "jetbrains.mps.build.mps.tests.structure.BuildMps_TestModuleGroup");
   }
 }

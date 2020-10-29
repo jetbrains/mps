@@ -14,15 +14,15 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
 
-public final class BuildMpsLayout_TestModule__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef372L, "jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModule");
+public final class BuildMps_TestModules_Content__BehaviorDescriptor extends BaseBHDescriptor {
+  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef371L, "jetbrains.mps.build.mps.tests.structure.BuildMps_TestModules_Content");
 
   public static final SMethod<Boolean> contains_id3X9rC2XzJi8 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("contains").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3X9rC2XzJi8").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Iterable<SNode>> getModules_id3X9rC2XzJij = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getModules").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3X9rC2XzJij").build();
@@ -33,13 +33,14 @@ public final class BuildMpsLayout_TestModule__BehaviorDescriptor extends BaseBHD
   }
 
   /*package*/ static boolean contains_id3X9rC2XzJi8(@NotNull SNode __thisNode__, SNode module) {
-    return SLinkOperations.getTarget(__thisNode__, LINKS.module$V8pj) == module;
+    return Sequence.fromIterable(BuildMps_TestModules_Content__BehaviorDescriptor.getModules_id3X9rC2XzJij.invoke(__thisNode__)).contains(module);
   }
   /*package*/ static Iterable<SNode> getModules_id3X9rC2XzJij(@NotNull SNode __thisNode__) {
-    return Sequence.<SNode>singleton(SLinkOperations.getTarget(__thisNode__, LINKS.module$V8pj));
+    // for the editor abstract instances 
+    return ListSequence.fromList(new ArrayList<SNode>());
   }
 
-  /*package*/ BuildMpsLayout_TestModule__BehaviorDescriptor() {
+  /*package*/ BuildMps_TestModules_Content__BehaviorDescriptor() {
   }
 
   @Override
@@ -85,9 +86,5 @@ public final class BuildMpsLayout_TestModule__BehaviorDescriptor extends BaseBHD
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SReferenceLink module$V8pj = MetaAdapterFactory.getReferenceLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef372L, 0x3f496e80bd8ef373L, "module");
   }
 }

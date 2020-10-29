@@ -164,7 +164,7 @@ public class TestModuleBuildProjectTemplate {
   }
 
   private SNode createTestModuleGroup() {
-    return SModelOperations.createNewNode(target, null, CONCEPTS.BuildMpsLayout_TestModuleGroup$bo);
+    return SModelOperations.createNewNode(target, null, CONCEPTS.BuildMps_TestModuleGroup$bo);
   }
 
   private SNode updateReferences(SNode root, SNode testGroup) {
@@ -309,13 +309,13 @@ public class TestModuleBuildProjectTemplate {
     quotedNode_23 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xcf935df46994e9cL, 0xa132fa109541cba3L, "jetbrains.mps.build.mps"), 0x5a408fb8c80220a9L, "BuildMpsAspect")).getResult();
     quotedNode_23.setProperty(MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5a408fb8c80220a9L, 0x5a408fb8c80270bcL, "bootstrap"), "true");
     quotedNode_11.addChild(MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x31292e1a60db57afL, "aspects"), quotedNode_23);
-    quotedNode_24 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x3600cb0a44dd4a5bL, 0x996822924406419eL, "jetbrains.mps.build.mps.tests"), 0x3f496e80bd8ef36dL, "BuildMpsLayout_TestModules")).getResult();
+    quotedNode_24 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x3600cb0a44dd4a5bL, 0x996822924406419eL, "jetbrains.mps.build.mps.tests"), 0x3f496e80bd8ef36dL, "BuildAspect_MpsTestModules")).getResult();
     SNodeAccessUtil.setPropertyValue(quotedNode_24, MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name"), (String) parameter_9);
     quotedNode_34 = (SNode) parameter_8;
     if (quotedNode_34 != null) {
       quotedNode_24.addChild(MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, 0x3f496e80bd8ef370L, "modules"), SNodeOperations.copyIfNecessary(quotedNode_34));
     }
-    quotedNode_35 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x3600cb0a44dd4a5bL, 0x996822924406419eL, "jetbrains.mps.build.mps.tests"), 0x5b81705cdfb314e0L, "BuildMpsLayout_TestModules_Options")).getResult();
+    quotedNode_35 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x3600cb0a44dd4a5bL, 0x996822924406419eL, "jetbrains.mps.build.mps.tests"), 0x5b81705cdfb314e0L, "BuildMps_TestModules_Options")).getResult();
     quotedNode_24.addChild(MetaAdapterFactory.getContainmentLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, 0x5b81705cdfb31570L, "options"), quotedNode_35);
     quotedNode_11.addChild(MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x31292e1a60db57afL, "aspects"), quotedNode_24);
     quotedNode_25 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, "jetbrains.mps.build"), 0x4c12642949048fb2L, "BuildSourceProjectRelativePath")).getResult();
@@ -345,7 +345,7 @@ public class TestModuleBuildProjectTemplate {
     /*package*/ static final SConcept BuildFileIncludesSelector$kb = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x7819f90ca2eb7bf6L, "jetbrains.mps.build.structure.BuildFileIncludesSelector");
     /*package*/ static final SConcept BuildMps_Solution$R7 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, "jetbrains.mps.build.mps.structure.BuildMps_Solution");
     /*package*/ static final SConcept BuildMpsLayout_ModuleJars$MZ = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x11918e0f209b83e7L, "jetbrains.mps.build.mps.structure.BuildMpsLayout_ModuleJars");
-    /*package*/ static final SConcept BuildMpsLayout_TestModuleGroup$bo = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36bL, "jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModuleGroup");
+    /*package*/ static final SConcept BuildMps_TestModuleGroup$bo = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36bL, "jetbrains.mps.build.mps.tests.structure.BuildMps_TestModuleGroup");
     /*package*/ static final SConcept BuildMps_Group$Jc = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, "jetbrains.mps.build.mps.structure.BuildMps_Group");
   }
 

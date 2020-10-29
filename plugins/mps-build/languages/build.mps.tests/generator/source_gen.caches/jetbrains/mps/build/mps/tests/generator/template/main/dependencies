@@ -14,7 +14,7 @@
     <classNode dependClassName="jetbrains.mps.build.behavior.BuildLayout_NamedContainer__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.build.behavior.BuildString__BehaviorDescriptor" />
-    <classNode dependClassName="jetbrains.mps.build.mps.tests.behavior.BuildMpsLayout_TestModules_Content__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.build.mps.tests.behavior.BuildMps_TestModules_Content__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.build.mps.util.MPSModulesClosure" />
     <classNode dependClassName="jetbrains.mps.build.mps.util.ModuleFinder" />
     <classNode dependClassName="jetbrains.mps.build.mps.util.ModulePlugins" />

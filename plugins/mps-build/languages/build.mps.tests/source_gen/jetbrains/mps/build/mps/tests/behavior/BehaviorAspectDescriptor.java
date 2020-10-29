@@ -13,10 +13,10 @@ import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 
 public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor {
   private final BHDescriptor myBuildModuleTestsPlugin__BehaviorDescriptor = new BuildModuleTestsPlugin__BehaviorDescriptor();
-  private final BHDescriptor myBuildMpsLayout_TestModuleGroup__BehaviorDescriptor = new BuildMpsLayout_TestModuleGroup__BehaviorDescriptor();
-  private final BHDescriptor myBuildMpsLayout_TestModules__BehaviorDescriptor = new BuildMpsLayout_TestModules__BehaviorDescriptor();
-  private final BHDescriptor myBuildMpsLayout_TestModules_Content__BehaviorDescriptor = new BuildMpsLayout_TestModules_Content__BehaviorDescriptor();
-  private final BHDescriptor myBuildMpsLayout_TestModule__BehaviorDescriptor = new BuildMpsLayout_TestModule__BehaviorDescriptor();
+  private final BHDescriptor myBuildMps_TestModuleGroup__BehaviorDescriptor = new BuildMps_TestModuleGroup__BehaviorDescriptor();
+  private final BHDescriptor myBuildAspect_MpsTestModules__BehaviorDescriptor = new BuildAspect_MpsTestModules__BehaviorDescriptor();
+  private final BHDescriptor myBuildMps_TestModules_Content__BehaviorDescriptor = new BuildMps_TestModules_Content__BehaviorDescriptor();
+  private final BHDescriptor myBuildMps_TestModule__BehaviorDescriptor = new BuildMps_TestModule__BehaviorDescriptor();
 
   public BehaviorAspectDescriptor() {
   }
@@ -26,18 +26,18 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return myBuildModuleTestsPlugin__BehaviorDescriptor;
+        return myBuildAspect_MpsTestModules__BehaviorDescriptor;
       case 1:
-        return myBuildMpsLayout_TestModule__BehaviorDescriptor;
+        return myBuildModuleTestsPlugin__BehaviorDescriptor;
       case 2:
-        return myBuildMpsLayout_TestModuleGroup__BehaviorDescriptor;
+        return myBuildMps_TestModule__BehaviorDescriptor;
       case 3:
-        return myBuildMpsLayout_TestModules__BehaviorDescriptor;
+        return myBuildMps_TestModuleGroup__BehaviorDescriptor;
       case 4:
-        return myBuildMpsLayout_TestModules_Content__BehaviorDescriptor;
+        return myBuildMps_TestModules_Content__BehaviorDescriptor;
       default:
     }
     return null;
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x37967cbe67d9eca4L), MetaIdFactory.conceptId(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef372L), MetaIdFactory.conceptId(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36bL), MetaIdFactory.conceptId(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL), MetaIdFactory.conceptId(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef371L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL), MetaIdFactory.conceptId(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x37967cbe67d9eca4L), MetaIdFactory.conceptId(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef372L), MetaIdFactory.conceptId(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36bL), MetaIdFactory.conceptId(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef371L)).seal();
 }

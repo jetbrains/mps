@@ -26,9 +26,9 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class BuildMpsLayout_TestModuleGroup_Constraints extends BaseConstraintsDescriptor {
-  public BuildMpsLayout_TestModuleGroup_Constraints() {
-    super(CONCEPTS.BuildMpsLayout_TestModuleGroup$bo);
+public class BuildMps_TestModule_Constraints extends BaseConstraintsDescriptor {
+  public BuildMps_TestModule_Constraints() {
+    super(CONCEPTS.BuildMps_TestModule$oW);
   }
 
   @Override
@@ -48,7 +48,7 @@ public class BuildMpsLayout_TestModuleGroup_Constraints extends BaseConstraintsD
   }
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.group$V1Bj, this) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.module$V8pj, this) {
       @Override
       public boolean hasOwnScopeProvider() {
         return true;
@@ -59,11 +59,11 @@ public class BuildMpsLayout_TestModuleGroup_Constraints extends BaseConstraintsD
         return new BaseScopeProvider() {
           @Override
           public SNodeReference getSearchScopeValidatorNode() {
-            return breakingNode_fhfy8y_a0a0a0a0a1a0a0a0d;
+            return breakingNode_n0l7nd_a0a0a0a0a1a0a0a0d;
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.BuildMps_Group$Jc);
+            return Scope.getScope(_context.getContextNode(), _context.getContainmentLink(), _context.getPosition(), CONCEPTS.BuildMps_Solution$R7);
           }
         };
       }
@@ -73,18 +73,18 @@ public class BuildMpsLayout_TestModuleGroup_Constraints extends BaseConstraintsD
     return references;
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.BuildMpsLayout_TestModules$cm);
+    return SNodeOperations.isInstanceOf(parentNode, CONCEPTS.BuildAspect_MpsTestModules$cm);
   }
-  private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:09cf4c23-1b4d-4723-ac0b-a240d2fdcc67(jetbrains.mps.build.mps.tests.constraints)", "1227128029536566862");
-  private static final SNodePointer breakingNode_fhfy8y_a0a0a0a0a1a0a0a0d = new SNodePointer("r:09cf4c23-1b4d-4723-ac0b-a240d2fdcc67(jetbrains.mps.build.mps.tests.constraints)", "6836281137582839719");
+  private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:09cf4c23-1b4d-4723-ac0b-a240d2fdcc67(jetbrains.mps.build.mps.tests.constraints)", "1227128029536566777");
+  private static final SNodePointer breakingNode_n0l7nd_a0a0a0a0a1a0a0a0d = new SNodePointer("r:09cf4c23-1b4d-4723-ac0b-a240d2fdcc67(jetbrains.mps.build.mps.tests.constraints)", "6836281137582839684");
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildMpsLayout_TestModuleGroup$bo = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36bL, "jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModuleGroup");
-    /*package*/ static final SConcept BuildMps_Group$Jc = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x14d3fb6fb843ebddL, "jetbrains.mps.build.mps.structure.BuildMps_Group");
-    /*package*/ static final SConcept BuildMpsLayout_TestModules$cm = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, "jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModules");
+    /*package*/ static final SConcept BuildMps_TestModule$oW = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef372L, "jetbrains.mps.build.mps.tests.structure.BuildMps_TestModule");
+    /*package*/ static final SConcept BuildMps_Solution$R7 = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, "jetbrains.mps.build.mps.structure.BuildMps_Solution");
+    /*package*/ static final SConcept BuildAspect_MpsTestModules$cm = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, "jetbrains.mps.build.mps.tests.structure.BuildAspect_MpsTestModules");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink group$V1Bj = MetaAdapterFactory.getReferenceLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36bL, 0x3f496e80bd8ef36cL, "group");
+    /*package*/ static final SReferenceLink module$V8pj = MetaAdapterFactory.getReferenceLink(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef372L, 0x3f496e80bd8ef373L, "module");
   }
 }

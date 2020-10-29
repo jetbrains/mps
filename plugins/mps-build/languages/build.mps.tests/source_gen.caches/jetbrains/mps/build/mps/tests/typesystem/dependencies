@@ -22,7 +22,7 @@
   <dependency className="jetbrains.mps.build.mps.tests.typesystem.check_BuildMpsLayout_TestModuleGroupHasTestSources_NonTypesystemRule">
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="jetbrains.mps.build.mps.behavior.BuildMps_Solution__BehaviorDescriptor" />
-    <classNode dependClassName="jetbrains.mps.build.mps.tests.behavior.BuildMpsLayout_TestModules_Content__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.build.mps.tests.behavior.BuildMps_TestModules_Content__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.errors.BaseQuickFixProvider" />
     <classNode dependClassName="jetbrains.mps.errors.IErrorReporter" />
     <classNode dependClassName="jetbrains.mps.errors.messageTargets.MessageTarget" />
@@ -58,7 +58,7 @@
     <classNode extendsClassName="jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime" />
   </dependency>
   <dependency className="jetbrains.mps.build.mps.tests.typesystem.check_BuildMpsLayout_TestModules_NonTypesystemRule">
-    <classNode dependClassName="jetbrains.mps.build.mps.tests.behavior.BuildMpsLayout_TestModules_Content__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.build.mps.tests.behavior.BuildMps_TestModules_Content__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.build.util.VisibleArtifacts" />
     <classNode dependClassName="jetbrains.mps.errors.BaseQuickFixProvider" />
     <classNode dependClassName="jetbrains.mps.errors.IErrorReporter" />

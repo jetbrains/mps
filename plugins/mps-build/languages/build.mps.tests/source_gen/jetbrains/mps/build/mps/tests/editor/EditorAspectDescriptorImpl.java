@@ -19,15 +19,15 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return Collections.<ConceptEditor>singletonList(new BuildModuleTestsPlugin_Editor());
+        return Collections.<ConceptEditor>singletonList(new BuildAspect_MpsTestModules_Editor());
       case 1:
-        return Collections.<ConceptEditor>singletonList(new BuildMpsLayout_TestModule_Editor());
+        return Collections.<ConceptEditor>singletonList(new BuildModuleTestsPlugin_Editor());
       case 2:
-        return Collections.<ConceptEditor>singletonList(new BuildMpsLayout_TestModuleGroup_Editor());
+        return Collections.<ConceptEditor>singletonList(new BuildMps_TestModule_Editor());
       case 3:
-        return Collections.<ConceptEditor>singletonList(new BuildMpsLayout_TestModules_Editor());
+        return Collections.<ConceptEditor>singletonList(new BuildMps_TestModuleGroup_Editor());
       case 4:
-        return Collections.<ConceptEditor>singletonList(new BuildMpsLayout_TestModules_Options_Editor());
+        return Collections.<ConceptEditor>singletonList(new BuildMps_TestModules_Options_Editor());
       case 5:
         return Collections.<ConceptEditor>singletonList(new RequiredPlugin_Editor());
       default:
@@ -42,9 +42,9 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     SAbstractConcept cncpt = concept;
     switch (conceptIndex1.index(cncpt)) {
       case 0:
-        return Collections.<SubstituteMenu>singletonList(new BuildMpsLayout_TestModule_SubstituteMenu());
+        return Collections.<SubstituteMenu>singletonList(new BuildMps_TestModule_SubstituteMenu());
       case 1:
-        return Collections.<SubstituteMenu>singletonList(new BuildMpsLayout_TestModuleGroup_SubstituteMenu());
+        return Collections.<SubstituteMenu>singletonList(new BuildMps_TestModuleGroup_SubstituteMenu());
       case 2:
         return Collections.<SubstituteMenu>singletonList(new RequiredPlugin_SubstituteMenu());
       default:
@@ -52,6 +52,6 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     return Collections.<SubstituteMenu>emptyList();
   }
 
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x37967cbe67d9eca4L), MetaIdFactory.conceptId(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef372L), MetaIdFactory.conceptId(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36bL), MetaIdFactory.conceptId(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL), MetaIdFactory.conceptId(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L), MetaIdFactory.conceptId(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdf7bc318L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL), MetaIdFactory.conceptId(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x37967cbe67d9eca4L), MetaIdFactory.conceptId(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef372L), MetaIdFactory.conceptId(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36bL), MetaIdFactory.conceptId(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdfb314e0L), MetaIdFactory.conceptId(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdf7bc318L)).seal();
   private static final ConceptSwitchIndex conceptIndex1 = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef372L), MetaIdFactory.conceptId(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36bL), MetaIdFactory.conceptId(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x5b81705cdf7bc318L)).seal();
 }

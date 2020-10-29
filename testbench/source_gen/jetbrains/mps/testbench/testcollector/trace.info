@@ -261,7 +261,7 @@
       <node id="9123758349953232924" at="33,116,34,118" concept="4" />
       <node id="8921182888217897554" at="36,51,37,93" concept="5" />
       <node id="8921182888217897544" at="40,57,41,74" concept="5" />
-      <node id="8921182888217897574" at="44,50,45,186" concept="5" />
+      <node id="8921182888217897574" at="44,50,45,180" concept="5" />
       <node id="8789333569555804195" at="49,39,50,183" concept="5" />
       <node id="8789333569555804204" at="53,48,54,219" concept="5" />
       <node id="9123758349953235082" at="58,39,59,178" concept="5" />
@@ -274,8 +274,8 @@
       <node id="8789333569555636287" at="96,66,97,71" concept="4" />
       <node id="8789333569555501910" at="98,72,99,54" concept="1" />
       <node id="8789333569555638721" at="100,5,101,18" concept="5" />
-      <node id="7763823021516159816" at="105,0,106,0" concept="7" trace="BuildMpsLayout_TestModules$cm" />
-      <node id="7763823021516159816" at="106,0,107,0" concept="7" trace="BuildMpsLayout_TestModules_Content$ot" />
+      <node id="7763823021516159816" at="105,0,106,0" concept="7" trace="BuildAspect_MpsTestModules$cm" />
+      <node id="7763823021516159816" at="106,0,107,0" concept="7" trace="BuildMps_TestModules_Content$ot" />
       <node id="7763823021516159816" at="107,0,108,0" concept="7" trace="BuildMps_Solution$R7" />
       <node id="7763823021516159816" at="108,0,109,0" concept="7" trace="BuildMps_AbstractModule$FZ" />
       <node id="7763823021516159816" at="109,0,110,0" concept="7" trace="ITestRef$zt" />
@@ -306,7 +306,7 @@
       <node id="3356056434371096157" at="32,0,76,0" concept="8" trace="findIncludedInBuildTests#(Lorg/jetbrains/mps/openapi/module/SearchScope;Lorg/jetbrains/mps/openapi/module/SearchScope;)Ljava/util/List;" />
       <scope id="8921182888217897553" at="36,51,37,93" />
       <scope id="8921182888217897543" at="40,57,41,74" />
-      <scope id="8921182888217897573" at="44,50,45,186" />
+      <scope id="8921182888217897573" at="44,50,45,180" />
       <scope id="8789333569555804194" at="49,39,50,183" />
       <scope id="8789333569555804203" at="53,48,54,219" />
       <scope id="9123758349953235081" at="58,39,59,178" />

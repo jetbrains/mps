@@ -24,11 +24,11 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-/*package*/ class BuildMpsLayout_TestModules_Options_InspectorBuilder_a extends AbstractEditorBuilder {
+/*package*/ class BuildMps_TestModules_Options_InspectorBuilder_a extends AbstractEditorBuilder {
   @NotNull
   private SNode myNode;
 
-  public BuildMpsLayout_TestModules_Options_InspectorBuilder_a(@NotNull EditorContext context, @NotNull SNode node) {
+  public BuildMps_TestModules_Options_InspectorBuilder_a(@NotNull EditorContext context, @NotNull SNode node) {
     super(context);
     myNode = node;
   }
@@ -45,7 +45,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
   private EditorCell createCollection_0() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
-    editorCell.setCellId("Collection_htktt1_0");
+    editorCell.setCellId("Collection_tu51wq_0");
     editorCell.setBig(true);
     setCellContext(editorCell);
     Style style = new StyleImpl();
@@ -58,7 +58,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "JVM arguments");
-    editorCell.setCellId("Constant_htktt1_0");
+    editorCell.setCellId("Constant_tu51wq_0");
     Style style = new StyleImpl();
     new keywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
@@ -66,14 +66,14 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     return editorCell;
   }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new jvmArgsSingleRoleHandler_htktt1_b0(myNode, LINKS.jvmArgs$IZpF, getEditorContext());
+    SingleRoleCellProvider provider = new jvmArgsSingleRoleHandler_tu51wq_b0(myNode, LINKS.jvmArgs$IZpF, getEditorContext());
     return provider.createCell();
   }
-  private static class jvmArgsSingleRoleHandler_htktt1_b0 extends SingleRoleCellProvider {
+  private static class jvmArgsSingleRoleHandler_tu51wq_b0 extends SingleRoleCellProvider {
     @NotNull
     private SNode myNode;
 
-    public jvmArgsSingleRoleHandler_htktt1_b0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+    public jvmArgsSingleRoleHandler_tu51wq_b0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
       super(containmentLink, context);
       myNode = ownerNode;
     }

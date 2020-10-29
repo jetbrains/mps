@@ -326,7 +326,7 @@
   </registry>
   <node concept="13MO4I" id="9doRgNsoyX">
     <property role="TrG5h" value="reduce_TestModules" />
-    <ref role="3gUMe" to="5tjl:3X9rC2XzJdH" resolve="BuildMpsLayout_TestModules" />
+    <ref role="3gUMe" to="5tjl:3X9rC2XzJdH" resolve="BuildAspect_MpsTestModules" />
     <node concept="1l3spW" id="9doRgNso$C" role="13RCb5">
       <property role="TrG5h" value="_project" />
       <node concept="1l3spV" id="9doRgNso$E" role="1l3spN" />
@@ -3741,7 +3741,7 @@
     <property role="TrG5h" value="switch_TestAspectForMPS" />
     <ref role="phYkn" to="7kwb:L6i6iqEOhN" resolve="switch_BuildAspectInBuildMPS" />
     <node concept="3aamgX" id="2HnWMReJtMg" role="3aUrZf">
-      <ref role="30HIoZ" to="5tjl:3X9rC2XzJdH" resolve="BuildMpsLayout_TestModules" />
+      <ref role="30HIoZ" to="5tjl:3X9rC2XzJdH" resolve="BuildAspect_MpsTestModules" />
       <node concept="j$656" id="3umvbTBu2DR" role="1lVwrX">
         <ref role="v9R2y" node="9doRgNsoyX" resolve="reduce_TestModules" />
       </node>

@@ -236,7 +236,7 @@
   </registry>
   <node concept="13h7C7" id="3X9rC2XzJdO">
     <property role="3GE5qa" value="Project.Testing" />
-    <ref role="13h7C2" to="5tjl:3X9rC2XzJdH" resolve="BuildMpsLayout_TestModules" />
+    <ref role="13h7C2" to="5tjl:3X9rC2XzJdH" resolve="BuildAspect_MpsTestModules" />
     <node concept="13i0hz" id="3X9rC2XzJdP" role="13h7CS">
       <property role="TrG5h" value="hasModule" />
       <node concept="10P_77" id="3X9rC2XzJdQ" role="3clF45" />
@@ -765,7 +765,7 @@
   </node>
   <node concept="13h7C7" id="3X9rC2XzJi7">
     <property role="3GE5qa" value="Project.Testing" />
-    <ref role="13h7C2" to="5tjl:3X9rC2XzJdL" resolve="BuildMpsLayout_TestModules_Content" />
+    <ref role="13h7C2" to="5tjl:3X9rC2XzJdL" resolve="BuildMps_TestModules_Content" />
     <node concept="13i0hz" id="3X9rC2XzJi8" role="13h7CS">
       <property role="13i0iv" value="false" />
       <property role="TrG5h" value="contains" />
@@ -839,7 +839,7 @@
   </node>
   <node concept="13h7C7" id="3X9rC2XzJiq">
     <property role="3GE5qa" value="Project.Testing" />
-    <ref role="13h7C2" to="5tjl:3X9rC2XzJdM" resolve="BuildMpsLayout_TestModule" />
+    <ref role="13h7C2" to="5tjl:3X9rC2XzJdM" resolve="BuildMps_TestModule" />
     <node concept="13hLZK" id="3X9rC2XzJir" role="13h7CW">
       <node concept="3clFbS" id="3X9rC2XzJis" role="2VODD2" />
     </node>
@@ -904,7 +904,7 @@
   </node>
   <node concept="13h7C7" id="3X9rC2XzJiP">
     <property role="3GE5qa" value="Project.Testing" />
-    <ref role="13h7C2" to="5tjl:3X9rC2XzJdF" resolve="BuildMpsLayout_TestModuleGroup" />
+    <ref role="13h7C2" to="5tjl:3X9rC2XzJdF" resolve="BuildMps_TestModuleGroup" />
     <node concept="13hLZK" id="3X9rC2XzJiQ" role="13h7CW">
       <node concept="3clFbS" id="3X9rC2XzJiR" role="2VODD2" />
     </node>

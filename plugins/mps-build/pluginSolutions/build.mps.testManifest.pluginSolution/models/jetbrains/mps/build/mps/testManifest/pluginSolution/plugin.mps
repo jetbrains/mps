@@ -1295,7 +1295,7 @@
           <node concept="3cpWsn" id="7vU6U506hV4" role="3cpWs9">
             <property role="TrG5h" value="testGroup" />
             <node concept="3Tqbb2" id="7vU6U506hUZ" role="1tU5fm">
-              <ref role="ehGHo" to="5tjl:3X9rC2XzJdF" resolve="BuildMpsLayout_TestModuleGroup" />
+              <ref role="ehGHo" to="5tjl:3X9rC2XzJdF" resolve="BuildMps_TestModuleGroup" />
             </node>
           </node>
         </node>
@@ -2813,7 +2813,7 @@
     <node concept="3clFb_" id="7vU6U506iAy" role="jymVt">
       <property role="TrG5h" value="createTestModuleGroup" />
       <node concept="3Tqbb2" id="7vU6U506j3g" role="3clF45">
-        <ref role="ehGHo" to="5tjl:3X9rC2XzJdF" resolve="BuildMpsLayout_TestModuleGroup" />
+        <ref role="ehGHo" to="5tjl:3X9rC2XzJdF" resolve="BuildMps_TestModuleGroup" />
       </node>
       <node concept="3Tm6S6" id="7vU6U506iOU" role="1B3o_S" />
       <node concept="3clFbS" id="7vU6U506iAA" role="3clF47">
@@ -2823,7 +2823,7 @@
               <ref role="3cqZAo" node="7vU6U507DC0" resolve="target" />
             </node>
             <node concept="I8ghe" id="7vU6U506kCz" role="2OqNvi">
-              <ref role="I8UWU" to="5tjl:3X9rC2XzJdF" resolve="BuildMpsLayout_TestModuleGroup" />
+              <ref role="I8UWU" to="5tjl:3X9rC2XzJdF" resolve="BuildMps_TestModuleGroup" />
             </node>
           </node>
         </node>
@@ -2845,7 +2845,7 @@
       <node concept="37vLTG" id="7vU6U506u85" role="3clF46">
         <property role="TrG5h" value="testGroup" />
         <node concept="3Tqbb2" id="7vU6U506u86" role="1tU5fm">
-          <ref role="ehGHo" to="5tjl:3X9rC2XzJdF" resolve="BuildMpsLayout_TestModuleGroup" />
+          <ref role="ehGHo" to="5tjl:3X9rC2XzJdF" resolve="BuildMps_TestModuleGroup" />
         </node>
       </node>
       <node concept="3clFbS" id="7vU6U506u7A" role="3clF47">

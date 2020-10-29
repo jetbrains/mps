@@ -35,8 +35,8 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-public final class BuildMpsLayout_TestModules__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, "jetbrains.mps.build.mps.tests.structure.BuildMpsLayout_TestModules");
+public final class BuildAspect_MpsTestModules__BehaviorDescriptor extends BaseBHDescriptor {
+  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x3600cb0a44dd4a5bL, 0x996822924406419eL, 0x3f496e80bd8ef36dL, "jetbrains.mps.build.mps.tests.structure.BuildAspect_MpsTestModules");
 
   public static final SMethod<Boolean> hasModule_id3X9rC2XzJdP = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasModule").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3X9rC2XzJdP").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Void> fetchDependencies_id57YmpYyL8F1 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("fetchDependencies").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("57YmpYyL8F1").build(SMethodBuilder.createJavaParameter(VisibleArtifacts.class, ""), SMethodBuilder.createJavaParameter(RequiredDependenciesBuilder.class, ""));
@@ -50,7 +50,7 @@ public final class BuildMpsLayout_TestModules__BehaviorDescriptor extends BaseBH
   /*package*/ static boolean hasModule_id3X9rC2XzJdP(@NotNull SNode __thisNode__, final SNode module) {
     return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.modules$V7vE)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return (boolean) BuildMpsLayout_TestModules_Content__BehaviorDescriptor.contains_id3X9rC2XzJi8.invoke(it, module);
+        return (boolean) BuildMps_TestModules_Content__BehaviorDescriptor.contains_id3X9rC2XzJi8.invoke(it, module);
       }
     }) != null;
   }
@@ -58,7 +58,7 @@ public final class BuildMpsLayout_TestModules__BehaviorDescriptor extends BaseBH
     SNode project = artifacts.getProject();
     Iterable<SNode> originalModules = ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.modules$V7vE)).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
-        return (Iterable<SNode>) BuildMpsLayout_TestModules_Content__BehaviorDescriptor.getModules_id3X9rC2XzJij.invoke(it);
+        return (Iterable<SNode>) BuildMps_TestModules_Content__BehaviorDescriptor.getModules_id3X9rC2XzJij.invoke(it);
       }
     });
     MPSModulesClosure designtimeClosure = new MPSModulesClosure(originalModules, new MPSModulesClosure.ModuleDependenciesOptions().setTrackDevkits()).designtimeClosure();
@@ -99,7 +99,7 @@ public final class BuildMpsLayout_TestModules__BehaviorDescriptor extends BaseBH
     return null;
   }
 
-  /*package*/ BuildMpsLayout_TestModules__BehaviorDescriptor() {
+  /*package*/ BuildAspect_MpsTestModules__BehaviorDescriptor() {
   }
 
   @Override

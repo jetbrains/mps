@@ -129,7 +129,7 @@
   </registry>
   <node concept="1M2fIO" id="7rX0uLRY4B$">
     <property role="3GE5qa" value="Project.Testing" />
-    <ref role="1M2myG" to="5tjl:3X9rC2XzJdM" resolve="BuildMpsLayout_TestModule" />
+    <ref role="1M2myG" to="5tjl:3X9rC2XzJdM" resolve="BuildMps_TestModule" />
     <node concept="1N5Pfh" id="7rX0uLRY4Dj" role="1Mr941">
       <ref role="1N5Vy1" to="5tjl:3X9rC2XzJdN" resolve="module" />
       <node concept="3dgokm" id="5Vvmn_Ql1u4" role="1N6uqs">
@@ -155,7 +155,7 @@
           <node concept="2OqwBi" id="147CB3QsVRW" role="3clFbG">
             <node concept="1mIQ4w" id="147CB3QsVRX" role="2OqNvi">
               <node concept="chp4Y" id="147CB3QsVRY" role="cj9EA">
-                <ref role="cht4Q" to="5tjl:3X9rC2XzJdH" resolve="BuildMpsLayout_TestModules" />
+                <ref role="cht4Q" to="5tjl:3X9rC2XzJdH" resolve="BuildAspect_MpsTestModules" />
               </node>
             </node>
             <node concept="nLn13" id="147CB3QsVRZ" role="2Oq$k0" />
@@ -166,14 +166,14 @@
   </node>
   <node concept="1M2fIO" id="7rX0uM17uPf">
     <property role="3GE5qa" value="Project.Testing" />
-    <ref role="1M2myG" to="5tjl:3X9rC2XzJdF" resolve="BuildMpsLayout_TestModuleGroup" />
+    <ref role="1M2myG" to="5tjl:3X9rC2XzJdF" resolve="BuildMps_TestModuleGroup" />
     <node concept="9S07l" id="147CB3QsVTe" role="9Vyp8">
       <node concept="3clFbS" id="147CB3QsVTf" role="2VODD2">
         <node concept="3clFbF" id="147CB3QsVTg" role="3cqZAp">
           <node concept="2OqwBi" id="147CB3QsVTh" role="3clFbG">
             <node concept="1mIQ4w" id="147CB3QsVTi" role="2OqNvi">
               <node concept="chp4Y" id="147CB3QsVTj" role="cj9EA">
-                <ref role="cht4Q" to="5tjl:3X9rC2XzJdH" resolve="BuildMpsLayout_TestModules" />
+                <ref role="cht4Q" to="5tjl:3X9rC2XzJdH" resolve="BuildAspect_MpsTestModules" />
               </node>
             </node>
             <node concept="nLn13" id="147CB3QsVTk" role="2Oq$k0" />
@@ -203,7 +203,7 @@
   </node>
   <node concept="1M2fIO" id="3aW3IVw9ukr">
     <property role="3GE5qa" value="Project.Testing" />
-    <ref role="1M2myG" to="5tjl:3X9rC2XzJdH" resolve="BuildMpsLayout_TestModules" />
+    <ref role="1M2myG" to="5tjl:3X9rC2XzJdH" resolve="BuildAspect_MpsTestModules" />
     <node concept="9S07l" id="147CB3QsVS0" role="9Vyp8">
       <node concept="3clFbS" id="147CB3QsVS1" role="2VODD2">
         <node concept="3clFbJ" id="7jvA3$ZKkU_" role="3cqZAp">
@@ -388,7 +388,7 @@
   </node>
   <node concept="1M2fIO" id="5I1s5NvLqv4">
     <property role="3GE5qa" value="Project.Testing" />
-    <ref role="1M2myG" to="5tjl:5I1s5NvGLjw" resolve="BuildMpsLayout_TestModules_Options" />
+    <ref role="1M2myG" to="5tjl:5I1s5NvGLjw" resolve="BuildMps_TestModules_Options" />
     <node concept="9S07l" id="5I1s5NvLqv5" role="9Vyp8">
       <node concept="3clFbS" id="5I1s5NvLqv6" role="2VODD2">
         <node concept="3clFbF" id="5I1s5NvLqAp" role="3cqZAp">
@@ -396,7 +396,7 @@
             <node concept="nLn13" id="5I1s5NvLqAo" role="2Oq$k0" />
             <node concept="1mIQ4w" id="5I1s5NvLrfv" role="2OqNvi">
               <node concept="chp4Y" id="5I1s5NvLrmZ" role="cj9EA">
-                <ref role="cht4Q" to="5tjl:3X9rC2XzJdH" resolve="BuildMpsLayout_TestModules" />
+                <ref role="cht4Q" to="5tjl:3X9rC2XzJdH" resolve="BuildAspect_MpsTestModules" />
               </node>
             </node>
           </node>
