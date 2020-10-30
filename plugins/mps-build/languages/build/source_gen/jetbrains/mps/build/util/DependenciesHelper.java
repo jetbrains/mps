@@ -6,6 +6,7 @@ import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.TemplateQueryContext;
 import org.jetbrains.annotations.NotNull;
+import java.util.HashMap;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -18,23 +19,55 @@ public class DependenciesHelper {
   private final Map<SNode, String> locationMap;
   private final Map<SNode, String> contentLocationMap;
   private final Map<Object, SNode> idToArtifactMap;
-  protected final MacroHelper macros;
+  private final MacroHelper macros;
+  private final boolean myTranslateToOriginal;
   private final TemplateQueryContext myGenContext;
   private final SNode myProject;
   private final String myLocationKey;
   private final String myContentLocationKey;
-  private String myLayoutRelativeKey;
+  private final String myLayoutRelativeKey;
+  private final String myArtifactIdKey;
 
   public DependenciesHelper(@NotNull TemplateQueryContext genContext, SNode project) {
-    this.locationMap = GenerationUtil.<SNode,String>getSessionMap(project, genContext, "location");
-    this.contentLocationMap = GenerationUtil.<SNode,String>getSessionMap(project, genContext, "contentLocation");
-    this.idToArtifactMap = GenerationUtil.<Object,SNode>getSessionMap(project, genContext, "IDToArtifact");
+    this(genContext, project, true);
+  }
+
+  protected DependenciesHelper(TemplateQueryContext genContext, SNode project, boolean legacySessionMaps) {
+    if (legacySessionMaps) {
+      this.locationMap = GenerationUtil.<SNode,String>getSessionMap(project, genContext, "location");
+      this.contentLocationMap = GenerationUtil.<SNode,String>getSessionMap(project, genContext, "contentLocation");
+      this.idToArtifactMap = GenerationUtil.<Object,SNode>getSessionMap(project, genContext, "IDToArtifact");
+      myTranslateToOriginal = true;
+    } else {
+      // given the usage pattern of DH, with fill from preprocessing script, and reads from rules (that can be run in parallel),  
+      // I feel regular, non-concurrent map is enough; 
+      locationMap = new HashMap<SNode, String>(100);
+      contentLocationMap = new HashMap<SNode, String>(100);
+      idToArtifactMap = new HashMap<Object, SNode>(100);
+      myTranslateToOriginal = false;
+    }
     this.macros = new MacroHelper.MacroContext(project, genContext).getMacros(project);
     myGenContext = genContext;
     myProject = project;
-    myLocationKey = "location:" + SModelOperations.getModelName(SNodeOperations.getModel(project)) + '/' + SPropertyOperations.getString(project, PROPS.name$MnvL);
-    myContentLocationKey = "contentLocation:" + SModelOperations.getModelName(SNodeOperations.getModel(project)) + '/' + SPropertyOperations.getString(project, PROPS.name$MnvL);
-    myLayoutRelativeKey = "layout-relative:" + SModelOperations.getModelName(SNodeOperations.getModel(project)) + '/' + SPropertyOperations.getString(project, PROPS.name$MnvL);
+    // distinguish UO keys for legacy and new DH not to overwrite accidentally 
+    final String qualifiedProjectName = SModelOperations.getModelName(SNodeOperations.getModel(project)) + '/' + SPropertyOperations.getString(project, PROPS.name$MnvL) + ((legacySessionMaps ? "" : "/new"));
+    myLocationKey = "location:" + qualifiedProjectName;
+    myContentLocationKey = "contentLocation:" + qualifiedProjectName;
+    myLayoutRelativeKey = "layout-relative:" + qualifiedProjectName;
+    myArtifactIdKey = "artifact-key:" + qualifiedProjectName;
+  }
+
+  /*package*/ static void put(DependenciesHelper dh, String token) {
+    final String key = token + "::" + SModelOperations.getModelName(SNodeOperations.getModel(dh.myProject)) + "/" + SPropertyOperations.getString(dh.myProject, PROPS.name$MnvL);
+    // FIXME eventually (if DH persists), could at least become 'step' object; 
+    //      now need to span several steps (build.mps: load modules, aliases, main), hence session 
+    assert dh.myGenContext.getSessionObject(key) == null : "just to notice if anything wrong with our assumptions";
+    dh.myGenContext.putSessionObject(key, dh);
+  }
+
+  public static DependenciesHelper get(TemplateQueryContext genContext, SNode project, String token) {
+    final String key = token + "::" + SModelOperations.getModelName(SNodeOperations.getModel(project)) + "/" + SPropertyOperations.getString(project, PROPS.name$MnvL);
+    return (DependenciesHelper) genContext.getSessionObject(key);
   }
 
   public TemplateQueryContext getGenContext() {
@@ -116,27 +149,47 @@ public class DependenciesHelper {
   }
 
   public SNode getArtifact(SNode id) {
-    return SNodeOperations.as(idToArtifactMap.get(getOriginalNode(id)), CONCEPTS.BuildLayout_Node$Rb);
+    return SNodeOperations.as(idToArtifactMap.get(artifactIdKey(getOriginalNode(id), false)), CONCEPTS.BuildLayout_Node$Rb);
   }
 
   public SNode getArtifact(LocalSourcePathArtifact id) {
     return SNodeOperations.as(idToArtifactMap.get(id), CONCEPTS.BuildLayout_Node$Rb);
   }
 
-  public void putArtifact(String id, SNode artifact) {
+  /*package*/ void putArtifact(String id, SNode artifact) {
     putArtifact0(id, artifact);
   }
 
-  public void putArtifact(SNode id, SNode artifact) {
-    putArtifact0(getOriginalNode(id), artifact);
+  /*package*/ void putArtifact(SNode id, SNode artifact) {
+    putArtifact0(artifactIdKey(getOriginalNode(id), true), artifact);
   }
 
-  public void putArtifact(LocalSourcePathArtifact id, SNode artifact) {
+  /*package*/ void putArtifact(LocalSourcePathArtifact id, SNode artifact) {
     putArtifact0(id, artifact);
   }
 
   private void putArtifact0(Object id, SNode artifact) {
     idToArtifactMap.put(id, artifact);
+  }
+
+  private Object artifactIdKey(SNode id, boolean create) {
+    // when there's translation to original node, no reason to mangle the key.  
+    if (myTranslateToOriginal) {
+      return id;
+    }
+    // however, if we don't resort to original node, we may record artifact for module@1_0 and query it with module@4_4 
+    // XXX could use anything, like integer counter, although for debug purposes would be handy to have name of project part here 
+    if (create && isFromTransformedModel(id)) {
+      // note, isFromTransformedModel() would answer NO for id that has been recorded at step @1_0 but instance comes from @4_4, 
+      //  nevertheless, I don't want to reduce the check to just `id.model isInstanceOf TransientSModel`, and stick to the assumption 
+      //  putArtifact() happens at the same step as new DH (FDP.alternativeProcess()), and check isFromTransformedModel() only at creation time. 
+      Object key = id.getNodeId();
+      assert key != null;
+      id.putUserObject(myArtifactIdKey, key);
+      return key;
+    }
+    Object key = id.getUserObject(myArtifactIdKey);
+    return (key == null ? id : key);
   }
 
   public MacroHelper getMacroHelper() {
@@ -159,6 +212,9 @@ public class DependenciesHelper {
   }
 
   public SNode getOriginalNode(SNode node) {
+    if (!(myTranslateToOriginal)) {
+      return node;
+    }
     return getOriginalNode(node, myGenContext);
   }
 
