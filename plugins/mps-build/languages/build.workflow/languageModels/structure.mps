@@ -645,6 +645,9 @@
   <node concept="1TIwiD" id="AbdozcomNa">
     <property role="EcuMT" value="687702229764893898" />
     <property role="TrG5h" value="XmlForeignRefValue" />
+    <property role="34LRSv" value="*[" />
+    <property role="3GE5qa" value="xml" />
+    <property role="R4oN_" value="referenced value" />
     <ref role="1TJDcQ" to="iuxj:5M4a$b5jfOs" resolve="XmlValuePart" />
     <node concept="1TJgyj" id="AbdozcomNb" role="1TKVEi">
       <property role="IQ2ns" value="687702229764893899" />

@@ -6,33 +6,34 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="ConstraintsAspectDescriptor.java">
-      <unit at="13,0,39,0" name="jetbrains.mps.build.workflow.constraints.ConstraintsAspectDescriptor" />
+      <unit at="13,0,41,0" name="jetbrains.mps.build.workflow.constraints.ConstraintsAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:8c3c79a2-2377-4680-a62f-78d39fdded56(jetbrains.mps.build.workflow.constraints)/1117643560963285901">
     <file name="BwfTaskLibrary_Constraints.java">
-      <node id="1117643560963285901" at="21,39,22,38" concept="9" />
+      <node id="1117643560963285901" at="21,39,22,38" concept="10" />
       <node id="1117643560963285901" at="29,128,30,133" concept="4" />
-      <node id="1117643560963285901" at="30,133,31,0" concept="6" />
+      <node id="1117643560963285901" at="30,133,31,0" concept="7" />
       <node id="1117643560963285901" at="32,55,33,72" concept="1" />
-      <node id="1117643560963285901" at="34,9,35,0" concept="6" />
+      <node id="1117643560963285901" at="34,9,35,0" concept="7" />
       <node id="1117643560963285901" at="35,0,36,22" concept="5" />
       <node id="1227128029536580205" at="40,128,41,410" concept="5" />
-      <node id="1117643560963285901" at="43,0,44,0" concept="7" trace="canBeParentBreakingPoint" />
-      <node id="1117643560963285901" at="46,0,47,0" concept="7" trace="BwfTaskLibrary$kP" />
-      <node id="1117643560963285901" at="47,0,48,0" concept="7" trace="BwfTaskLibraryDependency$g5" />
-      <node id="1117643560963285901" at="48,0,49,0" concept="7" trace="BwfTask$ZZ" />
-      <node id="1117643560963285901" at="49,0,50,0" concept="7" trace="BwfTaskPart$sR" />
-      <node id="1117643560963285901" at="50,0,51,0" concept="7" trace="BwfMacro$5R" />
+      <node id="1117643560963285901" at="43,0,44,0" concept="8" trace="canBeParentBreakingPoint" />
+      <node id="1117643560963285901" at="46,0,47,0" concept="8" trace="BwfTaskLibrary$kP" />
+      <node id="1117643560963285901" at="47,0,48,0" concept="8" trace="BwfTaskLibraryDependency$g5" />
+      <node id="1117643560963285901" at="48,0,49,0" concept="8" trace="BwfTask$ZZ" />
+      <node id="1117643560963285901" at="49,0,50,0" concept="8" trace="BwfTaskPart$sR" />
+      <node id="1117643560963285901" at="50,0,51,0" concept="8" trace="BwfMacro$5R" />
       <node id="1117643560963285901" at="21,0,24,0" concept="0" trace="BwfTaskLibrary_Constraints#()V" />
       <node id="1117643560963285901" at="31,0,34,9" concept="2" />
-      <node id="1117643560963285901" at="40,0,43,0" concept="8" trace="staticCanBeAParent#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="1117643560963285901" at="40,0,43,0" concept="9" trace="staticCanBeAParent#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
       <node id="1117643560963285901" at="28,0,38,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeParent;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
       <node id="1117643560963285901" at="26,105,38,6" concept="5" />
       <node id="1117643560963285901" at="25,0,40,0" concept="3" trace="calculateCanBeParentConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
@@ -62,7 +63,7 @@
   </root>
   <root nodeRef="r:8c3c79a2-2377-4680-a62f-78d39fdded56(jetbrains.mps.build.workflow.constraints)/2769948622284605888">
     <file name="BwfSubTaskDependency_Constraints.java">
-      <node id="2769948622284605888" at="23,45,24,44" concept="9" />
+      <node id="2769948622284605888" at="23,45,24,44" concept="10" />
       <node id="2769948622284605889" at="31,44,32,20" concept="5" />
       <node id="2769948622284605889" at="39,63,40,57" concept="5" />
       <node id="2769948622284605889" at="43,80,44,146" concept="4" />
@@ -70,10 +71,10 @@
       <node id="2769948622284605888" at="49,6,50,131" concept="4" />
       <node id="2769948622284605889" at="50,131,51,42" concept="1" />
       <node id="2769948622284605888" at="51,42,52,22" concept="5" />
-      <node id="2769948622284605888" at="54,0,55,0" concept="7" trace="breakingNode_45r57v_a0a0a0a0a1a0a0a0c" />
-      <node id="2769948622284605888" at="57,0,58,0" concept="7" trace="BwfSubTaskDependency$OB" />
-      <node id="2769948622284605888" at="58,0,59,0" concept="7" trace="BwfSubTask$X" />
-      <node id="2769948622284605888" at="62,0,63,0" concept="7" trace="target$btZ8" />
+      <node id="2769948622284605888" at="54,0,55,0" concept="8" trace="breakingNode_45r57v_a0a0a0a0a1a0a0a0c" />
+      <node id="2769948622284605888" at="57,0,58,0" concept="8" trace="BwfSubTaskDependency$OB" />
+      <node id="2769948622284605888" at="58,0,59,0" concept="8" trace="BwfSubTask$X" />
+      <node id="2769948622284605888" at="62,0,63,0" concept="8" trace="target$btZ8" />
       <node id="2769948622284605888" at="23,0,26,0" concept="0" trace="BwfSubTaskDependency_Constraints#()V" />
       <node id="2769948622284605889" at="30,0,34,0" concept="3" trace="hasOwnScopeProvider#()Z" />
       <node id="2769948622284605889" at="38,0,42,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -110,10 +111,10 @@
   </root>
   <root nodeRef="r:8c3c79a2-2377-4680-a62f-78d39fdded56(jetbrains.mps.build.workflow.constraints)/2769948622284761820">
     <file name="BwfTask_Constraints.java">
-      <node id="2769948622284761820" at="21,32,22,31" concept="9" />
-      <node id="2769948622284761821" at="26,59,27,40" concept="9" />
+      <node id="2769948622284761820" at="21,32,22,31" concept="10" />
+      <node id="2769948622284761821" at="26,59,27,40" concept="10" />
       <node id="2769948622284761821" at="30,38,31,18" concept="5" />
-      <node id="2769948622284761821" at="33,0,34,0" concept="7" trace="validatePropertyBreakingPoint" />
+      <node id="2769948622284761821" at="33,0,34,0" concept="8" trace="validatePropertyBreakingPoint" />
       <node id="2769948622284761821" at="35,109,36,99" concept="4" />
       <node id="2769948622284761821" at="37,53,38,75" concept="1" />
       <node id="2769948622284761821" at="39,7,40,20" concept="5" />
@@ -121,12 +122,12 @@
       <node id="2769948622284761820" at="47,84,48,119" concept="4" />
       <node id="2769948622284761821" at="48,119,49,61" concept="1" />
       <node id="2769948622284761820" at="49,61,50,22" concept="5" />
-      <node id="2769948622284761820" at="54,0,55,0" concept="7" trace="BwfTask$ZZ" />
-      <node id="2769948622284761820" at="58,0,59,0" concept="7" trace="name$MnvL" />
+      <node id="2769948622284761820" at="54,0,55,0" concept="8" trace="BwfTask$ZZ" />
+      <node id="2769948622284761820" at="58,0,59,0" concept="8" trace="name$MnvL" />
       <node id="2769948622284761820" at="21,0,24,0" concept="0" trace="BwfTask_Constraints#()V" />
       <node id="2769948622284761821" at="26,0,29,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="2769948622284761821" at="36,99,39,7" concept="2" />
-      <node id="2769948622284761821" at="42,0,45,0" concept="8" trace="staticValidateProperty#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)Z" />
+      <node id="2769948622284761821" at="42,0,45,0" concept="9" trace="staticValidateProperty#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)Z" />
       <node id="2769948622284761821" at="29,0,33,0" concept="3" trace="hasOwnValidator#()Z" />
       <node id="2769948622284761820" at="46,0,52,0" concept="3" trace="getSpecifiedProperties#()Ljava/util/Map;" />
       <node id="2769948622284761821" at="34,0,42,0" concept="3" trace="validateValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/Object;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Z" />
@@ -164,10 +165,10 @@
   </root>
   <root nodeRef="r:8c3c79a2-2377-4680-a62f-78d39fdded56(jetbrains.mps.build.workflow.constraints)/2769948622284761849">
     <file name="BwfSubTask_Constraints.java">
-      <node id="2769948622284761849" at="20,35,21,33" concept="9" />
-      <node id="2769948622284761850" at="25,59,26,40" concept="9" />
+      <node id="2769948622284761849" at="20,35,21,33" concept="10" />
+      <node id="2769948622284761850" at="25,59,26,40" concept="10" />
       <node id="2769948622284761850" at="29,38,30,18" concept="5" />
-      <node id="2769948622284761850" at="32,0,33,0" concept="7" trace="validatePropertyBreakingPoint" />
+      <node id="2769948622284761850" at="32,0,33,0" concept="8" trace="validatePropertyBreakingPoint" />
       <node id="2769948622284761850" at="34,109,35,99" concept="4" />
       <node id="2769948622284761850" at="36,53,37,75" concept="1" />
       <node id="2769948622284761850" at="38,7,39,20" concept="5" />
@@ -175,12 +176,12 @@
       <node id="2769948622284761849" at="46,84,47,119" concept="4" />
       <node id="2769948622284761850" at="47,119,48,61" concept="1" />
       <node id="2769948622284761849" at="48,61,49,22" concept="5" />
-      <node id="2769948622284761849" at="53,0,54,0" concept="7" trace="BwfSubTask$X" />
-      <node id="2769948622284761849" at="57,0,58,0" concept="7" trace="name$MnvL" />
+      <node id="2769948622284761849" at="53,0,54,0" concept="8" trace="BwfSubTask$X" />
+      <node id="2769948622284761849" at="57,0,58,0" concept="8" trace="name$MnvL" />
       <node id="2769948622284761849" at="20,0,23,0" concept="0" trace="BwfSubTask_Constraints#()V" />
       <node id="2769948622284761850" at="25,0,28,0" concept="0" trace="Name_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
       <node id="2769948622284761850" at="35,99,38,7" concept="2" />
-      <node id="2769948622284761850" at="41,0,44,0" concept="8" trace="staticValidateProperty#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)Z" />
+      <node id="2769948622284761850" at="41,0,44,0" concept="9" trace="staticValidateProperty#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)Z" />
       <node id="2769948622284761850" at="28,0,32,0" concept="3" trace="hasOwnValidator#()Z" />
       <node id="2769948622284761849" at="45,0,51,0" concept="3" trace="getSpecifiedProperties#()Ljava/util/Map;" />
       <node id="2769948622284761850" at="33,0,41,0" concept="3" trace="validateValue#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/Object;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Z" />
@@ -218,20 +219,20 @@
   </root>
   <root nodeRef="r:8c3c79a2-2377-4680-a62f-78d39fdded56(jetbrains.mps.build.workflow.constraints)/7926701909975791098">
     <file name="BwfFileSet_Constraints.java">
-      <node id="7926701909975791098" at="21,35,22,34" concept="9" />
+      <node id="7926701909975791098" at="21,35,22,34" concept="10" />
       <node id="7926701909975791098" at="29,128,30,133" concept="4" />
-      <node id="7926701909975791098" at="30,133,31,0" concept="6" />
+      <node id="7926701909975791098" at="30,133,31,0" concept="7" />
       <node id="7926701909975791098" at="32,55,33,72" concept="1" />
-      <node id="7926701909975791098" at="34,9,35,0" concept="6" />
+      <node id="7926701909975791098" at="34,9,35,0" concept="7" />
       <node id="7926701909975791098" at="35,0,36,22" concept="5" />
       <node id="1227128029536580191" at="40,128,41,210" concept="5" />
-      <node id="7926701909975791098" at="43,0,44,0" concept="7" trace="canBeParentBreakingPoint" />
-      <node id="7926701909975791098" at="46,0,47,0" concept="7" trace="BwfFileSet$8N" />
-      <node id="7926701909975791098" at="47,0,48,0" concept="7" trace="BwfPathReference$JU" />
-      <node id="7926701909975791098" at="48,0,49,0" concept="7" trace="XmlElement$fP" />
+      <node id="7926701909975791098" at="43,0,44,0" concept="8" trace="canBeParentBreakingPoint" />
+      <node id="7926701909975791098" at="46,0,47,0" concept="8" trace="BwfFileSet$8N" />
+      <node id="7926701909975791098" at="47,0,48,0" concept="8" trace="BwfPathReference$JU" />
+      <node id="7926701909975791098" at="48,0,49,0" concept="8" trace="XmlElement$fP" />
       <node id="7926701909975791098" at="21,0,24,0" concept="0" trace="BwfFileSet_Constraints#()V" />
       <node id="7926701909975791098" at="31,0,34,9" concept="2" />
-      <node id="7926701909975791098" at="40,0,43,0" concept="8" trace="staticCanBeAParent#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="7926701909975791098" at="40,0,43,0" concept="9" trace="staticCanBeAParent#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
       <node id="7926701909975791098" at="28,0,38,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeParent;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
       <node id="7926701909975791098" at="26,105,38,6" concept="5" />
       <node id="7926701909975791098" at="25,0,40,0" concept="3" trace="calculateCanBeParentConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
@@ -261,21 +262,21 @@
   </root>
   <root nodeRef="r:8c3c79a2-2377-4680-a62f-78d39fdded56(jetbrains.mps.build.workflow.constraints)/7926701909975915317">
     <file name="BwfJavaClassPath_Constraints.java">
-      <node id="7926701909975915317" at="21,41,22,40" concept="9" />
+      <node id="7926701909975915317" at="21,41,22,40" concept="10" />
       <node id="7926701909975915317" at="29,128,30,133" concept="4" />
-      <node id="7926701909975915317" at="30,133,31,0" concept="6" />
+      <node id="7926701909975915317" at="30,133,31,0" concept="7" />
       <node id="7926701909975915317" at="32,55,33,72" concept="1" />
-      <node id="7926701909975915317" at="34,9,35,0" concept="6" />
+      <node id="7926701909975915317" at="34,9,35,0" concept="7" />
       <node id="7926701909975915317" at="35,0,36,22" concept="5" />
       <node id="1227128029536580231" at="40,128,41,316" concept="5" />
-      <node id="7926701909975915317" at="43,0,44,0" concept="7" trace="canBeParentBreakingPoint" />
-      <node id="7926701909975915317" at="46,0,47,0" concept="7" trace="BwfJavaClassPath$at" />
-      <node id="7926701909975915317" at="47,0,48,0" concept="7" trace="NodeAttribute$x2" />
-      <node id="7926701909975915317" at="48,0,49,0" concept="7" trace="XmlElement$fP" />
-      <node id="7926701909975915317" at="49,0,50,0" concept="7" trace="BwfPathReference$JU" />
+      <node id="7926701909975915317" at="43,0,44,0" concept="8" trace="canBeParentBreakingPoint" />
+      <node id="7926701909975915317" at="46,0,47,0" concept="8" trace="BwfJavaClassPath$at" />
+      <node id="7926701909975915317" at="47,0,48,0" concept="8" trace="NodeAttribute$x2" />
+      <node id="7926701909975915317" at="48,0,49,0" concept="8" trace="XmlElement$fP" />
+      <node id="7926701909975915317" at="49,0,50,0" concept="8" trace="BwfPathReference$JU" />
       <node id="7926701909975915317" at="21,0,24,0" concept="0" trace="BwfJavaClassPath_Constraints#()V" />
       <node id="7926701909975915317" at="31,0,34,9" concept="2" />
-      <node id="7926701909975915317" at="40,0,43,0" concept="8" trace="staticCanBeAParent#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="7926701909975915317" at="40,0,43,0" concept="9" trace="staticCanBeAParent#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
       <node id="7926701909975915317" at="28,0,38,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeParent;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
       <node id="7926701909975915317" at="26,105,38,6" concept="5" />
       <node id="7926701909975915317" at="25,0,40,0" concept="3" trace="calculateCanBeParentConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
@@ -301,6 +302,51 @@
       <unit id="7926701909975915317" at="45,0,51,0" name="jetbrains.mps.build.workflow.constraints.BwfJavaClassPath_Constraints$CONCEPTS" />
       <unit id="7926701909975915317" at="27,15,38,5" name="jetbrains.mps.build.workflow.constraints.BwfJavaClassPath_Constraints$1" />
       <unit id="7926701909975915317" at="20,0,52,0" name="jetbrains.mps.build.workflow.constraints.BwfJavaClassPath_Constraints" />
+    </file>
+  </root>
+  <root nodeRef="r:8c3c79a2-2377-4680-a62f-78d39fdded56(jetbrains.mps.build.workflow.constraints)/8849917859617053813">
+    <file name="XmlForeignRefValue_Constraints.java">
+      <node id="8849917859617053813" at="25,43,26,42" concept="10" />
+      <node id="8849917859617053814" at="33,44,34,20" concept="5" />
+      <node id="8849917859617053814" at="41,63,42,57" concept="5" />
+      <node id="8849917859617058133" at="45,80,46,43" concept="6" />
+      <node id="8849917859617054804" at="46,43,47,188" concept="5" />
+      <node id="8849917859617053813" at="51,6,52,131" concept="4" />
+      <node id="8849917859617053814" at="52,131,53,42" concept="1" />
+      <node id="8849917859617053813" at="53,42,54,22" concept="5" />
+      <node id="8849917859617053813" at="56,0,57,0" concept="8" trace="breakingNode_h0m4vt_a0a0a0a0a1a0a0a0c" />
+      <node id="8849917859617053813" at="59,0,60,0" concept="8" trace="XmlForeignRefValue$54" />
+      <node id="8849917859617053813" at="63,0,64,0" concept="8" trace="target$L6dC" />
+      <node id="8849917859617053813" at="25,0,28,0" concept="0" trace="XmlForeignRefValue_Constraints#()V" />
+      <node id="8849917859617053814" at="32,0,36,0" concept="3" trace="hasOwnScopeProvider#()Z" />
+      <node id="8849917859617053814" at="40,0,44,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="8849917859617053814" at="44,0,49,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="8849917859617053814" at="38,56,49,10" concept="5" />
+      <node id="8849917859617053814" at="36,0,51,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="8849917859617053814" at="30,90,51,6" concept="4" />
+      <node id="8849917859617053813" at="29,0,56,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="8849917859617053813" at="25,43,26,42" />
+      <scope id="8849917859617053814" at="33,44,34,20" />
+      <scope id="8849917859617053814" at="41,63,42,57" />
+      <scope id="8849917859617053814" at="45,80,47,188" />
+      <scope id="8849917859617053813" at="25,0,28,0" />
+      <scope id="8849917859617053814" at="32,0,36,0" />
+      <scope id="8849917859617053814" at="40,0,44,0" />
+      <scope id="8849917859617053814" at="44,0,49,0">
+        <var name="_context" id="8849917859617053814" />
+      </scope>
+      <scope id="8849917859617053814" at="38,56,49,10" />
+      <scope id="8849917859617053814" at="36,0,51,0" />
+      <scope id="8849917859617053813" at="30,90,54,22">
+        <var name="d0" id="8849917859617053814" />
+        <var name="references" id="8849917859617053813" />
+      </scope>
+      <scope id="8849917859617053813" at="29,0,56,0" />
+      <unit id="8849917859617053813" at="58,0,61,0" name="jetbrains.mps.build.workflow.constraints.XmlForeignRefValue_Constraints$CONCEPTS" />
+      <unit id="8849917859617053813" at="62,0,65,0" name="jetbrains.mps.build.workflow.constraints.XmlForeignRefValue_Constraints$LINKS" />
+      <unit id="8849917859617053814" at="39,19,49,9" name="jetbrains.mps.build.workflow.constraints.XmlForeignRefValue_Constraints$1$1" />
+      <unit id="8849917859617053814" at="31,48,51,5" name="jetbrains.mps.build.workflow.constraints.XmlForeignRefValue_Constraints$1" />
+      <unit id="8849917859617053813" at="24,0,66,0" name="jetbrains.mps.build.workflow.constraints.XmlForeignRefValue_Constraints" />
     </file>
   </root>
 </debug-info>

@@ -136,6 +136,9 @@
       <concept id="7342352913006985483" name="jetbrains.mps.lang.editor.structure.SubstituteMenuPart_Action" flags="ng" index="3eGOop">
         <child id="8612453216082699922" name="substituteHandler" index="3aKz83" />
       </concept>
+      <concept id="414384289274424754" name="jetbrains.mps.lang.editor.structure.SubstituteMenuPart_AddConcept" flags="ng" index="3ft5Ry">
+        <reference id="697754674827630451" name="concept" index="4PJHt" />
+      </concept>
       <concept id="414384289274418283" name="jetbrains.mps.lang.editor.structure.SubstituteMenuPart_Group" flags="ng" index="3ft6gV">
         <child id="414384289274424750" name="condition" index="3ft5RY" />
         <child id="414384289274424751" name="parts" index="3ft5RZ" />
@@ -2448,6 +2451,7 @@
     </node>
   </node>
   <node concept="24kQdi" id="AbdozconT7">
+    <property role="3GE5qa" value="xml" />
     <ref role="1XX52x" to="8xvf:AbdozcomNa" resolve="XmlForeignRefValue" />
     <node concept="3EZMnI" id="AbdozconT9" role="2wV5jI">
       <node concept="3F0ifn" id="AbdozconTg" role="3EZMnx">
@@ -2463,6 +2467,14 @@
         <property role="3F0ifm" value="]" />
       </node>
       <node concept="2iRfu4" id="AbdozconTc" role="2iSdaV" />
+    </node>
+  </node>
+  <node concept="22mcaB" id="7Fhemu9R2U$">
+    <property role="3GE5qa" value="xml" />
+    <ref role="aqKnT" to="8xvf:AbdozcomNa" resolve="XmlForeignRefValue" />
+    <node concept="22hDWj" id="7Fhemu9R2U_" role="22hAXT" />
+    <node concept="3ft5Ry" id="7Fhemu9R2VU" role="3ft7WO">
+      <ref role="4PJHt" to="8xvf:AbdozcomNa" resolve="XmlForeignRefValue" />
     </node>
   </node>
 </model>

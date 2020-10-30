@@ -30,9 +30,11 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
         return new BwfTask_Constraints();
       case 5:
         return new BwfTaskLibrary_Constraints();
+      case 6:
+        return new XmlForeignRefValue_Constraints();
       default:
     }
     return new BaseConstraintsDescriptor(concept);
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6e014d63c07ebd1bL), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cede077L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5b49b8L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6273L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6565da114724ce92L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6e014d63c07ebd1bL), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cede077L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5b49b8L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6273L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6565da114724ce92L), MetaIdFactory.conceptId(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x98b3588cc616ccaL)).seal();
 }

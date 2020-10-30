@@ -260,7 +260,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_XmlForeignRefValue == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.experimental(true);
-          cpb.presentationByReference(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x98b3588cc616ccaL, 0x98b3588cc616ccbL, "target", "", "");
+          cpb.shortDesc("referenced value");
+          cpb.rawPresentation("*[");
           props_XmlForeignRefValue = cpb.create();
         }
         return props_XmlForeignRefValue;

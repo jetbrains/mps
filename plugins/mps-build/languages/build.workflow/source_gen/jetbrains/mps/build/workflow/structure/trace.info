@@ -9,13 +9,13 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <root>
     <file name="ConceptPresentationAspectImpl.java">
-      <unit at="11,0,271,0" name="jetbrains.mps.build.workflow.structure.ConceptPresentationAspectImpl" />
+      <unit at="11,0,272,0" name="jetbrains.mps.build.workflow.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <unit at="10,0,88,0" name="jetbrains.mps.build.workflow.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <unit at="15,0,469,0" name="jetbrains.mps.build.workflow.structure.StructureAspectDescriptor" />
+      <unit at="15,0,470,0" name="jetbrains.mps.build.workflow.structure.StructureAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:ed179f4d-7cf2-479d-8348-50c1fc63b96a(jetbrains.mps.build.workflow.structure)/144710003695346438">
@@ -834,14 +834,15 @@
       <node id="687702229764893898" at="42,0,43,0" concept="1" trace="props_XmlForeignRefValue" />
       <node id="687702229764893898" at="260,47,261,76" concept="3" />
       <node id="687702229764893898" at="261,76,262,33" concept="0" />
-      <node id="687702229764893898" at="262,33,263,138" concept="0" />
-      <node id="687702229764893898" at="263,138,264,50" concept="0" />
-      <node id="687702229764893898" at="265,9,266,40" concept="4" />
-      <node id="687702229764893898" at="259,52,265,9" concept="2" />
-      <scope id="687702229764893898" at="260,47,264,50">
+      <node id="687702229764893898" at="262,33,263,44" concept="0" />
+      <node id="687702229764893898" at="263,44,264,36" concept="0" />
+      <node id="687702229764893898" at="264,36,265,50" concept="0" />
+      <node id="687702229764893898" at="266,9,267,40" concept="4" />
+      <node id="687702229764893898" at="259,52,266,9" concept="2" />
+      <scope id="687702229764893898" at="260,47,265,50">
         <var name="cpb" id="687702229764893898" />
       </scope>
-      <scope id="687702229764893898" at="259,52,266,40" />
+      <scope id="687702229764893898" at="259,52,267,40" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="687702229764893898" at="42,0,43,0" concept="5" trace="XmlForeignRefValue" />
@@ -856,13 +857,14 @@
       <node id="687702229764893898" at="462,125,463,114" concept="0" />
       <node id="687702229764893898" at="463,114,464,17" concept="0" />
       <node id="687702229764893899" at="464,17,465,163" concept="0" />
-      <node id="687702229764893898" at="465,163,466,22" concept="4" />
-      <node id="687702229764893898" at="459,0,468,0" concept="6" trace="createDescriptorForXmlForeignRefValue#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <node id="687702229764893898" at="465,163,466,18" concept="0" />
+      <node id="687702229764893898" at="466,18,467,22" concept="4" />
+      <node id="687702229764893898" at="459,0,469,0" concept="6" trace="createDescriptorForXmlForeignRefValue#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="687702229764893898" at="130,52,131,43" />
-      <scope id="687702229764893898" at="459,76,466,22">
+      <scope id="687702229764893898" at="459,76,467,22">
         <var name="b" id="687702229764893898" />
       </scope>
-      <scope id="687702229764893898" at="459,0,468,0" />
+      <scope id="687702229764893898" at="459,0,469,0" />
     </file>
   </root>
   <root nodeRef="r:ed179f4d-7cf2-479d-8348-50c1fc63b96a(jetbrains.mps.build.workflow.structure)/6896005762093571400">
