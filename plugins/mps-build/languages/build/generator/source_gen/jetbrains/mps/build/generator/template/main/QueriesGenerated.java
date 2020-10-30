@@ -705,7 +705,7 @@ public class QueriesGenerated extends QueryProviderBase {
       _context.showErrorMessage(_context.getNode(), "no context project defined");
       return "???";
     }
-    DependenciesHelper helper = new DependenciesHelper(_context, project);
+    DependenciesHelper helper = DependenciesHelper.get(_context, project, "j.m.build");
     SNode layoutNode = helper.getArtifact(((SNode) _context.getVariable("dependency")));
     if (layoutNode == null) {
       _context.showErrorMessage(_context.getNode(), "java module dependency '" + SPropertyOperations.getString(((SNode) _context.getVariable("dependency")), PROPS.name$MnvL) + "' was not found in the layout");
@@ -715,7 +715,7 @@ public class QueriesGenerated extends QueryProviderBase {
     // as we still expect artifactId to come from original model 
     // (though do the translation ourselves in DH.getArtifact()) 
     // Just don't want to deal with this code right now, need to return to artifactId concept anyway. 
-    String val = BuildLayout_PathElement__BehaviorDescriptor.location_id6b4RkXS8sT2.invoke(layoutNode, helper, helper.getOriginalNode(((SNode) _context.getVariable("dependency"))));
+    String val = BuildLayout_PathElement__BehaviorDescriptor.location_id6b4RkXS8sT2.invoke(layoutNode, helper, ((SNode) _context.getVariable("dependency")));
     if (val == null) {
       _context.showErrorMessage(_context.getNode(), "no location found for the java module dependency '" + SPropertyOperations.getString(((SNode) _context.getVariable("dependency")), PROPS.name$MnvL) + "'");
       return "???";
@@ -731,7 +731,7 @@ public class QueriesGenerated extends QueryProviderBase {
       _context.showErrorMessage(_context.getNode(), "no context project defined");
       return "???";
     }
-    DependenciesHelper helper = new DependenciesHelper(_context, project);
+    DependenciesHelper helper = DependenciesHelper.get(_context, project, "j.m.build");
     SNode layoutNode = helper.getArtifact(SLinkOperations.getTarget(((SNode) _context.getVariable("jar")), LINKS.path$M9si));
     if (layoutNode == null) {
       _context.showErrorMessage(_context.getNode(), "file " + BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(((SNode) _context.getVariable("jar")), LINKS.path$M9si)) + " was not found in the layout");
@@ -753,7 +753,7 @@ public class QueriesGenerated extends QueryProviderBase {
       _context.showErrorMessage(_context.getNode(), "no context project defined");
       return "???";
     }
-    DependenciesHelper helper = new DependenciesHelper(_context, project);
+    DependenciesHelper helper = DependenciesHelper.get(_context, project, "j.m.build");
     SNode layoutNode;
     if (SNodeOperations.isInstanceOf(targetFile, CONCEPTS.BuildLayout_Node$Rb)) {
       layoutNode = SNodeOperations.as(targetFile, CONCEPTS.BuildLayout_Node$Rb);
@@ -779,7 +779,7 @@ public class QueriesGenerated extends QueryProviderBase {
       _context.showErrorMessage(_context.getNode(), "no context project defined");
       return "???";
     }
-    DependenciesHelper helper = new DependenciesHelper(_context, project);
+    DependenciesHelper helper = DependenciesHelper.get(_context, project, "j.m.build");
     SNode layoutNode;
     if (SNodeOperations.isInstanceOf(targetFolder, CONCEPTS.BuildLayout_AbstractContainer$zG)) {
       layoutNode = SNodeOperations.as(targetFolder, CONCEPTS.BuildLayout_AbstractContainer$zG);
@@ -827,7 +827,7 @@ public class QueriesGenerated extends QueryProviderBase {
       _context.showErrorMessage(_context.getNode(), "no context project defined");
       return "???";
     }
-    DependenciesHelper helper = new DependenciesHelper(_context, project);
+    DependenciesHelper helper = DependenciesHelper.get(_context, project, "j.m.build");
     SNode layoutNode;
     if (SNodeOperations.isInstanceOf(targetFolder, CONCEPTS.BuildLayout_AbstractContainer$zG)) {
       layoutNode = SNodeOperations.as(targetFolder, CONCEPTS.BuildLayout_AbstractContainer$zG);
@@ -1721,7 +1721,7 @@ public class QueriesGenerated extends QueryProviderBase {
       _context.showErrorMessage(_context.getNode(), "no context project defined");
       return Collections.emptyList();
     }
-    DependenciesHelper helper = new DependenciesHelper(_context, project);
+    DependenciesHelper helper = DependenciesHelper.get(_context, project, "j.m.build");
     return new JavaExternalLibraryHelper(helper, ((SNode) _context.getVariable("library")), _context).artifacts();
   }
   public static Iterable<SNode> sourceNodesQuery_12_0(final SourceSubstituteMacroNodesContext _context) {
@@ -1784,6 +1784,11 @@ public class QueriesGenerated extends QueryProviderBase {
       new FetchDependenciesProcessor(root, _context).process();
     }
   }
+  public static void mappingScript_CodeBlock_19(final MappingScriptContext _context) {
+    for (SNode root : SModelOperations.roots(_context.getModel(), CONCEPTS.BuildProject$ae)) {
+      new FetchDependenciesProcessor(root, _context).alternativeProcess("j.m.build");
+    }
+  }
   public static Object varMacro_Value_0_0(final TemplateVarContext _context) {
     return _context.getNode();
   }
@@ -1808,7 +1813,7 @@ public class QueriesGenerated extends QueryProviderBase {
     if ((boolean) BuildLayout_Node__BehaviorDescriptor.isFolder_id1bWeed$oPYW.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.target$AFU4))) {
       _context.showErrorMessage(_context.getNode(), "internal error: cannot handle folders `" + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.target$AFU4)) + "'");
     }
-    DependenciesHelper helper = new DependenciesHelper(_context, project);
+    DependenciesHelper helper = DependenciesHelper.get(_context, project, "j.m.build");
     String val = helper.getLocation(SLinkOperations.getTarget(_context.getNode(), LINKS.target$AFU4));
     if (val == null) {
       _context.showErrorMessage(_context.getNode(), "no location for " + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.target$AFU4)));
@@ -1821,7 +1826,7 @@ public class QueriesGenerated extends QueryProviderBase {
       _context.showErrorMessage(_context.getNode(), "no context project defined");
       return "???";
     }
-    DependenciesHelper helper = new DependenciesHelper(_context, project);
+    DependenciesHelper helper = DependenciesHelper.get(_context, project, "j.m.build");
     String val = helper.getContentLocation(SLinkOperations.getTarget(_context.getNode(), LINKS.target$HFO4));
     if (val == null) {
       _context.showErrorMessage(_context.getNode(), "no location for " + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.target$HFO4)));
@@ -1859,13 +1864,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return new PathProvider(_context, _context.getNode());
   }
   public static Object varMacro_Value_1_3(final TemplateVarContext _context) {
-    return new DependenciesHelper(_context, _context.getNode());
+    return DependenciesHelper.get(_context, _context.getNode(), "j.m.build");
   }
   public static Object varMacro_Value_1_4(final TemplateVarContext _context) {
     List<Tuples._2<SNode, String>> dependencies = new ProjectDependency(_context, _context.getNode()).collectDependencies().getDependencies();
     return ListSequence.fromList(dependencies).select(new ISelector<Tuples._2<SNode, String>, SNode>() {
       public SNode select(Tuples._2<SNode, String> it) {
-        return createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a814(it._1(), it._0());
+        return createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a914(it._1(), it._0());
       }
     }).toListSequence();
   }
@@ -1888,7 +1893,7 @@ public class QueriesGenerated extends QueryProviderBase {
       _context.showErrorMessage(_context.getNode(), "no context project defined");
       return "???";
     }
-    DependenciesHelper helper = new DependenciesHelper(_context, project);
+    DependenciesHelper helper = DependenciesHelper.get(_context, project, "j.m.build");
     String val = helper.getLocation(SLinkOperations.getTarget(_context.getNode(), LINKS.target$AFU4));
     if (val == null) {
       _context.showErrorMessage(_context.getNode(), "no location for " + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.target$AFU4)));
@@ -1913,7 +1918,7 @@ public class QueriesGenerated extends QueryProviderBase {
       _context.showErrorMessage(_context.getNode(), "no context project defined");
       return "???";
     }
-    DependenciesHelper helper = new DependenciesHelper(_context, project);
+    DependenciesHelper helper = DependenciesHelper.get(_context, project, "j.m.build");
     String val = helper.getContentLocation(SLinkOperations.getTarget(_context.getNode(), LINKS.target$HFO4));
     if (val == null) {
       _context.showErrorMessage(_context.getNode(), "no content location for " + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.target$HFO4)));
@@ -2055,6 +2060,7 @@ public class QueriesGenerated extends QueryProviderBase {
   {
     int i = 0;
     mscbMethods.put("841011766566205059", new SCB(i++));
+    mscbMethods.put("8849917859626659110", new SCB(i++));
   }
   @Override
   @NotNull
@@ -2075,6 +2081,9 @@ public class QueriesGenerated extends QueryProviderBase {
       switch (methodKey) {
         case 0:
           QueriesGenerated.mappingScript_CodeBlock_4(ctx);
+          return;
+        case 1:
+          QueriesGenerated.mappingScript_CodeBlock_19(ctx);
           return;
         default:
           throw new GenerationFailureException(String.format("There's no code block with method index %d ", methodKey));
@@ -3573,7 +3582,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
   }
-  private static SNode createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a814(String p0, SNode p1) {
+  private static SNode createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a914(String p0, SNode p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_ProjectDependency$bb);
     n0.setProperty(PROPS.path$URGX, p0);
     n0.setReferenceTarget(LINKS.project$ciHu, p1);
