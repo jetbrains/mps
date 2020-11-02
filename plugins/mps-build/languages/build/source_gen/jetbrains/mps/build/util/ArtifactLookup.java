@@ -4,8 +4,8 @@ package jetbrains.mps.build.util;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
@@ -25,10 +25,6 @@ public class ArtifactLookup {
   public ArtifactLookup(@NotNull VisibleArtifacts artifacts, @Nullable DependenciesHelper helper) {
     myArtifacts = artifacts;
     myDependencyHelper = helper;
-  }
-
-  public SNode toOriginalNode(SNode node) {
-    return (myDependencyHelper == null ? node : myDependencyHelper.getOriginalNode(node));
   }
 
   public Tuples._2<SNode, String> getResource(SNode path) {
@@ -60,18 +56,11 @@ public class ArtifactLookup {
   public SNode findArtifact(Object id) {
     if (id instanceof SNode) {
       SNode node = (SNode) id;
+      // FIXME any idea what's the purpose of this code? 
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BuildLayout_PathElement$ei) && myArtifacts.parent(SNodeOperations.as(node, CONCEPTS.BuildLayout_PathElement$ei)) != null) {
         return SNodeOperations.cast(node, CONCEPTS.BuildLayout_PathElement$ei);
       }
-      SNode rv = doFind(id);
-      if (rv == null) {
-        SNode originalId = toOriginalNode((SNode) id);
-        if (originalId == id) {
-          return null;
-        }
-        // try with original node 
-        return doFind(originalId);
-      }
+      // fall-through, just doFind() 
     }
     return doFind(id);
   }
@@ -106,22 +95,22 @@ public class ArtifactLookup {
       return;
     }
     if (id instanceof String) {
-      myDependencyHelper.putArtifact(as_arca2u_a0a0a0b0q(id, String.class), element);
+      myDependencyHelper.putArtifact(as_arca2u_a0a0a0b0o(id, String.class), element);
     } else if (id instanceof LocalSourcePathArtifact) {
-      myDependencyHelper.putArtifact(as_arca2u_a0a0a0a1a61(id, LocalSourcePathArtifact.class), element);
+      myDependencyHelper.putArtifact(as_arca2u_a0a0a0a1a41(id, LocalSourcePathArtifact.class), element);
     } else if (id instanceof SNode) {
-      myDependencyHelper.putArtifact(as_arca2u_a0a0a0b1a61(id, SNode.class), element);
+      myDependencyHelper.putArtifact(as_arca2u_a0a0a0b1a41(id, SNode.class), element);
     } else {
       throw new IllegalStateException("Unexpected way to identify artifacts:" + String.valueOf(id));
     }
   }
-  private static <T> T as_arca2u_a0a0a0b0q(Object o, Class<T> type) {
+  private static <T> T as_arca2u_a0a0a0b0o(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_arca2u_a0a0a0a1a61(Object o, Class<T> type) {
+  private static <T> T as_arca2u_a0a0a0a1a41(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_arca2u_a0a0a0b1a61(Object o, Class<T> type) {
+  private static <T> T as_arca2u_a0a0a0b1a41(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 

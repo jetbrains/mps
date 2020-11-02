@@ -20,12 +20,8 @@ public class UnpackHelper extends DependenciesHelper {
   private final List<SNode> statements = new ArrayList<SNode>();
   private PathProvider myPathProvider;
 
-  public UnpackHelper(VisibleArtifacts visible, TemplateQueryContext genContext) {
-    this(visible, genContext, true);
-  }
-
-  /*package*/ UnpackHelper(VisibleArtifacts visible, TemplateQueryContext genContext, boolean legacyDH) {
-    super(genContext, visible.getProject(), legacyDH);
+  /*package*/ UnpackHelper(VisibleArtifacts visible, TemplateQueryContext genContext) {
+    super(genContext, visible.getProject());
     this.visible = visible;
     // PathProvider shares its state regardless of legacyDH just to make sure temp paths are consistent 
     this.myPathProvider = new PathProvider(genContext, visible.getProject());

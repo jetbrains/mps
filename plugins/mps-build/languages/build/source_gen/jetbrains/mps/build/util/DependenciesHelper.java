@@ -5,11 +5,11 @@ package jetbrains.mps.build.util;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.template.TemplateQueryContext;
-import org.jetbrains.annotations.NotNull;
 import java.util.HashMap;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.extapi.model.TransientSModel;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -20,7 +20,6 @@ public class DependenciesHelper {
   private final Map<SNode, String> contentLocationMap;
   private final Map<Object, SNode> idToArtifactMap;
   private final MacroHelper macros;
-  private final boolean myTranslateToOriginal;
   private final TemplateQueryContext myGenContext;
   private final SNode myProject;
   private final String myLocationKey;
@@ -28,29 +27,16 @@ public class DependenciesHelper {
   private final String myLayoutRelativeKey;
   private final String myArtifactIdKey;
 
-  public DependenciesHelper(@NotNull TemplateQueryContext genContext, SNode project) {
-    this(genContext, project, true);
-  }
-
-  protected DependenciesHelper(TemplateQueryContext genContext, SNode project, boolean legacySessionMaps) {
-    if (legacySessionMaps) {
-      this.locationMap = GenerationUtil.<SNode,String>getSessionMap(project, genContext, "location");
-      this.contentLocationMap = GenerationUtil.<SNode,String>getSessionMap(project, genContext, "contentLocation");
-      this.idToArtifactMap = GenerationUtil.<Object,SNode>getSessionMap(project, genContext, "IDToArtifact");
-      myTranslateToOriginal = true;
-    } else {
-      // given the usage pattern of DH, with fill from preprocessing script, and reads from rules (that can be run in parallel),  
-      // I feel regular, non-concurrent map is enough; 
-      locationMap = new HashMap<SNode, String>(100);
-      contentLocationMap = new HashMap<SNode, String>(100);
-      idToArtifactMap = new HashMap<Object, SNode>(100);
-      myTranslateToOriginal = false;
-    }
+  protected DependenciesHelper(TemplateQueryContext genContext, SNode project) {
+    // given the usage pattern of DH, with fill from preprocessing script, and reads from rules (that can be run in parallel),  
+    // I feel regular, non-concurrent map is enough; 
+    locationMap = new HashMap<SNode, String>(100);
+    contentLocationMap = new HashMap<SNode, String>(100);
+    idToArtifactMap = new HashMap<Object, SNode>(100);
     this.macros = new MacroHelper.MacroContext(project, genContext).getMacros(project);
     myGenContext = genContext;
     myProject = project;
-    // distinguish UO keys for legacy and new DH not to overwrite accidentally 
-    final String qualifiedProjectName = SModelOperations.getModelName(SNodeOperations.getModel(project)) + '/' + SPropertyOperations.getString(project, PROPS.name$MnvL) + ((legacySessionMaps ? "" : "/new"));
+    final String qualifiedProjectName = SModelOperations.getModelName(SNodeOperations.getModel(project)) + '/' + SPropertyOperations.getString(project, PROPS.name$MnvL);
     myLocationKey = "location:" + qualifiedProjectName;
     myContentLocationKey = "contentLocation:" + qualifiedProjectName;
     myLayoutRelativeKey = "layout-relative:" + qualifiedProjectName;
@@ -71,6 +57,8 @@ public class DependenciesHelper {
   }
 
   public TemplateQueryContext getGenContext() {
+    // FIXME DH doesn't need genContext any more; shall get rid of this method here, as well as refactor last uses of getOriginalNode(), 
+    //      just too much for the present change, left as an exercise. 
     return myGenContext;
   }
 
@@ -107,7 +95,7 @@ public class DependenciesHelper {
   }
 
   public void preserveLocations(SNode from, SNode to) {
-    // this method is invoked from generation for specific usecases (wrap of a File wuth Copy), 
+    // this method is invoked from generation for specific usecases (wrap of a File with Copy), 
     // hence we expect nodes to be free-floating/transient, never from a regular model 
     assert SNodeOperations.getModel(to) == null || SNodeOperations.getModel(to) instanceof TransientSModel;
     to.putUserObject(myLocationKey, from.getUserObject(myLocationKey));
@@ -149,7 +137,7 @@ public class DependenciesHelper {
   }
 
   public SNode getArtifact(SNode id) {
-    return SNodeOperations.as(idToArtifactMap.get(artifactIdKey(getOriginalNode(id), false)), CONCEPTS.BuildLayout_Node$Rb);
+    return SNodeOperations.as(idToArtifactMap.get(artifactIdKey(id, false)), CONCEPTS.BuildLayout_Node$Rb);
   }
 
   public SNode getArtifact(LocalSourcePathArtifact id) {
@@ -161,7 +149,7 @@ public class DependenciesHelper {
   }
 
   /*package*/ void putArtifact(SNode id, SNode artifact) {
-    putArtifact0(artifactIdKey(getOriginalNode(id), true), artifact);
+    putArtifact0(artifactIdKey(id, true), artifact);
   }
 
   /*package*/ void putArtifact(LocalSourcePathArtifact id, SNode artifact) {
@@ -173,11 +161,7 @@ public class DependenciesHelper {
   }
 
   private Object artifactIdKey(SNode id, boolean create) {
-    // when there's translation to original node, no reason to mangle the key.  
-    if (myTranslateToOriginal) {
-      return id;
-    }
-    // however, if we don't resort to original node, we may record artifact for module@1_0 and query it with module@4_4 
+    // as we no longer resort to original node, we may record artifact for module@1_0 and query it with module@4_4 
     // XXX could use anything, like integer counter, although for debug purposes would be handy to have name of project part here 
     if (create && isFromTransformedModel(id)) {
       // note, isFromTransformedModel() would answer NO for id that has been recorded at step @1_0 but instance comes from @4_4, 
@@ -199,7 +183,7 @@ public class DependenciesHelper {
   /**
    * Check if layout node comes from build project being transformed, or the one being transformed along with it, i.e. if we CAN and NEED to associate
    * location values with it. Layout nodes are not necessarily belong to the generated project, an import from external
-   * ayout brings foreign nodes, which can't get changed if they come from another model, non-transient, and the value associated would affect 
+   * layout brings foreign nodes, which can't get changed if they come from another model, non-transient, and the value associated would affect 
    * any dependant project until the model is unloaded.
    * If an external node comes from another project from the same model (few projects may get transformed simultaneously), we need to record location
    * that is specific to each project (given projects A, B and C in a single model, where B and C re-use artifacts declared in A, layout nodes of A shall
@@ -211,12 +195,6 @@ public class DependenciesHelper {
     return ancestorProject == myProject || (SNodeOperations.getModel(n) == SNodeOperations.getModel(myProject) && SNodeOperations.getModel(n) instanceof TransientSModel);
   }
 
-  public SNode getOriginalNode(SNode node) {
-    if (!(myTranslateToOriginal)) {
-      return node;
-    }
-    return getOriginalNode(node, myGenContext);
-  }
 
   public static SNode getOriginalNode(SNode node, TemplateQueryContext genContext) {
     // node.model could be legitimately == null for a node from transient model which is already disposed. 
