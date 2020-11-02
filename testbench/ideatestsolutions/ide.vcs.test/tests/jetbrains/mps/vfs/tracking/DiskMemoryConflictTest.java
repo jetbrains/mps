@@ -16,9 +16,17 @@
 package jetbrains.mps.vfs.tracking;
 
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.ModalityState;
+import com.intellij.openapi.application.impl.LaterInvocator;
 import com.intellij.openapi.project.Project;
+import com.intellij.testFramework.EdtTestUtil;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.extapi.model.EditableSModelBase;
+import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.ide.ThreadUtils;
+import jetbrains.mps.ide.platform.watching.ReloadManager;
+import jetbrains.mps.ide.platform.watching.ReloadManagerComponent;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -40,8 +48,8 @@ import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.refresh.CachingFile;
 import jetbrains.mps.vfs.refresh.DefaultCachingContext;
-import jetbrains.mps.vfs.tracking.ModelMemoryDiskConflictResolver.UserChoice;
-import jetbrains.mps.vfs.tracking.ModelMemoryDiskConflictResolver.__ConflictResolverListener;
+import jetbrains.mps.vfs.tracking.ConflictResolverImpl.UserChoice;
+import jetbrains.mps.vfs.tracking.ConflictResolverImpl.__ConflictResolverListener;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -50,6 +58,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SaveOptions;
+import org.jetbrains.mps.openapi.model.SaveOptions.SaveOptionsBuilder;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
@@ -104,8 +114,9 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
   private DefaultSModel myModelBackup;
   private StreamDataSource myOriginalModelDataSource;
 
-  private volatile ModelStorageProblemsListener myOldModelStorageListener; // to preserve the model conflict logic as it was in @afterTest
-  private volatile DiskMemoryDialogExposer myExposer = (a, b, c) -> UserChoice.MEMORY_CHOSEN; // will be changed from test to test
+  private volatile ModelStorageConflictsListener myOldModelStorageListener; // to preserve the model conflict logic as it was in @afterTest
+  private volatile DiskMemoryDialogExposer myExposer = (a, b, c, d) -> UserChoice.MEMORY_CHOSEN; // will be changed from test to test
+  private ConflictResolverImpl myResolver;
 
   @NotNull
   private File getDestinationProjectDir() {
@@ -139,15 +150,7 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
     Assume.assumeNotNull(myModelAccess);
     myRepository = ourProject.get().getRepository();
     Assume.assumeNotNull(myRepository);
-    createResolver(); // must be called before any model is in the repo
-    Assume.assumeNotNull(myConflictListener);
-//    myModelAccess.runReadAction(() -> {
-//      SModel model = getModel();
-//      myModelBackup = (DefaultSModel) CopyUtil.copyModel(((DefaultSModelDescriptor) model).getSModel());
-//      myOriginalModelDataSource = (StreamDataSource) model.getSource();
-//    });
-//    Assume.assumeNotNull(myModelBackup);
-//    Assume.assumeNotNull(myOriginalModelDataSource);
+    attachConflictResolver();
     IFile existingFile = getFileSystem().findExistingFile(getModelFile().getAbsolutePath());
     Assume.assumeNotNull(existingFile);
   }
@@ -157,31 +160,24 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
     return (MPSProject) ourProject.get();
   }
 
-  private void createResolver() {
-    MPSProject project = getMPSProject();
+  private void attachConflictResolver() {
     MPSCoreComponents coreComponents = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class);
     VFSManager vfsManager = coreComponents.getPlatform().findComponent(VFSManager.class);
-    ModelMemoryDiskConflictResolver resolver = new ModelMemoryDiskConflictResolver(project,
-                                                                                   coreComponents.getPersistenceFacade(),
-                                                                                   vfsManager,
-                                                                                   (parentComponent, model, backupFile) -> myExposer.askUser(parentComponent, model, backupFile));
-    myConflictListener = new ConflictResolverListener();
-    resolver.addListener(myConflictListener);
-    ModelTracking modelTracking = getModelTracking();
-    myOldModelStorageListener = modelTracking.replaceListener(new ModelStorageProblemsListener(project, resolver));
-    assert myOldModelStorageListener != null;
-  }
+    DiskMemoryDialogExposer diskMemoryDialogExposer = (parentComponent, m, source, backupFile) -> myExposer.askUser(parentComponent, m, source, backupFile);
+    myResolver = new ConflictResolverImpl(getMPSProject(),
+                                          coreComponents.getPersistenceFacade(),
+                                          vfsManager,
+                                          diskMemoryDialogExposer);
 
-  @NotNull
-  private ModelTracking getModelTracking() {
-    return getIJProject().getComponent(ModelTracking.class);
+    ((EditableSModelBase) getModel()).setConflictResolver(myResolver::resolve);
+    myConflictListener = new ConflictResolverListener();
+    myResolver.addListener(myConflictListener);
   }
 
   @After
   public void afterTest() {
 //    checkInitialState();
-    ModelTracking modelTracking = getModelTracking();
-    modelTracking.replaceListener(myOldModelStorageListener);
+    myResolver.removeListener(myConflictListener);
     ourProject.closeAndDelete();
   }
 
@@ -192,7 +188,7 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
 
   @Test
   public void conflictDetectedExactlyOnce() {
-    myExposer = (parentComponent, model, backupFile) -> UserChoice.MEMORY_CHOSEN;
+    myExposer = (parentComponent, source, model, backupFile) -> UserChoice.MEMORY_CHOSEN;
     setFieldNameInModel(FIELD_NAME_IN_MODEL);
     setFieldNameInFile();
     refreshVfs();
@@ -201,8 +197,56 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
   }
 
   @Test
+  public void conflictIsNotDetectedOnPlainSaving() {
+    myExposer = (parentComponent, source, model, backupFile) -> UserChoice.MEMORY_CHOSEN;
+    setFieldNameInModel(FIELD_NAME_IN_MODEL);
+    setFieldNameInFile();
+    Assert.assertTrue(getModel().isChanged());
+    EditableSModel model = getModel();
+    ThreadUtils.runInUIThreadAndWait(() -> {
+      model.getRepository().getModelAccess().runWriteAction(model::save);
+    });
+
+    Assert.assertEquals(0, myConflictListener.getCount());
+  }
+
+  @Test
+  public void conflictDetectedExactlyOnceOnSavingWithRefresh() {
+    myExposer = (parentComponent, source, model, backupFile) -> UserChoice.MEMORY_CHOSEN;
+    setFieldNameInModel(FIELD_NAME_IN_MODEL);
+    setFieldNameInFile();
+    Assert.assertTrue(getModel().isChanged());
+    EditableSModel model = getModel();
+    ThreadUtils.runInUIThreadAndWait(() -> {
+      model.getRepository().getModelAccess().runWriteAction(() -> {
+        SaveOptions optionsWithRefresh = new SaveOptionsBuilder().refreshDataSource().build();
+        model.save(optionsWithRefresh);
+      });
+    });
+
+    Assert.assertEquals(1, myConflictListener.getCount());
+  }
+
+  @Test
+  public void conflictDetectedExactlyOnceOnSaveAll() {
+    myExposer = (parentComponent, source, model, backupFile) -> UserChoice.MEMORY_CHOSEN;
+    setFieldNameInModel(FIELD_NAME_IN_MODEL);
+    setFieldNameInFile();
+    Assert.assertTrue(getModel().isChanged());
+
+    var model = getModel();
+    ThreadUtils.runInUIThreadAndWait(() -> {
+      model.getRepository().getModelAccess().runWriteAction(() -> model.getRepository().saveAll());
+    });
+    // #saveAll is async with invokeLater
+    ApplicationManager.getApplication().invokeAndWait(() -> {}, ModalityState.NON_MODAL);
+
+    Assert.assertEquals(1, myConflictListener.getCount());
+  }
+
+  @Test
   public void modifyDisk_chooseMemory() {
-    myExposer = (parentComponent, model, backupFile) -> UserChoice.MEMORY_CHOSEN;
+    myExposer = (parentComponent, source, model, backupFile) -> UserChoice.MEMORY_CHOSEN;
     setFieldNameInModel(FIELD_NAME_IN_MODEL);
     setFieldNameInFile();
     refreshVfs();
@@ -213,7 +257,7 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
 
   @Test
   public void modifyDisk_chooseDisk() {
-    myExposer = (parentComponent, model, backupFile) -> UserChoice.DISK_CHOSEN;
+    myExposer = (parentComponent, source, model, backupFile) -> UserChoice.DISK_CHOSEN;
     setFieldNameInModel(FIELD_NAME_IN_MODEL);
     setFieldNameInFile();
 
@@ -225,7 +269,7 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
 
   @Test
   public void deleteDisk_chooseMemory() {
-    myExposer = (parentComponent, model, backupFile) -> UserChoice.MEMORY_CHOSEN;
+    myExposer = (parentComponent, model, source, backupFile) -> UserChoice.MEMORY_CHOSEN;
     setFieldNameInModel(FIELD_NAME_IN_MODEL);
     delete();
     refreshVfs();
@@ -236,7 +280,7 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
 
   @Test
   public void deleteDisk_chooseDisk() {
-    myExposer = (parentComponent, model, backupFile) -> UserChoice.DISK_CHOSEN;
+    myExposer = (parentComponent, model, source, backupFile) -> UserChoice.DISK_CHOSEN;
     setFieldNameInModel(FIELD_NAME_IN_MODEL);
     delete();
     refreshVfs();
@@ -457,6 +501,7 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
 
     @Override
     public void onConflict(@NotNull EditableSModel model) {
+//      LOG.error("gagagga", new Throwable());
       myCount.incrementAndGet();
     }
 
