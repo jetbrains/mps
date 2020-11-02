@@ -69,9 +69,7 @@ public class BinaryModelFactory implements ModelFactory, IndexAwareModelFactory,
     return PersistenceFacade.getInstance();
   }
 
-  @Internal
   public BinaryModelFactory() {
-    // do not delete, it is a java service
   }
 
   @NotNull
