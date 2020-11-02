@@ -88,12 +88,12 @@
     <copy file="${artifacts.mpsTrueBootstrap}/mps-messages-for-legacy-constraints.jar" todir="${build.layout}/lib" />
     <copy file="${artifacts.mpsTrueBootstrap}/mps-persistence.jar" todir="${build.layout}/lib" />
     <jar destfile="${build.layout}/lib/mps-core.jar" duplicate="preserve">
-      <fileset dir="${build.tmp}/deps/mpsTrueBootstrap/vfs.jar" />
-      <fileset dir="${build.tmp}/deps/mpsTrueBootstrap/util-core.jar" />
-      <fileset dir="${build.tmp}/deps/mpsTrueBootstrap/core-components.jar" />
-      <fileset dir="${build.tmp}/deps/mpsTrueBootstrap/mps-kernel.jar" />
-      <fileset dir="${build.tmp}/deps/mpsTrueBootstrap/mps-smodel.jar" />
-      <fileset dir="${build.tmp}/deps/mpsTrueBootstrap/mps-project.jar" />
+      <fileset dir="${build.tmp}/deps/mpsTrueBootstrap/vfs.jar1" />
+      <fileset dir="${build.tmp}/deps/mpsTrueBootstrap/util-core.jar1" />
+      <fileset dir="${build.tmp}/deps/mpsTrueBootstrap/core-components.jar1" />
+      <fileset dir="${build.tmp}/deps/mpsTrueBootstrap/mps-kernel.jar1" />
+      <fileset dir="${build.tmp}/deps/mpsTrueBootstrap/mps-smodel.jar1" />
+      <fileset dir="${build.tmp}/deps/mpsTrueBootstrap/mps-project.jar1" />
       <fileset dir="${build.tmp}/java/out/platform" />
       <fileset dir="${build.tmp}/java/out/mps-debuginfo-api" />
       <fileset dir="${build.tmp}/java/out/mps-debuginfo-impl" />
@@ -15981,18 +15981,18 @@
   </target>
   
   <target name="fetchDependencies">
-    <mkdir dir="${build.tmp}/deps/mpsTrueBootstrap/vfs.jar" />
-    <unzip src="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" dest="${build.tmp}/deps/mpsTrueBootstrap/vfs.jar" />
-    <mkdir dir="${build.tmp}/deps/mpsTrueBootstrap/util-core.jar" />
-    <unzip src="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" dest="${build.tmp}/deps/mpsTrueBootstrap/util-core.jar" />
-    <mkdir dir="${build.tmp}/deps/mpsTrueBootstrap/core-components.jar" />
-    <unzip src="${artifacts.mpsTrueBootstrap}/to-be-imported/core-components.jar" dest="${build.tmp}/deps/mpsTrueBootstrap/core-components.jar" />
-    <mkdir dir="${build.tmp}/deps/mpsTrueBootstrap/mps-kernel.jar" />
-    <unzip src="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-kernel.jar" dest="${build.tmp}/deps/mpsTrueBootstrap/mps-kernel.jar" />
-    <mkdir dir="${build.tmp}/deps/mpsTrueBootstrap/mps-smodel.jar" />
-    <unzip src="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" dest="${build.tmp}/deps/mpsTrueBootstrap/mps-smodel.jar" />
-    <mkdir dir="${build.tmp}/deps/mpsTrueBootstrap/mps-project.jar" />
-    <unzip src="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" dest="${build.tmp}/deps/mpsTrueBootstrap/mps-project.jar" />
+    <mkdir dir="${build.tmp}/deps/mpsTrueBootstrap/vfs.jar1" />
+    <unzip src="${artifacts.mpsTrueBootstrap}/to-be-imported/vfs.jar" dest="${build.tmp}/deps/mpsTrueBootstrap/vfs.jar1" />
+    <mkdir dir="${build.tmp}/deps/mpsTrueBootstrap/util-core.jar1" />
+    <unzip src="${artifacts.mpsTrueBootstrap}/to-be-imported/util-core.jar" dest="${build.tmp}/deps/mpsTrueBootstrap/util-core.jar1" />
+    <mkdir dir="${build.tmp}/deps/mpsTrueBootstrap/core-components.jar1" />
+    <unzip src="${artifacts.mpsTrueBootstrap}/to-be-imported/core-components.jar" dest="${build.tmp}/deps/mpsTrueBootstrap/core-components.jar1" />
+    <mkdir dir="${build.tmp}/deps/mpsTrueBootstrap/mps-kernel.jar1" />
+    <unzip src="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-kernel.jar" dest="${build.tmp}/deps/mpsTrueBootstrap/mps-kernel.jar1" />
+    <mkdir dir="${build.tmp}/deps/mpsTrueBootstrap/mps-smodel.jar1" />
+    <unzip src="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" dest="${build.tmp}/deps/mpsTrueBootstrap/mps-smodel.jar1" />
+    <mkdir dir="${build.tmp}/deps/mpsTrueBootstrap/mps-project.jar1" />
+    <unzip src="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-project.jar" dest="${build.tmp}/deps/mpsTrueBootstrap/mps-project.jar1" />
   </target>
   
   <target name="build" depends="assemble" />

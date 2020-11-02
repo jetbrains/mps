@@ -22,9 +22,9 @@
   <target name="assemble" depends="fetchDependencies">
     <mkdir dir="${build.layout}" />
     <jar destfile="${build.layout}/mps-libs-${build.num}.jar" duplicate="preserve">
-      <fileset dir="${build.tmp}/deps/mpsBootstrapCore/mps-core.jar" />
-      <fileset dir="${build.tmp}/deps/mpsTrueBootstrap/mps-openapi.jar" />
-      <fileset dir="${build.tmp}/deps/mpsBootstrapCore/mps-tool.jar" />
+      <fileset dir="${build.tmp}/deps/mpsBootstrapCore/mps-core.jar1" />
+      <fileset dir="${build.tmp}/deps/mpsTrueBootstrap/mps-openapi.jar1" />
+      <fileset dir="${build.tmp}/deps/mpsBootstrapCore/mps-tool.jar1" />
     </jar>
     <echo file="${build.layout}/build.properties">mpsMaven.build.num=${build.num}${line.separator}mps.build.number=${mps.build.number}${line.separator}mps.date=${mps.date}${line.separator}mps.build.vcs.number=${mps.build.vcs.number}${line.separator}mps.teamcity.buildConfName=${mps.teamcity.buildConfName}${line.separator}mps.idea.platform.build.number=${mps.idea.platform.build.number}${line.separator}mps.mps.build.counter=${mps.mps.build.counter}${line.separator}mpsBootstrapCore.version.major=${mpsBootstrapCore.version.major}${line.separator}mpsBootstrapCore.version.minor=${mpsBootstrapCore.version.minor}${line.separator}mpsBootstrapCore.version.bugfixNr=${mpsBootstrapCore.version.bugfixNr}${line.separator}mpsBootstrapCore.version.eap=${mpsBootstrapCore.version.eap}${line.separator}mpsBootstrapCore.version=${mpsBootstrapCore.version}</echo>
   </target>
@@ -32,12 +32,12 @@
   <target name="buildDependents" />
   
   <target name="fetchDependencies">
-    <mkdir dir="${build.tmp}/deps/mpsBootstrapCore/mps-core.jar" />
-    <unzip src="${artifacts.mps}/lib/mps-core.jar" dest="${build.tmp}/deps/mpsBootstrapCore/mps-core.jar" />
-    <mkdir dir="${build.tmp}/deps/mpsTrueBootstrap/mps-openapi.jar" />
-    <unzip src="${artifacts.mps}/lib/mps-openapi.jar" dest="${build.tmp}/deps/mpsTrueBootstrap/mps-openapi.jar" />
-    <mkdir dir="${build.tmp}/deps/mpsBootstrapCore/mps-tool.jar" />
-    <unzip src="${artifacts.mps}/lib/mpsant/mps-tool.jar" dest="${build.tmp}/deps/mpsBootstrapCore/mps-tool.jar" />
+    <mkdir dir="${build.tmp}/deps/mpsBootstrapCore/mps-core.jar1" />
+    <unzip src="${artifacts.mps}/lib/mps-core.jar" dest="${build.tmp}/deps/mpsBootstrapCore/mps-core.jar1" />
+    <mkdir dir="${build.tmp}/deps/mpsTrueBootstrap/mps-openapi.jar1" />
+    <unzip src="${artifacts.mps}/lib/mps-openapi.jar" dest="${build.tmp}/deps/mpsTrueBootstrap/mps-openapi.jar1" />
+    <mkdir dir="${build.tmp}/deps/mpsBootstrapCore/mps-tool.jar1" />
+    <unzip src="${artifacts.mps}/lib/mpsant/mps-tool.jar" dest="${build.tmp}/deps/mpsBootstrapCore/mps-tool.jar1" />
   </target>
   
   <target name="build" depends="assemble" />
