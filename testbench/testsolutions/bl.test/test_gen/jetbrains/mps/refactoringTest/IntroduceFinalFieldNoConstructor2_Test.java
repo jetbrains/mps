@@ -44,18 +44,18 @@ public class IntroduceFinalFieldNoConstructor2_Test extends BaseTransformationTe
     }
 
     public void test_IntroduceFinalField() throws Exception {
-      addNodeById("8599380872151162387");
-      addNodeById("8599380872151162402");
+      addNodeById("8274035912948518149");
+      addNodeById("8274035912948518164");
       IntroduceFieldRefactoring refactoring = new IntroduceFieldRefactoring();
-      refactoring.init(getNodeById("8599380872151162396"), null);
+      refactoring.init(getNodeById("8274035912948518160"), null);
       refactoring.setName("b");
       refactoring.setIsFinal(true);
       refactoring.setFieldInitializationPlace(FieldInitializationPlace.CONSTRUCTOR);
       refactoring.setVisibilityLevel(VisibilityLevel.PRIVATE);
       refactoring.doRefactoring();
       {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("8599380872151162388"));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("8599380872151162403"));
+        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("8274035912948518150"));
+        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("8274035912948518165"));
         Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
       }
     }
