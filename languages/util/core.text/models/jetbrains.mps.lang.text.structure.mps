@@ -223,6 +223,9 @@
       <property role="20lbJX" value="fLJekj5/_0__n" />
       <ref role="20lvS9" node="2MpFNjy3pNV" resolve="TextualElement" />
     </node>
+    <node concept="PrWs8" id="1uSfHaoPEi9" role="PzmwI">
+      <ref role="PrY4T" node="1uSfHaoP$Vf" resolve="IParagraph" />
+    </node>
   </node>
   <node concept="1TIwiD" id="7Vz6ZmoXaKt">
     <property role="EcuMT" value="9143182410139347997" />
@@ -269,6 +272,41 @@
     <node concept="PrWs8" id="7evo$BZb0Aj" role="PzmwI">
       <ref role="PrY4T" to="tpck:1V3wYmOJsDm" resolve="IDontApplyTypesystemRules" />
     </node>
+  </node>
+  <node concept="1TIwiD" id="2HIX00NsA33">
+    <property role="EcuMT" value="3129707072769384643" />
+    <property role="3GE5qa" value="textual" />
+    <property role="TrG5h" value="BulletPoint" />
+    <property role="34LRSv" value="bullet point" />
+    <ref role="1TJDcQ" node="7Vz6ZmoXeMu" resolve="Paragraph" />
+    <node concept="PrWs8" id="4ruP0NLeIv3" role="PzmwI">
+      <ref role="PrY4T" node="4ruP0NLeIr4" resolve="IndentedPoint" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="4ruP0NLeIr4">
+    <property role="EcuMT" value="5106752179536586436" />
+    <property role="3GE5qa" value="textual" />
+    <property role="TrG5h" value="IndentedPoint" />
+    <node concept="1TJgyi" id="4ruP0NLeIrV" role="1TKVEl">
+      <property role="IQ2nx" value="5106752179536586491" />
+      <property role="TrG5h" value="indentation" />
+      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="5QuCpoxy2bF">
+    <property role="EcuMT" value="6746006958027317995" />
+    <property role="3GE5qa" value="textual" />
+    <property role="TrG5h" value="NumberedPoint" />
+    <property role="34LRSv" value="numbered point" />
+    <ref role="1TJDcQ" node="7Vz6ZmoXeMu" resolve="Paragraph" />
+    <node concept="PrWs8" id="5QuCpoxy2ee" role="PzmwI">
+      <ref role="PrY4T" node="4ruP0NLeIr4" resolve="IndentedPoint" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="1uSfHaoP$Vf">
+    <property role="EcuMT" value="1709185132815339215" />
+    <property role="3GE5qa" value="textual" />
+    <property role="TrG5h" value="IParagraph" />
   </node>
 </model>
 

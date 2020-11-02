@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-bmtqil7pf0fk3a2lgn0ubcvthihz7wf">
-  <files names="ConvertToParagraphs_Intention.java:InsertNodeWrapper_Intention.java:InsertUrlIntoParagraph_Intention.java:IntentionsDescriptor.java" />
+<product version="3" modelHash="-duozjd1fagent0dtfevoaho33bbo7nv">
+  <files names="ConvertToParagraphs_Intention.java:DecreaseIndentation_Intention.java:IncreaseIndentation_Intention.java:InsertNodeWrapper_Intention.java:InsertUrlIntoParagraph_Intention.java:IntentionsDescriptor.java:MakeBulletPoint_Intention.java:MakeNumberedPoint_Intention.java:MakeParagraph_Intention.java" />
 </product>
 

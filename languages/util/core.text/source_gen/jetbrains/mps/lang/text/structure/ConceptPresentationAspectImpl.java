@@ -9,13 +9,17 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
+  private ConceptPresentation props_BulletPoint;
   private ConceptPresentation props_EmptyParagraphLetter;
   private ConceptPresentation props_IHoldLines;
   private ConceptPresentation props_IHoldParagraphs;
+  private ConceptPresentation props_IParagraph;
+  private ConceptPresentation props_IndentedPoint;
   private ConceptPresentation props_Letter;
   private ConceptPresentation props_Line;
   private ConceptPresentation props_NodeWrapperElement;
   private ConceptPresentation props_NodeWrapperTextualElement;
+  private ConceptPresentation props_NumberedPoint;
   private ConceptPresentation props_Paragraph;
   private ConceptPresentation props_Text;
   private ConceptPresentation props_TextElement;
@@ -28,6 +32,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
+      case LanguageConceptSwitch.BulletPoint:
+        if (props_BulletPoint == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("bullet point");
+          props_BulletPoint = cpb.create();
+        }
+        return props_BulletPoint;
       case LanguageConceptSwitch.EmptyParagraphLetter:
         if (props_EmptyParagraphLetter == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -48,6 +59,18 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_IHoldParagraphs = cpb.create();
         }
         return props_IHoldParagraphs;
+      case LanguageConceptSwitch.IParagraph:
+        if (props_IParagraph == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_IParagraph = cpb.create();
+        }
+        return props_IParagraph;
+      case LanguageConceptSwitch.IndentedPoint:
+        if (props_IndentedPoint == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_IndentedPoint = cpb.create();
+        }
+        return props_IndentedPoint;
       case LanguageConceptSwitch.Letter:
         if (props_Letter == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -78,6 +101,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_NodeWrapperTextualElement = cpb.create();
         }
         return props_NodeWrapperTextualElement;
+      case LanguageConceptSwitch.NumberedPoint:
+        if (props_NumberedPoint == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("numbered point");
+          props_NumberedPoint = cpb.create();
+        }
+        return props_NumberedPoint;
       case LanguageConceptSwitch.Paragraph:
         if (props_Paragraph == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

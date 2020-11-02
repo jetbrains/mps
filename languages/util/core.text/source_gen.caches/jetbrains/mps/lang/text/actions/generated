@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-d9062m874ajwah6ti7i8abn92zzl03g">
-  <files names="ActionAspectDescriptorImpl.java:LetterFactories.java:WordHandlers_PastePostProcessor_0.java" />
+<product version="3" modelHash="auhu5n0bk6n26pycymcidmpgbsiso2j">
+  <files names="ActionAspectDescriptorImpl.java:TextualFactories.java:WordHandlers_PastePostProcessor_0.java" />
 </product>
 

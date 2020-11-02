@@ -253,7 +253,7 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
     }
     List<SNode> copiesOfLines = new ArrayList<SNode>();
     for (SNode l : lines) {
-      SNode lc = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph"));
+      SNode lc = SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(SNodeOperations.getConcept(l)));
       ListSequence.fromList(SLinkOperations.getChildren(lc, LINKS.letters$rNyA)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.letters$rNyA)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
           return selectedNodes.contains(it);

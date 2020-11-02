@@ -18,8 +18,12 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
   public Collection<NodeFactory> getFactories(SAbstractConcept concept) {
     if (LANGUAGE_FQ_NAME.equals(concept.getLanguage().getQualifiedName())) {
       switch (concept.getName()) {
+        case "IndentedPoint":
+          return Collections.<NodeFactory>singletonList(new TextualFactories.NodeFactory_6746006958027564752());
         case "Letter":
-          return Collections.<NodeFactory>singletonList(new LetterFactories.NodeFactory_9189109070801858976());
+          return Collections.<NodeFactory>singletonList(new TextualFactories.NodeFactory_9189109070801858976());
+        case "Paragraph":
+          return Collections.<NodeFactory>singletonList(new TextualFactories.NodeFactory_3129707072769713286());
         default:
       }
     }

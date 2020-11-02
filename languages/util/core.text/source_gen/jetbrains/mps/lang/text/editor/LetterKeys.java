@@ -18,8 +18,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
-import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.references.BLOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -36,6 +38,12 @@ public class LetterKeys extends KeyMapImpl {
     this.putAction("ctrl", "VK_U", action);
     action = new LetterKeys_Action3();
     this.putAction("ctrl", "VK_ENTER", action);
+    action = new LetterKeys_Action4();
+    this.putAction("none", "VK_TAB", action);
+    action = new LetterKeys_Action5();
+    this.putAction("shift", "VK_TAB", action);
+    action = new LetterKeys_Action6();
+    this.putAction("none", "VK_TAB", action);
   }
   public static class LetterKeys_Action0 extends KeyMapActionImpl {
     public LetterKeys_Action0() {
@@ -179,17 +187,131 @@ public class LetterKeys extends KeyMapImpl {
       return "ctrl ENTER";
     }
   }
+  public static class LetterKeys_Action4 extends KeyMapActionImpl {
+    public LetterKeys_Action4() {
+      super.setCaretPolicy(KeyMapAction.CARET_AT_FIRST_POSITION);
+      this.setShownInPopupMenu(false);
+    }
+    public boolean isMenuAlwaysShown() {
+      return false;
+    }
+    public boolean canExecute(final EditorContext editorContext) {
+      EditorCell contextCell = editorContext.getContextCell();
+      if ((contextCell == null)) {
+        return false;
+      }
+      SNode contextNode = contextCell.getSNode();
+      if (contextNode == null) {
+        return false;
+      }
+      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.Letter$kd))) {
+        return false;
+      }
+      return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
+    }
+    public void execute(final EditorContext editorContext) {
+      EditorCell contextCell = editorContext.getContextCell();
+      this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
+    }
+    private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.IndentedPoint$BF);
+    }
+    private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
+      BLOperations.getAndIncrement_int(SPropertyOperations.intPropRef(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.IndentedPoint$BF), PROPS.indentation$8ZOp));
+    }
+    public String getKeyStroke() {
+      return "none TAB";
+    }
+  }
+  public static class LetterKeys_Action5 extends KeyMapActionImpl {
+    public LetterKeys_Action5() {
+      super.setCaretPolicy(KeyMapAction.CARET_AT_FIRST_POSITION);
+      this.setShownInPopupMenu(false);
+    }
+    public boolean isMenuAlwaysShown() {
+      return false;
+    }
+    public boolean canExecute(final EditorContext editorContext) {
+      EditorCell contextCell = editorContext.getContextCell();
+      if ((contextCell == null)) {
+        return false;
+      }
+      SNode contextNode = contextCell.getSNode();
+      if (contextNode == null) {
+        return false;
+      }
+      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.Letter$kd))) {
+        return false;
+      }
+      return this.canExecute_internal(editorContext, contextNode, this.getSelectedNodes(editorContext));
+    }
+    public void execute(final EditorContext editorContext) {
+      EditorCell contextCell = editorContext.getContextCell();
+      this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
+    }
+    private boolean canExecute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.IndentedPoint$BF);
+    }
+    private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
+      BLOperations.getAndDecrement_int(SPropertyOperations.intPropRef(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.IndentedPoint$BF), PROPS.indentation$8ZOp));
+    }
+    public String getKeyStroke() {
+      return "shift TAB";
+    }
+  }
+  public static class LetterKeys_Action6 extends KeyMapActionImpl {
+    public LetterKeys_Action6() {
+      super.setCaretPolicy(KeyMapAction.CARET_AT_LAST_POSITION);
+      this.setShownInPopupMenu(false);
+    }
+    public boolean isMenuAlwaysShown() {
+      return false;
+    }
+    public boolean canExecute(final EditorContext editorContext) {
+      EditorCell contextCell = editorContext.getContextCell();
+      if ((contextCell == null)) {
+        return false;
+      }
+      SNode contextNode = contextCell.getSNode();
+      if (contextNode == null) {
+        return false;
+      }
+      if (!(SNodeOperations.isInstanceOf(contextNode, CONCEPTS.Letter$kd))) {
+        return false;
+      }
+      return true;
+    }
+    public void execute(final EditorContext editorContext) {
+      EditorCell contextCell = editorContext.getContextCell();
+      this.execute_internal(editorContext, contextCell.getSNode(), this.getSelectedNodes(editorContext));
+    }
+    private void execute_internal(final EditorContext editorContext, final SNode node, final List<SNode> selectedNodes) {
+      SNode currentNode = node;
+      for (int i = 0; i < 4; i++) {
+        SNode l = SNodeOperations.insertNextSiblingChild(currentNode, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter")));
+        SPropertyOperations.assign(l, PROPS.value$X7Tp, " ");
+        currentNode = l;
+      }
+      SelectionUtil.selectNode(editorContext, currentNode);
+    }
+    public String getKeyStroke() {
+      return "none TAB";
+    }
+  }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept Letter$kd = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter");
     /*package*/ static final SConcept Paragraph$XF = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph");
     /*package*/ static final SInterfaceConcept IHoldParagraphs$eh = MetaAdapterFactory.getInterfaceConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20dd8a1L, "jetbrains.mps.lang.text.structure.IHoldParagraphs");
+    /*package*/ static final SInterfaceConcept IndentedPoint$BF = MetaAdapterFactory.getInterfaceConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L, "jetbrains.mps.lang.text.structure.IndentedPoint");
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty bold$Xqbk = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737740L, "bold");
     /*package*/ static final SProperty italic$Xqql = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737741L, "italic");
     /*package*/ static final SProperty underlined$XqDm = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737742L, "underlined");
+    /*package*/ static final SProperty indentation$8ZOp = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L, 0x46ded40cf13ae6fbL, "indentation");
+    /*package*/ static final SProperty value$X7Tp = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7ee31bf598f4ad9eL, "value");
   }
 
   private static final class LINKS {

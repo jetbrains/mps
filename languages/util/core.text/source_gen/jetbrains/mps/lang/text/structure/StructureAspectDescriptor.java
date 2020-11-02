@@ -13,19 +13,23 @@ import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.smodel.runtime.DataTypeDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
-import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
+import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import jetbrains.mps.smodel.runtime.ConceptKind;
 import jetbrains.mps.smodel.runtime.StaticScope;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
+  /*package*/ final ConceptDescriptor myConceptBulletPoint = createDescriptorForBulletPoint();
   /*package*/ final ConceptDescriptor myConceptEmptyParagraphLetter = createDescriptorForEmptyParagraphLetter();
   /*package*/ final ConceptDescriptor myConceptIHoldLines = createDescriptorForIHoldLines();
   /*package*/ final ConceptDescriptor myConceptIHoldParagraphs = createDescriptorForIHoldParagraphs();
+  /*package*/ final ConceptDescriptor myConceptIParagraph = createDescriptorForIParagraph();
+  /*package*/ final ConceptDescriptor myConceptIndentedPoint = createDescriptorForIndentedPoint();
   /*package*/ final ConceptDescriptor myConceptLetter = createDescriptorForLetter();
   /*package*/ final ConceptDescriptor myConceptLine = createDescriptorForLine();
   /*package*/ final ConceptDescriptor myConceptNodeWrapperElement = createDescriptorForNodeWrapperElement();
   /*package*/ final ConceptDescriptor myConceptNodeWrapperTextualElement = createDescriptorForNodeWrapperTextualElement();
+  /*package*/ final ConceptDescriptor myConceptNumberedPoint = createDescriptorForNumberedPoint();
   /*package*/ final ConceptDescriptor myConceptParagraph = createDescriptorForParagraph();
   /*package*/ final ConceptDescriptor myConceptText = createDescriptorForText();
   /*package*/ final ConceptDescriptor myConceptTextElement = createDescriptorForTextElement();
@@ -48,19 +52,25 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptEmptyParagraphLetter, myConceptIHoldLines, myConceptIHoldParagraphs, myConceptLetter, myConceptLine, myConceptNodeWrapperElement, myConceptNodeWrapperTextualElement, myConceptParagraph, myConceptText, myConceptTextElement, myConceptTextualElement, myConceptUrlTextualElement, myConceptWord);
+    return Arrays.asList(myConceptBulletPoint, myConceptEmptyParagraphLetter, myConceptIHoldLines, myConceptIHoldParagraphs, myConceptIParagraph, myConceptIndentedPoint, myConceptLetter, myConceptLine, myConceptNodeWrapperElement, myConceptNodeWrapperTextualElement, myConceptNumberedPoint, myConceptParagraph, myConceptText, myConceptTextElement, myConceptTextualElement, myConceptUrlTextualElement, myConceptWord);
   }
 
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
     switch (myIndexSwitch.index(id)) {
+      case LanguageConceptSwitch.BulletPoint:
+        return myConceptBulletPoint;
       case LanguageConceptSwitch.EmptyParagraphLetter:
         return myConceptEmptyParagraphLetter;
       case LanguageConceptSwitch.IHoldLines:
         return myConceptIHoldLines;
       case LanguageConceptSwitch.IHoldParagraphs:
         return myConceptIHoldParagraphs;
+      case LanguageConceptSwitch.IParagraph:
+        return myConceptIParagraph;
+      case LanguageConceptSwitch.IndentedPoint:
+        return myConceptIndentedPoint;
       case LanguageConceptSwitch.Letter:
         return myConceptLetter;
       case LanguageConceptSwitch.Line:
@@ -69,6 +79,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptNodeWrapperElement;
       case LanguageConceptSwitch.NodeWrapperTextualElement:
         return myConceptNodeWrapperTextualElement;
+      case LanguageConceptSwitch.NumberedPoint:
+        return myConceptNumberedPoint;
       case LanguageConceptSwitch.Paragraph:
         return myConceptParagraph;
       case LanguageConceptSwitch.Text:
@@ -95,6 +107,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     return myIndexSwitch.index(c);
   }
 
+  private static ConceptDescriptor createDescriptorForBulletPoint() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "BulletPoint", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b6ef400337260c3L);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.lang.text.structure.Paragraph", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL);
+    b.parent(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L);
+    b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/3129707072769384643");
+    b.version(2);
+    b.alias("bullet point");
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForEmptyParagraphLetter() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "EmptyParagraphLetter", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x17c01c7f100e844bL);
     b.class_(false, false, false);
@@ -115,6 +137,21 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.interface_();
     b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/3213792450771277985");
     b.version(2);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForIParagraph() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "IParagraph", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x17b83ed298d64ecfL);
+    b.interface_();
+    b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/1709185132815339215");
+    b.version(2);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForIndentedPoint() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "IndentedPoint", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L);
+    b.interface_();
+    b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/5106752179536586436");
+    b.version(2);
+    b.property("indentation", 0x46ded40cf13ae6fbL).type(PrimitiveTypeId.INTEGER).origin("5106752179536586491").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForLetter() {
@@ -164,9 +201,20 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.alias("wrapped node");
     return b.create();
   }
+  private static ConceptDescriptor createDescriptorForNumberedPoint() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "NumberedPoint", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x5d9ea196218822ebL);
+    b.class_(false, false, false);
+    b.super_("jetbrains.mps.lang.text.structure.Paragraph", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL);
+    b.parent(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L);
+    b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/6746006958027317995");
+    b.version(2);
+    b.alias("numbered point");
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForParagraph() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.text", "Paragraph", 0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL);
     b.class_(false, false, false);
+    b.parent(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x17b83ed298d64ecfL);
     b.origin("r:59e90602-6655-4552-86eb-441a42a9a0e4(jetbrains.mps.lang.text.structure)/9143182410139364510");
     b.version(2);
     b.aggregate("letters", 0x7ee31bf598f4eddfL).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20d9cfbL).optional(true).ordered(true).multiple(true).origin("9143182410139364831").done();

@@ -15,7 +15,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.text.behavior.TextualElement__BehaviorDescriptor;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.text.behavior.IHoldParagraphs__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
@@ -25,6 +25,7 @@ import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
@@ -265,7 +266,8 @@ public class ParagraphCollectionActions {
       public void execute_internal(EditorContext editorContext, SNode node) {
         SNode prev;
         if (SNodeOperations.getContainingLink(node).isMultiple()) {
-          prev = SNodeOperations.insertNewPrevSiblingChild(node, MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph"));
+          SNode p = SNodeFactoryOperations.createNewNode(SNodeOperations.getConcept(node), null);
+          prev = SNodeOperations.insertPrevSiblingChild(node, p);
         } else {
           SNode holder = SNodeOperations.getNodeAncestor(node, CONCEPTS.IHoldParagraphs$eh, false, false);
           SNode copy = SNodeOperations.insertPrevSiblingChild(holder, SNodeOperations.copyNode(holder));

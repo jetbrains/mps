@@ -7,8 +7,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
@@ -17,13 +17,13 @@ import jetbrains.mps.lang.text.behavior.IHoldParagraphs__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
@@ -38,12 +38,13 @@ public class InsertOnTextualElement {
         SNode p = SNodeOperations.getNodeAncestor(node, CONCEPTS.Paragraph$XF, false, false);
         final Wrappers._T<SNode> next = new Wrappers._T<SNode>();
         if (SNodeOperations.getContainingLink(p).isMultiple()) {
-          next.value = SNodeOperations.insertNextSiblingChild(p, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph")));
+          next.value = SNodeOperations.insertNextSiblingChild(p, SNodeFactoryOperations.createNewNode(SNodeOperations.getConcept(p), p));
+          Paragraph__BehaviorDescriptor.clearTextualElements_id1uSfHaoOxlA.invoke(next.value);
         } else {
           SNode holder = SNodeOperations.getNodeAncestor(node, CONCEPTS.IHoldParagraphs$eh, false, false);
           if ((SNodeOperations.getNextSibling(node) == null)) {
             SAbstractConcept targetConcept = SNodeOperations.getContainingLink(holder).getTargetConcept();
-            SNode newInstance = SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(targetConcept));
+            SNode newInstance = SNodeFactoryOperations.createNewNode(targetConcept, null);
             SNodeOperations.insertNextSiblingChild(holder, newInstance);
             SelectionUtil.selectCell(editorContext, newInstance, SelectionManager.FIRST_EDITABLE_CELL);
             return;
