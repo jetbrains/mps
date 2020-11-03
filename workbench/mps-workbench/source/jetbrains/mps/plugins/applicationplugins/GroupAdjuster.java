@@ -101,7 +101,7 @@ public class GroupAdjuster {
 
 
   public static void refreshCustomizations() {
-    if (!RuntimeFlags.isTestMode()) return;
+    if (RuntimeFlags.isTestMode()) return;
     ApplicationManager.getApplication().invokeLater(GroupAdjuster::setCustomizationSchemaForCurrentProjects);
   }
 

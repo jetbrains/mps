@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.ide.editor.warningPanel;
 
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.extensions.Extensions;
 import com.intellij.openapi.fileEditor.FileEditor;
@@ -182,7 +183,7 @@ public class MPSEditorWarningsManager implements ProjectComponent {
   }
 
   private void updateAllWarnings(@Nullable VirtualFile vf) {
-    if (RuntimeFlags.isTestMode()) return;
+    if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) return;
 
     for (FileEditor editor : myFileEditorManager.getAllEditors()) {
       if (editor instanceof MPSFileNodeEditor) {

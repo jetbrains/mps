@@ -11,6 +11,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.execution.rmi.RemoteServer;
 import java.rmi.RemoteException;
 import jetbrains.mps.RuntimeFlags;
+import com.intellij.openapi.application.ApplicationManager;
 import java.rmi.NoSuchObjectException;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -86,7 +87,7 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
   }
   @Override
   public void projectOpened() {
-    if (RuntimeFlags.isTestMode()) {
+    if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
       return;
     }
     new Thread() {
@@ -106,7 +107,7 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
   }
   @Override
   public void projectClosed() {
-    if (RuntimeFlags.isTestMode()) {
+    if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
       return;
     }
     new Thread() {

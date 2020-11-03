@@ -10,6 +10,7 @@ import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.util.containers.MultiMap;
 import jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener;
 import jetbrains.mps.RuntimeFlags;
+import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.ide.editor.util.EditorComponentUtil;
 import org.jetbrains.annotations.NotNull;
@@ -21,7 +22,6 @@ import jetbrains.mps.textgen.trace.TraceInfo;
 import org.jetbrains.mps.util.Condition;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
-import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.awt.event.MouseEvent;
 
@@ -47,7 +47,7 @@ public abstract class BreakpointsUiComponentEx<B, L extends B> {
   public void init() {
     myMessageBusConnection = myProject.getMessageBus().connect();
     myMessageBusConnection.subscribe(EditorComponentCreateListener.EDITOR_COMPONENT_CREATION, myEditorComponentCreationHandler);
-    if (RuntimeFlags.isTestMode()) {
+    if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
       return;
     }
     for (EditorComponent editor : EditorComponentUtil.getAllEditorComponents(myFileEditorManager, true)) {

@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodeEditor.highlighter;
 
+import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.smodel.ModelsEventsCollector;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
@@ -87,7 +88,7 @@ public class HighlighterEventCollector {
    * Attach listeners to specified components.
    */
   public void startListening(SRepository repository) {
-    if (RuntimeFlags.isTestMode()) {
+    if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
       return;
     }
     myEventsCollector = new ModelsEventsCollector(repository.getModelAccess()) {
@@ -105,7 +106,7 @@ public class HighlighterEventCollector {
    * Detach listeners previously attached to the components.
    */
   public void stopListening(SRepository repository) {
-    if (RuntimeFlags.isTestMode()) {
+    if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
       return;
     }
     new RepoListenerRegistrar(repository, myModelReloadListener).detach();

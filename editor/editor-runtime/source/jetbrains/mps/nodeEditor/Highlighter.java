@@ -188,7 +188,7 @@ public class Highlighter implements IHighlighter, ProjectComponent {
   }
 
   public void addChecker(@NotNull final EditorChecker checker) {
-    if (RuntimeFlags.isTestMode()) {
+    if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
       return;
     }
     addPendingAction(() -> {
@@ -203,7 +203,7 @@ public class Highlighter implements IHighlighter, ProjectComponent {
    * @param checker the checker to remove
    */
   public void removeChecker(@NotNull final EditorChecker checker) {
-    if (RuntimeFlags.isTestMode()) {
+    if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
       return;
     }
     ThreadUtils.assertEDT();
@@ -279,7 +279,7 @@ public class Highlighter implements IHighlighter, ProjectComponent {
     // XXX why not app pool threads (e.g. with IDEA's JobScheduler)?
     myBackgroundExecutor = Executors.newSingleThreadScheduledExecutor(runnable -> new Thread(runnable, "Highlighter"));
     myScheduleHighlighterUpdate = new ScheduleHighlighterUpdate(EdtExecutorService.getScheduledExecutorInstance(), DumbService.getInstance(myProject));
-    if (!RuntimeFlags.isTestMode()) {
+    if (!RuntimeFlags.isTestMode() && !ApplicationManager.getApplication().isHeadlessEnvironment()) {
       myScheduleHighlighterUpdate.scheduleNext();
     }
   }

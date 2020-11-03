@@ -19,6 +19,7 @@ import com.intellij.openapi.Disposable;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
@@ -302,7 +303,7 @@ public class MessagesViewTool implements PersistentStateComponent<MessageViewToo
     }
 
     public void createContent(final boolean canClose, final boolean isMultiple) {
-      if (RuntimeFlags.isTestMode()) {
+      if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
         return;
       }
 

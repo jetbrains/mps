@@ -1105,9 +1105,20 @@
       <node concept="3cqZAl" id="7vbFQ4bPXA4" role="3clF45" />
       <node concept="3clFbS" id="7vbFQ4bPXA5" role="3clF47">
         <node concept="3clFbJ" id="7vbFQ4bPXA6" role="3cqZAp">
-          <node concept="2YIFZM" id="3M6xRf7PEV9" role="3clFbw">
-            <ref role="37wK5l" to="fyhk:~RuntimeFlags.isTestMode()" resolve="isTestMode" />
-            <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
+          <node concept="22lmx$" id="1CvX25d$vRm" role="3clFbw">
+            <node concept="2OqwBi" id="1CvX25d$z_x" role="3uHU7w">
+              <node concept="2YIFZM" id="1CvX25d$zkc" role="2Oq$k0">
+                <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+                <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+              </node>
+              <node concept="liA8E" id="1CvX25d$zVi" role="2OqNvi">
+                <ref role="37wK5l" to="bd8o:~Application.isHeadlessEnvironment()" resolve="isHeadlessEnvironment" />
+              </node>
+            </node>
+            <node concept="2YIFZM" id="3M6xRf7PEV9" role="3uHU7B">
+              <ref role="37wK5l" to="fyhk:~RuntimeFlags.isTestMode()" resolve="isTestMode" />
+              <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
+            </node>
           </node>
           <node concept="3clFbS" id="7vbFQ4bPXAa" role="3clFbx">
             <node concept="3cpWs6" id="7vbFQ4bPXAb" role="3cqZAp" />
@@ -1229,9 +1240,20 @@
           <node concept="3clFbS" id="7vbFQ4bPXAt" role="3clFbx">
             <node concept="3cpWs6" id="7vbFQ4bPXAu" role="3cqZAp" />
           </node>
-          <node concept="2YIFZM" id="3M6xRf7PFsI" role="3clFbw">
-            <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
-            <ref role="37wK5l" to="fyhk:~RuntimeFlags.isTestMode()" resolve="isTestMode" />
+          <node concept="22lmx$" id="1CvX25d$$aX" role="3clFbw">
+            <node concept="2YIFZM" id="3M6xRf7PFsI" role="3uHU7B">
+              <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
+              <ref role="37wK5l" to="fyhk:~RuntimeFlags.isTestMode()" resolve="isTestMode" />
+            </node>
+            <node concept="2OqwBi" id="1CvX25d$$pN" role="3uHU7w">
+              <node concept="2YIFZM" id="1CvX25d$$pO" role="2Oq$k0">
+                <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+                <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+              </node>
+              <node concept="liA8E" id="1CvX25d$$pP" role="2OqNvi">
+                <ref role="37wK5l" to="bd8o:~Application.isHeadlessEnvironment()" resolve="isHeadlessEnvironment" />
+              </node>
+            </node>
           </node>
         </node>
         <node concept="3clFbF" id="7vbFQ4bPXAv" role="3cqZAp">
@@ -3906,9 +3928,22 @@
         <node concept="3clFbF" id="3Gejiu9HHaQ" role="3cqZAp">
           <node concept="1Wc70l" id="7vbFQ4bPXKO" role="3clFbG">
             <node concept="3fqX7Q" id="7vbFQ4bPXKP" role="3uHU7B">
-              <node concept="2YIFZM" id="3M6xRf7Pruh" role="3fr31v">
-                <ref role="37wK5l" to="fyhk:~RuntimeFlags.isTestMode()" resolve="isTestMode" />
-                <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
+              <node concept="1eOMI4" id="1CvX25d$KyJ" role="3fr31v">
+                <node concept="22lmx$" id="1CvX25d$K$o" role="1eOMHV">
+                  <node concept="2YIFZM" id="3M6xRf7Pruh" role="3uHU7B">
+                    <ref role="37wK5l" to="fyhk:~RuntimeFlags.isTestMode()" resolve="isTestMode" />
+                    <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
+                  </node>
+                  <node concept="2OqwBi" id="1CvX25d$K_Z" role="3uHU7w">
+                    <node concept="2YIFZM" id="1CvX25d$KA0" role="2Oq$k0">
+                      <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+                      <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+                    </node>
+                    <node concept="liA8E" id="1CvX25d$KA1" role="2OqNvi">
+                      <ref role="37wK5l" to="bd8o:~Application.isHeadlessEnvironment()" resolve="isHeadlessEnvironment" />
+                    </node>
+                  </node>
+                </node>
               </node>
             </node>
             <node concept="3y3z36" id="7vbFQ4bPXKT" role="3uHU7w">
@@ -4157,9 +4192,20 @@
       <node concept="3Tm6S6" id="7vbFQ4bPXKX" role="1B3o_S" />
       <node concept="3clFbS" id="7vbFQ4bPXKZ" role="3clF47">
         <node concept="3clFbJ" id="7vbFQ4bPXL0" role="3cqZAp">
-          <node concept="2YIFZM" id="3M6xRf7PrLo" role="3clFbw">
-            <ref role="37wK5l" to="fyhk:~RuntimeFlags.isTestMode()" resolve="isTestMode" />
-            <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
+          <node concept="22lmx$" id="1CvX25d$KCL" role="3clFbw">
+            <node concept="2YIFZM" id="3M6xRf7PrLo" role="3uHU7B">
+              <ref role="37wK5l" to="fyhk:~RuntimeFlags.isTestMode()" resolve="isTestMode" />
+              <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
+            </node>
+            <node concept="2OqwBi" id="1CvX25d$LsL" role="3uHU7w">
+              <node concept="2YIFZM" id="1CvX25d$LsM" role="2Oq$k0">
+                <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+                <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+              </node>
+              <node concept="liA8E" id="1CvX25d$LsN" role="2OqNvi">
+                <ref role="37wK5l" to="bd8o:~Application.isHeadlessEnvironment()" resolve="isHeadlessEnvironment" />
+              </node>
+            </node>
           </node>
           <node concept="3clFbS" id="7vbFQ4bPXL4" role="3clFbx">
             <node concept="3cpWs6" id="7vbFQ4bPXL5" role="3cqZAp">

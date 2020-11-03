@@ -76,7 +76,7 @@ public class SamplesExtractor implements ApplicationComponent, PersistentStateCo
     }
     updateSamplesLocation();
 
-    if (RuntimeFlags.isTestMode()) {
+    if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
       return;
     }
 
