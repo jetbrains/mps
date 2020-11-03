@@ -546,13 +546,20 @@
       <property role="TrG5h" value="setDocumentationSupplier" />
       <node concept="3cqZAl" id="7vMfhZe6GP6" role="3clF45" />
       <node concept="3clFbS" id="7vMfhZe6GP8" role="3clF47">
-        <node concept="3clFbF" id="7vMfhZe6TGz" role="3cqZAp">
-          <node concept="37vLTI" id="7vMfhZe6TG_" role="3clFbG">
-            <node concept="37vLTw" id="7vMfhZe6TGC" role="37vLTJ">
-              <ref role="3cqZAo" node="7vMfhZe6TGt" resolve="myDocSupplier" />
-            </node>
-            <node concept="37vLTw" id="7vMfhZe6TGD" role="37vLTx">
-              <ref role="3cqZAo" node="7vMfhZe6RnK" resolve="docSupplier" />
+        <node concept="1HWtB8" id="1CvX25dyEzt" role="3cqZAp">
+          <node concept="37vLTw" id="1CvX25dyE$y" role="1HWFw0">
+            <ref role="3cqZAo" to="w1kc:~RegularModelDescriptor.myLoadLock" resolve="myLoadLock" />
+          </node>
+          <node concept="3clFbS" id="1CvX25dyEzx" role="1HWHxc">
+            <node concept="3clFbF" id="7vMfhZe6TGz" role="3cqZAp">
+              <node concept="37vLTI" id="7vMfhZe6TG_" role="3clFbG">
+                <node concept="37vLTw" id="7vMfhZe6TGC" role="37vLTJ">
+                  <ref role="3cqZAo" node="7vMfhZe6TGt" resolve="myDocSupplier" />
+                </node>
+                <node concept="37vLTw" id="7vMfhZe6TGD" role="37vLTx">
+                  <ref role="3cqZAo" node="7vMfhZe6RnK" resolve="docSupplier" />
+                </node>
+              </node>
             </node>
           </node>
         </node>
