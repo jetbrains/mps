@@ -8,6 +8,7 @@ import jetbrains.mps.text.impl.TextGenSupport;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -34,25 +35,7 @@ public abstract class Comments {
   }
   public static void commentParagraph(SNode p, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    for (SNode el : SLinkOperations.getChildren(p, LINKS.letters$rNyA)) {
-      if (SNodeOperations.isInstanceOf(el, CONCEPTS.Letter$kd)) {
-        SNode l = SNodeOperations.cast(el, CONCEPTS.Letter$kd);
-        tgs.append(SPropertyOperations.getString(l, PROPS.value$X7Tp));
-      } else {
-        if (SNodeOperations.isInstanceOf(el, CONCEPTS.NodeWrapperTextualElement$vh)) {
-          tgs.append(" ");
-          tgs.append("<node>");
-        } else if (SNodeOperations.isInstanceOf(el, CONCEPTS.UrlTextualElement$cU)) {
-          tgs.append(" ");
-          tgs.append(SPropertyOperations.getString(SNodeOperations.as(el, CONCEPTS.UrlTextualElement$cU), PROPS.text$M$I6));
-        } else {
-          tgs.append(" Unknown textual element");
-        }
-        if ((SNodeOperations.getNextSibling(el) != null) && SNodeOperations.isInstanceOf(SNodeOperations.getNextSibling(el), CONCEPTS.Letter$kd)) {
-          tgs.append(" ");
-        }
-      }
-    }
+    tgs.append(Paragraph__BehaviorDescriptor.representAsText_id1iNeTGeVhLf.invoke(p));
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
@@ -61,20 +44,14 @@ public abstract class Comments {
   private static final class CONCEPTS {
     /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
     /*package*/ static final SConcept NodeWrapperElement$c8 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, "jetbrains.mps.lang.text.structure.NodeWrapperElement");
-    /*package*/ static final SConcept Letter$kd = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter");
-    /*package*/ static final SConcept NodeWrapperTextualElement$vh = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20dcb4fL, "jetbrains.mps.lang.text.structure.NodeWrapperTextualElement");
-    /*package*/ static final SConcept UrlTextualElement$cU = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x739f6249ff2c0691L, "jetbrains.mps.lang.text.structure.UrlTextualElement");
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty value$zQr_ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
     /*package*/ static final SProperty url$SIrt = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
-    /*package*/ static final SProperty value$X7Tp = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7ee31bf598f4ad9eL, "value");
-    /*package*/ static final SProperty text$M$I6 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x739f6249ff2c0691L, 0x739f6249ff2c0dd6L, "text");
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink elements$_j45 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
-    /*package*/ static final SContainmentLink letters$rNyA = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, 0x7ee31bf598f4eddfL, "letters");
   }
 }

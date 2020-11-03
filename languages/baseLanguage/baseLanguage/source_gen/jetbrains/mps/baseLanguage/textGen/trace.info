@@ -5900,91 +5900,60 @@
   </root>
   <root nodeRef="r:c6eeedda-084d-4659-9c4d-80b7768f2bb2(jetbrains.mps.baseLanguage.textGen)/7260264510213473903">
     <file name="Comments.java">
-      <node id="7260264510213474039" at="17,72,18,55" concept="11" />
-      <node id="7260264510213474491" at="20,63,21,64" concept="11" />
-      <node id="7260264510213474498" at="21,64,22,74" concept="5" />
-      <node id="7260264510213474505" at="23,84,24,27" concept="5" />
-      <node id="7260264510213474506" at="24,27,25,74" concept="5" />
-      <node id="7260264510213474510" at="25,74,26,26" concept="5" />
-      <node id="7260264510213474517" at="27,9,28,24" concept="5" />
-      <node id="7260264510213474533" at="30,77,31,29" concept="5" />
-      <node id="7248963125565632065" at="35,74,36,55" concept="11" />
-      <node id="7248963125565632074" at="38,65,39,63" concept="11" />
-      <node id="7248963125565632081" at="39,63,40,71" concept="5" />
-      <node id="7248963125566313328" at="42,86,43,26" concept="5" />
-      <node id="7248963125565632116" at="43,26,44,31" concept="5" />
-      <node id="8507324904501354174" at="45,85,46,26" concept="5" />
-      <node id="8507324904501356493" at="46,26,47,124" concept="5" />
-      <node id="8507324904501555022" at="48,16,49,49" concept="5" />
-      <node id="8507324904501545830" at="51,147,52,26" concept="5" />
-      <node id="7260264510213474515" at="57,55,58,43" concept="12" />
-      <node id="7260264510213473903" at="62,0,63,0" concept="15" trace="Word$Dn" />
-      <node id="7260264510213473903" at="63,0,64,0" concept="15" trace="NodeWrapperElement$c8" />
-      <node id="7260264510213473903" at="64,0,65,0" concept="15" trace="Letter$kd" />
-      <node id="7260264510213473903" at="65,0,66,0" concept="15" trace="NodeWrapperTextualElement$vh" />
-      <node id="7260264510213473903" at="66,0,67,0" concept="15" trace="UrlTextualElement$cU" />
-      <node id="7260264510213473903" at="70,0,71,0" concept="15" trace="value$zQr_" />
-      <node id="7260264510213473903" at="71,0,72,0" concept="15" trace="url$SIrt" />
-      <node id="7260264510213473903" at="72,0,73,0" concept="15" trace="value$X7Tp" />
-      <node id="7260264510213473903" at="73,0,74,0" concept="15" trace="text$M$I6" />
-      <node id="7260264510213473903" at="77,0,78,0" concept="15" trace="elements$_j45" />
-      <node id="7260264510213473903" at="78,0,79,0" concept="15" trace="letters$rNyA" />
-      <node id="8507324904501554587" at="48,14,50,9" concept="1" />
-      <node id="7260264510213474522" at="29,7,32,7" concept="9" />
-      <node id="8507324904501535802" at="50,9,53,9" concept="9" />
-      <node id="7260264510213474515" at="57,0,60,0" concept="16" trace="isNotEmptyString#(Ljava/lang/String;)Z" />
-      <node id="7260264510213474502" at="22,74,27,9" concept="9" />
-      <node id="7248963125565632105" at="41,14,50,9" concept="9" />
-      <node id="7260264510213474489" at="19,77,29,7" concept="9" />
-      <node id="8507324904501546194" at="41,12,54,7" concept="1" />
-      <node id="7260264510213474487" at="18,55,33,5" concept="8" />
-      <node id="7248963125565632072" at="37,73,54,7" concept="9" />
-      <node id="7260264510213474039" at="17,0,35,0" concept="16" trace="commentLine#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/text/rt/TextGenContext;)V" />
-      <node id="7248963125565632070" at="36,55,55,5" concept="8" />
-      <node id="7248963125565632065" at="35,0,57,0" concept="16" trace="commentParagraph#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/text/rt/TextGenContext;)V" />
-      <scope id="7260264510213474523" at="30,77,31,29" />
-      <scope id="8507324904501554588" at="48,16,49,49" />
-      <scope id="8507324904501535804" at="51,147,52,26" />
-      <scope id="7260264510213474515" at="57,55,58,43" />
-      <scope id="7248963125565632073" at="38,65,40,71">
-        <var name="l" id="7248963125565632075" />
-      </scope>
-      <scope id="7248963125565632106" at="42,86,44,31" />
-      <scope id="8507324904501551178" at="45,85,47,124" />
-      <scope id="7260264510213474503" at="23,84,26,26" />
-      <scope id="7260264510213474515" at="57,0,60,0">
-        <var name="str" id="7260264510213474515" />
-      </scope>
-      <scope id="7260264510213474490" at="20,63,28,24">
-        <var name="word" id="7260264510213474492" />
-      </scope>
-      <scope id="8507324904501546195" at="41,14,53,9" />
-      <scope id="7260264510213474488" at="19,77,32,7" />
-      <scope id="7260264510213474487" at="18,55,33,5">
-        <var name="el" id="7260264510213474538" />
-      </scope>
-      <scope id="7260264510213474039" at="17,72,33,5">
-        <var name="tgs" id="7260264510213474039" />
-      </scope>
-      <scope id="7248963125565632071" at="37,73,54,7" />
-      <scope id="7260264510213474039" at="17,0,35,0">
-        <var name="ctx" id="7260264510213474039" />
-        <var name="line" id="7260264510213474258" />
-      </scope>
-      <scope id="7248963125565632070" at="36,55,55,5">
-        <var name="el" id="7248963125565632121" />
-      </scope>
-      <scope id="7248963125565632065" at="35,74,55,5">
+      <node id="7260264510213474039" at="18,72,19,55" concept="11" />
+      <node id="7260264510213474491" at="21,63,22,64" concept="11" />
+      <node id="7260264510213474498" at="22,64,23,74" concept="5" />
+      <node id="7260264510213474505" at="24,84,25,27" concept="5" />
+      <node id="7260264510213474506" at="25,27,26,74" concept="5" />
+      <node id="7260264510213474510" at="26,74,27,26" concept="5" />
+      <node id="7260264510213474517" at="28,9,29,24" concept="5" />
+      <node id="7260264510213474533" at="31,77,32,29" concept="5" />
+      <node id="7248963125565632065" at="36,74,37,55" concept="11" />
+      <node id="1491601438746259409" at="37,55,38,86" concept="5" />
+      <node id="7260264510213474515" at="40,55,41,43" concept="12" />
+      <node id="7260264510213473903" at="45,0,46,0" concept="15" trace="Word$Dn" />
+      <node id="7260264510213473903" at="46,0,47,0" concept="15" trace="NodeWrapperElement$c8" />
+      <node id="7260264510213473903" at="50,0,51,0" concept="15" trace="value$zQr_" />
+      <node id="7260264510213473903" at="51,0,52,0" concept="15" trace="url$SIrt" />
+      <node id="7260264510213473903" at="55,0,56,0" concept="15" trace="elements$_j45" />
+      <node id="7260264510213474522" at="30,7,33,7" concept="9" />
+      <node id="7260264510213474515" at="40,0,43,0" concept="16" trace="isNotEmptyString#(Ljava/lang/String;)Z" />
+      <node id="7248963125565632065" at="36,0,40,0" concept="16" trace="commentParagraph#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/text/rt/TextGenContext;)V" />
+      <node id="7260264510213474502" at="23,74,28,9" concept="9" />
+      <node id="7260264510213474489" at="20,77,30,7" concept="9" />
+      <node id="7260264510213474487" at="19,55,34,5" concept="8" />
+      <node id="7260264510213474039" at="18,0,36,0" concept="16" trace="commentLine#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/text/rt/TextGenContext;)V" />
+      <scope id="7260264510213474523" at="31,77,32,29" />
+      <scope id="7260264510213474515" at="40,55,41,43" />
+      <scope id="7248963125565632065" at="36,74,38,86">
         <var name="tgs" id="7248963125565632065" />
       </scope>
-      <scope id="7248963125565632065" at="35,0,57,0">
+      <scope id="7260264510213474503" at="24,84,27,26" />
+      <scope id="7260264510213474515" at="40,0,43,0">
+        <var name="str" id="7260264510213474515" />
+      </scope>
+      <scope id="7248963125565632065" at="36,0,40,0">
         <var name="ctx" id="7248963125565632065" />
         <var name="p" id="7248963125565632066" />
       </scope>
-      <unit id="7260264510213473903" at="76,0,80,0" name="jetbrains.mps.baseLanguage.textGen.Comments$LINKS" />
-      <unit id="7260264510213473903" at="69,0,75,0" name="jetbrains.mps.baseLanguage.textGen.Comments$PROPS" />
-      <unit id="7260264510213473903" at="61,0,68,0" name="jetbrains.mps.baseLanguage.textGen.Comments$CONCEPTS" />
-      <unit id="7260264510213473903" at="16,0,81,0" name="jetbrains.mps.baseLanguage.textGen.Comments" />
+      <scope id="7260264510213474490" at="21,63,29,24">
+        <var name="word" id="7260264510213474492" />
+      </scope>
+      <scope id="7260264510213474488" at="20,77,33,7" />
+      <scope id="7260264510213474487" at="19,55,34,5">
+        <var name="el" id="7260264510213474538" />
+      </scope>
+      <scope id="7260264510213474039" at="18,72,34,5">
+        <var name="tgs" id="7260264510213474039" />
+      </scope>
+      <scope id="7260264510213474039" at="18,0,36,0">
+        <var name="ctx" id="7260264510213474039" />
+        <var name="line" id="7260264510213474258" />
+      </scope>
+      <unit id="7260264510213473903" at="54,0,57,0" name="jetbrains.mps.baseLanguage.textGen.Comments$LINKS" />
+      <unit id="7260264510213473903" at="44,0,48,0" name="jetbrains.mps.baseLanguage.textGen.Comments$CONCEPTS" />
+      <unit id="7260264510213473903" at="49,0,53,0" name="jetbrains.mps.baseLanguage.textGen.Comments$PROPS" />
+      <unit id="7260264510213473903" at="17,0,58,0" name="jetbrains.mps.baseLanguage.textGen.Comments" />
     </file>
   </root>
   <root nodeRef="r:c6eeedda-084d-4659-9c4d-80b7768f2bb2(jetbrains.mps.baseLanguage.textGen)/7282214966977885613">
