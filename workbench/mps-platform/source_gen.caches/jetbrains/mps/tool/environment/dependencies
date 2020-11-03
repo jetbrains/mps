@@ -7,7 +7,6 @@
     <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
     <classNode dependClassName="com.intellij.openapi.application.ModalityState" />
     <classNode dependClassName="com.intellij.openapi.application.PathManager" />
-    <classNode dependClassName="com.intellij.openapi.project.DumbService" />
     <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="com.intellij.openapi.project.ex.ProjectManagerEx" />
     <classNode dependClassName="com.intellij.openapi.util.Disposer" />
@@ -31,8 +30,9 @@
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Set" />
     <classNode dependClassName="java.util.StringJoiner" />
-    <classNode dependClassName="java.util.concurrent.Semaphore" />
+    <classNode dependClassName="java.util.concurrent.ExecutionException" />
     <classNode dependClassName="java.util.concurrent.TimeUnit" />
+    <classNode dependClassName="java.util.concurrent.TimeoutException" />
     <classNode dependClassName="jetbrains.mps.RuntimeFlags" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.core.platform.Platform" />
