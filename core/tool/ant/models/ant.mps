@@ -5798,6 +5798,9 @@
               <node concept="2YIFZM" id="gQDJKN6QjU" role="3clFbG">
                 <ref role="1Pybhc" node="3t7WP23N$8C" resolve="MPSClasspathUtil" />
                 <ref role="37wK5l" node="vAjk0V2aML" resolve="gatherAllClassesAndJarsUnder" />
+                <node concept="1rXfSq" id="3uvkkAY2XDb" role="37wK5m">
+                  <ref role="37wK5l" to="gola:~ProjectComponent.getProject()" resolve="getProject" />
+                </node>
                 <node concept="37vLTw" id="gQDJKN6QjV" role="37wK5m">
                   <ref role="3cqZAo" node="gQDJKN6QjX" resolve="file" />
                 </node>
@@ -8777,6 +8780,12 @@
       <property role="TrG5h" value="gatherAllClassesAndJarsUnder" />
       <property role="DiZV1" value="false" />
       <node concept="3cqZAl" id="vAjk0V2aMN" role="3clF45" />
+      <node concept="37vLTG" id="3uvkkAY31yn" role="3clF46">
+        <property role="TrG5h" value="project" />
+        <node concept="3uibUv" id="3uvkkAY31Xt" role="1tU5fm">
+          <ref role="3uigEE" to="gola:~Project" resolve="Project" />
+        </node>
+      </node>
       <node concept="37vLTG" id="vAjk0V2aMO" role="3clF46">
         <property role="TrG5h" value="dir" />
         <property role="3TUv4t" value="false" />
@@ -8868,6 +8877,35 @@
         </node>
         <node concept="3clFbJ" id="3Bnx5yGPevm" role="3cqZAp">
           <node concept="3clFbS" id="3Bnx5yGPevo" role="3clFbx">
+            <node concept="3clFbF" id="3uvkkAY32tP" role="3cqZAp">
+              <node concept="2OqwBi" id="3uvkkAY32yC" role="3clFbG">
+                <node concept="37vLTw" id="3uvkkAY32tN" role="2Oq$k0">
+                  <ref role="3cqZAo" node="3uvkkAY31yn" resolve="project" />
+                </node>
+                <node concept="liA8E" id="3uvkkAY32EF" role="2OqNvi">
+                  <ref role="37wK5l" to="gola:~Project.log(java.lang.String,int)" resolve="log" />
+                  <node concept="2YIFZM" id="3uvkkAY347B" role="37wK5m">
+                    <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+                    <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
+                    <node concept="Xl_RD" id="3uvkkAY35eY" role="37wK5m">
+                      <property role="Xl_RC" value="Failed to read directory %s, ignored" />
+                    </node>
+                    <node concept="2OqwBi" id="3uvkkAY35Q2" role="37wK5m">
+                      <node concept="37vLTw" id="3uvkkAY35zF" role="2Oq$k0">
+                        <ref role="3cqZAo" node="vAjk0V2aMO" resolve="dir" />
+                      </node>
+                      <node concept="liA8E" id="3uvkkAY362a" role="2OqNvi">
+                        <ref role="37wK5l" to="guwi:~File.getAbsolutePath()" resolve="getAbsolutePath" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="10M0yZ" id="3uvkkAY351j" role="37wK5m">
+                    <ref role="3cqZAo" to="gola:~Project.MSG_WARN" resolve="MSG_WARN" />
+                    <ref role="1PxDUh" to="gola:~Project" resolve="Project" />
+                  </node>
+                </node>
+              </node>
+            </node>
             <node concept="3cpWs6" id="3Bnx5yGPkRe" role="3cqZAp" />
           </node>
           <node concept="3clFbC" id="3Bnx5yGPklT" role="3clFbw">
@@ -9195,6 +9233,9 @@
             <node concept="3clFbF" id="vAjk0V2aOL" role="3cqZAp">
               <node concept="1rXfSq" id="vAjk0V2aOM" role="3clFbG">
                 <ref role="37wK5l" node="vAjk0V2aML" resolve="gatherAllClassesAndJarsUnder" />
+                <node concept="37vLTw" id="3uvkkAY32lW" role="37wK5m">
+                  <ref role="3cqZAo" node="3uvkkAY31yn" resolve="project" />
+                </node>
                 <node concept="37vLTw" id="vAjk0V2aON" role="37wK5m">
                   <ref role="3cqZAo" node="vAjk0V2aOp" resolve="f" />
                 </node>

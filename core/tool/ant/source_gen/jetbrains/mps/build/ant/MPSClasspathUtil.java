@@ -163,13 +163,14 @@ public class MPSClasspathUtil {
   /**
    * XXX shall rather be instance method of an mps classpath utility class
    */
-  /*package*/ static void gatherAllClassesAndJarsUnder(File dir, Set<File> result) {
+  /*package*/ static void gatherAllClassesAndJarsUnder(Project project, File dir, Set<File> result) {
     if (dir.getName().equals("classes") || dir.getName().equals("classes_gen")) {
       result.add(dir);
       return;
     }
     File[] children = dir.listFiles();
     if (children == null) {
+      project.log(String.format("Failed to read directory %s, ignored", dir.getAbsolutePath()), Project.MSG_WARN);
       return;
     }
     //  we do not want trove different from ours in $mps.home$/lib 
@@ -191,7 +192,7 @@ public class MPSClasspathUtil {
         continue;
       }
       // inv: f.isDirectory() 
-      gatherAllClassesAndJarsUnder(f, result);
+      gatherAllClassesAndJarsUnder(project, f, result);
     }
   }
 }

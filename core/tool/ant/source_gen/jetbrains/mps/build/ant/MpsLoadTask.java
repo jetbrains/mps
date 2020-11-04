@@ -435,7 +435,7 @@ public class MpsLoadTask extends Task {
     }
     Set<File> classPath = new LinkedHashSet<File>();
     for (File file : classPathRoots) {
-      MPSClasspathUtil.gatherAllClassesAndJarsUnder(file, classPath);
+      MPSClasspathUtil.gatherAllClassesAndJarsUnder(getProject(), file, classPath);
     }
     return classPath;
   }
