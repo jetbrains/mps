@@ -55,15 +55,29 @@ public final class TreeErrorMessage extends TreeMessage {
     return myDerived;
   }
 
+  /**
+   *
+   * @return negation of {@link #isDerivedFromDescendant()}
+   */
+  public boolean isOriginal() {
+    return !myDerived;
+  }
+
   public boolean same(TreeErrorMessage other) {
-    return myErrorState == other.myErrorState && Objects.equals(myMessage, other.myMessage) && Objects.equals(getOwner(), other.getOwner());
+    return myErrorState == other.myErrorState && Objects.equals(myMessage, other.myMessage) && Objects.equals(getOwner(), other.getOwner()) && myDerived == other.myDerived;
   }
 
   public static boolean isError(TreeErrorMessage m) {
     return m.myErrorState == ErrorState.ERROR;
   }
+  public static boolean isOriginalError(TreeErrorMessage m) {
+    return m.isOriginal() && m.myErrorState == ErrorState.ERROR;
+  }
   public static boolean isWarning(TreeErrorMessage m) {
     return m.myErrorState == ErrorState.WARNING;
+  }
+  public static boolean isOriginalWarning(TreeErrorMessage m) {
+    return m.isOriginal() && m.myErrorState == ErrorState.WARNING;
   }
   public static boolean isErrorOrWarning(TreeErrorMessage m) {
     return m.myErrorState == ErrorState.ERROR || m.myErrorState == ErrorState.WARNING;

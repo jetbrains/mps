@@ -38,6 +38,9 @@ import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowId;
 import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.ui.ScrollPaneFactory;
+import com.intellij.ui.stripe.ErrorStripe;
+import com.intellij.ui.stripe.ErrorStripePainter;
+import com.intellij.ui.stripe.TreeUpdater;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.update.MergingUpdateQueue;
 import com.intellij.util.ui.update.Update;
@@ -53,6 +56,7 @@ import jetbrains.mps.ide.projectPane.logicalview.ProjectTreeFindHelper;
 import jetbrains.mps.ide.projectView.ProjectViewPaneOverride;
 import jetbrains.mps.ide.ui.tree.MPSTree;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
+import jetbrains.mps.ide.ui.tree.TreeErrorMessage;
 import jetbrains.mps.ide.ui.tree.TreeHighlighterExtension;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
 import jetbrains.mps.ide.ui.tree.smodel.SNodeGroupTreeNode;
@@ -79,7 +83,9 @@ import org.jetbrains.mps.openapi.module.SRepositoryListenerBase;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
+import javax.swing.tree.TreeCellRenderer;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
@@ -139,6 +145,7 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
   private final ToggleAndRebuildAction myShowErrorComponent;
   private final ToggleAndRebuildAction myShowUnderline;
   private final ToggleAndRebuildAction myShowErrorsOnly;
+  private final ToggleAndRebuildAction myShowErrorStripe;
 
   public ProjectPane(final Project project) {
     super(project);
@@ -160,7 +167,8 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
     myShowErrorComponent = new ToggleAndRebuildAction(this, "Show Indicator", "mps.ProjectPane.messages.use.indicator");
     myShowUnderline = new ToggleAndRebuildAction(this, "Underline Nodes", "mps.ProjectPane.messages.use.underline");
     myShowErrorsOnly = new ToggleAndRebuildAction(this, "Errors Only", "mps.ProjectPane.messages.error.only");
-
+    // expose IDEA's registry setting in UI, to ease turn off for those not willing to see it
+    myShowErrorStripe = new ToggleAndRebuildAction(this, "Error Stripe", "error.stripe.enabled");
   }
 
   @Override
@@ -292,6 +300,27 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
       rebuild();
     }
     TreeHighlighterExtension.attachHighlighters(tree, myProject);
+    // copied from AbstractProjectViewPSIPane.createComponent(), with changes
+    if (myShowErrorStripe.isSelected()) {
+      ErrorStripePainter painter = new ErrorStripePainter(true);
+      Disposer.register(this, new TreeUpdater<>(painter, myScrollPane, myTree) {
+
+        @Override
+        protected void update(ErrorStripePainter painter) {
+          if (myShowErrorStripe.get()) {
+            super.update(painter);
+          } else {
+            // if user decided to switch error stripes off, don't bother updating
+            painter.clear();
+          }
+        }
+
+        @Override
+        protected ErrorStripe getErrorStripe(Object object) {
+          return ProjectPane.this.getErrorStripe(object);
+        }
+      });
+    }
     return myScrollPane;
   }
 
@@ -330,6 +359,7 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
     DefaultActionGroup g = new DefaultActionGroup("Error && Warnings", true);
     g.addAction(myShowErrorComponent).setAsSecondary(true);
     g.addAction(myShowUnderline).setAsSecondary(true);
+    g.addAction(myShowErrorStripe).setAsSecondary(true);
     g.addSeparator();
     g.addAction(myShowErrorsOnly).setAsSecondary(true);
     group.addAction(g).setAsSecondary(true);
@@ -543,6 +573,26 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
   public MPSTreeNode findNextTreeNode(SNode node) {
     return createFindHelper().findNextTreeNode(node);
   }
+
+  @Nullable
+  /*package*/ ErrorStripe getErrorStripe(Object object) {
+    if (object instanceof MPSTreeNode) {
+      final Collection<TreeErrorMessage> messages = ((MPSTreeNode) object).findMessages(TreeErrorMessage.class);
+      final TreeCellRenderer cellRenderer;
+      if (messages.isEmpty() || false == ((cellRenderer = getTree().getCellRenderer()) instanceof ProjectTreeCellRenderer)) {
+        return null;
+      }
+      assert cellRenderer != null : "project tree without cell renderer";
+      if (messages.stream().anyMatch(TreeErrorMessage::isOriginalError)) {
+        return ErrorStripe.create(((ProjectTreeCellRenderer) cellRenderer).getColors().getErrorStripeColor(), 1);
+      }
+      if (!showErrorsOnly().get() && messages.stream().anyMatch(TreeErrorMessage::isOriginalWarning)) {
+        return ErrorStripe.create(((ProjectTreeCellRenderer) cellRenderer).getColors().getWarningStripeColor(), 1);
+      }
+    }
+    return null;
+  }
+
 
   /*package*/ boolean isDescriptorModelInGeneratorVisible() {
     return myShowDescriptorModelsAction.isSelected();

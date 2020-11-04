@@ -21,6 +21,7 @@ import jetbrains.mps.ide.ui.tree.MPSTree;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.ide.ui.tree.NewMPSTreeCellRenderer;
 import jetbrains.mps.ide.ui.tree.TreeErrorMessage;
+import jetbrains.mps.ide.ui.tree.TreeRendererColors;
 
 import javax.swing.Box;
 import javax.swing.tree.TreePath;
@@ -56,6 +57,10 @@ import java.util.function.Supplier;
     myColors.reset();
   }
 
+  /*package*/ TreeRendererColors getColors() {
+    return myColors;
+  }
+
   @Override
   public void rebuildStarted() {
     errorComponentVisible(myUseErrorComponent.get());
@@ -85,21 +90,13 @@ import java.util.function.Supplier;
       return;
     }
     final Collection<TreeErrorMessage> messages = treeNode.findMessages(TreeErrorMessage.class);
-    if (messages.stream().anyMatch(ProjectTreeCellRenderer::isOriginalError)) {
+    if (messages.stream().anyMatch(TreeErrorMessage::isOriginalError)) {
       myIndicator.setState(ErrorState.ERROR, mainLabelFont);
-    } else if (!errorsOnly() && messages.stream().anyMatch(ProjectTreeCellRenderer::isOriginalWarning)) {
+    } else if (!errorsOnly() && messages.stream().anyMatch(TreeErrorMessage::isOriginalWarning)) {
       myIndicator.setState(ErrorState.WARNING, mainLabelFont);
     } else {
       myIndicator.setState(ErrorState.NONE, mainLabelFont);
     }
-  }
-
-  static boolean isOriginalError(TreeErrorMessage m) {
-    return !m.isDerivedFromDescendant() && m.getErrorState() == ErrorState.ERROR;
-  }
-
-  static boolean isOriginalWarning(TreeErrorMessage m) {
-    return !m.isDerivedFromDescendant() && m.getErrorState() == ErrorState.WARNING;
   }
 
   /*package*/ boolean isErrorStateComponentEvent(MouseEvent e) {

@@ -122,6 +122,7 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
 
   public ProjectPaneTree(ProjectPane projectPane, Project project) {
     super(ProjectHelper.fromIdeaProject(project));
+    // FWIW, IDEA's ProjectViewTree uses largeModel, why don't we do the same?
     myProjectPane = projectPane;
 
     myCellRenderer = new ProjectTreeCellRenderer(projectPane.errorIndicatorVisible(), projectPane.underlineErrorNodes(), projectPane.showErrorsOnly());
