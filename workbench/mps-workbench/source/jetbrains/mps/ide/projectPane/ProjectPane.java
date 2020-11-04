@@ -19,7 +19,6 @@ import com.intellij.ide.SelectInTarget;
 import com.intellij.ide.projectView.ProjectView;
 import com.intellij.ide.projectView.impl.ProjectViewPane;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import com.intellij.openapi.actionSystem.DataProvider;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import com.intellij.openapi.application.ApplicationManager;
@@ -38,7 +37,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowId;
 import com.intellij.openapi.wm.ToolWindowManager;
-import com.intellij.ui.components.JBScrollPane;
+import com.intellij.ui.ScrollPaneFactory;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.update.MergingUpdateQueue;
 import com.intellij.util.ui.update.Update;
@@ -67,7 +66,6 @@ import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jdom.Element;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -80,7 +78,7 @@ import org.jetbrains.mps.openapi.module.SRepositoryListenerBase;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
-import java.awt.Component;
+import javax.swing.JScrollPane;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -109,7 +107,7 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
   };
   private final ReloadListener myReloadListener;
 
-  private MyScrollPane myScrollPane;
+  private JScrollPane myScrollPane;
   // FIXME there's update queue in MPSTree, do really we need both?
   private final MergingUpdateQueue myUpdateQueue = new MergingUpdateQueue("Project Pane Updates Queue", 500, true, myScrollPane, null, null, true);
 
@@ -288,10 +286,7 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
     tree.orderChildrenWith(new LogicalViewChildOrder(this, new ProjectTreeChildOrder(treeNodeWithRootGrouping)));
     myTree = tree;
 
-    // FIXME ScrollPaneFactory.createScrollPane(myTree), no apparent reason for MyScrollPane class
-    //       dates back to 4c6e8388, where JPanel with delegation was replaced with ScrollPane with delegation
-    //       although they represent different containment relations.
-    myScrollPane = new MyScrollPane(getTree());
+    myScrollPane = ScrollPaneFactory.createScrollPane(tree);
     addListeners();
     if (!RuntimeFlags.isTestMode()) {
       rebuild();
@@ -572,20 +567,6 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
   @NotNull
   /*package*/ ProjectTreeFindHelper createFindHelper() {
     return new ProjectTreeFindHelper(getTree());
-  }
-
-  //----UI----
-
-  private class MyScrollPane extends JBScrollPane implements DataProvider {
-    private MyScrollPane(Component view) {
-      super(view);
-    }
-
-    @Override
-    @Nullable
-    public Object getData(@NonNls String dataId) {
-      return ProjectPane.this.getData(dataId);
-    }
   }
 
   private enum UpdateID {
