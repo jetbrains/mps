@@ -71,7 +71,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(myNode, LINKS.body$5LhG), LINKS.statement$53DE)).isNotEmpty() || (SNodeOperations.getNextSibling(myNode) == null);
   }
   private boolean nodeCondition_shllfo_a4a() {
-    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(myNode, LINKS.body$5LhG), LINKS.statement$53DE)).isNotEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(myNode, LINKS.body$5LhG), LINKS.statement$53DE)).isNotEmpty() || (SNodeOperations.getNextSibling(myNode) == null);
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "case");
@@ -143,7 +143,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
   private EditorCell createConstant_1() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ":");
-    editorCell.setCellId("Constant_shllfo_c0");
+    editorCell.setCellId("SwitchCaseColonCell");
     Style style = new StyleImpl();
     style.set(StyleAttributes.PUNCTUATION_LEFT, true);
     style.set(StyleAttributes.EDITABLE, false);

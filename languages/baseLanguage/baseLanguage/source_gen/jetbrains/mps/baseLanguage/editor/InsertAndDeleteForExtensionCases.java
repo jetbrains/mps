@@ -43,17 +43,15 @@ public class InsertAndDeleteForExtensionCases {
           if (DeletionApproverUtil.approve(editorContext, node)) {
             return;
           }
+          SNodeOperations.deleteNode(node);
         } else {
-          if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.expression$QQk6))) {
-            return;
+          SNode prev = SNodeOperations.as(SNodeOperations.getPrevSibling(node), CONCEPTS.SwitchCase$7o);
+          if ((prev != null) && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(prev, LINKS.body$5LhG), LINKS.statement$53DE)).isEmpty()) {
+            SLinkOperations.setTarget(prev, LINKS.body$5LhG, SLinkOperations.getTarget(node, LINKS.body$5LhG));
+            SelectionUtil.selectLabelCellAnSetCaret(editorContext, prev, "SwitchCaseColonCell", -1);
           }
+          SNodeOperations.deleteNode(node);
         }
-        SNode prev = SNodeOperations.as(SNodeOperations.getPrevSibling(node), CONCEPTS.SwitchCase$7o);
-        if ((prev != null) && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(prev, LINKS.body$5LhG), LINKS.statement$53DE)).isEmpty()) {
-          SLinkOperations.setTarget(prev, LINKS.body$5LhG, SLinkOperations.getTarget(node, LINKS.body$5LhG));
-          SelectionUtil.selectLabelCellAnSetCaret(editorContext, prev, SelectionManager.FIRST_EDITABLE_CELL, -1);
-        }
-        SNodeOperations.deleteNode(node);
       }
 
     };
@@ -68,22 +66,20 @@ public class InsertAndDeleteForExtensionCases {
           if (DeletionApproverUtil.approve(editorContext, node)) {
             return;
           }
+          SNodeOperations.deleteNode(node);
         } else {
-          if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.expression$QQk6))) {
-            return;
+          SNode prev = SNodeOperations.as(SNodeOperations.getPrevSibling(node), CONCEPTS.SwitchCase$7o);
+          if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.body$5LhG), LINKS.statement$53DE)).isNotEmpty() && (prev != null) && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(prev, LINKS.body$5LhG), LINKS.statement$53DE)).isEmpty()) {
+            SLinkOperations.setTarget(prev, LINKS.body$5LhG, SLinkOperations.getTarget(node, LINKS.body$5LhG));
+            SelectionUtil.selectLabelCellAnSetCaret(editorContext, prev, "SwitchCaseColonCell", -1);
+          } else {
+            SNode next = SNodeOperations.as(SNodeOperations.getNextSibling(node), CONCEPTS.SwitchCase$7o);
+            if (next != null) {
+              SelectionUtil.selectLabelCellAnSetCaret(editorContext, next, SelectionManager.FIRST_CELL, 0);
+            }
           }
+          SNodeOperations.deleteNode(node);
         }
-        SNode prev = SNodeOperations.as(SNodeOperations.getPrevSibling(node), CONCEPTS.SwitchCase$7o);
-        if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.body$5LhG), LINKS.statement$53DE)).isNotEmpty() && (prev != null) && ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(prev, LINKS.body$5LhG), LINKS.statement$53DE)).isEmpty()) {
-          SLinkOperations.setTarget(prev, LINKS.body$5LhG, SLinkOperations.getTarget(node, LINKS.body$5LhG));
-          SelectionUtil.selectLabelCellAnSetCaret(editorContext, prev, SelectionManager.FIRST_EDITABLE_CELL, -1);
-        } else {
-          SNode next = SNodeOperations.as(SNodeOperations.getNextSibling(node), CONCEPTS.SwitchCase$7o);
-          if (next != null) {
-            SelectionUtil.selectLabelCellAnSetCaret(editorContext, next, SelectionManager.FIRST_CELL, 0);
-          }
-        }
-        SNodeOperations.deleteNode(node);
       }
 
     };
@@ -141,7 +137,6 @@ public class InsertAndDeleteForExtensionCases {
   private static final class LINKS {
     /*package*/ static final SContainmentLink body$5LhG = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d8048L, "body");
     /*package*/ static final SContainmentLink statement$53DE = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, 0xf8cc6bf961L, "statement");
-    /*package*/ static final SContainmentLink expression$QQk6 = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ef02cdd1bL, 0x10ef02d67cfL, "expression");
   }
 
   private static final class CONCEPTS {
