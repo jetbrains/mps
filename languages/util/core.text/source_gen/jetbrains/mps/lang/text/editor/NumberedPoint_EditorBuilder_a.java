@@ -63,8 +63,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.addEditorCell(createConstant_0());
     editorCell.addEditorCell(createReadOnlyModelAccessor_0());
     editorCell.addEditorCell(createReadOnlyModelAccessor_1());
-    editorCell.addEditorCell(createConstant_1());
-    editorCell.addEditorCell(createRefNodeList_0());
+    editorCell.addEditorCell(createCollection_1());
     editorCell.addEditorCell(createConstant_3());
     return editorCell;
   }
@@ -118,9 +117,19 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.getStyle().putAll(style);
     return editorCell;
   }
+  private EditorCell createCollection_1() {
+    EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
+    editorCell.setCellId("Collection_h96uf6_d0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.INDENT_LAYOUT_WRAP_ANCHOR, true);
+    editorCell.getStyle().putAll(style);
+    editorCell.addEditorCell(createConstant_1());
+    editorCell.addEditorCell(createRefNodeList_0());
+    return editorCell;
+  }
   private EditorCell createConstant_1() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, " ");
-    editorCell.setCellId("Constant_h96uf6_d0");
+    editorCell.setCellId("Constant_h96uf6_a3a");
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, false);
     style.set(StyleAttributes.PUNCTUATION_LEFT, true);
@@ -130,22 +139,18 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new lettersListHandler_h96uf6_e0(myNode, getEditorContext());
+    AbstractCellListHandler handler = new lettersListHandler_h96uf6_b3a(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("refNodeList_letters");
-    Style style = new StyleImpl();
-    style.set(StyleAttributes.INDENT_LAYOUT_WRAP_ANCHOR, false);
-    style.set(StyleAttributes.INDENT_LAYOUT_INDENT_ANCHOR, true);
-    editorCell.getStyle().putAll(style);
     ParagraphCollectionActions.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setSRole(handler.getElementSRole());
     return editorCell;
   }
-  private static class lettersListHandler_h96uf6_e0 extends RefNodeListHandler {
+  private static class lettersListHandler_h96uf6_b3a extends RefNodeListHandler {
     @NotNull
     private SNode myNode;
 
-    public lettersListHandler_h96uf6_e0(SNode ownerNode, EditorContext context) {
+    public lettersListHandler_h96uf6_b3a(SNode ownerNode, EditorContext context) {
       super(context, false);
       myNode = ownerNode;
     }
@@ -176,7 +181,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(lettersListHandler_h96uf6_e0.this.getNode(), LINKS.letters$rNyA));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(lettersListHandler_h96uf6_b3a.this.getNode(), LINKS.letters$rNyA));
       try {
         EditorCell emptyCell = null;
         emptyCell = createConstant_2();
@@ -217,7 +222,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     private EditorCell createConstant_2() {
       EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "");
-      editorCell.setCellId("Constant_h96uf6_a4a");
+      editorCell.setCellId("Constant_h96uf6_a1d0");
       Style style = new StyleImpl();
       style.set(StyleAttributes.EDITABLE, true);
       editorCell.getStyle().putAll(style);
@@ -230,7 +235,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
   private EditorCell createConstant_3() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, " ");
-    editorCell.setCellId("Constant_h96uf6_f0");
+    editorCell.setCellId("Constant_h96uf6_e0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, false);
     style.set(StyleAttributes.PUNCTUATION_LEFT, true);
