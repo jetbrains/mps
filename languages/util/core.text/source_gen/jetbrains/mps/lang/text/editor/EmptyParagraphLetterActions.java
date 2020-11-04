@@ -5,8 +5,8 @@ package jetbrains.mps.lang.text.editor;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
@@ -18,7 +18,6 @@ import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class EmptyParagraphLetterActions {
 
@@ -38,7 +37,7 @@ public class EmptyParagraphLetterActions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode l = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getPrevSibling(SNodeOperations.getParent(node)), CONCEPTS.Paragraph$XF), LINKS.letters$rNyA)).last();
+        SNode l = Sequence.fromIterable(Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(SNodeOperations.as(SNodeOperations.getPrevSibling(SNodeOperations.getParent(node)), CONCEPTS.Paragraph$XF))).last();
         if ((l != null)) {
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, l, SelectionManager.LAST_CELL, -1);
         }
@@ -52,7 +51,7 @@ public class EmptyParagraphLetterActions {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SNode f = ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getNextSibling(SNodeOperations.getParent(node)), CONCEPTS.Paragraph$XF), LINKS.letters$rNyA)).first();
+        SNode f = Sequence.fromIterable(Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(SNodeOperations.as(SNodeOperations.getNextSibling(SNodeOperations.getParent(node)), CONCEPTS.Paragraph$XF))).first();
         if ((f != null)) {
           SelectionUtil.selectLabelCellAnSetCaret(editorContext, f, SelectionManager.FIRST_CELL, 0);
         }
@@ -189,9 +188,5 @@ public class EmptyParagraphLetterActions {
   private static final class CONCEPTS {
     /*package*/ static final SConcept Paragraph$XF = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph");
     /*package*/ static final SInterfaceConcept IHoldParagraphs$eh = MetaAdapterFactory.getInterfaceConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20dd8a1L, "jetbrains.mps.lang.text.structure.IHoldParagraphs");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink letters$rNyA = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, 0x7ee31bf598f4eddfL, "letters");
   }
 }

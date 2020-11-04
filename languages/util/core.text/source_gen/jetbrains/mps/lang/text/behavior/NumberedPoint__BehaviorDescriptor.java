@@ -18,7 +18,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Objects;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -26,7 +26,6 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class NumberedPoint__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x5d9ea196218822ebL, "jetbrains.mps.lang.text.structure.NumberedPoint");
@@ -74,7 +73,7 @@ public final class NumberedPoint__BehaviorDescriptor extends BaseBHDescriptor {
     return false;
   }
   /*package*/ static boolean startsWithNumberSpace_id10ljsgmJ2Al(@NotNull SAbstractConcept __thisConcept__, SNode p) {
-    SNode f = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(p, LINKS.letters$rNyA)).first(), CONCEPTS.Letter$kd);
+    SNode f = SNodeOperations.as(Sequence.fromIterable(Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(p)).first(), CONCEPTS.Letter$kd);
     SNode s = SNodeOperations.as(SNodeOperations.getNextSibling(f), CONCEPTS.Letter$kd);
     if ((f == null)) {
       return false;
@@ -149,9 +148,5 @@ public final class NumberedPoint__BehaviorDescriptor extends BaseBHDescriptor {
   private static final class PROPS {
     /*package*/ static final SProperty indentation$8ZOp = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L, 0x46ded40cf13ae6fbL, "indentation");
     /*package*/ static final SProperty value$X7Tp = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7ee31bf598f4ad9eL, "value");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink letters$rNyA = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, 0x7ee31bf598f4eddfL, "letters");
   }
 }

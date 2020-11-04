@@ -13,9 +13,9 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.text.behavior.IHoldParagraphs__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.references.BLOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -23,7 +23,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class EmptyParagraphLetterKeys extends KeyMapImpl {
@@ -74,10 +73,9 @@ public class EmptyParagraphLetterKeys extends KeyMapImpl {
           SNodeOperations.deleteNode(it);
         }
       });
-      ListSequence.fromList(SLinkOperations.getChildren(f, LINKS.letters$rNyA)).clear();
-      Paragraph__BehaviorDescriptor.initialize_id1v077Wg2A59.invoke(f);
+      Paragraph__BehaviorDescriptor.clearTextualElements_id1uSfHaoOxlA.invoke(f);
       SNodeOperations.insertNextSiblingChild(holder, copy);
-      SelectionUtil.selectCell(editorContext, ListSequence.fromList(SLinkOperations.getChildren(f, LINKS.letters$rNyA)).first(), SelectionManager.LAST_CELL);
+      SelectionUtil.selectCell(editorContext, Sequence.fromIterable(Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(f)).first(), SelectionManager.LAST_CELL);
     }
     public String getKeyStroke() {
       return "ctrl ENTER";
@@ -169,10 +167,6 @@ public class EmptyParagraphLetterKeys extends KeyMapImpl {
     /*package*/ static final SConcept Paragraph$XF = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph");
     /*package*/ static final SInterfaceConcept IHoldParagraphs$eh = MetaAdapterFactory.getInterfaceConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20dd8a1L, "jetbrains.mps.lang.text.structure.IHoldParagraphs");
     /*package*/ static final SInterfaceConcept IndentedPoint$BF = MetaAdapterFactory.getInterfaceConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L, "jetbrains.mps.lang.text.structure.IndentedPoint");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink letters$rNyA = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, 0x7ee31bf598f4eddfL, "letters");
   }
 
   private static final class PROPS {

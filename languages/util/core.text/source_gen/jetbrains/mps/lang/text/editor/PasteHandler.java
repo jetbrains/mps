@@ -20,6 +20,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
+import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -120,13 +122,12 @@ public class PasteHandler {
             SNode np = Paragraph__BehaviorDescriptor.split_id4HqBHuN_RSC.invoke(p, SNodeOperations.as(SNodeOperations.getPrevSibling(currentNode), CONCEPTS.TextualElement$9C));
             SNodeOperations.insertNextSiblingChild(p, np);
           } else {
-            SNode np = SNodeOperations.insertPrevSiblingChild(p, SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(SNodeOperations.getConcept(p))));
-            SLinkOperations.addNewChild(np, LINKS.letters$rNyA, CONCEPTS.EmptyParagraphLetter$W6);
+            SNode np = SNodeOperations.insertPrevSiblingChild(p, SNodeFactoryOperations.createNewNode(SNodeOperations.getConcept(p), null));
           }
         } else {
           SNode np = Paragraph__BehaviorDescriptor.split_id4HqBHuN_RSC.invoke(p, currentNode);
           SNodeOperations.insertNextSiblingChild(p, np);
-          currentNode = ListSequence.fromList(SLinkOperations.getChildren(np, LINKS.letters$rNyA)).first();
+          currentNode = Sequence.fromIterable(Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(np)).first();
           firstPositionOnLine = !(SNodeOperations.isInstanceOf(currentNode, CONCEPTS.EmptyParagraphLetter$W6));
         }
       } else {
@@ -156,15 +157,15 @@ public class PasteHandler {
 
   public static SNode addSpaceAtParagraphEnd(SNode currentParagraph, SNode paragraphToAdd) {
     if ((boolean) Paragraph__BehaviorDescriptor.isEmptyParagraph_id7r4EKYUymRW.invoke(paragraphToAdd)) {
-      return ListSequence.fromList(SLinkOperations.getChildren(currentParagraph, LINKS.letters$rNyA)).last();
+      return Sequence.fromIterable(Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(currentParagraph)).last();
     }
     // No need for a space, there is no following paragraph
     if (SNodeOperations.getContainingLink(currentParagraph).isMultiple()) {
-      return ListSequence.fromList(SLinkOperations.getChildren(paragraphToAdd, LINKS.letters$rNyA)).last();
+      return Sequence.fromIterable(Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(paragraphToAdd)).last();
     }
     SNode l = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter"));
     SPropertyOperations.assign(l, PROPS.value$X7Tp, " ");
-    ListSequence.fromList(SLinkOperations.getChildren(paragraphToAdd, LINKS.letters$rNyA)).addElement(l);
+    Paragraph__BehaviorDescriptor.addTextualElement_id1uSfHaoOOLl.invoke(paragraphToAdd, l);
     return l;
   }
 
@@ -181,7 +182,6 @@ public class PasteHandler {
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink node$pn2z = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20dcb4fL, 0x2b7b49e536031feaL, "node");
-    /*package*/ static final SContainmentLink letters$rNyA = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, 0x7ee31bf598f4eddfL, "letters");
   }
 
   private static final class PROPS {

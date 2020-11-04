@@ -16,7 +16,7 @@ import jetbrains.mps.lang.text.behavior.IHoldParagraphs__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Label;
 import jetbrains.mps.references.BLOperations;
@@ -25,7 +25,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class LetterKeys extends KeyMapImpl {
   public LetterKeys() {
@@ -179,7 +178,7 @@ public class LetterKeys extends KeyMapImpl {
       });
       Paragraph__BehaviorDescriptor.clearTextualElements_id1uSfHaoOxlA.invoke(f);
       SNodeOperations.insertNextSiblingChild(holder, copy);
-      SelectionUtil.selectCell(editorContext, ListSequence.fromList(SLinkOperations.getChildren(f, LINKS.letters$rNyA)).first(), SelectionManager.LAST_CELL);
+      SelectionUtil.selectCell(editorContext, Sequence.fromIterable(Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(f)).first(), SelectionManager.LAST_CELL);
     }
     public String getKeyStroke() {
       return "ctrl ENTER";
@@ -285,9 +284,5 @@ public class LetterKeys extends KeyMapImpl {
     /*package*/ static final SProperty underlined$XqDm = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737742L, "underlined");
     /*package*/ static final SProperty indentation$8ZOp = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L, 0x46ded40cf13ae6fbL, "indentation");
     /*package*/ static final SProperty value$X7Tp = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7ee31bf598f4ad9eL, "value");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink letters$rNyA = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, 0x7ee31bf598f4eddfL, "letters");
   }
 }

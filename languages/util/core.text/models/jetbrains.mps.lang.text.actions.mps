@@ -35,6 +35,7 @@
       </concept>
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
+        <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
       <concept id="5497648299878491908" name="jetbrains.mps.baseLanguage.structure.BaseVariableReference" flags="nn" index="1M0zk4">
         <reference id="5497648299878491909" name="baseVariableDeclaration" index="1M0zk5" />
@@ -74,20 +75,11 @@
       <concept id="1138056022639" name="jetbrains.mps.lang.smodel.structure.SPropertyAccess" flags="nn" index="3TrcHB">
         <reference id="1138056395725" name="property" index="3TsBF5" />
       </concept>
-      <concept id="1138056282393" name="jetbrains.mps.lang.smodel.structure.SLinkListAccess" flags="nn" index="3Tsc0h">
-        <reference id="1138056546658" name="link" index="3TtcxE" />
-      </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
-    </language>
-    <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
-      <concept id="540871147943773365" name="jetbrains.mps.baseLanguage.collections.structure.SingleArgumentSequenceOperation" flags="nn" index="25WWJ4">
-        <child id="540871147943773366" name="argument" index="25WWJ7" />
-      </concept>
-      <concept id="1160666733551" name="jetbrains.mps.baseLanguage.collections.structure.AddAllElementsOperation" flags="nn" index="X8dFx" />
     </language>
   </registry>
   <node concept="21GTPz" id="64R8dmEY4xS">
@@ -189,21 +181,27 @@
             <ref role="JncvD" to="zqge:7Vz6ZmoXeMu" resolve="Paragraph" />
             <node concept="1r4N5L" id="2HIX00NtQjh" role="JncvB" />
             <node concept="3clFbS" id="2HIX00NtQiQ" role="Jncv$">
-              <node concept="3clFbF" id="2HIX00NtQkd" role="3cqZAp">
-                <node concept="2OqwBi" id="2HIX00NtU28" role="3clFbG">
-                  <node concept="2OqwBi" id="2HIX00NtQtf" role="2Oq$k0">
-                    <node concept="1r4Lsj" id="2HIX00NtQkc" role="2Oq$k0" />
-                    <node concept="3Tsc0h" id="2HIX00NtQ$7" role="2OqNvi">
-                      <ref role="3TtcxE" to="zqge:7Vz6ZmoXeRv" resolve="letters" />
-                    </node>
+              <node concept="3clFbF" id="250QDwq3zrC" role="3cqZAp">
+                <node concept="2OqwBi" id="250QDwq3z_w" role="3clFbG">
+                  <node concept="Jnkvi" id="250QDwq3zrz" role="2Oq$k0">
+                    <ref role="1M0zk5" node="2HIX00NtQiR" resolve="p" />
                   </node>
-                  <node concept="X8dFx" id="2HIX00NtViZ" role="2OqNvi">
-                    <node concept="2OqwBi" id="2HIX00NtXNV" role="25WWJ7">
-                      <node concept="Jnkvi" id="2HIX00NtXEk" role="2Oq$k0">
+                  <node concept="2qgKlT" id="250QDwq3zFV" role="2OqNvi">
+                    <ref role="37wK5l" to="vdrq:1v077Wg2A59" resolve="initialize" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="2HIX00NtQkd" role="3cqZAp">
+                <node concept="2OqwBi" id="2HIX00NtQtf" role="3clFbG">
+                  <node concept="1r4Lsj" id="2HIX00NtQkc" role="2Oq$k0" />
+                  <node concept="2qgKlT" id="250QDwq2HJP" role="2OqNvi">
+                    <ref role="37wK5l" to="vdrq:1uSfHaoPgT1" resolve="addAllTextualElements" />
+                    <node concept="2OqwBi" id="250QDwq2IzK" role="37wK5m">
+                      <node concept="Jnkvi" id="250QDwq2I7d" role="2Oq$k0">
                         <ref role="1M0zk5" node="2HIX00NtQiR" resolve="p" />
                       </node>
-                      <node concept="3Tsc0h" id="2HIX00NtZgP" role="2OqNvi">
-                        <ref role="3TtcxE" to="zqge:7Vz6ZmoXeRv" resolve="letters" />
+                      <node concept="2qgKlT" id="250QDwq2IYG" role="2OqNvi">
+                        <ref role="37wK5l" to="vdrq:250QDwq2ueg" resolve="getTextualElements" />
                       </node>
                     </node>
                   </node>

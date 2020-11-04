@@ -20,7 +20,8 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -97,7 +98,7 @@ public class SingleLineComment_SubstituteMenu extends SubstituteMenuBase {
       }
       @Override
       public void select(@NotNull SNode createdNode, @NotNull String pattern) {
-        SelectionUtil.selectCell(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(createdNode, LINKS.paragraph$y$du), LINKS.letters$rNyA)).first(), SelectionManager.LAST_CELL);
+        SelectionUtil.selectCell(_context.getEditorContext(), Sequence.fromIterable(Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(SLinkOperations.getTarget(createdNode, LINKS.paragraph$y$du))).first(), SelectionManager.LAST_CELL);
       }
       @Nullable
       @Override
@@ -113,6 +114,5 @@ public class SingleLineComment_SubstituteMenu extends SubstituteMenuBase {
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink paragraph$y$du = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x62605252eb1b533aL, "paragraph");
-    /*package*/ static final SContainmentLink letters$rNyA = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, 0x7ee31bf598f4eddfL, "letters");
   }
 }

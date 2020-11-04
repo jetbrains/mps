@@ -6,11 +6,10 @@ import jetbrains.mps.errors.QuickFix_Runtime;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class TurnIntoBulletPoint_QuickFix extends QuickFix_Runtime {
   public TurnIntoBulletPoint_QuickFix() {
@@ -18,17 +17,13 @@ public class TurnIntoBulletPoint_QuickFix extends QuickFix_Runtime {
   }
   public void execute(SNode node) {
     SNode p = SNodeOperations.as(node, CONCEPTS.Paragraph$XF);
-    SLinkOperations.getChildren(p, LINKS.letters$rNyA).remove(0);
-    SLinkOperations.getChildren(p, LINKS.letters$rNyA).remove(0);
+    Paragraph__BehaviorDescriptor.removeTextualElementAt_id250QDwq2Yav.invoke(p, ((int) 0));
+    Paragraph__BehaviorDescriptor.removeTextualElementAt_id250QDwq2Yav.invoke(p, ((int) 0));
     SNodeFactoryOperations.replaceWithNewChild(p, CONCEPTS.BulletPoint$FS);
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept Paragraph$XF = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph");
     /*package*/ static final SConcept BulletPoint$FS = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b6ef400337260c3L, "jetbrains.mps.lang.text.structure.BulletPoint");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink letters$rNyA = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, 0x7ee31bf598f4eddfL, "letters");
   }
 }

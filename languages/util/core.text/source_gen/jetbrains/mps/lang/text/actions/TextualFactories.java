@@ -7,13 +7,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class TextualFactories {
   public static class NodeFactory_9189109070801858976 implements NodeFactory {
@@ -33,7 +31,8 @@ public class TextualFactories {
       {
         final SNode p = sampleNode;
         if (SNodeOperations.isInstanceOf(p, CONCEPTS.Paragraph$XF)) {
-          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.letters$rNyA)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(p, LINKS.letters$rNyA)));
+          Paragraph__BehaviorDescriptor.initialize_id1v077Wg2A59.invoke(p);
+          Paragraph__BehaviorDescriptor.addAllTextualElements_id1uSfHaoPgT1.invoke(newNode, Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(p));
         }
       }
     }
@@ -60,9 +59,5 @@ public class TextualFactories {
     /*package*/ static final SProperty bold$Xqbk = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737740L, "bold");
     /*package*/ static final SProperty italic$Xqql = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737741L, "italic");
     /*package*/ static final SProperty indentation$8ZOp = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L, 0x46ded40cf13ae6fbL, "indentation");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink letters$rNyA = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, 0x7ee31bf598f4eddfL, "letters");
   }
 }
