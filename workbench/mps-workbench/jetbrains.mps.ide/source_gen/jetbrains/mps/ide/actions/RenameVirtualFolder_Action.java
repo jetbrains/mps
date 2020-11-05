@@ -14,19 +14,22 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
-import com.intellij.openapi.ui.Messages;
+import com.intellij.openapi.ui.InputValidatorEx;
+import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import org.jetbrains.mps.openapi.model.EditableSModel;
+import org.jetbrains.mps.openapi.model.SModelName;
+import jetbrains.mps.ide.IdeBundle;
+import javax.lang.model.SourceVersion;
+import com.intellij.openapi.ui.Messages;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.project.StandaloneMPSProject;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.EditableSModel;
-import org.jetbrains.mps.openapi.model.SModelName;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.refactoring.Renamer;
 import jetbrains.mps.ide.projectPane.ProjectPane;
-import org.jetbrains.annotations.Nullable;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/142393105344666009", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class RenameVirtualFolder_Action extends BaseAction {
@@ -81,13 +84,64 @@ public class RenameVirtualFolder_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final NamespaceTextNode node = ((NamespaceTextNode) ((TreeNode) MapSequence.fromMap(_params).get("treeNode")));
     final String originalVFolder = node.getNamespace();
-    final String modifiedVFolder = Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), "Rename virtual folder (leave empty to remove)", "Rename", null, originalVFolder, null);
+
+    InputValidatorEx inputValidator = new InputValidatorEx() {
+      private String myLastInput;
+      private String myError;
+      @Override
+      public boolean checkInput(String input) {
+        return getErrorText(input) == null;
+      }
+
+      @Override
+      public boolean canClose(String input) {
+        return checkInput(input);
+      }
+
+      @Nullable
+      @Override
+      public String getErrorText(String input) {
+        // Use caching to avoid double check from consequence calls of checkInput & getErrorText 
+        if (Objects.equals(input, myLastInput)) {
+          return myError;
+        }
+        myError = null;
+        myLastInput = input;
+        for (SModel model : ListSequence.fromList(node.getModelsUnder())) {
+          if (model instanceof EditableSModel) {
+            SModelName originalModelName = model.getName();
+            try {
+              String namespace = RenameVirtualFolder_Action.this.replacePrefix(originalModelName.getNamespace(), originalVFolder, input.trim(), _params);
+
+              // This is required due to assert in SModelName#SModelName(CharSequence, CharSequence, CharSequence) constructor.  
+              // TODO: replace assertions in SModelName with IllegalArgumentException 
+              if (namespace != null && namespace.indexOf('@') != -1) {
+                myError = IdeBundle.message("dialogs.model.new.error.invalid.namespace");
+                break;
+              }
+
+              SModelName modifiedModelName = new SModelName(namespace, originalModelName.getSimpleName(), originalModelName.getStereotype());
+              if (!(SourceVersion.isName(modifiedModelName.getLongName()))) {
+                myError = IdeBundle.message("dialogs.model.new.error.invalid.package");
+                break;
+              }
+            } catch (IllegalArgumentException exception) {
+              myError = exception.getMessage();
+              break;
+            }
+          }
+        }
+        return myError;
+      }
+    };
+    final String modifiedVFolder = Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), "Rename virtual folder (leave empty to remove)", "Rename", null, originalVFolder, (!(node.hasModulesUnder()) ? inputValidator : null));
+
     // Allow passing of an empty string which will result in virtual folder removal 
     if (modifiedVFolder == null || Objects.equals(originalVFolder, modifiedVFolder)) {
       return;
     }
 
-    ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
+    final ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
     modelAccess.executeCommandInEDT(new Runnable() {
       public void run() {
         String modifiedVirtualFolder = modifiedVFolder.trim();

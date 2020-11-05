@@ -103,7 +103,7 @@ public class NewModelDialog extends DialogWrapper {
     if (modelName == null) {
       modelName = "";
     }
-    if ((modelName == null || modelName.length() == 0)) {
+    if (modelName.isBlank()) {
       setErrorText(IdeBundle.message("dialogs.model.new.error.empty.name"));
       return false;
     }

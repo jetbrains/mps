@@ -62,7 +62,7 @@
       </concept>
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
-        <child id="8118189177080264854" name="classes" index="nSUat" />
+        <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1224500790866" name="jetbrains.mps.baseLanguage.structure.BitwiseOrExpression" flags="nn" index="pVOtf" />
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
@@ -147,7 +147,6 @@
       <concept id="1068498886292" name="jetbrains.mps.baseLanguage.structure.ParameterDeclaration" flags="ir" index="37vLTG" />
       <concept id="1068498886294" name="jetbrains.mps.baseLanguage.structure.AssignmentExpression" flags="nn" index="37vLTI" />
       <concept id="1225271177708" name="jetbrains.mps.baseLanguage.structure.StringType" flags="in" index="17QB3L" />
-      <concept id="1225271369338" name="jetbrains.mps.baseLanguage.structure.IsEmptyOperation" flags="nn" index="17RlXB" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
@@ -873,7 +872,9 @@
             <node concept="37vLTw" id="3GM_nagTy4p" role="2Oq$k0">
               <ref role="3cqZAo" node="2R7pax8jqxP" resolve="modelName" />
             </node>
-            <node concept="17RlXB" id="6aHs3s7IESv" role="2OqNvi" />
+            <node concept="liA8E" id="5CNrFW$U8cK" role="2OqNvi">
+              <ref role="37wK5l" to="wyt6:~String.isBlank()" resolve="isBlank" />
+            </node>
           </node>
           <node concept="3clFbS" id="2R7pax8jqy0" role="3clFbx">
             <node concept="3clFbF" id="2R7pax8jqy1" role="3cqZAp">
