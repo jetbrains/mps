@@ -25,7 +25,7 @@
       <node id="4414733712830761850" at="55,0,56,0" concept="13" trace="IDEA_LOAD_PLUGINS_ID" />
       <node id="1200485062307214875" at="56,0,57,0" concept="13" trace="CREATE_PLUGIN_CLASSLOADERS" />
       <node id="7024034384105978166" at="58,0,59,0" concept="5" trace="myIdeaApplication" />
-      <node id="3380458233271904032" at="60,10,61,38" concept="4" />
+      <node id="3785708697532039531" at="60,10,61,35" concept="11" />
       <node id="5563580687576052527" at="64,61,65,18" concept="15" />
       <node id="8055671555883789378" at="65,18,66,42" concept="4" />
       <node id="3818729150937329412" at="70,30,71,44" concept="4" />
@@ -222,7 +222,7 @@
       <node id="7413225496542993028" at="227,0,261,0" concept="8" trace="doDispose#()V" />
       <node id="2707868692255548586" at="280,0,318,0" concept="8" trace="openProjectInIdeaEnvironment#(Ljava/io/File;)Ljetbrains/mps/project/MPSProject;" />
       <scope id="3930437502080765217" at="202,31,202,31" />
-      <scope id="3380458233271902910" at="60,10,61,38" />
+      <scope id="3380458233271902910" at="60,10,61,35" />
       <scope id="3818729150937329412" at="70,30,71,44" />
       <scope id="5922413192634594210" at="96,60,97,13" />
       <scope id="450882622009229047" at="119,107,120,21" />

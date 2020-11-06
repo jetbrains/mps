@@ -42,7 +42,11 @@ public final class ModuleClassLoaderTest {
   private static final int NUMBER_OF_CHECKS = 0x1000;
 
   static {
-    Log4jInitializer.init();
+    try {
+      Log4jInitializer.init();
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
   }
 
   @Test

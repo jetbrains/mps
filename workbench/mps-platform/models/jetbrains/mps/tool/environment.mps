@@ -355,10 +355,30 @@
     <node concept="2tJIrI" id="5mza6Qqm4lm" role="jymVt" />
     <node concept="1Pe0a1" id="2VDNdDcdQaX" role="jymVt">
       <node concept="3clFbS" id="2VDNdDcdQaY" role="1Pe0a2">
-        <node concept="3clFbF" id="2VDNdDcdQsw" role="3cqZAp">
-          <node concept="2YIFZM" id="2VDNdDcdQxK" role="3clFbG">
-            <ref role="1Pybhc" to="79ha:3eUNqOk4feo" resolve="EnvironmentBase" />
-            <ref role="37wK5l" to="79ha:2VDNdDcdNbx" resolve="initializeLog4j" />
+        <node concept="3SKdUt" id="3i9yw2Vwg5F" role="3cqZAp">
+          <node concept="1PaTwC" id="3i9yw2Vwg5G" role="1aUNEU">
+            <node concept="3oM_SD" id="3i9yw2Vwg5T" role="1PaTwD">
+              <property role="3oM_SC" value="ij" />
+            </node>
+            <node concept="3oM_SD" id="3i9yw2Vwg5V" role="1PaTwD">
+              <property role="3oM_SC" value="itself" />
+            </node>
+            <node concept="3oM_SD" id="3i9yw2Vwg5Y" role="1PaTwD">
+              <property role="3oM_SC" value="initializes" />
+            </node>
+            <node concept="3oM_SD" id="3i9yw2Vwg62" role="1PaTwD">
+              <property role="3oM_SC" value="log4j" />
+            </node>
+          </node>
+        </node>
+        <node concept="1X3_iC" id="3i9yw2Vwa2I" role="lGtFl">
+          <property role="3V$3am" value="statement" />
+          <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
+          <node concept="3clFbF" id="2VDNdDcdQsw" role="8Wnug">
+            <node concept="2YIFZM" id="2VDNdDcdQxK" role="3clFbG">
+              <ref role="1Pybhc" to="79ha:3eUNqOk4feo" resolve="EnvironmentBase" />
+              <ref role="37wK5l" to="79ha:2VDNdDcdNbx" resolve="initializeLog4j" />
+            </node>
           </node>
         </node>
       </node>
