@@ -8,11 +8,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ChangeMethodSignatureParameters;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.ide.embeddableEditor.EmbeddableEditor;
-import jetbrains.mps.project.Project;
+import jetbrains.mps.project.MPSProject;
 import java.util.List;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ChangeMethodSignatureRefactoring;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.project.MPSProject;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
@@ -36,6 +35,9 @@ import jetbrains.mps.baseLanguage.util.plugin.refactorings.MethodRefactoringUtil
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.Map;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
+import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 @GeneratedClass(node = "r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)/6812098398776640439", model = "r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)")
@@ -44,8 +46,10 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   private ChangeMethodSignatureParameters myParameters;
   private SModel myTempModel;
   private EmbeddableEditor myEditor;
-  private Project myProject;
+  private MPSProject myProject;
   private List<ChangeMethodSignatureRefactoring> myRefactorings = null;
+
+  public ParamDefautValueSectionPanel myDefaultValuePanel;
 
   public ChangeMethodSignatureDialog(@NotNull MPSProject project, SNode node) {
     super(project.getProject(), true);
@@ -61,7 +65,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     init();
   }
 
-  private JComponent createSingnaturePanel() {
+  private JComponent createSignaturePanel() {
     JPanel panel = new JPanel(new BorderLayout());
     myProject.getRepository().getModelAccess().executeCommand(new Runnable() {
       public void run() {
@@ -70,9 +74,10 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
         myTempModel = TemporaryModels.getInstance().createEditable(true, TempModuleOptions.forDefaultModule());
         myTempModel.addRootNode(baseMethodDeclaration);
+        myTempModel.addChangeListener(myDefaultValuePanel);
         TemporaryModels.getInstance().addMissingImports(myTempModel);
 
-        ChangeMethodSignatureDialog.this.myEditor = new EmbeddableEditor(myProject, true);
+        ChangeMethodSignatureDialog.this.myEditor = new SizedEmbeddableEditor(myProject, true, 300);
         myEditor.editNode(baseMethodDeclaration);
       }
     });
@@ -90,13 +95,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   protected JComponent createCenterPanel() {
     JPanel panel = new JPanel(new GridBagLayout());
     GridBagConstraints c = new GridBagConstraints();
-    c.fill = GridBagConstraints.BOTH;
+    c.fill = GridBagConstraints.HORIZONTAL;
     c.insets = new Insets(3, 3, 3, 3);
     c.gridx = 0;
-    c.gridy = 0;
+    c.gridy = 1;
     c.weightx = 1;
+    c.weighty = 0;
+
+    // Add default panel first because createSignaturePanel below requires it 
+    myDefaultValuePanel = new ParamDefautValueSectionPanel(myProject);
+    panel.add(myDefaultValuePanel, c);
+
+    c.fill = GridBagConstraints.BOTH;
+    c.gridy = 0;
     c.weighty = 1;
-    panel.add(this.createSingnaturePanel(), c);
+    panel.add(this.createSignaturePanel(), c);
     return panel;
   }
 
@@ -115,10 +128,23 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       }
     });
     ListSequence.fromList(methodsToRefactor.value).addElement(myDeclaration);
+
+    // Get default values for new parameters (if any) 
+    final Wrappers._T<Map<SNode, SNode>> defaultValues = new Wrappers._T<Map<SNode, SNode>>(MapSequence.fromMap(new HashMap<SNode, SNode>()));
+
+    myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
+      public void run() {
+        defaultValues.value = myDefaultValuePanel.getDefaultValues();
+      }
+    });
+
+    // Create refactorings 
     myRefactorings = ListSequence.fromList(new ArrayList<ChangeMethodSignatureRefactoring>());
     for (SNode method : ListSequence.fromList(methodsToRefactor.value)) {
-      ListSequence.fromList(myRefactorings).addElement(new ChangeMethodSignatureRefactoring(this.myParameters, method));
+      ListSequence.fromList(myRefactorings).addElement(new ChangeMethodSignatureRefactoring(this.myParameters, method, defaultValues.value));
     }
+
+
     super.doRefactoringAction();
   }
 
@@ -128,6 +154,11 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       myEditor.disposeEditor();
       myEditor = null;
     }
+
+    if (myDefaultValuePanel != null) {
+      myDefaultValuePanel.dispose();
+    }
+
     if (myTempModel != null) {
       myProject.getModelAccess().runWriteAction(new Runnable() {
         public void run() {
