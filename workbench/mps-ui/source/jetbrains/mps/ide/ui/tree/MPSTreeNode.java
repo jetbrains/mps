@@ -353,6 +353,9 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
    * if needed (e.g. if messages are attached the moment tree is being constructed, there's no reason to renew each node individually,
    * they get a chance to update them once tree becomes visible)
    *
+   * Note, this method doesn't trigger UI refresh, it merely changes recorded state of this tree element.
+   * To reflect the state in UI, use {@link #renewPresentation()}
+   *
    * @param message message to attach
    */
   public boolean addTreeMessage(@NotNull TreeMessage message) {
@@ -371,7 +374,7 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
    * This method can be invoked from any thread.
    * To trigger UI update, use {@link #renewPresentation()} from correct (EDT/UI) thread.
    *
-   * @param owner identifies messages to remove. No messages are removed if {@code null} despite the fact messages could be 
+   * @param owner identifies messages to remove. No messages are removed if {@code null} despite the fact messages could have null owner (at the moment, see TreeMessage cons)
    * @return set of detached messages, or empty collection if none found
    */
   @NotNull

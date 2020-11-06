@@ -21,7 +21,9 @@ import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.CancellableReadAction;
 import jetbrains.mps.util.Pair;
+import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.containers.ConcurrentHashSet;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayDeque;
 import java.util.Iterator;
@@ -74,11 +76,17 @@ public final class TreeNodeUpdater {
           //
           // 1 second is to give delayed ReadInEDT a chance to get started and do some updates.
           // FIXME in fact, would be great to allow custom code on CancellableReadAction.cancel()
-          //       (here, would signal with the latch that it's over, so that this await() can finish immediately)
+          //       (here, would signal with the latch that it's over even if didn't get a chance to get into execute()
+          //       i.e. when there's pending write and runReadInEDT doesn't starts,
+          //       so that this await() can finish immediately)
           // regardless of whether it has completed by count down (true) or timeout (false), rely on
           // queue size to decide whether to re-schedule or to try again
           batchOver.await(1000, TimeUnit.MILLISECONDS);
           // RefreshBatch could get cancelled, keep what's left in updates for another try
+          // XXX what if RefreshBatch is still working? Though it doesn't hurt to re-schedule, perhaps, there's better approach?
+          //     I've seen trace where RefreshBatch runs for 0+0 elements, likely its a parallel restart while one RB is still working
+          //     and another one observes not empty collection at the moment it starts, but get them empty by the time it starts in EDT.
+          //     As I'm going to drop myUpdates<Pair> anyway, and to refactor this code, don't want to bother with right now.
           if (updates.size() != 0 || !myElements2Refresh.isEmpty()) {
             // if not precessed completely, or was cancelled right away, without even trying to process,
             // (likely, there's pending write that cancels reads) - take some rest, don't push reads &
@@ -101,8 +109,13 @@ public final class TreeNodeUpdater {
     }
   }
 
-  // FIXME once there are no uses of NodeUpdate other than blank one that triggers updateNodePresentationInTree(),
-  //       shall use identity(node) to merge numerous update requests into a single UI update
+  /**
+   * @deprecated there are no uses of NodeUpdate, use {@link #addUpdate(MPSTreeNode)} to request tree UI refresh/renew based on
+   *             element properties already updated.
+   *             XXX can remove it right away, as mbeddr got their own outdated copy, and no clients are expected to plug into this updater.
+   */
+  @Deprecated(forRemoval = true)
+  @ToRemove(version = 2020.3)
   public void addUpdate(MPSTreeNode node, NodeUpdate r) {
     if (!r.needed(node)) {
       return;
@@ -142,7 +155,9 @@ public final class TreeNodeUpdater {
     protected void execute() {
       Pair<MPSTreeNode, NodeUpdate> u;
       boolean cancel = false;
+      int c1 = 0, c2 = 0;
       while ((u = myQueue.pollFirst()) != null) {
+        c1++;
         final MPSTreeNode treeNode = u.o1;
         if (treeNode.getTree() == null) {
           // once again, no reason to update element which is not in the tree
@@ -156,20 +171,27 @@ public final class TreeNodeUpdater {
         u.o2.update(treeNode);
         treeNode.updateNodePresentationInTree();
       }
+
       if (!cancel) {
         for (Iterator<MPSTreeNode> itn = myElements2Refresh.iterator(); itn.hasNext(); ) {
+          c2++;
           MPSTreeNode tn = itn.next();
           itn.remove();
           if (tn.getTree() == null) {
             continue;
           }
           if (isCancelRequested()) {
-//            cancel = true;
+            cancel = true;
             confirmCancel();
             break;
           }
           tn.renewPresentation();
         }
+      }
+      final Logger logger = Logger.getLogger(TreeNodeUpdater.class);
+      if (logger.isDebugEnabled()) {
+        String msg = String.format("TreeNode refresh %d + %d, left: %d. Cancelled: %b", c1, c2, myElements2Refresh.size(), cancel);
+        logger.debug(msg);
       }
       myBatchOver.countDown();
     }

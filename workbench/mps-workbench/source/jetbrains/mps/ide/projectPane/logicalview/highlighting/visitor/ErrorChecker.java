@@ -18,11 +18,10 @@ package jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor;
 import jetbrains.mps.errors.item.ModelReportItem;
 import jetbrains.mps.errors.item.ModuleReportItem;
 import jetbrains.mps.extapi.model.TransientSModel;
-import jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.updates.ErrorStateNodeUpdate;
-import jetbrains.mps.ide.projectPane.logicalview.highlighting.visitor.updates.NodeUpdate;
 import jetbrains.mps.ide.ui.tree.ErrorState;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.ide.ui.tree.TreeErrorMessage;
+import jetbrains.mps.ide.ui.tree.TreeMessage;
 import jetbrains.mps.ide.ui.tree.TreeMessageOwner;
 import jetbrains.mps.ide.ui.tree.TreeNodeVisitor;
 import jetbrains.mps.ide.ui.tree.module.NamespaceTextNode;
@@ -44,6 +43,7 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Set;
 
 /**
  * visitXXX methods require model read
@@ -73,9 +73,9 @@ public class ErrorChecker extends TreeUpdateVisitor implements TreeMessageOwner 
           if (childMessages.stream().anyMatch(TreeErrorMessage::isError)) {
             // Indicate 'derived' error status so that one can tell derived status from truly calculated when
             // presenting an indication to user (e.g. don't show error indicator/balloon for derived messages)
-            addUpdate(node, new ErrorStateNodeUpdate(ErrorChecker.this, msg(ErrorState.ERROR, "Descendants with errors", false)));
+            reset(node, msg(ErrorState.ERROR, "Descendants with errors", false));
           } else if (childMessages.stream().anyMatch(TreeErrorMessage::isWarning)) {
-            addUpdate(node, new ErrorStateNodeUpdate(ErrorChecker.this, msg(ErrorState.WARNING, "Descendants with warnings", false)));
+            reset(node, msg(ErrorState.WARNING, "Descendants with warnings", false));
           }
         }
       }
@@ -98,7 +98,7 @@ public class ErrorChecker extends TreeUpdateVisitor implements TreeMessageOwner 
     final ModelValidator modelValidator = new ModelValidator(myProject.getPlatform(), model);
     modelValidator.skipUnlessLoaded(); // no reason to load all the models unless user gets to one
     modelValidator.validate(collector, new EmptyProgressMonitor());
-    addUpdate(node, createNodeUpdate(collector));
+    reset(node, createNodeUpdate(collector));
   }
 
   @Override
@@ -108,16 +108,16 @@ public class ErrorChecker extends TreeUpdateVisitor implements TreeMessageOwner 
     if (module != null) {
       MessageCollectProcessor<ModuleReportItem> collector = new MessageCollectProcessor<>(true);
       ValidationUtil.validateModule(module, collector);
-      addUpdate(node, createNodeUpdate(collector));
+      reset(node, createNodeUpdate(collector));
     }
   }
 
-  /*package*/ ErrorStateNodeUpdate createNodeUpdate(MessageCollectProcessor<?> messages) {
+  /*package*/ Collection<TreeErrorMessage> createNodeUpdate(MessageCollectProcessor<?> messages) {
     final ArrayList<TreeErrorMessage> msg = new ArrayList<>();
     messages.getErrors().stream().map(this::newError).forEach(msg::add);
     messages.getWarnings().stream().map(this::newWarning).forEach(msg::add);
     messages.getInfos().stream().map(s -> msg(ErrorState.NONE, s, true)).forEach(msg::add);
-    return new ErrorStateNodeUpdate(this, msg);
+    return msg;
   }
 
   private TreeErrorMessage msg(ErrorState errorState, String msg, boolean original) {
@@ -136,18 +136,27 @@ public class ErrorChecker extends TreeUpdateVisitor implements TreeMessageOwner 
   public void visitProjectNode(@NotNull final ProjectTreeNode node) {
     // FIXME stupid code Project.getErrors():String
     String errors = ((StandaloneMPSProject) node.getProject()).getErrors();
-    ErrorStateNodeUpdate u;
     if (errors.isBlank()) {
-      u = new ErrorStateNodeUpdate(this);
+      reset(node, Collections.emptyList());
     } else {
-      u = new ErrorStateNodeUpdate(this, Collections.singleton(new TreeErrorMessage(ErrorState.ERROR, errors, this)));
+      reset(node, newError(errors));
     }
-    addUpdate(node, u);
   }
 
-  @Override
-  protected void addUpdate(MPSTreeNode node, NodeUpdate r) {
-    r.update(node);
+  // arguments are not null, tree messages are supposed to be with `this` as owner
+  private void reset(MPSTreeNode node, Collection<TreeErrorMessage> messages) {
+    final Set<TreeMessage> removed = node.removeTreeMessages(this);
+    messages.forEach(node::addTreeMessage);
+    if (!removed.isEmpty() || !messages.isEmpty()) {
+      requestTreeRefresh(node);
+    }
+  }
+
+  // arguments are not null
+  private void reset(MPSTreeNode node, TreeErrorMessage msg) {
+    // not that there's scenario when msg got an owner != this, just as I can make use of getOwner, why not
+    node.removeTreeMessages(msg.getOwner());
+    node.addTreeMessage(msg);
     requestTreeRefresh(node);
   }
 }
