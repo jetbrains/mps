@@ -59,7 +59,7 @@ public class InsertOnTextualElement {
         }
         int pos = ((EditorCell_Label) editorContext.getSelectedCell()).getCaretPosition();
         SNode nextLetter = (pos != 0 ? SNodeOperations.getNextSibling(node) : node);
-        Sequence.fromIterable((SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(nextLetter, true), CONCEPTS.Letter$kd))).visitAll(new IVisitor<SNode>() {
+        Sequence.fromIterable((SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(nextLetter, true), CONCEPTS.TextualElement$9C))).visitAll(new IVisitor<SNode>() {
           public void visit(SNode it) {
             Paragraph__BehaviorDescriptor.addTextualElement_id1uSfHaoOOLl.invoke(next.value, it);
           }
@@ -122,6 +122,6 @@ public class InsertOnTextualElement {
   private static final class CONCEPTS {
     /*package*/ static final SConcept Paragraph$XF = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, "jetbrains.mps.lang.text.structure.Paragraph");
     /*package*/ static final SInterfaceConcept IHoldParagraphs$eh = MetaAdapterFactory.getInterfaceConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20dd8a1L, "jetbrains.mps.lang.text.structure.IHoldParagraphs");
-    /*package*/ static final SConcept Letter$kd = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter");
+    /*package*/ static final SConcept TextualElement$9C = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20d9cfbL, "jetbrains.mps.lang.text.structure.TextualElement");
   }
 }
