@@ -38,7 +38,6 @@ import jetbrains.mps.ide.projectPane.logicalview.highlighting.ProjectPaneTreeHig
 import jetbrains.mps.ide.ui.smodel.ConceptTreeNode;
 import jetbrains.mps.ide.ui.smodel.PropertiesTreeNode;
 import jetbrains.mps.ide.ui.smodel.ReferencesTreeNode;
-import jetbrains.mps.ide.ui.tree.ErrorState;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.ide.ui.tree.TreeErrorMessage;
 import jetbrains.mps.ide.ui.tree.module.ProjectModuleTreeNode;
@@ -88,6 +87,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -233,36 +233,45 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
     if (messages.isEmpty()) {
       return;
     }
-    String title = null;
-    final List<TreeErrorMessage> errors = messages.stream().filter(m -> m.getErrorState() == ErrorState.ERROR).collect(Collectors.toList());
-    final List<TreeErrorMessage> warnings = messages.stream().filter(m -> m.getErrorState() == ErrorState.WARNING).collect(Collectors.toList());
+    final List<TreeErrorMessage> errors = messages.stream().filter(TreeErrorMessage::isError).collect(Collectors.toList());
+    final List<TreeErrorMessage> warnings = messages.stream().filter(TreeErrorMessage::isWarning).collect(Collectors.toList());
     final StringBuilder sb = new StringBuilder();
-    sb.append("<html><ul>");
+    sb.append("<html>");
     if (!errors.isEmpty()) {
-      errors.forEach(m -> sb.append("<li>").append(StringUtil.escapeXml(m.getMessage())));
+      printInto(errors, sb);
       if (!warnings.isEmpty()) {
         sb.append(String.format("<p> and %d warnings...</p>", warnings.size()));
       }
     } else if (!warnings.isEmpty()) {
-      warnings.forEach(m -> sb.append("<li>").append(StringUtil.escapeXml(m.getMessage())));
+      printInto(warnings, sb);
     } else {
-      title = null;
-      messages.forEach(m -> sb.append("<li>").append(StringUtil.escapeXml(m.getMessage())));
+      printInto(messages, sb);
     }
-    sb.append("</ul></html>");
+    sb.append("</html>");
 
     // using awtTooltip just because I found similar code elsewhere in MPS, no idea what it means
     final HintHint hintHint = new HintHint(e).setAwtTooltip(true).setForcePopup(true);
     final JEditorPane content = IdeTooltipManager.initPane(sb.toString(), hintHint, null);
     final BalloonBuilder bb = JBPopupFactory.getInstance().createBalloonBuilder(content);
     bb.setDisposable(this);
-    if (title != null) {
-      bb.setTitle(title);
-    }
     // BalloonPopupBuilderImpl cons set default fill color, have to override even though content has proper background color
-    bb.setFadeoutTime(10000).setFillColor(hintHint.getTextBackground());
+    bb.setFadeoutTime(15000).setFillColor(hintHint.getTextBackground());
     final Balloon b = bb.setHideOnClickOutside(true).setShowCallout(false).setHideOnKeyOutside(true).createBalloon();
     b.show(new RelativePoint(e), Position.below);
+  }
+
+  private static void printInto(Collection<TreeErrorMessage> messages, StringBuilder sb) {
+    final Consumer<String> c;
+    if (messages.size() > 1) {
+      sb.append("<ul>");
+      c = s -> sb.append("<li>").append(s).append("</li>");
+    } else {
+      c = sb::append;
+    }
+    messages.stream().map(m -> StringUtil.escapeXml(m.getMessage())).forEach(c);
+    if (messages.size() > 1) {
+      sb.append("</ul>");
+    }
   }
 
   @Override
