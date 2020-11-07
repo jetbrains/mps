@@ -33,6 +33,7 @@
     <import index="lzb2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui(MPS.IDEA/)" />
     <import index="82te" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.ui.util(MPS.Platform/)" />
     <import index="g1qu" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.ui(MPS.IDEA/)" />
+    <import index="rfhd" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util.registry(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -53,7 +54,7 @@
       </concept>
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
-        <child id="8118189177080264854" name="classes" index="nSUat" />
+        <child id="8118189177080264854" name="alternative" index="nSUat" />
       </concept>
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="ng" index="2tJIrI" />
       <concept id="5279705229678483897" name="jetbrains.mps.baseLanguage.structure.FloatingPointFloatConstant" flags="nn" index="2$xPTn">
@@ -240,7 +241,7 @@
       <concept id="1107796713796" name="jetbrains.mps.baseLanguage.structure.Interface" flags="ig" index="3HP615" />
       <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="ng" index="3J1_TO">
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
-        <child id="8276990574886367509" name="finallyBody" index="1zxBo6" />
+        <child id="8276990574886367509" name="finallyClause" index="1zxBo6" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="1163668896201" name="jetbrains.mps.baseLanguage.structure.TernaryOperatorExpression" flags="nn" index="3K4zz7">
@@ -3425,6 +3426,7 @@
     <property role="TrG5h" value="EditorCellCreator" />
     <node concept="312cEg" id="5fq$Y9WjMJy" role="jymVt">
       <property role="TrG5h" value="myEditorComponent" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="5fq$Y9WjMJz" role="1B3o_S" />
       <node concept="3uibUv" id="3x2XrnQ7vpb" role="1tU5fm">
         <ref role="3uigEE" to="exr9:~EditorComponent" resolve="EditorComponent" />
@@ -3768,6 +3770,64 @@
       <node concept="3clFbS" id="23UxenwAM2n" role="3clF47" />
       <node concept="3Tm1VV" id="23UxenwAM2o" role="1B3o_S" />
       <node concept="10Oyi0" id="23UxenwAM10" role="3clF45" />
+    </node>
+    <node concept="2tJIrI" id="2519QBqfB3n" role="jymVt" />
+    <node concept="Wx3nA" id="2519QBqfUe3" role="jymVt">
+      <property role="3TUv4t" value="true" />
+      <property role="TrG5h" value="DEFAULT" />
+      <node concept="3Tm1VV" id="2519QBqfUe5" role="1B3o_S" />
+      <node concept="3uibUv" id="2519QBqfUil" role="1tU5fm">
+        <ref role="3uigEE" node="23UxenwALM8" resolve="TooltipTimingProperties" />
+      </node>
+      <node concept="2ShNRf" id="1a$Yn_2SV6W" role="33vP2m">
+        <node concept="YeOm9" id="23UxenwASU_" role="2ShVmc">
+          <node concept="1Y3b0j" id="23UxenwASUC" role="YeSDq">
+            <property role="2bfB8j" value="true" />
+            <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
+            <ref role="1Y3XeK" node="23UxenwALM8" resolve="TooltipTimingProperties" />
+            <node concept="3Tm1VV" id="23UxenwASUD" role="1B3o_S" />
+            <node concept="3clFb_" id="23UxenwASUI" role="jymVt">
+              <property role="TrG5h" value="getShortDelayBeforeShow" />
+              <node concept="3Tm1VV" id="23UxenwASUK" role="1B3o_S" />
+              <node concept="10Oyi0" id="23UxenwASUL" role="3clF45" />
+              <node concept="3clFbS" id="23UxenwASUM" role="3clF47">
+                <node concept="3cpWs6" id="23UxenwAUL7" role="3cqZAp">
+                  <node concept="2YIFZM" id="23UxenwAV$6" role="3cqZAk">
+                    <ref role="1Pybhc" to="rfhd:~Registry" resolve="Registry" />
+                    <ref role="37wK5l" to="rfhd:~Registry.intValue(java.lang.String)" resolve="intValue" />
+                    <node concept="Xl_RD" id="23UxenwAWQC" role="37wK5m">
+                      <property role="Xl_RC" value="ide.tooltip.initialDelay" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2AHcQZ" id="23UxenwASUO" role="2AJF6D">
+                <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+              </node>
+            </node>
+            <node concept="2tJIrI" id="23UxenwASUP" role="jymVt" />
+            <node concept="3clFb_" id="23UxenwASUY" role="jymVt">
+              <property role="TrG5h" value="getShowImmediatelyPeriod" />
+              <node concept="3Tm1VV" id="23UxenwASV0" role="1B3o_S" />
+              <node concept="10Oyi0" id="23UxenwASV1" role="3clF45" />
+              <node concept="3clFbS" id="23UxenwASV2" role="3clF47">
+                <node concept="3cpWs6" id="23UxenwB1hu" role="3cqZAp">
+                  <node concept="2YIFZM" id="23UxenwB3IS" role="3cqZAk">
+                    <ref role="1Pybhc" to="rfhd:~Registry" resolve="Registry" />
+                    <ref role="37wK5l" to="rfhd:~Registry.intValue(java.lang.String)" resolve="intValue" />
+                    <node concept="Xl_RD" id="23UxenwB5zb" role="37wK5m">
+                      <property role="Xl_RC" value="ide.tooltip.reshowDelay" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2AHcQZ" id="23UxenwASV4" role="2AJF6D">
+                <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="3Tm1VV" id="23UxenwALM9" role="1B3o_S" />
   </node>
