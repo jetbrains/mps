@@ -16,12 +16,15 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.SReference;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class ShortType__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cc380dL, "jetbrains.mps.baseLanguage.structure.ShortType");
@@ -30,8 +33,9 @@ public final class ShortType__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<List<SNode>> getSupertypes_id4w2h6RLlygH = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getSupertypes").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("4w2h6RLlygH").build();
   public static final SMethod<SNode> getClassExpression_idhEwIzOd = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClassExpression").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIzOd").build();
   public static final SMethod<String> jniSignature_id7F81Cd2C7e3 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("jniSignature").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("7F81Cd2C7e3").build();
+  public static final SMethod<SNode> createDefaultTypeExpression_id2UvJdVpqUA4 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("createDefaultTypeExpression").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2UvJdVpqUA4").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getBoxedType_idhEwIzNC, getSupertypes_id4w2h6RLlygH, getClassExpression_idhEwIzOd, jniSignature_id7F81Cd2C7e3);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getBoxedType_idhEwIzNC, getSupertypes_id4w2h6RLlygH, getClassExpression_idhEwIzOd, jniSignature_id7F81Cd2C7e3, createDefaultTypeExpression_id2UvJdVpqUA4);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -47,6 +51,11 @@ public final class ShortType__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static String jniSignature_id7F81Cd2C7e3(@NotNull SNode __thisNode__) {
     return "S";
+  }
+  /*package*/ static SNode createDefaultTypeExpression_id2UvJdVpqUA4(@NotNull SNode __thisNode__) {
+    SNode f = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, "jetbrains.mps.baseLanguage.structure.IntegerConstant"));
+    SPropertyOperations.assign(f, PROPS.value$jgCM, 0);
+    return f;
   }
 
   /*package*/ ShortType__BehaviorDescriptor() {
@@ -72,6 +81,8 @@ public final class ShortType__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((SNode) getClassExpression_idhEwIzOd(node));
       case 3:
         return (T) ((String) jniSignature_id7F81Cd2C7e3(node));
+      case 4:
+        return (T) ((SNode) createDefaultTypeExpression_id2UvJdVpqUA4(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -120,5 +131,9 @@ public final class ShortType__BehaviorDescriptor extends BaseBHDescriptor {
     quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940c80846L, 0x10a75869f9bL, "classifier"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Short")));
     quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, 0xf8cc6bf960L, "variableDeclaration"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Short.TYPE")));
     return quotedNode_1;
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty value$jgCM = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, 0xf8cc59b315L, "value");
   }
 }

@@ -170,7 +170,7 @@ public class IntroduceField_Action extends BaseAction {
 
     final AbstractIntroduceFieldRefactoring introducer = (mustBeStatic.value ? new IntroduceStaticFieldRefactoring(desiredTargetClass.value) : new IntroduceFieldRefactoring(desiredTargetClass.value));
     final Wrappers._T<String> error = new Wrappers._T<String>();
-    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runWriteAction(new Runnable() {
+    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().executeCommand(new Runnable() {
       public void run() {
         error.value = introducer.init(nodeToRefactor, ((EditorComponent) MapSequence.fromMap(_params).get("component")));
       }

@@ -50,27 +50,30 @@ public class IntroduceFieldRefactoring extends AbstractIntroduceFieldRefactoring
     }
     SNode classConcept = SNodeOperations.as(myContainer, CONCEPTS.ClassConcept$bK);
     MemberInsertingUtils.insertClassifierMemberInBestPlace(classConcept, newDeclaration);
-    SNode assignStatement = _quotation_createNode_baxqxe_a0g0f(newDeclaration, SNodeOperations.copyNode(this.getExpression()));
-    if (this.myFieldInitialization == FieldInitializationPlace.METHOD) {
-      SNodeOperations.insertPrevSiblingChild(SNodeOperations.getNodeAncestor(this.getExpression(), CONCEPTS.Statement$P6, false, false), SNodeOperations.copyNode(assignStatement));
-    }
-    if (this.myFieldInitialization == FieldInitializationPlace.CONSTRUCTOR) {
-      SNode declaration = SNodeOperations.getNodeAncestor(this.getExpression(), CONCEPTS.ClassConcept$bK, false, false);
 
-      if (Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(declaration, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("constructors", CONCEPTS.ClassConcept$bK, "4_LVZ3pCvsd")))).isEmpty()) {
-        createTheFirstConstructor(classConcept);
+    if (getExpression() != null) {
+      SNode assignStatement = _quotation_createNode_baxqxe_a0a0h0f(newDeclaration, SNodeOperations.copyNode(this.getExpression()));
+      if (this.myFieldInitialization == FieldInitializationPlace.METHOD) {
+        SNodeOperations.insertPrevSiblingChild(SNodeOperations.getNodeAncestor(this.getExpression(), CONCEPTS.Statement$P6, false, false), SNodeOperations.copyNode(assignStatement));
       }
+      if (this.myFieldInitialization == FieldInitializationPlace.CONSTRUCTOR) {
+        SNode declaration = SNodeOperations.getNodeAncestor(this.getExpression(), CONCEPTS.ClassConcept$bK, false, false);
 
-      for (SNode constructor : Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(declaration, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("constructors", CONCEPTS.ClassConcept$bK, "4_LVZ3pCvsd"))))) {
-        List<SNode> statement = SLinkOperations.getChildren(SLinkOperations.getTarget(constructor, LINKS.body$5xQk), LINKS.statement$53DE);
-        if (ListSequence.fromList(statement).isNotEmpty()) {
-          SNodeOperations.insertPrevSiblingChild(ListSequence.fromList(statement).first(), SNodeOperations.copyNode(assignStatement));
-        } else {
-          ListSequence.fromList(statement).addElement(SNodeOperations.copyNode(assignStatement));
+        if (Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(declaration, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("constructors", CONCEPTS.ClassConcept$bK, "4_LVZ3pCvsd")))).isEmpty()) {
+          createTheFirstConstructor(classConcept);
+        }
+
+        for (SNode constructor : Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(declaration, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("constructors", CONCEPTS.ClassConcept$bK, "4_LVZ3pCvsd"))))) {
+          List<SNode> statement = SLinkOperations.getChildren(SLinkOperations.getTarget(constructor, LINKS.body$5xQk), LINKS.statement$53DE);
+          if (ListSequence.fromList(statement).isNotEmpty()) {
+            SNodeOperations.insertPrevSiblingChild(ListSequence.fromList(statement).first(), SNodeOperations.copyNode(assignStatement));
+          } else {
+            ListSequence.fromList(statement).addElement(SNodeOperations.copyNode(assignStatement));
+          }
         }
       }
+      replaceNode(this.getExpression(), newDeclaration);
     }
-    replaceNode(this.getExpression(), newDeclaration);
     if (myIsReplacingAll) {
       for (SNode duplicate : ListSequence.fromList(myDuplicates)) {
         replaceNode(duplicate, newDeclaration);
@@ -131,7 +134,7 @@ public class IntroduceFieldRefactoring extends AbstractIntroduceFieldRefactoring
     }
     return quotedNode_4;
   }
-  private static SNode _quotation_createNode_baxqxe_a0g0f(Object parameter_1, Object parameter_2) {
+  private static SNode _quotation_createNode_baxqxe_a0a0h0f(Object parameter_1, Object parameter_2) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;

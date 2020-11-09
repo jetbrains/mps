@@ -21,14 +21,14 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 @GeneratedClass(node = "r:5f19c5cc-325c-485a-b033-20949d89a6f0(jetbrains.mps.baseLanguage.util.plugin.refactorings)/2315910000642817012", model = "r:5f19c5cc-325c-485a-b033-20949d89a6f0(jetbrains.mps.baseLanguage.util.plugin.refactorings)")
 public abstract class AbstractIntroduceFieldRefactoring extends IntroduceVariableRefactoring {
   protected FieldInitializationPlace myFieldInitialization;
-  private SNode myVariable;
+  protected SNode myVariable;
 
 
   public void setFieldInitializationPlace(FieldInitializationPlace place) {
     this.myFieldInitialization = place;
   }
   public boolean isInitializeInFieldAvailable() {
-    return ListSequence.fromList(SNodeOperations.getNodeDescendants(getExpression(), CONCEPTS.VariableReference$TC, true, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+    return getExpression() != null && ListSequence.fromList(SNodeOperations.getNodeDescendants(getExpression(), CONCEPTS.VariableReference$TC, true, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41);
       }
@@ -39,12 +39,12 @@ public abstract class AbstractIntroduceFieldRefactoring extends IntroduceVariabl
   }
   @Override
   public String init(SNode node, JComponent editorComponent) {
-    SNode expr = node;
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.LocalVariableDeclaration$41)) {
       this.myVariable = SNodeOperations.as(node, CONCEPTS.LocalVariableDeclaration$41);
-      expr = SLinkOperations.getTarget(this.myVariable, LINKS.initializer$2twD);
+      return initForVariable(this.myVariable, SLinkOperations.getTarget(this.myVariable, LINKS.initializer$2twD), editorComponent);
+    } else {
+      return super.init(node, editorComponent);
     }
-    return super.init(expr, editorComponent);
   }
 
   protected final void replaceReferences(final SNode newDeclaration) {

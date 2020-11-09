@@ -52,31 +52,34 @@ public class IntroduceStaticFieldRefactoring extends AbstractIntroduceFieldRefac
     }
     SNode classConcept = SNodeOperations.as(myContainer, CONCEPTS.ClassConcept$bK);
     MemberInsertingUtils.insertClassifierMemberInBestPlace(classConcept, newDeclaration);
-    SNode assignExp = _quotation_createNode_282g55_a0k0f(expression, newDeclaration);
-    SNode assignmentStatement = _quotation_createNode_282g55_a0l0f(assignExp);
 
-    if (this.myFieldInitialization == FieldInitializationPlace.METHOD) {
-      SNodeOperations.insertPrevSiblingChild(SNodeOperations.getNodeAncestor(this.getExpression(), CONCEPTS.Statement$P6, false, false), SNodeOperations.copyNode(assignmentStatement));
-    }
-    if (this.myFieldInitialization == FieldInitializationPlace.STATICINIT) {
-      SNode declaration = SNodeOperations.getNodeAncestor(this.getExpression(), CONCEPTS.ClassConcept$bK, false, false);
-      Iterable<SNode> staticInitializers = ((Iterable<SNode>) BHReflection.invoke0(declaration, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("staticInitializers", CONCEPTS.ClassConcept$bK, "2I6sE$IuBP7")));
-      SNode initializer;
-      if (Sequence.fromIterable(staticInitializers).isNotEmpty()) {
-        initializer = Sequence.fromIterable(staticInitializers).first();
-      } else {
-        initializer = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, "jetbrains.mps.baseLanguage.structure.StaticInitializer"));
-        SLinkOperations.setTarget(initializer, LINKS.statementList$_Gji, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
-        ListSequence.fromList(SLinkOperations.getChildren(declaration, LINKS.member$L_2d)).addElement(initializer);
+    if (getExpression() != null) {
+      SNode assignExp = _quotation_createNode_282g55_a0a0l0f(expression, newDeclaration);
+      SNode assignmentStatement = _quotation_createNode_282g55_a0b0l0f(assignExp);
+
+      if (this.myFieldInitialization == FieldInitializationPlace.METHOD) {
+        SNodeOperations.insertPrevSiblingChild(SNodeOperations.getNodeAncestor(this.getExpression(), CONCEPTS.Statement$P6, false, false), SNodeOperations.copyNode(assignmentStatement));
       }
-      List<SNode> statement = SLinkOperations.getChildren(SLinkOperations.getTarget(initializer, LINKS.statementList$_Gji), LINKS.statement$53DE);
-      if (ListSequence.fromList(statement).isNotEmpty()) {
-        SNodeOperations.insertPrevSiblingChild(ListSequence.fromList(statement).first(), SNodeOperations.copyNode(assignmentStatement));
-      } else {
-        ListSequence.fromList(statement).addElement(SNodeOperations.copyNode(assignmentStatement));
+      if (this.myFieldInitialization == FieldInitializationPlace.STATICINIT) {
+        SNode declaration = SNodeOperations.getNodeAncestor(this.getExpression(), CONCEPTS.ClassConcept$bK, false, false);
+        Iterable<SNode> staticInitializers = ((Iterable<SNode>) BHReflection.invoke0(declaration, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("staticInitializers", CONCEPTS.ClassConcept$bK, "2I6sE$IuBP7")));
+        SNode initializer;
+        if (Sequence.fromIterable(staticInitializers).isNotEmpty()) {
+          initializer = Sequence.fromIterable(staticInitializers).first();
+        } else {
+          initializer = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c7538039dL, "jetbrains.mps.baseLanguage.structure.StaticInitializer"));
+          SLinkOperations.setTarget(initializer, LINKS.statementList$_Gji, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
+          ListSequence.fromList(SLinkOperations.getChildren(declaration, LINKS.member$L_2d)).addElement(initializer);
+        }
+        List<SNode> statement = SLinkOperations.getChildren(SLinkOperations.getTarget(initializer, LINKS.statementList$_Gji), LINKS.statement$53DE);
+        if (ListSequence.fromList(statement).isNotEmpty()) {
+          SNodeOperations.insertPrevSiblingChild(ListSequence.fromList(statement).first(), SNodeOperations.copyNode(assignmentStatement));
+        } else {
+          ListSequence.fromList(statement).addElement(SNodeOperations.copyNode(assignmentStatement));
+        }
       }
+      replaceNode(this.getExpression(), newDeclaration);
     }
-    replaceNode(this.getExpression(), newDeclaration);
     if (myIsReplacingAll) {
       for (SNode duplicate : ListSequence.fromList(myDuplicates)) {
         replaceNode(duplicate, newDeclaration);
@@ -130,7 +133,7 @@ public class IntroduceStaticFieldRefactoring extends AbstractIntroduceFieldRefac
     }
     return quotedNode_4;
   }
-  private static SNode _quotation_createNode_282g55_a0k0f(Object parameter_1, Object parameter_2) {
+  private static SNode _quotation_createNode_282g55_a0a0l0f(Object parameter_1, Object parameter_2) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
@@ -145,7 +148,7 @@ public class IntroduceStaticFieldRefactoring extends AbstractIntroduceFieldRefac
     quotedNode_3.addChild(MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11b0d00332cL, 0xf8c77f1e97L, "lValue"), quotedNode_5);
     return quotedNode_3;
   }
-  private static SNode _quotation_createNode_282g55_a0l0f(Object parameter_1) {
+  private static SNode _quotation_createNode_282g55_a0b0l0f(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;

@@ -13,17 +13,20 @@ import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.smodel.SReference;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 @GeneratedClass(node = "r:5f19c5cc-325c-485a-b033-20949d89a6f0(jetbrains.mps.baseLanguage.util.plugin.refactorings)/8492459591399175108", model = "r:5f19c5cc-325c-485a-b033-20949d89a6f0(jetbrains.mps.baseLanguage.util.plugin.refactorings)")
 public abstract class IntroduceVariableRefactoring {
@@ -73,6 +76,36 @@ public abstract class IntroduceVariableRefactoring {
       return null;
     }
   }
+  protected String initForVariable(SNode var, SNode initializer, JComponent editorComponent) {
+    if (initializer != null && !(SNodeOperations.getConcept(initializer).isAbstract())) {
+      return init(initializer, editorComponent);
+    }
+    this.myExpression = initializer;
+    this.myContainer = findContainer(var);
+    SNode expressionType = ((SLinkOperations.getTarget(var, LINKS.type$a1UY) != null ? SLinkOperations.getTarget(var, LINKS.type$a1UY) : SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType"))));
+    if (!(SNodeOperations.isInstanceOf(expressionType, CONCEPTS.Type$bu))) {
+      return "Couldn't compute type of expression: " + expressionType;
+    } else
+    if (this.isVoidType(expressionType)) {
+      return "Expression has no type";
+    } else {
+      this.myExpressionType = SNodeOperations.cast(expressionType, CONCEPTS.Type$bu);
+      List<String> expectedNames = ListSequence.fromList(new ArrayList<String>());
+      if (SPropertyOperations.getString(var, PROPS.name$MnvL) != null) {
+        ListSequence.fromList(expectedNames).addElement(NameUtil.decapitalize(SPropertyOperations.getString(var, PROPS.name$MnvL) + "_Field"));
+      }
+      this.myExpectedNames = ListSequence.fromList(expectedNames).where(new IWhereFilter<String>() {
+        public boolean accept(String it) {
+          return it.matches("[a-zA-Z0-9_]*");
+        }
+      }).toListSequence();
+      if (ListSequence.fromList(this.myExpectedNames).isEmpty()) {
+        ListSequence.fromList(this.myExpectedNames).addElement("");
+      }
+      return null;
+    }
+  }
+
   private SNode getExpressionType(SNode node) {
     SNode expressionType = TypecheckingFacade.getFromContext().coerceType(TypecheckingFacade.getFromContext().getTypeOf(node), CONCEPTS.Type$bu);
     if (SNodeOperations.isInstanceOf(expressionType, CONCEPTS.IInternalType$eR)) {
@@ -82,12 +115,12 @@ public abstract class IntroduceVariableRefactoring {
       SNode exprClassifier = SLinkOperations.getTarget(SNodeOperations.cast(expressionType, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr);
       if (SNodeOperations.isInstanceOf(exprClassifier, CONCEPTS.AnonymousClass$Bt)) {
         List<SNode> params = SLinkOperations.getChildren(SNodeOperations.cast(expressionType, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$);
-        expressionType = _quotation_createNode_x65dk2_a0b0b0c0l(SLinkOperations.getTarget(SNodeOperations.cast(exprClassifier, CONCEPTS.AnonymousClass$Bt), LINKS.classifier$q_Y$));
+        expressionType = _quotation_createNode_x65dk2_a0b0b0c0n(SLinkOperations.getTarget(SNodeOperations.cast(exprClassifier, CONCEPTS.AnonymousClass$Bt), LINKS.classifier$q_Y$));
         ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(expressionType, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$)).addSequence(ListSequence.fromList(params));
       }
     }
     if (SNodeOperations.isInstanceOf(expressionType, CONCEPTS.WildCardType$uV)) {
-      expressionType = _quotation_createNode_x65dk2_a0a0d0l();
+      expressionType = _quotation_createNode_x65dk2_a0a0d0n();
     }
     if (SNodeOperations.isInstanceOf(expressionType, CONCEPTS.UpperBoundType$RS)) {
       expressionType = SLinkOperations.getTarget(SNodeOperations.cast(expressionType, CONCEPTS.UpperBoundType$RS), LINKS.bound$ciZM);
@@ -149,14 +182,14 @@ public abstract class IntroduceVariableRefactoring {
   protected boolean isVoidType(SNode expressionType) {
     return SNodeOperations.isInstanceOf(expressionType, CONCEPTS.VoidType$BF);
   }
-  private static SNode _quotation_createNode_x65dk2_a0b0b0c0l(Object parameter_1) {
+  private static SNode _quotation_createNode_x65dk2_a0b0b0c0n(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_2 = null;
     quotedNode_2 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
     SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), (SNode) parameter_1);
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_x65dk2_a0a0d0l() {
+  private static SNode _quotation_createNode_x65dk2_a0a0d0n() {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_1 = null;
     quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
@@ -179,10 +212,15 @@ public abstract class IntroduceVariableRefactoring {
   }
 
   private static final class LINKS {
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
     /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
     /*package*/ static final SContainmentLink parameter$oqG$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x102419671abL, "parameter");
     /*package*/ static final SReferenceLink classifier$q_Y$ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
     /*package*/ static final SContainmentLink bound$ciZM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110daeaa84aL, 0x110daeaa84bL, "bound");
     /*package*/ static final SContainmentLink bound$$a6H = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x110dae9d53dL, 0x110dae9f25bL, "bound");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }
