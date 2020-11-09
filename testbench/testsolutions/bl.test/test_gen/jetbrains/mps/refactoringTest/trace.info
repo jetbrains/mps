@@ -3067,6 +3067,94 @@
       <unit id="2230400082818031588" at="22,0,59,0" name="jetbrains.mps.refactoringTest.ConvertAnonymousToStaticTest_Test" />
     </file>
   </root>
+  <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/2505393827681559946">
+    <file name="IntroduceFieldFromVarNoInitializer_Test.java">
+      <node id="2505393827681559946" at="31,52,32,25" concept="12" />
+      <node id="2505393827681559947" at="36,59,37,50" concept="2" />
+      <node id="2505393827681559946" at="42,52,43,19" concept="12" />
+      <node id="2505393827681559988" at="46,61,47,41" concept="2" />
+      <node id="2505393827681560008" at="47,41,48,41" concept="2" />
+      <node id="2505393827681559950" at="48,41,49,78" concept="7" />
+      <node id="2505393827681559955" at="49,78,50,65" concept="2" />
+      <node id="2505393827681559961" at="50,65,51,31" concept="2" />
+      <node id="2505393827681559966" at="51,31,52,36" concept="2" />
+      <node id="2505393827681559971" at="52,36,53,79" concept="2" />
+      <node id="2505393827681559976" at="53,79,54,62" concept="2" />
+      <node id="2505393827681559981" at="54,62,55,34" concept="2" />
+      <node id="2505393827681559985" at="56,7,57,124" concept="7" />
+      <node id="2505393827681559985" at="57,124,58,123" concept="7" />
+      <node id="2505393827681559985" at="58,123,59,160" concept="2" />
+      <node id="2505393827681559946" at="26,0,28,0" concept="10" trace="ourParamCache" />
+      <node id="2505393827681559946" at="28,0,30,0" concept="3" trace="myWithCommandRule" />
+      <node id="2505393827681559946" at="31,0,34,0" concept="1" trace="IntroduceFieldFromVarNoInitializer_Test#()V" />
+      <node id="2505393827681559946" at="42,0,45,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="2505393827681559947" at="35,0,39,0" concept="6" trace="test_IntroduceFinalField#()V" />
+      <node id="2505393827681559985" at="55,34,60,7" concept="0" />
+      <node id="2505393827681559947" at="46,0,62,0" concept="6" trace="test_IntroduceFinalField#()V" />
+      <scope id="2505393827681559946" at="31,52,32,25" />
+      <scope id="2505393827681559947" at="36,59,37,50" />
+      <scope id="2505393827681559946" at="42,52,43,19" />
+      <scope id="2505393827681559946" at="31,0,34,0" />
+      <scope id="2505393827681559946" at="42,0,45,0">
+        <var name="owner" id="2505393827681559946" />
+      </scope>
+      <scope id="2505393827681559985" at="56,7,59,160">
+        <var name="nodesAfter" id="2505393827681559985" />
+        <var name="nodesBefore" id="2505393827681559985" />
+      </scope>
+      <scope id="2505393827681559947" at="35,0,39,0" />
+      <scope id="2505393827681559947" at="46,61,60,7">
+        <var name="refactoring" id="2505393827681559951" />
+      </scope>
+      <scope id="2505393827681559947" at="46,0,62,0" />
+      <unit id="2505393827681559946" at="40,0,65,0" name="jetbrains.mps.refactoringTest.IntroduceFieldFromVarNoInitializer_Test$TestBody" />
+      <unit id="2505393827681559946" at="24,0,66,0" name="jetbrains.mps.refactoringTest.IntroduceFieldFromVarNoInitializer_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/2505393827681576407">
+    <file name="IntroduceFieldFromVarAbstractInitializer_Test.java">
+      <node id="2505393827681576407" at="31,58,32,25" concept="12" />
+      <node id="2505393827681576408" at="36,59,37,50" concept="2" />
+      <node id="2505393827681576407" at="42,52,43,19" concept="12" />
+      <node id="2505393827681576449" at="46,61,47,41" concept="2" />
+      <node id="2505393827681576466" at="47,41,48,41" concept="2" />
+      <node id="2505393827681576411" at="48,41,49,78" concept="7" />
+      <node id="2505393827681576416" at="49,78,50,65" concept="2" />
+      <node id="2505393827681576422" at="50,65,51,31" concept="2" />
+      <node id="2505393827681576427" at="51,31,52,36" concept="2" />
+      <node id="2505393827681576432" at="52,36,53,79" concept="2" />
+      <node id="2505393827681576437" at="53,79,54,62" concept="2" />
+      <node id="2505393827681576442" at="54,62,55,34" concept="2" />
+      <node id="2505393827681576446" at="56,7,57,124" concept="7" />
+      <node id="2505393827681576446" at="57,124,58,123" concept="7" />
+      <node id="2505393827681576446" at="58,123,59,160" concept="2" />
+      <node id="2505393827681576407" at="26,0,28,0" concept="10" trace="ourParamCache" />
+      <node id="2505393827681576407" at="28,0,30,0" concept="3" trace="myWithCommandRule" />
+      <node id="2505393827681576407" at="31,0,34,0" concept="1" trace="IntroduceFieldFromVarAbstractInitializer_Test#()V" />
+      <node id="2505393827681576407" at="42,0,45,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="2505393827681576408" at="35,0,39,0" concept="6" trace="test_IntroduceFinalField#()V" />
+      <node id="2505393827681576446" at="55,34,60,7" concept="0" />
+      <node id="2505393827681576408" at="46,0,62,0" concept="6" trace="test_IntroduceFinalField#()V" />
+      <scope id="2505393827681576407" at="31,58,32,25" />
+      <scope id="2505393827681576408" at="36,59,37,50" />
+      <scope id="2505393827681576407" at="42,52,43,19" />
+      <scope id="2505393827681576407" at="31,0,34,0" />
+      <scope id="2505393827681576407" at="42,0,45,0">
+        <var name="owner" id="2505393827681576407" />
+      </scope>
+      <scope id="2505393827681576446" at="56,7,59,160">
+        <var name="nodesAfter" id="2505393827681576446" />
+        <var name="nodesBefore" id="2505393827681576446" />
+      </scope>
+      <scope id="2505393827681576408" at="35,0,39,0" />
+      <scope id="2505393827681576408" at="46,61,60,7">
+        <var name="refactoring" id="2505393827681576412" />
+      </scope>
+      <scope id="2505393827681576408" at="46,0,62,0" />
+      <unit id="2505393827681576407" at="40,0,65,0" name="jetbrains.mps.refactoringTest.IntroduceFieldFromVarAbstractInitializer_Test$TestBody" />
+      <unit id="2505393827681576407" at="24,0,66,0" name="jetbrains.mps.refactoringTest.IntroduceFieldFromVarAbstractInitializer_Test" />
+    </file>
+  </root>
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/3014415391767789119">
     <file name="SimpleMoveStaticMethod_Test.java">
       <node id="3014415391767789119" at="27,40,28,25" concept="12" />
@@ -4907,8 +4995,8 @@
     </file>
   </root>
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/8274035912948518107">
-    <file name="IntroduceFinalFieldNoConstructor_Test.java">
-      <node id="8274035912948518107" at="31,50,32,25" concept="12" />
+    <file name="IntroduceFinalFieldNoConstructor1_Test.java">
+      <node id="8274035912948518107" at="31,51,32,25" concept="12" />
       <node id="8274035912948518108" at="36,59,37,50" concept="2" />
       <node id="8274035912948518107" at="42,52,43,19" concept="12" />
       <node id="8274035912948518149" at="46,61,47,41" concept="2" />
@@ -4925,12 +5013,12 @@
       <node id="8274035912948518146" at="58,123,59,160" concept="2" />
       <node id="8274035912948518107" at="26,0,28,0" concept="10" trace="ourParamCache" />
       <node id="8274035912948518107" at="28,0,30,0" concept="3" trace="myWithCommandRule" />
-      <node id="8274035912948518107" at="31,0,34,0" concept="1" trace="IntroduceFinalFieldNoConstructor_Test#()V" />
+      <node id="8274035912948518107" at="31,0,34,0" concept="1" trace="IntroduceFinalFieldNoConstructor1_Test#()V" />
       <node id="8274035912948518107" at="42,0,45,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="8274035912948518108" at="35,0,39,0" concept="6" trace="test_IntroduceFinalField#()V" />
       <node id="8274035912948518146" at="55,34,60,7" concept="0" />
       <node id="8274035912948518108" at="46,0,62,0" concept="6" trace="test_IntroduceFinalField#()V" />
-      <scope id="8274035912948518107" at="31,50,32,25" />
+      <scope id="8274035912948518107" at="31,51,32,25" />
       <scope id="8274035912948518108" at="36,59,37,50" />
       <scope id="8274035912948518107" at="42,52,43,19" />
       <scope id="8274035912948518107" at="31,0,34,0" />
@@ -4946,8 +5034,8 @@
         <var name="refactoring" id="8274035912948518112" />
       </scope>
       <scope id="8274035912948518108" at="46,0,62,0" />
-      <unit id="8274035912948518107" at="40,0,65,0" name="jetbrains.mps.refactoringTest.IntroduceFinalFieldNoConstructor_Test$TestBody" />
-      <unit id="8274035912948518107" at="24,0,66,0" name="jetbrains.mps.refactoringTest.IntroduceFinalFieldNoConstructor_Test" />
+      <unit id="8274035912948518107" at="40,0,65,0" name="jetbrains.mps.refactoringTest.IntroduceFinalFieldNoConstructor1_Test$TestBody" />
+      <unit id="8274035912948518107" at="24,0,66,0" name="jetbrains.mps.refactoringTest.IntroduceFinalFieldNoConstructor1_Test" />
     </file>
   </root>
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/8274035912948684774">
@@ -5270,8 +5358,8 @@
     </file>
   </root>
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/8599380872151162345">
-    <file name="IntroduceFinalFieldNoConstructor_Test.java">
-      <node id="8599380872151162345" at="31,50,32,25" concept="12" />
+    <file name="IntroduceFinalFieldNoConstructor2_Test.java">
+      <node id="8599380872151162345" at="31,51,32,25" concept="12" />
       <node id="8599380872151162346" at="36,59,37,50" concept="2" />
       <node id="8599380872151162345" at="42,52,43,19" concept="12" />
       <node id="8599380872151162387" at="46,61,47,41" concept="2" />
@@ -5288,12 +5376,12 @@
       <node id="8599380872151162384" at="58,123,59,160" concept="2" />
       <node id="8599380872151162345" at="26,0,28,0" concept="10" trace="ourParamCache" />
       <node id="8599380872151162345" at="28,0,30,0" concept="3" trace="myWithCommandRule" />
-      <node id="8599380872151162345" at="31,0,34,0" concept="1" trace="IntroduceFinalFieldNoConstructor_Test#()V" />
+      <node id="8599380872151162345" at="31,0,34,0" concept="1" trace="IntroduceFinalFieldNoConstructor2_Test#()V" />
       <node id="8599380872151162345" at="42,0,45,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="8599380872151162346" at="35,0,39,0" concept="6" trace="test_IntroduceFinalField#()V" />
       <node id="8599380872151162384" at="55,34,60,7" concept="0" />
       <node id="8599380872151162346" at="46,0,62,0" concept="6" trace="test_IntroduceFinalField#()V" />
-      <scope id="8599380872151162345" at="31,50,32,25" />
+      <scope id="8599380872151162345" at="31,51,32,25" />
       <scope id="8599380872151162346" at="36,59,37,50" />
       <scope id="8599380872151162345" at="42,52,43,19" />
       <scope id="8599380872151162345" at="31,0,34,0" />
@@ -5309,8 +5397,8 @@
         <var name="refactoring" id="8599380872151162350" />
       </scope>
       <scope id="8599380872151162346" at="46,0,62,0" />
-      <unit id="8599380872151162345" at="40,0,65,0" name="jetbrains.mps.refactoringTest.IntroduceFinalFieldNoConstructor_Test$TestBody" />
-      <unit id="8599380872151162345" at="24,0,66,0" name="jetbrains.mps.refactoringTest.IntroduceFinalFieldNoConstructor_Test" />
+      <unit id="8599380872151162345" at="40,0,65,0" name="jetbrains.mps.refactoringTest.IntroduceFinalFieldNoConstructor2_Test$TestBody" />
+      <unit id="8599380872151162345" at="24,0,66,0" name="jetbrains.mps.refactoringTest.IntroduceFinalFieldNoConstructor2_Test" />
     </file>
   </root>
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/8823815475437525602">

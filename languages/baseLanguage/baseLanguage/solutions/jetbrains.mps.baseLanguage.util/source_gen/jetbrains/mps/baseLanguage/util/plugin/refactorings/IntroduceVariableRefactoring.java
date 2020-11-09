@@ -90,9 +90,10 @@ public abstract class IntroduceVariableRefactoring {
       return "Expression has no type";
     } else {
       this.myExpressionType = SNodeOperations.cast(expressionType, CONCEPTS.Type$bu);
+      String variableExpectedName = ((String) BHReflection.invoke0(((SNode) BHReflection.invoke0(this.myExpressionType, CONCEPTS.Type$bu, SMethodTrimmedId.create("createDefaultTypeExpression", null, "2UvJdVpqUA4"))), CONCEPTS.Expression$mB, SMethodTrimmedId.create("getVariableExpectedName", null, "hEwJgm_")));
       List<String> expectedNames = ListSequence.fromList(new ArrayList<String>());
       if (SPropertyOperations.getString(var, PROPS.name$MnvL) != null) {
-        ListSequence.fromList(expectedNames).addElement(NameUtil.decapitalize(SPropertyOperations.getString(var, PROPS.name$MnvL) + "_Field"));
+        ListSequence.fromList(expectedNames).addElement(((variableExpectedName != null && variableExpectedName.length() > 0) ? NameUtil.decapitalize(variableExpectedName) : NameUtil.decapitalize(SPropertyOperations.getString(var, PROPS.name$MnvL) + "_Field")));
       }
       this.myExpectedNames = ListSequence.fromList(expectedNames).where(new IWhereFilter<String>() {
         public boolean accept(String it) {

@@ -154,6 +154,7 @@
       <concept id="1068498886294" name="jetbrains.mps.baseLanguage.structure.AssignmentExpression" flags="nn" index="37vLTI" />
       <concept id="1225271177708" name="jetbrains.mps.baseLanguage.structure.StringType" flags="in" index="17QB3L" />
       <concept id="1225271283259" name="jetbrains.mps.baseLanguage.structure.NPEEqualsExpression" flags="nn" index="17R0WA" />
+      <concept id="1225271408483" name="jetbrains.mps.baseLanguage.structure.IsNotEmptyOperation" flags="nn" index="17RvpY" />
       <concept id="4972933694980447171" name="jetbrains.mps.baseLanguage.structure.BaseVariableDeclaration" flags="ng" index="19Szcq">
         <child id="5680397130376446158" name="type" index="1tU5fm" />
       </concept>
@@ -20157,6 +20158,28 @@
                     </node>
                   </node>
                 </node>
+                <node concept="3cpWs8" id="2b4WAA1CeuY" role="3cqZAp">
+                  <node concept="3cpWsn" id="2b4WAA1CeuZ" role="3cpWs9">
+                    <property role="TrG5h" value="variableExpectedName" />
+                    <node concept="17QB3L" id="2b4WAA1Cer7" role="1tU5fm" />
+                    <node concept="2OqwBi" id="2b4WAA1Cev0" role="33vP2m">
+                      <node concept="2OqwBi" id="2b4WAA1Cev1" role="2Oq$k0">
+                        <node concept="2OqwBi" id="2b4WAA1Cev2" role="2Oq$k0">
+                          <node concept="Xjq3P" id="2b4WAA1Cev3" role="2Oq$k0" />
+                          <node concept="2OwXpG" id="2b4WAA1Cev4" role="2OqNvi">
+                            <ref role="2Oxat5" node="7nrhK3uHffb" resolve="myExpressionType" />
+                          </node>
+                        </node>
+                        <node concept="2qgKlT" id="2b4WAA1Cev5" role="2OqNvi">
+                          <ref role="37wK5l" to="tpek:2UvJdVpqUA4" resolve="createDefaultTypeExpression" />
+                        </node>
+                      </node>
+                      <node concept="2qgKlT" id="2b4WAA1Cev6" role="2OqNvi">
+                        <ref role="37wK5l" to="tpek:hEwJgm_" resolve="getVariableExpectedName" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
                 <node concept="3cpWs8" id="1XKu_aiA7de" role="3cqZAp">
                   <node concept="3cpWsn" id="1XKu_aiA7df" role="3cpWs9">
                     <property role="TrG5h" value="expectedNames" />
@@ -20189,19 +20212,34 @@
                           <ref role="3cqZAo" node="1XKu_aiA7df" resolve="expectedNames" />
                         </node>
                         <node concept="TSZUe" id="1XKu_aiA7dJ" role="2OqNvi">
-                          <node concept="2YIFZM" id="1XKu_aiA7dK" role="25WWJ7">
-                            <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
-                            <ref role="37wK5l" to="18ew:~NameUtil.decapitalize(java.lang.String)" resolve="decapitalize" />
-                            <node concept="3cpWs3" id="lFlLnLZL94" role="37wK5m">
-                              <node concept="Xl_RD" id="lFlLnLZLch" role="3uHU7w">
-                                <property role="Xl_RC" value="_Field" />
+                          <node concept="3K4zz7" id="2b4WAA1Cj$B" role="25WWJ7">
+                            <node concept="2OqwBi" id="2b4WAA1CiQ0" role="3K4Cdx">
+                              <node concept="37vLTw" id="2b4WAA1Civw" role="2Oq$k0">
+                                <ref role="3cqZAo" node="2b4WAA1CeuZ" resolve="variableExpectedName" />
                               </node>
-                              <node concept="2OqwBi" id="lFlLnLZKl2" role="3uHU7B">
-                                <node concept="37vLTw" id="lFlLnLZJ8_" role="2Oq$k0">
-                                  <ref role="3cqZAo" node="Z_Csvxc_rq" resolve="var" />
+                              <node concept="17RvpY" id="2b4WAA1CjaC" role="2OqNvi" />
+                            </node>
+                            <node concept="2YIFZM" id="1XKu_aiA7dK" role="3K4E3e">
+                              <ref role="37wK5l" to="18ew:~NameUtil.decapitalize(java.lang.String)" resolve="decapitalize" />
+                              <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
+                              <node concept="37vLTw" id="2b4WAA1Ckcp" role="37wK5m">
+                                <ref role="3cqZAo" node="2b4WAA1CeuZ" resolve="variableExpectedName" />
+                              </node>
+                            </node>
+                            <node concept="2YIFZM" id="2b4WAA1CjPb" role="3K4GZi">
+                              <ref role="37wK5l" to="18ew:~NameUtil.decapitalize(java.lang.String)" resolve="decapitalize" />
+                              <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
+                              <node concept="3cpWs3" id="2b4WAA1CjPc" role="37wK5m">
+                                <node concept="Xl_RD" id="2b4WAA1CjPd" role="3uHU7w">
+                                  <property role="Xl_RC" value="_Field" />
                                 </node>
-                                <node concept="3TrcHB" id="lFlLnLZKRG" role="2OqNvi">
-                                  <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+                                <node concept="2OqwBi" id="2b4WAA1CjPe" role="3uHU7B">
+                                  <node concept="37vLTw" id="2b4WAA1CjPf" role="2Oq$k0">
+                                    <ref role="3cqZAo" node="Z_Csvxc_rq" resolve="var" />
+                                  </node>
+                                  <node concept="3TrcHB" id="2b4WAA1CjPg" role="2OqNvi">
+                                    <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+                                  </node>
                                 </node>
                               </node>
                             </node>

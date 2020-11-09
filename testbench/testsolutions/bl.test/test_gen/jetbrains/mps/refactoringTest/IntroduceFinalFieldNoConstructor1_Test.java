@@ -22,13 +22,13 @@ import junit.framework.Assert;
 import jetbrains.mps.lang.test.matcher.NodesMatcher;
 
 @MPSLaunch
-public class IntroduceFinalFieldNoConstructor_Test extends BaseTransformationTest {
+public class IntroduceFinalFieldNoConstructor1_Test extends BaseTransformationTest {
   @ClassRule
-  public static final TestParametersCache ourParamCache = new TestParametersCache(IntroduceFinalFieldNoConstructor_Test.class, "${mps_home}", "r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)", false);
+  public static final TestParametersCache ourParamCache = new TestParametersCache(IntroduceFinalFieldNoConstructor1_Test.class, "${mps_home}", "r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)", false);
   @Rule
   public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
 
-  public IntroduceFinalFieldNoConstructor_Test() {
+  public IntroduceFinalFieldNoConstructor1_Test() {
     super(ourParamCache);
   }
 
@@ -44,18 +44,18 @@ public class IntroduceFinalFieldNoConstructor_Test extends BaseTransformationTes
     }
 
     public void test_IntroduceFinalField() throws Exception {
-      addNodeById("8599380872151162387");
-      addNodeById("8599380872151162402");
+      addNodeById("8274035912948518149");
+      addNodeById("8274035912948518164");
       IntroduceFieldRefactoring refactoring = new IntroduceFieldRefactoring();
-      refactoring.init(getNodeById("8599380872151162396"), null);
+      refactoring.init(getNodeById("8274035912948518160"), null);
       refactoring.setName("b");
       refactoring.setIsFinal(true);
       refactoring.setFieldInitializationPlace(FieldInitializationPlace.CONSTRUCTOR);
       refactoring.setVisibilityLevel(VisibilityLevel.PRIVATE);
       refactoring.doRefactoring();
       {
-        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("8599380872151162388"));
-        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("8599380872151162403"));
+        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("8274035912948518150"));
+        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), getNodeById("8274035912948518165"));
         Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
       }
     }
