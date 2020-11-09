@@ -18,6 +18,7 @@
   <property name="env.JAVA_HOME" value="${java.home}/.." />
   <property name="jdk.home" value="${env.JAVA_HOME}" />
   <property name="mps.generator.skipUnmodifiedModels" value="false" />
+  <property name="mps.ant.log" value="warn" />
   
   <path id="path.javac2.classpath">
     <fileset dir="${idea_home}/lib">
@@ -16014,7 +16015,7 @@
   
   <target name="generate" depends="declare-mps-tasks">
     <echo message="generating" />
-    <generate strictMode="true" parallelMode="true" parallelThreads="8" useInplaceTransform="false" hideWarnings="false" createStaticRefs="true" fork="true" skipUnmodifiedModels="${mps.generator.skipUnmodifiedModels}">
+    <generate strictMode="true" parallelMode="true" parallelThreads="8" useInplaceTransform="false" hideWarnings="false" createStaticRefs="true" fork="true" skipUnmodifiedModels="${mps.generator.skipUnmodifiedModels}" logLevel="${mps.ant.log}">
       <chunk>
         <module file="${mps_home}/languages/core/stub/Annotations/Annotations.msd" />
         <module file="${mps_home}/languages/core/stub/Ant/Ant.msd" />
