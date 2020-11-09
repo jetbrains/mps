@@ -14813,6 +14813,10 @@
           <property role="TrG5h" value="mps.generator.skipUnmodifiedModels" />
           <property role="1_4tnY" value="false" />
         </node>
+        <node concept="1_4tnW" id="1afxhKwPnSO" role="1y0Vin">
+          <property role="TrG5h" value="mps.ant.log" />
+          <property role="1_4tnY" value="warn" />
+        </node>
         <node concept="raruj" id="3sgnuBpljfk" role="lGtFl" />
       </node>
       <node concept="1y0Vig" id="ahkU72nmc2" role="1hWBAP">
@@ -15896,6 +15900,12 @@
                         </node>
                       </node>
                     </node>
+                  </node>
+                </node>
+                <node concept="2pNUuL" id="1afxhKwPoyw" role="2pNNFR">
+                  <property role="2pNUuO" value="logLevel" />
+                  <node concept="2pMdtt" id="1afxhKwPoyx" role="2pMdts">
+                    <property role="2pMdty" value="${mps.ant.log}" />
                   </node>
                 </node>
                 <node concept="2pNNFK" id="5D0zVz80y2_" role="3o6s8t">
@@ -17309,9 +17319,9 @@
                   </node>
                 </node>
                 <node concept="2pNUuL" id="5niyshhuAwt" role="2pNNFR">
-                  <property role="2pNUuO" value="loglevel" />
+                  <property role="2pNUuO" value="logLevel" />
                   <node concept="2pMdtt" id="5niyshhuAw_" role="2pMdts">
-                    <property role="2pMdty" value="warn" />
+                    <property role="2pMdty" value="${mps.ant.log}" />
                   </node>
                 </node>
                 <node concept="2pNNFK" id="2NPgP3pAJQK" role="3o6s8t">
