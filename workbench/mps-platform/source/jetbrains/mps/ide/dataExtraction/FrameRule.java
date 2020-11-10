@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,6 +31,10 @@ public class FrameRule implements GetDataRule {
   public JFrame getData(@NotNull DataProvider dataProvider) {
     Project project = CommonDataKeys.PROJECT.getData(dataProvider);
     if (project == null) {
+      // XXX this part could be quite dangerous, if anyone uses JFrame for anything but JFrame
+      //     e.g. LocationRule used to obtain MPSProject from JFrame, and ruined concept behind
+      //     IDEA's DataProvider hierarchy poll, by letting an incapable dataProvider to answer inquiries  it
+      //     wasn't supposed to cover.
       return WindowManager.getInstance().findVisibleFrame();
     }
     return WindowManager.getInstance().getFrame(project);

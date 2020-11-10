@@ -23,6 +23,7 @@ import com.intellij.ide.projectView.impl.AbstractProjectViewPane;
 import com.intellij.ide.projectView.impl.ProjectViewState;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
@@ -207,6 +208,13 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
     }
     if (PlatformDataKeys.VIRTUAL_FILE_ARRAY.is(dataId)) {
       return getSelectedFiles();
+    }
+
+    // if project pane doesn't answer its Project, chances are some LocationRule could start looking
+    //    for a project in inappropriate DataProvider, and end up producing MPSLocation solely with MPSProject
+    //    (as it could not obtain node/model/module from any other DataProvider in Project View hierarchy)
+    if (CommonDataKeys.PROJECT.is(dataId)) {
+      return getProject();
     }
 
     //not found
