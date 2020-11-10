@@ -19,6 +19,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
 
+import javax.lang.model.SourceVersion;
+import java.util.ResourceBundle;
+
 /**
  * Name of a model is complicated matter, we distinguish qualified/long and simple name, namespace fraction, and optional stereotype fraction of it.
  * <pre>[ {namespace} '.'] {simple name} [ '@' {stereotype} ]</pre>
@@ -30,6 +33,7 @@ import org.jetbrains.mps.annotations.Immutable;
  */
 @Immutable
 public final class SModelName {
+  // As a lot of SModelName instances are constructed it is ok to always have this chars in memory
   private static final char AT_SIGN = '@';
   private static final char DOT = '.';
 
@@ -60,10 +64,8 @@ public final class SModelName {
    */
   public SModelName(@NotNull String qualifiedCompleteName) {
     final String trimmed = qualifiedCompleteName.trim();
-    String validate = checkModelName(trimmed);
-    if (validate != null) {
-      throw new IllegalArgumentException(validate);
-    }
+    SModelNameCheck check = checkModelNameInt(trimmed);
+    handleValidation(check, trimmed);
     myValue = trimmed;
     myAtIndex = myValue.lastIndexOf(AT_SIGN);
     mySimpleNameBeforeIndex = myValue.lastIndexOf(DOT, myAtIndex == -1 ? myValue.length() : myAtIndex);
@@ -74,11 +76,10 @@ public final class SModelName {
    */
   public SModelName(@Nullable CharSequence namespace, @NotNull CharSequence simpleName, @Nullable CharSequence stereotype) {
     StringBuilder sb = new StringBuilder();
-    String validate = checkModelName(namespace, simpleName, stereotype, sb);
-    if (validate != null) {
-      throw new IllegalArgumentException(validate);
-    }
-    myValue = sb.toString();
+    SModelNameCheck check = checkModelName(namespace, simpleName, stereotype, sb);
+    final String fullName = sb.toString();
+    handleValidation(check, fullName);
+    myValue = fullName;
     myAtIndex = myValue.lastIndexOf(AT_SIGN);
     mySimpleNameBeforeIndex = myValue.lastIndexOf(DOT, myAtIndex == -1 ? myValue.length() : myAtIndex);
   }
@@ -89,20 +90,27 @@ public final class SModelName {
   public SModelName(@NotNull CharSequence qualifiedName, @Nullable CharSequence stereotype) {
     StringBuilder sb = new StringBuilder();
     int simpleNameBeforeIndex = qualifiedName.toString().lastIndexOf(DOT);
-    String validate = checkModelName(
+    SModelNameCheck check = checkModelName(
         simpleNameBeforeIndex == -1 ? "" : qualifiedName.toString().substring(0, simpleNameBeforeIndex),
         qualifiedName.toString().substring(simpleNameBeforeIndex + 1),
         stereotype, sb);
-    if (validate != null) {
-      throw new IllegalArgumentException(validate);
-    }
-    myValue = sb.toString();
+    final String fullName = sb.toString();
+    handleValidation(check, fullName);
+    myValue = fullName;
     myAtIndex = myValue.lastIndexOf(AT_SIGN);
     mySimpleNameBeforeIndex = myValue.lastIndexOf(DOT, myAtIndex == -1 ? myValue.length() : myAtIndex);
   }
 
+  private static void handleValidation(SModelNameCheck check, CharSequence fullName) {
+    if (check != SModelNameCheck.Pass) {
+      ResourceBundle bundle = ResourceBundle.getBundle("jetbrains.mps.project.validation.CoreBundle");
+      throw new IllegalArgumentException(String.format(bundle.getString("smodel.name.check.exception.text"), fullName, check.getProblemDescription()));
+    }
+  }
+
   /**
    * Covers the case when we constructed a {@link SModelReference} with {@link SModelId} only, unaware of actual model name.
+   *
    * @return <code>true</code> iff model name is blank.
    */
   public boolean isEmpty() {
@@ -140,6 +148,7 @@ public final class SModelName {
 
   /**
    * Similar to {@link #getSimpleName()}, just keeps stereotype part, if any
+   *
    * @return name of the model without namespace but with stereotype, if any.
    */
   @NotNull
@@ -190,11 +199,10 @@ public final class SModelName {
   }
 
   /**
-   *
-   * @param newStereotype stereotype for the constructed name, or {@code null} to indicate new name
-   *        shall not specify stereotype (identical to {@link #withoutStereotype()}
+   * @param newStereotype stereotype for the constructed name or {@code null} to indicate
+   *                      that new name should not specify stereotype (identical to {@link #withoutStereotype()}
    * @return model name with {@linkplain #getLongName() qualified name} identical to this model name and with a given stereotype.
-   *         May return same instance if new stereotype is the same as actual.
+   * May return same instance if new stereotype is the same as actual.
    */
   @NotNull
   public SModelName withStereotype(@Nullable CharSequence newStereotype) {
@@ -207,6 +215,7 @@ public final class SModelName {
   /**
    * Construct a name with the identical {@linkplain #getLongName() qualified name}, and without any stereotype.
    * May return {@code this} if there's no stereotype in the actual name ({@code SModelName} is immutable).
+   *
    * @return model name without a stereotype, never {@code null}
    */
   @NotNull
@@ -245,62 +254,140 @@ public final class SModelName {
     return myValue.hashCode();
   }
 
-  private static String checkModelName(final String qualifiedCompleteName) {
-    if (qualifiedCompleteName.isEmpty()) {
-      return null;
+  @NotNull
+  private static SModelNameCheck checkModelNameInt(final String fullName) {
+    if (fullName.isEmpty()) {
+      return SModelNameCheck.Pass;
     }
-    if (qualifiedCompleteName.indexOf(' ') != -1) {
-      return "Name of the model should not contain space characters";
+    if (fullName.indexOf(' ') != -1) {
+      return SModelNameCheck.ContainsSpaces;
     }
-    int atIndex = qualifiedCompleteName.lastIndexOf(AT_SIGN);
-    if (atIndex == 0 || atIndex == qualifiedCompleteName.length() - 1) {
-      return String.format("Stereotype separator '@' shall not appear at the position %d in '%s'", atIndex, qualifiedCompleteName);
+    int atIndex = fullName.lastIndexOf(AT_SIGN);
+    if (atIndex == 0 || atIndex == fullName.length() - 1) {
+      return SModelNameCheck.IllegalAtSignAtBeginOrEnd;
     }
-    int nameLastChar = atIndex > 0 ? atIndex - 1 : qualifiedCompleteName.length() - 1;
-    if (qualifiedCompleteName.charAt(nameLastChar) == DOT) {
-      return "Name of the model shall not end with '.'";
+    int nameLastChar = atIndex > 0 ? atIndex - 1 : fullName.length() - 1;
+    if (fullName.charAt(nameLastChar) == DOT) {
+      return SModelNameCheck.IllegalDotInSimpleNameEnd;
     }
-    return null;
+
+    return SModelNameCheck.Pass;
   }
 
-  private static String checkModelName(@Nullable CharSequence namespace, @NotNull CharSequence simpleName, @Nullable CharSequence stereotype,
-                                       @NotNull final StringBuilder sb) {
+  @NotNull
+  private static SModelNameCheck checkModelName(@Nullable CharSequence namespace, @NotNull CharSequence simpleName, @Nullable CharSequence stereotype,
+                                                @NotNull final StringBuilder sb) {
     if (namespace != null && namespace.length() > 0) {
       sb.append(namespace);
       sb.append(DOT);
       if (namespace.toString().indexOf(AT_SIGN) != -1) {
-        return "Namespace of the model should not contain '@' character";
+        return SModelNameCheck.IllegalAtSignInNamespace;
       }
     }
     sb.append(simpleName);
     if (simpleName.toString().indexOf(DOT) != -1) {
-      return "Simple name of the model should not contain '.' character";
+      return SModelNameCheck.IllegalDotInSimpleName;
     }
     if (simpleName.toString().indexOf(AT_SIGN) != -1) {
-      return "Simple name of the model should not contain '@' character";
+      return SModelNameCheck.IllegalAtSignInSimpleName;
     }
     if (stereotype != null && stereotype.length() > 0) {
       if (simpleName.length() <= 0) {
-        return "Simple name of the model should not be empty";
+        return SModelNameCheck.EmptySimpleName;
       }
       if (stereotype.toString().indexOf(AT_SIGN) != -1) {
-        return "Stereotype of the model should not contain '@' character";
+        return SModelNameCheck.IllegalAtSignInStereotype;
       }
       sb.append(AT_SIGN);
       sb.append(stereotype);
     }
-    return checkModelName(sb.toString());
+    return checkModelNameInt(sb.toString());
   }
 
-  public static String checkModelName(@Nullable CharSequence namespace, @NotNull CharSequence simpleName, @Nullable CharSequence stereotype) {
-    return checkModelName(namespace, simpleName, stereotype, new StringBuilder());
+  /**
+   * Checks if SModelName can be constructed with such input
+   */
+  @NotNull
+  public static SModelNameCheck checkModelName(@Nullable CharSequence namespace, @NotNull CharSequence simpleName, @Nullable CharSequence stereotype) {
+    final SModelNameCheck check = checkModelName(namespace, simpleName, stereotype, new StringBuilder());
+    if (check == SModelNameCheck.Pass) {
+      return checkValidJavaPackage(namespace == null ? simpleName : namespace.toString() + DOT + simpleName.toString());
+    }
+    return check;
   }
 
-  public static String checkModelName(@NotNull CharSequence fullName, @Nullable CharSequence stereotype) {
-    int simpleNameBeforeIndex = fullName.toString().lastIndexOf(DOT);
-    return checkModelName(
-        simpleNameBeforeIndex == -1 ? "" : fullName.toString().substring(0, simpleNameBeforeIndex),
-        fullName.toString().substring(simpleNameBeforeIndex + 1),
+  /**
+   * Checks if SModelName can be constructed with such input
+   */
+  @NotNull
+  public static SModelNameCheck checkModelName(@NotNull CharSequence longName, @Nullable CharSequence stereotype) {
+    int simpleNameBeforeIndex = longName.toString().lastIndexOf(DOT);
+    final SModelNameCheck check = checkModelName(
+        simpleNameBeforeIndex == -1 ? "" : longName.toString().substring(0, simpleNameBeforeIndex),
+        longName.toString().substring(simpleNameBeforeIndex + 1),
         stereotype, new StringBuilder());
+
+    if (check == SModelNameCheck.Pass) {
+      return checkValidJavaPackage(longName);
+    }
+    return check;
+  }
+
+  /**
+   * Checks if long name of the model is valid Java package.
+   * <br>
+   * Extracted to method and used only from user code because it slows down check significantly.
+   * Loading of existing models do not require such check.
+   */
+  @NotNull
+  private static SModelNameCheck checkValidJavaPackage(@NotNull CharSequence longName) {
+    if (!SourceVersion.isName(longName)) {
+      return SModelNameCheck.InvalidJavaPackage;
+    }
+    return SModelNameCheck.Pass;
+  }
+
+  /**
+   * Checks if SModelName can be constructed with such input
+   */
+  @NotNull
+  public static SModelNameCheck checkModelName(final String fullName) {
+    final SModelNameCheck check = checkModelNameInt(fullName);
+    if (check == SModelNameCheck.Pass) {
+      int atIndex = fullName.lastIndexOf(AT_SIGN);
+      return checkValidJavaPackage(fullName.substring(0, atIndex == -1 ? fullName.length() : atIndex));
+    }
+    return check;
+  }
+
+
+  /**
+   * Possible SModelName check results.
+   * <br>
+   * ProblemId allow to extract user friendly messages to properties files and use late in UI.
+   */
+  public enum SModelNameCheck {
+    Pass("smodel.name.check.passed"),
+    IllegalAtSignInNamespace("smodel.name.check.at.sign.in.namespace"),
+    IllegalAtSignInSimpleName("smodel.name.check.at.sign.in.simple.name"),
+    IllegalAtSignInStereotype("smodel.name.check.at.sign.in.stereotype"),
+    IllegalDotInSimpleName("smodel.name.check.dot.in.simple.name"),
+    IllegalDotInSimpleNameEnd("smodel.name.check.dot.in.simple.name.end"),
+    IllegalAtSignAtBeginOrEnd("smodel.name.check.at.sign.at.begin.or.end"),
+    EmptySimpleName("smodel.name.check.simple.name.is.empty"),
+    ContainsSpaces("smodel.name.check.contains.spaces"),
+    InvalidJavaPackage("smodel.name.check.is.invalid.java.package");
+
+    private final String myProblemId;
+
+    SModelNameCheck(String problemId) {
+      this.myProblemId = problemId;
+    }
+
+    @NotNull
+    public String getProblemDescription() {
+      ResourceBundle bundle = ResourceBundle.getBundle("jetbrains.mps.project.validation.CoreBundle");
+      return bundle.getString(myProblemId);
+    }
   }
 }
