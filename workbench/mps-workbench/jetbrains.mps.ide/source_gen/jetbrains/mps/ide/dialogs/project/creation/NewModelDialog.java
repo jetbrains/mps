@@ -21,7 +21,6 @@ import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.language.LanguageAspectSupport;
 import java.util.function.Predicate;
 import org.jetbrains.mps.openapi.model.SModel;
-import javax.lang.model.SourceVersion;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.JComponent;
 
@@ -103,13 +102,10 @@ public class NewModelDialog extends DialogWrapper {
     if (modelName == null) {
       modelName = "";
     }
-    if ((modelName == null || modelName.length() == 0)) {
-      setErrorText(IdeBundle.message("dialogs.model.new.error.empty.name"));
-      return false;
-    }
 
-    if (modelName.lastIndexOf(".") == modelName.length() - 1) {
-      setErrorText(IdeBundle.message("dialogs.model.new.error.empty.short.name"));
+    SModelName.SModelNameCheck check = SModelName.checkModelName(modelName, mySettings.getStereotype());
+    if (check != SModelName.SModelNameCheck.Pass) {
+      setErrorText(check.getProblemDescription());
       return false;
     }
 
@@ -130,11 +126,6 @@ public class NewModelDialog extends DialogWrapper {
       }
     })) {
       setErrorText(IdeBundle.message("dialogs.model.new.error.model.name.already.exists", name, myModule.getModuleName()));
-      return false;
-    }
-
-    if (!(SourceVersion.isName(modelName))) {
-      setErrorText(IdeBundle.message("dialogs.model.new.error.invalid.package"));
       return false;
     }
 

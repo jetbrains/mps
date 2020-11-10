@@ -14,12 +14,20 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import com.intellij.openapi.ui.Messages;
-import org.jetbrains.mps.openapi.module.ModelAccess;
-import org.jetbrains.mps.openapi.module.SModule;
+import com.intellij.openapi.ui.InputValidatorEx;
+import org.jetbrains.annotations.Nullable;
+import java.util.Objects;
+import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import org.jetbrains.mps.openapi.model.EditableSModel;
+import org.jetbrains.mps.openapi.model.SModelName;
+import com.intellij.openapi.ui.Messages;
+import jetbrains.mps.ide.IdeBundle;
+import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.project.StandaloneMPSProject;
+import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.extapi.persistence.FileDataSource;
+import jetbrains.mps.refactoring.Renamer;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/142393105344666009", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
@@ -37,7 +45,7 @@ public class RenameVirtualFolder_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return ((TreeNode) MapSequence.fromMap(_params).get("treeNode")) instanceof NamespaceTextNode && RenameVirtualFolder_Action.this.getProjectPane(_params) != null && !(((NamespaceTextNode) ((TreeNode) MapSequence.fromMap(_params).get("treeNode"))).isFinalName());
+    return ((TreeNode) MapSequence.fromMap(_params).get("treeNode")) instanceof NamespaceTextNode && RenameVirtualFolder_Action.this.getProjectPane(_params) != null && !(((NamespaceTextNode) ((TreeNode) MapSequence.fromMap(_params).get("treeNode"))).isFinalName()) && (((NamespaceTextNode) ((TreeNode) MapSequence.fromMap(_params).get("treeNode"))).hasModulesUnder() || ((NamespaceTextNode) ((TreeNode) MapSequence.fromMap(_params).get("treeNode"))).hasModelsUnder());
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -74,24 +82,97 @@ public class RenameVirtualFolder_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final NamespaceTextNode node = ((NamespaceTextNode) ((TreeNode) MapSequence.fromMap(_params).get("treeNode")));
-    final Wrappers._T<String> newFolder = new Wrappers._T<String>(Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), "Rename virtual folder", "Rename", null, node.getNamespace(), null));
-    if (newFolder.value == null) {
+    final String originalVFolder = node.getNamespace();
+
+    InputValidatorEx inputValidator = new InputValidatorEx() {
+      private String myLastInput;
+      private String myError;
+      @Override
+      public boolean checkInput(String input) {
+        return getErrorText(input) == null;
+      }
+
+      @Override
+      public boolean canClose(String input) {
+        return checkInput(input);
+      }
+
+      @Nullable
+      @Override
+      public String getErrorText(String input) {
+        // Use caching to avoid double check from consequence calls of checkInput & getErrorText 
+        if (Objects.equals(input, myLastInput)) {
+          return myError;
+        }
+        myError = null;
+        myLastInput = input;
+        for (SModel model : ListSequence.fromList(node.getModelsUnder())) {
+          if (model instanceof EditableSModel) {
+            SModelName originalModelName = model.getName();
+            String namespace = RenameVirtualFolder_Action.this.replacePrefix(originalModelName.getNamespace(), originalVFolder, input, _params);
+
+            SModelName.SModelNameCheck check = SModelName.checkModelName(namespace, originalModelName.getSimpleName(), originalModelName.getStereotype());
+            if (check != SModelName.SModelNameCheck.Pass) {
+              myError = check.getProblemDescription();
+              break;
+            }
+          }
+        }
+        return myError;
+      }
+    };
+    boolean renameModels = !(node.hasModulesUnder());
+    final String modifiedVFolder = Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), IdeBundle.message((renameModels ? "dialogs.virtual.package.rename.on.models" : "dialogs.virtual.package.rename.on.modules")), IdeBundle.message("dialogs.virtual.package.rename.title"), null, originalVFolder, (renameModels ? inputValidator : null));
+
+    // Allow passing of an empty string which will result in virtual folder removal 
+    if (modifiedVFolder == null || Objects.equals(originalVFolder, modifiedVFolder)) {
       return;
     }
-    if (newFolder.value.equals("")) {
-      newFolder.value = null;
-    }
-    ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
+
+    final ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
     modelAccess.executeCommandInEDT(new Runnable() {
       public void run() {
-        for (SModule module : ListSequence.fromList(node.getModulesUnder())) {
-          ((StandaloneMPSProject) ((MPSProject) MapSequence.fromMap(_params).get("project"))).setFolderFor(module, newFolder.value);
+        if (node.hasModulesUnder()) {
+          final StandaloneMPSProject mpsProject = (StandaloneMPSProject) ((MPSProject) MapSequence.fromMap(_params).get("project"));
+          for (SModule module : ListSequence.fromList(node.getModulesUnder())) {
+            mpsProject.setFolderFor(module, RenameVirtualFolder_Action.this.replacePrefix(mpsProject.getFolderFor(module), originalVFolder, modifiedVFolder, _params));
+          }
+          RenameVirtualFolder_Action.this.getProjectPane(_params).rebuild();
+        } else if (node.hasModelsUnder()) {
+          ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().saveAll();
+          for (SModel model : ListSequence.fromList(node.getModelsUnder())) {
+            if (model instanceof EditableSModel) {
+              SModelName originalModelName = model.getName();
+              SModelName modifiedModelName = new SModelName(RenameVirtualFolder_Action.this.replacePrefix(originalModelName.getNamespace(), originalVFolder, modifiedVFolder, _params), originalModelName.getSimpleName(), originalModelName.getStereotype());
+              ((EditableSModel) model).rename(modifiedModelName.getValue(), model.getSource() instanceof FileDataSource);
+            }
+          }
+          Renamer.updateModelAndModuleReferences(((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository());
+          ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().saveAll();
         }
-        RenameVirtualFolder_Action.this.getProjectPane(_params).rebuild();
       }
     });
   }
   private ProjectPane getProjectPane(final Map<String, Object> _params) {
     return ProjectPane.getInstance(((MPSProject) MapSequence.fromMap(_params).get("project")));
+  }
+  @Nullable
+  private String replacePrefix(@NotNull final String str, @NotNull final String originalPrefix, @Nullable String modifiedPrefix, final Map<String, Object> _params) {
+    final boolean strMatchPrefix = str.equals(originalPrefix);
+    final boolean removePrefix = modifiedPrefix == null || modifiedPrefix.isBlank();
+
+    if (strMatchPrefix && removePrefix) {
+      return null;
+    }
+
+    if (strMatchPrefix) {
+      return modifiedPrefix;
+    }
+
+    if (!(removePrefix)) {
+      return modifiedPrefix + str.substring(originalPrefix.length());
+    }
+
+    return str.substring(originalPrefix.length() + 1);
   }
 }
