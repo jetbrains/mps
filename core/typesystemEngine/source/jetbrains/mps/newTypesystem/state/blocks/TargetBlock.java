@@ -47,7 +47,7 @@ public class TargetBlock extends Block {
 
   private static String getModelName(SNode originalNode) {
     SModel model = originalNode.getModel();
-    return model == null ? "<unknown model>" : jetbrains.mps.util.SNodeOperations.getModelLongName(model);
+    return model == null ? "<unknown_model>" : jetbrains.mps.util.SNodeOperations.getModelLongName(model);
   }
 
   @Override
