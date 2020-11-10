@@ -244,7 +244,6 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
-        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
@@ -5782,12 +5781,9 @@
       </node>
       <node concept="3clFbS" id="nQ" role="3clF47">
         <uo k="s:originTrace" v="n:1227128029536566030" />
-        <node concept="2VYdi" id="nV" role="lGtFl">
-          <uo k="s:originTrace" v="n:1227128029536566031" />
-        </node>
-        <node concept="3clFbF" id="nW" role="3cqZAp">
+        <node concept="3clFbF" id="nV" role="3cqZAp">
           <uo k="s:originTrace" v="n:1227128029536566039" />
-          <node concept="3clFbT" id="nX" role="3clFbG">
+          <node concept="3clFbT" id="nW" role="3clFbG">
             <property role="3clFbU" value="true" />
             <uo k="s:originTrace" v="n:1227128029536566040" />
           </node>
@@ -5796,7 +5792,7 @@
       <node concept="37vLTG" id="nR" role="3clF46">
         <property role="TrG5h" value="node" />
         <uo k="s:originTrace" v="n:258639336594554644" />
-        <node concept="3uibUv" id="nY" role="1tU5fm">
+        <node concept="3uibUv" id="nX" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
           <uo k="s:originTrace" v="n:258639336594554644" />
         </node>
@@ -5804,7 +5800,7 @@
       <node concept="37vLTG" id="nS" role="3clF46">
         <property role="TrG5h" value="parentNode" />
         <uo k="s:originTrace" v="n:258639336594554644" />
-        <node concept="3uibUv" id="nZ" role="1tU5fm">
+        <node concept="3uibUv" id="nY" role="1tU5fm">
           <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
           <uo k="s:originTrace" v="n:258639336594554644" />
         </node>
@@ -5812,7 +5808,7 @@
       <node concept="37vLTG" id="nT" role="3clF46">
         <property role="TrG5h" value="childConcept" />
         <uo k="s:originTrace" v="n:258639336594554644" />
-        <node concept="3uibUv" id="o0" role="1tU5fm">
+        <node concept="3uibUv" id="nZ" role="1tU5fm">
           <ref role="3uigEE" to="c17a:~SAbstractConcept" resolve="SAbstractConcept" />
           <uo k="s:originTrace" v="n:258639336594554644" />
         </node>
@@ -5820,7 +5816,7 @@
       <node concept="37vLTG" id="nU" role="3clF46">
         <property role="TrG5h" value="link" />
         <uo k="s:originTrace" v="n:258639336594554644" />
-        <node concept="3uibUv" id="o1" role="1tU5fm">
+        <node concept="3uibUv" id="o0" role="1tU5fm">
           <ref role="3uigEE" to="c17a:~SContainmentLink" resolve="SContainmentLink" />
           <uo k="s:originTrace" v="n:258639336594554644" />
         </node>
