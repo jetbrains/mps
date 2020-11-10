@@ -22,6 +22,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModelName;
 import com.intellij.openapi.ui.Messages;
+import jetbrains.mps.ide.IdeBundle;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.project.StandaloneMPSProject;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -120,7 +121,8 @@ public class RenameVirtualFolder_Action extends BaseAction {
         return myError;
       }
     };
-    final String modifiedVFolder = Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), "Rename virtual folder (leave empty to remove)", "Rename", null, originalVFolder, (!(node.hasModulesUnder()) ? inputValidator : null));
+    boolean renameModels = !(node.hasModulesUnder());
+    final String modifiedVFolder = Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), IdeBundle.message((renameModels ? "dialogs.virtual.package.rename.on.models" : "dialogs.virtual.package.rename.on.modules")), IdeBundle.message("dialogs.virtual.package.rename.title"), null, originalVFolder, (renameModels ? inputValidator : null));
 
     // Allow passing of an empty string which will result in virtual folder removal 
     if (modifiedVFolder == null || Objects.equals(originalVFolder, modifiedVFolder)) {

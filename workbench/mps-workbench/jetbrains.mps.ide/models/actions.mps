@@ -10852,6 +10852,22 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="rjfYhX6817" role="3cqZAp">
+          <node concept="3cpWsn" id="rjfYhX6818" role="3cpWs9">
+            <property role="TrG5h" value="renameModels" />
+            <node concept="10P_77" id="rjfYhX2TG3" role="1tU5fm" />
+            <node concept="3fqX7Q" id="rjfYhX6819" role="33vP2m">
+              <node concept="2OqwBi" id="rjfYhX681a" role="3fr31v">
+                <node concept="37vLTw" id="rjfYhX681b" role="2Oq$k0">
+                  <ref role="3cqZAo" node="7TSspuy9B5" resolve="node" />
+                </node>
+                <node concept="liA8E" id="rjfYhX681c" role="2OqNvi">
+                  <ref role="37wK5l" to="kxvg:~NamespaceTextNode.hasModulesUnder()" resolve="hasModulesUnder" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="7TSspuy9AG" role="3cqZAp">
           <node concept="3cpWsn" id="7TSspuy9AH" role="3cpWs9">
             <property role="TrG5h" value="modifiedVFolder" />
@@ -10865,26 +10881,35 @@
                   <ref role="2WH_rO" node="5iOAkPG8zMo" resolve="ideaProject" />
                 </node>
               </node>
-              <node concept="Xl_RD" id="5iOAkPG8Cfn" role="37wK5m">
-                <property role="Xl_RC" value="Rename virtual folder (leave empty to remove)" />
+              <node concept="2YIFZM" id="rjfYhX6B4e" role="37wK5m">
+                <ref role="1Pybhc" to="3a50:~IdeBundle" resolve="IdeBundle" />
+                <ref role="37wK5l" to="3a50:~IdeBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
+                <node concept="3K4zz7" id="rjfYhX6EeN" role="37wK5m">
+                  <node concept="37vLTw" id="rjfYhX6HwP" role="3K4Cdx">
+                    <ref role="3cqZAo" node="rjfYhX6818" resolve="renameModels" />
+                  </node>
+                  <node concept="Xl_RD" id="rjfYhX6B4f" role="3K4GZi">
+                    <property role="Xl_RC" value="dialogs.virtual.package.rename.on.modules" />
+                  </node>
+                  <node concept="Xl_RD" id="rjfYhX6I_o" role="3K4E3e">
+                    <property role="Xl_RC" value="dialogs.virtual.package.rename.on.models" />
+                  </node>
+                </node>
               </node>
-              <node concept="Xl_RD" id="5iOAkPG8Cfo" role="37wK5m">
-                <property role="Xl_RC" value="Rename" />
+              <node concept="2YIFZM" id="rjfYhX6zdS" role="37wK5m">
+                <ref role="37wK5l" to="3a50:~IdeBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
+                <ref role="1Pybhc" to="3a50:~IdeBundle" resolve="IdeBundle" />
+                <node concept="Xl_RD" id="rjfYhX6zF7" role="37wK5m">
+                  <property role="Xl_RC" value="dialogs.virtual.package.rename.title" />
+                </node>
               </node>
               <node concept="10Nm6u" id="5iOAkPG8Cfp" role="37wK5m" />
               <node concept="37vLTw" id="5O8SrzoRoWX" role="37wK5m">
                 <ref role="3cqZAo" node="2O9dq_yoBzL" resolve="originalVFolder" />
               </node>
               <node concept="3K4zz7" id="5CNrFW$VyEW" role="37wK5m">
-                <node concept="3fqX7Q" id="5CNrFW$VDWF" role="3K4Cdx">
-                  <node concept="2OqwBi" id="5CNrFW$VDWG" role="3fr31v">
-                    <node concept="37vLTw" id="5CNrFW$VDWH" role="2Oq$k0">
-                      <ref role="3cqZAo" node="7TSspuy9B5" resolve="node" />
-                    </node>
-                    <node concept="liA8E" id="5CNrFW$VDWI" role="2OqNvi">
-                      <ref role="37wK5l" to="kxvg:~NamespaceTextNode.hasModulesUnder()" resolve="hasModulesUnder" />
-                    </node>
-                  </node>
+                <node concept="37vLTw" id="rjfYhX681d" role="3K4Cdx">
+                  <ref role="3cqZAo" node="rjfYhX6818" resolve="renameModels" />
                 </node>
                 <node concept="37vLTw" id="5CNrFW$VE0C" role="3K4E3e">
                   <ref role="3cqZAo" node="5CNrFW$Vy11" resolve="inputValidator" />
