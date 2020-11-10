@@ -38,6 +38,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -241,20 +242,29 @@ public class SModelTreeNode extends MPSTreeNode implements TreeElement {
     myChildModelTreeNodes.add(model);
   }
 
+  /**
+   * @return all direct (one level) sub models
+   */
   public List<SModelTreeNode> getSubfolderSModelTreeNodes() {
     return Collections.unmodifiableList(myChildModelTreeNodes);
   }
 
+  /**
+   * @return all (full depth) sub models
+   */
   public List<SModelTreeNode> getAllSubfolderSModelTreeNodes() {
-    List<SModelTreeNode> result = new ArrayList<>();
-    if (myChildModelTreeNodes.isEmpty()) {
-      result.add(this);
-    } else {
-      for (SModelTreeNode treeNode : myChildModelTreeNodes) {
-        result.addAll(treeNode.getAllSubfolderSModelTreeNodes());
-      }
+    List<SModelTreeNode> result = new LinkedList<>();
+    for (SModelTreeNode treeNode : myChildModelTreeNodes) {
+      treeNode.collectAllSubfolderSModelTreeNodes(result);
     }
     return result;
+  }
+
+  private void collectAllSubfolderSModelTreeNodes(List<SModelTreeNode> result) {
+    result.add(this);
+    for (SModelTreeNode treeNode : myChildModelTreeNodes) {
+      treeNode.collectAllSubfolderSModelTreeNodes(result);
+    }
   }
 
   @Override
