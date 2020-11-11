@@ -51,7 +51,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModelReference" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeId" />
-    <classNode extendsClassName="com.intellij.openapi.components.AbstractProjectComponent" />
+    <classNode extendsClassName="com.intellij.openapi.Disposable" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.changesmanager.tree.FeatureWithParent">
     <classNode dependClassName="java.lang.Object" />
@@ -204,7 +204,7 @@
     <classNode dependClassName="jetbrains.mps.vcs.changesmanager.tree.TreeNodeFeatureExtractor" />
     <classNode dependClassName="jetbrains.mps.vcs.changesmanager.tree.UsagesTreeFeatureExtractor" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode extendsClassName="com.intellij.openapi.components.ProjectComponent" />
+    <classNode extendsClassName="com.intellij.openapi.Disposable" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.changesmanager.tree.TreeNodeFeatureExtractor">
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />

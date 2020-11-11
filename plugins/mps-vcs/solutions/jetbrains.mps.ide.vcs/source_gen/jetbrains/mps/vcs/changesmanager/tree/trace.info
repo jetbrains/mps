@@ -399,175 +399,183 @@
   </root>
   <root nodeRef="r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)/3751911615136892572">
     <file name="FeatureForestMapSupport.java">
-      <node id="5166120419669986248" at="42,0,43,0" concept="5" trace="myMap" />
-      <node id="5166120419669986252" at="43,0,44,0" concept="5" trace="myCurrentDifferenceRegistry" />
-      <node id="5166120419669986256" at="44,0,45,0" concept="5" trace="myListener" />
-      <node id="5166120419670004414" at="46,104,47,19" concept="16" />
-      <node id="5166120419669986267" at="47,19,48,60" concept="4" />
-      <node id="5166120419669986271" at="48,60,49,34" concept="4" />
-      <node id="5166120419669986275" at="49,34,50,53" concept="4" />
-      <node id="5166120419669986674" at="54,31,55,66" concept="12" />
-      <node id="5166120419669986286" at="55,66,56,72" concept="4" />
-      <node id="5166120419669986294" at="60,34,61,75" concept="4" />
-      <node id="5166120419669986302" at="65,35,66,17" concept="11" />
-      <node id="5166120419669986312" at="72,84,73,55" concept="10" />
-      <node id="5166120419669986317" at="73,55,74,102" concept="10" />
-      <node id="5166120419669986330" at="75,42,76,86" concept="10" />
-      <node id="5166120419669986335" at="76,86,77,71" concept="4" />
-      <node id="5166120419669986346" at="79,45,80,55" concept="4" />
-      <node id="5166120419669986357" at="82,46,83,59" concept="10" />
-      <node id="5166120419669986364" at="83,59,84,91" concept="10" />
-      <node id="5166120419669986369" at="84,91,85,91" concept="4" />
-      <node id="5166120419669986382" at="87,47,88,61" concept="10" />
-      <node id="5166120419669986389" at="88,61,89,91" concept="10" />
-      <node id="5166120419669986394" at="89,91,90,92" concept="4" />
-      <node id="5166120419669986407" at="92,44,93,55" concept="10" />
-      <node id="5166120419669986414" at="93,55,94,50" concept="10" />
-      <node id="5166120419669986418" at="94,50,95,39" concept="10" />
-      <node id="5166120419669986422" at="95,39,96,35" concept="10" />
-      <node id="5166120419669986432" at="97,25,98,78" concept="10" />
-      <node id="5166120419669986437" at="98,78,99,117" concept="4" />
-      <node id="5166120419669986449" at="100,14,101,68" concept="10" />
-      <node id="5166120419669986474" at="103,42,104,107" concept="10" />
-      <node id="5166120419669986482" at="104,107,105,74" concept="4" />
-      <node id="5166120419669986687" at="110,45,111,37" concept="12" />
-      <node id="5166120419669986493" at="111,37,112,141" concept="4" />
-      <node id="5166120419669986523" at="114,173,115,55" concept="4" />
-      <node id="5166120419669986527" at="116,5,117,27" concept="11" />
-      <node id="5166120419669986536" at="121,0,122,0" concept="5" trace="myFFMap" />
-      <node id="5166120419669986545" at="123,58,124,20" concept="4" />
-      <node id="5166120419669986557" at="128,64,129,52" concept="10" />
-      <node id="5166120419669986562" at="129,52,130,36" concept="4" />
-      <node id="5166120419669986566" at="130,36,131,87" concept="4" />
-      <node id="5166120419669986578" at="134,69,135,111" concept="11" />
-      <node id="5166120419669986596" at="140,30,141,15" concept="11" />
-      <node id="5166120419669986599" at="142,7,143,55" concept="10" />
-      <node id="5166120419669986607" at="144,42,145,54" concept="10" />
-      <node id="5166120419669986612" at="145,54,146,36" concept="4" />
-      <node id="5166120419669986615" at="146,36,147,103" concept="4" />
-      <node id="5166120419669986628" at="148,7,149,67" concept="4" />
-      <node id="5166120419669986643" at="154,30,155,15" concept="11" />
-      <node id="5166120419669986646" at="156,7,157,67" concept="10" />
-      <node id="5166120419669986651" at="157,67,158,65" concept="4" />
-      <node id="3713355112159027493" at="158,65,159,33" concept="4" />
-      <node id="5166120419669986656" at="159,33,160,52" concept="4" />
-      <node id="5166120419669986668" at="164,60,165,56" concept="4" />
-      <node id="5166120419669986505" at="113,10,116,5" concept="8" />
-      <node id="5166120419669986540" at="123,0,126,0" concept="3" trace="FeatureHierarchyListener#(Ljetbrains/mps/vcs/changesmanager/tree/FeaturesFromVcs;)V" />
-      <node id="5166120419669986573" at="134,0,137,0" concept="9" trace="changeAdded0#(Ljetbrains/mps/vcs/diff/changes/ModelChange;)Ljava/util/List;" />
-      <node id="5166120419669986594" at="139,66,142,7" concept="8" />
-      <node id="5166120419669986641" at="153,68,156,7" concept="8" />
-      <node id="5166120419669986291" at="59,0,63,0" concept="9" trace="disposeComponent#()V" />
-      <node id="5166120419669986299" at="64,0,68,0" concept="9" trace="getMap#()Ljetbrains/mps/vcs/changesmanager/tree/FeaturesFromVcs;" />
-      <node id="5166120419669986467" at="102,43,106,11" concept="8" />
-      <node id="5166120419669986662" at="163,0,167,0" concept="9" trace="changeRemoved#(Ljetbrains/mps/vcs/diff/changes/ModelChange;)V" />
-      <node id="5166120419669986283" at="53,0,58,0" concept="9" trace="initComponent#()V" />
-      <node id="5166120419669986603" at="143,55,148,7" concept="7" />
-      <node id="5166120419669986260" at="46,0,52,0" concept="3" trace="FeatureForestMapSupport#(Lcom/intellij/openapi/project/Project;Ljetbrains/mps/vcs/changesmanager/CurrentDifferenceRegistry;)V" />
-      <node id="5166120419669986454" at="101,68,107,9" concept="6" />
-      <node id="5166120419669986550" at="127,0,133,0" concept="9" trace="changeAdded#(Ljetbrains/mps/vcs/diff/changes/ModelChange;)V" />
-      <node id="5166120419669986487" at="109,10,116,5" concept="8" />
-      <node id="5166120419669986446" at="100,12,108,7" concept="1" />
-      <node id="5166120419669986634" at="152,0,162,0" concept="9" trace="changesRemoved#(Ljava/util/List;)V" />
-      <node id="5166120419669986425" at="96,35,108,7" concept="8" />
-      <node id="5166120419669986587" at="138,0,151,0" concept="9" trace="changesAdded#(Ljava/util/List;)V" />
-      <node id="5166120419669986400" at="91,10,116,5" concept="8" />
-      <node id="5166120419669986375" at="86,10,116,5" concept="8" />
-      <node id="5166120419669986350" at="81,10,116,5" concept="8" />
-      <node id="5166120419669986340" at="78,10,116,5" concept="8" />
-      <node id="5166120419669986323" at="74,102,116,5" concept="8" />
-      <node id="5166120419669986306" at="72,0,119,0" concept="15" trace="getFeaturesForChange#(Ljetbrains/mps/vcs/diff/changes/ModelChange;)Ljava/util/stream/Stream;" />
-      <scope id="5166120419669986293" at="60,34,61,75" />
-      <scope id="5166120419669986301" at="65,35,66,17" />
-      <scope id="5166120419669986345" at="79,45,80,55" />
-      <scope id="5166120419669986522" at="114,173,115,55" />
-      <scope id="5166120419669986544" at="123,58,124,20" />
-      <scope id="5166120419669986577" at="134,69,135,111" />
-      <scope id="5166120419669986597" at="140,30,141,15" />
-      <scope id="5166120419669986644" at="154,30,155,15" />
-      <scope id="5166120419669986667" at="164,60,165,56" />
-      <scope id="5166120419669986285" at="54,31,56,72" />
-      <scope id="5166120419669986328" at="75,42,77,71">
+      <node id="8408350477080835427" at="42,0,43,0" concept="5" trace="myProject" />
+      <node id="5166120419669986248" at="43,0,44,0" concept="5" trace="myMap" />
+      <node id="5166120419669986252" at="44,0,45,0" concept="5" trace="myCurrentDifferenceRegistry" />
+      <node id="5166120419669986256" at="45,0,46,0" concept="5" trace="myListener" />
+      <node id="8408350477080846386" at="47,51,48,24" concept="4" />
+      <node id="5166120419669986267" at="48,24,49,81" concept="4" />
+      <node id="5166120419669986271" at="49,81,50,34" concept="4" />
+      <node id="5166120419669986275" at="50,34,51,53" concept="4" />
+      <node id="5166120419669986674" at="51,53,52,66" concept="12" />
+      <node id="5166120419669986286" at="52,66,53,72" concept="4" />
+      <node id="8408350477080877380" at="56,74,57,102" concept="12" />
+      <node id="8408350477080885940" at="57,102,58,115" concept="12" />
+      <node id="8408350477080895365" at="58,115,59,133" concept="12" />
+      <node id="8408350477080905511" at="59,133,60,124" concept="12" />
+      <node id="8408350477080916569" at="60,124,61,114" concept="12" />
+      <node id="8408350477080685663" at="61,114,62,65" concept="11" />
+      <node id="5166120419669986294" at="67,25,68,75" concept="4" />
+      <node id="5166120419669986302" at="72,35,73,17" concept="11" />
+      <node id="5166120419669986312" at="79,84,80,55" concept="10" />
+      <node id="5166120419669986317" at="80,55,81,102" concept="10" />
+      <node id="5166120419669986330" at="82,42,83,86" concept="10" />
+      <node id="5166120419669986335" at="83,86,84,71" concept="4" />
+      <node id="5166120419669986346" at="86,45,87,55" concept="4" />
+      <node id="5166120419669986357" at="89,46,90,59" concept="10" />
+      <node id="5166120419669986364" at="90,59,91,91" concept="10" />
+      <node id="5166120419669986369" at="91,91,92,91" concept="4" />
+      <node id="5166120419669986382" at="94,47,95,61" concept="10" />
+      <node id="5166120419669986389" at="95,61,96,91" concept="10" />
+      <node id="5166120419669986394" at="96,91,97,92" concept="4" />
+      <node id="5166120419669986407" at="99,44,100,55" concept="10" />
+      <node id="5166120419669986414" at="100,55,101,50" concept="10" />
+      <node id="5166120419669986418" at="101,50,102,39" concept="10" />
+      <node id="5166120419669986422" at="102,39,103,35" concept="10" />
+      <node id="5166120419669986432" at="104,25,105,78" concept="10" />
+      <node id="5166120419669986437" at="105,78,106,117" concept="4" />
+      <node id="5166120419669986449" at="107,14,108,68" concept="10" />
+      <node id="5166120419669986474" at="110,42,111,107" concept="10" />
+      <node id="5166120419669986482" at="111,107,112,74" concept="4" />
+      <node id="5166120419669986687" at="117,45,118,37" concept="12" />
+      <node id="5166120419669986493" at="118,37,119,141" concept="4" />
+      <node id="5166120419669986523" at="121,173,122,55" concept="4" />
+      <node id="5166120419669986527" at="123,5,124,27" concept="11" />
+      <node id="5166120419669986536" at="128,0,129,0" concept="5" trace="myFFMap" />
+      <node id="5166120419669986545" at="130,58,131,20" concept="4" />
+      <node id="5166120419669986557" at="135,64,136,52" concept="10" />
+      <node id="5166120419669986562" at="136,52,137,36" concept="4" />
+      <node id="5166120419669986566" at="137,36,138,87" concept="4" />
+      <node id="5166120419669986578" at="141,69,142,111" concept="11" />
+      <node id="5166120419669986596" at="147,30,148,15" concept="11" />
+      <node id="5166120419669986599" at="149,7,150,55" concept="10" />
+      <node id="5166120419669986607" at="151,42,152,54" concept="10" />
+      <node id="5166120419669986612" at="152,54,153,36" concept="4" />
+      <node id="5166120419669986615" at="153,36,154,103" concept="4" />
+      <node id="5166120419669986628" at="155,7,156,67" concept="4" />
+      <node id="5166120419669986643" at="161,30,162,15" concept="11" />
+      <node id="5166120419669986646" at="163,7,164,67" concept="10" />
+      <node id="5166120419669986651" at="164,67,165,65" concept="4" />
+      <node id="3713355112159027493" at="165,65,166,33" concept="4" />
+      <node id="5166120419669986656" at="166,33,167,52" concept="4" />
+      <node id="5166120419669986668" at="171,60,172,56" concept="4" />
+      <node id="5166120419669986505" at="120,10,123,5" concept="8" />
+      <node id="5166120419669986540" at="130,0,133,0" concept="3" trace="FeatureHierarchyListener#(Ljetbrains/mps/vcs/changesmanager/tree/FeaturesFromVcs;)V" />
+      <node id="5166120419669986573" at="141,0,144,0" concept="9" trace="changeAdded0#(Ljetbrains/mps/vcs/diff/changes/ModelChange;)Ljava/util/List;" />
+      <node id="5166120419669986594" at="146,66,149,7" concept="8" />
+      <node id="5166120419669986641" at="160,68,163,7" concept="8" />
+      <node id="5166120419669986291" at="66,0,70,0" concept="9" trace="dispose#()V" />
+      <node id="5166120419669986299" at="71,0,75,0" concept="9" trace="getMap#()Ljetbrains/mps/vcs/changesmanager/tree/FeaturesFromVcs;" />
+      <node id="5166120419669986467" at="109,43,113,11" concept="8" />
+      <node id="5166120419669986662" at="170,0,174,0" concept="9" trace="changeRemoved#(Ljetbrains/mps/vcs/diff/changes/ModelChange;)V" />
+      <node id="5166120419669986603" at="150,55,155,7" concept="7" />
+      <node id="5166120419669986454" at="108,68,114,9" concept="6" />
+      <node id="5166120419669986550" at="134,0,140,0" concept="9" trace="changeAdded#(Ljetbrains/mps/vcs/diff/changes/ModelChange;)V" />
+      <node id="5166120419669986487" at="116,10,123,5" concept="8" />
+      <node id="5166120419669986260" at="47,0,55,0" concept="3" trace="FeatureForestMapSupport#(Lcom/intellij/openapi/project/Project;)V" />
+      <node id="8408350477080727268" at="56,0,64,0" concept="15" trace="getInstance#(Lcom/intellij/openapi/project/Project;)Ljetbrains/mps/vcs/changesmanager/tree/FeatureForestMapSupport;" />
+      <node id="5166120419669986446" at="107,12,115,7" concept="1" />
+      <node id="5166120419669986634" at="159,0,169,0" concept="9" trace="changesRemoved#(Ljava/util/List;)V" />
+      <node id="5166120419669986425" at="103,35,115,7" concept="8" />
+      <node id="5166120419669986587" at="145,0,158,0" concept="9" trace="changesAdded#(Ljava/util/List;)V" />
+      <node id="5166120419669986400" at="98,10,123,5" concept="8" />
+      <node id="5166120419669986375" at="93,10,123,5" concept="8" />
+      <node id="5166120419669986350" at="88,10,123,5" concept="8" />
+      <node id="5166120419669986340" at="85,10,123,5" concept="8" />
+      <node id="5166120419669986323" at="81,102,123,5" concept="8" />
+      <node id="5166120419669986306" at="79,0,126,0" concept="15" trace="getFeaturesForChange#(Ljetbrains/mps/vcs/diff/changes/ModelChange;)Ljava/util/stream/Stream;" />
+      <scope id="5166120419669986293" at="67,25,68,75" />
+      <scope id="5166120419669986301" at="72,35,73,17" />
+      <scope id="5166120419669986345" at="86,45,87,55" />
+      <scope id="5166120419669986522" at="121,173,122,55" />
+      <scope id="5166120419669986544" at="130,58,131,20" />
+      <scope id="5166120419669986577" at="141,69,142,111" />
+      <scope id="5166120419669986597" at="147,30,148,15" />
+      <scope id="5166120419669986644" at="161,30,162,15" />
+      <scope id="5166120419669986667" at="171,60,172,56" />
+      <scope id="5166120419669986328" at="82,42,84,71">
         <var name="nodePointer" id="5166120419669986329" />
       </scope>
-      <scope id="5166120419669986430" at="97,25,99,117">
+      <scope id="5166120419669986430" at="104,25,106,117">
         <var name="nodePointer" id="5166120419669986431" />
       </scope>
-      <scope id="5166120419669986472" at="103,42,105,74">
+      <scope id="5166120419669986472" at="110,42,112,74">
         <var name="nodePointer" id="5166120419669986473" />
       </scope>
-      <scope id="5166120419669986492" at="110,45,112,141" />
-      <scope id="5166120419669986355" at="82,46,85,91">
+      <scope id="5166120419669986492" at="117,45,119,141" />
+      <scope id="5166120419669986355" at="89,46,92,91">
         <var name="nodePointer" id="5166120419669986363" />
         <var name="spc" id="5166120419669986356" />
       </scope>
-      <scope id="5166120419669986380" at="87,47,90,92">
+      <scope id="5166120419669986380" at="94,47,97,92">
         <var name="nodePointer" id="5166120419669986388" />
         <var name="src" id="5166120419669986381" />
       </scope>
-      <scope id="5166120419669986540" at="123,0,126,0">
+      <scope id="5166120419669986540" at="130,0,133,0">
         <var name="map" id="5166120419669986542" />
       </scope>
-      <scope id="5166120419669986555" at="128,64,131,87">
+      <scope id="5166120419669986555" at="135,64,138,87">
         <var name="features" id="5166120419669986556" />
       </scope>
-      <scope id="5166120419669986573" at="134,0,137,0">
+      <scope id="5166120419669986573" at="141,0,144,0">
         <var name="change" id="5166120419669986574" />
       </scope>
-      <scope id="5166120419669986605" at="144,42,147,103">
+      <scope id="5166120419669986605" at="151,42,154,103">
         <var name="features" id="5166120419669986606" />
       </scope>
-      <scope id="5166120419669986266" at="46,104,50,53" />
-      <scope id="5166120419669986291" at="59,0,63,0" />
-      <scope id="5166120419669986299" at="64,0,68,0" />
-      <scope id="5166120419669986466" at="102,43,106,11" />
-      <scope id="5166120419669986662" at="163,0,167,0">
+      <scope id="5166120419669986291" at="66,0,70,0" />
+      <scope id="5166120419669986299" at="71,0,75,0" />
+      <scope id="5166120419669986466" at="109,43,113,11" />
+      <scope id="5166120419669986662" at="170,0,174,0">
         <var name="change" id="5166120419669986664" />
       </scope>
-      <scope id="5166120419669986283" at="53,0,58,0" />
-      <scope id="5166120419669986603" at="143,55,148,7">
+      <scope id="5166120419669986603" at="150,55,155,7">
         <var name="change" id="5166120419669986624" />
       </scope>
-      <scope id="5166120419669986260" at="46,0,52,0">
-        <var name="currentDifferenceRegistry" id="5166120419669986264" />
-        <var name="project" id="5166120419669986262" />
-      </scope>
-      <scope id="5166120419669986454" at="101,68,107,9">
+      <scope id="5166120419669986266" at="47,51,53,72" />
+      <scope id="8408350477080652151" at="56,74,62,65" />
+      <scope id="5166120419669986454" at="108,68,114,9">
         <var name="i" id="5166120419669986455" />
       </scope>
-      <scope id="5166120419669986550" at="127,0,133,0">
+      <scope id="5166120419669986550" at="134,0,140,0">
         <var name="change" id="5166120419669986552" />
       </scope>
-      <scope id="5166120419669986447" at="100,14,107,9">
+      <scope id="5166120419669986447" at="107,14,114,9">
         <var name="changeChildren" id="5166120419669986448" />
       </scope>
-      <scope id="5166120419669986640" at="153,68,160,52">
+      <scope id="5166120419669986640" at="160,68,167,52">
         <var name="featuresToRemove" id="5166120419669986645" />
       </scope>
-      <scope id="5166120419669986593" at="139,66,149,67">
+      <scope id="5166120419669986260" at="47,0,55,0">
+        <var name="project" id="5166120419669986262" />
+      </scope>
+      <scope id="8408350477080727268" at="56,0,64,0">
+        <var name="ideaProject" id="8408350477080667402" />
+      </scope>
+      <scope id="5166120419669986593" at="146,66,156,67">
         <var name="featureSet" id="5166120419669986598" />
       </scope>
-      <scope id="5166120419669986634" at="152,0,162,0">
+      <scope id="5166120419669986634" at="159,0,169,0">
         <var name="changes" id="5166120419669986636" />
       </scope>
-      <scope id="5166120419669986587" at="138,0,151,0">
+      <scope id="5166120419669986587" at="145,0,158,0">
         <var name="changes" id="5166120419669986589" />
       </scope>
-      <scope id="5166120419669986405" at="92,44,108,7">
+      <scope id="5166120419669986405" at="99,44,115,7">
         <var name="begin" id="5166120419669986417" />
         <var name="end" id="5166120419669986421" />
         <var name="ngc" id="5166120419669986406" />
         <var name="parentId" id="5166120419669986413" />
       </scope>
-      <scope id="5166120419669986310" at="72,84,117,27">
+      <scope id="5166120419669986310" at="79,84,124,27">
         <var name="builder" id="5166120419669986311" />
         <var name="modelReference" id="5166120419669986316" />
       </scope>
-      <scope id="5166120419669986306" at="72,0,119,0">
+      <scope id="5166120419669986306" at="79,0,126,0">
         <var name="change" id="5166120419669986307" />
       </scope>
-      <unit id="5166120419669986533" at="120,0,168,0" name="jetbrains.mps.vcs.changesmanager.tree.FeatureForestMapSupport$FeatureHierarchyListener" />
-      <unit id="3751911615136892572" at="40,0,169,0" name="jetbrains.mps.vcs.changesmanager.tree.FeatureForestMapSupport" />
+      <unit id="5166120419669986533" at="127,0,175,0" name="jetbrains.mps.vcs.changesmanager.tree.FeatureForestMapSupport$FeatureHierarchyListener" />
+      <unit id="3751911615136892572" at="40,0,176,0" name="jetbrains.mps.vcs.changesmanager.tree.FeatureForestMapSupport" />
     </file>
   </root>
   <root nodeRef="r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)/4106919528499190854">
@@ -629,69 +637,75 @@
   </root>
   <root nodeRef="r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)/4106919528499268085">
     <file name="TreeHighlighterFactory.java">
-      <node id="4106919528499284100" at="19,0,20,0" concept="5" trace="myRegistry" />
-      <node id="4106919528499289309" at="20,0,21,0" concept="5" trace="myFeatureForestMapSupport" />
-      <node id="1832337102097217750" at="21,0,22,0" concept="5" trace="myQueue" />
-      <node id="4106919528499284866" at="23,162,24,26" concept="4" />
-      <node id="4106919528499289414" at="24,26,25,56" concept="4" />
-      <node id="6976752752550746712" at="25,56,26,149" concept="12" />
-      <node id="1993277906481139049" at="26,149,27,129" concept="12" />
-      <node id="6976752752550739628" at="27,129,28,34" concept="4" />
-      <node id="1993277906484028418" at="28,34,29,159" concept="12" />
-      <node id="1993277906484056181" at="29,159,30,111" concept="12" />
-      <node id="4822248762180316387" at="33,73,34,66" concept="11" />
-      <node id="8932910012466116475" at="38,31,39,31" concept="4" />
-      <node id="6100916785563666248" at="39,31,40,129" concept="12" />
-      <node id="6100916785563548553" at="40,129,41,30" concept="4" />
-      <node id="391123256063776833" at="44,51,45,39" concept="10" />
-      <node id="391123256063776853" at="46,38,47,90" concept="4" />
-      <node id="285677603355154261" at="48,44,49,83" concept="4" />
-      <node id="6426754448685243974" at="50,55,51,82" concept="4" />
-      <node id="391123256063776828" at="53,30,54,25" concept="4" />
-      <node id="8541476815201199792" at="61,106,62,110" concept="11" />
-      <node id="200115155569777445" at="68,142,69,131" concept="11" />
-      <node id="4822248762180312804" at="33,0,36,0" concept="15" trace="getInstance#(Lcom/intellij/openapi/project/Project;)Ljetbrains/mps/vcs/changesmanager/tree/TreeHighlighterFactory;" />
-      <node id="391123256063776859" at="52,5,55,5" concept="8" />
-      <node id="8541476815201097941" at="61,0,64,0" concept="9" trace="instantiateHighlighter#(Ljetbrains/mps/ide/ui/tree/MPSTree;Ljetbrains/mps/vcs/changesmanager/tree/TreeNodeFeatureExtractor;)Ljetbrains/mps/vcs/changesmanager/tree/TreeHighlighter;" />
-      <node id="200115155569777437" at="68,0,71,0" concept="9" trace="instantiateHighlighter#(Ljetbrains/mps/ide/ui/tree/MPSTree;Ljetbrains/mps/vcs/changesmanager/tree/TreeNodeFeatureExtractor;Z)Ljetbrains/mps/vcs/changesmanager/tree/TreeHighlighter;" />
-      <node id="1993277906481153504" at="37,0,43,0" concept="9" trace="projectClosed#()V" />
-      <node id="391123256063762064" at="45,39,52,5" concept="8" />
-      <node id="4106919528499268087" at="23,0,32,0" concept="3" trace="TreeHighlighterFactory#(Lcom/intellij/openapi/project/Project;Ljetbrains/mps/vcs/changesmanager/CurrentDifferenceRegistry;Ljetbrains/mps/vcs/changesmanager/tree/FeatureForestMapSupport;)V" />
-      <node id="391123256063746407" at="44,0,57,0" concept="9" trace="highlightTreeIfNeeded#(Ljetbrains/mps/ide/ui/tree/MPSTree;)V" />
-      <scope id="4822248762180312807" at="33,73,34,66" />
-      <scope id="391123256063762066" at="46,38,47,90" />
-      <scope id="285677603355153489" at="48,44,49,83" />
-      <scope id="6426754448685223791" at="50,55,51,82" />
-      <scope id="391123256063776860" at="53,30,54,25" />
-      <scope id="8541476815201097945" at="61,106,62,110" />
-      <scope id="200115155569777444" at="68,142,69,131" />
-      <scope id="4822248762180312804" at="33,0,36,0">
+      <node id="8408350477080746274" at="19,0,20,0" concept="5" trace="myProject" />
+      <node id="1832337102097217750" at="20,0,21,0" concept="5" trace="myQueue" />
+      <node id="8408350477080747309" at="22,59,23,24" concept="4" />
+      <node id="6976752752550746712" at="23,24,24,149" concept="12" />
+      <node id="1993277906481139049" at="24,149,25,129" concept="12" />
+      <node id="6976752752550739628" at="25,129,26,34" concept="4" />
+      <node id="1993277906484028418" at="26,34,27,159" concept="12" />
+      <node id="1993277906484056181" at="27,159,28,111" concept="12" />
+      <node id="4822248762180316387" at="31,73,32,64" concept="11" />
+      <node id="8932910012466116475" at="36,25,37,31" concept="4" />
+      <node id="6100916785563666248" at="37,31,38,129" concept="12" />
+      <node id="6100916785563548553" at="38,129,39,30" concept="4" />
+      <node id="391123256063776833" at="42,51,43,39" concept="10" />
+      <node id="391123256063776853" at="44,38,45,90" concept="4" />
+      <node id="285677603355154261" at="46,44,47,83" concept="4" />
+      <node id="6426754448685243974" at="48,55,49,82" concept="4" />
+      <node id="391123256063776828" at="51,30,52,25" concept="4" />
+      <node id="8408350477080752953" at="59,106,60,90" concept="10" />
+      <node id="8408350477080758667" at="60,90,61,82" concept="10" />
+      <node id="8541476815201199792" at="61,82,62,87" concept="11" />
+      <node id="8408350477080754564" at="68,142,69,90" concept="10" />
+      <node id="8408350477080758109" at="69,90,70,82" concept="10" />
+      <node id="200115155569777445" at="70,82,71,108" concept="11" />
+      <node id="4822248762180312804" at="31,0,34,0" concept="15" trace="getInstance#(Lcom/intellij/openapi/project/Project;)Ljetbrains/mps/vcs/changesmanager/tree/TreeHighlighterFactory;" />
+      <node id="391123256063776859" at="50,5,53,5" concept="8" />
+      <node id="8541476815201097941" at="59,0,64,0" concept="9" trace="instantiateHighlighter#(Ljetbrains/mps/ide/ui/tree/MPSTree;Ljetbrains/mps/vcs/changesmanager/tree/TreeNodeFeatureExtractor;)Ljetbrains/mps/vcs/changesmanager/tree/TreeHighlighter;" />
+      <node id="200115155569777437" at="68,0,73,0" concept="9" trace="instantiateHighlighter#(Ljetbrains/mps/ide/ui/tree/MPSTree;Ljetbrains/mps/vcs/changesmanager/tree/TreeNodeFeatureExtractor;Z)Ljetbrains/mps/vcs/changesmanager/tree/TreeHighlighter;" />
+      <node id="1993277906481153504" at="35,0,41,0" concept="9" trace="dispose#()V" />
+      <node id="391123256063762064" at="43,39,50,5" concept="8" />
+      <node id="4106919528499268087" at="22,0,30,0" concept="3" trace="TreeHighlighterFactory#(Lcom/intellij/openapi/project/Project;)V" />
+      <node id="391123256063746407" at="42,0,55,0" concept="9" trace="highlightTreeIfNeeded#(Ljetbrains/mps/ide/ui/tree/MPSTree;)V" />
+      <scope id="4822248762180312807" at="31,73,32,64" />
+      <scope id="391123256063762066" at="44,38,45,90" />
+      <scope id="285677603355153489" at="46,44,47,83" />
+      <scope id="6426754448685223791" at="48,55,49,82" />
+      <scope id="391123256063776860" at="51,30,52,25" />
+      <scope id="4822248762180312804" at="31,0,34,0">
         <var name="ideaProject" id="4822248762180316127" />
       </scope>
-      <scope id="1993277906481153509" at="38,31,41,30" />
-      <scope id="8541476815201097941" at="61,0,64,0">
+      <scope id="1993277906481153509" at="36,25,39,30" />
+      <scope id="8541476815201097945" at="59,106,62,87">
+        <var name="ffms" id="8408350477080758668" />
+        <var name="registry" id="8408350477080752954" />
+      </scope>
+      <scope id="200115155569777444" at="68,142,71,108">
+        <var name="ffms" id="8408350477080758110" />
+        <var name="registry" id="8408350477080754565" />
+      </scope>
+      <scope id="8541476815201097941" at="59,0,64,0">
         <var name="featureExtractor" id="8541476815201110925" />
         <var name="tree" id="8541476815201109723" />
       </scope>
-      <scope id="200115155569777437" at="68,0,71,0">
+      <scope id="200115155569777437" at="68,0,73,0">
         <var name="featureExtractor" id="200115155569777440" />
         <var name="removeNodesOnModelDisposal" id="200115155569775200" />
         <var name="tree" id="200115155569777438" />
       </scope>
-      <scope id="1993277906481153504" at="37,0,43,0" />
-      <scope id="4106919528499268090" at="23,162,30,111" />
-      <scope id="4106919528499268087" at="23,0,32,0">
-        <var name="featureForestMapSupport" id="4106919528499289305" />
+      <scope id="4106919528499268090" at="22,59,28,111" />
+      <scope id="1993277906481153504" at="35,0,41,0" />
+      <scope id="4106919528499268087" at="22,0,30,0">
         <var name="project" id="4106919528499268092" />
-        <var name="registry" id="4106919528499268094" />
       </scope>
-      <scope id="391123256063746410" at="44,51,55,5">
+      <scope id="391123256063746410" at="42,51,53,5">
         <var name="highlighter" id="391123256063776834" />
       </scope>
-      <scope id="391123256063746407" at="44,0,57,0">
+      <scope id="391123256063746407" at="42,0,55,0">
         <var name="tree" id="391123256063762062" />
       </scope>
-      <unit id="4106919528499268085" at="17,0,72,0" name="jetbrains.mps.vcs.changesmanager.tree.TreeHighlighterFactory" />
+      <unit id="4106919528499268085" at="17,0,74,0" name="jetbrains.mps.vcs.changesmanager.tree.TreeHighlighterFactory" />
     </file>
   </root>
   <root nodeRef="r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)/4225526609875760407">
