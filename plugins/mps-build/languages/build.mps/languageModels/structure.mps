@@ -828,16 +828,22 @@
     <node concept="1TJgyj" id="5j4USBYG00r" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="icon16" />
-      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="6108265972537229339" />
       <ref role="20lvS9" to="3ior:6qcrfIJFdKY" resolve="BuildSourcePath" />
+      <node concept="asaX9" id="3uFtPhqJuW" role="lGtFl">
+        <property role="YLPcu" value="2020.3" />
+        <property role="YLQ7P" value="use svg and svg-small instead" />
+      </node>
     </node>
     <node concept="1TJgyj" id="5j4USBYG00q" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="icon32" />
-      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="6108265972537229338" />
       <ref role="20lvS9" to="3ior:6qcrfIJFdKY" resolve="BuildSourcePath" />
+      <node concept="asaX9" id="3uFtPhqJuY" role="lGtFl">
+        <property role="YLPcu" value="2020.3" />
+        <property role="YLQ7P" value="use svg and svg-small instead" />
+      </node>
     </node>
     <node concept="1TJgyj" id="5j4USBYG00s" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -853,6 +859,22 @@
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="icon128" />
       <property role="IQ2ns" value="781140262677761022" />
+      <ref role="20lvS9" to="3ior:6qcrfIJFdKY" resolve="BuildSourcePath" />
+      <node concept="asaX9" id="3uFtPhqJv0" role="lGtFl">
+        <property role="YLPcu" value="2020.3" />
+        <property role="YLQ7P" value="use svg and svg-small instead" />
+      </node>
+    </node>
+    <node concept="1TJgyj" id="3uFtPhqJwI" role="1TKVEi">
+      <property role="IQ2ns" value="62678610895108142" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="svg" />
+      <ref role="20lvS9" to="3ior:6qcrfIJFdKY" resolve="BuildSourcePath" />
+    </node>
+    <node concept="1TJgyj" id="3uFtPhqJxz" role="1TKVEi">
+      <property role="IQ2ns" value="62678610895108195" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="svg_small" />
       <ref role="20lvS9" to="3ior:6qcrfIJFdKY" resolve="BuildSourcePath" />
     </node>
     <node concept="1TJgyj" id="5VYK1npHWR4" role="1TKVEi">

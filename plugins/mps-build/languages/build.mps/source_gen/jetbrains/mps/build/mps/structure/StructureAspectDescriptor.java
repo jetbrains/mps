@@ -459,10 +459,12 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("logoY", 0xf0bb91cffed32d8L).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL).optional(true).ordered(true).multiple(false).origin("1084163669516694232").done();
     b.aggregate("logoW", 0xf0bb91cffed334aL).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL).optional(true).ordered(true).multiple(false).origin("1084163669516694346").done();
     b.aggregate("logoH", 0xf0bb91cffed3371L).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL).optional(true).ordered(true).multiple(false).origin("1084163669516694385").done();
-    b.aggregate("icon16", 0x54c4eb89feb0001bL).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc3eL).optional(false).ordered(true).multiple(false).origin("6108265972537229339").done();
-    b.aggregate("icon32", 0x54c4eb89feb0001aL).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc3eL).optional(false).ordered(true).multiple(false).origin("6108265972537229338").done();
+    b.aggregate("icon16", 0x54c4eb89feb0001bL).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc3eL).optional(true).ordered(true).multiple(false).origin("6108265972537229339").done();
+    b.aggregate("icon32", 0x54c4eb89feb0001aL).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc3eL).optional(true).ordered(true).multiple(false).origin("6108265972537229338").done();
     b.aggregate("icon32opaque", 0x54c4eb89feb0001cL).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc3eL).optional(true).ordered(true).multiple(false).origin("6108265972537229340").done();
     b.aggregate("icon128", 0xad72aee24a9cbfeL).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc3eL).optional(true).ordered(true).multiple(false).origin("781140262677761022").done();
+    b.aggregate("svg", 0xdeaddd516af82eL).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc3eL).optional(true).ordered(true).multiple(false).origin("62678610895108142").done();
+    b.aggregate("svg_small", 0xdeaddd516af863L).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc3eL).optional(true).ordered(true).multiple(false).origin("62678610895108195").done();
     b.aggregate("icon", 0x5efec015d9b7cdc4L).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc3eL).optional(true).ordered(true).multiple(false).origin("6845119683729280452").done();
     b.aggregate("iconToolWindow", 0x5efec015d9c0dee8L).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc3eL).optional(true).ordered(true).multiple(false).origin("6845119683729874664").done();
     b.aggregate("product", 0x54c4eb89feb230afL).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xbabdfbeee17fe57L).optional(false).ordered(true).multiple(false).origin("6108265972537372847").done();
