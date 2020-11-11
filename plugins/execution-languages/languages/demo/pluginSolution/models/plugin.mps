@@ -9,7 +9,7 @@
     <use id="f3347d8a-0e79-4f35-8ac9-1574f25c986f" name="jetbrains.mps.execution.commands" version="-1" />
     <use id="22e72e4c-0f69-46ce-8403-6750153aa615" name="jetbrains.mps.execution.configurations" version="-1" />
     <use id="756e911c-3f1f-4a48-bdf5-a2ceb91b723c" name="jetbrains.mps.execution.settings" version="-1" />
-    <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="4" />
+    <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="5" />
     <use id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone" version="-1" />
     <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
@@ -43,7 +43,6 @@
         <property id="5023285075122009373" name="ideaVersion" index="9BnSO" />
         <property id="5023285075122009372" name="vendorUrl" index="9BnSP" />
         <property id="5023285075122009366" name="id" index="9BnSZ" />
-        <property id="4167053799973858143" name="vendorLogo" index="1qHB85" />
       </concept>
     </language>
     <language id="f3347d8a-0e79-4f35-8ac9-1574f25c986f" name="jetbrains.mps.execution.commands">
@@ -664,7 +663,6 @@
     <property role="9BnSP" value="a" />
     <property role="9BnSL" value="a" />
     <property role="9BnSM" value="a" />
-    <property role="1qHB85" value="a" />
     <property role="TrG5h" value="a" />
     <property role="9BnSO" value="203.1" />
     <property role="9BnSK" value="a" />

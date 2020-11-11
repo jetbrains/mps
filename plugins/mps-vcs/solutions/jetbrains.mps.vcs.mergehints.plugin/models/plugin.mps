@@ -2,7 +2,7 @@
 <model ref="r:496da72a-6b1e-4ce7-a21a-624eeeb2f8ec(jetbrains.mps.vcs.mergehints.plugin.plugin)">
   <persistence version="9" />
   <languages>
-    <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="4" />
+    <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="5" />
     <use id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone" version="0" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="0" />
@@ -35,7 +35,6 @@
         <property id="5023285075122009371" name="vendor" index="9BnSM" />
         <property id="5023285075122009372" name="vendorUrl" index="9BnSP" />
         <property id="5023285075122009366" name="id" index="9BnSZ" />
-        <property id="4167053799973858143" name="vendorLogo" index="1qHB85" />
       </concept>
       <concept id="2450897840534683979" name="jetbrains.mps.lang.plugin.structure.EditorTabReference" flags="nn" index="2vPdvi">
         <reference id="2450897840534683980" name="editorTab" index="2vPdvl" />
@@ -918,7 +917,6 @@
     <property role="9BnSL" value="ignored" />
     <property role="9BnSM" value="ignored" />
     <property role="9BnSP" value="ignored" />
-    <property role="1qHB85" value="ignored" />
   </node>
 </model>
 

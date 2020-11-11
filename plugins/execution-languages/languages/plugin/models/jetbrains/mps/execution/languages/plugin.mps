@@ -2,7 +2,7 @@
 <model ref="r:6ff1dacd-2ea5-47a0-9336-2eaecdee8a37(jetbrains.mps.execution.languages.plugin)">
   <persistence version="9" />
   <languages>
-    <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="4" />
+    <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="5" />
     <use id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone" version="0" />
   </languages>
   <imports />
@@ -16,7 +16,6 @@
         <property id="5023285075122009372" name="vendorUrl" index="9BnSP" />
         <property id="5023285075122009366" name="id" index="9BnSZ" />
         <property id="8842945788826116904" name="loadModules" index="2PJ1tZ" />
-        <property id="4167053799973858143" name="vendorLogo" index="1qHB85" />
         <property id="1573568368168371217" name="handleErrors" index="3FCvg6" />
         <child id="5864553086652219115" name="dependency" index="2Tc6Ou" />
       </concept>
@@ -43,7 +42,6 @@
     <property role="9BnSO" value="203.1" />
     <property role="2PJ1tZ" value="true" />
     <property role="3FCvg6" value="true" />
-    <property role="1qHB85" value="/MPS_16.png" />
     <node concept="2Tc6Op" id="kOhmwOHsmC" role="2Tc6Ou">
       <property role="2Tc6Oq" value="jetbrains.mps.debugger.java" />
     </node>

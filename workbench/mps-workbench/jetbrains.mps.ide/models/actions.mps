@@ -12,7 +12,7 @@
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="-1" />
     <use id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior" version="-1" />
     <use id="64d34fcd-ad02-4e73-aff8-a581124c2e30" name="jetbrains.mps.lang.findUsages" version="-1" />
-    <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="-1" />
+    <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="5" />
     <use id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone" version="-1" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="-1" />
     <use id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources" version="-1" />
@@ -220,7 +220,6 @@
         <property id="5023285075122009373" name="ideaVersion" index="9BnSO" />
         <property id="5023285075122009372" name="vendorUrl" index="9BnSP" />
         <property id="5023285075122009366" name="id" index="9BnSZ" />
-        <property id="4167053799973858143" name="vendorLogo" index="1qHB85" />
         <property id="1573568368168371217" name="handleErrors" index="3FCvg6" />
       </concept>
       <concept id="1204908117386" name="jetbrains.mps.lang.plugin.structure.Separator" flags="ng" index="2a7GMi" />
@@ -11332,7 +11331,7 @@
                   <node concept="2OqwBi" id="7TSspuy9E8" role="2ZW6bz">
                     <node concept="2WthIp" id="7TSspuy9E9" role="2Oq$k0" />
                     <node concept="1DTwFV" id="7TSspuy9Ea" role="2OqNvi">
-                      <ref role="2WH_rO" node="7TSspuy9Av" />
+                      <ref role="2WH_rO" node="7TSspuy9Av" resolve="treeNode" />
                     </node>
                   </node>
                 </node>
@@ -11340,7 +11339,7 @@
                   <node concept="2OqwBi" id="7TSspuy9OK" role="3uHU7B">
                     <node concept="2WthIp" id="7TSspuy9OL" role="2Oq$k0" />
                     <node concept="2XshWL" id="7TSspuy9OM" role="2OqNvi">
-                      <ref role="2WH_rO" node="7TSspuy9O_" />
+                      <ref role="2WH_rO" node="7TSspuy9O_" resolve="getProjectPane" />
                     </node>
                   </node>
                   <node concept="10Nm6u" id="7TSspuy9Oz" role="3uHU7w" />
@@ -11353,7 +11352,7 @@
                       <node concept="2OqwBi" id="5NJ15g5l6EP" role="10QFUP">
                         <node concept="2WthIp" id="5NJ15g5l6EQ" role="2Oq$k0" />
                         <node concept="1DTwFV" id="5NJ15g5l6ER" role="2OqNvi">
-                          <ref role="2WH_rO" node="7TSspuy9Av" />
+                          <ref role="2WH_rO" node="7TSspuy9Av" resolve="treeNode" />
                         </node>
                       </node>
                       <node concept="3uibUv" id="5NJ15g5l6ES" role="10QFUM">
@@ -11375,7 +11374,7 @@
                       <node concept="2OqwBi" id="xeLP1xpDlM" role="10QFUP">
                         <node concept="2WthIp" id="xeLP1xpDlN" role="2Oq$k0" />
                         <node concept="1DTwFV" id="xeLP1xpDlO" role="2OqNvi">
-                          <ref role="2WH_rO" node="7TSspuy9Av" />
+                          <ref role="2WH_rO" node="7TSspuy9Av" resolve="treeNode" />
                         </node>
                       </node>
                       <node concept="3uibUv" id="xeLP1xpDlP" role="10QFUM">
@@ -11393,7 +11392,7 @@
                       <node concept="2OqwBi" id="xeLP1xpGOD" role="10QFUP">
                         <node concept="2WthIp" id="xeLP1xpGOE" role="2Oq$k0" />
                         <node concept="1DTwFV" id="xeLP1xpGOF" role="2OqNvi">
-                          <ref role="2WH_rO" node="7TSspuy9Av" />
+                          <ref role="2WH_rO" node="7TSspuy9Av" resolve="treeNode" />
                         </node>
                       </node>
                       <node concept="3uibUv" id="xeLP1xpGOG" role="10QFUM">
@@ -24301,7 +24300,6 @@
     <property role="9BnSP" value="http://www.jetbrains.com/mps/" />
     <property role="9BnSM" value="JetBrains" />
     <property role="TrG5h" value="IDE" />
-    <property role="1qHB85" value="/MPS_16.png" />
     <property role="9BnSO" value="203.1" />
     <property role="9BnSK" value="2020.3" />
   </node>

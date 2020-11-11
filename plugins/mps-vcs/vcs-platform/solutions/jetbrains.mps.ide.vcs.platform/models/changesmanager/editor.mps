@@ -7,7 +7,7 @@
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="0" />
-    <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="4" />
+    <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="5" />
     <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
@@ -423,20 +423,20 @@
       <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="5hxUVFSIm2F" role="1B3o_S" />
       <node concept="3rvAFt" id="5hxUVFSInyz" role="1tU5fm">
-        <node concept="3uibUv" id="6C9ueeimjW9" role="3rvQeY">
-          <ref role="3uigEE" to="cj4x:~EditorComponent" resolve="EditorComponent" />
-        </node>
         <node concept="3uibUv" id="5zpsdFy5CyW" role="3rvSg0">
           <ref role="3uigEE" node="5zpsdFy5B1u" resolve="EditorHighlighter" />
+        </node>
+        <node concept="3uibUv" id="6C9ueeimjW9" role="3rvQeY">
+          <ref role="3uigEE" to="cj4x:~EditorComponent" resolve="EditorComponent" />
         </node>
       </node>
       <node concept="2ShNRf" id="5hxUVFSIt47" role="33vP2m">
         <node concept="3rGOSV" id="5hxUVFSIt48" role="2ShVmc">
-          <node concept="3uibUv" id="6C9ueeimkmJ" role="3rHrn6">
-            <ref role="3uigEE" to="cj4x:~EditorComponent" resolve="EditorComponent" />
-          </node>
           <node concept="3uibUv" id="5zpsdFy5CyX" role="3rHtpV">
             <ref role="3uigEE" node="5zpsdFy5B1u" resolve="EditorHighlighter" />
+          </node>
+          <node concept="3uibUv" id="6C9ueeimkmJ" role="3rHrn6">
+            <ref role="3uigEE" to="cj4x:~EditorComponent" resolve="EditorComponent" />
           </node>
         </node>
       </node>
@@ -538,14 +538,14 @@
             <node concept="3clFbC" id="5zpsdFy5CzH" role="3uHU7w">
               <node concept="2OqwBi" id="5zpsdFy5CzI" role="3uHU7w">
                 <node concept="2OqwBi" id="5zpsdFy5CzJ" role="2Oq$k0">
-                  <node concept="37vLTw" id="31IQ8dwT4YU" role="2Oq$k0">
-                    <ref role="3cqZAo" node="31IQ8dwSR4A" resolve="myProject" />
-                  </node>
                   <node concept="liA8E" id="5zpsdFy5CzL" role="2OqNvi">
                     <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
                     <node concept="3VsKOn" id="5zpsdFy5CzM" role="37wK5m">
                       <ref role="3VsUkX" to="exr9:~InspectorTool" resolve="InspectorTool" />
                     </node>
+                  </node>
+                  <node concept="37vLTw" id="31IQ8dwT4YU" role="2Oq$k0">
+                    <ref role="3cqZAo" node="31IQ8dwSR4A" resolve="myProject" />
                   </node>
                 </node>
                 <node concept="liA8E" id="5zpsdFy5CzN" role="2OqNvi">
@@ -639,11 +639,11 @@
       <property role="TrG5h" value="getHighlighter" />
       <node concept="37vLTG" id="1LVXsqEggg6" role="3clF46">
         <property role="TrG5h" value="editorComponent" />
-        <node concept="3uibUv" id="6C9ueeimkNQ" role="1tU5fm">
-          <ref role="3uigEE" to="cj4x:~EditorComponent" resolve="EditorComponent" />
-        </node>
         <node concept="2AHcQZ" id="1LVXsqEggg9" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+        <node concept="3uibUv" id="6C9ueeimkNQ" role="1tU5fm">
+          <ref role="3uigEE" to="cj4x:~EditorComponent" resolve="EditorComponent" />
         </node>
       </node>
       <node concept="3uibUv" id="1LVXsqEggg5" role="3clF45">
@@ -666,7 +666,6 @@
     <node concept="2tJIrI" id="31IQ8dwSSLo" role="jymVt" />
     <node concept="312cEu" id="4TiB462Rs7x" role="jymVt">
       <property role="TrG5h" value="MyEditorComponentCreateListener" />
-      <node concept="3Tm1VV" id="31IQ8dwSTue" role="1B3o_S" />
       <node concept="3uibUv" id="6iIJyBNax3m" role="EKbjA">
         <ref role="3uigEE" to="rlg8:~EditorComponentCreateListener" resolve="EditorComponentCreateListener" />
       </node>
@@ -817,6 +816,7 @@
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
+      <node concept="3Tm1VV" id="31IQ8dwSTue" role="1B3o_S" />
     </node>
   </node>
   <node concept="312cEu" id="5zpsdFy5B1u">
