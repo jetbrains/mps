@@ -150,5 +150,5 @@ public class MPSIcons {
     public static final Icon CellExplorer = IconLoader.getIcon("/toolWindows/cellExplorer.png");
   }
 
-  public static final Icon MPS16x16 = IconLoader.getIcon("/MPS_16.png");
+  public static final Icon MPS16x16 = IconLoader.getIcon("/mps_16.svg", MPSIcons.class);
 }
