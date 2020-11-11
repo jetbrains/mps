@@ -152,6 +152,7 @@ public class NodeSubstitutePatternEditor {
     if (!myEditorActivated) {
       myEditorActivated = true;
       myEditorWindow = new EditorWindow(owner);
+      myEditorWindow.setFocusableWindowState(false);
       myEditorWindow.setLocation(location);
       myEditorWindow.setMinimalSize(size);
       myEditorWindow.myTextLine.setText(myCachedText);
