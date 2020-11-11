@@ -449,7 +449,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("splashScreen", 0x54c4eb89feaf4b14L).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc3eL).optional(false).ordered(true).multiple(false).origin("6108265972537182996").done();
     b.aggregate("textColor", 0x7a0ffb6a57a27969L).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0xbabdfbeee17fe57L).optional(true).ordered(true).multiple(false).origin("8795525031433238889").done();
     b.aggregate("progressColor", 0x5efec015d9b80624L).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL).optional(true).ordered(true).multiple(false).origin("6845119683729294884").done();
-    b.aggregate("progressX", 0x6e805e55fee09551L).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL).optional(true).ordered(true).multiple(false).origin("7962467864632399185").done();
     b.aggregate("progressY", 0x5efec015d9b8abc5L).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL).optional(true).ordered(true).multiple(false).origin("6845119683729337285").done();
     b.aggregate("progressHeight", 0x6e805e55feeab57eL).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3cca41cd0fe51d4fL).optional(true).ordered(true).multiple(false).origin("7962467864633062782").done();
     b.aggregate("aboutScreen", 0x54c4eb89feaf4b15L).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc3eL).optional(false).ordered(true).multiple(false).origin("6108265972537182997").done();

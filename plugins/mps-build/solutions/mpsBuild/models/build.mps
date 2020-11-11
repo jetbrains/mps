@@ -391,7 +391,6 @@
         <child id="6845119683729337285" name="progressY" index="27hAJg" />
         <child id="6845119683729294884" name="progressColor" index="27hGoL" />
         <child id="6845119683729280452" name="icon" index="27igRh" />
-        <child id="7962467864632399185" name="progressX" index="2gocG4" />
         <child id="7962467864633062782" name="progressHeight" index="2gqIGF" />
         <child id="922958177840117051" name="script" index="2gvbiD" />
         <child id="6108265972537182997" name="aboutScreen" index="2EqU2s" />
@@ -27840,7 +27839,6 @@
       <property role="TrG5h" value="MPS" />
       <property role="2OjLBL" value="2020" />
       <property role="2OjLBN" value="true" />
-      <node concept="NbPM2" id="2FTyjkjSqva" role="2gocG4" />
       <node concept="3_J27D" id="6Iq8148f_Zd" role="HFo83">
         <node concept="3Mxwew" id="6Iq8148f_Ze" role="3MwsjC">
           <property role="3MwjfP" value="FFFFFF" />

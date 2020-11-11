@@ -764,16 +764,6 @@
       <property role="IQ2ns" value="6845119683729294884" />
       <ref role="20lvS9" to="3ior:3NagsOfThPf" resolve="BuildString" />
     </node>
-    <node concept="1TJgyj" id="6U0n_nYS9lh" role="1TKVEi">
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="progressX" />
-      <property role="IQ2ns" value="7962467864632399185" />
-      <ref role="20lvS9" to="3ior:3NagsOfThPf" resolve="BuildString" />
-      <node concept="asaX9" id="6l6Dd6v$YHj" role="lGtFl">
-        <property role="YLQ7P" value="Not used anymore" />
-        <property role="YLPcu" value="2020.2" />
-      </node>
-    </node>
     <node concept="1TJgyj" id="5VYK1npIaJ5" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="progressY" />
