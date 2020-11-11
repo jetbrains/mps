@@ -266,7 +266,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeId" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.changesmanager.NodeFileStatusMapping">
-    <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="com.intellij.openapi.vcs.FileStatus" />
     <classNode dependClassName="com.intellij.openapi.vcs.FileStatusManager" />
     <classNode dependClassName="java.lang.Override" />

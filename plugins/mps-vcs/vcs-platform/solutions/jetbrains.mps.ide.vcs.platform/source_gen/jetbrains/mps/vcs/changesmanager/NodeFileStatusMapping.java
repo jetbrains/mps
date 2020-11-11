@@ -10,14 +10,13 @@ import com.intellij.openapi.vcs.FileStatus;
 import java.util.concurrent.ConcurrentHashMap;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
-import com.intellij.openapi.vcs.FileStatusManager;
 import org.jetbrains.mps.openapi.model.SNode;
+import com.intellij.openapi.vcs.FileStatusManager;
 import jetbrains.mps.util.ComputeRunnable;
 import jetbrains.mps.util.Computable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
-import com.intellij.openapi.project.Project;
 import java.util.List;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -35,18 +34,18 @@ import jetbrains.mps.vcs.diff.ChangeSet;
 
 @GeneratedClass(node = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)/2722286076674338162", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
 public class NodeFileStatusMapping implements ProjectComponent {
-  private final CurrentDifferenceRegistry myRegistry;
   private final Map<SNodeReference, FileStatus> myFileStatusMap = new ConcurrentHashMap<SNodeReference, FileStatus>();
   private final CurrentDifferenceListener myGlobalListener = new MyGlobalListener();
   protected final MPSProject myProject;
+  private CurrentDifferenceRegistry myRegistry;
 
-  public NodeFileStatusMapping(MPSProject project, CurrentDifferenceRegistry registry) {
-    myRegistry = registry;
+  public NodeFileStatusMapping(MPSProject project) {
     myProject = project;
   }
 
   @Override
   public void projectOpened() {
+    myRegistry = CurrentDifferenceRegistry.getInstance(myProject.getProject());
     myRegistry.addGlobalDifferenceListener(myGlobalListener);
   }
 
@@ -58,11 +57,11 @@ public class NodeFileStatusMapping implements ProjectComponent {
   private void statusChanged(@NotNull final SNodeReference nodePointer) {
     myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        FileStatusManager fsm = FileStatusManager.getInstance(myProject.getProject());
         SNode currentNode = nodePointer.resolve(myProject.getRepository());
         if (currentNode == null) {
           return;
         }
+        FileStatusManager fsm = FileStatusManager.getInstance(myProject.getProject());
         statusChanged(fsm, currentNode);
       }
     });
@@ -88,7 +87,6 @@ public class NodeFileStatusMapping implements ProjectComponent {
         SModel m = root.getModelReference().resolve(myProject.getRepository());
         if (m instanceof EditableSModel && m.getSource() instanceof FileSystemBasedDataSource && !(m.isReadOnly())) {
           EditableSModel model = (EditableSModel) m;
-          final Project ideaProject = myProject.getProject();
           CurrentDifference diff = myRegistry.getCurrentDifference(model);
           if (diff.isConflicted()) {
             return FileStatus.MERGED_WITH_CONFLICTS;
@@ -96,7 +94,7 @@ public class NodeFileStatusMapping implements ProjectComponent {
           if (diff.getChangeSet() == null) {
             return FileStatus.NOT_CHANGED;
           }
-          List<ModelChange> modelChanges = check_onkh7z_a0f0b0a0a0a0r(diff.getChangeSet());
+          List<ModelChange> modelChanges = check_onkh7z_a0e0b0a0a0a0r(diff.getChangeSet());
           List<ModelChange> rootChanges = ListSequence.fromList(modelChanges).where(new IWhereFilter<ModelChange>() {
             public boolean accept(ModelChange ch) {
               return root.getNodeId().equals(ch.getRootId());
@@ -190,7 +188,7 @@ public class NodeFileStatusMapping implements ProjectComponent {
       addAffectedRoot(change);
     }
   }
-  private static List<ModelChange> check_onkh7z_a0f0b0a0a0a0r(ChangeSet checkedDotOperand) {
+  private static List<ModelChange> check_onkh7z_a0e0b0a0a0a0r(ChangeSet checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModelChanges();
     }

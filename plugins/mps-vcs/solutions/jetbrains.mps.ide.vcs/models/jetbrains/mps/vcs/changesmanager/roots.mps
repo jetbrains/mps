@@ -442,12 +442,6 @@
           <ref role="3uigEE" to="z1c3:~MPSProject" resolve="MPSProject" />
         </node>
       </node>
-      <node concept="37vLTG" id="2n7wcdLayEv" role="3clF46">
-        <property role="TrG5h" value="registry" />
-        <node concept="3uibUv" id="2n7wcdLayEw" role="1tU5fm">
-          <ref role="3uigEE" to="lcr:2JwSLRbyYN6" resolve="CurrentDifferenceRegistry" />
-        </node>
-      </node>
       <node concept="3cqZAl" id="2n7wcdLayE2" role="3clF45" />
       <node concept="3Tm1VV" id="2n7wcdLayE3" role="1B3o_S" />
       <node concept="3clFbS" id="2n7wcdLayE4" role="3clF47">
@@ -455,9 +449,6 @@
           <ref role="37wK5l" to="lcr:2n7wcdLaAWO" resolve="NodeFileStatusMapping" />
           <node concept="37vLTw" id="2BHiRxgmaHg" role="37wK5m">
             <ref role="3cqZAo" node="2n7wcdLayEg" resolve="project" />
-          </node>
-          <node concept="37vLTw" id="2BHiRxglnog" role="37wK5m">
-            <ref role="3cqZAo" node="2n7wcdLayEv" resolve="registry" />
           </node>
         </node>
       </node>
