@@ -213,7 +213,6 @@
     <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="com.intellij.openapi.vcs.FileStatusListener" />
     <classNode dependClassName="com.intellij.openapi.vcs.FileStatusManager" />
-    <classNode dependClassName="com.intellij.openapi.vcs.ProjectLevelVcsManager" />
     <classNode dependClassName="com.intellij.openapi.vfs.VirtualFile" />
     <classNode dependClassName="com.intellij.util.containers.MultiMap" />
     <classNode dependClassName="java.lang.Override" />

@@ -3648,14 +3648,6 @@
         </node>
       </node>
     </node>
-    <node concept="312cEg" id="6y_kxB1UoDL" role="jymVt">
-      <property role="TrG5h" value="myFileStatusManager" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3Tm6S6" id="6y_kxB1UoDM" role="1B3o_S" />
-      <node concept="3uibUv" id="6y_kxB1UoDO" role="1tU5fm">
-        <ref role="3uigEE" to="jlcu:~FileStatusManager" resolve="FileStatusManager" />
-      </node>
-    </node>
     <node concept="312cEg" id="6y_kxB1UvQg" role="jymVt">
       <property role="TrG5h" value="myMpsProject" />
       <property role="3TUv4t" value="true" />
@@ -3669,16 +3661,6 @@
       <node concept="3cqZAl" id="2JwSLRbyYWM" role="3clF45" />
       <node concept="3Tm1VV" id="2JwSLRbyYWN" role="1B3o_S" />
       <node concept="3clFbS" id="2JwSLRbyYWO" role="3clF47">
-        <node concept="3clFbF" id="6y_kxB1UoDP" role="3cqZAp">
-          <node concept="37vLTI" id="6y_kxB1UoDR" role="3clFbG">
-            <node concept="37vLTw" id="6y_kxB1UvHJ" role="37vLTJ">
-              <ref role="3cqZAo" node="6y_kxB1UoDL" resolve="myFileStatusManager" />
-            </node>
-            <node concept="37vLTw" id="6y_kxB1UoDZ" role="37vLTx">
-              <ref role="3cqZAo" node="TEj4K5KI2B" resolve="fileStatusManager" />
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="6y_kxB1UvQk" role="3cqZAp">
           <node concept="37vLTI" id="6y_kxB1UvQm" role="3clFbG">
             <node concept="37vLTw" id="6y_kxB1U_6t" role="37vLTJ">
@@ -3716,18 +3698,6 @@
           <ref role="3uigEE" to="z1c3:~MPSProject" resolve="MPSProject" />
         </node>
       </node>
-      <node concept="37vLTG" id="TEj4K5KHRC" role="3clF46">
-        <property role="TrG5h" value="vcsManager" />
-        <node concept="3uibUv" id="TEj4K5KI2u" role="1tU5fm">
-          <ref role="3uigEE" to="jlcu:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="TEj4K5KI2B" role="3clF46">
-        <property role="TrG5h" value="fileStatusManager" />
-        <node concept="3uibUv" id="TEj4K5KI2E" role="1tU5fm">
-          <ref role="3uigEE" to="jlcu:~FileStatusManager" resolve="FileStatusManager" />
-        </node>
-      </node>
     </node>
     <node concept="2tJIrI" id="3ReTDvBuPRA" role="jymVt" />
     <node concept="3clFb_" id="2JwSLRbyYPJ" role="jymVt">
@@ -3735,23 +3705,38 @@
       <node concept="3Tm1VV" id="2JwSLRbyYPK" role="1B3o_S" />
       <node concept="3cqZAl" id="2JwSLRbyYPL" role="3clF45" />
       <node concept="3clFbS" id="2JwSLRbyYPM" role="3clF47">
+        <node concept="3cpWs8" id="31IQ8dwRQI6" role="3cqZAp">
+          <node concept="3cpWsn" id="31IQ8dwRQI7" role="3cpWs9">
+            <property role="TrG5h" value="ideaProject" />
+            <node concept="3uibUv" id="31IQ8dwRQEZ" role="1tU5fm">
+              <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
+            </node>
+            <node concept="2OqwBi" id="31IQ8dwRQI8" role="33vP2m">
+              <node concept="37vLTw" id="31IQ8dwRQI9" role="2Oq$k0">
+                <ref role="3cqZAo" node="6y_kxB1UvQg" resolve="myMpsProject" />
+              </node>
+              <node concept="liA8E" id="31IQ8dwRQIa" role="2OqNvi">
+                <ref role="37wK5l" to="z1c3:~MPSProject.getProject()" resolve="getProject" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="6GHSGUzdIPH" role="3cqZAp">
           <node concept="2OqwBi" id="6GHSGUzdIPN" role="3clFbG">
-            <node concept="37vLTw" id="6y_kxB1UvKI" role="2Oq$k0">
-              <ref role="3cqZAo" node="6y_kxB1UoDL" resolve="myFileStatusManager" />
-            </node>
             <node concept="liA8E" id="6GHSGUzdIUq" role="2OqNvi">
               <ref role="37wK5l" to="jlcu:~FileStatusManager.addFileStatusListener(com.intellij.openapi.vcs.FileStatusListener,com.intellij.openapi.Disposable)" resolve="addFileStatusListener" />
               <node concept="37vLTw" id="2BHiRxeuq6o" role="37wK5m">
                 <ref role="3cqZAo" node="1D7R$zlPUG7" resolve="myFileStatusListener" />
               </node>
-              <node concept="2OqwBi" id="FrvtFCeAGb" role="37wK5m">
-                <node concept="37vLTw" id="FrvtFCeA7w" role="2Oq$k0">
-                  <ref role="3cqZAo" node="6y_kxB1UvQg" resolve="myMpsProject" />
-                </node>
-                <node concept="liA8E" id="FrvtFCeBbx" role="2OqNvi">
-                  <ref role="37wK5l" to="z1c3:~MPSProject.getProject()" resolve="getProject" />
-                </node>
+              <node concept="37vLTw" id="31IQ8dwRQIb" role="37wK5m">
+                <ref role="3cqZAo" node="31IQ8dwRQI7" resolve="ideaProject" />
+              </node>
+            </node>
+            <node concept="2YIFZM" id="31IQ8dwRQsO" role="2Oq$k0">
+              <ref role="1Pybhc" to="jlcu:~FileStatusManager" resolve="FileStatusManager" />
+              <ref role="37wK5l" to="jlcu:~FileStatusManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+              <node concept="37vLTw" id="31IQ8dwRR9X" role="37wK5m">
+                <ref role="3cqZAo" node="31IQ8dwRQI7" resolve="ideaProject" />
               </node>
             </node>
           </node>
@@ -4676,6 +4661,110 @@
       </node>
       <node concept="3Tm1VV" id="2JwSLRbyYP2" role="1B3o_S" />
       <node concept="3clFbS" id="2JwSLRbyYP3" role="3clF47">
+        <node concept="3SKdUt" id="31IQ8dwRTYv" role="3cqZAp">
+          <node concept="1PaTwC" id="31IQ8dwRTYw" role="1aUNEU">
+            <node concept="3oM_SD" id="31IQ8dwRTYx" role="1PaTwD">
+              <property role="3oM_SC" value="XXX" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRU0b" role="1PaTwD">
+              <property role="3oM_SC" value="still" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRU0e" role="1PaTwD">
+              <property role="3oM_SC" value="ProjectComponent" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRVeD" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRVeQ" role="1PaTwD">
+              <property role="3oM_SC" value="I" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRVf4" role="1PaTwD">
+              <property role="3oM_SC" value="don't" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRVfj" role="1PaTwD">
+              <property role="3oM_SC" value="know" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRVfr" role="1PaTwD">
+              <property role="3oM_SC" value="what" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRVfG" role="1PaTwD">
+              <property role="3oM_SC" value="are" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRVfQ" role="1PaTwD">
+              <property role="3oM_SC" value="expectations" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRVgh" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRVgt" role="1PaTwD">
+              <property role="3oM_SC" value="components" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRVgE" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRVgS" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRVh7" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRVhv" role="1PaTwD">
+              <property role="3oM_SC" value="one," />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="31IQ8dwRVkl" role="3cqZAp">
+          <node concept="1PaTwC" id="31IQ8dwRVkm" role="1aUNEU">
+            <node concept="3oM_SD" id="31IQ8dwRVkn" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRVpO" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRVpR" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRVpV" role="1PaTwD">
+              <property role="3oM_SC" value="whether" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRVqg" role="1PaTwD">
+              <property role="3oM_SC" value="it" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRVqu" role="1PaTwD">
+              <property role="3oM_SC" value="got" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRVs3" role="1PaTwD">
+              <property role="3oM_SC" value="some" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRVsf" role="1PaTwD">
+              <property role="3oM_SC" value="state" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRVss" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRVsM" role="1PaTwD">
+              <property role="3oM_SC" value="has" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRVqH" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRVqP" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRVr6" role="1PaTwD">
+              <property role="3oM_SC" value="aligned" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRVrC" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRVth" role="1PaTwD">
+              <property role="3oM_SC" value="Project" />
+            </node>
+            <node concept="3oM_SD" id="31IQ8dwRVtL" role="1PaTwD">
+              <property role="3oM_SC" value="state." />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="2JwSLRbyYP4" role="3cqZAp">
           <node concept="2OqwBi" id="2JwSLRbyYP5" role="3clFbG">
             <node concept="37vLTw" id="2BHiRxgm$NG" role="2Oq$k0">

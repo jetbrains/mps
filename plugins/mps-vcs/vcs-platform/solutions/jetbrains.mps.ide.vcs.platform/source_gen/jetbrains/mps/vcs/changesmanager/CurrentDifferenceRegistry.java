@@ -9,13 +9,12 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
-import com.intellij.openapi.vcs.FileStatusManager;
 import jetbrains.mps.project.MPSProject;
-import com.intellij.openapi.vcs.ProjectLevelVcsManager;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.vcs.FileStatusManager;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
 import com.intellij.openapi.project.DumbService;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -44,18 +43,17 @@ public class CurrentDifferenceRegistry implements ProjectComponent {
   private final MyEventsCollector myEventsCollector;
   private final CurrentDifferenceBroadcaster myGlobalBroadcaster = new CurrentDifferenceBroadcaster(myCommandQueue);
   private final MyFileStatusListener myFileStatusListener = new MyFileStatusListener();
-  private final FileStatusManager myFileStatusManager;
   private final MPSProject myMpsProject;
 
-  public CurrentDifferenceRegistry(MPSProject mpsProject, ProjectLevelVcsManager vcsManager, FileStatusManager fileStatusManager) {
-    myFileStatusManager = fileStatusManager;
+  public CurrentDifferenceRegistry(MPSProject mpsProject) {
     myMpsProject = mpsProject;
     myEventsCollector = new MyEventsCollector(mpsProject.getRepository());
   }
 
   @Override
   public void projectOpened() {
-    myFileStatusManager.addFileStatusListener(myFileStatusListener, myMpsProject.getProject());
+    Project ideaProject = myMpsProject.getProject();
+    FileStatusManager.getInstance(ideaProject).addFileStatusListener(myFileStatusListener, ideaProject);
     new RepoListenerRegistrar(myMpsProject.getRepository(), myModelRepositoryListener).attach();
     // do not start the command thread immediately, let project refresh its structures and components. 
     // Not sure whether to use StartupManager.registerPostStartupActivity or runWhenSmart; chose latter as its javadoc 
@@ -179,6 +177,8 @@ public class CurrentDifferenceRegistry implements ProjectComponent {
   }
 
   public static CurrentDifferenceRegistry getInstance(Project project) {
+    // XXX still ProjectComponent as I don't know what are expectations of components that use this one, 
+    //    whether it got some state that has to be aligned with Project state. 
     return project.getComponent(CurrentDifferenceRegistry.class);
   }
 
