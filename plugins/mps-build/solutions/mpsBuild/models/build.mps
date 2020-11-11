@@ -396,15 +396,12 @@
         <child id="6108265972537182997" name="aboutScreen" index="2EqU2s" />
         <child id="6108265972537182996" name="splashScreen" index="2EqU2t" />
         <child id="6108265972537229337" name="buildNumber" index="2EteIg" />
-        <child id="6108265972537229339" name="icon16" index="2EteIi" />
-        <child id="6108265972537229338" name="icon32" index="2EteIj" />
         <child id="6108265972537335245" name="updateWebsite" index="2Etnp4" />
         <child id="6108265972537372847" name="product" index="2EtHGA" />
         <child id="6108265972537372848" name="fullName" index="2EtHGT" />
         <child id="8795525031433238889" name="textColor" index="HFo83" />
         <child id="781140262677914381" name="company" index="IuKBz" />
         <child id="781140262677906594" name="whatsnew" index="IuMTc" />
-        <child id="781140262677761022" name="icon128" index="IvI4g" />
         <child id="781140262677761833" name="plugins" index="IvIn7" />
         <child id="8877724874822185910" name="feedbackUrl" index="2Mmf0a" />
         <child id="3497141547781549827" name="codename" index="2OjNyQ" />
@@ -26943,22 +26940,6 @@
                 </node>
               </node>
             </node>
-            <node concept="28jJK3" id="$yhXtqK_CU" role="39821P">
-              <node concept="55IIr" id="$yhXtqK_CW" role="28jJRO">
-                <node concept="2Ry0Ak" id="$yhXtqK_WH" role="iGT6I">
-                  <property role="2Ry0Am" value="workbench" />
-                  <node concept="2Ry0Ak" id="$yhXtqKCbU" role="2Ry0An">
-                    <property role="2Ry0Am" value="mps-icons" />
-                    <node concept="2Ry0Ak" id="$yhXtqKCbZ" role="2Ry0An">
-                      <property role="2Ry0Am" value="source" />
-                      <node concept="2Ry0Ak" id="5VYK1npHu9l" role="2Ry0An">
-                        <property role="2Ry0Am" value="MPS_128.png" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
             <node concept="3_J27D" id="6xv$4WsFwxG" role="Nbhlr">
               <node concept="3Mxwew" id="6xv$4WsFwxH" role="3MwsjC">
                 <property role="3MwjfP" value="bin" />
@@ -28098,48 +28079,6 @@
               <property role="2Ry0Am" value="source" />
               <node concept="2Ry0Ak" id="3uFtPhwkd3" role="2Ry0An">
                 <property role="2Ry0Am" value="mps_16.svg" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="55IIr" id="6Iq8148fw_f" role="2EteIi">
-        <node concept="2Ry0Ak" id="6Iq8148fFp$" role="iGT6I">
-          <property role="2Ry0Am" value="workbench" />
-          <node concept="2Ry0Ak" id="6Iq8148fFp_" role="2Ry0An">
-            <property role="2Ry0Am" value="mps-icons" />
-            <node concept="2Ry0Ak" id="6Iq8148fFpC" role="2Ry0An">
-              <property role="2Ry0Am" value="source" />
-              <node concept="2Ry0Ak" id="6Iq8148fFpD" role="2Ry0An">
-                <property role="2Ry0Am" value="MPS_16.png" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="55IIr" id="6Iq8148fFpE" role="2EteIj">
-        <node concept="2Ry0Ak" id="6Iq8148fFpF" role="iGT6I">
-          <property role="2Ry0Am" value="workbench" />
-          <node concept="2Ry0Ak" id="6Iq8148fFpG" role="2Ry0An">
-            <property role="2Ry0Am" value="mps-icons" />
-            <node concept="2Ry0Ak" id="6Iq8148fFpH" role="2Ry0An">
-              <property role="2Ry0Am" value="source" />
-              <node concept="2Ry0Ak" id="6Iq8148fFpI" role="2Ry0An">
-                <property role="2Ry0Am" value="MPS_32.png" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="55IIr" id="5VYK1npHu2J" role="IvI4g">
-        <node concept="2Ry0Ak" id="5VYK1npHu2O" role="iGT6I">
-          <property role="2Ry0Am" value="workbench" />
-          <node concept="2Ry0Ak" id="5VYK1npHu2T" role="2Ry0An">
-            <property role="2Ry0Am" value="mps-icons" />
-            <node concept="2Ry0Ak" id="5VYK1npHu2Y" role="2Ry0An">
-              <property role="2Ry0Am" value="source" />
-              <node concept="2Ry0Ak" id="5VYK1npHu33" role="2Ry0An">
-                <property role="2Ry0Am" value="MPS_128.png" />
               </node>
             </node>
           </node>
