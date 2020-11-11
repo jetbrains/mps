@@ -33,10 +33,6 @@
       <skipForDefaultProject/>
     </component>
     <component>
-      <implementation-class>jetbrains.mps.vcs.changesmanager.editor.EditorHighlighterFactory</implementation-class>
-      <skipForDefaultProject/>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.vcs.MPSVcsManager</implementation-class>
     </component>
     <component>
@@ -52,6 +48,12 @@
   <applicationListeners>
     <listener class="jetbrains.mps.vcs.diff.ui.common.EditorSettingsEditorColorsListener" topic="com.intellij.openapi.editor.colors.EditorColorsListener"/>
   </applicationListeners>
+
+  <projectListeners>
+    <listener class="jetbrains.mps.vcs.changesmanager.editor.EditorHighlighterFactory$MyEditorComponentCreateListener"
+              topic="jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener"
+              activeInHeadlessMode="false"/>
+  </projectListeners>
 
   <actions>
     <group id="EditorFixAddition">
@@ -78,6 +80,7 @@
 
     <projectService serviceImplementation="jetbrains.mps.vcs.changesmanager.tree.TreeHighlighterFactory" />
     <projectService serviceImplementation="jetbrains.mps.vcs.changesmanager.tree.FeatureForestMapSupport" />
+    <projectService serviceImplementation="jetbrains.mps.vcs.changesmanager.editor.EditorHighlighterFactory" />
 
     <diff.DiffTool implementation="jetbrains.mps.vcs.platform.integration.ModelDiffTool"/>
     <diff.merge.MergeTool implementation="jetbrains.mps.vcs.platform.integration.ModelMergeTool"/>

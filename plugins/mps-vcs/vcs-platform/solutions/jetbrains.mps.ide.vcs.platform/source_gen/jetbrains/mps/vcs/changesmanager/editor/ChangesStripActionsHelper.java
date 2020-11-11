@@ -72,8 +72,8 @@ public final class ChangesStripActionsHelper {
   }
   @Nullable
   private EditorHighlighter getHighlighter() {
-    EditorComponent editorComponent = (EditorComponent) myEditorContext.getEditorComponent();
-    return check_ikrecr_a1a01(myProject.getComponent(EditorHighlighterFactory.class), editorComponent);
+    jetbrains.mps.openapi.editor.EditorComponent editorComponent = myEditorContext.getEditorComponent();
+    return check_ikrecr_a1a01(EditorHighlighterFactory.getInstance(myProject.getProject()), editorComponent);
   }
   @Nullable
   private ChangeStripsPainter getPainter() {
@@ -232,7 +232,7 @@ public final class ChangesStripActionsHelper {
     }
 
   }
-  private static EditorHighlighter check_ikrecr_a1a01(EditorHighlighterFactory checkedDotOperand, EditorComponent editorComponent) {
+  private static EditorHighlighter check_ikrecr_a1a01(EditorHighlighterFactory checkedDotOperand, jetbrains.mps.openapi.editor.EditorComponent editorComponent) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getHighlighter(editorComponent);
     }

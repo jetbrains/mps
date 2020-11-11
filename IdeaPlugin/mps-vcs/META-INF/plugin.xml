@@ -34,10 +34,6 @@
       <implementation-class>jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry</implementation-class>
       <skipForDefaultProject/>
     </component>
-    <component>
-      <implementation-class>jetbrains.mps.vcs.changesmanager.editor.EditorHighlighterFactory</implementation-class>
-      <skipForDefaultProject/>
-    </component>
   </project-components>
 
   <extensions defaultExtensionNs="com.intellij">
@@ -55,6 +51,7 @@
       <implementation-class>jetbrains.mps.ide.platform.watching.ModelCacheReloader</implementation-class>
     </component>
   </application-components>
+
   <extensions defaultExtensionNs="com.intellij">
     <mps.LanguageLibrary dir="/"/>
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
@@ -64,8 +61,16 @@
 
     <applicationService serviceInterface="jetbrains.mps.vcs.platform.mergedriver.MergeDriverPacker"
                         serviceImplementation="jetbrains.mps.vcs.MergeDriverPackerImpl" />
+    <projectService serviceImplementation="jetbrains.mps.vcs.changesmanager.editor.EditorHighlighterFactory" />
 
   </extensions>
+
+  <projectListeners>
+    <listener class="jetbrains.mps.vcs.changesmanager.editor.EditorHighlighterFactory$MyEditorComponentCreateListener"
+              topic="jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener"
+              activeInHeadlessMode="false"/>
+  </projectListeners>
+
   <project-components>
     <component>
       <implementation-class>jetbrains.mps.vcs.changesmanager.NodeFileStatusMapping</implementation-class>
