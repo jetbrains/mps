@@ -42,7 +42,7 @@ public class ParagraphCollectionActions {
         SNode currentLetter = SNodeOperations.as(selectedNodes.get(0), CONCEPTS.TextualElement$9C);
 
         EditorCell cell = selection.getEditorCell();
-        SNode nodeAbove = LetterRangeSelection.findNodeAbove(currentLetter, cell);
+        SNode nodeAbove = LetterRangeSelection.findNodeAbove(cell);
         if (nodeAbove == null) {
           SNode currentLine = SNodeOperations.as(SNodeOperations.getParent(currentLetter), CONCEPTS.Paragraph$XF);
           LetterRangeSelection ws = new LetterRangeSelection(editorContext.getEditorComponent(), Sequence.fromIterable(Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(currentLine)).first(), currentLetter, false);
@@ -102,7 +102,7 @@ public class ParagraphCollectionActions {
         SNode currentLetter = SNodeOperations.as(selectedNodes.get(0), CONCEPTS.TextualElement$9C);
 
         EditorCell cell = selection.getEditorCell();
-        SNode nodeBelow = LetterRangeSelection.findNodeBelow(currentLetter, cell);
+        SNode nodeBelow = LetterRangeSelection.findNodeBelow(cell);
         SNode nextSelectableNode = (pos != 0 ? LetterRangeSelection.getNextSelectableNode(currentLetter, true) : null);
         if (nodeBelow == null) {
           SNode currentLine = SNodeOperations.as(SNodeOperations.getParent(currentLetter), CONCEPTS.Paragraph$XF);

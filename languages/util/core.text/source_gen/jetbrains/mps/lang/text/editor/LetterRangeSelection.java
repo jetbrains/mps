@@ -44,6 +44,7 @@ import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -339,14 +340,14 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
       @Override
       public void doExecute() {
         if (!(myGrowingForward)) {
-          SNode nodeBelowFirst = findNodeBelow(myFirstNode, getFirstCell());
+          SNode nodeBelowFirst = findNodeBelow(getFirstCell());
           if (nodeBelowFirst == null) {
             selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), myLastNode, myLastNode, false));
           } else {
             selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), nodeBelowFirst, myLastNode, false));
           }
         } else {
-          SNode nodeBelowLast = findNodeBelow(myLastNode, getLastCell());
+          SNode nodeBelowLast = findNodeBelow(getLastCell());
           if (nodeBelowLast == null) {
             selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), myFirstNode, Sequence.fromIterable(Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(myLastParentNode)).last(), true));
           } else {
@@ -362,14 +363,14 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
       @Override
       public void doExecute() {
         if (myGrowingForward) {
-          SNode nodeAboveLast = findNodeAbove(myLastNode, getLastCell());
+          SNode nodeAboveLast = findNodeAbove(getLastCell());
           if (nodeAboveLast == null) {
             selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), myFirstNode, myFirstNode, true));
           } else {
             selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), myFirstNode, nodeAboveLast, true));
           }
         } else {
-          SNode nodeAboveFirst = findNodeAbove(myFirstNode, getFirstCell());
+          SNode nodeAboveFirst = findNodeAbove(getFirstCell());
           if (nodeAboveFirst == null) {
             selectionManager.pushSelection(new LetterRangeSelection(getEditorComponent(), Sequence.fromIterable(Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(myFirstParentNode)).first(), myLastNode, false));
           } else {
@@ -604,29 +605,34 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
     }
   }
 
-  public static SNode findNodeAbove(SNode node, EditorCell cell) {
-    EditorCell rootCell = cell.getRootParent();
-    EditorCell currentCell = cell;
-    EditorCell foundLeaf = rootCell.findLeaf(currentCell.getX(), currentCell.getY() - currentCell.getHeight());
-    while ((foundLeaf == null && currentCell.getPrevSibling() != null)) {
-      currentCell = currentCell.getPrevSibling();
-      foundLeaf = rootCell.findLeaf(currentCell.getX(), currentCell.getY() - currentCell.getHeight());
-    }
-    return (foundLeaf != null ? SNodeOperations.as(foundLeaf.getSNode(), CONCEPTS.TextualElement$9C) : null);
+  public static SNode findNodeAbove(EditorCell cell) {
+    return findNodeArround(cell, true);
   }
 
-  public static SNode findNodeBelow(SNode node, EditorCell cell) {
+  public static SNode findNodeBelow(EditorCell cell) {
+    return findNodeArround(cell, false);
+  }
+
+  private static SNode findNodeArround(EditorCell cell, boolean above) {
     EditorCell rootCell = cell.getRootParent();
     EditorCell currentCell = cell;
-    EditorCell foundLeaf = rootCell.findLeaf(currentCell.getX(), currentCell.getY() + currentCell.getHeight());
-    while ((foundLeaf == null && currentCell.getPrevSibling() != null)) {
-      currentCell = currentCell.getPrevSibling();
-      foundLeaf = rootCell.findLeaf(currentCell.getX(), currentCell.getY() + currentCell.getHeight());
+    EditorCell foundLeaf = rootCell.findLeaf(currentCell.getX(), (above ? currentCell.getY() - currentCell.getHeight() : currentCell.getY() + currentCell.getHeight()));
+    while ((foundLeaf == null)) {
+      if (currentCell.getPrevSibling() == null) {
+        EditorCell_Collection parent = currentCell.getParent();
+        currentCell = parent.getPrevSibling();
+        if (currentCell == null) {
+          break;
+        }
+      } else {
+        currentCell = currentCell.getPrevSibling();
+      }
+      foundLeaf = rootCell.findLeaf(currentCell.getX(), (above ? currentCell.getY() - currentCell.getHeight() : currentCell.getY() + currentCell.getHeight()));
     }
     if (foundLeaf != null) {
       SNode foundNode = foundLeaf.getSNode();
       if (SNodeOperations.isInstanceOf(foundNode, CONCEPTS.Paragraph$XF)) {
-        foundNode = Sequence.fromIterable(Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(SNodeOperations.as(foundNode, CONCEPTS.Paragraph$XF))).last();
+        foundNode = (Objects.equals(foundLeaf.getCellId(), "Initial_Paragraph_Space") ? Sequence.fromIterable(Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(SNodeOperations.as(foundNode, CONCEPTS.Paragraph$XF))).first() : Sequence.fromIterable(Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(SNodeOperations.as(foundNode, CONCEPTS.Paragraph$XF))).last());
       }
       return SNodeOperations.as(foundNode, CONCEPTS.TextualElement$9C);
     }
