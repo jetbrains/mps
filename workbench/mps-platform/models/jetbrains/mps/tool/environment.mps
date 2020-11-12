@@ -1747,6 +1747,20 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="1Uk_Yg6VYNY" role="3cqZAp">
+          <node concept="2YIFZM" id="1Uk_Yg6VZ6N" role="3clFbG">
+            <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
+            <ref role="37wK5l" to="wyt6:~System.setProperty(java.lang.String,java.lang.String)" resolve="setProperty" />
+            <node concept="Xl_RD" id="1Uk_Yg6VZ6O" role="37wK5m">
+              <property role="Xl_RC" value="ide.new.project.model" />
+            </node>
+            <node concept="2YIFZM" id="1Uk_Yg6VZ6P" role="37wK5m">
+              <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
+              <ref role="37wK5l" to="wyt6:~Boolean.toString(boolean)" resolve="toString" />
+              <node concept="3clFbT" id="1Uk_Yg6VZ6Q" role="37wK5m" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbJ" id="4OPNMy2cD0Q" role="3cqZAp">
           <node concept="3clFbS" id="4OPNMy2cD0S" role="3clFbx">
             <node concept="3cpWs8" id="2Tuefk2gna7" role="3cqZAp">

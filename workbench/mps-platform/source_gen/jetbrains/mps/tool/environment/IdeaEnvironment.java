@@ -182,6 +182,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
       // I doubt there's any reason for an end-user to see this statistics in a regular MPS scenario. Still, they could opt to do so with system property explicitly set. 
       System.setProperty(PERF_LOG_KEY, Boolean.FALSE.toString());
     }
+    System.setProperty("ide.new.project.model", Boolean.toString(false));
     if (myConfig.isTestMode()) {
       String oldValue = System.getProperty(CREATE_PLUGIN_CLASSLOADERS);
       if (oldValue == null) {
