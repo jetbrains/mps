@@ -6277,7 +6277,7 @@
                         <ref role="37wK5l" to="w1kc:~SModelId.generate()" resolve="generate" />
                       </node>
                       <node concept="Xl_RD" id="5zPLqcHNt$h" role="37wK5m">
-                        <property role="Xl_RC" value="&lt;empty merge model&gt;" />
+                        <property role="Xl_RC" value="&lt;empty_merge_model&gt;" />
                       </node>
                     </node>
                   </node>
