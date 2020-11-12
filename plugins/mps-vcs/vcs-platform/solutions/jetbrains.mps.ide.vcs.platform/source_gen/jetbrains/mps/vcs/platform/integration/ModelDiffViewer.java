@@ -142,7 +142,7 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
   @Nullable
   private static SModel readModel(DiffContent content, FileType type) {
     if (content instanceof EmptyContent) {
-      return new MergeTemporaryModel(new SModelReference(null, SModelId.generate(), "<empty merge model>"), true);
+      return new MergeTemporaryModel(new SModelReference(null, SModelId.generate(), "<empty_merge_model>"), true);
     }
 
     if (content instanceof FileContent) {
