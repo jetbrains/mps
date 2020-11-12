@@ -7,11 +7,12 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
+import java.util.HashMap;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -24,12 +25,17 @@ public class ChangeMethodSignatureRefactoring {
   private ChangeMethodSignatureParameters myParameters;
   private SNode myDeclaration;
   private List<SNode> myUssages = new ArrayList<SNode>();
-  private Map<SNode, SNode> defaultValues;
-  public ChangeMethodSignatureRefactoring(ChangeMethodSignatureParameters params, SNode declaration, Map<SNode, SNode> defaultValues) {
-    this.myParameters = params;
+  private Map<SNode, SNode> myDefaultValues;
+
+  public ChangeMethodSignatureRefactoring(ChangeMethodSignatureParameters parameters, SNode declaration, Map<SNode, SNode> defaultValues) {
+    this.myParameters = parameters;
     this.myDeclaration = declaration;
-    this.defaultValues = defaultValues;
+    this.myDefaultValues = defaultValues;
   }
+  public ChangeMethodSignatureRefactoring(ChangeMethodSignatureParameters params, SNode declaration) {
+    this(params, declaration, MapSequence.fromMap(new HashMap<SNode, SNode>()));
+  }
+
   public void doRefactoring() {
     SPropertyOperations.assign(this.myDeclaration, PROPS.name$MnvL, SPropertyOperations.getString(this.myParameters.getDeclaration(), PROPS.name$MnvL));
     if (this.myParameters.isReturnValueChanged()) {
@@ -53,8 +59,8 @@ public class ChangeMethodSignatureRefactoring {
         int index = ListSequence.fromList(this.myParameters.getIdList()).indexOf(parameter.getNodeId().toString());
         if (index != -1) {
           call.addArgument(ListSequence.fromList(oldArgs).getElement(index));
-        } else if (MapSequence.fromMap(defaultValues).containsKey(parameter)) {
-          call.addArgument(SNodeOperations.copyNode(MapSequence.fromMap(defaultValues).get(parameter)));
+        } else if (MapSequence.fromMap(myDefaultValues).containsKey(parameter)) {
+          call.addArgument(SNodeOperations.copyNode(MapSequence.fromMap(myDefaultValues).get(parameter)));
         } else {
           call.addArgument(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cd6167L, "jetbrains.mps.baseLanguage.structure.NullLiteral")));
         }
