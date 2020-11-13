@@ -65,7 +65,6 @@ import org.jetbrains.mps.openapi.language.SProperty;
     style.set(StyleAttributes.INDENT_LAYOUT_WRAP_ANCHOR, true);
     style.set(StyleAttributes.INDENT_LAYOUT_INDENT_ANCHOR, true);
     style.set(StyleAttributes.INDENT_LAYOUT_NO_WRAP, false);
-    style.set(StyleAttributes.DRAW_BORDER, true);
     editorCell.getStyle().putAll(style);
     ParagraphActions.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.addEditorCell(createConstant_0());

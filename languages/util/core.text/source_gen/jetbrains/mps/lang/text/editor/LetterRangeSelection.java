@@ -130,24 +130,27 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
     }
   }
   private void initSelectedCells() throws CellNotFoundException {
-    List<EditorCell> selectedCells = new ArrayList<EditorCell>();
+    final List<EditorCell> selectedCells = new ArrayList<EditorCell>();
     boolean withinSelection = false;
     boolean breakLoop = false;
+    EditorCell currentCell = null;
     for (SNode child : getChildIterable(myFirstParentNode)) {
       if (Objects.equals(myFirstNode, child) || Objects.equals(myLastNode, child)) {
         if (withinSelection || Objects.equals(myFirstNode, myLastNode)) {
           breakLoop = true;
         }
-        if (!(withinSelection)) {
-          withinSelection = true;
-        }
+        withinSelection = true;
       }
       if (withinSelection) {
-        EditorCell editorCell = getEditorComponent().findNodeCell(child);
+        EditorCell editorCell = (currentCell != null ? currentCell.getNextSibling() : null);
+        if (editorCell == null) {
+          editorCell = getEditorComponent().findNodeCell(child);
+        }
         if (editorCell == null) {
           throw new CellNotFoundException(child);
         }
         selectedCells.add(editorCell);
+        currentCell = editorCell;
       }
       if (breakLoop) {
         break;
@@ -582,8 +585,8 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
   }
   public static Iterable<? extends SNode> getChildIterable(SNode paragraph) {
     return Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(paragraph, true), CONCEPTS.Paragraph$XF)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode line) {
-        return (Iterable<SNode>) Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(line);
+      public Iterable<SNode> translate(SNode p) {
+        return (Iterable<SNode>) Paragraph__BehaviorDescriptor.getTextualElements_id250QDwq2ueg.invoke(p);
       }
     });
   }
