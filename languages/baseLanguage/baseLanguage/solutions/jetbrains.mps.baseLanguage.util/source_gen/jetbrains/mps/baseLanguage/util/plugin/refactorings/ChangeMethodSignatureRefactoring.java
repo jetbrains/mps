@@ -24,7 +24,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class ChangeMethodSignatureRefactoring {
   private ChangeMethodSignatureParameters myParameters;
   private SNode myDeclaration;
-  private List<SNode> myUssages = new ArrayList<SNode>();
+  private List<SNode> myUsages = new ArrayList<SNode>();
   private Map<SNode, SNode> myDefaultValues;
 
   public ChangeMethodSignatureRefactoring(ChangeMethodSignatureParameters parameters, SNode declaration, Map<SNode, SNode> defaultValues) {
@@ -51,7 +51,7 @@ public class ChangeMethodSignatureRefactoring {
     for (SNode throwItem : ListSequence.fromList(SLinkOperations.getChildren(this.myParameters.getDeclaration(), LINKS.throwsItem$CdW$))) {
       ListSequence.fromList(SLinkOperations.getChildren(this.myDeclaration, LINKS.throwsItem$CdW$)).addElement(SNodeOperations.copyNode(throwItem));
     }
-    for (SNode node : ListSequence.fromList(this.myUssages)) {
+    for (SNode node : ListSequence.fromList(this.myUsages)) {
       MethodCallAdapter call = new MethodCallAdapter(node);
       List<SNode> oldArgs = ListSequence.fromListWithValues(new ArrayList<SNode>(), call.getMethodArguments());
       call.removeArguments();
@@ -85,8 +85,8 @@ public class ChangeMethodSignatureRefactoring {
       }
     }
   }
-  public void setUsages(List<SNode> ussages) {
-    this.myUssages = ussages;
+  public void setUsages(List<SNode> usages) {
+    this.myUsages = usages;
   }
   public static boolean isApplicable(SNode node) {
     return (SNodeOperations.getNodeAncestor(node, CONCEPTS.Classifier$Ix, false, false) != null) && (SNodeOperations.isInstanceOf(node, CONCEPTS.InstanceMethodDeclaration$39) || SNodeOperations.isInstanceOf(node, CONCEPTS.StaticMethodDeclaration$FJ));
