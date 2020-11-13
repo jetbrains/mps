@@ -85,7 +85,7 @@
       <root url="jar://$PROJECT_DIR$/lib/jackson-annotations-2.11.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jackson-core-2.11.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jackson-databind-2.11.0.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/jediterm-pty-2.31.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jediterm-pty-2.32.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jing-20030619.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jshell-frontend.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/xmlbeans-2.6.0.jar!/" />
@@ -95,8 +95,8 @@
       <root url="jar://$PROJECT_DIR$/lib/miglayout-swing-5.2.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/xml-apis-ext-1.3.04.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/xmlgraphics-commons-2.4.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/intellij-coverage-agent-1.0.512.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/intellij-test-discovery-agent-1.0.512.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/intellij-coverage-agent-1.0.573.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/intellij-test-discovery-agent-1.0.573.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/intellij-dvcs.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/intellij-xml.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/java-compatibility-1.0.1.jar!/" />
