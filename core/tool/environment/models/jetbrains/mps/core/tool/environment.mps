@@ -1112,24 +1112,50 @@
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="6BLo1MgrCpg" role="3clF47">
         <node concept="3cpWs6" id="6BLo1MgrCph" role="3cqZAp">
-          <node concept="2OqwBi" id="5Ks7c$vfHVI" role="3cqZAk">
-            <node concept="1rXfSq" id="6BLo1MgrCpi" role="2Oq$k0">
-              <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
-              <node concept="Xl_RD" id="6BLo1MgrCpj" role="37wK5m">
-                <property role="Xl_RC" value="mps-vcs" />
+          <node concept="2OqwBi" id="7ZTspgD769p" role="3cqZAk">
+            <node concept="2OqwBi" id="5Ks7c$vfHVI" role="2Oq$k0">
+              <node concept="1rXfSq" id="6BLo1MgrCpi" role="2Oq$k0">
+                <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
+                <node concept="Xl_RD" id="6BLo1MgrCpj" role="37wK5m">
+                  <property role="Xl_RC" value="mps-vcs" />
+                </node>
+                <node concept="Xl_RD" id="6BLo1MgrCpk" role="37wK5m">
+                  <property role="Xl_RC" value="jetbrains.mps.vcs" />
+                </node>
               </node>
-              <node concept="Xl_RD" id="6BLo1MgrCpk" role="37wK5m">
-                <property role="Xl_RC" value="jetbrains.mps.vcs" />
+              <node concept="liA8E" id="5Ks7c$vfImO" role="2OqNvi">
+                <ref role="37wK5l" node="6BLo1MgrGos" resolve="withGit4IdeaPlugin" />
               </node>
             </node>
-            <node concept="liA8E" id="5Ks7c$vfImO" role="2OqNvi">
-              <ref role="37wK5l" node="6BLo1MgrGos" resolve="withGit4IdeaPlugin" />
+            <node concept="liA8E" id="7ZTspgD77w6" role="2OqNvi">
+              <ref role="37wK5l" node="7ZTspgD72Ha" resolve="withSubversionPlugin" />
             </node>
           </node>
         </node>
       </node>
       <node concept="3Tm1VV" id="6BLo1MgrCpl" role="1B3o_S" />
       <node concept="3uibUv" id="6BLo1MgrCpm" role="3clF45">
+        <ref role="3uigEE" node="6rx4kZDk5A9" resolve="EnvironmentConfig" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="7ZTspgD70wj" role="jymVt" />
+    <node concept="3clFb_" id="7ZTspgD72Ha" role="jymVt">
+      <property role="TrG5h" value="withSubversionPlugin" />
+      <node concept="3clFbS" id="7ZTspgD72Hb" role="3clF47">
+        <node concept="3cpWs6" id="7ZTspgD72Hc" role="3cqZAp">
+          <node concept="1rXfSq" id="7ZTspgD72Hd" role="3cqZAk">
+            <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
+            <node concept="Xl_RD" id="7ZTspgD72He" role="37wK5m">
+              <property role="Xl_RC" value="svn4idea" />
+            </node>
+            <node concept="Xl_RD" id="7ZTspgD72Hf" role="37wK5m">
+              <property role="Xl_RC" value="Subversion" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="7ZTspgD72Hg" role="1B3o_S" />
+      <node concept="3uibUv" id="7ZTspgD72Hh" role="3clF45">
         <ref role="3uigEE" node="6rx4kZDk5A9" resolve="EnvironmentConfig" />
       </node>
     </node>

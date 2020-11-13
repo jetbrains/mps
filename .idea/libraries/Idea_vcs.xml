@@ -1,10 +1,11 @@
 <component name="libraryTable">
   <library name="Idea-vcs">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/plugins/git4idea/lib/resources_en.jar!/" />
-      <root url="jar://$PROJECT_DIR$/plugins/git4idea/lib/git4idea.jar!/" />
-      <root url="jar://$PROJECT_DIR$/plugins/svn4idea/lib/svn4idea.jar!/" />
       <root url="jar://$PROJECT_DIR$/plugins/git4idea/lib/git4idea-rt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/plugins/git4idea/lib/git4idea.jar!/" />
+      <root url="jar://$PROJECT_DIR$/plugins/git4idea/lib/resources_en.jar!/" />
+      <root url="jar://$PROJECT_DIR$/plugins/svn4idea/lib/resources_en.jar!/" />
+      <root url="jar://$PROJECT_DIR$/plugins/svn4idea/lib/svn4idea.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

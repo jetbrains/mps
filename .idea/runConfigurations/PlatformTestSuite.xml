@@ -5,7 +5,7 @@
     <option name="MAIN_CLASS_NAME" value="jetbrains.mps.testsuites.PlatformTestSuite" />
     <option name="METHOD_NAME" value="" />
     <option name="TEST_OBJECT" value="class" />
-    <option name="VM_PARAMETERS" value="-ea -Dmps.junit.project=. -Xmx2048m -XX:NewSize=384m -XX:+HeapDumpOnOutOfMemoryError -noverify -client -Duse.loaded.state.as.existing=false -Dmps.internal=true -Didea.indices.psi.dependent.default=false" />
+    <option name="VM_PARAMETERS" value="-ea -Dmps.junit.project=. -Xmx2048m -XX:NewSize=384m -XX:+HeapDumpOnOutOfMemoryError -noverify -client -Duse.loaded.state.as.existing=false -Dmps.internal=true -Didea.indices.psi.dependent.default=false -Didea.use.core.classloader.for.plugin.path=true" />
     <option name="PARAMETERS" value="" />
     <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     <RunnerSettings RunnerId="Debug">
