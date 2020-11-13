@@ -8,13 +8,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.typechecking.TypecheckingFacade;
+import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -31,49 +29,42 @@ public class ChangeMethodSignatureFromCall_QuickFix extends QuickFix_Runtime {
   public void execute(SNode node) {
     SNode originalMethod = SLinkOperations.getTarget(((SNode) ChangeMethodSignatureFromCall_QuickFix.this.getField("call")[0]), LINKS.baseMethodDeclaration$pyYw);
 
-    final int currentParamCount = ListSequence.fromList(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj)).count();
+    final MethodParameterMatcher matcher = new MethodParameterMatcher(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj), SLinkOperations.getChildren(((SNode) ChangeMethodSignatureFromCall_QuickFix.this.getField("call")[0]), LINKS.actualArgument$pzdx));
+    final List<SNode> callTypes = matcher.getCallParamTypes();
+    final Integer[] matching = matcher.findAppropriateMatching();
 
-    if (ListSequence.fromList(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj)).count() > ListSequence.fromList(SLinkOperations.getChildren(((SNode) ChangeMethodSignatureFromCall_QuickFix.this.getField("call")[0]), LINKS.actualArgument$pzdx)).count()) {
-      for (int i = ListSequence.fromList(SLinkOperations.getChildren(((SNode) ChangeMethodSignatureFromCall_QuickFix.this.getField("call")[0]), LINKS.actualArgument$pzdx)).count(); i < currentParamCount; i++) {
-        ListSequence.fromList(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj)).removeLastElement();
+    List<SNode> newParameters = ListSequence.fromList(callTypes).select(new ISelector<SNode, SNode>() {
+      public SNode select(SNode it) {
+        return (SNode) null;
+      }
+    }).toListSequence();
+
+    // First add the previously defined parameters 
+    for (int i = 0; i < matching.length; i++) {
+      if (matching[i] >= 0) {
+        ListSequence.fromList(newParameters).setElement(matching[i], ListSequence.fromList(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj)).getElement(i));
       }
     }
 
-    for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(((SNode) ChangeMethodSignatureFromCall_QuickFix.this.getField("call")[0]), LINKS.actualArgument$pzdx)).count(); i++) {
-      SNode argument = SNodeOperations.as(SLinkOperations.getChildren(((SNode) ChangeMethodSignatureFromCall_QuickFix.this.getField("call")[0]), LINKS.actualArgument$pzdx).get(i), CONCEPTS.Expression$mB);
-      SNode argType = (argument != null && !(SNodeOperations.getConcept(argument).isAbstract()) ? TypecheckingFacade.getFromContext().getTypeOf(argument) : createClassifierType_g0kn4c_a0a1a6a2());
-
-      if (SNodeOperations.isInstanceOf(argType, CONCEPTS.RuntimeTypeVariable$4a)) {
-        argType = createClassifierType_g0kn4c_a0a0d0g0c();
-      }
-      SNode currentParameter;
-      if (ListSequence.fromList(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj)).count() > i) {
-        currentParameter = SNodeOperations.as(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj).get(i), CONCEPTS.ParameterDeclaration$RG);
-      } else {
-        currentParameter = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration"));
-        ListSequence.fromList(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj)).addElement(currentParameter);
-        SPropertyOperations.assign(currentParameter, PROPS.name$MnvL, ParameterNameUtil.suggestParameterName(argument, SNodeOperations.as(argType, CONCEPTS.Type$bu), ListSequence.fromList(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj)).select(new ISelector<SNode, String>() {
+    // Then fill the parameters with new parameters 
+    for (int i = 0; i < ListSequence.fromList(callTypes).count(); i++) {
+      if ((ListSequence.fromList(newParameters).getElement(i) == null)) {
+        // Create new parameter matching type 
+        SNode param = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration"));
+        SPropertyOperations.assign(param, PROPS.name$MnvL, ParameterNameUtil.suggestParameterName(ListSequence.fromList(SLinkOperations.getChildren(((SNode) ChangeMethodSignatureFromCall_QuickFix.this.getField("call")[0]), LINKS.actualArgument$pzdx)).getElement(i), SNodeOperations.as(ListSequence.fromList(callTypes).getElement(i), CONCEPTS.Type$bu), ListSequence.fromList(newParameters).select(new ISelector<SNode, String>() {
           public String select(SNode it) {
             return SPropertyOperations.getString(it, PROPS.name$MnvL);
           }
         })));
-      }
-      if (SLinkOperations.getTarget(currentParameter, LINKS.type$a1UY) == null || !(TypecheckingFacade.getFromContext().isSubtype(argType, SLinkOperations.getTarget(currentParameter, LINKS.type$a1UY)))) {
-        SLinkOperations.setTarget(currentParameter, LINKS.type$a1UY, SNodeOperations.as(argType, CONCEPTS.Type$bu));
+        SLinkOperations.setTarget(param, LINKS.type$a1UY, SNodeOperations.as(SNodeOperations.copyNode(ListSequence.fromList(callTypes).getElement(i)), CONCEPTS.Type$bu));
+
+        ListSequence.fromList(newParameters).setElement(i, param);
       }
     }
-  }
-  private static SNode createClassifierType_g0kn4c_a0a1a6a2() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassifierType$bL);
-    n0.setReference(LINKS.classifier$cxMr, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Object")));
-    return n0.getResult();
-  }
-  private static SNode createClassifierType_g0kn4c_a0a0d0g0c() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ClassifierType$bL);
-    n0.setReference(LINKS.classifier$cxMr, new SNodePointer(facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Object")));
-    return n0.getResult();
+
+    // Perform refactoring 
+    ListSequence.fromList(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj)).clear();
+    ListSequence.fromList(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj)).addSequence(ListSequence.fromList(newParameters));
   }
 
   private static final class LINKS {
@@ -81,16 +72,11 @@ public class ChangeMethodSignatureFromCall_QuickFix extends QuickFix_Runtime {
     /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
     /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
     /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
-    /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
-    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
-    /*package*/ static final SConcept RuntimeTypeVariable$4a = MetaAdapterFactory.getConcept(0x7a5dda6291404668L, 0xab76d5ed1746f2b2L, 0x113f84956fbL, "jetbrains.mps.lang.typesystem.structure.RuntimeTypeVariable");
-    /*package*/ static final SConcept ParameterDeclaration$RG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
     /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
-    /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
   }
 
   private static final class PROPS {
