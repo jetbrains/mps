@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,6 @@ import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelName;
@@ -288,19 +287,24 @@ public abstract class PersistenceFacade {
   /**
    * Navigation participants speed-up building Go to lists by indexing the available targets.
    * see {@link NavigationParticipant}
+   * @deprecated No reason to keep this in PersistenceComponent, NavigationParticipant API is cumbersome. Need a replacement API.
    */
+  @Deprecated(forRemoval = true)
+  @ToRemove(version = 2020.3)
   public abstract Set<NavigationParticipant> getNavigationParticipants();
 
   /**
-   * @deprecated see {@link #addFindUsagesParticipant(FindUsagesParticipant)} for reasons
+   * @deprecated see {@link #getNavigationParticipants()}
    */
-  @Deprecated
+  @Deprecated(forRemoval = true)
+  @ToRemove(version = 2020.3)
   public abstract void addNavigationParticipant(NavigationParticipant participant);
 
   /**
-   * @deprecated see {@link #addFindUsagesParticipant(FindUsagesParticipant)} for reasons
+   * @deprecated see {@link #getNavigationParticipants()}
    */
-  @Deprecated
+  @Deprecated(forRemoval = true)
+  @ToRemove(version = 2020.3)
   public abstract void removeNavigationParticipant(NavigationParticipant participant);
 
   public static final class IncorrectModelReferenceFormatException extends IllegalArgumentException {

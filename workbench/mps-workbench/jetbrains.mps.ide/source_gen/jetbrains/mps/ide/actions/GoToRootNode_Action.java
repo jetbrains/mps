@@ -18,7 +18,6 @@ import jetbrains.mps.scope.ConditionalScope;
 import org.jetbrains.mps.util.Condition;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.SModelStereotype;
-import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.project.GlobalScope;
 import jetbrains.mps.workbench.choose.NavigationTargetScopeIterable;
@@ -64,20 +63,20 @@ public class GoToRootNode_Action extends BaseAction {
     final ChooseByNameData<NavigationParticipant.NavigationTarget> gotoData = new ChooseByNameData<NavigationParticipant.NavigationTarget>(new NavigationTargetPresentation());
     gotoData.derivePrompts("node").setCheckBoxName("Include stub and non-project models");
 
-    final ConditionalScope localScope = new ConditionalScope(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getScope(), null, new Condition<SModel>() {
+    MPSProject project = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject"));
+    final ConditionalScope localScope = new ConditionalScope(project.getScope(), null, new Condition<SModel>() {
       public boolean met(SModel m) {
         return !(SModelStereotype.isStubModel(m));
       }
     });
 
-    final SRepository repo = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository();
     // XXX I suppose the moment we get to project own repo, ProjectScope.getModels/getModules would result in *project* modules only,  
     //      while project repository would give access to modules from dependant repositories as well 
-    final SearchScope globalScope = new GlobalScope(repo);
+    final SearchScope globalScope = new GlobalScope(project.getRepository());
 
-    gotoData.setScope(new NavigationTargetScopeIterable(localScope, repo), new NavigationTargetScopeIterable(globalScope, repo));
+    gotoData.setScope(new NavigationTargetScopeIterable(localScope, project), new NavigationTargetScopeIterable(globalScope, project));
 
-    final ChooseByNamePopup popup = MpsPopupFactory.createNodePopup(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getProject(), gotoData, GoToRootNode_Action.this.savedText, GoToRootNode_Action.this);
+    final ChooseByNamePopup popup = MpsPopupFactory.createNodePopup(project.getProject(), gotoData, GoToRootNode_Action.this.savedText, GoToRootNode_Action.this);
 
     popup.invoke(new ChooseByNamePopupComponent.Callback() {
       @Override

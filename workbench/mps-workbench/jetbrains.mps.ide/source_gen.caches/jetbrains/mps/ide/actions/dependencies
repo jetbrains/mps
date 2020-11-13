@@ -1642,7 +1642,6 @@
     <classNode dependClassName="jetbrains.mps.workbench.goTo.ui.MpsPopupFactory" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.module.SRepository" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SearchScope" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.NavigationParticipant" />
     <classNode dependClassName="org.jetbrains.mps.util.Condition" />

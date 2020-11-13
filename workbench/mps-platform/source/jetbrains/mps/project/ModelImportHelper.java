@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -132,7 +132,7 @@ public class ModelImportHelper {
     ConditionalScope localScope = new ConditionalScope(myProject.getScope(), null, NotCondition.negate(SModelStereotype::isStubModel));
     SearchScope globalScope = new AllUserModelsScope();
     final SRepository repo = myProject.getRepository();
-    gotoData.setScope(new NavigationTargetScopeIterable(localScope, repo), new NavigationTargetScopeIterable(globalScope, repo));
+    gotoData.setScope(new NavigationTargetScopeIterable(localScope, myProject), new NavigationTargetScopeIterable(globalScope, myProject));
 
     ChooseByNamePopup popup = MpsPopupFactory.createNodePopup(myProject.getProject(), gotoData, myInitialText, null);
     if (myShortcut != null) {

@@ -26,7 +26,7 @@ public abstract class StubsClassChooserDialog extends DialogWrapper {
   public StubsClassChooserDialog(Project project, String text) throws HeadlessException {
     super(project);
     setTitle(text);
-    myModel = new ChooseFromStubsByNameModel(ProjectHelper.toMPSProject(project)) {
+    myModel = new ChooseFromStubsByNameModel(ProjectHelper.fromIdeaProject(project)) {
       @Override
       protected boolean isValid(SNode node) {
         return StubsClassChooserDialog.this.isValid(node);

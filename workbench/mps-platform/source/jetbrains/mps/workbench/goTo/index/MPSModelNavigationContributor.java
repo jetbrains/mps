@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,9 @@
  */
 package jetbrains.mps.workbench.goTo.index;
 
-import com.intellij.openapi.components.ApplicationComponent;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.extapi.persistence.FileDataSource;
-import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.smodel.SNodeUtil;
@@ -28,12 +27,10 @@ import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.workbench.index.RootNodeNameIndex;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.NavigationParticipant;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.util.Consumer;
 
 import java.util.Arrays;
@@ -46,12 +43,12 @@ import java.util.Set;
  *
  * @see RootNodeNameIndex
  */
-public class MPSModelNavigationContributor implements ApplicationComponent, NavigationParticipant {
+public class MPSModelNavigationContributor implements NavigationParticipant {
   private final Set<String> supportedExtensions = new HashSet<>(Arrays.asList(MPSExtentions.MODEL, MPSExtentions.MODEL_BINARY));
-  private final PersistenceFacade myPersistenceFacade;
+  private final Project myProject;
 
-  public MPSModelNavigationContributor(MPSCoreComponents coreComponents) {
-    myPersistenceFacade = coreComponents.getPersistenceFacade();
+  public MPSModelNavigationContributor(Project ideaProject) {
+    myProject = ideaProject;
   }
 
   @Override
@@ -77,7 +74,7 @@ public class MPSModelNavigationContributor implements ApplicationComponent, Navi
         continue; // e.g. model was deleted or we are in headless mode
       }
 
-      Collection<NavigationTarget> descriptors = RootNodeNameIndex.getValues(vf);
+      Collection<NavigationTarget> descriptors = RootNodeNameIndex.getValues(myProject, vf);
       if (descriptors.isEmpty()) {
         continue;
       }
@@ -98,21 +95,5 @@ public class MPSModelNavigationContributor implements ApplicationComponent, Navi
         processedConsumer.consume(sm);
       }
     }
-  }
-
-  @Override
-  public void initComponent() {
-    myPersistenceFacade.addNavigationParticipant(this);
-  }
-
-  @Override
-  public void disposeComponent() {
-    myPersistenceFacade.removeNavigationParticipant(this);
-  }
-
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return MPSModelNavigationContributor.class.getSimpleName();
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.IndexNotReadyException;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Key;
 import com.intellij.openapi.vfs.VfsUtilCore;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -40,7 +41,6 @@ import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.persistence.IndexAwareModelFactory;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
-import jetbrains.mps.workbench.findusages.ConcreteFilesGlobalSearchScope;
 import jetbrains.mps.workbench.goTo.index.SNodeDescriptor;
 import jetbrains.mps.workbench.index.ModelRootsData.Entry;
 import org.apache.log4j.LogManager;
@@ -59,13 +59,14 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * Indexes .mps files, producing an object that keeps all navigable model roots.
  * Note, it's not a true index, rather a caching mechanism that employs indexing infrastructure (as any
- * SingleEntryFileBasedIndexExtension does). There's only one key to access indexed values, and it's id of the virtual file itself,
- * see {@link #getFileKey(VirtualFile)}. It's not an index as one needs to know file to obtain the key (look at {@link #getValues(VirtualFile)}).
+ * SingleEntryFileBasedIndexExtension does). There's only one key to access indexed values, and it's id of the virtual file itself.
+ * It's not an index as one needs to know file to obtain the key (look at {@link #getValues(Project, VirtualFile)}).
  */
 public class RootNodeNameIndex extends SingleEntryFileBasedIndexExtension<ModelRootsData> {
   @NonNls
@@ -130,37 +131,24 @@ public class RootNodeNameIndex extends SingleEntryFileBasedIndexExtension<ModelR
   }
 
   /**
-   * @return key one needs to access indexed values
-   */
-  public static int getFileKey(@NotNull VirtualFile file) {
-    // this is what SingleEntryIndexer does to associate values with a file, and what
-    // SingleEntryFileBasedIndexExtension shall expose in its API but does not, and every client of it shall
-    // duplicate this implementation logic when trying to access index values (Math.abs() is often overlooked)
-    int fileId = FileBasedIndex.getFileId(file);
-    if (fileId < 0) {
-      System.out.printf("!!!" + file.getPath());
-    }
-    return fileId;
-//    return Math.abs(fileId);
-  }
-
-  /**
    * @return cached, aka 'indexed' values associated with the model file, ready for navigation
    */
   @NotNull
-  public static Collection<NavigationTarget> getValues(@NotNull VirtualFile modelFile) {
-    List<ModelRootsData> descriptors = Collections.emptyList();
+  public static Collection<NavigationTarget> getValues(@NotNull Project project, @NotNull VirtualFile modelFile) {
+    Collection<ModelRootsData> descriptors = Collections.emptyList();
     try {
-      int fileId = RootNodeNameIndex.getFileKey(modelFile);
-      ConcreteFilesGlobalSearchScope fileScope = new ConcreteFilesGlobalSearchScope(Collections.singleton(modelFile));
-      descriptors = FileBasedIndex.getInstance().getValues(RootNodeNameIndex.NAME, fileId, fileScope);
+      descriptors = FileBasedIndex.getInstance().getFileData(RootNodeNameIndex.NAME, modelFile, project).values();
     } catch (ProcessCanceledException | IndexNotReadyException ex) {
       // ignore, fall-through
     }
     if (descriptors.isEmpty()) {
       return Collections.emptyList();
     }
-    ModelRootsData modelEntry = descriptors.get(0); // key is unique for the model
+    if (descriptors.size() > 1) {
+      final String m = descriptors.stream().map(ModelRootsData::getModelReference).map(Objects::toString).collect(Collectors.joining(","));
+      LOG.warn(String.format("Unexpected %d sets of data inside a single model file: %s", descriptors.size(), m));
+    }
+    ModelRootsData modelEntry = descriptors.iterator().next(); // key is unique for the model
     Collection<Entry> entries = modelEntry.getEntries();
     ArrayList<NavigationTarget> rv = new ArrayList<>(entries.size());
     for (Entry e : entries) {

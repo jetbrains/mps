@@ -9,11 +9,12 @@ import java.util.List;
 import org.jetbrains.mps.openapi.persistence.NavigationParticipant;
 import java.util.LinkedHashMap;
 import jetbrains.mps.project.Project;
+import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SModelStereotype;
-import jetbrains.mps.workbench.goTo.navigation.GotoNavigationUtil;
+import jetbrains.mps.workbench.NavigationService;
 import jetbrains.mps.ide.findusages.model.scopes.ModelsScope;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ import org.jetbrains.annotations.NotNull;
 /*package*/ abstract class ChooseFromStubsByNameModel implements ChooseByNameModel {
   private final Map<String, List<NavigationParticipant.NavigationTarget>> myPossibleNodes = new LinkedHashMap<String, List<NavigationParticipant.NavigationTarget>>();
   private final Project myProject;
-  /*package*/ ChooseFromStubsByNameModel(final Project mpsProject) {
+  /*package*/ ChooseFromStubsByNameModel(final MPSProject mpsProject) {
     myProject = mpsProject;
     mpsProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
@@ -40,7 +41,8 @@ import org.jetbrains.annotations.NotNull;
             return SModelStereotype.isStubModel(it);
           }
         });
-        Iterable<NavigationParticipant.NavigationTarget> descr = GotoNavigationUtil.getNavigationTargets(NavigationParticipant.TargetKind.ROOT, new ModelsScope(stubModels), new EmptyProgressMonitor());
+        final NavigationService navService = mpsProject.getProject().getService(NavigationService.class);
+        Iterable<NavigationParticipant.NavigationTarget> descr = navService.getNavigationRoots(new ModelsScope(stubModels), new EmptyProgressMonitor());
 
         for (NavigationParticipant.NavigationTarget descriptor : descr) {
           String name = getName(descriptor);

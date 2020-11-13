@@ -46,14 +46,6 @@
     </component>
 
     <component>
-      <implementation-class>jetbrains.mps.workbench.goTo.index.MPSModelNavigationContributor</implementation-class>
-    </component>
-
-    <component>
-      <implementation-class>jetbrains.mps.workbench.goTo.index.JavaStubNavigationContributor</implementation-class>
-    </component>
-
-    <component>
       <implementation-class>jetbrains.mps.persistence.ModelFactoryRegister</implementation-class>
     </component>
 
@@ -121,6 +113,9 @@
                     beanClass="jetbrains.mps.persistence.DataSourceFactoryRuleProvider"/>
     <extensionPoint qualifiedName="com.intellij.mps.PluginComponentContributor"
                     beanClass="jetbrains.mps.plugins.ComponentContributorExtension"/>
+    <extensionPoint qualifiedName="com.intellij.mps.gotoParticipant"
+                    interface="org.jetbrains.mps.openapi.persistence.NavigationParticipant"
+                    area="IDEA_PROJECT"/>
   </extensionPoints>
 
   <extensions defaultExtensionNs="com.intellij">
@@ -146,5 +141,8 @@
     <spellchecker.bundledDictionaryProvider implementation="jetbrains.mps.spellchecker.MPSBundledDictionariesProvider"/>
     <!-- XXX Does MPSModelsFastFindSupport need to be part of MPSCore.xml and not mps-workbench/source/META-INF/MPSComponents.xml? -->
     <postStartupActivity implementation="jetbrains.mps.workbench.findusages.MPSModelsFastFindSupport$Plug" />
+    <mps.gotoParticipant implementation="jetbrains.mps.workbench.goTo.index.MPSModelNavigationContributor" />
+    <mps.gotoParticipant implementation="jetbrains.mps.workbench.goTo.index.JavaStubNavigationContributor"/>
+
   </extensions>
 </components>
