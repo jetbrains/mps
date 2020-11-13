@@ -44,7 +44,6 @@ import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -614,20 +613,23 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
   }
 
   private static SNode findNodeArround(EditorCell cell, boolean above) {
-    EditorCell rootCell = cell.getRootParent();
+    final SNode currentParagraph = SNodeOperations.as(SNodeOperations.getParent(((SNode) cell.getSNode())), CONCEPTS.Paragraph$XF);
+    assert currentParagraph != null;
+    final EditorCell paragraphWrappingCell = cell.getEditorComponent().findNodeCell(SNodeOperations.getParent(currentParagraph));
+    final List<SNode> paragraphSiblings = SNodeOperations.getAllSiblings(currentParagraph, true);
+
+    EditorCell foundLeaf = paragraphWrappingCell.findLeaf(cell.getX(), (above ? cell.getY() - cell.getHeight() : cell.getY() + cell.getHeight()));
     EditorCell currentCell = cell;
-    EditorCell foundLeaf = rootCell.findLeaf(currentCell.getX(), (above ? currentCell.getY() - currentCell.getHeight() : currentCell.getY() + currentCell.getHeight()));
-    while ((foundLeaf == null)) {
-      if (currentCell.getPrevSibling() == null) {
-        EditorCell_Collection parent = currentCell.getParent();
-        currentCell = parent.getPrevSibling();
-        if (currentCell == null) {
-          break;
-        }
-      } else {
-        currentCell = currentCell.getPrevSibling();
+    while ((foundLeaf == null) && currentCell.getPrevSibling() != null) {
+      currentCell = currentCell.getPrevSibling();
+      foundLeaf = paragraphWrappingCell.findLeaf(currentCell.getX(), (above ? currentCell.getY() - cell.getHeight() : currentCell.getY() + cell.getHeight()));
+    }
+    if (foundLeaf == null) {
+      currentCell = cell.getEditorComponent().findCellWithId(currentParagraph, "Initial_Paragraph_Space");
+      if (currentCell == null) {
+        return null;
       }
-      foundLeaf = rootCell.findLeaf(currentCell.getX(), (above ? currentCell.getY() - currentCell.getHeight() : currentCell.getY() + currentCell.getHeight()));
+      foundLeaf = paragraphWrappingCell.findLeaf(currentCell.getX(), (above ? currentCell.getY() - cell.getHeight() : currentCell.getY() + cell.getHeight()));
     }
     if (foundLeaf != null) {
       SNode foundNode = foundLeaf.getSNode();
