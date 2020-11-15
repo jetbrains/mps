@@ -4103,6 +4103,139 @@
       <unit id="6351584993764365770" at="22,0,59,0" name="jetbrains.mps.refactoringTest.InlineAssignmentInClosure_Test" />
     </file>
   </root>
+  <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/6365792264556597530">
+    <file name="KeepVarArgParameters_Test.java">
+      <node id="6365792264556597530" at="41,38,42,25" concept="13" />
+      <node id="6365792264556597531" at="46,63,47,54" concept="2" />
+      <node id="6365792264556597530" at="52,52,53,19" concept="13" />
+      <node id="6365792264556597658" at="56,65,57,41" concept="2" />
+      <node id="6365792264556597683" at="57,41,58,41" concept="2" />
+      <node id="6365792264556597534" at="58,41,59,119" concept="7" />
+      <node id="6365792264556597540" at="59,119,60,0" concept="10" />
+      <node id="6365792264556597541" at="60,0,61,20" concept="9" />
+      <node id="6365792264556597545" at="61,20,62,62" concept="7" />
+      <node id="6365792264556597551" at="62,62,63,61" concept="7" />
+      <node id="6365792264556722482" at="63,61,64,106" concept="7" />
+      <node id="6365792264556597557" at="64,106,65,35" concept="2" />
+      <node id="6365792264556763465" at="65,35,66,34" concept="2" />
+      <node id="6365792264556597575" at="66,34,67,0" concept="10" />
+      <node id="6365792264556597576" at="67,0,68,28" concept="9" />
+      <node id="6365792264556597581" at="68,28,69,89" concept="7" />
+      <node id="6365792264556597590" at="69,89,70,95" concept="2" />
+      <node id="6365792264556597597" at="70,95,71,94" concept="2" />
+      <node id="6365792264556597606" at="71,94,72,0" concept="10" />
+      <node id="6365792264556597607" at="72,0,73,16" concept="9" />
+      <node id="6365792264556597610" at="73,16,74,74" concept="7" />
+      <node id="6365792264556874662" at="76,39,77,176" concept="8" />
+      <node id="6365792264556597628" at="79,10,80,0" concept="10" />
+      <node id="6365792264556597629" at="80,0,81,43" concept="9" />
+      <node id="6365792264556597636" at="81,43,82,141" concept="7" />
+      <node id="6365792264556597644" at="82,141,83,28" concept="2" />
+      <node id="6365792264556597649" at="83,28,84,0" concept="10" />
+      <node id="6365792264556597650" at="84,0,85,26" concept="2" />
+      <node id="6365792264556597654" at="85,26,86,0" concept="10" />
+      <node id="6365792264556597655" at="87,7,88,124" concept="7" />
+      <node id="6365792264556597655" at="88,124,89,123" concept="7" />
+      <node id="6365792264556597655" at="89,123,90,160" concept="2" />
+      <node id="6365792264556597548" at="95,64,96,65" concept="7" />
+      <node id="6365792264556597548" at="96,65,97,32" concept="7" />
+      <node id="6365792264556597548" at="97,32,98,32" concept="7" />
+      <node id="6365792264556597548" at="98,32,99,241" concept="2" />
+      <node id="6365792264556597548" at="99,241,100,153" concept="2" />
+      <node id="6365792264556597548" at="100,153,101,232" concept="2" />
+      <node id="6365792264556597548" at="101,232,102,173" concept="2" />
+      <node id="6365792264556597548" at="102,173,103,26" concept="8" />
+      <node id="6365792264556597554" at="105,64,106,65" concept="7" />
+      <node id="6365792264556597554" at="106,65,107,32" concept="7" />
+      <node id="6365792264556597554" at="107,32,108,32" concept="7" />
+      <node id="6365792264556597554" at="108,32,109,241" concept="2" />
+      <node id="6365792264556597554" at="109,241,110,156" concept="2" />
+      <node id="6365792264556597554" at="110,156,111,232" concept="2" />
+      <node id="6365792264556597554" at="111,232,112,173" concept="2" />
+      <node id="6365792264556597554" at="112,173,113,26" concept="8" />
+      <node id="6365792264556597592" at="115,64,116,65" concept="7" />
+      <node id="6365792264556597592" at="116,65,117,32" concept="7" />
+      <node id="6365792264556597592" at="117,32,118,236" concept="2" />
+      <node id="6365792264556597592" at="118,236,119,26" concept="8" />
+      <node id="6365792264556597599" at="121,64,122,65" concept="7" />
+      <node id="6365792264556597599" at="122,65,123,32" concept="7" />
+      <node id="6365792264556597599" at="123,32,124,236" concept="2" />
+      <node id="6365792264556597599" at="124,236,125,149" concept="2" />
+      <node id="6365792264556597599" at="125,149,126,26" concept="8" />
+      <node id="6365792264556597530" at="131,0,132,0" concept="11" trace="parameter$5xBj" />
+      <node id="6365792264556597530" at="132,0,133,0" concept="11" trace="body$5xQk" />
+      <node id="6365792264556597530" at="133,0,134,0" concept="11" trace="statement$53DE" />
+      <node id="6365792264556597530" at="134,0,135,0" concept="11" trace="expression$5L7M" />
+      <node id="6365792264556597530" at="138,0,139,0" concept="11" trace="ExpressionStatement$O8" />
+      <node id="6365792264556597530" at="139,0,140,0" concept="11" trace="LocalMethodCall$zT" />
+      <node id="6365792264556597530" at="36,0,38,0" concept="11" trace="ourParamCache" />
+      <node id="6365792264556597530" at="38,0,40,0" concept="3" trace="myWithCommandRule" />
+      <node id="6365792264556597530" at="41,0,44,0" concept="1" trace="KeepVarArgParameters_Test#()V" />
+      <node id="6365792264556597530" at="52,0,55,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="6365792264556871673" at="76,0,79,0" concept="6" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6365792264556597531" at="45,0,49,0" concept="6" trace="test_AddParameterWithDefault#()V" />
+      <node id="6365792264556597618" at="74,74,79,10" concept="2" />
+      <node id="6365792264556597655" at="86,0,91,7" concept="0" />
+      <node id="6365792264556597592" at="115,0,121,0" concept="12" trace="_quotation_createNode_in913d_a0n0d7#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6365792264556597599" at="121,0,128,0" concept="12" trace="_quotation_createNode_in913d_a0o0d7#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6365792264556597548" at="95,0,105,0" concept="12" trace="_quotation_createNode_in913d_a0f0d7#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6365792264556597554" at="105,0,115,0" concept="12" trace="_quotation_createNode_in913d_a0g0d7#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6365792264556597531" at="56,0,93,0" concept="6" trace="test_AddParameterWithDefault#()V" />
+      <scope id="6365792264556597530" at="41,38,42,25" />
+      <scope id="6365792264556597531" at="46,63,47,54" />
+      <scope id="6365792264556597530" at="52,52,53,19" />
+      <scope id="6365792264556871674" at="76,39,77,176" />
+      <scope id="6365792264556597530" at="41,0,44,0" />
+      <scope id="6365792264556597530" at="52,0,55,0">
+        <var name="owner" id="6365792264556597530" />
+      </scope>
+      <scope id="6365792264556871673" at="76,0,79,0">
+        <var name="it" id="6365792264556871673" />
+      </scope>
+      <scope id="6365792264556597655" at="87,7,90,160">
+        <var name="nodesAfter" id="6365792264556597655" />
+        <var name="nodesBefore" id="6365792264556597655" />
+      </scope>
+      <scope id="6365792264556597531" at="45,0,49,0" />
+      <scope id="6365792264556597592" at="115,64,119,26">
+        <var name="facade" id="6365792264556597592" />
+        <var name="quotedNode_1" id="6365792264556597592" />
+      </scope>
+      <scope id="6365792264556597599" at="121,64,126,26">
+        <var name="facade" id="6365792264556597599" />
+        <var name="quotedNode_1" id="6365792264556597599" />
+      </scope>
+      <scope id="6365792264556597592" at="115,0,121,0" />
+      <scope id="6365792264556597599" at="121,0,128,0" />
+      <scope id="6365792264556597548" at="95,64,103,26">
+        <var name="facade" id="6365792264556597548" />
+        <var name="quotedNode_1" id="6365792264556597548" />
+        <var name="quotedNode_2" id="6365792264556597548" />
+      </scope>
+      <scope id="6365792264556597554" at="105,64,113,26">
+        <var name="facade" id="6365792264556597554" />
+        <var name="quotedNode_1" id="6365792264556597554" />
+        <var name="quotedNode_2" id="6365792264556597554" />
+      </scope>
+      <scope id="6365792264556597548" at="95,0,105,0" />
+      <scope id="6365792264556597554" at="105,0,115,0" />
+      <scope id="6365792264556597531" at="56,65,91,7">
+        <var name="boolParam" id="6365792264556597546" />
+        <var name="defaultValues" id="6365792264556597582" />
+        <var name="intParam" id="6365792264556597552" />
+        <var name="parameters" id="6365792264556722483" />
+        <var name="params" id="6365792264556597535" />
+        <var name="ref" id="6365792264556597637" />
+        <var name="usages" id="6365792264556597611" />
+      </scope>
+      <scope id="6365792264556597531" at="56,0,93,0" />
+      <unit id="6365792264556871673" at="75,212,79,7" name="jetbrains.mps.refactoringTest.KeepVarArgParameters_Test$TestBody$1" />
+      <unit id="6365792264556597530" at="137,0,141,0" name="jetbrains.mps.refactoringTest.KeepVarArgParameters_Test$CONCEPTS" />
+      <unit id="6365792264556597530" at="130,0,136,0" name="jetbrains.mps.refactoringTest.KeepVarArgParameters_Test$LINKS" />
+      <unit id="6365792264556597530" at="50,0,129,0" name="jetbrains.mps.refactoringTest.KeepVarArgParameters_Test$TestBody" />
+      <unit id="6365792264556597530" at="34,0,142,0" name="jetbrains.mps.refactoringTest.KeepVarArgParameters_Test" />
+    </file>
+  </root>
   <root nodeRef="r:4dc6ffb5-4bbb-4773-b0b7-e52989ceb56f(jetbrains.mps.refactoringTest@tests)/668606183334155391">
     <file name="InlineFromAnotherBehavior_Test.java">
       <node id="668606183334155391" at="29,43,30,25" concept="13" />
