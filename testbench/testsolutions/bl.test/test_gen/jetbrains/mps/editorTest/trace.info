@@ -7013,6 +7013,32 @@
       <unit id="3237167448837933871" at="13,0,44,0" name="jetbrains.mps.editorTest.MultiParens2_Test" />
     </file>
   </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/3309352407338237951">
+    <file name="ChangeMethodSignatureFromCall_ArgumentMapping_Test.java">
+      <node id="3309352407338237951" at="18,63,19,25" concept="11" />
+      <node id="3309352407338237951" at="23,85,24,36" concept="2" />
+      <node id="3309352407338237951" at="29,52,30,19" concept="11" />
+      <node id="3309352407338237951" at="34,51,35,72" concept="2" />
+      <node id="3309352407338329225" at="35,72,36,43" concept="2" />
+      <node id="3309352407338237951" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="3309352407338237951" at="18,0,21,0" concept="1" trace="ChangeMethodSignatureFromCall_ArgumentMapping_Test#()V" />
+      <node id="3309352407338237951" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="3309352407338237951" at="22,0,26,0" concept="5" trace="test_ChangeMethodSignatureFromCall_ArgumentMapping#()V" />
+      <node id="3309352407338237951" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="3309352407338237951" at="18,63,19,25" />
+      <scope id="3309352407338237951" at="23,85,24,36" />
+      <scope id="3309352407338237951" at="29,52,30,19" />
+      <scope id="3309352407338237951" at="34,51,36,43" />
+      <scope id="3309352407338237951" at="18,0,21,0" />
+      <scope id="3309352407338237951" at="29,0,32,0">
+        <var name="owner" id="3309352407338237951" />
+      </scope>
+      <scope id="3309352407338237951" at="22,0,26,0" />
+      <scope id="3309352407338237951" at="33,0,38,0" />
+      <unit id="3309352407338237951" at="27,0,39,0" name="jetbrains.mps.editorTest.ChangeMethodSignatureFromCall_ArgumentMapping_Test$TestBody" />
+      <unit id="3309352407338237951" at="13,0,40,0" name="jetbrains.mps.editorTest.ChangeMethodSignatureFromCall_ArgumentMapping_Test" />
+    </file>
+  </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/3310643382746679883">
     <file name="PostfixCaret_Test.java">
       <node id="3310643382746679883" at="18,30,19,25" concept="11" />
