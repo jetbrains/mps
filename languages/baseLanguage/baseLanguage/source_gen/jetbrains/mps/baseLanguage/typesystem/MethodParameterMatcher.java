@@ -8,8 +8,10 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
+import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import java.util.LinkedList;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -46,8 +48,11 @@ public class MethodParameterMatcher {
    * 
    * Since some arguments can be removed, and some added (with conflicting or changing types), the goal of this method
    * is to maximise the mapping between the existing parameters and the given values.
+   * 
+   * 
+   * @return method to call param mapping + call to method param mapping
    */
-  public Integer[] findAppropriateMatching() {
+  public Tuples._2<Integer[], Integer[]> findAppropriateMatching() {
     // List compatible call values for each method parameter 
     Integer[][] compatiblesValues = ListSequence.fromList(myMethodParams).select(new ISelector<SNode, Integer[]>() {
       public Integer[] select(SNode param) {
@@ -83,7 +88,7 @@ public class MethodParameterMatcher {
       continue;
     }
 
-    return methodParamMappedTo;
+    return MultiTuple.<Integer[],Integer[]>from(methodParamMappedTo, callParamMappedFrom);
   }
 
   private void initFlow(Integer[][] compatiblesParams, Integer[] methodParamMappedTo, Integer[] callParamMappedFrom) {

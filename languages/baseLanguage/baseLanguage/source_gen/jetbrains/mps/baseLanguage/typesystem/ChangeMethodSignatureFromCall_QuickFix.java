@@ -8,9 +8,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -28,10 +29,16 @@ public class ChangeMethodSignatureFromCall_QuickFix extends QuickFix_Runtime {
   }
   public void execute(SNode node) {
     SNode originalMethod = SLinkOperations.getTarget(((SNode) ChangeMethodSignatureFromCall_QuickFix.this.getField("call")[0]), LINKS.baseMethodDeclaration$pyYw);
+    SNode arityParameter = null;
+
+    // Save last arg (if variable arity) for later (no need to be matched to a previous argument) 
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj)).last(), LINKS.type$a1UY), CONCEPTS.VariableArityType$KF)) {
+      arityParameter = ListSequence.fromList(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj)).removeLastElement();
+    }
 
     final MethodParameterMatcher matcher = new MethodParameterMatcher(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj), SLinkOperations.getChildren(((SNode) ChangeMethodSignatureFromCall_QuickFix.this.getField("call")[0]), LINKS.actualArgument$pzdx));
     final List<SNode> callTypes = matcher.getCallParamTypes();
-    final Integer[] matching = matcher.findAppropriateMatching();
+    final Integer[] matching = matcher.findAppropriateMatching()._1();
 
     List<SNode> newParameters = ListSequence.fromList(callTypes).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
@@ -39,16 +46,22 @@ public class ChangeMethodSignatureFromCall_QuickFix extends QuickFix_Runtime {
       }
     }).toListSequence();
 
-    // First add the previously defined parameters 
-    for (int i = 0; i < matching.length; i++) {
-      if (matching[i] >= 0) {
-        ListSequence.fromList(newParameters).setElement(matching[i], ListSequence.fromList(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj)).getElement(i));
+    // Number of regular arguments that the method will count at the end 
+    int resultingParamCount = ListSequence.fromList(callTypes).count();
+    if ((arityParameter != null)) {
+      SNode arityType = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(arityParameter, LINKS.type$a1UY), CONCEPTS.VariableArityType$KF), LINKS.componentType$ypmi);
+
+      // Remove all the terminal types that could match the arity (non mapped to previous arg + matching type) 
+      while (resultingParamCount > 0 && TypecheckingFacade.getFromContext().isSubtype(ListSequence.fromList(callTypes).getElement(resultingParamCount - 1), arityType) && matching[resultingParamCount - 1] < 0) {
+        resultingParamCount--;
       }
     }
 
     // Then fill the parameters with new parameters 
-    for (int i = 0; i < ListSequence.fromList(callTypes).count(); i++) {
-      if ((ListSequence.fromList(newParameters).getElement(i) == null)) {
+    for (int i = 0; i < resultingParamCount; i++) {
+      if (matching[i] >= 0) {
+        ListSequence.fromList(newParameters).addElement(ListSequence.fromList(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj)).getElement(matching[i]));
+      } else {
         // Create new parameter matching type 
         SNode param = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration"));
         SPropertyOperations.assign(param, PROPS.name$MnvL, ParameterNameUtil.suggestParameterName(ListSequence.fromList(SLinkOperations.getChildren(((SNode) ChangeMethodSignatureFromCall_QuickFix.this.getField("call")[0]), LINKS.actualArgument$pzdx)).getElement(i), SNodeOperations.as(ListSequence.fromList(callTypes).getElement(i), CONCEPTS.Type$bu), ListSequence.fromList(newParameters).select(new ISelector<SNode, String>() {
@@ -58,8 +71,12 @@ public class ChangeMethodSignatureFromCall_QuickFix extends QuickFix_Runtime {
         })));
         SLinkOperations.setTarget(param, LINKS.type$a1UY, SNodeOperations.as(SNodeOperations.copyNode(ListSequence.fromList(callTypes).getElement(i)), CONCEPTS.Type$bu));
 
-        ListSequence.fromList(newParameters).setElement(i, param);
+        ListSequence.fromList(newParameters).addElement(param);
       }
+    }
+
+    if ((arityParameter != null)) {
+      ListSequence.fromList(newParameters).addElement(arityParameter);
     }
 
     // Perform refactoring 
@@ -70,12 +87,14 @@ public class ChangeMethodSignatureFromCall_QuickFix extends QuickFix_Runtime {
   private static final class LINKS {
     /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
     /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
-    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
     /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
+    /*package*/ static final SContainmentLink componentType$ypmi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, 0x11c08f5f38cL, "componentType");
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept VariableArityType$KF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, "jetbrains.mps.baseLanguage.structure.VariableArityType");
     /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 
