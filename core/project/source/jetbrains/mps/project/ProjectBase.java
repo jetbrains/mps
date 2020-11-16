@@ -25,7 +25,6 @@ import jetbrains.mps.project.structure.project.ProjectDescriptor;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
@@ -35,14 +34,12 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.ImmutableReturn;
 import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.module.SModuleListenerBase;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -68,7 +65,6 @@ public abstract class ProjectBase extends Project {
   private static final Logger LOG = LogManager.getLogger(ProjectBase.class);
   private final ProjectManager myProjectManager = ProjectManager.getInstance();
 
-  private final Map<SModuleReference, SModuleListenerBase> myModulesListeners = new HashMap<>();
   protected final ComponentHost myPlatform;
 
   // AP fixme must be final, however StandaloneMpsProject exposes it (a client can publicly reset the project descriptor)
@@ -129,19 +125,45 @@ public abstract class ProjectBase extends Project {
       LOG.warn(module + " is already in " + this);
       return false;
     }
+    boolean addedToMap = false;
     if (false == module instanceof Generator || ((Generator) module).getModuleDescriptor().isStandaloneModule()) {
       // project repository listeners may consult project.isProjectModule(moduleAdded), treat module being added as one from the project
+      // FIXME investigate why not to record ModulePath for Language-owned Generators as well. Other than notification dispatch in removeModule(),
+      //       is there any trouble? Beware, ProjectModuleFileChangeListener may need attention. It seems to work with MP being announced for
+      //       a Generator (seen live), but thorough check won't hurt.
       myModuleToPathMap.put(module.getModuleReference(), path);
+      addedToMap = true;
     }
     associateWithProjectRepo(module);
-    return true;
+    return addedToMap;
   }
 
   private void associateWithProjectRepo(SModule module) {
     SRepositoryExt repository = (SRepositoryExt) getRepository();
     // generally, module is already registered with a repo, as the primary mechanism to create a module instance, ModuleRepositoryFacade#instantiateModule,
     // automatically registers a module as well.
-    repository.getModelAccess().computeWriteAction(() -> repository.registerModule(module, this));
+    repository.getModelAccess().runWriteAction(() -> repository.registerModule(module, this));
+  }
+
+  private void dissociateFromProjectRepo(final SModule module, final boolean checkProjectIsOwner) {
+    SRepositoryExt repository = (SRepositoryExt) getRepository();
+    repository.getModelAccess().runWriteAction(() -> {
+      if (checkProjectIsOwner && !repository.getOwners(module).contains(this)) {
+        LOG.warn("Module has not been registered in the project: " + module);
+        return;
+      }
+      if (module instanceof Language) {
+        // Project tracks Generator modules by denoting itself as 'owner' of the module in a repository.
+        // E.g. ProjectModulesFiller tells project to addModule(Generator), and it eventually gets down to associateWithProjectRepo().
+        // Though a great deal has been done to let Generator modules to live without their Language module present, I still keep this code
+        // to unregister Language-owned generators along with the language as I'm too afraid to make the change and to dissociate supplied module only.
+        Collection<Generator> ownedGenerators = ((Language) module).getOwnedGenerators();
+        for (Generator g : ownedGenerators) {
+          repository.unregisterModule(g, this);
+        }
+      }
+      repository.unregisterModule(module, this);
+    });
   }
 
   /**
@@ -177,25 +199,12 @@ public abstract class ProjectBase extends Project {
    */
   @Override
   public final void removeModule(@NotNull SModule module) {
-    if (!myModuleToPathMap.containsKey(module.getModuleReference())) {
-      final SRepositoryExt repo = (SRepositoryExt) getRepository();
-      final Boolean ownedByTheProject = new ModelAccessHelper(repo).runWriteAction(() -> {
-        if (repo.getOwners(module).contains(ProjectBase.this)) {
-          repo.unregisterModule(module, ProjectBase.this);
-          return true;
-        }
-        return false;
-      });
-      if (ownedByTheProject) {
-        // this covers modules without files as well as generator modules living under Language (GeneratorDescriptor.isStandaloneModule() == false)
-        return;
-      }
-      LOG.warn("Module has not been registered in the project: " + module);
-      return;
-    }
     final ModulePath modulePath = removeModule0(module);
-    myModuleLoader.fireModuleRemoved(modulePath, module);
-    myProjectDescriptor.removeModulePath(modulePath);
+    // client code can ask us to forget Generator module owned by a Language. We don't keep ModulePath for these
+    if (modulePath != null) {
+      myModuleLoader.fireModuleRemoved(modulePath, module);
+      myProjectDescriptor.removeModulePath(modulePath);
+    }
   }
 
   /**
@@ -205,28 +214,16 @@ public abstract class ProjectBase extends Project {
    * @see #addModule0(ModulePath, SModule)
    */
   @Internal
+  @Nullable
   /*package*/ final ModulePath removeModule0(@NotNull SModule module) {
+    // modulePath could be null for Generator modules sharing mpl descriptor file with their Language
     final ModulePath modulePath = myModuleToPathMap.remove(module.getModuleReference());
-    assert modulePath != null;
-    SModuleListenerBase remove = myModulesListeners.remove(module.getModuleReference());
-    module.removeModuleListener(remove);
-    if (module instanceof Generator && module.getRepository() == null) {
-      // it's a generator that has been unregistered as part of allKnownLangGenerators (see write action, below) for some project language module
+    if (modulePath == null && module instanceof Generator && module.getRepository() == null) {
+      // it's a generator that has been unregistered as part of allLangOwnedGenerators (see write action in dissociateFromProjectRepo) for some project language module
       return modulePath;
     }
-    SRepositoryExt repository = (SRepositoryExt) getRepository();
-    repository.getModelAccess().runWriteAction(() -> {
-      if (module instanceof Language) {
-        // At the moment, project doesn't notice Generator modules, and expects them to be part of Language
-        // E.g. ProjectModulesFiller doesn't tell project to addModule(Generator). However, with Language no longer owner for its Generators,
-        // we have to unregister them explicitly (like ModuleRepositoryFacade does)
-        Collection<Generator> ownedGenerators = ((Language) module).getOwnedGenerators();
-        for (Generator g : ownedGenerators) {
-          repository.unregisterModule(g, this);
-        }
-      }
-      repository.unregisterModule(module, this);
-    });
+
+    dissociateFromProjectRepo(module, modulePath == null);
     return modulePath;
   }
 
