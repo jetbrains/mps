@@ -71,7 +71,7 @@ public class ModuleUsagesFinder implements IFinder {
       searchedModuleRef = searchedModule.getModuleReference();
     } else if (value instanceof SModuleReference) {
       searchedModuleRef = (SModuleReference) value;
-      searchedModule = query.getScope().resolve(searchedModuleRef);
+      searchedModule = query.getSearchObjectResolver().resolve(searchedModuleRef);
     }
     if (searchedModuleRef == null) {
       return;

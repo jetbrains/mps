@@ -555,12 +555,12 @@
                       <node concept="37vLTw" id="2LcFRp6su5K" role="2Oq$k0">
                         <ref role="3cqZAo" node="3_o1C0wGpF5" resolve="query" />
                       </node>
-                      <node concept="liA8E" id="2LcFRp6su5L" role="2OqNvi">
-                        <ref role="37wK5l" to="9erk:~SearchQuery.getScope()" resolve="getScope" />
+                      <node concept="liA8E" id="3NrUEQ0nTsB" role="2OqNvi">
+                        <ref role="37wK5l" to="9erk:~SearchQuery.getSearchObjectResolver()" resolve="getSearchObjectResolver" />
                       </node>
                     </node>
                     <node concept="liA8E" id="2LcFRp6su5M" role="2OqNvi">
-                      <ref role="37wK5l" to="lui2:~SearchScope.resolve(org.jetbrains.mps.openapi.module.SModuleReference)" resolve="resolve" />
+                      <ref role="37wK5l" to="9erk:~SearchObjectResolver.resolve(org.jetbrains.mps.openapi.module.SModuleReference)" resolve="resolve" />
                       <node concept="37vLTw" id="2LcFRp6su5N" role="37wK5m">
                         <ref role="3cqZAo" node="5wOcmpULWu5" resolve="searchedModuleRef" />
                       </node>

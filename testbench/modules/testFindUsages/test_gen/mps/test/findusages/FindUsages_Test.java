@@ -24,6 +24,8 @@ import java.util.Set;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.ui.finders.ModuleUsagesFinder;
 import jetbrains.mps.ide.ui.finders.LanguageImportFinder;
+import java.util.List;
+import jetbrains.mps.ide.findusages.model.SearchResult;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import org.jetbrains.mps.openapi.module.SearchScope;
@@ -77,11 +79,18 @@ public class FindUsages_Test extends BaseTransformationTest {
       // m2 shall USE BL 
       SearchQuery query = new SearchQuery(new ModuleRefHolder(PersistenceFacade.getInstance().createModuleReference("f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)")), new SearchObjectResolver.BasicResolver(myProject.getRepository()), this.getTestModuleScope());
       final SearchResults sr = FindUtils.getSearchResults(new EmptyProgressMonitor(), query, new ModuleUsagesFinder(), new LanguageImportFinder());
-      Set<Object> results = sr.getResultObjects();
-      // there are 2 results:  model m2 with used language and test solution with dependency to BL module 
+      List<SearchResult<Object>> results = sr.getSearchResults2();
+      // there are 4 results: 
+      //   solution itself with an explicit BL module dependency 
+      //   m1 with a dependency to BL.structure 
+      //   solution itself as 'uses BL' 
+      //   m2 as 'written in BL' 
       // @tests model itself is not discovered as of this writing, as we use lang.test and lang.smodel here, not BL explicitly 
-      Assert.assertEquals(2, results.size());
-      Assert.assertTrue(results.contains(this.m2()));
+      Assert.assertEquals(4, results.size());
+      Set<Object> resultObjects = sr.getResultObjects();
+      // there are 3 distinct result objects, solution and its two models 
+      Assert.assertTrue(resultObjects.contains(this.m1()));
+      Assert.assertTrue(resultObjects.contains(this.m2()));
     }
 
 
