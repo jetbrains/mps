@@ -353,6 +353,22 @@ public final class StaticReference extends SReferenceBase {
     }
 
     if (myImmatureTargetNode.getModel() != null) {
+      // Generally, there's little sense to 'mature' reference to a model not available in a repository, as we might
+      // later face troubles resolving the reference (especially once getTargetModel_Fair is in the game). On the other hand,
+      // not quite sure what could possibly happen if I do not 'mature' references eagerly as it used to be. There are some
+      // hard-to-reveal assumptions in transient models/generator, use of swap and general model unload.
+      if (!force && myImmatureTargetNode.getModel().getRepository() == null) {
+        // XXX It's unclear whether I need to respect 'force' in this case or not. Tests are fine if I don't, however,
+        //     it seems that with MPS-32709 it's more important to guard node-model attachment moment.
+        //     Once command is over, and we get here with force==true (see ImmatureReferences), I feel it's worth
+        //     to 'mature' the reference not to get hanging direct references to a node that
+        //     has not been attached anywhere. Besides, can not avoid scenarios when a model is constructed in one command
+        //     and attached to a repository in another, and force==true from IR together with !force here helps me think I tackle it.
+        //     However, what if I construct a model (or few) with cross references outside of a command (e.g. inside model read)
+        //     and then attach it to a repository in a separate command? Likely, need a code to address reference resolution on model attach.
+        //     FIXME write a test case to cover this scenario!
+        return false;
+      }
       // assert sourceModel != null;
       // convert 'young' reference to 'mature'
       makeMature();

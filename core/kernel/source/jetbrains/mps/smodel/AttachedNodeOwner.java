@@ -18,7 +18,6 @@ package jetbrains.mps.smodel;
 import jetbrains.mps.smodel.ModelCommandContext.Provider;
 import jetbrains.mps.smodel.event.ModelEventDispatch;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -73,8 +72,7 @@ final class AttachedNodeOwner extends SNodeOwner {
 
   @Override
   public void assertLegalChange() {
-    final SModel model = myModel;
-    if (model.isUpdateMode()) {
+    if (myModel.isUpdateMode()) {
       return;
     }
     final SRepository repo = myModel.getRepository();
@@ -103,7 +101,13 @@ final class AttachedNodeOwner extends SNodeOwner {
   public void registerNode(SNode node) {
     myModel.enforceFullLoad(); // FIXME dubious need to perform full load if all we do is populating id map
     doRegister(node, commandContext());
-    node.makeReferencesIndirect();
+    if (myModel.getRepository() != null) {
+      // one can hardly expect to navigate/resolve indirect (aka 'mature') reference from a node that belongs to a model
+      // not inside a repository, that's why I don't make them indirect just the moment node get attached to a model.
+      // There's ImmatureReferences that would force indirect references the moment command completes, regardless of
+      // repository presence.
+      node.makeReferencesIndirect();
+    }
   }
 
   // pre: myCommandContext != null
