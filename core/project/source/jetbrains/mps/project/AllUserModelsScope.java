@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +25,8 @@ import org.jetbrains.mps.openapi.module.SModule;
 
 /**
  * @deprecated alternative instance of singleton GlobalScope, don't use. Stick to project scope or any other limited scope instead.
+ *             No uses in MPS 2020.3 branch nor in mbeddr 2020.2 branch, will be deleted once 2020.3 is out.
+ *             Left as a reminder to extract acceptXXX logic into re-usable condition class (filtering out transient/temp models does make sense in certain cases)
  */
 @Deprecated
 @ToRemove(version = 2019.3)

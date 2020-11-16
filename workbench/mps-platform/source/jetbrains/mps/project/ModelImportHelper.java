@@ -130,8 +130,11 @@ public class ModelImportHelper {
     gotoData.derivePrompts("node").setPrompts("Import model that contains root:", gotoData.getNotFoundMessage(), gotoData.getNotInMessage());
     gotoData.setCheckBoxName("Include stub and non-project models");
     ConditionalScope localScope = new ConditionalScope(myProject.getScope(), null, NotCondition.negate(SModelStereotype::isStubModel));
-    SearchScope globalScope = new AllUserModelsScope();
-    final SRepository repo = myProject.getRepository();
+    // XXX here used to be AllUserModelsScope, which filters out transient and temp models. However, I don't see a reason to filter out
+    //     these models as this might be exactly what user wants to do. Perhaps, shall distinguish between end-user and a language designer,
+    //     as EU likely want to see only modules from VisibleModuleRegistry (aka FilteredGlobalScope), while LD may want to have broader scope,
+    //     with transient/temp models included (though this might be an extra option, e.g. 'mps.internal' or an IDEA registy flag?)
+    SearchScope globalScope = new GlobalScope(myProject.getRepository());
     gotoData.setScope(new NavigationTargetScopeIterable(localScope, myProject), new NavigationTargetScopeIterable(globalScope, myProject));
 
     ChooseByNamePopup popup = MpsPopupFactory.createNodePopup(myProject.getProject(), gotoData, myInitialText, null);
