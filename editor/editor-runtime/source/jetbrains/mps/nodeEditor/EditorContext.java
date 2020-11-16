@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,6 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorFontMetrics;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.project.GlobalOperationContext;
-import jetbrains.mps.project.ModuleContext;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.ProjectOperationContext;
 import jetbrains.mps.smodel.IOperationContext;
@@ -44,7 +43,6 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import javax.swing.Icon;
@@ -154,20 +152,8 @@ public class EditorContext implements jetbrains.mps.openapi.editor.EditorContext
       };
     }
 
-    SModule module = myModel == null ? null : myModel.getModule();
-    if (module == null) {
-      return new ProjectOperationContext(project) {
-        @Override
-        public <T> T getComponent(@NotNull Class<T> clazz) {
-          if (EditorManager.class == clazz) {
-            return (T) getEditorManager();
-          }
-          return super.getComponent(clazz);
-        }
-      };
-    }
-
-    return new ModuleContext(module, project) {
+    // still a lot of uses of editorContext.getOperationContext().getProject(), 10 in MPS code at the moment!!!
+    return new ProjectOperationContext(project) {
       @Override
       public <T> T getComponent(@NotNull Class<T> clazz) {
         if (EditorManager.class == clazz) {
