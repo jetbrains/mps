@@ -56,10 +56,11 @@ import com.intellij.openapi.progress.util.BackgroundTaskUtil;
 import com.intellij.util.ui.update.Update;
 import java.util.Collections;
 import com.intellij.diff.requests.NoDiffRequest;
-import com.intellij.diff.util.IntPair;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.diff.contents.DiffContent;
 import com.intellij.diff.requests.SimpleDiffRequest;
 import jetbrains.mps.vcs.platform.integration.ModelDiffViewer;
+import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import com.intellij.diff.requests.LoadingDiffRequest;
 import com.intellij.diff.requests.MessageDiffRequest;
 import javax.swing.JComponent;
@@ -275,24 +276,19 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
       myDiffPanel.setRequest(NoDiffRequest.INSTANCE);
       return;
     }
-    int count = myRevisions.size();
-    IntPair range = getSelectedRevisionsRange();
-    int revIndex1 = range.val2;
-    int revIndex2 = range.val1;
-    if (revIndex1 == count && revIndex2 == count) {
-      myDiffPanel.setRequest(NoDiffRequest.INSTANCE);
-      return;
-    }
+    List<VcsFileRevision> selection = myList.getSelectedObjects();
+    VcsFileRevision newRevision = ListSequence.fromList(selection).first();
+    VcsFileRevision oldRevision = myRevisionsExtractor.getPreviousRevision(ListSequence.fromList(selection).last());
 
-    DiffContent content1 = createDiffContent(revIndex1);
-    DiffContent content2 = createDiffContent(revIndex2);
-    String title1 = (revIndex1 < count ? myRevisions.get(revIndex1).getRevisionNumber().asString() : null);
-    String title2 = (revIndex2 < count ? myRevisions.get(revIndex2).getRevisionNumber().asString() : null);
+    DiffContent content1 = createDiffContent(oldRevision);
+    DiffContent content2 = createDiffContent(newRevision);
+    String title1 = (oldRevision == null ? null : oldRevision.getRevisionNumber().asString());
+    String title2 = (newRevision == null ? null : newRevision.getRevisionNumber().asString());
     if (content1 != null && content2 != null) {
       SimpleDiffRequest rq = new SimpleDiffRequest(null, content1, content2, title1, title2);
       ModelDiffViewer.DIFF_SHOW_ROOTID.set(rq, myRoot);
       ModelDiffViewer.DIFF_SHOW_TREE.set(rq, false);
-      myDiffPanel.setRequest(rq, new IntPair(revIndex1, revIndex2));
+      myDiffPanel.setRequest(rq, MultiTuple.<VcsFileRevision,VcsFileRevision>from(oldRevision, newRevision));
       return;
     }
     if (myRevisionsExtractor.isLoading()) {
@@ -360,32 +356,18 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
   }
 
   @Nullable
-  private DiffContent createDiffContent(int revIndex) {
-    if (revIndex == myRevisions.size()) {
+  private DiffContent createDiffContent(VcsFileRevision revision) {
+    if (revision == null) {
       return new EmptyContent();
     }
-    VcsFileRevision rev = myRevisions.get(revIndex);
     SModel loaded;
     try {
-      loaded = VCSPersistenceUtil.loadModel(rev.loadContent(), myActualFile.getExtension());
+      loaded = VCSPersistenceUtil.loadModel(revision.loadContent(), myActualFile.getExtension());
     } catch (Exception ex) {
       return null;
     }
     // ModelDiffViewer doesn't tolerate reusable detached models, it registers and disposes such models solely on its own discretion 
     return (loaded == null ? new EmptyContent() : new ModelDiffContent(loaded, myActualFile.getFileType()));
-  }
-
-  @NotNull
-  private IntPair getSelectedRevisionsRange() {
-    List<VcsFileRevision> selection = myList.getSelectedObjects();
-    if (selection.isEmpty()) {
-      return new IntPair(0, 0);
-    }
-    int startIndex = myRevisions.indexOf(ContainerUtil.getFirstItem(selection));
-    int endIndex = myRevisions.indexOf(ContainerUtil.getLastItem(selection));
-    // [artem] this +1 looks odd, provided it's an index in myRevisions (complete set), not in myList.getItems (revisions with changes) 
-    // however, this makes sense as we'd like to see diff of changed revision not to the prev change but to the prev state (which could be change state, but could be 'same'/unchanged state as well). 
-    return new IntPair(startIndex, endIndex + 1);
   }
 
   @Override

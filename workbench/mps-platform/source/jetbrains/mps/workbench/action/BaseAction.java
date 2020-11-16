@@ -22,6 +22,7 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.MessageType;
+import com.intellij.openapi.util.NlsActions.ActionText;
 import com.intellij.openapi.wm.IdeFrame;
 import com.intellij.openapi.wm.WindowManager;
 import com.intellij.openapi.wm.ex.StatusBarEx;
@@ -43,6 +44,7 @@ import java.awt.event.KeyEvent;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Supplier;
 
 public abstract class BaseAction extends AnAction {
   private boolean myIsAlwaysVisible = true;
@@ -62,6 +64,11 @@ public abstract class BaseAction extends AnAction {
 
   public BaseAction(@Nullable String text, @Nullable String description, @Nullable Icon icon) {
     super(text, description, icon);
+    setEnabledInModalContext(true);
+  }
+
+  public BaseAction(Supplier<@ActionText String> dynamicText) {
+    super(dynamicText);
     setEnabledInModalContext(true);
   }
 

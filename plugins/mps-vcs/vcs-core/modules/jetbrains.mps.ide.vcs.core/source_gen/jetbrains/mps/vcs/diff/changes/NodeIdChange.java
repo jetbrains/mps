@@ -10,9 +10,16 @@ import jetbrains.mps.vcs.diff.ChangeSet;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.annotations.Nullable;
+import java.util.List;
+import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
+import jetbrains.mps.errors.messageTargets.MessageTarget;
+import jetbrains.mps.internal.collections.runtime.LinkedListSequence;
+import java.util.LinkedList;
+import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
+import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/2763871596163643452", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
-public class NodeIdChange extends ModelChange {
+public class NodeIdChange extends StructureChange {
   private final SNodeId myOldParentNodeId;
   private final SNodeId myNewParentNodeId;
   private final SContainmentLink myRole;
@@ -114,5 +121,10 @@ public class NodeIdChange extends ModelChange {
   @Override
   protected ModelChange createOppositeChange() {
     return new NodeIdChange(getChangeSet().getOppositeChangeSet(), myNewParentNodeId, myOldParentNodeId, myRole, myNewNodeId, myOldNodeId);
+  }
+
+  @Override
+  public List<Tuples._2<SNodeId, MessageTarget>> createMessageTargetsWithIds(boolean isNewModel) {
+    return LinkedListSequence.fromListAndArrayNew(new LinkedList<Tuples._2<SNodeId, MessageTarget>>(), MultiTuple.<SNodeId,MessageTarget>from(getNodeId(isNewModel), ((MessageTarget) new NodeMessageTarget())));
   }
 }

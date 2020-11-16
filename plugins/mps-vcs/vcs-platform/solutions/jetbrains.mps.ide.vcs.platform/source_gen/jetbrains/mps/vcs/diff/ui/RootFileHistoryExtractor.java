@@ -9,6 +9,7 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import java.util.List;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
 import java.util.ArrayList;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.persistence.lines.LineContent;
 import jetbrains.mps.vcspersistence.VCSPersistenceSupport;
 import com.intellij.openapi.progress.ProcessCanceledException;
@@ -33,6 +34,13 @@ import jetbrains.mps.smodel.persistence.lines.NodeLineContent;
     myRoot = root;
     myOnUpdate = onUpdate;
     myTotalRevisions = initialRevisions.size();
+  }
+
+  @Override
+  @Nullable
+  public VcsFileRevision getPreviousRevision(VcsFileRevision revision) {
+    int index = myInitialRevisions.indexOf(revision);
+    return (index + 1 < myInitialRevisions.size() ? myInitialRevisions.get(index + 1) : null);
   }
 
   @Override

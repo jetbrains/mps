@@ -23,6 +23,13 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import java.util.List;
+import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
+import jetbrains.mps.errors.messageTargets.MessageTarget;
+import jetbrains.mps.internal.collections.runtime.LinkedListSequence;
+import java.util.LinkedList;
+import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
+import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/4133404009533074929", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public class SetConceptChange extends NodeChange {
@@ -100,5 +107,8 @@ public class SetConceptChange extends NodeChange {
   public String getDescription() {
     return String.format("Changed concept of #%s from\n'%s'\nto\n'%s'", getAffectedNodeId(false), getChangeSet().getOldModel().getNode(getAffectedNodeId(false)).getConcept(), getChangeSet().getNewModel().getNode(getAffectedNodeId(true)).getConcept());
   }
-
+  @Override
+  public List<Tuples._2<SNodeId, MessageTarget>> createMessageTargetsWithIds(boolean isNewModel) {
+    return LinkedListSequence.fromListAndArrayNew(new LinkedList<Tuples._2<SNodeId, MessageTarget>>(), MultiTuple.<SNodeId,MessageTarget>from(getAffectedNodeId(isNewModel), ((MessageTarget) new NodeMessageTarget())));
+  }
 }

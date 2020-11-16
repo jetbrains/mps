@@ -155,6 +155,7 @@
     <classNode dependClassName="com.intellij.openapi.vcs.history.VcsFileRevision" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode extendsClassName="java.lang.Runnable" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.diff.ui.RootDifferencePane">
@@ -242,6 +243,7 @@
     <classNode dependClassName="org.apache.log4j.Level" />
     <classNode dependClassName="org.apache.log4j.LogManager" />
     <classNode dependClassName="org.apache.log4j.Logger" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeId" />
     <classNode extendsClassName="jetbrains.mps.vcs.diff.ui.RevisionsExtractor" />
   </dependency>
@@ -254,7 +256,6 @@
     <classNode dependClassName="com.intellij.diff.requests.MessageDiffRequest" />
     <classNode dependClassName="com.intellij.diff.requests.NoDiffRequest" />
     <classNode dependClassName="com.intellij.diff.requests.SimpleDiffRequest" />
-    <classNode dependClassName="com.intellij.diff.util.IntPair" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.ActionManager" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.ActionPlaces" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.AnAction" />
@@ -317,7 +318,9 @@
     <classNode dependClassName="javax.swing.event.ListSelectionEvent" />
     <classNode dependClassName="javax.swing.event.ListSelectionListener" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple" />
     <classNode dependClassName="jetbrains.mps.ide.actions.MPSCommonDataKeys" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.project.MPSProject" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.RevisionsExtractor" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.RootFileHistoryExtractor" />
@@ -334,22 +337,23 @@
     <classNode extendsClassName="com.intellij.openapi.ui.FrameWrapper" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.diff.ui.RootModelHistoryExtractor">
-    <classNode dependClassName="com.intellij.openapi.progress.ProcessCanceledException" />
     <classNode dependClassName="com.intellij.openapi.vcs.history.VcsFileRevision" />
-    <classNode dependClassName="java.lang.Exception" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.ArrayList" />
+    <classNode dependClassName="java.util.HashMap" />
     <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="java.util.Map" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.Wrappers" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.MapSequence" />
     <classNode dependClassName="jetbrains.mps.project.MPSProject" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ChangeSetBuilder" />
-    <classNode dependClassName="jetbrains.mps.vcspersistence.VCSPersistenceUtil" />
-    <classNode dependClassName="org.apache.log4j.Level" />
-    <classNode dependClassName="org.apache.log4j.LogManager" />
-    <classNode dependClassName="org.apache.log4j.Logger" />
+    <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.VcsRootHistorySessionConsumer" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeId" />
     <classNode extendsClassName="jetbrains.mps.vcs.diff.ui.RevisionsExtractor" />

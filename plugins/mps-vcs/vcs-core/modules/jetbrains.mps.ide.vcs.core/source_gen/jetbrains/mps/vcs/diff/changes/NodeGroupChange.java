@@ -21,12 +21,20 @@ import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
+import jetbrains.mps.errors.messageTargets.MessageTarget;
+import java.util.LinkedList;
+import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
+import jetbrains.mps.errors.messageTargets.DeletedNodeMessageTarget;
+import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
+import java.util.ArrayList;
+import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/4972886494893223485", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
-public class NodeGroupChange extends ModelChange {
+public class NodeGroupChange extends StructureChange {
   private final SNodeId myOldParentNodeId;
   private final SNodeId myNewParentNodeId;
   private final SContainmentLink myRole;
@@ -122,7 +130,7 @@ public class NodeGroupChange extends ModelChange {
     return VCSAspectUtil.getDefaultMergeStrategy(SNodeOperations.getConcept(n));
   }
 
-  private SNode getParent(boolean isNewModel) {
+  public SNode getParent(boolean isNewModel) {
     return ((isNewModel ? getChangeSet().getNewModel() : getChangeSet().getOldModel())).getNode(getParentNodeId(isNewModel));
   }
 
@@ -313,6 +321,32 @@ public class NodeGroupChange extends ModelChange {
 
   private static String nodeRange(int begin, int end) {
     return (begin + 1 == end ? String.format("node #%d", begin) : String.format("nodes #%d-%d", begin, end - 1));
+  }
+
+  @Override
+  public List<Tuples._2<SNodeId, MessageTarget>> createMessageTargetsWithIds(boolean isNewModel) {
+    List<SNode> changeChildren = getChangedCollection(isNewModel);
+    if (changeChildren == null) {
+      return ListSequence.fromList(new LinkedList<Tuples._2<SNodeId, MessageTarget>>());
+    }
+
+    int changeBegin = (isNewModel ? getResultBegin() : getBegin());
+    int changeEnd = (isNewModel ? getResultEnd() : getEnd());
+
+    if (changeBegin == changeEnd) {
+      return ListSequence.fromListAndArray(new LinkedList<Tuples._2<SNodeId, MessageTarget>>(), MultiTuple.<SNodeId,MessageTarget>from(getParentNodeId(isNewModel), ((MessageTarget) new DeletedNodeMessageTarget(myRole, changeBegin))));
+    }
+
+    List<? extends SNode> editedChildren = IterableUtil.asList(AttributeOperations.getChildNodesAndAttributes(getParent(isNewModel), myRole));
+
+    List<Tuples._2<SNodeId, MessageTarget>> result = ListSequence.fromList(new ArrayList<Tuples._2<SNodeId, MessageTarget>>());
+    for (int i = changeBegin; i < changeEnd; i++) {
+      if (i >= editedChildren.size()) {
+        break;
+      }
+      ListSequence.fromList(result).addElement(MultiTuple.<SNodeId,MessageTarget>from(editedChildren.get(i).getNodeId(), ((MessageTarget) new NodeMessageTarget())));
+    }
+    return result;
   }
   private static List<SNode> check_yjf6x2_a0a93(Iterable<SNode> checkedDotOperand, NodeGroupChange checkedDotThisExpression) {
     if (null != checkedDotOperand) {

@@ -19,6 +19,13 @@ import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.vcs.util.MergeStrategy;
 import jetbrains.mps.vcs.mergehints.runtime.VCSAspectUtil;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import java.util.List;
+import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
+import jetbrains.mps.errors.messageTargets.MessageTarget;
+import jetbrains.mps.internal.collections.runtime.LinkedListSequence;
+import java.util.LinkedList;
+import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
+import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/2732852465125672459", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public class SetReferenceChange extends NodeChange {
@@ -154,8 +161,12 @@ public class SetReferenceChange extends NodeChange {
       // This is internal reference 
       targetModel = null;
     }
+    return new SetReferenceChange(getChangeSet().getOppositeChangeSet(), getAffectedNodeId(true), myRole, targetModel, check_mgdhcs_e0a5a02(ref), check_mgdhcs_f0a5a02(((jetbrains.mps.smodel.SReference) ref)));
+  }
 
-    return new SetReferenceChange(getChangeSet().getOppositeChangeSet(), getAffectedNodeId(true), myRole, targetModel, check_mgdhcs_e0a6a02(ref), check_mgdhcs_f0a6a02(((jetbrains.mps.smodel.SReference) ref)));
+  @Override
+  public List<Tuples._2<SNodeId, MessageTarget>> createMessageTargetsWithIds(boolean isNewModel) {
+    return LinkedListSequence.fromListAndArrayNew(new LinkedList<Tuples._2<SNodeId, MessageTarget>>(), MultiTuple.<SNodeId,MessageTarget>from(getAffectedNodeId(isNewModel), ((MessageTarget) new ReferenceMessageTarget(getRoleLink()))));
   }
   private static SReference check_mgdhcs_a0i0f(SNode checkedDotOperand, SReferenceLink myRole, SetReferenceChange checkedDotThisExpression) {
     if (null != checkedDotOperand) {
@@ -181,13 +192,13 @@ public class SetReferenceChange extends NodeChange {
     }
     return null;
   }
-  private static SNodeId check_mgdhcs_e0a6a02(SReference checkedDotOperand) {
+  private static SNodeId check_mgdhcs_e0a5a02(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetNodeId();
     }
     return null;
   }
-  private static String check_mgdhcs_f0a6a02(jetbrains.mps.smodel.SReference checkedDotOperand) {
+  private static String check_mgdhcs_f0a5a02(jetbrains.mps.smodel.SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getResolveInfo();
     }

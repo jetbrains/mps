@@ -5,59 +5,13 @@ package jetbrains.mps.vcs.annotate;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.workbench.action.BaseGroup;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import java.util.List;
-import java.util.Arrays;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import com.intellij.ide.util.PropertiesComponent;
+import com.intellij.openapi.vcs.VcsBundle;
 import org.jetbrains.annotations.NotNull;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/4433480198085290549", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 /*package*/ class ViewActionGroup extends BaseGroup {
-
-  private final RadioButtonGroup<ColorsOption> myColorsGroup;
-  private final RadioButtonGroup<NamesOption> myNamesGroup;
-
-  private interface ViewOption {
-    String getLabel();
-  }
-
-  public enum ColorsOption implements ViewOption {
-    AUTHOR("author"),
-    ORDER("order"),
-    HIDE("hide");
-
-    private ColorsOption(String label) {
-      myLabel = label;
-    }
-    public final String myLabel;
-
-    @Override
-    public String getLabel() {
-      return myLabel;
-    }
-  }
-
-  public enum NamesOption implements ViewOption {
-    INITIALS("initials"),
-    LAST("last"),
-    FIRST("first"),
-    FULL("full");
-
-    private NamesOption(String label) {
-      myLabel = label;
-    }
-    public final String myLabel;
-
-
-    @Override
-    public String getLabel() {
-      return myLabel;
-    }
-  }
-
 
   public ViewActionGroup(AnnotationColumn annotationColumn, Iterable<AnnotationAspectSubcolumn> subcolumns) {
     super("View");
@@ -66,30 +20,12 @@ import org.jetbrains.annotations.NotNull;
       add(new ShowHideSubcolumnAction(subcolumn));
     }
     addSeparator();
-    List<RadioButtonAction<ColorsOption>> colorActions = Arrays.asList(new RadioButtonAction<ColorsOption>(ColorsOption.AUTHOR, "Author"), new RadioButtonAction<ColorsOption>(ColorsOption.ORDER, "Order"), new RadioButtonAction<ColorsOption>(ColorsOption.HIDE, "Hide"));
-    myColorsGroup = new RadioButtonGroup("Colors", colorActions, "annotate.show.colors", ColorsOption.ORDER, annotationColumn);
-    add(myColorsGroup);
-    List<RadioButtonAction<NamesOption>> namesActions = Arrays.asList(new RadioButtonAction<NamesOption>(NamesOption.INITIALS, "Initials"), new RadioButtonAction<NamesOption>(NamesOption.LAST, "Last Name"), new RadioButtonAction<NamesOption>(NamesOption.FIRST, "First Name"), new RadioButtonAction<NamesOption>(NamesOption.FULL, "Full Name"));
-    myNamesGroup = new RadioButtonGroup("Names", namesActions, "annotate.show.names", NamesOption.LAST, annotationColumn);
-    add(myNamesGroup);
+    add(new ColorsGroup());
+    add(new ShortNameGroup());
   }
 
-  public ColorsOption getSelectedColorsOption() {
-    for (ColorsOption option : ColorsOption.values()) {
-      if (option.getLabel().equals(myColorsGroup.getSelectedKey())) {
-        return option;
-      }
-    }
-    return null;
-  }
-
-  public NamesOption getSelectedNamesOption() {
-    for (NamesOption option : NamesOption.values()) {
-      if (option.getLabel().equals(myNamesGroup.getSelectedKey())) {
-        return option;
-      }
-    }
-    return null;
+  public AnnotationOptions.ColorMode getSelectedColorsOption() {
+    return AnnotationOptions.getInstance().getColorMode();
   }
 
   private class ShowHideSubcolumnAction extends ToggleAction {
@@ -108,64 +44,62 @@ import org.jetbrains.annotations.NotNull;
     }
   }
 
-  private class RadioButtonGroup<T extends ViewActionGroup.ViewOption> extends BaseGroup {
-
-    private final T myDefaultKey;
-    private final String myGroupKey;
-    private final AnnotationColumn myColumn;
-
-    public RadioButtonGroup(String groupName, List<? extends RadioButtonAction> actions, String groupKey, T defaultKey, AnnotationColumn column) {
-      super(groupName);
-      myGroupKey = groupKey;
-      myDefaultKey = defaultKey;
-      myColumn = column;
-      setPopup(true);
-      ListSequence.fromList(actions).visitAll(new IVisitor<RadioButtonAction>() {
-        public void visit(RadioButtonAction action) {
-          action.setGroup(RadioButtonGroup.this);
-          add(action);
-        }
-      });
-    }
-
-    public String getSelectedKey() {
-      return PropertiesComponent.getInstance().getValue(myGroupKey, myDefaultKey.getLabel());
-    }
-
-    public void setSelectedKey(T newKey) {
-      PropertiesComponent.getInstance().setValue(myGroupKey, newKey.getLabel());
-      myColumn.invalidateLayout();
+  private class ColorsGroup extends BaseGroup {
+    public ColorsGroup() {
+      super(VcsBundle.messagePointer("annotations.color.mode.group.colors"), "Colors", true);
+      for (AnnotationOptions.ColorMode colorMode : AnnotationOptions.ColorMode.values()) {
+        add(new ColorOption(colorMode));
+      }
     }
   }
 
-
-
-  private class RadioButtonAction<T extends ViewActionGroup.ViewOption> extends ToggleAction {
-
-    private T myKey;
-    private RadioButtonGroup myGroup;
-
-    public RadioButtonAction(T key, String title) {
-      super(title);
-      myKey = key;
+  private class ShortNameGroup extends BaseGroup {
+    public ShortNameGroup() {
+      super(VcsBundle.messagePointer("annotations.short.name.type.group.names"), "Names", true);
+      for (AnnotationOptions.MpsShortNameType shortNameType : AnnotationOptions.MpsShortNameType.values()) {
+        add(new ShortNameOption(shortNameType));
+      }
     }
+  }
 
-    public void setGroup(RadioButtonGroup group) {
-      myGroup = group;
-    }
+  private class ColorOption extends ToggleAction {
 
-    public String getLabel() {
-      return myKey.getLabel();
+    private final AnnotationOptions.ColorMode myColorMode;
+
+    public ColorOption(AnnotationOptions.ColorMode myColorMode) {
+      super(myColorMode.getDescription());
+      this.myColorMode = myColorMode;
     }
 
     @Override
     public boolean isSelected(@NotNull AnActionEvent event) {
-      return myGroup.getSelectedKey().equals(getLabel());
+      return AnnotationOptions.getInstance().getColorMode() == myColorMode;
     }
     @Override
-    public void setSelected(@NotNull AnActionEvent event, boolean selected) {
-      if (selected) {
-        myGroup.setSelectedKey(myKey);
+    public void setSelected(@NotNull AnActionEvent event, boolean b) {
+      if (b) {
+        AnnotationOptions.getInstance().setColorMode(myColorMode);
+      }
+    }
+  }
+
+  private class ShortNameOption extends ToggleAction {
+
+    private final AnnotationOptions.MpsShortNameType myShortNameType;
+
+    public ShortNameOption(AnnotationOptions.MpsShortNameType shortNameType) {
+      super(shortNameType.getDescription());
+      this.myShortNameType = shortNameType;
+    }
+
+    @Override
+    public boolean isSelected(@NotNull AnActionEvent event) {
+      return AnnotationOptions.getInstance().getShortNameType() == myShortNameType;
+    }
+    @Override
+    public void setSelected(@NotNull AnActionEvent event, boolean b) {
+      if (b) {
+        AnnotationOptions.getInstance().setShortNameType(myShortNameType);
       }
     }
   }

@@ -5,7 +5,6 @@ package jetbrains.mps.vcs.annotate;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.nodeEditor.messageTargets.EditorMessageWithTarget;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import com.intellij.openapi.vcs.history.VcsFileRevision;
 import java.awt.Color;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import jetbrains.mps.errors.MessageStatus;
@@ -20,16 +19,11 @@ import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
 public class AnnotatedCellMessage extends EditorMessageWithTarget {
 
   private final EditorCell myCell;
-  private final VcsFileRevision myRevision;
 
-  public AnnotatedCellMessage(EditorCell cell, Color color, VcsFileRevision revision, String changesText, EditorMessageOwner owner) {
+
+  public AnnotatedCellMessage(EditorCell cell, Color color, String changesText, EditorMessageOwner owner) {
     super(cell.getSNode(), MessageStatus.OK, new NodeMessageTarget(), color, changesText, owner);
     myCell = cell;
-    myRevision = revision;
-  }
-
-  public VcsFileRevision getRevision() {
-    return myRevision;
   }
 
   @Override
@@ -41,7 +35,7 @@ public class AnnotatedCellMessage extends EditorMessageWithTarget {
   public void paint(Graphics g, EditorComponent editorComponent, EditorCell cell) {
     Rectangle bounds = GeometryUtil.getBounds(myCell);
     g.setColor(getColor());
-    g.fillRect(bounds.x + 1, bounds.y + 1, bounds.width - 2, bounds.height - 2);
+    g.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
   }
 
   @Override

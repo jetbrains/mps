@@ -11,7 +11,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/5694687812507036176", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
-public abstract class NodeChange extends ModelChange {
+public abstract class NodeChange extends StructureChange {
   private final SNodeId myAffectedNodeId;
 
   public NodeChange(@NotNull ChangeSet changeSet, @NotNull SNodeId affectedNodeId) {

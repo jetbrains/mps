@@ -12,18 +12,28 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/6566909625908996008", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 public class CommitNumberSubcolumn extends AnnotationAspectSubcolumn {
-  private final Map<VcsFileRevision, Integer> myRevisionsToNumbers = MapSequence.fromMap(new HashMap<VcsFileRevision, Integer>());
-  public CommitNumberSubcolumn(AnnotationColumn annotationColumn) {
-    super(annotationColumn, "Commit number");
+
+  private Map<VcsFileRevision, Integer> myRevisionsToNumbers = MapSequence.fromMap(new HashMap<VcsFileRevision, Integer>());
+
+
+  public CommitNumberSubcolumn(EditorAnnotation editorAnnotation) {
+    super(editorAnnotation, "Commit number");
     myRightAligned = true;
-    // Utilize the fact FileAnnotation.getRevision gives ordered list, from newest to oldest; index in reversed order (rev #1 means oldest) 
-    List<VcsFileRevision> revisions = annotationColumn.getRevisions();
+  }
+
+  @Override
+  public String getText(VcsFileRevision revision) {
+    List<VcsFileRevision> revisions = myEditorAnnotation.getAllRevisions();
+    if (MapSequence.fromMap(myRevisionsToNumbers).count() != ListSequence.fromList(revisions).count()) {
+      calcNumbers(revisions);
+    }
+    return "" + MapSequence.fromMap(myRevisionsToNumbers).get(revision);
+  }
+
+  private void calcNumbers(List<VcsFileRevision> revisions) {
+    myRevisionsToNumbers = MapSequence.fromMap(new HashMap<VcsFileRevision, Integer>());
     for (int i = ListSequence.fromList(revisions).count(), j = 0; i > 0; i--, j++) {
       MapSequence.fromMap(myRevisionsToNumbers).put(ListSequence.fromList(revisions).getElement(j), i);
     }
-  }
-  @Override
-  public String getText(VcsFileRevision revision) {
-    return "" + MapSequence.fromMap(myRevisionsToNumbers).get(revision);
   }
 }

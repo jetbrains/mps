@@ -10,14 +10,14 @@ import com.intellij.openapi.vcs.history.VcsFileRevision;
 import java.util.Date;
 import git4idea.GitFileRevision;
 import com.intellij.vcs.log.impl.CommonUiProperties;
-import com.intellij.util.text.DateFormatUtil;
+import com.intellij.util.text.JBDateFormat;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/9024594033545086757", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 public class DateAspectSubcolumn extends AnnotationAspectSubcolumn {
 
   private final VcsLogApplicationSettings myLogSettings = ApplicationManager.getApplication().getService(VcsLogApplicationSettings.class);
-  public DateAspectSubcolumn(AnnotationColumn annotationColumn) {
-    super(annotationColumn, LineAnnotationAspect.DATE);
+  public DateAspectSubcolumn(EditorAnnotation editorAnnotation) {
+    super(editorAnnotation, LineAnnotationAspect.DATE);
   }
 
   @Override
@@ -29,6 +29,6 @@ public class DateAspectSubcolumn extends AnnotationAspectSubcolumn {
     } else {
       date = revision.getRevisionDate();
     }
-    return DateFormatUtil.formatDateTime(date);
+    return JBDateFormat.getFormatter().formatPrettyDate(date);
   }
 }

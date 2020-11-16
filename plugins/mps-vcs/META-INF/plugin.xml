@@ -71,6 +71,7 @@
     <applicationService serviceInterface="jetbrains.mps.vcs.platform.mergedriver.MergeDriverPacker"
                         serviceImplementation="jetbrains.mps.vcs.MergeDriverPackerImpl" />
     <applicationService serviceImplementation="jetbrains.mps.vcs.diff.ui.common.ChangeColors"/>
+    <applicationService serviceImplementation="jetbrains.mps.vcs.annotate.AnnotationOptions"/>
 
     <projectService serviceInterface="com.intellij.openapi.vcs.AbstractVcsHelper"
                     serviceImplementation="jetbrains.mps.vcs.platform.integration.MPSVcsHelper" overrides="true"/>

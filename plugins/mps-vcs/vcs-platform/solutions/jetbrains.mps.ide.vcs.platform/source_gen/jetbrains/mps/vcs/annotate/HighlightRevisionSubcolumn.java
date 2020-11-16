@@ -7,13 +7,13 @@ import com.intellij.openapi.vcs.history.VcsFileRevision;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/2735498088651740382", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 /*package*/ class HighlightRevisionSubcolumn extends AnnotationAspectSubcolumn {
-  private VcsRevisionRange myRevisionRange;
-  public HighlightRevisionSubcolumn(AnnotationColumn annotationColumn, VcsRevisionRange revisionRange) {
-    super(annotationColumn, "highlight.revision");
-    myRevisionRange = revisionRange;
+
+  public HighlightRevisionSubcolumn(EditorAnnotation editorAnnotation) {
+    super(editorAnnotation, "highlight.revision");
   }
+
   @Override
   public String getText(VcsFileRevision revision) {
-    return (myRevisionRange.isRevisionHighlighted(revision) ? "*" : "");
+    return (myEditorAnnotation.isRevisionHighlighted(revision) ? "*" : "");
   }
 }

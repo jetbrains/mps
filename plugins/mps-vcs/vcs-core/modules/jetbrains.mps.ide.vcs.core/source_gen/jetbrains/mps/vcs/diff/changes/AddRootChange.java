@@ -9,9 +9,16 @@ import jetbrains.mps.vcs.diff.ChangeSet;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import java.util.List;
+import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
+import jetbrains.mps.errors.messageTargets.MessageTarget;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.LinkedList;
+import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
+import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/6359197607515881703", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
-public class AddRootChange extends ModelChange {
+public class AddRootChange extends StructureChange {
   private final SNodeId myNodeId;
 
   public AddRootChange(@NotNull ChangeSet changeSet, @NotNull SNodeId nodeId) {
@@ -45,5 +52,10 @@ public class AddRootChange extends ModelChange {
   @Override
   public String getDescription() {
     return "Added root #" + myNodeId;
+  }
+
+  @Override
+  public List<Tuples._2<SNodeId, MessageTarget>> createMessageTargetsWithIds(boolean isNewModel) {
+    return ListSequence.fromListAndArray(new LinkedList<Tuples._2<SNodeId, MessageTarget>>(), MultiTuple.<SNodeId,MessageTarget>from(getRootId(), ((MessageTarget) new NodeMessageTarget())));
   }
 }

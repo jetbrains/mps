@@ -5,31 +5,17 @@ package jetbrains.mps.vcs.annotate;
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.vcs.annotate.LineAnnotationAspect;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
-import com.intellij.openapi.vcs.actions.ShortNameType;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/9024594033544814784", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 public class AuthorAspectSubcolumn extends AnnotationAspectSubcolumn {
 
-  private ViewActionGroup myViewActionGroup;
-
-  public AuthorAspectSubcolumn(AnnotationColumn annotationColumn) {
-    super(annotationColumn, LineAnnotationAspect.AUTHOR);
-  }
-
-  public void setViewActionGroup(ViewActionGroup viewActionGroup) {
-    myViewActionGroup = viewActionGroup;
+  public AuthorAspectSubcolumn(EditorAnnotation editorAnnotation) {
+    super(editorAnnotation, LineAnnotationAspect.AUTHOR);
   }
 
   @Override
   public String getText(VcsFileRevision revision) {
     String value = revision.getAuthor();
-    if (myViewActionGroup.getSelectedNamesOption() == ViewActionGroup.NamesOption.INITIALS) {
-      return ShortNameType.shorten(value, ShortNameType.INITIALS);
-    } else if (myViewActionGroup.getSelectedNamesOption() == ViewActionGroup.NamesOption.LAST) {
-      return ShortNameType.shorten(value, ShortNameType.LASTNAME);
-    } else if (myViewActionGroup.getSelectedNamesOption() == ViewActionGroup.NamesOption.FIRST) {
-      return ShortNameType.shorten(value, ShortNameType.FIRSTNAME);
-    }
-    return value;
+    return AnnotationOptions.MpsShortNameType.shorten(value, AnnotationOptions.getInstance().getShortNameType());
   }
 }

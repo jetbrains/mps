@@ -13,6 +13,13 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.vcs.mergehints.runtime.VCSAspectUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SModel;
+import java.util.List;
+import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
+import jetbrains.mps.errors.messageTargets.MessageTarget;
+import jetbrains.mps.internal.collections.runtime.LinkedListSequence;
+import java.util.LinkedList;
+import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
+import jetbrains.mps.errors.messageTargets.PropertyMessageTarget;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/2729259761016168456", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public class SetPropertyChange extends NodeChange {
@@ -68,5 +75,9 @@ public class SetPropertyChange extends NodeChange {
   @Override
   public String getDescription() {
     return String.format("Changed %s of #%s from '%s' to '%s'", myProperty, getAffectedNodeId(false), getChangeSet().getOldModel().getNode(getAffectedNodeId(false)).getProperty(myProperty), getChangeSet().getNewModel().getNode(getAffectedNodeId(true)).getProperty(myProperty));
+  }
+  @Override
+  public List<Tuples._2<SNodeId, MessageTarget>> createMessageTargetsWithIds(boolean isNewModel) {
+    return LinkedListSequence.fromListAndArrayNew(new LinkedList<Tuples._2<SNodeId, MessageTarget>>(), MultiTuple.<SNodeId,MessageTarget>from(getAffectedNodeId(isNewModel), ((MessageTarget) new PropertyMessageTarget(getProperty()))));
   }
 }

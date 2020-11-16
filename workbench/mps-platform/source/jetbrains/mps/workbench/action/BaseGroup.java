@@ -22,11 +22,13 @@ import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.util.NlsActions.ActionText;
 import jetbrains.mps.InternalFlag;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.workbench.ActionPlace;
 import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.util.Condition;
@@ -34,6 +36,7 @@ import org.jetbrains.mps.util.Condition;
 import javax.swing.Icon;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Supplier;
 
 public class BaseGroup extends DefaultActionGroup implements DumbAware {
   private final String myId;
@@ -50,6 +53,16 @@ public class BaseGroup extends DefaultActionGroup implements DumbAware {
 
   public BaseGroup(String text, String id, Icon icon) {
     super(text, false);
+    myId = id;
+    getTemplatePresentation().setIcon(icon);
+  }
+
+  public BaseGroup(@NotNull Supplier<@ActionText String> text, String id, boolean popup){
+    this(text, id, null, popup);
+  }
+
+  public BaseGroup(@NotNull Supplier<@ActionText String> text, String id, Icon icon, boolean popup){
+    super(text, popup);
     myId = id;
     getTemplatePresentation().setIcon(icon);
   }

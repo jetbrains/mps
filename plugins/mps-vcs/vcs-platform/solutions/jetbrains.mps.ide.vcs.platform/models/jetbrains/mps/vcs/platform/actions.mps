@@ -3724,21 +3724,6 @@
     <property role="2YLI8m" value="6u2MFnph2yg/read" />
     <node concept="tnohg" id="3WCIgQv3c7U" role="tncku">
       <node concept="3clFbS" id="3WCIgQv3c7V" role="2VODD2">
-        <node concept="3clFbJ" id="55zwzn2CNci" role="3cqZAp">
-          <node concept="3clFbS" id="55zwzn2CNcj" role="3clFbx">
-            <node concept="3cpWs6" id="55zwzn2CNck" role="3cqZAp" />
-          </node>
-          <node concept="2YIFZM" id="55zwzn2CNcm" role="3clFbw">
-            <ref role="37wK5l" to="bvbc:55zwzn2A6KR" resolve="isEditorInProgress" />
-            <ref role="1Pybhc" to="bvbc:7L8MbJlwgBq" resolve="AnnotationColumnsUtil" />
-            <node concept="2OqwBi" id="55zwzn2CNcn" role="37wK5m">
-              <node concept="2WthIp" id="55zwzn2CNco" role="2Oq$k0" />
-              <node concept="1DTwFV" id="55zwzn2CNcp" role="2OqNvi">
-                <ref role="2WH_rO" node="3WCIgQv3c81" resolve="editor" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs8" id="13$TqNLIgvg" role="3cqZAp">
           <node concept="3cpWsn" id="13$TqNLIgvh" role="3cpWs9">
             <property role="TrG5h" value="annotationColumn" />
@@ -3885,78 +3870,37 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="13$TqNLIgzM" role="3cqZAp">
-          <node concept="2YIFZM" id="55zwzn2Ep2R" role="3clFbG">
-            <ref role="37wK5l" to="bvbc:55zwzn2EiKg" resolve="setEditorInProgress" />
-            <ref role="1Pybhc" to="bvbc:7L8MbJlwgBq" resolve="AnnotationColumnsUtil" />
-            <node concept="2OqwBi" id="55zwzn2EpAw" role="37wK5m">
-              <node concept="2WthIp" id="55zwzn2Epky" role="2Oq$k0" />
-              <node concept="1DTwFV" id="55zwzn2EpVg" role="2OqNvi">
-                <ref role="2WH_rO" node="3WCIgQv3c81" resolve="editor" />
-              </node>
+        <node concept="3clFbF" id="13$TqNLIgzT" role="3cqZAp">
+          <node concept="2OqwBi" id="13$TqNLIgzU" role="3clFbG">
+            <node concept="2YIFZM" id="13$TqNLIgzV" role="2Oq$k0">
+              <ref role="37wK5l" to="xygl:~ProgressManager.getInstance()" resolve="getInstance" />
+              <ref role="1Pybhc" to="xygl:~ProgressManager" resolve="ProgressManager" />
             </node>
-          </node>
-        </node>
-        <node concept="3J1_TO" id="13$TqNLIgzR" role="3cqZAp">
-          <node concept="3uVAMA" id="13$TqNLIgzY" role="1zxBo5">
-            <node concept="XOnhg" id="13$TqNLIgzZ" role="1zc67B">
-              <property role="3TUv4t" value="false" />
-              <property role="TrG5h" value="t" />
-              <node concept="nSUau" id="xvs04dIfLS" role="1tU5fm">
-                <node concept="3uibUv" id="13$TqNLIg$0" role="nSUat">
-                  <ref role="3uigEE" to="wyt6:~Throwable" resolve="Throwable" />
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbS" id="13$TqNLIg$1" role="1zc67A">
-              <node concept="3clFbF" id="13$TqNLIg$2" role="3cqZAp">
-                <node concept="2YIFZM" id="55zwzn2EA$z" role="3clFbG">
-                  <ref role="37wK5l" to="bvbc:55zwzn2ExoG" resolve="stopEditorProgress" />
-                  <ref role="1Pybhc" to="bvbc:7L8MbJlwgBq" resolve="AnnotationColumnsUtil" />
-                  <node concept="2OqwBi" id="55zwzn2EBuL" role="37wK5m">
-                    <node concept="2WthIp" id="55zwzn2EAU5" role="2Oq$k0" />
-                    <node concept="1DTwFV" id="55zwzn2EC5i" role="2OqNvi">
+            <node concept="liA8E" id="13$TqNLIgzW" role="2OqNvi">
+              <ref role="37wK5l" to="xygl:~ProgressManager.run(com.intellij.openapi.progress.Task)" resolve="run" />
+              <node concept="2ShNRf" id="55zwzn2D$jT" role="37wK5m">
+                <node concept="1pGfFk" id="55zwzn2D$jU" role="2ShVmc">
+                  <ref role="37wK5l" to="bvbc:55zwzn2Ba_w" resolve="AnnotateBackgroundableTask" />
+                  <node concept="2OqwBi" id="55zwzn2E5hb" role="37wK5m">
+                    <node concept="2WthIp" id="55zwzn2E4X3" role="2Oq$k0" />
+                    <node concept="1DTwFV" id="55zwzn2E5CS" role="2OqNvi">
+                      <ref role="2WH_rO" node="13$TqNLJqBK" resolve="project" />
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="55zwzn2D$jW" role="37wK5m">
+                    <ref role="3cqZAo" node="30Bv66KVC4F" resolve="taskName" />
+                  </node>
+                  <node concept="2OqwBi" id="55zwzn2E4tr" role="37wK5m">
+                    <node concept="2WthIp" id="55zwzn2E49p" role="2Oq$k0" />
+                    <node concept="1DTwFV" id="55zwzn2E4Ni" role="2OqNvi">
                       <ref role="2WH_rO" node="3WCIgQv3c81" resolve="editor" />
                     </node>
                   </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbS" id="13$TqNLIgzS" role="1zxBo7">
-            <node concept="3clFbF" id="13$TqNLIgzT" role="3cqZAp">
-              <node concept="2OqwBi" id="13$TqNLIgzU" role="3clFbG">
-                <node concept="2YIFZM" id="13$TqNLIgzV" role="2Oq$k0">
-                  <ref role="37wK5l" to="xygl:~ProgressManager.getInstance()" resolve="getInstance" />
-                  <ref role="1Pybhc" to="xygl:~ProgressManager" resolve="ProgressManager" />
-                </node>
-                <node concept="liA8E" id="13$TqNLIgzW" role="2OqNvi">
-                  <ref role="37wK5l" to="xygl:~ProgressManager.run(com.intellij.openapi.progress.Task)" resolve="run" />
-                  <node concept="2ShNRf" id="55zwzn2D$jT" role="37wK5m">
-                    <node concept="1pGfFk" id="55zwzn2D$jU" role="2ShVmc">
-                      <ref role="37wK5l" to="bvbc:55zwzn2Ba_w" resolve="AnnotateBackgroundableTask" />
-                      <node concept="2OqwBi" id="55zwzn2E5hb" role="37wK5m">
-                        <node concept="2WthIp" id="55zwzn2E4X3" role="2Oq$k0" />
-                        <node concept="1DTwFV" id="55zwzn2E5CS" role="2OqNvi">
-                          <ref role="2WH_rO" node="13$TqNLJqBK" resolve="project" />
-                        </node>
-                      </node>
-                      <node concept="37vLTw" id="55zwzn2D$jW" role="37wK5m">
-                        <ref role="3cqZAo" node="30Bv66KVC4F" resolve="taskName" />
-                      </node>
-                      <node concept="2OqwBi" id="55zwzn2E4tr" role="37wK5m">
-                        <node concept="2WthIp" id="55zwzn2E49p" role="2Oq$k0" />
-                        <node concept="1DTwFV" id="55zwzn2E4Ni" role="2OqNvi">
-                          <ref role="2WH_rO" node="3WCIgQv3c81" resolve="editor" />
-                        </node>
-                      </node>
-                      <node concept="37vLTw" id="55zwzn2E43J" role="37wK5m">
-                        <ref role="3cqZAo" node="2$2IPPcWWsQ" resolve="vf" />
-                      </node>
-                      <node concept="37vLTw" id="55zwzn2E3Y6" role="37wK5m">
-                        <ref role="3cqZAo" node="2$2IPPcWWtJ" resolve="activeVCS" />
-                      </node>
-                    </node>
+                  <node concept="37vLTw" id="55zwzn2E43J" role="37wK5m">
+                    <ref role="3cqZAo" node="2$2IPPcWWsQ" resolve="vf" />
+                  </node>
+                  <node concept="37vLTw" id="55zwzn2E3Y6" role="37wK5m">
+                    <ref role="3cqZAo" node="2$2IPPcWWtJ" resolve="activeVCS" />
                   </node>
                 </node>
               </node>
@@ -3977,23 +3921,6 @@
     </node>
     <node concept="2ScWuX" id="3WCIgQv3c83" role="tmbBb">
       <node concept="3clFbS" id="3WCIgQv3c84" role="2VODD2">
-        <node concept="3clFbJ" id="55zwzn2AleZ" role="3cqZAp">
-          <node concept="3clFbS" id="55zwzn2Alf1" role="3clFbx">
-            <node concept="3cpWs6" id="55zwzn2An1K" role="3cqZAp">
-              <node concept="3clFbT" id="55zwzn2AncE" role="3cqZAk" />
-            </node>
-          </node>
-          <node concept="2YIFZM" id="55zwzn2AlC8" role="3clFbw">
-            <ref role="37wK5l" to="bvbc:55zwzn2A6KR" resolve="isEditorInProgress" />
-            <ref role="1Pybhc" to="bvbc:7L8MbJlwgBq" resolve="AnnotationColumnsUtil" />
-            <node concept="2OqwBi" id="55zwzn2Amel" role="37wK5m">
-              <node concept="2WthIp" id="55zwzn2AlMt" role="2Oq$k0" />
-              <node concept="1DTwFV" id="55zwzn2AmM7" role="2OqNvi">
-                <ref role="2WH_rO" node="3WCIgQv3c81" resolve="editor" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbJ" id="2$2IPPd1QMU" role="3cqZAp">
           <node concept="3y3z36" id="2$2IPPd1QMV" role="3clFbw">
             <node concept="10Nm6u" id="2$2IPPd1QMX" role="3uHU7w" />

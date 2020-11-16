@@ -10,42 +10,22 @@ import java.util.Map;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
 import com.intellij.openapi.vcs.history.VcsRevisionNumber;
 import com.intellij.openapi.vcs.history.ShortVcsRevisionNumber;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import com.intellij.openapi.vcs.actions.CompareWithSelectedRevisionAction;
-import com.intellij.util.Consumer;
-import com.intellij.openapi.vcs.history.VcsFileRevisionEx;
-import java.util.Date;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/7744421503924576834", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 public class VcsRevisionRange extends BaseGroup {
   private AnnotationColumn myColumn;
-  private HiglightAction myBeforeAction;
-  private HiglightAction myAfterAction;
   public VcsRevisionRange(AnnotationColumn column) {
     super("Revision Range");
     myColumn = column;
-    myBeforeAction = new HiglightAction(true);
-    myAfterAction = new HiglightAction(false);
     setPopup(false);
-    add(myBeforeAction);
-    add(myAfterAction);
     add(new BaseAction("Remove Highlighting") {
       @Override
       protected void doExecute(AnActionEvent event, Map<String, Object> map) {
-        myBeforeAction.myRevision = null;
-        myAfterAction.myRevision = null;
         myColumn.invalidateLayout();
       }
     });
   }
 
-  /*package*/ boolean isRevisionHighlighted(VcsFileRevision fileRev) {
-    if (myBeforeAction.myRevision != null || myAfterAction.myRevision != null) {
-      return myBeforeAction.isHighlighted(fileRev) && myAfterAction.isHighlighted(fileRev);
-    } else {
-      return false;
-    }
-  }
 
   private static String revisionToString(VcsFileRevision revision) {
     VcsRevisionNumber number = revision.getRevisionNumber();
@@ -55,52 +35,5 @@ public class VcsRevisionRange extends BaseGroup {
       return number.asString();
     }
   }
-  private class HiglightAction extends BaseAction {
-    private VcsFileRevision myRevision = null;
-    private boolean myBefore;
-    public HiglightAction(boolean before) {
-      myBefore = before;
-      if (!(before)) {
-        myRevision = ListSequence.fromList(myColumn.getRevisions()).first();
-      }
-    }
-    @Override
-    protected void doUpdate(AnActionEvent event, Map<String, Object> map) {
-      String text = (myBefore ? "Show Before..." : "Show After...");
-      String description = (myBefore ? "Highlights revisions before or equal to selected" : "Highlights revisions after or equal to selected");
-      event.getPresentation().setText((myRevision == null ? text : String.format("%s (%s)", text, revisionToString(myRevision))));
-      event.getPresentation().setDescription(description);
-      event.getPresentation().setEnabled(ListSequence.fromList(myColumn.getRevisions()).isNotEmpty());
-    }
-    @Override
-    protected void doExecute(AnActionEvent event, Map<String, Object> _params) {
-      CompareWithSelectedRevisionAction.showListPopup(myColumn.getRevisions(), myColumn.getProject(), new Consumer<VcsFileRevision>() {
-        @Override
-        public void consume(VcsFileRevision revision) {
-          myRevision = revision;
-          myColumn.invalidateLayout();
-        }
-      }, true);
-    }
-    /*package*/ boolean isHighlighted(VcsFileRevision revision) {
-      if (myRevision == null) {
-        return true;
-      } else if (revision == null) {
-        return false;
-      } else {
-        int compareResult = revision.getRevisionDate().compareTo(myRevision.getRevisionDate());
-        // XXX not clear what VcsRevisionNumber.timestamp means (that's what VcsFileRevision.getRevisionDate() looks at) 
-        // and why it's the same for few (or even all?) file revisions. It seems it does not reflect actual commit moment either, 
-        // though I didn't investigate this thoroughly 
-        if (compareResult == 0 && revision instanceof VcsFileRevisionEx && myRevision instanceof VcsFileRevisionEx) {
-          Date d1 = ((VcsFileRevisionEx) revision).getAuthorDate();
-          Date d2 = ((VcsFileRevisionEx) myRevision).getAuthorDate();
-          if (d1 != null && d2 != null) {
-            compareResult = d1.compareTo(d2);
-          }
-        }
-        return (myBefore ? compareResult <= 0 : compareResult >= 0);
-      }
-    }
-  }
+
 }

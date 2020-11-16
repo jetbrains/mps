@@ -7,6 +7,8 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
 import org.jetbrains.mps.openapi.model.SNode;
 import com.intellij.openapi.project.Project;
+import com.intellij.idea.ActionsBundle;
+import com.intellij.openapi.actionSystem.IdeActions;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.model.SNodeId;
@@ -30,8 +32,9 @@ import jetbrains.mps.vfs.tracking.ModelDiffContent;
   private final Project myProject;
   private final String myFileExtension;
 
-  public ShowDiffFromAnnotationAction(VcsFileRevision prevRevision, VcsFileRevision revision, SNode root, Project project, String fileExtension) {
-    super("Show Diff");
+
+  public ShowDiffFromAnnotationAction(VcsFileRevision revision, VcsFileRevision prevRevision, SNode root, Project project, String fileExtension) {
+    super(ActionsBundle.actionText(IdeActions.ACTION_SHOW_DIFF_COMMON));
     myPrevRevision = prevRevision;
     myRevision = revision;
     myRoot = root;
