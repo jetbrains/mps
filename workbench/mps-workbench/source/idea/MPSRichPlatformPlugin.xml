@@ -302,6 +302,8 @@
     <projectService serviceInterface="com.intellij.refactoring.suggested.SuggestedRefactoringProvider"
                     serviceImplementation="com.intellij.refactoring.suggested.SuggestedRefactoringProviderImpl"/>
     <postStartupActivity implementation="com.intellij.refactoring.suggested.SuggestedRefactoringProviderImpl$Startup"/>
+    <applicationService serviceInterface="com.intellij.openapi.roots.impl.PushedFilePropertiesRetriever"
+                        serviceImplementation="com.intellij.openapi.roots.impl.PushedFilePropertiesRetrieverImpl"/>
   </extensions>
 
   <xi:include href="/META-INF/lvcs.xml" xpointer="xpointer(/idea-plugin/*)">
