@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model ref="r:9a9ec010-573d-4ed5-a9f5-3a7cb4b1d15a(jetbrains.mps.generator.tests.bean2)" doNotGenerate="true">
+<model ref="r:9a9ec010-573d-4ed5-a9f5-3a7cb4b1d15a(jetbrains.mps.generator.tests.bean2)">
   <persistence version="9" />
+  <attribute name="doNotGenerate" value="true" />
   <languages>
     <use id="479c7a8c-02f9-43b5-9139-d910cb22f298" name="jetbrains.mps.core.xml" version="0" />
   </languages>

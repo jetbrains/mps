@@ -1110,18 +1110,23 @@
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="6BLo1MgrCpg" role="3clF47">
         <node concept="3cpWs6" id="6BLo1MgrCph" role="3cqZAp">
-          <node concept="2OqwBi" id="5Ks7c$vfHVI" role="3cqZAk">
-            <node concept="1rXfSq" id="6BLo1MgrCpi" role="2Oq$k0">
-              <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
-              <node concept="Xl_RD" id="6BLo1MgrCpj" role="37wK5m">
-                <property role="Xl_RC" value="mps-vcs" />
+          <node concept="2OqwBi" id="7bICyy6eOIc" role="3cqZAk">
+            <node concept="2OqwBi" id="5Ks7c$vfHVI" role="2Oq$k0">
+              <node concept="1rXfSq" id="6BLo1MgrCpi" role="2Oq$k0">
+                <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
+                <node concept="Xl_RD" id="6BLo1MgrCpj" role="37wK5m">
+                  <property role="Xl_RC" value="mps-vcs" />
+                </node>
+                <node concept="Xl_RD" id="6BLo1MgrCpk" role="37wK5m">
+                  <property role="Xl_RC" value="jetbrains.mps.vcs" />
+                </node>
               </node>
-              <node concept="Xl_RD" id="6BLo1MgrCpk" role="37wK5m">
-                <property role="Xl_RC" value="jetbrains.mps.vcs" />
+              <node concept="liA8E" id="5Ks7c$vfImO" role="2OqNvi">
+                <ref role="37wK5l" node="6BLo1MgrGos" resolve="withGit4IdeaPlugin" />
               </node>
             </node>
-            <node concept="liA8E" id="5Ks7c$vfImO" role="2OqNvi">
-              <ref role="37wK5l" node="6BLo1MgrGos" resolve="withGit4IdeaPlugin" />
+            <node concept="liA8E" id="7bICyy6eOTV" role="2OqNvi">
+              <ref role="37wK5l" node="245jbU$BLCn" resolve="withGit4IdeaStubsPlugin" />
             </node>
           </node>
         </node>

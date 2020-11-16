@@ -6501,15 +6501,15 @@
           <node concept="3clFbS" id="1nBtCnDNcPh" role="1zxBo7">
             <node concept="3clFbF" id="1nBtCnDNmO1" role="3cqZAp">
               <node concept="37vLTI" id="1nBtCnDNnnB" role="3clFbG">
-                <node concept="37vLTw" id="6VQQFQNQcGg" role="37vLTJ">
-                  <ref role="3cqZAo" node="1nBtCnD_O6F" resolve="myData" />
-                </node>
                 <node concept="2YIFZM" id="1nBtCnDNlrA" role="37vLTx">
                   <ref role="1Pybhc" to="18ew:~ReadUtil" resolve="ReadUtil" />
                   <ref role="37wK5l" to="18ew:~ReadUtil.read(java.io.InputStream)" resolve="read" />
                   <node concept="37vLTw" id="1nBtCnDNlR9" role="37wK5m">
                     <ref role="3cqZAo" node="1nBtCnDNd25" resolve="stream" />
                   </node>
+                </node>
+                <node concept="37vLTw" id="6VQQFQNQcGg" role="37vLTJ">
+                  <ref role="3cqZAo" node="1nBtCnD_O6F" resolve="myData" />
                 </node>
               </node>
             </node>

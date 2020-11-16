@@ -14,9 +14,8 @@ import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.editor.tooltips.runtime.LazyTooltipCellEvaluator;
-import jetbrains.mps.lang.editor.tooltips.runtime.TooltipTimingProperties;
-import com.intellij.openapi.util.registry.Registry;
 import jetbrains.mps.lang.editor.tooltips.runtime.TooltipWrapper;
+import jetbrains.mps.lang.editor.tooltips.runtime.TooltipTimingProperties;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.lang.editor.cellProviders.SReferenceCellProvider;
 import jetbrains.mps.util.Computable;
@@ -91,22 +90,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return SPropertyOperations.getBoolean(myNode, PROPS.cardinalityVisible$Vfns);
   }
   private EditorCell createTooltip_0(final EditorContext editorContext, final SNode node) {
-
     LazyTooltipCellEvaluator tooltip = new LazyTooltipCellEvaluator(editorContext, node, "jetbrains.mps.samples.ChemMastery.editor.GeneratedHints.tooltipHint_mwjwii_a0", true);
     EditorCell visibleCell = createRefCell_0();
 
-    TooltipTimingProperties timing = new TooltipTimingProperties() {
-      @Override
-      public int getShortDelayBeforeShow() {
-        return Registry.intValue("ide.tooltip.initialDelay");
-      }
-
-      @Override
-      public int getShowImmediatelyPeriod() {
-        return Registry.intValue("ide.tooltip.reshowDelay");
-      }
-    };
-    TooltipWrapper editorCell = new TooltipWrapper(editorContext, node, visibleCell, tooltip, timing);
+    TooltipWrapper editorCell = new TooltipWrapper(editorContext, node, visibleCell, tooltip, TooltipTimingProperties.DEFAULT);
     editorCell.setCellId("Tooltip_mwjwii_a0");
     return editorCell;
   }

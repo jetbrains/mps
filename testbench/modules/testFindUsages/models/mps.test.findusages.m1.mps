@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model ref="r:f0b2a91b-3c1d-49c2-b104-70549000f428(mps.test.findusages.m1)" doNotGenerate="true">
+<model ref="r:f0b2a91b-3c1d-49c2-b104-70549000f428(mps.test.findusages.m1)">
   <persistence version="9" />
+  <attribute name="doNotGenerate" value="true" />
   <languages>
     <use id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone" version="0" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />

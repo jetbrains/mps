@@ -11,11 +11,11 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 
-/*package*/ class List_tooltipHint_6m31uf_a0_EditorBuilder_a extends AbstractEditorBuilder {
+/*package*/ class List_tooltipHint_6m31uf_c0_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
   private SNode myNode;
 
-  public List_tooltipHint_6m31uf_a0_EditorBuilder_a(@NotNull EditorContext context, @NotNull SNode node) {
+  public List_tooltipHint_6m31uf_c0_EditorBuilder_a(@NotNull EditorContext context, @NotNull SNode node) {
     super(context);
     myNode = node;
   }
@@ -32,12 +32,12 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 
   private EditorCell createCollection_0() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
-    editorCell.setCellId("Collection_xg96h9_a");
+    editorCell.setCellId("Collection_3k55ou_a");
     editorCell.setBig(true);
     setCellContext(editorCell);
     try {
       getCellFactory().pushCellContext();
-      getCellFactory().removeCellContextHints(new String[]{"tooltips.example.editor.GeneratedHints.tooltipHint_6m31uf_a0"});
+      getCellFactory().removeCellContextHints(new String[]{"tooltips.example.editor.GeneratedHints.tooltipHint_6m31uf_c0"});
       editorCell.addEditorCell(createConstant_0());
       setInnerCellsContext(editorCell);
     } finally {
@@ -46,8 +46,8 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
     return editorCell;
   }
   private EditorCell createConstant_0() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "i'm a tooltip");
-    editorCell.setCellId("Constant_xg96h9_a0");
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "the closer the cursor, the brighter the tooltip");
+    editorCell.setCellId("Constant_3k55ou_a0");
     editorCell.setDefaultText("");
     return editorCell;
   }

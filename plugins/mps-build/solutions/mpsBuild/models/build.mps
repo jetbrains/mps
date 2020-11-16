@@ -31507,11 +31507,6 @@
           <ref role="3bR37D" node="1TaHNgiIbJt" resolve="jetbrains.mps.ide.platform" />
         </node>
       </node>
-      <node concept="1SiIV0" id="39HJr_hyEwh" role="3bR37C">
-        <node concept="3bR9La" id="39HJr_hyEwi" role="1SiIV1">
-          <ref role="3bR37D" node="1TaHNgiIbIZ" resolve="MPS.Editor" />
-        </node>
-      </node>
       <node concept="1SiIV0" id="39HJr_hyEwj" role="3bR37C">
         <node concept="3bR9La" id="39HJr_hyEwk" role="1SiIV1">
           <ref role="3bR37D" node="3zjMY$95UAa" resolve="jetbrains.mps.core.tool.environment" />
@@ -31580,11 +31575,6 @@
           <node concept="3qWCbU" id="73GUf$umQh3" role="3LXTna">
             <property role="3qWCbO" value="**/*.mps, **/*.mpsr, **/.model" />
           </node>
-        </node>
-      </node>
-      <node concept="1SiIV0" id="4wxeloV_fB1" role="3bR37C">
-        <node concept="3bR9La" id="4wxeloV_fB2" role="1SiIV1">
-          <ref role="3bR37D" node="4wxeloVufXp" resolve="jetbrains.mps.git4idea.stubs" />
         </node>
       </node>
       <node concept="1SiIV0" id="1A9$eqshWhq" role="3bR37C">

@@ -9610,6 +9610,16 @@
                 </node>
               </node>
               <node concept="3clFbJ" id="20OI03lqja8" role="3cqZAp">
+                <node concept="3clFbS" id="20OI03lqjag" role="3clFbx">
+                  <node concept="3clFbF" id="3UaQr67qJbK" role="3cqZAp">
+                    <node concept="3nyPlj" id="3UaQr67qJbL" role="3clFbG">
+                      <ref role="37wK5l" to="b8lf:~AbstractMultipleSelection.executeAction(jetbrains.mps.openapi.editor.cells.CellActionType)" resolve="executeAction" />
+                      <node concept="37vLTw" id="3UaQr67qJbM" role="37wK5m">
+                        <ref role="3cqZAo" node="4tfWvd2gYxu" resolve="type" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
                 <node concept="1Wc70l" id="3UaQr67qR$0" role="3clFbw">
                   <node concept="3fqX7Q" id="3UaQr67qRck" role="3uHU7B">
                     <node concept="1rXfSq" id="3UaQr67qRcm" role="3fr31v">
@@ -9628,16 +9638,6 @@
                       </node>
                       <node concept="3clFbT" id="3UaQr67qRWg" role="37wK5m">
                         <property role="3clFbU" value="true" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-                <node concept="3clFbS" id="20OI03lqjag" role="3clFbx">
-                  <node concept="3clFbF" id="3UaQr67qJbK" role="3cqZAp">
-                    <node concept="3nyPlj" id="3UaQr67qJbL" role="3clFbG">
-                      <ref role="37wK5l" to="b8lf:~AbstractMultipleSelection.executeAction(jetbrains.mps.openapi.editor.cells.CellActionType)" resolve="executeAction" />
-                      <node concept="37vLTw" id="3UaQr67qJbM" role="37wK5m">
-                        <ref role="3cqZAo" node="4tfWvd2gYxu" resolve="type" />
                       </node>
                     </node>
                   </node>

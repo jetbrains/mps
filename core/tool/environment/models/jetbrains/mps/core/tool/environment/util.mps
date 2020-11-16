@@ -884,6 +884,11 @@
             <ref role="37wK5l" to="z1c3:~ProjectBase.projectClosed()" resolve="projectClosed" />
           </node>
         </node>
+        <node concept="3clFbF" id="15VbAzMFwtl" role="3cqZAp">
+          <node concept="3nyPlj" id="15VbAzMFwtj" role="3clFbG">
+            <ref role="37wK5l" to="z1c3:~Project.dispose()" resolve="dispose" />
+          </node>
+        </node>
         <node concept="1gVbGN" id="6qMd1Cr4h3W" role="3cqZAp">
           <node concept="2OqwBi" id="6qMd1Cr4hPd" role="1gVkn0">
             <node concept="1rXfSq" id="6qMd1Cr4hmH" role="2Oq$k0">
@@ -892,11 +897,6 @@
             <node concept="liA8E" id="6qMd1Cr4iJY" role="2OqNvi">
               <ref role="37wK5l" to="33ny:~List.isEmpty()" resolve="isEmpty" />
             </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="15VbAzMFwtl" role="3cqZAp">
-          <node concept="3nyPlj" id="15VbAzMFwtj" role="3clFbG">
-            <ref role="37wK5l" to="z1c3:~Project.dispose()" resolve="dispose" />
           </node>
         </node>
       </node>

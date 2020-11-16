@@ -27,11 +27,11 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-/*package*/ class List_tooltipHint_6m31uf_d2a_EditorBuilder_a extends AbstractEditorBuilder {
+/*package*/ class List_tooltipHint_6m31uf_d4a_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
   private SNode myNode;
 
-  public List_tooltipHint_6m31uf_d2a_EditorBuilder_a(@NotNull EditorContext context, @NotNull SNode node) {
+  public List_tooltipHint_6m31uf_d4a_EditorBuilder_a(@NotNull EditorContext context, @NotNull SNode node) {
     super(context);
     myNode = node;
   }
@@ -48,16 +48,29 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
   private EditorCell createCollection_0() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
-    editorCell.setCellId("Collection_6yhr3i_a");
+    editorCell.setCellId("Collection_ckxran_a");
     editorCell.setBig(true);
     setCellContext(editorCell);
+    try {
+      getCellFactory().pushCellContext();
+      getCellFactory().removeCellContextHints(new String[]{"tooltips.example.editor.GeneratedHints.tooltipHint_6m31uf_d4a"});
+      editorCell.addEditorCell(createCollection_1());
+      setInnerCellsContext(editorCell);
+    } finally {
+      getCellFactory().popCellContext();
+    }
+    return editorCell;
+  }
+  private EditorCell createCollection_1() {
+    EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
+    editorCell.setCellId("Collection_ckxran_a0");
     editorCell.addEditorCell(createConstant_0());
     editorCell.addEditorCell(createProperty_0());
     return editorCell;
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "my property value is ");
-    editorCell.setCellId("Constant_6yhr3i_a0");
+    editorCell.setCellId("Constant_ckxran_a0a");
     editorCell.setDefaultText("");
     return editorCell;
   }

@@ -6,7 +6,7 @@
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
   </languages>
   <imports>
-    <import index="bhcn" ref="r:34a4cfb6-903f-41e9-95dc-ea24a6097ced(jetbrains.mps.lang.editor.tooltips.structure)" />
+    <import index="8byu" ref="r:34a4cfb6-903f-41e9-95dc-ea24a6097ced(jetbrains.mps.lang.editor.tooltips.structure)" />
   </imports>
   <registry>
     <language id="af65afd8-f0dd-4942-87d9-63a55f2a9db1" name="jetbrains.mps.lang.behavior">
@@ -47,7 +47,7 @@
     </language>
   </registry>
   <node concept="13h7C7" id="1a$Yn_2R4C7">
-    <ref role="13h7C2" to="bhcn:6XU1fOGp7Jy" resolve="CellModel_Tooltip" />
+    <ref role="13h7C2" to="8byu:6XU1fOGp7Jy" resolve="CellModel_Tooltip" />
     <node concept="13hLZK" id="1a$Yn_2R4C8" role="13h7CW">
       <node concept="3clFbS" id="1a$Yn_2R4C9" role="2VODD2">
         <node concept="3clFbF" id="1a$Yn_2RBYL" role="3cqZAp">
@@ -58,7 +58,7 @@
             <node concept="2OqwBi" id="1a$Yn_2RC3T" role="37vLTJ">
               <node concept="13iPFW" id="1a$Yn_2RBYK" role="2Oq$k0" />
               <node concept="3TrcHB" id="1a$Yn_2RCct" role="2OqNvi">
-                <ref role="3TsBF5" to="bhcn:4aFy6Rq$F7F" resolve="lazy" />
+                <ref role="3TsBF5" to="8byu:4aFy6Rq$F7F" resolve="lazy" />
               </node>
             </node>
           </node>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model ref="r:4697de22-9b24-405b-8ea2-e5702094d1dd(jetbrains.mps.lang.descriptor.dataflow@genplan)" doNotGenerate="true">
+<model ref="r:4697de22-9b24-405b-8ea2-e5702094d1dd(jetbrains.mps.lang.descriptor.dataflow@genplan)">
   <persistence version="9" />
+  <attribute name="doNotGenerate" value="true" />
   <languages>
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="7ab1a6fa-0a11-4b95-9e48-75f363d6cb00" name="jetbrains.mps.lang.generator.plan" version="1" />

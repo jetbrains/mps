@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model ref="r:ac08359f-193b-493f-92ef-48848aecee7b(testmaterial.moveConcept.InstanceSolution.main)" doNotGenerate="true">
+<model ref="r:ac08359f-193b-493f-92ef-48848aecee7b(testmaterial.moveConcept.InstanceSolution.main)">
   <persistence version="9" />
+  <attribute name="doNotGenerate" value="true" />
   <languages>
     <use id="3e00419d-4801-4bad-bf2a-50479218fb53" name="testmaterial.moveConcept.SourceLanguage" version="0" />
   </languages>
