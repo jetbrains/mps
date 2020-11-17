@@ -49,11 +49,11 @@ final class CrossDependentTaskGenerator2 extends TaskGenerator {
   private Callable<Object> firstCLTask(FakeReloadableModule s1) {
     return () -> {
       try {
-        LOG.info("Creating first classloader");
+        LOG.debug("Creating first classloader");
         ModuleClassLoader cl1 = createCL(s1, Arrays.asList(A.class, D.class), mySecond);
         myFirst.set(cl1);
         myBarrier.await(TIMEOUT, TimeUnit.MILLISECONDS);
-        LOG.info("First loaded " + cl1.loadClass(A.class.getName()));
+        LOG.debug("First loaded " + cl1.loadClass(A.class.getName()));
         myBarrier.await(TIMEOUT, TimeUnit.MILLISECONDS);
 //      } catch (BrokenBarrierException e) {
 //        LOG.error("Exception during task execution", e);
@@ -76,11 +76,11 @@ final class CrossDependentTaskGenerator2 extends TaskGenerator {
   private Callable<Object> secondCLTask(FakeReloadableModule s2) {
     return () -> {
       try {
-        LOG.info("Creating second classloader");
+        LOG.debug("Creating second classloader");
         ModuleClassLoader cl2 = createCL(s2, Arrays.asList(B.class, C.class), myFirst);
         mySecond.set(cl2);
         myBarrier.await(TIMEOUT, TimeUnit.MILLISECONDS);
-        LOG.info("Second loaded " + cl2.loadClass(B.class.getName()));
+        LOG.debug("Second loaded " + cl2.loadClass(B.class.getName()));
         myBarrier.await(TIMEOUT, TimeUnit.MILLISECONDS);
 //      } catch (BrokenBarrierException e) {
 //        LOG.error("Exception during task execution", e);
