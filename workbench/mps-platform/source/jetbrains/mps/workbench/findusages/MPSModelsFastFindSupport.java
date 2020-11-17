@@ -38,8 +38,6 @@ import jetbrains.mps.smodel.DefaultSModelDescriptor;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.containers.ManyToManyMap;
-import jetbrains.mps.util.containers.MultiMap;
-import jetbrains.mps.util.containers.SetBasedMultiMap;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.workbench.findusages.UsageEntry.ConceptInstance;
 import jetbrains.mps.workbench.findusages.UsageEntry.ModelUse;
@@ -62,7 +60,7 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Map.Entry;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -112,11 +110,11 @@ public class MPSModelsFastFindSupport implements FindUsagesParticipant, Disposab
       return;
     }
     monitor.advance(1);
-    MultiMap<SModel, SNode> candidates = findCandidates(scope, nodes, processedConsumer, key -> new NodeUse(key.getNodeId()), monitor.subTask(1));
+    Set<SModel> candidates = findCandidates(scope, nodes, processedConsumer, key -> new NodeUse(key.getNodeId()), monitor.subTask(1));
     ProgressMonitor pmCandidates = monitor.subTask(1);
     pmCandidates.start("", candidates.size());
     final NodeUsageFinder nuf = new NodeUsageFinder(nodes, consumer);
-    for (SModel candidate : candidates.keySet()) {
+    for (SModel candidate : candidates) {
       if (monitor.isCanceled()) {
         break;
       }
@@ -140,12 +138,12 @@ public class MPSModelsFastFindSupport implements FindUsagesParticipant, Disposab
       return;
     }
     monitor.advance(1);
-    MultiMap<SModel, SAbstractConcept> candidates = findCandidates(scope, concepts, processedConsumer, key -> new ConceptInstance(MetaIdHelper.getConcept(key)),
+    Set<SModel> candidates = findCandidates(scope, concepts, processedConsumer, key -> new ConceptInstance(MetaIdHelper.getConcept(key)),
                                                                    monitor.subTask(1));
     ProgressMonitor pmCandidates = monitor.subTask(1);
     pmCandidates.start("", candidates.size());
     final InstanceFinder nif = new InstanceFinder(concepts, consumer);
-    for (SModel candidate : candidates.keySet()) {
+    for (SModel candidate : candidates) {
       if (monitor.isCanceled()) {
         break;
       }
@@ -170,22 +168,22 @@ public class MPSModelsFastFindSupport implements FindUsagesParticipant, Disposab
       return;
     }
     monitor.advance(1);
-    MultiMap<SModel, SModelReference> candidates = findCandidates(scope, modelReferences, processedConsumer, ModelUse::new, monitor.subTask(1));
+    Set<SModel> candidates = findCandidates(scope, modelReferences, processedConsumer, ModelUse::new, monitor.subTask(1));
     ProgressMonitor pmCandidates = monitor.subTask(1);
     pmCandidates.start("", candidates.size());
-    for (Entry<SModel, Collection<SModelReference>> candidate : candidates.entrySet()) {
+    for (SModel candidate : candidates) {
       if (monitor.isCanceled()) {
         break;
       }
-      if (FindUsagesUtil.hasModelUsages(candidate.getKey(), candidate.getValue())) {
-        consumer.consume(candidate.getKey());
+      if (FindUsagesUtil.hasModelUsages(candidate, modelReferences)) {
+        consumer.consume(candidate);
       }
       pmCandidates.advance(1);
     }
     monitor.done();
   }
 
-  private <T> MultiMap<SModel, T> findCandidates(Collection<SModel> models, Set<T> elems, Consumer<SModel> processedModels, Function<T, UsageEntry> id,
+  private <T> Set<SModel> findCandidates(Collection<SModel> models, Set<T> elems, Consumer<SModel> processedModels, Function<T, UsageEntry> id,
                                                  @NotNull ProgressMonitor monitor) {
     monitor.start("", 3);
     // get all files in scope
@@ -237,10 +235,10 @@ public class MPSModelsFastFindSupport implements FindUsagesParticipant, Disposab
     monitor.advance(1);
 
     // filter files with usages
-    // we made sure wuth myModelFilter, above, that models we look at are from this project, let indexer use it, not guess from VF
+    // we made sure with myModelFilter, above, that models we look at are from this project, let indexer use it, not guess from VF
     ConcreteFilesGlobalSearchScope allFiles = new ConcreteFilesGlobalSearchScope(myModelFilter.project().getProject(), scopeFiles.getSecond());
     // process indexes
-    MultiMap<SModel, T> result = new SetBasedMultiMap<>();
+    Set<SModel> result = new HashSet<>();
     boolean fileMatchFailedAtLeastOnce = false;
     for (T elem : elems) {
       UsageEntry entry = id.apply(elem);
@@ -256,9 +254,7 @@ public class MPSModelsFastFindSupport implements FindUsagesParticipant, Disposab
 
       // back-transform
       for (VirtualFile file : matchingFiles) {
-        for (SModel m : scopeFiles.getBySecond(file)) {
-          result.putValue(m, elem);
-        }
+        result.addAll(scopeFiles.getBySecond(file));
       }
     }
     if (!fileMatchFailedAtLeastOnce) {

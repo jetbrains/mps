@@ -38,6 +38,7 @@ public final class NodeUsageFinder {
       }
       collectUsages(node);
     }
+    monitor.done();
   }
   private void collectUsages(SNode current) {
     for (SReference ref : current.getReferences()) {

@@ -29,10 +29,9 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SNodeId;
-import jetbrains.mps.util.containers.MultiMap;
 import java.util.function.Function;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import java.util.Map;
 import jetbrains.mps.findUsages.NodeUsageFinder;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -41,8 +40,8 @@ import jetbrains.mps.findUsages.InstanceFinder;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.findUsages.FindUsagesUtil;
-import jetbrains.mps.util.containers.SetBasedMultiMap;
 import jetbrains.mps.persistence.java.library.JavaClassStubModelDescriptor;
+import java.util.Collections;
 import jetbrains.mps.util.containers.ManyToManyMap;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.extapi.persistence.FolderSetDataSource;
@@ -56,7 +55,7 @@ import com.intellij.util.indexing.FileBasedIndex;
 import com.intellij.psi.impl.cache.impl.id.IdIndex;
 import com.intellij.psi.impl.cache.impl.id.IdIndexEntry;
 import com.intellij.openapi.progress.ProcessCanceledException;
-import java.util.Collections;
+import com.intellij.openapi.project.IndexNotReadyException;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 @GeneratedClass(node = "r:9e8a9ffa-c450-4841-b749-c11aa0f49452(jetbrains.mps.workbench.findusages)/2810982631457564914", model = "r:9e8a9ffa-c450-4841-b749-c11aa0f49452(jetbrains.mps.workbench.findusages)")
@@ -99,27 +98,35 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
     if (models.isEmpty()) {
       return;
     }
-    nodes = SetSequence.fromSetWithValues(new HashSet<SNode>(), SetSequence.fromSet(nodes).where(new IWhereFilter<SNode>() {
+    // likely, an optimization that takes into account the way MPS identifies nodes in stub models 
+    Set<SNode> oddFilteredNodes = SetSequence.fromSetWithValues(new HashSet<SNode>(), SetSequence.fromSet(nodes).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return it.getNodeId() instanceof SNodeId.StringBasedId;
       }
     }));
-    MultiMap<SModel, SNode> candidates = findCandidates(models, nodes, processedConsumer, new Function<SNode, String>() {
+    Set<SModel> candidates = findCandidates(models, oddFilteredNodes, processedConsumer, new Function<SNode, String>() {
       public String apply(SNode key) {
         return key.getNodeId().toString();
       }
     });
-    for (SNode node : SetSequence.fromSet(nodes)) {
-      SNode snode = ((SNode) node);
-      if (!(SNodeOperations.isInstanceOf(snode, CONCEPTS.TypeVariableDeclaration$4Y))) {
-        continue;
+    for (SNode nn : Sequence.fromIterable(SNodeOperations.ofConcept(oddFilteredNodes, CONCEPTS.TypeVariableDeclaration$4Y))) {
+      // I don't know the reason why we extend supplied scope for Type variables. The code is here for a decade, I wonder if it there's any reason to keep it. 
+      SModel mm = SNodeOperations.getModel(nn);
+      if (mm != null) {
+        // just in case, don't want to get unexpected NPE down the road 
+        candidates.add(mm);
       }
-      candidates.putValue(SNodeOperations.getModel(snode), node);
     }
 
-    for (Map.Entry<SModel, Collection<SNode>> e : candidates.entrySet()) {
-      new NodeUsageFinder(e.getValue(), consumer).collectUsages(e.getKey(), monitor);
+    NodeUsageFinder nuf = new NodeUsageFinder(oddFilteredNodes, consumer);
+    monitor.start("", candidates.size());
+    for (SModel e : candidates) {
+      if (monitor.isCanceled()) {
+        break;
+      }
+      nuf.collectUsages(e, monitor.subTask(1));
     }
+    monitor.done();
   }
 
   @Override
@@ -140,10 +147,15 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
       }
     }));
 
-    MultiMap<SModel, SAbstractConcept> candidates = findCandidates(models, concepts, processedConsumer, null);
-    monitor.start("", candidates.keySet().size());
+    // FIXME make sure there's index for concept qualified name! 
+    Set<SModel> candidates = findCandidates(models, concepts, processedConsumer, new Function<SAbstractConcept, String>() {
+      public String apply(SAbstractConcept k) {
+        return k.getQualifiedName();
+      }
+    });
+    monitor.start("", candidates.size());
     InstanceFinder nif = new InstanceFinder(concepts, consumer);
-    for (SModel e : candidates.keySet()) {
+    for (SModel e : candidates) {
       if (monitor.isCanceled()) {
         break;
       }
@@ -164,27 +176,26 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
         return SModelStereotype.JAVA_STUB.equals(it.getName().getStereotype());
       }
     }));
-    MultiMap<SModel, SModelReference> candidates = findCandidates(scope, modelReferences, processedConsumer, new Function<SModelReference, String>() {
+    Set<SModel> candidates = findCandidates(scope, modelReferences, processedConsumer, new Function<SModelReference, String>() {
       public String apply(SModelReference key) {
         return key.getModelName();
       }
     });
-    for (Map.Entry<SModel, Collection<SModelReference>> e : candidates.entrySet()) {
-      if (FindUsagesUtil.hasModelUsages(e.getKey(), e.getValue())) {
-        consumer.consume(e.getKey());
+    for (SModel e : candidates) {
+      if (FindUsagesUtil.hasModelUsages(e, modelReferences)) {
+        consumer.consume(e);
       }
     }
   }
 
-  private <T> MultiMap<SModel, T> findCandidates(Collection<SModel> models, Set<T> elems, Consumer<SModel> processedConsumer, @Nullable Function<T, String> id) {
-    MultiMap<SModel, T> result = new SetBasedMultiMap<SModel, T>();
+  private <T> Set<SModel> findCandidates(Collection<SModel> models, Set<T> elems, Consumer<SModel> processedConsumer, Function<T, String> id) {
     if (elems.isEmpty()) {
       for (SModel sm : models) {
         if (sm instanceof JavaClassStubModelDescriptor) {
           processedConsumer.consume(sm);
         }
       }
-      return result;
+      return Collections.emptySet();
     }
 
     // get all files in scope 
@@ -203,7 +214,7 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
       }
 
       Collection<IFile> files = source.getAffectedFiles();
-      ArrayList<VirtualFile> vFiles = new ArrayList();
+      ArrayList<VirtualFile> vFiles = new ArrayList<VirtualFile>();
       for (IFile path : files) {
         final VirtualFile vf = VirtualFileUtils.getOrCreateVirtualFile(path);
         if (vf == null) {
@@ -233,23 +244,20 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
       }
     }
 
+    // filter files with usages 
+    ConcreteFilesGlobalSearchScope allFiles = new ConcreteFilesGlobalSearchScope(myModelFilter.project().getProject(), scopeFiles.getSecond());
+    final Set<SModel> result = new HashSet<SModel>();
     for (T elem : elems) {
-      String nodeId = (id == null ? elem.toString() : id.apply(elem));
-      // filter files with usages 
-      ConcreteFilesGlobalSearchScope allFiles = new ConcreteFilesGlobalSearchScope(myModelFilter.project().getProject(), scopeFiles.getSecond());
+      String nodeId = id.apply(elem);
 
-      Collection<VirtualFile> matchingFiles;
       try {
-        matchingFiles = FileBasedIndex.getInstance().getContainingFiles(IdIndex.NAME, new IdIndexEntry(nodeId, true), allFiles);
-      } catch (ProcessCanceledException ce) {
-        matchingFiles = Collections.emptyList();
-      }
-
-      // back-transform 
-      for (VirtualFile file : matchingFiles) {
-        for (SModel m : scopeFiles.getBySecond(file)) {
-          result.putValue(m, elem);
+        Collection<VirtualFile> matchingFiles = FileBasedIndex.getInstance().getContainingFiles(IdIndex.NAME, new IdIndexEntry(nodeId, true), allFiles);
+        for (VirtualFile vf : matchingFiles) {
+          // back-transform 
+          result.addAll(scopeFiles.getBySecond(vf));
         }
+      } catch (ProcessCanceledException | IndexNotReadyException ce) {
+        // ignore 
       }
     }
     return result;
