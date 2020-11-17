@@ -57,9 +57,11 @@ public class ChangeMethodSignatureRefactoring {
       call.removeArguments();
       for (SNode parameter : ListSequence.fromList(SLinkOperations.getChildren(this.myParameters.getDeclaration(), LINKS.parameter$5xBj))) {
         int index = ListSequence.fromList(this.myParameters.getIdList()).indexOf(parameter.getNodeId().toString());
+        boolean isArityType = SNodeOperations.isInstanceOf(SLinkOperations.getTarget(parameter, LINKS.type$a1UY), CONCEPTS.VariableArityType$KF);
+
         if (index != -1) {
           // If last parameter has variable arity type 
-          if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(parameter, LINKS.type$a1UY), CONCEPTS.VariableArityType$KF) && index == ListSequence.fromList(this.myParameters.getIdList()).count() - 1) {
+          if (isArityType && index == ListSequence.fromList(this.myParameters.getIdList()).count() - 1) {
             // Copy remainder 
             while (index < ListSequence.fromList(oldArgs).count()) {
               call.addArgument(ListSequence.fromList(oldArgs).getElement(index));
@@ -70,10 +72,9 @@ public class ChangeMethodSignatureRefactoring {
             call.addArgument(ListSequence.fromList(oldArgs).getElement(index));
           }
 
-        } else if (MapSequence.fromMap(myDefaultValues).containsKey(parameter)) {
-          call.addArgument(SNodeOperations.copyNode(MapSequence.fromMap(myDefaultValues).get(parameter)));
-        } else {
-          call.addArgument(SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cd6167L, "jetbrains.mps.baseLanguage.structure.NullLiteral")));
+        } else if (!(isArityType)) {
+          SNode defaultValue = (MapSequence.fromMap(myDefaultValues).containsKey(parameter) ? SNodeOperations.copyNode(MapSequence.fromMap(myDefaultValues).get(parameter)) : SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cd6167L, "jetbrains.mps.baseLanguage.structure.NullLiteral")));
+          call.addArgument(defaultValue);
         }
       }
     }

@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import org.jetbrains.mps.openapi.model.SNodeChangeListener;
 import java.util.List;
 import jetbrains.mps.project.MPSProject;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -14,24 +15,28 @@ import javax.swing.BoxLayout;
 import javax.swing.border.TitledBorder;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.Map;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.event.SPropertyChangeEvent;
 import org.jetbrains.mps.openapi.event.SReferenceChangeEvent;
 import org.jetbrains.mps.openapi.event.SNodeAddEvent;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import org.jetbrains.mps.openapi.event.SNodeRemoveEvent;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import org.jetbrains.mps.openapi.event.SNodeRemoveEvent;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 @GeneratedClass(node = "r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)/7450207211691129644", model = "r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)")
 /*package*/ class ParamDefautValueSectionPanel extends JPanel implements SNodeChangeListener {
   private final List<ParamDefaultValueEditor> parameters;
   private final MPSProject myProject;
+  private final SNode myBaseMethod;
 
-  public ParamDefautValueSectionPanel(@NotNull MPSProject project) {
+  public ParamDefautValueSectionPanel(@NotNull MPSProject project, SNode baseMethod) {
     parameters = ListSequence.fromList(new ArrayList<ParamDefaultValueEditor>());
     myProject = project;
 
@@ -40,6 +45,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
     // Not visible by default -> need to add elements through SNodeChangeListener's callbacks 
     setVisible(false);
+    myBaseMethod = baseMethod;
   }
 
   public void dispose() {
@@ -63,21 +69,72 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
   }
 
 
+  private void updateVisibility() {
+    this.setVisible(ListSequence.fromList(parameters).isNotEmpty());
+    this.revalidate();
+  }
+
+  private void createEditorFor(SNode parameter) {
+    // No editor for parameters with arity type 
+    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(parameter, LINKS.type$a1UY), CONCEPTS.VariableArityType$KF)) {
+      return;
+    }
+
+    ListSequence.fromList(parameters).addElement(new ParamDefaultValueEditor(parameter, myProject, this));
+    this.updateVisibility();
+  }
+
   @Override
   public void propertyChanged(@NotNull SPropertyChangeEvent event) {
   }
   @Override
   public void referenceChanged(@NotNull SReferenceChangeEvent event) {
   }
+
   @Override
   public void nodeAdded(@NotNull SNodeAddEvent event) {
+    // Parameter declaration added 
     {
       final SNode param = event.getChild();
       if (SNodeOperations.isInstanceOf(param, CONCEPTS.ParameterDeclaration$RG)) {
-        ListSequence.fromList(parameters).addElement(new ParamDefaultValueEditor(param, myProject, this));
+        createEditorFor(param);
+        return;
+      }
+    }
 
-        this.setVisible(true);
-        this.revalidate();
+    // Some parameter edited (parameter change?) 
+    {
+      final SNode parent = event.getParent();
+      if (SNodeOperations.isInstanceOf(parent, CONCEPTS.BaseConcept$gP)) {
+        final SNode ancestor = SNodeOperations.getNodeAncestor(parent, CONCEPTS.ParameterDeclaration$RG, true, false);
+        if ((ancestor != null) && (SLinkOperations.getTarget(ancestor, LINKS.type$a1UY) != null)) {
+          // Find editor (if any yet) 
+          boolean isArityType = SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ancestor, LINKS.type$a1UY), CONCEPTS.VariableArityType$KF);
+          ParamDefaultValueEditor editor = ListSequence.fromList(parameters).findFirst(new IWhereFilter<ParamDefaultValueEditor>() {
+            public boolean accept(ParamDefaultValueEditor it) {
+              return it.getParameter() == ancestor;
+            }
+          });
+
+          if (editor == null) {
+            // If no editor and the type is not arity type (checked inside method), there should be an editor 
+            createEditorFor(ancestor);
+
+          } else if (isArityType) {
+            // Variable arity + editor -> no need for default value anymore 
+            ListSequence.fromList(parameters).removeElement(editor);
+            editor.dispose();
+            updateVisibility();
+
+          } else if (!(editor.isTouched())) {
+            // Untouched editor -> update value according to type 
+            editor.setDefaultValue(((SNode) BHReflection.invoke0(SLinkOperations.getTarget(ancestor, LINKS.type$a1UY), CONCEPTS.Type$bu, SMethodTrimmedId.create("createDefaultTypeExpression", null, "2UvJdVpqUA4"))));
+
+            // Set touched back to false after a change has been made 
+            editor.setTouched(false);
+          }
+
+        }
       }
     }
   }
@@ -92,20 +149,24 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
               it.dispose();
               return true;
             }
+
             return false;
           }
         });
 
-        if (ListSequence.fromList(parameters).isEmpty()) {
-          this.setVisible(false);
-        }
-
-        this.revalidate();
+        updateVisibility();
       }
     }
   }
 
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink type$a1UY = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x450368d90ce15bc3L, 0x4ed4d318133c80ceL, "type");
+  }
+
   private static final class CONCEPTS {
+    /*package*/ static final SConcept VariableArityType$KF = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, "jetbrains.mps.baseLanguage.structure.VariableArityType");
     /*package*/ static final SConcept ParameterDeclaration$RG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
+    /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
   }
 }

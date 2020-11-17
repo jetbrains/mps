@@ -103,7 +103,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     c.weighty = 0;
 
     // Add default panel first because createSignaturePanel below requires it 
-    myDefaultValuePanel = new ParamDefautValueSectionPanel(myProject);
+    myDefaultValuePanel = new ParamDefautValueSectionPanel(myProject, this.myParameters.getDeclaration());
     panel.add(myDefaultValuePanel, c);
 
     c.fill = GridBagConstraints.BOTH;
