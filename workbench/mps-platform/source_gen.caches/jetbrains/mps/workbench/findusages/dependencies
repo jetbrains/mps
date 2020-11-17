@@ -107,9 +107,9 @@
     <classNode dependClassName="java.util.function.Function" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.extapi.persistence.FolderSetDataSource" />
-    <classNode dependClassName="jetbrains.mps.findUsages.InstanceFinder" />
+    <classNode dependClassName="jetbrains.mps.findUsages.InstanceLookup" />
     <classNode dependClassName="jetbrains.mps.findUsages.ModelImportLookup" />
-    <classNode dependClassName="jetbrains.mps.findUsages.NodeUsageFinder" />
+    <classNode dependClassName="jetbrains.mps.findUsages.NodeUsageLookup" />
     <classNode dependClassName="jetbrains.mps.ide.MPSCoreComponents" />
     <classNode dependClassName="jetbrains.mps.ide.project.ProjectHelper" />
     <classNode dependClassName="jetbrains.mps.ide.vfs.VirtualFileUtils" />

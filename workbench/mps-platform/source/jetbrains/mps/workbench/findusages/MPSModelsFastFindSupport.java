@@ -24,9 +24,9 @@ import com.intellij.openapi.startup.StartupActivity;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.extapi.persistence.FileDataSource;
-import jetbrains.mps.findUsages.InstanceFinder;
+import jetbrains.mps.findUsages.InstanceLookup;
 import jetbrains.mps.findUsages.ModelImportLookup;
-import jetbrains.mps.findUsages.NodeUsageFinder;
+import jetbrains.mps.findUsages.NodeUsageLookup;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
@@ -113,7 +113,7 @@ public class MPSModelsFastFindSupport implements FindUsagesParticipant, Disposab
     Set<SModel> candidates = findCandidates(scope, nodes, processedConsumer, key -> new NodeUse(key.getNodeId()), monitor.subTask(1));
     ProgressMonitor pmCandidates = monitor.subTask(1);
     pmCandidates.start("", candidates.size());
-    final NodeUsageFinder nuf = new NodeUsageFinder(nodes, consumer);
+    final NodeUsageLookup nuf = new NodeUsageLookup(nodes, consumer);
     for (SModel candidate : candidates) {
       if (monitor.isCanceled()) {
         break;
@@ -142,7 +142,7 @@ public class MPSModelsFastFindSupport implements FindUsagesParticipant, Disposab
                                                                    monitor.subTask(1));
     ProgressMonitor pmCandidates = monitor.subTask(1);
     pmCandidates.start("", candidates.size());
-    final InstanceFinder nif = new InstanceFinder(concepts, consumer);
+    final InstanceLookup nif = new InstanceLookup(concepts, consumer);
     for (SModel candidate : candidates) {
       if (monitor.isCanceled()) {
         break;

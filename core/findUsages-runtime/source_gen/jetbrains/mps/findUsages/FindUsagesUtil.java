@@ -43,13 +43,11 @@ public class FindUsagesUtil {
   /**
    * Finds exact instances of the provided concepts in the model.
    * 
-   * FIXME refactor into {@code NodeInstanceFinder} similar to {@link NodeUsageFinder}.
-   * 
-   * @deprecated Use {@link jetbrains.mps.findUsages.InstanceFinder } instead
+   * @deprecated Use {@link jetbrains.mps.findUsages.InstanceLookup } instead
    */
   @Deprecated(forRemoval = true)
   @ToRemove(version = 2020.3)
   public static void collectInstances(SModel model, Collection<SAbstractConcept> concepts, Consumer<SNode> consumer, @NotNull ProgressMonitor monitor) {
-    new InstanceFinder(concepts, consumer).collectInstances(model, monitor);
+    new InstanceLookup(concepts, consumer).collectInstances(model, monitor);
   }
 }

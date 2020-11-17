@@ -44,7 +44,7 @@
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="java.util.Collections" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.findUsages.InstanceFinder" />
+    <classNode dependClassName="jetbrains.mps.findUsages.InstanceLookup" />
     <classNode dependClassName="jetbrains.mps.findUsages.ModelImportLookup" />
     <classNode dependClassName="jetbrains.mps.progress.EmptyProgressMonitor" />
     <classNode dependClassName="jetbrains.mps.util.CollectConsumer" />
@@ -57,7 +57,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.util.Consumer" />
     <classNode dependClassName="org.jetbrains.mps.openapi.util.ProgressMonitor" />
   </dependency>
-  <dependency className="jetbrains.mps.findUsages.InstanceFinder">
+  <dependency className="jetbrains.mps.findUsages.InstanceLookup">
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.smodel.FastNodeFinderManager" />
@@ -75,7 +75,7 @@
     <classNode dependClassName="java.util.LinkedHashSet" />
     <classNode dependClassName="java.util.Set" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.findUsages.InstanceFinder" />
+    <classNode dependClassName="jetbrains.mps.findUsages.InstanceLookup" />
     <classNode dependClassName="jetbrains.mps.smodel.ConceptDescendantsCache" />
     <classNode dependClassName="jetbrains.mps.util.IterableUtil" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
@@ -120,7 +120,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.util.SubProgressKind" />
     <classNode extendsClassName="jetbrains.mps.findUsages.SearchType" />
   </dependency>
-  <dependency className="jetbrains.mps.findUsages.NodeUsageFinder">
+  <dependency className="jetbrains.mps.findUsages.NodeUsageLookup">
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="java.util.HashSet" />
     <classNode dependClassName="java.util.Set" />
@@ -164,7 +164,7 @@
     <classNode dependClassName="java.util.LinkedHashSet" />
     <classNode dependClassName="java.util.Set" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.findUsages.NodeUsageFinder" />
+    <classNode dependClassName="jetbrains.mps.findUsages.NodeUsageLookup" />
     <classNode dependClassName="jetbrains.mps.persistence.PersistenceRegistry" />
     <classNode dependClassName="jetbrains.mps.util.IterableUtil" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />

@@ -63,7 +63,7 @@ import org.jetbrains.mps.openapi.util.SubProgressKind;
       subMonitor.start("", current.size() + simpleSearch.size());
       showNoFastFindTipIfNeeded(current);
       current.addAll(simpleSearch);
-      final InstanceFinder nif = new InstanceFinder(queryConcepts, consumer);
+      final InstanceLookup nif = new InstanceLookup(queryConcepts, consumer);
       for (SModel m : current) {
         subMonitor.step(m.getName().getSimpleName());
         nif.collectInstances(m, subMonitor.subTask(1));

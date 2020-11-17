@@ -590,7 +590,7 @@
     </node>
   </node>
   <node concept="312cEu" id="7rEOvdELAp6">
-    <property role="TrG5h" value="NodeUsageFinder" />
+    <property role="TrG5h" value="NodeUsageLookup" />
     <property role="2bfB8j" value="true" />
     <property role="1EXbeo" value="true" />
     <node concept="3Tm1VV" id="7rEOvdELAp7" role="1B3o_S" />
@@ -2044,11 +2044,11 @@
               <node concept="3cpWsn" id="7rEOvdELBvv" role="3cpWs9">
                 <property role="TrG5h" value="nf" />
                 <node concept="3uibUv" id="7rEOvdELBvx" role="1tU5fm">
-                  <ref role="3uigEE" node="7rEOvdELAp6" resolve="NodeUsageFinder" />
+                  <ref role="3uigEE" node="7rEOvdELAp6" resolve="NodeUsageLookup" />
                 </node>
                 <node concept="2ShNRf" id="7rEOvdELJYF" role="33vP2m">
                   <node concept="1pGfFk" id="7rEOvdELK3d" role="2ShVmc">
-                    <ref role="37wK5l" node="7rEOvdELApi" resolve="NodeUsageFinder" />
+                    <ref role="37wK5l" node="7rEOvdELApi" resolve="NodeUsageLookup" />
                     <node concept="37vLTw" id="7rEOvdELK3e" role="37wK5m">
                       <ref role="3cqZAo" node="7rEOvdELBtF" resolve="nodes" />
                     </node>
@@ -2700,11 +2700,11 @@
                 <property role="TrG5h" value="nif" />
                 <property role="3TUv4t" value="true" />
                 <node concept="3uibUv" id="6CSNT6Z5xjX" role="1tU5fm">
-                  <ref role="3uigEE" node="6CSNT6Z59lv" resolve="InstanceFinder" />
+                  <ref role="3uigEE" node="6CSNT6Z59lv" resolve="InstanceLookup" />
                 </node>
                 <node concept="2ShNRf" id="6CSNT6Z5xYM" role="33vP2m">
                   <node concept="1pGfFk" id="6CSNT6Z5yoA" role="2ShVmc">
-                    <ref role="37wK5l" node="6CSNT6Z5afm" resolve="InstanceFinder" />
+                    <ref role="37wK5l" node="6CSNT6Z5afm" resolve="InstanceLookup" />
                     <node concept="37vLTw" id="6CSNT6Z5yrr" role="37wK5m">
                       <ref role="3cqZAo" node="7rEOvdELAt0" resolve="queryConcepts" />
                     </node>
@@ -3371,7 +3371,7 @@
           <node concept="2OqwBi" id="6CSNT6Z5u1i" role="3clFbG">
             <node concept="2ShNRf" id="6CSNT6Z5rjT" role="2Oq$k0">
               <node concept="1pGfFk" id="6CSNT6Z5tUA" role="2ShVmc">
-                <ref role="37wK5l" node="6CSNT6Z5afm" resolve="InstanceFinder" />
+                <ref role="37wK5l" node="6CSNT6Z5afm" resolve="InstanceLookup" />
                 <node concept="37vLTw" id="6CSNT6Z5tV7" role="37wK5m">
                   <ref role="3cqZAo" node="7rEOvdELBx4" resolve="concepts" />
                 </node>
@@ -3400,16 +3400,6 @@
             <property role="1dT_AB" value="Finds exact instances of the provided concepts in the model." />
           </node>
         </node>
-        <node concept="TZ5HA" id="6CSNT6Z5ox1" role="TZ5H$">
-          <node concept="1dT_AC" id="6CSNT6Z5ox2" role="1dT_Ay">
-            <property role="1dT_AB" value="" />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="7rEOvdELBxX" role="TZ5H$">
-          <node concept="1dT_AC" id="7rEOvdELBxY" role="1dT_Ay">
-            <property role="1dT_AB" value="FIXME refactor into {@code NodeInstanceFinder} similar to {@link NodeUsageFinder}." />
-          </node>
-        </node>
         <node concept="TZ5HI" id="6CSNT6Z5oTT" role="3nqlJM">
           <node concept="TZ5HA" id="6CSNT6Z5oTU" role="3HnX3l">
             <node concept="1dT_AC" id="6CSNT6Z5qng" role="1dT_Ay">
@@ -3419,7 +3409,7 @@
               <node concept="92FcH" id="6CSNT6Z5qnp" role="qph3F">
                 <node concept="TZ5HA" id="6CSNT6Z5qnr" role="2XjZqd" />
                 <node concept="VXe08" id="6CSNT6Z5qNe" role="92FcQ">
-                  <ref role="VXe09" node="6CSNT6Z59lv" resolve="InstanceFinder" />
+                  <ref role="VXe09" node="6CSNT6Z59lv" resolve="InstanceLookup" />
                 </node>
               </node>
             </node>
@@ -3894,7 +3884,7 @@
     </node>
   </node>
   <node concept="312cEu" id="6CSNT6Z59lv">
-    <property role="TrG5h" value="InstanceFinder" />
+    <property role="TrG5h" value="InstanceLookup" />
     <property role="1EXbeo" value="true" />
     <node concept="312cEg" id="6CSNT6Z5crW" role="jymVt">
       <property role="TrG5h" value="myConsumer" />
@@ -4136,7 +4126,7 @@
       </node>
       <node concept="TZ5HA" id="6CSNT6Z5oA_" role="TZ5H$">
         <node concept="1dT_AC" id="6CSNT6Z5oAA" role="1dT_Ay">
-          <property role="1dT_AB" value="I don't quite understand distinction between IFinder and SearchType. This class, despite Finder in its name," />
+          <property role="1dT_AB" value="I don't quite understand distinction between IFinder and SearchType. This class" />
         </node>
       </node>
       <node concept="TZ5HA" id="6CSNT6Z59ni" role="TZ5H$">

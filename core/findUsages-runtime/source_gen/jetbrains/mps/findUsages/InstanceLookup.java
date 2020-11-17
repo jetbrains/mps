@@ -15,7 +15,7 @@ import jetbrains.mps.smodel.FastNodeFinderManager;
 /**
  * Find exact instances of provided concepts in a model.
  * 
- * I don't quite understand distinction between IFinder and SearchType. This class, despite Finder in its name,
+ * I don't quite understand distinction between IFinder and SearchType. This class
  * just captures some instance lookup logic for use in SearchType/IFinder implementations.
  * Its primary purpose is to replace FindUsagesUtil collection of statics
  * 
@@ -23,11 +23,11 @@ import jetbrains.mps.smodel.FastNodeFinderManager;
  * @since 2020.3
  */
 @GeneratedClass(node = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)/7654095791599162719", model = "r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)")
-public final class InstanceFinder {
+public final class InstanceLookup {
   private final Consumer<SNode> myConsumer;
   private final Collection<SAbstractConcept> myToLookUp;
 
-  public InstanceFinder(@NotNull Collection<SAbstractConcept> toLookUp, @NotNull Consumer<SNode> consumer) {
+  public InstanceLookup(@NotNull Collection<SAbstractConcept> toLookUp, @NotNull Consumer<SNode> consumer) {
     myToLookUp = toLookUp;
     myConsumer = consumer;
   }

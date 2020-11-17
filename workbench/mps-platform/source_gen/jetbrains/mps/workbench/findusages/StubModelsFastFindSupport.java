@@ -32,11 +32,11 @@ import jetbrains.mps.smodel.SNodeId;
 import java.util.function.Function;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.findUsages.NodeUsageFinder;
+import jetbrains.mps.findUsages.NodeUsageLookup;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.findUsages.InstanceFinder;
+import jetbrains.mps.findUsages.InstanceLookup;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.findUsages.ModelImportLookup;
@@ -118,7 +118,7 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
       }
     }
 
-    NodeUsageFinder nuf = new NodeUsageFinder(oddFilteredNodes, consumer);
+    NodeUsageLookup nuf = new NodeUsageLookup(oddFilteredNodes, consumer);
     monitor.start("", candidates.size());
     for (SModel e : candidates) {
       if (monitor.isCanceled()) {
@@ -154,7 +154,7 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
       }
     });
     monitor.start("", candidates.size());
-    InstanceFinder nif = new InstanceFinder(concepts, consumer);
+    InstanceLookup nif = new InstanceLookup(concepts, consumer);
     for (SModel e : candidates) {
       if (monitor.isCanceled()) {
         break;

@@ -56,7 +56,7 @@ import org.jetbrains.mps.openapi.util.SubProgressKind;
       }
       ProgressMonitor subMonitor = monitor.subTask(4, SubProgressKind.DEFAULT);
       subMonitor.start("", current.size() + simpleSearch.size());
-      NodeUsageFinder nf = new NodeUsageFinder(nodes, consumer);
+      NodeUsageLookup nf = new NodeUsageLookup(nodes, consumer);
       showNoFastFindTipIfNeeded(current);
       current.addAll(simpleSearch);
       for (SModel m : current) {
