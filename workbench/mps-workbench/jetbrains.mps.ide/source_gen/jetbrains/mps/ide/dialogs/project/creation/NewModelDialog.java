@@ -17,10 +17,7 @@ import jetbrains.mps.util.Computable;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import jetbrains.mps.ide.IdeBundle;
-import jetbrains.mps.smodel.Language;
-import jetbrains.mps.smodel.language.LanguageAspectSupport;
-import java.util.function.Predicate;
-import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.ide.refactoring.ModelNameValidator;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.JComponent;
 
@@ -83,14 +80,6 @@ public class NewModelDialog extends DialogWrapper {
   }
 
   private boolean check() {
-    return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(new Computable<Boolean>() {
-      public Boolean compute() {
-        return checkImpl();
-      }
-    });
-  }
-
-  private boolean checkImpl() {
     ModelRoot modelRoot = mySettings.getModelRoot();
 
     if (modelRoot == null) {
@@ -103,34 +92,9 @@ public class NewModelDialog extends DialogWrapper {
       modelName = "";
     }
 
-    SModelName.SModelNameCheck check = SModelName.checkModelName(modelName, mySettings.getStereotype());
-    if (check != SModelName.SModelNameCheck.Pass) {
-      setErrorText(check.getProblemDescription());
-      return false;
-    }
-
-    if (myModule instanceof Language) {
-      if (LanguageAspectSupport.isLanguageModelNameForbidden(modelName)) {
-        String shortName = modelName.substring(modelName.lastIndexOf(".") + 1);
-        setErrorText(IdeBundle.message("dialogs.model.new.error.no.aspect.name", shortName));
-        return false;
-      }
-    }
-
-    final SModelName name = new SModelName(modelName, mySettings.getStereotype());
-
-    if (myModule.getModels().stream().anyMatch(new Predicate<SModel>() {
-      @Override
-      public boolean test(SModel p0) {
-        return p0.getName().equals(name);
-      }
-    })) {
-      setErrorText(IdeBundle.message("dialogs.model.new.error.model.name.already.exists", name, myModule.getModuleName()));
-      return false;
-    }
-
-    if (!(modelRoot.canCreateModel(name))) {
-      setErrorText(IdeBundle.message("dialogs.model.new.error.unable.create.under.model.root"));
+    String validationResult = new ModelNameValidator(modelRoot).validate(modelName, mySettings.getStereotype());
+    if (validationResult != null) {
+      setErrorText(validationResult);
       return false;
     }
 
