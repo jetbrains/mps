@@ -5,7 +5,7 @@ package jetbrains.mps.findUsages;
 import jetbrains.mps.annotations.GeneratedClass;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import org.jetbrains.mps.openapi.util.Consumer;
+import java.util.function.Consumer;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
@@ -30,7 +30,7 @@ public final class ModelImportLookup {
       monitor.step(model.getName().getShortNameWithStereotype());
       for (SModelReference mr : new ModelImports(model).getImportedModels()) {
         if (myImportsToFind.contains(mr)) {
-          myConsumer.consume(model);
+          myConsumer.accept(model);
           break;
         }
       }

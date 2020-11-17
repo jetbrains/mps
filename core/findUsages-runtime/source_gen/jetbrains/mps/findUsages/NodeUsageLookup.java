@@ -5,7 +5,7 @@ package jetbrains.mps.findUsages;
 import jetbrains.mps.annotations.GeneratedClass;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.mps.openapi.util.Consumer;
+import java.util.function.Consumer;
 import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
@@ -24,7 +24,7 @@ public final class NodeUsageLookup {
   private final Set<SNodeReference> myNodesToFind;
   private final Consumer<SReference> myOutcomeConsumer;
 
-  public NodeUsageLookup(@NotNull Collection<SNode> nodesToFind, @NotNull Consumer<SReference> outcomeConsumer) {
+  public NodeUsageLookup(@NotNull Collection<SNode> nodesToFind, @NotNull org.jetbrains.mps.openapi.util.Consumer<SReference> outcomeConsumer) {
     myNodesToFind = new HashSet<SNodeReference>();
     for (SNode n : nodesToFind) {
       myNodesToFind.add(n.getReference());
@@ -43,7 +43,7 @@ public final class NodeUsageLookup {
   private void collectUsages(SNode current) {
     for (SReference ref : current.getReferences()) {
       if (myNodesToFind.contains(ref.getTargetNodeReference())) {
-        myOutcomeConsumer.consume(ref);
+        myOutcomeConsumer.accept(ref);
       }
     }
   }

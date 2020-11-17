@@ -26,6 +26,7 @@
     <import index="z3o9" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.holders(MPS.Core/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="ncw5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util.annotation(MPS.Core/)" />
+    <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -621,7 +622,7 @@
       <property role="TrG5h" value="myOutcomeConsumer" />
       <property role="3TUv4t" value="true" />
       <node concept="3uibUv" id="7rEOvdELApf" role="1tU5fm">
-        <ref role="3uigEE" to="yyf4:~Consumer" resolve="Consumer" />
+        <ref role="3uigEE" to="82uw:~Consumer" resolve="Consumer" />
         <node concept="3uibUv" id="7rEOvdELApg" role="11_B2D">
           <ref role="3uigEE" to="mhbf:~SReference" resolve="SReference" />
         </node>
@@ -837,7 +838,7 @@
                       <ref role="3cqZAo" node="7rEOvdELApd" resolve="myOutcomeConsumer" />
                     </node>
                     <node concept="liA8E" id="7rEOvdELJS7" role="2OqNvi">
-                      <ref role="37wK5l" to="yyf4:~Consumer.consume(java.lang.Object)" resolve="consume" />
+                      <ref role="37wK5l" to="82uw:~Consumer.accept(java.lang.Object)" resolve="accept" />
                       <node concept="37vLTw" id="7rEOvdELJS8" role="37wK5m">
                         <ref role="3cqZAo" node="7rEOvdELAqn" resolve="ref" />
                       </node>
@@ -3886,17 +3887,6 @@
   <node concept="312cEu" id="6CSNT6Z59lv">
     <property role="TrG5h" value="InstanceLookup" />
     <property role="1EXbeo" value="true" />
-    <node concept="312cEg" id="6CSNT6Z5crW" role="jymVt">
-      <property role="TrG5h" value="myConsumer" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3Tm6S6" id="6CSNT6Z5crX" role="1B3o_S" />
-      <node concept="3uibUv" id="6CSNT6Z5crZ" role="1tU5fm">
-        <ref role="3uigEE" to="yyf4:~Consumer" resolve="Consumer" />
-        <node concept="3uibUv" id="6CSNT6Z5cs0" role="11_B2D">
-          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
-        </node>
-      </node>
-    </node>
     <node concept="312cEg" id="6CSNT6Z5cxI" role="jymVt">
       <property role="TrG5h" value="myToLookUp" />
       <property role="3TUv4t" value="true" />
@@ -3905,6 +3895,17 @@
         <ref role="3uigEE" to="33ny:~Collection" resolve="Collection" />
         <node concept="3uibUv" id="6CSNT6Z5cxM" role="11_B2D">
           <ref role="3uigEE" to="c17a:~SAbstractConcept" resolve="SAbstractConcept" />
+        </node>
+      </node>
+    </node>
+    <node concept="312cEg" id="6CSNT6Z5crW" role="jymVt">
+      <property role="TrG5h" value="myConsumer" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="6CSNT6Z5crX" role="1B3o_S" />
+      <node concept="3uibUv" id="6CSNT6Z5crZ" role="1tU5fm">
+        <ref role="3uigEE" to="82uw:~Consumer" resolve="Consumer" />
+        <node concept="3uibUv" id="6CSNT6Z5cs0" role="11_B2D">
+          <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
         </node>
       </node>
     </node>
@@ -3949,7 +3950,7 @@
       <node concept="37vLTG" id="6CSNT6Z5b5e" role="3clF46">
         <property role="TrG5h" value="consumer" />
         <node concept="3uibUv" id="6CSNT6Z5b5R" role="1tU5fm">
-          <ref role="3uigEE" to="yyf4:~Consumer" resolve="Consumer" />
+          <ref role="3uigEE" to="82uw:~Consumer" resolve="Consumer" />
           <node concept="3uibUv" id="6CSNT6Z5crs" role="11_B2D">
             <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
           </node>
@@ -4056,7 +4057,7 @@
                       <ref role="3cqZAo" node="6CSNT6Z5crW" resolve="myConsumer" />
                     </node>
                     <node concept="liA8E" id="6CSNT6Z5dYK" role="2OqNvi">
-                      <ref role="37wK5l" to="yyf4:~Consumer.consume(java.lang.Object)" resolve="consume" />
+                      <ref role="37wK5l" to="82uw:~Consumer.accept(java.lang.Object)" resolve="accept" />
                       <node concept="37vLTw" id="6CSNT6Z5dYL" role="37wK5m">
                         <ref role="3cqZAo" node="6CSNT6Z5dYE" resolve="instance" />
                       </node>
@@ -4166,7 +4167,7 @@
       <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="2o_iqz0pL2I" role="1B3o_S" />
       <node concept="3uibUv" id="2o_iqz0pL2K" role="1tU5fm">
-        <ref role="3uigEE" to="yyf4:~Consumer" resolve="Consumer" />
+        <ref role="3uigEE" to="82uw:~Consumer" resolve="Consumer" />
         <node concept="3uibUv" id="2o_iqz0pL2L" role="11_B2D">
           <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
         </node>
@@ -4213,7 +4214,7 @@
       <node concept="37vLTG" id="2o_iqz0pKXI" role="3clF46">
         <property role="TrG5h" value="consumer" />
         <node concept="3uibUv" id="2o_iqz0pKY8" role="1tU5fm">
-          <ref role="3uigEE" to="yyf4:~Consumer" resolve="Consumer" />
+          <ref role="3uigEE" to="82uw:~Consumer" resolve="Consumer" />
           <node concept="3uibUv" id="2o_iqz0pL20" role="11_B2D">
             <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
           </node>
@@ -4306,7 +4307,7 @@
                           <ref role="3cqZAo" node="2o_iqz0pL2H" resolve="myConsumer" />
                         </node>
                         <node concept="liA8E" id="2o_iqz0qjLC" role="2OqNvi">
-                          <ref role="37wK5l" to="yyf4:~Consumer.consume(java.lang.Object)" resolve="consume" />
+                          <ref role="37wK5l" to="82uw:~Consumer.accept(java.lang.Object)" resolve="accept" />
                           <node concept="37vLTw" id="2o_iqz0qjNs" role="37wK5m">
                             <ref role="3cqZAo" node="2o_iqz0qaYM" resolve="model" />
                           </node>
