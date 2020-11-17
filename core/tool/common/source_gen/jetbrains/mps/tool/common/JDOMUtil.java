@@ -43,7 +43,7 @@ public class JDOMUtil {
       return saxBuilder.build(new InputStreamReader(in, DEFAULT_CHARSET));
     } catch (JDOMException | IOException e) {
       LOG.error("FAILED TO LOAD FILE : " + file.getAbsolutePath());
-      throw e;
+      throw new RuntimeException(e);
     } finally {
       in.close();
     }
