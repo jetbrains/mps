@@ -10,14 +10,14 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
 
-public class List_tooltipHint_6m31uf_d2a_Editor extends DefaultNodeEditor {
-  private Collection<String> myContextHints = Arrays.asList(new String[]{"tooltips.example.editor.GeneratedHints.tooltipHint_6m31uf_d2a"});
+public class List_tooltipHint_6m31uf_d4a_Editor extends DefaultNodeEditor {
+  private Collection<String> myContextHints = Arrays.asList(new String[]{"tooltips.example.editor.GeneratedHints.tooltipHint_6m31uf_d4a"});
   @Override
   @NotNull
   public Collection<String> getContextHints() {
     return myContextHints;
   }
   public EditorCell createEditorCell(EditorContext editorContext, SNode node) {
-    return new List_tooltipHint_6m31uf_d2a_EditorBuilder_a(editorContext, node).createCell();
+    return new List_tooltipHint_6m31uf_d4a_EditorBuilder_a(editorContext, node).createCell();
   }
 }

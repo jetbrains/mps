@@ -428,40 +428,25 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="srfjDJZWdA" role="3cqZAp">
-              <node concept="2OqwBi" id="srfjDK03G0" role="3clFbG">
-                <node concept="2YIFZM" id="srfjDJZYOH" role="2Oq$k0">
-                  <ref role="37wK5l" to="bd8o:~TransactionGuard.getInstance()" resolve="getInstance" />
-                  <ref role="1Pybhc" to="bd8o:~TransactionGuard" resolve="TransactionGuard" />
-                </node>
-                <node concept="liA8E" id="srfjDK05_i" role="2OqNvi">
-                  <ref role="37wK5l" to="bd8o:~TransactionGuard.submitTransactionAndWait(java.lang.Runnable)" resolve="submitTransactionAndWait" />
-                  <node concept="1bVj0M" id="srfjDK07xG" role="37wK5m">
-                    <node concept="3clFbS" id="srfjDK07xH" role="1bW5cS">
-                      <node concept="3clFbF" id="srfjDK09Du" role="3cqZAp">
-                        <node concept="37vLTI" id="srfjDK09Dw" role="3clFbG">
-                          <node concept="2OqwBi" id="60oBoEfqOb" role="37vLTx">
-                            <node concept="37vLTw" id="60oBoEfqOc" role="2Oq$k0">
-                              <ref role="3cqZAo" to="jo3e:KL8Aqlj5lM" resolve="myEnvironment" />
-                            </node>
-                            <node concept="liA8E" id="60oBoEfqOd" role="2OqNvi">
-                              <ref role="37wK5l" to="79ha:6rx4kZDjWg4" resolve="openProject" />
-                              <node concept="37vLTw" id="60oBoEfqOe" role="37wK5m">
-                                <ref role="3cqZAo" node="KL8Aqll4rj" resolve="file" />
-                              </node>
-                            </node>
-                          </node>
-                          <node concept="AH0OO" id="srfjDK1PYq" role="37vLTJ">
-                            <node concept="3cmrfG" id="srfjDK1SDc" role="AHEQo">
-                              <property role="3cmrfH" value="0" />
-                            </node>
-                            <node concept="37vLTw" id="srfjDK1N9B" role="AHHXb">
-                              <ref role="3cqZAo" node="srfjDK0EqC" resolve="container" />
-                            </node>
-                          </node>
-                        </node>
-                      </node>
+            <node concept="3clFbF" id="srfjDK09Du" role="3cqZAp">
+              <node concept="37vLTI" id="srfjDK09Dw" role="3clFbG">
+                <node concept="2OqwBi" id="60oBoEfqOb" role="37vLTx">
+                  <node concept="37vLTw" id="60oBoEfqOc" role="2Oq$k0">
+                    <ref role="3cqZAo" to="jo3e:KL8Aqlj5lM" resolve="myEnvironment" />
+                  </node>
+                  <node concept="liA8E" id="60oBoEfqOd" role="2OqNvi">
+                    <ref role="37wK5l" to="79ha:6rx4kZDjWg4" resolve="openProject" />
+                    <node concept="37vLTw" id="60oBoEfqOe" role="37wK5m">
+                      <ref role="3cqZAo" node="KL8Aqll4rj" resolve="file" />
                     </node>
+                  </node>
+                </node>
+                <node concept="AH0OO" id="srfjDK1PYq" role="37vLTJ">
+                  <node concept="3cmrfG" id="srfjDK1SDc" role="AHEQo">
+                    <property role="3cmrfH" value="0" />
+                  </node>
+                  <node concept="37vLTw" id="srfjDK1N9B" role="AHHXb">
+                    <ref role="3cqZAo" node="srfjDK0EqC" resolve="container" />
                   </node>
                 </node>
               </node>

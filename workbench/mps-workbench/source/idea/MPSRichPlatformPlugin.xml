@@ -292,10 +292,8 @@
     <notificationGroup id="Missing SDKs" displayType="BALLOON"/>
     <notificationGroup id="Automatic indent detection" displayType="STICKY_BALLOON"/>
 
-    <!--
     <applicationService serviceInterface="com.intellij.openapi.roots.impl.PushedFilePropertiesRetriever"
                         serviceImplementation="com.intellij.openapi.roots.impl.PushedFilePropertiesRetrieverImpl"/>
-    -->
     <applicationService serviceInterface="com.intellij.psi.impl.source.tree.injected.EditorWindowTracker"
                         serviceImplementation="com.intellij.psi.impl.source.tree.injected.EditorWindowTrackerImpl"/>
   </extensions>

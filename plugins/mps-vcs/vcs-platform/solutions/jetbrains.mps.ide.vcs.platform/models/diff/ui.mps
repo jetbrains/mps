@@ -8480,24 +8480,24 @@
               <ref role="37wK5l" to="unno:4jWopqr7edM" resolve="isRegistered" />
               <ref role="1Pybhc" to="unno:1NYD3hytmTa" resolve="SNodeOperations" />
               <node concept="37vLTw" id="5zPLqcHJBay" role="37wK5m">
-                <ref role="3cqZAo" node="7aiOwVxHKgq" resolve="oldModel" />
+                <ref role="3cqZAo" node="7aiOwVxHKgq" />
               </node>
             </node>
             <node concept="37vLTw" id="5zPLqcHJBaz" role="37vLTJ">
-              <ref role="3cqZAo" node="5zPLqcHJBa3" resolve="myOldRegistered" />
+              <ref role="3cqZAo" node="5zPLqcHJBa3" />
             </node>
           </node>
         </node>
         <node concept="3clFbF" id="5zPLqcHJBa$" role="3cqZAp">
           <node concept="37vLTI" id="5zPLqcHJBa_" role="3clFbG">
             <node concept="37vLTw" id="5zPLqcHJBaA" role="37vLTJ">
-              <ref role="3cqZAo" node="5zPLqcHJBa6" resolve="myNewRegistered" />
+              <ref role="3cqZAo" node="5zPLqcHJBa6" />
             </node>
             <node concept="2YIFZM" id="5zPLqcHJBaB" role="37vLTx">
               <ref role="37wK5l" to="unno:4jWopqr7edM" resolve="isRegistered" />
               <ref role="1Pybhc" to="unno:1NYD3hytmTa" resolve="SNodeOperations" />
               <node concept="37vLTw" id="5zPLqcHJBaC" role="37wK5m">
-                <ref role="3cqZAo" node="7aiOwVxHKgs" resolve="newModel" />
+                <ref role="3cqZAo" node="7aiOwVxHKgs" />
               </node>
             </node>
           </node>
@@ -8505,15 +8505,15 @@
         <node concept="3clFbF" id="5zPLqcHJBaD" role="3cqZAp">
           <node concept="37vLTI" id="5zPLqcHJBaE" role="3clFbG">
             <node concept="37vLTw" id="5zPLqcHJBaF" role="37vLTJ">
-              <ref role="3cqZAo" node="5zPLqcHJBa0" resolve="myEditable" />
+              <ref role="3cqZAo" node="5zPLqcHJBa0" />
             </node>
             <node concept="1Wc70l" id="5zPLqcHJBaG" role="37vLTx">
               <node concept="37vLTw" id="5zPLqcHJBaH" role="3uHU7w">
-                <ref role="3cqZAo" node="5zPLqcHJBa6" resolve="myNewRegistered" />
+                <ref role="3cqZAo" node="5zPLqcHJBa6" />
               </node>
               <node concept="2ZW3vV" id="5zPLqcHJBaI" role="3uHU7B">
                 <node concept="37vLTw" id="5zPLqcHJBaJ" role="2ZW6bz">
-                  <ref role="3cqZAo" node="7aiOwVxHKgs" resolve="newModel" />
+                  <ref role="3cqZAo" node="7aiOwVxHKgs" />
                 </node>
                 <node concept="3uibUv" id="5zPLqcHJBaK" role="2ZW6by">
                   <ref role="3uigEE" to="mhbf:~EditableSModel" resolve="EditableSModel" />
@@ -8550,7 +8550,7 @@
         <node concept="1QHqEM" id="5zPLqcHJBaO" role="3cqZAp">
           <node concept="2OqwBi" id="6y_kxB1Ys6q" role="ukAjM">
             <node concept="37vLTw" id="7aiOwVxS6GO" role="2Oq$k0">
-              <ref role="3cqZAo" node="5zPLqcHJB92" resolve="myProject" />
+              <ref role="3cqZAo" node="5zPLqcHJB92" />
             </node>
             <node concept="liA8E" id="6y_kxB1YsqC" role="2OqNvi">
               <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
@@ -8575,7 +8575,7 @@
                         <property role="Xl_RC" value="Failed to diff models" />
                       </node>
                       <node concept="37vLTw" id="7aiOwVxU6xW" role="RRSow">
-                        <ref role="3cqZAo" node="7aiOwVxU3ZJ" resolve="ex" />
+                        <ref role="3cqZAo" node="7aiOwVxU3ZJ" />
                       </node>
                     </node>
                   </node>
@@ -8586,7 +8586,7 @@
                     <property role="TyiWL" value="true" />
                     <node concept="3fqX7Q" id="5zPLqcHJBba" role="3clFbw">
                       <node concept="37vLTw" id="5zPLqcHJBbb" role="3fr31v">
-                        <ref role="3cqZAo" node="5zPLqcHJBa6" resolve="myNewRegistered" />
+                        <ref role="3cqZAo" node="5zPLqcHJBa6" />
                       </node>
                     </node>
                     <node concept="3clFbS" id="5zPLqcHJBbc" role="3clFbx">
@@ -8595,13 +8595,13 @@
                           <ref role="1Pybhc" to="hdhb:42hl10VHaSb" resolve="DiffModelUtil" />
                           <ref role="37wK5l" to="hdhb:6o37A5sInP5" resolve="renameModelAndRegister" />
                           <node concept="37vLTw" id="5zPLqcHJBbf" role="37wK5m">
-                            <ref role="3cqZAo" node="7aiOwVxHKgs" resolve="newModel" />
+                            <ref role="3cqZAo" node="7aiOwVxHKgs" />
                           </node>
                           <node concept="Xl_RD" id="5zPLqcHJBbg" role="37wK5m">
                             <property role="Xl_RC" value="new" />
                           </node>
                           <node concept="37vLTw" id="5u75OIaB19L" role="37wK5m">
-                            <ref role="3cqZAo" node="7aiOwVxHKgy" resolve="fixReferences" />
+                            <ref role="3cqZAo" node="7aiOwVxHKgy" />
                           </node>
                         </node>
                       </node>
@@ -8612,7 +8612,7 @@
                     <property role="TyiWL" value="true" />
                     <node concept="3fqX7Q" id="5zPLqcHJBbi" role="3clFbw">
                       <node concept="37vLTw" id="5zPLqcHJBbj" role="3fr31v">
-                        <ref role="3cqZAo" node="5zPLqcHJBa3" resolve="myOldRegistered" />
+                        <ref role="3cqZAo" node="5zPLqcHJBa3" />
                       </node>
                     </node>
                     <node concept="3clFbS" id="5zPLqcHJBbk" role="3clFbx">
@@ -8621,13 +8621,13 @@
                           <ref role="1Pybhc" to="hdhb:42hl10VHaSb" resolve="DiffModelUtil" />
                           <ref role="37wK5l" to="hdhb:6o37A5sInP5" resolve="renameModelAndRegister" />
                           <node concept="37vLTw" id="5zPLqcHJBbn" role="37wK5m">
-                            <ref role="3cqZAo" node="7aiOwVxHKgq" resolve="oldModel" />
+                            <ref role="3cqZAo" node="7aiOwVxHKgq" />
                           </node>
                           <node concept="Xl_RD" id="5zPLqcHJBbo" role="37wK5m">
                             <property role="Xl_RC" value="old" />
                           </node>
                           <node concept="37vLTw" id="5u75OIaB1vb" role="37wK5m">
-                            <ref role="3cqZAo" node="7aiOwVxHKgy" resolve="fixReferences" />
+                            <ref role="3cqZAo" node="7aiOwVxHKgy" />
                           </node>
                         </node>
                       </node>
@@ -8641,17 +8641,17 @@
                             <ref role="1Pybhc" to="bfxj:42hl10VHbfH" resolve="ChangeSetBuilder" />
                             <ref role="37wK5l" to="bfxj:42hl10VHbuO" resolve="buildChangeSet" />
                             <node concept="37vLTw" id="5zPLqcHJBc5" role="37wK5m">
-                              <ref role="3cqZAo" node="7aiOwVxHKgq" resolve="oldModel" />
+                              <ref role="3cqZAo" node="7aiOwVxHKgq" />
                             </node>
                             <node concept="37vLTw" id="5zPLqcHJBc6" role="37wK5m">
-                              <ref role="3cqZAo" node="7aiOwVxHKgs" resolve="newModel" />
+                              <ref role="3cqZAo" node="7aiOwVxHKgs" />
                             </node>
                             <node concept="3clFbT" id="5zPLqcHJBc7" role="37wK5m">
                               <property role="3clFbU" value="true" />
                             </node>
                           </node>
                           <node concept="37vLTw" id="5zPLqcHJBc8" role="37vLTJ">
-                            <ref role="3cqZAo" node="5zPLqcHJB95" resolve="myChangeSet" />
+                            <ref role="3cqZAo" node="5zPLqcHJB95" />
                           </node>
                         </node>
                       </node>
@@ -8664,20 +8664,20 @@
                               <ref role="37wK5l" to="bfxj:3FBKE07BWMq" resolve="buildChangeSetForNode" />
                               <ref role="1Pybhc" to="bfxj:42hl10VHbfH" resolve="ChangeSetBuilder" />
                               <node concept="37vLTw" id="1iCb9SvmMHa" role="37wK5m">
-                                <ref role="3cqZAo" node="7aiOwVxHKgq" resolve="oldModel" />
+                                <ref role="3cqZAo" node="7aiOwVxHKgq" />
                               </node>
                               <node concept="37vLTw" id="1iCb9SvmNoM" role="37wK5m">
-                                <ref role="3cqZAo" node="7aiOwVxHKgs" resolve="newModel" />
+                                <ref role="3cqZAo" node="7aiOwVxHKgs" />
                               </node>
                               <node concept="37vLTw" id="1iCb9SvmOab" role="37wK5m">
-                                <ref role="3cqZAo" node="7aiOwVxHKgu" resolve="rootId" />
+                                <ref role="3cqZAo" node="7aiOwVxHKgu" />
                               </node>
                               <node concept="3clFbT" id="5RSgT5FmHM5" role="37wK5m">
                                 <property role="3clFbU" value="true" />
                               </node>
                             </node>
                             <node concept="37vLTw" id="1iCb9SvmKfG" role="37vLTJ">
-                              <ref role="3cqZAo" node="5zPLqcHJB95" resolve="myChangeSet" />
+                              <ref role="3cqZAo" node="5zPLqcHJB95" />
                             </node>
                           </node>
                         </node>
@@ -8686,7 +8686,7 @@
                     <node concept="3clFbC" id="62CnoZgPcU2" role="3clFbw">
                       <node concept="10Nm6u" id="62CnoZgPdbO" role="3uHU7w" />
                       <node concept="37vLTw" id="62CnoZgPctR" role="3uHU7B">
-                        <ref role="3cqZAo" node="7aiOwVxHKgu" resolve="rootId" />
+                        <ref role="3cqZAo" node="7aiOwVxHKgu" />
                       </node>
                     </node>
                   </node>
@@ -8694,16 +8694,16 @@
                     <node concept="3cpWsn" id="5zPLqcHJBcd" role="3cpWs9">
                       <property role="TrG5h" value="newMetaModel" />
                       <node concept="2YIFZM" id="5zPLqcHJBce" role="33vP2m">
-                        <ref role="1Pybhc" node="444ZSQ06W$a" resolve="MetadataUtil" />
-                        <ref role="37wK5l" node="6TJYyPqxMdD" resolve="createMetadataModel" />
+                        <ref role="1Pybhc" node="444ZSQ06W$a" />
+                        <ref role="37wK5l" node="6TJYyPqxMdD" />
                         <node concept="37vLTw" id="5zPLqcHJBcf" role="37wK5m">
-                          <ref role="3cqZAo" node="7aiOwVxHKgs" resolve="newModel" />
+                          <ref role="3cqZAo" node="7aiOwVxHKgs" />
                         </node>
                         <node concept="Xl_RD" id="5zPLqcHJBcg" role="37wK5m">
                           <property role="Xl_RC" value="metadata_new" />
                         </node>
                         <node concept="37vLTw" id="5zPLqcHJBch" role="37wK5m">
-                          <ref role="3cqZAo" node="5zPLqcHJBa0" resolve="myEditable" />
+                          <ref role="3cqZAo" node="5zPLqcHJBa0" />
                         </node>
                       </node>
                       <node concept="H_c77" id="5zPLqcHJBci" role="1tU5fm" />
@@ -8713,10 +8713,10 @@
                     <node concept="3cpWsn" id="5zPLqcHJBck" role="3cpWs9">
                       <property role="TrG5h" value="oldMetaModel" />
                       <node concept="2YIFZM" id="5zPLqcHJBcl" role="33vP2m">
-                        <ref role="37wK5l" node="6TJYyPqxMdD" resolve="createMetadataModel" />
-                        <ref role="1Pybhc" node="444ZSQ06W$a" resolve="MetadataUtil" />
+                        <ref role="37wK5l" node="6TJYyPqxMdD" />
+                        <ref role="1Pybhc" node="444ZSQ06W$a" />
                         <node concept="37vLTw" id="5zPLqcHJBcm" role="37wK5m">
-                          <ref role="3cqZAo" node="7aiOwVxHKgq" resolve="oldModel" />
+                          <ref role="3cqZAo" node="7aiOwVxHKgq" />
                         </node>
                         <node concept="Xl_RD" id="5zPLqcHJBcn" role="37wK5m">
                           <property role="Xl_RC" value="metadata_old" />
@@ -8737,14 +8737,14 @@
                           <ref role="3cqZAo" node="5zPLqcHJBck" resolve="oldMetaModel" />
                         </node>
                         <node concept="37vLTw" id="5zPLqcHJBcu" role="37wK5m">
-                          <ref role="3cqZAo" node="5zPLqcHJBcd" resolve="newMetaModel" />
+                          <ref role="3cqZAo" node="5zPLqcHJBcd" />
                         </node>
                         <node concept="3clFbT" id="5zPLqcHJBcv" role="37wK5m">
                           <property role="3clFbU" value="true" />
                         </node>
                       </node>
                       <node concept="37vLTw" id="5zPLqcHJBcw" role="37vLTJ">
-                        <ref role="3cqZAo" node="5zPLqcHJB98" resolve="myMetadataChangeSet" />
+                        <ref role="3cqZAo" node="5zPLqcHJB98" />
                       </node>
                     </node>
                   </node>
@@ -18261,11 +18261,11 @@
         <node concept="2AHcQZ" id="2cnBllvclNC" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
-        <node concept="3uibUv" id="2cnBllvclNE" role="1tU5fm">
-          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-        </node>
         <node concept="2AHcQZ" id="2cnBllvclND" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NonNls" resolve="NonNls" />
+        </node>
+        <node concept="3uibUv" id="2cnBllvclNE" role="1tU5fm">
+          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
         </node>
       </node>
       <node concept="3clFbS" id="2cnBllvclNF" role="3clF47">

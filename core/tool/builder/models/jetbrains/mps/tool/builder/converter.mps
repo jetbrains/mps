@@ -1002,7 +1002,6 @@
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
-      <node concept="2tJIrI" id="6VQQFQNQawI" role="jymVt" />
       <node concept="3Tm6S6" id="1XAHtgEIQS2" role="1B3o_S" />
       <node concept="3uibUv" id="1XAHtgEITh6" role="1zkMxy">
         <ref role="3uigEE" to="ends:~DataSourceBase" resolve="DataSourceBase" />
@@ -1010,6 +1009,7 @@
       <node concept="3uibUv" id="1XAHtgEIT$5" role="EKbjA">
         <ref role="3uigEE" to="dush:~StreamDataSource" resolve="StreamDataSource" />
       </node>
+      <node concept="2tJIrI" id="6VQQFQNQawI" role="jymVt" />
       <node concept="3clFb_" id="6VQQFQNQ9vk" role="jymVt">
         <property role="TrG5h" value="getStreamName" />
         <node concept="3Tm1VV" id="6VQQFQNQ9vl" role="1B3o_S" />

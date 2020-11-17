@@ -2481,6 +2481,7 @@
   </node>
   <node concept="312cEu" id="3ghtVL8Toqs">
     <property role="TrG5h" value="FeatureForestMapSupport" />
+    <node concept="3Tm1VV" id="3ghtVL8Toqt" role="1B3o_S" />
     <node concept="312cEg" id="7iKtzm_oVlz" role="jymVt">
       <property role="TrG5h" value="myProject" />
       <property role="3TUv4t" value="true" />
@@ -2489,7 +2490,6 @@
         <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
       </node>
     </node>
-    <node concept="3Tm1VV" id="3ghtVL8Toqt" role="1B3o_S" />
     <node concept="312cEg" id="4uLJMq1k$J8" role="jymVt">
       <property role="TrG5h" value="myMap" />
       <property role="3TUv4t" value="true" />
@@ -9925,6 +9925,7 @@
   </node>
   <node concept="312cEu" id="3zYHoP1k4BP">
     <property role="TrG5h" value="TreeHighlighterFactory" />
+    <node concept="3Tm1VV" id="3zYHoP1k4BQ" role="1B3o_S" />
     <node concept="312cEg" id="7iKtzm_o_$y" role="jymVt">
       <property role="TrG5h" value="myProject" />
       <property role="3TUv4t" value="true" />
@@ -9933,7 +9934,6 @@
         <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
       </node>
     </node>
-    <node concept="3Tm1VV" id="3zYHoP1k4BQ" role="1B3o_S" />
     <node concept="312cEg" id="1_HLebvhvzm" role="jymVt">
       <property role="TrG5h" value="myQueue" />
       <property role="3TUv4t" value="true" />

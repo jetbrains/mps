@@ -20,6 +20,7 @@ import com.intellij.openapi.Disposable;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.wm.IdeFocusManager;
 import com.intellij.ui.DoubleClickListener;
 import com.intellij.ui.TreeUIHelper;
@@ -534,7 +535,7 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
    * @param saveExpansion {@code true} to indicate expanded path and selection is preserved
    */
   protected void runRebuildAction(final Runnable rebuildAction, final boolean saveExpansion) {
-    if (RuntimeFlags.isTestMode()) {
+    if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
       return;
     }
     if (!ThreadUtils.isInEDT()) {

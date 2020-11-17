@@ -4,6 +4,7 @@ package jetbrains.mps.tool.common;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import org.jdom.Document;
@@ -29,25 +30,25 @@ import org.jetbrains.annotations.Nullable;
 
 @GeneratedClass(node = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)/8797607015334522630", model = "r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)")
 public class JDOMUtil {
-  public static final Charset DEFAULT_CHARSET = Charset.forName("UTF-8");
+  public static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
   private static final Logger LOG = LogManager.getLogger(JDOMUtil.class);
+
   public JDOMUtil() {
   }
+
   public static Document loadDocument(File file) throws JDOMException, IOException {
     SAXBuilder saxBuilder = createBuilder();
     FileInputStream in = new FileInputStream(file);
     try {
       return saxBuilder.build(new InputStreamReader(in, DEFAULT_CHARSET));
-    } catch (JDOMException e) {
+    } catch (JDOMException | IOException e) {
       LOG.error("FAILED TO LOAD FILE : " + file.getAbsolutePath());
-      throw e;
-    } catch (IOException e) {
-      LOG.error("FAILED TO LOAD FILE : " + file.getAbsolutePath());
-      throw e;
+      throw new RuntimeException(e);
     } finally {
       in.close();
     }
   }
+
   public static SAXBuilder createBuilder() {
     final SAXBuilder saxBuilder = new SAXBuilder();
     saxBuilder.setEntityResolver(new EntityResolver() {
@@ -58,6 +59,7 @@ public class JDOMUtil {
     });
     return saxBuilder;
   }
+
   public static void writeDocument(Document document, File file) throws IOException {
     if (!(file.getParentFile().exists())) {
       file.getParentFile().mkdirs();
@@ -72,9 +74,11 @@ public class JDOMUtil {
       stream.close();
     }
   }
+
   public static void writeDocument(Document document, OutputStream stream) throws IOException {
     writeDocument(document, new OutputStreamWriter(stream, DEFAULT_CHARSET));
   }
+
   public static void writeDocument(Document document, Writer writer) throws IOException {
     XMLOutputter xmlOutputter = createOutputter();
     if (xmlOutputter == null) {
@@ -91,6 +95,7 @@ public class JDOMUtil {
     }
     writer.close();
   }
+
   public static XMLOutputter createOutputter() {
     XMLOutputter xmlOutputter = new MyXMLOutputter();
     xmlOutputter.setFormat(Format.getPrettyFormat().setLineSeparator(System.getProperty("line.separator")));
@@ -112,6 +117,7 @@ public class JDOMUtil {
   public static String escapeText(String text, boolean escapeSpaces, boolean escapeLineEnds) {
     return escapeText(text, false, escapeSpaces, escapeLineEnds);
   }
+
   @NotNull
   public static String escapeText(String text, boolean escapeApostrophes, boolean escapeSpaces, boolean escapeLineEnds) {
     StringBuilder buffer = null;
@@ -141,6 +147,7 @@ public class JDOMUtil {
     //  the unmodified input string. 
     return (buffer == null ? text : buffer.toString());
   }
+
   /**
    * * Returns null if no escapement necessary.
    */
@@ -169,6 +176,7 @@ public class JDOMUtil {
     }
     return null;
   }
+
   public static String unescapeText(@NotNull String text) {
     StringBuilder buffer = null;
     for (int i = 0; i < text.length(); i++) {

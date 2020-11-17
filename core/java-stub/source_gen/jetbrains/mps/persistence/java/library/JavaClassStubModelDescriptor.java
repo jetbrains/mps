@@ -67,7 +67,9 @@ public class JavaClassStubModelDescriptor extends RegularModelDescriptor impleme
   }
 
   /*package*/ void setDocumentationSupplier(JavadocSupplier docSupplier) {
-    myDocSupplier = docSupplier;
+    synchronized (myLoadLock) {
+      myDocSupplier = docSupplier;
+    }
   }
 
   @NotNull

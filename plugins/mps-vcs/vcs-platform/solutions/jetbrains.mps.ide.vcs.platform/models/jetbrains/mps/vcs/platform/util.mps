@@ -544,11 +544,6 @@
         <node concept="3cpWs8" id="2LgKyNITAmJ" role="3cqZAp">
           <node concept="3cpWsn" id="2LgKyNITAmM" role="3cpWs9">
             <property role="TrG5h" value="filesToCheck" />
-            <node concept="_YKpA" id="2KujyEVNyrl" role="1tU5fm">
-              <node concept="3uibUv" id="2KujyEVNyrm" role="_ZDj9">
-                <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
-              </node>
-            </node>
             <node concept="2ShNRf" id="2KujyEVN$Nw" role="33vP2m">
               <node concept="Tc6Ow" id="2KujyEVN$Nx" role="2ShVmc">
                 <node concept="3uibUv" id="2KujyEVN$Ny" role="HW$YZ">
@@ -556,15 +551,20 @@
                 </node>
               </node>
             </node>
+            <node concept="_YKpA" id="2KujyEVNyrl" role="1tU5fm">
+              <node concept="3uibUv" id="2KujyEVNyrm" role="_ZDj9">
+                <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
+              </node>
+            </node>
           </node>
         </node>
         <node concept="3clFbJ" id="60S3DtlPd_I" role="3cqZAp">
           <node concept="2ZW3vV" id="4VS95TzzhMo" role="3clFbw">
-            <node concept="3uibUv" id="2cziDBRxkpa" role="2ZW6by">
-              <ref role="3uigEE" to="ends:~FileSystemBasedDataSource" resolve="FileSystemBasedDataSource" />
-            </node>
             <node concept="37vLTw" id="2LgKyNISO_L" role="2ZW6bz">
               <ref role="3cqZAo" node="2LgKyNISMKI" resolve="ds" />
+            </node>
+            <node concept="3uibUv" id="2cziDBRxkpa" role="2ZW6by">
+              <ref role="3uigEE" to="ends:~FileSystemBasedDataSource" resolve="FileSystemBasedDataSource" />
             </node>
           </node>
           <node concept="3clFbS" id="60S3DtlPd_J" role="3clFbx">

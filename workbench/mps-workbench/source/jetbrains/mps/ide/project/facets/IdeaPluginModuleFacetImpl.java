@@ -17,6 +17,7 @@ package jetbrains.mps.ide.project.facets;
 
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManager;
+import com.intellij.ide.plugins.PluginManagerCore;
 import com.intellij.openapi.extensions.PluginId;
 import jetbrains.mps.classloading.IdeaPluginModuleFacet;
 import jetbrains.mps.extapi.module.ModuleFacetBase;
@@ -65,7 +66,12 @@ public class IdeaPluginModuleFacetImpl extends ModuleFacetBase implements IdeaPl
 
   @Override
   public boolean isValid() {
-    return getPluginId() != null && PluginManager.getPlugin(PluginId.getId(getPluginId())) != null;
+    String pluginId = getPluginId();
+    if (pluginId == null) {
+      return false;
+    }
+    IdeaPluginDescriptor plugin = PluginManagerCore.getPlugin(PluginId.getId(pluginId));
+    return plugin != null && plugin.isEnabled();
   }
 
   @NotNull

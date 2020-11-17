@@ -22,6 +22,7 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleFacet;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.util.Condition;
@@ -194,6 +195,9 @@ public class ModuleUpdater {
     Collection<? extends SModuleReference> allRefs = myDepGraphHolder.getVertices();
     for (SModuleReference ref : allRefs) {
       ReloadableModule module = myRefStorage.resolveRef(ref);
+      if (comesWithInvalidIdeaPluginFacet(module)) {
+        continue;
+      }
       assert module != null;
       Collection<? extends ReloadableModule> deps;
       DepsWithErrors depsWithErrors = getDepsWithErrors(module, usedModulesCollector);
@@ -211,6 +215,16 @@ public class ModuleUpdater {
         }
       }
     }
+  }
+
+  private boolean comesWithInvalidIdeaPluginFacet(ReloadableModule module) {
+    var facet = module.getFacet(IdeaPluginModuleFacet.class);
+    if (facet != null && !facet.isValid()) {
+      SearchError error = new SearchError("The plugin facet " + facet.getPluginId() + " is invalid");
+      myModulesWithAbsentDeps.put(module, Collections.singletonList(error));
+      return true;
+    }
+    return false;
   }
 
   private boolean updateReloadedVertices(Set<? extends ReloadableModule> modulesToReload) {

@@ -53,7 +53,9 @@
     <migrate project="${project.simpleMigration}">
       <macro name="mps_home" path="${mps_build_home}"/>
       <jvmargs>
+        <arg value="-Didea.log.config.file=log.xml"/> 
         <arg value="-ea" />
+        <!--<arg value="-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5071" />-->
       </jvmargs>
     </migrate>
 

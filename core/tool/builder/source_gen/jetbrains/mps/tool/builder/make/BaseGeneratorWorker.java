@@ -95,12 +95,11 @@ public abstract class BaseGeneratorWorker extends CoreWorker {
     Future<IResult> res = new BuildMakeService().make(session, resources, null, controller, new EmptyProgressMonitor());
 
     try {
-      if (!(res.get().isSucessful())) {
+      IResult ires = res.get();
+      if (ires == null || !(ires.isSucessful())) {
         myErrors.add("Make was not successful");
       }
-    } catch (InterruptedException e) {
-      myErrors.add(e.toString());
-    } catch (ExecutionException e) {
+    } catch (InterruptedException | ExecutionException e) {
       myErrors.add(e.toString());
     }
     myEnvironment.flushAllEvents();

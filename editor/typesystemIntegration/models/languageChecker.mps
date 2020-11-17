@@ -1278,11 +1278,6 @@
         <node concept="3cpWs8" id="6xDHFLHW5Fc" role="3cqZAp">
           <node concept="3cpWsn" id="6xDHFLHW5Fd" role="3cpWs9">
             <property role="TrG5h" value="editorErrorCells" />
-            <node concept="2hMVRd" id="oCQ3dsHkyP" role="1tU5fm">
-              <node concept="3uibUv" id="oCQ3dsHkyR" role="2hN53Y">
-                <ref role="3uigEE" to="g51k:~EditorCell" resolve="EditorCell" />
-              </node>
-            </node>
             <node concept="2OqwBi" id="6xDHFLHW5Fe" role="33vP2m">
               <node concept="2OqwBi" id="6xDHFLHW5Ff" role="2Oq$k0">
                 <node concept="37vLTw" id="6xDHFLHW5Fg" role="2Oq$k0">
@@ -1294,6 +1289,11 @@
               </node>
               <node concept="liA8E" id="6xDHFLHW5Fi" role="2OqNvi">
                 <ref role="37wK5l" to="exr9:~CellTracker.getErrorCells()" resolve="getErrorCells" />
+              </node>
+            </node>
+            <node concept="2hMVRd" id="oCQ3dsHkyP" role="1tU5fm">
+              <node concept="3uibUv" id="oCQ3dsHkyR" role="2hN53Y">
+                <ref role="3uigEE" to="g51k:~EditorCell" resolve="EditorCell" />
               </node>
             </node>
           </node>
@@ -1309,9 +1309,6 @@
             </node>
             <node concept="2ShNRf" id="77jjuPI7fKB" role="33vP2m">
               <node concept="2i4dXS" id="77jjuPI7fJY" role="2ShVmc">
-                <node concept="3uibUv" id="oCQ3dsGx6K" role="HW$YZ">
-                  <ref role="3uigEE" to="f4zo:~EditorCell" resolve="EditorCell" />
-                </node>
                 <node concept="2OqwBi" id="oCQ3dsHpVd" role="I$8f6">
                   <node concept="37vLTw" id="6xDHFLHW5Fj" role="2Oq$k0">
                     <ref role="3cqZAo" node="6xDHFLHW5Fd" resolve="editorErrorCells" />
@@ -1321,6 +1318,9 @@
                       <ref role="3uigEE" to="f4zo:~EditorCell" resolve="EditorCell" />
                     </node>
                   </node>
+                </node>
+                <node concept="3uibUv" id="oCQ3dsGx6K" role="HW$YZ">
+                  <ref role="3uigEE" to="f4zo:~EditorCell" resolve="EditorCell" />
                 </node>
               </node>
             </node>
@@ -1623,9 +1623,6 @@
                                       <node concept="3cpWs8" id="77jjuPI7klw" role="3cqZAp">
                                         <node concept="3cpWsn" id="77jjuPI7klx" role="3cpWs9">
                                           <property role="TrG5h" value="cellWithRole" />
-                                          <node concept="3uibUv" id="oCQ3dsGv7h" role="1tU5fm">
-                                            <ref role="3uigEE" to="f4zo:~EditorCell" resolve="EditorCell" />
-                                          </node>
                                           <node concept="2OqwBi" id="77jjuPI7klz" role="33vP2m">
                                             <node concept="37vLTw" id="77jjuPI7kl$" role="2Oq$k0">
                                               <ref role="3cqZAo" node="77jjuPI6PYW" resolve="editorComponent" />
@@ -1644,6 +1641,9 @@
                                                 </node>
                                               </node>
                                             </node>
+                                          </node>
+                                          <node concept="3uibUv" id="oCQ3dsGv7h" role="1tU5fm">
+                                            <ref role="3uigEE" to="f4zo:~EditorCell" resolve="EditorCell" />
                                           </node>
                                         </node>
                                       </node>
@@ -3958,6 +3958,9 @@
       </node>
       <node concept="3Tm1VV" id="4InNjD1Holp" role="1B3o_S" />
       <node concept="10P_77" id="4InNjD1HqRH" role="3clF45" />
+      <node concept="2AHcQZ" id="4eh1_gMu1w8" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+      </node>
       <node concept="P$JXv" id="4eh1_gMu1w5" role="lGtFl">
         <node concept="TZ5HI" id="4eh1_gMu1w6" role="3nqlJM">
           <node concept="TZ5HA" id="4eh1_gMu1w7" role="3HnX3l">
@@ -3966,9 +3969,6 @@
             </node>
           </node>
         </node>
-      </node>
-      <node concept="2AHcQZ" id="4eh1_gMu1w8" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       </node>
     </node>
     <node concept="2YIFZL" id="77jjuPIbobs" role="jymVt">

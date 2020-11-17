@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.NotNull;
 
 public class EditorCellCreator {
-  private EditorComponent myEditorComponent;
+  private final EditorComponent myEditorComponent;
 
   public EditorCellCreator(SRepository repository) {
     myEditorComponent = new HeadlessEditorComponent(repository);

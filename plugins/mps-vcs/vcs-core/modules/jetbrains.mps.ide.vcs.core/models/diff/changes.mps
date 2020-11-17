@@ -2912,26 +2912,26 @@
               <node concept="2OqwBi" id="6JdHP0O7X5_" role="3clFbG">
                 <node concept="2JrnkZ" id="6JdHP0O7X5A" role="2Oq$k0">
                   <node concept="37vLTw" id="1OlhIyN88B7" role="2JrQYb">
-                    <ref role="3cqZAo" node="1OlhIyN82bC" resolve="parent" />
+                    <ref role="3cqZAo" node="1OlhIyN82bC" />
                   </node>
                 </node>
                 <node concept="liA8E" id="6JdHP0O7X5C" role="2OqNvi">
                   <ref role="37wK5l" to="mhbf:~SNode.insertChildBefore(org.jetbrains.mps.openapi.language.SContainmentLink,org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="insertChildBefore" />
                   <node concept="37vLTw" id="6JdHP0O8a3J" role="37wK5m">
-                    <ref role="3cqZAo" node="6JdHP0O8285" resolve="link" />
+                    <ref role="3cqZAo" node="6JdHP0O8285" />
                   </node>
                   <node concept="2GrUjf" id="6JdHP0O7XVM" role="37wK5m">
-                    <ref role="2Gs0qQ" node="2W$ok$XXIid" resolve="newNode" />
+                    <ref role="2Gs0qQ" node="2W$ok$XXIid" />
                   </node>
                   <node concept="37vLTw" id="7rNOkGodXhi" role="37wK5m">
-                    <ref role="3cqZAo" node="7rNOkGodU1G" resolve="beforAnchor" />
+                    <ref role="3cqZAo" node="7rNOkGodU1G" />
                   </node>
                 </node>
               </node>
             </node>
           </node>
           <node concept="37vLTw" id="7Z36gFZvuir" role="2GsD0m">
-            <ref role="3cqZAo" node="7Z36gFZvtaf" resolve="nodesToAdd" />
+            <ref role="3cqZAo" node="7Z36gFZvtaf" />
           </node>
         </node>
       </node>
@@ -3525,7 +3525,7 @@
               <property role="Xl_RC" value="Removed %s" />
             </node>
             <node concept="37vLTw" id="2TVSDJBGYKn" role="37wK5m">
-              <ref role="3cqZAo" node="2TVSDJBGKbj" resolve="removedItems" />
+              <ref role="3cqZAo" node="2TVSDJBGKbj" />
             </node>
           </node>
         </node>
@@ -3647,7 +3647,7 @@
                   <node concept="3Tqbb2" id="2TVSDJBFw9g" role="_ZDj9" />
                 </node>
                 <node concept="1rXfSq" id="2TVSDJBFw9h" role="33vP2m">
-                  <ref role="37wK5l" node="63cAeS_l3ht" resolve="getChangedCollection" />
+                  <ref role="37wK5l" node="63cAeS_l3ht" />
                   <node concept="3clFbT" id="2TVSDJBFw9i" role="37wK5m">
                     <property role="3clFbU" value="true" />
                   </node>
@@ -3668,12 +3668,12 @@
                   <node concept="3clFbC" id="52JQx_XoJft" role="3K4Cdx">
                     <node concept="2OqwBi" id="52JQx_XoJfu" role="3uHU7w">
                       <node concept="37vLTw" id="2TVSDJBFAHv" role="2Oq$k0">
-                        <ref role="3cqZAo" node="2TVSDJBFw9e" resolve="newChildren" />
+                        <ref role="3cqZAo" node="2TVSDJBFw9e" />
                       </node>
                       <node concept="34oBXx" id="52JQx_XoJfw" role="2OqNvi" />
                     </node>
                     <node concept="37vLTw" id="2BHiRxeuHrj" role="3uHU7B">
-                      <ref role="3cqZAo" node="PhFjFi6YEq" resolve="myResultEnd" />
+                      <ref role="3cqZAo" node="PhFjFi6YEq" />
                     </node>
                   </node>
                 </node>
@@ -3687,22 +3687,22 @@
                   <property role="Xl_RC" value="%s %s: %s" />
                 </node>
                 <node concept="37vLTw" id="3GM_nagT_pn" role="37wK5m">
-                  <ref role="3cqZAo" node="52JQx_XoJfo" resolve="addedOrInserted" />
+                  <ref role="3cqZAo" node="52JQx_XoJfo" />
                 </node>
                 <node concept="37vLTw" id="2TVSDJBHVCj" role="37wK5m">
-                  <ref role="3cqZAo" node="2TVSDJBHCed" resolve="addedItems" />
+                  <ref role="3cqZAo" node="2TVSDJBHCed" />
                 </node>
                 <node concept="1rXfSq" id="5S4tucGyxEi" role="37wK5m">
-                  <ref role="37wK5l" node="5S4tucGyhdj" resolve="getNewIdsAsString" />
+                  <ref role="37wK5l" node="5S4tucGyhdj" />
                   <node concept="37vLTw" id="2TVSDJBFCnu" role="37wK5m">
-                    <ref role="3cqZAo" node="2TVSDJBFw9e" resolve="newChildren" />
+                    <ref role="3cqZAo" node="2TVSDJBFw9e" />
                   </node>
                 </node>
               </node>
             </node>
           </node>
           <node concept="37vLTw" id="2TVSDJBHzx_" role="3clFbw">
-            <ref role="3cqZAo" node="2TVSDJBHrs1" resolve="verbose" />
+            <ref role="3cqZAo" node="2TVSDJBHrs1" />
           </node>
           <node concept="9aQIb" id="52JQx_XoJgo" role="9aQIa">
             <node concept="3clFbS" id="52JQx_XoJgp" role="9aQI4">
@@ -3714,7 +3714,7 @@
                     <property role="Xl_RC" value="Added %s" />
                   </node>
                   <node concept="37vLTw" id="2TVSDJBHY5Z" role="37wK5m">
-                    <ref role="3cqZAo" node="2TVSDJBHCed" resolve="addedItems" />
+                    <ref role="3cqZAo" node="2TVSDJBHCed" />
                   </node>
                 </node>
               </node>
@@ -3921,15 +3921,15 @@
                   <property role="Xl_RC" value="Replaced %s with %s: %s" />
                 </node>
                 <node concept="37vLTw" id="2TVSDJBIWQ$" role="37wK5m">
-                  <ref role="3cqZAo" node="2TVSDJBIGM2" resolve="removedItems" />
+                  <ref role="3cqZAo" node="2TVSDJBIGM2" />
                 </node>
                 <node concept="37vLTw" id="2TVSDJBIZ7v" role="37wK5m">
-                  <ref role="3cqZAo" node="2TVSDJBIH_L" resolve="addedItems" />
+                  <ref role="3cqZAo" node="2TVSDJBIH_L" />
                 </node>
                 <node concept="1rXfSq" id="5S4tucGy_Y7" role="37wK5m">
-                  <ref role="37wK5l" node="5S4tucGyhdj" resolve="getNewIdsAsString" />
+                  <ref role="37wK5l" node="5S4tucGyhdj" />
                   <node concept="1rXfSq" id="2TVSDJBFp76" role="37wK5m">
-                    <ref role="37wK5l" node="63cAeS_l3ht" resolve="getChangedCollection" />
+                    <ref role="37wK5l" node="63cAeS_l3ht" />
                     <node concept="3clFbT" id="2TVSDJBFp77" role="37wK5m">
                       <property role="3clFbU" value="true" />
                     </node>
@@ -3939,7 +3939,7 @@
             </node>
           </node>
           <node concept="37vLTw" id="2TVSDJBITGS" role="3clFbw">
-            <ref role="3cqZAo" node="2TVSDJBIzzs" resolve="verbose" />
+            <ref role="3cqZAo" node="2TVSDJBIzzs" />
           </node>
           <node concept="9aQIb" id="52JQx_XoJgL" role="9aQIa">
             <node concept="3clFbS" id="52JQx_XoJgM" role="9aQI4">
@@ -3951,10 +3951,10 @@
                     <property role="Xl_RC" value="Replaced %s with %s" />
                   </node>
                   <node concept="37vLTw" id="2TVSDJBJ1UU" role="37wK5m">
-                    <ref role="3cqZAo" node="2TVSDJBIGM2" resolve="removedItems" />
+                    <ref role="3cqZAo" node="2TVSDJBIGM2" />
                   </node>
                   <node concept="37vLTw" id="2TVSDJBJ4bd" role="37wK5m">
-                    <ref role="3cqZAo" node="2TVSDJBIH_L" resolve="addedItems" />
+                    <ref role="3cqZAo" node="2TVSDJBIH_L" />
                   </node>
                 </node>
               </node>

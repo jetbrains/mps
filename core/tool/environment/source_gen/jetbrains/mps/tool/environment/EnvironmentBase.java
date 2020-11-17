@@ -36,7 +36,12 @@ public abstract class EnvironmentBase implements Environment {
   private ClassLoader myRootClassLoader = null;
 
   public static void initializeLog4j() {
-    Log4jInitializer.init();
+    try {
+      Log4jInitializer.init();
+    } catch (Exception e) {
+      System.err.println("Could not initialize log4j");
+      e.printStackTrace(System.err);
+    }
   }
 
   public EnvironmentBase(@NotNull EnvironmentConfig config) {

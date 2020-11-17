@@ -1307,15 +1307,15 @@
                       </node>
                     </node>
                     <node concept="2OqwBi" id="2ETmHUYugcB" role="37wK5m">
+                      <node concept="liA8E" id="2ETmHUYugz5" role="2OqNvi">
+                        <ref role="37wK5l" to="57ty:~MessagesViewTool.newHandler()" resolve="newHandler" />
+                      </node>
                       <node concept="2YIFZM" id="745ui02Lw24" role="2Oq$k0">
                         <ref role="37wK5l" to="57ty:~MessagesViewTool.getInstance(jetbrains.mps.project.Project)" resolve="getInstance" />
                         <ref role="1Pybhc" to="57ty:~MessagesViewTool" resolve="MessagesViewTool" />
                         <node concept="37vLTw" id="745ui02LwAD" role="37wK5m">
                           <ref role="3cqZAo" node="MCyGswqxmq" resolve="project" />
                         </node>
-                      </node>
-                      <node concept="liA8E" id="2ETmHUYugz5" role="2OqNvi">
-                        <ref role="37wK5l" to="57ty:~MessagesViewTool.newHandler()" resolve="newHandler" />
                       </node>
                     </node>
                   </node>

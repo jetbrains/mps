@@ -8,6 +8,7 @@ import jetbrains.mps.internal.make.runtime.java.IdeaJavaCompiler;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.RuntimeFlags;
+import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.make.MPSCompilationResult;
 import org.jetbrains.mps.openapi.module.SModule;
 import java.util.Set;
@@ -60,7 +61,7 @@ public class IdeaJavaCompilerImpl implements ProjectComponent, IdeaJavaCompiler 
 
   @Override
   public boolean isValid() {
-    return !(RuntimeFlags.isTestMode()) && myIdeaProjectHandler != null;
+    return !((RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment())) && myIdeaProjectHandler != null;
   }
 
   @Override
@@ -87,7 +88,7 @@ public class IdeaJavaCompilerImpl implements ProjectComponent, IdeaJavaCompiler 
   }
 
   private IProjectHandler getIdeaProjectHandler() {
-    if (RuntimeFlags.isTestMode()) {
+    if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
       return null;
     }
     return MPSPlugin.getInstance().getProjectHandler(myProject.getBasePath());

@@ -296,7 +296,7 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
 
     myScrollPane = ScrollPaneFactory.createScrollPane(tree);
     addListeners();
-    if (!RuntimeFlags.isTestMode()) {
+    if (!RuntimeFlags.isTestMode() && !ApplicationManager.getApplication().isHeadlessEnvironment()) {
       rebuild();
     }
     TreeHighlighterExtension.attachHighlighters(tree, myProject);

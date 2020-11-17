@@ -44,10 +44,10 @@ import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.vfs.refresh.DefaultCachingContext;
 import com.intellij.testFramework.PlatformTestUtil;
 import jetbrains.mps.core.platform.Platform;
-import java.util.concurrent.Semaphore;
 import com.intellij.ide.startup.StartupManagerEx;
+import java.util.concurrent.TimeoutException;
+import java.util.concurrent.ExecutionException;
 import org.apache.log4j.Level;
-import com.intellij.openapi.project.DumbService;
 
 /**
  * TODO: fix dispose methods
@@ -62,7 +62,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
   private Object myIdeaApplication;
 
   static {
-    EnvironmentBase.initializeLog4j();
+    // ij itself initializes log4j 
   }
 
   public IdeaEnvironment(@NotNull EnvironmentConfig config) {
@@ -322,12 +322,6 @@ public final class IdeaEnvironment extends EnvironmentBase {
     }
 
     final PostStartupActivitiesWaiter waiter = new PostStartupActivitiesWaiter(project.get());
-    ApplicationManager.getApplication().invokeAndWait(new Runnable() {
-      public void run() {
-        waiter.init();
-      }
-    });
-
     waiter.wait0(30, TimeUnit.SECONDS);
 
     return project.get().getComponent(MPSProject.class);
@@ -369,22 +363,10 @@ public final class IdeaEnvironment extends EnvironmentBase {
   }
 
   private static final class PostStartupActivitiesWaiter {
-    private final Semaphore mySem = new Semaphore(0);
     private final com.intellij.openapi.project.Project myProject;
 
     public PostStartupActivitiesWaiter(@NotNull com.intellij.openapi.project.Project project) {
       myProject = project;
-    }
-
-    public void init() {
-      if (getStartupManager().postStartupActivityPassed()) {
-        return;
-      }
-      getStartupManager().runAfterOpened(new Runnable() {
-        public void run() {
-          mySem.release();
-        }
-      });
     }
 
     private StartupManagerEx getStartupManager() {
@@ -392,40 +374,18 @@ public final class IdeaEnvironment extends EnvironmentBase {
     }
 
     public void wait0(long time, TimeUnit units) {
-      for (int attempt = 0; attempt < 3; ++attempt) {
-        StartupManagerEx startupManager = getStartupManager();
-        if (startupManager.postStartupActivityPassed()) {
-          return;
+      try {
+        getStartupManager().getAllActivitiesPassedFuture().get(time, units);
+      } catch (InterruptedException | TimeoutException | ExecutionException e) {
+        if (LOG.isEnabledFor(Level.ERROR)) {
+          LOG.error("got while waiting for startup activities to finish", e);
         }
-        try {
-          mySem.tryAcquire(time / 3, units);
-        } catch (InterruptedException e) {
-          throw new InterruptedWhileWaitingForPostStartupException("Caught exception while waiting for the post startup activities", e);
-        }
-        waitForDumbModeToFinish();
       }
       if (!(myProject.isDisposed()) && !(getStartupManager().postStartupActivityPassed())) {
         if (LOG.isEnabledFor(Level.ERROR)) {
           LOG.error("Could not wait until post-startup activities are finished", new IllegalStateException());
         }
       }
-    }
-
-    private void waitForDumbModeToFinish() {
-      final StartupManagerEx startupManager = getStartupManager();
-      DumbService.getInstance(myProject).runWhenSmart(new Runnable() {
-        public void run() {
-          if (DumbService.isDumb(myProject)) {
-            waitForDumbModeToFinish();
-          }
-        }
-      });
-    }
-  }
-
-  private static final class InterruptedWhileWaitingForPostStartupException extends EnvironmentSetupException {
-    public InterruptedWhileWaitingForPostStartupException(String message, Exception cause) {
-      super(message, cause);
     }
   }
 

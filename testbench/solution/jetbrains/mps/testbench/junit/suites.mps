@@ -3886,6 +3886,9 @@
         <node concept="3cpWs8" id="a8z8zytENl" role="3cqZAp">
           <node concept="3cpWsn" id="a8z8zytENm" role="3cpWs9">
             <property role="TrG5h" value="config" />
+            <node concept="3uibUv" id="a8z8zytENk" role="1tU5fm">
+              <ref role="3uigEE" to="79ha:6rx4kZDk5A9" resolve="EnvironmentConfig" />
+            </node>
             <node concept="2OqwBi" id="28TMbOSG1XL" role="33vP2m">
               <node concept="2OqwBi" id="12CYGR0Z$fY" role="2Oq$k0">
                 <node concept="2OqwBi" id="63DSRaTik3u" role="2Oq$k0">
@@ -3910,9 +3913,6 @@
               <node concept="liA8E" id="28TMbOSG2bK" role="2OqNvi">
                 <ref role="37wK5l" to="79ha:28TMbOSEVXt" resolve="withTestModeOn" />
               </node>
-            </node>
-            <node concept="3uibUv" id="a8z8zytENk" role="1tU5fm">
-              <ref role="3uigEE" to="79ha:6rx4kZDk5A9" resolve="EnvironmentConfig" />
             </node>
           </node>
         </node>

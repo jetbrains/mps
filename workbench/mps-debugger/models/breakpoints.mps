@@ -39,6 +39,7 @@
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1215693861676" name="jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression" flags="nn" index="d038R">
         <child id="1068498886297" name="rValue" index="37vLTx" />
         <child id="1068498886295" name="lValue" index="37vLTJ" />
@@ -977,9 +978,20 @@
           </node>
         </node>
         <node concept="3clFbJ" id="3mV2jq6GXrv" role="3cqZAp">
-          <node concept="2YIFZM" id="44CuzUcG1BK" role="3clFbw">
-            <ref role="37wK5l" to="fyhk:~RuntimeFlags.isTestMode()" resolve="isTestMode" />
-            <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
+          <node concept="22lmx$" id="1CvX25dzPqL" role="3clFbw">
+            <node concept="2OqwBi" id="1CvX25dzQO4" role="3uHU7w">
+              <node concept="2YIFZM" id="1CvX25dzQyG" role="2Oq$k0">
+                <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+                <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+              </node>
+              <node concept="liA8E" id="1CvX25dzR5$" role="2OqNvi">
+                <ref role="37wK5l" to="bd8o:~Application.isHeadlessEnvironment()" resolve="isHeadlessEnvironment" />
+              </node>
+            </node>
+            <node concept="2YIFZM" id="44CuzUcG1BK" role="3uHU7B">
+              <ref role="37wK5l" to="fyhk:~RuntimeFlags.isTestMode()" resolve="isTestMode" />
+              <ref role="1Pybhc" to="fyhk:~RuntimeFlags" resolve="RuntimeFlags" />
+            </node>
           </node>
           <node concept="3clFbS" id="3mV2jq6GXrx" role="3clFbx">
             <node concept="3cpWs6" id="3mV2jq6HoV7" role="3cqZAp" />

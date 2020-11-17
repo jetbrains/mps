@@ -96,7 +96,7 @@ public class EnvironmentConfig {
   }
 
   public EnvironmentConfig withVcsPlugin() {
-    return addDistributedPlugin("mps-vcs", "jetbrains.mps.vcs").withGit4IdeaPlugin();
+    return addDistributedPlugin("mps-vcs", "jetbrains.mps.vcs").withGit4IdeaPlugin().withGit4IdeaStubsPlugin();
   }
 
   public EnvironmentConfig withCorePlugin() {
@@ -117,6 +117,10 @@ public class EnvironmentConfig {
 
   public EnvironmentConfig withJavaPlugin() {
     return addDistributedPlugin("mps-java", "jetbrains.mps.ide.java");
+  }
+
+  public EnvironmentConfig withDebuggerPlugin() {
+    return addDistributedPlugin("debugger-api", "jetbrains.mps.debugger.api").addDistributedPlugin("debugger-java", "jetbrains.mps.debugger.java");
   }
 
   public EnvironmentConfig withMigrationPlugin() {

@@ -189,7 +189,7 @@ public class Highlighter implements IHighlighter, ProjectComponent {
   }
 
   public void addChecker(@NotNull final EditorChecker checker) {
-    if (RuntimeFlags.isTestMode()) {
+    if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
       return;
     }
     addPendingAction(() -> {
@@ -204,7 +204,7 @@ public class Highlighter implements IHighlighter, ProjectComponent {
    * @param checker the checker to remove
    */
   public void removeChecker(@NotNull final EditorChecker checker) {
-    if (RuntimeFlags.isTestMode()) {
+    if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
       return;
     }
     ThreadUtils.assertEDT();
@@ -279,7 +279,7 @@ public class Highlighter implements IHighlighter, ProjectComponent {
     }
     myBackgroundExecutor = ConcurrencyUtil.newSingleScheduledThreadExecutor("Highlighter");
     myScheduleHighlighterUpdate = new ScheduleHighlighterUpdate(EdtExecutorService.getScheduledExecutorInstance(), DumbService.getInstance(myProject));
-    if (!RuntimeFlags.isTestMode()) {
+    if (!RuntimeFlags.isTestMode() && !ApplicationManager.getApplication().isHeadlessEnvironment()) {
       myScheduleHighlighterUpdate.scheduleNext();
     }
   }

@@ -10,7 +10,6 @@ import jetbrains.mps.tool.environment.EnvironmentConfig;
 import jetbrains.mps.tool.builder.WorkerHelper;
 import java.io.File;
 import jetbrains.mps.project.Project;
-import com.intellij.openapi.application.TransactionGuard;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.make.MPSCompilationResult;
 import jetbrains.mps.make.ModuleMaker;
@@ -50,13 +49,9 @@ public class MigrationWorker extends WorkerBase {
     // todo the following line is needed until we introduce layered migration 
     new WorkerHelper(myEnvironment).make(myJavaCompilerOptions);
 
-    for (final File file : myWhatToDo.getMPSProjectFiles()) {
+    for (File file : myWhatToDo.getMPSProjectFiles()) {
       final Project[] container = new Project[1];
-      TransactionGuard.getInstance().submitTransactionAndWait(new Runnable() {
-        public void run() {
-          container[0] = myEnvironment.openProject(file);
-        }
-      });
+      container[0] = myEnvironment.openProject(file);
       final Project project = container[0];
       info("Loaded project " + project);
       myEnvironment.flushAllEvents();

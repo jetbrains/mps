@@ -91,6 +91,9 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object referenceMacro_GetReferent_4_1(final ReferenceMacroContext _context) {
     return SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.AbstractComponent$YR), LINKS.conceptDeclaration$HJmJ);
   }
+  public static Object referenceMacro_GetReferent_4_2(final ReferenceMacroContext _context) {
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.hint$gLJA);
+  }
   public static SNode sourceNodeQuery_0_0(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.visibleCell$VE5n);
   }
@@ -303,6 +306,7 @@ public class QueriesGenerated extends QueryProviderBase {
     rtqMethods.put("8799695660251401511", new RTQ(2, "generatedHint"));
     rtqMethods.put("3877544518697559760", new RTQ(3, "generatedHint"));
     rtqMethods.put("6637997329037513942", new RTQ(4, "BaseConcept"));
+    rtqMethods.put("4766463257084277441", new RTQ(5, "generatedHint"));
   }
   @NotNull
   @Override
@@ -332,6 +336,8 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.referenceMacro_GetReferent_4_0(ctx);
         case 4:
           return QueriesGenerated.referenceMacro_GetReferent_4_1(ctx);
+        case 5:
+          return QueriesGenerated.referenceMacro_GetReferent_4_2(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
