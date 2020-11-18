@@ -13,6 +13,7 @@ import java.util.List;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ChangeMethodSignatureRefactoring;
 import org.jetbrains.annotations.NotNull;
 import javax.swing.JComponent;
+import com.intellij.openapi.ui.DialogPanel;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -65,7 +66,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     init();
   }
 
-  private JComponent createSignaturePanel() {
+  private JComponent createSignaturePanel(final DialogPanel parentPanel) {
     JPanel panel = new JPanel(new BorderLayout());
     myProject.getRepository().getModelAccess().executeCommand(new Runnable() {
       public void run() {
@@ -79,6 +80,11 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
         ChangeMethodSignatureDialog.this.myEditor = new SizedEmbeddableEditor(myProject, true, 300);
         myEditor.editNode(baseMethodDeclaration);
+
+        // Set focus on the editor 
+        if (myEditor.getEditor().getCurrentEditorComponent() instanceof JComponent) {
+          parentPanel.setPreferredFocusedComponent(as_vatimf_a0a0a0m0a0a0a0b0l(myEditor.getEditor().getCurrentEditorComponent(), JComponent.class));
+        }
       }
     });
     panel.setBorder(new TitledBorder("Method signature"));
@@ -93,7 +99,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   @Nullable
   @Override
   protected JComponent createCenterPanel() {
-    JPanel panel = new JPanel(new GridBagLayout());
+    DialogPanel panel = new DialogPanel(new GridBagLayout());
     GridBagConstraints c = new GridBagConstraints();
     c.fill = GridBagConstraints.HORIZONTAL;
     c.insets = new Insets(3, 3, 3, 3);
@@ -109,7 +115,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     c.fill = GridBagConstraints.BOTH;
     c.gridy = 0;
     c.weighty = 1;
-    panel.add(this.createSignaturePanel(), c);
+    panel.add(this.createSignaturePanel(panel), c);
     return panel;
   }
 
@@ -168,6 +174,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       });
     }
     super.dispose();
+  }
+  private static <T> T as_vatimf_a0a0a0m0a0a0a0b0l(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 
   private static final class LINKS {

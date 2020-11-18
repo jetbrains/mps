@@ -29,16 +29,16 @@ public class ChangeMethodSignatureFromCall_QuickFix extends QuickFix_Runtime {
   }
   public void execute(SNode node) {
     SNode originalMethod = SLinkOperations.getTarget(((SNode) ChangeMethodSignatureFromCall_QuickFix.this.getField("call")[0]), LINKS.baseMethodDeclaration$pyYw);
-    SNode arityParameter = null;
+    SNode arityParam = null;
 
     // Save last arg (if variable arity) for later (no need to be matched to a previous argument) 
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj)).last(), LINKS.type$a1UY), CONCEPTS.VariableArityType$KF)) {
-      arityParameter = ListSequence.fromList(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj)).removeLastElement();
+      arityParam = ListSequence.fromList(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj)).removeLastElement();
     }
 
     final MethodParameterMatcher matcher = new MethodParameterMatcher(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj), SLinkOperations.getChildren(((SNode) ChangeMethodSignatureFromCall_QuickFix.this.getField("call")[0]), LINKS.actualArgument$pzdx));
     final List<SNode> callTypes = matcher.getCallParamTypes();
-    final Integer[] matching = matcher.findAppropriateMatching()._1();
+    final Integer[] callToDeclParam = matcher.findAppropriateMatching()._1();
 
     List<SNode> newParameters = ListSequence.fromList(callTypes).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
@@ -46,21 +46,21 @@ public class ChangeMethodSignatureFromCall_QuickFix extends QuickFix_Runtime {
       }
     }).toListSequence();
 
-    // Number of regular arguments that the method will count at the end 
-    int resultingParamCount = ListSequence.fromList(callTypes).count();
-    if ((arityParameter != null)) {
-      SNode arityType = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(arityParameter, LINKS.type$a1UY), CONCEPTS.VariableArityType$KF), LINKS.componentType$ypmi);
+    // Number of regular arguments that the method will have at the end 
+    int regularParamCount = ListSequence.fromList(callTypes).count();
+    if ((arityParam != null)) {
+      SNode arityType = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(arityParam, LINKS.type$a1UY), CONCEPTS.VariableArityType$KF), LINKS.componentType$ypmi);
 
       // Remove all the terminal types that could match the arity (non mapped to previous arg + matching type) 
-      while (resultingParamCount > 0 && TypecheckingFacade.getFromContext().isSubtype(ListSequence.fromList(callTypes).getElement(resultingParamCount - 1), arityType) && matching[resultingParamCount - 1] < 0) {
-        resultingParamCount--;
+      while (regularParamCount > 0 && TypecheckingFacade.getFromContext().isSubtype(ListSequence.fromList(callTypes).getElement(regularParamCount - 1), arityType) && callToDeclParam[regularParamCount - 1] < 0) {
+        regularParamCount--;
       }
     }
 
     // Then fill the parameters with new parameters 
-    for (int i = 0; i < resultingParamCount; i++) {
-      if (matching[i] >= 0) {
-        ListSequence.fromList(newParameters).addElement(ListSequence.fromList(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj)).getElement(matching[i]));
+    for (int i = 0; i < regularParamCount; i++) {
+      if (callToDeclParam[i] >= 0) {
+        ListSequence.fromList(newParameters).addElement(ListSequence.fromList(SLinkOperations.getChildren(originalMethod, LINKS.parameter$5xBj)).getElement(callToDeclParam[i]));
       } else {
         // Create new parameter matching type 
         SNode param = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration"));
@@ -75,8 +75,8 @@ public class ChangeMethodSignatureFromCall_QuickFix extends QuickFix_Runtime {
       }
     }
 
-    if ((arityParameter != null)) {
-      ListSequence.fromList(newParameters).addElement(arityParameter);
+    if ((arityParam != null)) {
+      ListSequence.fromList(newParameters).addElement(arityParam);
     }
 
     // Perform refactoring 

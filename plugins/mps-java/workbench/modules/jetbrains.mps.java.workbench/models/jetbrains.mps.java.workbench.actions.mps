@@ -61,6 +61,7 @@
     <import index="ekwn" ref="r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)" />
     <import index="mnlj" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.beans(JDK/)" />
     <import index="cmfw" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.event(MPS.OpenAPI/)" />
+    <import index="cj4x" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor(MPS.Editor/)" implicit="true" />
     <import index="4hrd" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.vfs(MPS.Platform/)" implicit="true" />
     <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
   </imports>
@@ -136,6 +137,10 @@
       </concept>
     </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="1224071154655" name="jetbrains.mps.baseLanguage.structure.AsExpression" flags="nn" index="0kSF2">
+        <child id="1224071154657" name="classifierType" index="0kSFW" />
+        <child id="1224071154656" name="expression" index="0kSFX" />
+      </concept>
       <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
@@ -1297,6 +1302,76 @@
                       </node>
                     </node>
                   </node>
+                  <node concept="3clFbH" id="36HNgAU8rBD" role="3cqZAp" />
+                  <node concept="3SKdUt" id="36HNgAU8I3e" role="3cqZAp">
+                    <node concept="1PaTwC" id="36HNgAU8I3f" role="1aUNEU">
+                      <node concept="3oM_SD" id="36HNgAU8I3g" role="1PaTwD">
+                        <property role="3oM_SC" value="Set" />
+                      </node>
+                      <node concept="3oM_SD" id="36HNgAU8I4z" role="1PaTwD">
+                        <property role="3oM_SC" value="focus" />
+                      </node>
+                      <node concept="3oM_SD" id="36HNgAU8I4A" role="1PaTwD">
+                        <property role="3oM_SC" value="on" />
+                      </node>
+                      <node concept="3oM_SD" id="36HNgAU8I4E" role="1PaTwD">
+                        <property role="3oM_SC" value="the" />
+                      </node>
+                      <node concept="3oM_SD" id="36HNgAU8I4J" role="1PaTwD">
+                        <property role="3oM_SC" value="editor" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3clFbJ" id="36HNgAU8DBO" role="3cqZAp">
+                    <node concept="3clFbS" id="36HNgAU8DBQ" role="3clFbx">
+                      <node concept="3clFbF" id="36HNgAU8scy" role="3cqZAp">
+                        <node concept="2OqwBi" id="36HNgAU8t9q" role="3clFbG">
+                          <node concept="37vLTw" id="36HNgAU8scw" role="2Oq$k0">
+                            <ref role="3cqZAo" node="36HNgAU8pP6" resolve="parentPanel" />
+                          </node>
+                          <node concept="liA8E" id="36HNgAU8um$" role="2OqNvi">
+                            <ref role="37wK5l" to="jkm4:~DialogPanel.setPreferredFocusedComponent(javax.swing.JComponent)" resolve="setPreferredFocusedComponent" />
+                            <node concept="0kSF2" id="36HNgAU8BD2" role="37wK5m">
+                              <node concept="3uibUv" id="36HNgAU8BD5" role="0kSFW">
+                                <ref role="3uigEE" to="dxuu:~JComponent" resolve="JComponent" />
+                              </node>
+                              <node concept="2OqwBi" id="36HNgAU8i7_" role="0kSFX">
+                                <node concept="2OqwBi" id="36HNgAU892j" role="2Oq$k0">
+                                  <node concept="37vLTw" id="36HNgAU81Mm" role="2Oq$k0">
+                                    <ref role="3cqZAo" node="5U9rQri5Gha" resolve="myEditor" />
+                                  </node>
+                                  <node concept="liA8E" id="36HNgAU8hY4" role="2OqNvi">
+                                    <ref role="37wK5l" to="tpru:1xyr94TevBc" resolve="getEditor" />
+                                  </node>
+                                </node>
+                                <node concept="liA8E" id="36HNgAU8iAz" role="2OqNvi">
+                                  <ref role="37wK5l" to="cj4x:~Editor.getCurrentEditorComponent()" resolve="getCurrentEditorComponent" />
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="2ZW3vV" id="36HNgAU8GH2" role="3clFbw">
+                      <node concept="3uibUv" id="36HNgAU8GQj" role="2ZW6by">
+                        <ref role="3uigEE" to="dxuu:~JComponent" resolve="JComponent" />
+                      </node>
+                      <node concept="2OqwBi" id="36HNgAU8FoI" role="2ZW6bz">
+                        <node concept="2OqwBi" id="36HNgAU8Ei8" role="2Oq$k0">
+                          <node concept="37vLTw" id="36HNgAU8DD9" role="2Oq$k0">
+                            <ref role="3cqZAo" node="5U9rQri5Gha" resolve="myEditor" />
+                          </node>
+                          <node concept="liA8E" id="36HNgAU8Fdi" role="2OqNvi">
+                            <ref role="37wK5l" to="tpru:1xyr94TevBc" resolve="getEditor" />
+                          </node>
+                        </node>
+                        <node concept="liA8E" id="36HNgAU8FSQ" role="2OqNvi">
+                          <ref role="37wK5l" to="cj4x:~Editor.getCurrentEditorComponent()" resolve="getCurrentEditorComponent" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>
@@ -1346,6 +1421,12 @@
       <node concept="3uibUv" id="5U9rQri5GeT" role="3clF45">
         <ref role="3uigEE" to="dxuu:~JComponent" resolve="JComponent" />
       </node>
+      <node concept="37vLTG" id="36HNgAU8pP6" role="3clF46">
+        <property role="TrG5h" value="parentPanel" />
+        <node concept="3uibUv" id="36HNgAU8pP5" role="1tU5fm">
+          <ref role="3uigEE" to="jkm4:~DialogPanel" resolve="DialogPanel" />
+        </node>
+      </node>
     </node>
     <node concept="2tJIrI" id="2C3jimFDLT4" role="jymVt" />
     <node concept="3clFb_" id="5U9rQri5GgU" role="jymVt">
@@ -1376,7 +1457,7 @@
             <property role="TrG5h" value="panel" />
             <node concept="2ShNRf" id="5U9rQri5Gia" role="33vP2m">
               <node concept="1pGfFk" id="5U9rQri5Gib" role="2ShVmc">
-                <ref role="37wK5l" to="dxuu:~JPanel.&lt;init&gt;(java.awt.LayoutManager)" resolve="JPanel" />
+                <ref role="37wK5l" to="jkm4:~DialogPanel.&lt;init&gt;(java.awt.LayoutManager)" resolve="DialogPanel" />
                 <node concept="2ShNRf" id="5U9rQri5Gic" role="37wK5m">
                   <node concept="1pGfFk" id="5U9rQri5Gid" role="2ShVmc">
                     <ref role="37wK5l" to="z60i:~GridBagLayout.&lt;init&gt;()" resolve="GridBagLayout" />
@@ -1384,8 +1465,8 @@
                 </node>
               </node>
             </node>
-            <node concept="3uibUv" id="5U9rQri5Gi9" role="1tU5fm">
-              <ref role="3uigEE" to="dxuu:~JPanel" resolve="JPanel" />
+            <node concept="3uibUv" id="6rh1yqzVIm1" role="1tU5fm">
+              <ref role="3uigEE" to="jkm4:~DialogPanel" resolve="DialogPanel" />
             </node>
           </node>
         </node>
@@ -1636,6 +1717,9 @@
                 <node concept="Xjq3P" id="5U9rQri5Gj2" role="2Oq$k0" />
                 <node concept="liA8E" id="5U9rQri5Gj1" role="2OqNvi">
                   <ref role="37wK5l" node="5U9rQri5GeS" resolve="createSignaturePanel" />
+                  <node concept="37vLTw" id="36HNgAU8xJC" role="37wK5m">
+                    <ref role="3cqZAo" node="5U9rQri5Gi8" resolve="panel" />
+                  </node>
                 </node>
               </node>
               <node concept="37vLTw" id="3GM_nagTvHu" role="37wK5m">
