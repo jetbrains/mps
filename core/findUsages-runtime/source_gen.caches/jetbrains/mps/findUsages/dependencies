@@ -95,6 +95,7 @@
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="java.util.function.Consumer" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+    <classNode dependClassName="jetbrains.mps.smodel.ModelDependencyScanner" />
     <classNode dependClassName="jetbrains.mps.smodel.ModelImports" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />

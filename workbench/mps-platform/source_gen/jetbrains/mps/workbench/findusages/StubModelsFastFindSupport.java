@@ -182,7 +182,7 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
       }
     });
     ModelImportLookup mil = new ModelImportLookup(modelReferences, consumer);
-    mil.withImports(candidates, new EmptyProgressMonitor());
+    mil.withUses(candidates, new EmptyProgressMonitor());
   }
 
   private <T> Set<SModel> findCandidates(Collection<SModel> models, Set<T> elems, Consumer<SModel> processedConsumer, Function<T, String> id) {

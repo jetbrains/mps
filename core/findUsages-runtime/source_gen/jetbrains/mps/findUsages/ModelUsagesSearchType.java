@@ -42,7 +42,7 @@ import org.jetbrains.mps.openapi.util.SubProgressKind;
       }
       ProgressMonitor subMonitor = monitor.subTask(4, SubProgressKind.DEFAULT);
       ModelImportLookup mil = new ModelImportLookup(models, consumer);
-      mil.withImports(current, subMonitor);
+      mil.withUses(current, subMonitor);
     } finally {
       monitor.done();
     }

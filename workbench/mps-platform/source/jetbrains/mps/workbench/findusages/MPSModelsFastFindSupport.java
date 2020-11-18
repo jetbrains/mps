@@ -169,7 +169,7 @@ public class MPSModelsFastFindSupport implements FindUsagesParticipant, Disposab
     }
     monitor.advance(1);
     Set<SModel> candidates = findCandidates(scope, modelReferences, processedConsumer, ModelUse::new, monitor.subTask(1));
-    new ModelImportLookup(modelReferences, consumer).withImports(candidates, monitor.subTask(1));
+    new ModelImportLookup(modelReferences, consumer).withUses(candidates, monitor.subTask(1));
     monitor.done();
   }
 
