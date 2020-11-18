@@ -40,6 +40,7 @@ import org.apache.log4j.Level;
 import java.util.Collection;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.smodel.ModelDependencyResolver;
 import jetbrains.mps.smodel.SLanguageHierarchy;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.SModelInternal;
@@ -314,14 +315,22 @@ public final class CopyPasteUtil {
     mpsProject.getModelAccess().runReadAction(new Runnable() {
       @Override
       public void run() {
+        final LanguageRegistry langReg = mpsProject.getComponent(LanguageRegistry.class);
         List<SModelReference> allImportedModels = new ArrayList<SModelReference>();
-        //  XXX in fact, allImportedModels doesn't give us implicit imports, while one in necessaryImports may actually be imported already as implicit 
+        ModelDependencyResolver mdr = new ModelDependencyResolver(langReg, mpsProject.getRepository());
+        //  XXX in fact, neither old allImportedModels nor MDR give us implicit imports, while one in necessaryImports may actually be imported already as implicit 
         // need better way to deal with implicit imports. 
-        for (SModel sm : jetbrains.mps.smodel.SModelOperations.allImportedModels(targetModel)) {
+        for (SModel sm : mdr.directImports(targetModel)) {
+          // XXX could just add ModelImports.getImportedModels directly, no point in resolving them to SModel. 
+          //    however, this mimics what SModelOperations.allImportedModels used to do for years. 
           allImportedModels.add(sm.getReference());
         }
-        // no idea why allImportedModels explicitly removes models from its imports 
-        // it's handy for us, though 
+        // these are not aforementioned  'implicit=true' imports, just accessory models coming from used languages 
+        for (SModel sm : mdr.implicitImports(targetModel)) {
+          allImportedModels.add(sm.getReference());
+        }
+
+        // MDR doesn't include target model as its own import; denote imports to self are not necessary 
         allImportedModels.add(targetModel.getReference());
         for (SModelReference modelReference : necessaryImports) {
           assert modelReference != null;
@@ -329,8 +338,7 @@ public final class CopyPasteUtil {
             additionalModels.add(modelReference);
           }
         }
-        LanguageRegistry langReg = mpsProject.getComponent(LanguageRegistry.class);
-        SLanguageHierarchy langHierarchy = new SLanguageHierarchy(langReg, jetbrains.mps.smodel.SModelOperations.getAllLanguageImports(targetModel));
+        SLanguageHierarchy langHierarchy = new SLanguageHierarchy(langReg, mdr.usedLanguages(targetModel));
         Set<SLanguage> allVisibleLanguages = langHierarchy.getExtended();
         allVisibleLanguages.addAll(langHierarchy.getAggregated());
         for (SLanguage lang : necessaryLanguages) {

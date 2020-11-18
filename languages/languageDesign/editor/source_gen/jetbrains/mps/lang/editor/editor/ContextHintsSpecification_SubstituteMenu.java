@@ -16,12 +16,7 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.Set;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
-import java.util.HashSet;
-import jetbrains.mps.smodel.SModelOperations;
+import jetbrains.mps.scope.ModelPlusImportedScope;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import org.apache.log4j.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
@@ -29,6 +24,7 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.smodel.runtime.IconResource;
@@ -94,13 +90,8 @@ public class ContextHintsSpecification_SubstituteMenu extends SubstituteMenuBase
     @Override
     protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
       // TODO: Use link scopes here 
-      List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
-      Set<SModel> allVisibleModels = SetSequence.fromSetWithValues(new HashSet<SModel>(), (List<SModel>) SModelOperations.allImportedModels(_context.getModel()));
-      SetSequence.fromSet(allVisibleModels).addElement(_context.getModel());
-      for (SModel nextModel : SetSequence.fromSet(allVisibleModels)) {
-        ListSequence.fromList(result).addSequence(ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.nodes(nextModel, CONCEPTS.ConceptEditorHintDeclaration$e2)));
-      }
-      return result;
+      Iterable<SNode> rv = new ModelPlusImportedScope(_context.getModel(), false, CONCEPTS.ConceptEditorHintDeclaration$e2).getAvailableElements(null);
+      return (Iterable<SNode>) rv;
     }
     private class SMP_Action_yb5v9l_a0 extends SingleItemSubstituteMenuPart {
       private final SNode myParameterObject;

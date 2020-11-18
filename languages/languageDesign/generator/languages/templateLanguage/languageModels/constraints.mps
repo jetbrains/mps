@@ -28,6 +28,7 @@
         <child id="1068498886295" name="lValue" index="37vLTJ" />
       </concept>
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
+      <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
@@ -240,6 +241,7 @@
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
       </concept>
+      <concept id="1143226024141" name="jetbrains.mps.lang.smodel.structure.SModelType" flags="in" index="H_c77" />
       <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
       <concept id="1145383075378" name="jetbrains.mps.lang.smodel.structure.SNodeListType" flags="in" index="2I9FWS">
         <reference id="1145383142433" name="elementConcept" index="2I9WkF" />
@@ -297,19 +299,11 @@
       <concept id="1204796164442" name="jetbrains.mps.baseLanguage.collections.structure.InternalSequenceOperation" flags="nn" index="23sCx2">
         <child id="1204796294226" name="closure" index="23t8la" />
       </concept>
-      <concept id="1176903168877" name="jetbrains.mps.baseLanguage.collections.structure.UnionOperation" flags="nn" index="4Tj9Z" />
-      <concept id="1176906603202" name="jetbrains.mps.baseLanguage.collections.structure.BinaryOperation" flags="nn" index="56pJg">
-        <child id="1176906787974" name="rightExpression" index="576Qk" />
-      </concept>
       <concept id="540871147943773365" name="jetbrains.mps.baseLanguage.collections.structure.SingleArgumentSequenceOperation" flags="nn" index="25WWJ4">
         <child id="540871147943773366" name="argument" index="25WWJ7" />
       </concept>
       <concept id="1151689724996" name="jetbrains.mps.baseLanguage.collections.structure.SequenceType" flags="in" index="A3Dl8">
         <child id="1151689745422" name="elementType" index="A3Ik2" />
-      </concept>
-      <concept id="1235573135402" name="jetbrains.mps.baseLanguage.collections.structure.SingletonSequenceCreator" flags="nn" index="2HTt$P">
-        <child id="1235573175711" name="elementType" index="2HTBi0" />
-        <child id="1235573187520" name="singletonValue" index="2HTEbv" />
       </concept>
       <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
       <concept id="1160666733551" name="jetbrains.mps.baseLanguage.collections.structure.AddAllElementsOperation" flags="nn" index="X8dFx" />
@@ -842,32 +836,26 @@
                 </node>
               </node>
             </node>
-            <node concept="2OqwBi" id="oIXu13SJzm" role="2Oq$k0">
-              <node concept="1eOMI4" id="oIXu13GUEt" role="2Oq$k0">
-                <node concept="10QFUN" id="oIXu13GUEq" role="1eOMHV">
-                  <node concept="A3Dl8" id="oIXu13GUPr" role="10QFUM">
-                    <node concept="3uibUv" id="oIXu13GV0T" role="A3Ik2">
-                      <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
-                    </node>
-                  </node>
-                  <node concept="2YIFZM" id="oIXu13GSXL" role="10QFUP">
-                    <ref role="37wK5l" to="w1kc:~SModelOperations.allImportedModels(org.jetbrains.mps.openapi.model.SModel)" resolve="allImportedModels" />
-                    <ref role="1Pybhc" to="w1kc:~SModelOperations" resolve="SModelOperations" />
-                    <node concept="37vLTw" id="oIXu13GT0G" role="37wK5m">
-                      <ref role="3cqZAo" node="4YDZ92cLOVt" resolve="model" />
-                    </node>
-                  </node>
+            <node concept="1eOMI4" id="6cbc01IP2t9" role="2Oq$k0">
+              <node concept="10QFUN" id="6cbc01IP2zg" role="1eOMHV">
+                <node concept="A3Dl8" id="6cbc01IP2E1" role="10QFUM">
+                  <node concept="H_c77" id="6cbc01IP2I9" role="A3Ik2" />
                 </node>
-              </node>
-              <node concept="4Tj9Z" id="oIXu13SLwE" role="2OqNvi">
-                <node concept="2ShNRf" id="oIXu13SLFP" role="576Qk">
-                  <node concept="2HTt$P" id="oIXu13SM0P" role="2ShVmc">
-                    <node concept="3uibUv" id="oIXu13SMyJ" role="2HTBi0">
-                      <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
+                <node concept="2OqwBi" id="6cbc01IOZ1P" role="10QFUP">
+                  <node concept="2ShNRf" id="6cbc01IOXhi" role="2Oq$k0">
+                    <node concept="1pGfFk" id="6cbc01IOXxR" role="2ShVmc">
+                      <ref role="37wK5l" to="o8zo:4k9eBec$QVW" resolve="ModelPlusImportedScope" />
+                      <node concept="37vLTw" id="6cbc01IOXKa" role="37wK5m">
+                        <ref role="3cqZAo" node="4YDZ92cLOVt" resolve="model" />
+                      </node>
+                      <node concept="3clFbT" id="6cbc01IOY9I" role="37wK5m">
+                        <property role="3clFbU" value="true" />
+                      </node>
+                      <node concept="10Nm6u" id="6cbc01IOYy9" role="37wK5m" />
                     </node>
-                    <node concept="37vLTw" id="oIXu13SMJh" role="2HTEbv">
-                      <ref role="3cqZAo" node="4YDZ92cLOVt" resolve="model" />
-                    </node>
+                  </node>
+                  <node concept="liA8E" id="6cbc01IOZqP" role="2OqNvi">
+                    <ref role="37wK5l" to="o8zo:66auKH9r8yH" resolve="getModels" />
                   </node>
                 </node>
               </node>

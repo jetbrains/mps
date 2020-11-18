@@ -18,11 +18,12 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.smodel.SModelOperations;
 import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.smodel.ModelDependencyResolver;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.SLanguageHierarchy;
-import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
@@ -55,11 +56,15 @@ public class AttributeStyleClassItem_Constraints extends BaseConstraintsDescript
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             List<SModel> models = ListSequence.fromList(new ArrayList<SModel>());
-            ListSequence.fromList(models).addElement(SNodeOperations.getModel(_context.getContextNode()));
-            ListSequence.fromList(models).addSequence(ListSequence.fromList(SModelOperations.allImportedModels(SNodeOperations.getModel(_context.getContextNode()))));
-            SRepository contextRepo = SNodeOperations.getModel(_context.getContextNode()).getRepository();
+            SModel contextModel = SNodeOperations.getModel(_context.getContextNode());
+            ListSequence.fromList(models).addElement(contextModel);
+            final SRepository contextRepo = contextModel.getRepository();
             if (contextRepo != null) {
-              for (SLanguage l : new SLanguageHierarchy(LanguageRegistry.getInstance(contextRepo), SModelOperations.getAllLanguageImports(SNodeOperations.getModel(_context.getContextNode()))).getExtended()) {
+              final LanguageRegistry languageRegistry = LanguageRegistry.getInstance(contextRepo);
+              ModelDependencyResolver mdr = new ModelDependencyResolver(languageRegistry, contextRepo);
+              ListSequence.fromList(models).addSequence(CollectionSequence.fromCollection(mdr.directImports(contextModel)));
+              ListSequence.fromList(models).addSequence(CollectionSequence.fromCollection(mdr.implicitImports(contextModel)));
+              for (SLanguage l : new SLanguageHierarchy(languageRegistry, mdr.usedLanguages(contextModel)).getExtended()) {
                 SModuleReference sourceModuleRef = l.getSourceModuleReference();
                 if (sourceModuleRef == null) {
                   continue;

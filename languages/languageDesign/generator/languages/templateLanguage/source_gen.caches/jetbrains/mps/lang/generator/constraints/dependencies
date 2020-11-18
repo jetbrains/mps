@@ -120,7 +120,7 @@
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
-    <classNode dependClassName="jetbrains.mps.smodel.SModelOperations" />
+    <classNode dependClassName="jetbrains.mps.scope.ModelPlusImportedScope" />
     <classNode dependClassName="jetbrains.mps.smodel.SModelStereotype" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
     <classNode extendsClassName="jetbrains.mps.scope.ModelsScope" />
