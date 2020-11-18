@@ -182,7 +182,6 @@
       <patternset>
         <exclude name="license/*"/>
         <exclude name="plugins/java-ide-customization/**"/>
-        <exclude name="plugins/platform-images/**"/>
         <!-- TODO: Exclude log.xml & mps.svg from platform-->
         <exclude name="bin/log.xml"/>
         <exclude name="bin/mps.svg"/>
