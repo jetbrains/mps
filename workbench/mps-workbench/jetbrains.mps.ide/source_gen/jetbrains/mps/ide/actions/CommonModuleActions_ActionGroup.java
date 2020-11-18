@@ -77,6 +77,7 @@ public class CommonModuleActions_ActionGroup extends GeneratedActionGroup {
     }
     CommonModuleActions_ActionGroup.this.addSeparator();
     CommonModuleActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.SetVirtualFolder_Action");
+    CommonModuleActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.RemoveVirtualFolder_Action");
     CommonModuleActions_ActionGroup.this.addSeparator();
     {
       LabelledAnchor action = new LabelledAnchor(CommonModuleActions_ActionGroup.LABEL_ID_scripts);
