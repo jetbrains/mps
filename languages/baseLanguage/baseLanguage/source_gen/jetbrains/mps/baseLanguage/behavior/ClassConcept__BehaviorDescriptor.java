@@ -22,6 +22,7 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -32,7 +33,6 @@ import org.apache.log4j.Level;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.traceable.behavior.UnitConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
@@ -92,9 +92,10 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static List<SNode> getExtendedClassifierTypes_id1UeCwxlWKny(@NotNull SNode __thisNode__) {
     List<SNode> extendsClassifiers = new ArrayList<SNode>();
-    if (!((boolean) Classifier__BehaviorDescriptor.isSame_id4dzXPK1BpyE.invoke(SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object"), __thisNode__))) {
+    if (!(SNodeOperations.is(__thisNode__, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object")))) {
+      // can't I use getSuperclass() call here. Does its override in other classifiers matter? 
       SNode superClassifier = SLinkOperations.getTarget(__thisNode__, LINKS.superclass$Mp9$);
-      ListSequence.fromList(extendsClassifiers).addElement(((SLinkOperations.getTarget(superClassifier, LINKS.classifier$cxMr) != null) ? superClassifier : Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object"))));
+      ListSequence.fromList(extendsClassifiers).addElement(((SLinkOperations.getTarget(superClassifier, LINKS.classifier$cxMr) != null) ? superClassifier : _quotation_createNode_xjj00_a0a0c0b0a()));
     }
     ListSequence.fromList(extendsClassifiers).addSequence(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.implementedInterface$rujG)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
@@ -114,7 +115,7 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
     return markIcons;
   }
   /*package*/ static boolean isDescendant_checkLoops_id6dL7A1DpKoA(@NotNull SNode __thisNode__, final SNode nodeToCompare, Set<SNode> visited) {
-    if ((boolean) Classifier__BehaviorDescriptor.isSame_id4dzXPK1BpyE.invoke(nodeToCompare, SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object"))) {
+    if (SNodeOperations.is(nodeToCompare, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object"))) {
       return true;
     }
     if (SetSequence.fromSet(visited).contains(__thisNode__)) {
@@ -223,7 +224,7 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
       return new NamedElementsScope(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(__thisNode__));
     }
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.SuperConstructorKind$$I) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.SuperMethodKind$AJ)) {
-      if (((boolean) Classifier__BehaviorDescriptor.isSame_id4dzXPK1BpyE.invoke(__thisNode__, SNodeOperations.getNode("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object")))) {
+      if (SNodeOperations.is(__thisNode__, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object"))) {
         return new EmptyScope();
       }
 
@@ -433,6 +434,13 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+  private static SNode _quotation_createNode_xjj00_a0a0c0b0a() {
+    PersistenceFacade facade = PersistenceFacade.getInstance();
+    SNode quotedNode_1 = null;
+    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
+    quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)"), facade.createNodeId("~Object")));
+    return quotedNode_1;
   }
   private static SNode _quotation_createNode_xjj00_a0c0h() {
     PersistenceFacade facade = PersistenceFacade.getInstance();

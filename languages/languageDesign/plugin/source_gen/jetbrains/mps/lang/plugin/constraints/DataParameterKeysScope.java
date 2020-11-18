@@ -18,11 +18,9 @@ import java.util.ArrayList;
 import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.builder.SNodeBuilder;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.smodel.SReference;
+import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
@@ -83,14 +81,14 @@ public class DataParameterKeysScope extends Scope {
     if (!(allIModels.contains(SNodeOperations.getModel(staticField)))) {
       return false;
     }
-    return (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SNodeOperations.as(SNodeOperations.getContainingRoot(staticField), CONCEPTS.ClassConcept$bK), SLinkOperations.getTarget(_quotation_createNode_d9tb28_a0a0g0n(), LINKS.classifier$cxMr));
-  }
-  private static SNode _quotation_createNode_d9tb28_a0a0g0n() {
-    PersistenceFacade facade = PersistenceFacade.getInstance();
-    SNode quotedNode_1 = null;
-    quotedNode_1 = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType")).getResult();
-    quotedNode_1.setReference(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), SReference.create(MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier"), quotedNode_1, facade.createModelReference("498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.actionSystem(MPS.IDEA/)"), facade.createNodeId("~CommonDataKeys")));
-    return quotedNode_1;
+    // I collect extended ClassifierType, not Classifier (getAllExtendedClassifiers or getAllSuperClassifiers) 
+    // as I'm going to check CT.classifier reference target only, and don't care to get full node 
+    List<SNode> extended = Classifier__BehaviorDescriptor.getExtendedClassifierTypes_id1UeCwxlWKny.invoke(SNodeOperations.as(SNodeOperations.getContainingRoot(staticField), CONCEPTS.ClassConcept$bK));
+    return ListSequence.fromList(extended).any(new IWhereFilter<SNode>() {
+      public boolean accept(SNode it) {
+        return SLinkOperations.hasPointer(it, LINKS.classifier$cxMr, new SNodePointer("498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.actionSystem(MPS.IDEA/)", "~CommonDataKeys"));
+      }
+    });
   }
 
   private static final class CONCEPTS {
