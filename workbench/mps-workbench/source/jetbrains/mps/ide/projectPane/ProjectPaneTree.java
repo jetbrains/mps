@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.ide.projectPane;
 
-import com.intellij.ide.IdeTooltipManager;
 import com.intellij.ide.projectView.ProjectView;
 import com.intellij.ide.projectView.impl.AbstractProjectViewPane;
 import com.intellij.openapi.actionSystem.ActionGroup;
@@ -69,7 +68,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
-import javax.swing.JEditorPane;
+import javax.swing.JLabel;
 import javax.swing.tree.TreePath;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
@@ -251,7 +250,11 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
 
     // using awtTooltip just because I found similar code elsewhere in MPS, no idea what it means
     final HintHint hintHint = new HintHint(e).setAwtTooltip(true).setForcePopup(true);
-    final JEditorPane content = IdeTooltipManager.initPane(sb.toString(), hintHint, null);
+//    final JEditorPane content = IdeTooltipManager.initPane(sb.toString(), hintHint, null);
+    final JLabel content = new JLabel(sb.toString());
+    // XXX perhaps, shall use JBPopupFactory.createHtmlTextBalloonBuilder()
+    // FWIW, there's also JBPopupFactory.createComponentPopupBuilder, used in IDEA's HelpTooltip.
+    //       I don't know what's difference between the two.
     final BalloonBuilder bb = JBPopupFactory.getInstance().createBalloonBuilder(content);
     bb.setDisposable(this);
     // BalloonPopupBuilderImpl cons set default fill color, have to override even though content has proper background color
