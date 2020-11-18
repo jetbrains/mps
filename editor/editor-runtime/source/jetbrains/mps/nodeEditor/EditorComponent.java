@@ -38,6 +38,8 @@ import com.intellij.openapi.actionSystem.Separator;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.colors.EditorColors;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
+import com.intellij.openapi.editor.colors.TextAttributesKey;
+import com.intellij.openapi.editor.markup.TextAttributes;
 import com.intellij.openapi.keymap.KeymapManager;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
@@ -56,6 +58,7 @@ import com.intellij.util.ui.ButtonlessScrollBarUI;
 import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.classloading.DeployListener;
+import jetbrains.mps.editor.runtime.HighlightUsagesSupport;
 import jetbrains.mps.editor.runtime.cells.ReadOnlyUtil;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
 import jetbrains.mps.editor.runtime.commands.EditorCommandAdapter;
@@ -290,6 +293,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       return;
     }
     rebuildEditorContent();
+    refreshHighlighter();
   });
 
   private final DeployListener myClassesListener = new DeployListener() {
@@ -368,6 +372,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   @SuppressWarnings({"UnusedDeclaration"})
   private ReferenceUnderliner myReferenceUnderliner = new ReferenceUnderliner();
   private BracesHighlighter myBracesHighlighter = new BracesHighlighter(this);
+  private HighlightUsagesSupport myHighlightUsagesSupport;
   private boolean myPopupMenuEnabled;
   private boolean myIsInFiguresHierarchy = false;
 
@@ -678,6 +683,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     }
 
     myIntentionsSupport = new IntentionsSupport(this);
+    refreshHighlighter();
 
     getSelectionManager().addSelectionListener((editorComponent, oldSelection, newSelection) -> {
       if (oldSelection == newSelection) {
@@ -695,6 +701,9 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
         for (jetbrains.mps.openapi.editor.cells.EditorCell editorCell : newSelection.getSelectedCells()) {
           repaint(editorCell);
         }
+      }
+      if (myHighlightUsagesSupport != null) {
+        myHighlightUsagesSupport.selectionChanged(newSelection);
       }
       myLeftHighlighter.selectionChanged();
       myLeftHighlighter.repaint();
@@ -1393,6 +1402,9 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     } else {
       myCollapseStates.put(cell, collapsed);
     }
+    if (myHighlightUsagesSupport != null) {
+      myHighlightUsagesSupport.selectionChanged(mySelectionManager.getSelection(), 0);
+    }
     for (AdditionalPainter painter : getAdditionalPainters()) {
       painter.onUpdate(this);
     }
@@ -1869,6 +1881,23 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     assertInEDT();
     getUpdater().update();
     relayout();
+  }
+
+  private void refreshHighlighter() {
+    if (EditorSettings.getInstance().isHighlightNodeUnderCursor()) {
+      if (myHighlightUsagesSupport == null) {
+        TextAttributesKey attributes = TextAttributesKey.createTextAttributesKey("IDENTIFIER_UNDER_CARET_ATTRIBUTES");
+        TextAttributes textAttributes = EditorColorsManager.getInstance().getGlobalScheme().getAttributes(attributes);
+        Color color = textAttributes.getErrorStripeColor();
+        myHighlightUsagesSupport = new HighlightUsagesSupport(this, myRepository, color);
+        myHighlightUsagesSupport.selectionChanged(mySelectionManager.getSelection(), 0);
+      }
+    } else {
+      if (myHighlightUsagesSupport != null) {
+        myHighlightUsagesSupport.selectionChanged(null);
+        myHighlightUsagesSupport = null;
+      }
+    }
   }
 
   protected void assertInEDT() {

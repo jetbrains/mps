@@ -210,6 +210,14 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
     return myState.typeOverExistingText;
   }
 
+  public void setHighlightNodeUnderCursor(boolean highlightNodeUnderCursor) {
+    myState.myHighlightNodeUnderCursor = highlightNodeUnderCursor;
+  }
+
+  public boolean isHighlightNodeUnderCursor() {
+    return myState.myHighlightNodeUnderCursor;
+  }
+
   public void setDisableImmediateQuickFix(boolean disableImmediateQuickFix) {
     myState.disableImmediateQuickFix = disableImmediateQuickFix;
   }
@@ -458,6 +466,7 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
 
     public boolean useTwoStepDeletion = true;
     public boolean typeOverExistingText = true;
+    public boolean myHighlightNodeUnderCursor = true;
     public boolean disableImmediateQuickFix = false;
 
     public int indentSize = 2;
@@ -482,6 +491,7 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
       useBraces = myState.useBraces;
       useTwoStepDeletion = myState.useTwoStepDeletion;
       typeOverExistingText = myState.typeOverExistingText;
+      myHighlightNodeUnderCursor = myState.myHighlightNodeUnderCursor;
       disableImmediateQuickFix = myState.disableImmediateQuickFix;
       indentSize = myState.indentSize;
       verticalBound = myState.verticalBound;
@@ -525,6 +535,9 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
         return false;
       }
       if (typeOverExistingText != myState.typeOverExistingText) {
+        return false;
+      }
+      if (myHighlightNodeUnderCursor != myState.myHighlightNodeUnderCursor) {
         return false;
       }
       if (disableImmediateQuickFix != myState.disableImmediateQuickFix) {
@@ -576,6 +589,7 @@ public class EditorSettings implements PersistentStateComponent<MyState> {
       result = 31 * result + (useBraces ? 1 : 0);
       result = 31 * result + (useTwoStepDeletion ? 1 : 0);
       result = 31 * result + (typeOverExistingText ? 1 : 0);
+      result = 31 * result + (myHighlightNodeUnderCursor ? 1 : 0);
       result = 31 * result + (disableImmediateQuickFix ? 1 : 0);
       result = 31 * result + indentSize;
       result = 31 * result + verticalBound;

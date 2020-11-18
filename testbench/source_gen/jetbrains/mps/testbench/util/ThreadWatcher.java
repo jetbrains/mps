@@ -103,6 +103,9 @@ public class ThreadWatcher implements Output {
 
       // jetbrains.mps.nodeEditor.Highlighter#startUpdater 
       builder.append("|(Highlighter)");
+
+      // jetbrains.mps.editor.runtime#HighlightUsagesSupport  
+      builder.append("|(HighlightUsages)");
       // -------------------------------- 
 
 

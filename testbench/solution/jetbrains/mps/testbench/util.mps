@@ -995,6 +995,30 @@
               </node>
             </node>
           </node>
+          <node concept="3clFbH" id="6XdY$E7SYsz" role="3cqZAp" />
+          <node concept="3SKdUt" id="6XdY$E7SYsw" role="3cqZAp">
+            <node concept="1PaTwC" id="6XdY$E7SYsx" role="1aUNEU">
+              <node concept="3oM_SD" id="6XdY$E7T2BF" role="1PaTwD">
+                <property role="3oM_SC" value="jetbrains.mps.editor.runtime#HighlightUsagesSupport" />
+              </node>
+              <node concept="3oM_SD" id="6XdY$E7T2BA" role="1PaTwD">
+                <property role="3oM_SC" value="" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="6XdY$E7SYsr" role="3cqZAp">
+            <node concept="2OqwBi" id="6XdY$E7SYss" role="3clFbG">
+              <node concept="37vLTw" id="6XdY$E7SYst" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="6XdY$E7SYsu" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="6XdY$E7SYsv" role="37wK5m">
+                  <property role="Xl_RC" value="|(HighlightUsages)" />
+                </node>
+              </node>
+            </node>
+          </node>
           <node concept="3SKdUt" id="3m4z3Ef7ao6" role="3cqZAp">
             <node concept="1PaTwC" id="3m4z3Ef7ao7" role="1aUNEU">
               <node concept="3oM_SD" id="3m4z3Ef7ao8" role="1PaTwD">
