@@ -92,7 +92,7 @@ public abstract class SimpleRoleScope extends Scope {
     return new SimpleRoleScope(node, linkDeclaration) {
       @Override
       public String getName(SNode child) {
-        return SPropertyOperations.getString(SNodeOperations.cast(child, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL);
+        return SPropertyOperations.getString(SNodeOperations.as(child, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL);
       }
     };
   }
