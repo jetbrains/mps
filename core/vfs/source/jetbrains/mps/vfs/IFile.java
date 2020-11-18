@@ -130,10 +130,9 @@ public interface IFile {
   }
 
   /**
-   * @deprecated use {@link CachingFile#refresh(CachingContext)}
+   * a shorthand for {@link CachingFile#refresh}
+   * by default sync and non-recursive
    */
-  @ToRemove(version = 3.4)
-  @Deprecated
   default void refresh() {
     if (this instanceof CachingFile) {
       CachingFile me = (CachingFile) this;

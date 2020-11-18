@@ -6,6 +6,7 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.testbench.EnvironmentAwareTestCase;
 import jetbrains.mps.project.Project;
 import java.io.File;
+import jetbrains.mps.tool.environment.Log4jInitializer;
 import junit.framework.Assert;
 import com.intellij.execution.process.ProcessHandler;
 import jetbrains.mps.util.MacrosFactory;
@@ -47,6 +48,11 @@ public class RunCodeFromSolution_Test extends EnvironmentAwareTestCase {
   }
 
   private void runAndCheck(String scriptPath, String scriptFilename) {
+    try {
+      Log4jInitializer.init();
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
     File scriptFile = new File(scriptPath, scriptFilename);
     File okFile = new File(scriptPath, "ok.log");
 

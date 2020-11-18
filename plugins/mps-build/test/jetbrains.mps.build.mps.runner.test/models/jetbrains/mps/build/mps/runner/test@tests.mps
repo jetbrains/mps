@@ -88,6 +88,9 @@
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
       </concept>
+      <concept id="1164991038168" name="jetbrains.mps.baseLanguage.structure.ThrowStatement" flags="nn" index="YS8fn">
+        <child id="1164991057263" name="throwable" index="YScLw" />
+      </concept>
       <concept id="1070533707846" name="jetbrains.mps.baseLanguage.structure.StaticFieldReference" flags="nn" index="10M0yZ">
         <reference id="1144433057691" name="classifier" index="1PxDUh" />
       </concept>
@@ -267,6 +270,38 @@
       <property role="DiZV1" value="false" />
       <property role="od$2w" value="false" />
       <node concept="3clFbS" id="1ZVcZhrXDWT" role="3clF47">
+        <node concept="3J1_TO" id="7CWvnOJOs05" role="3cqZAp">
+          <node concept="3uVAMA" id="7CWvnOJOs31" role="1zxBo5">
+            <node concept="XOnhg" id="7CWvnOJOs32" role="1zc67B">
+              <property role="TrG5h" value="e" />
+              <node concept="nSUau" id="7CWvnOJOs33" role="1tU5fm">
+                <node concept="3uibUv" id="7CWvnOJOs3f" role="nSUat">
+                  <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbS" id="7CWvnOJOs34" role="1zc67A">
+              <node concept="YS8fn" id="7CWvnOJOs3B" role="3cqZAp">
+                <node concept="2ShNRf" id="7CWvnOJOs3Z" role="YScLw">
+                  <node concept="1pGfFk" id="7CWvnOJOQUG" role="2ShVmc">
+                    <ref role="37wK5l" to="wyt6:~RuntimeException.&lt;init&gt;(java.lang.Throwable)" resolve="RuntimeException" />
+                    <node concept="37vLTw" id="7CWvnOJORxZ" role="37wK5m">
+                      <ref role="3cqZAo" node="7CWvnOJOs32" resolve="e" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbS" id="7CWvnOJOs07" role="1zxBo7">
+            <node concept="3clFbF" id="7CWvnOJORAc" role="3cqZAp">
+              <node concept="2YIFZM" id="7CWvnOJORAw" role="3clFbG">
+                <ref role="37wK5l" to="79ha:2519QBqd1nw" resolve="init" />
+                <ref role="1Pybhc" to="79ha:5A5jZrz5bMd" resolve="Log4jInitializer" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="1ZVcZhrXDWU" role="3cqZAp">
           <node concept="3cpWsn" id="1ZVcZhrXDWV" role="3cpWs9">
             <property role="TrG5h" value="scriptFile" />
