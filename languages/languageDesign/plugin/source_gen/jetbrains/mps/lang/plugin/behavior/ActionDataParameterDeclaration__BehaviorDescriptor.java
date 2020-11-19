@@ -29,6 +29,10 @@ import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
+import java.util.Deque;
+import jetbrains.mps.internal.collections.runtime.LinkedListSequence;
+import java.util.LinkedList;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -45,8 +49,9 @@ public final class ActionDataParameterDeclaration__BehaviorDescriptor extends Ba
   public static final SMethod<List<SAbstractConcept>> getOperationSConcept_id6ALWH9g2mqE = new SMethodBuilder<List<SAbstractConcept>>(new SJavaCompoundTypeImpl((Class<List<SAbstractConcept>>) ((Class) Object.class))).name("getOperationSConcept").modifiers(SModifiersImpl.create(9, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("6ALWH9g2mqE").build();
   public static final SMethod<String> getDescription_id2DsqYJxu5P = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDescription").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2DsqYJxu5P").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Iterable<SNode>> getDataKeys_id1BC2tkUXZ6F = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getDataKeys").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1BC2tkUXZ6F").build(SMethodBuilder.createJavaParameter((Class<SModel>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> isCommonDataKeysDescendant_id2KcpybedV57 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isCommonDataKeysDescendant").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2KcpybedV57").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getType_id112RIkggjzD, getFieldDeclaration_id112RIkgil0h, getOperationSConcept_id6ALWH9g2mqE, getDescription_id2DsqYJxu5P, getDataKeys_id1BC2tkUXZ6F);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getType_id112RIkggjzD, getFieldDeclaration_id112RIkgil0h, getOperationSConcept_id6ALWH9g2mqE, getDescription_id2DsqYJxu5P, getDataKeys_id1BC2tkUXZ6F, isCommonDataKeysDescendant_id2KcpybedV57);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -79,7 +84,7 @@ public final class ActionDataParameterDeclaration__BehaviorDescriptor extends Ba
     }
     return SPropertyOperations.getString(SNodeOperations.cast(SLinkOperations.getTarget(value, LINKS.value$Y7om), CONCEPTS.StringLiteral$xu), PROPS.value$w7MM);
   }
-  /*package*/ static Iterable<SNode> getDataKeys_id1BC2tkUXZ6F(@NotNull SAbstractConcept __thisConcept__, SModel model) {
+  /*package*/ static Iterable<SNode> getDataKeys_id1BC2tkUXZ6F(@NotNull final SAbstractConcept __thisConcept__, SModel model) {
     List<SModel> allModels = ListSequence.fromList(new ArrayList<SModel>());
     ListSequence.fromList(allModels).addElement(model);
     SRepository repository = model.getRepository();
@@ -107,17 +112,39 @@ public final class ActionDataParameterDeclaration__BehaviorDescriptor extends Ba
     // one of these getAll... is the right one ;) 
     return Sequence.fromIterable(clsWithStaticFields).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return ListSequence.fromList(Classifier__BehaviorDescriptor.getExtendedClassifierTypes_id1UeCwxlWKny.invoke(it)).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SLinkOperations.hasPointer(it, LINKS.classifier$cxMr, new SNodePointer("498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.actionSystem(MPS.IDEA/)", "~CommonDataKeys"));
-          }
-        });
+        return ((boolean) ActionDataParameterDeclaration__BehaviorDescriptor.isCommonDataKeysDescendant_id2KcpybedV57.invoke(__thisConcept__, it));
       }
     }).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
         return (Iterable<SNode>) Classifier__BehaviorDescriptor.staticFields_id4_LVZ3pBr7M.invoke(it);
       }
     });
+  }
+  /*package*/ static boolean isCommonDataKeysDescendant_id2KcpybedV57(@NotNull SAbstractConcept __thisConcept__, SNode cc) {
+    if (SNodeOperations.is(cc, new SNodePointer("498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.actionSystem(MPS.IDEA/)", "~CommonDataKeys"))) {
+      return true;
+    }
+    final Deque<List<SNode>> q = LinkedListSequence.fromLinkedListNew(new LinkedList<List<SNode>>());
+    LinkedListSequence.fromLinkedListNew(q).addElement(Classifier__BehaviorDescriptor.getExtendedClassifierTypes_id1UeCwxlWKny.invoke(cc));
+    do {
+      List<SNode> extendedClassifiers = LinkedListSequence.fromLinkedListNew(q).removeElementAt(0);
+      if (ListSequence.fromList(extendedClassifiers).isEmpty()) {
+        continue;
+      }
+      if (ListSequence.fromList(extendedClassifiers).any(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return SLinkOperations.hasPointer(it, LINKS.classifier$cxMr, new SNodePointer("498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.actionSystem(MPS.IDEA/)", "~CommonDataKeys"));
+        }
+      })) {
+        return true;
+      }
+      Sequence.fromIterable(SLinkOperations.collect(extendedClassifiers, LINKS.classifier$cxMr)).visitAll(new IVisitor<SNode>() {
+        public void visit(SNode it) {
+          LinkedListSequence.fromLinkedListNew(q).addElement(Classifier__BehaviorDescriptor.getExtendedClassifierTypes_id1UeCwxlWKny.invoke(it));
+        }
+      });
+    } while (LinkedListSequence.fromLinkedListNew(q).isNotEmpty());
+    return false;
   }
 
   /*package*/ ActionDataParameterDeclaration__BehaviorDescriptor() {
@@ -157,6 +184,8 @@ public final class ActionDataParameterDeclaration__BehaviorDescriptor extends Ba
         return (T) ((String) getDescription_id2DsqYJxu5P(concept, (SNode) parameters[0]));
       case 4:
         return (T) ((Iterable<SNode>) getDataKeys_id1BC2tkUXZ6F(concept, (SModel) parameters[0]));
+      case 5:
+        return (T) ((Boolean) isCommonDataKeysDescendant_id2KcpybedV57(concept, (SNode) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
