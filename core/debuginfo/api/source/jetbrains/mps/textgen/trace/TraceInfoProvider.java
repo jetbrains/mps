@@ -18,6 +18,7 @@ package jetbrains.mps.textgen.trace;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelName;
+import org.jetbrains.mps.openapi.model.SModelName.SModelNameCheck;
 
 import java.util.function.Predicate;
 import java.util.stream.Stream;
@@ -41,6 +42,9 @@ public interface TraceInfoProvider {
   // XXX what if I'd like to have TraceInfoProvider implementation with predefined set of DebugInfo (Map<String,DebugInfo>),
   //     without any knowledge about SModel instance?
   default Stream<DebugInfo> debugInfo(@NotNull String modelName, @NotNull Predicate<SModel> modelFilter) {
+    if (SModelName.checkModelName(modelName) != SModelNameCheck.Pass) {
+      return Stream.empty();
+    }
     return debugInfo(new SModelName(modelName), modelFilter);
   }
 
