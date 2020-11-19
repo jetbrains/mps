@@ -4,6 +4,7 @@ package jetbrains.mps.java.workbench.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.ide.platform.refactoring.RefactoringDialog;
+import org.jetbrains.mps.openapi.model.SNodeChangeListener;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ChangeMethodSignatureParameters;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -11,6 +12,7 @@ import jetbrains.mps.ide.embeddableEditor.EmbeddableEditor;
 import jetbrains.mps.project.MPSProject;
 import java.util.List;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ChangeMethodSignatureRefactoring;
+import javax.swing.JLabel;
 import org.jetbrains.annotations.NotNull;
 import javax.swing.JComponent;
 import com.intellij.openapi.ui.DialogPanel;
@@ -26,6 +28,7 @@ import org.jetbrains.annotations.Nullable;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import jetbrains.mps.ide.messages.Icons;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.util.ArrayList;
 import com.intellij.openapi.progress.ProgressManager;
@@ -39,16 +42,25 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
+import org.jetbrains.mps.openapi.event.SPropertyChangeEvent;
+import org.jetbrains.mps.openapi.event.SReferenceChangeEvent;
+import org.jetbrains.mps.openapi.event.SNodeAddEvent;
+import org.jetbrains.mps.openapi.event.SNodeRemoveEvent;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 @GeneratedClass(node = "r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)/6812098398776640439", model = "r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)")
-/*package*/ class ChangeMethodSignatureDialog extends RefactoringDialog {
+/*package*/ class ChangeMethodSignatureDialog extends RefactoringDialog implements SNodeChangeListener {
   private SNode myDeclaration;
   private ChangeMethodSignatureParameters myParameters;
   private SModel myTempModel;
   private EmbeddableEditor myEditor;
   private MPSProject myProject;
   private List<ChangeMethodSignatureRefactoring> myRefactorings = null;
+
+  private JLabel myStaticWarningLabel = null;
 
   public ParamDefautValueSectionPanel myDefaultValuePanel;
 
@@ -76,6 +88,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
         myTempModel = TemporaryModels.getInstance().createEditable(true, TempModuleOptions.forDefaultModule());
         myTempModel.addRootNode(baseMethodDeclaration);
         myTempModel.addChangeListener(myDefaultValuePanel);
+        myTempModel.addChangeListener(ChangeMethodSignatureDialog.this);
         TemporaryModels.getInstance().addMissingImports(myTempModel);
 
         ChangeMethodSignatureDialog.this.myEditor = new SizedEmbeddableEditor(myProject, true, 300);
@@ -83,7 +96,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
         // Set focus on the editor 
         if (myEditor.getEditor().getCurrentEditorComponent() instanceof JComponent) {
-          parentPanel.setPreferredFocusedComponent(as_vatimf_a0a0a0m0a0a0a0b0l(myEditor.getEditor().getCurrentEditorComponent(), JComponent.class));
+          parentPanel.setPreferredFocusedComponent(as_vatimf_a0a0a0n0a0a0a0b0n(myEditor.getEditor().getCurrentEditorComponent(), JComponent.class));
         }
       }
     });
@@ -99,23 +112,35 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
   @Nullable
   @Override
   protected JComponent createCenterPanel() {
+    // Create default panel first because createSignaturePanel below requires it 
+    myDefaultValuePanel = new ParamDefautValueSectionPanel(myProject, this.myParameters.getDeclaration());
+
     DialogPanel panel = new DialogPanel(new GridBagLayout());
     GridBagConstraints c = new GridBagConstraints();
-    c.fill = GridBagConstraints.HORIZONTAL;
     c.insets = new Insets(3, 3, 3, 3);
     c.gridx = 0;
-    c.gridy = 1;
     c.weightx = 1;
-    c.weighty = 0;
 
-    // Add default panel first because createSignaturePanel below requires it 
-    myDefaultValuePanel = new ParamDefautValueSectionPanel(myProject, this.myParameters.getDeclaration());
-    panel.add(myDefaultValuePanel, c);
-
+    // Signature 
     c.fill = GridBagConstraints.BOTH;
     c.gridy = 0;
     c.weighty = 1;
     panel.add(this.createSignaturePanel(panel), c);
+
+    // Warning label 
+    myStaticWarningLabel = new JLabel("Static/non static transformation not allowed in this refactoring.", Icons.WARNING_ICON, JLabel.LEFT);
+    myStaticWarningLabel.setVisible(false);
+    c.fill = GridBagConstraints.HORIZONTAL;
+    c.gridy = 1;
+    c.weighty = 0;
+    panel.add(myStaticWarningLabel, c);
+
+    // Default values 
+    c.fill = GridBagConstraints.HORIZONTAL;
+    c.gridy = 2;
+    c.weighty = 0;
+    panel.add(myDefaultValuePanel, c);
+
     return panel;
   }
 
@@ -175,11 +200,49 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     }
     super.dispose();
   }
-  private static <T> T as_vatimf_a0a0a0m0a0a0a0b0l(Object o, Class<T> type) {
+
+  @Override
+  public void propertyChanged(@NotNull SPropertyChangeEvent event) {
+  }
+  @Override
+  public void referenceChanged(@NotNull SReferenceChangeEvent event) {
+  }
+  @Override
+  public void nodeAdded(@NotNull SNodeAddEvent event) {
+  }
+  @Override
+  public void nodeRemoved(@NotNull SNodeRemoveEvent event) {
+    SNode declaration = myParameters.getDeclaration();
+
+    // If the node we were editing was removed 
+    if (event.getChild() == declaration) {
+      // Add it back 
+      myTempModel.addRootNode(declaration);
+
+      // Display warning 
+      myStaticWarningLabel.setVisible(true);
+      myStaticWarningLabel.revalidate();
+
+    }
+
+    // Ensure the body is a stub statement list 
+    if ((SLinkOperations.getTarget(declaration, LINKS.body$5xQk) == null) || !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(declaration, LINKS.body$5xQk), CONCEPTS.StubStatementList$v6))) {
+      SLinkOperations.setTarget(declaration, LINKS.body$5xQk, createStubStatementList_vatimf_a0a0g0ab());
+    }
+  }
+  private static SNode createStubStatementList_vatimf_a0a0g0ab() {
+    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.StubStatementList$v6);
+    return n0.getResult();
+  }
+  private static <T> T as_vatimf_a0a0a0n0a0a0a0b0n(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept StubStatementList$v6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4975dc2bdcfa0c49L, "jetbrains.mps.baseLanguage.structure.StubStatementList");
   }
 }
