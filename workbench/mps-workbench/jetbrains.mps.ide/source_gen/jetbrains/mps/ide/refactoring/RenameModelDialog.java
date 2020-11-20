@@ -7,10 +7,11 @@ import jetbrains.mps.ide.platform.refactoring.RenameDialog;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import java.awt.HeadlessException;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import jetbrains.mps.ide.IdeBundle;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModelName;
-import javax.lang.model.SourceVersion;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.refactoring.Renamer;
@@ -19,27 +20,28 @@ import jetbrains.mps.refactoring.Renamer;
 public class RenameModelDialog extends RenameDialog {
   private final MPSProject myProject;
   private final EditableSModel myModelDescriptor;
+  private final ModelNameValidator myValidator;
 
   public RenameModelDialog(MPSProject mpsProject, EditableSModel sm) throws HeadlessException {
     super(mpsProject.getProject(), sm.getName().getValue(), "model");
     myProject = mpsProject;
     myModelDescriptor = sm;
+    final Wrappers._T<ModelRoot> modelRoot = new Wrappers._T<ModelRoot>();
+    myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
+      public void run() {
+        modelRoot.value = myModelDescriptor.getModelRoot();
+      }
+    });
+    myValidator = new ModelNameValidator(modelRoot.value);
     setTitle(IdeBundle.message("actions.model.rename.title"));
   }
-
 
   @Nullable
   @Override
   protected String checkValue() {
-    final SModelName newModelName;
-    try {
-      newModelName = new SModelName(getCurrentValue());
-    } catch (IllegalArgumentException exception) {
-      return exception.getMessage();
-    }
-
-    if (!((SourceVersion.isName(newModelName.getLongName())))) {
-      return IdeBundle.message("actions.model.rename.invalid.name");
+    String validationResult = myValidator.validate(getCurrentValue());
+    if (validationResult != null) {
+      return validationResult;
     }
 
     return super.checkValue();

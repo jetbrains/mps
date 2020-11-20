@@ -16,7 +16,9 @@ public class FlyingActions_ActionGroup extends GeneratedActionGroup {
     setIsInternal(false);
     setPopup(false);
     FlyingActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ShowDependenciesInViewer_Action");
-    FlyingActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.RenameVirtualFolder_Action");
+    FlyingActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.RenameModulesVirtualFolder_Action");
+    FlyingActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.RemoveModulesVirtualFolder_Action");
+    FlyingActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.RenameModelsNamespace_Action");
     FlyingActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.ShowInDependenciesViewer_Action");
     FlyingActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.SetPluginIdToCompileInIdeaModules_Action");
   }

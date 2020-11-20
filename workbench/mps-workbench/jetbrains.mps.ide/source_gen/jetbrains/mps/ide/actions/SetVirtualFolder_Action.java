@@ -7,15 +7,17 @@ import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
+import jetbrains.mps.ide.IdeBundle;
+import java.util.List;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
+import jetbrains.mps.project.structure.project.ModulePath;
+import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
-import jetbrains.mps.ide.projectPane.ProjectPane;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import com.intellij.openapi.ui.Messages;
+import jetbrains.mps.ide.projectPane.ProjectPane;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1216128015035", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class SetVirtualFolder_Action extends BaseAction {
@@ -33,7 +35,16 @@ public class SetVirtualFolder_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     // project.isProjectModule would say true for a generator under a language, and we don't want to set VF for it 
-    return ((MPSProject) MapSequence.fromMap(_params).get("project")).getPath(((SModule) MapSequence.fromMap(_params).get("module"))) != null;
+    event.getPresentation().setText(IdeBundle.message("actions.module.set.virtual.folder.text"));
+    boolean isApplicable = !(((List<SModule>) MapSequence.fromMap(_params).get("modules")).isEmpty());
+    for (SModule module : ((List<SModule>) MapSequence.fromMap(_params).get("modules"))) {
+      ModulePath path = ((MPSProject) MapSequence.fromMap(_params).get("project")).getPath(module);
+      if (path == null) {
+        isApplicable = false;
+        break;
+      }
+    }
+    return isApplicable;
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -59,9 +70,12 @@ public class SetVirtualFolder_Action extends BaseAction {
       }
     }
     {
-      SModule p = event.getData(MPSCommonDataKeys.MODULE);
-      MapSequence.fromMap(_params).put("module", p);
+      List<SModule> p = event.getData(MPSCommonDataKeys.MODULES);
+      MapSequence.fromMap(_params).put("modules", p);
       if (p == null) {
+        return false;
+      }
+      if (p.isEmpty()) {
         return false;
       }
     }
@@ -69,23 +83,29 @@ public class SetVirtualFolder_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final ProjectPane pane = ProjectPane.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject")));
-    String oldFolder = ((MPSProject) MapSequence.fromMap(_params).get("project")).getPath(((SModule) MapSequence.fromMap(_params).get("module"))).getVirtualFolder();
-    final Wrappers._T<String> newFolder = new Wrappers._T<String>(Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), "Enter new virtual folder name", "New Virtual folder", Messages.getQuestionIcon(), oldFolder, null));
+    String oldFolder = SetVirtualFolder_Action.this.extractCommonVirtualFolder(_params);
+    final String newFolder = Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), IdeBundle.message("dialogs.module.set.virtual.folder.text"), IdeBundle.message("dialogs.module.set.virtual.folder.title"), Messages.getQuestionIcon(), oldFolder, null);
+    // Only do something on OK or input is different from original string  
+    if (newFolder == null || oldFolder.equals(newFolder)) {
+      return;
+    }
+
     ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().executeCommand(new Runnable() {
       public void run() {
-        if (newFolder.value != null) {
-          if (newFolder.value.equals("")) {
-            newFolder.value = null;
-          }
-          for (SModule m : pane.getSelectedModules()) {
-            ((MPSProject) MapSequence.fromMap(_params).get("project")).setVirtualFolder(m, newFolder.value);
-          }
+        for (SModule m : ((List<SModule>) MapSequence.fromMap(_params).get("modules"))) {
+          ((MPSProject) MapSequence.fromMap(_params).get("project")).setVirtualFolder(m, (newFolder.isEmpty() ? null : newFolder));
         }
       }
     });
-    if (newFolder.value != null) {
-      pane.rebuild();
+    ProjectPane.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).rebuild();
+  }
+  private String extractCommonVirtualFolder(final Map<String, Object> _params) {
+    String commonVirtualFolder = ((MPSProject) MapSequence.fromMap(_params).get("project")).getPath(((List<SModule>) MapSequence.fromMap(_params).get("modules")).get(0)).getVirtualFolder();
+    for (int i = 1; i < ((List<SModule>) MapSequence.fromMap(_params).get("modules")).size(); i++) {
+      if (!(commonVirtualFolder.equals(((MPSProject) MapSequence.fromMap(_params).get("project")).getPath(((List<SModule>) MapSequence.fromMap(_params).get("modules")).get(i)).getVirtualFolder()))) {
+        return "";
+      }
     }
+    return commonVirtualFolder;
   }
 }

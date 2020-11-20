@@ -2,6 +2,7 @@
 <dependenciesRoot>
   <dependency className="jetbrains.mps.ide.actions.AbstractFileActions_ActionGroup">
     <classNode dependClassName="com.intellij.openapi.actionSystem.ex.ActionManagerEx" />
+    <classNode dependClassName="com.intellij.openapi.actionSystem.ex.ActionManagerEx" />
     <classNode dependClassName="com.intellij.openapi.extensions.PluginId" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
@@ -1908,12 +1909,15 @@
     <classNode dependClassName="jetbrains.mps.ide.actions.PropertyNodeActions_ActionGroup" />
     <classNode dependClassName="jetbrains.mps.ide.actions.ReferenceNodeActions_ActionGroup" />
     <classNode dependClassName="jetbrains.mps.ide.actions.RemoveAllBookmarks_Action" />
+    <classNode dependClassName="jetbrains.mps.ide.actions.RemoveModulesVirtualFolder_Action" />
     <classNode dependClassName="jetbrains.mps.ide.actions.RemoveTransientModels_Action" />
+    <classNode dependClassName="jetbrains.mps.ide.actions.RemoveVirtualFolder_Action" />
     <classNode dependClassName="jetbrains.mps.ide.actions.RenameFileOrDirectory_Action" />
     <classNode dependClassName="jetbrains.mps.ide.actions.RenameModel_Action" />
+    <classNode dependClassName="jetbrains.mps.ide.actions.RenameModelsNamespace_Action" />
     <classNode dependClassName="jetbrains.mps.ide.actions.RenameModule_Action" />
+    <classNode dependClassName="jetbrains.mps.ide.actions.RenameModulesVirtualFolder_Action" />
     <classNode dependClassName="jetbrains.mps.ide.actions.RenamePackage_Action" />
-    <classNode dependClassName="jetbrains.mps.ide.actions.RenameVirtualFolder_Action" />
     <classNode dependClassName="jetbrains.mps.ide.actions.RevertMemoryChanges_Action" />
     <classNode dependClassName="jetbrains.mps.ide.actions.SafeDeleteModuleDependency_Action" />
     <classNode dependClassName="jetbrains.mps.ide.actions.SafeDelete_Action" />
@@ -2138,6 +2142,20 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
   </dependency>
+  <dependency className="jetbrains.mps.ide.actions.ModelNamespaceInputValidator">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.Objects" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+    <classNode dependClassName="jetbrains.mps.ide.actions.NamespaceRenameHelper" />
+    <classNode dependClassName="jetbrains.mps.ide.ui.tree.module.NamespaceTextNode" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.EditableSModel" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SModelName" />
+    <classNode extendsClassName="com.intellij.openapi.ui.InputValidatorEx" />
+  </dependency>
   <dependency className="jetbrains.mps.ide.actions.ModelNewActions_ActionGroup">
     <classNode dependClassName="com.intellij.openapi.actionSystem.ex.ActionManagerEx" />
     <classNode dependClassName="com.intellij.openapi.extensions.PluginId" />
@@ -2318,6 +2336,13 @@
     <classNode dependClassName="jetbrains.mps.workbench.action.ApplicationPlugin" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode extendsClassName="jetbrains.mps.plugins.actions.GeneratedActionGroup" />
+  </dependency>
+  <dependency className="jetbrains.mps.ide.actions.NamespaceRenameHelper">
+    <classNode dependClassName="java.lang.AssertionError" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
   </dependency>
   <dependency className="jetbrains.mps.ide.actions.NewDirectory_Action">
     <classNode dependClassName="com.intellij.ide.IdeBundle" />
@@ -2935,6 +2960,30 @@
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode extendsClassName="jetbrains.mps.workbench.action.BaseAction" />
   </dependency>
+  <dependency className="jetbrains.mps.ide.actions.RemoveModulesVirtualFolder_Action">
+    <classNode dependClassName="com.intellij.openapi.actionSystem.AnActionEvent" />
+    <classNode dependClassName="com.intellij.openapi.actionSystem.CommonDataKeys" />
+    <classNode dependClassName="com.intellij.openapi.project.Project" />
+    <classNode dependClassName="com.intellij.openapi.ui.Messages" />
+    <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.Runnable" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.Map" />
+    <classNode dependClassName="javax.swing.Icon" />
+    <classNode dependClassName="javax.swing.tree.TreeNode" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+    <classNode dependClassName="jetbrains.mps.ide.IdeBundle" />
+    <classNode dependClassName="jetbrains.mps.ide.actions.MPSCommonDataKeys" />
+    <classNode dependClassName="jetbrains.mps.ide.projectPane.ProjectPane" />
+    <classNode dependClassName="jetbrains.mps.ide.ui.tree.module.NamespaceTextNode" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
+    <classNode dependClassName="jetbrains.mps.project.MPSProject" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.module.ModelAccess" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
+    <classNode extendsClassName="jetbrains.mps.workbench.action.BaseAction" />
+  </dependency>
   <dependency className="jetbrains.mps.ide.actions.RemoveTransientModels_Action">
     <classNode dependClassName="com.intellij.openapi.actionSystem.AnActionEvent" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.CommonDataKeys" />
@@ -2949,6 +2998,29 @@
     <classNode dependClassName="jetbrains.mps.generator.TransientModelsProvider" />
     <classNode dependClassName="jetbrains.mps.workbench.action.ActionAccess" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode extendsClassName="jetbrains.mps.workbench.action.BaseAction" />
+  </dependency>
+  <dependency className="jetbrains.mps.ide.actions.RemoveVirtualFolder_Action">
+    <classNode dependClassName="com.intellij.openapi.actionSystem.AnActionEvent" />
+    <classNode dependClassName="com.intellij.openapi.actionSystem.CommonDataKeys" />
+    <classNode dependClassName="com.intellij.openapi.project.Project" />
+    <classNode dependClassName="com.intellij.openapi.ui.Messages" />
+    <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.Runnable" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="java.util.Map" />
+    <classNode dependClassName="javax.swing.Icon" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+    <classNode dependClassName="jetbrains.mps.ide.IdeBundle" />
+    <classNode dependClassName="jetbrains.mps.ide.actions.MPSCommonDataKeys" />
+    <classNode dependClassName="jetbrains.mps.ide.projectPane.ProjectPane" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
+    <classNode dependClassName="jetbrains.mps.project.MPSProject" />
+    <classNode dependClassName="jetbrains.mps.project.structure.project.ModulePath" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
     <classNode extendsClassName="jetbrains.mps.workbench.action.BaseAction" />
   </dependency>
   <dependency className="jetbrains.mps.ide.actions.RenameFileOrDirectory_Action">
@@ -2993,6 +3065,39 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
     <classNode extendsClassName="jetbrains.mps.workbench.action.BaseAction" />
   </dependency>
+  <dependency className="jetbrains.mps.ide.actions.RenameModelsNamespace_Action">
+    <classNode dependClassName="com.intellij.openapi.actionSystem.AnActionEvent" />
+    <classNode dependClassName="com.intellij.openapi.actionSystem.CommonDataKeys" />
+    <classNode dependClassName="com.intellij.openapi.project.Project" />
+    <classNode dependClassName="com.intellij.openapi.ui.InputValidatorEx" />
+    <classNode dependClassName="com.intellij.openapi.ui.Messages" />
+    <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.Runnable" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.Map" />
+    <classNode dependClassName="java.util.Objects" />
+    <classNode dependClassName="javax.swing.Icon" />
+    <classNode dependClassName="javax.swing.tree.TreeNode" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+    <classNode dependClassName="jetbrains.mps.extapi.persistence.FileDataSource" />
+    <classNode dependClassName="jetbrains.mps.ide.IdeBundle" />
+    <classNode dependClassName="jetbrains.mps.ide.actions.MPSCommonDataKeys" />
+    <classNode dependClassName="jetbrains.mps.ide.actions.ModelNamespaceInputValidator" />
+    <classNode dependClassName="jetbrains.mps.ide.actions.NamespaceRenameHelper" />
+    <classNode dependClassName="jetbrains.mps.ide.projectPane.ProjectPane" />
+    <classNode dependClassName="jetbrains.mps.ide.ui.tree.module.NamespaceTextNode" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.MapSequence" />
+    <classNode dependClassName="jetbrains.mps.project.MPSProject" />
+    <classNode dependClassName="jetbrains.mps.refactoring.Renamer" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.EditableSModel" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SModelName" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.module.ModelAccess" />
+    <classNode extendsClassName="jetbrains.mps.workbench.action.BaseAction" />
+  </dependency>
   <dependency className="jetbrains.mps.ide.actions.RenameModule_Action">
     <classNode dependClassName="com.intellij.openapi.actionSystem.AnActionEvent" />
     <classNode dependClassName="java.lang.Object" />
@@ -3011,6 +3116,34 @@
     <classNode dependClassName="jetbrains.mps.smodel.Generator" />
     <classNode dependClassName="jetbrains.mps.smodel.Language" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
+    <classNode extendsClassName="jetbrains.mps.workbench.action.BaseAction" />
+  </dependency>
+  <dependency className="jetbrains.mps.ide.actions.RenameModulesVirtualFolder_Action">
+    <classNode dependClassName="com.intellij.openapi.actionSystem.AnActionEvent" />
+    <classNode dependClassName="com.intellij.openapi.actionSystem.CommonDataKeys" />
+    <classNode dependClassName="com.intellij.openapi.project.Project" />
+    <classNode dependClassName="com.intellij.openapi.ui.Messages" />
+    <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.Runnable" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.Map" />
+    <classNode dependClassName="java.util.Objects" />
+    <classNode dependClassName="javax.swing.Icon" />
+    <classNode dependClassName="javax.swing.tree.TreeNode" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+    <classNode dependClassName="jetbrains.mps.ide.IdeBundle" />
+    <classNode dependClassName="jetbrains.mps.ide.actions.MPSCommonDataKeys" />
+    <classNode dependClassName="jetbrains.mps.ide.actions.NamespaceRenameHelper" />
+    <classNode dependClassName="jetbrains.mps.ide.projectPane.ProjectPane" />
+    <classNode dependClassName="jetbrains.mps.ide.ui.tree.module.NamespaceTextNode" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.MapSequence" />
+    <classNode dependClassName="jetbrains.mps.project.MPSProject" />
+    <classNode dependClassName="jetbrains.mps.project.StandaloneMPSProject" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.module.ModelAccess" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
     <classNode extendsClassName="jetbrains.mps.workbench.action.BaseAction" />
   </dependency>
@@ -3042,40 +3175,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.ModelAccess" />
-    <classNode extendsClassName="jetbrains.mps.workbench.action.BaseAction" />
-  </dependency>
-  <dependency className="jetbrains.mps.ide.actions.RenameVirtualFolder_Action">
-    <classNode dependClassName="com.intellij.openapi.actionSystem.AnActionEvent" />
-    <classNode dependClassName="com.intellij.openapi.actionSystem.CommonDataKeys" />
-    <classNode dependClassName="com.intellij.openapi.project.Project" />
-    <classNode dependClassName="com.intellij.openapi.ui.InputValidatorEx" />
-    <classNode dependClassName="com.intellij.openapi.ui.Messages" />
-    <classNode dependClassName="java.lang.Object" />
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.Runnable" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.util.Map" />
-    <classNode dependClassName="java.util.Objects" />
-    <classNode dependClassName="javax.swing.Icon" />
-    <classNode dependClassName="javax.swing.tree.TreeNode" />
-    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.extapi.persistence.FileDataSource" />
-    <classNode dependClassName="jetbrains.mps.ide.IdeBundle" />
-    <classNode dependClassName="jetbrains.mps.ide.actions.MPSCommonDataKeys" />
-    <classNode dependClassName="jetbrains.mps.ide.projectPane.ProjectPane" />
-    <classNode dependClassName="jetbrains.mps.ide.ui.tree.module.NamespaceTextNode" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.MapSequence" />
-    <classNode dependClassName="jetbrains.mps.project.MPSProject" />
-    <classNode dependClassName="jetbrains.mps.project.StandaloneMPSProject" />
-    <classNode dependClassName="jetbrains.mps.refactoring.Renamer" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.EditableSModel" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SModelName" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.module.ModelAccess" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
     <classNode extendsClassName="jetbrains.mps.workbench.action.BaseAction" />
   </dependency>
   <dependency className="jetbrains.mps.ide.actions.RevertMemoryChanges_Action">
@@ -3304,14 +3403,16 @@
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Map" />
     <classNode dependClassName="javax.swing.Icon" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.Wrappers" />
+    <classNode dependClassName="jetbrains.mps.ide.IdeBundle" />
     <classNode dependClassName="jetbrains.mps.ide.actions.MPSCommonDataKeys" />
     <classNode dependClassName="jetbrains.mps.ide.projectPane.ProjectPane" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.MapSequence" />
     <classNode dependClassName="jetbrains.mps.project.MPSProject" />
+    <classNode dependClassName="jetbrains.mps.project.structure.project.ModulePath" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SModule" />
     <classNode extendsClassName="jetbrains.mps.workbench.action.BaseAction" />

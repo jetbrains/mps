@@ -81,12 +81,15 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
     addAction(new PasteNode_Action());
     addAction(new PrintNodePosition_Action());
     addAction(new RemoveAllBookmarks_Action());
+    addAction(new RemoveModulesVirtualFolder_Action());
     addAction(new RemoveTransientModels_Action());
+    addAction(new RemoveVirtualFolder_Action());
     addAction(new RenameFileOrDirectory_Action());
     addAction(new RenameModel_Action());
+    addAction(new RenameModelsNamespace_Action());
     addAction(new RenameModule_Action());
+    addAction(new RenameModulesVirtualFolder_Action());
     addAction(new RenamePackage_Action());
-    addAction(new RenameVirtualFolder_Action());
     addAction(new RevertMemoryChanges_Action());
     addAction(new SafeDeleteModuleDependency_Action());
     addAction(new SafeDelete_Action());

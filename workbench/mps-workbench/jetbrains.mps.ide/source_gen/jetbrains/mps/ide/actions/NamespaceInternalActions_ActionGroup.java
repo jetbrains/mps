@@ -54,7 +54,9 @@ public class NamespaceInternalActions_ActionGroup extends GeneratedActionGroup {
     NamespaceInternalActions_ActionGroup.this.add(((BaseGroup) ActionManager.getInstance().getAction("jetbrains.mps.ide.actions.NamespaceMakeActions_ActionGroup")));
     if (ListSequence.fromList(selectedNodes).count() == 1) {
       NamespaceInternalActions_ActionGroup.this.addSeparator();
-      NamespaceInternalActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.RenameVirtualFolder_Action");
+      NamespaceInternalActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.RenameModulesVirtualFolder_Action");
+      NamespaceInternalActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.RemoveModulesVirtualFolder_Action");
+      NamespaceInternalActions_ActionGroup.this.addAction("jetbrains.mps.ide.actions.RenameModelsNamespace_Action");
     }
     for (Pair<ActionPlace, Condition<BaseAction>> p : this.myPlaces) {
       this.addPlace(p.first, p.second);
