@@ -121,7 +121,7 @@ public class HighlightUsagesSupport {
       }
     }
 
-    if (highlightingRoot == editedRoot && nodeToHighlight != selectedCellNode) {
+    if (highlightingRoot == editedRoot && nodeToHighlight != selectedCellNode && nodeToHighlight != editedRoot) {
       hm.mark(nodeToHighlight, myHighlightColor, "usage", emo);
     }
   }
