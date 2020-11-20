@@ -92,9 +92,6 @@
 
     <directoryIndexExcludePolicy implementation="jetbrains.mps.ide.vfs.ClassesGenPolicy"/>
 
-    <applicationService serviceInterface="com.intellij.codeInsight.daemon.DaemonCodeAnalyzerSettings"
-                        serviceImplementation="jetbrains.mps.codeInsight.daemon.MockDaemonCodeAnalyzerSettingsImpl"
-                        overrides="true"/>
     <!-- MPS Patch-->
     <applicationService serviceInterface="com.intellij.ui.EditorTextFieldProvider"
                         serviceImplementation="jetbrains.mps.EditorTextFieldProviderImpl"
@@ -165,13 +162,6 @@
     <applicationConfigurable groupId="build" groupWeight="120" instance="jetbrains.mps.library.LibraryManagerConfigurable"
                              id="preferences.libraryManager"/>
 
-    <projectService serviceInterface="com.intellij.openapi.roots.FileIndexFacade"
-                    serviceImplementation="com.intellij.mock.MockFileIndexFacade" overrides="true"/>
-
-    <!-- Use default implementation instead of PsiCachedValuesFactory in CoreImpl.xml-->
-    <projectService serviceInterface="com.intellij.util.CachedValuesFactory"
-                    serviceImplementation="com.intellij.util.DefaultCachedValuesFactory" overrides="true"/>
-
     <!-- allow mps to open mpr projects from command line -->
     <projectOpenProcessor implementation="jetbrains.mps.ide.project.MpsProjectOpenProcessor"/>
 
@@ -219,10 +209,6 @@
     <!-- TODO: check if can be removed -->
     <projectService serviceImplementation="com.intellij.openapi.vcs.impl.ModuleVcsDetector" preload="notHeadless"/>
 
-    <projectService serviceInterface="com.intellij.psi.search.PsiSearchHelper"
-                    serviceImplementation="jetbrains.mps.EmptyPsiSearchHelper" overrides="true"/>
-    <projectService serviceInterface="com.intellij.psi.search.PsiTodoSearchHelper"
-                    serviceImplementation="jetbrains.mps.EmptyPsiTodoSearchHelper" overrides="true"/>
   </extensions>
 
   <actions>
