@@ -78,6 +78,13 @@ import org.jetbrains.mps.openapi.language.SConcept;
     init();
   }
 
+  /**
+   * Create the panel for the method signature, and affect to the parent panel the component
+   * to be focused first
+   * 
+   * @param parentPanel parent on which the focused component will be set on
+   * @return created component
+   */
   private JComponent createSignaturePanel(final DialogPanel parentPanel) {
     JPanel panel = new JPanel(new BorderLayout());
     myProject.getRepository().getModelAccess().executeCommand(new Runnable() {
@@ -105,6 +112,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return panel;
   }
 
+  /**
+   * Return all the refactorings objects, which contains the data on which method refactor
+   * 
+   * @return list of refactorings
+   */
   public List<ChangeMethodSignatureRefactoring> getAllRefactorings() {
     return myRefactorings;
   }
@@ -144,6 +156,14 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return panel;
   }
 
+  /**
+   * This method will be called on pressing "Refactor" button in dialog.
+   * 
+   * First find overriding methods, then create a refactoring objects for each with the default values
+   * specified in the default value panel.
+   * 
+   * @see jetbrains.mps.java.workbench.actions.ChangeMethodSignatureDialog#getAllRefactorings() 
+   */
   @Override
   protected void doRefactoringAction() {
     final Wrappers._T<List<SNode>> methodsToRefactor = new Wrappers._T<List<SNode>>(new ArrayList<SNode>());

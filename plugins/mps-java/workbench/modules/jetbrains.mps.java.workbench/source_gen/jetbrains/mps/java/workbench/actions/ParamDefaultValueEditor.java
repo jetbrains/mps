@@ -26,6 +26,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
+/**
+ * Class handling a single editor for a method parameter default value.
+ */
 @GeneratedClass(node = "r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)/4344673790103579342", model = "r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)")
 /*package*/ class ParamDefaultValueEditor implements SNodeChangeListener {
   private final SNode newParameter;
@@ -35,6 +38,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EmbeddableEditor myEditor;
 
   private SModel model;
+
+  /**
+   * Whether the content has been modified by the user, allow to know if we can change the
+   * value automatically.
+   */
   private boolean touched = false;
 
   public ParamDefaultValueEditor(SNode newParameter, MPSProject project, JPanel parentPanel) {
@@ -44,13 +52,16 @@ import org.jetbrains.mps.openapi.language.SConcept;
     SNode defaultValue = ((SNode) BHReflection.invoke0(SLinkOperations.getTarget(newParameter, LINKS.type$a1UY), CONCEPTS.Type$bu, SMethodTrimmedId.create("createDefaultTypeExpression", null, "2UvJdVpqUA4")));
 
     // Set a parent to host the value 
-    this.parentExpression = createAssignmentExpression_crlydh_a0g0j(newParameter, ((defaultValue != null) ? defaultValue : SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cd6167L, "jetbrains.mps.baseLanguage.structure.NullLiteral"))));
+    this.parentExpression = createAssignmentExpression_crlydh_a0g0k(newParameter, ((defaultValue != null) ? defaultValue : SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cd6167L, "jetbrains.mps.baseLanguage.structure.NullLiteral"))));
 
     this.project = project;
 
     this.build();
   }
 
+  /**
+   * Create and add the editor to the parent panel
+   */
   protected void build() {
     project.getRepository().getModelAccess().executeCommand(new Runnable() {
       public void run() {
@@ -68,6 +79,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
     myParentPanel.add(myEditor);
   }
 
+  /**
+   * Remove the editor from the parent and dispose internal objects
+   */
   public void dispose() {
     if (myEditor != null) {
       myEditor.disposeEditor();
@@ -92,9 +106,15 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return SLinkOperations.getTarget(this.parentExpression, LINKS.rValue$spNK);
   }
 
+  /**
+   * Set the default value programmatically. If null, a NullLiteral node will
+   * be set.
+   * 
+   * @param value new expression for the default value
+   */
   public void setDefaultValue(SNode value) {
     if ((value == null)) {
-      SLinkOperations.setTarget(this.parentExpression, LINKS.rValue$spNK, createNullLiteral_crlydh_a0a0a0t());
+      SLinkOperations.setTarget(this.parentExpression, LINKS.rValue$spNK, createNullLiteral_crlydh_a0a0a0u());
     } else {
       SLinkOperations.setTarget(this.parentExpression, LINKS.rValue$spNK, value);
     }
@@ -123,7 +143,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   @Override
   public void nodeRemoved(@NotNull SNodeRemoveEvent event) {
   }
-  private static SNode createAssignmentExpression_crlydh_a0g0j(SNode p0, SNode p1) {
+  private static SNode createAssignmentExpression_crlydh_a0g0k(SNode p0, SNode p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.AssignmentExpression$SE);
     {
       SNodeBuilder n1 = n0.forChild(LINKS.lValue$splI).init(CONCEPTS.VariableReference$TC);
@@ -132,7 +152,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     n0.forChild(LINKS.rValue$spNK).initNode(p1, CONCEPTS.Expression$mB, true);
     return n0.getResult();
   }
-  private static SNode createNullLiteral_crlydh_a0a0a0t() {
+  private static SNode createNullLiteral_crlydh_a0a0a0u() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NullLiteral$QQ);
     return n0.getResult();
   }

@@ -13,6 +13,7 @@
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="17" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="-1" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
   </languages>
   <imports>
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
@@ -292,6 +293,19 @@
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569906740" name="parameter" index="1bW2Oz" />
         <child id="1199569916463" name="body" index="1bW5cS" />
+      </concept>
+    </language>
+    <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
+      <concept id="6832197706140896242" name="jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment" flags="ng" index="z59LJ" />
+      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
+        <child id="8465538089690331502" name="body" index="TZ5H$" />
+      </concept>
+      <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
+      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
+        <child id="8970989240999019149" name="part" index="1dT_Ay" />
+      </concept>
+      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
+        <property id="8970989240999019144" name="text" index="1dT_AB" />
       </concept>
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
@@ -6604,20 +6618,38 @@
   <node concept="312cEu" id="7nrhK3uHcOm">
     <property role="TrG5h" value="ChangeMethodSignatureParameters" />
     <property role="3GE5qa" value="changeMethodSignature" />
+    <node concept="2tJIrI" id="7svtApWmvV1" role="jymVt" />
     <node concept="312cEg" id="7nrhK3uHcPf" role="jymVt">
       <property role="TrG5h" value="myMethod" />
       <node concept="3Tm6S6" id="7nrhK3uHcPg" role="1B3o_S" />
       <node concept="3Tqbb2" id="7nrhK3uHcPh" role="1tU5fm">
         <ref role="ehGHo" to="tpee:fzclF7W" resolve="BaseMethodDeclaration" />
       </node>
+      <node concept="z59LJ" id="7svtApWmvWY" role="lGtFl">
+        <node concept="TZ5HA" id="7svtApWmvWZ" role="TZ5H$">
+          <node concept="1dT_AC" id="7svtApWmvX0" role="1dT_Ay">
+            <property role="1dT_AB" value="Method signature which will be edited" />
+          </node>
+        </node>
+      </node>
     </node>
+    <node concept="2tJIrI" id="7svtApWmvX7" role="jymVt" />
+    <node concept="2tJIrI" id="7svtApWmvZ6" role="jymVt" />
     <node concept="312cEg" id="7nrhK3uHcPi" role="jymVt">
       <property role="TrG5h" value="myOldMethod" />
       <node concept="3Tqbb2" id="7nrhK3uHcPk" role="1tU5fm">
         <ref role="ehGHo" to="tpee:fzclF7W" resolve="BaseMethodDeclaration" />
       </node>
       <node concept="3Tm6S6" id="7nrhK3uHcPj" role="1B3o_S" />
+      <node concept="z59LJ" id="7svtApWmw2k" role="lGtFl">
+        <node concept="TZ5HA" id="7svtApWmw2l" role="TZ5H$">
+          <node concept="1dT_AC" id="7svtApWmw2m" role="1dT_Ay">
+            <property role="1dT_AB" value="Copy of the original signature, kept for comparison" />
+          </node>
+        </node>
+      </node>
     </node>
+    <node concept="2tJIrI" id="7svtApWmvc_" role="jymVt" />
     <node concept="312cEg" id="7nrhK3uHcPl" role="jymVt">
       <property role="TrG5h" value="myParametersIds" />
       <node concept="2ShNRf" id="7nrhK3uHcPp" role="33vP2m">
@@ -6629,7 +6661,20 @@
       <node concept="_YKpA" id="7nrhK3uHcPn" role="1tU5fm">
         <node concept="17QB3L" id="7nrhK3uHcPo" role="_ZDj9" />
       </node>
+      <node concept="z59LJ" id="7svtApWmveu" role="lGtFl">
+        <node concept="TZ5HA" id="7svtApWmvev" role="TZ5H$">
+          <node concept="1dT_AC" id="7svtApWmvew" role="1dT_Ay">
+            <property role="1dT_AB" value="Node ids of the initial parameters of the method edited (not the original one)." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="7svtApWmvgU" role="TZ5H$">
+          <node concept="1dT_AC" id="7svtApWmvgV" role="1dT_Ay">
+            <property role="1dT_AB" value="Can be used to know if a parameter in the modified signature match a previous parameter." />
+          </node>
+        </node>
+      </node>
     </node>
+    <node concept="2tJIrI" id="7svtApWmveP" role="jymVt" />
     <node concept="3clFbW" id="7nrhK3uHcPt" role="jymVt">
       <node concept="37vLTG" id="7nrhK3uHcQ3" role="3clF46">
         <property role="TrG5h" value="declaration" />
@@ -27305,6 +27350,28 @@
       </node>
       <node concept="3cqZAl" id="7nrhK3uHeaI" role="3clF45" />
       <node concept="3Tm1VV" id="7nrhK3uHeaH" role="1B3o_S" />
+      <node concept="P$JXv" id="5$u9SqevLE6" role="lGtFl">
+        <node concept="TZ5HA" id="5$u9SqevLE7" role="TZ5H$">
+          <node concept="1dT_AC" id="5$u9SqevLE8" role="1dT_Ay">
+            <property role="1dT_AB" value="Perform the refactoring of the method." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5$u9SqevLEf" role="TZ5H$">
+          <node concept="1dT_AC" id="5$u9SqevLEg" role="1dT_Ay">
+            <property role="1dT_AB" value="" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5$u9SqevLEl" role="TZ5H$">
+          <node concept="1dT_AC" id="5$u9SqevLEm" role="1dT_Ay">
+            <property role="1dT_AB" value="Make use of parameters provided in constructor to handled multiple aspects of the refactoring" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5$u9SqevLEt" role="TZ5H$">
+          <node concept="1dT_AC" id="5$u9SqevLEu" role="1dT_Ay">
+            <property role="1dT_AB" value="(visibility, return type, arguments, method usages)" />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="3clFb_" id="4uwyJ44usVb" role="jymVt">
       <property role="TrG5h" value="getDeclaration" />
@@ -27318,6 +27385,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="7svtApWmJBH" role="jymVt" />
     <node concept="3clFb_" id="5Z5GXDDAVb4" role="jymVt">
       <property role="TrG5h" value="introduceParameterSubstitute" />
       <node concept="3clFbS" id="5Z5GXDDAVb7" role="3clF47">
@@ -27785,7 +27853,25 @@
       </node>
       <node concept="3Tm6S6" id="5Z5GXDDAV2h" role="1B3o_S" />
       <node concept="3cqZAl" id="5Z5GXDDAVb2" role="3clF45" />
+      <node concept="P$JXv" id="7svtApWmJB$" role="lGtFl">
+        <node concept="TZ5HA" id="7svtApWmJB_" role="TZ5H$">
+          <node concept="1dT_AC" id="7svtApWmJBA" role="1dT_Ay">
+            <property role="1dT_AB" value="Introduced new local variable declarations for the parameters that will be removed during the refactoring." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="7svtApWmJMu" role="TZ5H$">
+          <node concept="1dT_AC" id="7svtApWmJMv" role="1dT_Ay">
+            <property role="1dT_AB" value="" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="7svtApWmJM$" role="TZ5H$">
+          <node concept="1dT_AC" id="7svtApWmJM_" role="1dT_Ay">
+            <property role="1dT_AB" value="It is to be called before changeParameters() since it relies on the current method parameters." />
+          </node>
+        </node>
+      </node>
     </node>
+    <node concept="2tJIrI" id="7svtApWn0cC" role="jymVt" />
     <node concept="3clFb_" id="7nrhK3uHeaJ" role="jymVt">
       <property role="TrG5h" value="changeParameters" />
       <node concept="3cqZAl" id="7nrhK3uHeci" role="3clF45" />
@@ -28029,6 +28115,13 @@
                 </node>
               </node>
             </node>
+          </node>
+        </node>
+      </node>
+      <node concept="P$JXv" id="7svtApWn0cv" role="lGtFl">
+        <node concept="TZ5HA" id="7svtApWn0cw" role="TZ5H$">
+          <node concept="1dT_AC" id="7svtApWn0cx" role="1dT_Ay">
+            <property role="1dT_AB" value="Change the method parameters according to the new signature" />
           </node>
         </node>
       </node>

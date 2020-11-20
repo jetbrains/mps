@@ -11,6 +11,7 @@
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
     <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
+    <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
   </languages>
   <imports>
     <import index="9oh" ref="r:de82dfab-9448-49ba-813e-2b0579f7fb15(jetbrains.mps.ide.platform.actions)" />
@@ -342,6 +343,38 @@
         <child id="1199569916463" name="body" index="1bW5cS" />
       </concept>
     </language>
+    <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
+      <concept id="5858074156537516430" name="jetbrains.mps.baseLanguage.javadoc.structure.ReturnBlockDocTag" flags="ng" index="x79VA">
+        <property id="5858074156537516431" name="text" index="x79VB" />
+      </concept>
+      <concept id="6832197706140896242" name="jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment" flags="ng" index="z59LJ" />
+      <concept id="6832197706140518104" name="jetbrains.mps.baseLanguage.javadoc.structure.DocMethodParameterReference" flags="ng" index="zr_55" />
+      <concept id="6832197706140518103" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseParameterReference" flags="ng" index="zr_5a">
+        <reference id="6832197706140518108" name="param" index="zr_51" />
+      </concept>
+      <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
+        <child id="8465538089690331502" name="body" index="TZ5H$" />
+        <child id="5383422241790532083" name="tags" index="3nqlJM" />
+      </concept>
+      <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
+      <concept id="8465538089690881930" name="jetbrains.mps.baseLanguage.javadoc.structure.ParameterBlockDocTag" flags="ng" index="TUZQ0">
+        <property id="8465538089690881934" name="text" index="TUZQ4" />
+        <child id="6832197706140518123" name="parameter" index="zr_5Q" />
+      </concept>
+      <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
+        <child id="8970989240999019149" name="part" index="1dT_Ay" />
+      </concept>
+      <concept id="2217234381367190443" name="jetbrains.mps.baseLanguage.javadoc.structure.SeeBlockDocTag" flags="ng" index="VUp57">
+        <child id="2217234381367190458" name="reference" index="VUp5m" />
+      </concept>
+      <concept id="2217234381367530195" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocReference" flags="ng" index="VXe0Z">
+        <reference id="2217234381367530196" name="methodDeclaration" index="VXe0S" />
+      </concept>
+      <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
+        <property id="8970989240999019144" name="text" index="1dT_AB" />
+      </concept>
+      <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+    </language>
     <language id="3ecd7c84-cde3-45de-886c-135ecc69b742" name="jetbrains.mps.lang.refactoring">
       <concept id="6598645150040035709" name="jetbrains.mps.lang.refactoring.structure.IsRefactoringApplicable" flags="nn" index="3trCAK">
         <reference id="6598645150040035710" name="refactoring" index="3trCAN" />
@@ -436,6 +469,7 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
+        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
@@ -1447,6 +1481,27 @@
           <ref role="3uigEE" to="jkm4:~DialogPanel" resolve="DialogPanel" />
         </node>
       </node>
+      <node concept="P$JXv" id="7svtApWmaE2" role="lGtFl">
+        <node concept="TZ5HA" id="7svtApWmaE3" role="TZ5H$">
+          <node concept="1dT_AC" id="7svtApWmaE4" role="1dT_Ay">
+            <property role="1dT_AB" value="Create the panel for the method signature, and affect to the parent panel the component" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="7svtApWmaEl" role="TZ5H$">
+          <node concept="1dT_AC" id="7svtApWmaEm" role="1dT_Ay">
+            <property role="1dT_AB" value="to be focused first" />
+          </node>
+        </node>
+        <node concept="TUZQ0" id="7svtApWmaE5" role="3nqlJM">
+          <property role="TUZQ4" value="parent on which the focused component will be set on" />
+          <node concept="zr_55" id="7svtApWmaE7" role="zr_5Q">
+            <ref role="zr_51" node="36HNgAU8pP6" resolve="parentPanel" />
+          </node>
+        </node>
+        <node concept="x79VA" id="7svtApWmaE8" role="3nqlJM">
+          <property role="x79VB" value="created component" />
+        </node>
+      </node>
     </node>
     <node concept="2tJIrI" id="2C3jimFDLT4" role="jymVt" />
     <node concept="3clFb_" id="5U9rQri5GgU" role="jymVt">
@@ -1462,6 +1517,16 @@
           <node concept="37vLTw" id="2BHiRxeufOA" role="3cqZAk">
             <ref role="3cqZAo" node="5U9rQri5Ghd" resolve="myRefactorings" />
           </node>
+        </node>
+      </node>
+      <node concept="P$JXv" id="7svtApWmaIS" role="lGtFl">
+        <node concept="TZ5HA" id="7svtApWmaIT" role="TZ5H$">
+          <node concept="1dT_AC" id="7svtApWmaIU" role="1dT_Ay">
+            <property role="1dT_AB" value="Return all the refactorings objects, which contains the data on which method refactor" />
+          </node>
+        </node>
+        <node concept="x79VA" id="7svtApWmaIV" role="3nqlJM">
+          <property role="x79VB" value="list of refactorings" />
         </node>
       </node>
     </node>
@@ -2220,6 +2285,33 @@
       <node concept="3cqZAl" id="58ylZeUN7pi" role="3clF45" />
       <node concept="2AHcQZ" id="3tYsUK_S5CD" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+      <node concept="P$JXv" id="7svtApWmaNx" role="lGtFl">
+        <node concept="TZ5HA" id="7svtApWmaNy" role="TZ5H$">
+          <node concept="1dT_AC" id="7svtApWmaNz" role="1dT_Ay">
+            <property role="1dT_AB" value="This method will be called on pressing &quot;Refactor&quot; button in dialog." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="7svtApWmaNE" role="TZ5H$">
+          <node concept="1dT_AC" id="7svtApWmaNF" role="1dT_Ay">
+            <property role="1dT_AB" value="" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="7svtApWmaNK" role="TZ5H$">
+          <node concept="1dT_AC" id="7svtApWmaNL" role="1dT_Ay">
+            <property role="1dT_AB" value="First find overriding methods, then create a refactoring objects for each with the default values" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="7svtApWmv1I" role="TZ5H$">
+          <node concept="1dT_AC" id="7svtApWmv1J" role="1dT_Ay">
+            <property role="1dT_AB" value="specified in the default value panel." />
+          </node>
+        </node>
+        <node concept="VUp57" id="7svtApWmaO2" role="3nqlJM">
+          <node concept="VXe0Z" id="7svtApWmv1$" role="VUp5m">
+            <ref role="VXe0S" node="5U9rQri5GgU" resolve="getAllRefactorings" />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="2tJIrI" id="2C3jimFDLT7" role="jymVt" />
@@ -5198,9 +5290,18 @@
           <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
         </node>
       </node>
+      <node concept="P$JXv" id="7svtApWmwbm" role="lGtFl">
+        <node concept="TZ5HA" id="7svtApWmwbn" role="TZ5H$">
+          <node concept="1dT_AC" id="7svtApWmwbo" role="1dT_Ay">
+            <property role="1dT_AB" value="Return a map of the default values for each parameter" />
+          </node>
+        </node>
+        <node concept="x79VA" id="7svtApWmwbp" role="3nqlJM">
+          <property role="x79VB" value="map from parameter to default value expression" />
+        </node>
+      </node>
     </node>
     <node concept="2tJIrI" id="3LbosG4bwiD" role="jymVt" />
-    <node concept="2tJIrI" id="3LbosG4bwTL" role="jymVt" />
     <node concept="3clFb_" id="6R5ZpIBdNfP" role="jymVt">
       <property role="TrG5h" value="updateVisibility" />
       <node concept="3clFbS" id="6R5ZpIBdNfS" role="3clF47">
@@ -5229,6 +5330,13 @@
       </node>
       <node concept="3Tm6S6" id="6R5ZpIBdMZM" role="1B3o_S" />
       <node concept="3cqZAl" id="6R5ZpIBdNfN" role="3clF45" />
+      <node concept="P$JXv" id="7svtApWmwfE" role="lGtFl">
+        <node concept="TZ5HA" id="7svtApWmwfF" role="TZ5H$">
+          <node concept="1dT_AC" id="7svtApWmwfG" role="1dT_Ay">
+            <property role="1dT_AB" value="Update the visibility of the panel. If no default value is to be set, hide it." />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="2tJIrI" id="6R5ZpIBdMJO" role="jymVt" />
     <node concept="3clFb_" id="6R5ZpIBdwrA" role="jymVt">
@@ -5316,6 +5424,24 @@
         <property role="TrG5h" value="parameter" />
         <node concept="3Tqbb2" id="6R5ZpIBdwPH" role="1tU5fm">
           <ref role="ehGHo" to="tpee:fz7vLUk" resolve="ParameterDeclaration" />
+        </node>
+      </node>
+      <node concept="P$JXv" id="7svtApWmwqI" role="lGtFl">
+        <node concept="TZ5HA" id="7svtApWmwqJ" role="TZ5H$">
+          <node concept="1dT_AC" id="7svtApWmwqK" role="1dT_Ay">
+            <property role="1dT_AB" value="Create an editor for the given parameter if needed. If the input parameter" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="7svtApWmwqY" role="TZ5H$">
+          <node concept="1dT_AC" id="7svtApWmwqZ" role="1dT_Ay">
+            <property role="1dT_AB" value="has a vararg type, no editor will be created." />
+          </node>
+        </node>
+        <node concept="TUZQ0" id="7svtApWmwqL" role="3nqlJM">
+          <property role="TUZQ4" value="parameter with no current editor" />
+          <node concept="zr_55" id="7svtApWmwqN" role="zr_5Q">
+            <ref role="zr_51" node="6R5ZpIBdwPI" resolve="parameter" />
+          </node>
         </node>
       </node>
     </node>
@@ -5856,6 +5982,25 @@
         </node>
       </node>
       <node concept="3clFbS" id="4uZotj2Q3AH" role="3clF47">
+        <node concept="3SKdUt" id="7svtApWmwRM" role="3cqZAp">
+          <node concept="1PaTwC" id="7svtApWmwRN" role="1aUNEU">
+            <node concept="3oM_SD" id="7svtApWmwRO" role="1PaTwD">
+              <property role="3oM_SC" value="Remove" />
+            </node>
+            <node concept="3oM_SD" id="7svtApWmwSs" role="1PaTwD">
+              <property role="3oM_SC" value="editor" />
+            </node>
+            <node concept="3oM_SD" id="7svtApWmwSC" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="7svtApWmwSG" role="1PaTwD">
+              <property role="3oM_SC" value="deleted" />
+            </node>
+            <node concept="3oM_SD" id="7svtApWmwSL" role="1PaTwD">
+              <property role="3oM_SC" value="parameters" />
+            </node>
+          </node>
+        </node>
         <node concept="Jncv_" id="4uZotj2QkM3" role="3cqZAp">
           <ref role="JncvD" to="tpee:fz7vLUk" resolve="ParameterDeclaration" />
           <node concept="2OqwBi" id="4uZotj2Qlts" role="JncvB">
@@ -5937,6 +6082,28 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="3UR2Jj" id="7svtApWmw6H" role="lGtFl">
+      <node concept="TZ5HA" id="7svtApWmw6I" role="TZ5H$">
+        <node concept="1dT_AC" id="7svtApWmw6J" role="1dT_Ay">
+          <property role="1dT_AB" value="Panel containing the editors for the default value of a method parameter." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="7svtApWmw6Q" role="TZ5H$">
+        <node concept="1dT_AC" id="7svtApWmw6R" role="1dT_Ay">
+          <property role="1dT_AB" value="" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="7svtApWmw6W" role="TZ5H$">
+        <node concept="1dT_AC" id="7svtApWmw6X" role="1dT_Ay">
+          <property role="1dT_AB" value="Handle events from the model to determine if a parameter require a default value, and" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="7svtApWmw74" role="TZ5H$">
+        <node concept="1dT_AC" id="7svtApWmw75" role="1dT_Ay">
+          <property role="1dT_AB" value="is responsible for creating and disposing editors." />
+        </node>
+      </node>
+    </node>
   </node>
   <node concept="312cEu" id="3LbosG44IFe">
     <property role="TrG5h" value="ParamDefaultValueEditor" />
@@ -5988,11 +6155,24 @@
         <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
       </node>
     </node>
+    <node concept="2tJIrI" id="7svtApWmwTY" role="jymVt" />
     <node concept="312cEg" id="6R5ZpIBcYc6" role="jymVt">
       <property role="TrG5h" value="touched" />
       <node concept="3Tm6S6" id="6R5ZpIBcWyM" role="1B3o_S" />
       <node concept="10P_77" id="6R5ZpIBcYc4" role="1tU5fm" />
       <node concept="3clFbT" id="6R5ZpIBd3qO" role="33vP2m" />
+      <node concept="z59LJ" id="7svtApWmx51" role="lGtFl">
+        <node concept="TZ5HA" id="7svtApWmx52" role="TZ5H$">
+          <node concept="1dT_AC" id="7svtApWmx53" role="1dT_Ay">
+            <property role="1dT_AB" value="Whether the content has been modified by the user, allow to know if we can change the" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="7svtApWmx5a" role="TZ5H$">
+          <node concept="1dT_AC" id="7svtApWmx5b" role="1dT_Ay">
+            <property role="1dT_AB" value="value automatically." />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="2tJIrI" id="4xkp$4SvHa2" role="jymVt" />
     <node concept="3clFbW" id="4xkp$4SvHa3" role="jymVt">
@@ -6337,6 +6517,13 @@
       </node>
       <node concept="3Tmbuc" id="P1dOYJFwGC" role="1B3o_S" />
       <node concept="3cqZAl" id="4xkp$4SvHc0" role="3clF45" />
+      <node concept="P$JXv" id="7svtApWmx60" role="lGtFl">
+        <node concept="TZ5HA" id="7svtApWmx61" role="TZ5H$">
+          <node concept="1dT_AC" id="7svtApWmx62" role="1dT_Ay">
+            <property role="1dT_AB" value="Create and add the editor to the parent panel" />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="2tJIrI" id="4xkp$4SvHc1" role="jymVt" />
     <node concept="3clFb_" id="4xkp$4SvHc2" role="jymVt">
@@ -6435,6 +6622,13 @@
       </node>
       <node concept="3Tm1VV" id="4xkp$4SvHcE" role="1B3o_S" />
       <node concept="3cqZAl" id="4xkp$4SvHcF" role="3clF45" />
+      <node concept="P$JXv" id="7svtApWmx6T" role="lGtFl">
+        <node concept="TZ5HA" id="7svtApWmx6U" role="TZ5H$">
+          <node concept="1dT_AC" id="7svtApWmx6V" role="1dT_Ay">
+            <property role="1dT_AB" value="Remove the editor from the parent and dispose internal objects" />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="2tJIrI" id="4xkp$4SvHcG" role="jymVt" />
     <node concept="2tJIrI" id="4xkp$4SvHcH" role="jymVt" />
@@ -6540,6 +6734,24 @@
         <property role="TrG5h" value="value" />
         <node concept="3Tqbb2" id="6R5ZpIBd4OS" role="1tU5fm">
           <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
+        </node>
+      </node>
+      <node concept="P$JXv" id="7svtApWmx7M" role="lGtFl">
+        <node concept="TZ5HA" id="7svtApWmx7N" role="TZ5H$">
+          <node concept="1dT_AC" id="7svtApWmx7O" role="1dT_Ay">
+            <property role="1dT_AB" value="Set the default value programmatically. If null, a NullLiteral node will" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="7svtApWmx82" role="TZ5H$">
+          <node concept="1dT_AC" id="7svtApWmx83" role="1dT_Ay">
+            <property role="1dT_AB" value="be set." />
+          </node>
+        </node>
+        <node concept="TUZQ0" id="7svtApWmx7P" role="3nqlJM">
+          <property role="TUZQ4" value="new expression for the default value" />
+          <node concept="zr_55" id="7svtApWmx7R" role="zr_5Q">
+            <ref role="zr_51" node="6R5ZpIBd4OT" resolve="value" />
+          </node>
         </node>
       </node>
     </node>
@@ -6691,6 +6903,13 @@
       <node concept="3clFbS" id="6R5ZpIBd13p" role="3clF47" />
       <node concept="2AHcQZ" id="6R5ZpIBd13q" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="3UR2Jj" id="7svtApWmwTP" role="lGtFl">
+      <node concept="TZ5HA" id="7svtApWmwTQ" role="TZ5H$">
+        <node concept="1dT_AC" id="7svtApWmwTR" role="1dT_Ay">
+          <property role="1dT_AB" value="Class handling a single editor for a method parameter default value." />
+        </node>
       </node>
     </node>
   </node>
@@ -6893,6 +7112,28 @@
       </node>
     </node>
     <node concept="2tJIrI" id="7OlU9eACwqP" role="jymVt" />
+    <node concept="3UR2Jj" id="7svtApWmyxb" role="lGtFl">
+      <node concept="TZ5HA" id="7svtApWmyxc" role="TZ5H$">
+        <node concept="1dT_AC" id="7svtApWmyxd" role="1dT_Ay">
+          <property role="1dT_AB" value="Embeddable editor with a minimal height correponding to the preferred height of the component." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="7svtApWmyxk" role="TZ5H$">
+        <node concept="1dT_AC" id="7svtApWmyxl" role="1dT_Ay">
+          <property role="1dT_AB" value="" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="7svtApWmyxq" role="TZ5H$">
+        <node concept="1dT_AC" id="7svtApWmyxr" role="1dT_Ay">
+          <property role="1dT_AB" value="A maximal minimum height is provided so when the prefered height is above that value, the minimum height" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="7svtApWmyxy" role="TZ5H$">
+        <node concept="1dT_AC" id="7svtApWmyxz" role="1dT_Ay">
+          <property role="1dT_AB" value="does not exceed it." />
+        </node>
+      </node>
+    </node>
   </node>
 </model>
 

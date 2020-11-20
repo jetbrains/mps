@@ -75964,7 +75964,7 @@
           </node>
         </node>
         <node concept="x79VA" id="3eYrhHvkv5b" role="3nqlJM">
-          <property role="x79VB" value="method to call param mapping + call to method param mapping" />
+          <property role="x79VB" value="two arrays, first the index of mapped call param for each method param, then the index of mapped method param for each call param" />
         </node>
       </node>
       <node concept="1LlUBW" id="3eYrhHvktvZ" role="3clF45">
@@ -76236,6 +76236,116 @@
       </node>
       <node concept="3Tm6S6" id="5kVIm8SEU3k" role="1B3o_S" />
       <node concept="3cqZAl" id="5kVIm8SEV6R" role="3clF45" />
+      <node concept="P$JXv" id="5$u9Sqex7p1" role="lGtFl">
+        <node concept="TZ5HA" id="5$u9Sqex7p2" role="TZ5H$">
+          <node concept="1dT_AC" id="5$u9Sqex7p3" role="1dT_Ay">
+            <property role="1dT_AB" value="Map method parameters to call parameters in a simple way." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5$u9Sqex7pv" role="TZ5H$">
+          <node concept="1dT_AC" id="5$u9Sqex7pw" role="1dT_Ay">
+            <property role="1dT_AB" value="" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5$u9Sqex7p_" role="TZ5H$">
+          <node concept="1dT_AC" id="5$u9Sqex7pA" role="1dT_Ay">
+            <property role="1dT_AB" value="For each method parameter, take the first compatible + non taken call parameter and link both together" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5$u9Sqex7pH" role="TZ5H$">
+          <node concept="1dT_AC" id="5$u9Sqex7pI" role="1dT_Ay">
+            <property role="1dT_AB" value="in the provided arrays." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5$u9Sqex7pR" role="TZ5H$">
+          <node concept="1dT_AC" id="5$u9Sqex7pS" role="1dT_Ay">
+            <property role="1dT_AB" value="" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5$u9Sqex7q3" role="TZ5H$">
+          <node concept="1dT_AC" id="5$u9Sqex7q4" role="1dT_Ay">
+            <property role="1dT_AB" value="This method can fail to find an optimum mapping, in which case the improve() method will be able to improve" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5$u9Sqex7qh" role="TZ5H$">
+          <node concept="1dT_AC" id="5$u9Sqex7qi" role="1dT_Ay">
+            <property role="1dT_AB" value="the mapping." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5$u9Sqex7qx" role="TZ5H$">
+          <node concept="1dT_AC" id="5$u9Sqex7qy" role="1dT_Ay">
+            <property role="1dT_AB" value="" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5$u9Sqex7qN" role="TZ5H$">
+          <node concept="1dT_AC" id="5$u9Sqex7qO" role="1dT_Ay">
+            <property role="1dT_AB" value="Example :" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5$u9Sqex7r7" role="TZ5H$">
+          <node concept="1dT_AC" id="5$u9Sqex7r8" role="1dT_Ay">
+            <property role="1dT_AB" value="method(double a, int b, string c) with the call method(3, 2.1, &quot;test&quot;)" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5$u9Sqex7rP" role="TZ5H$">
+          <node concept="1dT_AC" id="5$u9Sqex7rQ" role="1dT_Ay">
+            <property role="1dT_AB" value="" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5$u9Sqex7sf" role="TZ5H$">
+          <node concept="1dT_AC" id="5$u9Sqex7sg" role="1dT_Ay">
+            <property role="1dT_AB" value="Compatible params will look like this:" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5$u9Sqex7sF" role="TZ5H$">
+          <node concept="1dT_AC" id="5$u9Sqex7sG" role="1dT_Ay">
+            <property role="1dT_AB" value="- double a -&gt; 3, 2.1" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5$u9Sqex7t9" role="TZ5H$">
+          <node concept="1dT_AC" id="5$u9Sqex7ta" role="1dT_Ay">
+            <property role="1dT_AB" value="- int b -&gt; 3" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5$u9Sqex7tD" role="TZ5H$">
+          <node concept="1dT_AC" id="5$u9Sqex7tE" role="1dT_Ay">
+            <property role="1dT_AB" value="- string c -&gt; &quot;test&quot;" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5$u9Sqex7ub" role="TZ5H$">
+          <node concept="1dT_AC" id="5$u9Sqex7uc" role="1dT_Ay">
+            <property role="1dT_AB" value="" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5$u9Sqex7uJ" role="TZ5H$">
+          <node concept="1dT_AC" id="5$u9Sqex7uK" role="1dT_Ay">
+            <property role="1dT_AB" value="The resulting mapping of this method will be double a -&gt; 3, string c -&gt; test" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="5$u9Sqex7vS" role="TZ5H$">
+          <node concept="1dT_AC" id="5$u9Sqex7vT" role="1dT_Ay">
+            <property role="1dT_AB" value="The optimal mapping (not found using this method) is double a -&gt; 2.1, int b -&gt; 3, string c -&gt; &quot;test&quot;" />
+          </node>
+        </node>
+        <node concept="TUZQ0" id="5$u9Sqex7p4" role="3nqlJM">
+          <property role="TUZQ4" value="double array containing for each method parameter the list of compatible call parameters" />
+          <node concept="zr_55" id="5$u9Sqex7p6" role="zr_5Q">
+            <ref role="zr_51" node="5kVIm8SF4ZO" resolve="compatiblesParams" />
+          </node>
+        </node>
+        <node concept="TUZQ0" id="5$u9Sqex7p7" role="3nqlJM">
+          <property role="TUZQ4" value="list of indexes of the call parameter mapped to each method parameter" />
+          <node concept="zr_55" id="5$u9Sqex7p9" role="zr_5Q">
+            <ref role="zr_51" node="5kVIm8SF4ZS" resolve="methodParamMappedTo" />
+          </node>
+        </node>
+        <node concept="TUZQ0" id="5$u9Sqex7pa" role="3nqlJM">
+          <property role="TUZQ4" value="list of indexes of the method parameter mapped to each call parameter" />
+          <node concept="zr_55" id="5$u9Sqex7pc" role="zr_5Q">
+            <ref role="zr_51" node="5kVIm8SF4ZV" resolve="callParamMappedFrom" />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="2tJIrI" id="5UoR0eeEpQd" role="jymVt" />
     <node concept="3clFb_" id="5kVIm8SCg63" role="jymVt">
@@ -77345,7 +77455,7 @@
       <node concept="P$JXv" id="5kVIm8SFkIw" role="lGtFl">
         <node concept="TZ5HA" id="5kVIm8SFmC8" role="TZ5H$">
           <node concept="1dT_AC" id="5kVIm8SFmC9" role="1dT_Ay">
-            <property role="1dT_AB" value="Improve the graph flow using Ford-Fulkerson method. The graph has been simplified to only contains" />
+            <property role="1dT_AB" value="Improve the graph flow using Ford-Fulkerson method. The graph has been simplified to only contain" />
           </node>
         </node>
         <node concept="TZ5HA" id="5kVIm8SFmEK" role="TZ5H$">

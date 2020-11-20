@@ -30,6 +30,12 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
+/**
+ * Panel containing the editors for the default value of a method parameter.
+ * 
+ * Handle events from the model to determine if a parameter require a default value, and
+ * is responsible for creating and disposing editors.
+ */
 @GeneratedClass(node = "r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)/7450207211691129644", model = "r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)")
 /*package*/ class ParamDefautValueSectionPanel extends JPanel implements SNodeChangeListener {
   private final List<ParamDefaultValueEditor> parameters;
@@ -56,6 +62,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
     });
   }
 
+  /**
+   * Return a map of the default values for each parameter
+   * 
+   * @return map from parameter to default value expression
+   */
   public Map<SNode, SNode> getDefaultValues() {
     final Map<SNode, SNode> mapping = MapSequence.fromMap(new HashMap<SNode, SNode>());
 
@@ -68,12 +79,20 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return mapping;
   }
 
-
+  /**
+   * Update the visibility of the panel. If no default value is to be set, hide it.
+   */
   private void updateVisibility() {
     this.setVisible(ListSequence.fromList(parameters).isNotEmpty());
     this.revalidate();
   }
 
+  /**
+   * Create an editor for the given parameter if needed. If the input parameter
+   * has a vararg type, no editor will be created.
+   * 
+   * @param parameter parameter with no current editor
+   */
   private void createEditorFor(SNode parameter) {
     // No editor for parameters with arity type 
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(parameter, LINKS.type$a1UY), CONCEPTS.VariableArityType$KF)) {
@@ -140,6 +159,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
   @Override
   public void nodeRemoved(@NotNull SNodeRemoveEvent event) {
+    // Remove editor of deleted parameters 
     {
       final SNode param = event.getChild();
       if (SNodeOperations.isInstanceOf(param, CONCEPTS.ParameterDeclaration$RG)) {

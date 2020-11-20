@@ -8,6 +8,12 @@ import jetbrains.mps.project.Project;
 import java.beans.Transient;
 import java.awt.Dimension;
 
+/**
+ * Embeddable editor with a minimal height correponding to the preferred height of the component.
+ * 
+ * A maximal minimum height is provided so when the prefered height is above that value, the minimum height
+ * does not exceed it.
+ */
 @GeneratedClass(node = "r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)/6672435970939430649", model = "r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)")
 public class SizedEmbeddableEditor extends EmbeddableEditor {
   private final int myMaxMinimumHeight;

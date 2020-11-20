@@ -50,7 +50,7 @@ public class MethodParameterMatcher {
    * is to maximise the mapping between the existing parameters and the given values.
    * 
    * 
-   * @return method to call param mapping + call to method param mapping
+   * @return two arrays, first the index of mapped call param for each method param, then the index of mapped method param for each call param
    */
   public Tuples._2<Integer[], Integer[]> findAppropriateMatching() {
     // List compatible call values for each method parameter 
@@ -91,6 +91,30 @@ public class MethodParameterMatcher {
     return MultiTuple.<Integer[],Integer[]>from(methodParamMappedTo, callParamMappedFrom);
   }
 
+  /**
+   * Map method parameters to call parameters in a simple way.
+   * 
+   * For each method parameter, take the first compatible + non taken call parameter and link both together
+   * in the provided arrays.
+   * 
+   * This method can fail to find an optimum mapping, in which case the improve() method will be able to improve
+   * the mapping.
+   * 
+   * Example :
+   * method(double a, int b, string c) with the call method(3, 2.1, "test")
+   * 
+   * Compatible params will look like this:
+   * - double a -> 3, 2.1
+   * - int b -> 3
+   * - string c -> "test"
+   * 
+   * The resulting mapping of this method will be double a -> 3, string c -> test
+   * The optimal mapping (not found using this method) is double a -> 2.1, int b -> 3, string c -> "test"
+   * 
+   * @param compatiblesParams double array containing for each method parameter the list of compatible call parameters
+   * @param methodParamMappedTo list of indexes of the call parameter mapped to each method parameter
+   * @param callParamMappedFrom list of indexes of the method parameter mapped to each call parameter
+   */
   private void initFlow(Integer[][] compatiblesParams, Integer[] methodParamMappedTo, Integer[] callParamMappedFrom) {
     // Natural completion of the parameters (assign the first call param available for each method param) 
     for (int sourceMethodParam = 0; sourceMethodParam < compatiblesParams.length; sourceMethodParam += 1) {
@@ -110,7 +134,7 @@ public class MethodParameterMatcher {
   }
 
   /**
-   * Improve the graph flow using Ford-Fulkerson method. The graph has been simplified to only contains
+   * Improve the graph flow using Ford-Fulkerson method. The graph has been simplified to only contain
    * method parameters successor, call parameters predecessor (one per call parameter at most) and
    * possible links between both.
    * 

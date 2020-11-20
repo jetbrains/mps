@@ -44,6 +44,12 @@ public class ChangeMethodSignatureRefactoring {
     this(params, declaration, MapSequence.fromMap(new HashMap<SNode, SNode>()));
   }
 
+  /**
+   * Perform the refactoring of the method.
+   * 
+   * Make use of parameters provided in constructor to handled multiple aspects of the refactoring
+   * (visibility, return type, arguments, method usages)
+   */
   public void doRefactoring() {
     SPropertyOperations.assign(this.myDeclaration, PROPS.name$MnvL, SPropertyOperations.getString(this.myParameters.getDeclaration(), PROPS.name$MnvL));
     if (this.myParameters.isReturnValueChanged()) {
@@ -93,6 +99,12 @@ public class ChangeMethodSignatureRefactoring {
   public SNode getDeclaration() {
     return myDeclaration;
   }
+
+  /**
+   * Introduced new local variable declarations for the parameters that will be removed during the refactoring.
+   * 
+   * It is to be called before changeParameters() since it relies on the current method parameters.
+   */
   private void introduceParameterSubstitute() {
     List<SNode> oldParams = SLinkOperations.getChildren(this.myDeclaration, LINKS.parameter$5xBj);
     List<SNode> newParams = SLinkOperations.getChildren(this.myParameters.getDeclaration(), LINKS.parameter$5xBj);
@@ -111,7 +123,7 @@ public class ChangeMethodSignatureRefactoring {
         {
           final SNode arityType = replacedType;
           if (SNodeOperations.isInstanceOf(arityType, CONCEPTS.VariableArityType$KF)) {
-            replacedType = createArrayType_k2naws_a0a0e0b0d0k(SLinkOperations.getTarget(arityType, LINKS.componentType$ypmi));
+            replacedType = createArrayType_k2naws_a0a0e0b0d0l(SLinkOperations.getTarget(arityType, LINKS.componentType$ypmi));
           }
         }
 
@@ -126,7 +138,7 @@ public class ChangeMethodSignatureRefactoring {
         // More than one usage 
         if (Sequence.fromIterable(refs).isNotEmpty()) {
           // Introduce new local variable 
-          final SNode newDecl = createLocalVariableDeclaration_k2naws_a0b0l0b0d0k(replacedType, SPropertyOperations.getString(replacedParam, PROPS.name$MnvL));
+          final SNode newDecl = createLocalVariableDeclaration_k2naws_a0b0l0b0d0l(replacedType, SPropertyOperations.getString(replacedParam, PROPS.name$MnvL));
 
           SLinkOperations.setTarget(newDecl, LINKS.initializer$2twD, VariableInitializationUtil.createDefaultInitializer(newDecl));
 
@@ -135,11 +147,15 @@ public class ChangeMethodSignatureRefactoring {
               SLinkOperations.setTarget(it, LINKS.variableDeclaration$N1XG, newDecl);
             }
           });
-          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(myDeclaration, LINKS.body$5xQk), LINKS.statement$53DE)).insertElement(0, createLocalVariableDeclarationStatement_k2naws_a0a6a11a1a3a01(newDecl));
+          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(myDeclaration, LINKS.body$5xQk), LINKS.statement$53DE)).insertElement(0, createLocalVariableDeclarationStatement_k2naws_a0a6a11a1a3a11(newDecl));
         }
       }
     }
   }
+
+  /**
+   * Change the method parameters according to the new signature
+   */
   private void changeParameters() {
     List<SNode> oldParams = ListSequence.fromListWithValues(new ArrayList<SNode>(), SLinkOperations.getChildren(this.myDeclaration, LINKS.parameter$5xBj));
     ListSequence.fromList(SLinkOperations.getChildren(this.myDeclaration, LINKS.parameter$5xBj)).clear();
@@ -161,18 +177,18 @@ public class ChangeMethodSignatureRefactoring {
   public static boolean isApplicable(SNode node) {
     return (SNodeOperations.getNodeAncestor(node, CONCEPTS.Classifier$Ix, false, false) != null) && (SNodeOperations.isInstanceOf(node, CONCEPTS.InstanceMethodDeclaration$39) || SNodeOperations.isInstanceOf(node, CONCEPTS.StaticMethodDeclaration$FJ));
   }
-  private static SNode createArrayType_k2naws_a0a0e0b0d0k(SNode p0) {
+  private static SNode createArrayType_k2naws_a0a0e0b0d0l(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ArrayType$rh);
     n0.forChild(LINKS.componentType$F$Gi).initNode(p0, CONCEPTS.Type$bu, true);
     return n0.getResult();
   }
-  private static SNode createLocalVariableDeclaration_k2naws_a0b0l0b0d0k(SNode p0, String p1) {
+  private static SNode createLocalVariableDeclaration_k2naws_a0b0l0b0d0l(SNode p0, String p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.LocalVariableDeclaration$41);
     n0.forChild(LINKS.type$a1UY).initNode(p0, CONCEPTS.Type$bu, true);
     n0.setProperty(PROPS.name$MnvL, p1);
     return n0.getResult();
   }
-  private static SNode createLocalVariableDeclarationStatement_k2naws_a0a6a11a1a3a01(SNode p0) {
+  private static SNode createLocalVariableDeclarationStatement_k2naws_a0a6a11a1a3a11(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.LocalVariableDeclarationStatement$4w);
     n0.forChild(LINKS.localVariableDeclaration$RpjM).initNode(p0, CONCEPTS.LocalVariableDeclaration$41, true);
     return n0.getResult();

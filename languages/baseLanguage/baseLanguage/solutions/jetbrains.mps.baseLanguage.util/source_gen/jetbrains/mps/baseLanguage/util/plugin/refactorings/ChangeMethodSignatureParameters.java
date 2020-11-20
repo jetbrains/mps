@@ -16,9 +16,24 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 @GeneratedClass(node = "r:5f19c5cc-325c-485a-b033-20949d89a6f0(jetbrains.mps.baseLanguage.util.plugin.refactorings)/8492459591399165206", model = "r:5f19c5cc-325c-485a-b033-20949d89a6f0(jetbrains.mps.baseLanguage.util.plugin.refactorings)")
 public class ChangeMethodSignatureParameters {
+
+  /**
+   * Method signature which will be edited
+   */
   private SNode myMethod;
+
+
+  /**
+   * Copy of the original signature, kept for comparison
+   */
   private SNode myOldMethod;
+
+  /**
+   * Node ids of the initial parameters of the method edited (not the original one).
+   * Can be used to know if a parameter in the modified signature match a previous parameter.
+   */
   private List<String> myParametersIds = ListSequence.fromList(new ArrayList<String>());
+
   public ChangeMethodSignatureParameters(SNode declaration) {
     this.myMethod = SNodeOperations.copyNode(declaration);
     this.myOldMethod = SNodeOperations.copyNode(declaration);
