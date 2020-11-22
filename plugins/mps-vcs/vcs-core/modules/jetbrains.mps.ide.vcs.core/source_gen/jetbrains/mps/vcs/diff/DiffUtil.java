@@ -65,8 +65,15 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
     if (SNodeOperations.getModel(newNode).getReference().equals(newTargetModel)) {
       newTargetModel = null;
     }
-    return Objects.equals(oldTargetId, newTargetId) && Objects.equals(oldTargetModel, newTargetModel) && Objects.equals(check_z8xa03_a0a8a7(((jetbrains.mps.smodel.SReference) oldReference)), check_z8xa03_a0a8a7_0(((jetbrains.mps.smodel.SReference) newReference)));
+    return Objects.equals(oldTargetId, newTargetId) && Objects.equals(oldTargetModel, newTargetModel);
   }
+
+  /*package*/ static boolean referencesDifferByResolveInfo(SNode oldNode, SNode newNode, SReferenceLink role) {
+    SReference oldReference = oldNode.getReference(role);
+    SReference newReference = newNode.getReference(role);
+    return !(Objects.equals(check_z8xa03_a0c0j(((jetbrains.mps.smodel.SReference) oldReference)), check_z8xa03_a0c0j_0(((jetbrains.mps.smodel.SReference) newReference))));
+  }
+
 
   /*package*/ static boolean allReferencesAreEqual(SNode oldNode, SNode newNode) {
     List<SReference> oldReferences = (List<SReference>) oldNode.getReferences();
@@ -84,7 +91,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
   }
 
   /*package*/ static List<SNode> getChildrenInRole(SNode parent, SContainmentLink link) {
-    return check_z8xa03_a0a11(AttributeOperations.getChildNodesAndAttributes(parent, link));
+    return check_z8xa03_a0a41(AttributeOperations.getChildNodesAndAttributes(parent, link));
   }
   private static SNodeId check_z8xa03_a0a2a7(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
@@ -110,19 +117,19 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
     }
     return null;
   }
-  private static String check_z8xa03_a0a8a7(jetbrains.mps.smodel.SReference checkedDotOperand) {
+  private static String check_z8xa03_a0c0j(jetbrains.mps.smodel.SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getResolveInfo();
     }
     return null;
   }
-  private static String check_z8xa03_a0a8a7_0(jetbrains.mps.smodel.SReference checkedDotOperand) {
+  private static String check_z8xa03_a0c0j_0(jetbrains.mps.smodel.SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getResolveInfo();
     }
     return null;
   }
-  private static List<SNode> check_z8xa03_a0a11(Iterable<SNode> checkedDotOperand) {
+  private static List<SNode> check_z8xa03_a0a41(Iterable<SNode> checkedDotOperand) {
     if (null != checkedDotOperand) {
       return Sequence.fromIterable(checkedDotOperand).toListSequence();
     }

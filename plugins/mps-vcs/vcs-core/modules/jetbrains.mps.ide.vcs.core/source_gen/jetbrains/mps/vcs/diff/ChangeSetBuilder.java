@@ -161,17 +161,29 @@ public class ChangeSetBuilder {
     if (SNodeOperations.getModel(newNode).getReference().equals(newTargetModel)) {
       newTargetModel = null;
     }
-    return Objects.equals(oldTargetId, newTargetId) && Objects.equals(oldTargetModel, newTargetModel) && Objects.equals(check_nbyrtw_a0a8a22(((jetbrains.mps.smodel.SReference) oldReference)), check_nbyrtw_a0a8a22_0(((jetbrains.mps.smodel.SReference) newReference)));
+    return Objects.equals(oldTargetId, newTargetId) && Objects.equals(oldTargetModel, newTargetModel);
+  }
+
+  private static boolean referencesDifferByResolveInfo(SNode oldNode, SNode newNode, SReferenceLink role) {
+    SReference oldReference = oldNode.getReference(role);
+    SReference newReference = newNode.getReference(role);
+    return !(Objects.equals(check_nbyrtw_a0c0y(((jetbrains.mps.smodel.SReference) oldReference)), check_nbyrtw_a0c0y_0(((jetbrains.mps.smodel.SReference) newReference))));
   }
 
   public void buildForReference(SNode oldNode, SNode newNode, SReferenceLink role) {
-    if (!(referencesAreEqual(oldNode, newNode, role))) {
-      assert Objects.equals(oldNode.getNodeId(), newNode.getNodeId());
-      SReference newReference = newNode.getReference(role);
-      SNodeId newTargetId = (newReference instanceof DynamicReference ? null : check_nbyrtw_a0a2a0a42(newReference));
-      SModelReference targetModel = check_nbyrtw_a0d0a0y(newReference);
-      ListSequence.fromList(myNewChanges).addElement(new SetReferenceChange(myChangeSet, oldNode.getNodeId(), newNode.getNodeId(), role, targetModel, newTargetId, check_nbyrtw_g0a0a4a0a42(((jetbrains.mps.smodel.SReference) newReference))));
+
+    boolean refsAreEqual = referencesAreEqual(oldNode, newNode, role);
+    boolean diffByResolveInfo = referencesDifferByResolveInfo(oldNode, newNode, role);
+
+    if (refsAreEqual && !(diffByResolveInfo)) {
+      return;
     }
+
+    assert Objects.equals(oldNode.getNodeId(), newNode.getNodeId());
+    SReference newReference = newNode.getReference(role);
+    SNodeId newTargetId = (newReference instanceof DynamicReference ? null : check_nbyrtw_a0a8a62(newReference));
+    SModelReference targetModel = check_nbyrtw_a0j0ab(newReference);
+    ListSequence.fromList(myNewChanges).addElement(new SetReferenceChange(myChangeSet, oldNode.getNodeId(), newNode.getNodeId(), role, targetModel, newTargetId, check_nbyrtw_g0a0a01a62(((jetbrains.mps.smodel.SReference) newReference)), refsAreEqual));
   }
 
   public void buildForConcept(SNode oldNode, SNode newNode) {
@@ -323,7 +335,7 @@ public class ChangeSetBuilder {
         if (newStart1 < ListSequence.fromList(newIds2).count()) {
           final Wrappers._T<SNodeId> newNodeId = new Wrappers._T<SNodeId>(ListSequence.fromList(newIds2).getElement(newStart1));
           if (MapSequence.fromMap(newToOldMap).containsValue(newNodeId.value)) {
-            newNodeId.value = check_nbyrtw_a0a0b0h0i0l0kb(MapSequence.fromMap(newToOldMap).findFirst(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
+            newNodeId.value = check_nbyrtw_a0a0b0h0i0l0mb(MapSequence.fromMap(newToOldMap).findFirst(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
               public boolean accept(IMapping<SNodeId, SNodeId> it) {
                 return Objects.equals(it.value(), newNodeId.value);
               }
@@ -337,7 +349,7 @@ public class ChangeSetBuilder {
         if (newEnd1 < ListSequence.fromList(newIds2).count()) {
           final Wrappers._T<SNodeId> newNodeId = new Wrappers._T<SNodeId>(ListSequence.fromList(newIds2).getElement(newEnd1));
           if (MapSequence.fromMap(newToOldMap).containsValue(newNodeId.value)) {
-            newNodeId.value = check_nbyrtw_a0a0b0j0i0l0kb(MapSequence.fromMap(newToOldMap).findFirst(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
+            newNodeId.value = check_nbyrtw_a0a0b0j0i0l0mb(MapSequence.fromMap(newToOldMap).findFirst(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
               public boolean accept(IMapping<SNodeId, SNodeId> it) {
                 return Objects.equals(it.value(), newNodeId.value);
               }
@@ -356,7 +368,7 @@ public class ChangeSetBuilder {
         }
       }).visitAll(new IVisitor<SNodeId>() {
         public void visit(final SNodeId oldNodeId) {
-          SNodeId newNodeId = check_nbyrtw_a0a0a0a01a11a63(MapSequence.fromMap(newToOldMap).findFirst(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
+          SNodeId newNodeId = check_nbyrtw_a0a0a0a01a11a83(MapSequence.fromMap(newToOldMap).findFirst(new IWhereFilter<IMapping<SNodeId, SNodeId>>() {
             public boolean accept(IMapping<SNodeId, SNodeId> it) {
               return Objects.equals(it.value(), oldNodeId);
             }
@@ -374,9 +386,9 @@ public class ChangeSetBuilder {
     Iterable<D> added;
     Iterable<D> deleted;
     {
-      Tuples._2<Iterable<D>, Iterable<D>> _tmp_nbyrtw_c0mb = getAddedAndDeleted(referencesExtractor);
-      added = _tmp_nbyrtw_c0mb._0();
-      deleted = _tmp_nbyrtw_c0mb._1();
+      Tuples._2<Iterable<D>, Iterable<D>> _tmp_nbyrtw_c0ob = getAddedAndDeleted(referencesExtractor);
+      added = _tmp_nbyrtw_c0ob._0();
+      deleted = _tmp_nbyrtw_c0ob._1();
     }
     ListSequence.fromList(myNewChanges).addSequence(Sequence.fromIterable(added).select(new ISelector<D, DependencyChange>() {
       public DependencyChange select(D r) {
@@ -523,7 +535,7 @@ public class ChangeSetBuilder {
   }
 
   private <D> Tuples._2<Iterable<D>, Iterable<D>> getAddedAndDeleted(_FunctionTypes._return_P1_E0<? extends Iterable<D>, ? super SModelBase> itemsExtractor) {
-    return getAddedAndDeleted(itemsExtractor.invoke(as_nbyrtw_a0a0a0gc(myOldModel, SModelBase.class)), itemsExtractor.invoke(as_nbyrtw_a0b0a0gc(myNewModel, SModelBase.class)));
+    return getAddedAndDeleted(itemsExtractor.invoke(as_nbyrtw_a0a0a0ic(myOldModel, SModelBase.class)), itemsExtractor.invoke(as_nbyrtw_a0b0a0ic(myNewModel, SModelBase.class)));
   }
 
   public static ModelChangeSet buildChangeSet(SModel oldModel, SModel newModel) {
@@ -604,58 +616,58 @@ public class ChangeSetBuilder {
     }
     return null;
   }
-  private static String check_nbyrtw_a0a8a22(jetbrains.mps.smodel.SReference checkedDotOperand) {
+  private static String check_nbyrtw_a0c0y(jetbrains.mps.smodel.SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getResolveInfo();
     }
     return null;
   }
-  private static String check_nbyrtw_a0a8a22_0(jetbrains.mps.smodel.SReference checkedDotOperand) {
+  private static String check_nbyrtw_a0c0y_0(jetbrains.mps.smodel.SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getResolveInfo();
     }
     return null;
   }
-  private static SNodeId check_nbyrtw_a0a2a0a42(SReference checkedDotOperand) {
+  private static SNodeId check_nbyrtw_a0a8a62(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetNodeId();
     }
     return null;
   }
-  private static SModelReference check_nbyrtw_a0d0a0y(SReference checkedDotOperand) {
+  private static SModelReference check_nbyrtw_a0j0ab(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetSModelReference();
     }
     return null;
   }
-  private static String check_nbyrtw_g0a0a4a0a42(jetbrains.mps.smodel.SReference checkedDotOperand) {
+  private static String check_nbyrtw_g0a0a01a62(jetbrains.mps.smodel.SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getResolveInfo();
     }
     return null;
   }
-  private static SNodeId check_nbyrtw_a0a0b0h0i0l0kb(IMapping<SNodeId, SNodeId> checkedDotOperand) {
+  private static SNodeId check_nbyrtw_a0a0b0h0i0l0mb(IMapping<SNodeId, SNodeId> checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.key();
     }
     return null;
   }
-  private static SNodeId check_nbyrtw_a0a0b0j0i0l0kb(IMapping<SNodeId, SNodeId> checkedDotOperand) {
+  private static SNodeId check_nbyrtw_a0a0b0j0i0l0mb(IMapping<SNodeId, SNodeId> checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.key();
     }
     return null;
   }
-  private static SNodeId check_nbyrtw_a0a0a0a01a11a63(IMapping<SNodeId, SNodeId> checkedDotOperand) {
+  private static SNodeId check_nbyrtw_a0a0a0a01a11a83(IMapping<SNodeId, SNodeId> checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.key();
     }
     return null;
   }
-  private static <T> T as_nbyrtw_a0a0a0gc(Object o, Class<T> type) {
+  private static <T> T as_nbyrtw_a0a0a0ic(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_nbyrtw_a0b0a0gc(Object o, Class<T> type) {
+  private static <T> T as_nbyrtw_a0b0a0ic(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

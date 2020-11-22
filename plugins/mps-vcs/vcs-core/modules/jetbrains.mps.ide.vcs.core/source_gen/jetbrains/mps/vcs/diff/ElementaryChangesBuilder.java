@@ -359,13 +359,18 @@ __switch__:
   }
 
   private Iterable<ModelChange> buildForReference(final SNode oldNode, final SNode newNode, final SReferenceLink role) {
-    if (DiffUtil.referencesAreEqual(oldNode, newNode, role)) {
+
+    final boolean refsAreEqual = DiffUtil.referencesAreEqual(oldNode, newNode, role);
+    boolean diffByResolveInfo = DiffUtil.referencesDifferByResolveInfo(oldNode, newNode, role);
+
+    if (refsAreEqual && !(diffByResolveInfo)) {
       return Sequence.fromIterable(Collections.<ModelChange>emptyList());
     }
+
     assert Objects.equals(oldNode.getNodeId(), newNode.getNodeId());
     final SReference newReference = newNode.getReference(role);
-    final SNodeId newTargetId = (newReference instanceof DynamicReference ? null : check_r6q5he_a0a3a14(newReference));
-    final SModelReference targetModel = check_r6q5he_a0e0pb(newReference);
+    final SNodeId newTargetId = (newReference instanceof DynamicReference ? null : check_r6q5he_a0a8a14(newReference));
+    final SModelReference targetModel = check_r6q5he_a0j0pb(newReference);
     return Sequence.fromClosure(new ISequenceClosure<ModelChange>() {
       public Iterable<ModelChange> iterable() {
         return new Iterable<ModelChange>() {
@@ -382,7 +387,7 @@ __switch__:
                       return false;
                     case 2:
                       this.__CP__ = 1;
-                      this.yield((ModelChange) new SetReferenceChange(myChangeSet, oldNode.getNodeId(), newNode.getNodeId(), role, targetModel, newTargetId, check_r6q5he_g0a0a0a0a5a14(((jetbrains.mps.smodel.SReference) newReference))));
+                      this.yield((ModelChange) new SetReferenceChange(myChangeSet, oldNode.getNodeId(), newNode.getNodeId(), role, targetModel, newTargetId, check_r6q5he_g0a0a0a0a01a14(((jetbrains.mps.smodel.SReference) newReference)), refsAreEqual));
                       return true;
                     case 0:
                       this.__CP__ = 2;
@@ -405,19 +410,19 @@ __switch__:
     }
     return null;
   }
-  private static SNodeId check_r6q5he_a0a3a14(SReference checkedDotOperand) {
+  private static SNodeId check_r6q5he_a0a8a14(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetNodeId();
     }
     return null;
   }
-  private static SModelReference check_r6q5he_a0e0pb(SReference checkedDotOperand) {
+  private static SModelReference check_r6q5he_a0j0pb(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetSModelReference();
     }
     return null;
   }
-  private static String check_r6q5he_g0a0a0a0a5a14(jetbrains.mps.smodel.SReference checkedDotOperand) {
+  private static String check_r6q5he_g0a0a0a0a01a14(jetbrains.mps.smodel.SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getResolveInfo();
     }

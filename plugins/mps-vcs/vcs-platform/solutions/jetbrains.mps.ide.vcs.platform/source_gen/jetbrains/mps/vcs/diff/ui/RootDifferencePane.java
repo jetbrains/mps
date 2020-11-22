@@ -49,6 +49,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.vcs.diff.changes.NodeIdChange;
+import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
 import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
 import jetbrains.mps.vcs.diff.ChangeSetBuilder;
 
@@ -324,6 +325,9 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
     return Sequence.fromIterable(myChangeSet.getChangesForNode(myRootId)).where(new IWhereFilter<ModelChange>() {
       public boolean accept(ModelChange change) {
         if (change instanceof NodeIdChange && mySettingsAction.getHideIdChangesOption()) {
+          return false;
+        }
+        if (change instanceof SetReferenceChange && ((SetReferenceChange) change).isResolveInfoOnly() && mySettingsAction.getHideResolveInfoChangesOption()) {
           return false;
         }
         if (change instanceof NodeGroupMoveChange && ((NodeGroupMoveChange) change).isUnordered() && mySettingsAction.getHideUnorderedMovesOption()) {

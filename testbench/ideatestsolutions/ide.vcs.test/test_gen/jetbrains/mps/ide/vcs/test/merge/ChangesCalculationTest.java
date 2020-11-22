@@ -165,7 +165,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
         return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method1");
       }
     }).first();
-    change = new SetReferenceChange(createFakeChangeSet(), SLinkOperations.getTarget(method1, LINKS.returnType$5xoi).getNodeId(), SLinkOperations.getTarget(method1, LINKS.returnType$5xoi).getNodeId(), LINKS.classifier$cxMr, myTestModel.getReference(), myRootNodeId, "Root");
+    change = new SetReferenceChange(createFakeChangeSet(), SLinkOperations.getTarget(method1, LINKS.returnType$5xoi).getNodeId(), SLinkOperations.getTarget(method1, LINKS.returnType$5xoi).getNodeId(), LINKS.classifier$cxMr, myTestModel.getReference(), myRootNodeId, "Root", false);
     testDiffCorrectness(new Runnable() {
       public void run() {
         SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(method1, LINKS.returnType$5xoi), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, myRootNode);

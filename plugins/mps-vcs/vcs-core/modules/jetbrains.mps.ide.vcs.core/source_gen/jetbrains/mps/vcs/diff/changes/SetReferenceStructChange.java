@@ -22,7 +22,7 @@ import jetbrains.mps.smodel.StaticReference;
 public class SetReferenceStructChange extends SetReferenceChange {
 
   public SetReferenceStructChange(@NotNull ChangeSet changeSet, @NotNull SNodeId sourceNodeId, SNodeId newSourceNodeId, @NotNull SReferenceLink role, @Nullable SModelReference targetModelReference, @Nullable SNodeId targetNodeId, @Nullable String resolveInfo) {
-    super(changeSet, sourceNodeId, newSourceNodeId, role, targetModelReference, targetNodeId, resolveInfo);
+    super(changeSet, sourceNodeId, newSourceNodeId, role, targetModelReference, targetNodeId, resolveInfo, false);
   }
   @Override
   public void apply(@NotNull SModel model, @NotNull NodeCopier nodeCopier) {

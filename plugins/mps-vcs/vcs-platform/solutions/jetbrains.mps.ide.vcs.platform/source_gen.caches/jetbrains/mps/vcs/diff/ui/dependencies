@@ -202,6 +202,7 @@
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.ModelChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.NodeIdChange" />
+    <classNode dependClassName="jetbrains.mps.vcs.diff.changes.SetReferenceChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.DiffButtonsPainter" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.DiffEditorSettingsAction" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.RevertRootsAction" />

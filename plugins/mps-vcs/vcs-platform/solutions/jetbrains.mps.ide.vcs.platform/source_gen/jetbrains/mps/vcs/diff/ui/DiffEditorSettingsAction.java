@@ -35,6 +35,10 @@ public class DiffEditorSettingsAction extends BaseGroup {
     return PropertiesComponent.getInstance().getBoolean(HIDE_ID_CHANGES, false);
   }
 
+  public boolean getHideResolveInfoChangesOption() {
+    return PropertiesComponent.getInstance().getBoolean(HIDE_RESOLVE_INFO_CHANGES, false);
+  }
+
   public boolean getHideUnorderedMovesOption() {
     return PropertiesComponent.getInstance().getBoolean(HIDE_UNORDERED_MOVES, false);
   }
@@ -53,6 +57,18 @@ public class DiffEditorSettingsAction extends BaseGroup {
         myHighlighter.rehighlightInReadAction(false);
       }
     });
+    ListSequence.fromList(actions).addElement(new ToggleAction("Hide Non-Functional Resolve Info Changes") {
+      @Override
+      public boolean isSelected(@NotNull AnActionEvent p0) {
+        return PropertiesComponent.getInstance().getBoolean(HIDE_RESOLVE_INFO_CHANGES, false);
+      }
+
+      @Override
+      public void setSelected(@NotNull AnActionEvent p0, boolean p1) {
+        PropertiesComponent.getInstance().setValue(HIDE_RESOLVE_INFO_CHANGES, p1);
+        myHighlighter.rehighlightInReadAction(false);
+      }
+    });
     ListSequence.fromList(actions).addElement(new ToggleAction("Track Moved Nodes") {
       @Override
       public boolean isSelected(@NotNull AnActionEvent p1) {
@@ -65,20 +81,25 @@ public class DiffEditorSettingsAction extends BaseGroup {
         myHighlighter.rehighlightInReadAction(true);
       }
     });
-    if (PropertiesComponent.getInstance().getBoolean(TRACK_MOVED_NODES, false)) {
-      ListSequence.fromList(actions).addElement(new ToggleAction("Hide Unordered Moves") {
-        @Override
-        public boolean isSelected(@NotNull AnActionEvent p0) {
-          return PropertiesComponent.getInstance().getBoolean(HIDE_UNORDERED_MOVES, false);
-        }
+    ListSequence.fromList(actions).addElement(new ToggleAction("Hide Unordered Moves") {
+      @Override
+      public boolean isSelected(@NotNull AnActionEvent p0) {
+        return PropertiesComponent.getInstance().getBoolean(HIDE_UNORDERED_MOVES, false);
+      }
 
-        @Override
-        public void setSelected(@NotNull AnActionEvent p0, boolean p1) {
-          PropertiesComponent.getInstance().setValue(HIDE_UNORDERED_MOVES, p1);
-          myHighlighter.rehighlightInReadAction(false);
-        }
-      });
-    }
+      @Override
+      public void update(@NotNull AnActionEvent e) {
+        super.update(e);
+        e.getPresentation().setEnabled(PropertiesComponent.getInstance().getBoolean(TRACK_MOVED_NODES, false));
+      }
+
+      @Override
+      public void setSelected(@NotNull AnActionEvent p0, boolean p1) {
+        PropertiesComponent.getInstance().setValue(HIDE_UNORDERED_MOVES, p1);
+        myHighlighter.rehighlightInReadAction(false);
+      }
+    });
     return ListSequence.fromList(actions).toGenericArray(AnAction.class);
   }
+
 }

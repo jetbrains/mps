@@ -9,16 +9,16 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.vcs.diff.ChangeSet;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.model.SReference;
-import java.util.Objects;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.util.SNodeOperations;
+import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.vcs.util.MergeStrategy;
 import jetbrains.mps.vcs.mergehints.runtime.VCSAspectUtil;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import java.util.Objects;
 import java.util.List;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
@@ -37,17 +37,15 @@ public class SetReferenceChange extends NodeChange {
   private String myDescription;
 
 
-  public SetReferenceChange(@NotNull ChangeSet changeSet, @NotNull SNodeId sourceNodeId, SNodeId oppositeNodeId, @NotNull SReferenceLink role, @Nullable SModelReference targetModelReference, @Nullable SNodeId targetNodeId, @Nullable String resolveInfo) {
+  public SetReferenceChange(@NotNull ChangeSet changeSet, @NotNull SNodeId sourceNodeId, SNodeId oppositeNodeId, @NotNull SReferenceLink role, @Nullable SModelReference targetModelReference, @Nullable SNodeId targetNodeId, @Nullable String resolveInfo, boolean resolveInfoOnly) {
     super(changeSet, sourceNodeId, oppositeNodeId);
     myRole = role;
     myTargetModelReference = targetModelReference;
     // if target node id is null and resolve info is not-null it's dynamic reference 
     myTargetNodeId = targetNodeId;
     myResolveInfo = resolveInfo;
-
     // check if only resolve info for static reference changed - then it cannot conflict with other changes 
-    SReference oldRef = check_mgdhcs_a0i0i(changeSet.getOldModel().getNode(getAffectedNodeId(false)), myRole, this);
-    myResolveInfoOnly = Objects.equals(check_mgdhcs_a0a0a9a8(oldRef), targetModelReference) && Objects.equals(check_mgdhcs_a0a0a9a8_0(oldRef), targetNodeId) && targetNodeId != null;
+    myResolveInfoOnly = resolveInfoOnly;
 
     myDescription = createDescription();
   }
@@ -181,30 +179,12 @@ public class SetReferenceChange extends NodeChange {
       // This is internal reference 
       targetModel = null;
     }
-    return new SetReferenceChange(getChangeSet().getOppositeChangeSet(), getAffectedNodeId(true), getAffectedNodeId(false), myRole, targetModel, check_mgdhcs_f0a5a63(ref), check_mgdhcs_g0a5a63(((jetbrains.mps.smodel.SReference) ref)));
+    return new SetReferenceChange(getChangeSet().getOppositeChangeSet(), getAffectedNodeId(true), getAffectedNodeId(false), myRole, targetModel, check_mgdhcs_f0a5a63(ref), check_mgdhcs_g0a5a63(((jetbrains.mps.smodel.SReference) ref)), myResolveInfoOnly);
   }
 
   @Override
   public List<Tuples._2<SNodeId, MessageTarget>> createMessageTargetsWithIds(boolean isNewModel) {
     return LinkedListSequence.fromListAndArrayNew(new LinkedList<Tuples._2<SNodeId, MessageTarget>>(), MultiTuple.<SNodeId,MessageTarget>from(getAffectedNodeId(isNewModel), ((MessageTarget) new ReferenceMessageTarget(getRoleLink()))));
-  }
-  private static SReference check_mgdhcs_a0i0i(SNode checkedDotOperand, SReferenceLink myRole, SetReferenceChange checkedDotThisExpression) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getReference(myRole);
-    }
-    return null;
-  }
-  private static SModelReference check_mgdhcs_a0a0a9a8(SReference checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getTargetSModelReference();
-    }
-    return null;
-  }
-  private static SNodeId check_mgdhcs_a0a0a9a8_0(SReference checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getTargetNodeId();
-    }
-    return null;
   }
   private static SReference check_mgdhcs_a0b0gb(SNode checkedDotOperand, SReferenceLink myRole, SetReferenceChange checkedDotThisExpression) {
     if (null != checkedDotOperand) {
