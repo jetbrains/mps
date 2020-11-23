@@ -42,14 +42,9 @@ public class ClassifierScopes {
     return new FilteringScope(inner) {
       @Override
       public boolean isExcluded(SNode node) {
-        if ((node == null)) {
-          // todo: ? 
+        if ((node == null) || !(SNodeOperations.isInstanceOf(node, CONCEPTS.IVisible$zu)) || !(VisibilityUtil.isVisible(contextNode, SNodeOperations.cast(node, CONCEPTS.IVisible$zu)))) {
           return true;
         }
-        if (!(VisibilityUtil.isVisible(contextNode, SNodeOperations.cast(node, CONCEPTS.IVisible$zu)))) {
-          return true;
-        }
-
         if (ListSequence.fromList(vars).isNotEmpty() && SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$Kd)) {
           final String nodeName = SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL);
           return ListSequence.fromList(vars).any(new IWhereFilter<SNode>() {

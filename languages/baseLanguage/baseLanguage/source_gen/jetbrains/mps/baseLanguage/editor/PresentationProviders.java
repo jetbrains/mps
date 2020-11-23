@@ -57,7 +57,7 @@ public class PresentationProviders {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      return Classifier__BehaviorDescriptor.getNestedNameInContext_id7q4lzBFjvF8.invoke(SNodeOperations.cast(SNodeOperations.getParent(targetNode), CONCEPTS.Classifier$Ix), SNodeOperations.getParent(sourceNode));
+      return Classifier__BehaviorDescriptor.getNestedNameInContext_id7q4lzBFjvF8.invoke(SNodeOperations.getNodeAncestor(targetNode, CONCEPTS.Classifier$Ix, false, false), SNodeOperations.getParent(sourceNode));
     }
   };
   public static final IReferentPresentationProvider PRESENTATION_53xyyk_a1a1a = new IReferentPresentationProvider() {

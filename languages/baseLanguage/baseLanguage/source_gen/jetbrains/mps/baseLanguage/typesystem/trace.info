@@ -32890,66 +32890,70 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/8899076737759282444">
     <file name="QuickFixForClassCreator_QuickFix.java">
       <node id="8899076737759282444" at="22,45,23,132" concept="18" />
-      <node id="8899076737759282551" at="26,277,27,172" concept="12" />
-      <node id="8899076737759346705" at="27,172,28,0" concept="15" />
-      <node id="8899076737759344963" at="29,54,30,161" concept="12" />
-      <node id="8899076737759347027" at="31,30,32,186" concept="12" />
-      <node id="8899076737759347228" at="32,186,33,63" concept="6" />
-      <node id="8899076737759347035" at="38,105,39,63" concept="12" />
-      <node id="8899076737759347035" at="39,63,40,30" concept="12" />
-      <node id="8899076737759347035" at="40,30,41,30" concept="12" />
-      <node id="8899076737759347035" at="41,30,42,244" concept="6" />
-      <node id="8899076737759347035" at="42,244,43,209" concept="6" />
-      <node id="8899076737759347035" at="44,5,45,52" concept="12" />
-      <node id="8899076737759347035" at="46,33,47,210" concept="6" />
-      <node id="8899076737759347035" at="49,5,50,24" concept="13" />
-      <node id="8899076737759282444" at="54,0,55,0" concept="16" trace="ClassCreator$ZG" />
-      <node id="8899076737759282444" at="55,0,56,0" concept="16" trace="ClassConcept$bK" />
-      <node id="8899076737759282444" at="59,0,60,0" concept="16" trace="actualArgument$pzdx" />
-      <node id="8899076737759282444" at="60,0,61,0" concept="16" trace="baseMethodDeclaration$pyYw" />
-      <node id="8899076737759282444" at="61,0,62,0" concept="16" trace="typeParameter$uYiw" />
+      <node id="2565523732693249855" at="25,35,26,73" concept="12" />
+      <node id="8899076737759282551" at="27,352,28,127" concept="12" />
+      <node id="8899076737759346705" at="28,127,29,0" concept="15" />
+      <node id="8899076737759344963" at="30,54,31,161" concept="12" />
+      <node id="8899076737759347027" at="32,30,33,141" concept="12" />
+      <node id="8899076737759347228" at="33,141,34,63" concept="6" />
+      <node id="8899076737759347035" at="39,105,40,63" concept="12" />
+      <node id="8899076737759347035" at="40,63,41,30" concept="12" />
+      <node id="8899076737759347035" at="41,30,42,30" concept="12" />
+      <node id="8899076737759347035" at="42,30,43,244" concept="6" />
+      <node id="8899076737759347035" at="43,244,44,209" concept="6" />
+      <node id="8899076737759347035" at="45,5,46,52" concept="12" />
+      <node id="8899076737759347035" at="47,33,48,210" concept="6" />
+      <node id="8899076737759347035" at="50,5,51,24" concept="13" />
+      <node id="8899076737759282444" at="55,0,56,0" concept="16" trace="ClassCreator$ZG" />
+      <node id="8899076737759282444" at="56,0,57,0" concept="16" trace="BaseCommentAttribute$nv" />
+      <node id="8899076737759282444" at="57,0,58,0" concept="16" trace="ClassConcept$bK" />
+      <node id="8899076737759282444" at="61,0,62,0" concept="16" trace="actualArgument$pzdx" />
+      <node id="8899076737759282444" at="62,0,63,0" concept="16" trace="baseMethodDeclaration$pyYw" />
+      <node id="8899076737759282444" at="63,0,64,0" concept="16" trace="typeParameter$uYiw" />
       <node id="8899076737759282444" at="22,0,25,0" concept="3" trace="QuickFixForClassCreator_QuickFix#()V" />
-      <node id="8899076737759347035" at="45,52,48,7" concept="9" />
-      <node id="8899076737759346968" at="30,161,34,9" concept="10" />
-      <node id="8899076737759347035" at="43,209,49,5" concept="1" />
-      <node id="8899076737759282740" at="28,0,35,7" concept="10" />
-      <node id="8899076737759282447" at="25,35,36,5" concept="10" />
-      <node id="8899076737759282444" at="25,0,38,0" concept="11" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="8899076737759347035" at="38,0,52,0" concept="17" trace="_quotation_createNode_k3yd95_a0a0b0c0a0b#(Ljava/lang/Object;Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="8899076737759347035" at="46,52,49,7" concept="9" />
+      <node id="8899076737759346968" at="31,161,35,9" concept="10" />
+      <node id="8899076737759347035" at="44,209,50,5" concept="1" />
+      <node id="8899076737759282740" at="29,0,36,7" concept="10" />
+      <node id="8899076737759282447" at="26,73,37,5" concept="10" />
+      <node id="8899076737759282444" at="25,0,39,0" concept="11" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="8899076737759347035" at="39,0,53,0" concept="17" trace="_quotation_createNode_k3yd95_a0a0b0c0b0b#(Ljava/lang/Object;Ljava/lang/Object;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="8899076737759282444" at="22,45,23,132" />
-      <scope id="8899076737759347035" at="46,33,47,210" />
-      <scope id="8899076737759346969" at="31,30,33,63">
+      <scope id="8899076737759347035" at="47,33,48,210" />
+      <scope id="8899076737759346969" at="32,30,34,63">
         <var name="newCreator" id="8899076737759347028" />
       </scope>
       <scope id="8899076737759282444" at="22,0,25,0" />
-      <scope id="8899076737759347035" at="45,52,48,7">
+      <scope id="8899076737759347035" at="46,52,49,7">
         <var name="child" id="8899076737759347035" />
       </scope>
-      <scope id="8899076737759347035" at="44,5,48,7">
+      <scope id="8899076737759347035" at="45,5,49,7">
         <var name="nodes" id="8899076737759347035" />
       </scope>
-      <scope id="8899076737759282741" at="29,54,34,9">
+      <scope id="8899076737759282741" at="30,54,35,9">
         <var name="clazz" id="8899076737759344964" />
       </scope>
-      <scope id="8899076737759282449" at="26,277,35,7">
+      <scope id="8899076737759282449" at="27,352,36,7">
         <var name="refText" id="8899076737759282552" />
       </scope>
-      <scope id="8899076737759282446" at="25,35,36,5" />
-      <scope id="8899076737759347035" at="38,105,50,24">
+      <scope id="8899076737759282446" at="25,35,37,5">
+        <var name="creator" id="2565523732693249856" />
+      </scope>
+      <scope id="8899076737759347035" at="39,105,51,24">
         <var name="facade" id="8899076737759347035" />
         <var name="quotedNode_3" id="8899076737759347035" />
         <var name="quotedNode_4" id="8899076737759347035" />
       </scope>
-      <scope id="8899076737759282444" at="25,0,38,0">
+      <scope id="8899076737759282444" at="25,0,39,0">
         <var name="node" id="8899076737759282444" />
       </scope>
-      <scope id="8899076737759347035" at="38,0,52,0">
+      <scope id="8899076737759347035" at="39,0,53,0">
         <var name="parameter_1" id="8899076737759347035" />
         <var name="parameter_2" id="8899076737759347035" />
       </scope>
-      <unit id="8899076737759282444" at="53,0,57,0" name="jetbrains.mps.baseLanguage.typesystem.QuickFixForClassCreator_QuickFix$CONCEPTS" />
-      <unit id="8899076737759282444" at="58,0,63,0" name="jetbrains.mps.baseLanguage.typesystem.QuickFixForClassCreator_QuickFix$LINKS" />
-      <unit id="8899076737759282444" at="21,0,64,0" name="jetbrains.mps.baseLanguage.typesystem.QuickFixForClassCreator_QuickFix" />
+      <unit id="8899076737759282444" at="54,0,59,0" name="jetbrains.mps.baseLanguage.typesystem.QuickFixForClassCreator_QuickFix$CONCEPTS" />
+      <unit id="8899076737759282444" at="60,0,65,0" name="jetbrains.mps.baseLanguage.typesystem.QuickFixForClassCreator_QuickFix$LINKS" />
+      <unit id="8899076737759282444" at="21,0,66,0" name="jetbrains.mps.baseLanguage.typesystem.QuickFixForClassCreator_QuickFix" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/8899076737759409538">
@@ -32962,7 +32966,7 @@
       </scope>
     </file>
     <file name="check_ClassCreator_NonTypesystemRule.java">
-      <node id="8899076737759409583" at="28,197,29,132" concept="12" />
+      <node id="8899076737759409583" at="28,367,29,132" concept="12" />
       <node id="8899076737759409605" at="29,132,30,0" concept="15" />
       <node id="8899076737759409608" at="31,54,32,177" concept="12" />
       <node id="8899076737759409542" at="34,11,35,70" concept="12" />
@@ -32974,8 +32978,9 @@
       <node id="8899076737759409538" at="52,30,53,17" concept="13" />
       <node id="8899076737759409538" at="57,0,58,0" concept="16" trace="actualArgument$pzdx" />
       <node id="8899076737759409538" at="58,0,59,0" concept="16" trace="baseMethodDeclaration$pyYw" />
-      <node id="8899076737759409538" at="62,0,63,0" concept="16" trace="ClassConcept$bK" />
-      <node id="8899076737759409538" at="63,0,64,0" concept="16" trace="ClassCreator$ZG" />
+      <node id="8899076737759409538" at="62,0,63,0" concept="16" trace="BaseCommentAttribute$nv" />
+      <node id="8899076737759409538" at="63,0,64,0" concept="16" trace="ClassConcept$bK" />
+      <node id="8899076737759409538" at="64,0,65,0" concept="16" trace="ClassCreator$ZG" />
       <node id="8899076737759409538" at="25,0,27,0" concept="3" trace="check_ClassCreator_NonTypesystemRule#()V" />
       <node id="8899076737759409538" at="46,0,49,0" concept="11" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="8899076737759409538" at="49,0,52,0" concept="11" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
@@ -33007,7 +33012,7 @@
       <scope id="8899076737759409607" at="31,54,42,9">
         <var name="clazz" id="8899076737759409609" />
       </scope>
-      <scope id="8899076737759409582" at="28,197,43,7">
+      <scope id="8899076737759409582" at="28,367,43,7">
         <var name="refText" id="8899076737759409584" />
       </scope>
       <scope id="8899076737759409539" at="27,125,44,5" />
@@ -33017,8 +33022,8 @@
         <var name="typeCheckingContext" id="8899076737759409538" />
       </scope>
       <unit id="8899076737759409538" at="56,0,60,0" name="jetbrains.mps.baseLanguage.typesystem.check_ClassCreator_NonTypesystemRule$LINKS" />
-      <unit id="8899076737759409538" at="61,0,65,0" name="jetbrains.mps.baseLanguage.typesystem.check_ClassCreator_NonTypesystemRule$CONCEPTS" />
-      <unit id="8899076737759409538" at="24,0,66,0" name="jetbrains.mps.baseLanguage.typesystem.check_ClassCreator_NonTypesystemRule" />
+      <unit id="8899076737759409538" at="61,0,66,0" name="jetbrains.mps.baseLanguage.typesystem.check_ClassCreator_NonTypesystemRule$CONCEPTS" />
+      <unit id="8899076737759409538" at="24,0,67,0" name="jetbrains.mps.baseLanguage.typesystem.check_ClassCreator_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/8918460683225653166">

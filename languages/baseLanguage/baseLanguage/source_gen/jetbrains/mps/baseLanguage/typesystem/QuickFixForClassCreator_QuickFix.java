@@ -5,8 +5,8 @@ package jetbrains.mps.baseLanguage.typesystem;
 import jetbrains.mps.errors.QuickFix_Runtime;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopes;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
@@ -23,19 +23,20 @@ public class QuickFixForClassCreator_QuickFix extends QuickFix_Runtime {
     super(new SNodePointer("r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8899076737759282444"));
   }
   public void execute(SNode node) {
-    if (SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.ClassCreator$ZG), LINKS.baseMethodDeclaration$pyYw) == null && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.ClassCreator$ZG), LINKS.actualArgument$pzdx)).isEmpty()) {
-      String refText = SLinkOperations.getResolveInfo(SNodeOperations.getReference(SNodeOperations.cast(node, CONCEPTS.ClassCreator$ZG), LINKS.baseMethodDeclaration$pyYw));
+    SNode creator = SNodeOperations.cast(node, CONCEPTS.ClassCreator$ZG);
+    if ((SLinkOperations.getTarget(creator, LINKS.baseMethodDeclaration$pyYw) == null || SNodeOperations.isInstanceOf(SNodeOperations.getParent(SLinkOperations.getTarget(creator, LINKS.baseMethodDeclaration$pyYw)), CONCEPTS.BaseCommentAttribute$nv)) && ListSequence.fromList(SLinkOperations.getChildren(creator, LINKS.actualArgument$pzdx)).isEmpty()) {
+      String refText = SLinkOperations.getResolveInfo(SNodeOperations.getReference(creator, LINKS.baseMethodDeclaration$pyYw));
 
       if ((refText != null && refText.length() > 0)) {
         SNode clazz = SNodeOperations.cast(ClassifierScopes.getVisibleClassifiersWithDefaultConstructors(node).resolve(node, refText), CONCEPTS.ClassConcept$bK);
         if ((clazz != null)) {
-          SNode newCreator = _quotation_createNode_k3yd95_a0a0b0c0a0b(SLinkOperations.getChildren(SNodeOperations.cast(node, CONCEPTS.ClassCreator$ZG), LINKS.typeParameter$uYiw), clazz);
+          SNode newCreator = _quotation_createNode_k3yd95_a0a0b0c0b0b(SLinkOperations.getChildren(creator, LINKS.typeParameter$uYiw), clazz);
           SNodeOperations.replaceWithAnother(node, newCreator);
         }
       }
     }
   }
-  private static SNode _quotation_createNode_k3yd95_a0a0b0c0a0b(Object parameter_1, Object parameter_2) {
+  private static SNode _quotation_createNode_k3yd95_a0a0b0c0b0b(Object parameter_1, Object parameter_2) {
     PersistenceFacade facade = PersistenceFacade.getInstance();
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
@@ -52,6 +53,7 @@ public class QuickFixForClassCreator_QuickFix extends QuickFix_Runtime {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ClassCreator$ZG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, "jetbrains.mps.baseLanguage.structure.ClassCreator");
+    /*package*/ static final SConcept BaseCommentAttribute$nv = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
     /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 
