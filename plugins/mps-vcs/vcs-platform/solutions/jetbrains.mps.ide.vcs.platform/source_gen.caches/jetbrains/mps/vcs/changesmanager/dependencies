@@ -119,10 +119,10 @@
     <classNode dependClassName="jetbrains.mps.vcs.diff.ChangeSet" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ChangeSetBuilder" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ChangeSetImpl" />
-    <classNode dependClassName="jetbrains.mps.vcs.diff.changes.AbstractNodeGroupChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.AddRootChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.ChangeType" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.DeleteRootChange" />
+    <classNode dependClassName="jetbrains.mps.vcs.diff.changes.HierarchicalNodeGroupChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.ImportedModelChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.MetadataChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.ModelChange" />

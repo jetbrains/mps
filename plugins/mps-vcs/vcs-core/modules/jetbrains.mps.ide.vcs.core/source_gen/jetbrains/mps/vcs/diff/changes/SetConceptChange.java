@@ -7,8 +7,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.vcs.diff.ChangeSet;
 import org.jetbrains.mps.openapi.model.SNodeId;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.model.SReference;
@@ -39,6 +39,10 @@ public class SetConceptChange extends NodeChange {
   private String myDescription;
 
 
+  public SetConceptChange(@NotNull ChangeSet changeSet, @NotNull SNodeId nodeId, SConcept newValue) {
+    this(changeSet, nodeId, getOldConcept(changeSet, nodeId), newValue);
+  }
+
   public SetConceptChange(@NotNull ChangeSet changeSet, @NotNull SNodeId nodeId, SConcept oldValue, SConcept newValue) {
     super(changeSet, nodeId, nodeId);
     myNewConcept = newValue;
@@ -46,8 +50,15 @@ public class SetConceptChange extends NodeChange {
     myDescription = createDescription();
   }
 
+
   public SConcept getNewValue() {
     return myNewConcept;
+  }
+
+  private static SConcept getOldConcept(@NotNull ChangeSet changeSet, @NotNull SNodeId nodeId) {
+    SNode node = changeSet.getOldModel().getNode(nodeId);
+    assert node != null;
+    return node.getConcept();
   }
 
   @Override

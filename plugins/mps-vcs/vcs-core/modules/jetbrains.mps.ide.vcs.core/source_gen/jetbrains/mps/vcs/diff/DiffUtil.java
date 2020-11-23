@@ -8,18 +8,30 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SDataType;
 import org.jetbrains.mps.openapi.language.SType;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.vcs.diff.merge.SNodeCompare;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
+import jetbrains.mps.vcs.diff.changes.ModelChange;
+import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import java.util.Collections;
+import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
+import java.util.Iterator;
+import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
+import jetbrains.mps.vcs.diff.changes.SetPropertyChange;
+import java.util.List;
 import org.jetbrains.mps.openapi.model.SReference;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.smodel.DynamicReference;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.vcs.diff.changes.SetConceptChange;
 
 @GeneratedClass(node = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)/520259247110483854", model = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)")
 /*package*/ final class DiffUtil {
@@ -41,7 +53,17 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
     return Objects.equals(oldValue, newValue);
   }
 
-  /*package*/ static boolean allPropertiesAreEqual(SNode oldNode, SNode newNode) {
+  /*package*/ static boolean nodesDifferByIdOnly(SModel model, SNode oldNode, SNode newNode) {
+    if (!(Objects.equals(SNodeOperations.getConcept(oldNode), SNodeOperations.getConcept(newNode)))) {
+      return false;
+    }
+    if (!(SNodeCompare.conceptHasStaticScopeNone(SNodeOperations.getConcept(oldNode), model))) {
+      return false;
+    }
+    return allPropertiesAreEqual(oldNode, newNode) && allReferencesAreEqual(oldNode, newNode);
+  }
+
+  private static boolean allPropertiesAreEqual(SNode oldNode, SNode newNode) {
     Iterable<SProperty> oldProperties = oldNode.getProperties();
     Iterable<SProperty> newProperties = newNode.getProperties();
     for (SProperty property : Sequence.fromIterable(oldProperties).union(Sequence.fromIterable(newProperties))) {
@@ -52,28 +74,135 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
     return true;
   }
 
-  /*package*/ static boolean referencesAreEqual(SNode oldNode, SNode newNode, SReferenceLink role) {
+  /*package*/ static Iterable<ModelChange> collectPropertyChanges(final ChangeSet changeSet, final SNode oldNode, final SNode newNode) {
+    Iterable<SProperty> oldProperties = oldNode.getProperties();
+    Iterable<SProperty> newProperties = newNode.getProperties();
+    return Sequence.fromIterable(oldProperties).union(Sequence.fromIterable(newProperties)).translate(new ITranslator2<SProperty, ModelChange>() {
+      public Iterable<ModelChange> translate(SProperty property) {
+        return collectPropertyChanges(changeSet, oldNode, newNode, property);
+      }
+    });
+  }
+
+  /*package*/ static Iterable<ModelChange> collectPropertyChanges(final ChangeSet changeSet, final SNode oldNode, final SNode newNode, final SProperty property) {
+    if (propertiesAreEqual(oldNode, newNode, property)) {
+      return Sequence.fromIterable(Collections.<ModelChange>emptyList());
+    }
+    return Sequence.fromClosure(new ISequenceClosure<ModelChange>() {
+      public Iterable<ModelChange> iterable() {
+        return new Iterable<ModelChange>() {
+          public Iterator<ModelChange> iterator() {
+            return new YieldingIterator<ModelChange>() {
+              private int __CP__ = 0;
+              protected boolean moveToNext() {
+__loop__:
+                do {
+__switch__:
+                  switch (this.__CP__) {
+                    case -1:
+                      assert false : "Internal error";
+                      return false;
+                    case 2:
+                      this.__CP__ = 1;
+                      this.yield(((ModelChange) new SetPropertyChange(changeSet, oldNode.getNodeId(), newNode.getNodeId(), property, newNode.getProperty(property))));
+                      return true;
+                    case 0:
+                      this.__CP__ = 2;
+                      break;
+                    default:
+                      break __loop__;
+                  }
+                } while (true);
+                return false;
+              }
+            };
+          }
+        };
+      }
+    });
+  }
+
+  /*package*/ static Iterable<ModelChange> collectReferenceChanges(final ChangeSet changeSet, final SNode oldNode, final SNode newNode) {
+    List<SReference> oldReferences = (List<SReference>) oldNode.getReferences();
+    List<SReference> newReferences = (List<SReference>) newNode.getReferences();
+    return ListSequence.fromList(oldReferences).concat(ListSequence.fromList(newReferences)).select(new ISelector<SReference, SReferenceLink>() {
+      public SReferenceLink select(SReference r) {
+        return r.getLink();
+      }
+    }).distinct().translate(new ITranslator2<SReferenceLink, ModelChange>() {
+      public Iterable<ModelChange> translate(SReferenceLink it) {
+        return collectReferenceChanges(changeSet, oldNode, newNode, it);
+      }
+    });
+  }
+
+  /*package*/ static Iterable<ModelChange> collectReferenceChanges(final ChangeSet changeSet, final SNode oldNode, final SNode newNode, final SReferenceLink role) {
+
+    final boolean refsAreEqual = DiffUtil.referencesAreEqual(oldNode, newNode, role);
+    boolean diffByResolveInfo = DiffUtil.referencesDifferByResolveInfo(oldNode, newNode, role);
+
+    if (refsAreEqual && !(diffByResolveInfo)) {
+      return Collections.emptyList();
+    }
+
+    final SReference newReference = newNode.getReference(role);
+    final SNodeId newTargetId = (newReference instanceof DynamicReference ? null : check_z8xa03_a0a7a51(newReference));
+    final SModelReference targetModel = check_z8xa03_a0i0p(newReference);
+    return Sequence.fromClosure(new ISequenceClosure<ModelChange>() {
+      public Iterable<ModelChange> iterable() {
+        return new Iterable<ModelChange>() {
+          public Iterator<ModelChange> iterator() {
+            return new YieldingIterator<ModelChange>() {
+              private int __CP__ = 0;
+              protected boolean moveToNext() {
+__loop__:
+                do {
+__switch__:
+                  switch (this.__CP__) {
+                    case -1:
+                      assert false : "Internal error";
+                      return false;
+                    case 2:
+                      this.__CP__ = 1;
+                      this.yield((ModelChange) new SetReferenceChange(changeSet, oldNode.getNodeId(), newNode.getNodeId(), role, targetModel, newTargetId, check_z8xa03_g0a0a0a0a9a51(((jetbrains.mps.smodel.SReference) newReference)), refsAreEqual));
+                      return true;
+                    case 0:
+                      this.__CP__ = 2;
+                      break;
+                    default:
+                      break __loop__;
+                  }
+                } while (true);
+                return false;
+              }
+            };
+          }
+        };
+      }
+    });
+  }
+
+  private static boolean referencesAreEqual(SNode oldNode, SNode newNode, SReferenceLink role) {
     SReference oldReference = oldNode.getReference(role);
     SReference newReference = newNode.getReference(role);
-    SNodeId oldTargetId = (oldReference instanceof DynamicReference ? null : check_z8xa03_a0a2a7(oldReference));
-    SNodeId newTargetId = (newReference instanceof DynamicReference ? null : check_z8xa03_a0a3a7(newReference));
-    SModelReference oldTargetModel = check_z8xa03_a0e0h(oldReference);
+    SNodeId oldTargetId = (oldReference instanceof DynamicReference ? null : check_z8xa03_a0a2a71(oldReference));
+    SNodeId newTargetId = (newReference instanceof DynamicReference ? null : check_z8xa03_a0a3a71(newReference));
+    SModelReference oldTargetModel = check_z8xa03_a0e0r(oldReference);
     if (SNodeOperations.getModel(oldNode).getReference().equals(oldTargetModel)) {
       oldTargetModel = null;
     }
-    SModelReference newTargetModel = check_z8xa03_a0g0h(newReference);
+    SModelReference newTargetModel = check_z8xa03_a0g0r(newReference);
     if (SNodeOperations.getModel(newNode).getReference().equals(newTargetModel)) {
       newTargetModel = null;
     }
     return Objects.equals(oldTargetId, newTargetId) && Objects.equals(oldTargetModel, newTargetModel);
   }
 
-  /*package*/ static boolean referencesDifferByResolveInfo(SNode oldNode, SNode newNode, SReferenceLink role) {
+  private static boolean referencesDifferByResolveInfo(SNode oldNode, SNode newNode, SReferenceLink role) {
     SReference oldReference = oldNode.getReference(role);
     SReference newReference = newNode.getReference(role);
-    return !(Objects.equals(check_z8xa03_a0c0j(((jetbrains.mps.smodel.SReference) oldReference)), check_z8xa03_a0c0j_0(((jetbrains.mps.smodel.SReference) newReference))));
+    return !(Objects.equals(check_z8xa03_a0c0t(((jetbrains.mps.smodel.SReference) oldReference)), check_z8xa03_a0c0t_0(((jetbrains.mps.smodel.SReference) newReference))));
   }
-
 
   /*package*/ static boolean allReferencesAreEqual(SNode oldNode, SNode newNode) {
     List<SReference> oldReferences = (List<SReference>) oldNode.getReferences();
@@ -91,45 +220,113 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
   }
 
   /*package*/ static List<SNode> getChildrenInRole(SNode parent, SContainmentLink link) {
-    return check_z8xa03_a0a41(AttributeOperations.getChildNodesAndAttributes(parent, link));
+    return check_z8xa03_a0a32(AttributeOperations.getChildNodesAndAttributes(parent, link));
   }
-  private static SNodeId check_z8xa03_a0a2a7(SReference checkedDotOperand) {
+
+  /*package*/ static Iterable<ModelChange> collectConceptChanges(final ChangeSet changeSet, final SNode oldNode, SNode newNode) {
+    final SConcept oldConcept = oldNode.getConcept();
+    final SConcept newConcept = newNode.getConcept();
+    if (Objects.equals(oldNode.getConcept(), newNode.getConcept())) {
+      return Sequence.fromIterable(Collections.<ModelChange>emptyList());
+    } else {
+      return Sequence.fromClosure(new ISequenceClosure<ModelChange>() {
+        public Iterable<ModelChange> iterable() {
+          return new Iterable<ModelChange>() {
+            public Iterator<ModelChange> iterator() {
+              return new YieldingIterator<ModelChange>() {
+                private int __CP__ = 0;
+                protected boolean moveToNext() {
+__loop__:
+                  do {
+__switch__:
+                    switch (this.__CP__) {
+                      case -1:
+                        assert false : "Internal error";
+                        return false;
+                      case 2:
+                        this.__CP__ = 1;
+                        this.yield((ModelChange) new SetConceptChange(changeSet, oldNode.getNodeId(), oldConcept, newConcept));
+                        return true;
+                      case 0:
+                        this.__CP__ = 2;
+                        break;
+                      default:
+                        break __loop__;
+                    }
+                  } while (true);
+                  return false;
+                }
+              };
+            }
+          };
+        }
+      });
+    }
+  }
+
+  /*package*/ static Iterable<ModelChange> collectNodeChanges(ChangeSet changeSet, SNode oldNode, SNode newNode) {
+    Iterable<ModelChange> result = Sequence.fromIterable(Collections.<ModelChange>emptyList());
+    result = Sequence.fromIterable(result).concat(Sequence.fromIterable(DiffUtil.collectConceptChanges(changeSet, oldNode, newNode)));
+    result = Sequence.fromIterable(result).concat(Sequence.fromIterable(DiffUtil.collectPropertyChanges(changeSet, oldNode, newNode)));
+    result = Sequence.fromIterable(result).concat(Sequence.fromIterable(DiffUtil.collectReferenceChanges(changeSet, oldNode, newNode)));
+    return result;
+  }
+
+  private static SNodeId check_z8xa03_a0a7a51(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetNodeId();
     }
     return null;
   }
-  private static SNodeId check_z8xa03_a0a3a7(SReference checkedDotOperand) {
+  private static SModelReference check_z8xa03_a0i0p(SReference checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getTargetSModelReference();
+    }
+    return null;
+  }
+  private static String check_z8xa03_g0a0a0a0a9a51(jetbrains.mps.smodel.SReference checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getResolveInfo();
+    }
+    return null;
+  }
+  private static SNodeId check_z8xa03_a0a2a71(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetNodeId();
     }
     return null;
   }
-  private static SModelReference check_z8xa03_a0e0h(SReference checkedDotOperand) {
+  private static SNodeId check_z8xa03_a0a3a71(SReference checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getTargetNodeId();
+    }
+    return null;
+  }
+  private static SModelReference check_z8xa03_a0e0r(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetSModelReference();
     }
     return null;
   }
-  private static SModelReference check_z8xa03_a0g0h(SReference checkedDotOperand) {
+  private static SModelReference check_z8xa03_a0g0r(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetSModelReference();
     }
     return null;
   }
-  private static String check_z8xa03_a0c0j(jetbrains.mps.smodel.SReference checkedDotOperand) {
+  private static String check_z8xa03_a0c0t(jetbrains.mps.smodel.SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getResolveInfo();
     }
     return null;
   }
-  private static String check_z8xa03_a0c0j_0(jetbrains.mps.smodel.SReference checkedDotOperand) {
+  private static String check_z8xa03_a0c0t_0(jetbrains.mps.smodel.SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getResolveInfo();
     }
     return null;
   }
-  private static List<SNode> check_z8xa03_a0a41(Iterable<SNode> checkedDotOperand) {
+  private static List<SNode> check_z8xa03_a0a32(Iterable<SNode> checkedDotOperand) {
     if (null != checkedDotOperand) {
       return Sequence.fromIterable(checkedDotOperand).toListSequence();
     }

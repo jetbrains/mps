@@ -2587,28 +2587,6 @@
         <ref role="3uigEE" to="hdhb:1zZcg$udfju" resolve="TripleChangeGroupLayout" />
       </node>
     </node>
-    <node concept="Wx3nA" id="717zF4SjAt5" role="jymVt">
-      <property role="TrG5h" value="DARK_LIGHT_GRAY" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3Tm6S6" id="717zF4Sjvs9" role="1B3o_S" />
-      <node concept="3uibUv" id="717zF4Sj_6O" role="1tU5fm">
-        <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
-      </node>
-      <node concept="2ShNRf" id="717zF4SjB49" role="33vP2m">
-        <node concept="1pGfFk" id="717zF4SjHkx" role="2ShVmc">
-          <ref role="37wK5l" to="z60i:~Color.&lt;init&gt;(int,int,int)" resolve="Color" />
-          <node concept="3cmrfG" id="717zF4SjJ6I" role="37wK5m">
-            <property role="3cmrfH" value="160" />
-          </node>
-          <node concept="3cmrfG" id="717zF4SjKaD" role="37wK5m">
-            <property role="3cmrfH" value="160" />
-          </node>
-          <node concept="3cmrfG" id="717zF4SjLjK" role="37wK5m">
-            <property role="3cmrfH" value="160" />
-          </node>
-        </node>
-      </node>
-    </node>
     <node concept="2tJIrI" id="fteH8PUtPt" role="jymVt" />
     <node concept="3clFbW" id="2jv$fqwev8m" role="jymVt">
       <node concept="37vLTG" id="2jv$fqwev8n" role="3clF46">

@@ -168,7 +168,7 @@ public class ModelDifferenceViewer implements DataProvider {
 
   /*package*/ void rebuildChangeSets() {
     ChangeSetBuilder.rebuildChangeSet(myChangeSet, PropertiesComponent.getInstance().getBoolean("vcs.diff.track.moved.nodes", false));
-    ChangeSetBuilder.rebuildChangeSet(myMetadataChangeSet, false);
+    ChangeSetBuilder.rebuildChangeSet(myMetadataChangeSet);
     if (myTree != null) {
       myTree.rebuildLater();
     }

@@ -38,8 +38,9 @@ import jetbrains.mps.vcs.diff.ChangeSet;
 import java.util.List;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.vcs.diff.ChangeSetBuilder;
-import jetbrains.mps.vcs.diff.changes.NodeGroupPresenceChange;
+import jetbrains.mps.vcs.diff.changes.NodeGroupNotMoveChange;
 import jetbrains.mps.vcs.diff.changes.ModifiedNodesGroup;
+import jetbrains.mps.vcs.diff.changes.ChangeType;
 import java.util.Arrays;
 import jetbrains.mps.vcs.diff.changes.ModifiedNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
@@ -145,7 +146,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
       public void run() {
         SPropertyOperations.assign(myRootNode, PROPS.name$MnvL, "RenamedRoot");
       }
-    }, trackMovedNodes, new SetPropertyChange(createFakeChangeSet(), myRootNodeId, myRootNodeId, PROPS.name$MnvL, "RenamedRoot"));
+    }, trackMovedNodes, new SetPropertyChange(createFakeChangeSet(), myRootNodeId, PROPS.name$MnvL, "RenamedRoot"));
   }
 
   @Test
@@ -165,7 +166,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
         return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method1");
       }
     }).first();
-    change = new SetReferenceChange(createFakeChangeSet(), SLinkOperations.getTarget(method1, LINKS.returnType$5xoi).getNodeId(), SLinkOperations.getTarget(method1, LINKS.returnType$5xoi).getNodeId(), LINKS.classifier$cxMr, myTestModel.getReference(), myRootNodeId, "Root", false);
+    change = new SetReferenceChange(createFakeChangeSet(), SLinkOperations.getTarget(method1, LINKS.returnType$5xoi).getNodeId(), LINKS.classifier$cxMr, myTestModel.getReference(), myRootNodeId, "Root");
     testDiffCorrectness(new Runnable() {
       public void run() {
         SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(method1, LINKS.returnType$5xoi), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, myRootNode);
@@ -235,7 +236,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
       }
     });
     List<ModelChange> realChanges = ChangeSetBuilder.buildChangeSetWithMovedNodes(myReferenceModel, myTestModel).getModelChanges();
-    ModelChange[] expectedChanges = {new NodeGroupPresenceChange(changeSet, new ModifiedNodesGroup(changeSet.getOldModel(), null, myRootNode.getNodeId(), LINKS.superclass$Mp9$, false), new ModifiedNodesGroup(changeSet.getNewModel(), Arrays.asList(new ModifiedNode(changeSet, superClass, ModifiedNode.Kind.PRESENCE, true)), null))};
+    ModelChange[] expectedChanges = {new NodeGroupNotMoveChange(changeSet, new ModifiedNodesGroup(changeSet.getOldModel(), null, myRootNode.getNodeId(), LINKS.superclass$Mp9$, ChangeType.DELETE), new ModifiedNodesGroup(changeSet.getNewModel(), Arrays.asList(new ModifiedNode(superClass.getNodeId(), changeSet.getNewModel(), ChangeType.ADD, true)), null))};
     testDiffCorrectness(realChanges, expectedChanges);
   }
 
@@ -313,7 +314,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
         ChangesTestUtil.addCommentedMethod(myRootNode, ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.member$L_2d)).last());
       }
     }, true);
-    junit.framework.Assert.assertTrue(ListSequence.fromList(changes).count() == 1 && ListSequence.fromList(changes).first() instanceof NodeGroupPresenceChange && ((NodeGroupPresenceChange) ListSequence.fromList(changes).first()).isAbout(LINKS.member$L_2d));
+    junit.framework.Assert.assertTrue(ListSequence.fromList(changes).count() == 1 && ListSequence.fromList(changes).first() instanceof NodeGroupNotMoveChange && ((NodeGroupNotMoveChange) ListSequence.fromList(changes).first()).isAbout(LINKS.member$L_2d));
   }
 
   @Test
@@ -344,7 +345,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
       }
     });
     List<ModelChange> realChanges = ChangeSetBuilder.buildChangeSetWithMovedNodes(myReferenceModel, myTestModel).getModelChanges();
-    testDiffCorrectness(realChanges, new NodeGroupPresenceChange(changeSet, new ModifiedNodesGroup(changeSet.getOldModel(), Arrays.asList(new ModifiedNode(changeSet, changeSet.getOldModel().getNode(method1.getNodeId()), ModifiedNode.Kind.PRESENCE, false)), check_7w1430_c0b0b0e0oc(method1.getNextSibling())), new ModifiedNodesGroup(changeSet.getNewModel(), check_7w1430_b0c0b0e0oc(method1.getNextSibling()), check_7w1430_c0c0b0e0oc(method1.getParent()), LINKS.member$L_2d, true)));
+    testDiffCorrectness(realChanges, new NodeGroupNotMoveChange(changeSet, new ModifiedNodesGroup(changeSet.getOldModel(), Arrays.asList(new ModifiedNode(method1.getNodeId(), changeSet.getOldModel(), ChangeType.DELETE, false)), check_7w1430_c0b0b0e0oc(method1.getNextSibling())), new ModifiedNodesGroup(changeSet.getNewModel(), check_7w1430_b0c0b0e0oc(method1.getNextSibling()), check_7w1430_c0c0b0e0oc(method1.getParent()), LINKS.member$L_2d, ChangeType.ADD)));
   }
 
   private void removeChildAttribute(boolean trackMovedNodes) {
@@ -431,7 +432,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
     SNodeId commentedNodeNextId = check_7w1430_a0k0ed(commentedNode.getNextSibling());
     SNodeId commentNodeNextId = check_7w1430_a0l0ed(commentNode.value.getNextSibling());
 
-    testDiffCorrectness(realChanges, new NodeGroupWrapChange(changeSet, new ModifiedNodesGroup(changeSet.getOldModel(), Arrays.asList(new ModifiedNode(changeSet, uncommentedNode, ModifiedNode.Kind.MOVE, false)), uncommentedNodeNextId), new ModifiedNodesGroup(changeSet.getNewModel(), Arrays.asList(new ModifiedNode(changeSet, commentedNode, ModifiedNode.Kind.MOVE, true)), commentedNodeNextId), new ModifiedNodesGroup(changeSet.getNewModel(), Arrays.asList(new ModifiedNode(changeSet, commentNode.value, ModifiedNode.Kind.PRESENCE, true)), commentNodeNextId), true));
+    testDiffCorrectness(realChanges, new NodeGroupWrapChange(changeSet, new ModifiedNodesGroup(changeSet.getOldModel(), Arrays.asList(new ModifiedNode(uncommentedNode.getNodeId(), changeSet.getOldModel(), ChangeType.MOVE, false)), uncommentedNodeNextId), new ModifiedNodesGroup(changeSet.getNewModel(), Arrays.asList(new ModifiedNode(commentedNode.getNodeId(), changeSet.getNewModel(), ChangeType.MOVE, true)), commentedNodeNextId), new ModifiedNodesGroup(changeSet.getNewModel(), Arrays.asList(new ModifiedNode(commentNode.value.getNodeId(), changeSet.getNewModel(), ChangeType.ADD, true)), commentNodeNextId), true));
   }
 
   @Test
@@ -463,7 +464,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
     SNodeId uncommentedNodeNextId = check_7w1430_a0l0id(uncommentedNode.value.getNextSibling());
     SNodeId commentNodeNextId = check_7w1430_a0m0id(commentNode.getNextSibling());
 
-    testDiffCorrectness(realChanges, new NodeGroupMoveChange(changeSet, new ModifiedNodesGroup(changeSet.getOldModel(), Arrays.asList(new ModifiedNode(changeSet, commentedNode, ModifiedNode.Kind.MOVE, false)), commentedNodeNextId), new ModifiedNodesGroup(changeSet.getNewModel(), Arrays.asList(new ModifiedNode(changeSet, uncommentedNode.value, ModifiedNode.Kind.MOVE, true)), uncommentedNodeNextId), LINKS.commentedNode$MYvG, LINKS.member$L_2d), new NodeGroupPresenceChange(changeSet, new ModifiedNodesGroup(changeSet.getOldModel(), Arrays.asList(new ModifiedNode(changeSet, commentNode, ModifiedNode.Kind.PRESENCE, false)), commentNodeNextId), new ModifiedNodesGroup(changeSet.getNewModel(), commentedNodeNextId, check_7w1430_c0c0c0o0id(uncommentedNode.value.getParent()), LINKS.member$L_2d, false)));
+    testDiffCorrectness(realChanges, new NodeGroupMoveChange(changeSet, new ModifiedNodesGroup(changeSet.getOldModel(), Arrays.asList(new ModifiedNode(commentedNode.getNodeId(), changeSet.getOldModel(), ChangeType.MOVE, false)), commentedNodeNextId), new ModifiedNodesGroup(changeSet.getNewModel(), Arrays.asList(new ModifiedNode(uncommentedNode.value.getNodeId(), changeSet.getNewModel(), ChangeType.MOVE, true)), uncommentedNodeNextId), LINKS.commentedNode$MYvG, LINKS.member$L_2d), new NodeGroupNotMoveChange(changeSet, new ModifiedNodesGroup(changeSet.getOldModel(), Arrays.asList(new ModifiedNode(commentNode.getNodeId(), changeSet.getOldModel(), ChangeType.DELETE, false)), commentNodeNextId), new ModifiedNodesGroup(changeSet.getNewModel(), commentedNodeNextId, check_7w1430_c0c0c0o0id(uncommentedNode.value.getParent()), LINKS.member$L_2d, ChangeType.DELETE)));
   }
 
   @Test

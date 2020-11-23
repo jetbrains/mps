@@ -6,61 +6,96 @@ import jetbrains.mps.annotations.GeneratedClass;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.vcs.diff.changes.ModelChange;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
-import java.util.HashMap;
+import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
+import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
+import jetbrains.mps.vcs.diff.changes.ModelChange;
+import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import jetbrains.mps.vcs.diff.changes.ModifiedNode;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.vcs.diff.changes.ChangeType;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import java.util.Objects;
+import java.util.HashMap;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import java.util.Collections;
-import org.jetbrains.mps.openapi.language.SConcept;
-import java.util.Objects;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
-import java.util.List;
+import java.util.Collections;
 import java.util.Set;
 import java.util.HashSet;
 import jetbrains.mps.util.LongestCommonSubsequenceFinder;
 import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
 import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
-import jetbrains.mps.vcs.diff.changes.ModifiedNode;
-import jetbrains.mps.vcs.diff.changes.SetConceptChange;
-import org.jetbrains.mps.openapi.language.SProperty;
-import jetbrains.mps.vcs.diff.changes.SetPropertyChange;
-import org.jetbrains.mps.openapi.model.SReference;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
-import jetbrains.mps.smodel.DynamicReference;
-import org.jetbrains.mps.openapi.model.SModelReference;
-import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
 
 @GeneratedClass(node = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)/520259247100433587", model = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)")
 /*package*/ final class ElementaryChangesBuilder {
 
   private Map<SNodeId, SNode> myOldNodesMap;
   private Map<SNodeId, SNode> myNewNodesMap;
+  private List<SNode> myOldOnlyNodes = ListSequence.fromList(new ArrayList<SNode>());
+  private List<SNode> myNewOnlyNodes = ListSequence.fromList(new ArrayList<SNode>());
+  private List<Tuples._2<SNode, SNode>> myCommonNodes = ListSequence.fromList(new ArrayList<Tuples._2<SNode, SNode>>());
   private ChangeSetImpl myChangeSet;
 
-  private ElementaryChangesBuilder(ChangeSetImpl changeSet, SNode oldRoot, SNode newRoot) {
+  /*package*/ ElementaryChangesBuilder(ChangeSetImpl changeSet, SNode oldRoot, SNode newRoot) {
     myChangeSet = changeSet;
     myOldNodesMap = getNodesMap(oldRoot);
     myNewNodesMap = getNodesMap(newRoot);
+    SetSequence.fromSet(MapSequence.fromMap(myOldNodesMap).keySet()).concat(SetSequence.fromSet(MapSequence.fromMap(myNewNodesMap).keySet())).distinct().visitAll(new IVisitor<SNodeId>() {
+      public void visit(SNodeId id) {
+        if (!(MapSequence.fromMap(myOldNodesMap).containsKey(id))) {
+          ListSequence.fromList(myNewOnlyNodes).addElement(MapSequence.fromMap(myNewNodesMap).get(id));
+        } else if (!(MapSequence.fromMap(myNewNodesMap).containsKey(id))) {
+          ListSequence.fromList(myOldOnlyNodes).addElement(MapSequence.fromMap(myOldNodesMap).get(id));
+        } else {
+          ListSequence.fromList(myCommonNodes).addElement(MultiTuple.<SNode,SNode>from(MapSequence.fromMap(myOldNodesMap).get(id), MapSequence.fromMap(myNewNodesMap).get(id)));
+        }
+      }
+    });
   }
 
-  /*package*/ static Iterable<ModelChange> getChanges(ChangeSetImpl changeSet, SNode oldRoot, SNode newRoot) {
-    return new ElementaryChangesBuilder(changeSet, oldRoot, newRoot).getChanges();
+  /*package*/ Iterable<ModelChange> getNodeChanges() {
+    return ListSequence.fromList(myCommonNodes).translate(new ITranslator2<Tuples._2<SNode, SNode>, ModelChange>() {
+      public Iterable<ModelChange> translate(Tuples._2<SNode, SNode> it) {
+        return DiffUtil.collectNodeChanges(myChangeSet, it._0(), it._1());
+      }
+    });
   }
 
-  private Iterable<ModelChange> getChanges() {
-    return Sequence.fromIterable(collectNonOrderChanges()).concat(Sequence.fromIterable(collectOrderChanges()));
+  /*package*/ Iterable<ModifiedNode> getModifiedNodes() {
+    return Sequence.fromIterable(getInsertedOrDeletedNodes()).concat(Sequence.fromIterable(getMovedNodes()));
+  }
+
+  private Iterable<ModifiedNode> getInsertedOrDeletedNodes() {
+    return ListSequence.fromList(myOldOnlyNodes).select(new ISelector<SNode, ModifiedNode>() {
+      public ModifiedNode select(SNode node) {
+        return new ModifiedNode(node.getNodeId(), node.getModel(), ChangeType.DELETE, false);
+      }
+    }).concat(ListSequence.fromList(myNewOnlyNodes).select(new ISelector<SNode, ModifiedNode>() {
+      public ModifiedNode select(SNode node) {
+        return new ModifiedNode(node.getNodeId(), node.getModel(), ChangeType.ADD, true);
+      }
+    }));
+  }
+
+  private Iterable<ModifiedNode> getMovedNodes() {
+    return ListSequence.fromList(myCommonNodes).where(new IWhereFilter<Tuples._2<SNode, SNode>>() {
+      public boolean accept(Tuples._2<SNode, SNode> it) {
+        return !(Objects.equals(getParentId(it._0()), getParentId(it._1()))) || !(Objects.equals(getLink(it._0()), getLink(it._1())));
+      }
+    }).translate(new ITranslator2<Tuples._2<SNode, SNode>, ModifiedNode>() {
+      public Iterable<ModifiedNode> translate(Tuples._2<SNode, SNode> it) {
+        return collectMovedNodes(it._0(), it._1());
+      }
+    }).concat(Sequence.fromIterable(collectOrderChanges()));
   }
 
   private Map<SNodeId, SNode> getNodesMap(SNode root) {
@@ -73,44 +108,9 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
     return result;
   }
 
-  private Iterable<ModelChange> collectNonOrderChanges() {
-    return SetSequence.fromSet(MapSequence.fromMap(myOldNodesMap).keySet()).concat(SetSequence.fromSet(MapSequence.fromMap(myNewNodesMap).keySet())).distinct().translate(new ITranslator2<SNodeId, ModelChange>() {
-      public Iterable<ModelChange> translate(SNodeId id) {
-        return collectNonOrderChanges(id);
-      }
-    });
-  }
-
-  private Iterable<ModelChange> collectNonOrderChanges(SNodeId id) {
-    if (!(MapSequence.fromMap(myOldNodesMap).containsKey(id))) {
-      return createPresenceChange(MapSequence.fromMap(myNewNodesMap).get(id), true);
-    } else if (!(MapSequence.fromMap(myNewNodesMap).containsKey(id))) {
-      return createPresenceChange(MapSequence.fromMap(myOldNodesMap).get(id), false);
-    } else {
-      return collectNonPresenceOrOrderChanges(MapSequence.fromMap(myOldNodesMap).get(id), MapSequence.fromMap(myNewNodesMap).get(id));
-    }
-  }
-
-  private Iterable<ModelChange> collectNonPresenceOrOrderChanges(SNode oldNode, SNode newNode) {
-
-    Iterable<ModelChange> result = Sequence.fromIterable(Collections.<ModelChange>emptyList());
-    SConcept oldConcept = oldNode.getConcept();
-    SConcept newConcept = newNode.getConcept();
-    if (!(Objects.equals(oldConcept, newConcept))) {
-      result = Sequence.fromIterable(result).concat(Sequence.fromIterable(collectConceptChanges(oldNode.getNodeId(), oldConcept, newConcept)));
-    } else {
-      result = Sequence.fromIterable(result).concat(Sequence.fromIterable(collectPropertyChanges(oldNode, newNode)));
-      result = Sequence.fromIterable(result).concat(Sequence.fromIterable(collectReferenceChanges(oldNode, newNode)));
-    }
-    if (!(Objects.equals(getParentId(oldNode), getParentId(newNode))) || !(Objects.equals(getLink(oldNode), getLink(newNode)))) {
-      result = Sequence.fromIterable(result).concat(Sequence.fromIterable(collectMovedNodes(oldNode, newNode)));
-    }
-    return result;
-  }
-
   @Nullable
   private static SNodeId getParentId(SNode node) {
-    return check_r6q5he_a0a91(SNodeOperations.getParent(node));
+    return check_r6q5he_a0a02(SNodeOperations.getParent(node));
   }
 
   private static SContainmentLink getLink(SNode node) {
@@ -121,7 +121,7 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
     return SNodeOperations.getContainingRoot(node) == node;
   }
 
-  private Iterable<ModelChange> collectOrderChanges() {
+  private Iterable<ModifiedNode> collectOrderChanges() {
     Iterable<Tuples._2<SNodeId, SContainmentLink>> oldLinks = Sequence.fromIterable(MapSequence.fromMap(myOldNodesMap).values()).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return !(isRoot(it));
@@ -140,19 +140,19 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
         return MultiTuple.<SNodeId,SContainmentLink>from(getParentId(it), getLink(it));
       }
     }).distinct();
-    return Sequence.fromIterable(oldLinks).intersect(Sequence.fromIterable(newLinks)).distinct().translate(new ITranslator2<Tuples._2<SNodeId, SContainmentLink>, ModelChange>() {
-      public Iterable<ModelChange> translate(Tuples._2<SNodeId, SContainmentLink> link) {
+    return Sequence.fromIterable(oldLinks).intersect(Sequence.fromIterable(newLinks)).distinct().translate(new ITranslator2<Tuples._2<SNodeId, SContainmentLink>, ModifiedNode>() {
+      public Iterable<ModifiedNode> translate(Tuples._2<SNodeId, SContainmentLink> link) {
         return collectOrderChanges(link._0(), link._1());
       }
     });
   }
 
-  private Iterable<ModelChange> collectOrderChanges(SNodeId parentId, SContainmentLink link) {
+  private Iterable<ModifiedNode> collectOrderChanges(SNodeId parentId, SContainmentLink link) {
 
     SNode oldParent = MapSequence.fromMap(myOldNodesMap).get(parentId);
     SNode newParent = MapSequence.fromMap(myNewNodesMap).get(parentId);
     if (oldParent == null || newParent == null) {
-      return Sequence.fromIterable(Collections.<ModelChange>emptyList());
+      return Sequence.fromIterable(Collections.<ModifiedNode>emptyList());
     }
 
     List<SNodeId> oldIds = ListSequence.fromList(DiffUtil.getChildrenInRole(oldParent, link)).select(new ISelector<SNode, SNodeId>() {
@@ -175,58 +175,23 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
       public boolean accept(SNodeId id) {
         return SetSequence.fromSet(commonIds).contains(id);
       }
-    }).translate(new ITranslator2<SNodeId, ModelChange>() {
-      public Iterable<ModelChange> translate(SNodeId id) {
+    }).translate(new ITranslator2<SNodeId, ModifiedNode>() {
+      public Iterable<ModifiedNode> translate(SNodeId id) {
         return collectMovedNodes(MapSequence.fromMap(myOldNodesMap).get(id), MapSequence.fromMap(myNewNodesMap).get(id));
       }
     });
   }
 
-  private Iterable<ModelChange> createPresenceChange(final SNode node, final boolean isNew) {
-    return Sequence.fromClosure(new ISequenceClosure<ModelChange>() {
-      public Iterable<ModelChange> iterable() {
-        return new Iterable<ModelChange>() {
-          public Iterator<ModelChange> iterator() {
-            return new YieldingIterator<ModelChange>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
-__loop__:
-                do {
-__switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 2:
-                      this.__CP__ = 1;
-                      this.yield((ModelChange) new ModifiedNode(myChangeSet, node, ModifiedNode.Kind.PRESENCE, isNew));
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    default:
-                      break __loop__;
-                  }
-                } while (true);
-                return false;
-              }
-            };
-          }
-        };
-      }
-    });
-  }
-
-  private Iterable<ModelChange> collectMovedNodes(SNode oldNode, SNode newNode) {
-    final ModifiedNode oldChange = new ModifiedNode(myChangeSet, oldNode, ModifiedNode.Kind.MOVE, false);
-    final ModifiedNode newChange = new ModifiedNode(myChangeSet, newNode, ModifiedNode.Kind.MOVE, true);
+  private Iterable<ModifiedNode> collectMovedNodes(SNode oldNode, SNode newNode) {
+    final ModifiedNode oldChange = new ModifiedNode(oldNode.getNodeId(), oldNode.getModel(), ChangeType.MOVE, false);
+    final ModifiedNode newChange = new ModifiedNode(newNode.getNodeId(), newNode.getModel(), ChangeType.MOVE, true);
     oldChange.setOppositeNode(newChange);
     newChange.setOppositeNode(oldChange);
-    return Sequence.fromClosure(new ISequenceClosure<ModelChange>() {
-      public Iterable<ModelChange> iterable() {
-        return new Iterable<ModelChange>() {
-          public Iterator<ModelChange> iterator() {
-            return new YieldingIterator<ModelChange>() {
+    return Sequence.fromClosure(new ISequenceClosure<ModifiedNode>() {
+      public Iterable<ModifiedNode> iterable() {
+        return new Iterable<ModifiedNode>() {
+          public Iterator<ModifiedNode> iterator() {
+            return new YieldingIterator<ModifiedNode>() {
               private int __CP__ = 0;
               protected boolean moveToNext() {
 __loop__:
@@ -238,11 +203,11 @@ __switch__:
                       return false;
                     case 2:
                       this.__CP__ = 3;
-                      this.yield((ModelChange) oldChange);
+                      this.yield(oldChange);
                       return true;
                     case 3:
                       this.__CP__ = 1;
-                      this.yield((ModelChange) newChange);
+                      this.yield(newChange);
                       return true;
                     case 0:
                       this.__CP__ = 2;
@@ -259,172 +224,9 @@ __switch__:
       }
     });
   }
-
-  private Iterable<ModelChange> collectConceptChanges(final SNodeId id, final SConcept oldConcept, final SConcept newConcept) {
-    return Sequence.fromClosure(new ISequenceClosure<ModelChange>() {
-      public Iterable<ModelChange> iterable() {
-        return new Iterable<ModelChange>() {
-          public Iterator<ModelChange> iterator() {
-            return new YieldingIterator<ModelChange>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
-__loop__:
-                do {
-__switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 2:
-                      this.__CP__ = 1;
-                      this.yield((ModelChange) new SetConceptChange(myChangeSet, id, oldConcept, newConcept));
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    default:
-                      break __loop__;
-                  }
-                } while (true);
-                return false;
-              }
-            };
-          }
-        };
-      }
-    });
-  }
-
-  private Iterable<ModelChange> collectPropertyChanges(final SNode oldNode, final SNode newNode) {
-    Iterable<SProperty> oldProperties = oldNode.getProperties();
-    Iterable<SProperty> newProperties = newNode.getProperties();
-    return Sequence.fromIterable(oldProperties).union(Sequence.fromIterable(newProperties)).translate(new ITranslator2<SProperty, ModelChange>() {
-      public Iterable<ModelChange> translate(SProperty p) {
-        return buildForProperty(oldNode, newNode, p);
-      }
-    });
-  }
-
-  private Iterable<ModelChange> buildForProperty(final SNode oldNode, final SNode newNode, final SProperty property) {
-    if (DiffUtil.propertiesAreEqual(oldNode, newNode, property)) {
-      return Sequence.fromIterable(Collections.<ModelChange>emptyList());
-    }
-    final String newPropValue = newNode.getProperty(property);
-    return Sequence.fromClosure(new ISequenceClosure<ModelChange>() {
-      public Iterable<ModelChange> iterable() {
-        return new Iterable<ModelChange>() {
-          public Iterator<ModelChange> iterator() {
-            return new YieldingIterator<ModelChange>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
-__loop__:
-                do {
-__switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 2:
-                      this.__CP__ = 1;
-                      this.yield((ModelChange) new SetPropertyChange(myChangeSet, oldNode.getNodeId(), newNode.getNodeId(), property, newPropValue));
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    default:
-                      break __loop__;
-                  }
-                } while (true);
-                return false;
-              }
-            };
-          }
-        };
-      }
-    });
-  }
-
-  private Iterable<ModelChange> collectReferenceChanges(final SNode oldNode, final SNode newNode) {
-    List<SReference> oldReferences = (List<SReference>) oldNode.getReferences();
-    List<SReference> newReferences = (List<SReference>) newNode.getReferences();
-    return ListSequence.fromList(oldReferences).concat(ListSequence.fromList(newReferences)).select(new ISelector<SReference, SReferenceLink>() {
-      public SReferenceLink select(SReference r) {
-        return r.getLink();
-      }
-    }).distinct().translate(new ITranslator2<SReferenceLink, ModelChange>() {
-      public Iterable<ModelChange> translate(SReferenceLink role) {
-        return buildForReference(oldNode, newNode, role);
-      }
-    });
-  }
-
-  private Iterable<ModelChange> buildForReference(final SNode oldNode, final SNode newNode, final SReferenceLink role) {
-
-    final boolean refsAreEqual = DiffUtil.referencesAreEqual(oldNode, newNode, role);
-    boolean diffByResolveInfo = DiffUtil.referencesDifferByResolveInfo(oldNode, newNode, role);
-
-    if (refsAreEqual && !(diffByResolveInfo)) {
-      return Sequence.fromIterable(Collections.<ModelChange>emptyList());
-    }
-
-    assert Objects.equals(oldNode.getNodeId(), newNode.getNodeId());
-    final SReference newReference = newNode.getReference(role);
-    final SNodeId newTargetId = (newReference instanceof DynamicReference ? null : check_r6q5he_a0a8a14(newReference));
-    final SModelReference targetModel = check_r6q5he_a0j0pb(newReference);
-    return Sequence.fromClosure(new ISequenceClosure<ModelChange>() {
-      public Iterable<ModelChange> iterable() {
-        return new Iterable<ModelChange>() {
-          public Iterator<ModelChange> iterator() {
-            return new YieldingIterator<ModelChange>() {
-              private int __CP__ = 0;
-              protected boolean moveToNext() {
-__loop__:
-                do {
-__switch__:
-                  switch (this.__CP__) {
-                    case -1:
-                      assert false : "Internal error";
-                      return false;
-                    case 2:
-                      this.__CP__ = 1;
-                      this.yield((ModelChange) new SetReferenceChange(myChangeSet, oldNode.getNodeId(), newNode.getNodeId(), role, targetModel, newTargetId, check_r6q5he_g0a0a0a0a01a14(((jetbrains.mps.smodel.SReference) newReference)), refsAreEqual));
-                      return true;
-                    case 0:
-                      this.__CP__ = 2;
-                      break;
-                    default:
-                      break __loop__;
-                  }
-                } while (true);
-                return false;
-              }
-            };
-          }
-        };
-      }
-    });
-  }
-  private static SNodeId check_r6q5he_a0a91(SNode checkedDotOperand) {
+  private static SNodeId check_r6q5he_a0a02(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getNodeId();
-    }
-    return null;
-  }
-  private static SNodeId check_r6q5he_a0a8a14(SReference checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getTargetNodeId();
-    }
-    return null;
-  }
-  private static SModelReference check_r6q5he_a0j0pb(SReference checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getTargetSModelReference();
-    }
-    return null;
-  }
-  private static String check_r6q5he_g0a0a0a0a01a14(jetbrains.mps.smodel.SReference checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getResolveInfo();
     }
     return null;
   }

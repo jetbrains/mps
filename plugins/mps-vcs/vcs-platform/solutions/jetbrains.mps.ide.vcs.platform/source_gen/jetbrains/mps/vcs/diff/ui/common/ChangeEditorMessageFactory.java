@@ -17,7 +17,10 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.vcs.diff.changes.AddRootChange;
 import jetbrains.mps.vcs.diff.changes.DeleteRootChange;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.vcs.diff.changes.AbstractNodeGroupChange;
+import jetbrains.mps.vcs.diff.changes.HierarchicalNodeGroupChange;
+import jetbrains.mps.vcs.diff.changes.ModifiedNode;
+import jetbrains.mps.vcs.diff.changes.ChangeType;
+import jetbrains.mps.vcs.diff.changes.NodeGroupWrapChange;
 
 @GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/9170101780449072521", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 public class ChangeEditorMessageFactory {
@@ -35,8 +38,12 @@ public class ChangeEditorMessageFactory {
       }
     }).select(new ISelector<Tuples._2<SNodeId, MessageTarget>, ChangeEditorMessage>() {
       public ChangeEditorMessage select(Tuples._2<SNodeId, MessageTarget> it) {
-        ModelChange ch = (change instanceof AbstractNodeGroupChange ? ((AbstractNodeGroupChange) change).getEffectiveChange(it._0(), !(isOldEditor)) : change);
-        return new ChangeEditorMessage(editedModel.getNode(it._0()), it._1(), owner, ch, conflictChecker, highlighted);
+        if (change instanceof HierarchicalNodeGroupChange && !(((HierarchicalNodeGroupChange) change).isEmpty(!(isOldEditor)))) {
+          ModifiedNode node = ((HierarchicalNodeGroupChange) change).getModifiedNode(it._0(), !(isOldEditor));
+          ChangeType type = (change instanceof NodeGroupWrapChange ? node.getType() : change.getType());
+          return new ChangeEditorMessage(editedModel.getNode(it._0()), it._1(), owner, change, conflictChecker, type, highlighted);
+        }
+        return new ChangeEditorMessage(editedModel.getNode(it._0()), it._1(), owner, change, conflictChecker, highlighted);
       }
     }).toListSequence();
   }

@@ -71,7 +71,6 @@
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Math" />
     <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Iterator" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator" />
@@ -92,7 +91,6 @@
     <classNode dependClassName="jetbrains.mps.openapi.editor.message.EditorMessageOwner" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.ChangeType" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.ModelChange" />
-    <classNode dependClassName="jetbrains.mps.vcs.diff.changes.ModifiedNode" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.Bounds" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.ChangeColors" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.EditorCellMessageUtil" />
@@ -110,10 +108,13 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.message.EditorMessageOwner" />
-    <classNode dependClassName="jetbrains.mps.vcs.diff.changes.AbstractNodeGroupChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.AddRootChange" />
+    <classNode dependClassName="jetbrains.mps.vcs.diff.changes.ChangeType" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.DeleteRootChange" />
+    <classNode dependClassName="jetbrains.mps.vcs.diff.changes.HierarchicalNodeGroupChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.ModelChange" />
+    <classNode dependClassName="jetbrains.mps.vcs.diff.changes.ModifiedNode" />
+    <classNode dependClassName="jetbrains.mps.vcs.diff.changes.NodeGroupWrapChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.StructureChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessage" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />

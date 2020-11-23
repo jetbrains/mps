@@ -12,7 +12,7 @@ import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/6640456928090727186", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
-public class NodeGroupMoveChange extends AbstractNodeGroupChange {
+public class NodeGroupMoveChange extends HierarchicalNodeGroupChange {
 
   private final SContainmentLink myOldLink;
   private final SContainmentLink myNewLink;

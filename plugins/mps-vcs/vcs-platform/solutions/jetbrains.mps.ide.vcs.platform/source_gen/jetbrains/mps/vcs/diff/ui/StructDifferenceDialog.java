@@ -132,7 +132,7 @@ public class StructDifferenceDialog extends DialogWrapper implements DataProvide
   }
 
   /*package*/ void rebuildChangeSets() {
-    ChangeSetBuilder.rebuildChangeSet(myChangeSet, false);
+    ChangeSetBuilder.rebuildChangeSet(myChangeSet);
   }
 
   public static void showNodeDifference(Project project, SNode oldNode, SNode newNode, String oldTitle, String newTitile) {

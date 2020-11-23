@@ -19,7 +19,7 @@ import jetbrains.mps.util.NameUtil;
 import org.jetbrains.mps.openapi.model.SModel;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/4047500669634631216", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
-public class NodeGroupWrapChange extends AbstractNodeGroupChange {
+public class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
 
   protected final ModifiedNodesGroup myNewMovedGroup;
   protected final ModifiedNodesGroup myNewInsertedGroup;

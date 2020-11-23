@@ -27,12 +27,17 @@ public class SetPropertyChange extends NodeChange {
   private String myNewValue;
   private String myDescription;
 
+  public SetPropertyChange(@NotNull ChangeSet changeSet, @NotNull SNodeId nodeId, SProperty property, String newValue) {
+    this(changeSet, nodeId, nodeId, property, newValue);
+  }
+
   public SetPropertyChange(@NotNull ChangeSet changeSet, @NotNull SNodeId nodeId, SNodeId oppositeNodeId, SProperty property, String newValue) {
     super(changeSet, nodeId, oppositeNodeId);
     myProperty = property;
     myNewValue = newValue;
     myDescription = createDescription();
   }
+
   @NotNull
   public String getPropertyName() {
     return myProperty.getName();
@@ -75,8 +80,8 @@ public class SetPropertyChange extends NodeChange {
     return String.format("Set property %s to %s in node %s", myProperty, myNewValue, getAffectedNodeId(false));
   }
   private String createDescription() {
-    String oldValue = check_2yh8ir_a0a0n(getChangeSet().getOldModel().getNode(getAffectedNodeId(false)), myProperty, this);
-    String newValue = check_2yh8ir_a0b0n(getChangeSet().getNewModel().getNode(getAffectedNodeId(true)), myProperty, this);
+    String oldValue = check_2yh8ir_a0a0q(getChangeSet().getOldModel().getNode(getAffectedNodeId(false)), myProperty, this);
+    String newValue = check_2yh8ir_a0b0q(getChangeSet().getNewModel().getNode(getAffectedNodeId(true)), myProperty, this);
     return myDescription = String.format("Changed %s of #%s from '%s' to '%s'", myProperty, getAffectedNodeId(false), oldValue, newValue);
   }
   @Override
@@ -87,13 +92,13 @@ public class SetPropertyChange extends NodeChange {
   public List<Tuples._2<SNodeId, MessageTarget>> createMessageTargetsWithIds(boolean isNewModel) {
     return LinkedListSequence.fromListAndArrayNew(new LinkedList<Tuples._2<SNodeId, MessageTarget>>(), MultiTuple.<SNodeId,MessageTarget>from(getAffectedNodeId(isNewModel), ((MessageTarget) new PropertyMessageTarget(getProperty()))));
   }
-  private static String check_2yh8ir_a0a0n(SNode checkedDotOperand, SProperty myProperty, SetPropertyChange checkedDotThisExpression) {
+  private static String check_2yh8ir_a0a0q(SNode checkedDotOperand, SProperty myProperty, SetPropertyChange checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getProperty(myProperty);
     }
     return null;
   }
-  private static String check_2yh8ir_a0b0n(SNode checkedDotOperand, SProperty myProperty, SetPropertyChange checkedDotThisExpression) {
+  private static String check_2yh8ir_a0b0q(SNode checkedDotOperand, SProperty myProperty, SetPropertyChange checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getProperty(myProperty);
     }

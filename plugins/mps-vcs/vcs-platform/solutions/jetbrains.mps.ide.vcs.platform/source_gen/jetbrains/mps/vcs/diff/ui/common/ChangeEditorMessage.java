@@ -6,16 +6,15 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.nodeEditor.messageTargets.EditorMessageWithTarget;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
+import jetbrains.mps.vcs.diff.changes.ChangeType;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import jetbrains.mps.errors.MessageStatus;
 import java.awt.Color;
-import jetbrains.mps.vcs.diff.changes.ChangeType;
 import java.awt.Graphics;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import jetbrains.mps.vcs.diff.changes.ModifiedNode;
 import jetbrains.mps.errors.messageTargets.DeletedNodeMessageTarget;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import java.awt.Rectangle;
@@ -32,6 +31,8 @@ import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 public class ChangeEditorMessage extends EditorMessageWithTarget {
   @Nullable
   private final ModelChange myChange;
+
+  private final ChangeType myChangeType;
   @Nullable
   private final ConflictChecker myConflictsChecker;
   private boolean myHighlighted;
@@ -40,9 +41,19 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
   protected ChangeEditorMessage(SNode node, MessageTarget target, EditorMessageOwner owner, ModelChange change, @Nullable ConflictChecker conflictChecker, boolean highlighted) {
     super(node, MessageStatus.OK, target, null, "", owner);
     myChange = change;
+    myChangeType = myChange.getType();
     myConflictsChecker = conflictChecker;
     myHighlighted = highlighted;
   }
+
+  protected ChangeEditorMessage(SNode node, MessageTarget target, EditorMessageOwner owner, ModelChange change, @Nullable ConflictChecker conflictChecker, ChangeType changeType, boolean highlighted) {
+    super(node, MessageStatus.OK, target, null, "", owner);
+    myChangeType = changeType;
+    myConflictsChecker = conflictChecker;
+    myChange = change;
+    myHighlighted = highlighted;
+  }
+
 
   public boolean isConflicted() {
     return myConflictsChecker != null && myConflictsChecker.isChangeConflicted(myChange);
@@ -54,20 +65,7 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
   }
   @Override
   public Color getColor() {
-    return ChangeColors.getInstance().getDiffColor((isConflicted() ? ChangeType.CONFLICTED : getChangeType()));
-  }
-
-  public ModelChange getChange() {
-    return myChange;
-  }
-
-  public ChangeType getChangeType() {
-    return myChange.getType();
-  }
-
-  @Override
-  public String getMessage() {
-    return myChange.getDescription();
+    return ChangeColors.getInstance().getDiffColor((isConflicted() ? ChangeType.CONFLICTED : myChangeType));
   }
 
   @Override
@@ -86,7 +84,7 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
       return;
     }
     if (EditorCellMessageUtil.isDirectCell(cell, myMessageTarget, getNode())) {
-      Color c = ((myChange instanceof ModifiedNode && ((ModifiedNode) myChange).isMove()) ? editor.getBackground() : getColor());
+      Color c = ((myChangeType == ChangeType.MOVE) ? editor.getBackground() : getColor());
       ((jetbrains.mps.nodeEditor.cells.EditorCell) cell).paintSelection(graphics, c, false);
       repaintConflictedMessages(graphics, cell);
     } else {
@@ -210,13 +208,13 @@ __switch__:
                       this.__CP__ = 6;
                       break;
                     case 7:
-                      this._7__yield_myu41h_a0a0a0a0a0a53_it = Sequence.fromIterable(invoke(_4_child)).iterator();
+                      this._7__yield_myu41h_a0a0a0a0a0a43_it = Sequence.fromIterable(invoke(_4_child)).iterator();
                     case 8:
-                      if (!(this._7__yield_myu41h_a0a0a0a0a0a53_it.hasNext())) {
+                      if (!(this._7__yield_myu41h_a0a0a0a0a0a43_it.hasNext())) {
                         this.__CP__ = 5;
                         break;
                       }
-                      this._7__yield_myu41h_a0a0a0a0a0a53 = this._7__yield_myu41h_a0a0a0a0a0a53_it.next();
+                      this._7__yield_myu41h_a0a0a0a0a0a43 = this._7__yield_myu41h_a0a0a0a0a0a43_it.next();
                       this.__CP__ = 9;
                       break;
                     case 2:
@@ -228,7 +226,7 @@ __switch__:
                       break;
                     case 10:
                       this.__CP__ = 8;
-                      this.yield(_7__yield_myu41h_a0a0a0a0a0a53);
+                      this.yield(_7__yield_myu41h_a0a0a0a0a0a43);
                       return true;
                     case 12:
                       this.__CP__ = 1;
@@ -257,8 +255,8 @@ __switch__:
               }
               private EditorCell _4_child;
               private Iterator<EditorCell> _4_child_it;
-              private EditorCell _7__yield_myu41h_a0a0a0a0a0a53;
-              private Iterator<EditorCell> _7__yield_myu41h_a0a0a0a0a0a53_it;
+              private EditorCell _7__yield_myu41h_a0a0a0a0a0a43;
+              private Iterator<EditorCell> _7__yield_myu41h_a0a0a0a0a0a43_it;
             };
           }
         };

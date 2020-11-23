@@ -44,13 +44,14 @@
     <classNode dependClassName="jetbrains.mps.vcs.diff.ChangeSetImpl" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ModelChangeSet" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.AddRootChange" />
+    <classNode dependClassName="jetbrains.mps.vcs.diff.changes.ChangeType" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.DeleteRootChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.ModelChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.ModifiedNode" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.ModifiedNodesGroup" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.NodeGroupChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange" />
-    <classNode dependClassName="jetbrains.mps.vcs.diff.changes.NodeGroupPresenceChange" />
+    <classNode dependClassName="jetbrains.mps.vcs.diff.changes.NodeGroupNotMoveChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.NodeGroupWrapChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.NodeIdChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.SetPropertyChange" />

@@ -27,7 +27,6 @@ import jetbrains.mps.vcs.diff.ui.common.NextPreviousTraverser;
 import com.intellij.ui.JBSplitter;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry;
 import jetbrains.mps.vcs.diff.ui.common.TripleChangeGroupLayout;
-import java.awt.Color;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.module.ModelAccess;
@@ -93,7 +92,6 @@ public class MergeRootsPane implements PropertyChangeListener {
   private final InvalidationHandler myInvalidationHandler;
   private TripleChangeGroupLayout myMainLayout;
   private TripleChangeGroupLayout myInspectorLayout;
-  private static final Color DARK_LIGHT_GRAY = new Color(160, 160, 160);
 
   public MergeRootsPane(Project project, MergeSession mergeSession, SNodeId rootId, String rootName, String[] titles) {
     myProject = project;
@@ -151,7 +149,7 @@ public class MergeRootsPane implements PropertyChangeListener {
     }
 
     private void rehighlightWithRebuild() {
-      check_lifo0_a0a5lb(ProjectHelper.getModelAccess(myProject), this);
+      check_lifo0_a0a5kb(ProjectHelper.getModelAccess(myProject), this);
     }
     private void doRehighlight() {
       rehighlight();
@@ -484,7 +482,7 @@ public class MergeRootsPane implements PropertyChangeListener {
       }
     }
   }
-  private static void check_lifo0_a0a5lb(ModelAccess checkedDotOperand, final MyDifferenceListener checkedDotThisExpression) {
+  private static void check_lifo0_a0a5kb(ModelAccess checkedDotOperand, final MyDifferenceListener checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       checkedDotOperand.runReadInEDT(new Runnable() {
         public void run() {

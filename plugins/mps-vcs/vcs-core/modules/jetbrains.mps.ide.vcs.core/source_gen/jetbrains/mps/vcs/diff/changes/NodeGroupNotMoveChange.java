@@ -15,14 +15,14 @@ import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/2189615052095804047", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
-public class NodeGroupPresenceChange extends AbstractNodeGroupChange {
+public class NodeGroupNotMoveChange extends HierarchicalNodeGroupChange {
 
   private String myDescription;
   private String myShortDescription;
   private String myInternalDescription;
 
 
-  public NodeGroupPresenceChange(ChangeSet changeSet, ModifiedNodesGroup oldGroup, ModifiedNodesGroup newGroup) {
+  public NodeGroupNotMoveChange(ChangeSet changeSet, ModifiedNodesGroup oldGroup, ModifiedNodesGroup newGroup) {
     super(changeSet, oldGroup, newGroup);
     myDescription = createDescription(true);
     myShortDescription = createDescription(false);
@@ -86,7 +86,6 @@ public class NodeGroupPresenceChange extends AbstractNodeGroupChange {
     }
   }
 
-
   private String getReplacedDescription(boolean verbose) {
     String role = getLink().getName();
     int removedSize = ListSequence.fromList(getModifiedNodes(false)).count();
@@ -144,6 +143,6 @@ public class NodeGroupPresenceChange extends AbstractNodeGroupChange {
   @NotNull
   @Override
   protected ModelChange createOppositeChange() {
-    return new NodeGroupPresenceChange(getChangeSet().getOppositeChangeSet(), getGroup(true).makeCopy(), getGroup(false).makeCopy());
+    return new NodeGroupNotMoveChange(getChangeSet().getOppositeChangeSet(), getGroup(true).makeCopy(), getGroup(false).makeCopy());
   }
 }

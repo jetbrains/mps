@@ -13,7 +13,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 public class NodeGroupStructChange extends NodeGroupChange {
 
   public NodeGroupStructChange(@NotNull ChangeSet changeSet, @NotNull SNodeId parentNodeId, @NotNull SNodeId newParentNodeId, @NotNull SContainmentLink role, int begin, int end, int resultBegin, int resultEnd) {
-    super(changeSet, parentNodeId, parentNodeId, role, begin, end, resultBegin, resultEnd);
+    super(changeSet, parentNodeId, newParentNodeId, role, begin, end, resultBegin, resultEnd);
   }
 
 

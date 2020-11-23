@@ -41,9 +41,8 @@ public final class ModifiedNodesGroup {
   @Nullable
   private SNodeId myNextNodeId;
   private final SNodeId myParentId;
-  private final SContainmentLink myLink;
-  private final boolean myIsNew;
-  private final ModifiedNode.Kind myKind;
+  private final SContainmentLink myRole;
+  private final ChangeType myType;
   private ModifiedNodesGroup myNextGroup;
   private boolean myIsApplied;
   private SModel myModel;
@@ -57,26 +56,24 @@ public final class ModifiedNodesGroup {
     ModifiedNode first = ListSequence.fromList(nodes).first();
     myNodes = nodes;
     myParentId = first.getParentId();
-    myLink = first.getLink();
-    myIsNew = ListSequence.fromList(myNodes).first().isNew();
-    myKind = ListSequence.fromList(myNodes).first().getKind();
+    myRole = first.getLink();
+    myType = first.getType();
   }
 
-  public ModifiedNodesGroup(SModel model, SNodeId nextNodeId, SNodeId parentId, SContainmentLink link, boolean isNew) {
+  public ModifiedNodesGroup(SModel model, SNodeId nextNodeId, SNodeId parentId, SContainmentLink role, ChangeType type) {
     myModel = model;
     myNextNodeId = nextNodeId;
     myNodes = ListSequence.fromList(new ArrayList<ModifiedNode>());
     myParentId = parentId;
-    myLink = link;
-    myKind = ModifiedNode.Kind.PRESENCE;
-    myIsNew = isNew;
+    myRole = role;
+    myType = type;
   }
 
   public ModifiedNodesGroup makeCopy() {
     final Wrappers._T<ModifiedNodesGroup> copy = new Wrappers._T<ModifiedNodesGroup>();
     if (isEmpty()) {
-      assert isPresence();
-      copy.value = new ModifiedNodesGroup(myModel, myNextNodeId, myParentId, myLink, myIsNew);
+      assert !(isMove());
+      copy.value = new ModifiedNodesGroup(myModel, myNextNodeId, myParentId, myRole, myType);
     } else {
       copy.value = new ModifiedNodesGroup(myModel, ListSequence.fromList(myNodes).select(new ISelector<ModifiedNode, ModifiedNode>() {
         public ModifiedNode select(ModifiedNode it) {
@@ -113,14 +110,6 @@ public final class ModifiedNodesGroup {
     return myNextGroup;
   }
 
-  public void setNodeGroupChange(final AbstractNodeGroupChange nodeGroupChange) {
-    ListSequence.fromList(myNodes).visitAll(new IVisitor<ModifiedNode>() {
-      public void visit(ModifiedNode it) {
-        it.setNodeGroupChange(nodeGroupChange);
-      }
-    });
-  }
-
   public boolean isEmpty() {
     return ListSequence.fromList(myNodes).isEmpty();
   }
@@ -141,24 +130,16 @@ public final class ModifiedNodesGroup {
     myNextGroup = nextGroup;
   }
 
-  public ModifiedNode.Kind getKind() {
-    return myKind;
+  public ChangeType getType() {
+    return myType;
   }
 
   public boolean isMove() {
-    return getKind() == ModifiedNode.Kind.MOVE;
+    return myType == ChangeType.MOVE;
   }
 
-  public boolean isPresence() {
-    return getKind() == ModifiedNode.Kind.PRESENCE;
-  }
-
-  public boolean isNew() {
-    return myIsNew;
-  }
-
-  public SContainmentLink getLink() {
-    return myLink;
+  public SContainmentLink getRole() {
+    return myRole;
   }
 
   public SNodeId getParentId() {
@@ -174,7 +155,7 @@ public final class ModifiedNodesGroup {
     if (parent == null) {
       return ListSequence.fromList(new LinkedList<SNodeId>());
     }
-    return Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(parent, myLink)).select(new ISelector<SNode, SNodeId>() {
+    return Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(parent, myRole)).select(new ISelector<SNode, SNodeId>() {
       public SNodeId select(SNode it) {
         return it.getNodeId();
       }
@@ -194,7 +175,7 @@ public final class ModifiedNodesGroup {
   }
 
 
-  protected SNodeId getEffectiveBeforeAnchorId(SModel model) {
+  private SNodeId getEffectiveBeforeAnchorId(SModel model) {
     if (myNextGroup != null) {
       return myNextGroup.getFirstAppliedNodeId(model);
     }
@@ -205,9 +186,9 @@ public final class ModifiedNodesGroup {
     return myIsApplied;
   }
 
-  protected SNodeId getFirstAppliedNodeId(SModel model) {
+  private SNodeId getFirstAppliedNodeId(SModel model) {
     if (isApplied(model) && ListSequence.fromList(myNodes).isNotEmpty()) {
-      return check_1a4m4r_a0a0a36(ListSequence.fromList(myNodes).first());
+      return check_1a4m4r_a0a0a65(ListSequence.fromList(myNodes).first());
     }
     return getEffectiveBeforeAnchorId(model);
   }
@@ -338,13 +319,13 @@ public final class ModifiedNodesGroup {
       }
     }).visitAll(new IVisitor<SNodeId>() {
       public void visit(SNodeId id) {
-        check_1a4m4r_a0a0a0a0bd(model.getNode(id));
+        check_1a4m4r_a0a0a0a0uc(model.getNode(id));
       }
     });
   }
 
   protected void insertNodeBeforeAnchor(SNode parent, SNode newNode, SNode anchor) {
-    SContainmentLink link = (SNodeOperations.isInstanceOf(newNode, CONCEPTS.ChildAttribute$m8) ? LINKS.smodelAttribute$KJ43 : getLink());
+    SContainmentLink link = (SNodeOperations.isInstanceOf(newNode, CONCEPTS.ChildAttribute$m8) ? LINKS.smodelAttribute$KJ43 : getRole());
     parent.insertChildBefore(link, newNode, anchor);
   }
 
@@ -367,10 +348,13 @@ public final class ModifiedNodesGroup {
     StringBuilder sb = new StringBuilder();
     if (isMove()) {
       sb.append("moved ");
+    } else if (myType == ChangeType.ADD) {
+      sb.append("added");
+    } else if (myType == ChangeType.DELETE) {
+      sb.append("deleted");
     }
-    sb.append((isNew() ? "new " : "old "));
     sb.append("group of ");
-    sb.append(myLink.getName() + "s ");
+    sb.append(myRole.getName() + "s ");
     sb.append(IterableUtils.join(ListSequence.fromList(getIds()).select(new ISelector<SNodeId, String>() {
       public String select(SNodeId id) {
         return "#" + id;
@@ -379,13 +363,13 @@ public final class ModifiedNodesGroup {
     sb.append(" of parent #").append(myParentId);
     return sb.toString();
   }
-  private static SNodeId check_1a4m4r_a0a0a36(ModifiedNode checkedDotOperand) {
+  private static SNodeId check_1a4m4r_a0a0a65(ModifiedNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getNodeId();
     }
     return null;
   }
-  private static void check_1a4m4r_a0a0a0a0bd(SNode checkedDotOperand) {
+  private static void check_1a4m4r_a0a0a0a0uc(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.delete();
     }

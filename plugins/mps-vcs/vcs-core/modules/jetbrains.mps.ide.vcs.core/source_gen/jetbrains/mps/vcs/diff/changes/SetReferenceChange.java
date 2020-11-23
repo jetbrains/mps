@@ -37,6 +37,10 @@ public class SetReferenceChange extends NodeChange {
   private String myDescription;
 
 
+  public SetReferenceChange(@NotNull ChangeSet changeSet, @NotNull SNodeId sourceNodeId, @NotNull SReferenceLink role, @Nullable SModelReference targetModelReference, @Nullable SNodeId targetNodeId, @Nullable String resolveInfo) {
+    this(changeSet, sourceNodeId, sourceNodeId, role, targetModelReference, targetNodeId, resolveInfo, false);
+  }
+
   public SetReferenceChange(@NotNull ChangeSet changeSet, @NotNull SNodeId sourceNodeId, SNodeId oppositeNodeId, @NotNull SReferenceLink role, @Nullable SModelReference targetModelReference, @Nullable SNodeId targetNodeId, @Nullable String resolveInfo, boolean resolveInfoOnly) {
     super(changeSet, sourceNodeId, oppositeNodeId);
     myRole = role;
@@ -126,8 +130,8 @@ public class SetReferenceChange extends NodeChange {
 
   private String createDescription() {
     // TODO consider dynamic references 
-    SReference oldRef = check_mgdhcs_a0b0gb(getChangeSet().getOldModel().getNode(getAffectedNodeId(false)), myRole, this);
-    SReference newRef = check_mgdhcs_a0c0gb(getChangeSet().getNewModel().getNode(getAffectedNodeId(true)), myRole, this);
+    SReference oldRef = check_mgdhcs_a0b0ib(getChangeSet().getOldModel().getNode(getAffectedNodeId(false)), myRole, this);
+    SReference newRef = check_mgdhcs_a0c0ib(getChangeSet().getNewModel().getNode(getAffectedNodeId(true)), myRole, this);
     if (oldRef == null) {
       return String.format("Added %s reference", myRole);
     }
@@ -174,43 +178,43 @@ public class SetReferenceChange extends NodeChange {
     SNode node = getChangeSet().getOldModel().getNode(getAffectedNodeId(false));
     assert node != null;
     SReference ref = node.getReference(getRoleLink());
-    SModelReference targetModel = check_mgdhcs_a0d0kb(ref);
+    SModelReference targetModel = check_mgdhcs_a0d0mb(ref);
     if (Objects.equals(SModelOperations.getPointer(getChangeSet().getOldModel()), targetModel)) {
       // This is internal reference 
       targetModel = null;
     }
-    return new SetReferenceChange(getChangeSet().getOppositeChangeSet(), getAffectedNodeId(true), getAffectedNodeId(false), myRole, targetModel, check_mgdhcs_f0a5a63(ref), check_mgdhcs_g0a5a63(((jetbrains.mps.smodel.SReference) ref)), myResolveInfoOnly);
+    return new SetReferenceChange(getChangeSet().getOppositeChangeSet(), getAffectedNodeId(true), getAffectedNodeId(false), myRole, targetModel, check_mgdhcs_f0a5a83(ref), check_mgdhcs_g0a5a83(((jetbrains.mps.smodel.SReference) ref)), myResolveInfoOnly);
   }
 
   @Override
   public List<Tuples._2<SNodeId, MessageTarget>> createMessageTargetsWithIds(boolean isNewModel) {
     return LinkedListSequence.fromListAndArrayNew(new LinkedList<Tuples._2<SNodeId, MessageTarget>>(), MultiTuple.<SNodeId,MessageTarget>from(getAffectedNodeId(isNewModel), ((MessageTarget) new ReferenceMessageTarget(getRoleLink()))));
   }
-  private static SReference check_mgdhcs_a0b0gb(SNode checkedDotOperand, SReferenceLink myRole, SetReferenceChange checkedDotThisExpression) {
+  private static SReference check_mgdhcs_a0b0ib(SNode checkedDotOperand, SReferenceLink myRole, SetReferenceChange checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getReference(myRole);
     }
     return null;
   }
-  private static SReference check_mgdhcs_a0c0gb(SNode checkedDotOperand, SReferenceLink myRole, SetReferenceChange checkedDotThisExpression) {
+  private static SReference check_mgdhcs_a0c0ib(SNode checkedDotOperand, SReferenceLink myRole, SetReferenceChange checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getReference(myRole);
     }
     return null;
   }
-  private static SModelReference check_mgdhcs_a0d0kb(SReference checkedDotOperand) {
+  private static SModelReference check_mgdhcs_a0d0mb(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetSModelReference();
     }
     return null;
   }
-  private static SNodeId check_mgdhcs_f0a5a63(SReference checkedDotOperand) {
+  private static SNodeId check_mgdhcs_f0a5a83(SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getTargetNodeId();
     }
     return null;
   }
-  private static String check_mgdhcs_g0a5a63(jetbrains.mps.smodel.SReference checkedDotOperand) {
+  private static String check_mgdhcs_g0a5a83(jetbrains.mps.smodel.SReference checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getResolveInfo();
     }

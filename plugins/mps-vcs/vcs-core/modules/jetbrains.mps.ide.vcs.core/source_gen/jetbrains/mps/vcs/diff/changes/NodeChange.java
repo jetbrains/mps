@@ -15,6 +15,10 @@ public abstract class NodeChange extends StructureChange {
   private final SNodeId myAffectedNodeId;
   private final SNodeId myOppositeNodeId;
 
+  public NodeChange(@NotNull ChangeSet changeSet, @NotNull SNodeId affectedNodeId) {
+    this(changeSet, affectedNodeId, affectedNodeId);
+  }
+
   public NodeChange(@NotNull ChangeSet changeSet, @NotNull SNodeId affectedNodeId, @NotNull SNodeId oppositeNodeId) {
     super(changeSet, calcRootId(changeSet, affectedNodeId));
     myAffectedNodeId = affectedNodeId;

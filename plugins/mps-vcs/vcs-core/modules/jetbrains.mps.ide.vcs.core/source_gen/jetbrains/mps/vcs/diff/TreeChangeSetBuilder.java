@@ -21,15 +21,13 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.vcs.diff.changes.AddRootChange;
 import jetbrains.mps.vcs.diff.changes.DeleteRootChange;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.vcs.diff.changes.SetPropertyChange;
-import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
 import jetbrains.mps.vcs.diff.changes.SetConceptChange;
 import jetbrains.mps.vcs.diff.changes.NodeIdChange;
-import jetbrains.mps.vcs.diff.changes.AbstractNodeGroupChange;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.vcs.diff.changes.HierarchicalNodeGroupChange;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.vcs.diff.changes.NodeGroupPresenceChange;
+import jetbrains.mps.vcs.diff.changes.NodeGroupNotMoveChange;
 import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
 import java.util.Objects;
 import jetbrains.mps.vcs.diff.changes.NodeGroupWrapChange;
@@ -38,11 +36,10 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.util.LongestCommonSubsequenceFinder;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import jetbrains.mps.vcs.diff.changes.ChangeType;
 import jetbrains.mps.util.Pair;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.vcs.diff.merge.SNodeCompare;
 
 @GeneratedClass(node = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)/8137292817906104459", model = "r:5744ed46-c83f-47cd-94ce-f24d1f92d6a1(jetbrains.mps.vcs.diff)")
 /*package*/ final class TreeChangeSetBuilder {
@@ -71,7 +68,8 @@ import jetbrains.mps.vcs.diff.merge.SNodeCompare;
     if (oldRootNode == null || newRootNode == null) {
       return true;
     }
-    return Sequence.fromIterable(ElementaryChangesBuilder.getChanges(changeSet, oldRootNode, newRootNode)).isNotEmpty();
+    ElementaryChangesBuilder builder = new ElementaryChangesBuilder(changeSet, oldRootNode, newRootNode);
+    return Sequence.fromIterable(builder.getNodeChanges()).isNotEmpty() || Sequence.fromIterable(builder.getModifiedNodes()).isNotEmpty();
   }
 
   /*package*/ List<ModelChange> getChanges(boolean orderByNewGroups) {
@@ -81,25 +79,19 @@ import jetbrains.mps.vcs.diff.merge.SNodeCompare;
     } else if (myNewRootNode == null) {
       ListSequence.fromList(result).addElement(new DeleteRootChange(myChangeSet, myOldRootNode.getNodeId()));
     } else if (myOldRootNode != null || myNewRootNode != null) {
-      Set<ModelChange> elementaryChanges = SetSequence.fromSetWithValues(new HashSet<ModelChange>(), ElementaryChangesBuilder.getChanges(myChangeSet, myOldRootNode, myNewRootNode));
-      ListSequence.fromList(result).addSequence(SetSequence.fromSet(getNonStructureChanges(elementaryChanges)));
-      ListSequence.fromList(result).addSequence(ListSequence.fromList(getStructureChanges(elementaryChanges, orderByNewGroups)));
+      ElementaryChangesBuilder builder = new ElementaryChangesBuilder(myChangeSet, myOldRootNode, myNewRootNode);
+      List<ModelChange> nodeChanges = Sequence.fromIterable(builder.getNodeChanges()).toListSequence();
+      ListSequence.fromList(result).addSequence(ListSequence.fromList(nodeChanges));
+      ListSequence.fromList(result).addSequence(ListSequence.fromList(getStructureChanges(ListSequence.fromList(nodeChanges).ofType(SetConceptChange.class).toListSequence(), Sequence.fromIterable(builder.getModifiedNodes()).toListSequence(), orderByNewGroups)));
     }
     return result;
   }
 
-  private Set<ModelChange> getNonStructureChanges(Set<ModelChange> changes) {
-    return SetSequence.fromSetWithValues(new HashSet<ModelChange>(), SetSequence.fromSet(changes).where(new IWhereFilter<ModelChange>() {
-      public boolean accept(ModelChange it) {
-        return it instanceof SetPropertyChange || it instanceof SetReferenceChange || it instanceof SetConceptChange;
-      }
-    }));
-  }
 
-  private List<ModelChange> getStructureChanges(Set<ModelChange> elementaryChanges, boolean orderByNewGroups) {
+  private List<ModelChange> getStructureChanges(List<SetConceptChange> conceptChanges, List<ModifiedNode> modifiedNodes, boolean orderByNewGroups) {
 
-    storeModifiedNodes(elementaryChanges);
-    buildModifiedNodesHierarchy(elementaryChanges);
+    storeModifiedNodes(modifiedNodes);
+    buildModifiedNodesHierarchy(conceptChanges, modifiedNodes);
 
     Set<ModelChange> unsortedChanges = SetSequence.fromSet(new HashSet<ModelChange>());
     Set<ModelChange> presenceAndIdChanges = collectPresenceAndIdChanges();
@@ -118,23 +110,23 @@ import jetbrains.mps.vcs.diff.merge.SNodeCompare;
     final List<ModelChange> result = ListSequence.fromList(new ArrayList<ModelChange>());
     SetSequence.fromSet(unsortedChanges).where(new IWhereFilter<ModelChange>() {
       public boolean accept(ModelChange it) {
-        return !(it instanceof AbstractNodeGroupChange);
+        return !(it instanceof HierarchicalNodeGroupChange);
       }
     }).visitAll(new IVisitor<ModelChange>() {
       public void visit(ModelChange it) {
         ListSequence.fromList(result).addElement(it);
       }
     });
-    ListSequence.fromList(getOrderedStructureChanges(SetSequence.fromSet(unsortedChanges).ofType(AbstractNodeGroupChange.class), orderByNewGroups)).visitAll(new IVisitor<AbstractNodeGroupChange>() {
-      public void visit(AbstractNodeGroupChange it) {
+    ListSequence.fromList(getOrderedStructureChanges(SetSequence.fromSet(unsortedChanges).ofType(HierarchicalNodeGroupChange.class), orderByNewGroups)).visitAll(new IVisitor<HierarchicalNodeGroupChange>() {
+      public void visit(HierarchicalNodeGroupChange it) {
         ListSequence.fromList(result).addElement(it);
       }
     });
     return result;
   }
 
-  private void storeModifiedNodes(Set<ModelChange> elementaryChanges) {
-    SetSequence.fromSet(elementaryChanges).ofType(ModifiedNode.class).visitAll(new IVisitor<ModifiedNode>() {
+  private void storeModifiedNodes(List<ModifiedNode> modifiedNodes) {
+    ListSequence.fromList(modifiedNodes).visitAll(new IVisitor<ModifiedNode>() {
       public void visit(ModifiedNode it) {
         MapSequence.fromMap(getModifiedNodes(it.isNew())).put(it.getNodeId(), it);
       }
@@ -145,15 +137,15 @@ import jetbrains.mps.vcs.diff.merge.SNodeCompare;
     return (isNew ? myNewModifiedNodes : myOldModifiedNodes);
   }
 
-  private void buildModifiedNodesHierarchy(Set<ModelChange> elementaryChanges) {
+  private void buildModifiedNodesHierarchy(List<SetConceptChange> conceptChanges, List<ModifiedNode> modifiedNodes) {
 
-    final Set<SNodeId> idsWithChangedConcept = SetSequence.fromSetWithValues(new HashSet<SNodeId>(), SetSequence.fromSet(elementaryChanges).ofType(SetConceptChange.class).select(new ISelector<SetConceptChange, SNodeId>() {
+    final Set<SNodeId> idsWithChangedConcept = SetSequence.fromSetWithValues(new HashSet<SNodeId>(), ListSequence.fromList(conceptChanges).select(new ISelector<SetConceptChange, SNodeId>() {
       public SNodeId select(SetConceptChange it) {
         return it.getAffectedNodeId();
       }
     }));
 
-    SetSequence.fromSet(elementaryChanges).ofType(ModifiedNode.class).visitAll(new IVisitor<ModifiedNode>() {
+    ListSequence.fromList(modifiedNodes).visitAll(new IVisitor<ModifiedNode>() {
       public void visit(ModifiedNode node) {
         SNodeId parentId = node.getParentId();
         if (SetSequence.fromSet(idsWithChangedConcept).contains(parentId)) {
@@ -168,9 +160,9 @@ import jetbrains.mps.vcs.diff.merge.SNodeCompare;
     });
   }
 
-  private List<AbstractNodeGroupChange> getOrderedStructureChanges(Iterable<AbstractNodeGroupChange> changes, final boolean orderByNewGroups) {
-    for (AbstractNodeGroupChange c1 : changes) {
-      for (AbstractNodeGroupChange c2 : changes) {
+  private List<HierarchicalNodeGroupChange> getOrderedStructureChanges(Iterable<HierarchicalNodeGroupChange> changes, final boolean orderByNewGroups) {
+    for (HierarchicalNodeGroupChange c1 : changes) {
+      for (HierarchicalNodeGroupChange c2 : changes) {
         if (c1 == c2) {
           continue;
         }
@@ -182,19 +174,19 @@ import jetbrains.mps.vcs.diff.merge.SNodeCompare;
         }
       }
     }
-    Sequence.fromIterable(changes).visitAll(new IVisitor<AbstractNodeGroupChange>() {
-      public void visit(AbstractNodeGroupChange it) {
+    Sequence.fromIterable(changes).visitAll(new IVisitor<HierarchicalNodeGroupChange>() {
+      public void visit(HierarchicalNodeGroupChange it) {
         it.keepOnlyTopLevelChildren(false);
         it.keepOnlyTopLevelChildren(true);
       }
     });
-    final List<AbstractNodeGroupChange> result = ListSequence.fromList(new ArrayList<AbstractNodeGroupChange>());
-    Sequence.fromIterable(changes).where(new IWhereFilter<AbstractNodeGroupChange>() {
-      public boolean accept(AbstractNodeGroupChange it) {
+    final List<HierarchicalNodeGroupChange> result = ListSequence.fromList(new ArrayList<HierarchicalNodeGroupChange>());
+    Sequence.fromIterable(changes).where(new IWhereFilter<HierarchicalNodeGroupChange>() {
+      public boolean accept(HierarchicalNodeGroupChange it) {
         return it.getIsTopLevel(orderByNewGroups);
       }
-    }).visitAll(new IVisitor<AbstractNodeGroupChange>() {
-      public void visit(AbstractNodeGroupChange topLevelChange) {
+    }).visitAll(new IVisitor<HierarchicalNodeGroupChange>() {
+      public void visit(HierarchicalNodeGroupChange topLevelChange) {
         ListSequence.fromList(result).addSequence(ListSequence.fromList(topLevelChange.getOrderedChanges(orderByNewGroups)));
       }
     });
@@ -205,13 +197,13 @@ import jetbrains.mps.vcs.diff.merge.SNodeCompare;
 
   private Set<ModelChange> collectWrapChanges(Set<ModelChange> presenceAndIdChanges, final Set<ModelChange> moveChanges) {
     final Set<ModelChange> result = SetSequence.fromSet(new HashSet<ModelChange>());
-    final List<NodeGroupPresenceChange> presenceChangesToDelete = ListSequence.fromList(new ArrayList<NodeGroupPresenceChange>());
-    SetSequence.fromSet(presenceAndIdChanges).ofType(NodeGroupPresenceChange.class).where(new IWhereFilter<NodeGroupPresenceChange>() {
-      public boolean accept(NodeGroupPresenceChange presenceChange) {
+    final List<NodeGroupNotMoveChange> presenceChangesToDelete = ListSequence.fromList(new ArrayList<NodeGroupNotMoveChange>());
+    SetSequence.fromSet(presenceAndIdChanges).ofType(NodeGroupNotMoveChange.class).where(new IWhereFilter<NodeGroupNotMoveChange>() {
+      public boolean accept(NodeGroupNotMoveChange presenceChange) {
         return presenceChange.isEmpty(false) && ListSequence.fromList(presenceChange.getModifiedNodes(true)).count() == 1;
       }
-    }).visitAll(new IVisitor<NodeGroupPresenceChange>() {
-      public void visit(NodeGroupPresenceChange presenceChange) {
+    }).visitAll(new IVisitor<NodeGroupNotMoveChange>() {
+      public void visit(NodeGroupNotMoveChange presenceChange) {
         final ModifiedNode insertedNode = ListSequence.fromList(presenceChange.getModifiedNodes(true)).first();
         List<NodeGroupMoveChange> moves = SetSequence.fromSet(moveChanges).ofType(NodeGroupMoveChange.class).where(new IWhereFilter<NodeGroupMoveChange>() {
           public boolean accept(NodeGroupMoveChange move) {
@@ -251,7 +243,7 @@ import jetbrains.mps.vcs.diff.merge.SNodeCompare;
           }
         });
         if (newGroup != null) {
-          NodeGroupMoveChange change = new NodeGroupMoveChange(myChangeSet, oldGroup, newGroup, oldGroup.getLink(), newGroup.getLink());
+          NodeGroupMoveChange change = new NodeGroupMoveChange(myChangeSet, oldGroup, newGroup, oldGroup.getRole(), newGroup.getRole());
           SetSequence.fromSet(result).addElement(change);
         }
       }
@@ -290,7 +282,7 @@ import jetbrains.mps.vcs.diff.merge.SNodeCompare;
         storeMovedChildren(oldParent, newParent, link);
         continue;
       }
-      SetSequence.fromSet(result).addSequence(SetSequence.fromSet(collectGroupedChangesForLink(oldParent, newParent, link)));
+      SetSequence.fromSet(result).addSequence(SetSequence.fromSet(collectGroupedChangesForLink(oldParent.getNodeId(), newParent.getNodeId(), link)));
     }
     return result;
   }
@@ -338,10 +330,10 @@ import jetbrains.mps.vcs.diff.merge.SNodeCompare;
     }).distinct()).distinct();
   }
 
-  private Set<ModelChange> collectGroupedChangesForLink(final SNode oldParent, final SNode newParent, final SContainmentLink link) {
+  private Set<ModelChange> collectGroupedChangesForLink(final SNodeId oldParentId, final SNodeId newParentId, final SContainmentLink link) {
 
-    final List<SNodeId> oldChildrenIds = getLinkChildrenIds(oldParent.getNodeId(), link, false);
-    final List<SNodeId> newChildrenIds = getLinkChildrenIds(newParent.getNodeId(), link, true);
+    final List<SNodeId> oldChildrenIds = getLinkChildrenIds(oldParentId, link, false);
+    final List<SNodeId> newChildrenIds = getLinkChildrenIds(newParentId, link, true);
 
     return SetSequence.fromSetWithValues(new HashSet<ModelChange>(), ListSequence.fromList(new LongestCommonSubsequenceFinder<SNodeId>(oldChildrenIds, newChildrenIds).getDifferentIndices()).translate(new ITranslator2<Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>>, ModelChange>() {
       public Iterable<ModelChange> translate(Tuples._2<Tuples._2<Integer, Integer>, Tuples._2<Integer, Integer>> indices) {
@@ -349,7 +341,7 @@ import jetbrains.mps.vcs.diff.merge.SNodeCompare;
         List<SNodeId> newDiffIds = ListSequence.fromList(newChildrenIds).page((int) indices._1()._0(), (int) indices._1()._1()).toListSequence();
         int oldEndIndex = (int) indices._0()._1();
         SNodeId beforeId = (oldEndIndex < ListSequence.fromList(oldChildrenIds).count() ? ListSequence.fromList(oldChildrenIds).getElement(oldEndIndex) : null);
-        return collectChangesInInterval(oldParent.getNodeId(), newParent.getNodeId(), link, oldDiffIds, newDiffIds, beforeId);
+        return collectChangesInInterval(oldParentId, newParentId, link, oldDiffIds, newDiffIds, beforeId);
       }
     }));
   }
@@ -390,7 +382,7 @@ import jetbrains.mps.vcs.diff.merge.SNodeCompare;
         newPresenceGroup = newGroup;
       }
       if (newPresenceGroup == null) {
-        newPresenceGroup = new ModifiedNodesGroup(getModel(true), beforeId, newParentId, link, true);
+        newPresenceGroup = new ModifiedNodesGroup(getModel(true), beforeId, newParentId, link, ChangeType.ADD);
       }
       SetSequence.fromSet(result).addSequence(SetSequence.fromSet(collectPresenceAndIdChangesFromGroup(oldGroup, newPresenceGroup)));
     }
@@ -401,7 +393,7 @@ import jetbrains.mps.vcs.diff.merge.SNodeCompare;
         SetSequence.fromSet(myNewMovedGroups).addElement(newGroup);
         continue;
       }
-      ModifiedNodesGroup oldPresenceGroup = new ModifiedNodesGroup(getModel(false), beforeId, oldParentId, link, false);
+      ModifiedNodesGroup oldPresenceGroup = new ModifiedNodesGroup(getModel(false), beforeId, oldParentId, link, ChangeType.DELETE);
       SetSequence.fromSet(result).addSequence(SetSequence.fromSet(collectPresenceAndIdChangesFromGroup(oldPresenceGroup, newGroup)));
     }
     return result;
@@ -413,13 +405,13 @@ import jetbrains.mps.vcs.diff.merge.SNodeCompare;
     // Collect ID changes 
     List<Pair<SNodeId, SNodeId>> newToOldPairs = createIdChangesMap(oldGroup.getIds(), newGroup.getIds());
     if (ListSequence.fromList(newToOldPairs).isEmpty()) {
-      SetSequence.fromSet(result).addElement(new NodeGroupPresenceChange(myChangeSet, oldGroup, newGroup));
+      SetSequence.fromSet(result).addElement(new NodeGroupNotMoveChange(myChangeSet, oldGroup, newGroup));
       return result;
     }
     Pair<SNodeId, SNodeId> prevIdPair = new Pair(null, null);
     for (Pair<SNodeId, SNodeId> idPair : newToOldPairs) {
       SetSequence.fromSet(result).addSequence(SetSequence.fromSet(collectPresenceAndIdChangesFromGroupInInterval(oldGroup, newGroup, prevIdPair, idPair, null, null)));
-      SetSequence.fromSet(result).addElement(new NodeIdChange(myChangeSet, oldGroup.getParentId(), newGroup.getParentId(), oldGroup.getLink(), idPair.o2, idPair.o1));
+      SetSequence.fromSet(result).addElement(new NodeIdChange(myChangeSet, oldGroup.getParentId(), newGroup.getParentId(), oldGroup.getRole(), idPair.o2, idPair.o1));
       SetSequence.fromSet(result).addSequence(SetSequence.fromSet(collectIdChangeChildren(idPair.o2, idPair.o1)));
       prevIdPair = idPair;
     }
@@ -430,8 +422,8 @@ import jetbrains.mps.vcs.diff.merge.SNodeCompare;
   private Set<ModelChange> collectPresenceAndIdChangesFromGroupInInterval(ModifiedNodesGroup oldGroup, ModifiedNodesGroup newGroup, Pair<SNodeId, SNodeId> prevIdPair, Pair<SNodeId, SNodeId> idPair, ModifiedNodesGroup nextOldGroup, ModifiedNodesGroup nextNewGroup) {
     Set<ModelChange> result = SetSequence.fromSet(new HashSet<ModelChange>());
 
-    ModifiedNodesGroup oldChildGroup = createSubGroup(oldGroup, check_m5rebn_b0a2a25(prevIdPair), check_m5rebn_c0a2a25(idPair), nextOldGroup);
-    ModifiedNodesGroup newChildGroup = createSubGroup(newGroup, check_m5rebn_b0a3a25(prevIdPair), check_m5rebn_c0a3a25(idPair), nextNewGroup);
+    ModifiedNodesGroup oldChildGroup = createSubGroup(oldGroup, check_m5rebn_b0a2a15(prevIdPair), check_m5rebn_c0a2a15(idPair), nextOldGroup);
+    ModifiedNodesGroup newChildGroup = createSubGroup(newGroup, check_m5rebn_b0a3a15(prevIdPair), check_m5rebn_c0a3a15(idPair), nextNewGroup);
     if (oldChildGroup.isNotEmpty() || newChildGroup.isNotEmpty()) {
       if (idPair == null) {
         oldChildGroup.setNextNodeId(oldGroup.getNextNodeId());
@@ -454,8 +446,8 @@ import jetbrains.mps.vcs.diff.merge.SNodeCompare;
     }).toListSequence();
     ModifiedNodesGroup group;
     if (ListSequence.fromList(changes).isEmpty()) {
-      assert parentGroup.isPresence();
-      group = new ModifiedNodesGroup(parentGroup.getModel(), id, parentGroup.getParentId(), parentGroup.getLink(), false);
+      assert !(parentGroup.isMove());
+      group = new ModifiedNodesGroup(parentGroup.getModel(), id, parentGroup.getParentId(), parentGroup.getRole(), ChangeType.DELETE);
     } else {
       group = new ModifiedNodesGroup(parentGroup.getModel(), changes, id);
     }
@@ -478,7 +470,7 @@ import jetbrains.mps.vcs.diff.merge.SNodeCompare;
   private List<ModifiedNodesGroup> collectNodeGroupsInInterval(List<SNodeId> diffIds, SNodeId beforeId, boolean isNew) {
     List<ModifiedNodesGroup> groups = ListSequence.fromList(new ArrayList<ModifiedNodesGroup>());
     List<ModifiedNode> groupNodes = ListSequence.fromList(new ArrayList<ModifiedNode>());
-    ModifiedNode.Kind prevNodeKind = null;
+    ChangeType prevNodeChangeType = null;
     for (SNodeId id : diffIds) {
       ModifiedNode node = MapSequence.fromMap(getModifiedNodes(isNew)).get(id);
       if (node == null) {
@@ -486,18 +478,18 @@ import jetbrains.mps.vcs.diff.merge.SNodeCompare;
           ListSequence.fromList(groups).addElement(new ModifiedNodesGroup(getModel(isNew), groupNodes, id));
           groupNodes = ListSequence.fromList(new ArrayList<ModifiedNode>());
         }
-        prevNodeKind = null;
+        prevNodeChangeType = null;
         continue;
       }
-      ModifiedNode.Kind nodeKind = node.getKind();
-      if (isSameGroup(prevNodeKind, nodeKind, node, ListSequence.fromList(groupNodes).last())) {
+      ChangeType nodeChangeType = node.getType();
+      if (isSameGroup(prevNodeChangeType, nodeChangeType, node, ListSequence.fromList(groupNodes).last())) {
         ListSequence.fromList(groupNodes).addElement(node);
       } else {
         ListSequence.fromList(groups).addElement(new ModifiedNodesGroup(getModel(isNew), groupNodes, node.getNodeId()));
         groupNodes = ListSequence.fromList(new ArrayList<ModifiedNode>());
         ListSequence.fromList(groupNodes).addElement(node);
       }
-      prevNodeKind = nodeKind;
+      prevNodeChangeType = nodeChangeType;
     }
     if (ListSequence.fromList(groupNodes).isNotEmpty()) {
       ListSequence.fromList(groups).addElement(new ModifiedNodesGroup(getModel(isNew), groupNodes, beforeId));
@@ -512,15 +504,15 @@ import jetbrains.mps.vcs.diff.merge.SNodeCompare;
     return groups;
   }
 
-  private boolean isSameGroup(ModifiedNode.Kind prevNodeKind, ModifiedNode.Kind nodeKind, ModifiedNode node, ModifiedNode prevNode) {
+  private boolean isSameGroup(ChangeType prevNodeChangeType, ChangeType nodeChangeType, ModifiedNode node, ModifiedNode prevNode) {
 
-    if (prevNodeKind == null) {
+    if (prevNodeChangeType == null) {
       return true;
     }
-    if (nodeKind != prevNodeKind) {
+    if (nodeChangeType != prevNodeChangeType) {
       return false;
     }
-    if (nodeKind == ModifiedNode.Kind.PRESENCE) {
+    if (nodeChangeType == ChangeType.ADD || nodeChangeType == ChangeType.DELETE) {
       return true;
     }
 
@@ -558,9 +550,10 @@ import jetbrains.mps.vcs.diff.merge.SNodeCompare;
     }).distinct()).distinct();
 
     final Set<ModelChange> result = SetSequence.fromSet(new HashSet<ModelChange>());
+    SetSequence.fromSet(result).addSequence(Sequence.fromIterable(DiffUtil.collectNodeChanges(myChangeSet, oldParentNode.getNode(), newParentNode.getNode())));
     Sequence.fromIterable(links).visitAll(new IVisitor<SContainmentLink>() {
       public void visit(SContainmentLink link) {
-        SetSequence.fromSet(result).addSequence(SetSequence.fromSet(collectGroupedChangesForLink(oldParentNode.getNode(), newParentNode.getNode(), link)));
+        SetSequence.fromSet(result).addSequence(SetSequence.fromSet(collectGroupedChangesForLink(oldParentNode.getNodeId(), newParentNode.getNodeId(), link)));
       }
     });
     return result;
@@ -574,13 +567,7 @@ import jetbrains.mps.vcs.diff.merge.SNodeCompare;
         SNodeId newNodeId = ListSequence.fromList(newIds).getElement(i);
         SNode oldNode = myChangeSet.getOldModel().getNode(oldNodeId);
         SNode newNode = myChangeSet.getNewModel().getNode(newNodeId);
-        if (!(Objects.equals(SNodeOperations.getConcept(oldNode), SNodeOperations.getConcept(newNode)))) {
-          continue;
-        }
-        if (!(SNodeCompare.conceptHasStaticScopeNone(SNodeOperations.getConcept(oldNode), myChangeSet.getOldModel()))) {
-          continue;
-        }
-        if (DiffUtil.allPropertiesAreEqual(oldNode, newNode) && DiffUtil.allReferencesAreEqual(oldNode, newNode)) {
+        if (DiffUtil.nodesDifferByIdOnly(myChangeSet.getOldModel(), oldNode, newNode)) {
           ListSequence.fromList(newToOldPairs).addElement(new Pair(newNodeId, oldNodeId));
           prevIdChangeNewIndex = i;
           break;
@@ -589,25 +576,25 @@ import jetbrains.mps.vcs.diff.merge.SNodeCompare;
     }
     return newToOldPairs;
   }
-  private static SNodeId check_m5rebn_b0a2a25(Pair<SNodeId, SNodeId> checkedDotOperand) {
+  private static SNodeId check_m5rebn_b0a2a15(Pair<SNodeId, SNodeId> checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.o2;
     }
     return null;
   }
-  private static SNodeId check_m5rebn_c0a2a25(Pair<SNodeId, SNodeId> checkedDotOperand) {
+  private static SNodeId check_m5rebn_c0a2a15(Pair<SNodeId, SNodeId> checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.o2;
     }
     return null;
   }
-  private static SNodeId check_m5rebn_b0a3a25(Pair<SNodeId, SNodeId> checkedDotOperand) {
+  private static SNodeId check_m5rebn_b0a3a15(Pair<SNodeId, SNodeId> checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.o1;
     }
     return null;
   }
-  private static SNodeId check_m5rebn_c0a3a25(Pair<SNodeId, SNodeId> checkedDotOperand) {
+  private static SNodeId check_m5rebn_c0a3a15(Pair<SNodeId, SNodeId> checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.o1;
     }

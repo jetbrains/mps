@@ -417,7 +417,7 @@ public class DiffEditor implements EditorMessageOwner {
     @Override
     public String getToolTipText(MouseEvent event) {
       String text = super.getToolTipText(event);
-      return (text != null ? text : getToolTipTextFromSelectedLayers(true));
+      return (text != null && (text != null && text.length() > 0) ? text : getToolTipTextFromSelectedLayers(true));
     }
 
     @Override
@@ -464,7 +464,7 @@ public class DiffEditor implements EditorMessageOwner {
     @Override
     public String getToolTipText(MouseEvent event) {
       String text = super.getToolTipText(event);
-      return (text != null ? text : getToolTipTextFromSelectedLayers(false));
+      return (text != null && (text != null && text.length() > 0) ? text : getToolTipTextFromSelectedLayers(false));
     }
 
     @Override

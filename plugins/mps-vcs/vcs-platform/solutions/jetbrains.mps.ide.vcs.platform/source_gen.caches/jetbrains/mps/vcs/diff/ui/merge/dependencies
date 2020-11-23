@@ -158,7 +158,6 @@
     <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="com.intellij.openapi.ui.Splitter" />
     <classNode dependClassName="com.intellij.ui.JBSplitter" />
-    <classNode dependClassName="java.awt.Color" />
     <classNode dependClassName="java.awt.Graphics" />
     <classNode dependClassName="java.beans.PropertyChangeEvent" />
     <classNode dependClassName="java.lang.Boolean" />
