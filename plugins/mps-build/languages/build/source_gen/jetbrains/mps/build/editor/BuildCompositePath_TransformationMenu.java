@@ -44,6 +44,7 @@ import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class BuildCompositePath_TransformationMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM);
@@ -205,6 +206,7 @@ public class BuildCompositePath_TransformationMenu extends TransformationMenuBas
   private static SNode createBuildCompositePath_a4cilw_a0a0a0b1(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BuildCompositePath$Eh);
     n0.forChild(LINKS.tail$$gpz).initNode(p0, CONCEPTS.BuildCompositePath$Eh, true);
+    n0.setProperty(PROPS.head$$gC$, "");
     return n0.getResult();
   }
 
@@ -215,5 +217,9 @@ public class BuildCompositePath_TransformationMenu extends TransformationMenuBas
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink tail$$gpz = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f2L, "tail");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty head$$gC$ = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x779c6e65c01467f1L, 0x779c6e65c01467f3L, "head");
   }
 }
