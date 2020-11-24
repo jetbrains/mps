@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,17 +15,13 @@
  */
 package jetbrains.mps.ide.save;
 
-import com.intellij.AppTopics;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ApplicationComponent;
-import com.intellij.openapi.fileEditor.FileDocumentManagerAdapter;
+import com.intellij.openapi.fileEditor.FileDocumentManagerListener;
 import com.intellij.openapi.project.ProjectManager;
-import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.make.MakeServiceComponent;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.project.Project;
 
 /**
  * Idea platform has the same mechanism in {@link com.intellij.ide.SaveAndSyncHandlerImpl}
@@ -33,51 +29,27 @@ import org.jetbrains.mps.openapi.module.SRepository;
  * <p>
  * SO this class is a delegate: it saves everything whenever the platform saves everything.
  */
-public class IdeMPSFileSaver implements ApplicationComponent {
-  private MessageBusConnection myMessageBusConnection;
-  private final SRepository myRepository;
-  private final MakeServiceComponent myMakeComponent;
+public class IdeMPSFileSaver implements FileDocumentManagerListener {
 
-  public IdeMPSFileSaver(MPSCoreComponents coreComponents) {
-    myRepository = coreComponents.getModuleRepository();
-    myMakeComponent = coreComponents.getPlatform().findComponent(MakeServiceComponent.class);
+  public IdeMPSFileSaver() {
   }
 
   @Override
-  @NotNull
-  public String getComponentName() {
-    return "Models Saver";
-  }
+  public void beforeAllDocumentsSaving() {
+    ThreadUtils.assertEDT();
 
-  @Override
-  public void initComponent() {
-    myMessageBusConnection = ApplicationManager.getApplication().getMessageBus().connect();
-    subscribeToDocumentSync();
-  }
+    // FIXME consider IMakeService check to move into SaveRepositoryCommand - whether other clients of repo save might
+    // be interested as well.
 
-  protected void subscribeToDocumentSync() {
-    myMessageBusConnection.subscribe(AppTopics.FILE_DOCUMENT_SYNC, new FileDocumentManagerAdapter() {
-      @Override
-      public void beforeAllDocumentsSaving() {
-        ThreadUtils.assertEDT();
-
-        SaveRepositoryCommand saveCommand = new SaveRepositoryCommand(myRepository);
-        // FIXME consider IMakeService check to move into SaveRepositoryCommand - whether other clients of repo save might
-        // be interested as well.
-
-        if (ProjectManager.getInstance().getOpenProjects().length > 0) {
-          if (myMakeComponent.isSessionActive()) {
-            ApplicationManager.getApplication().invokeLater(saveCommand::execute);
-          } else {
-            saveCommand.execute();
-          }
-        }
+    if (ProjectManager.getInstance().getOpenProjects().length > 0) {
+      Runnable saveRepo = () -> jetbrains.mps.project.ProjectManager.getInstance().getOpenedProjects().stream().map(Project::getRepository).map(SaveRepositoryCommand::new).forEach(SaveRepositoryCommand::execute);
+      final MPSCoreComponents coreComponents = MPSCoreComponents.getInstance();
+      final MakeServiceComponent makeService = coreComponents.getPlatform().findComponent(MakeServiceComponent.class);
+      if (makeService != null && makeService.isSessionActive()) {
+        ApplicationManager.getApplication().invokeLater(saveRepo);
+      } else {
+        saveRepo.run();
       }
-    });
-  }
-
-  @Override
-  public void disposeComponent() {
-    myMessageBusConnection.disconnect();
+    }
   }
 }

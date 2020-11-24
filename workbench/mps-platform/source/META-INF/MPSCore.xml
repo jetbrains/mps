@@ -36,11 +36,6 @@
     </component>
 
     <component>
-      <implementation-class>jetbrains.mps.ide.save.IdeMPSFileSaver</implementation-class>
-      <headless-implementation-class>jetbrains.mps.ide.save.DummyIdeMPSFileSaver</headless-implementation-class>
-    </component>
-
-    <component>
       <implementation-class>jetbrains.mps.ide.tooltips.MPSToolTipManager</implementation-class>
     </component>
 
@@ -99,6 +94,7 @@
 
   <applicationListeners>
     <listener class="jetbrains.mps.help.PlatformHelpURLProvider" topic="com.intellij.ide.AppLifecycleListener"/>
+    <listener class="jetbrains.mps.ide.save.IdeMPSFileSaver" topic="com.intellij.openapi.fileEditor.FileDocumentManagerListener" activeInHeadlessMode="false"/>
   </applicationListeners>
 
   <extensionPoints>
