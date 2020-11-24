@@ -69,7 +69,8 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
   public UpdateResult update(EditorComponent component, boolean incremental, boolean applyQuickFixes, Cancellable cancellable) {
     SNode rootNode = component.getEditedNode();
 
-    this.myIndexWasNotReady = !(ClassifierSuccessors.getInstance().isIndexReady(myProject));
+    ClassifierSuccessors cs = myProject.getComponent(ClassifierSuccessors.class);
+    this.myIndexWasNotReady = cs == null || !(cs.isIndexReady(myProject));
     if (this.myIndexWasNotReady) {
       return UpdateResult.CANCELLED;
     }
@@ -127,7 +128,7 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
   }
 
   private void collectOverriddenMethods(SNode container, Set<EditorMessage> messages) {
-    List<SNode> derivedClassifiers = ClassifierSuccessors.getInstance().getDerivedClassifiers(myProject, container, new GlobalScope(myProject.getRepository()));
+    List<SNode> derivedClassifiers = myProject.getComponent(ClassifierSuccessors.class).getDerivedClassifiers(myProject, container, new GlobalScope(myProject.getRepository()));
     // fixme derivedClassifiers looks for project modules (because ClassifiersSuccessors works only with EditableSModel 
     // fixme in this method we decide whether to show the icon in the gutter for the classifier; in EditorMessageIconRenderer#getClickAction we do the real search where we invoke DerivedClassifiers/DerivedInterfaces finder 
     // fixme the latter works for all models 

@@ -29,9 +29,14 @@
     <classNode extendsClassName="jetbrains.mps.components.CoreComponent" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.search.MPSBaseLanguage">
+    <classNode dependClassName="java.lang.Class" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.search.ClassifierSuccessors" />
+    <classNode dependClassName="jetbrains.mps.components.CoreComponent" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode extendsClassName="jetbrains.mps.components.ComponentHost" />
     <classNode extendsClassName="jetbrains.mps.components.ComponentPlugin" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.search.MpsScopesUtil">

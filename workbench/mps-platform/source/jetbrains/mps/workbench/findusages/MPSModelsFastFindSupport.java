@@ -16,7 +16,6 @@
 package jetbrains.mps.workbench.findusages;
 
 import com.intellij.openapi.Disposable;
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.project.IndexNotReadyException;
 import com.intellij.openapi.project.Project;
@@ -75,9 +74,11 @@ public class MPSModelsFastFindSupport implements FindUsagesParticipant, Disposab
       if (mpsProject == null) {
         return;
       }
-      MPSCoreComponents mpsCoreComponents = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class);
+      MPSCoreComponents mpsCoreComponents = MPSCoreComponents.getInstance();
       final MPSModelsFastFindSupport ffs = new MPSModelsFastFindSupport(mpsProject, mpsCoreComponents);
-      Disposer.register(project, ffs);
+      //noinspection IncorrectParentDisposable
+      Disposer.register(project, ffs); // our plugin is not reloadable, it's ok to depend on project
+      // XXX need to find out if there's a way to tell IDEA the whole plugin is not subject for such checks
     }
   }
 

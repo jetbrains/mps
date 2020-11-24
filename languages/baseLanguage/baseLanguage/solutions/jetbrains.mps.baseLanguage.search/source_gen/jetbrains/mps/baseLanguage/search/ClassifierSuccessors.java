@@ -50,6 +50,11 @@ public class ClassifierSuccessors implements CoreComponent {
     myFastFinder = finder;
   }
 
+  /**
+   * 
+   * @deprecated it's CoreComponent, access through ComponentHost
+   */
+  @Deprecated(forRemoval = true)
   public static ClassifierSuccessors getInstance() {
     return INSTANCE;
   }

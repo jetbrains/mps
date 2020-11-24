@@ -280,6 +280,9 @@
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
       <concept id="1146644641414" name="jetbrains.mps.baseLanguage.structure.ProtectedVisibility" flags="nn" index="3Tmbuc" />
+      <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
+        <reference id="1116615189566" name="classifier" index="3VsUkX" />
+      </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
       <concept id="1170345865475" name="jetbrains.mps.baseLanguage.structure.AnonymousClass" flags="ig" index="1Y3b0j">
         <reference id="1170346070688" name="classifier" index="1Y3XeK" />
@@ -563,6 +566,25 @@
           </node>
         </node>
         <node concept="3clFbH" id="222ObIpzTf5" role="3cqZAp" />
+        <node concept="3cpWs8" id="8i5A5YNScR" role="3cqZAp">
+          <node concept="3cpWsn" id="8i5A5YNScS" role="3cpWs9">
+            <property role="TrG5h" value="cs" />
+            <node concept="3uibUv" id="8i5A5YNJBO" role="1tU5fm">
+              <ref role="3uigEE" to="5h2r:3ohKLrgURCX" resolve="ClassifierSuccessors" />
+            </node>
+            <node concept="2OqwBi" id="8i5A5YNScT" role="33vP2m">
+              <node concept="37vLTw" id="8i5A5YNScU" role="2Oq$k0">
+                <ref role="3cqZAo" node="13$TqNLKC7t" resolve="myProject" />
+              </node>
+              <node concept="liA8E" id="8i5A5YNScV" role="2OqNvi">
+                <ref role="37wK5l" to="z1c4:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
+                <node concept="3VsKOn" id="8i5A5YNScW" role="37wK5m">
+                  <ref role="3VsUkX" to="5h2r:3ohKLrgURCX" resolve="ClassifierSuccessors" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="222ObIpy_0Y" role="3cqZAp">
           <node concept="37vLTI" id="222ObIpy_0Z" role="3clFbG">
             <node concept="2OqwBi" id="222ObIpy_10" role="37vLTJ">
@@ -571,16 +593,23 @@
               </node>
               <node concept="Xjq3P" id="222ObIpy_12" role="2Oq$k0" />
             </node>
-            <node concept="3fqX7Q" id="222ObIpy_13" role="37vLTx">
-              <node concept="2OqwBi" id="222ObIpy_14" role="3fr31v">
-                <node concept="2YIFZM" id="222ObIpy_15" role="2Oq$k0">
-                  <ref role="1Pybhc" to="5h2r:3ohKLrgURCX" resolve="ClassifierSuccessors" />
-                  <ref role="37wK5l" to="5h2r:3ohKLrgUVZY" resolve="getInstance" />
+            <node concept="22lmx$" id="8i5A5YO4Bx" role="37vLTx">
+              <node concept="3clFbC" id="8i5A5YO6bq" role="3uHU7B">
+                <node concept="10Nm6u" id="8i5A5YO6v7" role="3uHU7w" />
+                <node concept="37vLTw" id="8i5A5YO5M0" role="3uHU7B">
+                  <ref role="3cqZAo" node="8i5A5YNScS" resolve="cs" />
                 </node>
-                <node concept="liA8E" id="222ObIpy_16" role="2OqNvi">
-                  <ref role="37wK5l" to="5h2r:3ohKLrgUTXK" resolve="isIndexReady" />
-                  <node concept="37vLTw" id="222ObIpy_17" role="37wK5m">
-                    <ref role="3cqZAo" node="13$TqNLKC7t" resolve="myProject" />
+              </node>
+              <node concept="3fqX7Q" id="222ObIpy_13" role="3uHU7w">
+                <node concept="2OqwBi" id="222ObIpy_14" role="3fr31v">
+                  <node concept="37vLTw" id="8i5A5YO4rD" role="2Oq$k0">
+                    <ref role="3cqZAo" node="8i5A5YNScS" resolve="cs" />
+                  </node>
+                  <node concept="liA8E" id="222ObIpy_16" role="2OqNvi">
+                    <ref role="37wK5l" to="5h2r:3ohKLrgUTXK" resolve="isIndexReady" />
+                    <node concept="37vLTw" id="222ObIpy_17" role="37wK5m">
+                      <ref role="3cqZAo" node="13$TqNLKC7t" resolve="myProject" />
+                    </node>
                   </node>
                 </node>
               </node>
@@ -1203,10 +1232,6 @@
           <node concept="3cpWsn" id="7k6J8c3tim_" role="3cpWs9">
             <property role="TrG5h" value="derivedClassifiers" />
             <node concept="2OqwBi" id="7k6J8c3timA" role="33vP2m">
-              <node concept="2YIFZM" id="7k6J8c3timB" role="2Oq$k0">
-                <ref role="37wK5l" to="5h2r:3ohKLrgUVZY" resolve="getInstance" />
-                <ref role="1Pybhc" to="5h2r:3ohKLrgURCX" resolve="ClassifierSuccessors" />
-              </node>
               <node concept="liA8E" id="7k6J8c3timC" role="2OqNvi">
                 <ref role="37wK5l" to="5h2r:7fMiRhdrqGO" resolve="getDerivedClassifiers" />
                 <node concept="37vLTw" id="2iTZ7f9HC4G" role="37wK5m">
@@ -1226,6 +1251,17 @@
                         <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
                       </node>
                     </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="2OqwBi" id="8i5A5YO6JN" role="2Oq$k0">
+                <node concept="37vLTw" id="8i5A5YO6JO" role="2Oq$k0">
+                  <ref role="3cqZAo" node="13$TqNLKC7t" resolve="myProject" />
+                </node>
+                <node concept="liA8E" id="8i5A5YO6JP" role="2OqNvi">
+                  <ref role="37wK5l" to="z1c4:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
+                  <node concept="3VsKOn" id="8i5A5YO6JQ" role="37wK5m">
+                    <ref role="3VsUkX" to="5h2r:3ohKLrgURCX" resolve="ClassifierSuccessors" />
                   </node>
                 </node>
               </node>

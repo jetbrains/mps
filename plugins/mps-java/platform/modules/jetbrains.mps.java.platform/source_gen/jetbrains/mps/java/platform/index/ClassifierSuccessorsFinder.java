@@ -47,8 +47,18 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 @GeneratedClass(node = "r:2ba45a7a-594f-4a4d-be5c-07edf2b58826(jetbrains.mps.java.platform.index)/4183391441819863852", model = "r:2ba45a7a-594f-4a4d-be5c-07edf2b58826(jetbrains.mps.java.platform.index)")
 public class ClassifierSuccessorsFinder implements ClassifierSuccessors.Finder, Disposable {
 
-  public ClassifierSuccessorsFinder(MPSCoreComponents coreComponents) {
-    ClassifierSuccessors.getInstance().setFinder(this);
+  public ClassifierSuccessorsFinder() {
+    // I've got several options here how to approach IDEA's component->service transition and to address indexer need for project: 
+    //  - follow MPSModelsFastFindSupport$Plug approach with postStartupActivity (or some projectListener) and keep Project 
+    //    right inside Finder instance. This would require change in ClassifierSuccessor to support multiple Finders; besides, 
+    //    there was already Project exposed in CS API (isIndexReady(Project)), that's why I decided not to follow 'per-project'  
+    //    instance trail. 
+    //  - Keep single Finder (CS.setFinder()), and use AppLifecycleListener. For our purpose here, just to setFinder(), I see 
+    //    no apparent benefit in replacing AppComponent with an AppLifecycleListener. 
+    ClassifierSuccessors cc = MPSCoreComponents.getInstance().getPlatform().findComponent(ClassifierSuccessors.class);
+    if (cc != null) {
+      cc.setFinder(this);
+    }
   }
 
   @Override
@@ -111,7 +121,10 @@ public class ClassifierSuccessorsFinder implements ClassifierSuccessors.Finder, 
 
   @Override
   public void dispose() {
-    ClassifierSuccessors.getInstance().setFinder(null);
+    ClassifierSuccessors cc = MPSCoreComponents.getInstance().getPlatform().findComponent(ClassifierSuccessors.class);
+    if (cc != null) {
+      cc.setFinder(null);
+    }
   }
 
   private static class ModifiedSuccessorFinder {

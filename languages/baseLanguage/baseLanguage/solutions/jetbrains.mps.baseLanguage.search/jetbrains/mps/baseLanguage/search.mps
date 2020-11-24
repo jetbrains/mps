@@ -78,6 +78,15 @@
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
+      <concept id="1109279763828" name="jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration" flags="ng" index="16euLQ">
+        <child id="1214996921760" name="bound" index="3ztrMU" />
+      </concept>
+      <concept id="1109279851642" name="jetbrains.mps.baseLanguage.structure.GenericDeclaration" flags="ng" index="16eOlS">
+        <child id="1109279881614" name="typeVariableDeclaration" index="16eVyc" />
+      </concept>
+      <concept id="1109283449304" name="jetbrains.mps.baseLanguage.structure.TypeVariableReference" flags="in" index="16syzq">
+        <reference id="1109283546497" name="typeVariableDeclaration" index="16sUi3" />
+      </concept>
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
       </concept>
@@ -148,6 +157,7 @@
       <concept id="7812454656619025412" name="jetbrains.mps.baseLanguage.structure.LocalMethodCall" flags="nn" index="1rXfSq" />
       <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
         <reference id="1107535924139" name="classifier" index="3uigEE" />
+        <child id="1109201940907" name="parameter" index="11_B2D" />
       </concept>
       <concept id="1081773326031" name="jetbrains.mps.baseLanguage.structure.BinaryOperation" flags="nn" index="3uHJSO">
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
@@ -174,6 +184,9 @@
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
+      <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
+        <reference id="1116615189566" name="classifier" index="3VsUkX" />
+      </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
     <language id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots">
@@ -1454,6 +1467,14 @@
     <node concept="3uibUv" id="720AnXOsvyB" role="1zkMxy">
       <ref role="3uigEE" to="wyuk:~ComponentPlugin" resolve="ComponentPlugin" />
     </node>
+    <node concept="312cEg" id="8i5A5YMDB6" role="jymVt">
+      <property role="TrG5h" value="mySuccessorIndex" />
+      <node concept="3Tm6S6" id="8i5A5YMDB7" role="1B3o_S" />
+      <node concept="3uibUv" id="8i5A5YMAa8" role="1tU5fm">
+        <ref role="3uigEE" node="3ohKLrgURCX" resolve="ClassifierSuccessors" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="8i5A5YMDw3" role="jymVt" />
     <node concept="3clFbW" id="17_Ehlwj8wD" role="jymVt">
       <node concept="3Tm1VV" id="2IizP$ACE91" role="1B3o_S" />
       <node concept="3cqZAl" id="17_Ehlwj8wE" role="3clF45" />
@@ -1471,18 +1492,116 @@
             <ref role="37wK5l" to="wyuk:~ComponentPlugin.init()" resolve="init" />
           </node>
         </node>
-        <node concept="3clFbF" id="17_Ehlwjbr6" role="3cqZAp">
-          <node concept="1rXfSq" id="4hiugqyyZxB" role="3clFbG">
-            <ref role="37wK5l" to="wyuk:~ComponentPlugin.init(jetbrains.mps.components.CoreComponent)" resolve="init" />
-            <node concept="2ShNRf" id="17_Ehlwjbr8" role="37wK5m">
-              <node concept="1pGfFk" id="17_Ehlwjbra" role="2ShVmc">
-                <ref role="37wK5l" node="3ohKLrgURCZ" resolve="ClassifierSuccessors" />
+        <node concept="3clFbF" id="8i5A5YMDpE" role="3cqZAp">
+          <node concept="37vLTI" id="8i5A5YMDpG" role="3clFbG">
+            <node concept="1rXfSq" id="8i5A5YMDbd" role="37vLTx">
+              <ref role="37wK5l" to="wyuk:~ComponentPlugin.init(jetbrains.mps.components.CoreComponent)" resolve="init" />
+              <node concept="2ShNRf" id="8i5A5YMDbe" role="37wK5m">
+                <node concept="1pGfFk" id="8i5A5YMDbf" role="2ShVmc">
+                  <ref role="37wK5l" node="3ohKLrgURCZ" resolve="ClassifierSuccessors" />
+                </node>
               </node>
+            </node>
+            <node concept="37vLTw" id="8i5A5YMDGz" role="37vLTJ">
+              <ref role="3cqZAo" node="8i5A5YMDB6" resolve="mySuccessorIndex" />
             </node>
           </node>
         </node>
       </node>
       <node concept="2AHcQZ" id="17_Ehlwjbr2" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="8i5A5YM_Zt" role="jymVt" />
+    <node concept="2tJIrI" id="1tWx2iUe6rY" role="jymVt" />
+    <node concept="3clFb_" id="1tWx2iUe6CW" role="jymVt">
+      <property role="TrG5h" value="dispose" />
+      <node concept="3Tm1VV" id="1tWx2iUe6CX" role="1B3o_S" />
+      <node concept="3cqZAl" id="1tWx2iUe6CZ" role="3clF45" />
+      <node concept="3clFbS" id="1tWx2iUe6D0" role="3clF47">
+        <node concept="3clFbF" id="1tWx2iUe6D3" role="3cqZAp">
+          <node concept="3nyPlj" id="1tWx2iUe6D2" role="3clFbG">
+            <ref role="37wK5l" to="wyuk:~ComponentPlugin.dispose()" resolve="dispose" />
+          </node>
+        </node>
+        <node concept="3clFbF" id="1tWx2iUe6Qi" role="3cqZAp">
+          <node concept="37vLTI" id="1tWx2iUe78l" role="3clFbG">
+            <node concept="10Nm6u" id="1tWx2iUe7hb" role="37vLTx" />
+            <node concept="37vLTw" id="1tWx2iUe6Qg" role="37vLTJ">
+              <ref role="3cqZAo" node="8i5A5YMDB6" resolve="mySuccessorIndex" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="1tWx2iUe6D1" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="8i5A5YM_ZI" role="jymVt" />
+    <node concept="3uibUv" id="8i5A5YMA7b" role="EKbjA">
+      <ref role="3uigEE" to="wyuk:~ComponentHost" resolve="ComponentHost" />
+    </node>
+    <node concept="3clFb_" id="8i5A5YMA92" role="jymVt">
+      <property role="TrG5h" value="findComponent" />
+      <node concept="3Tm1VV" id="8i5A5YMA93" role="1B3o_S" />
+      <node concept="2AHcQZ" id="8i5A5YMA95" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+      </node>
+      <node concept="16euLQ" id="8i5A5YMA96" role="16eVyc">
+        <property role="TrG5h" value="T" />
+        <node concept="3uibUv" id="1lOYnIdarJ$" role="3ztrMU">
+          <ref role="3uigEE" to="wyuk:~CoreComponent" resolve="CoreComponent" />
+        </node>
+      </node>
+      <node concept="16syzq" id="8i5A5YMA98" role="3clF45">
+        <ref role="16sUi3" node="8i5A5YMA96" resolve="T" />
+      </node>
+      <node concept="37vLTG" id="8i5A5YMA99" role="3clF46">
+        <property role="TrG5h" value="componentClass" />
+        <node concept="3uibUv" id="8i5A5YMA9a" role="1tU5fm">
+          <ref role="3uigEE" to="wyt6:~Class" resolve="Class" />
+          <node concept="16syzq" id="8i5A5YMA9b" role="11_B2D">
+            <ref role="16sUi3" node="8i5A5YMA96" resolve="T" />
+          </node>
+        </node>
+        <node concept="2AHcQZ" id="8i5A5YMA9c" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="8i5A5YMA9e" role="3clF47">
+        <node concept="3clFbJ" id="8i5A5YMAdz" role="3cqZAp">
+          <node concept="2OqwBi" id="8i5A5YMCq7" role="3clFbw">
+            <node concept="3VsKOn" id="8i5A5YMC0v" role="2Oq$k0">
+              <ref role="3VsUkX" node="3ohKLrgURCX" resolve="ClassifierSuccessors" />
+            </node>
+            <node concept="liA8E" id="8i5A5YMCPV" role="2OqNvi">
+              <ref role="37wK5l" to="wyt6:~Class.isAssignableFrom(java.lang.Class)" resolve="isAssignableFrom" />
+              <node concept="37vLTw" id="8i5A5YMCT4" role="37wK5m">
+                <ref role="3cqZAo" node="8i5A5YMA99" resolve="componentClass" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbS" id="8i5A5YMAd_" role="3clFbx">
+            <node concept="3cpWs6" id="8i5A5YMDU4" role="3cqZAp">
+              <node concept="2OqwBi" id="8i5A5YMEyL" role="3cqZAk">
+                <node concept="37vLTw" id="8i5A5YME4t" role="2Oq$k0">
+                  <ref role="3cqZAo" node="8i5A5YMA99" resolve="componentClass" />
+                </node>
+                <node concept="liA8E" id="8i5A5YMEZr" role="2OqNvi">
+                  <ref role="37wK5l" to="wyt6:~Class.cast(java.lang.Object)" resolve="cast" />
+                  <node concept="37vLTw" id="8i5A5YMF7m" role="37wK5m">
+                    <ref role="3cqZAo" node="8i5A5YMDB6" resolve="mySuccessorIndex" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="8i5A5YMFv3" role="3cqZAp">
+          <node concept="10Nm6u" id="8i5A5YMFFO" role="3cqZAk" />
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="8i5A5YMA9f" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
@@ -1739,6 +1858,24 @@
         <node concept="3clFbF" id="3ohKLrgUW03" role="3cqZAp">
           <node concept="37vLTw" id="2BHiRxeok$I" role="3clFbG">
             <ref role="3cqZAo" node="3ohKLrgUTXw" resolve="INSTANCE" />
+          </node>
+        </node>
+      </node>
+      <node concept="P$JXv" id="8i5A5YNJWY" role="lGtFl">
+        <node concept="TZ5HI" id="8i5A5YNJWZ" role="3nqlJM">
+          <node concept="TZ5HA" id="8i5A5YNJX0" role="3HnX3l">
+            <node concept="1dT_AC" id="8i5A5YNKuF" role="1dT_Ay">
+              <property role="1dT_AB" value="it's CoreComponent, access through ComponentHost" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="8i5A5YNJX1" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+        <node concept="2B6LJw" id="8i5A5YNK0y" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="8i5A5YNK1l" role="2B70Vg">
+            <property role="3clFbU" value="true" />
           </node>
         </node>
       </node>
