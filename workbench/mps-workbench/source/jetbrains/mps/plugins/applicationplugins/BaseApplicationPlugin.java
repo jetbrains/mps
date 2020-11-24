@@ -127,6 +127,10 @@ public abstract class BaseApplicationPlugin implements ApplicationPlugin {
     ActionManagerEx.getInstanceEx().registerAction(action.getActionId(), action, getId());
   }
 
+  protected void replaceAction(BaseAction action) {
+    ActionManagerEx.getInstanceEx().replaceAction(action.getActionId(), action);
+  }
+
   protected void addGroup(BaseGroup group) {
     ActionManagerEx.getInstanceEx().registerAction(group.getId(), group, getId());
     myGroups.add(group);

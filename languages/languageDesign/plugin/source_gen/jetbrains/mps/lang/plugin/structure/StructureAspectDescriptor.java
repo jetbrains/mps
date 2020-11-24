@@ -511,6 +511,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.property("caption", 0x1189e8d9a59L).type(PrimitiveTypeId.STRING).origin("1205250923097").done();
     b.property("ID", 0x374ac263e13f4abeL).type(PrimitiveTypeId.STRING).origin("3984210554599197374").done();
+    b.property("overrides", 0x471ab485cd3c6daL).type(PrimitiveTypeId.BOOLEAN).origin("320225375803393754").done();
     b.property("description", 0x11a7cb78588L).type(PrimitiveTypeId.STRING).origin("1213273179528").done();
     b.property("mnemonic", 0x11b1742d216L).type(MetaIdFactory.dataTypeId(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x118b7ee16efL)).origin("1215865999894").done();
     b.property("isAlwaysVisible", 0x1190fbf3301L).type(PrimitiveTypeId.BOOLEAN).origin("1207149998849").done();

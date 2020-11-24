@@ -2495,5 +2495,48 @@
       <ref role="1YaFvo" to="tp4k:hwsE7KS" resolve="ActionDeclaration" />
     </node>
   </node>
+  <node concept="18kY7G" id="12_4z$RKYEr">
+    <property role="3GE5qa" value="Actions.Action" />
+    <property role="TrG5h" value="check_ActionDeclaration_overrides" />
+    <node concept="3clFbS" id="12_4z$RKYEs" role="18ibNy">
+      <node concept="3clFbJ" id="12_4z$RL02R" role="3cqZAp">
+        <node concept="1Wc70l" id="12_4z$RL1Qe" role="3clFbw">
+          <node concept="2OqwBi" id="12_4z$RL3O7" role="3uHU7w">
+            <node concept="2OqwBi" id="12_4z$RL27v" role="2Oq$k0">
+              <node concept="1YBJjd" id="12_4z$RL1QO" role="2Oq$k0">
+                <ref role="1YBMHb" node="12_4z$RKYEu" resolve="actionDeclaration" />
+              </node>
+              <node concept="3TrcHB" id="12_4z$RL3h2" role="2OqNvi">
+                <ref role="3TsBF5" to="tp4k:3taKAfxfOEY" resolve="ID" />
+              </node>
+            </node>
+            <node concept="17RlXB" id="12_4z$RL46n" role="2OqNvi" />
+          </node>
+          <node concept="2OqwBi" id="12_4z$RL1fs" role="3uHU7B">
+            <node concept="1YBJjd" id="12_4z$RL1ft" role="2Oq$k0">
+              <ref role="1YBMHb" node="12_4z$RKYEu" resolve="actionDeclaration" />
+            </node>
+            <node concept="3TrcHB" id="12_4z$RL1fu" role="2OqNvi">
+              <ref role="3TsBF5" to="tp4k:hLEOxsOWrq" resolve="overrides" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbS" id="12_4z$RL02T" role="3clFbx">
+          <node concept="a7r0C" id="12_4z$RL7LK" role="3cqZAp">
+            <node concept="Xl_RD" id="12_4z$RL8HZ" role="a7wSD">
+              <property role="Xl_RC" value="Action ID to override should be provided" />
+            </node>
+            <node concept="1YBJjd" id="12_4z$RL7M2" role="1urrMF">
+              <ref role="1YBMHb" node="12_4z$RKYEu" resolve="actionDeclaration" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="12_4z$RKYEu" role="1YuTPh">
+      <property role="TrG5h" value="actionDeclaration" />
+      <ref role="1YaFvo" to="tp4k:hwsE7KS" resolve="ActionDeclaration" />
+    </node>
+  </node>
 </model>
 
