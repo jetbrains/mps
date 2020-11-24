@@ -188,7 +188,6 @@
       </patternset>
     </unzip>
 
-    <antcall target="split-platform-util-ui-jar"/>
     <antcall target="repackage-java-plugin"/>
 
     <!-- Set executable flag to binaries -->
@@ -224,20 +223,6 @@
     <delete dir="${basedir}/../plugins/java/lib/java-impl/"/>
     <!-- JavaPsiBundle needs its resources. See MPS-31934 -->
     <copy file="${basedir}/../plugins/java/lib/java_resources_en.jar" todir="${basedir}/../lib/"/>
-  </target>
-
-  <!--Repackage the platform jar see IDEA-235927, hopefully to be gone in 2020.1 -->
-  <target name="split-platform-util-ui-jar">
-    <echo message="splitting IJ platform-util.ui.jar in two"/>
-    <property name="mps.lib.folder" value="${basedir}/../lib"/>
-    <jar destfile="${mps.lib.folder}/platform-util-ui-xml.jar">
-      <zipfileset src="${mps.lib.folder}/platform-util-ui.jar" includes="org/w3c/dom/*.class" />
-    </jar>
-    <jar destfile="${mps.lib.folder}/tmp.jar">
-      <zipfileset src="${mps.lib.folder}/platform-util-ui.jar" excludes="org/"/>
-    </jar>
-    <delete file="${mps.lib.folder}/platform-util-ui.jar"/>
-    <move file="${mps.lib.folder}/tmp.jar" tofile="${mps.lib.folder}/platform-util-ui.jar" />
   </target>
 
   <target name="download-diffutils" depends="check-diffutils,install-ivy" if="${difutill.missing}"
