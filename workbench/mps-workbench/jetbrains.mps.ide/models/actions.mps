@@ -200,6 +200,7 @@
     <import index="439w" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.codeInsight.hint(MPS.IDEA/)" />
     <import index="smoa" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.refactoring(MPS.Platform/)" />
     <import index="y8s3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.structure.project(MPS.Core/)" />
+    <import index="jkny" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.wm(MPS.IDEA/)" />
     <import index="22ra" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.update(MPS.Editor/)" implicit="true" />
     <import index="ov6m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui.messages(MPS.IDEA/)" implicit="true" />
     <import index="tpcn" ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)" implicit="true" />
@@ -241,7 +242,7 @@
         <property id="1205250923097" name="caption" index="2uzpH1" />
         <property id="7458746815261976739" name="requiredAccess" index="2YLI8m" />
         <property id="3984210554599197374" name="ID" index="3mtozt" />
-        <property id="320225375803393754" name="override" index="1oCAQi" />
+        <property id="320225375803393754" name="overrides" index="1oCAQi" />
         <property id="997079742910640235" name="fillActionContext" index="1teQrl" />
         <property id="1213273179528" name="description" index="1WHSii" />
         <child id="394857668356997869" name="places" index="med8o" />
@@ -31015,7 +31016,7 @@
   </node>
   <node concept="sEfby" id="4HeMkQiYObL">
     <property role="TrG5h" value="TodoViewer" />
-    <property role="2XNbzY" value="TODO" />
+    <property role="2XNbzY" value="ToDo" />
     <property role="3GE5qa" value="todo" />
     <node concept="1QGGSu" id="6XsdSpiw0iU" role="1nVCmq">
       <node concept="10M0yZ" id="6XsdSpiw0CW" role="3xaMm5">
