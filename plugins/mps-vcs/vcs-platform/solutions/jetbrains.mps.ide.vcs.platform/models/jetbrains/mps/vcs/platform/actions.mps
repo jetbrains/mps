@@ -60,6 +60,7 @@
     <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" />
     <import index="rfhd" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util.registry(MPS.IDEA/)" />
     <import index="exr9" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor(MPS.Editor/)" />
+    <import index="de5p" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs.actions(MPS.IDEA/)" />
     <import index="px75" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor.leftHighlighter(MPS.Editor/)" implicit="true" />
   </imports>
   <registry>
@@ -3848,11 +3849,14 @@
             <property role="TrG5h" value="taskName" />
             <node concept="17QB3L" id="30Bv66KVC4B" role="1tU5fm" />
             <node concept="3cpWs3" id="30Bv66KVIdP" role="33vP2m">
+              <node concept="Xl_RD" id="30Bv66KVGRs" role="3uHU7B">
+                <property role="Xl_RC" value="Retrieving annotations for " />
+              </node>
               <node concept="2OqwBi" id="4RwqHDAaGmD" role="3uHU7w">
                 <node concept="2OqwBi" id="4RwqHDAaCAw" role="2Oq$k0">
                   <node concept="2OqwBi" id="55zwzn2E9IW" role="2Oq$k0">
                     <node concept="2WthIp" id="55zwzn2E9nh" role="2Oq$k0" />
-                    <node concept="1DTwFV" id="55zwzn2Ea28" role="2OqNvi">
+                    <node concept="1DTwFV" id="1YeblkqUfnn" role="2OqNvi">
                       <ref role="2WH_rO" node="3WCIgQv3c81" resolve="editor" />
                     </node>
                   </node>
@@ -3864,9 +3868,30 @@
                   <ref role="37wK5l" to="mhbf:~SNode.getName()" resolve="getName" />
                 </node>
               </node>
-              <node concept="Xl_RD" id="30Bv66KVGRs" role="3uHU7B">
-                <property role="Xl_RC" value="Retrieving annotations for " />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="3_ALl2yyU3e" role="3cqZAp">
+          <node concept="3cpWsn" id="3_ALl2yyU3f" role="3cpWs9">
+            <property role="TrG5h" value="actionLock" />
+            <node concept="3uibUv" id="3_ALl2yyU3g" role="1tU5fm">
+              <ref role="3uigEE" to="j86o:~BackgroundableActionLock" resolve="BackgroundableActionLock" />
+            </node>
+            <node concept="2OqwBi" id="1YeblkqUaq$" role="33vP2m">
+              <node concept="2WthIp" id="1YeblkqUaqB" role="2Oq$k0" />
+              <node concept="2XshWL" id="1YeblkqUaqD" role="2OqNvi">
+                <ref role="2WH_rO" node="1YeblkqU7a2" resolve="getAnnotateRootLock" />
               </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1MwXCw0PrFR" role="3cqZAp">
+          <node concept="2OqwBi" id="1MwXCw0PshK" role="3clFbG">
+            <node concept="37vLTw" id="1MwXCw0PrFP" role="2Oq$k0">
+              <ref role="3cqZAo" node="3_ALl2yyU3f" resolve="actionLock" />
+            </node>
+            <node concept="liA8E" id="1MwXCw0Pt03" role="2OqNvi">
+              <ref role="37wK5l" to="j86o:~BackgroundableActionLock.lock()" resolve="lock" />
             </node>
           </node>
         </node>
@@ -3901,6 +3926,9 @@
                   </node>
                   <node concept="37vLTw" id="55zwzn2E3Y6" role="37wK5m">
                     <ref role="3cqZAo" node="2$2IPPcWWtJ" resolve="activeVCS" />
+                  </node>
+                  <node concept="37vLTw" id="6_X3MDMUBHy" role="37wK5m">
+                    <ref role="3cqZAo" node="3_ALl2yyU3f" resolve="actionLock" />
                   </node>
                 </node>
               </node>
@@ -4004,6 +4032,24 @@
             <node concept="10Nm6u" id="2$2IPPd1QP9" role="3uHU7w" />
             <node concept="37vLTw" id="55zwzn2AsHv" role="3uHU7B">
               <ref role="3cqZAo" node="2$2IPPd5Dor" resolve="vf" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="3_ALl2yyX30" role="3cqZAp">
+          <node concept="3clFbS" id="3_ALl2yyX32" role="3clFbx">
+            <node concept="3cpWs6" id="3_ALl2yyYDA" role="3cqZAp">
+              <node concept="3clFbT" id="3_ALl2yyYTk" role="3cqZAk" />
+            </node>
+          </node>
+          <node concept="2OqwBi" id="3_ALl2yyXRZ" role="3clFbw">
+            <node concept="liA8E" id="3_ALl2yyYl7" role="2OqNvi">
+              <ref role="37wK5l" to="j86o:~BackgroundableActionLock.isLocked()" resolve="isLocked" />
+            </node>
+            <node concept="2OqwBi" id="1YeblkqUbjB" role="2Oq$k0">
+              <node concept="2WthIp" id="1YeblkqUbjE" role="2Oq$k0" />
+              <node concept="2XshWL" id="1YeblkqUbjG" role="2OqNvi">
+                <ref role="2WH_rO" node="1YeblkqU7a2" resolve="getAnnotateRootLock" />
+              </node>
             </node>
           </node>
         </node>
@@ -4140,6 +4186,51 @@
         </node>
         <node concept="3cpWs6" id="55zwzn2F4iL" role="3cqZAp">
           <node concept="10Nm6u" id="55zwzn2F4iM" role="3cqZAk" />
+        </node>
+      </node>
+    </node>
+    <node concept="2XrIbr" id="1YeblkqU7a2" role="32lrUH">
+      <property role="TrG5h" value="getAnnotateRootLock" />
+      <node concept="3uibUv" id="1YeblkqU7Zv" role="3clF45">
+        <ref role="3uigEE" to="j86o:~BackgroundableActionLock" resolve="BackgroundableActionLock" />
+      </node>
+      <node concept="3clFbS" id="1YeblkqU7a4" role="3clF47">
+        <node concept="3clFbF" id="1YeblkqU8n1" role="3cqZAp">
+          <node concept="2YIFZM" id="1YeblkqU8n3" role="3clFbG">
+            <ref role="1Pybhc" to="j86o:~BackgroundableActionLock" resolve="BackgroundableActionLock" />
+            <ref role="37wK5l" to="j86o:~BackgroundableActionLock.getLock(com.intellij.openapi.project.Project,java.lang.Object...)" resolve="getLock" />
+            <node concept="2OqwBi" id="1YeblkqU8n4" role="37wK5m">
+              <node concept="2OqwBi" id="1YeblkqU8n5" role="2Oq$k0">
+                <node concept="2WthIp" id="1YeblkqU8n6" role="2Oq$k0" />
+                <node concept="1DTwFV" id="1YeblkqU8n7" role="2OqNvi">
+                  <ref role="2WH_rO" node="13$TqNLJqBK" resolve="project" />
+                </node>
+              </node>
+              <node concept="liA8E" id="1YeblkqU8n8" role="2OqNvi">
+                <ref role="37wK5l" to="z1c4:~MPSProject.getProject()" resolve="getProject" />
+              </node>
+            </node>
+            <node concept="Rm8GO" id="1YeblkqU8n9" role="37wK5m">
+              <ref role="Rm8GQ" to="j86o:~VcsBackgroundableActions.ANNOTATE" resolve="ANNOTATE" />
+              <ref role="1Px2BO" to="j86o:~VcsBackgroundableActions" resolve="VcsBackgroundableActions" />
+            </node>
+            <node concept="2OqwBi" id="1YeblkqU8Y2" role="37wK5m">
+              <node concept="2OqwBi" id="1YeblkqU8Y3" role="2Oq$k0">
+                <node concept="2OqwBi" id="1YeblkqU8Y4" role="2Oq$k0">
+                  <node concept="2WthIp" id="1YeblkqU8Y5" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="1YeblkqU8Y6" role="2OqNvi">
+                    <ref role="2WH_rO" node="3WCIgQv3c81" resolve="editor" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="1YeblkqU8Y7" role="2OqNvi">
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getEditedNode()" resolve="getEditedNode" />
+                </node>
+              </node>
+              <node concept="liA8E" id="1YeblkqU8Y8" role="2OqNvi">
+                <ref role="37wK5l" to="mhbf:~SNode.getName()" resolve="getName" />
+              </node>
+            </node>
+          </node>
         </node>
       </node>
     </node>

@@ -254,6 +254,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
 
   @Override
   public void dispose() {
+    myIndicator.cancel();
     myEditorAnnotation.dispose();
   }
 
@@ -265,9 +266,8 @@ public final class AnnotationColumn extends AbstractLeftColumn {
       if (myIsClosed) {
         return;
       }
-      myIndicator.cancel();
-      myEditorAnnotation.dispose();
       getLeftEditorHighlighter().removeLeftColumn(this);
+      dispose();
       myIsClosed = true;
     }
   }

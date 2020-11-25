@@ -11,6 +11,7 @@
     <classNode dependClassName="com.intellij.openapi.vcs.history.CollectingHistorySessionConsumer" />
     <classNode dependClassName="com.intellij.openapi.vcs.history.VcsCachingHistory" />
     <classNode dependClassName="com.intellij.openapi.vcs.history.VcsFileRevision" />
+    <classNode dependClassName="com.intellij.openapi.vcs.impl.BackgroundableActionLock" />
     <classNode dependClassName="com.intellij.openapi.vfs.VirtualFile" />
     <classNode dependClassName="com.intellij.openapi.wm.ToolWindowManager" />
     <classNode dependClassName="com.intellij.vcsUtil.VcsUtil" />

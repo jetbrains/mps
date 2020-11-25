@@ -85,6 +85,7 @@
     <import index="1wbl" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.idea(MPS.IDEA/)" />
     <import index="t335" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.ui.update(MPS.IDEA/)" />
     <import index="j4zm" ref="f57286e3-4e19-4d8d-8045-3900761f6530/java:git4idea.annotate(jetbrains.mps.git4idea.stubs/)" />
+    <import index="j86o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs.impl(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -2265,6 +2266,16 @@
       <property role="TrG5h" value="dispose" />
       <node concept="3cqZAl" id="4JY38erYHJ7" role="3clF45" />
       <node concept="3clFbS" id="4JY38erYHJ9" role="3clF47">
+        <node concept="3clFbF" id="3iYA5Adclka" role="3cqZAp">
+          <node concept="2OqwBi" id="3iYA5Adclkb" role="3clFbG">
+            <node concept="37vLTw" id="3iYA5Adclkc" role="2Oq$k0">
+              <ref role="3cqZAo" node="20ZdS_RTjKL" resolve="myIndicator" />
+            </node>
+            <node concept="liA8E" id="3iYA5Adclkd" role="2OqNvi">
+              <ref role="37wK5l" to="xygl:~ProgressIndicator.cancel()" resolve="cancel" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="1jG3ZCaEbaD" role="3cqZAp">
           <node concept="2OqwBi" id="1jG3ZCaEdOf" role="3clFbG">
             <node concept="37vLTw" id="1jG3ZCaEbaB" role="2Oq$k0">
@@ -2306,26 +2317,6 @@
                 <node concept="3cpWs6" id="2Vo1v_KMNMS" role="3cqZAp" />
               </node>
             </node>
-            <node concept="3clFbF" id="2Vo1v_KMStD" role="3cqZAp">
-              <node concept="2OqwBi" id="2Vo1v_KMUvs" role="3clFbG">
-                <node concept="37vLTw" id="2Vo1v_KMStB" role="2Oq$k0">
-                  <ref role="3cqZAo" node="20ZdS_RTjKL" resolve="myIndicator" />
-                </node>
-                <node concept="liA8E" id="2Vo1v_KMWn1" role="2OqNvi">
-                  <ref role="37wK5l" to="xygl:~ProgressIndicator.cancel()" resolve="cancel" />
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="44p_AXC5eHO" role="3cqZAp">
-              <node concept="2OqwBi" id="44p_AXC5eHP" role="3clFbG">
-                <node concept="37vLTw" id="44p_AXC5eHQ" role="2Oq$k0">
-                  <ref role="3cqZAo" node="1jG3ZCatsRC" resolve="myEditorAnnotation" />
-                </node>
-                <node concept="liA8E" id="44p_AXC5eHR" role="2OqNvi">
-                  <ref role="37wK5l" node="1jG3ZCaDMhQ" resolve="dispose" />
-                </node>
-              </node>
-            </node>
             <node concept="3clFbF" id="3Htuv$d1QLd" role="3cqZAp">
               <node concept="2OqwBi" id="3Htuv$d1QLf" role="3clFbG">
                 <node concept="liA8E" id="3Htuv$d1QLj" role="2OqNvi">
@@ -2335,6 +2326,11 @@
                 <node concept="1rXfSq" id="4hiugqyzflG" role="2Oq$k0">
                   <ref role="37wK5l" to="px75:~AbstractLeftColumn.getLeftEditorHighlighter()" resolve="getLeftEditorHighlighter" />
                 </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="13DsfZiBacG" role="3cqZAp">
+              <node concept="1rXfSq" id="13DsfZiBacE" role="3clFbG">
+                <ref role="37wK5l" node="4JY38erYHJ6" resolve="dispose" />
               </node>
             </node>
             <node concept="3clFbF" id="77E1iT9WkID" role="3cqZAp">
@@ -7361,6 +7357,14 @@
         <ref role="3uigEE" to="xygl:~ProgressIndicator" resolve="ProgressIndicator" />
       </node>
     </node>
+    <node concept="312cEg" id="3_ALl2yzeQS" role="jymVt">
+      <property role="TrG5h" value="myLock" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="3_ALl2yz8xK" role="1B3o_S" />
+      <node concept="3uibUv" id="3_ALl2yzeFn" role="1tU5fm">
+        <ref role="3uigEE" to="j86o:~BackgroundableActionLock" resolve="BackgroundableActionLock" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="1jG3ZCbhBiM" role="jymVt" />
     <node concept="2tJIrI" id="7H$wjRQGMmD" role="jymVt" />
     <node concept="3clFbW" id="55zwzn2Ba_w" role="jymVt">
@@ -7406,6 +7410,12 @@
         <property role="TrG5h" value="vcs" />
         <node concept="3uibUv" id="55zwzn2DLIT" role="1tU5fm">
           <ref role="3uigEE" to="jlcu:~AbstractVcs" resolve="AbstractVcs" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="3_ALl2yzh3r" role="3clF46">
+        <property role="TrG5h" value="lock" />
+        <node concept="3uibUv" id="3_ALl2yzhEo" role="1tU5fm">
+          <ref role="3uigEE" to="j86o:~BackgroundableActionLock" resolve="BackgroundableActionLock" />
         </node>
       </node>
       <node concept="3clFbS" id="55zwzn2BbmP" role="3clF47">
@@ -7486,6 +7496,16 @@
             </node>
             <node concept="37vLTw" id="55zwzn2CBPy" role="37vLTJ">
               <ref role="3cqZAo" node="55zwzn2CzSF" resolve="myRootId" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="3_ALl2yziuS" role="3cqZAp">
+          <node concept="37vLTI" id="3_ALl2yzjrb" role="3clFbG">
+            <node concept="37vLTw" id="3_ALl2yzk33" role="37vLTx">
+              <ref role="3cqZAo" node="3_ALl2yzh3r" resolve="lock" />
+            </node>
+            <node concept="37vLTw" id="3_ALl2yziuQ" role="37vLTJ">
+              <ref role="3cqZAo" node="3_ALl2yzeQS" resolve="myLock" />
             </node>
           </node>
         </node>
@@ -7838,7 +7858,44 @@
       <node concept="3Tm1VV" id="55zwzn2BgSe" role="1B3o_S" />
       <node concept="3cqZAl" id="55zwzn2BgSf" role="3clF45" />
     </node>
-    <node concept="2tJIrI" id="1jG3ZCbsTpr" role="jymVt" />
+    <node concept="2tJIrI" id="3_ALl2yzk79" role="jymVt" />
+    <node concept="3clFb_" id="3_ALl2yzmeE" role="jymVt">
+      <property role="TrG5h" value="onFinished" />
+      <node concept="3Tm1VV" id="3_ALl2yzmeF" role="1B3o_S" />
+      <node concept="3cqZAl" id="3_ALl2yzmeH" role="3clF45" />
+      <node concept="3clFbS" id="3_ALl2yzmeK" role="3clF47">
+        <node concept="3clFbJ" id="603HYZBdYdB" role="3cqZAp">
+          <node concept="3clFbS" id="603HYZBdYdD" role="3clFbx">
+            <node concept="3clFbF" id="3_ALl2yzp42" role="3cqZAp">
+              <node concept="2OqwBi" id="3_ALl2yzpJp" role="3clFbG">
+                <node concept="37vLTw" id="3_ALl2yzp3Z" role="2Oq$k0">
+                  <ref role="3cqZAo" node="3_ALl2yzeQS" resolve="myLock" />
+                </node>
+                <node concept="liA8E" id="3_ALl2yzpYw" role="2OqNvi">
+                  <ref role="37wK5l" to="j86o:~BackgroundableActionLock.unlock()" resolve="unlock" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="603HYZBdZqu" role="3clFbw">
+            <node concept="37vLTw" id="603HYZBdYW2" role="2Oq$k0">
+              <ref role="3cqZAo" node="3_ALl2yzeQS" resolve="myLock" />
+            </node>
+            <node concept="liA8E" id="603HYZBdZJl" role="2OqNvi">
+              <ref role="37wK5l" to="j86o:~BackgroundableActionLock.isLocked()" resolve="isLocked" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="3_ALl2yzs$8" role="3cqZAp">
+          <node concept="3nyPlj" id="3_ALl2yzs$6" role="3clFbG">
+            <ref role="37wK5l" to="xygl:~Task.onFinished()" resolve="onFinished" />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="3_ALl2yzmeL" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="1jG3ZCbhLQb" role="jymVt" />
     <node concept="3clFb_" id="1jG3ZCbhPNL" role="jymVt">
       <property role="TrG5h" value="processRevisions" />
@@ -11420,6 +11477,28 @@
     <node concept="3clFb_" id="1jG3ZCblSJS" role="jymVt">
       <property role="TrG5h" value="startListenLocalChanges" />
       <node concept="3clFbS" id="1jG3ZCblSJT" role="3clF47">
+        <node concept="3cpWs8" id="7kjFDBgfKM_" role="3cqZAp">
+          <node concept="3cpWsn" id="7kjFDBgfKMA" role="3cpWs9">
+            <property role="TrG5h" value="localModel" />
+            <node concept="3uibUv" id="7kjFDBgfKMB" role="1tU5fm">
+              <ref role="3uigEE" to="mhbf:~EditableSModel" resolve="EditableSModel" />
+            </node>
+            <node concept="1rXfSq" id="7kjFDBgfKMC" role="33vP2m">
+              <ref role="37wK5l" node="1jG3ZCbpAwz" resolve="getLocalModel" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="7kjFDBgfKMD" role="3cqZAp">
+          <node concept="3clFbS" id="7kjFDBgfKME" role="3clFbx">
+            <node concept="3cpWs6" id="7kjFDBgfKMF" role="3cqZAp" />
+          </node>
+          <node concept="3clFbC" id="7kjFDBgfKMG" role="3clFbw">
+            <node concept="10Nm6u" id="7kjFDBgfKMH" role="3uHU7w" />
+            <node concept="37vLTw" id="7kjFDBgfKMI" role="3uHU7B">
+              <ref role="3cqZAo" node="7kjFDBgfKMA" resolve="localModel" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="1jG3ZCblSJU" role="3cqZAp">
           <node concept="2OqwBi" id="1jG3ZCblSJV" role="3clFbG">
             <node concept="liA8E" id="1jG3ZCblSJW" role="2OqNvi">
@@ -11434,8 +11513,8 @@
               </node>
               <node concept="liA8E" id="1jG3ZCblSK0" role="2OqNvi">
                 <ref role="37wK5l" to="lcr:2JwSLRbyYTp" resolve="getCurrentDifference" />
-                <node concept="1rXfSq" id="1jG3ZCbq0CB" role="37wK5m">
-                  <ref role="37wK5l" node="1jG3ZCbpAwz" resolve="getLocalModel" />
+                <node concept="37vLTw" id="7kjFDBgfNF7" role="37wK5m">
+                  <ref role="3cqZAo" node="7kjFDBgfKMA" resolve="localModel" />
                 </node>
               </node>
             </node>
@@ -11449,6 +11528,28 @@
     <node concept="3clFb_" id="1jG3ZCblSK5" role="jymVt">
       <property role="TrG5h" value="stopListenLocalChanges" />
       <node concept="3clFbS" id="1jG3ZCblSK6" role="3clF47">
+        <node concept="3cpWs8" id="7kjFDBgfIlF" role="3cqZAp">
+          <node concept="3cpWsn" id="7kjFDBgfIlG" role="3cpWs9">
+            <property role="TrG5h" value="localModel" />
+            <node concept="3uibUv" id="7kjFDBgfIlH" role="1tU5fm">
+              <ref role="3uigEE" to="mhbf:~EditableSModel" resolve="EditableSModel" />
+            </node>
+            <node concept="1rXfSq" id="7kjFDBgfIlI" role="33vP2m">
+              <ref role="37wK5l" node="1jG3ZCbpAwz" resolve="getLocalModel" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="7kjFDBgfIlJ" role="3cqZAp">
+          <node concept="3clFbS" id="7kjFDBgfIlK" role="3clFbx">
+            <node concept="3cpWs6" id="7kjFDBgfIlL" role="3cqZAp" />
+          </node>
+          <node concept="3clFbC" id="7kjFDBgfIlM" role="3clFbw">
+            <node concept="10Nm6u" id="7kjFDBgfIlN" role="3uHU7w" />
+            <node concept="37vLTw" id="7kjFDBgfIlO" role="3uHU7B">
+              <ref role="3cqZAo" node="7kjFDBgfIlG" resolve="localModel" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="1jG3ZCblSK7" role="3cqZAp">
           <node concept="2OqwBi" id="1jG3ZCblSK8" role="3clFbG">
             <node concept="liA8E" id="1jG3ZCblSK9" role="2OqNvi">
@@ -11469,8 +11570,8 @@
                         </node>
                         <node concept="liA8E" id="1jG3ZCblSKi" role="2OqNvi">
                           <ref role="37wK5l" to="lcr:2JwSLRbyYTp" resolve="getCurrentDifference" />
-                          <node concept="1rXfSq" id="1jG3ZCbq8WH" role="37wK5m">
-                            <ref role="37wK5l" node="1jG3ZCbpAwz" resolve="getLocalModel" />
+                          <node concept="37vLTw" id="7kjFDBgfPRh" role="37wK5m">
+                            <ref role="3cqZAo" node="7kjFDBgfIlG" resolve="localModel" />
                           </node>
                         </node>
                       </node>
@@ -11502,6 +11603,28 @@
             <ref role="3cqZAo" node="1jG3ZCbiVkC" resolve="myLocalChanges" />
           </node>
           <node concept="3clFbS" id="1jG3ZCbolLf" role="1HWHxc">
+            <node concept="3cpWs8" id="5t8jEsMEoNr" role="3cqZAp">
+              <node concept="3cpWsn" id="5t8jEsMEoNs" role="3cpWs9">
+                <property role="TrG5h" value="localModel" />
+                <node concept="3uibUv" id="5t8jEsMEoNt" role="1tU5fm">
+                  <ref role="3uigEE" to="mhbf:~EditableSModel" resolve="EditableSModel" />
+                </node>
+                <node concept="1rXfSq" id="5t8jEsMFIV$" role="33vP2m">
+                  <ref role="37wK5l" node="1jG3ZCbpAwz" resolve="getLocalModel" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbJ" id="5t8jEsMFM38" role="3cqZAp">
+              <node concept="3clFbS" id="5t8jEsMFM3a" role="3clFbx">
+                <node concept="3cpWs6" id="5t8jEsMFPB$" role="3cqZAp" />
+              </node>
+              <node concept="3clFbC" id="5t8jEsMFOHw" role="3clFbw">
+                <node concept="10Nm6u" id="5t8jEsMFPec" role="3uHU7w" />
+                <node concept="37vLTw" id="5t8jEsMFO6J" role="3uHU7B">
+                  <ref role="3cqZAo" node="5t8jEsMEoNs" resolve="localModel" />
+                </node>
+              </node>
+            </node>
             <node concept="3cpWs8" id="1jG3ZCblSKs" role="3cqZAp">
               <node concept="3cpWsn" id="1jG3ZCblSKt" role="3cpWs9">
                 <property role="TrG5h" value="changeSet" />
@@ -11515,8 +11638,8 @@
                   <node concept="2OqwBi" id="1jG3ZCblSKx" role="2Oq$k0">
                     <node concept="liA8E" id="1jG3ZCblSKy" role="2OqNvi">
                       <ref role="37wK5l" to="lcr:2JwSLRbyYTp" resolve="getCurrentDifference" />
-                      <node concept="1rXfSq" id="1jG3ZCbqb6w" role="37wK5m">
-                        <ref role="37wK5l" node="1jG3ZCbpAwz" resolve="getLocalModel" />
+                      <node concept="37vLTw" id="5t8jEsMFSvh" role="37wK5m">
+                        <ref role="3cqZAo" node="5t8jEsMEoNs" resolve="localModel" />
                       </node>
                     </node>
                     <node concept="37vLTw" id="1jG3ZCblSK$" role="2Oq$k0">

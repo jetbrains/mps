@@ -11,6 +11,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vcs.AbstractVcs;
 import com.intellij.openapi.vcs.VcsException;
 import com.intellij.openapi.progress.ProgressIndicator;
+import com.intellij.openapi.vcs.impl.BackgroundableActionLock;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 import java.util.List;
@@ -50,15 +51,17 @@ public final class AnnotateBackgroundableTask extends Task.Backgroundable {
   private EditorAnnotation myEditorAnnotation;
   private AnnotationColumn myAnnotationColumn;
   private ProgressIndicator myProgressIndicator;
+  private final BackgroundableActionLock myLock;
 
 
-  public AnnotateBackgroundableTask(MPSProject mpsProject, @Nls(capitalization = Nls.Capitalization.Sentence) @NotNull String title, EditorComponent editor, VirtualFile file, AbstractVcs vcs) {
+  public AnnotateBackgroundableTask(MPSProject mpsProject, @Nls(capitalization = Nls.Capitalization.Sentence) @NotNull String title, EditorComponent editor, VirtualFile file, AbstractVcs vcs, BackgroundableActionLock lock) {
     super(mpsProject.getProject(), title, true, ALWAYS_BACKGROUND);
     myMpsProject = mpsProject;
     myEditor = editor;
     myActualFile = file;
     myActiveVcs = vcs;
     myRootId = editor.getEditedNode().getNodeId();
+    myLock = lock;
   }
 
   @Override
@@ -83,7 +86,7 @@ public final class AnnotateBackgroundableTask extends Task.Backgroundable {
 
   @Override
   public void onCancel() {
-    check_afjffg_a0a61(myAnnotationColumn);
+    check_afjffg_a0a71(myAnnotationColumn);
   }
 
   @Override
@@ -107,6 +110,13 @@ public final class AnnotateBackgroundableTask extends Task.Backgroundable {
     });
   }
 
+  @Override
+  public void onFinished() {
+    if (myLock.isLocked()) {
+      myLock.unlock();
+    }
+    super.onFinished();
+  }
 
   private void processRevisions(List<VcsFileRevision> revisions, ProgressIndicator indicator, CollectingHistorySessionConsumer historySessionConsumer) throws VcsException {
     final int total = ListSequence.fromList(revisions).count();
@@ -183,7 +193,7 @@ public final class AnnotateBackgroundableTask extends Task.Backgroundable {
     }
   }
 
-  private static void check_afjffg_a0a61(AnnotationColumn checkedDotOperand) {
+  private static void check_afjffg_a0a71(AnnotationColumn checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.close();
     }

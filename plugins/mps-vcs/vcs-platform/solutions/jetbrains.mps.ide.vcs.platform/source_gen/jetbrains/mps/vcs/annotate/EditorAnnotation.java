@@ -184,20 +184,32 @@ public class EditorAnnotation implements EditorMessageOwner, AnnotationOptions.U
   }
 
   private void startListenLocalChanges() {
-    myDiffRegistry.getCurrentDifference(getLocalModel()).addDifferenceListener(myDifferenceListener);
+    EditableSModel localModel = getLocalModel();
+    if (localModel == null) {
+      return;
+    }
+    myDiffRegistry.getCurrentDifference(localModel).addDifferenceListener(myDifferenceListener);
   }
 
   private void stopListenLocalChanges() {
+    final EditableSModel localModel = getLocalModel();
+    if (localModel == null) {
+      return;
+    }
     myDiffRegistry.getCommandQueue().runTask(new Runnable() {
       public void run() {
-        myDiffRegistry.getCurrentDifference(getLocalModel()).removeDifferenceListener(myDifferenceListener);
+        myDiffRegistry.getCurrentDifference(localModel).removeDifferenceListener(myDifferenceListener);
       }
     });
   }
 
   private void fetchLocalChanges() {
     synchronized (myLocalChanges) {
-      ChangeSet changeSet = myDiffRegistry.getCurrentDifference(getLocalModel()).getChangeSet();
+      EditableSModel localModel = getLocalModel();
+      if (localModel == null) {
+        return;
+      }
+      ChangeSet changeSet = myDiffRegistry.getCurrentDifference(localModel).getChangeSet();
       ListSequence.fromList(myLocalChanges).clear();
       if (changeSet != null) {
         ListSequence.fromList(myLocalChanges).addSequence(ListSequence.fromList(changeSet.getModelChanges()).where(new IWhereFilter<ModelChange>() {

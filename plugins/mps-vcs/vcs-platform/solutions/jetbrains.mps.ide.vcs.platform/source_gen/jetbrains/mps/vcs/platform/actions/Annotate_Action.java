@@ -21,10 +21,12 @@ import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcs.annotate.AnnotationColumn;
+import com.intellij.openapi.vcs.impl.BackgroundableActionLock;
 import com.intellij.openapi.progress.ProgressManager;
 import jetbrains.mps.vcs.annotate.AnnotateBackgroundableTask;
 import jetbrains.mps.nodeEditor.leftHighlighter.AbstractLeftColumn;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import com.intellij.openapi.vcs.impl.VcsBackgroundableActions;
 
 @GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/4551090891612013049", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public class Annotate_Action extends BaseAction {
@@ -51,6 +53,9 @@ public class Annotate_Action extends BaseAction {
       }
     });
     if (vf.value == null) {
+      return false;
+    }
+    if (Annotate_Action.this.getAnnotateRootLock(event).isLocked()) {
       return false;
     }
     AbstractVcs activeVCS = ProjectLevelVcsManager.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject()).getVcsFor(vf.value);
@@ -115,7 +120,9 @@ public class Annotate_Action extends BaseAction {
     });
     AbstractVcs activeVCS = ProjectLevelVcsManager.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject()).getVcsFor(vf.value);
     String taskName = "Retrieving annotations for " + event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode().getName();
-    ProgressManager.getInstance().run(new AnnotateBackgroundableTask(event.getData(MPSCommonDataKeys.MPS_PROJECT), taskName, event.getData(MPSEditorDataKeys.EDITOR_COMPONENT), vf.value, activeVCS));
+    BackgroundableActionLock actionLock = Annotate_Action.this.getAnnotateRootLock(event);
+    actionLock.lock();
+    ProgressManager.getInstance().run(new AnnotateBackgroundableTask(event.getData(MPSCommonDataKeys.MPS_PROJECT), taskName, event.getData(MPSEditorDataKeys.EDITOR_COMPONENT), vf.value, activeVCS, actionLock));
   }
   /*package*/ AnnotationColumn findAnnotationColumn(final AnActionEvent event) {
     for (AbstractLeftColumn column : ListSequence.fromList(event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getLeftEditorHighlighter().getLeftColumns())) {
@@ -124,5 +131,8 @@ public class Annotate_Action extends BaseAction {
       }
     }
     return null;
+  }
+  /*package*/ BackgroundableActionLock getAnnotateRootLock(final AnActionEvent event) {
+    return BackgroundableActionLock.getLock(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject(), VcsBackgroundableActions.ANNOTATE, event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode().getName());
   }
 }
