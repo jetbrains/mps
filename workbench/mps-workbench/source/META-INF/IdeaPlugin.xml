@@ -150,7 +150,10 @@
     <!-- End of same registrations as in JavaPlugin.xml -->
 
     <!--Editor-->
-    <editorOptionsProvider instance="jetbrains.mps.nodeEditor.EditorSettingsConfigurable$EditorSettingsConfigurableOptionsProvider"/>
+    <applicationConfigurable groupId="editor" groupWeight="200" instance="jetbrains.mps.nodeEditor.EditorSettingsConfigurable"
+                             bundle="jetbrains.mps.nodeEditor.resources.EditorSettingsBundle" key="title.editor.settings"
+                             id="mps.editor.settings" order="before preferences.editor"/>
+
     <!--Editor Hints-->
     <projectConfigurable groupId="editor" groupWeight="180" dynamic="true"
                          instance="jetbrains.mps.nodeEditor.hintsSettings.ConceptEditorHintConfigurable"

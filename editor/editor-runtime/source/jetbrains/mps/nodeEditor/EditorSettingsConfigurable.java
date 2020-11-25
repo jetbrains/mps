@@ -20,6 +20,7 @@ import com.intellij.application.options.editor.EditorOptionsProvider;
 import com.intellij.openapi.options.SearchableConfigurable;
 import com.intellij.openapi.util.Disposer;
 import jetbrains.mps.nodeEditor.resources.EditorSettingsBundle;
+import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -84,7 +85,11 @@ public class EditorSettingsConfigurable implements SearchableConfigurable {
   /**
    * For usage in IDEA plugin where our editor settings are represented by a page in editor settings.
    * They also have a different name in IDEA plugin ("MPS" rather then just "Editor").
+   *
+   * @deprecated not used any more, use {@link EditorSettingsConfigurable} instead
    */
+  @ScheduledForRemoval(inVersion = "2021.1")
+  @Deprecated(since = "2020.3", forRemoval = true)
   public static class EditorSettingsConfigurableOptionsProvider extends EditorSettingsConfigurable implements EditorOptionsProvider {
     @Nls
     @Override
