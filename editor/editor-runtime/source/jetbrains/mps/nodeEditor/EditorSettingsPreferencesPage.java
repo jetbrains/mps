@@ -26,6 +26,7 @@ import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
 import jetbrains.mps.nodeEditor.resources.EditorSettingsBundle;
+import org.jdesktop.swingx.VerticalLayout;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -113,7 +114,7 @@ class EditorSettingsPreferencesPage implements Disposable {
 
     panel.add(codeFormattingPanel, getConstraint(mainPanelRowCount++, 0));
 
-    JPanel checkboxes = new JPanel(new GridLayout(3, 2));
+    JPanel checkboxes = new JPanel(new VerticalLayout());
     myUseBraces = new JCheckBox(EditorSettingsBundle.message("checkbox.use.braces"));
     checkboxes.add(myUseBraces);
 
