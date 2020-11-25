@@ -493,7 +493,8 @@
     <action id="Arrangement.Rule.Add" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <action id="Arrangement.Rule.Section.Add" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <action id="Arrangement.Rule.Remove" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="Arrangement.Rule.Edit" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
+    <!--  Set same as icon as in original action to avoid NPE in HTML/XML settings  -->
+    <action id="Arrangement.Rule.Edit" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true" icon="AllIcons.Actions.Edit"/>
     <action id="Arrangement.Rule.Match.Condition.Move.Up" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <action id="Arrangement.Rule.Match.Condition.Move.Down" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <action id="Arrangement.Custom.Token.Rule.Edit" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
