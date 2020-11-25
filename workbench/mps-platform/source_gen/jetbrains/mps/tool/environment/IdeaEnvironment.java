@@ -120,7 +120,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
           // Ignore 'Git4Idea' & 'SVN4Idea' plugins 
           // They load from classpath in: 
           // PluginManagerCore#computePlatformPluginUrlAndCollectPluginUrls 
-          if (pluginFolder.getName().contains("git4idea") || pluginFolder.getName().contains("svn4idea")) {
+          if (pluginFolder.getName().equals("git4idea") || pluginFolder.getName().equals("svn4idea")) {
             continue;
           }
           pluginPathResult.add(pluginFolder.getPath());
