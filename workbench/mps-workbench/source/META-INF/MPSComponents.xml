@@ -158,6 +158,7 @@
 
     <virtualFileSystem implementationClass="jetbrains.mps.workbench.languagesFs.MPSLanguagesVirtualFileSystem" key="mpslang" physical="true"/>
 
+    <fileType extensions="java" hashBangs="java" name="JAVA" language="JAVA" fieldName="INSTANCE" implementationClass="com.intellij.ide.highlighter.JavaFileType"/>
     <fileType extensions="class" name="CLASS" fieldName="INSTANCE" implementationClass="com.intellij.ide.highlighter.JavaClassFileType"/>
     <idIndexer filetype="CLASS" implementationClass="jetbrains.mps.workbench.findusages.JavaStubIdIndexer"/>
     <postStartupActivity implementation="jetbrains.mps.ide.generator.index.IndexBasedModelDigest" />
