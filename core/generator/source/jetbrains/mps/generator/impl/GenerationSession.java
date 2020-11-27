@@ -314,12 +314,13 @@ class GenerationSession {
           GeneratorMappings stepLabels = myStepArguments.mappingLabels;
           // stepLabels is likely the last one pushed into lastBigTransformStepMappings when previous Transform step had happened.
           lastBigTransformStepMappings.remove(stepLabels);
+          LMCollector lmCollector = new LMCollector();
           for (GeneratorMappings prev : lastBigTransformStepMappings) {
             for (String l : prev.getConditionalRootLabels()) {
               for (SNode conditionalRoot : prev.getConditionalRoots(l)) {
                 SNode copiedRoot = currInputModel.getNode(conditionalRoot.getNodeId());
                 if (copiedRoot != null) {
-                  stepLabels.addNewOutputNode(l, copiedRoot);
+                  lmCollector.add(l, copiedRoot);
                 }
               }
             }
@@ -338,11 +339,14 @@ class GenerationSession {
                   // and it's of no real use anyway as we don't restore x-model references in case there are multiple outputs.
                   SNode copiedOutput = currInputModel.getNode(((SNode) entry.getValue()).getNodeId());
                   if (copiedOutput != null) {
-                    stepLabels.addOutputNodeByInputNodeAndMappingName(entry.getKey(), l, copiedOutput);
+                    lmCollector.add(l, entry.getKey(), copiedOutput);
                   }
                 }
               }
             }
+            // record what we've collected so far so the next prev GM is examined, we would know LMs we've just pushed.
+            stepLabels.fillFrom(Collections.singletonList(lmCollector));
+            lmCollector.clear();
           }
           cpBuilder.addMappings(myOriginalInputModel, stepLabels, myLogger.getImplementation());
         }

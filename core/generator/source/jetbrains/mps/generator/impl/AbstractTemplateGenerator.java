@@ -36,7 +36,7 @@ import java.util.List;
 
 public abstract class AbstractTemplateGenerator implements ITemplateGenerator {
 
-  private GenerationSessionContext myOperationContext;
+  private final GenerationSessionContext myOperationContext;
   protected ProgressMonitor myProgressMonitor;
 
   protected final SModel myInputModel;
@@ -44,6 +44,9 @@ public abstract class AbstractTemplateGenerator implements ITemplateGenerator {
 
   private final RoleValidation myValidation;
   private final GeneratorMappings myMappings;
+  // just for this generator instance, not shared between runs (collected data merged into GM at the end of step)
+  // FIXME refactor TemplateMappingScript to take TEE instead of just IGenerator, and remove this collection altogether
+  protected final LMCollector myLabeledMappings = new LMCollector();
   private final Source myQuerySource;
 
   protected AbstractTemplateGenerator(GenerationSessionContext operationContext, SModel inputModel, SModel outputModel, GeneratorMappings mappings,
@@ -93,10 +96,13 @@ public abstract class AbstractTemplateGenerator implements ITemplateGenerator {
 
   @Override
   public void registerMappingLabel(SNode inputNode, String mappingName, SNode outputNode) {
+    if (mappingName == null || outputNode == null) {
+      return;
+    }
     if (inputNode != null) {
-      myMappings.addOutputNodeByInputNodeAndMappingName(inputNode, mappingName, outputNode);
+      myLabeledMappings.add(mappingName, inputNode, outputNode);
     } else {
-      myMappings.addNewOutputNode(mappingName, outputNode);
+      myLabeledMappings.add(mappingName, outputNode);
     }
   }
 

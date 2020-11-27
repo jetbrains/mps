@@ -39,6 +39,11 @@ public interface ITemplateGenerator extends GeneratorQueryProvider.Source {
    */
   boolean areMappingsAvailable();
 
+  /**
+   * Use {@link jetbrains.mps.generator.runtime.TemplateExecutionEnvironment#registerLabel(SNode, SNode, String)} instead when
+   *   possible. This method is left solely for scenarios of LM registration from inside scripts (through genContext/TemplateQueryContext operations) when
+   *   TEE is not available.
+   */
   void registerMappingLabel(SNode inputNode, String mappingName, SNode outputNode);
 
   /**

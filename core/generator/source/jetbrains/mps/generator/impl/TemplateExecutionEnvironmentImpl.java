@@ -38,6 +38,7 @@ import jetbrains.mps.generator.runtime.TemplateRuleWithCondition;
 import jetbrains.mps.generator.runtime.TemplateSwitchMapping;
 import jetbrains.mps.generator.template.ITemplateProcessor;
 import jetbrains.mps.generator.template.QueryExecutionContext;
+import jetbrains.mps.generator.trace.LabelTrace;
 import jetbrains.mps.generator.trace.RuleTrace;
 import jetbrains.mps.generator.trace.RuleTrace2;
 import jetbrains.mps.generator.trace.TraceFacility;
@@ -45,6 +46,7 @@ import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.SReference;
 import jetbrains.mps.textgen.trace.TracingUtil;
+import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.containers.ConcurrentHashSet;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -71,6 +73,10 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
   private final QueryExecutionContext myExecutionContext;
   private final ITemplateProcessor myTemplateProcessor;
   private final ReductionTrack myReductionTrack;
+  // Does it bother me that failed rules are reported per-root in case of || generation?
+  private final Set<SNodeReference> myFailedRules = new ConcurrentHashSet<>();
+  private final LMCollector myLabels = new LMCollector();
+
   /**
    * Input nodes coming from a model other than input model (or no model at all), e.g. if
    * input node query follows a reference from an input model to some outer model.
@@ -236,7 +242,8 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
       if (outputNodes.size() == 1 && context.getInputName() != null) {
         SNode reducedNode = outputNodes.iterator().next();
         // register copied node
-        generator.registerMappingLabel(context.getInput(), context.getInputName(), reducedNode);
+        // FIXME seems that context.registerLabel(reducedNode) (+context.hasMappingLabel(), perhaps) is much more convenient way to go
+        registerLabel(context.getInput(), reducedNode, context.getInputName());
       }
       generator.recordTransformInputTrace(context.getInput(), outputNodes);
       return outputNodes;
@@ -334,19 +341,50 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
 
   @Override
   public void registerLabel(SNode inputNode, SNode outputNode, String mappingLabel) {
-    generator.registerMappingLabel(inputNode, mappingLabel, outputNode);
-  }
-
-  @Override
-  public void registerCompositeLabel(Object key1, Object key2, Iterable<SNode> outputNode, String mappingLabel) {
-    throw new UnsupportedOperationException();
+    if (mappingLabel == null) {
+      return;
+    }
+    final TraceFacility traceSession;
+    if (inputNode != null && outputNode != null && (traceSession = generator.getTraceSession()) != null) {
+      final LabelTrace lt = traceSession.lm(mappingLabel);
+      if (lt != null) {
+        lt.register(inputNode, outputNode);
+      }
+    }
+    if (inputNode != null) {
+      myLabels.add(mappingLabel, inputNode, outputNode);
+    } else {
+      myLabels.add(mappingLabel, outputNode);
+    }
   }
 
   @Override
   public void registerLabel(SNode inputNode, Iterable<SNode> outputNodes, String mappingLabel) {
-    for (SNode outputNode : outputNodes) {
-      generator.registerMappingLabel(inputNode, mappingLabel, outputNode);
+    final Collection<SNode> output = IterableUtil.asCollection(outputNodes);
+    if (mappingLabel == null || output.isEmpty()) {
+      return;
     }
+    final TraceFacility traceSession;
+    if (inputNode != null && (traceSession = generator.getTraceSession()) != null) {
+      final LabelTrace lt = traceSession.lm(mappingLabel);
+      if (lt != null) {
+        output.forEach(o -> lt.register(inputNode, o));
+      }
+    }
+    if (inputNode != null) {
+      myLabels.add(mappingLabel, inputNode, output);
+    } else {
+      if (output.size() > 1) {
+        // I assume it's conditional root with a label when inputMode == null, therefore don't expect multiple output nodes in this scenario
+        getLogger().warning(String.format("Unexpected multiple output nodes with no input for label '%s'", mappingLabel));
+      }
+      output.forEach(o -> myLabels.add(mappingLabel, o));
+    }
+  }
+
+  @Override
+  public void registerCompositeLabel(Object key1, Object key2, Collection<SNode> outputNode, String mappingLabel) {
+    throw new UnsupportedOperationException();
   }
 
   @Override
@@ -379,6 +417,11 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
     myReductionTrack.blockReductionsForCopiedNode(inputNode, outputNode);
   }
 
+  @NotNull
+  /*package*/ LMCollector getNamedLabels() {
+    return myLabels;
+  }
+
   @Nullable
   Collection<SNode> tryToReduce(@NotNull SNode inputNode) throws GenerationFailureException, GenerationCanceledException {
     FastRuleFinder rf = generator.getRuleManager().getReductionRules();
@@ -404,7 +447,6 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
   }
 
 
-  protected final Set<SNodeReference> myFailedRules = new ConcurrentHashSet<>();
   /*
    * returns null if no reductions found
    */

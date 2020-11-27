@@ -35,6 +35,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,7 +57,7 @@ public final class GeneratorMappings {
   private final IGeneratorLogger myLog;
 
   /* mapping,input -> output */
-  private final ConcurrentMap<String, Map<SNode, Object>> myMappingNameAndInputNodeToOutputNodeMap = new ConcurrentHashMap<>();
+  private final Map<String, Map<SNode, Object>> myMappingNameAndInputNodeToOutputNodeMap = new HashMap<>();
 
   /* input -> output */
   private final ConcurrentMap<SNode, Object> myCopiedOutputNodeForInputNode = new ConcurrentHashMap<>();
@@ -68,7 +69,7 @@ public final class GeneratorMappings {
   /*
    * there might be few conditional roots, and we can't prevent them from using same ML (not too much sense, however)
    */
-  private final CopyOnWriteArrayList<Pair<String, SNode>> myConditionalRoots = new CopyOnWriteArrayList<>();
+  private final ArrayList<Pair<String, SNode>> myConditionalRoots = new ArrayList<>();
 
   public GeneratorMappings(IGeneratorLogger log) {
     myLog = log;
@@ -76,10 +77,7 @@ public final class GeneratorMappings {
 
   // add methods
 
-  void addOutputNodeByInputNodeAndMappingName(SNode inputNode, String mappingName, SNode outputNode) {
-    if (mappingName == null) {
-      return;
-    }
+  private void addOutputNodeByInputNodeAndMappingName(SNode inputNode, String mappingName, SNode outputNode) {
     Map<SNode, Object> currentMapping = myMappingNameAndInputNodeToOutputNodeMap.get(mappingName);
     if (currentMapping == null) {
       // we save labeled transformations, and chances are we get similar input/output nodes with the same ML
@@ -87,36 +85,34 @@ public final class GeneratorMappings {
       // to generate two methods, and if there's an MultiForLoop in the original code, we get two almost identical
       // ML entries (presentation of output and key's original nodes are the same, see comparator in #getSortedMappingKeys(),
       // below. Therefore, for nodes that are 'equal' that way, would like to keep an order they were registered at, hence LinkedHashMap
+      // FIXME with output nodes coming ordered now from LMCollector.OneOrMany (at least within the same root), there seems to be no reason
+      //       to keep LinkedHashMap
       myMappingNameAndInputNodeToOutputNodeMap.putIfAbsent(mappingName, new LinkedHashMap<>());
       currentMapping = myMappingNameAndInputNodeToOutputNodeMap.get(mappingName);
     }
-    synchronized (currentMapping) {
-      Object o = currentMapping.get(inputNode);
-      if (o == null) {
-        currentMapping.put(inputNode, outputNode);
-      } else if (o instanceof List) {
-        ((List<SNode>) o).add(outputNode);
-      } else if (o != outputNode) {
-        List<SNode> list = new ArrayList<>(4);
-        list.add((SNode) o);
-        list.add(outputNode);
-        currentMapping.put(inputNode, list);
-      } else {
-        // TODO warning
-      }
+    Object o = currentMapping.get(inputNode);
+    if (o == null) {
+      currentMapping.put(inputNode, outputNode);
+    } else if (o instanceof List) {
+      ((List<SNode>) o).add(outputNode);
+    } else if (o != outputNode) {
+      List<SNode> list = new ArrayList<>(4);
+      list.add((SNode) o);
+      list.add(outputNode);
+      currentMapping.put(inputNode, list);
+    } else {
+      // TODO warning
     }
   }
 
-  /**
-   * record a newly created node (generally, conditional root rule - no input node)
-   * @param mappingLabel label
-   * @param outputNode new node
-   */
-  void addNewOutputNode(String mappingLabel, SNode outputNode) {
-    if (mappingLabel == null || outputNode == null) {
-      return;
+  void fillFrom(Collection<LMCollector> lmCollectors) {
+    for (LMCollector lmCollector : lmCollectors) {
+      if (lmCollector.isEmpty()) {
+        continue;
+      }
+      lmCollector.forEachNoInput((k,v) -> myConditionalRoots.add(new Pair<>(k,v)));
+      lmCollector.forEachWithInput(ml -> i -> v -> addOutputNodeByInputNodeAndMappingName(i, ml, v));
     }
-    myConditionalRoots.add(new Pair<>(mappingLabel, outputNode));
   }
 
   void addCopiedOutputNodeForInputNode(SNode inputNode, SNode outputNode) {

@@ -448,7 +448,7 @@ public final class TemplateProcessor implements ITemplateProcessor {
         //    with a label they could have assigned? The label is in the TC instance, does it go all the way down to first TN produced (that would
         //    explain why we need explicit registerML here) or it's some code up the stack that takes template output of CALL and assigns it to CALL's ML?
         //    In latter case, this registerML here is excessive.
-        myTemplateProcessor.getGenerator().registerMappingLabel(templateContext.getInput(), templateContext.getInputName(), child);
+        templateContext.getEnvironment().registerLabel(templateContext.getInput(), child, templateContext.getInputName());
         return Collections.singletonList(child);
       }
       return Collections.emptyList();
@@ -638,6 +638,7 @@ public final class TemplateProcessor implements ITemplateProcessor {
 
     private TemplateQueryContext queryContext(TemplateContext templateContext) {
       // FIXME not sure whether it's reasonable to follow TQC patter of a distinct subclass for each query
+      //       the only place it helps is when I implement multiple interfaces in a single class (e.g. Defaults)
       // Don't care to clear inputName in TC here as the query unlikely to use it anyway, and it doesn't create any node.
       return new TemplateQueryContext(getMacroNodeRef(), templateContext) {
       };

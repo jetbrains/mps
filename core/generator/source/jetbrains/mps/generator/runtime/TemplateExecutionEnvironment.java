@@ -202,8 +202,9 @@ public interface TemplateExecutionEnvironment extends GeneratorQueryProvider.Sou
    * FIXME unclear if I shall allow for null key2, and, if yes, treat that as regular registerLabel then?
    * @since 2020.3
    */
-  void registerCompositeLabel(/*NotNull*/Object key1, /*???*/ Object key2, /*NotNull*/ Iterable<SNode> outputNode, /*NotNull*/ String mappingLabel);
+  void registerCompositeLabel(/*NotNull*/Object key1, /*???*/ Object key2, /*NotNull*/ Collection<SNode> outputNode, /*NotNull*/ String mappingLabel);
 
+  // XXX can I switch to collection instead of Iterable?
   void registerLabel(SNode inputNode, Iterable<SNode> outputNodes, String mappingLabel);
 
   /**

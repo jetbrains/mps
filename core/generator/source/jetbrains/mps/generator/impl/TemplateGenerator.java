@@ -122,6 +122,7 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
   private final GenerationTrace myNewTrace;
   private final TransitionTrace myTransitionTrace;
   private final IPerformanceTracer myPerformanceTrace; // not null
+  private final ArrayList<LMCollector> myPerThreadLabels = new ArrayList<>();
 
   static final class StepArguments {
     public final GenPlanActiveStep planStep;
@@ -182,6 +183,14 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
     ttrace.pop();
     myInplaceModelChange = myDeltaBuilder != null;
 
+    myPerThreadLabels.add(myLabeledMappings); // just in case there's anything there (quite unlikely, though; for script there's relevant code in executeScript())
+    getMappings().fillFrom(myPerThreadLabels);
+    // we can't just throw LMCollectors away, there could be weaving rules and delayed changes that
+    // may register more labels that we need to flush once more. The only assumption is that there are no
+    // new LMCollector instances, though it's still ok if there's a new one.
+    myPerThreadLabels.forEach(LMCollector::clear);
+
+
     myAreMappingsReady = true;
 
     if (myDeltaBuilder == null) {
@@ -206,6 +215,11 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
       myDelayedChanges.doAllChanges(this);
       ttrace.pop();
     }
+
+    // flush them once again, and finally, drop. No more labels would get registered
+    // (well, the registerLabel call would still work, but these values are not recorded anywhere)
+    getMappings().fillFrom(myPerThreadLabels);
+    myPerThreadLabels.clear();
 
     //////////////////////////////////////////////////////////////
     // replace references with PostponedReference to respect model changes up to this point
@@ -262,6 +276,7 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
 
   public void executeScript(TemplateMappingScript script) throws GenerationFailureException {
     getDefaultExecutionContext().executeScript(script, myInputModel);
+    getMappings().fillFrom(Collections.singletonList(myLabeledMappings));
   }
 
   protected void applyReductions(boolean isPrimary) throws GenerationCanceledException, GenerationFailureException {
@@ -510,23 +525,19 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
    * @return never null
    */
   protected final TemplateExecutionEnvironmentImpl newExecutionEnvironment(QueryExecutionContext queryExecutor) {
-    return new TemplateExecutionEnvironmentImpl(myTemplateProcessor, queryExecutor, new ReductionTrack(getBlockedReductionsData()));
+    return teeTracksLabels(new TemplateExecutionEnvironmentImpl(myTemplateProcessor, queryExecutor, new ReductionTrack(getBlockedReductionsData())));
+  }
+
+  private TemplateExecutionEnvironmentImpl teeTracksLabels(TemplateExecutionEnvironmentImpl env) {
+    synchronized (myPerThreadLabels) {
+      // newExecutionEnvironment can get invoked in parallel threads
+      myPerThreadLabels.add(env.getNamedLabels());
+    }
+    return env;
   }
 
   protected DeltaBuilder createDeltaBuilder() {
     return DeltaBuilder.newSingleThreadDeltaBuilder();
-  }
-
-  @Override
-  public void registerMappingLabel(SNode inputNode, String mappingName, SNode outputNode) {
-    final TraceFacility traceSession;
-    if (inputNode != null && mappingName != null && outputNode != null && (traceSession = getTraceSession()) != null) {
-      final LabelTrace lt = traceSession.lm(mappingName);
-      if (lt != null) {
-        lt.register(inputNode, outputNode);
-      }
-    }
-    super.registerMappingLabel(inputNode, mappingName, outputNode);
   }
 
   @Override
@@ -688,7 +699,8 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
         Collection<SNode> _outputNodes = env.tryToReduce(newInputNode);
         if (_outputNodes != null) {
           if (mappingName != null && _outputNodes.size() == 1) {
-            registerMappingLabel(newInputNode, mappingName, _outputNodes.iterator().next());
+            // XXX no idea why we register LM only when there's single output node. Dates back to year 2010 with no explanation
+            env.registerLabel(newInputNode, _outputNodes.iterator().next(), mappingName);
           }
           outputNodes.addAll(_outputNodes);
         } else {
@@ -697,8 +709,11 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
           // XXX I wonder if there's any sense recording output node for a template under COPY-SRC.
           //     Got puzzled by the code while investigating MPS-31826. The code dates back to 2007 and it's impossible to figure out the reason behind it
           //  addOutputNodeByInputAndTemplateNode(newInputNode, templateId, copiedNode);
+          //  OTOH, we do env.nodeCopied for each node we create from a template, perhaps, the reason for line above is to
+          //        do the same foe node copied from the input one. However, still don't see scenarios when I can make use of it.
+          //        Need to wait for wider adoption of MPS 2020.1 to see if it really affects anyone. If not, can drop templateId parameter
           if (mappingName != null) {
-            registerMappingLabel(newInputNode, mappingName, copiedNode);
+            env.registerLabel(newInputNode, copiedNode, mappingName);
           }
           outputNodes.add(copiedNode);
         }

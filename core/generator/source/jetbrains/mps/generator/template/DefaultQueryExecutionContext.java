@@ -58,6 +58,7 @@ import java.util.Collection;
 public class DefaultQueryExecutionContext implements QueryExecutionContext {
   private final ITemplateGenerator myGenerator;
 
+  // FIXME refactor TemplateMappingScript to take TEE instead of generator
   public DefaultQueryExecutionContext(@NotNull ITemplateGenerator generator) {
     myGenerator = generator;
   }
