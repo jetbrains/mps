@@ -130,12 +130,6 @@
     <action id="Generate" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
 
     <group id="CodeCompletionGroup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
-    <!--      <group id="CodeCompletionGroup" class="com.intellij.codeInsight.completion.actions.CodeCompletionGroup" popup="true">-->
-    <action id="CodeCompletion" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="SmartTypeCompletion" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="HippieCompletion" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="HippieBackwardCompletion" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <!--      </group>-->
 
     <action id="InsertLiveTemplate" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <action id="SurroundWith" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
