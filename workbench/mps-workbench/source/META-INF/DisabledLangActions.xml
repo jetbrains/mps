@@ -534,10 +534,6 @@
 
     <action id="UpdateRunningApplication" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
 
-    <action id="TypingLatencyReport" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="RetypeFile" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="CompletionQualityStats" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="ShowControlFlowAction" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <group id="TodoMainGroup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
     <!--    <group id="TodoMainGroup">-->
     <group id="TodoViewGroupByGroup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>

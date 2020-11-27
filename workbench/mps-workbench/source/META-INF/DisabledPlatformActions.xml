@@ -97,7 +97,6 @@
 
     <!-- View -->
     <!--    <group id="ViewMenu" popup="true" compact="true">-->
-    <action id="ToggleFocusMode" class="com.intellij.openapi.actionSystem.EmptyAction" internal="true" overrides="true"/>
     <group id="EditorBidiTextDirection" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
     <!--      <group id="EditorBidiTextDirection" popup="true">-->
     <action id="EditorSetContentBasedBidiTextDirection" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
