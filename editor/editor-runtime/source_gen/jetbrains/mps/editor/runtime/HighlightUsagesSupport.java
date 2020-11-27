@@ -102,6 +102,7 @@ public class HighlightUsagesSupport {
       return;
     }
     NodeHighlightManager hm = myEC.getHighlightManager();
+    EditorMessageOwner highlightMessagesOwner = myEC.getHighlightMessagesOwner();
 
     jetbrains.mps.nodeEditor.cells.EditorCell rootCell = myEC.getRootCell();
     if (rootCell == null) {
@@ -116,12 +117,12 @@ public class HighlightUsagesSupport {
     for (SReference ref : SetSequence.fromSet(usages)) {
       SNode referenceNode = ref.getSourceNode();
       SNode referenceRoot = referenceNode.getContainingRoot();
-      if (referenceRoot == editedRoot && referenceNode != selectedCellNode) {
+      if (referenceRoot == editedRoot && referenceNode != selectedCellNode && hm.getMessagesFor(referenceNode, highlightMessagesOwner).isEmpty()) {
         hm.mark(referenceNode, myHighlightColor, "usage", emo);
       }
     }
 
-    if (highlightingRoot == editedRoot && nodeToHighlight != selectedCellNode && nodeToHighlight != editedRoot) {
+    if (highlightingRoot == editedRoot && nodeToHighlight != selectedCellNode && nodeToHighlight != editedRoot && hm.getMessagesFor(nodeToHighlight, highlightMessagesOwner).isEmpty()) {
       hm.mark(nodeToHighlight, myHighlightColor, "usage", emo);
     }
   }

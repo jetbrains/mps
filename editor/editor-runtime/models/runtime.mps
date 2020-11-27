@@ -10111,6 +10111,22 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="462ZLB7swvz" role="3cqZAp">
+          <node concept="3cpWsn" id="462ZLB7swv$" role="3cpWs9">
+            <property role="TrG5h" value="highlightMessagesOwner" />
+            <node concept="3uibUv" id="462ZLB7swqL" role="1tU5fm">
+              <ref role="3uigEE" to="kpve:~EditorMessageOwner" resolve="EditorMessageOwner" />
+            </node>
+            <node concept="2OqwBi" id="462ZLB7swv_" role="33vP2m">
+              <node concept="37vLTw" id="462ZLB7swvA" role="2Oq$k0">
+                <ref role="3cqZAo" node="Qnt6MoXp2L" resolve="myEC" />
+              </node>
+              <node concept="liA8E" id="462ZLB7swvB" role="2OqNvi">
+                <ref role="37wK5l" to="exr9:~EditorComponent.getHighlightMessagesOwner()" resolve="getHighlightMessagesOwner" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbH" id="fw7FbkYDVO" role="3cqZAp" />
         <node concept="3cpWs8" id="3L8lG__9PJU" role="3cqZAp">
           <node concept="3cpWsn" id="3L8lG__9PJV" role="3cpWs9">
@@ -10291,21 +10307,42 @@
                   </node>
                 </node>
               </node>
-              <node concept="1Wc70l" id="7lQJFRr3lUP" role="3clFbw">
-                <node concept="3clFbC" id="7lQJFRr2en3" role="3uHU7B">
-                  <node concept="37vLTw" id="7lQJFRr2en5" role="3uHU7B">
-                    <ref role="3cqZAo" node="7lQJFRr2emK" resolve="referenceRoot" />
+              <node concept="1Wc70l" id="462ZLB7sxJt" role="3clFbw">
+                <node concept="1Wc70l" id="7lQJFRr3lUP" role="3uHU7B">
+                  <node concept="3clFbC" id="7lQJFRr2en3" role="3uHU7B">
+                    <node concept="37vLTw" id="7lQJFRr2en5" role="3uHU7B">
+                      <ref role="3cqZAo" node="7lQJFRr2emK" resolve="referenceRoot" />
+                    </node>
+                    <node concept="37vLTw" id="fw7FbkYD_3" role="3uHU7w">
+                      <ref role="3cqZAo" node="3gc07c3T5NH" resolve="editedRoot" />
+                    </node>
                   </node>
-                  <node concept="37vLTw" id="fw7FbkYD_3" role="3uHU7w">
-                    <ref role="3cqZAo" node="3gc07c3T5NH" resolve="editedRoot" />
+                  <node concept="3y3z36" id="7lQJFRr3mHn" role="3uHU7w">
+                    <node concept="37vLTw" id="fw7FbkYHN3" role="3uHU7B">
+                      <ref role="3cqZAo" node="7lQJFRr2emE" resolve="referenceNode" />
+                    </node>
+                    <node concept="37vLTw" id="fw7FbkYSCC" role="3uHU7w">
+                      <ref role="3cqZAo" node="fw7FbkYJw_" resolve="selectedCellNode" />
+                    </node>
                   </node>
                 </node>
-                <node concept="3y3z36" id="7lQJFRr3mHn" role="3uHU7w">
-                  <node concept="37vLTw" id="fw7FbkYHN3" role="3uHU7B">
-                    <ref role="3cqZAo" node="7lQJFRr2emE" resolve="referenceNode" />
+                <node concept="2OqwBi" id="462ZLB7s$CK" role="3uHU7w">
+                  <node concept="2OqwBi" id="462ZLB7s$CL" role="2Oq$k0">
+                    <node concept="37vLTw" id="462ZLB7s$CM" role="2Oq$k0">
+                      <ref role="3cqZAo" node="6$lwX$8YU_4" resolve="hm" />
+                    </node>
+                    <node concept="liA8E" id="462ZLB7s$CN" role="2OqNvi">
+                      <ref role="37wK5l" to="exr9:~NodeHighlightManager.getMessagesFor(org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.openapi.editor.message.EditorMessageOwner)" resolve="getMessagesFor" />
+                      <node concept="37vLTw" id="462ZLB7s$CO" role="37wK5m">
+                        <ref role="3cqZAo" node="7lQJFRr2emE" resolve="referenceNode" />
+                      </node>
+                      <node concept="37vLTw" id="462ZLB7s$CP" role="37wK5m">
+                        <ref role="3cqZAo" node="462ZLB7swv$" resolve="highlightMessagesOwner" />
+                      </node>
+                    </node>
                   </node>
-                  <node concept="37vLTw" id="fw7FbkYSCC" role="3uHU7w">
-                    <ref role="3cqZAo" node="fw7FbkYJw_" resolve="selectedCellNode" />
+                  <node concept="liA8E" id="462ZLB7s$CQ" role="2OqNvi">
+                    <ref role="37wK5l" to="33ny:~List.isEmpty()" resolve="isEmpty" />
                   </node>
                 </node>
               </node>
@@ -10338,31 +10375,52 @@
               </node>
             </node>
           </node>
-          <node concept="1Wc70l" id="5t6ebKfMvAp" role="3clFbw">
-            <node concept="3y3z36" id="5t6ebKfMx8Y" role="3uHU7w">
-              <node concept="37vLTw" id="5t6ebKfMF00" role="3uHU7w">
-                <ref role="3cqZAo" node="3gc07c3T5NH" resolve="editedRoot" />
-              </node>
-              <node concept="37vLTw" id="5t6ebKfMwJ$" role="3uHU7B">
-                <ref role="3cqZAo" node="Qnt6Mp1tYt" resolve="nodeToHighlight" />
-              </node>
-            </node>
-            <node concept="1Wc70l" id="3gc07c3T5ga" role="3uHU7B">
-              <node concept="3clFbC" id="501DkzwMEmE" role="3uHU7B">
-                <node concept="37vLTw" id="fw7FbkYTc7" role="3uHU7B">
-                  <ref role="3cqZAo" node="fw7FbkYFUq" resolve="highlightingRoot" />
+          <node concept="1Wc70l" id="462ZLB7sAe$" role="3clFbw">
+            <node concept="1Wc70l" id="5t6ebKfMvAp" role="3uHU7B">
+              <node concept="1Wc70l" id="3gc07c3T5ga" role="3uHU7B">
+                <node concept="3clFbC" id="501DkzwMEmE" role="3uHU7B">
+                  <node concept="37vLTw" id="fw7FbkYTc7" role="3uHU7B">
+                    <ref role="3cqZAo" node="fw7FbkYFUq" resolve="highlightingRoot" />
+                  </node>
+                  <node concept="37vLTw" id="fw7FbkYDOl" role="3uHU7w">
+                    <ref role="3cqZAo" node="3gc07c3T5NH" resolve="editedRoot" />
+                  </node>
                 </node>
-                <node concept="37vLTw" id="fw7FbkYDOl" role="3uHU7w">
+                <node concept="3y3z36" id="3gc07c3T98A" role="3uHU7w">
+                  <node concept="37vLTw" id="fw7FbkYTon" role="3uHU7B">
+                    <ref role="3cqZAo" node="Qnt6Mp1tYt" resolve="nodeToHighlight" />
+                  </node>
+                  <node concept="37vLTw" id="fw7FbkYTQF" role="3uHU7w">
+                    <ref role="3cqZAo" node="fw7FbkYJw_" resolve="selectedCellNode" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3y3z36" id="5t6ebKfMx8Y" role="3uHU7w">
+                <node concept="37vLTw" id="5t6ebKfMwJ$" role="3uHU7B">
+                  <ref role="3cqZAo" node="Qnt6Mp1tYt" resolve="nodeToHighlight" />
+                </node>
+                <node concept="37vLTw" id="5t6ebKfMF00" role="3uHU7w">
                   <ref role="3cqZAo" node="3gc07c3T5NH" resolve="editedRoot" />
                 </node>
               </node>
-              <node concept="3y3z36" id="3gc07c3T98A" role="3uHU7w">
-                <node concept="37vLTw" id="fw7FbkYTon" role="3uHU7B">
-                  <ref role="3cqZAo" node="Qnt6Mp1tYt" resolve="nodeToHighlight" />
+            </node>
+            <node concept="2OqwBi" id="462ZLB7sAEq" role="3uHU7w">
+              <node concept="2OqwBi" id="462ZLB7sAEr" role="2Oq$k0">
+                <node concept="37vLTw" id="462ZLB7sAEs" role="2Oq$k0">
+                  <ref role="3cqZAo" node="6$lwX$8YU_4" resolve="hm" />
                 </node>
-                <node concept="37vLTw" id="fw7FbkYTQF" role="3uHU7w">
-                  <ref role="3cqZAo" node="fw7FbkYJw_" resolve="selectedCellNode" />
+                <node concept="liA8E" id="462ZLB7sAEt" role="2OqNvi">
+                  <ref role="37wK5l" to="exr9:~NodeHighlightManager.getMessagesFor(org.jetbrains.mps.openapi.model.SNode,jetbrains.mps.openapi.editor.message.EditorMessageOwner)" resolve="getMessagesFor" />
+                  <node concept="37vLTw" id="462ZLB7sB1r" role="37wK5m">
+                    <ref role="3cqZAo" node="Qnt6Mp1tYt" resolve="nodeToHighlight" />
+                  </node>
+                  <node concept="37vLTw" id="462ZLB7sAEv" role="37wK5m">
+                    <ref role="3cqZAo" node="462ZLB7swv$" resolve="highlightMessagesOwner" />
+                  </node>
                 </node>
+              </node>
+              <node concept="liA8E" id="462ZLB7sAEw" role="2OqNvi">
+                <ref role="37wK5l" to="33ny:~List.isEmpty()" resolve="isEmpty" />
               </node>
             </node>
           </node>
