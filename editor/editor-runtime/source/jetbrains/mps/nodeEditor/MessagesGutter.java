@@ -378,8 +378,7 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
       if (!(myMessage instanceof EditorMessage)) {
         // thin
 
-        myWidth /= 2;
-        myWidth += 1;
+        myWidth = 2;
         myX = myRightToLeft ? myWidth + 2 : 0;
       }
       myY = calculateY(myMessage);
@@ -419,7 +418,7 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
       int y = getY();
       int height = Math.max(getHeight(), 3);
 
-      g.fillRect(x + 2, y, 2, height);
+      g.fillRect(x + 2, y, getWidth(), height);
     }
 
     public int getX() {
