@@ -29,18 +29,6 @@
 
   <target name="check-project-structure" depends="unpack">
     <echo message="JDK HOME: ${jdk.home}"/>
-    <mkdir dir="${build.tmp}/buildtests.tmp"/>
-    <path id="tests.classpath">
-      <fileset dir="${mps_build_home}/lib">
-        <include name="**/*.jar"/>
-      </fileset>
-      <path path="${mps_build_home}/lib/mps-backend.jar"/>
-      <path path="${mps_build_home}/lib/jdom.jar"/>
-    </path>
-    <jar destfile="${mps_build_home}/lib/mpstests.jar" duplicate="preserve" filesonly="true">
-      <fileset dir="${build.tmp}/buildtests.tmp"/>
-    </jar>
-    <delete dir="${build.tmp}/buildtests.tmp"/>
 
     <junit fork="true" dir="${mps_build_home}" showoutput="true">
       <jvmarg value="-ea"/>
