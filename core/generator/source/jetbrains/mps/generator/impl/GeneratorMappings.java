@@ -22,6 +22,7 @@ import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
 import jetbrains.mps.smodel.runtime.StaticScope;
 import jetbrains.mps.textgen.trace.TracingUtil;
+import jetbrains.mps.util.CollectConsumer;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.ToStringComparator;
 import org.jetbrains.annotations.NotNull;
@@ -36,14 +37,11 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Semaphore;
 import java.util.stream.Collectors;
 
@@ -56,8 +54,8 @@ import java.util.stream.Collectors;
 public final class GeneratorMappings {
   private final IGeneratorLogger myLog;
 
-  /* mapping,input -> output */
-  private final Map<String, Map<SNode, Object>> myMappingNameAndInputNodeToOutputNodeMap = new HashMap<>();
+  /* mapping label, input[1] -> output[1..*] */
+  private final Map<String, NodeMap> myMappingNameAndInputNodeToOutputNodeMap = new HashMap<>();
 
   /* input -> output */
   private final ConcurrentMap<SNode, Object> myCopiedOutputNodeForInputNode = new ConcurrentHashMap<>();
@@ -77,32 +75,19 @@ public final class GeneratorMappings {
 
   // add methods
 
-  private void addOutputNodeByInputNodeAndMappingName(SNode inputNode, String mappingName, SNode outputNode) {
-    Map<SNode, Object> currentMapping = myMappingNameAndInputNodeToOutputNodeMap.get(mappingName);
-    if (currentMapping == null) {
-      // we save labeled transformations, and chances are we get similar input/output nodes with the same ML
-      // (e.g. multipleLoopVarDecl rmt -> rmt_var) more than once - e.g. typesystem makes a copy of some rules
-      // to generate two methods, and if there's an MultiForLoop in the original code, we get two almost identical
-      // ML entries (presentation of output and key's original nodes are the same, see comparator in #getSortedMappingKeys(),
-      // below. Therefore, for nodes that are 'equal' that way, would like to keep an order they were registered at, hence LinkedHashMap
-      // FIXME with output nodes coming ordered now from LMCollector.OneOrMany (at least within the same root), there seems to be no reason
-      //       to keep LinkedHashMap
-      myMappingNameAndInputNodeToOutputNodeMap.putIfAbsent(mappingName, new LinkedHashMap<>());
-      currentMapping = myMappingNameAndInputNodeToOutputNodeMap.get(mappingName);
-    }
-    Object o = currentMapping.get(inputNode);
-    if (o == null) {
-      currentMapping.put(inputNode, outputNode);
-    } else if (o instanceof List) {
-      ((List<SNode>) o).add(outputNode);
-    } else if (o != outputNode) {
-      List<SNode> list = new ArrayList<>(4);
-      list.add((SNode) o);
-      list.add(outputNode);
-      currentMapping.put(inputNode, list);
-    } else {
-      // TODO warning
-    }
+  private void addOutputNodeByInputNodeAndMappingName(String mappingName, NodeMapRecord r) {
+    // pretty much the same as LMCollector; just don't want to unwrap NodeMapRecord here to use LMCollector.add()
+    final NodeMap map = myMappingNameAndInputNodeToOutputNodeMap.computeIfAbsent(mappingName, s -> new NodeMap(20));
+    map.updateWith(r);
+    // Bit of history:
+    // Here, we record labeled transformations, and chances are we get similar input/output nodes with the same ML
+    // (e.g. multipleLoopVarDecl rmt -> rmt_var) more than once - e.g. typesystem makes a copy of some rules
+    // to generate two methods, and if there's an MultiForLoop in the original code, we get two almost identical
+    // ML entries (presentation of output and key's original nodes are the same, see comparator in #getSortedMappingKeys(),
+    // below. Therefore, for nodes that are 'equal' that way, would like to keep an order they were registered at
+    // It used to be LinkedHashMap. Now, with output nodes coming ordered now from LMCollector (at least
+    // within the same root), we don't care about ordering here any more - imagine (LM, I, O1) and (LM, I, O2). When the
+    // second one comes, there's already NodeMapRecord for I, and O2 just goes
   }
 
   void fillFrom(Collection<LMCollector> lmCollectors) {
@@ -111,7 +96,7 @@ public final class GeneratorMappings {
         continue;
       }
       lmCollector.forEachNoInput((k,v) -> myConditionalRoots.add(new Pair<>(k,v)));
-      lmCollector.forEachWithInput(ml -> i -> v -> addOutputNodeByInputNodeAndMappingName(i, ml, v));
+      lmCollector.forEachWithInput((ml, nm) -> nm.forEachRecord(r -> addOutputNodeByInputNodeAndMappingName(ml, r)));
     }
   }
 
@@ -178,13 +163,16 @@ public final class GeneratorMappings {
     if (mappingName == null) {
       return null;
     }
-    Map<SNode, Object> currentMapping = myMappingNameAndInputNodeToOutputNodeMap.get(mappingName);
+    NodeMap currentMapping = myMappingNameAndInputNodeToOutputNodeMap.get(mappingName);
     if (currentMapping == null) {
       return null;
     }
-    Object o = currentMapping.get(inputNode);
-    if (o instanceof List) {
-      List<SNode> list = (List<SNode>) o;
+    NodeMapRecord o = currentMapping.get(inputNode);
+    if (o == null || o.count() == 0) {
+      return null;
+    }
+    if (o.count() > 1) {
+      final List<SNode> list = o.valueStream().collect(Collectors.toList());
       ProblemDescription[] descr = new ProblemDescription[list.size() + 1];
       for (int i = 0; i < list.size(); i++) {
         descr[i] = GeneratorUtil.describe(list.get(i), "output");
@@ -195,25 +183,22 @@ public final class GeneratorMappings {
       return list.get(0);
     }
 
-    return (SNode) o;
+    return o.soleValue();
   }
 
   public List<SNode> findAllOutputNodesByInputNodeAndMappingName(SNode inputNode, String mappingName) {
     if (mappingName == null) {
       return null;
     }
-    Map<SNode, Object> currentMapping = myMappingNameAndInputNodeToOutputNodeMap.get(mappingName);
+    NodeMap currentMapping = myMappingNameAndInputNodeToOutputNodeMap.get(mappingName);
     if (currentMapping == null) {
       return null;
     }
-    Object o = currentMapping.get(inputNode);
-    if (o == null) {
+    NodeMapRecord o = currentMapping.get(inputNode);
+    if (o == null || o.count() == 0) {
       return Collections.emptyList();
     }
-    if (o instanceof List) {
-      return ((List<SNode>) o);
-    }
-    return Collections.singletonList((SNode) o);
+    return o.valuesInto(new ArrayList<>(o.count()));
   }
 
   public SNode findCopiedOutputNodeForInputNode(@NotNull SNode inputNode) {
@@ -286,22 +271,31 @@ public final class GeneratorMappings {
     return myMappingNameAndInputNodeToOutputNodeMap.keySet();
   }
 
-  // FIXME please, no Object, no Map<SNode,Object>. PLEASE!!!
-  /*package*/Map<SNode,Object> getMappings(String label) {
+  @Nullable
+  /*package*/ NodeMap getMappingsForLabel(String label) {
     return myMappingNameAndInputNodeToOutputNodeMap.get(label);
   }
+
+  // FIXME please, no Object, no Map<SNode,Object>. PLEASE!!!
+  @Deprecated
+  /*package*/Map<SNode,Object> getMappings(String label) {
+    final NodeMap map = getMappingsForLabel(label);
+    return map == null ? null : map.toLegacyMap();
+  }
   /*package*/List<SNode> getSortedMappingKeys(String label) {
-    ArrayList<Map.Entry<SNode, Object>> l = new ArrayList<>(myMappingNameAndInputNodeToOutputNodeMap.get(label).entrySet());
-    Collections.sort(l, new Comparator<Entry<SNode, Object>>() {
+    ArrayList<NodeMapRecord> l = new ArrayList<>();
+    CollectConsumer<NodeMapRecord> cc = new CollectConsumer<>(l);
+    myMappingNameAndInputNodeToOutputNodeMap.get(label).forEachRecord(cc);
+    Collections.sort(l, new Comparator<>() {
       private final ToStringComparator myToStringComparator = new ToStringComparator();
       @Override
-      public int compare(Entry<SNode, Object> o1, Entry<SNode, Object> o2) {
-        int v = compareKeys(o1.getKey(), o2.getKey());
+      public int compare(NodeMapRecord o1, NodeMapRecord o2) {
+        int v = compareKeys(o1.key(), o2.key());
         if (v == 0) {
           // input node is the same (or indistinguishable), have to respect values to keep order consistent.
           // E.g. a pattern in a typesystem rule is copied to to different methods, there are two output classes
           // Pattern_nn7be_a0a0a0b0d and Pattern_nn7be_a0a0a0c, and label entry order is inconsistent
-          return String.valueOf(o1.getValue()).compareTo(String.valueOf(o2.getValue()));
+          return String.valueOf(o1.value()).compareTo(String.valueOf(o2.value()));
         }
         return v;
       }
@@ -332,7 +326,7 @@ public final class GeneratorMappings {
         return v;
       }
     });
-    return l.stream().map(Entry::getKey).collect(Collectors.toList());
+    return l.stream().map(NodeMapRecord::key).collect(Collectors.toList());
   }
 
   /*package*/Set<String> getConditionalRootLabels() {
@@ -349,27 +343,25 @@ public final class GeneratorMappings {
    * and input nodes being traced with transitionTrace
    */
   public void export(CheckpointStateBuilder cp) {
-    for (Entry<String, Map<SNode, Object>> o : myMappingNameAndInputNodeToOutputNodeMap.entrySet()) {
-      String label = o.getKey();
-      for (Entry<SNode, Object> i : o.getValue().entrySet()) {
-        SNode inputNode = i.getKey();
+    for (String label : myMappingNameAndInputNodeToOutputNodeMap.keySet()) {
+      myMappingNameAndInputNodeToOutputNodeMap.get(label).forEachRecord(i -> {
+        SNode inputNode = i.key();
         if (inputNode == null) {
           // FIXME shall I track nodes newly introduced at the given checkpoint step? Yes.
           //       However, for newly introduced nodes we keep separate collection, and there should be no
           //       null input nodes in this map. The check left just in case there's one (no check for null input in addOutput.. yet).
-          continue;
+          return;
         }
         // perhaps, would be useful to record mappings even without original node (marked as 'useless')
         // to ease debug (once there's mechanism to show mapping labels as part of transient model/module)
-        Object value = i.getValue();
-        if (value instanceof SNode) {
-          cp.record(inputNode, label, (SNode) value);
-        } else if (value instanceof Collection) {
+        if (i.count() == 1) {
+          cp.record(inputNode, label, i.soleValue());
+        } else if (i.count() > 1) {
           @SuppressWarnings("unchecked")
-          Collection<SNode> collection = (Collection<SNode>) value;
+          Collection<SNode> collection = (Collection<SNode>) i.value();
           cp.record(inputNode, label, collection);
         }
-      }
+      });
     }
     myConditionalRoots.forEach(p -> cp.record(p.o1, p.o2));
   }

@@ -21,8 +21,7 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.extapi.model.TransientSModel;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.textgen.trace.TracingUtil;
-import java.util.Collection;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import java.util.function.Consumer;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.generator.impl.plan.CrossModelEnvironment;
@@ -44,7 +43,7 @@ public class DebugMappingsBuilder {
     myMessageHandler = messageHandler;
   }
 
-  public SNode build(@NotNull SModel checkpointModel, GeneratorMappings mappings) {
+  public SNode build(@NotNull final SModel checkpointModel, GeneratorMappings mappings) {
     SNode rv = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_Mappings$42);
     ArrayList<String> availableLabels = new ArrayList<String>(mappings.getAvailableLabels());
     Collections.sort(availableLabels);
@@ -54,7 +53,7 @@ public class DebugMappingsBuilder {
       ListSequence.fromList(SLinkOperations.getChildren(rv, LINKS.labels$gYNG)).addElement(labelEntry);
       List<SNode> keys = mappings.getSortedMappingKeys(label);
       for (SNode keyInputNode : keys) {
-        SNode entry = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_NodeMapEntry$ME);
+        final SNode entry = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_NodeMapEntry$ME);
         ListSequence.fromList(SLinkOperations.getChildren(labelEntry, LINKS.entries$uXLI)).addElement(entry);
         assert keyInputNode != null;
         SLinkOperations.setNewChild(entry, LINKS.inputNode$NcgX, null);
@@ -83,21 +82,14 @@ public class DebugMappingsBuilder {
         }
         SNodeReference origin = TracingUtil.getInput(keyInputNode);
         SLinkOperations.setTarget(entry, LINKS.inputOrigin$JIuD, (origin == null ? null : origin.resolve(myRepo)));
-        Collection<SNode> c;
-        Object valueOutputNode = mappings.getMappings(label).get(keyInputNode);
-        if (valueOutputNode instanceof SNode) {
-          SNode n = ((SNode) valueOutputNode);
-          c = Collections.singleton(n);
-        } else if (valueOutputNode instanceof Collection) {
-          c = (Collection<SNode>) valueOutputNode;
-        } else {
-          c = Collections.emptyList();
-        }
-        for (SNode n : CollectionSequence.fromCollection(c)) {
-          SNode r = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_NodeRef$2a);
-          SLinkOperations.setTarget(r, LINKS.node$JBUG, substituteOutputNode(checkpointModel, n));
-          ListSequence.fromList(SLinkOperations.getChildren(entry, LINKS.outputNode$JC9e)).addElement(r);
-        }
+        NodeMapRecord outRec = mappings.getMappingsForLabel(label).get(keyInputNode);
+        outRec.valueStream().forEach(new Consumer<SNode>() {
+          public void accept(SNode n) {
+            SNode r = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_NodeRef$2a);
+            SLinkOperations.setTarget(r, LINKS.node$JBUG, substituteOutputNode(checkpointModel, n));
+            ListSequence.fromList(SLinkOperations.getChildren(entry, LINKS.outputNode$JC9e)).addElement(r);
+          }
+        });
       }
     }
     for (String label : mappings.getConditionalRootLabels()) {

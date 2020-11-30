@@ -64,6 +64,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
@@ -76,9 +77,8 @@ import java.util.Comparator;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Queue;
+import java.util.function.Function;
 
 /**
  * Igor Alshannikov
@@ -315,34 +315,34 @@ class GenerationSession {
           // stepLabels is likely the last one pushed into lastBigTransformStepMappings when previous Transform step had happened.
           lastBigTransformStepMappings.remove(stepLabels);
           LMCollector lmCollector = new LMCollector();
+          final Function<SNodeId, SNode> getCurrentInputNode = currInputModel::getNode;
           for (GeneratorMappings prev : lastBigTransformStepMappings) {
             for (String l : prev.getConditionalRootLabels()) {
               for (SNode conditionalRoot : prev.getConditionalRoots(l)) {
-                SNode copiedRoot = currInputModel.getNode(conditionalRoot.getNodeId());
+                SNode copiedRoot = getCurrentInputNode.apply(conditionalRoot.getNodeId());
                 if (copiedRoot != null) {
                   lmCollector.add(l, copiedRoot);
                 }
               }
             }
             for (String l : prev.getAvailableLabels()) {
-              Map<SNode, Object> lastStepMappings = stepLabels.getMappings(l);
-              if (lastStepMappings == null) {
-                lastStepMappings = Collections.emptyMap();
-              }
-              for (Entry<SNode, Object> entry : prev.getMappings(l).entrySet()) {
-                if (lastStepMappings.containsKey(entry.getKey())) {
+              final NodeMap lastStepMappings = stepLabels.getMappingsForLabel(l);
+              final NodeMap prevStepMappings = prev.getMappingsForLabel(l);
+              prevStepMappings.forEachRecord(r -> {
+                if (lastStepMappings != null && lastStepMappings.containsKey(r.key())) {
                   // there's already labeled transformation for the same input node, no reason to override with value from previous steps
-                  continue;
+                  return;
                 }
-                if (entry.getValue() instanceof SNode) {
+                if (r.count() == 1) {
                   // intentionally do not care about multiple outputs, just don't want to project multiple outputs into actual transient model
                   // and it's of no real use anyway as we don't restore x-model references in case there are multiple outputs.
-                  SNode copiedOutput = currInputModel.getNode(((SNode) entry.getValue()).getNodeId());
+                  SNode copiedOutput = getCurrentInputNode.apply(r.soleValue().getNodeId());
                   if (copiedOutput != null) {
-                    lmCollector.add(l, entry.getKey(), copiedOutput);
+                    lmCollector.add(l, r.key(), copiedOutput);
                   }
                 }
-              }
+
+              });
             }
             // record what we've collected so far so the next prev GM is examined, we would know LMs we've just pushed.
             stepLabels.fillFrom(Collections.singletonList(lmCollector));

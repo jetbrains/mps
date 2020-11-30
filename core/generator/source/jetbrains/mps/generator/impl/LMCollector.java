@@ -22,7 +22,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
-import java.util.function.Function;
 
 /**
  * Collector for labeled mappings recorded during transformations of a node inside a single thread.
@@ -33,17 +32,17 @@ import java.util.function.Function;
  * @author Artem Tikhomirov
  */
 /*package*/ final class LMCollector {
-  private final Map<String, Map<SNode, OneOrMany<SNode>>> myMap = new HashMap<>();
+  private final Map<String, NodeMap> myMap = new HashMap<>();
 
   private final PairList<String, SNode> myConditionalRoots = new PairList<>();
 
-  private OneOrMany<SNode> map(String label, SNode input) {
-    return myMap.computeIfAbsent(label, s -> new HashMap<>()).computeIfAbsent(input, i -> new OneOrMany<>());
+  private NodeMap map(String label) {
+    return myMap.computeIfAbsent(label, s -> new NodeMap(10));
   }
 
   // assume label != null, input != null
   public void add(String label, SNode input, SNode output) {
-    map(label, input).add(output);
+    map(label).add(input, output);
   }
 
   // assume label != null, input != null, output != null
@@ -51,7 +50,7 @@ import java.util.function.Function;
     if (output.isEmpty()) {
       return;
     }
-    map(label, input).add(output);
+    map(label).add(input, output);
   }
 
   // assume label != null, output != null
@@ -72,14 +71,8 @@ import java.util.function.Function;
     myConditionalRoots.forEach(consumer);
   }
 
-  public void forEachWithInput(Function<String, Function<SNode, Consumer<SNode>>> f) {
-    myMap.forEach((l, m) -> {
-      final Function<SNode, Consumer<SNode>> f1 = f.apply(l);
-      m.forEach((i,o) -> {
-        final Consumer<SNode> f2 = f1.apply(i);
-        o.forEach(f2);
-      });
-    });
+  public void forEachWithInput(BiConsumer<String, NodeMap> f) {
+    myMap.forEach(f);
   }
 
 
@@ -142,6 +135,7 @@ import java.util.function.Function;
         vv[1] = value;
         myValue = vv;
         myCount = 2;
+        return;
       }
       grow()[myCount++] = value;
     }
