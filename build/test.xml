@@ -28,8 +28,6 @@
   </target>
 
   <target name="check-project-structure" depends="unpack">
-    <echo message="JDK HOME: ${jdk.home}"/>
-
     <junit fork="true" dir="${mps_build_home}" showoutput="true">
       <jvmarg value="-ea"/>
       <jvmarg value="-Dmps.junit.modules.root=."/>
@@ -42,7 +40,6 @@
         <fileset dir="${mps_build_home}/lib">
           <include name="*.jar"/>
         </fileset>
-        <pathelement path="${jdk.home}/lib/tools.jar" />
       </classpath>
     </junit>
   </target>
