@@ -29,6 +29,8 @@ import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.application.ApplicationManager;
 import org.apache.log4j.Level;
 import jetbrains.mps.project.ProjectBase;
+import jetbrains.mps.project.MPSProject;
+import com.intellij.configurationStore.StoreUtil;
 import java.util.concurrent.atomic.AtomicBoolean;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.migration.global.ProjectMigration;
@@ -210,8 +212,7 @@ public class MigrationTask {
           project.getRepository().getModelAccess().runWriteAction(new Runnable() {
             public void run() {
               project.getRepository().saveAll();
-              // essential for project migrations to update the list of migrations run to the disk, however, suitable also for language migrations 
-              ((ProjectBase) project).save();
+              saveProject(project);
             }
           });
 
@@ -222,6 +223,16 @@ public class MigrationTask {
     }, modalityState);
 
     return noException.value;
+  }
+
+  private void saveProject(Project project) {
+    // essential for project migrations to update the list of migrations run to the disk, however, suitable also for language migrations 
+    ((ProjectBase) project).save();
+    if (project instanceof MPSProject) {
+      com.intellij.openapi.project.Project ijProject = ((MPSProject) project).getProject();
+      // ij does not save the project in headless which is not acceptable for us, copying the ij internals 
+      StoreUtil.saveSettings(ijProject, false);
+    }
   }
 
   private boolean runCleanupMigrations(final ProgressMonitor m) {
@@ -308,7 +319,7 @@ public class MigrationTask {
     runLocalHistoryRecord(caption, new Runnable() {
       public void run() {
         try {
-          JComponent modalityComponent = check_ajmasp_a0a0a0b0f0lb(as_ajmasp_a0a0a0a0a0a1a5a83(myMonitor.getIndicator(), InlineProgressIndicator.class));
+          JComponent modalityComponent = check_ajmasp_a0a0a0b0f0nb(as_ajmasp_a0a0a0a0a0a1a5a04(myMonitor.getIndicator(), InlineProgressIndicator.class));
           ModalityState modalityState = (modalityComponent == null ? ModalityState.NON_MODAL : ModalityState.stateForComponent(modalityComponent));
 
           for (final SModule module : ListSequence.fromList(allModules.value)) {
@@ -344,7 +355,7 @@ public class MigrationTask {
     runLocalHistoryRecord(caption, new Runnable() {
       public void run() {
         try {
-          JComponent modalityComponent = check_ajmasp_a0a0a0b0f0nb(as_ajmasp_a0a0a0a0a0a1a5a04(myMonitor.getIndicator(), InlineProgressIndicator.class));
+          JComponent modalityComponent = check_ajmasp_a0a0a0b0f0pb(as_ajmasp_a0a0a0a0a0a1a5a24(myMonitor.getIndicator(), InlineProgressIndicator.class));
           ModalityState modalityState = (modalityComponent == null ? ModalityState.NON_MODAL : ModalityState.stateForComponent(modalityComponent));
 
           for (final SModule module : ListSequence.fromList(allModules.value)) {
@@ -503,13 +514,13 @@ public class MigrationTask {
     }
     return null;
   }
-  private static JComponent check_ajmasp_a0a0a0b0f0lb(InlineProgressIndicator checkedDotOperand) {
+  private static JComponent check_ajmasp_a0a0a0b0f0nb(InlineProgressIndicator checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getComponent();
     }
     return null;
   }
-  private static JComponent check_ajmasp_a0a0a0b0f0nb(InlineProgressIndicator checkedDotOperand) {
+  private static JComponent check_ajmasp_a0a0a0b0f0pb(InlineProgressIndicator checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getComponent();
     }
@@ -518,10 +529,10 @@ public class MigrationTask {
   private static <T> T as_ajmasp_a0a0e0cb(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_ajmasp_a0a0a0a0a0a1a5a83(Object o, Class<T> type) {
+  private static <T> T as_ajmasp_a0a0a0a0a0a1a5a04(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_ajmasp_a0a0a0a0a0a1a5a04(Object o, Class<T> type) {
+  private static <T> T as_ajmasp_a0a0a0a0a0a1a5a24(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }
