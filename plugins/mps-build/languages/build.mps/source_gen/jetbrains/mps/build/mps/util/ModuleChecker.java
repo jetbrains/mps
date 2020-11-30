@@ -972,11 +972,6 @@ public final class ModuleChecker {
     }
 
     GeneratorDescriptor generatorDescriptor = languageDescriptor.getGenerators().get(0);
-    String generatorName = generatorDescriptor.getNamespace();
-    if (generatorName != null && !(generatorName.startsWith(langName + "#"))) {
-      report("wrong generator name `" + generatorName + "', should start with `" + langName + "#'");
-      return;
-    }
 
     if (type.doCheck && (SLinkOperations.getTarget(language, LINKS.generator$OCOG) == null)) {
       report("language generator should be extracted for `" + langName + "'");
