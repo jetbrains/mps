@@ -9,7 +9,6 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.behavior.IOperation__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.generator.impl.GenerationFailureException" />
     <classNode dependClassName="jetbrains.mps.generator.impl.query.QueryKey" />
-    <classNode dependClassName="jetbrains.mps.generator.impl.query.QueryKeyImpl" />
     <classNode dependClassName="jetbrains.mps.generator.impl.query.ReductionRuleCondition" />
     <classNode dependClassName="jetbrains.mps.generator.impl.query.ReferenceTargetQuery" />
     <classNode dependClassName="jetbrains.mps.generator.impl.query.SourceNodeQuery" />
