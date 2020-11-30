@@ -351,8 +351,8 @@
              url="https://confluence.jetbrains.com/display/MPS/JetBrains+MPS+2020.3+Download+EAP+Page"
              feedback="http://youtrack.jetbrains.net"
              majorVersion="2020" minorVersoin="3">
-      <build number="203.4818.546" version="2020.3 EAP2">
-        <message>JetBrains MPS 2020.2 EAP1 is now available.</message>
+      <build number="203.5784.751" version="2020.3 EAP3">
+        <message>JetBrains MPS 2020.2 EAP3 is now available.</message>
         <button name="Download" url="https://confluence.jetbrains.com/display/MPS/JetBrains+MPS+2020.3+Download+EAP+Page" download="true"/>
       </build>
     </channel>
