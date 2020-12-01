@@ -23,7 +23,6 @@ import jetbrains.mps.generator.impl.query.GeneratorQueryProvider;
 import jetbrains.mps.generator.impl.query.InlineSwitchCaseCondition;
 import jetbrains.mps.generator.impl.query.QueryKey;
 import jetbrains.mps.generator.impl.query.QueryKeyImpl;
-import jetbrains.mps.generator.impl.query.QueryProviderBase;
 import jetbrains.mps.generator.impl.template.QueryExecutor;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateCallSite;
@@ -98,12 +97,8 @@ public abstract class RuleConsequenceProcessor {
         for (SNode switchCase : RuleUtil.getInlineSwitch_case(mySwitchNode)) {
           SNode caseConditionNode = RuleUtil.getInlineSwitch_caseCondition(switchCase);
           final InlineSwitchCaseCondition condition;
-          if (caseConditionNode != null) {
-            QueryKey identity = new QueryKeyImpl(switchCase.getReference(), caseConditionNode.getNodeId());
-            condition = qps.getQueryProvider(mySwitchNode.getReference()).getInlineSwitchCaseCondition(identity);
-          } else {
-            condition = new QueryProviderBase.Missing(switchCase);
-          }
+          QueryKey qk = caseConditionNode == null ? QueryKeyImpl.invalid() : new QueryKeyImpl(switchCase.getReference(), caseConditionNode.getNodeId());
+          condition = qps.getQueryProvider(mySwitchNode.getReference()).getInlineSwitchCaseCondition(qk);
           SNode caseConsequence = RuleUtil.getInlineSwitch_caseConsequence(switchCase);
           RuleConsequenceProcessor rcp = RuleConsequenceProcessor.prepare(caseConsequence);
           l.add(new CaseRuntime(condition, rcp, switchCase.getReference()));

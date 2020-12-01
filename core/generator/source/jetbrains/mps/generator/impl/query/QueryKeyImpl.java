@@ -15,6 +15,8 @@
  */
 package jetbrains.mps.generator.impl.query;
 
+import jetbrains.mps.smodel.SNodeId.Regular;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -62,6 +64,14 @@ public final class QueryKeyImpl implements QueryKey {
   @Override
   public <T> T forFunctionNode(Map<?, T> map) {
     return map.get(myFunctionNodeId.toString());
+  }
 
+  /**
+   * gives a key no provider is expected to match so that QueryProviderBase has a chance to be sole source of defaults.
+   */
+  public static QueryKey invalid() {
+    // There were cast to QueryKeyImpl in code 2020.2-generated code. Replace with QK interface once I drop getQueryNodeId() (indicator of QKImpl use)
+    final Regular nid = new Regular(-1);
+    return new QueryKeyImpl(new SNodePointer(null, nid), nid);
   }
 }

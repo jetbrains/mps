@@ -213,7 +213,7 @@ public abstract class QueryProviderBase implements GeneratorQueryProvider {
    * Note, these default values represent the case when no condition/query was specified.
    * There might be another set of defaults for cases when condition failed to evaluate.
    */
-  public static class Defaults implements CreateRootCondition, MapRootRuleCondition, ReductionRuleCondition, PatternRuleQuery,
+  /*package*/ static class Defaults implements CreateRootCondition, MapRootRuleCondition, ReductionRuleCondition, PatternRuleQuery,
       DropRuleCondition, WeaveRuleCondition, WeaveRuleQuery, ScriptCodeBlock, MapConfigurationCondition, SourceNodeQuery, SourceNodesQuery,
       WeaveAnchorQuery, DropAttributeRuleCondition, LabelInputQuery {
 
@@ -344,7 +344,7 @@ public abstract class QueryProviderBase implements GeneratorQueryProvider {
   }
 
   // unlike Defaults, complains about missing query
-  public static class Missing implements IfMacroCondition, InlineSwitchCaseCondition, CallArgumentQuery, VariableValueQuery, InsertMacroQuery, MapNodeQuery, MapPostProcessor {
+  /*package*/ static class Missing implements IfMacroCondition, InlineSwitchCaseCondition, CallArgumentQuery, VariableValueQuery, InsertMacroQuery, MapNodeQuery, MapPostProcessor {
     private final SNodeReference myTemplate;
 
     public Missing(QueryKey identity) {

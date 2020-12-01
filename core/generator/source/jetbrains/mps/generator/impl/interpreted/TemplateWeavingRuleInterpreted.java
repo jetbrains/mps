@@ -23,7 +23,6 @@ import jetbrains.mps.generator.impl.TemplateIdentity;
 import jetbrains.mps.generator.impl.TemplateProcessingFailureException;
 import jetbrains.mps.generator.impl.query.QueryKey;
 import jetbrains.mps.generator.impl.query.QueryKeyImpl;
-import jetbrains.mps.generator.impl.query.QueryProviderBase;
 import jetbrains.mps.generator.impl.query.SourceNodesQuery;
 import jetbrains.mps.generator.impl.query.WeaveAnchorQuery;
 import jetbrains.mps.generator.impl.query.WeaveRuleCondition;
@@ -87,12 +86,8 @@ public class TemplateWeavingRuleInterpreted extends WeaveRuleBase implements Tem
   public SNode getContextNode(TemplateExecutionEnvironment environment, TemplateContext context) throws GenerationFailureException {
     if (myContentNodeQuery == null) {
       SNode contextQuery = RuleUtil.getWeaving_ContextNodeQuery(myRuleNode);
-      if (contextQuery != null) {
-        QueryKey identity = new QueryKeyImpl(getRuleNode(), contextQuery.getNodeId());
-        myContentNodeQuery = environment.getQueryProvider(getRuleNode()).getWeaveRuleQuery(identity);
-      } else {
-        myContentNodeQuery = new QueryProviderBase.Defaults();
-      }
+      QueryKey identity = contextQuery == null ? QueryKeyImpl.invalid() : new QueryKeyImpl(getRuleNode(), contextQuery.getNodeId());
+      myContentNodeQuery = environment.getQueryProvider(getRuleNode()).getWeaveRuleQuery(identity);
     }
     return myContentNodeQuery.contextNode(new WeavingMappingRuleContext(context, getRuleNode()));
   }
@@ -102,12 +97,8 @@ public class TemplateWeavingRuleInterpreted extends WeaveRuleBase implements Tem
   public SNode getAnchorNode(@NotNull TemplateContext context, @NotNull SNode outputParent, @NotNull SNode outputNode) throws GenerationFailureException {
     if (myAnchorQuery == null) {
       SNode anchorQuery = RuleUtil.isNodeMacro(myRuleNode) ? RuleUtil.getWeaveMacro_AnchorQuery(myRuleNode) : RuleUtil.getWeaveRule_AnchorQuery(myRuleNode);
-      if (anchorQuery != null) {
-        QueryKey identity = new QueryKeyImpl(getRuleNode(), anchorQuery.getNodeId());
-        myAnchorQuery = context.getEnvironment().getQueryProvider(getRuleNode()).getWeaveAnchorQuery(identity);
-      } else {
-        myAnchorQuery = new QueryProviderBase.Defaults();
-      }
+      QueryKey identity = anchorQuery == null ? QueryKeyImpl.invalid() : new QueryKeyImpl(getRuleNode(), anchorQuery.getNodeId());
+      myAnchorQuery = context.getEnvironment().getQueryProvider(getRuleNode()).getWeaveAnchorQuery(identity);
     }
     return myAnchorQuery.anchorNode(new WeavingAnchorContext(context, getRuleNode(), outputParent, outputNode));
   }
@@ -116,12 +107,8 @@ public class TemplateWeavingRuleInterpreted extends WeaveRuleBase implements Tem
   public boolean isApplicable(@NotNull TemplateContext context) throws GenerationFailureException {
     if (myCondition == null) {
       SNode condition = RuleUtil.getBaseRuleCondition(myRuleNode);
-      if (condition != null) {
-        QueryKey identity = new QueryKeyImpl(getRuleNode(), condition.getNodeId());
-        myCondition = context.getEnvironment().getQueryProvider(getRuleNode()).getWeaveRuleCondition(identity);
-      } else {
-        myCondition = new QueryProviderBase.Defaults();
-      }
+      QueryKey identity = condition == null ? QueryKeyImpl.invalid() : new QueryKeyImpl(getRuleNode(), condition.getNodeId());
+      myCondition = context.getEnvironment().getQueryProvider(getRuleNode()).getWeaveRuleCondition(identity);
     }
     return myCondition.check(new WeavingMappingRuleContext(context, getRuleNode()));
   }

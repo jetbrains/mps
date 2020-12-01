@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@ import jetbrains.mps.generator.impl.RuleUtil;
 import jetbrains.mps.generator.impl.TemplateProcessingFailureException;
 import jetbrains.mps.generator.impl.query.QueryKey;
 import jetbrains.mps.generator.impl.query.QueryKeyImpl;
-import jetbrains.mps.generator.impl.query.QueryProviderBase;
 import jetbrains.mps.generator.impl.query.ReductionRuleCondition;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.ReductionRuleBase;
@@ -55,12 +54,8 @@ public class TemplateReductionRuleInterpreted extends ReductionRuleBase implemen
   public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
     if (myCondition == null) {
       SNode condition = RuleUtil.getBaseRuleCondition(myRuleNode);
-      if (condition != null) {
-        QueryKey identity = new QueryKeyImpl(getRuleNode(), condition.getNodeId());
-        myCondition = context.getEnvironment().getQueryProvider(getRuleNode()).getReductionRuleCondition(identity);
-      } else {
-        myCondition = new QueryProviderBase.Defaults();
-      }
+      QueryKey identity = condition == null ? QueryKeyImpl.invalid() : new QueryKeyImpl(getRuleNode(), condition.getNodeId());
+      myCondition = context.getEnvironment().getQueryProvider(getRuleNode()).getReductionRuleCondition(identity);
     }
     return myCondition.check(new ReductionRuleQueryContext(context, getRuleNode()));
   }

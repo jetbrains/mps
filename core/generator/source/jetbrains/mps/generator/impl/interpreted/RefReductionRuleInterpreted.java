@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@ import jetbrains.mps.generator.impl.RuleUtil;
 import jetbrains.mps.generator.impl.query.GeneratorQueryProvider;
 import jetbrains.mps.generator.impl.query.QueryKey;
 import jetbrains.mps.generator.impl.query.QueryKeyImpl;
-import jetbrains.mps.generator.impl.query.QueryProviderBase;
 import jetbrains.mps.generator.impl.query.ReductionRuleCondition;
 import jetbrains.mps.generator.impl.query.ReferenceTargetQuery;
 import jetbrains.mps.generator.impl.reference.PostponedReference;
@@ -46,7 +45,7 @@ public class RefReductionRuleInterpreted extends ReferenceReductionRuleBase {
   public RefReductionRuleInterpreted(@NotNull SNode/*<ReferenceReductionRule>*/ rule) {
     super(rule.getReference(), MetaAdapterByDeclaration.getReferenceLink(RuleUtil.getReferenceReductionRule_Link(rule)), _concept(rule));
     SNode cond = RuleUtil.getReferenceReductionRule_Condition(rule);
-    myConditionKey = cond == null ? null : new QueryKeyImpl(getRuleNode(), cond.getNodeId());
+    myConditionKey = cond == null ? QueryKeyImpl.invalid() : new QueryKeyImpl(getRuleNode(), cond.getNodeId());
     SNode function = RuleUtil.getReferenceReductionRule_Function(rule);
     myQueryKey = new QueryKeyImpl(getRuleNode(), function.getNodeId());
   }
@@ -54,11 +53,7 @@ public class RefReductionRuleInterpreted extends ReferenceReductionRuleBase {
   @Override
   public boolean isApplicable(@NotNull TemplateContext context) throws GenerationFailureException {
     if (myCondition == null) {
-      if (myConditionKey == null) {
-        myCondition = new QueryProviderBase.Defaults();
-      } else {
-        myCondition = context.getEnvironment().getQueryProvider(getRuleNode()).getReductionRuleCondition(myConditionKey);
-      }
+      myCondition = context.getEnvironment().getQueryProvider(getRuleNode()).getReductionRuleCondition(myConditionKey);
     }
     return myCondition.check(new ReductionRuleQueryContext(context, getRuleNode()));
   }

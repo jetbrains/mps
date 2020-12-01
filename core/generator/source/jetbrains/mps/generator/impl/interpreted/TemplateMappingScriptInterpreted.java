@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,6 @@ import jetbrains.mps.generator.impl.GenerationFailureException;
 import jetbrains.mps.generator.impl.RuleUtil;
 import jetbrains.mps.generator.impl.query.QueryKey;
 import jetbrains.mps.generator.impl.query.QueryKeyImpl;
-import jetbrains.mps.generator.impl.query.QueryProviderBase;
 import jetbrains.mps.generator.impl.query.ScriptCodeBlock;
 import jetbrains.mps.generator.runtime.TemplateMappingScript;
 import jetbrains.mps.generator.template.ITemplateGenerator;
@@ -69,12 +68,8 @@ public class TemplateMappingScriptInterpreted implements TemplateMappingScript {
     }
     if (myCodeBlock == null) {
       SNode codeBlock = RuleUtil.getMappingScript_CodeBlock(scriptNode);
-      if (codeBlock != null) {
-        QueryKey identity = new QueryKeyImpl(getScriptNode(), codeBlock.getNodeId());
-        myCodeBlock = generator.getQueryProvider(getScriptNode()).getScriptCodeBlock(identity);
-      } else {
-        myCodeBlock = new QueryProviderBase.Defaults();
-      }
+      QueryKey identity = codeBlock == null ? QueryKeyImpl.invalid() : new QueryKeyImpl(getScriptNode(), codeBlock.getNodeId());
+      myCodeBlock = generator.getQueryProvider(getScriptNode()).getScriptCodeBlock(identity);
     }
     myCodeBlock.invoke(new MappingScriptContext(model, getScriptNode(), generator));
   }

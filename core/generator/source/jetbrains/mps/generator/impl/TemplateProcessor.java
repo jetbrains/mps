@@ -31,7 +31,6 @@ import jetbrains.mps.generator.impl.query.MapNodeQuery;
 import jetbrains.mps.generator.impl.query.MapPostProcessor;
 import jetbrains.mps.generator.impl.query.QueryKey;
 import jetbrains.mps.generator.impl.query.QueryKeyImpl;
-import jetbrains.mps.generator.impl.query.QueryProviderBase;
 import jetbrains.mps.generator.impl.query.SourceNodeQuery;
 import jetbrains.mps.generator.impl.query.SourceNodesQuery;
 import jetbrains.mps.generator.impl.query.VariableValueQuery;
@@ -552,14 +551,9 @@ public final class TemplateProcessor implements ITemplateProcessor {
     public SNode getAnchorNode(@NotNull TemplateContext context, @NotNull SNode outputParent, @NotNull SNode outputNode) throws GenerationFailureException {
       if (myAnchorQuery == null) {
         SNode aqNode = RuleUtil.getWeaveMacro_AnchorQuery(macro);
-        if (aqNode == null) {
-          // FIXME It's odd to know default implementation in here. Instead, QueryKey shall avoid knowledge of query condition node id
-          // FIXME same applies to IfMacro
-          myAnchorQuery = new QueryProviderBase.Defaults();
-        } else {
-          QueryKeyImpl qk = new QueryKeyImpl(getMacroNodeRef(), aqNode.getNodeId());
-          myAnchorQuery = context.getEnvironment().getQueryProvider(getMacroNodeRef()).getWeaveAnchorQuery(qk);
-        }
+        // XXX Would be great if QueryKey avoids knowledge of query condition node id
+        QueryKey qk = aqNode == null ? QueryKeyImpl.invalid() : new QueryKeyImpl(getMacroNodeRef(), aqNode.getNodeId());
+        myAnchorQuery = context.getEnvironment().getQueryProvider(getMacroNodeRef()).getWeaveAnchorQuery(qk);
       }
       return myAnchorQuery.anchorNode(new WeavingAnchorContext(context, getMacroNodeRef(), outputParent, outputNode));
     }
@@ -698,12 +692,8 @@ public final class TemplateProcessor implements ITemplateProcessor {
       SNode alternativeConsequence = RuleUtil.getIfMacro_AlternativeConsequence(macro);
       myAlternativeConsequence = alternativeConsequence == null ? null : RuleConsequenceProcessor.prepare(alternativeConsequence);
       SNode function = RuleUtil.getIfMacro_ConditionFunction(macro);
-      if (function != null) {
-        myCondition =
-            templateProcessor.getQueryProvider(getMacroNodeRef()).getIfMacroCondition(new QueryKeyImpl(getMacroNodeRef(), function.getNodeId()));
-      } else {
-        myCondition = new QueryProviderBase.Missing(macro);
-      }
+      QueryKey qk = function == null ? QueryKeyImpl.invalid() : new QueryKeyImpl(getMacroNodeRef(), function.getNodeId());
+      myCondition = templateProcessor.getQueryProvider(getMacroNodeRef()).getIfMacroCondition(qk);
     }
 
     @NotNull
