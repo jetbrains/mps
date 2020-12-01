@@ -4644,7 +4644,7 @@
             <node concept="2OqwBi" id="7kKUpL4K6iJ" role="33vP2m">
               <node concept="2WthIp" id="7kKUpL4K6iM" role="2Oq$k0" />
               <node concept="2XshWL" id="7kKUpL4K6iO" role="2OqNvi">
-                <ref role="2WH_rO" node="7kKUpL4J0bV" />
+                <ref role="2WH_rO" node="7kKUpL4J0bV" resolve="extractCommonVirtualFolder" />
               </node>
             </node>
           </node>
@@ -11042,7 +11042,7 @@
                   <node concept="2OqwBi" id="7TSspuy9E8" role="2ZW6bz">
                     <node concept="2WthIp" id="7TSspuy9E9" role="2Oq$k0" />
                     <node concept="1DTwFV" id="7TSspuy9Ea" role="2OqNvi">
-                      <ref role="2WH_rO" node="7TSspuy9Av" />
+                      <ref role="2WH_rO" node="7TSspuy9Av" resolve="treeNode" />
                     </node>
                   </node>
                 </node>
@@ -11050,7 +11050,7 @@
                   <node concept="2OqwBi" id="7TSspuy9OK" role="3uHU7B">
                     <node concept="2WthIp" id="7TSspuy9OL" role="2Oq$k0" />
                     <node concept="2XshWL" id="7TSspuy9OM" role="2OqNvi">
-                      <ref role="2WH_rO" node="7TSspuy9O_" />
+                      <ref role="2WH_rO" node="7TSspuy9O_" resolve="getProjectPane" />
                     </node>
                   </node>
                   <node concept="10Nm6u" id="7TSspuy9Oz" role="3uHU7w" />
@@ -11063,7 +11063,7 @@
                       <node concept="2OqwBi" id="5NJ15g5l6EP" role="10QFUP">
                         <node concept="2WthIp" id="5NJ15g5l6EQ" role="2Oq$k0" />
                         <node concept="1DTwFV" id="5NJ15g5l6ER" role="2OqNvi">
-                          <ref role="2WH_rO" node="7TSspuy9Av" />
+                          <ref role="2WH_rO" node="7TSspuy9Av" resolve="treeNode" />
                         </node>
                       </node>
                       <node concept="3uibUv" id="5NJ15g5l6ES" role="10QFUM">
@@ -23701,7 +23701,7 @@
     <property role="TrG5h" value="IDE" />
     <property role="1qHB85" value="/MPS_16.png" />
     <property role="9BnSO" value="202.1" />
-    <property role="9BnSK" value="2020.2.3" />
+    <property role="9BnSK" value="2020.2.4" />
   </node>
   <node concept="sE7Ow" id="1JAxb5h3N20">
     <property role="TrG5h" value="EditGivenNode" />
