@@ -244,6 +244,9 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
         // register copied node
         // FIXME seems that context.registerLabel(reducedNode) (+context.hasMappingLabel(), perhaps) is much more convenient way to go
         registerLabel(context.getInput(), reducedNode, context.getInputName());
+        // FIXME seems that there's no reason to register ML here explicitly; it has to happen the moment first template node is created
+        //       in TemplateProcessor.applyTemplate(). There's special handling (yet rudimentary, just for 1->2 case) of duplicated entries
+        //       in NodeMapRecord#update()
       }
       generator.recordTransformInputTrace(context.getInput(), outputNodes);
       return outputNodes;

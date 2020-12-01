@@ -54,11 +54,17 @@ public final class NodeMapRecord {
       return;
     }
     if (myCount == 1) {
-      Object[] vv = new Object[6];
-      vv[0] = myOutputValue;
-      vv[1] = value;
-      myOutputValue = vv;
-      myCount = 2;
+      if (myOutputValue != value) {
+        // FIXME this code mimics logic that used to be in GM.addOutputNodeByInputNodeAndMappingName.
+        // E.g. SWITCH aaa ML registers output with a label second time after reduction rule from aaa have applied template
+        // and registered label based on TC inputName. In fact, I believe it's trySwitch that is wrong, e.g. tryToReduce doesn't
+        // register any mappings based on TC inputName.
+        Object[] vv = new Object[6];
+        vv[0] = myOutputValue;
+        vv[1] = value;
+        myOutputValue = vv;
+        myCount = 2;
+      }
       return;
     }
     grow()[myCount++] = value;
