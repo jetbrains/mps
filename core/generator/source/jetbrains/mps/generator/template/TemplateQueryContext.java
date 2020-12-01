@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.generator.template;
 
 import jetbrains.mps.generator.impl.GeneratorUtil;
+import jetbrains.mps.generator.impl.TemplateExecutionEnvironmentImpl;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.textgen.trace.TracingUtil;
 import jetbrains.mps.util.NameUtil;
@@ -116,9 +117,20 @@ public class TemplateQueryContext {
   }
 
   public SNode getOutputNodeByInputNodeAndMappingLabel(SNode inputNode, String label) {
-    if (inputNode == null) return null;
+    if (inputNode == null || label == null) {
+      // FIXME if we enforce inputNode != null here, why does findOutputNodeByInputNodeAndMappingName() tolerates null inputNode then?
+      // XXX shall I warn about null label? It's an error, likely.
+      return null;
+    }
     if (!myGenerator.areMappingsAvailable()) {
       myGenerator.getLogger().error(getTemplateNodeRef(), "'get output by input and label' cannot be used here");
+    }
+    if (myContext != null) {
+      final SNode localRecord = ((TemplateExecutionEnvironmentImpl) myContext.getEnvironment()).findLocalOutputRecordSingle(inputNode, label);
+      if (localRecord != null) {
+        return localRecord;
+      }
+      // fall-through, try shared container
     }
     return myGenerator.findOutputNodeByInputNodeAndMappingName(inputNode, label);
   }

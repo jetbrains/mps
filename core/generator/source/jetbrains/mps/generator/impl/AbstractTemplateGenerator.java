@@ -108,6 +108,7 @@ public abstract class AbstractTemplateGenerator implements ITemplateGenerator {
 
   @Override
   public SNode findOutputNodeByInputNodeAndMappingName(SNode inputNode, String mappingName) {
+    // FIXME guess, I shall check myLabeledMappings here first, pretty much like TQC consults TEE LMs first, and then resort to that known for all threads
     if (inputNode != null) {
       return myMappings.findOutputNodeByInputNodeAndMappingName(inputNode, mappingName);
     } else {

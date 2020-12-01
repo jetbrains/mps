@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 /**
  * Collector for labeled mappings recorded during transformations of a node inside a single thread.
@@ -73,6 +74,19 @@ import java.util.function.Consumer;
 
   public void forEachWithInput(BiConsumer<String, NodeMap> f) {
     myMap.forEach(f);
+  }
+
+  // both label and input != null
+  /*public?*/ Stream<SNode> values(String label, SNode input) {
+    final NodeMap nm = myMap.get(label);
+    if (nm == null) {
+      return Stream.empty();
+    }
+    final NodeMapRecord rec = nm.get(input);
+    if (rec == null) {
+      return Stream.empty();
+    }
+    return rec.valueStream();
   }
 
 

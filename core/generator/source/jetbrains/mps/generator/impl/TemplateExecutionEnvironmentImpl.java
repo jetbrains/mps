@@ -417,6 +417,13 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
     myReductionTrack.blockReductionsForCopiedNode(inputNode, outputNode);
   }
 
+  // access has to be package-only, but need to get LMs for current thread from TemplateQueryContext
+  // contract is pretty much the same as GM.findOutputNodeByInputNodeAndMappingName(), null if no LM found, first node in case of
+  // multiple mappings.
+  public SNode findLocalOutputRecordSingle(/*not null*/SNode inputNode, /*not null*/ String label) {
+    return myLabels.values(label, inputNode).findFirst().orElse(null);
+  }
+
   @NotNull
   /*package*/ LMCollector getNamedLabels() {
     return myLabels;

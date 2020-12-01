@@ -188,6 +188,15 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
     // we can't just throw LMCollectors away, there could be weaving rules and delayed changes that
     // may register more labels that we need to flush once more. The only assumption is that there are no
     // new LMCollector instances, though it's still ok if there's a new one.
+    // As it turned out, generator of closures languages heavily employ weaving rules that register new labels.
+    // Moreover, weaving rules there trigger regular reduction rule, which registers a label the next weaving rule gonna need
+    // (see closures.Advanced_Test, foreach closure/yield + nested while/yield. foreach closure get replaced with switch,
+    // nested closure is kept as is. Then, weave_case_for_ForeachStatement injects a case and replaces (COPY-SRC) nested while and its
+    // ClosureLiteral (registers 'closure_switch' LM). Next in the sequence of armed weaving rules comes WR for WhileStatement, that needs
+    // most recent 'closure_switch' mapping). This is plain wrong (one could argue that even using reduction rules inside weavings is not
+    // perfectly right), but changing closure templates is something next to impossible, that's why TEEI exposes LMs collected for the root
+    // right away, to mimic behavior lang.closures templates (and Advanced_Test) expect. Indeed, if the test use statements in other order,
+    // the defect would have surface immediately.
     myPerThreadLabels.forEach(LMCollector::clear);
 
 
