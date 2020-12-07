@@ -23,7 +23,6 @@ import jetbrains.mps.smodel.adapter.structure.concept.SConceptAdapterById;
 import jetbrains.mps.smodel.runtime.StaticScope;
 import jetbrains.mps.textgen.trace.TracingUtil;
 import jetbrains.mps.util.CollectConsumer;
-import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.ToStringComparator;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -36,7 +35,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -44,6 +43,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 /**
@@ -55,20 +55,13 @@ import java.util.stream.Collectors;
 public final class GeneratorMappings {
   private final IGeneratorLogger myLog;
 
-  /* mapping label, input[1] -> output[1..*] */
-  private final Map<String, NodeMap> myMappingNameAndInputNodeToOutputNodeMap = new HashMap<>();
-
   /* input -> output */
   private final ConcurrentMap<SNode, Object> myCopiedOutputNodeForInputNode = new ConcurrentHashMap<>();
 
   /* templateId -> [input -> output,generation] */
   private final ConcurrentMap<String, NodeTagCabinet> myTemplateNodeIdAndInputNodeToOutputNodeMap = new ConcurrentHashMap<>();
 
-
-  /*
-   * there might be few conditional roots, and we can't prevent them from using same ML (not too much sense, however)
-   */
-  private final ArrayList<Pair<String, SNode>> myConditionalRoots = new ArrayList<>();
+  private final LMCollector myLabeledMappings = new LMCollector();
 
   public GeneratorMappings(IGeneratorLogger log) {
     myLog = log;
@@ -76,29 +69,24 @@ public final class GeneratorMappings {
 
   // add methods
 
-  private void addOutputNodeByInputNodeAndMappingName(String mappingName, NodeMapRecord r) {
-    // pretty much the same as LMCollector; just don't want to unwrap NodeMapRecord here to use LMCollector.add()
-    final NodeMap map = myMappingNameAndInputNodeToOutputNodeMap.computeIfAbsent(mappingName, s -> new NodeMap(20));
-    map.updateWith(r);
-    // Bit of history:
-    // Here, we record labeled transformations, and chances are we get similar input/output nodes with the same ML
-    // (e.g. multipleLoopVarDecl rmt -> rmt_var) more than once - e.g. typesystem makes a copy of some rules
-    // to generate two methods, and if there's an MultiForLoop in the original code, we get two almost identical
-    // ML entries (presentation of output and key's original nodes are the same, see comparator in #getSortedMappingKeys(),
-    // below. Therefore, for nodes that are 'equal' that way, we need to keep an order they were registered at, and
-    // ut used to be LinkedHashMap here. Now, with output nodes coming from LMCollector in uncontrolled order (there's hash by SNode),
-    // I've introduced an extra condition into key comparator, that treats nodes with id matching one of their origin as preceding those with
-    // completely arbitrary node id. Indeed, this works only in scenarios when master node is not far from original model and still keeps its id.
-    // I don't think it's a drawback as I'd rather avoid template code that duplicates fragments of input models during transformation at all.
-  }
-
   void fillFrom(Collection<LMCollector> lmCollectors) {
     for (LMCollector lmCollector : lmCollectors) {
       if (lmCollector.isEmpty()) {
         continue;
       }
-      lmCollector.forEachNoInput((k,v) -> myConditionalRoots.add(new Pair<>(k,v)));
-      lmCollector.forEachWithInput((ml, nm) -> nm.forEachRecord(r -> addOutputNodeByInputNodeAndMappingName(ml, r)));
+      lmCollector.forEachNoInput(myLabeledMappings::add);
+      lmCollector.forEachWithInput(myLabeledMappings::add);
+      // Bit of history:
+      // Here, we record labeled transformations, and chances are we get similar input/output nodes with the same ML
+      // (e.g. multipleLoopVarDecl rmt -> rmt_var) more than once - e.g. typesystem makes a copy of some rules
+      // to generate two methods, and if there's an MultiForLoop in the original code, we get two almost identical
+      // ML entries (presentation of output and key's original nodes are the same, see comparator in #getSortedMappingKeys(),
+      // below. Therefore, for nodes that are 'equal' that way, we need to keep an order they were registered at, and
+      // ut used to be LinkedHashMap here. Now, with output nodes coming from LMCollector in uncontrolled order (there's hash by SNode),
+      // I've introduced an extra condition into key comparator, that treats nodes with id matching one of their origin as preceding those with
+      // completely arbitrary node id. Indeed, this works only in scenarios when master node is not far from original model and still keeps its id.
+      // I don't think it's a drawback as I'd rather avoid template code that duplicates fragments of input models during transformation at all.
+      lmCollector.forEachComposite(myLabeledMappings::addComposite);
     }
   }
 
@@ -165,11 +153,11 @@ public final class GeneratorMappings {
     if (mappingName == null) {
       return null;
     }
-    NodeMap currentMapping = myMappingNameAndInputNodeToOutputNodeMap.get(mappingName);
-    if (currentMapping == null) {
+    if (inputNode == null) {
+      // don't see a reason to account for null input node in scenarios where input node is expected.
       return null;
     }
-    NodeMapRecord o = currentMapping.get(inputNode);
+    NodeMapRecord o = myLabeledMappings.record(mappingName, inputNode);
     if (o == null || o.count() == 0) {
       return null;
     }
@@ -192,11 +180,11 @@ public final class GeneratorMappings {
     if (mappingName == null) {
       return null;
     }
-    NodeMap currentMapping = myMappingNameAndInputNodeToOutputNodeMap.get(mappingName);
-    if (currentMapping == null) {
+    if (inputNode == null) {
+      // don't see a reason to account for null input node in scenarios where input node is expected.
       return null;
     }
-    NodeMapRecord o = currentMapping.get(inputNode);
+    NodeMapRecord o = myLabeledMappings.record(mappingName, inputNode);
     if (o == null || o.count() == 0) {
       return Collections.emptyList();
     }
@@ -265,17 +253,26 @@ public final class GeneratorMappings {
       // all other methods tolerate null parameters, why this one would not?
       return null;
     }
-    return myConditionalRoots.stream().filter(p -> mappingLabel.equals(p.o1)).findFirst().map(p -> p.o2).orElse(null);
+    return myLabeledMappings.streamNoInput(mappingLabel).findFirst().orElse(null);
   }
 
   // expose internal structure, to build GeneratorDebug_Mappings with MPS-coded DebugMappingsBuilder
   /*package*/ Collection<String> getAvailableLabels() {
-    return myMappingNameAndInputNodeToOutputNodeMap.keySet();
+    HashSet<String> rv = new HashSet<>();
+    myLabeledMappings.forEachWithInput((l, m) -> rv.add(l));
+    return rv;
   }
 
   @Nullable
   /*package*/ NodeMap getMappingsForLabel(String label) {
-    return myMappingNameAndInputNodeToOutputNodeMap.get(label);
+    AtomicReference<NodeMap> rv = new AtomicReference<>();
+    myLabeledMappings.forEachWithInput((ml, map) -> {
+      if (ml.equals(label)) {
+        assert rv.get() == null;
+        rv.compareAndSet(null, map);
+      }
+    });
+    return rv.get();
   }
 
   // FIXME please, no Object, no Map<SNode,Object>. PLEASE!!!
@@ -284,12 +281,17 @@ public final class GeneratorMappings {
     final NodeMap map = getMappingsForLabel(label);
     return map == null ? null : map.toLegacyMap();
   }
-  /*package*/List<SNode> getSortedMappingKeys(String label) {
+  /*package*/List<SNode> getSortedMappingKeys(final String label) {
     ArrayList<NodeMapRecord> l = new ArrayList<>();
     CollectConsumer<NodeMapRecord> cc = new CollectConsumer<>(l);
-    myMappingNameAndInputNodeToOutputNodeMap.get(label).forEachRecord(cc);
-    Collections.sort(l, new Comparator<>() {
+    myLabeledMappings.forEachWithInput((ml, map) -> {
+      if (ml.equals(label)) {
+        map.forEachRecord(cc);
+      }
+    });
+    l.sort(new Comparator<>() {
       private final ToStringComparator myToStringComparator = new ToStringComparator();
+
       @Override
       public int compare(NodeMapRecord o1, NodeMapRecord o2) {
         int v = compareKeys(o1.key(), o2.key());
@@ -348,10 +350,12 @@ public final class GeneratorMappings {
   }
 
   /*package*/Set<String> getConditionalRootLabels() {
-    return myConditionalRoots.stream().map(p -> p.o1).collect(Collectors.toSet());
+    HashSet<String> rv = new HashSet<>();
+    myLabeledMappings.forEachNoInput((l, v) -> rv.add(l));
+    return rv;
   }
   /*package*/List<SNode> getConditionalRoots(String label) {
-    return myConditionalRoots.stream().filter(p -> label.equals(p.o1)).map(p -> p.o2).collect(Collectors.toList());
+    return myLabeledMappings.streamNoInput(label).collect(Collectors.toList());
   }
 
   // serialization
@@ -361,8 +365,8 @@ public final class GeneratorMappings {
    * and input nodes being traced with transitionTrace
    */
   public void export(CheckpointStateBuilder cp) {
-    for (String label : myMappingNameAndInputNodeToOutputNodeMap.keySet()) {
-      myMappingNameAndInputNodeToOutputNodeMap.get(label).forEachRecord(i -> {
+    myLabeledMappings.forEachWithInput((label, map) -> {
+      map.forEachRecord(i -> {
         SNode inputNode = i.key();
         if (inputNode == null) {
           // FIXME shall I track nodes newly introduced at the given checkpoint step? Yes.
@@ -380,8 +384,12 @@ public final class GeneratorMappings {
           cp.record(inputNode, label, collection);
         }
       });
-    }
-    myConditionalRoots.forEach(p -> cp.record(p.o1, p.o2));
+    });
+    myLabeledMappings.forEachNoInput(cp::record);
+  }
+
+  /*package*/ SNode findOutputRecordSingle(String label, SNode key1, SNode key2) {
+    return myLabeledMappings.compositeKeyValues(label, key1, key2).findFirst().orElse(null);
   }
 
   private static final class TagNodeList {

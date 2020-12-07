@@ -22,6 +22,7 @@ import jetbrains.mps.generator.template.DropRootRuleContext;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.InlineSwitchCaseContext;
 import jetbrains.mps.generator.template.InsertMacroContext;
+import jetbrains.mps.generator.template.LabelKeyQueryContext;
 import jetbrains.mps.generator.template.MapRootRuleContext;
 import jetbrains.mps.generator.template.MapSrcMacroContext;
 import jetbrains.mps.generator.template.MapSrcMacroPostProcContext;
@@ -287,7 +288,7 @@ public abstract class QueryProviderBase implements GeneratorQueryProvider {
 
     @Nullable
     @Override
-    public Object evaluate(@NotNull TemplateQueryContext context) throws GenerationFailureException {
+    public Object evaluate(@NotNull LabelKeyQueryContext context) throws GenerationFailureException {
       return context.getInputNode();
     }
   }

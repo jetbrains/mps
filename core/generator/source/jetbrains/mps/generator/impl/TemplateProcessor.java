@@ -44,10 +44,10 @@ import jetbrains.mps.generator.runtime.WeavingWithAnchor;
 import jetbrains.mps.generator.template.ITemplateProcessor;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.InsertMacroContext;
+import jetbrains.mps.generator.template.LabelKeyQueryContext;
 import jetbrains.mps.generator.template.QueryExecutionContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
-import jetbrains.mps.generator.template.TemplateQueryContext;
 import jetbrains.mps.generator.template.TemplateVarContext;
 import jetbrains.mps.generator.template.WeavingAnchorContext;
 import jetbrains.mps.smodel.SNodePointer;
@@ -66,7 +66,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * Applies template to input node.
@@ -562,8 +561,7 @@ public final class TemplateProcessor implements ITemplateProcessor {
   // $LABEL$
   private static class LabelMacro extends MacroImpl {
     private final boolean needsTwoInputs;
-    // AtomicReference serves just as 'initialized' indicator
-    private AtomicReference<LabelInputQuery> myQuery1;
+    private LabelInputQuery myQuery1;
     private LabelInputQuery myQuery2;
 
     protected LabelMacro(@NotNull SNode macro, @NotNull TemplateNode templateNode, @Nullable MacroNode next, @NotNull TemplateProcessor templateProcessor) {
@@ -574,15 +572,11 @@ public final class TemplateProcessor implements ITemplateProcessor {
     private LabelInputQuery getQuery1(TemplateExecutionEnvironment env) {
       if (myQuery1 == null) {
         final SNode labelQuery1 = RuleUtil.getLabelQuery1(macro);
-        if (labelQuery1 == null) {
-          myQuery1 = new AtomicReference<>(null);
-          return null;
-        }
-        QueryKey key = new QueryKeyImpl(getMacroNodeRef(), labelQuery1.getNodeId());
-        myQuery1.set(env.getQueryProvider(getMacroNodeRef()).getLabelInputQuery(key));
+        QueryKey key = labelQuery1 == null ? QueryKeyImpl.invalid() : new QueryKeyImpl(getMacroNodeRef(), labelQuery1.getNodeId());
+        myQuery1 = env.getQueryProvider(getMacroNodeRef()).getLabelInputQuery(key);
         // fall-through
       }
-      return myQuery1.get();
+      return myQuery1;
     }
 
     public LabelInputQuery getQuery2(TemplateExecutionEnvironment env) {
@@ -594,6 +588,9 @@ public final class TemplateProcessor implements ITemplateProcessor {
         assert needsTwoInputs;
         env.getLogger().warning(getMacroNodeRef(), "Label needs two inputs but doesn't specify query to get the second key");
         // keep TEE.registerCompositeLabel as only place to decide what to do when there's null second key.
+        // can't use QueryKeyImpl.invalid() as default for labelLabelInputQuery uses inputNode, and I don't want to use it here.
+        // Well, at least for now, to detect errors early. In general, seems ok just to default to input node (although might break isInstance()
+        // assumptions of LM declaration. Are there any uses of second input kind?)
         myQuery2 = context -> null;
       } else {
         QueryKey key = new QueryKeyImpl(getMacroNodeRef(), labelQuery2.getNodeId());
@@ -630,12 +627,12 @@ public final class TemplateProcessor implements ITemplateProcessor {
       }
     }
 
-    private TemplateQueryContext queryContext(TemplateContext templateContext) {
-      // FIXME not sure whether it's reasonable to follow TQC patter of a distinct subclass for each query
-      //       the only place it helps is when I implement multiple interfaces in a single class (e.g. Defaults)
-      // Don't care to clear inputName in TC here as the query unlikely to use it anyway, and it doesn't create any node.
-      return new TemplateQueryContext(getMacroNodeRef(), templateContext) {
-      };
+    // Don't care to clear inputName in TC here as the query unlikely to use it anyway, and it doesn't create any node.
+    private LabelKeyQueryContext queryContext(TemplateContext templateContext) {
+      // XXX though I'm not sure whether it's reasonable to follow TQC patter of a distinct subclass for each query
+      //     as the only place it helps is when I implement multiple interfaces in a single class (e.g. Defaults).
+      //     However, for consistency reasons I stick to the pattern.
+      return new LabelKeyQueryContext(templateContext, getMacroNodeRef());
     }
   }
 

@@ -15,14 +15,21 @@
  */
 package jetbrains.mps.generator.impl;
 
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Objects;
+import java.util.Spliterator;
+import java.util.Spliterators;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
+import java.util.stream.Stream.Builder;
+import java.util.stream.StreamSupport;
 
 /**
  * Collector for labeled mappings recorded during transformations of a node inside a single thread.
@@ -33,9 +40,15 @@ import java.util.stream.Stream;
  * @author Artem Tikhomirov
  */
 /*package*/ final class LMCollector {
+  /* mapping label, input[1] -> output[1..*] */
   private final Map<String, NodeMap> myMap = new HashMap<>();
 
+  /*
+   * there might be few conditional roots, and we can't prevent them from using same ML (not too much sense, however)
+   */
   private final PairList<String, SNode> myConditionalRoots = new PairList<>();
+
+  private final Map<KK, OneOrMany<SNode>> myCompositeLabels = new HashMap<>();
 
   private NodeMap map(String label) {
     return myMap.computeIfAbsent(label, s -> new NodeMap(10));
@@ -54,27 +67,80 @@ import java.util.stream.Stream;
     map(label).add(input, output);
   }
 
+  /*package*/void add(String label, NodeMap extraMap) {
+    final NodeMap m = map(label);
+    extraMap.forEachRecord(m::updateWith);
+  }
+
   // assume label != null, output != null
   public void add(String label, SNode output) {
     myConditionalRoots.add(label, output);
   }
 
+  public void addComposite(String label, SNode i1, SNode i2, Collection<SNode> out) {
+    final OneOrMany<SNode> m = myCompositeLabels.computeIfAbsent(new KK(label, i1, i2), k -> new OneOrMany<>());
+    m.add(out);
+  }
+
+  public void addComposite(final LabelRecord lr) {
+    final OneOrMany<SNode> m = myCompositeLabels.computeIfAbsent(new KK(lr), k -> new OneOrMany<>());
+    m.add(lr.values);
+  }
+
   public boolean isEmpty() {
-    return myMap.isEmpty() && myConditionalRoots.size() == 0;
+    return myMap.isEmpty() && myConditionalRoots.size() == 0 && myCompositeLabels.isEmpty();
   }
 
   public void clear() {
     myMap.clear();
     myConditionalRoots.clear();
+    myCompositeLabels.clear();
   }
 
   public void forEachNoInput(BiConsumer<String, SNode> consumer) {
     myConditionalRoots.forEach(consumer);
   }
 
+  public Stream<SNode> streamNoInput(String label) {
+    return myConditionalRoots.stream(label);
+  }
+
   public void forEachWithInput(BiConsumer<String, NodeMap> f) {
     myMap.forEach(f);
   }
+
+  @Nullable
+  public NodeMapRecord record(String label, SNode input) {
+    final NodeMap nodeMap = myMap.get(label);
+    if (nodeMap == null) {
+      return null;
+    }
+    return nodeMap.get(input);
+  }
+
+  public void forEachComposite(Consumer<LabelRecord> consumer) {
+    for (Entry<KK, OneOrMany<SNode>> e : myCompositeLabels.entrySet()) {
+      final KK k = e.getKey();
+      consumer.accept(new LabelRecord(k.label, k.k1, k.k2, e.getValue()));
+    }
+  }
+
+  public Stream<LabelRecord> compositeKeyRecords(String label) {
+    final Builder<LabelRecord> rv = Stream.builder();
+    for (Entry<KK, OneOrMany<SNode>> e : myCompositeLabels.entrySet()) {
+      final KK k = e.getKey();
+      if (k.label.equals(label)) {
+        rv.accept(new LabelRecord(k.label, k.k1, k.k2, e.getValue()));
+      }
+    }
+    return rv.build();
+  }
+
+  public Stream<SNode> compositeKeyValues(String label, SNode i1, SNode i2) {
+    final OneOrMany<SNode> rv = myCompositeLabels.get(new KK(label, i1, i2));
+    return rv == null ? Stream.empty() : rv.valueStream();
+  }
+
 
   // both label and input != null
   /*public?*/ Stream<SNode> values(String label, SNode input) {
@@ -89,6 +155,34 @@ import java.util.stream.Stream;
     return rec.valueStream();
   }
 
+  private static final class KK {
+    final String label;
+    final SNode k1, k2;
+
+    public KK(/*NotNull*/String label, SNode k1, SNode k2) {
+      this.label = label;
+      this.k1 = k1;
+      this.k2 = k2;
+    }
+
+    public KK(/*NotNull*/LabelRecord lr) {
+      this(lr.label, lr.key1, lr.key2);
+    }
+
+    @Override
+    public int hashCode() {
+      return label.hashCode() + Objects.hashCode(k1)*17 + Objects.hashCode(k2)*31;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+      if (obj instanceof KK) {
+        KK o = (KK) obj;
+        return label.equals(o.label) && Objects.equals(k1, o.k1) && Objects.equals(k2, o.k2);
+      }
+      return false;
+    }
+  }
 
   // 1 or more non-null values, grow only. Not thread-safe
   /*package*/ static final class OneOrMany<T> {
@@ -122,6 +216,17 @@ import java.util.stream.Stream;
       return (T) myValue;
     }
 
+    public Stream<T> valueStream() {
+      if (myCount == 0) {
+        return Stream.empty();
+      }
+      if (myCount == 1) {
+        return Stream.of((T) myValue);
+      }
+      final Object[] vv = (Object[]) myValue;
+      return StreamSupport.stream(Spliterators.spliterator(vv, 0, myCount, Spliterator.ORDERED | Spliterator.IMMUTABLE), false);
+    }
+
     public void forEach(Consumer<? super T> c) {
       if (myCount == 0) {
         return;
@@ -132,6 +237,21 @@ import java.util.stream.Stream;
         final Object[] vv = (Object[]) myValue;
         for (int i = 0; i < myCount; i++) {
           c.accept((T) vv[i]);
+        }
+      }
+    }
+
+    private void eachInto(Object[] nv, int insertionIndex) {
+      // vv.length shall be sufficient to fit count() elements starting from insertionIndex
+      if (myCount == 0) {
+        return;
+      }
+      if (myCount == 1) {
+         nv[insertionIndex] = myValue;
+      } else {
+        final Object[] vv = (Object[]) myValue;
+        for (int i = 0; i < myCount; i++, insertionIndex++) {
+          nv[insertionIndex] = vv[i];
         }
       }
     }
@@ -182,6 +302,22 @@ import java.util.stream.Stream;
       myValue = nv;
     }
 
+    /*package*/ void add(OneOrMany<T> other) {
+      if (other.count() == 0) {
+        return;
+      }
+      if (other.count() == 1) {
+        add(other.singleValue());
+        return;
+      }
+      final int together = myCount + other.count();
+      Object[] nv = new Object[together + 10];
+      eachInto(nv, 0);
+      other.eachInto(nv, myCount);
+      myValue = nv;
+      myCount = together;
+    }
+
     private Object[] grow() {
       Object[] vv = (Object[]) myValue;
       if (myCount < vv.length) {
@@ -216,8 +352,19 @@ import java.util.stream.Stream;
       }
     }
 
+    /*?*/ Stream<V> stream(K key) {
+      final Builder<V> builder = Stream.builder();
+      for (int i = 0; i < myCount; ) {
+        if (Objects.equals(key, myValues[i++])) {
+          builder.accept((V) myValues[i]);
+        }
+        i++;
+      }
+      return builder.build();
+    }
+
     public int size() {
-      return myCount;
+      return myCount >> 1;
     }
 
     public void clear() {

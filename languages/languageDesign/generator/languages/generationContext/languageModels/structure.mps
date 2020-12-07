@@ -124,6 +124,12 @@
       <property role="IQ2ns" value="1216860049632" />
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
+    <node concept="1TJgyj" id="ZetM4BT5sq" role="1TKVEi">
+      <property role="IQ2ns" value="1138978740058216218" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="input2" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+    </node>
   </node>
   <node concept="1TIwiD" id="hHiwH3x">
     <property role="R5$K7" value="false" />

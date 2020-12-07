@@ -19,6 +19,7 @@ import jetbrains.mps.generator.GenerationCanceledException;
 import jetbrains.mps.generator.GenerationTrace;
 import jetbrains.mps.generator.GenerationTracerUtil;
 import jetbrains.mps.generator.IGeneratorLogger;
+import jetbrains.mps.generator.IGeneratorLogger.ProblemDescription;
 import jetbrains.mps.generator.impl.query.GeneratorQueryProvider;
 import jetbrains.mps.generator.impl.reference.PostponedReference;
 import jetbrains.mps.generator.impl.reference.ReferenceInfo_Macro;
@@ -387,7 +388,26 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
 
   @Override
   public void registerCompositeLabel(Object key1, Object key2, Collection<SNode> outputNode, String mappingLabel) {
-    throw new UnsupportedOperationException();
+    if (notSNodeKey(key1) || notSNodeKey(key2)) {
+      warnCompositeLabelKeys(key1, key2, mappingLabel);
+      return;
+    }
+    // TODO add into trace
+    myLabels.addComposite(mappingLabel, (SNode) key1, (SNode) key2, outputNode);
+  }
+
+  private void warnCompositeLabelKeys(Object key1, Object key2, String mappingLabel) {
+    // Eventually, I'd like to lift SNode restriction for labeled mappings (perhaps, just for the second key as a first step).
+    // However, at the moment, there's LM.sourceConcept2 is node<AbstractConceptDeclaration>, not a Type, no reason to support anything but SNode
+    ProblemDescription d0 = new ProblemDescription(String.format("label: %s", mappingLabel));
+    ProblemDescription d1 = new ProblemDescription(String.format("key1: '%s' (%s)", key1, key1 == null ? "" : key1.getClass()));
+    ProblemDescription d2 = new ProblemDescription(String.format("key2: '%s' (%s)", key2, key2 == null ? "" : key2.getClass()));
+    getLogger().warning(null, "No support yet for composite labels with keys that are not SNode", d0, d1, d2);
+  }
+
+  private static boolean notSNodeKey(Object key) {
+    //noinspection PointlessBooleanExpression
+    return key != null && false == key instanceof SNode;
   }
 
   @Override
@@ -425,6 +445,18 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
   // multiple mappings.
   public SNode findLocalOutputRecordSingle(/*not null*/SNode inputNode, /*not null*/ String label) {
     return myLabels.values(label, inputNode).findFirst().orElse(null);
+  }
+
+  public SNode findLocalOutputRecordSingle(/*not null*/ String label, Object key1, Object key2) {
+    if (notSNodeKey(key1) || notSNodeKey(key2)) {
+      warnCompositeLabelKeys(key1, key2, label);
+      return null;
+    }
+    SNode rv = myLabels.compositeKeyValues(label, (SNode) key1, (SNode) key2).findFirst().orElse(null);
+    if (rv == null) {
+      rv = generator.getMappings().findOutputRecordSingle(label, (SNode) key1, (SNode) key2);
+    }
+    return rv;
   }
 
   @NotNull

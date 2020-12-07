@@ -13,19 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jetbrains.mps.generator.impl.query;
+package jetbrains.mps.generator.template;
 
-import jetbrains.mps.generator.impl.GenerationFailureException;
-import jetbrains.mps.generator.template.LabelKeyQueryContext;
+import jetbrains.mps.generator.runtime.TemplateContext;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 /**
- * Query to override input node(s) mapped with a label (for {@code $LABEL$} macro only)
+ * Context to evaluate query that gives other than default nodes for a labeled mapping ({@code $LABEL$} macro.
+ *
  * @author Artem Tikhomirov
  * @since 2020.3
  */
-public interface LabelInputQuery extends Query {
-  @Nullable
-  Object evaluate(@NotNull LabelKeyQueryContext context) throws GenerationFailureException;
+public class LabelKeyQueryContext extends TemplateQueryContext {
+  public LabelKeyQueryContext(@NotNull TemplateContext context, @NotNull SNodeReference macroNode) {
+    super(macroNode, context);
+  }
 }

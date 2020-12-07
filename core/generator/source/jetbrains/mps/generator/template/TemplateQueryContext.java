@@ -135,6 +135,20 @@ public class TemplateQueryContext {
     return myGenerator.findOutputNodeByInputNodeAndMappingName(inputNode, label);
   }
 
+  public SNode getOutputForInputAndLabel(String label, Object key1, Object key2) {
+    if (!myGenerator.areMappingsAvailable()) {
+      myGenerator.getLogger().error(getTemplateNodeRef(), "'get output by input and label' cannot be used here");
+    }
+    if (myContext != null) {
+      final SNode localRecord = ((TemplateExecutionEnvironmentImpl) myContext.getEnvironment()).findLocalOutputRecordSingle(label, key1, key2);
+      if (localRecord != null) {
+        return localRecord;
+      }
+      // fall-through, try shared container
+    }
+    return null; // XXX shared composite labels are accessed through TEEI now (unlike getOutputNodeByInputNodeAndMappingLabel)
+  }
+
   public List<SNode> getAllOutputNodesByInputNodeAndMappingLabel(SNode inputNode, String label) {
     if (inputNode == null) return null;
     if (!myGenerator.areMappingsAvailable()) {
