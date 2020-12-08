@@ -352,7 +352,7 @@ public class TabbedEditor extends BaseNodeEditor {
   @Override
   public void loadState(@NotNull final EditorState newState) {
     myProject.getModelAccess().runReadAction(() -> {
-      if (state instanceof TabbedEditorState) {
+      if (newState instanceof TabbedEditorState) {
         state = (TabbedEditorState) newState;
         SNodeReference nodePointer = state.getNode();
         SNode node = nodePointer == null ? null : nodePointer.resolve(myProject.getRepository());
