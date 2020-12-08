@@ -254,6 +254,7 @@
     <classNode dependClassName="jetbrains.mps.generator.ModelGenerationPlan" />
     <classNode dependClassName="jetbrains.mps.generator.impl.plan.EngagedGeneratorCollector" />
     <classNode dependClassName="jetbrains.mps.generator.runtime.TemplateModule" />
+    <classNode dependClassName="jetbrains.mps.smodel.SModelStereotype" />
     <classNode dependClassName="jetbrains.mps.smodel.language.LanguageRegistry" />
     <classNode dependClassName="jetbrains.mps.smodel.language.LanguageRuntime" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SLanguage" />

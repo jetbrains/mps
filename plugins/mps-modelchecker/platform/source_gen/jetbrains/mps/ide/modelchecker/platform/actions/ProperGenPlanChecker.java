@@ -10,6 +10,7 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.util.Consumer;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.generator.GenPlanExtractor;
+import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.generator.ModelGenerationPlan;
 import java.util.HashSet;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -37,6 +38,10 @@ public class ProperGenPlanChecker extends SpecificChecker {
     if (!(gpExt.hasPlan(toCheck))) {
       return;
     }
+    // FIXME this is workaround for MPS-32687 - our GP for descriptor model does not indeed cover all required 
+    //      languages that may show up in descriptor model. As I can not fix it now, and errors are not acceptable, 
+    //      I still reveal the issues, but as infos. 
+    final boolean isDescriptorModel = SModelStereotype.isDescriptorModel(toCheck);
     final ModelGenerationPlan externalPlan = gpExt.getPlan(toCheck);
     HashSet<SLanguage> coveredLanguages = new HashSet<SLanguage>();
     monitor.start("", 3);
@@ -63,7 +68,7 @@ public class ProperGenPlanChecker extends SpecificChecker {
       }
       String m = String.format("Model uses language %s with %d generator(s), none of which is engaged with the active generation plan", lr.getNamespace(), nGeneratorsOfLanguageInUse);
       // XXX not sure whether this is an error or a warning. However, Make doesn't stop unless it's an error, hence I stick to that. 
-      errorCollector.accept(error(toCheck, m));
+      errorCollector.accept((isDescriptorModel ? info(toCheck, m) : error(toCheck, m)));
     }
     monitor.advance(2);
     monitor.done();
@@ -78,8 +83,8 @@ public class ProperGenPlanChecker extends SpecificChecker {
     return new Item(model, MessageStatus.ERROR, message, myCategory.deriveItemKind());
   }
 
-  private IssueKindReportItem warning(SModel model, String message) {
-    return new Item(model, MessageStatus.WARNING, message, myCategory.deriveItemKind());
+  private IssueKindReportItem info(SModel model, String message) {
+    return new Item(model, MessageStatus.OK, message, myCategory.deriveItemKind());
   }
 
   private static class Item extends ModelReportItemBase {
