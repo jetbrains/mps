@@ -200,6 +200,9 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     if (myJavaLanguageLevel != null) {
       // if myJavaLanguageLevel value has been read, write it back even if it's the same as default
       memento.put(JAVA_LANGUAGE_LEVEL, myJavaLanguageLevel.name());
+    } else {
+      // just in case memento comes with an old value (see FIXME, below) but the actual one has been changed to default
+      memento.put(JAVA_LANGUAGE_LEVEL, null);
     }
     // FIXME On one hand, it looks stupid to account for existing values in the memento, a lot of ugly code
     //       on the other, we might not want to save each and every setting inside an instance field.
