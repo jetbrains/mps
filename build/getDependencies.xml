@@ -219,7 +219,7 @@
     <unzip src="${basedir}/../plugins/java/lib/java-impl.jar" dest="${basedir}/../plugins/java/lib/java-impl/"/>
     <delete dir="${basedir}/../plugins/java/lib/java-impl/META-INF"/>
     <jar basedir="${basedir}/../plugins/java/lib/java-impl/" destfile="${basedir}/../lib/java-impl.jar"/>
-    <jar basedir="${basedir}/../plugins/java/lib/java-impl/" destfile="${basedir}/../plugins/java/lib/java-impl.jar"/>
+    <copy file="${basedir}/../lib/java-impl.jar" todir="${basedir}/../plugins/java/lib/"/>
     <delete dir="${basedir}/../plugins/java/lib/java-impl/"/>
     <!-- JavaPsiBundle needs its resources. See MPS-31934 -->
     <copy file="${basedir}/../plugins/java/lib/java_resources_en.jar" todir="${basedir}/../lib/"/>
