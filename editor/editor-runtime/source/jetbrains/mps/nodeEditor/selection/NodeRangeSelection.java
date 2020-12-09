@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.nodeEditor.selection;
 
-import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
 import jetbrains.mps.editor.runtime.impl.cellActions.CommentMultipleNodesAction;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
@@ -35,6 +34,7 @@ import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -51,7 +51,6 @@ import java.util.List;
 import java.util.Map;
 
 public class NodeRangeSelection extends AbstractMultipleSelection implements MultipleSelection {
-  private static final String ROLE_PROPERTY_NAME = "role";
   private static final String MODEL_ID_PROPERTY_NAME = "modelId";
   private static final String FIRST_NODE_ID_PROPERTY_NAME = "firstNodeId";
   private static final String LAST_NODE_ID_PROPERTY_NAME = "lastNodeId";
@@ -63,20 +62,21 @@ public class NodeRangeSelection extends AbstractMultipleSelection implements Mul
   private final SNode myFirstNode;
   private final SNode myLastNode;
   private final SNode myParentNode;
-  private final String myRole;
+  private final SContainmentLink myRole;
   private final String myModelReference;
   private final RangeSelectionFilter myFilter;
   private final String myEmptyCellId;
 
+  /**
+   * Invoked via reflection.
+   *
+   * @see SelectionInfoImpl#createSelection
+   */
   public NodeRangeSelection(@NotNull EditorComponent editorComponent, Map<String, String> properties, CellInfo cellInfo) throws SelectionStoreException,
                                                                                                                                 SelectionRestoreException {
     super(editorComponent);
     if (cellInfo != null) {
       throw new SelectionStoreException("Non-null CellInfo object passed as a parameter: " + cellInfo);
-    }
-    myRole = properties.get(ROLE_PROPERTY_NAME);
-    if (myRole == null) {
-      throw new SelectionStoreException("Role property missed");
     }
 
     myModelReference = properties.get(MODEL_ID_PROPERTY_NAME);
@@ -102,7 +102,8 @@ public class NodeRangeSelection extends AbstractMultipleSelection implements Mul
     if (myParentNode != myFirstNode.getParent() || myParentNode != myLastNode.getParent()) {
       throw new SelectionRestoreException();
     }
-    if (!myRole.equals(myFirstNode.getRoleInParent()) || !myRole.equals(myLastNode.getRoleInParent())) {
+    myRole = myFirstNode.getContainmentLink();
+    if (myRole == null || !myRole.equals(myLastNode.getContainmentLink())) {
       throw new SelectionRestoreException();
     }
     myFilter = createSelectionFilter(properties);
@@ -124,7 +125,7 @@ public class NodeRangeSelection extends AbstractMultipleSelection implements Mul
     myFirstNode = firstNode;
     myLastNode = lastNode;
     myParentNode = myFirstNode.getParent();
-    myRole = myFirstNode.getRoleInParent();
+    myRole = myFirstNode.getContainmentLink();
     myModelReference = myFirstNode.getModel().getReference().toString();
     myFilter = filter;
     myEmptyCellId = emptyCellId;
@@ -132,7 +133,7 @@ public class NodeRangeSelection extends AbstractMultipleSelection implements Mul
     assert myParentNode != null;
     assert myParentNode == myLastNode.getParent();
     assert myRole != null && myRole.equals(
-        myLastNode.getRoleInParent()) : "First node role: " + myRole + ", last node role: " + myLastNode.getRoleInParent();
+        myLastNode.getContainmentLink()) : "First node role: " + myRole + ", last node role: " + myLastNode.getContainmentLink();
     try {
       initSelectedCells();
     } catch (CellNotFoundException e) {
@@ -173,7 +174,6 @@ public class NodeRangeSelection extends AbstractMultipleSelection implements Mul
   @Override
   public SelectionInfo getSelectionInfo() {
     SelectionInfoImpl selectionInfo = new SelectionInfoImpl(this.getClass().getName());
-    selectionInfo.getPropertiesMap().put(ROLE_PROPERTY_NAME, myRole);
     selectionInfo.getPropertiesMap().put(MODEL_ID_PROPERTY_NAME, myModelReference);
     selectionInfo.getPropertiesMap().put(FIRST_NODE_ID_PROPERTY_NAME, myFirstNode.getNodeId().toString());
     selectionInfo.getPropertiesMap().put(LAST_NODE_ID_PROPERTY_NAME, myLastNode.getNodeId().toString());
@@ -247,7 +247,6 @@ public class NodeRangeSelection extends AbstractMultipleSelection implements Mul
       if (moduleRefString != null) {
         filterClass = loadFromModule(moduleRefString, filterClassName);
       } else {
-        //noinspection unchecked
         filterClass = (Class<? extends RangeSelectionFilter>) Class.forName(filterClassName);
       }
 
@@ -257,15 +256,10 @@ public class NodeRangeSelection extends AbstractMultipleSelection implements Mul
             (moduleRefString != null ? "" : "module reference: " + moduleRefString));
       }
 
-      RangeSelectionFilter filterInstance = null;
-      try {
-        Constructor<? extends RangeSelectionFilter> constructor = filterClass.getConstructor(EditorContext.class);
-        result = constructor.newInstance(getEditorComponent().getEditorContext());
-      } catch (NoSuchMethodException e) {
-        // Suppressing the error and trying to use default constructor.
-        // TODO: remove this fallback after MPS 2018.3
-        result = filterClass.newInstance();
-      }
+      Constructor<? extends RangeSelectionFilter> constructor = filterClass.getConstructor(EditorContext.class);
+      result = constructor.newInstance(getEditorComponent().getEditorContext());
+    } catch (NoSuchMethodException e) {
+      throw new SelectionStoreException("No suitable constructor in filter class: " + e.getMessage());
     } catch (ClassNotFoundException e) {
       throw new SelectionStoreException("Filter class not found: " + e.getMessage());
     } catch (InstantiationException e) {
@@ -294,7 +288,6 @@ public class NodeRangeSelection extends AbstractMultipleSelection implements Mul
     if (!(module instanceof ReloadableModule)) {
       throw new IllegalStateException("Cannot load classes from the module " + module);
     }
-    //noinspection unchecked
     try {
       return (Class<? extends RangeSelectionFilter>) ((ReloadableModule) module).getOwnClass(className);
     } catch (ClassNotFoundException e) {
@@ -446,11 +439,6 @@ public class NodeRangeSelection extends AbstractMultipleSelection implements Mul
       myEditorContext = editorContext;
     }
 
-    @Deprecated
-    public RangeSelectionFilter() {
-      this(null);
-    }
-
     protected EditorContext getEditorContext() {
       return myEditorContext;
     }
@@ -470,7 +458,7 @@ public class NodeRangeSelection extends AbstractMultipleSelection implements Mul
   }
 
   private static class CellNotFoundException extends Exception {
-    private SNode myNode;
+    private final SNode myNode;
 
     private CellNotFoundException(SNode node) {
       super("EditorCell was not found, node: " + node);
