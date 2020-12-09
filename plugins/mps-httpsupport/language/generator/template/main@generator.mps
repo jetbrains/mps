@@ -235,7 +235,6 @@
         <reference id="1722980698497626483" name="template" index="v9R2y" />
         <child id="1722980698497626405" name="actualArgument" index="v9R3O" />
       </concept>
-      <concept id="5133195082121471908" name="jetbrains.mps.lang.generator.structure.LabelMacro" flags="ln" index="2ZBi8u" />
       <concept id="1167168920554" name="jetbrains.mps.lang.generator.structure.BaseMappingRule_Condition" flags="in" index="30G5F_" />
       <concept id="1167169188348" name="jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_sourceNode" flags="nn" index="30H73N" />
       <concept id="1167169308231" name="jetbrains.mps.lang.generator.structure.BaseMappingRule" flags="ng" index="30H$t8">
@@ -610,11 +609,6 @@
       <property role="TrG5h" value="QUERY" />
       <ref role="2rTdP9" to="ndib:21vgRr5xrgT" resolve="QueryParameter" />
       <ref role="2rZz_L" to="tpee:fz12cDC" resolve="FieldDeclaration" />
-    </node>
-    <node concept="2rT7sh" id="40BYgt07sgf" role="2rTMjI">
-      <property role="TrG5h" value="QUERY_STR" />
-      <ref role="2rTdP9" to="ndib:21vgRr5xrgT" resolve="QueryParameter" />
-      <ref role="2rZz_L" to="tpee:fz3uBXI" resolve="VariableDeclaration" />
     </node>
     <node concept="3aamgX" id="2VC4eVXXQLG" role="3acgRq">
       <ref role="30HIoZ" to="ndib:4PqLM5kXS7i" resolve="HttpRequestParameter" />
@@ -1444,7 +1438,6 @@
                     </node>
                   </node>
                 </node>
-                <node concept="2ZBi8u" id="40BYgt07qoY" role="lGtFl" />
               </node>
             </node>
             <node concept="3clFbJ" id="21vgRr5$GrC" role="3cqZAp">

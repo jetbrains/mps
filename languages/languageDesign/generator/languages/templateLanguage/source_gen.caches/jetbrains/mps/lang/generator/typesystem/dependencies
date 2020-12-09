@@ -54,6 +54,7 @@
     <classNode dependClassName="jetbrains.mps.lang.generator.typesystem.check_CopySrcListMacro_NonTypesystemRule" />
     <classNode dependClassName="jetbrains.mps.lang.generator.typesystem.check_DropAttributeRule_NonTypesystemRule" />
     <classNode dependClassName="jetbrains.mps.lang.generator.typesystem.check_InlineTemplateWithContext_RuleConsequence_NonTypesystemRule" />
+    <classNode dependClassName="jetbrains.mps.lang.generator.typesystem.check_LabelMacro_NonTypesystemRule" />
     <classNode dependClassName="jetbrains.mps.lang.generator.typesystem.check_LoopMacro_NonTypesystemRule" />
     <classNode dependClassName="jetbrains.mps.lang.generator.typesystem.check_MappingConfiguration_NonTypesystemRule" />
     <classNode dependClassName="jetbrains.mps.lang.generator.typesystem.check_NodeMacro_NonTypesystemRule" />
@@ -155,6 +156,21 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.lang.typesystem.runtime.AbstractNonTypesystemRule_Runtime" />
+    <classNode extendsClassName="jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime" />
+  </dependency>
+  <dependency className="jetbrains.mps.lang.generator.typesystem.check_LabelMacro_NonTypesystemRule">
+    <classNode dependClassName="jetbrains.mps.errors.IErrorReporter" />
+    <classNode dependClassName="jetbrains.mps.errors.messageTargets.MessageTarget" />
+    <classNode dependClassName="jetbrains.mps.errors.messageTargets.ReferenceMessageTarget" />
+    <classNode dependClassName="jetbrains.mps.lang.generator.behavior.NodeMacro__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="jetbrains.mps.typesystem.inference.TypeCheckingContext" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SReferenceLink" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.lang.typesystem.runtime.AbstractNonTypesystemRule_Runtime" />
     <classNode extendsClassName="jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime" />

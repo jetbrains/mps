@@ -6611,5 +6611,40 @@
       </node>
     </node>
   </node>
+  <node concept="18kY7G" id="5JwxlfKCu3m">
+    <property role="TrG5h" value="check_LabelMacro" />
+    <property role="3GE5qa" value="macro" />
+    <node concept="3clFbS" id="5JwxlfKCu3n" role="18ibNy">
+      <node concept="3clFbJ" id="5JwxlfKCunm" role="3cqZAp">
+        <node concept="3fqX7Q" id="5JwxlfKCwUY" role="3clFbw">
+          <node concept="2OqwBi" id="5JwxlfKCwV0" role="3fr31v">
+            <node concept="1YBJjd" id="5JwxlfKCwV1" role="2Oq$k0">
+              <ref role="1YBMHb" node="5JwxlfKCu3p" resolve="labelMacro" />
+            </node>
+            <node concept="2qgKlT" id="5JwxlfKCwV2" role="2OqNvi">
+              <ref role="37wK5l" to="tpfh:5KmckUrKj9u" resolve="hasMappingLabel" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbS" id="5JwxlfKCuno" role="3clFbx">
+          <node concept="2MkqsV" id="5JwxlfKCx0y" role="3cqZAp">
+            <node concept="Xl_RD" id="5JwxlfKCx0T" role="2MkJ7o">
+              <property role="Xl_RC" value="Macro has to reference a mapping label" />
+            </node>
+            <node concept="1YBJjd" id="5JwxlfKCx0I" role="1urrMF">
+              <ref role="1YBMHb" node="5JwxlfKCu3p" resolve="labelMacro" />
+            </node>
+            <node concept="2OE7Q9" id="1sVXXINF2nj" role="1urrC5">
+              <ref role="2OEe5H" to="tpf8:hurW$JJ" resolve="mappingLabel" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="5JwxlfKCu3p" role="1YuTPh">
+      <property role="TrG5h" value="labelMacro" />
+      <ref role="1YaFvo" to="tpf8:4sWLrFSCuu$" resolve="LabelMacro" />
+    </node>
+  </node>
 </model>
 
