@@ -87,9 +87,11 @@ public class HighlightUsagesSupport {
   }
 
   private void highlight(@NotNull EditorCell selectedCell) {
-    SNode nodeToHighlight = APICellAdapter.getSNodeWRTReference(selectedCell);
     clearMarks();
-    highlight(nodeToHighlight, selectedCell.getSNode());
+    SNode nodeToHighlight = APICellAdapter.getSNodeWRTReference(selectedCell);
+    if (nodeToHighlight != null) {
+      highlight(nodeToHighlight, selectedCell.getSNode());
+    }
   }
 
   private void clearMarks() {
