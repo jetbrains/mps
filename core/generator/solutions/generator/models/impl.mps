@@ -279,6 +279,9 @@
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
       </concept>
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
+        <child id="2667874559098216723" name="text" index="3HnX3l" />
+      </concept>
       <concept id="2217234381367049075" name="jetbrains.mps.baseLanguage.javadoc.structure.CodeInlineDocTag" flags="ng" index="VVOAv">
         <child id="3106559687488741665" name="line" index="2Xj1qM" />
       </concept>
@@ -341,6 +344,9 @@
       <concept id="1145567426890" name="jetbrains.mps.lang.smodel.structure.SNodeListCreator" flags="nn" index="2T8Vx0">
         <child id="1145567471833" name="createdType" index="2T96Bj" />
       </concept>
+      <concept id="1966870290088668512" name="jetbrains.mps.lang.smodel.structure.Enum_MemberLiteral" flags="ng" index="2ViDtV">
+        <reference id="1966870290088668516" name="memberDeclaration" index="2ViDtZ" />
+      </concept>
       <concept id="3542851458883438784" name="jetbrains.mps.lang.smodel.structure.LanguageId" flags="nn" index="2V$Bhx">
         <property id="3542851458883439831" name="namespace" index="2V$B1Q" />
         <property id="3542851458883439832" name="languageId" index="2V$B1T" />
@@ -389,6 +395,9 @@
       </concept>
       <concept id="1138056282393" name="jetbrains.mps.lang.smodel.structure.SLinkListAccess" flags="nn" index="3Tsc0h">
         <reference id="1138056546658" name="link" index="3TtcxE" />
+      </concept>
+      <concept id="5779574625830813396" name="jetbrains.mps.lang.smodel.structure.EnumerationIdRefExpression" flags="ng" index="1XH99k">
+        <reference id="5779574625830813397" name="enumDeclaration" index="1XH99l" />
       </concept>
       <concept id="1228341669568" name="jetbrains.mps.lang.smodel.structure.Node_DetachOperation" flags="nn" index="3YRAZt" />
     </language>
@@ -5720,6 +5729,76 @@
           <ref role="ehGHo" to="tpf8:ghWS0B3" resolve="LoopMacro" />
         </node>
       </node>
+      <node concept="P$JXv" id="1kTmBBnxsmd" role="lGtFl">
+        <node concept="TZ5HI" id="1kTmBBnxsme" role="3nqlJM">
+          <node concept="TZ5HA" id="1kTmBBnxsmf" role="3HnX3l" />
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="1kTmBBnxsmg" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+      </node>
+    </node>
+    <node concept="2YIFZL" id="5UJTmNZqqr0" role="jymVt">
+      <property role="TrG5h" value="isLoopMacroCounterVarUsed" />
+      <node concept="3clFbS" id="5UJTmNZqqr1" role="3clF47">
+        <node concept="3clFbF" id="5UJTmNZqqr2" role="3cqZAp">
+          <node concept="2OqwBi" id="5UJTmNZqqr3" role="3clFbG">
+            <node concept="37vLTw" id="5UJTmNZqqr4" role="2Oq$k0">
+              <ref role="3cqZAo" node="5UJTmNZqqrb" resolve="loopMacro" />
+            </node>
+            <node concept="2qgKlT" id="5UJTmNZqqr5" role="2OqNvi">
+              <ref role="37wK5l" to="tpfh:5UJTmNZqi81" resolve="isLoopVariableUsed" />
+              <node concept="2OqwBi" id="5UJTmNZqqr6" role="37wK5m">
+                <node concept="1XH99k" id="5UJTmNZqqr7" role="2Oq$k0">
+                  <ref role="1XH99l" to="tpf8:1jlY2aid0us" resolve="LoopMacroVariable" />
+                </node>
+                <node concept="2ViDtV" id="5UJTmNZqqr8" role="2OqNvi">
+                  <ref role="2ViDtZ" to="tpf8:1jlY2aid0uu" resolve="index" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="5UJTmNZqqr9" role="1B3o_S" />
+      <node concept="10P_77" id="5UJTmNZqqra" role="3clF45" />
+      <node concept="37vLTG" id="5UJTmNZqqrb" role="3clF46">
+        <property role="TrG5h" value="loopMacro" />
+        <node concept="3Tqbb2" id="5UJTmNZqqrc" role="1tU5fm">
+          <ref role="ehGHo" to="tpf8:ghWS0B3" resolve="LoopMacro" />
+        </node>
+      </node>
+    </node>
+    <node concept="2YIFZL" id="5UJTmNZqfu5" role="jymVt">
+      <property role="TrG5h" value="isLoopMacroInputNodeVarUsed" />
+      <node concept="3clFbS" id="5UJTmNZqfu8" role="3clF47">
+        <node concept="3clFbF" id="5UJTmNZqfXz" role="3cqZAp">
+          <node concept="2OqwBi" id="5UJTmNZqpbb" role="3clFbG">
+            <node concept="37vLTw" id="5UJTmNZqfXy" role="2Oq$k0">
+              <ref role="3cqZAo" node="5UJTmNZqfPy" resolve="loopMacro" />
+            </node>
+            <node concept="2qgKlT" id="5UJTmNZqpA5" role="2OqNvi">
+              <ref role="37wK5l" to="tpfh:5UJTmNZqi81" resolve="isLoopVariableUsed" />
+              <node concept="2OqwBi" id="5UJTmNZqqaz" role="37wK5m">
+                <node concept="1XH99k" id="5UJTmNZqpId" role="2Oq$k0">
+                  <ref role="1XH99l" to="tpf8:1jlY2aid0us" resolve="LoopMacroVariable" />
+                </node>
+                <node concept="2ViDtV" id="5UJTmNZqrzU" role="2OqNvi">
+                  <ref role="2ViDtZ" to="tpf8:1jlY2aid0ut" resolve="inputNode" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="5UJTmNZq9cI" role="1B3o_S" />
+      <node concept="10P_77" id="5UJTmNZqfu3" role="3clF45" />
+      <node concept="37vLTG" id="5UJTmNZqfPy" role="3clF46">
+        <property role="TrG5h" value="loopMacro" />
+        <node concept="3Tqbb2" id="5UJTmNZqfPx" role="1tU5fm">
+          <ref role="ehGHo" to="tpf8:ghWS0B3" resolve="LoopMacro" />
+        </node>
+      </node>
     </node>
     <node concept="2YIFZL" id="6xQoLnhyzxa" role="jymVt">
       <property role="TrG5h" value="getModelChangeOperations" />
@@ -7052,9 +7131,6 @@
                 <node concept="3cpWs8" id="6aGm$jlHRMB" role="3cqZAp">
                   <node concept="3cpWsn" id="6aGm$jlHRMC" role="3cpWs9">
                     <property role="TrG5h" value="outRec" />
-                    <node concept="3uibUv" id="5yrZiOVI00T" role="1tU5fm">
-                      <ref role="3uigEE" to="80j5:~NodeMapRecord" resolve="NodeMapRecord" />
-                    </node>
                     <node concept="2OqwBi" id="6aGm$jlHRMD" role="33vP2m">
                       <node concept="liA8E" id="6aGm$jlHRMF" role="2OqNvi">
                         <ref role="37wK5l" to="80j5:~NodeMap.get(org.jetbrains.mps.openapi.model.SNode)" resolve="get" />
@@ -7073,6 +7149,9 @@
                           </node>
                         </node>
                       </node>
+                    </node>
+                    <node concept="3uibUv" id="5yrZiOVI00T" role="1tU5fm">
+                      <ref role="3uigEE" to="80j5:~NodeMapRecord" resolve="NodeMapRecord" />
                     </node>
                   </node>
                 </node>

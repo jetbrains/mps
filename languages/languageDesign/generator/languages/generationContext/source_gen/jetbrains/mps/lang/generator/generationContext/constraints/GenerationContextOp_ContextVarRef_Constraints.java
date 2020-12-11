@@ -9,18 +9,13 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.generator.behavior.ContextVariableProvider__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.scope.Scope;
+import jetbrains.mps.lang.generator.generationContext.behavior.GenerationContextOp_ContextVarRef__BehaviorDescriptor;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public class GenerationContextOp_ContextVarRef_Constraints extends BaseConstraintsDescriptor {
   public GenerationContextOp_ContextVarRef_Constraints() {
@@ -44,21 +39,8 @@ public class GenerationContextOp_ContextVarRef_Constraints extends BaseConstrain
       }
       return result;
     }
-    private static boolean staticValidateProperty(SNode node, final String propertyValue) {
-      SNode n = node;
-      while (n != null) {
-        if (SNodeOperations.isInstanceOf(n, CONCEPTS.ContextVariableProvider$BN)) {
-          if (ListSequence.fromList(ContextVariableProvider__BehaviorDescriptor.contextVariables_id6suuiWX_oN7.invoke(SNodeOperations.cast(n, CONCEPTS.ContextVariableProvider$BN))).any(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SPropertyOperations.getString(it, PROPS.name$MnvL).equals(propertyValue);
-            }
-          })) {
-            return true;
-          }
-        }
-        n = Scope.parent(n);
-      }
-      return false;
+    private static boolean staticValidateProperty(SNode node, String propertyValue) {
+      return (GenerationContextOp_ContextVarRef__BehaviorDescriptor.getVariableProvider_id3L_saXYV65L.invoke(node) != null);
     }
   }
   @Override
@@ -70,11 +52,9 @@ public class GenerationContextOp_ContextVarRef_Constraints extends BaseConstrain
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept GenerationContextOp_ContextVarRef$4q = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x671e792f3dbdfe7eL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_ContextVarRef");
-    /*package*/ static final SInterfaceConcept ContextVariableProvider$BN = MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x671e792f3d934cacL, "jetbrains.mps.lang.generator.structure.ContextVariableProvider");
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty contextVarName$KIbb = MetaAdapterFactory.getProperty(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x671e792f3dbdfe7eL, 0x671e792f3dbdffa2L, "contextVarName");
-    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

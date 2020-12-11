@@ -10,29 +10,54 @@ import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.SModifiersImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.generator.behavior.ContextVariableProvider__BehaviorDescriptor;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.scope.Scope;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class GenerationContextOp_ContextVarRef__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x671e792f3dbdfe7eL, "jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_ContextVarRef");
 
   public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("hEwIMiw").build();
+  public static final SMethod<SNode> getVariableProvider_id3L_saXYV65L = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getVariableProvider").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("3L_saXYV65L").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPresentation_idhEwIMiw, getVariableProvider_id3L_saXYV65L);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     return (SPropertyOperations.getString(__thisNode__, PROPS.contextVarName$KIbb) == null ? SNodeOperations.getConcept(__thisNode__).getName() : SPropertyOperations.getString(__thisNode__, PROPS.contextVarName$KIbb));
+  }
+  /*package*/ static SNode getVariableProvider_id3L_saXYV65L(@NotNull final SNode __thisNode__) {
+    SNode n = __thisNode__;
+    while (n != null) {
+      {
+        final SNode provider = n;
+        if (SNodeOperations.isInstanceOf(provider, CONCEPTS.ContextVariableProvider$BN)) {
+          if (ListSequence.fromList(ContextVariableProvider__BehaviorDescriptor.contextVariables_id6suuiWX_oN7.invoke(provider)).any(new IWhereFilter<SNode>() {
+            public boolean accept(SNode it) {
+              return SPropertyOperations.getString(it, PROPS.name$MnvL).equals(SPropertyOperations.getString(__thisNode__, PROPS.contextVarName$KIbb));
+            }
+          })) {
+            return provider;
+          }
+        }
+      }
+      n = Scope.parent(n);
+    }
+    return null;
   }
 
   /*package*/ GenerationContextOp_ContextVarRef__BehaviorDescriptor() {
@@ -52,6 +77,8 @@ public final class GenerationContextOp_ContextVarRef__BehaviorDescriptor extends
     switch (methodIndex) {
       case 0:
         return (T) ((String) getPresentation_idhEwIMiw(node));
+      case 1:
+        return (T) ((SNode) getVariableProvider_id3L_saXYV65L(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -83,5 +110,10 @@ public final class GenerationContextOp_ContextVarRef__BehaviorDescriptor extends
 
   private static final class PROPS {
     /*package*/ static final SProperty contextVarName$KIbb = MetaAdapterFactory.getProperty(0xd7706f639be2479cL, 0xa3daae92af1e64d5L, 0x671e792f3dbdfe7eL, 0x671e792f3dbdffa2L, "contextVarName");
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept ContextVariableProvider$BN = MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x671e792f3d934cacL, "jetbrains.mps.lang.generator.structure.ContextVariableProvider");
   }
 }

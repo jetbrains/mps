@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-2roc7fdvr5ye7byykv5igw5mb1gjzx1">
+<product version="3" modelHash="56cr7zwb6jclls51xrr7s9r78xbjipd">
   <files names="DebugMappingsBuilder.java:GenPlanTranslator.java:GeneratorUtilEx.java:MappingLabelExtractor.java:RuleUtil.java:TransitionTracePersistence.java" />
 </product>
 

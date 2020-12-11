@@ -527,6 +527,9 @@
       <property role="TrG5h" value="counterVarName" />
       <property role="IQ2nx" value="7430509679011668804" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+      <node concept="asaX9" id="1MjKMbbT1_y" role="lGtFl">
+        <property role="YLQ7P" value="use LOOP.index instead" />
+      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="gtpdMPS">
@@ -2207,39 +2210,38 @@
     <property role="34LRSv" value="query" />
     <ref role="1TJDcQ" node="hHd3awK" resolve="TemplateQueryBase" />
   </node>
-  <node concept="1TIwiD" id="29eexQPI_ZM">
-    <property role="EcuMT" value="2471977144750333938" />
-    <property role="3GE5qa" value="checkpoint" />
-    <property role="TrG5h" value="CP_LabelRecord" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="1TJgyj" id="29eexQPIA05" role="1TKVEi">
-      <property role="IQ2ns" value="2471977144750333957" />
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="input1" />
-      <ref role="20lvS9" node="29eexQPI_ZV" resolve="CP_InputKey" />
+  <node concept="1TIwiD" id="2vVmcK3ii_Y">
+    <property role="EcuMT" value="2880994019885263230" />
+    <property role="3GE5qa" value="macro.namespace" />
+    <property role="TrG5h" value="AbstractNodeMacroNamespace" />
+    <property role="R5$K7" value="true" />
+    <property role="R4oN_" value="abstract namespace accessor for a node macro" />
+    <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
+  </node>
+  <node concept="1TIwiD" id="2vVmcK3ii$G">
+    <property role="EcuMT" value="2880994019885263148" />
+    <property role="3GE5qa" value="macro.namespace" />
+    <property role="TrG5h" value="LoopMacroNamespaceAccessor" />
+    <property role="34LRSv" value="LOOP." />
+    <property role="R4oN_" value="access enclosing $LOOP$ macro variables" />
+    <ref role="1TJDcQ" node="2vVmcK3ii_Y" resolve="AbstractNodeMacroNamespace" />
+    <node concept="1TJgyi" id="1jlY2aid0ux" role="1TKVEl">
+      <property role="IQ2nx" value="1501378878163388321" />
+      <property role="TrG5h" value="variable" />
+      <ref role="AX2Wp" node="1jlY2aid0us" resolve="LoopMacroVariable" />
     </node>
-    <node concept="1TJgyj" id="29eexQPIA08" role="1TKVEi">
-      <property role="IQ2ns" value="2471977144750333960" />
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="input2" />
-      <ref role="20lvS9" node="29eexQPI_ZV" resolve="CP_InputKey" />
+  </node>
+  <node concept="25R3W" id="1jlY2aid0us">
+    <property role="3F6X1D" value="1501378878163388316" />
+    <property role="3GE5qa" value="macro.namespace" />
+    <property role="TrG5h" value="LoopMacroVariable" />
+    <node concept="25R33" id="1jlY2aid0ut" role="25R1y">
+      <property role="3tVfz5" value="1501378878163388317" />
+      <property role="TrG5h" value="inputNode" />
     </node>
-    <node concept="1TJgyj" id="29eexQPI_ZR" role="1TKVEi">
-      <property role="IQ2ns" value="2471977144750333943" />
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="output" />
-      <property role="20lbJX" value="fLJekj5/_0__n" />
-      <ref role="20lvS9" node="3mwbQJWA0ri" resolve="GeneratorDebug_NodeRef" />
-    </node>
-    <node concept="1TJgyi" id="29eexQPI_ZN" role="1TKVEl">
-      <property role="IQ2nx" value="2471977144750333939" />
-      <property role="TrG5h" value="label" />
-      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
-    </node>
-    <node concept="1TJgyi" id="29eexQPIA0c" role="1TKVEl">
-      <property role="IQ2nx" value="2471977144750333964" />
-      <property role="TrG5h" value="isNewRoot" />
-      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    <node concept="25R33" id="1jlY2aid0uu" role="25R1y">
+      <property role="3tVfz5" value="1501378878163388318" />
+      <property role="TrG5h" value="index" />
     </node>
   </node>
   <node concept="PlHQZ" id="29eexQPI_ZV">
@@ -2282,6 +2284,41 @@
     </node>
     <node concept="PrWs8" id="29eexQPI_ZX" role="PzmwI">
       <ref role="PrY4T" node="29eexQPI_ZV" resolve="CP_InputKey" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="29eexQPI_ZM">
+    <property role="EcuMT" value="2471977144750333938" />
+    <property role="3GE5qa" value="checkpoint" />
+    <property role="TrG5h" value="CP_LabelRecord" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="29eexQPIA05" role="1TKVEi">
+      <property role="IQ2ns" value="2471977144750333957" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="input1" />
+      <ref role="20lvS9" node="29eexQPI_ZV" resolve="CP_InputKey" />
+    </node>
+    <node concept="1TJgyj" id="29eexQPIA08" role="1TKVEi">
+      <property role="IQ2ns" value="2471977144750333960" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="input2" />
+      <ref role="20lvS9" node="29eexQPI_ZV" resolve="CP_InputKey" />
+    </node>
+    <node concept="1TJgyj" id="29eexQPI_ZR" role="1TKVEi">
+      <property role="IQ2ns" value="2471977144750333943" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="output" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="3mwbQJWA0ri" resolve="GeneratorDebug_NodeRef" />
+    </node>
+    <node concept="1TJgyi" id="29eexQPI_ZN" role="1TKVEl">
+      <property role="IQ2nx" value="2471977144750333939" />
+      <property role="TrG5h" value="label" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="1TJgyi" id="29eexQPIA0c" role="1TKVEl">
+      <property role="IQ2nx" value="2471977144750333964" />
+      <property role="TrG5h" value="isNewRoot" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
   </node>
 </model>

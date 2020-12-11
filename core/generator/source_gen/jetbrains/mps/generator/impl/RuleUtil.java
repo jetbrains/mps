@@ -451,8 +451,19 @@ public final class RuleUtil {
   public static SNode getDismissTopRule_message(SNode dismissTopRuleConsequence) {
     return SLinkOperations.getTarget(dismissTopRuleConsequence, LINKS.generatorMessage$yHHk);
   }
+  /**
+   * 
+   * @deprecated 
+   */
+  @Deprecated
   public static String getLoopMacroCounterVarName(SNode loopMacro) {
     return SPropertyOperations.getString(loopMacro, PROPS.counterVarName$YOXn);
+  }
+  public static boolean isLoopMacroCounterVarUsed(SNode loopMacro) {
+    return ((boolean) (Boolean) BHReflection.invoke0(loopMacro, CONCEPTS.LoopMacro$1T, SMethodTrimmedId.create("isLoopVariableUsed", CONCEPTS.LoopMacro$1T, "5UJTmNZqi81"), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb401a68083254110L, 0x8fd384331ff25befL, 0x14d5f8229234079cL, "jetbrains.mps.lang.generator.structure.LoopMacroVariable"), 0x14d5f8229234079eL, "index")));
+  }
+  public static boolean isLoopMacroInputNodeVarUsed(SNode loopMacro) {
+    return ((boolean) (Boolean) BHReflection.invoke0(loopMacro, CONCEPTS.LoopMacro$1T, SMethodTrimmedId.create("isLoopVariableUsed", CONCEPTS.LoopMacro$1T, "5UJTmNZqi81"), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb401a68083254110L, 0x8fd384331ff25befL, 0x14d5f8229234079cL, "jetbrains.mps.lang.generator.structure.LoopMacroVariable"), 0x14d5f8229234079dL, "inputNode")));
   }
   public static Iterable<SConcept> getModelChangeOperations() {
     return ModelChangeOperations;
