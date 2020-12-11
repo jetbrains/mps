@@ -6022,63 +6022,14 @@
                   <node concept="3cpWsn" id="yEe$4QSGeV" role="3cpWs9">
                     <property role="TrG5h" value="inputNodeIdentity" />
                     <node concept="3Tqbb2" id="yEe$4QSGeR" role="1tU5fm">
-                      <ref role="ehGHo" to="tpf8:7PoJpZpH$hz" resolve="TrivialNodeId" />
+                      <ref role="ehGHo" to="tpf8:39TODbGtas8" resolve="ElementaryNodeId" />
                     </node>
                     <node concept="2OqwBi" id="yEe$4QSGeW" role="33vP2m">
                       <node concept="37vLTw" id="yEe$4QSGeX" role="2Oq$k0">
                         <ref role="3cqZAo" node="3mwbQJWBn2x" resolve="checkpointModel" />
                       </node>
                       <node concept="I8ghe" id="yEe$4QSGeY" role="2OqNvi">
-                        <ref role="I8UWU" to="tpf8:7PoJpZpH$hz" resolve="TrivialNodeId" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-                <node concept="3cpWs8" id="yEe$4QSKE5" role="3cqZAp">
-                  <node concept="3cpWsn" id="yEe$4QSKE6" role="3cpWs9">
-                    <property role="TrG5h" value="inputNodeConceptIdentity" />
-                    <node concept="3Tqbb2" id="yEe$4QSKE1" role="1tU5fm">
-                      <ref role="ehGHo" to="tp25:5ZE7FBYYQZB" resolve="ConceptId" />
-                    </node>
-                    <node concept="2OqwBi" id="yEe$4QSKE7" role="33vP2m">
-                      <node concept="37vLTw" id="yEe$4QSKE8" role="2Oq$k0">
-                        <ref role="3cqZAo" node="3mwbQJWBn2x" resolve="checkpointModel" />
-                      </node>
-                      <node concept="I8ghe" id="yEe$4QSKE9" role="2OqNvi">
-                        <ref role="I8UWU" to="tp25:5ZE7FBYYQZB" resolve="ConceptId" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-                <node concept="3clFbF" id="yEe$4QSLmz" role="3cqZAp">
-                  <node concept="2OqwBi" id="yEe$4QSLDX" role="3clFbG">
-                    <node concept="37vLTw" id="yEe$4QSLmx" role="2Oq$k0">
-                      <ref role="3cqZAo" node="yEe$4QSKE6" resolve="inputNodeConceptIdentity" />
-                    </node>
-                    <node concept="2qgKlT" id="yEe$4QSLRS" role="2OqNvi">
-                      <ref role="37wK5l" to="tpeu:5ZE7FBYYR6j" resolve="setConcept" />
-                      <node concept="2OqwBi" id="yEe$4QSM6H" role="37wK5m">
-                        <node concept="37vLTw" id="yEe$4QSLWp" role="2Oq$k0">
-                          <ref role="3cqZAo" node="3mwbQJWBq4s" resolve="keyInputNode" />
-                        </node>
-                        <node concept="liA8E" id="yEe$4QSNzW" role="2OqNvi">
-                          <ref role="37wK5l" to="mhbf:~SNode.getConcept()" resolve="getConcept" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-                <node concept="3clFbF" id="yEe$4QSBIf" role="3cqZAp">
-                  <node concept="37vLTI" id="yEe$4QSJyt" role="3clFbG">
-                    <node concept="37vLTw" id="yEe$4QSKEa" role="37vLTx">
-                      <ref role="3cqZAo" node="yEe$4QSKE6" resolve="inputNodeConceptIdentity" />
-                    </node>
-                    <node concept="2OqwBi" id="yEe$4QSGBa" role="37vLTJ">
-                      <node concept="37vLTw" id="yEe$4QSGeZ" role="2Oq$k0">
-                        <ref role="3cqZAo" node="yEe$4QSGeV" resolve="inputNodeIdentity" />
-                      </node>
-                      <node concept="3TrEf2" id="yEe$4QSHS3" role="2OqNvi">
-                        <ref role="3Tt5mk" to="tpf8:7r2v6u$o5W7" resolve="cncpt" />
+                        <ref role="I8UWU" to="tpf8:39TODbGtas8" resolve="ElementaryNodeId" />
                       </node>
                     </node>
                   </node>
@@ -6651,8 +6602,8 @@
                       <node concept="37vLTw" id="yEe$4QSO2x" role="2Oq$k0">
                         <ref role="3cqZAo" node="yEe$4QSGeV" resolve="inputNodeIdentity" />
                       </node>
-                      <node concept="3TrcHB" id="yEe$4QSPPl" role="2OqNvi">
-                        <ref role="3TsBF5" to="tpf8:7PoJpZpH$hC" resolve="nodeId" />
+                      <node concept="3TrcHB" id="$$Ni30WcBH" role="2OqNvi">
+                        <ref role="3TsBF5" to="tpf8:39TODbGtasd" resolve="nodeId" />
                       </node>
                     </node>
                     <node concept="2OqwBi" id="yEe$4QSV9S" role="37vLTx">

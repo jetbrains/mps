@@ -5695,6 +5695,9 @@
   <node concept="13h7C7" id="7PoJpZpH$mq">
     <property role="3GE5qa" value="crossmodel.vault" />
     <ref role="13h7C2" to="tpf8:7PoJpZpH$hz" resolve="TrivialNodeId" />
+    <node concept="13hLZK" id="7PoJpZpH$mr" role="13h7CW">
+      <node concept="3clFbS" id="7PoJpZpH$ms" role="2VODD2" />
+    </node>
     <node concept="13i0hz" id="39TODbGt9gR" role="13h7CS">
       <property role="TrG5h" value="instantiate" />
       <node concept="37vLTG" id="7PoJpZpHI5$" role="3clF46">
@@ -5834,9 +5837,6 @@
           </node>
         </node>
       </node>
-    </node>
-    <node concept="13hLZK" id="7PoJpZpH$mr" role="13h7CW">
-      <node concept="3clFbS" id="7PoJpZpH$ms" role="2VODD2" />
     </node>
     <node concept="13i0hz" id="7PoJpZpIp9n" role="13h7CS">
       <property role="13i0iv" value="false" />

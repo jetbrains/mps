@@ -37,6 +37,10 @@
       <concept id="6491077959632463275" name="jetbrains.mps.lang.structure.structure.EnumPropertyMigrationInfo" flags="ng" index="3l_iC">
         <child id="6491077959632463286" name="oldProperty" index="3l_iP" />
       </concept>
+      <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
+        <property id="1225118929411" name="build" index="YLPcu" />
+        <property id="1225118933224" name="comment" index="YLQ7P" />
+      </concept>
       <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
         <property id="7862711839422615217" name="text" index="t5JxN" />
       </concept>
@@ -1954,17 +1958,12 @@
     <node concept="1TJgyj" id="7r2v6u$o5W7" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="cncpt" />
-      <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="8557539026538618631" />
+      <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" to="tp25:5ZE7FBYYOp2" resolve="ConceptIdentity" />
-      <node concept="t5JxF" id="39TODbGt7Bz" role="lGtFl">
+      <node concept="t5JxF" id="$$Ni30W7Ix" role="lGtFl">
         <property role="t5JxN" value="XXX shall use modelapi conterpart" />
       </node>
-    </node>
-    <node concept="1TJgyi" id="7PoJpZpH$hA" role="1TKVEl">
-      <property role="TrG5h" value="conceptId" />
-      <property role="IQ2nx" value="9032177546941580390" />
-      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
     <node concept="1TJgyi" id="7PoJpZpH$hC" role="1TKVEl">
       <property role="TrG5h" value="nodeId" />
@@ -1973,6 +1972,10 @@
     </node>
     <node concept="PrWs8" id="7PoJpZpH$h$" role="PzmwI">
       <ref role="PrY4T" node="7PoJpZpHudo" resolve="NodeIdentity" />
+    </node>
+    <node concept="asaX9" id="$$Ni30W7yO" role="lGtFl">
+      <property role="YLPcu" value="2020.3" />
+      <property role="YLQ7P" value="of no use with complete model kept and true node instances retrieved. kept for transition purposes (to read old CPs). Seems it's better to drop this concept altogether than to bother with ConceptIdentity replacement" />
     </node>
   </node>
   <node concept="PlHQZ" id="7PoJpZpHudo">

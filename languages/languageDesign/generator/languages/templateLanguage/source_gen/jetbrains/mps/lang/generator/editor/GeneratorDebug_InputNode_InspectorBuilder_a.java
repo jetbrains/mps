@@ -25,15 +25,12 @@ import jetbrains.mps.openapi.editor.update.AttributeKind;
 import jetbrains.mps.nodeEditor.cellProviders.CellProviderWithRole;
 import jetbrains.mps.lang.editor.cellProviders.RefCellCellProvider;
 import jetbrains.mps.nodeEditor.cells.ModelAccessor;
-import jetbrains.mps.lang.smodel.behavior.ConceptIdentity__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.generator.behavior.NodeIdentity__BehaviorDescriptor;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.cells.EmptyCellAction;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -129,7 +126,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     }
 
     /*package*/ EditorCell createCell() {
-      return createAlternation_0();
+      return createReadOnlyModelAccessor_0();
     }
 
     @NotNull
@@ -138,25 +135,10 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       return myNode;
     }
 
-    private EditorCell createAlternation_0() {
-      boolean alternationCondition = true;
-      alternationCondition = nodeCondition_6u0t67_a0a1a();
-      EditorCell editorCell = null;
-      if (alternationCondition) {
-        editorCell = createReadOnlyModelAccessor_0();
-      } else {
-        editorCell = createConstant_0();
-      }
-      return editorCell;
-    }
-    private boolean nodeCondition_6u0t67_a0a1a() {
-      return SNodeOperations.isInstanceOf(myNode, CONCEPTS.TrivialNodeId$7I);
-    }
     private EditorCell createReadOnlyModelAccessor_0() {
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new ModelAccessor.ReadOnly() {
         public String getText() {
-          SNode tn = SNodeOperations.cast(myNode, CONCEPTS.TrivialNodeId$7I);
-          return ConceptIdentity__BehaviorDescriptor.getConcept_id5ZE7FBYYOpv.invoke(SLinkOperations.getTarget(tn, LINKS.cncpt$yv7_)).getName() + '[' + SPropertyOperations.getString(tn, PROPS.nodeId$Eg$5) + ']';
+          return '[' + String.valueOf(NodeIdentity__BehaviorDescriptor.getNodeId_id39TODbGsIdf.invoke(myNode)) + ']';
         }
       }, myNode);
       editorCell.setAction(CellActionType.DELETE, EmptyCellAction.getInstance());
@@ -167,27 +149,18 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       editorCell.getStyle().putAll(style);
       return editorCell;
     }
-    private EditorCell createConstant_0() {
-      EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "unexpected or missing node identity");
-      editorCell.setCellId("Constant_6u0t67_0");
-      editorCell.setDefaultText("");
-      return editorCell;
-    }
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty modelName$F5oU = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x509c00a998897534L, 0x509c00a9989481dbL, "modelName");
-    /*package*/ static final SProperty nodeId$Eg$5 = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b64463L, 0x7d58bd9fd9b64468L, "nodeId");
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
     /*package*/ static final SInterfaceConcept NodeIdentity$rN = MetaAdapterFactory.getInterfaceConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b5e358L, "jetbrains.mps.lang.generator.structure.NodeIdentity");
-    /*package*/ static final SConcept TrivialNodeId$7I = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b64463L, "jetbrains.mps.lang.generator.structure.TrivialNodeId");
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink node$CLNB = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x509c00a998897534L, 0x509c00a99889f0aeL, "node");
-    /*package*/ static final SContainmentLink cncpt$yv7_ = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b64463L, 0x76c27c67a4605f07L, "cncpt");
   }
 }

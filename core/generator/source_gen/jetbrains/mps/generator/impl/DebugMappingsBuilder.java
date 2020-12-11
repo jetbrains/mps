@@ -15,8 +15,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.List;
-import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.extapi.model.TransientSModel;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -57,10 +55,7 @@ public class DebugMappingsBuilder {
         ListSequence.fromList(SLinkOperations.getChildren(labelEntry, LINKS.entries$uXLI)).addElement(entry);
         assert keyInputNode != null;
         SLinkOperations.setNewChild(entry, LINKS.inputNode$NcgX, null);
-        SNode inputNodeIdentity = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.TrivialNodeId$7I);
-        SNode inputNodeConceptIdentity = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.ConceptId$6E);
-        BHReflection.invoke0(inputNodeConceptIdentity, CONCEPTS.ConceptId$6E, SMethodTrimmedId.create("setConcept", CONCEPTS.ConceptId$6E, "5ZE7FBYYR6j"), keyInputNode.getConcept());
-        SLinkOperations.setTarget(inputNodeIdentity, LINKS.cncpt$yv7_, inputNodeConceptIdentity);
+        SNode inputNodeIdentity = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.ElementaryNodeId$Yd);
         // keyInputNode comes from one of transient models, and we need to replace it with a 'stable' version, exposed in a CP (or initial) model 
         // XXX what if keyInputNode IS from CP model, wouldn't that give us wrong origin (the one from previous trace)? 
         //     Indeed, this makes sense only as long as we use user objects to pass origin value (TT object is essentially stateless), and copy these 
@@ -68,7 +63,7 @@ public class DebugMappingsBuilder {
         //     (though still valid - in case node id of a CP node matches nodeid of some irrelevant transient one). Would be great if we can tell if keyInputNode 
         //     comes from a transient, external or CP model. FIXME I still need to deal with 'foreign' nodes as ML keys, and then I could decide better what to do here. 
         SNodeId inputNodeId = (myOriginTrace.hasOrigin(keyInputNode) ? myOriginTrace.getOrigin(keyInputNode) : keyInputNode.getNodeId());
-        SPropertyOperations.assign(inputNodeIdentity, PROPS.nodeId$Eg$5, inputNodeId.toString());
+        SPropertyOperations.assign(inputNodeIdentity, PROPS.nodeId$2ASg, inputNodeId.toString());
         SLinkOperations.setTarget(SLinkOperations.getTarget(entry, LINKS.inputNode$NcgX), LINKS.node$CLNB, inputNodeIdentity);
         SPropertyOperations.assign(SLinkOperations.getTarget(entry, LINKS.inputNode$NcgX), PROPS.presentation$FmHa, keyInputNode.getPresentation());
         SModel inputNodeModel = keyInputNode.getModel();
@@ -138,14 +133,13 @@ public class DebugMappingsBuilder {
     /*package*/ static final SConcept GeneratorDebug_Mappings$42 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc97f1c1L, "jetbrains.mps.lang.generator.structure.GeneratorDebug_Mappings");
     /*package*/ static final SConcept GeneratorDebug_LabelEntry$B2 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c4L, "jetbrains.mps.lang.generator.structure.GeneratorDebug_LabelEntry");
     /*package*/ static final SConcept GeneratorDebug_NodeMapEntry$ME = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, "jetbrains.mps.lang.generator.structure.GeneratorDebug_NodeMapEntry");
-    /*package*/ static final SConcept TrivialNodeId$7I = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b64463L, "jetbrains.mps.lang.generator.structure.TrivialNodeId");
-    /*package*/ static final SConcept ConceptId$6E = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x5fea1eb9fefb6fe7L, "jetbrains.mps.lang.smodel.structure.ConceptId");
+    /*package*/ static final SConcept ElementaryNodeId$Yd = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3279d292ec74a708L, "jetbrains.mps.lang.generator.structure.ElementaryNodeId");
     /*package*/ static final SConcept GeneratorDebug_NodeRef$2a = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806d2L, "jetbrains.mps.lang.generator.structure.GeneratorDebug_NodeRef");
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty label$uXjG = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c4L, 0x35a02f6bfc9810e9L, "label");
-    /*package*/ static final SProperty nodeId$Eg$5 = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b64463L, 0x7d58bd9fd9b64468L, "nodeId");
+    /*package*/ static final SProperty nodeId$2ASg = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x3279d292ec74a708L, 0x3279d292ec74a70dL, "nodeId");
     /*package*/ static final SProperty presentation$FmHa = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x509c00a998897534L, 0x509c00a99889f702L, "presentation");
     /*package*/ static final SProperty modelName$F5oU = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x509c00a998897534L, 0x509c00a9989481dbL, "modelName");
     /*package*/ static final SProperty isNewRoot$pwOY = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, 0x511a0d44c7f45537L, "isNewRoot");
@@ -155,7 +149,6 @@ public class DebugMappingsBuilder {
     /*package*/ static final SContainmentLink labels$gYNG = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc97f1c1L, 0x35a02f6bfc9806c5L, "labels");
     /*package*/ static final SContainmentLink entries$uXLI = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c4L, 0x35a02f6bfc9810ebL, "entries");
     /*package*/ static final SContainmentLink inputNode$NcgX = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, 0x509c00a99889f77eL, "inputNode");
-    /*package*/ static final SContainmentLink cncpt$yv7_ = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x7d58bd9fd9b64463L, 0x76c27c67a4605f07L, "cncpt");
     /*package*/ static final SContainmentLink node$CLNB = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x509c00a998897534L, 0x509c00a99889f0aeL, "node");
     /*package*/ static final SReferenceLink nodePtr$Fm07 = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x509c00a998897534L, 0x509c00a99889f6ffL, "nodePtr");
     /*package*/ static final SReferenceLink inputOrigin$JIuD = MetaAdapterFactory.getReferenceLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x35a02f6bfc9806c7L, 0x35a02f6bfc9806dbL, "inputOrigin");

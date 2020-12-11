@@ -792,6 +792,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.TrivialNodeId:
         if (props_TrivialNodeId == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.rawPresentation("TrivialNodeId");
           props_TrivialNodeId = cpb.create();
         }
