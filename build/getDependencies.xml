@@ -261,6 +261,10 @@
       </fileset>
     </delete>
 
+    <delete dir="${basedir}/../bin/linux"/>
+    <delete dir="${basedir}/../bin/mac"/>
+    <delete dir="${basedir}/../bin/win"/>
+
     <delete dir="${basedir}/../plugins/java" failonerror="false"/>
     <delete dir="${basedir}/../plugins/java-ide-customization" failonerror="false"/>
     <delete dir="${basedir}/../plugins/copyright" failonerror="false"/>
