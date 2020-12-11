@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,100 +17,75 @@ package jetbrains.mps.build;
 
 import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.RoamingType;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.progress.ProgressManager;
-import com.intellij.openapi.progress.Task;
+import com.intellij.openapi.progress.Task.Modal;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.BuildNumber;
 import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.util.io.ZipUtil;
-import jetbrains.mps.InternalFlag;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.build.SamplesExtractor.MyState;
+import jetbrains.mps.samples.SamplesBundle;
 import jetbrains.mps.samples.SamplesInfo;
 import jetbrains.mps.util.PathManager;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.function.Supplier;
 
 @State(
     name = "LastBuildNumber",
     storages = {
-        @Storage(value = "sampleProjects.xml", roamingType = RoamingType.DISABLED),
-        @Storage(value = "other.xml", deprecated = true)
+        @Storage(value = "sampleProjects.xml", roamingType = RoamingType.DISABLED)
     }
 )
-public class SamplesExtractor implements ApplicationComponent, PersistentStateComponent<MyState>, SamplesInfo {
-  private static final Logger LOG = LogManager.getLogger(SamplesExtractor.class);
-
+public final class SamplesExtractor implements PersistentStateComponent<MyState>, SamplesInfo {
   private static final String SAMPLES_IN_MPS_HOME_DIR = "samples";
 
-  public static SamplesExtractor getInstance() {
-    return ((SamplesExtractor) ApplicationManager.getApplication().getComponent(SamplesInfo.class));
-  }
+  private MyState myState = new MyState();
+  private final boolean myIsSamplesInMPSHome;
 
-  private MyState myState;
-  private final ApplicationInfo myApplicationInfo;
-  private boolean myIsSamplesInMPSHome;
-
-  public SamplesExtractor(ApplicationInfo applicationInfo) {
-    myApplicationInfo = applicationInfo;
-  }
-
-  @NotNull
-  public String getComponentName() {
-    return "Samples Extractor";
-  }
-
-  public void initComponent() {
-    if (myState == null) {
-      myState = new MyState();
-    }
-    updateSamplesLocation();
-
-    if (RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) {
-      return;
-    }
-
-    checkSamplesAndUpdateIfNeeded();
-  }
-
-  private void checkSamplesAndUpdateIfNeeded() {
-    int currentBuildNumber = currentBuildNumberString();
-    if (myState.myLastBuildNumber < currentBuildNumber) {
-
-      if (!myIsSamplesInMPSHome) {
-        extractSamples();
-      }
-    }
-  }
-
-  private int currentBuildNumberString() {
-    BuildNumber buildNumber = myApplicationInfo.getBuild();
-    String currentBuildNumberString = buildNumber.asString();
-    if (!currentBuildNumberString.matches("MPS[-\\.\\d]*.*") || InternalFlag.isInternalMode()) {
-      // "Normal" build number starts with MPS, then goes some actual build number with numbers and dots and dashes, then goes some suffix like M1.
-      // If build number looks like "11.snapshot", we consider it developers build and do not to extract samples.
-      return MyState.DEFAULT;
-    }
-    // Only second part of build number for ex: 193.123.456 -> 123
-    return buildNumber.getComponents()[1];
-  }
-
-  private void updateSamplesLocation() {
+  public SamplesExtractor() {
     File samplesDirectory = new File(getSamplesPathInMPSHome());
     myIsSamplesInMPSHome = samplesDirectory.exists() && samplesDirectory.isDirectory();
   }
 
-  public void disposeComponent() {
+  /**
+   * @deprecated use {@link SamplesInfo#getInstance()}
+   */
+  @ScheduledForRemoval(inVersion = "2021.1")
+  @Deprecated(since = "2020.3", forRemoval = true)
+  public static SamplesExtractor getInstance() {
+    final SamplesInfo samplesInfo = SamplesInfo.getInstance();
+    return samplesInfo instanceof SamplesExtractor ? (SamplesExtractor) samplesInfo : null;
+  }
+
+  private void checkSamplesAndUpdateIfNeeded() {
+    // No need to extract samples on sources, in test/headless mode.
+    // Also avoid check in non dispatch threads.
+    if (myIsSamplesInMPSHome || getCurrentBuild().isSnapshot() ||
+        RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment() ||
+        !ApplicationManager.getApplication().isDispatchThread()) {
+      return;
+    }
+
+    BuildNumber buildNumber = myState.getBuildNumber();
+    if (buildNumber == null || buildNumber.compareTo(getCurrentBuild()) < 0 ||
+        samplesInUserHomeMissing()) {
+      runExtractSamplesTask();
+    }
+  }
+
+  private BuildNumber getCurrentBuild() {
+    return ApplicationInfo.getInstance().getBuild();
   }
 
   public MyState getState() {
@@ -121,76 +96,172 @@ public class SamplesExtractor implements ApplicationComponent, PersistentStateCo
     myState = state;
   }
 
+  @Nullable
   public String getSamplesPath() {
-    return myIsSamplesInMPSHome ? getSamplesPathInMPSHome() : getSamplesPathInUserHome();
+    if (myIsSamplesInMPSHome) {
+      return getSamplesPathInMPSHome();
+    }
+
+    checkSamplesAndUpdateIfNeeded();
+
+    // Extraction of sample folder can fail. Check that path is valid.
+    return samplesInUserHomeMissing() ? null : getSamplesPathInUserHome();
   }
 
   private String getSamplesPathInUserHome() {
-    return System.getProperty("user.home") + File.separator + SAMPLES_IN_USER_HOME_DIR + "." + getSuffix();
+    return System.getProperty("user.home") + File.separator + SAMPLES_IN_USER_HOME_DIR + " " + getSuffix();
+  }
+
+  private File getSamplesDirInUserHome() {
+    return new File(getSamplesPathInUserHome());
+  }
+
+  private boolean samplesInUserHomeMissing() {
+    return !getSamplesDirInUserHome().exists();
   }
 
   private String getSuffix() {
-    String majorVersion = myApplicationInfo.getMajorVersion();
-    assert majorVersion != null;
-    String minorVersion = myApplicationInfo.getMinorVersion();
-    assert minorVersion != null;
-    return majorVersion + "." + minorVersion;
+    // TODO: replace ApplicationInfo#getMinorVersionMainPart with ApplicationInfo#getMinorVersion when MPS will use micro version tag
+    return ApplicationInfo.getInstance().getMajorVersion() + "." + ApplicationInfo.getInstance().getMinorVersionMainPart();
   }
 
   private String getSamplesPathInMPSHome() {
     return PathManager.getHomePath() + File.separator + SAMPLES_IN_MPS_HOME_DIR;
   }
 
+  private File getSamplesZip() {
+    return new File(PathManager.getHomePath() + File.separator + SAMPLES_IN_MPS_HOME_ZIP);
+  }
+
+  /**
+   * @deprecated do not use, it is called automatically on {@link SamplesInfo#getSamplesPath()} call
+   */
+  @ScheduledForRemoval(inVersion = "2021.1")
+  @Deprecated(since = "2020.3", forRemoval = true)
   public void extractSamples() {
-    final File samplesZipFile = new File(PathManager.getHomePath() + File.separator + SAMPLES_IN_MPS_HOME_ZIP);
+    runExtractSamplesTask();
+  }
+
+  private void runExtractSamplesTask() {
+    final File samplesZipFile = getSamplesZip();
     if (samplesZipFile.exists()) {
-      final File samplesDir = new File(getSamplesPathInUserHome());
+      ApplicationManager.getApplication().invokeAndWait(() -> {
+        Supplier<Boolean> replaceOldSamples =
+            () -> Messages.YES == Messages.showYesNoDialog(
+            SamplesBundle.message("dialog.replace.samples.text",
+                                  getSamplesDirInUserHome().getAbsolutePath(),
+                                  ApplicationInfo.getInstance().getBuild().asStringWithoutProductCode()),
+            SamplesBundle.message("dialog.replace.samples.title"),
+            Messages.getQuestionIcon());
 
-      if (samplesDir.exists()) {
-        ApplicationManager.getApplication().invokeLater(() -> {
-          int answer = Messages.showYesNoDialog(
-              "Do you want to replace directory\n" + samplesDir + "\n with version " + myApplicationInfo.getBuild().asString() +
-                  " (old directory contents will be deleted)?", "Replace MPS Samples?", Messages.getQuestionIcon());
-          if (answer == Messages.YES) {
-            ProgressManager.getInstance().run(new Task.Modal(null, "Installing", false) {
-              public void run(@NotNull ProgressIndicator indicator) {
-                indicator.setIndeterminate(true);
-                indicator.setText("Replacing samples");
-                indicator.setText2("deleting samples directory");
-                FileUtil.delete(samplesDir);
-                indicator.setText2("unzipping ");
-                actuallyExtractSamples(samplesZipFile);
-                indicator.stop();
-              }
-            });
-            Messages.showInfoMessage(String.format("Successfully replaced %s", samplesDir.getAbsolutePath()), "Samples Installed");
+        if (samplesInUserHomeMissing() || replaceOldSamples.get()) {
+          ProgressManager.getInstance().run(new SamplesExtractionTask(this));
+        }
+      });
+    }
+  }
+
+  static final class SamplesExtractionTask extends Modal {
+    private File myBackup = null;
+    private final SamplesExtractor myExtractor;
+
+    SamplesExtractionTask(SamplesExtractor samplesExtractor) {
+      super(null, SamplesBundle.message("modal.task.title"), false);
+      myExtractor = samplesExtractor;
+    }
+
+    public void run(@NotNull ProgressIndicator indicator) {
+      indicator.setIndeterminate(true);
+      boolean samplesDirExists = !myExtractor.samplesInUserHomeMissing();
+      indicator.setText(samplesDirExists ? SamplesBundle.message("modal.task.replace.text") : SamplesBundle.message("modal.task.extract.text"));
+      if (samplesDirExists) {
+        indicator.setText2(SamplesBundle.message("modal.task.backup.step"));
+        backupAndDeleteOldSamples();
+      }
+      indicator.setText2(SamplesBundle.message("modal.task.unzip.step"));
+      actuallyExtractSamples();
+      indicator.stop();
+    }
+
+    @Override
+    public void onSuccess() {
+      Messages.showInfoMessage(
+          SamplesBundle.message("modal.task.success.text", myExtractor.getSamplesDirInUserHome().getAbsolutePath()),
+          SamplesBundle.message("modal.task.success.title"));
+    }
+
+    @Override
+    public void onThrowable(@NotNull Throwable error) {
+      super.onThrowable(error);
+      boolean restored = tryToRestoreSamples();
+      Messages.showErrorDialog(
+          SamplesBundle.message("modal.task.fail.text",
+                                myExtractor.getSamplesDirInUserHome().getAbsolutePath(),
+                                error.getMessage(),
+                                restored,
+                                restored || myBackup == null ? "" : SamplesBundle.message("modal.task.fail.sub.text", myBackup.getAbsolutePath())),
+          SamplesBundle.message("modal.task.fail.title"));
+    }
+
+    private void backupAndDeleteOldSamples() {
+      final File samplesDir = myExtractor.getSamplesDirInUserHome();
+      try {
+        // no need to handle tmp file cleanup - it is done automatically on application closing
+        myBackup = FileUtil.createTempDirectory("MPSSamplesBackup", "");
+        FileUtil.copyDirContent(samplesDir, myBackup);
+      } catch (IOException e) {
+        myBackup = null;
+        // Both inability to create tmp folder and copy old content mean
+        // that something went wrong and it is better to fail fast
+        throw new RuntimeException(e);
+      }
+      if (!FileUtil.delete(samplesDir)) {
+        throw new RuntimeException(SamplesBundle.message("modal.task.delete.step.fail", samplesDir.getAbsolutePath()));
+      }
+    }
+
+    private void actuallyExtractSamples() {
+      try {
+        // no need to handle tmp file cleanup - it is done automatically on application closing
+        File tmpDir = FileUtil.createTempDirectory(SAMPLES_IN_USER_HOME_DIR, null);
+        ZipUtil.extract(myExtractor.getSamplesZip().toPath(), tmpDir.toPath(), null);
+        File from = new File(tmpDir + File.separator + SAMPLES_IN_USER_HOME_DIR);
+        File to = new File(myExtractor.getSamplesPathInUserHome());
+        if (!FileUtil.moveDirWithContent(from, to) && !to.exists()) {
+          FileUtil.copyDir(from, to);
+        }
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
+      // Only update build number if sampler were extracted successfully
+      myExtractor.myState.myBuildNumber = myExtractor.getCurrentBuild().asString();
+    }
+
+    private boolean tryToRestoreSamples() {
+      final File samplesDir = myExtractor.getSamplesDirInUserHome();
+      // Check that there is some sensible backup
+      if (myBackup != null && myBackup.exists() && myBackup.listFiles().length != 0) {
+        // Clean up old samples folder and recreate it
+        if (FileUtil.delete(samplesDir) && FileUtil.createDirectory(samplesDir)) {
+          try {
+            // Copy instead of move so backup stays in case destination folder is busy
+            FileUtil.copyDirContent(myBackup, samplesDir);
+            return true;
+          } catch (IOException e) {
+            // Can't do anything in this case and there is no sense to report it
           }
-        });
-      } else {
-        actuallyExtractSamples(samplesZipFile);
+        }
       }
-    }
-
-    myState.myLastBuildNumber = currentBuildNumberString();
-  }
-
-  private void actuallyExtractSamples(File samplesZipFile) {
-    try {
-      File tmpDir = FileUtil.createTempDirectory("MPSSamples", "");
-      ZipUtil.extract(samplesZipFile, tmpDir, null);
-      File from = new File(tmpDir + File.separator + SAMPLES_IN_USER_HOME_DIR);
-      File to = new File(getSamplesPathInUserHome());
-      if (!FileUtil.moveDirWithContent(from, to) && !to.exists()) {
-        FileUtil.copyDir(from, to);
-      }
-      FileUtil.delete(tmpDir);
-    } catch (IOException e) {
-      LOG.error(null, e);
+      return false;
     }
   }
 
-  public static class MyState {
-    public int myLastBuildNumber = DEFAULT;
-    private static final int DEFAULT = -1;
+  static final class MyState {
+    @SuppressWarnings("WeakerAccess")
+    public String myBuildNumber = null;
+
+    BuildNumber getBuildNumber() {
+      return BuildNumber.fromString(myBuildNumber);
+    }
   }
 }

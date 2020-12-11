@@ -29524,6 +29524,22 @@
           </node>
         </node>
       </node>
+      <node concept="3_5H9E" id="1a2WEOdX3Le" role="398b2p">
+        <node concept="3LXTmp" id="1a2WEOdX3Lg" role="3_5H9R">
+          <node concept="398BVA" id="1a2WEOdX3LN" role="3LXTmr">
+            <ref role="398BVh" node="5yMuYWFN8P8" resolve="mps_home" />
+            <node concept="2Ry0Ak" id="1a2WEOdX3Mf" role="iGT6I">
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="1a2WEOdX3Mk" role="2Ry0An">
+                <property role="2Ry0Am" value="mps-samples" />
+                <node concept="2Ry0Ak" id="1a2WEOdX3Mp" role="2Ry0An">
+                  <property role="2Ry0Am" value="resources" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
       <node concept="nCB5N" id="1nJh0raW9OE" role="nCB5Z">
         <ref role="nCB5Y" node="2eDSGe9d1oD" resolve="mps-workbench" />
       </node>

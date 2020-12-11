@@ -15,51 +15,48 @@
  */
 package jetbrains.mps.workbench.actions.welcomeScreen;
 
-import com.intellij.icons.AllIcons.Nodes;
 import com.intellij.ide.impl.ProjectUtil;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
-import com.intellij.openapi.fileChooser.ex.FileChooserDialogImpl;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
-import jetbrains.mps.build.SamplesExtractor;
+import jetbrains.mps.samples.SamplesInfo;
 import jetbrains.mps.workbench.actions.OpenMPSProjectFileChooserDescriptor;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class OpenSampleProjectAction extends AnAction {
-  public OpenSampleProjectAction() {
-    getTemplatePresentation().setIcon(Nodes.IdeaProject);
-  }
 
-  public void actionPerformed(AnActionEvent e) {
-    String projectFile = SamplesExtractor.getInstance().getSamplesPath() + File.separator + "complexLanguage";
-    if (!new File(projectFile).exists()) {
-      SamplesExtractor.getInstance().extractSamples();
-    }
-    final Project currentProject = PlatformDataKeys.PROJECT.getData(e.getDataContext());
-
-    final FileChooserDescriptor descriptor = new OpenMPSProjectFileChooserDescriptor(true);
-    descriptor.setTitle("Samples");
-
-    VirtualFile userHomeDir = null;
-
-    final String home = System.getProperty("user.home");
-    if (home != null) {
-      userHomeDir = LocalFileSystem.getInstance().findFileByIoFile(new File(SamplesExtractor.getInstance().getSamplesPath()));
+  public void actionPerformed(@NotNull AnActionEvent e) {
+    VirtualFile samplesFolder = null;
+    String samplesPath = SamplesInfo.getInstance().getSamplesPath();
+    if (System.getProperty("user.home") != null && samplesPath != null) {
+      samplesFolder = LocalFileSystem.getInstance().findFileByIoFile(new File(samplesPath));
+      if (samplesFolder != null) {
+        // Try to locate first sample folder or fall back to samples folder
+        samplesFolder = Arrays.stream(samplesFolder.getChildren()).min(Comparator.comparing(VirtualFile::getName)).orElse(samplesFolder);
+      }
     }
 
-    descriptor.putUserData(FileChooserDialogImpl.PREFER_LAST_OVER_TO_SELECT, Boolean.TRUE);
-
-    VirtualFile result = FileChooser.chooseFile(descriptor, currentProject, userHomeDir);
-    if (result == null) {
+    if(samplesFolder == null) {
+      // Can't obtain samples path - SamplesExtractor should have already shown dialogs so just skip here
       return;
     }
 
-    ProjectUtil.openProject(result.getPath(), currentProject, false);
+    final Project currentProject = PlatformDataKeys.PROJECT.getData(e.getDataContext());
+    final FileChooserDescriptor descriptor = new OpenMPSProjectFileChooserDescriptor(true);
+    descriptor.setTitle("Samples");
+
+    VirtualFile result = FileChooser.chooseFile(descriptor, currentProject, samplesFolder);
+    if (result != null) {
+      ProjectUtil.openProject(result.getPath(), currentProject, false);
+    }
   }
 }

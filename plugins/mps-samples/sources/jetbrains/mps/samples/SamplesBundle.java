@@ -15,17 +15,19 @@
  */
 package jetbrains.mps.samples;
 
-import com.intellij.openapi.application.ApplicationManager;
-import org.jetbrains.annotations.Nullable;
+import com.intellij.AbstractBundle;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.PropertyKey;
 
-public interface SamplesInfo {
-  String SAMPLES_IN_MPS_HOME_ZIP = "samples.zip";
-  String SAMPLES_IN_USER_HOME_DIR = "MPSSamples";
+public final class SamplesBundle extends AbstractBundle {
+  public static String message(@NotNull @PropertyKey(resourceBundle = BUNDLE) String key, @NotNull Object... params) {
+    return INSTANCE.getMessage(key, params);
+  }
 
-  @Nullable
-  String getSamplesPath();
+  public static final String BUNDLE = "messages.MPSSamplesBundle";
+  private static final SamplesBundle INSTANCE = new SamplesBundle();
 
-  static SamplesInfo getInstance() {
-    return ApplicationManager.getApplication().getService(SamplesInfo.class);
+  private SamplesBundle() {
+    super(BUNDLE);
   }
 }

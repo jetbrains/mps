@@ -585,6 +585,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/mps-samples">
+      <fileset dir="${mps_home}/plugins/mps-samples/resources" />
       <fileset dir="${mps_home}/plugins/mps-samples/sources" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
