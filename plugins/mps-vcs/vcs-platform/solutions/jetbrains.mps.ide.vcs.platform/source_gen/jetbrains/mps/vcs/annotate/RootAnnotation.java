@@ -15,18 +15,22 @@ import com.intellij.openapi.vcs.history.VcsFileRevision;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.Comparator;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import org.jetbrains.mps.openapi.module.ModelAccess;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import jetbrains.mps.vcs.diff.ChangeSetBuilder;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/5611602621953836093", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 public final class RootAnnotation {
 
   private SModel myAnnotatedModel;
   private final Map<SNodeId, NodeAnnotation> myNodeAnnotations = MapSequence.fromMap(new HashMap<SNodeId, NodeAnnotation>());
-  private final List<Runnable> myUpdateListeners = ListSequence.fromList(new ArrayList<Runnable>());
+  private final List<RootAnnotationUpdateListener> myUpdateListeners = ListSequence.fromList(new ArrayList<RootAnnotationUpdateListener>());
   private List<VcsFileRevision> myCachedRevisions;
   private List<VcsFileRevision> myAllRevisions = ListSequence.fromList(new ArrayList<VcsFileRevision>());
 
@@ -52,6 +56,18 @@ public final class RootAnnotation {
     }).toListSequence();
   }
 
+  public synchronized List<RevisionNodeChange> getChangesForRevision(final VcsFileRevision revision) {
+    return Sequence.fromIterable(MapSequence.fromMap(myNodeAnnotations).values()).translate(new ITranslator2<NodeAnnotation, RevisionNodeChange>() {
+      public Iterable<RevisionNodeChange> translate(NodeAnnotation it) {
+        return it.getRevisionNodeChanges();
+      }
+    }).where(new IWhereFilter<RevisionNodeChange>() {
+      public boolean accept(RevisionNodeChange it) {
+        return it.getRevision() == revision;
+      }
+    }).toListSequence();
+  }
+
   public synchronized List<VcsFileRevision> getRootRevisions() {
     if (myCachedRevisions == null) {
       myCachedRevisions = ListSequence.fromList(getRevisionNodeChanges()).select(new ISelector<RevisionNodeChange, VcsFileRevision>() {
@@ -67,29 +83,33 @@ public final class RootAnnotation {
     return myCachedRevisions;
   }
 
-  public void processRevisionModelChange(@NotNull ModelChange change, @NotNull VcsFileRevision revision, @Nullable VcsFileRevision prevRevision) {
+  public void processChangesForRevision(@NotNull List<ModelChange> changes, @NotNull final VcsFileRevision revision, @Nullable final VcsFileRevision prevRevision) {
     assert myAnnotatedModel != null;
-    List<RevisionNodeChange> revisionNodeChanges = RevisionNodeChange.createRevisionNodeChanges(change, myAnnotatedModel, revision, prevRevision);
-    synchronized (this) {
-      myCachedRevisions = null;
-      ListSequence.fromList(revisionNodeChanges).visitAll(new IVisitor<RevisionNodeChange>() {
-        public void visit(RevisionNodeChange it) {
-          getOrCreateNodeAnnotation(it.getNodeId()).addNodeChange(it);
+    ListSequence.fromList(changes).visitAll(new IVisitor<ModelChange>() {
+      public void visit(ModelChange change) {
+        List<RevisionNodeChange> revisionNodeChanges = RevisionNodeChange.createRevisionNodeChanges(change, myAnnotatedModel, revision, prevRevision);
+        synchronized (RootAnnotation.this) {
+          myCachedRevisions = null;
+          ListSequence.fromList(revisionNodeChanges).visitAll(new IVisitor<RevisionNodeChange>() {
+            public void visit(RevisionNodeChange it) {
+              getOrCreateNodeAnnotation(it.getNodeId()).addNodeChange(it);
+            }
+          });
         }
-      });
-    }
-    notifyListeners();
+      }
+    });
+    notifyListeners(getChangesForRevision(revision));
   }
 
   public void dispose() {
     ListSequence.fromList(myUpdateListeners).clear();
   }
 
-  public void addUpdateListener(@NotNull Runnable r) {
+  public void addUpdateListener(@NotNull RootAnnotationUpdateListener r) {
     ListSequence.fromList(myUpdateListeners).addElement(r);
   }
 
-  public void removeUpdateListener(Runnable r) {
+  public void removeUpdateListener(RootAnnotationUpdateListener r) {
     ListSequence.fromList(myUpdateListeners).removeElement(r);
   }
 
@@ -102,11 +122,29 @@ public final class RootAnnotation {
     return nodeAnnotation;
   }
 
-  private void notifyListeners() {
-    ListSequence.fromList(myUpdateListeners).visitAll(new IVisitor<Runnable>() {
-      public void visit(Runnable it) {
-        it.run();
+  private void notifyListeners(final List<RevisionNodeChange> changes) {
+    ListSequence.fromList(myUpdateListeners).visitAll(new IVisitor<RootAnnotationUpdateListener>() {
+      public void visit(RootAnnotationUpdateListener it) {
+        it.revisionProcessed(changes);
       }
     });
+  }
+
+  public interface RootAnnotationUpdateListener {
+    void revisionProcessed(List<RevisionNodeChange> changes);
+  }
+
+  public List<RevisionNodeChange> calcLocalChanges(final SModel model, ModelAccess modelAccess, final SNodeId rootId, final VcsFileRevision localRevision) {
+    final Wrappers._T<List<RevisionNodeChange>> changes = new Wrappers._T<List<RevisionNodeChange>>();
+    modelAccess.runReadAction(new Runnable() {
+      public void run() {
+        changes.value = ListSequence.fromList(ChangeSetBuilder.buildChangeSetForNode(myAnnotatedModel, model, rootId, false, true).getModelChanges()).translate(new ITranslator2<ModelChange, RevisionNodeChange>() {
+          public Iterable<RevisionNodeChange> translate(ModelChange it) {
+            return RevisionNodeChange.createRevisionNodeChanges(it, model, localRevision, null);
+          }
+        }).toListSequence();
+      }
+    });
+    return changes.value;
   }
 }

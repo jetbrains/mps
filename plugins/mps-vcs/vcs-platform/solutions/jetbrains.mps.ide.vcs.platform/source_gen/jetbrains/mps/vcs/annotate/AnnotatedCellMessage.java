@@ -6,29 +6,75 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.nodeEditor.messageTargets.EditorMessageWithTarget;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import java.awt.Color;
+import jetbrains.mps.vcs.diff.changes.ChangeType;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
+import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.nodeEditor.EditorComponent;
+import com.intellij.openapi.vcs.history.VcsFileRevision;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import jetbrains.mps.nodeEditor.cells.GeometryUtil;
 import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/4551186261159211592", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 public class AnnotatedCellMessage extends EditorMessageWithTarget {
 
   private final EditorCell myCell;
+  private final CellAnnotation myCellAnnotation;
+  private Color myColor;
+  private final ChangeType myChangeType;
 
 
-  public AnnotatedCellMessage(EditorCell cell, Color color, String changesText, EditorMessageOwner owner) {
-    super(cell.getSNode(), MessageStatus.OK, new NodeMessageTarget(), color, changesText, owner);
+  public AnnotatedCellMessage(CellAnnotation cellAnnotation, EditorCell cell, Color color, EditorMessageOwner owner) {
+    super(cell.getSNode(), MessageStatus.OK, new NodeMessageTarget(), color, "", owner);
+    myCellAnnotation = cellAnnotation;
     myCell = cell;
+    myColor = color;
+    myChangeType = getChangesType(cellAnnotation.getChanges());
+  }
+
+  @Override
+  public String getMessage() {
+    return myCellAnnotation.getChangesDescription() + "\n" + UIUtil.BORDER_LINE + "\n" + myCellAnnotation.getRevisionDescription();
+  }
+
+  public String getRevisionDescription() {
+    return myCellAnnotation.getRevisionDescription();
+  }
+
+  public EditorCell getCell() {
+    return myCell;
+  }
+
+  public Color setColor(Color color) {
+    return myColor = color;
+  }
+
+  @Override
+  public Color getColor() {
+    return myColor;
+  }
+
+  public ChangeType getChangeType() {
+    return myChangeType;
   }
 
   @Override
   public boolean acceptCell(EditorCell cell, EditorComponent editor) {
     return myCell == cell;
+  }
+
+  public VcsFileRevision getRevision() {
+    return myCellAnnotation.getRevision();
+  }
+
+  public VcsFileRevision getPrevRevision() {
+    return myCellAnnotation.getPrevRevision();
   }
 
   @Override
@@ -51,5 +97,26 @@ public class AnnotatedCellMessage extends EditorMessageWithTarget {
   @Override
   public boolean sameAs(SimpleEditorMessage message) {
     return super.sameAs(message) && message instanceof AnnotatedCellMessage && (((AnnotatedCellMessage) message).myCell == myCell);
+  }
+
+  private static ChangeType getChangesType(Iterable<RevisionNodeChange> changes) {
+    final Wrappers._T<ChangeType> changeType = new Wrappers._T<ChangeType>(null);
+    final Wrappers._boolean oneColor = new Wrappers._boolean(true);
+    Sequence.fromIterable(changes).visitAll(new IVisitor<RevisionNodeChange>() {
+      public void visit(RevisionNodeChange it) {
+        if (oneColor.value) {
+          ChangeType messageType = it.getChangeType();
+          if (changeType.value == null) {
+            changeType.value = messageType;
+          } else if (messageType != changeType.value) {
+            oneColor.value = false;
+          }
+        }
+      }
+    });
+    if (!(oneColor.value)) {
+      return ChangeType.CHANGE;
+    }
+    return changeType.value;
   }
 }

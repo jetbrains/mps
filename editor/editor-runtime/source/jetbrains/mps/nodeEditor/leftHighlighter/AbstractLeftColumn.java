@@ -65,7 +65,7 @@ public abstract class AbstractLeftColumn {
   public void mouseExited() {
   }
 
-  public abstract void relayout();
+  public abstract void relayout(boolean updateFolding);
 
   public void editorRebuilt() {
   }

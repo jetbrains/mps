@@ -32,12 +32,12 @@ import com.intellij.openapi.vcs.history.VcsCachingHistory;
 import com.intellij.vcsUtil.VcsUtil;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.vcs.diff.changes.ModelChange;
+import java.util.ArrayList;
 import jetbrains.mps.vcs.diff.ModelChangeSet;
 import jetbrains.mps.vcs.diff.ChangeSetImpl;
 import jetbrains.mps.vcs.diff.changes.AddRootChange;
-import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.vcs.diff.ChangeSetBuilder;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/5864674307176422108", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 public final class AnnotateBackgroundableTask extends Task.Backgroundable {
@@ -165,39 +165,42 @@ public final class AnnotateBackgroundableTask extends Task.Backgroundable {
     return myEditor.getEditorContext().getRepository().getModelAccess();
   }
 
-  private void processRevision(@Nullable final SModel model, @Nullable final SModel prevModel, @Nullable final VcsFileRevision revision, @Nullable final VcsFileRevision prevRevision) {
+  private void processRevision(@Nullable SModel model, @Nullable SModel prevModel, @Nullable VcsFileRevision revision, @Nullable VcsFileRevision prevRevision) {
     if (model == null) {
       myRootAnnotation.setAnnotatedModel(prevModel);
+      myAnnotationColumn.getEditorAnnotation().updateAndRepaint();
       return;
     }
-    if (prevModel == null) {
-      getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          ModelChangeSet dummyChangeSet = new ChangeSetImpl(model, model);
-          processRevisionModelChange(new AddRootChange(dummyChangeSet, myRootId), revision, prevRevision);
-        }
-      });
+    List<ModelChange> changes = calcChangesBetweenModels(prevModel, model);
+    if (ListSequence.fromList(changes).isEmpty()) {
       return;
     }
-    getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        List<ModelChange> changes = ChangeSetBuilder.buildChangeSetForNode(prevModel, model, myRootId, false, true).getModelChanges();
-        if (ListSequence.fromList(changes).isEmpty()) {
-          return;
-        }
-        ListSequence.fromList(changes).visitAll(new IVisitor<ModelChange>() {
-          public void visit(ModelChange change) {
-            processRevisionModelChange(change, revision, prevRevision);
+    myRootAnnotation.processChangesForRevision(changes, revision, prevRevision);
+    if (!(myAnnotationColumn.isClosed())) {
+      if (!(myEditor.getLeftEditorHighlighter().getLeftColumns().contains(myAnnotationColumn))) {
+        myEditor.getLeftEditorHighlighter().addLeftColumn(myAnnotationColumn);
+      } else {
+        ApplicationManager.getApplication().invokeLater(new Runnable() {
+          public void run() {
+            myEditor.getLeftEditorHighlighter().relayout(true);
           }
         });
       }
-    });
+    }
   }
 
-  private void processRevisionModelChange(ModelChange change, VcsFileRevision revision, VcsFileRevision prevRevision) {
-    myRootAnnotation.processRevisionModelChange(change, revision, prevRevision);
-    if (!(myAnnotationColumn.isClosed()) && !(myEditor.getLeftEditorHighlighter().getLeftColumns().contains(myAnnotationColumn))) {
-      myEditor.getLeftEditorHighlighter().addLeftColumn(myAnnotationColumn);
+  private List<ModelChange> calcChangesBetweenModels(@Nullable final SModel prevModel, @Nullable final SModel model) {
+    final List<ModelChange> changes = ListSequence.fromList(new ArrayList<ModelChange>());
+    if (prevModel == null) {
+      ModelChangeSet dummyChangeSet = new ChangeSetImpl(model, model);
+      ListSequence.fromList(changes).addElement(new AddRootChange(dummyChangeSet, myRootId));
+    } else {
+      getModelAccess().runReadAction(new Runnable() {
+        public void run() {
+          ListSequence.fromList(changes).addSequence(ListSequence.fromList(ChangeSetBuilder.buildChangeSetForNode(prevModel, model, myRootId, false, true).getModelChanges()));
+        }
+      });
     }
+    return changes;
   }
 }

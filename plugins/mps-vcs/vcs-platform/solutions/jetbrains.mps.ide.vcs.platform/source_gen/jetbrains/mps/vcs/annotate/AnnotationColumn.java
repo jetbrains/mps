@@ -7,21 +7,21 @@ import jetbrains.mps.nodeEditor.leftHighlighter.AbstractLeftColumn;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import com.intellij.openapi.vcs.history.VcsFileRevision;
 import com.intellij.util.messages.MessageBusConnection;
+import com.intellij.openapi.vcs.history.VcsFileRevision;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.nodeEditor.leftHighlighter.LeftEditorHighlighter;
 import jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener;
 import org.jetbrains.annotations.Nullable;
 import java.awt.Graphics;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import java.awt.Graphics2D;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.vcs.diff.ui.common.Bounds;
-import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
+import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.HashMap;
 import java.awt.Color;
@@ -30,7 +30,6 @@ import java.awt.Font;
 import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.nodeEditor.cells.FontRegistry;
 import java.awt.FontMetrics;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.awt.event.MouseEvent;
@@ -53,13 +52,13 @@ import org.jetbrains.annotations.NotNull;
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/309173295241373953", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 public final class AnnotationColumn extends AbstractLeftColumn {
 
-  private List<AnnotationAspectSubcolumn> myAspectSubcolumns = ListSequence.fromList(new ArrayList<AnnotationAspectSubcolumn>());
+  private final EditorAnnotation myEditorAnnotation;
+  private final List<AnnotationAspectSubcolumn> myAspectSubcolumns = ListSequence.fromList(new ArrayList<AnnotationAspectSubcolumn>());
+  private final MessageBusConnection myMessageBusConnection;
   private int mySubcolumnInterval;
   private VcsFileRevision myRevisionUnderMouse;
   private boolean myIsClosed;
-  private EditorAnnotation myEditorAnnotation;
   private ViewActionGroup myViewActionGroup;
-  private final MessageBusConnection myMessageBusConnection;
   private Runnable myCloseActionListener;
 
 
@@ -80,6 +79,10 @@ public final class AnnotationColumn extends AbstractLeftColumn {
     myCloseActionListener = closeActionListener;
   }
 
+  public EditorAnnotation getEditorAnnotation() {
+    return myEditorAnnotation;
+  }
+
   @Override
   public String getName() {
     return "Annotations";
@@ -87,18 +90,30 @@ public final class AnnotationColumn extends AbstractLeftColumn {
 
   @Override
   public void paint(final Graphics graphics) {
-    if (MapSequence.fromMap(myEditorAnnotation.getLineRevisionMap()).isEmpty()) {
-      return;
-    }
     EditorComponent.turnOnAliasingIfPossible((Graphics2D) graphics);
     final Map<AnnotationAspectSubcolumn, Integer> subcolumnToX = getSubcolumnToXMap();
-    MapSequence.fromMap(myEditorAnnotation.getLineRevisionMap()).where(new IWhereFilter<IMapping<Bounds, Tuples._2<VcsFileRevision, VcsFileRevision>>>() {
-      public boolean accept(IMapping<Bounds, Tuples._2<VcsFileRevision, VcsFileRevision>> it) {
-        return it.value()._0() != myEditorAnnotation.getLocalRevision();
+    if (ListSequence.fromList(myAspectSubcolumns).all(new IWhereFilter<AnnotationAspectSubcolumn>() {
+      public boolean accept(AnnotationAspectSubcolumn it) {
+        return it.getWidth() == 0;
       }
-    }).visitAll(new IVisitor<IMapping<Bounds, Tuples._2<VcsFileRevision, VcsFileRevision>>>() {
-      public void visit(IMapping<Bounds, Tuples._2<VcsFileRevision, VcsFileRevision>> it) {
-        paintRevisionLine(graphics, it.key(), it.value()._0(), subcolumnToX);
+    })) {
+      return;
+    }
+    MapSequence.fromMap(myEditorAnnotation.getLineAnnotations()).where(new IWhereFilter<IMapping<Bounds, LineAnnotation>>() {
+      public boolean accept(IMapping<Bounds, LineAnnotation> it) {
+        return it.value().getRevision() != myEditorAnnotation.getLocalRevision();
+      }
+    }).sort(new ISelector<IMapping<Bounds, LineAnnotation>, Integer>() {
+      public Integer select(IMapping<Bounds, LineAnnotation> it) {
+        return (int) it.key().start();
+      }
+    }, true).alsoSort(new ISelector<IMapping<Bounds, LineAnnotation>, Integer>() {
+      public Integer select(IMapping<Bounds, LineAnnotation> it) {
+        return (int) it.key().end();
+      }
+    }, false).visitAll(new IVisitor<IMapping<Bounds, LineAnnotation>>() {
+      public void visit(IMapping<Bounds, LineAnnotation> it) {
+        paintRevisionLine(graphics, it.key(), it.value().getRevision(), subcolumnToX);
       }
     });
   }
@@ -168,16 +183,23 @@ public final class AnnotationColumn extends AbstractLeftColumn {
 
   @Override
   public void editorRebuilt() {
-    myEditorAnnotation.scheduleUpdateAndRepaintMessages();
   }
 
   @Override
-  public void relayout() {
+  public void relayout(boolean updateFolding) {
+    if (updateFolding) {
+      EditorComponent ec = getEditorComponent();
+      if (ec == null || ec.isDisposed()) {
+        return;
+      }
+      myEditorAnnotation.updateAndRepaint();
+      return;
+    }
     FontMetrics metrics = FontRegistry.getInstance().getFontMetrics(EditorSettings.getInstance().getDefaultEditorFont());
     for (AnnotationAspectSubcolumn aspectSubcolumn : ListSequence.fromList(myAspectSubcolumns)) {
-      aspectSubcolumn.computeWidth(metrics, Sequence.fromIterable(MapSequence.fromMap(myEditorAnnotation.getLineRevisionMap()).values()).select(new ISelector<Tuples._2<VcsFileRevision, VcsFileRevision>, VcsFileRevision>() {
-        public VcsFileRevision select(Tuples._2<VcsFileRevision, VcsFileRevision> it) {
-          return it._0();
+      aspectSubcolumn.computeWidth(metrics, Sequence.fromIterable(MapSequence.fromMap(myEditorAnnotation.getLineAnnotations()).values()).select(new ISelector<LineAnnotation, VcsFileRevision>() {
+        public VcsFileRevision select(LineAnnotation it) {
+          return it.getRevision();
         }
       }).where(new IWhereFilter<VcsFileRevision>() {
         public boolean accept(VcsFileRevision it) {
@@ -186,16 +208,6 @@ public final class AnnotationColumn extends AbstractLeftColumn {
       }));
     }
     mySubcolumnInterval = metrics.stringWidth(" ");
-    EditorComponent ec = getEditorComponent();
-    if (ec == null || ec.isDisposed()) {
-      return;
-    }
-    ec.getEditorContext().getRepository().getModelAccess().runReadInEDT(new Runnable() {
-      public void run() {
-        getLeftEditorHighlighter().repaint();
-      }
-    });
-
   }
 
   @Override
@@ -203,20 +215,33 @@ public final class AnnotationColumn extends AbstractLeftColumn {
     if (!(isEditorHighlighted()) && !(isColumnHoverShowTooltip())) {
       return null;
     }
-    return myEditorAnnotation.getRevisionTooltip(myEditorAnnotation.getRevisionByY(event.getY())._0());
+    return getLineAnnotation(event.getY()).getDescription();
+  }
+
+  private LineAnnotation getLineAnnotation(final int y) {
+    LineAnnotation lineAnnotation = check_5mnya_a0a0hb(MapSequence.fromMap(myEditorAnnotation.getLineAnnotations()).where(new IWhereFilter<IMapping<Bounds, LineAnnotation>>() {
+      public boolean accept(IMapping<Bounds, LineAnnotation> it) {
+        return it.key().contains(y);
+      }
+    }).sort(new ISelector<IMapping<Bounds, LineAnnotation>, Integer>() {
+      public Integer select(IMapping<Bounds, LineAnnotation> it) {
+        return it.key().length();
+      }
+    }, true).first());
+    return (lineAnnotation == null ? new LineAnnotation(myEditorAnnotation.getLocalRevision(), null, "") : lineAnnotation);
   }
 
   @Nullable
   @Override
   public Cursor getCursor(MouseEvent event) {
-    return (myEditorAnnotation.getRevisionByY(event.getY())._0() == myEditorAnnotation.getLocalRevision() ? null : new Cursor(Cursor.HAND_CURSOR));
+    return (getLineAnnotation(event.getY()).getRevision() == myEditorAnnotation.getLocalRevision() ? null : new Cursor(Cursor.HAND_CURSOR));
   }
 
   @Override
   public void mousePressed(MouseEvent event) {
     if (event.getButton() == MouseEvent.BUTTON1 && event.getID() == MouseEvent.MOUSE_RELEASED) {
       event.consume();
-      myEditorAnnotation.showPathsAffectedByRevision(myEditorAnnotation.getRevisionByY(event.getY())._0());
+      myEditorAnnotation.showPathsAffectedByRevision(getLineAnnotation(event.getY()).getRevision());
     } else {
       super.mousePressed(event);
     }
@@ -244,20 +269,16 @@ public final class AnnotationColumn extends AbstractLeftColumn {
   }
 
   @Override
-  public void mouseMoved(MouseEvent e) {
+  public void mouseMoved(MouseEvent event) {
     if (isEditorHighlighted() || !(isColumnHoverHighlightRevision())) {
       return;
     }
-    VcsFileRevision revision = myEditorAnnotation.getRevisionByY(e.getY())._0();
+    VcsFileRevision revision = getLineAnnotation(event.getY()).getRevision();
     if (revision == myRevisionUnderMouse) {
       return;
     }
     myEditorAnnotation.highlightCellsForRevision(revision);
     myRevisionUnderMouse = revision;
-  }
-
-  public void invalidateLayout() {
-    myEditorAnnotation.invalidateLayout();
   }
 
   @Override
@@ -271,7 +292,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
       return;
     }
     myIsClosed = true;
-    check_5mnya_a2a94(myCloseActionListener);
+    check_5mnya_a2a15(myCloseActionListener);
     if (getLeftEditorHighlighter().getLeftColumns().contains(this)) {
       getLeftEditorHighlighter().removeLeftColumn(this);
     }
@@ -285,9 +306,8 @@ public final class AnnotationColumn extends AbstractLeftColumn {
   @Override
   public JPopupMenu getPopupMenu(MouseEvent event) {
     List<AnAction> actions = ListSequence.fromList(new ArrayList<AnAction>());
-    final Tuples._2<VcsFileRevision, VcsFileRevision> revisions = myEditorAnnotation.getRevisionByY(event.getY());
-    VcsFileRevision revision = revisions._0();
-    VcsFileRevision prevRevision = revisions._1();
+    VcsFileRevision revision = getLineAnnotation(event.getY()).getRevision();
+    VcsFileRevision prevRevision = getLineAnnotation(event.getY()).getPrevRevision();
     ListSequence.fromList(actions).addElement(new BaseAction("Close Annotations") {
       @Override
       protected void doExecute(AnActionEvent e, Map<String, Object> _params) {
@@ -398,7 +418,13 @@ public final class AnnotationColumn extends AbstractLeftColumn {
       }
     }
   }
-  private static void check_5mnya_a2a94(Runnable checkedDotOperand) {
+  private static LineAnnotation check_5mnya_a0a0hb(IMapping<Bounds, LineAnnotation> checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.value();
+    }
+    return null;
+  }
+  private static void check_5mnya_a2a15(Runnable checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.run();
     }

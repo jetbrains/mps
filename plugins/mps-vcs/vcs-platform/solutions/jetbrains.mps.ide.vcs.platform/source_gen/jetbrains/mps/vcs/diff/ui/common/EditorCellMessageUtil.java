@@ -224,8 +224,8 @@ public final class EditorCellMessageUtil {
     }
     SNode parent = SNodeOperations.getParent(node);
     while (parent != null) {
-      EditorCell result = editor.getBigValidCellForNode(parent);
-      if (result != null) {
+      EditorCell result = editor.findNodeCell(parent, true);
+      if (editor.isValid(result)) {
         return result;
       }
       parent = SNodeOperations.getParent(parent);
@@ -235,7 +235,14 @@ public final class EditorCellMessageUtil {
 
   @Nullable
   public static EditorCell getCellForNode(jetbrains.mps.nodeEditor.EditorComponent editor, SNode node) {
-    return check_ei82tp_a0a72(editor, node);
+    if (editor == null) {
+      return null;
+    }
+    EditorCell result = editor.findNodeCell(node, true);
+    if (editor.isValid(result)) {
+      return result;
+    }
+    return null;
   }
 
   public static List<EditorCell> getEditorLeafCells(EditorComponent editor) {
@@ -256,12 +263,6 @@ public final class EditorCellMessageUtil {
   private static SNode check_ei82tp_a0a0a0a0d0h(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return SNodeOperations.getParent(checkedDotOperand);
-    }
-    return null;
-  }
-  private static jetbrains.mps.nodeEditor.cells.EditorCell check_ei82tp_a0a72(jetbrains.mps.nodeEditor.EditorComponent checkedDotOperand, SNode node) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getBigValidCellForNode(node);
     }
     return null;
   }

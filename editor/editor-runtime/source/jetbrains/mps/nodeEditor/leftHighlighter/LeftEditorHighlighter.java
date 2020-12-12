@@ -414,6 +414,9 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
         recalculateIconRenderersWidth();
       }
       recalculateTextColumnWidth();
+      if (updateFolding) {
+        myLeftColumns.forEach(column -> column.relayout(true));
+      }
     } else {
       recalculateTextColumnWidth();
       if (updateFolding) {
@@ -422,6 +425,7 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
         }
         // wee need to recalculateIconRenderersWidth only if one of collections was folded/unfolded
         recalculateIconRenderersWidth();
+        myLeftColumns.forEach(column -> column.relayout(true));
       }
       recalculateFoldingAreaWidth();
       updateSeparatorLinePosition();
@@ -541,7 +545,7 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
     int offset = initialOffset;
     for (AbstractLeftColumn column : myLeftColumns) {
       column.setX(offset);
-      column.relayout();
+      column.relayout(false);
       offset += column.getWidth();
     }
     myTextColumnWidth = Math.max(MIN_LEFT_TEXT_WIDTH, offset - initialOffset);
