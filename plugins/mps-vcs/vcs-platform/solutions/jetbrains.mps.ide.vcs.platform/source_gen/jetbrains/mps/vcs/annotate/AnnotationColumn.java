@@ -8,8 +8,11 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
-import com.intellij.openapi.progress.ProgressIndicator;
+import com.intellij.util.messages.MessageBusConnection;
+import com.intellij.openapi.project.Project;
 import jetbrains.mps.nodeEditor.leftHighlighter.LeftEditorHighlighter;
+import jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener;
+import org.jetbrains.annotations.Nullable;
 import java.awt.Graphics;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.nodeEditor.EditorComponent;
@@ -31,7 +34,6 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.awt.event.MouseEvent;
-import org.jetbrains.annotations.Nullable;
 import java.awt.Cursor;
 import javax.swing.JPopupMenu;
 import com.intellij.openapi.actionSystem.AnAction;
@@ -54,22 +56,28 @@ public final class AnnotationColumn extends AbstractLeftColumn {
   private List<AnnotationAspectSubcolumn> myAspectSubcolumns = ListSequence.fromList(new ArrayList<AnnotationAspectSubcolumn>());
   private int mySubcolumnInterval;
   private VcsFileRevision myRevisionUnderMouse;
-  private final ProgressIndicator myIndicator;
   private boolean myIsClosed;
   private EditorAnnotation myEditorAnnotation;
   private ViewActionGroup myViewActionGroup;
+  private final MessageBusConnection myMessageBusConnection;
+  private Runnable myCloseActionListener;
 
 
-  public AnnotationColumn(LeftEditorHighlighter leftEditorHighlighter, ProgressIndicator indicator, EditorAnnotation editorAnnotation) {
+  public AnnotationColumn(Project project, LeftEditorHighlighter leftEditorHighlighter, EditorAnnotation editorAnnotation) {
     super(leftEditorHighlighter);
     myEditorAnnotation = editorAnnotation;
-    myIndicator = indicator;
     ListSequence.fromList(myAspectSubcolumns).addElement(new RevisionAspectSubcolumn(myEditorAnnotation));
     ListSequence.fromList(myAspectSubcolumns).addElement(new DateAspectSubcolumn(myEditorAnnotation));
     ListSequence.fromList(myAspectSubcolumns).addElement(new AuthorAspectSubcolumn(myEditorAnnotation));
     ListSequence.fromList(myAspectSubcolumns).addElement(new CommitNumberSubcolumn(myEditorAnnotation));
     myViewActionGroup = new ViewActionGroup(this, myAspectSubcolumns);
     ListSequence.fromList(myAspectSubcolumns).addElement(new HighlightRevisionSubcolumn(myEditorAnnotation));
+    myMessageBusConnection = project.getMessageBus().connect();
+    myMessageBusConnection.subscribe(EditorComponentCreateListener.EDITOR_COMPONENT_CREATION, new MyEditorComponentCreateListener());
+  }
+
+  public void setCloseActionListener(@Nullable Runnable closeActionListener) {
+    myCloseActionListener = closeActionListener;
   }
 
   @Override
@@ -254,7 +262,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
 
   @Override
   public void dispose() {
-    myIndicator.cancel();
+    myMessageBusConnection.disconnect();
     myEditorAnnotation.dispose();
   }
 
@@ -262,14 +270,16 @@ public final class AnnotationColumn extends AbstractLeftColumn {
     if (myIsClosed) {
       return;
     }
-    synchronized (this) {
-      if (myIsClosed) {
-        return;
-      }
+    myIsClosed = true;
+    check_5mnya_a2a94(myCloseActionListener);
+    if (getLeftEditorHighlighter().getLeftColumns().contains(this)) {
       getLeftEditorHighlighter().removeLeftColumn(this);
-      dispose();
-      myIsClosed = true;
     }
+    dispose();
+  }
+
+  public boolean isClosed() {
+    return myIsClosed;
   }
 
   @Override
@@ -375,5 +385,23 @@ public final class AnnotationColumn extends AbstractLeftColumn {
         AnnotationOptions.getInstance().setIsColumnHoverHighlightRevision(true);
       }
     };
+  }
+
+  private class MyEditorComponentCreateListener implements EditorComponentCreateListener {
+    @Override
+    public void editorComponentCreated(@NotNull EditorComponent ec) {
+    }
+    @Override
+    public void editorComponentDisposed(@NotNull EditorComponent ec) {
+      if (ec == getEditorComponent()) {
+        close();
+      }
+    }
+  }
+  private static void check_5mnya_a2a94(Runnable checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      checkedDotOperand.run();
+    }
+
   }
 }

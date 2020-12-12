@@ -28,11 +28,20 @@ public final class RootAnnotation {
   private final Map<SNodeId, NodeAnnotation> myNodeAnnotations = MapSequence.fromMap(new HashMap<SNodeId, NodeAnnotation>());
   private final List<Runnable> myUpdateListeners = ListSequence.fromList(new ArrayList<Runnable>());
   private List<VcsFileRevision> myCachedRevisions;
+  private List<VcsFileRevision> myAllRevisions = ListSequence.fromList(new ArrayList<VcsFileRevision>());
 
 
   public void setAnnotatedModel(@NotNull SModel annotatedModel) {
     // annotatedModel is the latest revision in VCS, the annotation is constructed with respect to this revision. Local changes are considered separately. 
     myAnnotatedModel = annotatedModel;
+  }
+
+  public void setAllRevisions(List<VcsFileRevision> allRevisions) {
+    myAllRevisions = allRevisions;
+  }
+
+  public List<VcsFileRevision> getAllRevisions() {
+    return myAllRevisions;
   }
 
   public synchronized List<RevisionNodeChange> getRevisionNodeChanges() {

@@ -8,27 +8,25 @@ import jetbrains.mps.nodeEditor.EditorComponent;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vcs.AbstractVcs;
 import com.intellij.openapi.project.Project;
-import java.util.List;
-import com.intellij.openapi.vcs.history.VcsFileRevision;
 import java.util.Map;
 import jetbrains.mps.vcs.diff.ui.common.Bounds;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
+import com.intellij.openapi.vcs.history.VcsFileRevision;
 import java.util.concurrent.ConcurrentHashMap;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
+import java.util.List;
 import java.util.Set;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import com.intellij.util.ui.update.MergingUpdateQueue;
 import com.intellij.openapi.vcs.history.CurrentRevision;
-import com.intellij.util.messages.MessageBusConnection;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry;
 import com.intellij.openapi.vcs.history.VcsRevisionNumber;
-import jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener;
 import com.intellij.openapi.application.ApplicationManager;
 import java.util.Collection;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
@@ -92,7 +90,6 @@ public class EditorAnnotation implements EditorMessageOwner, AnnotationOptions.U
   private final VirtualFile myFile;
   private final AbstractVcs myVcs;
   private Project myProject;
-  private final List<VcsFileRevision> myAllRevisions;
 
   private Map<Bounds, Tuples._2<VcsFileRevision, VcsFileRevision>> myLineRevisionMap = new ConcurrentHashMap<Bounds, Tuples._2<VcsFileRevision, VcsFileRevision>>();
   private Map<EditorCell, List<RevisionNodeChange>> myCellNodeChangesMap = new ConcurrentHashMap<EditorCell, List<RevisionNodeChange>>();
@@ -100,20 +97,18 @@ public class EditorAnnotation implements EditorMessageOwner, AnnotationOptions.U
   private Map<EditorCell, AnnotatedCellMessage> myHighlightedMessages = MapSequence.fromMap(new HashMap<EditorCell, AnnotatedCellMessage>());
   private final MergingUpdateQueue myUpdateQueue;
   private final CurrentRevision myLocalRevision;
-  private MessageBusConnection myMessageBusConnection;
   @NotNull
   private final List<ModelChange> myLocalChanges = ListSequence.fromList(new ArrayList<ModelChange>());
   private CurrentDifferenceRegistry myDiffRegistry;
   private MyDifferenceListener myDifferenceListener = new MyDifferenceListener();
 
 
-  public EditorAnnotation(EditorComponent editorComponent, RootAnnotation rootAnnotation, VirtualFile file, AbstractVcs vcs, List<VcsFileRevision> allRevisions, Project project) {
+  public EditorAnnotation(EditorComponent editorComponent, RootAnnotation rootAnnotation, VirtualFile file, AbstractVcs vcs, Project project) {
     myEditorComponent = editorComponent;
     myRootAnnotation = rootAnnotation;
     myFile = file;
     myVcs = vcs;
     myProject = project;
-    myAllRevisions = allRevisions;
 
     myLocalRevision = new CurrentRevision(file, new VcsRevisionNumber() {
       @Override
@@ -126,8 +121,6 @@ public class EditorAnnotation implements EditorMessageOwner, AnnotationOptions.U
         return "Local Changes";
       }
     });
-    myMessageBusConnection = project.getMessageBus().connect();
-    myMessageBusConnection.subscribe(EditorComponentCreateListener.EDITOR_COMPONENT_CREATION, new MyEditorComponentCreateListener());
     myUpdateQueue = new MergingUpdateQueue(getClass().getSimpleName(), 200, true, null, null, null, false);
     myDiffRegistry = CurrentDifferenceRegistry.getInstance(project);
     runInDiffRegistryCommandQueue(new Runnable() {
@@ -268,7 +261,7 @@ public class EditorAnnotation implements EditorMessageOwner, AnnotationOptions.U
   }
 
   private void calcLeafToParentsMap() {
-    EditorCell rootCell = check_coav66_a0a0wb(myEditorComponent);
+    EditorCell rootCell = check_coav66_a0a0ub(myEditorComponent);
     if (rootCell == null) {
       return;
     }
@@ -400,7 +393,7 @@ public class EditorAnnotation implements EditorMessageOwner, AnnotationOptions.U
       });
       RevisionNodeChange nodeChange = Sequence.fromIterable(lineCells).select(new ISelector<EditorCell, RevisionNodeChange>() {
         public RevisionNodeChange select(EditorCell leaf) {
-          return check_coav66_a0a0a0a0a0a2a2a65(MapSequence.fromMap(myCellNodeChangesMap).get(leaf));
+          return check_coav66_a0a0a0a0a0a2a2a45(MapSequence.fromMap(myCellNodeChangesMap).get(leaf));
         }
       }).where(new NotNullWhereFilter<RevisionNodeChange>()).distinct().sort(new ISelector<RevisionNodeChange, Date>() {
         public Date select(RevisionNodeChange it) {
@@ -467,7 +460,7 @@ public class EditorAnnotation implements EditorMessageOwner, AnnotationOptions.U
   }
 
   public Tuples._2<VcsFileRevision, VcsFileRevision> getRevisionByY(final int y) {
-    Tuples._2<VcsFileRevision, VcsFileRevision> revision = check_coav66_a0a0qc(MapSequence.fromMap(myLineRevisionMap).findFirst(new IWhereFilter<IMapping<Bounds, Tuples._2<VcsFileRevision, VcsFileRevision>>>() {
+    Tuples._2<VcsFileRevision, VcsFileRevision> revision = check_coav66_a0a0oc(MapSequence.fromMap(myLineRevisionMap).findFirst(new IWhereFilter<IMapping<Bounds, Tuples._2<VcsFileRevision, VcsFileRevision>>>() {
       public boolean accept(IMapping<Bounds, Tuples._2<VcsFileRevision, VcsFileRevision>> it) {
         return it.key().contains(y);
       }
@@ -482,11 +475,10 @@ public class EditorAnnotation implements EditorMessageOwner, AnnotationOptions.U
   public void dispose() {
     AnnotationOptions.getInstance().removeUpdateListener(this);
     stopListenLocalChanges();
-    unhighlightCells();
-    myMessageBusConnection.disconnect();
     myRootAnnotation.dispose();
     myUpdateQueue.cancelAllUpdates();
     myUpdateQueue.dispose();
+    unhighlightCells();
   }
 
   private static Iterable<RevisionNodeChange> getChangesWithRevision(List<RevisionNodeChange> revisionNodeChanges, final VcsFileRevision revision) {
@@ -509,7 +501,7 @@ public class EditorAnnotation implements EditorMessageOwner, AnnotationOptions.U
       }
       MapSequence.fromMap(myCellNodeChangesMap).visitAll(new IVisitor<IMapping<EditorCell, List<RevisionNodeChange>>>() {
         public void visit(IMapping<EditorCell, List<RevisionNodeChange>> it) {
-          VcsFileRevision revision = check_coav66_a0a0a0a1a0a67(ListSequence.fromList(it.value()).last());
+          VcsFileRevision revision = check_coav66_a0a0a0a1a0a47(ListSequence.fromList(it.value()).last());
           if (revision == null || revision == myLocalRevision) {
             return;
           }
@@ -553,7 +545,7 @@ public class EditorAnnotation implements EditorMessageOwner, AnnotationOptions.U
       }
       MapSequence.fromMap(myCellNodeChangesMap).visitAll(new IVisitor<IMapping<EditorCell, List<RevisionNodeChange>>>() {
         public void visit(IMapping<EditorCell, List<RevisionNodeChange>> it) {
-          VcsFileRevision cellRevision = check_coav66_a0a0a0a3a1a87(check_coav66_a0a0a0a0d0b0ad(it.value()));
+          VcsFileRevision cellRevision = check_coav66_a0a0a0a3a1a67(check_coav66_a0a0a0a0d0b0yc(it.value()));
           if (revision != cellRevision) {
             return;
           }
@@ -644,7 +636,7 @@ public class EditorAnnotation implements EditorMessageOwner, AnnotationOptions.U
   }
 
   public List<VcsFileRevision> getAllRevisions() {
-    return myAllRevisions;
+    return myRootAnnotation.getAllRevisions();
   }
 
   public boolean isRevisionHighlighted(VcsFileRevision revision) {
@@ -815,49 +807,37 @@ public class EditorAnnotation implements EditorMessageOwner, AnnotationOptions.U
   public ShowDiffFromAnnotationAction createDiffAction(VcsFileRevision revision, VcsFileRevision prevRevision) {
     return new ShowDiffFromAnnotationAction(revision, prevRevision, myEditorComponent.getEditedNode(), myProject, myFile.getExtension());
   }
-
-  private class MyEditorComponentCreateListener implements EditorComponentCreateListener {
-    @Override
-    public void editorComponentCreated(@NotNull EditorComponent ec) {
-    }
-    @Override
-    public void editorComponentDisposed(@NotNull EditorComponent ec) {
-      if (ec == myEditorComponent) {
-        dispose();
-      }
-    }
-  }
-  private static jetbrains.mps.nodeEditor.cells.EditorCell check_coav66_a0a0wb(EditorComponent checkedDotOperand) {
+  private static jetbrains.mps.nodeEditor.cells.EditorCell check_coav66_a0a0ub(EditorComponent checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getRootCell();
     }
     return null;
   }
-  private static RevisionNodeChange check_coav66_a0a0a0a0a0a2a2a65(List<RevisionNodeChange> checkedDotOperand) {
+  private static RevisionNodeChange check_coav66_a0a0a0a0a0a2a2a45(List<RevisionNodeChange> checkedDotOperand) {
     if (null != checkedDotOperand) {
       return ListSequence.fromList(checkedDotOperand).first();
     }
     return null;
   }
-  private static Tuples._2<VcsFileRevision, VcsFileRevision> check_coav66_a0a0qc(IMapping<Bounds, Tuples._2<VcsFileRevision, VcsFileRevision>> checkedDotOperand) {
+  private static Tuples._2<VcsFileRevision, VcsFileRevision> check_coav66_a0a0oc(IMapping<Bounds, Tuples._2<VcsFileRevision, VcsFileRevision>> checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.value();
     }
     return null;
   }
-  private static VcsFileRevision check_coav66_a0a0a0a1a0a67(RevisionNodeChange checkedDotOperand) {
+  private static VcsFileRevision check_coav66_a0a0a0a1a0a47(RevisionNodeChange checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getRevision();
     }
     return null;
   }
-  private static VcsFileRevision check_coav66_a0a0a0a3a1a87(RevisionNodeChange checkedDotOperand) {
+  private static VcsFileRevision check_coav66_a0a0a0a3a1a67(RevisionNodeChange checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getRevision();
     }
     return null;
   }
-  private static RevisionNodeChange check_coav66_a0a0a0a0d0b0ad(List<RevisionNodeChange> checkedDotOperand) {
+  private static RevisionNodeChange check_coav66_a0a0a0a0d0b0yc(List<RevisionNodeChange> checkedDotOperand) {
     if (null != checkedDotOperand) {
       return ListSequence.fromList(checkedDotOperand).first();
     }

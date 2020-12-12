@@ -6,16 +6,18 @@ import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.progress.Task;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import org.jetbrains.mps.openapi.model.SNodeId;
-import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vcs.AbstractVcs;
 import com.intellij.openapi.vcs.VcsException;
-import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.vcs.impl.BackgroundableActionLock;
+import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.progress.ProgressIndicator;
 import java.util.List;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
+import com.intellij.openapi.vcs.history.CollectingHistorySessionConsumer;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.openapi.vcs.AbstractVcsHelper;
 import java.util.Arrays;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
@@ -23,8 +25,6 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.wm.ToolWindowManager;
 import com.intellij.openapi.vcs.changes.ui.ChangesViewContentManager;
 import com.intellij.openapi.ui.MessageType;
-import com.intellij.openapi.vcs.history.CollectingHistorySessionConsumer;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.vcs.diff.ui.common.VcsRootHistorySessionConsumer;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -44,49 +44,71 @@ public final class AnnotateBackgroundableTask extends Task.Backgroundable {
 
   private final EditorComponent myEditor;
   private final SNodeId myRootId;
-  private final MPSProject myMpsProject;
   private final VirtualFile myActualFile;
   private final AbstractVcs myActiveVcs;
   private VcsException myException;
-  private EditorAnnotation myEditorAnnotation;
-  private AnnotationColumn myAnnotationColumn;
-  private ProgressIndicator myProgressIndicator;
+  private final AnnotationColumn myAnnotationColumn;
+  private final RootAnnotation myRootAnnotation;
   private final BackgroundableActionLock myLock;
 
 
   public AnnotateBackgroundableTask(MPSProject mpsProject, @Nls(capitalization = Nls.Capitalization.Sentence) @NotNull String title, EditorComponent editor, VirtualFile file, AbstractVcs vcs, BackgroundableActionLock lock) {
     super(mpsProject.getProject(), title, true, ALWAYS_BACKGROUND);
-    myMpsProject = mpsProject;
     myEditor = editor;
     myActualFile = file;
     myActiveVcs = vcs;
     myRootId = editor.getEditedNode().getNodeId();
     myLock = lock;
+    myRootAnnotation = new RootAnnotation();
+    EditorAnnotation editorAnnotation = new EditorAnnotation(myEditor, myRootAnnotation, myActualFile, myActiveVcs, mpsProject.getProject());
+    myAnnotationColumn = new AnnotationColumn(mpsProject.getProject(), myEditor.getLeftEditorHighlighter(), editorAnnotation);
   }
 
+
   @Override
-  public void run(@NotNull ProgressIndicator indicator) {
+  public void run(@NotNull final ProgressIndicator indicator) {
     try {
-      myProgressIndicator = indicator;
+
+      myAnnotationColumn.setCloseActionListener(new Runnable() {
+        public void run() {
+          indicator.cancel();
+        }
+      });
+
       List<VcsFileRevision> revisions = getRevisionsFromVcs();
       if (indicator.isCanceled()) {
         return;
       }
 
-      RootAnnotation rootAnnotation = new RootAnnotation();
+      myRootAnnotation.setAllRevisions(revisions);
+      CollectingHistorySessionConsumer historySessionConsumer = createVcsHistorySessionConsumer();
 
-      myEditorAnnotation = new EditorAnnotation(myEditor, rootAnnotation, myActualFile, myActiveVcs, revisions, myMpsProject.getProject());
-
-      processRevisions(revisions, indicator, createVcsHistorySessionConsumer(rootAnnotation));
-
+      final int total = ListSequence.fromList(revisions).count();
+      int processed = 0;
+      for (VcsFileRevision revision : ListSequence.fromList(revisions)) {
+        if (indicator.isCanceled()) {
+          return;
+        }
+        historySessionConsumer.acceptRevision(revision);
+        historySessionConsumer.check();
+        updateIndicator(indicator, ++processed, total);
+      }
+      if (indicator.isCanceled()) {
+        return;
+      }
+      historySessionConsumer.finished();
+      historySessionConsumer.check();
     } catch (VcsException e) {
       myException = e;
+    } finally {
+      myAnnotationColumn.setCloseActionListener(null);
     }
   }
 
   @Override
   public void onCancel() {
-    check_afjffg_a0a71(myAnnotationColumn);
+    myAnnotationColumn.setCloseActionListener(null);
+    myAnnotationColumn.close();
   }
 
   @Override
@@ -95,6 +117,10 @@ public final class AnnotateBackgroundableTask extends Task.Backgroundable {
     if (myException != null) {
       AbstractVcsHelper.getInstance(getProject()).showErrors(Arrays.asList(myException), "Exception on retrieving annotation");
     }
+    showCompleteNotification();
+  }
+
+  private void showCompleteNotification() {
     final Wrappers._T<String> rootName = new Wrappers._T<String>();
     myEditor.getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
@@ -118,27 +144,10 @@ public final class AnnotateBackgroundableTask extends Task.Backgroundable {
     super.onFinished();
   }
 
-  private void processRevisions(List<VcsFileRevision> revisions, ProgressIndicator indicator, CollectingHistorySessionConsumer historySessionConsumer) throws VcsException {
-    final int total = ListSequence.fromList(revisions).count();
-    int processed = 0;
-    for (VcsFileRevision revision : ListSequence.fromList(revisions)) {
-      if (indicator.isCanceled()) {
-        return;
-      }
-      historySessionConsumer.acceptRevision(revision);
-      historySessionConsumer.check();
-      updateIndicator(indicator, ++processed, total);
-    }
-    if (!(indicator.isCanceled())) {
-      historySessionConsumer.finished();
-      historySessionConsumer.check();
-    }
-  }
-
-  private CollectingHistorySessionConsumer createVcsHistorySessionConsumer(final RootAnnotation rootAnnotation) {
+  private CollectingHistorySessionConsumer createVcsHistorySessionConsumer() {
     return new VcsRootHistorySessionConsumer(myRootId, myActualFile.getExtension(), new _FunctionTypes._void_P4_E0<SModel, SModel, VcsFileRevision, VcsFileRevision>() {
       public void invoke(SModel model, SModel prevModel, VcsFileRevision revision, VcsFileRevision prevRevision) {
-        processRevision(rootAnnotation, model, prevModel, revision, prevRevision);
+        processRevision(model, prevModel, revision, prevRevision);
       }
     });
   }
@@ -156,16 +165,16 @@ public final class AnnotateBackgroundableTask extends Task.Backgroundable {
     return myEditor.getEditorContext().getRepository().getModelAccess();
   }
 
-  private void processRevision(final RootAnnotation rootAnnotation, @Nullable final SModel model, @Nullable final SModel prevModel, @Nullable final VcsFileRevision revision, @Nullable final VcsFileRevision prevRevision) {
+  private void processRevision(@Nullable final SModel model, @Nullable final SModel prevModel, @Nullable final VcsFileRevision revision, @Nullable final VcsFileRevision prevRevision) {
     if (model == null) {
-      rootAnnotation.setAnnotatedModel(prevModel);
+      myRootAnnotation.setAnnotatedModel(prevModel);
       return;
     }
     if (prevModel == null) {
       getModelAccess().runReadAction(new Runnable() {
         public void run() {
           ModelChangeSet dummyChangeSet = new ChangeSetImpl(model, model);
-          processRevisionModelChange(rootAnnotation, new AddRootChange(dummyChangeSet, myRootId), revision, prevRevision);
+          processRevisionModelChange(new AddRootChange(dummyChangeSet, myRootId), revision, prevRevision);
         }
       });
       return;
@@ -178,25 +187,17 @@ public final class AnnotateBackgroundableTask extends Task.Backgroundable {
         }
         ListSequence.fromList(changes).visitAll(new IVisitor<ModelChange>() {
           public void visit(ModelChange change) {
-            processRevisionModelChange(rootAnnotation, change, revision, prevRevision);
+            processRevisionModelChange(change, revision, prevRevision);
           }
         });
       }
     });
   }
 
-  private void processRevisionModelChange(RootAnnotation rootAnnotation, ModelChange change, VcsFileRevision revision, VcsFileRevision prevRevision) {
-    rootAnnotation.processRevisionModelChange(change, revision, prevRevision);
-    if (myAnnotationColumn == null) {
-      myAnnotationColumn = new AnnotationColumn(myEditor.getLeftEditorHighlighter(), myProgressIndicator, myEditorAnnotation);
+  private void processRevisionModelChange(ModelChange change, VcsFileRevision revision, VcsFileRevision prevRevision) {
+    myRootAnnotation.processRevisionModelChange(change, revision, prevRevision);
+    if (!(myAnnotationColumn.isClosed()) && !(myEditor.getLeftEditorHighlighter().getLeftColumns().contains(myAnnotationColumn))) {
       myEditor.getLeftEditorHighlighter().addLeftColumn(myAnnotationColumn);
     }
-  }
-
-  private static void check_afjffg_a0a71(AnnotationColumn checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      checkedDotOperand.close();
-    }
-
   }
 }
