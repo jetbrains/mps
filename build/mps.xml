@@ -89,6 +89,7 @@
         <whatsnew url="https://www.jetbrains.com/mps/whatsnew/index.html" />
         <keymap win="https://www.jetbrains.com/help/mps/2020.3/default-keymap-reference.html" mac="https://www.jetbrains.com/help/mps/2020.3/default-keymap-reference.html" />
         <jetbrains-tv url="https://www.youtube.com/user/JetBrainsTV/search?query=MPS" />
+        <youtrack url="https://youtrack.jetbrains.com/newissue?project=MPS&amp;clearDraft=true&amp;description=$DESCR" />
         
       </component>
     </echoxml>

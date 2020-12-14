@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,13 @@ package jetbrains.mps.ide.devkit.help;
 
 import jetbrains.mps.ide.blame.command.Command;
 import jetbrains.mps.workbench.actions.ShowSiteAction;
+import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
 
+/**
+ * @deprecated action {@link com.intellij.ide.actions.ReportProblemAction} from IntelliJ platform is used instead
+ */
+@ScheduledForRemoval(inVersion = "2021.1")
+@Deprecated(since = "2020.3", forRemoval = true)
 public class ShowTrackerAction extends ShowSiteAction {
   public ShowTrackerAction() {
     super(null);

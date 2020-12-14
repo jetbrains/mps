@@ -92,9 +92,6 @@
       <action id="ShowCommunitySite"
               class="jetbrains.mps.ide.devkit.help.ShowCommunitySiteAction"
               text="Community Site"/>
-      <action id="ShowTrackerAction"
-              class="jetbrains.mps.ide.devkit.help.ShowTrackerAction"
-              text="Issue Tracker"/>
       <separator/>
       <add-to-group group-id="HelpMenu" relative-to-action="ProductivityGuide" anchor="after"/>
     </group>

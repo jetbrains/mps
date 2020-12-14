@@ -25,6 +25,9 @@
       <concept id="6666499814681541919" name="jetbrains.mps.core.xml.structure.XmlTextValue" flags="ng" index="2pMdtt">
         <property id="6666499814681541920" name="text" index="2pMdty" />
       </concept>
+      <concept id="6666499814681541921" name="jetbrains.mps.core.xml.structure.XmlEntityRefValue" flags="ng" index="2pMdtz">
+        <property id="6666499814681543256" name="entityName" index="2pMiwq" />
+      </concept>
       <concept id="6666499814681415858" name="jetbrains.mps.core.xml.structure.XmlElement" flags="ng" index="2pNNFK">
         <property id="6666499814681415862" name="tagName" index="2pNNFO" />
         <property id="6999033275467544021" name="shortEmptyNotation" index="qg3DV" />
@@ -27908,6 +27911,28 @@
           <property role="2pNUuO" value="url" />
           <node concept="2pMdtt" id="5VYK1npK8$R" role="2pMdts">
             <property role="2pMdty" value="https://www.youtube.com/user/JetBrainsTV/search?query=MPS" />
+          </node>
+        </node>
+      </node>
+      <node concept="2pNNFK" id="4Nc8eEDY$eW" role="27hc03">
+        <property role="2pNNFO" value="youtrack" />
+        <property role="qg3DV" value="true" />
+        <node concept="2pNUuL" id="4Nc8eEDY$fk" role="2pNNFR">
+          <property role="2pNUuO" value="url" />
+          <node concept="2pMdtt" id="4Nc8eEDY$fE" role="2pMdts">
+            <property role="2pMdty" value="https://youtrack.jetbrains.com/newissue?project=MPS" />
+          </node>
+          <node concept="2pMdtz" id="4Nc8eEDY$fR" role="2pMdts">
+            <property role="2pMiwq" value="amp" />
+          </node>
+          <node concept="2pMdtt" id="4Nc8eEDY$fV" role="2pMdts">
+            <property role="2pMdty" value="clearDraft=true" />
+          </node>
+          <node concept="2pMdtz" id="4Nc8eEDY$g1" role="2pMdts">
+            <property role="2pMiwq" value="amp" />
+          </node>
+          <node concept="2pMdtt" id="4Nc8eEDY$g7" role="2pMdts">
+            <property role="2pMdty" value="description=$DESCR" />
           </node>
         </node>
       </node>
