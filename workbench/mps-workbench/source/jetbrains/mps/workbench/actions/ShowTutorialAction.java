@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,14 @@
  */
 package jetbrains.mps.workbench.actions;
 
-import com.intellij.icons.AllIcons.Nodes;
 import com.intellij.openapi.application.ApplicationInfo;
+import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
 
+/**
+ * @deprecated action {@link com.intellij.ide.actions.OnlineDocAction} from IntelliJ platform is used instead
+ */
+@ScheduledForRemoval(inVersion = "2021.1")
+@Deprecated(since = "2020.3", forRemoval = true)
 public class ShowTutorialAction extends ShowSiteAction {
   // TODO: revert to simple major + minor version after MPS-26466 is fixed
   private final String myMajorMinorVersion =

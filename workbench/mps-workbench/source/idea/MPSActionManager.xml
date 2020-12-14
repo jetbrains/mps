@@ -16,14 +16,5 @@
               description="You can open existing project with this action"/>
       <add-to-group group-id="WelcomeScreen.QuickStart" anchor="first"/>
     </group>
-    <group id="WelcomeScreen.QuickStart.MPS.Tutorial">
-      <action id="WelcomeScreen.Tutorial"
-              class="jetbrains.mps.workbench.actions.ShowTutorialAction"
-              text="Tutorial"
-              description="You can read a tutorial on how to create a simple language with MPS">
-        <keyboard-shortcut first-keystroke="alt shift T" keymap="$default"/>
-      </action>
-      <add-to-group group-id="WelcomeScreen.QuickStart" anchor="last"/>
-    </group>
   </actions>
 </component>

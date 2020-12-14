@@ -27854,7 +27854,16 @@
       </node>
       <node concept="NbPM2" id="57dcfYPuvRo" role="3$Ir1d">
         <node concept="3Mxwew" id="57dcfYPuvRn" role="3MwsjC">
-          <property role="3MwjfP" value="https://www.jetbrains.com/mps/documentation" />
+          <property role="3MwjfP" value="https://www.jetbrains.com/help/mps/" />
+        </node>
+        <node concept="3Mxwey" id="423KI0WYOCA" role="3MwsjC">
+          <ref role="3Mxwex" node="3AMbuf1a7Ob" resolve="version.major" />
+        </node>
+        <node concept="3Mxwey" id="423KI0WYOCE" role="3MwsjC">
+          <ref role="3Mxwex" node="3AMbuf1a7Of" resolve="version.minor" />
+        </node>
+        <node concept="3Mxwew" id="423KI0WYOrq" role="3MwsjC">
+          <property role="3MwjfP" value="/fast-track-to-mps.html" />
         </node>
       </node>
       <node concept="NbPM2" id="57dcfYPvJMC" role="3$HL_E">
@@ -27870,12 +27879,30 @@
       <node concept="3$GE4K" id="57dcfYPx6EW" role="3$GE96">
         <node concept="3_J27D" id="57dcfYPx6EX" role="3$GE4B">
           <node concept="3Mxwew" id="57dcfYPx6F4" role="3MwsjC">
-            <property role="3MwjfP" value="https://www.jetbrains.com/help/mps/2020.3/default-keymap-reference.html" />
+            <property role="3MwjfP" value="https://www.jetbrains.com/help/mps/" />
+          </node>
+          <node concept="3Mxwey" id="423KI0WYOPZ" role="3MwsjC">
+            <ref role="3Mxwex" node="3AMbuf1a7Ob" resolve="version.major" />
+          </node>
+          <node concept="3Mxwey" id="423KI0WYOQ3" role="3MwsjC">
+            <ref role="3Mxwex" node="3AMbuf1a7Of" resolve="version.minor" />
+          </node>
+          <node concept="3Mxwew" id="423KI0WYOPY" role="3MwsjC">
+            <property role="3MwjfP" value="/default-keymap-reference.html" />
           </node>
         </node>
         <node concept="3_J27D" id="57dcfYPx6EY" role="3$GE4G">
           <node concept="3Mxwew" id="57dcfYPx6F2" role="3MwsjC">
-            <property role="3MwjfP" value="https://www.jetbrains.com/help/mps/2020.3/default-keymap-reference.html" />
+            <property role="3MwjfP" value="https://www.jetbrains.com/help/mps/" />
+          </node>
+          <node concept="3Mxwey" id="423KI0WYOPP" role="3MwsjC">
+            <ref role="3Mxwex" node="3AMbuf1a7Ob" resolve="version.major" />
+          </node>
+          <node concept="3Mxwey" id="423KI0WYOPT" role="3MwsjC">
+            <ref role="3Mxwex" node="3AMbuf1a7Of" resolve="version.minor" />
+          </node>
+          <node concept="3Mxwew" id="423KI0WYOPO" role="3MwsjC">
+            <property role="3MwjfP" value="/default-keymap-reference.html" />
           </node>
         </node>
       </node>

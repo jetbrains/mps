@@ -29,7 +29,7 @@
       <action id="WelcomeScreen.Samples"
               class="jetbrains.mps.workbench.actions.welcomeScreen.OpenSampleProjectAction"
               icon="AllIcons.Nodes.IdeaProject"/>
-      <add-to-group group-id="WelcomeScreen.QuickStart.MPS.Tutorial" anchor="before" relative-to-action="WelcomeScreen.Tutorial"/>
+      <add-to-group group-id="WelcomeScreen.QuickStart" anchor="last"/>
     </group>
   </actions>
 
