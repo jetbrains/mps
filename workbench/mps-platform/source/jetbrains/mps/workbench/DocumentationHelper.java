@@ -19,14 +19,8 @@ import com.intellij.openapi.application.ApplicationInfo;
 
 public final class DocumentationHelper {
   public static String getHelpCenterBase() {
-    // TODO: revert to simple major + minor version after MPS-26466 is fixed
-    final int dotIndex = ApplicationInfo.getInstance().getMinorVersion().indexOf('.');
-    final String minorVersion = dotIndex < 0 ?
-                                ApplicationInfo.getInstance().getMinorVersion() :
-                                ApplicationInfo.getInstance().getMinorVersion().substring(0, dotIndex);
+    ApplicationInfo info = ApplicationInfo.getInstance();
     return String.format("https://www.jetbrains.com/help/mps/%s.%s/",
-                         ApplicationInfo.getInstance().getMajorVersion(),
-                         minorVersion
-    );
+                         info.getMajorVersion(), info.getMinorVersionMainPart());
   }
 }

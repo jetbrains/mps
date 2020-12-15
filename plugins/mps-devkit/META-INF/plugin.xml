@@ -75,22 +75,39 @@
       <reference id="OnlineDocAction"/>
       <add-to-group group-id="WelcomeScreen.Documentation" anchor="last"/>
     </group>
-    <group id="MPSHelpMenu">
-      <separator/>
+    <!--  Insert MPS actions between IntelliJ Help group actions  -->
+    <!--Help-->
+    <group>
       <action id="ShowHomepage"
               class="jetbrains.mps.ide.devkit.help.ShowHomepageAction"
               text="Homepage"/>
+      <add-to-group group-id="HelpMenu" relative-to-action="OnlineDocAction" anchor="before"/>
+    </group>
+    <!--Getting Started-->
+    <group>
+      <action id="ShowStepikCourse"
+              class="jetbrains.mps.ide.devkit.help.ShowStepikCourseAction"
+              text="Quickstart course"/>
       <action id="ShowUserGuide"
               class="jetbrains.mps.ide.devkit.help.ShowUserGuideAction"
-              text="User Guide for Language Designers"/>
+              text="User Guide"/>
+      <add-to-group group-id="HelpMenu" relative-to-action="OnlineDocAction" anchor="after"/>
+    </group>
+    <!--Keymap Reference-->
+    <!--Demos and Screencasts-->
+    <!--Tip of the Day-->
+    <!--What’s New in JetBrains MPS-->
+    <group id="MPSHelpMenu">
       <action id="ShowMPSBlogAction"
               class="jetbrains.mps.ide.devkit.help.ShowBlogAction"
               text="Blog"/>
       <action id="ShowCommunitySite"
               class="jetbrains.mps.ide.devkit.help.ShowCommunitySiteAction"
-              text="Community Site"/>
-      <separator/>
-      <add-to-group group-id="HelpMenu" relative-to-action="ProductivityGuide" anchor="after"/>
+              text="Slack Community"/>
+      <action id="ShowFAQ"
+              class="jetbrains.mps.ide.devkit.help.ShowFAQAction"
+              text="FAQ"/>
+      <add-to-group group-id="HelpMenu" relative-to-action="WhatsNewAction" anchor="after"/>
     </group>
   </actions>
 

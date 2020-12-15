@@ -15,14 +15,16 @@
  */
 package jetbrains.mps.ide.devkit.help;
 
+import jetbrains.mps.workbench.DocumentationHelper;
 import jetbrains.mps.workbench.actions.ShowSiteAction;
 
-public class ShowCommunitySiteAction extends ShowSiteAction {
-  public ShowCommunitySiteAction() {
+public class ShowFAQAction extends ShowSiteAction {
+  protected ShowFAQAction() {
     super(null);
   }
 
+  @Override
   protected String getSiteURL() {
-    return "http://slack-mps.jetbrains.com";
+    return DocumentationHelper.getHelpCenterBase() + "mps-faq.html";
   }
 }

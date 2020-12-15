@@ -17,12 +17,13 @@ package jetbrains.mps.ide.devkit.help;
 
 import jetbrains.mps.workbench.actions.ShowSiteAction;
 
-public class ShowCommunitySiteAction extends ShowSiteAction {
-  public ShowCommunitySiteAction() {
+public class ShowStepikCourseAction extends ShowSiteAction {
+  public ShowStepikCourseAction() {
     super(null);
   }
 
+  @Override
   protected String getSiteURL() {
-    return "http://slack-mps.jetbrains.com";
+    return "https://stepik.org/course/71593";
   }
 }
