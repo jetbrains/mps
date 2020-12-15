@@ -2,8 +2,6 @@
 <model ref="r:c677fbe5-7383-4702-bb5b-4cafd7c3a08b(jetbrains.mps.generator.tests.callsite@tests)">
   <persistence version="9" />
   <languages>
-    <use id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test" version="5" />
-    <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
     <use id="68015e26-cc4d-49db-8715-b643faea1769" name="jetbrains.mps.lang.test.generator" version="0" />
   </languages>
   <imports />

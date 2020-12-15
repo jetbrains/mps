@@ -12,12 +12,13 @@ import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.smodel.runtime.DataTypeDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
+import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 import jetbrains.mps.smodel.runtime.ConceptKind;
 import jetbrains.mps.smodel.runtime.StaticScope;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
-import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
+  /*package*/ final ConceptDescriptor myConceptClassExport = createDescriptorForClassExport();
   /*package*/ final ConceptDescriptor myConceptExpressionToReduceToStatement = createDescriptorForExpressionToReduceToStatement();
   /*package*/ final ConceptDescriptor myConceptInputNode = createDescriptorForInputNode();
   /*package*/ final ConceptDescriptor myConceptInputNode_A = createDescriptorForInputNode_A();
@@ -42,20 +43,22 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public void reportDependencies(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies deps) {
-    deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
     deps.extendedLanguage(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, "jetbrains.mps.lang.core");
+    deps.extendedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
     deps.aggregatedLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
   }
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptExpressionToReduceToStatement, myConceptInputNode, myConceptInputNode_A, myConceptInputNode_B, myConceptInputNode_C, myConceptInputRoot, myConceptInputRootWithStatementList, myConceptRefTestClass, myConceptRefTestExpression, myConceptRefTestMethod, myConceptRefTestMethodCall, myConceptRefTestParam, myConceptRefTestParamRef);
+    return Arrays.asList(myConceptClassExport, myConceptExpressionToReduceToStatement, myConceptInputNode, myConceptInputNode_A, myConceptInputNode_B, myConceptInputNode_C, myConceptInputRoot, myConceptInputRootWithStatementList, myConceptRefTestClass, myConceptRefTestExpression, myConceptRefTestMethod, myConceptRefTestMethodCall, myConceptRefTestParam, myConceptRefTestParamRef);
   }
 
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
     switch (myIndexSwitch.index(id)) {
+      case LanguageConceptSwitch.ClassExport:
+        return myConceptClassExport;
       case LanguageConceptSwitch.ExpressionToReduceToStatement:
         return myConceptExpressionToReduceToStatement;
       case LanguageConceptSwitch.InputNode:
@@ -96,6 +99,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     return myIndexSwitch.index(c);
   }
 
+  private static ConceptDescriptor createDescriptorForClassExport() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.transformation.test.inputLang", "ClassExport", 0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x670a61c4fae70efdL);
+    b.class_(false, false, true);
+    b.origin("r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)/7424854434324614909");
+    b.version(2);
+    b.property("namespace", 0x670a61c4fae70f00L).type(PrimitiveTypeId.STRING).origin("7424854434324614912").done();
+    b.associate("clz", 0x670a61c4fae70efeL).target(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x2e0420fbd0995dfbL).optional(false).origin("7424854434324614910").done();
+    b.alias("cExport");
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForExpressionToReduceToStatement() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.transformation.test.inputLang", "ExpressionToReduceToStatement", 0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11986c01fc7L);
     b.class_(false, false, false);

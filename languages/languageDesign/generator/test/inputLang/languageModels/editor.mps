@@ -7,6 +7,7 @@
   <imports>
     <import index="tpm0" ref="r:00000000-0000-4000-0000-011c895905f4(jetbrains.mps.transformation.test.inputLang.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
+    <import index="tpco" ref="r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)" implicit="true" />
   </imports>
   <registry>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
@@ -27,6 +28,9 @@
         <child id="1080736633877" name="cellModel" index="2wV5jI" />
       </concept>
       <concept id="1239814640496" name="jetbrains.mps.lang.editor.structure.CellLayout_VerticalGrid" flags="nn" index="2EHx9g" />
+      <concept id="1078939183254" name="jetbrains.mps.lang.editor.structure.CellModel_Component" flags="sg" stub="3162947552742194261" index="PMmxH">
+        <reference id="1078939183255" name="editorComponent" index="PMmxG" />
+      </concept>
       <concept id="1186403694788" name="jetbrains.mps.lang.editor.structure.ColorStyleClassItem" flags="ln" index="VaVBg">
         <property id="1186403713874" name="color" index="Vb096" />
       </concept>
@@ -562,6 +566,31 @@
     <ref role="1XX52x" to="tpm0:2S48fJgAlS0" resolve="RefTestParam" />
     <node concept="3F0A7n" id="2S48fJgAlTI" role="2wV5jI">
       <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+    </node>
+  </node>
+  <node concept="24kQdi" id="6saosjUTKWs">
+    <property role="3GE5qa" value="RefTest" />
+    <ref role="1XX52x" to="tpm0:6saosjUTKVX" resolve="ClassExport" />
+    <node concept="3EZMnI" id="6saosjUTKWy" role="2wV5jI">
+      <node concept="PMmxH" id="6saosjUTKWH" role="3EZMnx">
+        <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
+      </node>
+      <node concept="1iCGBv" id="6saosjUTKWM" role="3EZMnx">
+        <ref role="1NtTu8" to="tpm0:6saosjUTKVY" resolve="clz" />
+        <node concept="1sVBvm" id="6saosjUTKWO" role="1sWHZn">
+          <node concept="3F0A7n" id="6saosjUTKWW" role="2wV5jI">
+            <property role="1Intyy" value="true" />
+            <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+          </node>
+        </node>
+      </node>
+      <node concept="3F0ifn" id="6saosjUTKXc" role="3EZMnx">
+        <property role="3F0ifm" value=" as " />
+      </node>
+      <node concept="3F0A7n" id="6saosjUTKXk" role="3EZMnx">
+        <ref role="1NtTu8" to="tpm0:6saosjUTKW0" resolve="namespace" />
+      </node>
+      <node concept="2iRfu4" id="6saosjUTKW_" role="2iSdaV" />
     </node>
   </node>
 </model>

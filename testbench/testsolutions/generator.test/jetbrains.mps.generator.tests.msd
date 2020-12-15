@@ -36,6 +36,7 @@
     <language slang="l:68015e26-cc4d-49db-8715-b643faea1769:jetbrains.mps.lang.test.generator" version="0" />
     <language slang="l:9ded098b-ad6a-4657-bfd9-48636cfe8bc3:jetbrains.mps.lang.traceable" version="0" />
     <language slang="l:ab0ae915-e3b5-4f35-b55a-c655d649a03c:jetbrains.mps.transformation.test.inputLang" version="0" />
+    <language slang="l:157a9668-bf58-417b-893e-53d86388dc56:jetbrains.mps.transformation.test.outputLang" version="0" />
   </languageVersions>
   <dependencyVersions>
     <module reference="3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)" version="0" />

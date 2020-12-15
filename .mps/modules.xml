@@ -153,6 +153,7 @@
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/generator/test/inputLang/jetbrains.mps.transformation.test.inputLang.mpl" folder="core.aspects.generator" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/generator/test/inputLangGen1/jetbrains.mps.transformation.test.inputLang.generator01.mpst" folder="core.aspects.generator" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/generator/test/inputLangGen2/jetbrains.mps.transformation.test.inputLang.generator02.mpst" folder="core.aspects.generator" />
+      <modulePath path="$PROJECT_DIR$/languages/languageDesign/generator/test/inputLangGen3/jetbrains.mps.transformation.test.inputLang.generator03.mpst" folder="core.aspects.generator" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/generator/test/outputLang/jetbrains.mps.transformation.test.outputLang.mpl" folder="core.aspects.generator" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/generator/test/property/jetbrains.mps.generator.test.crossmodel.property.mpl" folder="core.aspects.generator" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/generator/test/sandbox/jetbrains.mps.generator.sandbox.msd" folder="core.aspects.generator" />

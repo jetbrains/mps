@@ -322,5 +322,24 @@
       <property role="3tVfz5" value="1202242822699" />
     </node>
   </node>
+  <node concept="1TIwiD" id="6saosjUTKVX">
+    <property role="EcuMT" value="7424854434324614909" />
+    <property role="3GE5qa" value="RefTest" />
+    <property role="TrG5h" value="ClassExport" />
+    <property role="19KtqR" value="true" />
+    <property role="34LRSv" value="cExport" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyi" id="6saosjUTKW0" role="1TKVEl">
+      <property role="IQ2nx" value="7424854434324614912" />
+      <property role="TrG5h" value="namespace" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="1TJgyj" id="6saosjUTKVY" role="1TKVEi">
+      <property role="IQ2ns" value="7424854434324614910" />
+      <property role="20kJfa" value="clz" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="2S48fJgAlRV" resolve="RefTestClass" />
+    </node>
+  </node>
 </model>
 
