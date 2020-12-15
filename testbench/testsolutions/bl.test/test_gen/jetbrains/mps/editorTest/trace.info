@@ -23262,6 +23262,90 @@
       <unit id="7992311602000271873" at="13,0,40,0" name="jetbrains.mps.editorTest.AlterArrayClassExpression_Test" />
     </file>
   </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/8012574656683464671">
+    <file name="StaticMethodCallOperationNew_Test.java">
+      <node id="8012574656683464671" at="18,46,19,25" concept="11" />
+      <node id="8012574656683464671" at="23,68,24,36" concept="2" />
+      <node id="8012574656683464671" at="29,52,30,19" concept="11" />
+      <node id="8012574656683464671" at="34,51,35,72" concept="2" />
+      <node id="8012574656683570955" at="35,72,36,27" concept="2" />
+      <node id="8012574656683464671" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="8012574656683464671" at="18,0,21,0" concept="1" trace="StaticMethodCallOperationNew_Test#()V" />
+      <node id="8012574656683464671" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="8012574656683464671" at="22,0,26,0" concept="5" trace="test_StaticMethodCallOperationNew#()V" />
+      <node id="8012574656683464671" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="8012574656683464671" at="18,46,19,25" />
+      <scope id="8012574656683464671" at="23,68,24,36" />
+      <scope id="8012574656683464671" at="29,52,30,19" />
+      <scope id="8012574656683464671" at="34,51,36,27" />
+      <scope id="8012574656683464671" at="18,0,21,0" />
+      <scope id="8012574656683464671" at="29,0,32,0">
+        <var name="owner" id="8012574656683464671" />
+      </scope>
+      <scope id="8012574656683464671" at="22,0,26,0" />
+      <scope id="8012574656683464671" at="33,0,38,0" />
+      <unit id="8012574656683464671" at="27,0,39,0" name="jetbrains.mps.editorTest.StaticMethodCallOperationNew_Test$TestBody" />
+      <unit id="8012574656683464671" at="13,0,40,0" name="jetbrains.mps.editorTest.StaticMethodCallOperationNew_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/8012574656683571004">
+    <file name="StaticMethodCallOperationVar_Test.java">
+      <node id="8012574656683571004" at="18,46,19,25" concept="11" />
+      <node id="8012574656683571004" at="23,68,24,36" concept="2" />
+      <node id="8012574656683571004" at="29,52,30,19" concept="11" />
+      <node id="8012574656683571004" at="34,51,35,72" concept="2" />
+      <node id="8012574656683571024" at="35,72,36,27" concept="2" />
+      <node id="8012574656683571004" at="15,0,17,0" concept="9" trace="ourParamCache" />
+      <node id="8012574656683571004" at="18,0,21,0" concept="1" trace="StaticMethodCallOperationVar_Test#()V" />
+      <node id="8012574656683571004" at="29,0,32,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="8012574656683571004" at="22,0,26,0" concept="5" trace="test_StaticMethodCallOperationVar#()V" />
+      <node id="8012574656683571004" at="33,0,38,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="8012574656683571004" at="18,46,19,25" />
+      <scope id="8012574656683571004" at="23,68,24,36" />
+      <scope id="8012574656683571004" at="29,52,30,19" />
+      <scope id="8012574656683571004" at="34,51,36,27" />
+      <scope id="8012574656683571004" at="18,0,21,0" />
+      <scope id="8012574656683571004" at="29,0,32,0">
+        <var name="owner" id="8012574656683571004" />
+      </scope>
+      <scope id="8012574656683571004" at="22,0,26,0" />
+      <scope id="8012574656683571004" at="33,0,38,0" />
+      <unit id="8012574656683571004" at="27,0,39,0" name="jetbrains.mps.editorTest.StaticMethodCallOperationVar_Test$TestBody" />
+      <unit id="8012574656683571004" at="13,0,40,0" name="jetbrains.mps.editorTest.StaticMethodCallOperationVar_Test" />
+    </file>
+  </root>
+  <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/8012574656683571849">
+    <file name="StaticMethodCallOperationToStaticMethodCall_Test.java">
+      <node id="8012574656683571849" at="20,61,21,25" concept="11" />
+      <node id="8012574656683571849" at="25,83,26,36" concept="2" />
+      <node id="8012574656683571849" at="31,52,32,19" concept="11" />
+      <node id="8012574656683571849" at="36,51,37,72" concept="2" />
+      <node id="8012574656683573762" at="37,72,38,72" concept="2" />
+      <node id="8012574656683573840" at="38,72,39,72" concept="2" />
+      <node id="8012574656683573871" at="39,72,40,72" concept="2" />
+      <node id="8012574656683573904" at="40,72,41,72" concept="2" />
+      <node id="8012574656683571864" at="41,72,42,41" concept="2" />
+      <node id="8012574656683573083" at="42,41,43,71" concept="2" />
+      <node id="8012574656685057644" at="43,71,44,82" concept="2" />
+      <node id="8012574656683571849" at="17,0,19,0" concept="9" trace="ourParamCache" />
+      <node id="8012574656683571849" at="20,0,23,0" concept="1" trace="StaticMethodCallOperationToStaticMethodCall_Test#()V" />
+      <node id="8012574656683571849" at="31,0,34,0" concept="1" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="8012574656683571849" at="24,0,28,0" concept="5" trace="test_StaticMethodCallOperationToStaticMethodCall#()V" />
+      <node id="8012574656683571849" at="35,0,46,0" concept="5" trace="testMethodImpl#()V" />
+      <scope id="8012574656683571849" at="20,61,21,25" />
+      <scope id="8012574656683571849" at="25,83,26,36" />
+      <scope id="8012574656683571849" at="31,52,32,19" />
+      <scope id="8012574656683571849" at="20,0,23,0" />
+      <scope id="8012574656683571849" at="31,0,34,0">
+        <var name="owner" id="8012574656683571849" />
+      </scope>
+      <scope id="8012574656683571849" at="24,0,28,0" />
+      <scope id="8012574656683571849" at="36,51,44,82" />
+      <scope id="8012574656683571849" at="35,0,46,0" />
+      <unit id="8012574656683571849" at="29,0,47,0" name="jetbrains.mps.editorTest.StaticMethodCallOperationToStaticMethodCall_Test$TestBody" />
+      <unit id="8012574656683571849" at="15,0,48,0" name="jetbrains.mps.editorTest.StaticMethodCallOperationToStaticMethodCall_Test" />
+    </file>
+  </root>
   <root nodeRef="r:914ee49a-537d-44b2-a5fb-bac87a54743d(jetbrains.mps.editorTest@tests)/8030715741824220899">
     <file name="PasteStatementManyTimes_Test.java">
       <node id="8030715741824220899" at="18,41,19,25" concept="11" />

@@ -234,6 +234,9 @@
       <concept id="7251340091268481742" name="jetbrains.mps.baseLanguage.structure.IncompleteLeftParen" flags="ng" index="2DeEQE" />
       <concept id="2329139813954029793" name="jetbrains.mps.baseLanguage.structure.IncompleteRightParen" flags="ng" index="ECsMN" />
       <concept id="1095950406618" name="jetbrains.mps.baseLanguage.structure.DivExpression" flags="nn" index="FJ1c_" />
+      <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
+        <reference id="2820489544401957798" name="classifier" index="HV5vE" />
+      </concept>
       <concept id="4678410916365116210" name="jetbrains.mps.baseLanguage.structure.DefaultModifier" flags="ng" index="2JFqV2" />
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
@@ -252,6 +255,7 @@
       <concept id="1197029447546" name="jetbrains.mps.baseLanguage.structure.FieldReferenceOperation" flags="nn" index="2OwXpG">
         <reference id="1197029500499" name="fieldDeclaration" index="2Oxat5" />
       </concept>
+      <concept id="5763944538902644732" name="jetbrains.mps.baseLanguage.structure.StaticMethodCallOperation" flags="ng" index="2PDubS" />
       <concept id="1083245097125" name="jetbrains.mps.baseLanguage.structure.EnumClass" flags="ig" index="Qs71p">
         <child id="1083245396908" name="enumConstant" index="Qtgdg" />
       </concept>
@@ -83654,6 +83658,255 @@
     <node concept="3clFbS" id="2RHbBGjZ1Vw" role="LjaKd">
       <node concept="1MTqDA" id="2RHbBGjZ2i9" role="3cqZAp">
         <ref role="1DyUlj" to="tpeh:1W1T8AXfMSj" />
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="6WMozazU_vv">
+    <property role="3GE5qa" value="staticMethodCall" />
+    <property role="TrG5h" value="StaticMethodCallOperationNew" />
+    <node concept="1qefOq" id="6WMozazU_xC" role="25YQCW">
+      <node concept="9aQIb" id="6WMozazU_xO" role="1qenE9">
+        <node concept="3clFbS" id="6WMozazU_xP" role="9aQI4">
+          <node concept="3clFbF" id="6WMozazUCF7" role="3cqZAp">
+            <node concept="2OqwBi" id="6WMozazUYph" role="3clFbG">
+              <node concept="2ShNRf" id="6WMozazUCF5" role="2Oq$k0">
+                <node concept="HV5vD" id="6WMozazUYkW" role="2ShVmc">
+                  <ref role="HV5vE" node="7mvMFqc9Hw$" resolve="TestStaticMethodCall" />
+                </node>
+              </node>
+              <node concept="1B$H19" id="6WMozazUYpo" role="2OqNvi">
+                <node concept="LIFWc" id="6WMozazUZiX" role="lGtFl">
+                  <property role="ZRATv" value="true" />
+                  <property role="OXtK3" value="true" />
+                  <property role="p6zMq" value="0" />
+                  <property role="p6zMs" value="0" />
+                  <property role="LIFWd" value="Custom_13zen7_a" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="6WMozazUYpG" role="25YQFr">
+      <node concept="9aQIb" id="6WMozazUYpH" role="1qenE9">
+        <node concept="3clFbS" id="6WMozazUYpI" role="9aQI4">
+          <node concept="3clFbF" id="6WMozazUYpJ" role="3cqZAp">
+            <node concept="2OqwBi" id="6WMozazUYpK" role="3clFbG">
+              <node concept="2ShNRf" id="6WMozazUYpL" role="2Oq$k0">
+                <node concept="HV5vD" id="6WMozazUYpM" role="2ShVmc">
+                  <ref role="HV5vE" node="7mvMFqc9Hw$" resolve="TestStaticMethodCall" />
+                </node>
+              </node>
+              <node concept="2PDubS" id="6WMozazUZgD" role="2OqNvi">
+                <ref role="37wK5l" node="7mvMFqc9JZV" resolve="method" />
+                <node concept="LIFWc" id="6WMozazUZiu" role="lGtFl">
+                  <property role="ZRATv" value="true" />
+                  <property role="OXtK3" value="true" />
+                  <property role="p6zMq" value="1" />
+                  <property role="p6zMs" value="1" />
+                  <property role="LIFWd" value="Constant_arlg9k_c0" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="3clFbS" id="6WMozazUZsc" role="LjaKd">
+      <node concept="2TK7Tu" id="6WMozazUZsb" role="3cqZAp">
+        <property role="2TTd_B" value="method" />
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="6WMozazUZsW">
+    <property role="3GE5qa" value="staticMethodCall" />
+    <property role="TrG5h" value="StaticMethodCallOperationVar" />
+    <node concept="1qefOq" id="6WMozazUZsX" role="25YQCW">
+      <node concept="9aQIb" id="6WMozazUZsY" role="1qenE9">
+        <node concept="3clFbS" id="6WMozazUZsZ" role="9aQI4">
+          <node concept="3cpWs8" id="6WMozazUZvT" role="3cqZAp">
+            <node concept="3cpWsn" id="6WMozazUZvU" role="3cpWs9">
+              <property role="TrG5h" value="call" />
+              <node concept="3uibUv" id="6WMozazUZvI" role="1tU5fm">
+                <ref role="3uigEE" node="7mvMFqc9Hw$" resolve="TestStaticMethodCall" />
+              </node>
+              <node concept="2ShNRf" id="6WMozazUZvV" role="33vP2m">
+                <node concept="HV5vD" id="6WMozazUZvW" role="2ShVmc">
+                  <ref role="HV5vE" node="7mvMFqc9Hw$" resolve="TestStaticMethodCall" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="6WMozazUZt0" role="3cqZAp">
+            <node concept="2OqwBi" id="6WMozazUZ$C" role="3clFbG">
+              <node concept="37vLTw" id="6WMozazUZvX" role="2Oq$k0">
+                <ref role="3cqZAo" node="6WMozazUZvU" resolve="call" />
+              </node>
+              <node concept="1B$H19" id="6WMozazUZ$H" role="2OqNvi">
+                <node concept="LIFWc" id="6WMozazUZ_4" role="lGtFl">
+                  <property role="ZRATv" value="true" />
+                  <property role="OXtK3" value="true" />
+                  <property role="p6zMq" value="0" />
+                  <property role="p6zMs" value="0" />
+                  <property role="LIFWd" value="Custom_13zen7_a" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="3clFbS" id="6WMozazUZtf" role="LjaKd">
+      <node concept="2TK7Tu" id="6WMozazUZtg" role="3cqZAp">
+        <property role="2TTd_B" value="method" />
+      </node>
+    </node>
+    <node concept="1qefOq" id="6WMozazUZ_i" role="25YQFr">
+      <node concept="9aQIb" id="6WMozazUZ_j" role="1qenE9">
+        <node concept="3clFbS" id="6WMozazUZ_k" role="9aQI4">
+          <node concept="3cpWs8" id="6WMozazUZ_l" role="3cqZAp">
+            <node concept="3cpWsn" id="6WMozazUZ_m" role="3cpWs9">
+              <property role="TrG5h" value="call" />
+              <node concept="3uibUv" id="6WMozazUZ_n" role="1tU5fm">
+                <ref role="3uigEE" node="7mvMFqc9Hw$" resolve="TestStaticMethodCall" />
+              </node>
+              <node concept="2ShNRf" id="6WMozazUZ_o" role="33vP2m">
+                <node concept="HV5vD" id="6WMozazUZ_p" role="2ShVmc">
+                  <ref role="HV5vE" node="7mvMFqc9Hw$" resolve="TestStaticMethodCall" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="6WMozazUZ_q" role="3cqZAp">
+            <node concept="2OqwBi" id="6WMozazUZ_r" role="3clFbG">
+              <node concept="37vLTw" id="6WMozazUZ_s" role="2Oq$k0">
+                <ref role="3cqZAo" node="6WMozazUZ_m" resolve="call" />
+              </node>
+              <node concept="2PDubS" id="6WMozazUZAZ" role="2OqNvi">
+                <ref role="37wK5l" node="7mvMFqc9JZV" resolve="method" />
+                <node concept="LIFWc" id="6WMozazUZCN" role="lGtFl">
+                  <property role="ZRATv" value="true" />
+                  <property role="OXtK3" value="true" />
+                  <property role="p6zMq" value="1" />
+                  <property role="p6zMs" value="1" />
+                  <property role="LIFWd" value="Constant_arlg9k_c0" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="6WMozazUZE9">
+    <property role="3GE5qa" value="staticMethodCall" />
+    <property role="TrG5h" value="StaticMethodCallOperationToStaticMethodCall" />
+    <node concept="1qefOq" id="6WMozazUZEa" role="25YQCW">
+      <node concept="9aQIb" id="6WMozazUZEb" role="1qenE9">
+        <node concept="3clFbS" id="6WMozazUZEc" role="9aQI4">
+          <node concept="3cpWs8" id="6WMozazUZEd" role="3cqZAp">
+            <node concept="3cpWsn" id="6WMozazUZEe" role="3cpWs9">
+              <property role="TrG5h" value="call" />
+              <node concept="3uibUv" id="6WMozazUZEf" role="1tU5fm">
+                <ref role="3uigEE" node="7mvMFqc9Hw$" resolve="TestStaticMethodCall" />
+              </node>
+              <node concept="2ShNRf" id="6WMozazUZEg" role="33vP2m">
+                <node concept="HV5vD" id="6WMozazUZEh" role="2ShVmc">
+                  <ref role="HV5vE" node="7mvMFqc9Hw$" resolve="TestStaticMethodCall" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="6WMozazUZEi" role="3cqZAp">
+            <node concept="2OqwBi" id="6WMozazUZEj" role="3clFbG">
+              <node concept="37vLTw" id="6WMozazUZEk" role="2Oq$k0">
+                <ref role="3cqZAo" node="6WMozazUZEe" resolve="call" />
+                <node concept="LIFWc" id="6WMozazUZKs" role="lGtFl">
+                  <property role="ZRATv" value="true" />
+                  <property role="OXtK3" value="true" />
+                  <property role="p6zMq" value="4" />
+                  <property role="p6zMs" value="4" />
+                  <property role="LIFWd" value="property_name" />
+                </node>
+              </node>
+              <node concept="2PDubS" id="6WMozazUZIC" role="2OqNvi">
+                <ref role="37wK5l" node="7mvMFqc9JZV" resolve="method" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="3clFbS" id="6WMozazUZEn" role="LjaKd">
+      <node concept="2HxZob" id="6WMozazV082" role="3cqZAp">
+        <node concept="1iFQzN" id="6WMozazV08x" role="3iKnsn">
+          <ref role="1iFR8X" to="ekwn:7HPyHg86S0x" resolve="Backspace" />
+        </node>
+      </node>
+      <node concept="2HxZob" id="6WMozazV09g" role="3cqZAp">
+        <node concept="1iFQzN" id="6WMozazV09h" role="3iKnsn">
+          <ref role="1iFR8X" to="ekwn:7HPyHg86S0x" resolve="Backspace" />
+        </node>
+      </node>
+      <node concept="2HxZob" id="6WMozazV09J" role="3cqZAp">
+        <node concept="1iFQzN" id="6WMozazV09K" role="3iKnsn">
+          <ref role="1iFR8X" to="ekwn:7HPyHg86S0x" resolve="Backspace" />
+        </node>
+      </node>
+      <node concept="2HxZob" id="6WMozazV0ag" role="3cqZAp">
+        <node concept="1iFQzN" id="6WMozazV0ah" role="3iKnsn">
+          <ref role="1iFR8X" to="ekwn:7HPyHg86S0x" resolve="Backspace" />
+        </node>
+      </node>
+      <node concept="2TK7Tu" id="6WMozazUZEo" role="3cqZAp">
+        <property role="2TTd_B" value="TestStaticMethodCall" />
+      </node>
+      <node concept="2HxZob" id="6WMozazUZXr" role="3cqZAp">
+        <node concept="1iFQzN" id="6WMozazUZXS" role="3iKnsn">
+          <ref role="1iFR8X" to="ekwn:2XByp9s_j7f" resolve="Complete" />
+        </node>
+      </node>
+      <node concept="yd1bK" id="6WMoza$0EpG" role="3cqZAp">
+        <node concept="pLAjd" id="6WMoza$0EpI" role="yd6KS">
+          <property role="pLAjf" value="VK_ENTER" />
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="6WMozazUZKJ" role="25YQFr">
+      <node concept="9aQIb" id="6WMozazUZKK" role="1qenE9">
+        <node concept="3clFbS" id="6WMozazUZKL" role="9aQI4">
+          <node concept="3cpWs8" id="6WMozazUZKM" role="3cqZAp">
+            <node concept="3cpWsn" id="6WMozazUZKN" role="3cpWs9">
+              <property role="TrG5h" value="call" />
+              <node concept="3uibUv" id="6WMozazUZKO" role="1tU5fm">
+                <ref role="3uigEE" node="7mvMFqc9Hw$" resolve="TestStaticMethodCall" />
+              </node>
+              <node concept="2ShNRf" id="6WMozazUZKP" role="33vP2m">
+                <node concept="HV5vD" id="6WMozazUZKQ" role="2ShVmc">
+                  <ref role="HV5vE" node="7mvMFqc9Hw$" resolve="TestStaticMethodCall" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="6WMozazUZKR" role="3cqZAp">
+            <node concept="2OqwBi" id="6WMozazUZKS" role="3clFbG">
+              <node concept="2PDubS" id="6WMozazUZKU" role="2OqNvi">
+                <ref role="37wK5l" node="7mvMFqc9JZV" resolve="method" />
+              </node>
+              <node concept="39w1OS" id="6WMozazUZMm" role="2Oq$k0">
+                <ref role="39w2Dt" node="7mvMFqc9Hw$" resolve="TestStaticMethodCall" />
+                <node concept="LIFWc" id="6WMozazV0ca" role="lGtFl">
+                  <property role="ZRATv" value="true" />
+                  <property role="OXtK3" value="true" />
+                  <property role="p6zMq" value="20" />
+                  <property role="p6zMs" value="20" />
+                  <property role="LIFWd" value="ReferencePresentation_jmj636_a0a0" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
     </node>
   </node>
