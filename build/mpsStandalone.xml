@@ -82,6 +82,26 @@
     <copy todir="${build.layout}/plugins/java">
       <fileset dir="${basedir}/plugins/java" />
     </copy>
+    <mkdir dir="${build.layout}/plugins/copyright" />
+    <copy todir="${build.layout}/plugins/copyright">
+      <fileset dir="${basedir}/plugins/copyright" />
+    </copy>
+    <mkdir dir="${build.layout}/plugins/markdown" />
+    <copy todir="${build.layout}/plugins/markdown">
+      <fileset dir="${basedir}/plugins/markdown" />
+    </copy>
+    <mkdir dir="${build.layout}/plugins/properties" />
+    <copy todir="${build.layout}/plugins/properties">
+      <fileset dir="${basedir}/plugins/properties" />
+    </copy>
+    <mkdir dir="${build.layout}/plugins/properties-resource-bundle-editor" />
+    <copy todir="${build.layout}/plugins/properties-resource-bundle-editor">
+      <fileset dir="${basedir}/plugins/properties-resource-bundle-editor" />
+    </copy>
+    <mkdir dir="${build.layout}/plugins/sh" />
+    <copy todir="${build.layout}/plugins/sh">
+      <fileset dir="${basedir}/plugins/sh" />
+    </copy>
     <echo file="${build.layout}/build.properties">mpsBootstrapCore.version.major=${mpsBootstrapCore.version.major}${line.separator}mpsBootstrapCore.version.minor=${mpsBootstrapCore.version.minor}${line.separator}mpsBootstrapCore.version.bugfixNr=${mpsBootstrapCore.version.bugfixNr}${line.separator}mpsBootstrapCore.version.eap=${mpsBootstrapCore.version.eap}${line.separator}mpsBootstrapCore.version=${mpsBootstrapCore.version}</echo>
   </target>
   
