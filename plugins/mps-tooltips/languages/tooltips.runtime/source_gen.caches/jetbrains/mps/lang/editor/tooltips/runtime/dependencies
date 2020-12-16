@@ -11,13 +11,10 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SRepository" />
   </dependency>
   <dependency className="jetbrains.mps.lang.editor.tooltips.runtime.LazyTooltipCellEvaluator">
-    <classNode dependClassName="com.intellij.openapi.util.Factory" />
-    <classNode dependClassName="com.intellij.openapi.util.NullableLazyValue" />
     <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.Wrappers" />
     <classNode dependClassName="jetbrains.mps.lang.editor.tooltips.runtime.EditorCellCreator" />
     <classNode dependClassName="jetbrains.mps.lang.editor.tooltips.runtime.TooltipUtils" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorComponent" />
