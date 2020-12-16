@@ -71,10 +71,6 @@
     <mps.PluginComponentContributor application="jetbrains.mps.ide.devkit.actions.Mpsdevkit_ApplicationPlugin" project="jetbrains.mps.ide.devkit.actions.Mpsdevkit_ProjectPlugin" />
   </extensions>
   <actions>
-    <group id="WelcomeScreen.Documentation.MPS">
-      <reference id="OnlineDocAction"/>
-      <add-to-group group-id="WelcomeScreen.Documentation" anchor="last"/>
-    </group>
     <!--  Insert MPS actions between IntelliJ Help group actions  -->
     <!--Help-->
     <group>
@@ -108,6 +104,16 @@
               class="jetbrains.mps.ide.devkit.help.ShowFAQAction"
               text="FAQ"/>
       <add-to-group group-id="HelpMenu" relative-to-action="WhatsNewAction" anchor="after"/>
+    </group>
+
+    <!--  Override IntelliJ Help and Resources group actions in Learn IDE tab on Welcome Screen,
+    but preserve original actions and add MPS actions to the end  -->
+    <group id="WelcomeScreen.LearnIdeHelp" keep-content="true" overrides="true">
+      <separator/>
+      <reference ref="ShowUserGuide"/>
+      <reference ref="ShowStepikCourse"/>
+      <reference ref="ShowCommunitySite"/>
+      <reference ref="ShowFAQ"/>
     </group>
   </actions>
 
