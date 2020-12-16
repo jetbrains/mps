@@ -148,7 +148,8 @@ public final class AnnotationColumn extends AbstractLeftColumn {
     }
     FontMetrics metrics = graphics.getFontMetrics();
     // display text only if at least half of it can be visible 
-    if (2 * height >= metrics.getHeight()) {
+    if (height >= metrics.getHeight()) {
+      int textY = (int) bounds.start() + (height - metrics.getHeight()) / 2 + metrics.getAscent();
       for (AnnotationAspectSubcolumn subcolumn : ListSequence.fromList(myAspectSubcolumns).where(new IWhereFilter<AnnotationAspectSubcolumn>() {
         public boolean accept(AnnotationAspectSubcolumn s) {
           return s.isEnabled();
@@ -159,7 +160,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
         if (subcolumn.isRightAligned()) {
           textX += subcolumn.getWidth() - metrics.stringWidth(text);
         }
-        graphics.drawString(text, textX, y + metrics.getAscent());
+        graphics.drawString(text, textX, textY);
       }
     }
   }

@@ -7,10 +7,9 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
 import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import com.intellij.openapi.vcs.history.CurrentRevision;
 import git4idea.GitFileRevision;
@@ -32,15 +31,16 @@ public final class CellAnnotation {
   @NotNull
   private final VcsFileRevision myRevision;
   private final VcsFileRevision myPrevRevision;
-  private final List<RevisionNodeChange> myChanges = ListSequence.fromList(new ArrayList<RevisionNodeChange>());
+  private final List<RevisionNodeChange> myChanges;
   private final Project myProject;
 
 
-  public CellAnnotation(Project project, EditorCell cell, @NotNull VcsFileRevision revision, VcsFileRevision prevRevision) {
+  public CellAnnotation(Project project, EditorCell cell, @NotNull VcsFileRevision revision, VcsFileRevision prevRevision, List<RevisionNodeChange> changes) {
     myProject = project;
     myCell = cell;
     myRevision = revision;
     myPrevRevision = prevRevision;
+    myChanges = changes;
   }
 
   public EditorCell getCell() {
@@ -54,10 +54,6 @@ public final class CellAnnotation {
 
   public VcsFileRevision getPrevRevision() {
     return myPrevRevision;
-  }
-
-  public void addChange(@NotNull RevisionNodeChange change) {
-    ListSequence.fromList(myChanges).addElement(change);
   }
 
   @NotNull

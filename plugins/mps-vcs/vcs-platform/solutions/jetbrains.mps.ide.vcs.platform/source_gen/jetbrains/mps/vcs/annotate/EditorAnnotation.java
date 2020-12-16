@@ -41,6 +41,8 @@ import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import com.intellij.util.ui.UIUtil;
 import java.util.Objects;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import java.util.Collection;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Collections;
 import jetbrains.mps.vcs.diff.ui.common.EditorCellMessageUtil;
@@ -51,7 +53,6 @@ import java.util.Date;
 import java.util.Comparator;
 import com.intellij.util.containers.ContainerUtil;
 import java.util.NavigableSet;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import com.intellij.openapi.util.Couple;
 import git4idea.GitVcs;
 import com.intellij.openapi.vcs.annotate.FileAnnotation;
@@ -282,17 +283,19 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
 
   @Nullable
   private CellAnnotation createCellAnnotation(EditorCell cell, RevisionNodeChange change) {
-    CellAnnotation cellAnnotation = MapSequence.fromMap(myCellAnnotations).get(cell);
-    CellAnnotation newAnnotation = null;
-    if (cellAnnotation == null || cellAnnotation.isEarlierThanRevision(change.getRevision())) {
-      cellAnnotation = new CellAnnotation(myProject, cell, change.getRevision(), change.getPrevRevision());
-      MapSequence.fromMap(myCellAnnotations).put(cell, cellAnnotation);
-      newAnnotation = cellAnnotation;
+
+    CellAnnotation oldAnnotation = MapSequence.fromMap(myCellAnnotations).get(cell);
+    if (oldAnnotation != null && !(oldAnnotation.isEarlierThanRevision(change.getRevision())) && oldAnnotation.getRevision() != change.getRevision()) {
+      return null;
     }
-    if (cellAnnotation.getRevision() == change.getRevision()) {
-      cellAnnotation.addChange(change);
-      newAnnotation = cellAnnotation;
+
+    List<RevisionNodeChange> changes = ListSequence.fromList(new ArrayList<RevisionNodeChange>());
+    if (oldAnnotation != null && oldAnnotation.getRevision() == change.getRevision()) {
+      ListSequence.fromList(changes).addSequence(ListSequence.fromList(oldAnnotation.getChanges()));
     }
+    ListSequence.fromList(changes).addElement(change);
+    CellAnnotation newAnnotation = new CellAnnotation(myProject, cell, change.getRevision(), change.getPrevRevision(), changes);
+    MapSequence.fromMap(myCellAnnotations).put(cell, newAnnotation);
     return newAnnotation;
   }
 
@@ -341,15 +344,107 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     ListSequence.fromList(newMessages).addElement(cellMessage);
   }
 
+  private static class BoundsGroup {
+
+    private final Set<Bounds> myBounds = SetSequence.fromSet(new HashSet<Bounds>());
+    private int myStart;
+    private int myEnd;
+
+    private BoundsGroup(Bounds bounds) {
+      SetSequence.fromSet(myBounds).addElement(bounds);
+      myStart = (int) bounds.start();
+      myEnd = (int) bounds.end();
+    }
+
+    public int getStart() {
+      return myStart;
+    }
+
+    public int getEnd() {
+      return myEnd;
+    }
+
+    public Bounds getGroupBounds() {
+      return new Bounds(myStart, myEnd);
+    }
+
+    public boolean intersectsWith(BoundsGroup group) {
+      return myStart < group.getEnd() && group.getStart() < myEnd;
+    }
+
+    public boolean isEmpty() {
+      return SetSequence.fromSet(myBounds).isEmpty();
+    }
+
+    public boolean containsBounds(Bounds bounds) {
+      return SetSequence.fromSet(myBounds).contains(bounds);
+    }
+
+    public void absorbGroup(BoundsGroup group) {
+      SetSequence.fromSet(myBounds).addSequence(SetSequence.fromSet(group.myBounds));
+      SetSequence.fromSet(group.myBounds).clear();
+      myStart = Math.min(myStart, group.getStart());
+      myEnd = Math.max(myEnd, group.getEnd());
+    }
+  }
+
   private void updateLineAnnotations() {
+
+    Set<Bounds> allBounds = SetSequence.fromSetWithValues(new HashSet<Bounds>(), Sequence.fromIterable(MapSequence.fromMap(myEditorMessages).values()).select(new ISelector<AnnotatedCellMessage, Bounds>() {
+      public Bounds select(AnnotatedCellMessage it) {
+        return new Bounds(it.getCell().getY(), it.getCell().getBottom());
+      }
+    }));
+
+    final Wrappers._T<Collection<BoundsGroup>> groups = new Wrappers._T<Collection<BoundsGroup>>(SetSequence.fromSet(allBounds).select(new ISelector<Bounds, BoundsGroup>() {
+      public BoundsGroup select(Bounds it) {
+        return new BoundsGroup(it);
+      }
+    }).toListSequence());
+    for (BoundsGroup g1 : CollectionSequence.fromCollection(groups.value)) {
+      if (g1.isEmpty()) {
+        continue;
+      }
+      for (BoundsGroup g2 : CollectionSequence.fromCollection(groups.value)) {
+        if (Objects.equals(g1, g2) || g2.isEmpty()) {
+          continue;
+        }
+        if (g1.intersectsWith(g2)) {
+          g1.absorbGroup(g2);
+        }
+      }
+    }
+    groups.value = CollectionSequence.fromCollection(groups.value).where(new IWhereFilter<BoundsGroup>() {
+      public boolean accept(BoundsGroup it) {
+        return !(it.isEmpty());
+      }
+    }).sort(new ISelector<BoundsGroup, Integer>() {
+      public Integer select(BoundsGroup it) {
+        return it.getStart();
+      }
+    }, true).toListSequence();
+
+    final Map<Bounds, BoundsGroup> boundsGroupMap = MapSequence.fromMap(new HashMap<Bounds, BoundsGroup>());
+    SetSequence.fromSet(allBounds).visitAll(new IVisitor<Bounds>() {
+      public void visit(final Bounds bounds) {
+        MapSequence.fromMap(boundsGroupMap).put(bounds, CollectionSequence.fromCollection(groups.value).findFirst(new IWhereFilter<BoundsGroup>() {
+          public boolean accept(BoundsGroup group) {
+            return group.containsBounds(bounds);
+          }
+        }));
+      }
+    });
     final Map<Bounds, LineAnnotation> lineAnnotations = MapSequence.fromMap(new HashMap<Bounds, LineAnnotation>());
     Sequence.fromIterable(MapSequence.fromMap(myEditorMessages).values()).visitAll(new IVisitor<AnnotatedCellMessage>() {
       public void visit(AnnotatedCellMessage message) {
         EditorCell cell = message.getCell();
         Bounds cellBounds = new Bounds(cell.getY(), cell.getBottom());
-        LineAnnotation lineAnnotation = MapSequence.fromMap(lineAnnotations).get(cellBounds);
-        if (lineAnnotation == null || lineAnnotation.isEarlierThanRevision(message.getRevision())) {
-          MapSequence.fromMap(lineAnnotations).put(cellBounds, new LineAnnotation(message.getRevision(), message.getPrevRevision(), message.getRevisionDescription()));
+        Bounds groupBounds = check_coav66_a0c0a0a01a85(MapSequence.fromMap(boundsGroupMap).get(cellBounds));
+        if (groupBounds != null) {
+          LineAnnotation lineAnnotation = MapSequence.fromMap(lineAnnotations).get(groupBounds);
+          if (lineAnnotation == null || lineAnnotation.isEarlierThanRevision(message.getRevision())) {
+            MapSequence.fromMap(lineAnnotations).put(groupBounds, new LineAnnotation(message.getRevision(), message.getPrevRevision(), message.getRevisionDescription()));
+          }
         }
       }
     });
@@ -588,5 +683,11 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
 
   public ShowDiffFromAnnotationAction createDiffAction(VcsFileRevision revision, VcsFileRevision prevRevision) {
     return new ShowDiffFromAnnotationAction(revision, prevRevision, myEditorComponent.getEditedNode(), myProject, myFile.getExtension());
+  }
+  private static Bounds check_coav66_a0c0a0a01a85(BoundsGroup checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getGroupBounds();
+    }
+    return null;
   }
 }
