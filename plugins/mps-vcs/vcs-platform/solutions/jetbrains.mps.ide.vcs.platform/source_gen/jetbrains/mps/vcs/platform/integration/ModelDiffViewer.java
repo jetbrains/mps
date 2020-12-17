@@ -74,7 +74,10 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
     }
     List<String> titles = request.getContentTitles();
     myViewer.setContentTitles(titles.get(0), titles.get(1));
-    myViewer.setCurrentRoot(rootId);
+    if (rootId != null) {
+      // beware, rootId == null is treated as 'show model metadata changes', regardless of whether there are such changes  
+      myViewer.setCurrentRoot(rootId);
+    }
     // navigate to specific place in editor if requested 
     Bounds scrollTo = request.getUserData(DIFF_NAVIGATE_TO);
     if (scrollTo != null) {

@@ -142,10 +142,12 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   }
 
   public void setSelected(@Nullable SNodeId rootId) {
+    // FIXME there's hidden assumption that null rootId means 'select model properties changes' 
+    //      because MetadataTeeeNode is RootTreeNode with null rootId 
     // todo: find path by rootId 
     TreePath path = null;
     for (int i = 0; i < getRowCount(); ++i) {
-      RootTreeNode node = as_5x0uld_a0a0a2a21(getPathForRow(i).getLastPathComponent(), RootTreeNode.class);
+      RootTreeNode node = as_5x0uld_a0a0a4a21(getPathForRow(i).getLastPathComponent(), RootTreeNode.class);
       if (node != null && Objects.equals(node.getRootId(), rootId)) {
         path = getPathForRow(i);
         break;
@@ -172,7 +174,11 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
     setModel(new DefaultTreeModel(root));
     setRootVisible(true);
     TreeUtil.expandAll(this);
-    setSelectionRow(0);
+    if (!(ListSequence.fromList(myRootNodes).isEmpty())) {
+      setSelected(ListSequence.fromList(myRootNodes).getElement(0).getRootId());
+    } else {
+      setSelectionRow(0);
+    }
   }
 
   protected abstract Iterable<SNodeId> getAffectedRoots();
@@ -373,7 +379,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
   }
-  private static <T> T as_5x0uld_a0a0a2a21(Object o, Class<T> type) {
+  private static <T> T as_5x0uld_a0a0a4a21(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 

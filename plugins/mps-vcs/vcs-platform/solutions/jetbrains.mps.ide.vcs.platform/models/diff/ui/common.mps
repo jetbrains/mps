@@ -14814,6 +14814,86 @@
       <node concept="3cqZAl" id="2alxbCQ_nn0" role="3clF45" />
       <node concept="3Tm1VV" id="2alxbCQ_nn1" role="1B3o_S" />
       <node concept="3clFbS" id="2alxbCQ_nn2" role="3clF47">
+        <node concept="3SKdUt" id="7Bco4cXSOmI" role="3cqZAp">
+          <node concept="1PaTwC" id="7Bco4cXSOmJ" role="1aUNEU">
+            <node concept="3oM_SD" id="7Bco4cXSOmK" role="1PaTwD">
+              <property role="3oM_SC" value="FIXME" />
+            </node>
+            <node concept="3oM_SD" id="7Bco4cXSOuo" role="1PaTwD">
+              <property role="3oM_SC" value="there's" />
+            </node>
+            <node concept="3oM_SD" id="7Bco4cXSOuN" role="1PaTwD">
+              <property role="3oM_SC" value="hidden" />
+            </node>
+            <node concept="3oM_SD" id="7Bco4cXSOuZ" role="1PaTwD">
+              <property role="3oM_SC" value="assumption" />
+            </node>
+            <node concept="3oM_SD" id="7Bco4cXSOvc" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="7Bco4cXSOvy" role="1PaTwD">
+              <property role="3oM_SC" value="null" />
+            </node>
+            <node concept="3oM_SD" id="7Bco4cXSOvD" role="1PaTwD">
+              <property role="3oM_SC" value="rootId" />
+            </node>
+            <node concept="3oM_SD" id="7Bco4cXSOw1" role="1PaTwD">
+              <property role="3oM_SC" value="means" />
+            </node>
+            <node concept="3oM_SD" id="7Bco4cXSOwa" role="1PaTwD">
+              <property role="3oM_SC" value="'select" />
+            </node>
+            <node concept="3oM_SD" id="7Bco4cXSOws" role="1PaTwD">
+              <property role="3oM_SC" value="model" />
+            </node>
+            <node concept="3oM_SD" id="7Bco4cXSOxn" role="1PaTwD">
+              <property role="3oM_SC" value="properties" />
+            </node>
+            <node concept="3oM_SD" id="7Bco4cXSOxz" role="1PaTwD">
+              <property role="3oM_SC" value="changes'" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="7Bco4cXSQe5" role="3cqZAp">
+          <node concept="1PaTwC" id="7Bco4cXSQe6" role="1aUNEU">
+            <node concept="3oM_SD" id="7Bco4cXSQe7" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+            <node concept="3oM_SD" id="7Bco4cXSQiZ" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+            <node concept="3oM_SD" id="7Bco4cXSQj2" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+            <node concept="3oM_SD" id="7Bco4cXSQj6" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+            <node concept="3oM_SD" id="7Bco4cXSQjb" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+            <node concept="3oM_SD" id="7Bco4cXSQmn" role="1PaTwD">
+              <property role="3oM_SC" value="because" />
+            </node>
+            <node concept="3oM_SD" id="7Bco4cXSQmI" role="1PaTwD">
+              <property role="3oM_SC" value="MetadataTeeeNode" />
+            </node>
+            <node concept="3oM_SD" id="7Bco4cXSQnm" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="7Bco4cXSQnB" role="1PaTwD">
+              <property role="3oM_SC" value="RootTreeNode" />
+            </node>
+            <node concept="3oM_SD" id="7Bco4cXSQp8" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="7Bco4cXSQpr" role="1PaTwD">
+              <property role="3oM_SC" value="null" />
+            </node>
+            <node concept="3oM_SD" id="7Bco4cXSQpB" role="1PaTwD">
+              <property role="3oM_SC" value="rootId" />
+            </node>
+          </node>
+        </node>
         <node concept="3SKdUt" id="2alxbCQ_Qe6" role="3cqZAp">
           <node concept="1PaTwC" id="ATZLwXomhq" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXomhr" role="1PaTwD">
@@ -15050,11 +15130,47 @@
             <node concept="Xjq3P" id="1KUoCipvzAh" role="37wK5m" />
           </node>
         </node>
-        <node concept="3clFbF" id="1KUoCipvzAi" role="3cqZAp">
-          <node concept="1rXfSq" id="1KUoCipvzAj" role="3clFbG">
-            <ref role="37wK5l" to="dxuu:~JTree.setSelectionRow(int)" resolve="setSelectionRow" />
-            <node concept="3cmrfG" id="1KUoCipvzAk" role="37wK5m">
-              <property role="3cmrfH" value="0" />
+        <node concept="3clFbJ" id="7Bco4cXSkMY" role="3cqZAp">
+          <node concept="3clFbS" id="7Bco4cXSkN0" role="3clFbx">
+            <node concept="3clFbF" id="7Bco4cXS_gf" role="3cqZAp">
+              <node concept="1rXfSq" id="7Bco4cXS_gd" role="3clFbG">
+                <ref role="37wK5l" node="2alxbCQ_nmZ" resolve="setSelected" />
+                <node concept="2OqwBi" id="7Bco4cXSK5m" role="37wK5m">
+                  <node concept="2OqwBi" id="7Bco4cXSFwx" role="2Oq$k0">
+                    <node concept="37vLTw" id="7Bco4cXSCPw" role="2Oq$k0">
+                      <ref role="3cqZAo" node="42hl10VHaRn" resolve="myRootNodes" />
+                    </node>
+                    <node concept="34jXtK" id="7Bco4cXSGjA" role="2OqNvi">
+                      <node concept="3cmrfG" id="7Bco4cXSJJF" role="25WWJ7">
+                        <property role="3cmrfH" value="0" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="7Bco4cXSL0C" role="2OqNvi">
+                    <ref role="37wK5l" node="42hl10VHaLR" resolve="getRootId" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3fqX7Q" id="7Bco4cXSx$L" role="3clFbw">
+            <node concept="2OqwBi" id="7Bco4cXSx$N" role="3fr31v">
+              <node concept="37vLTw" id="7Bco4cXSx$O" role="2Oq$k0">
+                <ref role="3cqZAo" node="42hl10VHaRn" resolve="myRootNodes" />
+              </node>
+              <node concept="1v1jN8" id="7Bco4cXSx$P" role="2OqNvi" />
+            </node>
+          </node>
+          <node concept="9aQIb" id="7Bco4cXSLjC" role="9aQIa">
+            <node concept="3clFbS" id="7Bco4cXSLjD" role="9aQI4">
+              <node concept="3clFbF" id="1KUoCipvzAi" role="3cqZAp">
+                <node concept="1rXfSq" id="1KUoCipvzAj" role="3clFbG">
+                  <ref role="37wK5l" to="dxuu:~JTree.setSelectionRow(int)" resolve="setSelectionRow" />
+                  <node concept="3cmrfG" id="1KUoCipvzAk" role="37wK5m">
+                    <property role="3cmrfH" value="0" />
+                  </node>
+                </node>
+              </node>
             </node>
           </node>
         </node>
