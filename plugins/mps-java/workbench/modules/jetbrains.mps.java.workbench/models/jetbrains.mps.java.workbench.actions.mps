@@ -2036,16 +2036,17 @@
                                       <node concept="2YIFZM" id="5U9rQri5Gj_" role="37vLTx">
                                         <ref role="1Pybhc" to="89o2:7nrhK3uHecP" resolve="MethodRefactoringUtils" />
                                         <ref role="37wK5l" to="89o2:7nrhK3uHedz" resolve="findOverridingMethods" />
-                                        <node concept="2OqwBi" id="6o1U_cwyP_d" role="37wK5m">
-                                          <node concept="2YIFZM" id="6o1U_cwyJaO" role="2Oq$k0">
-                                            <ref role="37wK5l" to="alof:~ProjectHelper.toMPSProject(com.intellij.openapi.project.Project)" resolve="toMPSProject" />
-                                            <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
-                                            <node concept="37vLTw" id="6o1U_cwyJaP" role="37wK5m">
-                                              <ref role="3cqZAo" to="xygl:~Task.myProject" resolve="myProject" />
+                                        <node concept="2OqwBi" id="wCH7Eoi01h" role="37wK5m">
+                                          <node concept="2OqwBi" id="wCH7EohY2j" role="2Oq$k0">
+                                            <node concept="Xjq3P" id="wCH7EohWH9" role="2Oq$k0">
+                                              <ref role="1HBi2w" node="5U9rQri5GeR" resolve="ChangeMethodSignatureDialog" />
+                                            </node>
+                                            <node concept="2OwXpG" id="wCH7EohZ8g" role="2OqNvi">
+                                              <ref role="2Oxat5" node="5wEedBrIoaZ" resolve="myProject" />
                                             </node>
                                           </node>
-                                          <node concept="2pIyA9" id="6o1U_cwyQ35" role="2OqNvi">
-                                            <node concept="1pGfFk" id="6o1U_cwyQVp" role="2ShVmc">
+                                          <node concept="2pIyA9" id="wCH7Eoi1wp" role="2OqNvi">
+                                            <node concept="1pGfFk" id="wCH7Eoi1zh" role="2ShVmc">
                                               <ref role="37wK5l" to="z1c3:~Project$ProjectScope.&lt;init&gt;(jetbrains.mps.project.Project)" resolve="Project.ProjectScope" />
                                             </node>
                                           </node>
