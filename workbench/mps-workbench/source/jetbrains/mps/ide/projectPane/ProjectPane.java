@@ -356,7 +356,7 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
   public void addToolbarActions(DefaultActionGroup group) {
     super.addToolbarActions(group);
     group.addAction(myShowDescriptorModelsAction).setAsSecondary(true);
-    DefaultActionGroup g = new DefaultActionGroup("Error && Warnings", true);
+    DefaultActionGroup g = new DefaultActionGroup("Errors && Warnings", true);
     g.addAction(myShowErrorComponent).setAsSecondary(true);
     g.addAction(myShowUnderline).setAsSecondary(true);
     g.addAction(myShowErrorStripe).setAsSecondary(true);
