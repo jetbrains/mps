@@ -204,13 +204,15 @@ public final class ModulesMiner {
       //
       // folder/modules/module-folder-x
       if (tryReadFromModulesDir(folder, folder.findChild(MODULES_DIR))) {
-        // no need to process nested jars or folders
-        return;
-      }
-      // folder/META-INF/module.xml
-      if (tryModuleFromDeploymentDescriptor(folder, folder.findChild(META_INF).findChild(MODULE_XML))) {
-        // no need to process nested jars or folders
-        return;
+        // no need to process nested jars or folders under 'modules/' if we discovered 'group of modules' there,
+        // but still need to look into sibling folders/jars
+        folders.removeIf(f -> MODULES_DIR.equals(f.getName()));
+      } else {
+        // folder/META-INF/module.xml
+        if (tryModuleFromDeploymentDescriptor(folder, folder.findChild(META_INF).findChild(MODULE_XML))) {
+          // no need to process nested jars or folders
+          return;
+        }
       }
     }
     if (!sourceModuleFound) {
@@ -308,16 +310,17 @@ public final class ModulesMiner {
    */
   private boolean tryReadFromModulesDir(IFile bundleHome, IFile modulesDir) {
     if (modulesDir.exists() && modulesDir.isDirectory()) {
+      boolean moduleInGroup = false;
       for (IFile child : modulesDir.getChildren()) {
         if (child.isDirectory()) {
           // perhaps, we could allow nested directories in tryReadModuleDescriptor, but at the moment
           // we expect 1 level of directories only (XXX what about mps/testbench/modules/aaa.test/languages - disjunction of RVs would help).
-          tryReadModuleDescriptorInModulesGroup(bundleHome, child);
+          moduleInGroup |= tryReadModuleDescriptorInModulesGroup(bundleHome, child);
           // XXX may collect folders without modules and dig into them, with e.g. readModuleDescriptorsFromFolder(), just need to pass bundleHome there
         }
         // expect no descriptors under modules/
       }
-      return true; // disjunction of tryReadModuleDescriptor return values, perhaps?
+      return moduleInGroup; // disjunction of tryReadModuleDescriptor return values
     }
     return false;
   }
