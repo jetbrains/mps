@@ -10863,14 +10863,28 @@
           <node concept="3cpWsn" id="3C60WuaaABU" role="3cpWs9">
             <property role="TrG5h" value="oldVersion" />
             <node concept="10Oyi0" id="3C60WuaaA22" role="1tU5fm" />
-            <node concept="2OqwBi" id="3C60WuaaABV" role="33vP2m">
-              <node concept="37vLTw" id="3C60WuabFJC" role="2Oq$k0">
-                <ref role="3cqZAo" node="3C60WuabFJx" resolve="oldModel" />
+            <node concept="3K4zz7" id="3GvbqxKHgYb" role="33vP2m">
+              <node concept="3cmrfG" id="3GvbqxKHhKe" role="3K4E3e">
+                <property role="3cmrfH" value="-1" />
               </node>
-              <node concept="liA8E" id="3C60WuaaAC2" role="2OqNvi">
-                <ref role="37wK5l" to="w1kc:~SModelInternal.getLanguageImportVersion(org.jetbrains.mps.openapi.language.SLanguage)" resolve="getLanguageImportVersion" />
-                <node concept="37vLTw" id="3C60WuaaAC3" role="37wK5m">
-                  <ref role="3cqZAo" node="4TP40tZZmf6" resolve="myLanguage" />
+              <node concept="3clFbC" id="3GvbqxKHgcz" role="3K4Cdx">
+                <node concept="Rm8GO" id="3GvbqxKHgBc" role="3uHU7w">
+                  <ref role="1Px2BO" node="7inhnIFBpHM" resolve="ChangeType" />
+                  <ref role="Rm8GQ" node="7inhnIFBpHO" resolve="ADD" />
+                </node>
+                <node concept="37vLTw" id="3GvbqxKHfrc" role="3uHU7B">
+                  <ref role="3cqZAo" node="3C60Wuacm2B" resolve="myChangeType" />
+                </node>
+              </node>
+              <node concept="2OqwBi" id="3C60WuaaABV" role="3K4GZi">
+                <node concept="37vLTw" id="3C60WuabFJC" role="2Oq$k0">
+                  <ref role="3cqZAo" node="3C60WuabFJx" resolve="oldModel" />
+                </node>
+                <node concept="liA8E" id="3C60WuaaAC2" role="2OqNvi">
+                  <ref role="37wK5l" to="w1kc:~SModelInternal.getLanguageImportVersion(org.jetbrains.mps.openapi.language.SLanguage)" resolve="getLanguageImportVersion" />
+                  <node concept="37vLTw" id="3C60WuaaAC3" role="37wK5m">
+                    <ref role="3cqZAo" node="4TP40tZZmf6" resolve="myLanguage" />
+                  </node>
                 </node>
               </node>
             </node>

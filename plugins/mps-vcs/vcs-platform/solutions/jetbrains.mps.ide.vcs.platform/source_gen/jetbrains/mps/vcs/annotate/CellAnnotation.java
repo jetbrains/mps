@@ -7,6 +7,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
 import java.util.List;
+import jetbrains.mps.vcs.diff.changes.ChangeType;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -24,6 +25,9 @@ import git4idea.log.GitCommitTooltipLinkHandler;
 import com.intellij.openapi.vcs.VcsBundle;
 import com.intellij.util.text.DateFormatUtil;
 import org.jetbrains.idea.svn.history.SvnFileRevision;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/6338414166353859879", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 public final class CellAnnotation {
@@ -32,6 +36,7 @@ public final class CellAnnotation {
   private final VcsFileRevision myRevision;
   private final VcsFileRevision myPrevRevision;
   private final List<RevisionNodeChange> myChanges;
+  private final ChangeType myChangeType;
   private final Project myProject;
 
 
@@ -41,6 +46,7 @@ public final class CellAnnotation {
     myRevision = revision;
     myPrevRevision = prevRevision;
     myChanges = changes;
+    myChangeType = getChangesType(changes);
   }
 
   public EditorCell getCell() {
@@ -59,6 +65,10 @@ public final class CellAnnotation {
   @NotNull
   public List<RevisionNodeChange> getChanges() {
     return myChanges;
+  }
+
+  public ChangeType getChangeType() {
+    return myChangeType;
   }
 
   public boolean isEarlierThanRevision(@NotNull VcsFileRevision revision) {
@@ -104,4 +114,24 @@ public final class CellAnnotation {
     return tooltipText;
   }
 
+  private static ChangeType getChangesType(Iterable<RevisionNodeChange> changes) {
+    final Wrappers._T<ChangeType> changeType = new Wrappers._T<ChangeType>(null);
+    final Wrappers._boolean oneColor = new Wrappers._boolean(true);
+    Sequence.fromIterable(changes).visitAll(new IVisitor<RevisionNodeChange>() {
+      public void visit(RevisionNodeChange it) {
+        if (oneColor.value) {
+          ChangeType messageType = it.getChangeType();
+          if (changeType.value == null) {
+            changeType.value = messageType;
+          } else if (messageType != changeType.value) {
+            oneColor.value = false;
+          }
+        }
+      }
+    });
+    if (!(oneColor.value)) {
+      return ChangeType.CHANGE;
+    }
+    return changeType.value;
+  }
 }

@@ -22,10 +22,8 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.startup.StartupActivity;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.search.EverythingGlobalScope;
 import com.intellij.util.indexing.FileBasedIndex;
 import com.intellij.util.indexing.ID;
-import com.intellij.util.indexing.SingleEntryFileBasedIndexExtension;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.project.ProjectHelper;
@@ -37,7 +35,7 @@ import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
+import java.util.Map;
 
 /**
  * Index-backed DigestProvider to answer model's hash value quickly.
@@ -92,12 +90,17 @@ public class IndexBasedModelDigest implements StartupActivity.Background {
         if (file == null) {
           return null;
         }
-
-        // proper use of getFileKey, override-only is rather for class itself
-        @SuppressWarnings("OverrideOnly")
-        final int fileKey = SingleEntryFileBasedIndexExtension.getFileKey(file);
-        final List<String> values = FileBasedIndex.getInstance().getValues(myIndexName, fileKey, new EverythingGlobalScope(myProject.getProject()));
-        return values.isEmpty() ? null : values.get(0);
+        if (System.currentTimeMillis() - file.getTimeStamp() < 1000) {
+          // A hack to address MPS-32849. Models saved during MakeActionImpl.executeAction get old hash value
+          // for the first call to this method, indicating model doesn't require generation. Try to guess if model
+          // file is candidate for index refresh (has been modified recently). 1 sec is just a number I imagine as
+          // good enough, no science here. use of FileBasedIndexEx.ensureUpToDate(..., file) didn't help to get
+          // model file properly indexed (always 'true' with no effect on getFileData outcome), and no other method
+          // in FileBasedIndex seemed suitable for the task.
+          return null;
+        }
+        final Map<Integer, String> fd = FileBasedIndex.getInstance().getFileData(myIndexName, file, myProject.getProject());
+        return fd.isEmpty() ? null : fd.values().stream().findFirst().orElse(null);
       } catch (IndexNotReadyException | ProcessCanceledException e) {
         // generally, it's bad to get here (we'd rather check for dumb mode prior accessing the index
         // however, there's nothing bad in returning null here as it's merely an indication of no cached

@@ -26,7 +26,6 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.Set;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import java.awt.Color;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
@@ -38,6 +37,7 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
+import java.awt.Color;
 import com.intellij.util.ui.UIUtil;
 import java.util.Objects;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
@@ -151,12 +151,8 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
   @Override
   public void repaintEditor() {
     Sequence.fromIterable(MapSequence.fromMap(myEditorMessages).values()).visitAll(new IVisitor<AnnotatedCellMessage>() {
-      public void visit(AnnotatedCellMessage message) {
-        Color color = getMessageColor(message);
-        if (color == null) {
-          color = myEditorComponent.getBackground();
-        }
-        message.setColor(color);
+      public void visit(AnnotatedCellMessage it) {
+        it.setColor(calcCellColor(it.getCellAnnotation()));
       }
     });
     ApplicationManager.getApplication().invokeLater(new Runnable() {
@@ -327,10 +323,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
 
   private void updateLeafMessage(CellAnnotation cellAnnotation, EditorCell cell, List<AnnotatedCellMessage> oldMessages, List<AnnotatedCellMessage> newMessages) {
     AnnotatedCellMessage oldMessage = MapSequence.fromMap(myEditorMessages).get(cell);
-    Color color = getRevisionColor(cellAnnotation.getRevision());
-    if (color == null) {
-      color = myEditorComponent.getBackground();
-    }
+    Color color = calcCellColor(cellAnnotation);
     String tooltipText = cellAnnotation.getChangesDescription() + "\n" + UIUtil.BORDER_LINE + "\n" + cellAnnotation.getRevisionDescription();
     if (oldMessage != null && Objects.equals(oldMessage.getMessage(), tooltipText) && oldMessage.getColor().equals(color)) {
       return;
@@ -674,12 +667,14 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     return (colorMap == null ? null : MapSequence.fromMap(colorMap).get(revision.getRevisionNumber()));
   }
 
-  public Color getMessageColor(AnnotatedCellMessage message) {
+  private Color calcCellColor(CellAnnotation cellAnnotation) {
+    Color color;
     if (AnnotationOptions.getInstance().isEditorHighlighted()) {
-      Color color = getRevisionColor(message.getRevision());
-      return (color != null ? color : myEditorComponent.getBackground());
+      color = getRevisionColor(cellAnnotation.getRevision());
+    } else {
+      color = ChangeColors.getInstance().getDiffColor(cellAnnotation.getChangeType());
     }
-    return ChangeColors.getInstance().getDiffColor(message.getChangeType());
+    return (color != null ? color : myEditorComponent.getBackground());
   }
 
   public void showPathsAffectedByRevision(VcsFileRevision revision) {

@@ -33,7 +33,7 @@ public class UsedLanguageChange extends MetadataChange {
   @NotNull
   protected ModelChange createOppositeChange() {
     SModelInternal oldModel = as_72pvsi_a0a0a8(getChangeSet().getOldModel(), SModelInternal.class);
-    int oldVersion = oldModel.getLanguageImportVersion(myLanguage);
+    int oldVersion = (myChangeType == ChangeType.ADD ? -1 : oldModel.getLanguageImportVersion(myLanguage));
     return new UsedLanguageChange(getChangeSet().getOppositeChangeSet(), myLanguage, oldVersion, (myChangeType == ChangeType.ADD ? ChangeType.DELETE : (myChangeType == ChangeType.DELETE ? ChangeType.ADD : myChangeType)));
   }
 

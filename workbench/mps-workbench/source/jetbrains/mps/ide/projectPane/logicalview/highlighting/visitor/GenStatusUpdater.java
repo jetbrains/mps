@@ -139,9 +139,7 @@ public class GenStatusUpdater extends TreeUpdateVisitor implements TreeMessageOw
 
   @Override
   public void visitModuleNode(@NotNull final ProjectModuleTreeNode node) {
-    // XXX might be fruitful to have pre/post visit notifications, so that we can get rid of propagateStatusToNamespaceNodes (do it from post visit)
-    if (node.isInitialized()) {
-      // we've got children (SModelTreeNodes) and there's update for them in #visitModelNode(), below
+    if (isTimeToRelax()) {
       return;
     }
     if (node.getModule().isReadOnly()) {
