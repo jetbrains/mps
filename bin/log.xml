@@ -140,7 +140,12 @@ In MPS sources some run configurations override this path by setting 'idea.log.p
     <priority value="INFO"/>
     <appender-ref ref="DIALOG"/>
     <appender-ref ref="FILE"/>
-    <!-- For quick debug  -->
+
+    <!-- For quick debug: -->
+    <!-- Note: to see messages with a level lower then INFO
+               change the 'priority' value of the root to the required level.
+               Optionally: to avoid duplicated messages in idea.log, please,
+               set runtime parameter -Dintellij.log.stdout=false in Run Configuration -->
     <!--<appender-ref ref="CONSOLE-ALL" />-->
     <!--<appender-ref ref="CONSOLE-WARN"/>-->
     <!--<appender-ref ref="CONSOLE-DEBUG"/>-->
