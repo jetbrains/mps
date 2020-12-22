@@ -44,7 +44,6 @@ import jetbrains.mps.util.io.ModelOutputStream;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.path.Path;
-import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -710,10 +709,8 @@ public final class ModulesMiner {
       stream.writeByte(4);
     } else if (descriptor instanceof LibraryDescriptor) {
       stream.writeByte(5);
-    } else if (descriptor instanceof DeploymentDescriptor) {
-      stream.writeByte(6);
     } else {
-      throw new IllegalArgumentException("unknown module!");
+      throw new IllegalArgumentException("unknown module:" + descriptor);
     }
     descriptor.save(stream);
   }
@@ -733,8 +730,6 @@ public final class ModulesMiner {
       descriptor = new GeneratorDescriptor();
     } else if (type == 5) {
       descriptor = new LibraryDescriptor();
-    } else if (type == 6) {
-      descriptor = new DeploymentDescriptor();
     } else {
       throw new IOException("broken stream: invalid descriptor type");
     }

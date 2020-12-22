@@ -97,8 +97,6 @@ public final class DeploymentDescriptorPersistence {
     } catch (Exception e) {
       throw new ModuleReadException(e);
     }
-
-    ModuleDescriptorPersistence.setTimestamp(descriptor, file);
     return descriptor;
   }
 }

@@ -62,9 +62,7 @@
       <node id="5932019537937720904" at="92,11,93,0" concept="10" />
       <node id="5932019537937718608" at="93,0,94,41" concept="8" />
       <node id="5932019537937718991" at="97,27,98,39" concept="14" />
-      <node id="5932019537937718995" at="99,5,100,0" concept="10" />
-      <node id="5932019537937718996" at="100,0,101,63" concept="2" />
-      <node id="5932019537937719000" at="101,63,102,22" concept="8" />
+      <node id="5932019537937719000" at="99,5,100,22" concept="8" />
       <node id="1986682148700850464" at="23,0,25,0" concept="1" trace="DeploymentDescriptorPersistence#()V" />
       <node id="3451207279393967491" at="74,0,77,11" concept="4" />
       <node id="1711188937473981629" at="80,34,83,13" concept="4" />
@@ -80,7 +78,7 @@
       <node id="5932019537937718608" at="36,0,96,0" concept="6" trace="invoke#()Ljetbrains/mps/project/structure/modules/DeploymentDescriptor;" />
       <node id="5932019537937718606" at="34,0,96,17" concept="2" />
       <node id="5932019537937718589" at="29,0,99,5" concept="15" />
-      <node id="1362762974903705884" at="25,0,104,0" concept="6" trace="load#(Ljetbrains/mps/vfs/IFile;)Ljetbrains/mps/project/structure/modules/DeploymentDescriptor;" />
+      <node id="1362762974903705884" at="25,0,102,0" concept="6" trace="load#(Ljetbrains/mps/vfs/IFile;)Ljetbrains/mps/project/structure/modules/DeploymentDescriptor;" />
       <scope id="1986682148700850467" at="23,44,23,44" />
       <scope id="1362762974903614148" at="59,44,60,51" />
       <scope id="1362762974903650847" at="61,51,62,51" />
@@ -142,14 +140,14 @@
         <var name="pf" id="7056888134837093213" />
         <var name="rootElement" id="5932019537937718597" />
       </scope>
-      <scope id="1362762974903705888" at="25,54,102,22">
+      <scope id="1362762974903705888" at="25,54,100,22">
         <var name="descriptor" id="5932019537937718586" />
       </scope>
-      <scope id="1362762974903705884" at="25,0,104,0">
+      <scope id="1362762974903705884" at="25,0,102,0">
         <var name="file" id="1362762974903938032" />
       </scope>
       <unit id="5932019537937718608" at="35,23,96,7" name="jetbrains.mps.project.persistence.DeploymentDescriptorPersistence$1" />
-      <unit id="1986682148700850462" at="21,0,105,0" name="jetbrains.mps.project.persistence.DeploymentDescriptorPersistence" />
+      <unit id="1986682148700850462" at="21,0,103,0" name="jetbrains.mps.project.persistence.DeploymentDescriptorPersistence" />
     </file>
   </root>
   <root nodeRef="r:a42e26eb-bbea-4e8d-a549-0d224ab71e57(jetbrains.mps.project.persistence)/2709156219364650064">

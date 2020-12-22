@@ -30,7 +30,6 @@
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="eurq" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.path(MPS.Core/)" />
-    <import index="b0pz" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.facets(MPS.Core/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -11230,7 +11229,7 @@
                       <node concept="g8Q5y" id="59iL5sJt5Pj" role="3cqZAp">
                         <node concept="3clFbS" id="59iL5sJt5Pk" role="GGjiV" />
                         <node concept="3tyRfN" id="59iL5sJt5Pl" role="GIGjv">
-                          <ref role="3tyRfW" to="w0gx:~ModuleDescriptor.setNamespace(java.lang.String)" resolve="setNamespace" />
+                          <ref role="3tyRfW" to="w0gx:~DeploymentDescriptor.setNamespace(java.lang.String)" resolve="setNamespace" />
                           <node concept="2OqwBi" id="59iL5sJt5Pm" role="3tyRfI">
                             <node concept="37vLTw" id="3GM_nagTuN_" role="2Oq$k0">
                               <ref role="3cqZAo" node="59iL5sJt5P5" resolve="rootElement" />
@@ -11266,7 +11265,7 @@
                           <node concept="g8Q5y" id="59iL5sJt5Pr" role="3cqZAp">
                             <node concept="3clFbS" id="59iL5sJt5Ps" role="GGjiV" />
                             <node concept="3tyRfN" id="59iL5sJt5Pt" role="GIGjv">
-                              <ref role="3tyRfW" to="w0gx:~ModuleDescriptor.setId(jetbrains.mps.project.ModuleId)" resolve="setId" />
+                              <ref role="3tyRfW" to="w0gx:~DeploymentDescriptor.setId(jetbrains.mps.project.ModuleId)" resolve="setId" />
                               <node concept="2YIFZM" id="6DUjbZQMt6r" role="3tyRfI">
                                 <ref role="37wK5l" to="z1c3:~ModuleId.fromString(java.lang.String)" resolve="fromString" />
                                 <ref role="1Pybhc" to="z1c3:~ModuleId" resolve="ModuleId" />
@@ -11614,7 +11613,7 @@
                                   <node concept="2OqwBi" id="59iL5sJtrwG" role="2Oq$k0">
                                     <node concept="1bf8Ab" id="59iL5sJtrwF" role="2Oq$k0" />
                                     <node concept="liA8E" id="59iL5sJtrwK" role="2OqNvi">
-                                      <ref role="37wK5l" to="w0gx:~ModuleDescriptor.getDependencies()" resolve="getDependencies" />
+                                      <ref role="37wK5l" to="w0gx:~DeploymentDescriptor.getDependencies()" resolve="getDependencies" />
                                     </node>
                                   </node>
                                   <node concept="liA8E" id="59iL5sJtrwP" role="2OqNvi">
@@ -11947,19 +11946,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="59iL5sJt5Vj" role="3cqZAp" />
-        <node concept="3clFbF" id="59iL5sJt5Vk" role="3cqZAp">
-          <node concept="2YIFZM" id="59iL5sJt5Vl" role="3clFbG">
-            <ref role="1Pybhc" node="IMUMWuHQMY" resolve="ModuleDescriptorPersistence" />
-            <ref role="37wK5l" node="2moQNDghoaL" resolve="setTimestamp" />
-            <node concept="37vLTw" id="3GM_nagTzv$" role="37wK5m">
-              <ref role="3cqZAo" node="59iL5sJt5OU" resolve="descriptor" />
-            </node>
-            <node concept="37vLTw" id="2BHiRxghgpa" role="37wK5m">
-              <ref role="3cqZAo" node="1bDwriod2JK" resolve="file" />
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs6" id="59iL5sJt5Vo" role="3cqZAp">
           <node concept="37vLTw" id="3GM_nagT_PM" role="3cqZAk">
             <ref role="3cqZAo" node="59iL5sJt5OU" resolve="descriptor" />
@@ -11971,11 +11957,9 @@
   <node concept="1bf$Pg" id="59iL5sJt5V$">
     <property role="TrG5h" value="DeploymentDescriptorsBuilders" />
     <property role="3GE5qa" value="builders" />
-    <ref role="2jAjfX" node="IMUMWuHQoA" resolve="ModuleDescriptorsBuilders" />
     <node concept="1bf$Pj" id="59iL5sJt5V_" role="1bf$Pm">
       <property role="1bfSUW" value="true" />
       <property role="TrG5h" value="deploymentDescriptor" />
-      <ref role="1nbVh1" node="IMUMWuHQpJ" resolve="moduleDescriptor" />
       <node concept="3uibUv" id="59iL5sJt5VT" role="1nbxDZ">
         <ref role="3uigEE" to="w0gx:~DeploymentDescriptor" resolve="DeploymentDescriptor" />
       </node>
