@@ -2603,7 +2603,7 @@
       </node>
       <node concept="3clFbS" id="TwRk$DMAas" role="3clF47">
         <node concept="XkiVB" id="6u4tmjNmXwx" role="3cqZAp">
-          <ref role="37wK5l" node="61uE6zXm4nj" resolve="BaseMpsRunner" />
+          <ref role="37wK5l" to="bbnd:~ParentRunner.&lt;init&gt;(java.lang.Class)" resolve="ParentRunner" />
           <node concept="37vLTw" id="6u4tmjNmY5L" role="37wK5m">
             <ref role="3cqZAo" node="TwRk$DMAan" resolve="klass" />
           </node>
@@ -3926,8 +3926,11 @@
         </node>
       </node>
     </node>
-    <node concept="3uibUv" id="61uE6zXma61" role="1zkMxy">
-      <ref role="3uigEE" node="61uE6zXlWPC" resolve="BaseMpsRunner" />
+    <node concept="3uibUv" id="6SfWzpSEZ6n" role="1zkMxy">
+      <ref role="3uigEE" to="bbnd:~ParentRunner" resolve="ParentRunner" />
+      <node concept="3uibUv" id="6SfWzpSF3rr" role="11_B2D">
+        <ref role="3uigEE" to="cvlm:~Runner" resolve="Runner" />
+      </node>
     </node>
     <node concept="3uibUv" id="6u4tmjNn7Eg" role="EKbjA">
       <ref role="3uigEE" to="79ha:7KC1aYnI6jD" resolve="EnvironmentAware" />
