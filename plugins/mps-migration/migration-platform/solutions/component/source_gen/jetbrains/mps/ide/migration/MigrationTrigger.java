@@ -13,9 +13,13 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.migration.global.ProjectMigrationProperties;
 import jetbrains.mps.smodel.language.LanguageRegistryListener;
 import java.util.concurrent.atomic.AtomicReference;
+import jetbrains.mps.make.IMakeService;
+import jetbrains.mps.make.IMakeNotificationListener;
+import jetbrains.mps.make.MakeNotification;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.migration.global.MigrationProperties;
+import jetbrains.mps.make.MakeServiceComponent;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.List;
@@ -91,6 +95,21 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
   private final MigrationBlock myMigrationBlock = new MigrationBlock(this);
   private final AtomicReference<PostponedState> myPostponedState = new AtomicReference<PostponedState>();
 
+  private final IMakeService myMake;
+  private final IMakeNotificationListener.Stub myMakeListener = new IMakeNotificationListener.Stub() {
+    private final MigrationBlock.BlockCause myCause = new MigrationBlock.BlockCause("make session is in progress");
+
+    @Override
+    public void sessionOpened(MakeNotification notification) {
+      getMigrationBlock().blockMigrationsCheck(myCause);
+    }
+    @Override
+    public void sessionClosed(MakeNotification notification) {
+      getMigrationBlock().unblockMigrationsCheck(myCause);
+    }
+  };
+
+
   private MigrationNotificationsSupport myNotifications;
 
   private volatile boolean myMigrationRunning = false;
@@ -101,6 +120,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     myMigrationRegistry = migrationManager;
     myProperties = (ProjectMigrationProperties) ideaProject.getComponent(MigrationProperties.class);
     myLanguageRegistry = mpsCore.getPlatform().findComponent(LanguageRegistry.class);
+    myMake = mpsCore.getPlatform().findComponent(MakeServiceComponent.class).get();
     myReloadManager = ApplicationManager.getApplication().getComponent(ReloadManager.class);
     myNotifications = new MigrationNotificationsSupport(ideaProject, p, myLanguageRegistry) {
       @Override
@@ -175,12 +195,14 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     myVersionUpdater.attach();
     myProperties.addListener(myPropertiesListener);
     myReloadManager.addReloadListener(myReloadListener);
+    myMake.addListener(myMakeListener);
   }
 
   private boolean removeListeners() {
     if (!(myListenersAdded)) {
       return true;
     }
+    myMake.removeListener(myMakeListener);
     myProperties.removeListener(myPropertiesListener);
     myVersionUpdater.detach();
     myReloadManager.removeReloadListener(myReloadListener);
