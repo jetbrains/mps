@@ -80,8 +80,6 @@ public final class MPSConfigurationBean {
       for (Entry<String, Integer> lv : myState.languageVersions.entrySet()) {
         languageVersions.put(pf.createLanguage(lv.getKey()), lv.getValue());
       }
-    } else {
-      sd.setHasLanguageVersions(false);
     }
 
     Map<SModuleReference, Integer> depVersions = sd.getDependencyVersions();
@@ -89,8 +87,6 @@ public final class MPSConfigurationBean {
       for (Entry<String, Integer> lv : myState.dependencyVersions.entrySet()) {
         depVersions.put(ModuleReference.parseReference(lv.getKey()), lv.getValue());
       }
-    } else {
-      sd.setHasDependencyVersions(false);
     }
     List<ModelRootDescriptor> roots = new ArrayList<>();
     fromPersistableState(roots);

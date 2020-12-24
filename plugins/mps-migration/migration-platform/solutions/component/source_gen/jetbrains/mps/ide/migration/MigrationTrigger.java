@@ -24,18 +24,11 @@ import java.util.function.Consumer;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.RuntimeFlags;
 import com.intellij.openapi.startup.StartupManager;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.project.structure.modules.ModuleDescriptor;
-import jetbrains.mps.smodel.SLanguageHierarchy;
-import org.jetbrains.mps.openapi.language.SLanguage;
-import java.util.Set;
-import java.util.LinkedHashSet;
-import java.util.Collection;
-import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -153,12 +146,11 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
     }
 
     // wait until project is fully loaded (if not yet) 
+    // FIXME apparently, there's no need for MigrationTrigger to be legacy ProjectComponent, could do with listeners 
     StartupManager.getInstance(myProject).runWhenProjectIsInitialized(new Runnable() {
       public void run() {
         ApplicationManager.getApplication().invokeLater(new Runnable() {
           public void run() {
-            initModuleVersionsWhereNeeded();
-
             addListeners();
 
             myMpsProject.getRepository().getModelAccess().runReadAction(new Runnable() {
@@ -169,49 +161,6 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
             checkMigrationNeeded();
           }
         });
-      }
-    });
-  }
-
-  private void initModuleVersionsWhereNeeded() {
-    myMpsProject.getRepository().getModelAccess().runWriteAction(new Runnable() {
-      public void run() {
-        for (SModule m : ListSequence.fromList(myMpsProject.getProjectModulesWithGenerators())) {
-          if (!((m instanceof AbstractModule))) {
-            continue;
-          }
-
-          // this code should be removed when we are sure there are no modules without language 
-          // version information persisted 
-          // this code should be executed when all models are already there in the module to 
-          // produce a correct list of used languages 
-          ModuleDescriptor desc = ((AbstractModule) m).getModuleDescriptor();
-          if (!(desc.hasLanguageVersions())) {
-            SLanguageHierarchy languageHierarchy = new SLanguageHierarchy(m.getUsedLanguages());
-            for (SLanguage lang : languageHierarchy.getExtended()) {
-              if (desc.getLanguageVersions().containsKey(lang)) {
-                continue;
-              }
-              desc.getLanguageVersions().put(lang, 0);
-            }
-            desc.setHasLanguageVersions(true);
-            ((AbstractModule) m).setChanged();
-          }
-          if (!(desc.hasDependencyVersions())) {
-            Set<SModule> visible = new LinkedHashSet<SModule>();
-            visible.add(m);
-            Collection<SModule> dependentModules = new GlobalModuleDependenciesManager(m).getModules(GlobalModuleDependenciesManager.Deptype.VISIBLE);
-            visible.addAll(dependentModules);
-            for (SModule dep : visible) {
-              if (desc.getDependencyVersions().containsKey(dep.getModuleReference())) {
-                continue;
-              }
-              desc.getDependencyVersions().put(dep.getModuleReference(), 0);
-            }
-            desc.setHasDependencyVersions(true);
-            ((AbstractModule) m).setChanged();
-          }
-        }
       }
     });
   }

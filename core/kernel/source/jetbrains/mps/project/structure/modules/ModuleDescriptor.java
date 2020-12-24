@@ -19,7 +19,6 @@ import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.ModuleId;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
-import jetbrains.mps.util.annotation.ToRemove;
 import jetbrains.mps.util.io.ModelInputStream;
 import jetbrains.mps.util.io.ModelOutputStream;
 import org.jetbrains.annotations.NotNull;
@@ -86,8 +85,6 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
 
   private Throwable myLoadException;
   private boolean myUseTransientOutput;
-  private boolean myHasLanguageVersions = true;
-  private boolean myHasDependencyVersions = true;
 
   public ModuleDescriptor() {
   }
@@ -375,35 +372,6 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     if (stream.readByte() != 0x3a) throw new IOException("bad stream: no module descriptor end marker");
   }
 
-  /**
-   * @deprecated needed it for migration (3.1->3.2)
-   */
-  @ToRemove(version = 3.4)
-  @Deprecated
-  public final void setHasLanguageVersions(boolean hasLanguageVersions) {
-    myHasLanguageVersions = hasLanguageVersions;
-  }
-
-  /**
-   * @deprecated needed it for migration (3.2->3.3)
-   */
-  @ToRemove(version = 3.4)
-  @Deprecated
-  public final void setHasDependencyVersions(boolean hasDependencyVersions) {
-    myHasDependencyVersions = hasDependencyVersions;
-  }
-
-  @Deprecated
-  public final boolean hasLanguageVersions() {
-    return myHasLanguageVersions;
-  }
-
-  @ToRemove(version = 3.4)
-  @Deprecated
-  public final boolean hasDependencyVersions() {
-    return myHasDependencyVersions;
-  }
-
   public final int getModuleVersion() {
     return myModuleVersion;
   }
@@ -434,8 +402,6 @@ public class ModuleDescriptor implements CopyableDescriptor<ModuleDescriptor>  {
     copyDeploymentDescriptor(descriptorCopy);
     descriptorCopy.setLoadException(getLoadException());
     descriptorCopy.setUseTransientOutput(isUseTransientOutput());
-    descriptorCopy.setHasDependencyVersions(hasDependencyVersions());
-    descriptorCopy.setHasLanguageVersions(hasLanguageVersions());
     return descriptorCopy;
   }
 
