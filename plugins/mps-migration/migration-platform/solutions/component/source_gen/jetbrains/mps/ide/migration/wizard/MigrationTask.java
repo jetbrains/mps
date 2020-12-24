@@ -133,7 +133,7 @@ public class MigrationTask {
       // null - no error, true - must stop, false - can ignore 
       boolean errors = checkModels(myMonitor.subTask(10));
       if (errors) {
-        throw new PreCheckError(mySession.getProject(), errors);
+        throw new PreCheckError(mySession, errors);
       }
     }
 

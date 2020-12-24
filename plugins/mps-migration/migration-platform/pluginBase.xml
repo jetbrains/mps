@@ -23,14 +23,12 @@
       <implementation-class>jetbrains.mps.ide.migration.MigrationTrigger</implementation-class>
       <headless-implementation-class>jetbrains.mps.ide.migration.HeadlessMigrationExecutor</headless-implementation-class>
     </component>
-    <component>
-      <interface-class>jetbrains.mps.ide.migration.MigrationRegistry</interface-class>
-      <implementation-class>jetbrains.mps.ide.migration.MigrationRegistryImpl</implementation-class>
-    </component>
   </project-components>
 
   <extensions defaultExtensionNs="com.intellij">
     <mps.LanguageLibrary dir="/solutions"/>
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
+    <projectService serviceInterface="jetbrains.mps.ide.migration.MigrationRegistry"
+                    serviceImplementation="jetbrains.mps.ide.migration.MigrationRegistryImpl"/>
   </extensions>
 </idea-plugin>

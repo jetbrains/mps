@@ -4,6 +4,7 @@ import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.migration.MigrationRegistry;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import jetbrains.mps.migration.global.ProjectMigration;
 import jetbrains.mps.testbench.junit.suites.BaseProjectsTest;
@@ -40,7 +41,7 @@ public class NoPendingMigrationsTest extends BaseProjectsTest {
     List<String> projectMigrations = new ArrayList<>();
     List<String> moduleMigrations = new ArrayList<>();
     Exception exception = ThreadUtils.runInUIThreadAndWait(() -> {
-      MigrationRegistry migrationManager = getContextProject().getComponent(MigrationRegistry.class);
+      final MigrationRegistry migrationManager = ProjectHelper.toIdeaProject(getContextProject()).getService(MigrationRegistry.class);
       List<SModule> modules = new ArrayList<>();
       getContextProject().getModelAccess().runReadAction(()->{
         modules.addAll(IterableUtil.asCollection(MigrationModuleUtil.getMigrateableModulesFromProject(getContextProject())));

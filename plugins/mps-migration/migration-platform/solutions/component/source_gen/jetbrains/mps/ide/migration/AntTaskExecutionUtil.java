@@ -39,9 +39,9 @@ public class AntTaskExecutionUtil {
    * Do not change this method's signature. It is used from MigrationWorker
    */
   public static void migrate(final Project project) throws Exception {
-    MigrationRegistry m = ProjectHelper.toIdeaProject(project).getComponent(MigrationRegistry.class);
+    MigrationRegistry m = ProjectHelper.toIdeaProject(project).getService(MigrationRegistry.class);
 
-    MigrationSession session = new MyMigrationSession(project);
+    MigrationSession session = new MyMigrationSession(project, m);
     ProgressMonitorAdapter progress = new ProgressMonitorAdapter(new EmptyProgressIndicator());
 
     final Properties properties = new Properties();
@@ -88,14 +88,16 @@ public class AntTaskExecutionUtil {
   }
 
   private static class MyMigrationSession extends MigrationSession.MigrationSessionBase {
-    private Project myProject;
+    private final Project myProject;
+    private final MigrationRegistry myMigrationRegistry;
     private MigrationOptions myOptions = new MigrationOptions();
     private MigrationCheckerImpl myChecker;
     private MigrationExecutorImpl myExecutor;
 
-    public MyMigrationSession(Project project) {
+    public MyMigrationSession(Project project, MigrationRegistry registry) {
       myProject = project;
-      this.myChecker = new MigrationCheckerImpl(myProject, getMigrationRegistry());
+      myMigrationRegistry = registry;
+      this.myChecker = new MigrationCheckerImpl(myProject, registry);
       this.myExecutor = new MigrationExecutorImpl(myProject) {
         @Override
         public void executeModuleMigration(ScriptApplied s) {
@@ -119,7 +121,7 @@ public class AntTaskExecutionUtil {
       return myProject;
     }
     public MigrationRegistry getMigrationRegistry() {
-      return myProject.getComponent(MigrationRegistry.class);
+      return myMigrationRegistry;
     }
     public MigrationChecker getChecker() {
       return myChecker;

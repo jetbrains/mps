@@ -322,48 +322,48 @@
   </root>
   <root nodeRef="a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)/4930617085363954527">
     <file name="PreCheckError.java">
-      <node id="4930617085365322168" at="19,0,20,0" concept="5" trace="myCanIgnore" />
-      <node id="8224028748485561360" at="20,0,21,0" concept="5" trace="myProject" />
-      <node id="4930617085365322172" at="21,54,22,28" concept="4" />
-      <node id="8224028748485561364" at="22,28,23,18" concept="4" />
-      <node id="5985196147111756187" at="26,35,27,41" concept="11" />
-      <node id="3879509730044082920" at="29,30,30,140" concept="11" />
-      <node id="2885477569137259350" at="32,89,33,102" concept="10" />
-      <node id="4512299119321474011" at="33,102,34,97" concept="12" />
-      <node id="2885477569137259370" at="36,53,37,49" concept="4" />
-      <node id="2885477569137259375" at="37,49,38,56" concept="11" />
-      <node id="2885477569137259379" at="40,7,41,15" concept="11" />
-      <node id="4930617085365362463" at="44,30,45,23" concept="11" />
-      <node id="4930617085363954542" at="29,0,32,0" concept="9" trace="getMessage#()Ljava/lang/String;" />
-      <node id="4930617085363954531" at="21,0,25,0" concept="3" trace="PreCheckError#(Ljetbrains/mps/project/Project;Z)V" />
-      <node id="5985196147111754639" at="25,0,29,0" concept="9" trace="getShortMessage#()Ljava/lang/String;" />
-      <node id="2885477569137259368" at="36,0,40,0" concept="9" trace="process#(Ljetbrains/mps/errors/item/IssueKindReportItem;)Z" />
-      <node id="4930617085365357638" at="43,0,47,0" concept="9" trace="canIgnore#()Z" />
-      <node id="2885477569137259357" at="34,97,40,7" concept="4" />
-      <node id="4930617085363954580" at="32,0,43,0" concept="9" trace="getProblems#(Lcom/intellij/openapi/progress/ProgressIndicator;)Ljava/lang/Iterable;" />
-      <scope id="5985196147111754643" at="26,35,27,41" />
-      <scope id="4930617085363954545" at="29,30,30,140" />
-      <scope id="4930617085365357644" at="44,30,45,23" />
-      <scope id="4930617085363954534" at="21,54,23,18" />
-      <scope id="2885477569137259369" at="36,53,38,56" />
-      <scope id="4930617085363954542" at="29,0,32,0" />
-      <scope id="4930617085363954531" at="21,0,25,0">
+      <node id="4930617085365322168" at="17,0,18,0" concept="5" trace="myCanIgnore" />
+      <node id="8224028748485561360" at="18,0,19,0" concept="5" trace="mySession" />
+      <node id="4930617085365322172" at="20,69,21,28" concept="4" />
+      <node id="8224028748485561364" at="21,28,22,24" concept="4" />
+      <node id="5985196147111756187" at="25,35,26,41" concept="11" />
+      <node id="3879509730044082920" at="28,30,29,140" concept="11" />
+      <node id="2885477569137259350" at="31,89,32,102" concept="10" />
+      <node id="4512299119321474011" at="32,102,33,98" concept="12" />
+      <node id="2885477569137259370" at="35,53,36,49" concept="4" />
+      <node id="2885477569137259375" at="36,49,37,56" concept="11" />
+      <node id="2885477569137259379" at="39,7,40,15" concept="11" />
+      <node id="4930617085365362463" at="43,30,44,23" concept="11" />
+      <node id="4930617085363954542" at="28,0,31,0" concept="9" trace="getMessage#()Ljava/lang/String;" />
+      <node id="4930617085363954531" at="20,0,24,0" concept="3" trace="PreCheckError#(Ljetbrains/mps/ide/migration/wizard/MigrationSession;Z)V" />
+      <node id="5985196147111754639" at="24,0,28,0" concept="9" trace="getShortMessage#()Ljava/lang/String;" />
+      <node id="2885477569137259368" at="35,0,39,0" concept="9" trace="process#(Ljetbrains/mps/errors/item/IssueKindReportItem;)Z" />
+      <node id="4930617085365357638" at="42,0,46,0" concept="9" trace="canIgnore#()Z" />
+      <node id="2885477569137259357" at="33,98,39,7" concept="4" />
+      <node id="4930617085363954580" at="31,0,42,0" concept="9" trace="getProblems#(Lcom/intellij/openapi/progress/ProgressIndicator;)Ljava/lang/Iterable;" />
+      <scope id="5985196147111754643" at="25,35,26,41" />
+      <scope id="4930617085363954545" at="28,30,29,140" />
+      <scope id="4930617085365357644" at="43,30,44,23" />
+      <scope id="4930617085363954534" at="20,69,22,24" />
+      <scope id="2885477569137259369" at="35,53,37,56" />
+      <scope id="4930617085363954542" at="28,0,31,0" />
+      <scope id="4930617085363954531" at="20,0,24,0">
         <var name="canIgnore" id="4930617085365319124" />
-        <var name="p" id="8224028748485560621" />
+        <var name="session" id="8224028748485560621" />
       </scope>
-      <scope id="5985196147111754639" at="25,0,29,0" />
-      <scope id="2885477569137259368" at="36,0,40,0">
+      <scope id="5985196147111754639" at="24,0,28,0" />
+      <scope id="2885477569137259368" at="35,0,39,0">
         <var name="p" id="2885477569137259368" />
       </scope>
-      <scope id="4930617085365357638" at="43,0,47,0" />
-      <scope id="4930617085363954586" at="32,89,41,15">
+      <scope id="4930617085365357638" at="42,0,46,0" />
+      <scope id="4930617085363954586" at="31,89,40,15">
         <var name="res" id="2885477569137259351" />
       </scope>
-      <scope id="4930617085363954580" at="32,0,43,0">
+      <scope id="4930617085363954580" at="31,0,42,0">
         <var name="progressIndicator" id="4930617085363954581" />
       </scope>
-      <unit id="2885477569137259368" at="35,153,40,5" name="jetbrains.mps.ide.migration.wizard.PreCheckError$1" />
-      <unit id="4930617085363954527" at="17,0,48,0" name="jetbrains.mps.ide.migration.wizard.PreCheckError" />
+      <unit id="2885477569137259368" at="34,151,39,5" name="jetbrains.mps.ide.migration.wizard.PreCheckError$1" />
+      <unit id="4930617085363954527" at="15,0,47,0" name="jetbrains.mps.ide.migration.wizard.PreCheckError" />
     </file>
   </root>
   <root nodeRef="a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)/6781485246382121550">
@@ -1168,7 +1168,7 @@
       <node id="7157623378519641857" at="130,5,131,0" concept="13" />
       <node id="961570622493013709" at="132,30,133,63" concept="12" />
       <node id="961570622493002567" at="133,63,134,58" concept="10" />
-      <node id="5985196147112093656" at="135,19,136,64" concept="17" />
+      <node id="5985196147112093656" at="135,19,136,51" concept="17" />
       <node id="4930617085365890902" at="138,5,139,0" concept="13" />
       <node id="7157623378519800822" at="139,0,140,41" concept="12" />
       <node id="7157623378519180760" at="140,41,141,52" concept="4" />
@@ -1459,7 +1459,7 @@
       <scope id="8224028748486280344" at="113,61,114,44" />
       <scope id="231600208033075253" at="120,66,121,100" />
       <scope id="4930617085363871020" at="127,57,128,51" />
-      <scope id="4930617085363871064" at="135,19,136,64" />
+      <scope id="4930617085363871064" at="135,19,136,51" />
       <scope id="8224028748486482118" at="142,58,143,42" />
       <scope id="8224028748486499633" at="145,60,146,42" />
       <scope id="8224028748486570790" at="151,49,152,97" />

@@ -165,7 +165,7 @@ __switch__:
               }
             });
 
-            new MigrationCheckerImpl(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(CommonDataKeys.PROJECT).getComponent(MigrationRegistry.class)).findNotMigrated(new ProgressMonitorAdapter(progressIndicator), checks, new Processor<Problem>() {
+            new MigrationCheckerImpl(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(CommonDataKeys.PROJECT).getService(MigrationRegistry.class)).findNotMigrated(new ProgressMonitorAdapter(progressIndicator), checks, new Processor<Problem>() {
               public boolean process(Problem p) {
                 ListSequence.fromList(problems).addElement(p);
                 return ListSequence.fromList(problems).count() < 1000;

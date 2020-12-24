@@ -1034,7 +1034,7 @@
       <unit id="6312257126984171354" at="160,65,164,17" name="jetbrains.mps.migration.workbench.plugin.RunPreUpdateCheck_Action$2$1$1$2" />
       <unit id="7468250534219217021" at="182,102,186,7" name="jetbrains.mps.migration.workbench.plugin.RunPreUpdateCheck_Action$3" />
       <unit id="8331819490991709085" at="84,45,89,5" name="jetbrains.mps.migration.workbench.plugin.RunPreUpdateCheck_Action$1" />
-      <unit id="2885477569137190327" at="168,235,173,13" name="jetbrains.mps.migration.workbench.plugin.RunPreUpdateCheck_Action$2$1$2" />
+      <unit id="2885477569137190327" at="168,233,173,13" name="jetbrains.mps.migration.workbench.plugin.RunPreUpdateCheck_Action$2$1$2" />
       <unit id="6312257126984171317" at="103,35,155,25" name="jetbrains.mps.migration.workbench.plugin.RunPreUpdateCheck_Action$2$1$1$1$1$1" />
       <unit id="6312257126984171317" at="101,31,157,21" name="jetbrains.mps.migration.workbench.plugin.RunPreUpdateCheck_Action$2$1$1$1$1" />
       <unit id="6312257126984171317" at="99,100,159,17" name="jetbrains.mps.migration.workbench.plugin.RunPreUpdateCheck_Action$2$1$1$1" />

@@ -27,6 +27,7 @@ import jetbrains.mps.ide.migration.MigrationRegistry;
 import jetbrains.mps.ide.migration.wizard.MigrationSession;
 import jetbrains.mps.ide.migration.wizard.MigrationSession.MigrationSessionBase;
 import jetbrains.mps.ide.migration.wizard.MigrationTask;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.migration.global.MigrationOptions;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.project.Project;
@@ -80,7 +81,7 @@ public class MigrationsTest implements EnvironmentAware {
 
       @Override
       public MigrationRegistry getMigrationRegistry() {
-        return myProject.getComponent(MigrationRegistry.class);
+        return ProjectHelper.toIdeaProject(myProject).getService(MigrationRegistry.class);
       }
 
       @Override

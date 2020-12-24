@@ -113,10 +113,12 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
 
   private volatile boolean myMigrationRunning = false;
 
-  public MigrationTrigger(Project ideaProject, MPSProject p, MigrationRegistry migrationManager, MPSCoreComponents mpsCore) {
+  public MigrationTrigger(Project ideaProject, MPSProject p, MPSCoreComponents mpsCore) {
     super(ideaProject);
+    // FIXME doesn't need to be a project component. Perhaps, not even a project Service. Shall get activated 
+    //      by listeners attached by a StartupActivity 
     myMpsProject = p;
-    myMigrationRegistry = migrationManager;
+    myMigrationRegistry = ideaProject.getService(MigrationRegistry.class);
     myProperties = (ProjectMigrationProperties) ideaProject.getComponent(MigrationProperties.class);
     myLanguageRegistry = mpsCore.getPlatform().findComponent(LanguageRegistry.class);
     myMake = mpsCore.getPlatform().findComponent(MakeServiceComponent.class).get();

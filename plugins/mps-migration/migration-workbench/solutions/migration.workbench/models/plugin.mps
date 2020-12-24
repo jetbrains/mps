@@ -5766,7 +5766,7 @@
                                           </node>
                                         </node>
                                         <node concept="liA8E" id="2AFMQSx$a5v" role="2OqNvi">
-                                          <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
+                                          <ref role="37wK5l" to="1m72:~ComponentManager.getService(java.lang.Class)" resolve="getService" />
                                           <node concept="3VsKOn" id="2AFMQSx$bLb" role="37wK5m">
                                             <ref role="3VsUkX" to="bim2:5SsFeroaabl" resolve="MigrationRegistry" />
                                           </node>
