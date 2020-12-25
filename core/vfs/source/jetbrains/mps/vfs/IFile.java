@@ -139,7 +139,7 @@ public interface IFile {
    * 99% its your choice
    *
    * by default it is recursive
-   * returns void becaus IJ does not give out any futures there
+   * returns void because IJ does not give out any futures there
    */
   default void asyncRefresh() {
     refresh(new DefaultCachingContext(false, true));
