@@ -2,12 +2,12 @@
 <debug-info version="2">
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/141865155246494254">
     <file name="mpsDataFlow.xml">
-      <unit id="141865155246494254" at="1,0,988,10" name="jetbrains.mps.ide.build.tests.mpsDataFlow" />
+      <unit id="141865155246494254" at="1,0,1075,10" name="jetbrains.mps.ide.build.tests.mpsDataFlow" />
     </file>
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/2085316548396374793">
     <file name="mpsImplementationStripping.xml">
-      <unit id="2085316548396374793" at="1,0,851,10" name="jetbrains.mps.ide.build.tests.mpsImplementationStripping" />
+      <unit id="2085316548396374793" at="1,0,900,10" name="jetbrains.mps.ide.build.tests.mpsImplementationStripping" />
     </file>
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/2201735946498405745">
@@ -17,12 +17,12 @@
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/2883693069523015134">
     <file name="mpsConstraints.xml">
-      <unit id="2883693069523015134" at="1,0,1006,10" name="jetbrains.mps.ide.build.tests.mpsConstraints" />
+      <unit id="2883693069523015134" at="1,0,1073,10" name="jetbrains.mps.ide.build.tests.mpsConstraints" />
     </file>
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/3071492597344792659">
     <file name="mpsFeedback.xml">
-      <unit id="3071492597344792659" at="1,0,668,10" name="jetbrains.mps.ide.build.tests.mpsFeedback" />
+      <unit id="3071492597344792659" at="1,0,692,10" name="jetbrains.mps.ide.build.tests.mpsFeedback" />
     </file>
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/3197190366568000187">
@@ -32,12 +32,12 @@
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/3474133302908391407">
     <file name="mpsExecution.xml">
-      <unit id="3474133302908391407" at="1,0,1138,10" name="jetbrains.mps.ide.build.tests.mpsExecution" />
+      <unit id="3474133302908391407" at="1,0,1187,10" name="jetbrains.mps.ide.build.tests.mpsExecution" />
     </file>
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/3856853424911912638">
     <file name="mpsEditorImageGen.xml">
-      <unit id="3856853424911912638" at="1,0,714,10" name="jetbrains.mps.ide.build.tests.mpsEditorImageGen" />
+      <unit id="3856853424911912638" at="1,0,763,10" name="jetbrains.mps.ide.build.tests.mpsEditorImageGen" />
     </file>
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/4074183641147971049">
@@ -47,12 +47,12 @@
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/4286050570470716727">
     <file name="mpsText.xml">
-      <unit id="4286050570470716727" at="1,0,482,10" name="jetbrains.mps.ide.build.tests.mpsText" />
+      <unit id="4286050570470716727" at="1,0,486,10" name="jetbrains.mps.ide.build.tests.mpsText" />
     </file>
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/5003005296035786909">
     <file name="mpsEditorDiagram.xml">
-      <unit id="5003005296035786909" at="1,0,806,10" name="jetbrains.mps.ide.build.tests.mpsEditorDiagram" />
+      <unit id="5003005296035786909" at="1,0,855,10" name="jetbrains.mps.ide.build.tests.mpsEditorDiagram" />
     </file>
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/5332690376493680136">
@@ -62,17 +62,17 @@
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/5624877018229105292">
     <file name="mpsEditorTransformationMenu.xml">
-      <unit id="5624877018229105292" at="1,0,2874,10" name="jetbrains.mps.ide.build.tests.mpsEditorTransformationMenu" />
+      <unit id="5624877018229105292" at="1,0,3115,10" name="jetbrains.mps.ide.build.tests.mpsEditorTransformationMenu" />
     </file>
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/5833628797344916224">
     <file name="mpsEditor.xml">
-      <unit id="5833628797344916224" at="1,0,3042,10" name="jetbrains.mps.ide.build.tests.mpsEditor" />
+      <unit id="5833628797344916224" at="1,0,3270,10" name="jetbrains.mps.ide.build.tests.mpsEditor" />
     </file>
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/5973657458022229901">
     <file name="mpsPackaged.xml">
-      <unit id="5973657458022229901" at="1,0,636,10" name="jetbrains.mps.ide.build.tests.mpsPackaged" />
+      <unit id="5973657458022229901" at="1,0,679,10" name="jetbrains.mps.ide.build.tests.mpsPackaged" />
     </file>
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/6147098677962246363">
@@ -82,7 +82,7 @@
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/617882099353312053">
     <file name="mpsGenerator.xml">
-      <unit id="617882099353312053" at="1,0,2020,10" name="jetbrains.mps.ide.build.tests.mpsGenerator" />
+      <unit id="617882099353312053" at="1,0,2090,10" name="jetbrains.mps.ide.build.tests.mpsGenerator" />
     </file>
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/617882099353331886">
@@ -97,7 +97,7 @@
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/7210153263370654627">
     <file name="mpsBaseLanguage.xml">
-      <unit id="7210153263370654627" at="1,0,1690,10" name="jetbrains.mps.ide.build.tests.mpsBaseLanguage" />
+      <unit id="7210153263370654627" at="1,0,1739,10" name="jetbrains.mps.ide.build.tests.mpsBaseLanguage" />
     </file>
   </root>
   <root nodeRef="r:42d04941-551b-420d-9485-a5f496e15594(jetbrains.mps.ide.build.tests)/7438002853058266164">
