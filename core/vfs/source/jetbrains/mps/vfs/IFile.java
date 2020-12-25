@@ -76,13 +76,14 @@ public interface IFile {
   String getPath();
 
   /**
-   * use getQualifiedPath()
+   * returns RFC compliant url (can be converted to uri)
    */
   @Nullable
-  @Deprecated
-  @ToRemove(version = 2019.1)
   URL getUrl() throws MalformedURLException;
 
+  /**
+   * MPS URL to work with different path formats (jrt in jdk for example)
+   */
   QualifiedPath getQualifiedPath();
 
   /**

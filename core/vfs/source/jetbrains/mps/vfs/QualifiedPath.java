@@ -25,7 +25,9 @@ import org.jetbrains.mps.annotations.Immutable;
  * E.g. model root's paths might be in local FS or JRT FS, so correct way to store such a path in module file is QualifiedPath.
  * Having a QualifiedPath in hands, one can obtain a file using {@link VFSManager#getFile}
  * <p>
- * The {@link QualifiedPath} has two fields. FS identifies the filesystem to obtain path from, path is a
+ * The {@link QualifiedPath} has two components: fs 'protocol' and the path itself.
+ * It can be viewed as MPS internal urls.
+ * @author muhin
  */
 @Immutable
 public final class QualifiedPath {
