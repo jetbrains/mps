@@ -4,7 +4,7 @@ package jetbrains.mps.ide.migration;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.ide.project.ProjectHelper;
 import java.util.Collection;
 import jetbrains.mps.migration.global.ProjectMigration;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
@@ -37,8 +37,8 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 public class MigrationRegistryImpl implements MigrationRegistry {
   private final Project myMpsProject;
 
-  public MigrationRegistryImpl(MPSProject mpsProject) {
-    myMpsProject = mpsProject;
+  public MigrationRegistryImpl(com.intellij.openapi.project.Project ideaProject) {
+    myMpsProject = ProjectHelper.fromIdeaProject(ideaProject);
   }
 
   @Override

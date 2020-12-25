@@ -494,7 +494,7 @@
   <root nodeRef="a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/3577160840697329341">
     <file name="MigrationRegistryImpl.java">
       <node id="3577160840697365932" at="38,0,39,0" concept="6" trace="myMpsProject" />
-      <node id="3577160840697652240" at="40,55,41,30" concept="5" />
+      <node id="3577160840697652240" at="40,82,41,62" concept="5" />
       <node id="4815078419492435211" at="45,62,46,94" concept="11" />
       <node id="4815078419492487510" at="48,25,49,76" concept="5" />
       <node id="4815078419492435219" at="51,54,52,53" concept="12" />
@@ -603,7 +603,7 @@
       <node id="737888207585061811" at="329,69,330,47" concept="12" />
       <node id="7239893004291474963" at="332,77,333,47" concept="12" />
       <node id="7239893004291927950" at="335,77,336,47" concept="12" />
-      <node id="3577160840697644971" at="40,0,43,0" concept="3" trace="MigrationRegistryImpl#(Ljetbrains/mps/project/MPSProject;)V" />
+      <node id="3577160840697644971" at="40,0,43,0" concept="3" trace="MigrationRegistryImpl#(Lcom/intellij/openapi/project/Project;)V" />
       <node id="4815078419492435217" at="51,0,54,0" concept="10" trace="accept#(Ljetbrains/mps/migration/global/ProjectMigration;)Z" />
       <node id="1953722702638384712" at="66,0,69,0" concept="10" trace="translate#(Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/lang/Iterable;" />
       <node id="5239314785149802155" at="88,98,91,7" concept="9" />
@@ -685,7 +685,7 @@
       <node id="3577160840697523898" at="153,0,228,0" concept="10" trace="run#()V" />
       <node id="3577160840697523904" at="151,83,228,7" concept="5" />
       <node id="3577160840697523428" at="150,0,231,0" concept="10" trace="nextModuleStep#(Ljetbrains/mps/lang/migration/runtime/base/BaseScriptReference;)Ljetbrains/mps/ide/migration/ScriptApplied;" />
-      <scope id="3577160840697644975" at="40,55,41,30" />
+      <scope id="3577160840697644975" at="40,82,41,62" />
       <scope id="4815078419492435218" at="51,54,52,53" />
       <scope id="1953722702638384713" at="66,68,67,46" />
       <scope id="5239314785149802157" at="89,79,90,21" />
@@ -732,7 +732,7 @@
       <scope id="7239893004291928011" at="208,29,210,19" />
       <scope id="7239893004292096985" at="212,16,214,47" />
       <scope id="3577160840697644971" at="40,0,43,0">
-        <var name="mpsProject" id="3577160840697654205" />
+        <var name="ideaProject" id="3577160840697654205" />
       </scope>
       <scope id="4815078419492435217" at="51,0,54,0">
         <var name="it" id="4815078419492435217" />

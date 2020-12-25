@@ -4800,9 +4800,9 @@
     <node concept="2tJIrI" id="6fMyXCHStz9" role="jymVt" />
     <node concept="3clFbW" id="36$CdjYe8uF" role="jymVt">
       <node concept="37vLTG" id="36$CdjYeaIX" role="3clF46">
-        <property role="TrG5h" value="mpsProject" />
-        <node concept="3uibUv" id="3vN4EqLtV9Z" role="1tU5fm">
-          <ref role="3uigEE" to="z1c4:~MPSProject" resolve="MPSProject" />
+        <property role="TrG5h" value="ideaProject" />
+        <node concept="3uibUv" id="NUCePWrA2f" role="1tU5fm">
+          <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
         </node>
       </node>
       <node concept="3cqZAl" id="36$CdjYe8uH" role="3clF45" />
@@ -4813,8 +4813,12 @@
             <node concept="37vLTw" id="36$CdjYer_l" role="37vLTJ">
               <ref role="3cqZAo" node="36$CdjYd4mG" resolve="myMpsProject" />
             </node>
-            <node concept="37vLTw" id="3vN4EqLtViV" role="37vLTx">
-              <ref role="3cqZAo" node="36$CdjYeaIX" resolve="mpsProject" />
+            <node concept="2YIFZM" id="NUCePWrDGI" role="37vLTx">
+              <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProject(com.intellij.openapi.project.Project)" resolve="fromIdeaProject" />
+              <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
+              <node concept="37vLTw" id="NUCePWrDOM" role="37wK5m">
+                <ref role="3cqZAo" node="36$CdjYeaIX" resolve="ideaProject" />
+              </node>
             </node>
           </node>
         </node>
