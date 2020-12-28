@@ -265,7 +265,7 @@ public class IdeaFile implements IFile, CachingFile {
   @Override
   public boolean createNewFile() {
     ApplicationManager.getApplication().assertWriteAccessAllowed();
-    VirtualFile virtualFile = findVirtualFile();
+    VirtualFile virtualFile = findVirtualFile0(true);
     if (virtualFile != null) {
       return !virtualFile.isDirectory();
     } else {
