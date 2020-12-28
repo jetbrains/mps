@@ -34,6 +34,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class NewMPSTreeCellRenderer implements TreeCellRenderer, RebuildAwareTreeCellRenderer {
@@ -83,11 +85,20 @@ public class NewMPSTreeCellRenderer implements TreeCellRenderer, RebuildAwareTre
 
       nodeColor = treeNode.getColor();
       if (checkTreeMessages()) {
+        myPanel.setToolTipText(null);
         final Collection<TreeErrorMessage> messages = treeNode.findMessages(TreeErrorMessage.class);
         if (messages.stream().anyMatch(TreeErrorMessage::isError)) {
           myLabelBorder.setWaveColor(myColors.getErrorStripeColor());
+          final List<TreeErrorMessage> errors = messages.stream().filter(TreeErrorMessage::isOriginalError).collect(Collectors.toList());
+          if (!errors.isEmpty()) {
+            myPanel.setToolTipText(errors.stream().map(TreeErrorMessage::getMessage).collect(Collectors.joining("<br/>")));
+          }
         } else if (!errorsOnly() && messages.stream().anyMatch(TreeErrorMessage::isWarning)) {
           myLabelBorder.setWaveColor(myColors.getWarningStripeColor());
+          final List<TreeErrorMessage> warnings = messages.stream().filter(TreeErrorMessage::isOriginalWarning).collect(Collectors.toList());
+          if (!warnings.isEmpty()) {
+            myPanel.setToolTipText(warnings.stream().map(TreeErrorMessage::getMessage).collect(Collectors.joining("<br/>")));
+          }
         } else {
           myLabelBorder.setWaveColor(null);
         }
