@@ -41,6 +41,7 @@ public class MessageCollectProcessor<T extends ReportItem> implements Processor<
   public boolean process(T problem) {
     if (problem.getSeverity() == MessageStatus.ERROR) {
       myErrors.add(formatMessage(problem));
+      return true;
     } else if (!myCollectNonErrors) {
       return true;
     }

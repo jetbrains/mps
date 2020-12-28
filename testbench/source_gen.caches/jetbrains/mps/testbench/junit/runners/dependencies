@@ -106,8 +106,8 @@
     <classNode dependClassName="org.junit.runner.notification.RunNotifier" />
     <classNode dependClassName="org.junit.runners.model.InitializationError" />
     <classNode dependClassName="org.junit.runners.model.RunnerBuilder" />
-    <classNode extendsClassName="jetbrains.mps.testbench.junit.runners.BaseMpsRunner" />
     <classNode extendsClassName="jetbrains.mps.tool.environment.EnvironmentAware" />
+    <classNode extendsClassName="org.junit.runners.ParentRunner" />
   </dependency>
   <dependency className="jetbrains.mps.testbench.junit.runners.PushEnvironmentRunnerBuilder">
     <classNode dependClassName="java.lang.Class" />

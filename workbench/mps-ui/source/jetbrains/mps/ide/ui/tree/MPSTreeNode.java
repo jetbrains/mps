@@ -370,13 +370,25 @@ public class MPSTreeNode extends DefaultMutableTreeNode implements Iterable<MPST
   }
 
   /**
-   * Detach all messages of the specified owner.
-   * This method can be invoked from any thread.
-   * To trigger UI update, use {@link #renewPresentation()} from correct (EDT/UI) thread.
-   *
-   * @param owner identifies messages to remove. No messages are removed if {@code null} despite the fact messages could have null owner (at the moment, see TreeMessage cons)
-   * @return set of detached messages, or empty collection if none found
+   * Remove a message from the node.
+   * @return {@code true} if the node listed the message and had removed it successfully.
    */
+  public boolean removeTreeMessage(@NotNull TreeMessage message) {
+    List<TreeMessage> treeMessages = getOptionalAttribute("messages.tree", null);
+    if (treeMessages == null) {
+      return false;
+    }
+    return treeMessages.remove(message);
+  }
+
+    /**
+     * Detach all messages of the specified owner.
+     * This method can be invoked from any thread.
+     * To trigger UI update, use {@link #renewPresentation()} from correct (EDT/UI) thread.
+     *
+     * @param owner identifies messages to remove. No messages are removed if {@code null} despite the fact messages could have null owner (at the moment, see TreeMessage cons)
+     * @return set of detached messages, or empty collection if none found
+     */
   @NotNull
   public Set<TreeMessage> removeTreeMessages(@Nullable TreeMessageOwner owner) {
     List<TreeMessage> treeMessages = getOptionalAttribute("messages.tree", null);

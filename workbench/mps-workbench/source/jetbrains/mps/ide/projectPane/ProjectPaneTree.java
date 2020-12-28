@@ -259,8 +259,8 @@ public class ProjectPaneTree extends ProjectTree implements NodeChildrenProvider
     bb.setDisposable(this);
     // BalloonPopupBuilderImpl cons set default fill color, have to override even though content has proper background color
     bb.setFadeoutTime(15000).setFillColor(hintHint.getTextBackground());
-    final Balloon b = bb.setHideOnClickOutside(true).setShowCallout(false).setHideOnKeyOutside(true).createBalloon();
-    b.show(new RelativePoint(e), Position.below);
+    final Balloon b = bb.setHideOnClickOutside(true).setShowCallout(true).setHideOnKeyOutside(true).createBalloon();
+    b.show(new RelativePoint(e), Position.above);
   }
 
   private static void printInto(Collection<TreeErrorMessage> messages, StringBuilder sb) {

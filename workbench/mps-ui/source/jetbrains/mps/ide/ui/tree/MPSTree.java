@@ -359,9 +359,13 @@ public abstract class MPSTree extends DnDAwareTree implements Disposable {
     TreePath path = getPathForLocation(event.getX(), event.getY());
     MPSTreeNode node = getNodeFromPath(path);
     if (node != null) {
-      return node.getTooltipText();
+      final String tooltipText = node.getTooltipText();
+      if (tooltipText != null) {
+        return tooltipText;
+      }
+      // fall-through, let JTree ask cell renderer
     }
-    return null;
+    return super.getToolTipText(event);
   }
 
   protected JPopupMenu createDefaultPopupMenu() {

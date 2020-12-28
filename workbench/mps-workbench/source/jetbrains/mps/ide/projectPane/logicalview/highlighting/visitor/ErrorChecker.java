@@ -60,28 +60,36 @@ public class ErrorChecker extends TreeUpdateVisitor implements TreeMessageOwner 
     return new TreeNodeVisitor() {
       @Override
       public void visitModuleNode(@NotNull ProjectModuleTreeNode node) {
-        if (node.findMessages(TreeErrorMessage.class).stream().anyMatch(TreeErrorMessage::isErrorOrWarning)) {
-          // there are messages for the node itself, don't bother to pull state from children
-          return;
-        }
+        // Though there could be messages for the node itself, still need to pull derived state from children
+        // as it might be more severe, and cell renderer can not walk tree hierarchy to figure out if there are.
+        // Note, if the node got any 'original' state, it's preserved.
         deriveFromChildren(node);
       }
 
       private void deriveFromChildren(MPSTreeNode node) {
+        boolean derivedErrors = false, derivedWarnings = false;
         for (MPSTreeNode c : node.getChildren()) {
           final Collection<TreeErrorMessage> childMessages = c.findMessages(TreeErrorMessage.class);
           if (childMessages.stream().anyMatch(TreeErrorMessage::isError)) {
-            // Indicate 'derived' error status so that one can tell derived status from truly calculated when
-            // presenting an indication to user (e.g. don't show error indicator/balloon for derived messages)
-            reset(node, msg(ErrorState.ERROR, "Descendants with errors", false));
+            derivedErrors = true;
+            // no need to check other children, nothing gonna override error severity
+            break;
           } else if (childMessages.stream().anyMatch(TreeErrorMessage::isWarning)) {
-            reset(node, msg(ErrorState.WARNING, "Descendants with warnings", false));
+            derivedWarnings = true;
           }
+        }
+        if (derivedErrors) {
+          // Indicate 'derived' error status so that one can tell derived status from truly calculated when
+          // presenting an indication to user (e.g. don't show error indicator/balloon for derived messages)
+          resetDerivedOnly(node, msg(ErrorState.ERROR, "Descendants with errors", false));
+        } else if (derivedWarnings) {
+          resetDerivedOnly(node, msg(ErrorState.WARNING, "Descendants with warnings", false));
         }
       }
 
       @Override
       public void visitNamespaceNode(@NotNull NamespaceTextNode node) {
+        // namespace nodes got only 'derived' error states, it's ok to reset derived messages only.
         deriveFromChildren(node);
       }
     };
@@ -139,7 +147,7 @@ public class ErrorChecker extends TreeUpdateVisitor implements TreeMessageOwner 
     if (errors.isBlank()) {
       reset(node, Collections.emptyList());
     } else {
-      reset(node, newError(errors));
+      reset(node, Collections.singleton(newError(errors)));
     }
   }
 
@@ -153,9 +161,12 @@ public class ErrorChecker extends TreeUpdateVisitor implements TreeMessageOwner 
   }
 
   // arguments are not null
-  private void reset(MPSTreeNode node, TreeErrorMessage msg) {
-    // not that there's scenario when msg got an owner != this, just as I can make use of getOwner, why not
-    node.removeTreeMessages(msg.getOwner());
+  private void resetDerivedOnly(MPSTreeNode node, TreeErrorMessage msg) {
+    assert msg.isDerivedFromDescendant();
+    // remove any derived message with this owner, and replace them with a new one
+    final Collection<TreeErrorMessage> messages = node.findMessages(TreeErrorMessage.class);
+    messages.removeIf(TreeErrorMessage::isOriginal);
+    messages.forEach(node::removeTreeMessage);
     node.addTreeMessage(msg);
     requestTreeRefresh(node);
   }
