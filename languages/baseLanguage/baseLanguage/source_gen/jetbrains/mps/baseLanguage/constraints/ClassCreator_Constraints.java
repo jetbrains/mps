@@ -15,7 +15,10 @@ import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.scopes.VisibleClassConstructorsScope;
+import jetbrains.mps.scope.FilteringScope;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.behavior.ClassCreator__BehaviorDescriptor;
@@ -25,6 +28,7 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ClassCreator_Constraints extends BaseConstraintsDescriptor {
   public ClassCreator_Constraints() {
@@ -49,7 +53,15 @@ public class ClassCreator_Constraints extends BaseConstraintsDescriptor {
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             if ((SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.NestedNewExpression$zV, true, false) == null)) {
-              return new VisibleClassConstructorsScope(_context.getContextNode());
+              VisibleClassConstructorsScope scope = new VisibleClassConstructorsScope(_context.getContextNode());
+              return new FilteringScope(scope) {
+                @Override
+                public boolean isExcluded(SNode node) {
+                  SNode clazz = SNodeOperations.getNodeAncestor(node, CONCEPTS.ClassConcept$bK, false, false);
+                  SNode wrapperClazz = SNodeOperations.getNodeAncestor(clazz, CONCEPTS.ClassConcept$bK, false, false);
+                  return (wrapperClazz != null) && !(SPropertyOperations.getBoolean(clazz, PROPS.isStatic$3WAz)) && !(ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getContextNode(), CONCEPTS.ClassConcept$bK, false)).contains(wrapperClazz));
+                }
+              };
             }
 
             SNode type = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.DotExpression$yW, false, false), LINKS.operand$w6IR));
@@ -72,6 +84,7 @@ public class ClassCreator_Constraints extends BaseConstraintsDescriptor {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ClassCreator$ZG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, "jetbrains.mps.baseLanguage.structure.ClassCreator");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
     /*package*/ static final SConcept NestedNewExpression$zV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x650f9fedfcb5b664L, "jetbrains.mps.baseLanguage.structure.NestedNewExpression");
     /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
     /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
@@ -80,5 +93,9 @@ public class ClassCreator_Constraints extends BaseConstraintsDescriptor {
   private static final class LINKS {
     /*package*/ static final SReferenceLink baseMethodDeclaration$pyYw = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration");
     /*package*/ static final SContainmentLink operand$w6IR = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty isStatic$3WAz = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x451f9e9f920b7f7dL, "isStatic");
   }
 }
