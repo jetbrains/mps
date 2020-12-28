@@ -21,6 +21,7 @@ import jetbrains.mps.vfs.refresh.CachingContext;
 import jetbrains.mps.vfs.refresh.CachingFile;
 import jetbrains.mps.vfs.refresh.DefaultCachingContext;
 import jetbrains.mps.vfs.refresh.FileListener;
+import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
@@ -87,13 +88,14 @@ public interface IFile {
   String toRealPath();
 
   /**
-   * use getQualifiedPath()
+   * returns RFC compliant url (can be converted to uri)
    */
   @Nullable
-  @Deprecated
-  @ToRemove(version = 2019.1)
   URL getUrl() throws MalformedURLException;
 
+  /**
+   * MPS URL to work with different path formats (jrt in jdk for example)
+   */
   QualifiedPath getQualifiedPath();
 
   /**
@@ -132,11 +134,37 @@ public interface IFile {
   /**
    * a shorthand for {@link CachingFile#refresh}
    * by default sync and non-recursive
+   * @deprecated synchronous refresh is discouraged and potentially changes the MPS model
+   *             quite often synchronous refresh is not needed,
+   *             instead use
+   * @see #asyncRefresh()
    */
+  @ScheduledForRemoval(inVersion="2021.2")
+  @Deprecated
   default void refresh() {
+    refresh(new DefaultCachingContext(true, false));
+  }
+
+  /**
+   * the universal method,
+   * 99% its your choice
+   *
+   * by default it is recursive
+   * returns void because IJ does not give out any futures there
+   */
+  default void asyncRefresh() {
+    refresh(new DefaultCachingContext(false, true));
+  }
+
+  /**
+   * NOTICE: synchronous refresh is discouraged and potentially changes the MPS model.
+   * Quite often synchronous refresh is not needed, use it only when you understand what you are doing
+   * When sync is true, the MPS model can change, models/modules can be reloaded and the nodes can be disposed.
+   */
+  default void refresh(@NotNull CachingContext options) {
     if (this instanceof CachingFile) {
       CachingFile me = (CachingFile) this;
-      me.refresh(new DefaultCachingContext(true, false));
+      me.refresh(options);
     }
   }
 

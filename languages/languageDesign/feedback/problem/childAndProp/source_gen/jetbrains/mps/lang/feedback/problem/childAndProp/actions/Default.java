@@ -16,6 +16,9 @@ public class Default {
   public static class NodeFactory_7716791493892398447 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, SModel model) {
       SLinkOperations.setPointer(newNode, LINKS.kind$EscU, new SNodePointer("r:9006e6ce-991d-45e3-a20f-0deb45783955(jetbrains.mps.lang.feedback.problem.childAndProp.feedback)", "24399255755876627"));
+      if (model == null) {
+        return;
+      }
       ModelImporter importer = new ModelImporter(model);
       importer.prepare(PersistenceFacade.getInstance().createModelReference("r:9006e6ce-991d-45e3-a20f-0deb45783955(jetbrains.mps.lang.feedback.problem.childAndProp.feedback)"));
       importer.execute();

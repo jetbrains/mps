@@ -34,6 +34,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -266,12 +268,11 @@ public class JarEntryFile implements IFile {
   @Hack
   @Override
   public URL getUrl() throws MalformedURLException {
-//    try {
-//      return new URI("jar:file", "", myJarFile.getAbsolutePath() + "!/" + myEntryPath, null, null).toURL();
-//    } catch (URISyntaxException e) {
-//      throw new RuntimeException(e);
-//    }
-    return new URL("jar:file://" + myJarFile.getAbsolutePath() + "!/" + myEntryPath);
+    try {
+      return new URI("jar:file", null, myJarFile.getAbsolutePath() + "!/" + myEntryPath, null, null).toURL();
+    } catch (URISyntaxException e) {
+      throw new RuntimeException(e);
+    }
   }
 
   @Override

@@ -930,7 +930,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
         }
         String text = getMessagesTextFor(cell);
         if (text != null) {
-          text = StringEscapeUtils.escapeHtml(text.replace("\n", "<br>"));
+          text = StringEscapeUtils.escapeHtml(text).replace("\n", "<br>");
         }
         rv.set(text);
       }

@@ -52,7 +52,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.JarURLConnection;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -108,11 +111,38 @@ public class IdeaFile implements IFile, CachingFile {
     return new QualifiedPath(myFS.getProtocol(), path);
   }
 
+  /**
+   * @return encoded in compliance with RFC standard
+   */
   @Override
-  public URL getUrl() throws MalformedURLException {
+  @Nullable
+  public URL getUrl() {
     VirtualFile virtualFile = findVirtualFile();
-    return virtualFile != null ? VfsUtilCore.convertToURL(virtualFile.getUrl())
-                               : new File(myPath).toURI().toURL();
+    try {
+      if (virtualFile == null) {
+        LOG.warn("Could not find the virtual file for " + this);
+        return guessURLForPath(myPath);
+      }
+      URL url = VfsUtilCore.convertToURL(virtualFile.getUrl());
+      // making RFC compliant URL from what IJ gives us
+      if (url.openConnection() instanceof JarURLConnection) {
+        // this is jar, here we assume that only path in url is not null, and pass the path as scheme-specific part, it starts with 'file:///'
+        return new URI(url.getProtocol(), url.getPath(), null).toURL();
+      }
+      return new URI(url.getProtocol(), url.getUserInfo(), url.getHost(), url.getPort(), url.getPath(), url.getQuery(), null).toURL();
+    } catch (IOException | URISyntaxException e) {
+      LOG.error("Could not create URI from " + this, e);
+    }
+    return null;
+  }
+
+  @NotNull
+  private static URL guessURLForPath(String path) throws MalformedURLException, URISyntaxException {
+    if (path.contains("!/")) {
+      return new URI("jar:file", path, null).toURL();
+    } else {
+      return new URI("file", path, null).toURL();
+    }
   }
 
   @NotNull

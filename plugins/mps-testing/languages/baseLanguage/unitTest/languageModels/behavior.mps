@@ -888,9 +888,7 @@
       <node concept="3Tm1VV" id="27ikVd9woh" role="1B3o_S" />
       <node concept="3clFbS" id="27ikVd9woi" role="3clF47">
         <node concept="3cpWs6" id="27ikVd9VKg" role="3cqZAp">
-          <node concept="3clFbT" id="27ikVd9VKq" role="3cqZAk">
-            <property role="3clFbU" value="true" />
-          </node>
+          <node concept="3clFbT" id="27ikVd9VKq" role="3cqZAk" />
         </node>
       </node>
       <node concept="10P_77" id="27ikVd9S_p" role="3clF45" />

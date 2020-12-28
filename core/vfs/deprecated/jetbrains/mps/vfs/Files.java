@@ -20,11 +20,8 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.UnsupportedEncodingException;
+import java.net.URI;
 import java.net.URL;
-import java.net.URLDecoder;
-import java.nio.charset.Charset;
-import java.util.Locale;
 
 @Deprecated
 @ToRemove(version = 2019.1)
@@ -35,38 +32,9 @@ public final class Files {
   private Files() {
   }
 
-  /**
-   * Usually when one calls URL#getPath he expects the result to be without scheme.
-   * However in the case of the 'jar' scheme it is not true (nicely done, JDK!)
-   * Hence the hack to resolve 'jar:file://a.jar!/a.txt' like URI is to resolve two times.
-   * <p>
-   * see <code>jetbrains.mps.workbench.index.RootNodeNameIndex</code> for a long and boring explanation
-   * <p>
-   * fixme it is better to parse on our own [apyshkin]
-   */
   @NotNull
   public static IFile fromURL(@NotNull URL url) {
-    String path = url.getPath();
-    try {
-      path = URLDecoder.decode(path, Charset.defaultCharset().name());
-    } catch (UnsupportedEncodingException e) {
-      LOG.error("Exception when trying to convert url to path: ", e);
-      return null;
-    }
-    if (!path.startsWith("/")) { //strangely not absolute
-      if ("jar".equals(url.getProtocol())) {
-        if (path.startsWith("file:")) {
-          path = path.substring(7); // skip "file://"
-
-          //this is a fix for MPS-28009
-          //to get more clear code, we could use our own "path" objects instead of generic
-          //URL objects in model factories code.
-          if (System.getProperty("os.name").toLowerCase(Locale.US).startsWith("windows") && path.startsWith("/")) {
-            path = path.substring(1);
-          }
-        }
-      }
-    }
+    String path = URI.create(url.getPath()).getPath();
     return FileSystemExtPoint.getFS().getFile(path);
   }
 }

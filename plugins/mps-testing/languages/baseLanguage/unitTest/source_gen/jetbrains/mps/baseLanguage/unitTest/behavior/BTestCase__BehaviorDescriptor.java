@@ -107,7 +107,7 @@ public final class BTestCase__BehaviorDescriptor extends BaseBHDescriptor {
     return NameUtil.toValidCamelIdentifier(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL));
   }
   /*package*/ static boolean canRunInProcess_id5_jSk8paieB(@NotNull SNode __thisNode__) {
-    return true;
+    return false;
   }
 
   /*package*/ BTestCase__BehaviorDescriptor() {

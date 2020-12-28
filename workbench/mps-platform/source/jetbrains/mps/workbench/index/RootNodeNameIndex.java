@@ -55,6 +55,9 @@ import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -127,7 +130,14 @@ public class RootNodeNameIndex extends SingleEntryFileBasedIndexExtension<ModelR
 
   @Nullable
   private static URL constructURLFromData(FileContent inputData) {
-    return VfsUtilCore.convertToURL(inputData.getFile().getUrl());
+    URL url = VfsUtilCore.convertToURL(inputData.getFile().getUrl());
+    try {
+      // making RFC compliant URL from what IJ gives us
+      return new URI(url.getProtocol(), url.getUserInfo(), url.getHost(), url.getPort(), url.getPath(), url.getQuery(), null).toURL();
+    } catch (URISyntaxException | MalformedURLException e) {
+      LOG.error("Could not create URI from " + url, e);
+    }
+    return url;
   }
 
   /**
