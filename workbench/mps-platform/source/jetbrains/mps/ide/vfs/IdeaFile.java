@@ -20,7 +20,6 @@ import com.intellij.openapi.application.WriteAction;
 import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.openapi.vfs.JarFileSystem;
 import com.intellij.openapi.vfs.LocalFileSystem;
-import com.intellij.openapi.vfs.VfsUtilCore;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileSystem;
 import com.intellij.openapi.vfs.newvfs.ArchiveFileSystem;
@@ -52,7 +51,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.JarURLConnection;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -116,13 +114,7 @@ public class IdeaFile implements IFile, CachingFile {
         LOG.warn("Could not find the virtual file for " + this);
         return guessURLForPath(myPath);
       }
-      URL url = VfsUtilCore.convertToURL(virtualFile.getUrl());
-      // making RFC compliant URL from what IJ gives us
-      if (url.openConnection() instanceof JarURLConnection) {
-        // this is jar, here we assume that only path in url is not null, and pass the path as scheme-specific part, it starts with 'file:///'
-        return new URI(url.getProtocol(), url.getPath(), null).toURL();
-      }
-      return new URI(url.getProtocol(), url.getUserInfo(), url.getHost(), url.getPort(), url.getPath(), url.getQuery(), null).toURL();
+      return VirtualFileUtils.extractURLFromVirtualFile(virtualFile);
     } catch (IOException | URISyntaxException e) {
       LOG.error("Could not create URI from " + this, e);
     }
@@ -131,10 +123,16 @@ public class IdeaFile implements IFile, CachingFile {
 
   @NotNull
   private static URL guessURLForPath(String path) throws MalformedURLException, URISyntaxException {
-    if (path.contains("!/")) {
-      return new URI("jar:file", path, null).toURL();
+    // it is guaranteed that the path is already absolute and os-independent
+    path = PathUtil.addSlashForAbsolutePathIfNeeded(path);
+    if (path.contains(Path.ARCHIVE_SEPARATOR)) {
+      String FILE_SCHEME = "file";
+      String SCHEME_SEP = "://";
+      String schemeSpecificPart = FILE_SCHEME + SCHEME_SEP + path;
+      // using this URI constructor is the correct way to create JARs (with 'jar:file://...')
+      return new URI("jar", schemeSpecificPart, null).toURL();
     } else {
-      return new URI("file", path, null).toURL();
+      return new URI("file", null, path, null).toURL();
     }
   }
 

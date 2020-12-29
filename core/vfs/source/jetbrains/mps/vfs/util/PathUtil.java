@@ -16,6 +16,8 @@
 package jetbrains.mps.vfs.util;
 
 import jetbrains.mps.vfs.IFileSystem;
+import jetbrains.mps.vfs.iofs.jar.JarEntryFile;
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -36,6 +38,20 @@ public class PathUtil {
     String result = path.replace(IFileSystem.SEPARATOR, File.separator);
     new PathFormatChecker(result).osDependentPath();
     return result;
+  }
+
+  public static String addSlashForAbsolutePathIfNeeded(@NotNull String path2jar) {
+    if (isWin()) {
+      if (path2jar.startsWith("/")) {
+        LogManager.getLogger(JarEntryFile.class).warn("The path2jar starts with slash already, this is not expected:" + path2jar);
+      }
+      return "/" + path2jar;
+    }
+    return path2jar;
+  }
+
+  private static boolean isWin() {
+    return System.getProperty("os.name").startsWith("windows");
   }
 
   public static boolean isRoot(@NotNull String path) {
