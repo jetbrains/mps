@@ -36,7 +36,6 @@
       <modulePath path="$PROJECT_DIR$/core/make-runtime/solutions/jetbrains.mps.make.facets/jetbrains.mps.make.facets.msd" folder="core.make" />
       <modulePath path="$PROJECT_DIR$/core/make-runtime/solutions/jetbrains.mps.make.runtime/jetbrains.mps.make.runtime.msd" folder="core.make" />
       <modulePath path="$PROJECT_DIR$/core/make-runtime/solutions/jetbrains.mps.make/jetbrains.mps.make.msd" folder="core.make" />
-      <modulePath path="$PROJECT_DIR$/core/migration-runtime/jetbrains.mps.lang.migration.runtime.msd" folder="core.aspects.migration" />
       <modulePath path="$PROJECT_DIR$/core/persistence/jetbrains.mps.persistence.msd" folder="core.kernel" />
       <modulePath path="$PROJECT_DIR$/core/project/jetbrains.mps.project.msd" folder="core.kernel" />
       <modulePath path="$PROJECT_DIR$/core/refactoring-runtime/jetbrains.mps.refactoring.runtime.msd" folder="core.aspects.refactoring" />
@@ -170,6 +169,7 @@
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/messages/rules/jetbrains.mps.lang.rulesAndMessages.mpl" folder="core.aspects.feedback" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/migration/jetbrains.mps.lang.migration.mpl" folder="core.aspects.migration" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/migration/solutions/actions/jetbrains.mps.lang.migration.actions.msd" folder="core.aspects.migration" />
+      <modulePath path="$PROJECT_DIR$/languages/languageDesign/migration/solutions/runtime/jetbrains.mps.lang.migration.runtime.msd" folder="core.aspects.migration" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/migration/util/jetbrains.mps.lang.migration.util.mpl" folder="core.aspects.migration" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/modelapi/jetbrains.mps.lang.modelapi.mpl" folder="core.languages.smodel" />
       <modulePath path="$PROJECT_DIR$/languages/languageDesign/pattern/jetbrains.mps.lang.pattern.mpl" folder="core.languages.pattern" />
