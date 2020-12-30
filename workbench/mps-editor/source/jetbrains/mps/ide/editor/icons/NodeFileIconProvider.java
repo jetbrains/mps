@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2020 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,8 +19,6 @@ import com.intellij.ide.FileIconProvider;
 import com.intellij.openapi.components.NamedComponent;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.ui.DefaultIconDeferrer;
-import com.intellij.ui.IconDeferrer;
 import jetbrains.mps.fileTypes.MPSFileTypeFactory;
 import jetbrains.mps.ide.editor.MPSEditorUtil;
 import jetbrains.mps.ide.icons.GlobalIconManager;
@@ -54,14 +52,12 @@ public class NodeFileIconProvider implements FileIconProvider, NamedComponent {
     if (file instanceof MPSNodeVirtualFile) {
       final MPSNodeVirtualFile nodeFile = (MPSNodeVirtualFile) file;
       return new ModelComputeRunnable<>(() -> {
-        if (IconDeferrer.getInstance() instanceof DefaultIconDeferrer) {
-          SNode node = MPSEditorUtil.getCurrentEditedNodeFromTabbedEditor(project, nodeFile);
-          if (node != null) {
-            return GlobalIconManager.getInstance().getIconFor(node);
-          }
-          // TODO: get current empty tab component in MPSEditorUtil by using ((TabbedEditor) nodeEditor).myTabsComponent.getCurrentTabAspect()[.getIcon]
+        SNode node = MPSEditorUtil.getCurrentEditedNodeFromTabbedEditor(project, nodeFile);
+        if (node != null) {
+          return GlobalIconManager.getInstance().getIconFor(node);
         }
-        SNode node = nodeFile.getNode();
+        // TODO: get current empty tab component in MPSEditorUtil by using ((TabbedEditor) nodeEditor).myTabsComponent.getCurrentTabAspect()[.getIcon]
+        node = nodeFile.getNode();
         if (node != null) {
           return GlobalIconManager.getInstance().getIconFor(node);
         }
