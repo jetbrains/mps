@@ -258,16 +258,8 @@ public class JarEntryFile implements IFile {
   @Hack
   @Override
   public URL getUrl() throws MalformedURLException {
-    try {
-      String path2jar = PathUtil.addSlashForAbsolutePathIfNeeded(PathUtil.toSystemIndependent(myJarFile.getAbsolutePath()));
-      String FILE_SCHEME = "file";
-      String SCHEME_SEP = "://";
-      String schemeSpecificPart = FILE_SCHEME + SCHEME_SEP + path2jar + Path.ARCHIVE_SEPARATOR + myEntryPath;
-      // using this URI constructor is the correct way to create JARs (with 'jar:file://...')
-      return new URI("jar", schemeSpecificPart, null).toURL();
-    } catch (URISyntaxException e) {
-      throw new RuntimeException(e);
-    }
+    String encoded = new File(myJarFile.getAbsoluteFile() + Path.ARCHIVE_SEPARATOR + myEntryPath).toURI().toASCIIString();
+    return URI.create("jar:" + encoded).toURL();
   }
 
   @Override

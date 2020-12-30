@@ -40,20 +40,6 @@ public class PathUtil {
     return result;
   }
 
-  public static String addSlashForAbsolutePathIfNeeded(@NotNull String path2jar) {
-    if (isWin()) {
-      if (path2jar.startsWith("/")) {
-        LogManager.getLogger(JarEntryFile.class).warn("The path2jar starts with slash already, this is not expected:" + path2jar);
-      }
-      return "/" + path2jar;
-    }
-    return path2jar;
-  }
-
-  private static boolean isWin() {
-    return System.getProperty("os.name").startsWith("windows");
-  }
-
   public static boolean isRoot(@NotNull String path) {
     return path.endsWith(":/") || "/".equals(path);
   }

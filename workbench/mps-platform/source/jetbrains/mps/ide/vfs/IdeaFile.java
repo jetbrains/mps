@@ -115,24 +115,22 @@ public class IdeaFile implements IFile, CachingFile {
         return guessURLForPath(myPath);
       }
       return VirtualFileUtils.extractURLFromVirtualFile(virtualFile);
-    } catch (IOException | URISyntaxException e) {
+    } catch (IOException e) {
       LOG.error("Could not create URI from " + this, e);
     }
     return null;
   }
 
   @NotNull
-  private static URL guessURLForPath(String path) throws MalformedURLException, URISyntaxException {
+  private static URL guessURLForPath(String path) throws MalformedURLException {
     // it is guaranteed that the path is already absolute and os-independent
-    path = PathUtil.addSlashForAbsolutePathIfNeeded(path);
+//    path = PathUtil.addSlashForAbsolutePathIfNeeded(path);
     if (path.contains(Path.ARCHIVE_SEPARATOR)) {
-      String FILE_SCHEME = "file";
-      String SCHEME_SEP = "://";
-      String schemeSpecificPart = FILE_SCHEME + SCHEME_SEP + path;
+      String encoded = new File(path).toURI().toASCIIString(); // adding file://, reversing slashes on windows etc.
       // using this URI constructor is the correct way to create JARs (with 'jar:file://...')
-      return new URI("jar", schemeSpecificPart, null).toURL();
+      return URI.create("jar:" + encoded).toURL();
     } else {
-      return new URI("file", null, path, null).toURL();
+      return new File(path).toURI().toURL();
     }
   }
 
