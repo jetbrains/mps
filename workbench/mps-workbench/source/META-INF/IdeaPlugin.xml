@@ -162,7 +162,7 @@
     <projectConfigurable parentId="preferences.sourceCode" displayName="MPS" instance="jetbrains.mps.ide.codeStyle.CodeStyleSettingsConfigurable" />
     <projectConfigurable groupId="build" groupWeight="110" instance="jetbrains.mps.ide.compiler.CompilerSettingsConfigurable" order="after project"
                          displayName="Java Compiler" nonDefaultProject="true"/>
-    <applicationConfigurable groupId="editor" key="intention.settings" bundle="messages.CodeInsightBundle"
+    <applicationConfigurable groupId="editor" displayName="MPS Intentions"
                              instance="jetbrains.mps.intentions.IntentionSettingsConfigurable" id="preferences.intentionPowerPack2"/>
 
     <!--MPS patch: add two setting pages-->
