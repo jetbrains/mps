@@ -2245,21 +2245,21 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/plaf/jetbrains.mps.ide.platform.jar" duplicate="preserve">
       <fileset dir="${mps_home}/workbench/mps-platform" includes="icons/**, resources/**" />
-      <fileset dir="${mps_home}/workbench/mps-platform/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.platform/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.ide.platform.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/workbench-mps-platform-models">
-      <fileset dir="${mps_home}/workbench/mps-platform/models" includes="**/*.mps, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/workbench-mps-platform-jetbrains.mps.ide.platform-models">
+      <fileset dir="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.platform/models" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/languages/plaf/jetbrains.mps.ide.platform-src.jar" duplicate="preserve">
-      <fileset dir="${mps_home}/workbench/mps-platform/source_gen">
+      <fileset dir="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.platform/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <zipfileset file="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.platform.msd" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/workbench-mps-platform-models" prefix="module/models" />
+      <zipfileset file="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.platform/jetbrains.mps.ide.platform.msd" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/workbench-mps-platform-jetbrains.mps.ide.platform-models" prefix="module/models" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.ide.ui.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.ide.ui.jar/META-INF" />
@@ -2356,21 +2356,21 @@
       </module>
     </echoxml>
     <jar destfile="${build.layout}/languages/plaf/jetbrains.mps.ide.refactoring.platform.jar" duplicate="preserve">
-      <fileset dir="${mps_home}/workbench/mps-workbench/jetbrains.mps.ide.refactoring.platform/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.refactoring.platform/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.ide.refactoring.platform.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/workbench-mps-workbench-jetbrains.mps.ide.refactoring.platform-models">
-      <fileset dir="${mps_home}/workbench/mps-workbench/jetbrains.mps.ide.refactoring.platform/models" includes="**/*.mps, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/workbench-mps-platform-jetbrains.mps.ide.refactoring.platform-models">
+      <fileset dir="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.refactoring.platform/models" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/languages/plaf/jetbrains.mps.ide.refactoring.platform-src.jar" duplicate="preserve">
-      <fileset dir="${mps_home}/workbench/mps-workbench/jetbrains.mps.ide.refactoring.platform/source_gen">
+      <fileset dir="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.refactoring.platform/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <zipfileset file="${mps_home}/workbench/mps-workbench/jetbrains.mps.ide.refactoring.platform/jetbrains.mps.ide.refactoring.platform.msd" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/workbench-mps-workbench-jetbrains.mps.ide.refactoring.platform-models" prefix="module/models" />
+      <zipfileset file="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.refactoring.platform/jetbrains.mps.ide.refactoring.platform.msd" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/workbench-mps-platform-jetbrains.mps.ide.refactoring.platform-models" prefix="module/models" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.baseLanguage.search.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.baseLanguage.search.jar/META-INF" />
@@ -16165,8 +16165,8 @@
         <module file="${mps_home}/editor/editor-runtime/jetbrains.mps.editor.runtime.msd" bootstrap="true" />
         <module file="${mps_home}/editor/editorlang-runtime/jetbrains.mps.editorlang.runtime.msd" bootstrap="true" />
         <module file="${mps_home}/core/findUsages-runtime/jetbrains.mps.findUsages.runtime.msd" bootstrap="true" />
-        <module file="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.platform.msd" bootstrap="true" />
-        <module file="${mps_home}/workbench/mps-workbench/jetbrains.mps.ide.refactoring.platform/jetbrains.mps.ide.refactoring.platform.msd" bootstrap="true" />
+        <module file="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.platform/jetbrains.mps.ide.platform.msd" bootstrap="true" />
+        <module file="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.refactoring.platform/jetbrains.mps.ide.refactoring.platform.msd" bootstrap="true" />
         <module file="${mps_home}/core/java-stub/jetbrains.mps.java.stub.msd" bootstrap="true" />
         <module file="${mps_home}/core/kernel/kernelSolution/jetbrains.mps.kernel.msd" bootstrap="true" />
         <module file="${mps_home}/languages/languageDesign/access/jetbrains.mps.lang.access.mpl" bootstrap="true" />
@@ -17301,8 +17301,8 @@
       <compilerarg value="-Xlint:none" />
       <src>
         <pathelement path="${mps_home}/workbench/mps-platform/source" />
-        <pathelement path="${mps_home}/workbench/mps-platform/source_gen" />
-        <pathelement path="${mps_home}/workbench/mps-workbench/jetbrains.mps.ide.refactoring.platform/source_gen" />
+        <pathelement path="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.platform/source_gen" />
+        <pathelement path="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.refactoring.platform/source_gen" />
         <pathelement path="${mps_home}/languages/baseLanguage/baseLanguage/solutions/jetbrains.mps.baseLanguage.search/source_gen" />
         <pathelement path="${mps_home}/languages/baseLanguage/baseLanguage/solutions/jetbrains.mps.baseLanguage.util/source_gen" />
       </src>
@@ -17366,8 +17366,8 @@
     <copy todir="${build.tmp}/java/out/mps-platform">
       <fileset dir="${mps_home}/workbench/mps-platform/source" includes="**/*.dic" />
       <fileset dir="${mps_home}/workbench/mps-platform/source" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${mps_home}/workbench/mps-platform/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${mps_home}/workbench/mps-workbench/jetbrains.mps.ide.refactoring.platform/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.platform/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.refactoring.platform/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
       <fileset dir="${mps_home}/languages/baseLanguage/baseLanguage/solutions/jetbrains.mps.baseLanguage.search/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
       <fileset dir="${mps_home}/languages/baseLanguage/baseLanguage/solutions/jetbrains.mps.baseLanguage.util/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>

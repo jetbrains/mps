@@ -1550,7 +1550,21 @@
           <property role="nFU4j" value="source" />
           <property role="3LZaj6" value="source" />
         </node>
-        <node concept="nFU4i" id="16Vg0jOco4b" role="nFU4p">
+      </node>
+      <node concept="398b2D" id="5j6TEKDlAjB" role="398b2p">
+        <node concept="398BVA" id="5j6TEKDlAjC" role="398b2C">
+          <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
+          <node concept="2Ry0Ak" id="5j6TEKDlAjD" role="iGT6I">
+            <property role="2Ry0Am" value="workbench" />
+            <node concept="2Ry0Ak" id="5j6TEKDlAjE" role="2Ry0An">
+              <property role="2Ry0Am" value="mps-platform" />
+              <node concept="2Ry0Ak" id="5j6TEKDlAIT" role="2Ry0An">
+                <property role="2Ry0Am" value="jetbrains.mps.ide.platform" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="nFU4i" id="5j6TEKDlAjG" role="nFU4p">
           <property role="nFU4j" value="source_gen" />
           <property role="3LZaj6" value="source" />
         </node>
@@ -1561,7 +1575,7 @@
           <node concept="2Ry0Ak" id="4X1d9kMORyb" role="iGT6I">
             <property role="2Ry0Am" value="workbench" />
             <node concept="2Ry0Ak" id="4X1d9kMOR$D" role="2Ry0An">
-              <property role="2Ry0Am" value="mps-workbench" />
+              <property role="2Ry0Am" value="mps-platform" />
               <node concept="2Ry0Ak" id="4X1d9kMORAH" role="2Ry0An">
                 <property role="2Ry0Am" value="jetbrains.mps.ide.refactoring.platform" />
               </node>
@@ -23243,8 +23257,11 @@
             <property role="2Ry0Am" value="workbench" />
             <node concept="2Ry0Ak" id="6wK_PpNA8HX" role="2Ry0An">
               <property role="2Ry0Am" value="mps-platform" />
-              <node concept="2Ry0Ak" id="6wK_PpNA8HY" role="2Ry0An">
-                <property role="2Ry0Am" value="jetbrains.mps.ide.platform.msd" />
+              <node concept="2Ry0Ak" id="mL2SJ3GIHX" role="2Ry0An">
+                <property role="2Ry0Am" value="jetbrains.mps.ide.platform" />
+                <node concept="2Ry0Ak" id="mL2SJ3GJ7W" role="2Ry0An">
+                  <property role="2Ry0Am" value="jetbrains.mps.ide.platform.msd" />
+                </node>
               </node>
             </node>
           </node>
@@ -23281,8 +23298,11 @@
                 <property role="2Ry0Am" value="workbench" />
                 <node concept="2Ry0Ak" id="73GUf$ummTo" role="2Ry0An">
                   <property role="2Ry0Am" value="mps-platform" />
-                  <node concept="2Ry0Ak" id="73GUf$ummTp" role="2Ry0An">
-                    <property role="2Ry0Am" value="models" />
+                  <node concept="2Ry0Ak" id="5j6TEKDw31e" role="2Ry0An">
+                    <property role="2Ry0Am" value="jetbrains.mps.ide.platform" />
+                    <node concept="2Ry0Ak" id="5j6TEKDw3eo" role="2Ry0An">
+                      <property role="2Ry0Am" value="models" />
+                    </node>
                   </node>
                 </node>
               </node>
@@ -23482,7 +23502,7 @@
           <node concept="2Ry0Ak" id="4X1d9kMCbrT" role="iGT6I">
             <property role="2Ry0Am" value="workbench" />
             <node concept="2Ry0Ak" id="4X1d9kMCbrU" role="2Ry0An">
-              <property role="2Ry0Am" value="mps-workbench" />
+              <property role="2Ry0Am" value="mps-platform" />
               <node concept="2Ry0Ak" id="4X1d9kMCbvY" role="2Ry0An">
                 <property role="2Ry0Am" value="jetbrains.mps.ide.refactoring.platform" />
                 <node concept="2Ry0Ak" id="4X1d9kMCb$1" role="2Ry0An">
@@ -23527,7 +23547,7 @@
               <node concept="2Ry0Ak" id="73GUf$ummTP" role="iGT6I">
                 <property role="2Ry0Am" value="workbench" />
                 <node concept="2Ry0Ak" id="73GUf$ummTQ" role="2Ry0An">
-                  <property role="2Ry0Am" value="mps-workbench" />
+                  <property role="2Ry0Am" value="mps-platform" />
                   <node concept="2Ry0Ak" id="73GUf$ummTR" role="2Ry0An">
                     <property role="2Ry0Am" value="jetbrains.mps.ide.refactoring.platform" />
                     <node concept="2Ry0Ak" id="73GUf$ummTS" role="2Ry0An">
@@ -29262,23 +29282,23 @@
       </node>
       <node concept="1SiIV0" id="4IP11oWmBUA" role="3bR37C">
         <node concept="3bR9La" id="4IP11oWmBUB" role="1SiIV1">
-          <ref role="3bR37D" node="mXGwHwhVPj" />
+          <ref role="3bR37D" node="mXGwHwhVPj" resolve="JDK" />
         </node>
       </node>
       <node concept="1SiIV0" id="4IP11oWmBU$" role="3bR37C">
         <node concept="3bR9La" id="4IP11oWmBU_" role="1SiIV1">
-          <ref role="3bR37D" node="44LXwdzyvTi" />
+          <ref role="3bR37D" node="44LXwdzyvTi" resolve="Annotations" />
         </node>
       </node>
       <node concept="1SiIV0" id="4IP11oWmBUw" role="3bR37C">
         <node concept="3bR9La" id="4IP11oWmBUx" role="1SiIV1">
-          <ref role="3bR37D" node="1H905DlDUSw" />
+          <ref role="3bR37D" node="1H905DlDUSw" resolve="MPS.OpenAPI" />
         </node>
       </node>
       <node concept="1SiIV0" id="4IP11oWmBUK" role="3bR37C">
         <node concept="3bR9La" id="4IP11oWmBUL" role="1SiIV1">
           <property role="3bR36h" value="true" />
-          <ref role="3bR37D" node="1TaHNgiIbIQ" />
+          <ref role="3bR37D" node="1TaHNgiIbIQ" resolve="MPS.Core" />
         </node>
       </node>
       <node concept="1SiIV0" id="4IP11oWmBUk" role="3bR37C">
@@ -29294,7 +29314,7 @@
       </node>
       <node concept="1SiIV0" id="4IP11oWmBUI" role="3bR37C">
         <node concept="3bR9La" id="4IP11oWmBUJ" role="1SiIV1">
-          <ref role="3bR37D" node="7Kfy9QB6LfQ" />
+          <ref role="3bR37D" node="7Kfy9QB6LfQ" resolve="jetbrains.mps.kernel" />
         </node>
       </node>
       <node concept="1SiIV0" id="4IP11oWmBUu" role="3bR37C">
