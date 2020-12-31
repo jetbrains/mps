@@ -38,6 +38,7 @@ import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService;
 import jetbrains.mps.extapi.persistence.datasource.URLNotSupportedException;
 import jetbrains.mps.fileTypes.MPSFileTypeFactory;
 import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.persistence.IndexAwareModelFactory;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
@@ -55,6 +56,7 @@ import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.net.JarURLConnection;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -130,14 +132,7 @@ public class RootNodeNameIndex extends SingleEntryFileBasedIndexExtension<ModelR
 
   @Nullable
   private static URL constructURLFromData(FileContent inputData) {
-    URL url = VfsUtilCore.convertToURL(inputData.getFile().getUrl());
-    try {
-      // making RFC compliant URL from what IJ gives us
-      return new URI(url.getProtocol(), url.getUserInfo(), url.getHost(), url.getPort(), url.getPath(), url.getQuery(), null).toURL();
-    } catch (URISyntaxException | MalformedURLException e) {
-      LOG.error("Could not create URI from " + url, e);
-    }
-    return url;
+    return VirtualFileUtils.extractURLFromVirtualFile(inputData.getFile());
   }
 
   /**

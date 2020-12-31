@@ -16,6 +16,8 @@
 package jetbrains.mps.vfs.util;
 
 import jetbrains.mps.vfs.IFileSystem;
+import jetbrains.mps.vfs.iofs.jar.JarEntryFile;
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
