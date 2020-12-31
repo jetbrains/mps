@@ -23,6 +23,7 @@ import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.impl.IoFileSystem;
+import jetbrains.mps.vfs.path.Path;
 import jetbrains.mps.vfs.util.PathFormatChecker;
 import jetbrains.mps.vfs.util.PathUtil;
 import org.apache.log4j.LogManager;
@@ -40,6 +41,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 @Immutable
 //todo: currently, myEntryPath can be empty or like "a/b/c". Force it to have "/a/b/c" format and be non-empty (like in JRT file)
@@ -268,11 +270,8 @@ public class JarEntryFile implements IFile {
   @Hack
   @Override
   public URL getUrl() throws MalformedURLException {
-    try {
-      return new URI("jar:file", null, myJarFile.getAbsolutePath() + "!/" + myEntryPath, null, null).toURL();
-    } catch (URISyntaxException e) {
-      throw new RuntimeException(e);
-    }
+    String encoded = new File(myJarFile.getAbsoluteFile() + Path.ARCHIVE_SEPARATOR + myEntryPath).toURI().toASCIIString();
+    return URI.create("jar:" + encoded).toURL();
   }
 
   @Override
@@ -286,10 +285,7 @@ public class JarEntryFile implements IFile {
 
     JarEntryFile that = (JarEntryFile) o;
 
-    if (myEntryPath != null ? !myEntryPath.equals(that.myEntryPath) : that.myEntryPath != null) {
-      return false;
-    }
-    return myJarFile != null ? myJarFile.equals(that.myJarFile) : that.myJarFile == null;
+    return Objects.equals(myEntryPath, that.myEntryPath) && Objects.equals(myJarFile, that.myJarFile);
   }
 
   @Override
