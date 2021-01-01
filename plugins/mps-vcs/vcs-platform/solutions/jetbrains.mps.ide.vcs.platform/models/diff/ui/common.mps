@@ -20374,7 +20374,7 @@
   <node concept="312cEu" id="D356mG1l9K">
     <property role="TrG5h" value="ChangeGroupMessages" />
     <node concept="Wx3nA" id="312Lf7nzMs2" role="jymVt">
-      <property role="TrG5h" value="ourOwner" />
+      <property role="TrG5h" value="OWNER" />
       <property role="3TUv4t" value="true" />
       <node concept="3uibUv" id="312Lf7nzThU" role="1tU5fm">
         <ref role="3uigEE" to="kpve:~EditorMessageOwner" resolve="EditorMessageOwner" />
@@ -20393,6 +20393,7 @@
     </node>
     <node concept="312cEg" id="D356mG1l9Q" role="jymVt">
       <property role="TrG5h" value="myLayout" />
+      <property role="3TUv4t" value="true" />
       <node concept="3uibUv" id="D356mG1lCC" role="1tU5fm">
         <ref role="3uigEE" node="42hl10VHagX" resolve="ChangeGroupLayout" />
       </node>
@@ -20400,11 +20401,13 @@
     </node>
     <node concept="312cEg" id="D356mG1lCD" role="jymVt">
       <property role="TrG5h" value="myLeft" />
+      <property role="3TUv4t" value="true" />
       <node concept="10P_77" id="D356mG1lCG" role="1tU5fm" />
       <node concept="3Tm6S6" id="D356mG1lCE" role="1B3o_S" />
     </node>
     <node concept="312cEg" id="D356mG1n6f" role="jymVt">
       <property role="TrG5h" value="myGutter" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="D356mG1n6g" role="1B3o_S" />
       <node concept="3uibUv" id="D356mG1n6h" role="1tU5fm">
         <ref role="3uigEE" to="exr9:~MessagesGutter" resolve="MessagesGutter" />
@@ -20412,6 +20415,7 @@
     </node>
     <node concept="312cEg" id="26fDspGS_UN" role="jymVt">
       <property role="TrG5h" value="myUpdateQueue" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="26fDspGS_UO" role="1B3o_S" />
       <node concept="3uibUv" id="26fDspGSAtq" role="1tU5fm">
         <ref role="3uigEE" to="t335:~MergingUpdateQueue" resolve="MergingUpdateQueue" />
@@ -20419,6 +20423,7 @@
     </node>
     <node concept="312cEg" id="26fDspGSCEo" role="jymVt">
       <property role="TrG5h" value="myUpdateIdentity" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="26fDspGSCEp" role="1B3o_S" />
       <node concept="3uibUv" id="26fDspGSD1h" role="1tU5fm">
         <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
@@ -20429,6 +20434,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3NDL0tvrAhV" role="jymVt" />
     <node concept="3clFbW" id="D356mG1lCH" role="jymVt">
       <node concept="37vLTG" id="D356mG1lCM" role="3clF46">
         <property role="TrG5h" value="layout" />
@@ -20551,6 +20557,7 @@
       <node concept="3cqZAl" id="D356mG1lCI" role="3clF45" />
       <node concept="3Tm1VV" id="76itSV98wSN" role="1B3o_S" />
     </node>
+    <node concept="2tJIrI" id="3NDL0tvpwru" role="jymVt" />
     <node concept="3clFb_" id="D356mG1o$s" role="jymVt">
       <property role="TrG5h" value="startMaintaining" />
       <node concept="3Tm1VV" id="D356mG1o$u" role="1B3o_S" />
@@ -20621,6 +20628,7 @@
       </node>
       <node concept="3cqZAl" id="D356mG1o$t" role="3clF45" />
     </node>
+    <node concept="2tJIrI" id="3NDL0tvpwrv" role="jymVt" />
     <node concept="3clFb_" id="76itSV98wSB" role="jymVt">
       <property role="TrG5h" value="dispose" />
       <node concept="3Tm1VV" id="76itSV98wSD" role="1B3o_S" />
@@ -20641,7 +20649,7 @@
             <node concept="liA8E" id="76itSV98wSL" role="2OqNvi">
               <ref role="37wK5l" to="exr9:~MessagesGutter.removeMessages(jetbrains.mps.openapi.editor.message.EditorMessageOwner)" resolve="removeMessages" />
               <node concept="37vLTw" id="2BHiRxeosn9" role="37wK5m">
-                <ref role="3cqZAo" node="312Lf7nzMs2" resolve="ourOwner" />
+                <ref role="3cqZAo" node="312Lf7nzMs2" resolve="OWNER" />
               </node>
             </node>
             <node concept="37vLTw" id="2BHiRxeuLw0" role="2Oq$k0">
@@ -20651,6 +20659,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3NDL0tvpwrw" role="jymVt" />
     <node concept="3clFb_" id="D356mG1lD4" role="jymVt">
       <property role="TrG5h" value="rebuildGutterMessages" />
       <node concept="3cqZAl" id="D356mG1lD5" role="3clF45" />
@@ -20660,7 +20669,7 @@
             <node concept="liA8E" id="D356mG1n4a" role="2OqNvi">
               <ref role="37wK5l" to="exr9:~MessagesGutter.removeMessages(jetbrains.mps.openapi.editor.message.EditorMessageOwner)" resolve="removeMessages" />
               <node concept="37vLTw" id="2BHiRxeold0" role="37wK5m">
-                <ref role="3cqZAo" node="312Lf7nzMs2" resolve="ourOwner" />
+                <ref role="3cqZAo" node="312Lf7nzMs2" resolve="OWNER" />
               </node>
             </node>
             <node concept="37vLTw" id="2BHiRxeumLe" role="2Oq$k0">
@@ -20711,6 +20720,7 @@
       </node>
       <node concept="3Tm6S6" id="312Lf7nzMs1" role="1B3o_S" />
     </node>
+    <node concept="2tJIrI" id="3NDL0tvpwrx" role="jymVt" />
     <node concept="2YIFZL" id="1IK$bZG1GHg" role="jymVt">
       <property role="TrG5h" value="startMaintaining" />
       <node concept="37vLTG" id="1IK$bZG1GHr" role="3clF46">
@@ -20760,16 +20770,19 @@
       </node>
       <node concept="3cqZAl" id="1IK$bZG1GHh" role="3clF45" />
     </node>
+    <node concept="2tJIrI" id="3NDL0tvpww2" role="jymVt" />
     <node concept="312cEu" id="D356mG1n4o" role="jymVt">
       <property role="TrG5h" value="MyChangeGroupMessage" />
       <property role="2bfB8j" value="true" />
       <node concept="312cEg" id="D356mG1n4Y" role="jymVt">
         <property role="TrG5h" value="myChangeGroup" />
+        <property role="3TUv4t" value="true" />
         <node concept="3Tm6S6" id="D356mG1n4Z" role="1B3o_S" />
         <node concept="3uibUv" id="D356mG1n51" role="1tU5fm">
           <ref role="3uigEE" node="42hl10VHaeV" resolve="ChangeGroup" />
         </node>
       </node>
+      <node concept="2tJIrI" id="3NDL0tvpw$$" role="jymVt" />
       <node concept="3uibUv" id="D356mG1n4v" role="EKbjA">
         <ref role="3uigEE" to="kpve:~SimpleEditorMessage" resolve="SimpleEditorMessage" />
       </node>
@@ -20796,6 +20809,7 @@
         </node>
         <node concept="3cqZAl" id="D356mG1n53" role="3clF45" />
       </node>
+      <node concept="2tJIrI" id="3NDL0tvpwpv" role="jymVt" />
       <node concept="3clFb_" id="D356mG1n4w" role="jymVt">
         <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="getOwner" />
@@ -20807,7 +20821,7 @@
           <node concept="3clFbF" id="312Lf7n$aYh" role="3cqZAp">
             <node concept="10M0yZ" id="312Lf7n$aYi" role="3clFbG">
               <ref role="1PxDUh" node="D356mG1l9K" resolve="ChangeGroupMessages" />
-              <ref role="3cqZAo" node="312Lf7nzMs2" resolve="ourOwner" />
+              <ref role="3cqZAo" node="312Lf7nzMs2" resolve="OWNER" />
             </node>
           </node>
         </node>
@@ -20816,6 +20830,7 @@
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
+      <node concept="2tJIrI" id="3NDL0tvpwpw" role="jymVt" />
       <node concept="3clFb_" id="D356mG1n4$" role="jymVt">
         <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="getColor" />
@@ -20849,6 +20864,7 @@
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
+      <node concept="2tJIrI" id="3NDL0tvpwpx" role="jymVt" />
       <node concept="3clFb_" id="D356mG1n4C" role="jymVt">
         <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="getMessage" />
@@ -20866,6 +20882,25 @@
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
+      <node concept="2tJIrI" id="3NDL0tvpxB7" role="jymVt" />
+      <node concept="3clFb_" id="3NDL0tvpxB8" role="jymVt">
+        <property role="1EzhhJ" value="false" />
+        <property role="TrG5h" value="getFormattedMessage" />
+        <property role="DiZV1" value="false" />
+        <node concept="3clFbS" id="3NDL0tvpxB9" role="3clF47">
+          <node concept="3clFbF" id="3NDL0tvpxBa" role="3cqZAp">
+            <node concept="Xl_RD" id="3NDL0tvpxBb" role="3clFbG">
+              <property role="Xl_RC" value="" />
+            </node>
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="3NDL0tvpxBc" role="1B3o_S" />
+        <node concept="17QB3L" id="3NDL0tvpxBd" role="3clF45" />
+        <node concept="2AHcQZ" id="3NDL0tvpxBe" role="2AJF6D">
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+        </node>
+      </node>
+      <node concept="2tJIrI" id="3NDL0tvpwpy" role="jymVt" />
       <node concept="3clFb_" id="D356mG1n4M" role="jymVt">
         <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="getStart" />
@@ -20902,6 +20937,7 @@
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
+      <node concept="2tJIrI" id="3NDL0tvpwpz" role="jymVt" />
       <node concept="3clFb_" id="D356mG1n4G" role="jymVt">
         <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="getHeight" />
@@ -20939,8 +20975,6 @@
         </node>
       </node>
       <node concept="2tJIrI" id="5ZZ3vNjxcUx" role="jymVt" />
-      <node concept="2tJIrI" id="71qRyYfdU2$" role="jymVt" />
-      <node concept="2tJIrI" id="5ZZ3vNjx5zM" role="jymVt" />
       <node concept="3clFb_" id="5ZZ3vNjxdoR" role="jymVt">
         <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="getStatus" />
@@ -20958,6 +20992,7 @@
           </node>
         </node>
       </node>
+      <node concept="2tJIrI" id="3NDL0tvpwp$" role="jymVt" />
       <node concept="3clFb_" id="71qRyYfdUwK" role="jymVt">
         <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="getNode" />
@@ -20972,6 +21007,7 @@
           </node>
         </node>
       </node>
+      <node concept="2tJIrI" id="3NDL0tvpwp_" role="jymVt" />
       <node concept="3clFb_" id="71qRyYfedYQ" role="jymVt">
         <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="sameAs" />
@@ -21008,6 +21044,7 @@
           </node>
         </node>
       </node>
+      <node concept="2tJIrI" id="3NDL0tvpwpA" role="jymVt" />
       <node concept="3clFb_" id="71qRyYfe4R0" role="jymVt">
         <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="getPriority" />
@@ -21022,6 +21059,7 @@
           </node>
         </node>
       </node>
+      <node concept="2tJIrI" id="3NDL0tvpwpB" role="jymVt" />
       <node concept="3clFb_" id="71qRyYfe4mQ" role="jymVt">
         <property role="1EzhhJ" value="false" />
         <property role="TrG5h" value="showInGutter" />

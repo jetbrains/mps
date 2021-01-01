@@ -929,9 +929,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
           return;
         }
         String text = getMessagesTextFor(cell);
-        if (text != null) {
-          text = StringEscapeUtils.escapeHtml(text).replace("\n", "<br>");
-        }
         rv.set(text);
       }
     });
@@ -978,7 +975,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       if (selection != null) {
         HighlighterMessage message = getHighlighterMessageFor(selection);
         if (message != null) {
-          info = message.getMessage();
+          info = message.getFormattedMessage();
         }
       }
 
@@ -1025,7 +1022,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       if (result.length() != 0) {
         result.append('\n');
       }
-      result.append(message.getMessage());
+      result.append(message.getFormattedMessage());
     }
     return result.toString();
   }

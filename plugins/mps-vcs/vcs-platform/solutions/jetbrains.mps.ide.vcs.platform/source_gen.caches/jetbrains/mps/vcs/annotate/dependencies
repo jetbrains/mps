@@ -59,8 +59,10 @@
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.GeometryUtil" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.cells.EditorCell" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.message.EditorMessageOwner" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.message.FormattingOptions" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.message.SimpleEditorMessage" />
     <classNode dependClassName="jetbrains.mps.vcs.annotate.CellAnnotation" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode extendsClassName="jetbrains.mps.nodeEditor.messageTargets.EditorMessageWithTarget" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.annotate.AnnotationAspectSubcolumn">

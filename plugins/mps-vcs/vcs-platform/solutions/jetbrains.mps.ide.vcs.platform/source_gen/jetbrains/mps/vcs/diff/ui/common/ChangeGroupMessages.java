@@ -17,12 +17,13 @@ import org.jetbrains.mps.openapi.model.SNode;
 
 @GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/739457190729175664", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 public class ChangeGroupMessages {
-  public static final EditorMessageOwner ourOwner = new EditorMessageOwner() {};
-  private ChangeGroupLayout myLayout;
-  private boolean myLeft;
-  private MessagesGutter myGutter;
-  private MergingUpdateQueue myUpdateQueue;
-  private Object myUpdateIdentity = new Object();
+  public static final EditorMessageOwner OWNER = new EditorMessageOwner() {};
+  private final ChangeGroupLayout myLayout;
+  private final boolean myLeft;
+  private final MessagesGutter myGutter;
+  private final MergingUpdateQueue myUpdateQueue;
+  private final Object myUpdateIdentity = new Object();
+
   public ChangeGroupMessages(ChangeGroupLayout layout, boolean left) {
     myLayout = layout;
     myLeft = left;
@@ -31,6 +32,7 @@ public class ChangeGroupMessages {
     myUpdateQueue = new MergingUpdateQueue("ChangeGroupMessages", 500, true, editorComponent, null, null, true);
     myUpdateQueue.setRestartTimerOnAdd(true);
   }
+
   public void startMaintaining() {
     myLayout.addInvalidateListener(new ChangeGroupInvalidateListener() {
       public void changeGroupsInvalidated() {
@@ -44,62 +46,79 @@ public class ChangeGroupMessages {
       }
     });
   }
+
   public void dispose() {
     myUpdateQueue.dispose();
-    myGutter.removeMessages(ourOwner);
+    myGutter.removeMessages(OWNER);
   }
+
   private void rebuildGutterMessages() {
-    myGutter.removeMessages(ourOwner);
+    myGutter.removeMessages(OWNER);
     ListSequence.fromList(myLayout.getChangeGroups()).visitAll(new IVisitor<ChangeGroup>() {
       public void visit(ChangeGroup cg) {
         myGutter.add(new MyChangeGroupMessage(cg));
       }
     });
   }
+
   public static void startMaintaining(ChangeGroupLayout layout) {
     new ChangeGroupMessages(layout, false).startMaintaining();
     new ChangeGroupMessages(layout, true).startMaintaining();
   }
+
   private class MyChangeGroupMessage implements SimpleEditorMessage {
-    private ChangeGroup myChangeGroup;
+    private final ChangeGroup myChangeGroup;
+
     private MyChangeGroupMessage(ChangeGroup changeGroup) {
       myChangeGroup = changeGroup;
     }
+
     @Override
     public EditorMessageOwner getOwner() {
-      return ChangeGroupMessages.ourOwner;
+      return ChangeGroupMessages.OWNER;
     }
+
     @Override
     public Color getColor() {
       return ChangeColors.getInstance().getErrorStripeColor(myChangeGroup.getChangeType());
     }
+
     @Override
     public String getMessage() {
       return "";
     }
+
+    @Override
+    public String getFormattedMessage() {
+      return "";
+    }
+
     @Override
     public int getStart(jetbrains.mps.openapi.editor.EditorComponent component) {
       return (int) myChangeGroup.getBounds(myLeft).start();
     }
+
     @Override
     public int getHeight(jetbrains.mps.openapi.editor.EditorComponent component) {
       return myChangeGroup.getBounds(myLeft).length();
     }
 
-
-
     public MessageStatus getStatus() {
       return MessageStatus.OK;
     }
+
     public SNode getNode() {
       return null;
     }
+
     public boolean sameAs(SimpleEditorMessage message) {
       return message instanceof ChangeGroupMessages && this.equals(message);
     }
+
     public int getPriority() {
       return 0;
     }
+
     public boolean showInGutter() {
       return false;
     }

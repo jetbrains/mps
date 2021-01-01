@@ -9,6 +9,8 @@ import java.awt.Color;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
+import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.openapi.editor.message.FormattingOptions;
 import com.intellij.util.ui.UIUtil;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
@@ -24,12 +26,17 @@ public class AnnotatedCellMessage extends EditorMessageWithTarget {
   private final CellAnnotation myCellAnnotation;
   private Color myColor;
 
-
   public AnnotatedCellMessage(CellAnnotation cellAnnotation, EditorCell cell, Color color, EditorMessageOwner owner) {
     super(cell.getSNode(), MessageStatus.OK, new NodeMessageTarget(), color, "", owner);
     myCellAnnotation = cellAnnotation;
     myCell = cell;
     myColor = color;
+  }
+
+  @NotNull
+  @Override
+  public FormattingOptions getFormattingOptions() {
+    return FormattingOptions.BODY_OF_HTML;
   }
 
   @Override
