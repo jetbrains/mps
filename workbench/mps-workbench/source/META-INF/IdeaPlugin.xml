@@ -159,11 +159,10 @@
                          instance="jetbrains.mps.nodeEditor.hintsSettings.ConceptEditorHintConfigurable"
                          displayName="Editor hints" order="after preferences.sourceCode" nonDefaultProject="true"/>
     <!-- Global Code Style -->
-    <projectConfigurable groupId="editor" groupWeight="170" dynamic="true" bundle="messages.IdeBundle" key="configurable.CodeStyle.display.name"
-                         id="preferences.sourceCode2" instance="jetbrains.mps.ide.codeStyle.CodeStyleSettingsConfigurable" order="after colors"/>
+    <projectConfigurable parentId="preferences.sourceCode" displayName="MPS" instance="jetbrains.mps.ide.codeStyle.CodeStyleSettingsConfigurable" />
     <projectConfigurable groupId="build" groupWeight="110" instance="jetbrains.mps.ide.compiler.CompilerSettingsConfigurable" order="after project"
                          displayName="Java Compiler" nonDefaultProject="true"/>
-    <applicationConfigurable groupId="editor" key="intention.settings" bundle="messages.CodeInsightBundle"
+    <applicationConfigurable groupId="editor" displayName="MPS Intentions"
                              instance="jetbrains.mps.intentions.IntentionSettingsConfigurable" id="preferences.intentionPowerPack2"/>
 
     <!--MPS patch: add two setting pages-->

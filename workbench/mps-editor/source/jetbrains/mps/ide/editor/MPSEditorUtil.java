@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.ide.editor;
 
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.project.Project;
@@ -39,10 +38,13 @@ public final class MPSEditorUtil {
    */
   @Nullable
   public static SNode getCurrentEditedNodeFromTabbedEditor(@NotNull Project project, @NotNull MPSNodeVirtualFile file) {
-    if (!ApplicationManager.getApplication().isDispatchThread()) {
-      return null;
-    }
-    FileEditor editor = FileEditorManager.getInstance(project).getSelectedEditor(file);
+    /* Use FileEditorManagerImpl#getAllEditors(VirtualFile) instead of FileEditorManagerImpl#getSelectedEditor(VirtualFile)
+    *  because later require dispatch thread (see FileEditorManagerImpl#getSelectedEditorWithProvider)
+    *  but this method is called from NodeFileIconProvider#getIcon that is executed on app pooled thread (see EditorsSplitters#updateFileIconAsynchronously)
+    *
+    * For now several opened tabs for same file can't be distinguished so just first found editor will be fine*/
+    FileEditor[] editors = FileEditorManager.getInstance(project).getAllEditors(file);
+    FileEditor editor = editors.length == 0 ? null : editors[0];
     if (!(editor instanceof MPSFileNodeEditor)) {
       return null;
     }

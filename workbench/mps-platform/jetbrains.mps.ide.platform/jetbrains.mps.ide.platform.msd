@@ -13,7 +13,7 @@
     </facet>
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${module}/classes" />
+    <stubModelEntry path="${mps_home}/workbench/mps-platform/classes" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>

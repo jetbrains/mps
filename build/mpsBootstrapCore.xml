@@ -2245,21 +2245,21 @@
     </echoxml>
     <jar destfile="${build.layout}/languages/plaf/jetbrains.mps.ide.platform.jar" duplicate="preserve">
       <fileset dir="${mps_home}/workbench/mps-platform" includes="icons/**, resources/**" />
-      <fileset dir="${mps_home}/workbench/mps-platform/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.platform/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.ide.platform.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/workbench-mps-platform-models">
-      <fileset dir="${mps_home}/workbench/mps-platform/models" includes="**/*.mps, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/workbench-mps-platform-jetbrains.mps.ide.platform-models">
+      <fileset dir="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.platform/models" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/languages/plaf/jetbrains.mps.ide.platform-src.jar" duplicate="preserve">
-      <fileset dir="${mps_home}/workbench/mps-platform/source_gen">
+      <fileset dir="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.platform/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <zipfileset file="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.platform.msd" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/workbench-mps-platform-models" prefix="module/models" />
+      <zipfileset file="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.platform/jetbrains.mps.ide.platform.msd" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/workbench-mps-platform-jetbrains.mps.ide.platform-models" prefix="module/models" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.ide.ui.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.ide.ui.jar/META-INF" />
@@ -2356,21 +2356,21 @@
       </module>
     </echoxml>
     <jar destfile="${build.layout}/languages/plaf/jetbrains.mps.ide.refactoring.platform.jar" duplicate="preserve">
-      <fileset dir="${mps_home}/workbench/mps-workbench/jetbrains.mps.ide.refactoring.platform/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.refactoring.platform/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.ide.refactoring.platform.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/workbench-mps-workbench-jetbrains.mps.ide.refactoring.platform-models">
-      <fileset dir="${mps_home}/workbench/mps-workbench/jetbrains.mps.ide.refactoring.platform/models" includes="**/*.mps, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/workbench-mps-platform-jetbrains.mps.ide.refactoring.platform-models">
+      <fileset dir="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.refactoring.platform/models" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/languages/plaf/jetbrains.mps.ide.refactoring.platform-src.jar" duplicate="preserve">
-      <fileset dir="${mps_home}/workbench/mps-workbench/jetbrains.mps.ide.refactoring.platform/source_gen">
+      <fileset dir="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.refactoring.platform/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <zipfileset file="${mps_home}/workbench/mps-workbench/jetbrains.mps.ide.refactoring.platform/jetbrains.mps.ide.refactoring.platform.msd" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/workbench-mps-workbench-jetbrains.mps.ide.refactoring.platform-models" prefix="module/models" />
+      <zipfileset file="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.refactoring.platform/jetbrains.mps.ide.refactoring.platform.msd" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/workbench-mps-platform-jetbrains.mps.ide.refactoring.platform-models" prefix="module/models" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.baseLanguage.search.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.baseLanguage.search.jar/META-INF" />
@@ -2958,22 +2958,22 @@
       </module>
     </echoxml>
     <jar destfile="${build.layout}/languages/runtimes/jetbrains.mps.lang.migration.runtime.jar" duplicate="preserve">
-      <fileset dir="${mps_home}/core/migration-runtime" includes="icons/**, resources/**" />
-      <fileset dir="${mps_home}/core/migration-runtime/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${mps_home}/languages/languageDesign/migration/solutions/runtime" includes="icons/**, resources/**" />
+      <fileset dir="${mps_home}/languages/languageDesign/migration/solutions/runtime/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.lang.migration.runtime.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/core-migration-runtime-models">
-      <fileset dir="${mps_home}/core/migration-runtime/models" includes="**/*.mps, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-migration-solutions-runtime-models">
+      <fileset dir="${mps_home}/languages/languageDesign/migration/solutions/runtime/models" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/languages/runtimes/jetbrains.mps.lang.migration.runtime-src.jar" duplicate="preserve">
-      <fileset dir="${mps_home}/core/migration-runtime/source_gen">
+      <fileset dir="${mps_home}/languages/languageDesign/migration/solutions/runtime/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
         <exclude name="**/checkpoints" />
         <exclude name="**/*.mps" />
       </fileset>
-      <zipfileset file="${mps_home}/core/migration-runtime/jetbrains.mps.lang.migration.runtime.msd" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/core-migration-runtime-models" prefix="module/models" />
+      <zipfileset file="${mps_home}/languages/languageDesign/migration/solutions/runtime/jetbrains.mps.lang.migration.runtime.msd" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/languages-languageDesign-migration-solutions-runtime-models" prefix="module/models" />
     </jar>
     <mkdir dir="${build.layout}/languages/languageDesign" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.lang.access.jar" />
@@ -16160,8 +16160,8 @@
         <module file="${mps_home}/editor/editor-runtime/jetbrains.mps.editor.runtime.msd" bootstrap="true" />
         <module file="${mps_home}/editor/editorlang-runtime/jetbrains.mps.editorlang.runtime.msd" bootstrap="true" />
         <module file="${mps_home}/core/findUsages-runtime/jetbrains.mps.findUsages.runtime.msd" bootstrap="true" />
-        <module file="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.platform.msd" bootstrap="true" />
-        <module file="${mps_home}/workbench/mps-workbench/jetbrains.mps.ide.refactoring.platform/jetbrains.mps.ide.refactoring.platform.msd" bootstrap="true" />
+        <module file="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.platform/jetbrains.mps.ide.platform.msd" bootstrap="true" />
+        <module file="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.refactoring.platform/jetbrains.mps.ide.refactoring.platform.msd" bootstrap="true" />
         <module file="${mps_home}/core/java-stub/jetbrains.mps.java.stub.msd" bootstrap="true" />
         <module file="${mps_home}/core/kernel/kernelSolution/jetbrains.mps.kernel.msd" bootstrap="true" />
         <module file="${mps_home}/languages/languageDesign/access/jetbrains.mps.lang.access.mpl" bootstrap="true" />
@@ -16196,7 +16196,7 @@
         <module file="${mps_home}/languages/languageDesign/intentions/jetbrains.mps.lang.intentions.mpl" bootstrap="true" />
         <module file="${mps_home}/languages/languageDesign/messages/jetbrains.mps.lang.messages.mpl" bootstrap="true" />
         <module file="${mps_home}/languages/languageDesign/migration/jetbrains.mps.lang.migration.mpl" bootstrap="true" />
-        <module file="${mps_home}/core/migration-runtime/jetbrains.mps.lang.migration.runtime.msd" bootstrap="true" />
+        <module file="${mps_home}/languages/languageDesign/migration/solutions/runtime/jetbrains.mps.lang.migration.runtime.msd" bootstrap="true" />
         <module file="${mps_home}/languages/languageDesign/modelapi/jetbrains.mps.lang.modelapi.mpl" bootstrap="true" />
         <module file="${mps_home}/languages/languageDesign/pattern/jetbrains.mps.lang.pattern.mpl" bootstrap="true" />
         <module file="${mps_home}/languages/languageDesign/plugin/jetbrains.mps.lang.plugin.mpl" bootstrap="true" />
@@ -16918,14 +16918,11 @@
     </copy>
   </target>
   
-  <target name="java.compile.mps-migration" depends="java.compile.idea-platform, java.compile.aux-runtimes, fetchDependencies">
+  <target name="java.compile.mps-migration" depends="java.compile.aux-runtimes, fetchDependencies">
     <mkdir dir="${build.tmp}/java/out/mps-migration" />
     <javac2 destdir="${build.tmp}/java/out/mps-migration" fork="false" encoding="utf8" includeantruntime="false" debug="true">
       <compilerarg value="-Xlint:none" />
-      <src>
-        <pathelement path="${mps_home}/core/migration-runtime/source_gen" />
-        <pathelement path="${mps_home}/core/migration-runtime/source" />
-      </src>
+      <src path="${mps_home}/languages/languageDesign/migration/solutions/runtime/source_gen" />
       <classpath>
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-annotations.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-openapi.jar" />
@@ -16947,19 +16944,16 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-kernel.jar" />
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-persistence.jar" />
-        <pathelement path="${build.tmp}/java/out/idea-platform" />
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/log4j.jar" />
         <fileset file="${artifacts.IDEA}/lib/jdom.jar" />
         <fileset file="${artifacts.IDEA}/lib/trove4j.jar" />
-        <path refid="path.java.library.idea-libraries" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/mps-migration">
-      <fileset dir="${mps_home}/core/migration-runtime/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
-      <fileset dir="${mps_home}/core/migration-runtime/source" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
+      <fileset dir="${mps_home}/languages/languageDesign/migration/solutions/runtime/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
     </copy>
   </target>
   
@@ -17290,14 +17284,15 @@
     </copy>
   </target>
   
-  <target name="java.compile.mps-platform" depends="java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.idea-platform, java.compile.mps-editor-api, java.compile.mps-editing, java.compile.mps-icons, java.compile.platform, java.compile.mps-environment, java.compile.mps-migration, java.compile.dataflow-rt, java.compile.mps-typesystem, java.compile.pattern-runtime, java.compile.aux-runtimes, fetchDependencies">
+  <target name="java.compile.mps-platform" depends="java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.idea-platform, java.compile.mps-editor-api, java.compile.mps-editing, java.compile.mps-icons, java.compile.platform, java.compile.mps-environment, java.compile.dataflow-rt, java.compile.mps-typesystem, java.compile.pattern-runtime, java.compile.aux-runtimes, fetchDependencies">
     <mkdir dir="${build.tmp}/java/out/mps-platform" />
     <javac2 destdir="${build.tmp}/java/out/mps-platform" fork="false" encoding="utf8" includeantruntime="false" debug="true">
       <compilerarg value="-Xlint:none" />
       <src>
         <pathelement path="${mps_home}/workbench/mps-platform/source" />
-        <pathelement path="${mps_home}/workbench/mps-platform/source_gen" />
-        <pathelement path="${mps_home}/workbench/mps-workbench/jetbrains.mps.ide.refactoring.platform/source_gen" />
+        <pathelement path="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.platform/source_gen" />
+        <pathelement path="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.refactoring.platform/source_gen" />
+        <pathelement path="${mps_home}/workbench/mps-platform/migration/source" />
         <pathelement path="${mps_home}/languages/baseLanguage/baseLanguage/solutions/jetbrains.mps.baseLanguage.search/source_gen" />
         <pathelement path="${mps_home}/languages/baseLanguage/baseLanguage/solutions/jetbrains.mps.baseLanguage.util/source_gen" />
       </src>
@@ -17331,7 +17326,6 @@
         <pathelement path="${build.tmp}/java/out/mps-icons" />
         <pathelement path="${build.tmp}/java/out/platform" />
         <pathelement path="${build.tmp}/java/out/mps-environment" />
-        <pathelement path="${build.tmp}/java/out/mps-migration" />
         <pathelement path="${build.tmp}/java/out/dataflow-rt" />
         <pathelement path="${build.tmp}/java/out/mps-typesystem" />
         <pathelement path="${build.tmp}/java/out/pattern-runtime" />
@@ -17361,8 +17355,9 @@
     <copy todir="${build.tmp}/java/out/mps-platform">
       <fileset dir="${mps_home}/workbench/mps-platform/source" includes="**/*.dic" />
       <fileset dir="${mps_home}/workbench/mps-platform/source" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${mps_home}/workbench/mps-platform/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
-      <fileset dir="${mps_home}/workbench/mps-workbench/jetbrains.mps.ide.refactoring.platform/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.platform/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/workbench/mps-platform/jetbrains.mps.ide.refactoring.platform/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/workbench/mps-platform/migration/source" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
       <fileset dir="${mps_home}/languages/baseLanguage/baseLanguage/solutions/jetbrains.mps.baseLanguage.search/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
       <fileset dir="${mps_home}/languages/baseLanguage/baseLanguage/solutions/jetbrains.mps.baseLanguage.util/source_gen" includes="**/*.properties, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>

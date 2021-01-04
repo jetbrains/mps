@@ -24,6 +24,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.scopes.ClassifierScopes;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import org.apache.log4j.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
@@ -74,23 +75,23 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
 
 
   public class SMP_Group_6wdawe_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
-    private boolean condition;
-    private boolean condition_1;
-    private boolean condition_2;
+    private boolean superclass;
+    private boolean implement;
+    private boolean superinterface;
     @Override
     protected void initialize(SubstituteMenuContext _context) {
       super.initialize(_context);
-      condition = new Computable<Boolean>() {
+      superclass = new Computable<Boolean>() {
         public Boolean compute() {
           return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.ClassConcept$bK) && Objects.equals(_context.getLink(), LINKS.superclass$Mp9$);
         }
       }.compute();
-      condition_1 = new Computable<Boolean>() {
+      implement = new Computable<Boolean>() {
         public Boolean compute() {
           return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.ClassConcept$bK) && Objects.equals(_context.getLink(), LINKS.implementedInterface$rujG);
         }
       }.compute();
-      condition_2 = new Computable<Boolean>() {
+      superinterface = new Computable<Boolean>() {
         public Boolean compute() {
           return SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.Interface$db) && Objects.equals(_context.getLink(), LINKS.extendedInterface$PDVO);
         }
@@ -115,7 +116,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
     public class SMP_Group_6wdawe_a0 extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
       @Override
       protected boolean isApplicable(SubstituteMenuContext _context) {
-        return condition;
+        return superclass;
       }
       @NotNull
       @Override
@@ -155,7 +156,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
         protected Iterable<? extends SNode> getParameters(final SubstituteMenuContext _context) {
           return (List<SNode>) Sequence.fromIterable(ClassifierScopes.getVisibleClassesScope(_context.getParentNode()).getAvailableElements(null)).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return !(SPropertyOperations.getBoolean(SNodeOperations.cast(it, CONCEPTS.ClassConcept$bK), PROPS.isFinal$f7C_)) && !(Objects.equals(it, _context.getParentNode()));
+              return !(SPropertyOperations.getBoolean(SNodeOperations.cast(it, CONCEPTS.ClassConcept$bK), PROPS.isFinal$f7C_)) && !(Objects.equals(it, _context.getParentNode())) && (boolean) ClassConcept__BehaviorDescriptor.canBeExtendedOrInstantiatedAt_id2YFkRQdLLqk.invoke(SNodeOperations.as(it, CONCEPTS.ClassConcept$bK), _context.getParentNode());
             }
           }).toListSequence();
         }
@@ -245,7 +246,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
     public class SMP_Group_6wdawe_b0 extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
       @Override
       protected boolean isApplicable(SubstituteMenuContext _context) {
-        return condition_1;
+        return implement;
       }
       @NotNull
       @Override
@@ -371,7 +372,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
     public class SMP_Group_6wdawe_c0 extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
       @Override
       protected boolean isApplicable(SubstituteMenuContext _context) {
-        return condition_2;
+        return superinterface;
       }
       @NotNull
       @Override
@@ -501,7 +502,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
     public class SMP_Group_6wdawe_d0 extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
       @Override
       protected boolean isApplicable(SubstituteMenuContext _context) {
-        return !((condition || condition_1 || condition_2)) && (_context.getLink() != null || !(SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.StatementList$m_)));
+        return !((superclass || implement || superinterface)) && (_context.getLink() != null || !(SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.StatementList$m_)));
       }
       @NotNull
       @Override

@@ -17,6 +17,7 @@ package jetbrains.mps.ide.vfs;
 
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VfsUtil;
+import com.intellij.openapi.vfs.VfsUtilCore;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.newvfs.events.VFileEvent;
 import jetbrains.mps.util.FileUtil;
@@ -33,6 +34,11 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.JarURLConnection;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.List;
 
 public final class VirtualFileUtils {
@@ -149,5 +155,21 @@ public final class VirtualFileUtils {
   @ToRemove(version = 3.4)
   public static boolean isFileEventFromMPS(VFileEvent event) {
     return event.getRequestor() instanceof IdeaFileSystem;
+  }
+
+  @Nullable
+  public static URL extractURLFromVirtualFile(@NotNull VirtualFile virtualFile) {
+    try {
+      URL url = new URL(VfsUtilCore.fixIDEAUrl(virtualFile.getUrl()));
+      // making RFC compliant URL from what IJ gives us
+      if (url.openConnection() instanceof JarURLConnection) {
+        // this is jar, here we assume that only path in url is not null, and pass the path as scheme-specific part, it starts with 'file:///'
+        return new URI(url.getProtocol(), url.getPath(), null).toURL();
+      }
+      return new URI(url.getProtocol(), url.getUserInfo(), url.getHost(), url.getPort(), url.getPath(), url.getQuery(), null).toURL();
+    } catch (IOException | URISyntaxException e) {
+      LOG.error("Could not create URI from " + virtualFile, e);
+    }
+    return null;
   }
 }

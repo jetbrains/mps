@@ -18,6 +18,7 @@ import jetbrains.mps.baseLanguage.scopes.ClassifierScopes;
 import jetbrains.mps.scope.FilteringScope;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Objects;
+import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import java.util.HashMap;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -47,14 +48,15 @@ public class ClassifierType_Constraints extends BaseConstraintsDescriptor {
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             // TEMP doing it not through ScopeProvider for now 
-            boolean resolvingSuperClass = SNodeOperations.hasRole(_context.getReferenceNode(), LINKS.superclass$Mp9$) || SNodeOperations.hasRole(_context.getReferenceNode(), LINKS.implementedInterface$rujG) || SNodeOperations.hasRole(_context.getReferenceNode(), LINKS.extendedInterface$PDVO);
+            final boolean isExtends = SNodeOperations.hasRole(_context.getReferenceNode(), LINKS.superclass$Mp9$);
+            boolean resolvingSuperClass = isExtends || SNodeOperations.hasRole(_context.getReferenceNode(), LINKS.implementedInterface$rujG) || SNodeOperations.hasRole(_context.getReferenceNode(), LINKS.extendedInterface$PDVO);
             Scope scope = ClassifierScopes.getVisibleClassifiersScope(_context.getContextNode(), !(resolvingSuperClass));
             if (resolvingSuperClass) {
               // remove this Classifier from the completion menu 
               return new FilteringScope(scope) {
                 @Override
                 public boolean isExcluded(SNode node) {
-                  return Objects.equals(node, SNodeOperations.getNodeAncestor(_context.getReferenceNode(), CONCEPTS.Classifier$Ix, true, false));
+                  return Objects.equals(node, SNodeOperations.getNodeAncestor(_context.getReferenceNode(), CONCEPTS.Classifier$Ix, true, false)) || (isExtends && !((boolean) ClassConcept__BehaviorDescriptor.canBeExtendedOrInstantiatedAt_id2YFkRQdLLqk.invoke(SNodeOperations.as(node, CONCEPTS.ClassConcept$bK), SNodeOperations.getParent(_context.getContextNode()))));
                 }
               };
             }
@@ -71,13 +73,14 @@ public class ClassifierType_Constraints extends BaseConstraintsDescriptor {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ClassifierType$bL = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
     /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink classifier$cxMr = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, 0x101de490babL, "classifier");
-    /*package*/ static final SContainmentLink implementedInterface$rujG = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
     /*package*/ static final SContainmentLink superclass$Mp9$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0x10f6353296dL, "superclass");
+    /*package*/ static final SContainmentLink implementedInterface$rujG = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
     /*package*/ static final SContainmentLink extendedInterface$PDVO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
   }
 }
