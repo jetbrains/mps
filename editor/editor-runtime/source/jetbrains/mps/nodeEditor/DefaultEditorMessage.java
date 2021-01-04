@@ -21,6 +21,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
 import jetbrains.mps.smodel.ModelAccessHelper;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 
 import java.awt.Color;
@@ -56,8 +57,10 @@ public class DefaultEditorMessage implements EditorMessage {
 
   @Override
   public boolean sameAs(SimpleEditorMessage message) {
-    return message.getNode() == getNode() && getOwner() == message.getOwner() &&
-           getStatus() == message.getStatus() && getMessage().equals(message.getMessage());
+    return message.getNode() == getNode() &&
+           getOwner() == message.getOwner() &&
+           getStatus() == message.getStatus() &&
+           getMessage().equals(message.getMessage());
   }
 
   @Override

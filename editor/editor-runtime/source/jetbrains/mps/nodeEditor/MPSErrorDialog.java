@@ -87,7 +87,7 @@ public class MPSErrorDialog extends JDialog {
     }
     final NodeReportItem herror = message.getReportItem();
     ThreadUtils.runInUIThreadNoWait(() -> {
-      String s = message.getMessage();
+      String s = message.getFormattedMessage();
       final MPSErrorDialog dialog = new MPSErrorDialog(window, s, message.getStatus().getPresentation(), false);
       List<TypesystemRuleId> ruleIds = new ArrayList<>(RuleIdFlavouredItem.FLAVOUR_RULE_ID.getCollection(herror));
       if (!ruleIds.isEmpty()) {
