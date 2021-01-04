@@ -32,6 +32,15 @@ public class check_AbstractClassifierReference_NonTypesystemRule extends Abstrac
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
       }
+    } else if (SNodeOperations.isInstanceOf(p, CONCEPTS.DotExpression$yW) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.as(p, CONCEPTS.DotExpression$yW), LINKS.operation$gs9E), CONCEPTS.StaticFieldReferenceOperation$nE) && (SNodeOperations.as(SLinkOperations.getTarget(SNodeOperations.as(p, CONCEPTS.DotExpression$yW), LINKS.operation$gs9E), CONCEPTS.StaticFieldReferenceOperation$nE) != null)) {
+      {
+        final MessageTarget errorTarget = new NodeMessageTarget();
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(abstractClassifierReference, "Expression expected", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8984386669011525988", null, errorTarget);
+        {
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.TurnAbstractClassifierOperandOfDotExprToStaticFieldReference_QuickFix", "8984386669011636252", true);
+          _reporter_2309309498.addIntentionProvider(intentionProvider);
+        }
+      }
     } else {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
@@ -52,6 +61,7 @@ public class check_AbstractClassifierReference_NonTypesystemRule extends Abstrac
   private static final class CONCEPTS {
     /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
     /*package*/ static final SConcept StaticMethodCallOperation$Uo = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4ffda504fa5847fcL, "jetbrains.mps.baseLanguage.structure.StaticMethodCallOperation");
+    /*package*/ static final SConcept StaticFieldReferenceOperation$nE = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x35b563950dfe3377L, "jetbrains.mps.baseLanguage.structure.StaticFieldReferenceOperation");
     /*package*/ static final SConcept AbstractClassifierReference$Wh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6c91efa5ec8cd7L, "jetbrains.mps.baseLanguage.structure.AbstractClassifierReference");
   }
 
