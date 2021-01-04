@@ -9102,7 +9102,7 @@
                         <ref role="cht4Q" to="tpee:g7uibYu" resolve="ClassifierType" />
                       </node>
                       <node concept="37vLTw" id="2BHiRxgmvaG" role="1m5AlR">
-                        <ref role="3cqZAo" node="31WmxQNAJ_S" />
+                        <ref role="3cqZAo" node="31WmxQNAJ_S" resolve="type" />
                       </node>
                     </node>
                     <node concept="3TrEf2" id="31WmxQNAJ$O" role="2OqNvi">

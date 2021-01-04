@@ -252,7 +252,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return "0x" + Long.toHexString(((SElementId) _context.getVariable("eid")).getIdValue()) + 'L';
   }
   public static Object propertyMacro_GetValue_7_0(final PropertyMacroContext _context) {
-    return ((Integer) _context.getVariable("cv:c"));
+    return (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_7_1(final PropertyMacroContext _context) {
     // Likely, we shall mangle the name to avoid non-Java characters, however, 

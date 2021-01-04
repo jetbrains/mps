@@ -2402,10 +2402,10 @@
             <node concept="17QB3L" id="6iwuqdL$qmz" role="1tU5fm" />
             <node concept="2OqwBi" id="6iwuqdL$qrI" role="33vP2m">
               <node concept="37vLTw" id="6iwuqdL$qrJ" role="2Oq$k0">
-                <ref role="3cqZAo" node="6iwuqdL$7ZW" />
+                <ref role="3cqZAo" node="6iwuqdL$7ZW" resolve="myValidator" />
               </node>
               <node concept="liA8E" id="6iwuqdL$qrK" role="2OqNvi">
-                <ref role="37wK5l" node="6iwuqdLyKsJ" />
+                <ref role="37wK5l" node="6iwuqdLyKsJ" resolve="validate" />
                 <node concept="1rXfSq" id="6iwuqdL$qrL" role="37wK5m">
                   <ref role="37wK5l" to="u42p:WWy1UWgXzO" resolve="getCurrentValue" />
                 </node>
@@ -2417,14 +2417,14 @@
           <node concept="3clFbS" id="6iwuqdL$GBQ" role="3clFbx">
             <node concept="3cpWs6" id="6iwuqdL$Juy" role="3cqZAp">
               <node concept="37vLTw" id="6iwuqdL$KpT" role="3cqZAk">
-                <ref role="3cqZAo" node="6iwuqdL$qrH" />
+                <ref role="3cqZAo" node="6iwuqdL$qrH" resolve="validationResult" />
               </node>
             </node>
           </node>
           <node concept="3y3z36" id="6iwuqdL$Ix_" role="3clFbw">
             <node concept="10Nm6u" id="6iwuqdL$Jsq" role="3uHU7w" />
             <node concept="37vLTw" id="6iwuqdL$HkU" role="3uHU7B">
-              <ref role="3cqZAo" node="6iwuqdL$qrH" />
+              <ref role="3cqZAo" node="6iwuqdL$qrH" resolve="validationResult" />
             </node>
           </node>
         </node>

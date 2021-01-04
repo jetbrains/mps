@@ -106,19 +106,19 @@ public class QueriesGenerated {
     return SPropertyOperations.getBoolean(_context.getNode(), PROPS.isFinal$gvTP);
   }
   public static Object propertyMacro_GetValue_6_10(final PropertyMacroContext _context) {
-    return ((Integer) _context.getVariable("cv:methodCounter"));
+    return (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_6_11(final PropertyMacroContext _context) {
-    return ((Integer) _context.getVariable("cv:methodCounter"));
+    return (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_6_12(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.concept$u6dL), PROPS.name$MnvL) + Constants.BEHAVIOR_DESCRIPTOR_SUFFIX;
   }
   public static Object propertyMacro_GetValue_8_0(final PropertyMacroContext _context) {
-    return ((Integer) _context.getVariable("cv:parameterCounter"));
+    return (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_8_1(final PropertyMacroContext _context) {
-    return ((Integer) _context.getVariable("cv:parameterCounter"));
+    return (Integer) _context.getVariable("loop:index");
   }
   public static Object referenceMacro_GetReferent_1_0(final ReferenceMacroContext _context) {
     return Constants.THIS_CONCEPT_VARIABLE_NAME;
@@ -201,9 +201,9 @@ public class QueriesGenerated {
     return ((enclosingMethod != null) && SPropertyOperations.getBoolean(enclosingMethod, PROPS.isStatic$JhJe));
   }
   public static boolean ifMacro_Condition_4_2(final IfMacroContext _context) {
-    int index = ((Integer) _context.getVariable("cv:argCounter"));
+    int index = (Integer) _context.getVariable("loop:index");
     SNode declaration = ((SNode) _context.getVariable("var:methodDeclaration"));
-    if (((Integer) _context.getVariable("cv:argCounter")) >= ListSequence.fromList(SLinkOperations.getChildren(declaration, LINKS.parameter$5xBj)).count()) {
+    if ((Integer) _context.getVariable("loop:index") >= ListSequence.fromList(SLinkOperations.getChildren(declaration, LINKS.parameter$5xBj)).count()) {
       index = ListSequence.fromList(SLinkOperations.getChildren(declaration, LINKS.parameter$5xBj)).count() - 1;
     }
     SNode parameter = ListSequence.fromList(SLinkOperations.getChildren(declaration, LINKS.parameter$5xBj)).getElement(index);
@@ -255,9 +255,9 @@ public class QueriesGenerated {
     return _context.getNode();
   }
   public static SNode sourceNodeQuery_4_1(final SourceSubstituteMacroNodeContext _context) {
-    int index = ((Integer) _context.getVariable("cv:argCounter"));
+    int index = (Integer) _context.getVariable("loop:index");
     SNode declaration = ((SNode) _context.getVariable("var:methodDeclaration"));
-    if (((Integer) _context.getVariable("cv:argCounter")) >= ListSequence.fromList(SLinkOperations.getChildren(declaration, LINKS.parameter$5xBj)).count()) {
+    if ((Integer) _context.getVariable("loop:index") >= ListSequence.fromList(SLinkOperations.getChildren(declaration, LINKS.parameter$5xBj)).count()) {
       index = ListSequence.fromList(SLinkOperations.getChildren(declaration, LINKS.parameter$5xBj)).count() - 1;
     }
     SNode parameter = ListSequence.fromList(SLinkOperations.getChildren(declaration, LINKS.parameter$5xBj)).getElement(index);

@@ -52,18 +52,18 @@ public class Template_reduce_MethodDeclaration extends TemplateDeclarationBase {
       {
         final List<SNode> tlist2 = new ArrayList<SNode>();
         final Iterable<SNode> loopList2 = QueriesGenerated.sourceNodesQuery_4_0(new SourceSubstituteMacroNodesContext(context1, loopMacroRef_6isgpe_b0a0a1a2a2a6));
-        int loopIndex_cc_2 = 0;
+        int loopIndex__2 = 0;
         for (SNode itnode2 : loopList2) {
           if (itnode2 == null) {
             continue;
           }
           TemplateContext context2 = context1.subContext("PARAM", itnode2);
-          context2 = context2.withVariable("cv:cc", loopIndex_cc_2);
-          loopIndex_cc_2++;
+          context2 = context2.withVariable("loop:index", loopIndex__2);
+          loopIndex__2++;
           Collection<SNode> tlist3 = null;
           try {
             TemplateContext switchContext3 = context2;
-            switchContext3 = switchContext3.withVariable("counter", ((Integer) QueriesGenerated.templateArgumentQuery_4_1(new TemplateArgumentContext(switchContext3, new SNodePointer("r:3ae70081-5af6-4df2-938d-3936a0c7a546(jetbrains.mps.transformation.test.inputLang.generator02.templates@generator)", "2676503840832233582")))));
+            switchContext3 = switchContext3.withVariable("counter", ((Integer) QueriesGenerated.templateArgumentQuery_4_1(new TemplateArgumentContext(switchContext3, new SNodePointer("r:3ae70081-5af6-4df2-938d-3936a0c7a546(jetbrains.mps.transformation.test.inputLang.generator02.templates@generator)", "2886724827838759753")))));
             final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
             {
               environment.nodeCopied(context2, tnode4, "tpl/r:3ae70081-5af6-4df2-938d-3936a0c7a546/2676503840832208974");
@@ -110,21 +110,21 @@ public class Template_reduce_MethodDeclaration extends TemplateDeclarationBase {
           {
             final List<SNode> tlist11 = new ArrayList<SNode>();
             final Iterable<SNode> loopList11 = QueriesGenerated.sourceNodesQuery_4_1(new SourceSubstituteMacroNodesContext(context4, loopMacroRef_6isgpe_b0a0a1a2a1a4a2a6));
-            int loopIndex_n_11 = 0;
+            int loopIndex__11 = 0;
             for (SNode itnode11 : loopList11) {
               if (itnode11 == null) {
                 continue;
               }
               TemplateContext context5 = context4.subContext(itnode11);
-              context5 = context5.withVariable("cv:n", loopIndex_n_11);
-              loopIndex_n_11++;
+              context5 = context5.withVariable("loop:index", loopIndex__11);
+              loopIndex__11++;
               final SNode tnode12 = environment.createOutputNode(myConcepts[5]);
               {
                 TemplateContext context6 = context5.subContext();
                 {
                   Collection<SNode> tlist13 = null;
                   TemplateContext context7 = context6;
-                  context7 = context7.withVariable("ignored", ((Integer) QueriesGenerated.templateArgumentQuery_4_0(new TemplateArgumentContext(context7, new SNodePointer("r:3ae70081-5af6-4df2-938d-3936a0c7a546(jetbrains.mps.transformation.test.inputLang.generator02.templates@generator)", "2676503840832376376")))));
+                  context7 = context7.withVariable("ignored", ((Integer) QueriesGenerated.templateArgumentQuery_4_0(new TemplateArgumentContext(context7, new SNodePointer("r:3ae70081-5af6-4df2-938d-3936a0c7a546(jetbrains.mps.transformation.test.inputLang.generator02.templates@generator)", "2886724827838759759")))));
                   {
                     final List<SNode> tlist14 = new ArrayList<SNode>();
                     final SNode sourceNode14 = QueriesGenerated.sourceNodeQuery_4_0(new SourceSubstituteMacroNodeContext(context7, mapsrcMacroRef_6isgpe_b0a0a1a3a1a5a3a2a1a4a2a6));
@@ -156,14 +156,14 @@ public class Template_reduce_MethodDeclaration extends TemplateDeclarationBase {
             context9 = context9.withVariable("var:METH", QueriesGenerated.varMacro_Value_4_0(new TemplateVarContext(context4, new SNodePointer("r:3ae70081-5af6-4df2-938d-3936a0c7a546(jetbrains.mps.transformation.test.inputLang.generator02.templates@generator)", "2676503840832549567"))));
             final List<SNode> tlist19 = new ArrayList<SNode>();
             final Iterable<SNode> loopList19 = QueriesGenerated.sourceNodesQuery_4_2(new SourceSubstituteMacroNodesContext(context9, loopMacroRef_6isgpe_b0a0a4a3a1a4a2a6));
-            int loopIndex_C_19 = 0;
+            int loopIndex__19 = 0;
             for (SNode itnode19 : loopList19) {
               if (itnode19 == null) {
                 continue;
               }
               TemplateContext context10 = context9.subContext(itnode19);
-              context10 = context10.withVariable("cv:C", loopIndex_C_19);
-              loopIndex_C_19++;
+              context10 = context10.withVariable("loop:index", loopIndex__19);
+              loopIndex__19++;
               Collection<SNode> tlist20 = null;
               try {
                 TemplateContext switchContext20 = context10;

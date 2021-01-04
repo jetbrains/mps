@@ -28,10 +28,10 @@ public class QueriesGenerated {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_4_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL) + String.valueOf(((Integer) _context.getVariable("cv:cc")));
+    return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL) + String.valueOf((Integer) _context.getVariable("loop:index"));
   }
   public static Object propertyMacro_GetValue_4_1(final PropertyMacroContext _context) {
-    return "expression#" + ((Integer) _context.getVariable("cv:C"));
+    return "expression#" + (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_4_2(final PropertyMacroContext _context) {
     return "method_" + SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
@@ -55,10 +55,10 @@ public class QueriesGenerated {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.declaration$YvWB);
   }
   public static Object templateArgumentQuery_4_0(final TemplateArgumentContext _context) {
-    return ((Integer) _context.getVariable("cv:n"));
+    return (Integer) _context.getVariable("loop:index");
   }
   public static Object templateArgumentQuery_4_1(final TemplateArgumentContext _context) {
-    return ((Integer) _context.getVariable("cv:cc"));
+    return (Integer) _context.getVariable("loop:index");
   }
   public static Iterable<SNode> sourceNodesQuery_3_0(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.collect(SLinkOperations.getChildren(_context.getNode(), LINKS.arguments$1jnv), LINKS.declaration$YvWB);

@@ -250,7 +250,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SModelOperations.roots(_context.getInputModel(), CONCEPTS.MigrationScript$KR).size();
   }
   public static Object propertyMacro_GetValue_10_1(final PropertyMacroContext _context) {
-    return ((Integer) _context.getVariable("cv:c"));
+    return (Integer) _context.getVariable("loop:index");
   }
   public static Object referenceMacro_GetReferent_2_0(final ReferenceMacroContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.affectedInstanceConcept$xweD);

@@ -6,7 +6,7 @@
     <use id="0cf935df-4699-4e9c-a132-fa109541cba3" name="jetbrains.mps.build.mps" version="-1" />
     <use id="698a8d22-a104-47a0-ba8d-10e3ec237f13" name="jetbrains.mps.build.workflow" version="-1" />
     <use id="479c7a8c-02f9-43b5-9139-d910cb22f298" name="jetbrains.mps.core.xml" version="-1" />
-    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="3" />
+    <use id="b401a680-8325-4110-8fd3-84331ff25bef" name="jetbrains.mps.lang.generator" version="4" />
     <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="2" />
     <use id="13744753-c81f-424a-9c1b-cf8943bf4e86" name="jetbrains.mps.lang.sharedConcepts" version="-1" />
     <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
@@ -347,6 +347,9 @@
         <reference id="1722980698497626483" name="template" index="v9R2y" />
         <child id="1722980698497626405" name="actualArgument" index="v9R3O" />
       </concept>
+      <concept id="2880994019885263148" name="jetbrains.mps.lang.generator.structure.LoopMacroNamespaceAccessor" flags="ng" index="$GB7w">
+        <property id="1501378878163388321" name="variable" index="26SvY3" />
+      </concept>
       <concept id="5133195082121471908" name="jetbrains.mps.lang.generator.structure.LabelMacro" flags="ln" index="2ZBi8u" />
       <concept id="1167168920554" name="jetbrains.mps.lang.generator.structure.BaseMappingRule_Condition" flags="in" index="30G5F_" />
       <concept id="1167169188348" name="jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_sourceNode" flags="nn" index="30H73N" />
@@ -479,9 +482,6 @@
       <concept id="1216860049635" name="jetbrains.mps.lang.generator.generationContext.structure.TemplateFunctionParameter_generationContext" flags="nn" index="1iwH7S" />
       <concept id="1048903277984174662" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_VarRef2" flags="nn" index="1psM6Z">
         <reference id="1048903277984174663" name="vardecl" index="1psM6Y" />
-      </concept>
-      <concept id="7430509679014182526" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_ContextVarRef" flags="ng" index="1qCSth">
-        <property id="7430509679014182818" name="contextVarName" index="1qCSqd" />
       </concept>
       <concept id="1217282130234" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetOutputModel" flags="nn" index="1FEO0x" />
     </language>
@@ -6440,11 +6440,8 @@
                                 <node concept="2YIFZM" id="6OtXG9KigvV" role="37wK5m">
                                   <ref role="37wK5l" to="wyt6:~Integer.toString(int)" resolve="toString" />
                                   <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />
-                                  <node concept="2OqwBi" id="6OtXG9Kih_g" role="37wK5m">
-                                    <node concept="1iwH7S" id="6OtXG9Kih0Z" role="2Oq$k0" />
-                                    <node concept="1qCSth" id="6OtXG9Kii5R" role="2OqNvi">
-                                      <property role="1qCSqd" value="c" />
-                                    </node>
+                                  <node concept="$GB7w" id="2wfHeYRCkcO" role="37wK5m">
+                                    <property role="26SvY3" value="1jlY2aid0uu/index" />
                                   </node>
                                 </node>
                               </node>
@@ -6452,11 +6449,8 @@
                           </node>
                         </node>
                         <node concept="3eOSWO" id="6OtXG9Ki64x" role="3clFbw">
-                          <node concept="2OqwBi" id="6OtXG9KhN9o" role="3uHU7B">
-                            <node concept="1iwH7S" id="6OtXG9KhMK1" role="2Oq$k0" />
-                            <node concept="1qCSth" id="6OtXG9KhNv7" role="2OqNvi">
-                              <property role="1qCSqd" value="c" />
-                            </node>
+                          <node concept="$GB7w" id="2wfHeYRCkcR" role="3uHU7B">
+                            <property role="26SvY3" value="1jlY2aid0uu/index" />
                           </node>
                           <node concept="3cmrfG" id="6OtXG9KhQEe" role="3uHU7w">
                             <property role="3cmrfH" value="0" />
@@ -6540,7 +6534,7 @@
               </node>
             </node>
             <node concept="1WS0z7" id="6OtXG9Khm5x" role="lGtFl">
-              <property role="1qytDF" value="c" />
+              <property role="1qytDF" value="" />
               <node concept="3JmXsc" id="6OtXG9Khm5R" role="3Jn$fo">
                 <node concept="3clFbS" id="6OtXG9Khm6d" role="2VODD2">
                   <node concept="3clFbF" id="6OtXG9KhmFV" role="3cqZAp">

@@ -113,18 +113,19 @@ public class Template_reduce_LocalBehaviorMethodCall extends TemplateDeclaration
           {
             final List<SNode> tlist12 = new ArrayList<SNode>();
             final Iterable<SNode> loopList12 = QueriesGenerated.sourceNodesQuery_4_0(new SourceSubstituteMacroNodesContext(context3, loopMacroRef_p4fqpg_b0a0a1a3a1a1a5a6));
-            int loopIndex_argCounter_12 = 0;
+            int loopIndex__12 = 0;
             for (SNode itnode12 : loopList12) {
               if (itnode12 == null) {
                 continue;
               }
               TemplateContext context5 = context3.subContext(itnode12);
-              context5 = context5.withVariable("cv:argCounter", loopIndex_argCounter_12++);
+              context5 = context5.withVariable("loop:index", loopIndex__12);
+              loopIndex__12++;
               Collection<SNode> tlist13 = Collections.emptyList();
-              if (QueriesGenerated.ifMacro_Condition_4_2(new IfMacroContext(context5, ifMacroRef_p4fqpg_b0a0e0d0d0b0b0f0g))) {
+              if (QueriesGenerated.ifMacro_Condition_4_2(new IfMacroContext(context5, ifMacroRef_p4fqpg_b0a0f0d0d0b0b0f0g))) {
                 Collection<SNode> tlist14 = null;
-                final SNode copySrcInput14 = QueriesGenerated.sourceNodeQuery_4_2(new SourceSubstituteMacroNodeContext(context5, copySrcMacro_p4fqpg_b0a0c0e0d0d0b0b0f0g));
-                tlist14 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput14), copySrcMacro_p4fqpg_b0a0c0e0d0d0b0b0f0g, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/360045928603427125", context5);
+                final SNode copySrcInput14 = QueriesGenerated.sourceNodeQuery_4_2(new SourceSubstituteMacroNodeContext(context5, copySrcMacro_p4fqpg_b0a0c0f0d0d0b0b0f0g));
+                tlist14 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput14), copySrcMacro_p4fqpg_b0a0c0f0d0d0b0b0f0g, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/360045928603427125", context5);
                 tlist13 = tlist14;
               } else {
                 final SNode tnode15 = environment.createOutputNode(myConcepts[3]);
@@ -136,8 +137,8 @@ public class Template_reduce_LocalBehaviorMethodCall extends TemplateDeclaration
                       TemplateContext context7 = context6.subContext();
                       {
                         Collection<SNode> tlist17 = null;
-                        final SNode copySrcInput17 = QueriesGenerated.sourceNodeQuery_4_0(new SourceSubstituteMacroNodeContext(context7, copySrcMacro_p4fqpg_b0a0c0b0b0b0b0a4a3a3a1a1a5a6));
-                        tlist17 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput17), copySrcMacro_p4fqpg_b0a0c0b0b0b0b0a4a3a3a1a1a5a6, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/360045928603427199", context7);
+                        final SNode copySrcInput17 = QueriesGenerated.sourceNodeQuery_4_0(new SourceSubstituteMacroNodeContext(context7, copySrcMacro_p4fqpg_b0a0c0b0b0b0b0a5a3a3a1a1a5a6));
+                        tlist17 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput17), copySrcMacro_p4fqpg_b0a0c0b0b0b0b0a5a3a3a1a1a5a6, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/360045928603427199", context7);
                         for (SNode child18 : TemplateUtil.asNotNull(tlist17)) {
                           tnode16.addChild(myAggregationLinks[3], child18);
                         }
@@ -145,8 +146,8 @@ public class Template_reduce_LocalBehaviorMethodCall extends TemplateDeclaration
                       }
                       {
                         Collection<SNode> tlist19 = null;
-                        final SNode copySrcInput19 = QueriesGenerated.sourceNodeQuery_4_1(new SourceSubstituteMacroNodeContext(context7, copySrcMacro_p4fqpg_b0a0c0c0b0b0b0a4a3a3a1a1a5a6));
-                        tlist19 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput19), copySrcMacro_p4fqpg_b0a0c0c0b0b0b0a4a3a3a1a1a5a6, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/360045928603427205", context7);
+                        final SNode copySrcInput19 = QueriesGenerated.sourceNodeQuery_4_1(new SourceSubstituteMacroNodeContext(context7, copySrcMacro_p4fqpg_b0a0c0c0b0b0b0a5a3a3a1a1a5a6));
+                        tlist19 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput19), copySrcMacro_p4fqpg_b0a0c0c0b0b0b0a5a3a3a1a1a5a6, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/360045928603427205", context7);
                         for (SNode child20 : TemplateUtil.asNotNull(tlist19)) {
                           tnode16.addChild(myAggregationLinks[4], child20);
                         }
@@ -257,10 +258,10 @@ public class Template_reduce_LocalBehaviorMethodCall extends TemplateDeclaration
   private static final SNodePointer ifMacroRef_p4fqpg_b0a0b0c0b0b0f0g = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "6133874814783379356");
   private static final SNodePointer ifMacroRef_p4fqpg_b0a0b0a1a2a1a1a5a6 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "7977232384686803989");
   private static final SNodePointer loopMacroRef_p4fqpg_b0a0a1a3a1a1a5a6 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "360045928603427126");
-  private static final SNodePointer copySrcMacro_p4fqpg_b0a0c0e0d0d0b0b0f0g = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "360045928603427267");
-  private static final SNodePointer ifMacroRef_p4fqpg_b0a0e0d0d0b0b0f0g = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "360045928603427133");
-  private static final SNodePointer copySrcMacro_p4fqpg_b0a0c0b0b0b0b0a4a3a3a1a1a5a6 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "360045928603427200");
-  private static final SNodePointer copySrcMacro_p4fqpg_b0a0c0c0b0b0b0a4a3a3a1a1a5a6 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "360045928603427206");
+  private static final SNodePointer copySrcMacro_p4fqpg_b0a0c0f0d0d0b0b0f0g = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "360045928603427267");
+  private static final SNodePointer ifMacroRef_p4fqpg_b0a0f0d0d0b0b0f0g = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "360045928603427133");
+  private static final SNodePointer copySrcMacro_p4fqpg_b0a0c0b0b0b0b0a5a3a3a1a1a5a6 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "360045928603427200");
+  private static final SNodePointer copySrcMacro_p4fqpg_b0a0c0c0b0b0b0a5a3a3a1a1a5a6 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "360045928603427206");
   private static final SNodePointer propertyMacro_p4fqpg_c0a2a0a1a2a5a6 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "8228699960986687946");
   private static final SNodePointer propertyMacro_p4fqpg_c0a2a1a1a2a5a6 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "8228699960986694364");
   private static final SNodePointer copySrcMacro_p4fqpg_b0a0c0c0b0d0b0c0f0g = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "8228699960986672583");

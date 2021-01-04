@@ -100,7 +100,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return NameUtil.capitalize(SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.applicableProperty$DrDe), PROPS.name$MnvL)) + "_Property";
   }
   public static Object propertyMacro_GetValue_3_12(final PropertyMacroContext _context) {
-    return "d" + ((Integer) _context.getVariable("cv:c"));
+    return "d" + (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_4_0(final PropertyMacroContext _context) {
     SNode constraints = ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.ConceptConstraints$Yt)).where(new IWhereFilter<SNode>() {

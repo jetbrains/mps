@@ -185,7 +185,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_25_11(final PropertyMacroContext _context) {
-    return _context.getTemplateValue() + ((Integer) _context.getVariable("cv:c"));
+    return _context.getTemplateValue() + (Integer) _context.getVariable("loop:index");
   }
   public static Object referenceMacro_GetReferent_19_0(final ReferenceMacroContext _context) {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "GetFilename");

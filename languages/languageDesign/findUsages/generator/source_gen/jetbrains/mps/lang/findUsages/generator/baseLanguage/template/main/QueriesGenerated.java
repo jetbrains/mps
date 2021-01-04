@@ -99,10 +99,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return "FindUsagesDescriptor";
   }
   public static Object propertyMacro_GetValue_6_2(final PropertyMacroContext _context) {
-    return ((Integer) _context.getVariable("cv:c"));
+    return (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_6_3(final PropertyMacroContext _context) {
-    return ((Integer) _context.getVariable("cv:c"));
+    return (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_6_4(final PropertyMacroContext _context) {
     return NameUtil.toValidIdentifier(SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL));

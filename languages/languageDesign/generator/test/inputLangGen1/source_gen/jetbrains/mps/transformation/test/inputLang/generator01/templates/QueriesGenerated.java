@@ -49,10 +49,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL) + "Class";
   }
   public static Object propertyMacro_GetValue_3_0(final PropertyMacroContext _context) {
-    return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL) + String.valueOf(((Integer) _context.getVariable("cv:cc")));
+    return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL) + String.valueOf((Integer) _context.getVariable("loop:index"));
   }
   public static Object propertyMacro_GetValue_3_1(final PropertyMacroContext _context) {
-    return "expression#" + ((Integer) _context.getVariable("cv:C"));
+    return "expression#" + (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_3_2(final PropertyMacroContext _context) {
     return "method_" + SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
@@ -73,10 +73,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.declaration$YvWB);
   }
   public static Object templateArgumentQuery_3_0(final TemplateArgumentContext _context) {
-    return ((Integer) _context.getVariable("cv:n"));
+    return (Integer) _context.getVariable("loop:index");
   }
   public static Object templateArgumentQuery_3_1(final TemplateArgumentContext _context) {
-    return ((Integer) _context.getVariable("cv:cc"));
+    return (Integer) _context.getVariable("loop:index");
   }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.methods$YPx5);
@@ -271,8 +271,8 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   private final Map<String, CallArgumentQuery> caqMethods = new HashMap<String, CallArgumentQuery>();
   {
-    caqMethods.put("2676503840832376376", new CAQ(0));
-    caqMethods.put("2676503840832233582", new CAQ(1));
+    caqMethods.put("2886724827838759747", new CAQ(0));
+    caqMethods.put("2886724827838759741", new CAQ(1));
   }
   @NotNull
   @Override

@@ -72,19 +72,19 @@ public class QueriesGenerated extends QueryProviderBase {
     return Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:i1"))).count() + Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:i2"))).count();
   }
   public static Object propertyMacro_GetValue_1_1(final PropertyMacroContext _context) {
-    return ((Integer) _context.getVariable("cv:i"));
+    return (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_1_2(final PropertyMacroContext _context) {
-    return ((Integer) _context.getVariable("cv:i")) + Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:i1"))).count();
+    return (Integer) _context.getVariable("loop:index") + Sequence.fromIterable(((Iterable<SNode>) _context.getVariable("var:i1"))).count();
   }
   public static Object propertyMacro_GetValue_1_3(final PropertyMacroContext _context) {
     return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.BaseIntentionDeclaration$Wx)).count() + ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.Intention$zo)).count();
   }
   public static Object propertyMacro_GetValue_1_4(final PropertyMacroContext _context) {
-    return ((Integer) _context.getVariable("cv:k"));
+    return (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_1_5(final PropertyMacroContext _context) {
-    return ((Integer) _context.getVariable("cv:k")) + ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.BaseIntentionDeclaration$Wx)).count();
+    return (Integer) _context.getVariable("loop:index") + ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.BaseIntentionDeclaration$Wx)).count();
   }
   public static Object propertyMacro_GetValue_1_6(final PropertyMacroContext _context) {
     SModule module = _context.getOriginalInputModel().getModule();

@@ -53,20 +53,18 @@ public class Template_BehaviorAspectDescriptor extends TemplateDeclarationBase {
       {
         final List<SNode> tlist3 = new ArrayList<SNode>();
         final Iterable<SNode> loopList3 = QueriesGenerated.sourceNodesQuery_3_0(new SourceSubstituteMacroNodesContext(context2, loopMacroRef_v965vj_b0a0a1a4a5a5));
-        int loopIndex_behaviorCounter_3 = 0;
         for (SNode itnode3 : loopList3) {
           if (itnode3 == null) {
             continue;
           }
           TemplateContext context3 = context2.subContext("BHDescriptorField", itnode3);
-          context3 = context3.withVariable("cv:behaviorCounter", loopIndex_behaviorCounter_3++);
           final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
           {
             environment.nodeCopied(context3, tnode4, "tpl/r:229ce18d-2bb0-4d5b-a7cd-cec65841e459/5630687994792687375");
             tnode4.setProperty(myProperties[2], "false");
             tnode4.setProperty(myProperties[3], "false");
             tnode4.setProperty(myProperties[4], "true");
-            SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_3_0(new PropertyMacroContext(context3, "myBHDescriptor", propertyMacro_v965vj_c0a2a4a4a3a4a5a5)));
+            SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_3_0(new PropertyMacroContext(context3, "myBHDescriptor", propertyMacro_v965vj_c0a2a4a3a2a4a5a5)));
             TemplateContext context4 = context3.subContext();
             {
               final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
@@ -380,7 +378,7 @@ public class Template_BehaviorAspectDescriptor extends TemplateDeclarationBase {
   }
   private static final SNodePointer template_v965vj_a0a3 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "2056529430201890935");
   private static final SNodePointer loopMacroRef_v965vj_b0a0a1a4a5a5 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "5630687994792687399");
-  private static final SNodePointer propertyMacro_v965vj_c0a2a4a4a3a4a5a5 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "5630687994792687406");
+  private static final SNodePointer propertyMacro_v965vj_c0a2a4a3a2a4a5a5 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "5630687994792687406");
   private static final SNodePointer templateNode_v965vj_c0a0a1a1a1a1a1a8a1a9a5a5 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1889794043260113000");
   private static final SNodePointer loopMacroRef_v965vj_b0a0a1a2a1a1a1a8a1a9a5a5 = new SNodePointer("r:229ce18d-2bb0-4d5b-a7cd-cec65841e459(jetbrains.mps.lang.behavior.generator.template.main@generator)", "1889794043260130019");
 }

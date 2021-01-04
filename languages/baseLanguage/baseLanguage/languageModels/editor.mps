@@ -38519,7 +38519,7 @@
                                     </node>
                                   </node>
                                   <node concept="2qgKlT" id="2YFkRQdMazh" role="2OqNvi">
-                                    <ref role="37wK5l" to="tpek:2YFkRQdLLqk" resolve="canBeExtended" />
+                                    <ref role="37wK5l" to="tpek:2YFkRQdLLqk" resolve="canBeExtendedOrInstantiatedAt" />
                                     <node concept="3bvxqY" id="2YFkRQdMfFE" role="37wK5m" />
                                   </node>
                                 </node>

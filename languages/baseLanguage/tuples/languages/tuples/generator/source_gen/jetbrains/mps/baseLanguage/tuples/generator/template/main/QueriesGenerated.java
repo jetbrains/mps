@@ -142,7 +142,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return ((String) _context.getVariable("var:tmpVar"));
   }
   public static Object propertyMacro_GetValue_0_4(final PropertyMacroContext _context) {
-    return "_" + ((Integer) _context.getVariable("cv:c"));
+    return "_" + (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
     return (String) INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.classifier$cxMr));
@@ -235,7 +235,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object propertyMacro_GetValue_4_12(final PropertyMacroContext _context) {
     // XXX may introduce another switch into RuntimeNodePointers to pick proper set method and use regular method call and reference macro, 
     // but even this is much better than it was 
-    return "_" + ((Integer) _context.getVariable("cv:i"));
+    return "_" + (Integer) _context.getVariable("loop:index");
   }
   public static Object referenceMacro_GetReferent_0_0(final ReferenceMacroContext _context) {
     return RuntimeNodePointers.tuplesIfaceByComponents(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.componentType$crWY)).count());

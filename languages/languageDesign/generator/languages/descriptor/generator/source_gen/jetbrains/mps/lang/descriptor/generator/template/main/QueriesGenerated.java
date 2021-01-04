@@ -107,7 +107,7 @@ public class QueriesGenerated {
     return SPropertyOperations.getString(_context.getNode(), PROPS.qualifiedName$331j) + ".TemplateModelImpl";
   }
   public static Object propertyMacro_GetValue_6_3(final PropertyMacroContext _context) {
-    return ((Integer) _context.getVariable("cv:c"));
+    return (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_6_4(final PropertyMacroContext _context) {
     return (String) Module__BehaviorDescriptor.getModuleReference_id7OJukvJ5PmG.invoke(_context.getNode());
@@ -116,7 +116,7 @@ public class QueriesGenerated {
     return ListSequence.fromList(((List<SNode>) _context.getVariable("var:targetLanguages"))).count();
   }
   public static Object propertyMacro_GetValue_6_6(final PropertyMacroContext _context) {
-    return ((Integer) _context.getVariable("cv:c"));
+    return (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_6_7(final PropertyMacroContext _context) {
     return (String) ModuleReference__BehaviorDescriptor.getModuleReference_id15qhGW3fE3K.invoke(_context.getNode());
@@ -143,7 +143,7 @@ public class QueriesGenerated {
     return ListSequence.fromList(((List<SNode>) _context.getVariable("var:targetLanguages"))).count();
   }
   public static Object propertyMacro_GetValue_7_6(final PropertyMacroContext _context) {
-    return ((Integer) _context.getVariable("cv:c"));
+    return (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_7_7(final PropertyMacroContext _context) {
     return "Generator";

@@ -370,7 +370,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return String.format("  VM_OPTIONS_FILE=\"$IDE_BIN_HOME/$OS_SPECIFIC/%s$BITS.vmoptions\"", BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g), LINKS.script$MlVT), null));
   }
   public static Object propertyMacro_GetValue_4_16(final PropertyMacroContext _context) {
-    if (((Integer) _context.getVariable("cv:pathIndex")) == 0) {
+    if ((Integer) _context.getVariable("loop:index") == 0) {
       return "CLASSPATH=\"$IDE_HOME/" + SPropertyOperations.getString(_context.getNode(), PROPS.path$jtyZ) + "\"";
     }
     return _context.getTemplateValue() + SPropertyOperations.getString(_context.getNode(), PROPS.path$jtyZ) + "\"";

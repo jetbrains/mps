@@ -136,7 +136,7 @@ public class QueriesGenerated {
     return _context.createUniqueName("create" + SPropertyOperations.getString(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$cF64), LINKS.concept$xoA0), PROPS.name$MnvL), _context.getNode());
   }
   public static Object propertyMacro_GetValue_3_2(final PropertyMacroContext _context) {
-    return "p" + ((Integer) _context.getVariable("cv:c"));
+    return "p" + (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_4_0(final PropertyMacroContext _context) {
     return SLinkOperations.getTarget(SNodeOperations.cast(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderRef$b7), LINKS.target$GZsq).getModel().getReference().toString();

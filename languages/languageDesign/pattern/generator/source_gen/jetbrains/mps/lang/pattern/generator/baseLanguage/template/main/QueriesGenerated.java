@@ -194,10 +194,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.pattern$GuFI), LINKS.quotedNode$ip4), CONCEPTS.AbstractAntiquotation$TS, false, new SAbstractConcept[]{})).isNotEmpty();
   }
   public static Object propertyMacro_GetValue_6_1(final PropertyMacroContext _context) {
-    return _context.getTemplateValue() + ((Integer) _context.getVariable("cv:c"));
+    return _context.getTemplateValue() + (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_6_2(final PropertyMacroContext _context) {
-    return _context.getTemplateValue() + ((Integer) _context.getVariable("cv:x"));
+    return _context.getTemplateValue() + (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_6_3(final PropertyMacroContext _context) {
     return _context.createUniqueName("Pattern_", SNodeOperations.getContainingRoot(_context.getNode()));
@@ -227,7 +227,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.createIndexedName("n", SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.INodeBuilderContainer$ds, false, false), false);
   }
   public static Object propertyMacro_GetValue_18_0(final PropertyMacroContext _context) {
-    return "p" + ((Integer) _context.getVariable("cv:c"));
+    return "p" + (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_18_1(final PropertyMacroContext _context) {
     return (String) PatternBuilderClassifierMember__BehaviorDescriptor.getGeneratedName_id6SIgReParNN.invoke(((SNode) _context.getVariable("var:classMember")));
@@ -236,7 +236,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return ((Optional<Boolean>) _context.getVariable("allowNull")).get();
   }
   public static Object propertyMacro_GetValue_20_0(final PropertyMacroContext _context) {
-    return "p" + ((Integer) _context.getVariable("cv:c"));
+    return "p" + (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_20_1(final PropertyMacroContext _context) {
     return _context.createUniqueName("Pattern", ListSequence.fromList(SNodeOperations.getNodeAncestors(_context.getNode(), CONCEPTS.Classifier$Ix, false)).last());

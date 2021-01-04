@@ -308,13 +308,13 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object propertyMacro_GetValue_3_1(final PropertyMacroContext _context) {
     StringBuilder sb = new StringBuilder();
     sb.append(SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.sourceLanguage$A51U), PROPS.name$MnvL));
-    if (((Integer) _context.getVariable("cv:c")) > 0) {
+    if ((Integer) _context.getVariable("loop:index") > 0) {
       // for compatibility with legacy code, do not use index for the first generator. 
       // as there is at most 1 generator per language now, this code is effectively dead. 
       // When we move towards multiple generators, we need to change BuildMpsLayout_Plugin behavior (unpack and location), 
       // as well as BuildMpsLayout_ModuleJars.location (and, perhaps, other locations that assume lagnuage.name-generator.jar pattern). 
       sb.append('-');
-      sb.append(Integer.toString(((Integer) _context.getVariable("cv:c"))));
+      sb.append(Integer.toString((Integer) _context.getVariable("loop:index")));
     }
     return sb.append("-generator.jar").toString();
   }

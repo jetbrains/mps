@@ -2223,7 +2223,7 @@
           <node concept="3cpWs6" id="7l6b$Kxs8es" role="3cqZAp">
             <node concept="2OqwBi" id="2KujyEVI9ZR" role="3cqZAk">
               <node concept="37vLTw" id="2KujyEVI8ZU" role="2Oq$k0">
-                <ref role="3cqZAo" node="7vnZ8Y09h_m" />
+                <ref role="3cqZAo" node="7vnZ8Y09h_m" resolve="myOriginal" />
               </node>
               <node concept="liA8E" id="2KujyEVIazT" role="2OqNvi">
                 <ref role="37wK5l" to="dush:~DataSource.getType()" resolve="getType" />
@@ -9759,7 +9759,7 @@
           <node concept="3eNFk2" id="JUETeacDRR" role="3eNLev">
             <node concept="2ZW3vV" id="JUETeacSXX" role="3eO9$A">
               <node concept="3uibUv" id="2vdc4wJGMr9" role="2ZW6by">
-                <ref role="3uigEE" to="btf5:7NxC9prLitz" resolve="AbstractNodeGroupChange" />
+                <ref role="3uigEE" to="btf5:7NxC9prLitz" resolve="HierarchicalNodeGroupChange" />
               </node>
               <node concept="37vLTw" id="JUETeacR8r" role="2ZW6bz">
                 <ref role="3cqZAo" node="5pmMiWv$Chm" resolve="change" />
@@ -9774,7 +9774,7 @@
                         <ref role="3cqZAo" node="5pmMiWv$Chm" resolve="change" />
                       </node>
                       <node concept="3uibUv" id="2vdc4wJGMsn" role="10QFUM">
-                        <ref role="3uigEE" to="btf5:7NxC9prLitz" resolve="AbstractNodeGroupChange" />
+                        <ref role="3uigEE" to="btf5:7NxC9prLitz" resolve="HierarchicalNodeGroupChange" />
                       </node>
                     </node>
                   </node>
