@@ -5837,7 +5837,6 @@
       </node>
     </node>
     <node concept="2tJIrI" id="4IS_xErOiWs" role="jymVt" />
-    <node concept="2tJIrI" id="YIxS4EwdmO" role="jymVt" />
     <node concept="3clFbW" id="3WD3WEj27j8" role="jymVt">
       <property role="TrG5h" value="EditorMessageWithTarget" />
       <node concept="3cqZAl" id="3WD3WEj27j9" role="3clF45" />
@@ -5926,6 +5925,28 @@
             </node>
           </node>
         </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="4YgmG4uI1pO" role="jymVt" />
+    <node concept="3clFb_" id="4YgmG4uHYhg" role="jymVt">
+      <property role="TrG5h" value="getFormattingOptions" />
+      <node concept="3Tm1VV" id="4YgmG4uHYhi" role="1B3o_S" />
+      <node concept="2AHcQZ" id="4YgmG4uHYhk" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+      </node>
+      <node concept="3uibUv" id="4YgmG4uHYhl" role="3clF45">
+        <ref role="3uigEE" to="kpve:~FormattingOptions" resolve="FormattingOptions" />
+      </node>
+      <node concept="3clFbS" id="4YgmG4uHYhq" role="3clF47">
+        <node concept="3cpWs6" id="4YgmG4uIIh3" role="3cqZAp">
+          <node concept="Rm8GO" id="4YgmG4uIJbn" role="3cqZAk">
+            <ref role="Rm8GQ" to="kpve:~FormattingOptions.BODY_OF_HTML" resolve="BODY_OF_HTML" />
+            <ref role="1Px2BO" to="kpve:~FormattingOptions" resolve="FormattingOptions" />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="4YgmG4uHYhr" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="YIxS4Ep9mm" role="jymVt" />

@@ -16,12 +16,15 @@
 package jetbrains.mps.nodeEditor;
 
 import jetbrains.mps.openapi.editor.cells.EditorCell;
+import jetbrains.mps.openapi.editor.message.FormattingOptions;
 import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
+import org.apache.commons.lang.StringEscapeUtils;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.awt.Graphics;
 
 public interface EditorMessage extends SimpleEditorMessage {
-
   void doNavigate(EditorComponent editorComponent);
 
   boolean isValid(EditorComponent editorComponent);
@@ -40,4 +43,23 @@ public interface EditorMessage extends SimpleEditorMessage {
 
   Object getUserObject(Object key);
 
+  @Override
+  @Nullable
+  default String getFormattedMessage() {
+    String rawText = getMessage();
+    if (rawText == null) {
+      return null;
+    }
+    return formatMessage(rawText, getFormattingOptions());
+  }
+
+  @NotNull
+  static String formatMessage(String rawText, FormattingOptions formattingOptions) {
+    if (formattingOptions == FormattingOptions.BODY_OF_HTML) {
+      return rawText;
+    } else if (formattingOptions == FormattingOptions.PLAIN_TEXT) {
+      return StringEscapeUtils.escapeHtml(rawText).replace("\n", "<br>");
+    }
+    return rawText;
+  }
 }

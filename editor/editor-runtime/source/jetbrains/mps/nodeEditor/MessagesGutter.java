@@ -353,7 +353,7 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
         if (text.length() > 0) {
           text.append("<br>");
         }
-        text.append(mark.getEditorMessage().getMessage());
+        text.append(mark.getEditorMessage().getFormattedMessage());
       }
       return text.toString();
     }
