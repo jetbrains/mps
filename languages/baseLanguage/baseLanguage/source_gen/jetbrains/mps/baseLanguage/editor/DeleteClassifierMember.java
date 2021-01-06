@@ -5,11 +5,11 @@ package jetbrains.mps.baseLanguage.editor;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
@@ -24,14 +24,16 @@ public class DeleteClassifierMember {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SNodeOperations.getParent(node) != null && (SNodeOperations.getNextSibling(node) != null)) {
+        EditorCell contextCell = editorContext.getContextCell();
+        contextCell = contextCell.findLeaf(contextCell.getX(), contextCell.getY());
+        if (SNodeOperations.getParent(node) != null && ((SNodeOperations.getNextSibling(node) != null) || contextCell.getNextSibling() != null)) {
           if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.BaseCommentAttribute$nv)) {
             if (DeletionApproverUtil.approve(editorContext, SNodeOperations.getParent(node))) {
               return;
             }
             SNodeOperations.deleteNode(SNodeOperations.getParent(node));
           } else {
-            if (DeletionApproverUtil.approve(editorContext, node)) {
+            if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.PlaceholderMember$s8)) && DeletionApproverUtil.approve(editorContext, node)) {
               return;
             }
             if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Classifier$Ix)) {
@@ -51,14 +53,16 @@ public class DeleteClassifierMember {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (SNodeOperations.getParent(node) != null) {
+        EditorCell contextCell = editorContext.getContextCell();
+        contextCell = contextCell.findLeaf(contextCell.getX(), contextCell.getY());
+        if (SNodeOperations.getParent(node) != null && ((SNodeOperations.getPrevSibling(node) != null) || contextCell.getPrevSibling() != null)) {
           if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.BaseCommentAttribute$nv)) {
             if (DeletionApproverUtil.approve(editorContext, SNodeOperations.getParent(node))) {
               return;
             }
             SNodeOperations.deleteNode(SNodeOperations.getParent(node));
           } else {
-            if (DeletionApproverUtil.approve(editorContext, node)) {
+            if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.PlaceholderMember$s8)) && DeletionApproverUtil.approve(editorContext, node)) {
               return;
             }
             if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Classifier$Ix)) {
@@ -119,6 +123,7 @@ public class DeleteClassifierMember {
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept PlaceholderMember$s8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember");
     /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
     /*package*/ static final SConcept BaseCommentAttribute$nv = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
   }

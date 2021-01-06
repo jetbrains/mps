@@ -35,7 +35,7 @@ public class DeleteCommentedClassifierMemberTwoStep_Test extends BaseTransformat
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("8979250711592872841", "8979250711592872804");
+      initEditorComponent("8979250711592872841", "6154553062467955714");
       EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
         public void run() throws Exception {
           invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
