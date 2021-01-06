@@ -24,6 +24,33 @@ public class DeleteClassifierMember {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
+        if (SNodeOperations.getParent(node) != null && (SNodeOperations.getNextSibling(node) != null)) {
+          if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.BaseCommentAttribute$nv)) {
+            if (DeletionApproverUtil.approve(editorContext, SNodeOperations.getParent(node))) {
+              return;
+            }
+            SNodeOperations.deleteNode(SNodeOperations.getParent(node));
+          } else {
+            if (DeletionApproverUtil.approve(editorContext, node)) {
+              return;
+            }
+            if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.Classifier$Ix)) {
+              SNodeOperations.replaceWithAnother(node, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember")));
+            } else {
+              SNodeOperations.deleteNode(node);
+            }
+          }
+        }
+      }
+
+    };
+  }
+  /*package*/ static AbstractCellAction createAction_BACKSPACE(final SNode node) {
+    return new AbstractCellAction() {
+      public void execute(EditorContext editorContext) {
+        this.execute_internal(editorContext, node);
+      }
+      public void execute_internal(EditorContext editorContext, SNode node) {
         if (SNodeOperations.getParent(node) != null) {
           if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.BaseCommentAttribute$nv)) {
             if (DeletionApproverUtil.approve(editorContext, SNodeOperations.getParent(node))) {
@@ -75,6 +102,7 @@ public class DeleteClassifierMember {
 
     // set cell actions defined directly in this action map 
     editorCell.setAction(CellActionType.DELETE, createAction_DELETE(node));
+    editorCell.setAction(CellActionType.BACKSPACE, createAction_BACKSPACE(node));
   }
 
   public static void setDefinedCellActionsOfType(EditorCell editorCell, SNode node, EditorContext context, CellActionType actionType) {
@@ -84,6 +112,9 @@ public class DeleteClassifierMember {
     // set cell action of the given type defined directly in this action map 
     if (Objects.equals(actionType, CellActionType.DELETE)) {
       editorCell.setAction(actionType, createAction_DELETE(node));
+    }
+    if (Objects.equals(actionType, CellActionType.BACKSPACE)) {
+      editorCell.setAction(actionType, createAction_BACKSPACE(node));
     }
   }
 
