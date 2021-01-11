@@ -45,7 +45,7 @@ public final class AbstractNodeMacroNamespace__BehaviorDescriptor extends BaseBH
       do {
         // Use the built in method to get the previous macro 
         nodeMacroAncestor = NodeMacro__BehaviorDescriptor.getPreviousNodeMacro_idhEwIot7.invoke(nodeMacroAncestor);
-      } while (!(SNodeOperations.isInstanceOf(nodeMacroAncestor, SNodeOperations.asSConcept(macroConcept))));
+      } while ((nodeMacroAncestor != null) && !(SNodeOperations.isInstanceOf(nodeMacroAncestor, SNodeOperations.asSConcept(macroConcept))));
 
       return nodeMacroAncestor;
     } else {
