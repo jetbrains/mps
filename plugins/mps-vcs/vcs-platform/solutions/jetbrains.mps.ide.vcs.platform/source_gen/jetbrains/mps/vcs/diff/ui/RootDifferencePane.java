@@ -32,6 +32,9 @@ import javax.swing.JComponent;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import jetbrains.mps.ide.icons.IdeIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import java.util.function.Supplier;
+import com.intellij.openapi.diff.DiffBundle;
+import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.diff.tools.util.DiffSplitter;
 import java.awt.Graphics;
 import com.intellij.openapi.actionSystem.ActionGroup;
@@ -58,6 +61,7 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
   private static final String PARAM_SHOW_INSPECTOR = RootDifferencePane.class.getName() + "ShowInspector";
   private static final String PARAM_HIDE_ID_CHANGES = RootDifferencePane.class.getName() + "HideIdChanges";
   private static final String PARAM_INSPECTOR_SPLITTER_POSITION = RootDifferencePane.class.getName() + "InspectorSplitterPosition";
+  private static final String PARAM_ENABLE_EDITORS_SCROLL_SYNC = RootDifferencePane.class.getName() + "_EnableSync";
   private final MPSProject myMpsProject;
   private ModelChangeSet myChangeSet;
   private SNodeId myRootId;
@@ -66,7 +70,8 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
   private DiffEditor myNewEditor;
 
   private List<ChangeGroupLayout> myChangeGroupLayouts = ListSequence.fromList(new ArrayList<ChangeGroupLayout>());
-  private DiffEditorsGroup myDiffEditorsGroup = new DiffEditorsGroup();
+  private boolean myIsEditorsSyncEnabled = isEditorsScrollingSyncOptionEnabled();
+  private DiffEditorsGroup myDiffEditorsGroup = new DiffEditorsGroup(myIsEditorsSyncEnabled);
 
   private TwosideContentPanel myPanel;
   private boolean isInspectorShown = PropertiesComponent.getInstance().getBoolean(PARAM_SHOW_INSPECTOR, true);
@@ -172,7 +177,26 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
         showInspector(b);
       }
     });
-    myActionGroup.addSeparator();
+    myActionGroup.add(new ToggleAction(new Supplier<String>() {
+      public String get() {
+        return DiffBundle.message("synchronize.scrolling", new Object[0]);
+      }
+    }, Presentation.NULL_STRING, IdeIcons.SYNC_SCROLLING) {
+      @Override
+      public boolean isSelected(@NotNull AnActionEvent p1) {
+        return isEditorsScrollingSyncOptionEnabled();
+      }
+      @Override
+      public void setSelected(@NotNull AnActionEvent e, boolean b) {
+        saveEditorsScrollingSyncOption(b);
+        enableEditorsScrollingSynchronization(b);
+      }
+      @Override
+      public void update(@NotNull AnActionEvent e) {
+        super.update(e);
+        enableEditorsScrollingSynchronization(isEditorsScrollingSyncOptionEnabled());
+      }
+    });
     myActionGroup.add(mySettingsAction);
     myActionGroup.addSeparator();
     if (isEditable) {
@@ -259,6 +283,22 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
     PropertiesComponent.getInstance().setValue(PARAM_SHOW_INSPECTOR, show + "");
     myOldEditor.showInspector(show);
     myNewEditor.showInspector(show);
+  }
+
+  private static boolean isEditorsScrollingSyncOptionEnabled() {
+    return PropertiesComponent.getInstance().getBoolean(PARAM_ENABLE_EDITORS_SCROLL_SYNC, true);
+  }
+
+  private void saveEditorsScrollingSyncOption(boolean enable) {
+    PropertiesComponent.getInstance().setValue(PARAM_ENABLE_EDITORS_SCROLL_SYNC, enable, true);
+  }
+
+  private void enableEditorsScrollingSynchronization(boolean isEditorsSyncEnabled) {
+    if (myIsEditorsSyncEnabled == isEditorsSyncEnabled) {
+      return;
+    }
+    myIsEditorsSyncEnabled = isEditorsSyncEnabled;
+    myDiffEditorsGroup.enableEditorsSynchronization(isEditorsSyncEnabled);
   }
 
   @Override

@@ -34,6 +34,9 @@ import javax.swing.JComponent;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import jetbrains.mps.ide.icons.IdeIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import java.util.function.Supplier;
+import com.intellij.openapi.diff.DiffBundle;
+import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.diff.tools.util.DiffSplitter;
 import java.awt.Graphics;
 import com.intellij.openapi.actionSystem.ActionGroup;
@@ -52,6 +55,7 @@ import org.jetbrains.mps.openapi.module.ModelAccess;
 public class StructDifferencePane implements PropertyChangeListener {
   private static final String PARAM_SHOW_INSPECTOR = StructDifferencePane.class.getName() + "ShowInspector";
   private static final String PARAM_INSPECTOR_SPLITTER_POSITION = StructDifferencePane.class.getName() + "InspectorSplitterPosition";
+  private static final String PARAM_ENABLE_EDITORS_SCROLL_SYNC = StructDifferencePane.class.getName() + "_EnableSync";
   private Project myProject;
   private StructChangeSet myChangeSet;
 
@@ -59,6 +63,7 @@ public class StructDifferencePane implements PropertyChangeListener {
   private DiffEditor myNewEditor;
 
   private List<ChangeGroupLayout> myChangeGroupLayouts = ListSequence.fromList(new ArrayList<ChangeGroupLayout>());
+  private boolean myIsEditorsSyncEnabled = isEditorsScrollingSyncOptionEnabled();
   private DiffEditorsGroup myDiffEditorsGroup;
 
   private TwosideContentPanel myPanel;
@@ -74,11 +79,10 @@ public class StructDifferencePane implements PropertyChangeListener {
   private TripleChangeGroupLayout myInspectorLayout;
 
 
-
   public StructDifferencePane(Project project, final StructChangeSet changeSet, String[] titles) {
     myChangeSet = changeSet;
     myProject = project;
-    myDiffEditorsGroup = new DiffEditorsGroup() {
+    myDiffEditorsGroup = new DiffEditorsGroup(myIsEditorsSyncEnabled) {
       @Nullable
       @Override
       protected SNodeId mapID(DiffEditor myEditor, SNodeId myNodeId, DiffEditor otherEditor) {
@@ -132,7 +136,7 @@ public class StructDifferencePane implements PropertyChangeListener {
     }
 
     private void rehighlightWithRebuild() {
-      check_n8nr2l_a0a5bb(ProjectHelper.getModelAccess(myProject), this);
+      check_n8nr2l_a0a5cb(ProjectHelper.getModelAccess(myProject), this);
     }
     private void doRehighlight() {
       rehighlight();
@@ -185,6 +189,26 @@ public class StructDifferencePane implements PropertyChangeListener {
       }
       public void setSelected(AnActionEvent e, boolean b) {
         showInspector(b);
+      }
+    });
+    myActionGroup.add(new ToggleAction(new Supplier<String>() {
+      public String get() {
+        return DiffBundle.message("synchronize.scrolling", new Object[0]);
+      }
+    }, Presentation.NULL_STRING, IdeIcons.SYNC_SCROLLING) {
+      @Override
+      public boolean isSelected(@NotNull AnActionEvent p1) {
+        return isEditorsScrollingSyncOptionEnabled();
+      }
+      @Override
+      public void setSelected(@NotNull AnActionEvent e, boolean b) {
+        saveEditorsScrollingSyncOption(b);
+        enableEditorsScrollingSynchronization(b);
+      }
+      @Override
+      public void update(@NotNull AnActionEvent e) {
+        super.update(e);
+        enableEditorsScrollingSynchronization(isEditorsScrollingSyncOptionEnabled());
       }
     });
   }
@@ -240,6 +264,22 @@ public class StructDifferencePane implements PropertyChangeListener {
     PropertiesComponent.getInstance().setValue(PARAM_SHOW_INSPECTOR, show + "");
     myOldEditor.showInspector(show);
     myNewEditor.showInspector(show);
+  }
+
+  private static boolean isEditorsScrollingSyncOptionEnabled() {
+    return PropertiesComponent.getInstance().getBoolean(PARAM_ENABLE_EDITORS_SCROLL_SYNC, true);
+  }
+
+  private void saveEditorsScrollingSyncOption(boolean enable) {
+    PropertiesComponent.getInstance().setValue(PARAM_ENABLE_EDITORS_SCROLL_SYNC, enable, true);
+  }
+
+  private void enableEditorsScrollingSynchronization(boolean isEditorsSyncEnabled) {
+    if (myIsEditorsSyncEnabled == isEditorsSyncEnabled) {
+      return;
+    }
+    myIsEditorsSyncEnabled = isEditorsSyncEnabled;
+    myDiffEditorsGroup.enableEditorsSynchronization(isEditorsSyncEnabled);
   }
 
   private TripleChangeGroupLayout createLayout(TwosideContentPanel panel, boolean inspector) {
@@ -325,7 +365,7 @@ public class StructDifferencePane implements PropertyChangeListener {
     myOldEditor = null;
     myNewEditor = null;
   }
-  private static void check_n8nr2l_a0a5bb(ModelAccess checkedDotOperand, final MyDifferenceListener checkedDotThisExpression) {
+  private static void check_n8nr2l_a0a5cb(ModelAccess checkedDotOperand, final MyDifferenceListener checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       checkedDotOperand.runReadInEDT(new Runnable() {
         public void run() {

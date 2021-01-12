@@ -43,6 +43,9 @@ import javax.swing.JComponent;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import jetbrains.mps.ide.icons.IdeIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import java.util.function.Supplier;
+import com.intellij.openapi.diff.DiffBundle;
+import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.diff.tools.util.DiffSplitter;
 import java.awt.Graphics;
 import com.intellij.openapi.actionSystem.ActionGroup;
@@ -60,6 +63,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class MergeRootsPane implements PropertyChangeListener {
   private static final String PARAM_SHOW_INSPECTOR = MergeRootsPane.class.getName() + "ShowInspector";
   private static final String PARAM_INSPECTOR_SPLITTER_POSITION = MergeRootsPane.class.getName() + "InspectorSplitterPosition";
+  private static final String PARAM_ENABLE_EDITORS_SCROLL_SYNC = MergeRootsPane.class.getName() + "_EnableSync";
 
   private Project myProject;
   private MergeSession myMergeSession;
@@ -78,7 +82,8 @@ public class MergeRootsPane implements PropertyChangeListener {
 
   private List<ChangeGroupLayout> myChangeGroupLayouts = ListSequence.fromList(new ArrayList<ChangeGroupLayout>());
   private Map<DiffChangeGroupLayout, Boolean> myDiffLayoutPart = MapSequence.fromMap(new HashMap<DiffChangeGroupLayout, Boolean>());
-  private DiffEditorsGroup myDiffEditorsGroup = new DiffEditorsGroup();
+  private boolean myIsEditorsSyncEnabled = isEditorsScrollingSyncOptionEnabled();
+  private DiffEditorsGroup myDiffEditorsGroup = new DiffEditorsGroup(myIsEditorsSyncEnabled);
 
   private DefaultActionGroup myActionGroup;
   private NextPreviousTraverser myTraverser;
@@ -147,7 +152,7 @@ public class MergeRootsPane implements PropertyChangeListener {
     }
 
     private void rehighlightWithRebuild() {
-      check_lifo0_a0a5jb(ProjectHelper.getModelAccess(myProject), this);
+      check_lifo0_a0a5lb(ProjectHelper.getModelAccess(myProject), this);
     }
     private void doRehighlight() {
       rehighlight();
@@ -216,6 +221,26 @@ public class MergeRootsPane implements PropertyChangeListener {
       }
       public void setSelected(AnActionEvent e, boolean b) {
         showInspector(b);
+      }
+    });
+    myActionGroup.add(new ToggleAction(new Supplier<String>() {
+      public String get() {
+        return DiffBundle.message("synchronize.scrolling", new Object[0]);
+      }
+    }, Presentation.NULL_STRING, IdeIcons.SYNC_SCROLLING) {
+      @Override
+      public boolean isSelected(@NotNull AnActionEvent p1) {
+        return isEditorsScrollingSyncOptionEnabled();
+      }
+      @Override
+      public void setSelected(@NotNull AnActionEvent e, boolean b) {
+        saveEditorsScrollingSyncOption(b);
+        enableEditorsScrollingSynchronization(b);
+      }
+      @Override
+      public void update(@NotNull AnActionEvent e) {
+        super.update(e);
+        enableEditorsScrollingSynchronization(isEditorsScrollingSyncOptionEnabled());
       }
     });
   }
@@ -295,7 +320,22 @@ public class MergeRootsPane implements PropertyChangeListener {
     myMineEditor.showInspector(show);
     myResultEditor.showInspector(show);
     myRepositoryEditor.showInspector(show);
+  }
 
+  private static boolean isEditorsScrollingSyncOptionEnabled() {
+    return PropertiesComponent.getInstance().getBoolean(PARAM_ENABLE_EDITORS_SCROLL_SYNC, true);
+  }
+
+  private void saveEditorsScrollingSyncOption(boolean enable) {
+    PropertiesComponent.getInstance().setValue(PARAM_ENABLE_EDITORS_SCROLL_SYNC, enable, true);
+  }
+
+  private void enableEditorsScrollingSynchronization(boolean isEditorsSyncEnabled) {
+    if (myIsEditorsSyncEnabled == isEditorsSyncEnabled) {
+      return;
+    }
+    myIsEditorsSyncEnabled = isEditorsSyncEnabled;
+    myDiffEditorsGroup.enableEditorsSynchronization(isEditorsSyncEnabled);
   }
 
   public void rehighlight() {
@@ -466,7 +506,7 @@ public class MergeRootsPane implements PropertyChangeListener {
       }
     }
   }
-  private static void check_lifo0_a0a5jb(ModelAccess checkedDotOperand, final MyDifferenceListener checkedDotThisExpression) {
+  private static void check_lifo0_a0a5lb(ModelAccess checkedDotOperand, final MyDifferenceListener checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       checkedDotOperand.runReadInEDT(new Runnable() {
         public void run() {

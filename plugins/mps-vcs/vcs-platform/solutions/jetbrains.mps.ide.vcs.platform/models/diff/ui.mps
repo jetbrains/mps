@@ -76,6 +76,7 @@
     <import index="ksd0" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.diff.tools.util(MPS.IDEA/)" />
     <import index="mnlj" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.beans(JDK/)" />
     <import index="lcr" ref="r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)" />
+    <import index="ok99" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.diff(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -4104,6 +4105,25 @@
       <node concept="3Tm6S6" id="6HpunfUDPxl" role="1B3o_S" />
       <node concept="17QB3L" id="2RS8k$i1001" role="1tU5fm" />
     </node>
+    <node concept="Wx3nA" id="4pxesIpZRCS" role="jymVt">
+      <property role="TrG5h" value="PARAM_ENABLE_EDITORS_SCROLL_SYNC" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3cpWs3" id="4pxesIpZRCT" role="33vP2m">
+        <node concept="Xl_RD" id="4pxesIpZRCU" role="3uHU7w">
+          <property role="Xl_RC" value="_EnableSync" />
+        </node>
+        <node concept="2OqwBi" id="4pxesIpZRCV" role="3uHU7B">
+          <node concept="liA8E" id="4pxesIpZRCW" role="2OqNvi">
+            <ref role="37wK5l" to="wyt6:~Class.getName()" resolve="getName" />
+          </node>
+          <node concept="3VsKOn" id="4pxesIpZRCX" role="2Oq$k0">
+            <ref role="3VsUkX" node="7DvDtq9MCV9" resolve="RootDifferencePane" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm6S6" id="4pxesIpZRCY" role="1B3o_S" />
+      <node concept="17QB3L" id="4pxesIpZRCZ" role="1tU5fm" />
+    </node>
     <node concept="312cEg" id="3SMO48FTf02" role="jymVt">
       <property role="TrG5h" value="myMpsProject" />
       <property role="3TUv4t" value="true" />
@@ -4158,11 +4178,22 @@
         </node>
       </node>
     </node>
+    <node concept="312cEg" id="4pxesIpYXsH" role="jymVt">
+      <property role="TrG5h" value="myIsEditorsSyncEnabled" />
+      <node concept="3Tm6S6" id="4pxesIpYUmE" role="1B3o_S" />
+      <node concept="10P_77" id="4pxesIpYXrc" role="1tU5fm" />
+      <node concept="1rXfSq" id="2wTEqNKzWJb" role="33vP2m">
+        <ref role="37wK5l" node="6JaxsqziG0K" resolve="isEditorsScrollingSyncOptionEnabled" />
+      </node>
+    </node>
     <node concept="312cEg" id="3SMO48FSNGR" role="jymVt">
       <property role="TrG5h" value="myDiffEditorsGroup" />
       <node concept="2ShNRf" id="3SMO48FSNGS" role="33vP2m">
         <node concept="1pGfFk" id="3SMO48FSNGT" role="2ShVmc">
           <ref role="37wK5l" to="hdhb:42hl10VHaI4" resolve="DiffEditorsGroup" />
+          <node concept="37vLTw" id="6EbOUYts2g6" role="37wK5m">
+            <ref role="3cqZAo" node="4pxesIpYXsH" resolve="myIsEditorsSyncEnabled" />
+          </node>
         </node>
       </node>
       <node concept="3uibUv" id="3SMO48FSNGU" role="1tU5fm">
@@ -5302,13 +5333,154 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="4vdhZPfZiu9" role="3cqZAp">
-          <node concept="2OqwBi" id="4vdhZPfZiua" role="3clFbG">
-            <node concept="liA8E" id="4vdhZPfZiub" role="2OqNvi">
-              <ref role="37wK5l" to="qkt:~DefaultActionGroup.addSeparator()" resolve="addSeparator" />
-            </node>
-            <node concept="37vLTw" id="4vdhZPfZiuc" role="2Oq$k0">
+        <node concept="3clFbF" id="2wTEqNK$nSo" role="3cqZAp">
+          <node concept="2OqwBi" id="2wTEqNK$p4$" role="3clFbG">
+            <node concept="37vLTw" id="2wTEqNK$nSm" role="2Oq$k0">
               <ref role="3cqZAo" node="3SMO48FUu6x" resolve="myActionGroup" />
+            </node>
+            <node concept="liA8E" id="2wTEqNK$pYC" role="2OqNvi">
+              <ref role="37wK5l" to="qkt:~DefaultActionGroup.add(com.intellij.openapi.actionSystem.AnAction)" resolve="add" />
+              <node concept="2ShNRf" id="2wTEqNK$qx9" role="37wK5m">
+                <node concept="YeOm9" id="2wTEqNK$Z57" role="2ShVmc">
+                  <node concept="1Y3b0j" id="2wTEqNK$Z5a" role="YeSDq">
+                    <property role="2bfB8j" value="true" />
+                    <ref role="1Y3XeK" to="qkt:~ToggleAction" resolve="ToggleAction" />
+                    <ref role="37wK5l" to="qkt:~ToggleAction.&lt;init&gt;(java.util.function.Supplier,java.util.function.Supplier,javax.swing.Icon)" resolve="ToggleAction" />
+                    <node concept="1bVj0M" id="2wTEqNKAvTw" role="37wK5m">
+                      <node concept="3clFbS" id="2wTEqNKAvTy" role="1bW5cS">
+                        <node concept="3clFbF" id="2wTEqNKAw0u" role="3cqZAp">
+                          <node concept="2YIFZM" id="2wTEqNK_8ON" role="3clFbG">
+                            <ref role="1Pybhc" to="ok99:~DiffBundle" resolve="DiffBundle" />
+                            <ref role="37wK5l" to="ok99:~DiffBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
+                            <node concept="Xl_RD" id="2wTEqNK_8OO" role="37wK5m">
+                              <property role="Xl_RC" value="synchronize.scrolling" />
+                            </node>
+                            <node concept="2ShNRf" id="2wTEqNKA$0q" role="37wK5m">
+                              <node concept="3$_iS1" id="2wTEqNKAO8A" role="2ShVmc">
+                                <node concept="3$GHV9" id="2wTEqNKAO8C" role="3$GQph">
+                                  <node concept="3cmrfG" id="2wTEqNKAQC1" role="3$I4v7">
+                                    <property role="3cmrfH" value="0" />
+                                  </node>
+                                </node>
+                                <node concept="3uibUv" id="2wTEqNKAMmb" role="3$_nBY">
+                                  <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="10M0yZ" id="2wTEqNKAyta" role="37wK5m">
+                      <ref role="3cqZAo" to="qkt:~Presentation.NULL_STRING" resolve="NULL_STRING" />
+                      <ref role="1PxDUh" to="qkt:~Presentation" resolve="Presentation" />
+                    </node>
+                    <node concept="10M0yZ" id="2wTEqNK_65_" role="37wK5m">
+                      <ref role="3cqZAo" to="xnls:~IdeIcons.SYNC_SCROLLING" resolve="SYNC_SCROLLING" />
+                      <ref role="1PxDUh" to="xnls:~IdeIcons" resolve="IdeIcons" />
+                    </node>
+                    <node concept="3Tm1VV" id="2wTEqNK$Z5b" role="1B3o_S" />
+                    <node concept="3clFb_" id="2wTEqNK$Z5i" role="jymVt">
+                      <property role="TrG5h" value="isSelected" />
+                      <node concept="3Tm1VV" id="2wTEqNK$Z5j" role="1B3o_S" />
+                      <node concept="10P_77" id="2wTEqNK$Z5l" role="3clF45" />
+                      <node concept="37vLTG" id="2wTEqNK$Z5m" role="3clF46">
+                        <property role="TrG5h" value="p1" />
+                        <node concept="3uibUv" id="2wTEqNK$Z5n" role="1tU5fm">
+                          <ref role="3uigEE" to="qkt:~AnActionEvent" resolve="AnActionEvent" />
+                        </node>
+                        <node concept="2AHcQZ" id="2wTEqNK$Z5o" role="2AJF6D">
+                          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+                        </node>
+                      </node>
+                      <node concept="3clFbS" id="2wTEqNK$Z5p" role="3clF47">
+                        <node concept="3clFbF" id="2wTEqNK_6I_" role="3cqZAp">
+                          <node concept="1rXfSq" id="2wTEqNK_6IA" role="3clFbG">
+                            <ref role="37wK5l" node="6JaxsqziG0K" resolve="isEditorsScrollingSyncOptionEnabled" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="2AHcQZ" id="2wTEqNK$Z5r" role="2AJF6D">
+                        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+                      </node>
+                    </node>
+                    <node concept="3clFb_" id="2wTEqNK$Z5t" role="jymVt">
+                      <property role="TrG5h" value="setSelected" />
+                      <node concept="3Tm1VV" id="2wTEqNK$Z5u" role="1B3o_S" />
+                      <node concept="3cqZAl" id="2wTEqNK$Z5w" role="3clF45" />
+                      <node concept="37vLTG" id="2wTEqNK$Z5x" role="3clF46">
+                        <property role="TrG5h" value="e" />
+                        <node concept="3uibUv" id="2wTEqNK$Z5y" role="1tU5fm">
+                          <ref role="3uigEE" to="qkt:~AnActionEvent" resolve="AnActionEvent" />
+                        </node>
+                        <node concept="2AHcQZ" id="2wTEqNK$Z5z" role="2AJF6D">
+                          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+                        </node>
+                      </node>
+                      <node concept="37vLTG" id="2wTEqNK$Z5$" role="3clF46">
+                        <property role="TrG5h" value="b" />
+                        <node concept="10P_77" id="2wTEqNK$Z5_" role="1tU5fm" />
+                      </node>
+                      <node concept="3clFbS" id="2wTEqNK$Z5A" role="3clF47">
+                        <node concept="3clFbF" id="2wTEqNK_6YG" role="3cqZAp">
+                          <node concept="1rXfSq" id="2wTEqNK_6YH" role="3clFbG">
+                            <ref role="37wK5l" node="4pxesIq16Uy" resolve="saveEditorsScrollingSyncOption" />
+                            <node concept="37vLTw" id="2wTEqNK_8jS" role="37wK5m">
+                              <ref role="3cqZAo" node="2wTEqNK$Z5$" resolve="b" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="3clFbF" id="2wTEqNKC5Ga" role="3cqZAp">
+                          <node concept="1rXfSq" id="2wTEqNKC5G8" role="3clFbG">
+                            <ref role="37wK5l" node="2wTEqNKBQW3" resolve="enableEditorsScrollingSynchronization" />
+                            <node concept="37vLTw" id="2wTEqNKC7Aq" role="37wK5m">
+                              <ref role="3cqZAo" node="2wTEqNK$Z5$" resolve="b" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="2AHcQZ" id="2wTEqNK$Z5C" role="2AJF6D">
+                        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+                      </node>
+                    </node>
+                    <node concept="3clFb_" id="2wTEqNKARvA" role="jymVt">
+                      <property role="TrG5h" value="update" />
+                      <node concept="3Tm1VV" id="2wTEqNKARvB" role="1B3o_S" />
+                      <node concept="3cqZAl" id="2wTEqNKARvD" role="3clF45" />
+                      <node concept="37vLTG" id="2wTEqNKARvE" role="3clF46">
+                        <property role="TrG5h" value="e" />
+                        <node concept="3uibUv" id="2wTEqNKARvF" role="1tU5fm">
+                          <ref role="3uigEE" to="qkt:~AnActionEvent" resolve="AnActionEvent" />
+                        </node>
+                        <node concept="2AHcQZ" id="2wTEqNKARvG" role="2AJF6D">
+                          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+                        </node>
+                      </node>
+                      <node concept="3clFbS" id="2wTEqNKARvI" role="3clF47">
+                        <node concept="3clFbF" id="2wTEqNKARvM" role="3cqZAp">
+                          <node concept="3nyPlj" id="2wTEqNKARvL" role="3clFbG">
+                            <ref role="37wK5l" to="qkt:~ToggleAction.update(com.intellij.openapi.actionSystem.AnActionEvent)" resolve="update" />
+                            <node concept="37vLTw" id="2wTEqNKARvK" role="37wK5m">
+                              <ref role="3cqZAo" node="2wTEqNKARvE" resolve="e" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="3clFbF" id="2wTEqNKC9HI" role="3cqZAp">
+                          <node concept="1rXfSq" id="2wTEqNKC9HG" role="3clFbG">
+                            <ref role="37wK5l" node="2wTEqNKBQW3" resolve="enableEditorsScrollingSynchronization" />
+                            <node concept="1rXfSq" id="2wTEqNKDb0I" role="37wK5m">
+                              <ref role="37wK5l" node="6JaxsqziG0K" resolve="isEditorsScrollingSyncOptionEnabled" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="2AHcQZ" id="2wTEqNKARvJ" role="2AJF6D">
+                        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
             </node>
           </node>
         </node>
@@ -6044,6 +6216,111 @@
       <node concept="37vLTG" id="4HKxPX1GeZd" role="3clF46">
         <property role="TrG5h" value="show" />
         <node concept="10P_77" id="4HKxPX1GeZc" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="6JaxsqzitOA" role="jymVt" />
+    <node concept="2YIFZL" id="6JaxsqziG0K" role="jymVt">
+      <property role="TrG5h" value="isEditorsScrollingSyncOptionEnabled" />
+      <node concept="3clFbS" id="6JaxsqziG0N" role="3clF47">
+        <node concept="3clFbF" id="6JaxsqziLhr" role="3cqZAp">
+          <node concept="2OqwBi" id="6JaxsqziLht" role="3clFbG">
+            <node concept="liA8E" id="6JaxsqziLhu" role="2OqNvi">
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getBoolean(java.lang.String,boolean)" resolve="getBoolean" />
+              <node concept="37vLTw" id="6JaxsqziLhF" role="37wK5m">
+                <ref role="3cqZAo" node="4pxesIpZRCS" resolve="PARAM_ENABLE_EDITORS_SCROLL_SYNC" />
+              </node>
+              <node concept="3clFbT" id="6JaxsqziLhv" role="37wK5m">
+                <property role="3clFbU" value="true" />
+              </node>
+            </node>
+            <node concept="2YIFZM" id="6JaxsqziLhw" role="2Oq$k0">
+              <ref role="1Pybhc" to="jmi8:~PropertiesComponent" resolve="PropertiesComponent" />
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getInstance()" resolve="getInstance" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm6S6" id="6JaxsqziAys" role="1B3o_S" />
+      <node concept="10P_77" id="6JaxsqziFOa" role="3clF45" />
+    </node>
+    <node concept="2tJIrI" id="4pxesIq0X4c" role="jymVt" />
+    <node concept="3clFb_" id="4pxesIq16Uy" role="jymVt">
+      <property role="TrG5h" value="saveEditorsScrollingSyncOption" />
+      <node concept="3clFbS" id="4pxesIq16U_" role="3clF47">
+        <node concept="3clFbF" id="4pxesIq1ti1" role="3cqZAp">
+          <node concept="2OqwBi" id="4pxesIq1ti2" role="3clFbG">
+            <node concept="liA8E" id="4pxesIq1ti3" role="2OqNvi">
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.setValue(java.lang.String,boolean,boolean)" resolve="setValue" />
+              <node concept="37vLTw" id="4pxesIq1$cV" role="37wK5m">
+                <ref role="3cqZAo" node="4pxesIpZRCS" resolve="PARAM_ENABLE_EDITORS_SCROLL_SYNC" />
+              </node>
+              <node concept="37vLTw" id="4pxesIpZvwP" role="37wK5m">
+                <ref role="3cqZAo" node="4pxesIq19qX" resolve="enable" />
+              </node>
+              <node concept="3clFbT" id="4pxesIpZw6q" role="37wK5m">
+                <property role="3clFbU" value="true" />
+              </node>
+            </node>
+            <node concept="2YIFZM" id="4pxesIq1ti4" role="2Oq$k0">
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getInstance()" resolve="getInstance" />
+              <ref role="1Pybhc" to="jmi8:~PropertiesComponent" resolve="PropertiesComponent" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm6S6" id="4pxesIq12uG" role="1B3o_S" />
+      <node concept="3cqZAl" id="4pxesIq159T" role="3clF45" />
+      <node concept="37vLTG" id="4pxesIq19qX" role="3clF46">
+        <property role="TrG5h" value="enable" />
+        <node concept="10P_77" id="4pxesIq19qW" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="2wTEqNKBGaa" role="jymVt" />
+    <node concept="3clFb_" id="2wTEqNKBQW3" role="jymVt">
+      <property role="TrG5h" value="enableEditorsScrollingSynchronization" />
+      <node concept="3clFbS" id="2wTEqNKBQW6" role="3clF47">
+        <node concept="3clFbJ" id="2wTEqNKD69f" role="3cqZAp">
+          <node concept="3clFbS" id="2wTEqNKD69h" role="3clFbx">
+            <node concept="3cpWs6" id="2wTEqNKDah9" role="3cqZAp" />
+          </node>
+          <node concept="3clFbC" id="2wTEqNKD9_W" role="3clFbw">
+            <node concept="37vLTw" id="2wTEqNKD71h" role="3uHU7B">
+              <ref role="3cqZAo" node="4pxesIpYXsH" resolve="myIsEditorsSyncEnabled" />
+            </node>
+            <node concept="37vLTw" id="2wTEqNKD9eu" role="3uHU7w">
+              <ref role="3cqZAo" node="2wTEqNKBZRC" resolve="isEditorsSyncEnabled" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2wTEqNKD3dQ" role="3cqZAp">
+          <node concept="37vLTI" id="2wTEqNKD4bl" role="3clFbG">
+            <node concept="37vLTw" id="2wTEqNKD5hK" role="37vLTx">
+              <ref role="3cqZAo" node="2wTEqNKBZRC" resolve="isEditorsSyncEnabled" />
+            </node>
+            <node concept="37vLTw" id="2wTEqNKD3dO" role="37vLTJ">
+              <ref role="3cqZAo" node="4pxesIpYXsH" resolve="myIsEditorsSyncEnabled" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2wTEqNKBYB_" role="3cqZAp">
+          <node concept="2OqwBi" id="2wTEqNKBZn2" role="3clFbG">
+            <node concept="37vLTw" id="2wTEqNKBYB$" role="2Oq$k0">
+              <ref role="3cqZAo" node="3SMO48FSNGR" resolve="myDiffEditorsGroup" />
+            </node>
+            <node concept="liA8E" id="2wTEqNKBZFL" role="2OqNvi">
+              <ref role="37wK5l" to="hdhb:4pxesIpY_zs" resolve="enableEditorsSynchronization" />
+              <node concept="37vLTw" id="2wTEqNKC4BN" role="37wK5m">
+                <ref role="3cqZAo" node="2wTEqNKBZRC" resolve="isEditorsSyncEnabled" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm6S6" id="2wTEqNKBMnT" role="1B3o_S" />
+      <node concept="3cqZAl" id="2wTEqNKBTGH" role="3clF45" />
+      <node concept="37vLTG" id="2wTEqNKBZRC" role="3clF46">
+        <property role="TrG5h" value="isEditorsSyncEnabled" />
+        <node concept="10P_77" id="2wTEqNKBZRB" role="1tU5fm" />
       </node>
     </node>
     <node concept="2tJIrI" id="1l7$ETSM8nq" role="jymVt" />
@@ -9731,6 +10008,25 @@
       <node concept="3Tm6S6" id="42UviMImjCU" role="1B3o_S" />
       <node concept="17QB3L" id="6IL1Wh7tWZk" role="1tU5fm" />
     </node>
+    <node concept="Wx3nA" id="4Dqr_aMY_eb" role="jymVt">
+      <property role="TrG5h" value="PARAM_ENABLE_EDITORS_SCROLL_SYNC" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3cpWs3" id="4Dqr_aMY_ec" role="33vP2m">
+        <node concept="Xl_RD" id="4Dqr_aMY_ed" role="3uHU7w">
+          <property role="Xl_RC" value="_EnableSync" />
+        </node>
+        <node concept="2OqwBi" id="4Dqr_aMY_ee" role="3uHU7B">
+          <node concept="liA8E" id="4Dqr_aMY_ef" role="2OqNvi">
+            <ref role="37wK5l" to="wyt6:~Class.getName()" resolve="getName" />
+          </node>
+          <node concept="3VsKOn" id="4Dqr_aMY_eg" role="2Oq$k0">
+            <ref role="3VsUkX" node="42UviMImjCF" resolve="StructDifferencePane" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm6S6" id="4Dqr_aMY_eh" role="1B3o_S" />
+      <node concept="17QB3L" id="4Dqr_aMY_ei" role="1tU5fm" />
+    </node>
     <node concept="312cEg" id="42UviMImjCW" role="jymVt">
       <property role="TrG5h" value="myProject" />
       <node concept="3uibUv" id="42UviMImjCX" role="1tU5fm">
@@ -9775,6 +10071,14 @@
             <ref role="3uigEE" to="hdhb:42hl10VHagX" resolve="ChangeGroupLayout" />
           </node>
         </node>
+      </node>
+    </node>
+    <node concept="312cEg" id="2UWfovzKxPM" role="jymVt">
+      <property role="TrG5h" value="myIsEditorsSyncEnabled" />
+      <node concept="3Tm6S6" id="2UWfovzKxPN" role="1B3o_S" />
+      <node concept="10P_77" id="2UWfovzKxPO" role="1tU5fm" />
+      <node concept="1rXfSq" id="2UWfovzKUOl" role="33vP2m">
+        <ref role="37wK5l" node="2UWfovzKICB" resolve="isEditorsScrollingSyncOptionEnabled" />
       </node>
     </node>
     <node concept="312cEg" id="42UviMImjDr" role="jymVt">
@@ -9868,7 +10172,6 @@
     </node>
     <node concept="2tJIrI" id="1Ib$_WnCWzd" role="jymVt" />
     <node concept="2tJIrI" id="1EaAyGRds53" role="jymVt" />
-    <node concept="2tJIrI" id="42UviMImjE8" role="jymVt" />
     <node concept="3clFbW" id="42UviMImjE9" role="jymVt">
       <node concept="3clFbS" id="42UviMImjEa" role="3clF47">
         <node concept="3clFbF" id="42UviMImjEb" role="3cqZAp">
@@ -10029,6 +10332,9 @@
                     <node concept="2AHcQZ" id="3ZTTsGEnlap" role="2AJF6D">
                       <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                     </node>
+                  </node>
+                  <node concept="37vLTw" id="2UWfovzKVVt" role="37wK5m">
+                    <ref role="3cqZAo" node="2UWfovzKxPM" resolve="myIsEditorsSyncEnabled" />
                   </node>
                 </node>
               </node>
@@ -11057,6 +11363,157 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="4Dqr_aMZ367" role="3cqZAp">
+          <node concept="2OqwBi" id="4Dqr_aMZ368" role="3clFbG">
+            <node concept="liA8E" id="4Dqr_aMZ369" role="2OqNvi">
+              <ref role="37wK5l" to="qkt:~DefaultActionGroup.add(com.intellij.openapi.actionSystem.AnAction)" resolve="add" />
+              <node concept="2ShNRf" id="2UWfovzLk8n" role="37wK5m">
+                <node concept="YeOm9" id="2UWfovzLk8o" role="2ShVmc">
+                  <node concept="1Y3b0j" id="2UWfovzLk8p" role="YeSDq">
+                    <property role="2bfB8j" value="true" />
+                    <ref role="1Y3XeK" to="qkt:~ToggleAction" resolve="ToggleAction" />
+                    <ref role="37wK5l" to="qkt:~ToggleAction.&lt;init&gt;(java.util.function.Supplier,java.util.function.Supplier,javax.swing.Icon)" resolve="ToggleAction" />
+                    <node concept="1bVj0M" id="2UWfovzLk8q" role="37wK5m">
+                      <node concept="3clFbS" id="2UWfovzLk8r" role="1bW5cS">
+                        <node concept="3clFbF" id="2UWfovzLk8s" role="3cqZAp">
+                          <node concept="2YIFZM" id="2UWfovzLk8t" role="3clFbG">
+                            <ref role="1Pybhc" to="ok99:~DiffBundle" resolve="DiffBundle" />
+                            <ref role="37wK5l" to="ok99:~DiffBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
+                            <node concept="Xl_RD" id="2UWfovzLk8u" role="37wK5m">
+                              <property role="Xl_RC" value="synchronize.scrolling" />
+                            </node>
+                            <node concept="2ShNRf" id="2UWfovzLk8v" role="37wK5m">
+                              <node concept="3$_iS1" id="2UWfovzLk8w" role="2ShVmc">
+                                <node concept="3$GHV9" id="2UWfovzLk8x" role="3$GQph">
+                                  <node concept="3cmrfG" id="2UWfovzLk8y" role="3$I4v7">
+                                    <property role="3cmrfH" value="0" />
+                                  </node>
+                                </node>
+                                <node concept="3uibUv" id="2UWfovzLk8z" role="3$_nBY">
+                                  <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="10M0yZ" id="2UWfovzLk8$" role="37wK5m">
+                      <ref role="3cqZAo" to="qkt:~Presentation.NULL_STRING" resolve="NULL_STRING" />
+                      <ref role="1PxDUh" to="qkt:~Presentation" resolve="Presentation" />
+                    </node>
+                    <node concept="10M0yZ" id="2UWfovzLk8_" role="37wK5m">
+                      <ref role="3cqZAo" to="xnls:~IdeIcons.SYNC_SCROLLING" resolve="SYNC_SCROLLING" />
+                      <ref role="1PxDUh" to="xnls:~IdeIcons" resolve="IdeIcons" />
+                    </node>
+                    <node concept="3Tm1VV" id="2UWfovzLk8A" role="1B3o_S" />
+                    <node concept="3clFb_" id="2UWfovzLk8B" role="jymVt">
+                      <property role="TrG5h" value="isSelected" />
+                      <node concept="3Tm1VV" id="2UWfovzLk8C" role="1B3o_S" />
+                      <node concept="10P_77" id="2UWfovzLk8D" role="3clF45" />
+                      <node concept="37vLTG" id="2UWfovzLk8E" role="3clF46">
+                        <property role="TrG5h" value="p1" />
+                        <node concept="3uibUv" id="2UWfovzLk8F" role="1tU5fm">
+                          <ref role="3uigEE" to="qkt:~AnActionEvent" resolve="AnActionEvent" />
+                        </node>
+                        <node concept="2AHcQZ" id="2UWfovzLk8G" role="2AJF6D">
+                          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+                        </node>
+                      </node>
+                      <node concept="3clFbS" id="2UWfovzLk8H" role="3clF47">
+                        <node concept="3clFbF" id="2UWfovzLnob" role="3cqZAp">
+                          <node concept="1rXfSq" id="2UWfovzLno9" role="3clFbG">
+                            <ref role="37wK5l" node="2UWfovzKICB" resolve="isEditorsScrollingSyncOptionEnabled" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="2AHcQZ" id="2UWfovzLk8K" role="2AJF6D">
+                        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+                      </node>
+                    </node>
+                    <node concept="3clFb_" id="2UWfovzLk8L" role="jymVt">
+                      <property role="TrG5h" value="setSelected" />
+                      <node concept="3Tm1VV" id="2UWfovzLk8M" role="1B3o_S" />
+                      <node concept="3cqZAl" id="2UWfovzLk8N" role="3clF45" />
+                      <node concept="37vLTG" id="2UWfovzLk8O" role="3clF46">
+                        <property role="TrG5h" value="e" />
+                        <node concept="3uibUv" id="2UWfovzLk8P" role="1tU5fm">
+                          <ref role="3uigEE" to="qkt:~AnActionEvent" resolve="AnActionEvent" />
+                        </node>
+                        <node concept="2AHcQZ" id="2UWfovzLk8Q" role="2AJF6D">
+                          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+                        </node>
+                      </node>
+                      <node concept="37vLTG" id="2UWfovzLk8R" role="3clF46">
+                        <property role="TrG5h" value="b" />
+                        <node concept="10P_77" id="2UWfovzLk8S" role="1tU5fm" />
+                      </node>
+                      <node concept="3clFbS" id="2UWfovzLk8T" role="3clF47">
+                        <node concept="3clFbF" id="2UWfovzLk8U" role="3cqZAp">
+                          <node concept="1rXfSq" id="2UWfovzLk8V" role="3clFbG">
+                            <ref role="37wK5l" node="2UWfovzKICU" resolve="saveEditorsScrollingSyncOption" />
+                            <node concept="37vLTw" id="2UWfovzLk8W" role="37wK5m">
+                              <ref role="3cqZAo" node="2UWfovzLk8R" resolve="b" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="3clFbF" id="2UWfovzLk8X" role="3cqZAp">
+                          <node concept="1rXfSq" id="2UWfovzLk8Y" role="3clFbG">
+                            <ref role="37wK5l" node="2UWfovzL5LH" resolve="enableEditorsScrollingSynchronization" />
+                            <node concept="37vLTw" id="2UWfovzLk8Z" role="37wK5m">
+                              <ref role="3cqZAo" node="2UWfovzLk8R" resolve="b" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="2AHcQZ" id="2UWfovzLk90" role="2AJF6D">
+                        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+                      </node>
+                    </node>
+                    <node concept="3clFb_" id="2UWfovzLk91" role="jymVt">
+                      <property role="TrG5h" value="update" />
+                      <node concept="3Tm1VV" id="2UWfovzLk92" role="1B3o_S" />
+                      <node concept="3cqZAl" id="2UWfovzLk93" role="3clF45" />
+                      <node concept="37vLTG" id="2UWfovzLk94" role="3clF46">
+                        <property role="TrG5h" value="e" />
+                        <node concept="3uibUv" id="2UWfovzLk95" role="1tU5fm">
+                          <ref role="3uigEE" to="qkt:~AnActionEvent" resolve="AnActionEvent" />
+                        </node>
+                        <node concept="2AHcQZ" id="2UWfovzLk96" role="2AJF6D">
+                          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+                        </node>
+                      </node>
+                      <node concept="3clFbS" id="2UWfovzLk97" role="3clF47">
+                        <node concept="3clFbF" id="2UWfovzLk98" role="3cqZAp">
+                          <node concept="3nyPlj" id="2UWfovzLk99" role="3clFbG">
+                            <ref role="37wK5l" to="qkt:~ToggleAction.update(com.intellij.openapi.actionSystem.AnActionEvent)" resolve="update" />
+                            <node concept="37vLTw" id="2UWfovzLk9a" role="37wK5m">
+                              <ref role="3cqZAo" node="2UWfovzLk94" resolve="e" />
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="3clFbF" id="2UWfovzLk9b" role="3cqZAp">
+                          <node concept="1rXfSq" id="2UWfovzLk9c" role="3clFbG">
+                            <ref role="37wK5l" node="2UWfovzL5LH" resolve="enableEditorsScrollingSynchronization" />
+                            <node concept="1rXfSq" id="2UWfovzLoZT" role="37wK5m">
+                              <ref role="37wK5l" node="2UWfovzKICB" resolve="isEditorsScrollingSyncOptionEnabled" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="2AHcQZ" id="2UWfovzLk9e" role="2AJF6D">
+                        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="37vLTw" id="4Dqr_aMZ36B" role="2Oq$k0">
+              <ref role="3cqZAo" node="42UviMImjE2" resolve="myActionGroup" />
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="3Tm6S6" id="42UviMImjHh" role="1B3o_S" />
       <node concept="3cqZAl" id="42UviMImjHi" role="3clF45" />
@@ -11510,6 +11967,111 @@
       <node concept="37vLTG" id="42UviMImjKh" role="3clF46">
         <property role="TrG5h" value="show" />
         <node concept="10P_77" id="42UviMImjKi" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="2UWfovzKQ5F" role="jymVt" />
+    <node concept="2YIFZL" id="2UWfovzKICB" role="jymVt">
+      <property role="TrG5h" value="isEditorsScrollingSyncOptionEnabled" />
+      <node concept="3clFbS" id="2UWfovzKICC" role="3clF47">
+        <node concept="3clFbF" id="2UWfovzKICD" role="3cqZAp">
+          <node concept="2OqwBi" id="2UWfovzKICE" role="3clFbG">
+            <node concept="liA8E" id="2UWfovzKICF" role="2OqNvi">
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getBoolean(java.lang.String,boolean)" resolve="getBoolean" />
+              <node concept="37vLTw" id="2UWfovzKPSQ" role="37wK5m">
+                <ref role="3cqZAo" node="4Dqr_aMY_eb" resolve="PARAM_ENABLE_EDITORS_SCROLL_SYNC" />
+              </node>
+              <node concept="3clFbT" id="2UWfovzKICG" role="37wK5m">
+                <property role="3clFbU" value="true" />
+              </node>
+            </node>
+            <node concept="2YIFZM" id="2UWfovzKICH" role="2Oq$k0">
+              <ref role="1Pybhc" to="jmi8:~PropertiesComponent" resolve="PropertiesComponent" />
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getInstance()" resolve="getInstance" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm6S6" id="2UWfovzKICI" role="1B3o_S" />
+      <node concept="10P_77" id="2UWfovzKICJ" role="3clF45" />
+    </node>
+    <node concept="2tJIrI" id="2UWfovzKICT" role="jymVt" />
+    <node concept="3clFb_" id="2UWfovzKICU" role="jymVt">
+      <property role="TrG5h" value="saveEditorsScrollingSyncOption" />
+      <node concept="3clFbS" id="2UWfovzKICV" role="3clF47">
+        <node concept="3clFbF" id="2UWfovzKICW" role="3cqZAp">
+          <node concept="2OqwBi" id="2UWfovzKICX" role="3clFbG">
+            <node concept="liA8E" id="2UWfovzKICY" role="2OqNvi">
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.setValue(java.lang.String,boolean,boolean)" resolve="setValue" />
+              <node concept="37vLTw" id="2UWfovzKICZ" role="37wK5m">
+                <ref role="3cqZAo" node="4Dqr_aMY_eb" resolve="PARAM_ENABLE_EDITORS_SCROLL_SYNC" />
+              </node>
+              <node concept="37vLTw" id="2UWfovzKID0" role="37wK5m">
+                <ref role="3cqZAo" node="2UWfovzKID5" resolve="enable" />
+              </node>
+              <node concept="3clFbT" id="2UWfovzKID1" role="37wK5m">
+                <property role="3clFbU" value="true" />
+              </node>
+            </node>
+            <node concept="2YIFZM" id="2UWfovzKID2" role="2Oq$k0">
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getInstance()" resolve="getInstance" />
+              <ref role="1Pybhc" to="jmi8:~PropertiesComponent" resolve="PropertiesComponent" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm6S6" id="2UWfovzKID3" role="1B3o_S" />
+      <node concept="3cqZAl" id="2UWfovzKID4" role="3clF45" />
+      <node concept="37vLTG" id="2UWfovzKID5" role="3clF46">
+        <property role="TrG5h" value="enable" />
+        <node concept="10P_77" id="2UWfovzKID6" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="2UWfovzL28N" role="jymVt" />
+    <node concept="3clFb_" id="2UWfovzL5LH" role="jymVt">
+      <property role="TrG5h" value="enableEditorsScrollingSynchronization" />
+      <node concept="3clFbS" id="2UWfovzL5LI" role="3clF47">
+        <node concept="3clFbJ" id="2UWfovzL5LJ" role="3cqZAp">
+          <node concept="3clFbS" id="2UWfovzL5LK" role="3clFbx">
+            <node concept="3cpWs6" id="2UWfovzL5LL" role="3cqZAp" />
+          </node>
+          <node concept="3clFbC" id="2UWfovzL5LM" role="3clFbw">
+            <node concept="37vLTw" id="2UWfovzL5LN" role="3uHU7B">
+              <ref role="3cqZAo" node="2UWfovzKxPM" resolve="myIsEditorsSyncEnabled" />
+            </node>
+            <node concept="37vLTw" id="2UWfovzL5LO" role="3uHU7w">
+              <ref role="3cqZAo" node="2UWfovzL5M0" resolve="isEditorsSyncEnabled" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2UWfovzL5LP" role="3cqZAp">
+          <node concept="37vLTI" id="2UWfovzL5LQ" role="3clFbG">
+            <node concept="37vLTw" id="2UWfovzL5LR" role="37vLTx">
+              <ref role="3cqZAo" node="2UWfovzL5M0" resolve="isEditorsSyncEnabled" />
+            </node>
+            <node concept="37vLTw" id="2UWfovzL5LS" role="37vLTJ">
+              <ref role="3cqZAo" node="2UWfovzKxPM" resolve="myIsEditorsSyncEnabled" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2UWfovzL5LT" role="3cqZAp">
+          <node concept="2OqwBi" id="2UWfovzL5LU" role="3clFbG">
+            <node concept="37vLTw" id="2UWfovzL5LV" role="2Oq$k0">
+              <ref role="3cqZAo" node="42UviMImjDr" resolve="myDiffEditorsGroup" />
+            </node>
+            <node concept="liA8E" id="2UWfovzL5LW" role="2OqNvi">
+              <ref role="37wK5l" to="hdhb:4pxesIpY_zs" resolve="enableEditorsSynchronization" />
+              <node concept="37vLTw" id="2UWfovzL5LX" role="37wK5m">
+                <ref role="3cqZAo" node="2UWfovzL5M0" resolve="isEditorsSyncEnabled" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm6S6" id="2UWfovzL5LY" role="1B3o_S" />
+      <node concept="3cqZAl" id="2UWfovzL5LZ" role="3clF45" />
+      <node concept="37vLTG" id="2UWfovzL5M0" role="3clF46">
+        <property role="TrG5h" value="isEditorsSyncEnabled" />
+        <node concept="10P_77" id="2UWfovzL5M1" role="1tU5fm" />
       </node>
     </node>
     <node concept="2tJIrI" id="42UviMImjKj" role="jymVt" />
