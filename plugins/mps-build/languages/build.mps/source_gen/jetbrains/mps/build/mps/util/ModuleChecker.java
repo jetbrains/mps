@@ -50,13 +50,13 @@ import jetbrains.mps.project.structure.modules.Dependency;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
 import jetbrains.mps.build.mps.behavior.BuildMps_Generator__BehaviorDescriptor;
+import jetbrains.mps.messages.Message;
+import jetbrains.mps.messages.MessageKind;
 import java.util.LinkedHashMap;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.build.behavior.BuildSourcePath__BehaviorDescriptor;
 import jetbrains.mps.build.mps.behavior.BuildMps_Module__BehaviorDescriptor;
-import jetbrains.mps.messages.Message;
-import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.smodel.MPSModuleOwner;
@@ -788,8 +788,10 @@ public final class ModuleChecker {
     if (!(SNodeOperations.isInstanceOf(myModule, CONCEPTS.BuildMps_Generator$RQ))) {
       for (Dependency dependency : dependencies) {
         SModuleReference moduleRef = dependency.getModuleRef();
+        // FIXME it's stupid way to check it's a generator, and, moreover, likely a wrong place to check for this defect at all. 
         if (moduleRef.getModuleName().contains("#")) {
-          report("modules except generators cannot depend on generator: `" + moduleRef.getModuleName() + "'");
+          String m = String.format("Generally, modules except generators shall not depend on generator: `%s'", moduleRef.getModuleName());
+          myReporter.handle(Message.createMessage(MessageKind.WARNING, getClass().getName(), m, SNodeOperations.getPointer(myModule)));
         }
       }
     }
@@ -1003,7 +1005,7 @@ public final class ModuleChecker {
           if (extraDep == null && SNodeOperations.isInstanceOf(SNodeOperations.getParent(dep), CONCEPTS.BuildMps_Language$RA)) {
             // There are no bi-directional references in MPS, and sourceLanguage is set explicitly now only when BM_Generator moves to top level, 
             // and is not initialized in a regular state. FIXME we'd better set this reference the moment generator is added to a language, if possible. 
-            // For the time being, howver, fall back to parent 
+            // For the time being, however, fall back to parent 
             extraDep = SNodeOperations.as(SNodeOperations.getParent(dep), CONCEPTS.BuildMps_Language$RA);
           }
         }

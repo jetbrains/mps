@@ -24691,6 +24691,76 @@
                     </node>
                   </node>
                 </node>
+                <node concept="3SKdUt" id="6OJi9XVTmmW" role="3cqZAp">
+                  <node concept="1PaTwC" id="6OJi9XVTmmX" role="1aUNEU">
+                    <node concept="3oM_SD" id="6OJi9XVTmmY" role="1PaTwD">
+                      <property role="3oM_SC" value="FIXME" />
+                    </node>
+                    <node concept="3oM_SD" id="6OJi9XVTmJa" role="1PaTwD">
+                      <property role="3oM_SC" value="it's" />
+                    </node>
+                    <node concept="3oM_SD" id="6OJi9XVTmJd" role="1PaTwD">
+                      <property role="3oM_SC" value="stupid" />
+                    </node>
+                    <node concept="3oM_SD" id="6OJi9XVTmJh" role="1PaTwD">
+                      <property role="3oM_SC" value="way" />
+                    </node>
+                    <node concept="3oM_SD" id="6OJi9XVTmKw" role="1PaTwD">
+                      <property role="3oM_SC" value="to" />
+                    </node>
+                    <node concept="3oM_SD" id="6OJi9XVTmKD" role="1PaTwD">
+                      <property role="3oM_SC" value="check" />
+                    </node>
+                    <node concept="3oM_SD" id="6OJi9XVTmKV" role="1PaTwD">
+                      <property role="3oM_SC" value="it's" />
+                    </node>
+                    <node concept="3oM_SD" id="6OJi9XVTmL6" role="1PaTwD">
+                      <property role="3oM_SC" value="a" />
+                    </node>
+                    <node concept="3oM_SD" id="6OJi9XVTmLq" role="1PaTwD">
+                      <property role="3oM_SC" value="generator," />
+                    </node>
+                    <node concept="3oM_SD" id="6OJi9XVTmJV" role="1PaTwD">
+                      <property role="3oM_SC" value="and," />
+                    </node>
+                    <node concept="3oM_SD" id="6OJi9XVTmK1" role="1PaTwD">
+                      <property role="3oM_SC" value="moreover," />
+                    </node>
+                    <node concept="3oM_SD" id="6OJi9XVTmK8" role="1PaTwD">
+                      <property role="3oM_SC" value="likely" />
+                    </node>
+                    <node concept="3oM_SD" id="6OJi9XVTmLR" role="1PaTwD">
+                      <property role="3oM_SC" value="a" />
+                    </node>
+                    <node concept="3oM_SD" id="6OJi9XVTmMd" role="1PaTwD">
+                      <property role="3oM_SC" value="wrong" />
+                    </node>
+                    <node concept="3oM_SD" id="6OJi9XVTmMs" role="1PaTwD">
+                      <property role="3oM_SC" value="place" />
+                    </node>
+                    <node concept="3oM_SD" id="6OJi9XVTmMG" role="1PaTwD">
+                      <property role="3oM_SC" value="to" />
+                    </node>
+                    <node concept="3oM_SD" id="6OJi9XVTmMX" role="1PaTwD">
+                      <property role="3oM_SC" value="check" />
+                    </node>
+                    <node concept="3oM_SD" id="6OJi9XVTmOB" role="1PaTwD">
+                      <property role="3oM_SC" value="for" />
+                    </node>
+                    <node concept="3oM_SD" id="6OJi9XVTmP2" role="1PaTwD">
+                      <property role="3oM_SC" value="this" />
+                    </node>
+                    <node concept="3oM_SD" id="6OJi9XVTmPm" role="1PaTwD">
+                      <property role="3oM_SC" value="defect" />
+                    </node>
+                    <node concept="3oM_SD" id="6OJi9XVTmPF" role="1PaTwD">
+                      <property role="3oM_SC" value="at" />
+                    </node>
+                    <node concept="3oM_SD" id="6OJi9XVTmQ1" role="1PaTwD">
+                      <property role="3oM_SC" value="all." />
+                    </node>
+                  </node>
+                </node>
                 <node concept="3clFbJ" id="6m8wrPAU3Z4" role="3cqZAp">
                   <node concept="2OqwBi" id="6m8wrPAU3Zg" role="3clFbw">
                     <node concept="2OqwBi" id="6m8wrPAU3Zh" role="2Oq$k0">
@@ -24709,26 +24779,63 @@
                     </node>
                   </node>
                   <node concept="3clFbS" id="6m8wrPAU3Z5" role="3clFbx">
-                    <node concept="3clFbF" id="6m8wrPAU3Z6" role="3cqZAp">
-                      <node concept="1rXfSq" id="4hiugqyyQCw" role="3clFbG">
-                        <ref role="37wK5l" node="6m8wrPAU4fb" resolve="report" />
-                        <node concept="3cpWs3" id="6m8wrPAU3Z8" role="37wK5m">
-                          <node concept="Xl_RD" id="6m8wrPAU3Z9" role="3uHU7w">
-                            <property role="Xl_RC" value="'" />
+                    <node concept="3cpWs8" id="6OJi9XVTh2L" role="3cqZAp">
+                      <node concept="3cpWsn" id="6OJi9XVTh2M" role="3cpWs9">
+                        <property role="TrG5h" value="m" />
+                        <node concept="3uibUv" id="6OJi9XVTggM" role="1tU5fm">
+                          <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+                        </node>
+                        <node concept="2YIFZM" id="6OJi9XVTh2N" role="33vP2m">
+                          <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+                          <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
+                          <node concept="Xl_RD" id="6OJi9XVTh2O" role="37wK5m">
+                            <property role="Xl_RC" value="Generally, modules except generators shall not depend on generator: `%s'" />
                           </node>
-                          <node concept="3cpWs3" id="6m8wrPAU3Za" role="3uHU7B">
-                            <node concept="2OqwBi" id="6m8wrPAU3Zb" role="3uHU7w">
-                              <node concept="liA8E" id="6m8wrPAU3Zc" role="2OqNvi">
-                                <ref role="37wK5l" to="lui2:~SModuleReference.getModuleName()" resolve="getModuleName" />
+                          <node concept="2OqwBi" id="6OJi9XVTh2P" role="37wK5m">
+                            <node concept="liA8E" id="6OJi9XVTh2Q" role="2OqNvi">
+                              <ref role="37wK5l" to="lui2:~SModuleReference.getModuleName()" resolve="getModuleName" />
+                            </node>
+                            <node concept="37vLTw" id="6OJi9XVTh2R" role="2Oq$k0">
+                              <ref role="3cqZAo" node="6m8wrPAU3YZ" resolve="moduleRef" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="3clFbF" id="6OJi9XVSYvg" role="3cqZAp">
+                      <node concept="2OqwBi" id="6OJi9XVSYvi" role="3clFbG">
+                        <node concept="liA8E" id="6OJi9XVSYvj" role="2OqNvi">
+                          <ref role="37wK5l" to="et5u:~IMessageHandler.handle(jetbrains.mps.messages.IMessage)" resolve="handle" />
+                          <node concept="2YIFZM" id="6OJi9XVSYvk" role="37wK5m">
+                            <ref role="1Pybhc" to="et5u:~Message" resolve="Message" />
+                            <ref role="37wK5l" to="et5u:~Message.createMessage(jetbrains.mps.messages.MessageKind,java.lang.String,java.lang.String,java.lang.Object)" resolve="createMessage" />
+                            <node concept="Rm8GO" id="6OJi9XVSYvl" role="37wK5m">
+                              <ref role="Rm8GQ" to="et5u:~MessageKind.WARNING" resolve="WARNING" />
+                              <ref role="1Px2BO" to="et5u:~MessageKind" resolve="MessageKind" />
+                            </node>
+                            <node concept="2OqwBi" id="6OJi9XVSYvm" role="37wK5m">
+                              <node concept="1rXfSq" id="6OJi9XVSYvn" role="2Oq$k0">
+                                <ref role="37wK5l" to="wyt6:~Object.getClass()" resolve="getClass" />
                               </node>
-                              <node concept="37vLTw" id="3GM_nagTtO4" role="2Oq$k0">
-                                <ref role="3cqZAo" node="6m8wrPAU3YZ" resolve="moduleRef" />
+                              <node concept="liA8E" id="6OJi9XVSYvo" role="2OqNvi">
+                                <ref role="37wK5l" to="wyt6:~Class.getName()" resolve="getName" />
                               </node>
                             </node>
-                            <node concept="Xl_RD" id="6m8wrPAU3Ze" role="3uHU7B">
-                              <property role="Xl_RC" value="modules except generators cannot depend on generator: `" />
+                            <node concept="37vLTw" id="6OJi9XVTlFA" role="37wK5m">
+                              <ref role="3cqZAo" node="6OJi9XVTh2M" resolve="m" />
+                            </node>
+                            <node concept="2JrnkZ" id="6OJi9XVSYvq" role="37wK5m">
+                              <node concept="2OqwBi" id="6OJi9XVSYvr" role="2JrQYb">
+                                <node concept="37vLTw" id="6OJi9XVSYvs" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="6m8wrPAU3pf" resolve="myModule" />
+                                </node>
+                                <node concept="iZEcu" id="6OJi9XVSYvt" role="2OqNvi" />
+                              </node>
                             </node>
                           </node>
+                        </node>
+                        <node concept="37vLTw" id="6OJi9XVSYvu" role="2Oq$k0">
+                          <ref role="3cqZAo" node="6m8wrPAU3px" resolve="myReporter" />
                         </node>
                       </node>
                     </node>
@@ -27901,7 +28008,7 @@
                               <property role="3oM_SC" value="being," />
                             </node>
                             <node concept="3oM_SD" id="ATZLwXo0ZB" role="1PaTwD">
-                              <property role="3oM_SC" value="howver," />
+                              <property role="3oM_SC" value="however," />
                             </node>
                             <node concept="3oM_SD" id="ATZLwXo0ZC" role="1PaTwD">
                               <property role="3oM_SC" value="fall" />
