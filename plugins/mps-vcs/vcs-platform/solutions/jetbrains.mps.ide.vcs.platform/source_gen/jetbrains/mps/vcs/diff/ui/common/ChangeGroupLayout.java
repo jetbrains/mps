@@ -113,6 +113,11 @@ public abstract class ChangeGroupLayout {
       }, true).toListSequence();
       ListSequence.fromList(myChangeGroups).addElement(new ChangeGroup(lb, rb, sortedChanges, myConflictChecker));
     }
+    myChangeGroups = ListSequence.fromList(myChangeGroups).sort(new ISelector<ChangeGroup, Integer>() {
+      public Integer select(ChangeGroup g) {
+        return (int) g.getLeftBounds().start();
+      }
+    }, true).toListSequence();
   }
 
   public void addInvalidateListener(@NotNull ChangeGroupInvalidateListener listener) {
