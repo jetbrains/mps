@@ -4994,28 +4994,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="2jv$fqwevhM" role="3cqZAp" />
-        <node concept="3clFbF" id="5T4mrfi$YW_" role="3cqZAp">
-          <node concept="2OqwBi" id="5T4mrfi$ZVw" role="3clFbG">
-            <node concept="37vLTw" id="5T4mrfi$YWz" role="2Oq$k0">
-              <ref role="3cqZAo" node="1zZcg$v3iuq" resolve="myMainLayout" />
-            </node>
-            <node concept="liA8E" id="5T4mrfi__Xd" role="2OqNvi">
-              <ref role="37wK5l" to="hdhb:1zZcg$uiR1v" resolve="updateChangeLayers" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="5T4mrfi_AZ$" role="3cqZAp">
-          <node concept="2OqwBi" id="5T4mrfi_BZc" role="3clFbG">
-            <node concept="37vLTw" id="5T4mrfi_AZy" role="2Oq$k0">
-              <ref role="3cqZAo" node="1zZcg$v3uDs" resolve="myInspectorLayout" />
-            </node>
-            <node concept="liA8E" id="5T4mrfi_Cvu" role="2OqNvi">
-              <ref role="37wK5l" to="hdhb:1zZcg$uiR1v" resolve="updateChangeLayers" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbH" id="5T4mrfi_A4u" role="3cqZAp" />
         <node concept="3clFbF" id="2jv$fqwevhN" role="3cqZAp">
           <node concept="2OqwBi" id="2jv$fqwevhO" role="3clFbG">
             <node concept="37vLTw" id="2BHiRxeurp$" role="2Oq$k0">

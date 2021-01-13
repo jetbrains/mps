@@ -25556,26 +25556,11 @@
                 <node concept="10Nm6u" id="1zZcg$ufLkJ" role="37wK5m" />
                 <node concept="10Nm6u" id="1zZcg$ufF18" role="37wK5m" />
                 <node concept="10Nm6u" id="1zZcg$ufF19" role="37wK5m" />
-                <node concept="3clFbT" id="1zZcg$ufF1a" role="37wK5m">
-                  <property role="3clFbU" value="true" />
-                </node>
+                <node concept="3clFbT" id="1zZcg$ufF1a" role="37wK5m" />
               </node>
             </node>
             <node concept="37vLTw" id="1zZcg$ufF1b" role="37vLTJ">
               <ref role="3cqZAo" node="1zZcg$ufBX8" resolve="myUpdateQueue" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="1zZcg$ufF1c" role="3cqZAp">
-          <node concept="2OqwBi" id="1zZcg$ufF1d" role="3clFbG">
-            <node concept="37vLTw" id="1zZcg$ufF1e" role="2Oq$k0">
-              <ref role="3cqZAo" node="1zZcg$ufBX8" resolve="myUpdateQueue" />
-            </node>
-            <node concept="liA8E" id="1zZcg$ufF1f" role="2OqNvi">
-              <ref role="37wK5l" to="t335:~MergingUpdateQueue.setRestartTimerOnAdd(boolean)" resolve="setRestartTimerOnAdd" />
-              <node concept="3clFbT" id="1zZcg$ufF1g" role="37wK5m">
-                <property role="3clFbU" value="true" />
-              </node>
             </node>
           </node>
         </node>

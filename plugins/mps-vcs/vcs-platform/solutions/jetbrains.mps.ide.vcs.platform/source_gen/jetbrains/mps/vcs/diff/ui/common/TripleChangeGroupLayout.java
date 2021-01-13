@@ -60,10 +60,9 @@ public class TripleChangeGroupLayout implements ChangeGroupInvalidateListener {
       MapSequence.fromMap(myEditorToLayersMap).put(myRightLayout.getDiffEditor(false), ListSequence.fromList(new ArrayList<ChangeLayer>()));
       MapSequence.fromMap(myEditorToOffsetMap).put(myRightLayout.getDiffEditor(false), new AtomicInteger());
     }
-    myUpdateQueue = new MergingUpdateQueue("TripleChangeGroupLayout", 100, true, null, null, null, true);
-    myUpdateQueue.setRestartTimerOnAdd(true);
-    check_fgmqy5_a01a01(myLeftLayout, this);
-    check_fgmqy5_a11a01(myRightLayout, this);
+    myUpdateQueue = new MergingUpdateQueue("TripleChangeGroupLayout", 100, true, null, null, null, false);
+    check_fgmqy5_a9a01(myLeftLayout, this);
+    check_fgmqy5_a01a01(myRightLayout, this);
     MapSequence.fromMap(myEditorToOffsetMap).visitAll(new IVisitor<IMapping<DiffEditor, AtomicInteger>>() {
       public void visit(final IMapping<DiffEditor, AtomicInteger> it) {
         getComponent(it.key()).getViewport().addChangeListener(new ChangeListener() {
@@ -302,13 +301,13 @@ public class TripleChangeGroupLayout implements ChangeGroupInvalidateListener {
     check_fgmqy5_a3a04(check_fgmqy5_a0d0ob(myRightLayout));
     check_fgmqy5_a4a04(myRightLayout);
   }
-  private static void check_fgmqy5_a01a01(DiffChangeGroupLayout checkedDotOperand, TripleChangeGroupLayout checkedDotThisExpression) {
+  private static void check_fgmqy5_a9a01(DiffChangeGroupLayout checkedDotOperand, TripleChangeGroupLayout checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       checkedDotOperand.addInvalidateListener(checkedDotThisExpression);
     }
 
   }
-  private static void check_fgmqy5_a11a01(DiffChangeGroupLayout checkedDotOperand, TripleChangeGroupLayout checkedDotThisExpression) {
+  private static void check_fgmqy5_a01a01(DiffChangeGroupLayout checkedDotOperand, TripleChangeGroupLayout checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       checkedDotOperand.addInvalidateListener(checkedDotThisExpression);
     }

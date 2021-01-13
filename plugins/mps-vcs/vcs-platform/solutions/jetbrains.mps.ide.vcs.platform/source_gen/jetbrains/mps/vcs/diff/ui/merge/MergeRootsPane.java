@@ -352,10 +352,6 @@ public class MergeRootsPane implements PropertyChangeListener {
         b.invalidate();
       }
     });
-
-    myMainLayout.updateChangeLayers();
-    myInspectorLayout.updateChangeLayers();
-
     myMineEditor.repaintAndRebuildEditorMessages();
     myResultEditor.repaintAndRebuildEditorMessages();
     myRepositoryEditor.repaintAndRebuildEditorMessages();
