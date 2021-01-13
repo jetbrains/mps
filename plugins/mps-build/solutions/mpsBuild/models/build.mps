@@ -7782,6 +7782,9 @@
         <node concept="3LEDTy" id="LjzjD8FKPn" role="3LEDUa">
           <ref role="3LEDTV" node="1CtrbKI23Wm" resolve="jetbrains.mps.lang.migration" />
         </node>
+        <node concept="3LEDTy" id="5RwmrbsRjij" role="3LEDUa">
+          <ref role="3LEDTV" node="3ZgZ1njKuFL" resolve="jetbrains.mps.lang.smodel.query" />
+        </node>
         <node concept="3LEDTM" id="LjzjD8FKPo" role="3LEDUa">
           <ref role="3LEDTN" node="5cCcm$KATVz" resolve="jetbrains.mps.lang.migration.runtime" />
         </node>
@@ -18142,8 +18145,8 @@
           </node>
         </node>
         <node concept="1SiIV0" id="4gQZRkTZReA" role="3bR37C">
-          <node concept="1Busua" id="4gQZRkTZReB" role="1SiIV1">
-            <ref role="1Busuk" node="3ZgZ1njKuFL" resolve="jetbrains.mps.lang.smodel.query" />
+          <node concept="3bR9La" id="7_071tSQHsZ" role="1SiIV1">
+            <ref role="3bR37D" node="3ZgZ1njKuFL" resolve="jetbrains.mps.lang.smodel.query" />
           </node>
         </node>
         <node concept="1BupzO" id="73GUf$ummH8" role="3bR31x">
