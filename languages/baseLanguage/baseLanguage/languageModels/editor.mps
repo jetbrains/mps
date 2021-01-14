@@ -8583,9 +8583,7 @@
             <property role="VOm3f" value="true" />
           </node>
         </node>
-        <node concept="VPM3Z" id="hEU$PzC" role="3F10Kt">
-          <property role="VOm3f" value="true" />
-        </node>
+        <node concept="VPM3Z" id="hEU$PzC" role="3F10Kt" />
         <node concept="l2Vlx" id="i0v7T3S" role="2czzBx" />
       </node>
       <node concept="3F0ifn" id="gNg8j4l" role="3EZMnx">
