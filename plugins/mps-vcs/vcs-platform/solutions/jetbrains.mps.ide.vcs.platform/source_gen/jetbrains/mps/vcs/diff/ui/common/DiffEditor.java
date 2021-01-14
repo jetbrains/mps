@@ -47,6 +47,8 @@ import jetbrains.mps.nodeEditor.commands.CommandContextWithVF;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import java.util.function.Predicate;
+import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
 import java.awt.event.MouseAdapter;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
@@ -446,6 +448,11 @@ public class DiffEditor implements EditorMessageOwner {
       addAdditionalPainter(new MyBordersPainter(false));
       LeftEditorHighlighter leftHighlighter = getLeftEditorHighlighter();
       leftHighlighter.addBackgroundPainter(new MyLeftHighlighterPainter(leftHighlighter, false));
+      getMessagesGutter().setMessageThicknessProvider(new Predicate<SimpleEditorMessage>() {
+        public boolean test(SimpleEditorMessage m) {
+          return false;
+        }
+      });
       addMouseMotionListener(new MouseAdapter() {
         @Override
         public void mouseMoved(MouseEvent e) {

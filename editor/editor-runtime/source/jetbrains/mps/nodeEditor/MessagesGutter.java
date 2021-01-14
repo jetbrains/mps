@@ -52,6 +52,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.function.Predicate;
 
 public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements TooltipComponent, MouseMotionListener, MouseListener {
   private static final Comparator<GutterMark> EDITOR_MESSAGES_COMPARATOR = (mark, otherMark) -> otherMark.getPriority() != mark.getPriority() ?
@@ -100,6 +101,7 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
   /**
    * Copy paste of {@link EditorImpl#adjustThumbColor(java.awt.Color, boolean)}
    */
+  @SuppressWarnings("JavadocReference")
   @NotNull
   private static Color adjustThumbColor(@NotNull Color base, boolean dark) {
     return dark ? ColorUtil.withAlpha(ColorUtil.shift(base, 1.35), 0.5)
@@ -361,6 +363,12 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
     return null;
   }
 
+  private Predicate<SimpleEditorMessage> myIsMessageThin = m -> !(m instanceof EditorMessage);
+
+  public void setMessageThicknessProvider(Predicate<SimpleEditorMessage> isMessageThin) {
+    myIsMessageThin = isMessageThin;
+  }
+
   private class GutterMark {
     private int myX, myY, myWidth, myHeight;
     private final SimpleEditorMessage myMessage;
@@ -375,9 +383,7 @@ public class MessagesGutter extends ButtonlessScrollBarUI.Transparent implements
 
       myX = myRightToLeft ? -2 : 4;
       myWidth = General.InspectionsOK.getIconWidth() - 1;
-      if (!(myMessage instanceof EditorMessage)) {
-        // thin
-
+      if (myIsMessageThin.test(myMessage)) {
         myX = myRightToLeft ? myWidth : 0;
         myWidth = 2;
       }

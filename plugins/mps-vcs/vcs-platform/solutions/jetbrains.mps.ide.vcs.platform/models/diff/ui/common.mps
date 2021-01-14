@@ -92,6 +92,7 @@
     <import index="z1c4" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
     <import index="i5cy" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent.atomic(JDK/)" />
     <import index="jmi8" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide.util(MPS.IDEA/)" />
+    <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" implicit="true" />
     <import index="8m69" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.editor.markup(MPS.IDEA/)" implicit="true" />
   </imports>
@@ -12191,6 +12192,29 @@
               </node>
               <node concept="37vLTw" id="7GXn_X6WZSJ" role="2Oq$k0">
                 <ref role="3cqZAo" node="7GXn_X6WZS_" resolve="leftHighlighter" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="5X8kYwg94hl" role="3cqZAp">
+            <node concept="2OqwBi" id="5X8kYwg999m" role="3clFbG">
+              <node concept="1rXfSq" id="5X8kYwg94hj" role="2Oq$k0">
+                <ref role="37wK5l" to="exr9:~EditorComponent.getMessagesGutter()" resolve="getMessagesGutter" />
+              </node>
+              <node concept="liA8E" id="5X8kYwgapoC" role="2OqNvi">
+                <ref role="37wK5l" to="exr9:~MessagesGutter.setMessageThicknessProvider(java.util.function.Predicate)" resolve="setMessageThicknessProvider" />
+                <node concept="1bVj0M" id="5X8kYwgdgf5" role="37wK5m">
+                  <node concept="3clFbS" id="5X8kYwgdgf6" role="1bW5cS">
+                    <node concept="3clFbF" id="5X8kYwgg5OK" role="3cqZAp">
+                      <node concept="3clFbT" id="5X8kYwgdjfq" role="3clFbG" />
+                    </node>
+                  </node>
+                  <node concept="37vLTG" id="5X8kYwgg4qy" role="1bW2Oz">
+                    <property role="TrG5h" value="m" />
+                    <node concept="3uibUv" id="5X8kYwgg5sp" role="1tU5fm">
+                      <ref role="3uigEE" to="kpve:~SimpleEditorMessage" resolve="SimpleEditorMessage" />
+                    </node>
+                  </node>
+                </node>
               </node>
             </node>
           </node>
