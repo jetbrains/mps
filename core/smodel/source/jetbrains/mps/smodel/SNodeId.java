@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,9 +40,20 @@ public abstract class SNodeId implements Comparable<SNodeId>, org.jetbrains.mps.
       return new StringBasedIdForJavaStubMethods(idString);
     }
     try {
-      long id = Long.valueOf(idString);
-      return new Regular(id);
-    } catch (NumberFormatException e) {
+      // no special handling for empty idString, as Long.parseLong throws NumberFormatException in that case
+      // and there's little difference whether we return null based on NFE or IOOBE
+      if (idString.charAt(0) == '-') {
+        // this is compatibility code, we started to get negative node id values with MPS 2020.2, perhaps
+        // due to MigrateTryStatement.generateNodeId introduced in 2020.2 (ALTERNATIVE_TYPE_ID_GEN constant yields
+        // negavive values when XOR'ed); or may be just due to an unfortunate coincidence.
+        // Nevertheless, now we try to keep node id values serialized as unsigned long
+        // and shall not generally face negative values, unless (presumably) coming from migrated models
+        // of MPS 2020.2 and serialized inside some
+        return new Regular(Long.parseLong(idString, 10));
+      }
+      // see Regular.toString() for reasoning why unsigned
+      return new Regular(Long.parseUnsignedLong(idString, 10));
+    } catch (NumberFormatException | IndexOutOfBoundsException e) {
       return null;
     }
   }
@@ -99,7 +110,9 @@ public abstract class SNodeId implements Comparable<SNodeId>, org.jetbrains.mps.
 
     @Override
     public String toString() {
-      return "" + myId;
+      // It's a matter of personal preference, indeed, I just don't see
+      // any value in keeping '-' for negative values, hence serialize them here as unsigned.
+      return Long.toUnsignedString(myId, 10);
     }
   }
 

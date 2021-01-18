@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -216,14 +216,17 @@ public class PersistenceRegistry extends org.jetbrains.mps.openapi.persistence.P
   @Override
   @Nullable
   public SNodeId createNodeId(@NotNull String nodeIdString) {
-    if (nodeIdString.isEmpty()) return null;
+    if (nodeIdString.isEmpty()) {
+      return null;
+    }
 
-    if (isPreinstalledNodeId(nodeIdString)) {
-      // default id is supported without type+colon prefix
+    final int colon = nodeIdString.indexOf(':');
+    if (isPreinstalledNodeId(nodeIdString, colon == -1)) {
+      // built-in id is supported without type+colon prefix
       return jetbrains.mps.smodel.SNodeId.fromString(nodeIdString);
     }
 
-    int colon = nodeIdString.indexOf(':');
+    // XXX shall we account for colon == 0 case?
     if (colon == -1) {
       throw new IncorrectNodeIdFormatException(String.format("The node id text '%s' does not contain the colon ':' separator", nodeIdString), null);
     }
@@ -234,11 +237,12 @@ public class PersistenceRegistry extends org.jetbrains.mps.openapi.persistence.P
     return factory.create(nodeIdString.substring(colon + 1));
   }
 
-  private boolean isPreinstalledNodeId(@NotNull String nodeIdString) {
+  private boolean isPreinstalledNodeId(@NotNull String nodeIdString, boolean noColonMark) {
     char first = nodeIdString.charAt(0);
-    return String.valueOf(first).equals(Foreign.ID_PREFIX)
-           || String.valueOf(first).equals(StringBasedIdForJavaStubMethods.ID_PREFIX)
-           || first <= '9' && first >= '0';
+    return first <= '9' && first >= '0' && noColonMark
+           || first == '-' && noColonMark
+           || nodeIdString.startsWith(Foreign.ID_PREFIX)
+           || nodeIdString.startsWith(StringBasedIdForJavaStubMethods.ID_PREFIX);
   }
 
   @NotNull
