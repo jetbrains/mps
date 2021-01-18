@@ -7101,16 +7101,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="2cFxs3P7tzW" role="3cqZAp">
-          <node concept="2OqwBi" id="2cFxs3P7w4q" role="3clFbG">
-            <node concept="37vLTw" id="2cFxs3P7tzU" role="2Oq$k0">
-              <ref role="3cqZAo" node="2jv$fqwD$oV" resolve="myMergeTree" />
-            </node>
-            <node concept="liA8E" id="2cFxs3P7yUp" role="2OqNvi">
-              <ref role="37wK5l" to="hdhb:42hl10VHaON" resolve="rebuildNow" />
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="2jv$fqwZq_3" role="3cqZAp">
           <node concept="2OqwBi" id="2jv$fqwZwoG" role="3clFbG">
             <node concept="liA8E" id="2jv$fqwZCrv" role="2OqNvi">
@@ -7138,6 +7128,16 @@
             </node>
             <node concept="37vLTw" id="65pnlFBLB2U" role="2Oq$k0">
               <ref role="3cqZAo" node="haj_nVE1K4" resolve="myPanel" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2cFxs3P7tzW" role="3cqZAp">
+          <node concept="2OqwBi" id="2cFxs3P7w4q" role="3clFbG">
+            <node concept="37vLTw" id="2cFxs3P7tzU" role="2Oq$k0">
+              <ref role="3cqZAo" node="2jv$fqwD$oV" resolve="myMergeTree" />
+            </node>
+            <node concept="liA8E" id="2cFxs3P7yUp" role="2OqNvi">
+              <ref role="37wK5l" to="hdhb:42hl10VHaON" resolve="rebuildNow" />
             </node>
           </node>
         </node>

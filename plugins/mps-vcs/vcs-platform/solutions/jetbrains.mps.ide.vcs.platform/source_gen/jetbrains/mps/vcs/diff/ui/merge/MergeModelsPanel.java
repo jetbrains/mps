@@ -152,9 +152,9 @@ public class MergeModelsPanel extends JPanel {
   protected void init() {
     myPanel.setSplitterProportionKey(getClass().getName() + "ModelTreeSplitter");
     myMergeTree = new MergeModelsTree(myProjectRepository);
-    myMergeTree.rebuildNow();
     myPanel.setFirstComponent(ScrollPaneFactory.createScrollPane(myMergeTree));
     myPanel.setSecondComponent(myNoRootPanel);
+    myMergeTree.rebuildNow();
 
     myGoToNeighbourRootActions = new MyGoToNeighbourRootActions();
     myGoToNeighbourRootActions.previous().registerCustomShortcutSet(GoToNeighbourRootActions.PREV_ROOT_SHORTCUT, this);
