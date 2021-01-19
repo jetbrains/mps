@@ -19,6 +19,7 @@ import com.intellij.ProjectTopics;
 import com.intellij.facet.Facet;
 import com.intellij.facet.FacetManager;
 import com.intellij.facet.FacetManagerAdapter;
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.projectRoots.JavaSdkVersion;
@@ -34,9 +35,10 @@ import com.intellij.openapi.roots.OrderEntry;
 import com.intellij.openapi.roots.OrderEnumerator;
 import com.intellij.openapi.roots.RootProvider;
 import com.intellij.openapi.roots.RootProvider.RootSetChangedListener;
-import com.intellij.openapi.roots.impl.libraries.ProjectLibraryTable;
 import com.intellij.openapi.roots.libraries.Library;
 import com.intellij.openapi.roots.libraries.LibraryTable.Listener;
+import com.intellij.openapi.roots.libraries.LibraryTablesRegistrar;
+import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.CommonProcessors.FindProcessor;
 import com.intellij.util.Processor;
@@ -84,10 +86,10 @@ import java.util.Set;
 public class SolutionIdea extends Solution {
   @NotNull
   private final Module myModule;
-  private ModelAccess myModelAccess;
+  private final ModelAccess myModelAccess;
   private List<SDependency> myDependencies;
   private Set<ModelRoot> myContributedModelRoots;
-  private MessageBusConnection myConnection;
+  private final MessageBusConnection myConnection;
   private final SolutionIdea.MyRootSetChangedListener myRootSetListener = new MyRootSetChangedListener();
   private final SolutionIdea.MyLibrariesListener myLibrariesListener = new MyLibrariesListener();
 
@@ -107,10 +109,18 @@ public class SolutionIdea extends Solution {
     myConnection = myModule.getProject().getMessageBus().connect();
     myConnection.subscribe(ProjectTopics.PROJECT_ROOTS, new MyModuleRootListener());
     myConnection.subscribe(FacetManager.FACETS_TOPIC, new MyFacetManagerAdapter());
-    final ProjectLibraryTable projectLibraryTable = (ProjectLibraryTable) ProjectLibraryTable.getInstance(myModule.getProject());
+    var projectLibraryTable = LibraryTablesRegistrar.getInstance().getLibraryTable(myModule.getProject());
     for (final Library library : projectLibraryTable.getLibraries()) {
-      if (ModuleLibraryType.isModuleLibrary(library)) {
+      if (ModuleLibraryType.isMPSModuleLibrary(library)) {
         library.getRootProvider().addRootSetChangedListener(myRootSetListener);
+        Disposer.register(library, new Disposable() {
+          @Override
+          public void dispose() {
+            myModelAccess.runReadAction(() -> {
+              library.getRootProvider().removeRootSetChangedListener(myRootSetListener);
+            });
+          }
+        });
       }
     }
     projectLibraryTable.addListener(myLibrariesListener);
@@ -153,17 +163,7 @@ public class SolutionIdea extends Solution {
 
   @Override
   public void dispose() {
-    final ProjectLibraryTable projectLibraryTable = (ProjectLibraryTable) ProjectLibraryTable.getInstance(myModule.getProject());
-    myModelAccess.runReadAction(new Runnable() {
-      @Override
-      public void run() {
-        for (final Library library : projectLibraryTable.getLibraries()) {
-          if (ModuleLibraryType.isModuleLibrary(library)) {
-            library.getRootProvider().removeRootSetChangedListener(myRootSetListener);
-          }
-        }
-      }
-    });
+    var projectLibraryTable = LibraryTablesRegistrar.getInstance().getLibraryTable(myModule.getProject());
     projectLibraryTable.removeListener(myLibrariesListener);
     ApplicationManager.getApplication().getComponent(JdkStubSolutionManager.class).releaseSdk(myModule);
     super.dispose();
@@ -423,7 +423,7 @@ public class SolutionIdea extends Solution {
 
     @Override
     public void afterLibraryAdded(final Library newLibrary) {
-      if (ModuleLibraryType.isModuleLibrary(newLibrary)) {
+      if (ModuleLibraryType.isMPSModuleLibrary(newLibrary)) {
         newLibrary.getRootProvider().addRootSetChangedListener(myRootSetListener);
       }
     }
@@ -434,7 +434,9 @@ public class SolutionIdea extends Solution {
 
     @Override
     public void beforeLibraryRemoved(Library library) {
-      library.getRootProvider().addRootSetChangedListener(myRootSetListener);
+      if (ModuleLibraryType.isMPSModuleLibrary(library)) {
+        library.getRootProvider().removeRootSetChangedListener(myRootSetListener);
+      }
     }
 
     @Override

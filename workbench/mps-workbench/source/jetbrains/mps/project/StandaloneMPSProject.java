@@ -47,8 +47,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * FIXME: AP what is the difference with the MPSProject? Both are based on the idea platform... Merge?
- *        [artem] This class is for MPS as a standalone IDE, whild MPSProject is in use in MPS as IDEA plugin.
+ * This class is for MPS as a standalone IDE, while MPSProject is in use in MPS as IDEA plugin.
  * Note for AP from MM: at least I've added a difference in how module file changes are handled.
  *
  * It must save/load its state only via the platform methods #saveState, #loadState
