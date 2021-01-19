@@ -6,6 +6,12 @@
   <module value="com.intellij.modules.all"/>
 
   <xi:include href="/META-INF/IdeTipsAndTricks.xml" xpointer="xpointer(/idea-plugin/*)"/>
+  <!-- MPS Patch: need to be registered before LafManagerImpl component -->
+  <application-components>
+    <component>
+      <implementation-class>jetbrains.mps.intellij.integration.LafFixer</implementation-class>
+    </component>
+  </application-components>
   <xi:include href="/META-INF/PlatformLangPlugin.xml" xpointer="xpointer(/idea-plugin/*)"/>
 
   <!-- Next three includes can be removed if PlatformLangXmlPlugin.xml will be imported instead of PlatformLangPlugin.xml -->
