@@ -1687,8 +1687,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_MulExpression;
       case LanguageConceptSwitch.MultiLineComment:
         if (props_MultiLineComment == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL);
-          cpb.deprecateAggregation(0x1809ed668ddac789L, "lines");
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("multi-line comment");
           cpb.rawPresentation("/*");
           props_MultiLineComment = cpb.create();
@@ -2027,7 +2026,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL);
           cpb.deprecateAggregation(0x57d533a7af16ff73L, "commentPart");
           cpb.deprecateAggregation(0x12bc996bc5882f24L, "text");
-          cpb.deprecateAggregation(0x73f69d82391da738L, "line");
           cpb.shortDesc("single-line comment");
           cpb.rawPresentation("//");
           props_SingleLineComment = cpb.create();

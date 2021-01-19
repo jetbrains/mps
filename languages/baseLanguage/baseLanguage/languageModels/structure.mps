@@ -3784,9 +3784,6 @@
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="line" />
       <ref role="20lvS9" to="zqge:2cLqkTm6J5A" resolve="Line" />
-      <node concept="asaX9" id="69wk_bF6Pm1" role="lGtFl">
-        <property role="YLQ7P" value="Use paragraph instead" />
-      </node>
     </node>
     <node concept="1TJgyj" id="69wk_bF6PcU" role="1TKVEi">
       <property role="IQ2ns" value="7088756329566393146" />
@@ -4640,9 +4637,6 @@
       <property role="20kJfa" value="lines" />
       <property role="20lbJX" value="fLJekj5/_0__n" />
       <ref role="20lvS9" to="zqge:2cLqkTm6J5A" resolve="Line" />
-      <node concept="asaX9" id="69wk_bF6IdE" role="lGtFl">
-        <property role="YLQ7P" value="Use paragraphs instead" />
-      </node>
     </node>
     <node concept="PrWs8" id="fB3l7ZJDB7" role="PzmwI">
       <ref role="PrY4T" node="fB3l7ZcM9H" resolve="IComment" />

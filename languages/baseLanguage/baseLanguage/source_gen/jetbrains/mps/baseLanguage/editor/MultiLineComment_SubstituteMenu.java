@@ -20,18 +20,19 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-public class SingleLineComment_SubstituteMenu extends SubstituteMenuBase {
+public class MultiLineComment_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_eygiu2_a(), CONCEPTS.SingleLineComment$Kw));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_80mhhv_a(), CONCEPTS.MultiLineComment$_e));
     return result;
   }
 
@@ -39,7 +40,7 @@ public class SingleLineComment_SubstituteMenu extends SubstituteMenuBase {
   @Override
   public List<SubstituteMenuItem> createMenuItems(@NotNull SubstituteMenuContext context) {
     context.getEditorMenuTrace().pushTraceInfo();
-    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("default substitute menu for " + "SingleLineComment", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "4710708256416613321")));
+    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("default substitute menu for " + "MultiLineComment", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "7571689168418883206")));
     try {
       return super.createMenuItems(context);
     } finally {
@@ -48,7 +49,7 @@ public class SingleLineComment_SubstituteMenu extends SubstituteMenuBase {
   }
 
 
-  private class SMP_Action_eygiu2_a extends SingleItemSubstituteMenuPart {
+  private class SMP_Action_80mhhv_a extends SingleItemSubstituteMenuPart {
 
     @Nullable
     @Override
@@ -64,7 +65,7 @@ public class SingleLineComment_SubstituteMenu extends SubstituteMenuBase {
 
       _context.getEditorMenuTrace().pushTraceInfo();
       try {
-        _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "4710708256416613324")));
+        _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "7571689168418883426")));
         item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
       } finally {
         _context.getEditorMenuTrace().popTraceInfo();
@@ -76,7 +77,7 @@ public class SingleLineComment_SubstituteMenu extends SubstituteMenuBase {
       private final SubstituteMenuContext _context;
       private EditorMenuTraceInfo myTraceInfo;
       public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.SingleLineComment$Kw, context);
+        super(CONCEPTS.MultiLineComment$_e, context);
         _context = context;
       }
 
@@ -87,7 +88,7 @@ public class SingleLineComment_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        return SNodeFactoryOperations.createNewNode(CONCEPTS.SingleLineComment$Kw, _context.getCurrentTargetNode());
+        return SNodeFactoryOperations.createNewNode(CONCEPTS.MultiLineComment$_e, _context.getCurrentTargetNode());
       }
 
       @Override
@@ -96,21 +97,21 @@ public class SingleLineComment_SubstituteMenu extends SubstituteMenuBase {
       }
       @Override
       public void select(@NotNull SNode createdNode, @NotNull String pattern) {
-        SelectionUtil.selectCell(_context.getEditorContext(), SLinkOperations.getTarget(createdNode, LINKS.line$9eiT), SelectionManager.LAST_CELL);
+        SelectionUtil.selectCell(_context.getEditorContext(), ListSequence.fromList(SLinkOperations.getChildren(createdNode, LINKS.lines$lpTr)).first(), SelectionManager.LAST_CELL);
       }
       @Nullable
       @Override
       public String getMatchingText(@NotNull String pattern) {
-        return "//";
+        return "/*";
       }
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept SingleLineComment$Kw = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment");
+    /*package*/ static final SConcept MultiLineComment$_e = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL, "jetbrains.mps.baseLanguage.structure.MultiLineComment");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink line$9eiT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x73f69d82391da738L, "line");
+    /*package*/ static final SContainmentLink lines$lpTr = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1809ed668dda555fL, 0x1809ed668ddac789L, "lines");
   }
 }
