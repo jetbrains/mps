@@ -62,7 +62,8 @@ public final class IdeaEnvironment extends EnvironmentBase {
   private Object myIdeaApplication;
 
   static {
-    // ij itself initializes log4j 
+    // ij itself does not initialize log4j 
+    EnvironmentBase.initializeLog4j();
   }
 
   public IdeaEnvironment(@NotNull EnvironmentConfig config) {

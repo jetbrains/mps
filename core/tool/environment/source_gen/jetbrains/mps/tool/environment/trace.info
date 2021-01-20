@@ -890,13 +890,19 @@
       <node id="2396239812323710646" at="115,45,116,30" concept="5" />
       <node id="2396239812323710648" at="116,30,117,30" concept="5" />
       <node id="2396239812323710652" at="117,30,118,84" concept="10" />
-      <node id="2396239812323710657" at="118,84,119,90" concept="10" />
-      <node id="2396239812323710663" at="119,90,120,57" concept="10" />
-      <node id="2396239812323710666" at="120,57,121,39" concept="5" />
-      <node id="2396239812323710669" at="121,39,122,38" concept="5" />
-      <node id="2396239812323710672" at="122,38,123,34" concept="5" />
-      <node id="2396239812323710676" at="123,34,124,53" concept="10" />
-      <node id="2396239812323710679" at="124,53,125,35" concept="5" />
+      <node id="2396239812323710672" at="118,84,119,61" concept="5" />
+      <node id="8295097031130555085" at="119,61,120,61" concept="5" />
+      <node id="8295097031130551245" at="123,70,124,90" concept="10" />
+      <node id="8295097031130551252" at="124,90,125,57" concept="10" />
+      <node id="8295097031130551257" at="125,57,126,39" concept="5" />
+      <node id="8295097031130551262" at="126,39,127,38" concept="5" />
+      <node id="8295097031130551267" at="127,38,128,23" concept="11" />
+      <node id="8295097031130552032" at="131,70,132,90" concept="10" />
+      <node id="8295097031130552039" at="132,90,133,57" concept="10" />
+      <node id="8295097031130552044" at="133,57,134,39" concept="5" />
+      <node id="8295097031130552831" at="134,39,135,39" concept="5" />
+      <node id="8295097031130552049" at="135,39,136,38" concept="5" />
+      <node id="8295097031130552054" at="136,38,137,23" concept="11" />
       <node id="2396239812323710428" at="40,0,42,0" concept="2" trace="Log4jInitializer#()V" />
       <node id="2396239812323765917" at="79,16,81,11" concept="1" />
       <node id="2396239812323710481" at="60,0,63,0" concept="15" trace="getBinPath#()Ljava/lang/String;" />
@@ -908,9 +914,11 @@
       <node id="2396239812323710626" at="109,0,113,0" concept="15" trace="getLogPath#()Ljava/lang/String;" />
       <node id="2396239812323765913" at="76,19,81,11" concept="8" />
       <node id="2396239812323710598" at="97,0,103,0" concept="15" trace="getCachesPath#()Ljava/io/File;" />
+      <node id="8295097031130551274" at="123,0,130,0" concept="15" trace="createWarnApp#(Lorg/apache/log4j/PatternLayout;)Lorg/apache/log4j/ConsoleAppender;" />
+      <node id="2396239812323710640" at="114,0,122,0" concept="15" trace="configureProgrammatically#()V" />
+      <node id="8295097031130552026" at="131,0,139,0" concept="15" trace="createInfoApp#(Lorg/apache/log4j/PatternLayout;)Lorg/apache/log4j/ConsoleAppender;" />
       <node id="2396239812323765910" at="73,120,82,9" concept="18" />
       <node id="2396239812323710444" at="45,67,56,5" concept="8" />
-      <node id="2396239812323710640" at="114,0,127,0" concept="15" trace="configureProgrammatically#()V" />
       <node id="2396239812323765896" at="70,0,84,0" concept="9" trace="createDocument#()Lorg/w3c/dom/Document;" />
       <node id="2396239812323710432" at="43,0,59,0" concept="15" trace="init#()V" />
       <node id="2396239812323753506" at="68,70,84,57" concept="10" />
@@ -950,7 +958,26 @@
       <scope id="2396239812323710612" at="104,0,108,0" />
       <scope id="2396239812323710626" at="109,0,113,0" />
       <scope id="2396239812323765912" at="76,19,81,11" />
+      <scope id="8295097031130551242" at="123,70,128,23">
+        <var name="consoleWarn" id="8295097031130551246" />
+        <var name="warnFilter" id="8295097031130551253" />
+      </scope>
       <scope id="2396239812323710598" at="97,0,103,0" />
+      <scope id="2396239812323710641" at="114,51,120,61">
+        <var name="layout" id="2396239812323710651" />
+        <var name="root" id="2396239812323710642" />
+      </scope>
+      <scope id="8295097031130552031" at="131,70,137,23">
+        <var name="consoleInfo" id="8295097031130552033" />
+        <var name="infoFilter" id="8295097031130552040" />
+      </scope>
+      <scope id="8295097031130551274" at="123,0,130,0">
+        <var name="layout" id="8295097031130551269" />
+      </scope>
+      <scope id="2396239812323710640" at="114,0,122,0" />
+      <scope id="8295097031130552026" at="131,0,139,0">
+        <var name="layout" id="8295097031130552029" />
+      </scope>
       <scope id="2396239812323710449" at="46,29,55,7">
         <var name="configFile" id="2396239812323710450" />
       </scope>
@@ -958,14 +985,6 @@
         <var name="key" id="2396239812323765901" />
         <var name="property" id="2396239812323765905" />
       </scope>
-      <scope id="2396239812323710641" at="114,51,125,35">
-        <var name="consoleWarn" id="2396239812323710656" />
-        <var name="filter" id="2396239812323710675" />
-        <var name="layout" id="2396239812323710651" />
-        <var name="root" id="2396239812323710642" />
-        <var name="warnFilter" id="2396239812323710662" />
-      </scope>
-      <scope id="2396239812323710640" at="114,0,127,0" />
       <scope id="2396239812323710434" at="43,46,57,32">
         <var name="configPath" id="2396239812323710439" />
       </scope>
@@ -980,7 +999,7 @@
         <var name="xmlFile" id="2396239812323753469" />
       </scope>
       <unit id="2396239812323765895" at="69,43,84,5" name="jetbrains.mps.tool.environment.Log4jInitializer$1" />
-      <unit id="6450649963068439693" at="34,0,128,0" name="jetbrains.mps.tool.environment.Log4jInitializer" />
+      <unit id="6450649963068439693" at="34,0,140,0" name="jetbrains.mps.tool.environment.Log4jInitializer" />
     </file>
   </root>
   <root nodeRef="r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)/6450649963068953208">
