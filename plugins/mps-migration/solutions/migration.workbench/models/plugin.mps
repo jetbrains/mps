@@ -74,14 +74,6 @@
       </concept>
     </language>
     <language id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin">
-      <concept id="5023285075122009364" name="jetbrains.mps.lang.plugin.structure.IdeaInitializerDescriptor" flags="ng" index="9BnSX">
-        <property id="5023285075122009369" name="version" index="9BnSK" />
-        <property id="5023285075122009368" name="descripttion" index="9BnSL" />
-        <property id="5023285075122009371" name="vendor" index="9BnSM" />
-        <property id="5023285075122009373" name="ideaVersion" index="9BnSO" />
-        <property id="5023285075122009372" name="vendorUrl" index="9BnSP" />
-        <property id="5023285075122009366" name="id" index="9BnSZ" />
-      </concept>
       <concept id="1207145163717" name="jetbrains.mps.lang.plugin.structure.ElementListContents" flags="ng" index="ftmFs">
         <child id="1207145201301" name="reference" index="ftvYc" />
       </concept>
@@ -153,7 +145,9 @@
       </concept>
       <concept id="481983775135178819" name="jetbrains.mps.lang.plugin.standalone.structure.ProjectPluginDisposeBlock" flags="in" index="2uRRBN" />
       <concept id="481983775135178825" name="jetbrains.mps.lang.plugin.standalone.structure.ProjectPluginInitBlock" flags="in" index="2uRRBT" />
-      <concept id="7520713872864775836" name="jetbrains.mps.lang.plugin.standalone.structure.StandalonePluginDescriptor" flags="ng" index="2DaZZR" />
+      <concept id="7520713872864775836" name="jetbrains.mps.lang.plugin.standalone.structure.StandalonePluginDescriptor" flags="ng" index="2DaZZR">
+        <property id="6862207549896125199" name="needInitConfig" index="3_H9TB" />
+      </concept>
     </language>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
@@ -4244,7 +4238,9 @@
       <node concept="1oajcY" id="5$zfhXzqyPF" role="1oa70y" />
     </node>
   </node>
-  <node concept="2DaZZR" id="aOQ7vgq8Xg" />
+  <node concept="2DaZZR" id="aOQ7vgq8Xg">
+    <property role="3_H9TB" value="true" />
+  </node>
   <node concept="312cEu" id="oze2ctcP$4">
     <property role="3GE5qa" value="migrationList" />
     <property role="TrG5h" value="RunMigration" />
@@ -4894,15 +4890,6 @@
     <node concept="Xl_RD" id="5$zfhXzhIhK" role="3mKD$K">
       <property role="Xl_RC" value="Migration" />
     </node>
-  </node>
-  <node concept="9BnSX" id="vzRt1VjcfK">
-    <property role="9BnSZ" value="foo" />
-    <property role="TrG5h" value="foo" />
-    <property role="9BnSL" value="foo" />
-    <property role="9BnSK" value="foo" />
-    <property role="9BnSM" value="foo" />
-    <property role="9BnSP" value="foo" />
-    <property role="9BnSO" value="1" />
   </node>
   <node concept="tC5Ba" id="7R6nBIbwjvd">
     <property role="3GE5qa" value="migrationList" />
