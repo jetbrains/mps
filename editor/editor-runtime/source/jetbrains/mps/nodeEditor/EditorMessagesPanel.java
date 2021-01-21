@@ -115,6 +115,7 @@ class EditorMessagesPanel extends JPanel implements IMessageHandler {
   }
 
   void init() {
+    this.setVisible(false);
     BoxLayout layout = new BoxLayout(myErrorsPanel, BoxLayout.Y_AXIS);
     myErrorsPanel.setLayout(layout);
     myErrorsPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
