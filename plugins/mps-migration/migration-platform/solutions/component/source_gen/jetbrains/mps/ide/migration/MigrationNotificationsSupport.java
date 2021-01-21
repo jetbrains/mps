@@ -62,6 +62,10 @@ import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
     Messages.showMessageDialog(myIdeaProject, "Project doesn't need to be migrated.\n" + "Migration assistant will not be started.", "Migration Not Required", null);
   }
 
+  public void showPreUpdateCheckOk() {
+    Messages.showMessageDialog(myIdeaProject, "No problems found.\nProject can be migrated", "Migration", null);
+  }
+
   public boolean showRequired() {
     if (myLastNotification != null && !(myLastNotification.isExpired())) {
       return false;

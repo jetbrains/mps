@@ -12,36 +12,12 @@ import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import org.jetbrains.annotations.NotNull;
-import java.util.List;
-import jetbrains.mps.errors.item.IssueKindReportItem;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
-import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
+import jetbrains.mps.ide.migration.MigrationTrigger;
+import jetbrains.mps.ide.migration.IStartupMigrationExecutor;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.progress.ProgressIndicator;
-import jetbrains.mps.ide.migration.ScriptApplied;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import java.util.Set;
-import org.jetbrains.mps.openapi.language.SLanguage;
-import jetbrains.mps.smodel.SLanguageHierarchy;
-import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
-import java.util.Iterator;
-import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
-import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.ide.migration.MigrationCheckerImpl;
-import jetbrains.mps.ide.migration.MigrationRegistry;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
-import org.jetbrains.mps.openapi.util.Processor;
-import jetbrains.mps.lang.migration.runtime.base.Problem;
-import com.intellij.openapi.ui.Messages;
-import jetbrains.mps.migration.global.MigrationProblemHandler;
 
 @GeneratedClass(node = "r:e303f5e6-4651-4e3c-b105-2f02e438900c(jetbrains.mps.migration.workbench.plugin)/6423044698579330206", model = "r:e303f5e6-4651-4e3c-b105-2f02e438900c(jetbrains.mps.migration.workbench.plugin)")
 public class RunPreUpdateCheck_Action extends BaseAction {
@@ -78,112 +54,11 @@ public class RunPreUpdateCheck_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final List<IssueKindReportItem> problems = ListSequence.fromList(new ArrayList<IssueKindReportItem>());
-    final List<SModule> modules = ListSequence.fromList(new ArrayList<SModule>());
-    final SRepository repos = event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository();
-    repos.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        jetbrains.mps.project.Project p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-        ListSequence.fromList(modules).addSequence(Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(p)));
-      }
-    });
-
+    final MigrationTrigger mt = ((MigrationTrigger) event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(IStartupMigrationExecutor.class));
     ProgressManager.getInstance().run(new Task.Modal(event.getData(CommonDataKeys.PROJECT), "Pre-Update Check", true) {
-      public void run(@NotNull final ProgressIndicator progressIndicator) {
-        progressIndicator.setIndeterminate(false);
-        repos.getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            Iterable<ScriptApplied> checks = ListSequence.fromList(modules).translate(new ITranslator2<SModule, ScriptApplied>() {
-              public Iterable<ScriptApplied> translate(final SModule module) {
-                Set<SLanguage> allLanguages = new SLanguageHierarchy(event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(LanguageRegistry.class), module.getUsedLanguages()).getExtended();
-                Iterable<MigrationScript> scripts = SetSequence.fromSet(allLanguages).translate(new ITranslator2<SLanguage, MigrationScript>() {
-                  public Iterable<MigrationScript> translate(final SLanguage it) {
-                    return new Iterable<MigrationScript>() {
-                      public Iterator<MigrationScript> iterator() {
-                        return new YieldingIterator<MigrationScript>() {
-                          private int __CP__ = 0;
-                          protected boolean moveToNext() {
-__loop__:
-                            do {
-__switch__:
-                              switch (this.__CP__) {
-                                case -1:
-                                  assert false : "Internal error";
-                                  return false;
-                                case 2:
-                                  this._2_ver = 0;
-                                case 3:
-                                  if (!(_2_ver < it.getLanguageVersion())) {
-                                    this.__CP__ = 1;
-                                    break;
-                                  }
-                                  this.__CP__ = 4;
-                                  break;
-                                case 5:
-                                  _2_ver++;
-                                  this.__CP__ = 3;
-                                  break;
-                                case 8:
-                                  if (_7_script != null) {
-                                    this.__CP__ = 9;
-                                    break;
-                                  }
-                                  this.__CP__ = 5;
-                                  break;
-                                case 10:
-                                  this.__CP__ = 5;
-                                  this.yield(_7_script);
-                                  return true;
-                                case 0:
-                                  this.__CP__ = 2;
-                                  break;
-                                case 4:
-                                  this._7_script = new MigrationScriptReference(it, _2_ver).resolve(event.getData(MPSCommonDataKeys.MPS_PROJECT), true);
-                                  this.__CP__ = 8;
-                                  break;
-                                case 9:
-                                  this.__CP__ = 10;
-                                  break;
-                                default:
-                                  break __loop__;
-                              }
-                            } while (true);
-                            return false;
-                          }
-                          private int _2_ver;
-                          private MigrationScript _7_script;
-                        };
-                      }
-                    };
-                  }
-                });
-                return Sequence.fromIterable(scripts).select(new ISelector<MigrationScript, ScriptApplied>() {
-                  public ScriptApplied select(MigrationScript script) {
-                    return new ScriptApplied(module, script.getReference());
-                  }
-                });
-              }
-            });
-
-            new MigrationCheckerImpl(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(CommonDataKeys.PROJECT).getService(MigrationRegistry.class)).findNotMigrated(new ProgressMonitorAdapter(progressIndicator), checks, new Processor<Problem>() {
-              public boolean process(Problem p) {
-                ListSequence.fromList(problems).addElement(p);
-                return ListSequence.fromList(problems).count() < 1000;
-              }
-            });
-          }
-        });
+      public void run(@NotNull ProgressIndicator progressIndicator) {
+        mt.performProjectPreUpdateCheck(new ProgressMonitorAdapter(progressIndicator));
       }
     });
-
-    if (ListSequence.fromList(problems).isEmpty()) {
-      Messages.showMessageDialog(event.getData(CommonDataKeys.PROJECT), "No problems found.\nProject can be migrated", "Migration", null);
-    } else {
-      event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          event.getData(CommonDataKeys.PROJECT).getService(MigrationProblemHandler.class).showProblems(problems);
-        }
-      });
-    }
   }
 }

@@ -48,12 +48,24 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.ide.migration.wizard.MigrationError;
 import jetbrains.mps.errors.item.IssueKindReportItem;
-import jetbrains.mps.migration.global.MigrationProblemHandler;
-import com.intellij.openapi.application.ModalityState;
 import java.util.function.BinaryOperator;
+import com.intellij.openapi.application.ModalityState;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
+import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
+import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import jetbrains.mps.smodel.SLanguageHierarchy;
+import jetbrains.mps.lang.migration.runtime.base.MigrationScript;
+import java.util.Iterator;
+import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
+import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import org.jetbrains.mps.openapi.util.Processor;
+import jetbrains.mps.lang.migration.runtime.base.Problem;
+import jetbrains.mps.migration.global.MigrationProblemHandler;
 import jetbrains.mps.ide.migration.wizard.MigrationWizard;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
-import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.SModel;
 import com.intellij.openapi.application.Application;
 import com.intellij.util.WaitForProgressToShow;
@@ -61,7 +73,6 @@ import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.ide.platform.watching.ReloadListener;
 import jetbrains.mps.smodel.language.LanguageRuntime;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 
 /**
  * At the first startup, migration is not required
@@ -318,16 +329,8 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
                       public void run(@NotNull final ProgressIndicator progressIndicator) {
                         myMpsProject.getRepository().getModelAccess().runReadAction(new Runnable() {
                           public void run() {
-                            final Iterable<IssueKindReportItem> problems = result._1().getProblems(progressIndicator);
-                            ApplicationManager.getApplication().invokeLater(new Runnable() {
-                              public void run() {
-                                myMpsProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-                                  public void run() {
-                                    myProject.getService(MigrationProblemHandler.class).showProblems(Sequence.fromIterable(problems).toListSequence());
-                                  }
-                                });
-                              }
-                            }, ModalityState.NON_MODAL);
+                            List<IssueKindReportItem> problems = Sequence.fromIterable(result._1().getProblems(progressIndicator)).toListSequence();
+                            showProblems(problems);
                           }
                         });
                       }
@@ -361,6 +364,121 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
         }, ModalityState.NON_MODAL);
       }
     });
+  }
+
+  /**
+   * No idea what does 'Pre-Update Check' mean; assume it's a way to check if project has everything ready prior
+   * to updating to a new MPS version.
+   */
+  public void performProjectPreUpdateCheck(final ProgressMonitor progress) {
+    final SRepository repos = myMpsProject.getRepository();
+    final List<IssueKindReportItem> problems = ListSequence.fromList(new ArrayList<IssueKindReportItem>());
+    repos.getModelAccess().runReadAction(new Runnable() {
+      public void run() {
+        progress.start("Pre-Update Check", 10);
+        final List<SModule> modules = ListSequence.fromList(new ArrayList<SModule>());
+        ListSequence.fromList(modules).addSequence(Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(myMpsProject)));
+        // XXX this code originates from RunPreUpdateCheck UI action, which exposes too much of migration internal 
+        //    stuff for no reason, and now is part of this class. 
+        // FIXME there's pretty similar code in MigrationRegistryImpl.getAllSteps, perhaps, worth a refactoring! 
+        Iterable<ScriptApplied> checks = ListSequence.fromList(modules).translate(new ITranslator2<SModule, ScriptApplied>() {
+          public Iterable<ScriptApplied> translate(final SModule module) {
+            Set<SLanguage> allLanguages = new SLanguageHierarchy(myLanguageRegistry, module.getUsedLanguages()).getExtended();
+            Iterable<MigrationScript> scripts = SetSequence.fromSet(allLanguages).translate(new ITranslator2<SLanguage, MigrationScript>() {
+              public Iterable<MigrationScript> translate(final SLanguage it) {
+                return new Iterable<MigrationScript>() {
+                  public Iterator<MigrationScript> iterator() {
+                    return new YieldingIterator<MigrationScript>() {
+                      private int __CP__ = 0;
+                      protected boolean moveToNext() {
+__loop__:
+                        do {
+__switch__:
+                          switch (this.__CP__) {
+                            case -1:
+                              assert false : "Internal error";
+                              return false;
+                            case 2:
+                              this._2_ver = 0;
+                            case 3:
+                              if (!(_2_ver < it.getLanguageVersion())) {
+                                this.__CP__ = 1;
+                                break;
+                              }
+                              this.__CP__ = 4;
+                              break;
+                            case 5:
+                              _2_ver++;
+                              this.__CP__ = 3;
+                              break;
+                            case 8:
+                              if (_7_script != null) {
+                                this.__CP__ = 9;
+                                break;
+                              }
+                              this.__CP__ = 5;
+                              break;
+                            case 10:
+                              this.__CP__ = 5;
+                              this.yield(_7_script);
+                              return true;
+                            case 0:
+                              this.__CP__ = 2;
+                              break;
+                            case 4:
+                              this._7_script = new MigrationScriptReference(it, _2_ver).resolve(myMpsProject, true);
+                              this.__CP__ = 8;
+                              break;
+                            case 9:
+                              this.__CP__ = 10;
+                              break;
+                            default:
+                              break __loop__;
+                          }
+                        } while (true);
+                        return false;
+                      }
+                      private int _2_ver;
+                      private MigrationScript _7_script;
+                    };
+                  }
+                };
+              }
+            });
+            return Sequence.fromIterable(scripts).select(new ISelector<MigrationScript, ScriptApplied>() {
+              public ScriptApplied select(MigrationScript script) {
+                return new ScriptApplied(module, script.getReference());
+              }
+            });
+          }
+        });
+        progress.advance(3);
+
+        new MigrationCheckerImpl(myMpsProject, myMigrationRegistry).findNotMigrated(progress.subTask(7), checks, new Processor<Problem>() {
+          public boolean process(Problem p) {
+            ListSequence.fromList(problems).addElement(p);
+            return ListSequence.fromList(problems).count() < 1000;
+          }
+        });
+      }
+    });
+    if (ListSequence.fromList(problems).isEmpty()) {
+      myNotifications.showPreUpdateCheckOk();
+    } else {
+      showProblems(problems);
+    }
+  }
+
+  private void showProblems(final List<IssueKindReportItem> problems) {
+    ApplicationManager.getApplication().invokeLater(new Runnable() {
+      public void run() {
+        myMpsProject.getRepository().getModelAccess().runReadAction(new Runnable() {
+          public void run() {
+            myProject.getService(MigrationProblemHandler.class).showProblems(problems);
+          }
+        });
+      }
+    }, ModalityState.NON_MODAL);
   }
 
   private enum MigrationResult {
