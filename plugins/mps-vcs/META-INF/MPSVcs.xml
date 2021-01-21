@@ -24,7 +24,7 @@
       <separator />
       <reference ref="jetbrains.mps.vcs.platform.actions.InstalVcsAddons_Action" />
       <reference ref="jetbrains.mps.vcs.platform.actions.ReportModelMergeProblem_Action" />
-      <add-to-group group-id="VcsGlobalGroup" anchor="last" />
+      <add-to-group group-id="VcsGroups" anchor="last" />
     </group>
     <group id="jetbrains.mps.vcs.platform.actions.AnnotateGroup_ActionGroup">
       <reference ref="jetbrains.mps.vcs.platform.actions.Annotate_Action" />
