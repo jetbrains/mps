@@ -27,11 +27,13 @@ import org.jetbrains.annotations.Nullable;
 import java.lang.ref.Reference;
 import java.lang.ref.ReferenceQueue;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
@@ -58,6 +60,13 @@ public class DynamicComponentPlugin extends ComponentPlugin implements Component
   @Override
   public void dispose() {
     myIsLocked = true;
+    synchronized (myRegistered) {
+      final Collection<CoreComponent> components = myRegistered.values();
+      components.forEach(CoreComponent::dispose);
+      // FIXME Likely, necessary for tests only, but still worth distinct method and threading addressed
+      myWarden.myInstances.values().removeAll(components);
+      myRegistered.clear();
+    }
     super.dispose();
   }
 
@@ -69,18 +78,9 @@ public class DynamicComponentPlugin extends ComponentPlugin implements Component
       return componentClass.cast(myWarden);
     }
     // here comes the code that discovers already instantiated components
-    try {
-      final Object instance = myRegistered.get(componentClass);
-      if (instance != null) {
-        return componentClass.cast(instance);
-      }
-    } catch (Exception ex) {
-      // fail gracefully if there's anything wrong with the instance (although shall not happen
-      // provided typesafety in #initAndRecord() holds)
-      String m = String.format("Failed to retrieve proper instance of component %s", componentClass.getName());
-      Logger.getLogger(DynamicComponentPlugin.class).error(m, ex);
-      // XXX perhaps, can return a proxy that would complain about "null safety" for every method invoked?
-      return null;
+    final T existing = findDynamicIfExists(componentClass);
+    if (existing != null) {
+      return existing;
     }
     //
     // XXX while in CP.dispose, shall not give access to components that have been already disposed.
@@ -96,6 +96,23 @@ public class DynamicComponentPlugin extends ComponentPlugin implements Component
       return null;
     }
     return myWarden.instantiate(componentClass);
+  }
+
+  /*package*/  <T extends CoreComponent> T findDynamicIfExists(Class<T> componentIface) {
+    try {
+      synchronized (myRegistered) {
+        final Object instance = myRegistered.get(componentIface);
+        return instance == null ? null : componentIface.cast(instance);
+      }
+    } catch (Exception ex) {
+      // fail gracefully if there's anything wrong with the instance (although shall not happen
+      // provided typesafety in #initAndRecord() holds)
+      // Perhaps, shall move exception handling outside, to happen only for findComponent uses?
+      String m = String.format("Failed to retrieve proper instance of component %s", componentIface.getName());
+      Logger.getLogger(DynamicComponentPlugin.class).error(m, ex);
+      // XXX perhaps, can return a proxy that would complain about "null safety" for every method invoked?
+      return null;
+    }
   }
 
   /*package*/  <T extends CoreComponent> void initAndRecord(Class<T> componentIface, T componentInstance) {
@@ -137,13 +154,15 @@ public class DynamicComponentPlugin extends ComponentPlugin implements Component
   private class WardenImpl implements DynamicComponentWarden {
     // (A) Token as a POJO, WeakReference separate
     // (B) Token is WeakReference (using whatever identity object as a referent)
-    // Token instance is kept in client code, I'd like to know when it's no longer accessible to drop
-    // records associated with the token. Therefore, I need a to create WeakReference myself, and need a queue
-    // to register these references with.
+    //
+    //
+
     /**
-     *
+     * Token instance is kept in client code, I'd like to know when it's no longer accessible to drop
+     * records associated with the token. Therefore, I need a to create WeakReference myself, and need a queue
+     * to register these references with.
      */
-    private final WeakHashMap<Class<?>, TokenWeakRef> myIssuedTokens = new WeakHashMap<>();
+    private final WeakHashMap<Class<?>, List<TokenWeakRef>> myIssuedTokens = new WeakHashMap<>();
     /**
      * We don't keep direct references to Token instance inside this class, only weak references.
      * If we get notified by this queue that Token in no longer accessible, we have to clear
@@ -154,37 +173,71 @@ public class DynamicComponentPlugin extends ComponentPlugin implements Component
     // We use token as a key to make supplier/consumer collectible in case token is abandoned:
     // map's entry get cleared, and references to factory/listeners get released.
     private final WeakHashMap<TokenImpl, Supplier<?>> myFactories = new WeakHashMap<>();
-    private final WeakHashMap<TokenImpl, List<Consumer<Object>>> myListeners = new WeakHashMap<>();
+    // each listener receives unique token that facilitates listener removal when necessary
+    // I keep strong reference to the listener as this class might be the only one to hold it
+    // (e.g. if it's just a lambda inside some plugin class). I do however expect client code
+    // to keep token and discard it appropriately (if not, and contributing class is GCed, I'd
+    // expect token to get collected, too, and entry in the map to be removed by WeakHasMap itself)
+    private final WeakHashMap<TokenImpl, Consumer<Object>> myListeners = new WeakHashMap<>();
     private final WeakHashMap<TokenImpl, CoreComponent> myInstances = new WeakHashMap<>();
 
     @Nullable
     /*package*/ <T extends CoreComponent> T instantiate(Class<T> componentClass) {
-      final TokenWeakRef tokenRef = myIssuedTokens.remove(componentClass);
-      if (tokenRef == null) {
+      final List<TokenWeakRef> tokenRefs = myIssuedTokens.get(componentClass);
+      if (tokenRefs == null) {
         return null;
       }
-      TokenImpl key = tokenRef.get();
-      if (key == null) {
-        return null;
+      Supplier<?> supplier = null;
+      TokenImpl key = null;
+      for (Iterator<TokenWeakRef> it = tokenRefs.iterator(); it.hasNext(); ) {
+        TokenWeakRef tokenRef = it.next();
+        key = tokenRef.get();
+        if (key == null) {
+          // no idea what's the token, but no reason to keep the reference anyway, expect
+          // token it references to reach myTokenQueue
+          it.remove();
+          continue;
+        }
+        supplier = myFactories.remove(key);
+        if (supplier == null) {
+          continue;
+        }
+        // no use for this token for us any more
+        it.remove();
+        break; // call supplier outside of the cycle
       }
-      final Supplier<?> supplier = myFactories.remove(key);
       if (supplier == null) {
         return null;
       }
+      assert key != null;
+      // consult supplier outside ot for tokenRefs loop just in case it gonna #publish() anything
       T instance = componentClass.cast(supplier.get());
       initAndRecord(componentClass, instance);
       myInstances.put(key, instance);
       // if any listeners, notify them
-      notifyListeners(key, instance);
+      notifyListeners(tokenRefs, instance);
       return instance;
     }
 
-    private void notifyListeners(TokenImpl key, CoreComponent instance) {
-      final List<Consumer<Object>> listeners = myListeners.remove(key);
-      if (listeners != null) {
-        for (Consumer<Object> c : listeners) {
-          c.accept(instance);
+    private void notifyListeners(@Nullable List<TokenWeakRef> tokenRefs, CoreComponent instance) {
+      if (tokenRefs == null || tokenRefs.isEmpty()) {
+        return;
+      }
+      ArrayList<Consumer<Object>> listeners = new ArrayList<>(4);
+      for (Iterator<TokenWeakRef> it = tokenRefs.iterator(); it.hasNext(); ) {
+        TokenWeakRef tokenRef = it.next();
+        TokenImpl key = tokenRef.get();
+        if (key == null) {
+          it.remove();
         }
+        final Consumer<Object> listener = myListeners.remove(key);
+        if (listener != null) {
+          listeners.add(listener);
+        }
+      }
+      // perhaps, shall copy original tokenRefs list right away in #instantiate() instead of this 'out of the loop' approach?
+      for (Consumer<Object> c : listeners) {
+        c.accept(instance);
       }
     }
 
@@ -200,20 +253,13 @@ public class DynamicComponentPlugin extends ComponentPlugin implements Component
       // if we face released TokenImpl (respective TokenWeakRef.get() == null), drop an entry
       // for component iface
       while ((r = myTokenQueue.poll()) != null) {
-        Class<?> key = null;
-        for (Map.Entry<Class<?>, TokenWeakRef> e : myIssuedTokens.entrySet()) {
-          if (e.getValue() == r) {
-            key = e.getKey();
-            break;
-          }
-        }
-        if (key != null) {
-          myIssuedTokens.remove(key, r);
+        for (List<TokenWeakRef> values : myIssuedTokens.values()) {
+          values.remove(r);
         }
       }
     }
 
-    /*package*/ void discard(TokenImpl token) {
+    /*package*/ void discard(final TokenImpl token) {
       // FIXME what about threading?
       final CoreComponent instance = myInstances.remove(token);
       if (instance != null) {
@@ -223,47 +269,65 @@ public class DynamicComponentPlugin extends ComponentPlugin implements Component
       myListeners.remove(token);
       myFactories.remove(token);
       Class<?> key = null;
-      for (Map.Entry<Class<?>, TokenWeakRef> e : myIssuedTokens.entrySet()) {
-        if (e.getValue().get() == token) {
-          key = e.getKey();
-          break;
+      L1: for (Map.Entry<Class<?>, List<TokenWeakRef>> e : myIssuedTokens.entrySet()) {
+        for (Iterator<TokenWeakRef> it = e.getValue().iterator(); key == null && it.hasNext();) {
+          final TokenWeakRef next = it.next();
+          if (next.get() == null) {
+            // clear stale right away
+            it.remove();
+            continue;
+          }
+          if (next.get() == token) {
+            it.remove();
+            key = e.getKey();
+            break L1;
+          }
         }
       }
-      if (key != null) {
+      if (key != null && myIssuedTokens.get(key).isEmpty()) {
+        // don't keep reference to class
         myIssuedTokens.remove(key);
       }
     }
 
     @Override
     public <T extends CoreComponent> Token publish(@NotNull Class<T> componentIface, @NotNull T componentInstance) {
+      final List<TokenWeakRef> existingTokens = myIssuedTokens.get(componentIface);
       // FIXME likely, shall check if there's already component instance published for this iface.
       TokenImpl t = new TokenImpl(this);
       // next code is similar to that in #instantiate(), with the difference in token to activate listeners
-      TokenWeakRef prevTokenRef = myIssuedTokens.put(componentIface, new TokenWeakRef(t, myTokenQueue));
+      recordIssued(componentIface, t);
       initAndRecord(componentIface, componentInstance);
       myInstances.put(t, componentInstance);
       // activate any listener associated with this component iface
-      if (prevTokenRef != null && prevTokenRef.get() != null) {
-        notifyListeners(prevTokenRef.get(), componentInstance);
-      }
+      notifyListeners(existingTokens, componentInstance);
       return t;
     }
 
     @Override
     public <T extends CoreComponent> Token publish(@NotNull Class<T> componentIface, @NotNull Supplier<? extends T> componentFactory) {
       TokenImpl t = new TokenImpl(this);
-      myIssuedTokens.put(componentIface, new TokenWeakRef(t, myTokenQueue));
+      recordIssued(componentIface, t);
       myFactories.put(t, componentFactory);
       return t;
     }
 
     @Override
     public <T extends CoreComponent> Token whenAvailable(@NotNull Class<T> componentIface, @NotNull Consumer<? super T> componentListener) {
+      final T instance = findDynamicIfExists(componentIface);
+      if (instance != null) {
+        componentListener.accept(instance);
+        return () -> {}; // blank, no-op discard
+      }
       TokenImpl t = new TokenImpl(this);
-      myIssuedTokens.put(componentIface, new TokenWeakRef(t, myTokenQueue));
-      final List<Consumer<Object>> listeners = myListeners.computeIfAbsent(t, k -> new CopyOnWriteArrayList<>());
-      listeners.add((Consumer<Object>) componentListener);
+      recordIssued(componentIface, t);
+      myListeners.put(t, (Consumer<Object>) componentListener);
       return t;
+    }
+
+    private void recordIssued(@NotNull Class<?> componentIface, TokenImpl t) {
+      final List<TokenWeakRef> tokens = myIssuedTokens.computeIfAbsent(componentIface, (ci) -> new ArrayList<>(4));
+      tokens.add(new TokenWeakRef(t, myTokenQueue));
     }
 
     @Override

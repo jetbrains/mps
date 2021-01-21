@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.testsuites;
 
+import jetbrains.mps.core.platform.DynamicComponentsTest;
 import jetbrains.mps.generator.impl.plan.GenPlanTest;
 import jetbrains.mps.ide.ThreadUtilsTest;
 import jetbrains.mps.workbench.goTo.matcher.MPSPackageItemProviderTests;
@@ -43,6 +44,7 @@ import org.junit.runners.Suite.SuiteClasses;
     jetbrains.mps.text.TextBufferTest.class,
     jetbrains.mps.util.performance.PerfTracerTest.class,
     jetbrains.mps.reloading.JarClassPathItemTest.class,
+    jetbrains.mps.core.platform.DynamicComponentsTest.class,
     ThreadUtilsTest.class})
 public class NoPlatformTestSuite {
 }
