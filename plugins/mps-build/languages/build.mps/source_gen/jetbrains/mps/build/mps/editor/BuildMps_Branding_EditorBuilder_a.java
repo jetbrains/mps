@@ -2693,7 +2693,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
     }
     protected String getNoTargetText() {
-      return "<no plugins>";
+      return "https://plugins.jetbrains.com/";
     }
   }
   private EditorCell createRefNode_31() {

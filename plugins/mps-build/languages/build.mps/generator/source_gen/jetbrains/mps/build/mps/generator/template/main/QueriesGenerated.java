@@ -931,7 +931,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return isNotEmptyString(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.edition$LSAW), Context.defaultContext(_context).getMacros(((SNode) _context.getVariable("branding")))));
   }
   public static boolean ifMacro_Condition_8_22(final IfMacroContext _context) {
-    return (SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.company$8fEj) != null);
+    return (SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.plugins$RpD) != null) && !(BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.plugins$RpD), Context.defaultContext(_context).getMacros(((SNode) _context.getVariable("branding")))).isBlank());
   }
   public static boolean ifMacro_Condition_8_23(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(((SNode) _context.getVariable("branding")), LINKS.updateWebsite$3wnJ) != null);

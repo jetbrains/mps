@@ -3194,6 +3194,8 @@
           <ref role="1k5W1q" to="o2va:hwW5xkg" resolve="keyword" />
         </node>
         <node concept="3F1sOY" id="FnaIS$F1Si" role="3EZMnx">
+          <property role="39s7Ar" value="true" />
+          <property role="1$x2rV" value="https://plugins.jetbrains.com/" />
           <ref role="1NtTu8" to="kdzh:FnaIS$EsWD" resolve="plugins" />
           <node concept="ljvvj" id="FnaIS$F1UJ" role="3F10Kt">
             <property role="VOm3f" value="true" />
