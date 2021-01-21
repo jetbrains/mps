@@ -252,11 +252,13 @@ public class IntelligentInputUtil {
         item.substitute(myEditorContext, smallPattern + tail);
         return true;
       } else {
-        if (isInOneStepAmbigousPosition(mySubstituteInfo, smallPattern + tail)) {
-          if (tryToSubstituteFirstSuitable(smallPattern + tail, mySubstituteInfo)) {
+        String text = smallPattern + tail;
+        if (isInOneStepAmbigousPosition(mySubstituteInfo, text)) {
+          if (tryToSubstituteFirstSuitable(text, mySubstituteInfo)) {
             return true;
           }
-          myCell.setText(smallPattern + tail);
+          myCell.setText(text);
+          myCell.setCaretPosition(text.length());
           activateNodeSubstituteChooser(myEditorContext, myCell);
           return true;
         } else if (isInAmbigousPosition(mySubstituteInfo, smallPattern, tail)) {

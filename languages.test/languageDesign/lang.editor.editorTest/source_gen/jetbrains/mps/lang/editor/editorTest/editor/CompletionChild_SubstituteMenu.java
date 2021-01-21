@@ -34,6 +34,9 @@ public class CompletionChild_SubstituteMenu extends SubstituteMenuBase {
     result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_vwyoh8_c(), CONCEPTS.CompletionChild$A9));
     result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_vwyoh8_d(), CONCEPTS.CompletionChild$A9));
     result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_vwyoh8_e(), CONCEPTS.CompletionChild$A9));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_vwyoh8_f(), CONCEPTS.CompletionChild$A9));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_vwyoh8_g(), CONCEPTS.CompletionChild$A9));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_vwyoh8_h(), CONCEPTS.CompletionChild$A9));
     return result;
   }
 
@@ -121,6 +124,171 @@ public class CompletionChild_SubstituteMenu extends SubstituteMenuBase {
 
       _context.getEditorMenuTrace().pushTraceInfo();
       try {
+        _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "264584657488015235")));
+        item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
+      } finally {
+        _context.getEditorMenuTrace().popTraceInfo();
+      }
+
+      return item;
+    }
+    private class Item extends DefaultSubstituteMenuItem {
+      private final SubstituteMenuContext _context;
+      private EditorMenuTraceInfo myTraceInfo;
+      public Item(SubstituteMenuContext context) {
+        super(CONCEPTS.CompletionChild$A9, context);
+        _context = context;
+      }
+
+      private void setTraceInfo(EditorMenuTraceInfo traceInfo) {
+        myTraceInfo = traceInfo;
+      }
+
+      @Nullable
+      @Override
+      public SNode createNode(@NotNull String pattern) {
+        SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x57524858938023adL, "jetbrains.mps.lang.editor.editorTest.structure.CompletionChild"));
+        SPropertyOperations.assign(node, PROPS.name$MnvL, "cursor");
+        return node;
+      }
+
+      @Override
+      public EditorMenuTraceInfo getTraceInfo() {
+        return myTraceInfo;
+      }
+      @Nullable
+      @Override
+      public String getMatchingText(@NotNull String pattern) {
+        return "cursor";
+      }
+    }
+  }
+  private class SMP_Action_vwyoh8_c extends SingleItemSubstituteMenuPart {
+
+    @Nullable
+    @Override
+    protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
+      Item item = new Item(_context);
+      String description;
+      try {
+        description = "Substitute item: " + item.getMatchingText("");
+      } catch (Throwable t) {
+        Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
+        return null;
+      }
+
+      _context.getEditorMenuTrace().pushTraceInfo();
+      try {
+        _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "264584657488016048")));
+        item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
+      } finally {
+        _context.getEditorMenuTrace().popTraceInfo();
+      }
+
+      return item;
+    }
+    private class Item extends DefaultSubstituteMenuItem {
+      private final SubstituteMenuContext _context;
+      private EditorMenuTraceInfo myTraceInfo;
+      public Item(SubstituteMenuContext context) {
+        super(CONCEPTS.CompletionChild$A9, context);
+        _context = context;
+      }
+
+      private void setTraceInfo(EditorMenuTraceInfo traceInfo) {
+        myTraceInfo = traceInfo;
+      }
+
+      @Nullable
+      @Override
+      public SNode createNode(@NotNull String pattern) {
+        SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x57524858938023adL, "jetbrains.mps.lang.editor.editorTest.structure.CompletionChild"));
+        SPropertyOperations.assign(node, PROPS.name$MnvL, "cursox");
+        return node;
+      }
+
+      @Override
+      public EditorMenuTraceInfo getTraceInfo() {
+        return myTraceInfo;
+      }
+      @Nullable
+      @Override
+      public String getMatchingText(@NotNull String pattern) {
+        return "cursox";
+      }
+    }
+  }
+  private class SMP_Action_vwyoh8_d extends SingleItemSubstituteMenuPart {
+
+    @Nullable
+    @Override
+    protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
+      Item item = new Item(_context);
+      String description;
+      try {
+        description = "Substitute item: " + item.getMatchingText("");
+      } catch (Throwable t) {
+        Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
+        return null;
+      }
+
+      _context.getEditorMenuTrace().pushTraceInfo();
+      try {
+        _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "264584657488016443")));
+        item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
+      } finally {
+        _context.getEditorMenuTrace().popTraceInfo();
+      }
+
+      return item;
+    }
+    private class Item extends DefaultSubstituteMenuItem {
+      private final SubstituteMenuContext _context;
+      private EditorMenuTraceInfo myTraceInfo;
+      public Item(SubstituteMenuContext context) {
+        super(CONCEPTS.CompletionChild$A9, context);
+        _context = context;
+      }
+
+      private void setTraceInfo(EditorMenuTraceInfo traceInfo) {
+        myTraceInfo = traceInfo;
+      }
+
+      @Nullable
+      @Override
+      public SNode createNode(@NotNull String pattern) {
+        SNode node = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x57524858938023adL, "jetbrains.mps.lang.editor.editorTest.structure.CompletionChild"));
+        SPropertyOperations.assign(node, PROPS.name$MnvL, "cursoring");
+        return node;
+      }
+
+      @Override
+      public EditorMenuTraceInfo getTraceInfo() {
+        return myTraceInfo;
+      }
+      @Nullable
+      @Override
+      public String getMatchingText(@NotNull String pattern) {
+        return "cursor";
+      }
+    }
+  }
+  private class SMP_Action_vwyoh8_e extends SingleItemSubstituteMenuPart {
+
+    @Nullable
+    @Override
+    protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
+      Item item = new Item(_context);
+      String description;
+      try {
+        description = "Substitute item: " + item.getMatchingText("");
+      } catch (Throwable t) {
+        Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
+        return null;
+      }
+
+      _context.getEditorMenuTrace().pushTraceInfo();
+      try {
         _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "6292171174658993846")));
         item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
       } finally {
@@ -160,7 +328,7 @@ public class CompletionChild_SubstituteMenu extends SubstituteMenuBase {
       }
     }
   }
-  private class SMP_Action_vwyoh8_c extends SingleItemSubstituteMenuPart {
+  private class SMP_Action_vwyoh8_f extends SingleItemSubstituteMenuPart {
 
     @Nullable
     @Override
@@ -215,7 +383,7 @@ public class CompletionChild_SubstituteMenu extends SubstituteMenuBase {
       }
     }
   }
-  private class SMP_Action_vwyoh8_d extends SingleItemSubstituteMenuPart {
+  private class SMP_Action_vwyoh8_g extends SingleItemSubstituteMenuPart {
 
     @Nullable
     @Override
@@ -270,7 +438,7 @@ public class CompletionChild_SubstituteMenu extends SubstituteMenuBase {
       }
     }
   }
-  private class SMP_Action_vwyoh8_e extends SingleItemSubstituteMenuPart {
+  private class SMP_Action_vwyoh8_h extends SingleItemSubstituteMenuPart {
 
     @Nullable
     @Override

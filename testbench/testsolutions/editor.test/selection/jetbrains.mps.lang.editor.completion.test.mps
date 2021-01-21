@@ -176,6 +176,11 @@
       </concept>
     </language>
     <language id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest">
+      <concept id="8427750732757990717" name="jetbrains.mps.baseLanguage.unitTest.structure.BinaryAssert" flags="nn" index="3tpDYu">
+        <child id="8427750732757990725" name="actual" index="3tpDZA" />
+        <child id="8427750732757990724" name="expected" index="3tpDZB" />
+      </concept>
+      <concept id="1171978097730" name="jetbrains.mps.baseLanguage.unitTest.structure.AssertEquals" flags="nn" index="3vlDli" />
       <concept id="1171981022339" name="jetbrains.mps.baseLanguage.unitTest.structure.AssertTrue" flags="nn" index="3vwNmj">
         <child id="1171981057159" name="condition" index="3vwVQn" />
       </concept>
@@ -8605,6 +8610,59 @@
       <node concept="2TK7Tu" id="69d92epaHFS" role="3cqZAp">
         <property role="2TTd_B" value="0" />
       </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="eFZ_wqBa32">
+    <property role="TrG5h" value="CompleteImmediately_MatchFullPattern" />
+    <property role="3GE5qa" value="completeImmediately" />
+    <node concept="3clFbS" id="eFZ_wqBa33" role="LjaKd">
+      <node concept="2TK7Tu" id="eFZ_wqBa34" role="3cqZAp">
+        <property role="2TTd_B" value="cursor" />
+      </node>
+      <node concept="3vwNmj" id="eFZ_wqBQQD" role="3cqZAp">
+        <node concept="2OqwBi" id="eFZ_wqBTw7" role="3vwVQn">
+          <node concept="2OqwBi" id="eFZ_wqBRyJ" role="2Oq$k0">
+            <node concept="369mXd" id="eFZ_wqBQQT" role="2Oq$k0" />
+            <node concept="liA8E" id="eFZ_wqBTp4" role="2OqNvi">
+              <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
+            </node>
+          </node>
+          <node concept="liA8E" id="eFZ_wqBTGA" role="2OqNvi">
+            <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.isVisible()" resolve="isVisible" />
+          </node>
+        </node>
+      </node>
+      <node concept="3vlDli" id="eFZ_wqBY9s" role="3cqZAp">
+        <node concept="3cmrfG" id="eFZ_wqBYM$" role="3tpDZB">
+          <property role="3cmrfH" value="2" />
+        </node>
+        <node concept="2OqwBi" id="eFZ_wqC1o3" role="3tpDZA">
+          <node concept="2OqwBi" id="eFZ_wqBZwI" role="2Oq$k0">
+            <node concept="369mXd" id="eFZ_wqBYNX" role="2Oq$k0" />
+            <node concept="liA8E" id="eFZ_wqC1h0" role="2OqNvi">
+              <ref role="37wK5l" to="exr9:~EditorComponent.getNodeSubstituteChooser()" resolve="getNodeSubstituteChooser" />
+            </node>
+          </node>
+          <node concept="liA8E" id="eFZ_wqC1_I" role="2OqNvi">
+            <ref role="37wK5l" to="6lvu:~NodeSubstituteChooser.getNumberOfActions()" resolve="getNumberOfActions" />
+          </node>
+        </node>
+      </node>
+      <node concept="3clFbH" id="eFZ_wqBa37" role="3cqZAp" />
+    </node>
+    <node concept="1qefOq" id="eFZ_wqBa38" role="25YQCW">
+      <node concept="34OAJO" id="eFZ_wqBa39" role="1qenE9">
+        <node concept="LIFWc" id="eFZ_wqBQHD" role="lGtFl">
+          <property role="ZRATv" value="true" />
+          <property role="OXtK3" value="true" />
+          <property role="p6zMq" value="0" />
+          <property role="p6zMs" value="0" />
+          <property role="LIFWd" value="empty_child" />
+        </node>
+      </node>
+    </node>
+    <node concept="1qefOq" id="eFZ_wqBa3b" role="25YQFr">
+      <node concept="34OAJO" id="eFZ_wqBa3c" role="1qenE9" />
     </node>
   </node>
 </model>
