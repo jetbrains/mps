@@ -3012,7 +3012,7 @@
       </node>
     </node>
     <node concept="tT9cl" id="341WClvYTWd" role="2f5YQi">
-      <ref role="tU$_T" node="341WClvYTWe" resolve="IDEAVcsGlobal" />
+      <ref role="tU$_T" node="67kWSvhRIy3" resolve="IDEAVcsGroups" />
     </node>
   </node>
   <node concept="1ESbSp" id="341WClvYTWe">
@@ -5150,6 +5150,14 @@
         <ref role="2zDL_u" node="7yFo2E9ZaLd" resolve="MPSGitFileActions" />
       </node>
     </node>
+  </node>
+  <node concept="1ESbSp" id="67kWSvhRIy3">
+    <property role="TrG5h" value="IDEAVcsGroups" />
+    <property role="3GE5qa" value="Groups" />
+    <node concept="Xl_RD" id="67kWSvhRIy4" role="3mKD$K">
+      <property role="Xl_RC" value="VcsGroups" />
+    </node>
+    <node concept="ftmFs" id="67kWSvhRIy5" role="ftER_" />
   </node>
 </model>
 
