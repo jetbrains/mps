@@ -12,6 +12,8 @@
     <classNode dependClassName="java.util.Map" />
     <classNode dependClassName="jetbrains.mps.build.behavior.BuildString__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.build.startup.behavior.MpsStartupScript__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.build.util.Context" />
+    <classNode dependClassName="jetbrains.mps.build.util.MacroHelper" />
     <classNode dependClassName="jetbrains.mps.generator.impl.GenerationFailureException" />
     <classNode dependClassName="jetbrains.mps.generator.impl.query.PropertyValueQuery" />
     <classNode dependClassName="jetbrains.mps.generator.impl.query.QueryKey" />
