@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,6 @@ import com.intellij.util.xmlb.annotations.MapAnnotation;
 import jetbrains.mps.ide.editor.MPSFileNodeEditor;
 import jetbrains.mps.ide.editor.NodeEditor;
 import jetbrains.mps.ide.editor.tabs.TabbedEditor;
-import jetbrains.mps.ide.make.StartupModuleMaker;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.tools.BaseTool;
 import jetbrains.mps.nodeEditor.highlighter.EditorsHelper;
@@ -65,14 +64,11 @@ public class ProjectPluginManager extends BasePluginManager<BaseProjectPlugin> i
   private PluginsState myState = new PluginsState();
   private final Project myProject;
   private final jetbrains.mps.project.Project myMpsProject;
-  private final FileEditorManager myManager;
 
-  public ProjectPluginManager(@NotNull Project project, PluginLoaderRegistry pluginLoaderRegistry,
-                              @SuppressWarnings("unused") StartupModuleMaker moduleMaker, FileEditorManager manager) {
+  public ProjectPluginManager(@NotNull Project project, PluginLoaderRegistry pluginLoaderRegistry) {
     super(pluginLoaderRegistry);
     myProject = project;
     myMpsProject = ProjectHelper.fromIdeaProject(project);
-    myManager = manager;
   }
 
   @Override
@@ -255,7 +251,7 @@ public class ProjectPluginManager extends BasePluginManager<BaseProjectPlugin> i
 
   private void recreateTabbedEditors() {
     myMpsProject.getModelAccess().runReadInEDT(() -> {
-      for (MPSFileNodeEditor editor : EditorsHelper.getAllEditors(myManager)) {
+      for (MPSFileNodeEditor editor : EditorsHelper.getAllEditors(FileEditorManager.getInstance(myProject))) {
         if (!editor.isValid()) {
           continue;
         }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,6 @@ import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.indexing.FileBasedIndex;
 import com.intellij.util.indexing.IndexableFileSet;
-import jetbrains.mps.ide.make.StartupModuleMaker;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.library.contributor.LibDescriptor;
 import jetbrains.mps.project.ProjectLibraryManager;
@@ -67,9 +66,11 @@ public class MPSIndexableFileSet extends AbstractProjectComponent implements Ind
   @SuppressWarnings("unused")
   public MPSIndexableFileSet(@NotNull final Project project,
                              ProjectManager projectManager,
-                             FileBasedIndex index,
-                             StartupModuleMaker maker) {
+                             FileBasedIndex index) {
     super(project);
+    // FIXME used to depend on StartupModuleMaker, which is now a post-startup activity
+    //       but as long as I'm expected to re-wrote this class in 2021.1 anyway, don't want to bother if
+    //       there was any true reason to have this dependency (there's nothing in original commit message, indeed)
     myRootManager = ProjectRootManagerEx.getInstanceEx(project);
     myProjectManager = projectManager;
     myIndex = index;
