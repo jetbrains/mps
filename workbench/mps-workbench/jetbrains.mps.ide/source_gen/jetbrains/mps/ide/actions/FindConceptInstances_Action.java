@@ -79,7 +79,7 @@ public class FindConceptInstances_Action extends BaseAction {
         new FindUsagesHelper(((MPSProject) MapSequence.fromMap(_params).get("project"))) {
           @Override
           protected DefaultOptionsContainer getDefaultOptions() {
-            final DefaultOptionsContainer container = ((MPSProject) MapSequence.fromMap(_params).get("project")).getComponent(DefaultSearchOptionsComponent.class).getDefaultOptions();
+            final DefaultOptionsContainer container = DefaultSearchOptionsComponent.getOptions(((MPSProject) MapSequence.fromMap(_params).get("project")));
 
             return new DefaultOptionsContainer() {
               @Override

@@ -83,10 +83,6 @@
       <implementation-class>jetbrains.mps.ide.generator.TransientModelsComponent</implementation-class>
     </component>
     <component>
-      <implementation-class>jetbrains.mps.ide.findusages.view.optionseditor.DefaultSearchOptionsComponent
-      </implementation-class>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.ide.classpath.ClassPathViewerTool</implementation-class>
     </component>
     <component>
@@ -157,6 +153,7 @@
     <postStartupActivity implementation="jetbrains.mps.ide.generator.index.IndexBasedModelDigest" />
     <postStartupActivity implementation="jetbrains.mps.workbench.findusages.StubModelsFastFindSupport$Plug" />
     <postStartupActivity implementation="jetbrains.mps.ide.make.StartupModuleMakerImpl" />
+    <projectService serviceImplementation="jetbrains.mps.ide.findusages.view.optionseditor.DefaultSearchOptionsComponent"/>
   </extensions>
 
   <extensions defaultExtensionNs="jetbrains.mps">

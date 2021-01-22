@@ -4,9 +4,9 @@ package jetbrains.mps.ide.actions;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.project.Project;
+import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.ide.findusages.view.optionseditor.FindUsagesOptions;
-import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.findusages.view.optionseditor.DefaultOptionsContainer;
 import jetbrains.mps.ide.findusages.view.optionseditor.DefaultSearchOptionsComponent;
 import jetbrains.mps.ide.findusages.view.UsagesViewTool;
@@ -23,7 +23,7 @@ import jetbrains.mps.ide.findusages.view.UsageToolOptions;
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2557058267217516060", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 /*package*/ class FindUsagesHelper {
   private final Project myIdeaProject;
-  private final jetbrains.mps.project.Project myProject;
+  private final MPSProject myProject;
   private SNode myOperationNode;
   private FindUsagesOptions myUsageOptions;
 
@@ -32,7 +32,7 @@ import jetbrains.mps.ide.findusages.view.UsageToolOptions;
     myProject = project;
   }
   protected DefaultOptionsContainer getDefaultOptions() {
-    return myIdeaProject.getComponent(DefaultSearchOptionsComponent.class).getDefaultOptions();
+    return DefaultSearchOptionsComponent.getOptions(myProject);
   }
   private UsagesViewTool getTool() {
     return myIdeaProject.getComponent(UsagesViewTool.class);

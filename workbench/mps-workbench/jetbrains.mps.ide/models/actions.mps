@@ -45,7 +45,6 @@
     <import index="o2jy" ref="r:5a764b6f-e05f-4050-b22c-cbcad1577f1b(jetbrains.mps.ide.refactoring)" />
     <import index="unno" ref="r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)" />
     <import index="xick" ref="r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)" />
-    <import index="475o" ref="r:2170b42c-b000-4bd7-a2c2-c5cf5fe74d08(jetbrains.mps.ide.tooltips)" />
     <import index="kkd6" ref="r:50589489-29e2-47e3-84bb-6bbe4094b4ce(jetbrains.mps.ide.ui.finders)" />
     <import index="rl1i" ref="r:8a82b7a4-1180-4262-8f18-8c96a5d3ac16(jetbrains.mps.ide.hierarchy)" />
     <import index="dsk9" ref="r:8bdc9cf5-28de-48ab-8b85-36b2d96bc635(jetbrains.mps.ide.newModuleDialogs)" />
@@ -200,7 +199,6 @@
     <import index="439w" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.codeInsight.hint(MPS.IDEA/)" />
     <import index="smoa" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.refactoring(MPS.Platform/)" />
     <import index="y8s3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.structure.project(MPS.Core/)" />
-    <import index="jkny" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.wm(MPS.IDEA/)" />
     <import index="22ra" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.update(MPS.Editor/)" implicit="true" />
     <import index="ov6m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui.messages(MPS.IDEA/)" implicit="true" />
     <import index="tpcn" ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)" implicit="true" />
@@ -24471,8 +24469,8 @@
       <property role="TrG5h" value="myProject" />
       <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="4NF6yZZTMjD" role="1B3o_S" />
-      <node concept="3uibUv" id="4NF6yZZTO6g" role="1tU5fm">
-        <ref role="3uigEE" to="z1c3:~Project" resolve="Project" />
+      <node concept="3uibUv" id="1f23RyGeH6B" role="1tU5fm">
+        <ref role="3uigEE" to="z1c4:~MPSProject" resolve="MPSProject" />
       </node>
     </node>
     <node concept="312cEg" id="1vm70ntm4Vi" role="jymVt">
@@ -24538,21 +24536,12 @@
       </node>
       <node concept="3Tmbuc" id="2LTtAmfIdNX" role="1B3o_S" />
       <node concept="3clFbS" id="2dWvJ8Rutxz" role="3clF47">
-        <node concept="3clFbF" id="2dWvJ8RutxC" role="3cqZAp">
-          <node concept="2OqwBi" id="2LTtAmfIi$z" role="3clFbG">
-            <node concept="liA8E" id="2LTtAmfImKa" role="2OqNvi">
-              <ref role="37wK5l" to="hqaf:1AxNPWQA17" resolve="getDefaultOptions" />
-            </node>
-            <node concept="2OqwBi" id="2dWvJ8RutxD" role="2Oq$k0">
-              <node concept="37vLTw" id="2BHiRxeuu33" role="2Oq$k0">
-                <ref role="3cqZAo" node="2dWvJ8RuvHr" resolve="myIdeaProject" />
-              </node>
-              <node concept="liA8E" id="2dWvJ8RutxH" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="1AxNPWQAfg" role="37wK5m">
-                  <ref role="3VsUkX" to="hqaf:1AxNPWQ_V$" resolve="DefaultSearchOptionsComponent" />
-                </node>
-              </node>
+        <node concept="3clFbF" id="1f23RyGeFYu" role="3cqZAp">
+          <node concept="2YIFZM" id="1f23RyGeGr9" role="3clFbG">
+            <ref role="37wK5l" to="hqaf:1f23RyGekkA" resolve="getOptions" />
+            <ref role="1Pybhc" to="hqaf:1AxNPWQ_V$" resolve="DefaultSearchOptionsComponent" />
+            <node concept="37vLTw" id="1f23RyGeGT1" role="37wK5m">
+              <ref role="3cqZAo" node="4NF6yZZTO6j" resolve="myProject" />
             </node>
           </node>
         </node>
@@ -37828,24 +37817,15 @@
                                       <node concept="3uibUv" id="5uM$a1nJsau" role="1tU5fm">
                                         <ref role="3uigEE" to="hqaf:1AxNPWQ_V_" resolve="DefaultOptionsContainer" />
                                       </node>
-                                      <node concept="2OqwBi" id="5uM$a1nJgfK" role="33vP2m">
-                                        <node concept="liA8E" id="5uM$a1nJgfL" role="2OqNvi">
-                                          <ref role="37wK5l" to="hqaf:1AxNPWQA17" resolve="getDefaultOptions" />
-                                        </node>
-                                        <node concept="2OqwBi" id="5uM$a1nJgfM" role="2Oq$k0">
-                                          <node concept="2OqwBi" id="5uM$a1nJtTG" role="2Oq$k0">
-                                            <node concept="2WthIp" id="5uM$a1nJtTJ" role="2Oq$k0">
-                                              <ref role="32nkFo" node="M3eFeZWyG4" resolve="FindConceptInstances" />
-                                            </node>
-                                            <node concept="1DTwFV" id="1vm70ntmRJv" role="2OqNvi">
-                                              <ref role="2WH_rO" node="1vm70ntmJMy" resolve="project" />
-                                            </node>
+                                      <node concept="2YIFZM" id="1f23RyGeINp" role="33vP2m">
+                                        <ref role="37wK5l" to="hqaf:1f23RyGekkA" resolve="getOptions" />
+                                        <ref role="1Pybhc" to="hqaf:1AxNPWQ_V$" resolve="DefaultSearchOptionsComponent" />
+                                        <node concept="2OqwBi" id="1f23RyGeKd_" role="37wK5m">
+                                          <node concept="2WthIp" id="1f23RyGeKdC" role="2Oq$k0">
+                                            <ref role="32nkFo" node="M3eFeZWyG4" resolve="FindConceptInstances" />
                                           </node>
-                                          <node concept="liA8E" id="5uM$a1nJgfO" role="2OqNvi">
-                                            <ref role="37wK5l" to="z1c4:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
-                                            <node concept="3VsKOn" id="5uM$a1nJgfP" role="37wK5m">
-                                              <ref role="3VsUkX" to="hqaf:1AxNPWQ_V$" resolve="DefaultSearchOptionsComponent" />
-                                            </node>
+                                          <node concept="1DTwFV" id="1f23RyGeKdE" role="2OqNvi">
+                                            <ref role="2WH_rO" node="1vm70ntmJMy" resolve="project" />
                                           </node>
                                         </node>
                                       </node>

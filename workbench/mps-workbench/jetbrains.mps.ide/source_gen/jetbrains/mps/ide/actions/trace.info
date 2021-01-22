@@ -6762,7 +6762,7 @@
       <node id="1717591119402323260" at="28,0,29,0" concept="7" trace="myUsageOptions" />
       <node id="2557058267217525601" at="30,52,31,41" concept="6" />
       <node id="5542552559868660243" at="31,41,32,24" concept="6" />
-      <node id="2557058267217516648" at="34,57,35,95" concept="13" />
+      <node id="1423717443162521502" at="34,57,35,63" concept="13" />
       <node id="2557058267217516661" at="37,36,38,60" concept="13" />
       <node id="2557058267217565873" at="40,38,41,60" concept="13" />
       <node id="1717591119402303711" at="44,76,45,24" concept="14" />
@@ -6801,7 +6801,7 @@
       <node id="1717591119402283058" at="44,0,53,0" concept="11" trace="prepareOptions#(Ljetbrains/mps/openapi/editor/cells/EditorCell;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/ide/actions/FindUsagesHelper;" />
       <node id="2557058267217525617" at="71,0,83,0" concept="11" trace="invoke#()V" />
       <node id="1717591119402364104" at="54,0,70,0" concept="11" trace="showDialog#()Ljetbrains/mps/ide/actions/FindUsagesHelper;" />
-      <scope id="2557058267217516643" at="34,57,35,95" />
+      <scope id="2557058267217516643" at="34,57,35,63" />
       <scope id="2557058267217516660" at="37,36,38,60" />
       <scope id="2557058267217565865" at="40,38,41,60" />
       <scope id="1717591119402425131" at="65,12,66,42" />
@@ -15482,8 +15482,8 @@
       <node id="1717591119402564770" at="67,66,68,53" concept="6" />
       <node id="1717591119402564771" at="69,22,70,21" concept="13" />
       <node id="901628894098107140" at="72,5,73,16" concept="13" />
-      <node id="6319272245495448220" at="81,65,82,183" concept="12" />
-      <node id="6319272245495399088" at="82,183,83,0" concept="15" />
+      <node id="6319272245495448220" at="81,65,82,155" concept="12" />
+      <node id="6319272245495399088" at="82,155,83,0" concept="15" />
       <node id="6319272245495532947" at="86,80,87,97" concept="12" />
       <node id="6319272245495591996" at="87,97,88,357" concept="6" />
       <node id="3204722788426338466" at="88,357,89,41" concept="13" />
