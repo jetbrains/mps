@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.startup.StartupActivity;
 import jetbrains.mps.compiler.JavaCompilerOptions;
 import jetbrains.mps.compiler.JavaCompilerOptionsComponent;
 import jetbrains.mps.ide.MPSCoreComponents;
@@ -31,7 +32,6 @@ import jetbrains.mps.make.ModuleMaker;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.ProjectLibraryManager;
-import jetbrains.mps.project.StandaloneMPSProject;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.PathManager;
@@ -47,36 +47,32 @@ import java.util.Collection;
 /**
  * Compiles all project modules at startup
  */
-public final class StartupModuleMakerImpl extends StartupModuleMaker {
+public final class StartupModuleMakerImpl extends StartupModuleMaker implements StartupActivity {
   private static final Logger LOG = LogManager.getLogger(StartupModuleMakerImpl.class);
 
-  private final MPSProject myMPSProject;
-  private final ReloadManagerComponent myReloadManager;
-  private final MPSCoreComponents myComponents;
+  private MPSProject myMPSProject;
+  private ReloadManagerComponent myReloadManager;
+  private MPSCoreComponents myComponents;
 
-  @SuppressWarnings({"UnusedDeclaration"})
-  public StartupModuleMakerImpl(Project project, ProjectLibraryManager plm, MPSCoreComponents components) {
-    super(project);
-    myMPSProject = ProjectHelper.fromIdeaProject(project);
-    myReloadManager = (ReloadManagerComponent) ApplicationManager.getApplication().getComponent(ReloadManager.class);;
-    myComponents = components;
+  public StartupModuleMakerImpl() {
   }
 
   @Override
-  public void initComponent() {
+  public void runActivity(@NotNull final Project project) {
     if (ApplicationManager.getApplication().isUnitTestMode()) {
       return;
     }
-
-    if (ProgressManager.getInstance().getProgressIndicator() != null) {
-      executeUnderOldIndicator();
-    } else {
-      executeUnderNewIndicator();
+    if (ApplicationManager.getApplication().isHeadlessEnvironment()) {
+      // replacement for DummyStartupModuleMaker
+      return;
     }
-  }
-
-  private void executeUnderNewIndicator() {
-    ProgressManager.getInstance().run(new Task.Modal(myProject, "Building", false) {
+    myMPSProject = ProjectHelper.fromIdeaProject(project);
+    // ProjectLibraryManager used to be cons parameter
+    @SuppressWarnings("unused")
+    final ProjectLibraryManager plm = project.getComponent(ProjectLibraryManager.class);
+    myReloadManager = (ReloadManagerComponent) ApplicationManager.getApplication().getComponent(ReloadManager.class);
+    myComponents = ApplicationManager.getApplication().getComponent(MPSCoreComponents.class);
+    ProgressManager.getInstance().run(new Task.Modal(project, "Building", false) {
       @Override
       public void run(@NotNull ProgressIndicator indicator) {
         doBuild(new ProgressMonitorAdapter(indicator));
@@ -84,22 +80,9 @@ public final class StartupModuleMakerImpl extends StartupModuleMaker {
     });
   }
 
-  private void executeUnderOldIndicator() {
-    ProgressIndicator currentIndicator = ProgressManager.getInstance().getProgressIndicator();
-    currentIndicator.pushState();
-    try {
-      doBuild(new ProgressMonitorAdapter(currentIndicator));
-    } catch (VirtualMachineError e) {
-      throw e;
-    } catch (Throwable e) {
-      LOG.error("Exception while making project", e);
-      throw e;
-    }
-    currentIndicator.popState();
-  }
-
   private void doBuild(ProgressMonitor monitor) {
     LOG.info("Building modules on startup");
+    // XXX why do we collect project modules in a separate read action (don't share the next write), anyone?
     final Collection<SModule> modules = new ModelAccessHelper(myMPSProject.getRepository()).runReadAction(this::getModules);
     myMPSProject.getModelAccess().runWriteAction(() -> {
       final ModuleMaker maker = new ModuleMaker();

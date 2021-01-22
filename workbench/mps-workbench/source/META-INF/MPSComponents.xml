@@ -132,13 +132,6 @@
       <implementation-class>jetbrains.mps.ide.findusages.caches.MPSIndexableFileSet</implementation-class>
     </component>
 
-    <!-- language development workbench -->
-    <component>
-      <interface-class>jetbrains.mps.ide.make.StartupModuleMaker</interface-class>
-      <headless-implementation-class>jetbrains.mps.ide.make.DummyStartupModuleMaker</headless-implementation-class>
-      <implementation-class>jetbrains.mps.ide.make.StartupModuleMakerImpl</implementation-class>
-    </component>
-
     <component>
       <implementation-class>jetbrains.mps.vfs.tracking.ModelTracking</implementation-class>
     </component>
@@ -163,6 +156,7 @@
     <idIndexer filetype="CLASS" implementationClass="jetbrains.mps.workbench.findusages.JavaStubIdIndexer"/>
     <postStartupActivity implementation="jetbrains.mps.ide.generator.index.IndexBasedModelDigest" />
     <postStartupActivity implementation="jetbrains.mps.workbench.findusages.StubModelsFastFindSupport$Plug" />
+    <postStartupActivity implementation="jetbrains.mps.ide.make.StartupModuleMakerImpl" />
   </extensions>
 
   <extensions defaultExtensionNs="jetbrains.mps">
