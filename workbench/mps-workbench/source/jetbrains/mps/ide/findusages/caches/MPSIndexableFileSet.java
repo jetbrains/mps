@@ -28,6 +28,7 @@ import com.intellij.openapi.startup.StartupManager;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.indexing.FileBasedIndex;
+import com.intellij.util.indexing.FileBasedIndexImpl;
 import com.intellij.util.indexing.IndexableFileSet;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.library.contributor.LibDescriptor;
@@ -59,7 +60,9 @@ public class MPSIndexableFileSet extends AbstractProjectComponent implements Ind
   private final ProjectManagerAdapter myProjectListener = new ProjectManagerAdapter() {
     @Override
     public void projectClosing(Project project) {
-      myIndex.removeIndexableSet(MPSIndexableFileSet.this);
+      if (myIndex instanceof FileBasedIndexImpl) {
+        ((FileBasedIndexImpl) myIndex).removeIndexableSet(MPSIndexableFileSet.this);
+      }
     }
   };
 
@@ -82,7 +85,9 @@ public class MPSIndexableFileSet extends AbstractProjectComponent implements Ind
         /**
          * FIXME AP why to register like this if we could register just using MPSIndexableFileSetContributor???
          */
-        myIndex.registerIndexableSet(MPSIndexableFileSet.this, myProject);
+        if(myIndex instanceof FileBasedIndexImpl) {
+          ((FileBasedIndexImpl) myIndex).registerIndexableSet(MPSIndexableFileSet.this, myProject);
+        }
         LOG.debug("Queueing cache update");
       });
     }
