@@ -160,10 +160,6 @@ public class MPSVcsManager implements ProjectComponent {
     public StubChangeListManagerGate() {
     }
     @Override
-    public FileStatus getStatus(File file) {
-      return null;
-    }
-    @Override
     public void setDefaultChangeList(@NotNull String string) {
     }
     @Override
