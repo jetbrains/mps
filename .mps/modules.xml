@@ -280,7 +280,7 @@
       <modulePath path="$PROJECT_DIR$/plugins/mps-core/languages/languageDesign/forms/runtime/jetbrains.mps.lang.editor.forms.runtime.msd" folder="core.aspects.editor" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-core/languages/languageDesign/table/jetbrains.mps.lang.editor.table.mpl" folder="core.aspects.editor" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-core/languages/languageDesign/table/runtime/jetbrains.mps.lang.editor.table.runtime.msd" folder="core.aspects.editor" />
-      <modulePath path="$PROJECT_DIR$/plugins/mps-devkit/jetbrains.mps.ide.mpsdevkit.msd" folder="platform" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-devkit/jetbrains.mps.ide.mpsdevkit.msd" folder="workbench" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-devkit/languages/pluginSolutions/baseLanguage/jetbrains.mps.baseLanguage.pluginSolution.msd" folder="core.baseLanguage" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-devkit/languages/pluginSolutions/lang.actions/jetbrains.mps.lang.actions.pluginSolution.msd" folder="core.aspects.actions" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-devkit/languages/pluginSolutions/lang.dataFlow/jetbrains.mps.lang.dataFlow.pluginSolution.msd" folder="core.aspects.dataflow" />
