@@ -17,7 +17,8 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.migration.runtime.base.MigrationModuleUtil;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.lang.migration.runtime.base.VersionFixer;
+import jetbrains.mps.smodel.ModuleDependencyVersions;
+import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.migration.global.MigrationOptions;
@@ -85,14 +86,15 @@ public class MigrationRegistryImpl implements MigrationRegistry {
 
   public boolean importVersionsUpdateRequired(Iterable<SModule> modules) {
     // not to check once for every module later 
+    ModuleDependencyVersions mv = new ModuleDependencyVersions(myMpsProject.getComponent(LanguageRegistry.class), myMpsProject.getRepository());
     for (SModule module : ListSequence.fromList(myMpsProject.getProjectModulesWithGenerators())) {
-      if (!(new VersionFixer(myMpsProject, module, true).areDepsSatisfied())) {
+      if (!(mv.dependenciesPresent(module))) {
         return false;
       }
     }
 
     for (SModule module : Sequence.fromIterable(modules)) {
-      if (new VersionFixer(myMpsProject, module, true).importVersionsUpdateRequired()) {
+      if (mv.needsUpdate(module)) {
         return true;
       }
     }
@@ -101,8 +103,8 @@ public class MigrationRegistryImpl implements MigrationRegistry {
   }
 
   public void doUpdateImportVersions(SModule module) {
-    final VersionFixer vf = new VersionFixer(myMpsProject, module, true);
-    if (!(vf.areDepsSatisfied())) {
+    ModuleDependencyVersions mv = new ModuleDependencyVersions(myMpsProject.getComponent(LanguageRegistry.class), myMpsProject.getRepository());
+    if (!(mv.dependenciesPresent(module))) {
       return;
     }
     if (!((module instanceof AbstractModule))) {
@@ -113,10 +115,8 @@ public class MigrationRegistryImpl implements MigrationRegistry {
       return;
     }
 
-    vf.updateImportVersions();
-    if (module instanceof AbstractModule) {
-      (as_ufn3ol_a0a0a0h0m(module, AbstractModule.class)).save();
-    }
+    mv.update(module);
+    (as_ufn3ol_a0a0h0m(module, AbstractModule.class)).save();
   }
 
   public ProjectMigration nextProjectStep(ProjectMigrationProgress migrationProgress, MigrationOptions options, boolean cleanup) {
@@ -326,7 +326,7 @@ public class MigrationRegistryImpl implements MigrationRegistry {
     return result;
   }
 
-  private static <T> T as_ufn3ol_a0a0a0h0m(Object o, Class<T> type) {
+  private static <T> T as_ufn3ol_a0a0h0m(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
   private static <T> T as_ufn3ol_a0a0a3a0a0a0a1a91(Object o, Class<T> type) {

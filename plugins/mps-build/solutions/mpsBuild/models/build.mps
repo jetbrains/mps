@@ -1815,9 +1815,6 @@
       <node concept="nCB5N" id="2BwQuBWyGpr" role="nCB5Z">
         <ref role="nCB5Y" node="7NoQ7Z63Z9b" resolve="mps-debuginfo-impl" />
       </node>
-      <node concept="nCB5N" id="5CfKzgSBk1I" role="nCB5Z">
-        <ref role="nCB5Y" node="1WZWsoqIz7X" resolve="mps-migration" />
-      </node>
       <node concept="nCB5N" id="4_qKb05Oowt" role="nCB5Z">
         <ref role="nCB5Y" node="4_qKb05xiaz" resolve="aux-runtimes" />
       </node>
@@ -4048,10 +4045,6 @@
               <property role="2Ry0Am" value="mps-icons.jar" />
             </node>
           </node>
-        </node>
-        <node concept="1E1SXE" id="5g8Dzn7kwmc" role="3bR37C">
-          <property role="1E1SXH" value="true" />
-          <ref role="1E1SXG" node="1WZWsoqIz7X" resolve="mps-migration" />
         </node>
         <node concept="1E1SXE" id="4Iq3ixqvG8m" role="3bR37C">
           <property role="1E1SXH" value="true" />
@@ -46990,6 +46983,9 @@
             </node>
           </node>
         </node>
+      </node>
+      <node concept="nCB5N" id="4MIWQsbUgDE" role="nCB5Z">
+        <ref role="nCB5Y" node="1WZWsoqIz7X" resolve="mps-migration" />
       </node>
       <node concept="nCB5N" id="1nJh0raUWjF" role="nCB5Z">
         <ref role="nCB5Y" node="16Vg0jOco3P" resolve="mps-platform" />

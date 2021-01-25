@@ -12,16 +12,15 @@ import java.io.File;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.smodel.ModuleDependencyVersions;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.smodel.SModelInternal;
-import org.jetbrains.mps.openapi.language.SLanguage;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import jetbrains.mps.lang.migration.runtime.base.VersionFixer;
-import java.util.Iterator;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
+import java.util.Iterator;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.GeneralModuleFactory;
+import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
@@ -80,23 +79,31 @@ public class NewModuleUtil {
     String basePath = languageRootPath + File.separator + "sandbox";
     String namespace = language.getModuleName() + ".sandbox";
 
-    Solution sandbox = NewModuleUtil.createSolution(namespace, basePath, project);
-    SModelInternal sandboxModel = (SModelInternal) createModel(sandbox, namespace);
-    SLanguage l = MetaAdapterFactory.getLanguage(language.getModuleReference());
-    sandboxModel.addLanguage(l);
-    sandboxModel.setLanguageImportVersion(l, language.getLanguageVersion());
-    ((EditableSModel) sandboxModel).save();
+    IFile descriptorFile = NewModuleUtil.getModuleFile(namespace, basePath, MPSExtentions.DOT_SOLUTION);
+    assert !(descriptorFile.exists());
+    SolutionDescriptor descriptor = createNewSolutionDescriptor(namespace, descriptorFile);
 
-    VersionFixer fixer = new VersionFixer(project, sandbox, false);
+    // XXX I don't see a reason to use Language.getAllExtendedLanguages, but this is the way it was introduced in 5057107c 
     {
       Iterator<Language> extLang_it = SetSequence.fromSet(language.getAllExtendedLanguages()).iterator();
       Language extLang_var;
       while (extLang_it.hasNext()) {
         extLang_var = extLang_it.next();
         SLanguage extSLang = MetaAdapterFactory.getLanguage(extLang_var.getModuleReference());
-        fixer.addJustCreatedLanguageVersion(extSLang, (extSLang.isValid() ? extSLang.getLanguageVersion() : extLang_var.getLanguageVersion()));
+        descriptor.getLanguageVersions().put(extSLang, extLang_var.getLanguageVersion());
       }
     }
+
+    Solution sandbox = (Solution) new GeneralModuleFactory().instantiate(descriptor, descriptorFile);
+    project.addModule(sandbox);
+    sandbox.save();
+
+    SModelInternal sandboxModel = (SModelInternal) createModel(sandbox, namespace);
+    SLanguage l = MetaAdapterFactory.getLanguage(language.getModuleReference());
+    sandboxModel.addLanguage(l);
+    sandboxModel.setLanguageImportVersion(l, language.getLanguageVersion());
+    ((EditableSModel) sandboxModel).save();
+
     new ModuleDependencyVersions(project.getComponent(LanguageRegistry.class), project.getRepository()).update(sandbox);
 
     sandbox.save();
@@ -112,7 +119,7 @@ public class NewModuleUtil {
     SolutionDescriptor descriptor = createNewSolutionDescriptor(namespace, descriptorFile);
     Solution module = (Solution) new GeneralModuleFactory().instantiate(descriptor, descriptorFile);
     project.addModule(module);
-    new ModuleDependencyVersions(project.getComponent(LanguageRegistry.class), project.getRepository());
+    new ModuleDependencyVersions(project.getComponent(LanguageRegistry.class), project.getRepository()).update(module);
     module.save();
     return module;
   }
