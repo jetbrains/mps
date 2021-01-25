@@ -8,6 +8,8 @@
     </modelRoot>
   </models>
   <facets>
+    <facet type="java">
+    </facet>
     <facet pluginId="Git4Idea" type="ideaPlugin" />
   </facets>
   <stubModelEntries>
