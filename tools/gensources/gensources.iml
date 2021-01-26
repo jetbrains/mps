@@ -701,6 +701,7 @@
     </content>
     <content url="file://$MODULE_DIR$/../../plugins/mps-migration/solutions">
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-migration/solutions/migration.workbench/source_gen" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-migration/solutions/migration.workbench/classes_gen" />
     </content>
     <content url="file://$MODULE_DIR$/../../plugins/mps-project-migrations">
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-project-migrations/solution/source_gen" isTestSource="false" />
@@ -759,7 +760,7 @@
     <content url="file://$MODULE_DIR$/../../plugins/mps-testing/languages/languageDesign/test/source_gen">
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-testing/languages/languageDesign/test/source_gen" isTestSource="false" />
     </content>
-    <content url="file://$MODULE_DIR$/../../plugins/mps-tooltips/languages">
+    <content url="file://$MODULE_DIR$/../../plugins/mps-tooltips">
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-tooltips/languages/tooltips.runtime/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-tooltips/languages/tooltips/generator/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-tooltips/languages/tooltips/source_gen" isTestSource="false" />
