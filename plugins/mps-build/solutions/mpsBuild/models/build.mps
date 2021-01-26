@@ -12222,6 +12222,11 @@
             <ref role="3bR37D" node="1TaHNgiIbJb" resolve="MPS.Platform" />
           </node>
         </node>
+        <node concept="1SiIV0" id="4henvQNfGqu" role="3bR37C">
+          <node concept="3bR9La" id="4henvQNfGqv" role="1SiIV1">
+            <ref role="3bR37D" node="3qkjbZn88ri" resolve="jetbrains.mps.lang.feedback.skeleton" />
+          </node>
+        </node>
         <node concept="1BupzO" id="73GUf$umms5" role="3bR31x">
           <property role="3ZfqAx" value="models" />
           <property role="1Hdu6h" value="true" />
@@ -12460,11 +12465,6 @@
               <ref role="3bR37D" node="7YI57w6K0rx" resolve="jetbrains.mps.lang.smodel#1139186730696" />
             </node>
           </node>
-          <node concept="1SiIV0" id="2$j3xkqQUUX" role="3bR37C">
-            <node concept="3bR9La" id="2$j3xkqQUUW" role="1SiIV1">
-              <ref role="3bR37D" node="3qkjbZn8960" resolve="jetbrains.mps.lang.feedback.problem#01" />
-            </node>
-          </node>
           <node concept="1BupzO" id="73GUf$ummtw" role="3bR31x">
             <property role="3ZfqAx" value="generator/template" />
             <property role="1Hdu6h" value="true" />
@@ -12526,6 +12526,11 @@
         <node concept="1SiIV0" id="6Xgid4BtU$y" role="3bR37C">
           <node concept="3bR9La" id="6Xgid4BtU$z" role="1SiIV1">
             <ref role="3bR37D" node="1TaHNgiIbJb" resolve="MPS.Platform" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="4henvQNfFZM" role="3bR37C">
+          <node concept="3bR9La" id="4henvQNfFZN" role="1SiIV1">
+            <ref role="3bR37D" node="3qkjbZn88ri" resolve="jetbrains.mps.lang.feedback.skeleton" />
           </node>
         </node>
         <node concept="1BupzO" id="73GUf$ummtd" role="3bR31x">
