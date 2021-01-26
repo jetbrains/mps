@@ -337,7 +337,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
       protected boolean isCustomCreateChildNode() {
         return true;
       }
-      protected SNode customCreateChildNode(Object parameterObject, SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model, EditorContext editorContext) {
+      protected SNode customCreateChildNode(Object _parameterObject, SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model, EditorContext editorContext) {
+        String parameterObject = (String) _parameterObject;
         return SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x133763776010fa0dL, "jetbrains.mps.lang.editor.editorTest.structure.MenuTraceGrandChildCellMenu"));
       }
 

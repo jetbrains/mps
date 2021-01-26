@@ -205,7 +205,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
     protected boolean isCustomCreateChildNode() {
       return true;
     }
-    protected SNode customCreateChildNode(Object parameterObject, SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model, EditorContext editorContext) {
+    protected SNode customCreateChildNode(Object _parameterObject, SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model, EditorContext editorContext) {
+      SModuleReference parameterObject = (SModuleReference) _parameterObject;
       SNode newNode = SModelOperations.createNewNode(model, null, CONCEPTS.GeneratorModulePointer$49);
       SLinkOperations.setNewChild(newNode, LINKS.module$u1do, null);
       ModuleIdentity__BehaviorDescriptor.setModuleReference_idnJmxU5cSTj.invoke(SLinkOperations.getTarget(newNode, LINKS.module$u1do), parameterObject);
