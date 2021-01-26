@@ -3199,7 +3199,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
       protected boolean isCustomCreateChildNode() {
         return true;
       }
-      protected SNode customCreateChildNode(Object parameterObject, SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model, EditorContext editorContext) {
+      protected SNode customCreateChildNode(Object _parameterObject, SNode node, SNode currentChild, SAbstractConcept defaultChildConcept, SModel model, EditorContext editorContext) {
+        String parameterObject = (String) _parameterObject;
         boolean var = defaultChildConcept != null || model != null || node != null || currentChild != null || parameterObject != null;
         return (var ? null : null);
       }

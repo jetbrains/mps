@@ -32609,50 +32609,52 @@
       <node id="6590130501507381609" at="32,145,33,92" concept="7" />
       <node id="6590130501507381616" at="33,92,34,52" concept="8" />
       <node id="6590130501507369933" at="36,49,37,18" concept="8" />
-      <node id="6590130501507329968" at="39,180,40,86" concept="7" />
-      <node id="6590130501507329974" at="40,86,41,98" concept="2" />
-      <node id="6590130501507376678" at="41,98,42,17" concept="8" />
-      <node id="6590130501507369933" at="46,84,47,287" concept="8" />
-      <node id="8228083397229900135" at="52,0,53,0" concept="11" trace="LanguageId$UR" />
+      <node id="6590130501507369933" at="39,181,40,63" concept="7" />
+      <node id="6590130501507329968" at="40,63,41,86" concept="7" />
+      <node id="6590130501507329974" at="41,86,42,98" concept="2" />
+      <node id="6590130501507376678" at="42,98,43,17" concept="8" />
+      <node id="6590130501507369933" at="47,84,48,287" concept="8" />
+      <node id="8228083397229900135" at="53,0,54,0" concept="11" trace="LanguageId$UR" />
       <node id="6590130501507369933" at="30,0,32,0" concept="1" trace="LanguageIdentity_null_cellMenu_lbhw0l_a0#()V" />
       <node id="8228083397229900135" at="26,0,29,0" concept="1" trace="LoadedLanguages_CellMenu#()V" />
       <node id="6590130501507369933" at="36,0,39,0" concept="6" trace="isCustomCreateChildNode#()Z" />
       <node id="6590130501507369933" at="32,0,36,0" concept="6" trace="createParameterObjects#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/util/List;" />
-      <node id="6590130501507369933" at="45,0,49,0" concept="6" trace="getEditorMenuDescriptor#(Ljava/lang/Object;)Ljetbrains/mps/openapi/editor/menus/EditorMenuDescriptor;" />
-      <node id="6590130501507369933" at="39,0,44,0" concept="6" trace="customCreateChildNode#(Ljava/lang/Object;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/model/SModel;Ljetbrains/mps/openapi/editor/EditorContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="6590130501507369933" at="46,0,50,0" concept="6" trace="getEditorMenuDescriptor#(Ljava/lang/Object;)Ljetbrains/mps/openapi/editor/menus/EditorMenuDescriptor;" />
+      <node id="6590130501507369933" at="39,0,45,0" concept="6" trace="customCreateChildNode#(Ljava/lang/Object;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/model/SModel;Ljetbrains/mps/openapi/editor/EditorContext;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="6590130501507369933" at="30,55,30,55" />
       <scope id="8228083397229900135" at="26,37,27,87" />
       <scope id="6590130501507369933" at="36,49,37,18" />
-      <scope id="6590130501507369933" at="46,84,47,287" />
+      <scope id="6590130501507369933" at="47,84,48,287" />
       <scope id="6590130501507369933" at="30,0,32,0" />
       <scope id="6590130501507369933" at="32,145,34,52">
         <var name="allLanguages" id="6590130501507381610" />
       </scope>
       <scope id="8228083397229900135" at="26,0,29,0" />
       <scope id="6590130501507369933" at="36,0,39,0" />
-      <scope id="6590130501507369933" at="39,180,42,17">
-        <var name="lid" id="6590130501507329969" />
-      </scope>
       <scope id="6590130501507369933" at="32,0,36,0">
         <var name="currentChild" id="6590130501507369933" />
         <var name="defaultChildConcept" id="6590130501507369933" />
         <var name="editorContext" id="6590130501507369933" />
         <var name="node" id="6590130501507369933" />
       </scope>
-      <scope id="6590130501507369933" at="45,0,49,0">
+      <scope id="6590130501507369933" at="39,181,43,17">
+        <var name="lid" id="6590130501507329969" />
         <var name="parameterObject" id="6590130501507369933" />
       </scope>
-      <scope id="6590130501507369933" at="39,0,44,0">
+      <scope id="6590130501507369933" at="46,0,50,0">
+        <var name="parameterObject" id="6590130501507369933" />
+      </scope>
+      <scope id="6590130501507369933" at="39,0,45,0">
+        <var name="_parameterObject" id="6590130501507369933" />
         <var name="currentChild" id="6590130501507369933" />
         <var name="defaultChildConcept" id="6590130501507369933" />
         <var name="editorContext" id="6590130501507369933" />
         <var name="model" id="6590130501507369933" />
         <var name="node" id="6590130501507369933" />
-        <var name="parameterObject" id="6590130501507369933" />
       </scope>
-      <unit id="8228083397229900135" at="51,0,54,0" name="jetbrains.mps.lang.smodel.editor.LoadedLanguages_CellMenu$CONCEPTS" />
-      <unit id="6590130501507369933" at="29,0,50,0" name="jetbrains.mps.lang.smodel.editor.LoadedLanguages_CellMenu$LanguageIdentity_null_cellMenu_lbhw0l_a0" />
-      <unit id="8228083397229900135" at="25,0,55,0" name="jetbrains.mps.lang.smodel.editor.LoadedLanguages_CellMenu" />
+      <unit id="8228083397229900135" at="52,0,55,0" name="jetbrains.mps.lang.smodel.editor.LoadedLanguages_CellMenu$CONCEPTS" />
+      <unit id="6590130501507369933" at="29,0,51,0" name="jetbrains.mps.lang.smodel.editor.LoadedLanguages_CellMenu$LanguageIdentity_null_cellMenu_lbhw0l_a0" />
+      <unit id="8228083397229900135" at="25,0,56,0" name="jetbrains.mps.lang.smodel.editor.LoadedLanguages_CellMenu" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902fd(jetbrains.mps.lang.smodel.editor)/8296877263936075944">
