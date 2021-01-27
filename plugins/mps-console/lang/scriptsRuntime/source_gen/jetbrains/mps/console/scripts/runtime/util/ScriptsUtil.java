@@ -4,10 +4,10 @@ package jetbrains.mps.console.scripts.runtime.util;
 
 import jetbrains.mps.console.tool.ConsoleContext;
 import org.jetbrains.mps.openapi.model.SNode;
+import java.util.List;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.console.scripts.behavior.AbstractConsoleScript__BehaviorDescriptor;
 import javax.swing.SwingUtilities;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.console.tool.BaseConsoleTab;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
@@ -26,10 +26,11 @@ import jetbrains.mps.ide.findusages.model.SearchResult;
 public class ScriptsUtil {
 
   public static void executeScript(final ConsoleContext context, SNode script) {
-    final Iterable<SNode> commands = AbstractConsoleScript__BehaviorDescriptor.getCommands_id1whNchEKZry.invoke(script);
+    // it's essential to have collection one can iterate outside of model read (inside invokeLater, see MPS-32986) 
+    final List<SNode> commands = Sequence.fromIterable(AbstractConsoleScript__BehaviorDescriptor.getCommands_id1whNchEKZry.invoke(script)).toListSequence();
     SwingUtilities.invokeLater(new Runnable() {
       public void run() {
-        executeCommands(context, Sequence.fromIterable(commands).toListSequence(), 0);
+        executeCommands(context, commands, 0);
       }
     });
   }
