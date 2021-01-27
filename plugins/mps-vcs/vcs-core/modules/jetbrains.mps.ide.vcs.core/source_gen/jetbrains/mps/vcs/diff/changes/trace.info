@@ -3139,7 +3139,7 @@
   <root nodeRef="r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/8401260027345476466">
     <file name="ChangeType.java">
       <node id="8401260027345476489" at="15,0,17,0" concept="3" trace="ChangeType#()V" />
-      <scope id="8401260027345476494" at="15,24,15,24" />
+      <scope id="8401260027345476494" at="15,16,15,16" />
       <scope id="8401260027345476489" at="15,0,17,0" />
       <unit id="8401260027345476466" at="7,0,18,0" name="jetbrains.mps.vcs.diff.changes.ChangeType" />
     </file>
