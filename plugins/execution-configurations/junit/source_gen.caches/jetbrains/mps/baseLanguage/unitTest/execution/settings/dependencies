@@ -42,7 +42,6 @@
     <classNode dependClassName="javax.swing.ButtonGroup" />
     <classNode dependClassName="javax.swing.JComponent" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.Wrappers" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.execution.api.JavaConfigurationEditorComponent" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.settings.InProcessJBCheckBox" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.settings.JUnitRunTypes" />
@@ -51,7 +50,6 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.settings.ModuleChooser" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.settings.TestListPanel" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.unitTest.execution.settings.TestUtils" />
-    <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployEditorPanel" />
     <classNode dependClassName="jetbrains.mps.execution.lib.ClonableList" />
     <classNode dependClassName="jetbrains.mps.execution.lib.PointerUtils" />
     <classNode dependClassName="jetbrains.mps.execution.lib.ui.FieldWithPathChooseDialog" />

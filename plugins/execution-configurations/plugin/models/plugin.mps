@@ -2680,17 +2680,17 @@
               </node>
             </node>
           </node>
-          <node concept="3clFbF" id="2MipI7yRt2k" role="3cqZAp">
-            <node concept="2OqwBi" id="2MipI7yRuu0" role="3clFbG">
-              <node concept="37vLTw" id="2MipI7yRt2j" role="2Oq$k0">
+          <node concept="3clFbF" id="6Q7Z5ls$at2" role="3cqZAp">
+            <node concept="2OqwBi" id="6Q7Z5ls$bMC" role="3clFbG">
+              <node concept="37vLTw" id="6Q7Z5ls$at0" role="2Oq$k0">
                 <ref role="3cqZAo" node="3FQ5zX5utPT" resolve="junitEditorComponent" />
               </node>
-              <node concept="liA8E" id="2MipI7yR$0y" role="2OqNvi">
-                <ref role="37wK5l" to="tty3:2MipI7yPTYG" resolve="attachJavaAndDeployComponentsAndUpdateInProcessFlag" />
-                <node concept="37vLTw" id="2MipI7yR_hd" role="37wK5m">
+              <node concept="liA8E" id="6Q7Z5ls$dKC" role="2OqNvi">
+                <ref role="37wK5l" to="tty3:6Q7Z5lsxX1b" resolve="disableComponentWhenInProcess" />
+                <node concept="37vLTw" id="6Q7Z5ls$ea4" role="37wK5m">
                   <ref role="3cqZAo" node="3FQ5zX5te01" resolve="javaEditorComponent" />
                 </node>
-                <node concept="37vLTw" id="1T5iP2aaehR" role="37wK5m">
+                <node concept="37vLTw" id="6Q7Z5ls$fCG" role="37wK5m">
                   <ref role="3cqZAo" node="5dZuAAfo_YM" resolve="pluginsEditor" />
                 </node>
               </node>

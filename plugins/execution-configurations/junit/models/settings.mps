@@ -17,7 +17,6 @@
     <import index="tpe3" ref="r:00000000-0000-4000-0000-011c895902d7(jetbrains.mps.baseLanguage.unitTest.structure)" />
     <import index="sfqd" ref="r:63a75970-913d-4a7b-99e2-8ca72ff6f509(jetbrains.mps.baseLanguage.unitTest.execution.client)" />
     <import index="awpe" ref="r:5a505993-793e-4b2d-84cf-271f9dde39b3(jetbrains.mps.execution.lib)" />
-    <import index="go48" ref="r:fc6b4266-fe93-4e02-bc36-aebff4c903c3(jetbrains.mps.baseLanguage.execution.api)" />
     <import index="dxuu" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:javax.swing(JDK/)" />
     <import index="mk8z" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.progress(MPS.Platform/)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
@@ -51,11 +50,13 @@
     <import index="pa15" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.persistence(MPS.Core/)" />
     <import index="mte5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model.scopes(MPS.Core/)" />
     <import index="yctd" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.findUsages(MPS.Core/)" />
-    <import index="ic9i" ref="r:8aafee6a-4721-443e-8020-e8986ed3f25a(jetbrains.mps.execution.configurations.implementation.plugin.plugin)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
+      <concept id="1219920932475" name="jetbrains.mps.baseLanguage.structure.VariableArityType" flags="in" index="8X2XB">
+        <child id="1219921048460" name="componentType" index="8Xvag" />
+      </concept>
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
       </concept>
@@ -6711,6 +6712,92 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbH" id="6Q7Z5ls$tWp" role="3cqZAp" />
+        <node concept="3clFbF" id="59fG_Y4$fxR" role="3cqZAp">
+          <node concept="2OqwBi" id="59fG_Y4$fxS" role="3clFbG">
+            <node concept="37vLTw" id="59fG_Y4$fxT" role="2Oq$k0">
+              <ref role="3cqZAo" node="KqP__r_02Y" resolve="myInProcessCheckBox" />
+            </node>
+            <node concept="liA8E" id="59fG_Y4$fxU" role="2OqNvi">
+              <ref role="37wK5l" node="59fG_Y4zBPP" resolve="registerDisableIffSelectedUpdater" />
+              <node concept="37vLTw" id="59fG_Y4$hbg" role="37wK5m">
+                <ref role="3cqZAo" node="78pvOus4ykx" resolve="myReuseCachesCheckBox" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="59fG_Y4$iNz" role="3cqZAp">
+          <node concept="2OqwBi" id="59fG_Y4$iN$" role="3clFbG">
+            <node concept="37vLTw" id="59fG_Y4$iN_" role="2Oq$k0">
+              <ref role="3cqZAo" node="KqP__r_02Y" resolve="myInProcessCheckBox" />
+            </node>
+            <node concept="liA8E" id="59fG_Y4$iNA" role="2OqNvi">
+              <ref role="37wK5l" node="59fG_Y4zBPP" resolve="registerDisableIffSelectedUpdater" />
+              <node concept="37vLTw" id="59fG_Y4$kXg" role="37wK5m">
+                <ref role="3cqZAo" node="5X1zr0$Ig8F" resolve="myOverrideCachesCheckBox" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="59fG_Y4$yGZ" role="3cqZAp">
+          <node concept="3cpWsn" id="59fG_Y4$yH0" role="3cpWs9">
+            <property role="TrG5h" value="cachesDirUpdater" />
+            <node concept="3uibUv" id="59fG_Y4$yGY" role="1tU5fm">
+              <ref role="3uigEE" node="59fG_Y4yjvl" resolve="InProcessJBCheckBox.Updater" />
+            </node>
+            <node concept="2ShNRf" id="59fG_Y4$yH1" role="33vP2m">
+              <node concept="YeOm9" id="59fG_Y4$yH2" role="2ShVmc">
+                <node concept="1Y3b0j" id="59fG_Y4$yH3" role="YeSDq">
+                  <property role="2bfB8j" value="true" />
+                  <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
+                  <ref role="1Y3XeK" node="59fG_Y4yjvl" resolve="InProcessJBCheckBox.Updater" />
+                  <node concept="3Tm1VV" id="59fG_Y4$yH4" role="1B3o_S" />
+                  <node concept="3clFb_" id="59fG_Y4$yH5" role="jymVt">
+                    <property role="1EzhhJ" value="false" />
+                    <property role="2aFKle" value="false" />
+                    <property role="TrG5h" value="updateMe" />
+                    <node concept="3Tm1VV" id="59fG_Y4$yH6" role="1B3o_S" />
+                    <node concept="3cqZAl" id="59fG_Y4$yH7" role="3clF45" />
+                    <node concept="3clFbS" id="59fG_Y4$yH8" role="3clF47">
+                      <node concept="3clFbF" id="59fG_Y4$yH9" role="3cqZAp">
+                        <node concept="1rXfSq" id="59fG_Y4$yHa" role="3clFbG">
+                          <ref role="37wK5l" node="5LsMheeLxPv" resolve="syncCachesDirWithCheckBoxes" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="2AHcQZ" id="59fG_Y4$yHb" role="2AJF6D">
+                      <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="29IGCqr$Dd6" role="3cqZAp">
+          <node concept="2OqwBi" id="29IGCqr$EiF" role="3clFbG">
+            <node concept="37vLTw" id="29IGCqr$Dd5" role="2Oq$k0">
+              <ref role="3cqZAo" node="KqP__r_02Y" resolve="myInProcessCheckBox" />
+            </node>
+            <node concept="liA8E" id="59fG_Y4$pS2" role="2OqNvi">
+              <ref role="37wK5l" node="59fG_Y4yhYr" resolve="registerUpdater" />
+              <node concept="37vLTw" id="59fG_Y4$yHc" role="37wK5m">
+                <ref role="3cqZAo" node="59fG_Y4$yH0" resolve="cachesDirUpdater" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="59fG_Y4$Kwa" role="3cqZAp">
+          <node concept="2OqwBi" id="59fG_Y4$LTK" role="3clFbG">
+            <node concept="37vLTw" id="59fG_Y4$Kw8" role="2Oq$k0">
+              <ref role="3cqZAo" node="KqP__r_02Y" resolve="myInProcessCheckBox" />
+            </node>
+            <node concept="liA8E" id="59fG_Y4$NTt" role="2OqNvi">
+              <ref role="37wK5l" node="59fG_Y4$$Sn" resolve="forceUpdate" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="6Q7Z5ls$xFZ" role="3cqZAp" />
       </node>
       <node concept="37vLTG" id="1_bTry1W3A$" role="3clF46">
         <property role="TrG5h" value="project" />
@@ -6761,136 +6848,71 @@
       </node>
     </node>
     <node concept="2tJIrI" id="5LsMheeLBru" role="jymVt" />
-    <node concept="3clFb_" id="2MipI7yPTYG" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="attachJavaAndDeployComponentsAndUpdateInProcessFlag" />
-      <property role="od$2w" value="false" />
-      <property role="DiZV1" value="false" />
-      <node concept="3clFbS" id="2MipI7yPTYH" role="3clF47">
-        <node concept="3clFbF" id="59fG_Y4$8Ug" role="3cqZAp">
-          <node concept="2OqwBi" id="59fG_Y4$a1E" role="3clFbG">
-            <node concept="37vLTw" id="59fG_Y4$8Uf" role="2Oq$k0">
-              <ref role="3cqZAo" node="KqP__r_02Y" resolve="myInProcessCheckBox" />
-            </node>
-            <node concept="liA8E" id="59fG_Y4$dsx" role="2OqNvi">
-              <ref role="37wK5l" node="59fG_Y4zBPP" resolve="registerDisableIffSelectedUpdater" />
-              <node concept="37vLTw" id="3qbI1lNklwm" role="37wK5m">
-                <ref role="3cqZAo" node="2MipI7yPTZ3" resolve="javaEditorComponent" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="1T5iP2akpxa" role="3cqZAp">
-          <node concept="2OqwBi" id="1T5iP2akpxb" role="3clFbG">
-            <node concept="37vLTw" id="1T5iP2akpxc" role="2Oq$k0">
-              <ref role="3cqZAo" node="KqP__r_02Y" resolve="myInProcessCheckBox" />
-            </node>
-            <node concept="liA8E" id="1T5iP2akpxd" role="2OqNvi">
-              <ref role="37wK5l" node="59fG_Y4zBPP" resolve="registerDisableIffSelectedUpdater" />
-              <node concept="37vLTw" id="3qbI1lNkoib" role="37wK5m">
-                <ref role="3cqZAo" node="1T5iP2aa1c8" resolve="deployEditorPanel" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="59fG_Y4$fxR" role="3cqZAp">
-          <node concept="2OqwBi" id="59fG_Y4$fxS" role="3clFbG">
-            <node concept="37vLTw" id="59fG_Y4$fxT" role="2Oq$k0">
-              <ref role="3cqZAo" node="KqP__r_02Y" resolve="myInProcessCheckBox" />
-            </node>
-            <node concept="liA8E" id="59fG_Y4$fxU" role="2OqNvi">
-              <ref role="37wK5l" node="59fG_Y4zBPP" resolve="registerDisableIffSelectedUpdater" />
-              <node concept="37vLTw" id="59fG_Y4$hbg" role="37wK5m">
-                <ref role="3cqZAo" node="78pvOus4ykx" resolve="myReuseCachesCheckBox" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="59fG_Y4$iNz" role="3cqZAp">
-          <node concept="2OqwBi" id="59fG_Y4$iN$" role="3clFbG">
-            <node concept="37vLTw" id="59fG_Y4$iN_" role="2Oq$k0">
-              <ref role="3cqZAo" node="KqP__r_02Y" resolve="myInProcessCheckBox" />
-            </node>
-            <node concept="liA8E" id="59fG_Y4$iNA" role="2OqNvi">
-              <ref role="37wK5l" node="59fG_Y4zBPP" resolve="registerDisableIffSelectedUpdater" />
-              <node concept="37vLTw" id="59fG_Y4$kXg" role="37wK5m">
-                <ref role="3cqZAo" node="5X1zr0$Ig8F" resolve="myOverrideCachesCheckBox" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="59fG_Y4$yGZ" role="3cqZAp">
-          <node concept="3cpWsn" id="59fG_Y4$yH0" role="3cpWs9">
-            <property role="TrG5h" value="cachesDirUpdater" />
-            <node concept="3uibUv" id="59fG_Y4$yGY" role="1tU5fm">
-              <ref role="3uigEE" node="59fG_Y4yjvl" resolve="InProcessJBCheckBox.Updater" />
-            </node>
-            <node concept="2ShNRf" id="59fG_Y4$yH1" role="33vP2m">
-              <node concept="YeOm9" id="59fG_Y4$yH2" role="2ShVmc">
-                <node concept="1Y3b0j" id="59fG_Y4$yH3" role="YeSDq">
-                  <property role="2bfB8j" value="true" />
-                  <ref role="1Y3XeK" node="59fG_Y4yjvl" resolve="InProcessJBCheckBox.Updater" />
-                  <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
-                  <node concept="3Tm1VV" id="59fG_Y4$yH4" role="1B3o_S" />
-                  <node concept="3clFb_" id="59fG_Y4$yH5" role="jymVt">
-                    <property role="1EzhhJ" value="false" />
-                    <property role="2aFKle" value="false" />
-                    <property role="TrG5h" value="updateMe" />
-                    <node concept="3Tm1VV" id="59fG_Y4$yH6" role="1B3o_S" />
-                    <node concept="3cqZAl" id="59fG_Y4$yH7" role="3clF45" />
-                    <node concept="3clFbS" id="59fG_Y4$yH8" role="3clF47">
-                      <node concept="3clFbF" id="59fG_Y4$yH9" role="3cqZAp">
-                        <node concept="1rXfSq" id="59fG_Y4$yHa" role="3clFbG">
-                          <ref role="37wK5l" node="5LsMheeLxPv" resolve="syncCachesDirWithCheckBoxes" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="2AHcQZ" id="59fG_Y4$yHb" role="2AJF6D">
-                      <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-                    </node>
+    <node concept="3clFb_" id="6Q7Z5lsxX1b" role="jymVt">
+      <property role="TrG5h" value="disableComponentWhenInProcess" />
+      <node concept="3clFbS" id="6Q7Z5lsxX1e" role="3clF47">
+        <node concept="1DcWWT" id="6Q7Z5lszYxW" role="3cqZAp">
+          <node concept="3clFbS" id="6Q7Z5lszYxY" role="2LFqv$">
+            <node concept="3clFbF" id="6Q7Z5lsyiF9" role="3cqZAp">
+              <node concept="2OqwBi" id="6Q7Z5lsyiFa" role="3clFbG">
+                <node concept="37vLTw" id="6Q7Z5lsyiFb" role="2Oq$k0">
+                  <ref role="3cqZAo" node="KqP__r_02Y" resolve="myInProcessCheckBox" />
+                </node>
+                <node concept="liA8E" id="6Q7Z5lsyiFc" role="2OqNvi">
+                  <ref role="37wK5l" node="59fG_Y4zBPP" resolve="registerDisableIffSelectedUpdater" />
+                  <node concept="37vLTw" id="6Q7Z5ls$7N6" role="37wK5m">
+                    <ref role="3cqZAo" node="6Q7Z5lszYxZ" resolve="c" />
                   </node>
                 </node>
               </node>
             </node>
           </node>
-        </node>
-        <node concept="3clFbF" id="29IGCqr$Dd6" role="3cqZAp">
-          <node concept="2OqwBi" id="29IGCqr$EiF" role="3clFbG">
-            <node concept="37vLTw" id="29IGCqr$Dd5" role="2Oq$k0">
-              <ref role="3cqZAo" node="KqP__r_02Y" resolve="myInProcessCheckBox" />
-            </node>
-            <node concept="liA8E" id="59fG_Y4$pS2" role="2OqNvi">
-              <ref role="37wK5l" node="59fG_Y4yhYr" resolve="registerUpdater" />
-              <node concept="37vLTw" id="59fG_Y4$yHc" role="37wK5m">
-                <ref role="3cqZAo" node="59fG_Y4$yH0" resolve="cachesDirUpdater" />
-              </node>
+          <node concept="3cpWsn" id="6Q7Z5lszYxZ" role="1Duv9x">
+            <property role="TrG5h" value="c" />
+            <node concept="3uibUv" id="6Q7Z5lszZ2M" role="1tU5fm">
+              <ref role="3uigEE" to="dxuu:~JComponent" resolve="JComponent" />
             </node>
           </node>
+          <node concept="37vLTw" id="6Q7Z5ls$5_Z" role="1DdaDG">
+            <ref role="3cqZAo" node="6Q7Z5lsy888" resolve="component" />
+          </node>
         </node>
-        <node concept="3clFbF" id="59fG_Y4$Kwa" role="3cqZAp">
-          <node concept="2OqwBi" id="59fG_Y4$LTK" role="3clFbG">
-            <node concept="37vLTw" id="59fG_Y4$Kw8" role="2Oq$k0">
+        <node concept="3clFbF" id="6Q7Z5ls$mkm" role="3cqZAp">
+          <node concept="2OqwBi" id="6Q7Z5ls$mkn" role="3clFbG">
+            <node concept="37vLTw" id="6Q7Z5ls$mko" role="2Oq$k0">
               <ref role="3cqZAo" node="KqP__r_02Y" resolve="myInProcessCheckBox" />
             </node>
-            <node concept="liA8E" id="59fG_Y4$NTt" role="2OqNvi">
+            <node concept="liA8E" id="6Q7Z5ls$mkp" role="2OqNvi">
               <ref role="37wK5l" node="59fG_Y4$$Sn" resolve="forceUpdate" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="3Tm1VV" id="2MipI7yPTZ1" role="1B3o_S" />
-      <node concept="3cqZAl" id="2MipI7yPTZ2" role="3clF45" />
-      <node concept="37vLTG" id="2MipI7yPTZ3" role="3clF46">
-        <property role="TrG5h" value="javaEditorComponent" />
-        <property role="3TUv4t" value="true" />
-        <node concept="3uibUv" id="2MipI7yPTZ4" role="1tU5fm">
-          <ref role="3uigEE" to="go48:v01rbtVlXX" resolve="JavaConfigurationEditorComponent" />
+      <node concept="3Tm1VV" id="6Q7Z5lsxStu" role="1B3o_S" />
+      <node concept="3cqZAl" id="6Q7Z5lsxWT6" role="3clF45" />
+      <node concept="37vLTG" id="6Q7Z5lsy888" role="3clF46">
+        <property role="TrG5h" value="component" />
+        <node concept="8X2XB" id="6Q7Z5lszRpN" role="1tU5fm">
+          <node concept="3uibUv" id="6Q7Z5lsy887" role="8Xvag">
+            <ref role="3uigEE" to="dxuu:~JComponent" resolve="JComponent" />
+          </node>
         </node>
       </node>
-      <node concept="37vLTG" id="1T5iP2aa1c8" role="3clF46">
-        <property role="TrG5h" value="deployEditorPanel" />
-        <node concept="3uibUv" id="1T5iP2ajXdD" role="1tU5fm">
-          <ref role="3uigEE" to="ic9i:1T5iP2aaCPh" resolve="DeployEditorPanel" />
+      <node concept="P$JXv" id="6Q7Z5lsylM8" role="lGtFl">
+        <node concept="TZ5HA" id="6Q7Z5lsylM9" role="TZ5H$">
+          <node concept="1dT_AC" id="6Q7Z5lsylMa" role="1dT_Ay">
+            <property role="1dT_AB" value="Disable supplied component when 'in-process' setting has been activated." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="6Q7Z5ls$OiX" role="TZ5H$">
+          <node concept="1dT_AC" id="6Q7Z5ls$OiY" role="1dT_Ay">
+            <property role="1dT_AB" value="Intended for use from run configurations that use JUnit settings along with other settings that may need to reflect " />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="6Q7Z5ls$Ojz" role="TZ5H$">
+          <node concept="1dT_AC" id="6Q7Z5ls$Oj$" role="1dT_Ay">
+            <property role="1dT_AB" value="state of the 'in-process' setting." />
+          </node>
         </node>
       </node>
     </node>
