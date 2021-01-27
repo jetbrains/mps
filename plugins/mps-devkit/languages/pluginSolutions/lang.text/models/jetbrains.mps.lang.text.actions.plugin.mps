@@ -85,6 +85,7 @@
       <concept id="1068580123155" name="jetbrains.mps.baseLanguage.structure.ExpressionStatement" flags="nn" index="3clFbF">
         <child id="1068580123156" name="expression" index="3clFbG" />
       </concept>
+      <concept id="1068580123157" name="jetbrains.mps.baseLanguage.structure.Statement" flags="nn" index="3clFbH" />
       <concept id="1068580123159" name="jetbrains.mps.baseLanguage.structure.IfStatement" flags="nn" index="3clFbJ">
         <child id="1068580123160" name="condition" index="3clFbw" />
         <child id="1068580123161" name="ifTrue" index="3clFbx" />
@@ -152,42 +153,131 @@
     </node>
     <node concept="tnohg" id="6KwcZ1G3PmR" role="tncku">
       <node concept="3clFbS" id="6KwcZ1G3PmS" role="2VODD2">
-        <node concept="3cpWs8" id="vfCMmsI_a8" role="3cqZAp">
-          <node concept="3cpWsn" id="vfCMmsI_a9" role="3cpWs9">
-            <property role="TrG5h" value="selection" />
-            <node concept="3uibUv" id="vfCMmsIA2f" role="1tU5fm">
-              <ref role="3uigEE" to="2u9v:4HqBHuNxSdt" resolve="LetterRangeSelection" />
-            </node>
-            <node concept="10QFUN" id="vfCMmsI_rM" role="33vP2m">
-              <node concept="3uibUv" id="vfCMmsI_MY" role="10QFUM">
-                <ref role="3uigEE" to="2u9v:4HqBHuNxSdt" resolve="LetterRangeSelection" />
-              </node>
-              <node concept="2OqwBi" id="vfCMmsI_ab" role="10QFUP">
-                <node concept="2OqwBi" id="vfCMmsI_ac" role="2Oq$k0">
-                  <node concept="2OqwBi" id="vfCMmsI_ad" role="2Oq$k0">
-                    <node concept="2WthIp" id="vfCMmsI_ae" role="2Oq$k0" />
-                    <node concept="1DTwFV" id="vfCMmsI_af" role="2OqNvi">
-                      <ref role="2WH_rO" node="6KwcZ1G3PmP" resolve="editorComponent" />
+        <node concept="3clFbJ" id="5dCWnAnpLM6" role="3cqZAp">
+          <node concept="3clFbS" id="5dCWnAnpLM8" role="3clFbx">
+            <node concept="3cpWs8" id="vfCMmsI_a8" role="3cqZAp">
+              <node concept="3cpWsn" id="vfCMmsI_a9" role="3cpWs9">
+                <property role="TrG5h" value="selection" />
+                <node concept="3uibUv" id="vfCMmsIA2f" role="1tU5fm">
+                  <ref role="3uigEE" to="2u9v:4HqBHuNxSdt" resolve="LetterRangeSelection" />
+                </node>
+                <node concept="10QFUN" id="vfCMmsI_rM" role="33vP2m">
+                  <node concept="3uibUv" id="vfCMmsI_MY" role="10QFUM">
+                    <ref role="3uigEE" to="2u9v:4HqBHuNxSdt" resolve="LetterRangeSelection" />
+                  </node>
+                  <node concept="2OqwBi" id="vfCMmsI_ab" role="10QFUP">
+                    <node concept="2OqwBi" id="vfCMmsI_ac" role="2Oq$k0">
+                      <node concept="2OqwBi" id="vfCMmsI_ad" role="2Oq$k0">
+                        <node concept="2WthIp" id="vfCMmsI_ae" role="2Oq$k0" />
+                        <node concept="1DTwFV" id="vfCMmsI_af" role="2OqNvi">
+                          <ref role="2WH_rO" node="6KwcZ1G3PmP" resolve="editorComponent" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="vfCMmsI_ag" role="2OqNvi">
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getSelectionManager()" resolve="getSelectionManager" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="vfCMmsI_ah" role="2OqNvi">
+                      <ref role="37wK5l" to="lwvz:~SelectionManager.getSelection()" resolve="getSelection" />
                     </node>
                   </node>
-                  <node concept="liA8E" id="vfCMmsI_ag" role="2OqNvi">
-                    <ref role="37wK5l" to="exr9:~EditorComponent.getSelectionManager()" resolve="getSelectionManager" />
-                  </node>
                 </node>
-                <node concept="liA8E" id="vfCMmsI_ah" role="2OqNvi">
-                  <ref role="37wK5l" to="lwvz:~SelectionManager.getSelection()" resolve="getSelection" />
+              </node>
+            </node>
+            <node concept="3clFbF" id="1aoaL$$$OEU" role="3cqZAp">
+              <node concept="2OqwBi" id="1aoaL$$$OSF" role="3clFbG">
+                <node concept="37vLTw" id="1aoaL$$$OES" role="2Oq$k0">
+                  <ref role="3cqZAo" node="vfCMmsI_a9" resolve="selection" />
+                </node>
+                <node concept="liA8E" id="1aoaL$$$Pds" role="2OqNvi">
+                  <ref role="37wK5l" to="2u9v:vfCMmsJ59f" resolve="turnBold" />
                 </node>
               </node>
             </node>
           </node>
-        </node>
-        <node concept="3clFbF" id="1aoaL$$$OEU" role="3cqZAp">
-          <node concept="2OqwBi" id="1aoaL$$$OSF" role="3clFbG">
-            <node concept="37vLTw" id="1aoaL$$$OES" role="2Oq$k0">
-              <ref role="3cqZAo" node="vfCMmsI_a9" resolve="selection" />
+          <node concept="2ZW3vV" id="5dCWnAnpLR1" role="3clFbw">
+            <node concept="3uibUv" id="5dCWnAnpLR2" role="2ZW6by">
+              <ref role="3uigEE" to="2u9v:4HqBHuNxSdt" resolve="LetterRangeSelection" />
             </node>
-            <node concept="liA8E" id="1aoaL$$$Pds" role="2OqNvi">
-              <ref role="37wK5l" to="2u9v:vfCMmsJ59f" resolve="turnBold" />
+            <node concept="2OqwBi" id="5dCWnAnpLVr" role="2ZW6bz">
+              <node concept="2OqwBi" id="5dCWnAnpLVs" role="2Oq$k0">
+                <node concept="2OqwBi" id="5dCWnAnpLVt" role="2Oq$k0">
+                  <node concept="2WthIp" id="5dCWnAnpLVu" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="5dCWnAnpLVv" role="2OqNvi">
+                    <ref role="2WH_rO" node="6KwcZ1G3PmP" resolve="editorComponent" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="5dCWnAnpLVw" role="2OqNvi">
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getSelectionManager()" resolve="getSelectionManager" />
+                </node>
+              </node>
+              <node concept="liA8E" id="5dCWnAnpLVx" role="2OqNvi">
+                <ref role="37wK5l" to="lwvz:~SelectionManager.getSelection()" resolve="getSelection" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="5dCWnAnpMv2" role="3cqZAp">
+          <node concept="3clFbS" id="5dCWnAnpMv3" role="3clFbx">
+            <node concept="3cpWs8" id="5dCWnAnpMv4" role="3cqZAp">
+              <node concept="3cpWsn" id="5dCWnAnpMv5" role="3cpWs9">
+                <property role="TrG5h" value="selection" />
+                <node concept="3uibUv" id="5dCWnAnpN5p" role="1tU5fm">
+                  <ref role="3uigEE" to="2u9v:4tfWvd2gXHJ" resolve="WordRangeSelection" />
+                </node>
+                <node concept="10QFUN" id="5dCWnAnpMv7" role="33vP2m">
+                  <node concept="3uibUv" id="5dCWnAnpMW0" role="10QFUM">
+                    <ref role="3uigEE" to="2u9v:4tfWvd2gXHJ" resolve="WordRangeSelection" />
+                  </node>
+                  <node concept="2OqwBi" id="5dCWnAnpMv9" role="10QFUP">
+                    <node concept="2OqwBi" id="5dCWnAnpMva" role="2Oq$k0">
+                      <node concept="2OqwBi" id="5dCWnAnpMvb" role="2Oq$k0">
+                        <node concept="2WthIp" id="5dCWnAnpMvc" role="2Oq$k0" />
+                        <node concept="1DTwFV" id="5dCWnAnpMvd" role="2OqNvi">
+                          <ref role="2WH_rO" node="6KwcZ1G3PmP" resolve="editorComponent" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="5dCWnAnpMve" role="2OqNvi">
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getSelectionManager()" resolve="getSelectionManager" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="5dCWnAnpMvf" role="2OqNvi">
+                      <ref role="37wK5l" to="lwvz:~SelectionManager.getSelection()" resolve="getSelection" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="5dCWnAnpMvg" role="3cqZAp">
+              <node concept="2OqwBi" id="5dCWnAnpMvh" role="3clFbG">
+                <node concept="37vLTw" id="5dCWnAnpMvi" role="2Oq$k0">
+                  <ref role="3cqZAo" node="5dCWnAnpMv5" resolve="selection" />
+                </node>
+                <node concept="liA8E" id="5dCWnAnpMvj" role="2OqNvi">
+                  <ref role="37wK5l" to="2u9v:5dCWnAnq1Go" resolve="turnBold" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2ZW3vV" id="5dCWnAnpMvk" role="3clFbw">
+            <node concept="3uibUv" id="5dCWnAnpMJ4" role="2ZW6by">
+              <ref role="3uigEE" to="2u9v:4tfWvd2gXHJ" resolve="WordRangeSelection" />
+            </node>
+            <node concept="2OqwBi" id="5dCWnAnpMvm" role="2ZW6bz">
+              <node concept="2OqwBi" id="5dCWnAnpMvn" role="2Oq$k0">
+                <node concept="2OqwBi" id="5dCWnAnpMvo" role="2Oq$k0">
+                  <node concept="2WthIp" id="5dCWnAnpMvp" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="5dCWnAnpMvq" role="2OqNvi">
+                    <ref role="2WH_rO" node="6KwcZ1G3PmP" resolve="editorComponent" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="5dCWnAnpMvr" role="2OqNvi">
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getSelectionManager()" resolve="getSelectionManager" />
+                </node>
+              </node>
+              <node concept="liA8E" id="5dCWnAnpMvs" role="2OqNvi">
+                <ref role="37wK5l" to="lwvz:~SelectionManager.getSelection()" resolve="getSelection" />
+              </node>
             </node>
           </node>
         </node>
@@ -246,12 +336,22 @@
           <node concept="22lmx$" id="vfCMmsIytn" role="3clFbw">
             <node concept="3fqX7Q" id="vfCMmsI$a1" role="3uHU7w">
               <node concept="1eOMI4" id="vfCMmsI$a3" role="3fr31v">
-                <node concept="2ZW3vV" id="vfCMmsI$a4" role="1eOMHV">
-                  <node concept="3uibUv" id="vfCMmsI$a5" role="2ZW6by">
-                    <ref role="3uigEE" to="2u9v:4HqBHuNxSdt" resolve="LetterRangeSelection" />
+                <node concept="22lmx$" id="5dCWnAnpKt2" role="1eOMHV">
+                  <node concept="2ZW3vV" id="vfCMmsI$a4" role="3uHU7B">
+                    <node concept="3uibUv" id="vfCMmsI$a5" role="2ZW6by">
+                      <ref role="3uigEE" to="2u9v:4HqBHuNxSdt" resolve="LetterRangeSelection" />
+                    </node>
+                    <node concept="37vLTw" id="vfCMmsI$a6" role="2ZW6bz">
+                      <ref role="3cqZAo" node="vfCMmsIxDh" resolve="selection" />
+                    </node>
                   </node>
-                  <node concept="37vLTw" id="vfCMmsI$a6" role="2ZW6bz">
-                    <ref role="3cqZAo" node="vfCMmsIxDh" resolve="selection" />
+                  <node concept="2ZW3vV" id="5dCWnAnpKwK" role="3uHU7w">
+                    <node concept="3uibUv" id="5dCWnAnpKEJ" role="2ZW6by">
+                      <ref role="3uigEE" to="2u9v:4tfWvd2gXHJ" resolve="WordRangeSelection" />
+                    </node>
+                    <node concept="37vLTw" id="5dCWnAnpKwM" role="2ZW6bz">
+                      <ref role="3cqZAo" node="vfCMmsIxDh" resolve="selection" />
+                    </node>
                   </node>
                 </node>
               </node>
@@ -316,45 +416,135 @@
     </node>
     <node concept="tnohg" id="1aoaL$$$Phk" role="tncku">
       <node concept="3clFbS" id="1aoaL$$$Phl" role="2VODD2">
-        <node concept="3cpWs8" id="1aoaL$$$Phm" role="3cqZAp">
-          <node concept="3cpWsn" id="1aoaL$$$Phn" role="3cpWs9">
-            <property role="TrG5h" value="selection" />
-            <node concept="3uibUv" id="1aoaL$$$Pho" role="1tU5fm">
-              <ref role="3uigEE" to="2u9v:4HqBHuNxSdt" resolve="LetterRangeSelection" />
-            </node>
-            <node concept="10QFUN" id="1aoaL$$$Php" role="33vP2m">
-              <node concept="3uibUv" id="1aoaL$$$Phq" role="10QFUM">
-                <ref role="3uigEE" to="2u9v:4HqBHuNxSdt" resolve="LetterRangeSelection" />
-              </node>
-              <node concept="2OqwBi" id="1aoaL$$$Phr" role="10QFUP">
-                <node concept="2OqwBi" id="1aoaL$$$Phs" role="2Oq$k0">
-                  <node concept="2OqwBi" id="1aoaL$$$Pht" role="2Oq$k0">
-                    <node concept="2WthIp" id="1aoaL$$$Phu" role="2Oq$k0" />
-                    <node concept="1DTwFV" id="1aoaL$$$Phv" role="2OqNvi">
-                      <ref role="2WH_rO" node="1aoaL$$$Phg" resolve="editorComponent" />
+        <node concept="3clFbJ" id="5dCWnAnpOp6" role="3cqZAp">
+          <node concept="3clFbS" id="5dCWnAnpOp7" role="3clFbx">
+            <node concept="3cpWs8" id="1aoaL$$$Phm" role="3cqZAp">
+              <node concept="3cpWsn" id="1aoaL$$$Phn" role="3cpWs9">
+                <property role="TrG5h" value="selection" />
+                <node concept="3uibUv" id="1aoaL$$$Pho" role="1tU5fm">
+                  <ref role="3uigEE" to="2u9v:4HqBHuNxSdt" resolve="LetterRangeSelection" />
+                </node>
+                <node concept="10QFUN" id="1aoaL$$$Php" role="33vP2m">
+                  <node concept="3uibUv" id="1aoaL$$$Phq" role="10QFUM">
+                    <ref role="3uigEE" to="2u9v:4HqBHuNxSdt" resolve="LetterRangeSelection" />
+                  </node>
+                  <node concept="2OqwBi" id="1aoaL$$$Phr" role="10QFUP">
+                    <node concept="2OqwBi" id="1aoaL$$$Phs" role="2Oq$k0">
+                      <node concept="2OqwBi" id="1aoaL$$$Pht" role="2Oq$k0">
+                        <node concept="2WthIp" id="1aoaL$$$Phu" role="2Oq$k0" />
+                        <node concept="1DTwFV" id="1aoaL$$$Phv" role="2OqNvi">
+                          <ref role="2WH_rO" node="1aoaL$$$Phg" resolve="editorComponent" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="1aoaL$$$Phw" role="2OqNvi">
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getSelectionManager()" resolve="getSelectionManager" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="1aoaL$$$Phx" role="2OqNvi">
+                      <ref role="37wK5l" to="lwvz:~SelectionManager.getSelection()" resolve="getSelection" />
                     </node>
                   </node>
-                  <node concept="liA8E" id="1aoaL$$$Phw" role="2OqNvi">
-                    <ref role="37wK5l" to="exr9:~EditorComponent.getSelectionManager()" resolve="getSelectionManager" />
-                  </node>
                 </node>
-                <node concept="liA8E" id="1aoaL$$$Phx" role="2OqNvi">
-                  <ref role="37wK5l" to="lwvz:~SelectionManager.getSelection()" resolve="getSelection" />
+              </node>
+            </node>
+            <node concept="3clFbF" id="1aoaL$$$Phy" role="3cqZAp">
+              <node concept="2OqwBi" id="1aoaL$$$Phz" role="3clFbG">
+                <node concept="37vLTw" id="1aoaL$$$Ph$" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1aoaL$$$Phn" resolve="selection" />
+                </node>
+                <node concept="liA8E" id="1aoaL$$$PYe" role="2OqNvi">
+                  <ref role="37wK5l" to="2u9v:1aoaL$$vGCm" resolve="turnItalics" />
                 </node>
               </node>
             </node>
           </node>
-        </node>
-        <node concept="3clFbF" id="1aoaL$$$Phy" role="3cqZAp">
-          <node concept="2OqwBi" id="1aoaL$$$Phz" role="3clFbG">
-            <node concept="37vLTw" id="1aoaL$$$Ph$" role="2Oq$k0">
-              <ref role="3cqZAo" node="1aoaL$$$Phn" resolve="selection" />
+          <node concept="2ZW3vV" id="5dCWnAnpOpo" role="3clFbw">
+            <node concept="3uibUv" id="5dCWnAnpOpp" role="2ZW6by">
+              <ref role="3uigEE" to="2u9v:4HqBHuNxSdt" resolve="LetterRangeSelection" />
             </node>
-            <node concept="liA8E" id="1aoaL$$$PYe" role="2OqNvi">
-              <ref role="37wK5l" to="2u9v:1aoaL$$vGCm" resolve="turnItalics" />
+            <node concept="2OqwBi" id="5dCWnAnpOpq" role="2ZW6bz">
+              <node concept="2OqwBi" id="5dCWnAnpOpr" role="2Oq$k0">
+                <node concept="2OqwBi" id="5dCWnAnpOps" role="2Oq$k0">
+                  <node concept="2WthIp" id="5dCWnAnpOpt" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="5dCWnAnpOpu" role="2OqNvi">
+                    <ref role="2WH_rO" node="1aoaL$$$Phg" resolve="editorComponent" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="5dCWnAnpOpv" role="2OqNvi">
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getSelectionManager()" resolve="getSelectionManager" />
+                </node>
+              </node>
+              <node concept="liA8E" id="5dCWnAnpOpw" role="2OqNvi">
+                <ref role="37wK5l" to="lwvz:~SelectionManager.getSelection()" resolve="getSelection" />
+              </node>
             </node>
           </node>
         </node>
+        <node concept="3clFbJ" id="5dCWnAnpPY_" role="3cqZAp">
+          <node concept="3clFbS" id="5dCWnAnpPYA" role="3clFbx">
+            <node concept="3cpWs8" id="5dCWnAnpPYB" role="3cqZAp">
+              <node concept="3cpWsn" id="5dCWnAnpPYC" role="3cpWs9">
+                <property role="TrG5h" value="selection" />
+                <node concept="3uibUv" id="5dCWnAnpPYD" role="1tU5fm">
+                  <ref role="3uigEE" to="2u9v:4tfWvd2gXHJ" resolve="WordRangeSelection" />
+                </node>
+                <node concept="10QFUN" id="5dCWnAnpPYE" role="33vP2m">
+                  <node concept="3uibUv" id="5dCWnAnpPYF" role="10QFUM">
+                    <ref role="3uigEE" to="2u9v:4tfWvd2gXHJ" resolve="WordRangeSelection" />
+                  </node>
+                  <node concept="2OqwBi" id="5dCWnAnpPYG" role="10QFUP">
+                    <node concept="2OqwBi" id="5dCWnAnpPYH" role="2Oq$k0">
+                      <node concept="2OqwBi" id="5dCWnAnpPYI" role="2Oq$k0">
+                        <node concept="2WthIp" id="5dCWnAnpPYJ" role="2Oq$k0" />
+                        <node concept="1DTwFV" id="5dCWnAnpPYK" role="2OqNvi">
+                          <ref role="2WH_rO" node="1aoaL$$$Phg" resolve="editorComponent" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="5dCWnAnpPYL" role="2OqNvi">
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getSelectionManager()" resolve="getSelectionManager" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="5dCWnAnpPYM" role="2OqNvi">
+                      <ref role="37wK5l" to="lwvz:~SelectionManager.getSelection()" resolve="getSelection" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="5dCWnAnpPYN" role="3cqZAp">
+              <node concept="2OqwBi" id="5dCWnAnpPYO" role="3clFbG">
+                <node concept="37vLTw" id="5dCWnAnpPYP" role="2Oq$k0">
+                  <ref role="3cqZAo" node="5dCWnAnpPYC" resolve="selection" />
+                </node>
+                <node concept="liA8E" id="5dCWnAnqFPs" role="2OqNvi">
+                  <ref role="37wK5l" to="2u9v:5dCWnAnq1H0" resolve="turnItalics" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2ZW3vV" id="5dCWnAnpPYR" role="3clFbw">
+            <node concept="3uibUv" id="5dCWnAnpPYS" role="2ZW6by">
+              <ref role="3uigEE" to="2u9v:4tfWvd2gXHJ" resolve="WordRangeSelection" />
+            </node>
+            <node concept="2OqwBi" id="5dCWnAnpPYT" role="2ZW6bz">
+              <node concept="2OqwBi" id="5dCWnAnpPYU" role="2Oq$k0">
+                <node concept="2OqwBi" id="5dCWnAnpPYV" role="2Oq$k0">
+                  <node concept="2WthIp" id="5dCWnAnpPYW" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="5dCWnAnpPYX" role="2OqNvi">
+                    <ref role="2WH_rO" node="1aoaL$$$Phg" resolve="editorComponent" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="5dCWnAnpPYY" role="2OqNvi">
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getSelectionManager()" resolve="getSelectionManager" />
+                </node>
+              </node>
+              <node concept="liA8E" id="5dCWnAnpPYZ" role="2OqNvi">
+                <ref role="37wK5l" to="lwvz:~SelectionManager.getSelection()" resolve="getSelection" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="5dCWnAnpOky" role="3cqZAp" />
         <node concept="3clFbF" id="1aoaL$$$PhA" role="3cqZAp">
           <node concept="2OqwBi" id="1aoaL$$$PhB" role="3clFbG">
             <node concept="2OqwBi" id="1aoaL$$$PhC" role="2Oq$k0">
@@ -410,12 +600,22 @@
           <node concept="22lmx$" id="1aoaL$$$PhY" role="3clFbw">
             <node concept="3fqX7Q" id="1aoaL$$$PhZ" role="3uHU7w">
               <node concept="1eOMI4" id="1aoaL$$$Pi0" role="3fr31v">
-                <node concept="2ZW3vV" id="1aoaL$$$Pi1" role="1eOMHV">
-                  <node concept="3uibUv" id="1aoaL$$$Pi2" role="2ZW6by">
-                    <ref role="3uigEE" to="2u9v:4HqBHuNxSdt" resolve="LetterRangeSelection" />
+                <node concept="22lmx$" id="5dCWnAnpNxz" role="1eOMHV">
+                  <node concept="2ZW3vV" id="1aoaL$$$Pi1" role="3uHU7B">
+                    <node concept="3uibUv" id="1aoaL$$$Pi2" role="2ZW6by">
+                      <ref role="3uigEE" to="2u9v:4HqBHuNxSdt" resolve="LetterRangeSelection" />
+                    </node>
+                    <node concept="37vLTw" id="1aoaL$$$Pi3" role="2ZW6bz">
+                      <ref role="3cqZAo" node="1aoaL$$$PhL" resolve="selection" />
+                    </node>
                   </node>
-                  <node concept="37vLTw" id="1aoaL$$$Pi3" role="2ZW6bz">
-                    <ref role="3cqZAo" node="1aoaL$$$PhL" resolve="selection" />
+                  <node concept="2ZW3vV" id="5dCWnAnpN_h" role="3uHU7w">
+                    <node concept="3uibUv" id="5dCWnAnpN_i" role="2ZW6by">
+                      <ref role="3uigEE" to="2u9v:4tfWvd2gXHJ" resolve="WordRangeSelection" />
+                    </node>
+                    <node concept="37vLTw" id="5dCWnAnpN_j" role="2ZW6bz">
+                      <ref role="3cqZAo" node="1aoaL$$$PhL" resolve="selection" />
+                    </node>
                   </node>
                 </node>
               </node>
@@ -454,45 +654,135 @@
     </node>
     <node concept="tnohg" id="1aoaL$$$Q36" role="tncku">
       <node concept="3clFbS" id="1aoaL$$$Q37" role="2VODD2">
-        <node concept="3cpWs8" id="1aoaL$$$Q38" role="3cqZAp">
-          <node concept="3cpWsn" id="1aoaL$$$Q39" role="3cpWs9">
-            <property role="TrG5h" value="selection" />
-            <node concept="3uibUv" id="1aoaL$$$Q3a" role="1tU5fm">
-              <ref role="3uigEE" to="2u9v:4HqBHuNxSdt" resolve="LetterRangeSelection" />
-            </node>
-            <node concept="10QFUN" id="1aoaL$$$Q3b" role="33vP2m">
-              <node concept="3uibUv" id="1aoaL$$$Q3c" role="10QFUM">
-                <ref role="3uigEE" to="2u9v:4HqBHuNxSdt" resolve="LetterRangeSelection" />
-              </node>
-              <node concept="2OqwBi" id="1aoaL$$$Q3d" role="10QFUP">
-                <node concept="2OqwBi" id="1aoaL$$$Q3e" role="2Oq$k0">
-                  <node concept="2OqwBi" id="1aoaL$$$Q3f" role="2Oq$k0">
-                    <node concept="2WthIp" id="1aoaL$$$Q3g" role="2Oq$k0" />
-                    <node concept="1DTwFV" id="1aoaL$$$Q3h" role="2OqNvi">
-                      <ref role="2WH_rO" node="1aoaL$$$Q32" resolve="editorComponent" />
+        <node concept="3clFbJ" id="5dCWnAnpOXY" role="3cqZAp">
+          <node concept="3clFbS" id="5dCWnAnpOXZ" role="3clFbx">
+            <node concept="3cpWs8" id="1aoaL$$$Q38" role="3cqZAp">
+              <node concept="3cpWsn" id="1aoaL$$$Q39" role="3cpWs9">
+                <property role="TrG5h" value="selection" />
+                <node concept="3uibUv" id="1aoaL$$$Q3a" role="1tU5fm">
+                  <ref role="3uigEE" to="2u9v:4HqBHuNxSdt" resolve="LetterRangeSelection" />
+                </node>
+                <node concept="10QFUN" id="1aoaL$$$Q3b" role="33vP2m">
+                  <node concept="3uibUv" id="1aoaL$$$Q3c" role="10QFUM">
+                    <ref role="3uigEE" to="2u9v:4HqBHuNxSdt" resolve="LetterRangeSelection" />
+                  </node>
+                  <node concept="2OqwBi" id="1aoaL$$$Q3d" role="10QFUP">
+                    <node concept="2OqwBi" id="1aoaL$$$Q3e" role="2Oq$k0">
+                      <node concept="2OqwBi" id="1aoaL$$$Q3f" role="2Oq$k0">
+                        <node concept="2WthIp" id="1aoaL$$$Q3g" role="2Oq$k0" />
+                        <node concept="1DTwFV" id="1aoaL$$$Q3h" role="2OqNvi">
+                          <ref role="2WH_rO" node="1aoaL$$$Q32" resolve="editorComponent" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="1aoaL$$$Q3i" role="2OqNvi">
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getSelectionManager()" resolve="getSelectionManager" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="1aoaL$$$Q3j" role="2OqNvi">
+                      <ref role="37wK5l" to="lwvz:~SelectionManager.getSelection()" resolve="getSelection" />
                     </node>
                   </node>
-                  <node concept="liA8E" id="1aoaL$$$Q3i" role="2OqNvi">
-                    <ref role="37wK5l" to="exr9:~EditorComponent.getSelectionManager()" resolve="getSelectionManager" />
-                  </node>
                 </node>
-                <node concept="liA8E" id="1aoaL$$$Q3j" role="2OqNvi">
-                  <ref role="37wK5l" to="lwvz:~SelectionManager.getSelection()" resolve="getSelection" />
+              </node>
+            </node>
+            <node concept="3clFbF" id="1aoaL$$$Q3k" role="3cqZAp">
+              <node concept="2OqwBi" id="1aoaL$$$Q3l" role="3clFbG">
+                <node concept="37vLTw" id="1aoaL$$$Q3m" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1aoaL$$$Q39" resolve="selection" />
+                </node>
+                <node concept="liA8E" id="1aoaL$$$QzI" role="2OqNvi">
+                  <ref role="37wK5l" to="2u9v:1aoaL$$xPsO" resolve="turnUnderlined" />
                 </node>
               </node>
             </node>
           </node>
-        </node>
-        <node concept="3clFbF" id="1aoaL$$$Q3k" role="3cqZAp">
-          <node concept="2OqwBi" id="1aoaL$$$Q3l" role="3clFbG">
-            <node concept="37vLTw" id="1aoaL$$$Q3m" role="2Oq$k0">
-              <ref role="3cqZAo" node="1aoaL$$$Q39" resolve="selection" />
+          <node concept="2ZW3vV" id="5dCWnAnpOYg" role="3clFbw">
+            <node concept="3uibUv" id="5dCWnAnpOYh" role="2ZW6by">
+              <ref role="3uigEE" to="2u9v:4HqBHuNxSdt" resolve="LetterRangeSelection" />
             </node>
-            <node concept="liA8E" id="1aoaL$$$QzI" role="2OqNvi">
-              <ref role="37wK5l" to="2u9v:1aoaL$$xPsO" resolve="turnUnderlined" />
+            <node concept="2OqwBi" id="5dCWnAnpOYi" role="2ZW6bz">
+              <node concept="2OqwBi" id="5dCWnAnpOYj" role="2Oq$k0">
+                <node concept="2OqwBi" id="5dCWnAnpOYk" role="2Oq$k0">
+                  <node concept="2WthIp" id="5dCWnAnpOYl" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="5dCWnAnpOYm" role="2OqNvi">
+                    <ref role="2WH_rO" node="1aoaL$$$Q32" resolve="editorComponent" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="5dCWnAnpOYn" role="2OqNvi">
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getSelectionManager()" resolve="getSelectionManager" />
+                </node>
+              </node>
+              <node concept="liA8E" id="5dCWnAnpOYo" role="2OqNvi">
+                <ref role="37wK5l" to="lwvz:~SelectionManager.getSelection()" resolve="getSelection" />
+              </node>
             </node>
           </node>
         </node>
+        <node concept="3clFbJ" id="5dCWnAnpQuO" role="3cqZAp">
+          <node concept="3clFbS" id="5dCWnAnpQuP" role="3clFbx">
+            <node concept="3cpWs8" id="5dCWnAnpQuQ" role="3cqZAp">
+              <node concept="3cpWsn" id="5dCWnAnpQuR" role="3cpWs9">
+                <property role="TrG5h" value="selection" />
+                <node concept="3uibUv" id="5dCWnAnpQuS" role="1tU5fm">
+                  <ref role="3uigEE" to="2u9v:4tfWvd2gXHJ" resolve="WordRangeSelection" />
+                </node>
+                <node concept="10QFUN" id="5dCWnAnpQuT" role="33vP2m">
+                  <node concept="3uibUv" id="5dCWnAnpQuU" role="10QFUM">
+                    <ref role="3uigEE" to="2u9v:4tfWvd2gXHJ" resolve="WordRangeSelection" />
+                  </node>
+                  <node concept="2OqwBi" id="5dCWnAnpQuV" role="10QFUP">
+                    <node concept="2OqwBi" id="5dCWnAnpQuW" role="2Oq$k0">
+                      <node concept="2OqwBi" id="5dCWnAnpQuX" role="2Oq$k0">
+                        <node concept="2WthIp" id="5dCWnAnpQuY" role="2Oq$k0" />
+                        <node concept="1DTwFV" id="5dCWnAnpQuZ" role="2OqNvi">
+                          <ref role="2WH_rO" node="1aoaL$$$Q32" resolve="editorComponent" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="5dCWnAnpQv0" role="2OqNvi">
+                        <ref role="37wK5l" to="exr9:~EditorComponent.getSelectionManager()" resolve="getSelectionManager" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="5dCWnAnpQv1" role="2OqNvi">
+                      <ref role="37wK5l" to="lwvz:~SelectionManager.getSelection()" resolve="getSelection" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="5dCWnAnpQv2" role="3cqZAp">
+              <node concept="2OqwBi" id="5dCWnAnpQv3" role="3clFbG">
+                <node concept="37vLTw" id="5dCWnAnpQv4" role="2Oq$k0">
+                  <ref role="3cqZAo" node="5dCWnAnpQuR" resolve="selection" />
+                </node>
+                <node concept="liA8E" id="5dCWnAnpQMv" role="2OqNvi">
+                  <ref role="37wK5l" to="2u9v:5dCWnAnq1HC" resolve="turnUnderlined" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2ZW3vV" id="5dCWnAnpQv6" role="3clFbw">
+            <node concept="3uibUv" id="5dCWnAnpQv7" role="2ZW6by">
+              <ref role="3uigEE" to="2u9v:4tfWvd2gXHJ" resolve="WordRangeSelection" />
+            </node>
+            <node concept="2OqwBi" id="5dCWnAnpQv8" role="2ZW6bz">
+              <node concept="2OqwBi" id="5dCWnAnpQv9" role="2Oq$k0">
+                <node concept="2OqwBi" id="5dCWnAnpQva" role="2Oq$k0">
+                  <node concept="2WthIp" id="5dCWnAnpQvb" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="5dCWnAnpQvc" role="2OqNvi">
+                    <ref role="2WH_rO" node="1aoaL$$$Q32" resolve="editorComponent" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="5dCWnAnpQvd" role="2OqNvi">
+                  <ref role="37wK5l" to="exr9:~EditorComponent.getSelectionManager()" resolve="getSelectionManager" />
+                </node>
+              </node>
+              <node concept="liA8E" id="5dCWnAnpQve" role="2OqNvi">
+                <ref role="37wK5l" to="lwvz:~SelectionManager.getSelection()" resolve="getSelection" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="5dCWnAnpOXz" role="3cqZAp" />
         <node concept="3clFbF" id="1aoaL$$$Q3o" role="3cqZAp">
           <node concept="2OqwBi" id="1aoaL$$$Q3p" role="3clFbG">
             <node concept="2OqwBi" id="1aoaL$$$Q3q" role="2Oq$k0">
@@ -548,12 +838,22 @@
           <node concept="22lmx$" id="1aoaL$$$Q3K" role="3clFbw">
             <node concept="3fqX7Q" id="1aoaL$$$Q3L" role="3uHU7w">
               <node concept="1eOMI4" id="1aoaL$$$Q3M" role="3fr31v">
-                <node concept="2ZW3vV" id="1aoaL$$$Q3N" role="1eOMHV">
-                  <node concept="3uibUv" id="1aoaL$$$Q3O" role="2ZW6by">
-                    <ref role="3uigEE" to="2u9v:4HqBHuNxSdt" resolve="LetterRangeSelection" />
+                <node concept="22lmx$" id="5dCWnAnpO2t" role="1eOMHV">
+                  <node concept="2ZW3vV" id="1aoaL$$$Q3N" role="3uHU7B">
+                    <node concept="3uibUv" id="1aoaL$$$Q3O" role="2ZW6by">
+                      <ref role="3uigEE" to="2u9v:4HqBHuNxSdt" resolve="LetterRangeSelection" />
+                    </node>
+                    <node concept="37vLTw" id="1aoaL$$$Q3P" role="2ZW6bz">
+                      <ref role="3cqZAo" node="1aoaL$$$Q3z" resolve="selection" />
+                    </node>
                   </node>
-                  <node concept="37vLTw" id="1aoaL$$$Q3P" role="2ZW6bz">
-                    <ref role="3cqZAo" node="1aoaL$$$Q3z" resolve="selection" />
+                  <node concept="2ZW3vV" id="5dCWnAnpO6b" role="3uHU7w">
+                    <node concept="3uibUv" id="5dCWnAnpO6c" role="2ZW6by">
+                      <ref role="3uigEE" to="2u9v:4tfWvd2gXHJ" resolve="WordRangeSelection" />
+                    </node>
+                    <node concept="37vLTw" id="5dCWnAnpO6d" role="2ZW6bz">
+                      <ref role="3cqZAo" node="1aoaL$$$Q3z" resolve="selection" />
+                    </node>
                   </node>
                 </node>
               </node>

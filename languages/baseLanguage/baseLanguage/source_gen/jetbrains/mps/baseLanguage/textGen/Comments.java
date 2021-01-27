@@ -5,53 +5,16 @@ package jetbrains.mps.baseLanguage.textGen;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
 import jetbrains.mps.lang.text.behavior.Paragraph__BehaviorDescriptor;
-import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SProperty;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public abstract class Comments {
   public static void commentLine(SNode line, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    for (SNode el : SLinkOperations.getChildren(line, LINKS.elements$_j45)) {
-      if (SNodeOperations.isInstanceOf(el, CONCEPTS.Word$Dn)) {
-        SNode word = SNodeOperations.cast(el, CONCEPTS.Word$Dn);
-        tgs.append(SPropertyOperations.getString(word, PROPS.value$zQr_));
-        if (isNotEmptyString(SPropertyOperations.getString(word, PROPS.url$SIrt))) {
-          tgs.append(" (");
-          tgs.append(SPropertyOperations.getString(word, PROPS.url$SIrt));
-          tgs.append(")");
-        }
-        tgs.append(" ");
-      }
-      if (SNodeOperations.isInstanceOf(el, CONCEPTS.NodeWrapperElement$c8)) {
-        tgs.append("<node>");
-      }
-    }
+    tgs.append(Line__BehaviorDescriptor.representAsText_id2iG$EWuTXv2.invoke(line));
   }
   public static void commentParagraph(SNode p, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.append(Paragraph__BehaviorDescriptor.representAsText_id1iNeTGeVhLf.invoke(p));
-  }
-  private static boolean isNotEmptyString(String str) {
-    return str != null && str.length() > 0;
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
-    /*package*/ static final SConcept NodeWrapperElement$c8 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, "jetbrains.mps.lang.text.structure.NodeWrapperElement");
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty value$zQr_ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
-    /*package*/ static final SProperty url$SIrt = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink elements$_j45 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
   }
 }

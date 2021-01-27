@@ -4217,7 +4217,7 @@
               <uo k="s:originTrace" v="n:6934061334344522898" />
             </node>
             <node concept="2qgKlT" id="jS" role="2OqNvi">
-              <ref role="37wK5l" to="vdrq:4ruP0NLisxF" resolve="shouldRemoveBullet" />
+              <ref role="37wK5l" to="vdrq:60UJ0Iso0zD" resolve="shouldRemoveBullet" />
               <uo k="s:originTrace" v="n:6934061334344522899" />
               <node concept="37vLTw" id="jT" role="37wK5m">
                 <ref role="3cqZAo" node="j8" resolve="numberedLine" />

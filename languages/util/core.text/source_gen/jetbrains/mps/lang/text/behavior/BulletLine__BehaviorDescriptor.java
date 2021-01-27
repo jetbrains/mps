@@ -30,8 +30,9 @@ public final class BulletLine__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> canBeTurnedToBullet_idWJz9iAWPfE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canBeTurnedToBullet").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("WJz9iAWPfE").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> shouldRemoveBullet_idWJz9iAWPgs = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("shouldRemoveBullet").modifiers(SModifiersImpl.create(1, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("WJz9iAWPgs").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   /*package*/ static final SMethod<Boolean> startsWithBulletSpace_idWJz9iAWPgX = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("startsWithBulletSpace").modifiers(SModifiersImpl.create(1, AccessPrivileges.PRIVATE)).concept(CONCEPT).id("WJz9iAWPgX").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<String> wrapTextForClipboard_id2iG$EWuTXuU = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("wrapTextForClipboard").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2iG$EWuTXuU").build(SMethodBuilder.createJavaParameter(String.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canBeTurnedToBullet_idWJz9iAWPfE, shouldRemoveBullet_idWJz9iAWPgs, startsWithBulletSpace_idWJz9iAWPgX);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canBeTurnedToBullet_idWJz9iAWPfE, shouldRemoveBullet_idWJz9iAWPgs, startsWithBulletSpace_idWJz9iAWPgX, wrapTextForClipboard_id2iG$EWuTXuU);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -52,6 +53,9 @@ public final class BulletLine__BehaviorDescriptor extends BaseBHDescriptor {
     }
     return SPropertyOperations.getString(f, PROPS.value$zQr_).matches("[*|-]") && (SNodeOperations.getNextSibling(f) != null);
   }
+  /*package*/ static String wrapTextForClipboard_id2iG$EWuTXuU(@NotNull SNode __thisNode__, String text) {
+    return IndentedPoint__BehaviorDescriptor.getIndentString_idfcFkhVQ0er.invoke(__thisNode__) + "* " + text;
+  }
 
   /*package*/ BulletLine__BehaviorDescriptor() {
   }
@@ -68,6 +72,8 @@ public final class BulletLine__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 3:
+        return (T) ((String) wrapTextForClipboard_id2iG$EWuTXuU(node, (String) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

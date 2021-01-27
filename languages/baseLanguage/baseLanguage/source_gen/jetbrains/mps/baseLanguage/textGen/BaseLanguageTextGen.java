@@ -227,11 +227,11 @@ public abstract class BaseLanguageTextGen {
     String packageName;
     if (reference instanceof DynamicReference) {
       shortName = ((jetbrains.mps.smodel.SReference) reference).getResolveInfo();
-      // hack, todo: remove! 
+      // hack,todo:remove!
       if (shortName.startsWith("[")) {
         return MultiTuple.<String,String>from(shortName.substring(1, shortName.lastIndexOf("]")).trim(), shortName.substring(shortName.lastIndexOf("]") + 1).trim());
       } else {
-        // todo: remove! 
+        // todo:remove!
         final SModelReference modelReference = reference.getTargetSModelReference();
         if (modelReference != null) {
           packageName = modelReference.getName().getLongName();
@@ -261,7 +261,7 @@ public abstract class BaseLanguageTextGen {
         packageName = BaseLanguageTextGen.getPackageName(SNodeOperations.cast(targetNode, CONCEPTS.Classifier$Ix), ctx);
         shortName = SPropertyOperations.getString(SNodeOperations.cast(targetNode, CONCEPTS.Classifier$Ix), PROPS.nestedName$Em3S);
       } else if (SNodeOperations.isInstanceOf(targetNode, CONCEPTS.ConstructorDeclaration$yG)) {
-        //  don't ask me why classifierRef ever points to ConstructorDeclaration. Check ClassCreator_TextGen. 
+        // don'taskmewhyclassifierRefeverpointstoConstructorDeclaration.CheckClassCreator_TextGen.
         SNode classifier = SNodeOperations.getNodeAncestor(targetNode, CONCEPTS.Classifier$Ix, false, false);
         packageName = BaseLanguageTextGen.getPackageName(classifier, ctx);
         shortName = SPropertyOperations.getString(classifier, PROPS.nestedName$Em3S);

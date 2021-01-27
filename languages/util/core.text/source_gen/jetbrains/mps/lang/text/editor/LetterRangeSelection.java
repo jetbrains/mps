@@ -102,7 +102,7 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
   }
   public LetterRangeSelection(@NotNull EditorComponent editorComponent, @NotNull SNode firstNode, @NotNull SNode lastNode, boolean growingForward, String emptyCellId) {
     super(editorComponent);
-    // swap first and last letter if needed 
+    // swapfirstandlastletterifneeded
     Iterable<? extends SNode> letters = getChildIterable(SNodeOperations.as(SNodeOperations.getParent(firstNode), CONCEPTS.Paragraph$XF));
     for (SNode l : letters) {
       if (Objects.equals(l, firstNode)) {
@@ -156,7 +156,7 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
         break;
       }
     }
-    // asserting both first/last node was in this children collection 
+    // assertingbothfirst/lastnodewasinthischildrencollection
     assert withinSelection;
     assert breakLoop;
     setSelectedCells(selectedCells);
@@ -233,7 +233,7 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
     } else if (type == CellActionType.SELECT_LOCAL_END) {
       selectLocalEnd(editorContext, selectionManager);
     } else if (type == CellActionType.PASTE) {
-      PasteHandler.paste(editorContext, myLastNode, false);
+      PasteTextualHandler.paste(editorContext, myLastNode, false);
       performDeleteAction(type);
     } else if (type == CellActionType.INSERT || type == CellActionType.INSERT_BEFORE) {
       if (Objects.equals(myFirstParentNode, myLastParentNode)) {
@@ -690,14 +690,14 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
   }
 
   private void turn(_FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> query, _FunctionTypes._void_P2_E0<? super SNode, ? super Boolean> modifier) {
-    boolean allBold = true;
+    boolean allSet = true;
     for (SNode child : getSelectedNodes()) {
       if (SNodeOperations.isInstanceOf(child, CONCEPTS.Letter$kd)) {
-        allBold = allBold && query.invoke(SNodeOperations.as(child, CONCEPTS.Letter$kd));
+        allSet = allSet && query.invoke(SNodeOperations.as(child, CONCEPTS.Letter$kd));
         modifier.invoke(SNodeOperations.as(child, CONCEPTS.Letter$kd), true);
       }
     }
-    if (allBold) {
+    if (allSet) {
       for (SNode child : getSelectedNodes()) {
         if (SNodeOperations.isInstanceOf(child, CONCEPTS.Letter$kd)) {
           modifier.invoke(SNodeOperations.as(child, CONCEPTS.Letter$kd), false);

@@ -20,7 +20,7 @@ public final class ImportEntry {
   }
 
   /*package*/ ImportEntry(@Nullable String name2import, @NotNull String name2use) {
-    // name2import == null indicates no import needed 
+    // name2import==nullindicatesnoimportneeded
     myName2Import = name2import;
     myName2Use = name2use;
   }

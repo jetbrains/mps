@@ -33,7 +33,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     switch (conceptIndex.index(cncpt)) {
       case 0:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[2];
           intentions[0] = new IncreaseIndentation_Intention();
           intentions[1] = new DecreaseIndentation_Intention();
@@ -41,14 +41,23 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
         break;
       case 1:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new ConvertToParagraphs_Intention();
         }
         break;
       case 2:
         if (true) {
-          // concept 
+          // concept
+          intentions = new IntentionFactory[3];
+          intentions[0] = new MakeBulletLine_Intention();
+          intentions[1] = new MakeNumberedLine_Intention();
+          intentions[2] = new MakeLine_Intention();
+        }
+        break;
+      case 3:
+        if (true) {
+          // concept
           intentions = new IntentionFactory[6];
           intentions[0] = new InsertNodeWrapper_Intention();
           intentions[1] = new InsertUrlIntoParagraph_Intention();
@@ -58,9 +67,9 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
           intentions[5] = new MakeUrl_Intention();
         }
         break;
-      case 3:
+      case 4:
         if (true) {
-          // concept 
+          // concept
           intentions = new IntentionFactory[1];
           intentions[0] = new Unlink_Intention();
         }
@@ -74,7 +83,7 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
   @NotNull
   @Override
   public Collection<IntentionFactory> getAllIntentions() {
-    IntentionFactory[] rv = new IntentionFactory[10];
+    IntentionFactory[] rv = new IntentionFactory[13];
     rv[0] = new InsertNodeWrapper_Intention();
     rv[1] = new ConvertToParagraphs_Intention();
     rv[2] = new InsertUrlIntoParagraph_Intention();
@@ -85,7 +94,10 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
     rv[7] = new MakeParagraph_Intention();
     rv[8] = new MakeUrl_Intention();
     rv[9] = new Unlink_Intention();
+    rv[10] = new MakeBulletLine_Intention();
+    rv[11] = new MakeNumberedLine_Intention();
+    rv[12] = new MakeLine_Intention();
     return Arrays.asList(rv);
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L), MetaIdFactory.conceptId(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L), MetaIdFactory.conceptId(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20d9cfbL), MetaIdFactory.conceptId(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x739f6249ff2c0691L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L), MetaIdFactory.conceptId(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L), MetaIdFactory.conceptId(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L), MetaIdFactory.conceptId(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20d9cfbL), MetaIdFactory.conceptId(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x739f6249ff2c0691L)).seal();
 }

@@ -32,7 +32,7 @@ public class ClassifierUnitContext implements RootDependencies.Source {
   private final HashSet<String> myExtends;
 
   public ClassifierUnitContext(SNode topClassifierNode) {
-    // FIXME don't really need to keep a node, just don't want to refactor NameUtil.nodeFQName uses right now 
+    // FIXMEdon'treallyneedtokeepanode,justdon'twanttorefactorNameUtil.nodeFQNameusesrightnow
     myClassifierNode = topClassifierNode;
     myImports = new ImportsContext(topClassifierNode);
     myDepends = new HashSet<String>();
@@ -41,14 +41,14 @@ public class ClassifierUnitContext implements RootDependencies.Source {
 
   public ImportEntry getClassifierRefText(SNode target, String packageName, String fqName, SNode contextNode) {
     addDependency(packageName, fqName);
-    // FIXME there's likely no reason to pass package name and fqName (except, perhaps, for nested classes) 
-    // Could we instead pass node<Classifier> here directly? Indeed, although it's a major refactoring of crapy 
-    // BaseLanguageTextGen, where we go back and forth from node<Classifier> to strings 
+    // FIXMEthere'slikelynoreasontopasspackagenameandfqName(except,perhaps,fornestedclasses)
+    // Couldweinsteadpassnode<Classifier>heredirectly?Indeed,althoughit'samajorrefactoringofcrapy
+    // BaseLanguageTextGen,wherewegobackandforthfromnode<Classifier>tostrings
     return myImports.getClassifierRefText(target, packageName, fqName, contextNode);
   }
 
   private void addDependency(String packageName, String fqName) {
-    // using only root classifiers as dependencies 
+    // usingonlyrootclassifiersasdependencies
     String nestedName = JavaNameUtil.nestedClassName(packageName, fqName);
     int dotIndex = nestedName.indexOf('.');
     String dependencyFqName;
@@ -57,7 +57,7 @@ public class ClassifierUnitContext implements RootDependencies.Source {
     } else {
       dependencyFqName = packageName + '.' + nestedName.substring(0, dotIndex);
     }
-    // set<string> dependencies = getUserObjects(TextGen.DEPENDENCY); 
+    // set<string>dependencies=getUserObjects(TextGen.DEPENDENCY);
     myDepends.add(InternUtil.intern(dependencyFqName));
   }
 
@@ -77,10 +77,10 @@ public class ClassifierUnitContext implements RootDependencies.Source {
    * @param isTopClassifier true indicates we generate a top-level class, false for inner class indicates we shall record relaxed dependency
    */
   private void registerExtendsRelation(Iterable<SNode> classifiers, boolean isTopClassifier) {
-    // if an inner class extends/implements outer classifier, we shall not record this dependency as 'extends' of a 
-    // top-level unit (see sample in MPS-17604). Perhaps, we shall not record this dependency at all? 
+    // ifaninnerclassextends/implementsouterclassifier,weshallnotrecordthisdependencyas'extends'ofa
+    // top-levelunit(seesampleinMPS-17604).Perhaps,weshallnotrecordthisdependencyatall?
 
-    // set<string> dependencies = getUserObjects(isTopClassifier ? TextGen.EXTENDS : TextGen.DEPENDENCY); 
+    // set<string>dependencies=getUserObjects(isTopClassifier?TextGen.EXTENDS:TextGen.DEPENDENCY);
     HashSet<String> deps = (isTopClassifier ? myExtends : myDepends);
     for (SNode c : SLinkOperations.collect(classifiers, LINKS.classifier$cxMr)) {
       deps.add(getTopmostClassifierName(c));
@@ -88,26 +88,26 @@ public class ClassifierUnitContext implements RootDependencies.Source {
   }
 
   private String getTopmostClassifierName(SNode c) {
-    // Classifier could be inner, for our purposes it's sufficent to record dependency from the top-most classifier 
-    //     We use these to build module dependency graph for compilation, nested classes are irrelevant as 
-    //     (a) they are in the same module anyway 
-    //     (b) reverse map of class to module is built for top classifiers only, we won't find anything there for nested class 
-    //         (see j.m.make.Dependencies) 
+    // Classifiercouldbeinner,forourpurposesit'ssufficenttorecorddependencyfromthetop-mostclassifier
+    // Weusethesetobuildmoduledependencygraphforcompilation,nestedclassesareirrelevantas
+    // (a)theyareinthesamemoduleanyway
+    // (b)reversemapofclasstomoduleisbuiltfortopclassifiersonly,wewon'tfindanythingtherefornestedclass
+    // (seej.m.make.Dependencies)
     return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(ListSequence.fromList(SNodeOperations.getNodeAncestors(c, CONCEPTS.Classifier$Ix, true)).last());
-    // I don't need list of ancestors, but c.ancestor<root,concept> looks at the root node only (which is not right, IMO) 
-    // Why not Java-specific naming utility here, e.g. JavaNameUtil? Because getFqName does the same better (respects nested classifiers) and without any statics. 
+    // Idon'tneedlistofancestors,butc.ancestor<root,concept>looksattherootnodeonly(whichisnotright,IMO)
+    // WhynotJava-specificnamingutilityhere,e.g.JavaNameUtil?BecausegetFqNamedoesthesamebetter(respectsnestedclassifiers)andwithoutanystatics.
   }
 
   @Override
   public RootDependencies getDependencies() {
-    // 1. nodeFQName comes from legacy TextGen 
+    // 1.nodeFQNamecomesfromlegacyTextGen
     String nodeFQName = NameUtil.nodeFQName(myClassifierNode);
-    // 3. Filtering and sorting of dependencies originate from TextGen legacy, left as is for now 
+    // 3.FilteringandsortingofdependenciesoriginatefromTextGenlegacy,leftasisfornow
     myDepends.removeAll(myExtends);
     myDepends.remove(nodeFQName);
     myDepends.remove(null);
     myExtends.remove(nodeFQName);
-    // registerExtendsRelation(singleton(classifier.extends)) yields null for classes without superclass\n 
+    // registerExtendsRelation(singleton(classifier.extends))yieldsnullforclasseswithoutsuperclass\n
     myExtends.remove(null);
     ArrayList<String> dep = new ArrayList<String>(myDepends);
     ArrayList<String> ext = new ArrayList<String>(myExtends);

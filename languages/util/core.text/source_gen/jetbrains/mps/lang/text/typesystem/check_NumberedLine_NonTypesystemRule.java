@@ -7,7 +7,7 @@ import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
-import jetbrains.mps.lang.text.behavior.BulletPoint__BehaviorDescriptor;
+import jetbrains.mps.lang.text.behavior.NumberedLine__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -21,7 +21,7 @@ public class check_NumberedLine_NonTypesystemRule extends AbstractNonTypesystemR
   public check_NumberedLine_NonTypesystemRule() {
   }
   public void applyRule(final SNode numberedLine, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((boolean) BulletPoint__BehaviorDescriptor.shouldRemoveBullet_id4ruP0NLisxF.invoke(SNodeOperations.asSConcept(CONCEPTS.NumberedLine$k0), numberedLine)) {
+    if ((boolean) NumberedLine__BehaviorDescriptor.shouldRemoveBullet_id60UJ0Iso0zD.invoke(SNodeOperations.asSConcept(CONCEPTS.NumberedLine$k0), numberedLine)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportInfo(numberedLine, "The bullet should be removed", "r:d1be8bd3-dfc7-4e90-8b90-965089cd0937(jetbrains.mps.lang.text.typesystem)", "6934061334344522893", null, errorTarget);

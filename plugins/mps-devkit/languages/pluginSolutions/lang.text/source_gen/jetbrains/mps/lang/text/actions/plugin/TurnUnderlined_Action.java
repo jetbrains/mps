@@ -11,6 +11,7 @@ import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.lang.text.editor.LetterRangeSelection;
+import jetbrains.mps.lang.text.editor.WordRangeSelection;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.openapi.editor.EditorContext;
@@ -30,7 +31,7 @@ public class TurnUnderlined_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     Selection selection = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getSelectionManager().getSelection();
-    if (selection == null || !((selection instanceof LetterRangeSelection))) {
+    if (selection == null || !((selection instanceof LetterRangeSelection || selection instanceof WordRangeSelection))) {
       return false;
     }
     return true;
@@ -65,8 +66,15 @@ public class TurnUnderlined_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    LetterRangeSelection selection = (LetterRangeSelection) ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getSelectionManager().getSelection();
-    selection.turnUnderlined();
+    if (((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getSelectionManager().getSelection() instanceof LetterRangeSelection) {
+      LetterRangeSelection selection = (LetterRangeSelection) ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getSelectionManager().getSelection();
+      selection.turnUnderlined();
+    }
+    if (((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getSelectionManager().getSelection() instanceof WordRangeSelection) {
+      WordRangeSelection selection = (WordRangeSelection) ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getSelectionManager().getSelection();
+      selection.turnUnderlined();
+    }
+
     ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getEditorComponent().update();
   }
 }

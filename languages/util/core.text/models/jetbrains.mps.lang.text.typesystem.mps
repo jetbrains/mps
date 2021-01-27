@@ -1062,7 +1062,7 @@
             <ref role="35c_gD" to="zqge:60UJ0Isn_12" resolve="NumberedLine" />
           </node>
           <node concept="2qgKlT" id="60UJ0Iso5Mj" role="2OqNvi">
-            <ref role="37wK5l" to="vdrq:4ruP0NLisxF" resolve="shouldRemoveBullet" />
+            <ref role="37wK5l" to="vdrq:60UJ0Iso0zD" resolve="shouldRemoveBullet" />
             <node concept="1YBJjd" id="60UJ0Iso5Mk" role="37wK5m">
               <ref role="1YBMHb" node="60UJ0Iso5Ml" resolve="numberedLine" />
             </node>
