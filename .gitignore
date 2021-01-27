@@ -88,3 +88,6 @@ teamcity-info.xml
 
 # Versions of library dependecies required for platform (like Kotlin, JDK etc)
 /build/dependencies
+
+# scripts for mac signing
+/build/tools/mac

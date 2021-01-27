@@ -285,6 +285,8 @@
     <delete dir="${basedir}/../plugins/platform-images" failonerror="false"/>
     <delete dir="${basedir}/../plugins/laf-macos" failonerror="false"/>
     <delete dir="${basedir}/../plugins/laf-win10" failonerror="false"/>
+
+    <delete dir="${basedir}/../build/tools/mac" failonerror="false"/>
   </target>
 
   <target name="clean-diffutils">
