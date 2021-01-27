@@ -88,7 +88,6 @@
     <orderEntry type="module" module-name="mps-icons" />
     <orderEntry type="module" module-name="mps-messaging" />
     <orderEntry type="module" module-name="mps-project-excludes" />
-    <orderEntry type="module" module-name="mps-testing" />
     <orderEntry type="module" module-name="mps-workbench" />
     <orderEntry type="module" module-name="refactoring" />
     <orderEntry type="module" module-name="resources" />
