@@ -84,7 +84,7 @@ public class MPSFrameworkSupportProvider extends FacetBasedFrameworkSupportProvi
       configurationBean.setUseModuleSourceFolder(true);
       configurationBean.setUseTransientOutputFolder(false);
     }
-    mpsFacet.setConfiguration(configurationBean);
+    mpsFacet.getConfiguration().setConfigurationBean(configurationBean);
   }
 
   private ContentEntry getContentEntry(ModifiableRootModel rootModel) {
