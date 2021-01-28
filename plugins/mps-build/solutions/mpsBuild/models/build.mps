@@ -36127,11 +36127,6 @@
             <ref role="3bR37D" node="7Kfy9QB6LgV" resolve="jetbrains.mps.make.runtime" />
           </node>
         </node>
-        <node concept="1SiIV0" id="22atqJwqRDy" role="3bR37C">
-          <node concept="3bR9La" id="22atqJwqRDz" role="1SiIV1">
-            <ref role="3bR37D" node="3fCcEmT2ZdI" resolve="jetbrains.mps.lang.test.util" />
-          </node>
-        </node>
         <node concept="1SiIV0" id="59dmSAW33Iw" role="3bR37C">
           <node concept="3bR9La" id="59dmSAW33Ix" role="1SiIV1">
             <ref role="3bR37D" node="7Kfy9QB6L8Y" resolve="jetbrains.mps.lang.project" />
@@ -36241,11 +36236,6 @@
           <node concept="3bR9La" id="6IZ_b08qDGf" role="1SiIV1">
             <property role="3bR36h" value="true" />
             <ref role="3bR37D" node="1ia2VB5guYy" resolve="MPS.IDEA" />
-          </node>
-        </node>
-        <node concept="1SiIV0" id="1FO466sJxO8" role="3bR37C">
-          <node concept="3bR9La" id="1FO466sJxO9" role="1SiIV1">
-            <ref role="3bR37D" node="3fCcEmT2ZdI" resolve="jetbrains.mps.lang.test.util" />
           </node>
         </node>
         <node concept="1SiIV0" id="7yg7vrOQR3A" role="3bR37C">
@@ -42121,9 +42111,6 @@
     </node>
     <node concept="10PD9b" id="ymnOULALNk" role="10PD9s" />
     <node concept="3b7kt6" id="ymnOULALNp" role="10PD9s" />
-    <node concept="2igEWh" id="ymnOULI5J9" role="1hWBAP">
-      <property role="2igJW4" value="true" />
-    </node>
   </node>
   <node concept="2DRAQV" id="1w81suM7mlx">
     <property role="TrG5h" value="installer.nsi" />

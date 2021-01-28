@@ -583,11 +583,6 @@
             <ref role="3bR37D" to="ffeo:5xa9wY2vhb7" resolve="jetbrains.mps.execution.configurations.implementation.plugin" />
           </node>
         </node>
-        <node concept="1SiIV0" id="3T4oiWuYWAL" role="3bR37C">
-          <node concept="3bR9La" id="3T4oiWuYWAM" role="1SiIV1">
-            <ref role="3bR37D" to="ffeo:3fCcEmT2ZdI" resolve="jetbrains.mps.lang.test.util" />
-          </node>
-        </node>
         <node concept="1SiIV0" id="5sLbmmj1rR1" role="3bR37C">
           <node concept="3bR9La" id="5sLbmmj1rR2" role="1SiIV1">
             <ref role="3bR37D" to="ffeo:1H905DlDUSw" resolve="MPS.OpenAPI" />
