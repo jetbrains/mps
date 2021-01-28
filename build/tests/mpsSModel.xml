@@ -111,15 +111,15 @@
     </echoxml>
     <jar destfile="${build.layout}/jetbrains.mps.smodel.test.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.smodel.test" />
-      <fileset dir="${basedir}/plugins/mps-testing/languages/languageDesign/smodelTests/solutions/jetbrains.mps.smodel.test" includes="icons/**, resources/**" />
+      <fileset dir="${basedir}/plugins/mps-testing/languages/smodelTests/solutions/jetbrains.mps.smodel.test" includes="icons/**, resources/**" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.smodel.test.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-testing-languages-languageDesign-smodelTests-solutions-jetbrains.mps.smodel.test-models">
-      <fileset dir="${basedir}/plugins/mps-testing/languages/languageDesign/smodelTests/solutions/jetbrains.mps.smodel.test/models" includes="**/*.mps, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-testing-languages-smodelTests-solutions-jetbrains.mps.smodel.test-models">
+      <fileset dir="${basedir}/plugins/mps-testing/languages/smodelTests/solutions/jetbrains.mps.smodel.test/models" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/jetbrains.mps.smodel.test-src.jar" duplicate="preserve">
-      <zipfileset file="${basedir}/plugins/mps-testing/languages/languageDesign/smodelTests/solutions/jetbrains.mps.smodel.test/jetbrains.mps.smodel.test.msd" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-testing-languages-languageDesign-smodelTests-solutions-jetbrains.mps.smodel.test-models" prefix="module/models" />
+      <zipfileset file="${basedir}/plugins/mps-testing/languages/smodelTests/solutions/jetbrains.mps.smodel.test/jetbrains.mps.smodel.test.msd" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-testing-languages-smodelTests-solutions-jetbrains.mps.smodel.test-models" prefix="module/models" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.testRead.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.testRead.jar/META-INF" />
@@ -461,7 +461,7 @@
       <chunk>
         <module file="${basedir}/testbench/testsolutions/quotation.test/jetbrains.mps.lang.quotation.test.msd" />
         <module file="${basedir}/testbench/testsolutions/smodel.unittest/jetbrains.mps.lang.smodel.unittest.msd" />
-        <module file="${basedir}/plugins/mps-testing/languages/languageDesign/smodelTests/solutions/jetbrains.mps.smodel.test/jetbrains.mps.smodel.test.msd" />
+        <module file="${basedir}/plugins/mps-testing/languages/smodelTests/solutions/jetbrains.mps.smodel.test/jetbrains.mps.smodel.test.msd" />
         <module file="${basedir}/testbench/modules/generator-tests/smodel/jetbrains.mps.test.smodel.msd" />
         <module file="${basedir}/testbench/modules/testRead/jetbrains.mps.testRead.msd" />
       </chunk>
@@ -486,7 +486,7 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.smodel.test" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.smodel.test" fork="false" encoding="utf8" includeantruntime="false" debug="true">
       <compilerarg value="-Xlint:none" />
-      <src path="${basedir}/plugins/mps-testing/languages/languageDesign/smodelTests/solutions/jetbrains.mps.smodel.test/test_gen/" />
+      <src path="${basedir}/plugins/mps-testing/languages/smodelTests/solutions/jetbrains.mps.smodel.test/test_gen/" />
       <classpath>
         <fileset file="${artifacts.mps}/lib/mps-core.jar" />
         <fileset file="${artifacts.mps}/lib/mps-annotations.jar" />
@@ -543,7 +543,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.smodel.test">
-      <fileset dir="${basedir}/plugins/mps-testing/languages/languageDesign/smodelTests/solutions/jetbrains.mps.smodel.test/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/plugins/mps-testing/languages/smodelTests/solutions/jetbrains.mps.smodel.test/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -974,7 +974,7 @@
     <delete dir="${basedir}/testbench/testsolutions/smodel.unittest/tests_gen" />
     <delete dir="${basedir}/testbench/modules/generator-tests/smodel/source_gen" />
     <delete dir="${basedir}/testbench/testsolutions/quotation.test/test_gen" />
-    <delete dir="${basedir}/plugins/mps-testing/languages/languageDesign/smodelTests/solutions/jetbrains.mps.smodel.test/test_gen" />
+    <delete dir="${basedir}/plugins/mps-testing/languages/smodelTests/solutions/jetbrains.mps.smodel.test/test_gen" />
     <delete dir="${basedir}/testbench/modules/generator-tests/smodel/test_gen" />
     <delete dir="${basedir}/testbench/modules/testRead/test_gen" />
   </target>
