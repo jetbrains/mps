@@ -13,6 +13,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
@@ -124,6 +126,124 @@ public class Line_Actions {
 
     };
   }
+  /*package*/ static AbstractCellAction createAction_SELECT_ALL(final SNode node) {
+    return new AbstractCellAction() {
+      public void execute(EditorContext editorContext) {
+        this.execute_internal(editorContext, node);
+      }
+      public void execute_internal(EditorContext editorContext, SNode node) {
+        SelectionManager selectionManager = editorContext.getSelectionManager();
+        EditorCellLabelSelection selection = as_h5gcex_a0a1a1a0a0a5(selectionManager.getSelection(), EditorCellLabelSelection.class);
+
+        List<SNode> selectedNodes = selection.getSelectedNodes();
+        SNode currentWord = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextElement$WN);
+
+        Iterable<SNode> lines = SNodeOperations.ofConcept(SNodeOperations.getAllSiblings(SNodeOperations.getParent(currentWord), true), CONCEPTS.Line$yC);
+        SNode f = Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(Sequence.fromIterable(lines).first())).first();
+        SNode l = Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(Sequence.fromIterable(lines).last())).last();
+
+        WordRangeSelection ws = new WordRangeSelection(editorContext.getEditorComponent(), f, l, true);
+        selectionManager.pushSelection(ws);
+      }
+
+    };
+  }
+  /*package*/ static AbstractCellAction createAction_SELECT_HOME(final SNode node) {
+    return new AbstractCellAction() {
+      public void execute(EditorContext editorContext) {
+        this.execute_internal(editorContext, node);
+      }
+      public void execute_internal(EditorContext editorContext, SNode node) {
+        SelectionManager selectionManager = editorContext.getSelectionManager();
+        EditorCellLabelSelection selection = as_h5gcex_a0a1a1a0a0a6(selectionManager.getSelection(), EditorCellLabelSelection.class);
+
+        List<SNode> selectedNodes = selection.getSelectedNodes();
+        SNode currentWord = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextElement$WN);
+        SNode f = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getPrevSiblings(currentWord, true), CONCEPTS.TextElement$WN)).first();
+
+        WordRangeSelection ws = new WordRangeSelection(editorContext.getEditorComponent(), f, currentWord, false);
+        selectionManager.pushSelection(ws);
+      }
+
+    };
+  }
+  /*package*/ static AbstractCellAction createAction_SELECT_END(final SNode node) {
+    return new AbstractCellAction() {
+      public void execute(EditorContext editorContext) {
+        this.execute_internal(editorContext, node);
+      }
+      public void execute_internal(EditorContext editorContext, SNode node) {
+        SelectionManager selectionManager = editorContext.getSelectionManager();
+        EditorCellLabelSelection selection = as_h5gcex_a0a1a1a0a0a7(selectionManager.getSelection(), EditorCellLabelSelection.class);
+
+        List<SNode> selectedNodes = selection.getSelectedNodes();
+        SNode currentWord = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextElement$WN);
+        SNode nextNode = SNodeOperations.as(SNodeOperations.getNextSibling(currentWord), CONCEPTS.TextElement$WN);
+        SNode w = Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getNextSiblings(currentWord, true), CONCEPTS.TextElement$WN)).last();
+
+        WordRangeSelection ws = new WordRangeSelection(editorContext.getEditorComponent(), ((SNodeOperations.getPrevSibling(currentWord) != null) || selection.getSelectionStart() > 0 ? nextNode : currentWord), w, true);
+        selectionManager.pushSelection(ws);
+      }
+
+    };
+  }
+  /*package*/ static AbstractCellAction createAction_SELECT_LOCAL_HOME(final SNode node) {
+    return new AbstractCellAction() {
+      public void execute(EditorContext editorContext) {
+        this.execute_internal(editorContext, node);
+      }
+      public void execute_internal(EditorContext editorContext, SNode node) {
+        SelectionManager selectionManager = editorContext.getSelectionManager();
+        EditorCellLabelSelection selection = as_h5gcex_a0a1a1a0a0a8(selectionManager.getSelection(), EditorCellLabelSelection.class);
+
+        List<SNode> selectedNodes = selection.getSelectedNodes();
+        SNode currentWord = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextElement$WN);
+
+        SNode previousWord = null;
+        if ((SNodeOperations.getPrevSibling(currentWord) == null)) {
+          // cursoratthebeginningofaline
+          previousWord = Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(SNodeOperations.as(SNodeOperations.getPrevSibling(SNodeOperations.getParent(currentWord)), CONCEPTS.Line$yC))).last();
+        } else {
+          previousWord = SNodeOperations.as(SNodeOperations.getPrevSibling(currentWord), CONCEPTS.TextElement$WN);
+        }
+        if (previousWord == null) {
+          previousWord = currentWord;
+        }
+
+        WordRangeSelection ws = new WordRangeSelection(editorContext.getEditorComponent(), previousWord, currentWord, false);
+        selectionManager.pushSelection(ws);
+      }
+
+    };
+  }
+  /*package*/ static AbstractCellAction createAction_SELECT_LOCAL_END(final SNode node) {
+    return new AbstractCellAction() {
+      public void execute(EditorContext editorContext) {
+        this.execute_internal(editorContext, node);
+      }
+      public void execute_internal(EditorContext editorContext, SNode node) {
+        SelectionManager selectionManager = editorContext.getSelectionManager();
+        EditorCellLabelSelection selection = as_h5gcex_a0a1a1a0a0a9(selectionManager.getSelection(), EditorCellLabelSelection.class);
+
+        List<SNode> selectedNodes = selection.getSelectedNodes();
+        SNode currentWord = SNodeOperations.as(selectedNodes.get(selectedNodes.size() - 1), CONCEPTS.TextElement$WN);
+        SNode nextWord = null;
+        if ((SNodeOperations.getNextSibling(currentWord) == null)) {
+          // cursorattheendofaline
+          nextWord = Sequence.fromIterable(Line__BehaviorDescriptor.getTextElements_idWJz9iATjyN.invoke(SNodeOperations.as(SNodeOperations.getNextSibling(SNodeOperations.getParent(currentWord)), CONCEPTS.Line$yC))).first();
+        } else {
+          nextWord = SNodeOperations.as(SNodeOperations.getNextSibling(currentWord), CONCEPTS.TextElement$WN);
+        }
+        if (nextWord == null) {
+          nextWord = currentWord;
+        }
+
+        WordRangeSelection ws = new WordRangeSelection(editorContext.getEditorComponent(), currentWord, nextWord, true);
+        selectionManager.pushSelection(ws);
+      }
+
+    };
+  }
 
   public static void setCellActions(EditorCell editorCell, SNode node, EditorContext context) {
     CellAction originalDelete = editorCell.getAction(CellActionType.DELETE);
@@ -157,6 +277,11 @@ public class Line_Actions {
     editorCell.setAction(CellActionType.SELECT_LEFT, createAction_SELECT_LEFT(node));
     editorCell.setAction(CellActionType.SELECT_NEXT, createAction_SELECT_NEXT(node));
     editorCell.setAction(CellActionType.SELECT_RIGHT, createAction_SELECT_RIGHT(node));
+    editorCell.setAction(CellActionType.SELECT_ALL, createAction_SELECT_ALL(node));
+    editorCell.setAction(CellActionType.SELECT_HOME, createAction_SELECT_HOME(node));
+    editorCell.setAction(CellActionType.SELECT_END, createAction_SELECT_END(node));
+    editorCell.setAction(CellActionType.SELECT_LOCAL_HOME, createAction_SELECT_LOCAL_HOME(node));
+    editorCell.setAction(CellActionType.SELECT_LOCAL_END, createAction_SELECT_LOCAL_END(node));
   }
 
   public static void setDefinedCellActionsOfType(EditorCell editorCell, SNode node, EditorContext context, CellActionType actionType) {
@@ -176,6 +301,21 @@ public class Line_Actions {
     if (Objects.equals(actionType, CellActionType.SELECT_RIGHT)) {
       editorCell.setAction(actionType, createAction_SELECT_RIGHT(node));
     }
+    if (Objects.equals(actionType, CellActionType.SELECT_ALL)) {
+      editorCell.setAction(actionType, createAction_SELECT_ALL(node));
+    }
+    if (Objects.equals(actionType, CellActionType.SELECT_HOME)) {
+      editorCell.setAction(actionType, createAction_SELECT_HOME(node));
+    }
+    if (Objects.equals(actionType, CellActionType.SELECT_END)) {
+      editorCell.setAction(actionType, createAction_SELECT_END(node));
+    }
+    if (Objects.equals(actionType, CellActionType.SELECT_LOCAL_HOME)) {
+      editorCell.setAction(actionType, createAction_SELECT_LOCAL_HOME(node));
+    }
+    if (Objects.equals(actionType, CellActionType.SELECT_LOCAL_END)) {
+      editorCell.setAction(actionType, createAction_SELECT_LOCAL_END(node));
+    }
   }
   private static <T> T as_h5gcex_a0a1a1a0a0a1(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
@@ -187,6 +327,21 @@ public class Line_Actions {
     return (type.isInstance(o) ? (T) o : null);
   }
   private static <T> T as_h5gcex_a0a1a1a0a0a4(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_h5gcex_a0a1a1a0a0a5(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_h5gcex_a0a1a1a0a0a6(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_h5gcex_a0a1a1a0a0a7(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_h5gcex_a0a1a1a0a0a8(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_h5gcex_a0a1a1a0a0a9(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 

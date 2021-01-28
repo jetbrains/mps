@@ -531,13 +531,16 @@
   </dependency>
   <dependency className="jetbrains.mps.lang.text.editor.Line_Actions">
     <classNode dependClassName="java.lang.Class" />
+    <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.cells.AbstractCellAction" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
+    <classNode dependClassName="jetbrains.mps.lang.text.behavior.Line__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.text.editor.WordRangeSelection" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Property" />
