@@ -131,7 +131,7 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
     });
   }
   private void checkInProcessRunIsSingle() throws RuntimeConfigurationException {
-    if (this.getJUnitSettings().getInProcess() && TestInProcessRunState.getInstance().get() != RunStateEnum.IDLE) {
+    if (this.getJUnitSettings().getInProcess() && TestInProcessRunState.getInstance(this.getProject()).get() != RunStateEnum.IDLE) {
       throw new RuntimeConfigurationError("There is already another instance running tests in-process. Only one instance is allowed to run in-process.");
     }
   }

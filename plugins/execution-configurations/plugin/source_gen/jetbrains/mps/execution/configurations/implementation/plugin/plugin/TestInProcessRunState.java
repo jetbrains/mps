@@ -4,21 +4,30 @@ package jetbrains.mps.execution.configurations.implementation.plugin.plugin;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
+import com.intellij.openapi.util.Key;
 import java.util.concurrent.atomic.AtomicReference;
+import com.intellij.openapi.project.Project;
 import org.apache.log4j.Level;
 import org.jetbrains.annotations.NotNull;
 
 public final class TestInProcessRunState implements Comparable<TestInProcessRunState> {
   private static final Logger LOG = LogManager.getLogger(TestInProcessRunState.class);
-  private static final TestInProcessRunState ourInstance = new TestInProcessRunState();
+  private static final Key<AtomicReference<RunStateEnum>> STATE_KEY = Key.create("jetbrains.mps.junit.run.state");
   private final AtomicReference<RunStateEnum> myValue;
 
-  public static TestInProcessRunState getInstance() {
-    return ourInstance;
+  public static TestInProcessRunState getInstance(Project ideaProject) {
+    // on module reload, what I risk to keep in memory state is Key and RunStateEnum instances, that are hopefully  
+    // still subject to garbage collection. Seems better than TestInProcessRunState as a singleton 
+    AtomicReference<RunStateEnum> knownState = ideaProject.getUserData(STATE_KEY);
+    if (knownState == null) {
+      knownState = new AtomicReference<RunStateEnum>(RunStateEnum.IDLE);
+      ideaProject.putUserData(STATE_KEY, knownState);
+    }
+    return new TestInProcessRunState(knownState);
   }
 
-  private TestInProcessRunState() {
-    myValue = new AtomicReference<RunStateEnum>(RunStateEnum.IDLE);
+  private TestInProcessRunState(AtomicReference<RunStateEnum> value) {
+    myValue = value;
   }
 
   public RunStateEnum get() {

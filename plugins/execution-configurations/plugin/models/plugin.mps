@@ -2585,6 +2585,10 @@
                 <node concept="2YIFZM" id="37RZV2urbl8" role="2Oq$k0">
                   <ref role="37wK5l" node="78MxLJAHsh8" resolve="getInstance" />
                   <ref role="1Pybhc" node="1$FrpHy4ud$" resolve="TestInProcessRunState" />
+                  <node concept="2OqwBi" id="6$65u8qbdlp" role="37wK5m">
+                    <node concept="2WthIp" id="6$65u8qbd1o" role="2Oq$k0" />
+                    <node concept="3a8Xsn" id="6$65u8qbdv7" role="2OqNvi" />
+                  </node>
                 </node>
                 <node concept="liA8E" id="4YDgfhqaNUD" role="2OqNvi">
                   <ref role="37wK5l" node="2A5UIbg69nv" resolve="get" />
@@ -15195,6 +15199,21 @@
             <node concept="2YIFZM" id="37RZV2urbl9" role="37vLTx">
               <ref role="37wK5l" node="78MxLJAHsh8" resolve="getInstance" />
               <ref role="1Pybhc" node="1$FrpHy4ud$" resolve="TestInProcessRunState" />
+              <node concept="2OqwBi" id="6$65u8qbl2E" role="37wK5m">
+                <node concept="liA8E" id="6$65u8qbmf_" role="2OqNvi">
+                  <ref role="37wK5l" to="z1c4:~MPSProject.getProject()" resolve="getProject" />
+                </node>
+                <node concept="1eOMI4" id="6$65u8qbl5O" role="2Oq$k0">
+                  <node concept="10QFUN" id="6$65u8qbkuQ" role="1eOMHV">
+                    <node concept="3uibUv" id="6$65u8qbkuR" role="10QFUM">
+                      <ref role="3uigEE" to="z1c4:~MPSProject" resolve="MPSProject" />
+                    </node>
+                    <node concept="37vLTw" id="6$65u8qbkuS" role="10QFUP">
+                      <ref role="3cqZAo" node="2qFJdjDAnwF" resolve="mpsProject" />
+                    </node>
+                  </node>
+                </node>
+              </node>
             </node>
             <node concept="37vLTw" id="78MxLJAHzfR" role="37vLTJ">
               <ref role="3cqZAo" node="78MxLJAHuiW" resolve="myTestRunState" />
@@ -17377,18 +17396,24 @@
     <property role="3GE5qa" value="junit.state" />
     <property role="TrG5h" value="TestInProcessRunState" />
     <property role="1EXbeo" value="true" />
-    <node concept="Wx3nA" id="78MxLJAHm5c" role="jymVt">
-      <property role="2dlcS1" value="false" />
-      <property role="2dld4O" value="false" />
-      <property role="TrG5h" value="ourInstance" />
+    <node concept="Wx3nA" id="6$65u8qbrbg" role="jymVt">
+      <property role="TrG5h" value="STATE_KEY" />
       <property role="3TUv4t" value="true" />
-      <node concept="3Tm6S6" id="78MxLJAHlyR" role="1B3o_S" />
-      <node concept="3uibUv" id="78MxLJAHm2q" role="1tU5fm">
-        <ref role="3uigEE" node="1$FrpHy4ud$" resolve="TestInProcessRunState" />
+      <node concept="3Tm6S6" id="6$65u8qbnOC" role="1B3o_S" />
+      <node concept="3uibUv" id="6$65u8qbqX5" role="1tU5fm">
+        <ref role="3uigEE" to="zn9m:~Key" resolve="Key" />
+        <node concept="3uibUv" id="6$65u8qbuzM" role="11_B2D">
+          <ref role="3uigEE" to="i5cy:~AtomicReference" resolve="AtomicReference" />
+          <node concept="3uibUv" id="6$65u8qbv5t" role="11_B2D">
+            <ref role="3uigEE" node="1$FrpHy4ufC" resolve="RunStateEnum" />
+          </node>
+        </node>
       </node>
-      <node concept="2ShNRf" id="3jW1bnX81CI" role="33vP2m">
-        <node concept="1pGfFk" id="3jW1bnX81xY" role="2ShVmc">
-          <ref role="37wK5l" node="1$FrpHy4udC" resolve="TestInProcessRunState" />
+      <node concept="2YIFZM" id="6$65u8qbsiM" role="33vP2m">
+        <ref role="37wK5l" to="zn9m:~Key.create(java.lang.String)" resolve="create" />
+        <ref role="1Pybhc" to="zn9m:~Key" resolve="Key" />
+        <node concept="Xl_RD" id="6$65u8qbsJd" role="37wK5m">
+          <property role="Xl_RC" value="jetbrains.mps.junit.run.state" />
         </node>
       </node>
     </node>
@@ -17410,10 +17435,192 @@
       <property role="DiZV1" value="false" />
       <property role="od$2w" value="false" />
       <property role="TrG5h" value="getInstance" />
+      <node concept="37vLTG" id="6$65u8qbaCb" role="3clF46">
+        <property role="TrG5h" value="ideaProject" />
+        <node concept="3uibUv" id="6$65u8qbbu6" role="1tU5fm">
+          <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
+        </node>
+      </node>
       <node concept="3clFbS" id="78MxLJAHq5M" role="3clF47">
+        <node concept="3SKdUt" id="6$65u8qctHe" role="3cqZAp">
+          <node concept="1PaTwC" id="6$65u8qctHf" role="1aUNEU">
+            <node concept="3oM_SD" id="6$65u8qctHg" role="1PaTwD">
+              <property role="3oM_SC" value="on" />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qctTd" role="1PaTwD">
+              <property role="3oM_SC" value="module" />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qctTg" role="1PaTwD">
+              <property role="3oM_SC" value="reload," />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qctTk" role="1PaTwD">
+              <property role="3oM_SC" value="what" />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qctTp" role="1PaTwD">
+              <property role="3oM_SC" value="I" />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qctUm" role="1PaTwD">
+              <property role="3oM_SC" value="risk" />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qctUt" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qctU_" role="1PaTwD">
+              <property role="3oM_SC" value="keep" />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qctUY" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qctVw" role="1PaTwD">
+              <property role="3oM_SC" value="memory" />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qctVN" role="1PaTwD">
+              <property role="3oM_SC" value="state" />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qctVZ" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qctX1" role="1PaTwD">
+              <property role="3oM_SC" value="Key" />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qctXB" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qctXY" role="1PaTwD">
+              <property role="3oM_SC" value="RunStateEnum" />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qctYQ" role="1PaTwD">
+              <property role="3oM_SC" value="instances," />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qctZv" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qctZT" role="1PaTwD">
+              <property role="3oM_SC" value="are" />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qcu0k" role="1PaTwD">
+              <property role="3oM_SC" value="hopefully" />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qcuFF" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="6$65u8qcuGs" role="3cqZAp">
+          <node concept="1PaTwC" id="6$65u8qcuGr" role="1aUNEU">
+            <node concept="3oM_SD" id="6$65u8qcuGq" role="1PaTwD">
+              <property role="3oM_SC" value="still" />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qcu0S" role="1PaTwD">
+              <property role="3oM_SC" value="subject" />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qcu1H" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qcuTP" role="1PaTwD">
+              <property role="3oM_SC" value="garbage" />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qcuES" role="1PaTwD">
+              <property role="3oM_SC" value="collection." />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qcv3R" role="1PaTwD">
+              <property role="3oM_SC" value="Seems" />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qcv46" role="1PaTwD">
+              <property role="3oM_SC" value="better" />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qcv4u" role="1PaTwD">
+              <property role="3oM_SC" value="than" />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qcv4Z" role="1PaTwD">
+              <property role="3oM_SC" value="TestInProcessRunState" />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qcv5L" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qcv5W" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="6$65u8qcv6g" role="1PaTwD">
+              <property role="3oM_SC" value="singleton" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="6$65u8qbwll" role="3cqZAp">
+          <node concept="3cpWsn" id="6$65u8qbwlm" role="3cpWs9">
+            <property role="TrG5h" value="knownState" />
+            <node concept="3uibUv" id="6$65u8qbwbE" role="1tU5fm">
+              <ref role="3uigEE" to="i5cy:~AtomicReference" resolve="AtomicReference" />
+              <node concept="3uibUv" id="6$65u8qbwbH" role="11_B2D">
+                <ref role="3uigEE" node="1$FrpHy4ufC" resolve="RunStateEnum" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="6$65u8qbwln" role="33vP2m">
+              <node concept="37vLTw" id="6$65u8qbwlo" role="2Oq$k0">
+                <ref role="3cqZAo" node="6$65u8qbaCb" resolve="ideaProject" />
+              </node>
+              <node concept="liA8E" id="6$65u8qbwlp" role="2OqNvi">
+                <ref role="37wK5l" to="zn9m:~UserDataHolder.getUserData(com.intellij.openapi.util.Key)" resolve="getUserData" />
+                <node concept="37vLTw" id="6$65u8qbwlq" role="37wK5m">
+                  <ref role="3cqZAo" node="6$65u8qbrbg" resolve="STATE_KEY" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="6$65u8qbwU6" role="3cqZAp">
+          <node concept="3clFbS" id="6$65u8qbwU8" role="3clFbx">
+            <node concept="3clFbF" id="6$65u8qbAui" role="3cqZAp">
+              <node concept="37vLTI" id="6$65u8qbB0z" role="3clFbG">
+                <node concept="37vLTw" id="6$65u8qbAug" role="37vLTJ">
+                  <ref role="3cqZAo" node="6$65u8qbwlm" resolve="knownState" />
+                </node>
+                <node concept="2ShNRf" id="6$65u8qb$TS" role="37vLTx">
+                  <node concept="1pGfFk" id="6$65u8qb$TT" role="2ShVmc">
+                    <ref role="37wK5l" to="i5cy:~AtomicReference.&lt;init&gt;(java.lang.Object)" resolve="AtomicReference" />
+                    <node concept="3uibUv" id="6$65u8qb$TU" role="1pMfVU">
+                      <ref role="3uigEE" node="1$FrpHy4ufC" resolve="RunStateEnum" />
+                    </node>
+                    <node concept="Rm8GO" id="6$65u8qb$TV" role="37wK5m">
+                      <ref role="Rm8GQ" node="1$FrpHy4ufD" resolve="IDLE" />
+                      <ref role="1Px2BO" node="1$FrpHy4ufC" resolve="RunStateEnum" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="6$65u8qbygR" role="3cqZAp">
+              <node concept="2OqwBi" id="6$65u8qbzFP" role="3clFbG">
+                <node concept="37vLTw" id="6$65u8qbz9a" role="2Oq$k0">
+                  <ref role="3cqZAo" node="6$65u8qbaCb" resolve="ideaProject" />
+                </node>
+                <node concept="liA8E" id="6$65u8qb$On" role="2OqNvi">
+                  <ref role="37wK5l" to="zn9m:~UserDataHolder.putUserData(com.intellij.openapi.util.Key,java.lang.Object)" resolve="putUserData" />
+                  <node concept="37vLTw" id="6$65u8qbCje" role="37wK5m">
+                    <ref role="3cqZAo" node="6$65u8qbrbg" resolve="STATE_KEY" />
+                  </node>
+                  <node concept="37vLTw" id="6$65u8qbC5d" role="37wK5m">
+                    <ref role="3cqZAo" node="6$65u8qbwlm" resolve="knownState" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbC" id="6$65u8qbxHq" role="3clFbw">
+            <node concept="10Nm6u" id="6$65u8qby0g" role="3uHU7w" />
+            <node concept="37vLTw" id="6$65u8qbxfl" role="3uHU7B">
+              <ref role="3cqZAo" node="6$65u8qbwlm" resolve="knownState" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs6" id="78MxLJAHsZx" role="3cqZAp">
-          <node concept="37vLTw" id="78MxLJAHt0t" role="3cqZAk">
-            <ref role="3cqZAo" node="78MxLJAHm5c" resolve="ourInstance" />
+          <node concept="2ShNRf" id="6$65u8qbCtA" role="3cqZAk">
+            <node concept="1pGfFk" id="6$65u8qcqfD" role="2ShVmc">
+              <ref role="37wK5l" node="1$FrpHy4udC" resolve="TestInProcessRunState" />
+              <node concept="37vLTw" id="6$65u8qcqOx" role="37wK5m">
+                <ref role="3cqZAo" node="6$65u8qbwlm" resolve="knownState" />
+              </node>
+            </node>
           </node>
         </node>
       </node>
@@ -17426,6 +17633,15 @@
     <node concept="3clFbW" id="1$FrpHy4udC" role="jymVt">
       <property role="DiZV1" value="false" />
       <property role="od$2w" value="false" />
+      <node concept="37vLTG" id="6$65u8qcqXF" role="3clF46">
+        <property role="TrG5h" value="value" />
+        <node concept="3uibUv" id="6$65u8qcrc3" role="1tU5fm">
+          <ref role="3uigEE" to="i5cy:~AtomicReference" resolve="AtomicReference" />
+          <node concept="3uibUv" id="6$65u8qcrc4" role="11_B2D">
+            <ref role="3uigEE" node="1$FrpHy4ufC" resolve="RunStateEnum" />
+          </node>
+        </node>
+      </node>
       <node concept="3cqZAl" id="1$FrpHy4udD" role="3clF45" />
       <node concept="3clFbS" id="1$FrpHy4udE" role="3clF47">
         <node concept="3clFbF" id="1$FrpHy4udF" role="3cqZAp">
@@ -17433,17 +17649,8 @@
             <node concept="37vLTw" id="1$FrpHy4udH" role="37vLTJ">
               <ref role="3cqZAo" node="1$FrpHy4ud_" resolve="myValue" />
             </node>
-            <node concept="2ShNRf" id="5uCAHWJVbo3" role="37vLTx">
-              <node concept="1pGfFk" id="5uCAHWJVbo1" role="2ShVmc">
-                <ref role="37wK5l" to="i5cy:~AtomicReference.&lt;init&gt;(java.lang.Object)" resolve="AtomicReference" />
-                <node concept="3uibUv" id="5uCAHWJVbo2" role="1pMfVU">
-                  <ref role="3uigEE" node="1$FrpHy4ufC" resolve="RunStateEnum" />
-                </node>
-                <node concept="Rm8GO" id="5uCAHWJVbDn" role="37wK5m">
-                  <ref role="Rm8GQ" node="1$FrpHy4ufD" resolve="IDLE" />
-                  <ref role="1Px2BO" node="1$FrpHy4ufC" resolve="RunStateEnum" />
-                </node>
-              </node>
+            <node concept="37vLTw" id="6$65u8qcs6E" role="37vLTx">
+              <ref role="3cqZAo" node="6$65u8qcqXF" resolve="value" />
             </node>
           </node>
         </node>

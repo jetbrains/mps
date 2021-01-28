@@ -1043,6 +1043,8 @@
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployScript" />
   </dependency>
   <dependency className="jetbrains.mps.execution.configurations.implementation.plugin.plugin.TestInProcessRunState">
+    <classNode dependClassName="com.intellij.openapi.project.Project" />
+    <classNode dependClassName="com.intellij.openapi.util.Key" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.concurrent.atomic.AtomicReference" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.RunStateEnum" />
