@@ -32,7 +32,7 @@ public final class NodeWrapperTextualElement__BehaviorDescriptor extends BaseBHD
   }
 
   /*package*/ static String getTextualRepresentation_id69wk_bF5sg9(@NotNull SNode __thisNode__) {
-    // todo maybe a better way to visualize the wrapped node should be used 
+    // todomaybeabetterwaytovisualizethewrappednodeshouldbeused
     return (String) BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.node$pn2z));
   }
 

@@ -14,15 +14,18 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -33,6 +36,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class Line__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, "jetbrains.mps.lang.text.structure.Line");
 
+  public static final SMethod<Void> initializeFromParagraps_id2iG$EWuZbnH = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("initializeFromParagraps").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2iG$EWuZbnH").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Void> merge_id1YnOZxALrLu = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("merge").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1YnOZxALrLu").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Void> merge_id1YnOZxAMHtO = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("merge").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1YnOZxAMHtO").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<SNode> split_id1YnOZxANc9P = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("split").modifiers(SModifiersImpl.create(0, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("1YnOZxANc9P").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
@@ -44,11 +48,73 @@ public final class Line__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<String> wrapTextForClipboard_id2iG$EWuTXuU = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("wrapTextForClipboard").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2iG$EWuTXuU").build(SMethodBuilder.createJavaParameter(String.class, ""));
   public static final SMethod<String> representAsText_id2iG$EWuTXv2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("representAsText").modifiers(SModifiersImpl.create(8, AccessPrivileges.PUBLIC)).concept(CONCEPT).id("2iG$EWuTXv2").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(merge_id1YnOZxALrLu, merge_id1YnOZxAMHtO, split_id1YnOZxANc9P, addTextElement_idWJz9iAYdP6, addAllTextElements_idWJz9iAYdPl, isEmptyLine_id1YnOZxAO76B, getTextElements_idWJz9iATjyN, removeTextElementAt_idWJz9iAXbMU, wrapTextForClipboard_id2iG$EWuTXuU, representAsText_id2iG$EWuTXv2);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(initializeFromParagraps_id2iG$EWuZbnH, merge_id1YnOZxALrLu, merge_id1YnOZxAMHtO, split_id1YnOZxANc9P, addTextElement_idWJz9iAYdP6, addAllTextElements_idWJz9iAYdPl, isEmptyLine_id1YnOZxAO76B, getTextElements_idWJz9iATjyN, removeTextElementAt_idWJz9iAXbMU, wrapTextForClipboard_id2iG$EWuTXuU, representAsText_id2iG$EWuTXv2);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
+  /*package*/ static void initializeFromParagraps_id2iG$EWuZbnH(@NotNull final SNode __thisNode__, SNode l) {
+    final Wrappers._T<SNode> currentWord = new Wrappers._T<SNode>(null);
+    ListSequence.fromList(SLinkOperations.getChildren(l, LINKS.letters$rNyA)).visitAll(new IVisitor<SNode>() {
+      public void visit(SNode it) {
+        if (SNodeOperations.isInstanceOf(it, CONCEPTS.Letter$kd)) {
+          SNode letter = SNodeOperations.as(it, CONCEPTS.Letter$kd);
+          String value = SPropertyOperations.getString(letter, PROPS.value$X7Tp);
+          if (Objects.equals(value, " ")) {
+            if (currentWord.value != null) {
+              Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(__thisNode__, currentWord.value);
+              currentWord.value = null;
+            }
+            return;
+          } else {
+            if (currentWord.value == null) {
+              currentWord.value = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word"));
+              SPropertyOperations.assign(currentWord.value, PROPS.bold$SBR1, SPropertyOperations.getBoolean(letter, PROPS.bold$Xqbk));
+              SPropertyOperations.assign(currentWord.value, PROPS.italic$SC$4, SPropertyOperations.getBoolean(letter, PROPS.italic$Xqql));
+              SPropertyOperations.assign(currentWord.value, PROPS.underlined$SQS1, SPropertyOperations.getBoolean(letter, PROPS.underlined$XqDm));
+            }
+            SPropertyOperations.plusAssignStringProp(currentWord.value, PROPS.value$zQr_, SPropertyOperations.getString(letter, PROPS.value$X7Tp));
+          }
+
+        } else {
+          if (currentWord.value != null) {
+            Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(__thisNode__, currentWord.value);
+            currentWord.value = null;
+          }
+
+          if (SNodeOperations.isInstanceOf(it, CONCEPTS.NodeWrapperTextualElement$vh)) {
+            SNode w = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, "jetbrains.mps.lang.text.structure.NodeWrapperElement"));
+            SLinkOperations.setTarget(w, LINKS.node$KGJq, SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.NodeWrapperTextualElement$vh), LINKS.node$pn2z));
+            Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(__thisNode__, w);
+          }
+          if (SNodeOperations.isInstanceOf(it, CONCEPTS.EmptyParagraphLetter$W6)) {
+            return;
+          }
+          if (SNodeOperations.isInstanceOf(it, CONCEPTS.UrlTextualElement$cU)) {
+            String address = SPropertyOperations.getString(SNodeOperations.as(it, CONCEPTS.UrlTextualElement$cU), PROPS.address$M$I6);
+            SNode p = SLinkOperations.getTarget(SNodeOperations.as(it, CONCEPTS.UrlTextualElement$cU), LINKS.text$A10X);
+            String text = IterableUtils.join(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(p, LINKS.letters$rNyA), CONCEPTS.Letter$kd)).where(new IWhereFilter<SNode>() {
+              public boolean accept(SNode it) {
+                return !(Objects.equals(SPropertyOperations.getString(it, PROPS.value$X7Tp), " "));
+              }
+            }).select(new ISelector<SNode, String>() {
+              public String select(SNode it) {
+                return SPropertyOperations.getString(it, PROPS.value$X7Tp);
+              }
+            }), " ");
+            SNode w = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word"));
+            SPropertyOperations.assign(w, PROPS.value$zQr_, text);
+            SPropertyOperations.assign(w, PROPS.url$SIrt, address);
+            Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(__thisNode__, w);
+          }
+        }
+      }
+    });
+    if (currentWord.value != null) {
+      Line__BehaviorDescriptor.addTextElement_idWJz9iAYdP6.invoke(__thisNode__, currentWord.value);
+    }
+
+  }
   /*package*/ static void merge_id1YnOZxALrLu(@NotNull SNode __thisNode__, SNode other) {
     Line__BehaviorDescriptor.merge_id1YnOZxAMHtO.invoke(__thisNode__, other, ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.elements$_j45)).last());
   }
@@ -63,7 +129,7 @@ public final class Line__BehaviorDescriptor extends BaseBHDescriptor {
         currentPosition.value = SNodeOperations.insertNextSiblingChild(currentPosition.value, element);
       }
     });
-    if (ListSequence.fromList(SLinkOperations.getChildren(other, LINKS.elements$_j45)).isNotEmpty() && isEmptyString(trim_chdj22_a0a0e0s(SPropertyOperations.getString(SNodeOperations.as(position, CONCEPTS.Word$Dn), PROPS.value$zQr_)))) {
+    if (ListSequence.fromList(SLinkOperations.getChildren(other, LINKS.elements$_j45)).isNotEmpty() && isEmptyString(trim_chdj22_a0a0e0u(SPropertyOperations.getString(SNodeOperations.as(position, CONCEPTS.Word$Dn), PROPS.value$zQr_)))) {
       SNodeOperations.deleteNode(position);
     }
   }
@@ -123,29 +189,32 @@ public final class Line__BehaviorDescriptor extends BaseBHDescriptor {
     }
     switch (methodIndex) {
       case 0:
-        merge_id1YnOZxALrLu(node, (SNode) parameters[0]);
+        initializeFromParagraps_id2iG$EWuZbnH(node, (SNode) parameters[0]);
         return null;
       case 1:
-        merge_id1YnOZxAMHtO(node, (SNode) parameters[0], (SNode) parameters[1]);
+        merge_id1YnOZxALrLu(node, (SNode) parameters[0]);
         return null;
       case 2:
-        return (T) ((SNode) split_id1YnOZxANc9P(node, (SNode) parameters[0]));
+        merge_id1YnOZxAMHtO(node, (SNode) parameters[0], (SNode) parameters[1]);
+        return null;
       case 3:
+        return (T) ((SNode) split_id1YnOZxANc9P(node, (SNode) parameters[0]));
+      case 4:
         addTextElement_idWJz9iAYdP6(node, (SNode) parameters[0]);
         return null;
-      case 4:
+      case 5:
         addAllTextElements_idWJz9iAYdPl(node, (Iterable<SNode>) parameters[0]);
         return null;
-      case 5:
-        return (T) ((Boolean) isEmptyLine_id1YnOZxAO76B(node));
       case 6:
-        return (T) ((Iterable<SNode>) getTextElements_idWJz9iATjyN(node));
+        return (T) ((Boolean) isEmptyLine_id1YnOZxAO76B(node));
       case 7:
+        return (T) ((Iterable<SNode>) getTextElements_idWJz9iATjyN(node));
+      case 8:
         removeTextElementAt_idWJz9iAXbMU(node, ((int) (Integer) parameters[0]));
         return null;
-      case 8:
-        return (T) ((String) wrapTextForClipboard_id2iG$EWuTXuU(node, (String) parameters[0]));
       case 9:
+        return (T) ((String) wrapTextForClipboard_id2iG$EWuTXuU(node, (String) parameters[0]));
+      case 10:
         return (T) ((String) representAsText_id2iG$EWuTXv2(node));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -178,20 +247,37 @@ public final class Line__BehaviorDescriptor extends BaseBHDescriptor {
   private static boolean isEmptyString(String str) {
     return str == null || str.isEmpty();
   }
-  public static String trim_chdj22_a0a0e0s(String str) {
+  public static String trim_chdj22_a0a0e0u(String str) {
     return (str == null ? null : str.trim());
   }
 
   private static final class LINKS {
+    /*package*/ static final SContainmentLink letters$rNyA = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ec9eL, 0x7ee31bf598f4eddfL, "letters");
+    /*package*/ static final SContainmentLink node$KGJq = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2b7b49e536031fe9L, 0x2b7b49e536031feaL, "node");
+    /*package*/ static final SContainmentLink node$pn2z = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20dcb4fL, 0x2b7b49e536031feaL, "node");
+    /*package*/ static final SContainmentLink text$A10X = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x739f6249ff2c0691L, 0x14b33b9b0effaf9dL, "text");
     /*package*/ static final SContainmentLink elements$_j45 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept Letter$kd = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, "jetbrains.mps.lang.text.structure.Letter");
+    /*package*/ static final SConcept NodeWrapperTextualElement$vh = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20dcb4fL, "jetbrains.mps.lang.text.structure.NodeWrapperTextualElement");
+    /*package*/ static final SConcept EmptyParagraphLetter$W6 = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x17c01c7f100e844bL, "jetbrains.mps.lang.text.structure.EmptyParagraphLetter");
+    /*package*/ static final SConcept UrlTextualElement$cU = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x739f6249ff2c0691L, "jetbrains.mps.lang.text.structure.UrlTextualElement");
     /*package*/ static final SConcept Word$Dn = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, "jetbrains.mps.lang.text.structure.Word");
     /*package*/ static final SConcept TextElement$WN = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35ee7L, "jetbrains.mps.lang.text.structure.TextElement");
   }
 
   private static final class PROPS {
+    /*package*/ static final SProperty value$X7Tp = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7ee31bf598f4ad9eL, "value");
+    /*package*/ static final SProperty bold$SBR1 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d47eL, "bold");
+    /*package*/ static final SProperty bold$Xqbk = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737740L, "bold");
+    /*package*/ static final SProperty italic$SC$4 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d481L, "italic");
+    /*package*/ static final SProperty italic$Xqql = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737741L, "italic");
+    /*package*/ static final SProperty underlined$SQS1 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d494L, "underlined");
+    /*package*/ static final SProperty underlined$XqDm = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x7ee31bf598f4ac1dL, 0x7f8646038f737742L, "underlined");
     /*package*/ static final SProperty value$zQr_ = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x229012ddae35f05L, "value");
+    /*package*/ static final SProperty address$M$I6 = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x739f6249ff2c0691L, 0x739f6249ff2c0dd6L, "address");
+    /*package*/ static final SProperty url$SIrt = MetaAdapterFactory.getProperty(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x229012ddae35f04L, 0x57d1fa7f2af1d485L, "url");
   }
 }
