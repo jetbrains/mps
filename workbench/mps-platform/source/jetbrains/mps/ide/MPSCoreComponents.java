@@ -22,7 +22,6 @@ import com.intellij.openapi.vfs.newvfs.ManagingFS;
 import com.intellij.openapi.vfs.newvfs.persistent.PersistentFSImpl;
 import jetbrains.mps.baseLanguage.search.MPSBaseLanguage;
 import jetbrains.mps.classloading.ClassLoaderManager;
-import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.core.platform.PlatformFactory;
@@ -49,17 +48,13 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
  * would cease to depend from [mps-core] as well.
  */
 public class MPSCoreComponents implements Disposable {
-  private final MPSBaseLanguage myBaseLanguage;
   private final Platform myPlatform;
 
   public MPSCoreComponents() {
     @NotNull ManagingFS fs = ManagingFS.getInstance();
     @NotNull ModelAccess access = ApplicationManager.getApplication().getComponent(ModelAccess.class);
-    myPlatform = new BLPlatform();
-    PlatformFactory.initPlatform(PlatformOptionsBuilder.ALL);
-
-    myBaseLanguage = new MPSBaseLanguage();
-    myBaseLanguage.init();
+    var delegate = PlatformFactory.initPlatform(PlatformOptionsBuilder.ALL);
+    myPlatform = new BLPlatform(delegate);
 
     // Required to maintain correct dispose order between PersistenceFacade and FileBasedIndexImpl.
     Disposer.register(this, (PersistentFSImpl) fs);
@@ -111,16 +106,20 @@ public class MPSCoreComponents implements Disposable {
     return ApplicationManager.getApplication().getComponent(MPSCoreComponents.class);
   }
 
-  @NotNull
-  public ComponentHost getMPSBaseLanguage() {
-    return myBaseLanguage;
-  }
+  private static class BLPlatform implements Platform {
+    private final Platform myDelegate;
+    private final MPSBaseLanguage myBaseLanguage;
 
-  private class BLPlatform implements Platform {
+    private BLPlatform(@NotNull Platform delegate) {
+      myDelegate = delegate;
+      myBaseLanguage = new MPSBaseLanguage();
+      myBaseLanguage.init();
+    }
+
     @Nullable
     @Override
     public <T extends CoreComponent> T findComponent(@NotNull Class<T> componentClass) {
-      var c = myPlatform.findComponent(componentClass);
+      var c = myDelegate.findComponent(componentClass);
       if (c != null) {
         return c;
       }
@@ -129,7 +128,8 @@ public class MPSCoreComponents implements Disposable {
 
     @Override
     public void dispose() {
-      myPlatform.dispose();
+      myBaseLanguage.dispose();
+      myDelegate.dispose();
     }
   }
 }
