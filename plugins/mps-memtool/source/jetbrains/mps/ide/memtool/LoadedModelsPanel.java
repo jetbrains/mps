@@ -23,6 +23,7 @@ import com.intellij.openapi.wm.StatusBarWidgetFactory;
 import com.intellij.openapi.wm.impl.status.TextPanel;
 import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
+import com.intellij.util.concurrency.AppExecutorUtil;
 import com.intellij.util.concurrency.EdtExecutorService;
 import com.intellij.util.ui.JBUI;
 import com.intellij.util.ui.UIUtil;
@@ -64,6 +65,8 @@ public final class LoadedModelsPanel extends TextPanel implements CustomStatusBa
     public void mouseClicked(MouseEvent e) {
       new UnloadModelsActivity(myProject.getRepository()).run();
 
+      // not that I really want to perform model walk in EDT, but it used to be that way for some time,
+      // and it's user action, after all, he can expect to see some delay
       updateState();
     }
   };
@@ -76,14 +79,14 @@ public final class LoadedModelsPanel extends TextPanel implements CustomStatusBa
 
     addMouseListener(myActionListener);
     setBorder(JBUI.Borders.empty(0, 2));
-    updateUI();
+    updateUI(); // XXX this method is invoked from constructor of superclass, why again?
 
     new UiNotifyConnector(this, this);
   }
 
   @Override
   public void showNotify() {
-    myFuture = EdtExecutorService.getScheduledExecutorInstance().scheduleWithFixedDelay(this::updateState, 1, 5, TimeUnit.SECONDS);
+    myFuture = AppExecutorUtil.getAppScheduledExecutorService().scheduleWithFixedDelay(this::updateState, 1, 5, TimeUnit.SECONDS);
   }
 
   @Override
@@ -148,15 +151,13 @@ public final class LoadedModelsPanel extends TextPanel implements CustomStatusBa
 
   @Override
   protected String getTextForPreferredSize() {
-    return " " + getCaption(1000, 1000);
+    return " " + formatCaption(1000, 1000);
   }
 
+  // generally runs on a pooled, non-EDT, thread
   /*package*/ void updateState() {
-    if (!isShowing()) {
-      return;
-    }
-
     final SRepository repo = myProject.getRepository();
+    // don't want to block any write action, there's nothing important in this mem indicator
     final CancellableReadAction ra = new CancellableReadAction() {
       @Override
       protected void execute() {
@@ -173,19 +174,35 @@ public final class LoadedModelsPanel extends TextPanel implements CustomStatusBa
             }
           }
         }
-        myLastLoadedModels = loadedModels;
-        myModelsTotal = modelsTotal;
+        if (loadedModels != myLastLoadedModels || modelsTotal != myModelsTotal) {
+          myLastLoadedModels = loadedModels;
+          myModelsTotal = modelsTotal;
+          final String tx = formatCaption(loadedModels, modelsTotal);
+          final String tt = formatTooltip(loadedModels, modelsTotal);
+          EdtExecutorService.getInstance().execute(() -> updateVisuals(tx, tt));
+        }
       }
     };
     repo.getModelAccess().runReadAction(ra);
+  }
 
-    setText(getCaption(myLastLoadedModels, myModelsTotal));
-    setToolTipText("Models Loaded: " + myLastLoadedModels + "<br>" + "Total: " + myModelsTotal);
+  // XXX not sure setText/setToolTipText/isShowing do need EDT, but it's safe to assume they do,
+  //     so this method expects EDT
+  /*package*/ void updateVisuals(String text, String tooltip) {
+    if (!isShowing()) {
+      return;
+    }
+    setText(text);
+    setToolTipText(tooltip);
   }
 
   @NotNull
-  private String getCaption(int loaded, int max) {
+  private static String formatCaption(int loaded, int max) {
     return loaded + " of " + max + "       "; // last spaces make a place for icon
+  }
+
+  private static String formatTooltip(int loaded, int max) {
+    return "Models Loaded: " + loaded + "<br>" + "Total: " + max;
   }
 
   public static final class WidgetFactory implements StatusBarWidgetFactory {
