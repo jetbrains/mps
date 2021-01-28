@@ -12,6 +12,6 @@ public enum ChangeType {
   CONFLICTED(),
   MOVE();
 
-  private ChangeType() {
+  ChangeType() {
   }
 }

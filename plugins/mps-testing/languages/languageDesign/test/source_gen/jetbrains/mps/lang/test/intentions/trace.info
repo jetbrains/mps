@@ -33,12 +33,11 @@
       <node id="1210673906861" at="51,5,52,30" concept="8" />
       <node id="1210673948048" at="58,87,59,41" concept="8" />
       <node id="1210674410577" at="62,78,63,103" concept="7" />
-      <node id="1210674361648" at="63,103,64,110" concept="2" />
-      <node id="1210674415352" at="64,110,65,99" concept="2" />
+      <node id="1210674361648" at="63,103,64,102" concept="2" />
+      <node id="1210674415352" at="64,102,65,99" concept="2" />
       <node id="1210673906861" at="68,48,69,46" concept="8" />
       <node id="1210673906861" at="74,0,75,0" concept="11" trace="NodesTestCase$nd" />
       <node id="1210673906861" at="75,0,76,0" concept="11" trace="TestNodeAnnotation$27" />
-      <node id="1210673906861" at="76,0,77,0" concept="11" trace="AbstractTestNodeAnnotation$lh" />
       <node id="1210673906861" at="55,0,57,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="1210673906861" at="27,0,30,0" concept="1" trace="AddTestAnnotation_Intention#()V" />
       <node id="1210673906861" at="35,84,38,5" concept="5" />
@@ -90,9 +89,9 @@
         <var name="editorContext" id="1210673906861" />
         <var name="node" id="1210673906861" />
       </scope>
-      <unit id="1210673906861" at="73,0,78,0" name="jetbrains.mps.lang.test.intentions.AddTestAnnotation_Intention$CONCEPTS" />
+      <unit id="1210673906861" at="73,0,77,0" name="jetbrains.mps.lang.test.intentions.AddTestAnnotation_Intention$CONCEPTS" />
       <unit id="1210673906861" at="54,0,72,0" name="jetbrains.mps.lang.test.intentions.AddTestAnnotation_Intention$IntentionImplementation" />
-      <unit id="1210673906861" at="25,0,79,0" name="jetbrains.mps.lang.test.intentions.AddTestAnnotation_Intention" />
+      <unit id="1210673906861" at="25,0,78,0" name="jetbrains.mps.lang.test.intentions.AddTestAnnotation_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
       <node id="1210673906861" at="39,47,40,60" concept="2" />
@@ -208,22 +207,21 @@
       <node id="1017540429574408440" at="100,52,101,79" concept="7" />
       <node id="1017540429574408449" at="101,79,102,120" concept="2" />
       <node id="1017540429574409213" at="102,120,103,117" concept="2" />
-      <node id="1226066626906" at="104,7,105,110" concept="2" />
-      <node id="1226066626913" at="105,110,106,61" concept="2" />
+      <node id="1226066626906" at="104,7,105,107" concept="2" />
+      <node id="1226066626913" at="105,107,106,61" concept="2" />
       <node id="1225963656881" at="109,48,110,46" concept="8" />
       <node id="1225963656881" at="115,0,116,0" concept="11" trace="TestNode$zF" />
       <node id="1225963656881" at="116,0,117,0" concept="11" trace="EditorTestCase$DN" />
       <node id="1225963656881" at="117,0,118,0" concept="11" trace="AnonymousCellAnnotation$hB" />
-      <node id="1225963656881" at="118,0,119,0" concept="11" trace="AbstractTestNodeAnnotation$lh" />
-      <node id="1225963656881" at="122,0,123,0" concept="11" trace="isInInspector$WnYM" />
-      <node id="1225963656881" at="123,0,124,0" concept="11" trace="isLastPosition$ergU" />
-      <node id="1225963656881" at="124,0,125,0" concept="11" trace="caretPosition$W9yw" />
-      <node id="1225963656881" at="125,0,126,0" concept="11" trace="useLabelSelection$unh9" />
-      <node id="1225963656881" at="126,0,127,0" concept="11" trace="selectionStart$arQq" />
-      <node id="1225963656881" at="127,0,128,0" concept="11" trace="selectionEnd$asks" />
-      <node id="1225963656881" at="128,0,129,0" concept="11" trace="cellId$W9jv" />
-      <node id="1225963656881" at="132,0,133,0" concept="11" trace="nodeRangeSelectionStart$Qss5" />
-      <node id="1225963656881" at="133,0,134,0" concept="11" trace="nodeRangeSelectionEnd$QsF6" />
+      <node id="1225963656881" at="121,0,122,0" concept="11" trace="isInInspector$WnYM" />
+      <node id="1225963656881" at="122,0,123,0" concept="11" trace="isLastPosition$ergU" />
+      <node id="1225963656881" at="123,0,124,0" concept="11" trace="caretPosition$W9yw" />
+      <node id="1225963656881" at="124,0,125,0" concept="11" trace="useLabelSelection$unh9" />
+      <node id="1225963656881" at="125,0,126,0" concept="11" trace="selectionStart$arQq" />
+      <node id="1225963656881" at="126,0,127,0" concept="11" trace="selectionEnd$asks" />
+      <node id="1225963656881" at="127,0,128,0" concept="11" trace="cellId$W9jv" />
+      <node id="1225963656881" at="131,0,132,0" concept="11" trace="nodeRangeSelectionStart$Qss5" />
+      <node id="1225963656881" at="132,0,133,0" concept="11" trace="nodeRangeSelectionEnd$QsF6" />
       <node id="1225963656881" at="64,0,66,0" concept="1" trace="IntentionImplementation#()V" />
       <node id="1229432828393" at="89,14,91,9" concept="0" />
       <node id="1229956647134" at="95,12,97,7" concept="0" />
@@ -302,11 +300,11 @@
         <var name="editorContext" id="1225963656881" />
         <var name="node" id="1225963656881" />
       </scope>
-      <unit id="1225963656881" at="131,0,135,0" name="jetbrains.mps.lang.test.intentions.AddCellAnnotation_Intention$LINKS" />
-      <unit id="1225963656881" at="114,0,120,0" name="jetbrains.mps.lang.test.intentions.AddCellAnnotation_Intention$CONCEPTS" />
-      <unit id="1225963656881" at="121,0,130,0" name="jetbrains.mps.lang.test.intentions.AddCellAnnotation_Intention$PROPS" />
+      <unit id="1225963656881" at="130,0,134,0" name="jetbrains.mps.lang.test.intentions.AddCellAnnotation_Intention$LINKS" />
+      <unit id="1225963656881" at="114,0,119,0" name="jetbrains.mps.lang.test.intentions.AddCellAnnotation_Intention$CONCEPTS" />
+      <unit id="1225963656881" at="120,0,129,0" name="jetbrains.mps.lang.test.intentions.AddCellAnnotation_Intention$PROPS" />
       <unit id="1225963656881" at="63,0,113,0" name="jetbrains.mps.lang.test.intentions.AddCellAnnotation_Intention$IntentionImplementation" />
-      <unit id="1225963656881" at="34,0,136,0" name="jetbrains.mps.lang.test.intentions.AddCellAnnotation_Intention" />
+      <unit id="1225963656881" at="34,0,135,0" name="jetbrains.mps.lang.test.intentions.AddCellAnnotation_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
       <node id="1225963656881" at="41,66,42,60" concept="2" />

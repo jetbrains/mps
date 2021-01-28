@@ -206,7 +206,7 @@ public class CurrentDifferenceRegistry {
     }
 
     @Override
-    protected void startListening(SModel model) {
+    protected void startListening(@NotNull SModel model) {
       if (isIncluded(model)) {
         // we care about modelReplaced event 
         model.addModelListener(this);
@@ -273,6 +273,10 @@ public class CurrentDifferenceRegistry {
     }
   }
 
+  /**
+   * used in some plugin.xml
+   */
+  @SuppressWarnings("unused")
   private static final class MyProjectListener implements ProjectManagerListener {
 
     @Override

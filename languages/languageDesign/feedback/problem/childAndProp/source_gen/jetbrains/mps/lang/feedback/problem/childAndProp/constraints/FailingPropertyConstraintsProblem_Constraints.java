@@ -14,17 +14,14 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.structure.constraints.ConstraintsUtilConcepts;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.structure.constraints.FullyQualifiedNamedElementsScope;
 import java.util.HashMap;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class FailingPropertyConstraintsProblem_Constraints extends BaseConstraintsDescriptor {
   public FailingPropertyConstraintsProblem_Constraints() {
@@ -48,14 +45,16 @@ public class FailingPropertyConstraintsProblem_Constraints extends BaseConstrain
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            Iterable<SNode> conceptDeclarationsInSameLanguage = ConstraintsUtilConcepts.getConceptsInSameLanguage(SNodeOperations.getModel(_context.getContextNode()), CONCEPTS.AbstractConceptDeclaration$KA);
-            Iterable<SNode> propDeclarations = Sequence.fromIterable(conceptDeclarationsInSameLanguage).translate(new ITranslator2<SNode, SNode>() {
-              public Iterable<SNode> translate(SNode it) {
-                return SLinkOperations.getChildren(SNodeOperations.cast(it, CONCEPTS.AbstractConceptDeclaration$KA), LINKS.propertyDeclaration$YUgg);
+            if ((_context.getContextNode() != null)) {
+              SNode containingRoot = SNodeOperations.getContainingRoot(_context.getContextNode());
+              final SNode concept = (SNodeOperations.isInstanceOf(containingRoot, CONCEPTS.FeedbackPerConceptRoot$Vm) ? SLinkOperations.getTarget(SNodeOperations.cast(containingRoot, CONCEPTS.FeedbackPerConceptRoot$Vm), LINKS.concept$NMNv) : null);
+              if ((concept != null)) {
+                Iterable<SNode> propDeclarations = AbstractConceptDeclaration__BehaviorDescriptor.getPropertyDeclarations_idhEwILLM.invoke(concept);
+                Scope scope = new FullyQualifiedNamedElementsScope(propDeclarations);
+                return scope;
               }
-            });
-            Scope scope = new FullyQualifiedNamedElementsScope(propDeclarations);
-            return scope;
+            }
+            return null;
           }
         };
       }
@@ -68,11 +67,11 @@ public class FailingPropertyConstraintsProblem_Constraints extends BaseConstrain
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept FailingPropertyConstraintsProblem$It = MetaAdapterFactory.getConcept(0xcddf55b3117e46ecL, 0x837cff50eb7b89b0L, 0x56aefe6c18a706L, "jetbrains.mps.lang.feedback.problem.childAndProp.structure.FailingPropertyConstraintsProblem");
-    /*package*/ static final SConcept AbstractConceptDeclaration$KA = MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration");
+    /*package*/ static final SConcept FeedbackPerConceptRoot$Vm = MetaAdapterFactory.getConcept(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, "jetbrains.mps.lang.feedback.skeleton.structure.FeedbackPerConceptRoot");
   }
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink property$vk7 = MetaAdapterFactory.getReferenceLink(0xcddf55b3117e46ecL, 0x837cff50eb7b89b0L, 0x56aefe6c18a706L, 0x56aefe6c18edb7L, "property");
-    /*package*/ static final SContainmentLink propertyDeclaration$YUgg = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration");
+    /*package*/ static final SReferenceLink concept$NMNv = MetaAdapterFactory.getReferenceLink(0x517077fde44f4338L, 0xa4751d29781dfdb8L, 0x6530303593ae1607L, 0x63c2f3669ce56d5dL, "concept");
   }
 }

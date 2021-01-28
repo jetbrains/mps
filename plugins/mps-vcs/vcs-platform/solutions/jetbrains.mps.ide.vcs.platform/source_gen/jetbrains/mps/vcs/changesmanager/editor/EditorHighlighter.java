@@ -192,23 +192,28 @@ public class EditorHighlighter implements EditorMessageOwner {
   /*package*/ LeftEditorHighlighter getLeftEditorHighlighter() {
     return myEditorComponent.getLeftEditorHighlighter();
   }
+
   public class MyCurrentDifferenceListener extends CurrentDifferenceAdapter {
-    private List<ChangeEditorMessage> myAddedMessages = ListSequence.fromList(new ArrayList<ChangeEditorMessage>());
-    private List<ChangeEditorMessage> myRemovedMessages = ListSequence.fromList(new ArrayList<ChangeEditorMessage>());
+    private final List<ChangeEditorMessage> myAddedMessages = ListSequence.fromList(new ArrayList<ChangeEditorMessage>());
+    private final List<ChangeEditorMessage> myRemovedMessages = ListSequence.fromList(new ArrayList<ChangeEditorMessage>());
+
     public MyCurrentDifferenceListener() {
     }
+
     @Override
     public void changeAdded(@NotNull ModelChange change) {
       List<ChangeEditorMessage> messages = createMessages(change);
       ListSequence.fromList(myRemovedMessages).removeSequence(ListSequence.fromList(messages));
       ListSequence.fromList(myAddedMessages).addSequence(ListSequence.fromList(messages));
     }
+
     @Override
     public void changeRemoved(@NotNull ModelChange change) {
       List<ChangeEditorMessage> messages = removeMessages(change);
       ListSequence.fromList(myRemovedMessages).addSequence(ListSequence.fromList(messages));
       ListSequence.fromList(myAddedMessages).removeSequence(ListSequence.fromList(messages));
     }
+
     @Override
     public void changeUpdateFinished() {
       if (myEditorComponent.isDisposed()) {
@@ -222,7 +227,7 @@ public class EditorHighlighter implements EditorMessageOwner {
         for (ChangeEditorMessage addedMessage : ListSequence.fromList(myAddedMessages)) {
           nodeHighlightManager.mark(addedMessage);
         }
-        check_urq9my_a3a1a5r(myStripsPainter);
+        check_urq9my_a3a1a9s(myStripsPainter);
         nodeHighlightManager.repaintAndRebuildEditorMessages();
         ListSequence.fromList(myAddedMessages).clear();
         ListSequence.fromList(myRemovedMessages).clear();
@@ -235,7 +240,7 @@ public class EditorHighlighter implements EditorMessageOwner {
     }
     return null;
   }
-  private static void check_urq9my_a3a1a5r(ChangeStripsPainter checkedDotOperand) {
+  private static void check_urq9my_a3a1a9s(ChangeStripsPainter checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.relayout();
     }

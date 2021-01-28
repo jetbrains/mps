@@ -85,6 +85,7 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
   private DiffEditorSettingsAction mySettingsAction;
   private TripleChangeGroupLayout myMainLayout;
   private TripleChangeGroupLayout myInspectorLayout;
+  private boolean myDisposed = false;
 
 
   public RootDifferencePane(MPSProject project, final ModelChangeSet changeSet, SNodeId rootId, String rootName, String[] titles, boolean isEditable) {
@@ -232,17 +233,21 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
   public ActionGroup getActions() {
     return myActionGroup;
   }
+
   public void registerShortcuts(JComponent component) {
     myTraverser.previousAction().registerCustomShortcutSet(NextPreviousTraverser.PREV_CHANGE_SHORTCUT, component);
     myTraverser.nextAction().registerCustomShortcutSet(NextPreviousTraverser.NEXT_CHANGE_SHORTCUT, component);
   }
+
   public void unregisterShortcuts(JComponent component) {
     myTraverser.previousAction().unregisterCustomShortcutSet(component);
     myTraverser.nextAction().unregisterCustomShortcutSet(component);
   }
+
   public JPanel getPanel() {
     return myPanel;
   }
+
   public void navigateInitial(@Nullable final Bounds firstChange) {
     highlightAllChanges();
     if (firstChange != null) {
@@ -259,6 +264,7 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
   public SNodeId getRootId() {
     return myRootId;
   }
+
   public void setRootId(SNodeId rootId) {
     myRootId = rootId;
     myOldEditor.editRoot(myRootId, myChangeSet.getOldModel());
@@ -266,6 +272,7 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
     rehighlight(true);
     myTraverser.goToFirstChangeLater();
   }
+
   public void setRootId(SNodeId rootId, ModelChangeSet changeSet) {
     myChangeSet = changeSet;
     ListSequence.fromList(myChangeGroupLayouts).visitAll(new IVisitor<ChangeGroupLayout>() {
@@ -275,6 +282,7 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
     });
     setRootId(rootId);
   }
+
   private void showInspector(boolean show) {
     if (isInspectorShown == show) {
       return;
@@ -387,11 +395,16 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
     myOldEditor.repaintAndRebuildEditorMessages();
     myNewEditor.repaintAndRebuildEditorMessages();
   }
+
   private void higlightChange(DiffEditor diffEditor, SModel model, boolean isOldEditor, ModelChange change) {
     diffEditor.highlightChange(model, change, isOldEditor, null);
   }
+
   @Override
   public void rehighlight(boolean rebuildChangeSet) {
+    if (myDisposed) {
+      return;
+    }
     if (rebuildChangeSet) {
       ChangeSetBuilder.rebuildChangeSet(myChangeSet, PropertiesComponent.getInstance().getBoolean("vcs.diff.track.moved.nodes", false));
     }
@@ -409,6 +422,7 @@ public class RootDifferencePane implements IHighlighter, PropertyChangeListener 
   }
 
   public void dispose() {
+    myDisposed = true;
     myDiffRegistry.getCommandQueue().runTask(new Runnable() {
       public void run() {
         if (myChangeSet.getOldModel() instanceof EditableSModel) {

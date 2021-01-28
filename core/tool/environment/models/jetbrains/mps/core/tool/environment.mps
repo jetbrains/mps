@@ -5886,66 +5886,6 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="2519QBqd1r1" role="3cqZAp">
-          <node concept="3cpWsn" id="2519QBqd1r0" role="3cpWs9">
-            <property role="TrG5h" value="consoleWarn" />
-            <node concept="3uibUv" id="2519QBqd1r2" role="1tU5fm">
-              <ref role="3uigEE" to="q7tw:~ConsoleAppender" resolve="ConsoleAppender" />
-            </node>
-            <node concept="2ShNRf" id="2519QBqd3v1" role="33vP2m">
-              <node concept="1pGfFk" id="2519QBqd3w6" role="2ShVmc">
-                <ref role="37wK5l" to="q7tw:~ConsoleAppender.&lt;init&gt;(org.apache.log4j.Layout,java.lang.String)" resolve="ConsoleAppender" />
-                <node concept="37vLTw" id="2519QBqd3w7" role="37wK5m">
-                  <ref role="3cqZAo" node="2519QBqd1qV" resolve="layout" />
-                </node>
-                <node concept="10M0yZ" id="2519QBqd5Ne" role="37wK5m">
-                  <ref role="1PxDUh" to="q7tw:~ConsoleAppender" resolve="ConsoleAppender" />
-                  <ref role="3cqZAo" to="q7tw:~ConsoleAppender.SYSTEM_ERR" resolve="SYSTEM_ERR" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="2519QBqd1r7" role="3cqZAp">
-          <node concept="3cpWsn" id="2519QBqd1r6" role="3cpWs9">
-            <property role="TrG5h" value="warnFilter" />
-            <node concept="3uibUv" id="2519QBqdz$r" role="1tU5fm">
-              <ref role="3uigEE" to="fqk5:~LevelRangeFilter" resolve="LevelRangeFilter" />
-            </node>
-            <node concept="2ShNRf" id="2519QBqd$eO" role="33vP2m">
-              <node concept="1pGfFk" id="2519QBqd$eQ" role="2ShVmc">
-                <ref role="37wK5l" to="fqk5:~LevelRangeFilter.&lt;init&gt;()" resolve="LevelRangeFilter" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="2519QBqd1ra" role="3cqZAp">
-          <node concept="2OqwBi" id="2519QBqd3y5" role="3clFbG">
-            <node concept="37vLTw" id="2519QBqd3y4" role="2Oq$k0">
-              <ref role="3cqZAo" node="2519QBqd1r6" resolve="warnFilter" />
-            </node>
-            <node concept="liA8E" id="2519QBqd3y6" role="2OqNvi">
-              <ref role="37wK5l" to="fqk5:~LevelRangeFilter.setLevelMin(org.apache.log4j.Level)" resolve="setLevelMin" />
-              <node concept="10M0yZ" id="2519QBqd3y7" role="37wK5m">
-                <ref role="1PxDUh" to="q7tw:~Level" resolve="Level" />
-                <ref role="3cqZAo" to="q7tw:~Level.WARN" resolve="WARN" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="2519QBqd1rd" role="3cqZAp">
-          <node concept="2OqwBi" id="2519QBqd3iB" role="3clFbG">
-            <node concept="37vLTw" id="2519QBqd3iA" role="2Oq$k0">
-              <ref role="3cqZAo" node="2519QBqd1r0" resolve="consoleWarn" />
-            </node>
-            <node concept="liA8E" id="2519QBqd3iC" role="2OqNvi">
-              <ref role="37wK5l" to="q7tw:~AppenderSkeleton.addFilter(org.apache.log4j.spi.Filter)" resolve="addFilter" />
-              <node concept="37vLTw" id="2519QBqd3iD" role="37wK5m">
-                <ref role="3cqZAo" node="2519QBqd1r6" resolve="warnFilter" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="2519QBqd1rg" role="3cqZAp">
           <node concept="2OqwBi" id="2519QBqd3LZ" role="3clFbG">
             <node concept="37vLTw" id="2519QBqd3LY" role="2Oq$k0">
@@ -5953,35 +5893,29 @@
             </node>
             <node concept="liA8E" id="2519QBqd3M0" role="2OqNvi">
               <ref role="37wK5l" to="q7tw:~Category.addAppender(org.apache.log4j.Appender)" resolve="addAppender" />
-              <node concept="37vLTw" id="2519QBqd3M1" role="37wK5m">
-                <ref role="3cqZAo" node="2519QBqd1r0" resolve="consoleWarn" />
+              <node concept="2YIFZM" id="7cu6GNHVM5_" role="37wK5m">
+                <ref role="1Pybhc" node="5A5jZrz5bMd" resolve="Log4jInitializer" />
+                <ref role="37wK5l" node="7cu6GNHVLfE" resolve="createWarnApp" />
+                <node concept="37vLTw" id="7cu6GNHVM5A" role="37wK5m">
+                  <ref role="3cqZAo" node="2519QBqd1qV" resolve="layout" />
+                </node>
               </node>
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="2519QBqd1rk" role="3cqZAp">
-          <node concept="3cpWsn" id="2519QBqd1rj" role="3cpWs9">
-            <property role="TrG5h" value="filter" />
-            <node concept="3uibUv" id="2519QBqd1rl" role="1tU5fm">
-              <ref role="3uigEE" to="fqk5:~LevelRangeFilter" resolve="LevelRangeFilter" />
+        <node concept="3clFbF" id="7cu6GNHVMbd" role="3cqZAp">
+          <node concept="2OqwBi" id="7cu6GNHVMbe" role="3clFbG">
+            <node concept="37vLTw" id="7cu6GNHVMbf" role="2Oq$k0">
+              <ref role="3cqZAo" node="2519QBqd1qM" resolve="root" />
             </node>
-            <node concept="2ShNRf" id="2519QBqd$gh" role="33vP2m">
-              <node concept="1pGfFk" id="2519QBqd$gj" role="2ShVmc">
-                <ref role="37wK5l" to="fqk5:~LevelRangeFilter.&lt;init&gt;()" resolve="LevelRangeFilter" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="2519QBqd1rn" role="3cqZAp">
-          <node concept="2OqwBi" id="2519QBqd2US" role="3clFbG">
-            <node concept="37vLTw" id="2519QBqd2UR" role="2Oq$k0">
-              <ref role="3cqZAo" node="2519QBqd1rj" resolve="filter" />
-            </node>
-            <node concept="liA8E" id="2519QBqd2UT" role="2OqNvi">
-              <ref role="37wK5l" to="fqk5:~LevelRangeFilter.setLevelMin(org.apache.log4j.Level)" resolve="setLevelMin" />
-              <node concept="10M0yZ" id="2519QBqd4G0" role="37wK5m">
-                <ref role="1PxDUh" to="q7tw:~Level" resolve="Level" />
-                <ref role="3cqZAo" to="q7tw:~Level.INFO" resolve="INFO" />
+            <node concept="liA8E" id="7cu6GNHVMbg" role="2OqNvi">
+              <ref role="37wK5l" to="q7tw:~Category.addAppender(org.apache.log4j.Appender)" resolve="addAppender" />
+              <node concept="2YIFZM" id="7cu6GNHVTSx" role="37wK5m">
+                <ref role="37wK5l" node="7cu6GNHVLrq" resolve="createInfoApp" />
+                <ref role="1Pybhc" node="5A5jZrz5bMd" resolve="Log4jInitializer" />
+                <node concept="37vLTw" id="7cu6GNHVTSy" role="37wK5m">
+                  <ref role="3cqZAo" node="2519QBqd1qV" resolve="layout" />
+                </node>
               </node>
             </node>
           </node>
@@ -5989,6 +5923,182 @@
       </node>
       <node concept="3Tm6S6" id="2519QBqd1rq" role="1B3o_S" />
       <node concept="3cqZAl" id="2519QBqd1rr" role="3clF45" />
+    </node>
+    <node concept="2tJIrI" id="7cu6GNHVLlS" role="jymVt" />
+    <node concept="2YIFZL" id="7cu6GNHVLfE" role="jymVt">
+      <property role="TrG5h" value="createWarnApp" />
+      <node concept="3Tm6S6" id="7cu6GNHVLfF" role="1B3o_S" />
+      <node concept="3uibUv" id="7cu6GNHVLfG" role="3clF45">
+        <ref role="3uigEE" to="q7tw:~ConsoleAppender" resolve="ConsoleAppender" />
+      </node>
+      <node concept="37vLTG" id="7cu6GNHVLf_" role="3clF46">
+        <property role="TrG5h" value="layout" />
+        <node concept="3uibUv" id="7cu6GNHVLfA" role="1tU5fm">
+          <ref role="3uigEE" to="q7tw:~PatternLayout" resolve="PatternLayout" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="7cu6GNHVLfa" role="3clF47">
+        <node concept="3cpWs8" id="7cu6GNHVLfd" role="3cqZAp">
+          <node concept="3cpWsn" id="7cu6GNHVLfe" role="3cpWs9">
+            <property role="TrG5h" value="consoleWarn" />
+            <node concept="3uibUv" id="7cu6GNHVLff" role="1tU5fm">
+              <ref role="3uigEE" to="q7tw:~ConsoleAppender" resolve="ConsoleAppender" />
+            </node>
+            <node concept="2ShNRf" id="7cu6GNHVLfg" role="33vP2m">
+              <node concept="1pGfFk" id="7cu6GNHVLfh" role="2ShVmc">
+                <ref role="37wK5l" to="q7tw:~ConsoleAppender.&lt;init&gt;(org.apache.log4j.Layout,java.lang.String)" resolve="ConsoleAppender" />
+                <node concept="37vLTw" id="7cu6GNHVLfB" role="37wK5m">
+                  <ref role="3cqZAo" node="7cu6GNHVLf_" resolve="layout" />
+                </node>
+                <node concept="10M0yZ" id="7cu6GNHVLfj" role="37wK5m">
+                  <ref role="1PxDUh" to="q7tw:~ConsoleAppender" resolve="ConsoleAppender" />
+                  <ref role="3cqZAo" to="q7tw:~ConsoleAppender.SYSTEM_ERR" resolve="SYSTEM_ERR" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="7cu6GNHVLfk" role="3cqZAp">
+          <node concept="3cpWsn" id="7cu6GNHVLfl" role="3cpWs9">
+            <property role="TrG5h" value="warnFilter" />
+            <node concept="3uibUv" id="7cu6GNHVLfm" role="1tU5fm">
+              <ref role="3uigEE" to="fqk5:~LevelRangeFilter" resolve="LevelRangeFilter" />
+            </node>
+            <node concept="2ShNRf" id="7cu6GNHVLfn" role="33vP2m">
+              <node concept="1pGfFk" id="7cu6GNHVLfo" role="2ShVmc">
+                <ref role="37wK5l" to="fqk5:~LevelRangeFilter.&lt;init&gt;()" resolve="LevelRangeFilter" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="7cu6GNHVLfp" role="3cqZAp">
+          <node concept="2OqwBi" id="7cu6GNHVLfq" role="3clFbG">
+            <node concept="37vLTw" id="7cu6GNHVLfr" role="2Oq$k0">
+              <ref role="3cqZAo" node="7cu6GNHVLfl" resolve="warnFilter" />
+            </node>
+            <node concept="liA8E" id="7cu6GNHVLfs" role="2OqNvi">
+              <ref role="37wK5l" to="fqk5:~LevelRangeFilter.setLevelMin(org.apache.log4j.Level)" resolve="setLevelMin" />
+              <node concept="10M0yZ" id="7cu6GNHVLft" role="37wK5m">
+                <ref role="1PxDUh" to="q7tw:~Level" resolve="Level" />
+                <ref role="3cqZAo" to="q7tw:~Level.WARN" resolve="WARN" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="7cu6GNHVLfu" role="3cqZAp">
+          <node concept="2OqwBi" id="7cu6GNHVLfv" role="3clFbG">
+            <node concept="37vLTw" id="7cu6GNHVLfw" role="2Oq$k0">
+              <ref role="3cqZAo" node="7cu6GNHVLfe" resolve="consoleWarn" />
+            </node>
+            <node concept="liA8E" id="7cu6GNHVLfx" role="2OqNvi">
+              <ref role="37wK5l" to="q7tw:~AppenderSkeleton.addFilter(org.apache.log4j.spi.Filter)" resolve="addFilter" />
+              <node concept="37vLTw" id="7cu6GNHVLfy" role="37wK5m">
+                <ref role="3cqZAo" node="7cu6GNHVLfl" resolve="warnFilter" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="7cu6GNHVLfz" role="3cqZAp">
+          <node concept="37vLTw" id="7cu6GNHVLf$" role="3cqZAk">
+            <ref role="3cqZAo" node="7cu6GNHVLfe" resolve="consoleWarn" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="7cu6GNHVLxR" role="jymVt" />
+    <node concept="2YIFZL" id="7cu6GNHVLrq" role="jymVt">
+      <property role="TrG5h" value="createInfoApp" />
+      <node concept="3Tm6S6" id="7cu6GNHVLrr" role="1B3o_S" />
+      <node concept="3uibUv" id="7cu6GNHVLrs" role="3clF45">
+        <ref role="3uigEE" to="q7tw:~ConsoleAppender" resolve="ConsoleAppender" />
+      </node>
+      <node concept="37vLTG" id="7cu6GNHVLrt" role="3clF46">
+        <property role="TrG5h" value="layout" />
+        <node concept="3uibUv" id="7cu6GNHVLru" role="1tU5fm">
+          <ref role="3uigEE" to="q7tw:~PatternLayout" resolve="PatternLayout" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="7cu6GNHVLrv" role="3clF47">
+        <node concept="3cpWs8" id="7cu6GNHVLrw" role="3cqZAp">
+          <node concept="3cpWsn" id="7cu6GNHVLrx" role="3cpWs9">
+            <property role="TrG5h" value="consoleInfo" />
+            <node concept="3uibUv" id="7cu6GNHVLry" role="1tU5fm">
+              <ref role="3uigEE" to="q7tw:~ConsoleAppender" resolve="ConsoleAppender" />
+            </node>
+            <node concept="2ShNRf" id="7cu6GNHVLrz" role="33vP2m">
+              <node concept="1pGfFk" id="7cu6GNHVLr$" role="2ShVmc">
+                <ref role="37wK5l" to="q7tw:~ConsoleAppender.&lt;init&gt;(org.apache.log4j.Layout,java.lang.String)" resolve="ConsoleAppender" />
+                <node concept="37vLTw" id="7cu6GNHVLr_" role="37wK5m">
+                  <ref role="3cqZAo" node="7cu6GNHVLrt" resolve="layout" />
+                </node>
+                <node concept="10M0yZ" id="7cu6GNHVLBW" role="37wK5m">
+                  <ref role="3cqZAo" to="q7tw:~ConsoleAppender.SYSTEM_OUT" resolve="SYSTEM_OUT" />
+                  <ref role="1PxDUh" to="q7tw:~ConsoleAppender" resolve="ConsoleAppender" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="7cu6GNHVLrB" role="3cqZAp">
+          <node concept="3cpWsn" id="7cu6GNHVLrC" role="3cpWs9">
+            <property role="TrG5h" value="infoFilter" />
+            <node concept="3uibUv" id="7cu6GNHVLrD" role="1tU5fm">
+              <ref role="3uigEE" to="fqk5:~LevelRangeFilter" resolve="LevelRangeFilter" />
+            </node>
+            <node concept="2ShNRf" id="7cu6GNHVLrE" role="33vP2m">
+              <node concept="1pGfFk" id="7cu6GNHVLrF" role="2ShVmc">
+                <ref role="37wK5l" to="fqk5:~LevelRangeFilter.&lt;init&gt;()" resolve="LevelRangeFilter" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="7cu6GNHVLrG" role="3cqZAp">
+          <node concept="2OqwBi" id="7cu6GNHVLrH" role="3clFbG">
+            <node concept="37vLTw" id="7cu6GNHVLrI" role="2Oq$k0">
+              <ref role="3cqZAo" node="7cu6GNHVLrC" resolve="infoFilter" />
+            </node>
+            <node concept="liA8E" id="7cu6GNHVLrJ" role="2OqNvi">
+              <ref role="37wK5l" to="fqk5:~LevelRangeFilter.setLevelMin(org.apache.log4j.Level)" resolve="setLevelMin" />
+              <node concept="10M0yZ" id="7cu6GNHVLWn" role="37wK5m">
+                <ref role="3cqZAo" to="q7tw:~Level.INFO" resolve="INFO" />
+                <ref role="1PxDUh" to="q7tw:~Level" resolve="Level" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="7cu6GNHVLBZ" role="3cqZAp">
+          <node concept="2OqwBi" id="7cu6GNHVLC0" role="3clFbG">
+            <node concept="37vLTw" id="7cu6GNHVLC1" role="2Oq$k0">
+              <ref role="3cqZAo" node="7cu6GNHVLrC" resolve="infoFilter" />
+            </node>
+            <node concept="liA8E" id="7cu6GNHVLC2" role="2OqNvi">
+              <ref role="37wK5l" to="fqk5:~LevelRangeFilter.setLevelMax(org.apache.log4j.Level)" resolve="setLevelMax" />
+              <node concept="10M0yZ" id="7cu6GNHVLYb" role="37wK5m">
+                <ref role="3cqZAo" to="q7tw:~Level.INFO" resolve="INFO" />
+                <ref role="1PxDUh" to="q7tw:~Level" resolve="Level" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="7cu6GNHVLrL" role="3cqZAp">
+          <node concept="2OqwBi" id="7cu6GNHVLrM" role="3clFbG">
+            <node concept="37vLTw" id="7cu6GNHVLrN" role="2Oq$k0">
+              <ref role="3cqZAo" node="7cu6GNHVLrx" resolve="consoleInfo" />
+            </node>
+            <node concept="liA8E" id="7cu6GNHVLrO" role="2OqNvi">
+              <ref role="37wK5l" to="q7tw:~AppenderSkeleton.addFilter(org.apache.log4j.spi.Filter)" resolve="addFilter" />
+              <node concept="37vLTw" id="7cu6GNHVLrP" role="37wK5m">
+                <ref role="3cqZAo" node="7cu6GNHVLrC" resolve="infoFilter" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="7cu6GNHVLrQ" role="3cqZAp">
+          <node concept="37vLTw" id="7cu6GNHVLrR" role="3cqZAk">
+            <ref role="3cqZAo" node="7cu6GNHVLrx" resolve="consoleInfo" />
+          </node>
+        </node>
+      </node>
     </node>
   </node>
   <node concept="3HP615" id="5A5jZrz4rws">

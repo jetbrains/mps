@@ -88,13 +88,16 @@ public class NodeFileStatusMapping implements ProjectComponent {
         if (m instanceof EditableSModel && m.getSource() instanceof FileSystemBasedDataSource && !(m.isReadOnly())) {
           EditableSModel model = (EditableSModel) m;
           CurrentDifference diff = myRegistry.getCurrentDifference(model);
+          if (!(diff.isTracked())) {
+            return FileStatus.UNKNOWN;
+          }
           if (diff.isConflicted()) {
             return FileStatus.MERGED_WITH_CONFLICTS;
           }
           if (diff.getChangeSet() == null) {
             return FileStatus.NOT_CHANGED;
           }
-          List<ModelChange> modelChanges = check_onkh7z_a0e0b0a0a0a0r(diff.getChangeSet());
+          List<ModelChange> modelChanges = check_onkh7z_a0f0b0a0a0a0r(diff.getChangeSet());
           List<ModelChange> rootChanges = ListSequence.fromList(modelChanges).where(new IWhereFilter<ModelChange>() {
             public boolean accept(ModelChange ch) {
               return root.getNodeId().equals(ch.getRootId());
@@ -130,6 +133,14 @@ public class NodeFileStatusMapping implements ProjectComponent {
   @Nullable
   public FileStatus getStatus(@NotNull final SNode root) {
     final SNodeReference nodePointer = new SNodePointer(root);
+    CurrentDifference existing = myRegistry.getExistingCurDifference(nodePointer.getModelReference());
+    if (existing != null) {
+      if (!(existing.isTracked())) {
+        return FileStatus.UNKNOWN;
+      } else if (existing.isConflicted()) {
+        return FileStatus.MERGED_WITH_CONFLICTS;
+      }
+    }
     myRegistry.getCommandQueue().runTask(new Runnable() {
       public void run() {
         myProject.getModelAccess().runReadAction(new Runnable() {
@@ -188,7 +199,7 @@ public class NodeFileStatusMapping implements ProjectComponent {
       addAffectedRoot(change);
     }
   }
-  private static List<ModelChange> check_onkh7z_a0e0b0a0a0a0r(ChangeSet checkedDotOperand) {
+  private static List<ModelChange> check_onkh7z_a0f0b0a0a0a0r(ChangeSet checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getModelChanges();
     }

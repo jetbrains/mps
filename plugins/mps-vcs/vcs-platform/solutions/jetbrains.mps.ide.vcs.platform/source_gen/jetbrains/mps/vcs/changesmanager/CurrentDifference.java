@@ -5,10 +5,12 @@ package jetbrains.mps.vcs.changesmanager;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.vcs.diff.ChangeSetImpl;
+import com.intellij.openapi.project.Project;
 import java.util.concurrent.atomic.AtomicBoolean;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import com.intellij.openapi.vcs.FileStatus;
+import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.vcs.diff.ChangeSet;
 
@@ -21,12 +23,14 @@ public class CurrentDifference {
   private final EditableSModel myModelDescriptor;
   private final ChangesTracking myTracking;
   private ChangeSetImpl myChangeSet;
+  private final Project myProject;
   private final CurrentDifferenceBroadcaster myBroadcaster;
   private final AtomicBoolean myEnabled = new AtomicBoolean();
 
   public CurrentDifference(@NotNull CurrentDifferenceRegistry registry, @NotNull EditableSModel modelDescriptor) {
     myCommandQueue = registry.getCommandQueue();
     myModelDescriptor = modelDescriptor;
+    myProject = registry.getProject();
     myTracking = new ChangesTracking(registry, this);
     myBroadcaster = new CurrentDifferenceBroadcaster(myCommandQueue);
     myBroadcaster.addDifferenceListener(registry.getGlobalBroadcaster());
@@ -54,7 +58,7 @@ public class CurrentDifference {
     }
   }
 
-  /*package*/ void setChangeSet(@NotNull ChangeSetImpl changeSetImpl) {
+  /*package*/ void setChangeSet(ChangeSetImpl changeSetImpl) {
     myCommandQueue.assertSoftlyIsCommandThread();
     removeChangeSet();
     myBroadcaster.changeUpdateStarted();
@@ -118,6 +122,19 @@ public class CurrentDifference {
 
   public boolean isConflicted() {
     return myTracking.getStatus() == FileStatus.MERGED_WITH_BOTH_CONFLICTS || myTracking.getStatus() == FileStatus.MERGED_WITH_CONFLICTS;
+  }
+
+  public boolean isTracked() {
+    return myTracking.isTracked();
+  }
+
+  public FileStatus getStatus() {
+    return myTracking.getStatus();
+  }
+
+  public void onModelStatusChanged(@NotNull SModelReference mref) {
+    myBroadcaster.setEnabled(isTracked());
+    myBroadcaster.modelStatusChanged(mref);
   }
 
   @Nullable

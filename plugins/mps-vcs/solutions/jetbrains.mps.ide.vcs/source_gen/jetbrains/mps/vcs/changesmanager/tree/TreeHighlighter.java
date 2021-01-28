@@ -247,8 +247,6 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
 
   /**
    *  this method recalculates the message for the node
-   *  strangely enough here we say that the vcs messages are the only messages allowed in the tree
-   *  probably I just misunderstand the concept of tree messages though
    * 
    *  fixme it seems that there are some sync issues in this place
    *       we do not lock node's messages, we do not lock #myFeaturesFromVcs
@@ -425,13 +423,17 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
 
   @Nullable
   private TreeMessage getMessage(@Nullable ChangeType type, Feature feature) {
-    if (feature instanceof ModelFeature) {
-      CurrentDifference curDif = myRegistry.getExistingCurDifference(feature.getModelReference());
-      if (curDif != null && curDif.isConflicted()) {
-        return getMessage(FileStatus.MERGED_WITH_CONFLICTS);
-      }
+    CurrentDifference modelDif = myRegistry.getExistingCurDifference(feature.getModelReference());
+    if (modelDif == null || !(modelDif.isTracked())) {
+      return getMessage(FileStatus.UNKNOWN);
+    }
+    if (modelDif.isConflicted()) {
+      return getMessage(FileStatus.MERGED_WITH_CONFLICTS);
     }
     if (type == null) {
+      if (feature instanceof ModelFeature) {
+        return getMessage(modelDif.getStatus());
+      }
       return getMessage(FileStatus.NOT_CHANGED);
     }
     switch (type) {

@@ -1543,7 +1543,7 @@
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.presentationByName()" resolve="presentationByName" />
                         <uo k="s:originTrace" v="n:1229194968594" />
                         <node concept="M6xJ_" id="8j" role="lGtFl">
-                          <property role="Hh88m" value="" />
+                          <property role="Hh88m" value="anonCell" />
                           <uo k="s:originTrace" v="n:7588821453551758771" />
                         </node>
                       </node>
@@ -6325,7 +6325,7 @@
                         <ref role="37wK5l" to="ze1i:~ConceptPresentationBuilder.presentationByName()" resolve="presentationByName" />
                         <uo k="s:originTrace" v="n:1210673684636" />
                         <node concept="M6xJ_" id="$t" role="lGtFl">
-                          <property role="Hh88m" value="" />
+                          <property role="Hh88m" value="testLabel" />
                           <uo k="s:originTrace" v="n:7588821453551758735" />
                         </node>
                       </node>

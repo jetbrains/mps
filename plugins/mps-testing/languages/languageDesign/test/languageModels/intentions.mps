@@ -413,8 +413,8 @@
             <node concept="2OqwBi" id="hBxObu$" role="37vLTJ">
               <node concept="2Sf5sV" id="hBxObkL" role="2Oq$k0" />
               <node concept="3CFZ6_" id="2EuZkDRzImB" role="2OqNvi">
-                <node concept="3CFYIy" id="2EuZkDRzImC" role="3CFYIz">
-                  <ref role="3CFYIx" to="tp5g:hSdkHD7" resolve="AbstractTestNodeAnnotation" />
+                <node concept="3CFYIy" id="7cu6GNHVzVU" role="3CFYIz">
+                  <ref role="3CFYIx" to="tp5g:hBxLA2s" resolve="TestNodeAnnotation" />
                 </node>
               </node>
             </node>
@@ -999,8 +999,8 @@
             <node concept="2OqwBi" id="hPRh0_t" role="37vLTJ">
               <node concept="2Sf5sV" id="hPRh0_u" role="2Oq$k0" />
               <node concept="3CFZ6_" id="2EuZkDRzIq4" role="2OqNvi">
-                <node concept="3CFYIy" id="2EuZkDRzIq5" role="3CFYIz">
-                  <ref role="3CFYIx" to="tp5g:hSdkHD7" resolve="AbstractTestNodeAnnotation" />
+                <node concept="3CFYIy" id="7cu6GNHVzcg" role="3CFYIz">
+                  <ref role="3CFYIx" to="tp5g:hSLIFSi" resolve="AnonymousCellAnnotation" />
                 </node>
               </node>
             </node>

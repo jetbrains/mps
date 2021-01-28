@@ -39,16 +39,15 @@ import jetbrains.mps.vcs.diff.ChangeSet;
 import jetbrains.mps.vcs.diff.ChangeSetBuilder;
 import jetbrains.mps.vcs.diff.ChangeSetImpl;
 import org.jetbrains.mps.openapi.persistence.DataSource;
+import jetbrains.mps.persistence.DataLocationAwareModelFactory;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import java.util.function.Predicate;
 import jetbrains.mps.vfs.IFile;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
-import com.intellij.openapi.vcs.ProjectLevelVcsManager;
-import jetbrains.mps.persistence.DataLocationAwareModelFactory;
 import com.intellij.openapi.vcs.FileStatusManager;
-import java.util.Objects;
 import java.util.function.Function;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
@@ -101,7 +100,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @GeneratedClass(node = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)/3161776655522682154", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
-public class ChangesTracking {
+public final class ChangesTracking {
   private static final Logger LOG = LogManager.getLogger(ChangesTracking.class);
   private static final Object LOCK = new Object();
 
@@ -112,6 +111,7 @@ public class ChangesTracking {
   private final CurrentDifferenceRegistry myRegistry;
   private final SModelCommandListener myEventCollector = new MyEventsCollector();
   private boolean myDisposed = false;
+  private boolean myDoTracking = false;
   private final BidirectionalMultiMap<SNodeId, ModelChange> myNodesToChanges = new BidirectionalMultiMap<SNodeId, ModelChange>();
   private final Set<ModelChange> myMetadataChanges = SetSequence.fromSet(new HashSet<ModelChange>());
   private final BidirectionalMap<SNodeId, ModelChange> myAddedNodesToChanges = new BidirectionalMap<SNodeId, ModelChange>();
@@ -125,7 +125,18 @@ public class ChangesTracking {
     myModelDescriptor = myDifference.getModelDescriptor();
     myQueue = registry.getCommandQueue();
     myRegistry = registry;
-    registry.addEventCollector(myModelDescriptor, myEventCollector);
+    doTracking(isTracked());
+  }
+
+  private void doTracking(boolean flag) {
+    if (myDoTracking != flag) {
+      if (flag) {
+        myRegistry.addEventCollector(myModelDescriptor, myEventCollector);
+      } else {
+        myRegistry.removeEventCollector(myModelDescriptor, myEventCollector);
+      }
+      myDoTracking = flag;
+    }
   }
 
   public void dispose() {
@@ -187,25 +198,26 @@ public class ChangesTracking {
           if (myDisposed) {
             return;
           }
-          if (!(isUnderVcs(myModelDescriptor))) {
-            return;
-          }
 
           boolean isConflict = ConflictsUtil.isModelOrModuleConflicting(myModelDescriptor, myProject);
           FileStatus status = (isConflict ? FileStatus.MERGED_WITH_CONFLICTS : calcStatus());
 
-          // todo: make !force working for per-root persistence (here status==null) 
-          if (status != null && myStatusOnLastUpdate.get() == status && !(force)) {
+          FileStatus oldStatus = myStatusOnLastUpdate.get();
+          if (force || oldStatus != status) {
+            myStatusOnLastUpdate.set(status);
+            if (status == FileStatus.UNKNOWN || status == FileStatus.IGNORED) {
+              myDifference.removeChangeSet();
+            }
+            doTracking(isTracked());
+            myDifference.onModelStatusChanged(myModelDescriptor.getReference());
+          } else if (!(force) && oldStatus == status && status != null) {
             return;
           }
 
-          myDifference.removeChangeSet();
-
-          myStatusOnLastUpdate.set(status);
-          if (FileStatus.NOT_CHANGED == status && !(force)) {
+          if (!(isTracked())) {
             return;
           }
-          useEmptyBaseModel.value = isAdded(myModelDescriptor) || isConflict;
+          useEmptyBaseModel.value = isAdded() || isConflict;
           doNotContinue.value = false;
         }
       }
@@ -278,22 +290,8 @@ public class ChangesTracking {
     }
   }
 
-  private boolean isUnderVcs(@NotNull SModel model) {
-    DataSource ds = model.getSource();
-    if (!((ds instanceof FileSystemBasedDataSource))) {
-      return false;
-    }
-    return ((FileSystemBasedDataSource) ds).getAffectedFilesWithDirsExtracted().anyMatch(new Predicate<IFile>() {
-      @Override
-      public boolean test(IFile f) {
-        VirtualFile vFile = VirtualFileUtils.getProjectVirtualFile(f);
-        return vFile != null && ProjectLevelVcsManager.getInstance(myProject).getVcsFor(vFile) != null;
-      }
-    });
-  }
-
-  private boolean isAdded(SModel model) {
-    DataSource ds = DataLocationAwareModelFactory.metaInfoLocation(model);
+  private boolean isAdded() {
+    DataSource ds = DataLocationAwareModelFactory.metaInfoLocation(myModelDescriptor);
     if (!((ds instanceof FileSystemBasedDataSource))) {
       return false;
     }
@@ -306,6 +304,32 @@ public class ChangesTracking {
     });
   }
 
+  public boolean isTracked() {
+    if (myModelDescriptor instanceof MergeTemporaryModel) {
+      // RootDiffPane brings this on us, fixme 
+      return true;
+    }
+    FileStatus status = getStatusOfMetaDescriptor();
+    return status != FileStatus.IGNORED && status != FileStatus.UNKNOWN;
+  }
+
+  private FileStatus getStatusOfMetaDescriptor() {
+    DataSource ds = DataLocationAwareModelFactory.metaInfoLocation(myModelDescriptor);
+    if (!((ds instanceof FileSystemBasedDataSource))) {
+      return FileStatus.UNKNOWN;
+    }
+    return ((FileSystemBasedDataSource) ds).getAffectedFilesWithDirsExtracted().map(new Function<IFile, FileStatus>() {
+      @Override
+      public FileStatus apply(IFile f) {
+        VirtualFile file = VirtualFileUtils.getProjectVirtualFile(f);
+        if (file == null) {
+          return FileStatus.DELETED;
+        }
+        return FileStatusManager.getInstance(myProject).getStatus(file);
+      }
+    }).findFirst().orElse(FileStatus.DELETED);
+  }
+
   @NotNull
   public FileStatus getStatus() {
     return myStatusOnLastUpdate.get();
@@ -315,6 +339,9 @@ public class ChangesTracking {
     DataSource ds = myModelDescriptor.getSource();
     final FileStatusManager fsm = FileStatusManager.getInstance(myProject);
     if (ds instanceof FileSystemBasedDataSource) {
+      if (!(isTracked())) {
+        return FileStatus.UNKNOWN;
+      }
       List<FileStatus> statuses = (List<FileStatus>) ((FileSystemBasedDataSource) ds).getAffectedFilesWithDirsExtracted().filter(new Predicate<IFile>() {
         @Override
         public boolean test(IFile obj) {
@@ -430,7 +457,7 @@ public class ChangesTracking {
 
   @Nullable
   private SNode getOldNode(@NotNull SNodeId id) {
-    return check_5iuzi5_a0a64(check_5iuzi5_a0a0a64(myDifference.getChangeSet()), id);
+    return check_5iuzi5_a0a15(check_5iuzi5_a0a0a15(myDifference.getChangeSet()), id);
   }
 
   private void runUpdateTask(final _FunctionTypes._void_P0_E0 task, SNode currentNode, final SModelEvent event) {
@@ -706,7 +733,7 @@ public class ChangesTracking {
     @Override
     public void visitLanguageEvent(SModelLanguageEvent event) {
       final SLanguage eventLang = event.getEventLanguage();
-      final SModelInternal model = as_5iuzi5_a0a1a31fc(event.getModel(), SModelInternal.class);
+      final SModelInternal model = as_5iuzi5_a0a1a31kc(event.getModel(), SModelInternal.class);
       final boolean deleted = !(event.isAdded());
       runUpdateTask(new _FunctionTypes._void_P0_E0() {
         public void invoke() {
@@ -759,19 +786,19 @@ public class ChangesTracking {
       }, null, event);
     }
   }
-  private static SNode check_5iuzi5_a0a64(SModel checkedDotOperand, SNodeId id) {
+  private static SNode check_5iuzi5_a0a15(SModel checkedDotOperand, SNodeId id) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getNode(id);
     }
     return null;
   }
-  private static SModel check_5iuzi5_a0a0a64(ChangeSet checkedDotOperand) {
+  private static SModel check_5iuzi5_a0a0a15(ChangeSet checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getOldModel();
     }
     return null;
   }
-  private static <T> T as_5iuzi5_a0a1a31fc(Object o, Class<T> type) {
+  private static <T> T as_5iuzi5_a0a1a31kc(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 

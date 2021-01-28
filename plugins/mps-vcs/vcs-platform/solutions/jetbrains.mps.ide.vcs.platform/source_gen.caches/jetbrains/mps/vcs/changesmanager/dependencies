@@ -52,7 +52,6 @@
     <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="com.intellij.openapi.vcs.FileStatus" />
     <classNode dependClassName="com.intellij.openapi.vcs.FileStatusManager" />
-    <classNode dependClassName="com.intellij.openapi.vcs.ProjectLevelVcsManager" />
     <classNode dependClassName="com.intellij.openapi.vcs.impl.VcsFileStatusProvider" />
     <classNode dependClassName="com.intellij.openapi.vfs.VirtualFile" />
     <classNode dependClassName="com.intellij.util.containers.BidirectionalMap" />
@@ -159,6 +158,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.DataSource" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.changesmanager.CurrentDifference">
+    <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="com.intellij.openapi.vcs.FileStatus" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.Runnable" />
@@ -176,6 +176,7 @@
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.EditableSModel" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SModelReference" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.changesmanager.CurrentDifferenceAdapter">
     <classNode dependClassName="java.lang.Override" />
@@ -199,6 +200,7 @@
     <classNode dependClassName="org.apache.log4j.LogManager" />
     <classNode dependClassName="org.apache.log4j.Logger" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SModelReference" />
     <classNode extendsClassName="jetbrains.mps.vcs.changesmanager.CurrentDifferenceListener" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.changesmanager.CurrentDifferenceListener">
@@ -207,6 +209,7 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.ModelChange" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SModelReference" />
     <classNode extendsClassName="java.util.EventListener" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry">
@@ -219,6 +222,7 @@
     <classNode dependClassName="com.intellij.util.containers.MultiMap" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.Runnable" />
+    <classNode dependClassName="java.lang.SuppressWarnings" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="java.util.HashMap" />

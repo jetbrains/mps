@@ -123,7 +123,7 @@
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
     <node concept="M6xJ_" id="6_gUeuqOeQf" role="lGtFl">
-      <property role="Hh88m" value="" />
+      <property role="Hh88m" value="testLabel" />
     </node>
   </node>
   <node concept="1TIwiD" id="hBxON8j">
@@ -717,7 +717,7 @@
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
     <node concept="M6xJ_" id="6_gUeuqOeQN" role="lGtFl">
-      <property role="Hh88m" value="" />
+      <property role="Hh88m" value="anonCell" />
     </node>
   </node>
   <node concept="1TIwiD" id="hTJ5cZc">

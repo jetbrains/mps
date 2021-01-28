@@ -33,9 +33,9 @@ import jetbrains.mps.vcs.diff.changes.ImportedModelChange;
 import jetbrains.mps.vcs.diff.changes.EngagedLanguageChange;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceAdapter;
 import java.util.HashSet;
-import java.util.stream.Collectors;
 import java.util.Set;
 import java.util.Collections;
+import java.util.stream.Collectors;
 
 @GeneratedClass(node = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)/3751911615136892572", model = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)")
 public class FeatureForestMapSupport implements Disposable {
@@ -136,6 +136,13 @@ public class FeatureForestMapSupport implements Disposable {
       List<Feature> features = changeAdded0(change);
       myFFMap.put(features, change);
       myFFMap.fireFeaturesAdded(myFFMap.withAncestors(new HashSet<Feature>(features)));
+    }
+
+    @Override
+    public void modelStatusChanged(@NotNull SModelReference modelReference) {
+      Set<Feature> singleton = Collections.<Feature>singleton(new ModelFeature(modelReference));
+      myFFMap.fireFeaturesRemoved(singleton);
+      myFFMap.fireFeaturesAdded(singleton);
     }
 
     private List<Feature> changeAdded0(@NotNull ModelChange change) {

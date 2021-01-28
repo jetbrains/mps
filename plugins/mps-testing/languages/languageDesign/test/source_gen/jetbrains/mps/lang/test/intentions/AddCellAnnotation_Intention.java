@@ -102,7 +102,7 @@ public final class AddCellAnnotation_Intention extends AbstractIntentionDescript
         SLinkOperations.setTarget(newAnnotation, LINKS.nodeRangeSelectionStart$Qss5, nodeRangeSelection.getFirstNode());
         SLinkOperations.setTarget(newAnnotation, LINKS.nodeRangeSelectionEnd$QsF6, nodeRangeSelection.getLastNode());
       }
-      new IAttributeDescriptor.NodeAttribute(CONCEPTS.AbstractTestNodeAnnotation$lh).set(node, newAnnotation);
+      new IAttributeDescriptor.NodeAttribute(CONCEPTS.AnonymousCellAnnotation$hB).set(node, newAnnotation);
       SelectionUtil.selectNode(editorContext, newAnnotation);
     }
     @Override
@@ -115,7 +115,6 @@ public final class AddCellAnnotation_Intention extends AbstractIntentionDescript
     /*package*/ static final SConcept TestNode$zF = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, "jetbrains.mps.lang.test.structure.TestNode");
     /*package*/ static final SConcept EditorTestCase$DN = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, "jetbrains.mps.lang.test.structure.EditorTestCase");
     /*package*/ static final SConcept AnonymousCellAnnotation$hB = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, "jetbrains.mps.lang.test.structure.AnonymousCellAnnotation");
-    /*package*/ static final SConcept AbstractTestNodeAnnotation$lh = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e0d52da47L, "jetbrains.mps.lang.test.structure.AbstractTestNodeAnnotation");
   }
 
   private static final class PROPS {

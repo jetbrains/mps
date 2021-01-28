@@ -1017,12 +1017,13 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       return null;
     }
     StringBuilder result = new StringBuilder();
-    for (ListIterator<EditorMessageWithTarget> it = messages.listIterator(messages.size()); it.hasPrevious(); ) {
+    for (var it = messages.listIterator(messages.size()); it.hasPrevious();) {
       SimpleEditorMessage message = it.previous();
-      if (result.length() != 0) {
-        result.append('\n');
+      String formattedMessage = message.getFormattedMessage();
+      if (!formattedMessage.isBlank()) {
+        result.append(formattedMessage);
+        result.append("<br/>");
       }
-      result.append(message.getFormattedMessage());
     }
     return result.toString();
   }

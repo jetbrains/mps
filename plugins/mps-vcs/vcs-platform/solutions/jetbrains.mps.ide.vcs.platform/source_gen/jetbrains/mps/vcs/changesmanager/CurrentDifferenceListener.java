@@ -6,6 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import java.util.EventListener;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
+import org.jetbrains.mps.openapi.model.SModelReference;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 
@@ -15,6 +16,14 @@ public interface CurrentDifferenceListener extends EventListener {
   void changeRemoved(@NotNull ModelChange change);
   void changeUpdateStarted();
   void changeUpdateFinished();
+
+  /**
+   * sometimes model can be updated without any changes (when it is just added)
+   * ofcourse we could add new changes instead, but I am in a bugfix
+   */
+  default void modelStatusChanged(@NotNull SModelReference mref) {
+    // nop 
+  }
 
   default void changesAdded(@NotNull List<ModelChange> changes) {
     for (ModelChange c : ListSequence.fromList(changes)) {

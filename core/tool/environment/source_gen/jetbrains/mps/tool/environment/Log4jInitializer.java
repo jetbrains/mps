@@ -116,12 +116,24 @@ public final class Log4jInitializer {
     root.removeAllAppenders();
     root.setLevel(Level.INFO);
     PatternLayout layout = new PatternLayout(PatternLayout.TTCC_CONVERSION_PATTERN);
+    root.addAppender(Log4jInitializer.createWarnApp(layout));
+    root.addAppender(Log4jInitializer.createInfoApp(layout));
+  }
+
+  private static ConsoleAppender createWarnApp(PatternLayout layout) {
     ConsoleAppender consoleWarn = new ConsoleAppender(layout, ConsoleAppender.SYSTEM_ERR);
     LevelRangeFilter warnFilter = new LevelRangeFilter();
     warnFilter.setLevelMin(Level.WARN);
     consoleWarn.addFilter(warnFilter);
-    root.addAppender(consoleWarn);
-    LevelRangeFilter filter = new LevelRangeFilter();
-    filter.setLevelMin(Level.INFO);
+    return consoleWarn;
+  }
+
+  private static ConsoleAppender createInfoApp(PatternLayout layout) {
+    ConsoleAppender consoleInfo = new ConsoleAppender(layout, ConsoleAppender.SYSTEM_OUT);
+    LevelRangeFilter infoFilter = new LevelRangeFilter();
+    infoFilter.setLevelMin(Level.INFO);
+    infoFilter.setLevelMax(Level.INFO);
+    consoleInfo.addFilter(infoFilter);
+    return consoleInfo;
   }
 }

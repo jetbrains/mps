@@ -11,6 +11,7 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.apache.log4j.Level;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
+import org.jetbrains.mps.openapi.model.SModelReference;
 import java.util.List;
 
 @GeneratedClass(node = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)/8579517044346265736", model = "r:d634c129-ecb4-4acd-bd8c-5f057c144ffa(jetbrains.mps.vcs.changesmanager)")
@@ -18,6 +19,7 @@ import java.util.List;
   private static final Logger LOG = LogManager.getLogger(CurrentDifferenceBroadcaster.class);
   private final CopyOnWriteArrayList<CurrentDifferenceListener> myListeners = new CopyOnWriteArrayList<CurrentDifferenceListener>();
   private final SimpleCommandQueue myCommandQueue;
+  private boolean myEnabled = true;
 
   public CurrentDifferenceBroadcaster(SimpleCommandQueue commandQueue) {
     myCommandQueue = commandQueue;
@@ -33,6 +35,9 @@ import java.util.List;
 
   private void fireEvent(String name, _FunctionTypes._void_P1_E0<? super CurrentDifferenceListener> task) {
     myCommandQueue.assertSoftlyIsCommandThread();
+    if (!(myEnabled)) {
+      return;
+    }
     for (CurrentDifferenceListener listener : ListSequence.fromList(myListeners)) {
       try {
         task.invoke(listener);
@@ -76,13 +81,16 @@ import java.util.List;
   public void changeUpdateFinished() {
     fireEvent("changeUpdateFinished", new _FunctionTypes._void_P1_E0<CurrentDifferenceListener>() {
       public void invoke(CurrentDifferenceListener listener) {
-        if (LOG.isTraceEnabled()) {
-          LOG.trace("change update finished for " + listener.getClass().getSimpleName());
-        }
         listener.changeUpdateFinished();
-        if (LOG.isTraceEnabled()) {
-          LOG.trace("done change update finished for " + listener.getClass().getSimpleName());
-        }
+      }
+    });
+  }
+
+  @Override
+  public void modelStatusChanged(@NotNull final SModelReference reference) {
+    fireEvent("modelStatusChange", new _FunctionTypes._void_P1_E0<CurrentDifferenceListener>() {
+      public void invoke(CurrentDifferenceListener listener) {
+        listener.modelStatusChanged(reference);
       }
     });
   }
@@ -103,5 +111,9 @@ import java.util.List;
         listener.changesRemoved(changes);
       }
     });
+  }
+
+  public void setEnabled(boolean enabled) {
+    myEnabled = enabled;
   }
 }
