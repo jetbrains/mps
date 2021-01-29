@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 package jetbrains.mps.smodel;
 
 import jetbrains.mps.RuntimeFlags;
-import jetbrains.mps.logging.Logger;
+import jetbrains.mps.logging.Log4jUtil;
 import jetbrains.mps.smodel.adapter.structure.types.SEnumerationAdapter;
 import jetbrains.mps.smodel.language.ConceptRegistryUtil;
 import jetbrains.mps.smodel.legacy.ConceptMetaInfoConverter;
@@ -25,7 +25,7 @@ import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.SNodeOperations;
-import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SDataType;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -38,7 +38,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class SNodeAccessUtilImpl extends SNodeAccessUtil {
-  private static Logger LOG = Logger.wrap(LogManager.getLogger(SNodeAccessUtil.class));
+  private static Logger LOG = Logger.getLogger(SNodeAccessUtil.class);
 
   //SNodeAccessUtilImpl has only one instance, so we can omit remove() here though the field is not static
   private final ThreadLocal<Set<Pair<org.jetbrains.mps.openapi.model.SNode, SProperty>>> ourPropertySettersInProgress = new InProgressThreadLocal<>();
@@ -61,6 +61,7 @@ public class SNodeAccessUtilImpl extends SNodeAccessUtil {
   @Override
   public Object getPropertyValueImpl(org.jetbrains.mps.openapi.model.SNode node, SProperty property) {
     if (RuntimeFlags.isMergeDriverMode()) {
+      // FIXME why don't we use another SNodeAccessUtilImpl in merge driver mode, instead of this gruesome 'if'?
       return getPropertyDirectly(node, property);
     }
 
@@ -90,10 +91,26 @@ public class SNodeAccessUtilImpl extends SNodeAccessUtil {
       }
       return getPropertyDirectly(node, property);
     } catch (Throwable t) {
-      LOG.error(t);
+      if (t instanceof RuntimeException && ActionDispatcher.isControlFlowIDEA((RuntimeException) t)) {
+        logControlFlow((RuntimeException) t);
+      } else {
+        LOG.error(t);
+      }
       return SType.NOT_A_VALUE;
     } finally {
       getters.remove(current);
+    }
+  }
+
+  private void logControlFlow(RuntimeException ex) {
+    // see ActionDispatcher.logUnexpectedRuntimeException for more details
+    if (RuntimeFlags.isInternalMode() || LOG.isDebugEnabled()) {
+      String m = "Ignored control flow exception";
+      if (RuntimeFlags.isInternalMode()) {
+        LOG.warn(m);
+      } else {
+        LOG.debug(m);
+      }
     }
   }
 
@@ -149,12 +166,17 @@ public class SNodeAccessUtilImpl extends SNodeAccessUtil {
       if (descriptor != null) {
         descriptor.setPropertyValue(node, propertyValue);
       } else {
-        LOG.error(
-            "Can't find property constraints for property `" + property.getName() + "`. Setting directly. Value: `" + propertyValue + "`.", node);
+        String m = String.format("Can't find property constraints for property `%s`. Setting directly. Value: `%s`.", property.getName(), propertyValue);
+        LOG.error(Log4jUtil.createMessageObject(m, node));
         setPropertyDirectly(node, property, propertyValue);
       }
     } catch (Exception t) {
-      LOG.error(t);
+      // FIXME no idea why we catch Exception here, while getPropertyValueImpl, above, sticks to Throwable
+      if (t instanceof RuntimeException && ActionDispatcher.isControlFlowIDEA((RuntimeException) t)) {
+        logControlFlow((RuntimeException) t);
+      } else {
+        LOG.error(t);
+      }
     } finally {
       threadSet.remove(pair);
     }
@@ -189,8 +211,8 @@ public class SNodeAccessUtilImpl extends SNodeAccessUtil {
     ReferenceConstraintsDescriptor descriptor = getReferenceConstraintsDescriptor(node, referenceLink);
 
     if (descriptor == null) {
-      LOG.error(
-          "Can't find reference constraints for reference `" + referenceLink.getRoleName() + "`. Setting directly.", node);
+      String m = String.format("Can't find reference constraints for reference `%s`. Setting directly.", referenceLink.getName());
+      LOG.error(Log4jUtil.createMessageObject(m, node));
       node.setReferenceTarget(referenceLink, target);
       return;
     }

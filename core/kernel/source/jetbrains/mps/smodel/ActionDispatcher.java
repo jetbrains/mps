@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -110,9 +110,12 @@ import java.util.function.Predicate;
     return () -> dispatch(r);
   }
 
-  private void logUnexpectedRuntimeException(RuntimeException ex) {
+  /*package*/ static boolean isControlFlowIDEA(RuntimeException ex) {
     final Predicate<String> cfePredicate = "com.intellij.openapi.diagnostic.ControlFlowException"::equals;
-    if (Arrays.stream(ex.getClass().getInterfaces()).map(Class::getName).anyMatch(cfePredicate)) {
+    return Arrays.stream(ex.getClass().getInterfaces()).map(Class::getName).anyMatch(cfePredicate);
+  }
+  private void logUnexpectedRuntimeException(RuntimeException ex) {
+    if (isControlFlowIDEA(ex)) {
       // don't treat IDEA's control flow exceptions as errors. We can do nothing about IDEA's approach to use RuntimeException implements ControlFlowException
       // but at least shall not log it as an error to avoid perception something's wrong with MPS>
       if (RuntimeFlags.isInternalMode() || LOG.isDebugEnabled()) {
