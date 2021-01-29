@@ -1,4 +1,6 @@
 <project name="buildDmg" default="makeall" basedir="../">
+  <property environment="env"/>
+
   <property name="build.artifacts" location="${basedir}"/>
   <property name="build.tmp" location="${basedir}/mac"/>
   <property name="build.layout" location="${basedir}"/>
@@ -12,6 +14,7 @@
   <property name="mac.host" value=""/>
   <property name="mac.user" value=""/>
   <property name="mac.password" value=""/>
+  <property name="mac.codesign.string" value=""/>
   <property name="mac.keychain" value="/Users/${mac.user}/Library/Keychains/login.keychain"/>
   <property name="mac.ftp.passive" value="true"/>
   <property name="remote.dir.base" value="intellij-builds"/>
@@ -22,8 +25,10 @@
     <mkdir dir="${build.tmp}"/>
     <copy file="${basedir}/build/resources/DMG_background.tiff" tofile="${build.tmp}/${build.code}.png"/>
     <copy file="${basedir}/build/resources/mps-sign.sh" tofile="${build.tmp}/${build.code}-sign.sh"/>
+    <copy file="${basedir}/build/tools/mac/scripts/notarize.sh" tofile="${build.tmp}/notarize.sh"/>
     <copy file="${basedir}/build/resources/mps-dmg.sh" tofile="${build.tmp}/${build.code}-dmg.sh"/>
     <copy file="${basedir}/build/resources/mpsdmg.pl" tofile="${build.tmp}/${build.code}.pl"/>
+    <copy file="${basedir}/build/tools/mac/scripts/entitlements.xml" tofile="${build.tmp}/entitlements.xml"/>
     <move file="${mps-macos.zip}" tofile="${build.tmp}/${build.code}.zip"/>
     <move file="${jdk.tar.gz}" tofile="${build.tmp}/${build.code}-jdk.tar.gz"/>
     <move file="${info.plist}" tofile="${build.tmp}/${build.code}-Info.plist"/>
@@ -40,11 +45,13 @@
         <include name="${build.code}-sign.sh"/>
         <include name="${build.code}-dmg.sh"/>
         <include name="${build.code}.pl"/>
+        <include name="entitlements.xml"/>
+        <include name="notarize.sh"/>
       </fileset>
     </ftp>
 
     <sshexec host="${mac.host}" username="${mac.user}" password="${mac.password}" trust="yes"
-             command="${remote.dir}/${build.code}-sign.sh ${build.code} ${mac.keychain} ${mac.password} ${remote.dir}"/>
+             command="${remote.dir}/${build.code}-sign.sh ${build.code} ${mac.keychain} ${mac.password} ${remote.dir} ${mac.codesign.string}"/>
     <sshexec host="${mac.host}" username="${mac.user}" password="${mac.password}" trust="yes"
              command="${remote.dir}/${build.code}-dmg.sh ${build.code} ${remote.dir}"/>
 
@@ -62,7 +69,7 @@
     </ftp>
 
     <sshexec host="${mac.host}" username="${mac.user}" password="${mac.password}" trust="yes"
-             command="${remote.dir}/${build.code}-sign.sh ${build.code} ${mac.keychain} ${mac.password} ${remote.dir}"/>
+             command="${remote.dir}/${build.code}-sign.sh ${build.code} ${mac.keychain} ${mac.password} ${remote.dir} ${mac.codesign.string}"/>
     <sshexec host="${mac.host}" username="${mac.user}" password="${mac.password}" trust="yes"
              command="${remote.dir}/${build.code}-dmg.sh ${build.code} ${remote.dir}"/>
 
@@ -83,6 +90,8 @@
         <include name="**/${build.code}-dmg.sh"/>
         <include name="**/${build.code}.png"/>
         <include name="**/${build.code}.pl"/>
+        <include name="**/entitlements.xml"/>
+        <include name="**/notarize.sh"/>
         <include name="**/${build.code}.sit"/>
         <include name="**/${build.code}.dmg"/>
       </fileset>
