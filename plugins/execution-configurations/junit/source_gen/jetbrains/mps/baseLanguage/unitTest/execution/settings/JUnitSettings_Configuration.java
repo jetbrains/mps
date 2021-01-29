@@ -27,8 +27,6 @@ import jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
-import jetbrains.mps.lang.test.util.TestInProcessRunState;
-import jetbrains.mps.lang.test.util.RunStateEnum;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.RunCachesManager;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.util.Reference;
@@ -53,7 +51,6 @@ public class JUnitSettings_Configuration implements IPersistentConfiguration {
     Project project = myProject;
     MPSProject mpsProject = ProjectHelper.fromIdeaProject(project);
     checkCachesDirIsFreeToLock();
-    checkInProcessRunIsSingle();
     if (!((Objects.equals(this.getRunType(), JUnitRunTypes.PROJECT.ordinal())))) {
       check(mpsProject);
     }
@@ -120,11 +117,6 @@ public class JUnitSettings_Configuration implements IPersistentConfiguration {
     });
     if ((errorMsg != null && errorMsg.length() > 0)) {
       throw new RuntimeConfigurationError(errorMsg);
-    }
-  }
-  private void checkInProcessRunIsSingle() throws RuntimeConfigurationException {
-    if (this.getInProcess() && TestInProcessRunState.getInstance().get() != RunStateEnum.IDLE) {
-      throw new RuntimeConfigurationError("There is already another instance running tests in-process. Only one instance is allowed to run in-process.");
     }
   }
   private void checkCachesDirIsFreeToLock() throws RuntimeConfigurationException {

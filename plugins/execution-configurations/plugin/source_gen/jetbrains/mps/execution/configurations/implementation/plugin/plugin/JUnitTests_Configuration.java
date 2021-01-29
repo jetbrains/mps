@@ -25,6 +25,7 @@ import com.intellij.execution.ui.ConsoleView;
 import jetbrains.mps.execution.api.configurations.ConsoleCreator;
 import jetbrains.mps.ide.actions.StandaloneMPSStackTraceFilter;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
+import com.intellij.execution.configurations.RuntimeConfigurationError;
 import com.intellij.openapi.project.Project;
 import com.intellij.execution.configurations.ConfigurationFactory;
 import org.jetbrains.annotations.Nullable;
@@ -52,6 +53,7 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
   public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
     this.getJUnitSettings().checkConfiguration(context);
     this.getDeploySettings().checkConfiguration(context);
+    checkInProcessRunIsSingle();
   }
   @Override
   public void writeExternal(Element element) throws WriteExternalException {
@@ -127,6 +129,11 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
         }
       }
     });
+  }
+  private void checkInProcessRunIsSingle() throws RuntimeConfigurationException {
+    if (this.getJUnitSettings().getInProcess() && TestInProcessRunState.getInstance(this.getProject()).get() != RunStateEnum.IDLE) {
+      throw new RuntimeConfigurationError("There is already another instance running tests in-process. Only one instance is allowed to run in-process.");
+    }
   }
   @Override
   public JUnitTests_Configuration clone() {

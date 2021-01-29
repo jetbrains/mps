@@ -6,12 +6,10 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import java.util.concurrent.TimeUnit;
 import jetbrains.mps.baseLanguage.unitTest.execution.server.NodeWrappersTestsContributor;
-import jetbrains.mps.lang.test.util.TestInProcessRunState;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.lang.test.util.RunStateEnum;
 import com.intellij.execution.process.ProcessHandler;
 import com.intellij.execution.ExecutionException;
 import jetbrains.mps.baseLanguage.unitTest.execution.server.JUnitTestExecutor;
@@ -35,7 +33,11 @@ public class JUnitInProcessRunStarter implements JUnitProcessStarter {
 
   public JUnitInProcessRunStarter(@NotNull Project mpsProject, @NotNull JUnitTests_Configuration runConfiguration, @NotNull Iterable<ITestNodeWrapper> testNodeWrappers) {
     myTestsContributor = new NodeWrappersTestsContributor((MPSProject) mpsProject, runConfiguration.getName(), testNodeWrappers);
-    myTestRunState = TestInProcessRunState.getInstance();
+    myTestRunState = TestInProcessRunState.getInstance(((MPSProject) mpsProject).getProject());
+  }
+
+  public TestInProcessRunState getRunState() {
+    return myTestRunState;
   }
 
   private synchronized boolean checkExecutionIsPossible() {

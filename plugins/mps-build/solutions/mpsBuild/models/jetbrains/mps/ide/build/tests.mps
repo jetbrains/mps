@@ -212,9 +212,6 @@
         <child id="3189788309731917348" name="runtime" index="1E1XAP" />
         <child id="9200313594498201639" name="generator" index="1TViLv" />
       </concept>
-      <concept id="3189788309731928315" name="jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyOnJavaModule" flags="ng" index="1E1SXE">
-        <reference id="3189788309731928317" name="module" index="1E1SXG" />
-      </concept>
       <concept id="3189788309731922642" name="jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyUseLanguage" flags="ng" index="1E1Vl3">
         <reference id="3189788309731922643" name="language" index="1E1Vl2" />
       </concept>
@@ -585,14 +582,6 @@
           <node concept="3bR9La" id="2TUUQgSS1xW" role="1SiIV1">
             <ref role="3bR37D" to="ffeo:5xa9wY2vhb7" resolve="jetbrains.mps.execution.configurations.implementation.plugin" />
           </node>
-        </node>
-        <node concept="1SiIV0" id="3T4oiWuYWAL" role="3bR37C">
-          <node concept="3bR9La" id="3T4oiWuYWAM" role="1SiIV1">
-            <ref role="3bR37D" to="ffeo:3fCcEmT2ZdI" resolve="jetbrains.mps.lang.test.util" />
-          </node>
-        </node>
-        <node concept="1E1SXE" id="4BeY47ZQHti" role="3bR37C">
-          <ref role="1E1SXG" to="ffeo:2aRSPSKEe9G" resolve="test-util" />
         </node>
         <node concept="1SiIV0" id="5sLbmmj1rR1" role="3bR37C">
           <node concept="3bR9La" id="5sLbmmj1rR2" role="1SiIV1">
@@ -6048,15 +6037,12 @@
                   <property role="2Ry0Am" value="mps-testing" />
                   <node concept="2Ry0Ak" id="EpEP7iihNw" role="2Ry0An">
                     <property role="2Ry0Am" value="languages" />
-                    <node concept="2Ry0Ak" id="EpEP7iihNx" role="2Ry0An">
-                      <property role="2Ry0Am" value="languageDesign" />
-                      <node concept="2Ry0Ak" id="EpEP7iihNy" role="2Ry0An">
-                        <property role="2Ry0Am" value="smodelTests" />
-                        <node concept="2Ry0Ak" id="EpEP7iihNz" role="2Ry0An">
-                          <property role="2Ry0Am" value="solutions" />
-                          <node concept="2Ry0Ak" id="EpEP7iihN$" role="2Ry0An">
-                            <property role="2Ry0Am" value="jetbrains.mps.smodel.test" />
-                          </node>
+                    <node concept="2Ry0Ak" id="EpEP7iihNy" role="2Ry0An">
+                      <property role="2Ry0Am" value="smodelTests" />
+                      <node concept="2Ry0Ak" id="EpEP7iihNz" role="2Ry0An">
+                        <property role="2Ry0Am" value="solutions" />
+                        <node concept="2Ry0Ak" id="EpEP7iihN$" role="2Ry0An">
+                          <property role="2Ry0Am" value="jetbrains.mps.smodel.test" />
                         </node>
                       </node>
                     </node>
@@ -6073,17 +6059,14 @@
               <property role="2Ry0Am" value="mps-testing" />
               <node concept="2Ry0Ak" id="3_1qLajoFfS" role="2Ry0An">
                 <property role="2Ry0Am" value="languages" />
-                <node concept="2Ry0Ak" id="3_1qLajoFfU" role="2Ry0An">
-                  <property role="2Ry0Am" value="languageDesign" />
-                  <node concept="2Ry0Ak" id="3_1qLajoFfW" role="2Ry0An">
-                    <property role="2Ry0Am" value="smodelTests" />
-                    <node concept="2Ry0Ak" id="3_1qLajoFfY" role="2Ry0An">
-                      <property role="2Ry0Am" value="solutions" />
-                      <node concept="2Ry0Ak" id="3_1qLajoFg0" role="2Ry0An">
-                        <property role="2Ry0Am" value="jetbrains.mps.smodel.test" />
-                        <node concept="2Ry0Ak" id="3_1qLajoFg2" role="2Ry0An">
-                          <property role="2Ry0Am" value="jetbrains.mps.smodel.test.msd" />
-                        </node>
+                <node concept="2Ry0Ak" id="3_1qLajoFfW" role="2Ry0An">
+                  <property role="2Ry0Am" value="smodelTests" />
+                  <node concept="2Ry0Ak" id="3_1qLajoFfY" role="2Ry0An">
+                    <property role="2Ry0Am" value="solutions" />
+                    <node concept="2Ry0Ak" id="3_1qLajoFg0" role="2Ry0An">
+                      <property role="2Ry0Am" value="jetbrains.mps.smodel.test" />
+                      <node concept="2Ry0Ak" id="3_1qLajoFg2" role="2Ry0An">
+                        <property role="2Ry0Am" value="jetbrains.mps.smodel.test.msd" />
                       </node>
                     </node>
                   </node>
@@ -6154,17 +6137,14 @@
                   <property role="2Ry0Am" value="mps-testing" />
                   <node concept="2Ry0Ak" id="73GUf$umQFr" role="2Ry0An">
                     <property role="2Ry0Am" value="languages" />
-                    <node concept="2Ry0Ak" id="73GUf$umQFs" role="2Ry0An">
-                      <property role="2Ry0Am" value="languageDesign" />
-                      <node concept="2Ry0Ak" id="73GUf$umQFt" role="2Ry0An">
-                        <property role="2Ry0Am" value="smodelTests" />
-                        <node concept="2Ry0Ak" id="73GUf$umQFu" role="2Ry0An">
-                          <property role="2Ry0Am" value="solutions" />
-                          <node concept="2Ry0Ak" id="73GUf$umQFv" role="2Ry0An">
-                            <property role="2Ry0Am" value="jetbrains.mps.smodel.test" />
-                            <node concept="2Ry0Ak" id="73GUf$umQFw" role="2Ry0An">
-                              <property role="2Ry0Am" value="models" />
-                            </node>
+                    <node concept="2Ry0Ak" id="73GUf$umQFt" role="2Ry0An">
+                      <property role="2Ry0Am" value="smodelTests" />
+                      <node concept="2Ry0Ak" id="73GUf$umQFu" role="2Ry0An">
+                        <property role="2Ry0Am" value="solutions" />
+                        <node concept="2Ry0Ak" id="73GUf$umQFv" role="2Ry0An">
+                          <property role="2Ry0Am" value="jetbrains.mps.smodel.test" />
+                          <node concept="2Ry0Ak" id="73GUf$umQFw" role="2Ry0An">
+                            <property role="2Ry0Am" value="models" />
                           </node>
                         </node>
                       </node>

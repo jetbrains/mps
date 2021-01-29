@@ -19,9 +19,8 @@ import jetbrains.mps.baseLanguage.unitTest.execution.client.TestRunState;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.execution.configurations.implementation.plugin.plugin.JUnitTests_Configuration;
-import jetbrains.mps.execution.configurations.implementation.plugin.plugin.JUnitProcessStarter;
 import jetbrains.mps.execution.configurations.implementation.plugin.plugin.JUnitInProcessRunStarter;
-import jetbrains.mps.lang.test.util.TestInProcessRunState;
+import jetbrains.mps.execution.configurations.implementation.plugin.plugin.TestInProcessRunState;
 import com.intellij.execution.process.ProcessHandler;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.execution.impl.configurations.tests.commands.CheckTestStateListener;
@@ -68,8 +67,8 @@ public class JUnitInProcessTermination_Test extends BaseTransformationTest {
         final TestRunState runState = new TestRunState(testNodes);
         Project ideaProject = ((MPSProject) myProject).getProject();
         JUnitTests_Configuration junitRC = new JUnitTests_Configuration(ideaProject, null, "dummyRCInitializer");
-        JUnitProcessStarter processExecutor = new JUnitInProcessRunStarter(myProject, junitRC, testNodes);
-        final TestInProcessRunState lightState = TestInProcessRunState.getInstance();
+        JUnitInProcessRunStarter processExecutor = new JUnitInProcessRunStarter(myProject, junitRC, testNodes);
+        final TestInProcessRunState lightState = processExecutor.getRunState();
         if (LOG.isInfoEnabled()) {
           LOG.info("Starting in-process-execution");
         }

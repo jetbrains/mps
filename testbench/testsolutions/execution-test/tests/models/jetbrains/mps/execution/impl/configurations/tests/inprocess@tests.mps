@@ -21,7 +21,6 @@
     <import index="3v5a" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.execution(MPS.IDEA/)" />
     <import index="5zyv" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent(JDK/)" />
     <import index="9w4s" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util(MPS.IDEA/)" />
-    <import index="fnd7" ref="r:5217bde7-686e-45b2-a47f-62b7d63f0fe9(jetbrains.mps.lang.test.util)" />
     <import index="v3va" ref="r:32667737-240a-422b-b048-8918d4b92152(jetbrains.mps.execution.impl.configurations.util@tests)" />
     <import index="n8jl" ref="r:bbc844ac-dcda-4460-9717-8eb5d64b4778(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox2@tests)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
@@ -1078,8 +1077,8 @@
             <node concept="3cpWs8" id="5vTxdEzz10s" role="3cqZAp">
               <node concept="3cpWsn" id="5vTxdEzz10t" role="3cpWs9">
                 <property role="TrG5h" value="processExecutor" />
-                <node concept="3uibUv" id="5vTxdEzz10u" role="1tU5fm">
-                  <ref role="3uigEE" to="ic9i:1b7CZFPOU09" resolve="JUnitProcessStarter" />
+                <node concept="3uibUv" id="37RZV2uqiyy" role="1tU5fm">
+                  <ref role="3uigEE" to="ic9i:5iYlssmVvC7" resolve="JUnitInProcessRunStarter" />
                 </node>
                 <node concept="2ShNRf" id="5vTxdEzz10y" role="33vP2m">
                   <node concept="1pGfFk" id="5vTxdEzz10z" role="2ShVmc">
@@ -1100,11 +1099,15 @@
                 <property role="TrG5h" value="lightState" />
                 <property role="3TUv4t" value="true" />
                 <node concept="3uibUv" id="5vTxdEzFcdk" role="1tU5fm">
-                  <ref role="3uigEE" to="fnd7:1$FrpHy4ud$" resolve="TestInProcessRunState" />
+                  <ref role="3uigEE" to="ic9i:1$FrpHy4ud$" resolve="TestInProcessRunState" />
                 </node>
-                <node concept="2YIFZM" id="78MxLJAHA7o" role="33vP2m">
-                  <ref role="37wK5l" to="fnd7:78MxLJAHsh8" resolve="getInstance" />
-                  <ref role="1Pybhc" to="fnd7:1$FrpHy4ud$" resolve="TestInProcessRunState" />
+                <node concept="2OqwBi" id="37RZV2uqjj9" role="33vP2m">
+                  <node concept="37vLTw" id="37RZV2uqj52" role="2Oq$k0">
+                    <ref role="3cqZAo" node="5vTxdEzz10t" resolve="processExecutor" />
+                  </node>
+                  <node concept="liA8E" id="37RZV2uqjDj" role="2OqNvi">
+                    <ref role="37wK5l" to="ic9i:37RZV2uqcvQ" resolve="getRunState" />
+                  </node>
                 </node>
               </node>
             </node>
@@ -1125,7 +1128,7 @@
                     <ref role="3cqZAo" node="5vTxdEzz10t" resolve="processExecutor" />
                   </node>
                   <node concept="liA8E" id="5vTxdEzz10H" role="2OqNvi">
-                    <ref role="37wK5l" to="ic9i:1b7CZFPOU0w" resolve="execute" />
+                    <ref role="37wK5l" to="ic9i:5iYlssmVwB$" resolve="execute" />
                   </node>
                 </node>
               </node>
@@ -1335,7 +1338,7 @@
                   <ref role="3cqZAo" node="5vTxdEzF5UD" resolve="lightState" />
                 </node>
                 <node concept="liA8E" id="5vTxdEzFjwc" role="2OqNvi">
-                  <ref role="37wK5l" to="fnd7:1$FrpHy4ufc" resolve="isRunning" />
+                  <ref role="37wK5l" to="ic9i:1$FrpHy4ufc" resolve="isRunning" />
                 </node>
               </node>
             </node>
@@ -1521,7 +1524,7 @@
         <property role="TrG5h" value="lightState" />
         <property role="3TUv4t" value="true" />
         <node concept="3uibUv" id="7iQDiGjjSJz" role="1tU5fm">
-          <ref role="3uigEE" to="fnd7:1$FrpHy4ud$" resolve="TestInProcessRunState" />
+          <ref role="3uigEE" to="ic9i:1$FrpHy4ud$" resolve="TestInProcessRunState" />
         </node>
       </node>
       <node concept="3clFbS" id="7iQDiGjjSJh" role="3clF47">
@@ -1576,7 +1579,7 @@
                           <ref role="3cqZAo" node="7iQDiGjjSJy" resolve="lightState" />
                         </node>
                         <node concept="liA8E" id="7iQDiGjjSJu" role="2OqNvi">
-                          <ref role="37wK5l" to="fnd7:1$FrpHy4ufc" resolve="isRunning" />
+                          <ref role="37wK5l" to="ic9i:1$FrpHy4ufc" resolve="isRunning" />
                         </node>
                       </node>
                     </node>

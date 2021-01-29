@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,6 +31,7 @@ import com.intellij.util.ui.update.UiNotifyConnector;
 import jetbrains.mps.icons.MPSIcons.ProjectPane;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.smodel.CancellableReadAction;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -150,25 +151,33 @@ public final class LoadedModelsPanel extends TextPanel implements CustomStatusBa
     return " " + getCaption(1000, 1000);
   }
 
-  private void updateState() {
+  /*package*/ void updateState() {
     if (!isShowing()) {
       return;
     }
 
     final SRepository repo = myProject.getRepository();
-    repo.getModelAccess().runReadAction(()->{
-
-      myLastLoadedModels = 0;
-      myModelsTotal = 0;
-      for (SModule module : repo.getModules()) {
-        for (SModel m : module.getModels()) {
-          myModelsTotal++;
-          if (m.isLoaded()) {
-            myLastLoadedModels++;
+    final CancellableReadAction ra = new CancellableReadAction() {
+      @Override
+      protected void execute() {
+        int modelsTotal = 0, loadedModels = 0;
+        for (SModule module : repo.getModules()) {
+          if (isCancelRequested()) {
+            confirmCancel();
+            return;
+          }
+          for (SModel m : module.getModels()) {
+            modelsTotal++;
+            if (m.isLoaded()) {
+              loadedModels++;
+            }
           }
         }
+        myLastLoadedModels = loadedModels;
+        myModelsTotal = modelsTotal;
       }
-    });
+    };
+    repo.getModelAccess().runReadAction(ra);
 
     setText(getCaption(myLastLoadedModels, myModelsTotal));
     setToolTipText("Models Loaded: " + myLastLoadedModels + "<br>" + "Total: " + myModelsTotal);

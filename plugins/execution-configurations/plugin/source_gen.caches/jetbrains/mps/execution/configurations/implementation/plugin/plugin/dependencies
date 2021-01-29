@@ -356,8 +356,8 @@
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.FakeProcess" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.FakeProcessHandler" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.JUnitTests_Configuration" />
-    <classNode dependClassName="jetbrains.mps.lang.test.util.RunStateEnum" />
-    <classNode dependClassName="jetbrains.mps.lang.test.util.TestInProcessRunState" />
+    <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.RunStateEnum" />
+    <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.TestInProcessRunState" />
     <classNode dependClassName="jetbrains.mps.project.MPSProject" />
     <classNode dependClassName="jetbrains.mps.project.Project" />
     <classNode dependClassName="org.apache.log4j.Level" />
@@ -402,6 +402,7 @@
     <classNode dependClassName="com.intellij.execution.configurations.ConfigurationPerRunnerSettings" />
     <classNode dependClassName="com.intellij.execution.configurations.RunConfiguration" />
     <classNode dependClassName="com.intellij.execution.configurations.RunProfileState" />
+    <classNode dependClassName="com.intellij.execution.configurations.RuntimeConfigurationError" />
     <classNode dependClassName="com.intellij.execution.configurations.RuntimeConfigurationException" />
     <classNode dependClassName="com.intellij.execution.process.ProcessHandler" />
     <classNode dependClassName="com.intellij.execution.runners.ExecutionEnvironment" />
@@ -430,6 +431,8 @@
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployPluginsSettings_Configuration" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.JUnitTests_Configuration_Editor" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.JUnitTests_Configuration_RunProfileState" />
+    <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.RunStateEnum" />
+    <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.TestInProcessRunState" />
     <classNode dependClassName="jetbrains.mps.execution.configurations.pluginSolution.plugin.MakeNodePointers_BeforeTask" />
     <classNode dependClassName="jetbrains.mps.ide.actions.StandaloneMPSStackTraceFilter" />
     <classNode dependClassName="jetbrains.mps.ide.project.ProjectHelper" />
@@ -1035,8 +1038,21 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode extendsClassName="jetbrains.mps.plugins.part.ApplicationPluginPart" />
   </dependency>
+  <dependency className="jetbrains.mps.execution.configurations.implementation.plugin.plugin.RunStateEnum" />
   <dependency className="jetbrains.mps.execution.configurations.implementation.plugin.plugin.ScriptsHolder">
     <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployScript" />
+  </dependency>
+  <dependency className="jetbrains.mps.execution.configurations.implementation.plugin.plugin.TestInProcessRunState">
+    <classNode dependClassName="com.intellij.openapi.project.Project" />
+    <classNode dependClassName="com.intellij.openapi.util.Key" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.util.concurrent.atomic.AtomicReference" />
+    <classNode dependClassName="jetbrains.mps.execution.configurations.implementation.plugin.plugin.RunStateEnum" />
+    <classNode dependClassName="org.apache.log4j.Level" />
+    <classNode dependClassName="org.apache.log4j.LogManager" />
+    <classNode dependClassName="org.apache.log4j.Logger" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode extendsClassName="java.lang.Comparable" />
   </dependency>
   <dependency className="jetbrains.mps.execution.configurations.implementation.plugin.plugin.TestsUIUtil">
     <classNode dependClassName="com.intellij.openapi.project.Project" />
