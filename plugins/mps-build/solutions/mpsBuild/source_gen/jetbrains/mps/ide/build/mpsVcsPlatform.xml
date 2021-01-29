@@ -110,7 +110,6 @@
         <uses />
         <library jar="../../git4idea/lib/git4idea.jar" />
         <library jar="../../git4idea/lib/git4idea-rt.jar" />
-        <library jar="../../git4idea/lib/remote-servers-git.jar" />
         <library jar="../../git4idea/lib/resources_en.jar" />
         <sources jar="." descriptor="jetbrains.mps.git4idea.stubs.msd" />
       </module>

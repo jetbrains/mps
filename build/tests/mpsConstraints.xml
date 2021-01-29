@@ -660,8 +660,7 @@
         <pathelement path="${build.tmp}/java/out/constraints.test" />
         <fileset file="${artifacts.mps}/lib/mps-test.jar" />
         <fileset file="${artifacts.IDEA}/lib/ant/lib/ant.jar" />
-        <fileset file="${artifacts.IDEA}/lib/hamcrest-core-1.3.jar" />
-        <fileset file="${artifacts.IDEA}/lib/junit-4.12.jar" />
+        <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
         <fileset file="${artifacts.IDEA}/lib/log4j.jar" />
@@ -846,8 +845,7 @@
         <pathelement path="${build.tmp}/java/out/constraints.rules.test" />
         <fileset file="${artifacts.mps}/lib/mps-test.jar" />
         <fileset file="${artifacts.IDEA}/lib/ant/lib/ant.jar" />
-        <fileset file="${artifacts.IDEA}/lib/hamcrest-core-1.3.jar" />
-        <fileset file="${artifacts.IDEA}/lib/junit-4.12.jar" />
+        <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
         <fileset file="${artifacts.IDEA}/lib/log4j.jar" />

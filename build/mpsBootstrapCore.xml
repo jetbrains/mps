@@ -55,7 +55,7 @@
   </path>
   
   <path id="path.java.library.junit-4.12">
-    <fileset file="${artifacts.IDEA}/lib/junit-4.12.jar" />
+    <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
   </path>
   
   <path id="path.mps.ant.path">
@@ -166,7 +166,6 @@
     <mkdir dir="${build.layout}/languages" />
     <jar destfile="${build.layout}/languages/mps-stubs.jar" duplicate="preserve">
       <zipfileset file="${mps_home}/languages/core/stub/diffutils/diffutils.msd" prefix="modules/DiffUtils" />
-      <zipfileset file="${mps_home}/languages/core/stub/hamcrest/hamcrest.msd" prefix="modules/Hamcrest" />
       <zipfileset file="${mps_home}/languages/core/stub/junit/junit.msd" prefix="modules/JUnit" />
       <zipfileset file="${mps_home}/languages/core/stub/Ant/Ant.msd" prefix="modules/Ant" />
       <zipfileset file="${mps_home}/languages/core/stub/JDK/JDK.msd" prefix="modules/JDK" />
@@ -16107,7 +16106,6 @@
         <module file="${mps_home}/languages/core/stub/Annotations/Annotations.msd" />
         <module file="${mps_home}/languages/core/stub/Ant/Ant.msd" />
         <module file="${mps_home}/languages/core/stub/diffutils/diffutils.msd" />
-        <module file="${mps_home}/languages/core/stub/hamcrest/hamcrest.msd" />
         <module file="${mps_home}/languages/core/stub/JAXB/JAXB.msd" />
         <module file="${mps_home}/languages/core/stub/JDK/JDK.msd" />
         <module file="${mps_home}/languages/core/stub/junit/junit.msd" />
@@ -17348,14 +17346,8 @@
         <fileset file="${artifacts.IDEA}/lib/idea.jar" />
         <fileset file="${artifacts.IDEA}/lib/openapi.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-api.jar" />
-        <fileset file="${artifacts.IDEA}/lib/platform-concurrency.jar" />
-        <fileset file="${artifacts.IDEA}/lib/platform-core-ui.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-impl.jar" />
-        <fileset file="${artifacts.IDEA}/lib/platform-objectSerializer.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-objectSerializer-annotations.jar" />
-        <fileset file="${artifacts.IDEA}/lib/platform-serviceContainer.jar" />
-        <fileset file="${artifacts.IDEA}/lib/platform-util-ui.jar" />
-        <fileset file="${artifacts.IDEA}/lib/configuration-store-impl.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/log4j.jar" />
         <fileset file="${artifacts.IDEA}/lib/jdom.jar" />
@@ -17447,8 +17439,7 @@
         <fileset file="${artifacts.IDEA}/lib/icons.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-api.jar" />
-        <fileset file="${artifacts.IDEA}/lib/platform-core-ui.jar" />
-        <fileset file="${artifacts.IDEA}/lib/platform-util-ui.jar" />
+        <fileset file="${artifacts.IDEA}/lib/platform-impl.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -30418,8 +30409,7 @@
         <pathelement path="${build.tmp}/java/out/mps-tool" />
         <fileset file="${lib_ext}/diffutils-1.2.1.jar" />
         <fileset file="${artifacts.IDEA}/lib/ant/lib/ant.jar" />
-        <fileset file="${artifacts.IDEA}/lib/hamcrest-core-1.3.jar" />
-        <fileset file="${artifacts.IDEA}/lib/junit-4.12.jar" />
+        <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/log4j.jar" />
