@@ -46,13 +46,24 @@ public class CompilationErrorsHandler {
     return myErrorTracker;
   }
 
+  /**
+   * parses compilation results for errors and prints them out
+   *
+   */
   /*package*/ void handle(Collection<org.eclipse.jdt.internal.compiler.CompilationResult> results, CompositeTracer tracer) {
     try {
       tracer.start(HANDLING_ERRORS_MSG, results.size());
+      boolean cpReported = false;
       for (CompilationResult result : results) {
         CategorizedProblem[] errors = result.getErrors();
         if (errors != null && errors.length > 0) {
-          handle(result);
+          if (!cpReported) {
+            mySender.error(COMPILATION_PROBLEMS);
+            cpReported = true;
+          }
+          for (CategorizedProblem problem : result.getErrors()) {
+            handle(problem);
+          }
         }
         tracer.advance(1);
       }
@@ -61,35 +72,27 @@ public class CompilationErrorsHandler {
     }
   }
 
-  /**
-   * parses compilation result for errors and prints them out
-   *
-   */
-  public void handle(org.eclipse.jdt.internal.compiler.CompilationResult result) {
-    if (result.getErrors().length > 0) {
-      mySender.error(COMPILATION_PROBLEMS);
-    }
-    for (final CategorizedProblem problem : result.getErrors()) {
-      String fileName = new String(problem.getOriginatingFileName());
-      final String fqName = NameUtil.namespaceFromPath(fileName.substring(0, fileName.length() - MPSExtentions.DOT_JAVAFILE.length()));
-      myErrorTracker.add(fqName);
+  private void handle(CategorizedProblem problem) {
+    String fileName = new String(problem.getOriginatingFileName());
+    final String fqName = NameUtil.namespaceFromPath(fileName.substring(0, fileName.length() - MPSExtentions.DOT_JAVAFILE.length()));
 
-      SModule containingModule = myModulesContainer.getModuleContainingClass(fqName);
-      assert containingModule != null;
-      JavaFile javaFile = myModulesContainer.getSources(containingModule).getJavaFile(fqName);
+    SModule containingModule = myModulesContainer.getModuleContainingClass(fqName);
+    assert containingModule != null;
+    JavaFile javaFile = myModulesContainer.getSources(containingModule).getJavaFile(fqName);
 
-      String messageString = fileName + " : " + problem.getMessage();
-      //final SNode nodeToShow = getNodeByLine(problem, fqName);
+    String messageString = fileName + " : " + problem.getMessage();
+    //final SNode nodeToShow = getNodeByLine(problem, fqName);
+    report(fqName, messageString, javaFile, problem.getSourceLineNumber(), problem.getSourceStart());
+  }
 
-      Object hintObject = new FileWithPosition(javaFile.getFile(), problem.getSourceStart());
+  private void report(String fqName, String message, JavaFile javaFile, int lineNumber, int offset) {
+    myErrorTracker.add(fqName);
+    Object hintObject = new FileWithPosition(javaFile.getFile(), offset);
 
-      String errMsg = String.format(ERROR_FORMAT_STRING, messageString, problem.getSourceLineNumber());
-      if (problem.isWarning()) {
-        mySender.warn(errMsg, hintObject);
-      } else if (myErrorTracker.errorsBelowLimit()) {
-        myErrorTracker.incErrCnt();
-        mySender.error(errMsg, hintObject);
-      }
+    String errMsg = String.format(ERROR_FORMAT_STRING, message, lineNumber );
+    if (myErrorTracker.errorsBelowLimit()) {
+      myErrorTracker.incErrCnt();
+      mySender.error(errMsg, hintObject);
     }
   }
 
