@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -67,9 +67,9 @@ public class ClassFileWriter {
   private final Map<String, InputStream> myClassFile2Bytes = new LinkedHashMap<>();
 
   // fixme think about class path
-  public ClassFileWriter(ModulesContainer modulesContainer, CompositeTracer tracer, Collection<String> classPath) {
+  public ClassFileWriter(ModulesContainer modulesContainer, MessageSender sender, Collection<String> classPath) {
     myModulesContainer = modulesContainer;
-    mySender = tracer.getSender();
+    mySender = sender;
     myFinder = createInstrumentationClassFinder(classPath);
   }
 

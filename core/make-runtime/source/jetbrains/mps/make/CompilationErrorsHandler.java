@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package jetbrains.mps.make;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.util.NameUtil;
 import org.eclipse.jdt.core.compiler.CategorizedProblem;
+import org.eclipse.jdt.internal.compiler.CompilationResult;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 
@@ -31,6 +32,7 @@ public class CompilationErrorsHandler {
   private final static String FATAL_ERROR_MSG = "Fatal error during eclipse compilation: %s";
   private final static String ERROR_FORMAT_STRING = "%s (line: %d)";
   private final static String COMPILATION_PROBLEMS = "Compilation problems";
+  private final static String HANDLING_ERRORS_MSG = "Handling Errors";
 
   private final ModulesContainer myModulesContainer;
   private final MessageSender mySender;
@@ -44,11 +46,30 @@ public class CompilationErrorsHandler {
     mySender = new MessageSender(sender, this);
   }
 
+  /*package*/ ClassesErrorsTracker getClassesWithErrors() {
+    return myErrorTracker;
+  }
+
+  /*package*/ void handle(Collection<org.eclipse.jdt.internal.compiler.CompilationResult> results, CompositeTracer tracer) {
+    try {
+      tracer.start(HANDLING_ERRORS_MSG, results.size());
+      for (CompilationResult result : results) {
+        CategorizedProblem[] errors = result.getErrors();
+        if (errors != null && errors.length > 0) {
+          handle(result);
+        }
+        tracer.advance(1);
+      }
+    } finally {
+      tracer.done();
+    }
+  }
+
   /**
    * parses compilation result for errors and prints them out
    *
    */
-  public ClassesErrorsTracker handle(org.eclipse.jdt.internal.compiler.CompilationResult result) {
+  public void handle(org.eclipse.jdt.internal.compiler.CompilationResult result) {
     if (result.getErrors().length > 0) {
       mySender.error(COMPILATION_PROBLEMS);
       mySender.info(String.format(MODULES_CLASSPATH_STR, myModulesContainer.getModules(), myClassPath));
@@ -75,7 +96,6 @@ public class CompilationErrorsHandler {
         mySender.error(errMsg, hintObject);
       }
     }
-    return myErrorTracker;
   }
 
   public void handleFatal(@NotNull String msg) {

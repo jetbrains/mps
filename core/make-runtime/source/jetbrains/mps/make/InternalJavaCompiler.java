@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@ import jetbrains.mps.make.ModuleAnalyzer.ModuleAnalyzerResult;
 import jetbrains.mps.project.facets.JavaModuleOperations;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.vfs.IFile;
-import org.eclipse.jdt.core.compiler.CategorizedProblem;
 import org.eclipse.jdt.internal.compiler.CompilationResult;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -34,7 +33,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static jetbrains.mps.project.SModuleOperations.getJavaFacet;
 
@@ -48,7 +46,6 @@ class InternalJavaCompiler {
   private final static String COMPILING_JAVA_MSG = "Compiling Java";
   private final static String PREPARING_TO_COMPILE_MSG = "Preparing";
   private final static String COPYING_RESOURCES_MSG = "Copying Resources";
-  private final static String HANDLING_ERRORS_MSG = "Handling Errors";
   private final static String WRITING_CLASSES_MSG = "Writing Classes";
   private final static String ECLIPSE_COMPILER_MSG = "Running ECJ";
 
@@ -148,14 +145,15 @@ class InternalJavaCompiler {
     try {
       Set<String> classPath = computeDependenciesClassPath(myModulesContainer.getModules(), tracer.subTracer(1));
       final CompilationErrorsHandler errorsHandler = new CompilationErrorsHandler(myModulesContainer, tracer.getSender(), classPath);
-      CompilationHandler compilationHandler = new CompilationHandler(classPath, tracer.subTracer(3), errorsHandler);
       final CollectingResultsListener listener = new CollectingResultsListener(errorsHandler);
 
       compiler.addCompilationResultListener(listener);
       doCompileJava(compiler, JavaModuleOperations.collectCompileClasspath(myModulesContainer.getModules(), true), myCompilerOptions, tracer.subTracer(6));
       compiler.removeCompilationResultListener(listener);
 
-      Collection<SModule> changedModules = compilationHandler.process(listener.getResults());
+      errorsHandler.handle(listener.getResults(), tracer.subTracer(1));
+      CompilationHandler compilationHandler = new CompilationHandler(myModulesContainer, classPath);
+      Collection<SModule> changedModules = compilationHandler.process(listener.getResults(), errorsHandler.getClassesWithErrors(), tracer.subTracer(2));
 
       if (changedModules.isEmpty()){
         tracer.getSender().error(NO_CHANGES_AFTER_COMPILATION_ERROR);
@@ -194,7 +192,7 @@ class InternalJavaCompiler {
   /**
    * Memorizes and returns all the results. Also handles fatal errors
    */
-  private class CollectingResultsListener extends jetbrains.mps.compiler.CompilationResultAdapter {
+  private static class CollectingResultsListener extends jetbrains.mps.compiler.CompilationResultAdapter {
     private final CompilationErrorsHandler myErrorsHandler;
     private final List<CompilationResult> myResults = new ArrayList<>();
 
@@ -218,41 +216,28 @@ class InternalJavaCompiler {
   }
 
   /**
-   * Process all the compilation results
+   * Write down compiled classes (excluding those with errors) and report affected modules
    */
-  private class CompilationHandler {
+  private static class CompilationHandler {
+    private final ModulesContainer myModulesContainer;
     private final Collection<String> myClassPath;
-    private final CompositeTracer myTracer;
-    private final CompilationErrorsHandler myErrorsHandler;
-    private final ClassFileWriter myWriter;
 
-    CompilationHandler(Collection<String> classPath, CompositeTracer tracer, CompilationErrorsHandler errorsHandler) {
+    CompilationHandler(ModulesContainer modulesContainer, Collection<String> classPath) {
+      myModulesContainer = modulesContainer;
       myClassPath = classPath;
-      myTracer = tracer;
-      myErrorsHandler = errorsHandler;
-      myWriter = new ClassFileWriter(myModulesContainer, tracer, myClassPath);
     }
 
     /**
      * @return a set of changed modules
      */
-    public Set<SModule> process(List<CompilationResult> results) {
-      myTracer.start(HANDLING_ERRORS_MSG, 11);
+    /*package*/ Set<SModule> process(List<CompilationResult> results, ClassesErrorsTracker errorsTracker, CompositeTracer tracer) {
+      tracer.start(WRITING_CLASSES_MSG, 10);
       try {
-        ClassesErrorsTracker errorsTracker = new ClassesErrorsTracker();
-        for (CompilationResult result : results) {
-          CategorizedProblem[] errors = result.getErrors();
-          if (errors != null && errors.length > 0) {
-            errorsTracker = myErrorsHandler.handle(result);
-          }
-        }
-        myTracer.advance(1);
-        myTracer.push(WRITING_CLASSES_MSG);
-        Set<SModule> changedModules = myWriter.write(results, errorsTracker);
-        myTracer.pop(10);
+        ClassFileWriter w = new ClassFileWriter(myModulesContainer, tracer.getSender(), myClassPath);
+        Set<SModule> changedModules = w.write(results, errorsTracker);
         return changedModules;
       } finally {
-        myTracer.done();
+        tracer.done();
       }
     }
   }
