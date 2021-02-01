@@ -521,9 +521,15 @@
           <node concept="398BVA" id="1s0vtrx9RFn" role="25ysHA">
             <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
             <node concept="2Ry0Ak" id="1s0vtrx9SbD" role="iGT6I">
-              <property role="2Ry0Am" value="lib" />
-              <node concept="2Ry0Ak" id="1s0vtrx9SbI" role="2Ry0An">
-                <property role="2Ry0Am" value="javac2.jar" />
+              <property role="2Ry0Am" value="plugins" />
+              <node concept="2Ry0Ak" id="1SteVkEAOhq" role="2Ry0An">
+                <property role="2Ry0Am" value="java" />
+                <node concept="2Ry0Ak" id="1SteVkEAOs$" role="2Ry0An">
+                  <property role="2Ry0Am" value="lib" />
+                  <node concept="2Ry0Ak" id="1SteVkEAOs_" role="2Ry0An">
+                    <property role="2Ry0Am" value="javac2.jar" />
+                  </node>
+                </node>
               </node>
             </node>
           </node>

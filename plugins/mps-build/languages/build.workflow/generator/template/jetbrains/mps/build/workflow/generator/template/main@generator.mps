@@ -3506,16 +3506,6 @@
                   <property role="2pMdty" value="${idea_home}/lib" />
                 </node>
               </node>
-              <node concept="2pNNFK" id="1Mjrj7j4BBk" role="3o6s8t">
-                <property role="qg3DV" value="true" />
-                <property role="2pNNFO" value="include" />
-                <node concept="2pNUuL" id="1Mjrj7j4BBl" role="2pNNFR">
-                  <property role="2pNUuO" value="name" />
-                  <node concept="2pMdtt" id="1Mjrj7j4BBm" role="2pMdts">
-                    <property role="2pMdty" value="javac2.jar" />
-                  </node>
-                </node>
-              </node>
               <node concept="2pNNFK" id="1Mjrj7j4BBn" role="3o6s8t">
                 <property role="qg3DV" value="true" />
                 <property role="2pNNFO" value="include" />
@@ -3542,7 +3532,26 @@
                 <node concept="2pNUuL" id="1Mjrj7j4BBx" role="2pNNFR">
                   <property role="2pNUuO" value="name" />
                   <node concept="2pMdtt" id="1Mjrj7j4BBD" role="2pMdts">
-                    <property role="2pMdty" value="forms-*.jar" />
+                    <property role="2pMdty" value="forms*.jar" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="2pNNFK" id="1SteVkE_aOn" role="10O6PF">
+              <property role="2pNNFO" value="fileset" />
+              <node concept="2pNUuL" id="1SteVkE_aOo" role="2pNNFR">
+                <property role="2pNUuO" value="dir" />
+                <node concept="2pMdtt" id="1SteVkE_aOp" role="2pMdts">
+                  <property role="2pMdty" value="${idea_home}/plugins/java/lib" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="1SteVkE_aOq" role="3o6s8t">
+                <property role="qg3DV" value="true" />
+                <property role="2pNNFO" value="include" />
+                <node concept="2pNUuL" id="1SteVkE_aOr" role="2pNNFR">
+                  <property role="2pNUuO" value="name" />
+                  <node concept="2pMdtt" id="1SteVkE_aOs" role="2pMdts">
+                    <property role="2pMdty" value="javac2.jar" />
                   </node>
                 </node>
               </node>
