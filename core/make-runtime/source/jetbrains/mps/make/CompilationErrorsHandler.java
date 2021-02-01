@@ -22,8 +22,12 @@ import org.eclipse.jdt.internal.compiler.CompilationResult;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class CompilationErrorsHandler {
@@ -36,14 +40,15 @@ public class CompilationErrorsHandler {
   private final ModulesContainer myModulesContainer;
   private final MessageSender mySender;
   private final ClassesErrorsTracker myErrorTracker = new ClassesErrorsTracker();
+  private final List<ClassFile> myClasses = new ArrayList<>();
 
   public CompilationErrorsHandler(@NotNull ModulesContainer modulesContainer, @NotNull MessageSender sender) {
     myModulesContainer = modulesContainer;
     mySender = new MessageSender(sender, this);
   }
 
-  /*package*/ ClassesErrorsTracker getClassesWithErrors() {
-    return myErrorTracker;
+  /*package*/ List<ClassFile> getAllClasses() {
+    return Collections.unmodifiableList(myClasses);
   }
 
   /**
@@ -65,6 +70,7 @@ public class CompilationErrorsHandler {
             handle(problem);
           }
         }
+        myClasses.addAll(Arrays.asList(ClassFile.from(result)));
         tracer.advance(1);
       }
     } finally {
@@ -106,6 +112,7 @@ public class CompilationErrorsHandler {
   }
 
   /**
+   * FIXME no need in add() and myFqNamesWithErrors
    * a set of classes fqNames which contain errors and an error counter
    */
   public final static class ClassesErrorsTracker {

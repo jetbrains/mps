@@ -19,13 +19,8 @@ import com.intellij.compiler.instrumentation.FailSafeClassReader;
 import com.intellij.compiler.instrumentation.InstrumentationClassFinder;
 import com.intellij.compiler.instrumentation.InstrumenterClassWriter;
 import com.intellij.compiler.notNullVerification.NotNullVerifyingInstrumenter;
-import jetbrains.mps.make.CompilationErrorsHandler.ClassesErrorsTracker;
-import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.reloading.SDKDiscovery;
-import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.vfs.IFile;
-import org.eclipse.jdt.internal.compiler.ClassFile;
-import org.eclipse.jdt.internal.compiler.CompilationResult;
 import org.eclipse.jdt.internal.compiler.util.Util;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -64,7 +59,7 @@ public class ClassFileWriter {
   private final MessageSender mySender;
   private final ChangedModulesTracker myChangedModulesTracker = new ChangedModulesTracker();
   private final InstrumentationClassFinder myFinder;
-  private final Map<String, InputStream> myClassFile2Bytes = new LinkedHashMap<>();
+  private final Map<String, ClassFile> myClassFile2Bytes = new LinkedHashMap<>();
 
   // fixme think about class path
   public ClassFileWriter(ModulesContainer modulesContainer, MessageSender sender, Collection<String> classPath) {
@@ -79,7 +74,8 @@ public class ClassFileWriter {
     return new InstrumentationClassFinder(urlsArr) { // fixme separate platform cp from usual cp
       @Override
       protected InputStream lookupClassBeforeClasspath(String internalClassName) {
-        return myClassFile2Bytes.get(internalClassName);
+        final ClassFile cf = myClassFile2Bytes.get(internalClassName);
+        return cf == null ? null : new ByteArrayInputStream(cf.getBytes());
       }
     };
   }
@@ -100,6 +96,8 @@ public class ClassFileWriter {
       }
     }
     try {
+      // FIXME (a) no reason to depend on ECJ just to ask 'java.home' system property
+      //       (b) I wonder if we shall respect java home that was in actual use for compilation?
       String homePath = Util.getJavaHome().getPath();
       if (SDKDiscovery.isModularRuntime(new File(homePath))) {
         urls.add(InstrumentationClassFinder.createJDKPlatformUrl(homePath));
@@ -110,12 +108,9 @@ public class ClassFileWriter {
     return urls.toArray(new URL[0]);
   }
 
-  private void updateClassFile2BytesMap(List<CompilationResult> results) {
-    for (CompilationResult result : results) {
-      for (ClassFile classFile : result.getClassFiles()) {
-        String path = convertCompoundToPath(classFile.getCompoundName());
-        myClassFile2Bytes.put(path, new ByteArrayInputStream(classFile.getBytes()));
-      }
+  private void updateClassFile2BytesMap(Collection<ClassFile> classes) {
+    for (ClassFile classFile : classes) {
+      myClassFile2Bytes.put(classFile.getQualifiedPath(), classFile);
     }
   }
 
@@ -123,28 +118,25 @@ public class ClassFileWriter {
    * @return a set of changed modules
    */
   @NotNull
-  public Set<SModule> write(List<CompilationResult> results, ClassesErrorsTracker errorsTracker) {
-    updateClassFile2BytesMap(results);
-    for (CompilationResult result : results) {
-      for (ClassFile cf : result.getClassFiles()) {
-        writeClassFile(cf, errorsTracker);
-      }
+  public Set<SModule> write(Collection<ClassFile> classes) {
+    updateClassFile2BytesMap(classes);
+    for (ClassFile cf : classes) {
+      writeClassFile(cf);
     }
     return myChangedModulesTracker.getModules();
   }
 
-  private void writeClassFile(@NotNull ClassFile cf, ClassesErrorsTracker errorsTracker) {
-    String fqName = convertCompoundToFqName(cf.getCompoundName());
-    String containerClassName = getContainerClassName(fqName); // the name up to dollar sign
+  private void writeClassFile(ClassFile cf) {
+    String containerClassName = cf.getTopClassQualifiedName();
     SModule moduleForClass = myModulesContainer.getModuleContainingClass(containerClassName);
     if (moduleForClass == null) {
-      mySender.error(String.format(MODULE_FOR_CLASS_NOT_FOUND, fqName));
+      mySender.error(String.format(MODULE_FOR_CLASS_NOT_FOUND, containerClassName));
     } else {
       myChangedModulesTracker.addChanged(moduleForClass);
-      File outputDir = createOutputDir(fqName, moduleForClass);
-      String className = NameUtil.shortNameFromLongName(fqName);
-      File output = new File(outputDir, className + MPSExtentions.DOT_CLASSFILE);
-      if (!errorsTracker.hasError(containerClassName)) {
+      File outputRoot = getClassesGen(moduleForClass);
+      File output = cf.getFile(outputRoot);
+      if (!cf.hasErrors()) {
+        output.getParentFile().mkdirs();
         writeClassFile(cf, output);
       } else {
         if (output.exists() && !output.delete()) {
@@ -164,24 +156,14 @@ public class ClassFileWriter {
     } catch (IOException e) {
       mySender.error(String.format(OUTPUT_DIR_IS_NOT_WRITEABLE, output.getAbsolutePath()));
     } finally {
-      assert os != null;
-      try {
-        os.close();
-      } catch (IOException e) {
-        mySender.error("IOException: ", e);
+      if (os != null) {
+        try {
+          os.close();
+        } catch (IOException e) {
+          mySender.error("IOException: ", e);
+        }
       }
     }
-  }
-
-  @NotNull
-  private File createOutputDir(String fqName, SModule m) {
-    File classesGen = getClassesGen(m);
-    String packageName = NameUtil.namespaceFromLongName(fqName);
-    File outputDir = new File(classesGen, NameUtil.pathFromNamespace(packageName));
-    if (!outputDir.exists() && !outputDir.mkdirs()) {
-      throw new RuntimeException(String.format(OUTPUT_DIR_CANNOT_BE_CREATED, outputDir.getPath()));
-    }
-    return outputDir;
   }
 
   @NotNull

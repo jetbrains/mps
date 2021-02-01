@@ -17,7 +17,6 @@ package jetbrains.mps.make;
 
 import jetbrains.mps.compiler.EclipseJavaCompiler;
 import jetbrains.mps.compiler.JavaCompilerOptions;
-import jetbrains.mps.make.CompilationErrorsHandler.ClassesErrorsTracker;
 import jetbrains.mps.make.ModuleAnalyzer.ModuleAnalyzerResult;
 import jetbrains.mps.project.facets.JavaModuleOperations;
 import jetbrains.mps.util.FileUtil;
@@ -157,7 +156,7 @@ class InternalJavaCompiler {
         tracer.getSender().info(String.format(MODULES_CLASSPATH_STR, myModulesContainer.getModules(), classPath));
       }
       CompilationHandler compilationHandler = new CompilationHandler(myModulesContainer, classPath);
-      Collection<SModule> changedModules = compilationHandler.process(listener.getResults(), errorsHandler.getClassesWithErrors(), tracer.subTracer(2));
+      Collection<SModule> changedModules = compilationHandler.process(errorsHandler.getAllClasses(), tracer.subTracer(2));
 
       if (changedModules.isEmpty()){
         tracer.getSender().error(NO_CHANGES_AFTER_COMPILATION_ERROR);
@@ -234,11 +233,11 @@ class InternalJavaCompiler {
     /**
      * @return a set of changed modules
      */
-    /*package*/ Set<SModule> process(List<CompilationResult> results, ClassesErrorsTracker errorsTracker, CompositeTracer tracer) {
+    /*package*/ Set<SModule> process(Collection<ClassFile> classes, CompositeTracer tracer) {
       tracer.start(WRITING_CLASSES_MSG, 10);
       try {
         ClassFileWriter w = new ClassFileWriter(myModulesContainer, tracer.getSender(), myClassPath);
-        Set<SModule> changedModules = w.write(results, errorsTracker);
+        Set<SModule> changedModules = w.write(classes);
         return changedModules;
       } finally {
         tracer.done();
