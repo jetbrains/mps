@@ -123,6 +123,9 @@ public final class RootAnnotation {
   }
 
   private void notifyListeners(final List<RevisionNodeChange> changes) {
+    if (ListSequence.fromList(changes).isEmpty()) {
+      return;
+    }
     ListSequence.fromList(myUpdateListeners).visitAll(new IVisitor<RootAnnotationUpdateListener>() {
       public void visit(RootAnnotationUpdateListener it) {
         it.revisionProcessed(changes);

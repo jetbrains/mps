@@ -65,6 +65,11 @@ public final class AnnotationColumn extends AbstractLeftColumn {
   public AnnotationColumn(Project project, LeftEditorHighlighter leftEditorHighlighter, EditorAnnotation editorAnnotation) {
     super(leftEditorHighlighter);
     myEditorAnnotation = editorAnnotation;
+    myEditorAnnotation.setLineAnnotationsUpdateListener(new EditorAnnotation.LineAnnotationsUpdateListener() {
+      public void lineAnnotationsUpdated() {
+        onLineAnnotationsUpdated();
+      }
+    });
     ListSequence.fromList(myAspectSubcolumns).addElement(new RevisionAspectSubcolumn(myEditorAnnotation));
     ListSequence.fromList(myAspectSubcolumns).addElement(new DateAspectSubcolumn(myEditorAnnotation));
     ListSequence.fromList(myAspectSubcolumns).addElement(new AuthorAspectSubcolumn(myEditorAnnotation));
@@ -81,6 +86,18 @@ public final class AnnotationColumn extends AbstractLeftColumn {
 
   public EditorAnnotation getEditorAnnotation() {
     return myEditorAnnotation;
+  }
+
+  private void onLineAnnotationsUpdated() {
+    if (myIsClosed) {
+      return;
+    }
+    if (!(getLeftEditorHighlighter().getLeftColumns().contains(this))) {
+      getLeftEditorHighlighter().addLeftColumn(this);
+    } else {
+      getLeftEditorHighlighter().relayoutOnLeftColumnChange();
+      getLeftEditorHighlighter().repaint();
+    }
   }
 
   @Override
@@ -196,6 +213,10 @@ public final class AnnotationColumn extends AbstractLeftColumn {
       myEditorAnnotation.updateAndRepaint();
       return;
     }
+    computeSubcolumnWidths();
+  }
+
+  private void computeSubcolumnWidths() {
     FontMetrics metrics = FontRegistry.getInstance().getFontMetrics(EditorSettings.getInstance().getDefaultEditorFont());
     for (AnnotationAspectSubcolumn aspectSubcolumn : ListSequence.fromList(myAspectSubcolumns)) {
       aspectSubcolumn.computeWidth(metrics, Sequence.fromIterable(MapSequence.fromMap(myEditorAnnotation.getLineAnnotations()).values()).select(new ISelector<LineAnnotation, VcsFileRevision>() {
@@ -220,7 +241,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
   }
 
   private LineAnnotation getLineAnnotation(final int y) {
-    LineAnnotation lineAnnotation = check_5mnya_a0a0hb(MapSequence.fromMap(myEditorAnnotation.getLineAnnotations()).where(new IWhereFilter<IMapping<Bounds, LineAnnotation>>() {
+    LineAnnotation lineAnnotation = check_5mnya_a0a0lb(MapSequence.fromMap(myEditorAnnotation.getLineAnnotations()).where(new IWhereFilter<IMapping<Bounds, LineAnnotation>>() {
       public boolean accept(IMapping<Bounds, LineAnnotation> it) {
         return it.key().contains(y);
       }
@@ -293,7 +314,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
       return;
     }
     myIsClosed = true;
-    check_5mnya_a2a15(myCloseActionListener);
+    check_5mnya_a2a55(myCloseActionListener);
     if (getLeftEditorHighlighter().getLeftColumns().contains(this)) {
       getLeftEditorHighlighter().removeLeftColumn(this);
     }
@@ -422,13 +443,13 @@ public final class AnnotationColumn extends AbstractLeftColumn {
       }
     }
   }
-  private static LineAnnotation check_5mnya_a0a0hb(IMapping<Bounds, LineAnnotation> checkedDotOperand) {
+  private static LineAnnotation check_5mnya_a0a0lb(IMapping<Bounds, LineAnnotation> checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.value();
     }
     return null;
   }
-  private static void check_5mnya_a2a15(Runnable checkedDotOperand) {
+  private static void check_5mnya_a2a55(Runnable checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.run();
     }

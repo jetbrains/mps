@@ -176,17 +176,6 @@ public final class AnnotateBackgroundableTask extends Task.Backgroundable {
       return;
     }
     myRootAnnotation.processChangesForRevision(changes, revision, prevRevision);
-    if (!(myAnnotationColumn.isClosed())) {
-      if (!(myEditor.getLeftEditorHighlighter().getLeftColumns().contains(myAnnotationColumn))) {
-        myEditor.getLeftEditorHighlighter().addLeftColumn(myAnnotationColumn);
-      } else {
-        ApplicationManager.getApplication().invokeLater(new Runnable() {
-          public void run() {
-            myEditor.getLeftEditorHighlighter().relayout(true);
-          }
-        });
-      }
-    }
   }
 
   private List<ModelChange> calcChangesBetweenModels(@Nullable final SModel prevModel, @Nullable final SModel model) {
