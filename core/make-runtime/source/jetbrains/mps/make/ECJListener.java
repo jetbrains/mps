@@ -15,38 +15,39 @@
  */
 package jetbrains.mps.make;
 
+import jetbrains.mps.compiler.ClassFile;
+import jetbrains.mps.compiler.ErrorSink;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.util.NameUtil;
 import org.eclipse.jdt.core.compiler.CategorizedProblem;
 import org.eclipse.jdt.internal.compiler.CompilationResult;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * Memorizes and returns all the results (as classes to be written).
  * Delegates errors (compilation as well as compiler fatal errors) to {@link CompilationErrorsHandler}
  */
 /*package*/ final class ECJListener extends jetbrains.mps.compiler.CompilationResultAdapter {
-  private final CompilationErrorsHandler myErrorsHandler;
-  private final List<ClassFile> myClasses = new ArrayList<>();
+  private final ErrorSink myErrorsHandler;
+  private final Consumer<ClassFile> myClassFileSink;
 
-  ECJListener(@NotNull CompilationErrorsHandler errorsHandler) {
-    myErrorsHandler = errorsHandler;
+  ECJListener(@NotNull ErrorSink errorSink, @NotNull Consumer<ClassFile> cfSink) {
+    myErrorsHandler = errorSink;
+    myClassFileSink = cfSink;
   }
 
   @Override
   public void onFatalError(@NotNull String msg) {
-    myErrorsHandler.handleFatal(msg);
+    myErrorsHandler.fatalError(msg);
   }
 
   @Override
   public void onCompilationResult(CompilationResult r) {
     handle(r);
-    myClasses.addAll(Arrays.asList(ClassFile.from(r)));
+    Arrays.asList(ClassFileImpl.from(r)).forEach(myClassFileSink);
   }
 
   /**
@@ -71,12 +72,6 @@ import java.util.List;
 
     String messageString = fileName + " : " + problem.getMessage();
     //final SNode nodeToShow = getNodeByLine(problem, fqName);
-    myErrorsHandler.report(fqName, messageString, problem.getSourceLineNumber(), problem.getSourceStart());
-  }
-
-
-
-  /*package*/ List<ClassFile> getAllClasses() {
-    return Collections.unmodifiableList(myClasses);
+    myErrorsHandler.compileError(fqName, messageString, problem.getSourceLineNumber(), problem.getSourceStart());
   }
 }

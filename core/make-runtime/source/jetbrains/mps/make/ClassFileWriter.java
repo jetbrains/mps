@@ -19,6 +19,7 @@ import com.intellij.compiler.instrumentation.FailSafeClassReader;
 import com.intellij.compiler.instrumentation.InstrumentationClassFinder;
 import com.intellij.compiler.instrumentation.InstrumenterClassWriter;
 import com.intellij.compiler.notNullVerification.NotNullVerifyingInstrumenter;
+import jetbrains.mps.compiler.ClassFile;
 import jetbrains.mps.reloading.SDKDiscovery;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;

@@ -15,7 +15,10 @@
  */
 package jetbrains.mps.make;
 
+import jetbrains.mps.compiler.ClassFile;
+import jetbrains.mps.compiler.ErrorSink;
 import jetbrains.mps.compiler.EclipseJavaCompiler;
+import jetbrains.mps.compiler.JavaCompiler;
 import jetbrains.mps.compiler.JavaCompilerOptions;
 import jetbrains.mps.make.ModuleAnalyzer.ModuleAnalyzerResult;
 import jetbrains.mps.project.facets.JavaModuleOperations;
@@ -26,6 +29,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 
@@ -62,14 +66,14 @@ class InternalJavaCompiler {
     tracer.start("", 5);
     try {
       ModuleAnalyzerResult analysisResult = new ModuleAnalyzer(myModulesContainer).analyze();
-      EclipseJavaCompiler compiler;
+      JavaCompiler compiler = new EclipseCompilerFacade();
       tracer.push(PREPARING_TO_COMPILE_MSG);
       try {
         if (!analysisResult.hasJavaToCompile && !analysisResult.hasResourcesToUpdate) {
           return MPSCompilationResult.nothingToDoCompilationResult();
         }
         analysisResult.filesToDelete.forEach(FileUtil::delete); // removing all stale files
-        compiler = collectSources();
+        collectSources(compiler);
       } finally {
         tracer.pop(1);
       }
@@ -92,15 +96,14 @@ class InternalJavaCompiler {
   /**
    * @return eclipse java compiler with sources attached
    */
-  private EclipseJavaCompiler collectSources() {
-    EclipseJavaCompiler compiler = new EclipseJavaCompiler();
+  private void collectSources(JavaCompiler compiler) {
     for (ModuleSources module : myModulesContainer.getDirtyModuleSources()) {
       for (JavaFile javaFile : module.getFilesToCompile()) {
-        compiler.addSource(javaFile.getClassName(), javaFile.getContents());
+        compiler.addSource(javaFile);
+        // FIXME what if 2 modules got 2 classes with same name?
         myModulesContainer.putClassForModule(javaFile.getClassName(), module.getModule());
       }
     }
-    return compiler;
   }
 
   private void copyResources(CompositeTracer tracer) {
@@ -137,23 +140,25 @@ class InternalJavaCompiler {
   }
 
   @NotNull
-  private MPSCompilationResult compileJava(EclipseJavaCompiler compiler, CompositeTracer tracer) {
+  private MPSCompilationResult compileJava(JavaCompiler compiler, CompositeTracer tracer) {
     tracer.start(COMPILING_JAVA_MSG, 10);
     try {
       Set<String> classPath = computeDependenciesClassPath(myModulesContainer.getModules(), tracer.subTracer(1));
       final CompilationErrorsHandler errorsHandler = new CompilationErrorsHandler(myModulesContainer, tracer.getSender());
-      final ECJListener listener = new ECJListener(errorsHandler);
 
-      compiler.addCompilationResultListener(listener);
-      doCompileJava(compiler, JavaModuleOperations.collectCompileClasspath(myModulesContainer.getModules(), true), myCompilerOptions, tracer.subTracer(6));
-      compiler.removeCompilationResultListener(listener);
+      compiler.setErrorSink(errorsHandler);
+      final ArrayList<ClassFile> allClasses = new ArrayList<>();
+      compiler.setClassFileSink(allClasses::add);
+      compiler.setOptions(myCompilerOptions);
+      compiler.setClasspath(JavaModuleOperations.collectCompileClasspath(myModulesContainer.getModules(), true));
+      doCompileJava(compiler, tracer.subTracer(6));
 
       if (errorsHandler.getErrorsCount() > 0) {
         tracer.getSender().error(COMPILATION_PROBLEMS); // XXX used to go first, before any error, does it matter?
         tracer.getSender().info(String.format(MODULES_CLASSPATH_STR, myModulesContainer.getModules(), classPath));
       }
       CompilationHandler compilationHandler = new CompilationHandler(myModulesContainer, classPath);
-      Collection<SModule> changedModules = compilationHandler.process(listener.getAllClasses(), tracer.subTracer(3));
+      Collection<SModule> changedModules = compilationHandler.process(allClasses, tracer.subTracer(3));
 
       if (changedModules.isEmpty()){
         tracer.getSender().error(NO_CHANGES_AFTER_COMPILATION_ERROR);
@@ -164,14 +169,10 @@ class InternalJavaCompiler {
     }
   }
 
-  private void doCompileJava(EclipseJavaCompiler compiler, Collection<String> classPath, @Nullable JavaCompilerOptions compilerOptions, CompositeTracer tracer) {
+  private void doCompileJava(JavaCompiler compiler, CompositeTracer tracer) {
     try {
       tracer.start(ECLIPSE_COMPILER_MSG, 1);
-      if (compilerOptions == null) {
-        compiler.compile(classPath);
-      } else {
-        compiler.compile(classPath, compilerOptions);
-      }
+      compiler.compile();
     } finally {
       tracer.done(1);
     }

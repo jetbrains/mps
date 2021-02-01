@@ -15,10 +15,11 @@
  */
 package jetbrains.mps.make;
 
+import jetbrains.mps.compiler.ErrorSink;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 
-public class CompilationErrorsHandler {
+public class CompilationErrorsHandler implements ErrorSink {
   private final static int MAX_ERRORS = 100;
   private final static String FATAL_ERROR_MSG = "Fatal error during eclipse compilation: %s";
   private final static String ERROR_FORMAT_STRING = "%s (line: %d)";
@@ -32,7 +33,8 @@ public class CompilationErrorsHandler {
     mySender = new MessageSender(sender, this);
   }
 
-  /*package*/ void report(String fqName, String message, int lineNumber, int offset) {
+  @Override
+  public void compileError(String fqName, String message, int lineNumber, int offset) {
     SModule containingModule = myModulesContainer.getModuleContainingClass(fqName);
     assert containingModule != null;
     JavaFile javaFile = myModulesContainer.getSources(containingModule).getJavaFile(fqName);
@@ -46,7 +48,8 @@ public class CompilationErrorsHandler {
     }
   }
 
-  public void handleFatal(@NotNull String msg) {
+  @Override
+  public void fatalError(@NotNull String msg) {
     mySender.error(String.format(FATAL_ERROR_MSG, msg), null);
     myErrorTracker.incErrCnt();
   }
