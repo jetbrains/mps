@@ -22,6 +22,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.net.URI;
 import java.net.URL;
+import java.util.Locale;
 
 @Deprecated
 @ToRemove(version = 2019.1)
@@ -35,6 +36,10 @@ public final class Files {
   @NotNull
   public static IFile fromURL(@NotNull URL url) {
     String path = URI.create(url.getPath()).getPath();
+    // fixme HOTFIX for 203.1, will be gone
+    if (System.getProperty("os.name").toLowerCase(Locale.US).startsWith("windows") && path.startsWith("/")) {
+      path = path.substring(1);
+    }
     return FileSystemExtPoint.getFS().getFile(path);
   }
 }
