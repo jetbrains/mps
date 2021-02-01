@@ -21,7 +21,6 @@ import com.intellij.compiler.instrumentation.InstrumenterClassWriter;
 import com.intellij.compiler.notNullVerification.NotNullVerifyingInstrumenter;
 import jetbrains.mps.reloading.SDKDiscovery;
 import jetbrains.mps.vfs.IFile;
-import org.eclipse.jdt.internal.compiler.util.Util;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.org.objectweb.asm.ClassWriter;
@@ -96,11 +95,10 @@ public class ClassFileWriter {
       }
     }
     try {
-      // FIXME (a) no reason to depend on ECJ just to ask 'java.home' system property
-      //       (b) I wonder if we shall respect java home that was in actual use for compilation?
-      String homePath = Util.getJavaHome().getPath();
-      if (SDKDiscovery.isModularRuntime(new File(homePath))) {
-        urls.add(InstrumentationClassFinder.createJDKPlatformUrl(homePath));
+      // XXX I wonder if we shall respect java home that was in actual use for compilation (the one of JDK.msd)?
+      final String javaHomePath = System.getProperty("java.home");
+      if (SDKDiscovery.isModularRuntime(new File(javaHomePath))) {
+        urls.add(InstrumentationClassFinder.createJDKPlatformUrl(javaHomePath));
       }
     } catch (MalformedURLException e) {
       e.printStackTrace();
