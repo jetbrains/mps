@@ -22,10 +22,12 @@
   
   <path id="path.javac2.classpath">
     <fileset dir="${idea_home}/lib">
-      <include name="javac2.jar" />
       <include name="jdom.jar" />
       <include name="asm-all-*.jar" />
-      <include name="forms-*.jar" />
+      <include name="forms*.jar" />
+    </fileset>
+    <fileset dir="${idea_home}/plugins/java/lib">
+      <include name="javac2.jar" />
     </fileset>
   </path>
   
@@ -38,7 +40,7 @@
   </path>
   
   <path id="path.java.library.javac2">
-    <fileset file="${mps_home}/lib/javac2.jar" />
+    <fileset file="${mps_home}/plugins/java/lib/javac2.jar" />
   </path>
   
   <path id="path.java.library.ecj">
