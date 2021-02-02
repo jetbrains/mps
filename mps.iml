@@ -7,6 +7,9 @@
       <excludeFolder url="file://$MODULE_DIR$/mps-platform/community" />
       <excludeFolder url="file://$MODULE_DIR$/mps-platform/out" />
       <excludeFolder url="file://$MODULE_DIR$/log" />
+      <excludeFolder url="file://$MODULE_DIR$/config" />
+      <excludeFolder url="file://$MODULE_DIR$/system" />
+      <excludeFolder url="file://$MODULE_DIR$/tmpsettings" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

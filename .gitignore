@@ -1,5 +1,12 @@
-/system
-/config
+# Local IDE configurations when running from sources/tests/ant
+/system/
+/config/
+/tmpsettings/
+/build/system/
+/build/config/
+
+# Test results from local test run (ant)
+/TEST-*
 
 # idea integration plugin artifact
 /plugins/mps-idea-integration/IDEAPlugin/mps-idea-integration-plugin.jar
