@@ -55,6 +55,7 @@
     <import index="t6h5" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang.reflect(JDK/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" implicit="true" />
+    <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
   </imports>
   <registry>
     <language id="8585453e-6bfb-4d80-98de-b16074f1d86c" name="jetbrains.mps.lang.test">
@@ -38732,7 +38733,12 @@
           <property role="TrG5h" value="foo" />
           <node concept="3clFbS" id="40dJAnltJ2O" role="3clF47" />
           <node concept="3Tm1VV" id="40dJAnltJ2P" role="1B3o_S" />
-          <node concept="3cqZAl" id="40dJAnltJ2Q" role="3clF45" />
+          <node concept="3cqZAl" id="40dJAnltJ2Q" role="3clF45">
+            <node concept="1KehLL" id="2S9ydG4MUOR" role="lGtFl">
+              <property role="1K8rM7" value="ALIAS_EDITOR_COMPONENT" />
+              <property role="1Kfyot" value="Fg1jLUVyTf/left" />
+            </node>
+          </node>
         </node>
         <node concept="3Tm1VV" id="40dJAnltJ2S" role="1B3o_S" />
       </node>
@@ -38779,7 +38785,12 @@
           <property role="TrG5h" value="foo" />
           <node concept="3clFbS" id="40dJAnltL6g" role="3clF47" />
           <node concept="3Tm1VV" id="40dJAnltL6h" role="1B3o_S" />
-          <node concept="3cqZAl" id="40dJAnltL6i" role="3clF45" />
+          <node concept="3cqZAl" id="40dJAnltL6i" role="3clF45">
+            <node concept="1KehLL" id="2S9ydG4NyJr" role="lGtFl">
+              <property role="1K8rM7" value="ALIAS_EDITOR_COMPONENT" />
+              <property role="1Kfyot" value="Fg1jLUVyTf/left" />
+            </node>
+          </node>
         </node>
         <node concept="3Tm1VV" id="40dJAnltL6j" role="1B3o_S" />
       </node>
@@ -38826,7 +38837,12 @@
           <property role="TrG5h" value="foo" />
           <node concept="3clFbS" id="40dJAnltLb0" role="3clF47" />
           <node concept="3Tm1VV" id="40dJAnltLb1" role="1B3o_S" />
-          <node concept="3cqZAl" id="40dJAnltLb2" role="3clF45" />
+          <node concept="3cqZAl" id="40dJAnltLb2" role="3clF45">
+            <node concept="1KehLL" id="2S9ydG4NzqY" role="lGtFl">
+              <property role="1K8rM7" value="ALIAS_EDITOR_COMPONENT" />
+              <property role="1Kfyot" value="Fg1jLUVyTf/left" />
+            </node>
+          </node>
         </node>
         <node concept="3Tm1VV" id="40dJAnltLb3" role="1B3o_S" />
       </node>
@@ -84151,6 +84167,480 @@
     <node concept="3clFbS" id="7MIX1bVgbDa" role="LjaKd">
       <node concept="2TK7Tu" id="7MIX1bVgbDb" role="3cqZAp">
         <property role="2TTd_B" value="field" />
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="yCsrj3f_FI">
+    <property role="3GE5qa" value="methodModifiers" />
+    <property role="TrG5h" value="ChangeMethodTypeToInt" />
+    <node concept="1qefOq" id="yCsrj3f_Hh" role="25YQCW">
+      <node concept="312cEu" id="yCsrj3f_Hf" role="1qenE9">
+        <property role="TrG5h" value="Foo" />
+        <node concept="3clFb_" id="yCsrj3fJwS" role="jymVt">
+          <property role="TrG5h" value="foo" />
+          <node concept="3clFbS" id="yCsrj3fJwV" role="3clF47" />
+          <node concept="3Tm1VV" id="yCsrj3fHwa" role="1B3o_S" />
+          <node concept="3cqZAl" id="yCsrj3fJw_" role="3clF45">
+            <node concept="LIFWc" id="yCsrj3fJxs" role="lGtFl">
+              <property role="LIFWa" value="0" />
+              <property role="OXtK3" value="true" />
+              <property role="p6zMq" value="0" />
+              <property role="p6zMs" value="0" />
+              <property role="LIFWd" value="ALIAS_EDITOR_COMPONENT" />
+            </node>
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="yCsrj3f_Hg" role="1B3o_S" />
+      </node>
+    </node>
+    <node concept="1qefOq" id="yCsrj3fJxI" role="25YQFr">
+      <node concept="312cEu" id="yCsrj3fJxJ" role="1qenE9">
+        <property role="TrG5h" value="Foo" />
+        <node concept="3clFb_" id="yCsrj3fJxK" role="jymVt">
+          <property role="TrG5h" value="foo" />
+          <node concept="3clFbS" id="yCsrj3fJxL" role="3clF47" />
+          <node concept="3Tm1VV" id="yCsrj3fJxM" role="1B3o_S" />
+          <node concept="10Oyi0" id="yCsrj3fKcO" role="3clF45">
+            <node concept="LIFWc" id="yCsrj3fKdj" role="lGtFl">
+              <property role="ZRATv" value="true" />
+              <property role="OXtK3" value="true" />
+              <property role="p6zMq" value="3" />
+              <property role="p6zMs" value="3" />
+              <property role="LIFWd" value="ALIAS_EDITOR_COMPONENT" />
+            </node>
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="yCsrj3fJxO" role="1B3o_S" />
+      </node>
+    </node>
+    <node concept="3clFbS" id="yCsrj3fKmA" role="LjaKd">
+      <node concept="2TK7Tu" id="yCsrj3fKm_" role="3cqZAp">
+        <property role="2TTd_B" value="int" />
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="yCsrj3fKmT">
+    <property role="3GE5qa" value="methodModifiers" />
+    <property role="TrG5h" value="ChangeMethodTypeTo_string" />
+    <node concept="1qefOq" id="yCsrj3fKmU" role="25YQCW">
+      <node concept="312cEu" id="yCsrj3fKmV" role="1qenE9">
+        <property role="TrG5h" value="Foo" />
+        <node concept="3clFb_" id="yCsrj3fKmW" role="jymVt">
+          <property role="TrG5h" value="foo" />
+          <node concept="3clFbS" id="yCsrj3fKmX" role="3clF47" />
+          <node concept="3Tm1VV" id="yCsrj3fKmY" role="1B3o_S" />
+          <node concept="3cqZAl" id="yCsrj3fKmZ" role="3clF45">
+            <node concept="LIFWc" id="yCsrj3fKn0" role="lGtFl">
+              <property role="LIFWa" value="0" />
+              <property role="OXtK3" value="true" />
+              <property role="p6zMq" value="0" />
+              <property role="p6zMs" value="0" />
+              <property role="LIFWd" value="ALIAS_EDITOR_COMPONENT" />
+            </node>
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="yCsrj3fKn1" role="1B3o_S" />
+      </node>
+    </node>
+    <node concept="1qefOq" id="yCsrj3fKn2" role="25YQFr">
+      <node concept="312cEu" id="yCsrj3fKn3" role="1qenE9">
+        <property role="TrG5h" value="Foo" />
+        <node concept="3clFb_" id="yCsrj3fKn4" role="jymVt">
+          <property role="TrG5h" value="foo" />
+          <node concept="3clFbS" id="yCsrj3fKn5" role="3clF47" />
+          <node concept="3Tm1VV" id="yCsrj3fKn6" role="1B3o_S" />
+          <node concept="17QB3L" id="yCsrj3fL3Y" role="3clF45">
+            <node concept="LIFWc" id="yCsrj3fL4t" role="lGtFl">
+              <property role="ZRATv" value="true" />
+              <property role="OXtK3" value="true" />
+              <property role="p6zMq" value="6" />
+              <property role="p6zMs" value="6" />
+              <property role="LIFWd" value="ALIAS_EDITOR_COMPONENT" />
+            </node>
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="yCsrj3fKn9" role="1B3o_S" />
+      </node>
+    </node>
+    <node concept="3clFbS" id="yCsrj3fKna" role="LjaKd">
+      <node concept="2TK7Tu" id="yCsrj3fKnb" role="3cqZAp">
+        <property role="2TTd_B" value="string" />
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="yCsrj3fL4J">
+    <property role="3GE5qa" value="methodModifiers" />
+    <property role="TrG5h" value="ChangeMethodTypeToString" />
+    <node concept="1qefOq" id="yCsrj3fL4K" role="25YQCW">
+      <node concept="312cEu" id="yCsrj3fL4L" role="1qenE9">
+        <property role="TrG5h" value="Foo" />
+        <node concept="3clFb_" id="yCsrj3fL4M" role="jymVt">
+          <property role="TrG5h" value="foo" />
+          <node concept="3clFbS" id="yCsrj3fL4N" role="3clF47" />
+          <node concept="3Tm1VV" id="yCsrj3fL4O" role="1B3o_S" />
+          <node concept="3cqZAl" id="yCsrj3fL4P" role="3clF45">
+            <node concept="LIFWc" id="yCsrj3fL4Q" role="lGtFl">
+              <property role="LIFWa" value="0" />
+              <property role="OXtK3" value="true" />
+              <property role="p6zMq" value="0" />
+              <property role="p6zMs" value="0" />
+              <property role="LIFWd" value="ALIAS_EDITOR_COMPONENT" />
+            </node>
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="yCsrj3fL4R" role="1B3o_S" />
+      </node>
+    </node>
+    <node concept="1qefOq" id="yCsrj3fL4S" role="25YQFr">
+      <node concept="312cEu" id="yCsrj3fL4T" role="1qenE9">
+        <property role="TrG5h" value="Foo" />
+        <node concept="3clFb_" id="yCsrj3fL4U" role="jymVt">
+          <property role="TrG5h" value="foo" />
+          <node concept="3clFbS" id="yCsrj3fL4V" role="3clF47" />
+          <node concept="3Tm1VV" id="yCsrj3fL4W" role="1B3o_S" />
+          <node concept="3uibUv" id="yCsrj3i7md" role="3clF45">
+            <ref role="3uigEE" to="tprs:1g$rimezc$4" resolve="StringAction" />
+            <node concept="LIFWc" id="yCsrj3iCKH" role="lGtFl">
+              <property role="ZRATv" value="true" />
+              <property role="OXtK3" value="true" />
+              <property role="p6zMq" value="12" />
+              <property role="p6zMs" value="12" />
+              <property role="LIFWd" value="ReferencePresentation_91bvrs_a0a0" />
+            </node>
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="yCsrj3fL4Z" role="1B3o_S" />
+      </node>
+    </node>
+    <node concept="3clFbS" id="yCsrj3fL50" role="LjaKd">
+      <node concept="2TK7Tu" id="yCsrj3fL51" role="3cqZAp">
+        <property role="2TTd_B" value="StringAction" />
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="yCsrj3jbFX">
+    <property role="3GE5qa" value="methodModifiers" />
+    <property role="TrG5h" value="ChangeStaticMethodTypeToInt" />
+    <node concept="1qefOq" id="yCsrj3jbFY" role="25YQCW">
+      <node concept="312cEu" id="yCsrj3jbFZ" role="1qenE9">
+        <property role="TrG5h" value="Foo" />
+        <node concept="2YIFZL" id="yCsrj3jbIn" role="jymVt">
+          <property role="TrG5h" value="foo" />
+          <node concept="3clFbS" id="yCsrj3jbG1" role="3clF47" />
+          <node concept="3cqZAl" id="yCsrj3jbG3" role="3clF45">
+            <node concept="LIFWc" id="yCsrj3jbG4" role="lGtFl">
+              <property role="LIFWa" value="0" />
+              <property role="OXtK3" value="true" />
+              <property role="p6zMq" value="0" />
+              <property role="p6zMs" value="0" />
+              <property role="LIFWd" value="ALIAS_EDITOR_COMPONENT" />
+            </node>
+          </node>
+          <node concept="3Tm1VV" id="yCsrj3jbG2" role="1B3o_S" />
+        </node>
+        <node concept="3Tm1VV" id="yCsrj3jbG5" role="1B3o_S" />
+      </node>
+    </node>
+    <node concept="1qefOq" id="yCsrj3jbG6" role="25YQFr">
+      <node concept="312cEu" id="yCsrj3jbG7" role="1qenE9">
+        <property role="TrG5h" value="Foo" />
+        <node concept="2YIFZL" id="yCsrj3jbJk" role="jymVt">
+          <property role="TrG5h" value="foo" />
+          <node concept="3clFbS" id="yCsrj3jbG9" role="3clF47" />
+          <node concept="10Oyi0" id="yCsrj3jbGb" role="3clF45">
+            <node concept="LIFWc" id="yCsrj3jbGc" role="lGtFl">
+              <property role="ZRATv" value="true" />
+              <property role="OXtK3" value="true" />
+              <property role="p6zMq" value="3" />
+              <property role="p6zMs" value="3" />
+              <property role="LIFWd" value="ALIAS_EDITOR_COMPONENT" />
+            </node>
+          </node>
+          <node concept="3Tm1VV" id="yCsrj3jbGa" role="1B3o_S" />
+        </node>
+        <node concept="3Tm1VV" id="yCsrj3jbGd" role="1B3o_S" />
+      </node>
+    </node>
+    <node concept="3clFbS" id="yCsrj3jbGe" role="LjaKd">
+      <node concept="2TK7Tu" id="yCsrj3jbGf" role="3cqZAp">
+        <property role="2TTd_B" value="int" />
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="yCsrj3jbKf">
+    <property role="3GE5qa" value="methodModifiers" />
+    <property role="TrG5h" value="ChangeStaticMethodTypeToString" />
+    <node concept="1qefOq" id="yCsrj3jbKg" role="25YQCW">
+      <node concept="312cEu" id="yCsrj3jbKh" role="1qenE9">
+        <property role="TrG5h" value="Foo" />
+        <node concept="2YIFZL" id="yCsrj3jbNk" role="jymVt">
+          <property role="TrG5h" value="foo" />
+          <node concept="3clFbS" id="yCsrj3jbKj" role="3clF47" />
+          <node concept="3cqZAl" id="yCsrj3jbKl" role="3clF45">
+            <node concept="LIFWc" id="yCsrj3jbKm" role="lGtFl">
+              <property role="LIFWa" value="0" />
+              <property role="OXtK3" value="true" />
+              <property role="p6zMq" value="0" />
+              <property role="p6zMs" value="0" />
+              <property role="LIFWd" value="ALIAS_EDITOR_COMPONENT" />
+            </node>
+          </node>
+          <node concept="3Tm1VV" id="yCsrj3jbKk" role="1B3o_S" />
+        </node>
+        <node concept="3Tm1VV" id="yCsrj3jbKn" role="1B3o_S" />
+      </node>
+    </node>
+    <node concept="1qefOq" id="yCsrj3jbKo" role="25YQFr">
+      <node concept="312cEu" id="yCsrj3jbKp" role="1qenE9">
+        <property role="TrG5h" value="Foo" />
+        <node concept="2YIFZL" id="yCsrj3jbOh" role="jymVt">
+          <property role="TrG5h" value="foo" />
+          <node concept="3clFbS" id="yCsrj3jbKr" role="3clF47" />
+          <node concept="3uibUv" id="yCsrj3jbKt" role="3clF45">
+            <ref role="3uigEE" to="tprs:1g$rimezc$4" resolve="StringAction" />
+            <node concept="LIFWc" id="yCsrj3jbKu" role="lGtFl">
+              <property role="ZRATv" value="true" />
+              <property role="OXtK3" value="true" />
+              <property role="p6zMq" value="12" />
+              <property role="p6zMs" value="12" />
+              <property role="LIFWd" value="ReferencePresentation_91bvrs_a0a0" />
+            </node>
+          </node>
+          <node concept="3Tm1VV" id="yCsrj3jbKs" role="1B3o_S" />
+        </node>
+        <node concept="3Tm1VV" id="yCsrj3jbKv" role="1B3o_S" />
+      </node>
+    </node>
+    <node concept="3clFbS" id="yCsrj3jbKw" role="LjaKd">
+      <node concept="2TK7Tu" id="yCsrj3jbKx" role="3cqZAp">
+        <property role="2TTd_B" value="StringAction" />
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="yCsrj3jbPc">
+    <property role="3GE5qa" value="methodModifiers" />
+    <property role="TrG5h" value="ChangeStaticMethodTypeTo_string" />
+    <node concept="1qefOq" id="yCsrj3jbPd" role="25YQCW">
+      <node concept="312cEu" id="yCsrj3jbPe" role="1qenE9">
+        <property role="TrG5h" value="Foo" />
+        <node concept="2YIFZL" id="yCsrj3jbRA" role="jymVt">
+          <property role="TrG5h" value="foo" />
+          <node concept="3clFbS" id="yCsrj3jbPg" role="3clF47" />
+          <node concept="3cqZAl" id="yCsrj3jbPi" role="3clF45">
+            <node concept="LIFWc" id="yCsrj3jbPj" role="lGtFl">
+              <property role="LIFWa" value="0" />
+              <property role="OXtK3" value="true" />
+              <property role="p6zMq" value="0" />
+              <property role="p6zMs" value="0" />
+              <property role="LIFWd" value="ALIAS_EDITOR_COMPONENT" />
+            </node>
+          </node>
+          <node concept="3Tm1VV" id="yCsrj3jbPh" role="1B3o_S" />
+        </node>
+        <node concept="3Tm1VV" id="yCsrj3jbPk" role="1B3o_S" />
+      </node>
+    </node>
+    <node concept="1qefOq" id="yCsrj3jbPl" role="25YQFr">
+      <node concept="312cEu" id="yCsrj3jbPm" role="1qenE9">
+        <property role="TrG5h" value="Foo" />
+        <node concept="2YIFZL" id="yCsrj3jbSz" role="jymVt">
+          <property role="TrG5h" value="foo" />
+          <node concept="3clFbS" id="yCsrj3jbPo" role="3clF47" />
+          <node concept="17QB3L" id="yCsrj3jbPq" role="3clF45">
+            <node concept="LIFWc" id="yCsrj3jbPr" role="lGtFl">
+              <property role="ZRATv" value="true" />
+              <property role="OXtK3" value="true" />
+              <property role="p6zMq" value="6" />
+              <property role="p6zMs" value="6" />
+              <property role="LIFWd" value="ALIAS_EDITOR_COMPONENT" />
+            </node>
+          </node>
+          <node concept="3Tm1VV" id="yCsrj3jbPp" role="1B3o_S" />
+        </node>
+        <node concept="3Tm1VV" id="yCsrj3jbPs" role="1B3o_S" />
+      </node>
+    </node>
+    <node concept="3clFbS" id="yCsrj3jbPt" role="LjaKd">
+      <node concept="2TK7Tu" id="yCsrj3jbPu" role="3cqZAp">
+        <property role="2TTd_B" value="string" />
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="yCsrj3jKQe">
+    <property role="3GE5qa" value="methodModifiers" />
+    <property role="TrG5h" value="ChangeMethodTypeToIntWithComplete" />
+    <node concept="1qefOq" id="yCsrj3jKQf" role="25YQCW">
+      <node concept="312cEu" id="yCsrj3jKQg" role="1qenE9">
+        <property role="TrG5h" value="Foo" />
+        <node concept="3clFb_" id="yCsrj3jKQh" role="jymVt">
+          <property role="TrG5h" value="foo" />
+          <node concept="3clFbS" id="yCsrj3jKQi" role="3clF47" />
+          <node concept="3Tm1VV" id="yCsrj3jKQj" role="1B3o_S" />
+          <node concept="3cqZAl" id="yCsrj3jKQk" role="3clF45">
+            <node concept="LIFWc" id="yCsrj3jKQl" role="lGtFl">
+              <property role="LIFWa" value="0" />
+              <property role="OXtK3" value="true" />
+              <property role="p6zMq" value="0" />
+              <property role="p6zMs" value="0" />
+              <property role="LIFWd" value="ALIAS_EDITOR_COMPONENT" />
+            </node>
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="yCsrj3jKQm" role="1B3o_S" />
+      </node>
+    </node>
+    <node concept="1qefOq" id="yCsrj3jKQn" role="25YQFr">
+      <node concept="312cEu" id="yCsrj3jKQo" role="1qenE9">
+        <property role="TrG5h" value="Foo" />
+        <node concept="3clFb_" id="yCsrj3jKQp" role="jymVt">
+          <property role="TrG5h" value="foo" />
+          <node concept="3clFbS" id="yCsrj3jKQq" role="3clF47" />
+          <node concept="3Tm1VV" id="yCsrj3jKQr" role="1B3o_S" />
+          <node concept="10Oyi0" id="yCsrj3jL7N" role="3clF45">
+            <node concept="LIFWc" id="yCsrj3jL8H" role="lGtFl">
+              <property role="ZRATv" value="true" />
+              <property role="OXtK3" value="true" />
+              <property role="p6zMq" value="3" />
+              <property role="p6zMs" value="3" />
+              <property role="LIFWd" value="ALIAS_EDITOR_COMPONENT" />
+            </node>
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="yCsrj3jKQu" role="1B3o_S" />
+      </node>
+    </node>
+    <node concept="3clFbS" id="yCsrj3jKQv" role="LjaKd">
+      <node concept="2HxZob" id="yCsrj3jLj0" role="3cqZAp">
+        <node concept="1iFQzN" id="yCsrj3jLjE" role="3iKnsn">
+          <ref role="1iFR8X" to="ekwn:2XByp9s_j7f" resolve="Complete" />
+        </node>
+      </node>
+      <node concept="2TK7Tu" id="yCsrj3jKQw" role="3cqZAp">
+        <property role="2TTd_B" value="int" />
+      </node>
+      <node concept="yd1bK" id="yCsrj3jLuY" role="3cqZAp">
+        <node concept="pLAjd" id="yCsrj3jLv0" role="yd6KS">
+          <property role="pLAjf" value="VK_ENTER" />
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="yCsrj3kjYY">
+    <property role="3GE5qa" value="methodModifiers" />
+    <property role="TrG5h" value="ChangeMethodTypeToStringWithComplete" />
+    <node concept="1qefOq" id="yCsrj3kjYZ" role="25YQCW">
+      <node concept="312cEu" id="yCsrj3kjZ0" role="1qenE9">
+        <property role="TrG5h" value="Foo" />
+        <node concept="3clFb_" id="yCsrj3kjZ1" role="jymVt">
+          <property role="TrG5h" value="foo" />
+          <node concept="3clFbS" id="yCsrj3kjZ2" role="3clF47" />
+          <node concept="3Tm1VV" id="yCsrj3kjZ3" role="1B3o_S" />
+          <node concept="3cqZAl" id="yCsrj3kjZ4" role="3clF45">
+            <node concept="LIFWc" id="yCsrj3kjZ5" role="lGtFl">
+              <property role="LIFWa" value="0" />
+              <property role="OXtK3" value="true" />
+              <property role="p6zMq" value="0" />
+              <property role="p6zMs" value="0" />
+              <property role="LIFWd" value="ALIAS_EDITOR_COMPONENT" />
+            </node>
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="yCsrj3kjZ6" role="1B3o_S" />
+      </node>
+    </node>
+    <node concept="1qefOq" id="yCsrj3kjZ7" role="25YQFr">
+      <node concept="312cEu" id="yCsrj3kjZ8" role="1qenE9">
+        <property role="TrG5h" value="Foo" />
+        <node concept="3clFb_" id="yCsrj3kjZ9" role="jymVt">
+          <property role="TrG5h" value="foo" />
+          <node concept="3clFbS" id="yCsrj3kjZa" role="3clF47" />
+          <node concept="3Tm1VV" id="yCsrj3kjZb" role="1B3o_S" />
+          <node concept="3uibUv" id="yCsrj3kk9i" role="3clF45">
+            <ref role="3uigEE" to="wyt6:~String" resolve="String" />
+            <node concept="LIFWc" id="yCsrj3kkac" role="lGtFl">
+              <property role="ZRATv" value="true" />
+              <property role="OXtK3" value="true" />
+              <property role="p6zMq" value="6" />
+              <property role="p6zMs" value="6" />
+              <property role="LIFWd" value="ReferencePresentation_91bvrs_a0a0" />
+            </node>
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="yCsrj3kjZe" role="1B3o_S" />
+      </node>
+    </node>
+    <node concept="3clFbS" id="yCsrj3kjZf" role="LjaKd">
+      <node concept="2HxZob" id="yCsrj3kjZg" role="3cqZAp">
+        <node concept="1iFQzN" id="yCsrj3kjZh" role="3iKnsn">
+          <ref role="1iFR8X" to="ekwn:2XByp9s_j7f" resolve="Complete" />
+        </node>
+      </node>
+      <node concept="2TK7Tu" id="yCsrj3kjZi" role="3cqZAp">
+        <property role="2TTd_B" value="String" />
+      </node>
+      <node concept="yd1bK" id="yCsrj3kjZj" role="3cqZAp">
+        <node concept="pLAjd" id="yCsrj3kjZk" role="yd6KS">
+          <property role="pLAjf" value="VK_ENTER" />
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="LiM7Y" id="yCsrj3kkcq">
+    <property role="3GE5qa" value="methodModifiers" />
+    <property role="TrG5h" value="ChangeMethodTypeTo_stringWithComplete" />
+    <node concept="1qefOq" id="yCsrj3kkcr" role="25YQCW">
+      <node concept="312cEu" id="yCsrj3kkcs" role="1qenE9">
+        <property role="TrG5h" value="Foo" />
+        <node concept="3clFb_" id="yCsrj3kkct" role="jymVt">
+          <property role="TrG5h" value="foo" />
+          <node concept="3clFbS" id="yCsrj3kkcu" role="3clF47" />
+          <node concept="3Tm1VV" id="yCsrj3kkcv" role="1B3o_S" />
+          <node concept="3cqZAl" id="yCsrj3kkcw" role="3clF45">
+            <node concept="LIFWc" id="yCsrj3kkcx" role="lGtFl">
+              <property role="LIFWa" value="0" />
+              <property role="OXtK3" value="true" />
+              <property role="p6zMq" value="0" />
+              <property role="p6zMs" value="0" />
+              <property role="LIFWd" value="ALIAS_EDITOR_COMPONENT" />
+            </node>
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="yCsrj3kkcy" role="1B3o_S" />
+      </node>
+    </node>
+    <node concept="1qefOq" id="yCsrj3kkcz" role="25YQFr">
+      <node concept="312cEu" id="yCsrj3kkc$" role="1qenE9">
+        <property role="TrG5h" value="Foo" />
+        <node concept="3clFb_" id="yCsrj3kkc_" role="jymVt">
+          <property role="TrG5h" value="foo" />
+          <node concept="3clFbS" id="yCsrj3kkcA" role="3clF47" />
+          <node concept="3Tm1VV" id="yCsrj3kkcB" role="1B3o_S" />
+          <node concept="17QB3L" id="yCsrj3kl1v" role="3clF45">
+            <node concept="LIFWc" id="yCsrj3kl2p" role="lGtFl">
+              <property role="ZRATv" value="true" />
+              <property role="OXtK3" value="true" />
+              <property role="p6zMq" value="6" />
+              <property role="p6zMs" value="6" />
+              <property role="LIFWd" value="ALIAS_EDITOR_COMPONENT" />
+            </node>
+          </node>
+        </node>
+        <node concept="3Tm1VV" id="yCsrj3kkcE" role="1B3o_S" />
+      </node>
+    </node>
+    <node concept="3clFbS" id="yCsrj3kkcF" role="LjaKd">
+      <node concept="2HxZob" id="yCsrj3kkcG" role="3cqZAp">
+        <node concept="1iFQzN" id="yCsrj3kkcH" role="3iKnsn">
+          <ref role="1iFR8X" to="ekwn:2XByp9s_j7f" resolve="Complete" />
+        </node>
+      </node>
+      <node concept="2TK7Tu" id="yCsrj3kkcI" role="3cqZAp">
+        <property role="2TTd_B" value="string" />
+      </node>
+      <node concept="yd1bK" id="yCsrj3kkcJ" role="3cqZAp">
+        <node concept="pLAjd" id="yCsrj3kkcK" role="yd6KS">
+          <property role="pLAjf" value="VK_ENTER" />
+        </node>
       </node>
     </node>
   </node>

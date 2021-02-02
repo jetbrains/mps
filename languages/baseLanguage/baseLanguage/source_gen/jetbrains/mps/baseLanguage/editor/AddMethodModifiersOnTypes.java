@@ -26,6 +26,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.lang.editor.menus.transformation.IncludeSubstituteMenuTransformationMenuPart;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -78,7 +80,7 @@ public class AddMethodModifiersOnTypes extends TransformationMenuBase {
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Include_svkn68_a0a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_Include_svkn68_a0a(), new TMP_IncludeSM_svkn68_b0a());
     }
     public class TMP_Include_svkn68_a0a extends IncludeTransformationMenuTransformationMenuPart {
       @NotNull
@@ -105,6 +107,22 @@ public class AddMethodModifiersOnTypes extends TransformationMenuBase {
       @Override
       protected SNode getNode(TransformationMenuContext _context) {
         return SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.MethodDeclaration$_P);
+      }
+
+    }
+    public class TMP_IncludeSM_svkn68_b0a extends IncludeSubstituteMenuTransformationMenuPart {
+      @NotNull
+      @Override
+      public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
+        context.getEditorMenuTrace().pushTraceInfo();
+        try {
+          SAbstractConcept targetConcept = getTargetConcept(context);
+          String name = (targetConcept == null ? "" : targetConcept.getName());
+          context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include substitute menu for the link target concept: " + name, new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "623873569573190427")));
+          return super.createItems(context);
+        } finally {
+          context.getEditorMenuTrace().popTraceInfo();
+        }
       }
 
     }
