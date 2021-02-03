@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -125,22 +125,6 @@ public class SRepositoryContentAdapter extends SModuleListenerBase implements
 
   @Override
   public void commandFinished(SRepository repository) {
-  }
-
-  @Override
-  public void updateStarted(SRepository repository) {
-  }
-
-  @Override
-  public void updateFinished(SRepository repository) {
-  }
-
-  @Override
-  public void repositoryCommandStarted(SRepository repository) {
-  }
-
-  @Override
-  public void repositoryCommandFinished(SRepository repository) {
   }
 
   // SModuleListener methods

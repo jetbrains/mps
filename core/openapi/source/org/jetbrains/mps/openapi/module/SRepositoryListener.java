@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package org.jetbrains.mps.openapi.module;
 
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -23,11 +24,11 @@ import org.jetbrains.annotations.NotNull;
  * @see ModelAccess#checkWriteAccess()
  */
 public interface SRepositoryListener {
-  void moduleAdded(@NotNull SModule module);
+  default void moduleAdded(@NotNull SModule module) {}
 
-  void beforeModuleRemoved(@NotNull SModule module);
+  default void beforeModuleRemoved(@NotNull SModule module) {}
 
-  void moduleRemoved(@NotNull SModuleReference module);
+  default void moduleRemoved(@NotNull SModuleReference module) {}
 
   /**
    * Notifications about commands in a {@link ModelAccess} associated with the repository.
@@ -39,22 +40,32 @@ public interface SRepositoryListener {
    *
    * @see org.jetbrains.mps.openapi.repository.CommandListener#commandStarted()
    */
-  void commandStarted(SRepository repository);
+  default void commandStarted(SRepository repository) {}
 
   /**
    * @see org.jetbrains.mps.openapi.repository.CommandListener#commandFinished()
    */
-  void commandFinished(SRepository repository);
+  default void commandFinished(SRepository repository) {}
 
-  @Deprecated
-  void updateStarted(SRepository repository);
+  // Deprecated methods, below, could be deleted once 2021.1 is out.
+  // We need at least one release where these were default so that implementations
+  // of the interface get a chance to stop overriding these. Nevertheless, I doubt
+  // there are many direct implementations, I'd say most would use SRepositoryListenerBase
+  // and won't get affected by the removal of the methods, so I won't keep these for long
 
-  @Deprecated
-  void updateFinished(SRepository repository);
+  @Deprecated(forRemoval = true)
+  @ToRemove(version = 2021.1)
+  default void updateStarted(SRepository repository) {}
 
-  @Deprecated
-  void repositoryCommandStarted(SRepository repository);
+  @Deprecated(forRemoval = true)
+  @ToRemove(version = 2021.1)
+  default void updateFinished(SRepository repository) {}
 
-  @Deprecated
-  void repositoryCommandFinished(SRepository repository);
+  @Deprecated(forRemoval = true)
+  @ToRemove(version = 2021.1)
+  default void repositoryCommandStarted(SRepository repository) {}
+
+  @Deprecated(forRemoval = true)
+  @ToRemove(version = 2021.1)
+  default void repositoryCommandFinished(SRepository repository) {}
 }

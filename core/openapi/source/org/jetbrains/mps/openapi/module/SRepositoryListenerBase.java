@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,16 @@
  */
 package org.jetbrains.mps.openapi.module;
 
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * A convenient empty implementation of the SRepositoryListener interface.
+ * A convenient, although useless now, empty implementation of the SRepositoryListener interface.
+ * With default interface methods, one can use {@link SRepositoryListener} directly
+ * Keep this class at least for few releases (I'd say couple of years), it's not that urgent to remove it
  */
+@Deprecated(forRemoval = true)
+@ToRemove(version = 2021.1)
 public abstract class SRepositoryListenerBase implements SRepositoryListener {
   @Override
   public void moduleAdded(@NotNull SModule module) {
@@ -39,21 +44,5 @@ public abstract class SRepositoryListenerBase implements SRepositoryListener {
 
   @Override
   public void commandFinished(SRepository repository) {
-  }
-
-  @Override
-  public void updateStarted(SRepository repository) {
-  }
-
-  @Override
-  public void updateFinished(SRepository repository) {
-  }
-
-  @Override
-  public void repositoryCommandStarted(SRepository repository) {
-  }
-
-  @Override
-  public void repositoryCommandFinished(SRepository repository) {
   }
 }

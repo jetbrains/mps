@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.extapi.module;
 
 import jetbrains.mps.extapi.model.SModelBase;
-import jetbrains.mps.smodel.references.ImmatureReferences;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -25,7 +24,6 @@ import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleListener;
-import org.jetbrains.mps.openapi.module.SModuleListenerBase;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
@@ -135,9 +133,7 @@ public abstract class SModuleBase implements SModule {
 
     for (SModuleListener listener : myListeners) {
       try {
-        if (listener instanceof SModuleListenerBase) {
-          ((SModuleListenerBase) listener).moduleRenamed(this, oldRef);
-        }
+        listener.moduleRenamed(this, oldRef);
       } catch (VirtualMachineError e) {
         throw e;
       } catch (Throwable t) {

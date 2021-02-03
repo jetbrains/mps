@@ -15,14 +15,19 @@
  */
 package org.jetbrains.mps.openapi.module;
 
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 
 /**
- * Bare implementation of {@link SModuleListener} intended for subclassing
+ * Bare implementation of {@link SModuleListener} intended for subclassing.
+ * Now, with default methods inside the interface, of no real use.
+ * See {@link SRepositoryListenerBase} for considerations about removal of the class
  */
+@Deprecated(forRemoval = true)
+@ToRemove(version = 2021.1)
 public class SModuleListenerBase implements SModuleListener {
   @Override
   public void modelAdded(SModule module, SModel model) {
@@ -44,9 +49,7 @@ public class SModuleListenerBase implements SModuleListener {
   public void modelRenamed(SModule module, SModel model, SModelReference oldRef) {
   }
 
-  /**
-   * To be pulled up
-   */
+  @Override
   public void moduleRenamed(@NotNull SModule module, @NotNull SModuleReference oldRef) {
   }
 
