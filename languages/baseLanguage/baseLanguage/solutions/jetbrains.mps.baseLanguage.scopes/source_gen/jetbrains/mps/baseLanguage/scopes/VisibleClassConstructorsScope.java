@@ -6,6 +6,7 @@ import jetbrains.mps.scope.Scope;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.scope.FilteringScope;
+import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -28,7 +29,8 @@ public class VisibleClassConstructorsScope extends Scope {
   private final Scope classifiers;
   public VisibleClassConstructorsScope(@NotNull SNode contextNode) {
     // todo: find not all classifiers, only class concept! 
-    classifiers = new FilteringScope(ClassifierScopes.getVisibleClassifiersScope(contextNode, true)) {
+    Scope visibleClassifiersScope = ClassifierScopes.getVisibleClassifiersScope(contextNode, true);
+    classifiers = new FilteringScope((visibleClassifiersScope != null ? visibleClassifiersScope : new EmptyScope())) {
       @Override
       public boolean isExcluded(SNode node) {
         return SNodeOperations.isInstanceOf(node, CONCEPTS.Interface$db);
