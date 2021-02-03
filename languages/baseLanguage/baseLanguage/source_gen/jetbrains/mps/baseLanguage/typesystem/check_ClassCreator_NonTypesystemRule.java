@@ -27,7 +27,6 @@ public class check_ClassCreator_NonTypesystemRule extends AbstractNonTypesystemR
   public void applyRule(final SNode classCreator, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if ((SLinkOperations.getTarget(classCreator, LINKS.baseMethodDeclaration$pyYw) == null || SNodeOperations.isInstanceOf(SNodeOperations.getParent(SLinkOperations.getTarget(classCreator, LINKS.baseMethodDeclaration$pyYw)), CONCEPTS.BaseCommentAttribute$nv)) && ListSequence.fromList(SLinkOperations.getChildren(classCreator, LINKS.actualArgument$pzdx)).isEmpty()) {
       String refText = SLinkOperations.getResolveInfo(SNodeOperations.getReference(classCreator, LINKS.baseMethodDeclaration$pyYw));
-
       if ((refText != null && refText.length() > 0)) {
         SNode clazz = SNodeOperations.cast(ClassifierScopes.getVisibleClassifiersWithDefaultConstructors(classCreator).resolve(classCreator, refText), CONCEPTS.ClassConcept$bK);
         if ((clazz != null)) {
@@ -36,6 +35,7 @@ public class check_ClassCreator_NonTypesystemRule extends AbstractNonTypesystemR
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classCreator, "Default constructor is available", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8899076737759409542", null, errorTarget);
             {
               BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.baseLanguage.typesystem.QuickFixForClassCreator_QuickFix", "8899076737759409663", true);
+              intentionProvider.putArgument("targetClass", clazz);
               _reporter_2309309498.addIntentionProvider(intentionProvider);
             }
           }
