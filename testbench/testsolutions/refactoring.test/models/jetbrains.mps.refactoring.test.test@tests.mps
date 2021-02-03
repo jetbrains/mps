@@ -242,15 +242,11 @@
         <child id="8276990574895933173" name="catchBody" index="1zc67A" />
         <child id="8276990574895933172" name="throwable" index="1zc67B" />
       </concept>
-      <concept id="8276990574909231788" name="jetbrains.mps.baseLanguage.structure.FinallyClause" flags="ng" index="1wplmZ">
-        <child id="8276990574909234106" name="finallyBody" index="1wplMD" />
-      </concept>
       <concept id="1178549954367" name="jetbrains.mps.baseLanguage.structure.IVisible" flags="ng" index="1B3ioH">
         <child id="1178549979242" name="visibility" index="1B3o_S" />
       </concept>
       <concept id="5351203823916750322" name="jetbrains.mps.baseLanguage.structure.TryUniversalStatement" flags="nn" index="3J1_TO">
         <child id="8276990574886367510" name="catchClause" index="1zxBo5" />
-        <child id="8276990574886367509" name="finallyClause" index="1zxBo6" />
         <child id="8276990574886367508" name="body" index="1zxBo7" />
       </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
@@ -7661,14 +7657,6 @@
         <ref role="3uigEE" to="wyt6:~String" resolve="String" />
       </node>
     </node>
-    <node concept="312cEg" id="2Z44d$XVa98" role="jymVt">
-      <property role="34CwA1" value="false" />
-      <property role="eg7rD" value="false" />
-      <property role="TrG5h" value="wasUsingInterpreted" />
-      <property role="3TUv4t" value="false" />
-      <node concept="3Tm6S6" id="2Z44d$XV9l2" role="1B3o_S" />
-      <node concept="10P_77" id="2Z44d$XV9P8" role="1tU5fm" />
-    </node>
     <node concept="3clFbW" id="4Rb4I4dp0Es" role="jymVt">
       <node concept="3cqZAl" id="4Rb4I4dp0Eu" role="3clF45" />
       <node concept="3Tm1VV" id="4Rb4I4dp0Ev" role="1B3o_S" />
@@ -7708,144 +7696,93 @@
             <ref role="37wK5l" to="u132:~TestCase.setUp()" resolve="setUp" />
           </node>
         </node>
-        <node concept="3J1_TO" id="4Rb4I4dn4hM" role="3cqZAp">
-          <node concept="3clFbS" id="4Rb4I4dn4hO" role="1zxBo7">
-            <node concept="3clFbF" id="2Z44d$XVbru" role="3cqZAp">
-              <node concept="37vLTI" id="2Z44d$XVc4L" role="3clFbG">
-                <node concept="2YIFZM" id="2Z44d$XVcyR" role="37vLTx">
-                  <ref role="37wK5l" to="fyhl:~RuntimeFlags.isUseInterpretedLanguages()" resolve="isUseInterpretedLanguages" />
-                  <ref role="1Pybhc" to="fyhl:~RuntimeFlags" resolve="RuntimeFlags" />
-                </node>
-                <node concept="37vLTw" id="2Z44d$XVbrs" role="37vLTJ">
-                  <ref role="3cqZAo" node="2Z44d$XVa98" resolve="wasUsingInterpreted" />
-                </node>
-              </node>
+        <node concept="3cpWs8" id="4Srvtk82VDi" role="3cqZAp">
+          <node concept="3cpWsn" id="4Srvtk82VDj" role="3cpWs9">
+            <property role="TrG5h" value="dirPrefix" />
+            <node concept="3uibUv" id="4Srvtk82VDk" role="1tU5fm">
+              <ref role="3uigEE" to="wyt6:~String" resolve="String" />
             </node>
-            <node concept="3clFbF" id="2Z44d$XV57e" role="3cqZAp">
-              <node concept="2YIFZM" id="2Z44d$XV5i8" role="3clFbG">
-                <ref role="37wK5l" to="fyhl:~RuntimeFlags.setUseInterpretedLanguages(boolean)" resolve="setUseInterpretedLanguages" />
-                <ref role="1Pybhc" to="fyhl:~RuntimeFlags" resolve="RuntimeFlags" />
-                <node concept="3clFbT" id="2Z44d$XV5kC" role="37wK5m">
-                  <property role="3clFbU" value="false" />
-                </node>
-              </node>
-            </node>
-            <node concept="3cpWs8" id="4Srvtk82VDi" role="3cqZAp">
-              <node concept="3cpWsn" id="4Srvtk82VDj" role="3cpWs9">
-                <property role="TrG5h" value="dirPrefix" />
-                <node concept="3uibUv" id="4Srvtk82VDk" role="1tU5fm">
-                  <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-                </node>
-                <node concept="2YIFZM" id="4Rb4I4dmmQE" role="33vP2m">
-                  <ref role="37wK5l" to="18ew:~NameUtil.toConstantName(java.lang.String)" resolve="toConstantName" />
-                  <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
-                  <node concept="2YIFZM" id="4Rb4I4dmpJ2" role="37wK5m">
-                    <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
-                    <ref role="37wK5l" to="18ew:~NameUtil.toValidIdentifier(java.lang.String)" resolve="toValidIdentifier" />
-                    <node concept="2OqwBi" id="4Rb4I4dmq0x" role="37wK5m">
-                      <node concept="Xjq3P" id="4Rb4I4dmpK_" role="2Oq$k0" />
-                      <node concept="liA8E" id="4Rb4I4dmsay" role="2OqNvi">
-                        <ref role="37wK5l" to="u132:~TestCase.getName()" resolve="getName" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3cpWs8" id="4Rb4I4dmtZX" role="3cqZAp">
-              <node concept="3cpWsn" id="4Rb4I4dmtZY" role="3cpWs9">
-                <property role="TrG5h" value="tempDir" />
-                <node concept="3uibUv" id="4Rb4I4dmXpR" role="1tU5fm">
-                  <ref role="3uigEE" to="guwi:~File" resolve="File" />
-                </node>
-                <node concept="2OqwBi" id="4Rb4I4dmVnV" role="33vP2m">
-                  <node concept="2YIFZM" id="4Rb4I4dmtZZ" role="2Oq$k0">
-                    <ref role="37wK5l" to="eoo2:~Files.createTempDirectory(java.lang.String,java.nio.file.attribute.FileAttribute...)" resolve="createTempDirectory" />
-                    <ref role="1Pybhc" to="eoo2:~Files" resolve="Files" />
-                    <node concept="37vLTw" id="4Srvtk82Wn6" role="37wK5m">
-                      <ref role="3cqZAo" node="4Srvtk82VDj" resolve="dirPrefix" />
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="4Rb4I4dmWj$" role="2OqNvi">
-                    <ref role="37wK5l" to="eoo2:~Path.toFile()" resolve="toFile" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="4Rb4I4dnYnC" role="3cqZAp">
-              <node concept="37vLTI" id="4Rb4I4dnYSi" role="3clFbG">
-                <node concept="37vLTw" id="4Rb4I4dp4YZ" role="37vLTJ">
-                  <ref role="3cqZAo" node="4Rb4I4doYSN" resolve="projectTempDir" />
-                </node>
-                <node concept="2OqwBi" id="4Srvtk82WX4" role="37vLTx">
-                  <node concept="37vLTw" id="4Srvtk82WKM" role="2Oq$k0">
-                    <ref role="3cqZAo" node="4Rb4I4dmtZY" resolve="tempDir" />
-                  </node>
-                  <node concept="liA8E" id="4Srvtk82Xu6" role="2OqNvi">
-                    <ref role="37wK5l" to="guwi:~File.getCanonicalPath()" resolve="getCanonicalPath" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="4Rb4I4dm08Z" role="3cqZAp">
-              <node concept="2YIFZM" id="4Rb4I4dm0cs" role="3clFbG">
-                <ref role="37wK5l" to="18ew:~FileUtil.copyDir(java.io.File,java.io.File)" resolve="copyDir" />
-                <ref role="1Pybhc" to="18ew:~FileUtil" resolve="FileUtil" />
-                <node concept="2ShNRf" id="5dt5FDZHmKf" role="37wK5m">
-                  <node concept="1pGfFk" id="5dt5FDZHmKg" role="2ShVmc">
-                    <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String)" resolve="File" />
-                    <node concept="37vLTw" id="4Rb4I4dp582" role="37wK5m">
-                      <ref role="3cqZAo" node="4Rb4I4dp0MO" resolve="projectSourcePath" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="37vLTw" id="4Rb4I4dmMqJ" role="37wK5m">
-                  <ref role="3cqZAo" node="4Rb4I4dmtZY" resolve="tempDir" />
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="5dt5FDZHmK9" role="3cqZAp">
-              <node concept="37vLTI" id="5dt5FDZHmKa" role="3clFbG">
-                <node concept="37vLTw" id="5dt5FDZHmKb" role="37vLTJ">
-                  <ref role="3cqZAo" node="4Rb4I4doYSK" resolve="project" />
-                </node>
-                <node concept="2OqwBi" id="5dt5FDZHmKc" role="37vLTx">
-                  <node concept="37vLTw" id="5dt5FDZHmKd" role="2Oq$k0">
-                    <ref role="3cqZAo" to="83ig:~EnvironmentAwareTestCase.myEnvironment" resolve="myEnvironment" />
-                  </node>
-                  <node concept="liA8E" id="5dt5FDZHmKe" role="2OqNvi">
-                    <ref role="37wK5l" to="ew0j:~Environment.openProject(java.io.File)" resolve="openProject" />
-                    <node concept="37vLTw" id="4Rb4I4dmV28" role="37wK5m">
-                      <ref role="3cqZAo" node="4Rb4I4dmtZY" resolve="tempDir" />
-                    </node>
+            <node concept="2YIFZM" id="4Rb4I4dmmQE" role="33vP2m">
+              <ref role="37wK5l" to="18ew:~NameUtil.toConstantName(java.lang.String)" resolve="toConstantName" />
+              <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
+              <node concept="2YIFZM" id="4Rb4I4dmpJ2" role="37wK5m">
+                <ref role="1Pybhc" to="18ew:~NameUtil" resolve="NameUtil" />
+                <ref role="37wK5l" to="18ew:~NameUtil.toValidIdentifier(java.lang.String)" resolve="toValidIdentifier" />
+                <node concept="2OqwBi" id="4Rb4I4dmq0x" role="37wK5m">
+                  <node concept="Xjq3P" id="4Rb4I4dmpK_" role="2Oq$k0" />
+                  <node concept="liA8E" id="4Rb4I4dmsay" role="2OqNvi">
+                    <ref role="37wK5l" to="u132:~TestCase.getName()" resolve="getName" />
                   </node>
                 </node>
               </node>
             </node>
           </node>
-          <node concept="3uVAMA" id="4rxYtJXoQkv" role="1zxBo5">
-            <node concept="XOnhg" id="4rxYtJXoQkw" role="1zc67B">
-              <property role="3TUv4t" value="false" />
-              <property role="TrG5h" value="e" />
-              <node concept="nSUau" id="xvs04dIvNr" role="1tU5fm">
-                <node concept="3uibUv" id="4rxYtJXoQyT" role="nSUat">
-                  <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
+        </node>
+        <node concept="3cpWs8" id="4Rb4I4dmtZX" role="3cqZAp">
+          <node concept="3cpWsn" id="4Rb4I4dmtZY" role="3cpWs9">
+            <property role="TrG5h" value="tempDir" />
+            <node concept="3uibUv" id="4Rb4I4dmXpR" role="1tU5fm">
+              <ref role="3uigEE" to="guwi:~File" resolve="File" />
+            </node>
+            <node concept="2OqwBi" id="4Rb4I4dmVnV" role="33vP2m">
+              <node concept="2YIFZM" id="4Rb4I4dmtZZ" role="2Oq$k0">
+                <ref role="37wK5l" to="eoo2:~Files.createTempDirectory(java.lang.String,java.nio.file.attribute.FileAttribute...)" resolve="createTempDirectory" />
+                <ref role="1Pybhc" to="eoo2:~Files" resolve="Files" />
+                <node concept="37vLTw" id="4Srvtk82Wn6" role="37wK5m">
+                  <ref role="3cqZAo" node="4Srvtk82VDj" resolve="dirPrefix" />
+                </node>
+              </node>
+              <node concept="liA8E" id="4Rb4I4dmWj$" role="2OqNvi">
+                <ref role="37wK5l" to="eoo2:~Path.toFile()" resolve="toFile" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4Rb4I4dnYnC" role="3cqZAp">
+          <node concept="37vLTI" id="4Rb4I4dnYSi" role="3clFbG">
+            <node concept="37vLTw" id="4Rb4I4dp4YZ" role="37vLTJ">
+              <ref role="3cqZAo" node="4Rb4I4doYSN" resolve="projectTempDir" />
+            </node>
+            <node concept="2OqwBi" id="4Srvtk82WX4" role="37vLTx">
+              <node concept="37vLTw" id="4Srvtk82WKM" role="2Oq$k0">
+                <ref role="3cqZAo" node="4Rb4I4dmtZY" resolve="tempDir" />
+              </node>
+              <node concept="liA8E" id="4Srvtk82Xu6" role="2OqNvi">
+                <ref role="37wK5l" to="guwi:~File.getCanonicalPath()" resolve="getCanonicalPath" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4Rb4I4dm08Z" role="3cqZAp">
+          <node concept="2YIFZM" id="4Rb4I4dm0cs" role="3clFbG">
+            <ref role="37wK5l" to="18ew:~FileUtil.copyDir(java.io.File,java.io.File)" resolve="copyDir" />
+            <ref role="1Pybhc" to="18ew:~FileUtil" resolve="FileUtil" />
+            <node concept="2ShNRf" id="5dt5FDZHmKf" role="37wK5m">
+              <node concept="1pGfFk" id="5dt5FDZHmKg" role="2ShVmc">
+                <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String)" resolve="File" />
+                <node concept="37vLTw" id="4Rb4I4dp582" role="37wK5m">
+                  <ref role="3cqZAo" node="4Rb4I4dp0MO" resolve="projectSourcePath" />
                 </node>
               </node>
             </node>
-            <node concept="3clFbS" id="4rxYtJXoQky" role="1zc67A">
-              <node concept="3clFbF" id="4rxYtJXoRzW" role="3cqZAp">
-                <node concept="2YIFZM" id="4rxYtJXoRzX" role="3clFbG">
-                  <ref role="1Pybhc" to="fyhl:~RuntimeFlags" resolve="RuntimeFlags" />
-                  <ref role="37wK5l" to="fyhl:~RuntimeFlags.setUseInterpretedLanguages(boolean)" resolve="setUseInterpretedLanguages" />
-                  <node concept="37vLTw" id="4rxYtJXoRzY" role="37wK5m">
-                    <ref role="3cqZAo" node="2Z44d$XVa98" resolve="wasUsingInterpreted" />
-                  </node>
-                </node>
+            <node concept="37vLTw" id="4Rb4I4dmMqJ" role="37wK5m">
+              <ref role="3cqZAo" node="4Rb4I4dmtZY" resolve="tempDir" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="5dt5FDZHmK9" role="3cqZAp">
+          <node concept="37vLTI" id="5dt5FDZHmKa" role="3clFbG">
+            <node concept="37vLTw" id="5dt5FDZHmKb" role="37vLTJ">
+              <ref role="3cqZAo" node="4Rb4I4doYSK" resolve="project" />
+            </node>
+            <node concept="2OqwBi" id="5dt5FDZHmKc" role="37vLTx">
+              <node concept="37vLTw" id="5dt5FDZHmKd" role="2Oq$k0">
+                <ref role="3cqZAo" to="83ig:~EnvironmentAwareTestCase.myEnvironment" resolve="myEnvironment" />
               </node>
-              <node concept="YS8fn" id="4rxYtJXoR33" role="3cqZAp">
-                <node concept="37vLTw" id="4rxYtJXoRmr" role="YScLw">
-                  <ref role="3cqZAo" node="4rxYtJXoQkw" resolve="e" />
+              <node concept="liA8E" id="5dt5FDZHmKe" role="2OqNvi">
+                <ref role="37wK5l" to="ew0j:~Environment.openProject(java.io.File)" resolve="openProject" />
+                <node concept="37vLTw" id="4Rb4I4dmV28" role="37wK5m">
+                  <ref role="3cqZAo" node="4Rb4I4dmtZY" resolve="tempDir" />
                 </node>
               </node>
             </node>
@@ -7868,53 +7805,36 @@
         <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
       </node>
       <node concept="3clFbS" id="4Srvtk83edS" role="3clF47">
-        <node concept="3J1_TO" id="2Z44d$XV7SK" role="3cqZAp">
-          <node concept="3clFbS" id="2Z44d$XV7SM" role="1zxBo7">
-            <node concept="3clFbF" id="4Srvtk83edV" role="3cqZAp">
-              <node concept="3nyPlj" id="4Srvtk83edU" role="3clFbG">
-                <ref role="37wK5l" to="u132:~TestCase.tearDown()" resolve="tearDown" />
+        <node concept="3clFbF" id="5dt5FDZHmKk" role="3cqZAp">
+          <node concept="2OqwBi" id="5dt5FDZHmKl" role="3clFbG">
+            <node concept="37vLTw" id="5dt5FDZHmKm" role="2Oq$k0">
+              <ref role="3cqZAo" to="83ig:~EnvironmentAwareTestCase.myEnvironment" resolve="myEnvironment" />
+            </node>
+            <node concept="liA8E" id="5dt5FDZHmKn" role="2OqNvi">
+              <ref role="37wK5l" to="ew0j:~Environment.closeProject(jetbrains.mps.project.Project)" resolve="closeProject" />
+              <node concept="37vLTw" id="5dt5FDZHmKo" role="37wK5m">
+                <ref role="3cqZAo" node="4Rb4I4doYSK" resolve="project" />
               </node>
             </node>
-            <node concept="3clFbF" id="5dt5FDZHmKk" role="3cqZAp">
-              <node concept="2OqwBi" id="5dt5FDZHmKl" role="3clFbG">
-                <node concept="37vLTw" id="5dt5FDZHmKm" role="2Oq$k0">
-                  <ref role="3cqZAo" to="83ig:~EnvironmentAwareTestCase.myEnvironment" resolve="myEnvironment" />
-                </node>
-                <node concept="liA8E" id="5dt5FDZHmKn" role="2OqNvi">
-                  <ref role="37wK5l" to="ew0j:~Environment.closeProject(jetbrains.mps.project.Project)" resolve="closeProject" />
-                  <node concept="37vLTw" id="5dt5FDZHmKo" role="37wK5m">
-                    <ref role="3cqZAo" node="4Rb4I4doYSK" resolve="project" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbF" id="2Z44d$XFEU8" role="3cqZAp">
-              <node concept="2YIFZM" id="2Z44d$XFG5F" role="3clFbG">
-                <ref role="1Pybhc" to="snbe:~FileUtil" resolve="FileUtil" />
-                <ref role="37wK5l" to="snbe:~FileUtil.delete(java.io.File)" resolve="delete" />
-                <node concept="2ShNRf" id="4Rb4I4dopDw" role="37wK5m">
-                  <node concept="1pGfFk" id="4Rb4I4dos1N" role="2ShVmc">
-                    <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String)" resolve="File" />
-                    <node concept="37vLTw" id="4Rb4I4dp9r8" role="37wK5m">
-                      <ref role="3cqZAo" node="4Rb4I4doYSN" resolve="projectTempDir" />
-                    </node>
-                  </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="2Z44d$XFEU8" role="3cqZAp">
+          <node concept="2YIFZM" id="2Z44d$XFG5F" role="3clFbG">
+            <ref role="1Pybhc" to="snbe:~FileUtil" resolve="FileUtil" />
+            <ref role="37wK5l" to="snbe:~FileUtil.delete(java.io.File)" resolve="delete" />
+            <node concept="2ShNRf" id="4Rb4I4dopDw" role="37wK5m">
+              <node concept="1pGfFk" id="4Rb4I4dos1N" role="2ShVmc">
+                <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String)" resolve="File" />
+                <node concept="37vLTw" id="4Rb4I4dp9r8" role="37wK5m">
+                  <ref role="3cqZAo" node="4Rb4I4doYSN" resolve="projectTempDir" />
                 </node>
               </node>
             </node>
           </node>
-          <node concept="1wplmZ" id="xvs04dIxui" role="1zxBo6">
-            <node concept="3clFbS" id="2Z44d$XV7SN" role="1wplMD">
-              <node concept="3clFbF" id="2Z44d$XV6$c" role="3cqZAp">
-                <node concept="2YIFZM" id="2Z44d$XV6$d" role="3clFbG">
-                  <ref role="1Pybhc" to="fyhl:~RuntimeFlags" resolve="RuntimeFlags" />
-                  <ref role="37wK5l" to="fyhl:~RuntimeFlags.setUseInterpretedLanguages(boolean)" resolve="setUseInterpretedLanguages" />
-                  <node concept="37vLTw" id="2Z44d$XVcV2" role="37wK5m">
-                    <ref role="3cqZAo" node="2Z44d$XVa98" resolve="wasUsingInterpreted" />
-                  </node>
-                </node>
-              </node>
-            </node>
+        </node>
+        <node concept="3clFbF" id="4Srvtk83edV" role="3cqZAp">
+          <node concept="3nyPlj" id="4Srvtk83edU" role="3clFbG">
+            <ref role="37wK5l" to="u132:~TestCase.tearDown()" resolve="tearDown" />
           </node>
         </node>
       </node>

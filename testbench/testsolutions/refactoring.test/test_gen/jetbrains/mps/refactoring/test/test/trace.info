@@ -17,88 +17,73 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:7da8cb5d-b937-4ac8-a4e8-0f345dfd2711(jetbrains.mps.refactoring.test.test@tests)/5628230513246118974">
     <file name="AbstractRefactoringTest.java">
-      <node id="5628230513246118974" at="30,0,31,0" concept="11" trace="LOG" />
-      <node id="5605594918994308656" at="31,0,32,0" concept="3" trace="project" />
-      <node id="5605594918994308659" at="32,0,33,0" concept="3" trace="projectTempDir" />
-      <node id="5605594918994316468" at="33,0,34,0" concept="3" trace="projectSourcePath" />
-      <node id="3441894540450767432" at="34,0,35,0" concept="3" trace="wasUsingInterpreted" />
-      <node id="5605594918994318484" at="35,47,36,29" concept="2" />
-      <node id="5628230513246131314" at="40,43,41,18" concept="2" />
-      <node id="3441894540450772702" at="42,9,43,69" concept="2" />
-      <node id="3441894540450746830" at="43,69,44,53" concept="2" />
-      <node id="5628230513246059090" at="44,53,45,93" concept="7" />
-      <node id="5605594918993649661" at="45,93,46,67" concept="7" />
-      <node id="5605594918994044392" at="46,67,47,50" concept="2" />
-      <node id="5605594918993527359" at="47,50,48,61" concept="2" />
-      <node id="6006982468244433929" at="48,61,49,51" concept="2" />
-      <node id="5107638175659161852" at="50,27,51,67" concept="2" />
-      <node id="5107638175659159747" at="51,67,52,14" concept="13" />
-      <node id="5628230513246135163" at="58,9,59,23" concept="2" />
-      <node id="6006982468244433940" at="59,23,60,42" concept="2" />
-      <node id="3441894540446707336" at="60,42,61,77" concept="2" />
-      <node id="3441894540450752780" at="62,15,63,67" concept="2" />
-      <node id="3441894540445444455" at="68,30,69,85" concept="2" />
-      <node id="5605594918995974925" at="70,5,71,136" concept="7" />
-      <node id="5605594918995975017" at="71,136,72,109" concept="7" />
-      <node id="5605594918995974539" at="74,25,75,152" concept="2" />
-      <node id="5605594918995974995" at="77,7,78,88" concept="7" />
-      <node id="5605594918995974989" at="79,9,80,76" concept="2" />
-      <node id="5605594918995974961" at="81,38,82,32" concept="2" />
-      <node id="5605594918995974601" at="83,36,84,32" concept="2" />
-      <node id="5605594918995974867" at="86,30,87,32" concept="2" />
-      <node id="5605594918994315932" at="35,0,38,0" concept="1" trace="AbstractRefactoringTest#(Ljava/lang/String;)V" />
-      <node id="3441894540445444455" at="67,76,70,5" concept="5" />
-      <node id="5605594918995974871" at="74,0,77,0" concept="6" trace="run#()V" />
-      <node id="5605594918995974867" at="85,5,88,5" concept="5" />
-      <node id="5605594918995974875" at="72,109,77,7" concept="2" />
-      <node id="3441894540450758192" at="57,46,64,5" concept="14" />
-      <node id="5605594918995974931" at="78,88,85,5" concept="14" />
-      <node id="5628230513246135153" at="56,0,66,0" concept="6" trace="tearDown#()V" />
-      <node id="5605594918993806450" at="41,18,53,5" concept="14" />
-      <node id="5628230513246122576" at="39,0,55,0" concept="6" trace="setUp#()V" />
-      <node id="3441894540445204818" at="67,0,90,0" concept="6" trace="doMake#(Ljava/util/List;Z)V" />
-      <scope id="5605594918994315936" at="35,47,36,29" />
-      <scope id="3441894540450758195" at="62,15,63,67" />
-      <scope id="3441894540445444455" at="68,30,69,85" />
-      <scope id="5605594918995974869" at="74,25,75,152" />
-      <scope id="5605594918995974927" at="79,9,80,76" />
-      <scope id="5605594918995974967" at="81,38,82,32" />
-      <scope id="5605594918995974983" at="83,36,84,32" />
-      <scope id="5605594918995974867" at="86,30,87,32" />
-      <scope id="5107638175659156770" at="50,27,52,14" />
-      <scope id="5605594918995974975" at="81,5,83,5">
+      <node id="5628230513246118974" at="29,0,30,0" concept="11" trace="LOG" />
+      <node id="5605594918994308656" at="30,0,31,0" concept="3" trace="project" />
+      <node id="5605594918994308659" at="31,0,32,0" concept="3" trace="projectTempDir" />
+      <node id="5605594918994316468" at="32,0,33,0" concept="3" trace="projectSourcePath" />
+      <node id="5605594918994318484" at="33,47,34,29" concept="2" />
+      <node id="5628230513246131314" at="38,43,39,18" concept="2" />
+      <node id="5628230513246059090" at="39,18,40,91" concept="7" />
+      <node id="5605594918993649661" at="40,91,41,65" concept="7" />
+      <node id="5605594918994044392" at="41,65,42,48" concept="2" />
+      <node id="5605594918993527359" at="42,48,43,59" concept="2" />
+      <node id="6006982468244433929" at="43,59,44,49" concept="2" />
+      <node id="6006982468244433940" at="48,46,49,40" concept="2" />
+      <node id="3441894540446707336" at="49,40,50,75" concept="2" />
+      <node id="5628230513246135163" at="50,75,51,21" concept="2" />
+      <node id="3441894540445444455" at="55,30,56,85" concept="2" />
+      <node id="5605594918995974925" at="57,5,58,136" concept="7" />
+      <node id="5605594918995975017" at="58,136,59,109" concept="7" />
+      <node id="5605594918995974539" at="61,25,62,152" concept="2" />
+      <node id="5605594918995974995" at="64,7,65,88" concept="7" />
+      <node id="5605594918995974989" at="66,9,67,76" concept="2" />
+      <node id="5605594918995974961" at="68,38,69,32" concept="2" />
+      <node id="5605594918995974601" at="70,36,71,32" concept="2" />
+      <node id="5605594918995974867" at="73,30,74,32" concept="2" />
+      <node id="5605594918994315932" at="33,0,36,0" concept="1" trace="AbstractRefactoringTest#(Ljava/lang/String;)V" />
+      <node id="3441894540445444455" at="54,76,57,5" concept="5" />
+      <node id="5605594918995974871" at="61,0,64,0" concept="6" trace="run#()V" />
+      <node id="5605594918995974867" at="72,5,75,5" concept="5" />
+      <node id="5605594918995974875" at="59,109,64,7" concept="2" />
+      <node id="5628230513246135153" at="47,0,53,0" concept="6" trace="tearDown#()V" />
+      <node id="5605594918995974931" at="65,88,72,5" concept="14" />
+      <node id="5628230513246122576" at="37,0,46,0" concept="6" trace="setUp#()V" />
+      <node id="3441894540445204818" at="54,0,77,0" concept="6" trace="doMake#(Ljava/util/List;Z)V" />
+      <scope id="5605594918994315936" at="33,47,34,29" />
+      <scope id="3441894540445444455" at="55,30,56,85" />
+      <scope id="5605594918995974869" at="61,25,62,152" />
+      <scope id="5605594918995974927" at="66,9,67,76" />
+      <scope id="5605594918995974967" at="68,38,69,32" />
+      <scope id="5605594918995974983" at="70,36,71,32" />
+      <scope id="5605594918995974867" at="73,30,74,32" />
+      <scope id="5605594918995974975" at="68,5,70,5">
         <var name="e" id="5605594918995974973" />
       </scope>
-      <scope id="5605594918995974977" at="83,5,85,5">
+      <scope id="5605594918995974977" at="70,5,72,5">
         <var name="e" id="5605594918995974991" />
       </scope>
-      <scope id="5605594918994315932" at="35,0,38,0">
+      <scope id="5605594918994315932" at="33,0,36,0">
         <var name="path" id="5605594918994318005" />
       </scope>
-      <scope id="5107638175659156767" at="50,5,53,5">
-        <var name="e" id="5107638175659156768" />
-      </scope>
-      <scope id="3441894540450758194" at="58,9,61,77" />
-      <scope id="5605594918995974871" at="74,0,77,0" />
-      <scope id="5605594918993806452" at="42,9,49,51">
+      <scope id="5628230513246135160" at="48,46,51,21" />
+      <scope id="5605594918995974871" at="61,0,64,0" />
+      <scope id="5628230513246122583" at="38,43,44,49">
         <var name="dirPrefix" id="5628230513246059091" />
         <var name="tempDir" id="5605594918993649662" />
       </scope>
-      <scope id="5628230513246135160" at="57,46,64,5" />
-      <scope id="5628230513246135153" at="56,0,66,0" />
-      <scope id="5628230513246122583" at="40,43,53,5" />
-      <scope id="5628230513246122576" at="39,0,55,0" />
-      <scope id="3441894540445204822" at="67,76,88,5">
+      <scope id="5628230513246135153" at="47,0,53,0" />
+      <scope id="5628230513246122576" at="37,0,46,0" />
+      <scope id="3441894540445204822" at="54,76,75,5">
         <var name="inputRes" id="5605594918995975021" />
         <var name="res" id="5605594918995974997" />
         <var name="session" id="5605594918995974921" />
       </scope>
-      <scope id="3441894540445204818" at="67,0,90,0">
+      <scope id="3441894540445204818" at="54,0,77,0">
         <var name="cleanMake" id="3441894540446515383" />
         <var name="modules" id="3441894540445276934" />
       </scope>
-      <unit id="5605594918995974871" at="73,63,77,5" name="jetbrains.mps.refactoring.test.test.AbstractRefactoringTest$1" />
-      <unit id="5628230513246118974" at="29,0,92,0" name="jetbrains.mps.refactoring.test.test.AbstractRefactoringTest" />
+      <unit id="5605594918995974871" at="60,63,64,5" name="jetbrains.mps.refactoring.test.test.AbstractRefactoringTest$1" />
+      <unit id="5628230513246118974" at="28,0,79,0" name="jetbrains.mps.refactoring.test.test.AbstractRefactoringTest" />
     </file>
   </root>
   <root nodeRef="r:7da8cb5d-b937-4ac8-a4e8-0f345dfd2711(jetbrains.mps.refactoring.test.test@tests)/6006982468244433255">

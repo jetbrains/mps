@@ -6,7 +6,6 @@ import jetbrains.mps.testbench.EnvironmentAwareTestCase;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import jetbrains.mps.project.Project;
-import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.util.NameUtil;
 import java.io.File;
 import java.nio.file.Files;
@@ -31,7 +30,6 @@ public abstract class AbstractRefactoringTest extends EnvironmentAwareTestCase {
   protected Project project;
   private String projectTempDir;
   private String projectSourcePath;
-  private boolean wasUsingInterpreted;
   public AbstractRefactoringTest(String path) {
     projectSourcePath = path;
   }
@@ -39,29 +37,18 @@ public abstract class AbstractRefactoringTest extends EnvironmentAwareTestCase {
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    try {
-      wasUsingInterpreted = RuntimeFlags.isUseInterpretedLanguages();
-      RuntimeFlags.setUseInterpretedLanguages(false);
-      String dirPrefix = NameUtil.toConstantName(NameUtil.toValidIdentifier(this.getName()));
-      File tempDir = Files.createTempDirectory(dirPrefix).toFile();
-      projectTempDir = tempDir.getCanonicalPath();
-      FileUtil.copyDir(new File(projectSourcePath), tempDir);
-      project = myEnvironment.openProject(tempDir);
-    } catch (Exception e) {
-      RuntimeFlags.setUseInterpretedLanguages(wasUsingInterpreted);
-      throw e;
-    }
+    String dirPrefix = NameUtil.toConstantName(NameUtil.toValidIdentifier(this.getName()));
+    File tempDir = Files.createTempDirectory(dirPrefix).toFile();
+    projectTempDir = tempDir.getCanonicalPath();
+    FileUtil.copyDir(new File(projectSourcePath), tempDir);
+    project = myEnvironment.openProject(tempDir);
   }
 
   @Override
   protected void tearDown() throws Exception {
-    try {
-      super.tearDown();
-      myEnvironment.closeProject(project);
-      com.intellij.openapi.util.io.FileUtil.delete(new File(projectTempDir));
-    } finally {
-      RuntimeFlags.setUseInterpretedLanguages(wasUsingInterpreted);
-    }
+    myEnvironment.closeProject(project);
+    com.intellij.openapi.util.io.FileUtil.delete(new File(projectTempDir));
+    super.tearDown();
   }
 
   public void doMake(final List<SModule> modules, final boolean cleanMake) {

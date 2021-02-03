@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps;
 
 import jetbrains.mps.util.annotation.ToRemove;
+import org.apache.log4j.Logger;
 
 /**
  * Replacement for MPSCore#isMergeDriverMode and MPSCore#isTestMode as these flags has nothing to do with
@@ -73,24 +74,22 @@ public final class RuntimeFlags {
   }
 
   /**
+   * I don't feel there's any reason to keep this flag, I'd like to drop it and to remove InterpretedLanguageRuntime class
+   *
    * @return true if we would like to get rudimentary LanguageRuntime instance for non-deployed (source-only) language modules.
    *         These days, MPS doesn't need these, the option is left for compatibility in case there's legacy code that depends on presence
    *         of LanguageRuntime instances for every language module.
    */
+  @Deprecated(forRemoval = true)
+  @ToRemove(version = 2021.1)
   public static boolean isUseInterpretedLanguages() {
     if (ourUseInterpretedLanguages == null) {
       ourUseInterpretedLanguages = Boolean.getBoolean("mps.useInterpretedLanguages");
+      if (ourUseInterpretedLanguages) {
+        Logger.getLogger(RuntimeFlags.class).error("IMPORTANT: Support for interpreted language runtime scheduled for removal", new Throwable());
+      }
     }
     return ourUseInterpretedLanguages;
-  }
-
-  /**
-   * @deprecated MPS runs without interpreted languages by default now, no reason to set this mode explicitly with {@code false} (the only use in MPS)
-   */
-  @Deprecated
-  @ToRemove(version = 2019.2)
-  public static void setUseInterpretedLanguages(boolean useInterpretedLanguages) {
-    ourUseInterpretedLanguages = useInterpretedLanguages;
   }
 
   /**
