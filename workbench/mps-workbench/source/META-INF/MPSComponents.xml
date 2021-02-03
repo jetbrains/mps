@@ -124,9 +124,6 @@
       <implementation-class>jetbrains.mps.ide.script.plugin.migrationtool.MigrationScriptsTool
       </implementation-class>
     </component>
-    <component>
-      <implementation-class>jetbrains.mps.ide.findusages.caches.MPSIndexableFileSet</implementation-class>
-    </component>
 
     <component>
       <implementation-class>jetbrains.mps.vfs.tracking.ModelTracking</implementation-class>

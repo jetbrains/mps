@@ -224,6 +224,7 @@
     <!-- TODO: check if can be removed -->
     <projectService serviceImplementation="com.intellij.openapi.vcs.impl.ModuleVcsDetector" preload="notHeadless"/>
 
+    <projectService serviceImplementation="jetbrains.mps.ide.findusages.caches.IndexableRootCalculator"/>
   </extensions>
 
   <actions>

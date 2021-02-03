@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,18 +15,29 @@
  */
 package jetbrains.mps.ide.findusages.caches;
 
+import com.intellij.openapi.Disposable;
+import com.intellij.openapi.application.Application;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.WriteAction;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ProjectManager;
+import com.intellij.openapi.project.ProjectManagerListener;
+import com.intellij.openapi.roots.ex.ProjectRootManagerEx;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.util.indexing.IndexableSetContributorModificationTracker;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.project.MPSExtentions;
-import jetbrains.mps.project.Project;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.util.annotation.Hack;
+import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleListener;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
-import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
+import org.jetbrains.mps.openapi.module.SRepositoryListener;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
 import java.util.Collection;
@@ -43,25 +54,43 @@ import java.util.concurrent.atomic.AtomicReference;
  *
  * AP
  */
-final class IndexableRootCalculator {
-  private final Project myProject;
+final class IndexableRootCalculator implements Disposable {
+  private final MPSProject myProject;
 
-  private final SRepositoryContentAdapter myModuleChangesListener = new SModuleChangesListener();
+  private final ChangeListener myModuleChangesListener = new ChangeListener(this::invalidateCache);
   private final AtomicReference<Set<VirtualFile>> myRootsCache = new AtomicReference<>();
+  private final ProjectManagerListener myProjectListener = new ProjectManagerListener() {
+    @Override
+    public void projectClosing(@NotNull Project project) {
+      unregister();
+    }
+  };
 
+  // access project service instance
+  public static IndexableRootCalculator getInstance(@NotNull com.intellij.openapi.project.Project ideaProject) {
+    return ideaProject.getService(IndexableRootCalculator.class);
+  }
 
   public IndexableRootCalculator(@NotNull com.intellij.openapi.project.Project project) {
     myProject = ProjectHelper.fromIdeaProject(project);
+    ProjectManager.getInstance().addProjectManagerListener(project, myProjectListener);
+    register();
   }
 
-  public void register() {
+  /*package*/ void register() {
     SRepository repository = myProject.getRepository();
-    repository.getModelAccess().runReadAction(() -> repository.addRepositoryListener(myModuleChangesListener));
+    repository.addRepositoryListener(myModuleChangesListener);
   }
 
-  public void unregister() {
+  /*package*/ void unregister() {
     SRepository repository = myProject.getRepository();
-    repository.getModelAccess().runReadAction(() -> repository.removeRepositoryListener(myModuleChangesListener));
+    repository.removeRepositoryListener(myModuleChangesListener);
+  }
+
+  @Override
+  public void dispose() {
+    ProjectManager.getInstance().removeProjectManagerListener(myProject.getProject(), myProjectListener);
+    unregister();
   }
 
   /**
@@ -77,6 +106,7 @@ final class IndexableRootCalculator {
   @Hack
   @NotNull
   public Set<VirtualFile> getIndexableRoots() {
+    // XXX is there true need to cache roots? Guess, IDEA caches them, we shall not bother
     Set<VirtualFile> indexableRoots = myRootsCache.get();
     if (indexableRoots == null || indexableRoots.stream().anyMatch(file -> !file.isValid())) {
       indexableRoots = calcRoots();
@@ -91,7 +121,8 @@ final class IndexableRootCalculator {
 
     myProject.getModelAccess().runReadAction(() -> {
       for (final SModule m : myProject.getRepository().getModules()) {
-        for (String path : getIndexablePaths(m)) {
+        for (IFile path : getIndexablePaths(m)) {
+          // FIXME perhaps, shall use myProject.getFileSystem() instead of VFU static?
           VirtualFile file = VirtualFileUtils.getVirtualFile(path);
           if (file != null) {
             files.add(file);
@@ -102,16 +133,16 @@ final class IndexableRootCalculator {
     return Collections.unmodifiableSet(files);
   }
 
-  private static Collection<String> getIndexablePaths(@NotNull SModule module) {
+  private static Collection<IFile> getIndexablePaths(@NotNull SModule module) {
     // todo: maybe move getIndexablePaths method to FileBasedModelRoot, or even in ModelRoot classes?
-    Set<String> result = new HashSet<>();
+    Set<IFile> result = new HashSet<>();
 
     for (ModelRoot modelRoot : module.getModelRoots()) {
       if (modelRoot instanceof FileBasedModelRoot) {
         FileBasedModelRoot fileBasedModelRoot = (FileBasedModelRoot) modelRoot;
-        String contentRoot = fileBasedModelRoot.getContentRoot();
+        IFile contentRoot = fileBasedModelRoot.getContentDirectory();
         if (contentRoot != null) {
-          result.add(exposePath(contentRoot));
+          result.add(contentRoot);
         }
         // todo: use excluded & source folders like IDEA
       }
@@ -120,29 +151,56 @@ final class IndexableRootCalculator {
     return result;
   }
 
+  //
   private static String exposePath(String path) {
     String suffix = path.endsWith("." + MPSExtentions.MPS_ARCH) ? "!/" : "";
     return path + suffix;
   }
 
-  private class SModuleChangesListener extends SRepositoryContentAdapter {
-    private void invalidateCache() {
-      myRootsCache.set(null);
+  /*package*/ void invalidateCache() {
+    final Set<VirtualFile> oldValue = myRootsCache.getAndSet(null);
+    if (oldValue != null) {
+      // notify once per change, no need to incModificationCount for each module come and go
+      //noinspection UnstableApiUsage
+      IndexableSetContributorModificationTracker.getInstance().incModificationCount();
+      // According to Dmitrii Batkovich, counter should suffice, but doesn't hurt to
+      // notify through ProjectRootManagerEx.
+      //noinspection UnstableApiUsage
+      ApplicationManager.getApplication().invokeLaterOnWriteThread(() -> {
+        ApplicationManager.getApplication().runWriteAction(() -> {
+          // makeRootsChange event dispatch requires write lock
+          ProjectRootManagerEx.getInstanceEx(myProject.getProject()).makeRootsChange(()->{}, false, true);
+        });
+      });
+    }
+  }
+
+  private static class ChangeListener implements SRepositoryListener, SModuleListener {
+    private final Runnable myInvalidate;
+
+    /*package*/ ChangeListener(Runnable invalidate) {
+      myInvalidate = invalidate;
     }
 
     @Override
     public void moduleAdded(@NotNull SModule module) {
-      invalidateCache();
+      module.addModuleListener(this);
+      myInvalidate.run();
+    }
+
+    @Override
+    public void beforeModuleRemoved(@NotNull SModule module) {
+      module.removeModuleListener(this);
     }
 
     @Override
     public void moduleRemoved(@NotNull SModuleReference moduleReference) {
-      invalidateCache();
+      myInvalidate.run();
     }
 
     @Override
     public void moduleChanged(@NotNull SModule module) {
-      invalidateCache();
+      myInvalidate.run();
     }
   }
 }
