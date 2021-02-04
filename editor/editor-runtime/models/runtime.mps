@@ -10165,6 +10165,33 @@
             <node concept="10Nm6u" id="3L8lG__9Wpa" role="3uHU7w" />
           </node>
         </node>
+        <node concept="3cpWs8" id="5jXiWStcUc6" role="3cqZAp">
+          <node concept="3cpWsn" id="5jXiWStcUc7" role="3cpWs9">
+            <property role="TrG5h" value="node" />
+            <node concept="3uibUv" id="5jXiWStcSAx" role="1tU5fm">
+              <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
+            </node>
+            <node concept="2OqwBi" id="5jXiWStcUc8" role="33vP2m">
+              <node concept="37vLTw" id="5jXiWStcUc9" role="2Oq$k0">
+                <ref role="3cqZAo" node="3L8lG__9PJV" resolve="rootCell" />
+              </node>
+              <node concept="liA8E" id="5jXiWStcUca" role="2OqNvi">
+                <ref role="37wK5l" to="f4zo:~EditorCell.getSNode()" resolve="getSNode" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="5jXiWStd8QU" role="3cqZAp">
+          <node concept="3clFbS" id="5jXiWStd8QW" role="3clFbx">
+            <node concept="3cpWs6" id="5jXiWStdaxS" role="3cqZAp" />
+          </node>
+          <node concept="3clFbC" id="5jXiWStda2V" role="3clFbw">
+            <node concept="10Nm6u" id="5jXiWStdapu" role="3uHU7w" />
+            <node concept="37vLTw" id="5jXiWStd9kI" role="3uHU7B">
+              <ref role="3cqZAo" node="5jXiWStcUc7" resolve="node" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="3gc07c3T5NG" role="3cqZAp">
           <node concept="3cpWsn" id="3gc07c3T5NH" role="3cpWs9">
             <property role="TrG5h" value="editedRoot" />
@@ -10172,13 +10199,8 @@
               <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
             </node>
             <node concept="2OqwBi" id="fw7FbkYAeb" role="33vP2m">
-              <node concept="2OqwBi" id="3gc07c3T5NI" role="2Oq$k0">
-                <node concept="37vLTw" id="3L8lG__9PJZ" role="2Oq$k0">
-                  <ref role="3cqZAo" node="3L8lG__9PJV" resolve="rootCell" />
-                </node>
-                <node concept="liA8E" id="3gc07c3T5NM" role="2OqNvi">
-                  <ref role="37wK5l" to="f4zo:~EditorCell.getSNode()" resolve="getSNode" />
-                </node>
+              <node concept="37vLTw" id="5jXiWStcUcb" role="2Oq$k0">
+                <ref role="3cqZAo" node="5jXiWStcUc7" resolve="node" />
               </node>
               <node concept="liA8E" id="fw7FbkYAYN" role="2OqNvi">
                 <ref role="37wK5l" to="mhbf:~SNode.getContainingRoot()" resolve="getContainingRoot" />

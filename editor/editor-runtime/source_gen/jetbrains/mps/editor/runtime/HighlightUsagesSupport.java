@@ -110,7 +110,11 @@ public class HighlightUsagesSupport {
     if (rootCell == null) {
       return;
     }
-    SNode editedRoot = rootCell.getSNode().getContainingRoot();
+    SNode node = rootCell.getSNode();
+    if (node == null) {
+      return;
+    }
+    SNode editedRoot = node.getContainingRoot();
     SNode highlightingRoot = nodeToHighlight.getContainingRoot();
 
     SearchScope scope = new ModelsScope(editedRoot.getModel());
