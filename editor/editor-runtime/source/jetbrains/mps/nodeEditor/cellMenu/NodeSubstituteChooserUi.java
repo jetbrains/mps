@@ -22,8 +22,6 @@ import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.keymap.KeymapUtil;
 import com.intellij.openapi.ui.popup.JBPopup;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
-import com.intellij.openapi.ui.popup.JBPopupListener;
-import com.intellij.openapi.ui.popup.LightweightWindowEvent;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.ScrollPaneFactory;
 import com.intellij.util.ui.AbstractLayoutManager;
@@ -65,7 +63,6 @@ class NodeSubstituteChooserUi implements ISubstituteChooserUi {
 
   private JBPopup myPopup;
   private JScrollPane myScrollPane;
-  private JBPopupListener myOnCloseListener;
 
   NodeSubstituteChooserUi(@NotNull NodeSubstituteChooser nodeSubstituteChooser, @NotNull JList<SubstituteAction> list,
                           @NotNull NodeSubstitutePatternEditor patternEditor) {
@@ -76,12 +73,13 @@ class NodeSubstituteChooserUi implements ISubstituteChooserUi {
 
   public void refreshUi(boolean recalculateSize) {
     if (recalculateSize) {
-      myPopup.removeListener(myOnCloseListener);
-      myPopup.cancel();
-      show();
-    } else {
-      myList.ensureIndexIsVisible(myList.getSelectedIndex());
+      resetListSize();
+      myPopup.getContent().validate();
+      myPopup.pack(true, true);
+      resetRelativePosition(myPopup.getContent().getPreferredSize());
+      updateLocation();
     }
+    myList.ensureIndexIsVisible(myList.getSelectedIndex());
   }
 
   private void resetListSize() {
@@ -130,12 +128,6 @@ class NodeSubstituteChooserUi implements ISubstituteChooserUi {
       adText = "Press " + KeymapUtil.getFirstKeyboardShortcutText(action) + " to " + action.getTemplateText();
     }
 
-    myOnCloseListener = new JBPopupListener() {
-      @Override
-      public void onClosed(@NotNull LightweightWindowEvent event) {
-        myNodeSubstituteChooser.setVisible(false);
-      }
-    };
     myPopup = JBPopupFactory.getInstance().createComponentPopupBuilder(mainPanel, mainPanel)
                             .setResizable(true)
                             .setCancelKeyEnabled(false)
@@ -144,7 +136,10 @@ class NodeSubstituteChooserUi implements ISubstituteChooserUi {
                             .setCancelOnWindowDeactivation(true)
                             .setLocateWithinScreenBounds(false)
                             .setAdText(adText)
-                            .addListener(myOnCloseListener)
+                            .setCancelCallback(() -> {
+                              myNodeSubstituteChooser.setVisible(false);
+                              return true;
+                            })
                             .createPopup();
     myPopup.setMinimumSize(new Dimension(MY_MIN_CELL_WIDTH, 0));
 
@@ -219,6 +214,15 @@ class NodeSubstituteChooserUi implements ISubstituteChooserUi {
       }
     }
     return myRelativePosition;
+  }
+
+  private void resetRelativePosition(Dimension popupSize) {
+    if (myRelativePosition == PopupPosition.BOTTOM) {
+      PopupPosition popupPosition = calculateRelativePosition(popupSize);
+      if (popupPosition == PopupPosition.TOP) {
+        myRelativePosition = popupPosition;
+      }
+    }
   }
 
   private Point getLocationWithRespectToScreenBounds(Point location, Rectangle deviceBounds, Dimension popupSize) {
