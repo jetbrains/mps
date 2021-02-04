@@ -582,67 +582,62 @@
       <scope id="1225128146050" at="40,13,41,46" />
     </file>
     <file name="PropertyInstances_Finder.java">
-      <node id="1225128146050" at="26,34,27,32" concept="11" />
-      <node id="1225128146050" at="30,38,31,14" concept="11" />
-      <node id="1225128146050" at="34,41,35,43" concept="11" />
-      <node id="1225128303098" at="40,9,41,73" concept="10" />
-      <node id="1225128303104" at="41,73,42,125" concept="10" />
-      <node id="1225128446509" at="44,159,45,72" concept="10" />
-      <node id="1225128571598" at="46,59,47,64" concept="5" />
-      <node id="1225128146050" at="51,15,52,21" concept="5" />
-      <node id="1225128283919" at="57,45,58,32" concept="11" />
-      <node id="1225128146050" at="63,46,64,83" concept="11" />
-      <node id="1225128146050" at="68,0,69,0" concept="14" trace="PropertyDeclaration$1S" />
-      <node id="1225128146050" at="69,0,70,0" concept="14" trace="AbstractConceptDeclaration$KA" />
-      <node id="1225128146050" at="73,0,74,0" concept="14" trace="name$MnvL" />
-      <node id="1225128146050" at="23,0,25,0" concept="2" trace="PropertyInstances_Finder#()V" />
-      <node id="1225128392487" at="45,72,48,11" concept="8" />
-      <node id="1225128146050" at="25,0,29,0" concept="9" trace="getDescription#()Ljava/lang/String;" />
-      <node id="1225128146050" at="29,0,33,0" concept="9" trace="getLongDescription#()Ljava/lang/String;" />
-      <node id="1225128146050" at="33,0,37,0" concept="9" trace="getSConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="1225128146050" at="56,0,60,0" concept="9" trace="getNodeCategory#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="1225128146050" at="61,0,66,0" concept="9" trace="getDeclarationNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="1225128303114" at="43,44,49,9" concept="7" />
-      <node id="1225128303112" at="42,125,50,7" concept="8" />
-      <node id="1225128146050" at="39,122,53,5" concept="18" />
-      <node id="1225128146050" at="38,0,55,0" concept="9" trace="doFind0#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/module/SearchScope;Ljetbrains/mps/ide/findusages/findalgorithm/finders/IFinder/FindCallback;Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)V" />
-      <scope id="1225128146050" at="23,37,23,37" />
-      <scope id="1225128146050" at="26,34,27,32" />
-      <scope id="1225128146050" at="30,38,31,14" />
-      <scope id="1225128146050" at="34,41,35,43" />
-      <scope id="1225128392489" at="46,59,47,64" />
-      <scope id="1225128146050" at="51,15,52,21" />
-      <scope id="1225128278652" at="57,45,58,32" />
-      <scope id="1225128146050" at="63,46,64,83" />
-      <scope id="1225128146050" at="23,0,25,0" />
-      <scope id="1225128146050" at="25,0,29,0" />
-      <scope id="1225128146050" at="29,0,33,0" />
-      <scope id="1225128146050" at="33,0,37,0" />
-      <scope id="1225128303115" at="44,159,48,11">
-        <var name="property" id="1225128446510" />
-      </scope>
-      <scope id="1225128146050" at="56,0,60,0">
+      <node id="1225128146050" at="25,34,26,32" concept="11" />
+      <node id="1225128146050" at="29,38,30,14" concept="11" />
+      <node id="1225128146050" at="33,41,34,43" concept="11" />
+      <node id="1579644807361764710" at="39,9,40,72" concept="10" />
+      <node id="1225128303104" at="40,72,41,125" concept="10" />
+      <node id="1225128571598" at="44,51,45,64" concept="5" />
+      <node id="1225128146050" at="49,15,50,21" concept="5" />
+      <node id="1225128283919" at="55,45,56,32" concept="11" />
+      <node id="1225128146050" at="61,46,62,83" concept="11" />
+      <node id="1225128146050" at="66,0,67,0" concept="14" trace="PropertyDeclaration$1S" />
+      <node id="1225128146050" at="67,0,68,0" concept="14" trace="AbstractConceptDeclaration$KA" />
+      <node id="1225128146050" at="22,0,24,0" concept="2" trace="PropertyInstances_Finder#()V" />
+      <node id="1225128392487" at="43,159,46,11" concept="8" />
+      <node id="1225128146050" at="24,0,28,0" concept="9" trace="getDescription#()Ljava/lang/String;" />
+      <node id="1225128146050" at="28,0,32,0" concept="9" trace="getLongDescription#()Ljava/lang/String;" />
+      <node id="1225128146050" at="32,0,36,0" concept="9" trace="getSConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="1225128146050" at="54,0,58,0" concept="9" trace="getNodeCategory#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="1225128303114" at="42,44,47,9" concept="7" />
+      <node id="1225128146050" at="59,0,64,0" concept="9" trace="getDeclarationNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="1225128303112" at="41,125,48,7" concept="8" />
+      <node id="1225128146050" at="38,122,51,5" concept="18" />
+      <node id="1225128146050" at="37,0,53,0" concept="9" trace="doFind0#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/module/SearchScope;Ljetbrains/mps/ide/findusages/findalgorithm/finders/IFinder/FindCallback;Lorg/jetbrains/mps/openapi/util/ProgressMonitor;)V" />
+      <scope id="1225128146050" at="22,37,22,37" />
+      <scope id="1225128146050" at="25,34,26,32" />
+      <scope id="1225128146050" at="29,38,30,14" />
+      <scope id="1225128146050" at="33,41,34,43" />
+      <scope id="1225128392489" at="44,51,45,64" />
+      <scope id="1225128146050" at="49,15,50,21" />
+      <scope id="1225128278652" at="55,45,56,32" />
+      <scope id="1225128146050" at="61,46,62,83" />
+      <scope id="1225128146050" at="22,0,24,0" />
+      <scope id="1225128303115" at="43,159,46,11" />
+      <scope id="1225128146050" at="24,0,28,0" />
+      <scope id="1225128146050" at="28,0,32,0" />
+      <scope id="1225128146050" at="32,0,36,0" />
+      <scope id="1225128146050" at="54,0,58,0">
         <var name="node" id="1225128146050" />
       </scope>
-      <scope id="1225128146050" at="61,0,66,0" />
-      <scope id="1225128303113" at="43,44,49,9" />
-      <scope id="1225128303114" at="43,44,49,9">
+      <scope id="1225128303113" at="42,44,47,9" />
+      <scope id="1225128303114" at="42,44,47,9">
         <var name="instance" id="1225128303158" />
       </scope>
-      <scope id="1225128146052" at="40,9,50,7">
+      <scope id="1225128146050" at="59,0,64,0" />
+      <scope id="1225128146052" at="39,9,48,7">
         <var name="conceptDeclaration" id="1225128303105" />
-        <var name="role" id="1225128303099" />
+        <var name="role" id="1579644807361764711" />
       </scope>
-      <scope id="1225128146050" at="39,122,53,5" />
-      <scope id="1225128146050" at="38,0,55,0">
+      <scope id="1225128146050" at="38,122,51,5" />
+      <scope id="1225128146050" at="37,0,53,0">
         <var name="callback" id="1225128146050" />
         <var name="monitor" id="1225128146050" />
         <var name="node" id="1225128146050" />
         <var name="scope" id="1225128146050" />
       </scope>
-      <unit id="1225128146050" at="72,0,75,0" name="jetbrains.mps.lang.structure.findUsages.PropertyInstances_Finder$PROPS" />
-      <unit id="1225128146050" at="67,0,71,0" name="jetbrains.mps.lang.structure.findUsages.PropertyInstances_Finder$CONCEPTS" />
-      <unit id="1225128146050" at="22,0,76,0" name="jetbrains.mps.lang.structure.findUsages.PropertyInstances_Finder" />
+      <unit id="1225128146050" at="65,0,69,0" name="jetbrains.mps.lang.structure.findUsages.PropertyInstances_Finder$CONCEPTS" />
+      <unit id="1225128146050" at="21,0,70,0" name="jetbrains.mps.lang.structure.findUsages.PropertyInstances_Finder" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c8959028e(jetbrains.mps.lang.structure.findUsages)/1279830762534979608">
