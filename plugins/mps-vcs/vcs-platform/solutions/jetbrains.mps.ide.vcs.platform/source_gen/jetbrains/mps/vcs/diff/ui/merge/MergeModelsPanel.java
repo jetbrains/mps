@@ -154,6 +154,9 @@ public class MergeModelsPanel extends JPanel {
     myMergeTree = new MergeModelsTree(myProjectRepository);
     myPanel.setFirstComponent(ScrollPaneFactory.createScrollPane(myMergeTree));
     myPanel.setSecondComponent(myNoRootPanel);
+    // the rebuild of the tree should not happen before the second component of the panel 
+    // is set to be 'no root' panel since the tree rebuild process includes row selection.  
+    // see https://youtrack.jetbrains.com/issue/MPS-32897 .  
     myMergeTree.rebuildNow();
 
     myGoToNeighbourRootActions = new MyGoToNeighbourRootActions();
