@@ -291,7 +291,7 @@ with_targets:
               if (trg.requiresInput()) {
                 if (Sequence.fromIterable(input).isEmpty()) {
                   if (trg instanceof ITargetEx && ((ITargetEx) trg).isOptional()) {
-                    LOG.info("No input. Skipping optional target.");
+                    LOG.info(String.format("No input. Skipping optional target '%s'.", trg.getName()));
                     results.addResult(trg.getName(), new IResult.SUCCESS(null));
                     continue with_targets;
                   } else {
