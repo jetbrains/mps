@@ -13,6 +13,7 @@ public class FindByConditionGroup_ActionGroup extends GeneratedActionGroup {
     super("FindByConditionGroup", ID, plugin);
     setIsInternal(false);
     setPopup(false);
+    FindByConditionGroup_ActionGroup.this.addSeparator();
     FindByConditionGroup_ActionGroup.this.addAction("jetbrains.mps.console.actions.plugin.FindInstancesByCondition_Action");
     FindByConditionGroup_ActionGroup.this.addAction("jetbrains.mps.console.actions.plugin.ModifyInstancesByCondition_Action");
   }

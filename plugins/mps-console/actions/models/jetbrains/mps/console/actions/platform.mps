@@ -40,6 +40,7 @@
   </imports>
   <registry>
     <language id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin">
+      <concept id="1204908117386" name="jetbrains.mps.lang.plugin.structure.Separator" flags="ng" index="2a7GMi" />
       <concept id="1207145163717" name="jetbrains.mps.lang.plugin.structure.ElementListContents" flags="ng" index="ftmFs">
         <child id="1207145201301" name="reference" index="ftvYc" />
       </concept>
@@ -963,6 +964,7 @@
       <ref role="tU$_T" to="tprs:6RIKhBiOn6O" resolve="Search" />
     </node>
     <node concept="ftmFs" id="2Ug$oBxrfYI" role="ftER_">
+      <node concept="2a7GMi" id="5rlCJ5nXC1I" role="ftvYc" />
       <node concept="tCFHf" id="2Ug$oBxrfYL" role="ftvYc">
         <ref role="tCJdB" node="2Ug$oBxpv85" resolve="FindInstancesByCondition" />
       </node>

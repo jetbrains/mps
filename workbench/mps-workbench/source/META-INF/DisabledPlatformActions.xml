@@ -60,15 +60,7 @@
 
     <!-- Edit -->
     <!--    <group id="EditMenu" popup="true">-->
-    <!--      <group id="FindMenuGroup" popup="true">-->
-    <action id="Find" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="Replace" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="FindNext" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="FindPrevious" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="FindWordAtCaret" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="FindInPath" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="ReplaceInPath" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <!--      </group>-->
+    <group id="FindMenuGroup" class="jetbrains.mps.ide.editor.actions.FindMenuGroupMPSWrapper" popup="true" keep-content="true" overrides="true"/>
     <!--      <group id="EditSelectGroup">-->
     <action id="EditorAddCaretPerSelectedLine" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <!--      </group>-->
