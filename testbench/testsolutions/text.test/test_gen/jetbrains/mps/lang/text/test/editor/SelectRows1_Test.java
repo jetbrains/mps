@@ -32,7 +32,7 @@ public class SelectRows1_Test extends BaseTransformationTest {
 
     @Override
     public void testMethodImpl() throws Exception {
-      initEditorComponent("4676474846002004437", "4676474846002004504");
+      initEditorComponent("4676474846002004437", "8540225684422510600");
       invokeAction("jetbrains.mps.ide.editor.actions.SelectNext_Action");
       invokeAction("jetbrains.mps.ide.editor.actions.SelectNext_Action");
       invokeAction("jetbrains.mps.ide.editor.actions.SelectNext_Action");
